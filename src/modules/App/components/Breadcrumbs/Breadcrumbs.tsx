@@ -33,14 +33,18 @@ export const Breadcrumbs: React.FC<Props> = ({ pathname }) => {
   }
 
   return (
-    <div className={styles['top-navigation']}>
-      <Link to={'/'} className={styles['top-navigation__home']}>
+    <nav aria-label="Breadcrumbs" className={styles['top-navigation']}>
+      <Link
+        to={'/'}
+        aria-label="Home"
+        className={styles['top-navigation__home']}
+      >
         <Icon type={IconType.home} />
       </Link>
 
       {splitedPathname.map((part, i, parts) => (
         <Fragment key={part}>
-          <Arrow type={ArrowType.right} disabled small hideBorders />
+          <Arrow type={ArrowType.right} disabled small hideBorders ariaHidden />
 
           <Link
             to={parts.slice(0, i + 1).join('/')}
@@ -50,6 +54,6 @@ export const Breadcrumbs: React.FC<Props> = ({ pathname }) => {
           </Link>
         </Fragment>
       ))}
-    </div>
+    </nav>
   );
 };

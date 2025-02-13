@@ -22,11 +22,12 @@ export const AddToCard: React.FC<Props> = ({ itemId }) => {
   const favorites = useAppSelector(state => state.favorites);
   const shoppingCart = useAppSelector(state => state.shoppingCart.itemIds);
 
+  const isInFavorite = favorites.includes(itemId);
   const isInShoppingCard = shoppingCart[itemId] !== undefined;
 
   return (
-    <article className={styles['add-to-card']}>
-      <div
+    <div className={styles['add-to-card']}>
+      <button
         className={classNames(styles['add-to-card__button'], {
           [styles['add-to-card__button--selected']]: isInShoppingCard,
         })}
@@ -36,9 +37,10 @@ export const AddToCard: React.FC<Props> = ({ itemId }) => {
         }}
       >
         {isInShoppingCard ? 'Selected' : 'Add to card'}
-      </div>
+      </button>
 
-      <div
+      <button
+        aria-label={isInFavorite ? 'Remove from favorite' : 'Add to favorite'}
         className={styles['add-to-card__icon']}
         onClick={e => {
           e.stopPropagation();
@@ -46,14 +48,10 @@ export const AddToCard: React.FC<Props> = ({ itemId }) => {
         }}
       >
         <Icon
-          type={
-            favorites.includes(itemId)
-              ? IconType.favoriteFilled
-              : IconType.favorite
-          }
+          type={isInFavorite ? IconType.favoriteFilled : IconType.favorite}
           withBorder
         />
-      </div>
-    </article>
+      </button>
+    </div>
   );
 };

@@ -18,7 +18,7 @@ export const Colors: React.FC<Props> = ({
   currentCapacity,
 }) => {
   return (
-    <AvailableProducts title="Select colors">
+    <AvailableProducts title="Select colors" ariaLabel="Available Colors">
       {colors.map(color => {
         const itemId = [namespaceId, currentCapacity, ...color.split(' ')]
           .join('-')

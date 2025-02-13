@@ -13,9 +13,12 @@ type Props = {
 
 export const TechSpecs: React.FC<Props> = ({ className, specs }) => {
   return (
-    <section className={classNames(className, styles['tech-specs'])}>
+    <article
+      aria-label="Tech Specs"
+      className={classNames(className, styles['tech-specs'])}
+    >
       <SectionTitle title="Tech Specs" />
       <Characteristics characteristics={specs} bodyText removePadding />
-    </section>
+    </article>
   );
 };

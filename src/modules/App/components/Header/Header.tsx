@@ -33,13 +33,18 @@ export const Header: React.FC<Props> = ({ className }) => {
       </div>
 
       <div className={styles.header__right}>
-        <NavLinkItem to="./favorites" className={styles['header__user-icon']}>
+        <NavLinkItem
+          to="./favorites"
+          aria-label="Favorites"
+          className={styles['header__user-icon']}
+        >
           <Icon type={IconType.favorite} />
           <Counter count={favorites.length} />
         </NavLinkItem>
 
         <NavLinkItem
           to="./shopping-bag"
+          aria-label="Shopping Bag"
           className={styles['header__user-icon']}
         >
           <Icon type={IconType.shoppingBag} />

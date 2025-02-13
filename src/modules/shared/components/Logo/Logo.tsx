@@ -10,7 +10,11 @@ type Props = {
 };
 
 export const Logo: React.FC<Props> = ({ className, footer = false }) => (
-  <Link to="/" className={classNames(className, styles.logo)}>
+  <Link
+    to="/"
+    className={classNames(className, styles.logo)}
+    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+  >
     <img
       src="./img/logo.png"
       alt="logo"

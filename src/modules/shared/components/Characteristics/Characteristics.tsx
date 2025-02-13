@@ -15,18 +15,19 @@ export const Characteristics: React.FC<Props> = ({
   removePadding,
 }) => {
   return (
-    <article
+    <ul
+      aria-label="Characteristics"
       className={classNames(styles.characteristics, {
         [styles['characteristics--body-text']]: bodyText,
         [styles['characteristics--remove-padding']]: removePadding,
       })}
     >
       {characteristics.map(([key, value]) => (
-        <div key={key} className={styles.characteristics__characteristic}>
+        <li key={key} className={styles.characteristics__characteristic}>
           <div className={styles.characteristics__key}>{key}</div>
           <div className={styles.characteristics__value}>{value}</div>
-        </div>
+        </li>
       ))}
-    </article>
+    </ul>
   );
 };

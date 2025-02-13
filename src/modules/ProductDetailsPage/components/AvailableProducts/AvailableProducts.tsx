@@ -3,14 +3,22 @@ import styles from './AvailableProducts.module.scss';
 
 type Props = {
   title: string;
+  ariaLabel: string;
   children: React.ReactNode;
 };
 
-export const AvailableProducts: React.FC<Props> = ({ title, children }) => {
+export const AvailableProducts: React.FC<Props> = ({
+  title,
+  ariaLabel,
+
+  children,
+}) => {
   return (
-    <article className={styles['available-products']}>
-      <p className={styles['available-products__title']}>{title}</p>
-      <div className={styles['available-products__content']}>{children}</div>
+    <article aria-label={ariaLabel} className={styles['available-products']}>
+      <div role="heading" className={styles['available-products__title']}>
+        {title}
+      </div>
+      <ul className={styles['available-products__content']}>{children}</ul>
     </article>
   );
 };

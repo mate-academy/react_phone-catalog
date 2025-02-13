@@ -12,13 +12,15 @@ type Props = {
 
 export const Capacity: React.FC<Props> = ({ itemId, capacity, active }) => {
   return (
-    <Link
-      to={`../${itemId}`}
-      className={classNames(styles.capacity, {
-        [styles['capacity--active']]: active,
-      })}
-    >
-      {capacity}
-    </Link>
+    <li>
+      <Link
+        to={`../${itemId}`}
+        className={classNames(styles.capacity, {
+          [styles['capacity--active']]: active,
+        })}
+      >
+        {capacity}
+      </Link>
+    </li>
   );
 };

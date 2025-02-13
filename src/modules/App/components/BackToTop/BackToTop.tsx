@@ -12,12 +12,16 @@ type Props = {
 
 export const BackToTop: React.FC<Props> = ({ className }) => {
   return (
-    <div
+    <button
       className={classNames(className, styles['back-to-top'])}
       onClick={() => window.scrollTo(0, 0)}
     >
       <div className={styles['back-to-top__label']}>Back to top</div>
-      <Arrow className={styles['back-to-top__arrow']} type={ArrowType.up} />
-    </div>
+      <Arrow
+        icon
+        className={styles['back-to-top__arrow']}
+        type={ArrowType.up}
+      />
+    </button>
   );
 };

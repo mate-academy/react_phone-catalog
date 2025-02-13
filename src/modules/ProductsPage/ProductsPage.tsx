@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { useSearchParams } from 'react-router-dom';
-import { useCallback, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import styles from './ProductsPage.module.scss';
 
@@ -22,12 +22,6 @@ import { ProductsNavigation } from './components/ProductsNavigation';
 import { getSearchParam } from './utils/getSearchParam';
 import { useProductsPreload } from '@hooks/useProductsPreload';
 import { useLoweredLocation } from '@hooks/useLoweredLocation';
-
-function getCurrentPage(initialPage: string | null) {
-  const page = +(initialPage || 1);
-
-  return Object.is(page, NaN) ? 1 : page - 1;
-}
 
 function sortProducts(products: Product[], sort: SortBy, defaultSort: SortBy) {
   if (sort === defaultSort) {
@@ -52,8 +46,14 @@ function sortProducts(products: Product[], sort: SortBy, defaultSort: SortBy) {
   }
 }
 
+function getCurrentPage(initialPage: string | null) {
+  const page = +(initialPage || 1);
+
+  return Object.is(page, NaN) ? 1 : page - 1;
+}
+
 function getPaginationData(
-  initialPage: string | null,
+  page: number,
   itemsPerPage: ItemsPerPage,
   length: number,
 ): [number, number, number] {
@@ -61,10 +61,13 @@ function getPaginationData(
     return [0, length, 0];
   }
 
-  const page = getCurrentPage(initialPage);
   const pagesCount = Math.ceil(length / +itemsPerPage);
 
-  return [page, +itemsPerPage, pagesCount];
+  return [
+    Math.max(0, Math.min(page, pagesCount - 1)),
+    +itemsPerPage,
+    pagesCount,
+  ];
 }
 
 export const ProductsPage = () => {
@@ -98,15 +101,32 @@ export const ProductsPage = () => {
     return sortProducts(categoryProducts, sort, SORT_BY_DEFAULT);
   }, [categoryProducts, sort]);
 
+  const navigate = useNavigate();
+  const initialPage = getCurrentPage(params.get('page'));
+
   const [page, itemsCount, pagesCount] = getPaginationData(
-    params.get('page'),
+    initialPage,
     itemsPerPage,
     categoryProducts.length,
   );
 
+  useEffect(() => {
+    if (sortedProducts.length && initialPage !== page) {
+      const newSearchParams = new URLSearchParams(params);
+
+      if (page) {
+        newSearchParams.set('page', `${page + 1}`);
+      } else {
+        newSearchParams.delete('page');
+      }
+
+      navigate(`?${newSearchParams.toString()}`, { replace: true });
+    }
+  }, [initialPage, page, navigate, params, sortedProducts.length]);
+
   const optionsRef = useRef<HTMLDivElement | null>(null);
 
-  const scrollToProducts = useCallback(() => {
+  useEffect(() => {
     const headerHeight = (window.innerWidth < 640 ? 48 : 64) + 10;
 
     if (optionsRef.current) {
@@ -117,7 +137,7 @@ export const ProductsPage = () => {
         behavior: 'smooth',
       });
     }
-  }, []);
+  }, [params]);
 
   const showContent = !isLoading && !error;
   const hasContent = sortedProducts.length !== 0;
@@ -137,7 +157,11 @@ export const ProductsPage = () => {
       </div>
 
       <main className={styles['products-page__main']}>
-        <div ref={optionsRef} className={styles['products-page__options']}>
+        <div
+          aria-label="Options"
+          ref={optionsRef}
+          className={styles['products-page__options']}
+        >
           <Dropdown
             name={SORT_BY_NAME}
             description="Sort by"
@@ -173,11 +197,7 @@ export const ProductsPage = () => {
         )}
 
         {itemsPerPage !== ItemsPerPage.all && (
-          <ProductsNavigation
-            page={page}
-            pagesCount={pagesCount}
-            scrollToProducts={scrollToProducts}
-          />
+          <ProductsNavigation page={page} pagesCount={pagesCount} />
         )}
       </main>
     </div>

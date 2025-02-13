@@ -14,7 +14,7 @@ type Props = {
 
 export const About: React.FC<Props> = ({ className, description }) => {
   return (
-    <section className={classNames(className, styles.about)}>
+    <section aria-label="About" className={classNames(className, styles.about)}>
       <SectionTitle title="About" />
 
       {description.map(item => (

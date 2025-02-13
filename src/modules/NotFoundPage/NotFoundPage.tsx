@@ -12,12 +12,12 @@ export const PageNotFound = () => {
           : 'Page not found'}
       </h1>
 
-      <main className={styles['not-found-page__content']}>
+      <div className={styles['not-found-page__content']}>
         <img
           src="./img/page-not-found.png"
           className={styles['not-found-page__image']}
         />
-      </main>
+      </div>
     </div>
   );
 };

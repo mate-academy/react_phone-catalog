@@ -33,7 +33,7 @@ export const Categories = () => {
   ];
 
   return (
-    <section className={styles.categories}>
+    <section aria-label="Shop By Category" className={styles.categories}>
       <div className={styles.categories__header}>
         <h2>Shop by category</h2>
       </div>

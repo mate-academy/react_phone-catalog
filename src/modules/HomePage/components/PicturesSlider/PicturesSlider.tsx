@@ -241,7 +241,8 @@ export const PicturesSlider = () => {
   }, [activeImage]);
 
   return (
-    <section
+    <article
+      aria-label="Pictures Slider"
       className={styles['pictures-slider']}
       onMouseEnter={() => setIsWaiting(false)}
       onMouseLeave={() => setIsWaiting(true)}
@@ -249,19 +250,21 @@ export const PicturesSlider = () => {
       onTouchEnd={() => setIsWaiting(true)}
     >
       <div className={styles['pictures-slider__top']}>
-        <div
+        <Arrow
+          tall
+          type={ArrowType.left}
           className={classNames(
             styles['pictures-slider__button'],
             styles['pictures-slider__button--left'],
           )}
+          ariaLabel="Previous Image"
           onClick={() =>
             changeImage(activeImage - 1 + (!activeImage ? images.length : 0))
           }
-        >
-          <Arrow type={ArrowType.left} tall />
-        </div>
+        />
 
         <div
+          aria-label="Pictures"
           ref={sliderRef}
           className={classNames(styles['pictures-slider__slider'], {
             [styles['pictures-slider__slider--isLoading']]: isLoading,
@@ -283,6 +286,7 @@ export const PicturesSlider = () => {
           )}
 
           <Image
+            aria-hidden
             src={images[images.length - 1]}
             className={styles['pictures-slider__picture']}
             ref={el => (imageRefs.current[0] = el)}
@@ -292,6 +296,7 @@ export const PicturesSlider = () => {
             <Image
               key={image}
               src={image}
+              alt={`Picture ${i + 1}`}
               className={styles['pictures-slider__picture']}
               ref={el => (imageRefs.current[i + 1] = el)}
             />
@@ -301,24 +306,30 @@ export const PicturesSlider = () => {
             src={images[0]}
             className={styles['pictures-slider__picture']}
             ref={el => (imageRefs.current[images.length + 1] = el)}
+            aria-hidden
           />
         </div>
 
-        <div
+        <Arrow
+          tall
+          type={ArrowType.right}
           className={classNames(
             styles['pictures-slider__button'],
             styles['pictures-slider__button--right'],
           )}
+          ariaLabel="Next Image"
           onClick={() => changeImage((activeImage + 1) % (images.length + 2))}
-        >
-          <Arrow type={ArrowType.right} tall />
-        </div>
+        />
       </div>
 
-      <div className={styles['pictures-slider__bottom']}>
+      <div
+        aria-label="Slider Contols"
+        className={styles['pictures-slider__bottom']}
+      >
         {images.map((image, i) => (
-          <div
+          <button
             key={image}
+            aria-label={`Picture ${i + 1} of ${images.length}`}
             className={classNames(styles['pictures-slider__dot'], {
               [styles['pictures-slider__dot--active']]: i === activeDot,
             })}
@@ -326,9 +337,9 @@ export const PicturesSlider = () => {
               cancelSnapImage();
               changeImage(i + 1);
             }}
-          ></div>
+          ></button>
         ))}
       </div>
-    </section>
+    </article>
   );
 };

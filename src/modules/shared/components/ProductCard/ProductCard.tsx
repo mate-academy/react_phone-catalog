@@ -29,14 +29,21 @@ export const ProductCard = React.forwardRef<HTMLElement, Props>(
     return (
       <article
         ref={ref}
+        aria-label={product.name}
         className={styles['product-card']}
         onClick={() => {
           navigation(`/${product.category}/${product.itemId}`);
         }}
       >
-        <Image src={image} className={styles['product-card__image']} />
+        <Image
+          src={image}
+          aria-label="Photo"
+          className={styles['product-card__image']}
+        />
 
-        <div className={styles['product-card__title']}>{product.name}</div>
+        <div role="heading" className={styles['product-card__title']}>
+          {product.name}
+        </div>
 
         <Price
           fullPrice={fullPrice}

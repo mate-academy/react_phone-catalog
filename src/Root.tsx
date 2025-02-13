@@ -27,7 +27,7 @@ function getProductRoute(path: string) {
 }
 
 export const Root = () => {
-  history.replaceState({}, '');
+  history.replaceState(null, '');
   history.scrollRestoration = 'manual';
 
   return (

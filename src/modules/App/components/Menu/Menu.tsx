@@ -45,6 +45,7 @@ export const Menu = () => {
         <div className={styles.menu__bottom}>
           <NavLinkItem
             to="./favorites"
+            aria-label="Favorites"
             className={styles['menu__user-icon']}
             onClick={changePage}
           >
@@ -54,6 +55,7 @@ export const Menu = () => {
 
           <NavLinkItem
             to="./shopping-bag"
+            aria-label="Shopping Bag"
             className={styles['menu__user-icon']}
             onClick={changePage}
           >

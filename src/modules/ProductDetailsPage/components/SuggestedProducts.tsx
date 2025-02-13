@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Product } from '@sTypes/Product';
 import { ProductsSlider } from '@components/ProductsSlider';
@@ -31,22 +31,24 @@ const NAME = 'suggestedProducts';
 
 export const SuggestedProducts: React.FC<Props> = React.memo(
   function SuggestedProducts({ className }) {
+    const fisrtLoad = useRef(true);
     const { products } = useProductsPreload();
-    const [randomProducts, setRandomProducts] = useState<Product[]>([]);
+
+    const [randomProducts, setRandomProducts] = useState<Product[]>(
+      getHistoryStateItem<Product[]>(NAME) || [],
+    );
 
     const allProducts = useMemo(() => {
       return Object.values(products).flat(Infinity);
     }, [products]);
 
     useEffect(() => {
-      const prevProducts = getHistoryStateItem<Product[]>(NAME);
-
-      if (prevProducts) {
-        setRandomProducts(prevProducts);
+      if (!fisrtLoad.current && randomProducts.length) {
+        setHistoryStateItem(NAME, randomProducts);
       }
 
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+      fisrtLoad.current = false;
+    }, [randomProducts]);
 
     useEffect(() => {
       setRandomProducts(prevRandomProducts => {
@@ -58,16 +60,11 @@ export const SuggestedProducts: React.FC<Props> = React.memo(
       });
     }, [allProducts]);
 
-    const saveProducts = useCallback(() => {
-      setHistoryStateItem(NAME, randomProducts);
-    }, [randomProducts]);
-
     return (
       <ProductsSlider
         className={className}
         title="You may also Like"
         products={randomProducts}
-        onClick={saveProducts}
       />
     );
   },

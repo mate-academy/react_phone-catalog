@@ -31,11 +31,14 @@ export const MainInfo: React.FC<Props> = ({ className, details, category }) => {
   ];
 
   return (
-    <section className={classNames(className, styles['main-info'])}>
+    <section
+      aria-label="Main Info"
+      className={classNames(className, styles['main-info'])}
+    >
       <ProductId itemId={details.id} category={category} />
 
       <div className={styles['main-info__content']}>
-        <article className={styles['main-info__other-models']}>
+        <div className={styles['main-info__other-models']}>
           <Colors
             current={details.color}
             colors={details.colorsAvailable}
@@ -51,12 +54,12 @@ export const MainInfo: React.FC<Props> = ({ className, details, category }) => {
             currentColor={details.color}
           />
           <div className={styles['main-info__hr']}></div>
-        </article>
+        </div>
 
-        <div className={styles['main-info__price']}>
+        <article aria-label="Price" className={styles['main-info__price']}>
           <Price fullPrice={priceRegular} discountPrice={priceDiscount} />
           <AddToCard itemId={details.id} />
-        </div>
+        </article>
 
         <Characteristics characteristics={characteristics} />
       </div>

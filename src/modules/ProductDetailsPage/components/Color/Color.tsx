@@ -12,16 +12,19 @@ type Props = {
 
 export const Color: React.FC<Props> = ({ itemId, color, active }) => {
   return (
-    <Link
-      to={`../${itemId}`}
-      className={classNames(styles.color, {
-        [styles['color--active']]: active,
-      })}
-    >
-      <div
-        className={styles.color__content}
-        style={{ backgroundColor: color.split(' ').at(-1) }}
-      ></div>
-    </Link>
+    <li>
+      <Link
+        to={`../${itemId}`}
+        aria-label={color}
+        className={classNames(styles.color, {
+          [styles['color--active']]: active,
+        })}
+      >
+        <div
+          className={styles.color__content}
+          style={{ backgroundColor: color.split(' ').at(-1) }}
+        ></div>
+      </Link>
+    </li>
   );
 };

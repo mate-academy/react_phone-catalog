@@ -199,13 +199,17 @@ export const PicturesSlider: React.FC<Props> = ({ className, pictures }) => {
   }, [activeImage, changeImage]);
 
   return (
-    <section className={classNames(className, styles['pictures-slider'])}>
+    <article
+      aria-label="Pictures Slider"
+      className={classNames(className, styles['pictures-slider'])}
+    >
       <div
         ref={sliderRef}
         className={styles['pictures-slider__slider']}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        aria-label="Pictures"
       >
         {pictures.map((picture, i) => (
           <Image
@@ -219,12 +223,13 @@ export const PicturesSlider: React.FC<Props> = ({ className, pictures }) => {
                   ? 'none'
                   : `transform ${ANIMATION_DURATION / 1000}s`,
             }}
+            alt={`Picture ${i + 1}`}
             ref={(el: HTMLImageElement) => (pictureRefs.current[i] = el)}
           />
         ))}
       </div>
 
-      <div className={styles['pictures-slider__controls']}>
+      <div aria-label="Contols" className={styles['pictures-slider__controls']}>
         {pictures.map((picture, i) => (
           <Image
             key={picture}
@@ -233,9 +238,11 @@ export const PicturesSlider: React.FC<Props> = ({ className, pictures }) => {
               [styles['pictures-slider__control--active']]: i === activeImage,
             })}
             onClick={() => changeImage(i)}
+            role="button"
+            aria-label={`Picture ${i + 1} of ${pictures.length}`}
           />
         ))}
       </div>
-    </section>
+    </article>
   );
 };

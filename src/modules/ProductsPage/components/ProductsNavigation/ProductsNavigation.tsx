@@ -25,26 +25,19 @@ function getVisiblePageRange(pagesCount: number, currentPage: number) {
 type Props = {
   page: number;
   pagesCount: number;
-
-  scrollToProducts: () => void;
 };
 
-export const ProductsNavigation: React.FC<Props> = ({
-  page,
-  pagesCount,
-
-  scrollToProducts,
-}) => {
+export const ProductsNavigation: React.FC<Props> = ({ page, pagesCount }) => {
   const { start, end } = getVisiblePageRange(pagesCount, page);
 
   return (
     <div className={styles['products-navigation']}>
       <SearchLink
+        aria-label="Previous Page"
         style={!page ? { pointerEvents: 'none' } : undefined}
         params={{ page: page !== 1 ? `${page}` : null }}
-        onClick={page ? () => scrollToProducts() : undefined}
       >
-        <Arrow type={ArrowType.left} disabled={!page} />
+        <Arrow ariaHidden type={ArrowType.left} disabled={!page} />
       </SearchLink>
 
       <div className={styles['products-navigation__pages']}>
@@ -58,7 +51,6 @@ export const ProductsNavigation: React.FC<Props> = ({
               className={classNames(styles['products-navigation__page'], {
                 [styles['products-navigation__page--active']]: index === page,
               })}
-              onClick={() => scrollToProducts()}
             >
               {index + 1}
             </SearchLink>
@@ -67,11 +59,12 @@ export const ProductsNavigation: React.FC<Props> = ({
       </div>
 
       <SearchLink
+        aria-label="Next Page"
         style={page === pagesCount - 1 ? { pointerEvents: 'none' } : undefined}
         params={{ page: `${page + 2}` }}
-        onClick={() => scrollToProducts()}
       >
         <Arrow
+          ariaHidden
           type={ArrowType.right}
           disabled={!pagesCount || page === pagesCount - 1}
         />

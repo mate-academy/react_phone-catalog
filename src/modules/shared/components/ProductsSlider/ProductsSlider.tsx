@@ -50,7 +50,6 @@ const findPrevInvisibleItem = (
 
 type Props = {
   className?: string;
-  onClick?: () => void;
 
   title: string;
   products: Product[];
@@ -60,7 +59,6 @@ type Props = {
 export const ProductsSlider: React.FC<Props> = React.memo(
   function ProductsSlider({
     className,
-    onClick = () => {},
 
     title,
     products,
@@ -153,18 +151,27 @@ export const ProductsSlider: React.FC<Props> = React.memo(
         : true;
 
     return (
-      <section className={classNames(className, styles['products-slider'])}>
+      <section
+        aria-label={title}
+        className={classNames(className, styles['products-slider'])}
+      >
         <div className={styles['products-slider__header']}>
           <h2>{title}</h2>
 
           <div className={styles['products-slider__control-buttons']}>
-            <div onClick={!leftArrow ? scrollLeft : undefined}>
-              <Arrow type={ArrowType.left} disabled={leftArrow} />
-            </div>
+            <Arrow
+              type={ArrowType.left}
+              disabled={leftArrow}
+              ariaLabel="Previous Page"
+              onClick={!leftArrow ? scrollLeft : undefined}
+            />
 
-            <div onClick={!rightArrow ? scrollRight : undefined}>
-              <Arrow type={ArrowType.right} disabled={rightArrow} />
-            </div>
+            <Arrow
+              type={ArrowType.right}
+              disabled={rightArrow}
+              ariaLabel="Next Page"
+              onClick={!rightArrow ? scrollRight : undefined}
+            />
           </div>
         </div>
 
@@ -174,7 +181,6 @@ export const ProductsSlider: React.FC<Props> = React.memo(
           itemsRef={itemsRef}
           products={products}
           hidePrevPrice={hidePrevPrice}
-          onClick={onClick}
         />
       </section>
     );

@@ -67,6 +67,7 @@ export const Dropdown: React.FC<Props> = React.memo(function Dropdown({
 
   return (
     <div
+      aria-label={description}
       ref={dropdownRef}
       className={classNames(styles.dropdown, {
         [styles['dropdown--opened']]: isOpened,
@@ -79,9 +80,15 @@ export const Dropdown: React.FC<Props> = React.memo(function Dropdown({
         onClick={() => setIsOpened(prev => !prev)}
       >
         {selected}
-        <div className={styles.dropdown__arrow}>
-          <Arrow type={ArrowType.down} hideBorders secondary small />
-        </div>
+
+        <Arrow
+          type={ArrowType.down}
+          hideBorders
+          secondary
+          small
+          ariaHidden
+          className={styles.dropdown__arrow}
+        />
       </div>
 
       <div className={styles.dropdown__options}>
