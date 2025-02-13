@@ -24,7 +24,7 @@
     grid-auto-flow: column;
     grid-auto-columns: 100%;
 
-    overflow-x: auto;
+    overflow-x: hidden;
 
     @include hide-scrollbar;
 
