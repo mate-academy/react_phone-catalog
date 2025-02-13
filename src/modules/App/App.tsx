@@ -1,15 +1,17 @@
 import classNames from 'classnames';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { Menu } from './components/Menu';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Breadcrumbs } from './components/Breadcrumbs';
 
+import { useLoweredLocation } from '@hooks/useLoweredLocation';
+
 import styles from './App.module.scss';
 
 export const App = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLoweredLocation();
 
   return (
     <div className={classNames(styles.app)}>

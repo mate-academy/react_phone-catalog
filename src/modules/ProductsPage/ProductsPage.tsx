@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useCallback, useMemo, useRef } from 'react';
 
 import styles from './ProductsPage.module.scss';
@@ -16,11 +16,12 @@ import {
 
 import { Error } from '@components/Error/Error';
 import { Dropdown } from './components/Dropdown';
+import { ProductsList } from '@components/ProductsList';
+import { ProductsNavigation } from './components/ProductsNavigation';
 
 import { getSearchParam } from './utils/getSearchParam';
 import { useProductsPreload } from '@hooks/useProductsPreload';
-import { ProductsNavigation } from './components/ProductsNavigation';
-import { ProductsList } from '@components/ProductsList';
+import { useLoweredLocation } from '@hooks/useLoweredLocation';
 
 function getCurrentPage(initialPage: string | null) {
   const page = +(initialPage || 1);
@@ -67,7 +68,7 @@ function getPaginationData(
 }
 
 export const ProductsPage = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLoweredLocation();
 
   const [params] = useSearchParams();
   const { products, isLoading, error, reload } = useProductsPreload();

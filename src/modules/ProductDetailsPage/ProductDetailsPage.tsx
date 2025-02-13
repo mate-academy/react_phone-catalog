@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import { Loader } from './components/Loader';
 import { BackButton } from '@components/BackButton';
@@ -14,6 +14,7 @@ import { PicturesSlider } from './components/PicturesSlider';
 import { ProductDetails } from '@sTypes/ProductDetails';
 import { ProductCategory } from '@sTypes/ProductCategory';
 import { useDetailsPreload } from '@hooks/useDetailsPreload';
+import { useLoweredLocation } from '@hooks/useLoweredLocation';
 
 import styles from './ProductDetailsPage.module.scss';
 
@@ -35,7 +36,7 @@ function getSpecs(product: ProductDetails | undefined): [string, string][] {
 }
 
 export const ProductDetailsPage = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLoweredLocation();
   const [category, productId] = pathname.split('/').slice(-2) as [
     ProductCategory,
     string,

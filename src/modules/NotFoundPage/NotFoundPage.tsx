@@ -1,14 +1,13 @@
-import { useLocation } from 'react-router-dom';
-
 import styles from './NotFoundPage.module.scss';
+import { useLoweredLocation } from '@hooks/useLoweredLocation';
 
 export const PageNotFound = () => {
-  const { state } = useLocation();
+  const { state } = useLoweredLocation();
 
   return (
     <div className={styles['not-found-page']}>
       <h1>
-        {state.page === 'ProductDetailsPage'
+        {state?.page === 'ProductDetailsPage'
           ? 'Product was not found'
           : 'Page not found'}
       </h1>

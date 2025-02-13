@@ -71,7 +71,7 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
 
   useEffect(() => {
     const prevState: { [key: string]: number } | undefined =
-      window.history.state.slider;
+      window.history.state?.slider;
 
     if (prevState === undefined) {
       return;
@@ -79,7 +79,7 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
 
     if (prevState[title] !== undefined) {
       const prevPos = prevState[title];
-      const newState = { ...window.history.state };
+      const newState = { ...(window.history.state || {}) };
 
       delete newState.slider;
       window.history.replaceState(newState, '');
@@ -94,7 +94,7 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
   const saveScroll = useCallback(() => {
     window.history.replaceState(
       {
-        ...window.history.state,
+        ...(window.history.state || {}),
 
         slider: {
           [title]: sliderRef.current?.scrollLeft,

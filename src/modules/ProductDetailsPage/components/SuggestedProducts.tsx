@@ -35,15 +35,17 @@ export const SuggestedProducts: React.FC<Props> = React.memo(
     }, [products]);
 
     useEffect(() => {
-      const prevProducts: Product[] | undefined = window.history.state[NAME];
+      if (Object.hasOwn(window.history, 'state')) {
+        const prevProducts: Product[] | undefined = window.history.state[NAME];
 
-      if (prevProducts !== undefined) {
-        const newState = { ...window.history.state };
+        if (prevProducts !== undefined) {
+          const newState = { ...window.history.state };
 
-        delete newState[NAME];
-        window.history.replaceState(newState, '');
+          delete newState[NAME];
+          window.history.replaceState(newState, '');
 
-        setRandomProducts(prevProducts);
+          setRandomProducts(prevProducts);
+        }
       }
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,7 +63,7 @@ export const SuggestedProducts: React.FC<Props> = React.memo(
 
     const saveProducts = useCallback(() => {
       window.history.replaceState(
-        { ...window.history.state, [NAME]: randomProducts },
+        { ...(window.history.state || {}), [NAME]: randomProducts },
         '',
       );
     }, [randomProducts]);

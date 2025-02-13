@@ -35,7 +35,7 @@ export const ProductsList: React.FC<Props> = ({
 
   const productsRef = useRef<HTMLDivElement | null>(null);
   const [visibleCount, setVisibleCount] = useState<number>(
-    window.history.state.visibleCount || VISIBLE_COUNT_PAGINATION,
+    window.history.state?.visibleCount || VISIBLE_COUNT_PAGINATION,
   );
 
   useEffect(() => {
@@ -47,10 +47,10 @@ export const ProductsList: React.FC<Props> = ({
   useEffect(() => {
     first.current = false;
     const prevVisibleCount: number | undefined =
-      window.history.state.visibleCount;
+      window.history.state?.visibleCount;
 
     if (prevVisibleCount) {
-      const newState = { ...window.history.state };
+      const newState = { ...(window.history.state || {}) };
 
       delete newState.visibleCount;
       window.history.replaceState(newState, '');
@@ -80,7 +80,7 @@ export const ProductsList: React.FC<Props> = ({
   const saveVisibleCount = useCallback(() => {
     window.history.replaceState(
       {
-        ...window.history.state,
+        ...(window.history.state || {}),
         visibleCount,
       },
       '',
