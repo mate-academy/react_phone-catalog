@@ -20,7 +20,7 @@ export const Colors: React.FC<Props> = ({
   return (
     <AvailableProducts title="Select colors">
       {colors.map(color => {
-        const itemId = [namespaceId, currentCapacity, color.split(' ')]
+        const itemId = [namespaceId, currentCapacity, ...color.split(' ')]
           .join('-')
           .toLowerCase();
 

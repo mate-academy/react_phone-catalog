@@ -1,10 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Product } from '@sTypes/Product';
 import { ItemsPerPage } from '@ProductsPage/types/ItemsPerPage';
 
 import { ProductCard } from '@components/ProductCard';
 import { ProductCardSkeleton } from '@components/ProductCardSkeleton';
+
+import { getHistoryStateItem } from '@utils/getHistoryStateItem';
+import { setHistoryStateItem } from '@utils/setHistoryStateItem';
 
 import styles from './ProductsList.module.scss';
 
@@ -34,8 +37,8 @@ export const ProductsList: React.FC<Props> = ({
   const first = useRef(true);
 
   const productsRef = useRef<HTMLDivElement | null>(null);
-  const [visibleCount, setVisibleCount] = useState<number>(
-    window.history.state?.visibleCount || VISIBLE_COUNT_PAGINATION,
+  const [visibleCount, setVisibleCount] = useState(
+    getHistoryStateItem<number>('visibleCount') || VISIBLE_COUNT_PAGINATION,
   );
 
   useEffect(() => {
@@ -46,15 +49,6 @@ export const ProductsList: React.FC<Props> = ({
 
   useEffect(() => {
     first.current = false;
-    const prevVisibleCount: number | undefined =
-      window.history.state?.visibleCount;
-
-    if (prevVisibleCount) {
-      const newState = { ...(window.history.state || {}) };
-
-      delete newState.visibleCount;
-      window.history.replaceState(newState, '');
-    }
   }, []);
 
   useEffect(() => {
@@ -77,14 +71,8 @@ export const ProductsList: React.FC<Props> = ({
     return () => document.removeEventListener('scroll', handleGlobalScroll);
   }, [itemsPerPage, products.length, visibleCount]);
 
-  const saveVisibleCount = useCallback(() => {
-    window.history.replaceState(
-      {
-        ...(window.history.state || {}),
-        visibleCount,
-      },
-      '',
-    );
+  useEffect(() => {
+    setHistoryStateItem('visibleCount', visibleCount);
   }, [visibleCount]);
 
   return (
@@ -103,13 +91,7 @@ export const ProductsList: React.FC<Props> = ({
             page * itemsCount,
             (page + 1) * (pagesCount !== 0 ? itemsCount : visibleCount),
           )
-          .map(product => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onClick={saveVisibleCount}
-            />
-          ))}
+          .map(product => <ProductCard key={product.id} product={product} />)}
     </section>
   );
 };

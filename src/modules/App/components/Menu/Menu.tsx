@@ -30,7 +30,6 @@ export const Menu = () => {
   }, [isMenuOpen]);
 
   const changePage = useCallback(() => {
-    window.scrollTo(0, 0);
     dispatch(menuActions.set(false));
   }, [dispatch]);
 

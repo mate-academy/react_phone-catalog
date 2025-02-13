@@ -1,7 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+
 import { Product } from '@sTypes/Product';
 import { ProductsSlider } from '@components/ProductsSlider';
 import { useProductsPreload } from '@hooks/useProductsPreload';
+
+import { getHistoryStateItem } from '@utils/getHistoryStateItem';
+import { setHistoryStateItem } from '@utils/setHistoryStateItem';
 
 function getRandomProducts(products: Product[]) {
   const result: Product[] = [];
@@ -35,17 +39,10 @@ export const SuggestedProducts: React.FC<Props> = React.memo(
     }, [products]);
 
     useEffect(() => {
-      if (Object.hasOwn(window.history, 'state')) {
-        const prevProducts: Product[] | undefined = window.history.state[NAME];
+      const prevProducts = getHistoryStateItem<Product[]>(NAME);
 
-        if (prevProducts !== undefined) {
-          const newState = { ...window.history.state };
-
-          delete newState[NAME];
-          window.history.replaceState(newState, '');
-
-          setRandomProducts(prevProducts);
-        }
+      if (prevProducts) {
+        setRandomProducts(prevProducts);
       }
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,10 +59,7 @@ export const SuggestedProducts: React.FC<Props> = React.memo(
     }, [allProducts]);
 
     const saveProducts = useCallback(() => {
-      window.history.replaceState(
-        { ...(window.history.state || {}), [NAME]: randomProducts },
-        '',
-      );
+      setHistoryStateItem(NAME, randomProducts);
     }, [randomProducts]);
 
     return (

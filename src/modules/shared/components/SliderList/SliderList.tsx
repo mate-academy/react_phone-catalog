@@ -7,6 +7,9 @@ import { Product } from '@sTypes/Product';
 import { ProductCard } from '@components/ProductCard';
 import { ProductCardSkeleton } from '@components/ProductCardSkeleton';
 
+import { getHistoryStateItem } from '@utils/getHistoryStateItem';
+import { setHistoryStateItem } from '@utils/setHistoryStateItem';
+
 type Props = {
   onClick: () => void;
 
@@ -70,20 +73,9 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
   }, [slider]);
 
   useEffect(() => {
-    const prevState: { [key: string]: number } | undefined =
-      window.history.state?.slider;
+    const prevPos = getHistoryStateItem<number>(`slider/${title}`);
 
-    if (prevState === undefined) {
-      return;
-    }
-
-    if (prevState[title] !== undefined) {
-      const prevPos = prevState[title];
-      const newState = { ...(window.history.state || {}) };
-
-      delete newState.slider;
-      window.history.replaceState(newState, '');
-
+    if (prevPos || prevPos === 0) {
       setTimeout(() => {
         sliderRef.current?.scrollBy({ left: prevPos, behavior: 'smooth' });
       }, 0);
@@ -91,18 +83,12 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sliderRef.current, title]);
 
-  const saveScroll = useCallback(() => {
-    window.history.replaceState(
-      {
-        ...(window.history.state || {}),
+  const handleScroll = useCallback(() => {
+    if (!sliderRef.current) {
+      return;
+    }
 
-        slider: {
-          [title]: sliderRef.current?.scrollLeft,
-        },
-      },
-      '',
-    );
-
+    setHistoryStateItem(`slider/${title}`, sliderRef.current.scrollLeft);
     onClick();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onClick, sliderRef.current, title]);
@@ -113,6 +99,7 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
       className={classNames(styles['slider-list'], {
         [styles['slider-list--disabled']]: showSkeletons,
       })}
+      onScroll={handleScroll}
     >
       {showSkeletons && skeletons.map(v => <ProductCardSkeleton key={v} />)}
 
@@ -128,7 +115,6 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
             key={product.id}
             product={product}
             hidePrevPrice={hidePrevPrice}
-            onClick={saveScroll}
           />
         ))}
     </div>

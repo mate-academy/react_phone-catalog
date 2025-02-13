@@ -31,9 +31,7 @@ export const AddToCard: React.FC<Props> = ({ itemId }) => {
           [styles['add-to-card__button--selected']]: isInShoppingCard,
         })}
         onClick={e => {
-          e.preventDefault();
           e.stopPropagation();
-
           dispatch(toggleShoppingCart(itemId));
         }}
       >
@@ -43,9 +41,7 @@ export const AddToCard: React.FC<Props> = ({ itemId }) => {
       <div
         className={styles['add-to-card__icon']}
         onClick={e => {
-          e.preventDefault();
           e.stopPropagation();
-
           dispatch(toggleFavorites(itemId));
         }}
       >

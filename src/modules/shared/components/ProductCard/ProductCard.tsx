@@ -10,17 +10,13 @@ import { Characteristics } from '@components/Characteristics';
 import { Image } from '@components/Image';
 import { Price } from '@components/Price';
 
-import { enableScrollRestoration } from '@utils/enableScrollRestoration';
-
 type Props = {
   product: Product;
   hidePrevPrice?: boolean;
-
-  onClick?: () => void;
 };
 
 export const ProductCard = React.forwardRef<HTMLElement, Props>(
-  function ProductCard({ product, hidePrevPrice, onClick }, ref) {
+  function ProductCard({ product, hidePrevPrice }, ref) {
     const navigation = useNavigate();
     const { price, fullPrice, screen, capacity, ram, image } = product;
 
@@ -35,12 +31,6 @@ export const ProductCard = React.forwardRef<HTMLElement, Props>(
         ref={ref}
         className={styles['product-card']}
         onClick={() => {
-          if (onClick) {
-            onClick();
-          }
-
-          window.scrollTo(0, 0);
-          enableScrollRestoration();
           navigation(`/${product.category}/${product.itemId}`);
         }}
       >

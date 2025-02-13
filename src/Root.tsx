@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 
 import {
@@ -18,8 +17,6 @@ import { ProductsPage } from './modules/ProductsPage';
 import { store } from '@store/store';
 import { ProductDetailsPage } from '@ProductDetailsPage/ProductDetailsPage';
 
-import { disableScrollRestoration } from '@utils/disableScrollRestoration';
-
 function getProductRoute(path: string) {
   return (
     <Route path={path}>
@@ -30,11 +27,8 @@ function getProductRoute(path: string) {
 }
 
 export const Root = () => {
-  useEffect(() => {
-    window.addEventListener('beforeunload', function () {
-      disableScrollRestoration();
-    });
-  }, []);
+  history.replaceState({}, '');
+  history.scrollRestoration = 'manual';
 
   return (
     <Provider store={store}>

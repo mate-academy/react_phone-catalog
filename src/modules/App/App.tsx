@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import classNames from 'classnames';
 import { Outlet } from 'react-router-dom';
 
@@ -6,12 +7,36 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Breadcrumbs } from './components/Breadcrumbs';
 
+import { useAppDispatch } from '@store/hooks';
+import { menuActions } from '@features/menuSlice';
 import { useLoweredLocation } from '@hooks/useLoweredLocation';
+import { useScrollRestoration } from '@hooks/useScrollRestoration';
 
 import styles from './App.module.scss';
 
 export const App = () => {
+  useScrollRestoration();
+
+  const dispatch = useAppDispatch();
   const { pathname } = useLoweredLocation();
+
+  useEffect(() => {
+    dispatch(menuActions.set(false));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      dispatch(menuActions.set(false));
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [dispatch]);
 
   return (
     <div className={classNames(styles.app)}>

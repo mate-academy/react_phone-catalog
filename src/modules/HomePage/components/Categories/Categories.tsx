@@ -40,9 +40,11 @@ export const Categories = () => {
 
       <div className={styles.categories__categories}>
         {categories.map(category => (
-          <article key={category.title} className={styles.categories__category}>
-            <CategoryComponent category={category} />
-          </article>
+          <CategoryComponent
+            key={category.title}
+            className={styles.categories__category}
+            category={category}
+          />
         ))}
       </div>
     </section>

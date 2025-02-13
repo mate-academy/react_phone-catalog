@@ -18,7 +18,6 @@ export const MenuNav: React.FC<Props> = ({ className }) => {
   const dispatch = useAppDispatch();
 
   const changePage = useCallback(() => {
-    window.scrollTo(0, 0);
     dispatch(menuActions.set(false));
   }, [dispatch]);
 
