@@ -97,6 +97,16 @@
     pointer-events: all;
     z-index: 9;
   }
+
+  &__linkActive {
+    color: $primary-color;
+
+    @include underline-animation();
+
+    &::after {
+      transform: scale(1);
+    }
+  }
 }
 
 html {

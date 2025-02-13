@@ -1,23 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { PageLinks } from '../../types/PageLinks';
+import { AppContext } from '../../context/AppContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isTablet = useMediaQuery({ minWidth: 640 });
   const isMobile = useMediaQuery({ maxWidth: 639 });
-  const [activeLink, setActiveLink] = useState<PageLinks>(PageLinks.HOME);
-
-  const hadleLinkClick = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    link: PageLinks,
-  ) => {
-    event.preventDefault();
-
-    setActiveLink(link);
-  };
+  const { activeLink, handlePageLinkClick } = useContext(AppContext)!;
 
   return (
     <header className={styles.header}>
@@ -49,7 +41,7 @@ export const Header = () => {
               className={classNames(styles.header__link, {
                 [styles.header__linkActive]: activeLink === PageLinks.HOME,
               })}
-              onClick={event => hadleLinkClick(event, PageLinks.HOME)}
+              onClick={() => handlePageLinkClick(PageLinks.HOME)}
             >
               Home
             </a>
@@ -59,7 +51,7 @@ export const Header = () => {
               className={classNames(styles.header__link, {
                 [styles.header__linkActive]: activeLink === PageLinks.PHONES,
               })}
-              onClick={event => hadleLinkClick(event, PageLinks.PHONES)}
+              onClick={() => handlePageLinkClick(PageLinks.PHONES)}
             >
               Phones
             </a>
@@ -69,7 +61,7 @@ export const Header = () => {
               className={classNames(styles.header__link, {
                 [styles.header__linkActive]: activeLink === PageLinks.TABLETS,
               })}
-              onClick={event => hadleLinkClick(event, PageLinks.TABLETS)}
+              onClick={() => handlePageLinkClick(PageLinks.TABLETS)}
             >
               Tablets
             </a>
@@ -80,7 +72,7 @@ export const Header = () => {
                 [styles.header__linkActive]:
                   activeLink === PageLinks.ACCESSORIES,
               })}
-              onClick={event => hadleLinkClick(event, PageLinks.ACCESSORIES)}
+              onClick={() => handlePageLinkClick(PageLinks.ACCESSORIES)}
             >
               Accessories
             </a>
@@ -95,7 +87,7 @@ export const Header = () => {
                   [styles.header__linkActive]: activeLink === PageLinks.LIKED,
                 },
               )}
-              onClick={event => hadleLinkClick(event, PageLinks.LIKED)}
+              onClick={() => handlePageLinkClick(PageLinks.LIKED)}
             ></a>
 
             <a
@@ -106,7 +98,7 @@ export const Header = () => {
                   [styles.header__linkActive]: activeLink === PageLinks.CART,
                 },
               )}
-              onClick={event => hadleLinkClick(event, PageLinks.CART)}
+              onClick={() => handlePageLinkClick(PageLinks.CART)}
             ></a>
           </div>
         </div>
