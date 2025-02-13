@@ -1,0 +1,59 @@
+@import '../utils/variables';
+
+.buttons-add-to-card-favorites {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    &__button {
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    height: 48px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    &:hover {
+        transform: translateY(-3px);
+        transition: transform 0.2s ease-out;
+      }
+      
+      &:active {
+        transform: translateY(1px);
+      }
+      
+      
+      
+    &-buy {
+        width: 100px;
+        font-size: 14px;
+        font-weight: 700;
+        text-align: center;
+        flex-grow: 1;
+        color: $white-color;
+        background-color: #905BFF;
+        &--active {
+            background-color: $page-background-color;
+        }
+    }
+
+    &-wishlist {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $page-background-color;
+        background-image: url('../../public/img/logos/heart-logo.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 48px;
+        width: 48px;
+
+        &--active {
+            background-image: url('../../public/img/logos/heart-red.png');
+            border: $border-grey;
+            background-color: #161827;
+        }
+    }
+}
+}

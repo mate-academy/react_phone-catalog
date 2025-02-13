@@ -1,0 +1,37 @@
+@import '../utils/variables';
+
+.not-found {
+    text-align: center;
+    padding: 50px;
+  
+    &__image {
+      width: 60%;
+      max-width: 400px;
+    }
+  
+    &__title {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  
+    &__text {
+      font-size: 18px;
+      color: #666;
+      margin-top: 10px;
+    }
+  
+    &__button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: $page-background-color;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  

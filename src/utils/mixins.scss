@@ -1,0 +1,30 @@
+@import './variables';
+
+@mixin on-tablet {
+    @media (min-width: #{$onTabletWidth}) {
+        @content;
+    }
+}
+
+@mixin on-desktop {
+    @media (min-width: #{$onDesctopWidth}) {
+        @content;
+    }
+}
+
+@mixin page-grid {
+    display: grid;
+    max-width: 1136px;
+
+    margin: 0 auto;
+    grid-template-columns: repeat($gridColumnsMobile, 1fr);
+    column-gap: $padding-var;
+
+    @include on-tablet {
+        grid-template-columns: repeat($gridColumnsTablet, 1fr);
+    }
+
+    @include on-desktop {
+        grid-template-columns: repeat($gridColumnsDesctop, 1fr);
+    }
+}

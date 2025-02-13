@@ -1,0 +1,91 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.recommended-slider{
+    width: 100%;
+
+    @include on-tablet {
+        grid-column: 1 / -1;
+    }
+
+    @include on-desktop {
+        max-width: 1136px;
+    }
+   
+    &__recommend-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 72px;
+
+    @include on-tablet {
+        gap:unset;
+    }
+    
+    &-title {
+        margin: 0;
+        font-family: inherit;
+        font-size: 22px;
+        font-weight: 800;
+    }
+
+    &-buttons {
+        display: flex;
+        gap: 16px;
+    }
+
+    &-button {
+        border: 1px solid #3B3E4A;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+        background-position: center;
+        background-color: #0F1121;
+        transition: 0.3s ease;
+        &--active {
+            background-color: #323542;
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+       
+    }
+}
+
+&__recommended-products {
+    max-width: 1200px;
+    overflow: hidden;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+        grid-column: 1 / -1;
+    }
+}
+
+&__slides {
+    overflow-x: hidden;
+    display: flex;
+    gap: 16px;
+    transition: transform 0.8s ease-in-out;
+
+    @include on-tablet {
+        grid-column: 1 / -1;
+    }
+}
+&__slide {
+  flex-shrink: 0;
+  width: 212px;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 287px;
+  }
+}
+}
+
+
+

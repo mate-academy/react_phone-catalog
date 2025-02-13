@@ -1,0 +1,83 @@
+@use "sass:color";
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.third-banner {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+  @include on-tablet {
+    grid-column: 2 / -2;
+    aspect-ratio: 490/189;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    height: 400px;
+   
+  }
+
+  &-button {
+    display: none;
+    cursor: pointer;
+    font-family: inherit;
+    width: 20vw;
+ 
+    border: $border-grey;
+    padding: clamp(10px, 1.5vw, 20px) clamp(15px, 2.5vw, 40px);
+    border-radius: 40px;
+    margin: 9vw 0 0 2vw;
+    color: $white-color;
+    text-transform: uppercase;
+    font-size: clamp(16px, 1vw, 42px);
+    background: linear-gradient(90deg, #5C2EE5, #B75AFF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+      margin-top: 0;
+      font-size: clamp(10px, 1vw, 42px);
+      height: 1.5vh;
+      width: 13vw;
+    }
+
+    @include on-desktop {
+      width: 12vw;
+      height: 3vh;
+      padding: clamp(10px, 1vw, 20px) clamp(1px, 1vw, 40px);
+
+      &:active {
+        background-color: color.adjust(#323542, $lightness: -10%);
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  &-image {
+    display: block;
+    background-image: url('../../public/img/other/banner-tablets.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right bottom;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+
+    @include on-tablet {
+      background-position: right;
+    }
+
+    @include on-tablet {
+      width: 600px;
+      background-position: right;
+    }
+  }
+}

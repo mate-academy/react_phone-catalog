@@ -1,0 +1,101 @@
+@use "sass:color";
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.second-banner {
+    background-color: black;
+    display: flex;
+    width: 100%;
+
+    @include on-tablet {
+        grid-column: 2 / -2;
+        aspect-ratio: 490/189;
+    }
+
+    @include on-desktop {
+        height: 400px;
+
+    }
+
+    &-text {
+        display: none;
+        flex-grow: 1;
+        margin-right: 5vw;
+        align-self: center;
+        border-radius: 30px;
+        height: 100%;
+        width: 20vw;
+       
+        @include on-tablet {
+            display: block;
+        }
+
+        @include on-desktop {
+            height: 350px;
+            margin-left: 3vw;
+            width: 30vw;
+        }
+    }
+
+    &-title {
+        font-family: inherit;
+        display: block;
+        margin: 6vw 5vw 2vw;
+        font-size: clamp(16px, 4vw, 42px);
+        background: linear-gradient(90deg, #5C2EE5, #B75AFF);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+
+        @include on-desktop {
+            margin: 6vw 5vw 3vw;
+        }
+    }
+
+    &-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        cursor: pointer;
+        background-color: #161827;
+        border: $border-grey;
+        padding: clamp(10px, 1.5vw, 20px) clamp(15px, 2.5vw, 40px); 
+        border-radius: 40px;
+        margin-left: 5vw;
+        font-size: clamp(13px, 2vw, 22px);
+        color: white;
+        text-transform: uppercase;
+        width: 10vw;
+        &:hover {
+            background-color: color.adjust(#323542, $lightness: 10%);
+          }
+          
+          &:active {
+            background-color: color.adjust(#323542, $lightness: -10%);
+            transform: scale(0.95);
+          }          
+    }
+
+    &-image {
+        background-repeat: no-repeat;
+        background-image: url('../../public/img/other/category-accessories.png');
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        background-size: contain;
+        background-position: center;
+
+        @include on-tablet {
+            background-image: url('../../public/img/other/category-accessories.png');
+            grid-column: 2 / -2;
+            background-position: left;
+            aspect-ratio: 490 / 189;
+            width: 50%;
+        }
+
+        @include on-desktop {
+            grid-column: 12 / -2;
+        }
+    }
+}
