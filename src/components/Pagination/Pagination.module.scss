@@ -15,5 +15,7 @@
 .numbersList {
   @include flex-row-center;
 
+  overflow-x: scroll;
+
   gap: 8px;
 }

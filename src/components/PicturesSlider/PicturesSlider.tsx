@@ -1,5 +1,12 @@
-import { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
+
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+
+import 'swiper/css';
+// import 'swiper/css/bundle';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const slides = [
   'img/banner-phones.png',
@@ -8,81 +15,61 @@ const slides = [
 ];
 
 export const PicturesSlider = () => {
-  const [current, setCurrent] = useState(0);
-
-  const max = slides.length - 1;
-
-  const nextSlide = () => {
-    setCurrent(prev => (prev === max ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrent(prev => (prev === 0 ? max : prev - 1));
-  };
-
-  const dots = () => {
-    const dotsNum = [];
-
-    for (let num = 0; num <= max; num++) {
-      dotsNum.push(num);
-    }
-
-    return dotsNum;
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [current]);
+  const swiper = useSwiper();
 
   return (
     <div className={styles.sliderContainer}>
       <div className={styles.slider}>
-        <button
-          className={`backBtn button ${styles.sliderButton} `}
-          onClick={prevSlide}
+        <div
+          className={`backBtn button ${styles.sliderButton} slider-prev`}
+          onClick={() => swiper.slidePrev()}
         >
           <span className="icon arrow" />
-        </button>
-
-        <div
-          className={`${styles.pictureContainer} `}
-          // ref={pictureContainerRef}
-        >
-          {slides.map((slide, index) => (
-            <img
-              key={slide}
-              src={slide}
-              alt="Slide"
-              className={`${styles.picture} ${index === current ? styles.active : ''}`}
-              // ref={pictureRef}
-            />
-          ))}
         </div>
 
-        <button className={`${styles.sliderButton} button`} onClick={nextSlide}>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={0}
+          loop={true}
+          autoplay={{
+            delay: 5000,
+          }}
+          navigation={{
+            nextEl: '.slider-next',
+            prevEl: '.slider-prev',
+          }}
+          pagination={{
+            el: `.${styles.dots}`,
+            clickable: true,
+
+            renderBullet: (index, className) => `
+              <span class=' ${className}'></span>
+            `,
+          }}
+          modules={[Pagination, Navigation, Autoplay]}
+          className={styles.pictureContainer}
+        >
+          {slides.map(slide => (
+            <SwiperSlide key={slide}>
+              <img
+                key={slide}
+                src={slide}
+                alt="Slide"
+                className={styles.picture}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div
+          className={`${styles.sliderButton} button slider-next`}
+          onClick={() => swiper.slideNext()}
+        >
           <span className="icon arrow" />
-        </button>
+        </div>
       </div>
 
-      <div className={styles.dots}>
-        {dots().map(dot => (
-          <div
-            key={dot}
-            className={styles.dotContainer}
-            onClick={() => setCurrent(dot)}
-          >
-            <input
-              type="radio"
-              className={styles.dot}
-              checked={current === dot}
-            />
-          </div>
-        ))}
-      </div>
+      <div className={styles.dots}></div>
     </div>
   );
 };

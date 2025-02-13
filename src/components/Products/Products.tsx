@@ -118,6 +118,7 @@ export const Products: React.FC<Props> = ({ category, categoryItems }) => {
   }, [category]);
 
   useEffect(() => {
+    currentPageChange(1);
     pageNums();
     currentItems();
   }, [itemsPerPage]);

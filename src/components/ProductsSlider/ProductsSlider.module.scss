@@ -31,27 +31,9 @@
   }
 }
 
-.carousel {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: scroll;
-  scrollbar-width: none;
-  scroll-behavior: smooth;
-}
 
 .item {
   margin-right: 16px;
 
-  min-width: 212px;
-  width: calc(100% / 1.5);
-
-  @include on-tablet {
-    min-width: 237px;
-    width: calc(100% / 2.5);
-  }
-
-  @include on-desktop {
-    min-width: 272px;
-    width: calc(100% / 4);
-  }
+  width: 100%;
 }

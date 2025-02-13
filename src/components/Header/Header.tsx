@@ -1,21 +1,14 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './Header.module.scss';
 
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { NavPosition } from '../../types/NavPositionType';
 import { Navigation } from '../Navigation';
 import classNames from 'classnames';
-import { CartContext } from '../Contexts/CartContext';
-import { FavouritesContext } from '../Contexts/FavouritesContext';
 import { getSearchWith } from '../../utils/SearchParams';
 import { CategorySrc } from '../../types/Categorys';
 import debounce from 'lodash.debounce';
+import { ItemsIconCounter } from '../ItemsCounterIcon';
 
 type Props = {
   checkMenu: boolean;
@@ -31,9 +24,6 @@ export const Header: React.FC<Props> = ({
   menuPage,
   getLinkClass,
 }) => {
-  const { addedProducts } = useContext(CartContext);
-  const { favProducts } = useContext(FavouritesContext);
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [searchInput, setSearchInput] = useState(false);
@@ -119,14 +109,8 @@ export const Header: React.FC<Props> = ({
             }
           >
             <div className={styles.headerIcon}>
-              <div className={styles.iconInnerContainer}>
-                {favProducts.length > 0 && (
-                  <span className={styles.counterContainer}>
-                    <span className={styles.counter}>{favProducts.length}</span>
-                  </span>
-                )}
-
-                <span className="icon favourites" />
+              <div className="counter">
+                <ItemsIconCounter icon={'favourites'} />
               </div>
             </div>
           </NavLink>
@@ -137,16 +121,8 @@ export const Header: React.FC<Props> = ({
             }
           >
             <div className={styles.headerIcon}>
-              <div className={styles.iconInnerContainer}>
-                {addedProducts.length > 0 && (
-                  <span className={styles.counterContainer}>
-                    <span className={styles.counter}>
-                      {addedProducts.length}
-                    </span>
-                  </span>
-                )}
-
-                <span className="icon cart" />
+              <div className="counter">
+                <ItemsIconCounter icon={'cart'} />
               </div>
             </div>
           </NavLink>

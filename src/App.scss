@@ -53,6 +53,8 @@ ul {
 
 .content {
   flex: 1;
+
+  animation: appear 0.3s ease-in;
 }
 
 .price {
@@ -75,10 +77,6 @@ ul {
   animation: appear 0.3s ease-in;
 }
 
-.content {
-  animation: appear 0.3s ease-in;
-}
-
 
 @keyframes appear {
   0% {
@@ -88,3 +86,28 @@ ul {
     opacity: 1;
   }
 }
+
+// swiper styles
+
+.swiper-pagination-bullet {
+  display: block;
+
+  width: 14px;
+  height: 4px;
+
+  border-radius: 0%;
+  margin: 7px;
+
+  background-color: $elements;
+
+  transition: background-color $hover-transition;
+}
+
+.swiper-pagination-bullet:hover {
+  background-color: $icons;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $primary;
+}
+

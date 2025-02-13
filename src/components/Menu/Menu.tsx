@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavPosition } from '../../types/NavPositionType';
 import { Navigation } from '../Navigation';
 import styles from './Menu.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Header } from '../Header';
 import classNames from 'classnames';
+import { ItemsIconCounter } from '../ItemsCounterIcon';
 
 type Props = {
   checkMenu: boolean;
@@ -35,7 +36,9 @@ export const Menu: React.FC<Props> = ({
             classNames([styles.menuIcon], getLinkClass({ isActive }, styles))
           }
         >
-          <span className="icon favourites" />
+          <div className="counter">
+            <ItemsIconCounter icon={'favourites'} />
+          </div>
         </NavLink>
         <NavLink
           to="/cart"
@@ -47,7 +50,9 @@ export const Menu: React.FC<Props> = ({
             )
           }
         >
-          <span className="icon cart" />
+          <div className="counter">
+            <ItemsIconCounter icon={'cart'} />
+          </div>
         </NavLink>
       </div>
     </aside>

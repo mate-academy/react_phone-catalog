@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductsType } from '../../types/Products';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
@@ -6,6 +6,11 @@ import { Loader } from '../Loader';
 import { sortFunction } from '../../utils/Sort';
 import { ArrowIcon } from '../Icons/Arrow';
 import { ProductContext } from '../Contexts/ProductsContext';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 export type SliderItems = 'Hotest' | 'Newest' | 'Suggested';
 
@@ -15,9 +20,13 @@ type Props = {
 };
 
 const CARDS_GAP = 16;
+const TABLET_WIDTH = 640;
+const DESKTOP_WIDTH = 1200;
 
 export const ProductsSlider: React.FC<Props> = ({ itemsType, title }) => {
   const { products, loading, error } = useContext(ProductContext);
+
+  const swiper = useSwiper();
 
   const [itemsList, setItemsList] = useState<ProductsType[]>([]);
 
@@ -50,33 +59,39 @@ export const ProductsSlider: React.FC<Props> = ({ itemsType, title }) => {
     findItems();
   }, [products]);
 
-  const cardRef = useRef<HTMLLIElement>(null);
-  const carouselRef = useRef<HTMLUListElement>(null);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [itemsNum, setItemsNum] = useState(1.5);
+
+  const changeItemsNum = () => {
+    if (width >= DESKTOP_WIDTH) {
+      setItemsNum(4);
+    }
+
+    if (width >= TABLET_WIDTH && width < DESKTOP_WIDTH) {
+      setItemsNum(2.5);
+    }
+
+    if (width < TABLET_WIDTH) {
+      setItemsNum(1.5);
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    changeItemsNum();
+  }, [width]);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
   const prevDisabled = activeIndex === 0;
-  const nextDisabled = activeIndex === itemsList.length - 4;
-
-  const handlePrevClick = () => {
-    if (carouselRef.current && cardRef.current) {
-      const cardWidth = cardRef.current.offsetWidth + CARDS_GAP;
-
-      carouselRef.current.scrollLeft -= cardWidth;
-
-      setActiveIndex(activeIndex - 1);
-    }
-  };
-
-  const handleNextClick = () => {
-    if (carouselRef.current && cardRef.current) {
-      const cardWidth = cardRef.current.offsetWidth + CARDS_GAP;
-
-      carouselRef.current.scrollLeft += cardWidth;
-
-      setActiveIndex(activeIndex + 1);
-    }
-  };
+  const nextDisabled = activeIndex === itemsList.length - 1;
 
   return (
     <div className={styles.productsSlider}>
@@ -86,7 +101,7 @@ export const ProductsSlider: React.FC<Props> = ({ itemsType, title }) => {
         <div className={styles.titleButtons}>
           <button
             className="button toggle backBtn prev"
-            onClick={handlePrevClick}
+            onClick={() => swiper.slidePrev()}
             disabled={prevDisabled}
           >
             <span className="icon">
@@ -95,7 +110,7 @@ export const ProductsSlider: React.FC<Props> = ({ itemsType, title }) => {
           </button>
           <button
             className="button toggle next"
-            onClick={handleNextClick}
+            onClick={() => swiper.slideNext()}
             disabled={nextDisabled}
           >
             <span className="icon">
@@ -109,13 +124,24 @@ export const ProductsSlider: React.FC<Props> = ({ itemsType, title }) => {
 
       {!loading && !error && itemsList.length > 0 && (
         <div className={styles.wrapper}>
-          <ul className={styles.carousel} ref={carouselRef}>
+          <Swiper
+            slidesPerView={itemsNum}
+            spaceBetween={CARDS_GAP}
+            navigation={{
+              nextEl: '.next',
+              prevEl: '.prev',
+            }}
+            modules={[Navigation]}
+            onSlideChange={s => setActiveIndex(s.activeIndex)}
+          >
             {itemsList.map(item => (
-              <li key={item.id} className={styles.item} ref={cardRef}>
-                <ProductCard productItem={item} />
-              </li>
+              <SwiperSlide key={item.id}>
+                <li key={item.id} className={styles.item}>
+                  <ProductCard productItem={item} />
+                </li>
+              </SwiperSlide>
             ))}
-          </ul>
+          </Swiper>
         </div>
       )}
     </div>
