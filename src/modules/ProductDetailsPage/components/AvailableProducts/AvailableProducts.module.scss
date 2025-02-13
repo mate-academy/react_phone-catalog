@@ -1,0 +1,18 @@
+@use '@styles/mixins' as *;
+
+.available-products {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    color: var(--secondary-color);
+
+    @include small-text;
+  }
+
+  &__content {
+    gap: 8px;
+    display: flex;
+  }
+}

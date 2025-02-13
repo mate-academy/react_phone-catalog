@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Product } from '@sTypes/Product';
 import { ItemsPerPage } from '@ProductsPage/types/ItemsPerPage';
@@ -31,12 +31,31 @@ export const ProductsList: React.FC<Props> = ({
 
   itemsPerPage,
 }) => {
+  const first = useRef(true);
+
   const productsRef = useRef<HTMLDivElement | null>(null);
-  const [visibleCount, setVisibleCount] = useState(VISIBLE_COUNT_PAGINATION);
+  const [visibleCount, setVisibleCount] = useState<number>(
+    window.history.state.visibleCount || VISIBLE_COUNT_PAGINATION,
+  );
 
   useEffect(() => {
-    setVisibleCount(VISIBLE_COUNT_PAGINATION);
+    if (!first.current) {
+      setVisibleCount(VISIBLE_COUNT_PAGINATION);
+    }
   }, [itemsCount, products]);
+
+  useEffect(() => {
+    first.current = false;
+    const prevVisibleCount: number | undefined =
+      window.history.state.visibleCount;
+
+    if (prevVisibleCount) {
+      const newState = { ...window.history.state };
+
+      delete newState.visibleCount;
+      window.history.replaceState(newState, '');
+    }
+  }, []);
 
   useEffect(() => {
     const handleGlobalScroll = () => {
@@ -58,6 +77,16 @@ export const ProductsList: React.FC<Props> = ({
     return () => document.removeEventListener('scroll', handleGlobalScroll);
   }, [itemsPerPage, products.length, visibleCount]);
 
+  const saveVisibleCount = useCallback(() => {
+    window.history.replaceState(
+      {
+        ...window.history.state,
+        visibleCount,
+      },
+      '',
+    );
+  }, [visibleCount]);
+
   return (
     <section
       ref={!isLoading ? productsRef : null}
@@ -74,7 +103,13 @@ export const ProductsList: React.FC<Props> = ({
             page * itemsCount,
             (page + 1) * (pagesCount !== 0 ? itemsCount : visibleCount),
           )
-          .map(product => <ProductCard key={product.id} product={product} />)}
+          .map(product => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              onClick={saveVisibleCount}
+            />
+          ))}
     </section>
   );
 };

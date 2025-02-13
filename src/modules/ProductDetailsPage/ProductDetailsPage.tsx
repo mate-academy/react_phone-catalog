@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 import { Loader } from './components/Loader';
 import { BackButton } from '@components/BackButton';
@@ -51,6 +51,12 @@ export const ProductDetailsPage = () => {
   }, [productId, productsDetails]);
 
   const specs = useMemo(() => getSpecs(details), [details]);
+
+  if (isLoaded && !details) {
+    return (
+      <Navigate to="/404" state={{ page: 'ProductDetailsPage' }} replace />
+    );
+  }
 
   return (
     <div className={styles['product-details-page']}>

@@ -15,12 +15,12 @@ export const Price: React.FC<Props> = ({
   hidePrevPrice,
 }) => {
   return (
-    <div className={styles.price}>
+    <article className={styles.price}>
       <h3>${discountPrice}</h3>
 
       {!hidePrevPrice && fullPrice !== discountPrice && (
         <s className={styles.price__full}>${fullPrice}</s>
       )}
-    </div>
+    </article>
   );
 };

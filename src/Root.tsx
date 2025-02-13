@@ -1,5 +1,12 @@
+import { useEffect } from 'react';
 import { Provider } from 'react-redux';
-import { Route, HashRouter as Router, Routes } from 'react-router-dom';
+
+import {
+  Navigate,
+  Route,
+  HashRouter as Router,
+  Routes,
+} from 'react-router-dom';
 
 import '@styles/../main.scss';
 
@@ -11,6 +18,8 @@ import { ProductsPage } from './modules/ProductsPage';
 import { store } from '@store/store';
 import { ProductDetailsPage } from '@ProductDetailsPage/ProductDetailsPage';
 
+import { disableScrollRestoration } from '@utils/disableScrollRestoration';
+
 function getProductRoute(path: string) {
   return (
     <Route path={path}>
@@ -21,6 +30,12 @@ function getProductRoute(path: string) {
 }
 
 export const Root = () => {
+  useEffect(() => {
+    window.addEventListener('beforeunload', function () {
+      disableScrollRestoration();
+    });
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>
@@ -35,7 +50,8 @@ export const Root = () => {
             <Route path="favorites" element={<ProductsPage />} />
             <Route path="shopping-bag" element={<ProductsPage />} />
 
-            <Route path="*" element={<PageNotFound />} />
+            <Route path="404" element={<PageNotFound />} />
+            <Route path="*" element={<Navigate to="/404" replace />} />
           </Route>
         </Routes>
       </Router>

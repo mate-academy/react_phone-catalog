@@ -104,8 +104,20 @@ export const PicturesSlider: React.FC<Props> = ({ className, pictures }) => {
 
   const [stopWheeling] = useDebounce(stopWheelingCallback, 100);
 
-  const handleWheel = useCallback(
-    (e: React.WheelEvent) => {
+  useEffect(() => {
+    if (!sliderRef.current) {
+      return;
+    }
+
+    const slider = sliderRef.current;
+
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+
+      if (isAnimating) {
+        return;
+      }
+
       let res = 0;
 
       if (e.deltaX !== 0) {
@@ -121,20 +133,23 @@ export const PicturesSlider: React.FC<Props> = ({ className, pictures }) => {
       setIsWheeling(true);
 
       setSliderPos(prev => {
-        if (!sliderRef.current) {
-          return prev;
-        }
-
         const newPos = prev + res;
 
         const scrollWidth =
-          -sliderRef.current.offsetWidth * (pictureRefs.current.length - 1);
+          -slider.offsetWidth * (pictureRefs.current.length - 1);
 
         return Math.min(0, Math.max(newPos, scrollWidth));
       });
-    },
-    [stopWheeling],
-  );
+    };
+
+    slider.addEventListener('wheel', handleWheel, {
+      passive: false,
+    });
+
+    return () => {
+      slider.removeEventListener('wheel', handleWheel);
+    };
+  }, [isAnimating, stopWheeling]);
 
   const handleTouchStart = useCallback(
     (e: React.TouchEvent) => {
@@ -146,30 +161,37 @@ export const PicturesSlider: React.FC<Props> = ({ className, pictures }) => {
     [sliderPos],
   );
 
-  const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    const touchEndX = e.touches[0].pageX;
-    const delta = touchEndX - startX.current;
-    let res = startSliderPos.current + delta * 2.5;
-
-    if (res > 0) {
-      startX.current = touchEndX;
-      startSliderPos.current = 0;
-
-      res = 0;
-    } else if (sliderRef.current) {
-      const scrollWidth =
-        -sliderRef.current.offsetWidth * (pictureRefs.current.length - 1);
-
-      if (res < scrollWidth) {
-        startX.current = touchEndX;
-        startSliderPos.current = scrollWidth;
-
-        res = scrollWidth;
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent) => {
+      if (isAnimating) {
+        return;
       }
-    }
 
-    setSliderPos(res);
-  }, []);
+      const touchEndX = e.touches[0].pageX;
+      const delta = touchEndX - startX.current;
+      let res = startSliderPos.current + delta * 2.5;
+
+      if (res > 0) {
+        startX.current = touchEndX;
+        startSliderPos.current = 0;
+
+        res = 0;
+      } else if (sliderRef.current) {
+        const scrollWidth =
+          -sliderRef.current.offsetWidth * (pictureRefs.current.length - 1);
+
+        if (res < scrollWidth) {
+          startX.current = touchEndX;
+          startSliderPos.current = scrollWidth;
+
+          res = scrollWidth;
+        }
+      }
+
+      setSliderPos(res);
+    },
+    [isAnimating],
+  );
 
   const handleTouchEnd = useCallback(() => {
     setIsTouching(false);
@@ -184,7 +206,6 @@ export const PicturesSlider: React.FC<Props> = ({ className, pictures }) => {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        onWheel={handleWheel}
       >
         {pictures.map((picture, i) => (
           <Image

@@ -23,7 +23,7 @@ export const App = () => {
         })}
       >
         <div className={styles.app__content}>
-          {!['/', '/shopping-bag'].includes(pathname) && (
+          {!['/', '/404', '/shopping-bag'].includes(pathname) && (
             <Breadcrumbs pathname={pathname} />
           )}
 

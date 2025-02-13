@@ -25,7 +25,7 @@ export const AddToCard: React.FC<Props> = ({ itemId }) => {
   const isInShoppingCard = shoppingCart[itemId] !== undefined;
 
   return (
-    <div className={styles['add-to-card']}>
+    <article className={styles['add-to-card']}>
       <div
         className={classNames(styles['add-to-card__button'], {
           [styles['add-to-card__button--selected']]: isInShoppingCard,
@@ -58,6 +58,6 @@ export const AddToCard: React.FC<Props> = ({ itemId }) => {
           withBorder
         />
       </div>
-    </div>
+    </article>
   );
 };

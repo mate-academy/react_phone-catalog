@@ -1,0 +1,28 @@
+@use '@styles/mixins' as *;
+
+.capacity {
+  height: 32px;
+  width: fit-content;
+  padding-inline: 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--elements-color);
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+  user-select: none;
+
+  @include body-text;
+
+  &:hover {
+    border: 1px solid var(--icons-color);
+  }
+
+  &--active {
+    pointer-events: none;
+    color: var(--white-color);
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+  }
+}
