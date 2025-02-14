@@ -15,6 +15,7 @@
       "@features/*": ["./modules/shared/features/*"],
       "@services/*": ["./modules/shared/services/*"],
       "@components/*": ["./modules/shared/components/*"],
+      "@constants/*": ["./modules/shared/constants/*"],
 
       "@App/*": ["./modules/App/*"],
       "@HomePage/*": ["./modules/HomePage/*"],

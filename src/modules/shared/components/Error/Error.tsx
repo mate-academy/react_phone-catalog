@@ -3,17 +3,19 @@ import styles from './Error.module.scss';
 
 type Props = {
   error: string;
-  reload: () => void;
+  reload?: () => void;
 };
 
 export const Error: React.FC<Props> = ({ error, reload }) => {
   return (
-    <h3 className={styles.error}>
+    <div className={styles.error}>
       {error}
 
-      <div className={styles.error__icon} onClick={() => reload()}>
-        ⟳
-      </div>
-    </h3>
+      {reload && (
+        <button className={styles.error__icon} onClick={() => reload()}>
+          ⟳
+        </button>
+      )}
+    </div>
   );
 };

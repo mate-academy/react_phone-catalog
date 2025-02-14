@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { useEffect, useMemo, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -22,6 +21,7 @@ import { ProductsNavigation } from './components/ProductsNavigation';
 import { getSearchParam } from './utils/getSearchParam';
 import { useProductsPreload } from '@hooks/useProductsPreload';
 import { useLoweredLocation } from '@hooks/useLoweredLocation';
+import { ProductsCount } from '@components/ProductsCount';
 
 function sortProducts(products: Product[], sort: SortBy, defaultSort: SortBy) {
   if (sort === defaultSort) {
@@ -143,63 +143,53 @@ export const ProductsPage = () => {
   const hasContent = sortedProducts.length !== 0;
 
   return (
-    <div className={styles['products-page']}>
-      <div className={styles['products-page__header']}>
-        <h1>{title}</h1>
+    <ProductsCount
+      title={title}
+      productsCount={categoryProducts.length}
+      isLoading={isLoading}
+    >
+      <div
+        aria-label="Options"
+        ref={optionsRef}
+        className={styles['products-page__options']}
+      >
+        <Dropdown
+          name={SORT_BY_NAME}
+          description="Sort by"
+          options={Object.entries(SortBy)}
+          defaultValue={SORT_BY_DEFAULT}
+          reset={['page']}
+        />
 
-        <div
-          className={classNames(styles['products-page__model-count'], {
-            [styles['products-page__model-count--loading']]: isLoading,
-          })}
-        >
-          {`${categoryProducts.length} model${categoryProducts.length === 1 ? '' : 's'}`}
-        </div>
+        <Dropdown
+          name={ITEMS_PER_PAGE_NAME}
+          description="Items on page"
+          options={Object.values(ItemsPerPage).map(value => [value, value])}
+          defaultValue={ITEMS_PER_PAGE_DEFAULT}
+          reset={['page']}
+        />
       </div>
 
-      <main className={styles['products-page__main']}>
-        <div
-          aria-label="Options"
-          ref={optionsRef}
-          className={styles['products-page__options']}
-        >
-          <Dropdown
-            name={SORT_BY_NAME}
-            description="Sort by"
-            options={Object.entries(SortBy)}
-            defaultValue={SORT_BY_DEFAULT}
-            reset={['page']}
-          />
+      {error && <Error error={error} reload={reload} />}
 
-          <Dropdown
-            name={ITEMS_PER_PAGE_NAME}
-            description="Items on page"
-            options={Object.values(ItemsPerPage).map(value => [value, value])}
-            defaultValue={ITEMS_PER_PAGE_DEFAULT}
-            reset={['page']}
-          />
-        </div>
+      {showContent && !hasContent && (
+        <Error error={`There are no ${category.toLowerCase()} yet.`} />
+      )}
 
-        {error && <Error error={error} reload={reload} />}
+      {!error && (isLoading || hasContent) && (
+        <ProductsList
+          isLoading={isLoading}
+          products={sortedProducts}
+          page={page}
+          itemsCount={itemsCount}
+          pagesCount={pagesCount}
+          itemsPerPage={itemsPerPage}
+        />
+      )}
 
-        {showContent && !hasContent && (
-          <h3>There are no {category.toLowerCase()} yet.</h3>
-        )}
-
-        {!error && (isLoading || hasContent) && (
-          <ProductsList
-            isLoading={isLoading}
-            products={sortedProducts}
-            page={page}
-            itemsCount={itemsCount}
-            pagesCount={pagesCount}
-            itemsPerPage={itemsPerPage}
-          />
-        )}
-
-        {itemsPerPage !== ItemsPerPage.all && (
-          <ProductsNavigation page={page} pagesCount={pagesCount} />
-        )}
-      </main>
-    </div>
+      {itemsPerPage !== ItemsPerPage.all && (
+        <ProductsNavigation page={page} pagesCount={pagesCount} />
+      )}
+    </ProductsCount>
   );
 };

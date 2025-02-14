@@ -13,6 +13,7 @@ import { App } from '@App/App';
 import { HomePage } from './modules/HomePage';
 import { PageNotFound } from './modules/NotFoundPage';
 import { ProductsPage } from './modules/ProductsPage';
+import { FavoritesPage } from './modules/FavoritesPage';
 
 import { store } from '@store/store';
 import { ProductDetailsPage } from '@ProductDetailsPage/ProductDetailsPage';
@@ -41,8 +42,8 @@ export const Root = () => {
             {getProductRoute('tablets')}
             {getProductRoute('accessories')}
 
-            <Route path="favorites" element={<ProductsPage />} />
-            <Route path="shopping-bag" element={<ProductsPage />} />
+            <Route path="favorites" element={<FavoritesPage />} />
+            {/* <Route path="shopping-bag" element={<ProductsPage />} /> */}
 
             <Route path="404" element={<PageNotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />

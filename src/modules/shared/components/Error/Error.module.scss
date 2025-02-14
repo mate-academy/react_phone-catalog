@@ -1,16 +1,31 @@
+@use '@styles/mixins' as *;
+
 .error {
   height: 75px;
   box-sizing: border-box;
   border: 1px solid var(--primary-color);
+
+  @include body-text;
 
   gap: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
 
+  &:first-child {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   &__icon {
     height: 60%;
     aspect-ratio: 1;
+    box-sizing: border-box;
+
+    font-size: 2em;
+    line-height: 2em;
+    color: var(--secondary-color);
 
     cursor: pointer;
 

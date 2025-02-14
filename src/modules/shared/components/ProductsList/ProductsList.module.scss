@@ -5,4 +5,5 @@
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  transition: grid-template-columns 0.5s ease-in-out;
 }

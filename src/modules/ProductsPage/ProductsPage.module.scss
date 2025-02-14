@@ -3,38 +3,6 @@
 @use '@styles/extends' as *;
 
 .products-page {
-  &__header {
-    gap: 8px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__main {
-    gap: 32px;
-    margin-top: 32px;
-
-    display: flex;
-    flex-direction: column;
-
-    @include on-tablet {
-      gap: 40px;
-      margin-top: 40px;
-    }
-  }
-
-  &__model-count {
-    width: fit-content;
-    color: var(--secondary-color);
-
-    @include body-text;
-
-    &--loading {
-      color: transparent;
-
-      @extend %skeleton;
-    }
-  }
-
   &__options {
     @include page-grid;
 

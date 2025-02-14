@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { Product } from '@sTypes/Product';
 import { ItemsPerPage } from '@ProductsPage/types/ItemsPerPage';
@@ -13,26 +14,37 @@ import styles from './ProductsList.module.scss';
 
 const VISIBLE_COUNT_PAGINATION = 16;
 
+const ITEM_MIN_WIDTH = 272;
+const MAX_LIST_WIDTH = 1136;
+
+function getLoadingItemCount(itemsDuringLoading: number | undefined) {
+  return itemsDuringLoading !== undefined
+    ? itemsDuringLoading
+    : Math.floor(Math.min(window.innerWidth, MAX_LIST_WIDTH) / ITEM_MIN_WIDTH);
+}
+
 type Props = {
-  isLoading?: boolean;
   products: Product[];
+  isLoading?: boolean;
+  itemsDuringLoading?: number;
 
-  page: number;
-  itemsCount: number;
-  pagesCount: number;
+  page?: number;
+  itemsCount?: number;
+  pagesCount?: number;
 
-  itemsPerPage: ItemsPerPage;
+  itemsPerPage?: ItemsPerPage;
 };
 
 export const ProductsList: React.FC<Props> = ({
-  isLoading,
   products,
+  isLoading,
+  itemsDuringLoading,
 
-  page,
-  itemsCount,
-  pagesCount,
+  page = 0,
+  itemsCount = products.length,
+  pagesCount = 0,
 
-  itemsPerPage,
+  itemsPerPage = ItemsPerPage.all,
 }) => {
   const first = useRef(true);
 
@@ -76,22 +88,41 @@ export const ProductsList: React.FC<Props> = ({
   }, [visibleCount]);
 
   return (
-    <section
-      ref={!isLoading ? productsRef : null}
-      className={styles['products-list']}
-    >
-      {isLoading &&
-        Array.from({ length: itemsCount || 16 }, (_, i) => (
-          <ProductCardSkeleton key={i} />
-        ))}
+    <section ref={!isLoading ? productsRef : null}>
+      {isLoading && (
+        <div className={styles['products-list']}>
+          {Array.from(
+            { length: getLoadingItemCount(itemsDuringLoading) },
+            (_, i) => (
+              <ProductCardSkeleton key={i} />
+            ),
+          )}
+        </div>
+      )}
 
-      {!isLoading &&
-        products
-          .slice(
-            page * itemsCount,
-            (page + 1) * (pagesCount !== 0 ? itemsCount : visibleCount),
-          )
-          .map(product => <ProductCard key={product.id} product={product} />)}
+      {!isLoading && (
+        <TransitionGroup className={styles['products-list']}>
+          {products
+            .slice(
+              page * itemsCount,
+              (page + 1) * (pagesCount !== 0 ? itemsCount : visibleCount),
+            )
+            .map(product => {
+              const nodeRef = React.createRef<HTMLDivElement>();
+
+              return (
+                <CSSTransition
+                  key={product.id}
+                  nodeRef={nodeRef}
+                  timeout={300}
+                  classNames="products-list-item"
+                >
+                  <ProductCard ref={nodeRef} product={product} />
+                </CSSTransition>
+              );
+            })}
+        </TransitionGroup>
+      )}
     </section>
   );
 };
