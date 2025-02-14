@@ -14,6 +14,8 @@ type Props = {
   setCurrentPage: (page: number) => void;
 };
 
+const SLIDES_GAP = 8;
+
 export const Pagination: React.FC<Props> = ({
   pages,
   currentPage,
@@ -59,7 +61,7 @@ export const Pagination: React.FC<Props> = ({
       <div className={styles.numbersList}>
         <Swiper
           slidesPerView={4}
-          spaceBetween={8}
+          spaceBetween={SLIDES_GAP}
           navigation={{
             nextEl: '.nextPage',
             prevEl: '.prevPage',
@@ -68,7 +70,7 @@ export const Pagination: React.FC<Props> = ({
           onSlideChange={s => setCurrentPage(s.activeIndex + 1)}
         >
           {pagesList.map(number => (
-            <SwiperSlide key={number} style={{ width: '32px' }}>
+            <SwiperSlide key={number}>
               <button
                 className={classNames('button pageToggle', {
                   'pageToggle-active': currentPage === number,
