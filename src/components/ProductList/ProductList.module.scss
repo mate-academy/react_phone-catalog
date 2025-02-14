@@ -1,0 +1,16 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.itemsList {
+  @include page-grid;
+
+  row-gap: 40px;
+}
+
+.item {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+}

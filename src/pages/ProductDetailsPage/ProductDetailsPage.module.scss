@@ -1,0 +1,31 @@
+@import './../../StylesBlocks/mixins';
+
+.itemPage {
+  @include page;
+
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}
+
+.itemBackButton {
+  margin-bottom: 16px;
+}
+
+.productNotFound {
+  margin-bottom: 80px;
+}
+
+.productNotFoundImgContainer {
+  flex-grow: 1;
+}
+
+.productNotFoundImg {
+  width: 100%;
+}

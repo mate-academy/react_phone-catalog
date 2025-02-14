@@ -1,0 +1,119 @@
+@import './mixins';
+@import './variables';
+
+.hiddenTitle {
+  position: absolute;
+  visibility: hidden;
+}
+
+h1 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+h3 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include on-tablet {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+h4 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.body-text {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.body-text-small {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.grayText {
+  color: $secondary;
+}
+
+.title-small-gray {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+
+  color: $secondary;
+}
+
+.link-upper-text {
+  text-transform: uppercase;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+
+  color: $secondary;
+
+  transition: color $hover-transition;
+}
+
+.link-upper-text:hover {
+  color: $primary;
+}
+
+.oldPriceFont {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 22px;
+  line-height: 28px;
+  color: $secondary;
+  text-decoration: line-through;
+}
+
+.buttonText {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+
+  text-wrap: nowrap;
+
+  color: inherit;
+}
+
+.strokeBtnText:hover {
+  color: $primary;
+
+  transition: $primary $hover-transition;
+}
