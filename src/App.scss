@@ -44,6 +44,10 @@ body {
         grid-column: 1 / -1;
         font-size: 48px;
     }
+
+    &-for-test {
+        display: none;
+    }
 }
 
 .text {

@@ -16,6 +16,7 @@ export const App = () => {
 
   return (
     <>
+    <h1 className='title-for-test'>Product Catalog</h1>
       <div className="app">
         <ScrollToTop />
         <TopBar />
