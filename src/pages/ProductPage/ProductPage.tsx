@@ -51,7 +51,7 @@ export const ProductPage: React.FC = () => {
 
       {error && <ErrorMessage />}
 
-      {!loading && !error && category && !categoryItems.length && (
+      {!loading && !pageLoad && !error && category && !categoryItems.length && (
         <NotFound
           title={`There are no ${category.name} yet`}
           imgSrc={'product-not-found.png'}

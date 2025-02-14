@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react';
 import styles from './Pagination.module.scss';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons/Arrow';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 type Props = {
   pages: number;
@@ -9,13 +14,13 @@ type Props = {
   setCurrentPage: (page: number) => void;
 };
 
-type ToggleDirection = 'next' | 'prev';
-
 export const Pagination: React.FC<Props> = ({
   pages,
   currentPage,
   setCurrentPage,
 }) => {
+  const swiper = useSwiper();
+
   const [pagesList, setPagesList] = useState<number[]>([]);
 
   const prevDisabled = currentPage === 1;
@@ -35,10 +40,6 @@ export const Pagination: React.FC<Props> = ({
     setCurrentPage(page);
   };
 
-  const togglePage = (direction: ToggleDirection) => {
-    setCurrentPage(direction === 'next' ? currentPage + 1 : currentPage - 1);
-  };
-
   useEffect(() => {
     pageArray();
   }, [pages]);
@@ -46,11 +47,9 @@ export const Pagination: React.FC<Props> = ({
   return (
     <div className={styles.pagination}>
       <button
-        className="toggle button backBtn"
+        className="toggle button backBtn prevPage"
         disabled={currentPage === 1}
-        onClick={() => {
-          togglePage('prev');
-        }}
+        onClick={() => swiper.slidePrev()}
       >
         <span className="icon">
           <ArrowIcon disabled={prevDisabled} />
@@ -58,25 +57,35 @@ export const Pagination: React.FC<Props> = ({
       </button>
 
       <div className={styles.numbersList}>
-        {pagesList.map(number => (
-          <button
-            key={number}
-            className={classNames('button pageToggle', {
-              'pageToggle-active': currentPage === number,
-            })}
-            onClick={() => handlePageChange(number)}
-          >
-            <span className={styles.pageButton}>{number}</span>
-          </button>
-        ))}
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={8}
+          navigation={{
+            nextEl: '.nextPage',
+            prevEl: '.prevPage',
+          }}
+          modules={[Navigation]}
+          onSlideChange={s => setCurrentPage(s.activeIndex + 1)}
+        >
+          {pagesList.map(number => (
+            <SwiperSlide key={number} style={{ width: '32px' }}>
+              <button
+                className={classNames('button pageToggle', {
+                  'pageToggle-active': currentPage === number,
+                })}
+                onClick={() => handlePageChange(number)}
+              >
+                <span className={styles.pageButton}>{number}</span>
+              </button>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
       <button
-        className="toggle button"
+        className="toggle button nextPage"
         disabled={currentPage === pages}
-        onClick={() => {
-          togglePage('next');
-        }}
+        onClick={() => swiper.slidePrev()}
       >
         <span className="icon">
           <ArrowIcon disabled={nextDisabled} />

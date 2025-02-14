@@ -83,7 +83,7 @@ export const CartItem: React.FC<Props> = ({ item, countTotalPrice }) => {
           </button>
         </div>
 
-        <h3>${amount}</h3>
+        <h3 className={styles.amount}>${amount}</h3>
       </div>
     </div>
   );

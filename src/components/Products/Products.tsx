@@ -113,6 +113,10 @@ export const Products: React.FC<Props> = ({ category, categoryItems }) => {
     setCurrentPageItems([...sortedList].slice(firstItem, lastItem));
   };
 
+  // useEffect(() => {
+  //   setSearchWith({ sort: 'age' });
+  // }, []);
+
   useEffect(() => {
     setSearchWith({ sort: 'age' });
   }, [category]);

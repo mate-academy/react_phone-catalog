@@ -15,7 +15,9 @@
 .numbersList {
   @include flex-row-center;
 
-  overflow-x: scroll;
+  justify-content: center;
 
-  gap: 8px;
+  width: calc(4 * $page-btn-width + 3 * $pagination-gap);
+
+  overflow: hidden;
 }
