@@ -1,0 +1,115 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.cart-card  {
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: #161827;
+
+    @include on-desktop{
+        display: flex;
+        height: 128px;
+        align-items: center;
+        gap: 24px;
+
+    }
+    &__top {
+        height: 80px;
+        display: flex;
+        align-items: center;
+
+        gap: 16px;
+
+        @include on-desktop{
+            gap: 24px;
+        }
+    }
+
+    &__icon {
+        width: 16px;
+        height: 16px;
+        background-image: url(../../public/img/logos/cross-logo.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+    &__image {
+        width: 80px;
+        height: 80px;
+
+        object-fit: contain;
+        flex-shrink: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    &__product-name {
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+
+        @include on-desktop{
+            width: 336px;
+        }
+    }
+
+    &__bottom {
+        margin-top: 16px;
+        height: 32px;
+        display: flex;
+        justify-content: space-between;
+
+        @include on-desktop{
+            margin-top: 0;
+            gap: 24px;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    &__button {
+        cursor: pointer;
+        background-color: #161827;
+        color: $white-color;
+        height: 32px;
+        width: 32px;
+        border: $border-grey;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &--minus {
+            background-image: url('../../public/img/logos/minus-logo.png'); 
+        }
+
+        &--plus {
+            background-image: url('../../public/img/logos/plus-logo.png');
+            background-color: $page-background-color;
+        }
+    }
+
+    &__amount {
+        font-family: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 600;
+        width: 32px;
+    }
+
+    &__price {
+        font-family: inherit;
+        font-size: 22px;
+        font-weight: 800;
+        text-align: end;
+
+        @include on-desktop{
+            width: 80px;
+        }
+        
+    }
+}

@@ -1,0 +1,128 @@
+@use "sass:color";
+@import '../utils/variables';
+@import '../utils/mixins';
+
+
+.banner {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include on-tablet {
+        aspect-ratio: 490/189;
+        grid-column: 2 / -2;
+        min-height: 189px;
+    }
+
+    @include on-desktop {
+        height: 400px;
+
+    }
+
+    &-text {
+        display: none;
+        background-color: #161827;
+        flex-grow: 1;
+        margin-left: 2vw;
+        align-self: center;
+        border-radius: 30px;
+        height: 80%;
+        width: 130px;
+
+        @include on-tablet {
+            display: block;
+        }
+
+        @include on-desktop {
+            height: 350px;
+            margin-left: 20px;
+            width: 100px;
+        }
+    }
+
+    &-title {
+        font-family: inherit;
+        display: block;
+        margin: 20px 20px 0;
+        font-size: 2.5vw;
+        background: linear-gradient(90deg, #5C2EE5, #B75AFF);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+
+        @include on-desktop {
+            margin: 40px 40px 0;
+            font-size: 32px;
+        }
+    }
+
+    &-span {
+        display: block;
+        margin-left: 20px;
+        font-size: 1.5vw;
+        color: $grey-collor-for-text;
+
+        @include on-desktop {
+            margin: 40px 40px 0;
+            font-size: 22px;
+        }
+    }
+
+    &-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-family: inherit;
+        background-color: #161827;
+        border: $border-grey;
+        padding: 5px 10px;
+        border-radius: 40px;
+        margin: 40px 0 0 10px;
+        font-size: 1.2vw;
+        color: $white-color;
+        text-transform: uppercase;
+        text-decoration: none;
+        width: 10vw;
+        &:hover {
+            background-color: color.mix(white, $page-background-color, 15%);
+          }
+          
+          &:active {
+            background-color: color.mix(black, $page-background-color, 15%);
+            transform: scale(0.95);
+          }
+          
+          
+
+        @include on-desktop {
+            padding: 15px 30px;
+            border-radius: 40px;
+            margin: 50px 0 0 40px;
+            font-size: 18px;
+        }
+    }
+
+    &-image {
+        background-repeat: no-repeat;
+        background-image: url('../../public/img/other/image-for-available.png');
+        aspect-ratio: 1 / 1;
+        width: 100%;
+    
+        background-size: contain;
+        background-position: center;
+
+        @include on-tablet {
+            background-image: url('../../public/img/other/new-banner.png');
+            grid-column: 2 / -2;
+            width: 55%;
+            background-position: right;
+            
+        }
+
+        
+
+    }
+}

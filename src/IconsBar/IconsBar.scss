@@ -1,0 +1,56 @@
+@import '../utils/variables';
+
+.icons-bar {
+    grid-column: 1 / -1;
+    padding-block: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &__icon {
+        height: 16px;
+        width: 16px;
+        display: flex;
+        align-items: center;
+  
+        justify-content: center;
+        &--home {
+            background-image: url('../../public/img/logos/home-logo.png');
+            transition: 0.3s ease;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+        &--right-arrow {
+            background-image: url('../../public/img/logos/arrow-right-logo.png');
+        }
+    }
+    &__breadcrumb-link {
+        text-decoration: none;
+        position: relative;
+        font-size: 12px;
+        font-weight: 700;
+        color: $grey-collor-for-text;
+        transition: 0.3s ease;
+        &:hover {
+            color:  #F1F2F9;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: $white-color;
+            transition: width 0.3s ease-out, left 0.3s ease-out;
+        }
+    
+        &:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+       
+    }
+}

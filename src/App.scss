@@ -1,1 +1,80 @@
-// not empty
+
+@import './utils/variables';
+@import './utils/mixins';
+
+@font-face {
+    font-family: Mont;
+    src: url('../public/fonts/Mont-Bold.otf');
+    src: url('../public/fonts/Mont-Regular.otf');
+    src: url('../public/fonts/Mont-SemiBold.otf');
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Mont, sans-serif;
+    font-weight: 700px;
+    font-size: 20px;
+    color: #F1F2F9;
+    background-color: #0F1121;
+    margin: 0;
+    padding: 0;
+
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    &__main {
+        flex: 1;
+    }
+      
+}
+
+.title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+
+    @include on-tablet {
+        grid-column: 1 / -1;
+        font-size: 48px;
+    }
+
+    &-for-test {
+        display: none;
+    }
+}
+
+.text {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #75767F;
+
+    @include on-tablet {
+        grid-column: 1 / -1;
+    }
+}
+
+.small-text {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.container {
+    padding-inline: 16px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+        padding-inline: 24px;
+
+        @include page-grid;
+    }
+}
+

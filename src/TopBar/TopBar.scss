@@ -1,0 +1,205 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.topbar {
+    padding-left: $padding-var;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    justify-content: space-between;
+    border-bottom: $border-grey;
+
+    @include on-tablet {
+        display: none;
+    }
+
+    &__buttons-right {
+        height: 100%;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        flex-grow: 1;
+    }
+
+    &__button {
+        width: 48px;
+        height: 48px;
+
+        @include on-desktop {
+            width: 64px;
+            height: 64px;
+        }
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: $border-grey;
+        position: relative;
+    }
+
+    &__bread-crumbs{
+        padding-left: $padding-var;
+        margin-top: $margin-top-for-items;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &--for-wide-witdh {
+        height: 48px;
+        display: none;
+        gap: 16px;
+        border-bottom: $border-grey;
+        box-sizing: border-box;
+
+        @include on-tablet {
+            display: flex;
+            flex-direction: row;
+            grid-column: 1 / -1;
+        }
+
+        @include on-desktop {
+            height: 64px;
+        }
+    
+    }
+    &__link {
+        width: 96px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__list {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 32px;
+        height: 100%;
+    }
+
+    &__list-element {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+       
+    }
+
+    &__nav-link {
+        display: flex;
+        align-items: center;
+        transition:  0.3s ease;
+        height: 100%;
+        padding: 0;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $grey-collor-for-text;
+        font-size: 12px;
+        font-weight: 800;
+        position: relative;
+        &:not(.topbar__nav-link--active):hover {
+            color: $white-color;
+            transform: scale(1.02);
+        }
+    
+        &--active {
+            color: $white-color;
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              border-bottom: 3px solid $white-color;
+            }
+          }
+
+    }
+    &__icon-number {
+        text-decoration: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: #EB5757;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__button-wrapper {
+        height: 64px;
+        width: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:  0.3s ease-out;
+        &:not(.topbar__button-wrapper--active):hover {
+            transform: scale(1.1);
+        }
+
+        &--active {
+            color: $white-color;
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              border-bottom: 3px solid $white-color;
+            }
+          }
+        
+    }
+
+    &__icon{
+        position: relative;
+        text-decoration: none;
+        font-family: inherit;
+        font-size: 9px;
+        font-weight: 700;
+        color: $white-color;
+        height: 48px;
+        width: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        background-repeat: no-repeat;
+        background-position: center;
+    
+        @include on-desktop {
+            width: 28px;
+            height: 28px;
+        }
+
+       
+    
+        &--menu{
+            border-left: $border-grey;
+            height: 48px;
+            width: 48px;
+            background-image: url(/public/img/logos/menu-logo.png);
+        }
+        &--favorites{
+            background-image: url(/public/img/logos/heart-logo.png);
+        }
+        &--cart {
+            background-image: url(/public/img/logos/cart-logo.png);
+        }
+    
+    }
+}
+
+
+

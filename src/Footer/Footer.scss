@@ -1,0 +1,97 @@
+@import '../utils/mixins';
+
+.footer {
+    border-top: 1px solid #3B3E4A;
+
+    &__container {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+        gap: 0;
+        padding-inline: 16px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @include on-desktop {
+    margin-inline: auto;
+    max-width: 1200px;
+    }
+
+    }
+
+   
+    
+    &__logo{
+        height: 32px;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-image: url('../../public/img/logos/logo-big.png');
+
+        @include on-tablet {
+            flex: 1;
+            max-width: calc(100% / 3);
+            box-sizing: border-box;
+        }
+    }
+
+    &__contacts {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        @include on-tablet {
+            display: flex;
+            flex: 1;
+            max-width: calc(100% / 3);
+            box-sizing: border-box;
+            justify-content: space-between;
+        }
+    }
+    &__link {
+        text-transform: uppercase;
+        color: #F1F2F9;
+        font-size: 12px;
+        font-weight: 800;
+
+        text-decoration: none;
+    }
+    &__back-to-top {
+        display: flex;
+        align-self: center;
+        justify-content: end;
+        gap: 16px;
+        align-items: center;
+
+        @include on-tablet {
+            flex: 1;
+            max-width: calc(100% / 3);
+            box-sizing: border-box;
+        }
+    }
+    &__text {
+        color: $grey-collor-for-text;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    &__button {
+        border: none;
+        cursor: pointer;
+        transition: 0.3s ease;
+        &:hover {
+            transform: scale(1.01);
+        }
+
+        width: 32px;
+        height: 32px;
+        background-color: $page-background-color;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url('../../public/img/logos/arrow-up-logo.png');
+    }
+}

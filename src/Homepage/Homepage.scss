@@ -1,0 +1,84 @@
+
+@import '../utils/variables';
+@import '../utils/mixins';
+
+
+.page {
+    &__slides {
+        display: flex;
+        transition: transform 0.8s ease-in-out;
+
+        gap: 16px;
+    }
+    &__new-models-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 72px;
+        padding: 56px 0 24px;
+
+        @include on-tablet {
+            padding-top: 64px;
+            grid-column: 1 / -1;
+        }
+    }
+   
+
+    &__buttons {
+       display: flex;
+       gap: 16px;
+    }
+
+    &__button {
+        height: 32px;
+        width: 32px;
+        border: $border-grey;
+        background-color: #0F1121;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: 0.3s ease;
+        cursor: pointer;
+        &--active {
+            background-color: $page-background-color;
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        &--previous {
+            background-image: url('../../public/img/logos/left-arrow-logo.png');
+        }
+        &--next {
+            background-image: url('../../public/img/logos/right-arrow-logo.png');
+        }
+    }
+
+    &__new-models-products {
+        @include on-tablet {
+            grid-column: 1 / -1;
+        }
+
+        overflow: hidden;
+        display: flex;
+        gap: 16px;
+        padding: 16px 0;
+    }
+
+    &__category__container {
+        padding-bottom: 64px;
+        
+        @include on-tablet {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 16px;
+        }
+    }
+
+    &__category {
+        @include on-tablet {
+            flex: 1;
+        }
+  
+    }
+
+}

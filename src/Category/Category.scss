@@ -1,0 +1,35 @@
+@import '../utils/variables';
+
+.category{
+    text-decoration: none;
+
+    &__image {
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        object-fit: cover;
+        transition: 0.3s ease;
+
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+
+    &__text {
+        margin-top: 24px;
+    }
+
+    &__title {
+        color: $white-color;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    &__amount {
+        font-size: 14px;
+        font-weight: 600;
+        color: $grey-collor-for-text;
+    }
+
+    
+}

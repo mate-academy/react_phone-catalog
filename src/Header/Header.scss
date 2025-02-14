@@ -1,0 +1,116 @@
+@use "sass:color";
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.header {
+    max-width: 1200px;
+    margin: 0 auto;
+    &__slider {
+        width: calc(100vw);
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+        margin: 0 auto;
+
+        @include on-tablet {
+            width: 100%;
+            grid-column: 2 /-2;
+            aspect-ratio: 490/189;
+        }
+    }
+
+    &__slides {
+        display: flex;
+        transition: transform 0.8s ease-in-out;
+        white-space: nowrap;
+        width: 300%
+    }
+
+    &__slide {
+        width: calc(100% / 3);
+    }
+
+    &__proposal {
+        @include on-tablet {
+            grid-column: 1 / -1;
+           
+            @include page-grid;
+
+            width: 100%;
+        }
+    }
+
+    &__title {
+        margin-block: $margin-top-for-items;
+
+        @include on-tablet {
+            font-size: 48px;
+            font-weight: 800;
+            grid-column: 1 / 10;
+        }
+
+        @include on-desktop {
+            margin-block: 56px;
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__button {
+        display: none;
+        border-radius: 8px;
+        cursor: pointer;
+
+        @include on-tablet {
+            width: 32px;
+            display: flex;
+            box-sizing: border-box;
+            border: none;
+            background-color: $page-background-color;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        &--previous {
+            justify-self: end;
+        }
+
+        &:hover {
+            background-color: color.adjust($page-background-color, $lightness: 10%);
+          }
+          
+          &:active {
+            background-color: color.adjust($page-background-color, $lightness: -10%);
+            transform: scale(0.95);
+          }
+          
+    }
+
+    &__dots-group {
+        height: 24px;
+        width: 80px;
+        margin: 8px auto 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+
+        @include on-tablet {
+            grid-column: 6 / 8;
+        }
+
+        @include on-desktop {
+            grid-column: 12 / 14;
+        }
+    }
+
+    &__dot {
+        height: 4px;
+        width: 14px;
+        background-color: $grey-collor-for-text;
+        &--active {
+            background-color: $white-color;
+        }
+    }
+}
