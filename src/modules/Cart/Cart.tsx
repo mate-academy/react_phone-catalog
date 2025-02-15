@@ -3,7 +3,7 @@ import styles from './Cart.module.scss';
 import { CartItem } from '../../components/CartItem';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
-import {Breadcrumbs} from "../../components/Breadcrumbs";
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const Cart: React.FC = () => {
   const allProducts = useSelector((state: RootState) => state.cart.items);
@@ -15,7 +15,7 @@ export const Cart: React.FC = () => {
   return (
     <>
       <div className={styles.container}>
-        <Breadcrumbs/>
+        <Breadcrumbs />
         <h1 className={styles.title}>Cart</h1>
 
         <div className={styles.main}>

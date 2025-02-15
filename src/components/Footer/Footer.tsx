@@ -25,12 +25,18 @@ export const Footer = ({ headerRef }) => {
               </a>
             </li>
             <li className={styles.nav__item}>
-              <a className={styles.nav__link} href="https://github.com/NazarHaida">
+              <a
+                className={styles.nav__link}
+                href="https://github.com/NazarHaida"
+              >
                 Contacts
               </a>
             </li>
             <li className={styles.nav__item}>
-              <a className={styles.nav__link} href="https://github.com/NazarHaida">
+              <a
+                className={styles.nav__link}
+                href="https://github.com/NazarHaida"
+              >
                 rights
               </a>
             </li>

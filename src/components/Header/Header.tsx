@@ -20,7 +20,7 @@ export const Header = ({ headerRef }) => {
 
         <nav className={styles.nav}>
           <ul className={styles.nav__list}>
-            <li className={styles['nav__item']}>
+            <li className={styles.nav__item}>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -32,7 +32,7 @@ export const Header = ({ headerRef }) => {
                 Home
               </NavLink>
             </li>
-            <li className={styles['nav__item']}>
+            <li className={styles.nav__item}>
               <NavLink
                 to="/catalog/phones"
                 className={({ isActive }) =>
@@ -44,7 +44,7 @@ export const Header = ({ headerRef }) => {
                 Phones
               </NavLink>
             </li>
-            <li className={styles['nav__item']}>
+            <li className={styles.nav__item}>
               <NavLink
                 to="/catalog/tablets"
                 className={({ isActive }) =>
@@ -56,7 +56,7 @@ export const Header = ({ headerRef }) => {
                 Tablets
               </NavLink>
             </li>
-            <li className={styles['nav__item']}>
+            <li className={styles.nav__item}>
               <NavLink
                 to="/catalog/accessories"
                 className={({ isActive }) =>
@@ -107,7 +107,9 @@ export const Header = ({ headerRef }) => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(styles.icon, styles['menu-icon'], { [styles['icon--is-active']]: isActive })
+              classNames(styles.icon, styles['menu-icon'], {
+                [styles['icon--is-active']]: isActive,
+              })
             }
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >

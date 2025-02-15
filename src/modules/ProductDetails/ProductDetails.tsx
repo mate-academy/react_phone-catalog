@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ProductDetails.module.scss';
 import classNames from 'classnames';
 import phones from '../../../public/api/phones.json';
@@ -13,8 +13,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import { Product } from '../../types/Product';
 import { addFavorite, deleteFavourite } from '../../features/favorites';
-import {Loader} from "../../components/Loader";
-import {PageNotFound} from "../PageNotFound";
+import { Loader } from '../../components/Loader';
+import { PageNotFound } from '../PageNotFound';
 
 export const ProductDetails: React.FC = () => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -27,7 +27,6 @@ export const ProductDetails: React.FC = () => {
     (state: RootState) => state.favorites.items,
   );
   const dispatch = useDispatch();
-
 
   const handleAddFavorite = (product: Product) => {
     const findProduct = allProducts.find(p => p.itemId === product.id);
@@ -123,11 +122,10 @@ export const ProductDetails: React.FC = () => {
   }
 
   if (!product) {
-    return <PageNotFound/>
+    return <PageNotFound />;
   }
   return (
     <>
-
       <section
         className={classNames(styles['product-details'], styles.container)}
       >
@@ -199,7 +197,9 @@ export const ProductDetails: React.FC = () => {
                   <label
                     id={'color'}
                     htmlFor={`color-${index}`}
-                    className={classNames(styles['color-option'],{[styles['color-active']]: color === product.color,})}
+                    className={classNames(styles['color-option'], {
+                      [styles['color-active']]: color === product.color,
+                    })}
                     style={{ backgroundColor: color }}
                   ></label>
                 </div>

@@ -16,7 +16,6 @@
 
 .logo{
   background-image: url("../../../public/Images/Logo.svg");
-  //background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
@@ -105,6 +104,7 @@
   height: 48px;
   border-left: 1px rgba(50, 53, 66, 1) solid;
   border-bottom: 1px rgba(50, 53, 66, 1) solid;
+
   @include onTablet{
     background-size: contain;
     background-repeat: no-repeat;
@@ -143,7 +143,6 @@
 .menu-icon{
   border-left: 1px rgba(50, 53, 66, 1) solid;
   border-bottom: 1px rgba(50, 53, 66, 1) solid;
-  position: relative;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -169,6 +168,7 @@
     transform: scale(1);
 
   }
+
   @include onTablet{
     display: none;
   }
