@@ -1,0 +1,61 @@
+@import '../styles/index.scss';
+
+.footer {
+    max-width: $content-max-width;
+    box-sizing: border-box;
+    margin-top: 80px;
+    @include setSize(100%, 96px);
+    box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
+    @include flexCenter;
+    justify-content: space-between;
+    padding-inline: 152px;
+
+    &__links {
+        @include flexCenter;
+        flex-direction: row;
+        width: 35%;
+        justify-content: space-between;
+    }
+
+    &__link {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $color-grey;
+        @include setFont($font-mont, 12px, 800);
+    }
+}
+
+.logo {
+    @include setSize (128px, 100%);
+    @include flexCenter;
+}
+
+.toTop {
+    @include flexCenter;
+    gap: 16px;
+
+    &__title {
+        @include setFont($font-mont, 12px, 700);
+        color: $color-grey;
+    }
+
+    &__button {
+        @include setSize(32px, 32px);
+        border-radius: 50%;
+        border: 1px solid $color-light-grey;
+        background-image: url('/img/icons/toTop.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 50%;
+        cursor: pointer;
+
+        &:hover {
+            border-color: $color-element-black;
+        }
+    }
+
+    &__link {
+        display: block;
+        @include setSize(100%, 100%);
+    }
+}

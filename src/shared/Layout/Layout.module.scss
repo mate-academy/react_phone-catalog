@@ -1,4 +1,17 @@
+@import '/src/shared/styles/index.scss';
+
+html {
+    scroll-behavior: smooth;
+}
+
 main {
     max-width: 1200px;
     margin: auto;
+    @include flexCenter;
+    flex-direction: column;
+}
+
+.layout {
+    @include flexCenter;
+    flex-direction: column;
 }

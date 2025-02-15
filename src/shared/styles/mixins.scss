@@ -9,6 +9,11 @@
   font-weight: $weight;
 }
 
+@mixin setLimit($max-width, $max-height) {
+  max-width: $max-width;
+  max-height: $max-height;
+}
+
 @mixin flexCenter {
   display: flex;
   justify-content: center;

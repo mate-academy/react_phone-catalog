@@ -4,15 +4,21 @@ import { Article } from '../types/Article';
 
 type Props = {
   article: Article;
+  fullPrice?: boolean;
 };
 
-export const Product: React.FC<Props> = ({ article }) => {
+export const Product: React.FC<Props> = ({ article, fullPrice = false }) => {
   return (
     <article className={styles.article}>
       <img src={article.image} alt="Product Image" className={styles.image} />
       <p className={styles.title}>{article.name}</p>
 
-      <h3 className={styles.price}>{`$${article.price}`}</h3>
+      <div className={styles.prices}>
+        <h3 className={styles.price}>{`$${article.price}`}</h3>
+        {fullPrice && (
+          <h3 className={styles.fullPrice}>{`$${article.fullPrice}`}</h3>
+        )}
+      </div>
 
       <div className={styles.decription}>
         <div className={styles.decription__item}>
@@ -35,8 +41,7 @@ export const Product: React.FC<Props> = ({ article }) => {
         <button className={styles.button}>
           <p className={styles.button__title}>Add to cart</p>
         </button>
-        <button className={styles.favourite}>
-        </button>
+        <button className={styles.favourite}></button>
       </div>
     </article>
   );

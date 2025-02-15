@@ -1,25 +1,28 @@
 @import '../styles/index.scss';
 
 .navBar {
-    @include setSize (100%, 64px);
+    @include setSize(100%, 64px);
+    max-width: $content-max-width;
     display: flex;
     flex-direction: row;
     gap: 24px;
-    max-width: 1440px;
-    margin: auto;;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: $color-white;
     box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
 
     @include onTablet {
-        @include setSize (100%, 48px);
-        gap: 16px;
-        
+        @include setSize(100%, 48px);
+        gap: 16px;  
     }
 }
 
+
 .wrapper {
-    position: absolute;
-    right: 0;
+    margin-left: auto;
     display: flex;
     height: 100%;
     box-sizing: border-box;
@@ -42,15 +45,19 @@ img {
     gap: 64px;
 
     &__item {
-        text-decoration: none;
-        color: #89939A;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 16px;
-        font-weight: 800;
-      
+        position: relative;
+        @include setFont($font-mont, 16px, 800);
         @include flexCenter;
-        width: 100%;
-        height: 100%;
+        @include setSize(100%, 100%);
+        transition: all 0.3s;
+
+        text-decoration: none;
+        color: $color-grey;    
+        
+        &:hover {
+            color: $color-element-black;
+            background-color: $color-light-grey;
+        }
     }
 
     @include onTablet {
@@ -60,9 +67,13 @@ img {
     }
 }
 
+.active {
+    border-bottom: 5px solid black;
+}
+
 .icon {
     box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
-    right: 0;
+    margin-left: auto;
     @include setSize (64px, 100%);
     @include flexCenter;
     &:hover {
@@ -75,8 +86,7 @@ img {
 }
 
 .rightButton {
-    right: 0;
-    position: absolute;
+    margin-left: auto;
 }
 
 aside {
@@ -87,7 +97,7 @@ aside {
     z-index: 2;
     width: 100%;
     height: calc(100vh - 50px);
-    background-color: white;
+    background-color: $color-white;
 }
 
 .asideLinks {

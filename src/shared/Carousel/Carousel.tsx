@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import styles from './Carousel.module.scss';
 import { Article } from '../types/Article';
 import { Product } from '../Product';
@@ -7,12 +7,13 @@ import { Product } from '../Product';
 type Props = {
   items: Article[];
   title: string;
+  isHot?: boolean;
 };
 
-export const Carousel: React.FC<Props> = ({ items, title }) => {
+export const Carousel: React.FC<Props> = ({ items, title, isHot = false }) => {
   const [index, setIndex] = useState<number>(0);
   const visibleItems: number = 4;
-  const maxIndex = items.length - visibleItems;
+  const maxIndex = 4;
 
   const handleNext = () => {
     setIndex(prev => prev + 1);
@@ -21,6 +22,10 @@ export const Carousel: React.FC<Props> = ({ items, title }) => {
   const handlePrev = () => {
     setIndex(prev => prev - 1);
   };
+
+  useEffect(() => {
+    setIndex(0);
+  }, [items]);
 
   return (
     <div className={styles.carousel}>
@@ -52,7 +57,7 @@ export const Carousel: React.FC<Props> = ({ items, title }) => {
           transition={{ type: 'tween', duration: 0.5, ease: 'easeInOut' }} // Плавна анімація
         >
           {items.map(item => (
-            <Product key={item.id} article={item} />
+            <Product key={item.id} article={item} fullPrice={isHot} />
           ))}
         </motion.div>
       </div>

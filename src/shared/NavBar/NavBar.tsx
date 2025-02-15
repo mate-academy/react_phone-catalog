@@ -34,7 +34,7 @@ export const NavBar: React.FC = () => {
               <div className={classNames(styles.icon, styles.rightButton)}>
                 <NavLink
                   to="#"
-                  onClick={() => setVisibleAside(false)} // Закриває aside
+                  onClick={() => setVisibleAside(false)}
                   className={styles.links__item}
                 >
                   <img src="/img/icons/Close.svg" alt="close" />
@@ -44,7 +44,7 @@ export const NavBar: React.FC = () => {
               <div className={classNames(styles.icon, styles.rightButton)}>
                 <NavLink
                   to="#"
-                  onClick={() => setVisibleAside(true)} // Відкриває aside
+                  onClick={() => setVisibleAside(true)}
                   className={styles.links__item}
                 >
                   <img src="/img/icons/burgerMenu.svg" alt="menu" />
@@ -55,16 +55,47 @@ export const NavBar: React.FC = () => {
         ) : (
           <>
             <div className={styles.links}>
-              <NavLink className={styles.links__item} to={'/'}>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.links__item} ${styles.active}`
+                    : styles.links__item
+                }
+              >
                 HOME
               </NavLink>
-              <NavLink className={styles.links__item} to={'/phones'}>
+
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.links__item} ${styles.active}`
+                    : styles.links__item
+                }
+                to={'/phones'}
+              >
                 PHONES
               </NavLink>
-              <NavLink className={styles.links__item} to={'/'}>
+
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.links__item} ${styles.active}`
+                    : styles.links__item
+                }
+                to={'/tablets'}
+              >
                 TABLETS
               </NavLink>
-              <NavLink className={styles.links__item} to={'/'}>
+
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.links__item} ${styles.active}`
+                    : styles.links__item
+                }
+                to={'/accessories'}
+              >
                 ACCESSORIES
               </NavLink>
             </div>

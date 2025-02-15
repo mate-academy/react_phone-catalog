@@ -5,14 +5,14 @@ $column-size: 32px;
 
 .slideButton {
     border-radius: 25px;
-    border: 1px solid #B4BDC3;
+    border: 1px solid $color-light-grey;
     width: 32px;
     height: 100%;
     transition: all 0.3s;
 
     &:hover {
         transform: scale(110%);
-        border-color: #0F0F11;
+        border-color: $color-element-black;
     }
 
     &:active {
@@ -37,7 +37,7 @@ $column-size: 32px;
         grid-template-rows: minmax(100px, 140px) minmax(160px, 250px);
         width: 100%;
         column-gap: 8px;
-        padding-inline: 24px;
+        padding-inline: $content-padding-inline;
         row-gap: 50px;
         margin-top: 32px;
     }
@@ -76,7 +76,7 @@ $column-size: 32px;
     position: relative;
     grid-row: 2 / 2;
     grid-column: 2 / -2; 
-    background-color: black;
+    background-color: $color-element-black;
     border-radius: 10px;
     width: 100%;
     max-width: 1040px;
@@ -144,12 +144,86 @@ $column-size: 32px;
 
     &__dot {
         @include setSize(14px, 4px);
-        background-color: #E2E6E9;
+        background-color: $color-element-white;
 
         
     }
 }
 
 .dotActive {
-    background-color: #0F0F11;
+    background-color: $color-element-black;
+}
+
+.categories {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: $content-max-width;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding-inline: $content-padding-inline;
+
+    &__content {
+    aspect-ratio: 20 / 5;
+    max-height: 368px;
+    
+    @include flexCenter;
+    flex-direction: row;
+    gap: 16px;
+
+    @include onPhone {
+        flex-direction: column;
+        aspect-ratio: 5 / 16;
+        width: 100%;
+        max-height: 850px;
+        box-sizing: border-box;
+    }
+    }
+
+    &__category {
+        @include setSize(100%, 100%);
+    }
+
+    &__title {
+        @include setFont($font-mont, 32px, 800);
+    }
+
+    &__name{
+        margin: 24px 0 0 0;
+        @include setFont($font-mont, 20px, 700);
+    }
+
+    &__value {
+        @include setFont($font-mont, 14px, 500);
+        color: $color-grey;
+        margin: 0;
+    }
+
+    &__window {
+        overflow: hidden;
+        @include setSize(100%, 100%);
+        position: relative;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            transform: scale(105%);
+        }
+
+    }
+
+   &__background {
+    @include setSize (100%, 100%);
+    transition: all 0.3s;
+   }
+    
+    &__image {
+        object-fit: contain;
+        @include setSize(100%, 100%);
+        position: absolute;
+        right: -25%;
+        bottom: -15%;
+        transition: all 0.3s ease-in-out;
+    }
+    
 }

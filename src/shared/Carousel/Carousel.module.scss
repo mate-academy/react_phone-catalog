@@ -1,10 +1,11 @@
 @import '../styles/index.scss';
 
 .carousel {
-  width: 100%;
+  max-width: $carousel-max-width;
   display: flex;
   flex-direction: column;
   position: relative;
+  padding-inline: $content-padding-inline;
 }
 
 .wrapper {
@@ -14,7 +15,6 @@
 
 .title {
   @include setFont($font-mont, 32px, 800);
-
 }
 
 .buttons {
@@ -25,14 +25,14 @@
 .button {
   @include setSize(32px, 32px);
   border-radius: 50%;
-  border: 1px solid #b4bdc3;
+  border: 1px solid $color-light-grey;
 
   &:hover {
-    border-color: #0f0f11;
+    border-color: $color-element-black;
   }
 
   &:disabled {
-    border-color: #e2e6e9;
+    border-color: $color-element-white;
   }
 }
 

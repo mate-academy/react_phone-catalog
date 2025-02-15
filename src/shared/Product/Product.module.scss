@@ -7,21 +7,28 @@ p {
 article {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: $product-gap;
   align-items: center;
-  width: 272px;
-  height: 506px;
-  padding: 32px;
+  max-width: $product-max-width;
+  max-height: $product-max-height;
+  padding: $product-padding;
   box-sizing: border-box;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $color-element-white;
   border-radius: 8px;
+
+  @include onTablet {
+    @include setLimit(240px, 512px);
+  }
+
+  @include onPhone {
+    @include setLimit(212px, 540px);
+  }
 }
 
 .image {
   object-fit: contain;
   margin: 0;
-  width: 208px;
-  height: 196px;
+  @include setSize(208px, 196px);
 }
 
 .title {
@@ -31,10 +38,25 @@ article {
   margin-bottom: 8px;
 }
 
+.prices {
+  @include flexCenter;
+  flex-direction: row;
+  margin-right: auto;
+  gap: 8px;
+}
+
+.fullPrice {
+  @include setFont($font-mont, 22px, 800);
+  margin-top: 0;
+  margin-right: auto;
+  letter-spacing: 0;
+  text-decoration: line-through;
+  color: $color-grey;
+}
+
 .price {
   @include setFont($font-mont, 22px, 800);
   margin-top: 0;
-  margin-bottom: 16px;
   margin-right: auto;
   letter-spacing: 0;
 }
@@ -42,11 +64,11 @@ article {
 .decription {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: $product-gap;
   width: 100%;
-  margin-bottom: 16px; // Відступ між описом та кнопками
+  margin-bottom: 16px;
   max-height: 77px;
-  border-top: 1px solid #e2e6e9;
+  border-top: 1px solid $color-element-white;
 
   &__item {
     display: flex;
@@ -58,7 +80,7 @@ article {
     @include setFont($font-mont, 12px, 700);
     letter-spacing: 0;
     line-height: 15px;
-    color: #89939a;
+    color: $color-grey;
     flex: 1;
     text-align: left;
   }
@@ -67,7 +89,7 @@ article {
     @include setFont($font-mont, 12px, 700);
     letter-spacing: 0;
     line-height: 15px;
-    color: #0f0f11;
+    color: $color-element-black;
     flex: 1;
     text-align: right;
   }
@@ -77,13 +99,13 @@ article {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  gap: 8px;
+  gap: $product-gap;
 }
 
 .button {
   padding: 0;
   @include setSize(160px, 40px);
-  background-color: #f86800;
+  background-color: $color-element-orange;
   border: none;
   border-radius: 10px;
   @include flexCenter;
@@ -94,17 +116,17 @@ article {
   }
 
   &:active {
-    background-color: white;
+    background-color: $color-white;
   }
 }
 
 .button__title {
   @include setFont($font-mont, 700, 14px);
   line-height: 21px;
-  color: white;
+  color: $color-white;
 
   &:active {
-    color: black;
+    color: $color-element-black;
   }
 }
 
@@ -121,7 +143,7 @@ article {
   background-size: 50%;
 
   &:hover {
-    border: 1px solid black;
+    border: 1px solid $color-element-black;
   }
 
   &:active {
