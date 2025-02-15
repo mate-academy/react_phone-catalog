@@ -6,9 +6,6 @@
 @use '@styles/fonts' as *;
 @use '@styles/typography' as *;
 
-// transitions
-@use '@styles/../transitions/ProductListTransition.scss' as *;
-
 .hidden {
   position: absolute;
   visibility: hidden;

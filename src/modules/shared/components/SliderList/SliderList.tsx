@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import styles from './SliderList.module.scss';
 
@@ -74,12 +74,10 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
     const prevPos = getHistoryItem<number>(NAME);
 
     if (prevPos || prevPos === 0) {
-      setTimeout(() => {
-        sliderRef.current?.scrollBy({ left: prevPos, behavior: 'smooth' });
-      }, 0);
+      sliderRef.current?.scrollBy({ left: prevPos, behavior: 'instant' });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sliderRef.current, title]);
+  }, []);
 
   const handleScroll = useCallback(() => {
     if (!sliderRef.current) {

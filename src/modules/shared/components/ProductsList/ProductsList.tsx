@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { Product } from '@sTypes/Product';
 import { ItemsPerPage } from '@ProductsPage/types/ItemsPerPage';
@@ -87,41 +86,23 @@ export const ProductsList: React.FC<Props> = ({
   }, [setHistoryItem, visibleCount]);
 
   return (
-    <section ref={!isLoading ? productsRef : null}>
-      {isLoading && (
-        <div className={styles['products-list']}>
-          {Array.from(
-            { length: getLoadingItemCount(itemsDuringLoading) },
-            (_, i) => (
-              <ProductCardSkeleton key={i} />
-            ),
-          )}
-        </div>
-      )}
+    <section
+      ref={!isLoading ? productsRef : null}
+      className={styles['products-list']}
+    >
+      {isLoading &&
+        Array.from(
+          { length: getLoadingItemCount(itemsDuringLoading) },
+          (_, i) => <ProductCardSkeleton key={i} />,
+        )}
 
-      {!isLoading && (
-        <TransitionGroup className={styles['products-list']}>
-          {products
-            .slice(
-              page * itemsCount,
-              (page + 1) * (pagesCount !== 0 ? itemsCount : visibleCount),
-            )
-            .map(product => {
-              const nodeRef = React.createRef<HTMLDivElement>();
-
-              return (
-                <CSSTransition
-                  key={product.id}
-                  nodeRef={nodeRef}
-                  timeout={300}
-                  classNames="products-list-item"
-                >
-                  <ProductCard ref={nodeRef} product={product} />
-                </CSSTransition>
-              );
-            })}
-        </TransitionGroup>
-      )}
+      {!isLoading &&
+        products
+          .slice(
+            page * itemsCount,
+            (page + 1) * (pagesCount !== 0 ? itemsCount : visibleCount),
+          )
+          .map(product => <ProductCard key={product.id} product={product} />)}
     </section>
   );
 };

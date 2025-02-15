@@ -17,7 +17,7 @@ export const useScrollRestoration = () => {
     } else {
       const prevTop = getHistoryItem<number>(NAME) || 0;
 
-      window.scrollTo({ top: prevTop, behavior: 'smooth' });
+      window.scrollTo({ top: prevTop, behavior: 'instant' });
     }
   }, [getHistoryItem, pathname]);
 
