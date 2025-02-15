@@ -16,11 +16,12 @@ export const Breadcrumbs: React.FC<{
           className={classNames(styles['home-image'])}
         />
       </NavLink>
+      {currentCategory ?(
       <img
         src="Images/Arrow-right.svg"
         alt="Arrow"
         className={styles['arrow-image']}
-      />
+      />) : ""}
       {currentProduct ? (
         <NavLink
           to={`/catalog/${currentCategory}`}

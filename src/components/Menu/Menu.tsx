@@ -20,8 +20,7 @@ export const Menu = ({ isOpen, onClose }) => {
               className={styles['menu__logo-image']}
             />
           </a>
-          <a
-            href="#"
+          <NavLink
             className={styles['menu__close-button']}
             aria-label="Close Menu"
             onClick={onClose}
@@ -29,9 +28,9 @@ export const Menu = ({ isOpen, onClose }) => {
             <img
               src="Images/Close.svg"
               alt="Close"
-              className={styles.coverImage}
+              className={styles['cover-image']}
             />
-          </a>
+          </NavLink>
         </header>
       </div>
 

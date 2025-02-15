@@ -11,12 +11,12 @@
   border-bottom: 1px $grey solid;
 
   margin: 0;
-  padding: 0 16px;
+  padding: 0 0 0 16px;
 }
 
 .logo{
   background-image: url("../../../public/Images/Logo.svg");
-  background-size: contain;
+  //background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
@@ -42,6 +42,10 @@
   @include onTablet{
     display: flex;
     justify-content: flex-start;
+    gap: 32px;
+  }
+
+  @include onDesktop{
     gap: 64px;
   }
 }
@@ -66,7 +70,7 @@
     position: absolute;
     bottom: -16px;
     width: 100%;
-    height: 2px;
+    height: 3px;
     transform: scale(0);
     transform-origin: left;
     transition: all 0.3s;
@@ -98,14 +102,14 @@
 
 .icon{
   display: none;
-
+  height: 48px;
+  border-left: 1px rgba(50, 53, 66, 1) solid;
+  border-bottom: 1px rgba(50, 53, 66, 1) solid;
   @include onTablet{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 
-    height: 16px;
-    margin: 0 16px;
     position: relative;
     width: 48px;
     display: flex;
@@ -115,10 +119,10 @@
         content: '';
         background-color: $white;
         position: absolute;
-        bottom: -16px;
+        bottom: 0;
         left: 0;
         width: 100%;
-        height: 2px;
+        height: 3px;
         transform: scale(0);
         transform-origin: left;
         transition: all 0.3s;
@@ -127,7 +131,7 @@
         transform: scale(1);
 
       }
-    &__is-active {
+    &--is-active {
 
       &::after {
         transform: scale(1);
@@ -136,23 +140,48 @@
     }
   }
 
-.menu__icon{
+.menu-icon{
+  border-left: 1px rgba(50, 53, 66, 1) solid;
+  border-bottom: 1px rgba(50, 53, 66, 1) solid;
   position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 
-  width: 14px;
-  height: 8.5px;
-  display: block;
+  position: relative;
+  width: 48px;
+  display: flex;
+  justify-content: center;
 
+  &::after {
+    content: '';
+    background-color: $white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    transform: scale(0);
+    transform-origin: left;
+    transition: all 0.3s;
+  }
+  &:hover::after {
+    transform: scale(1);
+
+  }
   @include onTablet{
     display: none;
   }
 
 }
 
-.cover__image {
-  @include onTablet{
-    object-fit: cover;
-    display: block;
-  }
+.cover-image {
+  object-fit: contain;
+  height: 16px;
+  display: flex;
+  align-self: center;
 }
 
+.badge{
+  top:10px;
+}

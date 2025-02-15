@@ -20,7 +20,7 @@ export const Header = ({ headerRef }) => {
 
         <nav className={styles.nav}>
           <ul className={styles.nav__list}>
-            <li className={styles.nav__item}>
+            <li className={styles['nav__item']}>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -32,7 +32,7 @@ export const Header = ({ headerRef }) => {
                 Home
               </NavLink>
             </li>
-            <li className={styles.nav__item}>
+            <li className={styles['nav__item']}>
               <NavLink
                 to="/catalog/phones"
                 className={({ isActive }) =>
@@ -44,7 +44,7 @@ export const Header = ({ headerRef }) => {
                 Phones
               </NavLink>
             </li>
-            <li className={styles.nav__item}>
+            <li className={styles['nav__item']}>
               <NavLink
                 to="/catalog/tablets"
                 className={({ isActive }) =>
@@ -56,7 +56,7 @@ export const Header = ({ headerRef }) => {
                 Tablets
               </NavLink>
             </li>
-            <li className={styles.nav__item}>
+            <li className={styles['nav__item']}>
               <NavLink
                 to="/catalog/accessories"
                 className={({ isActive }) =>
@@ -78,13 +78,13 @@ export const Header = ({ headerRef }) => {
           <NavLink
             to={'/favorites'}
             className={({ isActive }) =>
-              classNames(styles.icon, { [styles['icon__is-active']]: isActive })
+              classNames(styles.icon, { [styles['icon--is-active']]: isActive })
             }
           >
             <img
               src="Images/Favorites-icon.svg"
               alt="Favorites"
-              className={styles.cover__image}
+              className={styles['cover-image']}
             />
             {favoriteCount > 0 && (
               <span className={styles.badge}>{favoriteCount}</span>
@@ -93,28 +93,30 @@ export const Header = ({ headerRef }) => {
           <NavLink
             to={'/cart'}
             className={({ isActive }) =>
-              classNames(styles.icon, { [styles['icon__is-active']]: isActive })
+              classNames(styles.icon, { [styles['icon--is-active']]: isActive })
             }
           >
             <img
               src="Images/Store-icon.svg"
               alt="Cart"
-              className={styles.cover__image}
+              className={styles['cover-image']}
             />
             {cartProducts.length > 0 && (
               <span className={styles.badge}>{cartProducts.length}</span>
             )}
           </NavLink>
-          <button
-            className={styles.menu__icon}
+          <NavLink
+            className={({ isActive }) =>
+              classNames(styles.icon, styles['menu-icon'], { [styles['icon--is-active']]: isActive })
+            }
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <img
               src="Images/Menu.svg"
               alt="Menu"
-              className={styles.cover__image}
+              className={styles['cover-image']}
             />
-          </button>
+          </NavLink>
         </div>
       </header>
       <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />

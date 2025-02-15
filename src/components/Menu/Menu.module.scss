@@ -73,6 +73,35 @@
   justify-content: space-between;
 }
 
+.menu__close-button{
+  height: 48px;
+  border-left: 1px rgba(50, 53, 66, 1) solid;
+  border-bottom: 1px rgba(50, 53, 66, 1) solid;
+
+  position: relative;
+  //background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  position: relative;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+
+  &::after {
+    content: '';
+    background-color: $white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    transform: scale(0);
+    transform-origin: left;
+    transition: all 0.3s;
+  }
+}
+
 .menu__icon{
   width: 50vh;
   height: 60px;
@@ -104,4 +133,11 @@
   &:hover::after {
     opacity: 1;
   }
+}
+
+.cover-image {
+  object-fit: contain;
+  height: 16px;
+  display: flex;
+  align-self: center;
 }

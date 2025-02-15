@@ -1,5 +1,10 @@
 @import '/src/styles/main';
 
+.container{
+  min-height: 100vh;
+  height: auto;
+}
+
 .main{
   @include onDesktop {
     @include pageGrid;
@@ -14,7 +19,11 @@
 }
 
 .cart-items{
-  grid-column: 1 / 16;
+  grid-column: 1 / 17;
+}
+
+.breadcrumbs{
+  margin-top: 40px;
 }
 
 .total-wrapper{

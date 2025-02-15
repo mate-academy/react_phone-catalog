@@ -57,11 +57,19 @@ body {
   &__products {
     display: grid;
     grid-template-columns: repeat(10, minmax($card-width, 1fr));
-    gap: 46px 48px;
+    gap: 46px 16px;
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
     scroll-behavior: smooth;
     scrollbar-width: none;
+
+    @include onTablet{
+      grid-template-columns: repeat(10, minmax($tablet-card-width, 1fr));
+    }
+
+    @include onDesktop{
+      grid-template-columns: repeat(10, minmax($desktop-card-width, 1fr));
+    }
   }
 }

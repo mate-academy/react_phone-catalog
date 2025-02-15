@@ -1,6 +1,7 @@
 @import '../../styles/main';
 
 .product-card {
+
   width: $card-width;
   height: $card-height;
   padding:32px;
@@ -12,21 +13,29 @@
     height: $tablet-card-height;
   }
 
+  @include onDesktop{
+    width: $desktop-card-width;
+    height: $desktop-card-height;
+  }
+
   &__details {
     background-color: transparent;
   }
 
   &__image {
+    justify-content: center;
+    margin: auto;
     pointer-events: all;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    padding-bottom: 8px;
 
     &:hover{
       transform: scale(1.1);
     }
 
     width: 148px;
-    height: 108px;
+    max-height: 108px;
     object-fit: contain;
     object-position: center;
     background-color: transparent;
@@ -37,32 +46,40 @@
 
     @include onTablet{
       width: 173px;
-      height: 202px;
+      max-height: 180px;
+    }
+    @include onDesktop{
+      width: 208px;
+      max-height: 175px;
     }
   }
 
   &__name {
-    font-weight: 600;
-    font-size: 14px;
     height: 63px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
     color: $white;
-    background-color: $surface-1;
-    padding-top: 8px;
+    background-color: transparent;
+    margin-top: 16px;
+    margin-bottom: 8px;
   }
 
   &__prices {
     background-color: $surface-1;
+    padding-bottom: 16px;
 
     &::after {
       content: '';
-      width: 148px;
+      width: 100%;
+      margin-top: 8px;
       height: 1px;
       background-color: $grey;
       display: block;
+      top:80px;
     }
   }
-
-
 
   &__price {
     font-size: 22px;
@@ -106,13 +123,15 @@
     background-color: transparent;
 
     &-label {
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
       color: $grey-secondary;
       background-color: transparent;
     }
 
     &-value {
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
       color: $white;
       background-color: transparent;
     }
@@ -120,10 +139,11 @@
 
   &__buttons {
     display: flex;
-    gap: 24px;
+    gap: 8px;
     justify-content: center;
     align-items: center;
     background-color: transparent;
+    padding-top: 8px;
   }
 
   &__button {
@@ -139,6 +159,10 @@
       width: 125px;
       height: 40px;
       background-color: $primary-selected;
+
+      @include onDesktop{
+        width: 160px;
+      }
     }
 
       &-img {
@@ -162,4 +186,8 @@
 
 .cart-active{
   background-color: $favorites-default;
+}
+
+.product-card__fullPrice{
+  padding-left: 8px;
 }
