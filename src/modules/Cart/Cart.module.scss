@@ -1,0 +1,84 @@
+@import '/src/styles/main';
+
+.container{
+  min-height: 100vh;
+  height: auto;
+}
+
+.main{
+  @include onDesktop {
+    @include pageGrid;
+  }
+}
+
+.title{
+  color: $white;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.cart-items{
+  grid-column: 1 / 17;
+}
+
+.breadcrumbs{
+  margin-top: 40px;
+}
+
+.total-wrapper{
+  border: 1px solid rgba(59, 62, 74, 1);
+  height: 206px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+
+  @include onDesktop{
+    grid-column: 17/ -1;
+  }
+
+}
+
+.total-price{
+  font-size: 32px;
+  font-weight: 800;
+  color: $white;
+
+}
+
+.total-items{
+  font-size: 14px;
+  font-weight: 600;
+  color: $grey-secondary;
+  text-align: center;
+
+  &::after {
+    content: '';
+    width: 100vh;
+    max-width: 240px;
+    height: 1px;
+    background-color: $grey;
+    display: block;
+    top: 15px;
+    position: relative;
+
+    @include onTablet{
+      max-width: 1000px;
+    }
+
+    @include onDesktop{
+      max-width: 300px;
+    }
+  }
+}
+
+.checkout{
+  width: 240px;
+  height: 48px;
+  background: rgba(144, 91, 255, 1);
+
+  font-size: 14px;
+  font-weight: 700;
+  color: $white;
+}

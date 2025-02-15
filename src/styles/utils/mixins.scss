@@ -1,0 +1,48 @@
+/* eslint-disable */
+/* stylelint-disable */
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+
+  }
+}
+
+@mixin contentPaddingInline{
+  padding-inline: 16px;
+
+  @include onDesktop {
+    margin-inline: auto;
+
+    max-width: 1200px;
+  }
+}
+
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin pageGrid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(24, 1fr);
+    gap: 16px;
+
+  }
+}
+

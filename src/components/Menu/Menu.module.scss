@@ -1,0 +1,141 @@
+@import '/src/styles/main';
+@import "../Header/Header.module";
+
+.menu{
+  background-color: $main-color;
+  opacity: 0;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+
+}
+
+.menuVisible {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+.menu__nav{
+  display: flex;
+  justify-content: center;
+}
+
+.menu__nav-list{
+  list-style: none;
+  position: relative;
+}
+
+.menu__nav-item{
+  padding: 24px 0;
+  line-height: 27px;
+  text-align: center;
+}
+
+.menu__nav-link{
+  color: $grey-secondary;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  transition: color 0.3s;
+
+  &:hover{
+    color: $white;
+  }
+
+  &::after{
+    content: '';
+    background-color: $white;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    display: block;
+    opacity: 0;
+
+    &:hover{
+      opacity: 1;
+    }
+  }
+}
+
+.menu__bottom-icons{
+  display: flex;
+  margin-top: auto;
+  justify-content: space-between;
+}
+
+.menu__close-button{
+  height: 48px;
+  border-left: 1px rgba(50, 53, 66, 1) solid;
+  border-bottom: 1px rgba(50, 53, 66, 1) solid;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  position: relative;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+
+  &::after {
+    content: '';
+    background-color: $white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    transform: scale(0);
+    transform-origin: left;
+    transition: all 0.3s;
+  }
+}
+
+.menu__icon{
+  width: 50vh;
+  height: 60px;
+  border-top: 2px solid $grey;
+  border-right: 2px solid $grey;
+  border-left: 2px solid $grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  img{
+    width: 16px;
+    height: 16px;
+    display: flex;
+
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $white;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+.cover-image {
+  object-fit: contain;
+  height: 16px;
+  display: flex;
+  align-self: center;
+}

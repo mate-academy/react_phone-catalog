@@ -1,0 +1,27 @@
+@import '../../styles/main';
+
+.breadcrumbs{
+  display: flex;
+  align-items: center;
+  gap:5px;
+  padding: 24px 0 40px;
+
+}
+
+.home-image{
+  display: flex;
+  align-self: flex-end;
+}
+
+.small-title {
+  color: $grey-secondary;
+  text-decoration: none;
+}
+
+.is-active{
+  pointer-events: all;
+  color: $white;
+  text-decoration: none;
+}
+
+

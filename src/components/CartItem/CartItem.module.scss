@@ -1,0 +1,80 @@
+@import '/src/styles/main';
+
+.cart-item{
+  width: 100%;
+  height: 160px;
+  display: flex;
+
+  @media (max-width: 450px) {
+    flex-flow: row wrap;
+  }
+
+  align-items: center;
+  justify-content: space-between;
+  background-color: $surface-1;
+  margin-bottom: 16px;
+  gap: 16px;
+  padding: 16px;
+
+  @include onTablet{
+    height: 128px;
+    flex-flow: nowrap;
+  }
+
+
+}
+
+.product-image{
+  width: 80px;
+  height: 80px;
+  display: flex;
+  object-fit: contain;
+
+  background-color: transparent;
+}
+
+.quantity-wrapper{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  background-color: transparent;
+}
+
+.product-price{
+  font-size: 22px;
+  font-weight: 800;
+  color: $white;
+  background-color: $surface-1;
+  width: 80px;
+}
+
+.quantity{
+  background-color: transparent;
+  margin-inline: 10px;
+  color: $white;
+}
+
+.icon{
+  background-color: transparent;
+}
+
+.disabled{
+  background-color: transparent;
+  border: 1px solid rgba(59, 62, 74, 1);
+}
+
+.product-name{
+  background-color: transparent;
+  display: flex;
+  width: 130px;
+
+  @include onTablet{
+    width: 180px;
+  }
+
+  @include onDesktop{
+    width: 336px;
+  }
+
+}

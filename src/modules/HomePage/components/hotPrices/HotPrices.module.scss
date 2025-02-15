@@ -1,0 +1,25 @@
+/* eslint-disable scss/at-mixin-pattern */
+/* stylelint-disable scss/dollar-variable-empty-line-before */
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
+
+@import '/src/styles/main';
+
+*{
+  box-sizing: border-box;
+}
+
+.container{
+  height: fit-content;
+
+  @include pageGrid;
+}
+
+body {
+  margin: 0;
+}
+
+.hot-prices__container{
+  padding-top: 56px;
+  overflow: hidden;
+  width: 100%;
+}
