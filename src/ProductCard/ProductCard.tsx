@@ -14,7 +14,7 @@ export const ProductCard = ({ product }: Props) => {
         className="product-card__link"
         to={`/${product.category}/${product.itemId}`}
       >
-        <img className="product-card__img" src={`/${image}`} alt="product" />
+        <img className="product-card__img" src={`./${image}`} alt="product" />
       </Link>
 
       <Link
