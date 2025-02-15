@@ -50,10 +50,10 @@
         background-position: center;
         
         &--favorites{
-            background-image: url('./img/logos/heart-logo.png');
+            background-image: url('/img/logos/heart-logo.png');
         }
         &--cart {
-            background-image: url('./img/logos/cart-logo.png');
+            background-image: url('/img/logos/cart-logo.png');
             border-left: $border-grey;
         }
     }

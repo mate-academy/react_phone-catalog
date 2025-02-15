@@ -31,7 +31,7 @@
         height: 32px;
         width: 100%;
         background-repeat: no-repeat;
-        background-image: url('./img/logos/logo-big.png');
+        background-image: url('/img/logos/logo-big.png');
 
         @include on-tablet {
             flex: 1;
@@ -93,6 +93,6 @@
         background-color: $page-background-color;
         background-repeat: no-repeat;
         background-position: center;
-        background-image: url('./img/logos/arrow-up-logo.png');
+        background-image: url('/img/logos/arrow-up-logo.png');
     }
 }

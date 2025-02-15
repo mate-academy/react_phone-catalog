@@ -80,14 +80,14 @@
 
     &-image {
         background-repeat: no-repeat;
-        background-image: url('./img/other/category-accessories.png');
+        background-image: url('/img/other/category-accessories.png');
         aspect-ratio: 1 / 1;
         width: 100%;
         background-size: contain;
         background-position: center;
 
         @include on-tablet {
-            background-image: url('./img/other/category-accessories.png');
+            background-image: url('/img/other/category-accessories.png');
             grid-column: 2 / -2;
             background-position: left;
             aspect-ratio: 490 / 189;

@@ -44,14 +44,14 @@
         justify-content: center;
         align-items: center;
         background-color: $page-background-color;
-        background-image: url('./img/logos/heart-logo.png');
+        background-image: url('/img/logos/heart-logo.png');
         background-repeat: no-repeat;
         background-position: center;
         height: 48px;
         width: 48px;
 
         &--active {
-            background-image: url('./img/logos/heart-red.png');
+            background-image: url('/img/logos/heart-red.png');
             border: $border-grey;
             background-color: #161827;
         }
