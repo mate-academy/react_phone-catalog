@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import './App.scss';
-
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
-=======
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import './App.scss';
 import { Homepage } from './Homepage/Homepage';
@@ -69,4 +60,4 @@ export const App = () => {
     </>
   );
 };
->>>>>>> 2ed609b (add)
+
