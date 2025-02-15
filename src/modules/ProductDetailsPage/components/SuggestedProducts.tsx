@@ -1,11 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Product } from '@sTypes/Product';
+import { useHistory } from '@hooks/useHistory';
 import { ProductsSlider } from '@components/ProductsSlider';
 import { useProductsPreload } from '@hooks/useProductsPreload';
-
-import { getHistoryStateItem } from '@utils/getHistoryStateItem';
-import { setHistoryStateItem } from '@utils/setHistoryStateItem';
 
 function getRandomProducts(products: Product[]) {
   const result: Product[] = [];
@@ -33,9 +31,10 @@ export const SuggestedProducts: React.FC<Props> = React.memo(
   function SuggestedProducts({ className }) {
     const fisrtLoad = useRef(true);
     const { products } = useProductsPreload();
+    const { getHistoryItem, setHistoryItem } = useHistory();
 
     const [randomProducts, setRandomProducts] = useState<Product[]>(
-      getHistoryStateItem<Product[]>(NAME) || [],
+      getHistoryItem<Product[]>(NAME) || [],
     );
 
     const allProducts = useMemo(() => {
@@ -44,11 +43,11 @@ export const SuggestedProducts: React.FC<Props> = React.memo(
 
     useEffect(() => {
       if (!fisrtLoad.current && randomProducts.length) {
-        setHistoryStateItem(NAME, randomProducts);
+        setHistoryItem(NAME, randomProducts);
       }
 
       fisrtLoad.current = false;
-    }, [randomProducts]);
+    }, [randomProducts, setHistoryItem]);
 
     useEffect(() => {
       setRandomProducts(prevRandomProducts => {

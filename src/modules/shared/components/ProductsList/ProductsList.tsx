@@ -7,9 +7,7 @@ import { ItemsPerPage } from '@ProductsPage/types/ItemsPerPage';
 import { ProductCard } from '@components/ProductCard';
 import { ProductCardSkeleton } from '@components/ProductCardSkeleton';
 
-import { getHistoryStateItem } from '@utils/getHistoryStateItem';
-import { setHistoryStateItem } from '@utils/setHistoryStateItem';
-
+import { useHistory } from '@hooks/useHistory';
 import styles from './ProductsList.module.scss';
 
 const VISIBLE_COUNT_PAGINATION = 16;
@@ -47,10 +45,11 @@ export const ProductsList: React.FC<Props> = ({
   itemsPerPage = ItemsPerPage.all,
 }) => {
   const first = useRef(true);
+  const { getHistoryItem, setHistoryItem } = useHistory();
 
   const productsRef = useRef<HTMLDivElement | null>(null);
   const [visibleCount, setVisibleCount] = useState(
-    getHistoryStateItem<number>('visibleCount') || VISIBLE_COUNT_PAGINATION,
+    getHistoryItem<number>('visibleCount') || VISIBLE_COUNT_PAGINATION,
   );
 
   useEffect(() => {
@@ -84,8 +83,8 @@ export const ProductsList: React.FC<Props> = ({
   }, [itemsPerPage, products.length, visibleCount]);
 
   useEffect(() => {
-    setHistoryStateItem('visibleCount', visibleCount);
-  }, [visibleCount]);
+    setHistoryItem('visibleCount', visibleCount);
+  }, [setHistoryItem, visibleCount]);
 
   return (
     <section ref={!isLoading ? productsRef : null}>

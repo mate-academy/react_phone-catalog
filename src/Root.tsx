@@ -18,6 +18,8 @@ import { FavoritesPage } from './modules/FavoritesPage';
 import { store } from '@store/store';
 import { ProductDetailsPage } from '@ProductDetailsPage/ProductDetailsPage';
 
+import { useHistory } from '@hooks/useHistory';
+
 function getProductRoute(path: string) {
   return (
     <Route path={path}>
@@ -28,7 +30,9 @@ function getProductRoute(path: string) {
 }
 
 export const Root = () => {
-  history.replaceState(null, '');
+  const { resetHistory } = useHistory();
+
+  resetHistory();
   history.scrollRestoration = 'manual';
 
   return (

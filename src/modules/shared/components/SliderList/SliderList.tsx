@@ -7,9 +7,7 @@ import { Product } from '@sTypes/Product';
 import { ProductCard } from '@components/ProductCard';
 import { ProductCardSkeleton } from '@components/ProductCardSkeleton';
 
-import { useDebounce } from '@hooks/useDebounce';
-import { getHistoryStateItem } from '@utils/getHistoryStateItem';
-import { setHistoryStateItem } from '@utils/setHistoryStateItem';
+import { useHistory } from '@hooks/useHistory';
 
 type Props = {
   title: string;
@@ -33,6 +31,7 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
   const prevOffsetWidth = useRef(0);
   const prevScrollWidth = useRef(0);
   const [slider, setSlider] = useState(sliderRef.current);
+  const { getHistoryItem, setHistoryItem } = useHistory();
 
   const NAME = `slider/${title}`;
 
@@ -72,7 +71,7 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
   }, [slider]);
 
   useEffect(() => {
-    const prevPos = getHistoryStateItem<number>(NAME);
+    const prevPos = getHistoryItem<number>(NAME);
 
     if (prevPos || prevPos === 0) {
       setTimeout(() => {
@@ -82,19 +81,13 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sliderRef.current, title]);
 
-  const savePosCallback = useCallback((name: string, pos: number) => {
-    setHistoryStateItem(name, pos);
-  }, []);
-
-  const [savePos] = useDebounce(savePosCallback, 100);
-
   const handleScroll = useCallback(() => {
     if (!sliderRef.current) {
       return;
     }
 
-    savePos(NAME, sliderRef.current.scrollLeft);
-  }, [NAME, savePos, sliderRef]);
+    setHistoryItem(NAME, sliderRef.current.scrollLeft);
+  }, [NAME, setHistoryItem, sliderRef]);
 
   return (
     <div
