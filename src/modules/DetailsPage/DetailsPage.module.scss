@@ -1,0 +1,417 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.page {
+  display: flex;
+  flex-grow: 1;
+  padding-block: 24px 56px;
+}
+
+.path {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+}
+
+.pathHome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.pathText {
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+
+  @include transition;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title {
+  margin-bottom: 48px;
+  padding-inline: 16px;
+  color: $primary-color;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+
+  @include tablet-screen {
+    padding-inline: 0;
+    font-size: 32px;
+  }
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+
+  @include tablet-screen {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  @include desktop-screen {
+    gap: 50px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+
+  @include tablet-screen {
+    flex-direction: row-reverse;
+    gap: 25px;
+    margin-bottom: 0;
+  }
+}
+
+.device {
+  margin: 0 auto 20px;
+  width: 90%;
+
+  @include tablet-screen {
+    width: 220px;
+  }
+
+  @include desktop-screen {
+    width: 442px;
+  }
+
+  & > img {
+    margin-inline: auto;
+    max-height: 200px;
+
+    @include tablet-screen {
+      max-height: 304px;
+    }
+
+    @include desktop-screen {
+      max-height: 464px;
+    }
+  }
+}
+
+.images {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  @include tablet-screen {
+    justify-content: start;
+    flex-direction: column;
+  }
+
+  & > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $icons-color;
+    width: 50px;
+    height: 50px;
+
+    @include tablet-screen {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include desktop-screen {
+      width: 80px;
+      height: 80px;
+    }
+
+    &.activeImgStyle {
+      border: 1px solid $primary-color;
+    }
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  img {
+    height: 100%;
+    cursor: pointer;
+  }
+}
+
+.params {
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+}
+
+.paramsColorWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid $elements-color;
+}
+
+.paramsColor {
+  display: flex;
+  flex-direction: column;
+}
+
+.paramsSubtitle {
+  margin-bottom: 10px;
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.id {
+  color: $icons-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  text-align: right;
+}
+
+.colors {
+  display: flex;
+  gap: 10px;
+}
+
+.color {
+  border: 1px solid $elements-color;
+  border-radius: 50%;
+
+  @include transition;
+
+  & > a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid $color-white;
+    border-radius: 50%;
+
+    &.activeColor {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+}
+
+.paramsMemoryWrapper {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid $elements-color;
+}
+
+.memoryItems {
+  display: flex;
+  gap: 10px;
+}
+
+.memoryItem {
+  padding: 8px;
+  border: 1px solid $icons-color;
+  cursor: pointer;
+
+  @include transition;
+
+  &:hover {
+    color: $color-white;
+    background: $primary-color;
+    border-color: $primary-color;
+  }
+}
+
+.memoryActive {
+  color: $color-white;
+  background: $primary-color;
+  border-color: $primary-color;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.newPrice {
+  color: $primary-color;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -1%;
+}
+
+.oldPrice {
+  color: $secondary-color;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28px;
+  text-decoration-line: line-through;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.add {
+  width: 230px;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  background: $primary-color;
+  border: 1px solid $primary-color;
+
+  @include transition;
+
+  @include desktop-screen {
+    width: 265px;
+  }
+
+  &:hover {
+    color: $primary-color;
+    background: $color-white;
+  }
+}
+
+.success {
+  color: $color-success;
+  background: $color-white;
+  border: 1px solid $elements-color;
+}
+
+.favorite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid $icons-color;
+
+  @include transition;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+}
+
+.paramsInfo {
+  margin-bottom: 56px;
+}
+
+.paramsItems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.paramsItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.parameter {
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.parameterValue {
+  color: $primary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  text-align: right;
+}
+
+.bottom {
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+
+  @include desktop-screen {
+    display: flex;
+    gap: 50px;
+  }
+}
+
+.about,
+.techSpecs {
+  @include desktop-screen {
+    width: 50%;
+  }
+}
+
+.about {
+  @include desktop-screen {
+    margin-bottom: 80px;
+  }
+}
+
+.techSpecs {
+  margin-bottom: 56px;
+
+  @include tablet-screen {
+    margin-bottom: 64px;
+  }
+}
+
+.subtitle {
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  color: $primary-color;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+  border-bottom: 1px solid $elements-color;
+}
+
+.info {
+  margin-bottom: 32px;
+}
+
+.infoTitle {
+  margin-bottom: 20px;
+  color: $primary-color;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.infoText {
+  color: $secondary-color;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}

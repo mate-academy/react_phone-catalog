@@ -1,0 +1,35 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  gap: 100px;
+  height: 100%;
+  padding: 50px;
+}
+
+.img {
+  width: 400px;
+}
+
+.link {
+  padding: 10px 30px;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  background: $primary-color;
+  border: 1px solid $primary-color;
+
+  @include transition;
+
+  &:hover {
+    color: $primary-color;
+    background: $color-white;
+  }
+}

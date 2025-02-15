@@ -1,0 +1,95 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.item {
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px;
+  border: 1px solid $elements-color;
+
+  @include transition;
+
+  @include tablet-screen {
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 24px;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 23px;
+
+  @include tablet-screen {
+    width: 50%;
+    margin-bottom: 0;
+  }
+}
+
+.device {
+  height: 66px;
+}
+
+.title {
+  width: 128px;
+  color: $primary-color;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include tablet-screen {
+    width: 40%;
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons-color;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.count {
+  color: $color-black;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+}
+
+.price {
+  color: $primary-color;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+}

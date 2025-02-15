@@ -1,0 +1,64 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.favorite {
+  padding-block: 25px 56px;
+
+  @include tablet-screen {
+    padding-bottom: 64px;
+  }
+
+  @include desktop-screen {
+    padding-bottom: 80px;
+  }
+}
+
+.path {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 30px;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+}
+
+.pathText {
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.subtitle {
+  margin-bottom: 32px;
+  color: $secondary-color;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+}
+
+.products {
+  display: grid;
+  gap: 40px 16px;
+
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    grid-template-columns: repeat(2, 288px);
+
+    padding-inline: 0;
+  }
+
+  @include desktop-screen {
+    grid-template-columns: repeat(4, 272px);
+  }
+}
