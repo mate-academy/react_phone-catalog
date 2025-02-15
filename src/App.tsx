@@ -26,6 +26,7 @@ export const App = () => {
 
   return (
     <div className="App">
+      <h1 className="hiddenTitle">Product Catalog</h1>
       {menuPage ? (
         <div className="menuTab">
           <Menu
