@@ -12,6 +12,10 @@ export const Cart: React.FC = () => {
     return total + product.price * product.quantity;
   }, 0);
 
+  const totalItems = allProducts.reduce((total, product) => {
+    return total + product.quantity;
+  }, 0);
+
   return (
     <>
       <div className={styles.container}>
@@ -26,9 +30,7 @@ export const Cart: React.FC = () => {
           </div>
           <div className={styles['total-wrapper']}>
             <h2 className={styles['total-price']}>${totalPrice}</h2>
-            <p className={styles['total-items']}>
-              Total items: {allProducts.length}
-            </p>
+            <p className={styles['total-items']}>Total items: {totalItems}</p>
 
             <button className={styles.checkout}>Checkout</button>
           </div>
