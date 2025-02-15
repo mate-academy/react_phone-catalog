@@ -94,6 +94,7 @@ export const ProductDetailsPage = () => {
 
             <SuggestedProducts
               key={productId}
+              namespaceId={details.namespaceId}
               className={styles['product-details-page__suggested-products']}
             />
           </div>

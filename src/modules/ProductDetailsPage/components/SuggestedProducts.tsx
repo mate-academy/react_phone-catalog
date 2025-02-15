@@ -5,7 +5,7 @@ import { useHistory } from '@hooks/useHistory';
 import { ProductsSlider } from '@components/ProductsSlider';
 import { useProductsPreload } from '@hooks/useProductsPreload';
 
-function getRandomProducts(products: Product[]) {
+function getRandomProducts(products: Product[], namespaceId: string = '') {
   const result: Product[] = [];
   const usedIndices = new Set<number>();
 
@@ -13,6 +13,10 @@ function getRandomProducts(products: Product[]) {
     const randomIndex = Math.floor(Math.random() * products.length);
 
     if (!usedIndices.has(randomIndex)) {
+      if (namespaceId && products[randomIndex].itemId.includes(namespaceId)) {
+        continue;
+      }
+
       result.push(products[randomIndex]);
       usedIndices.add(randomIndex);
     }
@@ -23,12 +27,13 @@ function getRandomProducts(products: Product[]) {
 
 type Props = {
   className?: string;
+  namespaceId?: string;
 };
 
 const NAME = 'suggestedProducts';
 
 export const SuggestedProducts: React.FC<Props> = React.memo(
-  function SuggestedProducts({ className }) {
+  function SuggestedProducts({ className, namespaceId }) {
     const fisrtLoad = useRef(true);
     const { products } = useProductsPreload();
     const { getHistoryItem, setHistoryItem } = useHistory();
@@ -55,9 +60,9 @@ export const SuggestedProducts: React.FC<Props> = React.memo(
           return prevRandomProducts;
         }
 
-        return getRandomProducts(allProducts);
+        return getRandomProducts(allProducts, namespaceId);
       });
-    }, [allProducts]);
+    }, [allProducts, namespaceId]);
 
     return (
       <ProductsSlider
