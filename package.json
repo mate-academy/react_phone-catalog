@@ -7,18 +7,35 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
+<<<<<<< HEAD
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+=======
+    "@reduxjs/toolkit": "^2.3.0",
+    "bulma": "^1.0.1",
+    "classnames": "^2.5.1",
+    "lodash": "^4.17.21",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
+>>>>>>> 2ed609b (add)
     "react-router-dom": "^6.25.1",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
+<<<<<<< HEAD
     "@mate-academy/scripts": "^1.8.5",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
+=======
+    "@mate-academy/scripts": "^1.9.12",
+    "@mate-academy/students-ts-config": "*",
+    "@mate-academy/stylelint-config": "*",
+    "@types/lodash": "^4.17.13",
+>>>>>>> 2ed609b (add)
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
