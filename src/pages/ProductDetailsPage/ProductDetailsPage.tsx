@@ -41,6 +41,7 @@ export const ProductDetailsPage = () => {
   };
 
   useEffect(() => {
+    setloading(true);
     getItemDetails();
   }, [products, category, itemId]);
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Gadgets } from '../../types/Gadgets';
 import styles from './ItemDetails.module.scss';
 import classNames from 'classnames';
@@ -6,12 +6,15 @@ import { ItemTechSpecs } from '../ItemTechSpecs';
 import { Loader } from '../Loader';
 import { PrimaryButton } from '../Buttons/PrimaryButton';
 import { FavouritesButton } from '../Buttons/FavouritesButton';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   item: Gadgets;
 };
 
 export const ItemDetails: React.FC<Props> = ({ item }) => {
+  const [currentItem, setCurrentItem] = useState<Gadgets>(item);
+
   const {
     id,
     name,
@@ -31,20 +34,27 @@ export const ItemDetails: React.FC<Props> = ({ item }) => {
     zoom,
     cell,
     description,
-  } = item;
+  } = currentItem;
 
   const techSpecs = { screen, resolution, processor, ram, camera, zoom, cell };
 
+  const navigate = useNavigate();
+
   const [selectedImg, setSelectedImg] = useState(0);
-  const [selectedColor, setSelectedColor] = useState(color);
   const [selectedCapacity, setSelectedCapacity] = useState(capacity);
 
   const changeImg = (imgIndex: number) => {
     setSelectedImg(imgIndex);
   };
 
-  const changeColor = (newColor: string) => {
-    setSelectedColor(newColor);
+  const changeColor = (colorName: string) => {
+    const idColorName = (value: string) => value.split(' ').join('-');
+    const splitedId = id.split(idColorName(color));
+
+    splitedId.splice(splitedId.length - 1, 1, idColorName(colorName));
+    const newName = splitedId.join('');
+
+    navigate(`../${newName}`);
   };
 
   const changeCapacity = (newCapacity: string) => {
@@ -54,6 +64,10 @@ export const ItemDetails: React.FC<Props> = ({ item }) => {
   const colorStyleName = (colorName: string) => {
     return colorName.split(' ').join('');
   };
+
+  useEffect(() => {
+    setCurrentItem(item);
+  }, [item]);
 
   return (
     <div className={styles.itemDetails}>
@@ -101,7 +115,7 @@ export const ItemDetails: React.FC<Props> = ({ item }) => {
                   {colorsAvailable.map(currentColor => (
                     <button
                       className={classNames('colorToggle button', {
-                        'colorToggle-active': currentColor === selectedColor,
+                        'colorToggle-active': currentColor === color,
                       })}
                       key={color}
                       onClick={() => changeColor(currentColor)}

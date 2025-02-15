@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { CartItem } from '../CartItem';
 import styles from './Cart.module.scss';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ModalDialog } from '../ModalDialog/ModalDialog';
 import { CartContext } from '../Contexts/CartContext';
 import { NotFound } from '../NotFound';
@@ -11,6 +11,7 @@ export const Cart = () => {
 
   const [totalPrice, setTotalPrice] = useState(0);
   const [modal, setModal] = useState(false);
+  const [itemsQuantity, setItemsQuantity] = useState(0);
 
   const countTotalPrice = () => {
     setTotalPrice(
@@ -22,6 +23,14 @@ export const Cart = () => {
     );
   };
 
+  const countItemsQuantity = () => {
+    let quantity = 0;
+
+    [...addedProducts].map(item => (quantity += item.quantity));
+
+    setItemsQuantity(quantity);
+  };
+
   const activeModal = () => {
     setModal(!modal);
   };
@@ -31,6 +40,10 @@ export const Cart = () => {
 
     activeModal();
   };
+
+  useEffect(() => {
+    countItemsQuantity();
+  }, [addedProducts]);
 
   return (
     <div className="cartPage">
@@ -64,8 +77,8 @@ export const Cart = () => {
             <div className={styles.totalTitle}>
               <h1>${totalPrice}</h1>
               <span className="body-text-small grayText">
-                Total for {addedProducts.length} item
-                {addedProducts.length > 1 ? 's' : ''}
+                Total for {itemsQuantity} item
+                {itemsQuantity > 1 ? 's' : ''}
               </span>
             </div>
 

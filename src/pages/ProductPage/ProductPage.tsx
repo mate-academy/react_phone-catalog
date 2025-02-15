@@ -58,7 +58,7 @@ export const ProductPage: React.FC = () => {
         />
       )}
 
-      {!loading && !error && category && categoryItems.length && (
+      {!loading && !error && category && categoryItems.length > 0 && (
         <Products category={category} categoryItems={categoryItems} />
       )}
     </div>

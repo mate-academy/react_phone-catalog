@@ -21,7 +21,7 @@ export const ItemsIconCounter: React.FC<Props> = ({ icon }) => {
         </span>
       )}
 
-      <span className="icon cart" />
+      <span className={`icon ${icon}`} />
     </div>
   );
 };

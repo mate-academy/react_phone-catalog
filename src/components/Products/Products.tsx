@@ -38,7 +38,8 @@ export const Products: React.FC<Props> = ({ category, categoryItems }) => {
   const itemsPerPage = (searchParams.get('perPage') || 'All') as ItemsPerPage;
   const query = searchParams.get('query') || '';
 
-  const sortValue = searchParams.get('sort') || SortValues.age;
+  const sortValue =
+    searchParams.get('sort') || ('age' as keyof typeof SortValues);
   const sortBy = SortValues[sortValue as keyof typeof SortValues];
 
   const setSearchWith = (params: Params) => {
@@ -113,9 +114,9 @@ export const Products: React.FC<Props> = ({ category, categoryItems }) => {
     setCurrentPageItems([...sortedList].slice(firstItem, lastItem));
   };
 
-  // useEffect(() => {
-  //   setSearchWith({ sort: 'age' });
-  // }, []);
+  useEffect(() => {
+    setSearchWith({ sort: 'age' });
+  }, []);
 
   useEffect(() => {
     setSearchWith({ sort: 'age' });
