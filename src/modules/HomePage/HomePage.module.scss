@@ -27,7 +27,7 @@ $column-size: 32px;
     grid-template-rows: minmax(120px, 160px) minmax(180px, 400); 
     align-items: center;
     column-gap: 16px;
-    margin: auto;
+    margin: 100px auto auto;
     width: calc($column-count * $column-size + ($column-count - 1) * 16px);
     max-width: 100vw;
     margin-bottom: 80px;

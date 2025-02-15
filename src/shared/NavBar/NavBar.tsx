@@ -3,10 +3,58 @@ import styles from './NavBar.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useWindowWidth } from '../../hooks/WindowWidth';
 import classNames from 'classnames';
+import { motion } from 'framer-motion';
+
+const links = ['home', 'tablets', 'accessories'];
+
+const ActiveLine = React.memo(() => (
+  <motion.div
+    layoutId="activeLine"
+    style={{
+      height: '5px',
+      position: 'absolute',
+      bottom: '-1px',
+      width: 'calc(100% - 10px)',
+      backgroundColor: '#000',
+    }}
+  />
+));
+
+ActiveLine.displayName = 'ActiveLine';
+
+const LinkItem = React.memo(props => {
+  const { item, isSelected, handleClick } = props;
+
+  return (
+    <motion.div
+      initial={{ color: '#000' }}
+      animate={{ color: isSelected ? 'rgb(255, 0, 0)' : '#000' }}
+      style={{ height: '100%' }}
+      onClick={handleClick}
+    >
+      <NavLink
+        style={{
+          textTransform: 'uppercase',
+          color: isSelected ? '#000' : '#89939A',
+        }}
+        className={styles.links__item}
+        to={`/${item}`}
+      >
+        {isSelected && <ActiveLine />}
+        {item}
+      </NavLink>
+    </motion.div>
+  );
+});
+
+LinkItem.displayName = 'LinkItem';
+
+export default LinkItem;
 
 export const NavBar: React.FC = () => {
   const [isPhone, setIsPhone] = useState<boolean>(false);
   const [visibleAside, setVisibleAside] = useState<boolean>(false);
+  const [linkIndex, setLinkIndex] = useState<number>(0);
   const windowWidth = useWindowWidth();
 
   useEffect(() => {
@@ -55,49 +103,16 @@ export const NavBar: React.FC = () => {
         ) : (
           <>
             <div className={styles.links}>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? `${styles.links__item} ${styles.active}`
-                    : styles.links__item
-                }
-              >
-                HOME
-              </NavLink>
-
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? `${styles.links__item} ${styles.active}`
-                    : styles.links__item
-                }
-                to={'/phones'}
-              >
-                PHONES
-              </NavLink>
-
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? `${styles.links__item} ${styles.active}`
-                    : styles.links__item
-                }
-                to={'/tablets'}
-              >
-                TABLETS
-              </NavLink>
-
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? `${styles.links__item} ${styles.active}`
-                    : styles.links__item
-                }
-                to={'/accessories'}
-              >
-                ACCESSORIES
-              </NavLink>
+              {links.map((item, itemIndex) => {
+                return (
+                  <LinkItem
+                    key={item}
+                    item={item}
+                    isSelected={itemIndex === linkIndex}
+                    handleClick={() => setLinkIndex(itemIndex)}
+                  />
+                );
+              })}
             </div>
             <div className={styles.wrapper}>
               <div className={styles.icon}>
