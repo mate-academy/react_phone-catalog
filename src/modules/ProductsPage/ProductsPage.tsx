@@ -16,12 +16,14 @@ import {
 import { Error } from '@components/Error/Error';
 import { Dropdown } from './components/Dropdown';
 import { ProductsList } from '@components/ProductsList';
+import { ProductsCount } from '@components/ProductsCount';
 import { ProductsNavigation } from './components/ProductsNavigation';
 
 import { getSearchParam } from './utils/getSearchParam';
 import { useProductsPreload } from '@hooks/useProductsPreload';
 import { useLoweredLocation } from '@hooks/useLoweredLocation';
-import { ProductsCount } from '@components/ProductsCount';
+
+import { getHeaderHeight } from '@utils/getHeaderHeight';
 
 function sortProducts(products: Product[], sort: SortBy, defaultSort: SortBy) {
   if (sort === defaultSort) {
@@ -127,7 +129,7 @@ export const ProductsPage = () => {
   const optionsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const headerHeight = (window.innerWidth < 640 ? 48 : 64) + 10;
+    const headerHeight = getHeaderHeight();
 
     if (optionsRef.current) {
       const elementPosition = optionsRef.current.offsetTop;

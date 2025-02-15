@@ -13,10 +13,12 @@ import { Price } from '@components/Price';
 type Props = {
   product: Product;
   hidePrevPrice?: boolean;
+
+  onRemoveFromFavorite?: () => void;
 };
 
 export const ProductCard = React.forwardRef<HTMLElement, Props>(
-  function ProductCard({ product, hidePrevPrice }, ref) {
+  function ProductCard({ product, hidePrevPrice, onRemoveFromFavorite }, ref) {
     const navigation = useNavigate();
     const { price, fullPrice, screen, capacity, ram, image } = product;
 
@@ -55,7 +57,10 @@ export const ProductCard = React.forwardRef<HTMLElement, Props>(
 
         <Characteristics characteristics={characteristics} />
 
-        <AddToCard itemId={product.itemId} />
+        <AddToCard
+          itemId={product.itemId}
+          onRemoveFromFavorite={onRemoveFromFavorite}
+        />
       </article>
     );
   },

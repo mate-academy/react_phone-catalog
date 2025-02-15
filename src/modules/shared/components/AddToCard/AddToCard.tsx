@@ -14,9 +14,13 @@ import { toggle as toggleShoppingCart } from '@features/shoppingCartSlice';
 
 type Props = {
   itemId: string;
+  onRemoveFromFavorite?: () => void;
 };
 
-export const AddToCard: React.FC<Props> = ({ itemId }) => {
+export const AddToCard: React.FC<Props> = ({
+  itemId,
+  onRemoveFromFavorite = () => {},
+}) => {
   const dispatch = useAppDispatch();
 
   const favorites = useAppSelector(state => state.favorites);
@@ -44,6 +48,11 @@ export const AddToCard: React.FC<Props> = ({ itemId }) => {
         className={styles['add-to-card__icon']}
         onClick={e => {
           e.stopPropagation();
+
+          if (isInFavorite) {
+            onRemoveFromFavorite();
+          }
+
           dispatch(toggleFavorites(itemId));
         }}
       >
