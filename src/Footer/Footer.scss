@@ -84,9 +84,8 @@
         border: none;
         cursor: pointer;
         transition: 0.3s ease;
-        &:hover {
-            transform: scale(1.01);
-        }
+        
+        @include hover-and-active-for-buttons;
 
         width: 32px;
         height: 32px;

@@ -1,26 +1,27 @@
 @use '../utils' as *;
 
-
-.cart-card  {
+.cart-card {
     padding: 16px;
     box-sizing: border-box;
     background-color: #161827;
+    transition: background-color 0.3s ease;
 
-    @include on-desktop{
+
+
+    @include on-desktop {
         display: flex;
         height: 128px;
         align-items: center;
         gap: 24px;
-
     }
+
     &__top {
         height: 80px;
         display: flex;
         align-items: center;
-
         gap: 16px;
 
-        @include on-desktop{
+        @include on-desktop {
             gap: 24px;
         }
     }
@@ -29,15 +30,27 @@
         width: 16px;
         height: 16px;
         background-image: url('/img/logos/cross-logo.png');
+        background-size: 11px;
         background-position: center;
         background-repeat: no-repeat;
         flex-shrink: 0;
         cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.3s ease;
+
+        &:hover {
+            transform: scale(1.2);
+            opacity: 0.7;
+        }
+
+        &:active {
+            transform: scale(0.9);
+            opacity: 0.5;
+        }
     }
+
     &__image {
         width: 80px;
         height: 80px;
-
         object-fit: contain;
         flex-shrink: 0;
         background-position: center;
@@ -49,7 +62,7 @@
         font-size: 14px;
         font-weight: 600;
 
-        @include on-desktop{
+        @include on-desktop {
             width: 336px;
         }
     }
@@ -60,7 +73,7 @@
         display: flex;
         justify-content: space-between;
 
-        @include on-desktop{
+        @include on-desktop {
             margin-top: 0;
             gap: 24px;
         }
@@ -73,21 +86,32 @@
 
     &__button {
         cursor: pointer;
-        background-color: #161827;
         color: $white-color;
         height: 32px;
         width: 32px;
         border: $border-grey;
         background-repeat: no-repeat;
         background-position: center;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        background-color: $page-background-color;
 
+        @include hover-and-active-for-buttons;
+        
+        background-size: 11px;
+        &:disabled {
+            background-color: $page-background-color;
+            opacity: 0.5;
+
+            pointer-events: none;
+        }
         &--minus {
-            background-image: url('/img/logos/minus-logo.png'); 
+            background-image: url('/img/logos/minus-logo.png');
+           
         }
 
         &--plus {
             background-image: url('/img/logos/plus-logo.png');
-            background-color: $page-background-color;
+
         }
     }
 
@@ -107,9 +131,8 @@
         font-weight: 800;
         text-align: end;
 
-        @include on-desktop{
+        @include on-desktop {
             width: 80px;
         }
-        
     }
 }

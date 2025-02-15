@@ -39,9 +39,8 @@
         cursor: pointer;
         &--active {
             background-color: $page-background-color;
-            &:hover {
-                transform: scale(1.05);
-            }
+            
+            @include hover-and-active-for-buttons;
         }
 
         &--previous {

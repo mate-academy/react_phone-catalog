@@ -29,3 +29,14 @@
         grid-template-columns: repeat($gridColumnsDesctop, 1fr);
     }
 }
+
+@mixin hover-and-active-for-buttons {
+    &:hover {
+        transform: translateY(-3px);
+        transition: transform 0.2s ease-out;
+      }
+      
+      &:active {
+        transform: translateY(1px);
+      }
+}

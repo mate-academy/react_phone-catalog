@@ -15,16 +15,8 @@
     font-family: inherit;
     font-size: 14px;
     font-weight: 700;
-    &:hover {
-        transform: translateY(-3px);
-        transition: transform 0.2s ease-out;
-      }
-      
-      &:active {
-        transform: translateY(1px);
-      }
-      
-      
+
+    @include hover-and-active-for-buttons;
       
     &-buy {
         width: 100px;
