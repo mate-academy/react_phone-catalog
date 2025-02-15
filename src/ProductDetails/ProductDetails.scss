@@ -5,7 +5,7 @@
 .product-details {
     &__arrow-left {
         background-position: center;
-        background-image: url('/img/logos/left-arrow-logo.png');
+        background-image: url('./img/logos/left-arrow-logo.png');
         background-repeat: no-repeat;
         height: 16px;
         width: 16px;
@@ -304,7 +304,7 @@
             width: 48px;
             background-position: center;
             background-color: $page-background-color;
-            background-image: url('/img/logos/heart-logo.png');
+            background-image: url('./img/logos/heart-logo.png');
             background-repeat: no-repeat;
            
         }

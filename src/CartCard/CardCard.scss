@@ -28,7 +28,7 @@
     &__icon {
         width: 16px;
         height: 16px;
-        background-image: url('/img/logos/cross-logo.png');
+        background-image: url('./img/logos/cross-logo.png');
         background-position: center;
         background-repeat: no-repeat;
         flex-shrink: 0;
@@ -82,11 +82,11 @@
         background-position: center;
 
         &--minus {
-            background-image: url('/img/logos/minus-logo.png'); 
+            background-image: url('./img/logos/minus-logo.png'); 
         }
 
         &--plus {
-            background-image: url('/img/logos/plus-logo.png');
+            background-image: url('./img/logos/plus-logo.png');
             background-color: $page-background-color;
         }
     }

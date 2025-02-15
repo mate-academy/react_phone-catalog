@@ -16,14 +16,14 @@
   
         justify-content: center;
         &--home {
-            background-image: url('/img/logos/home-logo.png');
+            background-image: url('./img/logos/home-logo.png');
             transition: 0.3s ease;
             &:hover {
                 transform: scale(1.1);
             }
         }
         &--right-arrow {
-            background-image: url('/img/logos/arrow-right-logo.png');
+            background-image: url('./img/logos/arrow-right-logo.png');
         }
     }
     &__breadcrumb-link {
