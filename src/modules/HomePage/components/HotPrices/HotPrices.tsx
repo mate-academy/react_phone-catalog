@@ -16,7 +16,9 @@ export const HotPrices: React.FC = () => {
 
         setElements(result);
       })
-      .catch(() => console.log('error with get data of HotPrices'));
+      .catch(() => {
+        throw new Error('problem with catch');
+      });
   }, []);
 
   return (

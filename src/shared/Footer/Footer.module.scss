@@ -1,20 +1,41 @@
 @import '../styles/index.scss';
 
+img {
+    margin: 0;
+}
+
 .footer {
-    max-width: $content-max-width;
+    max-width: $element-max-width;
     box-sizing: border-box;
     margin-top: 80px;
     @include setSize(100%, 96px);
     box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
     @include flexCenter;
     justify-content: space-between;
-    padding-inline: 152px;
+    padding-inline: minmax(32px, 152px);
+    margin-inline: auto;
+
+    @include onPhone {
+        height: 40vh;
+        margin: 0;
+        padding: 16px;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-around;
+
+    }
 
     &__links {
         @include flexCenter;
         flex-direction: row;
         width: 35%;
         justify-content: space-between;
+
+        @include onPhone {
+            flex-direction: column;
+            align-items: start;
+            gap: 16px;
+        }
     }
 
     &__link {
@@ -26,13 +47,22 @@
 }
 
 .logo {
-    @include setSize (128px, 100%);
-    @include flexCenter;
+    display: inline-block;
+    margin-left: 32px;
+
+    @include onPhone {
+        margin: 0;
+    }
 }
 
 .toTop {
     @include flexCenter;
     gap: 16px;
+    margin-right: 32px;
+
+    @include onPhone {
+        margin-inline: auto;
+    }
 
     &__title {
         @include setFont($font-mont, 12px, 700);

@@ -4,14 +4,15 @@ html {
     scroll-behavior: smooth;
 }
 
-main {
-    max-width: 1200px;
+.layout {
+    box-sizing: border-box;
     margin: auto;
-    @include flexCenter;
-    flex-direction: column;
+    max-width: $content-max-width;
 }
 
-.layout {
-    @include flexCenter;
-    flex-direction: column;
+main {
+    padding: auto;
+    box-sizing: border-box;
+    margin: auto;
+    max-width: $element-max-width;
 }

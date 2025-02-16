@@ -1,0 +1,80 @@
+@import '/src/shared/styles/index.scss';
+
+.categories {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: $content-max-width;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding-inline: $content-padding-inline;
+
+    &__content {
+    aspect-ratio: 20 / 5;
+    max-height: 368px;
+    
+    @include flexCenter;
+    flex-direction: row;
+    gap: 16px;
+
+    @include onPhone {
+        flex-direction: column;
+        aspect-ratio: 5 / 16;
+        width: 100%;
+        max-height: 850px;
+        box-sizing: border-box;
+        gap: 64px;
+      
+    }
+    }
+
+    &__category {
+        @include setSize(100%, 100%);
+        @include onPhone {
+            margin-bottom: 32px;
+        }
+    }
+
+    &__title {
+        @include setFont($font-mont, 32px, 800);
+    }
+
+    &__name{
+        margin: 24px 0 0 0;
+        @include setFont($font-mont, 20px, 700);
+    }
+
+    &__value {
+        @include setFont($font-mont, 14px, 500);
+        color: $color-grey;
+        margin: 0;
+    }
+
+    &__window {
+        overflow: hidden;
+        @include setSize(100%, 100%);
+        position: relative;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+    }
+
+   &__background {
+    @include setSize(100%, 100%);
+    transition: all 0.3s;
+   }
+    
+    &__image {
+        object-fit: contain;
+        @include setSize(100%, 100%);
+        position: absolute;
+        right: -25%;
+        bottom: -15%;
+        transition: all 0.3s ease-in-out;
+    }
+    
+}
