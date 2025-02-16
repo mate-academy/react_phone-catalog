@@ -1,0 +1,64 @@
+@use '@styles/mixins' as *;
+@use '@styles/extends' as *;
+
+$p-column-gap: 16px;
+$t-column-gap: 24px;
+
+.cart-item-skeleton {
+  padding: $p-column-gap;
+  border: 1px solid var(--elements-color);
+
+  display: flex;
+  gap: $p-column-gap;
+  flex-direction: column;
+
+  @include on-tablet {
+    padding: $t-column-gap;
+
+    gap: $t-column-gap;
+    flex-direction: row;
+  }
+
+  &__top {
+    flex-grow: 1;
+    display: flex;
+    gap: $p-column-gap;
+    align-items: center;
+
+    @include on-tablet {
+      gap: $t-column-gap;
+    }
+  }
+
+  &__image {
+    width: 80px;
+    aspect-ratio: 1;
+
+    @extend %skeleton;
+  }
+
+  &__title {
+    flex-grow: 1;
+
+    @extend %skeleton;
+    @include body-text;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: $t-column-gap;
+      justify-content: stretch;
+    }
+  }
+
+  &__price {
+    width: 80px;
+    text-align: right;
+
+    @extend %skeleton;
+  }
+}

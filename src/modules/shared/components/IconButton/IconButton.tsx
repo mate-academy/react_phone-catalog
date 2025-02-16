@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import styles from './Arrow.module.scss';
+import styles from './IconButton.module.scss';
 
-import { ArrowType } from '@sTypes/ArrowType';
+import { IconButtonType } from '@sTypes/IconButtonType';
 
 type Props = {
   ariaLabel?: string;
@@ -13,7 +13,7 @@ type Props = {
   onClick?: () => void;
 
   icon?: boolean;
-  type: ArrowType;
+  type: IconButtonType;
 
   tall?: boolean;
   small?: boolean;
@@ -22,7 +22,7 @@ type Props = {
   hideBorders?: boolean;
 };
 
-export const Arrow: React.FC<Props> = ({
+export const IconButton: React.FC<Props> = ({
   ariaLabel,
   ariaHidden,
 
@@ -42,18 +42,20 @@ export const Arrow: React.FC<Props> = ({
 
   return (
     <Element
-      className={classNames(className, styles.arrow, {
-        [styles['arrow--tall']]: tall,
-        [styles['arrow--small']]: small,
-        [styles['arrow--disabled']]: disabled,
-        [styles['arrow--secondary']]: secondary,
-        [styles['arrow--hide-borders']]: hideBorders,
+      className={classNames(className, styles['icon-button'], {
+        [styles['icon-button--tall']]: tall,
+        [styles['icon-button--small']]: small,
+        [styles['icon-button--disabled']]: disabled,
+        [styles['icon-button--secondary']]: secondary,
+        [styles['icon-button--hide-borders']]: hideBorders,
       })}
       onClick={onClick}
       aria-label={ariaLabel}
       aria-hidden={ariaHidden}
     >
-      <div className={classNames(styles.arrow__content, styles[type])}></div>
+      <div
+        className={classNames(styles['icon-button__content'], styles[type])}
+      ></div>
     </Element>
   );
 };

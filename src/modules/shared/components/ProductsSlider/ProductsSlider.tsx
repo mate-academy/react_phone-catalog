@@ -2,9 +2,9 @@ import classNames from 'classnames';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Product } from '@sTypes/Product';
-import { ArrowType } from '@sTypes/ArrowType';
+import { IconButtonType } from '@sTypes/IconButtonType';
 
-import { Arrow } from '@components/Arrow';
+import { IconButton } from '@components/IconButton';
 import { SliderList } from '@components/SliderList';
 
 import { useScrollAnimation } from '@hooks/useScrollAnimation';
@@ -159,15 +159,15 @@ export const ProductsSlider: React.FC<Props> = React.memo(
           <h2>{title}</h2>
 
           <div className={styles['products-slider__control-buttons']}>
-            <Arrow
-              type={ArrowType.left}
+            <IconButton
+              type={IconButtonType.arrowLeft}
               disabled={leftArrow}
               ariaLabel="Previous Page"
               onClick={!leftArrow ? scrollLeft : undefined}
             />
 
-            <Arrow
-              type={ArrowType.right}
+            <IconButton
+              type={IconButtonType.arrowRight}
               disabled={rightArrow}
               ariaLabel="Next Page"
               onClick={!rightArrow ? scrollRight : undefined}

@@ -17,7 +17,7 @@ const initialState: State = loadPrevState<State>(NAME) || {
   length: 0,
 };
 
-const shoppingCartSlice = createSlice({
+const cartSlice = createSlice({
   name: NAME,
   initialState,
   reducers: {
@@ -34,14 +34,14 @@ const shoppingCartSlice = createSlice({
       }
     },
 
-    add: (state, action: PayloadAction<number>) => {
+    add: (state, action: PayloadAction<string>) => {
       const itemId = action.payload;
 
       state.length += 1;
       state.itemIds[itemId] = 1 + (state.itemIds[itemId] || 0);
     },
 
-    take: (state, action: PayloadAction<number>) => {
+    take: (state, action: PayloadAction<string>) => {
       const itemId = action.payload;
       const count = state.itemIds[itemId];
 
@@ -55,8 +55,13 @@ const shoppingCartSlice = createSlice({
         state.length -= 1;
       }
     },
+
+    clear: state => {
+      state.length = 0;
+      state.itemIds = {};
+    },
   },
 });
 
-export default shoppingCartSlice.reducer;
-export const { toggle, add: plus, take } = shoppingCartSlice.actions;
+export default cartSlice.reducer;
+export const { toggle, add, take, clear } = cartSlice.actions;

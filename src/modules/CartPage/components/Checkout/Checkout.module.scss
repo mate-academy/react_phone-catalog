@@ -1,0 +1,41 @@
+@use '@styles/mixins' as *;
+@use '@styles/extends' as *;
+
+.checkout {
+  padding: 24px;
+
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  border: 1px solid var(--elements-color);
+
+  @include on-desktop {
+    gap: 24px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__title {
+    display: flex;
+  }
+
+  &__count {
+    color: var(--secondary-color);
+
+    @include body-text;
+  }
+
+  &__line {
+    border: 1px solid var(--elements-color);
+  }
+
+  &__button {
+    height: 48px;
+  }
+}

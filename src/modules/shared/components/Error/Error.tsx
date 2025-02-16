@@ -1,14 +1,17 @@
 import React from 'react';
+import classNames from 'classnames';
 import styles from './Error.module.scss';
 
 type Props = {
   error: string;
   reload?: () => void;
+
+  className?: string;
 };
 
-export const Error: React.FC<Props> = ({ error, reload }) => {
+export const Error: React.FC<Props> = ({ error, reload, className }) => {
   return (
-    <div className={styles.error}>
+    <div className={classNames(className, styles.error)}>
       {error}
 
       {reload && (

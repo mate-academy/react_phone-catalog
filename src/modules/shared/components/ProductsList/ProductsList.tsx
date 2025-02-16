@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Product } from '@sTypes/Product';
 import { ItemsPerPage } from '@ProductsPage/types/ItemsPerPage';
@@ -9,7 +9,7 @@ import { ProductCardSkeleton } from '@components/ProductCardSkeleton';
 import styles from './ProductsList.module.scss';
 
 import { useHistory } from '@hooks/useHistory';
-import { getHeaderHeight } from '@utils/getHeaderHeight';
+import { useListRestoration } from '@hooks/useListRestoration';
 
 const VISIBLE_COUNT_PAGINATION = 16;
 
@@ -87,68 +87,14 @@ export const ProductsList: React.FC<Props> = ({
     setHistoryItem('visibleCount', visibleCount);
   }, [setHistoryItem, visibleCount]);
 
-  const lastDiff = useRef(0);
-  const lastScroll = useRef(0);
-  const lastHeight = useRef<number | null>(null);
-
   const lastItem = useRef<HTMLElement | null>(null);
 
-  useEffect(() => {
-    const item = lastItem.current;
-    const list = productsRef.current;
-    const prevHeight = lastHeight.current;
-
-    if (!item || !list) {
-      return;
-    }
-
-    if (prevHeight === null) {
-      const prevScroll = lastScroll.current;
-
-      if (
-        list.offsetHeight === item.offsetHeight &&
-        prevScroll !== window.scrollY
-      ) {
-        const headerHeight = getHeaderHeight();
-        const listTop = list.offsetTop - headerHeight;
-
-        window.scrollTo({
-          behavior: 'instant',
-          top: listTop,
-        });
-      } else {
-        window.scrollTo({
-          behavior: 'instant',
-          top: prevScroll,
-        });
-      }
-
-      return;
-    }
-
-    window.scrollTo({
-      behavior: 'instant',
-      top: item.offsetTop + lastDiff.current,
-    });
-  });
+  const { saveDiff, saveLastScroll } = useListRestoration(
+    productsRef,
+    lastItem,
+  );
 
   const lastItemId = products.length - 1;
-  const handleRemoveFromFavorite = useCallback(() => {
-    const item = lastItem.current;
-    const list = productsRef.current;
-
-    if (item && list) {
-      const windowTop = window.scrollY;
-      const elementTop = item.offsetTop;
-
-      lastHeight.current = list.offsetHeight;
-      lastDiff.current = windowTop - elementTop;
-    }
-  }, []);
-
-  const saveLastScroll = useCallback(() => {
-    lastScroll.current = window.scrollY;
-  }, []);
 
   return (
     <section
@@ -173,7 +119,7 @@ export const ProductsList: React.FC<Props> = ({
               product={product}
               ref={i === lastItemId ? lastItem : undefined}
               onRemoveFromFavorite={
-                i === lastItemId ? handleRemoveFromFavorite : saveLastScroll
+                i === lastItemId ? saveDiff : saveLastScroll
               }
             />
           ))}

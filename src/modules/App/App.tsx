@@ -46,11 +46,12 @@ export const App = () => {
       <div
         className={classNames(styles.app__body, {
           [styles['app__body--home']]: pathname === '/',
+          [styles['app__body--cart']]: pathname === '/cart',
           [styles['app__body--shopping-bag']]: pathname === '/shopping-bag',
         })}
       >
         <div className={styles.app__content}>
-          {!['/', '/404', '/shopping-bag'].includes(pathname) && (
+          {!['/', '/404', '/cart'].includes(pathname) && (
             <Breadcrumbs pathname={pathname} />
           )}
 

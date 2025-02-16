@@ -4,9 +4,9 @@
 $icon-size: 32px;
 $border-size: 1px;
 
-.arrow {
-  aspect-ratio: 1;
+.icon-button {
   width: $icon-size;
+  height: $icon-size;
   box-sizing: border-box;
   border: $border-size solid var(--icons-color);
 
@@ -28,37 +28,53 @@ $border-size: 1px;
     mask-repeat: no-repeat;
     background-color: var(--primary-color);
 
-    &--up,
-    &--down {
-      mask-size: 6px 10px;
+    &--arrow {
+      &--up,
+      &--down {
+        mask-size: 6px 10px;
+      }
+
+      &--left,
+      &--right {
+        mask-size: 10px 6px;
+      }
+
+      &--up {
+        mask-image: url('/img/arrows/arrow-up.svg');
+      }
+
+      &--down {
+        mask-image: url('/img/arrows/arrow-down.svg');
+      }
+
+      &--left {
+        mask-image: url('/img/arrows/arrow-left.svg');
+      }
+
+      &--right {
+        mask-image: url('/img/arrows/arrow-right.svg');
+      }
     }
 
-    &--left,
-    &--right {
-      mask-size: 10px 6px;
-    }
+    &--icon {
+      &--close {
+        mask-image: url('/img/icons/icon-close.svg');
+      }
 
-    &--up {
-      mask-image: url('/img/arrows/arrow-up.svg');
-    }
+      &--plus {
+        mask-image: url('/img/icons/icon-plus.svg');
+      }
 
-    &--down {
-      mask-image: url('/img/arrows/arrow-down.svg');
-    }
-
-    &--left {
-      mask-image: url('/img/arrows/arrow-left.svg');
-    }
-
-    &--right {
-      mask-image: url('/img/arrows/arrow-right.svg');
+      &--minus {
+        mask-image: url('/img/icons/icon-minus.svg');
+      }
     }
   }
 
   &--tall {
     height: 100%;
 
-    .arrow__content {
+    .icon-button__content {
       height: 100%;
     }
   }
@@ -76,7 +92,7 @@ $border-size: 1px;
       border: $border-size solid var(--elements-color);
     }
 
-    .arrow__content {
+    .icon-button__content {
       background-color: var(--icons-color);
     }
   }
@@ -86,7 +102,7 @@ $border-size: 1px;
       border: $border-size solid var(--elements-color);
     }
 
-    .arrow__content {
+    .icon-button__content {
       background-color: var(--icons-color);
     }
   }

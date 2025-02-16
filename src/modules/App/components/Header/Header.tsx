@@ -23,7 +23,7 @@ export const Header: React.FC<Props> = ({ className }) => {
   const isMenuOpen = useAppSelector(state => state.menu);
 
   const favorites = useAppSelector(state => state.favorites);
-  const shoppingCart = useAppSelector(state => state.shoppingCart);
+  const shoppingCart = useAppSelector(state => state.cart);
 
   return (
     <header className={classNames(className, styles.header)}>
@@ -43,7 +43,7 @@ export const Header: React.FC<Props> = ({ className }) => {
         </NavLinkItem>
 
         <NavLinkItem
-          to="./shopping-bag"
+          to="./cart"
           aria-label="Shopping Bag"
           className={styles['header__user-icon']}
         >

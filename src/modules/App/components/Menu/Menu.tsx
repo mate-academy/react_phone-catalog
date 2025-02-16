@@ -18,7 +18,7 @@ export const Menu = () => {
   const isMenuOpen = useAppSelector(state => state.menu);
 
   const favorites = useAppSelector(state => state.favorites);
-  const shoppingCart = useAppSelector(state => state.shoppingCart);
+  const shoppingCart = useAppSelector(state => state.cart);
 
   // disable scrolling while menu is open
   useEffect(() => {
@@ -54,7 +54,7 @@ export const Menu = () => {
           </NavLinkItem>
 
           <NavLinkItem
-            to="./shopping-bag"
+            to="./cart"
             aria-label="Shopping Bag"
             className={styles['menu__user-icon']}
             onClick={changePage}

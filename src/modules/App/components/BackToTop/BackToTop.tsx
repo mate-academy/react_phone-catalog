@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Arrow } from '@components/Arrow';
-import { ArrowType } from '@sTypes/ArrowType';
+import { IconButton } from '@components/IconButton';
+import { IconButtonType } from '@sTypes/IconButtonType';
 
 import styles from './BackToTop.module.scss';
 
@@ -17,10 +17,10 @@ export const BackToTop: React.FC<Props> = ({ className }) => {
       onClick={() => window.scrollTo(0, 0)}
     >
       <div className={styles['back-to-top__label']}>Back to top</div>
-      <Arrow
+      <IconButton
         icon
         className={styles['back-to-top__arrow']}
-        type={ArrowType.up}
+        type={IconButtonType.arrowUp}
       />
     </button>
   );

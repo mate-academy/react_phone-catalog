@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Arrow } from '@components/Arrow';
+import { IconButton } from '@components/IconButton';
 import { SearchLink } from '../SearchLink';
-import { ArrowType } from '@sTypes/ArrowType';
+import { IconButtonType } from '@sTypes/IconButtonType';
 
 import styles from './ProductsNavigation.module.scss';
 
@@ -37,7 +37,11 @@ export const ProductsNavigation: React.FC<Props> = ({ page, pagesCount }) => {
         style={!page ? { pointerEvents: 'none' } : undefined}
         params={{ page: page !== 1 ? `${page}` : null }}
       >
-        <Arrow ariaHidden type={ArrowType.left} disabled={!page} />
+        <IconButton
+          ariaHidden
+          type={IconButtonType.arrowLeft}
+          disabled={!page}
+        />
       </SearchLink>
 
       <div className={styles['products-navigation__pages']}>
@@ -63,9 +67,9 @@ export const ProductsNavigation: React.FC<Props> = ({ page, pagesCount }) => {
         style={page === pagesCount - 1 ? { pointerEvents: 'none' } : undefined}
         params={{ page: `${page + 2}` }}
       >
-        <Arrow
+        <IconButton
           ariaHidden
-          type={ArrowType.right}
+          type={IconButtonType.arrowRight}
           disabled={!pagesCount || page === pagesCount - 1}
         />
       </SearchLink>

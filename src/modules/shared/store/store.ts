@@ -7,9 +7,7 @@ import favoritesReducer, {
   NAME as FAVORITES_NAME,
 } from '@features/favoritesSlice';
 
-import shoppingCartReducer, {
-  NAME as SHOPPING_CART_NAME,
-} from '@features/shoppingCartSlice';
+import cartReducer, { NAME as SHOPPING_CART_NAME } from '@features/cartSlice';
 
 import phonesReducer from '@features/phonesSlice';
 import tabletsReducer from '@features/tabletsSlice';
@@ -19,8 +17,9 @@ export const store = configureStore({
   reducer: {
     menu: menuReducer,
     products: productsReducer,
+
+    cart: cartReducer,
     favorites: favoritesReducer,
-    shoppingCart: shoppingCartReducer,
 
     phones: phonesReducer,
     tablets: tabletsReducer,
@@ -32,7 +31,7 @@ export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 
 let prevfavorites = store.getState().favorites;
-let prevshoppingCart = store.getState().shoppingCart;
+let prevshoppingCart = store.getState().cart;
 
 store.subscribe(() => {
   const currentState: RootState = store.getState();
@@ -42,8 +41,8 @@ store.subscribe(() => {
     localStorage.setItem(FAVORITES_NAME, JSON.stringify(prevfavorites));
   }
 
-  if (prevshoppingCart !== currentState.shoppingCart) {
-    prevshoppingCart = currentState.shoppingCart;
+  if (prevshoppingCart !== currentState.cart) {
+    prevshoppingCart = currentState.cart;
     localStorage.setItem(SHOPPING_CART_NAME, JSON.stringify(prevshoppingCart));
   }
 });

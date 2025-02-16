@@ -6,8 +6,8 @@ import styles from './Breadcrumbs.module.scss';
 import { Icon } from '@components/Icon';
 import { IconType } from '@sTypes/IconType';
 
-import { Arrow } from '@components/Arrow';
-import { ArrowType } from '@sTypes/ArrowType';
+import { IconButton } from '@components/IconButton';
+import { IconButtonType } from '@sTypes/IconButtonType';
 
 import { useAppSelector } from '@store/hooks';
 
@@ -44,7 +44,13 @@ export const Breadcrumbs: React.FC<Props> = ({ pathname }) => {
 
       {splitedPathname.map((part, i, parts) => (
         <Fragment key={part}>
-          <Arrow type={ArrowType.right} disabled small hideBorders ariaHidden />
+          <IconButton
+            type={IconButtonType.arrowRight}
+            disabled
+            small
+            hideBorders
+            ariaHidden
+          />
 
           <Link
             to={parts.slice(0, i + 1).join('/')}

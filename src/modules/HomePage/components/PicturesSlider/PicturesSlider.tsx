@@ -3,9 +3,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import styles from './PicturesSlider.module.scss';
 
-import { ArrowType } from '@sTypes/ArrowType';
+import { IconButtonType } from '@sTypes/IconButtonType';
 
-import { Arrow } from '@components/Arrow';
+import { IconButton } from '@components/IconButton';
 import { Image } from '@components/Image';
 
 import { useDebounce } from '@hooks/useDebounce';
@@ -250,9 +250,9 @@ export const PicturesSlider = () => {
       onTouchEnd={() => setIsWaiting(true)}
     >
       <div className={styles['pictures-slider__top']}>
-        <Arrow
+        <IconButton
           tall
-          type={ArrowType.left}
+          type={IconButtonType.arrowLeft}
           className={classNames(
             styles['pictures-slider__button'],
             styles['pictures-slider__button--left'],
@@ -310,9 +310,9 @@ export const PicturesSlider = () => {
           />
         </div>
 
-        <Arrow
+        <IconButton
           tall
-          type={ArrowType.right}
+          type={IconButtonType.arrowRight}
           className={classNames(
             styles['pictures-slider__button'],
             styles['pictures-slider__button--right'],

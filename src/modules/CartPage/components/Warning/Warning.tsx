@@ -1,0 +1,92 @@
+import React, { useEffect, useRef } from 'react';
+
+import { IconButton } from '@components/IconButton';
+import { IconButtonType } from '@sTypes/IconButtonType';
+
+import styles from './Warning.module.scss';
+import classNames from 'classnames';
+
+type Props = {
+  onCancel?: () => void;
+  onConfirm?: () => void;
+};
+
+export const Warning: React.FC<Props> = ({
+  onCancel = () => {},
+  onConfirm = () => {},
+}) => {
+  const warning = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let firstClick = true;
+
+    const handleClick = (e: MouseEvent) => {
+      if (firstClick) {
+        firstClick = false;
+
+        return;
+      }
+
+      if (!warning.current) {
+        return;
+      }
+
+      if (!warning.current.contains(e.target as Node)) {
+        onCancel();
+      }
+    };
+
+    document.addEventListener('click', handleClick);
+
+    return () => document.removeEventListener('click', handleClick);
+  }, [onCancel]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onCancel();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onCancel]);
+
+  return (
+    <div className={styles.overlay}>
+      <div ref={warning} className={styles.warning}>
+        <div className={styles.warning__header}>
+          <h1>Warning!</h1>
+          <IconButton
+            type={IconButtonType.iconClose}
+            hideBorders
+            onClick={() => onCancel()}
+          />
+        </div>
+
+        <div className={styles.warning__content}>
+          <div className={styles.warning__description}>
+            Checkout is not implemented yet. Do you want to clear the Cart?
+          </div>
+
+          <div className={styles.warning__buttons}>
+            <button className={styles.warning__button} onClick={onCancel}>
+              Cancel
+            </button>
+
+            <button
+              className={classNames(
+                styles.warning__button,
+                styles['warning__button--confirm'],
+              )}
+              onClick={onConfirm}
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

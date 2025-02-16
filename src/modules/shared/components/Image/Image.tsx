@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import React, { ImgHTMLAttributes, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import styles from './Image.module.scss';
 
 type RefType = HTMLImageElement | null;
-type Props = ImgHTMLAttributes<HTMLImageElement>;
+type Props = React.ImgHTMLAttributes<HTMLImageElement>;
 
 export const Image = React.forwardRef<RefType, Props>(
   function Image(props, ref) {

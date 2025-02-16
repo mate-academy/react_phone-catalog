@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import styles from './Dropdown.module.scss';
 
-import { Arrow } from '@components/Arrow';
-import { ArrowType } from '@sTypes/ArrowType';
+import { IconButton } from '@components/IconButton';
+import { IconButtonType } from '@sTypes/IconButtonType';
 
 import { SearchLink } from '../SearchLink';
 import { getSearchParam } from '@ProductsPage/utils/getSearchParam';
@@ -81,8 +81,8 @@ export const Dropdown: React.FC<Props> = React.memo(function Dropdown({
       >
         {selected}
 
-        <Arrow
-          type={ArrowType.down}
+        <IconButton
+          type={IconButtonType.arrowDown}
           hideBorders
           secondary
           small

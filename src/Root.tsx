@@ -10,6 +10,7 @@ import {
 import '@styles/../main.scss';
 
 import { App } from '@App/App';
+import { CartPage } from './modules/CartPage';
 import { HomePage } from './modules/HomePage';
 import { PageNotFound } from './modules/NotFoundPage';
 import { ProductsPage } from './modules/ProductsPage';
@@ -46,8 +47,8 @@ export const Root = () => {
             {getProductRoute('tablets')}
             {getProductRoute('accessories')}
 
+            <Route path="cart" element={<CartPage />} />
             <Route path="favorites" element={<FavoritesPage />} />
-            {/* <Route path="shopping-bag" element={<ProductsPage />} /> */}
 
             <Route path="404" element={<PageNotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
