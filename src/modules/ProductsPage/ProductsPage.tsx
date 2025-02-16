@@ -97,11 +97,17 @@ export const ProductsPage = () => {
     Object.values(ItemsPerPage).map(value => [value, value]),
     ITEMS_PER_PAGE_DEFAULT,
   ) as ItemsPerPage;
+
+  const query = (params.get('query') || '').toLowerCase().trim();
   // #endregion
 
   const sortedProducts = useMemo(() => {
-    return sortProducts(categoryProducts, sort, SORT_BY_DEFAULT);
-  }, [categoryProducts, sort]);
+    const res = sortProducts(categoryProducts, sort, SORT_BY_DEFAULT);
+
+    return query
+      ? res.filter(product => product.name.toLowerCase().includes(query))
+      : res;
+  }, [categoryProducts, query, sort]);
 
   const navigate = useNavigate();
   const initialPage = getCurrentPage(params.get('page'));
@@ -175,7 +181,13 @@ export const ProductsPage = () => {
       {error && <Error error={error} reload={reload} />}
 
       {showContent && !hasContent && (
-        <Error error={`There are no ${category.toLowerCase()} yet.`} />
+        <Error
+          error={
+            categoryProducts.length && query
+              ? `There are no ${category.toLowerCase()} matching the query.`
+              : `There are no ${category.toLowerCase()} yet.`
+          }
+        />
       )}
 
       {!error && (isLoading || hasContent) && (

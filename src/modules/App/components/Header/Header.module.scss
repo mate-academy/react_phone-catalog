@@ -2,14 +2,16 @@
 @use '@styles/mixins' as *;
 
 .header {
-  padding-left: 16px;
+  padding-left: 8px;
   height: $header-height-p;
   box-shadow: 0 $header-bottom-shadow 0 0 var(--elements-color);
 
+  gap: 16px;
   display: flex;
   justify-content: space-between;
 
   @include on-desktop {
+    gap: 24px;
     height: 64px;
     padding-left: 24px;
   }
@@ -20,6 +22,15 @@
 
     @include on-desktop {
       gap: 48px;
+    }
+  }
+
+  &__search {
+    flex-grow: 1;
+    place-self: center start;
+
+    &--hidden {
+      display: none;
     }
   }
 

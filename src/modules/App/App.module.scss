@@ -2,6 +2,8 @@
 @use '@styles/mixins' as *;
 
 .app {
+  min-width: $phone-min-width;
+
   &__header {
     top: 0;
     z-index: 100;

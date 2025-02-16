@@ -1,10 +1,14 @@
 import { useMemo } from 'react';
-import { ProductsCount } from '@components/ProductsCount';
-import { useProductsPreload } from '@hooks/useProductsPreload';
-import { useAppSelector } from '@store/hooks';
+import { useSearchParams } from 'react-router-dom';
+
 import { Product } from '@sTypes/Product';
-import { ProductsList } from '@components/ProductsList';
+
 import { Error } from '@components/Error/Error';
+import { ProductsList } from '@components/ProductsList';
+import { ProductsCount } from '@components/ProductsCount';
+
+import { useAppSelector } from '@store/hooks';
+import { useProductsPreload } from '@hooks/useProductsPreload';
 
 export const FavoritesPage = () => {
   const favorites = useAppSelector(state => state.favorites);
@@ -14,8 +18,11 @@ export const FavoritesPage = () => {
     return Object.values(products).flat(Infinity);
   }, [products]);
 
+  const [params] = useSearchParams();
+  const query = (params.get('query') || '').toLowerCase().trim();
+
   const favoriteProducts = useMemo(() => {
-    const result: Product[] = [];
+    const res: Product[] = [];
 
     favorites.forEach(favorite => {
       const foundProduct = allProducts.find(
@@ -23,12 +30,14 @@ export const FavoritesPage = () => {
       );
 
       if (foundProduct) {
-        result.push(foundProduct);
+        res.push(foundProduct);
       }
     });
 
-    return result;
-  }, [allProducts, favorites]);
+    return query
+      ? res.filter(product => product.name.toLowerCase().includes(query))
+      : res;
+  }, [allProducts, favorites, query]);
 
   const hasProducts = favorites.length !== 0;
 
@@ -40,13 +49,23 @@ export const FavoritesPage = () => {
   return (
     <ProductsCount title="Favorites" productsCount={favorites.length}>
       {showError && <Error error={error} reload={reload} />}
-      {!hasProducts && <Error error="There are no favorite products yet." />}
 
-      {(showLoader || (showContent && hasProducts)) && (
+      {showContent && !favoriteProducts.length && (
+        <Error
+          error={
+            hasProducts && query
+              ? 'There are no products matching the query'
+              : 'There are no favorite products yet.'
+          }
+        />
+      )}
+
+      {(showLoader || (showContent && favoriteProducts.length !== 0)) && (
         <ProductsList
           isLoading={showLoader}
           products={favoriteProducts}
           itemsDuringLoading={favorites.length}
+          listRestoring={true}
         />
       )}
     </ProductsCount>

@@ -1,5 +1,5 @@
+import { useCallback, useRef } from 'react';
 import { getHeaderHeight } from '@utils/getHeaderHeight';
-import { useCallback, useEffect, useRef } from 'react';
 
 export const useListRestoration = (
   listRef: React.RefObject<HTMLElement | null>,
@@ -9,7 +9,7 @@ export const useListRestoration = (
   const lastScroll = useRef(0);
   const lastHeight = useRef<number | null>(null);
 
-  useEffect(() => {
+  const restoreList = useCallback(() => {
     const list = listRef.current;
     const item = lastItemRef.current;
     const prevHeight = lastHeight.current;
@@ -46,7 +46,7 @@ export const useListRestoration = (
       behavior: 'instant',
       top: item.offsetTop + lastDiff.current,
     });
-  });
+  }, [lastItemRef, listRef]);
 
   const saveDiff = useCallback(() => {
     const list = listRef.current;
@@ -67,6 +67,7 @@ export const useListRestoration = (
 
   return {
     saveDiff,
+    restoreList,
     saveLastScroll,
   };
 };

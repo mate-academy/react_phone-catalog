@@ -1,0 +1,16 @@
+@use '@styles/mixins' as *;
+
+.search-input {
+  width: 100%;
+  height: calc(100% - 4px);
+
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid var(--secondary-color);
+
+  @include small-text;
+
+  &:focus {
+    outline: 1px solid var(--primary-color);
+  }
+}

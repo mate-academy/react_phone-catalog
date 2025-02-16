@@ -32,6 +32,8 @@ type Props = {
   pagesCount?: number;
 
   itemsPerPage?: ItemsPerPage;
+
+  listRestoring?: boolean;
 };
 
 export const ProductsList: React.FC<Props> = ({
@@ -44,6 +46,8 @@ export const ProductsList: React.FC<Props> = ({
   pagesCount = 0,
 
   itemsPerPage = ItemsPerPage.all,
+
+  listRestoring = false,
 }) => {
   const first = useRef(true);
   const { getHistoryItem, setHistoryItem } = useHistory();
@@ -89,10 +93,16 @@ export const ProductsList: React.FC<Props> = ({
 
   const lastItem = useRef<HTMLElement | null>(null);
 
-  const { saveDiff, saveLastScroll } = useListRestoration(
+  const { saveDiff, restoreList, saveLastScroll } = useListRestoration(
     productsRef,
     lastItem,
   );
+
+  useEffect(() => {
+    if (listRestoring) {
+      restoreList();
+    }
+  });
 
   const lastItemId = products.length - 1;
 
