@@ -35,8 +35,7 @@ export const HomePage = () => {
 
   return (
     <div className="home-page">
-      <h1 className="hidden">Product Catalog</h1>
-      <h1>Welcome to Nice Gadgets store!</h1>
+      <h1>Product Catalog</h1>
 
       <main className="home-page__content">
         <PicturesSlider />
