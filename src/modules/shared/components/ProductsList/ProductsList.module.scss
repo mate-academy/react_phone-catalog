@@ -1,0 +1,9 @@
+@use '@styles/vars' as *;
+
+.products-list {
+  gap: 40px $column-gap-p;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  transition: grid-template-columns 0.5s ease-in-out;
+}

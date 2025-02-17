@@ -1,0 +1,23 @@
+@use '@styles/mixins' as *;
+
+.nav {
+  display: none;
+  color: var(--color-secondary);
+
+  @include uppercase;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  &__items {
+    height: 100%;
+
+    gap: 32px;
+    display: flex;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+}

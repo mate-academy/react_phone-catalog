@@ -1,0 +1,18 @@
+@use '@styles/vars' as *;
+
+.not-found-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__content {
+    width: 100%;
+    max-width: $tablet-min-width - 150px;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+}

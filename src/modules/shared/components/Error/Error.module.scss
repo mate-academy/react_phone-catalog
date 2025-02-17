@@ -1,0 +1,33 @@
+@use '@styles/mixins' as *;
+
+.error {
+  height: 75px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-primary);
+
+  padding: 8px;
+
+  @include body-text;
+
+  gap: 4px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  &__icon {
+    height: 60%;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+
+    font-size: 2em;
+    line-height: 2em;
+    color: var(--color-secondary);
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
