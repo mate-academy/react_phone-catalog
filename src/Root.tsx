@@ -19,7 +19,7 @@ import { FavoritesPage } from './modules/FavoritesPage';
 import { store } from '@store/store';
 import { ProductDetailsPage } from '@ProductDetailsPage/ProductDetailsPage';
 
-import { useHistory } from '@hooks/useHistory';
+import { resetHistory } from '@hooks/useHistory';
 
 function getProductRoute(path: string) {
   return (
@@ -31,8 +31,6 @@ function getProductRoute(path: string) {
 }
 
 export const Root = () => {
-  const { resetHistory } = useHistory();
-
   resetHistory();
   history.scrollRestoration = 'manual';
 

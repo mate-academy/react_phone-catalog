@@ -39,7 +39,7 @@ export const CartItem = React.forwardRef<HTMLElement, Props>(function CartItem(
   const dispatch = useAppDispatch();
 
   return (
-    <article ref={ref} className={styles['cart-item']}>
+    <article aria-label={name} ref={ref} className={styles['cart-item']}>
       <div className={styles['cart-item__top']}>
         <IconButton
           type={IconButtonType.iconClose}
@@ -51,10 +51,15 @@ export const CartItem = React.forwardRef<HTMLElement, Props>(function CartItem(
             onRemoveFromCart();
             dispatch(toggle(itemId));
           }}
+          ariaLabel="Close"
         />
 
         <Link to={link}>
-          <Image src={image} className={styles['cart-item__image']} />
+          <Image
+            src={image}
+            aria-label={name}
+            className={styles['cart-item__image']}
+          />
         </Link>
 
         <div className={styles['cart-item__title']}>{name}</div>

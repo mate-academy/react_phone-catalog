@@ -35,7 +35,10 @@ export const Checkout: React.FC<Props> = ({
   }, []);
 
   return (
-    <div className={classNames(className, styles.checkout)}>
+    <article
+      aria-label="Checkout"
+      className={classNames(className, styles.checkout)}
+    >
       <div className={styles.checkout__info}>
         <h2>${totalPrice}</h2>
 
@@ -57,6 +60,6 @@ export const Checkout: React.FC<Props> = ({
       {isWarningVisible && (
         <Warning onCancel={handleCancel} onConfirm={handleClear} />
       )}
-    </div>
+    </article>
   );
 };

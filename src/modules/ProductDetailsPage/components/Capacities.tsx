@@ -20,7 +20,7 @@ export const Capacities: React.FC<Props> = ({
   return (
     <AvailableProducts title="Select capacity" ariaLabel="Available Capacity">
       {capacities.map(capacity => {
-        const itemId = [namespaceId, capacity, currentColor.split(' ')]
+        const itemId = [namespaceId, capacity, ...currentColor.split(' ')]
           .join('-')
           .toLowerCase();
 

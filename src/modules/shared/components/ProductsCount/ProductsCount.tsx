@@ -8,6 +8,7 @@ type Props = {
   isLoading?: boolean;
   productsCount: number;
 
+  ariaLabel?: string;
   children?: React.ReactNode;
 };
 
@@ -19,6 +20,7 @@ export const ProductsCount = React.forwardRef<HTMLElement, Props>(
       isLoading,
 
       children,
+      ariaLabel,
     },
     ref,
   ) {
@@ -36,7 +38,11 @@ export const ProductsCount = React.forwardRef<HTMLElement, Props>(
           </div>
         </div>
 
-        <main ref={ref} className={styles['products-count__main']}>
+        <main
+          ref={ref}
+          aria-label={ariaLabel}
+          className={styles['products-count__main']}
+        >
           {children}
         </main>
       </div>

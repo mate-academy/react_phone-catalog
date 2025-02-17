@@ -69,6 +69,7 @@ export const FavoritesPage = () => {
     <ProductsCount
       ref={contentRef}
       title="Favorites"
+      ariaLabel="Favorite Products"
       productsCount={showLoader ? favorites.length : favoriteProducts.length}
     >
       {showError && <Error error={error} reload={reload} />}

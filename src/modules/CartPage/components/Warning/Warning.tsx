@@ -21,6 +21,14 @@ export const Warning: React.FC<Props> = ({
   const theme = useAppSelector(state => state.theme);
 
   useEffect(() => {
+    document.documentElement.style.overflowY = 'hidden';
+
+    return () => {
+      document.documentElement.style.overflowY = '';
+    };
+  }, []);
+
+  useEffect(() => {
     let firstClick = true;
 
     const handleClick = (e: MouseEvent) => {
@@ -57,7 +65,7 @@ export const Warning: React.FC<Props> = ({
   }, [onCancel]);
 
   return (
-    <div className={styles.overlay}>
+    <article aria-label="Warning" className={styles.overlay}>
       <div
         ref={warning}
         className={classNames(styles.warning, {
@@ -67,6 +75,7 @@ export const Warning: React.FC<Props> = ({
         <div className={styles.warning__header}>
           <h1>Warning!</h1>
           <IconButton
+            ariaLabel="Close"
             type={IconButtonType.iconClose}
             hideBorders
             hideBackground
@@ -96,6 +105,6 @@ export const Warning: React.FC<Props> = ({
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };

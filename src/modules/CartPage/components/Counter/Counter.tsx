@@ -25,6 +25,7 @@ export const Counter: React.FC<Props> = ({
   return (
     <div className={styles.counter}>
       <IconButton
+        ariaLabel="Take"
         type={IconButtonType.iconMinus}
         disabled={showSkeleton}
         onClick={showSkeleton ? undefined : onTake}
@@ -41,6 +42,7 @@ export const Counter: React.FC<Props> = ({
       </div>
 
       <IconButton
+        ariaLabel="Add"
         type={IconButtonType.iconPlus}
         disabled={showSkeleton}
         onClick={showSkeleton ? undefined : onAdd}
