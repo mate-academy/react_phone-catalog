@@ -5,6 +5,8 @@ import { IconButtonType } from '@sTypes/IconButtonType';
 
 import styles from './Warning.module.scss';
 import classNames from 'classnames';
+import { useAppSelector } from '@store/hooks';
+import { Theme } from '@sTypes/Theme';
 
 type Props = {
   onCancel?: () => void;
@@ -16,6 +18,7 @@ export const Warning: React.FC<Props> = ({
   onConfirm = () => {},
 }) => {
   const warning = useRef<HTMLDivElement>(null);
+  const theme = useAppSelector(state => state.theme);
 
   useEffect(() => {
     let firstClick = true;
@@ -55,12 +58,18 @@ export const Warning: React.FC<Props> = ({
 
   return (
     <div className={styles.overlay}>
-      <div ref={warning} className={styles.warning}>
+      <div
+        ref={warning}
+        className={classNames(styles.warning, {
+          [styles['warning--dark']]: theme === Theme.dark,
+        })}
+      >
         <div className={styles.warning__header}>
           <h1>Warning!</h1>
           <IconButton
             type={IconButtonType.iconClose}
             hideBorders
+            hideBackground
             onClick={() => onCancel()}
           />
         </div>

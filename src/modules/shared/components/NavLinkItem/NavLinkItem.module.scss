@@ -16,7 +16,7 @@
 
   &--active {
     position: relative;
-    color: var(--primary-color);
+    color: var(--color-primary);
 
     &::after {
       content: '';
@@ -27,7 +27,7 @@
       width: 100%;
       height: 3px;
       display: block;
-      background-color: var(--primary-color);
+      background-color: var(--color-primary);
     }
   }
 }

@@ -12,7 +12,7 @@ type Props = {
 export const Error: React.FC<Props> = ({ error, reload, className }) => {
   return (
     <div className={classNames(className, styles.error)}>
-      {error}
+      <div>{error}</div>
 
       {reload && (
         <button className={styles.error__icon} onClick={() => reload()}>

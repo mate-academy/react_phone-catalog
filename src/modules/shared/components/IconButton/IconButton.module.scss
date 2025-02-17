@@ -8,7 +8,7 @@ $border-size: 1px;
   width: $icon-size;
   height: $icon-size;
   box-sizing: border-box;
-  border: $border-size solid var(--icons-color);
+  border: $border-size solid var(--color-icons);
 
   display: flex;
   cursor: pointer;
@@ -17,7 +17,59 @@ $border-size: 1px;
   transition-duration: $animation-duration;
 
   &:hover {
-    border: $border-size solid var(--primary-color);
+    border: $border-size solid var(--color-primary);
+  }
+
+  &--dark {
+    border: none;
+    background-color: var(--color-surface2);
+
+    &:hover {
+      border: none;
+      background-color: var(--color-icons);
+    }
+  }
+
+  &--hide-background {
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &--disabled {
+    cursor: auto;
+    background-color: transparent;
+    border: $border-size solid var(--color-elements);
+
+    &:hover {
+      background-color: transparent;
+      border: $border-size solid var(--color-elements);
+    }
+  }
+
+  &--tall {
+    height: 100%;
+  }
+
+  &--small {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--secondary {
+    &:hover {
+      border: $border-size solid var(--color-elements);
+    }
+  }
+
+  &--hide-borders {
+    border: none;
+
+    &:hover {
+      border: none;
+    }
   }
 
   &__content {
@@ -26,7 +78,19 @@ $border-size: 1px;
 
     mask-position: center;
     mask-repeat: no-repeat;
-    background-color: var(--primary-color);
+    background-color: var(--color-primary);
+
+    &--disabled {
+      background-color: var(--color-icons);
+    }
+
+    &--secondary {
+      background-color: var(--color-secondary);
+    }
+
+    &--tall {
+      height: 100%;
+    }
 
     &--arrow {
       &--up,
@@ -68,50 +132,6 @@ $border-size: 1px;
       &--minus {
         mask-image: url('/img/icons/icon-minus.svg');
       }
-    }
-  }
-
-  &--tall {
-    height: 100%;
-
-    .icon-button__content {
-      height: 100%;
-    }
-  }
-
-  &--small {
-    width: 16px;
-    height: 16px;
-  }
-
-  &--disabled {
-    cursor: auto;
-    border: $border-size solid var(--elements-color);
-
-    &:hover {
-      border: $border-size solid var(--elements-color);
-    }
-
-    .icon-button__content {
-      background-color: var(--icons-color);
-    }
-  }
-
-  &--secondary {
-    &:hover {
-      border: $border-size solid var(--elements-color);
-    }
-
-    .icon-button__content {
-      background-color: var(--icons-color);
-    }
-  }
-
-  &--hide-borders {
-    border: none;
-
-    &:hover {
-      border: none;
     }
   }
 }

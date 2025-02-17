@@ -153,8 +153,8 @@ export const ProductsPage = () => {
   return (
     <ProductsCount
       title={title}
-      productsCount={categoryProducts.length}
       isLoading={isLoading}
+      productsCount={sortedProducts.length}
     >
       <div
         aria-label="Options"

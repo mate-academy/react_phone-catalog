@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { Outlet } from 'react-router-dom';
 
@@ -16,6 +16,16 @@ import { useScrollRestoration } from '@hooks/useScrollRestoration';
 
 import styles from './App.module.scss';
 
+function updateTheme(theme: Theme) {
+  const page = document.querySelector('.page');
+
+  if (theme === Theme.dark) {
+    page?.classList.add('page--dark');
+  } else {
+    page?.classList.remove('page--dark');
+  }
+}
+
 export const App = () => {
   useScrollRestoration();
 
@@ -24,14 +34,8 @@ export const App = () => {
 
   const theme = useAppSelector(state => state.theme);
 
-  useEffect(() => {
-    const page = document.querySelector('.page');
-
-    if (theme === Theme.dark) {
-      page?.classList.add('page--dark');
-    } else {
-      page?.classList.remove('page--dark');
-    }
+  useLayoutEffect(() => {
+    updateTheme(theme);
   }, [theme]);
 
   useEffect(() => {

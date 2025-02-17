@@ -15,6 +15,7 @@ export const CartItemSkeleton = () => {
           disabled
           secondary
           hideBorders
+          hideBackground
         />
 
         <div className={styles['cart-item-skeleton__image']}></div>

@@ -8,14 +8,13 @@
     top: 0;
     z-index: 100;
     position: sticky;
-    background-color: var(--white-color);
   }
 
   &__body {
     gap: $row-gap-t;
     display: flex;
     flex-direction: column;
-    color: var(--primary-color);
+    color: var(--color-primary);
 
     padding-top: 24px;
 

@@ -5,7 +5,7 @@
 .product-card-skeleton {
   padding: 32px;
   box-sizing: border-box;
-  border: 1px solid var(--elements-color);
+  border: 1px solid var(--color-elements);
 
   gap: 8px;
   display: flex;
@@ -44,7 +44,7 @@
     font-weight: 600;
     line-height: 29px;
     font-family: Mont, sans-serif;
-    color: var(--secondary-color);
+    color: var(--color-secondary);
 
     width: 30%;
 
@@ -52,7 +52,7 @@
   }
 
   &__divider {
-    border: 1px solid var(--elements-color);
+    border: 1px solid var(--color-elements);
   }
 
   &__characteristic {

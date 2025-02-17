@@ -6,7 +6,7 @@
   box-sizing: border-box;
 
   border-radius: 50%;
-  border: 1px solid var(--elements-color);
+  border: 1px solid var(--color-elements);
 
   display: flex;
   align-items: center;
@@ -17,13 +17,17 @@
   @include body-text;
 
   &:hover {
-    border: 1px solid var(--icons-color);
+    border: 1px solid var(--color-icons);
+  }
+
+  &--dark:hover {
+    border: 1px solid var(--color-secondary);
   }
 
   &--active {
     pointer-events: none;
-    color: var(--white-color);
-    border: 1px solid var(--primary-color);
+    color: var(--color-white);
+    border: 1px solid var(--color-primary);
   }
 
   &__content {
@@ -32,6 +36,10 @@
     box-sizing: border-box;
 
     border-radius: 50%;
-    border: 2px solid var(--white-color);
+    border: 2px solid var(--color-white);
+  }
+
+  &--dark &__content {
+    border: 2px solid var(--color-black);
   }
 }

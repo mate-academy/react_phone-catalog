@@ -11,7 +11,7 @@ $dropdown-padding-inline: 12px;
   position: relative;
 
   &__description {
-    color: var(--secondary-color);
+    color: var(--color-secondary);
 
     @include small-text;
   }
@@ -19,7 +19,7 @@ $dropdown-padding-inline: 12px;
   &__selected {
     height: 40px;
     box-sizing: border-box;
-    border: 1px solid var(--icons-color);
+    border: 1px solid var(--color-icons);
     padding-inline: $dropdown-padding-inline;
 
     cursor: pointer;
@@ -31,12 +31,33 @@ $dropdown-padding-inline: 12px;
     @include buttons-text;
 
     &:hover {
-      border: 1px solid var(--secondary-color);
+      border: 1px solid var(--color-secondary);
     }
+  }
+
+  &--opened &__selected {
+    border: 1px solid var(--color-primary);
+  }
+
+  &--dark &__selected {
+    border: 1px solid var(--color-surface2);
+    background-color: var(--color-surface2);
+
+    &:hover {
+      border: 1px solid var(--color-icons);
+    }
+  }
+
+  &--dark.dropdown--opened &__selected {
+    border: 1px solid var(--color-accent);
   }
 
   &__arrow {
     transition: transform $animation-duration;
+  }
+
+  &--opened &__arrow {
+    transform: rotate(180deg);
   }
 
   &__options {
@@ -51,13 +72,23 @@ $dropdown-padding-inline: 12px;
     transition: clip-path $animation-duration linear;
 
     padding-block: 8px;
-    background-color: var(--white-color);
-    border: 1px solid var(--elements-color);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-elements);
     box-shadow: 0 2px 15px 0 #0000000d;
 
-    color: var(--secondary-color);
+    color: var(--color-secondary);
 
     @include body-text;
+  }
+
+  &--opened &__options {
+    cursor: pointer;
+    pointer-events: all;
+    clip-path: inset(0 0 0 0);
+  }
+
+  &--dark &__options {
+    background-color: var(--color-black);
   }
 
   &__option {
@@ -68,26 +99,14 @@ $dropdown-padding-inline: 12px;
     align-items: center;
 
     &:hover {
-      color: var(--primary-color);
-      background-color: var(--hover-bg-color);
+      color: var(--color-primary);
+      background-color: var(--color-hover-bg);
     }
   }
 
-  &--opened {
-    .dropdown {
-      &__selected {
-        border: 1px solid var(--primary-color);
-      }
-
-      &__arrow {
-        transform: rotate(180deg);
-      }
-
-      &__options {
-        cursor: pointer;
-        pointer-events: all;
-        clip-path: inset(0 0 0 0);
-      }
+  &--dark &__option {
+    &:hover {
+      background-color: var(--color-surface2);
     }
   }
 }

@@ -6,7 +6,7 @@
   flex-direction: column;
 
   &__title {
-    color: var(--secondary-color);
+    color: var(--color-secondary);
 
     @include small-text;
   }

@@ -3,20 +3,17 @@
 .error {
   height: 75px;
   box-sizing: border-box;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--color-primary);
+
+  padding: 8px;
 
   @include body-text;
 
   gap: 4px;
   display: flex;
+  text-align: center;
   align-items: center;
   justify-content: center;
-
-  &:first-child {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
 
   &__icon {
     height: 60%;
@@ -25,7 +22,7 @@
 
     font-size: 2em;
     line-height: 2em;
-    color: var(--secondary-color);
+    color: var(--color-secondary);
 
     cursor: pointer;
 

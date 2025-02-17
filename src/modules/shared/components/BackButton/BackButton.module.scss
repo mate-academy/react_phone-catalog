@@ -7,12 +7,12 @@
 
   cursor: pointer;
   width: fit-content;
-  color: var(--secondary-color);
+  color: var(--color-secondary);
 
   @include small-text;
 
   &:hover {
-    color: var(--primary-color);
+    color: var(--color-primary);
   }
 
   &__arrow {
@@ -21,5 +21,17 @@
 
   &__text {
     line-height: 12px;
+  }
+
+  &--dark {
+    color: var(--color-primary);
+
+    &:hover {
+      color: var(--color-accent);
+
+      & :first-child > div {
+        background-color: var(--color-accent);
+      }
+    }
   }
 }

@@ -46,6 +46,7 @@ export const CartItem = React.forwardRef<HTMLElement, Props>(function CartItem(
           small
           secondary
           hideBorders
+          hideBackground
           onClick={() => {
             onRemoveFromCart();
             dispatch(toggle(itemId));

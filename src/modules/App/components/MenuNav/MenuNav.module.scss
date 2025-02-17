@@ -1,5 +1,9 @@
+@use '@styles/mixins' as *;
+
 .menu-nav {
-  color: var(--secondary-color);
+  color: var(--color-secondary);
+
+  @include uppercase;
 
   &__items {
     gap: 16px;

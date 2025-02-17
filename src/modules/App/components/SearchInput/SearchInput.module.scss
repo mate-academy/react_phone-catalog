@@ -6,11 +6,17 @@
 
   padding: 6px;
   border-radius: 8px;
-  border: 1px solid var(--secondary-color);
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-secondary);
 
   @include small-text;
 
   &:focus {
-    outline: 1px solid var(--primary-color);
+    outline: 1px solid var(--color-primary);
+  }
+
+  &--dark {
+    background-color: var(--color-black);
   }
 }

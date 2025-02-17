@@ -56,8 +56,9 @@ export const AddToCard: React.FC<Props> = ({
         }}
       >
         <Icon
-          type={isInFavorite ? IconType.favoriteFilled : IconType.favorite}
           withBorder
+          colorRed={isInFavorite}
+          type={isInFavorite ? IconType.favoriteFilled : IconType.favorite}
         />
       </button>
     </div>

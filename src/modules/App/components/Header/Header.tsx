@@ -1,20 +1,22 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import { Theme } from '@sTypes/Theme';
 import { IconType } from '@sTypes/IconType';
 
 import { Nav } from '../Nav';
+import { Counter } from '../Counter';
 import { Icon } from '@components/Icon';
 import { Logo } from '@components/Logo';
 import { SearchInput } from '../SearchInput';
 import { NavLinkItem } from '@components/NavLinkItem';
 
-import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { menuActions } from '@features/menuSlice';
-import { Counter } from '../Counter';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { useLoweredLocation } from '@hooks/useLoweredLocation';
 
 import styles from './Header.module.scss';
-import { useLoweredLocation } from '@hooks/useLoweredLocation';
+import { Switcher } from '../Switcher';
 
 type Props = {
   className?: string;
@@ -22,6 +24,7 @@ type Props = {
 
 export const Header: React.FC<Props> = ({ className }) => {
   const dispatch = useAppDispatch();
+  const theme = useAppSelector(state => state.theme);
   const isMenuOpen = useAppSelector(state => state.menu);
 
   const favorites = useAppSelector(state => state.favorites);
@@ -37,7 +40,11 @@ export const Header: React.FC<Props> = ({ className }) => {
   ].includes(pathname);
 
   return (
-    <header className={classNames(className, styles.header)}>
+    <header
+      className={classNames(className, styles.header, {
+        [styles['header--dark']]: theme === Theme.dark,
+      })}
+    >
       <div className={styles.header__left}>
         <Logo />
         <Nav />
@@ -52,30 +59,34 @@ export const Header: React.FC<Props> = ({ className }) => {
       </div>
 
       <div className={styles.header__right}>
-        <NavLinkItem
-          to="./favorites"
-          aria-label="Favorites"
-          className={styles['header__user-icon']}
-        >
-          <Icon type={IconType.favorite} />
-          <Counter count={favorites.length} />
-        </NavLinkItem>
+        {pathname === '/' && <Switcher />}
 
-        <NavLinkItem
-          to="./cart"
-          aria-label="Shopping Bag"
-          className={styles['header__user-icon']}
-        >
-          <Icon type={IconType.shoppingBag} />
-          <Counter count={shoppingCart.length} />
-        </NavLinkItem>
+        <div className={styles.header__icons}>
+          <NavLinkItem
+            to="./favorites"
+            aria-label="Favorites"
+            className={styles['header__user-icon']}
+          >
+            <Icon type={IconType.favorite} />
+            <Counter count={favorites.length} />
+          </NavLinkItem>
+
+          <NavLinkItem
+            to="./cart"
+            aria-label="Shopping Bag"
+            className={styles['header__user-icon']}
+          >
+            <Icon type={IconType.shoppingBag} />
+            <Counter count={shoppingCart.length} />
+          </NavLinkItem>
+        </div>
+
+        <Icon
+          className={styles.header__menu}
+          onClick={() => dispatch(menuActions.set(!isMenuOpen))}
+          type={isMenuOpen ? IconType.close : IconType.menu}
+        />
       </div>
-
-      <Icon
-        className={styles.header__menu}
-        onClick={() => dispatch(menuActions.set(!isMenuOpen))}
-        type={isMenuOpen ? IconType.close : IconType.menu}
-      />
     </header>
   );
 };

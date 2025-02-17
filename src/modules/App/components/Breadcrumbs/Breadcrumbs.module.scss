@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
 
-  color: var(--primary-color);
+  color: var(--color-primary);
 
   @include small-text;
 
@@ -16,7 +16,7 @@
 
   &__item:last-child {
     pointer-events: none;
-    color: var(--secondary-color);
+    color: var(--color-secondary);
 
     overflow: hidden;
     white-space: nowrap;

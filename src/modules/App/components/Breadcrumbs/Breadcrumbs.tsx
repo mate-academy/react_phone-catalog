@@ -39,17 +39,17 @@ export const Breadcrumbs: React.FC<Props> = ({ pathname }) => {
         aria-label="Home"
         className={styles['top-navigation__home']}
       >
-        <Icon type={IconType.home} />
+        <Icon type={IconType.home} hideShadows />
       </Link>
 
       {splitedPathname.map((part, i, parts) => (
         <Fragment key={part}>
           <IconButton
             type={IconButtonType.arrowRight}
-            disabled
             small
-            hideBorders
+            disabled
             ariaHidden
+            hideBorders
           />
 
           <Link

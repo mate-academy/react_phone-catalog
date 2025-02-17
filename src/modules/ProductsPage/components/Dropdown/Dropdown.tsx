@@ -9,6 +9,8 @@ import { IconButtonType } from '@sTypes/IconButtonType';
 
 import { SearchLink } from '../SearchLink';
 import { getSearchParam } from '@ProductsPage/utils/getSearchParam';
+import { useAppSelector } from '@store/hooks';
+import { Theme } from '@sTypes/Theme';
 
 type Props = {
   name: string;
@@ -30,6 +32,7 @@ export const Dropdown: React.FC<Props> = React.memo(function Dropdown({
   const [params] = useSearchParams();
   const [isOpened, setIsOpened] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const theme = useAppSelector(state => state.theme);
 
   const selected = getSearchParam(name, params, options, defaultValue);
 
@@ -71,6 +74,7 @@ export const Dropdown: React.FC<Props> = React.memo(function Dropdown({
       ref={dropdownRef}
       className={classNames(styles.dropdown, {
         [styles['dropdown--opened']]: isOpened,
+        [styles['dropdown--dark']]: theme === Theme.dark,
       })}
     >
       <div className={styles.dropdown__description}>{description}</div>
@@ -87,6 +91,7 @@ export const Dropdown: React.FC<Props> = React.memo(function Dropdown({
           secondary
           small
           ariaHidden
+          hideBackground
           className={styles.dropdown__arrow}
         />
       </div>

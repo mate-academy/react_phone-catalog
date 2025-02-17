@@ -12,9 +12,11 @@ import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { Counter } from '../Counter';
 
 import styles from './Menu.module.scss';
+import { Theme } from '@sTypes/Theme';
 
 export const Menu = () => {
   const dispatch = useAppDispatch();
+  const theme = useAppSelector(state => state.theme);
   const isMenuOpen = useAppSelector(state => state.menu);
 
   const favorites = useAppSelector(state => state.favorites);
@@ -37,6 +39,7 @@ export const Menu = () => {
     <aside
       className={classNames(styles.menu, {
         [styles['menu--open']]: isMenuOpen,
+        [styles['menu--dark']]: theme === Theme.dark,
       })}
     >
       <div className={styles.menu__content}>

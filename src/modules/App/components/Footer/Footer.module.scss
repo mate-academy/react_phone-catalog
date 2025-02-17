@@ -1,10 +1,8 @@
 @use '@styles/mixins' as *;
 
 .footer {
-  color: var(--secondary-color);
-  box-shadow: 0 -1px 0 0 var(--elements-color);
-
   padding-block: 32px;
+  box-shadow: 0 -1px 0 0 var(--color-elements);
 
   @include on-tablet {
     height: 96px;
@@ -41,6 +39,7 @@
     display: flex;
     align-items: start;
     flex-direction: column;
+    color: var(--color-secondary);
 
     grid-column: 1 / -1;
 
@@ -54,6 +53,10 @@
 
     @include on-desktop {
       grid-column: 9 / 17;
+    }
+
+    &--dark {
+      color: var(--color-primary);
     }
   }
 

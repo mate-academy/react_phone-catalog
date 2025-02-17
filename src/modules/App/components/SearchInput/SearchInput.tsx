@@ -5,6 +5,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDebounce } from '@hooks/useDebounce';
 
 import styles from './SearchInput.module.scss';
+import { useAppSelector } from '@store/hooks';
+import { Theme } from '@sTypes/Theme';
 
 type Props = {
   className?: string;
@@ -12,6 +14,7 @@ type Props = {
 
 export const SearchInput: React.FC<Props> = ({ className }) => {
   const { pathname } = useLocation();
+  const theme = useAppSelector(state => state.theme);
 
   const [params, setParams] = useSearchParams();
   const [query, setQuery] = useState(params.get('query') || '');
@@ -52,7 +55,9 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
     <input
       type="search"
       placeholder="Enter the product name..."
-      className={classNames(className, styles['search-input'])}
+      className={classNames(className, styles['search-input'], {
+        [styles['search-input--dark']]: theme === Theme.dark,
+      })}
       value={query}
       onChange={handleQueryChange}
     />

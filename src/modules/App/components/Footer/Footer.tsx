@@ -2,10 +2,15 @@ import { Logo } from '@components/Logo';
 import { BackToTop } from '../BackToTop';
 
 import styles from './Footer.module.scss';
+import { useAppSelector } from '@store/hooks';
+import classNames from 'classnames';
+import { Theme } from '@sTypes/Theme';
 
 const FOOTER_LINKS = ['Github', 'Contacts', 'Rights'];
 
 export const Footer = () => {
+  const theme = useAppSelector(state => state.theme);
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__content}>
@@ -13,7 +18,11 @@ export const Footer = () => {
           <Logo footer />
         </div>
 
-        <div className={styles.footer__links}>
+        <div
+          className={classNames(styles.footer__links, {
+            [styles['footer__links--dark']]: theme === Theme.dark,
+          })}
+        >
           {FOOTER_LINKS.map(link => (
             <a
               key={link}

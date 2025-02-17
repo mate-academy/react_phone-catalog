@@ -5,7 +5,7 @@
   width: fit-content;
   padding-inline: 8px;
   box-sizing: border-box;
-  border: 1px solid var(--elements-color);
+  border: 1px solid var(--color-elements);
 
   display: flex;
   align-items: center;
@@ -16,13 +16,28 @@
   @include body-text;
 
   &:hover {
-    border: 1px solid var(--icons-color);
+    border: 1px solid var(--color-icons);
+  }
+
+  &--dark {
+    border: 1px solid var(--color-surface1);
+    background-color: var(--color-surface1);
+
+    &:hover {
+      border: 1px solid var(--color-elements);
+      background-color: var(--color-elements);
+    }
   }
 
   &--active {
     pointer-events: none;
-    color: var(--white-color);
-    border: 1px solid var(--primary-color);
-    background-color: var(--primary-color);
+    color: var(--color-white);
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-primary);
+  }
+
+  &--dark.capacity--active {
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-accent);
   }
 }

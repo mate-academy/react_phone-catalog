@@ -4,7 +4,8 @@
 .header {
   padding-left: 8px;
   height: $header-height-p;
-  box-shadow: 0 $header-bottom-shadow 0 0 var(--elements-color);
+  background-color: var(--color-white);
+  box-shadow: 0 $header-bottom-shadow 0 0 var(--color-elements);
 
   gap: 16px;
   display: flex;
@@ -12,8 +13,13 @@
 
   @include on-desktop {
     gap: 24px;
-    height: 64px;
     padding-left: 24px;
+    height: $header-height-d;
+  }
+
+  &--dark {
+    background-color: var(--color-black);
+    box-shadow: 0 $header-bottom-shadow 0 0 var(--color-surface2);
   }
 
   &__left {
@@ -35,6 +41,15 @@
   }
 
   &__right {
+    gap: 16px;
+    display: flex;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__icons {
     display: none;
 
     @include on-tablet {

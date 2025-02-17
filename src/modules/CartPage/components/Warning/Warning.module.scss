@@ -15,18 +15,21 @@
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
-
-  background-color: var(--white-color);
+  background-color: var(--color-white);
 
   padding: 16px;
   border-radius: 16px;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--color-secondary);
+
+  &--dark {
+    background-color: var(--color-black);
+  }
 
   &__header {
     padding: 16px;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
-    background-color: var(--secondary-color);
+    background-color: var(--color-secondary);
 
     display: flex;
     justify-content: space-between;
@@ -55,7 +58,7 @@
     border-radius: 16px;
 
     &--confirm {
-      color: var(--red-color);
+      color: var(--color-red);
     }
   }
 }

@@ -3,7 +3,7 @@
 .menu {
   z-index: 100;
   position: fixed;
-  background-color: var(--white-color);
+  background-color: var(--color-white);
   inset: $header-height-p + $header-bottom-shadow 0 0 0;
 
   opacity: 0;
@@ -13,6 +13,10 @@
   transition:
     opacity $animation-duration linear,
     transform $animation-duration linear;
+
+  &--dark {
+    background-color: var(--color-black);
+  }
 
   &--open {
     opacity: 1;
@@ -33,7 +37,7 @@
 
   &__bottom {
     display: flex;
-    border-top: 1px solid var(--elements-color);
+    border-top: 1px solid var(--color-elements);
   }
 
   &__user-icon {

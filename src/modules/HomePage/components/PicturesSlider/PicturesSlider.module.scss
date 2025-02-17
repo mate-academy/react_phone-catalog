@@ -105,11 +105,11 @@
 
       width: 14px;
       height: 4px;
-      background-color: var(--elements-color);
+      background-color: var(--color-elements);
     }
 
     &--active::after {
-      background-color: var(--primary-color);
+      background-color: var(--color-primary);
     }
   }
 }

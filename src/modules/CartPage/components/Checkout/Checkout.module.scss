@@ -9,7 +9,7 @@
   flex-direction: column;
 
   box-sizing: border-box;
-  border: 1px solid var(--elements-color);
+  border: 1px solid var(--color-elements);
 
   @include on-desktop {
     gap: 24px;
@@ -26,13 +26,13 @@
   }
 
   &__count {
-    color: var(--secondary-color);
+    color: var(--color-secondary);
 
     @include body-text;
   }
 
   &__line {
-    border: 1px solid var(--elements-color);
+    border: 1px solid var(--color-elements);
   }
 
   &__button {

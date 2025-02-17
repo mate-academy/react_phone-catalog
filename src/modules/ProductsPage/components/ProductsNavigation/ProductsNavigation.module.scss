@@ -16,7 +16,7 @@
     width: 32px;
     aspect-ratio: 1;
     box-sizing: border-box;
-    border: 1px solid var(--elements-color);
+    border: 1px solid var(--color-elements);
 
     cursor: pointer;
     user-select: none;
@@ -26,15 +26,15 @@
     justify-content: center;
 
     &:hover {
-      border: 1px solid var(--primary-color);
+      border: 1px solid var(--color-primary);
     }
 
     &--active {
       pointer-events: none;
 
-      color: var(--white-color);
-      border: 1px solid var(--primary-color);
-      background-color: var(--primary-color);
+      color: var(--color-white);
+      border: 1px solid var(--color-primary);
+      background-color: var(--color-primary);
     }
   }
 }

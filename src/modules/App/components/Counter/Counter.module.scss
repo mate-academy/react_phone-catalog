@@ -12,17 +12,21 @@
 
   font-size: 9px;
   font-weight: 600;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: Mont, sans-serif;
 
   width: 14px;
   height: 14px;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: var(--red-color);
-  border: 1px solid var(--white-color);
+  background-color: var(--color-red);
+  border: 1px solid var(--color-white);
 
   transition: opacity $animation-duration linear;
+
+  &--dark {
+    border: 1px solid var(--color-black);
+  }
 
   &--empty {
     opacity: 0;

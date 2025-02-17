@@ -70,7 +70,7 @@
     aspect-ratio: 1;
     object-fit: contain;
     box-sizing: border-box;
-    border: 1px solid var(--elements-color);
+    border: 1px solid var(--color-elements);
 
     cursor: pointer;
     transition: border $animation-duration;
@@ -81,7 +81,7 @@
 
     &--active {
       pointer-events: none;
-      border: 1px solid var(--primary-color);
+      border: 1px solid var(--color-primary);
     }
   }
 }

@@ -14,7 +14,7 @@
   &__text {
     text-indent: 16px;
     text-align: justify;
-    color: var(--secondary-color);
+    color: var(--color-secondary);
 
     @include body-text;
   }
