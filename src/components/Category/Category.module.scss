@@ -1,4 +1,4 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .category {
   width: 100%;
@@ -48,7 +48,7 @@
 
         &_models {
           margin: 0;
-          
+
           @include font-body;
         }
       }

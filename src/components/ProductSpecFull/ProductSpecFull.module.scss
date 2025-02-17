@@ -1,4 +1,4 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .product_details__spec_full {
   grid-column: 1 / -1;
@@ -11,7 +11,7 @@
     margin: 0;
     padding-bottom: 16px;
     border-bottom: 1px solid $elements;
-    
+
     @include font-h3;
   }
 

@@ -1,4 +1,4 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .product_details__about {
   grid-column: 1 / -1;
@@ -35,7 +35,7 @@
 
     &_title {
       margin: 0;
-      
+
       @include font-h4;
     }
 

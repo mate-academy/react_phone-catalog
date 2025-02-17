@@ -4,7 +4,7 @@ import { ProductDetailsType } from '../types/ProductDetailsType';
 import { ProductType } from '../types/ProductType';
 import { Slide } from '../types/SlideType';
 
-const BASE_URL = 'http://localhost:5173';
+const BASE_URL = 'https://bezushk0.github.io/react_phone-catalog';
 
 export const getSlidesData = async (): Promise<Slide[]> => {
   const response = await fetch(BASE_URL + ApiRoutes.SLIDES);

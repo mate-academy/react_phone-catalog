@@ -1,4 +1,4 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .product_details {
   max-width: 1136px;
@@ -20,13 +20,13 @@
   }
 
   &__title {
-    margin: 0 0 32px 0;
+    margin: 0 0 32px;
     grid-column: 1 / -1;
 
     @include font-h2;
 
     @include on-tablet {
-      margin: 0 0 40px 0;
+      margin: 0 0 40px;
     }
   }
 
@@ -88,7 +88,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   &__title {
     @include font-h2;
   }

@@ -1,11 +1,11 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .pagination {
   display: flex;
   justify-content: center;
 
   &__list {
-    margin: 24px 0 0 0;
+    margin: 24px 0 0;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -19,7 +19,7 @@
     }
 
     @include on-tablet {
-      margin: 40px 0 0 0;
+      margin: 40px 0 0;
     }
   }
 

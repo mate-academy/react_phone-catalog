@@ -1,10 +1,10 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .product_list {
   row-gap: 40px;
   justify-items: center;
   margin: 0;
-  
+
   @include page-grid;
 
   & > li {

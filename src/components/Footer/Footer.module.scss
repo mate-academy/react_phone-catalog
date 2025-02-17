@@ -1,4 +1,4 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .footer {
   width: 100%;
@@ -82,7 +82,7 @@
       background-color: $surface-2;
       background-repeat: no-repeat;
       background-position: center;
-      background-size: 16xp;
+      background-size: 16px;
       background-image: url('../../../public/img/icons/arrow-top.svg');
 
       transition: all 0.3s;

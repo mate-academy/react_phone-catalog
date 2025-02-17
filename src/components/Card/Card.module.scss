@@ -1,4 +1,4 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .card {
   box-sizing: border-box;
@@ -83,7 +83,7 @@
     width: 100%;
     gap: 8px;
     margin: 0;
-    
+
     @include font-h3;
 
     &_old {

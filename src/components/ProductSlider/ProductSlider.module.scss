@@ -1,4 +1,4 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .product__carousel {
   overflow: hidden;
@@ -12,7 +12,7 @@
 
     &_title {
       margin: 0;
-      
+
       @include font-h2;
     }
 

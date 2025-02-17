@@ -1,11 +1,11 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .product_details__price {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-block: 32px 16px;
-  
+
   @include font-h2;
 
   &_regular,

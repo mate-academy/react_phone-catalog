@@ -1,15 +1,16 @@
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/variables';
 
 .cart__empty {
   &_text {
     grid-column: 1 / -1;
+    
     @include font-h3;
   }
 
   &_image {
     grid-column: 1 / -1;
     max-width: 400px;
-    width: 100%;  
+    width: 100%;
     justify-self: center;
   }
 }
