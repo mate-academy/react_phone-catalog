@@ -1,0 +1,46 @@
+@import '@styles/main';
+
+.category {
+  border-radius: $border-radius;
+  transition: background-color $hover-duration;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__img-wrapper {
+    aspect-ratio: 1 / 1;
+    background-color: #8D8D92;
+    position: relative;
+    overflow: hidden;
+    border-radius: $border-radius;
+    cursor: pointer;
+    margin-bottom: 24px;
+
+    &:hover > img {
+      transform: scale(1.1);
+    }
+  }
+
+  &__img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: transform $hover-duration;
+  }
+
+  &__title {
+    margin-bottom: 4px;
+  }
+
+  &__counter {
+    @include body-text;
+
+    color: $secondary-color;
+  }
+}

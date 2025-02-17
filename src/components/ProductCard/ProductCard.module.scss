@@ -1,0 +1,110 @@
+@import '@styles/main';
+
+.product {
+  box-sizing: border-box;
+  height: 506px;
+  width: 100%;
+  padding: 32px;
+  border: 1px solid $elements-color;
+  border-radius: $border-radius;
+  background-color: $card-bg-color;
+  transition:
+    box-shadow $hover-duration,
+    background-color $hover-duration,
+    border-color $hover-duration;
+
+  &--dark {
+    background-color: $card-bg-color;
+    border-color: transparent;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001A;
+  }
+
+  & *::selection {
+    background-color: transparent;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    height: 100%;
+  }
+
+  &__link {
+    flex-grow: 1;
+    position: relative;
+  }
+
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform $hover-duration;
+
+    &:hover {
+      transform: scale(1.1)
+    }
+  }
+
+  &__title {
+    @include body-text;
+
+    margin-top: 16px;
+    transition: color $hover-duration;
+    display: flex;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    & > * {
+      &::before {
+        content: "$";
+      }
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $elements-color;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 8px;
+
+    @include small-text;
+  }
+
+  &__prop {
+    color: $secondary-color;
+
+    text-transform: capitalize;
+
+    &--upper {
+      text-transform: uppercase;
+    }
+  }
+
+  &__tech-list {
+    margin-block: 8px;
+  }
+
+  &__interact {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 8px;
+  }
+}

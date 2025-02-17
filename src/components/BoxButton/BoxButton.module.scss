@@ -1,0 +1,45 @@
+@import '@styles/main';
+
+.btn {
+  width: 100%;
+  height: 40px;
+  background-color: $accent-color;
+  border-radius: 48px;
+  box-sizing: border-box;
+  color: $white-color;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition:
+    color $hover-duration,
+    box-shadow $hover-duration,
+    border-color $hover-duration,
+    background-color $hover-duration;
+
+  @include buttons-text;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &--dark {
+    &:hover {
+      background-color: #A378FF;
+      color: $white-color;
+    }
+  }
+
+  &--big {
+    height: 48px;
+  }
+
+  &--selected {
+    border: 1px solid $elements-color;
+    background-color: transparent;
+    color: $green-color;
+  }
+}
+
