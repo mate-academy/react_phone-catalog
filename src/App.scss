@@ -23,3 +23,11 @@ body {
   min-height: 100vh;
 }
 
+.visually-hidden {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+}
