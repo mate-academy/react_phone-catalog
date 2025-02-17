@@ -1,0 +1,95 @@
+@import '../../assets/scss/variables.scss';
+
+.footer {
+  width: 100%;
+  border-top: 1px solid $elements;
+
+  &__content {
+    max-width: 1136px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 16px;
+
+    @include on-tablet {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-inline: 24px;
+    }
+
+    @include on-small-desktop {
+      padding-inline: 32px;
+    }
+  }
+
+  &__logo {
+    width: 80px !important;
+    height: 28px !important;
+  }
+
+  &__nav {
+    &_list {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      gap: 16px;
+
+      @include on-tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+
+        gap: 13.5px;
+      }
+
+      @include on-small-desktop {
+        gap: 106px;
+      }
+    }
+
+    &_link {
+      color: $white;
+      text-transform: uppercase;
+
+      @include font-uppercase;
+    }
+  }
+
+  &__back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    &_text {
+      @include font-small;
+
+      color: $secondary;
+    }
+
+    &_button {
+      border: none;
+      height: 32px;
+      width: 32px;
+
+      cursor: pointer;
+
+      background-color: $surface-2;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16xp;
+      background-image: url('../../../public/img/icons/arrow-top.svg');
+
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $icons;
+      }
+    }
+  }
+}

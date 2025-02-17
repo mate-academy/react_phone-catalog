@@ -1,0 +1,21 @@
+@import '../../assets/scss/variables.scss';
+
+.product_details__specs {
+  &_list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &_item {
+    @include font-small;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_property {
+    color: $secondary;
+  }
+}

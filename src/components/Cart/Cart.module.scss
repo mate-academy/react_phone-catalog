@@ -1,0 +1,85 @@
+@import '../../assets/scss/variables.scss';
+
+.cart {
+  background-color: $surface-1;
+  height: 80px;
+
+  grid-column: 1 / -1;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &__content {
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &_close {
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+
+      transition: all 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    &_image {
+      width: 80px;
+      height: 100%;
+
+      &_img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &_title {
+      @include font-body;
+
+      color: $white;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 24px;
+      width: 200px;
+    }
+
+    &_counter {
+      display: flex;
+      align-items: center;
+      max-width: 96px;
+      gap: 13px;
+    }
+  }
+
+  &__price {
+    @include font-h3;
+  }
+}

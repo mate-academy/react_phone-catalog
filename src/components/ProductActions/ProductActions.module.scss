@@ -1,0 +1,9 @@
+@import '../../assets/scss/variables.scss';
+
+.product_details__actions {
+  display: flex;
+  height: 48px;
+  gap: 8px;
+
+  margin-bottom: 32px;
+}

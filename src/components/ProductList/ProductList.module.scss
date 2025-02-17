@@ -1,0 +1,26 @@
+@import '../../assets/scss/variables.scss';
+
+.product_list {
+  row-gap: 40px;
+  justify-items: center;
+  margin: 0;
+  
+  @include page-grid;
+
+  & > li {
+    width: 100%;
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-big-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-small-desktop {
+      grid-column: span 6;
+    }
+  }
+}

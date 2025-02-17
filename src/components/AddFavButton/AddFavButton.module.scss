@@ -1,0 +1,20 @@
+@import '../../assets/scss/variables.scss';
+
+.add_to_fav_button {
+  width: 40px;
+  flex-shrink: 0;
+  background-color: $surface-2;
+
+  &:hover {
+    background-color: $icons;
+  }
+
+  &_selected {
+    background-color: $black;
+  }
+}
+
+.add_to_fav_button.fav_selected {
+  background-color: $black;
+  border: 1px solid $elements;
+}

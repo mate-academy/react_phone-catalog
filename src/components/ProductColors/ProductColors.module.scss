@@ -1,0 +1,50 @@
+@import '../../assets/scss/variables.scss';
+
+.product_details__colors {
+  &_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+  }
+
+  &_title,
+  &_id {
+    @include font-small;
+
+    color: $secondary;
+  }
+
+  &_id {
+    @include on-small-desktop {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &_list {
+    display: flex;
+    gap: 8px;
+
+    padding: 0 0 24px;
+    border-bottom: 1px solid $elements;
+    margin: 8px 0 0;
+  }
+
+  &_button {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    border: 1px solid $elements;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &_inner {
+    width: 27px;
+    height: 27px;
+
+    border: 2px solid $black;
+    border-radius: 50%;
+  }
+}

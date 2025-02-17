@@ -1,0 +1,15 @@
+@import '../../assets/scss/variables.scss';
+
+.cart__list {
+  grid-column: 1 / -1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+
+  @include page-grid;
+
+  @include on-small-desktop {
+    grid-column: 1 / 17;
+  }
+}

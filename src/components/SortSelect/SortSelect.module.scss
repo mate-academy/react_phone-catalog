@@ -1,0 +1,19 @@
+@import '../../assets/scss/variables.scss';
+
+.sortSelect {
+  width: 136px;
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-tablet {
+    width: 176px;
+  }
+
+  &__label {
+    @include font-small;
+
+    color: $secondary;
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../assets/scss/variables.scss';
+
+.breadCrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__text {
+    @include font-small;
+
+    color: $secondary;
+  }
+
+  &__link {
+    color: $white;
+    transition: all 0.3s;
+    @include font-small;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+}

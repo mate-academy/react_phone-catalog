@@ -1,0 +1,98 @@
+@import '../../assets/scss/variables.scss';
+
+.icon {
+  position: relative;
+
+  &__heart,
+  &__shopingBag,
+  &__closeIcon,
+  &__burger,
+  &__arrowRight,
+  &__arrowLeft,
+  &__arrowRightActive,
+  &__arrowLeftActive,
+  &__heartFilled,
+  &__home,
+  &__arrowDown,
+  &__lessDisabledIcon,
+  &__lessIcon,
+  &__plusIcon{
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__heart {
+    background-image: url('/img/icons/heart.svg');
+  }
+
+  &__shopingBag {
+    background-image: url('/img/icons/bag.svg');
+  }
+
+  &__burger {
+    background-image: url('/img/icons/menu.svg');
+  }
+
+  &__closeIcon {
+    background-image: url('/img/icons/close.svg');
+  }
+
+  &__arrowRight {
+    background-image: url('/img/icons/arrow-r-d.svg');
+  }
+
+  &__arrowLeft {
+    background-image: url('/img/icons/arrow-l-d.svg');
+  }
+
+  &__arrowRightActive {
+    background-image: url('/img/icons/arrow-right.svg');
+  }
+
+  &__arrowLeftActive {
+    background-image: url('/img/icons/arrow-left.svg');
+  }
+
+  &__heartFilled {
+    background-image: url('/img/icons/FavFilled.svg');;
+  }
+
+  &__home {
+    background-image: url('/img/icons/home.svg');
+  }
+
+  &__arrowDown {
+    background-image: url('/img/icons/arrow-down.svg');
+  }
+
+  &__lessIcon {
+    background-image: url('/img/icons/less.svg');
+  }
+
+  &__lessDisabledIcon {
+    background-image: url('/img/icons/less-disabled.svg');
+  }
+
+  &__plusIcon {
+    background-image: url('/img/icons/plus.svg');
+  }
+
+  &__counter {
+    position: absolute;
+    top: -5px;
+    right: -7px;
+    width: 14px;
+    height: 14px;
+    background-color: $red;
+    border-radius: 50%;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+  }
+}

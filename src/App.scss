@@ -1,1 +1,25 @@
-// not empty
+@import "./assets/scss/variables.scss";
+
+html {
+  overflow: auto;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: $black;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  @include font-body;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  color: $white;
+  min-height: 100vh;
+}
+

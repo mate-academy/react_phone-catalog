@@ -1,0 +1,60 @@
+@import '../../assets/scss/variables.scss';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__list {
+    margin: 24px 0 0 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    & > :nth-child(1) {
+      margin-right: 8px;
+    }
+
+    & > :nth-last-child(1) {
+      margin-left: 8px;
+    }
+
+    @include on-tablet {
+      margin: 40px 0 0 0;
+    }
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center
+  }
+
+  &__numberButton{
+    color: $white;
+    background-color: $black;
+  }
+
+  &__arrowButton {
+    background-color: $surface-2;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $elements;
+    }
+
+    &_active {
+      background-color: $accent;
+    }
+  }
+}

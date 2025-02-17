@@ -1,0 +1,102 @@
+@import '../../assets/scss/variables.scss';
+
+.product_details {
+  max-width: 1136px;
+  margin-inline: auto;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+
+
+  @include page-grid;
+
+  &__breadCrumbs {
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    margin: 0 0 32px 0;
+    grid-column: 1 / -1;
+
+    @include font-h2;
+
+    @include on-tablet {
+      margin: 0 0 40px 0;
+    }
+  }
+
+  &__main {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+      grid-column: 1 / 8;
+    }
+
+    @include on-small-desktop {
+      grid-column: 1 / 13;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__info {
+    grid-column: 1 / -1;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      margin-bottom: 64px;
+    }
+
+    @include on-small-desktop {
+      grid-column: 14 / 21;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__additional {
+    grid-column: 1 / -1;
+
+    @include page-grid;
+  }
+
+  &__you_may_like {
+    max-width: 1136px;
+
+    margin-block: 56px;
+    margin-inline: auto;
+
+    @include on-tablet {
+      margin-block: 64px;
+    }
+
+    @include on-small-desktop {
+      margin-block: 80px;
+    }
+  }
+}
+
+.product_not_found {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  &__title {
+    @include font-h2;
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
+    object-fit: contain;
+  }
+}

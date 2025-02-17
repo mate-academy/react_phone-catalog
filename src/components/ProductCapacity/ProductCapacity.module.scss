@@ -1,0 +1,40 @@
+@import '../../assets/scss/variables.scss';
+
+.product_details__capacity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 24px;
+
+  border-bottom: 1px solid $elements;
+
+  &_title {
+    @include font-small;
+
+    margin: 0;
+    color: $secondary;
+  }
+
+  &_list {
+    margin: 0;
+    display: flex;
+    gap: 8px;
+  }
+
+  &_button {
+    border: 1px solid $icons;
+    padding: 8px;
+    background-color: $black;
+    color: $white;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    @include font-body;
+
+    &.selected {
+      border: 1px solid $white;
+      background-color: $white;
+      color: $black;
+    }
+  }
+}

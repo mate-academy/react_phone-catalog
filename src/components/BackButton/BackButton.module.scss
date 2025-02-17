@@ -1,0 +1,22 @@
+@import '../../assets/scss/variables.scss';
+
+.back_button {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: $white;
+  border: none;
+  cursor: pointer;
+  gap: 4px;
+  transition: all 0.3s;
+  padding: 0;
+
+  grid-column: 1 / -1;
+
+  @include font-small;
+
+  &:hover {
+    color: $accent;
+  }
+}

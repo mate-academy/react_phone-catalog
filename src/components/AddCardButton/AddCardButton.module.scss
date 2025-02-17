@@ -1,0 +1,7 @@
+@import '../../assets/scss/variables.scss';
+
+.add_to_cart_button {
+  @include font-buttons;
+
+  width: 100%;
+}

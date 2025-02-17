@@ -1,0 +1,59 @@
+@import '../../assets/scss/variables.scss';
+
+.favourites_page {
+  display: flex;
+  flex-direction: column;
+  max-width: 1136px;
+  width: 100%;
+  margin-inline: auto;
+
+  &__content {
+    &_title {
+      margin-block: 24px 8px;
+
+      @include font-h1;
+
+      @include on-tablet {
+        margin-block: 40px 8px;
+      }
+    }
+
+    &_text {
+      margin: 0;
+    }
+  }
+
+  &__list {
+    margin-block: 32px 56px;
+    row-gap: 40px;
+    justify-items: center;
+    margin: 0;
+
+    @include page-grid;
+
+    @include on-tablet {
+      margin-block: 40px 64px;
+    }
+
+    @include on-small-desktop {
+      margin-block: 40px 80px;
+    }
+
+    & > li {
+      width: 100%;
+      grid-column: span 4;
+
+      @include on-tablet {
+        grid-column: span 6;
+      }
+
+      @include on-big-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-small-desktop {
+        grid-column: span 6;
+      }
+    }
+  }
+}

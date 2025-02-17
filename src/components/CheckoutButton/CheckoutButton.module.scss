@@ -1,0 +1,8 @@
+@import '../../assets/scss/variables.scss';
+
+.checkout_button {
+  width: 100%;
+  height: 48px;
+
+  @include font-buttons;
+}

@@ -1,0 +1,54 @@
+@import '../../assets/scss/variables.scss';
+
+.home_page {
+  max-width: 1136px;
+  margin-inline: auto;
+  box-sizing: border-box;
+  width: 100%;
+
+  &__title {
+    margin-block: 0 24px;
+
+    @include font-h1;
+
+    @include on-tablet {
+      margin-block: 8px 32px;
+    }
+
+    @include on-small-desktop {
+      margin-block: 32px 56px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      gap: 64px;
+      margin-bottom: 64px;
+    }
+
+    @include on-small-desktop {
+      gap: 80px;
+      margin-bottom: 80px;
+    }
+
+    &_banner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      margin-left: -16px;
+      width: 100vw;
+
+      @include on-tablet {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import '../../assets/scss/variables.scss';
+
+.perPage {
+  width: 136px;
+
+  @include on-small-desktop {
+    width: 128px;
+  }
+
+  &__label {
+    @include font-small;
+
+    color: $secondary;
+  }
+}

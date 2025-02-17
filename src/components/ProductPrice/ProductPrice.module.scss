@@ -1,0 +1,23 @@
+@import '../../assets/scss/variables.scss';
+
+.product_details__price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 32px 16px;
+  
+  @include font-h2;
+
+  &_regular,
+  &_discaunt{
+    margin: 0;
+  }
+
+  &_discaunt {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+}

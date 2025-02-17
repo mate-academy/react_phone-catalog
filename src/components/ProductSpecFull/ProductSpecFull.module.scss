@@ -1,0 +1,34 @@
+@import '../../assets/scss/variables.scss';
+
+.product_details__spec_full {
+  grid-column: 1 / -1;
+
+  @include on-small-desktop {
+    grid-column: 14 / -1;
+  }
+
+  &_title {
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+    
+    @include font-h3;
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &_item {
+    @include font-body;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_text {
+    color: $secondary;
+  }
+}

@@ -1,0 +1,39 @@
+@import '../../assets/scss/variables.scss';
+
+.product_page {
+  max-width: 1136px;
+  margin-inline: auto;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    margin-bottom: 80px;
+  }
+
+  &__content {
+    margin-block: 24px;
+
+    @include on-tablet {
+      margin-block: 40px;
+    }
+
+    &_title {
+      margin: 0 0 4px;
+
+      @include font-h1;
+    }
+
+    &_total {
+      @include font-body;
+
+      color: $secondary;
+    }
+  }
+
+  &__selectors {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+}

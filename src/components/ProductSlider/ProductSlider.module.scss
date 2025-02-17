@@ -1,0 +1,63 @@
+@import '../../assets/scss/variables.scss';
+
+.product__carousel {
+  overflow: hidden;
+
+  &_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0 0 24px;
+
+    &_title {
+      margin: 0;
+      
+      @include font-h2;
+    }
+
+    &_direction {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      &_button {
+        cursor: pointer;
+        border: 1px solid $elements;
+        padding: 8px;
+        background-color: $elements;
+
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: $icons;
+        }
+
+        &.active {
+          background-color: $elements;
+        }
+
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  &_product{
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.product_slider__carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+}
