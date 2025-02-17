@@ -2,7 +2,6 @@
 
 .cart {
   background-color: $surface-1;
-  height: 80px;
 
   grid-column: 1 / -1;
   padding: 16px;
@@ -14,6 +13,7 @@
   row-gap: 16px;
 
   @include on-tablet {
+    height: 80px;
     padding: 24px;
     flex-direction: row;
     gap: 24px;
@@ -21,9 +21,10 @@
 
   &__content {
     height: 80px;
-
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: start;
     gap: 16px;
 
     @include on-tablet {
@@ -65,6 +66,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 
     @include on-tablet {
       gap: 24px;
