@@ -4,9 +4,9 @@ import styles from './HeroSection.module.scss';
 export const HeroSection = () => {
   return (
     <div className={styles.hero} id="home">
-      <div className={`${styles.title} homeTitle`}>
+      <h1 className={`${styles.title} homeTitle`}>
         Welcome to Nice Gadgets store!
-      </div>
+      </h1>
 
       <PicturesSlider />
     </div>
