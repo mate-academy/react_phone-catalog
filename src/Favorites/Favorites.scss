@@ -1,0 +1,11 @@
+.favorites {
+    min-height: 100vh;
+    &__products {
+        grid-column: 1 /-1;
+        
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 288px));
+        gap: 16px;
+        margin-block: 40px 80px;
+    }
+}
