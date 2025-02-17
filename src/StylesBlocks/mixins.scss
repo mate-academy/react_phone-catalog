@@ -1,0 +1,107 @@
+@import './variables';
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+@mixin section-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+    max-width: 1200px;
+    padding-inline: 32px;
+  }
+}
+
+@mixin page {
+  @include section-padding-inline;
+
+  margin-block: 24px 56px;
+
+  @include on-tablet {
+    margin-block: 32px 64px;
+  }
+
+  @include on-desktop {
+    margin-block: 56px 80px;
+  }
+}
+
+@mixin page-title {
+  margin-bottom: 32px;
+  gap: 8px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+@mixin active-link {
+  position: relative;
+  color: $primary;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $primary;
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin flex-row-col-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
