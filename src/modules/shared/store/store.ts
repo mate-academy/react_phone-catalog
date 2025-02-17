@@ -7,6 +7,7 @@ import favoritesReducer, {
   NAME as FAVORITES_NAME,
 } from '@features/favoritesSlice';
 
+import themeReducer, { NAME as THEME_NAME } from '@features/themeSlice';
 import cartReducer, { NAME as SHOPPING_CART_NAME } from '@features/cartSlice';
 
 import phonesReducer from '@features/phonesSlice';
@@ -16,6 +17,7 @@ import accessoriesReducer from '@features/accessoriesSlice';
 export const store = configureStore({
   reducer: {
     menu: menuReducer,
+    theme: themeReducer,
     products: productsReducer,
 
     cart: cartReducer,
@@ -30,11 +32,17 @@ export const store = configureStore({
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 
+let prevTheme = store.getState().theme;
 let prevfavorites = store.getState().favorites;
 let prevshoppingCart = store.getState().cart;
 
 store.subscribe(() => {
   const currentState: RootState = store.getState();
+
+  if (prevTheme !== currentState.theme) {
+    prevTheme = currentState.theme;
+    localStorage.setItem(THEME_NAME, JSON.stringify(prevTheme));
+  }
 
   if (prevfavorites !== currentState.favorites) {
     prevfavorites = currentState.favorites;

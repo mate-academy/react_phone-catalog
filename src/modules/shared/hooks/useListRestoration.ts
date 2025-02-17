@@ -5,20 +5,19 @@ export const useListRestoration = (
   listRef: React.RefObject<HTMLElement | null>,
   lastItemRef: React.RefObject<HTMLElement | null>,
 ) => {
-  const lastDiff = useRef(0);
   const lastScroll = useRef(0);
-  const lastHeight = useRef<number | null>(null);
+  const lastDiff = useRef<number | null>(null);
 
   const restoreList = useCallback(() => {
     const list = listRef.current;
     const item = lastItemRef.current;
-    const prevHeight = lastHeight.current;
+    const prevDiff = lastDiff.current;
 
     if (!item || !list) {
       return;
     }
 
-    if (prevHeight === null) {
+    if (prevDiff === null) {
       const prevScroll = lastScroll.current;
 
       if (
@@ -44,8 +43,10 @@ export const useListRestoration = (
 
     window.scrollTo({
       behavior: 'instant',
-      top: item.offsetTop + lastDiff.current,
+      top: item.offsetTop + prevDiff,
     });
+
+    lastDiff.current = null;
   }, [lastItemRef, listRef]);
 
   const saveDiff = useCallback(() => {
@@ -56,7 +57,6 @@ export const useListRestoration = (
       const windowTop = window.scrollY;
       const elementTop = item.offsetTop;
 
-      lastHeight.current = list.offsetHeight;
       lastDiff.current = windowTop - elementTop;
     }
   }, [lastItemRef, listRef]);

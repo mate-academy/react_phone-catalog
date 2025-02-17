@@ -1,10 +1,10 @@
 export enum IconType {
-  menu = 'icon--menu',
-  close = 'icon--close',
-  shoppingBag = 'icon--shopping-bag',
+  menu = 'icon__content--menu',
+  close = 'icon__content--close',
+  shoppingBag = 'icon__content--shopping-bag',
 
-  favorite = 'icon--favorite',
-  favoriteFilled = 'icon--favorite-filled',
+  favorite = 'icon__content--favorite',
+  favoriteFilled = 'icon__content--favorite--filled',
 
-  home = 'icon--home',
+  home = 'icon__content--home',
 }

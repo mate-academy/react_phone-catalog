@@ -6,12 +6,45 @@
   aspect-ratio: 1;
   box-shadow: -1px 0 0 0 var(--elements-color);
 
-  background-position: center;
-  background-repeat: no-repeat;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
   transition-duration: $animation-duration;
 
-  @include on-desktop {
-    background-size: 16px;
+  &__content {
+    width: 100%;
+    height: 100%;
+
+    mask-size: 16px;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: var(--primary-color);
+
+    &--favorite {
+      mask-image: url('/img/icons/icon-favorite.svg');
+
+      &--filled {
+        mask-image: url('/img/icons/icon-favorite-filled.svg');
+      }
+    }
+
+    &--shopping-bag {
+      mask-image: url('/img/icons/icon-shopping-bag.svg');
+    }
+
+    &--menu {
+      mask-image: url('/img/icons/icon-menu.svg');
+    }
+
+    &--close {
+      mask-image: url('/img/icons/icon-close.svg');
+    }
+
+    &--home {
+      box-shadow: none;
+      mask-image: url('/img/icons/icon-home.svg');
+    }
   }
 
   &--wide {
@@ -27,30 +60,5 @@
     &:hover {
       border: 1px solid var(--primary-color);
     }
-  }
-
-  &--favorite {
-    background-image: url('/img/icons/icon-favorite.svg');
-
-    &-filled {
-      background-image: url('/img/icons/icon-favorite-filled.svg');
-    }
-  }
-
-  &--shopping-bag {
-    background-image: url('/img/icons/icon-shopping-bag.svg');
-  }
-
-  &--menu {
-    background-image: url('/img/icons/icon-menu.svg');
-  }
-
-  &--close {
-    background-image: url('/img/icons/icon-close.svg');
-  }
-
-  &--home {
-    box-shadow: none;
-    background-image: url('/img/icons/icon-home.svg');
   }
 }

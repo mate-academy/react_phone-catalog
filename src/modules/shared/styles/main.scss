@@ -25,6 +25,8 @@
   --green-color: #27ae60;
   --red-color: #eb5757;
 
+  background-color: var(--white-color);
+
   // grid columns count
   --columns: #{$columns-p};
 
@@ -37,12 +39,12 @@
   }
 
   &--dark {
-    --primary-color: #313237;
-    --secondary-color: #89939a;
-    --icons-color: #b4bdc3;
-    --elements-color: #e2e6e9;
+    --primary-color: #f1f2f9;
+    --secondary-color: #75767f;
+    --icons-color: #4a4d58;
+    --elements-color: #3b3e4a;
     --hover-bg-color: #fafbfc;
-    --white-color: #fff;
+    --white-color: #0f1121;
     --green-color: #27ae60;
     --red-color: #eb5757;
   }

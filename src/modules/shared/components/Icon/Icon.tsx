@@ -24,9 +24,11 @@ export const Icon: React.FC<Props> = ({
 }) => (
   <div
     onClick={onClick}
-    className={classNames(className, styles.icon, styles[type], {
+    className={classNames(className, styles.icon, {
       [styles['icon--wide']]: wide,
       [styles['icon--with-border']]: withBorder,
     })}
-  ></div>
+  >
+    <div className={classNames(styles.icon__content, styles[type])}></div>
+  </div>
 );

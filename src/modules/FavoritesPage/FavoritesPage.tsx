@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { Product } from '@sTypes/Product';
@@ -9,6 +9,7 @@ import { ProductsCount } from '@components/ProductsCount';
 
 import { useAppSelector } from '@store/hooks';
 import { useProductsPreload } from '@hooks/useProductsPreload';
+import { getHeaderHeight } from '@utils/getHeaderHeight';
 
 export const FavoritesPage = () => {
   const favorites = useAppSelector(state => state.favorites);
@@ -39,6 +40,24 @@ export const FavoritesPage = () => {
       : res;
   }, [allProducts, favorites, query]);
 
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const content = contentRef.current;
+
+    if (!content) {
+      return;
+    }
+
+    const headerHeight = getHeaderHeight();
+    const listTop = content.offsetTop - headerHeight;
+
+    window.scrollTo({
+      top: listTop,
+      behavior: 'smooth',
+    });
+  }, [query]);
+
   const hasProducts = favorites.length !== 0;
 
   const showError = hasProducts && error;
@@ -47,7 +66,11 @@ export const FavoritesPage = () => {
   const showContent = !showError && !showLoader;
 
   return (
-    <ProductsCount title="Favorites" productsCount={favorites.length}>
+    <ProductsCount
+      ref={contentRef}
+      title="Favorites"
+      productsCount={showLoader ? favorites.length : favoriteProducts.length}
+    >
       {showError && <Error error={error} reload={reload} />}
 
       {showContent && !favoriteProducts.length && (

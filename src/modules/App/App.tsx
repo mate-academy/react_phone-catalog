@@ -7,8 +7,10 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Breadcrumbs } from './components/Breadcrumbs';
 
-import { useAppDispatch } from '@store/hooks';
+import { Theme } from '@sTypes/Theme';
 import { menuActions } from '@features/menuSlice';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+
 import { useLoweredLocation } from '@hooks/useLoweredLocation';
 import { useScrollRestoration } from '@hooks/useScrollRestoration';
 
@@ -19,6 +21,18 @@ export const App = () => {
 
   const dispatch = useAppDispatch();
   const { pathname } = useLoweredLocation();
+
+  const theme = useAppSelector(state => state.theme);
+
+  useEffect(() => {
+    const page = document.querySelector('.page');
+
+    if (theme === Theme.dark) {
+      page?.classList.add('page--dark');
+    } else {
+      page?.classList.remove('page--dark');
+    }
+  }, [theme]);
 
   useEffect(() => {
     dispatch(menuActions.set(false));

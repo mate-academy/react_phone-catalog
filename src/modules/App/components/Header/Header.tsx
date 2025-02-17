@@ -32,7 +32,7 @@ export const Header: React.FC<Props> = ({ className }) => {
   const isCategoryPage = [
     '/phones',
     '/tablets',
-    'accessories',
+    '/accessories',
     '/favorites',
   ].includes(pathname);
 

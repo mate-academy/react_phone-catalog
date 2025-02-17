@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Product } from '@sTypes/Product';
 import { ItemsPerPage } from '@ProductsPage/types/ItemsPerPage';
@@ -91,6 +91,7 @@ export const ProductsList: React.FC<Props> = ({
     setHistoryItem('visibleCount', visibleCount);
   }, [setHistoryItem, visibleCount]);
 
+  const needRestoration = useRef(false);
   const lastItem = useRef<HTMLElement | null>(null);
 
   const { saveDiff, restoreList, saveLastScroll } = useListRestoration(
@@ -99,10 +100,21 @@ export const ProductsList: React.FC<Props> = ({
   );
 
   useEffect(() => {
-    if (listRestoring) {
+    if (listRestoring && needRestoration.current) {
       restoreList();
+      needRestoration.current = false;
     }
   });
+
+  const handleRemoveFromFavorite = useCallback(() => {
+    saveLastScroll();
+    needRestoration.current = true;
+  }, [saveLastScroll]);
+
+  const handleLastRemoveFromFavorite = useCallback(() => {
+    saveDiff();
+    needRestoration.current = true;
+  }, [saveDiff]);
 
   const lastItemId = products.length - 1;
 
@@ -129,7 +141,9 @@ export const ProductsList: React.FC<Props> = ({
               product={product}
               ref={i === lastItemId ? lastItem : undefined}
               onRemoveFromFavorite={
-                i === lastItemId ? saveDiff : saveLastScroll
+                i === lastItemId
+                  ? handleLastRemoveFromFavorite
+                  : handleRemoveFromFavorite
               }
             />
           ))}
