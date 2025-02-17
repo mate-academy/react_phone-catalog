@@ -1,0 +1,95 @@
+@import '../../styles/variables.scss';
+
+.productCard {
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  padding: 31px;
+
+  border: 1px solid $white-gray;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  &__name {
+    font-family: $font-family-regular;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    align-self: flex-end;
+  }
+
+  &__img {
+    object-fit: contain;
+    height: 100%;
+    width: 148px;
+  }
+
+  &__price {
+    align-self: flex-start;
+  }
+
+  &__border {
+    width: 100%;
+    border: 1px solid $white-gray;
+  }
+
+  &__property {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+
+    font-size: $font-family-regular;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+  }
+
+  &__label {
+    color: $gray-secondary;
+    justify-content: space-between;
+  }
+
+  &__value {
+    color: $gray-primary;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &__toCartButton {
+      padding: 9.5px;
+      background-color: $orange-accent;
+      font-family: $font-family-regular;
+      font-weight: 700;
+      color: #FFF;
+      font-size: 14px;
+      text-align: center;
+      line-height: 21px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    &__likeLink {
+      box-sizing: border-box;
+      padding: 0;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px $gray_icons_placeholders;
+
+      &__icon {
+        width: 16px;
+        height: 16px;
+        padding: 12px;
+      }
+    }
+
+  }
+}
