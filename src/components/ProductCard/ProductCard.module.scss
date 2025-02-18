@@ -1,0 +1,125 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.card {
+  width: 272px;
+  padding: 24px;
+  border: 1px solid $elements-color;
+
+  @include transition;
+
+  &:hover {
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.img {
+  height: 180px;
+  margin: 0 auto 24px;
+}
+
+.title {
+  display: inline-block;
+  height: 45px;
+  margin-bottom: 8px;
+  color: $primary-color;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.prices {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid $elements-color;
+}
+
+.price {
+  padding-bottom: 5px;
+  color: $primary-color;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.oldPrice {
+  color: $secondary-color;
+  font-weight: 500;
+  line-height: 28px;
+  text-decoration-line: line-through;
+}
+
+.params {
+  margin-bottom: 16px;
+}
+
+.param {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.property {
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.value {
+  color: $primary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  text-align: right;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnBuy {
+  width: 70%;
+  padding-block: 9px;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  background: $primary-color;
+  border: 1px solid $primary-color;
+
+  @include transition;
+
+  &:hover {
+    color: $primary-color;
+    background: $color-white;
+  }
+}
+
+.success {
+  color: $color-success;
+  background: $color-white;
+  border: 1px solid $elements-color;
+}
+
+.favorite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $icons-color;
+
+  @include transition;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+}
+
+.selected {
+  border: 1px solid $elements-color;
+}

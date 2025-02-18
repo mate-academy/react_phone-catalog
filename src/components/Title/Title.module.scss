@@ -1,0 +1,17 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.title {
+  margin-bottom: 24px;
+  color: $primary-color;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    font-size: 48px;
+    line-height: 56px;
+    padding-inline: 0;
+  }
+}

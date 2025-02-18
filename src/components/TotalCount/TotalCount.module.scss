@@ -1,0 +1,72 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.total {
+  border: 1px solid $elements-color;
+
+  margin-inline: 16px;
+
+  @include tablet-screen {
+    margin-inline: 0;
+  }
+
+  @include desktop-screen {
+    width: 40%;
+    height: fit-content;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px;
+}
+
+.price {
+  color: $primary-color;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -1%;
+  text-align: center;
+}
+
+.count {
+  margin-bottom: 16px;
+  color: $secondary-color;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+}
+
+.line {
+  margin-bottom: 16px;
+  height: 1px;
+  background-color: $elements-color;
+}
+
+.buy {
+  margin-bottom: 20px;
+  padding-block: 10px;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+  border: 1px solid $primary-color;
+  background: $primary-color;
+
+  @include transition;
+
+  &:hover {
+    color: $primary-color;
+    background: $color-white;
+  }
+}
+
+.message {
+  color: red;
+}

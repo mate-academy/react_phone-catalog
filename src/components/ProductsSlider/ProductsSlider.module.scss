@@ -1,0 +1,76 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.slider {
+  margin-bottom: 57px;
+
+  @include tablet-screen {
+    margin-bottom: 64px;
+  }
+
+  @include desktop-screen {
+    margin-bottom: 80px;
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 70px;
+  margin-bottom: 24px;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 80px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border: 1px solid $icons-color;
+  cursor: pointer;
+
+  @include transition;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+}
+
+.disabled {
+  opacity: 0.4;
+}
+
+.bottom {
+  overflow: hidden;
+  position: relative;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+}
+
+.sliderTrack {
+  display: flex;
+  gap: 16px;
+
+  @include transition;
+
+  & > * {
+    flex-shrink: 0;
+    width: 272px;
+  }
+}
