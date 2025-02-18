@@ -1,0 +1,206 @@
+@import 'colors';
+@import "mixins";
+@import "typography";
+
+%button {
+  background-position: center;
+  background-color: var(--color-white);
+  background-repeat: no-repeat;
+  background-size: 1.6rem;
+  cursor: pointer;
+  text-align: center;
+
+  box-shadow: -1px 0 0 0 var(--color-elements);
+
+
+  min-width: 4.8rem;
+  height: 4.8rem;
+  border: none;
+
+  @include on-m-desktop {
+    height: 6.4rem;
+    min-width: 6.4rem;
+  }
+
+  & svg {
+    fill: var(--color-primary);
+    height: 100%;
+    pointer-events: none;
+
+  }
+}
+
+.buttonSearch {
+  @extend %button;
+
+  box-sizing: border-box;
+  margin-right: 1px;
+  fill-rule: evenodd;
+  box-shadow: -1px 0 0 0 var(--color-elements)
+}
+
+.buttonFavourite {
+  @extend %button;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonCart {
+  @extend %button;
+}
+
+.btnCart {
+  @extend %text-buttons;
+
+  width: 100%;
+  background-color: var(--color-accent);
+  border-radius: 4.8rem;
+  padding-block: 1.05rem 0.85rem;
+  cursor: pointer;
+  border: 1px solid var(--color-accent);
+  color: var(--color-text-btn);
+  padding-inline: 0;
+  transition: box-shadow $transition-duration ease-out;
+
+  @include on-tablet {
+    &:hover {
+      box-shadow: 0 3px 13px 0 $color-btn-shadow;
+    }
+
+    &:active {
+      box-shadow: $color-btn-shadow 3px 3px 6px 0 inset, $color-btn-shadow -3px -3px 6px 1px inset;
+    }
+  }
+
+
+  &Pressed {
+    color: var(--color-text-cart-pressed);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-elements);
+
+
+    @include on-tablet {
+      &:hover {
+        box-shadow: 0 0 6px 0 $color-btn-shadow;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 6px 0 $color-btn-shadow;
+      }
+    }
+  }
+}
+
+.btnFavourite {
+  height: 100%;
+  min-width: 4.2rem;
+  aspect-ratio: 1;
+  box-shadow: none;
+
+  border-radius: 50%;
+
+  border: 1px solid var(--color-icons);
+
+  @include on-tablet {
+    &:hover {
+      border: 1px solid var(--color-primary);
+    }
+  }
+
+  &Pressed {
+
+    & svg {
+      fill: var(--color-secondary-accent);
+    }
+
+    border: 1px solid var(--color-elements);
+
+    @include on-tablet {
+      &:hover {
+        border: 1px solid var(--color-secondary-accent);
+      }
+    }
+  }
+
+  @include on-m-desktop {
+    height: 4rem;
+    width: 4rem;
+  }
+}
+
+.buttonFavouriteWrapper, .buttonCartWrapper {
+  box-sizing: border-box;
+  font-family: "Mont Regular", sans-serif;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text-num-of-products);
+  font-size: 9px;
+  line-height: 1.15rem;
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(0%, -50%);
+  border-radius: 50%;
+  padding: 1.5px 1.5px 0;
+  min-height: 1.6rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-white);
+  background-color: var(--color-num-of-products);
+}
+
+.ctaBtn {
+  @extend %text-buttons;
+
+  cursor: pointer;
+  border-radius: 4.8rem;
+  background-color: var(--color-white);
+  display: block;
+  margin-inline: auto;
+  max-width: 15rem;
+  width: 100%;
+  border: 2px solid $color-cta-gold;
+  transition: color $transition-duration ease, border-color $transition-duration ease, transform $transition-duration ease, box-shadow $transition-duration ease;
+  font-size: 1.2rem;
+  padding-block: 0.65rem 0.45rem;
+  margin-bottom: 0.8rem;
+  text-decoration: none;
+  text-align: center;
+
+  color: $color-cta-text-gold;
+  transform: scale(1.01);
+  box-shadow: 0 0 5px 0 $color-cta-text-gold;
+
+  @include on-tablet {
+    padding-block: 1.05rem 0.85rem;
+    font-size: 1.6rem;
+    color: var(--color-secondary);
+    border: 1.5px solid var(--color-secondary);
+    box-shadow: none;
+    margin-bottom: 1.6rem;
+
+    &:hover {
+      color: $color-cta-text-gold;
+      border-color: $color-cta-gold;
+      transform: scale(1.01);
+      box-shadow: 0 0 5px 0 $color-cta-text-gold;
+    }
+
+    &:active {
+      box-shadow: $color-cta-text-gold 0 0 2px 1px inset;
+      transform: scale(0.99);
+    }
+  }
+
+  @include on-tablet {
+    max-width: 25rem;
+  }
+
+  @include on-m-desktop {
+    max-width: 30rem;
+  }
+}
+

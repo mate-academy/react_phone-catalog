@@ -1,0 +1,130 @@
+@import "src/styles/colors";
+@import "src/styles/mixins";
+
+:root {
+  --height: 100vw;
+
+  @include on-tablet {
+    --height: 30vw;
+  }
+}
+
+.mySlider.heroSlider {
+  position: static;
+  width: 100%;
+  height: var(--height);
+  z-index: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin: auto;
+
+  @include on-tablet {
+    max-height: 40rem;
+    border-radius: 0.8rem;
+  }
+}
+
+.heroSlider .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroSlider .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.heroSlider .swiper-pagination-horizontal {
+  position: absolute;
+  transform: translateY(1.1rem);
+}
+
+.heroSlider .swiper-pagination-bullet {
+  position: relative;
+  height: 2.4rem;
+  width: 2.4rem;
+  opacity: 1;
+  border-radius: 0;
+  background-color: transparent;
+  margin: 0 2px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: var(--color-elements);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 0.4rem;
+    width: 1.4rem;
+  }
+}
+
+.heroSlider .swiper-pagination-bullet-active::after {
+  background-color: var(--color-primary);
+}
+
+.heroSlider .swiper-button-prev {
+  left: 2.4rem;
+
+  @include on-m-desktop {
+    left: 0;
+  }
+
+  &::after {
+    content: '';
+    mask: url("/src/assets/icons/arrow-left.svg");
+    height: 1.6rem;
+    width: 1.6rem;
+    background-color: var(--color-primary);
+  }
+}
+
+.heroSlider .swiper-button-next {
+  right: 2.4rem;
+
+  @include on-m-desktop {
+    right: 0;
+  }
+
+  &::after {
+    content: '';
+    mask: url("/src/assets/icons/arrow-right.svg");
+    height: 1.6rem;
+    width: 1.6rem;
+    background-color: var(--color-primary);
+  }
+}
+
+.heroSlider .swiper-button-prev,
+.heroSlider .swiper-button-next {
+  display: none;
+  top: 0;
+  margin: 0;
+  border-radius: 4.8rem;
+  width: 3rem;
+  height: var(--height);
+  border: 1px solid var(--color-icons);
+
+  &::after {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+  }
+
+  @include on-tablet {
+    display: flex;
+    max-height: 40rem;
+  }
+}

@@ -1,0 +1,13 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.hero {
+  position: relative;
+  max-width: 120rem;
+  margin-inline: auto;
+
+  @include on-m-desktop {
+    max-width: $maxContainerWidth;
+    padding-inline: 3rem;
+  }
+}

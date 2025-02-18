@@ -1,0 +1,84 @@
+@import "src/styles/colors";
+@import "src/styles/mixins";
+
+.pathWrapper {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: $maxContainerWidth;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1.6rem;
+  margin-inline: auto;
+
+  padding-inline: 1.6rem;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+
+    padding-inline: 2.4rem;
+
+    box-sizing: content-box;
+  }
+
+  @include on-m-desktop {
+    position: relative;
+    grid-template-columns: repeat(24, 1fr);
+    padding-inline: 0;
+  }
+
+  &NoProduct {
+    display: none;
+  }
+}
+
+
+.pathContainer {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin-bottom: 2.4rem;
+
+  @include on-tablet {
+    margin-bottom: 4rem;
+  }
+}
+
+.toHome {
+  display: inline-block;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  fill: var(--color-primary);
+}
+
+.arrowRight {
+  display: inline-block;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  fill: var(--color-icons);
+}
+
+.currPlace {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Mont Regular', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  padding-top: 3px;
+  color: var(--color-primary);
+
+  &IsDisabled {
+    color: var(--color-secondary);
+    pointer-events: none;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+}

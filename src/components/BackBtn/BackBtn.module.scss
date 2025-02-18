@@ -1,0 +1,49 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.goBack {
+  grid-column: 1/-1;
+
+  display: flex;
+  align-items: center;
+  width: max-content;
+
+  color: var(--color-secondary);
+  cursor: pointer;
+
+  margin-bottom: 1.6rem;
+}
+
+.arrowLeft {
+  display: inline-block;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  fill: var(--color-primary);
+}
+
+.backText {
+  @extend %text-small;
+
+  text-decoration: none;
+  font-family: 'Mont Regular', sans-serif;
+  color: var(--color-text-back-secondary);
+  line-height: 1;
+  padding-top: 2px;
+  margin-left: 4px;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+[data-theme = 'light'] {
+  & .backText {
+    --color-text-back-secondary: #89939A;
+  }
+}
+
+[data-theme = 'dark'] {
+  & .backText {
+    --color-text-back-secondary: #F1F2F9;
+  }
+}

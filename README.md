@@ -78,7 +78,7 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 
 Create `ProductDetailsPage` available at `/product/:productId`.
 
-1. `ProductCard` image and title should be links to the product details page.
+1. `Product` image and title should be links to the product details page.
 2. Use `Loader` when fetching the product details.
 3. Show the details on the page:
    - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
@@ -100,7 +100,7 @@ Create a Cart page with a list of `CartItem`s at `/cart`.
 Each item should have an `id`, `quantity`, and a `product`.
 Use React Context or Redux to store Items.
 
-1. `Add to cart` button in the `ProductCard` should add a product to the `Cart`.
+1. `Add to cart` button in the `Product` should add a product to the `Cart`.
 2. If the product is already in the `Cart` the button should say `Added to cart` and do nothing.
 3. Add the ability to remove items from the `Cart` with an `x` button next to a `CartItem`.
 4. Add a message `Your cart is empty` when there are no products in the `Cart`.
@@ -117,7 +117,7 @@ Use React Context or Redux to store Items.
 
 Create `Favorites` page with a `ProductsList` showing favorite products at `/favorites`.
 
-1. Add/remove a product to favorites by pressing a heart button in the `ProductCard` element.
+1. Add/remove a product to favorites by pressing a heart button in the `Product` element.
 2. The heart should be highlighted if the product is already added to the favorites.
 3. Use React Context or Redux to store the favorites.
 4. Show the number of favorites at the `Favorites` icon in the header.

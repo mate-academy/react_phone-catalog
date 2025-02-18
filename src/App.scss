@@ -1,1 +1,74 @@
-// not empty
+@import "normalize.css";
+@import "./styles/index";
+
+
+h1, h2, h3, h4, h5, h6, p, ul {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+[data-theme = 'light'] {
+  --color-background: #FAFBFC;
+  --color-accent: #4219D0;
+  --color-text-cart-pressed: #4219D0;
+  --color-num-of-products: #4219D0;
+  --color-secondary-accent: #F4BA47;
+  --color-text-hover-secondary: #6f7073;
+  --color-primary: #0F0F11;
+  --color-text-hover: #313237;
+  --color-secondary: #89939A;
+  --color-icons: #B4BDC3;
+  --color-elements: #E2E6E9;
+  --color-white: #FFF;
+  --color-text-num-of-products: #FFF;
+  --color-text-btn: #FFF;
+  --color-header-footer: #FFF;
+
+}
+
+[data-theme = 'dark'] {
+  --color-background: #0F1121;
+  --color-accent: #905BFF;
+  --color-num-of-products: #EB5757;
+  --color-secondary-accent: #EB5757;
+  --color-primary: #F1F2F9;
+  --color-text-cart-pressed: #F1F2F9;
+  --color-text-num-of-products: #F1F2F9;
+  --color-text-hover-secondary: #a9a9ae;
+  --color-text-hover: #F1F2F9;
+  --color-text-btn: #F1F2F9;
+  --color-secondary: #75767F;
+  --color-icons: #4A4D58;
+  --color-elements: #3B3E4A;
+  --color-header-footer: #0F1121;
+  --color-white: #0F1121;
+
+}
+
+::selection {
+  background-color: var(--color-elements);
+}
+
+body {
+  background-color: var(--color-background);
+  padding-top: 4.8rem;
+
+  @include on-m-desktop {
+    padding-top: 6.4rem;
+  }
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.App {
+  position: relative;
+  background-color: var(--color-background);
+  min-width: 32rem;
+}

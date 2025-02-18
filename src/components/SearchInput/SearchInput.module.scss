@@ -1,0 +1,89 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+@import 'src/styles/typography';
+@import 'src/styles/buttons';
+
+.searchInputContainer {
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  overflow: hidden;
+  right: 0;
+  height: 100%;
+  transition: all $transition-duration ease-out;
+
+  @include on-m-desktop{
+    height: 6.4rem;
+    margin-left: 2.4rem;
+  }
+
+  &IsActive {
+    width: 100%;
+
+
+    @include on-tablet {
+      box-shadow: -1px 0 0 0 var(--color-elements);
+      right: 5rem;
+      z-index: 1;
+      width: calc(100% - 14.8rem);
+    }
+
+    @media screen and (min-width: 780px) {
+      z-index: 0;
+      right: 9.8rem;
+      width: calc(100% - 19.4rem);
+    }
+
+    @include on-m-desktop {
+      right: 13rem;
+      width: calc(100% - 78.5rem);
+    }
+  }
+}
+
+.btnSearch {
+  @include on-m-desktop{
+    position: absolute;
+    right: 13rem;
+  }
+}
+
+.btnCloseSearch{
+  @extend %button;
+
+  position: absolute;
+  right: 0;
+  box-shadow: none;
+}
+
+.searchInput {
+  @extend %mont-regular;
+
+  position: absolute;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-white);
+
+  outline: none;
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  border: none;
+  caret-color: var(--color-secondary);
+  padding: 2.2rem 4.8rem 2rem 1.6rem;
+
+  @include on-tablet {
+    padding-inline: 2.4rem 4.8rem;
+  }
+
+  &::placeholder {
+    font-size: inherit;
+    color: var(--color-secondary);
+  }
+
+  &CaretActive {
+    caret-color: var(--color-primary);
+  }
+}
