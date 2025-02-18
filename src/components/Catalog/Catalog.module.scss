@@ -1,0 +1,83 @@
+@import '../../utils/scss/variables.scss';
+@import '../../utils/scss/mixin.scss';
+
+.catalog {
+  margin-top: 32px;
+
+  &__sortContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    margin-bottom: 24px;
+
+    @include page-grid;
+  }
+
+  &__sortBy {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      width: auto;
+      grid-column: span 4;
+    }
+  }
+
+  &__itemsOnPage {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      width: auto;
+      grid-column: span 3;
+    }
+  }
+
+  &__label {
+    font-size: 12px;
+    color: $secondary-color;
+  }
+
+  &__select {
+    height: 40px;
+
+    border: 1px solid $icons-color;
+
+    background-image: url('../../../public/img/icons/arrow-disabled-down.png');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position-x: calc(100% - 10px);
+    background-position-y: center;
+
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
+
+    @include hover(border-color, $secondary-color);
+  }
+
+  &__select:focus {
+    outline: none;
+    border-color: $primary-color;
+
+    background-image: url('../../../public/img/icons/arrow-disabled.png');
+  }
+
+  &__select option {
+    color: #000;
+    padding: 0 10px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+
+    @include page-grid;
+  }
+}

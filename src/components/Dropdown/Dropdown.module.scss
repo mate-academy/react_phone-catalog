@@ -1,0 +1,66 @@
+@import '../../utils/scss/variables.scss';
+@import '../../utils/scss/mixin.scss';
+
+.dropdown {
+  &__button {
+    width: 100%;
+    height: 40px;
+
+    border: 1px solid $icons-color;
+    padding: 0 12px;
+
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    color: $primary-color;
+
+    display: flex;
+    align-items: center;
+
+    background-color: $white-color;
+    background-image: url('../../../public/img/icons/arrow-disabled-down.png');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position-x: calc(100% - 10px);
+    background-position-y: center;
+
+    @include hover(border-color, $secondary-color);
+  }
+
+  &__buttonActive {
+    outline: none;
+    border-color: $primary-color;
+
+    background-image: url('../../../public/img/icons/arrow-disabled.png');
+  }
+
+  &__itemsList {
+    display: flex;
+    flex-direction: column;
+
+    padding: 8px 0;
+
+    border: 1px solid rgba(226, 230, 233, 1);
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  &__item {
+    height: 32px;
+
+    color: $secondary-color;
+
+    background-color: $white-color;
+    border: none;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 12px;
+
+    transition: $effect-duration;
+
+    &:hover {
+      color: $primary-color;
+      background-color: $hover-color;
+    }
+  }
+}

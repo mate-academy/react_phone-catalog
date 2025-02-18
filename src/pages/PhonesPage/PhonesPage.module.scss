@@ -1,0 +1,55 @@
+@import '../../utils/scss/variables.scss';
+@import '../../utils/scss/mixin.scss';
+
+.phonesPage {
+  &__nav {
+    height: 16px;
+
+    display: flex;
+    gap: 8px;
+
+    margin: 24px 0;
+  }
+
+  &__homeLink {
+    width: 16px;
+    height: 16px;
+
+    background-image: url('../../../public/img/icons/Home.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+  }
+
+  &__navArrow {
+    width: 16px;
+    height: 16px;
+
+    background-image: url('../../../public/img/icons/arrow-disabled.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+
+    transform: rotate(90deg);
+  }
+
+  &__phonesLink {
+    height: 16px;
+
+    font-size: 12px;
+    text-decoration: none;
+    color: $secondary-color;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &__subTitle {
+    margin: 0;
+
+    font-size: 14px;
+    color: $secondary-color;
+  }
+}

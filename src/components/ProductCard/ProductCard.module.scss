@@ -3,6 +3,7 @@
 
 .card {
   min-width: 212px;
+  max-width: 400px;
   height: 439px;
 
   display: flex;
@@ -21,14 +22,14 @@
     min-width: 237px;
     height: 512px;
 
-    // grid-column: span 6;
+    grid-column: span 6;
   }
 
   @include on-desktop {
     min-width: 272px;
     height: 506px;
 
-    // grid-column: span 6;
+    grid-column: span 6;
   }
 
   &__image {
@@ -141,5 +142,11 @@
     background-image: url('../../../img/icons/heart-like-active.png');
 
     border-color: $elements-color;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .card {
+    grid-column: span 4;
   }
 }

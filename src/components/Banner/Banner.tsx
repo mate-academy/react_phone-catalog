@@ -6,9 +6,12 @@ import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
 import { BannerSlides } from '../BannerSlides';
 
+interface ScrollToProps {
+  index: number;
+}
+
 export const Banner = () => {
   const isTablet = useMediaQuery({ minWidth: 640 });
-  // const isMobile = useMediaQuery({ maxWidth: 639 });
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -27,6 +30,15 @@ export const Banner = () => {
       emblaApi.scrollNext();
     }
   }, [emblaApi]);
+
+  const ScrollTo = useCallback(
+    ({ index }: ScrollToProps) => {
+      if (emblaApi) {
+        emblaApi.scrollTo(index);
+      }
+    },
+    [emblaApi],
+  );
 
   useEffect(() => {
     if (emblaApi) {
@@ -67,23 +79,26 @@ export const Banner = () => {
       </div>
 
       <div className={styles.banner__slider}>
-        <div
+        <a
           className={classNames(styles.banner__sliders, {
             [styles.banner__slidersActive]: currentSlide === 0,
           })}
-        ></div>
+          onClick={() => ScrollTo({ index: 0 })}
+        ></a>
 
-        <div
+        <a
           className={classNames(styles.banner__sliders, {
             [styles.banner__slidersActive]: currentSlide === 1,
           })}
-        ></div>
+          onClick={() => ScrollTo({ index: 1 })}
+        ></a>
 
-        <div
+        <a
           className={classNames(styles.banner__sliders, {
             [styles.banner__slidersActive]: currentSlide === 2,
           })}
-        ></div>
+          onClick={() => ScrollTo({ index: 2 })}
+        ></a>
       </div>
     </div>
   );

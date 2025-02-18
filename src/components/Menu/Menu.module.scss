@@ -21,6 +21,13 @@
   flex-direction: column;
   justify-content: space-between;
 
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+  z-index: 9;
+
+  // animation: fadeIn 0.5s forwards;
+
   &__linksContainer {
     display: flex;
     flex-direction: column;
@@ -109,8 +116,20 @@
   }
 }
 
-html {
-  &:has(.menu:target) {
-    overflow: hidden;
-  }
-}
+// @keyframes fadeIn {
+//   from {
+//     opacity: 0;
+//     transform: translateY(20px);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//     z-index: 9;
+//   }
+// }
+
+// html {
+//   &:has(.menu:target) {
+//     overflow: hidden;
+//   }
+// }

@@ -1,15 +1,31 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { PageLinks } from '../../types/PageLinks';
 import { AppContext } from '../../context/AppContext';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isTablet = useMediaQuery({ minWidth: 640 });
   const isMobile = useMediaQuery({ maxWidth: 639 });
   const { activeLink, handlePageLinkClick } = useContext(AppContext)!;
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleMenuToggle = () => {
+      if (location.pathname === '/menu') {
+        setIsMenuOpen(true);
+      } else {
+        setIsMenuOpen(false);
+      }
+    };
+
+    handleMenuToggle();
+  }, [location.pathname]);
 
   return (
     <header className={styles.header}>
@@ -18,17 +34,21 @@ export const Header = () => {
       {isMobile && (
         <div className={styles.header__buttonsContainer}>
           {isMenuOpen ? (
-            <a
-              href="#menu"
+            <NavLink
+              to="#"
               className={`${styles.header__menuButton} ${styles.header__menuButtonClose}`}
-              onClick={() => setIsMenuOpen(false)}
-            ></a>
+              onClick={event => {
+                event.preventDefault();
+                navigate(-1);
+                setIsMenuOpen(false);
+              }}
+            ></NavLink>
           ) : (
-            <a
-              href="#"
+            <NavLink
+              to="/menu"
               className={styles.header__menuButton}
               onClick={() => setIsMenuOpen(true)}
-            ></a>
+            ></NavLink>
           )}
         </div>
       )}
@@ -36,25 +56,25 @@ export const Header = () => {
       {isTablet && (
         <div className={styles.header__buttonsContainer}>
           <div className={styles.header__navButtons}>
-            <a
-              // href=""
+            <NavLink
+              to="/"
               className={classNames(styles.header__link, {
                 [styles.header__linkActive]: activeLink === PageLinks.HOME,
               })}
               onClick={() => handlePageLinkClick(PageLinks.HOME)}
             >
               Home
-            </a>
+            </NavLink>
 
-            <a
-              // href=""
+            <NavLink
+              to="phones"
               className={classNames(styles.header__link, {
                 [styles.header__linkActive]: activeLink === PageLinks.PHONES,
               })}
               onClick={() => handlePageLinkClick(PageLinks.PHONES)}
             >
               Phones
-            </a>
+            </NavLink>
 
             <a
               // href=""

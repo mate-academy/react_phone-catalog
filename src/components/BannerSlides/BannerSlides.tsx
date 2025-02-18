@@ -8,22 +8,12 @@ export const BannerSlides = () => {
   const isTablet = useMediaQuery({ minWidth: 640 });
   const { bannerSlides } = useContext(AppContext)!;
 
-  // console.log(bannerSlides);
-
-  // const images = [
-  //   isTablet
-  //     ? '../../../img/banner-images/NowAvailable.png'
-  //     : '../../../img/banner-images/NowAvailable-mobile.png',
-  //   '../../../img/banner-images/banner-accessories.png',
-  //   '../../../img/banner-images/banner-tablets.jpg',
-  // ];
-
   return (
     <div className={styles.bannerSlides__imageSlider}>
       {bannerSlides.map((slide, index) => (
         <div
           className={classNames(styles.bannerSlides__imageContainer, {
-            [styles.bannerSlides__imageContainerBlack]: index === 0,
+            [styles.bannerSlides__imageContainerBlack]: false,
           })}
           key={slide.id}
         >

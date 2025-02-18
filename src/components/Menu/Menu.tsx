@@ -3,6 +3,7 @@ import styles from './Menu.module.scss';
 import { PageLinks } from '../../types/PageLinks';
 import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
+import { NavLink } from 'react-router-dom';
 
 export const Menu = () => {
   const { activeLink, handlePageLinkClick } = useContext(AppContext)!;
@@ -12,24 +13,24 @@ export const Menu = () => {
       <aside className={`${styles.menu} ${styles.page__menu}`} id="menu">
         <div className="container">
           <div className={styles.menu__linksContainer}>
-            <a
-              // href=""
+            <NavLink
+              to="/"
               className={classNames(styles.menu__link, {
                 [styles.menu__linkActive]: activeLink === PageLinks.HOME,
               })}
               onClick={() => handlePageLinkClick(PageLinks.HOME)}
             >
               Home
-            </a>
-            <a
-              // href=""
+            </NavLink>
+            <NavLink
+              to="../phones"
               className={classNames(styles.menu__link, {
                 [styles.menu__linkActive]: activeLink === PageLinks.PHONES,
               })}
               onClick={() => handlePageLinkClick(PageLinks.PHONES)}
             >
               Phones
-            </a>
+            </NavLink>
             <a
               // href=""
               className={classNames(styles.menu__link, {

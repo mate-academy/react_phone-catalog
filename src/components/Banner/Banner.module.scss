@@ -2,7 +2,7 @@
 @import '../../utils/scss/mixin.scss';
 
 .banner {
-  height: 352px;
+  // height: 352px;
 
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@
   }
 
   &__wrapper {
-    height: 320px;
+    // height: 320px;
     overflow: hidden;
 
     @include on-tablet {
@@ -99,6 +99,8 @@
   &__sliders {
     width: 14px;
     height: 4px;
+
+    cursor: pointer;
 
     background: $elements-color;
 
