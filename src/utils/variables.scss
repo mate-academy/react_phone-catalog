@@ -1,0 +1,31 @@
+@font-face {
+  font-family: Mont-Bold;
+  src: url(../../public/fonts/Mont-Bold.otf);
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url(../../public/fonts/Mont-Regular.otf);
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url(../../public/fonts/Mont-SemiBold.otf);
+}
+
+body {
+  --white-color: #fff;
+  --purple-color: #4219D0;
+  --orange-color: #F4BA47;
+  --dark-gray-color: #0F0F11;
+  --gray-color: #89939A;
+  --icons-color: #B4BDC3;
+  --elements-color: #E2E6E9;
+  --hover-and-bg-color: #FAFBFC;
+  --green-color: #27AE60;
+  --red-color: #EB5757;
+  --strong-font-family: Mont-Bold, Arial, sans-serif;
+  --semi-bold-font-family: Mont-SemiBold, Arial, sans-serif;
+  --regular-font-family: Mont-Regular, Arial, sans-serif;
+}
+
