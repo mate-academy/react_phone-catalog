@@ -40,29 +40,37 @@ export const ItemDetails: React.FC<Props> = ({ item }) => {
 
   const navigate = useNavigate();
 
+  const colorName = color.split('-').join(' ');
+  const colorStyleName = (currentColorName: string) =>
+    currentColorName.split(' ').join('');
+
   const [selectedImg, setSelectedImg] = useState(0);
-  const [selectedCapacity, setSelectedCapacity] = useState(capacity);
 
   const changeImg = (imgIndex: number) => {
     setSelectedImg(imgIndex);
   };
 
-  const changeColor = (colorName: string) => {
-    const idColorName = (value: string) => value.split(' ').join('-');
-    const splitedId = id.split(idColorName(color));
+  const changeCapacity = (toChange: string) => {
+    const normalizedValue = (value: string) => value.toLowerCase();
 
-    splitedId.splice(splitedId.length - 1, 1, idColorName(colorName));
-    const newName = splitedId.join('');
+    const splitedId = id.split('-');
+
+    const indexSpecification = splitedId.indexOf(normalizedValue(capacity));
+
+    splitedId.splice(indexSpecification, 1, normalizedValue(toChange));
+    const newName = splitedId.join('-');
 
     navigate(`../${newName}`);
   };
 
-  const changeCapacity = (newCapacity: string) => {
-    setSelectedCapacity(newCapacity);
-  };
+  const changeColor = (toChange: string) => {
+    const idColorName = (value: string) => value.split(' ').join('-');
+    const splitedId = id.split(idColorName(color));
 
-  const colorStyleName = (colorName: string) => {
-    return colorName.split(' ').join('');
+    splitedId.splice(splitedId.length - 1, 1, idColorName(toChange));
+    const newName = splitedId.join('');
+
+    navigate(`../${newName}`);
   };
 
   useEffect(() => {
@@ -115,7 +123,7 @@ export const ItemDetails: React.FC<Props> = ({ item }) => {
                   {colorsAvailable.map(currentColor => (
                     <button
                       className={classNames('colorToggle button', {
-                        'colorToggle-active': currentColor === color,
+                        'colorToggle-active': currentColor === colorName,
                       })}
                       key={color}
                       onClick={() => changeColor(currentColor)}
@@ -136,13 +144,10 @@ export const ItemDetails: React.FC<Props> = ({ item }) => {
                   {capacityAvailable.map(currentCapacity => (
                     <button
                       className={classNames('capacityToggle', {
-                        'capacityToggle-active':
-                          currentCapacity === selectedCapacity,
+                        'capacityToggle-active': currentCapacity === capacity,
                       })}
                       key={currentCapacity}
-                      onClick={() => {
-                        changeCapacity(currentCapacity);
-                      }}
+                      onClick={() => changeCapacity(currentCapacity)}
                     >
                       <span className="body-text-small">{currentCapacity}</span>
                     </button>
