@@ -1,0 +1,69 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: var(--header-height);
+  border-top: 1px solid $icons-color;
+  padding: 0 32px;
+}
+
+.navigate {
+  display: flex;
+  gap: var(--header-height);
+  list-style: none;
+  @include uppercase-text;
+  li {
+    a {
+      text-decoration: none;
+      color: $secondary-color;
+    }
+  }
+}
+
+.goTop {
+  display: flex;
+  align-items: center;
+  gap: $gap-card;
+  p {
+    @include small-text;
+    color: $secondary-color;
+  }
+  button {
+    width: $button-navigate;
+    height: $button-navigate;
+    border: 1px solid $secondary-color;
+    background-color: $white-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: $navigate-icon;
+      height: $navigate-icon;
+    }
+    &:hover {
+      cursor: pointer;
+      border-color: $primary-color;
+      box-shadow: $shadow;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    flex-direction: column;
+    align-items: start;
+    height: auto;
+    gap: $gap-card;
+    padding: $button-navigate $button-navigate;
+  }
+  .navigate {
+    flex-direction: column;
+    gap: $gap-card;
+    margin: $navigate-icon 0;
+  }
+  .goTop{
+    align-self: center;
+  }
+}

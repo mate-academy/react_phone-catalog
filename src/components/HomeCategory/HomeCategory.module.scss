@@ -1,0 +1,24 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: $gap-card;
+  .title{
+    align-self: flex-start;
+  }
+}
+
+.category {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $gap-card;
+}
+
+@media (max-width: 639px) {
+  .category {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

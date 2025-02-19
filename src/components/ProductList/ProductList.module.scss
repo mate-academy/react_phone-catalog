@@ -1,0 +1,61 @@
+@import '../../styles/variables.scss';
+
+.container{
+  margin: $button-navigate;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: $gap-card;
+  align-items: center;
+  justify-content: center;
+}
+
+.listItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $gap-card;
+  margin-top: $button-navigate;
+}
+
+.button{
+  width: $button-navigate;
+  height: $button-navigate;
+  background-color: $white-color;
+  border: 1px solid $secondary-color;
+  @include buttons-text;
+  color: $primary-color;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.buttonActive{
+  background-color: $primary-color;
+  color: $white-color;
+}
+
+@media (max-width: 1199px) {
+  .list {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media (max-width: 899px) {
+  .list {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media (max-width: 639px) {
+  .list {
+    grid-template-columns: repeat(1, auto);
+  }
+}

@@ -1,0 +1,36 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: flex;
+  gap: $navigate-icon;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  label {
+    @include small-text;
+    color: $secondary-color;
+  }
+  select {
+    padding: 0 $navigate-icon;
+    border: 1px solid $secondary-color;
+    &:hover {
+      cursor: pointer;
+    }
+    option {
+      @include buttons-text;
+      color: $primary-color;
+    }
+  }
+}
+
+.option1 {
+  height: $button-add-to-cart-height;
+  width: $button-add-to-cart-width;
+}
+
+.option2 {
+  height: $button-add-to-cart-height;
+  width: $button-add-to-cart-width / 1.5;
+}
