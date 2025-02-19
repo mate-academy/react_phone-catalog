@@ -6,7 +6,6 @@ import styles from './App.module.scss';
 export const App = () => (
   <div>
     <Header />
-    <h1>Product Catalog</h1>
     <div className={styles.container_content}>
       <Outlet />
     </div>

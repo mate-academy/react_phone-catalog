@@ -8,7 +8,7 @@ export const HomePage = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Welcome to Nice Gadgets store!</h1>
+      <h1>Product Catalog</h1>
       <div className={styles.content}>
         <Carousel products={newPhones} name="Brand new models" />
         <HomeCategory />
