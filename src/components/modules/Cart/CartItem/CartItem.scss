@@ -1,0 +1,114 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 288px;
+  height: 160px;
+  padding: 16px;
+  justify-content: space-between;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    max-width: 592px;
+    height: 128px;
+    padding: 24px;
+  }
+
+  @include desktop {
+    max-width: 752px;
+  }
+
+  &__presentation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @include tablet {
+      gap: 24px;
+    }
+  }
+
+  &__photo {
+    width: 66px;
+    height: 66px;
+    padding: 7px;
+    box-sizing: content-box;
+    object-fit: contain;
+  }
+
+  &__name {
+    @include device-title;
+    padding: 0;
+    width: 176px;
+    display: inline-flex;
+    align-items: center;
+
+    @include tablet {
+      height: 42px;
+    }
+
+    @include desktop {
+      width: 336px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+
+    @include tablet {
+      justify-content: flex-end;
+      max-width: 200px;
+      gap: 24px;
+    }
+  }
+
+  .toolbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 32px;
+
+    &__tool {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+
+      &--delete,
+      &--add {
+        border: 1px solid $icons-placeholders;
+        background: none;
+      }
+
+
+      &.disabled {
+        border: 1px solid $gray-elements;
+      }
+
+      &--count {
+        font-family: 'Mont-Semibold';
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: center;
+      }
+    }
+  }
+
+  &__total {
+    @include h3;
+    width: 80px;
+    text-align: end;
+  }
+}

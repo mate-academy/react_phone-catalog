@@ -68,13 +68,13 @@ export const Header = () => {
         </nav>
         <div className={classNames('choice', 'menu__choice')}>
           <div
-            className="choice__item choice__item--favorite"
+            className="choice__icon choice__icon--favorite"
             onClick={() => setIsFav(!isFav)}
           >
-            <img className="item" src={isFav ? favIconFilled : favIcon} />
+            <img className="icon" src={isFav ? favIconFilled : favIcon} />
           </div>
-          <div className="choice__item choice__item--shopping-cart">
-            <img className="item" src={cart} />
+          <div className="choice__icon choice__icon--shopping-cart">
+            <img className="icon" src={cart} />
           </div>
         </div>
       </div>

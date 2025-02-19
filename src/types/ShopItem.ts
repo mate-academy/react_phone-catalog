@@ -1,4 +1,4 @@
-export interface Phone {
+export interface ShopItem {
   id: string;
   category: string;
   namespaceId: string;
@@ -21,4 +21,5 @@ export interface Phone {
   camera: string;
   zoom: string;
   cell: string[];
+  quantity?: number;
 }

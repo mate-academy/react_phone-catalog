@@ -1,30 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { PhoneCard } from '../../shared/PhoneCard/PhoneCard';
 import './Phones.style.scss';
 
-import { Phone } from '../../../types/Phone';
-import { getPhones } from '../../../api/phones';
+import { ShopItem } from '../../../types/ShopItem';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { loadPhones } from '../../../features/PhonesSlice/PhonesSlice';
 
 export const Phones = () => {
-  const [phonesList, setPhonesList] = useState<Phone[]>([]);
+  const dispatch = useAppDispatch();
+  const phonesList = useAppSelector(state => state.phones.phones);
 
-  useEffect(() => {
-    const fetchPhones = async () => {
-      try {
-        const res = await getPhones();
-        setPhonesList(res);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchPhones();
-  }, []);
+  useEffect(()=> {
+    dispatch(loadPhones());
+  },[]);
 
   return (
     <div className='phone-catalog'>
       {phonesList.length > 0 &&
-        phonesList.map((phone: Phone) => {
+        phonesList.map((phone: ShopItem) => {
           return <PhoneCard key={phone.id} phone={phone} />;
         })}
     </ div>

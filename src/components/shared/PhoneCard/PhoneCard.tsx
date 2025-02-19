@@ -1,21 +1,40 @@
-import React, { useState } from 'react';
 import './PhoneCard.scss';
+
+import React from 'react';
+import classNames from 'classnames';
+
+import { useLocalStorage } from '../../../utils/globalStyles/customHooks';
+
+
+import { ShopItem } from '../../../types/ShopItem';
+
 import favIconFilled from '../../../../public/icons/favourites-filled.svg';
 import favIcon from '../../../../public/icons/favourites.svg';
 
-import { Phone } from '../../../types/Phone';
-import classNames from 'classnames';
-
 type PhoneCardProps = {
-  phone: Phone;
+  phone: ShopItem;
 };
 
 export const PhoneCard: React.FC<PhoneCardProps> = ({ phone }) => {
-  const { images, name, priceRegular, priceDiscount, screen, capacity, ram } =
-    phone;
+  const {
+    id,
+    images,
+    name,
+    priceRegular,
+    priceDiscount,
+    screen,
+    capacity,
+    ram,
+  } = phone;
 
-  const [selected, setSelected] = useState(false);
-  const [isFav, setIsFav] = useState(false);
+  const { favItems, cartItems, manageItems } = useLocalStorage<ShopItem>();
+
+  const isFav = favItems.some(item => item.id === id);
+  const isInCart = cartItems.some(item => item.id === id);
+
+  const handleItemsSelection = (listName: 'fav' | 'cart', isPicked: boolean) => {
+    manageItems(phone, listName, isPicked)
+  };
 
   return (
     <div className="phone phone-card">
@@ -48,14 +67,21 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ phone }) => {
       <div className="buttons phone-card__buttons">
         <button
           type="button"
-          onClick={() => setSelected(!selected)}
-          className={classNames('buttons__add-to-cart', { selected: selected })}
+          onClick={() => handleItemsSelection('cart', isInCart)}
+          className={classNames('buttons__add-to-cart', { selected: isInCart })}
         >
-          {selected ? 'Added to cart' : 'Add to cart'}
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
 
-        <div onClick={() => setIsFav(!isFav)} className="buttons__add-to-fav">
-          <img className="fav-icon" src={isFav ? favIconFilled : favIcon} alt='add / delete favorite'/>
+        <div
+          onClick={() => handleItemsSelection('fav', isFav)}
+          className="buttons__add-to-fav"
+        >
+          <img
+            className="fav-icon"
+            src={isFav ? favIconFilled : favIcon}
+            alt="add / delete favorite"
+          />
         </div>
       </div>
     </div>
