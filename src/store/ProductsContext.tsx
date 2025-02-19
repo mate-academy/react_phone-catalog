@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { getAccessories, getPhones, getProducts, getTablets } from '../api';
-import { Accessory } from '../types/Accessory';
-import { Phone } from '../types/Phone';
 import { Product } from '../types/Product';
-import { Tablet } from '../types/Tablet';
+import { Accessory, Phone, Tablet } from '../types/ProductDetails';
 
 export const ProductsContext = React.createContext({
   products: [] as Product[],

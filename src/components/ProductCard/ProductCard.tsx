@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 
@@ -8,7 +9,8 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ product, hot }) => {
-  const { image, name, price, fullPrice, screen, capacity, ram } = product;
+  const { itemId, image, name, price, fullPrice, screen, capacity, ram } =
+    product;
   const specs = [
     { name: 'Screen', value: screen },
     { name: 'Сapacity', value: capacity },
@@ -17,8 +19,10 @@ export const ProductCard: React.FC<Props> = ({ product, hot }) => {
 
   return (
     <div className={styles['product-card']}>
-      <img className={styles['product-card__img']} src={image} />
-      <p className={styles['product-card__name']}>{name}</p>
+      <Link className={styles['product-card__link']} to={`/product/${itemId}`}>
+        <img className={styles['product-card__img']} src={image} />
+        <p className={styles['product-card__name']}>{name}</p>
+      </Link>
       <div className={styles['product-card__price']}>
         <p className={styles['product-card__price--new']}>{'$' + price}</p>
         {hot && (

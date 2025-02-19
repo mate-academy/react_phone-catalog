@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { categories } from '../../data/categories';
-import { getActiveLink } from '../../utils/getActiveLink';
+import { useProducts } from '../../store/ProductsContext';
 import styles from './Nav.module.scss';
 
 interface Props {
@@ -10,7 +10,19 @@ interface Props {
   onLinkClick?: () => void;
 }
 
+const formatCategoryName = (name: string) => {
+  return name.length > 1
+    ? name.charAt(0).toUpperCase() + name.slice(1)
+    : 'Home';
+};
+
 export const Nav: React.FC<Props> = ({ variant, onLinkClick }) => {
+  const location = useLocation().pathname.split('/').pop();
+  const { products } = useProducts();
+  const activeCategory = products.find(
+    product => product.itemId === location,
+  )?.category;
+
   return (
     <div
       className={classNames(styles.nav, {
@@ -25,12 +37,13 @@ export const Nav: React.FC<Props> = ({ variant, onLinkClick }) => {
               to={category.name}
               onClick={onLinkClick}
               className={({ isActive }) =>
-                getActiveLink({ isActive, element: 'nav__link', styles })
+                classNames(styles.nav__link, {
+                  [styles[`nav__link--active`]]:
+                    isActive || activeCategory === category.name,
+                })
               }
             >
-              {category.name.length > 1
-                ? category.name.charAt(0).toUpperCase() + category.name.slice(1)
-                : 'Home'}
+              {formatCategoryName(category.name)}
             </NavLink>
           </li>
         ))}

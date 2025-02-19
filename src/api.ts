@@ -3,9 +3,7 @@ import products from '../public/api/products.json';
 import phones from '../public/api/phones.json';
 import accessories from '../public/api/accessories.json';
 import tablets from '../public/api/tablets.json';
-import { Phone } from './types/Phone';
-import { Accessory } from './types/Accessory';
-import { Tablet } from './types/Tablet';
+import { Accessory, Phone, Tablet } from './types/ProductDetails';
 
 const delay = () => new Promise(resolve => setTimeout(resolve, 500));
 

@@ -26,6 +26,13 @@
     height: 100%;
   }
 
+  &__link {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-decoration: none;
+  }
+
   &__img {
     margin: 0 auto;
     object-fit: contain;
@@ -94,6 +101,7 @@
     height: 40px;
 
     &--add {
+      border: none;
       flex-grow: 1;
       max-width: 160px;
       background-color: $primary;

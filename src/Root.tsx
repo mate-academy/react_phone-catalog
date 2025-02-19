@@ -12,6 +12,7 @@ import './index.scss';
 import { ProductPages } from './modules/ProductPages';
 import { categories } from './data/categories';
 import { ScrollToTop } from './components/ScrollToTop';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 export const Root = () => {
   return (
@@ -31,6 +32,11 @@ export const Root = () => {
                     element={<ProductPages category={category} />}
                   />
                 ))}
+
+                <Route
+                  path={`/product/:productId`}
+                  element={<ProductDetailsPage />}
+                />
               </Route>
             </Routes>
           </Layout>

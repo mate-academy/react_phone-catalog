@@ -41,11 +41,7 @@ export const Pagination: React.FC<Props> = ({
   };
 
   return (
-    <ul
-      className={classNames(styles.pagination__list, {
-        [styles['pagination__list--transfer']]: totalPages >= 16,
-      })}
-    >
+    <ul className={styles.pagination__list}>
       <li className={classNames(styles.pagination__item)}>
         <Link
           className={classNames(

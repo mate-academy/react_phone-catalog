@@ -3,20 +3,9 @@
 .pagination {
   &__list {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 8px;
-
-    &--transfer {
-      display: grid;
-      grid-template-columns: repeat(18, 1fr);
-
-      @include on-tablet {
-        grid-template-columns: repeat(11, 1fr);
-      }
-
-      @include on-mobile {
-        grid-template-columns: repeat(6, 1fr);
-      }
-    }
   }
 
   &__item {
