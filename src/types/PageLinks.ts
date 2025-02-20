@@ -1,8 +1,8 @@
 export enum PageLinks {
-  HOME = 'home',
-  PHONES = 'phones',
-  TABLETS = 'tablets',
-  ACCESSORIES = 'accessories',
-  LIKED = 'liked',
-  CART = 'cart',
+  HOME = '/',
+  PHONES = '/phones',
+  TABLETS = '/tablets',
+  ACCESSORIES = '/accessories',
+  FAVOURITES = '/favourites',
+  CART = '/cart',
 }

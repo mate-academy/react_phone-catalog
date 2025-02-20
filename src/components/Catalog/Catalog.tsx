@@ -31,6 +31,39 @@ export const Catalog: React.FC<CatalogProps> = ({ isSortingAvailable }) => {
         <ProductCard />
         <ProductCard />
       </div>
+
+      <div className={styles.catalog__buttonSection}>
+        <button
+          className={`${styles.catalog__button} ${styles.catalog__navigationButton} ${styles.catalog__navigationButtonLeft}`}
+        ></button>
+
+        <div className={styles.catalog__listButtonsContainer}>
+          <button
+            className={`${styles.catalog__button} ${styles.catalog__listButton}`}
+          >
+            1
+          </button>
+          <button
+            className={`${styles.catalog__button} ${styles.catalog__listButton} ${styles.catalog__listButtonActive}`}
+          >
+            2
+          </button>
+          <button
+            className={`${styles.catalog__button} ${styles.catalog__listButton}`}
+          >
+            3
+          </button>
+          <button
+            className={`${styles.catalog__button} ${styles.catalog__listButton}`}
+          >
+            4
+          </button>
+        </div>
+
+        <button
+          className={`${styles.catalog__button} ${styles.catalog__navigationButton} ${styles.catalog__navigationButtonRight}`}
+        ></button>
+      </div>
     </section>
   );
 };

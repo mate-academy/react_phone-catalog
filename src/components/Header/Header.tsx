@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
@@ -7,25 +7,24 @@ import { AppContext } from '../../context/AppContext';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isTablet = useMediaQuery({ minWidth: 640 });
   const isMobile = useMediaQuery({ maxWidth: 639 });
-  const { activeLink, handlePageLinkClick } = useContext(AppContext)!;
+  const { activeLink } = useContext(AppContext)!;
   const navigate = useNavigate();
-
   const location = useLocation();
 
-  useEffect(() => {
-    const handleMenuToggle = () => {
-      if (location.pathname === '/menu') {
-        setIsMenuOpen(true);
-      } else {
-        setIsMenuOpen(false);
-      }
-    };
+  const searchParams = new URLSearchParams(location.search);
+  const isMenuOpen = searchParams.has('menu');
 
-    handleMenuToggle();
-  }, [location.pathname]);
+  const toggleMenu = () => {
+    if (isMenuOpen) {
+      searchParams.delete('menu');
+    } else {
+      searchParams.set('menu', 'open');
+    }
+
+    navigate(`?${searchParams.toString()}`, { replace: true });
+  };
 
   return (
     <header className={styles.header}>
@@ -34,21 +33,12 @@ export const Header = () => {
       {isMobile && (
         <div className={styles.header__buttonsContainer}>
           {isMenuOpen ? (
-            <NavLink
-              to="#"
+            <a
               className={`${styles.header__menuButton} ${styles.header__menuButtonClose}`}
-              onClick={event => {
-                event.preventDefault();
-                navigate(-1);
-                setIsMenuOpen(false);
-              }}
-            ></NavLink>
+              onClick={toggleMenu}
+            ></a>
           ) : (
-            <NavLink
-              to="/menu"
-              className={styles.header__menuButton}
-              onClick={() => setIsMenuOpen(true)}
-            ></NavLink>
+            <a className={styles.header__menuButton} onClick={toggleMenu}></a>
           )}
         </div>
       )}
@@ -61,7 +51,7 @@ export const Header = () => {
               className={classNames(styles.header__link, {
                 [styles.header__linkActive]: activeLink === PageLinks.HOME,
               })}
-              onClick={() => handlePageLinkClick(PageLinks.HOME)}
+              // onClick={() => handlePageLinkClick(PageLinks.HOME)}
             >
               Home
             </NavLink>
@@ -71,35 +61,36 @@ export const Header = () => {
               className={classNames(styles.header__link, {
                 [styles.header__linkActive]: activeLink === PageLinks.PHONES,
               })}
-              onClick={() => handlePageLinkClick(PageLinks.PHONES)}
+              // onClick={() => handlePageLinkClick(PageLinks.PHONES)}
             >
               Phones
             </NavLink>
 
-            <a
-              // href=""
+            <NavLink
+              to="tablets"
               className={classNames(styles.header__link, {
                 [styles.header__linkActive]: activeLink === PageLinks.TABLETS,
               })}
-              onClick={() => handlePageLinkClick(PageLinks.TABLETS)}
+              // onClick={() => handlePageLinkClick(PageLinks.TABLETS)}
             >
               Tablets
-            </a>
+            </NavLink>
 
-            <a
-              // href=""
+            <NavLink
+              to="accessories"
               className={classNames(styles.header__link, {
                 [styles.header__linkActive]:
                   activeLink === PageLinks.ACCESSORIES,
               })}
-              onClick={() => handlePageLinkClick(PageLinks.ACCESSORIES)}
+              // onClick={() => handlePageLinkClick(PageLinks.ACCESSORIES)}
             >
               Accessories
-            </a>
+            </NavLink>
           </div>
 
           <div className={styles.header__favAndCart}>
-            <a
+            <NavLink
+              to="favourites"
               className={classNames(
                 styles.header__favAndCartBtn,
                 styles.header__favourites,
@@ -107,10 +98,11 @@ export const Header = () => {
                   [styles.header__linkActive]: activeLink === PageLinks.LIKED,
                 },
               )}
-              onClick={() => handlePageLinkClick(PageLinks.LIKED)}
-            ></a>
+              // onClick={() => handlePageLinkClick(PageLinks.LIKED)}
+            ></NavLink>
 
-            <a
+            <NavLink
+              to="cart"
               className={classNames(
                 styles.header__favAndCartBtn,
                 styles.header__cart,
@@ -118,8 +110,8 @@ export const Header = () => {
                   [styles.header__linkActive]: activeLink === PageLinks.CART,
                 },
               )}
-              onClick={() => handlePageLinkClick(PageLinks.CART)}
-            ></a>
+              // onClick={() => handlePageLinkClick(PageLinks.CART)}
+            ></NavLink>
           </div>
         </div>
       )}

@@ -7,3 +7,13 @@ export const getBannerSlides = () => {
     return response.json();
   });
 };
+
+export const getPhones = () => {
+  return fetch('../../api/phones.json').then(response => {
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    return response.json();
+  });
+};

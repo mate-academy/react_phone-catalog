@@ -6,7 +6,7 @@ import { AppContext } from '../../context/AppContext';
 import { NavLink } from 'react-router-dom';
 
 export const Menu = () => {
-  const { activeLink, handlePageLinkClick } = useContext(AppContext)!;
+  const { activeLink } = useContext(AppContext)!;
 
   return (
     <>
@@ -18,59 +18,58 @@ export const Menu = () => {
               className={classNames(styles.menu__link, {
                 [styles.menu__linkActive]: activeLink === PageLinks.HOME,
               })}
-              onClick={() => handlePageLinkClick(PageLinks.HOME)}
             >
               Home
             </NavLink>
+
             <NavLink
               to="../phones"
               className={classNames(styles.menu__link, {
                 [styles.menu__linkActive]: activeLink === PageLinks.PHONES,
               })}
-              onClick={() => handlePageLinkClick(PageLinks.PHONES)}
             >
               Phones
             </NavLink>
-            <a
-              // href=""
+
+            <NavLink
+              to="tablets"
               className={classNames(styles.menu__link, {
                 [styles.menu__linkActive]: activeLink === PageLinks.TABLETS,
               })}
-              onClick={() => handlePageLinkClick(PageLinks.TABLETS)}
             >
               Tablets
-            </a>
-            <a
-              // href=""
+            </NavLink>
+
+            <NavLink
+              to="accessories"
               className={classNames(styles.menu__link, {
                 [styles.menu__linkActive]: activeLink === PageLinks.ACCESSORIES,
               })}
-              onClick={() => handlePageLinkClick(PageLinks.ACCESSORIES)}
+              // onClick={() => handlePageLinkClick(PageLinks.ACCESSORIES)}
             >
               Accessories
-            </a>
+            </NavLink>
           </div>
         </div>
 
         <div className={styles.menu__buttonsContainer}>
-          <a
-            // href=""
+          <NavLink
+            to="favourites"
             className={classNames(
               styles.menu__button,
               styles.menu__favourites,
               {
-                [styles.menu__linkActive]: activeLink === PageLinks.LIKED,
+                [styles.menu__linkActive]: activeLink === PageLinks.FAVOURITES,
               },
             )}
-            onClick={() => handlePageLinkClick(PageLinks.LIKED)}
-          ></a>
-          <a
-            // href=""
+          ></NavLink>
+
+          <NavLink
+            to="cart"
             className={classNames(styles.menu__button, styles.menu__cart, {
               [styles.menu__linkActive]: activeLink === PageLinks.CART,
             })}
-            onClick={() => handlePageLinkClick(PageLinks.CART)}
-          ></a>
+          ></NavLink>
         </div>
       </aside>
     </>

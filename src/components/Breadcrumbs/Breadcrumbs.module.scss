@@ -1,7 +1,7 @@
 @import '../../utils/scss/variables.scss';
 @import '../../utils/scss/mixin.scss';
 
-.phonesPage {
+.page {
   &__nav {
     height: 16px;
 
@@ -33,23 +33,11 @@
     transform: rotate(90deg);
   }
 
-  &__phonesLink {
+  &__pageLink {
     height: 16px;
 
     font-size: 12px;
     text-decoration: none;
-    color: $secondary-color;
-  }
-
-  &__title {
-    margin: 0;
-    margin-bottom: 8px;
-  }
-
-  &__subTitle {
-    margin: 0;
-
-    font-size: 14px;
     color: $secondary-color;
   }
 }

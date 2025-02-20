@@ -1,13 +1,22 @@
 import { useState } from 'react';
 import styles from './ProductCard.module.scss';
 import classNames from 'classnames';
+import { Link, useParams } from 'react-router-dom';
 
 export const ProductCard = () => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isLiked, setisLiked] = useState(false);
+  const { category } = useParams();
+  // const { handleActiveProduct } = useContext(AppContext)!;
+
+  const productId = 'apple-iphone-14-pro-128gb-spaceblack';
 
   return (
-    <div className={styles.card}>
+    <Link
+      to={category ? productId : `product/${productId}`}
+      className={styles.card}
+      // onClick={() => handleActiveProduct(productId)}
+    >
       <div className={styles.card__image}></div>
 
       <div className={styles.card__titleContainer}>
@@ -57,6 +66,6 @@ export const ProductCard = () => {
           onClick={() => setisLiked(!isLiked)}
         ></button>
       </div>
-    </div>
+    </Link>
   );
 };
