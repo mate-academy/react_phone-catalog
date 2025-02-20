@@ -7,7 +7,7 @@ import { FavouritesContext } from '../Contexts/FavouritesContext';
 export const Favourites: React.FC = () => {
   const { favProducts } = useContext(FavouritesContext);
 
-  const items = favProducts.length;
+  const itemsNum = favProducts.length;
 
   return (
     <div className="favouritesPage">
@@ -15,10 +15,10 @@ export const Favourites: React.FC = () => {
 
       <div className={styles.favouritesPageTitle}>
         <h1>Favourites</h1>
-        <p className="body-text-small grayText">{`${items}`} items</p>
+        <p className="body-text-small grayText">{`${itemsNum}`} items</p>
       </div>
 
-      {favProducts.length > 0 && <ProductList itemsList={favProducts} />}
+      {itemsNum > 0 && <ProductList itemsList={favProducts} />}
     </div>
   );
 };

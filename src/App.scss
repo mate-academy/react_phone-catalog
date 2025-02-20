@@ -111,3 +111,7 @@ ul {
   background-color: $primary;
 }
 
+.myThumbSwiper .swiper-slide-thumb-active {
+  border: 1px solid $primary;
+}
+

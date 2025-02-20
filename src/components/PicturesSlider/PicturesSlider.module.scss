@@ -39,29 +39,6 @@
   object-fit: cover;
 }
 
-// .pictureContainer {
-//   display: flex;
-
-//   width: 100%;
-//   height: 100%;
-
-//   flex-wrap: nowrap;
-//   overflow-x: scroll;
-//   scroll-snap-type: block;
-
-//   scrollbar-width: none;
-//   scroll-behavior: smooth;
-// }
-
-// .picture {
-//   display: block;
-//   height: 100%;
-//   width: 100%;
-//   object-fit: cover;
-
-//   transition: opacity 1s ease-in-out;
-// }
-
 .active {
   opacity: 1;
 }

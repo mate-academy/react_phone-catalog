@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
-import { ProductsType } from '../../types/Products';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
 import { Loader } from '../Loader';
@@ -11,6 +10,7 @@ import { Navigation } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { DESKTOP_WIDTH, TABLET_WIDTH } from '../../types/Constantes';
 
 export type SliderItems = 'Hotest' | 'Newest' | 'Suggested';
 
@@ -20,17 +20,13 @@ type Props = {
 };
 
 const CARDS_GAP = 16;
-const TABLET_WIDTH = 640;
-const DESKTOP_WIDTH = 1200;
 
 export const ProductsSlider: React.FC<Props> = ({ itemsType, title }) => {
   const { products, loading, error } = useContext(ProductContext);
 
   const swiper = useSwiper();
 
-  const [itemsList, setItemsList] = useState<ProductsType[]>([]);
-
-  const getSuggestedProducts = () => {
+  const getSuggestedProducts = useCallback(() => {
     const arrayCopy = [...products];
 
     const result = [];
@@ -43,38 +39,29 @@ export const ProductsSlider: React.FC<Props> = ({ itemsType, title }) => {
     }
 
     return result;
-  };
-
-  const findItems = () => {
-    if (itemsType === 'Suggested') {
-      setItemsList(getSuggestedProducts());
-
-      return;
-    }
-
-    setItemsList(sortFunction(itemsType, products).slice(0, 15));
-  };
-
-  useEffect(() => {
-    findItems();
   }, [products]);
 
-  const [width, setWidth] = useState(window.innerWidth);
-  const [itemsNum, setItemsNum] = useState(1.5);
+  const itemsList = useMemo(() => {
+    if (itemsType === 'Suggested') {
+      return getSuggestedProducts();
+    }
 
-  const changeItemsNum = () => {
+    return sortFunction(itemsType, products).slice(0, 15);
+  }, [getSuggestedProducts, itemsType, products]);
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const itemsNum = useMemo(() => {
     if (width >= DESKTOP_WIDTH) {
-      setItemsNum(4);
+      return 4;
     }
 
     if (width >= TABLET_WIDTH && width < DESKTOP_WIDTH) {
-      setItemsNum(2.5);
+      return 2.5;
     }
 
-    if (width < TABLET_WIDTH) {
-      setItemsNum(1.5);
-    }
-  };
+    return 1.5;
+  }, [width]);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -83,10 +70,6 @@ export const ProductsSlider: React.FC<Props> = ({ itemsType, title }) => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  useEffect(() => {
-    changeItemsNum();
-  }, [width]);
 
   const [activeIndex, setActiveIndex] = useState(0);
 

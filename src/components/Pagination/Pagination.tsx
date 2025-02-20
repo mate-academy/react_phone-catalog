@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import styles from './Pagination.module.scss';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons/Arrow';
@@ -23,28 +23,34 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const swiper = useSwiper();
 
-  const [pagesList, setPagesList] = useState<number[]>([]);
-
   const prevDisabled = currentPage === 1;
   const nextDisabled = currentPage === pages;
 
-  const pageArray = () => {
+  let btnsPerView = 4;
+
+  const swiperWidth = () => {
+    const btnWidth = 32;
+
+    if (pages < btnsPerView) {
+      btnsPerView = pages;
+    }
+
+    return btnsPerView * btnWidth + 3 * SLIDES_GAP;
+  };
+
+  const pagesList = useMemo(() => {
     const pagesNums: number[] = [];
 
     for (let i = 1; i <= pages; i++) {
       pagesNums.push(i);
     }
 
-    setPagesList(pagesNums);
-  };
+    return pagesNums;
+  }, [pages]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-
-  useEffect(() => {
-    pageArray();
-  }, [pages]);
 
   return (
     <div className={styles.pagination}>
@@ -58,9 +64,12 @@ export const Pagination: React.FC<Props> = ({
         </span>
       </button>
 
-      <div className={styles.numbersList}>
+      <div
+        className={styles.numbersList}
+        style={{ width: `${swiperWidth()}px` }}
+      >
         <Swiper
-          slidesPerView={4}
+          slidesPerView={btnsPerView}
           spaceBetween={SLIDES_GAP}
           navigation={{
             nextEl: '.nextPage',

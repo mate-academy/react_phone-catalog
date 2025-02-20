@@ -22,7 +22,7 @@ export const Menu: React.FC<Props> = ({
   getLinkClass,
 }) => {
   return (
-    <aside className={styles.menu} id="menu">
+    <aside className={styles.menu}>
       <Header checkMenu={checkMenu} menuPage={menuPage} />
 
       <div className={styles.menuNav}>

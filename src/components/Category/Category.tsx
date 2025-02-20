@@ -1,31 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import styles from './Category.module.scss';
-import { getCategoryItems } from '../../utils/FetchClient';
 import { Link } from 'react-router-dom';
 import {
   CategoryDates,
   CategorySrc,
   findCategoryDates,
 } from '../../types/Categorys';
+import { ProductContext } from '../Contexts/ProductsContext';
 
 type Props = {
   src: CategorySrc;
 };
 
 export const Category: React.FC<Props> = ({ src }) => {
+  const { products } = useContext(ProductContext);
+
   const [currentCategory, setCurrentCategory] =
     useState<CategoryDates | null>();
-  const [itemsNum, setItemsNum] = useState(0);
+
+  const categoryItemsNum = useMemo(() => {
+    if (currentCategory) {
+      return products.filter(item => item.category === currentCategory.name)
+        .length;
+    }
+
+    return 0;
+  }, [currentCategory, products]);
 
   useEffect(() => {
     setCurrentCategory(findCategoryDates(src));
-
-    getCategoryItems(src)
-      .then(items => setItemsNum(items.length))
-      .catch(error => {
-        throw error;
-      });
-  }, []);
+  }, [src]);
 
   return (
     <div className="categoryBoard">
@@ -45,7 +49,9 @@ export const Category: React.FC<Props> = ({ src }) => {
               <h3>{currentCategory.pageName}</h3>
             </Link>
 
-            <p className="body-text-small grayText">{itemsNum} models</p>
+            <p className="body-text-small grayText">
+              {categoryItemsNum} models
+            </p>
           </div>
         </div>
       )}

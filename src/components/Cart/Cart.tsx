@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { CartItem } from '../CartItem';
 import styles from './Cart.module.scss';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { ModalDialog } from '../ModalDialog/ModalDialog';
 import { CartContext } from '../Contexts/CartContext';
 import { NotFound } from '../NotFound';
@@ -9,27 +9,18 @@ import { NotFound } from '../NotFound';
 export const Cart = () => {
   const { addedProducts, setAddedProducts } = useContext(CartContext);
 
-  const [totalPrice, setTotalPrice] = useState(0);
   const [modal, setModal] = useState(false);
-  const [itemsQuantity, setItemsQuantity] = useState(0);
 
-  const countTotalPrice = () => {
-    setTotalPrice(
-      addedProducts.reduce(
-        (acc, currentValue) =>
-          acc + currentValue.quantity * currentValue.product.price,
-        0,
-      ),
+  const totalPrice = useMemo(() => {
+    return addedProducts.reduce(
+      (acc, item) => acc + item.quantity * item.product.price,
+      0,
     );
-  };
+  }, [addedProducts]);
 
-  const countItemsQuantity = () => {
-    let quantity = 0;
-
-    [...addedProducts].map(item => (quantity += item.quantity));
-
-    setItemsQuantity(quantity);
-  };
+  const itemsQuantity = useMemo(() => {
+    return addedProducts.reduce((acc, item) => acc + item.quantity, 0);
+  }, [addedProducts]);
 
   const activeModal = () => {
     setModal(!modal);
@@ -40,10 +31,6 @@ export const Cart = () => {
 
     activeModal();
   };
-
-  useEffect(() => {
-    countItemsQuantity();
-  }, [addedProducts]);
 
   return (
     <div className="cartPage">
@@ -65,11 +52,7 @@ export const Cart = () => {
         <div className={`${styles.cartContent}`}>
           <div className={styles.cartItems}>
             {addedProducts.map(item => (
-              <CartItem
-                item={item}
-                countTotalPrice={countTotalPrice}
-                key={item.id}
-              />
+              <CartItem item={item} key={item.id} />
             ))}
           </div>
 

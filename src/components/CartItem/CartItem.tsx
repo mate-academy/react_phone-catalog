@@ -1,22 +1,18 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useMemo } from 'react';
 import styles from './CartItem.module.scss';
 import { AddedProductType } from '../../types/AddedProduct';
 import { CartContext } from '../Contexts/CartContext';
 
 type Props = {
   item: AddedProductType;
-  countTotalPrice: () => void;
 };
 
-export const CartItem: React.FC<Props> = ({ item, countTotalPrice }) => {
-  const { addedProducts, setAddedProducts, deleteCartProduct } =
-    useContext(CartContext);
+export const CartItem: React.FC<Props> = ({ item }) => {
+  const { setAddedProducts, deleteCartProduct } = useContext(CartContext);
 
-  const [amount, setAmount] = useState(item.product.price);
-
-  const countAmount = () => {
-    setAmount(item.quantity * item.product.price);
-  };
+  const amount = useMemo(() => {
+    return item.quantity * item.product.price;
+  }, [item.product.price, item.quantity]);
 
   const decrease = () => {
     const newQuantity = item.quantity > 1 ? item.quantity - 1 : 1;
@@ -41,11 +37,6 @@ export const CartItem: React.FC<Props> = ({ item, countTotalPrice }) => {
       ),
     );
   };
-
-  useEffect(() => {
-    countAmount();
-    countTotalPrice();
-  }, [addedProducts]);
 
   return (
     <div className={styles.cartItem}>

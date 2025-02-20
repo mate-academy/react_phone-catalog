@@ -8,12 +8,25 @@ import { PrimaryButton } from '../Buttons/PrimaryButton';
 import { FavouritesButton } from '../Buttons/FavouritesButton';
 import { useNavigate } from 'react-router-dom';
 
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
+
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { TABLET_WIDTH } from '../../types/Constantes';
+
 type Props = {
   item: Gadgets;
 };
 
 export const ItemDetails: React.FC<Props> = ({ item }) => {
   const [currentItem, setCurrentItem] = useState<Gadgets>(item);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
 
   const {
     id,
@@ -44,12 +57,6 @@ export const ItemDetails: React.FC<Props> = ({ item }) => {
   const colorStyleName = (currentColorName: string) =>
     currentColorName.split(' ').join('');
 
-  const [selectedImg, setSelectedImg] = useState(0);
-
-  const changeImg = (imgIndex: number) => {
-    setSelectedImg(imgIndex);
-  };
-
   const changeCapacity = (toChange: string) => {
     const normalizedValue = (value: string) => value.toLowerCase();
 
@@ -77,6 +84,14 @@ export const ItemDetails: React.FC<Props> = ({ item }) => {
     setCurrentItem(item);
   }, [item]);
 
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className={styles.itemDetails}>
       {!item && <Loader />}
@@ -84,29 +99,43 @@ export const ItemDetails: React.FC<Props> = ({ item }) => {
       <h2 className={styles.itemName}>{name}</h2>
 
       <div className={styles.item}>
-        <div className={styles.imgBlock}>
-          <img
-            src={`${images[selectedImg]}`}
-            alt={`${name}`}
-            className={styles.itemImg}
-          />
-        </div>
-
-        <div className={styles.photosPreview}>
-          {images.map((imageSrc, i) => (
-            <div
-              className={styles.photoPreview}
-              key={imageSrc}
-              onClick={() => changeImg(i)}
-            >
+        <Swiper
+          loop={true}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className={styles.imgBlock}
+        >
+          {images.map(imageSrc => (
+            <SwiperSlide key={imageSrc}>
               <img
                 src={`${imageSrc}`}
                 alt={`${imageSrc}`}
                 className={styles.itemImg}
               />
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          slidesPerView="auto"
+          loop={true}
+          spaceBetween={8}
+          freeMode={true}
+          watchSlidesProgress={true}
+          direction={width >= TABLET_WIDTH ? 'vertical' : 'horizontal'}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className={`${styles.photosPreview} myThumbSwiper`}
+        >
+          {images.map(imageSrc => (
+            <SwiperSlide key={imageSrc} className={styles.photoPreview}>
+              <img
+                src={`${imageSrc}`}
+                alt={`${imageSrc}`}
+                className={styles.itemImg}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
         <div className={styles.controlsContainer}>
           <div className={styles.mainControls}>

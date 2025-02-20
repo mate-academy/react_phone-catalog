@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styles from './Header.module.scss';
 
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
@@ -26,7 +32,6 @@ export const Header: React.FC<Props> = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [searchInput, setSearchInput] = useState(false);
   const [query, setQuery] = useState('');
   const [applyedQuery, setApplyedQuery] = useState('');
 
@@ -53,16 +58,12 @@ export const Header: React.FC<Props> = ({
     '/accessories',
   ];
 
-  const checkCurrentPage = () => {
+  const searchInput = useMemo(() => {
     if (searchedPathName.includes(pageSrc as CategorySrc)) {
-      setSearchInput(true);
+      return true;
     } else {
-      setSearchInput(false);
+      return false;
     }
-  };
-
-  useEffect(() => {
-    checkCurrentPage();
   }, [pageSrc]);
 
   useEffect(() => {

@@ -37,7 +37,7 @@ export const App = () => {
         </div>
       ) : (
         <div className="appContent">
-          <div className="topBar" id="top">
+          <div className="topBar">
             <Header
               checkMenu={menuPage}
               menuPage={setMenuPage}

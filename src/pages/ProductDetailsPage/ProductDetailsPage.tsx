@@ -25,8 +25,13 @@ export const ProductDetailsPage = () => {
   const [loading, setloading] = useState(true);
   const [error, setError] = useState(false);
 
-  const getItemDetails = () => {
+  useEffect(() => {
+    setloading(true);
+
     if (!category) {
+      setError(true);
+      setloading(false);
+
       return;
     }
 
@@ -38,11 +43,6 @@ export const ProductDetailsPage = () => {
       .finally(() => {
         setloading(false);
       });
-  };
-
-  useEffect(() => {
-    setloading(true);
-    getItemDetails();
   }, [products, category, itemId]);
 
   return (

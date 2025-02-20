@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import styles from './Products.module.scss';
 import { CategoryDates } from '../../types/Categorys';
 import { ProductsType } from '../../types/Products';
@@ -26,11 +26,6 @@ type Props = {
 
 export const Products: React.FC<Props> = ({ category, categoryItems }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const [pages, setPages] = useState(1);
-
-  const [currentPageItems, setCurrentPageItems] =
-    useState<ProductsType[]>(categoryItems);
 
   const [failedQuery, setFailedQuery] = useState(false);
 
@@ -64,27 +59,25 @@ export const Products: React.FC<Props> = ({ category, categoryItems }) => {
     setSearchWith({ perPage: itemsValue === 'All' ? null : itemsValue });
   };
 
-  const pageNums = () => {
+  const pages = useMemo(() => {
     if (itemsPerPage === 'All') {
-      setPages(1);
-
-      return;
+      return 1;
     }
 
-    setPages(Math.ceil(categoryItems.length / +itemsPerPage));
-  };
+    return Math.ceil(categoryItems.length / +itemsPerPage);
+  }, [categoryItems.length, itemsPerPage]);
 
   const normalizeValue = (value: string) => {
     return value.toLowerCase();
   };
 
-  const filterItems = () => {
+  const filterItems = useCallback(() => {
     return [...categoryItems].filter(item =>
       normalizeValue(item.name).includes(normalizeValue(query)),
     );
-  };
+  }, [categoryItems, query]);
 
-  const currentItems = () => {
+  const currentItems = useMemo(() => {
     setFailedQuery(false);
 
     let sortedList = sortFunction(sortBy, categoryItems);
@@ -94,43 +87,26 @@ export const Products: React.FC<Props> = ({ category, categoryItems }) => {
 
       if (!filteredItems.length) {
         setFailedQuery(true);
-        setCurrentPageItems([]);
 
-        return;
+        return [];
       }
 
       sortedList = sortFunction(sortBy, filteredItems);
     }
 
     if (itemsPerPage === 'All') {
-      setCurrentPageItems([...sortedList]);
-
-      return;
+      return sortedList;
     }
 
     const lastItem = currentPage * +itemsPerPage;
     const firstItem = lastItem - +itemsPerPage;
 
-    setCurrentPageItems([...sortedList].slice(firstItem, lastItem));
-  };
-
-  useEffect(() => {
-    setSearchWith({ sort: 'age' });
-  }, []);
-
-  useEffect(() => {
-    setSearchWith({ sort: 'age' });
-  }, [category]);
+    return [...sortedList].slice(firstItem, lastItem);
+  }, [categoryItems, currentPage, filterItems, itemsPerPage, query, sortBy]);
 
   useEffect(() => {
     currentPageChange(1);
-    pageNums();
-    currentItems();
   }, [itemsPerPage]);
-
-  useEffect(() => {
-    currentItems();
-  }, [categoryItems, currentPage, sortBy, query]);
 
   return (
     <div className={styles.products}>
@@ -178,12 +154,12 @@ export const Products: React.FC<Props> = ({ category, categoryItems }) => {
           />
         )}
 
-        {!failedQuery && currentPageItems.length > 0 && (
-          <ProductList itemsList={currentPageItems} />
+        {!failedQuery && currentItems.length > 0 && (
+          <ProductList itemsList={currentItems} />
         )}
       </div>
 
-      {pages > 1 && currentPageItems.length > 0 && (
+      {pages > 1 && currentItems.length > 0 && (
         <Pagination
           pages={pages}
           currentPage={currentPage}

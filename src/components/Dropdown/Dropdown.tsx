@@ -50,7 +50,7 @@ export const Dropdown = <T extends string>({
         </button>
       </div>
       {isOpen && (
-        <ul className={`${styles.options} ${styles.activeMenu}`} id="options">
+        <ul className={`${styles.options} ${styles.activeMenu}`}>
           {options.map(option => (
             <li
               key={option}

@@ -1,8 +1,6 @@
 import { Gadgets } from '../types/Gadgets';
 import { ProductsType } from '../types/Products';
 
-// const BASE_URL = '/api';
-
 const isLocal = window.location.hostname === 'localhost';
 const BASE_URL = isLocal ? '/api' : '/react_phone-catalog/api';
 
