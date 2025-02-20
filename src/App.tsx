@@ -6,7 +6,7 @@ import { Cart } from './components/modules/Cart/Cart';
 export const App = () => (
   <div className="App container">
     <Header />
-    {/* <Phones /> */}
+    <Phones />
     <Cart />
   </div>
 );

@@ -32,6 +32,13 @@
     }
   }
 
+  &__remove {
+    transition: transform 0.3 ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
   &__photo {
     width: 66px;
     height: 66px;
@@ -91,7 +98,7 @@
       }
 
 
-      &.disabled {
+      &:disabled {
         border: 1px solid $gray-elements;
       }
 

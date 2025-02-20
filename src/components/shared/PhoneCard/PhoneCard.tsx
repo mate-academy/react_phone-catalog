@@ -1,6 +1,6 @@
 import './PhoneCard.scss';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { useLocalStorage } from '../../../utils/globalStyles/customHooks';

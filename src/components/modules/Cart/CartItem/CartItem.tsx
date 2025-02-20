@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './CartItem.scss';
 
@@ -13,14 +13,19 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ item }) => {
   const { id, images, name, priceRegular, priceDiscount } = item;
-  const quantity = item.quantity || 1;
-  const disabledButton = quantity === 1;
-  const { changeQuantity } = useLocalStorage<ShopItem>();
+  const [quantity, setQuantity] = useState(item.quantity || 1);
+  const { changeQuantity, manageItems } = useLocalStorage<ShopItem>();
+
+  const handleQuantityChange = (action: 'add' | 'delete') => {
+    setQuantity(prev => action === 'add' ? prev + 1 : prev - 1 );
+    changeQuantity(id, action);
+  }
 
   return (
     <div className="cart__item item">
       <div className="item__presentation">
         <svg
+          // onClick={() => manageItems(item, 'cart')}
           className="item__remove"
           width="16"
           height="16"
@@ -44,10 +49,9 @@ export const CartItem: React.FC<Props> = ({ item }) => {
       <div className="item__info">
         <div className="item__toolbox toolbox">
           <button
-            className={classNames('toolbox__tool', 'toolbox__tool--delete', {
-              disabled: disabledButton,
-            })}
-            onClick={() => changeQuantity(id, 'delete')}
+            disabled={quantity === 1}
+            className='toolbox__tool toolbox__tool--delete'
+            onClick={() => handleQuantityChange('delete')}
           >
             <svg
               width="16"
@@ -60,7 +64,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
                 fill-rule="evenodd"
                 clip-rule="evenodd"
                 d="M2.6665 7.99999C2.6665 7.63181 2.96498 7.33333 3.33317 7.33333H12.6665C13.0347 7.33333 13.3332 7.63181 13.3332 7.99999C13.3332 8.36818 13.0347 8.66666 12.6665 8.66666H3.33317C2.96498 8.66666 2.6665 8.36818 2.6665 7.99999Z"
-                fill={disabledButton ? '#B4BDC3' : '#313237'}
+                fill={quantity === 1 ? '#B4BDC3' : '#313237'}
               />
             </svg>
           </button>
@@ -71,7 +75,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
           <button
             className="toolbox__tool toolbox__tool--add"
-            onClick={() => changeQuantity(id, 'add')}
+            onClick={() => handleQuantityChange('add')}
           >
             <svg
               width="16"
