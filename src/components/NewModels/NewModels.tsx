@@ -22,7 +22,10 @@ export const NewModels = () => {
     <div className="new-models">
       <div className="container container--mobile">
         <h2 className="new-models__title">Brand new models</h2>
-        <ProductsSlider newModels={newPhones(productsFromServer)} fullPrice={false} />
+        <ProductsSlider
+          newModels={newPhones(productsFromServer)}
+          fullPrice={false}
+        />
       </div>
     </div>
   );

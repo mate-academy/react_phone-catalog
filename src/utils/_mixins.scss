@@ -9,10 +9,44 @@
   }
 }
 
+@mixin title-main {
+  font-family: $font-family;
+  font-size: 48px;
+  font-weight: $font-weight-bolt;
+  color: $primary;
+
+  @media (max-width: $mobile) {
+    margin: 24px 16px;
+    font-size: 32px;
+  }
+}
+
+@mixin title-in-item-block {
+  font-family: $font-family;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 30.8px;
+
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e6e9;
+}
+
 @mixin menu-list {
   font-family: $font-family;
   font-size: 12px;
   font-weight: $font-weight-bolt;
   text-transform: uppercase;
   color: $secondary;
+}
+
+@mixin body-text {
+  font-family: $font-family;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-family: $font-family;
+  font-size: 12px;
+  line-height: 15.34px;
 }

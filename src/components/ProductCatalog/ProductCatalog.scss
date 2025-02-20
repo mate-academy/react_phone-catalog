@@ -1,0 +1,44 @@
+@import '../../utils';
+
+.product__title {
+  @include title-main;
+
+  margin-top: 40px;
+  margin-bottom: 8px;
+
+  @media (max-width: $mobile) {
+    margin-left: 0;
+  }
+}
+
+.product__count {
+  @include body-text;
+
+  margin-bottom: 40px;
+}
+
+.product__container {
+  // display: flex;
+  // gap: 16px;
+  // flex-wrap: wrap;
+  margin-top: 24px;
+  // // justify-content: space-between;
+  // max-width: 1136px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  row-gap: 40px;
+
+  @media (max-width: 868px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 740px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

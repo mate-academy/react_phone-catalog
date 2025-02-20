@@ -31,9 +31,6 @@
   }
 
   &__count {
-    font-family: $font-family;
-    font-size: 14px;
-    font-weight: 500;
-    color: $secondary;
+    @include body-text;
   }
 }

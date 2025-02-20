@@ -1,0 +1,59 @@
+@import '../../utils';
+
+.item-info {
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e2e6e9;
+
+  &__name {
+    @include small-text;
+    font-weight: $font-weight-regular;
+    color: $secondary;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__link-color {
+    display: flex;
+    border-radius: 50%;
+    border: 1px solid #e2e6e9;
+    transition: border 0.3s;
+
+    &-form {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      border: 2px solid $white;
+    }
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__link-capacity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 63px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    background-color: $white;
+    border-radius: 4px;
+    transition: border 0.3s;
+
+    &-form {
+      @include body-text;
+      font-weight: $font-weight-regular;
+      color: $primary;
+    }
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+}

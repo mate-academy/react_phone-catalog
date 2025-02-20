@@ -1,12 +1,19 @@
 import React from 'react';
 import './Menu.scss';
+import { NavLink } from 'react-router-dom';
+import cn from 'classnames';
 
 const pagesOfMenu = [
-  { name: 'Home' },
-  { name: 'Phones' },
-  { name: 'Tablets' },
-  { name: 'Accessories' },
+  { name: 'Home', url: '/' },
+  { name: 'Phones', url: 'phones' },
+  { name: 'Tablets', url: 'tablets' },
+  { name: 'Accessories', url: 'accessories' },
 ];
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  cn('menu__link', {
+    'menu__link--active': isActive,
+  });
 
 export const Menu = () => {
   return (
@@ -14,9 +21,9 @@ export const Menu = () => {
       <ul className="menu__list">
         {pagesOfMenu.map(page => (
           <li className="menu__item" key={page.name}>
-            <a href={`#${page.name}`} className="menu__link">
+            <NavLink to={page.url} className={getLinkClass}>
               {page.name}
-            </a>
+            </NavLink>
           </li>
         ))}
       </ul>

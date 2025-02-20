@@ -1,0 +1,23 @@
+@import '../../utils';
+
+.button-add {
+  font-family: $font-family;
+  color: $white;
+
+  width: calc(100% - 48px);
+  height: 40px;
+  background-color: $accent;
+  border: 1px solid $accent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+  }
+
+  @media (max-width: $mobile) {
+    padding: 5px;
+    transition: 0.3s;
+  }
+}

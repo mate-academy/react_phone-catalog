@@ -1,6 +1,10 @@
 import React from 'react';
 import './ProductCard.scss';
 import { Product } from '../types/Product';
+import { NavLink } from 'react-router-dom';
+import { ButtonAdd } from '../ButtonAdd';
+import { ButtonFavs } from '../ButtonFavs';
+import { ItemTech } from '../ItemTech';
 
 type Props = {
   product: Product;
@@ -8,19 +12,34 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, fullPrice }) => {
+  const itemsTech = [
+    {
+      title: 'Screen',
+      value: product.screen,
+    },
+    {
+      title: 'Capacity',
+      value: product.capacity,
+    },
+    {
+      title: 'RAM',
+      value: product.ram,
+    },
+  ];
+
   return (
     <div className="product-card">
       <div className="product-card__content">
-        <a className="product-card__link" href="#">
+        <NavLink className="product-card__link" to={`${product.itemId}`}>
           <img
             src={product.image}
             alt="Product logo"
             className="product-card__image"
           />
-        </a>
-        <a href="" className="product-card__title">
+        </NavLink>
+        <NavLink to={`${product.itemId}`} className="product-card__title">
           {product.name}
-        </a>
+        </NavLink>
         <div className="product-card__price">
           <p className="product-card__price--discount">{`$${product.price}`}</p>
           {fullPrice && (
@@ -29,7 +48,7 @@ export const ProductCard: React.FC<Props> = ({ product, fullPrice }) => {
         </div>
       </div>
 
-      <div className="product-card__description">
+      {/* <div className="product-card__description">
         <p className="product-card__description-item">
           Screen
           <span className="product-card__description-item--value">
@@ -48,11 +67,15 @@ export const ProductCard: React.FC<Props> = ({ product, fullPrice }) => {
             {product.ram}
           </span>
         </p>
-      </div>
+      </div> */}
+
+      <ItemTech itemsTech={itemsTech} />
 
       <div className="product-card__buttons">
-        <button className="product-card__button-cart">Add to cart</button>
-        <button className="product-card__button-favs"></button>
+        {/* <button className="product-card__button-cart">Add to cart</button>
+        <button className="product-card__button-favs"></button> */}
+        <ButtonAdd />
+        <ButtonFavs />
       </div>
     </div>
   );

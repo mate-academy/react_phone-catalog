@@ -1,0 +1,30 @@
+@import '../../utils';
+
+.item-about {
+  width: 100%;
+
+  &__title {
+    @include title-in-item-block;
+  }
+
+  &__description {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  &__subtitle {
+    font-family: $font-family;
+    font-weight: $font-weight-medium;
+    font-size: 20px;
+    line-height: 25.56px;
+    color: $primary;
+
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    @include body-text;
+    font-weight: 500;
+    color: $secondary;
+  }
+}

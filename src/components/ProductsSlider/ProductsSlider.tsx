@@ -83,9 +83,9 @@ export const ProductsSlider: React.FC<Props> = ({ newModels, fullPrice }) => {
             slidesPerView: 2.5,
           },
           1199: {
-            width: 1140,
+            width: 1136,
             slidesPerView: 4,
-            spaceBetween: 0,
+            spaceBetween: 16,
           },
         }}
       >

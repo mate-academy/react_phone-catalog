@@ -1,0 +1,115 @@
+@import '../../utils';
+@import 'react-image-gallery/styles/css/image-gallery.css';
+
+.item {
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    @include title-of-blocks;
+    // margin-bottom: 40px;
+  }
+
+  &__details {
+    display: flex;
+    gap: 64px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+
+  .item__characteristics {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__slider {
+    margin-top: 48px;
+  }
+}
+
+.item__info {
+  width: 100%;
+  max-width: 320px;
+
+  &-buy__wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  &-buy__price {
+    font-family: $font-family;
+    font-weight: $font-weight-bolt;
+    font-size: 32px;
+    color: $primary;
+  }
+
+  &-buy__price-with-discount {
+    font-family: $font-family;
+    font-weight: 500;
+    font-size: 22px;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+
+  &-buy__holder {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &-id__value {
+    @include small-text;
+
+    font-weight: $font-weight-medium;
+    color: $icons_and_placeholders;
+  }
+}
+
+//Styles for ImageGallery
+
+.image-gallery {
+  width: 560px;
+
+  .image-gallery-content .image-gallery-slide .image-gallery-image {
+    height: 464px;
+  }
+}
+
+.image-gallery-thumbnail,
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus,
+.image-gallery-thumbnail:hover {
+  border: 1px solid $elements;
+}
+
+.image-gallery-thumbnail {
+  margin-bottom: 8px;
+
+  &.active,
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+.image-gallery-thumbnails-wrapper.image-gallery-thumbnails-left
+  .image-gallery-thumbnails
+  .image-gallery-thumbnail {
+  padding: 7px;
+}
+
+.image-gallery-slide.image-gallery-center {
+  padding: 25px;
+  margin-left: 20px;
+}
+
+.image-gallery-thumbnail-image {
+  object-fit: contain;
+}

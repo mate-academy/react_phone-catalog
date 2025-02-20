@@ -4,7 +4,6 @@ import { Banner } from '../Banner/Banner';
 import { NewModels } from '../NewModels';
 import { Category } from '../Category';
 import { HotPrices } from '../HotPrices';
-import { Footer } from '../Footer';
 
 export const HomePage = () => {
   return (
@@ -16,7 +15,6 @@ export const HomePage = () => {
       <NewModels />
       <Category />
       <HotPrices />
-      <Footer />
     </div>
   );
 };

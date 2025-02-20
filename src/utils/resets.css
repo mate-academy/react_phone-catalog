@@ -2,10 +2,16 @@
   box-sizing: border-box;
 }
 
+/* stylelint-disable-next-line selector-max-id */
+#root {
+  height: inherit;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 h1,
@@ -18,6 +24,7 @@ ul,
 li {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 a {

@@ -1,11 +1,10 @@
 {
   "extends": "@mate-academy/students-ts-config",
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "compilerOptions": {
     "jsx": "react",
     "sourceMap": false,
     "types": ["node", "cypress"]
-  }
+  },
+  "exclude": ["./src/components/Icons"]
 }

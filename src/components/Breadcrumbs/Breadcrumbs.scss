@@ -1,0 +1,20 @@
+@import '../../utils';
+
+.breadcrumbs {
+  display: flex;
+  margin-top: 24px;
+}
+
+.breadcrumb {
+  font-family: Mont;
+  font-size: 12px;
+  font-weight: 700;
+  color: $primary;
+
+  margin-left: 8px;
+  margin-right: 8px;
+
+  &--not-active {
+    color: $secondary;
+  }
+}

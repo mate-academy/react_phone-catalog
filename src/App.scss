@@ -2,4 +2,7 @@
 
 .App {
   padding-top: 64px; // todo should be variable related to header
+  height: inherit;
+  display: flex;
+  flex-direction: column;
 }
