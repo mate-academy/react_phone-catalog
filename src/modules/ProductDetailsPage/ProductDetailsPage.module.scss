@@ -14,13 +14,22 @@
 
     row-gap: 80px;
     padding-top: 40px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+
   }
 
   &__header {
     grid-column: 1 / -1;
   }
 
-  &__left {
+  &__title {
+    @include h2-typography;
+  }
+
+  &__slider{
     grid-column: 1 / 13;
 
     @include on-tablet {
@@ -32,7 +41,7 @@
     }
   }
 
-  &__right {
+  &__info {
     @include page-grid;
 
     display: flex;
@@ -48,6 +57,26 @@
     @include on-mobile {
       grid-column: 1 / -1;
     }
+  }
+
+  &__about {
+    grid-column: 1 / 13;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__tech-specs {
+    grid-column: 14 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__suggested {
+    grid-column: 1 / -1;
   }
 
   &__actions {
@@ -84,6 +113,17 @@
     flex-direction: column;
     gap: 8px;
     padding-block: 8px;
+
+    &--tech {
+      padding-block: 32px 0;
+    }
+  }
+
+  &__subtitle {
+    @include h3-typography;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $element;
   }
 }
 
@@ -114,10 +154,6 @@
     &:hover {
       color: $primary;
     }
-  }
-
-  &__title {
-    @include h2-typography;
   }
 }
 
@@ -215,7 +251,7 @@
     &--add-selected {
       color: $green;
       border: 1px $element solid;
-  }
+    }
 
     &--like {
       width: 48px;
@@ -226,8 +262,8 @@
     }
 
     &--like-selected {
-        background-image: url('../../media/icon/selected-favourites.svg');
-        border: 1px $element solid;
+      background-image: url('../../media/icon/selected-favourites.svg');
+      border: 1px $element solid;
     }
   }
 }
@@ -240,6 +276,10 @@
     @include small-text-typography;
 
     color: $secondary;
+
+    &--tech {
+      @include body-typography;
+    }
   }
 
   &__value {
@@ -247,5 +287,27 @@
 
     font-weight: 600;
     color: $primary;
+
+    &--tech {
+      @include body-typography;
+    }
+  }
+}
+
+.about {
+  &__paragraph {
+    padding-top: 32px;
+  }
+
+  &__subtitle {
+    @include h4-typography;
+
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    @include body-typography;
+
+    color: $secondary;
   }
 }

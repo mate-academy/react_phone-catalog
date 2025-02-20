@@ -22,3 +22,11 @@ export function getAccessories(): Promise<Accessory[]> {
 export function getTablets(): Promise<Tablet[]> {
   return delay().then(() => tablets);
 }
+
+export function getSuggestedProducts(): Promise<Product[]> {
+  const arr = [...products];
+
+  return delay().then(() => {
+    return arr.sort(() => 0.5 - Math.random());
+  });
+}
