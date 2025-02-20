@@ -1,8 +1,8 @@
-@import 'Styles/utils';
+@use '/src/styles/globals.scss' as *;
 
 .addToCart {
   @include buttons-text-desktop-tablet;
   @include primary-button;
 
   flex-grow: 1;
-  }
+}

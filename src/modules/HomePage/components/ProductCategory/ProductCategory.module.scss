@@ -1,4 +1,4 @@
-@import 'Styles/utils';
+@use '../../../../styles/globals.scss' as *;
 
 .categoryContainer {
   display: flex;
@@ -12,10 +12,10 @@
   position: relative;
   overflow: hidden;
 
-  @include hover-scale-5;
+  @include hover-scale(1.05);
 }
 
-.image{
+.image {
   position: absolute;
   top: 0;
   left: 0;
@@ -24,16 +24,16 @@
   object-fit: cover;
 }
 
-.categoryInfo{
+.categoryInfo {
   display: flex;
   flex-direction: column;
 }
 
-.categoryName{
+.categoryName {
   @include h4-desktop-tablet;
 }
 
-.categoryAmount{
+.categoryAmount {
   @include body-text-desktop-tablet;
 
   color: $color-secondary;

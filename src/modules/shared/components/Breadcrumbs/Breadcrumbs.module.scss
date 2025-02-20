@@ -1,6 +1,6 @@
-@import 'Styles/utils';
+@use '../../../../styles/globals.scss' as *;
 
-.breadcrumbs{
+.breadcrumbs {
   @include small-text-desktop-tablet;
 
   display: flex;

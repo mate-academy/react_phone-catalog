@@ -1,14 +1,14 @@
-@import 'Styles/utils';
+@use '../../../../styles/globals.scss' as *;
 
 .container {
-  @include flex-center;
+  @extend %flex-center;
 
   flex-direction: column;
   max-width: 1136px;
 }
 
 .topWrapper {
-  @include flex-center;
+  @extend %flex-center;
 
   justify-content: space-between;
   width: 100%;
@@ -30,10 +30,10 @@
 .sliderButtonPrev,
 .sliderButtonNext {
   cursor: pointer;
-  display: flex;
+
+  @extend %flex-center;
+
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   background-color: $color-surface2;
   border: none;
   height: 32px;
@@ -101,10 +101,9 @@
 }
 
 .swiperSlide {
-  display: flex;
+  @extend %flex-center;
+
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   width: 272px;
   height: 506px;
 

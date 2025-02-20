@@ -1,16 +1,15 @@
-@import 'Styles/utils';
+@use '../../../../styles/globals.scss' as *;
 
 .favorite {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-center;
+  
   width: 40px;
   height: 40px;
   background-color: $color-surface2;
   border: none;
   transition: background-color 0.3s ease;
 
-  &:hover{
+  &:hover {
     background-color: $color-icons;
   }
 }

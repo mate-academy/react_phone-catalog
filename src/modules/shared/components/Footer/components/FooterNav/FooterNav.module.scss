@@ -1,7 +1,7 @@
-@import 'Styles/utils';
+@use '../../../../../../styles/globals.scss' as *;
 
 .navbar {
-  @include flex-center;
+  @extend %flex-center;
 
   justify-content: space-between;
 
@@ -15,7 +15,7 @@
 }
 
 .navbarLink {
-  @include flex-center;
+  @extend %flex-center;
 
   text-transform: uppercase;
   color: $color-white;

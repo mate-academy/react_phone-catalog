@@ -1,8 +1,9 @@
+@use '../../../../styles/globals.scss' as *;
+
 .loader {
-  display: flex;
+  @extend %flex-center;
+
   width: 100%;
-  justify-content: center;
-  align-items: center;
 }
 
 .loaderContent {

@@ -1,4 +1,4 @@
-@import 'Styles/utils';
+@use '../../../../styles/globals.scss' as *;
 
 .label {
   @include small-text-desktop-tablet;
@@ -41,7 +41,9 @@
     background-repeat: no-repeat;
     background-image: url('~/public/img/icons/arrow-down-light-gray.svg');
     background-position: center;
-    transition: background-image 0.3s ease, transform 0.3s ease;
+    transition:
+      background-image 0.3s ease,
+      transform 0.3s ease;
   }
 
   &:hover::after {

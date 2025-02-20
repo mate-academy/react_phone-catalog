@@ -1,4 +1,4 @@
-@import 'Styles/utils';
+@use '../../../../styles/globals.scss' as *;
 
 .container {
   max-width: 1136px;

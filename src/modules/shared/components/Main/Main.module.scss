@@ -1,9 +1,9 @@
-@import 'Styles/utils';
+@use '/src/styles/globals.scss' as *;
 
 main {
   grid-area: main;
 
-  @include flex-center;
+  @extend %flex-center;
 }
 
 .container {

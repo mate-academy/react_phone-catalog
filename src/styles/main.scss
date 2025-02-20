@@ -1,0 +1,53 @@
+@use './globals.scss' as *;
+@import 'normalize.css';
+
+body {
+  position: relative;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font-family: Mont, sans-serif;
+  color: $color-white;
+  background-color: $color-black;
+}
+
+a {
+  color: $color-icons;
+  transition: color 0.3s ease;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+a:hover,
+a:focus {
+  color: $color-white;
+}
+
+.App {
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  grid-template-rows: 64px 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: $mobile-breakpoint) {
+  .App {
+    grid-template-rows: 48px 1fr auto;
+  }
+}
+
+// .container {
+//   width: 100%;
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   padding: 0 16px;
+// }

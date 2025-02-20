@@ -1,14 +1,14 @@
-@import 'Styles/utils';
+@use '../../styles/globals.scss' as *;
 
 .notFoundPage {
-  @include flex-center;
+  @extend %flex-center;
 
   flex-direction: column;
   gap: 20px;
 }
 
 .back {
-  @include flex-center;
+  @extend %flex-center;
   @include small-text-desktop-tablet;
 
   color: $color-secondary;
@@ -16,7 +16,7 @@
 }
 
 .backContainer {
-  @include flex-center;
+  @extend %flex-center;
 
   gap: 8px;
 }
@@ -24,7 +24,7 @@
 .arrowIcon {
   width: 16px;
   height: 16px;
-  transform: rotate(90deg)
+  transform: rotate(90deg);
 }
 
 .notFoundMessage {

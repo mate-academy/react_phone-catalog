@@ -1,13 +1,15 @@
-@import 'Styles/utils';
+@use '../../../../../../styles/globals.scss' as *;
 
 .burger {
   display: none;
   z-index: 1001;
 
   @media (max-width: $mobile-breakpoint) {
-    @include flex-center;
-
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     width: 48px;
     height: 48px;
     border: 1px solid transparent;
@@ -16,6 +18,5 @@
 }
 
 .image {
-@include hover-scale-10;
+  @include hover-scale(1.5);
 }
-

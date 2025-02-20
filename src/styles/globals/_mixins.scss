@@ -1,0 +1,42 @@
+@use './variables' as *;
+@use './typography' as *;
+
+@mixin hover-text($color) {
+  transition: color 0.5s ease;
+
+  &:hover {
+    color: $color;
+  }
+}
+
+@mixin hover-icons($color) {
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $color;
+  }
+}
+
+@mixin hover-scale($scale) {
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+
+@mixin primary-button {
+  @include buttons-text-desktop-tablet;
+  @extend %flex-center;
+
+  height: 40px;
+  background-color: $color-accent;
+  border: none;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $color-accent-light;
+  }
+}

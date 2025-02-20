@@ -1,7 +1,7 @@
-@import 'Styles/utils';
+@use '../../../../../../styles/globals.scss' as *;
 
 .navbar {
-  @include flex-center;
+  @extend %flex-center;
   @include uppercase-desktop-tablet;
 
   justify-content: space-between;
@@ -18,7 +18,7 @@
 }
 
 .navbarLink {
-  @include flex-center;
+  @extend %flex-center;
 
   position: relative;
   height: 64px;
@@ -50,21 +50,21 @@
   @include hover-text($color-white);
 }
 
-  .linkActive {
-    color: $color-white;
+.linkActive {
+  color: $color-white;
 
-      &::after{
-        content: '';
-        transform: scale(1);
-      }
+  &::after {
+    content: '';
+    transform: scale(1);
   }
+}
 
-  .menuOpen {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+.menuOpen {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
-    padding: 24px 16px;
-    gap: 16px;
-  }
+  padding: 24px 16px;
+  gap: 16px;
+}

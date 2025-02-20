@@ -1,7 +1,7 @@
-@import 'Styles/utils';
+@use '../../styles/globals.scss' as *;
 
 .error {
-  @include flex-center;
+  @extend %flex-center;
 
   flex-direction: column;
   height: 100%;
@@ -23,7 +23,7 @@
 }
 
 .notFoundProducts {
-  @include flex-center;
+  @extend %flex-center;
 
   flex-direction: column;
   flex: 1;
@@ -44,7 +44,7 @@
 }
 
 .back {
-  @include flex-center;
+  @extend %flex-center;
 
   gap: 8px;
 }
@@ -84,7 +84,7 @@
   margin-top: 8px;
 }
 
-.productsList{
+.productsList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
   gap: 40px 16px;
@@ -107,7 +107,7 @@
 .sortContainer {
   width: 176px;
 
-  @media (max-width: $tablet-breakpoint){
+  @media (max-width: $tablet-breakpoint) {
     width: 187px;
   }
 
@@ -119,7 +119,7 @@
 .itemOnPageContainer {
   width: 128px;
 
-  @media (max-width: $tablet-breakpoint){
+  @media (max-width: $tablet-breakpoint) {
     width: 136px;
   }
 

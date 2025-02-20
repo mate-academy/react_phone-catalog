@@ -1,4 +1,4 @@
-@import 'Styles/utils';
+@use '../../styles/globals.scss' as *;
 
 .visualyHidden {
   position: absolute;

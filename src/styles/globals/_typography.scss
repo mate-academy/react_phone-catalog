@@ -1,9 +1,4 @@
-@mixin flex-center {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+@use './variables' as *;
 
 @mixin h1-desktop-tablet {
   color: $color-white;
@@ -99,53 +94,4 @@
   font-weight: 700;
   line-height: 20px;
   letter-spacing: 0;
-}
-
-@mixin hover-text($color) {
-  transition: color 0.5s ease;
-
-  &:hover {
-    color: $color;
-  }
-}
-
-@mixin hover-icons($color) {
-  transition: background-color 0.3s ease-in-out;
-
-  &:hover {
-    background-color: $color;
-  }
-}
-
-@mixin hover-scale-10 {
-  transition: transform 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-}
-
-@mixin hover-scale-5 {
-  transition: transform 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-}
-
-@mixin primary-button {
-  @include buttons-text-desktop-tablet;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  background-color: $color-accent;
-  border: none;
-
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: $color-accent-light;
-  }
 }
