@@ -46,14 +46,14 @@ export const Carousel: React.FC<Props> = ({ products, name }) => {
             onClick={prevSlide}
             disabled={products.length <= 1}
           >
-            <img src="/img/servic/arrow-left.svg" alt="arrow" />
+            <img src="/react_phone-catalog/img/servic/arrow-left.svg" alt="arrow" />
           </button>
           <button
             className={styles.arrow}
             onClick={nextSlide}
             disabled={products.length <= 1}
           >
-            <img src="/img/servic/arrow-right.svg" alt="arrow" />
+            <img src="/react_phone-catalog/img/servic/arrow-right.svg" alt="arrow" />
           </button>
         </div>
       </div>

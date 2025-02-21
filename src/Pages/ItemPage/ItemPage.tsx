@@ -22,7 +22,7 @@ export const ItemPage = () => {
       ) : (
         <img
           className={styles.notFound}
-          src="/img/product-not-found.png"
+          src="/react_phone-catalog/img/product-not-found.png"
           alt="product"
         />
       )}

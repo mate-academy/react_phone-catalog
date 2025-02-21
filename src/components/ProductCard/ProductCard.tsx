@@ -1,9 +1,7 @@
 import React from 'react';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
-import { useAppDispatch } from '../../app/hooks';
 import { Link } from 'react-router-dom';
-import itemSlice from '../../features/product/itemSlice';
 import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
 
 type Props = {
@@ -11,11 +9,6 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const dispatch = useAppDispatch();
-
-  const onSelectItem = (item: Product) => {
-    dispatch(itemSlice.actions.selectItem(item));
-  };
 
   return (
     <div className={styles.container}>
@@ -24,7 +17,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
       <Link
         to={`/products?category=${product.category}&item=${product.name}`}
-        onClick={() => onSelectItem(product)}
       >
         <h5>{product?.name}</h5>
       </Link>

@@ -9,7 +9,7 @@ export const Header = () => {
         <Link to="/">
           <img
             className={styles.header__logo}
-            src="/img/servic/Logo.png"
+            src="/react_phone-catalog/img/servic/Logo.png"
             alt="logo"
           />
         </Link>

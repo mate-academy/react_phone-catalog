@@ -16,7 +16,7 @@ export const FavoritePage = () => {
           <ProductList sortedProducts={products} />
         </>
       ) : (
-        <img src="/img/product-not-found.png" className={styles.noItems}></img>
+        <img src="/react_phone-catalog/img/product-not-found.png" className={styles.noItems}></img>
       )}
     </div>
   );

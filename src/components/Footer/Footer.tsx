@@ -12,7 +12,7 @@ export const Footer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <img src="/img/servic/Logo.png" alt="logo" />
+        <img src="/react_phone-catalog/img/servic/Logo.png" alt="logo" />
       </div>
       <div>
         <ul className={styles.navigate}>
@@ -32,7 +32,7 @@ export const Footer = () => {
       <div className={styles.goTop}>
         <p>Back to top</p>
         <button onClick={scrollToTop}>
-          <img src="/img/servic/arrow-top.svg" alt="arrow" />
+          <img src="/react_phone-catalog/img/servic/arrow-top.svg" alt="arrow" />
         </button>
       </div>
     </div>

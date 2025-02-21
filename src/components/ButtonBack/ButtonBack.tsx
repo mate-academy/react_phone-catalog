@@ -6,7 +6,7 @@ export const ButtonBack = () => {
 
   return (
     <div className={styles.container} onClick={() => navigate(-1)}>
-      <img src="/img/servic/arrow-left.svg" alt="arrow" />
+      <img src="/react_phone-catalog/img/servic/arrow-left.svg" alt="arrow" />
       <p>Back</p>
     </div>
   );

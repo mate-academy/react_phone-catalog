@@ -41,7 +41,7 @@ export const CartPage = () => {
       ) : (
         <img
           className={styles.empty}
-          src="/img/cart-is-empty.png"
+          src="/react_phone-catalog/img/cart-is-empty.png"
           alt="empty-cart"
         />
       )}

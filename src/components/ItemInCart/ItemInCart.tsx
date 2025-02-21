@@ -30,9 +30,11 @@ export const ItemInCart: React.FC<Props> = ({ product }) => {
           className={styles.deleteButton}
           onClick={() => onDelete(product.id)}
         >
-          <img src="/img/servic/close.svg" alt="close" />
+          <img src="/react_phone-catalog/img/servic/close.svg" alt="close" />
         </button>
-        <div className={styles.image}><img src={product.image} alt="image" /></div>
+        <div className={styles.image}>
+          <img src={product.image} alt="image" />
+        </div>
         <p className={styles.name}>{product.name}</p>
       </div>
       <div className={styles.quantityContainer}>

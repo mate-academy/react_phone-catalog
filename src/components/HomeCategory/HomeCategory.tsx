@@ -11,21 +11,21 @@ export const HomeCategory = () => {
       <div className={styles.category}>
         <Link to={`/products?category=phones`}>
           <CategoryCard
-            img="/img/servic/category1.png"
+            img="/react_phone-catalog/img/servic/category1.png"
             name="Mobile phones"
             count={96}
           />
         </Link>
         <Link to={`/products?category=tablets`}>
           <CategoryCard
-            img="/img/servic/category2.png"
+            img="/react_phone-catalog/img/servic/category2.png"
             name="Tablets"
             count={24}
           />
         </Link>
         <Link to={`/products?category=accessories`}>
           <CategoryCard
-            img="/img/servic/category3.png"
+            img="/react_phone-catalog/img/servic/category3.png"
             name="Accessories"
             count={100}
           />

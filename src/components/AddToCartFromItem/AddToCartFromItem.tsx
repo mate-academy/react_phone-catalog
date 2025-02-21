@@ -35,9 +35,9 @@ export const AddToCartFromItem: React.FC<Props> = ({ product }) => {
     const select = favoriteItems.find(item => item.itemId === product.id);
 
     if (select) {
-      return '/img/servic/heart-fill.svg';
+      return '/react_phone-catalog/img/servic/heart-fill.svg';
     } else {
-      return '/img/servic/heart.svg';
+      return '/react_phone-catalog/img/servic/heart.svg';
     }
   };
 
