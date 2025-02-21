@@ -13,7 +13,7 @@ import { CartPage } from './Pages/CartPage/CartPage';
 import { ContactPage } from './Pages/ContactsPage/ContactsPage';
 
 export const Root = () => (
-  <Router>
+  <Router basename="/react_phone-catalog">
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
@@ -24,6 +24,7 @@ export const Root = () => (
         <Route path="/contact" element={<ContactPage />} />
       </Route>
       <Route path="home" element={<Navigate to="/" replace />} />
+      <Route path="react_phone-catalog" element={<Navigate to="/" replace />} />
     </Routes>
   </Router>
 );
