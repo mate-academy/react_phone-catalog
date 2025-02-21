@@ -62,7 +62,7 @@ export const NavBar = () => {
               className={({ isActive }) =>
                 isActive ? `${styles.icon} ${styles.link_active}` : styles.icon
               }
-              to="/cart"
+              to="/favorite"
             >
               <div>
                 <img src="/img/servic/heart.svg" alt=""></img>
@@ -73,7 +73,7 @@ export const NavBar = () => {
               className={({ isActive }) =>
                 isActive ? `${styles.icon} ${styles.link_active}` : styles.icon
               }
-              to="/prefer"
+              to="/cart"
             >
               <div>
                 <img src="/img/servic/cart.svg" alt=""></img>

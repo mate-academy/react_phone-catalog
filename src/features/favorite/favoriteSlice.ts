@@ -29,14 +29,6 @@ const favoriteSlice = createSlice({
         };
       }
     },
-    deleteFromFavorite: (state, action: PayloadAction<number>) => {
-      return {
-        ...state,
-        products: state.products.filter(
-          product => product.id !== action.payload,
-        ),
-      };
-    },
   },
 });
 

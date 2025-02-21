@@ -1,3 +1,11 @@
 export const NotFoundPage = () => {
-  return <div>NotFoundPage</div>;
+  return (
+    <div style={{ width: '100%', display: 'flex' }}>
+      <img
+        style={{ width: '60%', margin: '50px auto' }}
+        src="/img/page-not-found.png"
+        alt="not-found"
+      />
+    </div>
+  );
 };

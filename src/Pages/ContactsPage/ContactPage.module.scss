@@ -1,0 +1,38 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: flex;
+  margin: $button-navigate auto;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $button-navigate;
+  padding: $button-navigate;
+  border: 1px solid $secondary-color;
+  h3 {
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  h4 {
+    color: $secondary-color;
+  }
+}
+
+.element {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+@media (max-width: 850px) {
+  .container {
+    width: 90%;
+  }
+}

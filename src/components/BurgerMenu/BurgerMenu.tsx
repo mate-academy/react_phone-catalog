@@ -71,7 +71,8 @@ export const Burger: React.FC<Props> = ({ isOpen, onClick }) => {
             className={({ isActive }) =>
               isActive ? `${styles.icon} ${styles.link_active}` : styles.icon
             }
-            to="/cart"
+            to="/favorite"
+            onClick={onClick}
           >
             <div>
               <img src="/img/servic/heart.svg" alt=""></img>
@@ -82,7 +83,8 @@ export const Burger: React.FC<Props> = ({ isOpen, onClick }) => {
             className={({ isActive }) =>
               isActive ? `${styles.icon} ${styles.link_active}` : styles.icon
             }
-            to="/prefer"
+            to="/cart"
+            onClick={onClick}
           >
             <div>
               <img src="/img/servic/cart.svg" alt=""></img>

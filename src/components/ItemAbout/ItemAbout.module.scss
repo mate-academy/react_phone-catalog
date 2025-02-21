@@ -1,0 +1,64 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: flex;
+  gap: var(--header-height);
+  margin: $button-navigate 0;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $button-navigate;
+  width: 50%;
+
+  p {
+    @include body-text;
+    color: $secondary-color;
+  }
+
+  span {
+    height: 1px;
+    width: 100%;
+    background-color: $elements-color;
+  }
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  span {
+    height: 1px;
+    width: 100%;
+    background-color: $elements-color;
+    margin: $button-navigate 0;
+  }
+}
+
+.characteristic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    @include body-text;
+    color: $secondary-color;
+  }
+  h6 {
+    @include body-text;
+    color: $primary-color;
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    flex-direction: column;
+  }
+  .about {
+    width: 100%;
+  }
+  .specs {
+    width: 100%;
+  }
+}

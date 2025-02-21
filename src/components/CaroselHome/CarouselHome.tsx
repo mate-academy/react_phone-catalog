@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './CarouselHome.module.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
+import { useWindowSize } from '../../hooks/useWindowSize';
 
 type Props = {
   products: Product[];
@@ -10,7 +11,18 @@ type Props = {
 
 export const Carousel: React.FC<Props> = ({ products, name }) => {
   const [index, setIndex] = useState(0);
-  const visibleItems = 4;
+  const { width } = useWindowSize();
+  const [visibleItems, setVisibleItems] = useState(4);
+
+  useEffect(() => {
+    if (width >= 1200) {
+      setVisibleItems(4);
+    } else if (width >= 950) {
+      setVisibleItems(3);
+    } else {
+      setVisibleItems(2);
+    }
+  }, [width]);
 
   const nextSlide = () => {
     setIndex(prevIndex =>
@@ -49,7 +61,7 @@ export const Carousel: React.FC<Props> = ({ products, name }) => {
       <div className={styles.carousel__container}>
         <div
           className={styles.carousel__track}
-          style={{ transform: `translateX(-${index * 25}%)` }}
+          style={{ transform: `translateX(-${index * (100 / visibleItems)}%)` }}
         >
           {products.map(product => (
             <div key={product.id} className={styles.carousel__item}>

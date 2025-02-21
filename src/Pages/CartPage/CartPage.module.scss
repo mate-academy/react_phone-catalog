@@ -1,0 +1,79 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $button-navigate;
+  margin: $button-navigate 0;
+  width: 100%;
+}
+
+.empty {
+  width: 60%;
+  align-self: center;
+}
+
+.content {
+  display: flex;
+  gap: $navigate-icon;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.list {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: $navigate-icon;
+}
+
+.checkout {
+  width: 30%;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $elements-color;
+  padding: $navigate-icon;
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  p {
+    @include body-text;
+    color: $secondary-color;
+  }
+
+  span {
+    height: 1px;
+    width: 100%;
+    background-color: $elements-color;
+    margin: $button-navigate 0 $navigate-icon;
+  }
+
+  button {
+    width: 100%;
+    height: $button-add-to-cart-height;
+    background-color: $primary-color;
+    color: $white-color;
+    border: none;
+    &:hover {
+      cursor: pointer;
+      box-shadow: $shadow;
+    }
+  }
+}
+
+@media (max-width: 799px) {
+  .content {
+    flex-direction: column;
+  }
+  .list {
+    width: 100%;
+  }
+  .checkout {
+    width: 100%;
+  }
+}
