@@ -25,35 +25,39 @@ export const ItemInCart: React.FC<Props> = ({ product }) => {
 
   return (
     <div className={styles.container}>
-      <button
-        className={styles.deleteButton}
-        onClick={() => onDelete(product.id)}
-      >
-        <img src="/img/servic/close.svg" alt="close" />
-      </button>
-      <img className={styles.image} src={product.image} alt="image" />
-      <p className={styles.name}>{product.name}</p>
-      <div className={styles.quantity}>
+      <div className={styles.main}>
         <button
-          className={
-            product.quantity === 1
-              ? `${styles.button} ${styles.disabled}`
-              : styles.button
-          }
-          onClick={() => onDescQuantity(product.id)}
-          disabled={product.quantity === 1}
+          className={styles.deleteButton}
+          onClick={() => onDelete(product.id)}
         >
-          -
+          <img src="/img/servic/close.svg" alt="close" />
         </button>
-        <p>{product.quantity}</p>
-        <button
-          className={styles.button}
-          onClick={() => onAddQuantity(product.id)}
-        >
-          +
-        </button>
+        <div className={styles.image}><img src={product.image} alt="image" /></div>
+        <p className={styles.name}>{product.name}</p>
       </div>
-      <h3>${product.totalPrice}</h3>
+      <div className={styles.quantityContainer}>
+        <div className={styles.count}>
+          <button
+            className={
+              product.quantity === 1
+                ? `${styles.button} ${styles.disabled}`
+                : styles.button
+            }
+            onClick={() => onDescQuantity(product.id)}
+            disabled={product.quantity === 1}
+          >
+            -
+          </button>
+          <p>{product.quantity}</p>
+          <button
+            className={styles.button}
+            onClick={() => onAddQuantity(product.id)}
+          >
+            +
+          </button>
+        </div>
+        <h3>${product.totalPrice}</h3>
+      </div>
     </div>
   );
 };

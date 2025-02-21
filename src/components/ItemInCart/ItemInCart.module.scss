@@ -14,9 +14,11 @@
     color: $primary-color;
   }
 }
-
-.name {
-  width: 336px;
+.main {
+  display: flex;
+  gap: $navigate-icon;
+  align-items: center;
+  width: 60%;
 }
 
 .deleteButton {
@@ -31,9 +33,23 @@
 .image {
   width: 80px;
   height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    max-width: 80px;
+    height: 80px;
+  }
 }
 
-.quantity {
+.quantityContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: $gap-card;
+  width: 25%;
+}
+
+.count {
   display: flex;
   gap: $gap-card;
   align-items: center;
@@ -55,4 +71,17 @@
 .disabled {
   border-color: $elements-color;
   color: $elements-color;
+}
+
+@media (max-width: 639px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .quantityContainer {
+    width: 100%;
+  }
+  .main {
+    width: 100%;
+  }
 }

@@ -36,3 +36,12 @@
     width: 90%;
   }
 }
+
+@media (max-width: 639px) {
+  .container {
+    width: 80%;
+  }
+  .element {
+    flex-direction: column;
+  }
+}
