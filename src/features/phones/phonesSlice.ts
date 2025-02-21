@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { PhoneType } from '../../types/Product';
 
 export const setPhones = createAsyncThunk('phones/setPhones', async () => {
-  const res = await fetch('../../api/phones.json');
+  const res = await fetch('../../react_phone-catalog/api/phones.json');
 
   return res.json();
 });

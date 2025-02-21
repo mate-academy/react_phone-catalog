@@ -22,6 +22,7 @@ const Header = () => {
     setIsMenuClicked(false);
 
     document.body.style.overflow = 'unset';
+    document.body.style.height = '100vh';
   };
 
   return (

@@ -10,6 +10,10 @@
   display: none;
   background-color: var(--background-color);
 
+  @include on-phone {
+    display: flex;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;

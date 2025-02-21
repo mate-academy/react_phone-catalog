@@ -5,7 +5,7 @@ import { ProductType } from '../../types/Product';
 export const setProducts = createAsyncThunk(
   'products/setProducts',
   async () => {
-    const res = await fetch('../../api/products.json');
+    const res = await fetch('../../react_phone-catalog/api/products.json');
 
     return res.json();
   },

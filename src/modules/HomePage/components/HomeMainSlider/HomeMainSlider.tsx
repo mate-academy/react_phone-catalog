@@ -94,70 +94,14 @@ const HomeMainSlider = () => {
             <li className={styles.sliderItem}>
               <picture>
                 <source media="(max-width: 649px)" srcSet={banner2MobImg} />
-                <img src={banner2Img} alt="banner1" className={styles.banner} />
+                <img src={banner2Img} alt="banner2" className={styles.banner} />
               </picture>
-              {/* <article className={styles.content}>
-                <div className={styles.right}>
-                  <h3 className={styles.rightTitle}>
-                    Now available <br /> in our store! &#128076;
-                  </h3>
-                  <p className={styles.rightSubtitle}>Be the first!</p>
-                  <button
-                    className={styles.order}
-                    onClick={() =>
-                      navigate(
-                        '/tablets/apple-ipad-pro-11-2021-128gb-spacegray',
-                      )
-                    }
-                  >
-                    Order now
-                  </button>
-                </div>
-                <div className={styles.left}>
-                  <div>
-                    <h3 className={styles.leftTitle}>Apple iPad Pro 11</h3>
-                    <p className={styles.leftSubtitle}>Pro. Beyond.</p>
-                  </div>
-                  <img
-                    src={banner2Img}
-                    className={styles.banner}
-                    alt="bannerImg"
-                  />
-                </div>
-              </article> */}
             </li>
             <li className={styles.sliderItem}>
               <picture>
                 <source media="(max-width: 649px)" srcSet={banner3MobImg} />
-                <img src={banner3Img} alt="banner1" className={styles.banner} />
+                <img src={banner3Img} alt="banner3" className={styles.banner} />
               </picture>
-              {/* <article className={styles.content}>
-                <div className={styles.right}>
-                  <h3 className={styles.rightTitle}>
-                    Now available <br /> in our store! &#128076;
-                  </h3>
-                  <p className={styles.rightSubtitle}>Be the first!</p>
-                  <button
-                    className={styles.order}
-                    onClick={() =>
-                      navigate('/accessories/apple-watch-series-6-40mm-gold')
-                    }
-                  >
-                    Order now
-                  </button>
-                </div>
-                <div className={styles.left}>
-                  <div>
-                    <h3 className={styles.leftTitle}>Apple Watch Series 6</h3>
-                    <p className={styles.leftSubtitle}>Pro. Beyond.</p>
-                  </div>
-                  <img
-                    src={banner3Img}
-                    className={styles.banner + ' ' + styles.bannerSmall}
-                    alt="bannerImg"
-                  />
-                </div>
-              </article> */}
             </li>
           </ul>
         </div>
