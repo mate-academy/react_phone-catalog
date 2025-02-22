@@ -11,8 +11,24 @@ import { LangContext } from '../../context/LangContext';
 const allColors = {
   gold: '#FCDBC1',
   spaceblack: '#4C4C4C',
+  spacegray: '#86807d',
   graphite: '#5F7170',
-  sierrablue: '#5F7170',
+  sierrablue: '#96adc5',
+  rosegold: '#f6cfc8',
+  midnightgreen: '#5d675f',
+  midnight: '#191f28',
+  green: '#abdfc9',
+  black: '#191c1b',
+  purple: '#ccc7d7',
+  red: '#b20126',
+  white: '#fefdf9',
+  yellow: '#fde580',
+  silver: '#efeee7',
+  blue: '#215e7e',
+  skyblue: '#215e7e',
+  pink: '#fd9bd5',
+  coral: '#fd6351',
+  starlight: '#d7cec1',
 };
 
 export const PageItem = () => {
