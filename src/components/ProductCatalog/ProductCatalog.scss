@@ -18,17 +18,10 @@
 }
 
 .product__container {
-  // display: flex;
-  // gap: 16px;
-  // flex-wrap: wrap;
-  margin-top: 24px;
-  // // justify-content: space-between;
-  // max-width: 1136px;
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 16px;
-  row-gap: 40px;
+  gap: 40px 16px;
+  margin-top: 24px;
 
   @media (max-width: 868px) {
     grid-template-columns: repeat(3, 1fr);

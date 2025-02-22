@@ -18,6 +18,7 @@
 
   &__link {
     @include menu-list;
+
     transition: color 0.3s;
 
     &:hover {

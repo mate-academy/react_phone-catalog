@@ -2,20 +2,7 @@ import React from 'react';
 import './NewModels.scss';
 import { ProductsSlider } from '../ProductsSlider';
 import productsFromServer from '../../../public/api/products.json';
-import { Product } from '../types/Product';
-
-function newPhones(products: Product[], year = 2022) {
-  return products.reduce((acc, product) => {
-    if (
-      product.year === year &&
-      !acc.some(({ color }) => color === product.color)
-    ) {
-      acc.unshift(product);
-    }
-
-    return acc;
-  }, [] as Product[]);
-}
+import { getNewPhones } from '../../utils/productHelper';
 
 export const NewModels = () => {
   return (
@@ -23,7 +10,7 @@ export const NewModels = () => {
       <div className="container container--mobile">
         <h2 className="new-models__title">Brand new models</h2>
         <ProductsSlider
-          newModels={newPhones(productsFromServer)}
+          products={getNewPhones(productsFromServer)}
           fullPrice={false}
         />
       </div>

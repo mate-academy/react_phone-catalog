@@ -75,66 +75,9 @@
     object-fit: contain;
   }
 
-  // &__description {
-  //   margin-top: 8px;
-  // }
-
-  // &__description-item {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   color: $secondary;
-  //   font-family: $font-family;
-  //   font-size: 12px;
-  //   font-weight: $font-weight-medium;
-  //   margin-bottom: 8px;
-
-  //   &--value {
-  //     color: $primary;
-  //   }
-  // }
-
   &__buttons {
     display: flex;
     justify-content: space-between;
     gap: 8px;
-    // padding-top: 8px;
   }
-
-  // &__button-cart {
-  //   font-family: $font-family;
-  //   color: $white;
-
-  //   // padding: 10px 34px;
-  //   width: calc(100% - 48px);
-  //   height: 40px;
-  //   background-color: $accent;
-  //   border: 1px solid $accent;
-  //   border-radius: 8px;
-  //   cursor: pointer;
-  //   transition: all 0.3s;
-
-  //   &:hover {
-  //     box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
-  //   }
-
-  //   @media (max-width: $mobile) {
-  //     padding: 5px;
-  //     transition: 0.3s;
-  //   }
-  // }
-
-  // &__button-favs {
-  //   width: 40px;
-  //   height: 40px;
-  //   background-color: $white;
-  //   border: none;
-  //   background-image: url(../../../../img/Add\ to\ fovourites\ -\ Default.svg);
-  //   cursor: pointer;
-  //   transition:  all 0.3s;
-  //   background-repeat: no-repeat;
-
-  //   &:hover {
-  //     background-image: url(../../../../img/Add\ to\ fovourites\ -\ Hover.svg);
-  //   }
-  // }
 }

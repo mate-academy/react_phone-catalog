@@ -15,6 +15,7 @@
 
   &__name {
     @include small-text;
+    
     font-weight: $font-weight-regular;
     color: $secondary;
 

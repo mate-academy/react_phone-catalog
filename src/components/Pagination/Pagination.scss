@@ -1,0 +1,47 @@
+@import '../../utils';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+
+  &__link {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(226, 230, 233, 1);
+
+    @include body-text;
+
+    color: $primary;
+    transition: all 0.3s;
+
+    &--prev {
+      margin-right: 8px;
+    }
+
+    &--next {
+      margin-left: 8px;
+      border: 1px solid $icons_and_placeholders;
+      transform: rotate(180deg);
+    }
+
+    &--active {
+      color: $white;
+      background: $primary;
+    }
+
+    &--disabled {
+      cursor: none;
+      pointer-events: none;
+    }
+
+    &:hover:not(&--disabled) {
+      border: 1px solid $primary;
+    }
+  }
+}

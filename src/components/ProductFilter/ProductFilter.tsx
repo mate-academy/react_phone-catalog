@@ -1,7 +1,17 @@
 import React from 'react';
 import './ProductFilter.scss';
 
-export const ProductFilter = () => {
+const options = [4, 8, 16, 'All'];
+
+type Props = {
+  handlePerChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  itemsPerPage: number;
+};
+
+export const ProductFilter: React.FC<Props> = ({
+  handlePerChange,
+  itemsPerPage,
+}) => {
   return (
     <div className="filter">
       <div>
@@ -21,19 +31,16 @@ export const ProductFilter = () => {
 
       <div>
         <p className="filter__title">Items on page</p>
-        <select value="" className="filter__select">
-          <option value="4" className="filter__option">
-            4
-          </option>
-          <option value="8" className="filter__option">
-            8
-          </option>
-          <option value="16" className="filter__option">
-            16
-          </option>
-          <option value="all" className="filter__option">
-            All
-          </option>
+        <select
+          value={options.includes(itemsPerPage) ? itemsPerPage : 'All'}
+          className="filter__select"
+          onChange={handlePerChange}
+        >
+          {options.map(v => (
+            <option value={v} key={v} className="filter__option">
+              {v}
+            </option>
+          ))}
         </select>
       </div>
     </div>

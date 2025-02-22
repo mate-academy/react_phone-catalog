@@ -14,6 +14,7 @@ import { ItemTech } from '../ItemTech';
 import { ProductsSlider } from '../ProductsSlider';
 // import { Product } from '../types/Product';
 import productsFromServer from '../../../public/api/products.json';
+import { getRandomProducts } from '../../utils/productHelper';
 
 function getPhone(id?: string) {
   const list = phones.filter(product => product.id === id);
@@ -37,8 +38,6 @@ export enum ProductType {
 export const ItemCard: FC<{ type: ProductType }> = () => {
   const { id } = useParams<{ id: string }>();
   const product = getPhone(id);
-
-  // console.log(type, id, getPhone(id));
 
   const itemsTech = [
     {
@@ -149,7 +148,10 @@ export const ItemCard: FC<{ type: ProductType }> = () => {
 
           <div className="item__slider">
             <h2 className="item__title">You may also like</h2>
-            <ProductsSlider newModels={productsFromServer} fullPrice={true} />
+            <ProductsSlider
+              products={getRandomProducts(productsFromServer)}
+              fullPrice={true}
+            />
           </div>
         </div>
       </div>
