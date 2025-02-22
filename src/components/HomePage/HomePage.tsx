@@ -5,10 +5,10 @@ import { Slider } from '../Slider/Slider';
 import { getHotModels, getNewModels } from '../../utils/api';
 import { Product } from '../../types';
 import { Carousel } from '../Carousel/Carousel';
-// import { useAppDispatch } from '../../app/hooks';
-// import { setPhonesAsync } from '../../features/phonesSlice';
-// import { setTabletsAsync } from '../../features/tabletsSlice';
-// import { setAccessoriesAsync } from '../../features/accessoriesSlice';
+import { useAppDispatch } from '../../app/hooks';
+import { setPhonesAsync } from '../../features/phonesSlice';
+import { setTabletsAsync } from '../../features/tabletsSlice';
+import { setAccessoriesAsync } from '../../features/accessoriesSlice';
 import { translate } from '../../utils/translate';
 import { LangContext } from '../../context/LangContext';
 
@@ -16,21 +16,21 @@ export const HomePage = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);
   const [hotModels, setHotModels] = useState<Product[]>([]);
   const { lang } = useContext(LangContext);
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     getNewModels().then(setNewModels);
     getHotModels().then(setHotModels);
 
-    // dispatch(setPhonesAsync()).then(data =>
-    //   localStorage.setItem('phones', JSON.stringify(data.payload)),
-    // );
-    // dispatch(setTabletsAsync()).then(data =>
-    //   localStorage.setItem('tablets', JSON.stringify(data.payload)),
-    // );
-    // dispatch(setAccessoriesAsync()).then(data =>
-    //   localStorage.setItem('asseccories', JSON.stringify(data.payload)),
-    // );
+    dispatch(setPhonesAsync()).then(data =>
+      localStorage.setItem('phones', JSON.stringify(data.payload)),
+    );
+    dispatch(setTabletsAsync()).then(data =>
+      localStorage.setItem('tablets', JSON.stringify(data.payload)),
+    );
+    dispatch(setAccessoriesAsync()).then(data =>
+      localStorage.setItem('asseccories', JSON.stringify(data.payload)),
+    );
   }, []);
 
   const toggleTheme = () => {
