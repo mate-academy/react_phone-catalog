@@ -83,7 +83,7 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
       return;
     }
 
-    fetch('/public/api/products.json')
+    fetch('/api/products.json')
       .then(response => response.json())
       .then(response =>
         response.filter((product: Product) => {
@@ -150,7 +150,7 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
 
     function fetchAll() {
       functions.forEach(async (setState, index) => {
-        fetch(`/public/api/${strings[index]}.json`)
+        fetch(`/api/${strings[index]}.json`)
           .then(response => response.json())
           .then(response => setState(response))
           .catch(() => {
