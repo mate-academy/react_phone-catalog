@@ -1,0 +1,13 @@
+@import '../../../../../../App.scss';
+
+.path {
+  @include on-desktop {
+    transition: fill $default-trans-dur;
+  }
+}
+
+.svg:hover, .svg:active {
+  .path {
+    fill: $red-color;
+  }
+}

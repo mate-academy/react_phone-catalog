@@ -1,0 +1,37 @@
+@import '/src/App.scss';
+
+.about {
+  grid-column: span 12;
+
+  .title {
+    @include pd-title;
+  }
+
+  .block {
+    margin-top: 32px;
+
+    &-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 20.45px;
+      color: $primary-color;
+      font-family: Mont-SemiBold;
+      font-weight: inherit;
+
+      @include on-tablet {
+        font-size: 20px;
+        line-height: 25.56px;
+      }
+    }
+
+    &-text {
+      margin-top: 16px;
+      font-family: Mont-Regular;
+      font-size: 14px;
+      line-height: 21px;
+      color: $secondary-color;
+    }
+  }
+
+}
+

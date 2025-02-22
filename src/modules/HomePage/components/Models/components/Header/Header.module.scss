@@ -1,0 +1,30 @@
+@import '../../../../../../App.scss';
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .title {
+    width: 136px;
+    margin: 0;
+    font-family: Mont-Bold;
+    color: $primary-color;
+    font-size: 22px;
+    line-height: 30.8px;
+
+    @include on-tablet {
+      width: 100%;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  .nav {
+    min-width: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

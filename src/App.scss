@@ -1,1 +1,43 @@
-// not empty
+@import './utils/Mixins.scss';
+@import './utils/Variables.module.scss';
+
+:root {
+  // #region variables
+
+  --product-height: 439px;
+  --models-mt: 24px;
+  --container-width: 288px;
+
+  @include on-tablet {
+    --container-width: 592px;
+    --product-height: 512px;
+  }
+
+  @include on-small-desktop {
+    --container-width: 719px;
+  }
+
+  @include on-desktop {
+    --container-width: 1040px;
+    --product-height: 506px;
+  }
+
+  // #endregion
+
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.hidden-title {
+  position: absolute;
+  visibility: hidden;
+  margin: 0;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}

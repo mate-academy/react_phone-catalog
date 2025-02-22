@@ -1,0 +1,186 @@
+@import './Variables.module.scss';
+
+// #region media
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-small-desktop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+// #endregion
+
+@mixin flex-center-center {
+  & {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@mixin product-flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@mixin is-active {
+  .is-active {
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+// #region elements
+
+@mixin nav-arrow($is-it-pagination: true) {
+  @if ($is-it-pagination) {
+    width: 30px;
+    height: 30px;
+  } @else {
+    width: 32px;
+  }
+
+  border: none;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid $icons-color;
+  @include flex-center-center;
+
+  @include on-desktop {
+    transition: all $default-trans-dur;
+  }
+
+  &:hover, &:active {
+    border-color: $primary-color;
+  }
+
+  &:enabled:active {
+    background-color: $element-color;
+  }
+
+  path {
+    transition: fill $default-trans-dur;
+  }
+
+  &:disabled {
+    border-color: $element-color;
+
+    path {
+      fill: $icons-color;
+    }
+  }
+}
+
+@mixin shop-buttons {
+  .add,
+  .like {
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .add {
+    border: none;
+    height: 100%;
+    width: 100%;
+    background-color: $primary-color;
+    color: #fff;
+    font-family: Mont-Regular;
+    font-size: 14px;
+    line-height: 21px;
+
+    @include on-desktop {
+      transition: box-shadow $default-trans-dur;
+    }
+
+    &:hover, &:active {
+      box-shadow: 0px 3px 13px $box-shadow-color;
+    }
+  }
+
+  .like {
+    border: 1px solid $icons-color;
+    background-color: #fff;
+    min-width: 40px;
+    @include flex-center-center;
+
+    @include on-desktop {
+      transition: all $default-trans-dur;
+    }
+
+
+    &:hover, :active {
+      border-color: $primary-color;
+    }
+  }
+}
+
+@mixin spec($fz: 12px, $lh: 15.34px, $ff: Mont-SemiBold) {
+  .spec {
+    display: flex;
+    justify-content: space-between;
+
+    &-title,
+    &-value {
+      font-family: $ff;
+      font-size: $fz;
+      line-height: $lh;
+    }
+
+    &-title {
+      color: $secondary-color;
+    }
+
+    &-value {
+      color: $primary-color;
+      text-align: end;
+    }
+  }
+}
+
+@mixin pd-title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 25.56px;
+  color: $primary-color;
+  font-family: Mont-SemiBold;
+  font-weight: inherit;
+
+  @include on-tablet {
+    font-size: 22px;
+    line-height: 30.8px;
+    font-family: Mont-Bold;
+  }
+}
+
+// #endregion
+// #region grid
+
+@mixin tablet-grid {
+  display: grid;
+  grid-template-columns: repeat(12, $tg-column);
+  column-gap: $g-gap;
+  justify-content: center;
+}
+
+@mixin small-desktop-grid {
+  grid-template-columns: repeat(12, $sdg-column);
+}
+
+@mixin desktop-grid {
+  grid-template-columns: repeat(24, $dg-column);
+}
+
+// #endregion

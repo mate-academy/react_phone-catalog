@@ -1,0 +1,32 @@
+@import '/src/App.scss';
+
+.title {
+  margin: 0;
+  margin-top: 16px;
+  font-family: Mont-Bold;
+  font-size: 22px;
+  line-height: 30.8px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+.wrapper {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    display: grid;
+    column-gap: $g-gap;
+    justify-content: center;
+
+    @include desktop-grid;
+  }
+}

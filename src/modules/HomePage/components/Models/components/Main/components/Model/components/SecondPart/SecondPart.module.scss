@@ -1,0 +1,9 @@
+@import '../../../../../../../../../../App.scss';
+
+.second-part {
+  height: 77px;
+  @include product-flex-column;
+  justify-content: center;
+
+  @include spec;
+}

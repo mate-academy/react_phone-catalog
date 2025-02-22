@@ -1,0 +1,5 @@
+@import '../../../../../../../App.scss';
+
+.arrow {
+  @include nav-arrow($is-it-pagination: true);
+}

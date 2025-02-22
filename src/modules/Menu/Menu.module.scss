@@ -1,0 +1,11 @@
+@import '../../App.scss';
+
+.menu {
+  height: calc(100vh - $header-height);
+  width: 100vw;
+  font-family: Mont-Bold;
+  position: fixed;
+  transition: transform $default-trans-dur;
+  background-color: #fff;
+  z-index: 2;
+}

@@ -1,0 +1,23 @@
+@import '/src/App.scss';
+
+.first-part {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-discount {
+  font-family: Mont-Bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: $primary-color;
+}
+
+.price-regular {
+  font-size: 22px;
+  line-height: 28.12px;
+  text-decoration: line-through;
+  font-family: Mont-Regular;
+  color: $secondary-color;
+}

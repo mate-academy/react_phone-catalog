@@ -1,0 +1,9 @@
+@import '../../../../../../../../App.scss';
+
+.product {
+  box-sizing: border-box;
+  border: $light-border-value;
+  height: var(--product-height);
+  padding: 32px;
+  @include product-flex-column;
+}

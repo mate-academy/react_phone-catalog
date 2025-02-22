@@ -1,0 +1,159 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect, useMemo } from 'react';
+import styles from './Products.module.scss';
+import { SortBy } from './enums/SortBy';
+import { PerPage } from './enums/PerPage';
+import { DSContext } from '../../../context/DSContext';
+import { DropdownSelection } from './components/DropdownSelection';
+import { ProductsItems } from './components/ProductsItems';
+import { Pagination } from './components/Pagination';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { SearchContext } from '../../../context/SearchContext';
+import { ProductsContext } from '../../../context/ProductsContext';
+import { MainContext } from '../../../context/MainContext';
+
+interface Props {
+  query: 'phones' | 'tablets' | 'accessories';
+}
+
+export const Products: React.FC<Props> = ({ query }) => {
+  // #region context
+
+  const { scrollToTopHandler } = useContext(MainContext);
+  const { products } = useContext(ProductsContext);
+  const {
+    pageNumber,
+    searchPageParam,
+    PAGE_PARAM,
+    setPageNumber,
+
+    SORT_TITLE,
+    sortBy,
+    searchSortParam,
+    SORT_PARAM,
+    setSortBy,
+
+    PER_PAGE_TITLE,
+    perPage,
+    searchPerPageParam,
+    PER_PAGE_PARAM,
+    setPerPage,
+  } = useContext(DSContext);
+  const { getSearchWith } = useContext(SearchContext);
+
+  // #endregion
+  // #region variables
+
+  const capitalizedQuery = query[0].toUpperCase() + query.slice(1);
+  const title = query === 'phones' ? 'Mobile phones' : capitalizedQuery;
+  const perPageNumber = +perPage;
+
+  // #region products
+
+  const filteredProducts = useMemo(
+    () => products.filter(product => product.category === query),
+    [products, query],
+  );
+
+  const sortedProducts = useMemo(
+    () =>
+      filteredProducts.toSorted((productA, productB) => {
+        if (sortBy === SortBy.alphabetically) {
+          return productA.name.localeCompare(productB.name);
+        }
+
+        if (sortBy === SortBy.cheapest) {
+          return productA.fullPrice - productB.fullPrice;
+        }
+
+        return productB.year - productA.year;
+      }),
+    [filteredProducts, sortBy],
+  );
+
+  // #endregion
+
+  const pagesLength = Math.ceil(
+    filteredProducts.length / (perPageNumber || +PerPage._16),
+  );
+
+  const pageNumbers = Array.from({ length: pagesLength }, (_, i) => i + 1);
+
+  const slicedSortedProducts = sortedProducts.slice(
+    (pageNumber - 1) * perPageNumber,
+    pageNumber * perPageNumber,
+  );
+
+  const resultingProducts =
+    perPage === PerPage.all ? sortedProducts : slicedSortedProducts;
+
+  // #endregion
+  // #region handlers
+
+  const handleSetSortBy = (value: SortBy | '') => setSortBy(value);
+
+  const handleSetPerPage = (value: PerPage | '') => setPerPage(value);
+
+  // #endregion
+  // #region useEffects
+
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => scrollToTopHandler(0), []);
+
+  useEffect(() => {
+    if (!searchPageParam) {
+      setPageNumber(1);
+    } else {
+      setPageNumber(+searchPageParam);
+    }
+  }, [pathname, searchPageParam]);
+
+  useEffect(() => {
+    if (
+      searchPageParam &&
+      pageNumbers.length &&
+      !pageNumbers.includes(+searchPageParam)
+    ) {
+      navigate({ search: getSearchWith({ [PAGE_PARAM]: '1' }) });
+    }
+  }, [pagesLength, searchPageParam]);
+
+  useEffect(() => {
+    if (searchPageParam && perPage === PerPage.all) {
+      navigate({ search: getSearchWith({ [PAGE_PARAM]: null }) });
+    }
+  }, [searchPageParam, perPage]);
+
+  // #endregion
+
+  return (
+    <div className={styles.products}>
+      <h1 className={styles.title}>{title}</h1>
+      <h2 className={styles.subtitle}>{filteredProducts.length} models</h2>
+      <div className={styles['ds-wrapper']}>
+        <DropdownSelection<SortBy>
+          title={SORT_TITLE}
+          buttonValue={sortBy}
+          searchParam={searchSortParam}
+          searchParamStr={SORT_PARAM}
+          enumValues={Object.values(SortBy)}
+          defaultEnumValue={SortBy.alphabetically}
+          setButtonValue={handleSetSortBy}
+        />
+        <DropdownSelection<PerPage>
+          title={PER_PAGE_TITLE}
+          buttonValue={perPage}
+          searchParam={searchPerPageParam}
+          searchParamStr={PER_PAGE_PARAM}
+          enumValues={Object.values(PerPage)}
+          defaultEnumValue={PerPage._16}
+          setButtonValue={handleSetPerPage}
+        />
+      </div>
+      <ProductsItems sortedProducts={resultingProducts} />
+      {perPage !== PerPage.all && <Pagination pageNumbers={pageNumbers} />}
+    </div>
+  );
+};

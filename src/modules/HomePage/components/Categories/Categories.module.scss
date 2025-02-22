@@ -1,0 +1,78 @@
+@import '../../../../App.scss';
+
+.categories {
+  // #region variables
+
+  --categories-mt: 56px;
+
+  @include on-tablet {
+    --categories-mt: 64px;
+  }
+
+  @include on-desktop {
+    --categories-mt: 80px;
+  }
+
+  // #endregion
+
+  & {
+    margin-top: calc(
+      var(--product-height) + var(--categories-mt) + var(--models-mt)
+    );
+    width: var(--container-width);
+    margin-inline: auto;
+  }
+
+  @include on-tablet {
+    width: 100%;
+    @include tablet-grid;
+  }
+
+  @include on-small-desktop {
+    @include small-desktop-grid;
+  }
+
+  @include on-desktop {
+    @include desktop-grid;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 22px;
+    line-height: 30.8px;
+    font-family: Mont-Bold;
+    color: $primary-color;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      height: 41px;
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 7;
+    }
+  }
+
+  .container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+      @include tablet-grid;
+    }
+
+    @include on-small-desktop {
+      @include small-desktop-grid;
+    }
+
+    @include on-desktop {
+      @include desktop-grid;
+    }
+  }
+}

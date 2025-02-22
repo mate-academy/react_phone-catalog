@@ -1,0 +1,6 @@
+@import '../../../../../../../../App.scss';
+
+.arrow {
+  height: 32px;
+  @include nav-arrow($is-it-pagination: false);
+}

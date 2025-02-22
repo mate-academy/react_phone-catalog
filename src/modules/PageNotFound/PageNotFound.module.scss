@@ -1,0 +1,36 @@
+@import '../../App.scss';
+
+
+.background {
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  z-index: 1000;
+
+  .error {
+    color: $primary-color;
+    width: fit-content;
+
+    .title {
+      font-family: Mont-Bold;
+      font-size: 56px;
+      margin: 0;
+    }
+
+    .text {
+      color: $grey-color;
+      width: 300px;
+      margin-top: 20px;
+      margin-inline: auto;
+      font-family: Mont-Regular;
+      text-align: center;
+    }
+  }
+}
+
+
