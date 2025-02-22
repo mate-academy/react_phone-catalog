@@ -3,10 +3,11 @@
 
 .icon {
   display: block;
-  width: 16px;
   height: 16px;
+  width: 16px;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 16px 16px;
   margin: 0 auto;
 
   &__nav {
@@ -16,14 +17,8 @@
     @include mix.hover(scale, 1.2);
   }
 
-  &__footer {
-    width: 32px;
-    height: 32px;
-    border: 1px solid vars.$c-icons;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    @include mix.hover(border-color, black);
+  &__logo {
+    display: block;
   }
 
   &--burger-menu {
@@ -34,15 +29,46 @@
     }
   }
 
+  &--theme {
+    background-image: url(/img/icons/icon-theme-dark.png);
+  }
+
   &--heart {
-    background-image: url(/img/icons/icon-heart.png);
+    background-image: url(/img/icons/icon-heart.svg);
   }
 
   &--basket {
-    background-image: url(/img/icons/Shopping-bag.png);
+    background-image: url(/img/icons/shopping-bag.svg);
   }
 
   &--back-top {
+    width: 32px;
+    height: 32px;
     background-image: url(/img/icons/arrow-up-black.svg);
+    background-color: var(--c-surface-2);
+  }
+
+  &--home {
+    background-image: url(/img/icons/home.svg);
+    margin: 0;
+  }
+
+  &--arrow-left {
+    background-image: url(/img/icons/arrow-left.svg);
+    transition: all vars.$transition-time;
+    margin: 0;
+  }
+
+  &--arrow-right {
+    background-image: url(/img/icons/arrow-right.svg);
+    transition: all vars.$transition-time;
+    margin: 0;
+  }
+
+  &--arrow-bottom {
+    background-image: url(/img/icons/arrow-right-grey.svg);
+    transition: all vars.$transition-time;
+    transform: rotate(90deg);
+    margin: 0;
   }
 }

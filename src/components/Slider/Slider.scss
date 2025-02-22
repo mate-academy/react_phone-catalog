@@ -7,8 +7,11 @@
 
     @include mix.on-tablet {
       display: flex;
-      justify-content: space-between;
+      gap: 19px;
+    }
 
+    @include mix.on-desktop {
+      gap: 16px;
     }
   }
 
@@ -18,10 +21,8 @@
     margin-inline: -16px;
     overflow: hidden;
 
-
     @include mix.on-tablet {
-      width: 85%;
-
+      margin-inline: 0;
     }
   }
 
@@ -33,7 +34,7 @@
     display: flex;
 
     @include mix.on-tablet {
-      aspect-ratio: auto;
+      aspect-ratio: 3 / 1;
     }
   }
 
@@ -42,18 +43,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-
-    @include mix.on-tablet {
-      height: 189px;
-      object-fit: contain;
-      object-position: center;
-    }
-
-    @include mix.on-desktop {
-      height: 400px;
-      object-fit: contain;
-      object-position: center;
-    }
+    object-position: center;
   }
 
   &__item {
@@ -61,17 +51,11 @@
     height: 100%;
     flex-shrink: 0;
 
-
-
     &:first-child .slider__img {
       @include mix.on-tablet {
         content: url('/img/Banner-main-button.png');
-        object-fit: contain;
-        object-position: center;
       }
     }
-
-
   }
 
   &__buttons {
@@ -86,27 +70,37 @@
   &__button {
     width: 14px;
     height: 4px;
-    background-color: vars.$c-elements;
+    background-color: var(--c-elements);
     border: none;
+    cursor: pointer;
 
-    @include mix.hover(background-color, vars.$c-primary);
+    @include mix.hover(background-color, var(--c-primary));
 
     &.is-active {
-      background-color: vars.$c-primary;
+      background-color: var(--c-primary);
     }
-
   }
 
   &__side-button {
     display: none;
-    width: 32px;
-    background-color: #fff;
-    border: 1px solid vars.$c-elements;
+    width: 140px;
+    height: auto;
+    background-color: var(--c-surface-2);
+    border: 1px solid var(--c-elements);
+    cursor: pointer;
 
-    @include mix.hover(border-color, vars.$c-primary);
+    @include mix.hover(border-color, var(--c-primary));
 
     @include mix.on-tablet {
       display: block;
+    }
+
+    &--left {
+      background-image: url(/img/icons/arrow-left.svg);
+    }
+
+    &--right {
+      background-image: url(/img/icons/arrow-right.svg);
     }
   }
 }

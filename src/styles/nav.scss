@@ -47,15 +47,15 @@
     text-decoration: none;
     font-family: Mont-bold, sans-serif;
     text-transform: uppercase;
-    color: vars.$c-secondary;
+    color: var(--c-secondary);
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 0.04em;
 
-    @include mix.hover(color, vars.$c-primary);
+    @include mix.hover(color, var(--c-primary));
 
     &.is-active {
-      color: vars.$c-primary;
+      color: var(--c-primary);
       position: relative;
 
       &::after {
@@ -65,7 +65,7 @@
         height: 3px;
         bottom: -8px;
         left: 0;
-        background-color: vars.$c-primary;
+        background-color: var(--c-primary);
       }
 
       @include mix.on-tablet {
@@ -76,14 +76,14 @@
           height: 3px;
           bottom: -16px;
           left: 0;
-          background-color: vars.$c-primary;
+          background-color: var(--c-primary);
         }
       }
     }
 
     &--burger {
       display: block;
-      box-shadow: -1px 0 0 0 vars.$c-elements;
+      box-shadow: -1px 0 0 0 var(--c-elements);
       text-align: center;
 
       @include mix.on-tablet {
@@ -91,16 +91,71 @@
       }
     }
 
+    &--lang {
+      display: none;
+      gap: 5px;
+      align-items: center;
+      margin-right: 7px;
+      font-family: Mont-bold, sans-serif;
+      text-transform: uppercase;
+      color: var(--c-secondary);
+
+      @include mix.on-tablet {
+        display: flex;
+      }
+    }
+
+    &--en {
+      cursor: pointer;
+
+      @include mix.hover(color, var(--c-primary));
+
+      &.is-active {
+        color: var(--c-primary);
+      }
+    }
+
+    &--it {
+      cursor: pointer;
+
+      @include mix.hover(color, var(--c-primary));
+
+      &.is-active {
+        color: var(--c-primary);
+      }
+    }
+
+    &--theme {
+      width: 50%;
+      display: none;
+      box-shadow: -1px -1px 0 0 var(--c-elements);
+      opacity: 0.7;
+      cursor: pointer;
+
+      @include mix.on-tablet {
+        display: block;
+      }
+    }
+
     &--heart {
       width: 50%;
       display: block;
-      box-shadow: -1px -1px 0 0 vars.$c-elements;
+      box-shadow: -1px -1px 0 0 var(--c-elements);
     }
 
     &--basket {
       width: 50%;
       display: block;
-      box-shadow: -1px -1px 0 0 vars.$c-elements;
+      box-shadow: -1px -1px 0 0 var(--c-elements);
+    }
+
+    &--with-menu {
+      display: block;
+      cursor: pointer;
+
+      @include mix.on-tablet {
+        display: none;
+      }
     }
   }
 }

@@ -3,9 +3,9 @@ import './Slider.scss';
 import classNames from 'classnames';
 
 const images = [
-  './img/image-main.png',
-  './img/banner-phones.png',
-  './img/banner-tablets.png',
+  '/img/image-main.png',
+  '/img/banner-phones.png',
+  '/img/banner-tablets.png',
 ];
 
 export const Slider: React.FC = () => {
@@ -118,11 +118,9 @@ export const Slider: React.FC = () => {
     >
       <div className="slider__container">
         <button
-          className="slider__side-button slider__side-button--left"
+          className="slider__side-button slider__side-button--left icon button"
           onClick={handlePrev}
-        >
-          <img src="/img/icons/arrow-left.svg" alt="icons arrow left" />
-        </button>
+        ></button>
         <div ref={sliderRef} className="slider__images">
           <ul
             className="slider__list"
@@ -143,11 +141,9 @@ export const Slider: React.FC = () => {
           </ul>
         </div>
         <button
-          className="slider__side-button slider__side-button--right"
+          className="slider__side-button slider__side-button--right icon button"
           onClick={handleNext}
-        >
-          <img src="/img/icons/arrow-right.svg" alt="icons arrow right" />
-        </button>
+        ></button>
       </div>
       <div className="slider__buttons">
         <button

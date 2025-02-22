@@ -27,7 +27,7 @@ h1 {
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
-  color: vars.$c-primary;
+  color: var(--c-primary);
 
   @include mix.on-tablet {
     font-size: 48px;
@@ -40,7 +40,7 @@ h2 {
   font-family: Mont-bold, sans-serif;
   font-size: 22px;
   line-height: 31px;
-  color: vars.$c-primary;
+  color: var(--c-primary);
 
   @include mix.on-tablet {
     font-size: 32px;

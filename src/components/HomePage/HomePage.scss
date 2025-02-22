@@ -1,8 +1,12 @@
 @use '../../styles/utils/vars' as vars;
 @use '../../styles/utils/mixins' as mix;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .home-page {
-  margin-top: 48px;
+  margin-top: 49px;
 }
 
 .section {

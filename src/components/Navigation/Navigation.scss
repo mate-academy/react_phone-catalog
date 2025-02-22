@@ -1,0 +1,47 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.navigation {
+  margin-bottom: 24px;
+
+  @include mix.on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+  }
+
+  &__item {
+    cursor: pointer;
+
+  }
+
+  &__separator {
+    height: 16px;
+    width: 16px;
+    background-image: url(/img/icons/arrow-right-grey.svg);
+    background-size: 5px 9px;
+  }
+
+  &__link {
+    height: 16px;
+    width: 16px;
+    text-decoration: none;
+    font-family: Mont-bold, sans-serif;
+    color: var(--c-secondary);
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+
+    @include mix.hover(color, var(--c-primary));
+
+  }
+}

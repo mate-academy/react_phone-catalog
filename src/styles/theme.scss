@@ -1,0 +1,88 @@
+@use '../styles/utils/mixins' as mix;
+@use '../styles/utils/vars' as vars;
+
+.theme--dark {
+  --c-page-bg: #0F1121;
+  --c-primary: #F1F2F9;
+  --c-secondary: #75767F;
+  --c-icons: #4A4D58;
+  --c-elements: #3B3E4A;
+  --c-hover-bg: #FAFBFC;
+  --c-green: #27AE60;
+  --c-red: #EB5757;
+  --c-accent: #905BFF;
+  --c-surface-1: #161827;
+  --c-surface-2: #323542;
+  --c-shadow-card: #75767F;
+
+  .icon {
+    &--burger-menu {
+      background-image: url(/img/icons/burger-menu-white.svg);
+
+      &.menu--close {
+        background-image: url(/img/icons/icon-close-white.svg);
+      }
+    }
+
+    &--theme {
+      background-image: url(/img/icons/icon-theme-light.png);
+    }
+
+    &--heart {
+      background-image: url(/img/icons/icon-heart-white.svg);
+    }
+
+    &--basket {
+      background-image: url(/img/icons/shopping-bag-white.svg);
+    }
+
+    &--back-top {
+      background-image: url(/img/icons/arrow-up.svg);
+    }
+
+    &--arrow-left {
+      background-image: url(/img/icons/arrow-left-white.svg);
+    }
+
+    &--arrow-right {
+      background-image: url(/img/icons/arrow-right-white.svg);
+    }
+  }
+
+  .button {
+    border: none;
+
+    @include mix.hover(background-color, var(--c-icons));
+
+    &:disabled {
+      border: 1px solid var(--c-elements);
+    }
+  }
+
+  .slider__side-button--left {
+    background-image: url(/img/icons/arrow-left-white.svg);
+  }
+
+  .slider__side-button--right {
+    background-image: url(/img/icons/arrow-right-white.svg);
+  }
+
+  .carousel__nav-button--left {
+    background-image: url(/img/icons/arrow-left-white.svg);
+  }
+
+  .carousel__nav-button--right {
+    background-image: url(/img/icons/arrow-right-white.svg);
+
+    @include mix.hover(background-color, var(--c-icons));
+  }
+
+  .card__button--prefer {
+    background-image: url(/img/icons/icon-heart-white.svg);
+  }
+
+  .card__button--add {
+    @include mix.hover(background-color, #A378FF);
+  }
+
+}

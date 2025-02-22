@@ -1,28 +1,42 @@
 import './Header.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { Logo } from '../Logo/Logo';
+import { LangContext } from '../../context/LangContext';
+import { Lang } from '../../types/enumLang';
+import { translate } from '../../utils/translate';
+import { useAppDispatch } from '../../app/hooks';
+import { navigationSlice } from '../../features/navigationSlice';
 
 export const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
-  // console.log(nav);
+  const { lang, setLang } = useContext(LangContext);
+  const dispatch = useAppDispatch();
 
   const handleBurger = () => {
     setIsMenu(prev => !prev);
   };
 
+  const handleTheme = () => {
+    const themeToggleButton = document.querySelector('.icon--theme');
+    const appElement = document.querySelector('.App');
+
+    if (themeToggleButton && appElement) {
+      appElement.classList.toggle('theme--dark');
+    }
+  };
+
   return (
     <div className={classNames('header', { 'full--height': isMenu })}>
-      <div className="header__container">
+      <div
+        className={classNames('header__container', {
+          'header__container--visible': isMenu,
+        })}
+      >
         <div className="header__top">
           <div className="header__top--logo-with-menu">
-            <Link to="/" className="header__logo-link">
-              <img
-                src="/img/icons/Logo.png"
-                alt="photo-logo"
-                className="header__logo"
-              />
-            </Link>
+            <Logo />
             <div className="nav__link nav__link--burger">
               <div
                 className={classNames('icon icon__nav icon--burger-menu', {
@@ -40,7 +54,10 @@ export const Header = () => {
                   className={({ isActive }) =>
                     classNames('nav__link', { 'is-active': isActive })
                   }
-                  onClick={() => setIsMenu(false)}
+                  onClick={() => {
+                    setIsMenu(false);
+                    dispatch(navigationSlice.actions.clearLinks());
+                  }}
                 >
                   Home
                 </NavLink>
@@ -51,9 +68,13 @@ export const Header = () => {
                   className={({ isActive }) =>
                     classNames('nav__link', { 'is-active': isActive })
                   }
-                  onClick={() => setIsMenu(false)}
+                  onClick={() => {
+                    setIsMenu(false);
+                    dispatch(navigationSlice.actions.clearLinks());
+                    dispatch(navigationSlice.actions.addLink('phones'));
+                  }}
                 >
-                  Phones
+                  {translate('header.phones', lang)}
                 </NavLink>
               </li>
               <li className="list__item">
@@ -62,9 +83,13 @@ export const Header = () => {
                   className={({ isActive }) =>
                     classNames('nav__link', { 'is-active': isActive })
                   }
-                  onClick={() => setIsMenu(false)}
+                  onClick={() => {
+                    setIsMenu(false);
+                    dispatch(navigationSlice.actions.clearLinks());
+                    dispatch(navigationSlice.actions.addLink('tablets'));
+                  }}
                 >
-                  Tablets
+                  {translate('header.tablets', lang)}
                 </NavLink>
               </li>
               <li className="list__item">
@@ -73,10 +98,45 @@ export const Header = () => {
                   className={({ isActive }) =>
                     classNames('nav__link', { 'is-active': isActive })
                   }
-                  onClick={() => setIsMenu(false)}
+                  onClick={() => {
+                    setIsMenu(false);
+                    dispatch(navigationSlice.actions.clearLinks());
+                    dispatch(navigationSlice.actions.addLink('accessories'));
+                  }}
                 >
-                  Accessories
+                  {translate('header.accessories', lang)}
                 </NavLink>
+              </li>
+              <li className="list__item">
+                <div className="nav__link--lang nav__link--with-menu">
+                  <span
+                    className={classNames('nav__link--en', {
+                      'is-active': lang === 'en',
+                    })}
+                    onClick={() => setLang(Lang.EN)}
+                  >
+                    EN
+                  </span>{' '}
+                  |{' '}
+                  <span
+                    className={classNames('nav__link--it', {
+                      'is-active': lang === 'it',
+                    })}
+                    onClick={() => setLang(Lang.IT)}
+                  >
+                    IT
+                  </span>
+                </div>
+              </li>
+              <li className="list__item">
+                <div className="nav__link nav__link--with-menu">
+                  <div
+                    // className="icon icon__nav icon--theme"
+                    onClick={handleTheme}
+                  >
+                    {translate('header.theme', lang)}
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
@@ -84,6 +144,32 @@ export const Header = () => {
         <div
           className={classNames('header__icons', { 'icons--visible': isMenu })}
         >
+          <div className="nav__link--lang">
+            <span
+              className={classNames('nav__link--en', {
+                'is-active': lang === 'en',
+              })}
+              onClick={() => setLang(Lang.EN)}
+            >
+              EN
+            </span>{' '}
+            |{' '}
+            <span
+              className={classNames('nav__link--it', {
+                'is-active': lang === 'it',
+              })}
+              onClick={() => setLang(Lang.IT)}
+            >
+              IT
+            </span>
+          </div>
+
+          <div className="nav__link nav__link--theme">
+            <div
+              className="icon icon__nav icon--theme"
+              onClick={handleTheme}
+            ></div>
+          </div>
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
@@ -91,6 +177,11 @@ export const Header = () => {
                 'is-active': isActive,
               })
             }
+            onClick={() => {
+              setIsMenu(false);
+              dispatch(navigationSlice.actions.clearLinks());
+              dispatch(navigationSlice.actions.addLink('favorites'));
+            }}
           >
             <div className="icon icon__nav icon--heart"></div>
           </NavLink>
@@ -101,6 +192,11 @@ export const Header = () => {
                 'is-active': isActive,
               })
             }
+            onClick={() => {
+              setIsMenu(false);
+              dispatch(navigationSlice.actions.clearLinks());
+              dispatch(navigationSlice.actions.addLink('cart'));
+            }}
           >
             <div className="icon icon__nav icon--basket"></div>
           </NavLink>

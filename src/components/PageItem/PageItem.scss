@@ -1,0 +1,143 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.page-item {
+    margin-top: 49px;
+    color: var(--c-secondary);
+
+    &__container {
+      padding-block: 24px 64px;
+
+      @include mix.content-padding-inline;
+
+      @include mix.on-desktop {
+        padding-block: 24px 80px;
+      }
+    }
+
+    &__back {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+
+      &--arrow {
+        // width: 16px;
+        // height: 16px;
+      }
+    }
+
+    &__title {
+      margin-bottom: 8px;
+    }
+
+    &__box-img {
+      aspect-ratio: 1 / 1;
+    }
+
+    &__img--big {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &__images {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 40px;
+
+      @include mix.on-tablet {
+        flex-direction: column;
+      }
+    }
+
+    &__img {
+      width: 50px;
+      height: 50px;
+      border: 1px solid var(--c-elements);
+      transition: all vars.$transition-time;
+
+      &.active {
+        border-color: var(--c-primary);
+      }
+
+      &:hover {
+        border-color: var(--c-primary);
+        cursor: pointer;
+      }
+
+
+    }
+
+    &__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &__controls {
+      &__colors {
+        &__box {
+          display: flex;
+          gap: 8px;
+        }
+      }
+
+      &__color {
+        width: 30px;
+        height: 30px;
+        box-sizing: border-box;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 1px var(--c-elements);
+        border-radius: 50%;
+        overflow: hidden;
+
+        &:hover {
+          box-shadow: 0 0 0 1px var(--c-icons);
+        }
+
+        &.active {
+          box-shadow: 0 0 0 1px var(--c-primary);
+        }
+      }
+
+      &__separator {
+        height: 1px;
+        margin-block: 24px;
+        border-radius: 8px;
+        background-color: var(--c-elements);
+      }
+
+      &__capacity {
+        &__box {
+          display: flex;
+          gap: 8px;
+        }
+
+        &__button {
+          padding-inline: 8px;
+          line-height: 32px;
+          border: 1px solid var(--c-icons);
+          text-decoration: none;
+          color: var(--c-primary);
+
+          &.active {
+            color: var(--c-page-bg);
+            background-color: var(--c-primary);
+          }
+
+          &:hover {
+            border-color: var(--c-primary);
+          }
+        }
+      }
+    }
+
+    &__prices {
+      margin-bottom: 16px;
+    }
+
+    &__buttons {
+      margin-bottom: 32px;
+    }
+}

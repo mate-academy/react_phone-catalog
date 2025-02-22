@@ -12,6 +12,24 @@
   }
 }
 
+@mixin on-500 {
+  @media (min-width: 500px) {
+    @content;
+  }
+}
+
+@mixin on-800 {
+  @media (min-width: 800px) {
+    @content;
+  }
+}
+
+@mixin on-1600 {
+  @media (min-width: 1600px) {
+    @content;
+  }
+}
+
 @mixin content-padding-inline {
   padding-inline: 16px;
 
@@ -39,11 +57,11 @@
   column-gap: 16px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include on-tablet {
-    --columns: 12px;
+  @include on-500 {
+    --columns: 12;
   }
 
   @include on-desktop {
-    --columns: 24px;
+    --columns: 24;
   }
 }

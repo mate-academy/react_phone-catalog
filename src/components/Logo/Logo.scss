@@ -1,0 +1,21 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.logo {
+  width: max-content;
+  font-family: Mont-bold, sans-serif;
+  font-size: 18px;
+  color: var(--c-primary);
+  text-decoration: none;
+
+
+  &__box {
+    display: flex;
+    align-items: center;
+    line-height: 0.1;
+  }
+
+  &:hover {
+    @include mix.hover(scale, 1.2);
+  }
+}

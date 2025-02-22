@@ -1,33 +1,55 @@
-import { Phone } from '../../types';
+import { useContext } from 'react';
+import { Product } from '../../types';
 import './Card.scss';
+import { LangContext } from '../../context/LangContext';
+import { translate } from '../../utils/translate';
+import { Link } from 'react-router-dom';
 
 type Props = {
-  item: Phone; // now phone
+  item: Product;
+  discount: boolean;
 };
 
-export const Card: React.FC<Props> = ({ item }) => {
+export const Card: React.FC<Props> = ({ item, discount }) => {
+  const { lang } = useContext(LangContext);
+
   return (
     <article className="card">
       <div className="card__container">
-        <a href="#" className="card__link--photo-link">
+        <Link
+          to={`/${item.category}/${item.id}`}
+          className="card__link--photo-link"
+        >
           <img
             src={item.images[0]}
-            alt="apple-iphone-11"
+            alt={`photo ${item.id}`}
             className="card__link--photo"
           />
-        </a>
-        <a href="#" className="card__link--name-link body-text">
+        </Link>
+        <Link
+          to={`/${item.category}/${item.id}`}
+          className="card__link--name-link body-text"
+        >
           <div>{item.name}</div>
-        </a>
-        <h3 className="card__price">{`$${item.priceRegular}`}</h3>
+        </Link>
+        <div className="card__prices">
+          <div className="card__price">{`$${item.priceDiscount}`}</div>
+          {discount && (
+            <div className="card__price--discount">{`$${item.priceRegular}`}</div>
+          )}
+        </div>
         <div className="card__separator"></div>
         <ul className="card__list">
           <li className="card__list--item">
-            <p className="card__list--name small-text">Screen</p>
+            <p className="card__list--name small-text">
+              {translate('card.screen', lang)}
+            </p>
             <p className="card__list--value">{item.screen.slice(0, 9)}</p>
           </li>
           <li className="card__list--item">
-            <p className="card__list--name small-text">Capacity</p>
+            <p className="card__list--name small-text">
+              {translate('card.capacity', lang)}
+            </p>
             <p className="card__list--value">{item.capacity}</p>
           </li>
           <li className="card__list--item">
@@ -36,8 +58,10 @@ export const Card: React.FC<Props> = ({ item }) => {
           </li>
         </ul>
         <div className="card__buttons">
-          <button className="card__button--add button">Add to cart</button>
-          <button className="card__button--prefer icon button"></button>
+          <button className="card__button--add">
+            {translate('card.button', lang)}
+          </button>
+          <button className="card__button icon icon--heart button"></button>
         </div>
       </div>
     </article>

@@ -2,11 +2,21 @@
 @use '../../styles/utils/mixins' as mix;
 
 .card {
-  width: 212px;
+  min-width: 212px;
+  width: 100%;
   box-sizing: border-box;
-  border: 1px solid vars.$c-elements;
+  border: 1px solid var(--c-elements);
 
-  @include mix.hover(box-shadow, 0 3px 13px 0 #17203166);
+  @include mix.hover(box-shadow, 0 3px 13px 0 var(--c-shadow-card));
+
+  @include mix.on-tablet {
+    // min-width: 237px;
+  }
+
+  @include mix.on-desktop {
+    // min-width: 272px;
+  }
+
 
   &__container {
     padding: 32px;
@@ -16,7 +26,6 @@
   }
 
   &__link {
-
     &--photo {
       height: 129px;
       object-fit: contain;
@@ -33,17 +42,40 @@
     &--name-link {
       display: block;
       text-decoration: none;
-      color: vars.$c-primary;
+      color: var(--c-primary);
+      min-height: 62px;
+
+      @include mix.on-tablet {
+        min-height: 42px;
+      }
     }
   }
 
+  &__prices {
+    display: flex;
+    gap: 8px;
+    font-family: Mont-bolt, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30.8px;
+  }
+
   &__price {
-    color: vars.$c-primary;
+    color: var(--c-primary);
+
+    &--discount {
+      font-family: Mont-bolt, sans-serif;
+      color: var(--c-secondary);
+      font-weight: 500;
+      line-height: 28.12px;
+      text-decoration: line-through;
+
+    }
   }
 
   &__separator {
     height: 1px;
-    background-color: vars.$c-elements;
+    background-color: var(--c-elements);
   }
 
   &__list {
@@ -55,11 +87,11 @@
     }
 
     &--name {
-      color: vars.$c-secondary;
+      color: var(--c-secondary);
     }
 
     &--value {
-      color: vars.$c-primary;
+      color: var(--c-primary);
     }
   }
 
@@ -71,23 +103,12 @@
   &__button--add {
     width: 70%;
     color: #fff;
-    background-color: vars.$c-primary;
+    background-color: var(--c-accent);
+    font-family: Mont-semibold, sans-serif;
     border: none;
     height: 40px;
     cursor: pointer;
 
     @include mix.hover(box-shadow, 0 3px 13px 0 #17203166);
-
-  }
-
-  &__button--prefer {
-    width: 40px;
-    height: 40px;
-    background-color: #fff;
-    background-image: url(/img/icons/icon-heart.png);
-    border: 1px solid vars.$c-icons;
-    cursor: pointer;
-
-    @include mix.hover(border-color, vars.$c-primary);
   }
 }

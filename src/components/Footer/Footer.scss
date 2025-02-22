@@ -4,8 +4,8 @@
 .footer {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 -1px 0 0 vars.$c-elements;
-  border-bottom: 1px solid vars.$c-elements;
+  box-shadow: 0 -1px 0 0 var(--c-elements);
+  border-bottom: 1px solid var(--c-elements);
   padding-block: 32px;
   gap: 32px;
 
@@ -43,7 +43,7 @@
   &__back-top {
     display: flex;
     align-items: center;
-    color: vars.$c-secondary;
+    color: var(--c-secondary);
     gap: 16px;
     margin: 0 auto;
 

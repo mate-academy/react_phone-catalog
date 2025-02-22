@@ -5,6 +5,22 @@
 @use './styles/button';
 @use './styles/nav';
 @use './styles/container';
+@use './styles/theme';
+
+:root {
+  --c-page-bg: #fff;
+  --c-primary: #313237;
+  --c-secondary: #89939A;
+  --c-icons: #B4BDC3;
+  --c-elements: #E2E6E9;
+  --c-hover-bg: #FAFBFC;
+  --c-green: #27AE60;
+  --c-red: #EB5757;
+  --c-accent: #313237;
+  --c-surface-1: #fff;
+  --c-surface-2: #fff;
+  --c-shadow-card: #17203166;
+}
 
 body {
   margin: 0;
@@ -18,11 +34,11 @@ body {
   font-family: Mont, sans-serif;
   font-size: 14px;
   line-height: 21px;
-  scroll-behavior: smooth;
+  background-color: var(--c-page-bg);
+  transition: all vars.$transition-time;
 }
 
 h1, h2, h3, h4, p, a, ul {
   margin: 0;
   padding: 0;
 }
-
