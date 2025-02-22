@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Titles.module.scss';
-import okSign from '/public/img/icons/ok-sign.png';
+import okSign from '/img/icons/ok-sign.png';
 
 export const Titles: React.FC = () => {
   return (

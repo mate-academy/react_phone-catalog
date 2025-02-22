@@ -3,12 +3,12 @@
 /* eslint-disable max-len */
 import { useContext, useMemo, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ios14mob_1 from '/public/img/banner-slider/mobile/iphone14pro-1.png';
-import ios14mob_2 from '/public/img/banner-slider/mobile/iphone14pro-2.png';
-import ios14mob_3 from '/public/img/banner-slider/mobile/iphone14pro-3.png';
-import ios14_1 from '/public/img/banner-slider/iphone14pro-1.png';
-import ios14_2 from '/public/img/banner-slider/iphone14pro-2.png';
-import ios14_3 from '/public/img/banner-slider/iphone14pro-3.png';
+import ios14mob_1 from '/img/banner-slider/mobile/iphone14pro-1.png';
+import ios14mob_2 from '/img/banner-slider/mobile/iphone14pro-2.png';
+import ios14mob_3 from '/img/banner-slider/mobile/iphone14pro-3.png';
+import ios14_1 from '/img/banner-slider/iphone14pro-1.png';
+import ios14_2 from '/img/banner-slider/iphone14pro-2.png';
+import ios14_3 from '/img/banner-slider/iphone14pro-3.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { NavLinks } from '../../../enums/NavLinks';
 import { animateScroll } from 'react-scroll';

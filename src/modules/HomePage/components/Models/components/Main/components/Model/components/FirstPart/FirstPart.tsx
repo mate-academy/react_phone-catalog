@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useMemo } from 'react';
@@ -72,7 +73,7 @@ export const FirstPart: React.FC<Props> = React.memo(
           className={styles.wrapper}
           onClick={() => modelOnClickHandler(name, category, itemId)}
         >
-          <img src={`/public/${image}`} alt={name} className={styles.image} />
+          <img src={`/${image}`} alt={name} className={styles.image} />
           <FirstPartLink
             firstPartProductTitle={firstPartProductTitle}
             name={name}

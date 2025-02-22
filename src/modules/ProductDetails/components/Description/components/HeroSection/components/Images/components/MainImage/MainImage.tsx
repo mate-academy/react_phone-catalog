@@ -22,7 +22,7 @@ export const MainImage: React.FC = () => {
   return (
     <img
       key={id}
-      src={`/public/${currentImage}`}
+      src={`/${currentImage}`}
       alt={name}
       className={styles['main-image']}
     />

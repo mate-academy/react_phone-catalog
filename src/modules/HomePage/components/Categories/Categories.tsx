@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import styles from './Categories.module.scss';
 import { CategoriesEnum } from './enums/CategoriesEnum';
-import img1 from '/public/img/category-phones.webp';
-import img2 from '/public/img/category-tablets.png';
-import img3 from '/public/img/category-accessories.png';
+import img1 from '/img/category-phones.webp';
+import img2 from '/img/category-tablets.png';
+import img3 from '/img/category-accessories.png';
 import {
   ACCESSORIES_COLOR,
   PHONES_COLOR,

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './Logo.module.scss';
 import { MainContext } from '../../context/MainContext';
-import okSign from '/public/img/icons/ok-sign.png';
+import okSign from '/img/icons/ok-sign.png';
 
 interface Props {
   mobileLogoStyles?: React.CSSProperties;

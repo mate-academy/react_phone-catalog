@@ -42,7 +42,7 @@ export const Images: React.FC = () => {
           return (
             <img
               key={`${id}-${index}`}
-              src={`/public/${img}`}
+              src={`/${img}`}
               alt="Phone image"
               onClick={() => onClickHandler(img)}
               className={classNames(styles.img, {

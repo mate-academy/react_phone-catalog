@@ -9,8 +9,8 @@
 .slider {
   // #region variables
 
-  --slider-width: 320px;
-  --slider-height: 320px;
+  --slider-width: 100vw;
+  --slider-height: fit-content;
 
   @include on-tablet {
     --slider-width: 490px;
