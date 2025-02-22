@@ -18,7 +18,7 @@ export const Categories = () => {
           className="categories__img--box categories__img-box--phones"
         >
           <img
-            src="/img/categories-phones-new.png"
+            src="img/categories-phones-new.png"
             alt="category phones"
             className="categories__img"
           />
@@ -34,7 +34,7 @@ export const Categories = () => {
       <div className="category">
         <a className="categories__img--box categories__img-box--tablets">
           <img
-            src="/img/categories-tablets-new.png"
+            src="img/categories-tablets-new.png"
             alt="category tablets"
             className="categories__img"
           />
@@ -50,7 +50,7 @@ export const Categories = () => {
       <div className="category">
         <a className="categories__img--box categories__img-box--accessories">
           <img
-            src="/img/categories-assessories-new.png"
+            src="img/categories-assessories-new.png"
             alt="category accessories"
             className="categories__img"
           />

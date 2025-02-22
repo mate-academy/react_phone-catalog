@@ -3,9 +3,9 @@ import './Slider.scss';
 import classNames from 'classnames';
 
 const images = [
-  '/img/image-main.png',
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
+  'img/image-main.png',
+  'img/banner-phones.png',
+  'img/banner-tablets.png',
 ];
 
 export const Slider: React.FC = () => {
