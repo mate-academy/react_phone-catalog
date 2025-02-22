@@ -7,7 +7,8 @@ export interface PhonesState {
 }
 
 const initialState: PhonesState = {
-  phones: JSON.parse(localStorage.getItem('phones') || '[]'),
+  phones: [],
+  // phones: JSON.parse(localStorage.getItem('phones') || '[]'),
 };
 
 export const setPhonesAsync = createAsyncThunk('phones/fetch', async () => {

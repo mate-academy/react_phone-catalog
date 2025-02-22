@@ -22,16 +22,18 @@ export const HomePage = () => {
     getNewModels().then(setNewModels);
     getHotModels().then(setHotModels);
 
-    dispatch(setPhonesAsync()).then(data =>
-      localStorage.setItem('phones', JSON.stringify(data.payload)),
-    );
+    dispatch(setPhonesAsync()).then(data => {
+      localStorage.setItem('phones', JSON.stringify(data.payload));
+
+      // console.log(data);
+    });
     dispatch(setTabletsAsync()).then(data =>
       localStorage.setItem('tablets', JSON.stringify(data.payload)),
     );
     dispatch(setAccessoriesAsync()).then(data =>
       localStorage.setItem('asseccories', JSON.stringify(data.payload)),
     );
-  }, []);
+  }, [dispatch]);
 
   const toggleTheme = () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');

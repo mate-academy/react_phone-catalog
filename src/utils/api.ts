@@ -1,17 +1,21 @@
+const BASE_URL = 'https://AndreaTkachuk.github.io/react_phone-catalog/';
+
 export const getPhones = () => {
-  return fetch('/phones.json').then(response => response.json());
+  return fetch(BASE_URL + 'api/phones.json').then(response => response.json());
 };
 
 export const getTablets = () => {
-  return fetch('/tablets.json').then(response => response.json());
+  return fetch(BASE_URL + 'api/tablets.json').then(response => response.json());
 };
 
 export const getAccessories = () => {
-  return fetch('/accessories.json').then(response => response.json());
+  return fetch(BASE_URL + 'api/accessories.json').then(response =>
+    response.json(),
+  );
 };
 
 export const getNewModels = () => {
-  return fetch('/api/phones.json')
+  return fetch(BASE_URL + '/api/phones.json')
     .then(response => response.json())
     .then(data =>
       data
@@ -28,7 +32,7 @@ export const getNewModels = () => {
 };
 
 export const getHotModels = () => {
-  return fetch('/api/phones.json')
+  return fetch(BASE_URL + 'api/phones.json')
     .then(response => response.json())
     .then(data =>
       data
