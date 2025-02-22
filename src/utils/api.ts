@@ -1,13 +1,13 @@
 export const getPhones = () => {
-  return fetch('api/phones.json').then(response => response.json());
+  return fetch('/phones.json').then(response => response.json());
 };
 
 export const getTablets = () => {
-  return fetch('api/tablets.json').then(response => response.json());
+  return fetch('/tablets.json').then(response => response.json());
 };
 
 export const getAccessories = () => {
-  return fetch('api/accessories.json').then(response => response.json());
+  return fetch('/accessories.json').then(response => response.json());
 };
 
 export const getNewModels = () => {
