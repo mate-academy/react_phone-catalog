@@ -4,6 +4,8 @@ import './Card.scss';
 import { LangContext } from '../../context/LangContext';
 import { translate } from '../../utils/translate';
 import { Link } from 'react-router-dom';
+// import { useAppDispatch } from '../../app/hooks';
+// import { navigationSlice } from '../../features/navigationSlice';
 
 type Props = {
   item: Product;
@@ -12,6 +14,7 @@ type Props = {
 
 export const Card: React.FC<Props> = ({ item, discount }) => {
   const { lang } = useContext(LangContext);
+  // const dispatch = useAppDispatch();
 
   return (
     <article className="card">
@@ -19,6 +22,9 @@ export const Card: React.FC<Props> = ({ item, discount }) => {
         <Link
           to={`/${item.category}/${item.id}`}
           className="card__link--photo-link"
+          // onClick={() => {
+          //   dispatch(navigationSlice.actions.addLink(`${item.name}`));
+          // }}
         >
           <img
             src={item.images[0]}
@@ -29,6 +35,9 @@ export const Card: React.FC<Props> = ({ item, discount }) => {
         <Link
           to={`/${item.category}/${item.id}`}
           className="card__link--name-link body-text"
+          // onClick={() => {
+          //   dispatch(navigationSlice.actions.addLink(`${item.name}`));
+          // }}
         >
           <div>{item.name}</div>
         </Link>

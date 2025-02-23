@@ -1,12 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
 import './PageItem.scss';
-import { useAppSelector } from '../../app/hooks';
-import { useContext, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-// import { findProduct } from '../../utils/searchHelper';
 import { translate } from '../../utils/translate';
 import { LangContext } from '../../context/LangContext';
+import { navigationSlice } from '../../features/navigationSlice';
 
 const allColors = {
   gold: '#FCDBC1',
@@ -38,6 +38,7 @@ export const PageItem = () => {
   const { phones } = useAppSelector(state => state.phones);
   const { tablets } = useAppSelector(state => state.tablets);
   const { accessories } = useAppSelector(state => state.accessories);
+  const dispatch = useAppDispatch();
   const item =
     phones.find(product => product.id === id) ||
     tablets.find(product => product.id === id) ||
@@ -48,7 +49,7 @@ export const PageItem = () => {
   const preLastIndexDash = linkWithoutColor?.lastIndexOf('-');
   const linkWithoutCapacity = id?.slice(0, preLastIndexDash);
 
-  // console.log(linkWithoutCapacity);
+  const randomId = Math.floor(100000 + Math.random() * 900000);
 
   return (
     <div className="page-item">
@@ -56,7 +57,16 @@ export const PageItem = () => {
         <Navigation />
         <div className="page-item__back">
           <div className="page-item__back--arrow icon icon--arrow-left"></div>
-          <div className="page-item__back--text">back</div>
+          <Link
+            to={`/${item?.category}`}
+            className="page-item__back--text"
+            onClick={() => {
+              dispatch(navigationSlice.actions.clearLinks());
+              dispatch(navigationSlice.actions.addLink(`${item?.category}`));
+            }}
+          >
+            Back
+          </Link>
         </div>
         <h1 className="page-item__title">{item?.name}</h1>
         <div className="page-item__grid-container">
@@ -82,7 +92,7 @@ export const PageItem = () => {
           </div>
           <div className="page-item__controls">
             <div className="page-item__controls__colors">
-              <p>Available colors</p>
+              <p className="page-item__controls__title">Available colors</p>
               <div className="page-item__controls__colors__box">
                 {(item?.colorsAvailable as (keyof typeof allColors)[]).map(
                   color => (
@@ -97,7 +107,7 @@ export const PageItem = () => {
                   ),
                 )}
               </div>
-              <span>ID: 123231</span>
+              <span className="page-item__controls__id">ID: {randomId}</span>
               <div className="page-item__controls__separator"></div>
               <div className="page-item__controls__capacity__container">
                 <p>Select capacity</p>
@@ -157,6 +167,66 @@ export const PageItem = () => {
                 </ul>
               </div>
             </div>
+          </div>
+          <div className="page-item__about">
+            <h3 className="page-item__about__title">About</h3>
+            <div className="page-item__controls__separator"></div>
+            {item?.description.map(desc => (
+              <React.Fragment key={desc.title}>
+                <h4 className="page-item__desc__title">{desc.title}</h4>
+                <p className="page-item__desc__text">{desc.text}</p>
+              </React.Fragment>
+            ))}
+          </div>
+          <div className="page-item__spec">
+            <h3 className="page-item__spec__title">Tech specs</h3>
+            <div className="page-item__controls__separator"></div>
+            <ul className="card__list">
+              <li className="card__list--item">
+                <p className="card__list--name small-text">
+                  {translate('card.screen', lang)}
+                </p>
+                <p className="card__list--value">{item?.screen.slice(0, 9)}</p>
+              </li>
+              <li className="card__list--item">
+                <p className="card__list--name small-text">
+                  {translate('card.resolution', lang)}
+                </p>
+                <p className="card__list--value">{item?.resolution}</p>
+              </li>
+              <li className="card__list--item">
+                <p className="card__list--name small-text">
+                  {translate('card.processor', lang)}
+                </p>
+                <p className="card__list--value">{item?.processor}</p>
+              </li>
+              <li className="card__list--item">
+                <p className="card__list--name small-text">RAM</p>
+                <p className="card__list--value">{item?.ram}</p>
+              </li>
+              <li className="card__list--item">
+                <p className="card__list--name small-text">
+                  {translate('card.memory', lang)}
+                </p>
+                <p className="card__list--value">{item?.capacity}</p>
+              </li>
+              {item?.category !== 'accessories' && (
+                <>
+                  <li className="card__list--item">
+                    <p className="card__list--name small-text">Camera</p>
+                    <p className="card__list--value">{item?.camera}</p>
+                  </li>
+                  <li className="card__list--item">
+                    <p className="card__list--name small-text">Zoom</p>
+                    <p className="card__list--value">{item?.zoom}</p>
+                  </li>
+                </>
+              )}
+              <li className="card__list--item">
+                <p className="card__list--name small-text">Cell</p>
+                <p className="card__list--value">{item?.cell.join(', ')}</p>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

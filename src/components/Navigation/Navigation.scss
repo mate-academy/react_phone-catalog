@@ -19,11 +19,6 @@
     gap: 8px;
   }
 
-  &__item {
-    cursor: pointer;
-
-  }
-
   &__separator {
     height: 16px;
     width: 16px;
@@ -36,12 +31,22 @@
     width: 16px;
     text-decoration: none;
     font-family: Mont-bold, sans-serif;
-    color: var(--c-secondary);
+    color: var(--c-primary);
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 0.04em;
+    cursor: pointer;
 
-    @include mix.hover(color, var(--c-primary));
+    @include mix.hover(color, var(--c-secondary));
 
+    &--home {
+      @include mix.hover(transform, scale(1.1));
+    }
+
+    &.is-active {
+      color: var(--c-secondary);
+      pointer-events: none;
+      cursor: alias;
+    }
   }
 }
