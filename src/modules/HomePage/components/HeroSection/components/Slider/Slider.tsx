@@ -9,12 +9,9 @@ import { LeftArrow } from './components/Arrows/LeftArrow';
 import { RightArrow } from './components/Arrows/RightArrow';
 
 export const Slider: React.FC = React.memo(() => {
-  // #region MainContext
-
   const { isMobile, imgIndex, mobImgs, imgs, setImgIndex } =
     useContext(MainContext);
 
-  // #endregion
   // #region functions
 
   const swipeHandler = useCallback(({ deltaX }: { deltaX: number }) => {

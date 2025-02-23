@@ -2,8 +2,8 @@
 
 .hero-section {
   .title {
-    width: var(--container-width);
     margin: 0;
+    margin-inline: 16px;
     margin-top: 24px;
     font-family: Mont-Bold;
     font-size: 32px;
@@ -11,6 +11,8 @@
     letter-spacing: -1%;
 
     @include on-tablet {
+      margin-inline: 0;
+      width: var(--container-width);
       margin-top: 32px;
       font-size: 48px;
       line-height: 56px;

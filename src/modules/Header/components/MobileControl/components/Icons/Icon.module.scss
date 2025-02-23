@@ -5,9 +5,3 @@
     transition: fill $default-trans-dur;
   }
 }
-
-.svg:hover, .svg:active {
-  .path {
-    fill: $red-color;
-  }
-}

@@ -5,4 +5,12 @@
   border-left: $light-border-value;
   border-bottom: $light-border-value;
   @include flex-center-center;
+
+  &:hover, &:active {
+    path {
+      fill: $red-color;
+    }
+  }
 }
+
+

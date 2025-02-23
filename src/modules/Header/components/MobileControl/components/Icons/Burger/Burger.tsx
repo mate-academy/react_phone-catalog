@@ -1,11 +1,8 @@
 /* eslint-disable max-len */
-import React, { useContext } from 'react';
-import styles from '../Cross.module.scss';
-import { MainContext } from '../../../../../../../context/MainContext';
+import React from 'react';
+import styles from '../Icon.module.scss';
 
 export const Burger: React.FC = () => {
-  const { setIsMenuShowed } = useContext(MainContext);
-
   return (
     <svg
       width="16"
@@ -13,8 +10,6 @@ export const Burger: React.FC = () => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={styles.svg}
-      onClick={() => setIsMenuShowed(true)}
     >
       <path
         d="M1 4.5C1 4.08579 1.39175 3.75 1.875 3.75H14.125C14.6082 3.75 15 4.08579 15 4.5C15 4.91421 14.6082 5.25 14.125 5.25H1.875C1.39175 5.25 1 4.91421 1 4.5Z"

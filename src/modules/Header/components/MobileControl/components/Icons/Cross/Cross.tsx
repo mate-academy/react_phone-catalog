@@ -1,11 +1,8 @@
 /* eslint-disable max-len */
-import React, { useContext } from 'react';
-import styles from '../Cross.module.scss';
-import { MainContext } from '../../../../../../../context/MainContext';
+import React from 'react';
+import styles from '../Icon.module.scss';
 
 export const Cross: React.FC = () => {
-  const { setIsMenuShowed } = useContext(MainContext);
-
   return (
     <svg
       width="16"
@@ -13,8 +10,6 @@ export const Cross: React.FC = () => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={styles.svg}
-      onClick={() => setIsMenuShowed(false)}
     >
       <path
         fillRule="evenodd"
