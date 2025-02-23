@@ -3,6 +3,12 @@ import './App.scss';
 
 import { Layout } from './shared/Layout';
 import { HomePage } from './modules/HomePage';
+import { Phones } from './modules/Phones';
+import { Tablets } from './modules/Tablets/Tablets';
+import { Accessories } from './modules/Accessories';
+import { ProductInfo } from './modules/ProductCard/ProductInfo';
+import { Cart } from './modules/Cart';
+import { Favourites } from './modules/Favourites/Favourites';
 
 export const App: React.FC = () => {
   return (
@@ -10,7 +16,19 @@ export const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/phones" element={<p>not completed</p>} />
+
+        <Route path="/phones" element={<Phones />} />
+
+        <Route path="/tablets" element={<Tablets />} />
+
+        <Route path="/accessories" element={<Accessories />} />
+
+        <Route path="/case" element={<Cart />} />
+
+        <Route path="/favourites" element={<Favourites />} />
+
+        <Route path="/:category/:modelName" element={<ProductInfo />} />
+
         <Route
           path="*"
           element={<img src="/img/page-not-found.png" alt="Page not found" />}

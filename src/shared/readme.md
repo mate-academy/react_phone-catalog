@@ -1,1 +1,0 @@
-its a global components

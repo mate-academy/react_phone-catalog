@@ -9,6 +9,8 @@ $column-size: 32px;
     width: 32px;
     height: 100%;
     transition: all 0.3s;
+    background-color: $color-white;
+    @include setFont($font-mont, 20px, 700);
 
     &:hover {
         transform: scale(110%);
@@ -27,7 +29,7 @@ $column-size: 32px;
     grid-template-rows: minmax(120px, 160px) minmax(180px, 400); 
     align-items: center;
     column-gap: 16px;
-    margin: 50px auto;
+    margin: auto;
     width: calc($column-count * $column-size + ($column-count - 1) * 16px);
     max-width: 100vw;
 
@@ -145,8 +147,11 @@ $column-size: 32px;
     &__dot {
         @include setSize(14px, 4px);
         background-color: $color-element-white;
-
+        transition: all 0.3s;
         
+        &:hover {
+            transform: scale(140%);
+        }
     }
 }
 

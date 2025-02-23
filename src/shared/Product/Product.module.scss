@@ -9,12 +9,19 @@ article {
   flex-direction: column;
   gap: $product-gap;
   align-items: center;
+  justify-content: space-around;
   max-width: $product-max-width;
   max-height: $product-max-height;
   padding: $product-padding;
   box-sizing: border-box;
   border: 1px solid $color-element-white;
   border-radius: 8px;
+  height: 100%;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+  }
 
   @include onTablet {
     @include setLimit(240px, 512px);
@@ -23,17 +30,32 @@ article {
   @include onPhone {
     @include setLimit(212px, 540px);
   }
+
+  &--catalog {
+    max-width: unset;
+    max-height: unset;
+    width: 100%;
+    @include setLimit(1000px, 1000px);
+  }
+}
+
+.prices,
+.decription,
+.wrapper {
+  flex-shrink: 0;
 }
 
 .image {
   object-fit: contain;
-  margin: 0;
-  @include setSize(208px, 196px);
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  flex-grow: 1;
 }
 
 .title {
   @include setFont($font-mont, 14px, 600);
-  margin-top: 16px;
+
   line-height: 21px;
   margin-bottom: 8px;
 }
@@ -47,8 +69,7 @@ article {
 
 .fullPrice {
   @include setFont($font-mont, 22px, 800);
-  margin-top: 0;
-  margin-right: auto;
+  margin: 0 auto 0 0;
   letter-spacing: 0;
   text-decoration: line-through;
   color: $color-grey;
@@ -56,8 +77,7 @@ article {
 
 .price {
   @include setFont($font-mont, 22px, 800);
-  margin-top: 0;
-  margin-right: auto;
+  margin: 0 auto 0 0;
   letter-spacing: 0;
 }
 
@@ -111,6 +131,10 @@ article {
   @include flexCenter;
   transition: all 0.3s;
 
+  @include setFont($font-mont, 700, 14px);
+  line-height: 21px;
+  color: $color-white;
+
   &:hover {
     box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
   }
@@ -120,14 +144,10 @@ article {
   }
 }
 
-.button__title {
-  @include setFont($font-mont, 700, 14px);
-  line-height: 21px;
-  color: $color-white;
-
-  &:active {
-    color: $color-element-black;
-  }
+.buttonAdded {
+  background-color: $color-white;
+  border: 1px solid $color-element-white;
+  color: $color-element-orange;
 }
 
 .favourite {
@@ -145,8 +165,8 @@ article {
   &:hover {
     border: 1px solid $color-element-black;
   }
+}
 
-  &:active {
-    background-image: url('/img/icons/favourites_selected.svg');
-  }
+.favouriteActive {
+  background-image: url('/img/icons/favourites_selected.svg');
 }

@@ -1,16 +1,40 @@
 import React from 'react';
 import styles from './Product.module.scss';
 import { Article } from '../types/Article';
+import { useNavigate } from 'react-router-dom';
+import { DataNames } from '../../hooks/useProductsStorage';
+import classNames from 'classnames';
+import { useStorage } from '../../context/StorageContext';
 
 type Props = {
   article: Article;
   fullPrice?: boolean;
+  isCatalog?: boolean;
 };
 
-export const Product: React.FC<Props> = ({ article, fullPrice = false }) => {
+export const Product: React.FC<Props> = ({
+  article,
+  fullPrice = false,
+  isCatalog = false,
+}) => {
+  const navigate = useNavigate();
+  const { findProduct, addProduct, removeProduct } = useStorage();
+
   return (
-    <article className={styles.article}>
-      <img src={article.image} alt="Product Image" className={styles.image} />
+    <article
+      className={styles.article}
+      style={{
+        maxWidth: isCatalog ? '1000px' : undefined,
+        width: isCatalog ? '100%' : undefined,
+      }}
+      onClick={() => navigate(`/${article.category}/${article.itemId}`)}
+    >
+      <img
+        style={{ flex: 1 }}
+        src={article.image}
+        alt="Product Image"
+        className={styles.image}
+      />
       <p className={styles.title}>{article.name}</p>
 
       <div className={styles.prices}>
@@ -38,10 +62,44 @@ export const Product: React.FC<Props> = ({ article, fullPrice = false }) => {
       </div>
 
       <div className={styles.wrapper}>
-        <button className={styles.button}>
-          <p className={styles.button__title}>Add to cart</p>
-        </button>
-        <button className={styles.favourite}></button>
+        {!findProduct(DataNames.cart, article.itemId) ? (
+          <button
+            onClick={e => {
+              e.stopPropagation();
+              addProduct(DataNames.cart, article.itemId);
+            }}
+            className={styles.button}
+          >
+            Add to cart
+          </button>
+        ) : (
+          <button
+            onClick={e => {
+              e.stopPropagation();
+              removeProduct(DataNames.cart, article.itemId);
+            }}
+            className={classNames(styles.buttonAdded, styles.button)}
+          >
+            Added to cart
+          </button>
+        )}
+        {!findProduct(DataNames.favourites, article.itemId) ? (
+          <button
+            onClick={e => {
+              e.stopPropagation();
+              addProduct(DataNames.favourites, article.itemId);
+            }}
+            className={styles.favourite}
+          />
+        ) : (
+          <button
+            onClick={e => {
+              e.stopPropagation();
+              removeProduct(DataNames.favourites, article.itemId);
+            }}
+            className={classNames(styles.favourite, styles.favouriteActive)}
+          />
+        )}
       </div>
     </article>
   );

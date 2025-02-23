@@ -3,11 +3,9 @@ import styles from './HomePage.module.scss';
 import clsx from 'clsx';
 import { useWindowWidth } from '../../hooks/WindowWidth';
 import classNames from 'classnames';
-import { Article } from '../../shared/types/Article';
-import { getDataPublic } from '../../shared/functions/functions';
-import { Carousel } from '../../shared/Carousel/Carousel';
 import { HotPrices } from './components/HotPrices';
 import { Categories } from './components/Categories';
+import { NewModels } from './components/NewModels/NewModels';
 
 const pcImages = [
   '/img/banners/banner_1.svg',
@@ -24,22 +22,8 @@ const phoneImages = [
 export const HomePage: React.FC = () => {
   const [index, setIndex] = useState<number>(0);
   const windowWidth = useWindowWidth();
-  const [newModels, setNewModels] = useState<Article[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const visibleImages = windowWidth < 640 ? phoneImages : pcImages;
-
-  useEffect(() => {
-    getDataPublic('products')
-      .then((response: Article[]) => {
-        const filtered = response.filter(
-          (el: Article) =>
-            el.year === 2022 && el.price > 1000 && el.price < 1200,
-        );
-
-        setNewModels(filtered);
-      })
-      .catch(() => setError('problem with new models filter'));
-  }, []);
 
   useEffect(() => {
     setIndex(0);
@@ -93,29 +77,21 @@ export const HomePage: React.FC = () => {
         </div>
 
         <div className={styles.dots}>
-          <div
-            className={classNames(styles.dots__dot, {
-              [styles.dotActive]: index === 0,
-            })}
-          ></div>
-          <div
-            className={classNames(styles.dots__dot, {
-              [styles.dotActive]: index === 1,
-            })}
-          ></div>
-          <div
-            className={classNames(styles.dots__dot, {
-              [styles.dotActive]: index === 2,
-            })}
-          ></div>
+          {visibleImages.map((image, ImageIndex) => {
+            return (
+              <div
+                key={image}
+                onClick={() => setIndex(ImageIndex)}
+                className={classNames(styles.dots__dot, {
+                  [styles.dotActive]: index === ImageIndex,
+                })}
+              ></div>
+            );
+          })}
         </div>
       </header>
 
-      {newModels ? (
-        <Carousel items={newModels} title={'Brand new models'} />
-      ) : (
-        <p>тут має бути красіва загрузка але я далбайоб</p>
-      )}
+      <NewModels />
 
       <Categories />
 

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './NavBar.module.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useWindowWidth } from '../../hooks/WindowWidth';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
+import { useStorage } from '../../context/StorageContext';
 
-const links = ['home', 'tablets', 'accessories'];
+const links = ['home', 'phones', 'tablets', 'accessories'];
 
 const ActiveLine = React.memo(() => (
   <motion.div
@@ -56,6 +57,16 @@ export const NavBar: React.FC = () => {
   const [visibleAside, setVisibleAside] = useState<boolean>(false);
   const [linkIndex, setLinkIndex] = useState<number>(0);
   const windowWidth = useWindowWidth();
+  const { cartItems, favouritesItems } = useStorage();
+  const location = useLocation();
+
+  useEffect(() => {
+    const newIndex = location.pathname
+      .split('/')
+      .find(el => links.includes(el));
+
+    setLinkIndex(links.indexOf(newIndex || 'home'));
+  }, [location]);
 
   useEffect(() => {
     if (windowWidth < 640) {
@@ -118,11 +129,27 @@ export const NavBar: React.FC = () => {
               <div className={styles.icon}>
                 <NavLink to="/favourites" className={styles.links__item}>
                   <img src="/img/icons/favourites.svg" alt="favourites" />
+                  {cartItems.length > 0 && (
+                    <div className={classNames(styles.count, styles.cartCount)}>
+                      {cartItems.length}
+                    </div>
+                  )}
                 </NavLink>
               </div>
+
               <div className={styles.icon}>
                 <NavLink to="/case" className={styles.links__item}>
                   <img src="/img/icons/case.svg" alt="case" />
+                  {favouritesItems.length > 0 && (
+                    <div
+                      className={classNames(
+                        styles.count,
+                        styles.favouritesCount,
+                      )}
+                    >
+                      {favouritesItems.length}
+                    </div>
+                  )}
                 </NavLink>
               </div>
             </div>
@@ -151,11 +178,19 @@ export const NavBar: React.FC = () => {
             <div className={styles.asideIcon}>
               <NavLink to="/favourites" className={styles.links__item}>
                 <img src="/img/icons/favourites.svg" alt="favourites" />
+                {cartItems.length > 0 && (
+                  <div className={styles.cartCount}>{cartItems.length}</div>
+                )}
               </NavLink>
             </div>
             <div className={styles.asideIcon}>
               <NavLink to="/case" className={styles.links__item}>
                 <img src="/img/icons/case.svg" alt="case" />
+                {favouritesItems.length > 0 && (
+                  <div className={styles.cartCount}>
+                    {favouritesItems.length}
+                  </div>
+                )}
               </NavLink>
             </div>
           </div>

@@ -1,0 +1,21 @@
+@import '../styles/index.scss';
+
+.link {
+  @include setFont($font-mont, 12px, 700);
+  color: $color-element-black;
+  text-decoration: none;
+}
+
+.homeLink {
+  @include setFont($font-mont, 12px, 700);
+  text-decoration: none;
+}
+
+.navAdress__icon {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.span {
+    @include setFont($font-mont, 12px, 700);
+}

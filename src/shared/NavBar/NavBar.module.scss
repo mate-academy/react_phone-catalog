@@ -1,122 +1,144 @@
 @import '../styles/index.scss';
 
 .navBar {
-    @include setSize(100%, 64px);
-    max-width: $content-max-width;
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    background-color: $color-white;
-    box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
+  @include setSize(100%, 64px);
+  max-width: $content-max-width;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: $color-white;
+  box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
 
-    @include onTablet {
-        @include setSize(100%, 48px);
-        gap: 16px;  
-    }
+  @include onTablet {
+    @include setSize(100%, 48px);
+    gap: 16px;
+  }
 }
 
-
 .wrapper {
-    margin-left: auto;
-    display: flex;
-    height: 100%;
-    box-sizing: border-box;
+  margin-left: auto;
+  display: flex;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .logo {
-    @include setSize (128px, 100%);
-    padding: 24px, 18px;
-    @include flexCenter;
+  @include setSize(128px, 100%);
+  padding: 24px, 18px;
+  @include flexCenter;
 }
 
 img {
-    margin: auto;
+  margin: auto;
 }
 
 .links {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    gap: 64px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 64px;
 
-    &__item {
-        position: relative;
-        @include setFont($font-mont, 16px, 800);
-        @include flexCenter;
-        @include setSize(100%, 100%);
-        transition: all 0.3s;
+  &__item {
+    position: relative;
+    @include setFont($font-mont, 16px, 800);
+    @include flexCenter;
+    @include setSize(100%, 100%);
+    transition: all 0.3s;
 
-        text-decoration: none;
-        color: $color-grey;    
-        
-        &:hover {
-            color: $color-element-black;
-            background-color: $color-light-grey;
-        }
+    text-decoration: none;
+    color: $color-grey;
+
+    &:hover {
+      color: $color-element-black;
+      background-color: $color-light-grey;
     }
+  }
 
-    @include onTablet {
-        gap: 32px;
-        font-size: 12px;
-        line-height: 11px;
-    }
+  @include onTablet {
+    gap: 32px;
+    font-size: 12px;
+    line-height: 11px;
+  }
 }
 
 .icon {
-    box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
-    margin-left: auto;
-    @include setSize (64px, 100%);
-    @include flexCenter;
-    &:hover {
-        border: 1px solid #313237;
-    }
+  box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
+  margin-left: auto;
+  @include setSize(64px, 100%);
+  @include flexCenter;
+  &:hover {
+    border: 1px solid #313237;
+  }
 
-    @include onTablet {
-        width: 48px;
-    }
+  @include onTablet {
+    width: 48px;
+  }
 }
 
 .rightButton {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 aside {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    z-index: 2;
-    width: 100%;
-    height: calc(100vh - 50px);
-    background-color: $color-white;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  width: 100%;
+  height: calc(100vh - 50px);
+  background-color: $color-white;
 }
 
 .asideLinks {
-    margin-top: 24px;
-    @include flexCenter;
-    flex-direction: column;
-    gap: 16px;
+  margin-top: 24px;
+  @include flexCenter;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .asideIcons {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    @include flexCenter;
-    flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  @include flexCenter;
+  flex-direction: row;
 }
 
 .asideIcon {
-    @include setSize (50%, 64px);
-    box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
-    transition: all 0.3s;
+  @include setSize(50%, 64px);
+  box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
+  transition: all 0.3s;
 
-    &:hover {
-        border: 1px solid black;
-    }
+  &:hover {
+    border: 1px solid black;
+  }
+}
+
+.count {
+  position: absolute;
+
+  background-color: #476df4;
+  border: 1px solid $color-white;
+  border-radius: 50px;
+  @include setSize(14px, 14px);
+  @include setFont($font-mont, 9px, 600);
+  color: $color-white;
+  line-height: 14px;
+  text-align: center;
+}
+
+.cartCount {
+  top: 25%;
+  right: -80%;
+}
+
+.favouritesCount {
+    top: 25%;
+    right: 120%;
 }

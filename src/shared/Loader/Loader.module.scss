@@ -1,0 +1,10 @@
+@import '../styles/index.scss';
+
+.loader {
+    @include setSize(100%, 100%);
+    @include flexCenter;
+    min-width: 200px;
+    min-height: 100px;
+    padding: 100
+    px;
+}

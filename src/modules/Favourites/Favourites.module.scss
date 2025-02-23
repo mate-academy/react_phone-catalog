@@ -1,0 +1,26 @@
+@import '/src/shared/styles/index.scss';
+
+.favourites {
+    max-width: $element-max-width;
+    padding-inline: $content-padding-inline;
+
+    &__list {
+        @include flexCenter;
+        flex-direction: row;
+
+        gap: 16px;
+        flex-wrap: wrap;
+
+    }
+
+    &__title {
+        @include setFont($font-mont, 48px, 800);
+        margin: 40px 0 8px 0;
+    }
+
+    &__count {
+        @include setFont($font-mont, 14px, 600);
+        color: $color-grey;
+        margin-bottom: 40px;
+    }
+}

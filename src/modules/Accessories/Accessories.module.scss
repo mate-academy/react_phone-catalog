@@ -1,0 +1,19 @@
+@import '/src/shared/styles/index.scss';
+
+.accessories {
+  padding-inline: 32px;
+
+  @include onTablet {
+    padding-inline: 24px;
+  }
+
+  @include onPhone {
+    padding-inline: 16px;
+  }
+
+  &__title {
+    @include setFont($font-mont, 48px, 800);
+    line-height: 56px;
+    letter-spacing: -1%;
+  }
+}

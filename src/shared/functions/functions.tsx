@@ -2,7 +2,7 @@ export function wait(delay: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, delay));
 }
 
-export const getDataPublic = async (params: string) => {
+export const getDataPublic = async (params: string, delay?: number = 2000) => {
   try {
     const response = await fetch(`/api/${params}.json`);
 
@@ -10,7 +10,7 @@ export const getDataPublic = async (params: string) => {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    await wait(3000);
+    await wait(delay);
 
     const data = await response.json();
 

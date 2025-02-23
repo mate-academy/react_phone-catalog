@@ -9,6 +9,15 @@
   font-weight: $weight;
 }
 
+@mixin setButton($size) {
+  @include setSize($size, $size);
+  border: 1px solid $color-element-white;
+  border-radius: 50%;
+   &:hover {
+    border-color: $color-element-black;
+   }
+}
+
 @mixin setLimit($max-width, $max-height) {
   max-width: $max-width;
   max-height: $max-height;
