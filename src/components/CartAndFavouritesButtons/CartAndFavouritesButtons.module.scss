@@ -29,10 +29,12 @@
   border-left: 1px solid $hover_bg;
 
   &__link {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
     position: relative;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     width: 64px;
     height: 64px;
@@ -45,26 +47,6 @@
     @include on-mobile {
       width: 50vw;
       height: 64px;
-    }
-
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &--favourites {
-      background-image: url('../../media/icon/favourites.svg');
-    }
-
-    &--cart {
-      background-image: url('../../media/icon/cart.svg');
-    }
-
-    &:hover {
-      transition: background-size 0.5s ease;
-      background-size: 40%;
-
-      @include on-mobile {
-        background-size: 8%;
-      }
     }
 
     &.active {
@@ -82,5 +64,53 @@
         }
       }
     }
+  }
+
+  &__img {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--favourites {
+      background-image: url('../../media/icon/favourites.svg');
+    }
+
+    &--cart {
+      background-image: url('../../media/icon/cart.svg');
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+
+
+      @include on-mobile {
+        background-size: 8%;
+      }
+    }
+  }
+
+  &__quantity {
+    position: absolute;
+    top: -45%;
+    left: 50%;
+    background-color: $red;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    border: 1px solid $white;
+
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 11.5px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

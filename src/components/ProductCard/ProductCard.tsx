@@ -1,5 +1,7 @@
-import React from 'react';
+import classNames from 'classnames';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../store/CartContext';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 
@@ -9,13 +11,31 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ product, hot }) => {
+  const { state, dispatch } = useCart();
   const { itemId, image, name, price, fullPrice, screen, capacity, ram } =
     product;
+
   const specs = [
     { name: 'Screen', value: screen },
     { name: 'Сapacity', value: capacity },
     { name: 'RAM', value: ram },
   ];
+
+  const [isInCart, setIsInCart] = useState(
+    state.products.some(p => p.itemId === itemId),
+  );
+
+  useEffect(() => {
+    setIsInCart(state.products.some(p => p.itemId === itemId));
+  }, [state.products, itemId]);
+
+  const handleAdded = () => {
+    if (isInCart) {
+      dispatch({ type: 'REMOVE_PRODUCT', payload: { id: product.id } });
+    } else {
+      dispatch({ type: 'ADD_PRODUCT', payload: product });
+    }
+  };
 
   return (
     <div className={styles['product-card']}>
@@ -45,9 +65,16 @@ export const ProductCard: React.FC<Props> = ({ product, hot }) => {
       </div>
       <div className={styles['product-card__buttons']}>
         <button
-          className={`${styles['product-card__button']} ${styles['product-card__button--add']}`}
+          className={classNames(
+            styles['product-card__button'],
+            styles['product-card__button--add'],
+            {
+              [styles['product-card__button--added']]: isInCart,
+            },
+          )}
+          onClick={handleAdded}
         >
-          Add to cart
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
           className={`${styles['product-card__button']} ${styles['product-card__button--like']}`}
