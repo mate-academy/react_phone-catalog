@@ -1,12 +1,15 @@
 import styles from './Header.module.scss';
 
+import { useContext, useEffect, useMemo, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
+
 import { NavLinks } from '../NavLinks';
 import { LogoHeader } from '../LogoHeader';
-import { useEffect, useState } from 'react';
-import classNames from 'classnames';
 import { Container } from '../Container';
-import { NavLink, useLocation } from 'react-router-dom';
 import { IconLink } from '../IconLink';
+import { FavoritesContext } from '../../_store/FavoritesProvider';
+import { CartContext } from '../../_store/CartProvider';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,8 +19,17 @@ export const Header = () => {
     setIsMenuOpen(prev => !prev);
   };
 
+  const { favorites } = useContext(FavoritesContext);
+  const { cart } = useContext(CartContext);
+
+  const totalAmount = useMemo(
+    () => cart.reduce((sum, item) => sum + item.quantity, 0),
+    [cart],
+  );
+
   useEffect(() => {
     setIsMenuOpen(false);
+    document.body.style.overflow = '';
   }, [location.pathname]);
 
   useEffect(() => {
@@ -42,12 +54,17 @@ export const Header = () => {
           </ul>
         </nav>
         <div className={styles.header__icons}>
-          <IconLink
-            modificator={isMenuOpen ? 'close' : 'menu'}
-            onClick={toggleMenu}
-          />
-          <IconLink modificator="cart" />
-          <IconLink modificator="favourites" count={5} />
+          <IconLink modificator="favourites" count={favorites.length} />
+          <IconLink modificator="cart" count={totalAmount} />
+        </div>
+        <div
+          className={`${styles.header__icons} ${styles['header__icons--mobile']}`}
+        >
+          {isMenuOpen ? (
+            <IconLink modificator={'close'} onClick={toggleMenu} />
+          ) : (
+            <IconLink modificator={'menu'} onClick={toggleMenu} />
+          )}
         </div>
       </div>
       {isMenuOpen && (

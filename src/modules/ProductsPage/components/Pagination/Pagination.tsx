@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { IconButton } from '../../../shared/components/IconButton';
 import styles from './Pagination.module.scss';
-import { useSlider } from '../../../HomePage/hooks/useSlider';
+import { useSlider } from '../../../../_hooks/useSlider';
 import { SearchLink } from '../../../shared/components/SearchLink';
 
 type Props = {

@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { capitalizeFirstLetter } from '../../../../_utils/stringFunction';
 
 type Props = {
-  category: Category;
+  category: Category | string;
   productName?: string | null;
 };
 

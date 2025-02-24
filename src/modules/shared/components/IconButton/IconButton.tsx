@@ -5,12 +5,14 @@ import {
   ArrowIcon,
   HeartIcon,
   HeartRedIcon,
+  Minus,
+  Plus,
   Rondure,
 } from '../../_constants/icons';
 import { validateColor } from '../../../../_utils/validateColor';
 type Props = {
   onClick?: () => void;
-  modificator: 'heart' | 'arrow' | 'pagination' | 'selector';
+  modificator: 'heart' | 'arrow' | 'pagination' | 'selector' | 'minus' | 'plus';
   direction?: 'up' | 'left' | 'right' | 'down';
   value?: number;
   disabled?: boolean;
@@ -52,6 +54,8 @@ export const IconButton: React.FC<Props> = ({
       {modificator === 'heart' && !selected && <HeartIcon />}
       {modificator === 'heart' && selected && <HeartRedIcon />}
       {modificator === 'pagination' && value}
+      {modificator === 'plus' && <Plus />}
+      {modificator === 'minus' && <Minus />}
       {modificator === 'selector' && backgroundColor && (
         <Rondure backgroundColor={validateColor(backgroundColor)} />
       )}

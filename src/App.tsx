@@ -8,7 +8,6 @@ import { Loader } from './modules/shared/components/Loader';
 import { Container } from './modules/shared/components/Container';
 
 export const App = () => {
-  // const { products, loading, error } = useContext(ProductsContext);
   const { loading, error } = useContext(ProductsContext);
 
   return (

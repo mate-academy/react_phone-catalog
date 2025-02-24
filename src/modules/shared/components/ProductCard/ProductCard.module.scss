@@ -46,14 +46,4 @@
     text-decoration-line: line-through;
     color: $secondary-color;
   }
-
-  &__divider {
-    border: 1px solid $elements-color;
-  }
-
-  &__buttons {
-    display: flex;
-    gap: 8px;
-    height: 32px;
-  }
 }

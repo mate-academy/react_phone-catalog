@@ -5,7 +5,7 @@ import { useSwipeable } from 'react-swipeable';
 import classNames from 'classnames';
 import { IconButton } from '../../../shared/components/IconButton';
 import { TABLET_MIN_WIDTH } from '../../../shared/_constants/MIN_WIDTHS';
-import { useSlider } from '../../hooks/useSlider';
+import { useSlider } from '../../../../_hooks/useSlider';
 
 export const PicturesSlider = () => {
   const minBannersLength = Math.min(

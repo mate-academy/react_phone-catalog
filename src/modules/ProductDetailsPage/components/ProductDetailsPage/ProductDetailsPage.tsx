@@ -17,10 +17,11 @@ import { IconButton } from '../../../shared/components/IconButton';
 import { BackButton } from '../../../shared/components/BackButton';
 import classNames from 'classnames';
 import ProductSpecs from '../../../shared/components/ProductSpecs/ProductSpecs';
-import { ButtonPrimary } from '../../../shared/components/ButtonPrimary';
-import { useSlider } from '../../../HomePage/hooks/useSlider';
+import { useSlider } from '../../../../_hooks/useSlider';
 import { useSwipeable } from 'react-swipeable';
 import { ProductsSlider } from '../../../shared/components/ProductsSlider';
+import { AddToCardButton } from '../../../shared/components/AddToCardButton';
+import { DividedLine } from '../../../shared/components/DividedLine';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -159,7 +160,7 @@ export const ProductDetailsPage = () => {
                 ))}
               </div>
             </div>
-            <div className={styles['divided-line']}></div>
+            <DividedLine />
             <div className={styles.controls__box}>
               <div className={styles.controls__title}>Select capacity</div>
               <div className={styles.controls__options}>
@@ -178,7 +179,7 @@ export const ProductDetailsPage = () => {
                 ))}
               </div>
             </div>
-            <div className={styles['divided-line']}></div>
+            <DividedLine />
             <div className={styles['controls__buttons-prices']}>
               <div className={styles['controls__prices-box']}>
                 <div>&#36;{product?.price}</div>
@@ -186,10 +187,7 @@ export const ProductDetailsPage = () => {
                   &#36;{product?.fullPrice}
                 </div>
               </div>
-              <div className={styles['controls__buttons-box']}>
-                <ButtonPrimary title="Add to cart" />
-                <IconButton modificator={'heart'} onClick={() => {}} />
-              </div>
+              <AddToCardButton product={product} height="48" />
             </div>
             {product && <ProductSpecs product={product} keys={mainSpecKeys} />}
           </div>
@@ -198,7 +196,7 @@ export const ProductDetailsPage = () => {
         <section className={styles.productDetails__about}>
           <article className={styles.productDetails__article}>
             <h3>About</h3>
-            <div className={styles['divided-line']}></div>
+            <DividedLine />
           </article>
 
           {product.details?.description.map(item => (
@@ -226,7 +224,7 @@ export const ProductDetailsPage = () => {
         <section className={styles.productDetails__specs}>
           <article className={styles.productDetails__article}>
             <h3>Tech specs</h3>
-            <div className={styles['divided-line']}></div>
+            <DividedLine />
           </article>
           {product && (
             <ProductSpecs

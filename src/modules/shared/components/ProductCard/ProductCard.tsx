@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ButtonPrimary } from '../ButtonPrimary';
-import { IconButton } from '../IconButton';
+
 import {
   Product,
   ProductKeys,
@@ -9,13 +8,18 @@ import {
 } from '../../../../_types/products';
 import styles from './ProductCard.module.scss';
 import ProductSpecs from '../ProductSpecs/ProductSpecs';
+import { AddToCardButton } from '../AddToCardButton';
+import { DividedLine } from '../DividedLine';
 
 type Props = {
   product: ProductWithDetails | Product;
-  fullPrice?: boolean;
+  isShowfullPrice?: boolean;
 };
 
-const ProductCard: React.FC<Props> = ({ product, fullPrice = false }) => {
+const ProductCard: React.FC<Props> = ({
+  product,
+  isShowfullPrice: fullPrice = false,
+}) => {
   const specKeys: ProductKeys[] = ['screen', 'capacity', 'ram'];
 
   return (
@@ -44,12 +48,9 @@ const ProductCard: React.FC<Props> = ({ product, fullPrice = false }) => {
           </div>
         )}
       </div>
-      <div className={styles['product-card__divider']}></div>
+      <DividedLine />
       <ProductSpecs product={product} keys={specKeys} />
-      <div className={styles['product-card__buttons']}>
-        <ButtonPrimary title={'Add to cart'} />
-        <IconButton modificator={'heart'} onClick={() => {}} />
-      </div>
+      <AddToCardButton product={product} height="40" />
     </div>
   );
 };

@@ -5,30 +5,20 @@
   height: 100%;
   aspect-ratio: 1;
   box-sizing: border-box;
-  box-shadow: -1px 0 0 0 #E2E6E9;
   background-repeat: no-repeat;
   background-position: center;
 
   &--active {
     box-shadow:
-      -1px 0 0 0 #E2E6E9,
       inset 0 -3px 0 0 $primary-color;
   }
 
   &--menu {
     background-image: url('/img/icons/icon-menu.svg');
-
-    @include on-tablet {
-      display: none;
-    }
   }
 
   &--close {
     background-image: url('/img/icons/icon-close.svg');
-
-    @include on-tablet {
-      display: none;
-    }
   }
 
   &--favourites {

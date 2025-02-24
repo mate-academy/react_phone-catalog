@@ -3,7 +3,7 @@ import { IconButton } from '../IconButton';
 import ProductCard from '../ProductCard/ProductCard';
 import { ProductsContext } from '../../_store/DataProvider';
 import { Category, Product } from '../../../../_types/products';
-import { useSlider } from '../../../HomePage/hooks/useSlider';
+import { useSlider } from '../../../../_hooks/useSlider';
 
 import { useContext, useMemo } from 'react';
 
@@ -45,7 +45,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, sortFn }) => {
           <li key={product.id} className={styles['product-slider__card']}>
             <ProductCard
               product={product}
-              fullPrice={title !== 'Brand new models'}
+              isShowfullPrice={title !== 'Brand new models'}
             />
           </li>
         ))}

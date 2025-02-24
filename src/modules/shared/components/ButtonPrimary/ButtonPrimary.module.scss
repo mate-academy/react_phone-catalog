@@ -1,7 +1,6 @@
 @import '../../../../styles/global';
 
-
-.button-primary {
+n.button-primary {
   height: 100%;
   width: 100%;
   background-color: $accent-color;
@@ -10,14 +9,15 @@
 
   @include buttons;
 
-
-  &:hover {
-    box-shadow: 0 3px 13px 0 #17203166;
-  }
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
 
   &--selected {
-    border-color: $elements-color;
+    border: 1px solid $elements-color;
+    background-color: transparent;
     cursor: default;
-    color: $elements-color;
+    color: $accent-color;
+
+
+  @include hover(box-shadow, none);
   }
 }

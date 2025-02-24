@@ -1,9 +1,9 @@
 import styles from './ProductsList.module.scss';
 import ProductCard from '../../../shared/components/ProductCard/ProductCard';
-import { ProductWithDetails } from '../../../../_types/products';
+import { Product, ProductWithDetails } from '../../../../_types/products';
 
 type Props = {
-  products: ProductWithDetails[];
+  products: ProductWithDetails[] | Product[];
 };
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
@@ -11,7 +11,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
     <ul className={styles['product-list']}>
       {products.map(item => (
         <li key={item.id} className={styles['product-list__item']}>
-          <ProductCard product={item} fullPrice={true} />
+          <ProductCard product={item} isShowfullPrice={true} />
         </li>
       ))}
     </ul>
