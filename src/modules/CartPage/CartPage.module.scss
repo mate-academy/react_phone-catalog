@@ -51,10 +51,12 @@
   flex-direction: column;
   gap: 16px;
 
-  &__link {
+  &__button {
     display: flex;
     align-items: center;
     text-decoration: none;
+    width: min-content;
+    border: none;
   }
 
   &__icon {

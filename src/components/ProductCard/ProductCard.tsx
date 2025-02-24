@@ -7,10 +7,15 @@ import styles from './ProductCard.module.scss';
 
 interface Props {
   product: Product;
+  isProductDetails?: boolean;
   hot?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product, hot }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  isProductDetails,
+  hot,
+}) => {
   const { state, dispatch } = useCart();
   const { itemId, image, name, price, fullPrice, screen, capacity, ram } =
     product;
@@ -37,9 +42,24 @@ export const ProductCard: React.FC<Props> = ({ product, hot }) => {
     }
   };
 
+  const handleScrollTo = () => {
+    if (isProductDetails) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  };
+
   return (
     <div className={styles['product-card']}>
-      <Link className={styles['product-card__link']} to={`/product/${itemId}`}>
+      <Link
+        className={styles['product-card__link']}
+        to={`/product/${itemId}`}
+        onClick={handleScrollTo}
+      >
         <img className={styles['product-card__img']} src={image} />
         <p className={styles['product-card__name']}>{name}</p>
       </Link>

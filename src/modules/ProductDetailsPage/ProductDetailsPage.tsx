@@ -20,8 +20,10 @@ type Product = Phone | Tablet | Accessory;
 
 export const ProductDetailsPage = () => {
   const { state, dispatch } = useCart();
+
   const navigate = useNavigate();
   const { productId } = useParams();
+
   const { products, phones, accessories, tablets, suggestedProducts, loading } =
     useProducts();
   const product = useMemo(() => {
@@ -78,6 +80,7 @@ export const ProductDetailsPage = () => {
     resolution,
     cell,
   }: Product = productDetails;
+
   let camera: string | undefined;
   let zoom: string | undefined;
 
@@ -101,16 +104,16 @@ export const ProductDetailsPage = () => {
     checkedColor?: string,
     checkedCapacity?: string,
   ) => {
-    let navigateColor = checkedColor || color;
-    const navigateCapacity = checkedCapacity || capacity;
+    const currentColor = checkedColor || color;
+    const currentCapacity = checkedCapacity || capacity;
 
-    navigateColor =
-      navigateColor === navigateColor.replace(' ', '-')
-        ? navigateColor
-        : navigateColor.replace(' ', '-');
+    const navigateColor =
+      currentColor === currentColor.replace(' ', '-')
+        ? currentColor
+        : currentColor.replace(' ', '-');
 
-    return navigate(
-      `/product/${namespaceId}-${navigateCapacity.toLowerCase()}-${navigateColor}`,
+    navigate(
+      `/product/${namespaceId}-${currentCapacity.toLowerCase()}-${navigateColor}`,
     );
   };
 

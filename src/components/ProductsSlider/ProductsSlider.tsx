@@ -97,7 +97,11 @@ export const ProductsSlider: React.FC<Props> = ({
               key={product.id}
               className={styles['products-slider__slide']}
             >
-              <ProductCard product={product} hot={hot} />
+              <ProductCard
+                product={product}
+                hot={hot}
+                isProductDetails={title === 'You may also like'}
+              />
             </div>
           ))}
         </div>

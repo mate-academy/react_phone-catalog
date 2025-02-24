@@ -63,6 +63,12 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     margin-bottom: 24px;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+
+    }
   }
 
   &__title {

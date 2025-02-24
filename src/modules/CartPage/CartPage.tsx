@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import { Modal } from '../../components/Modal';
 import { useCart } from '../../store/CartContext';
@@ -11,6 +11,7 @@ export const CartPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const quantity = state.products.reduce((a, c) => {
@@ -59,10 +60,13 @@ export const CartPage = () => {
       ) : (
         <div className={styles.cart__content}>
           <div className={classNames(styles.cart__header, styles.header)}>
-            <Link to={`/`} className={styles.header__link}>
+            <button
+              onClick={() => navigate(-1)}
+              className={styles.header__button}
+            >
               <div className={styles.header__icon}></div>
               <p className={styles.header__text}>Back</p>
-            </Link>
+            </button>
             {!state.products.length ? (
               <h1 className={styles.cart__title}>Your cart is empty</h1>
             ) : (

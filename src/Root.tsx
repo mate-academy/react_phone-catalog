@@ -11,7 +11,6 @@ import { ProductsProvider } from './store/ProductsContext';
 import './index.scss';
 import { ProductPages } from './modules/ProductPages';
 import { categories } from './data/categories';
-import { ScrollToTop } from './components/ScrollToTop';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { CartPage } from './modules/CartPage';
 import { CartProvider } from './store/CartContext';
@@ -23,7 +22,6 @@ export const Root = () => {
         <CartProvider>
           <div className="page">
             <Layout>
-              <ScrollToTop />
               <Routes>
                 <Route path="/" element={<App />}>
                   <Route index element={<HomePage />} />

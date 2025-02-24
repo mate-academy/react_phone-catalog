@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -21,6 +21,10 @@ export const ProductPages: React.FC<Props> = ({ category }) => {
   const sort = searchParams.get('sort') || '';
   const currentPage = searchParams.get('page') || '';
   const prePage = searchParams.get('prePage') || '';
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const filteredProducts = useMemo(() => {
     return products.filter(product => product.category === name);

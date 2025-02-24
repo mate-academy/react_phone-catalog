@@ -72,6 +72,7 @@
     height: 16px;
     background-position: center;
     background-repeat: no-repeat;
+    transition: transform 0.3s ease;
 
     &--favourites {
       background-image: url('../../media/icon/favourites.svg');
@@ -83,12 +84,6 @@
 
     &:hover {
       transform: scale(1.05);
-      transition: transform 0.3s ease;
-
-
-      @include on-mobile {
-        background-size: 8%;
-      }
     }
   }
 

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Categories } from '../../components/Categories';
 import { Loader } from '../../components/Loader';
 import { PicturesSlider } from '../../components/PicturesSlider';
@@ -8,13 +9,20 @@ import styles from './HomePage.module.scss';
 export const HomePage = () => {
   const { products, loading } = useProducts();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={styles['home-page']}>
       <h1 className={styles['home-page__title']}>
         Welcome to Nice Gadgets store!
       </h1>
       {loading ? (
-        <Loader />
+        <div className={styles['home-page__loader']}>
+          {' '}
+          <Loader />
+        </div>
       ) : (
         <div className={styles['home-page__content']}>
           <PicturesSlider />

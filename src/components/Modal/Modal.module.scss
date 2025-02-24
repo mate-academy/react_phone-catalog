@@ -36,6 +36,8 @@
 
   &__title {
     @include h3-typography;
+
+    text-align: center;
   }
 
   &__body {
@@ -62,9 +64,9 @@
     }
 
     &--confirm {
-      background-color: $element;
+      background-color: $secondary;
     }
-    
+
     transition: box-shadow 0.3s;
 
       &:hover {
