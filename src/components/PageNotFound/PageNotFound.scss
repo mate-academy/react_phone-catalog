@@ -1,0 +1,23 @@
+.not-found {
+  margin-top: '69px';
+  padding: 100px 20px;
+  height: '80vh';
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  &__img {
+    max-width: 80%;
+    object-fit: contain;
+  }
+
+  &__button {
+    width: 200px;
+    line-height: 40px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: var(--c-primary);
+  }
+}

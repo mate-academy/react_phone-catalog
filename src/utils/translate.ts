@@ -34,6 +34,8 @@ const en: Dictionary = {
   'footer.link.contacts': 'contacts',
   'footer.link.rights': 'rights',
   'footer.button': 'Back to top',
+  'not-found.title': 'Page not found',
+  'not-found.button': 'Back to home',
 };
 
 const it: Dictionary = {
@@ -66,6 +68,8 @@ const it: Dictionary = {
   'sort.cheap': 'Meno costosi',
   'footer.link.rights': 'diritti',
   'footer.button': "Torna all'inizio",
+  'not-found.title': 'Pagina non trovata',
+  'not-found.button': 'Torna alla home',
 };
 
 const dictionaries = { en, it };

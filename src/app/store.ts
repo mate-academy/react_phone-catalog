@@ -4,6 +4,8 @@ import phonesReducer from '../features/phonesSlice';
 import tabletsReducer from '../features/tabletsSlice';
 import accessoriesReducer from '../features/accessoriesSlice';
 import navigationReducer from '../features/navigationSlice';
+import cartReducer from '../features/cartSlice';
+import favoriteReducer from '../features/favoriteSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +13,8 @@ export const store = configureStore({
     tablets: tabletsReducer,
     accessories: accessoriesReducer,
     navigation: navigationReducer,
+    cart: cartReducer,
+    favorites: favoriteReducer,
   },
 });
 

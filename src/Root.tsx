@@ -14,6 +14,7 @@ import { Tablets } from './components/Tablets/Tablets';
 import { Accessories } from './components/Accessories/Accessories';
 import { PageItem } from './components/PageItem/PageItem';
 import { Category } from './utils/enums';
+import { PageNotFound } from './components/PageNotFound/PageNotFound';
 
 export const Root = () => (
   <Provider store={store}>
@@ -32,14 +33,7 @@ export const Root = () => (
               element={<PageItem />}
             />
             <Route path="home" element={<Navigate to="/" replace />} />
-            <Route
-              path="*"
-              element={
-                <h1 style={{ marginTop: '49px', height: '80vh' }}>
-                  Page Not Found
-                </h1>
-              }
-            />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>
       </LangProvider>

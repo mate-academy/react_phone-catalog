@@ -35,10 +35,58 @@
 
   &--heart {
     background-image: url(/img/icons/icon-heart.svg);
+
+    &.is-favorite {
+      background-image: url(/img/icons/icon-heart-red.svg);
+    }
+
+    &.has-items {
+      position: relative;
+
+      &::after {
+        content: attr(data-count);
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 14px;
+        height: 14px;
+        background-color: var(--c-red);
+        color: #fff;
+        font-size: 9px;
+        line-height: 11.5px;
+        border: 1px solid var(--c-surface-1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 
   &--basket {
     background-image: url(/img/icons/shopping-bag.svg);
+
+    &.has-items {
+      position: relative;
+
+      &::after {
+        content: attr(data-count);
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 14px;
+        height: 14px;
+        background-color: var(--c-red);
+        color: #fff;
+        font-size: 9px;
+        line-height: 11.5px;
+        border: 1px solid var(--c-surface-1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 
   &--back-top {

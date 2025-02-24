@@ -6,12 +6,13 @@ import { Logo } from '../Logo/Logo';
 import { LangContext } from '../../context/LangContext';
 import { Lang } from '../../types/enumLang';
 import { translate } from '../../utils/translate';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { navigationSlice } from '../../features/navigationSlice';
 
 export const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
   const { lang, setLang } = useContext(LangContext);
+  const { favoriteGoods } = useAppSelector(state => state.favorites);
   const dispatch = useAppDispatch();
 
   const handleBurger = () => {
@@ -175,6 +176,7 @@ export const Header = () => {
             className={({ isActive }) =>
               classNames('nav__link nav__link--heart', {
                 'is-active': isActive,
+                'has-items': favoriteGoods.length > 0,
               })
             }
             onClick={() => {
@@ -183,13 +185,20 @@ export const Header = () => {
               dispatch(navigationSlice.actions.addLink('favorites'));
             }}
           >
-            <div className="icon icon__nav icon--heart"></div>
+            <div
+              data-count={favoriteGoods.length}
+              className={classNames('icon icon__nav icon--heart', {
+                'has-items': favoriteGoods.length > 0,
+              })}
+            ></div>
           </NavLink>
           <NavLink
             to="/cart"
+            data-count={favoriteGoods.length}
             className={({ isActive }) =>
               classNames('nav__link nav__link--basket', {
                 'is-active': isActive,
+                // 'has-items': cartGoods.length > 0,
               })
             }
             onClick={() => {
