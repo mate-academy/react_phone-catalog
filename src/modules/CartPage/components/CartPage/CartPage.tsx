@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { BackButton } from '../../../shared/components/BackButton';
 import styles from './CartPage.module.scss';
 import { CartContext } from '../../../shared/_store/CartProvider';
@@ -8,6 +8,7 @@ import { DividedLine } from '../../../shared/components/DividedLine';
 import { ButtonPrimary } from '../../../shared/components/ButtonPrimary';
 
 export const CartPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { cart, clearCart } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
 
@@ -33,6 +34,15 @@ export const CartPage = () => {
     };
   }, [cart, products]);
 
+  const confirmCheckout = () => {
+    clearCart();
+    setIsModalOpen(false);
+  };
+
+  const cancelCheckout = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={styles.cartPage}>
       <BackButton />
@@ -57,9 +67,23 @@ export const CartPage = () => {
             </div>
             <DividedLine />
             <div className={styles.cartPage__checkout}>
-              <ButtonPrimary title={'Checkout'} onClick={clearCart} />
+              <ButtonPrimary
+                title={'Checkout'}
+                onClick={() => setIsModalOpen(true)}
+              />
             </div>
           </div>
+        </div>
+      )}
+      {isModalOpen && (
+        <div className={styles.cartPage__modal}>
+          <DividedLine />
+          <h4>
+            Checkout is not implemented yet. Do you want to clear the Cart?
+          </h4>
+          <DividedLine />
+          <ButtonPrimary title={'Yes'} onClick={confirmCheckout} />
+          <ButtonPrimary title={'No'} onClick={cancelCheckout} />
         </div>
       )}
     </div>
