@@ -8,15 +8,15 @@ import { NewModels } from './components/NewModels/NewModels';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const pcImages = [
-  `${import.meta.env.BASE_URL}img/banners/banner_1.svg`,
-  `${import.meta.env.BASE_URL}img/banners/banner_2.png`,
-  `${import.meta.env.BASE_URL}img/banners/banner_3.png`,
+  `${import.meta.env.BASE_URL}/img/banners/banner_1.svg`,
+  `${import.meta.env.BASE_URL}/img/banners/banner_2.png`,
+  `${import.meta.env.BASE_URL}/img/banners/banner_3.png`,
 ];
 
 const phoneImages = [
-  `${import.meta.env.BASE_URL}img/banners/banner_1_phone.svg`,
-  `${import.meta.env.BASE_URL}img/banners/banner_2_phone.png`,
-  `${import.meta.env.BASE_URL}img/banners/banner_3_phone.png`,
+  `${import.meta.env.BASE_URL}/img/banners/banner_1_phone.svg`,
+  `${import.meta.env.BASE_URL}/img/banners/banner_2_phone.png`,
+  `${import.meta.env.BASE_URL}/img/banners/banner_3_phone.png`,
 ];
 
 

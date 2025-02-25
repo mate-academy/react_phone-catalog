@@ -74,7 +74,7 @@ export const Cart: React.FC = () => {
                     onClick={() => removeProduct(DataNames.cart, item.itemId)}
                   >
                     <img
-                      src={`${import.meta.env.BASE_URL}img/icons/Union.svg`}
+                      src={`${import.meta.env.BASE_URL}/img/icons/Union.svg`}
                       style={{
                         objectFit: 'cover',
                       }}
@@ -82,7 +82,7 @@ export const Cart: React.FC = () => {
                   </button>
 
                   <img
-                    src={`${import.meta.env.BASE_URL}${item.image}`}
+                    src={`${import.meta.env.BASE_URL}/${item.image}`}
                     alt="Product Image"
                     className={styles.cart__image}
                   />
@@ -98,7 +98,7 @@ export const Cart: React.FC = () => {
                       )}
                     >
                       <img
-                        src={`${import.meta.env.BASE_URL}img/icons/Minus.svg`}
+                        src={`${import.meta.env.BASE_URL}/img/icons/Minus.svg`}
                         alt="imge"
                         style={{
                           objectFit: 'contain',
@@ -153,7 +153,7 @@ export const Cart: React.FC = () => {
             maxHeight: '45vh',
             margin: 'auto',
           }}
-          src="/img/cart-is-empty.png"
+          src={`${import.meta.env.BASE_URL}/img/cart-is-empty.png`}
           alt="your cart is empty"
         />
       )}

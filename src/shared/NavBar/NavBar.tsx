@@ -83,8 +83,8 @@ export const NavBar: React.FC = () => {
         <a href="/home">
           <div className={styles.logo}>
             <img
-              className={`${import.meta.env.BASE_URL}${styles.logo__img}`}
-              src="/img/icons/Logo.svg"
+              className={styles.logo__img}
+              src={`${import.meta.env.BASE_URL}/img/icons/Logo.svg`}
               alt="Logo"
             />
           </div>
@@ -101,7 +101,7 @@ export const NavBar: React.FC = () => {
                   className={styles.links__item}
                 >
                   <img
-                    src={`${import.meta.env.BASE_URL}img/icons/Close.svg`}
+                    src={`${import.meta.env.BASE_URL}/img/icons/Close.svg`}
                     alt="close"
                   />
                 </NavLink>
@@ -114,7 +114,7 @@ export const NavBar: React.FC = () => {
                   className={styles.links__item}
                 >
                   <img
-                    src={`${import.meta.env.BASE_URL}img/icons/burgerMenu.svg`}
+                    src={`${import.meta.env.BASE_URL}/img/icons/burgerMenu.svg`}
                     alt="menu"
                   />
                 </NavLink>
@@ -141,7 +141,7 @@ export const NavBar: React.FC = () => {
               <div className={styles.icon}>
                 <NavLink to="/favourites" className={styles.links__item}>
                   <img
-                    src={`${import.meta.env.BASE_URL}img/icons/favourites.svg`}
+                    src={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
                     alt="favourites"
                   />
                   {cartItems.length > 0 && (
@@ -155,7 +155,7 @@ export const NavBar: React.FC = () => {
               <div className={styles.icon}>
                 <NavLink to="/case" className={styles.links__item}>
                   <img
-                    src={`${import.meta.env.BASE_URL}img/icons/case.svg`}
+                    src={`${import.meta.env.BASE_URL}/img/icons/case.svg`}
                     alt="case"
                   />
                   {favouritesItems.length > 0 && (
@@ -249,7 +249,7 @@ export const NavBar: React.FC = () => {
               >
                 <NavLink to="/favourites" className={styles.links__item}>
                   <img
-                    src={`${import.meta.env.BASE_URL}img/icons/favourites.svg`}
+                    src={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
                     alt="favourites"
                   />
                   {favouritesItems.length > 0 && (
@@ -275,7 +275,7 @@ export const NavBar: React.FC = () => {
               >
                 <NavLink to="/case" className={styles.links__item}>
                   <img
-                    src={`${import.meta.env.BASE_URL}img/icons/case.svg`}
+                    src={`${import.meta.env.BASE_URL}/img/icons/case.svg`}
                     alt="case"
                   />
                   {cartItems.length > 0 && (

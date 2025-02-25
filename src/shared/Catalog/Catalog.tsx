@@ -111,7 +111,6 @@ export const Catalog: React.FC<Props> = ({ products }) => {
 
   const handleQueryChange = debounce((value: string) => {
     setQuery(value);
-    console.log('active!');
   }, 500);
 
   useEffect(() => {
@@ -193,11 +192,11 @@ export const Catalog: React.FC<Props> = ({ products }) => {
         )}
       </div>
 
-      {visibleProducts?.length === 0 && (
+      {products && visibleProducts?.length === 0 && (
         <>
           <p>There are no products matching your criteria</p>
           <img
-            src="/img/product-not-found.png"
+            src={`${import.meta.env.BASE_URL}/img/product-not-found.png`}
             alt="image"
             style={{ height: '40vh' }}
           />

@@ -172,7 +172,7 @@ export const ProductInfo: React.FC = () => {
                 >
                   <img
                     key={image}
-                    src={`${import.meta.env.BASE_URL}${image}`}
+                    src={`${import.meta.env.BASE_URL}/${image}`}
                     className={styles.card__miniImage}
                     alt="Product Image"
                   />
@@ -182,7 +182,7 @@ export const ProductInfo: React.FC = () => {
           </div>
           <img
             className={styles.card__image}
-            src={`${import.meta.env.BASE_URL}${activeImg}`}
+            src={`${import.meta.env.BASE_URL}/${activeImg}`}
             alt="Product Image"
           />
           <div className={styles.card__parameters}>
@@ -281,7 +281,7 @@ export const ProductInfo: React.FC = () => {
                     className={styles.card__favourites}
                   >
                     <img
-                      src={`${import.meta.env.BASE_URL}img/icons/favourites.svg`}
+                      src={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
                     />
                   </button>
                 ) : (
@@ -292,7 +292,7 @@ export const ProductInfo: React.FC = () => {
                     className={styles.card__favourites}
                   >
                     <img
-                      src={`${import.meta.env.BASE_URL}img/icons/favourites_selected.svg`}
+                      src={`${import.meta.env.BASE_URL}/img/icons/favourites_selected.svg`}
                     />
                   </button>
                 )}

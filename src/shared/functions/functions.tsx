@@ -4,7 +4,9 @@ export function wait(delay: number): Promise<void> {
 
 export const getDataPublic = async (params: string, delay?: number = 2000) => {
   try {
-    const response = await fetch(`/api/${params}.json`);
+    const response = await fetch(
+      `${import.meta.env.BASE_URL}api/${params}.json`,
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);

@@ -10,7 +10,7 @@ export const NavAdress: React.FC = () => {
     <div className={styles.navAdress}>
       <Link className={styles.homeLink} to="/">
         <img
-          src="/img/icons/Home.svg"
+          src={`${import.meta.env.BASE_URL}/img/icons/Home.svg`}
           alt="Icon Home"
           className={styles.navAdress__icon}
         />

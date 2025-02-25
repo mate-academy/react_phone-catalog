@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
       <div className={styles.logo}>
         <img
           className={styles.logo__img}
-          src={`${import.meta.env.BASE_URL}img/icons/Logo.svg`}
+          src={`${import.meta.env.BASE_URL}/img/icons/Logo.svg`}
           alt="Logo"
         />
       </div>
@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
         <div
           className={styles.toTop__button}
           style={{
-            backgroundImage: `url('${import.meta.env.BASE_URL}img/icons/toTop.svg')`,
+            backgroundImage: `url('${import.meta.env.BASE_URL}/img/icons/toTop.svg')`,
           }}
         >
           <a href="#home" className={styles.toTop__link} />

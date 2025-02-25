@@ -45,7 +45,7 @@ export const Favourites: React.FC = () => {
       )}
       {products?.length === 0 && (
         <img
-          src="/img/product-not-found.png"
+          src={`${import.meta.env.BASE_URL}/img/product-not-found.png`}
           alt="You dont have favourites products"
           style={{
             height: '40vh',
