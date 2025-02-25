@@ -1,47 +1,80 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './HomePage.module.scss';
-import clsx from 'clsx';
 import { useWindowWidth } from '../../hooks/WindowWidth';
 import classNames from 'classnames';
 import { HotPrices } from './components/HotPrices';
 import { Categories } from './components/Categories';
 import { NewModels } from './components/NewModels/NewModels';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const pcImages = [
-  '/img/banners/banner_1.svg',
-  '/img/banners/banner_2.png',
-  '/img/banners/banner_3.png',
+  `${import.meta.env.BASE_URL}img/banners/banner_1.svg`,
+  `${import.meta.env.BASE_URL}img/banners/banner_2.png`,
+  `${import.meta.env.BASE_URL}img/banners/banner_3.png`,
 ];
 
 const phoneImages = [
-  '/img/banners/banner_1_phone.svg',
-  '/img/banners/banner_2_phone.png',
-  '/img/banners/banner_3_phone.png',
+  `${import.meta.env.BASE_URL}img/banners/banner_1_phone.svg`,
+  `${import.meta.env.BASE_URL}img/banners/banner_2_phone.png`,
+  `${import.meta.env.BASE_URL}img/banners/banner_3_phone.png`,
 ];
+
 
 export const HomePage: React.FC = () => {
   const [index, setIndex] = useState<number>(0);
   const windowWidth = useWindowWidth();
   const [error, setError] = useState<string | null>(null);
   const visibleImages = windowWidth < 640 ? phoneImages : pcImages;
+  const threshold = 50; // Мінімальна відстань для розпізнавання свайпу
+  const lastMotion = useRef<'left' | 'right'>('right');
 
   useEffect(() => {
     setIndex(0);
   }, [visibleImages]);
 
   const nextImage = useCallback(() => {
+    lastMotion.current = 'right';
     setIndex(prev => (prev + 1) % visibleImages.length);
   }, [visibleImages.length]);
 
   const prevImage = useCallback(() => {
+    lastMotion.current = 'left';
     setIndex(prev => (prev - 1 + visibleImages.length) % visibleImages.length);
   }, [visibleImages.length]);
 
-  useEffect(() => {
-    if (error) {
-      return;
+  function handleSwipe(startX, endX) {
+    const diffX = endX - startX;
+
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
     }
-  }, [error]);
+  }
+
+  useEffect(() => {
+    let startX = 0;
+    let endX = 0;
+
+    function onTouchStart(event) {
+      startX = event.touches[0].clientX;
+    }
+
+    function onTouchEnd(event) {
+      endX = event.changedTouches[0].clientX;
+      handleSwipe(startX, endX);
+    }
+
+    document.addEventListener('touchstart', onTouchStart);
+    document.addEventListener('touchend', onTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchstart', onTouchStart);
+      document.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [handleSwipe]);
 
   return (
     <>
@@ -66,14 +99,24 @@ export const HomePage: React.FC = () => {
         )}
 
         <div className={styles.wrapper}>
-          {visibleImages.map((img, i) => (
-            <img
-              key={img}
-              src={img}
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={visibleImages[index]}
+              src={visibleImages[index]}
               alt="banner"
-              className={clsx(styles.image, { [styles.active]: i === index })}
+              className={styles.image}
+              initial={{
+                opacity: 0,
+                x: lastMotion.current === 'right' ? 100 : -100,
+              }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{
+                opacity: 0,
+                x: lastMotion.current === 'right' ? -100 : 100,
+              }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
             />
-          ))}
+          </AnimatePresence>
         </div>
 
         <div className={styles.dots}>

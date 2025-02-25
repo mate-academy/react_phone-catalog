@@ -3,7 +3,7 @@ import styles from './NavBar.module.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useWindowWidth } from '../../hooks/WindowWidth';
 import classNames from 'classnames';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useStorage } from '../../context/StorageContext';
 
 const links = ['home', 'phones', 'tablets', 'accessories'];
@@ -72,6 +72,7 @@ export const NavBar: React.FC = () => {
     if (windowWidth < 640) {
       setIsPhone(true);
     } else {
+      setVisibleAside(false);
       setIsPhone(false);
     }
   }, [windowWidth]);
@@ -79,16 +80,19 @@ export const NavBar: React.FC = () => {
   return (
     <>
       <nav className={styles.navBar}>
-        <div className={styles.logo}>
-          <img
-            className={styles.logo__img}
-            src="/img/icons/Logo.svg"
-            alt="Logo"
-          />
-        </div>
+        <a href="/home">
+          <div className={styles.logo}>
+            <img
+              className={`${import.meta.env.BASE_URL}${styles.logo__img}`}
+              src="/img/icons/Logo.svg"
+              alt="Logo"
+            />
+          </div>
+        </a>
 
         {isPhone ? (
           <>
+            {/* #region Phone Navigation */}
             {visibleAside ? (
               <div className={classNames(styles.icon, styles.rightButton)}>
                 <NavLink
@@ -96,7 +100,10 @@ export const NavBar: React.FC = () => {
                   onClick={() => setVisibleAside(false)}
                   className={styles.links__item}
                 >
-                  <img src="/img/icons/Close.svg" alt="close" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}img/icons/Close.svg`}
+                    alt="close"
+                  />
                 </NavLink>
               </div>
             ) : (
@@ -106,13 +113,18 @@ export const NavBar: React.FC = () => {
                   onClick={() => setVisibleAside(true)}
                   className={styles.links__item}
                 >
-                  <img src="/img/icons/burgerMenu.svg" alt="menu" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}img/icons/burgerMenu.svg`}
+                    alt="menu"
+                  />
                 </NavLink>
               </div>
             )}
+            {/* #region Phone Navigation */}
           </>
         ) : (
           <>
+            {/* #region Tablet&PC Navigation */}
             <div className={styles.links}>
               {links.map((item, itemIndex) => {
                 return (
@@ -128,7 +140,10 @@ export const NavBar: React.FC = () => {
             <div className={styles.wrapper}>
               <div className={styles.icon}>
                 <NavLink to="/favourites" className={styles.links__item}>
-                  <img src="/img/icons/favourites.svg" alt="favourites" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}img/icons/favourites.svg`}
+                    alt="favourites"
+                  />
                   {cartItems.length > 0 && (
                     <div className={classNames(styles.count, styles.cartCount)}>
                       {cartItems.length}
@@ -139,7 +154,10 @@ export const NavBar: React.FC = () => {
 
               <div className={styles.icon}>
                 <NavLink to="/case" className={styles.links__item}>
-                  <img src="/img/icons/case.svg" alt="case" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}img/icons/case.svg`}
+                    alt="case"
+                  />
                   {favouritesItems.length > 0 && (
                     <div
                       className={classNames(
@@ -153,49 +171,125 @@ export const NavBar: React.FC = () => {
                 </NavLink>
               </div>
             </div>
+            {/* #endregion Tablet&PC Navigation */}
           </>
         )}
       </nav>
 
-      {visibleAside && (
-        <aside className={styles.aside}>
-          <div className={styles.asideLinks}>
-            <NavLink className={styles.links__item} to={'/'}>
-              HOME
-            </NavLink>
-            <NavLink className={styles.links__item} to={'/phones'}>
-              PHONES
-            </NavLink>
-            <NavLink className={styles.links__item} to={'/'}>
-              TABLETS
-            </NavLink>
-            <NavLink className={styles.links__item} to={'/'}>
-              ACCESSORIES
-            </NavLink>
-          </div>
+      {/* #region Aside */}
+      <AnimatePresence>
+        {visibleAside && (
+          <motion.aside
+            initial={{ transform: 'translateX(-100%)', opacity: '0' }}
+            animate={{ transform: 'translateX(0%)', opacity: '1' }}
+            exit={{ transform: 'translateX(-100%)', opacity: '0' }}
+            className={classNames(styles.aside, {
+              [styles['aside--visible']]: visibleAside,
+            })}
+          >
+            <div className={styles.asideLinks}>
+              <NavLink
+                onClick={() => setVisibleAside(false)}
+                className={styles.links__item}
+                style={{
+                  color: location.pathname.includes('home')
+                    ? '#000'
+                    : undefined,
+                }}
+                to={'/home'}
+              >
+                HOME
+              </NavLink>
+              <NavLink
+                onClick={() => setVisibleAside(false)}
+                className={styles.links__item}
+                style={{
+                  color: location.pathname.includes('phones')
+                    ? '#000'
+                    : undefined,
+                }}
+                to={'/phones'}
+              >
+                PHONES
+              </NavLink>
+              <NavLink
+                onClick={() => setVisibleAside(false)}
+                className={styles.links__item}
+                style={{
+                  color: location.pathname.includes('tablets')
+                    ? '#000'
+                    : undefined,
+                }}
+                to={'/tablets'}
+              >
+                TABLETS
+              </NavLink>
+              <NavLink
+                onClick={() => setVisibleAside(false)}
+                className={styles.links__item}
+                style={{
+                  color: location.pathname.includes('accessories')
+                    ? '#000'
+                    : undefined,
+                }}
+                to={'/accessories'}
+              >
+                ACCESSORIES
+              </NavLink>
+            </div>
 
-          <div className={styles.asideIcons}>
-            <div className={styles.asideIcon}>
-              <NavLink to="/favourites" className={styles.links__item}>
-                <img src="/img/icons/favourites.svg" alt="favourites" />
-                {cartItems.length > 0 && (
-                  <div className={styles.cartCount}>{cartItems.length}</div>
-                )}
-              </NavLink>
+            <div className={styles.asideIcons}>
+              <div
+                className={styles.asideIcon}
+                style={{
+                  borderBottom: location.pathname.includes('favourites')
+                    ? '3px solid black'
+                    : 'none',
+                }}
+              >
+                <NavLink to="/favourites" className={styles.links__item}>
+                  <img
+                    src={`${import.meta.env.BASE_URL}img/icons/favourites.svg`}
+                    alt="favourites"
+                  />
+                  {favouritesItems.length > 0 && (
+                    <div
+                      className={classNames(
+                        styles.count,
+                        styles.favouritesCount,
+                      )}
+                    >
+                      {favouritesItems.length}
+                    </div>
+                  )}
+                </NavLink>
+              </div>
+
+              <div
+                className={styles.asideIcon}
+                style={{
+                  borderBottom: location.pathname.includes('case')
+                    ? '3px solid black'
+                    : 'none',
+                }}
+              >
+                <NavLink to="/case" className={styles.links__item}>
+                  <img
+                    src={`${import.meta.env.BASE_URL}img/icons/case.svg`}
+                    alt="case"
+                  />
+                  {cartItems.length > 0 && (
+                    <div className={classNames(styles.count, styles.cartCount)}>
+                      {cartItems.length}
+                    </div>
+                  )}
+                </NavLink>
+              </div>
             </div>
-            <div className={styles.asideIcon}>
-              <NavLink to="/case" className={styles.links__item}>
-                <img src="/img/icons/case.svg" alt="case" />
-                {favouritesItems.length > 0 && (
-                  <div className={styles.cartCount}>
-                    {favouritesItems.length}
-                  </div>
-                )}
-              </NavLink>
-            </div>
-          </div>
-        </aside>
-      )}
+          </motion.aside>
+        )}
+      </AnimatePresence>
+      {/* #endregion Aside */}
     </>
   );
 };

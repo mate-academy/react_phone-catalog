@@ -6,6 +6,7 @@ html {
 
 body {
     padding-top: 64px;
+    box-sizing: border-box;
 }
 
 .layout {
@@ -19,4 +20,8 @@ main {
     box-sizing: border-box;
     margin: auto;
     max-width: $element-max-width;
+}
+
+footer {
+    bottom: 0;
 }

@@ -4,7 +4,7 @@ p {
   margin: 0;
 }
 
-article {
+.article {
   display: flex;
   flex-direction: column;
   gap: $product-gap;
@@ -157,7 +157,6 @@ article {
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  background-image: url('/img/icons/favourites.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 50%;
@@ -165,8 +164,4 @@ article {
   &:hover {
     border: 1px solid $color-element-black;
   }
-}
-
-.favouriteActive {
-  background-image: url('/img/icons/favourites_selected.svg');
 }

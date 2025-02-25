@@ -5,7 +5,7 @@ export const Loader: React.FC = () => {
   return (
     <div className={styles.loader}>
       <img
-        src="/img/icons/loader.gif"
+        src="/img/Loader.gif"
         alt="Loading, please wait"
         className={styles.loader__spiner}
       />

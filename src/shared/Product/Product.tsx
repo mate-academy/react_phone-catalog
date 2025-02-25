@@ -31,7 +31,7 @@ export const Product: React.FC<Props> = ({
     >
       <img
         style={{ flex: 1 }}
-        src={article.image}
+        src={`${import.meta.env.BASE_URL}${article.image}`}
         alt="Product Image"
         className={styles.image}
       />
@@ -89,6 +89,9 @@ export const Product: React.FC<Props> = ({
               e.stopPropagation();
               addProduct(DataNames.favourites, article.itemId);
             }}
+            style={{
+              backgroundImage: `url('${import.meta.env.BASE_URL}img/icons/favourites.svg')`,
+            }}
             className={styles.favourite}
           />
         ) : (
@@ -97,7 +100,10 @@ export const Product: React.FC<Props> = ({
               e.stopPropagation();
               removeProduct(DataNames.favourites, article.itemId);
             }}
-            className={classNames(styles.favourite, styles.favouriteActive)}
+            style={{
+              backgroundImage: `url('${import.meta.env.BASE_URL}img/icons/favourites_selected.svg')`,
+            }}
+            className={classNames(styles.favourite)}
           />
         )}
       </div>

@@ -33,7 +33,7 @@ export const Categories: React.FC = () => {
             <div className={styles.categories__window}>
               <img
                 className={styles.categories__image}
-                src="/img/category-phones1.webp"
+                src={`${import.meta.env.BASE_URL}img/category-phones1.webp`}
                 alt="Category Image"
               />
               <div
@@ -54,7 +54,7 @@ export const Categories: React.FC = () => {
             <div className={styles.categories__window}>
               <img
                 className={styles.categories__image}
-                src="/img/category-tablets1.webp"
+                src={`${import.meta.env.BASE_URL}img/category-tablets1.webp`}
                 alt="Category Image"
               />
               <div
@@ -75,7 +75,7 @@ export const Categories: React.FC = () => {
             <div className={styles.categories__window}>
               <img
                 className={styles.categories__image}
-                src="/img/category-accessories1.webp"
+                src={`${import.meta.env.BASE_URL}img/category-accessories1.webp`}
                 alt="Category Image"
               />
               <div

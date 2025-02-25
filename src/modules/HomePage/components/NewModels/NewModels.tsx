@@ -14,7 +14,7 @@ export const NewModels: React.FC = () => {
       const data = await checkData(Products.Phones);
 
       const filtered = data.filter(
-        (el: Article) => el.year === 2022 && el.price > 1000 && el.price < 1200,
+        (el: Article) => el.year === 2022 && el.capacity === '512GB',
       );
 
       setNewModels(filtered);

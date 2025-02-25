@@ -6,7 +6,7 @@ import { Product } from '../Product';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { Loader } from '../Loader';
-
+import debounce from 'lodash.debounce';
 type Props = {
   products: Article[] | null;
 };
@@ -15,60 +15,85 @@ export const Catalog: React.FC<Props> = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = searchParams.get('page') || '1';
-  const initialCount = parseInt(searchParams.get('count') || '16');
   const initialSortMethod =
     (searchParams.get('sort') as SortMethods) || SortMethods.nawest;
 
   const [method, setMethod] = useState<SortMethods>(initialSortMethod);
-  const [count, setCount] = useState<number>(initialCount);
+  const [count, setCount] = useState<number | string>(
+    searchParams.get('count') === 'all'
+      ? 'all'
+      : parseInt(searchParams.get('count') || '16', 10),
+  );
+  const [query, setQuery] = useState<string | null>(null);
 
   useEffect(() => {
     const newParams = new URLSearchParams(searchParams);
 
     newParams.set('sort', method);
-    newParams.set('count', count.toString());
-
+    newParams.set('count', count === 'all' ? 'all' : count.toString());
     setSearchParams(newParams);
   }, [method, count, searchParams, setSearchParams]);
 
   const visibleProducts = useMemo(() => {
     if (!products) {
-      return;
+      return [];
     }
 
-    const sorted = [...products].sort((a, b) => {
+    let sorted = [...products].sort((a, b) => {
       switch (method) {
         case SortMethods.nawest:
           return b.year - a.year;
-
-        case SortMethods.oldest:
-          return a.year - b.year;
-
-        case SortMethods.priceHigh:
-          return b.price - a.price;
-
-        case SortMethods.priceLow:
-          return a.price - b.price;
-
+        case SortMethods.alph:
+          return a.name.localeCompare(b.name);
+        case SortMethods.chapest:
+          return a.fullPrice - a.price - (b.fullPrice - b.price);
         default:
           return 0;
       }
     });
-    const startIndex = (parseInt(page) - 1) * count;
-    const endIndex = startIndex + count;
+
+    if (query) {
+      sorted = sorted.filter((el: Article) =>
+        el.name.toLowerCase().includes(query.toLowerCase()),
+      );
+    }
+
+    if (count === 'all') {
+      return sorted;
+    }
+
+    const numericCount = parseInt(count as string, 10);
+    const startIndex = (parseInt(page) - 1) * numericCount;
+    const endIndex = startIndex + numericCount;
 
     return sorted.slice(startIndex, endIndex);
-  }, [method, products, count, page]);
+  }, [method, products, count, page, query]);
 
   const countPages = useMemo(() => {
-    return products ? Math.ceil(products.length / count) : 1;
+    if (!products) {
+      return 1;
+    }
+
+    if (count === 'all') {
+      return 1;
+    }
+
+    return Math.ceil(products.length / parseInt(count as string, 10));
   }, [count, products]);
+
+  const scrollToTop = (): void => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   const handleNextPage = () => {
     const nextPage = parseInt(page) + 1;
     const newParams = new URLSearchParams(searchParams);
 
     newParams.set('page', nextPage.toString());
+    scrollToTop();
     setSearchParams(newParams);
   };
 
@@ -79,9 +104,33 @@ export const Catalog: React.FC<Props> = ({ products }) => {
       const newParams = new URLSearchParams(searchParams);
 
       newParams.set('page', prevPage.toString());
+      scrollToTop();
       setSearchParams(newParams);
     }
   };
+
+  const handleQueryChange = debounce((value: string) => {
+    setQuery(value);
+    console.log('active!');
+  }, 500);
+
+  useEffect(() => {
+    const newParams = new URLSearchParams(searchParams);
+    const currentQuery = newParams.get('guery');
+
+    if (query) {
+      if (!currentQuery || currentQuery === query) {
+        newParams.set('query', query);
+      }
+    } else if (
+      (currentQuery && !query) ||
+      (currentQuery && query?.length === 0)
+    ) {
+      newParams.delete('query');
+    }
+
+    setSearchParams(newParams);
+  }, [query, searchParams, setSearchParams]);
 
   return (
     <div className={styles.catalog}>
@@ -94,11 +143,8 @@ export const Catalog: React.FC<Props> = ({ products }) => {
             value={method}
           >
             <option value={SortMethods.nawest}>{SortMethods.nawest}</option>
-            <option value={SortMethods.oldest}>{SortMethods.oldest}</option>
-            <option value={SortMethods.priceHigh}>
-              {SortMethods.priceHigh}
-            </option>
-            <option value={SortMethods.priceLow}>{SortMethods.priceLow}</option>
+            <option value={SortMethods.alph}>{SortMethods.alph}</option>
+            <option value={SortMethods.chapest}>{SortMethods.chapest}</option>
           </select>
         </div>
 
@@ -106,13 +152,27 @@ export const Catalog: React.FC<Props> = ({ products }) => {
           <p className={styles.catalog__sortName}>Items on Page</p>
           <select
             className={styles['catalog__select--2']}
-            onChange={e => setCount(parseInt(e.target.value))}
+            onChange={e =>
+              setCount(
+                e.target.value === 'all' ? 'all' : parseInt(e.target.value, 10),
+              )
+            }
           >
             <option value={16}>16</option>
-            <option value={14}>14</option>
-            <option value={12}>12</option>
-            <option value={10}>10</option>
+            <option value={8}>8</option>
+            <option value={4}>4</option>
+            <option value="all">All...</option>
           </select>
+        </div>
+
+        <div className={styles.catalog__queryWrapper}>
+          <p className={styles.catalog__sortName}>Search Product</p>
+          <input
+            className={styles.catalog__queryInput}
+            type="text"
+            placeholder="Enter Model Name"
+            onChange={e => handleQueryChange(e.target.value)}
+          />
         </div>
       </div>
 
@@ -132,33 +192,48 @@ export const Catalog: React.FC<Props> = ({ products }) => {
           <Loader />
         )}
       </div>
-      <div className={styles.catalog__pages}>
-        <button className={styles.catalog__button} onClick={handlePrevPage}>
-          {'<'}
-        </button>
 
-        {Array.from({ length: countPages }, (_, index) => {
-          return (
-            <button
-              key={index}
-              className={classNames(styles.catalog__button, {
-                [styles.catalog__button__active]: parseInt(page) === index + 1,
-              })}
-              onClick={() => {
-                const newParams = new URLSearchParams(searchParams);
+      {visibleProducts?.length === 0 && (
+        <>
+          <p>There are no products matching your criteria</p>
+          <img
+            src="/img/product-not-found.png"
+            alt="image"
+            style={{ height: '40vh' }}
+          />
+        </>
+      )}
+      {products && visibleProducts && visibleProducts.length > 0 && (
+        <div className={styles.catalog__pages}>
+          <button className={styles.catalog__button} onClick={handlePrevPage}>
+            {'<'}
+          </button>
 
-                newParams.set('page', (index + 1).toString());
-                setSearchParams(newParams);
-              }}
-            >
-              {index + 1}
-            </button>
-          );
-        })}
-        <button className={styles.catalog__button} onClick={handleNextPage}>
-          {'>'}
-        </button>
-      </div>
+          {Array.from({ length: countPages }, (_, index) => {
+            return (
+              <button
+                key={index}
+                className={classNames(styles.catalog__button, {
+                  [styles.catalog__button__active]:
+                    parseInt(page) === index + 1,
+                })}
+                onClick={() => {
+                  const newParams = new URLSearchParams(searchParams);
+
+                  newParams.set('page', (index + 1).toString());
+                  scrollToTop();
+                  setSearchParams(newParams);
+                }}
+              >
+                {index + 1}
+              </button>
+            );
+          })}
+          <button className={styles.catalog__button} onClick={handleNextPage}>
+            {'>'}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

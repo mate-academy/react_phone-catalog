@@ -24,7 +24,7 @@ export const Favourites: React.FC = () => {
 
   return (
     <div className={styles.favourites}>
-      {products ? (
+      {products && (
         <div className={styles.favourites__content}>
           <NavAdress />
           <h1 className={styles.favourites__title}>Favourites</h1>
@@ -42,8 +42,15 @@ export const Favourites: React.FC = () => {
             })}
           </div>
         </div>
-      ) : (
-        <p>There are no favourites</p>
+      )}
+      {products?.length === 0 && (
+        <img
+          src="/img/product-not-found.png"
+          alt="You dont have favourites products"
+          style={{
+            height: '40vh',
+          }}
+        />
       )}
     </div>
   );

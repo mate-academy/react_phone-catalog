@@ -26,6 +26,8 @@
   @include setSize(32px, 32px);
   border-radius: 50%;
   border: 1px solid $color-light-grey;
+  background-color: $color-white;
+  @include setFont($font-mont, 15px, 700);
 
   &:hover {
     border-color: $color-element-black;

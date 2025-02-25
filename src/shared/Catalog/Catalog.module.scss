@@ -19,9 +19,11 @@ select {
 
   &__parameters {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
     align-items: start;
     justify-content: start;
+    align-items: end;
     margin-right: auto;
   }
 
@@ -55,6 +57,8 @@ select {
 
   &__pages {
     @include flexCenter;
+    max-width: 250px;
+    flex-wrap: wrap;
     gap: 8px;
   }
 
@@ -65,5 +69,11 @@ select {
       background-color: $color-element-black;
       color: $color-white;
     }
+  }
+
+  &__queryInput {
+    height: 35px;
+    border: 1px solid $color-grey;
+    border-radius: 10px;
   }
 }

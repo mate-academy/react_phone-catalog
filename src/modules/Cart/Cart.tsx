@@ -72,13 +72,23 @@ export const Cart: React.FC = () => {
                   <button
                     className={styles.cart__closeButton}
                     onClick={() => removeProduct(DataNames.cart, item.itemId)}
-                  />
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}img/icons/Union.svg`}
+                      style={{
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </button>
+
                   <img
-                    src={item.image}
+                    src={`${import.meta.env.BASE_URL}${item.image}`}
                     alt="Product Image"
                     className={styles.cart__image}
                   />
+
                   <p className={styles.cart__name}>{item.name}</p>
+
                   <div className={styles.cart__count}>
                     <button
                       onClick={() => updateCount(item.itemId, -1)}
@@ -86,17 +96,35 @@ export const Cart: React.FC = () => {
                         styles.cart__button,
                         styles.cart__minus,
                       )}
-                    />
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL}img/icons/Minus.svg`}
+                        alt="imge"
+                        style={{
+                          objectFit: 'contain',
+                        }}
+                      />
+                    </button>
+
                     <p className={styles.cart__countValue}>
                       {countProducts[item.itemId]}
                     </p>
+
                     <button
                       onClick={() => updateCount(item.itemId, 1)}
                       className={classNames(
                         styles.cart__button,
                         styles.cart__plus,
                       )}
-                    />
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL}img/icons/Plus.svg`}
+                        alt="imge"
+                        style={{
+                          objectFit: 'contain',
+                        }}
+                      />
+                    </button>
                   </div>
 
                   <h3
@@ -106,6 +134,7 @@ export const Cart: React.FC = () => {
               );
             })}
           </div>
+
           <div className={styles.cart__checkout}>
             <div className={styles.cart__total}>
               <h2 className={styles.cart__totalPrice}>{`$${totalPrice}`}</h2>
@@ -117,7 +146,16 @@ export const Cart: React.FC = () => {
           </div>
         </div>
       ) : (
-        <p>there are no products</p>
+        <img
+          style={{
+            objectFit: 'cover',
+            maxWidth: '75%',
+            maxHeight: '45vh',
+            margin: 'auto',
+          }}
+          src="/img/cart-is-empty.png"
+          alt="your cart is empty"
+        />
       )}
     </div>
   );

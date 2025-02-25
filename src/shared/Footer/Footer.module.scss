@@ -5,6 +5,7 @@ img {
 }
 
 .footer {
+    bottom: 0;
     max-width: $element-max-width;
     box-sizing: border-box;
     margin-top: 80px;
@@ -73,7 +74,7 @@ img {
         @include setSize(32px, 32px);
         border-radius: 50%;
         border: 1px solid $color-light-grey;
-        background-image: url('/img/icons/toTop.svg');
+
         background-position: center;
         background-repeat: no-repeat;
         background-size: 50%;
