@@ -76,6 +76,5 @@ select {
     border: 1px solid $color-grey;
     border-radius: 10px;
     @include setFont($font-mont, 13px, 700);
-    color: $color-light-grey,
   }
 }

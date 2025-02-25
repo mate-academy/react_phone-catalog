@@ -27,7 +27,9 @@ export const Product: React.FC<Props> = ({
         maxWidth: isCatalog ? '1000px' : undefined,
         width: isCatalog ? '100%' : undefined,
       }}
-      onClick={() => navigate(`/${article.category}/${article.itemId}`)}
+      onClick={() =>
+        navigate(`/${article.category}/${article.itemId}`, { replace: true })
+      }
     >
       <img
         style={{ flex: 1 }}

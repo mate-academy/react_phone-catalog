@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './ProductInfo.module.scss';
 import { useInfoProduct } from '../../hooks/useInfoProduct';
 import { Products } from '../../shared/types/Products';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../../shared/types/ProductCard';
 import classNames from 'classnames';
 import { Loader } from '../../shared/Loader';
@@ -47,6 +47,7 @@ const aviableColors: Record<string, string> = {
 export const ProductInfo: React.FC = () => {
   const { product, getProductCard } = useInfoProduct();
   const [searchParams, setSeachParams] = useSearchParams();
+  const location = useLocation();
   const { category, modelName } = useParams<{
     category: Products;
     modelName: string;
@@ -67,13 +68,15 @@ export const ProductInfo: React.FC = () => {
       return;
     }
 
+    setCurrentProduct(null);
     getProductCard(category, modelName);
-  }, [category, modelName, getProductCard]);
+    console.log('activate custom hook');
+  }, [category, modelName, getProductCard, location]);
 
   useEffect(() => {
     if (product && !currentProduct) {
+      console.log('activate 2nd effect');
       const defaultProduct = product[0];
-
       const initialColor = searchParams.get('color') || defaultProduct.color;
       const initialCapacity =
         searchParams.get('capacity') || defaultProduct.capacity;
@@ -83,44 +86,54 @@ export const ProductInfo: React.FC = () => {
       setCapacity(initialCapacity);
       setActiveImg(defaultProduct.images[0]);
 
-      if (isFirstRender.current) {
+      if (
+        searchParams.get('color') !== initialColor ||
+        searchParams.get('capacity') !== initialCapacity
+      ) {
         const newParams = new URLSearchParams(searchParams);
 
         newParams.set('color', initialColor);
         newParams.set('capacity', initialCapacity);
         setSeachParams(newParams);
-        isFirstRender.current = false;
       }
+
+      isFirstRender.current = false;
     }
   }, [product, currentProduct, searchParams, setSeachParams]);
 
   useEffect(() => {
-    if (product && currentProduct) {
+    if (product && searchParams) {
       const newProduct = product.find(
         el =>
           el.capacity === searchParams.get('capacity') &&
           el.color === searchParams.get('color'),
       );
 
-      setCurrentProduct(newProduct);
-      setActiveImg(newProduct?.images[0]);
+      if (newProduct) {
+        setCurrentProduct(newProduct);
+        setActiveImg(newProduct.images[0]);
+      }
     }
-  }, [searchParams, product, currentProduct]);
+  }, [searchParams, product]);
 
   const handleColor = (newColor: string) => {
-    setColor(newColor);
-    const newParams = new URLSearchParams(searchParams);
+    if (newColor !== color) {
+      setColor(newColor);
+      const newParams = new URLSearchParams(searchParams);
 
-    newParams.set('color', newColor);
-    setSeachParams(newParams);
+      newParams.set('color', newColor);
+      setSeachParams(newParams);
+    }
   };
 
   const handleCapacity = (newCapacity: string) => {
-    setCapacity(newCapacity);
-    const newParams = new URLSearchParams(searchParams);
+    if (newCapacity !== capacity) {
+      setCapacity(newCapacity);
+      const newParams = new URLSearchParams(searchParams);
 
-    newParams.set('capacity', newCapacity);
-    setSeachParams(newParams);
+      newParams.set('capacity', newCapacity);
+      setSeachParams(newParams);
+    }
   };
 
   const findSameProducts = useCallback(async () => {

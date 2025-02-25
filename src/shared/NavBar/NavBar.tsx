@@ -61,11 +61,11 @@ export const NavBar: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const newIndex = location.pathname
-      .split('/')
-      .find(el => links.includes(el));
+    const newIndex = links.findIndex(el =>
+      location.pathname.includes(`/${el}`),
+    );
 
-    setLinkIndex(links.indexOf(newIndex || 'home'));
+    setLinkIndex(newIndex);
   }, [location]);
 
   useEffect(() => {
@@ -138,7 +138,13 @@ export const NavBar: React.FC = () => {
               })}
             </div>
             <div className={styles.wrapper}>
-              <div className={styles.icon}>
+              <div
+                className={styles.icon}
+                style={{
+                  border:
+                    linkIndex === 'favourites' ? '3px solid black' : undefined,
+                }}
+              >
                 <NavLink to="/favourites" className={styles.links__item}>
                   <img
                     src={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
