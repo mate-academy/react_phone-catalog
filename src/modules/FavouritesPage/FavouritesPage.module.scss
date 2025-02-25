@@ -1,0 +1,63 @@
+@import '../../styles/main';
+
+.favourites {
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+
+  &__content {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__header {
+    display: flex;
+  flex-direction: column;
+  gap: 16px;
+  }
+
+  &__title {
+    @include h1-typography;
+
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    @include body-typography;
+
+    color: $secondary;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: min-content;
+    border: none;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../media/icon/arrow-left.svg');
+  }
+
+  &__text {
+    @include small-text-typography;
+
+height: 12px;
+    color: $secondary;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

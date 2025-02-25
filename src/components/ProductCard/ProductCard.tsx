@@ -1,8 +1,7 @@
-import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../store/CartContext';
 import { Product } from '../../types/Product';
+import { AddAndLikeButtons } from '../AddAndLikeButtons';
 import styles from './ProductCard.module.scss';
 
 interface Props {
@@ -16,7 +15,6 @@ export const ProductCard: React.FC<Props> = ({
   isProductDetails,
   hot,
 }) => {
-  const { state, dispatch } = useCart();
   const { itemId, image, name, price, fullPrice, screen, capacity, ram } =
     product;
 
@@ -25,22 +23,6 @@ export const ProductCard: React.FC<Props> = ({
     { name: 'Сapacity', value: capacity },
     { name: 'RAM', value: ram },
   ];
-
-  const [isInCart, setIsInCart] = useState(
-    state.products.some(p => p.itemId === itemId),
-  );
-
-  useEffect(() => {
-    setIsInCart(state.products.some(p => p.itemId === itemId));
-  }, [state.products, itemId]);
-
-  const handleAdded = () => {
-    if (isInCart) {
-      dispatch({ type: 'REMOVE_PRODUCT', payload: { id: product.id } });
-    } else {
-      dispatch({ type: 'ADD_PRODUCT', payload: product });
-    }
-  };
 
   const handleScrollTo = () => {
     if (isProductDetails) {
@@ -83,23 +65,7 @@ export const ProductCard: React.FC<Props> = ({
           </div>
         ))}
       </div>
-      <div className={styles['product-card__buttons']}>
-        <button
-          className={classNames(
-            styles['product-card__button'],
-            styles['product-card__button--add'],
-            {
-              [styles['product-card__button--added']]: isInCart,
-            },
-          )}
-          onClick={handleAdded}
-        >
-          {isInCart ? 'Added to cart' : 'Add to cart'}
-        </button>
-        <button
-          className={`${styles['product-card__button']} ${styles['product-card__button--like']}`}
-        ></button>
-      </div>
+      <AddAndLikeButtons product={product} />
     </div>
   );
 };

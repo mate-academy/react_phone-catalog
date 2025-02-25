@@ -2,22 +2,25 @@
 
 .breadcrumbs {
   display: flex;
+  align-items: center;
   gap: 8px;
 
   &__crumb {
     list-style: none;
     display: flex;
-
+    align-items: center;
     gap: 8px;
+    height: 16px;
   }
 
   &__text {
-    font-family: Mont, sans-serif;
+    font-family: Mont-SemiBold, sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 15.34px;
     text-decoration: none;
     color: $primary;
+    height: 12px;
 
     &--current {
       color: $secondary;

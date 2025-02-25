@@ -14,35 +14,40 @@ import { categories } from './data/categories';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { CartPage } from './modules/CartPage';
 import { CartProvider } from './store/CartContext';
+import { FavouritesPage } from './modules/FavouritesPage';
+import { FavouritesProvider } from './store/FavouritesContext';
 
 export const Root = () => {
   return (
     <Router>
       <ProductsProvider>
         <CartProvider>
-          <div className="page">
-            <Layout>
-              <Routes>
-                <Route path="/" element={<App />}>
-                  <Route index element={<HomePage />} />
-                  <Route path="home" element={<Navigate to="/" />} />
-                  {categories.map(category => (
-                    <Route
-                      key={category.name}
-                      path={`/${category.name}`}
-                      element={<ProductPages category={category} />}
-                    />
-                  ))}
+          <FavouritesProvider>
+            <div className="page">
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<App />}>
+                    <Route index element={<HomePage />} />
+                    <Route path="home" element={<Navigate to="/" />} />
+                    {categories.map(category => (
+                      <Route
+                        key={category.name}
+                        path={`/${category.name}`}
+                        element={<ProductPages category={category} />}
+                      />
+                    ))}
 
-                  <Route
-                    path={`/product/:productId`}
-                    element={<ProductDetailsPage />}
-                  />
-                </Route>
-                <Route path="/cart" element={<CartPage />} />
-              </Routes>
-            </Layout>
-          </div>
+                    <Route
+                      path={`/product/:productId`}
+                      element={<ProductDetailsPage />}
+                    />
+                  </Route>
+                  <Route path="/cart" element={<CartPage />} />
+                  <Route path="/favourites" element={<FavouritesPage />} />
+                </Routes>
+              </Layout>
+            </div>
+          </FavouritesProvider>
         </CartProvider>
       </ProductsProvider>
     </Router>

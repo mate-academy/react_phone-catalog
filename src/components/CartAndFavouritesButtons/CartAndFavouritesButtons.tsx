@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useCart } from '../../store/CartContext';
+import { useFavourites } from '../../store/FavouritesContext';
 import styles from './CartAndFavouritesButtons.module.scss';
 
 interface Props {
@@ -13,16 +14,21 @@ export const CartAndFavouritesButtons: React.FC<Props> = ({
   variant,
   onLinkClick,
 }) => {
-  const { state } = useCart();
+  const { state: cartState } = useCart();
+  const { state: favouritesState } = useFavourites();
   const cartQuantity = useMemo(() => {
-    return state.products.reduce((a, c) => {
+    return cartState.products.reduce((a, c) => {
       if (!c.quantity) {
         return 0;
       }
 
       return a + c.quantity;
     }, 0);
-  }, [state.products]);
+  }, [cartState.products]);
+  const favouritesQuantity = useMemo(
+    () => favouritesState.products.length,
+    [favouritesState.products],
+  );
 
   return (
     <ul
@@ -47,7 +53,11 @@ export const CartAndFavouritesButtons: React.FC<Props> = ({
               styles['button__img--favourites'],
             )}
           >
-            {/*cartQuantity > 0 && <span className={styles.button__quantity}>{cartQuantity}</span>*/}
+            {favouritesQuantity > 0 && (
+              <span className={styles.button__span}>
+                <p className={styles.button__quantity}>{favouritesQuantity}</p>
+              </span>
+            )}
           </div>
         </NavLink>
       </li>
@@ -69,7 +79,9 @@ export const CartAndFavouritesButtons: React.FC<Props> = ({
             )}
           >
             {cartQuantity > 0 && (
-              <span className={styles.button__quantity}>{cartQuantity}</span>
+              <span className={styles.button__span}>
+                <p className={styles.button__quantity}>{cartQuantity}</p>
+              </span>
             )}
           </div>
         </NavLink>

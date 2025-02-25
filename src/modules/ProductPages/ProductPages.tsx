@@ -24,7 +24,7 @@ export const ProductPages: React.FC<Props> = ({ category }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [currentPage]);
 
   const filteredProducts = useMemo(() => {
     return products.filter(product => product.category === name);
@@ -68,7 +68,9 @@ export const ProductPages: React.FC<Props> = ({ category }) => {
           </p>
         </div>
         {loading ? (
-          <Loader />
+          <div className={styles['product-pages__loader']}>
+            <Loader />
+          </div>
         ) : (
           <div className={styles['product-pages__products']}>
             <ProductsFilters

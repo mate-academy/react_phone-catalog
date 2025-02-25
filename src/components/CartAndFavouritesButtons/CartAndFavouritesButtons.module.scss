@@ -87,7 +87,7 @@
     }
   }
 
-  &__quantity {
+  &__span {
     position: absolute;
     top: -45%;
     left: 50%;
@@ -97,15 +97,20 @@
     border-radius: 100%;
     border: 1px solid $white;
 
-    font-family: Mont, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__quantity {
+background-color: transparent;
+height: 8px;
+    font-family: Mont-SemiBold, sans-serif;
     font-weight: 600;
     font-size: 9px;
-    line-height: 11.5px;
+    line-height: 9px;
     letter-spacing: 0%;
     text-align: center;
     color: $white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }

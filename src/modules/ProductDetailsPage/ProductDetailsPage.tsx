@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { useMemo } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { AddAndLikeButtons } from '../../components/AddAndLikeButtons';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
 import { ProductImagesSlider } from '../../components/ProductImagesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import { useCart } from '../../store/CartContext';
 import { useProducts } from '../../store/ProductsContext';
 import { Colors } from '../../types/Colors';
 import {
@@ -19,8 +19,6 @@ import styles from './ProductDetailsPage.module.scss';
 type Product = Phone | Tablet | Accessory;
 
 export const ProductDetailsPage = () => {
-  const { state, dispatch } = useCart();
-
   const navigate = useNavigate();
   const { productId } = useParams();
 
@@ -42,10 +40,10 @@ export const ProductDetailsPage = () => {
     return category ? categoryMap[category] : [];
   }, [phones, accessories, tablets, product]);
 
-  if (!productId) {
+  if (!productId && !loading) {
     return (
       <div className={styles.product}>
-        <h2>Product not found</h2>
+        <h2 className={styles.product__title}>Product not found</h2>
       </div>
     );
   }
@@ -55,15 +53,18 @@ export const ProductDetailsPage = () => {
     | undefined;
 
   if (!productDetails) {
-    return (
+    return loading ? (
+      <div className={styles.product__loader}>
+        <Loader />
+      </div>
+    ) : (
       <div className={styles.product}>
-        <h2>Product not found</h2>
+        <h2 className={styles.product__title}>Product not found</h2>
       </div>
     );
   }
 
   const {
-    id,
     name,
     category,
     namespaceId,
@@ -115,20 +116,6 @@ export const ProductDetailsPage = () => {
     navigate(
       `/product/${namespaceId}-${currentCapacity.toLowerCase()}-${navigateColor}`,
     );
-  };
-
-  const isInCart = state.products.some(p => p.itemId === id);
-
-  const handleAdded = () => {
-    if (!product) {
-      return;
-    }
-
-    if (isInCart) {
-      dispatch({ type: 'REMOVE_PRODUCT', payload: { id: product.id } });
-    } else {
-      dispatch({ type: 'ADD_PRODUCT', payload: product });
-    }
   };
 
   return (
@@ -244,25 +231,7 @@ export const ProductDetailsPage = () => {
                   {'$' + priceRegular}
                 </p>
               </div>
-              <div
-                className={classNames(styles.product__buttons, styles.buttons)}
-              >
-                <button
-                  className={classNames(
-                    styles.buttons__button,
-                    styles['buttons__button--add'],
-                    {
-                      [styles['buttons__button--added']]: isInCart,
-                    },
-                  )}
-                  onClick={handleAdded}
-                >
-                  {isInCart ? 'Added to cart' : 'Add to cart'}
-                </button>
-                <button
-                  className={`${styles.buttons__button} ${styles['buttons__button--like']}`}
-                ></button>
-              </div>
+              {product && <AddAndLikeButtons product={product} />}
             </div>
             <div className={styles.product__specs}>
               {specs.slice(0, 4).map((spec, i) => (

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
 import { Modal } from '../../components/Modal';
 import { useCart } from '../../store/CartContext';
@@ -12,6 +13,10 @@ export const CartPage = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const quantity = state.products.reduce((a, c) => {
@@ -55,13 +60,16 @@ export const CartPage = () => {
 
   return (
     <div className={styles.cart}>
+      <Breadcrumbs />
       {loading ? (
         <Loader />
       ) : (
         <div className={styles.cart__content}>
           <div className={classNames(styles.cart__header, styles.header)}>
             <button
-              onClick={() => navigate(-1)}
+              onClick={() => {
+                navigate(-1);
+              }}
               className={styles.header__button}
             >
               <div className={styles.header__icon}></div>

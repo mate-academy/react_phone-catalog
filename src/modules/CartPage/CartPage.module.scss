@@ -13,7 +13,7 @@
     @include page-grid;
 
     row-gap: 32px;
-    padding-top: 16px;
+    padding-top: 40px;
   }
 
   &__header {
@@ -70,6 +70,7 @@
   &__text {
     @include small-text-typography;
 
+height: 12px;
     color: $secondary;
 
     &:hover {
