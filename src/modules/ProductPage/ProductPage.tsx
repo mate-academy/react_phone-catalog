@@ -4,7 +4,7 @@ import styles from './ProductPage.module.scss';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { ProductType } from '../../enums/ProductType';
 import { useEffect, useMemo, useState } from 'react';
-import productsFromServer from '../../api/products.json';
+import productsFromServer from '../../../public/api/products.json';
 import { ProductCard } from '../Shared/ProductCard';
 import classNames from 'classnames';
 import { getSearchWith } from '../../utils/searchHelper';

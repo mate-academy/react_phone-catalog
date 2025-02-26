@@ -55,6 +55,7 @@ html, body {
 
   &__navbarItem {
     @include uppercase;
+
     font-weight: 800;
     text-transform: uppercase;
     color: $secondary;
@@ -89,7 +90,7 @@ html, body {
   }
 
   &__menuButton:hover {
-    box-shadow: $border-color 0px 0px 0px 1px;
+    box-shadow: $border-color 0 0 0 1px;
   }
 
   &__menuIcon {
@@ -137,11 +138,12 @@ html, body {
   }
 
   &__iconLink:hover {
-    box-shadow: $border-color 0px 0px 0px 1px;
+    box-shadow: $border-color 0 0 0 1px;
   }
 
   &__iconLink:hover.is-active {
     box-shadow: none;
+
     @include hover(transform, scale(1));
   }
 
@@ -166,7 +168,7 @@ html, body {
 
   &__iconAmountText {
     color: #fff;
-    font-family: 'Mont-Regular', sans-serif;
+    font-family: Mont-Regular, sans-serif;
     font-size: 9px;
     line-height: 12px;
     font-weight: 700;

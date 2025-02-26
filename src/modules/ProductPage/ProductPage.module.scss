@@ -19,7 +19,7 @@
   }
 
   &__topHomeIcon {
-    background-image: url(./img/icons/home-icon.svg);
+    background-image: url(/img/icons/home-icon.svg);
     height: 16px;
     width: 16px;
 
@@ -33,6 +33,7 @@
 
   &__topText {
     @include small-text;
+
     font-weight: 600;
     color: $secondary;
     line-height: normal;
@@ -45,6 +46,7 @@
 
   &__modelsAmount {
     @include body-text;
+
     font-weight: 600;
     color: $secondary;
     grid-column: 1 / -1;
@@ -83,6 +85,7 @@
 
   &__dropDownMenuLabel {
     @include small-text;
+
     font-weight: 700;
     color: $secondary;
   }
@@ -106,12 +109,13 @@
 
   &__dropDownMenuButtonText {
     @include buttons;
+
     font-weight: 400;
     color: $primary;
   }
 
   &__dropDownMenuButtonIcon {
-    background-image: url(./img/icons/arrow-down-icon.svg);
+    background-image: url(/img/icons/arrow-down-icon.svg);
     height: 16px;
     width: 16px;
   }
@@ -153,7 +157,9 @@
     height: 32px;
     background-color: #fff;
     padding-left: 12px;
+
     @include body-text;
+
     font-weight: 600;
     color: $secondary;
     text-decoration: none;
@@ -182,6 +188,7 @@
 
   &__productCardsError {
     @include body-text;
+
     grid-column: 1 / -1;
   }
 
@@ -200,7 +207,7 @@
 
   &__paginationSwipeButton {
     cursor: pointer;
-    background-image: url(img/buttons/slider-button.svg);
+    background-image: url(/img/buttons/slider-button.svg);
     height: 32px;
     width: 32px;
     background-color: $main-page-color;
@@ -208,12 +215,12 @@
   }
 
   &__paginationSwipeButton:hover {
-    background-image: url(img/buttons/slider-button-hover.svg);
+    background-image: url(/img/buttons/slider-button-hover.svg);
   }
 
   &__paginationSwipeButton:disabled {
     cursor: not-allowed;
-    background-image: url(img/buttons/slider-button-disabled.svg);
+    background-image: url(/img/buttons/slider-button-disabled.svg);
   }
 
   &__paginationSwipeButtonLeft {
@@ -243,6 +250,7 @@
     background-color: $main-page-color;
 
     @include body-text;
+
     color: $primary;
     font-weight: 600;
   }

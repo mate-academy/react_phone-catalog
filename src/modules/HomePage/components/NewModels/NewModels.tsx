@@ -1,5 +1,5 @@
 import styles from './NewModels.module.scss';
-import products from '../../../../api/products.json';
+import products from '../../../../../public/api/products.json';
 import { ProductSlider } from '../../../Shared/ProductsSlider';
 
 export const NewModels = () => {

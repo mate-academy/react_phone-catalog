@@ -18,7 +18,7 @@
 
     @include on-tablet {
       flex-direction: row;
-      gap: 0px;
+      gap: 0;
       align-items: center;
     }
   }
@@ -54,6 +54,7 @@
 
   &__link {
     @include uppercase;
+
     display: flex;
     font-weight: 700;
     text-transform: uppercase;
@@ -79,6 +80,7 @@
 
   &__backToTopText {
     @include small-text;
+
     cursor: pointer;
     font-weight: 600;
     color: $secondary;
@@ -97,7 +99,7 @@
 
   &__backToTopButton {
     cursor: pointer;
-    background-image: url(img/buttons/slider-button.svg);
+    background-image: url(/img/buttons/slider-button.svg);
     height: 32px;
     width: 32px;
     rotate: (-90deg);
@@ -106,6 +108,6 @@
   }
 
   &__backToTopButton:hover {
-    background-image: url(img/buttons/slider-button-hover.svg);
+    background-image: url(/img/buttons/slider-button-hover.svg);
   }
 }

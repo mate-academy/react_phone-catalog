@@ -1,10 +1,6 @@
 @use '../../utils/mixins.scss' as *;
 @use '../../utils/variables.scss' as *;
 
-.favouritesContainer {
-  background-color: $main-page-color;
-}
-
 .favourites {
   display: flex;
   flex-direction: column;
@@ -20,7 +16,7 @@
   }
 
   &__breadcrumbsHomeIcon {
-    background-image: url(./img/icons/home-icon.svg);
+    background-image: url(/img/icons/home-icon.svg);
     height: 16px;
     min-width: 16px;
 
@@ -35,6 +31,7 @@
 
   &__breadcrumbsText {
     @include small-text;
+
     font-weight: 600;
     color: $primary;
     text-decoration: none;
@@ -52,6 +49,7 @@
 
   &__itemsAmount {
     @include body-text;
+
     color: $secondary;
     font-weight: 600;
   }

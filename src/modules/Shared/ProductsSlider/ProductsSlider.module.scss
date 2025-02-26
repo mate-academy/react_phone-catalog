@@ -41,7 +41,7 @@
 
   &__topSwipeButton {
     cursor: pointer;
-    background-image: url(img/buttons/slider-button.svg);
+    background-image: url(/img/buttons/slider-button.svg);
     height: 32px;
     width: 32px;
     border: 0;
@@ -49,12 +49,12 @@
   }
 
   &__topSwipeButton:hover {
-    background-image: url(img/buttons/slider-button-hover.svg);
+    background-image: url(/img/buttons/slider-button-hover.svg);
   }
 
   &__topSwipeButton:disabled {
     cursor: not-allowed;
-    background-image: url(img/buttons/slider-button-disabled.svg);
+    background-image: url(/img/buttons/slider-button-disabled.svg);
   }
 
   &__topSwipeButton:first-child {

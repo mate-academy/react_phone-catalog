@@ -9,7 +9,7 @@
   height: 440px;
   grid-column: 1 / -1;
   padding: 32px;
-  background-color: #ffffff;
+  background-color: #fff;
   border: 1px solid $border-color;
   border-radius: 8px;
 
@@ -64,6 +64,7 @@
 
   &__name {
     @include body-text;
+
     color: $primary;
     font-weight: 600;
     text-decoration: none;
@@ -77,7 +78,7 @@
 
   &__price {
     display: flex;
-    font-family: 'Mont-Bold', sans-serif;
+    font-family: Mont-Bold, sans-serif;
     color: $primary;
     font-size: 22px;
     line-height: 31px;
@@ -86,11 +87,10 @@
   }
 
   &__priceDiscount {
-    font-family: 'Mont-Regular', sans-serif;
+    font-family: Mont-Regular, sans-serif;
     color: $secondary;
     line-height: 28px;
     font-weight: 600;
-    color: #89939A;
     text-decoration: line-through;
   }
 
@@ -113,12 +113,14 @@
 
   &__specsLabel {
     @include small-text;
+
     font-weight: 700;
     color: $secondary;
   }
 
   &__specsValue {
     @include small-text;
+
     font-weight: 700;
     color: $primary;
   }
@@ -132,6 +134,7 @@
 
   &__addToCart {
     @include buttons;
+
     cursor: pointer;
     flex: 1;
     background-color: $button-color;
@@ -140,15 +143,15 @@
     height: 40px;
     width: 100%;
     font-weight: 700;
-    color: #ffffff;
+    color: #fff;
   }
 
   &__addToCart:hover {
-    filter: drop-shadow(0px 3px 5px #17203166);
+    filter: drop-shadow(0 3px 5px #17203166);
   }
 
   &__addToCart--is-active {
-    background-color: #ffffff;
+    background-color: #fff;
     color: $button-color;
     border: 1px solid $border-color;
     filter: none;
@@ -156,26 +159,26 @@
 
   &__addToFavourites {
     cursor: pointer;
-    background-image: url(./img/buttons/favourites-button.svg);
+    background-image: url(/img/buttons/favourites-button.svg);
     height: 40px;
     width: 40px;
-    background-color: #ffffff;
+    background-color: #fff;
     border: 0;
   }
 
   &__addToFavourites:hover {
-    background-image: url(./img/buttons/favourites-button-hover.svg);
+    background-image: url(/img/buttons/favourites-button-hover.svg);
   }
 
   &__addToFavourites:hover.productCard__addToFavourites--is-active {
-    background-image: url(./img/buttons/favourites-button-selected.svg);
+    background-image: url(/img/buttons/favourites-button-selected.svg);
   }
 
   &__addToFavourites--is-active {
-    background-image: url(./img/buttons/favourites-button-selected.svg);
+    background-image: url(/img/buttons/favourites-button-selected.svg);
   }
 }
 
 .productCard:hover {
-  box-shadow: $border-color 0px 7px 29px;
+  box-shadow: $border-color 0 7px 29px;
 }

@@ -30,7 +30,7 @@
   }
 
   &__breadcrumbsHomeIcon {
-    background-image: url(./img/icons/home-icon.svg);
+    background-image: url(/img/icons/home-icon.svg);
     height: 16px;
     min-width: 16px;
 
@@ -45,6 +45,7 @@
 
   &__breadcrumbsCategory {
     @include small-text;
+
     font-weight: 600;
     color: $secondary;
     text-decoration: none;
@@ -57,6 +58,7 @@
 
   &__breadcrumbsName {
     @include small-text;
+
     font-weight: 700;
     color: $secondary;
     overflow: hidden;
@@ -87,7 +89,9 @@
 
   &__backText {
     cursor: pointer;
+
     @include small-text;
+
     font-weight: 700;
     color: $secondary;
     text-decoration: none;
@@ -116,6 +120,7 @@
 
     @include on-tablet {
       grid-column: 1 / -1;
+
       @include page-grid;
     }
   }
@@ -222,6 +227,7 @@
   &__colorsAvailable,
   &__capacitySelect {
     @include small-text;
+
     font-weight: 600;
     color: $secondary;
   }
@@ -269,6 +275,7 @@
     border-radius: 4px;
 
     @include body-text;
+
     text-decoration: none;
     color: $primary;
   }
@@ -282,7 +289,7 @@
   &__price {
     display: flex;
     align-items: center;
-    font-family: 'Mont-Bold', sans-serif;
+    font-family: Mont-Bold, sans-serif;
     color: $primary;
     font-size: 32px;
     line-height: 41px;
@@ -292,12 +299,11 @@
   }
 
   &__priceDiscount {
-    font-family: 'Mont-Regular', sans-serif;
+    font-family: Mont-Regular, sans-serif;
     color: $secondary;
     font-size: 22px;
     line-height: 28px;
     font-weight: 500;
-    color: #89939A;
     text-decoration: line-through;
   }
 
@@ -310,6 +316,7 @@
 
   &__addToCartButton {
     @include buttons;
+
     cursor: pointer;
     flex: 1;
     background-color: $button-color;
@@ -318,15 +325,15 @@
     height: 48px;
     width: 100%;
     font-weight: 700;
-    color: #ffffff;
+    color: #fff;
   }
 
   &__addToCartButton:hover {
-    filter: drop-shadow(0px 3px 5px #17203166);
+    filter: drop-shadow(0 3px 5px #17203166);
   }
 
   &__addToCartButton--is-active {
-    background-color: #ffffff;
+    background-color: #fff;
     color: $button-color;
     border: 1px solid $border-color;
     filter: none;
@@ -334,7 +341,7 @@
 
   &__addToFavouritesButton {
     cursor: pointer;
-    background-image: url(./img/buttons/favourites-button.svg);
+    background-image: url(/img/buttons/favourites-button.svg);
     height: 48px;
     width: 48px;
     background-color: $main-page-color;
@@ -344,15 +351,15 @@
   }
 
   &__addToFavouritesButton:hover {
-    background-image: url(./img/buttons/favourites-button-hover.svg);
+    background-image: url(/img/buttons/favourites-button-hover.svg);
   }
 
   &__addToFavouritesButton:hover.productDetails__addToFavouritesButton--is-active {
-    background-image: url(./img/buttons/favourites-button-selected.svg);
+    background-image: url(/img/buttons/favourites-button-selected.svg);
   }
 
   &__addToFavouritesButton--is-active {
-    background-image: url(./img/buttons/favourites-button-selected.svg);
+    background-image: url(/img/buttons/favourites-button-selected.svg);
   }
 
   &__specs, &__techSpecsContainer {
@@ -369,12 +376,14 @@
 
   &__specsLabel, &__techSpecsLabel {
     @include small-text;
+
     font-weight: 600;
     color: $secondary;
   }
 
   &__specsValue, &__techSpecsValue {
     @include small-text;
+
     font-weight: 700;
     color: $primary;
   }
@@ -396,7 +405,7 @@
   }
 
   &__aboutTitle, &__techSpecsTitle {
-    margin: 0 0 16px 0;
+    margin: 0 0 16px;
   }
 
   &__aboutDescription {
@@ -418,6 +427,7 @@
 
   &__aboutDescriptionSectionText {
     @include body-text;
+
     font-weight: 600;
     color: $secondary;
   }

@@ -1,26 +1,26 @@
 @use './variables.scss' as *;
 
 @mixin uppercase {
-  font-family: 'Mont-Bold', sans-serif;
+  font-family: Mont-Bold, sans-serif;
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 0.04em;
 }
 
 @mixin buttons {
-  font-family: 'Mont-SemiBold', sans-serif;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   line-height: 21px;
 }
 
 @mixin small-text {
-  font-family: 'Mont-SemiBold', sans-serif;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   line-height: 15px;
 }
 
 @mixin body-text {
-  font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: 21px;
 }
