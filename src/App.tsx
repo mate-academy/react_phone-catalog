@@ -6,7 +6,7 @@ import { HomePage } from './modules/HomePage';
 import { Phones } from './modules/Phones';
 import { Tablets } from './modules/Tablets/Tablets';
 import { Accessories } from './modules/Accessories';
-import { ProductInfo } from './modules/ProductCard/ProductInfo';
+import { ProductInfo } from './modules/ProductInfo/ProductInfo';
 import { Cart } from './modules/Cart';
 import { Favourites } from './modules/Favourites/Favourites';
 

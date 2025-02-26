@@ -74,7 +74,7 @@ img {
         @include setSize(32px, 32px);
         border-radius: 50%;
         border: 1px solid $color-light-grey;
-
+        color: $color-element-black;
         background-position: center;
         background-repeat: no-repeat;
         background-size: 50%;

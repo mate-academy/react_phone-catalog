@@ -24,6 +24,7 @@
 
   &__title {
     @include setFont($font-mont, 48px, 800);
+    color: $color-element-black;
   }
 
   &__products {
@@ -65,6 +66,7 @@
 
   &__name {
     @include setFont($font-mont, 14px, 600);
+    color: $color-element-black;
 
     @include onPhone {
       max-width: 100px;
@@ -75,6 +77,7 @@
 
   &__count {
     @include flexCenter;
+    color: $color-element-black;
     gap: 12px;
   }
 
@@ -83,7 +86,7 @@
     @include flexCenter;
     border: 1px solid $color-element-white;
     border-radius: 50%;
-    background-color: $color-white;
+    background-color: white;
 
     &:hover {
       border-color: $color-hover-white;
@@ -92,6 +95,7 @@
 
   &__price {
     @include setFont($font-mont, 22px, 800);
+    color: $color-element-black;
   }
 
   &__checkout {
@@ -110,6 +114,7 @@
 
   &__total {
     width: 100%;
+    color: $color-element-black;
     @include flexCenter;
     flex-direction: column;
     border-bottom: 1px solid $color-element-white;

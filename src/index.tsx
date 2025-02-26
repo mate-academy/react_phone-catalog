@@ -3,13 +3,16 @@ import { HashRouter as Router } from 'react-router-dom';
 import { App } from './App';
 import { ProductProvider } from './context/ProductContext';
 import { StorageProvider } from './context/StorageContext';
+import { ThemeProvider } from './context/PageTheme';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Router>
-    <ProductProvider>
-      <StorageProvider>
-        <App />
-      </StorageProvider>
-    </ProductProvider>
+    <ThemeProvider>
+      <ProductProvider>
+        <StorageProvider>
+          <App />
+        </StorageProvider>
+      </ProductProvider>
+    </ThemeProvider>
   </Router>,
 );

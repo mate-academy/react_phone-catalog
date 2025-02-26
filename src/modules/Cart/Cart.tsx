@@ -1,14 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import styles from './Cart.module.scss';
 import { DataNames } from '../../hooks/useProductsStorage';
-import { getDataPublic } from '../../shared/functions/functions';
+import { getDataPublic } from '../../shared/functions/getDataPublic';
 import { Article } from '../../shared/types/Article';
 import classNames from 'classnames';
 import { useStorage } from '../../context/StorageContext';
 import { NavAdress } from '../../shared/NavAdress';
+import { useTheme } from '../../context/PageTheme';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Cart: React.FC = () => {
   const { cartItems, removeProduct } = useStorage();
+  const { theme } = useTheme();
   const [products, setProducts] = useState<Article[] | null>(null);
   const [countProducts, setCountProducts] = useState<{ [key: string]: number }>(
     {},
@@ -66,73 +69,85 @@ export const Cart: React.FC = () => {
       {cartItems && products ? (
         <div className={styles.cart__content}>
           <div className={styles.cart__products}>
-            {products.map((item: Article) => {
-              return (
-                <div key={item.id} className={styles.cart__product}>
-                  <button
-                    className={styles.cart__closeButton}
-                    onClick={() => removeProduct(DataNames.cart, item.itemId)}
+            <AnimatePresence>
+              {products.map((item: Article) => {
+                return (
+                  <motion.div
+                    initial={{ opacity: 0, x: '-80%' }}
+                    animate={{ opacity: 1, x: '0' }}
+                    exit={{ opacity: 0, x: '-80%' }}
+                    key={item.id}
+                    className={styles.cart__product}
                   >
+                    <button
+                      className={styles.cart__closeButton}
+                      onClick={() => removeProduct(DataNames.cart, item.itemId)}
+                    >
+                      <img
+                        src={
+                          theme === 'light'
+                            ? `${import.meta.env.BASE_URL}/img/icons/Union.svg`
+                            : `${import.meta.env.BASE_URL}/img/icons/dark_close.svg`
+                        }
+                        style={{
+                          objectFit: 'cover',
+                        }}
+                      />
+                    </button>
+
                     <img
-                      src={`${import.meta.env.BASE_URL}/img/icons/Union.svg`}
-                      style={{
-                        objectFit: 'cover',
-                      }}
+                      src={`${import.meta.env.BASE_URL}/${item.image}`}
+                      alt="Product Image"
+                      className={styles.cart__image}
                     />
-                  </button>
 
-                  <img
-                    src={`${import.meta.env.BASE_URL}/${item.image}`}
-                    alt="Product Image"
-                    className={styles.cart__image}
-                  />
+                    <p className={styles.cart__name}>{item.name}</p>
 
-                  <p className={styles.cart__name}>{item.name}</p>
+                    <div className={styles.cart__count}>
+                      <button
+                        onClick={() => updateCount(item.itemId, -1)}
+                        className={classNames(
+                          styles.cart__button,
+                          styles.cart__minus,
+                        )}
+                      >
+                        <img
+                          src={`${import.meta.env.BASE_URL}/img/icons/Minus.svg`}
+                          alt="imge"
+                          style={{
+                            objectFit: 'contain',
+                          }}
+                        />
+                      </button>
 
-                  <div className={styles.cart__count}>
-                    <button
-                      onClick={() => updateCount(item.itemId, -1)}
-                      className={classNames(
-                        styles.cart__button,
-                        styles.cart__minus,
-                      )}
-                    >
-                      <img
-                        src={`${import.meta.env.BASE_URL}/img/icons/Minus.svg`}
-                        alt="imge"
-                        style={{
-                          objectFit: 'contain',
-                        }}
-                      />
-                    </button>
+                      <p className={styles.cart__countValue}>
+                        {countProducts[item.itemId]}
+                      </p>
 
-                    <p className={styles.cart__countValue}>
-                      {countProducts[item.itemId]}
-                    </p>
+                      <button
+                        onClick={() => updateCount(item.itemId, 1)}
+                        className={classNames(
+                          styles.cart__button,
+                          styles.cart__plus,
+                        )}
+                      >
+                        <img
+                          src={`${import.meta.env.BASE_URL}img/icons/Plus.svg`}
+                          alt="imge"
+                          style={{
+                            objectFit: 'contain',
+                          }}
+                        />
+                      </button>
+                    </div>
 
-                    <button
-                      onClick={() => updateCount(item.itemId, 1)}
-                      className={classNames(
-                        styles.cart__button,
-                        styles.cart__plus,
-                      )}
-                    >
-                      <img
-                        src={`${import.meta.env.BASE_URL}img/icons/Plus.svg`}
-                        alt="imge"
-                        style={{
-                          objectFit: 'contain',
-                        }}
-                      />
-                    </button>
-                  </div>
-
-                  <h3
-                    className={styles.cart__price}
-                  >{`$${countProducts[item.itemId] * item.price}`}</h3>
-                </div>
-              );
-            })}
+                    <h3
+                      className={styles.cart__price}
+                    >{`$${countProducts[item.itemId] * item.price}`}</h3>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
 
           <div className={styles.cart__checkout}>

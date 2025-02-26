@@ -1,4 +1,5 @@
 @import '/src/shared/styles/index.scss';
+@import 'src/App.scss';
 
 $column-count: 24;
 $column-size: 32px;
@@ -30,6 +31,7 @@ $element-gap: 16px;
     grid-column: 1 / -1;
     @include setFont($font-mont, 32px, 800);
     margin: 0;
+    color: $color-element-black;
   }
 
   &__images {
@@ -61,7 +63,7 @@ $element-gap: 16px;
     @include flexCenter;
     @include setLimit(80px, 80px);
     width: 100%;
-    border: 1px solid $color-element-white;
+    border: 1px solid $color-white;
 
     @include onTablet {
       max-width: 35px;
@@ -182,7 +184,7 @@ $element-gap: 16px;
     @include setFont($font-mont, 14px, 500);
 
     &:hover {
-      border: 2px solid $color-element-black;
+      border: 2px solid black;
     }
   }
 
@@ -196,6 +198,7 @@ $element-gap: 16px;
     display: block;
     margin: 0;
     @include setFont($font-mont, 32px, 800);
+    color: $color-element-black;
   }
 
   &__priceFull {
@@ -207,10 +210,11 @@ $element-gap: 16px;
   &__buyButton {
     padding: 0;
     @include setSize(100%, 48px);
+    @include setFont($font-mont, 14px, 700);
+    color: white;
     max-width: 263px;
     background-color: $color-element-orange;
     border-radius: 10px;
-    color: $color-white;
     border: none;
     transition: all 0.3s;
 
@@ -300,6 +304,7 @@ $element-gap: 16px;
 
   &__techTitle {
     @include setFont($font-mont, 22px, 800);
+    color: $color-element-black;
   }
 
   &__techItem {

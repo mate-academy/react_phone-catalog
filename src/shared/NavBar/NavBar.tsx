@@ -5,26 +5,34 @@ import { useWindowWidth } from '../../hooks/WindowWidth';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useStorage } from '../../context/StorageContext';
+import { useTheme } from '../../context/PageTheme';
 
 const links = ['home', 'phones', 'tablets', 'accessories'];
 
-const ActiveLine = React.memo(() => (
-  <motion.div
-    layoutId="activeLine"
-    style={{
-      height: '5px',
-      position: 'absolute',
-      bottom: '-1px',
-      width: 'calc(100% - 10px)',
-      backgroundColor: '#000',
-    }}
-  />
-));
+const ActiveLine = React.memo(() => {
+  const { theme } = useTheme();
+
+  return (
+    <motion.div
+      layoutId="activeLine"
+      style={{
+        height: '5px',
+        position: 'absolute',
+        bottom: '-1px',
+        width: 'calc(100% - 10px)',
+        backgroundColor: theme === 'light' ? '#000' : '#fff',
+      }}
+    />
+  );
+});
 
 ActiveLine.displayName = 'ActiveLine';
 
 const LinkItem = React.memo(props => {
   const { item, isSelected, handleClick } = props;
+  const { theme } = useTheme();
+
+  //'#000' : '#89939A',
 
   return (
     <motion.div
@@ -36,7 +44,13 @@ const LinkItem = React.memo(props => {
       <NavLink
         style={{
           textTransform: 'uppercase',
-          color: isSelected ? '#000' : '#89939A',
+          color: isSelected
+            ? theme === 'light'
+              ? '#000'
+              : '#fff'
+            : theme === 'light'
+              ? '#89939A'
+              : '#fff',
         }}
         className={styles.links__item}
         to={`/${item}`}
@@ -59,6 +73,7 @@ export const NavBar: React.FC = () => {
   const windowWidth = useWindowWidth();
   const { cartItems, favouritesItems } = useStorage();
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const newIndex = links.findIndex(el =>
@@ -84,7 +99,11 @@ export const NavBar: React.FC = () => {
           <div className={styles.logo}>
             <img
               className={styles.logo__img}
-              src={`${import.meta.env.BASE_URL}/img/icons/Logo.svg`}
+              src={
+                theme === 'light'
+                  ? `${import.meta.env.BASE_URL}/img/icons/Logo.svg`
+                  : `${import.meta.env.BASE_URL}/img/dark_logo.svg`
+              }
               alt="Logo"
             />
           </div>
@@ -98,10 +117,14 @@ export const NavBar: React.FC = () => {
                 <NavLink
                   to="#"
                   onClick={() => setVisibleAside(false)}
-                  className={styles.links__item}
+                  className={styles.link_asideItem}
                 >
                   <img
-                    src={`${import.meta.env.BASE_URL}/img/icons/Close.svg`}
+                    src={
+                      theme === 'light'
+                        ? `${import.meta.env.BASE_URL}/img/icons/Close.svg`
+                        : `${import.meta.env.BASE_URL}/img/icons/dark_close.svg`
+                    }
                     alt="close"
                   />
                 </NavLink>
@@ -111,10 +134,14 @@ export const NavBar: React.FC = () => {
                 <NavLink
                   to="#"
                   onClick={() => setVisibleAside(true)}
-                  className={styles.links__item}
+                  className={styles.link_asideItem}
                 >
                   <img
-                    src={`${import.meta.env.BASE_URL}/img/icons/burgerMenu.svg`}
+                    src={
+                      theme === 'light'
+                        ? `${import.meta.env.BASE_URL}/img/icons/burgerMenu.svg`
+                        : `${import.meta.env.BASE_URL}/img/icons/dark_menu.svg`
+                    }
                     alt="menu"
                   />
                 </NavLink>
@@ -137,7 +164,26 @@ export const NavBar: React.FC = () => {
                 );
               })}
             </div>
+
             <div className={styles.wrapper}>
+              <button
+                onClick={() =>
+                  theme === 'light' ? setTheme('dark') : setTheme('light')
+                }
+                style={{
+                  backgroundColor: theme === 'light' ? '#fff' : '#B4BDC3',
+                  border: 'none',
+                }}
+              >
+                <img
+                  src={
+                    theme === 'light'
+                      ? `${import.meta.env.BASE_URL}/img/icons/theme_light.png`
+                      : `${import.meta.env.BASE_URL}/img/icons/theme_dark.png`
+                  }
+                  alt="theme"
+                />
+              </button>
               <div
                 className={styles.icon}
                 style={{
@@ -147,7 +193,11 @@ export const NavBar: React.FC = () => {
               >
                 <NavLink to="/favourites" className={styles.links__item}>
                   <img
-                    src={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
+                    src={
+                      theme === 'light'
+                        ? `${import.meta.env.BASE_URL}/img/icons/favourites.svg`
+                        : `${import.meta.env.BASE_URL}/img/icons/dark_like.svg`
+                    }
                     alt="favourites"
                   />
                   {cartItems.length > 0 && (
@@ -161,7 +211,11 @@ export const NavBar: React.FC = () => {
               <div className={styles.icon}>
                 <NavLink to="/case" className={styles.links__item}>
                   <img
-                    src={`${import.meta.env.BASE_URL}/img/icons/case.svg`}
+                    src={
+                      theme === 'light'
+                        ? `${import.meta.env.BASE_URL}/img/icons/case.svg`
+                        : `${import.meta.env.BASE_URL}/img/icons/dark_cart.svg`
+                    }
                     alt="case"
                   />
                   {favouritesItems.length > 0 && (
@@ -255,7 +309,11 @@ export const NavBar: React.FC = () => {
               >
                 <NavLink to="/favourites" className={styles.links__item}>
                   <img
-                    src={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
+                    src={
+                      theme === 'light'
+                        ? `${import.meta.env.BASE_URL}/img/icons/favourites.svg`
+                        : `${import.meta.env.BASE_URL}/img/icons/dark_like.svg`
+                    }
                     alt="favourites"
                   />
                   {favouritesItems.length > 0 && (
@@ -281,7 +339,11 @@ export const NavBar: React.FC = () => {
               >
                 <NavLink to="/case" className={styles.links__item}>
                   <img
-                    src={`${import.meta.env.BASE_URL}/img/icons/case.svg`}
+                    src={
+                      theme === 'light'
+                        ? `${import.meta.env.BASE_URL}/img/icons/case.svg`
+                        : `${import.meta.env.BASE_URL}/img/icons/dark_cart.svg`
+                    }
                     alt="case"
                   />
                   {cartItems.length > 0 && (

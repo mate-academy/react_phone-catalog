@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import styles from './Favourites.module.scss';
-import { getDataPublic } from '../../shared/functions/functions';
+import { getDataPublic } from '../../shared/functions/getDataPublic';
 import { Article } from '../../shared/types/Article';
 import { Product } from '../../shared/Product';
 import { useStorage } from '../../context/StorageContext';
 import { useWindowWidth } from '../../hooks/WindowWidth';
 import { NavAdress } from '../../shared/NavAdress';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Favourites: React.FC = () => {
   const { favouritesItems } = useStorage();
@@ -33,13 +34,19 @@ export const Favourites: React.FC = () => {
           >{`${favouritesItems.length} items`}</p>
 
           <div className={styles.favourites__list}>
-            {products.map((product: Article) => {
-              return (
-                <div key={product.id} className={styles.favourites__wrapper}>
+            <AnimatePresence mode="popLayout">
+              {products.map((product: Article) => (
+                <motion.div
+                  key={product.id}
+                  initial={{ opacity: 0, y: '-50%' }}
+                  animate={{ opacity: 1, y: '0' }}
+                  exit={{ opacity: 0, y: '+50%' }}
+                  className={styles.favourites__wrapper}
+                >
                   <Product isCatalog={windowWidth < 640} article={product} />
-                </div>
-              );
-            })}
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       )}

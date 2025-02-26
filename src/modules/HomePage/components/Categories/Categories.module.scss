@@ -36,11 +36,13 @@
 
     &__title {
         @include setFont($font-mont, 32px, 800);
+        color: $color-element-black;
     }
 
     &__name{
         margin: 24px 0 0 0;
         @include setFont($font-mont, 20px, 700);
+        color: $color-element-black;
     }
 
     &__value {

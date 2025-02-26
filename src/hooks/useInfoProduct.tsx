@@ -1,31 +1,29 @@
 import { useCallback, useState } from 'react';
 import { ProductCard } from '../shared/types/ProductCard';
-import { getDataPublic } from '../shared/functions/functions';
+import { getDataPublic } from '../shared/functions/getDataPublic';
 import { Products } from '../shared/types/Products';
 
 export const useInfoProduct = () => {
   const [product, setProduct] = useState<ProductCard[] | null>(null);
 
   const getProductCard = useCallback(
-    async (category: Products, name: string) => {
+    async (name: string, category: Products) => {
+      console.log(name);
+      console.log(category);
       try {
-        const response = await getDataPublic(category.toString());
+        const response = await getDataPublic(category, 10); // response – це масив
 
-        const findElement: ProductCard = response.find(
-          (el: ProductCard) => el.id === name,
-        );
         const filteredProducts = response.filter(
-          (el: ProductCard) =>
-            el.namespaceId === findElement.namespaceId &&
-            el.id !== findElement.id,
+          (el: ProductCard) => el.namespaceId === name,
         );
 
-        setProduct([findElement, ...filteredProducts]);
+        if (filteredProducts.length === 0) {
+          throw new Error('No matching products found');
+        }
+
+        setProduct(filteredProducts);
       } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(
-          `Problem with fetching data: ${error instanceof Error ? error.message : error}`,
-        );
+        console.error(`catch problem with custom hook ${error}`);
       }
     },
     [],

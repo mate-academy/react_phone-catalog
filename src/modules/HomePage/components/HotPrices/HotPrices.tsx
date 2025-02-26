@@ -14,8 +14,7 @@ export const HotPrices: React.FC = () => {
     const fetchData = async () => {
       const data = await checkData(Products.Phones);
       const filtered = data.filter(
-        (el: Article) =>
-          el.fullPrice >= el.price + 100,
+        (el: Article) => el.fullPrice >= el.price + 100,
       );
 
       setElements(filtered);

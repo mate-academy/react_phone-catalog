@@ -1,8 +1,9 @@
 @import '../styles/index.scss';
+@import 'src/App.scss';
 
 .link {
   @include setFont($font-mont, 12px, 700);
-  color: $color-element-black;
+  color: white;
   text-decoration: none;
 }
 

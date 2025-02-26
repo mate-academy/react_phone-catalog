@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Article } from '../../../../shared/types/Article';
 import styles from './Categories.module.scss';
-import { getDataPublic } from '../../../../shared/functions/functions';
+import { getDataPublic } from '../../../../shared/functions/getDataPublic';
 import { Products } from '../../../../shared/types/Products';
 import { useNavigate } from 'react-router-dom';
 import { Loader } from '../../../../shared/Loader';

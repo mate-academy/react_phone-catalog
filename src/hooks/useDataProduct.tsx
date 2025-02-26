@@ -1,6 +1,6 @@
 import { useCallback, useRef } from 'react';
 import { Article } from '../shared/types/Article';
-import { getDataPublic } from '../shared/functions/functions';
+import { getDataPublic } from '../shared/functions/getDataPublic';
 import { Products } from '../shared/types/Products';
 
 export const useDataProduct = () => {

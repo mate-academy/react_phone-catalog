@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './Product.module.scss';
 import { Article } from '../types/Article';
-import { useNavigate } from 'react-router-dom';
 import { DataNames } from '../../hooks/useProductsStorage';
 import classNames from 'classnames';
 import { useStorage } from '../../context/StorageContext';
+import { goToInfo } from '../functions/handleGoToInfo';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   article: Article;
@@ -17,8 +18,12 @@ export const Product: React.FC<Props> = ({
   fullPrice = false,
   isCatalog = false,
 }) => {
-  const navigate = useNavigate();
   const { findProduct, addProduct, removeProduct } = useStorage();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    goToInfo(navigate, article.itemId, article.category); // Передаємо navigate в goToInfo
+  };
 
   return (
     <article
@@ -27,9 +32,7 @@ export const Product: React.FC<Props> = ({
         maxWidth: isCatalog ? '1000px' : undefined,
         width: isCatalog ? '100%' : undefined,
       }}
-      onClick={() =>
-        navigate(`/${article.category}/${article.itemId}`, { replace: true })
-      }
+      onClick={() => handleClick()}
     >
       <img
         style={{ flex: 1 }}

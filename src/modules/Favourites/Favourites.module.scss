@@ -16,6 +16,7 @@
     &__title {
         @include setFont($font-mont, 48px, 800);
         margin: 40px 0 8px 0;
+        color: $color-element-black;
     }
 
     &__count {

@@ -6,6 +6,7 @@ import { HotPrices } from './components/HotPrices';
 import { Categories } from './components/Categories';
 import { NewModels } from './components/NewModels/NewModels';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const pcImages = [
   `${import.meta.env.BASE_URL}/img/banners/banner_1.svg`,
@@ -19,14 +20,12 @@ const phoneImages = [
   `${import.meta.env.BASE_URL}/img/banners/banner_3_phone.png`,
 ];
 
-
 export const HomePage: React.FC = () => {
   const [index, setIndex] = useState<number>(0);
   const windowWidth = useWindowWidth();
-  const [error, setError] = useState<string | null>(null);
   const visibleImages = windowWidth < 640 ? phoneImages : pcImages;
-  const threshold = 50; // Мінімальна відстань для розпізнавання свайпу
   const lastMotion = useRef<'left' | 'right'>('right');
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIndex(0);
@@ -101,6 +100,11 @@ export const HomePage: React.FC = () => {
         <div className={styles.wrapper}>
           <AnimatePresence mode="wait">
             <motion.img
+              onClick={() =>
+                navigate(
+                  '/phones/apple-iphone-14?capacity=128GB&color=midnight',
+                )
+              }
               key={visibleImages[index]}
               src={visibleImages[index]}
               alt="banner"

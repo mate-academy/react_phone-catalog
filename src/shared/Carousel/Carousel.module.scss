@@ -15,6 +15,7 @@
 
 .title {
   @include setFont($font-mont, 32px, 800);
+  color: $color-element-black;
 }
 
 .buttons {
@@ -28,6 +29,7 @@
   border: 1px solid $color-light-grey;
   background-color: $color-white;
   @include setFont($font-mont, 15px, 700);
+  color: $color-element-black;
 
   &:hover {
     border-color: $color-element-black;
