@@ -1,6 +1,4 @@
-const BASE_URL = 'https://janeshavrukova.github.io/react_phone-catalog/api';
-
-// const BASE_URL = 'http://localhost:3000/api';
+const BASE_URL = './api';
 
 const handleResponse = (response: Response) => {
   if (!response.ok) {
