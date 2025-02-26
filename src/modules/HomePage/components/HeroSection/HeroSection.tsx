@@ -7,7 +7,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section className={styles['hero-section']}>
       <div className="flex-center">
-        <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+        <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
       </div>
       <div className={styles['slider-container']}>
         <Slider />

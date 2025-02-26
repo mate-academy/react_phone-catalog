@@ -5,16 +5,22 @@ import { AnimatedRoutes } from './routes';
 import { Header } from './modules/Header';
 import { Footer } from './modules/Footer';
 import { Menu } from './modules/Menu';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Breadcrumbs } from './modules/Breadcrumb';
 import { useLocation } from 'react-router-dom';
 import { MainContext } from './context/MainContext';
 import { PageLoader } from './modules/PageLoader';
+import { ErrorQueries } from './enums/ErrorsQueries';
+import { Error } from './modules/Error';
 
 export const App = () => {
-  const { isMobile, isLoading } = useContext(MainContext);
+  const { isMobile, isLoading, isError, isEmptiness } = useContext(MainContext);
   const { pathname } = useLocation();
   const showBreadcrumbs = pathname !== '/' && pathname !== '/home';
+
+  useEffect(() => {
+    document.body.style.overflowY = isEmptiness ? 'hidden' : 'auto';
+  }, [isEmptiness]);
 
   return (
     <div className="App">
@@ -22,9 +28,15 @@ export const App = () => {
       <Header />
       {isMobile && <Menu />} {/* should be second */}
       {isLoading && <PageLoader />}
-      {showBreadcrumbs && <Breadcrumbs />}
-      <AnimatedRoutes />
-      <Footer />
+      {isError === ErrorQueries.loading ? (
+        <Error query={isError} />
+      ) : (
+        <>
+          {showBreadcrumbs && <Breadcrumbs />}
+          {!isError && <AnimatedRoutes />}
+          <Footer />
+        </>
+      )}
     </div>
   );
 };

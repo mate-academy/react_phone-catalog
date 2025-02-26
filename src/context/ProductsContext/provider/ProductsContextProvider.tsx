@@ -13,6 +13,7 @@ import { Categories } from '../../../modules/HomePage/components/Models/componen
 import { SearchContext } from '../../SearchContext';
 import { useLocation } from 'react-router-dom';
 import { ProductsCache } from '../../../types/CategoriesTypes/ProductsCache';
+import { ErrorQueries } from '../../../enums/ErrorsQueries';
 
 interface Props {
   children: React.ReactNode;
@@ -21,7 +22,8 @@ interface Props {
 export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
   // #region context
 
-  const { isDesktop, isTablet, setIsLoading } = useContext(MainContext);
+  const { isDesktop, isTablet, setIsLoading, setIsError, isError } =
+    useContext(MainContext);
   const { searchParams } = useContext(SearchContext);
 
   // #endregion
@@ -79,7 +81,10 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
     const category = currentProduct?.category;
     const namespaceId = currentProduct?.namespaceId;
 
-    if (namespaceId && suggestedProductsCache[namespaceId]) {
+    if (
+      (namespaceId && suggestedProductsCache[namespaceId]) ||
+      !currentProduct
+    ) {
       return;
     }
 
@@ -122,6 +127,7 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
         setSuggestedProducts(PRODUCTS);
       })
       .catch(() => {
+        setIsError(ErrorQueries.loading);
         throw new Error("Please check the file's path");
       });
   };
@@ -154,6 +160,7 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
           .then(response => response.json())
           .then(response => setState(response))
           .catch(() => {
+            setIsError(ErrorQueries.loading);
             throw new Error("Please check the file's path");
           });
       });
@@ -165,7 +172,7 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
 
     fetchAll();
     toogleLoading();
-  }, []);
+  }, [isError]);
 
   useEffect(() => {
     if (pathArrLength > 2 && currentProduct) {
@@ -202,7 +209,6 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
       IMAGE_PARAM,
       searchImageParam,
       currentImage,
-      getSuggestedProducts,
       setCurrentImage,
       setComebackLocations,
       setCurrentProduct,

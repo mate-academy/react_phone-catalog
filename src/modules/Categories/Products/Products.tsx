@@ -19,7 +19,7 @@ interface Props {
 export const Products: React.FC<Props> = ({ query }) => {
   // #region context
 
-  const { scrollToTopHandler } = useContext(MainContext);
+  const { scrollToTopHandler, setIsEmptiness } = useContext(MainContext);
   const { products } = useContext(ProductsContext);
   const {
     pageNumber,
@@ -99,6 +99,7 @@ export const Products: React.FC<Props> = ({ query }) => {
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const emptinessCondition = filteredProducts.length === 0;
 
   useEffect(() => scrollToTopHandler(0), []);
 
@@ -126,12 +127,25 @@ export const Products: React.FC<Props> = ({ query }) => {
     }
   }, [searchPageParam, perPage]);
 
-  // #endregion
+  useEffect(() => {
+    if (emptinessCondition) {
+      setIsEmptiness(true);
+    } else {
+      setIsEmptiness(false);
+    }
+  }, [emptinessCondition]);
 
-  return (
-    <div className={styles.products}>
-      <h1 className={styles.title}>{title}</h1>
-      <h2 className={styles.subtitle}>{filteredProducts.length} models</h2>
+  // #endregion
+  // #region markups
+
+  const noProductsMarkup = (
+    <h2 className={styles.title}>There are no {query} yet</h2>
+  );
+
+  const availableProductsMarkup = (
+    <>
+      <h2 className={styles.title}>{title}</h2>
+      <h3 className={styles.subtitle}>{filteredProducts.length} models</h3>
       <div className={styles['ds-wrapper']}>
         <DropdownSelection<SortBy>
           title={SORT_TITLE}
@@ -154,6 +168,14 @@ export const Products: React.FC<Props> = ({ query }) => {
       </div>
       <ProductsItems sortedProducts={resultingProducts} />
       {perPage !== PerPage.all && <Pagination pageNumbers={pageNumbers} />}
+    </>
+  );
+
+  // #endregion
+
+  return (
+    <div className={styles.products}>
+      {emptinessCondition ? noProductsMarkup : availableProductsMarkup}
     </div>
   );
 };

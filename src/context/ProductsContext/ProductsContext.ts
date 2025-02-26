@@ -14,7 +14,6 @@ export const ProductsContext = createContext<ProductsContextType>({
   IMAGE_PARAM: '',
   searchImageParam: null,
   currentImage: '',
-  getSuggestedProducts: () => {},
   setCurrentImage: () => {},
   setComebackLocations: () => {},
   setCurrentProduct: () => {},

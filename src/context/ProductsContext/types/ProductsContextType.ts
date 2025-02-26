@@ -19,7 +19,6 @@ export interface ProductsContextType {
   IMAGE_PARAM: string;
   searchImageParam: string | null;
   currentImage: string;
-  getSuggestedProducts: () => void;
   setCurrentImage: (value: string) => void;
   setComebackLocations: React.Dispatch<React.SetStateAction<CustomLocation[]>>;
   setCurrentProduct: (value: CurrentProduct | null) => void;

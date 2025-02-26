@@ -7,12 +7,13 @@ import { Phones } from '../modules/Categories/Phones';
 import { Tablets } from '../modules/Categories/Tablets';
 import { Accessories } from '../modules/Categories/Accessories';
 import { NavLinks } from '../enums/NavLinks';
-import { PageNotFound } from '../modules/PageNotFound';
+import { Error } from '../modules/Error';
 import { Navigation } from './types/Navigation';
 import { ProductsContext } from '../context/ProductsContext';
-import { CurrentProduct } from '../context/ProductsContext/types/CurrentProduct';
 import { ProductDetails } from '../modules/ProductDetails';
 import { CardsContext } from '../context/CardsContext/CardsContext';
+import { ErrorQueries } from '../enums/ErrorsQueries';
+import { MainContext } from '../context/MainContext';
 
 export const AnimatedRoutes: React.FC = React.memo(() => {
   // #region context
@@ -25,6 +26,7 @@ export const AnimatedRoutes: React.FC = React.memo(() => {
     categories,
     setCurrentProduct,
   } = useContext(ProductsContext);
+  const { setIsEmptiness, isEmptiness } = useContext(MainContext);
   const { ymalCardIndex, setYmalCardIndex } = useContext(CardsContext);
 
   // #endregion
@@ -43,18 +45,28 @@ export const AnimatedRoutes: React.FC = React.memo(() => {
 
       const product = categories[category].find(
         _product => _product.id === itemId,
-      ) as CurrentProduct;
+      );
 
-      setCurrentProduct(product);
+      if (product) {
+        setCurrentProduct(product);
+      } else {
+        setIsEmptiness(true);
+      }
+
+      return () => {
+        setCurrentProduct(null);
+
+        if (isEmptiness) {
+          setIsEmptiness(false);
+        }
+
+        if (ymalCardIndex !== 0) {
+          setYmalCardIndex(0);
+        }
+      };
     }
 
-    return () => {
-      setCurrentProduct(null);
-
-      if (ymalCardIndex !== 0) {
-        setYmalCardIndex(0);
-      }
-    };
+    return () => {};
   }, [currentProduct, phones, tablets, accessories, pathname]);
 
   // #endregion
@@ -75,14 +87,11 @@ export const AnimatedRoutes: React.FC = React.memo(() => {
         return (
           <React.Fragment key={`${value}-${index}`}>
             <Route path={`/${key}`} key={key} element={value} />
-            <Route
-              path={`/${key}/:productId`}
-              element={currentProduct && <ProductDetails />}
-            />
+            <Route path={`/${key}/:productId`} element={<ProductDetails />} />
           </React.Fragment>
         );
       })}
-      <Route path="/*" element={<PageNotFound />} />
+      <Route path="/*" element={<Error query={ErrorQueries.pageNotFound} />} />
     </Routes>
   );
 });

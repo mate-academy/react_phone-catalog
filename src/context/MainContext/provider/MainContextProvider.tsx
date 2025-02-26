@@ -15,13 +15,14 @@ import { animateScroll } from 'react-scroll';
 import { MainContext } from '../MainContext';
 import { MainContextType } from '../types/MainContextType';
 import { ProductsContext } from '../../ProductsContext';
+import { ErrorType } from '../types/ErrorType';
 
 interface Props {
   children: React.ReactNode;
 }
 
 export const MainContextProvider: React.FC<Props> = ({ children }) => {
-  const { currentProduct, setComebackLocations } = useContext(ProductsContext);
+  const { setComebackLocations } = useContext(ProductsContext);
 
   // #region responsive
 
@@ -34,7 +35,9 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
 
   const [imgIndex, setImgIndex] = useState(0);
   const [isMenuShowed, setIsMenuShowed] = useState(false);
+  const [isError, setIsError] = useState<ErrorType>('');
   const [isLoading, setIsLoading] = useState(true);
+  const [isEmptiness, setIsEmptiness] = useState(false);
 
   // #endregion
   // #region variables
@@ -63,15 +66,7 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
     animateScroll.scrollToTop({ duration, smooth: true });
   };
 
-  const modelOnClickHandler = (
-    name: string,
-    category: string,
-    itemId: string,
-  ) => {
-    if (currentProduct?.name === name) {
-      return scrollToTopHandler(1000);
-    }
-
+  const modelOnClickHandler = (category: string, itemId: string) => {
     setComebackLocations(locations => [...locations, location]);
     setIsLoading(true);
     navigate(`/${category}/${itemId}`);
@@ -91,12 +86,16 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
       imgIndex,
       isOnHomePage,
       isLoading,
+      isError,
+      isEmptiness,
       modelOnClickHandler,
       scrollToTopHandler,
       setIsMenuShowed,
       setImgIndex,
       repeatColor,
       setIsLoading,
+      setIsError,
+      setIsEmptiness,
     }),
     [
       imgIndex,
@@ -106,6 +105,8 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
       isOnHomePage,
       isTablet,
       isLoading,
+      isError,
+      isEmptiness,
     ],
   );
 

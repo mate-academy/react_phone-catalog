@@ -15,7 +15,6 @@ $hover-gradient: linear-gradient(to right, #891ce8, #7561fa, #e963ff);
 
 // #endregion
 
-$header-height: 48px;
 $light-border-value: 1px solid $element-color;
 $icons-border-value: 1px solid $icons-color;
 $focus-border-value: 1px solid $green-color;
@@ -36,4 +35,5 @@ $g-gap: 16px;
   defaultTransDur: $default-trans-dur;
   primaryColor: $primary-color;
   elementColor: $element-color;
+  categoriesMt: var(--categories-mt);
 }

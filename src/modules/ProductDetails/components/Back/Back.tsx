@@ -1,16 +1,14 @@
 import React, { useContext } from 'react';
-import { LeftArrowSVG } from '../../../../../../svgs/LeftArrowSVG';
 import styles from './Back.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { ProductsContext } from '../../../../../../context/ProductsContext';
-// eslint-disable-next-line max-len
-import { CurrentProduct } from '../../../../../../context/ProductsContext/types/CurrentProduct';
+import { ProductsContext } from '../../../../context/ProductsContext';
+import { LeftArrowSVG } from '../../../../svgs/LeftArrowSVG';
 
 export const Back: React.FC = () => {
-  const navigate = useNavigate();
-  const { comebackLocations, currentProduct, setComebackLocations } =
+  const { comebackLocations, setComebackLocations } =
     useContext(ProductsContext);
-  const { category } = currentProduct as CurrentProduct;
+
+  const navigate = useNavigate();
 
   const onClickHandler = () => {
     if (comebackLocations.length > 0) {
@@ -20,7 +18,7 @@ export const Back: React.FC = () => {
       return;
     }
 
-    navigate(`/${category}`);
+    navigate(-1);
   };
 
   return (

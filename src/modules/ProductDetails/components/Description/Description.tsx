@@ -4,7 +4,6 @@ import React, { useContext, useEffect } from 'react';
 import { CurrentProduct } from '../../../../context/ProductsContext/types/CurrentProduct';
 import { HeroSection } from './components/HeroSection';
 import { MainContext } from '../../../../context/MainContext';
-import { Back } from './components/Back';
 import { ProductsContext } from '../../../../context/ProductsContext';
 import { About } from './components/About';
 import { TechSpecs } from './components/TechSpecs';
@@ -18,16 +17,13 @@ export const Description: React.FC = () => {
   useEffect(() => scrollToTopHandler(0), []);
 
   return (
-    <div>
-      <Back />
-      <main>
-        <h1 className={styles.title}>{name}</h1>
-        <HeroSection />
-        <div className={styles.wrapper}>
-          <About />
-          <TechSpecs />
-        </div>
-      </main>
-    </div>
+    <main>
+      <h2 className={styles.title}>{name}</h2>
+      <HeroSection />
+      <div className={styles.wrapper}>
+        <About />
+        <TechSpecs />
+      </div>
+    </main>
   );
 };

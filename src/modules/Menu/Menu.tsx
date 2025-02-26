@@ -10,7 +10,9 @@ export const Menu: React.FC = () => {
   const { isMenuShowed, setIsMenuShowed } = useContext(MainContext);
   const { pathname } = useLocation();
 
-  document.body.style.overflowY = isMenuShowed ? 'hidden' : 'visible';
+  useEffect(() => {
+    document.body.style.overflowY = isMenuShowed ? 'hidden' : 'visible';
+  }, [isMenuShowed]);
 
   useEffect(() => {
     if (isMenuShowed) {

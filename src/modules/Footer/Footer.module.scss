@@ -8,6 +8,7 @@
   justify-content: center;
   padding-block: 32px;
   border-top: $light-border-value;
+  background-color: #fff;
 
   @include on-tablet {
     padding: 0;

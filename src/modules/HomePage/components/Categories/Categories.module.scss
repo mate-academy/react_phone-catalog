@@ -1,27 +1,11 @@
 @import '../../../../App.scss';
 
 .categories {
-  // #region variables
-
-  --categories-mt: 56px;
-
-  @include on-tablet {
-    --categories-mt: 64px;
-  }
-
-  @include on-desktop {
-    --categories-mt: 80px;
-  }
-
-  // #endregion
-
-  & {
-    margin-top: calc(
-      var(--product-height) + var(--categories-mt) + var(--models-mt)
-    );
-    width: var(--container-width);
-    margin-inline: auto;
-  }
+  margin-top: calc(
+    var(--product-height) + var(--categories-mt) + var(--models-mt)
+  );
+  width: var(--container-width);
+  margin-inline: auto;
 
   @include on-tablet {
     width: 100%;

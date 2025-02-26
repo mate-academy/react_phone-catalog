@@ -1,3 +1,5 @@
+import { ErrorType } from './ErrorType';
+
 export interface MainContextType {
   isMobile: boolean;
   isTablet: boolean;
@@ -8,10 +10,14 @@ export interface MainContextType {
   imgIndex: number;
   isOnHomePage: boolean;
   isLoading: boolean;
-  modelOnClickHandler: (name: string, category: string, itemId: string) => void;
+  isError: ErrorType;
+  isEmptiness: boolean;
+  modelOnClickHandler: (category: string, itemId: string) => void;
   scrollToTopHandler: (value: number) => void;
   setIsMenuShowed: (value: boolean) => void;
   setImgIndex: React.Dispatch<React.SetStateAction<number>>;
   repeatColor: (query: string, times: number) => void;
   setIsLoading: (value: boolean) => void;
+  setIsError: React.Dispatch<React.SetStateAction<ErrorType>>;
+  setIsEmptiness: (value: boolean) => void;
 }

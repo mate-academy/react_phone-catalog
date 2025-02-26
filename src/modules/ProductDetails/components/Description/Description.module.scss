@@ -6,6 +6,7 @@
   font-family: Mont-Bold;
   font-size: 22px;
   line-height: 30.8px;
+  color: $primary-color;
 
   @include on-tablet {
     font-size: 32px;

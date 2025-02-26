@@ -6,14 +6,10 @@
   right: 0;
   top: 0;
   display: flex;
-  height: $header-height;
+  height: var(--header-height);
   justify-content: space-between;
   z-index: 100;
   background-color: #fff;
-
-  @include on-desktop {
-    height: $header-height + 16px;
-  }
 
   .container {
     display: flex;
