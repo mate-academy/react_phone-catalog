@@ -1,0 +1,344 @@
+@use '../../utils/mixins.scss' as *;
+@use '../../utils/variables.scss' as *;
+
+.shoppingCart {
+  @include content-padding-inline;
+
+  @include on-desktop {
+    @include page-grid;
+  }
+
+  &__back {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    padding-top: 24px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &__backArrow {
+    cursor: pointer;
+    background-image: url(/img/buttons/swipe-button-left.svg);
+    height: 16px;
+    width: 16px;
+    border: 0;
+    background-color: $main-page-color;
+  }
+
+  &__backText {
+    cursor: pointer;
+    @include small-text;
+    font-weight: 700;
+    color: $secondary;
+    text-decoration: none;
+    line-height: normal;
+    border: 0;
+    background-color: $main-page-color;
+    padding: 0;
+  }
+
+  &__backText:hover {
+    color: $primary;
+  }
+
+  &__title {
+    padding-top: 24px;
+    margin: 0;
+    grid-column: 1 / -1;
+  }
+
+  &__productsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-block: 32px;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+    background-color: #fff;
+    border-radius: 16px;
+    border: 1px solid $border-color;
+  }
+
+  &__cardTop {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__cardTopDeleteButton {
+    cursor: pointer;
+    background-image: url(./img/icons/close-icon-grey.svg);
+    width: 16px;
+    height: 16px;
+    border: 0;
+    background-color: #fff;
+  }
+
+  &__cardTopImageLink {
+    box-sizing: border-box;
+    height: 80px;
+    width: 80px;
+    padding: 7px;
+  }
+
+  &__cardTopImageLink:hover {
+    @include hover(transform, scale(1.02));
+  }
+
+  &__cardTopImage {
+    height: 100%;
+  }
+
+  &__cardTopName {
+    @include body-text;
+    color: $primary;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  &__cardTopName:hover {
+    text-shadow: 2px 2px 5px $text-shadow-color;
+  }
+
+  &__cardBottom {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__cardBottomCounter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__cardBottomCounterButton {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
+    border: 1px solid #B4BDC3;
+    background-color: #fff;
+  }
+
+  &__cardBottomCounterButton:hover {
+    border-color: $primary;
+  }
+
+  &__cardBottomCounterButton:disabled {
+    cursor: not-allowed;
+    border-color: $border-color;
+  }
+
+  &__cardBottomCounterMinus {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__cardBottomCounterMinus--is-active {
+    background-image: url(./img/icons/minus-icon.svg);
+  }
+
+  &__cardBottomCounterMinus--disabled {
+    background-image: url(./img/icons/minus-grey-icon.svg);
+  }
+
+  &__cardBottomCounterPlus {
+    background-image: url(./img/icons/plus-icon.svg);
+    width: 16px;
+    height: 16px;
+  }
+
+  &__cardBottomCounterCount {
+    @include body-text;
+    color: $primary;
+    font-weight: 600;
+  }
+
+  &__cardBottomPrice {
+    font-family: 'Mont-Bold', sans-serif;
+    color: $primary;
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 800;
+  }
+
+  &__checkout {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 16px;
+    border: 1px solid $border-color;
+    padding: 24px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 32px;
+      gap: 24px;
+      grid-column: 17 / -1;
+      height: 206px;
+    }
+  }
+
+  &__checkoutTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__checkoutTopTotalPrice {
+    font-family: 'Mont-Bold', sans-serif;
+    color: $primary;
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+  }
+
+  &__checkoutTopText {
+    @include body-text;
+    color: $secondary;
+    font-weight: 600;
+  }
+
+  &__checkoutDivider {
+    width: 100%;
+    border: 1px solid $border-color;
+  }
+
+  &__checkoutButton {
+    cursor: pointer;
+    height: 48px;
+    width: 100%;
+    border-radius: 48px;
+    border: 0;
+    background-color: $button-color;
+    color: #fff;
+    font-weight: 700;
+    @include buttons;
+  }
+
+  &__checkoutButton:hover {
+    border: 1px solid $button-color;
+    background-color: #fff;
+    color: $button-color;
+    font-weight: 700;
+    @include buttons;
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__dialogContainer {
+    border-radius: 8px;
+    border: 1px solid $border-color;
+    position: relative;
+    overflow: visible;
+    margin-inline: 24px;
+
+    @include on-tablet {
+      margin: auto;
+    }
+  }
+
+  &__dialogContainer::backdrop {
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+
+  &__dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    padding: 36px 16px 28px;
+    border-radius: 8px;
+  }
+
+  &__dialogText {
+    margin: 0;
+  }
+
+  &__dialogButtonsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__dialogButton {
+    cursor: pointer;
+    height: 44px;
+    width: 200px;
+    border-radius: 48px;
+    border: 0;
+    background-color: $button-color;
+    color: #fff;
+    font-weight: 700;
+    @include buttons;
+
+    @include hover(transform, scale(0.99));
+  }
+
+  &__dialogButton:last-child {
+    background-color: #fff;
+    color: $button-color;
+    border: 1px solid $button-color;
+  }
+
+  &__dialogButton:hover {
+    filter: drop-shadow(0px 3px 3px $secondary);
+  }
+
+  &__dialogClose {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: $border-color;
+    border-radius: 16px;
+    border: 1px solid $primary;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+
+    @include hover(transform, scale(0.97));
+  }
+
+  &__dialogCloseButton {
+    background-image: url(./img/icons/close-icon.svg);
+    width: 16px;
+    height: 16px;
+  }
+}

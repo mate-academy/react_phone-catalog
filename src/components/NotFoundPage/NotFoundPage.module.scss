@@ -1,0 +1,21 @@
+@use '../../utils/mixins.scss' as *;
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include content-padding-inline;
+
+  @include on-desktop {
+    flex-direction: row;
+  }
+
+  &__image {
+    margin-block: 32px;
+
+    @include on-desktop {
+      height: 450px;
+    }
+  }
+}

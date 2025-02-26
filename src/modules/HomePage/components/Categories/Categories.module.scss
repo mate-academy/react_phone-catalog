@@ -1,0 +1,105 @@
+@use '../../../../utils/mixins.scss' as *;
+@use '../../../../utils/variables.scss' as *;
+
+.categories {
+  @include page-grid;
+  @include content-padding-inline;
+
+  &__title {
+    color: $primary;
+    font-weight: 800;
+    margin: 0;
+    grid-column: -1 / 1;
+  }
+
+  &__container {
+    grid-column: -1 / 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      @include page-grid;
+    }
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__categoryLink {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    padding-top: 40px;
+    padding-left: 40px;
+    border-radius: 8px;
+  }
+
+  &__categoryLink--phones {
+    background-color: #534e57;
+  }
+
+  &__categoryLink--tablets {
+    background-color: #817e7f;
+  }
+
+  &__categoryLink--accessories {
+    background-color: #f3d0db;
+  }
+
+  &__categoryImage {
+    height: 125%;
+    width: 125%;
+    object-fit: contain;
+  }
+
+  &__categoryImage:hover {
+    @include hover(transform, scale(1.03))
+  }
+
+  &__categoryDescription {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 24px;
+    gap: 4px;
+  }
+
+  &__categoryDescriptionTitle {
+    font-family: 'Mont-SemiBold', sans-serif;
+    font-size: 20px;
+    line-height: 26px;
+    color: $primary;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 0;
+  }
+
+  &__categoryDescriptionTitle:hover {
+    text-shadow: 2px 2px 5px $text-shadow-color;
+  }
+
+  &__categoryDescriptionText {
+    @include body-text;
+
+    font-weight: 600;
+    text-decoration: none;
+    color: $secondary;
+    margin: 0;
+  }
+
+  &__categoryDescriptionText:hover {
+    text-shadow: 1px 1px 5px $text-shadow-color;
+  }
+}

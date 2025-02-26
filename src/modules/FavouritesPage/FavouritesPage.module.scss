@@ -1,0 +1,73 @@
+@use '../../utils/mixins.scss' as *;
+@use '../../utils/variables.scss' as *;
+
+.favouritesContainer {
+  background-color: $main-page-color;
+}
+
+.favourites {
+  display: flex;
+  flex-direction: column;
+
+  @include content-padding-inline;
+
+  &__breadcrumbs {
+    display: flex;
+    align-items: center;
+    padding-top: 24px;
+    gap: 8px;
+    height: 16px;
+  }
+
+  &__breadcrumbsHomeIcon {
+    background-image: url(./img/icons/home-icon.svg);
+    height: 16px;
+    min-width: 16px;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__breadcrumbsArrowIcon {
+    background-image: url(/img/icons/arrow-right-icon.svg);
+    height: 16px;
+    min-width: 16px;
+  }
+
+  &__breadcrumbsText {
+    @include small-text;
+    font-weight: 600;
+    color: $primary;
+    text-decoration: none;
+    line-height: normal;
+  }
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__itemsAmount {
+    @include body-text;
+    color: $secondary;
+    font-weight: 600;
+  }
+
+  &__productCards {
+    flex-direction: column;
+    margin-top: 32px;
+    margin-bottom: 56px;
+    row-gap: 40px;
+
+    @include page-grid;
+
+    @include on-tablet {
+      margin-top: 40px;
+      margin-bottom: 64px;
+    }
+  }
+}
+

@@ -1,0 +1,179 @@
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
+html, body {
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $border-color;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logoLink {
+    display: flex;
+  }
+
+  &__logo {
+    height: 48px;
+    width: 96px;
+    margin-right: 16px;
+
+    @include on-desktop {
+      height: 64px;
+      width: 128px;
+      margin-right: 24px;
+    }
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__navbar {
+    display: none;
+    gap: 32px;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-desktop {
+      display: flex;
+      gap: 64px;
+    }
+  }
+
+  &__navbarItem {
+    @include uppercase;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: $secondary;
+    text-decoration: none;
+    padding-block: 17px;
+
+    @include on-desktop {
+      padding-block: 25px;
+    }
+  }
+
+  &__navbarItem:hover {
+    color: $primary;
+  }
+
+  &__iconsContainer {
+    display: flex;
+  }
+
+  &__menuButton {
+    @include menu-close-button;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+
+    @include hover(transform, scale(0.98));
+  }
+
+  &__menuButton:hover {
+    box-shadow: $border-color 0px 0px 0px 1px;
+  }
+
+  &__menuIcon {
+    height: 16px;
+    width: 16px;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__closeIcon {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__icon {
+    display: flex;
+    position: relative;
+  }
+
+  &__iconLink {
+    display: none;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 48px;
+    border-left: 1px solid $border-color;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+
+    @include hover(transform, scale(0.98));
+  }
+
+  &__iconLink:hover {
+    box-shadow: $border-color 0px 0px 0px 1px;
+  }
+
+  &__iconLink:hover.is-active {
+    box-shadow: none;
+    @include hover(transform, scale(1));
+  }
+
+  &__iconImage {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__iconAmount {
+    display: flex;
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    background-color: $button-color;
+    border: 1px solid #fff;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+  }
+
+  &__iconAmountText {
+    color: #fff;
+    font-family: 'Mont-Regular', sans-serif;
+    font-size: 9px;
+    line-height: 12px;
+    font-weight: 700;
+  }
+}
+
+.is-active {
+  color: $primary;
+  border-bottom: 3px solid $primary;
+}

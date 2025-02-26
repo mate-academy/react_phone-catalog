@@ -1,0 +1,65 @@
+@use '../../../utils/variables.scss' as *;
+@use '../../../utils/mixins.scss' as *;
+
+.slider {
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__topTitle {
+    color: $primary;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  &__productCardsContainer {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    margin-top: 24px;
+  }
+
+  &__productCardsSlide {
+    max-width: 212px;
+
+    @include on-tablet {
+      max-width: 237px;
+    }
+
+    @include on-desktop {
+      max-width: 272px;
+    }
+  }
+
+  &__topSwiper {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__topSwipeButton {
+    cursor: pointer;
+    background-image: url(img/buttons/slider-button.svg);
+    height: 32px;
+    width: 32px;
+    border: 0;
+    background-color: $main-page-color;
+  }
+
+  &__topSwipeButton:hover {
+    background-image: url(img/buttons/slider-button-hover.svg);
+  }
+
+  &__topSwipeButton:disabled {
+    cursor: not-allowed;
+    background-image: url(img/buttons/slider-button-disabled.svg);
+  }
+
+  &__topSwipeButton:first-child {
+    transform: rotate(180deg);
+  }
+}
+
+

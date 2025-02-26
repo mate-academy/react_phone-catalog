@@ -1,0 +1,119 @@
+@use '../../../../utils/mixins.scss' as *;
+@use '../../../../utils/variables.scss' as *;
+
+.welcome {
+  &__title {
+    display: block;
+    font-family: 'Mont-Bold', sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    font-weight: 800;
+    padding-block: 24px;
+    color: $primary;
+
+    @include on-tablet {
+      padding-block: 32px;
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    @include on-desktop {
+      padding-block: 56px;
+    }
+
+    @include content-padding-inline;
+  }
+
+  &__banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    @include on-tablet {
+      @include content-padding-inline;
+    }
+  }
+
+  &__bannerContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 16px;
+  }
+
+  &__bannerImageContainer {
+    display: flex;
+  }
+
+  &__bannerImageLink {
+    display: flex;
+  }
+
+  &__bannerImage {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    @include on-tablet {
+      aspect-ratio: 490 / 189;
+      border-radius: 8px;
+    }
+
+    @include on-desktop {
+      aspect-ratio: 1040 / 400;
+    }
+  }
+
+  &__bannerSelector {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    width: 80px;
+    height: 24px;
+  }
+
+  &__bannerSelectorButton {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 0;
+    background-color: $main-page-color;
+  }
+
+  &__bannerSelectorButtonDash {
+    width: 14px;
+    height: 4px;
+    background-color: $border-color;
+  }
+
+  &__bannerSelectorButtonDash--is-active {
+    background-color: $primary;
+  }
+
+  &__bannerSwipeButton {
+    cursor: pointer;
+    display: none;
+    background-color: $main-page-color;
+    border: 1px solid #b4bdc3;
+    border-radius: 48px;
+    width: 32px;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @include hover(transform, scale(0.99));
+  }
+
+  &__bannerSwipeButton:hover {
+    border: 1px solid $primary;
+  }
+}

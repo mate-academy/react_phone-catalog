@@ -1,0 +1,111 @@
+@use '../../utils/mixins.scss' as *;
+@use '../../utils/variables.scss' as *;
+
+.footer {
+  display: flex;
+  box-sizing: border-box;
+  border-top: 1px solid $border-color;
+  margin-top: auto;
+
+  &__container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-block: 32px;
+    gap: 32px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 0px;
+      align-items: center;
+    }
+  }
+
+
+  &__logoLink {
+    display: flex;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__logo {
+    height: 32px;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__linksContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 11px;
+    }
+  }
+
+  &__link {
+    @include uppercase;
+    display: flex;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $secondary;
+    text-decoration: none;
+  }
+
+  &__link:hover {
+    color: $primary;
+  }
+
+  &__backToTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8.5px;
+
+    @include on-tablet {
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
+
+  &__backToTopText {
+    @include small-text;
+    cursor: pointer;
+    font-weight: 600;
+    color: $secondary;
+    text-decoration: none;
+    background-color: #fff;
+    border: 0;
+  }
+
+  &__backToTopText:hover {
+    color: $primary;
+  }
+
+  &__backToTopButtonLink {
+    display: flex;
+  }
+
+  &__backToTopButton {
+    cursor: pointer;
+    background-image: url(img/buttons/slider-button.svg);
+    height: 32px;
+    width: 32px;
+    rotate: (-90deg);
+    background-color: #fff;
+    border: 0;
+  }
+
+  &__backToTopButton:hover {
+    background-image: url(img/buttons/slider-button-hover.svg);
+  }
+}
