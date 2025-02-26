@@ -46,6 +46,7 @@
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
   },
+  "main": "server.js",
   "scripts": {
     "start": "mate-scripts start -l",
     "build": "mate-scripts build",
