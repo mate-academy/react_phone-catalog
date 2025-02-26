@@ -9,13 +9,13 @@ export const Breadcrumbs: React.FC = () => {
     <nav className={styles.breadcrumbs}>
       <Link to="/">
         <div>
-          <img src="/img/icons/home.svg" alt="home" />
+          <img src="img/icons/home.svg" alt="home" />
         </div>
       </Link>
 
       <div>
         <img
-          src="/img/icons/arrow-down-light-gray.svg"
+          src="img/icons/arrow-down-light-gray.svg"
           alt="arrow"
           className={styles.arrow}
         />
@@ -36,7 +36,7 @@ export const Breadcrumbs: React.FC = () => {
                 <Link to={`/${name}`}>{name}</Link>
                 <div>
                   <img
-                    src="/img/icons/arrow-down-light-gray.svg"
+                    src="img/icons/arrow-down-light-gray.svg"
                     alt="arrow"
                     className={styles.arrow}
                   />
