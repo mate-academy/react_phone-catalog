@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { sortOptions } from '../../utils/sortOptions';
+// import { sortOptions } from '../../utils/sortOptions';
 import { perPageOptions } from '../../utils/perPageOptions';
 import { getVisibleProducts } from '../../services/productHelper';
 import { getSearchWith } from '../../services/searchHelper';
