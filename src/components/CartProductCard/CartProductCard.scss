@@ -32,7 +32,7 @@
   &__icon {
     height: 16px;
     width: 16px;
-    background-image: url('./img/icons/close.svg');
+    background-image: url('/img/icons/close.svg');
     cursor: pointer;
 
     @include hover(transform, scale($scale-size));
@@ -66,17 +66,17 @@
     @include round-button(32);
 
     &--minus {
-      background: center no-repeat url('./img/icons/minus.svg');
+      background: center no-repeat url('/img/icons/minus.svg');
     }
 
     &--plus {
-      background: center no-repeat url('./img/icons/plus.svg');
+      background: center no-repeat url('/img/icons/plus.svg');
     }
 
     &--disabled {
       pointer-events: none;
       border-color: $color-gray;
-      background: center no-repeat url('./img/icons/minus-disabled.svg');
+      background: center no-repeat url('/img/icons/minus-disabled.svg');
     }
   }
 

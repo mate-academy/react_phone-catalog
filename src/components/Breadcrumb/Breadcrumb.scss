@@ -23,7 +23,7 @@
     display: block;
     height: 16px;
     width: 16px;
-    background: center / contain no-repeat url(./img/icons/home.svg);
+    background: center / contain no-repeat url(/img/icons/home.svg);
 
     @include hover(transform, scale($scale-size));
   }
@@ -32,7 +32,7 @@
     height: 16px;
     width: 16px;
     background: center / contain no-repeat
-      url(./img/icons/arrow-right-disabled.svg);
+      url(/img/icons/arrow-right-disabled.svg);
   }
 
   &__first {
