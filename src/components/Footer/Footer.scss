@@ -86,7 +86,7 @@
   }
 
   &__button {
-    background: center / 16px no-repeat url(./img/icons/arrow-up.svg);
+    background: center / 16px no-repeat url(/img/icons/arrow-up.svg);
 
     @include round-button(32);
   }

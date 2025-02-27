@@ -20,11 +20,11 @@
     @include round-button(32);
 
     &--next {
-      background: center / 16px no-repeat url(./img/icons/arrow-right.svg);
+      background: center / 16px no-repeat url(/img/icons/arrow-right.svg);
     }
 
     &--prev {
-      background: center / 16px no-repeat url(./img/icons/arrow-left.svg);
+      background: center / 16px no-repeat url(/img/icons/arrow-left.svg);
     }
   }
 

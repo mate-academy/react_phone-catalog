@@ -20,7 +20,7 @@
     border: 1px solid $color-gray;
     border-radius: 8px;
     cursor: pointer;
-    background-image: url(./img/icons/arrow-down-disabled.svg);
+    background-image: url(/img/icons/arrow-down-disabled.svg);
     background-repeat: no-repeat;
     background-position: 95% 50%;
 
@@ -28,7 +28,7 @@
 
     &--active {
       border: 1px solid $color-black;
-      background-image: url(./img/icons/arrow-up-disabled.svg);
+      background-image: url(/img/icons/arrow-up-disabled.svg);
 
       @include hover(border, 1px solid $color-black);
     }

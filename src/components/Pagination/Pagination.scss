@@ -26,19 +26,19 @@
 
   &__next {
     margin-left: 8px;
-    background: center / 16px no-repeat url(./img/icons/arrow-right.svg);
+    background: center / 16px no-repeat url(/img/icons/arrow-right.svg);
     &.pagination__link--disabled {
       background: center / 16px no-repeat
-        url(./img/icons/arrow-right-disabled.svg);
+        url(/img/icons/arrow-right-disabled.svg);
     }
   }
 
   &__prev {
     margin-right: 8px;
-    background: center / 16px no-repeat url(./img/icons/arrow-left.svg);
+    background: center / 16px no-repeat url(/img/icons/arrow-left.svg);
     &.pagination__link--disabled {
       background: center / 16px no-repeat
-        url(./img/icons/arrow-left-disabled.svg);
+        url(/img/icons/arrow-left-disabled.svg);
     }
   }
 }
