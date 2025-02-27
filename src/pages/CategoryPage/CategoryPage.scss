@@ -1,0 +1,21 @@
+@import '../../styles/main';
+
+.category {
+  flex: 1 1 auto;
+  background-color: $color-background;
+
+  &__title {
+    margin-bottom: 8px;
+
+    @extend %page-title;
+  }
+
+  &__subtitle {
+    margin-bottom: 32px;
+    color: $color-text;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

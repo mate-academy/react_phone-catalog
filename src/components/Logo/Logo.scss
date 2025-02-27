@@ -1,0 +1,14 @@
+@import '../../styles/main';
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  @include hover(transform, scale($scale-size));
+
+  &__img {
+    display: block;
+    width: 100%;
+  }
+}

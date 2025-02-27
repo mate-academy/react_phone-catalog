@@ -1,0 +1,40 @@
+@import '../../styles/main';
+
+.favourites {
+  flex: 1 1 auto;
+  background-color: $color-background;
+
+  &__nav {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @extend %page-title;
+  }
+
+  &__count {
+    margin-bottom: 32px;
+    font-weight: 600;
+    color: $color-text;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__container {
+    row-gap: 40px;
+
+    @include page-grid;
+  }
+
+  &__product {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+}

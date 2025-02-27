@@ -1,0 +1,11 @@
+@import '../../styles/main';
+
+.fav {
+  background: center / 16px no-repeat url(./img/icons/favourites.svg);
+
+  @include round-button(40);
+
+  &--filled {
+    background: center / 16px no-repeat url(./img/icons/favourites-filled.svg);
+  }
+}

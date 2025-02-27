@@ -1,0 +1,71 @@
+@import '../../styles/main';
+
+.big-slider {
+  width: 100%;
+  margin-bottom: 16px;
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    grid-column: 2/8;
+    grid-row: 4/6;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+    grid-column: 3/13;
+  }
+
+  &__slide {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__img {
+    display: block;
+    height: 288px;
+
+    @include on-desktop {
+      height: 464px;
+    }
+  }
+}
+
+.small-slider {
+  width: 100%;
+  grid-column: 1/-1;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    grid-column: 1/2;
+    height: 288px;
+  }
+
+  @include on-desktop {
+    grid-column: 1/3;
+    height: 464px;
+  }
+
+  &__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $color-gray;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .swiper-slide-thumb-active {
+    border: 1px solid $color-black;
+  }
+
+  &__img {
+    display: block;
+    height: 49px;
+
+    @include on-desktop {
+      height: 80px;
+    }
+  }
+}

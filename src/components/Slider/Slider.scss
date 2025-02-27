@@ -1,0 +1,144 @@
+@import '../../styles/main';
+
+.slider {
+  max-height: 400px;
+  margin-inline: -$content-padding-inline-mobile;
+
+  @include on-tablet {
+    @include page-grid;
+  }
+
+  &__button {
+    display: none;
+    margin-inline: auto;
+    padding: 8px;
+    max-width: 32px;
+    border: 1px solid $color-gray;
+    border-radius: 48px;
+    place-items: center;
+    cursor: pointer;
+
+    @include hover(border-color, $color-black);
+
+    @include on-tablet {
+      display: grid;
+    }
+  }
+
+  &__swiper {
+    grid-column: 2/12;
+    width: 100%;
+
+    @include on-desktop {
+      grid-column: 2/24;
+    }
+  }
+
+  & .slider__slide {
+    display: flex;
+    flex-direction: column;
+    background: $color-gradient;
+    max-height: 400px;
+    aspect-ratio: 1;
+
+    @include on-tablet {
+      aspect-ratio: auto;
+      border-radius: 8px;
+    }
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__wrapper {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include on-tablet {
+      margin: 5px;
+      padding: 16px;
+      width: 40%;
+      height: auto;
+      background-color: #222;
+      border-radius: 48px;
+    }
+  }
+
+  &__text {
+    padding: 40px 10px 10px;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 106%;
+    text-align: center;
+    background: $color-gradient;
+    color: $color-black;
+    background-clip: text;
+
+    @include on-tablet {
+      color: transparent;
+    }
+
+    @include on-desktop {
+      font-size: 64px;
+    }
+  }
+
+  &__order {
+    display: none;
+    padding: 16px 30px;
+    margin: auto;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    color: $color-white;
+    background-color: transparent;
+    border: 2px solid #444;
+    border-radius: 88px;
+    text-decoration: none;
+
+    @include hover(border-color, $color-white);
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__img {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 60%;
+
+    @include on-tablet {
+      width: 60%;
+      height: 100%;
+    }
+  }
+}
+
+.swiper {
+  &-button {
+    &-disabled {
+      color: $color-text;
+      border-color: $color-text;
+      cursor: not-allowed;
+
+      @include hover(border-color, $color-text);
+    }
+  }
+}
+
+.swiper .swiper-pagination {
+  --swiper-pagination-bullet-width: 14px;
+  --swiper-pagination-bullet-height: 4px;
+  --swiper-pagination-bullet-border-radius: 0;
+  --swiper-pagination-color: #0f0f11;
+  --swiper-pagination-bullet-inactive-color: #e2e6e9;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
+  --swiper-pagination-bottom: auto;
+}

@@ -1,0 +1,49 @@
+@import '../../styles/main';
+
+.shop {
+  &__title {
+    margin-bottom: 24px;
+
+    @extend %section-title;
+  }
+  &__image {
+    display: block;
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 368px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+
+    @include hover(transform, scale($scale-size));
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__subtitle {
+    margin-bottom: 4px;
+    font-weight: 700;
+    font-size: 20px;
+
+    // color: inherit;
+    // text-decoration: none;
+  }
+
+  &__text {
+    color: $color-text;
+  }
+}

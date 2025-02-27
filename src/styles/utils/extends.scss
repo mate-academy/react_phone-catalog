@@ -1,0 +1,22 @@
+%page-title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 128%;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 117%;
+  }
+}
+
+%section-title {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 128%;
+  }
+}

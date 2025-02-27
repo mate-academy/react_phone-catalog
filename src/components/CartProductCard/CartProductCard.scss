@@ -1,0 +1,94 @@
+@import '../../styles/main';
+
+.cart-product {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $color-gray;
+  border-radius: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background-image: url('./img/icons/close.svg');
+    cursor: pointer;
+
+    @include hover(transform, scale($scale-size));
+  }
+
+  &__picture {
+    height: 80px;
+    width: 80px;
+    background: no-repeat center / contain;
+
+    @include hover(transform, scale($scale-size));
+  }
+
+  &__name {
+    font-weight: 600;
+    flex: 1 1 128px;
+    text-decoration: none;
+    color: inherit;
+
+    @include hover(transform, scale($scale-size));
+  }
+
+  &__count {
+    display: flex;
+    width: 100px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    @include round-button(32);
+
+    &--minus {
+      background: center no-repeat url('./img/icons/minus.svg');
+    }
+
+    &--plus {
+      background: center no-repeat url('./img/icons/plus.svg');
+    }
+
+    &--disabled {
+      pointer-events: none;
+      border-color: $color-gray;
+      background: center no-repeat url('./img/icons/minus-disabled.svg');
+    }
+  }
+
+  &__quantity {
+    font-weight: 600;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    text-align: right;
+    width: 70px;
+  }
+}

@@ -1,0 +1,22 @@
+@import '../../styles/main';
+
+.back {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  cursor: pointer;
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+    background-image: url(./img/icons/arrow-left.svg);
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: 12px;
+    color: $color-text;
+
+    @include hover(color, $color-black);
+  }
+}

@@ -1,0 +1,20 @@
+@import '../../styles/main';
+
+.catalogue {
+  &__selectors {
+    margin-bottom: 24px;
+
+    @include page-grid;
+  }
+
+  &__products {
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+    gap: 40px 16px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

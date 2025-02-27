@@ -1,0 +1,53 @@
+@import '../../styles/main';
+
+.modal {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 30;
+
+  &__window {
+    padding: 30px;
+    width: 280px;
+    background-color: $color-white;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  &__text {
+    margin-bottom: 24px;
+    font-size: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__button {
+    @include primary-button(40);
+
+    &--confirm {
+      background-color: $color-accent;
+      color: $color-white;
+      border: 1px solid $color-accent;
+    }
+
+    &--cancel {
+      background-color: $color-white;
+      color: $color-accent;
+      border: 1px solid $color-gray;
+    }
+  }
+}

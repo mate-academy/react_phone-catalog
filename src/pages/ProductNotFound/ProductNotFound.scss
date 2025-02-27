@@ -1,0 +1,19 @@
+@import '../../styles/main';
+
+.not-product {
+  flex: 1 1 auto;
+  background-color: $color-background;
+
+  &__title {
+    margin-bottom: 32px;
+
+    @extend %page-title;
+  }
+
+  &__img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 400px;
+  }
+}

@@ -1,0 +1,15 @@
+@import './main';
+
+.container {
+  margin-block: 24px 64px;
+
+  @include content-padding-inline;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}

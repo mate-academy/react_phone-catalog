@@ -1,0 +1,87 @@
+@import '../../styles/main';
+
+.cart {
+  flex: 1 1 auto;
+  background-color: $color-background;
+
+  &__nav {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+
+    @extend %page-title;
+  }
+
+  &__empty {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    max-width: 700px;
+    margin: auto;
+
+    @include on-desktop {
+      max-width: 1700px;
+
+      @include page-grid;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: span 16;
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__total {
+    grid-column: span 8;
+    text-align: center;
+
+    padding: 24px;
+    height: max-content;
+    width: 100%;
+    border: 1px solid $color-gray;
+    border-radius: 16px;
+  }
+
+  &__amount {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -0.01em;
+  }
+
+  &__text {
+    color: $color-text;
+  }
+
+  &__line {
+    margin-block: 16px;
+
+    @include on-desktop {
+      margin-block: 24px;
+    }
+  }
+
+  &__button {
+    background-color: $color-accent;
+    color: $color-white;
+    border: 1px solid $color-accent;
+
+    @include primary-button(48);
+  }
+}

@@ -1,0 +1,47 @@
+@import '../../styles/main';
+
+.about {
+  &__title {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    font-weight: 700;
+    font-size: 20px;
+    border-bottom: 1px solid $color-gray;
+
+    @include on-tablet {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__article {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    font-size: 16px;
+
+    @include on-tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__text {
+    font-weight: 600;
+    color: $color-text;
+
+    @include on-desktop {
+      font-weight: 500;
+    }
+  }
+}

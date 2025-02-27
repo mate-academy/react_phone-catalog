@@ -1,0 +1,222 @@
+@import '../../styles/main';
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 1px $color-shadow;
+  background-color: $color-white;
+  z-index: 20;
+
+  @include on-desktop {
+    gap: 24px;
+  }
+
+  &--menu {
+    height: 100vh;
+    display: grid;
+    grid-template:
+      'logo icon' auto
+      'nav nav' 1fr
+      'icons icons' auto / 1fr auto;
+    gap: 0;
+  }
+
+  &__logo {
+    margin-inline: 16px;
+    width: 96px;
+    max-height: 48px;
+
+    @include on-tablet {
+      max-height: 64px;
+    }
+
+    @include on-desktop {
+      margin-inline: 24px;
+      width: 128px;
+    }
+  }
+
+  &__nav {
+    display: none;
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &--menu {
+      padding-top: 24px;
+      grid-area: nav;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      box-shadow:
+        0 1px $color-shadow,
+        0 -1px $color-shadow;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+
+    &--menu {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: max-content;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    color: $color-text;
+    border-bottom: 3px solid transparent;
+
+    @include hover(border-bottom, 3px solid $color-black);
+
+    &--is-active {
+      color: $color-black;
+      border-bottom: 3px solid $color-black;
+    }
+  }
+
+  &__menu {
+    display: block;
+    height: 48px;
+    width: 48px;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: -1px 0 $color-shadow;
+    border-bottom: 3px solid transparent;
+    background-image: url(/img/icons/menu.svg);
+
+    @include hover(border-bottom, 3px solid $color-black);
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &--menu {
+      background-image: url(/img/icons/close.svg);
+    }
+  }
+
+  &__icons {
+    display: none;
+    flex-direction: row;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    &--menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-area: icons;
+    }
+  }
+
+  &__icon-link {
+    display: grid;
+    place-items: center;
+    height: 64px;
+    width: 100%;
+    box-shadow: -1px 0 $color-shadow;
+    border-bottom: 3px solid transparent;
+
+    @include hover(border-bottom, 3px solid $color-black);
+
+    @include on-tablet {
+      width: 64px;
+    }
+
+    &--is-active {
+      border-bottom: 3px solid $color-black;
+    }
+  }
+
+  &__icon {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--heart {
+      position: relative;
+      background-image: url(/img/icons/favourites.svg);
+
+      @include on-tablet {
+        display: block;
+      }
+    }
+
+    &--count-heart {
+      &::after {
+        content: attr(data-fav);
+        display: grid;
+        place-items: center;
+        position: absolute;
+        font-size: 9px;
+        line-height: 100%;
+        top: -8px;
+        left: 8px;
+        height: 14px;
+        width: 14px;
+        color: $color-white;
+        border: 1px solid $color-white;
+        border-radius: 50%;
+        background-color: $color-accent;
+      }
+    }
+
+    &--cart {
+      position: relative;
+      background-image: url(/img/icons/cart.svg);
+
+      @include on-tablet {
+        display: block;
+      }
+    }
+
+    &--count-cart {
+      &::after {
+        content: attr(data-cart);
+        display: grid;
+        place-items: center;
+        position: absolute;
+        font-size: 9px;
+        line-height: 100%;
+        top: -8px;
+        left: 8px;
+        height: 14px;
+        width: 14px;
+        color: $color-white;
+        border: 1px solid $color-white;
+        border-radius: 50%;
+        background-color: $color-accent;
+      }
+    }
+  }
+}

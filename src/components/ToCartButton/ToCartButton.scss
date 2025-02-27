@@ -1,0 +1,15 @@
+@import '../../styles/main';
+
+.to-cart {
+  background-color: $color-accent;
+  color: $color-white;
+  border: 1px solid $color-accent;
+
+  @include primary-button(40);
+
+  &--delete {
+    background-color: $color-white;
+    color: $color-accent;
+    border: 1px solid $color-gray;
+  }
+}
