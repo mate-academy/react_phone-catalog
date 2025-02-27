@@ -1,0 +1,107 @@
+@import '../../utils/mixins';
+
+.container {
+  display: flex;
+  // align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  height: 64px;
+
+  @include onMobile{
+    height: 48px;
+  }
+}
+
+.navbar-brand {
+  display: none;
+  gap: 64px;
+
+  @include onTablet {
+    display: flex;
+    gap: 32px;
+  }
+
+  // @include onMobile {
+  //   display: none;
+  // }
+}
+
+.header {
+  border: 1px #323542 solid;
+}
+
+.navbar-item {
+  font-family: Mont-SemiBold, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  color: #75767f;
+  display: flex;
+  align-items: center;
+
+  &:active {
+    color: #fff;
+  }
+}
+
+.logo {
+  padding: 18px 24px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+
+}
+
+.buttons {
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  // border: 1px #323542 solid;
+  display: flex;
+
+}
+
+.likes {
+  margin-left: auto;
+  border: 1px #323542 solid;
+  display: none;
+
+
+  @include onDesktop{
+    display: flex;
+  }
+}
+
+.shopping {
+  border: 1px #323542 solid;
+  display: none;
+
+
+  @include onDesktop{
+    display: flex;
+  }
+}
+
+.menu{
+  border: 1px #323542 solid;
+  display: none;
+
+
+  @include onMobile{
+    display: flex;
+  }
+}
+
+// .close
+// {
+//   border: 1px #323542 solid;
+//   display: none;
+
+
+//   @include onMobile{
+//     display: none;
+//   }
+// }

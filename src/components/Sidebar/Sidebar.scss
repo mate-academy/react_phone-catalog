@@ -1,0 +1,76 @@
+@import '../../utils/mixins';
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  background-color: #0F1121;
+  background-repeat: no-repeat;
+  height: 100vh;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar.open {
+  opacity: 1;
+  transform: translateY(0);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  background-color: #0F1121;
+  background-repeat: no-repeat;
+  height: 100vh;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: auto 0;
+}
+
+.sidebar-item {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 20px;
+  color: #75767f;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.close{
+  display: none;
+
+  @include onMobile{
+    display: flex;
+  }
+}
+
+.sidebar__menu{
+  padding-top: 24px;
+}
+
+.active-link {
+  color: #F1F2F9;
+  border-bottom: 2px solid #F1F2F9;
+  padding-bottom: 4px;
+}

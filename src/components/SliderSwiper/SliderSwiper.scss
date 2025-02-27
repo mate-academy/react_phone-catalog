@@ -1,0 +1,41 @@
+@import '../../utils/mixins';
+
+.slider__image{
+  width: 1040px;
+  height: 400px;
+  object-fit: cover; // не стискає
+
+  @include onTablet{
+    width: 592px;
+    height: 221px;
+  }
+
+  @include onMobile{
+    width: 320px;
+    height: 320px;
+  }
+}
+
+.swiper{
+  width: 1040px;
+
+  @include onTablet{
+    width: 592px;
+    height: 221px;
+  }
+
+  @include onMobile{
+    width: 320px;
+    height: 320px;
+  }
+}
+
+.swiper-button-next{
+  // padding-left: 16px;
+  color: #323542;
+}
+
+.swiper-button-prev{
+  color: #323542;
+}
+

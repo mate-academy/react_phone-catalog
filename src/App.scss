@@ -1,1 +1,21 @@
-// not empty
+@import './fonts/fonts.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+
+  @include font-body;
+}
+
+.App {
+  background-color: #0f1121;
+  color: white;
+  height: 100vh;
+}
+
+.container__page{
+  padding: 0 16px;
+  background-color: #0f1121;
+
+}
+

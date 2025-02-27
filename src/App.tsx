@@ -1,7 +1,26 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
+import { Navbar } from './components/Navbar/Navbar';
+import { Sidebar } from './components/Sidebar/Sidebar';
+import { useState } from 'react';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+  return (
+    <div className="App">
+      <Navbar setMenuIsOpen={() => setMenuIsOpen(true)} />
+
+      <Sidebar
+        menuIsOpen={menuIsOpen}
+        setMenuIsOpen={() => setMenuIsOpen(false)}
+      />
+
+      <div className="section">
+        <div className="container__page">
+          <Outlet />
+        </div>
+      </div>
+    </div>
+  );
+};

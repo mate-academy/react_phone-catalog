@@ -1,0 +1,37 @@
+.card__image{
+  width: 368px;
+  height: 386px;
+  object-fit: cover;
+  // background-color: #8D8D92;
+}
+
+.card{
+  display: flex;
+  // flex-direction: row;
+  justify-content: center;
+  // align-items: center;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.card__title{
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  margin: 24px 0 0 0;
+}
+
+.card__description{
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 4px 0 0 0;
+  color: #75767F;
+}
+
+.card__link{
+  text-decoration: none;
+  color: #F1F2F9;
+}
