@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './ProductImagesSlider.module.scss';
 import { Swiper as SwiperType } from 'swiper';
-import { debounce } from 'lodash';
+import debounce from 'lodash.debounce';
 import { SwiperSlide, Swiper } from 'swiper/react';
 import classNames from 'classnames';
 

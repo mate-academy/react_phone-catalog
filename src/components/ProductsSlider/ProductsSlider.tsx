@@ -8,7 +8,7 @@ import React, {
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
-import { debounce } from 'lodash';
+import debounce from 'lodash.debounce';
 
 interface Props {
   title: string;

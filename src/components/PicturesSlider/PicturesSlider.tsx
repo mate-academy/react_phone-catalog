@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
-import { debounce } from 'lodash';
+import debounce from 'lodash.debounce';
 
 export const PicturesSlider = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
