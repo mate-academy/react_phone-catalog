@@ -6,6 +6,8 @@ import classNames from 'classnames';
 import { useStorage } from '../../context/StorageContext';
 import { goToInfo } from '../functions/handleGoToInfo';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   article: Article;
@@ -20,9 +22,11 @@ export const Product: React.FC<Props> = ({
 }) => {
   const { findProduct, addProduct, removeProduct } = useStorage();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const [searchParams, setSerachParams] = useSearchParams();
 
   const handleClick = () => {
-    goToInfo(navigate, article.itemId, article.category); // Передаємо navigate в goToInfo
+    goToInfo(navigate, article.itemId, article.category, setSerachParams); // Передаємо navigate в goToInfo
   };
 
   return (
@@ -51,17 +55,17 @@ export const Product: React.FC<Props> = ({
 
       <div className={styles.decription}>
         <div className={styles.decription__item}>
-          <p className={styles.decription__name}>Screen</p>
+          <p className={styles.decription__name}>{t('art_screen')}</p>
           <p className={styles.decription__value}>{article.screen}</p>
         </div>
 
         <div className={styles.decription__item}>
-          <p className={styles.decription__name}>Capacity</p>
+          <p className={styles.decription__name}>{t('art_capacity')}</p>
           <p className={styles.decription__value}>{article.capacity}</p>
         </div>
 
         <div className={styles.decription__item}>
-          <p className={styles.decription__name}>RAM</p>
+          <p className={styles.decription__name}>{t('art_ram')}</p>
           <p className={styles.decription__value}>{article.ram}</p>
         </div>
       </div>
@@ -75,7 +79,7 @@ export const Product: React.FC<Props> = ({
             }}
             className={styles.button}
           >
-            Add to cart
+            {t('art_addCart')}
           </button>
         ) : (
           <button
@@ -85,7 +89,7 @@ export const Product: React.FC<Props> = ({
             }}
             className={classNames(styles.buttonAdded, styles.button)}
           >
-            Added to cart
+            {t('art_added')}
           </button>
         )}
         {!findProduct(DataNames.favourites, article.itemId) ? (

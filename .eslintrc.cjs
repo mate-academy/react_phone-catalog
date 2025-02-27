@@ -37,6 +37,9 @@ module.exports = {
     'prettier'
   ],
   rules: {
+    "import/extensions": ["error", "ignorePackages", {
+    "ts": "never",
+    "tsx": "never",
     // JS
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],

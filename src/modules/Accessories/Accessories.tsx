@@ -1,14 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useTransition } from 'react';
 import styles from './Accessories.module.scss';
 import { Catalog } from '../../shared/Catalog';
 import { Products } from '../../shared/types/Products';
 import { ProductContext } from '../../context/ProductContext';
 import { Article } from '../../shared/types/Article';
 import { NavAdress } from '../../shared/NavAdress';
+import { useTranslation } from 'react-i18next';
 
 export const Accessories: React.FC = () => {
   const checkData = useContext(ProductContext);
   const [accessories, setAccessories] = useState<Article[] | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +25,7 @@ export const Accessories: React.FC = () => {
   return (
     <div className={styles.accessories}>
       <NavAdress />
-      <h1 className={styles.accessories__title}>Accessories</h1>
+      <h1 className={styles.accessories__title}>{t('ctl_accessories')}</h1>
       <Catalog productName={Products.Accessories} products={accessories} />
     </div>
   );

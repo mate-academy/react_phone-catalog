@@ -5,10 +5,12 @@ import { getDataPublic } from '../../../../shared/functions/getDataPublic';
 import { Products } from '../../../../shared/types/Products';
 import { useNavigate } from 'react-router-dom';
 import { Loader } from '../../../../shared/Loader';
+import { useTranslation } from 'react-i18next';
 
 export const Categories: React.FC = () => {
   const [products, setProducts] = useState<Article[] | null>(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     getDataPublic('products').then((response: Article[]) => {
@@ -22,7 +24,7 @@ export const Categories: React.FC = () => {
 
   return (
     <section className={styles.categories}>
-      <h2 className={styles.categories__title}>Shop by category</h2>
+      <h2 className={styles.categories__title}>{t('categories_title')}</h2>
 
       {products ? (
         <div className={styles.categories__content}>
@@ -41,10 +43,10 @@ export const Categories: React.FC = () => {
                 className={styles.categories__background}
               ></div>
             </div>
-            <h3 className={styles.categories__name}>Mobile phones</h3>
+            <h3 className={styles.categories__name}>{t('categories_phones')}</h3>
             <p
               className={styles.categories__value}
-            >{`${findCount(Products.Phones)} Models`}</p>
+            >{`${findCount(Products.Phones)} ${t('categories_models')}`}</p>
           </div>
 
           <div
@@ -62,9 +64,9 @@ export const Categories: React.FC = () => {
                 className={styles.categories__background}
               ></div>
             </div>
-            <h3 className={styles.categories__name}>Tablets</h3>
+            <h3 className={styles.categories__name}>{t('categories_tablets')}</h3>
             <p className={styles.categories__value}>
-              {`${findCount(Products.Tablets)} Models`}
+              {`${findCount(Products.Tablets)} ${t('categories_models')}`}
             </p>
           </div>
 
@@ -83,10 +85,10 @@ export const Categories: React.FC = () => {
                 className={styles.categories__background}
               ></div>
             </div>
-            <h3 className={styles.categories__name}>Accessories</h3>
+            <h3 className={styles.categories__name}>{t('categories_accessories')}</h3>
             <p
               className={styles.categories__value}
-            >{`${findCount(Products.Accessories)} Models`}</p>
+            >{`${findCount(Products.Accessories)} ${t('categories_models')}`}</p>
           </div>
         </div>
       ) : (

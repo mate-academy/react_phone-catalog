@@ -5,10 +5,12 @@ import { Carousel } from '../../../../shared/Carousel/Carousel';
 import { Loader } from '../../../../shared/Loader';
 import { ProductContext } from '../../../../context/ProductContext';
 import { Products } from '../../../../shared/types/Products';
+import { useTranslation } from 'react-i18next';
 
 export const HotPrices: React.FC = () => {
   const [elements, setElements] = useState<Article[] | null>(null);
   const checkData = useContext(ProductContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +28,7 @@ export const HotPrices: React.FC = () => {
   return (
     <section className={styles.hotPrices}>
       {elements ? (
-        <Carousel items={elements} title="Hot Prices" isHot={true} />
+        <Carousel items={elements} title={t('home_newModels')} isHot={true} />
       ) : (
         <Loader />
       )}

@@ -8,10 +8,12 @@ import { useStorage } from '../../context/StorageContext';
 import { NavAdress } from '../../shared/NavAdress';
 import { useTheme } from '../../context/PageTheme';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export const Cart: React.FC = () => {
   const { cartItems, removeProduct } = useStorage();
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const [products, setProducts] = useState<Article[] | null>(null);
   const [countProducts, setCountProducts] = useState<{ [key: string]: number }>(
     {},
@@ -65,7 +67,7 @@ export const Cart: React.FC = () => {
   return (
     <div className={styles.cart}>
       <NavAdress />
-      <h1 className={styles.cart__title}>Cart</h1>
+      <h1 className={styles.cart__title}>{t('crt_cart')}</h1>
       {cartItems && products ? (
         <div className={styles.cart__content}>
           <div className={styles.cart__products}>
@@ -132,7 +134,7 @@ export const Cart: React.FC = () => {
                         )}
                       >
                         <img
-                          src={`${import.meta.env.BASE_URL}img/icons/Plus.svg`}
+                          src={`${import.meta.env.BASE_URL}/img/icons/Plus.svg`}
                           alt="imge"
                           style={{
                             objectFit: 'contain',
@@ -155,9 +157,9 @@ export const Cart: React.FC = () => {
               <h2 className={styles.cart__totalPrice}>{`$${totalPrice}`}</h2>
               <p
                 className={styles.cart__totalTItle}
-              >{`Total for ${products.length} items`}</p>
+              >{`${t('crt_total')} ${products.length} ${t('crt_items')}`}</p>
             </div>
-            <button className={styles.cart__buttonCheckout}>Checkout</button>
+            <button className={styles.cart__buttonCheckout}>{t('crt_check')}</button>
           </div>
         </div>
       ) : (

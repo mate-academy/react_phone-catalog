@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { Loader } from '../Loader';
 import debounce from 'lodash.debounce';
+import { useTranslation } from 'react-i18next';
 type Props = {
   products: Article[] | null;
 };
@@ -25,6 +26,7 @@ export const Catalog: React.FC<Props> = ({ products }) => {
       : parseInt(searchParams.get('count') || '16', 10),
   );
   const [query, setQuery] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const newParams = new URLSearchParams(searchParams);
@@ -135,20 +137,20 @@ export const Catalog: React.FC<Props> = ({ products }) => {
     <div className={styles.catalog}>
       <div className={styles.catalog__parameters}>
         <div className={styles.catalog__wrapper}>
-          <p className={styles.catalog__sortName}>Sort By</p>
+          <p className={styles.catalog__sortName}>{t('ctl_sortBy')}</p>
           <select
             className={styles['catalog__select--1']}
             onChange={e => setMethod(e.target.value as SortMethods)}
             value={method}
           >
-            <option value={SortMethods.nawest}>{SortMethods.nawest}</option>
-            <option value={SortMethods.alph}>{SortMethods.alph}</option>
-            <option value={SortMethods.chapest}>{SortMethods.chapest}</option>
+            <option value={SortMethods.nawest}>{t('ctl_nawest')}</option>
+            <option value={SortMethods.alph}>{t('ctl_alphabet')}</option>
+            <option value={SortMethods.chapest}>{t('ctl_chap')}</option>
           </select>
         </div>
 
         <div className={styles.catalog__wrapper}>
-          <p className={styles.catalog__sortName}>Items on Page</p>
+          <p className={styles.catalog__sortName}>{t('ctl_itemsPage')}</p>
           <select
             className={styles['catalog__select--2']}
             onChange={e =>
@@ -160,16 +162,18 @@ export const Catalog: React.FC<Props> = ({ products }) => {
             <option value={16}>16</option>
             <option value={8}>8</option>
             <option value={4}>4</option>
-            <option value="all">All...</option>
+            <option value="all">{t('ctl_all')}</option>
           </select>
         </div>
 
         <div className={styles.catalog__queryWrapper}>
-          <p className={styles.catalog__sortName}>Search Product</p>
+          <p className={styles.catalog__sortName}>
+            {t('ctl_searchProduct')}
+          </p>
           <input
             className={styles.catalog__queryInput}
             type="text"
-            placeholder="Enter Model Name"
+            placeholder={t('ctl_enterName')}
             onChange={e => handleQueryChange(e.target.value)}
           />
         </div>
@@ -194,7 +198,7 @@ export const Catalog: React.FC<Props> = ({ products }) => {
 
       {products && visibleProducts?.length === 0 && (
         <>
-          <p>There are no products matching your criteria</p>
+          <p>{t('ctl_error')}</p>
           <img
             src={`${import.meta.env.BASE_URL}/img/product-not-found.png`}
             alt="image"

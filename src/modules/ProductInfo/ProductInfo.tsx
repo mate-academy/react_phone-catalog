@@ -11,16 +11,8 @@ import { Carousel } from '../../shared/Carousel/Carousel';
 import { NavAdress } from '../../shared/NavAdress';
 import { getDataPublic } from '../../shared/functions/getDataPublic';
 import { Article } from '../../shared/types/Article';
-
-const techNames = [
-  'screen',
-  'resolution',
-  'processor',
-  'ram',
-  'camera',
-  'zoom',
-  'cell',
-];
+import { useTranslation } from 'react-i18next';
+import { TechSpecs } from './components/TechSpecs';
 
 const aviableColors: Record<string, string> = {
   black: '#1C1C1E',
@@ -53,6 +45,7 @@ export const ProductInfo: React.FC = () => {
   const [activeProduct, setActiveProduct] = useState<ProductCard | null>(null);
   const [activeImg, setActiveImg] = useState<string>();
   const [sameProducts, setSameProducts] = useState<Article[] | null>();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!category || !modelName) {
@@ -65,20 +58,20 @@ export const ProductInfo: React.FC = () => {
       product[0].namespaceId !== modelName
     ) {
       getProductCard(modelName, category);
-
+      console.log('situation 1');
       return;
     }
 
     if (!activeProduct) {
       setActiveProduct(product[0]);
       setActiveImg(product[0].images[0]);
-
+      console.log('situation 2');
       return;
     }
 
     if (!params.get('capacity') || !params.get('color')) {
       const newParams = new URLSearchParams(params);
-
+      console.log('situation 3');
       newParams.set('capacity', activeProduct.capacity);
       newParams.set('color', activeProduct.color);
       setParams(newParams);
@@ -95,6 +88,7 @@ export const ProductInfo: React.FC = () => {
     if (newProduct) {
       setActiveProduct(newProduct);
       setActiveImg(newProduct.images[0]);
+      console.log('situation 4');
     }
   }, [
     product,
@@ -129,6 +123,7 @@ export const ProductInfo: React.FC = () => {
       });
     }
   }, [activeProduct, category, product]);
+  
 
   return (
     <div className={styles.card}>
@@ -142,7 +137,7 @@ export const ProductInfo: React.FC = () => {
               href={`/#/${activeProduct.category}`}
             >
               {'< '}
-              <span style={{ color: '#89939A' }}>Back</span>
+              <span style={{ color: '#89939A' }}>{t('inf_back')}</span>
             </a>
             <h1 className={styles.card__title}>{activeProduct.name}</h1>
           </div>
@@ -175,7 +170,7 @@ export const ProductInfo: React.FC = () => {
           />
           <div className={styles.card__parameters}>
             <div className={styles.card__colors}>
-              <p className={styles.card__colorsTitle}>Active Colors</p>
+              <p className={styles.card__colorsTitle}>{t('inf_colors')}</p>
               <div className={styles.card__buttons}>
                 {activeProduct.colorsAvailable.map(
                   (currentColor: keyof typeof aviableColors) => {
@@ -203,7 +198,7 @@ export const ProductInfo: React.FC = () => {
             </div>
 
             <div className={styles.card__capacity}>
-              <p className={styles.card__capacityTitle}>Select Capacity</p>
+              <p className={styles.card__capacityTitle}>{t('inf_capacity')}</p>
               <div className={styles.card__buttons}>
                 {activeProduct.capacityAvailable.map(cap => {
                   return (
@@ -244,7 +239,7 @@ export const ProductInfo: React.FC = () => {
                     }}
                     className={styles.card__buyButton}
                   >
-                    Add to Cart
+                    {t('art_addCart')}
                   </button>
                 ) : (
                   <button
@@ -257,7 +252,7 @@ export const ProductInfo: React.FC = () => {
                       styles.card__buyButtonActive,
                     )}
                   >
-                    Added to Cart
+                    {t('art_added')}
                   </button>
                 )}
 
@@ -288,25 +283,31 @@ export const ProductInfo: React.FC = () => {
 
               <div className={styles.card__decription}>
                 <div className={styles.card__decriptionItem}>
-                  <p className={styles.card__decriptionName}>Screen</p>
+                  <p className={styles.card__decriptionName}>
+                    {t('inf_screen')}
+                  </p>
                   <p className={styles.card__decriptionValue}>
                     {activeProduct.screen}
                   </p>
                 </div>
                 <div className={styles.card__decriptionItem}>
-                  <p className={styles.card__decriptionName}>Resolution</p>
+                  <p className={styles.card__decriptionName}>
+                    {t('inf_resolution')}
+                  </p>
                   <p className={styles.card__decriptionValue}>
                     {activeProduct.resolution}
                   </p>
                 </div>
                 <div className={styles.card__decriptionItem}>
-                  <p className={styles.card__decriptionName}>Processor</p>
+                  <p className={styles.card__decriptionName}>
+                    {t('inf_processor')}
+                  </p>
                   <p className={styles.card__decriptionValue}>
                     {activeProduct.processor}
                   </p>
                 </div>
                 <div className={styles.card__decriptionItem}>
-                  <p className={styles.card__decriptionName}>RAM</p>
+                  <p className={styles.card__decriptionName}>{t('inf_ram')}</p>
                   <p className={styles.card__decriptionValue}>
                     {activeProduct.ram}
                   </p>
@@ -316,7 +317,7 @@ export const ProductInfo: React.FC = () => {
           </div>
 
           <div className={styles.card__info}>
-            <h1 className={styles.card__infoName}>About</h1>
+            <h1 className={styles.card__infoName}>{t('inf_about')}</h1>
             {activeProduct.description.map(el => {
               return (
                 <div key={el.title} className={styles.card__intoItem}>
@@ -327,22 +328,10 @@ export const ProductInfo: React.FC = () => {
             })}
           </div>
 
-          <div className={styles.card__tech}>
-            <h1 className={styles.card__techTitle}>Tech specs</h1>
-            {techNames.map(techName => {
-              return (
-                <div key={techName} className={styles.card__techItem}>
-                  <p className={styles.card__techName}>{techName}</p>
-                  <p className={styles.card__techValue}>
-                    {activeProduct[techName] || 'not found'}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
+          {activeProduct && <TechSpecs object={activeProduct}/>}
           {sameProducts && (
             <div className={styles.card__carousel}>
-              <Carousel title={'You may also like'} items={sameProducts} />
+              <Carousel title={t('inf_alsoLike')} items={sameProducts} />
             </div>
           )}
         </div>

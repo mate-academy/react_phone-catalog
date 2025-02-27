@@ -7,6 +7,7 @@ import { Categories } from './components/Categories';
 import { NewModels } from './components/NewModels/NewModels';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const pcImages = [
   `${import.meta.env.BASE_URL}/img/banners/banner_1.svg`,
@@ -26,6 +27,7 @@ export const HomePage: React.FC = () => {
   const visibleImages = windowWidth < 640 ? phoneImages : pcImages;
   const lastMotion = useRef<'left' | 'right'>('right');
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIndex(0);
@@ -78,7 +80,7 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <header id="home" className={styles.home}>
-        <h1 className={styles.home__title}>Welcome to Nice Gadgets store!</h1>
+        <h1 className={styles.home__title}>{t('home_title')}</h1>
 
         {windowWidth > 640 && (
           <>

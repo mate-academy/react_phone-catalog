@@ -8,7 +8,7 @@ export const useProjectTheme = () => {
   });
 
   useEffect(() => {
-    const rootElement = document.documentElement; // або document.body
+    const rootElement = document.documentElement;
 
     if (theme === 'dark') {
       rootElement.classList.add('dark');

@@ -11,9 +11,9 @@ export const useInfoProduct = () => {
       console.log(name);
       console.log(category);
       try {
-        const response = await getDataPublic(category, 10); // response – це масив
+        const response = await getDataPublic(category, 10);
 
-        const filteredProducts = response.filter(
+        let filteredProducts = response.filter(
           (el: ProductCard) => el.namespaceId === name,
         );
 
