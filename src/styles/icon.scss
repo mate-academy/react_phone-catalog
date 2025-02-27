@@ -119,4 +119,20 @@
     transform: rotate(90deg);
     margin: 0;
   }
+
+  &--close-grey {
+    background-image: url(/img/icons/icon-close-grey.svg);
+    transition: all vars.$transition-time;
+    margin: 0;
+
+    @include mix.hover(scale, 1.2);
+  }
+
+  &--minus {
+    background-image: url(/img/icons/icon-minus.svg);
+  }
+
+  &--plus {
+    background-image: url(/img/icons/icon-plus.svg);
+  }
 }

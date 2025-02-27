@@ -1,15 +1,17 @@
 import './Categories.scss';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { translate } from '../../utils/translate';
 import { useContext } from 'react';
 import { LangContext } from '../../context/LangContext';
 import { Link } from 'react-router-dom';
+import { navigationSlice } from '../../features/navigationSlice';
 
 export const Categories = () => {
   const { phones } = useAppSelector(state => state.phones);
   const { tablets } = useAppSelector(state => state.tablets);
   const { accessories } = useAppSelector(state => state.accessories);
   const { lang } = useContext(LangContext);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="categories">
@@ -22,11 +24,21 @@ export const Categories = () => {
             src="img/categories-phones-new.png"
             alt="category phones"
             className="categories__img"
+            onClick={() => {
+              window.scrollTo(0, 0);
+              dispatch(navigationSlice.actions.clearLinks());
+              dispatch(navigationSlice.actions.addLink('phones'));
+            }}
           />
         </Link>
         <Link
           to="/phones"
           className="categories__img--box categories__title--box"
+          onClick={() => {
+            window.scrollTo(0, 0);
+            dispatch(navigationSlice.actions.clearLinks());
+            dispatch(navigationSlice.actions.addLink('phones'));
+          }}
         >
           <h4 className="categories__title">
             {translate('categories.phones', lang)}
@@ -39,6 +51,11 @@ export const Categories = () => {
         <Link
           to="/tablets"
           className="categories__img--box categories__img-box--tablets"
+          onClick={() => {
+            window.scrollTo(0, 0);
+            dispatch(navigationSlice.actions.clearLinks());
+            dispatch(navigationSlice.actions.addLink('tablets'));
+          }}
         >
           <img
             src="img/categories-tablets-new.png"
@@ -49,6 +66,11 @@ export const Categories = () => {
         <Link
           to="/tablets"
           className="categories__img--box categories__title--box"
+          onClick={() => {
+            window.scrollTo(0, 0);
+            dispatch(navigationSlice.actions.clearLinks());
+            dispatch(navigationSlice.actions.addLink('tablets'));
+          }}
         >
           <h4 className="categories__title">
             {translate('categories.tablets', lang)}
@@ -60,8 +82,12 @@ export const Categories = () => {
       <div className="category">
         <Link
           to="/accessories"
-          onClick={() => window.scrollTo(0, 0)}
           className="categories__img--box categories__img-box--accessories"
+          onClick={() => {
+            window.scrollTo(0, 0);
+            dispatch(navigationSlice.actions.clearLinks());
+            dispatch(navigationSlice.actions.addLink('accessories'));
+          }}
         >
           <img
             src="img/categories-assessories-new.png"
@@ -71,8 +97,12 @@ export const Categories = () => {
         </Link>
         <Link
           to="/accessories"
-          onClick={() => window.scrollTo(0, 0)}
           className="categories__img--box categories__title--box"
+          onClick={() => {
+            window.scrollTo(0, 0);
+            dispatch(navigationSlice.actions.clearLinks());
+            dispatch(navigationSlice.actions.addLink('accessories'));
+          }}
         >
           <h4 className="categories__title">
             {translate('categories.accessories', lang)}

@@ -12,7 +12,8 @@ import { navigationSlice } from '../../features/navigationSlice';
 export const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
   const { lang, setLang } = useContext(LangContext);
-  const { favoriteGoods } = useAppSelector(state => state.favorites);
+  const { favouriteGoods } = useAppSelector(state => state.favourites);
+  const { cartGoods } = useAppSelector(state => state.cart);
   const dispatch = useAppDispatch();
 
   const handleBurger = () => {
@@ -26,6 +27,8 @@ export const Header = () => {
     if (themeToggleButton && appElement) {
       appElement.classList.toggle('theme--dark');
     }
+
+    setIsMenu(false);
   };
 
   return (
@@ -114,7 +117,10 @@ export const Header = () => {
                     className={classNames('nav__link--en', {
                       'is-active': lang === 'en',
                     })}
-                    onClick={() => setLang(Lang.EN)}
+                    onClick={() => {
+                      setLang(Lang.EN);
+                      setIsMenu(false);
+                    }}
                   >
                     EN
                   </span>{' '}
@@ -123,7 +129,10 @@ export const Header = () => {
                     className={classNames('nav__link--it', {
                       'is-active': lang === 'it',
                     })}
-                    onClick={() => setLang(Lang.IT)}
+                    onClick={() => {
+                      setLang(Lang.IT);
+                      setIsMenu(false);
+                    }}
                   >
                     IT
                   </span>
@@ -131,10 +140,7 @@ export const Header = () => {
               </li>
               <li className="list__item">
                 <div className="nav__link nav__link--with-menu">
-                  <div
-                    // className="icon icon__nav icon--theme"
-                    onClick={handleTheme}
-                  >
+                  <div onClick={handleTheme}>
                     {translate('header.theme', lang)}
                   </div>
                 </div>
@@ -150,7 +156,10 @@ export const Header = () => {
               className={classNames('nav__link--en', {
                 'is-active': lang === 'en',
               })}
-              onClick={() => setLang(Lang.EN)}
+              onClick={() => {
+                setLang(Lang.EN);
+                setIsMenu(false);
+              }}
             >
               EN
             </span>{' '}
@@ -159,7 +168,10 @@ export const Header = () => {
               className={classNames('nav__link--it', {
                 'is-active': lang === 'it',
               })}
-              onClick={() => setLang(Lang.IT)}
+              onClick={() => {
+                setLang(Lang.IT);
+                setIsMenu(false);
+              }}
             >
               IT
             </span>
@@ -172,33 +184,32 @@ export const Header = () => {
             ></div>
           </div>
           <NavLink
-            to="/favorites"
+            to="/favourites"
             className={({ isActive }) =>
               classNames('nav__link nav__link--heart', {
                 'is-active': isActive,
-                'has-items': favoriteGoods.length > 0,
               })
             }
             onClick={() => {
               setIsMenu(false);
               dispatch(navigationSlice.actions.clearLinks());
-              dispatch(navigationSlice.actions.addLink('favorites'));
+              dispatch(navigationSlice.actions.addLink('favourite'));
             }}
           >
             <div
-              data-count={favoriteGoods.length}
+              data-count={favouriteGoods.length}
               className={classNames('icon icon__nav icon--heart', {
-                'has-items': favoriteGoods.length > 0,
+                'has-items': favouriteGoods.length > 0,
               })}
             ></div>
           </NavLink>
           <NavLink
             to="/cart"
-            data-count={favoriteGoods.length}
+            data-count={cartGoods.length}
             className={({ isActive }) =>
               classNames('nav__link nav__link--basket', {
                 'is-active': isActive,
-                // 'has-items': cartGoods.length > 0,
+                'has-items': cartGoods.length > 0,
               })
             }
             onClick={() => {
@@ -207,7 +218,12 @@ export const Header = () => {
               dispatch(navigationSlice.actions.addLink('cart'));
             }}
           >
-            <div className="icon icon__nav icon--basket"></div>
+            <div
+              data-count={cartGoods.length}
+              className={classNames('icon icon__nav icon--basket', {
+                'has-items': cartGoods.length > 0,
+              })}
+            ></div>
           </NavLink>
         </div>
       </div>

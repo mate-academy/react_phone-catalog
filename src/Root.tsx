@@ -15,6 +15,8 @@ import { Accessories } from './components/Accessories/Accessories';
 import { PageItem } from './components/PageItem/PageItem';
 import { Category } from './utils/enums';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
+import { PageFavorite } from './components/PageFavourite/PageFavourite';
+import { PageCart } from './components/PageCart/PageCart';
 
 export const Root = () => (
   <Provider store={store}>
@@ -26,6 +28,8 @@ export const Root = () => (
             <Route path={`${Category.Phones}`} element={<Phones />} />
             <Route path={`${Category.Tablets}`} element={<Tablets />} />
             <Route path={`${Category.Accessories}`} element={<Accessories />} />
+            <Route path={'favourites'} element={<PageFavorite />} />
+            <Route path={'cart'} element={<PageCart />} />
             <Route path={`${Category.Phones}/:id`} element={<PageItem />} />
             <Route path={`${Category.Tablets}/:id`} element={<PageItem />} />
             <Route

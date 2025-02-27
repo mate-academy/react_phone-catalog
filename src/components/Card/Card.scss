@@ -9,13 +9,13 @@
 
   @include mix.hover(box-shadow, 0 3px 13px 0 var(--c-shadow-card));
 
-  @include mix.on-tablet {
-    // min-width: 237px;
-  }
+  // @include mix.on-tablet {
+  //   min-width: 237px;
+  // }
 
-  @include mix.on-desktop {
-    // min-width: 272px;
-  }
+  // @include mix.on-desktop {
+  //   min-width: 272px;
+  // }
 
 
   &__container {
@@ -110,5 +110,14 @@
     cursor: pointer;
 
     @include mix.hover(box-shadow, 0 3px 13px 0 #17203166);
+
+    &.in-cart {
+      background-color: var(--c-surface-2);
+      color: var(--c-green);
+      border: 1px solid var(--c-icons);
+      box-shadow: none;
+
+      @include mix.hover(border-color, var(--c-primary));
+    }
   }
 }

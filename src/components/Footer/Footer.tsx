@@ -32,7 +32,10 @@ export const Footer = () => {
       </nav>
       <div className="footer__back-top">
         <p className="small-text">{translate('footer.button', lang)}</p>
-        <a href="#" className="icon button button--back-top icon--back-top"></a>
+        <div
+          className="icon button button--back-top icon--back-top"
+          onClick={() => window.scrollTo(0, 0)}
+        ></div>
       </div>
     </div>
   );

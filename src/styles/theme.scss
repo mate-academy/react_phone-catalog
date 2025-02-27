@@ -8,7 +8,7 @@
   --c-icons: #4A4D58;
   --c-elements: #3B3E4A;
   --c-hover-bg: #FAFBFC;
-  --c-green: #27AE60;
+  --c-green: #F1F2F9;
   --c-red: #EB5757;
   --c-accent: #905BFF;
   --c-surface-1: #161827;
@@ -47,6 +47,14 @@
     &--arrow-right {
       background-image: url(/img/icons/arrow-right-white.svg);
     }
+
+    &--minus {
+      background-image: url(/img/icons/icon-minus-white.svg);
+    }
+
+    &--plus {
+      background-image: url(/img/icons/icon-plus-white.svg);
+    }
   }
 
   .button {
@@ -83,6 +91,12 @@
 
   .card__button--add {
     @include mix.hover(background-color, #A378FF);
+
+    &.in-cart {
+      border: none;
+
+      @include mix.hover(background-color, var(--c-icons));
+    }
   }
 
 }

@@ -1,0 +1,104 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.cart-item {
+  padding: 16px;
+  border: 1px solid var(--c-elements);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--c-primary);
+
+  @include mix.on-tablet {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__top {
+    grid-column: 1 / 8;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__close {
+    border: none;
+    background-color: var(--c-page-bg);
+  }
+
+  &__img-box {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__bottom {
+    grid-column: 9 / 13;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    // @include mix.on-tablet {
+    //   gap: 16px;
+    // }
+  }
+
+  &__counter {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &__button--minus {
+      width: 32px;
+      height: 32px;
+
+      &:disabled {
+        background-image: url(/img/icons/icon-minus-grey.svg);
+      }
+    }
+
+    &__button--plus {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__separator {
+    width: 100%;
+    height: 1px;
+    background-color: var(--c-elements);
+  }
+
+  &__cards {
+    margin-top: 40px;
+
+    @include mix.page-grid;
+
+    row-gap: 40px;
+  }
+
+  &__card {
+    grid-column: span 4;
+
+    @include mix.on-500 {
+      grid-column: span 6;
+    }
+
+    @include mix.on-800 {
+      grid-column: span 4;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 6;
+    }
+
+    @include mix.on-1600 {
+      grid-column: span 4;
+    }
+  }
+}

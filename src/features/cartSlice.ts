@@ -1,32 +1,40 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from '../types';
+import { CartProduct } from '../types/CartProduct';
 
 export interface CartState {
-  goods: Product[];
+  cartGoods: CartProduct[];
 }
 
 const initialState: CartState = {
-  goods: [],
+  cartGoods: JSON.parse(localStorage.getItem('cartGoods') || '[]'),
 };
 
 export const cartSlice = createSlice({
-  name: 'goods',
+  name: 'cartGoods',
   initialState,
   reducers: {
-    addGood(state, { payload }: PayloadAction<Product>) {
-      state.goods.push(payload);
+    addGood(state, { payload }: PayloadAction<CartProduct>) {
+      state.cartGoods.push(payload);
+      localStorage.setItem('cartGoods', JSON.stringify(state.cartGoods));
     },
-    removeGood(state, { payload }: PayloadAction<Product>) {
-      return {
-        ...state,
-        goods: state.goods.filter(good => good !== payload),
-      };
+    updateGood(state, { payload }: PayloadAction<CartProduct>) {
+      const goodToUpdate = state.cartGoods.find(good => good.id === payload.id);
+
+      if (goodToUpdate) {
+        goodToUpdate.quantity = payload.quantity;
+      }
+
+      localStorage.setItem('cartGoods', JSON.stringify(state.cartGoods));
+    },
+    removeGood(state, { payload }: PayloadAction<CartProduct>) {
+      // eslint-disable-next-line no-param-reassign
+      state.cartGoods = state.cartGoods.filter(good => good.id !== payload.id);
+      localStorage.setItem('cartGoods', JSON.stringify(state.cartGoods));
     },
     clearGoods(state) {
-      return {
-        ...state,
-        goods: [],
-      };
+      // eslint-disable-next-line no-param-reassign
+      state.cartGoods = [];
+      localStorage.removeItem('cartGoods');
     },
   },
 });

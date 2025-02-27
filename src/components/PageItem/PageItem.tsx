@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { translate } from '../../utils/translate';
 import { LangContext } from '../../context/LangContext';
 import { navigationSlice } from '../../features/navigationSlice';
+import { favouriteSlice } from '../../features/favouriteSlice';
 
 const allColors = {
   gold: '#FCDBC1',
@@ -38,6 +39,7 @@ export const PageItem = () => {
   const { phones } = useAppSelector(state => state.phones);
   const { tablets } = useAppSelector(state => state.tablets);
   const { accessories } = useAppSelector(state => state.accessories);
+  const { favouriteGoods } = useAppSelector(state => state.favourites);
   const dispatch = useAppDispatch();
   const item =
     phones.find(product => product.id === id) ||
@@ -103,6 +105,7 @@ export const PageItem = () => {
                       })}
                       key={color}
                       style={{ backgroundColor: allColors[color] }}
+                      onClick={() => window.scrollTo(0, 0)}
                     ></Link>
                   ),
                 )}
@@ -120,6 +123,7 @@ export const PageItem = () => {
                         { active: id?.includes(cap.toLowerCase()) },
                       )}
                       key={cap}
+                      onClick={() => window.scrollTo(0, 0)}
                     >
                       {cap}
                     </Link>
@@ -137,7 +141,25 @@ export const PageItem = () => {
                     {translate('card.button', lang)}
                   </button>
                   {/* eslint-disable-next-line max-len*/}
-                  <button className="card__button icon icon--heart button"></button>
+                  <button
+                    className={classNames(
+                      'card__button icon icon--heart button',
+                      {
+                        'is-favorite': favouriteGoods.some(
+                          good => good.id === item?.id,
+                        ),
+                      },
+                    )}
+                    onClick={() => {
+                      if (item) {
+                        if (favouriteGoods.some(good => good.id === item.id)) {
+                          dispatch(favouriteSlice.actions.removeGood(item));
+                        } else {
+                          dispatch(favouriteSlice.actions.addGood(item));
+                        }
+                      }
+                    }}
+                  ></button>
                 </div>
                 <ul className="card__list">
                   <li className="card__list--item">

@@ -6,7 +6,8 @@ import { translate } from '../../utils/translate';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { favoriteSlice } from '../../features/favoriteSlice';
+import { favouriteSlice } from '../../features/favouriteSlice';
+import { cartSlice } from '../../features/cartSlice';
 
 type Props = {
   item: Product;
@@ -15,8 +16,12 @@ type Props = {
 
 export const Card: React.FC<Props> = ({ item, discount }) => {
   const { lang } = useContext(LangContext);
-  const { favoriteGoods } = useAppSelector(state => state.favorites);
+  const { favouriteGoods } = useAppSelector(state => state.favourites);
+  const { cartGoods } = useAppSelector(state => state.cart);
   const dispatch = useAppDispatch();
+
+  const isItemInCart = cartGoods.some(good => good.id === item.id);
+  const isItemInFavourites = favouriteGoods.some(good => good.id === item.id);
 
   return (
     <article className="card">
@@ -63,18 +68,33 @@ export const Card: React.FC<Props> = ({ item, discount }) => {
           </li>
         </ul>
         <div className="card__buttons">
-          <button className="card__button--add">
-            {translate('card.button', lang)}
+          <button
+            className={classNames('card__button--add', {
+              'in-cart': isItemInCart,
+            })}
+            onClick={() => {
+              if (isItemInCart) {
+                dispatch(
+                  cartSlice.actions.removeGood({ ...item, quantity: 1 }),
+                );
+              } else {
+                dispatch(cartSlice.actions.addGood({ ...item, quantity: 1 }));
+              }
+            }}
+          >
+            {isItemInCart
+              ? translate('card.button.added', lang)
+              : translate('card.button', lang)}
           </button>
           <button
             className={classNames('card__button icon icon--heart button', {
-              'is-favorite': favoriteGoods.some(good => good.id === item.id),
+              'is-favorite': isItemInFavourites,
             })}
             onClick={() => {
-              if (favoriteGoods.some(good => good.id === item.id)) {
-                dispatch(favoriteSlice.actions.removeGood(item));
+              if (isItemInFavourites) {
+                dispatch(favouriteSlice.actions.removeGood(item));
               } else {
-                dispatch(favoriteSlice.actions.addGood(item));
+                dispatch(favouriteSlice.actions.addGood(item));
               }
             }}
           ></button>
