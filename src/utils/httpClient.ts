@@ -1,4 +1,4 @@
-const BASE_URL = 'https://github.com/IrynaZahorodnia/react_phone-catalog';
+const BASE_URL = 'https://github.com/IrynaZahorodnia/react_phone-catalog/';
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
