@@ -3,7 +3,8 @@
 main {
   grid-area: main;
 
-  @extend %flex-center;
+  display: flex;
+  justify-content: center;
 }
 
 .container {

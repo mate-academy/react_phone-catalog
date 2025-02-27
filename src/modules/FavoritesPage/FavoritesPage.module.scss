@@ -1,0 +1,34 @@
+@use '../../../src/styles/globals.scss' as *;
+
+.container {
+  text-align: center;
+  padding: 50px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.underConstruction {
+  margin-top: 20px;
+  font-size: 18px;
+  color: $color-red;
+  font-weight: bold;
+}
+
+.content {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px dashed $color-white;
+  background-color: $color-surface1;
+  border-radius: 8px;
+}
+
+ul {
+  text-align: left;
+  display: inline-block;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li {
+  padding: 5px 0;
+}

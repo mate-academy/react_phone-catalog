@@ -10,7 +10,6 @@ import { ProductsPage } from 'modules/ProductsPage';
 import { FavoritesPage } from 'modules/FavoritesPage/FavoritesPage';
 import { CartPage } from './modules/CartPage/CartPage';
 import { ContactsPage } from './modules/ContactsPage/ContactsPage';
-import { RightsPage } from './modules/RightsPage/RightsPage';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
 export const Root: React.FC = () => (
@@ -28,7 +27,6 @@ export const Root: React.FC = () => (
         <Route path="cart" element={<CartPage />} />
 
         <Route path="contacts" element={<ContactsPage />} />
-        <Route path="rights" element={<RightsPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>

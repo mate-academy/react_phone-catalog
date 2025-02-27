@@ -5,7 +5,7 @@ export const FooterNav: React.FC = () => {
   return (
     <nav className={styles.navbar}>
       <Link
-        to="https://github.com/JaneShavrukova/react_phone-catalog/"
+        to="https://github.com/JaneShavrukova/react_phone-catalog"
         target="_blank"
         className={styles.navbarLink}
       >
@@ -14,7 +14,11 @@ export const FooterNav: React.FC = () => {
       <Link to="/contacts" className={styles.navbarLink}>
         Contacts
       </Link>
-      <Link to="/rights" className={styles.navbarLink}>
+      <Link
+        to="https://github.com/JaneShavrukova"
+        target="_blank"
+        className={styles.navbarLink}
+      >
         Rights
       </Link>
     </nav>

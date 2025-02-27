@@ -1,0 +1,38 @@
+@use '../../../src/styles/globals.scss' as *;
+
+.container {
+  text-align: center;
+  padding: 50px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.content {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid $color-white;
+  background-color: $color-surface1;
+  border-radius: 8px;
+}
+
+ul {
+  text-align: left;
+  display: inline-block;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li {
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+a {
+  color: $color-elements;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
