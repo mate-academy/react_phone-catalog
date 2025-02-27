@@ -1,0 +1,225 @@
+@import '../../styles/main';
+
+.cart {
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+
+  &__content {
+    @include page-grid;
+
+    row-gap: 32px;
+    padding-top: 40px;
+  }
+
+  &__header {
+    grid-column: 1 / -1;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: 1 / 17;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__checkout {
+    width: 100%;
+    height: min-content;
+    grid-column: 17 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__title {
+    @include h1-typography;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: min-content;
+    border: none;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../media/icon/arrow-left.svg');
+  }
+
+  &__text {
+    @include small-text-typography;
+
+height: 12px;
+    color: $secondary;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 24px;
+  border: 1px solid $element;
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  &__part {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-mobile {
+      gap: 16px;
+      width: 100%;
+
+      &--two {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__button {
+    @include button-style;
+
+    width: 32px;
+    height: 32px;
+
+    &--remove {
+      border: none;
+      width: 16px;
+      height: 16px;
+      background-image: url('../../media/icon/disabled-close.svg');
+
+      &:hover {
+        border: none;
+        background-image: url('../../media/icon/close.svg');
+      }
+    }
+
+    &--minus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url('../../media/icon/minus.svg');
+
+      &:disabled {
+        border-color: $element;
+        background-image: url('../../media/icon/disabled-minus.svg');
+      }
+    }
+
+    &--plus {
+      background-position: center;
+      background-image: url('../../media/icon/plus.svg');
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    text-decoration: none;
+  }
+
+  &__img {
+    object-fit: contain;
+    width: 66px;
+    height: 66px;
+    margin: 14px;
+  }
+
+  &__name {
+    @include body-typography;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__price {
+    @include h3-typography;
+
+    width: 80px;
+    text-align: end;
+  }
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border: 1px solid $element;
+  padding: 24px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $element;
+  }
+
+  &__price {
+    @include h2-typography;
+  }
+
+  &__quantity {
+    @include body-typography;
+
+    color: $secondary;
+  }
+
+  &__button {
+    @include buttons-typography;
+
+    color: $white;
+    background-color: $primary;
+    border: none;
+    height: 48px;
+
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px $shadow;
+    }
+  }
+}

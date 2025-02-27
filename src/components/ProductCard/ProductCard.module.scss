@@ -1,0 +1,168 @@
+@import '../../styles/main';
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+
+  padding: 32px;
+  border: 1px $element solid;
+
+  width: 272px;
+  height: 506px;
+
+  @include on-tablet {
+    min-width: 237px;
+    width: 100%;
+    min-height: 512px;
+    height: 100%;
+  }
+
+  @include on-mobile {
+    min-width: 212px;
+    width: 100%;
+    min-height: 439px;
+    height: 100%;
+  }
+
+  &:hover {
+    border: 1px $primary solid;
+  }
+
+  &__img {
+    margin: 0 auto;
+    object-fit: contain;
+    padding-bottom: 16px;
+    transition: transform 0.3s ease-in-out;
+
+    width: 208px;
+    height: 196px;
+
+    @include on-tablet {
+      width: 173px;
+      height: 202px;
+    }
+
+    @include on-mobile {
+      width: 148px;
+      height: 129px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-decoration: none;
+
+    &:hover {
+      .product-card__img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__name {
+    @include body-typography;
+
+    height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__price {
+    padding-bottom: 8px;
+    width: 100%;
+    border-bottom: 1px $element solid;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &--new {
+      @include h3-typography;
+    }
+
+    &--old {
+      font-family: Mont-SemiBold, sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 28.12px;
+      letter-spacing: 0%;
+      text-decoration: line-through;
+      color: $secondary;
+    }
+  }
+
+  &__specs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 8px;
+  }
+
+  &__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__button {
+    @include buttons-typography;
+
+    color: $white;
+    height: 40px;
+
+    &--add {
+      border: none;
+      flex-grow: 1;
+      max-width: 100%;
+      background-color: $primary;
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 0 3px 13px $shadow;
+      }
+    }
+
+    &--added {
+      background-color: $white;
+      color: $green;
+      border: 1px $element solid;
+    }
+
+    &--like {
+      width: 40px;
+
+      @include button-style;
+
+      background-image: url('../../media/icon/favourites.svg');
+    }
+
+    &--liked {
+      background-image: url('../../media/icon/selected-favourites.svg');
+      border: 1px $element solid;
+    }
+  }
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    @include small-text-typography;
+
+    color: $secondary;
+  }
+
+  &__value {
+    @include small-text-typography;
+
+    font-weight: 600;
+    color: $primary;
+  }
+}

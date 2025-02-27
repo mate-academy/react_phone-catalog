@@ -1,7 +1,4 @@
-import './App.scss';
+import { Outlet } from 'react-router-dom';
+import './index.scss';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => <Outlet />;

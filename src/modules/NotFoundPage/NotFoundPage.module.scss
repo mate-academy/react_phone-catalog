@@ -1,0 +1,15 @@
+@import '../../styles/main';
+
+.not-found {
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+  
+  &__title {
+    @include h1-typography;
+  }
+}

@@ -1,0 +1,116 @@
+@import '../../styles/main';
+
+.buttons {
+  &--header {
+    display: flex;
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &--menu {
+    display: none;
+
+    @include on-mobile {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid $hover_bg;
+    }
+  }
+}
+
+.button {
+  list-style: none;
+  border-left: 1px solid $hover_bg;
+
+  &__link {
+    position: relative;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 64px;
+    height: 64px;
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-mobile {
+      width: 50vw;
+      height: 64px;
+    }
+
+    &.active {
+      &::after {
+        content: '';
+        display: block;
+        background-color: $primary;
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        bottom: 0;
+
+        @include on-mobile {
+          height: 2px;
+        }
+      }
+    }
+  }
+
+  &__img {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+
+    &--favourites {
+      background-image: url('../../media/icon/favourites.svg');
+    }
+
+    &--cart {
+      background-image: url('../../media/icon/cart.svg');
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__span {
+    position: absolute;
+    top: -45%;
+    left: 50%;
+    background-color: $red;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    border: 1px solid $white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__quantity {
+background-color: transparent;
+height: 8px;
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 9px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: $white;
+  }
+}

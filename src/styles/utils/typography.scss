@@ -1,0 +1,87 @@
+// typography.scss
+@mixin h1-typography {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin h2-typography {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+    @include on-mobile {
+      font-size: 22px;
+      line-height: 31px;
+      letter-spacing: 0;
+    }
+  }
+
+  @mixin h3-typography {
+    font-family: Mont-Bold, sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+
+    @include on-mobile {
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 41px;
+    }
+  }
+
+  @mixin h4-typography {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0;
+
+    @include on-mobile {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  @mixin uppercase-typography {
+    font-family: Mont-SemiBold, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  @mixin buttons-typography {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
+
+  @mixin body-typography {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
+
+  @mixin small-text-typography {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0;
+  }

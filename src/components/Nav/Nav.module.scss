@@ -1,0 +1,76 @@
+@import '../../styles/main';
+
+.nav {
+  &--header {
+    display: flex;
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &--menu {
+    display: none;
+
+    @include on-mobile {
+      display: flex;
+      justify-content: center;
+      padding-top: 24px;
+      margin: auto 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    height: 100%;
+    gap: 64px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    height: 100%;
+    padding-bottom: 3px;
+
+    @include uppercase-typography;
+
+    text-decoration: none;
+    color: $secondary;
+
+    &:hover {
+      color: $primary;
+    }
+
+
+    @include on-mobile {
+      padding-block: 8px;
+    }
+
+    &--active {
+      color: $primary;
+      border-bottom: 3px solid $primary;
+      padding-bottom: 0;
+
+      @include on-mobile {
+        border-bottom: 2px solid $primary;
+        padding-bottom: 6px;
+      }
+    }
+  }
+}

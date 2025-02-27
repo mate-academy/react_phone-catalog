@@ -1,0 +1,44 @@
+@import '../../styles/main';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__crumb {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 16px;
+  }
+
+  &__text {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-decoration: none;
+    color: $primary;
+    height: 12px;
+
+    &--current {
+      color: $secondary;
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-position: center;
+
+    &--home {
+      background-image: url('../../media/icon/home.svg');
+    }
+
+    &--separator {
+      background-image: url('../../media/icon/disabled-arrow-right.svg');
+    }
+  }
+}

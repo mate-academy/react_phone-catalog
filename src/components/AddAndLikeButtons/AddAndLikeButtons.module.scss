@@ -1,0 +1,44 @@
+@import '../../styles/main';
+
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__button {
+    @include buttons-typography;
+
+    color: $white;
+
+    &--add {
+      border: none;
+      flex-grow: 1;
+      max-width: 100%;
+      background-color: $primary;
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 0 3px 13px $shadow;
+      }
+    }
+
+    &--added {
+      background-color: $white;
+      color: $green;
+      border: 1px $element solid;
+    }
+
+    &--like {
+      @include button-style;
+
+      background-image: url('../../media/icon/favourites.svg');
+    }
+
+    &--liked {
+      background-image: url('../../media/icon/selected-favourites.svg');
+      border: 1px $element solid;
+    }
+  }
+}
+

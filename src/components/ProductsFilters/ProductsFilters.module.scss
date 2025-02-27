@@ -1,0 +1,101 @@
+@import '../../styles/main';
+
+.controls {
+  display: flex;
+  gap: 16px;
+
+  &__control {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__title {
+    @include small-text-typography;
+
+    color: $secondary;
+  }
+
+  &__select {
+    position: relative;
+    cursor: pointer;
+    height: 40px;
+
+    &--sort {
+      width: 176px;
+
+      @include on-tablet {
+        width: 187px;
+      }
+
+      @include on-mobile {
+width: 136px;
+      }
+    }
+
+      &--prePage {
+      width: 128px;
+
+      @include on-tablet {
+        width: 136px;
+      }
+
+      @include on-mobile {
+      width: 136px;
+      }
+    }
+  }
+
+  &__trigger {
+    color: $primary;
+
+    @include buttons-typography;
+
+    padding: 9px 12px;
+    outline: none;
+
+    appearance: none;
+    background-image: url('../../media/icon/disabled-arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+
+    border: 1px $icons solid;
+
+    &:hover {
+      border: 1px $secondary solid;
+    }
+
+    &--active {
+      background-image: url('../../media/icon/disabled-arrow-up.svg');
+      border: 1px $primary solid;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    right: 0;
+    padding-block: 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 10;
+    border: 1px $element solid;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__link {
+    @include body-typography;
+
+    color: $secondary;
+    text-decoration: none;
+    padding: 5px 12px;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

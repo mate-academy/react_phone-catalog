@@ -1,0 +1,68 @@
+@import '../../styles/main';
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  padding-bottom: 0;
+  justify-content: space-between;
+  border-bottom: 1px $hover_bg solid;
+
+  &__left {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__link {
+    padding: 16px 24px;
+
+    @include on-tablet {
+      padding: 10px 16px;
+    }
+  }
+
+  &__logo {
+    height: 28px;
+
+    @include on-tablet {
+      height: 22px;
+    }
+  }
+
+  &__menu {
+    display: none;
+
+    @include on-mobile {
+      display: flex;
+      align-items: center;
+
+      cursor: pointer;
+      position: relative;
+      border-left: 1px solid $hover_bg;
+
+      background-image: url('../../media/icon/menu.svg');
+
+      width: 48px;
+      height: 48px;
+
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &--open {
+      background-image: url('../../media/icon/close.svg');
+    }
+  }
+}

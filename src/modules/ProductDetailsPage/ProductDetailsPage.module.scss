@@ -1,0 +1,266 @@
+@import '../../styles/main';
+
+.product {
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+
+
+  &__content {
+    @include page-grid;
+
+    row-gap: 80px;
+    padding-top: 40px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+
+  }
+
+  &__header {
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    @include h2-typography;
+  }
+
+  &__slider{
+    grid-column: 1 / 13;
+
+    @include on-tablet {
+      grid-column: 1 / 8;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__info {
+    @include page-grid;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    grid-column: 14 / 21;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__about {
+    grid-column: 1 / 13;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__tech-specs {
+    grid-column: 14 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__suggested {
+    grid-column: 1 / -1;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__price {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &--discount {
+      @include h2-typography;
+    }
+
+    &--regular {
+      font-family: Mont-Regular, sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28.12px;
+      letter-spacing: 0;
+      text-decoration: line-through;
+      color: $secondary;
+    }
+  }
+
+  &__specs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 8px;
+
+    &--tech {
+      padding-block: 32px 0;
+    }
+  }
+
+  &__subtitle {
+    @include h3-typography;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $element;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../media/icon/arrow-left.svg');
+  }
+
+  &__text {
+    @include small-text-typography;
+
+height: 12px;
+    color: $secondary;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.selects {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  &__select {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $element;
+  }
+
+  &__small-text {
+    @include small-text-typography;
+
+    color: $secondary;
+  }
+
+  &__options {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-label {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $element;
+    border-radius: 100%;
+
+    &--checked {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__color {
+    width: 100%;
+    height: 100%;
+    border: 2px solid $white;
+    border-radius: 100%;
+  }
+
+  &__capacity-label {
+    border: 1px solid $icons;
+
+    &--checked {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__capacity {
+    @include body-typography;
+
+    padding: 4px 8px;
+
+    &--checked {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    @include small-text-typography;
+
+    color: $secondary;
+
+    &--tech {
+      @include body-typography;
+    }
+  }
+
+  &__value {
+    @include small-text-typography;
+
+    font-weight: 600;
+    color: $primary;
+
+    &--tech {
+      @include body-typography;
+    }
+  }
+}
+
+.about {
+  &__paragraph {
+    padding-top: 32px;
+  }
+
+  &__subtitle {
+    @include h4-typography;
+
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    @include body-typography;
+
+    color: $secondary;
+  }
+}

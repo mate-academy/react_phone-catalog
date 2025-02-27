@@ -1,0 +1,45 @@
+@import '../../styles/main';
+
+.home-page {
+  @include page-grid;
+
+  padding-top: 32px;
+
+  @include on-tablet {
+    padding-top: 8px;
+  }
+
+  @include on-mobile {
+    padding-top: 0;
+  }
+
+  &__loader {
+    grid-column: 1 / -1;
+  }
+
+  &__content{
+    display: grid;
+    grid-column: 1 / -1;
+    row-gap: 80px;
+
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include h1-typography;
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 36px;
+
+      padding-inline: 36px;
+    }
+
+    @include on-mobile {
+      margin-bottom: 24px;
+      padding-inline: 24px;
+    }
+  }
+}
