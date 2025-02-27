@@ -1,10 +1,8 @@
 import './PhoneCard.scss';
 
-import React, { useMemo } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
-
-import { useLocalStorage } from '../../../utils/globalStyles/customHooks';
-
+import { LocalStorageContext } from '../../../app/Contexts/LocalStorageContext';
 
 import { ShopItem } from '../../../types/ShopItem';
 
@@ -27,14 +25,10 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ phone }) => {
     ram,
   } = phone;
 
-  const { favItems, cartItems, manageItems } = useLocalStorage<ShopItem>();
+  const { cartItems, favItems, updateFavList, updateCart } = useContext(LocalStorageContext);
 
   const isFav = favItems.some(item => item.id === id);
   const isInCart = cartItems.some(item => item.id === id);
-
-  const handleItemsSelection = (listName: 'fav' | 'cart', isPicked: boolean) => {
-    manageItems(phone, listName, isPicked)
-  };
 
   return (
     <div className="phone phone-card">
@@ -67,14 +61,14 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ phone }) => {
       <div className="buttons phone-card__buttons">
         <button
           type="button"
-          onClick={() => handleItemsSelection('cart', isInCart)}
+          onClick={() => updateCart(phone)}
           className={classNames('buttons__add-to-cart', { selected: isInCart })}
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
 
         <div
-          onClick={() => handleItemsSelection('fav', isFav)}
+          onClick={() => updateFavList(phone)}
           className="buttons__add-to-fav"
         >
           <img

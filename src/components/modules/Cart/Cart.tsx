@@ -1,11 +1,12 @@
-import { useLocalStorage } from '../../../utils/globalStyles/customHooks';
+import { useContext } from 'react';
+import { LocalStorageContext } from '../../../app/Contexts/LocalStorageContext';
 
 import { ShopItem } from '../../../types/ShopItem';
 
 import { CartItem } from './CartItem/CartItem';
 
 export const Cart = () => {
-  const { cartItems } = useLocalStorage<ShopItem>();
+  const { cartItems } = useContext(LocalStorageContext);
 
   return (
     <div className="Cart">

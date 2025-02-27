@@ -8,12 +8,22 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: Mont;
+  font-family: 'Mont-regular';
   font-weight: 600;
 }
 
+
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 p {
@@ -23,4 +33,6 @@ p {
 .container {
   width: 100%;
   margin: 0 auto;
+  flex: 1;
+  position: relative;
 }

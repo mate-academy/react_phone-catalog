@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { store } from './app/store';
+import { LocalStorageContextProvider } from './app/Contexts/LocalStorageContext';
 
 import { App } from './App';
 // import { Home } from './components/modules/Home/Home';
@@ -10,18 +11,20 @@ import { App } from './App';
 // import { Phones } from './components/modules/Phones/Phones';
 // import { Accessories } from './components/modules/Accessories/Accessories';
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />}>
-          {/* <Route index element={<Home />} />
+    <LocalStorageContextProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />}>
+            {/* <Route index element={<Home />} />
           <Route path="tablets" element={<Tablets />} />
           <Route path="phones" element={<Phones />} />
           <Route path="accessories" element={<Accessories />} /> */}
-          <Route path="*" element={<p>Page not found</p>}></Route>
-        </Route>
-      </Routes>
-    </Router>
+            <Route path="*" element={<p>Page not found</p>}></Route>
+          </Route>
+        </Routes>
+      </Router>
+    </LocalStorageContextProvider>
   </Provider>,
 );

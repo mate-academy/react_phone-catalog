@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-
 import './CartItem.scss';
 
-import { useLocalStorage } from '../../../../utils/globalStyles/customHooks';
+import React, { useContext } from 'react';
 
+import { LocalStorageContext } from '../../../../app/Contexts/LocalStorageContext';
 import { ShopItem } from '../../../../types/ShopItem';
-import classNames from 'classnames';
 
 type Props = {
   item: ShopItem;
@@ -13,20 +11,15 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ item }) => {
   const { id, images, name, priceRegular, priceDiscount } = item;
-  const [quantity, setQuantity] = useState(item.quantity || 1);
-  const { changeQuantity, manageItems } = useLocalStorage<ShopItem>();
-
-  const handleQuantityChange = (action: 'add' | 'delete') => {
-    setQuantity(prev => action === 'add' ? prev + 1 : prev - 1 );
-    changeQuantity(id, action);
-  }
+  const quantity = item.quantity || 1;
+  const { addToCart, deleteFromCart, updateCart } = useContext(LocalStorageContext);
 
   return (
     <div className="cart__item item">
       <div className="item__presentation">
         <svg
-          // onClick={() => manageItems(item, 'cart')}
           className="item__remove"
+          onClick={() => updateCart(item)}
           width="16"
           height="16"
           viewBox="0 0 16 16"
@@ -51,7 +44,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           <button
             disabled={quantity === 1}
             className='toolbox__tool toolbox__tool--delete'
-            onClick={() => handleQuantityChange('delete')}
+            onClick={() => deleteFromCart(item)}
           >
             <svg
               width="16"
@@ -75,7 +68,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
           <button
             className="toolbox__tool toolbox__tool--add"
-            onClick={() => handleQuantityChange('add')}
+            onClick={() => addToCart(item)}
           >
             <svg
               width="16"

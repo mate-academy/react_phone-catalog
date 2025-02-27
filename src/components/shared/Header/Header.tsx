@@ -31,7 +31,7 @@ export const Header = () => {
   };
 
   return (
-    <div className={classNames('top', { 'top--full-screen': isMenuActive })}>
+    <div className={classNames('top', { 'top--full-screen': isMenuActive })} id='top'>
       <div className="mobile-header top__mobile-header">
         <div className="logo mobile-header__logo"></div>
         <div
