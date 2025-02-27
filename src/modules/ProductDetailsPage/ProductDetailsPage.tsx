@@ -32,7 +32,7 @@ function getSpecs(product: ProductDetails | undefined): [string, string][] {
     ['Camera', product.camera],
     ['Zoom', product.zoom],
     ['Cell', product.cell.join(', ')],
-  ];
+  ].filter(spec => spec[1]) as [string, string][];
 }
 
 export const ProductDetailsPage = () => {
