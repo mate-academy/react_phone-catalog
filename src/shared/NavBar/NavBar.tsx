@@ -6,8 +6,13 @@ import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useStorage } from '../../context/StorageContext';
 import { useTheme } from '../../context/PageTheme';
+import { useTranslation } from 'react-i18next';
+import { Aside } from './components/Aside';
 
 const links = ['home', 'phones', 'tablets', 'accessories'];
+const linksUA = ['головна', 'смартфони', 'планшети', 'aксесуари'];
+
+type Languages = 'en' | 'uk';
 
 const ActiveLine = React.memo(() => {
   const { theme } = useTheme();
@@ -53,7 +58,9 @@ const LinkItem = React.memo(props => {
               : '#fff',
         }}
         className={styles.links__item}
-        to={`/${item}`}
+        to={
+          links.includes(item) ? `/${item}` : `/${links[linksUA.indexOf(item)]}`
+        }
       >
         {isSelected && <ActiveLine />}
         {item}
@@ -74,6 +81,9 @@ export const NavBar: React.FC = () => {
   const { cartItems, favouritesItems } = useStorage();
   const location = useLocation();
   const { theme, setTheme } = useTheme();
+  const [currentLinks, setCurrentLinks] = useState<Languages>('en');
+  const { i18n } = useTranslation();
+
 
   useEffect(() => {
     const newIndex = links.findIndex(el =>
@@ -84,13 +94,25 @@ export const NavBar: React.FC = () => {
   }, [location]);
 
   useEffect(() => {
-    if (windowWidth < 640) {
+    if (windowWidth < 750) {
       setIsPhone(true);
     } else {
       setVisibleAside(false);
       setIsPhone(false);
     }
   }, [windowWidth]);
+
+  function changeLanguage(lng: Languages) {
+    console.log(i18n);
+    i18n.changeLanguage(lng);
+    setCurrentLinks(lng);
+  }
+
+  useEffect(() => {
+    if (i18n.isInitialized && i18n.language !== currentLinks) {
+      setCurrentLinks(i18n.language as Languages);
+    }
+  }, [i18n.language, currentLinks]);
 
   return (
     <>
@@ -118,6 +140,7 @@ export const NavBar: React.FC = () => {
                   to="#"
                   onClick={() => setVisibleAside(false)}
                   className={styles.link_asideItem}
+                  style={{ display: 'block'}}
                 >
                   <img
                     src={
@@ -153,24 +176,49 @@ export const NavBar: React.FC = () => {
           <>
             {/* #region Tablet&PC Navigation */}
             <div className={styles.links}>
-              {links.map((item, itemIndex) => {
-                return (
-                  <LinkItem
-                    key={item}
-                    item={item}
-                    isSelected={itemIndex === linkIndex}
-                    handleClick={() => setLinkIndex(itemIndex)}
-                  />
-                );
-              })}
+              {(currentLinks === 'en' ? links : linksUA).map(
+                (item, itemIndex) => {
+                  return (
+                    <LinkItem
+                      key={item}
+                      item={item}
+                      isSelected={itemIndex === linkIndex}
+                      handleClick={() => setLinkIndex(itemIndex)}
+                    />
+                  );
+                },
+              )}
             </div>
 
             <div className={styles.wrapper}>
               <button
                 onClick={() =>
+                  i18n.language === 'en'
+                    ? changeLanguage('uk')
+                    : changeLanguage('en')
+                }
+                style={{
+                  padding: windowWidth < 790 ? 0 : undefined,
+                  background: 'none',
+                  border: 'none',
+                }}
+              >
+                <img
+                  src={
+                    i18n.language === 'en'
+                      ? `${import.meta.env.BASE_URL}/img/icons/uk_logo.png`
+                      : `${import.meta.env.BASE_URL}/img/icons/en_logo.png`
+                  }
+                  alt="flag logo"
+                />
+              </button>
+
+              <button
+                onClick={() =>
                   theme === 'light' ? setTheme('dark') : setTheme('light')
                 }
                 style={{
+                  padding: windowWidth < 790 ? 0 : undefined,
                   backgroundColor: theme === 'light' ? '#fff' : '#B4BDC3',
                   border: 'none',
                 }}
@@ -238,124 +286,13 @@ export const NavBar: React.FC = () => {
 
       {/* #region Aside */}
       <AnimatePresence>
-        {visibleAside && (
-          <motion.aside
-            initial={{ transform: 'translateX(-100%)', opacity: '0' }}
-            animate={{ transform: 'translateX(0%)', opacity: '1' }}
-            exit={{ transform: 'translateX(-100%)', opacity: '0' }}
-            className={classNames(styles.aside, {
-              [styles['aside--visible']]: visibleAside,
-            })}
-          >
-            <div className={styles.asideLinks}>
-              <NavLink
-                onClick={() => setVisibleAside(false)}
-                className={styles.links__item}
-                style={{
-                  color: location.pathname.includes('home')
-                    ? '#000'
-                    : undefined,
-                }}
-                to={'/home'}
-              >
-                HOME
-              </NavLink>
-              <NavLink
-                onClick={() => setVisibleAside(false)}
-                className={styles.links__item}
-                style={{
-                  color: location.pathname.includes('phones')
-                    ? '#000'
-                    : undefined,
-                }}
-                to={'/phones'}
-              >
-                PHONES
-              </NavLink>
-              <NavLink
-                onClick={() => setVisibleAside(false)}
-                className={styles.links__item}
-                style={{
-                  color: location.pathname.includes('tablets')
-                    ? '#000'
-                    : undefined,
-                }}
-                to={'/tablets'}
-              >
-                TABLETS
-              </NavLink>
-              <NavLink
-                onClick={() => setVisibleAside(false)}
-                className={styles.links__item}
-                style={{
-                  color: location.pathname.includes('accessories')
-                    ? '#000'
-                    : undefined,
-                }}
-                to={'/accessories'}
-              >
-                ACCESSORIES
-              </NavLink>
-            </div>
-
-            <div className={styles.asideIcons}>
-              <div
-                className={styles.asideIcon}
-                style={{
-                  borderBottom: location.pathname.includes('favourites')
-                    ? '3px solid black'
-                    : 'none',
-                }}
-              >
-                <NavLink to="/favourites" className={styles.links__item}>
-                  <img
-                    src={
-                      theme === 'light'
-                        ? `${import.meta.env.BASE_URL}/img/icons/favourites.svg`
-                        : `${import.meta.env.BASE_URL}/img/icons/dark_like.svg`
-                    }
-                    alt="favourites"
-                  />
-                  {favouritesItems.length > 0 && (
-                    <div
-                      className={classNames(
-                        styles.count,
-                        styles.favouritesCount,
-                      )}
-                    >
-                      {favouritesItems.length}
-                    </div>
-                  )}
-                </NavLink>
-              </div>
-
-              <div
-                className={styles.asideIcon}
-                style={{
-                  borderBottom: location.pathname.includes('case')
-                    ? '3px solid black'
-                    : 'none',
-                }}
-              >
-                <NavLink to="/case" className={styles.links__item}>
-                  <img
-                    src={
-                      theme === 'light'
-                        ? `${import.meta.env.BASE_URL}/img/icons/case.svg`
-                        : `${import.meta.env.BASE_URL}/img/icons/dark_cart.svg`
-                    }
-                    alt="case"
-                  />
-                  {cartItems.length > 0 && (
-                    <div className={classNames(styles.count, styles.cartCount)}>
-                      {cartItems.length}
-                    </div>
-                  )}
-                </NavLink>
-              </div>
-            </div>
-          </motion.aside>
-        )}
+      <Aside
+        isVisible={visibleAside}
+        setVisible={setVisibleAside}
+        theme={theme}
+        cartLength={cartItems.length}
+        favLength={favouritesItems.length}
+      />
       </AnimatePresence>
       {/* #endregion Aside */}
     </>

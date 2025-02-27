@@ -7,9 +7,11 @@ import { useStorage } from '../../context/StorageContext';
 import { useWindowWidth } from '../../hooks/WindowWidth';
 import { NavAdress } from '../../shared/NavAdress';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export const Favourites: React.FC = () => {
   const { favouritesItems } = useStorage();
+  const { t } = useTranslation();
   const [products, setProducts] = useState<Article[] | null>(null);
   const windowWidth = useWindowWidth();
 
@@ -28,10 +30,10 @@ export const Favourites: React.FC = () => {
       {products && (
         <div className={styles.favourites__content}>
           <NavAdress />
-          <h1 className={styles.favourites__title}>Favourites</h1>
+          <h1 className={styles.favourites__title}>{t('crt_favourites')}</h1>
           <p
             className={styles.favourites__count}
-          >{`${favouritesItems.length} items`}</p>
+          >{`${favouritesItems.length} ${t('crt_items')}`}</p>
 
           <div className={styles.favourites__list}>
             <AnimatePresence mode="popLayout">

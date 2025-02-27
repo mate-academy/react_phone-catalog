@@ -1,0 +1,115 @@
+aside {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 48px);
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s;
+  }
+  .asideLinks {
+    margin-top: 24px;
+    @include flexCenter;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .asideIcons {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    @include flexCenter;
+    flex-direction: row;
+  }
+  
+  .asideIcon {
+    @include setSize(50%, 64px);
+    box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
+    transition: all 0.3s;
+  
+    &:hover {
+      border: 1px solid black;
+    }
+  }
+
+  .links {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  
+    &__item {
+      position: relative;
+      @include setFont($font-mont, 16px, 800);
+      @include flexCenter;
+      @include setSize(100%, 100%);
+      transition: all 0.3s;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      color: #000;
+  
+     
+    
+      &:hover {
+        background-color: $color-light-grey;
+        text-shadow:
+          -1px -1px 0 $color-modified-grey,
+          1px -1px 0 $color-modified-grey,
+          -1px 1px 0 $color-modified-grey,
+          1px 1px 0 $color-modified-grey,
+      }
+    
+      &--active {
+        color: $color-element-black;
+      }
+    }
+    
+  
+    @include onTablet {
+      font-size: 12px;
+      line-height: 11px;
+    }
+  
+    @media (max-width: 790px) {
+      gap: 20px;
+    }
+  }
+
+  .count {
+    position: absolute;
+    background-color: #476df4;
+    border: 1px solid $color-white;
+    border-radius: 50px;
+    @include setSize(14px, 14px);
+    @include setFont($font-mont, 9px, 600);
+    color: $color-white;
+    line-height: 14px;
+    text-align: center;
+  }
+  
+  .cartCount {
+    position: absolute;
+    top: 25%;
+    right: -80%;
+  
+    @include onPhone {
+      top: 25%;
+      left: 50%;
+    }
+  }
+  
+  .favouritesCount {
+    top: 25%;
+    right: 120%;
+  
+    @include onPhone {
+      top: 25%;
+      left: 50%;
+    }
+  }
+  

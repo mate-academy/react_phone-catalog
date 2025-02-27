@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './Footer.module.scss';
 import { useTheme } from '../../context/PageTheme';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <footer className={styles.footer}>
@@ -30,18 +32,18 @@ export const Footer: React.FC = () => {
           href="https://en.wikipedia.org/wiki/Rights"
           className={styles.footer__link}
         >
-          rights
+          {t('ftr_right')}
         </a>
         <a
           href="mailto:mikalaj.krutak@gmail.com"
           className={styles.footer__link}
         >
-          Contacts
+          {t('ftr_contacts')}
         </a>
       </div>
 
       <div className={styles.toTop}>
-        <p className={styles.toTop__title}>Back to top</p>
+        <p className={styles.toTop__title}>{t('ftr_toTop')}</p>
         <div
           className={styles.toTop__button}
           style={{

@@ -53,27 +53,28 @@ img {
     @include setSize(100%, 100%);
     transition: all 0.3s;
     letter-spacing: 1.5px;
-    text-shadow:
-      -0.5px -0.5px 0 black,
-      0.5px -0.5px 0 $color-modified-grey
-      -0.5px  0.5px 0 $color-modified-grey,
-      0.5px  0.5px 0 $color-modified-grey;
-
     text-decoration: none;
+    color: #000;
 
+   
+  
     &:hover {
-      color: $color-element-black;
       background-color: $color-light-grey;
-     
+      text-shadow:
+        -1px -1px 0 $color-modified-grey,
+        1px -1px 0 $color-modified-grey,
+        -1px 1px 0 $color-modified-grey,
+        1px 1px 0 $color-modified-grey,
     }
-
+  
     &--active {
       color: $color-element-black;
     }
   }
+  
 
   @include onTablet {
-    gap: 32px;
+    gap: calc(10px + (32 - 10) * ((100vw - 320px) / (790 - 320)));
     font-size: 12px;
     line-height: 11px;
   }
@@ -88,9 +89,12 @@ img {
     border: 1px solid #313237;
   }
 
+ 
+
   @include onTablet {
     width: 48px;
   }
+
 }
 
 .rightButton {
@@ -125,6 +129,7 @@ aside {
   bottom: 0;
   width: 100%;
   @include flexCenter;
+  flex-wrap: wrap;
   flex-direction: row;
 }
 
@@ -132,10 +137,6 @@ aside {
   @include setSize(50%, 64px);
   box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
   transition: all 0.3s;
-
-  &:hover {
-    border: 1px solid black;
-  }
 }
 
 .count {
