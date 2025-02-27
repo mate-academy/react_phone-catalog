@@ -16,7 +16,7 @@ export const HomePage = () => {
   return (
     <div className={styles['home-page']}>
       <h1 className={styles['home-page__title']}>
-        Welcome to Nice Gadgets store!
+      Product Catalog
       </h1>
       {loading ? (
         <div className={styles['home-page__loader']}>

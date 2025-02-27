@@ -16,6 +16,7 @@ import { CartPage } from './modules/CartPage';
 import { CartProvider } from './store/CartContext';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { FavouritesProvider } from './store/FavouritesContext';
+import { NotFoundPage } from './modules/NotFoundPage';
 
 export const Root = () => {
   return (
@@ -44,6 +45,7 @@ export const Root = () => {
                   </Route>
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/favourites" element={<FavouritesPage />} />
+                  <Route path="*" element={<NotFoundPage/>}/>
                 </Routes>
               </Layout>
             </div>
