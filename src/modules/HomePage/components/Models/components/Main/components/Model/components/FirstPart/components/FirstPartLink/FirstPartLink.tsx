@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './FirstPartLink.module.scss';
-import { ModelProps } from '../../../../types/ModelProps';
+import { Product } from '../../../../types/Product';
 
-type PickedProps = Pick<ModelProps, 'name'>;
+type PickedProps = Pick<Product, 'name'>;
 
 type Props = PickedProps & {
   firstPartProductTitle: string;

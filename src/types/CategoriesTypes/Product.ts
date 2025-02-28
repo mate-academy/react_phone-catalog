@@ -1,5 +1,5 @@
 export interface Product {
-  id: number;
+  id?: number;
   category: string;
   itemId: string;
   name: string;
@@ -7,8 +7,10 @@ export interface Product {
   price: number;
   screen: string;
   capacity: string;
-  color: string;
+  color?: string;
   ram: string;
-  year: number;
+  year?: number;
   image: string;
+  isMinWidthFixedValue: boolean;
+  sectionTitle: string;
 }

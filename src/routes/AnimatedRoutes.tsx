@@ -14,6 +14,7 @@ import { ProductDetails } from '../modules/ProductDetails';
 import { CardsContext } from '../context/CardsContext/CardsContext';
 import { ErrorQueries } from '../enums/ErrorsQueries';
 import { MainContext } from '../context/MainContext';
+import { Favourites } from '../modules/Favourites';
 
 export const AnimatedRoutes: React.FC = React.memo(() => {
   // #region context
@@ -91,6 +92,7 @@ export const AnimatedRoutes: React.FC = React.memo(() => {
           </React.Fragment>
         );
       })}
+      <Route path="/favourites" element={<Favourites />} />
       <Route path="/*" element={<Error query={ErrorQueries.pageNotFound} />} />
     </Routes>
   );

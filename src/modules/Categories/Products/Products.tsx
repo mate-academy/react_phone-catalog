@@ -66,7 +66,7 @@ export const Products: React.FC<Props> = ({ query }) => {
           return productA.fullPrice - productB.fullPrice;
         }
 
-        return productB.year - productA.year;
+        return (productB.year as number) - (productA.year as number);
       }),
     [filteredProducts, sortBy],
   );
@@ -166,7 +166,7 @@ export const Products: React.FC<Props> = ({ query }) => {
           setButtonValue={handleSetPerPage}
         />
       </div>
-      <ProductsItems sortedProducts={resultingProducts} />
+      <ProductsItems products={resultingProducts} />
       {perPage !== PerPage.all && <Pagination pageNumbers={pageNumbers} />}
     </>
   );
@@ -174,8 +174,8 @@ export const Products: React.FC<Props> = ({ query }) => {
   // #endregion
 
   return (
-    <div className={styles.products}>
+    <section className={styles.products}>
       {emptinessCondition ? noProductsMarkup : availableProductsMarkup}
-    </div>
+    </section>
   );
 };

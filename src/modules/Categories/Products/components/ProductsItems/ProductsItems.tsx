@@ -1,20 +1,20 @@
+/* eslint-disable max-len */
 import React, { useContext } from 'react';
-// eslint-disable-next-line max-len
 import { Model } from '../../../../HomePage/components/Models/components/Main/components/Model';
-import { Product } from '../../../../../types/CategoriesTypes/Product';
 import styles from './ProductsItems.module.scss';
 import { MainContext } from '../../../../../context/MainContext';
+import { Product } from '../../../../../types/CategoriesTypes/Product';
 
 interface Props {
-  sortedProducts: Product[];
+  products: Product[];
 }
 
-export const ProductsItems: React.FC<Props> = ({ sortedProducts }) => {
+export const ProductsItems: React.FC<Props> = ({ products }) => {
   const { isTablet } = useContext(MainContext);
 
   return (
     <div className={styles['products-wrapper']}>
-      {sortedProducts.map(product => {
+      {products.map(product => {
         const {
           id,
           itemId,
@@ -26,6 +26,7 @@ export const ProductsItems: React.FC<Props> = ({ sortedProducts }) => {
           screen,
           capacity,
           ram,
+          sectionTitle,
         } = product;
 
         return (
@@ -41,6 +42,7 @@ export const ProductsItems: React.FC<Props> = ({ sortedProducts }) => {
             screen={screen}
             capacity={capacity}
             ram={ram}
+            sectionTitle={sectionTitle}
           />
         );
       })}

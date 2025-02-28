@@ -39,7 +39,7 @@ export const Main: React.FC<Props> = React.memo(
             return discountB - discountA;
           }
 
-          return productB.year - productA.year;
+          return (productB.year as number) - (productA.year as number);
         }),
       [products],
     );

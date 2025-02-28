@@ -7,17 +7,20 @@ import { MainContext } from '../../../../../../../../../../context/MainContext';
 import { FirstPartLink } from './components/FirstPartLink';
 import { ProductsContext } from '../../../../../../../../../../context/ProductsContext';
 import { useMediaQuery } from 'react-responsive';
-import { ModelProps } from '../../types/ModelProps';
+import { Product } from '../../types/Product';
 
 // eslint-disable-next-line prettier/prettier
-type PickedProps = Pick<ModelProps, 'itemId' | 'category' | 'image' | 'name' | 'price' | 'fullPrice'>;
+type PickedProps = Pick<
+  Product,
+  'itemId' | 'category' | 'image' | 'name' | 'price' | 'fullPrice'
+>;
 
 type Props = PickedProps & {
-  isHotPrises: boolean;
+  isPriceHot: boolean;
 };
 
 export const FirstPart: React.FC<Props> = React.memo(
-  ({ itemId, category, image, name, price, fullPrice, isHotPrises }) => {
+  ({ itemId, category, image, name, price, fullPrice, isPriceHot }) => {
     // #region context
 
     const { isDesktop, isOnHomePage, modelOnClickHandler } =
@@ -61,7 +64,7 @@ export const FirstPart: React.FC<Props> = React.memo(
     }, [isSmallDesktop, isDesktop]);
 
     const firstPartMarkup = useMemo(
-      () => (isHotPrises ? hotPriceMarkup : priceMarkup),
+      () => (isPriceHot ? hotPriceMarkup : priceMarkup),
       [],
     );
 

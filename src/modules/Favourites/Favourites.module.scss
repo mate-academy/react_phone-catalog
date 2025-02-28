@@ -1,0 +1,10 @@
+@import '/src/App.scss';
+
+.favourites {
+  width: var(--container-width);
+  margin-inline: auto;
+
+  .title {
+    @include products-title;
+  }
+}

@@ -165,6 +165,23 @@
   }
 }
 
+@mixin products-title {
+  color: $primary-color;
+  margin: 0;
+  margin-top: 24px;
+  width: 100%;
+  font-family: Mont-Bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    margin-top: 40px;
+  }
+}
+
 // #endregion
 // #region grid
 

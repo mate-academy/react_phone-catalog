@@ -7,6 +7,7 @@ import { MainContextProvider } from './context/MainContext/provider';
 import { ProductsContextProvider } from './context/ProductsContext/provider';
 import { SearchContextProvider } from './context/SearchContext/provider';
 import { CardsContextProvider } from './context/CardsContext/provider/CardsContextProvider';
+import { FavouritesContextProvider } from './context/FavouritesContext/provider';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <DSContextProvider>
           <ProductsContextProvider>
             <CardsContextProvider>
-              <App />
+              <FavouritesContextProvider>
+                <App />
+              </FavouritesContextProvider>
             </CardsContextProvider>
           </ProductsContextProvider>
         </DSContextProvider>
