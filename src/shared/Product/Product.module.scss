@@ -1,4 +1,4 @@
-@import '../styles/index.scss';
+@import '../styles/index';
 
 p {
   margin: 0;
@@ -20,22 +20,23 @@ p {
   transition: all 0.3s;
 
   &:hover {
-    box-shadow: 0px 3px 13px $color-element-black;
+    box-shadow: 0 3px 13px $color-element-black;
   }
 
-  @include onTablet {
-    @include setLimit(240px, 512px);
+  @include on-tablet{
+    @include set-limit(240px, 512px);
   }
 
-  @include onPhone {
-    @include setLimit(212px, 540px);
+  @include on-phone{
+    @include set-limit(212px, 540px);
   }
 
   &--catalog {
     max-width: unset;
     max-height: unset;
     width: 100%;
-    @include setLimit(1000px, 1000px);
+  
+    @include set-limit(1000px, 1000px);
   }
 }
 
@@ -54,7 +55,8 @@ p {
 }
 
 .title {
-  @include setFont($font-mont, 14px, 600);
+  @include set-font($font-mont, 14px, 600);
+
   min-height: 40px;
   color: $color-element-black;
   line-height: 21px;
@@ -62,14 +64,16 @@ p {
 }
 
 .prices {
-  @include flexCenter;
+  @include flex-center;
+
   flex-direction: row;
   margin-right: auto;
   gap: 8px;
 }
 
 .fullPrice {
-  @include setFont($font-mont, 22px, 800);
+  @include set-font($font-mont, 22px, 800);
+
   margin: 0 auto 0 0;
   letter-spacing: 0;
   text-decoration: line-through;
@@ -77,7 +81,8 @@ p {
 }
 
 .price {
-  @include setFont($font-mont, 22px, 800);
+  @include set-font($font-mont, 22px, 800);
+
   color: $color-element-black;
   margin: 0 auto 0 0;
   letter-spacing: 0;
@@ -100,7 +105,8 @@ p {
   }
 
   &__name {
-    @include setFont($font-mont, 12px, 700);
+    @include set-font($font-mont, 12px, 700);
+  
     letter-spacing: 0;
     line-height: 15px;
     color: $color-grey;
@@ -109,7 +115,8 @@ p {
   }
 
   &__value {
-    @include setFont($font-mont, 12px, 700);
+    @include set-font($font-mont, 12px, 700);
+  
     letter-spacing: 0;
     line-height: 15px;
     color: $color-element-black;
@@ -126,20 +133,19 @@ p {
 }
 
 .button {
+  @include flex-center;
+  @include set-size(160px, 40px);
+  @include set-font($font-mont, 700, 14px);
+
   padding: 0;
-  @include setSize(160px, 40px);
   background-color: $color-element-orange;
   border: none;
   border-radius: 10px;
-  @include flexCenter;
   transition: all 0.3s;
-
-  @include setFont($font-mont, 700, 14px);
   line-height: 21px;
   color: $color-element-white;
-
   &:hover {
-    box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
   }
 
   &:active {
@@ -154,8 +160,9 @@ p {
 }
 
 .favourite {
-  @include flexCenter;
-  @include setSize(40px, 40px);
+  @include flex-center;
+  @include set-size(40px, 40px);
+
   padding: 0;
   border-radius: 50%;
   border: none;

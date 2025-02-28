@@ -1,22 +1,23 @@
-@import '../styles/index.scss';
+@import '../styles/index';
 
 img {
     margin: 0;
 }
 
 .footer {
+    @include set-size(100%, 96px);
+    @include flex-center;
+
     bottom: 0;
     max-width: $element-max-width;
     box-sizing: border-box;
-    @include setSize(100%, 96px);
-    box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
-    @include flexCenter;
+    box-shadow: 0 1px 4px rgba(226, 230, 233, 0.75);
     justify-content: space-between;
     padding-inline: minmax(32px, 152px);
     margin-top: 200px;
     margin-inline: auto;
 
-    @include onPhone {
+    @include on-phone{
         height: 40vh;
         margin: 0;
         padding: 16px;
@@ -27,12 +28,13 @@ img {
     }
 
     &__links {
-        @include flexCenter;
+        @include flex-center;
+
         flex-direction: row;
         width: 35%;
         justify-content: space-between;
 
-        @include onPhone {
+        @include on-phone{
             flex-direction: column;
             align-items: start;
             gap: 16px;
@@ -43,7 +45,8 @@ img {
         text-decoration: none;
         text-transform: uppercase;
         color: $color-grey;
-        @include setFont($font-mont, 12px, 800);
+    
+        @include set-font($font-mont, 12px, 800);
     }
 }
 
@@ -51,27 +54,30 @@ img {
     display: inline-block;
     margin-left: 32px;
 
-    @include onPhone {
+    @include on-phone{
         margin: 0;
     }
 }
 
 .toTop {
-    @include flexCenter;
+    @include flex-center;
+
     gap: 16px;
     margin-right: 32px;
 
-    @include onPhone {
+    @include on-phone{
         margin-inline: auto;
     }
 
     &__title {
-        @include setFont($font-mont, 12px, 700);
+        @include set-font($font-mont, 12px, 700);
+    
         color: $color-grey;
     }
 
     &__button {
-        @include setSize(32px, 32px);
+        @include set-size(32px, 32px);
+    
         border-radius: 50%;
         border: 1px solid $color-light-grey;
         color: $color-element-black;
@@ -87,6 +93,7 @@ img {
 
     &__link {
         display: block;
-        @include setSize(100%, 100%);
+    
+        @include set-size(100%, 100%);
     }
 }

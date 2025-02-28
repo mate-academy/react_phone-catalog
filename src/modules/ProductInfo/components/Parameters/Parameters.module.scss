@@ -1,27 +1,29 @@
-@import '../../../../shared/styles/index.scss';
-@import '../../../../App.scss';
+@import '../../../../shared/styles/index';
+@import '../../../../App';
 
 .card__parameters {
     grid-column: 14 / 21;
     max-height: 442px;
 
-    @include onTablet {
+    @include on-tablet {
         grid-column: 8 / -1;
     }
 
-    @include onPhone {
+    @include on-phone {
         grid-column: 1 / -1;
     }
   }
 
   .card__buttons {
-    @include flexCenter;
+    @include flex-center;
+  
     justify-content: start;
     gap: 8px;
   }
 
   .card__colors {
-    @include flexCenter;
+    @include flex-center;
+  
     flex-direction: column;
     align-items: start;
     gap: 8px;
@@ -30,8 +32,9 @@
   }
 
   .card__color {
-    @include setSize(32px, 32px);
-    @include flexCenter;
+    @include set-size(32px, 32px);
+    @include flex-center;
+  
     border: 1px solid $color-element-white;
     border-radius: 50%;
     padding: 2px;
@@ -46,13 +49,15 @@
   }
 
   .card__colorButton {
-    @include setSize(30px, 30px);
+    @include set-size(30px, 30px);
+  
     border: none;
     border-radius: 50%;
   }
 
   .card__colorsTitle {
-    @include setFont($font-mont, 12px, 600);
+    @include set-font($font-mont, 12px, 600);
+  
     color: $color-grey;
   }
 
@@ -62,7 +67,8 @@
   }
 
   .card__capacityTitle {
-    @include setFont($font-mont, 12px, 600);
+    @include set-font($font-mont, 12px, 600);
+  
     color: $color-grey;
     margin-bottom: 8px;
   }
@@ -73,7 +79,8 @@
     background-color: $color-white;
     border: 1px solid $color-grey;
     border-radius: 5px;
-    @include setFont($font-mont, 14px, 500);
+  
+    @include set-font($font-mont, 14px, 500);
 
     &:hover {
       border: 2px solid black;
@@ -81,7 +88,8 @@
   }
 
   .card__prices {
-    @include flexCenter;
+    @include flex-center;
+  
     justify-content: start;
     gap: 8px;
   }
@@ -89,20 +97,24 @@
   .card__price {
     display: block;
     margin: 0;
-    @include setFont($font-mont, 32px, 800);
+  
+    @include set-font($font-mont, 32px, 800);
+  
     color: $color-element-black;
   }
 
   .card__priceFull {
-    @include setFont($font-mont, 22px, 500);
+    @include set-font($font-mont, 22px, 500);
+  
     text-decoration: line-through;
     color: $color-grey;
   }
 
   .card__buyButton {
+    @include set-size(100%, 48px);
+    @include set-font($font-mont, 14px, 700);
+  
     padding: 0;
-    @include setSize(100%, 48px);
-    @include setFont($font-mont, 14px, 700);
     color: white;
     max-width: 263px;
     background-color: $color-element-orange;
@@ -111,7 +123,7 @@
     transition: all 0.3s;
 
     &:hover {
-      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
     }
   }
 
@@ -122,11 +134,12 @@
   }
 
   .card__favourites {
+    @include set-size(48px, 48px);
+    @include flex-center;
+  
     padding: 0;
-    @include setSize(48px, 48px);
     border-radius: 50%;
     border: 1px solid $color-light-grey;
-    @include flexCenter;
     transition: all 0.3s;
 
     &:hover {
@@ -142,16 +155,19 @@
   }
 
   .card__decriptionItem {
-    @include flexCenter;
+    @include flex-center;
+  
     justify-content: space-between;
   }
 
   .card__decriptionName {
-    @include setFont($font-mont, 12px, 600);
+    @include set-font($font-mont, 12px, 600);
+  
     color: $color-grey;
   }
 
   .card__decriptionValue {
-    @include setFont($font-mont, 12px, 700);
+    @include set-font($font-mont, 12px, 700);
+  
     color: $color-element-black;
   }

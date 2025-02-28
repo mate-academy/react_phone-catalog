@@ -1,9 +1,7 @@
 $font-mont: 'Mont', sans-serif;
-
 $content-max-width: 1440px;
 $content-padding-inline: 24px;
 $element-max-width: 1200px;
-
 $color-white: var(--color-white);
 $color-hover-white: var(--color-hover-white);
 $color-element-white: var(--color-element-white);
@@ -13,7 +11,7 @@ $color-element-black: var(--color-element-black);
 $color-element-orange: var(--color-element-orange);
 
 html {
-  --color-white: #FFFFFF;
+  --color-white: #FFF;
   --color-hover-white: #FAFBFC;
   --color-element-white: #E2E6E9;
   --color-light-grey: #B4BDC3;
@@ -25,9 +23,9 @@ html {
 html.dark {
   --color-white: #1c1c1c !important;
   --color-hover-white: #2c2c2c !important;
-  --color-element-white: #333333 !important;
-  --color-light-grey: #555555 !important;
-  --color-grey: #777777 !important;
+  --color-element-white: #333 !important;
+  --color-light-grey: #555 !important;
+  --color-grey: #777 !important;
   --color-element-black: #f5f5f5 !important;
   --color-element-orange: #F86800 !important;
 }

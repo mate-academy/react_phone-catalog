@@ -1,5 +1,5 @@
-@import '/src/shared/styles/index.scss';
-@import 'src/App.scss';
+@import '/src/shared/styles/index';
+@import 'src/App';
 
 .card__tech {
     grid-column: 14 / -1;
@@ -7,13 +7,14 @@
     flex-direction: column;
     gap: 8px;
 
-    @include onTablet {
+    @include on-tablet {
         grid-column: 1 / -1;
     }
   }
 
   .card__techTitle {
-    @include setFont($font-mont, 22px, 800);
+    @include set-font($font-mont, 22px, 800);
+  
     color: $color-element-black;
   }
 
@@ -23,11 +24,13 @@
   }
 
   .card__techName {
-    @include setFont($font-mont, 14px, 500);
+    @include set-font($font-mont, 14px, 500);
+  
     color: $color-grey;
   }
 
   .card__techValue {
-    @include setFont($font-mont, 14px, 600);
+    @include set-font($font-mont, 14px, 600);
+  
     color: $color-element-black;
   }

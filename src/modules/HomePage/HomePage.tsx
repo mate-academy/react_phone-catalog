@@ -23,6 +23,7 @@ const phoneImages = [
 
 export const HomePage: React.FC = () => {
   const [index, setIndex] = useState<number>(0);
+  const [visiblePage, setVisiblePage] = useState<boolean>(false);
   const windowWidth = useWindowWidth();
   const visibleImages = windowWidth < 640 ? phoneImages : pcImages;
   const lastMotion = useRef<'left' | 'right'>('right');
@@ -43,17 +44,20 @@ export const HomePage: React.FC = () => {
     setIndex(prev => (prev - 1 + visibleImages.length) % visibleImages.length);
   }, [visibleImages.length]);
 
-  function handleSwipe(startX, endX) {
-    const diffX = endX - startX;
+  const handleSwipe = useCallback(
+    (startX: number, endX: number) => {
+      const diffX = endX - startX;
 
-    if (Math.abs(diffX) > 50) {
-      if (diffX > 0) {
-        nextImage();
-      } else {
-        prevImage();
+      if (Math.abs(diffX) > 50) {
+        if (diffX > 0) {
+          nextImage();
+        } else {
+          prevImage();
+        }
       }
-    }
-  }
+    },
+    [nextImage, prevImage],
+  );
 
   useEffect(() => {
     let startX = 0;
@@ -77,74 +81,86 @@ export const HomePage: React.FC = () => {
     };
   }, [handleSwipe]);
 
+  useEffect(() => {
+    if (!visiblePage) {
+      setTimeout(() => setVisiblePage(true), 300);
+    }
+  }, [visiblePage]);
+
   return (
     <>
-      <header id="home" className={styles.home}>
-        <h1 className={styles.home__title}>{t('home_title')}</h1>
+      {visiblePage ? (
+        <>
+          <header id="home" className={styles.home}>
+            <h1 className={styles.home__title}>{t('home_title')}</h1>
 
-        {windowWidth > 640 && (
-          <>
-            <button
-              className={classNames(styles.slideButton, styles.buttonLeft)}
-              onClick={prevImage}
-            >
-              {'<'}
-            </button>
-            <button
-              className={classNames(styles.slideButton, styles.buttonRight)}
-              onClick={nextImage}
-            >
-              {'>'}
-            </button>
-          </>
-        )}
+            {windowWidth > 640 && (
+              <>
+                <button
+                  className={classNames(styles.slideButton, styles.buttonLeft)}
+                  onClick={prevImage}
+                >
+                  {'<'}
+                </button>
+                <button
+                  className={classNames(styles.slideButton, styles.buttonRight)}
+                  onClick={nextImage}
+                >
+                  {'>'}
+                </button>
+              </>
+            )}
 
-        <div className={styles.wrapper}>
-          <AnimatePresence mode="wait">
-            <motion.img
-              onClick={() =>
-                navigate(
-                  '/phones/apple-iphone-14?capacity=128GB&color=midnight',
-                )
-              }
-              key={visibleImages[index]}
-              src={visibleImages[index]}
-              alt="banner"
-              className={styles.image}
-              initial={{
-                opacity: 0,
-                x: lastMotion.current === 'right' ? 100 : -100,
-              }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{
-                opacity: 0,
-                x: lastMotion.current === 'right' ? -100 : 100,
-              }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-            />
-          </AnimatePresence>
-        </div>
+            <div className={styles.wrapper}>
+              <AnimatePresence mode="wait">
+                <motion.img
+                  onClick={() =>
+                    navigate(
+                      '/phones/apple-iphone-14?capacity=128GB&color=midnight',
+                    )
+                  }
+                  key={visibleImages[index]}
+                  src={visibleImages[index]}
+                  alt="banner"
+                  className={styles.image}
+                  initial={{
+                    opacity: 0,
+                    x: lastMotion.current === 'right' ? 100 : -100,
+                  }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{
+                    opacity: 0,
+                    x: lastMotion.current === 'right' ? -100 : 100,
+                  }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                />
+              </AnimatePresence>
+            </div>
 
-        <div className={styles.dots}>
-          {visibleImages.map((image, ImageIndex) => {
-            return (
-              <div
-                key={image}
-                onClick={() => setIndex(ImageIndex)}
-                className={classNames(styles.dots__dot, {
-                  [styles.dotActive]: index === ImageIndex,
-                })}
-              ></div>
-            );
-          })}
-        </div>
-      </header>
+            <div className={styles.dots}>
+              {visibleImages.map((image, ImageIndex) => {
+                return (
+                  <div
+                    key={image}
+                    onClick={() => setIndex(ImageIndex)}
+                    className={classNames(styles.dots__dot, {
+                      [styles.dotActive]: index === ImageIndex,
+                    })}
+                  ></div>
+                );
+              })}
+            </div>
+          </header>
 
-      <NewModels />
+          <NewModels />
 
-      <Categories />
+          <Categories />
 
-      <HotPrices />
+          <HotPrices />
+        </>
+      ) : (
+        <h1>Product Catalog</h1>
+      )}
     </>
   );
 };

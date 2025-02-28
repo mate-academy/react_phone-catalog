@@ -1,19 +1,20 @@
-@import '/src/shared/styles/index.scss';
+@import '/src/shared/styles/index';
 
 .phones {
     padding-inline: 32px;
 
-    @include onTablet {
+    @include on-tablet{
         padding-inline: 24px;
     }
     
-    @include onPhone {
+    @include on-phone{
         padding-inline: 16px;
     }
 }
 
 .phones__title {
-    @include setFont($font-mont, 48px, 800);
+    @include set-font($font-mont, 48px, 800);
+
     line-height: 56px;
     letter-spacing: -1%;
     color: $color-element-black;

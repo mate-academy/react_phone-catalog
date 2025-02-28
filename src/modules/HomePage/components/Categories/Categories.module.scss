@@ -1,4 +1,4 @@
-@import '/src/shared/styles/index.scss';
+@import '/src/shared/styles/index';
 
 .categories {
     box-sizing: border-box;
@@ -12,11 +12,12 @@
     aspect-ratio: 20 / 5;
     max-height: 368px;
     
-    @include flexCenter;
+    @include flex-center;
+
     flex-direction: row;
     gap: 16px;
 
-    @include onPhone {
+    @include on-phone{
         flex-direction: column;
         aspect-ratio: 5 / 16;
         width: 100%;
@@ -28,32 +29,39 @@
     }
 
     &__category {
-        @include setSize(100%, 100%);
-        @include onPhone {
+        @include set-size(100%, 100%);
+    
+        @include on-phone{
             margin-bottom: 32px;
         }
     }
 
     &__title {
-        @include setFont($font-mont, 32px, 800);
+        @include set-font($font-mont, 32px, 800);
+    
         color: $color-element-black;
     }
 
     &__name{
-        margin: 24px 0 0 0;
-        @include setFont($font-mont, 20px, 700);
+        margin: 24px 0 0;
+    
+        @include set-font($font-mont, 20px, 700);
+    
         color: $color-element-black;
     }
 
     &__value {
-        @include setFont($font-mont, 14px, 500);
+        @include set-font($font-mont, 14px, 500);
+    
         color: $color-grey;
         margin: 0;
     }
 
     &__window {
         overflow: hidden;
-        @include setSize(100%, 100%);
+    
+        @include set-size(100%, 100%);
+    
         position: relative;
         border-radius: 10px;
         cursor: pointer;
@@ -66,13 +74,16 @@
     }
 
    &__background {
-    @include setSize(100%, 100%);
+    @include set-size(100%, 100%);
+
     transition: all 0.3s;
    }
     
     &__image {
         object-fit: contain;
-        @include setSize(100%, 100%);
+    
+        @include set-size(100%, 100%);
+    
         position: absolute;
         right: -25%;
         bottom: -15%;

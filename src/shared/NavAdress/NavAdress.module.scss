@@ -1,14 +1,16 @@
-@import '../styles/index.scss';
-@import 'src/App.scss';
+@import '../styles/index';
+@import 'src/App';
 
 .link {
-  @include setFont($font-mont, 12px, 700);
+  @include set-font($font-mont, 12px, 700);
+
   color: white;
   text-decoration: none;
 }
 
 .homeLink {
-  @include setFont($font-mont, 12px, 700);
+  @include set-font($font-mont, 12px, 700);
+
   text-decoration: none;
 }
 
@@ -18,5 +20,5 @@
 }
 
 .span {
-    @include setFont($font-mont, 12px, 700);
+    @include set-font($font-mont, 12px, 700);
 }

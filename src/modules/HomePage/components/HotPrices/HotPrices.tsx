@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import styles from './HotPrices.module.scss';
+import styles from '../../HomePage.module.scss';
 import { Article } from '../../../../shared/types/Article';
 import { Carousel } from '../../../../shared/Carousel/Carousel';
 import { Loader } from '../../../../shared/Loader';

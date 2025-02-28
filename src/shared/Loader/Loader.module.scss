@@ -1,8 +1,9 @@
-@import '../styles/index.scss';
+@import '../styles/index';
 
 .loader {
-    @include setSize(100%, 100%);
-    @include flexCenter;
+    @include set-size(100%, 100%);
+    @include flex-center;
+
     min-width: 200px;
     min-height: 100px;
     padding: 100

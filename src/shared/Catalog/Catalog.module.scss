@@ -1,13 +1,14 @@
-@import '../styles/index.scss';
-@import 'src/App.scss';
+@import '../styles/index';
+@import 'src/App';
 
 select {
+  @include set-font($font-mont, 14px, 700);
+
     box-sizing: border-box;
   min-width: 128px;
   min-height: 40px;
   border: 1px solid $color-grey;
   border-radius: 10px;
-  @include setFont($font-mont, 14px, 700);
   color: black;
 }
 
@@ -22,14 +23,14 @@ select {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    align-items: start;
     justify-content: start;
     align-items: end;
     margin-right: auto;
   }
 
   &__sortName {
-    @include setFont($font-mont, 12px, 700);
+    @include set-font($font-mont, 12px, 700);
+  
     color: $color-grey;
   }
 
@@ -58,14 +59,15 @@ select {
   }
 
   &__pages {
-    @include flexCenter;
+    @include flex-center;
+  
     max-width: 250px;
     flex-wrap: wrap;
     gap: 8px;
   }
 
   &__button {
-    @include setButton(32px);
+    @include set-button(32px);
 
     &__active {
       background-color: $color-element-black;
@@ -77,6 +79,7 @@ select {
     height: 35px;
     border: 1px solid $color-grey;
     border-radius: 10px;
-    @include setFont($font-mont, 13px, 700);
+  
+    @include set-font($font-mont, 13px, 700);
   }
 }
