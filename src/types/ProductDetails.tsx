@@ -1,4 +1,9 @@
-export interface ProductDeteils {
+export interface Description {
+  title: string;
+  text: string[];
+}
+
+export interface ProductDetails {
   id: string;
   category: string;
   namespaceId: string;
@@ -18,12 +23,7 @@ export interface ProductDeteils {
   cell: string[];
 }
 
-interface Description {
-  title: string;
-  text: string[];
-}
-
-export interface Phone extends ProductDeteils {
+export interface Phone extends ProductDetails {
   camera: string;
   zoom: string;
 }

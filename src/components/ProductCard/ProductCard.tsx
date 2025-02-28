@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
-import { getPhones } from '../../utils/api';
-import { ProductDeteils } from '../../types/ProductDetails';
+import { fetchProducts } from '../../utils/api';
+import { Phone } from '../../types/ProductDetails';
 import './ProductCard.scss';
 import like from '../../../image/heart.svg';
 import { NavLink } from 'react-router-dom';
 
 export const ProductCard = () => {
-  const [phones, setPhones] = useState<ProductDeteils[]>([]);
+  const [phones, setPhones] = useState<Phone[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPrePage = 4;
   // const [error, setError] = useState<string | null>(null);
   // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getPhones().then(data => {
+    fetchProducts().then(data => {
       setPhones(data);
     });
     // .catch(() => {
