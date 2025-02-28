@@ -3,75 +3,18 @@ import styles from './NavBar.module.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useWindowWidth } from '../../hooks/WindowWidth';
 import classNames from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useStorage } from '../../context/StorageContext';
 import { useTheme } from '../../context/PageTheme';
 import { useTranslation } from 'react-i18next';
 import { Aside } from './components/Aside';
+import { PhoneNav } from './components/PhoneNav';
+import { LinkItem } from './components/Links';
 
 const links = ['home', 'phones', 'tablets', 'accessories'];
 const linksUA = ['головна', 'смартфони', 'планшети', 'aксесуари'];
 
 type Languages = 'en' | 'uk';
-
-const ActiveLine = React.memo(() => {
-  const { theme } = useTheme();
-
-  return (
-    <motion.div
-      layoutId="activeLine"
-      style={{
-        height: '5px',
-        position: 'absolute',
-        bottom: '-1px',
-        width: 'calc(100% - 10px)',
-        backgroundColor: theme === 'light' ? '#000' : '#fff',
-      }}
-    />
-  );
-});
-
-ActiveLine.displayName = 'ActiveLine';
-
-const LinkItem = React.memo(props => {
-  const { item, isSelected, handleClick } = props;
-  const { theme } = useTheme();
-
-  //'#000' : '#89939A',
-
-  return (
-    <motion.div
-      initial={{ color: '#000' }}
-      animate={{ color: isSelected ? 'rgb(255, 0, 0)' : '#000' }}
-      style={{ height: '100%' }}
-      onClick={handleClick}
-    >
-      <NavLink
-        style={{
-          textTransform: 'uppercase',
-          color: isSelected
-            ? theme === 'light'
-              ? '#000'
-              : '#fff'
-            : theme === 'light'
-              ? '#89939A'
-              : '#fff',
-        }}
-        className={styles.links__item}
-        to={
-          links.includes(item) ? `/${item}` : `/${links[linksUA.indexOf(item)]}`
-        }
-      >
-        {isSelected && <ActiveLine />}
-        {item}
-      </NavLink>
-    </motion.div>
-  );
-});
-
-LinkItem.displayName = 'LinkItem';
-
-export default LinkItem;
 
 export const NavBar: React.FC = () => {
   const [isPhone, setIsPhone] = useState<boolean>(false);
@@ -83,7 +26,6 @@ export const NavBar: React.FC = () => {
   const { theme, setTheme } = useTheme();
   const [currentLinks, setCurrentLinks] = useState<Languages>('en');
   const { i18n } = useTranslation();
-
 
   useEffect(() => {
     const newIndex = links.findIndex(el =>
@@ -103,7 +45,6 @@ export const NavBar: React.FC = () => {
   }, [windowWidth]);
 
   function changeLanguage(lng: Languages) {
-    console.log(i18n);
     i18n.changeLanguage(lng);
     setCurrentLinks(lng);
   }
@@ -112,12 +53,12 @@ export const NavBar: React.FC = () => {
     if (i18n.isInitialized && i18n.language !== currentLinks) {
       setCurrentLinks(i18n.language as Languages);
     }
-  }, [i18n.language, currentLinks]);
+  }, [i18n.language, currentLinks, i18n.isInitialized]);
 
   return (
     <>
       <nav className={styles.navBar}>
-        <a href="/home">
+        <a href="/react_phone-catalog/#/home">
           <div className={styles.logo}>
             <img
               className={styles.logo__img}
@@ -134,42 +75,11 @@ export const NavBar: React.FC = () => {
         {isPhone ? (
           <>
             {/* #region Phone Navigation */}
-            {visibleAside ? (
-              <div className={classNames(styles.icon, styles.rightButton)}>
-                <NavLink
-                  to="#"
-                  onClick={() => setVisibleAside(false)}
-                  className={styles.link_asideItem}
-                  style={{ display: 'block'}}
-                >
-                  <img
-                    src={
-                      theme === 'light'
-                        ? `${import.meta.env.BASE_URL}/img/icons/Close.svg`
-                        : `${import.meta.env.BASE_URL}/img/icons/dark_close.svg`
-                    }
-                    alt="close"
-                  />
-                </NavLink>
-              </div>
-            ) : (
-              <div className={classNames(styles.icon, styles.rightButton)}>
-                <NavLink
-                  to="#"
-                  onClick={() => setVisibleAside(true)}
-                  className={styles.link_asideItem}
-                >
-                  <img
-                    src={
-                      theme === 'light'
-                        ? `${import.meta.env.BASE_URL}/img/icons/burgerMenu.svg`
-                        : `${import.meta.env.BASE_URL}/img/icons/dark_menu.svg`
-                    }
-                    alt="menu"
-                  />
-                </NavLink>
-              </div>
-            )}
+            <PhoneNav
+              isVisible={visibleAside}
+              setVisible={setVisibleAside}
+              theme={theme}
+            />
             {/* #region Phone Navigation */}
           </>
         ) : (
@@ -232,13 +142,8 @@ export const NavBar: React.FC = () => {
                   alt="theme"
                 />
               </button>
-              <div
-                className={styles.icon}
-                style={{
-                  border:
-                    linkIndex === 'favourites' ? '3px solid black' : undefined,
-                }}
-              >
+
+              <div className={styles.icon}>
                 <NavLink to="/favourites" className={styles.links__item}>
                   <img
                     src={
@@ -286,13 +191,13 @@ export const NavBar: React.FC = () => {
 
       {/* #region Aside */}
       <AnimatePresence>
-      <Aside
-        isVisible={visibleAside}
-        setVisible={setVisibleAside}
-        theme={theme}
-        cartLength={cartItems.length}
-        favLength={favouritesItems.length}
-      />
+        <Aside
+          isVisible={visibleAside}
+          setVisible={setVisibleAside}
+          theme={theme}
+          cartLength={cartItems.length}
+          favLength={favouritesItems.length}
+        />
       </AnimatePresence>
       {/* #endregion Aside */}
     </>

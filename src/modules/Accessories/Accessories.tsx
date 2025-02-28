@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useTransition } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './Accessories.module.scss';
 import { Catalog } from '../../shared/Catalog';
 import { Products } from '../../shared/types/Products';

@@ -7,26 +7,27 @@ import { useStorage } from '../../context/StorageContext';
 import { goToInfo } from '../functions/handleGoToInfo';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
+import { scrollToTop } from '../functions/ScrollToTop';
 
 type Props = {
   article: Article;
   fullPrice?: boolean;
   isCatalog?: boolean;
+  scroll?: boolean;
 };
 
 export const Product: React.FC<Props> = ({
   article,
   fullPrice = false,
   isCatalog = false,
+  scroll = false,
 }) => {
   const { findProduct, addProduct, removeProduct } = useStorage();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [searchParams, setSerachParams] = useSearchParams();
 
   const handleClick = () => {
-    goToInfo(navigate, article.itemId, article.category, setSerachParams); // Передаємо navigate в goToInfo
+    goToInfo(navigate, article.itemId, article.category); // Передаємо navigate в goToInfo
   };
 
   return (
@@ -36,7 +37,14 @@ export const Product: React.FC<Props> = ({
         maxWidth: isCatalog ? '1000px' : undefined,
         width: isCatalog ? '100%' : undefined,
       }}
-      onClick={() => handleClick()}
+      onClick={() => {
+        if (scroll) {
+          handleClick();
+          scrollToTop();
+        } else {
+          handleClick();
+        }
+      }}
     >
       <img
         style={{ flex: 1 }}

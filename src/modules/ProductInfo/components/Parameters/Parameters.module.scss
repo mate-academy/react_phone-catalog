@@ -1,0 +1,157 @@
+@import '../../../../shared/styles/index.scss';
+@import '../../../../App.scss';
+
+.card__parameters {
+    grid-column: 14 / 21;
+    max-height: 442px;
+
+    @include onTablet {
+        grid-column: 8 / -1;
+    }
+
+    @include onPhone {
+        grid-column: 1 / -1;
+    }
+  }
+
+  .card__buttons {
+    @include flexCenter;
+    justify-content: start;
+    gap: 8px;
+  }
+
+  .card__colors {
+    @include flexCenter;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $color-grey;
+  }
+
+  .card__color {
+    @include setSize(32px, 32px);
+    @include flexCenter;
+    border: 1px solid $color-element-white;
+    border-radius: 50%;
+    padding: 2px;
+
+    &:hover {
+      border-color: $color-light-grey;
+    }
+
+    &--active {
+      border-color: $color-element-black;
+    }
+  }
+
+  .card__colorButton {
+    @include setSize(30px, 30px);
+    border: none;
+    border-radius: 50%;
+  }
+
+  .card__colorsTitle {
+    @include setFont($font-mont, 12px, 600);
+    color: $color-grey;
+  }
+
+  .card__capacity {
+    padding: 24px 0;
+    border-bottom: 1px solid $color-grey;
+  }
+
+  .card__capacityTitle {
+    @include setFont($font-mont, 12px, 600);
+    color: $color-grey;
+    margin-bottom: 8px;
+  }
+
+  .card__capacityButton {
+    height: 32px;
+    padding-inline: 8px;
+    background-color: $color-white;
+    border: 1px solid $color-grey;
+    border-radius: 5px;
+    @include setFont($font-mont, 14px, 500);
+
+    &:hover {
+      border: 2px solid black;
+    }
+  }
+
+  .card__prices {
+    @include flexCenter;
+    justify-content: start;
+    gap: 8px;
+  }
+
+  .card__price {
+    display: block;
+    margin: 0;
+    @include setFont($font-mont, 32px, 800);
+    color: $color-element-black;
+  }
+
+  .card__priceFull {
+    @include setFont($font-mont, 22px, 500);
+    text-decoration: line-through;
+    color: $color-grey;
+  }
+
+  .card__buyButton {
+    padding: 0;
+    @include setSize(100%, 48px);
+    @include setFont($font-mont, 14px, 700);
+    color: white;
+    max-width: 263px;
+    background-color: $color-element-orange;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+    }
+  }
+
+  .card__buyButtonActive {
+    background-color: $color-white;
+    color: $color-element-orange;
+    border: 1px solid $color-element-white;
+  }
+
+  .card__favourites {
+    padding: 0;
+    @include setSize(48px, 48px);
+    border-radius: 50%;
+    border: 1px solid $color-light-grey;
+    @include flexCenter;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $color-element-black;
+    }
+  }
+
+  .card__decription {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card__decriptionItem {
+    @include flexCenter;
+    justify-content: space-between;
+  }
+
+  .card__decriptionName {
+    @include setFont($font-mont, 12px, 600);
+    color: $color-grey;
+  }
+
+  .card__decriptionValue {
+    @include setFont($font-mont, 12px, 700);
+    color: $color-element-black;
+  }

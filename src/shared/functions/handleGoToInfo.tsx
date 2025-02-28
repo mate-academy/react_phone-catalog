@@ -15,10 +15,13 @@ export async function goToInfo(
     }
 
     const newParams = new URLSearchParams();
+
     newParams.set('capacity', currentProduct.capacity);
     newParams.set('color', currentProduct.color);
 
-    navigate(`/${category}/${currentProduct.namespaceId}?${newParams.toString()}`);
+    navigate(
+      `/${category}/${currentProduct.namespaceId}?${newParams.toString()}`,
+    );
   } catch (error) {
     throw new Error(`Problem with catch goToInfo: (${error})`);
   }

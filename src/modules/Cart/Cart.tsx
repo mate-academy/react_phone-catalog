@@ -9,6 +9,8 @@ import { NavAdress } from '../../shared/NavAdress';
 import { useTheme } from '../../context/PageTheme';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { goToInfo } from '../../shared/functions/handleGoToInfo';
 
 export const Cart: React.FC = () => {
   const { cartItems, removeProduct } = useStorage();
@@ -18,6 +20,7 @@ export const Cart: React.FC = () => {
   const [countProducts, setCountProducts] = useState<{ [key: string]: number }>(
     {},
   );
+  const navigate = useNavigate();
 
   const totalPrice = useMemo(() => {
     if (!products) {
@@ -42,7 +45,9 @@ export const Cart: React.FC = () => {
 
         const initialCount = result.reduce(
           (acc, item) => {
+            /* eslint-disable no-param-reassign */
             acc[item.itemId] = 1;
+            /* eslint-enable no-param-reassign */
 
             return acc;
           },
@@ -75,6 +80,9 @@ export const Cart: React.FC = () => {
               {products.map((item: Article) => {
                 return (
                   <motion.div
+                    onClick={() =>
+                      goToInfo(navigate, item.itemId, item.category)
+                    }
                     initial={{ opacity: 0, x: '-80%' }}
                     animate={{ opacity: 1, x: '0' }}
                     exit={{ opacity: 0, x: '-80%' }}
@@ -83,7 +91,10 @@ export const Cart: React.FC = () => {
                   >
                     <button
                       className={styles.cart__closeButton}
-                      onClick={() => removeProduct(DataNames.cart, item.itemId)}
+                      onClick={e => {
+                        e.stopPropagation();
+                        removeProduct(DataNames.cart, item.itemId);
+                      }}
                     >
                       <img
                         src={
@@ -107,7 +118,10 @@ export const Cart: React.FC = () => {
 
                     <div className={styles.cart__count}>
                       <button
-                        onClick={() => updateCount(item.itemId, -1)}
+                        onClick={e => {
+                          e.stopPropagation();
+                          updateCount(item.itemId, -1);
+                        }}
                         className={classNames(
                           styles.cart__button,
                           styles.cart__minus,
@@ -127,7 +141,10 @@ export const Cart: React.FC = () => {
                       </p>
 
                       <button
-                        onClick={() => updateCount(item.itemId, 1)}
+                        onClick={e => {
+                          e.stopPropagation();
+                          updateCount(item.itemId, 1);
+                        }}
                         className={classNames(
                           styles.cart__button,
                           styles.cart__plus,
@@ -159,7 +176,10 @@ export const Cart: React.FC = () => {
                 className={styles.cart__totalTItle}
               >{`${t('crt_total')} ${products.length} ${t('crt_items')}`}</p>
             </div>
-            <button className={styles.cart__buttonCheckout}>{t('crt_check')}</button>
+
+            <button className={styles.cart__buttonCheckout}>
+              {t('crt_check')}
+            </button>
           </div>
         </div>
       ) : (

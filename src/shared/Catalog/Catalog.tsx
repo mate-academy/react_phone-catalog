@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { Loader } from '../Loader';
 import debounce from 'lodash.debounce';
 import { useTranslation } from 'react-i18next';
+import { scrollToTop } from '../functions/ScrollToTop';
 type Props = {
   products: Article[] | null;
 };
@@ -82,13 +83,6 @@ export const Catalog: React.FC<Props> = ({ products }) => {
 
     return Math.ceil(products.length / parseInt(count as string, 10));
   }, [count, products]);
-
-  const scrollToTop = (): void => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
 
   const handleNextPage = () => {
     const nextPage = parseInt(page) + 1;
@@ -167,9 +161,7 @@ export const Catalog: React.FC<Props> = ({ products }) => {
         </div>
 
         <div className={styles.catalog__queryWrapper}>
-          <p className={styles.catalog__sortName}>
-            {t('ctl_searchProduct')}
-          </p>
+          <p className={styles.catalog__sortName}>{t('ctl_searchProduct')}</p>
           <input
             className={styles.catalog__queryInput}
             type="text"

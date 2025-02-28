@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
-import styles from '../../NavBar.module.scss';
+import styles from './Aside.module.scss';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -26,6 +26,7 @@ export const Aside: React.FC<Props> = ({
 }) => {
   const { i18n } = useTranslation();
   const { setTheme } = useTheme();
+
   return (
     <motion.aside
       initial={{ transform: 'translateX(-100%)', opacity: 0 }}
@@ -43,7 +44,8 @@ export const Aside: React.FC<Props> = ({
           const isActive = location.pathname.includes(
             links[i18n.language === 'en' ? index : index],
           );
-          const path = `/${i18n.language === 'en' ? links[index] : linksUA[index]}`;
+          const path = `/${links[index]}`;
+
           return (
             <NavLink
               key={item}

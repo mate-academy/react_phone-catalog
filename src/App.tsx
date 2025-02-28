@@ -9,7 +9,7 @@ import { Accessories } from './modules/Accessories';
 import { ProductInfo } from './modules/ProductInfo/ProductInfo';
 import { Cart } from './modules/Cart';
 import { Favourites } from './modules/Favourites/Favourites';
-import './i18n/i18n.ts';
+import './i18n/i18n';
 
 export const App: React.FC = () => {
   return (
