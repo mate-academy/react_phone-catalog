@@ -13,6 +13,7 @@ body {
     box-sizing: border-box;
     margin: auto;
     max-width: $content-max-width;
+    min-height: calc(100vh - 60px);
 }
 
 main {

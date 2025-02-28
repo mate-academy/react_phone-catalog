@@ -43,7 +43,9 @@ export const Categories: React.FC = () => {
                 className={styles.categories__background}
               ></div>
             </div>
-            <h3 className={styles.categories__name}>{t('categories_phones')}</h3>
+            <h3 className={styles.categories__name}>
+              {t('categories_phones')}
+            </h3>
             <p
               className={styles.categories__value}
             >{`${findCount(Products.Phones)} ${t('categories_models')}`}</p>
@@ -64,7 +66,9 @@ export const Categories: React.FC = () => {
                 className={styles.categories__background}
               ></div>
             </div>
-            <h3 className={styles.categories__name}>{t('categories_tablets')}</h3>
+            <h3 className={styles.categories__name}>
+              {t('categories_tablets')}
+            </h3>
             <p className={styles.categories__value}>
               {`${findCount(Products.Tablets)} ${t('categories_models')}`}
             </p>
@@ -85,7 +89,9 @@ export const Categories: React.FC = () => {
                 className={styles.categories__background}
               ></div>
             </div>
-            <h3 className={styles.categories__name}>{t('categories_accessories')}</h3>
+            <h3 className={styles.categories__name}>
+              {t('categories_accessories')}
+            </h3>
             <p
               className={styles.categories__value}
             >{`${findCount(Products.Accessories)} ${t('categories_models')}`}</p>

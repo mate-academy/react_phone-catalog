@@ -8,12 +8,10 @@ export const useInfoProduct = () => {
 
   const getProductCard = useCallback(
     async (name: string, category: Products) => {
-      console.log(name);
-      console.log(category);
       try {
         const response = await getDataPublic(category, 10);
 
-        let filteredProducts = response.filter(
+        const filteredProducts = response.filter(
           (el: ProductCard) => el.namespaceId === name,
         );
 
@@ -23,7 +21,7 @@ export const useInfoProduct = () => {
 
         setProduct(filteredProducts);
       } catch (error) {
-        console.error(`catch problem with custom hook ${error}`);
+        throw new Error(`error: ${error}`);
       }
     },
     [],

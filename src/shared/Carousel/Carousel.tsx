@@ -9,9 +9,15 @@ type Props = {
   items: Article[];
   title: string;
   isHot?: boolean;
+  isInfo?: boolean;
 };
 
-export const Carousel: React.FC<Props> = ({ items, title, isHot = false }) => {
+export const Carousel: React.FC<Props> = ({
+  items,
+  title,
+  isHot = false,
+  isInfo = false,
+}) => {
   const [index, setIndex] = useState<number>(0);
   const [itemWidth, setItemWidth] = useState<number>(0); // Додаємо стан для ширини елемента
   const windowWidth = useWindowWidth();
@@ -112,6 +118,7 @@ export const Carousel: React.FC<Props> = ({ items, title, isHot = false }) => {
               key={item.id}
               article={item}
               fullPrice={isHot}
+              scroll={isInfo}
             />
           ))}
         </motion.div>
