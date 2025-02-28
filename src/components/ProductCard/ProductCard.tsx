@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getPhones } from '../../utils/api';
-import { Phone } from '../../types/ProductDetails';
+import { ProductDeteils } from '../../types/ProductDetails';
 import './ProductCard.scss';
 import like from '../../../image/heart.svg';
 import { NavLink } from 'react-router-dom';
 
 export const ProductCard = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [phones, setPhones] = useState<ProductDeteils[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPrePage = 4;
   // const [error, setError] = useState<string | null>(null);
@@ -59,7 +59,7 @@ export const ProductCard = () => {
       <div className="product__cards">
         {phones.slice(currentIndex, currentIndex + itemsPrePage).map(phone => (
           <div key={phone.id} className="product__elements">
-            <div>
+            <div className="product__img-container">
               <img
                 src={phone.images[0]}
                 alt={`${phone.category} image`}

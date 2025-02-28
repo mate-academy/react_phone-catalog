@@ -15,8 +15,6 @@ export interface ProductDeteils {
   resolution: string;
   processor: string;
   ram: string;
-  camera: string;
-  zoom: string;
   cell: string[];
 }
 
@@ -25,4 +23,7 @@ interface Description {
   text: string[];
 }
 
-export interface Phone extends ProductDeteils {}
+export interface Phone extends ProductDeteils {
+  camera: string;
+  zoom: string;
+}
