@@ -16,7 +16,7 @@ const pcImages = [
 ];
 
 const phoneImages = [
-  `${import.meta.env.BASE_URL}/img/banners/banner_1_phone.svg`,
+  `${import.meta.env.BASE_URL}/img/banners/banner_1_phone.png`,
   `${import.meta.env.BASE_URL}/img/banners/banner_2_phone.png`,
   `${import.meta.env.BASE_URL}/img/banners/banner_3_phone.png`,
 ];
@@ -83,7 +83,7 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     if (!visiblePage) {
-      setTimeout(() => setVisiblePage(true), 300);
+      setTimeout(() => setVisiblePage(true), 100);
     }
   }, [visiblePage]);
 
