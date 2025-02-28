@@ -9,7 +9,7 @@ const resources = {
       headHome: 'HOME',
 
       //home
-      h1: 'Welcome to Nice Gadgets Store!',
+      h1: 'Product Catalog',
       h2Brands: 'Brand new models',
       h2Category: 'Shop by category',
       home: 'Home',
@@ -73,7 +73,7 @@ const resources = {
   uk: {
     translation: {
       //home
-      h1: 'Ласкаво просимо до Nice Gadgets Store!',
+      h1: 'Продуктовий каталог',
       h2Brands: 'Нові моделі',
       h2Category: 'Купляйте по категоріям',
       home: 'Головна',

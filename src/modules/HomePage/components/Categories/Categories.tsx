@@ -16,7 +16,6 @@ const Categories = () => {
 
   return (
     <section className={styles.section}>
-      <h1 style={{ display: 'none' }}>Product Catalog</h1>
       <h2>{t('h2Category')}</h2>
       <div className={styles.categories}>
         <Link
