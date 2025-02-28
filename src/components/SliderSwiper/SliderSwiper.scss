@@ -1,8 +1,8 @@
 @import '../../utils/mixins';
 
 .slider__image{
-  width: 1040px;
-  height: 400px;
+  width: 320px;
+  height: 320px;
   object-fit: cover; // не стискає
 
   @include onTablet{
@@ -10,23 +10,24 @@
     height: 221px;
   }
 
-  @include onMobile{
-    width: 320px;
-    height: 320px;
+  @include onDesktop{
+    width: 1040px;
+    height: 400px;
   }
 }
 
 .swiper{
-  width: 1040px;
+  width: 320px;
+  height: 320px;
 
   @include onTablet{
     width: 592px;
     height: 221px;
   }
 
-  @include onMobile{
-    width: 320px;
-    height: 320px;
+  @include onDesktop{
+    width: 1040px;
+    height: 400px;
   }
 }
 
