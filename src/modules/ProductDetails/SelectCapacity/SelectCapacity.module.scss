@@ -1,0 +1,48 @@
+@import '../../../styles/utils';
+
+.select-capacity {
+  position: relative;
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+  grid-column: 1/1;
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: $hover-color;;
+    bottom: 0;
+  }
+
+  &__title {
+    color: #75767F;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    padding: 7px 8px 4px;
+    border: 1px solid #4A4D58;
+
+    &:hover {
+      border-color: $hover-button-purple;
+    }
+
+    &--active {
+      color: #0F1121;
+      background-color: $color-white;
+      border: 1px solid $color-white;
+    }
+  }
+}

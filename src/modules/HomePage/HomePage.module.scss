@@ -1,0 +1,35 @@
+@import '../../styles/utils';
+
+
+.home__page {
+  margin: 25px 0 55px;
+
+  @include desktop {
+    margin: 56px 0 80px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    @include desktop {
+      gap: 56px;
+    }
+  }
+
+  &__title {
+    padding-inline: $padding-inline-mobile;
+
+    @include tablet {
+      padding-inline: $padding-inline-tablet;
+      font-size: 48px;
+    }
+
+    &-break {
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+}

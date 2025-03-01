@@ -1,0 +1,19 @@
+@import '../../../styles/utils';
+
+.favourites-product {
+  margin-top: 24px;
+
+  @include padding-inline;
+
+
+  &__title {
+    margin: 24px 0 8px;
+  }
+
+  &__text {
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: $hover-color;
+    font-weight: 600;
+  }
+}

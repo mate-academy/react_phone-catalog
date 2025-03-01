@@ -1,0 +1,84 @@
+@import '../../../styles/utils';
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+
+  @include tablet {
+    display: none;
+  }
+
+
+  &__menu--open {
+    transform: translateX(0);
+    overflow: hidden;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    margin-top: 70px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__link {
+    color: #75767F;
+    text-transform: uppercase;
+    position: relative;
+    font-size: 12px;
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $color-white;
+      bottom: -5px;
+      left: 0;
+      transition: transform 0.3s ease-in-out;
+      transform: scale(0);
+    }
+
+    &:hover {
+      color: $color-white;
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &--active {
+      color: $color-white;
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__icon {
+    height: 20px;
+
+    &:hover {
+      transition: transform 0.3s ease-in-out;
+      transform: scale(1.2);
+    }
+  }
+}

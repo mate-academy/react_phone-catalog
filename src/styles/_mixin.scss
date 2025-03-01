@@ -1,0 +1,88 @@
+// mixin size
+@mixin tablet {
+  @media (min-width:$width-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width:$width-desktop) {
+    @content;
+  }
+}
+
+@mixin big-desktop {
+  @media (min-width:$width-big-desktop) {
+    @content;
+  }
+}
+
+
+// mixin grid
+@mixin column {
+  --columns:4;
+
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include tablet {
+    --columns: 12;
+
+    column-gap: 16px;
+  }
+
+  @include desktop {
+    --columns: 24;
+
+    column-gap: 30px;
+  }
+
+  @include big-desktop {
+    --columns: 24;
+
+    column-gap: 16px;
+  }
+}
+
+// mixin padding
+@mixin padding-inline {
+  padding-inline: $padding-inline-mobile;
+
+  @include tablet {
+    padding-inline: $padding-inline-tablet;
+  }
+
+  @include desktop {
+    padding-inline: $padding-inline-desktop;
+  }
+
+  @include big-desktop {
+    padding-inline: $padding-inline-big-desktop;
+  }
+}
+
+@mixin scale-on-hover($scale: 1.05, $duration: 0.3s) {
+  transition: transform $duration ease-in-out;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+@mixin hover-button() {
+  &:hover {
+    background-color: $hover-button;
+  }
+}
+
+@mixin shake {
+  animation: shake 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-1px); }
+  50% { transform: translateX(1px); }
+  75% { transform: translateX(-1px); }
+  100% { transform: translateX(1px); }
+}

@@ -1,0 +1,56 @@
+@import '../../../styles/utils';
+
+.tech-specs {
+  @include tablet {
+    grid-column: 1/-1;
+  }
+
+  @include desktop {
+    grid-column: auto;
+  }
+
+  &__title {
+    position: relative;
+    margin-bottom: 46px;
+
+    @include tablet {
+      font-size: 22px;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: $hover-color;
+      left: 0;
+      bottom: -16px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__term {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $color-grey;
+  }
+
+  &__desc {
+    color: $color-white;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: end;
+  }
+}

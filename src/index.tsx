@@ -1,4 +1,14 @@
-import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Root } from './Root';
+import { StateProvider } from './modules/hooks/SelectionState';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+const rootElement = document.getElementById('root') as HTMLElement;
+
+ReactDOM.createRoot(rootElement).render(
+  <Router>
+    <StateProvider>
+      <Root />
+    </StateProvider>
+  </Router>,
+);

@@ -1,0 +1,86 @@
+@import '../../../../styles/utils';
+
+.product-slider {
+  margin-top: 50px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include padding-inline;
+  }
+
+  &__title {
+    grid-column: 1/4;
+
+    @include tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    background-color: $background-color;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    border: none;
+
+    &:disabled {
+      border: 1px solid $hover-color;
+      background-color: $background-color;
+    }
+
+    &--prev,
+    &--next {
+      .product-slider__btn-icon {
+        filter: brightness(1);
+      }
+    }
+
+    &--prev:disabled,
+    &--next:disabled {
+      .product-slider__btn-icon {
+        filter: brightness(0.5);
+      }
+    }
+
+    &--next {
+      &:hover {
+        @include hover-button;
+      }
+    }
+  }
+
+  &__wrapp {
+    padding-left: 16px;
+    margin-top: 24px;
+
+    @include tablet {
+      padding-left: 24px;
+    }
+
+    @include desktop {
+      @include padding-inline;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 15px;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__item {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    flex: 0 0 212px;
+  }
+}
+

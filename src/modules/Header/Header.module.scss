@@ -1,0 +1,85 @@
+@import '../../styles/utils';
+
+.header {
+  position: sticky;
+  top: 0;
+  height: 50px;
+  background-color: $background-color;
+  z-index: 1;
+
+  @include desktop {
+    height: 64px;
+  }
+
+  &__wrapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $hover-color;
+    position: sticky;
+    z-index: 2;
+
+    @include tablet {
+      gap: 16px;
+      padding-right: 0;
+    }
+  }
+
+  &__link {
+    padding-left: 16px;
+  }
+
+  &__burger {
+    display: flex;
+    z-index: 2;
+    border-left: 1px solid $hover-color;
+    padding: 16px;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__logo {
+    height: 22px;
+    z-index: 10;
+
+    &:hover {
+      @include scale-on-hover;
+    }
+
+    @include desktop {
+      height: 28px;
+    }
+  }
+
+  &__icon {
+    height: 16px;
+  }
+
+  &__navbar {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      gap: 100px;
+    }
+
+    @media(min-width: 750px) {
+      gap: 130px;
+    }
+
+    @media(min-width: 900px) {
+      gap: 300px;
+    }
+
+    @include desktop {
+      gap: 495px;
+    }
+
+    @include big-desktop {
+      gap: 711px;
+    }
+  }
+}
