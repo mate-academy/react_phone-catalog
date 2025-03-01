@@ -1,1 +1,23 @@
-// not empty
+* {
+    font-family: Mont, sans-serif;
+  }
+
+  html, body {
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+  }
+
+  .main {
+    flex: 1;
+  }
+
+ .page__main {
+  margin: 56px 0 80px;
+ }

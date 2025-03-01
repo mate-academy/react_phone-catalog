@@ -1,0 +1,146 @@
+.home-page {
+  &__new-models {
+  }
+}
+.new-models {
+  &__title {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    padding: 32px;
+  }
+}
+
+.new-models__container {
+  // max-width: 1200px;
+  margin: 0 auto; 
+  width: 100%;
+}
+
+.new-models__product-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  column-gap: 16px;
+  width: 100%;
+  justify-content: center;
+}
+
+.product-card {
+  border: 1px solid #e2e6e9;
+  height: 512px;
+
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  // .product-card__content
+
+  &__content {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  // .product-card__link
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+
+  // .product-card__photo
+
+  &__photo {
+    margin-inline: auto;
+    // margin-bottom: 7px;
+  }
+
+  // .product-card__image
+
+  &__image {
+    width: 170px;
+    height: 210px;
+  }
+
+  // .product-card__title
+
+  &__title {
+  }
+
+  // .product-card__price
+
+  &__price {
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 1px solid #e2e6e9;
+    padding-bottom: 8px;
+  }
+
+  // .product-card__info
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin-bottom: 16px;
+    color: #89939a;
+    font-size: 12px;
+    font-weight: bolder;
+  }
+
+  // .product-card__info-item
+
+  &__info-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // .product-card__info-label
+
+  &__info-label {
+  }
+
+  // .product-card__info-value
+
+  &__info-value {
+    color: #0f0f11;
+  }
+
+  // .product-card__actions
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  // .product-card__add-to-cart
+
+  &__add-to-cart {
+    background-color: #216cff;
+    color: white;
+    font-size: 14px;
+    font-weight: bolder;
+    border-radius: 8px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  // .product-card__favorite
+
+  &__favorite {
+  }
+}

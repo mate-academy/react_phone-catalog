@@ -1,0 +1,26 @@
+.home-page {
+    box-sizing: border-box;
+    overflow-x: hidden;
+
+    &__container {
+        // padding-inline: 100px;
+        margin: 0 auto;
+        max-width: 1400px;
+
+    }
+
+    &__slider {
+        // margin: 0 auto;
+    }
+
+    &__title {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 56px;
+        line-height: 56px;
+        letter-spacing: -1%;
+    }
+}
+.title {
+}
+

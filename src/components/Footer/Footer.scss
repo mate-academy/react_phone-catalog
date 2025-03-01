@@ -1,0 +1,40 @@
+.footer {
+  &__container {
+    display: flex;
+    padding: 32px 152px;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #E2E6E9;
+  }
+
+  &__logo {
+  }
+
+  &__nav {
+  }
+
+  &__btn {
+  }
+}
+.nav {
+  &__list {
+  }
+
+  &__list--footer {
+    gap: 106px;
+  }
+
+  &__item {
+  }
+
+  &__link {
+  }
+}
+
+.footer {
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
