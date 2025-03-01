@@ -1,7 +1,12 @@
-import { Product } from './Product';
+import { Product, ProductMainInfo } from './Product';
 
 export interface ProductCardProps {
-  product: Product;
+  products: Product;
+  showFullPrice?: boolean;
+}
+
+export interface ProductMainInfoProps {
+  product: ProductMainInfo;
   showFullPrice?: boolean;
 }
 

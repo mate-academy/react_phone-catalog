@@ -157,7 +157,7 @@ export const PageSlider: React.FC<ProductSliderProps> = ({
         <Slider ref={sliderRef} {...settings}>
           {shuffledProducts.map(product => (
             <div key={product.id} className="slider__block">
-              <ProductCard product={product} showFullPrice={showFullPrice} />
+              <ProductCard products={product} showFullPrice={showFullPrice} />
             </div>
           ))}
         </Slider>

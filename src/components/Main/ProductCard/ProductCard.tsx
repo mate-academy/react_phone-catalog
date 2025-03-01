@@ -3,7 +3,7 @@ import { ProductCardProps } from '../../../types/TProductCard';
 import { StyledButton, StyledCard } from './vars';
 import { useLocation } from 'react-router-dom';
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, showFullPrice }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ products, showFullPrice }) => {
   const location = useLocation();
 
   type Path = '/phones' | '/tablets' | '/accessories';
@@ -30,34 +30,36 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, showFullPrice
   const { widthBlock, widthButton, margin } = styles;
 
   return (
-    <StyledCard width={widthBlock} margin={margin} className="product-card">
-      <img src={product.image} alt={product.name} className="product-card__image" />
-      <p className="product-card__name">{product.name}</p>
-      <div className="product-card__prices">
-        <h3 className="product-card__price">${product.price}</h3>
-        {showFullPrice && <h3 className="product-card__fullprice">${product.fullPrice}</h3>}
+    <StyledCard width={widthBlock} margin={margin} className="products-card">
+      <img src={products.image} alt={products.name} className="products-card__image" />
+      <p className="products-card__name">
+        <a href={`#/${products.category}/${products.itemId}`}>{products.name}</a>
+      </p>
+      <div className="products-card__prices">
+        <h3 className="products-card__price">${products.price}</h3>
+        {showFullPrice && <h3 className="products-card__fullprice">${products.fullPrice}</h3>}
       </div>
-      <hr className="product-card__line" />
-      <div className="product-card__specs">
-        <h5 className="product-card__spec">
-          Screen <span className="product-card__options">{product.screen}</span>
+      <hr className="products-card__line" />
+      <div className="products-card__specs">
+        <h5 className="products-card__spec">
+          Screen <span className="products-card__options">{products.screen}</span>
         </h5>
-        <h5 className="product-card__spec">
-          Capacity <span className="product-card__options">{product.capacity}</span>
+        <h5 className="products-card__spec">
+          Capacity <span className="products-card__options">{products.capacity}</span>
         </h5>
-        <h5 className="product-card__spec">
-          RAM <span className="product-card__options">{product.ram}</span>
+        <h5 className="products-card__spec">
+          RAM <span className="products-card__options">{products.ram}</span>
         </h5>
       </div>
-      <div className="product-card__buttons">
-        <StyledButton className="product-card__add-to-cart" width={widthButton}>
+      <div className="products-card__buttons">
+        <StyledButton className="products-card__add-to-cart" width={widthButton}>
           Add to cart
         </StyledButton>
-        <button className="product-card__wishlist">
+        <button className="products-card__wishlist">
           <img
-            src="./img/icons/Favourites.png"
+            src="../../../img/icons/Favourites.png"
             alt="Favourites"
-            className="product-card__favourites"
+            className="products-card__favourites"
           />
         </button>
       </div>

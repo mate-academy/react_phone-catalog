@@ -12,10 +12,10 @@ export const Header: React.FC = () => {
       <BurgerMenu />
 
       <div className="header__links">
-        <Link to="/cart" className="header__link-favourites">
+        <Link to="/favourites" className="header__link-favourites">
           <img src="./img/icons/Favourites.png" alt="Favourites" className="header__favourites" />
         </Link>
-        <Link to="/favorites" className="header__link-cart">
+        <Link to="/cart" className="header__link-cart">
           <img src="./img/icons/Shopping bag (Cart).png" alt="Cart" className="header__cart" />
         </Link>
       </div>

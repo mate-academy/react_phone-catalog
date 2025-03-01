@@ -45,7 +45,9 @@ button {
   line-height: 21px;
 }
 
-p {
+p, a {
+  color: inherit;
+  text-decoration: none;
   font-size: 14px;
   line-height: 21px;
   font-weight: normal;

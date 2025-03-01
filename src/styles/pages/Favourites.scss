@@ -1,0 +1,20 @@
+@import '../../styles/utils';
+
+.favourites {
+  max-width: 286px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    max-width: 595px;
+    margin: 24px auto 40px;
+  }
+
+  @media (min-width: 950px) {
+    max-width: 950px;
+  }
+
+  @include on-laptop {
+    max-width: 1200px;
+  }
+
+}

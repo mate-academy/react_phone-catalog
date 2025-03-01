@@ -1,0 +1,48 @@
+@import '../../styles/utils';
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin: 0 auto 24px;
+
+  @include on-tablet {
+    max-width: 595px;
+    margin: 24px auto 40px;
+  }
+
+  @media (min-width: 950px) {
+    max-width: 950px;
+  }
+
+  @include on-laptop {
+    max-width: 1200px;
+  }
+
+  max-width: 286px;
+  &-home__img {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__chevron {
+    width: 16px;
+    height: 16px;
+    margin: 0 8px;
+  }
+
+  &__link-char {
+    display: inline;
+    font-weight: 600;
+    color: $c-secondary;
+    margin: 0;
+  }
+}
+

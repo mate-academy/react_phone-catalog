@@ -11,51 +11,71 @@ export const BurgerMenu: React.FC = () => {
 
   return (
     <div className="template">
-      <div id="burger-menu" className={`burger-menu ${isOpen ? 'close' : ''}`} onClick={toggleMenu}>
+      <section
+        id="burger-menu"
+        className={`burger-menu ${isOpen ? 'close' : ''}`}
+        onClick={toggleMenu}
+      >
         <img
-          src={isOpen ? './img/icons/Close.png' : './img/icons/Menu.png'}
+          src={isOpen ? '../../../img/icons/Close.png' : '../../../img/icons/Menu.png'}
           alt={isOpen ? 'Close menu' : 'Open menu'}
         />
-      </div>
-      <div id="menu" className={`overlay ${isOpen ? 'open' : ''}`}>
-        <div className="overlay__header">
-          <img src="./img/icons/Logo.png" alt="Logo" className="overlay__logo" />
+      </section>
+      <section id="menu" className={`overlay ${isOpen ? 'open' : ''}`}>
+        <section className="overlay__header">
+          <img src="../../../img/icons/Logo.png" alt="Logo" className="overlay__logo" />
           <div id="close-menu" className="overlay__close" onClick={toggleMenu}>
-            <img src="./img/icons/Close.png" alt="Close menu" />
+            <img src="../../../img/icons/Close.png" alt="Close menu" />
           </div>
-        </div>
+        </section>
         <nav className="nav-bar">
-          <NavLink to="/home" className="nav-bar__link" onClick={toggleMenu}>
+          <NavLink
+            to="/home"
+            className={({ isActive }) => `nav-bar__link ${isActive ? 'active' : ''}`}
+            onClick={toggleMenu}
+          >
             Home
           </NavLink>
-          <NavLink to="/phones" className="nav-bar__link" onClick={toggleMenu}>
+          <NavLink
+            to="/phones"
+            className={({ isActive }) => `nav-bar__link ${isActive ? 'active' : ''}`}
+            onClick={toggleMenu}
+          >
             Phones
           </NavLink>
-          <NavLink to="/tablets" className="nav-bar__link" onClick={toggleMenu}>
+          <NavLink
+            to="/tablets"
+            className={({ isActive }) => `nav-bar__link ${isActive ? 'active' : ''}`}
+            onClick={toggleMenu}
+          >
             Tablets
           </NavLink>
-          <NavLink to="/accessories" className="nav-bar__link" onClick={toggleMenu}>
+          <NavLink
+            to="/accessories"
+            className={({ isActive }) => `nav-bar__link ${isActive ? 'active' : ''}`}
+            onClick={toggleMenu}
+          >
             Accessories
           </NavLink>
 
           <div className="nav-bar__items" onClick={toggleMenu}>
-            <Link to="/cart" className="nav-bar__favourites">
+            <Link to="/favourites" className="nav-bar__favourites">
               <img
-                src="./img/icons/Favourites (Heart Like).png"
+                src="../../../img/icons/Favourites (Heart Like).png"
                 alt="Favourites"
                 className="nav-bar__favourites-img"
               />
             </Link>
-            <Link to="/favorites" className="nav-bar__cart">
+            <Link to="/cart" className="nav-bar__cart">
               <img
-                src="./img/icons/Shopping bag (Cart).png"
+                src="../../../img/icons/Shopping bag (Cart).png"
                 alt="Cart"
                 className="nav-bar__cart-img"
               />
             </Link>
           </div>
         </nav>
-      </div>
+      </section>
     </div>
   );
 };

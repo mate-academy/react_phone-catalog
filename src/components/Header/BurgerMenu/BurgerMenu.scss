@@ -84,6 +84,14 @@
     font-size: 12px;
     color: $c-secondary;
 
+    &.active {
+      color: black;
+      text-decoration: underline;
+      text-decoration-color: $c-primary;
+      text-underline-offset: 18px;
+      text-decoration-thickness: 2px;
+    }
+
     &:hover {
       text-decoration: underline;
       transition: all 0.5s ease-in;
