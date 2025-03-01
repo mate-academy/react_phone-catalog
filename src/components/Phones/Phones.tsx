@@ -25,7 +25,6 @@ export const Phones = () => {
         <h1 className="phones__title">
           {translate('categories.phones', lang)}
         </h1>
-        <p className="phones__text">{`${phones.length} ${translate('categories.models', lang)}`}</p>
         <Catalog items={phones} />
       </div>
     </div>

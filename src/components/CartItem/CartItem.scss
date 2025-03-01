@@ -76,10 +76,9 @@
 
   &__cards {
     margin-top: 40px;
+    row-gap: 40px;
 
     @include mix.page-grid;
-
-    row-gap: 40px;
   }
 
   &__card {

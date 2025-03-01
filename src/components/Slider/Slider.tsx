@@ -49,7 +49,7 @@ export const Slider: React.FC = () => {
       setCurrentShift(prevShift =>
         prevShift >= maxShift ? 0 : prevShift + sliderWidth,
       );
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [sliderWidth, maxShift]);

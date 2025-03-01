@@ -33,6 +33,12 @@
     background-image: url(/img/icons/icon-theme-dark.png);
   }
 
+  &--search {
+    background-image: url(/img/icons/search.svg);
+    
+    @include mix.hover(transform, scale(1.1));
+  }
+
   &--heart {
     background-image: url(/img/icons/icon-heart.svg);
 

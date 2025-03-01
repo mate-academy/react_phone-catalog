@@ -31,7 +31,7 @@
     padding-top: 24px;
     margin: 0 auto;
 
-    @include mix.on-tablet {
+    @include mix.on-800 {
       padding-top: 0;
       height: 100%;
       flex-direction: row;
@@ -68,7 +68,7 @@
         background-color: var(--c-primary);
       }
 
-      @include mix.on-tablet {
+      @include mix.on-800 {
         &::after {
           content: '';
           position: absolute;
@@ -86,7 +86,7 @@
       box-shadow: -1px 0 0 0 var(--c-elements);
       text-align: center;
 
-      @include mix.on-tablet {
+      @include mix.on-800 {
         display: none;
       }
     }
@@ -100,7 +100,7 @@
       text-transform: uppercase;
       color: var(--c-secondary);
 
-      @include mix.on-tablet {
+      @include mix.on-800 {
         display: flex;
       }
     }
@@ -125,14 +125,24 @@
       }
     }
 
+    &--search {
+      width: 50%;
+      display: none;
+      box-shadow: -1px -1px 0 0 var(--c-elements);
+      cursor: pointer;
+
+      @include mix.on-800 {
+        display: block;
+      }
+    }
+
     &--theme {
       width: 50%;
       display: none;
       box-shadow: -1px -1px 0 0 var(--c-elements);
-      opacity: 0.7;
       cursor: pointer;
 
-      @include mix.on-tablet {
+      @include mix.on-800 {
         display: block;
       }
     }
@@ -153,7 +163,7 @@
       display: block;
       cursor: pointer;
 
-      @include mix.on-tablet {
+      @include mix.on-800 {
         display: none;
       }
     }

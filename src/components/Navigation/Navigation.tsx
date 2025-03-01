@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import './Navigation.scss';
 import { translate } from '../../utils/translate';
 import React, { useContext, useEffect } from 'react';
@@ -14,6 +14,7 @@ export const Navigation = () => {
   const { accessories } = useAppSelector(state => state.accessories);
   const { lang } = useContext(LangContext);
   const { links } = useAppSelector(state => state.navigation);
+  const location = useLocation();
   const { id } = useParams();
   const dispatch = useAppDispatch();
 
@@ -27,6 +28,11 @@ export const Navigation = () => {
       dispatch(navigationSlice.actions.clearLinks());
       dispatch(navigationSlice.actions.addLink(`${itemById?.category}`));
       dispatch(navigationSlice.actions.addLink(`${itemById?.name}`));
+    } else {
+      dispatch(navigationSlice.actions.clearLinks());
+      dispatch(
+        navigationSlice.actions.addLink(`${location.pathname.slice(1)}`),
+      );
     }
   }, [id]);
 

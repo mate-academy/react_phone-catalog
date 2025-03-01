@@ -11,10 +11,19 @@
     padding-block: 24px 80px;
   }
 
-  &__container {
-    @include mix.page-grid;
+  &__back {
+    display: flex;
+    gap: 4px;
+    color: var(--c-secondary);
+    margin-bottom: 16px;
+    cursor: pointer;
+  }
 
+  &__container {
+    margin-top: 32px;
     row-gap: 32px;
+
+    @include mix.page-grid;
   }
 
   &__items {
@@ -41,10 +50,6 @@
 
     &__button {
       width: 100%;
-      border: none;
-      background-color: var(--c-accent);
-      color: #fff;
-      line-height: 48px;
     }
 
     @include mix.on-desktop {

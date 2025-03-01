@@ -3,12 +3,13 @@ import { useAppSelector } from '../../app/hooks';
 import { useContext } from 'react';
 import { translate } from '../../utils/translate';
 import { LangContext } from '../../context/LangContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CartItem } from '../CartItem/CartItem';
 
 export const PageCart = () => {
   const { lang } = useContext(LangContext);
   const { cartGoods } = useAppSelector(state => state.cart);
+  const navigate = useNavigate();
   const totalPrice = cartGoods.reduce(
     (acc, good) => acc + good.priceDiscount * good.quantity,
     0,
@@ -17,6 +18,10 @@ export const PageCart = () => {
 
   return (
     <div className="cart">
+      <div className="cart__back">
+        <div className="page-item__back--arrow icon icon--arrow-left"></div>
+        <div onClick={() => navigate(-1)}>{translate('link.back', lang)}</div>
+      </div>
       <h1 className="cart__title">{translate('link.cart', lang)}</h1>
       <div className="cart__container">
         <div className="cart__items">
@@ -35,12 +40,21 @@ export const PageCart = () => {
             </div>
           )}
         </div>
-        <div className="cart__total">
-          <h2 className="cart-item__sum">{`$${totalPrice}`}</h2>
-          <p className="cart__total__text">{`Total for ${totalitems} items`}</p>
-          <div className="cart__separator"></div>
-          <button className="cart__total__button">Checkout</button>
-        </div>
+        {cartGoods.length > 0 && (
+          <div className="cart__total">
+            <h2 className="cart-item__sum">{`$${totalPrice}`}</h2>
+            <p className="cart__total__text">{`Total for ${totalitems} items`}</p>
+            <div className="cart__separator"></div>
+            <button
+              className="cart__total__button card__button--add"
+              onClick={() =>
+                alert('Funcionality of this button has not implemented yet')
+              }
+            >
+              Checkout
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

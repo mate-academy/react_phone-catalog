@@ -6,6 +6,7 @@ import accessoriesReducer from '../features/accessoriesSlice';
 import navigationReducer from '../features/navigationSlice';
 import cartReducer from '../features/cartSlice';
 import favouriteReducer from '../features/favouriteSlice';
+import queryReducer from '../features/querySlice';
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     navigation: navigationReducer,
     cart: cartReducer,
     favourites: favouriteReducer,
+    query: queryReducer,
   },
 });
 

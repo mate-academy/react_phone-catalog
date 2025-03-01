@@ -9,15 +9,6 @@
 
   @include mix.hover(box-shadow, 0 3px 13px 0 var(--c-shadow-card));
 
-  // @include mix.on-tablet {
-  //   min-width: 237px;
-  // }
-
-  // @include mix.on-desktop {
-  //   min-width: 272px;
-  // }
-
-
   &__container {
     padding: 32px;
     display: flex;
@@ -44,10 +35,6 @@
       text-decoration: none;
       color: var(--c-primary);
       min-height: 62px;
-
-      @include mix.on-tablet {
-        min-height: 42px;
-      }
     }
   }
 

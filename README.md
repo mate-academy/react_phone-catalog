@@ -1,8 +1,19 @@
 # Group Project Setup
 
+[DEMO LINK](https://AndreaTkachuk.github.io/react_phone-catalog/)
+
+
+
+# Designs:
+- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
+- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
+- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
+- [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
+- [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+
 ---
 
-Before diving into setting up the project, you might find yourself asking some important questions: 
+Before diving into setting up the project, you might find yourself asking some important questions:
 
 - What do I need?
 - Where do I start?
@@ -48,7 +59,7 @@ Once you open the project in your code editor, run `npm install` to install th
 
 Let’s take a moment to explore what we have after this small step. Quite a lot!
 
-1. Since we used the `react-ts` template, we now have a nicely set up TypeScript environment. If you’re curious about the configuration details, you can check out the `tsconfig.app.json` file. 
+1. Since we used the `react-ts` template, we now have a nicely set up TypeScript environment. If you’re curious about the configuration details, you can check out the `tsconfig.app.json` file.
 
 <aside>
 💡
@@ -60,7 +71,7 @@ While this provides a great starting point, you may want to fine-tune these sett
 1. We also have a `.gitignore` file, which will come in handy when it’s time to push our changes to GitHub.
 2. Another great thing about this step is that it lays the groundwork for our next task: setting up ESLint. But don’t worry — we’ll dive into that in the next chapter.
 
-Finally, you might want to clean up the boilerplate code in the `src` directory. I’m confident you can handle this on your own! 
+Finally, you might want to clean up the boilerplate code in the `src` directory. I’m confident you can handle this on your own!
 
 # 🦄 Eslint
 
@@ -157,7 +168,7 @@ export default tseslint.config(
       ...react.configs.recommended.rules, // This way we use recommended set of rules from "eslint-plugin-react" plugin
 
       "react/react-in-jsx-scope": "off", // This rule is included in "recommended", but since React 17 it is not needed!
- 
+
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },

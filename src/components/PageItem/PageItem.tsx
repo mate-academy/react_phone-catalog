@@ -67,7 +67,7 @@ export const PageItem = () => {
               dispatch(navigationSlice.actions.addLink(`${item?.category}`));
             }}
           >
-            Back
+            {translate('link.back', lang)}
           </Link>
         </div>
         <h1 className="page-item__title">{item?.name}</h1>
@@ -94,7 +94,9 @@ export const PageItem = () => {
           </div>
           <div className="page-item__controls">
             <div className="page-item__controls__colors">
-              <p className="page-item__controls__title">Available colors</p>
+              <p className="page-item__controls__title">
+                {translate('item.colors', lang)}
+              </p>
               <div className="page-item__controls__colors__box">
                 {(item?.colorsAvailable as (keyof typeof allColors)[]).map(
                   color => (
@@ -113,7 +115,7 @@ export const PageItem = () => {
               <span className="page-item__controls__id">ID: {randomId}</span>
               <div className="page-item__controls__separator"></div>
               <div className="page-item__controls__capacity__container">
-                <p>Select capacity</p>
+                <p>{translate('item.cap', lang)}</p>
                 <div className="page-item__controls__capacity__box">
                   {item?.capacityAvailable.map(cap => (
                     <Link

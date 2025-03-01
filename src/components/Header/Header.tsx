@@ -1,5 +1,5 @@
 import './Header.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { useContext, useState } from 'react';
 import { Logo } from '../Logo/Logo';
@@ -8,9 +8,13 @@ import { Lang } from '../../types/enumLang';
 import { translate } from '../../utils/translate';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { navigationSlice } from '../../features/navigationSlice';
+import { SearchForm } from '../SearchForm/SearchForm';
+import { querySlice } from '../../features/querySlice';
 
 export const Header = () => {
+  const currentUrl = useLocation();
   const [isMenu, setIsMenu] = useState(false);
+  // const [isSearch, setIsSearch] = useState(false);
   const { lang, setLang } = useContext(LangContext);
   const { favouriteGoods } = useAppSelector(state => state.favourites);
   const { cartGoods } = useAppSelector(state => state.cart);
@@ -41,13 +45,20 @@ export const Header = () => {
         <div className="header__top">
           <div className="header__top--logo-with-menu">
             <Logo />
-            <div className="nav__link nav__link--burger">
-              <div
-                className={classNames('icon icon__nav icon--burger-menu', {
-                  'menu--close': isMenu,
-                })}
-                onClick={handleBurger}
-              ></div>
+            <div className="header__top__search__menu">
+              <div className="header__search-with-menu">
+                {(currentUrl.pathname === '/phones' ||
+                  currentUrl.pathname === '/tablets' ||
+                  currentUrl.pathname === '/accessories') && <SearchForm />}
+              </div>
+              <div className="nav__link nav__link--burger">
+                <div
+                  className={classNames('icon icon__nav icon--burger-menu', {
+                    'menu--close': isMenu,
+                  })}
+                  onClick={handleBurger}
+                ></div>
+              </div>
             </div>
           </div>
           <nav className={classNames('nav', { 'nav--visible': isMenu })}>
@@ -61,6 +72,7 @@ export const Header = () => {
                   onClick={() => {
                     setIsMenu(false);
                     dispatch(navigationSlice.actions.clearLinks());
+                    dispatch(querySlice.actions.setQuery(''));
                   }}
                 >
                   Home
@@ -74,6 +86,8 @@ export const Header = () => {
                   }
                   onClick={() => {
                     setIsMenu(false);
+                    window.scrollTo(0, 0);
+                    dispatch(querySlice.actions.setQuery(''));
                     dispatch(navigationSlice.actions.clearLinks());
                     dispatch(navigationSlice.actions.addLink('phones'));
                   }}
@@ -89,6 +103,8 @@ export const Header = () => {
                   }
                   onClick={() => {
                     setIsMenu(false);
+                    window.scrollTo(0, 0);
+                    dispatch(querySlice.actions.setQuery(''));
                     dispatch(navigationSlice.actions.clearLinks());
                     dispatch(navigationSlice.actions.addLink('tablets'));
                   }}
@@ -104,6 +120,8 @@ export const Header = () => {
                   }
                   onClick={() => {
                     setIsMenu(false);
+                    window.scrollTo(0, 0);
+                    dispatch(querySlice.actions.setQuery(''));
                     dispatch(navigationSlice.actions.clearLinks());
                     dispatch(navigationSlice.actions.addLink('accessories'));
                   }}
@@ -176,7 +194,11 @@ export const Header = () => {
               IT
             </span>
           </div>
-
+          <div className="header__search-with-icons nav__link">
+            {(currentUrl.pathname === '/phones' ||
+              currentUrl.pathname === '/tablets' ||
+              currentUrl.pathname === '/accessories') && <SearchForm />}
+          </div>
           <div className="nav__link nav__link--theme">
             <div
               className="icon icon__nav icon--theme"
@@ -192,6 +214,9 @@ export const Header = () => {
             }
             onClick={() => {
               setIsMenu(false);
+              window.scrollTo(0, 0);
+              dispatch(querySlice.actions.setQuery(''));
+              dispatch(navigationSlice.actions.clearLinks());
               dispatch(navigationSlice.actions.clearLinks());
               dispatch(navigationSlice.actions.addLink('favourite'));
             }}
@@ -214,6 +239,8 @@ export const Header = () => {
             }
             onClick={() => {
               setIsMenu(false);
+              window.scrollTo(0, 0);
+              dispatch(querySlice.actions.setQuery(''));
               dispatch(navigationSlice.actions.clearLinks());
               dispatch(navigationSlice.actions.addLink('cart'));
             }}

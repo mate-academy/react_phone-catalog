@@ -14,17 +14,23 @@ export const Footer = () => {
       <nav className="footer__nav">
         <ul className="footer__nav__list">
           <li className="list__item">
-            <Link to="#" className="nav__link">
+            <Link
+              to="https://github.com/AndreaTkachuk/react_phone-catalog/"
+              className="nav__link"
+            >
               Github
             </Link>
           </li>
           <li className="list__item">
-            <Link to="#" className="nav__link">
+            <Link to="mailto:andrii.tkachuk.fs@gmail.com" className="nav__link">
               {translate('footer.link.contacts', lang)}
             </Link>
           </li>
           <li className="list__item">
-            <Link to="#" className="nav__link">
+            <Link
+              to="https://github.com/AndreaTkachuk/react_phone-catalog/"
+              className="nav__link"
+            >
               {translate('footer.link.rights', lang)}
             </Link>
           </li>

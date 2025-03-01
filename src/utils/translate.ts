@@ -9,8 +9,9 @@ const en: Dictionary = {
   'link.phones': 'Phones',
   'link.tablets': 'Tablets',
   'link.accessories': 'Accessories',
-  'link.favourite': 'Favourites',
+  'link.favourites': 'Favourites',
   'link.cart': 'Cart',
+  'link.back': 'Back',
   'header.phones': 'Phones',
   'header.tablets': 'Tablets',
   'header.accessories': 'Accessories',
@@ -40,6 +41,8 @@ const en: Dictionary = {
   'footer.button': 'Back to top',
   'not-found.title': 'Page not found',
   'not-found.button': 'Back to home',
+  'item.colors': 'Available colors',
+  'item.cap': 'Select capacity',
 };
 
 const it: Dictionary = {
@@ -47,8 +50,9 @@ const it: Dictionary = {
   'link.phones': 'Cellulari',
   'link.tablets': 'Tablet',
   'link.accessories': 'Accessori',
-  'link.favourite': 'Preferiti',
+  'link.favourites': 'Preferiti',
   'link.cart': 'Carrello',
+  'link.back': 'Indietro',
   'header.phones': 'Cellulari',
   'header.tablets': 'Tablet',
   'header.accessories': 'Accessori',
@@ -78,6 +82,8 @@ const it: Dictionary = {
   'footer.button': "Torna all'inizio",
   'not-found.title': 'Pagina non trovata',
   'not-found.button': 'Torna alla home',
+  'item.colors': 'Colori disponibili',
+  'item.cap': 'Seleziona la capacità',
 };
 
 const dictionaries = { en, it };

@@ -46,7 +46,6 @@ export const HomePage = () => {
     <main className="home-page">
       <div className="container">
         <section className="section section__main" id="main">
-          <h2 style={{ color: 'red' }}>This site has not finished yet!!!</h2>
           <h1 className="section__title section__title--main">
             {translate('homePage.title', lang)}
           </h1>

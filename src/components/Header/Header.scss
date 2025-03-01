@@ -23,8 +23,26 @@
     flex-direction: column;
     justify-content: space-between;
 
-    @include mix.on-tablet {
+    @include mix.on-800 {
       flex-direction: row;
+    }
+  }
+
+  &__search-with-menu {
+    position: relative;
+    display: block;
+
+    @include mix.on-800 {
+      display: none;
+    }
+  }
+
+  &__search-with-icons {
+    // position: relative;
+    display: none;
+
+    @include mix.on-800 {
+      display: block;
     }
   }
 
@@ -40,12 +58,16 @@
       align-items: center;
       border-bottom: 1px solid var(--c-elements);
 
-      @include mix.on-tablet {
+      @include mix.on-800 {
         border-bottom: none;
       }
     }
 
-    @include mix.on-tablet {
+    &__search__menu {
+      display: flex;
+    }
+
+    @include mix.on-800 {
       flex-direction: row;
       align-items: center;
       gap: 32px;
@@ -58,6 +80,7 @@
 
   &__icons {
     display: flex;
+    align-items: center;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-20px);
@@ -71,7 +94,7 @@
       pointer-events: auto;
     }
 
-    @include mix.on-tablet {
+    @include mix.on-800 {
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
