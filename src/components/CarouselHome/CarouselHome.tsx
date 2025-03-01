@@ -14,7 +14,6 @@ export const Carousel: React.FC<Props> = ({ products, name }) => {
   const { width } = useWindowSize();
   const [visibleItems, setVisibleItems] = useState(4);
 
-  // Для збереження позиції дотику
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
 
@@ -40,7 +39,6 @@ export const Carousel: React.FC<Props> = ({ products, name }) => {
     );
   };
 
-  // Функції для свайпів
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
   };
@@ -53,10 +51,8 @@ export const Carousel: React.FC<Props> = ({ products, name }) => {
     const swipeDistance = touchStartX - touchEndX;
 
     if (swipeDistance > 50) {
-      // Свайп вліво → показуємо наступний слайд
       nextSlide();
     } else if (swipeDistance < -50) {
-      // Свайп вправо → показуємо попередній слайд
       prevSlide();
     }
   };
@@ -71,14 +67,14 @@ export const Carousel: React.FC<Props> = ({ products, name }) => {
             onClick={prevSlide}
             disabled={products.length <= 1}
           >
-            <img src="/img/servic/arrow-left.svg" alt="arrow" />
+            <img src="img/servic/arrow-left.svg" alt="arrow" />
           </button>
           <button
             className={styles.arrow}
             onClick={nextSlide}
             disabled={products.length <= 1}
           >
-            <img src="/img/servic/arrow-right.svg" alt="arrow" />
+            <img src="img/servic/arrow-right.svg" alt="arrow" />
           </button>
         </div>
       </div>
