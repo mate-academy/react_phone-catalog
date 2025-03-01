@@ -75,7 +75,7 @@ export const Burger: React.FC<Props> = ({ isOpen, onClick }) => {
             onClick={onClick}
           >
             <div>
-              <img src="/react_phone-catalog/img/servic/heart.svg" alt="favorite"></img>
+              <img src="img/servic/heart.svg" alt="favorite"></img>
               {favoriteItem.length > 0 && <span>{favoriteItem.length}</span>}
             </div>
           </NavLink>
@@ -87,7 +87,7 @@ export const Burger: React.FC<Props> = ({ isOpen, onClick }) => {
             onClick={onClick}
           >
             <div>
-              <img src="/react_phone-catalog/img/servic/cart.svg" alt="cart"></img>
+              <img src="img/servic/cart.svg" alt="cart"></img>
               {cartItem.length > 0 && <span>{cartItem.length}</span>}
             </div>
           </NavLink>

@@ -10,10 +10,10 @@ export const NavigatePanel = () => {
   return (
     <div className={styles.container}>
       <Link className={styles.homeIcon} to="/">
-        <img src="/react_phone-catalog/img/servic/home.svg" alt="home" />
+        <img src="img/servic/home.svg" alt="home" />
       </Link>
       <span>
-        <img src="/react_phone-catalog/img/servic/arrow-right.svg" alt="arrow" />
+        <img src="img/servic/arrow-right.svg" alt="arrow" />
       </span>
       {location.pathname === '/favorite' && (
         <Link
@@ -36,7 +36,7 @@ export const NavigatePanel = () => {
       {item && (
         <>
           <span>
-            <img src="/react_phone-catalog/img/servic/arrow-right.svg" alt="arrow" />
+            <img src="img/servic/arrow-right.svg" alt="arrow" />
           </span>
           <p className={styles.item}>{item}</p>
         </>

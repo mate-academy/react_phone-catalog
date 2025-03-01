@@ -13,6 +13,9 @@
     @include body-text;
     color: $primary-color;
   }
+  a {
+    text-decoration: none;
+  }
 }
 .main {
   display: flex;

@@ -8,25 +8,22 @@ type Props = {
   productsPerPage?: number;
 };
 
-const ProductList: React.FC<Props> = ({ sortedProducts, productsPerPage }) => {
+const ProductList: React.FC<Props> = ({
+  sortedProducts,
+  productsPerPage = 8,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const getCurrenProducts = () => {
-    if (productsPerPage) {
-      const indexOfLastProduct = currentPage * productsPerPage;
-      const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-      const currentProducts = sortedProducts.slice(
-        indexOfFirstProduct,
-        indexOfLastProduct,
-      );
+  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
 
-      return currentProducts;
-    } else {
-      return sortedProducts;
-    }
+  const getCurrentProducts = () => {
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+
+    return sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
   };
 
-  const currentProducts = getCurrenProducts();
+  const currentProducts = getCurrentProducts();
 
   useEffect(() => {
     setCurrentPage(1);
@@ -39,6 +36,18 @@ const ProductList: React.FC<Props> = ({ sortedProducts, productsPerPage }) => {
     });
   };
 
+  const getPaginationRange = () => {
+    const maxButtons = 5;
+    let start = Math.max(1, currentPage - 2);
+    const end = Math.min(totalPages, start + maxButtons - 1);
+
+    if (end - start < maxButtons - 1) {
+      start = Math.max(1, end - maxButtons + 1);
+    }
+
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.list}>
@@ -49,27 +58,46 @@ const ProductList: React.FC<Props> = ({ sortedProducts, productsPerPage }) => {
         ))}
       </div>
 
-      {productsPerPage && (
+      {totalPages > 1 && (
         <div className={styles.pagination}>
-          {Array.from(
-            { length: Math.ceil(sortedProducts.length / productsPerPage) },
-            (_, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  setCurrentPage(i + 1);
-                  scrollToTop();
-                }}
-                className={
-                  currentPage === i + 1
-                    ? `${styles.buttonActive} ${styles.button}`
-                    : styles.button
-                }
-              >
-                {i + 1}
-              </button>
-            ),
-          )}
+          <button
+            className={styles.button}
+            onClick={() => {
+              setCurrentPage(prev => Math.max(1, prev - 1));
+              scrollToTop();
+            }}
+            disabled={currentPage === 1}
+          >
+            <img src="img/servic/arrow-left.svg" alt="" />
+          </button>
+
+          {getPaginationRange().map(page => (
+            <button
+              key={page}
+              onClick={() => {
+                setCurrentPage(page);
+                scrollToTop();
+              }}
+              className={
+                currentPage === page
+                  ? `${styles.buttonActive} ${styles.button}`
+                  : styles.button
+              }
+            >
+              {page}
+            </button>
+          ))}
+
+          <button
+            className={styles.button}
+            onClick={() => {
+              setCurrentPage(prev => Math.min(totalPages, prev + 1));
+              scrollToTop();
+            }}
+            disabled={currentPage === totalPages}
+          >
+            <img src="img/servic/arrow-right.svg" alt="" />
+          </button>
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.container{
+.container {
   margin: $button-navigate;
 }
 
@@ -18,29 +18,38 @@
   align-items: center;
 }
 
-.pagination{
+.pagination {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $gap-card;
+  gap: 8px;
   margin-top: $button-navigate;
 }
 
-.button{
-  width: $button-navigate;
-  height: $button-navigate;
+.button {
+  width: 40px;
+  height: 40px;
   background-color: $white-color;
   border: 1px solid $secondary-color;
-  @include buttons-text;
   color: $primary-color;
-  &:hover{
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
     cursor: pointer;
+    background-color: rgba($primary-color, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 
-.buttonActive{
+.buttonActive {
   background-color: $primary-color;
   color: $white-color;
+  font-weight: bold;
 }
 
 @media (max-width: 1199px) {
@@ -54,6 +63,7 @@
     grid-template-columns: repeat(2, auto);
   }
 }
+
 @media (max-width: 639px) {
   .list {
     grid-template-columns: repeat(1, auto);

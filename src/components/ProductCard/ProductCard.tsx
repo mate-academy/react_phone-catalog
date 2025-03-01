@@ -9,15 +9,12 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-
   return (
     <div className={styles.container}>
       <div className={styles.img}>
         <img src={product.image} alt="phone" />
       </div>
-      <Link
-        to={`/products?category=${product.category}&item=${product.name}`}
-      >
+      <Link to={`/products?category=${product.category}&item=${product.name}`}>
         <h5>{product?.name}</h5>
       </Link>
       <div className={styles.price}>

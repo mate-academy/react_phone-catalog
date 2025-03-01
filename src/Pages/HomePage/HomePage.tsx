@@ -1,10 +1,30 @@
-import { Carousel } from '../../components/CaroselHome/CarouselHome';
+/* eslint-disable */
+import { Carousel } from '../../components/CarouselHome/CarouselHome';
 import styles from './HomePage.module.scss';
 import { HomeCategory } from '../../components/HomeCategory/HomeCategory';
 import { useAppSelector } from '../../app/hooks';
+import { Product } from '../../types/Product';
 
 export const HomePage = () => {
-  const { newPhones, hotPrice } = useAppSelector(state => state.product);
+  const { products } = useAppSelector(state => state.product);
+
+  const newPhones = products
+    .filter(product => product.year === 2022)
+    .reduce<Product[]>((acc, product) => {
+      if (!acc.some(p => p.color === product.color)) {
+        acc.push(product);
+      }
+
+      return acc;
+    }, []);
+
+  const hotPrice = products
+    .map(product => ({
+      ...product,
+      discount: product.price - (product.fullPrice ?? product.price),
+    }))
+    .sort((a, b) => b.discount - a.discount)
+    .slice(0, 10);
 
   return (
     <div className={styles.container}>

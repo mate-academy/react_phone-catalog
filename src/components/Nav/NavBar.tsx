@@ -65,7 +65,7 @@ export const NavBar = () => {
               to="/favorite"
             >
               <div>
-                <img src="/react_phone-catalog/img/servic/heart.svg" alt=""></img>
+                <img src="img/servic/heart.svg" alt=""></img>
                 {!!favoriteItem.length && <span>{favoriteItem.length}</span>}
               </div>
             </NavLink>
@@ -76,7 +76,7 @@ export const NavBar = () => {
               to="/cart"
             >
               <div>
-                <img src="/react_phone-catalog/img/servic/cart.svg" alt=""></img>
+                <img src="img/servic/cart.svg" alt=""></img>
                 {!!cartItem.length && <span>{cartItem.length}</span>}
               </div>
             </NavLink>

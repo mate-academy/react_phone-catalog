@@ -3,6 +3,7 @@ import { Product } from '../../types/Product';
 import styles from './ItemInCart.module.scss';
 import { useAppDispatch } from '../../app/hooks';
 import cartSlice from '../../features/cart/cartSlice';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -30,12 +31,16 @@ export const ItemInCart: React.FC<Props> = ({ product }) => {
           className={styles.deleteButton}
           onClick={() => onDelete(product.id)}
         >
-          <img src="/react_phone-catalog/img/servic/close.svg" alt="close" />
+          <img src="img/servic/close.svg" alt="close" />
         </button>
         <div className={styles.image}>
           <img src={product.image} alt="image" />
         </div>
-        <p className={styles.name}>{product.name}</p>
+        <Link
+          to={`/products?category=${product.category}&item=${product.name}`}
+        >
+          <p>{product?.name}</p>
+        </Link>
       </div>
       <div className={styles.quantityContainer}>
         <div className={styles.count}>

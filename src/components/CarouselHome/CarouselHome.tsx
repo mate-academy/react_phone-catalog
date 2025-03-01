@@ -14,6 +14,10 @@ export const Carousel: React.FC<Props> = ({ products, name }) => {
   const { width } = useWindowSize();
   const [visibleItems, setVisibleItems] = useState(4);
 
+  // Для збереження позиції дотику
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+
   useEffect(() => {
     if (width >= 1200) {
       setVisibleItems(4);
@@ -36,6 +40,27 @@ export const Carousel: React.FC<Props> = ({ products, name }) => {
     );
   };
 
+  // Функції для свайпів
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchStartX - touchEndX;
+
+    if (swipeDistance > 50) {
+      // Свайп вліво → показуємо наступний слайд
+      nextSlide();
+    } else if (swipeDistance < -50) {
+      // Свайп вправо → показуємо попередній слайд
+      prevSlide();
+    }
+  };
+
   return (
     <div className={styles.carousel}>
       <div className={styles.header}>
@@ -46,19 +71,24 @@ export const Carousel: React.FC<Props> = ({ products, name }) => {
             onClick={prevSlide}
             disabled={products.length <= 1}
           >
-            <img src="/react_phone-catalog/img/servic/arrow-left.svg" alt="arrow" />
+            <img src="/img/servic/arrow-left.svg" alt="arrow" />
           </button>
           <button
             className={styles.arrow}
             onClick={nextSlide}
             disabled={products.length <= 1}
           >
-            <img src="/react_phone-catalog/img/servic/arrow-right.svg" alt="arrow" />
+            <img src="/img/servic/arrow-right.svg" alt="arrow" />
           </button>
         </div>
       </div>
 
-      <div className={styles.carousel__container}>
+      <div
+        className={styles.carousel__container}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           className={styles.carousel__track}
           style={{ transform: `translateX(-${index * (100 / visibleItems)}%)` }}
