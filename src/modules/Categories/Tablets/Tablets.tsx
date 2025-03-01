@@ -1,5 +1,7 @@
 import React from 'react';
 import { Products } from '../Products';
-import { NavLinks } from '../../../enums/NavLinks';
+import { MainNavLinks } from '../../../enums/MainNavLinks';
 
-export const Tablets: React.FC = () => <Products query={NavLinks.tablets} />;
+export const Tablets: React.FC = () => (
+  <Products query={MainNavLinks.tablets} />
+);

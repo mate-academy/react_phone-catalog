@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './FirstPartLink.module.scss';
-import { Product } from '../../../../types/Product';
+// eslint-disable-next-line max-len
+import { Product } from '../../../../../../../../../../../../types/CategoriesTypes/Product';
 
 type PickedProps = Pick<Product, 'name'>;
 

@@ -10,12 +10,13 @@ import ios14_1 from '/img/banner-slider/iphone14pro-1.png';
 import ios14_2 from '/img/banner-slider/iphone14pro-2.png';
 import ios14_3 from '/img/banner-slider/iphone14pro-3.png';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { NavLinks } from '../../../enums/NavLinks';
 import { animateScroll } from 'react-scroll';
 import { MainContext } from '../MainContext';
 import { MainContextType } from '../types/MainContextType';
 import { ProductsContext } from '../../ProductsContext';
 import { ErrorType } from '../types/ErrorType';
+import { Product } from '../../../types/CategoriesTypes/Product';
+import { MainNavLinks } from '../../../enums/MainNavLinks';
 
 interface Props {
   children: React.ReactNode;
@@ -38,6 +39,8 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
   const [isError, setIsError] = useState<ErrorType>('');
   const [isLoading, setIsLoading] = useState(true);
   const [isEmptiness, setIsEmptiness] = useState(false);
+  const [currentProductProps, setCurrentProductProps] =
+    useState<Product | null>(null);
 
   // #endregion
   // #region variables
@@ -47,7 +50,8 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
   const { pathname } = location;
   const mobImgs = [ios14mob_1, ios14mob_2, ios14mob_3];
   const imgs = [ios14_1, ios14_2, ios14_3];
-  const isOnHomePage = pathname === '/' || pathname === `/${NavLinks.home}`;
+  const MWFValueCondition = isTablet ? false : true;
+  const isOnHomePage = pathname === '/' || pathname === `/${MainNavLinks.home}`;
 
   // #endregion
   // #region functions
@@ -66,7 +70,12 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
     animateScroll.scrollToTop({ duration, smooth: true });
   };
 
-  const modelOnClickHandler = (category: string, itemId: string) => {
+  const modelOnClickHandler = (
+    category: string,
+    itemId: string,
+    props: Product,
+  ) => {
+    setCurrentProductProps(props);
     setComebackLocations(locations => [...locations, location]);
     setIsLoading(true);
     navigate(`/${category}/${itemId}`);
@@ -88,6 +97,8 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
       isLoading,
       isError,
       isEmptiness,
+      currentProductProps,
+      MWFValueCondition,
       modelOnClickHandler,
       scrollToTopHandler,
       setIsMenuShowed,
@@ -96,6 +107,7 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
       setIsLoading,
       setIsError,
       setIsEmptiness,
+      setCurrentProductProps,
     }),
     [
       imgIndex,
@@ -107,6 +119,8 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
       isLoading,
       isError,
       isEmptiness,
+      currentProductProps,
+      MWFValueCondition,
     ],
   );
 

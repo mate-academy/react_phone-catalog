@@ -9,14 +9,7 @@
   }
 
   .subtitle {
-    margin: 0;
-    margin-top: 8px;
-    font-size: 14px;
-    line-height: 21px;
-    width: 100%;
-    font-family: Mont-Regular;
-    font-weight: inherit;
-    color: $secondary-color;
+    @include products-subtitle;
   }
 
   .ds-wrapper {

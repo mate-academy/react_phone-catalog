@@ -7,9 +7,14 @@ import { MainContext } from '../../context/MainContext';
 
 export const Favourites: React.FC = () => {
   const { favourites } = useContext(FavouritesContext);
-  const { setIsEmptiness } = useContext(MainContext);
+  const { setIsEmptiness, scrollToTopHandler } = useContext(MainContext);
+  const fValues = Object.values(favourites);
 
-  const emptinessCondition = Object.values(favourites).length === 0;
+  const emptinessCondition = fValues.length === 0;
+
+  useEffect(() => {
+    scrollToTopHandler(0);
+  }, []);
 
   useEffect(() => {
     if (emptinessCondition) {
@@ -22,7 +27,8 @@ export const Favourites: React.FC = () => {
   return (
     <section className={styles.favourites}>
       <h2 className={styles.title}>Favourites</h2>
-      <ProductsItems products={Object.values(favourites)} />
+      <h3 className={styles.subtitle}>{fValues.length} models</h3>
+      <ProductsItems products={fValues} />
     </section>
   );
 };

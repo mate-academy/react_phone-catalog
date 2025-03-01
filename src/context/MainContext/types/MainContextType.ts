@@ -1,3 +1,4 @@
+import { Product } from '../../../types/CategoriesTypes/Product';
 import { ErrorType } from './ErrorType';
 
 export interface MainContextType {
@@ -12,7 +13,13 @@ export interface MainContextType {
   isLoading: boolean;
   isError: ErrorType;
   isEmptiness: boolean;
-  modelOnClickHandler: (category: string, itemId: string) => void;
+  currentProductProps: Product | null;
+  MWFValueCondition: boolean;
+  modelOnClickHandler: (
+    category: string,
+    itemId: string,
+    props: Product,
+  ) => void;
   scrollToTopHandler: (value: number) => void;
   setIsMenuShowed: (value: boolean) => void;
   setImgIndex: React.Dispatch<React.SetStateAction<number>>;
@@ -20,4 +27,5 @@ export interface MainContextType {
   setIsLoading: (value: boolean) => void;
   setIsError: React.Dispatch<React.SetStateAction<ErrorType>>;
   setIsEmptiness: (value: boolean) => void;
+  setCurrentProductProps: (value: Product | null) => void;
 }

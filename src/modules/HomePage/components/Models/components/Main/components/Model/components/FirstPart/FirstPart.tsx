@@ -7,20 +7,17 @@ import { MainContext } from '../../../../../../../../../../context/MainContext';
 import { FirstPartLink } from './components/FirstPartLink';
 import { ProductsContext } from '../../../../../../../../../../context/ProductsContext';
 import { useMediaQuery } from 'react-responsive';
-import { Product } from '../../types/Product';
+import { Product } from '../../../../../../../../../../types/CategoriesTypes/Product';
 
-// eslint-disable-next-line prettier/prettier
-type PickedProps = Pick<
-  Product,
-  'itemId' | 'category' | 'image' | 'name' | 'price' | 'fullPrice'
->;
-
-type Props = PickedProps & {
+interface Props {
+  props: Product;
   isPriceHot: boolean;
-};
+}
 
 export const FirstPart: React.FC<Props> = React.memo(
-  ({ itemId, category, image, name, price, fullPrice, isPriceHot }) => {
+  ({ isPriceHot, props }) => {
+    const { itemId, category, image, name, price, fullPrice } = props;
+
     // #region context
 
     const { isDesktop, isOnHomePage, modelOnClickHandler } =
@@ -74,7 +71,7 @@ export const FirstPart: React.FC<Props> = React.memo(
       <div className={styles['first-part']}>
         <div
           className={styles.wrapper}
-          onClick={() => modelOnClickHandler(category, itemId)}
+          onClick={() => modelOnClickHandler(category, itemId, props)}
         >
           <img src={`/${image}`} alt={name} className={styles.image} />
           <FirstPartLink

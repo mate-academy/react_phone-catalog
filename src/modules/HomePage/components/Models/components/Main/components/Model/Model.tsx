@@ -6,28 +6,13 @@ import { FirstPart } from './components/FirstPart';
 import { SecondPart } from './components/SecondPart';
 import { Divider } from './components/Divider';
 import { ThirdPart } from './components/ThirdPart';
-import { Product } from './types/Product';
 import { HOT_PRICES_TITLE } from '../../../../../../constants/ProductTitle';
 import { ProductsContext } from '../../../../../../../../context/ProductsContext';
+import { Product } from '../../../../../../../../types/CategoriesTypes/Product';
 
 export const Model: React.FC<Product> = React.memo(props => {
-  // #region props
-
-  const {
-    itemId,
-    category,
-    isMinWidthFixedValue,
-    sectionTitle,
-    name,
-    image,
-    price,
-    fullPrice,
-    screen,
-    capacity,
-    ram,
-  } = props;
-
-  // #endregion
+  const { itemId, isMinWidthFixedValue, sectionTitle, screen, capacity, ram } =
+    props;
 
   const { getCardWidth } = useContext(ProductsContext);
 
@@ -39,12 +24,7 @@ export const Model: React.FC<Product> = React.memo(props => {
   return (
     <div className={styles.product} style={productStyles}>
       <FirstPart
-        itemId={itemId}
-        category={category}
-        image={image}
-        name={name}
-        price={price}
-        fullPrice={fullPrice}
+        props={props}
         isPriceHot={sectionTitle === HOT_PRICES_TITLE ? true : false}
       />
       <Divider />

@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavLinks } from '../../../../enums/NavLinks';
 import { Link } from 'react-router-dom';
 import styles from './NavLink.module.scss';
 import classNames from 'classnames';
+import { MainNavLinks } from '../../../../enums/MainNavLinks';
 
 interface Props {
-  item: NavLinks;
+  item: MainNavLinks;
   isActiveCondition: boolean;
   isOnHomePage: boolean;
 }

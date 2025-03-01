@@ -6,7 +6,6 @@ import { HomePage } from '../modules/HomePage';
 import { Phones } from '../modules/Categories/Phones';
 import { Tablets } from '../modules/Categories/Tablets';
 import { Accessories } from '../modules/Categories/Accessories';
-import { NavLinks } from '../enums/NavLinks';
 import { Error } from '../modules/Error';
 import { Navigation } from './types/Navigation';
 import { ProductsContext } from '../context/ProductsContext';
@@ -15,6 +14,7 @@ import { CardsContext } from '../context/CardsContext/CardsContext';
 import { ErrorQueries } from '../enums/ErrorsQueries';
 import { MainContext } from '../context/MainContext';
 import { Favourites } from '../modules/Favourites';
+import { MainNavLinks } from '../enums/MainNavLinks';
 
 export const AnimatedRoutes: React.FC = React.memo(() => {
   // #region context
@@ -27,7 +27,8 @@ export const AnimatedRoutes: React.FC = React.memo(() => {
     categories,
     setCurrentProduct,
   } = useContext(ProductsContext);
-  const { setIsEmptiness, isEmptiness } = useContext(MainContext);
+  const { setIsEmptiness, isEmptiness, setCurrentProductProps } =
+    useContext(MainContext);
   const { ymalCardIndex, setYmalCardIndex } = useContext(CardsContext);
 
   // #endregion
@@ -56,6 +57,7 @@ export const AnimatedRoutes: React.FC = React.memo(() => {
 
       return () => {
         setCurrentProduct(null);
+        setCurrentProductProps(null);
 
         if (isEmptiness) {
           setIsEmptiness(false);
@@ -73,10 +75,10 @@ export const AnimatedRoutes: React.FC = React.memo(() => {
   // #endregion
 
   const navigation: Navigation = {
-    [NavLinks.home]: <HomePage />,
-    [NavLinks.phones]: <Phones />,
-    [NavLinks.tablets]: <Tablets />,
-    [NavLinks.accessories]: <Accessories />,
+    [MainNavLinks.home]: <HomePage />,
+    [MainNavLinks.phones]: <Phones />,
+    [MainNavLinks.tablets]: <Tablets />,
+    [MainNavLinks.accessories]: <Accessories />,
   };
 
   return (

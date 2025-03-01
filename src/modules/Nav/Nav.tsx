@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Nav.module.scss';
 import { useLocation } from 'react-router-dom';
-import { NavLinks } from '../../enums/NavLinks';
 import { NavLink } from './components/NavLink';
+import { MainNavLinks } from '../../enums/MainNavLinks';
 
 export const Nav: React.FC = () => {
   const { pathname } = useLocation();
@@ -10,7 +10,7 @@ export const Nav: React.FC = () => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.list}>
-        {Object.values(NavLinks).map((item, index) => {
+        {Object.values(MainNavLinks).map((item, index) => {
           const isActiveCondition = pathname.startsWith(`/${item}`);
           const isOnHomePage = pathname === '/' && index === 0;
 

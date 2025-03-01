@@ -5,13 +5,5 @@
   display: flex;
   gap: 8px;
   @include shop-buttons;
-
-  path {
-    transition: fill $default-trans-dur;
-  }
-
-  .is-liked path {
-    fill: $red-color;
-  }
 }
 

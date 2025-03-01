@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const ProductsItems: React.FC<Props> = ({ products }) => {
-  const { isTablet } = useContext(MainContext);
+  const { MWFValueCondition } = useContext(MainContext);
 
   return (
     <div className={styles['products-wrapper']}>
@@ -33,7 +33,7 @@ export const ProductsItems: React.FC<Props> = ({ products }) => {
           <Model
             itemId={itemId}
             category={category}
-            isMinWidthFixedValue={isTablet ? false : true}
+            isMinWidthFixedValue={MWFValueCondition}
             name={name}
             key={id}
             image={image}

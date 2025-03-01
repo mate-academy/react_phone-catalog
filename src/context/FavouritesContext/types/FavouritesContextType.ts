@@ -1,9 +1,8 @@
-// eslint-disable-next-line max-len
-import { Product } from '../../../modules/HomePage/components/Models/components/Main/components/Model/types/Product';
+import { Product } from '../../../types/CategoriesTypes/Product';
 import { Favourites } from './Favourites';
 
 export interface FavouritesContextType {
   favourites: Favourites;
   getIsIncluded: (itemId: string) => boolean;
-  onClickHandler: (itemId: string, props: Product) => void;
+  likeHandler: (itemId: string, props: Product) => void;
 }

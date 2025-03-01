@@ -5,7 +5,6 @@ import { ProductsContextType } from '../types/ProductsContextType';
 import { CurrentProduct } from '../types/CurrentProduct';
 import { MainContext } from '../../MainContext';
 import { Product } from '../../../types/CategoriesTypes/Product';
-import { NavLinks } from '../../../enums/NavLinks';
 import { Gadget } from '../../../types/CategoriesTypes/Gadget';
 import { CustomLocation } from '../../../types/CustomLocation';
 // eslint-disable-next-line max-len
@@ -14,6 +13,7 @@ import { SearchContext } from '../../SearchContext';
 import { useLocation } from 'react-router-dom';
 import { ProductsCache } from '../../../types/CategoriesTypes/ProductsCache';
 import { ErrorQueries } from '../../../enums/ErrorsQueries';
+import { MainNavLinks } from '../../../enums/MainNavLinks';
 
 interface Props {
   children: React.ReactNode;
@@ -152,7 +152,7 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const functions = [setProducts, setPhones, setTablets, setAccessories];
-    const strings = ['products', ...Object.values(NavLinks).slice(1)];
+    const strings = ['products', ...Object.values(MainNavLinks).slice(1)];
 
     function fetchAll() {
       functions.forEach(async (setState, index) => {

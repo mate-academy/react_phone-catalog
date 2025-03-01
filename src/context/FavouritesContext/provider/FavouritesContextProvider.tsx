@@ -1,10 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useMemo, useState } from 'react';
 import { FavouritesContext } from '../FavouritesContext';
-import { LSKeys } from '../../../enums/LSKeys';
 import { Favourites } from '../types/Favourites';
 import { Product } from '../../../types/CategoriesTypes/Product';
-// eslint-disable-next-line max-len
+import { NavLinks } from '../../../enums/NavLinks';
 
 interface Props {
   children: React.ReactNode;
@@ -12,7 +11,7 @@ interface Props {
 
 export const FavouritesContextProvider: React.FC<Props> = ({ children }) => {
   const getFavourites = (): Favourites => {
-    return JSON.parse(localStorage.getItem(LSKeys.favourites) || '{}');
+    return JSON.parse(localStorage.getItem(NavLinks.favourites) || '{}');
   };
 
   const [favourites, setFavourites] = useState<Favourites>(getFavourites());
@@ -23,7 +22,7 @@ export const FavouritesContextProvider: React.FC<Props> = ({ children }) => {
     const value = { ...favourites, [id]: props };
 
     setFavourites(value);
-    localStorage.setItem(LSKeys.favourites, JSON.stringify(value));
+    localStorage.setItem(NavLinks.favourites, JSON.stringify(value));
   };
 
   const removeModel = (id: string) => {
@@ -32,7 +31,7 @@ export const FavouritesContextProvider: React.FC<Props> = ({ children }) => {
     delete value[id];
 
     setFavourites(value);
-    localStorage.setItem(LSKeys.favourites, JSON.stringify(value));
+    localStorage.setItem(NavLinks.favourites, JSON.stringify(value));
   };
 
   const getIsIncluded = useCallback(
@@ -40,7 +39,7 @@ export const FavouritesContextProvider: React.FC<Props> = ({ children }) => {
     [favourites],
   );
 
-  const onClickHandler = (itemId: string, props: Product) => {
+  const likeHandler = (itemId: string, props: Product) => {
     if (getIsIncluded(itemId)) {
       removeModel(itemId);
 
@@ -56,7 +55,7 @@ export const FavouritesContextProvider: React.FC<Props> = ({ children }) => {
     () => ({
       favourites,
       getIsIncluded,
-      onClickHandler,
+      likeHandler,
     }),
     [favourites],
   );

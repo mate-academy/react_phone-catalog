@@ -14,6 +14,8 @@ export const MainContext = createContext<MainContextType>({
   isLoading: false,
   isError: '',
   isEmptiness: false,
+  currentProductProps: null,
+  MWFValueCondition: false,
   modelOnClickHandler: () => {},
   scrollToTopHandler: () => {},
   setIsMenuShowed: () => {},
@@ -22,4 +24,5 @@ export const MainContext = createContext<MainContextType>({
   setIsLoading: () => {},
   setIsError: () => {},
   setIsEmptiness: () => {},
+  setCurrentProductProps: () => {},
 });
