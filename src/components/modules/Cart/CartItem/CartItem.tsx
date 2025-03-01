@@ -3,14 +3,16 @@ import './CartItem.scss';
 import React, { useContext } from 'react';
 
 import { LocalStorageContext } from '../../../../app/Contexts/LocalStorageContext';
-import { ShopItem } from '../../../../types/ShopItem';
+
+import { Product } from '../../../../types/Product';
+
 
 type Props = {
-  item: ShopItem;
+  item: Product;
 };
 
 export const CartItem: React.FC<Props> = ({ item }) => {
-  const { id, images, name, priceRegular, priceDiscount } = item;
+  const { image, name, fullPrice, price } = item;
   const quantity = item.quantity || 1;
   const { addToCart, deleteFromCart, updateCart } = useContext(LocalStorageContext);
 
@@ -34,7 +36,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           />
         </svg>
 
-        <img className="item__photo" src={images[0]} alt="cart item photo" />
+        <img className="item__photo" src={image} alt="cart item photo" />
 
         <p className="item__name">{name}</p>
       </div>
@@ -88,7 +90,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         </div>
 
         <p className="item__total">
-          {priceDiscount ? `$${priceDiscount * quantity}` : `$${priceRegular * quantity}`}
+          {price ? `$${price * quantity}` : `$${fullPrice * quantity}`}
         </p>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ShopItem } from '../../types/ShopItem';
 
-import { getPhones } from '../../api/phones';
+import { getPhones } from '../../api/fetchProducts';
 
 export interface Phones {
   phones: ShopItem[];
@@ -21,8 +21,8 @@ export const loadPhones = createAsyncThunk('phones/loadPhones', async () => {
   return phones;
 });
 
-export const favIdsSlice = createSlice({
-  name: 'Phones',
+export const PhonesSlice = createSlice({
+  name: 'phones',
   initialState,
   reducers: {},
 
@@ -43,4 +43,4 @@ export const favIdsSlice = createSlice({
   },
 });
 
-export default favIdsSlice.reducer;
+export default PhonesSlice.reducer;

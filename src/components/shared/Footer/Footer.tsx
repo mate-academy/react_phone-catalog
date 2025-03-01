@@ -31,7 +31,7 @@ export const Footer = () => {
 
       <div className="footer__back-to-top-section back-to-top-section">
         <p className="back-to-top-section__title">Back to top</p>
-        <Link to="#top" className="back-to-top-section__buton">
+        <Link to='/' className="back-to-top-section__buton">
           <svg
             className='arrow-up'
             width="16"

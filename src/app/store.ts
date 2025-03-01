@@ -5,9 +5,15 @@ import {
   Action,
 } from '@reduxjs/toolkit';
 import phonesReducer from '../features/PhonesSlice/PhonesSlice';
+import productsReducer from '../features/ProductsSlice/ProductsSlice';
+import tabletsReducer from '../features/TabletsSlice/TabletsSlice';
+import accessoriesReducer from '../features/AccessoriesSlice/AccessoriesSlice';
 
 const rootReducer = combineSlices({
   phones: phonesReducer,
+  products: productsReducer,
+  tablets: tabletsReducer,
+  accessories: accessoriesReducer,
 });
 
 export const store = configureStore({

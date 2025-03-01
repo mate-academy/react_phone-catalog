@@ -1,15 +1,15 @@
 import { useMemo } from 'react';
 import { createContext } from 'react';
-import { ShopItem } from '../../types/ShopItem';
+import { Product } from '../../types/Product';
 import { useLocaleStorage } from '../../utils/globalStyles/customHooks';
 
 interface LocalStorageContextType {
-  cartItems: ShopItem[];
-  favItems: ShopItem[];
-  updateFavList: (p: ShopItem) => void;
-  addToCart: (p: ShopItem) => void;
-  deleteFromCart: (p: ShopItem) => void;
-  updateCart: (p: ShopItem) => void;
+  cartItems: Product[];
+  favItems: Product[];
+  updateFavList: (p: Product) => void;
+  addToCart: (p: Product) => void;
+  deleteFromCart: (p: Product) => void;
+  updateCart: (p: Product) => void;
   checkout: () => void;
 }
 
@@ -28,10 +28,10 @@ export const LocalStorageContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [cartItems, setCartItems] = useLocaleStorage<ShopItem[]>('cart', []);
-  const [favItems, setFavItems] = useLocaleStorage<ShopItem[]>('fav', []);
+  const [cartItems, setCartItems] = useLocaleStorage<Product[]>('cart', []);
+  const [favItems, setFavItems] = useLocaleStorage<Product[]>('fav', []);
 
-  const updateFavList = (product: ShopItem) => {
+  const updateFavList = (product: Product) => {
     const existingItem = favItems.find(favItem => favItem.id === product.id);
     if (existingItem) {
       setFavItems(favItems.filter(favItem => favItem.id !== product.id));
@@ -40,7 +40,7 @@ export const LocalStorageContextProvider = ({
     }
   };
 
-  const handleAddToCart = (product: ShopItem) => {
+  const handleAddToCart = (product: Product) => {
     const newCartItems = cartItems.map(item => {
       if (item.id === product.id && item.quantity) {
         return { ...product, quantity: item.quantity + 1 };
@@ -52,7 +52,7 @@ export const LocalStorageContextProvider = ({
     setCartItems(newCartItems);
   };
 
-  const handleDeleteFromCart = (product: ShopItem) => {
+  const handleDeleteFromCart = (product: Product) => {
     const newCartItems = cartItems.map(item => {
       if (item.id === product.id && item.quantity) {
         return { ...product, quantity: item.quantity - 1 };
@@ -64,7 +64,7 @@ export const LocalStorageContextProvider = ({
     setCartItems(newCartItems);
   };
 
-  const handleCartUpdate = (product: ShopItem) => {
+  const handleCartUpdate = (product: Product) => {
     const existingItem = cartItems.find(cartItem => cartItem.id === product.id);
     if (existingItem) {
       setCartItems(cartItems.filter(cartItem => cartItem.id !== product.id));
