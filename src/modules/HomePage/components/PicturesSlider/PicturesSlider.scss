@@ -1,0 +1,106 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__wrapper {
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      gap: 19px;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    height: 320px;
+    max-height: 400px;
+
+    @include on-tablet {
+      height: 280px;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      width: 32px;
+      display: block;
+
+      border: 1px solid $icons;
+      border-radius: 48px;
+
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include hover('border-color', $black);
+
+      &--prev {
+        background-image: url(../../../../../public/img/icons/arrow-left-black.svg);
+      }
+
+      &--next {
+        background-image: url(../../../../../public/img/icons/arrow-right-black.svg);
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    height: 24px;
+
+    .swiper-pagination-bullet {
+      cursor: pointer;
+      width: 14px;
+      height: 4px;
+      background-color: $icons;
+      border-radius: 2px;
+      opacity: 0.5;
+
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+        background-color: $black;
+      }
+    }
+  }
+
+  &__slide {
+    background-color: #090502;
+
+    @include on-desktop {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include on-tablet {
+      object-fit: contain;
+    }
+  }
+}

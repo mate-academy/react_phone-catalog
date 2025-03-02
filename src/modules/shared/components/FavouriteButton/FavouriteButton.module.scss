@@ -1,0 +1,16 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.favouriteButton {
+  width: 40px;
+  height: 40px;
+  background: center no-repeat url(../../../../../public/img/icons/favourites-icon.svg);
+  border: 1px solid $icons;
+  border-radius: 50%;
+
+  &--filled {
+    background-image: url(../../../../../public/img/icons/favouritesFilled-icon.svg);
+  }
+
+  @include hover(border-color, $black);
+}

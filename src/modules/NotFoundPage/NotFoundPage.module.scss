@@ -1,0 +1,40 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  padding: 0 $padding-mobile;
+
+  @include on-tablet {
+    padding: 0 $padding-tablet;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    padding: 0 $padding-desktop;
+  }
+
+  .title {
+    margin-bottom: 16px;
+  }
+
+  .message {
+    margin-bottom: 32px;
+  }
+
+  .button {
+    padding: 10px;
+    max-width: 263px;
+    width: 100%;
+    color: $white;
+    border-radius: 48px;
+    background-color: $accent;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

@@ -1,0 +1,25 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.productsList {
+  display: grid;
+  gap: 40px 16px;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: center;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.paginationContainer {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}

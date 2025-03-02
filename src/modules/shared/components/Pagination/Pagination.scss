@@ -1,0 +1,76 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.pageLink {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.pageNumber,
+.previous,
+.next {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  border-radius: 48px;
+  cursor: pointer;
+
+  @include hover('border-color', $black);
+}
+
+.next,
+.previous {
+  border-color: $icons;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.previous {
+  margin-right: 8px;
+  background-image: url(../../../../../public/img/icons/arrow-left-black.svg);
+}
+
+.previous a,
+.next a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.previous.disabled {
+  border-color: $elements;
+  background-image: url(../../../../../public/img/icons/arrow-left-grey.svg);
+  cursor: auto;
+}
+
+.next {
+  margin-left: 8px;
+  background-image: url(../../../../../public/img/icons/arrow-right-black.svg);
+}
+
+.next.disabled {
+  border-color: $elements;
+  background-image: url(../../../../../public/img/icons/arrow-right-grey.svg);
+  cursor: auto;
+}
+
+.break {
+  display: none;
+}
+
+.activePage a {
+  background-color: $black;
+  border-radius: 48px;
+  color: $white;
+}

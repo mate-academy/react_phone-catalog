@@ -1,0 +1,171 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.HomePage {
+  margin: 24px auto 64px;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+    max-width: 1136px;
+  }
+
+  .homeTitle {
+    max-width: 1136px;
+    margin-bottom: 24px;
+    padding: 0 16px;
+
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+      padding: 0 24px;
+    }
+
+    @include on-desktop {
+      margin: 0 auto 56px;
+      padding: 0;
+    }
+  }
+
+  .picturesContainer {
+    margin-bottom: $margin-bottom-mobile;
+
+    @include on-tablet {
+      margin-bottom: $margin-bottom-mobile;
+      padding-inline: $padding-tablet;
+    }
+
+    @include on-desktop {
+      margin-bottom: $margin-bottom-desktop;
+      padding-inline: 0;
+    }
+  }
+
+  .newModelsContainer,
+  .hotDealsContainer {
+    overflow: hidden;
+  }
+
+  .newModelsContainer {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  .categorySection {
+    max-width: 1136px;
+    margin-bottom: 56px;
+    padding: 0 16px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+      padding: 0 24px;
+    }
+
+    @include on-desktop {
+      margin: 0 auto 80px;
+      padding: 0;
+    }
+
+    .categoryTitle {
+      margin-bottom: 24px;
+
+      @include on-tablet {
+        font-size: 32px;
+        font-weight: 900;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+      }
+    }
+
+    .categoryGrid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+
+      @include on-tablet {
+        flex-direction: row;
+        gap: 16px;
+      }
+
+      .categoryItem {
+        .categoryImgContainer {
+          width: 288px;
+
+          position: relative;
+          margin-bottom: 24px;
+          overflow: hidden;
+          border-radius: 8px;
+          aspect-ratio: 1;
+
+          @include on-tablet {
+            width: 188px;
+          }
+
+          @include on-desktop {
+            width: 368px;
+          }
+
+          &--phones {
+            background-color: #6d6474;
+          }
+
+          &--tablets {
+            background-color: #8d8d92;
+          }
+
+          &--accessories {
+            background-color: #973d5f;
+          }
+
+          .categoryImg {
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            height: auto;
+
+            &--phones {
+              width: 100%;
+            }
+
+            &--tablets {
+              width: 120%;
+            }
+
+            &--accessories {
+              width: 190%;
+            }
+
+            @include hover(transform, scale(1.1));
+          }
+        }
+
+        .categoryName {
+          margin-bottom: 4px;
+          font-size: 20px;
+          font-weight: 600;
+          color: $black;
+        }
+
+        .categoryCount {
+          font-size: 14px;
+          font-weight: 400;
+          color: $secondary;
+        }
+      }
+    }
+  }
+}

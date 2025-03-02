@@ -1,0 +1,232 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  &--mobile {
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    padding: 0 $padding-mobile;
+    border-bottom: 1px solid $elements;
+    background-color: $white;
+
+    @include on-desktop {
+      height: 64px;
+      padding: 0 24px;
+    }
+
+    .logoLink {
+      @include on-tablet {
+        margin-right: 32px;
+      }
+
+      @include on-desktop {
+        margin-right: 48px;
+      }
+
+      img {
+        width: 64px;
+
+        @include on-desktop {
+          width: 80px;
+        }
+      }
+    }
+
+    .toggleButton {
+      display: flex;
+      place-content: center center;
+      align-items: center;
+      border: none;
+      background-color: transparent;
+      padding-left: 16px;
+      border-left: 1px solid $elements;
+      height: 100%;
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+  }
+
+  .nav {
+    margin-top: 24px;
+    flex-grow: 1;
+
+    @include on-tablet {
+      margin-top: 0;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include on-tablet {
+        flex-direction: row;
+        gap: 32px;
+        height: 100%;
+      }
+
+      @include on-desktop {
+        gap: 64px;
+      }
+    }
+
+    &__item {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__link {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $secondary;
+      padding-block: 8px;
+      border-bottom: 2px solid transparent;
+
+      @include hover(color, $black);
+
+      @include on-tablet {
+        display: flex;
+        align-items: center;
+        padding-top: 15px;
+      }
+
+      &--active {
+        color: black;
+        border-bottom-color: $black;
+      }
+    }
+  }
+
+  .menu {
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    background-color: $white;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    &.active {
+      transform: translateX(0);
+    }
+
+    @include on-tablet {
+      transform: translateX(0%);
+      flex-direction: row;
+      height: 48px;
+      position: relative;
+      border-bottom: 1px solid $elements;
+    }
+
+    @include on-desktop {
+      height: 64px;
+    }
+
+    &__icons {
+      height: 64px;
+      display: flex;
+      border-top: 1px solid $elements;
+
+      @include on-tablet {
+        height: 48px;
+        border-top: none;
+      }
+
+      @include on-desktop {
+        height: 64px;
+      }
+
+      .nav__link {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include hover(border-bottom, 2px solid $black);
+
+        &:first-child {
+          border-right: 1px solid $elements;
+
+          @include on-tablet {
+            border-left: 1px solid $elements;
+          }
+        }
+
+        @include on-tablet {
+          margin: 0;
+          padding: 16px;
+        }
+
+        @include on-desktop {
+          padding: 24px;
+        }
+      }
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &--menu {
+    background-image: url(../../../../../public/img/icons/menu-icon.svg);
+  }
+
+  &--close {
+    background-image: url(../../../../../public/img/icons/close-icon-black.svg);
+  }
+
+  &--heart {
+    background-image: url(../../../../../public/img/icons/favourites-icon.svg);
+  }
+
+  &--cart {
+    background-image: url(../../../../../public/img/icons/cart-icon.svg);
+  }
+}
+
+.itemsAmount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  width: 18px;
+  color: $white;
+  border: 1px solid $white;
+  background-color: $accent;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+  transform: translate(50%, -50%);
+  padding-top: 2px;
+  padding-left: 1px;
+}

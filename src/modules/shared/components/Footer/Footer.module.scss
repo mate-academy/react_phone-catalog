@@ -1,0 +1,47 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding-block: 32px;
+  padding-inline: $padding-mobile;
+  border-top: 1px solid $elements;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: $padding-tablet;
+  }
+
+  .nav {
+    &List {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include on-tablet {
+        flex-direction: row;
+        gap: 14px;
+      }
+
+      @include on-desktop {
+        gap: 108px;
+      }
+    }
+
+    &Link {
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $secondary;
+
+      @include hover(color, $black);
+    }
+  }
+}

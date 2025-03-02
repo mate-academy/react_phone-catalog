@@ -1,0 +1,28 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.button {
+  border-radius: 48px;
+  font-weight: 500;
+  color: $white;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+
+  &--primary {
+    background-color: $accent;
+  }
+
+  &--secondary {
+    background-color: $secondary;
+  }
+
+  &--outline {
+    background-color: transparent;
+    border-color: $accent;
+    color: $accent;
+  }
+}

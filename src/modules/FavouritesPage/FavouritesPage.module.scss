@@ -1,0 +1,44 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.page {
+  margin-bottom: $margin-bottom-mobile;
+  padding: 24px $padding-mobile 0;
+
+  @include on-tablet {
+    margin-bottom: $margin-bottom-tablet;
+    padding: 24px $padding-tablet 0;
+  }
+
+  @include on-desktop {
+    margin: 0 auto $margin-bottom-desktop;
+    padding: 24px $padding-desktop 0;
+    max-width: 1136px + ($padding-desktop * 2);
+  }
+
+  .breadCrumbsContainer {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  .title {
+    margin-bottom: 8px;
+
+    &--noItems {
+      margin-bottom: 0;
+    }
+  }
+
+  .itemsAmount {
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: $secondary;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

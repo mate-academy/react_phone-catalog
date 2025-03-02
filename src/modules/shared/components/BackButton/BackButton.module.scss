@@ -1,0 +1,23 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins';
+
+.backButton {
+  font-size: 12px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  color: $secondary;
+
+  @include hover(color, $black);
+
+  &::before {
+    content: '';
+    margin-right: 4px;
+    padding-bottom: 3px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../../../public/img/icons/arrow-left-black.svg');
+    background-repeat: no-repeat;
+  }
+}
