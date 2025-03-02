@@ -18,6 +18,10 @@ export const Slider: React.FC = () => {
   const endX = useRef<number | null>(null);
 
   useEffect(() => {
+    setCurrentShift(0);
+  }, [sliderWidth]);
+
+  useEffect(() => {
     const updateWidth = () => {
       if (sliderRef.current) {
         const { width } = sliderRef.current.getBoundingClientRect();

@@ -45,6 +45,10 @@
     @include mix.on-tablet {
       margin-right: -32px;
     }
+
+    @include mix.on-desktop {
+      margin-right: 0;
+    }
   }
 
   &__list {

@@ -2,6 +2,7 @@
 @use '../../styles/utils/mixins' as mix;
 
 .categories {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,11 +39,13 @@
     &--box {
       width: max-content;
     }
-
-    // @include mix.hover(transform, scale(1.05));
   }
 
   &__text {
     color: var(--c-secondary);
   }
+}
+
+.category {
+  width: 100%;
 }
