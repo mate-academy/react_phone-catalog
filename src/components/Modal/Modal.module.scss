@@ -1,0 +1,37 @@
+.modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #00000080;
+  z-index: 2;
+  display: flex;
+
+  &__container {
+    position: relative;
+    width: 70%;
+    margin: auto;
+    padding: 30px;
+    background-color: var(--c-page-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__title {
+    color: var(--c-primary);
+  }
+
+  &__button__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    background-image: url('img/icons/icon-close-grey.svg');
+  }
+}

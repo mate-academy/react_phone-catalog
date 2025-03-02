@@ -1,14 +1,16 @@
 import './PageCart.scss';
 import { useAppSelector } from '../../app/hooks';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { translate } from '../../utils/translate';
 import { LangContext } from '../../context/LangContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { CartItem } from '../CartItem/CartItem';
+import { Modal } from '../Modal/Modal';
 
 export const PageCart = () => {
   const { lang } = useContext(LangContext);
   const { cartGoods } = useAppSelector(state => state.cart);
+  const [checkout, setCheckout] = useState(false);
   const navigate = useNavigate();
   const totalPrice = cartGoods.reduce(
     (acc, good) => acc + good.priceDiscount * good.quantity,
@@ -18,6 +20,7 @@ export const PageCart = () => {
 
   return (
     <div className="cart">
+      {checkout && <Modal setCheckout={setCheckout} />}
       <div className="cart__back">
         <div className="page-item__back--arrow icon icon--arrow-left"></div>
         <div onClick={() => navigate(-1)}>{translate('link.back', lang)}</div>
@@ -47,9 +50,7 @@ export const PageCart = () => {
             <div className="cart__separator"></div>
             <button
               className="cart__total__button card__button--add"
-              onClick={() =>
-                alert('Funcionality of this button has not implemented yet')
-              }
+              onClick={() => setCheckout(prev => !prev)}
             >
               Checkout
             </button>
