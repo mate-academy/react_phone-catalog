@@ -1,0 +1,40 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.products {
+  @include mobile {
+    margin: 40px auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.prev, .next {
+  background: none;
+  border: 1px solid $standard-color;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+    border: 1px solid $hover-color;
+  }
+}

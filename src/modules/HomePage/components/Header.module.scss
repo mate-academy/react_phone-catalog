@@ -1,5 +1,12 @@
-@import '../../shared/variables.scss';
-@import '../../shared/mixins.scss';
+@import '../../shared/variables';
+@import '../../shared/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+}
 
 .nav {
   display: flex;
@@ -14,12 +21,18 @@
   &__logo {
     display: flex;
     align-items: center;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__list {
     @include mobile {
       display: none;
     }
+
     @include tablet {
       display: flex;
       align-items: center;
@@ -53,31 +66,40 @@
     align-items: center;
   }
 
-  &__heart {
-    @include mobile {
-      display: none;
-    }
-    @include tablet {
-      display: block;
-      padding: 16px;
-      border: 1px solid $border-color;
-      box-sizing: border-box;
-
-      :hover {
-        border: 1px solid $hover-color;
-      }
-    }
-  }
-
+  &__heart,
   &__cart {
     @include mobile {
       display: none;
     }
+
     @include tablet {
-      display: block;
+      display: inline-block;
+      position: relative;
       padding: 16px;
       border: 1px solid $border-color;
+      box-sizing: border-box;
+
+      &:hover {
+        border-bottom: 3px solid $hover-color;
+      }
     }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 5px;
+    right: 7px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__menu {
@@ -85,10 +107,108 @@
       display: block;
       padding: 16px;
       border: 1px solid $border-color;
+
+      &:hover {
+        border-bottom: 3px solid $hover-color;
+      }
     }
+
     @include tablet {
       display: none;
     }
   }
+
+  &__close {
+    display: block;
+    padding: 16px;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+
+    &:hover {
+      border-bottom: 3px solid $hover-color;
+    }
+  }
+
+  &__menuList {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__menuSelect {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    gap: 64px;
+
+  }
+
+  &__bottom {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+  }
+
+  &__menuHeart,
+  &__menuCart {
+    display: block;
+    position: relative;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    flex: 1;
+    padding: 16px 0;
+    text-align: center;
+
+      &:hover {
+        border: 1px solid $hover-color;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background-color: $hover-color;
+        transition: width 0.3s ease, left 0.3s ease;
+
+      }
+
+      &:hover::after {
+        width: 100%;
+        left: 0;
+      }
+  }
 }
+
+.aside {
+  @include mobile {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.3s;
+    pointer-events: none;
+    overflow: auto;
+    background-color: white;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  @include tablet {
+    display: none;
+  }
+}
+
 

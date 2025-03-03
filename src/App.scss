@@ -1,5 +1,8 @@
 // not empty
-@import './modules/shared/fonts.scss';
+@import './modules/shared/fonts';
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
 
 .App {
   font-family: Mont, sans-serif;

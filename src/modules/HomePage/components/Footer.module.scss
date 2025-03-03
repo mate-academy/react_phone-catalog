@@ -1,0 +1,73 @@
+@import '../../shared/mixins.scss';
+@import '../../shared/variables.scss';
+
+.footer {
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    gap: 30px;
+    border-top: 1px solid $border-color;
+  }
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+}
+
+.navigation {
+  &__list {
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      list-style: none;
+      padding: 0;
+    }
+    @include tablet {
+      flex-direction: row;
+    }
+
+    @include laptop {
+      gap: 106px;
+    }
+
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 800;
+    color: $grey-color;
+    text-decoration: none;
+
+  }
+}
+
+.return {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+
+
+  &__words {
+    font-size: 12px;
+    font-weight: 700;
+    color: $grey-color;
+
+  }
+
+  &__arrow {
+    border: 1px solid $standard-color;
+    padding: 10px;
+    background: none;
+
+    &:hover {
+      border: 1px solid $hover-color;
+    }
+  }
+}

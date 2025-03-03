@@ -1,0 +1,87 @@
+@import '../../shared/variables';
+@import '../../shared/mixins';
+
+.title {
+  @include mobile {
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+    padding: 16px;
+    color: $hover-color;
+  }
+
+  @include tablet {
+    font-size: 48px;
+    line-height: 56px;
+    padding: 24px;
+  }
+
+  @include laptop {
+    padding: 32px;
+  }
+}
+
+.slider {
+  @include mobile {
+    position: relative;
+    // width: 100%;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  @include tablet {
+    max-width: 80%;
+  }
+
+  @include laptop {
+    max-width: 88%;
+  }
+
+}
+
+.image {
+  @include mobile {
+    width: 100%;
+  }
+  @include tablet {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+}
+
+
+.arrowLeft,
+.arrowRight {
+  @include mobile {
+    display: none;
+  }
+
+  @include tablet {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: center;
+    background: none;
+    border: 1px solid $standard-color;
+    cursor: pointer;
+    padding: 18% 8px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
+  }
+}
+
+.arrowLeft {
+  left: -50px;
+}
+
+.arrowRight {
+  right: -50px;
+}
+
