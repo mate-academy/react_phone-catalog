@@ -1,0 +1,27 @@
+.Dropdown-control{
+  background-color: #323542;
+  border: 1px solid #323542;
+  width: 176px;
+  height: 40px;
+  color: #F1F2F9;
+
+  &:active{
+    border: 1px solid black;
+  }
+}
+
+
+.Dropdown-menu{
+  background-color: #323542;
+  border: 1px solid #323542;
+  width: 176px;
+}
+
+.Dropdown-option{
+  color: #F1F2F9;
+}
+
+.Dropdown-option.is-selected {
+  background-color: #323542;
+  color: #F1F2F9;
+}

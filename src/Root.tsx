@@ -10,7 +10,7 @@ import { CardPge } from './components/CartPage';
 import { FavouritesPage } from './components/Favourites';
 import { HomePage } from './components/HomePage/HomePage';
 import { PageNotFound } from './components/PageNotFound';
-import { PhonesPage } from './components/PhonePage';
+import { PhonesPage } from './components/PhonePage/PhonePage';
 import { TabletsPage } from './components/TabletPage';
 // import { Sidebar } from './components/Sidebar';
 

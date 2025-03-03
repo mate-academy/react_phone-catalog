@@ -1,8 +1,21 @@
+@import '../../utils/mixins';
+
+
 .card__image{
-  width: 368px;
-  height: 386px;
+  width: 288px;
+  height: 288px;
   object-fit: cover;
   // background-color: #8D8D92;
+
+  @include onTablet{
+    width: 187px;
+    height: 187px;
+  }
+
+  @include onDesktop{
+    width: 368px;
+    height: 368px;
+  }
 }
 
 .card{

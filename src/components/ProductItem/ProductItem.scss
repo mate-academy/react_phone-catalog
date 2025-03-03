@@ -1,50 +1,36 @@
-.productHot{
-  width: 100%;
-}
+@import '../../utils/mixins';
 
-.productHot__cards {
-  display: flex;
-  gap: 16px;
-  transition: transform 0.3s ease-in-out;
-  overflow: hidden;
-}
-
-.productHot__elements {
+.product__elements {
   background-color: #161827;
   padding: 32px;
   transition: transform 0.3s ease-in-out;
-  flex: 0 0 33.33%;
+
+
+  @include onTablet {
+    flex: 0 0 33.33%;
+  }
+
+  @include onDesktop{
+    flex: 0 0 calc(50% / 4);
+  }
 }
 
-.productHot__titleButton {
-  display: flex;
-  justify-content: space-between;
-}
 
-.productHot__title {
-  width: 100%;
-  margin: 56px 0;
-  font-family: Mont-Bold, sans-serif;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -1px;
-}
-
-.productHot__img-container {
+.product__img-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.productHot__image {
-  width: 50%;
+.product__image {
+  width: 208px;
   // height: 196px;
   object-fit: cover;
   // margin: 32px;
+  overflow: hidden;
 }
 
-.productHot__name {
+.product__name {
   width: 100%;
   font-family: Mont, sans-serif;
   font-weight: 600;
@@ -55,13 +41,12 @@
   margin: 24px 0 0 0;
 }
 
-.productHot__discount{
+.product__discount{
   display: flex;
   gap: 8px;
 }
 
-.productHot__price {
-  // width: 50%;
+.product__price {
   margin: 56px 0;
   font-family: Mont-Bold, sans-serif;
   font-weight: 800;
@@ -71,7 +56,7 @@
   margin: 8px 0 0 0;
 }
 
-.productHot__fullprice{
+.product__fullprice{
   margin: 56px 0;
   font-family: Mont-Bold, sans-serif;
   font-weight: 800;
@@ -82,16 +67,16 @@
   text-decoration: line-through;
 }
 
-.productHot__line {
+.product__line {
   border: 1px solid #3b3e4a;
   margin: 8px 0 0 0;
 }
 
-.productHot__information {
+.product__information {
   padding: 8px 0 0 0;
 }
 
-.productHot__informationAll {
+.product__informationAll {
   gap: 8px;
   // padding-block: 8px;
   // height: 100%;
@@ -100,53 +85,12 @@
   justify-content: space-between;
 }
 
-.productHot__screenTitle{
+.product__screenTitle{
   color: #75767F;
 }
 
-.button {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
 
-.buttonPrev {
-  font-family: Mont-Bold, sans-serif;
-
-  background-color: transparent;
-  border: 1px solid #3b3e4a;
-  color: #4a4d58;
-  width: 32px;
-  height: 32px;
-
-  &:hover {
-    background-color: #323542;
-    border: 1px solid #323542;
-    color: #f1f2f9;
-  }
-}
-
-.buttonNext {
-  font-family: Mont-Bold, sans-serif;
-
-  background-color: transparent;
-  border: 1px solid #3b3e4a;
-  color: #4a4d58;
-  width: 32px;
-  height: 32px;
-
-  &:hover {
-    background-color: #323542;
-    border: 1px solid #323542;
-    color: #f1f2f9;
-  }
-}
-
-.buttons {
-  gap: 8px;
-}
-
-.productHot__informationAll {
+.product__informationAll {
   height: 15px;
   padding-bottom: 8px;
 }

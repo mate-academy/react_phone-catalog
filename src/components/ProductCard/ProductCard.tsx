@@ -1,20 +1,21 @@
-import { useEffect, useState } from 'react';
-import { fetchProducts } from '../../utils/api';
+import React, { useEffect, useState } from 'react';
+// import { fetchProducts } from '../../utils/api';
 import { Product } from '../../types/typeRpoduct';
 import './ProductCard.scss';
-import like from '../../../image/heart.svg';
-import { NavLink } from 'react-router-dom';
 
-export const ProductCard = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+import { ProductItem } from '../ProductItem/ProductItem';
+
+interface Props {
+  products: Product[];
+  WithAdditionalPrice?: boolean;
+}
+
+export const ProductCard: React.FC<Props> = ({
+  products,
+  WithAdditionalPrice = false,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(4);
-
-  useEffect(() => {
-    fetchProducts().then(data => {
-      setPhones(data);
-    });
-  }, []);
 
   const updateItemsPerPage = () => {
     if (window.innerWidth <= 768) {
@@ -37,7 +38,7 @@ export const ProductCard = () => {
   }, []);
 
   const handleNext = () => {
-    if (currentIndex + 1 < phones.length - (itemsPerPage - 1)) {
+    if (currentIndex + 1 < products.length - (itemsPerPage - 1)) {
       setCurrentIndex(prevIndex => prevIndex + 1);
     }
   };
@@ -63,7 +64,7 @@ export const ProductCard = () => {
           <button
             className="buttonNext"
             onClick={handleNext}
-            disabled={currentIndex + itemsPerPage >= phones.length}
+            disabled={currentIndex + itemsPerPage >= products.length}
           >
             &gt;
           </button>
@@ -71,46 +72,15 @@ export const ProductCard = () => {
       </div>
 
       <div className="product__cards">
-        {phones.slice(currentIndex, currentIndex + itemsPerPage).map(phone => (
-          <div key={phone.id} className="product__elements">
-            <div className="product__img-container">
-              <img
-                src={phone.image}
-                alt={`${phone.category} image`}
-                className="product__image"
-              />
-            </div>
-
-            <h3 className="product__name">{phone.name}</h3>
-            <h3 className="product__price">{`$ ${phone.price}`}</h3>
-            <div className="product__line"></div>
-            <div className="product__information">
-              <div className="product__informationAll">
-                <h3 className="product__screenTitle">Screen</h3>
-                <h3 className="product__screenDescription">{phone.screen}</h3>
-              </div>
-
-              <div className="product__informationAll">
-                <h3 className="product__screenTitle">Capacity</h3>
-                <h3 className="product__screenDescription">{phone.capacity}</h3>
-              </div>
-
-              <div className="product__informationAll">
-                <h3 className="product__screenTitle">RAM</h3>
-                <h3 className="product__screenDescription">{phone.ram}</h3>
-              </div>
-            </div>
-
-            <div className="buttons">
-              <NavLink className="button__add" to="/?">
-                Add to cart
-              </NavLink>
-              <NavLink className="buttons__like" to="/?">
-                <img src={like} alt="like" />
-              </NavLink>
-            </div>
-          </div>
-        ))}
+        {products
+          .slice(currentIndex, currentIndex + itemsPerPage)
+          .map(product => (
+            <ProductItem
+              key={product.id}
+              product={product}
+              WithAdditionalPrice={WithAdditionalPrice}
+            />
+          ))}
       </div>
     </div>
   );

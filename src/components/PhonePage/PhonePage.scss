@@ -1,0 +1,58 @@
+@import '../../utils/mixins';
+
+.main__phonepage{
+  margin: 0 32px 0 32px;
+}
+
+.mobile__title{
+  width: 100%;
+  margin: 56px 0;
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1px;
+  margin: 0;
+
+  @include onTablet {
+    width: 80%;
+  }
+
+  @include onMobile {
+    width: 82%;
+    font-size: 32px;
+  }
+}
+
+.mobile__models{
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939A;
+  margin: 0 0 8px 0;
+}
+
+.mobile__dropdown{
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.sortby{
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939A;
+  margin: 0 0 4px 0;
+}
+
+.item__page{
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939A;
+  margin: 0 0 4px 0;
+}

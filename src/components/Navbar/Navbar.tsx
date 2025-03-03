@@ -22,9 +22,9 @@ export const Navbar: React.FC<NavbarProps> = ({ setMenuIsOpen }) => {
         aria-label="main navigation"
       >
         <div className="container">
-          <div className="logo">
+          <NavLink className="logo" to="/">
             <img src={logo} alt="Logo" className="logo__img" />
-          </div>
+          </NavLink>
           <div className="navbar-brand">
             <NavLink className="navbar-item" to="/">
               Home
