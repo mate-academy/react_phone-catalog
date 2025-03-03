@@ -18,10 +18,10 @@ export const ProductCard: React.FC<Props> = ({
   const [itemsPerPage, setItemsPerPage] = useState(4);
 
   const updateItemsPerPage = () => {
-    if (window.innerWidth <= 768) {
-      setItemsPerPage(3);
-    } else if (window.innerWidth <= 480) {
+    if (window.innerWidth <= 480) {
       setItemsPerPage(2);
+    } else if (window.innerWidth <= 768) {
+      setItemsPerPage(3);
     } else {
       setItemsPerPage(4);
     }
