@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({ setMenuIsOpen }) => {
       >
         <div className="container">
           <div className="logo">
-            <img src={logo} alt="Logo" />
+            <img src={logo} alt="Logo" className="logo__img" />
           </div>
           <div className="navbar-brand">
             <NavLink className="navbar-item" to="/">

@@ -1,0 +1,65 @@
+@import '../../utils/mixins';
+
+.footer {
+  border-top: 1px solid #3b3e4a;
+}
+
+.footer__container {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  height: 257px;
+
+  @include onDesktop {
+    height: 96px;
+  }
+}
+
+.footer__logo {
+  padding: 32px 0 32px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+
+.footer-brand {
+  gap: 106px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-item {
+  font-family: Mont-Bold, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  color: #f1f2f9;
+
+  align-items: center;
+}
+
+.footer__button {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  margin-right: 32px;
+  gap: 16px;
+}
+
+.footer__buttonsTitle{
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #323542;
+}
+
+.footer_but {
+  color: #F1F2F9;
+  width: 32px;
+  height: 32px;
+  background-color: #323542;
+  border: 1px solid #323542;
+}

@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { fetchProducts } from '../../utils/api';
+// import { Phone } from '../../types/ProductDetails';
 import { Product } from '../../types/typeRpoduct';
-import './ProductCard.scss';
+
+import './HotProductCard.scss';
 import like from '../../../image/heart.svg';
 import { NavLink } from 'react-router-dom';
 
-export const ProductCard = () => {
+export const HotProductCard = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(4);
@@ -49,9 +51,9 @@ export const ProductCard = () => {
   };
 
   return (
-    <div className="product">
-      <div className="product__titleButton">
-        <h2 className="product__title">Brand new models</h2>
+    <div className="productHot">
+      <div className="productHot__titleButton">
+        <h2 className="productHot__title">Hot prices</h2>
         <div className="button">
           <button
             className="buttonPrev"
@@ -70,34 +72,43 @@ export const ProductCard = () => {
         </div>
       </div>
 
-      <div className="product__cards">
+      <div className="productHot__cards">
         {phones.slice(currentIndex, currentIndex + itemsPerPage).map(phone => (
-          <div key={phone.id} className="product__elements">
-            <div className="product__img-container">
+          <div key={phone.id} className="productHot__elements">
+            <div className="productHot__img-container">
               <img
                 src={phone.image}
                 alt={`${phone.category} image`}
-                className="product__image"
+                className="productHot__image"
               />
             </div>
 
-            <h3 className="product__name">{phone.name}</h3>
-            <h3 className="product__price">{`$ ${phone.price}`}</h3>
-            <div className="product__line"></div>
-            <div className="product__information">
-              <div className="product__informationAll">
-                <h3 className="product__screenTitle">Screen</h3>
-                <h3 className="product__screenDescription">{phone.screen}</h3>
+            <h3 className="productHot__name">{phone.name}</h3>
+
+            <div className="productHot__discount">
+              <h3 className="productHot__price">{`$ ${phone.price}`}</h3>
+              <h3 className="productHot__fullprice">{`$ ${phone.fullPrice}`}</h3>
+            </div>
+
+            <div className="productHot__line"></div>
+            <div className="productHot__information">
+              <div className="productHot__informationAll">
+                <h3 className="productHot__screenTitle">Screen</h3>
+                <h3 className="productHot__screenDescription">
+                  {phone.screen}
+                </h3>
               </div>
 
-              <div className="product__informationAll">
-                <h3 className="product__screenTitle">Capacity</h3>
-                <h3 className="product__screenDescription">{phone.capacity}</h3>
+              <div className="productHot__informationAll">
+                <h3 className="productHot__screenTitle">Capacity</h3>
+                <h3 className="productHot__screenDescription">
+                  {phone.capacity}
+                </h3>
               </div>
 
-              <div className="product__informationAll">
-                <h3 className="product__screenTitle">RAM</h3>
-                <h3 className="product__screenDescription">{phone.ram}</h3>
+              <div className="productHot__informationAll">
+                <h3 className="productHot__screenTitle">RAM</h3>
+                <h3 className="productHot__screenDescription">{phone.ram}</h3>
               </div>
             </div>
 
@@ -105,6 +116,8 @@ export const ProductCard = () => {
               <NavLink className="button__add" to="/?">
                 Add to cart
               </NavLink>
+              {/* <button className="button__add">Add to cart</button> */}
+              {/* <button className="buttons__like"></button> */}
               <NavLink className="buttons__like" to="/?">
                 <img src={like} alt="like" />
               </NavLink>

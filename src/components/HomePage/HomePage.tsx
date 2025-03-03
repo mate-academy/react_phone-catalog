@@ -2,8 +2,10 @@
 import './HomePage.scss';
 // import { Slider } from '../Slider/Slider';
 import { SliderSwiper } from '../SliderSwiper/SliderSwiper';
-import { ShopByCategory } from '../ShopByCategory/ShopByCategory';
+// import { ShopByCategory } from '../ShopByCategory/ShopByCategory';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { HotProductCard } from '../HotProductCard/HotProductCard';
+// import { Footer } from '../Footer/Footer';
 
 export const HomePage = () => {
   return (
@@ -16,10 +18,18 @@ export const HomePage = () => {
         <ProductCard />
       </div>
 
-      <div className="homepage__category">
+      {/* <div className="homepage__category">
         <h2 className="category">Shop by category</h2>
         <ShopByCategory />
+      </div> */}
+
+      <div className="homepage__Hotproduct">
+        <HotProductCard />
       </div>
+
+      {/* <div className="homepage__Footer">
+        <Footer />
+      </div> */}
     </main>
   );
 };

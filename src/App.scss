@@ -3,6 +3,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #0f1121;
 
   @include font-body;
 }
@@ -13,8 +14,10 @@ body {
   height: 100vh;
 }
 
-.container__page{
-  // padding: 0 16px;
+.container__page {
   background-color: #0f1121;
 }
 
+.footer__wrapper{
+  margin-top: 80px;
+}

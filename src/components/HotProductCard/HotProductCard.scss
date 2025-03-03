@@ -1,38 +1,27 @@
-@import '../../utils/mixins';
-
-
-.product{
+.productHot{
   width: 100%;
 }
 
-.product__cards {
+.productHot__cards {
   display: flex;
   gap: 16px;
   transition: transform 0.3s ease-in-out;
   overflow: hidden;
 }
 
-.product__elements {
+.productHot__elements {
   background-color: #161827;
   padding: 32px;
   transition: transform 0.3s ease-in-out;
-
-
-  @include onTablet {
-    flex: 0 0 33.33%;
-  }
-
-  @include onDesktop{
-    flex: 0 0 calc(100% / 4);
-  }
+  flex: 0 0 33.33%;
 }
 
-.product__titleButton {
+.productHot__titleButton {
   display: flex;
   justify-content: space-between;
 }
 
-.product__title {
+.productHot__title {
   width: 100%;
   margin: 56px 0;
   font-family: Mont-Bold, sans-serif;
@@ -40,24 +29,22 @@
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -1px;
-  overflow: hidden;
 }
 
-.product__img-container {
+.productHot__img-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.product__image {
-  width: 208px;
+.productHot__image {
+  width: 50%;
   // height: 196px;
   object-fit: cover;
   // margin: 32px;
-  overflow: hidden;
 }
 
-.product__name {
+.productHot__name {
   width: 100%;
   font-family: Mont, sans-serif;
   font-weight: 600;
@@ -68,8 +55,13 @@
   margin: 24px 0 0 0;
 }
 
-.product__price {
-  width: 100%;
+.productHot__discount{
+  display: flex;
+  gap: 8px;
+}
+
+.productHot__price {
+  // width: 50%;
   margin: 56px 0;
   font-family: Mont-Bold, sans-serif;
   font-weight: 800;
@@ -79,16 +71,27 @@
   margin: 8px 0 0 0;
 }
 
-.product__line {
+.productHot__fullprice{
+  margin: 56px 0;
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  color: #75767F;
+  margin: 8px 0 0 0;
+  text-decoration: line-through;
+}
+
+.productHot__line {
   border: 1px solid #3b3e4a;
   margin: 8px 0 0 0;
 }
 
-.product__information {
+.productHot__information {
   padding: 8px 0 0 0;
 }
 
-.product__informationAll {
+.productHot__informationAll {
   gap: 8px;
   // padding-block: 8px;
   // height: 100%;
@@ -97,7 +100,7 @@
   justify-content: space-between;
 }
 
-.product__screenTitle{
+.productHot__screenTitle{
   color: #75767F;
 }
 
@@ -143,7 +146,7 @@
   gap: 8px;
 }
 
-.product__informationAll {
+.productHot__informationAll {
   height: 15px;
   padding-bottom: 8px;
 }

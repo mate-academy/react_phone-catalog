@@ -1,15 +1,23 @@
 @import '../../utils/mixins';
 
+// .header{
+//   height: 64px;
+
+//   @include onMobile{
+//     height: 48px;
+//   }
+// }
+
 .container {
   display: flex;
   // align-items: center;
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
-  height: 64px;
+  height: 48px;
 
-  @include onMobile{
-    height: 48px;
+  @include onDesktop{
+    height: 64px ;
   }
 }
 
@@ -52,8 +60,8 @@
   align-items: center;
   justify-content: space-between;
   display: flex;
-
 }
+
 
 .buttons {
   // display: flex;
