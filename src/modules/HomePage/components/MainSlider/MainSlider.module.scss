@@ -15,7 +15,15 @@
     @include tablet {
       display: flex;
       gap: 19px;
-      height: 190px;
+      height: 220px;
+    }
+
+    @media (min-width:800px) {
+      height: 300px;
+    }
+
+    @media (min-width:1000px) {
+      height: 400px;
     }
 
     @include desktop {
@@ -30,6 +38,7 @@
 
   &__list {
     display: flex;
+    align-items: center;
     width: 100%;
     padding: 0;
     transition: transform 0.5s ease-in-out;
