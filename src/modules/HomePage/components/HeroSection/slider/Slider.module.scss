@@ -1,0 +1,176 @@
+@import '../../../../../style/global';
+
+.container {
+  display: flex;
+  gap: 16px;
+
+  margin-top: 24px;
+
+  @include on-tablet {
+    @include padding-inline;
+
+    margin-top: 32px;
+  }
+
+  @include on-large-desctop {
+    margin-top: 56px;
+  }
+}
+
+.firstSlide {
+  width: 100%;
+  height: 189px;
+
+  background-color: black;
+
+  display: flex;
+  justify-content: space-between;
+
+  @include on-desctop {
+    height: 400px;
+  }
+}
+
+.leftSide {
+  width: 50%;
+  background-color: $midle-gray-color;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: left;
+  margin: 5px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+
+  @include on-large-desctop {
+    padding: 40px;
+    margin: 15px;
+  }
+}
+
+.leftSideTitle {
+  color: #a435ff;
+  font-family: Mont-Bold, sans-serif;
+
+  @include on-large-desctop {
+    font-size: 40px;
+  }
+}
+
+.orderNow {
+  display: block;
+  border: 1px solid $light-gray-color;
+  width: max-content;
+  padding: 10px 20px;
+  border-radius: 20px;
+
+  color: $light-color;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+
+  @include on-large-desctop {
+    font-size: 20px;
+  }
+}
+
+.rightSide {
+  width: 50%;
+  position: relative;
+}
+
+.img {
+  width: 250px;
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include on-desctop {
+    width: 530px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @include on-large-desctop {
+    width: 540px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.imgs {
+  width: 100%;
+
+  object-fit: cover;
+
+  @include on-tablet {
+    height: 189px;
+  }
+
+  @include on-desctop {
+    height: 400px;
+  }
+}
+
+.sliderImg {
+  object-fit: cover;
+
+  @include on-tablet {
+    width: 100%;
+    height: 189px;
+  }
+
+  @include on-desctop {
+    height: 400px;
+  }
+}
+
+.slides {
+  height: 100%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 18px;
+
+  padding-bottom: 10px;
+}
+
+.paginationBullet {
+  width: 14px;
+  height: 4px;
+  background-color: $midle-gray-color;
+}
+
+.paginationBulletActive {
+  background-color: $light-color;
+}
+
+.paginationNext,
+.paginationPrev {
+  background-color: #323542;
+  display: none;
+
+  @include on-tablet {
+    // display: block;
+    width: 100px;
+    height: 189px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  @include on-desctop {
+    width: 100px;
+    height: 400px;
+  }
+}

@@ -1,1 +1,12 @@
 // not empty
+@import './utils/typografy';
+@import './utils/variables';
+
+.App {
+  background-color: $background-color;
+  height: 100vh;
+}
+
+iframe {
+  display: none;
+}

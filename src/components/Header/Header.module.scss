@@ -1,0 +1,107 @@
+@import '../../style/global';
+
+.wrapper {
+  border: 1px solid $light-gray-color;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    justify-content: start;
+  }
+}
+
+.logo {
+  padding: 13px 16px;
+
+  @include on-desctop {
+    padding: 18px 24px;
+  }
+}
+
+.burger {
+  padding: 16px;
+  border-left: 1px solid $light-gray-color;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.favorite,
+.bags {
+  padding: 16px;
+  border-left: 1px solid $light-gray-color;
+  box-sizing: border-box;
+  display: none;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  @include on-desctop {
+    padding: 24px;
+  }
+}
+
+.rightIcons {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  font-family: Mont-Bold, sans-serif;
+
+  padding-left: 16px;
+  margin: 0;
+
+  @include on-desctop {
+    gap: 64px;
+  }
+}
+
+.link.active::after {
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: $light-color;
+  bottom: 0;
+  right: 0;
+}
+
+.link.active {
+  color: $light-color;
+}
+
+.link {
+  text-transform: uppercase;
+  color: $light-gray-color;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  padding-block: 18px;
+  position: relative;
+
+  @include on-desctop {
+    padding-block: 26px;
+  }
+}
+
+.rightContent {
+  display: flex;
+  margin-left: auto;
+}
