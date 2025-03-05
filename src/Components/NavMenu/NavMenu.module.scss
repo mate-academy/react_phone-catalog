@@ -1,0 +1,88 @@
+@import '../../style/main';
+
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &.onMobile {
+    display: flex;
+    margin: 24px 16px 0;
+    justify-content: center;
+
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+    &.onMobile {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    list-style: none;
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+
+    &:first-child {
+      margin-left: 16px;
+
+      @include on-desctop {
+        margin-left: 24px;
+      }
+    }
+
+    &:not(:first-child) {
+      margin-left: 32px;
+
+      @include on-desctop {
+        margin-left: 64px;
+      }
+    }
+
+    &.onMobile {
+      margin: 0;
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+
+  }
+
+  &__link {
+    color: #75767F;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    @include hover(color, $text-color);
+
+    &::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-bottom: 2px solid $text-color;
+      border-radius: 4px;
+      transform: scale(0);
+      transition: transform 0.3s;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
