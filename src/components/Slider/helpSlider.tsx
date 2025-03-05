@@ -10,67 +10,82 @@ const images = [
 
 export const Slider: React.FC = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [currentShift, setCurrentShift] = useState(0);
+  const [sliderWidth, setSliderWidth] = useState(0);
+  const maxShift = (images.length - 1) * sliderWidth;
 
   const startX = useRef<number | null>(null);
   const endX = useRef<number | null>(null);
 
-  const [currentImg, setCurrentImg] = useState(0);
+  useEffect(() => {
+    setCurrentShift(0);
+  }, [sliderWidth]);
 
   useEffect(() => {
+    const updateWidth = () => {
+      if (sliderRef.current) {
+        const { width } = sliderRef.current.getBoundingClientRect();
+
+        const newSliderWidth = width;
+
+        setCurrentShift(prevShift => {
+          const currentIndex = Math.round(prevShift / sliderWidth) || 0;
+
+          return currentIndex * newSliderWidth;
+        });
+
+        setSliderWidth(newSliderWidth);
+      }
+    };
+
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+
+    return () => window.removeEventListener('resize', updateWidth);
+  }, [sliderWidth]);
+
+  useEffect(() => {
+    if (!sliderWidth) {
+      return;
+    }
+
     const interval = setInterval(() => {
-      setCurrentImg(prevImg => (prevImg >= 2 ? 0 : prevImg + 1));
+      setCurrentShift(prevShift =>
+        prevShift >= maxShift ? 0 : prevShift + sliderWidth,
+      );
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    setCurrentImg(0);
-  }, []);
-
-  // useEffect(() => {
-  //   const updateWidth = () => {
-  //     if (sliderRef.current) {
-  //       const { width } = sliderRef.current.getBoundingClientRect();
-
-  //       const newSliderWidth = width;
-
-  //       setCurrentShift(prevShift => {
-  //         const currentIndex = Math.round(prevShift / sliderWidth) || 0;
-
-  //         return currentIndex * newSliderWidth;
-  //       });
-
-  //       setSliderWidth(newSliderWidth);
-  //     }
-  //   };
-
-  //   updateWidth();
-  //   window.addEventListener('resize', updateWidth);
-
-  //   return () => window.removeEventListener('resize', updateWidth);
-  // }, [sliderWidth]);
-
-  // useEffect(() => {
-  //   if (!sliderWidth) {
-  //     return;
-  //   }
-
-  //   const interval = setInterval(() => {
-  //     setCurrentShift(prevShift =>
-  //       prevShift >= maxShift ? 0 : prevShift + sliderWidth,
-  //     );
-  //   }, 5000);
-
-  //   return () => clearInterval(interval);
-  // }, [sliderWidth, maxShift]);
+  }, [sliderWidth, maxShift]);
 
   const handleNext = (): void => {
-    setCurrentImg(prevImg => (prevImg >= 2 ? 0 : prevImg + 1));
+    if (!sliderWidth) {
+      return;
+    }
+
+    setCurrentShift(prevShift =>
+      prevShift >= maxShift ? 0 : prevShift + sliderWidth,
+    );
   };
 
   const handlePrev = (): void => {
-    setCurrentImg(prevImg => (prevImg <= 0 ? 2 : prevImg - 1));
+    if (!sliderWidth) {
+      return;
+    }
+
+    setCurrentShift(prevShift =>
+      prevShift === 0 ? maxShift : prevShift - sliderWidth,
+    );
+  };
+
+  const handleMiddle = (): void => {
+    if (!sliderWidth) {
+      return;
+    }
+
+    const middleShift = Math.floor((images.length - 1) / 2) * sliderWidth;
+
+    setCurrentShift(middleShift);
   };
 
   const handleTouchStart = (e: React.TouchEvent): void => {
@@ -111,23 +126,7 @@ export const Slider: React.FC = () => {
           onClick={handlePrev}
         ></button>
         <div ref={sliderRef} className="slider__images">
-          <div className="slider__images__container">
-            {/* {screenWidth < 640 ? () : ()} */}
-            {images.map(image => (
-              <div
-                className="slider__images__img-box"
-                key={image}
-                style={{ transform: `translateX(-${currentImg * 100}%)` }}
-              >
-                <img
-                  className="slider__img"
-                  src={image}
-                  alt={`photo ${currentImg}`}
-                />
-              </div>
-            ))}
-          </div>
-          {/* <ul
+          <ul
             className="slider__list"
             style={{
               transition: `transform 300ms ease-in-out`,
@@ -143,7 +142,7 @@ export const Slider: React.FC = () => {
                 />
               </li>
             ))}
-          </ul> */}
+          </ul>
         </div>
         <button
           className="slider__side-button slider__side-button--right icon button"
@@ -151,27 +150,24 @@ export const Slider: React.FC = () => {
         ></button>
       </div>
       <div className="slider__buttons">
-        {[0, 1, 2].map(digit => (
-          <button
-            key={digit}
-            className={classNames('slider__button', {
-              'is-active': currentImg === digit,
-            })}
-            onClick={() => setCurrentImg(digit)}
-          ></button>
-        ))}
-        {/* <button
+        <button
+          className={classNames('slider__button', {
+            'is-active': currentShift === 0,
+          })}
+          onClick={handlePrev}
+        ></button>
+        <button
           className={classNames('slider__button slider__button--middle', {
-            'is-active': currentImg === 1,
+            'is-active': currentShift === sliderWidth,
           })}
           onClick={handleMiddle}
         ></button>
         <button
           className={classNames('slider__button', {
-            'is-active': currentImg === 2,
+            'is-active': currentShift === maxShift,
           })}
           onClick={handleNext}
-        ></button> */}
+        ></button>
       </div>
     </div>
   );

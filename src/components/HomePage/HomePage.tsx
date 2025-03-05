@@ -11,6 +11,7 @@ import { setTabletsAsync } from '../../features/tabletsSlice';
 import { setAccessoriesAsync } from '../../features/accessoriesSlice';
 import { translate } from '../../utils/translate';
 import { LangContext } from '../../context/LangContext';
+// import { Slider2 } from '../Slider2/Slider2';
 
 export const HomePage = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);
@@ -49,6 +50,7 @@ export const HomePage = () => {
           <h1 className="section__title section__title--main">
             {translate('homePage.title', lang)}
           </h1>
+          {/* <Slider2 /> */}
           <Slider />
         </section>
         <section className="section section__new-models" id="new-models">
