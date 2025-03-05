@@ -13,10 +13,14 @@ interface Props {
 export const ProductItem: React.FC<Props> = ({
   product,
   WithAdditionalPrice = false,
-  onClick,
+  // onClick,
 }) => {
   return (
-    <NavLink to="/phones/" className="product__elements" onClick={onClick}>
+    <NavLink
+      to={`/phones/${product.name}`}
+      className="product__elements"
+      // onClick={onClick}
+    >
       <div className="product__img-container">
         <img
           src={product.image}

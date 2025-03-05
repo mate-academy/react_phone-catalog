@@ -101,12 +101,11 @@
   }
 }
 
-// .close
-// {
-//   border: 1px #323542 solid;
-//   display: none;
+.close{
+  border: 1px #323542 solid;
+  display: none;
 
-//   @include onMobile{
-//     display: none;
-//   }
-// }
+  @include onMobile{
+    display: none;
+  }
+}

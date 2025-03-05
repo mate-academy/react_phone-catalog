@@ -59,21 +59,21 @@ export const Navbar: React.FC<NavbarProps> = ({
             </NavLink>
 
             {menuIsOpen ? (
-              <NavLink
+              <button
                 className="logo menu close"
-                to="/close"
+                // to="/close"
                 onClick={setMenuIsClose}
               >
                 <img src={close} alt="close" />
-              </NavLink>
+              </button>
             ) : (
-              <NavLink
+              <div
                 className={`logo menu ${menuIsOpen && 'closeMenu'}`}
-                to="/menu"
+                // to="/menu"
                 onClick={setMenuIsOpen}
               >
                 <img src={menu} alt="menu" />
-              </NavLink>
+              </div>
             )}
           </div>
         </div>

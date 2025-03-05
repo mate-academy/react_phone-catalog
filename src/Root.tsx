@@ -12,6 +12,8 @@ import { HomePage } from './components/HomePage/HomePage';
 import { PageNotFound } from './components/PageNotFound';
 import { PhonesPage } from './components/PhonePage/PhonePage';
 import { TabletsPage } from './components/TabletPage';
+// eslint-disable-next-line max-len
+import { ProductInformation } from './components/ProductInformation/ProductInformation';
 // import { Sidebar } from './components/Sidebar';
 
 export const Root = () => {
@@ -23,6 +25,7 @@ export const Root = () => {
           <Route path="home" element={<Navigate to="/" replace />} />
           <Route path="phones">
             <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<ProductInformation />} />
           </Route>
           <Route path="tablets">
             <Route index element={<TabletsPage />} />

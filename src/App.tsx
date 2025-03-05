@@ -7,13 +7,12 @@ import { Footer } from './components/Footer/Footer';
 
 export const App = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [menuIsClose, setMenuIsClose] = useState(false);
 
   return (
     <div className="App">
       <Navbar
         setMenuIsOpen={() => setMenuIsOpen(true)}
-        setMenuIsClose={() => setMenuIsClose(true)}
+        setMenuIsClose={() => setMenuIsOpen(false)}
         menuIsOpen={menuIsOpen}
       />
 
