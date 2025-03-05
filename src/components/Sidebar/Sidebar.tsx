@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../../image/logo.svg';
 import Favourites from '../../../image/heart.svg';
 import cart from '../../../image/shopping.svg';
-import close from '../../../image/close.svg';
+// import close from '../../../image/close.svg';
 import React from 'react';
 import './Sidebar.scss';
 import classNames from 'classnames';
@@ -33,10 +33,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
 
           <div className="buttons">
-            <NavLink className="logo close" to="/close" onClick={setMenuIsOpen}>
-              <img src={close} alt="close" />
-            </NavLink>
-
             {/* знизу */}
             <NavLink className="logo likes" to="/favourites">
               <img src={Favourites} alt="heart" />
@@ -50,19 +46,31 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </div>
       <div className="sidebar__menu">
         <nav className="sidebar-brand">
-          <NavLink className={getLinkActive} to="/">
+          <NavLink className={getLinkActive} to="/" onClick={setMenuIsOpen}>
             Home
           </NavLink>
 
-          <NavLink className={getLinkActive} to="/phones">
+          <NavLink
+            className={getLinkActive}
+            to="/phones"
+            onClick={setMenuIsOpen}
+          >
             Phones
           </NavLink>
 
-          <NavLink className={getLinkActive} to="/tablets">
+          <NavLink
+            className={getLinkActive}
+            to="/tablets"
+            onClick={setMenuIsOpen}
+          >
             Tablets
           </NavLink>
 
-          <NavLink className={getLinkActive} to="/accessories">
+          <NavLink
+            className={getLinkActive}
+            to="/accessories"
+            onClick={setMenuIsOpen}
+          >
             Accessories
           </NavLink>
         </nav>

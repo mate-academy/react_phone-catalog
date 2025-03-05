@@ -5,12 +5,19 @@ import logo from '../../../image/logo.svg';
 import Favourites from '../../../image/heart.svg';
 import cart from '../../../image/shopping.svg';
 import menu from '../../../image/menu.svg';
+import close from '../../../image/close.svg';
 
 interface NavbarProps {
   setMenuIsOpen: () => void;
+  menuIsOpen: boolean;
+  setMenuIsClose: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ setMenuIsOpen }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  setMenuIsOpen,
+  menuIsOpen,
+  setMenuIsClose,
+}) => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-color-white-lighter': isActive });
 
@@ -51,9 +58,23 @@ export const Navbar: React.FC<NavbarProps> = ({ setMenuIsOpen }) => {
               <img src={cart} alt="shopping" />
             </NavLink>
 
-            <NavLink className="logo menu" to="/menu" onClick={setMenuIsOpen}>
-              <img src={menu} alt="menu" />
-            </NavLink>
+            {menuIsOpen ? (
+              <NavLink
+                className="logo menu close"
+                to="/close"
+                onClick={setMenuIsClose}
+              >
+                <img src={close} alt="close" />
+              </NavLink>
+            ) : (
+              <NavLink
+                className={`logo menu ${menuIsOpen && 'closeMenu'}`}
+                to="/menu"
+                onClick={setMenuIsOpen}
+              >
+                <img src={menu} alt="menu" />
+              </NavLink>
+            )}
           </div>
         </div>
       </nav>
