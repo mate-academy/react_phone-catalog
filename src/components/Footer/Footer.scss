@@ -5,27 +5,46 @@
 }
 
 .footer__container {
-  align-items: center;
-  justify-content: space-between;
-  display: flex;
   height: 257px;
+  border-top: 1px solid #3b3e4a;
+  // margin: 32px 16px 0 16px;
 
-  @include onDesktop {
+  @include onTablet {
     height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
 .footer__logo {
-  padding: 32px 0 32px;
+  margin: 32px 0 16px 16px;
   align-items: center;
   justify-content: space-between;
   display: flex;
+
+  @include onTablet{
+    margin: 32px 0 32px 32px;
+  }
 }
 
 .footer-brand {
-  gap: 106px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 32px 0 0 16px;
+
+  @include onTablet {
+    margin: 0;
+    flex-direction: row;
+    gap: 13px;
+    justify-content: space-between;
+  }
+
+  @include onDesktop{
+    gap: 106px
+  }
 }
 
 .footer-item {
@@ -42,13 +61,18 @@
 
 .footer__button {
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   display: flex;
-  margin-right: 32px;
+  margin-top: 32px;
   gap: 16px;
+
+  @include onTablet {
+    margin: 0 32px 0 0;
+    justify-content: space-between;
+  }
 }
 
-.footer__buttonsTitle{
+.footer__buttonsTitle {
   font-family: Mont-SemiBold, sans-serif;
   font-weight: 700;
   font-size: 12px;
@@ -57,7 +81,7 @@
 }
 
 .footer_but {
-  color: #F1F2F9;
+  color: #f1f2f9;
   width: 32px;
   height: 32px;
   background-color: #323542;

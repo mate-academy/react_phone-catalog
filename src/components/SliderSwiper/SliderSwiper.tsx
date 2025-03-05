@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-len
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
@@ -8,15 +9,19 @@ import './SliderSwiper.scss';
 import { useMediaQuery } from 'react-responsive';
 
 const desktopImages = [
-  '/img/banner-iphone.png',
-  '/img/banner-tablets.png',
-  '/img/banner-phones.png',
+  'https://taniavozniuk.github.io/react_phone-catalog2.0/img/banner-iphone.png',
+  // eslint-disable-next-line max-len
+  'https://taniavozniuk.github.io/react_phone-catalog2.0/img/banner-tablets.png',
+  'https://taniavozniuk.github.io/react_phone-catalog2.0/img/banner-phones.png',
 ];
 
 const mobileImages = [
-  '/img/banner-iphone-mobver.png',
-  '/img/banner-tablets-mobver.png',
-  '/img/banner-phones-mobver.png',
+  // eslint-disable-next-line max-len
+  'https://taniavozniuk.github.io/react_phone-catalog2.0/img/banner-iphone-mobver.png',
+  // eslint-disable-next-line max-len
+  'https://taniavozniuk.github.io/react_phone-catalog2.0/img/banner-tablets-mobver.png',
+  // eslint-disable-next-line max-len
+  'https://taniavozniuk.github.io/react_phone-catalog2.0/img/banner-phones-mobver.png',
 ];
 
 export const SliderSwiper = () => {

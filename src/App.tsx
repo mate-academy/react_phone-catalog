@@ -3,7 +3,7 @@ import './App.scss';
 import { Navbar } from './components/Navbar/Navbar';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { useState } from 'react';
-// import { Footer } from './components/Footer/Footer';
+import { Footer } from './components/Footer/Footer';
 
 export const App = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -23,9 +23,9 @@ export const App = () => {
         </div>
       </div>
 
-      {/* <div className="footer__wrapper">
+      <div className="footer__wrapper">
         <Footer />
-      </div> */}
+      </div>
     </div>
   );
 };

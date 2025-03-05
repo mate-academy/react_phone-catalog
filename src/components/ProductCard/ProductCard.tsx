@@ -2,21 +2,17 @@ import React, { useEffect, useState } from 'react';
 // import { fetchProducts } from '../../utils/api';
 import { Product } from '../../types/typeRpoduct';
 import './ProductCard.scss';
-
 import { ProductItem } from '../ProductItem/ProductItem';
-
 interface Props {
   products: Product[];
   WithAdditionalPrice?: boolean;
 }
-
 export const ProductCard: React.FC<Props> = ({
   products,
   WithAdditionalPrice = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(4);
-
   const updateItemsPerPage = () => {
     if (window.innerWidth <= 480) {
       setItemsPerPage(2);
@@ -29,7 +25,6 @@ export const ProductCard: React.FC<Props> = ({
 
   useEffect(() => {
     updateItemsPerPage();
-
     window.addEventListener('resize', updateItemsPerPage);
 
     return () => {
@@ -70,7 +65,6 @@ export const ProductCard: React.FC<Props> = ({
           </button>
         </div>
       </div>
-
       <div className="product__cards">
         {products
           .slice(currentIndex, currentIndex + itemsPerPage)

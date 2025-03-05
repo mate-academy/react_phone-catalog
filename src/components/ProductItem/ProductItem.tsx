@@ -7,14 +7,16 @@ import './ProductItem.scss';
 interface Props {
   product: Product;
   WithAdditionalPrice?: boolean;
+  onClick?: () => void;
 }
 
 export const ProductItem: React.FC<Props> = ({
   product,
   WithAdditionalPrice = false,
+  onClick,
 }) => {
   return (
-    <div className="product__elements">
+    <NavLink to="/phones/" className="product__elements" onClick={onClick}>
       <div className="product__img-container">
         <img
           src={product.image}
@@ -57,6 +59,6 @@ export const ProductItem: React.FC<Props> = ({
           <img src={like} alt="like" />
         </NavLink>
       </div>
-    </div>
+    </NavLink>
   );
 };

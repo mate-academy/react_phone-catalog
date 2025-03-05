@@ -1,12 +1,15 @@
 @import '../../utils/mixins';
 
-// .header{
-//   height: 64px;
-
-//   @include onMobile{
-//     height: 48px;
-//   }
-// }
+.header {
+  border: 1px #323542 solid;
+  background-color: #0f1121;
+  // фіксований хедер
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
 
 .container {
   display: flex;
@@ -16,8 +19,8 @@
   margin: 0 auto;
   height: 48px;
 
-  @include onDesktop{
-    height: 64px ;
+  @include onDesktop {
+    height: 64px;
   }
 }
 
@@ -33,10 +36,6 @@
   // @include onMobile {
   //   display: none;
   // }
-}
-
-.header {
-  border: 1px #323542 solid;
 }
 
 .navbar-item {
@@ -62,14 +61,12 @@
   display: flex;
 }
 
-
 .buttons {
   // display: flex;
   // align-items: center;
   // justify-content: space-between;
   // border: 1px #323542 solid;
   display: flex;
-
 }
 
 .likes {
@@ -77,8 +74,7 @@
   border: 1px #323542 solid;
   display: none;
 
-
-  @include onDesktop{
+  @include onDesktop {
     display: flex;
   }
 }
@@ -87,18 +83,16 @@
   border: 1px #323542 solid;
   display: none;
 
-
-  @include onDesktop{
+  @include onDesktop {
     display: flex;
   }
 }
 
-.menu{
+.menu {
   border: 1px #323542 solid;
   display: none;
 
-
-  @include onMobile{
+  @include onMobile {
     display: flex;
   }
 }
@@ -107,7 +101,6 @@
 // {
 //   border: 1px #323542 solid;
 //   display: none;
-
 
 //   @include onMobile{
 //     display: none;

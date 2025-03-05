@@ -18,7 +18,7 @@ export const Footer = () => {
         aria-label="footer navigation"
       >
         <div className="footer__container">
-          <div className="logo">
+          <div className="footer__logo">
             <img src={logo} alt="Logo" />
           </div>
           <ul className="footer-brand">

@@ -1,6 +1,7 @@
 @import '../../utils/mixins';
 
 .product__elements {
+  text-decoration: none;
   background-color: #161827;
   padding: 32px;
   transition: transform 0.3s ease-in-out;
@@ -89,6 +90,10 @@
   color: #75767F;
 }
 
+.product__screenDescription{
+  text-decoration: none;
+  color: #F1F2F9;
+}
 
 .product__informationAll {
   height: 15px;

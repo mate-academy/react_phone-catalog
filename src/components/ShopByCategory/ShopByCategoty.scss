@@ -1,5 +1,5 @@
 @import '../../utils/mixins';
-
+@import '../../utils/variables.scss';
 
 .card__image{
   width: 288px;
@@ -20,11 +20,16 @@
 
 .card{
   display: flex;
-  // flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  // align-items: center;
   margin: 0 auto;
   gap: 16px;
+
+  @include onTablet{
+    flex-direction: row;
+    // flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .card__title{

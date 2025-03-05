@@ -1,27 +1,112 @@
 // import { useEffect, useRef, useState } from 'react';
-// import { ProductItem } from '../ProductItem/ProductItem';
-import { MyDropdownItems, MyDropdownSortBy } from './DropDown/DropDow';
+import { ProductItem } from '../ProductItem/ProductItem';
+import { MyDropdownItems, MyDropdownSortBy } from '../DropDown/DropDow';
 import './PhonePage.scss';
+import home from '../../../image/home.svg';
+import arrow from '../../../image/arrow.svg';
+
+import { usePhonesHooks } from './usePhonesHooks';
+import { useState } from 'react';
 
 export const PhonesPage = () => {
+  const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
+  const {
+    phones,
+    loading,
+    currentItems,
+    currentPage,
+    totalPages,
+    setCurrentPage,
+    handleItemsChange,
+    hanleSortChange,
+    // setItemPrevPage,
+  } = usePhonesHooks();
+
+  const pageNumbers = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <main className="main__phonepage">
-      <h1 className="mobile__title">Mobile phones</h1>
-      <h1 className="mobile__models">95 models</h1>
-
-      <div className="mobile__dropdown">
-        <div className="mobile__sortby">
-          <h3 className="sortby">Sort by</h3>
-          <MyDropdownSortBy />
-        </div>
-
-        <div className="mobile__items">
-          <h3 className="item__page">Items on page</h3>
-          <MyDropdownItems />
-        </div>
+      <div className="mobilelink">
+        <img src={home} alt="mobilelink__home" />
+        <span>
+          <img src={arrow} alt="mobilelink__arrow" />
+        </span>
+        <p className="mobilelink__title">
+          Phones
+          {selectedPhone && (
+            <>
+              <span>
+                <img src={arrow} alt="mobilelink__arrow" />
+              </span>
+              {selectedPhone}
+            </>
+          )}
+        </p>
       </div>
 
-      <div className="mobile__product">{/* <ProductItem /> */}</div>
+      <h1 className="mobile__title">Mobile phones</h1>
+      <h1 className="mobile__models">{`${phones.length} models`}</h1>
+
+      {!loading && (
+        <>
+          <div className="mobile__choice">
+            <div className="mobile__dropdown">
+              <div className="mobile__sortby">
+                <h3 className="sortby">Sort by</h3>
+                <MyDropdownSortBy onChange={hanleSortChange} />
+              </div>
+
+              <div className="mobile__items">
+                <h3 className="item__page">Items on page</h3>
+                <MyDropdownItems onChange={handleItemsChange} />
+              </div>
+            </div>
+
+            <div className="mobile__cards">
+              {currentItems.map(product => (
+                <ProductItem
+                  key={product.id}
+                  product={product}
+                  WithAdditionalPrice
+                  onClick={() => setSelectedPhone(product.name)}
+                />
+              ))}
+            </div>
+
+            <div className="mobile__buttons">
+              <button
+                className="mobile__buttonsbuttonPrev"
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+              >
+                &lt;
+              </button>
+              {pageNumbers.map(number => (
+                <button
+                  key={number}
+                  className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
+                  onClick={() => setCurrentPage(number)}
+                >
+                  {number}
+                </button>
+              ))}
+              <button
+                className="mobile__buttonsbuttonNext"
+                onClick={() =>
+                  setCurrentPage(prev => Math.min(prev + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+              >
+                &gt;
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </main>
   );
 };

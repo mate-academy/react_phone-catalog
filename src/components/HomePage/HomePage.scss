@@ -44,17 +44,33 @@
 }
 
 .homepage__product {
-  margin: 0 32px 0 32px;
+  margin: 0 16px 0 16px;
+
+  @include onTablet{
+    margin: 0 32px 0 32px;
+  }
 }
 
 .homepage__category {
-  margin: 0 32px 0 32px;
+  margin: 0 16px 0 16px;
+
+  @include onTablet{
+    margin: 0 32px 0 32px;
+  }
 }
 
 .homepage__Hotproduct {
-  margin: 0 32px 0 32px;
+  margin: 0 16px 0 16px;
+
+  @include onTablet{
+    margin: 0 32px 0 32px;
+  }
 }
 
 .homepage__Footer{
-  margin: 80px 0 0 0;
+  margin: 64px 0 0 0;
+
+  @include onTablet{
+    margin: 80px 0 0 0;
+  }
 }
