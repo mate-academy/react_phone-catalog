@@ -28,43 +28,6 @@ export const Slider: React.FC = () => {
     setCurrentImg(0);
   }, []);
 
-  // useEffect(() => {
-  //   const updateWidth = () => {
-  //     if (sliderRef.current) {
-  //       const { width } = sliderRef.current.getBoundingClientRect();
-
-  //       const newSliderWidth = width;
-
-  //       setCurrentShift(prevShift => {
-  //         const currentIndex = Math.round(prevShift / sliderWidth) || 0;
-
-  //         return currentIndex * newSliderWidth;
-  //       });
-
-  //       setSliderWidth(newSliderWidth);
-  //     }
-  //   };
-
-  //   updateWidth();
-  //   window.addEventListener('resize', updateWidth);
-
-  //   return () => window.removeEventListener('resize', updateWidth);
-  // }, [sliderWidth]);
-
-  // useEffect(() => {
-  //   if (!sliderWidth) {
-  //     return;
-  //   }
-
-  //   const interval = setInterval(() => {
-  //     setCurrentShift(prevShift =>
-  //       prevShift >= maxShift ? 0 : prevShift + sliderWidth,
-  //     );
-  //   }, 5000);
-
-  //   return () => clearInterval(interval);
-  // }, [sliderWidth, maxShift]);
-
   const handleNext = (): void => {
     setCurrentImg(prevImg => (prevImg >= 2 ? 0 : prevImg + 1));
   };
@@ -112,7 +75,6 @@ export const Slider: React.FC = () => {
         ></button>
         <div ref={sliderRef} className="slider__images">
           <div className="slider__images__container">
-            {/* {screenWidth < 640 ? () : ()} */}
             {images.map(image => (
               <div
                 className="slider__images__img-box"
@@ -127,23 +89,6 @@ export const Slider: React.FC = () => {
               </div>
             ))}
           </div>
-          {/* <ul
-            className="slider__list"
-            style={{
-              transition: `transform 300ms ease-in-out`,
-              transform: `translateX(-${currentShift}px)`,
-            }}
-          >
-            {images.map(image => (
-              <li className="slider__item" key={image}>
-                <img
-                  src={image}
-                  alt={`photo ${image.slice(image.lastIndexOf('/') + 1, -4)}`}
-                  className="slider__img"
-                />
-              </li>
-            ))}
-          </ul> */}
         </div>
         <button
           className="slider__side-button slider__side-button--right icon button"
@@ -160,18 +105,6 @@ export const Slider: React.FC = () => {
             onClick={() => setCurrentImg(digit)}
           ></button>
         ))}
-        {/* <button
-          className={classNames('slider__button slider__button--middle', {
-            'is-active': currentImg === 1,
-          })}
-          onClick={handleMiddle}
-        ></button>
-        <button
-          className={classNames('slider__button', {
-            'is-active': currentImg === 2,
-          })}
-          onClick={handleNext}
-        ></button> */}
       </div>
     </div>
   );
