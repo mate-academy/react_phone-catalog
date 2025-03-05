@@ -2,9 +2,9 @@ import { Category } from '../types/Category';
 import { Phone, Tablet, Accessories } from '../types/Gadget';
 import { getData } from './httpClient';
 
-export const getPhones = getData<Phone[]>('./api/phones.json');
-export const getTablets = getData<Tablet[]>('./api/tablets.json');
-export const getAccessories = getData<Accessories[]>('./api/accessories.json');
+export const getPhones = getData<Phone[]>('/phones.json');
+export const getTablets = getData<Tablet[]>('/tablets.json');
+export const getAccessories = getData<Accessories[]>('/accessories.json');
 
 const dataMap: Record<Category, Promise<(Phone | Tablet | Accessories)[]>> = {
   phones: getPhones,

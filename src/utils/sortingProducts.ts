@@ -1,7 +1,7 @@
 import { Products } from '../types/Products';
 import { getData } from './httpClient';
 
-export const getAllProducts = () => getData<Products[]>('api/products.json');
+export const getAllProducts = () => getData<Products[]>('/products.json');
 
 export const getNewProduct = async () => {
   const products = await getAllProducts();
