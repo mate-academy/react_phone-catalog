@@ -2,16 +2,16 @@ import classNames from 'classnames';
 import { NavMenu } from '../NavMenu';
 import { RightButtons } from '../RightButtons';
 import s from './BurgerMenu.module.scss';
+import { useContext } from 'react';
+import { BurgerContext } from '../../context/BurgerContext';
 
-type Props = {
-  burgerMenu?: boolean;
-};
+export const BurgerMenu = () => {
+  const { burgerMenuActivate } = useContext(BurgerContext);
 
-export const BurgerMenu: React.FC<Props> = ({ burgerMenu = false }) => {
   return (
     <div
       className={classNames(s.burger, {
-        [s.onMobile]: burgerMenu,
+        [s.onMobile]: burgerMenuActivate,
       })}
     >
       <div className={s.burger__wrapper}>

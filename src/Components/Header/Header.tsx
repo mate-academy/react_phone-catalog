@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { NavMenu } from '../NavMenu';
 import { RightButtons } from '../RightButtons';
 import s from './Header.module.scss';
@@ -7,13 +8,13 @@ export const Header = () => {
     <div className={s.header}>
       <div className={s.nav__wrapper}>
         <div className={s.nav__logo}>
-          <a href="/">
+          <Link to="/">
             <img
               src="./img/logo/NiceGadgets.svg"
               alt="logo"
               className={s.header__logo}
             />
-          </a>
+          </Link>
         </div>
 
         <NavMenu />

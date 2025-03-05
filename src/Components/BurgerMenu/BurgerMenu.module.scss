@@ -17,6 +17,8 @@
 .burger {
   height: 100vh;
   transform: translateX(101%);
+  transition: transform 0.3s ease-out;
+
   &.onMobile {
     transform: translateX(0);
   }

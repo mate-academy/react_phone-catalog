@@ -5,6 +5,6 @@ import { Header } from './Components/Header';
 export const App = () => (
   <div className="App">
     <Header />
-    <BurgerMenu burgerMenu={true} />
+    <BurgerMenu />
   </div>
 );
