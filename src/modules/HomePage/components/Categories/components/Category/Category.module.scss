@@ -144,9 +144,7 @@
 
   &-subtitle {
     margin-top: 4px;
-    font-family: Mont-Regular;
-    font-size: 14px;
-    line-height: 21px;
-    color: $secondary-color;
+    font-weight: inherit;
+    @include fz14px-lh21px;
   }
 }

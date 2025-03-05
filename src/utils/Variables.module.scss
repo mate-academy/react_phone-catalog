@@ -1,6 +1,6 @@
 // #region colors
 
-$element-color: #e2e6e9;
+$elements-color: #e2e6e9;
 $red-color: #eb5757;
 $green-color: #27ae60;
 $light-green-color: #79d5a0;
@@ -15,7 +15,7 @@ $hover-gradient: linear-gradient(to right, #891ce8, #7561fa, #e963ff);
 
 // #endregion
 
-$light-border-value: 1px solid $element-color;
+$light-border-value: 1px solid $elements-color;
 $icons-border-value: 1px solid $icons-color;
 $focus-border-value: 1px solid $green-color;
 $default-trans-dur: 300ms;
@@ -34,6 +34,6 @@ $g-gap: 16px;
   lightGreenColor: $light-green-color;
   defaultTransDur: $default-trans-dur;
   primaryColor: $primary-color;
-  elementColor: $element-color;
+  elementsColor: $elements-color;
   categoriesMt: var(--categories-mt);
 }

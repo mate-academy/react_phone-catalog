@@ -1,7 +1,7 @@
 @import '/src/App.scss';
 
 .color :last-child {
-  stroke: $element-color;
+  stroke: $elements-color;
   transition: stroke $default-trans-dur;
 }
 

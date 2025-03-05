@@ -26,10 +26,7 @@
 
     &-text {
       margin-top: 16px;
-      font-family: Mont-Regular;
-      font-size: 14px;
-      line-height: 21px;
-      color: $secondary-color;
+      @include fz14px-lh21px;
     }
   }
 

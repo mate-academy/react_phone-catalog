@@ -38,7 +38,7 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
   const [isMenuShowed, setIsMenuShowed] = useState(false);
   const [isError, setIsError] = useState<ErrorType>('');
   const [isLoading, setIsLoading] = useState(true);
-  const [isEmptiness, setIsEmptiness] = useState(false);
+  const [isFooterAbsPos, setIsFooterAbsPos] = useState(false);
   const [currentProductProps, setCurrentProductProps] =
     useState<Product | null>(null);
 
@@ -73,9 +73,12 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
   const modelOnClickHandler = (
     category: string,
     itemId: string,
-    props: Product,
+    props?: Product,
   ) => {
-    setCurrentProductProps(props);
+    if (props) {
+      setCurrentProductProps(props);
+    }
+
     setComebackLocations(locations => [...locations, location]);
     setIsLoading(true);
     navigate(`/${category}/${itemId}`);
@@ -96,7 +99,7 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
       isOnHomePage,
       isLoading,
       isError,
-      isEmptiness,
+      isFooterAbsPos,
       currentProductProps,
       MWFValueCondition,
       modelOnClickHandler,
@@ -106,7 +109,7 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
       repeatColor,
       setIsLoading,
       setIsError,
-      setIsEmptiness,
+      setIsFooterAbsPos,
       setCurrentProductProps,
     }),
     [
@@ -118,7 +121,7 @@ export const MainContextProvider: React.FC<Props> = ({ children }) => {
       isTablet,
       isLoading,
       isError,
-      isEmptiness,
+      isFooterAbsPos,
       currentProductProps,
       MWFValueCondition,
     ],

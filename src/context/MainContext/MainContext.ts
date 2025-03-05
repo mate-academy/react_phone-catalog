@@ -13,7 +13,7 @@ export const MainContext = createContext<MainContextType>({
   isOnHomePage: false,
   isLoading: false,
   isError: '',
-  isEmptiness: false,
+  isFooterAbsPos: false,
   currentProductProps: null,
   MWFValueCondition: false,
   modelOnClickHandler: () => {},
@@ -23,6 +23,6 @@ export const MainContext = createContext<MainContextType>({
   repeatColor: () => {},
   setIsLoading: () => {},
   setIsError: () => {},
-  setIsEmptiness: () => {},
+  setIsFooterAbsPos: () => {},
   setCurrentProductProps: () => {},
 });

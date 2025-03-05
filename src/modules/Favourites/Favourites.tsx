@@ -7,22 +7,22 @@ import { MainContext } from '../../context/MainContext';
 
 export const Favourites: React.FC = () => {
   const { favourites } = useContext(FavouritesContext);
-  const { setIsEmptiness, scrollToTopHandler } = useContext(MainContext);
+  const { setIsFooterAbsPos, scrollToTopHandler } = useContext(MainContext);
   const fValues = Object.values(favourites);
 
-  const emptinessCondition = fValues.length === 0;
+  const footerAbsPosCondition = fValues.length === 0;
 
   useEffect(() => {
     scrollToTopHandler(0);
   }, []);
 
   useEffect(() => {
-    if (emptinessCondition) {
-      setIsEmptiness(true);
+    if (footerAbsPosCondition) {
+      setIsFooterAbsPos(true);
     } else {
-      setIsEmptiness(false);
+      setIsFooterAbsPos(false);
     }
-  }, [emptinessCondition]);
+  }, [footerAbsPosCondition]);
 
   return (
     <section className={styles.favourites}>

@@ -8,6 +8,7 @@ import { ProductsContextProvider } from './context/ProductsContext/provider';
 import { SearchContextProvider } from './context/SearchContext/provider';
 import { CardsContextProvider } from './context/CardsContext/provider/CardsContextProvider';
 import { FavouritesContextProvider } from './context/FavouritesContext/provider';
+import { CartContextProvider } from './context/CartContext/provider';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
@@ -17,7 +18,9 @@ createRoot(document.getElementById('root') as HTMLElement).render(
           <ProductsContextProvider>
             <CardsContextProvider>
               <FavouritesContextProvider>
-                <App />
+                <CartContextProvider>
+                  <App />
+                </CartContextProvider>
               </FavouritesContextProvider>
             </CardsContextProvider>
           </ProductsContextProvider>

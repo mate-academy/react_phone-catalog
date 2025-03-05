@@ -2,14 +2,10 @@
 
 .hero-section {
   .title {
-    color: $primary-color;
     margin: 0;
     margin-inline: 16px;
     margin-top: 24px;
-    font-family: Mont-Bold;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -1%;
+    @include fz32px-lh41px;
 
     @include on-tablet {
       width: var(--container-width);

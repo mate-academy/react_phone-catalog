@@ -36,16 +36,37 @@
   gap: 8px;
 }
 
+@mixin is-active-styles {
+  pointer-events: none;
+  cursor: default;
+}
+
 @mixin is-active {
   .is-active {
-    pointer-events: none;
-    cursor: default;
+    @include is-active-styles;
+  }
+}
+
+@mixin bottom-border-on-active {
+  @include is-active;
+
+  .is-active {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+      bottom: 0;
+    }
   }
 }
 
 // #region elements
 
-@mixin nav-arrow($is-it-pagination: true) {
+@mixin nav-elements($is-it-pagination: true) {
   @if ($is-it-pagination) {
     width: 30px;
     height: 30px;
@@ -63,12 +84,13 @@
     transition: all $default-trans-dur;
   }
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     border-color: $primary-color;
   }
 
   &:enabled:active {
-    background-color: $element-color;
+    background-color: $elements-color;
   }
 
   path {
@@ -76,11 +98,31 @@
   }
 
   &:disabled {
-    border-color: $element-color;
+    border-color: $elements-color;
 
     path {
       fill: $icons-color;
     }
+  }
+}
+
+@mixin dark-button {
+  border: none;
+  height: 100%;
+  width: 100%;
+  background-color: $primary-color;
+  color: #fff;
+  font-family: Mont-Regular;
+  font-size: 14px;
+  line-height: 21px;
+
+  @include on-desktop {
+    transition: all $default-trans-dur;
+  }
+
+  &:hover,
+  &:active {
+    box-shadow: 0px 3px 13px $box-shadow-color;
   }
 }
 
@@ -92,22 +134,12 @@
   }
 
   .add {
-    border: none;
-    height: 100%;
-    width: 100%;
-    background-color: $primary-color;
-    color: #fff;
-    font-family: Mont-Regular;
-    font-size: 14px;
-    line-height: 21px;
+    @include dark-button;
+  }
 
-    @include on-desktop {
-      transition: box-shadow $default-trans-dur;
-    }
-
-    &:hover, &:active {
-      box-shadow: 0px 3px 13px $box-shadow-color;
-    }
+  .is-added {
+    @include is-active-styles;
+    background-color: $secondary-color;
   }
 
   .like {
@@ -120,7 +152,8 @@
       transition: all $default-trans-dur;
     }
 
-    &:hover, :active {
+    &:hover,
+    :active {
       border-color: $primary-color;
     }
 
@@ -157,6 +190,20 @@
   }
 }
 
+@mixin fz14px-lh21px {
+  font-family: Mont-Regular;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary-color;
+}
+
+@mixin fz22px-lh30_8px {
+  font-family: Mont-Bold;
+  font-size: 22px;
+  line-height: 30.8px;
+  color: $primary-color;
+}
+
 @mixin pd-title {
   margin: 0;
   font-size: 20px;
@@ -166,10 +213,16 @@
   font-weight: inherit;
 
   @include on-tablet {
-    font-size: 22px;
-    line-height: 30.8px;
-    font-family: Mont-Bold;
+    @include fz22px-lh30_8px;
   }
+}
+
+@mixin fz32px-lh41px {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: $primary-color;
+  font-family: Mont-Bold;
 }
 
 @mixin products-title {
@@ -203,11 +256,15 @@
 // #endregion
 // #region grid
 
-@mixin tablet-grid {
+@mixin grid-styles {
   display: grid;
-  grid-template-columns: repeat(12, $tg-column);
   column-gap: $g-gap;
   justify-content: center;
+}
+
+@mixin tablet-grid {
+  @include grid-styles;
+  grid-template-columns: repeat(12, $tg-column);
 }
 
 @mixin small-desktop-grid {

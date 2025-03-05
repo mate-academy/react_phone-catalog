@@ -35,6 +35,5 @@
 }
 
 .is-active {
-  cursor: default;
-  pointer-events: none;
+  @include is-active;
 }

@@ -2,29 +2,51 @@ import React, { useContext } from 'react';
 import styles from './BottomNav.module.scss';
 import { HeartLikeSVG } from '../../../../svgs/HeartLikeSVG';
 import { ShoppingBagSVG } from '../../../../svgs/ShoppingBagSVG';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FavouritesContext } from '../../../../context/FavouritesContext';
 import { Counter } from '../../../Counter';
+import { NavLinks } from '../../../../enums/NavLinks';
+import classNames from 'classnames';
+import { CartContext } from '../../../../context/CartContext';
 
 export const BottomNav: React.FC = () => {
   const { favourites } = useContext(FavouritesContext);
+  const { cart } = useContext(CartContext);
+
   const favouritesCondition = Object.values(favourites).length > 0;
+  const cartCondition = Object.values(cart).length > 0;
+
+  const { pathname } = useLocation();
 
   const navItems = {
-    favourites: <HeartLikeSVG key={'HeartLikeSVG'} />,
-    sss: <ShoppingBagSVG key={'ShoppingBagSVG'} />,
+    [NavLinks.favourites]: <HeartLikeSVG key={'HeartLikeSVG'} />,
+    [NavLinks.cart]: <ShoppingBagSVG key={'ShoppingBagSVG'} />,
   };
+
+  const conditions = [favouritesCondition, cartCondition];
 
   const keys = Object.keys(navItems);
   const values = Object.values(navItems);
+
+  const isActiveConditions = [
+    pathname === `/${NavLinks.favourites}`,
+    pathname === `/${NavLinks.cart}`,
+  ];
+
+  // idk which variant is more readable. This or this \src\modules\Header\components\Control\Control.tsx
 
   return (
     <nav>
       <ul className={styles['bottom-list']}>
         {keys.map((item, index) => (
           <li className={styles['bottom-item']} key={`item-${index}`}>
-            <Link to={`/${item}`} className={styles.link}>
-              {index === 0 && favouritesCondition && <Counter />}
+            <Link
+              to={`/${item}`}
+              className={classNames(styles.link, {
+                [styles['is-active']]: isActiveConditions[index],
+              })}
+            >
+              {conditions[index] && <Counter query={keys[index] as NavLinks} />}
               {values[index]}
             </Link>
           </li>

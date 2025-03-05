@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
   // #region context
 
   const { currentProduct } = useContext(ProductsContext);
-  const { isOnHomePage, isMobile, scrollToTopHandler, isEmptiness } =
+  const { isOnHomePage, isMobile, scrollToTopHandler, isFooterAbsPos } =
     useContext(MainContext);
 
   // #endregion
@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
   };
 
   const getFooterStyles = useCallback(() => {
-    if (isOnHomePage && isEmptiness) {
+    if (isOnHomePage && isFooterAbsPos) {
       return fStyles;
     }
 
@@ -44,12 +44,12 @@ export const Footer: React.FC = () => {
       return {};
     }
 
-    if (isEmptiness) {
+    if (isFooterAbsPos) {
       return fStylesOnEmptiness;
     }
 
     return fStyles;
-  }, [isOnHomePage, currentProduct, isEmptiness]);
+  }, [isOnHomePage, currentProduct, isFooterAbsPos]);
 
   // #endregion
 

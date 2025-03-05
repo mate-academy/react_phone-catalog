@@ -21,15 +21,14 @@ export const Model: React.FC<Product> = React.memo(props => {
     minWidth: isMinWidthFixedValue ? getCardWidth() : 'auto',
   };
 
+  const priceCondition = sectionTitle === HOT_PRICES_TITLE ? true : false;
+
   return (
     <div className={styles.product} style={productStyles}>
-      <FirstPart
-        props={props}
-        isPriceHot={sectionTitle === HOT_PRICES_TITLE ? true : false}
-      />
+      <FirstPart props={props} isPriceHot={priceCondition} />
       <Divider />
       <SecondPart spec={spec} />
-      <ThirdPart itemId={itemId} props={props} />
+      <ThirdPart itemId={itemId} props={props} isPriceHot={priceCondition} />
     </div>
   );
 });

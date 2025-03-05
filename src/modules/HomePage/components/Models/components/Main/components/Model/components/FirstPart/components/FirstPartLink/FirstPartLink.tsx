@@ -6,15 +6,15 @@ import { Product } from '../../../../../../../../../../../../types/CategoriesTyp
 type PickedProps = Pick<Product, 'name'>;
 
 type Props = PickedProps & {
-  firstPartProductTitle: string;
+  productTitle: string;
 };
 
 export const FirstPartLink: React.FC<Props> = React.memo(
-  ({ firstPartProductTitle, name }) => {
+  ({ productTitle, name }) => {
     return (
-      <a className={styles['product-title']} title={name}>
-        {firstPartProductTitle}
-      </a>
+      <div className={styles['product-title']} title={name}>
+        {productTitle}
+      </div>
     );
   },
 );

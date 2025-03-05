@@ -5,30 +5,55 @@ import { HeartLikeSVG } from '../../../../../../../../../../svgs/HeartLikeSVG';
 import classNames from 'classnames';
 import { FavouritesContext } from '../../../../../../../../../../context/FavouritesContext';
 import { Product } from '../../../../../../../../../../types/CategoriesTypes/Product';
+import { CartContext } from '../../../../../../../../../../context/CartContext';
+import { AddButtonTexts } from '../../../../../../../../../../enums/AddButtonTexts';
+import { CartItemType } from '../../../../../../../../../Cart/types/CartItemType';
 
 interface Props {
   itemId: string;
   props: Product;
+  isPriceHot: boolean;
 }
 
-export const ThirdPart: React.FC<Props> = React.memo(({ itemId, props }) => {
-  const { getIsIncluded, likeHandler } = useContext(FavouritesContext);
+export const ThirdPart: React.FC<Props> = React.memo(
+  ({ itemId, props, isPriceHot }) => {
+    const { getIsInFavourites, likeHandler } = useContext(FavouritesContext);
+    const { addItem, getIsInCart } = useContext(CartContext);
 
-  return (
-    <div className={styles['third-part']}>
-      <button className={styles.add}>Add to cart</button>
+    const { name, price, fullPrice, image, category } = props;
+    const requiredPrice = isPriceHot ? price : fullPrice;
+    const cartItemProps: CartItemType = {
+      title: name,
+      image,
+      fullPrice: requiredPrice,
+      pricePerItem: requiredPrice,
+      category,
+      counter: 1,
+    };
 
-      <button
-        className={classNames(styles.like, {
-          [styles['is-liked']]: getIsIncluded(itemId),
-        })}
-        style={{ minWidth: '40px' }}
-        onClick={() => likeHandler(itemId, props)}
-      >
-        <HeartLikeSVG />
-      </button>
-    </div>
-  );
-});
+    const isInCart = getIsInCart(itemId);
+
+    return (
+      <div className={styles['third-part']}>
+        <button
+          className={classNames(styles.add, { [styles['is-added']]: isInCart })}
+          onClick={() => addItem(itemId, cartItemProps)}
+        >
+          {isInCart ? AddButtonTexts.added : AddButtonTexts.add}
+        </button>
+
+        <button
+          className={classNames(styles.like, {
+            [styles['is-liked']]: getIsInFavourites(itemId),
+          })}
+          style={{ minWidth: '40px' }}
+          onClick={() => likeHandler(itemId, props)}
+        >
+          <HeartLikeSVG />
+        </button>
+      </div>
+    );
+  },
+);
 
 ThirdPart.displayName = 'ThirdPart';

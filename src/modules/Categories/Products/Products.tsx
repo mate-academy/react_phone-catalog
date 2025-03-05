@@ -19,7 +19,7 @@ interface Props {
 export const Products: React.FC<Props> = ({ query }) => {
   // #region context
 
-  const { scrollToTopHandler, setIsEmptiness } = useContext(MainContext);
+  const { scrollToTopHandler, setIsFooterAbsPos } = useContext(MainContext);
   const { products } = useContext(ProductsContext);
   const {
     pageNumber,
@@ -99,7 +99,7 @@ export const Products: React.FC<Props> = ({ query }) => {
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const emptinessCondition = filteredProducts.length === 0;
+  const footerAbsPosCondition = filteredProducts.length === 0;
 
   useEffect(() => scrollToTopHandler(0), []);
 
@@ -128,12 +128,12 @@ export const Products: React.FC<Props> = ({ query }) => {
   }, [searchPageParam, perPage]);
 
   useEffect(() => {
-    if (emptinessCondition) {
-      setIsEmptiness(true);
+    if (footerAbsPosCondition) {
+      setIsFooterAbsPos(true);
     } else {
-      setIsEmptiness(false);
+      setIsFooterAbsPos(false);
     }
-  }, [emptinessCondition]);
+  }, [footerAbsPosCondition]);
 
   // #endregion
   // #region markups
@@ -175,7 +175,7 @@ export const Products: React.FC<Props> = ({ query }) => {
 
   return (
     <section className={styles.products}>
-      {emptinessCondition ? noProductsMarkup : availableProductsMarkup}
+      {footerAbsPosCondition ? noProductsMarkup : availableProductsMarkup}
     </section>
   );
 };

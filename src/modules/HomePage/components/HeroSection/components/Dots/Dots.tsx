@@ -26,7 +26,7 @@ export const Dots: React.FC = () => {
                 background:
                   index === imgIndex
                     ? SCSSvariables.primaryColor
-                    : SCSSvariables.elementColor,
+                    : SCSSvariables.elementsColor,
               }}
             />
           </div>

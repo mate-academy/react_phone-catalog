@@ -31,10 +31,9 @@
 
     @include on-desktop {
       &:hover:not(.active) {
-        background-color: $element-color;
+        background-color: $elements-color;
       }
     }
-
 
     &:not(:last-child) {
       border-bottom: $light-border-value;

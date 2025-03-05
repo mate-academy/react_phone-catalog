@@ -12,13 +12,13 @@ export interface MainContextType {
   isOnHomePage: boolean;
   isLoading: boolean;
   isError: ErrorType;
-  isEmptiness: boolean;
+  isFooterAbsPos: boolean;
   currentProductProps: Product | null;
   MWFValueCondition: boolean;
   modelOnClickHandler: (
     category: string,
     itemId: string,
-    props: Product,
+    props?: Product,
   ) => void;
   scrollToTopHandler: (value: number) => void;
   setIsMenuShowed: (value: boolean) => void;
@@ -26,6 +26,6 @@ export interface MainContextType {
   repeatColor: (query: string, times: number) => void;
   setIsLoading: (value: boolean) => void;
   setIsError: React.Dispatch<React.SetStateAction<ErrorType>>;
-  setIsEmptiness: (value: boolean) => void;
+  setIsFooterAbsPos: (value: boolean) => void;
   setCurrentProductProps: (value: Product | null) => void;
 }

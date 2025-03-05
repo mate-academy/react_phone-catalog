@@ -19,7 +19,6 @@
 
   .bottom-item:first-child {
     border-right: $light-border-value;
-    border-bottom: 2px solid $primary-color; // if item is active
   }
 
   .link {
@@ -34,4 +33,6 @@
       width: inherit;
     }
   }
+
+  @include bottom-border-on-active;
 }

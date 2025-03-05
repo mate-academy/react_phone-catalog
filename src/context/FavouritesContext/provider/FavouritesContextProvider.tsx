@@ -34,13 +34,13 @@ export const FavouritesContextProvider: React.FC<Props> = ({ children }) => {
     localStorage.setItem(NavLinks.favourites, JSON.stringify(value));
   };
 
-  const getIsIncluded = useCallback(
+  const getIsInFavourites = useCallback(
     (itemId: string) => Object.keys(favourites).includes(itemId),
     [favourites],
   );
 
   const likeHandler = (itemId: string, props: Product) => {
-    if (getIsIncluded(itemId)) {
+    if (getIsInFavourites(itemId)) {
       removeModel(itemId);
 
       return;
@@ -54,7 +54,7 @@ export const FavouritesContextProvider: React.FC<Props> = ({ children }) => {
   const favouritesContextValue = useMemo(
     () => ({
       favourites,
-      getIsIncluded,
+      getIsInFavourites,
       likeHandler,
     }),
     [favourites],

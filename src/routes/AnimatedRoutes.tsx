@@ -15,6 +15,8 @@ import { ErrorQueries } from '../enums/ErrorsQueries';
 import { MainContext } from '../context/MainContext';
 import { Favourites } from '../modules/Favourites';
 import { MainNavLinks } from '../enums/MainNavLinks';
+import { NavLinks } from '../enums/NavLinks';
+import { Cart } from '../modules/Cart';
 
 export const AnimatedRoutes: React.FC = React.memo(() => {
   // #region context
@@ -27,7 +29,7 @@ export const AnimatedRoutes: React.FC = React.memo(() => {
     categories,
     setCurrentProduct,
   } = useContext(ProductsContext);
-  const { setIsEmptiness, isEmptiness, setCurrentProductProps } =
+  const { setIsFooterAbsPos, isFooterAbsPos, setCurrentProductProps } =
     useContext(MainContext);
   const { ymalCardIndex, setYmalCardIndex } = useContext(CardsContext);
 
@@ -52,15 +54,15 @@ export const AnimatedRoutes: React.FC = React.memo(() => {
       if (product) {
         setCurrentProduct(product);
       } else {
-        setIsEmptiness(true);
+        setIsFooterAbsPos(true);
       }
 
       return () => {
         setCurrentProduct(null);
         setCurrentProductProps(null);
 
-        if (isEmptiness) {
-          setIsEmptiness(false);
+        if (isFooterAbsPos) {
+          setIsFooterAbsPos(false);
         }
 
         if (ymalCardIndex !== 0) {
@@ -94,7 +96,8 @@ export const AnimatedRoutes: React.FC = React.memo(() => {
           </React.Fragment>
         );
       })}
-      <Route path="/favourites" element={<Favourites />} />
+      <Route path={`/${NavLinks.favourites}`} element={<Favourites />} />
+      <Route path={`/${NavLinks.cart}`} element={<Cart />} />
       <Route path="/*" element={<Error query={ErrorQueries.pageNotFound} />} />
     </Routes>
   );

@@ -8,24 +8,24 @@ import { ProductsContext } from '../../context/ProductsContext';
 import { MainContext } from '../../context/MainContext';
 
 export const HomePage: React.FC = () => {
-  const { setIsEmptiness } = useContext(MainContext);
+  const { setIsFooterAbsPos } = useContext(MainContext);
   const { products } = useContext(ProductsContext);
-  const emptinessCondition = products.length === 0;
+  const footerAbsPosCondition = products.length === 0;
 
   useEffect(() => {
-    if (emptinessCondition) {
-      setIsEmptiness(true);
+    if (footerAbsPosCondition) {
+      setIsFooterAbsPos(true);
     } else {
-      setIsEmptiness(false);
+      setIsFooterAbsPos(false);
     }
-  }, [emptinessCondition]);
+  }, [footerAbsPosCondition]);
 
   return (
     <main>
       <HeroSection />
-      {!emptinessCondition && <Models title={MODELS_TITLE} />}
+      {!footerAbsPosCondition && <Models title={MODELS_TITLE} />}
       <Categories />
-      {!emptinessCondition && <Models title={HOT_PRICES_TITLE} />}
+      {!footerAbsPosCondition && <Models title={HOT_PRICES_TITLE} />}
     </main>
   );
 };

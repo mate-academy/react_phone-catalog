@@ -2,5 +2,5 @@
 
 .arrow {
   height: 32px;
-  @include nav-arrow($is-it-pagination: false);
+  @include nav-elements($is-it-pagination: false);
 }

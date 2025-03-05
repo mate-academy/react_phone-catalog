@@ -74,10 +74,7 @@ export const FirstPart: React.FC<Props> = React.memo(
           onClick={() => modelOnClickHandler(category, itemId, props)}
         >
           <img src={`/${image}`} alt={name} className={styles.image} />
-          <FirstPartLink
-            firstPartProductTitle={firstPartProductTitle}
-            name={name}
-          />
+          <FirstPartLink productTitle={firstPartProductTitle} name={name} />
         </div>
         {firstPartMarkup}
       </div>

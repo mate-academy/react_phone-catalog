@@ -22,17 +22,12 @@
 
   .title {
     margin: 0;
-    font-size: 22px;
-    line-height: 30.8px;
-    font-family: Mont-Bold;
-    color: $primary-color;
+    @include fz22px-lh30_8px;
 
     @include on-tablet {
-      font-size: 32px;
-      line-height: 41px;
-      letter-spacing: -1%;
       height: 41px;
       grid-column: span 6;
+      @include fz32px-lh41px;
     }
 
     @include on-desktop {

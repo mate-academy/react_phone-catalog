@@ -16,7 +16,7 @@ import SCSSVariables from '/src/utils/Variables.module.scss';
 import { MainNavLinks } from '../../../../enums/MainNavLinks';
 
 export const Categories: React.FC = () => {
-  const { isEmptiness } = useContext(MainContext);
+  const { isFooterAbsPos } = useContext(MainContext);
   const { phones, tablets, accessories } = useContext(ProductsContext);
 
   // #region variables
@@ -25,7 +25,7 @@ export const Categories: React.FC = () => {
   const bcColors = [PHONES_COLOR, TABLETS_COLOR, ACCESSORIES_COLOR];
   const categoriesLhs = [phones.length, tablets.length, accessories.length];
   const links = Object.values(MainNavLinks).slice(1);
-  const cStyles: React.CSSProperties = isEmptiness
+  const cStyles: React.CSSProperties = isFooterAbsPos
     ? { marginTop: SCSSVariables.categoriesMt }
     : {};
 

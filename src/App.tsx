@@ -12,15 +12,21 @@ import { MainContext } from './context/MainContext';
 import { PageLoader } from './modules/PageLoader';
 import { ErrorQueries } from './enums/ErrorsQueries';
 import { Error } from './modules/Error';
+import { MainNavLinks } from './enums/MainNavLinks';
+import { NavLinks } from './enums/NavLinks';
 
 export const App = () => {
-  const { isMobile, isLoading, isError, isEmptiness } = useContext(MainContext);
+  const { isMobile, isLoading, isError, isFooterAbsPos } =
+    useContext(MainContext);
   const { pathname } = useLocation();
-  const showBreadcrumbs = pathname !== '/' && pathname !== '/home';
+  const showBreadcrumbs =
+    pathname !== '/' &&
+    pathname !== `/${MainNavLinks.home}` &&
+    pathname !== `/${NavLinks.cart}`;
 
   useEffect(() => {
-    document.body.style.overflowY = isEmptiness ? 'hidden' : 'auto';
-  }, [isEmptiness]);
+    document.body.style.overflowY = isFooterAbsPos ? 'hidden' : 'auto';
+  }, [isFooterAbsPos]);
 
   return (
     <div className="App">

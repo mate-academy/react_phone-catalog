@@ -3,6 +3,6 @@ import { Favourites } from './Favourites';
 
 export interface FavouritesContextType {
   favourites: Favourites;
-  getIsIncluded: (itemId: string) => boolean;
+  getIsInFavourites: (itemId: string) => boolean;
   likeHandler: (itemId: string, props: Product) => void;
 }
