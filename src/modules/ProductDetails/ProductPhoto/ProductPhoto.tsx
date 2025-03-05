@@ -16,7 +16,7 @@ export const ProductPhoto: React.FC<Props> = ({ photos }) => {
     <div className={styles['product-photo']}>
       <div className={styles['product-photo__count']}>
         <img
-          src={`/${currentImage}`}
+          src={currentImage}
           className={styles['product-photo__image']}
           alt="image"
         />
@@ -32,7 +32,7 @@ export const ProductPhoto: React.FC<Props> = ({ photos }) => {
             >
               <button className={styles['product-photo__button']}>
                 <img
-                  src={`/${img}`}
+                  src={img}
                   alt="image"
                   className={styles['product-photo__image']}
                 />
