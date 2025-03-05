@@ -37,7 +37,7 @@ export const ProductCard: React.FC<Props> = ({ products }) => {
         onClick={scrollToTop}
       >
         <img
-          src={`/${image}`}
+          src={image}
           alt={name}
           className={styles['product-card__image--phone']}
         />
