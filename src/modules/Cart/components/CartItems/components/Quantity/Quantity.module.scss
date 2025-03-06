@@ -1,17 +1,17 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .wrapper {
   display: flex;
   width: 96px;
   justify-content: space-between;
   align-items: center;
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: 21px;
 
   @include on-tablet {
     grid-column: span 3;
-    justify-self: center
+    justify-self: center;
   }
 
   @include on-desktop {

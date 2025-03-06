@@ -1,4 +1,4 @@
-@import '../../../../App.scss';
+@import '../../../../App';
 
 .nav {
   @include on-tablet {
@@ -28,7 +28,7 @@
 
     &-link {
       display: flex;
-      font-family: Mont-Bold;
+      font-family: Mont-Bold, sans-serif;
       text-decoration: none;
       text-transform: uppercase;
       color: $secondary-color;

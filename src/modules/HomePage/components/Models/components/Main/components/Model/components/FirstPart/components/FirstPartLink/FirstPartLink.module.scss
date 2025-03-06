@@ -1,4 +1,4 @@
-@import '../../../../../../../../../../../../App.scss';
+@import '../../../../../../../../../../../../App';
 
 $line-height: 21px;
 
@@ -7,7 +7,7 @@ $line-height: 21px;
   text-decoration: none;
   margin: 0;
   padding-top: 16px;
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: $line-height;
   height: $line-height * 2;

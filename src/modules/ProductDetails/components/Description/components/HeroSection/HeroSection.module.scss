@@ -1,9 +1,10 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .hero-section {
   @include on-tablet {
-    @include tablet-grid;
     margin-top: 40px;
+
+    @include tablet-grid;
   }
 
   @include on-small-desktop {
@@ -28,4 +29,3 @@
     }
   }
 }
-

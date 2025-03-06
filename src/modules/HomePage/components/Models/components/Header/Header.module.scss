@@ -1,5 +1,4 @@
-@import '../../../../../../App.scss';
-
+@import '../../../../../../App';
 
 .header {
   display: flex;
@@ -9,10 +8,12 @@
   .title {
     width: 136px;
     margin: 0;
-    @include fz22px-lh30_8px;
+
+    @include fz22px-lh30-8px;
 
     @include on-tablet {
       width: 100%;
+
       @include fz32px-lh41px;
     }
   }

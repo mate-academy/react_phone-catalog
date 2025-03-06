@@ -1,4 +1,4 @@
-@import '../../../../../../../../../../App.scss';
+@import '../../../../../../../../../../App';
 
 $gradient-trans-dur: 1000ms;
 $default-gradient: linear-gradient(to right, #fff, #fff, #fff);
@@ -24,13 +24,11 @@ $default-gradient: linear-gradient(to right, #fff, #fff, #fff);
 
   // #endregion
 
-  & {
-    height: calc(var(--button-height) + 2px);
-    width: calc(var(--button-width) + 2px);
-    border-radius: var(--button-border-radius);
-    background-color: $border-grey-color;
-    overflow: hidden;
-  }
+  height: calc(var(--button-height) + 2px);
+  width: calc(var(--button-width) + 2px);
+  border-radius: var(--button-border-radius);
+  background-color: $border-grey-color;
+  overflow: hidden;
 
   @include flex-center-center;
 
@@ -42,11 +40,11 @@ $default-gradient: linear-gradient(to right, #fff, #fff, #fff);
   .gradient {
     opacity: 0;
     box-shadow:
-      20px 0px 20px #e963ff,
-      20px 0px 20px #e963ff,
-      20px 0px 20px #e963ff,
-      20px 0px 20px #e963ff,
-      20px 0px 20px #e963ff;
+      20px 0 20px #e963ff,
+      20px 0 20px #e963ff,
+      20px 0 20px #e963ff,
+      20px 0 20px #e963ff,
+      20px 0 20px #e963ff;
     width: 100%;
     height: 100%;
     background: $hover-gradient;
@@ -59,7 +57,8 @@ $default-gradient: linear-gradient(to right, #fff, #fff, #fff);
     }
   }
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     .gradient {
       opacity: 1;
       transform: translateX(0);
@@ -67,7 +66,7 @@ $default-gradient: linear-gradient(to right, #fff, #fff, #fff);
   }
 
   .button {
-    font-family: Mont-Regular;
+    font-family: Mont-Regular, sans-serif;
     font-size: 9px;
     position: absolute;
     border: none;
@@ -89,20 +88,21 @@ $default-gradient: linear-gradient(to right, #fff, #fff, #fff);
       font-size: 15px;
     }
 
-    &:hover .button-gradient, &:active .button-gradient {
-      min-width: 600px;
-
-      @include on-desktop {
-        min-width: 1300px;
-      }
-    }
-
     &-gradient {
       background-clip: text;
       min-width: var(--button-width);
 
       @include on-desktop {
         transition: min-width $gradient-trans-dur;
+      }
+    }
+
+    &:hover .button-gradient,
+    &:active .button-gradient {
+      min-width: 600px;
+
+      @include on-desktop {
+        min-width: 1300px;
       }
     }
 

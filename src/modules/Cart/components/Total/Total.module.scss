@@ -1,4 +1,4 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .total {
   margin-top: 32px;
@@ -36,10 +36,9 @@
 
   .button {
     padding: 0;
+
     @include dark-button;
 
-    & {
-      height: 48px;
-    }
+    height: 48px;
   }
 }

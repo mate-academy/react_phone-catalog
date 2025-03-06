@@ -1,4 +1,4 @@
-@import '../../App.scss';
+@import '../../App';
 
 .footer {
   --footer-mt: 64px;
@@ -24,8 +24,9 @@
     @include on-tablet {
       height: 100%;
       width: 100%;
-      @include tablet-grid;
       align-items: center;
+      
+      @include tablet-grid;
     }
 
     @include on-small-desktop {

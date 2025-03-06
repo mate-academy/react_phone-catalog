@@ -1,4 +1,4 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .cart-items {
   display: flex;
@@ -21,6 +21,7 @@
     @include on-tablet {
       flex-wrap: nowrap;
       padding: 24px;
+
       @include tablet-grid;
     }
 

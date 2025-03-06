@@ -1,4 +1,4 @@
-@import '../../../../App.scss';
+@import '../../../../App';
 
 .item {
   // #region variables
@@ -11,27 +11,27 @@
 
   // #endregion variables
 
-  & {
-    position: relative;
-    box-sizing: border-box;
-    width: var(--item-width-height);
-    height: var(--item-width-height);
-    border-bottom: $light-border-value;
-    border-left: $light-border-value;
+  position: relative;
+  box-sizing: border-box;
+  width: var(--item-width-height);
+  height: var(--item-width-height);
+  border-bottom: $light-border-value;
+  border-left: $light-border-value;
 
-    @include on-desktop {
-      transition: all $default-trans-dur;
-    }
+  @include on-desktop {
+    transition: all $default-trans-dur;
   }
 
   @include flex-center-center;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     border-bottom-color: $primary-color;
     border-left-color: $primary-color;
   }
 
-  &:first-child:hover ~ &:last-child, &:first-child:active ~ &:last-child {
+  &:first-child:hover ~ &:last-child,
+  &:first-child:active ~ &:last-child {
     border-left-color: $primary-color;
   }
 

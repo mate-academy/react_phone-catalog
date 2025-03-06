@@ -1,10 +1,10 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .title {
   font-size: 12px;
   line-height: 15.34px;
   color: $secondary-color;
-  font-family: Mont-SemiBold;
+  font-family: Mont-SemiBold, sans-serif;
 }
 
 .wrapper {
@@ -16,7 +16,7 @@
 .item {
   box-sizing: border-box;
   cursor: pointer;
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: 21px;
   padding-inline: 8px;
@@ -28,10 +28,11 @@
   transition: all $default-trans-dur;
 }
 
-.item:hover, .is-active {
+.item:hover,
+.is-active {
   border-color: transparent;
   background-color: $primary-color;
-  color: white
+  color: white;
 }
 
 .is-active {

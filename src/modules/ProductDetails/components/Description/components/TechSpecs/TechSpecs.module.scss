@@ -1,4 +1,4 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .tech-specs {
   margin-top: 56px;
@@ -18,8 +18,8 @@
 
   .specs {
     margin-top: 30px;
+
     @include product-flex-column;
     @include spec(14px, 21px, Mont-Regular);
   }
 }
-

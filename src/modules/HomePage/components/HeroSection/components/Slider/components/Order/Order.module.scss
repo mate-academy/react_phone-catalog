@@ -1,5 +1,4 @@
-@import '../../../../../../../../App.scss';
-
+@import '../../../../../../../../App';
 
 .block {
   // #region variables
@@ -22,21 +21,19 @@
 
   // #endregion
 
-  & {
-    z-index: 1;
-    box-sizing: border-box;
-    position: absolute;
-    width: var(--block-width);
-    height: var(--block-height);
-    transition: all $default-trans-dur;
-    background-color: $darkgrey-color;
-    top: 50%;
-    padding: var(--block-padding);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  z-index: 1;
+  box-sizing: border-box;
+  position: absolute;
+  width: var(--block-width);
+  height: var(--block-height);
+  transition: all $default-trans-dur;
+  background-color: $darkgrey-color;
+  top: 50%;
+  padding: var(--block-padding);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @include on-desktop {
     border-radius: 30px;

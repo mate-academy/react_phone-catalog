@@ -1,29 +1,24 @@
-@import '../../../../../../App.scss';
+@import '../../../../../../App';
 
 .category {
   // #region variables
 
   --img-scale-value: scale(1);
-
   --img-0-width: 302px;
   --img-0-height: 357px;
   --img-0-ttranslate: translate(15%, 15%);
-
   --img-1-width: 427px;
   --img-1-height: 427px;
   --img-1-ttranslate: translate(3%, 3%);
-
   --img-2-width: 550px;
   --img-2-ttranslate: translate(9%, 15%);
 
   @include on-tablet {
     --img-0-width: 196px;
     --img-0-height: 232px;
-
     --img-1-width: 307px;
     --img-1-height: 307px;
     --img-1-ttranslate: translate(3.5%, 3%);
-
     --img-2-width: 360px;
     --img-2-ttranslate: translate(9%, 17%);
   }
@@ -32,24 +27,19 @@
     --img-0-width: 216px;
     --img-0-height: 252px;
     --img-0-ttranslate: translate(19%, 19%);
-
     --img-1-width: 314px;
     --img-1-height: 314px;
     --img-1-ttranslate: translate(6%, 6%);
-
     --img-2-width: 450px;
     --img-2-ttranslate: translate(7%, 17%);
   }
 
-
   @include on-desktop {
     --img-0-width: 350px;
     --img-0-height: 407px;
-
     --img-1-width: 550px;
     --img-1-height: 550px;
     --img-1-ttranslate: translate(5%, 6%);
-
     --img-2-width: 665px;
     --img-2-ttranslate: translate(8%, 21%);
   }
@@ -125,7 +115,7 @@
     width: fit-content;
     text-decoration: none;
     margin-top: 24px;
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, sans-serif;
     font-size: 20px;
     line-height: 25.56px;
     color: $primary-color;
@@ -145,6 +135,7 @@
   &-subtitle {
     margin-top: 4px;
     font-weight: inherit;
+
     @include fz14px-lh21px;
   }
 }

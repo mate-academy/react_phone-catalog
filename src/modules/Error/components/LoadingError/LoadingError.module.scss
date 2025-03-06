@@ -1,4 +1,4 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .loading-error {
   display: flex;
@@ -22,7 +22,7 @@
     margin: 0;
     font-size: 21px;
     font-weight: 700;
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, sans-serif;
 
     @include on-desktop {
       font-size: 32px;
@@ -31,7 +31,7 @@
 
   .reload-text {
     font-size: 14px;
-    font-family: Mont-Regular;
+    font-family: Mont-Regular, sans-serif;
     text-align: center;
     color: $secondary-color;
 

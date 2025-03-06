@@ -1,4 +1,4 @@
-@import '../../../../App.scss';
+@import '../../../../App';
 
 .link {
   display: flex;
@@ -49,10 +49,14 @@
 
 @include is-active;
 
-.item:hover::before, .item:active::before, .is-active::before {
+.item:hover::before,
+.item:active::before,
+.is-active::before {
   transform: scaleX(1) translateZ(0);
 }
 
-.item:hover .link, .item:active .link, .is-active .link {
+.is-active .link,
+.item:hover .link,
+.item:active .link {
   color: $primary-color;
 }

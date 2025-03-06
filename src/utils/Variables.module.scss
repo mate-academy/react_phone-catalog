@@ -27,6 +27,8 @@ $sdg-column: 45.25px;
 $dg-column: 28px;
 $g-gap: 16px;
 
+/* stylelint-disable */
+
 :export {
   iconsBorderValue: $icons-border-value;
   focusBorderValue: $focus-border-value;
@@ -37,3 +39,5 @@ $g-gap: 16px;
   elementsColor: $elements-color;
   categoriesMt: var(--categories-mt);
 }
+
+/* stylelint-enable */

@@ -1,7 +1,7 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .price {
-  @include fz22px-lh30_8px;
+  @include fz22px-lh30-8px;
 
   @include on-tablet {
     grid-column: span 2;

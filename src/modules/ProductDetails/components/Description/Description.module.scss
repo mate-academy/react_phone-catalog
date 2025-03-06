@@ -1,9 +1,10 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .title {
   margin: 0;
   margin-top: 16px;
-  @include fz22px-lh30_8px;
+
+  @include fz22px-lh30-8px;
 
   @include on-tablet {
     @include fz32px-lh41px;

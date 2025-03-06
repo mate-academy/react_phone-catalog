@@ -1,4 +1,4 @@
-@import '../../../../../../App.scss';
+@import '../../../../../../App';
 
 .dots {
   margin-top: 8px;
@@ -7,6 +7,7 @@
   .dot-wrapper {
     width: 24px;
     height: 24px;
+
     @include flex-center-center;
   }
 

@@ -1,4 +1,4 @@
-@import '../../../../App.scss';
+@import '../../../../App';
 
 .to-top {
   display: flex;
@@ -16,7 +16,7 @@
   }
 
   .text {
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, sans-serif;
     color: $secondary-color;
     font-size: 12px;
     line-height: 15.34px;
@@ -35,6 +35,7 @@
   .button {
     box-sizing: border-box;
     height: 32px;
+
     @include nav-elements($is-it-pagination: false);
   }
 }

@@ -1,4 +1,4 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .back {
   margin-top: 25px;
@@ -12,7 +12,7 @@
 
   &-text {
     cursor: pointer;
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, sans-serif;
     font-size: 12px;
     line-height: 15.34px;
     color: $secondary-color;

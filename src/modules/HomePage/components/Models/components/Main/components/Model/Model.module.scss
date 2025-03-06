@@ -1,4 +1,4 @@
-@import '../../../../../../../../App.scss';
+@import '../../../../../../../../App';
 
 .product {
   box-sizing: border-box;
@@ -6,5 +6,6 @@
   outline-offset: -1px;
   height: var(--product-height);
   padding: 32px;
+
   @include product-flex-column;
 }

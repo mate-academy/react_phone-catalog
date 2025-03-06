@@ -1,9 +1,9 @@
-@import '../../App.scss';
+@import '../../App';
 
 .menu {
   height: calc(100vh - var(--header-height));
   width: 100vw;
-  font-family: Mont-Bold;
+  font-family: Mont-Bold, sans-serif;
   position: fixed;
   transition: transform $default-trans-dur;
   background-color: #fff;

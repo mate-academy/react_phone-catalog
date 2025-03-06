@@ -1,4 +1,4 @@
-@import '../../../../../../App.scss';
+@import '../../../../../../App';
 
 .slider-container {
   @include on-tablet {
@@ -29,13 +29,11 @@
 
   // #endregion
 
-  & {
-    position: relative;
-    width: var(--slider-width);
-    display: flex;
-    justify-content: flex-start;
-    overflow: hidden;
-  }
+  position: relative;
+  width: var(--slider-width);
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
 
   @include on-tablet {
     height: var(--slider-height);

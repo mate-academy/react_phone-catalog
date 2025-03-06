@@ -1,9 +1,9 @@
-@import '../../../../../../../../../../App.scss';
+@import '../../../../../../../../../../App';
 
 .third-part {
   height: 40px;
   display: flex;
   gap: 8px;
+
   @include shop-buttons;
 }
-

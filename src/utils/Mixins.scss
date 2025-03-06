@@ -1,4 +1,4 @@
-@import './Variables.module.scss';
+@import './Variables.module';
 
 // #region media
 
@@ -67,17 +67,17 @@
 // #region elements
 
 @mixin nav-elements($is-it-pagination: true) {
-  @if ($is-it-pagination) {
+  @if $is-it-pagination {
     width: 30px;
     height: 30px;
   } @else {
     width: 32px;
   }
 
-  border: none;
   padding: 0;
   background-color: #fff;
   border: 1px solid $icons-color;
+
   @include flex-center-center;
 
   @include on-desktop {
@@ -87,10 +87,6 @@
   &:hover,
   &:active {
     border-color: $primary-color;
-  }
-
-  &:enabled:active {
-    background-color: $elements-color;
   }
 
   path {
@@ -104,6 +100,10 @@
       fill: $icons-color;
     }
   }
+
+  &:enabled:active {
+    background-color: $elements-color;
+  }
 }
 
 @mixin dark-button {
@@ -112,7 +112,7 @@
   width: 100%;
   background-color: $primary-color;
   color: #fff;
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: 21px;
 
@@ -122,7 +122,7 @@
 
   &:hover,
   &:active {
-    box-shadow: 0px 3px 13px $box-shadow-color;
+    box-shadow: 0 3px 13px $box-shadow-color;
   }
 }
 
@@ -138,14 +138,16 @@
   }
 
   .is-added {
-    @include is-active-styles;
     background-color: $secondary-color;
+
+    @include is-active-styles;
   }
 
   .like {
     border: 1px solid $icons-color;
     background-color: #fff;
     min-width: 40px;
+
     @include flex-center-center;
 
     @include on-desktop {
@@ -191,14 +193,14 @@
 }
 
 @mixin fz14px-lh21px {
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: 21px;
   color: $secondary-color;
 }
 
-@mixin fz22px-lh30_8px {
-  font-family: Mont-Bold;
+@mixin fz22px-lh30-8px {
+  font-family: Mont-Bold, sans-serif;
   font-size: 22px;
   line-height: 30.8px;
   color: $primary-color;
@@ -209,11 +211,11 @@
   font-size: 20px;
   line-height: 25.56px;
   color: $primary-color;
-  font-family: Mont-SemiBold;
+  font-family: Mont-SemiBold, sans-serif;
   font-weight: inherit;
 
   @include on-tablet {
-    @include fz22px-lh30_8px;
+    @include fz22px-lh30-8px;
   }
 }
 
@@ -222,7 +224,7 @@
   line-height: 41px;
   letter-spacing: -1%;
   color: $primary-color;
-  font-family: Mont-Bold;
+  font-family: Mont-Bold, sans-serif;
 }
 
 @mixin products-title {
@@ -230,7 +232,7 @@
   margin: 0;
   margin-top: 24px;
   width: 100%;
-  font-family: Mont-Bold;
+  font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -1%;
@@ -248,7 +250,7 @@
   font-size: 14px;
   line-height: 21px;
   width: 100%;
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-weight: inherit;
   color: $secondary-color;
 }
@@ -263,8 +265,9 @@
 }
 
 @mixin tablet-grid {
-  @include grid-styles;
   grid-template-columns: repeat(12, $tg-column);
+
+  @include grid-styles;
 }
 
 @mixin small-desktop-grid {

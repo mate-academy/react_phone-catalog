@@ -1,10 +1,11 @@
-@import '../../../../App.scss';
+@import '../../../../App';
 
 .hero-section {
   .title {
     margin: 0;
     margin-inline: 16px;
     margin-top: 24px;
+
     @include fz32px-lh41px;
 
     @include on-tablet {

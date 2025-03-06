@@ -1,8 +1,8 @@
-@import '../../../../../../../../../../App.scss';
+@import '../../../../../../../../../../App';
 
 .title {
   margin: 0;
-  font-family: Mont-Bold;
+  font-family: Mont-Bold, sans-serif;
   background: $hover-gradient;
   color: transparent;
   background-clip: text;
@@ -36,7 +36,7 @@
 }
 
 .subtitle {
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-size: 9px;
   color: $grey-color;
   margin-top: 7px;

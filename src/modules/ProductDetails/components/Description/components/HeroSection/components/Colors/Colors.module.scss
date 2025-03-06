@@ -1,10 +1,10 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .header {
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
-  font-family: Mont-SemiBold;
+  font-family: Mont-SemiBold, sans-serif;
 
   @include on-tablet {
     margin-top: 0;
@@ -14,7 +14,8 @@
     position: relative;
   }
 
-  .title, .id {
+  .title,
+  .id {
     font-size: 12px;
     line-height: 15.34px;
   }

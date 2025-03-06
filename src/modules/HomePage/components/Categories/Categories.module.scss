@@ -1,4 +1,4 @@
-@import '../../../../App.scss';
+@import '../../../../App';
 
 .categories {
   margin-top: calc(
@@ -9,6 +9,7 @@
 
   @include on-tablet {
     width: 100%;
+
     @include tablet-grid;
   }
 
@@ -22,11 +23,13 @@
 
   .title {
     margin: 0;
-    @include fz22px-lh30_8px;
+
+    @include fz22px-lh30-8px;
 
     @include on-tablet {
       height: 41px;
       grid-column: span 6;
+
       @include fz32px-lh41px;
     }
 
@@ -43,6 +46,7 @@
 
     @include on-tablet {
       grid-column: 1 / -1;
+
       @include tablet-grid;
     }
 

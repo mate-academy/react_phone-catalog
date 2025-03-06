@@ -1,9 +1,9 @@
-@import '../../../../../../../../../../App.scss';
+@import '../../../../../../../../../../App';
 
 .second-part {
   height: 77px;
-  @include product-flex-column;
   justify-content: center;
 
+  @include product-flex-column;
   @include spec;
 }

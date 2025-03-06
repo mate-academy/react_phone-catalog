@@ -1,4 +1,4 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 $trans-dur: 500ms;
 
@@ -32,7 +32,6 @@ $trans-dur: 500ms;
       }
     }
   }
-
 
   svg {
     height: 20px;

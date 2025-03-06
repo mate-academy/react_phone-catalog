@@ -1,9 +1,9 @@
-@import '../../../../../App.scss';
+@import '../../../../../App';
 
 .wrapper {
   position: relative;
   margin-top: 32px;
-  font-family: Mont-SemiBold;
+  font-family: Mont-SemiBold, sans-serif;
 
   .content-wrapper {
     width: fit-content;

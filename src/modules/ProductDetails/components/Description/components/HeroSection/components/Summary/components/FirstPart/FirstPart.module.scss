@@ -1,4 +1,4 @@
-@import '/src/App.scss';
+@import '/src/App';
 
 .first-part {
   display: flex;
@@ -14,6 +14,6 @@
   font-size: 22px;
   line-height: 28.12px;
   text-decoration: line-through;
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   color: $secondary-color;
 }
