@@ -1,0 +1,61 @@
+.productInfo{
+  margin: 0 32px;
+}
+
+.productInfolink{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px 0;
+}
+
+.productInfolink__title{
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #75767F;
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.productInfolink__back{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.productInfolink__backTilte{
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #75767F;
+  align-items: center;
+  display: flex;
+}
+
+.productInfo__line{
+  border: 1px solid #3B3E4A
+}
+
+.productInfo__content{
+  margin: 32px 0 0 0;
+}
+
+.productInfo__itemTitle{
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  color: #F1F2F9;
+}
+
+.productInfo__desctiption{
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #75767F;
+}

@@ -85,13 +85,14 @@
 
 .mobile__cards{
   display: grid;
-  gap: 16px;
+  gap: 40px;
   justify-content: center;
   margin-top: 24px;
   grid-template-columns: 1fr;
 
   @include onDesktop{
     grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    gap: 40px 16px;
   }
 
   @include onTablet{

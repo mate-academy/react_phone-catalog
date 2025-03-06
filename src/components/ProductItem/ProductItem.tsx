@@ -56,7 +56,7 @@ export const ProductItem: React.FC<Props> = ({
       </div>
 
       <div className="buttons">
-        <NavLink className="button__add" to="/?">
+        <NavLink className="button__add" to="/...">
           Add to cart
         </NavLink>
         <NavLink className="buttons__like" to="/?">

@@ -21,9 +21,6 @@ export interface ProductDetails {
   processor: string;
   ram: string;
   cell: string[];
-}
-
-export interface Phone extends ProductDetails {
   camera: string;
   zoom: string;
 }
