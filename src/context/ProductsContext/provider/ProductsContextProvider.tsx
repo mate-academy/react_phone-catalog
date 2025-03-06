@@ -52,7 +52,7 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
   // #region functions
 
   const getCardWidth = () => {
-    const MOBILE_W = '212px';
+    const MOBILE_W = '232px';
     const TABLET_W = '237px';
     const DESKTOP_W = '248px';
 

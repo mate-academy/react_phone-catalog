@@ -22,6 +22,6 @@ export interface ProductsContextType {
   setCurrentImage: (value: string) => void;
   setComebackLocations: React.Dispatch<React.SetStateAction<CustomLocation[]>>;
   setCurrentProduct: (value: CurrentProduct | null) => void;
-  getCardWidth: () => '212px' | '237px' | '248px';
+  getCardWidth: () => '232px' | '237px' | '248px';
   getTitle: (value: string, toIndex: number) => string;
 }

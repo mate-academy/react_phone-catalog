@@ -18,6 +18,6 @@ export const ProductsContext = createContext<ProductsContextType>({
   setCurrentImage: () => {},
   setComebackLocations: () => {},
   setCurrentProduct: () => {},
-  getCardWidth: () => '212px',
+  getCardWidth: () => '232px',
   getTitle: () => '',
 });
