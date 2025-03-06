@@ -1,8 +1,9 @@
+import classNames from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './NavLink.module.scss';
-import classNames from 'classnames';
+
 import { MainNavLinks } from '../../../../enums/MainNavLinks';
+import styles from './NavLink.module.scss';
 
 interface Props {
   item: MainNavLinks;

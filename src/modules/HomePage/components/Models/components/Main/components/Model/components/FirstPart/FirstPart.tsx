@@ -2,12 +2,13 @@
 /* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useMemo } from 'react';
-import styles from './FirstPart.module.scss';
-import { MainContext } from '../../../../../../../../../../context/MainContext';
-import { FirstPartLink } from './components/FirstPartLink';
-import { ProductsContext } from '../../../../../../../../../../context/ProductsContext';
 import { useMediaQuery } from 'react-responsive';
+
+import { MainContext } from '../../../../../../../../../../context/MainContext';
+import { ProductsContext } from '../../../../../../../../../../context/ProductsContext';
 import { Product } from '../../../../../../../../../../types/CategoriesTypes/Product';
+import { FirstPartLink } from './components/FirstPartLink';
+import styles from './FirstPart.module.scss';
 
 interface Props {
   props: Product;

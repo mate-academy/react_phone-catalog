@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import styles from './Back.module.scss';
 import { useNavigate } from 'react-router-dom';
+
 import { ProductsContext } from '../../../../context/ProductsContext';
 import { LeftArrowSVG } from '../../../../svgs/LeftArrowSVG';
+import styles from './Back.module.scss';
 
 export const Back: React.FC = () => {
   const { comebackLocations, setComebackLocations } =

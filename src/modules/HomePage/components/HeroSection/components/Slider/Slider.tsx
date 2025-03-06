@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useContext, useEffect } from 'react';
-import { MainContext } from '../../../../../../context/MainContext';
-import styles from './Slider.module.scss';
-import { Swiper } from './components/Swiper';
-import { Order } from './components/Order';
 import classNames from 'classnames';
+import React, { useCallback, useContext, useEffect } from 'react';
+
+import { MainContext } from '../../../../../../context/MainContext';
 import { LeftArrow } from './components/Arrows/LeftArrow';
 import { RightArrow } from './components/Arrows/RightArrow';
+import { Order } from './components/Order';
+import { Swiper } from './components/Swiper';
+import styles from './Slider.module.scss';
 
 export const Slider: React.FC = React.memo(() => {
   const { isMobile, imgIndex, mobImgs, imgs, setImgIndex } =

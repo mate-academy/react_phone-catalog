@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
-import styles from './Cart.module.scss';
-import { Back } from '../ProductDetails/components/Back';
-import { CartItems } from './components/CartItems';
+
 import { CartContext } from '../../context/CartContext';
 import { MainContext } from '../../context/MainContext';
-import { Total } from './components/Total';
+import { Back } from '../ProductDetails/components/Back';
+import styles from './Cart.module.scss';
+import { CartItems } from './components/CartItems';
 import { EmptyCart } from './components/EmptyCart';
+import { Total } from './components/Total';
 
 export const Cart: React.FC = () => {
   // #region context

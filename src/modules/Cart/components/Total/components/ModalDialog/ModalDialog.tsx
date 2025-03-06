@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
-import styles from './ModalDialog.module.scss';
-import { Divider } from '../../../../../HomePage/components/Models/components/Main/components/Model/components/Divider';
+
 import { CartContext } from '../../../../../../context/CartContext';
 import { NavLinks } from '../../../../../../enums/NavLinks';
+import { Divider } from '../../../../../HomePage/components/Models/components/Main/components/Model/components/Divider';
+import styles from './ModalDialog.module.scss';
 
 export const ModalDialog: React.FC = () => {
   const { setCart, setIsModal } = useContext(CartContext);

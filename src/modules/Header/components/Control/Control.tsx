@@ -1,13 +1,14 @@
+import classNames from 'classnames';
 import React, { useContext } from 'react';
-import styles from './Control.module.scss';
+import { Link, useLocation } from 'react-router-dom';
+
+import { CartContext } from '../../../../context/CartContext';
+import { FavouritesContext } from '../../../../context/FavouritesContext';
+import { NavLinks } from '../../../../enums/NavLinks';
 import { HeartLikeSVG } from '../../../../svgs/HeartLikeSVG';
 import { ShoppingBagSVG } from '../../../../svgs/ShoppingBagSVG';
-import { Link, useLocation } from 'react-router-dom';
-import { NavLinks } from '../../../../enums/NavLinks';
-import { FavouritesContext } from '../../../../context/FavouritesContext';
 import { Counter } from '../../../Counter';
-import classNames from 'classnames';
-import { CartContext } from '../../../../context/CartContext';
+import styles from './Control.module.scss';
 
 export const Control: React.FC = () => {
   const { favourites } = useContext(FavouritesContext);

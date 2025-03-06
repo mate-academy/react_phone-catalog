@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { LeftArrowSVG } from '../../../../../../../../svgs/LeftArrowSVG';
+import { useNavigate } from 'react-router-dom';
+
+import { DSContext } from '../../../../../../../../context/DSContext';
 import { MainContext } from '../../../../../../../../context/MainContext';
 import { SearchContext } from '../../../../../../../../context/SearchContext';
-import { DSContext } from '../../../../../../../../context/DSContext';
+import { LeftArrowSVG } from '../../../../../../../../svgs/LeftArrowSVG';
 import styles from '../Arrow.module.scss';
-import { useNavigate } from 'react-router-dom';
 
 export const LeftArrow: React.FC = () => {
   const { pageNumber, PAGE_PARAM, setPageNumber } = useContext(DSContext);

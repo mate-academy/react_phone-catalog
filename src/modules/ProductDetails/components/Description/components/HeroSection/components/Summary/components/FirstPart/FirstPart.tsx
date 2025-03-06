@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
-import styles from './FirstPart.module.scss';
+
 import { ProductsContext } from '../../../../../../../../../../context/ProductsContext';
 import { CurrentProduct } from '../../../../../../../../../../context/ProductsContext/types/CurrentProduct';
+import styles from './FirstPart.module.scss';
 
 export const FirstPart: React.FC = () => {
   const { currentProduct } = useContext(ProductsContext);

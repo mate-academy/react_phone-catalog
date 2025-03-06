@@ -1,14 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
-import { Description } from './components/Description';
+
+import { MainContext } from '../../context/MainContext';
+import { ProductsContext } from '../../context/ProductsContext';
 import { Models } from '../HomePage/components/Models';
+import { PageLoader } from '../PageLoader';
+import { Back } from './components/Back';
+import { Description } from './components/Description';
+import { ProductNotFound } from './components/ProductNotFound';
 import { YMAL_TITLE } from './constants/ModelsTitle';
 import pdStyles from './ProductDetails.module.scss';
-import { MainContext } from '../../context/MainContext';
-import { PageLoader } from '../PageLoader';
-import { ProductsContext } from '../../context/ProductsContext';
-import { ProductNotFound } from './components/ProductNotFound';
-import { Back } from './components/Back';
 
 export const ProductDetails: React.FC = () => {
   const { currentProduct } = useContext(ProductsContext);

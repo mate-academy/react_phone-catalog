@@ -1,8 +1,9 @@
 import React from 'react';
-import styles from './Nav.module.scss';
 import { useLocation } from 'react-router-dom';
-import { NavLink } from './components/NavLink';
+
 import { MainNavLinks } from '../../enums/MainNavLinks';
+import { NavLink } from './components/NavLink';
+import styles from './Nav.module.scss';
 
 export const Nav: React.FC = () => {
   const { pathname } = useLocation();

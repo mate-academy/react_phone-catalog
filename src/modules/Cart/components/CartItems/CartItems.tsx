@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
+
 import { CartContext } from '../../../../context/CartContext';
-import styles from './CartItems.module.scss';
 import { MainContext } from '../../../../context/MainContext';
-import { LinkZone } from './components/LinkZone';
-import { Quantity } from './components/Quantity';
-import { Price } from './components/Price';
+import styles from './CartItems.module.scss';
 import { Delete } from './components/Delete';
+import { LinkZone } from './components/LinkZone';
+import { Price } from './components/Price';
+import { Quantity } from './components/Quantity';
 
 export const CartItems: React.FC = () => {
   const { modelOnClickHandler: moveToDetails } = useContext(MainContext);

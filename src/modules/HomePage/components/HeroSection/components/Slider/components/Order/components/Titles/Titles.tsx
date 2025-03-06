@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './Titles.module.scss';
 import okSign from '/img/icons/ok-sign.png';
 

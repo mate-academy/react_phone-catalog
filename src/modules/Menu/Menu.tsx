@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
-import styles from './Menu.module.scss';
-import { MainContext } from '../../context/MainContext';
-import { BottomNav } from './components/BottomNav';
-import { Nav } from '../Nav';
 import { useLocation } from 'react-router-dom';
+
+import { MainContext } from '../../context/MainContext';
+import { Nav } from '../Nav';
+import { BottomNav } from './components/BottomNav';
+import styles from './Menu.module.scss';
 
 export const Menu: React.FC = () => {
   const { isMenuShowed, setIsMenuShowed } = useContext(MainContext);

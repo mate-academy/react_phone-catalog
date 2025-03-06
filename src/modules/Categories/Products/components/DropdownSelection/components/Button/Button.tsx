@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import React from 'react';
-import { Chevron } from './components/Chevron';
+
 import SCSSVariables from '../../../../../../../utils/Variables.module.scss';
 import linkStyles from '../../DropdownSelection.module.scss';
 import buttonSCSSStyles from './Button.module.scss';
+import { Chevron } from './components/Chevron';
 
 interface Props {
   isFocused: boolean;

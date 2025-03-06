@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
+
+import { CartContext } from '../../../../../../context/CartContext';
 import { Cross } from '../../../../../Header/components/MobileControl/components/Icons/Cross';
 import styles from './Delete.module.scss';
-import { CartContext } from '../../../../../../context/CartContext';
 
 interface Props {
   id: string;

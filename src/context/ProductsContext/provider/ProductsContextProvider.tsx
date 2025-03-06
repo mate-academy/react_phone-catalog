@@ -1,19 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { ProductsContext } from '../ProductsContext';
-import { ProductsContextType } from '../types/ProductsContextType';
-import { CurrentProduct } from '../types/CurrentProduct';
-import { MainContext } from '../../MainContext';
-import { Product } from '../../../types/CategoriesTypes/Product';
-import { Gadget } from '../../../types/CategoriesTypes/Gadget';
-import { CustomLocation } from '../../../types/CustomLocation';
-// eslint-disable-next-line max-len
-import { Categories } from '../../../modules/HomePage/components/Models/components/Main/components/Model/components/FirstPart/types/Categories';
-import { SearchContext } from '../../SearchContext';
 import { useLocation } from 'react-router-dom';
-import { ProductsCache } from '../../../types/CategoriesTypes/ProductsCache';
+
 import { ErrorQueries } from '../../../enums/ErrorsQueries';
 import { MainNavLinks } from '../../../enums/MainNavLinks';
+// eslint-disable-next-line max-len
+import { Categories } from '../../../modules/HomePage/components/Models/components/Main/components/Model/components/FirstPart/types/Categories';
+import { Gadget } from '../../../types/CategoriesTypes/Gadget';
+import { Product } from '../../../types/CategoriesTypes/Product';
+import { ProductsCache } from '../../../types/CategoriesTypes/ProductsCache';
+import { CustomLocation } from '../../../types/CustomLocation';
+import { MainContext } from '../../MainContext';
+import { SearchContext } from '../../SearchContext';
+import { ProductsContext } from '../ProductsContext';
+import { CurrentProduct } from '../types/CurrentProduct';
+import { ProductsContextType } from '../types/ProductsContextType';
 
 interface Props {
   children: React.ReactNode;

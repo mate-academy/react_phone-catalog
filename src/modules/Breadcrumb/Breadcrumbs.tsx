@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useMemo } from 'react';
-import styles from './Breadcrumbs.module.scss';
-import { HomeIcon } from './components/HomeIcon';
-import { Arrow } from './components/Arrow';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
+import React, { useContext, useMemo } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 import { ProductsContext } from '../../context/ProductsContext';
+import styles from './Breadcrumbs.module.scss';
+import { Arrow } from './components/Arrow';
+import { HomeIcon } from './components/HomeIcon';
 
 export const Breadcrumbs: React.FC = () => {
   const { pathname } = useLocation();

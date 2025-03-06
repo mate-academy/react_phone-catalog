@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+
 import styles from '../Icon.module.scss';
 
 export const Burger: React.FC = () => {

@@ -3,13 +3,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useMemo } from 'react';
-import styles from './Colors.module.scss';
-import { ProductsContext } from '../../../../../../../../context/ProductsContext';
-import { UNSUPPORTED_COLORS } from './constants/UnsupportedColors';
+
 import colorNameToHex from '@uiw/react-color-name';
-import { Color } from './components/Color';
+
+import { ProductsContext } from '../../../../../../../../context/ProductsContext';
 import { CurrentProduct } from '../../../../../../../../context/ProductsContext/types/CurrentProduct';
+import styles from './Colors.module.scss';
+import { Color } from './components/Color';
 import { REGEX } from './constants/Regex';
+import { UNSUPPORTED_COLORS } from './constants/UnsupportedColors';
 
 export const Colors: React.FC = () => {
   const { products, currentProduct } = useContext(ProductsContext);

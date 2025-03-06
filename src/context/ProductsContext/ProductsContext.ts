@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+
 import { ProductsContextType } from './types/ProductsContextType';
 
 export const ProductsContext = createContext<ProductsContextType>({

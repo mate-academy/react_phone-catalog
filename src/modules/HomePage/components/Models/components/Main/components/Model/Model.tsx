@@ -1,14 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
-import styles from './Model.module.scss';
-import { FirstPart } from './components/FirstPart';
-import { SecondPart } from './components/SecondPart';
-import { Divider } from './components/Divider';
-import { ThirdPart } from './components/ThirdPart';
-import { HOT_PRICES_TITLE } from '../../../../../../constants/ProductTitle';
+
 import { ProductsContext } from '../../../../../../../../context/ProductsContext';
 import { Product } from '../../../../../../../../types/CategoriesTypes/Product';
+import { HOT_PRICES_TITLE } from '../../../../../../constants/ProductTitle';
+import { Divider } from './components/Divider';
+import { FirstPart } from './components/FirstPart';
+import { SecondPart } from './components/SecondPart';
+import { ThirdPart } from './components/ThirdPart';
+import styles from './Model.module.scss';
 
 export const Model: React.FC<Product> = React.memo(props => {
   const { itemId, isMinWidthFixedValue, sectionTitle, screen, capacity, ram } =

@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useMemo, useState } from 'react';
-import { CartContext } from '../CartContext';
-import { CartType } from '../types/CartType';
+
 import { NavLinks } from '../../../enums/NavLinks';
 import { CartItemType } from '../../../modules/Cart/types/CartItemType';
+import { CartContext } from '../CartContext';
+import { CartType } from '../types/CartType';
 
 interface Props {
   children: React.ReactNode;

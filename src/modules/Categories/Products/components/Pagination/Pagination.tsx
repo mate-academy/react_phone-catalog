@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useContext } from 'react';
-import styles from './Pagination.module.scss';
-import { PageLink } from './components/PageLink';
+
+import { DSContext } from '../../../../../context/DSContext';
 import { LeftArrow } from './components/Arrows/LeftArrow';
 import { RightArrow } from './components/Arrows/RightArrow';
-import { DSContext } from '../../../../../context/DSContext';
+import { PageLink } from './components/PageLink';
+import styles from './Pagination.module.scss';
 
 interface Props {
   pageNumbers: number[];

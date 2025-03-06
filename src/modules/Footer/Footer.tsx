@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import classNames from 'classnames';
 import React, { useCallback, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Footer.module.scss';
+
+import { MainContext } from '../../context/MainContext';
+import { ProductsContext } from '../../context/ProductsContext';
 import { Logo } from '../Logo';
 import { Nav } from './components/Nav';
 import { ToTop } from './components/ToTop';
-import { MainContext } from '../../context/MainContext';
-import classNames from 'classnames';
-import { ProductsContext } from '../../context/ProductsContext';
+import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
   // #region context

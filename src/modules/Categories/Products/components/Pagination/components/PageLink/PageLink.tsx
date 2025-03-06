@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
-import styles from './PageLink.module.scss';
-import { Link } from 'react-router-dom';
-import { SearchContext } from '../../../../../../../context/SearchContext';
-import { DSContext } from '../../../../../../../context/DSContext';
 import classNames from 'classnames';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
+import { DSContext } from '../../../../../../../context/DSContext';
 import { MainContext } from '../../../../../../../context/MainContext';
+import { SearchContext } from '../../../../../../../context/SearchContext';
+import styles from './PageLink.module.scss';
 
 interface Props {
   value: number;

@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './LoadingError.module.scss';
+
 import { Reload } from './components/Reload';
+import styles from './LoadingError.module.scss';
 
 export const LoadingError: React.FC = () => {
   return (

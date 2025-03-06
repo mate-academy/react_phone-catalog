@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './HeroSection.module.scss';
-import { Slider } from './components/Slider';
+
 import { Dots } from './components/Dots';
+import { Slider } from './components/Slider';
+import styles from './HeroSection.module.scss';
 
 export const HeroSection: React.FC = () => {
   return (

@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+
 import SCSSVariables from '../../../../../../../../../utils/Variables.module.scss';
 
 interface Props {

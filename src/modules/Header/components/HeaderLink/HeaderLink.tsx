@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './HeaderLink.module.scss';
+
 import { MainContext } from '../../../../context/MainContext';
 import { Logo } from '../../../Logo';
+import styles from './HeaderLink.module.scss';
 
 export const HeaderLink: React.FC = React.memo(() => {
   const { isOnHomePage } = useContext(MainContext);

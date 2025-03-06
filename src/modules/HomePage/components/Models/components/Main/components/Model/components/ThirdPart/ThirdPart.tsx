@@ -1,13 +1,14 @@
 /* eslint-disable max-len */
-import React, { useContext } from 'react';
-import styles from './ThirdPart.module.scss';
-import { HeartLikeSVG } from '../../../../../../../../../../svgs/HeartLikeSVG';
 import classNames from 'classnames';
-import { FavouritesContext } from '../../../../../../../../../../context/FavouritesContext';
-import { Product } from '../../../../../../../../../../types/CategoriesTypes/Product';
+import React, { useContext } from 'react';
+
 import { CartContext } from '../../../../../../../../../../context/CartContext';
+import { FavouritesContext } from '../../../../../../../../../../context/FavouritesContext';
 import { AddButtonTexts } from '../../../../../../../../../../enums/AddButtonTexts';
+import { HeartLikeSVG } from '../../../../../../../../../../svgs/HeartLikeSVG';
+import { Product } from '../../../../../../../../../../types/CategoriesTypes/Product';
 import { CartItemType } from '../../../../../../../../../Cart/types/CartItemType';
+import styles from './ThirdPart.module.scss';
 
 interface Props {
   itemId: string;

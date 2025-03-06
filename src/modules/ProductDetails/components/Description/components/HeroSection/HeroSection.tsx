@@ -1,14 +1,15 @@
 /* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext } from 'react';
-import styles from './HeroSection.module.scss';
-import { Images } from './components/Images';
-import { Colors } from './components/Colors';
+
+import { MainContext } from '../../../../../../context/MainContext';
 import { Divider } from '../../../../../HomePage/components/Models/components/Main/components/Model/components/Divider';
 import { Capacity } from './components/Capacity';
-import { Summary } from './components/Summary';
-import { MainContext } from '../../../../../../context/MainContext';
+import { Colors } from './components/Colors';
+import { Images } from './components/Images';
 import { MainImage } from './components/Images/components/MainImage';
+import { Summary } from './components/Summary';
+import styles from './HeroSection.module.scss';
 
 export const HeroSection: React.FC = () => {
   const { isTablet } = useContext(MainContext);

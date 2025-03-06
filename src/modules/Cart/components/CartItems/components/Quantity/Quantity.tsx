@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+
 import { CartContext } from '../../../../../../context/CartContext';
 import { MinusSVG } from '../../../../../../svgs/MinusSVG';
 import { PlusSVG } from '../../../../../../svgs/PlusSVG';

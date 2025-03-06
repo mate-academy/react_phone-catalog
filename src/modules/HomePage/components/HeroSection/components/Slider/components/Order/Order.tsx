@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import styles from './Order.module.scss';
+
 import { MainContext } from '../../../../../../../../context/MainContext';
-import { Titles } from './components/Titles';
 import { Button } from './components/Button';
+import { Titles } from './components/Titles';
+import styles from './Order.module.scss';
 
 interface Props {
   imgIndex: number;

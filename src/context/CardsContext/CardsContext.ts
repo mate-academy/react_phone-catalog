@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+
 import { CardsContextType } from './types/CardsContextType';
 
 export const CardsContext = createContext<CardsContextType>({

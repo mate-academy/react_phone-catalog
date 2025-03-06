@@ -1,14 +1,15 @@
 /* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext } from 'react';
-import styles from './Images.module.scss';
 import classNames from 'classnames';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SearchContext } from '../../../../../../../../context/SearchContext';
+
+import { MainContext } from '../../../../../../../../context/MainContext';
 import { ProductsContext } from '../../../../../../../../context/ProductsContext';
 import { CurrentProduct } from '../../../../../../../../context/ProductsContext/types/CurrentProduct';
+import { SearchContext } from '../../../../../../../../context/SearchContext';
 import { MainImage } from './components/MainImage';
-import { MainContext } from '../../../../../../../../context/MainContext';
+import styles from './Images.module.scss';
 
 export const Images: React.FC = () => {
   // #region context

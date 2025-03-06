@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Spec } from '../../../../../../enums/Spec';
 import styles from './SecondPart.module.scss';
 

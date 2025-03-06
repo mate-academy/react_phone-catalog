@@ -1,16 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useMemo } from 'react';
-import styles from './Products.module.scss';
-import { SortBy } from './enums/SortBy';
-import { PerPage } from './enums/PerPage';
-import { DSContext } from '../../../context/DSContext';
-import { DropdownSelection } from './components/DropdownSelection';
-import { ProductsItems } from './components/ProductsItems';
-import { Pagination } from './components/Pagination';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { SearchContext } from '../../../context/SearchContext';
-import { ProductsContext } from '../../../context/ProductsContext';
+
+import { DSContext } from '../../../context/DSContext';
 import { MainContext } from '../../../context/MainContext';
+import { ProductsContext } from '../../../context/ProductsContext';
+import { SearchContext } from '../../../context/SearchContext';
+import { DropdownSelection } from './components/DropdownSelection';
+import { Pagination } from './components/Pagination';
+import { ProductsItems } from './components/ProductsItems';
+import { PerPage } from './enums/PerPage';
+import { SortBy } from './enums/SortBy';
+import styles from './Products.module.scss';
 
 interface Props {
   query: 'phones' | 'tablets' | 'accessories';

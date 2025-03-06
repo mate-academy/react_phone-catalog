@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useMemo } from 'react';
-import styles from './Main.module.scss';
+
 import { MainContext } from '../../../../../../context/MainContext';
-import { Model } from './components/Model';
-import { HOT_PRICES_TITLE } from '../../../../constants/ProductTitle';
 import { ProductsContext } from '../../../../../../context/ProductsContext';
 // eslint-disable-next-line max-len
 import { YMAL_TITLE } from '../../../../../ProductDetails/constants/ModelsTitle';
+import { HOT_PRICES_TITLE } from '../../../../constants/ProductTitle';
+import { Model } from './components/Model';
+import styles from './Main.module.scss';
 
 interface Props {
   title: string;

@@ -1,11 +1,12 @@
 /* eslint-disable max-len */
+import classNames from 'classnames';
 import React, { useContext } from 'react';
-import styles from './Capacity.module.scss';
+import { useNavigate } from 'react-router-dom';
+
 import { ProductsContext } from '../../../../../../../../context/ProductsContext';
 import { CurrentProduct } from '../../../../../../../../context/ProductsContext/types/CurrentProduct';
-import classNames from 'classnames';
-import { useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../../../../../../../context/SearchContext';
+import styles from './Capacity.module.scss';
 
 export const Capacity: React.FC = () => {
   const { currentProduct, categories } = useContext(ProductsContext);

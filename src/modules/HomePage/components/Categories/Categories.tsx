@@ -1,19 +1,20 @@
 import React, { useContext } from 'react';
+
+import { MainContext } from '../../../../context/MainContext';
+import { ProductsContext } from '../../../../context/ProductsContext';
+import { MainNavLinks } from '../../../../enums/MainNavLinks';
 import styles from './Categories.module.scss';
-import { CategoriesEnum } from './enums/CategoriesEnum';
-import img1 from '/img/category-phones.webp';
-import img2 from '/img/category-tablets.png';
-import img3 from '/img/category-accessories.png';
+import { Category } from './components/Category';
 import {
   ACCESSORIES_COLOR,
   PHONES_COLOR,
   TABLETS_COLOR,
 } from './constants/ImgBcColors';
-import { Category } from './components/Category';
-import { ProductsContext } from '../../../../context/ProductsContext';
-import { MainContext } from '../../../../context/MainContext';
+import { CategoriesEnum } from './enums/CategoriesEnum';
+import img3 from '/img/category-accessories.png';
+import img1 from '/img/category-phones.webp';
+import img2 from '/img/category-tablets.png';
 import SCSSVariables from '/src/utils/Variables.module.scss';
-import { MainNavLinks } from '../../../../enums/MainNavLinks';
 
 export const Categories: React.FC = () => {
   const { isFooterAbsPos } = useContext(MainContext);

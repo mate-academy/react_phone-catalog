@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import styles from './DropdownSelection.module.scss';
+import { useNavigate } from 'react-router-dom';
+
+import { SearchContext } from '../../../../../context/SearchContext';
 import { Button } from './components/Button';
 import { Dropdown } from './components/Dropdown';
+import styles from './DropdownSelection.module.scss';
 import { Props } from './types/Props';
-import { useNavigate } from 'react-router-dom';
-import { SearchContext } from '../../../../../context/SearchContext';
 
 export const DropdownSelection = <T extends string>({
   title,

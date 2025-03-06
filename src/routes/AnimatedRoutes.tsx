@@ -2,21 +2,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { HomePage } from '../modules/HomePage';
-import { Phones } from '../modules/Categories/Phones';
-import { Tablets } from '../modules/Categories/Tablets';
-import { Accessories } from '../modules/Categories/Accessories';
-import { Error } from '../modules/Error';
-import { Navigation } from './types/Navigation';
-import { ProductsContext } from '../context/ProductsContext';
-import { ProductDetails } from '../modules/ProductDetails';
+
 import { CardsContext } from '../context/CardsContext/CardsContext';
-import { ErrorQueries } from '../enums/ErrorsQueries';
 import { MainContext } from '../context/MainContext';
-import { Favourites } from '../modules/Favourites';
+import { ProductsContext } from '../context/ProductsContext';
+import { ErrorQueries } from '../enums/ErrorsQueries';
 import { MainNavLinks } from '../enums/MainNavLinks';
 import { NavLinks } from '../enums/NavLinks';
 import { Cart } from '../modules/Cart';
+import { Accessories } from '../modules/Categories/Accessories';
+import { Phones } from '../modules/Categories/Phones';
+import { Tablets } from '../modules/Categories/Tablets';
+import { Error } from '../modules/Error';
+import { Favourites } from '../modules/Favourites';
+import { HomePage } from '../modules/HomePage';
+import { ProductDetails } from '../modules/ProductDetails';
+import { Navigation } from './types/Navigation';
 
 export const AnimatedRoutes: React.FC = React.memo(() => {
   // #region context

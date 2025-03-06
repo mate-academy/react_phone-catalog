@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Cross } from './components/Icons/Cross';
-import { Burger } from './components/Icons/Burger';
-import styles from './MobileControl.module.scss';
+
 import { MainContext } from '../../../../context/MainContext';
+import { Burger } from './components/Icons/Burger';
+import { Cross } from './components/Icons/Cross';
+import styles from './MobileControl.module.scss';
 
 export const MobileControl: React.FC = () => {
   const { isMenuShowed } = useContext(MainContext);

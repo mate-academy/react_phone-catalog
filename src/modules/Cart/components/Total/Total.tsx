@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
+
 import { CartContext } from '../../../../context/CartContext';
-import styles from './Total.module.scss';
 import { Divider } from '../../../HomePage/components/Models/components/Main/components/Model/components/Divider';
 import { ModalDialog } from './components/ModalDialog';
+import styles from './Total.module.scss';
 
 export const Total: React.FC = () => {
   const { cart, setIsModal, isModal } = useContext(CartContext);

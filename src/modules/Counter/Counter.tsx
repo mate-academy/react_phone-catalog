@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import { FavouritesContext } from '../../context/FavouritesContext';
-import styles from './Counter.module.scss';
 import classNames from 'classnames';
-import { NavLinks } from '../../enums/NavLinks';
+import React, { useContext } from 'react';
+
 import { CartContext } from '../../context/CartContext';
+import { FavouritesContext } from '../../context/FavouritesContext';
+import { NavLinks } from '../../enums/NavLinks';
+import styles from './Counter.module.scss';
 
 interface Props {
   query: NavLinks;

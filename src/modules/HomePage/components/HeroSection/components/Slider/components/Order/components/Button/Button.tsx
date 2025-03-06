@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import styles from './Button.module.scss';
-import { MainContext } from '../../../../../../../../../../context/MainContext';
 import { useNavigate } from 'react-router-dom';
+
+import { MainContext } from '../../../../../../../../../../context/MainContext';
 import { NavLinks } from '../../../../../../../../../../enums/NavLinks';
+import styles from './Button.module.scss';
 
 export const Button: React.FC = () => {
   const { imgIndex, repeatColor } = useContext(MainContext);

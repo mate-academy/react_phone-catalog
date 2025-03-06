@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
-import { LeftArrow } from './components/Arrows/LeftArrow';
-import { RightArrow } from './components/Arrows/RightArrow';
-import styles from './Header.module.scss';
+
 import { MainContext } from '../../../../../../context/MainContext';
 import { ProductsContext } from '../../../../../../context/ProductsContext';
 // eslint-disable-next-line max-len
 import { YMAL_TITLE } from '../../../../../ProductDetails/constants/ModelsTitle';
+import { LeftArrow } from './components/Arrows/LeftArrow';
+import { RightArrow } from './components/Arrows/RightArrow';
+import styles from './Header.module.scss';
 
 interface Props {
   title: string;

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import styles from './Logo.module.scss';
+
 import { MainContext } from '../../context/MainContext';
+import styles from './Logo.module.scss';
 import okSign from '/img/icons/ok-sign.png';
 
 interface Props {

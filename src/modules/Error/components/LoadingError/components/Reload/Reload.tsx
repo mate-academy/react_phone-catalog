@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
-import styles from './Reload.module.scss';
+
 import { MainContext } from '../../../../../../context/MainContext';
+import styles from './Reload.module.scss';
 
 export const Reload: React.FC = () => {
   const { setIsError } = useContext(MainContext);

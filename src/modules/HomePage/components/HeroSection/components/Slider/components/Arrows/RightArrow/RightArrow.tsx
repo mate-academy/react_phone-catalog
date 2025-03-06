@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from '../Arrow.module.scss';
+
 import { RightArrowSVG } from '../../../../../../../../../svgs/RightArrowSVG';
+import styles from '../Arrow.module.scss';
 
 interface Props {
   rightArrowHandler: () => void;

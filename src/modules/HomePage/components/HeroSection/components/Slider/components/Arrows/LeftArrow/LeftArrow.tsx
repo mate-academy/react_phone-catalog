@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import styles from '../Arrow.module.scss';
+
 import { MainContext } from '../../../../../../../../../context/MainContext';
 import { LeftArrowSVG } from '../../../../../../../../../svgs/LeftArrowSVG';
+import styles from '../Arrow.module.scss';
 
 export const LeftArrow: React.FC = () => {
   const { imgs, setImgIndex } = useContext(MainContext);

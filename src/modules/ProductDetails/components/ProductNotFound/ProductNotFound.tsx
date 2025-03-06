@@ -1,6 +1,7 @@
 import React from 'react';
-import PNFStyles from './ProductNotFound.module.scss';
+
 import descrStyles from '../Description/Description.module.scss';
+import PNFStyles from './ProductNotFound.module.scss';
 
 export const ProductNotFound: React.FC = () => {
   return (

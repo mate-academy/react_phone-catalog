@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from '../Arrow.module.scss';
+
 import { LeftArrowSVG } from '../../../../../../../../../svgs/LeftArrowSVG';
+import styles from '../Arrow.module.scss';
 
 interface Props {
   cardIndex: number;

@@ -1,7 +1,8 @@
-import { SearchContext } from '../SearchContext';
 import { useSearchParams } from 'react-router-dom';
-import { SearchParams } from '../types/SearchParams';
+
+import { SearchContext } from '../SearchContext';
 import { SearchContextType } from '../types/SearchContextType';
+import { SearchParams } from '../types/SearchParams';
 
 interface Props {
   children: React.ReactNode;

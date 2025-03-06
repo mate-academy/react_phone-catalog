@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
-import styles from './ToTop.module.scss';
+
 import { MainContext } from '../../../../context/MainContext';
+import styles from './ToTop.module.scss';
 
 export const ToTop: React.FC = () => {
   const { scrollToTopHandler } = useContext(MainContext);

@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
-import styles from './Color.module.scss';
-import SCSSVariables from '../../../../../../../../../../utils/Variables.module.scss';
-import { CurrentProduct } from '../../../../../../../../../../context/ProductsContext/types/CurrentProduct';
 import { useNavigate } from 'react-router-dom';
+
 import { ProductsContext } from '../../../../../../../../../../context/ProductsContext';
+import { CurrentProduct } from '../../../../../../../../../../context/ProductsContext/types/CurrentProduct';
 import { SearchContext } from '../../../../../../../../../../context/SearchContext';
+import SCSSVariables from '../../../../../../../../../../utils/Variables.module.scss';
 import { REGEX } from '../../constants/Regex';
+import styles from './Color.module.scss';
 
 interface Props {
   value: string;

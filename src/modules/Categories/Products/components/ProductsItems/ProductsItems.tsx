@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
-import { Model } from '../../../../HomePage/components/Models/components/Main/components/Model';
-import styles from './ProductsItems.module.scss';
+
 import { MainContext } from '../../../../../context/MainContext';
 import { Product } from '../../../../../types/CategoriesTypes/Product';
+import { Model } from '../../../../HomePage/components/Models/components/Main/components/Model';
+import styles from './ProductsItems.module.scss';
 
 interface Props {
   products: Product[];

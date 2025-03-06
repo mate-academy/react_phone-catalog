@@ -1,8 +1,9 @@
+import classNames from 'classnames';
 import React, { useContext } from 'react';
-import styles from './Dots.module.scss';
+
 import { MainContext } from '../../../../../../context/MainContext';
 import SCSSvariables from '../../../../../../utils/Variables.module.scss';
-import classNames from 'classnames';
+import styles from './Dots.module.scss';
 
 export const Dots: React.FC = () => {
   const { imgs, imgIndex, setImgIndex } = useContext(MainContext);

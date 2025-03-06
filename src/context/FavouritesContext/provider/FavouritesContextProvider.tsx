@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useMemo, useState } from 'react';
+
+import { NavLinks } from '../../../enums/NavLinks';
+import { Product } from '../../../types/CategoriesTypes/Product';
 import { FavouritesContext } from '../FavouritesContext';
 import { Favourites } from '../types/Favourites';
-import { Product } from '../../../types/CategoriesTypes/Product';
-import { NavLinks } from '../../../enums/NavLinks';
 
 interface Props {
   children: React.ReactNode;

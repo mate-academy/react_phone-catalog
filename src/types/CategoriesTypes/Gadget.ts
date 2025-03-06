@@ -1,5 +1,6 @@
-import { Description } from './Description';
 import named from 'colors-named';
+
+import { Description } from './Description';
 
 export interface Gadget {
   id: string;

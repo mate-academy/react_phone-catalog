@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react';
-import { DSContext } from '../DSContext';
-import { SearchContext } from '../../SearchContext';
-import { SortBy } from '../../../modules/Categories/Products/enums/SortBy';
+
 import { PerPage } from '../../../modules/Categories/Products/enums/PerPage';
+import { SortBy } from '../../../modules/Categories/Products/enums/SortBy';
+import { SearchContext } from '../../SearchContext';
+import { DSContext } from '../DSContext';
 import { DSContextType } from '../types/DSContextType';
 
 interface Props {

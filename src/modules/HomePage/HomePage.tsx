@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
+
+import { MainContext } from '../../context/MainContext';
+import { ProductsContext } from '../../context/ProductsContext';
+import { Categories } from './components/Categories';
 import { HeroSection } from './components/HeroSection';
 import { Models } from './components/Models';
-import { Categories } from './components/Categories';
 import { HOT_PRICES_TITLE, MODELS_TITLE } from './constants/ProductTitle';
-import { ProductsContext } from '../../context/ProductsContext';
-import { MainContext } from '../../context/MainContext';
 
 export const HomePage: React.FC = () => {
   const { setIsFooterAbsPos } = useContext(MainContext);

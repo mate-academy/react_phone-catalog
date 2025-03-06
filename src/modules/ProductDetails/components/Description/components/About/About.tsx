@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import styles from './About.module.scss';
-import { DividerMT16 } from '../DividerMT16';
+
 import { ProductsContext } from '../../../../../../context/ProductsContext';
 // eslint-disable-next-line max-len
 import { CurrentProduct } from '../../../../../../context/ProductsContext/types/CurrentProduct';
+import { DividerMT16 } from '../DividerMT16';
+import styles from './About.module.scss';
 
 export const About: React.FC = () => {
   const { currentProduct } = useContext(ProductsContext);

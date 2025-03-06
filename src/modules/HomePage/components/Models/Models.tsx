@@ -6,14 +6,15 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import styles from './Models.module.scss';
-import { DESKTOP_MI, MOBILE_MI, TABLET_MI } from './constants/MarginInline';
-import { Header } from './components/Header';
-import { Main } from './components/Main';
+
+import { CardsContext } from '../../../../context/CardsContext/CardsContext';
 import { MainContext } from '../../../../context/MainContext/MainContext';
 import { ProductsContext } from '../../../../context/ProductsContext';
-import { CardsContext } from '../../../../context/CardsContext/CardsContext';
 import { HOT_PRICES_TITLE, MODELS_TITLE } from '../../constants/ProductTitle';
+import { Header } from './components/Header';
+import { Main } from './components/Main';
+import { DESKTOP_MI, MOBILE_MI, TABLET_MI } from './constants/MarginInline';
+import styles from './Models.module.scss';
 
 interface Props {
   title: string;

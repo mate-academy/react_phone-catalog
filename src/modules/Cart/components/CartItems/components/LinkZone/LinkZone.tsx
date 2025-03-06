@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
-import styles from './LinkZone.module.scss';
+
 import { FirstPartLink as Link } from '../../../../../HomePage/components/Models/components/Main/components/Model/components/FirstPart/components/FirstPartLink';
+import styles from './LinkZone.module.scss';
 
 interface Props {
   onClickHandler: () => void;

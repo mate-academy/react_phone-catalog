@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import styles from './Error.module.scss';
+
 import { ErrorQueries } from '../../enums/ErrorsQueries';
-import { PageNotFound } from './components/PageNotFound';
 import { LoadingError } from './components/LoadingError';
+import { PageNotFound } from './components/PageNotFound';
+import styles from './Error.module.scss';
 
 interface Props {
   query: ErrorQueries;

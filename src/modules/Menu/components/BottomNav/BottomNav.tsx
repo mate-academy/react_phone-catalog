@@ -1,13 +1,14 @@
+import classNames from 'classnames';
 import React, { useContext } from 'react';
-import styles from './BottomNav.module.scss';
+import { Link, useLocation } from 'react-router-dom';
+
+import { CartContext } from '../../../../context/CartContext';
+import { FavouritesContext } from '../../../../context/FavouritesContext';
+import { NavLinks } from '../../../../enums/NavLinks';
 import { HeartLikeSVG } from '../../../../svgs/HeartLikeSVG';
 import { ShoppingBagSVG } from '../../../../svgs/ShoppingBagSVG';
-import { Link, useLocation } from 'react-router-dom';
-import { FavouritesContext } from '../../../../context/FavouritesContext';
 import { Counter } from '../../../Counter';
-import { NavLinks } from '../../../../enums/NavLinks';
-import classNames from 'classnames';
-import { CartContext } from '../../../../context/CartContext';
+import styles from './BottomNav.module.scss';
 
 export const BottomNav: React.FC = () => {
   const { favourites } = useContext(FavouritesContext);

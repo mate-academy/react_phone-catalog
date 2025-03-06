@@ -3,20 +3,21 @@
 /* eslint-disable max-len */
 import { useContext, useMemo, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ios14mob_1 from '/img/banner-slider/mobile/iphone14pro-1.png';
-import ios14mob_2 from '/img/banner-slider/mobile/iphone14pro-2.png';
-import ios14mob_3 from '/img/banner-slider/mobile/iphone14pro-3.png';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { animateScroll } from 'react-scroll';
+
+import { MainNavLinks } from '../../../enums/MainNavLinks';
+import { Product } from '../../../types/CategoriesTypes/Product';
+import { ProductsContext } from '../../ProductsContext';
+import { MainContext } from '../MainContext';
+import { ErrorType } from '../types/ErrorType';
+import { MainContextType } from '../types/MainContextType';
 import ios14_1 from '/img/banner-slider/iphone14pro-1.png';
 import ios14_2 from '/img/banner-slider/iphone14pro-2.png';
 import ios14_3 from '/img/banner-slider/iphone14pro-3.png';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { animateScroll } from 'react-scroll';
-import { MainContext } from '../MainContext';
-import { MainContextType } from '../types/MainContextType';
-import { ProductsContext } from '../../ProductsContext';
-import { ErrorType } from '../types/ErrorType';
-import { Product } from '../../../types/CategoriesTypes/Product';
-import { MainNavLinks } from '../../../enums/MainNavLinks';
+import ios14mob_1 from '/img/banner-slider/mobile/iphone14pro-1.png';
+import ios14mob_2 from '/img/banner-slider/mobile/iphone14pro-2.png';
+import ios14mob_3 from '/img/banner-slider/mobile/iphone14pro-3.png';
 
 interface Props {
   children: React.ReactNode;

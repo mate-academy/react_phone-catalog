@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
-import { Spec } from './enums/Spec';
-import styles from './ThirdPart.module.scss';
+
 import { ProductsContext } from '../../../../../../../../../../context/ProductsContext';
 import { CurrentProduct } from '../../../../../../../../../../context/ProductsContext/types/CurrentProduct';
+import { Spec } from './enums/Spec';
+import styles from './ThirdPart.module.scss';
 
 export const ThirdPart: React.FC = () => {
   const { currentProduct } = useContext(ProductsContext);

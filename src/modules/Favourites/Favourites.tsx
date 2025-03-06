@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
-import styles from './Favourites.module.scss';
-import { ProductsItems } from '../Categories/Products/components/ProductsItems';
+
 import { FavouritesContext } from '../../context/FavouritesContext';
 import { MainContext } from '../../context/MainContext';
+import { ProductsItems } from '../Categories/Products/components/ProductsItems';
+import styles from './Favourites.module.scss';
 
 export const Favourites: React.FC = () => {
   const { favourites } = useContext(FavouritesContext);

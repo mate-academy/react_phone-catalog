@@ -1,16 +1,17 @@
 /* eslint-disable max-len */
+import classNames from 'classnames';
 import React, { useContext } from 'react';
-import styles from './SecondPart.module.scss';
-import { HeartLikeSVG } from '../../../../../../../../../../svgs/HeartLikeSVG';
+
+import { CartContext } from '../../../../../../../../../../context/CartContext';
 import { FavouritesContext } from '../../../../../../../../../../context/FavouritesContext';
+import { MainContext } from '../../../../../../../../../../context/MainContext';
 import { ProductsContext } from '../../../../../../../../../../context/ProductsContext';
 import { CurrentProduct } from '../../../../../../../../../../context/ProductsContext/types/CurrentProduct';
-import { MainContext } from '../../../../../../../../../../context/MainContext';
-import { Product } from '../../../../../../../../../../types/CategoriesTypes/Product';
-import classNames from 'classnames';
-import { CartContext } from '../../../../../../../../../../context/CartContext';
-import { CartItemType } from '../../../../../../../../../Cart/types/CartItemType';
 import { AddButtonTexts } from '../../../../../../../../../../enums/AddButtonTexts';
+import { HeartLikeSVG } from '../../../../../../../../../../svgs/HeartLikeSVG';
+import { Product } from '../../../../../../../../../../types/CategoriesTypes/Product';
+import { CartItemType } from '../../../../../../../../../Cart/types/CartItemType';
+import styles from './SecondPart.module.scss';
 
 export const SecondPart: React.FC = () => {
   // #region context

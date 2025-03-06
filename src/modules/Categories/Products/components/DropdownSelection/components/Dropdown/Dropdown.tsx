@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import { SearchContext } from '../../../../../../../context/SearchContext';
 import classNames from 'classnames';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import dropdownSCSSStyles from './Dropdown.module.scss';
+
+import { SearchContext } from '../../../../../../../context/SearchContext';
 import DSStyles from '../../DropdownSelection.module.scss';
+import dropdownSCSSStyles from './Dropdown.module.scss';
 import { Props } from './types/Props';
 
 export const Dropdown: React.FC<Props> = ({

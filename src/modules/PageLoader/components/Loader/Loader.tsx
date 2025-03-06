@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import Lottie from 'react-lottie';
+
 import animationData from './lottie/animation.json';
 
 export const Loader: React.FC = () => {
