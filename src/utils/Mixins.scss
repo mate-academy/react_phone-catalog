@@ -115,7 +115,7 @@
   font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: 13px;
-  padding-inline: 19px;
+  padding-inline: 5px;
 
   @include on-desktop {
     transition: all $default-trans-dur;
