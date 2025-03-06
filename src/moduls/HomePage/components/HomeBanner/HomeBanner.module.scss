@@ -1,0 +1,75 @@
+@import '../../../../styles/mixins.scss';
+@import '../../../../styles/variables.module.scss';
+
+.home__banner {
+  @include grid-page;
+  row-gap: 8px;
+  grid-template-rows: 400px auto;
+
+  @include on-tablet {
+    grid-template-rows: 189px auto;
+  }
+  @include on-mobile {
+    grid-template-rows: 320px auto;
+    margin-inline: -16px;
+  }
+}
+
+.banner {
+  grid-column: 2/-2;
+
+  @include on-mobile {
+    grid-column: 1/-1;
+  }
+}
+
+.prevButton,
+.nextButton {
+  background-color: $white;
+  border: 1px solid $icon-color;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.prevButton {
+  grid-column: 1/2;
+  background-image: url(/img/icons/Arrow_Left.svg);
+}
+
+.nextButton {
+  grid-column: -1/-2;
+  background-image: url(/img/icons/Arrow_Right.svg);
+}
+
+.slide__img {
+  width: 100%;
+  // height: auto;
+  object-fit: contain;
+}
+
+.swiper__slide {
+  // background-color: #000;
+  display: flex;
+  justify-content: center;
+
+  max-height: 400px;
+  overflow: hidden;
+
+  @include on-tablet {
+    max-height: 189px;
+  }
+
+  @include on-mobile {
+    max-height: 320px;
+  }
+}
+

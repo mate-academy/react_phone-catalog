@@ -1,0 +1,19 @@
+[
+  {
+    "desktop": [
+      "img/Home_banner/Banner1_desktop.png",
+      "img/Home_banner/Banner2_desktop.png",
+      "img/Home_banner/Banner3_desktop.png"
+    ],
+    "tablet": [
+      "img/Home_banner/Banner1_tablet.png",
+      "img/Home_banner/Banner2_tablet.png",
+      "img/Home_banner/Banner3_tablet.png"
+    ],
+    "mobile": [
+      "img/Home_banner/Banner1_mobile.png",
+      "img/Home_banner/Banner2_mobile.png",
+      "img/Home_banner/Banner3_mobile.png"
+    ]
+  }
+]

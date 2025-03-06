@@ -1,7 +1,18 @@
+import { Outlet, useSearchParams } from 'react-router-dom';
 import './App.scss';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import classNames from 'classnames';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  const [searchParams] = useSearchParams();
+  const isMenuOpen = searchParams.get('menu');
+
+  return (
+    <div className={classNames('App', { 'App__menu-open': isMenuOpen })}>
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+};

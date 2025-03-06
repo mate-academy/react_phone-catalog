@@ -1,0 +1,29 @@
+@import '../../../../styles/variables.module.scss';
+
+.custom-pagination {
+  grid-column: 1/-1;
+  grid-row: 2;
+  display: flex;
+  gap: 14px;
+  padding-block: 10px;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet {
+  margin: 0 !important;
+  width: 14px;
+  height: 4px;
+  border-radius: 0;
+  background-color: $elements-color;
+  opacity: 1;
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $primary-color;
+}
+

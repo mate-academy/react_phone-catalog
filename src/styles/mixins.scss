@@ -1,0 +1,61 @@
+@import './variables.module';
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin on-desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media screen and (max-width: ($desktop - 1px)) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media screen and (max-width: ($tablet - 1px)) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  max-width: 1136px;
+  margin-inline: auto;
+
+  @include on-tablet {
+    padding-inline: 24px;
+    margin: 0;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+}
+
+.page-container {
+  @include content-padding-inline;
+}
+
+@mixin grid-page {
+  --colums: 24;
+  --column-gap: 16px;
+
+  display: grid;
+  column-gap: var(--column-gap);
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include on-tablet {
+    --colums: 12;
+  }
+
+  @include on-mobile {
+    --colums: 4;
+  }
+}

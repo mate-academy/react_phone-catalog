@@ -1,1 +1,91 @@
-// not empty
+@import './styles/variables.module';
+@import './styles/mixins.scss';
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-Regular.otf) format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-SemiBold.otf) format('opentype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-Bold.otf) format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+html, body {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+
+  scrollbar-width: none;
+  background-color: #fff;
+}
+
+.App {
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__menu-open {
+    overflow: hidden;
+  }
+}
+
+a {
+  text-decoration: none;
+  font-family: Mont;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 48px;
+  color: $primary-color;
+
+  @include on-mobile {
+    font-size: 32px;
+  }
+
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: $primary-color;
+
+  @include on-mobile {
+    font-size: 22px;
+  }
+}
+h3 {
+  font-weight: 700;
+  font-size: 22px;
+  color: $primary-color;
+
+  @include on-mobile {
+    font-weight: 600;
+    font-size: 20px;
+  }
+}
+h4 {
+  font-weight: 600;
+  font-size: 20px;
+  color: $primary-color;
+
+  @include on-mobile {
+    font-size: 16px;
+  }
+}
+
+// .section {
+//   flex-grow: 1; // Растягивает контент, оставляя футер внизу
+// }
