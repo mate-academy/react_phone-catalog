@@ -1,0 +1,71 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  background-color: $white-color;
+  padding: 0;
+  width: 100%;
+  height: $header-mobile-height;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 0px 0px $elements-color;
+  position: relative;
+  z-index: 50;
+
+  @include onTablet {
+    height: $header-tablet-height;
+  }
+
+  @include onDesktop {
+    height: $header-desktop-height;
+  }
+
+  &__topBar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__container {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  &__mobileMenu {
+    display: flex;
+
+    @include onTablet {
+      display: none;
+    }
+
+  }
+
+  &__menuBtn {
+    cursor: pointer;
+  }
+
+  &__logo {
+    padding-inline: 24px;
+
+    img {
+        width: 64px;
+        height: 22px;
+      }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 100%;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+}

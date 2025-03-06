@@ -1,0 +1,25 @@
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.nav {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 11px;
+  letter-spacing: 4%;
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+  }
+
+  &__link {
+    color: $secondary-color;
+  }
+}

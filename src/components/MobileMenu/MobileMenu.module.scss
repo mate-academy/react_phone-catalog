@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - $header-mobile-height);
+  box-sizing: border-box;
+  padding-top: 24px;
+  background-color: $white-color;
+
+  position: fixed;
+  top: $header-mobile-height;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 10;
+  transition: all 0.3s;
+
+  &--open {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  @include onTablet {
+    display: none;
+  }
+}

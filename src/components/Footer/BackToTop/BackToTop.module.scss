@@ -1,0 +1,26 @@
+@import '/src/styles/variables';
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid $icons-color;
+    color: aqua;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    & svg {
+      fill: $primary-color;
+    }
+  }
+}

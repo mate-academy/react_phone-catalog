@@ -1,1 +1,20 @@
 // not empty
+@import './styles/variables.scss';
+@import './styles/mixins.scss';
+@import './styles/reset.scss';
+
+.icon {
+  height: $header-mobile-height;
+  aspect-ratio: 1 / 1;
+  background-color: $white-color;
+  border: none;
+  box-shadow: -1px 0px 0px 0px $elements-color;
+
+  @include onTablet {
+    height: $tablet-min-width;
+  }
+
+  @include onDesktop {
+    height: $desktop-min-width;
+  }
+}
