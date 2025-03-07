@@ -10,6 +10,8 @@ import 'swiper/css/pagination';
 import './SwiperStyles.scss';
 
 import styles from './HomeBanner.module.scss';
+
+const BASE_URL = 'https://pdabizha.github.io/react_phone-catalog/';
 const images = {
   desktop: [
     'https://pdabizha.github.io/react_phone-catalog/img/Home_banner/Banner1_desktop.png',
@@ -17,6 +19,7 @@ const images = {
     'https://pdabizha.github.io/react_phone-catalog/img/Home_banner/banner-phones.png',
   ],
   tablet: [
+    `${BASE_URL}img/Home_banner/Banner1_tablet.png`,
     '/img/Home_banner/Banner1_tablet.png',
     '/img/Home_banner/banner-accessories.png',
     '/img/Home_banner/banner-phones.png',
