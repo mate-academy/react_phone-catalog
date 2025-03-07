@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import { useMediaQuery } from 'react-responsive';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState, useEffect } from 'react';
@@ -10,48 +11,31 @@ import 'swiper/css/pagination';
 import './SwiperStyles.scss';
 
 import styles from './HomeBanner.module.scss';
-
-const BASE_URL = 'https://pdabizha.github.io/react_phone-catalog/';
-const images = {
-  desktop: [
-    'https://pdabizha.github.io/react_phone-catalog/img/Home_banner/Banner1_desktop.png',
-    'https://pdabizha.github.io/react_phone-catalog/img/Home_banner/banner-accessories.png',
-    'https://pdabizha.github.io/react_phone-catalog/img/Home_banner/banner-phones.png',
-  ],
-  tablet: [
-    `${BASE_URL}img/Home_banner/Banner1_tablet.png`,
-    // '/img/Home_banner/Banner1_tablet.png',
-    '/img/Home_banner/banner-accessories.png',
-    '/img/Home_banner/banner-phones.png',
-  ],
-  mobile: [
-    '/img/Home_banner/Banner1_mobile.png',
-    '/img/Home_banner/banner-accessories_mobile.png',
-    '/img/Home_banner/banner-phones_mobile.png',
-  ],
-};
+import { images } from './Banner';
 
 export const HomeBanner = () => {
-  const [deviceImages, setDeviceImages] = useState<string[]>([]);
+  // const [deviceImages, setDeviceImages] = useState<string[]>([]);
+  const isMobile = useMediaQuery({ maxWidth: 639 });
+  const deviceImages = isMobile ? images.mobile : images.desktop;
 
-  useEffect(() => {
-    const updateImages = () => {
-      if (window.innerWidth >= 1200) {
-        setDeviceImages(images.desktop);
-      } else if (window.innerWidth >= 640) {
-        setDeviceImages(images.tablet);
-      } else {
-        setDeviceImages(images.mobile);
-      }
-    };
+  // useEffect(() => {
+  //   const updateImages = () => {
+  //     if (window.innerWidth >= 1200) {
+  //       setDeviceImages(images.desktop);
+  //     } else if (window.innerWidth >= 640) {
+  //       setDeviceImages(images.tablet);
+  //     } else {
+  //       setDeviceImages(images.mobile);
+  //     }
+  //   };
 
-    updateImages();
-    window.addEventListener('resize', updateImages);
+  //   updateImages();
+  //   window.addEventListener('resize', updateImages);
 
-    return () => {
-      window.removeEventListener('resize', updateImages);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('resize', updateImages);
+  //   };
+  // }, []);
 
   return (
     <section className={styles.home__banner}>
@@ -63,8 +47,8 @@ export const HomeBanner = () => {
           slidesPerView={1}
           loop={true}
           autoplay={{
-            delay: 5000, // 5 секунд
-            disableOnInteraction: false, // Автопрокрутка не останавливается при взаимодействии
+            delay: 5000,
+            disableOnInteraction: false,
           }}
           navigation={{
             nextEl: `.${styles.nextButton}`,

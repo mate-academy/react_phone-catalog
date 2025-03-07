@@ -1,3 +1,5 @@
+export const BASE_URL = 'https://pdabizha.github.io/react_phone-catalog/';
+
 export async function fetchData() {
   const phonesResponse = await fetch('/api/phones.json');
   const phonesFromServer = await phonesResponse.json();
