@@ -1,5 +1,5 @@
 @import './styles/variables.module';
-@import './styles/mixins.scss';
+@import './styles/mixins';
 
 @font-face {
   font-family: Mont;
@@ -43,7 +43,7 @@ html, body {
 
 a {
   text-decoration: none;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
 }
 
 h1 {
@@ -66,6 +66,7 @@ h2 {
     font-size: 22px;
   }
 }
+
 h3 {
   font-weight: 700;
   font-size: 22px;
@@ -76,6 +77,7 @@ h3 {
     font-size: 20px;
   }
 }
+
 h4 {
   font-weight: 600;
   font-size: 20px;
@@ -85,7 +87,3 @@ h4 {
     font-size: 16px;
   }
 }
-
-// .section {
-//   flex-grow: 1; // Растягивает контент, оставляя футер внизу
-// }

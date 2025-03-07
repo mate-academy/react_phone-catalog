@@ -1,14 +1,16 @@
-@import '../../../../styles/mixins.scss';
-@import '../../../../styles/variables.module.scss';
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables.module';
 
 .home__banner {
   @include grid-page;
+
   row-gap: 8px;
   grid-template-rows: 400px auto;
 
   @include on-tablet {
     grid-template-rows: 189px auto;
   }
+
   @include on-mobile {
     grid-template-rows: 320px auto;
     margin-inline: -16px;
@@ -21,6 +23,16 @@
   @include on-mobile {
     grid-column: 1/-1;
   }
+}
+
+.prevButton {
+  grid-column: 1/2;
+  background-image: url(/img/icons/Arrow_Left.svg);
+}
+
+.nextButton {
+  grid-column: -1/-2;
+  background-image: url(/img/icons/Arrow_Right.svg);
 }
 
 .prevButton,
@@ -40,19 +52,8 @@
   }
 }
 
-.prevButton {
-  grid-column: 1/2;
-  background-image: url(/img/icons/Arrow_Left.svg);
-}
-
-.nextButton {
-  grid-column: -1/-2;
-  background-image: url(/img/icons/Arrow_Right.svg);
-}
-
 .slide__img {
   width: 100%;
-  // height: auto;
   object-fit: contain;
 }
 

@@ -1,6 +1,6 @@
 @import '../../styles/variables.module';
 
-.underline {
+%underline {
   position: relative;
 
   &::after {
@@ -57,7 +57,7 @@
 }
 
 .burger__item {
-  @extend .underline;
+  @extend %underline;
 
   padding: 0;
   text-transform: uppercase;
@@ -85,7 +85,7 @@
 }
 
 .button {
-  @extend .underline;
+  @extend %underline;
 
   background-color: $white;
   flex-grow: 1;

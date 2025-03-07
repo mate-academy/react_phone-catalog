@@ -73,7 +73,7 @@
 }
 
 .navbar--item {
-  @extend .underline;
+  @extend %underline;
 
   padding: 0;
   text-transform: uppercase;
@@ -109,7 +109,7 @@
 }
 
 .button {
-  @extend .underline;
+  @extend %underline;
 
   position: relative;
   box-sizing: border-box;
@@ -135,7 +135,7 @@
   }
 }
 
-.underline {
+%underline {
   position: relative;
 
   &::after {

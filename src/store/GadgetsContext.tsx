@@ -106,7 +106,7 @@ export const GlobalStateProvider: React.FC<Props> = ({ children }) => {
           },
         });
       } catch (error) {
-        console.error('Ошибка загрузки данных:', error);
+        throw error;
       }
     }
 
