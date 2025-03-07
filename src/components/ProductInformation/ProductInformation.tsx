@@ -87,7 +87,7 @@ export const ProductInformation: React.FC = () => {
                     key={i}
                     className={`productInfo__color ${selecredColor === color ? 'selected' : ''}`}
                     onClick={() => handleChangeColor(color)}
-                    style={{ backgroundColor: color, opacity: 0.6 }}
+                    style={{ backgroundColor: color }}
                   />
                 ))}
               </div>
@@ -109,10 +109,10 @@ export const ProductInformation: React.FC = () => {
 
               <div className="productInfo__price">
                 <h3 className="productInfo__priceNew">
-                  {selectedPhone.priceRegular}
+                  {`$ ${selectedPhone.priceRegular}`}
                 </h3>
                 <h3 className="productInfo__priceOld">
-                  {selectedPhone.priceDiscount}
+                  {`$ ${selectedPhone.priceDiscount}`}
                 </h3>
               </div>
 
