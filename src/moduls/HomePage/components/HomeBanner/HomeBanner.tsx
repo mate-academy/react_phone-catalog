@@ -10,7 +10,7 @@ import './SwiperStyles.scss';
 import styles from './HomeBanner.module.scss';
 const images = {
   desktop: [
-    '/img/Home_banner/Banner1_desktop.png',
+    [`${process.env.PUBLIC_URL}/img/Home_banner/Banner1_desktop.png`],
     '/img/Home_banner/banner-accessories.png',
     '/img/Home_banner/banner-phones.png',
   ],
