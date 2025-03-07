@@ -21,6 +21,7 @@ export const InfoHook = () => {
     getPhones()
       .then(data => {
         setPhonesInfo(data);
+
         const foundPhone = data.find(phone => phone.name === productId);
 
         if (foundPhone) {
@@ -36,10 +37,11 @@ export const InfoHook = () => {
   }, [productId]);
 
   const updateUrl = (color: string, memory: string) => {
+    const baseUrl = selectedPhone?.namespaceId;
     const currentPath = location.pathname;
     const pathSegment = currentPath.split('/');
     const model = pathSegment[pathSegment.length - 1].split('-')[0];
-    const newItemId = `${model}-${color}-${memory}`;
+    const newItemId = `${baseUrl}&capacity${memory}&color${color}`;
 
     navigate(`/phones/${newItemId}`);
   };
