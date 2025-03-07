@@ -51,7 +51,7 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
   // #endregion
   // #region functions
 
-  const getCardWidth = () => {
+  const getCardWidth = useCallback(() => {
     const MOBILE_W = '232px';
     const TABLET_W = '237px';
     const DESKTOP_W = '248px';
@@ -65,7 +65,7 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
     }
 
     return MOBILE_W;
-  };
+  }, [isTablet, isDesktop]);
 
   const getTitle = useCallback((name: string, toIndex: number) => {
     const splitedName = name.split(' ');
@@ -227,6 +227,7 @@ export const ProductsContextProvider: React.FC<Props> = ({ children }) => {
       currentImage,
       suggestedProducts,
       suggestedProductsCache,
+      getCardWidth,
     ],
   );
 
