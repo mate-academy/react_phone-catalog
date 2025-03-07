@@ -1,22 +1,29 @@
 export const BASE_URL = 'https://pdabizha.github.io/react_phone-catalog/';
 
-export async function fetchData() {
-  const phonesResponse = await fetch('/api/phones.json');
-  const phonesFromServer = await phonesResponse.json();
+import { Accessories } from '../types/Accessories';
+import { PhonesTablets } from '../types/PhonesTablets';
+import { Product } from '../types/Product';
 
-  const tabletsResponse = await fetch('/api/tablets.json');
-  const tabletsFromServer = await tabletsResponse.json();
+export async function getPhones(): Promise<PhonesTablets[]> {
+  const response = await fetch(`${BASE_URL}/api/phones.json`);
 
-  const accessoriesResponse = await fetch('/api/accessories.json');
-  const accessoriesFromServer = await accessoriesResponse.json();
+  return response.json();
+}
 
-  const productsResponse = await fetch('/api/products.json');
-  const productsFromServer = await productsResponse.json();
+export async function getTablets(): Promise<PhonesTablets[]> {
+  const response = await fetch(`${BASE_URL}/api/tablets.json`);
 
-  return {
-    phonesFromServer,
-    tabletsFromServer,
-    accessoriesFromServer,
-    productsFromServer,
-  };
+  return response.json();
+}
+
+export async function getAccessories(): Promise<Accessories[]> {
+  const response = await fetch(`${BASE_URL}/api/accessories.json`);
+
+  return response.json();
+}
+
+export async function getProducts(): Promise<Product[]> {
+  const response = await fetch(`${BASE_URL}/api/products.json`);
+
+  return response.json();
 }

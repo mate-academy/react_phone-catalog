@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { StateContext } from '../../../../store/GadgetsContext';
 import styles from './ShopCategory.module.scss';
+import { BASE_URL } from '../../../../utils/httpClient';
 
 export const ShopCategory = () => {
   const { phones, tablets, accessories } = useContext(StateContext);
@@ -10,19 +11,19 @@ export const ShopCategory = () => {
     {
       title: 'Mobile phones',
       count: phones.length,
-      img: '/img/categories/category-phones.png',
+      img: `${BASE_URL}img/categories/category-phones.png`,
       name: 'phones',
     },
     {
       title: 'Tablets',
       count: tablets.length,
-      img: '/img/categories/category-tablets.png',
+      img: `${BASE_URL}img/categories/category-tablets.png`,
       name: 'tablets',
     },
     {
       title: 'Accessories',
       count: accessories.length,
-      img: '/img/categories/category-accessories.png',
+      img: `${BASE_URL}img/categories/category-accessories.png`,
       name: 'accessories',
     },
   ];

@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/indent */
 import React, { useEffect, useReducer } from 'react';
-import { fetchData } from '../utils/httpClient';
+import {
+  getAccessories,
+  getPhones,
+  getProducts,
+  getTablets,
+} from '../utils/httpClient';
 import { Product } from '../types/Product';
 import { PhonesTablets } from '../types/PhonesTablets';
 import { Accessories } from '../types/Accessories';
@@ -89,12 +94,17 @@ export const GlobalStateProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     async function loadData() {
       try {
-        const {
+        const [
           productsFromServer,
           phonesFromServer,
           tabletsFromServer,
           accessoriesFromServer,
-        } = await fetchData();
+        ] = await Promise.all([
+          getProducts(),
+          getPhones(),
+          getTablets(),
+          getAccessories(),
+        ]);
 
         dispatch({
           type: 'setData',

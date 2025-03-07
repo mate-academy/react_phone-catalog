@@ -1,9 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable max-len */
 import { useMediaQuery } from 'react-responsive';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState, useEffect } from 'react';
-// import image from '../../../../../public/img/Home_banner/Banner1_desktop.png'
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -14,28 +13,8 @@ import styles from './HomeBanner.module.scss';
 import { images } from './Banner';
 
 export const HomeBanner = () => {
-  // const [deviceImages, setDeviceImages] = useState<string[]>([]);
   const isMobile = useMediaQuery({ maxWidth: 639 });
   const deviceImages = isMobile ? images.mobile : images.desktop;
-
-  // useEffect(() => {
-  //   const updateImages = () => {
-  //     if (window.innerWidth >= 1200) {
-  //       setDeviceImages(images.desktop);
-  //     } else if (window.innerWidth >= 640) {
-  //       setDeviceImages(images.tablet);
-  //     } else {
-  //       setDeviceImages(images.mobile);
-  //     }
-  //   };
-
-  //   updateImages();
-  //   window.addEventListener('resize', updateImages);
-
-  //   return () => {
-  //     window.removeEventListener('resize', updateImages);
-  //   };
-  // }, []);
 
   return (
     <section className={styles.home__banner}>
