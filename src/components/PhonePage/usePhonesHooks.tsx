@@ -57,9 +57,19 @@ export const usePhonesHooks = () => {
   };
 
   const handleItemsChange = (option: DropDownOption) => {
-    setItemPrevPage(parseInt(option.value, 10));
+    const value = parseInt(option.value, 10);
+
+    if (isNaN(value)) {
+      setItemPrevPage(phones.length);
+      setSearchParams({ itemPrevPage: 'All' });
+    } else {
+      setItemPrevPage(value);
+      setSearchParams({ itemPrevPage: option.value });
+    }
+
     setCurrentPage(1);
-    setSearchParams({ itemPrevPage: option.value });
+    // setCurrentPage(1);
+    // setSearchParams({ itemPrevPage: option.value });
   };
 
   const indexOfLastItem = currentPage * itemPrevPage;

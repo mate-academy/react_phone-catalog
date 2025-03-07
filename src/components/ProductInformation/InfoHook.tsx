@@ -36,7 +36,10 @@ export const InfoHook = () => {
   }, [productId]);
 
   const updateUrl = (color: string, memory: string) => {
-    const newItemId = `${color}-${memory}`;
+    const currentPath = location.pathname;
+    const pathSegment = currentPath.split('/');
+    const model = pathSegment[pathSegment.length - 1].split('-')[0];
+    const newItemId = `${model}-${color}-${memory}`;
 
     navigate(`/phones/${newItemId}`);
   };
