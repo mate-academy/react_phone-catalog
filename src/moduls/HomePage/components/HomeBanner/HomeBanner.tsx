@@ -20,7 +20,7 @@ const images = {
   ],
   tablet: [
     `${BASE_URL}img/Home_banner/Banner1_tablet.png`,
-    '/img/Home_banner/Banner1_tablet.png',
+    // '/img/Home_banner/Banner1_tablet.png',
     '/img/Home_banner/banner-accessories.png',
     '/img/Home_banner/banner-phones.png',
   ],
