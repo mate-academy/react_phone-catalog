@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState, useEffect } from 'react';
@@ -11,9 +12,9 @@ import './SwiperStyles.scss';
 import styles from './HomeBanner.module.scss';
 const images = {
   desktop: [
-    '../../../../../img/Home_banner/Banner1_desktop.png',
-    '/img/Home_banner/banner-accessories.png',
-    '/img/Home_banner/banner-phones.png',
+    'https://pdabizha.github.io/react_phone-catalog/img/Home_banner/Banner1_desktop.png',
+    'https://pdabizha.github.io/react_phone-catalog/img/Home_banner/banner-accessories.png',
+    'https://pdabizha.github.io/react_phone-catalog/img/Home_banner/banner-phones.png',
   ],
   tablet: [
     '/img/Home_banner/Banner1_tablet.png',
