@@ -1,61 +1,155 @@
-.productInfo{
+.productInfo {
   margin: 0 32px;
 }
 
-.productInfolink{
+.productInfolink {
   display: flex;
   align-items: center;
   gap: 8px;
   margin: 24px 0 40px 0;
 }
 
-.productInfolink__title{
+.productInfolink__title {
   font-family: Mont-SemiBold, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  color: #75767F;
+  color: #75767f;
   align-items: center;
   display: flex;
   gap: 8px;
 }
 
-.productInfolink__back{
+.productInfo__title {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: #f1f2f9;
+  margin: 16px 0 40px 0;
+}
+
+.productInfo__wrapperPhone {
+  display: flex;
+  align-items: flex-start;
+}
+
+.Main__Image {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.Image {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.productInfo__Image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border: 1px solid #3b3e4a;
+}
+
+.productInfo__mainImage {
+  width: 464px;
+  height: 464px;
+  object-fit: contain;
+}
+
+.productInfolink__back {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.productInfolink__backTilte{
+.productInfolink__backTilte {
   font-family: Mont-SemiBold, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  color: #75767F;
+  color: #75767f;
   align-items: center;
   display: flex;
 }
 
-.productInfo__line{
-  border: 1px solid #3B3E4A
+.productInfo__paragraph {
+  margin-top: 80px;
 }
 
-.productInfo__content{
+.productInfo__line {
+  border: 1px solid #3b3e4a;
+}
+
+.productInfo__content {
   margin: 32px 0 0 0;
 }
 
-.productInfo__itemTitle{
+.productInfo__about {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: #f1f2f9;
+  margin: 0 0 16px 0;
+}
+
+.productInfo__itemTitle {
   font-family: Mont-SemiBold, sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 100%;
-  color: #F1F2F9;
+  color: #f1f2f9;
 }
 
-.productInfo__desctiption{
+.productInfo__desctiption {
   font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  color: #75767F;
+  color: #75767f;
+}
+
+.productInfo__color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // gap: 30px;
+}
+
+.productInfo__contentTitle {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: #75767f;
+  margin: 0 0 8px 0;
+}
+
+.productInfo__color{
+  margin: 0 8px 24px 0;
+}
+
+.productInfo__memory{
+  margin-top: 24px;
+}
+
+.productInfo__memorys{
+  margin: 0 8px 24px 0;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid #3b3e4a;
+  color: #F1F2F9;
+
+  &:active, &:hover{
+    background-color: #F1F2F9;
+    border: 1px solid #F1F2F9;
+    color: #0F1121;
+  }
 }
