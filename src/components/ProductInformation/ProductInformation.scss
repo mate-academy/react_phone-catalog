@@ -20,6 +20,22 @@
   gap: 8px;
 }
 
+.productInfolink__back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.productInfolink__backTitle {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #75767f;
+  align-items: center;
+  display: flex;
+}
+
 .productInfo__title {
   font-family: Mont-SemiBold, sans-serif;
   font-weight: 800;
@@ -29,15 +45,14 @@
   margin: 16px 0 40px 0;
 }
 
+.productInfo__wrapper {
+  display: flex;
+  gap: 64px;
+}
+
 .productInfo__wrapperPhone {
   display: flex;
   align-items: flex-start;
-}
-
-.Main__Image {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
 }
 
 .Image {
@@ -53,38 +68,151 @@
   border: 1px solid #3b3e4a;
 }
 
+.Main__Image {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .productInfo__mainImage {
   width: 464px;
   height: 464px;
   object-fit: contain;
 }
 
-.productInfolink__back {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.productInfo__colors {
+  margin-bottom: 24px;
 }
 
-.productInfolink__backTilte {
-  font-family: Mont-SemiBold, sans-serif;
+.productInfo__contentTitle {
+  font-family: Mont, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  line-height: 15px;
+  line-height: 100%;
   color: #75767f;
-  align-items: center;
-  display: flex;
+  margin: 0 0 8px 0;
 }
 
-.productInfo__paragraph {
-  margin-top: 80px;
+.productInfo__color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 8px 24px 0;
+  border: 2px solid #3b3e4a;
 }
 
 .productInfo__line {
   border: 1px solid #3b3e4a;
 }
 
-.productInfo__content {
-  margin: 32px 0 0 0;
+.productInfo__memory {
+  margin-top: 24px;
+}
+
+.productInfo__memorys {
+  margin: 0 8px 24px 0;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid #3b3e4a;
+  color: #f1f2f9;
+
+  &:active,
+  &:hover,
+  &:focus {
+    background-color: #f1f2f9;
+    border: 1px solid #f1f2f9;
+    color: #0f1121;
+  }
+}
+
+.productInfo__price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.productInfo__priceNew {
+  font-family: Mont-Bold;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: #f1f2f9;
+}
+
+.productInfo__priceOld {
+  font-family: Mont-Bold;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  text-decoration: line-through;
+  color: #75767f;
+}
+
+.productInfo__button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.productInfo__buttonAdd {
+  text-decoration: none;
+  background-color: #905bff;
+  border: 1px solid #905bff;
+  color: #f1f2f9;
+  width: 263px;
+  height: 48px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+}
+
+.productInfo__buttonLike {
+  width: 48px;
+  height: 48px;
+  background-color: #323542;
+  border: 1px solid #323542;
+  color: #f1f2f9;
+}
+
+.productInfo__Information{
+  margin-top: 32px;
+}
+
+.productInfo__informationAll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.productInfo__screenTitle {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: #75767f;
+}
+
+.productInfo__screenDescription {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: #f1f2f9;
+}
+
+.productInfo__wrapperAboutTech{
+  margin-top: 80px;
+  display: flex;
+  gap: 64px
+  ;
+}
+
+.productInfo__paragraph {
+  width: 50%;
 }
 
 .productInfo__about {
@@ -94,6 +222,10 @@
   line-height: 140%;
   color: #f1f2f9;
   margin: 0 0 16px 0;
+}
+
+.productInfo__content {
+  margin: 32px 0 0 0;
 }
 
 .productInfo__itemTitle {
@@ -112,44 +244,28 @@
   color: #75767f;
 }
 
-.productInfo__color {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  cursor: pointer;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // gap: 30px;
+.productInfo__wrappeTech{
+  width: 50%;
 }
 
-.productInfo__contentTitle {
-  font-family: Mont, sans-serif;
+.productInfo__TechinformationAll{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productInfo__TechscreenTitle{
+  font-family: Mont-SemiBold, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
   color: #75767f;
-  margin: 0 0 8px 0;
 }
 
-.productInfo__color{
-  margin: 0 8px 24px 0;
-}
-
-.productInfo__memory{
-  margin-top: 24px;
-}
-
-.productInfo__memorys{
-  margin: 0 8px 24px 0;
-  height: 32px;
-  background-color: transparent;
-  border: 1px solid #3b3e4a;
-  color: #F1F2F9;
-
-  &:active, &:hover{
-    background-color: #F1F2F9;
-    border: 1px solid #F1F2F9;
-    color: #0F1121;
-  }
+.productInfo__TechscreenDescription{
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: #f1f2f9;
 }
