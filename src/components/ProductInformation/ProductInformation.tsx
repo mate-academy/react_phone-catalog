@@ -15,7 +15,7 @@ export const ProductInformation: React.FC = () => {
     null,
   );
   const [loading, setLoading] = useState(true);
-  const backNavigate = useNavigate(); // повернення на попередню сторінку
+  const navigate = useNavigate(); // повернення на попередню сторінку
   const [mainImage, setMainImage] = useState<string>('');
   const [selecredColor, setSelectedColor] = useState<string | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<string | null>(null);
@@ -29,7 +29,9 @@ export const ProductInformation: React.FC = () => {
 
         if (foundPhone) {
           setSelectedPhone(foundPhone);
-          setMainImage(foundPhone.image[0]);
+          setMainImage(foundPhone.image);
+          setSelectedColor(foundPhone.color);
+          setSelectedMemory(foundPhone.capacityAvailable);
         }
       })
       .finally(() => {
@@ -37,21 +39,35 @@ export const ProductInformation: React.FC = () => {
       });
   }, [productId]);
 
-  const handleChangeColor = (color: string) => {
-    setSelectedColor(color);
+  const updateUrl = (color: string, memory: string) => {
+    const newItemId = `${color}-${memory}`;
 
-    const newPhone = phonesInfo.find(
-      phone => phone.name.includes(productId!) && phone.color === color,
-    );
+    navigate(`/phones/${newItemId}`);
+  };
+
+  const handleChangeColor = (color: string) => {
+    if (!selectedMemory) {
+      return;
+    }
+
+    setSelectedColor(color);
+    const newPhone = phonesInfo.find(phone => phone.color === color);
 
     if (newPhone) {
       setSelectedPhone(newPhone);
-      setMainImage(newPhone.images[0]);
+      setMainImage(newPhone.images[0]); // Змінюємо головне зображення
     }
+
+    updateUrl(color, selectedMemory);
   };
 
   const handleChangeMemory = (mamory: string) => {
+    if (!selecredColor) {
+      return;
+    }
+
     setSelectedMemory(mamory);
+    updateUrl(mamory, selecredColor);
   };
 
   return (
@@ -74,11 +90,8 @@ export const ProductInformation: React.FC = () => {
         </p>
       </div>
       <div className="productInfolink__back">
-        <img src={back} alt="back__link" onClick={() => backNavigate(-1)} />
-        <p
-          className="productInfolink__backTitle"
-          onClick={() => backNavigate(-1)}
-        >
+        <img src={back} alt="back__link" onClick={() => navigate(-1)} />
+        <p className="productInfolink__backTitle" onClick={() => navigate(-1)}>
           Back
         </p>
       </div>
