@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Footer.scss';
+import style from './Footer.module.scss';
 import { Logo } from '../Logo/Logo';
 import { translate } from '../../utils/translate';
 import { useContext } from 'react';
@@ -9,34 +9,37 @@ export const Footer = () => {
   const { lang } = useContext(LangContext);
 
   return (
-    <div className="footer">
+    <div className={style.footer}>
       <Logo />
-      <nav className="footer__nav">
-        <ul className="footer__nav__list">
-          <li className="list__item">
+      <nav className={style.footer__nav}>
+        <ul className={style.footer__nav__list}>
+          <li className={style.footer__list__item}>
             <Link
               to="https://github.com/AndreaTkachuk/react_phone-catalog/"
-              className="nav__link"
+              className={style.nav__link}
             >
               Github
             </Link>
           </li>
-          <li className="list__item">
-            <Link to="mailto:andrii.tkachuk.fs@gmail.com" className="nav__link">
+          <li className={style.footer__list__item}>
+            <Link
+              to="mailto:andrii.tkachuk.fs@gmail.com"
+              className={style.nav__link}
+            >
               {translate('footer.link.contacts', lang)}
             </Link>
           </li>
-          <li className="list__item">
+          <li className={style.footer__list__item}>
             <Link
               to="https://github.com/AndreaTkachuk/react_phone-catalog/"
-              className="nav__link"
+              className={style.nav__link}
             >
               {translate('footer.link.rights', lang)}
             </Link>
           </li>
         </ul>
       </nav>
-      <div className="footer__back-top">
+      <div className={style.footer__backTop}>
         <p className="small-text">{translate('footer.button', lang)}</p>
         <div
           className="icon button button--back-top icon--back-top"

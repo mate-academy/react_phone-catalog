@@ -2,12 +2,14 @@
 @use '../../styles/utils/mixins' as mix;
 
 .footer {
+  max-width: 1136px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 -1px 0 0 var(--c-elements);
   border-bottom: 1px solid var(--c-elements);
   padding-block: 32px;
   gap: 32px;
+  margin: 0 auto;
 
   opacity: 0;
   transform: translateY(50px);
@@ -40,7 +42,7 @@
     }
   }
 
-  &__back-top {
+  &__backTop {
     display: flex;
     align-items: center;
     color: var(--c-secondary);

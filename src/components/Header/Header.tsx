@@ -16,7 +16,7 @@ export const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
   // const [isSearch, setIsSearch] = useState(false);
   const { lang, setLang } = useContext(LangContext);
-  const { favouriteGoods } = useAppSelector(state => state.favourites);
+  const { favoriteGoods } = useAppSelector(state => state.favorites);
   const { cartGoods } = useAppSelector(state => state.cart);
   const dispatch = useAppDispatch();
 
@@ -222,9 +222,9 @@ export const Header = () => {
             }}
           >
             <div
-              data-count={favouriteGoods.length}
+              data-count={favoriteGoods.length}
               className={classNames('icon icon__nav icon--heart', {
-                'has-items': favouriteGoods.length > 0,
+                'has-items': favoriteGoods.length > 0,
               })}
             ></div>
           </NavLink>

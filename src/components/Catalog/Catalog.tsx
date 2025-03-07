@@ -256,7 +256,7 @@ export const Catalog: React.FC<Props> = ({ items }) => {
           </div>
         </div>
       ) : (
-        <h1>no items</h1>
+        <h4>{translate('favorite.no-items', lang)}!</h4>
       )}
     </div>
   );

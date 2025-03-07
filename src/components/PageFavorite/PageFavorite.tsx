@@ -1,5 +1,5 @@
 import { Navigation } from '../Navigation/Navigation';
-import './PageFavourite.scss';
+import './PageFavorite.scss';
 import { useAppSelector } from '../../app/hooks';
 import { useContext } from 'react';
 import { translate } from '../../utils/translate';
@@ -9,17 +9,17 @@ import { Card } from '../Card/Card';
 
 export const PageFavorite = () => {
   const { lang } = useContext(LangContext);
-  const { favouriteGoods } = useAppSelector(state => state.favourites);
+  const { favoriteGoods } = useAppSelector(state => state.favorites);
 
   return (
-    <div className="favourite">
+    <div className="favorite">
       <Navigation />
-      <h1 className="favourite__title">{translate('favourite.title', lang)}</h1>
-      <p className="categories__text">{`${favouriteGoods.length} ${translate('categories.models', lang)}`}</p>
-      {favouriteGoods.length > 0 ? (
-        <div className="favourite__cards">
-          {favouriteGoods.map(item => (
-            <div className="favourite__card" key={item.id}>
+      <h1 className="favorite__title">{translate('favorite.title', lang)}</h1>
+      <p className="categories__text">{`${favoriteGoods.length} ${translate('categories.models', lang)}`}</p>
+      {favoriteGoods.length > 0 ? (
+        <div className="favorite__cards">
+          {favoriteGoods.map(item => (
+            <div className="favorite__card" key={item.id}>
               <Card item={item} discount={true} />
             </div>
           ))}
@@ -27,7 +27,7 @@ export const PageFavorite = () => {
       ) : (
         <div>
           <Link to={'/'} className="not-found__button button">
-            {translate('not-found.button', lang)}
+            {translate('favourite.no-items', lang)}
           </Link>
           <img
             src="img/product-not-found.png"

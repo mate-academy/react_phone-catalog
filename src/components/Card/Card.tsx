@@ -6,7 +6,7 @@ import { translate } from '../../utils/translate';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { favouriteSlice } from '../../features/favouriteSlice';
+import { favoriteSlice } from '../../features/favoriteSlice';
 import { cartSlice } from '../../features/cartSlice';
 
 type Props = {
@@ -16,12 +16,12 @@ type Props = {
 
 export const Card: React.FC<Props> = ({ item, discount }) => {
   const { lang } = useContext(LangContext);
-  const { favouriteGoods } = useAppSelector(state => state.favourites);
+  const { favoriteGoods } = useAppSelector(state => state.favorites);
   const { cartGoods } = useAppSelector(state => state.cart);
   const dispatch = useAppDispatch();
 
   const isItemInCart = cartGoods.some(good => good.id === item.id);
-  const isItemInFavourites = favouriteGoods.some(good => good.id === item.id);
+  const isItemInFavorites = favoriteGoods.some(good => good.id === item.id);
 
   return (
     <article className="card">
@@ -88,13 +88,13 @@ export const Card: React.FC<Props> = ({ item, discount }) => {
           </button>
           <button
             className={classNames('card__button icon icon--heart button', {
-              'is-favorite': isItemInFavourites,
+              'is-favorite': isItemInFavorites,
             })}
             onClick={() => {
-              if (isItemInFavourites) {
-                dispatch(favouriteSlice.actions.removeGood(item));
+              if (isItemInFavorites) {
+                dispatch(favoriteSlice.actions.removeGood(item));
               } else {
-                dispatch(favouriteSlice.actions.addGood(item));
+                dispatch(favoriteSlice.actions.addGood(item));
               }
             }}
           ></button>

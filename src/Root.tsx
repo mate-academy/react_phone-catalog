@@ -15,7 +15,7 @@ import { Accessories } from './components/Accessories/Accessories';
 import { PageItem } from './components/PageItem/PageItem';
 import { Category } from './utils/enums';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
-import { PageFavorite } from './components/PageFavourite/PageFavourite';
+import { PageFavorite } from './components/PageFavorite/PageFavorite';
 import { PageCart } from './components/PageCart/PageCart';
 
 export const Root = () => (

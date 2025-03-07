@@ -5,7 +5,7 @@ import tabletsReducer from '../features/tabletsSlice';
 import accessoriesReducer from '../features/accessoriesSlice';
 import navigationReducer from '../features/navigationSlice';
 import cartReducer from '../features/cartSlice';
-import favouriteReducer from '../features/favouriteSlice';
+import favoriteReducer from '../features/favoriteSlice';
 import queryReducer from '../features/querySlice';
 
 export const store = configureStore({
@@ -15,7 +15,7 @@ export const store = configureStore({
     accessories: accessoriesReducer,
     navigation: navigationReducer,
     cart: cartReducer,
-    favourites: favouriteReducer,
+    favorites: favoriteReducer,
     query: queryReducer,
   },
 });

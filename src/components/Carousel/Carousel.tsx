@@ -12,7 +12,7 @@ export const Carousel: React.FC<Props> = ({ items, visibleDiscount }) => {
   const itemRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [currentShift, setCurrentShift] = useState(0);
-  const [itemWidth, setItemWidth] = useState(212);
+  const [itemWidth, setItemWidth] = useState(0);
   const [containerWidth, setContainerWidth] = useState(0);
   const visibleItems = containerWidth / (itemWidth + 16);
 
@@ -36,7 +36,7 @@ export const Carousel: React.FC<Props> = ({ items, visibleDiscount }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       updateWidth();
-    }, 0);
+    }, 100);
 
     return () => clearTimeout(timeout);
   }, []);

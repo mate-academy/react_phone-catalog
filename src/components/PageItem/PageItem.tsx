@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { translate } from '../../utils/translate';
 import { LangContext } from '../../context/LangContext';
 import { navigationSlice } from '../../features/navigationSlice';
-import { favouriteSlice } from '../../features/favouriteSlice';
+import { favoriteSlice } from '../../features/favoriteSlice';
 
 const allColors = {
   gold: '#FCDBC1',
@@ -39,7 +39,7 @@ export const PageItem = () => {
   const { phones } = useAppSelector(state => state.phones);
   const { tablets } = useAppSelector(state => state.tablets);
   const { accessories } = useAppSelector(state => state.accessories);
-  const { favouriteGoods } = useAppSelector(state => state.favourites);
+  const { favoriteGoods } = useAppSelector(state => state.favorites);
   const dispatch = useAppDispatch();
   const item =
     phones.find(product => product.id === id) ||
@@ -147,17 +147,17 @@ export const PageItem = () => {
                     className={classNames(
                       'card__button icon icon--heart button',
                       {
-                        'is-favorite': favouriteGoods.some(
+                        'is-favorite': favoriteGoods.some(
                           good => good.id === item?.id,
                         ),
                       },
                     )}
                     onClick={() => {
                       if (item) {
-                        if (favouriteGoods.some(good => good.id === item.id)) {
-                          dispatch(favouriteSlice.actions.removeGood(item));
+                        if (favoriteGoods.some(good => good.id === item.id)) {
+                          dispatch(favoriteSlice.actions.removeGood(item));
                         } else {
-                          dispatch(favouriteSlice.actions.addGood(item));
+                          dispatch(favoriteSlice.actions.addGood(item));
                         }
                       }
                     }}
