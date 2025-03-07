@@ -1,6 +1,7 @@
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState, useEffect } from 'react';
+// import image from '../../../../../public/img/Home_banner/Banner1_desktop.png'
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -10,7 +11,7 @@ import './SwiperStyles.scss';
 import styles from './HomeBanner.module.scss';
 const images = {
   desktop: [
-    [`${process.env.PUBLIC_URL}/img/Home_banner/Banner1_desktop.png`],
+    '../../../../../img/Home_banner/Banner1_desktop.png',
     '/img/Home_banner/banner-accessories.png',
     '/img/Home_banner/banner-phones.png',
   ],
