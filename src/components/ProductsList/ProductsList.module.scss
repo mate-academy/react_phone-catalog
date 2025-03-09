@@ -1,0 +1,9 @@
+@import '../../styles/main';
+
+.products-list {
+  gap: 16px 40px;
+
+  @include page-grid-auto(229px);
+
+  
+}
