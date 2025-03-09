@@ -1,0 +1,18 @@
+@import '../../styles/main';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: $fw-regular;
+  color: $color-primary;
+
+  &__path {
+    @include hover(opacity, 0.7);
+
+    &--disabled {
+      color: $color-secondary;
+      pointer-events: none;
+    }
+  }
+}
