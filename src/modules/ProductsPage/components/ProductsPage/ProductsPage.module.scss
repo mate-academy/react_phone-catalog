@@ -12,6 +12,18 @@
     margin-bottom: 8px;
   }
 
+  &__error {
+    padding-block: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    & :nth-child(2) {
+      height: 48px;
+      width: 50vw;
+    }
+  }
+
   &__quantity {
     margin-bottom: 24px;
     color: $secondary-color;

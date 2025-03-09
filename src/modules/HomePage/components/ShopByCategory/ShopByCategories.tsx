@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import styles from './ShopByCategories.module.scss';
-import { ProductsContext } from '../../../shared/_store/DataProvider';
+import { ProductsContext } from '../../../shared/_store/ProductsProvider';
 import { Category, Product } from '../../../../_types/products';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';

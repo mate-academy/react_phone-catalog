@@ -5,37 +5,30 @@
   height: 100%;
   aspect-ratio: 1;
   box-sizing: border-box;
-  background-repeat: no-repeat;
-  background-position: center;
+  color: $primary-color;
+
+  @include flex-center;
+
+  @include hoverChild(transform, scale(1.2));
 
   &--active {
     box-shadow:
       inset 0 -3px 0 0 $primary-color;
   }
 
-  &--menu {
-    background-image: url('/img/icons/icon-menu.svg');
-  }
-
-  &--close {
-    background-image: url('/img/icons/icon-close.svg');
-  }
-
   &--favourites {
-    background-image: url('/img/icons/icon-favourites.svg');
     display: none;
 
     @include on-tablet {
-      display: block;
+      display: flex;
     }
   }
 
   &--cart {
-    background-image: url('/img/icons/icon-cart.svg');
     display: none;
 
     @include on-tablet {
-      display: block;
+      display: flex;
     }
   }
 

@@ -52,8 +52,8 @@
 
   &__icons {
     display: none;
-    width: 100%;
     justify-content: end;
+    width: 100%;
 
     @include on-tablet {
       display: flex;
@@ -67,7 +67,7 @@
       }
     }
 
-    & :nth-child(n) {
+    &> :nth-child(n) {
       border-left: 1px solid $elements-color;
     }
   }

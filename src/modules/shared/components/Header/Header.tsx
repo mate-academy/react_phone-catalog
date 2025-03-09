@@ -10,6 +10,7 @@ import { Container } from '../Container';
 import { IconLink } from '../IconLink';
 import { FavoritesContext } from '../../_store/FavoritesProvider';
 import { CartContext } from '../../_store/CartProvider';
+import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,13 +54,16 @@ export const Header = () => {
             <NavLinks />
           </ul>
         </nav>
+
         <div className={styles.header__icons}>
+          <ThemeSwitcher />
           <IconLink modificator="favourites" count={favorites.length} />
           <IconLink modificator="cart" count={totalAmount} />
         </div>
         <div
           className={`${styles.header__icons} ${styles['header__icons--mobile']}`}
         >
+          <ThemeSwitcher />
           {isMenuOpen ? (
             <IconLink modificator={'close'} onClick={toggleMenu} />
           ) : (

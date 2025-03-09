@@ -4,10 +4,26 @@
 @import './utils/mixins';
 @import './utils/typography';
 
+
 body {
   font-family: Mont, sans-serif;
   color: $primary-color;
   background-color: $hover-bg-color;
   overflow-x: hidden;
   scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 1px -5px $primary-color inset;
+    background-color: $hover-bg-color;
+    border-radius: 0px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: $accent-color;
+   }
 }

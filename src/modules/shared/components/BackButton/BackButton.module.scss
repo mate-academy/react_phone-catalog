@@ -5,11 +5,11 @@
   align-items:  center;
   gap: 4px;
 
+  @include small-text;
+
   &:hover {
     cursor: pointer;
   }
-
-  @include small-text;
 
   &__arrow {
     display: flex;

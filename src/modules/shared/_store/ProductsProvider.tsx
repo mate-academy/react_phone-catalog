@@ -1,6 +1,7 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext } from 'react';
 import { getProducts } from '../../../_services/products';
 import { Product } from '../../../_types/products';
+import { useProducts } from '../../../_hooks/useProducts';
 
 interface ProductsContextType {
   products: Product[];
@@ -19,30 +20,16 @@ export const ProductsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        const data = await getProducts();
-
-        setProducts(data);
-        setError(null);
-      } catch (err) {
-        setError('Failed to fetch products');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
+  const {
+    data: products,
+    loading,
+    error,
+  } = useProducts(() => getProducts(), 'Failed to fetch products');
 
   return (
-    <ProductsContext.Provider value={{ products, loading, error }}>
+    <ProductsContext.Provider
+      value={{ products: products || [], loading, error }}
+    >
       {children}
     </ProductsContext.Provider>
   );

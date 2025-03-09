@@ -3,7 +3,7 @@ import { BackButton } from '../../../shared/components/BackButton';
 import styles from './CartPage.module.scss';
 import { CartContext } from '../../../shared/_store/CartProvider';
 import { CartItem } from '../CartItem';
-import { ProductsContext } from '../../../shared/_store/DataProvider';
+import { ProductsContext } from '../../../shared/_store/ProductsProvider';
 import { DividedLine } from '../../../shared/components/DividedLine';
 import { ButtonPrimary } from '../../../shared/components/ButtonPrimary';
 

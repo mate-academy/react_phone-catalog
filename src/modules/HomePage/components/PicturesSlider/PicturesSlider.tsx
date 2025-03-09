@@ -62,12 +62,8 @@ export const PicturesSlider = () => {
       </div>
 
       <div className={styles['pictures-slider__controls']}>
-        {banners.MOBILE_BANNERS.map((urlToImage, index) => {
-          if (index === minBannersLength) {
-            return;
-          }
-
-          return (
+        {banners.MOBILE_BANNERS.slice(0, minBannersLength).map(
+          (urlToImage, index) => (
             <button
               key={urlToImage}
               className={styles['pictures-slider__control']}
@@ -81,8 +77,8 @@ export const PicturesSlider = () => {
                 })}
               ></div>
             </button>
-          );
-        })}
+          ),
+        )}
       </div>
     </section>
   );

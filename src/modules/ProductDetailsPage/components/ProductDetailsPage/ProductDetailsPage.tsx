@@ -1,12 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../../shared/components/Breadcrumbs';
 import styles from './ProductDetailsPage.module.scss';
-import {
-  Category,
-  Product,
-  ProductKeys,
-  ProductWithDetails,
-} from '../../../../_types/products';
+import { Category, Product, ProductKeys } from '../../../../_types/products';
 import { useCallback, useEffect, useState } from 'react';
 import {
   filteredByCategory,
@@ -22,17 +17,23 @@ import { useSwipeable } from 'react-swipeable';
 import { ProductsSlider } from '../../../shared/components/ProductsSlider';
 import { AddToCardButton } from '../../../shared/components/AddToCardButton';
 import { DividedLine } from '../../../shared/components/DividedLine';
+import { useProducts } from '../../../../_hooks/useProducts';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
-  const [product, setProduct] = useState<ProductWithDetails | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const {
+    data: product,
+    loading,
+    error,
+  } = useProducts(() => getProducById(productId!), 'Failed to fetch product', [
+    productId,
+  ]);
+
   const [selectedColor, setSelectedColor] = useState<string | undefined>(
-    undefined,
+    product?.color,
   );
   const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
-    undefined,
+    product?.capacity,
   );
   const [prevProductId, setPrevProductId] = useState<string | null>(null);
   const { currentIndex, handlePrev, handleNext, goToIndex } = useSlider({
@@ -55,31 +56,14 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (productId !== prevProductId) {
-      setLoading(true);
       setPrevProductId(productId || null);
-
-      if (productId) {
-        const fetchProduct = async () => {
-          try {
-            const data = await getProducById(productId);
-
-            setProduct(data);
-            setError(null);
-            if (data) {
-              setSelectedCapacity(data.details?.capacity);
-              setSelectedColor(data.details?.color);
-            }
-          } catch (err) {
-            setError('Failed to fetch products');
-          } finally {
-            setLoading(false);
-          }
-        };
-
-        setTimeout(() => fetchProduct(), 1000);
-      }
     }
-  }, [productId, goToIndex]);
+
+    if (product) {
+      setSelectedCapacity(product.details?.capacity);
+      setSelectedColor(product.details?.color);
+    }
+  }, [product, productId, prevProductId]);
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: handlePrev,

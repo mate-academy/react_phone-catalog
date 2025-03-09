@@ -2,7 +2,7 @@ import { useContext, useMemo } from 'react';
 import { Breadcrumbs } from '../../../shared/components/Breadcrumbs';
 import styles from './FavoritesPage.module.scss';
 import { FavoritesContext } from '../../../shared/_store/FavoritesProvider';
-import { ProductsContext } from '../../../shared/_store/DataProvider';
+import { ProductsContext } from '../../../shared/_store/ProductsProvider';
 import { ProductsList } from '../../../ProductsPage/components/ProductsList';
 
 export const FavoritesPage = () => {

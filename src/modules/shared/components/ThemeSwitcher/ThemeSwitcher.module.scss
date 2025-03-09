@@ -1,0 +1,16 @@
+@import '../../../../styles/global';
+
+.button {
+  box-sizing: border-box;
+  color: $primary-color;
+  background-color: transparent;
+  height: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+
+  @include hoverChild(transform, scale(1.2));
+}
+
+.icon {
+  @include flex-center;
+}

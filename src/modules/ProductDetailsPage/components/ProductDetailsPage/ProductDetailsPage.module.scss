@@ -210,15 +210,13 @@
 
   &__capacity {
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100%;
     border: 1px solid $icons-color;
     border-radius: 8px;
     padding: 7px 8px 4px;
     cursor: pointer;
 
+    @include flex-center;
     @include body-text;
     @include hover(border-color, $secondary-color);
 

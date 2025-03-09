@@ -17,16 +17,16 @@ const Dropdown: React.FC<Props> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleItemClick = () => {
+  const handleClose = () => {
     setIsOpen(false);
   };
 
-  const handlToggelClick = () => setIsOpen(prev => !prev);
+  const handleToggelClick = () => setIsOpen(prev => !prev);
 
   function getLabelBySortValue(value: string) {
     const option = options.find(item => item.value === value);
 
-    return option ? option.label : null;
+    return option ? option.label : '';
   }
 
   return (
@@ -41,7 +41,7 @@ const Dropdown: React.FC<Props> = ({
           className={classNames(styles.dropdown__header, {
             [styles['dropdown__header--focus']]: isOpen,
           })}
-          onClick={handlToggelClick}
+          onClick={handleToggelClick}
         >
           <div className={styles.dropdown__value}>
             {getLabelBySortValue(selectedOption)}
@@ -55,7 +55,7 @@ const Dropdown: React.FC<Props> = ({
         {isOpen && (
           <ul className={styles.dropdown__select}>
             {options.map(option => (
-              <li key={option.label} onClick={() => handleItemClick()}>
+              <li key={option.label} onClick={() => handleClose()}>
                 <SearchLink
                   params={option.params}
                   className={styles.dropdown__option}

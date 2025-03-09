@@ -1,13 +1,37 @@
-$accent-color: #216cff;
-$secondary-accent-color: #f447af;
-$primary-color: #0f0f11;
-$secondary-color: #89939a;
-$icons-color: #b4bdc3;
-$elements-color: #e2e6e9;
-$hover-bg-color: #fafbfc;
-$white-color: #fff;
-$green-color: #27ae60;
-$red-color: #eb5757;
+:root {
+  --accent-color: #216cff;
+  --secondary-accent-color: #f447af;
+  --primary-color: #0f0f11;
+  --secondary-color: #89939a;
+  --icons-color: #b4bdc3;
+  --elements-color: #e2e6e9;
+  --hover-bg-color: #fafbfc;
+  --white-color: #fff;
+  --green-color: #27ae60;
+  --red-color: #eb5757;
+}
+
+[data-theme="dark"] {
+  --accent-color: #905bff;
+  --secondary-accent-color: #f447af;
+  --primary-color: #f1f2f9;
+  --secondary-color: #75767f;
+  --icons-color: #4a4d58;
+  --elements-color: #3b3e4a;
+  --hover-bg-color: #161827;
+  --white-color: #0f1121;
+}
+
+$accent-color: var(--accent-color);
+$secondary-accent-color: var(--secondary-accent-color);
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$icons-color: var(--icons-color);
+$elements-color: var(--elements-color);
+$hover-bg-color: var(--hover-bg-color);
+$white-color: var(--white-color);
+$green-color: var(--green-color);
+$red-color: var(--red-color);
 $tablet-min-width: 640px;
 $desktop-min-width: 1200px;
 $effectDuration: 0.5s;

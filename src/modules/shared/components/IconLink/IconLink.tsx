@@ -1,6 +1,12 @@
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import styles from './IconLink.module.scss';
+import {
+  BurgerMenu,
+  CartIcon,
+  Close,
+  Favourites,
+} from '../../_constants/icons';
 
 type Props = {
   modificator: string;
@@ -26,6 +32,10 @@ export const IconLink: React.FC<Props> = ({
         }
         to={isNavigate ? `${modificator}` : '#'}
       >
+        {modificator === 'close' && <Close />}
+        {modificator === 'menu' && <BurgerMenu />}
+        {modificator === 'cart' && <CartIcon />}
+        {modificator === 'favourites' && <Favourites />}
         {!!count && <div className={styles.icon__counter}>{count}</div>}
       </NavLink>
     </>

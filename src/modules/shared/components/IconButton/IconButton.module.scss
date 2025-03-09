@@ -7,11 +7,10 @@
   border-radius: 48px;
   border: 1px solid $icons-color;
   background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
+  color: $primary-color;
 
+  @include flex-center;
   @include hover(border-color, $primary-color);
 
   &--disabled {

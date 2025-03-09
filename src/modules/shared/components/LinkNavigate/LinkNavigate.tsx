@@ -18,7 +18,7 @@ export const LinkNavigate: React.FC<Props> = ({ title, path }) => {
           })
         }
       >
-        {title}
+        <div className={styles.linkNavigate__text}>{title}</div>
       </NavLink>
     </>
   );

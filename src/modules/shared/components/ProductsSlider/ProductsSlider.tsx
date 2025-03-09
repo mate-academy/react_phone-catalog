@@ -1,7 +1,7 @@
 import styles from './ProductsSlider.module.scss';
 import { IconButton } from '../IconButton';
 import ProductCard from '../ProductCard/ProductCard';
-import { ProductsContext } from '../../_store/DataProvider';
+import { ProductsContext } from '../../_store/ProductsProvider';
 import { Category, Product } from '../../../../_types/products';
 import { useSlider } from '../../../../_hooks/useSlider';
 

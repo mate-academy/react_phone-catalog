@@ -1,4 +1,3 @@
-import styles from './NavLinks.module.scss';
 import { LinkNavigate } from '../LinkNavigate';
 
 export const NavLinks = () => {
@@ -12,7 +11,7 @@ export const NavLinks = () => {
   return (
     <>
       {pages.map(({ title, path }) => (
-        <li key={title} className={styles.nav__item}>
+        <li key={title}>
           <LinkNavigate title={title} path={path} />{' '}
         </li>
       ))}

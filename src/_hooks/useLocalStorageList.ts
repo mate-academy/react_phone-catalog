@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getStoredItems } from '../_utils/getStoredItems';
 
 type SerializableValue =
   | string
@@ -14,21 +15,9 @@ export function useLocalStorageList<T extends SerializableValue>(
   key: string,
   initialValue: T[],
 ) {
-  const savedItems = localStorage.getItem(key);
-
-  const [items, setItems] = useState<T[]>(() => {
-    if (savedItems === null) {
-      return initialValue;
-    }
-
-    try {
-      return JSON.parse(savedItems);
-    } catch (e) {
-      localStorage.removeItem(key);
-
-      return initialValue;
-    }
-  });
+  const [items, setItems] = useState<T[]>(() =>
+    getStoredItems(key, initialValue),
+  );
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(items));

@@ -9,9 +9,7 @@ export const LogoHeader: React.FC<Props> = ({ isMenuOpen }) => {
   return (
     <Link to="/">
       <img
-        className={`${styles.image} ${
-          isMenuOpen ? styles['image--menu'] : styles['image--default']
-        }`}
+        className={`${styles.image} ${isMenuOpen ? styles['image--menu'] : ''}`}
         alt="Nice Gadgets logo"
       />
     </Link>

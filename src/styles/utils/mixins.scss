@@ -134,3 +134,19 @@
   }
 }
 
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin hoverChild($property, $toValue) {
+
+  & :first-child {
+    transition: #{$property} $effectDuration;
+  }
+
+  &:hover> :first-child {
+    #{$property}: $toValue;
+  }
+}
