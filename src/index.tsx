@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { AppRoutes } from './AppRoutes';
 import { ProductsProvider } from './contexts/ProductsContext';
 import { ItemCardProvider } from './contexts/ItemCardContext';
