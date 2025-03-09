@@ -1,1 +1,25 @@
-// not empty
+@import './styles/main';
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app {
+  &__container {
+    margin-inline: auto;
+    padding-inline: $mobile-horizontal-indents;
+    min-width: 320px;
+    max-width: 1200px;
+
+    @include on-tablet {
+      padding-inline: $tablet-horizontal-indents;
+    }
+
+    @include on-desktop {
+      padding-inline: $desktop-horizontal-indents;
+    }
+  }
+}
