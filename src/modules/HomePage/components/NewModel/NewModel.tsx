@@ -12,20 +12,33 @@ import arrowRight from '../../../../shared/assets/icons/chevron-arrow-right.svg'
 import phoneFromServer from '../../../../../public/api/phones.json';
 import { ProductCart } from '../../../../components/ProductCart/ProductCart';
 import { Phone } from '../../../../type/phone';
+import { useMediaQuery } from '@uidotdev/usehooks';
 
 export const NewModel: React.FC = () => {
   const phones: Phone[] = phoneFromServer.slice(-8);
+  const isTablet = useMediaQuery('(min-width: 640px)');
+  const isDesctop = useMediaQuery('(min-width: 1200px)');
+
+  let slidesView = 0;
+
+  if (isTablet) {
+    slidesView = 2.5;
+  }
+
+  if (isDesctop) {
+    slidesView = 4;
+  }
 
   return (
     <div className={style.container}>
       <div className={style.top}>
         <h1 className={style.title}>Brand New Model</h1>
         <div className={style.navigation}>
-          <div className={style.navigationPrev}>
+          <div id='swiper-new-brand-prev' className={style.navigationPrev}>
             <img src={arrowLeft} alt="arrow left" className={style.arrowPrev} />
           </div>
 
-          <div className={style.navigationNext}>
+          <div id='swiper-new-brand-next' className={style.navigationNext}>
             <img src={arrowRight} alt="arrow right" className={style.arrowNext} />
           </div>
         </div>
@@ -34,11 +47,10 @@ export const NewModel: React.FC = () => {
       <div className={style.slider}>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-          spaceBetween={16}
-          slidesPerView={1.5}
+          slidesPerView={slidesView}
           navigation={{
-            nextEl: `#swiper-button-next`,
-            prevEl: `#swiper-button-prev`,
+            nextEl: `#swiper-new-brand-next`,
+            prevEl: `#swiper-new-brand-prev`,
           }}
           onSwiper={swiper => console.log(swiper)}
           onSlideChange={() => console.log('slide change')}
