@@ -17,7 +17,7 @@ export const ProductItem: React.FC<Props> = ({
 }) => {
   return (
     <NavLink
-      to={`/phones/${product.name}`}
+      to={`/phones/${product.itemId}`}
       className="product__elements"
       // onClick={onClick}
     >

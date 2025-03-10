@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ProductDetails } from '../../types/ProductDetails';
 import './ProductInformation.scss';
 import { getPhones } from '../../utils/api';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export const InfoHook = () => {
   const { productId } = useParams<{ productId: string }>(); // Отримуємо productId з URL
@@ -11,10 +11,14 @@ export const InfoHook = () => {
     null,
   );
   const [loading, setLoading] = useState(true);
+  const { pathname } = useLocation(); // URL
   const navigate = useNavigate(); // повернення на попередню сторінку
   const [mainImage, setMainImage] = useState<string>('');
   const [selecredColor, setSelectedColor] = useState<string | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<string | null>(null);
+  const urlArr = pathname.split('-'); // URL
+
+  const colorFrom = urlArr[urlArr.length - 1]; // URL
 
   useEffect(() => {
     setLoading(true);
@@ -22,13 +26,13 @@ export const InfoHook = () => {
       .then(data => {
         setPhonesInfo(data);
 
-        const foundPhone = data.find(phone => phone.name === productId);
+        const foundPhone = data.find(phone => phone.id === productId);
 
         if (foundPhone) {
           setSelectedPhone(foundPhone);
           setMainImage(foundPhone.images[0]);
           setSelectedColor(foundPhone.color);
-          setSelectedMemory(foundPhone.capacityAvailable);
+          setSelectedMemory(foundPhone.capacity);
         }
       })
       .finally(() => {
@@ -36,22 +40,14 @@ export const InfoHook = () => {
       });
   }, [productId]);
 
+  // URL
   const updateUrl = (color: string, memory: string) => {
-    const searchParams = new URLSearchParams(window.location.search);
-    // const baseUrl = selectedPhone?.namespaceId;
-    // const currentPath = location.pathname;
-    // const pathSegment = currentPath.split('/');
-    // const model = pathSegment[pathSegment.length - 1]
-    //   .split('-')[0]
-    //   .toLowerCase();
-    // const colors = searchParams.get('color') || '';
-    // const capacity = searchParams.get('capacity') || '';
+    if (colorFrom.split(' ').length > 1) {
+      urlArr.pop();
+    }
 
-    searchParams.set('color', color);
-    searchParams.set('capacity', memory);
-    // const newItemId = `${searchParams}${model}?capacity=${capacity}&color=${colors}`;
-
-    navigate(`/phones/${searchParams}`);
+    urlArr.pop();
+    navigate(`${urlArr.join('-')}-${color}-${memory}`);
   };
 
   const handleChangeColor = (color: string) => {
@@ -64,31 +60,22 @@ export const InfoHook = () => {
 
     if (newPhone) {
       setSelectedPhone(newPhone);
-      setMainImage(newPhone.images[0]);
     }
 
     updateUrl(color, selectedMemory);
   };
 
-  const handleChangeMemory = (mamory: string) => {
-    if (!selecredColor) {
-      return;
+  const handleChangeMemory = (memory: string) => {
+    const newPhone = phonesInfo.find(phone => phone.capacity === memory);
+
+    if (newPhone) {
+      setSelectedPhone(newPhone);
     }
 
-    setSelectedMemory(mamory);
-    updateUrl(selecredColor, mamory);
+    if (selecredColor && memory) {
+      updateUrl(selecredColor, memory);
+    }
   };
-
-  // const techInfo = [
-  //   { title: 'Screen', value: selectedPhone.screen },
-  //   { title: 'Resolution', value: selectedPhone.resolution },
-  //   { title: 'Processor', value: selectedPhone.processor },
-  //   { title: 'RAM', value: selectedPhone.ram },
-  //   { title: 'Built in memory', value: selectedPhone.capacity },
-  //   { title: 'Camera', value: selectedPhone.camera },
-  //   { title: 'Zoom', value: selectedPhone.zoom },
-  //   { title: 'Cell', value: selectedPhone.cell },
-  // ];
 
   return {
     productId,

@@ -48,8 +48,18 @@
 }
 
 .productInfo__wrapper {
-  display: flex;
+  display: block;
   gap: 64px;
+
+  @include onTablet {
+    display: flex;
+    gap: 17px;
+  }
+
+  @include onDesktop {
+    display: flex;
+    gap: 64px;
+  }
 }
 
 .productInfo__wrapperPhone {
@@ -64,14 +74,19 @@
 }
 
 .productInfo__Image {
-  width: 80px;
-  height: 80px;
+  width: 35px;
+  height: 35px;
   object-fit: contain;
   border: 1px solid #3b3e4a;
 
-  @include onTablet{
-    width: 35x;
+  @include onTablet {
+    width: 35px;
     height: 35px;
+  }
+
+  @include onDesktop {
+    width: 80px;
+    height: 80px;
   }
 }
 
@@ -82,13 +97,18 @@
 }
 
 .productInfo__mainImage {
-  width: 464px;
-  height: 464px;
+  width: 287px;
+  height: 287px;
   object-fit: contain;
 
-  @include onTablet{
+  @include onTablet {
     width: 287px;
     height: 287px;
+  }
+
+  @include onDesktop {
+    width: 464px;
+    height: 464px;
   }
 }
 
@@ -179,6 +199,14 @@
   font-size: 14px;
   line-height: 21px;
   text-align: center;
+
+  @include onTablet {
+    width: 180px;
+  }
+
+  @include onDesktop {
+    width: 263px;
+  }
 }
 
 .productInfo__buttonLike {
@@ -189,7 +217,7 @@
   color: #f1f2f9;
 }
 
-.productInfo__Information{
+.productInfo__Information {
   margin-top: 32px;
 }
 
@@ -216,22 +244,30 @@
   color: #f1f2f9;
 }
 
-.productInfo__wrapperAboutTech{
+.productInfo__wrapperAboutTech {
   margin-top: 80px;
   display: flex;
   gap: 64px;
 
-  @include onTablet{
+  @include onTablet {
     display: block;
   }
 
-  @include onDesktop{
+  @include onDesktop {
     display: block;
   }
 }
 
 .productInfo__paragraph {
   width: 50%;
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  @include onDesktop {
+    width: 50%;
+  }
 }
 
 .productInfo__about {
@@ -263,17 +299,25 @@
   color: #75767f;
 }
 
-.productInfo__wrappeTech{
+.productInfo__wrappeTech {
   width: 50%;
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  @include onDesktop {
+    width: 50%;
+  }
 }
 
-.productInfo__TechinformationAll{
+.productInfo__TechinformationAll {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.productInfo__TechscreenTitle{
+.productInfo__TechscreenTitle {
   font-family: Mont-SemiBold, sans-serif;
   font-weight: 700;
   font-size: 12px;
@@ -281,7 +325,7 @@
   color: #75767f;
 }
 
-.productInfo__TechscreenDescription{
+.productInfo__TechscreenDescription {
   font-family: Mont-SemiBold, sans-serif;
   font-weight: 700;
   font-size: 12px;
