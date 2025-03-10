@@ -1,61 +1,80 @@
+import { Logo } from '../../shared/Logo/Logo';
+import { Favorite } from '../../shared/Favorite/Favorite';
+import { ShopBag } from '../../shared/ShopBag/ShopBag';
 import React from 'react';
 import style from './Header.module.scss';
-import { Logo } from '../../shared/Logo/Logo';
-import { BurgerMenu } from '../../shared/BurgerMenu/BurgerMenu';
-import { Favorite } from '../../shared/Favorite/Favorite';
-import { BagCard } from '../../shared/Bags/Bags';
+import { NavLink, Link } from 'react-router-dom';
+import { Burger } from '../../shared/Burger/Burger';
 
 export const Header: React.FC = () => {
   return (
-    <div className={style.container}>
+    <div className={style.header}>
       <div className={style.wrapper}>
-        <div className={style.logo}>
+        <Link to="/" className={style.headerLogo}>
           <Logo />
-        </div>
+        </Link>
 
-        <nav className={style.nav}>
-          <ul className={style.list}>
-            <li className={style.item}>
-              <a href="#" className={`${style.link} ${style.active}`}>
+        <div className={style.navigation}>
+          <ul className={style.navList}>
+            <li className={style.navItem}>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? `${style.isActiveLink}` : `${style.navLink}`
+                }
+              >
                 Home
-              </a>
+              </NavLink>
             </li>
 
-            <li className={style.item}>
-              <a href="#" className={style.link}>
+            <li className={style.navItem}>
+              <NavLink
+                to="/phones"
+                className={({ isActive }) =>
+                  isActive ? `${style.isActiveLink}` : `${style.navLink}`
+                }
+              >
                 Phones
-              </a>
+              </NavLink>
             </li>
 
-            <li className={style.item}>
-              <a href="#" className={style.link}>
+            <li className={style.navItem}>
+              <NavLink
+                to="/tablets"
+                className={({ isActive }) =>
+                  isActive ? `${style.isActiveLink}` : `${style.navLink}`
+                }
+              >
                 Tablets
-              </a>
+              </NavLink>
             </li>
 
-            <li className={style.item}>
-              <a href="#" className={style.link}>
+            <li className={style.navItem}>
+              <NavLink
+                to="/accessories"
+                className={({ isActive }) =>
+                  isActive ? `${style.isActiveLink}` : `${style.navLink}`
+                }
+              >
                 Accessories
-              </a>
+              </NavLink>
             </li>
           </ul>
-        </nav>
-
-        <div className={style.rightContent}>
-          <div className={style.rightIcons}>
-            <div className={style.favorite}>
-              <Favorite />
-            </div>
-
-            <div className={style.bags}>
-              <BagCard />
-            </div>
-          </div>
-
-          <div className={style.burger}>
-            <BurgerMenu />
-          </div>
         </div>
+
+        <div className={style.userInetrface}>
+          <NavLink to="/favorite" className={style.UIfavorite}>
+            <Favorite />
+          </NavLink>
+
+          <NavLink to="/bag" className={style.UIshopBag}>
+            <ShopBag />
+          </NavLink>
+        </div>
+
+        <NavLink to="/menu" className={style.burger}>
+          <Burger />
+        </NavLink>
       </div>
     </div>
   );

@@ -1,0 +1,111 @@
+@import '../../style/global';
+
+.card {
+  color: $light-color;
+  padding: 32px;
+  background-color: $hight-dark-color;
+  box-sizing: border-box;
+
+  // width: 212px;
+  width: 100%;
+
+  @include on-tablet {
+    // width: 237px;
+    width: 100%;
+  }
+
+  @include on-desctop {
+    width: 100%;
+    height: 506px;
+  }
+
+  @include on-large-desctop {
+    width: 272px;
+  }
+}
+
+.phoneImg {
+  width: 100%;
+
+  @include on-tablet {
+    height: 181px;
+  }
+
+  @include on-desctop {
+    height: 196px;
+  }
+}
+
+.phoneTitle {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+
+  padding-top: 8px; /// LOOKs
+}
+
+.phonePrice {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+
+  padding-top: 8px;
+}
+
+.phoneDescription {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+.phoneProperties {
+  display: flex;
+  justify-content: space-between;
+}
+
+.propertieTitle {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: $light-gray-color;
+}
+
+.propertieDescription{
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: $light-color;
+  text-transform: uppercase;
+
+  text-align: right;
+}
+
+.phoneFooter {
+  display: flex;
+  gap: 8px;
+
+  padding-top: 8px;
+}
+
+.addToCart {
+  display: block;
+  width: 100%;
+  background-color: $accent-color;
+  color: $light-color;
+  padding: 9px;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+
+  text-align: center;
+}
+
+.favorite {
+  padding: 12px;
+  background-color: #323542;
+  cursor: pointer;
+}

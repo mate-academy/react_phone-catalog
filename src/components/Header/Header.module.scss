@@ -1,18 +1,15 @@
 @import '../../style/global';
 
 .wrapper {
-  border: 1px solid $light-gray-color;
-
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid $midle-gray-color;
+  box-sizing: border-box;
 
-  @include on-tablet {
-    justify-content: start;
-  }
+  background-color: $background-color;
 }
 
-.logo {
+.headerLogo {
   padding: 13px 16px;
 
   @include on-desctop {
@@ -20,88 +17,100 @@
   }
 }
 
-.burger {
-  padding: 16px;
-  border-left: 1px solid $light-gray-color;
-  box-sizing: border-box;
-
-  @include on-tablet {
-    display: none;
-  }
-}
-
-.favorite,
-.bags {
-  padding: 16px;
-  border-left: 1px solid $light-gray-color;
-  box-sizing: border-box;
+.navigation {
   display: none;
 
   @include on-tablet {
     display: block;
   }
-
-  @include on-desctop {
-    padding: 24px;
-  }
 }
 
-.rightIcons {
+.navList {
+  list-style: none;
   display: flex;
   align-items: center;
+  gap: 64px;
+
+  padding: 0;
+  margin: 0;
+  padding-left: 24px;
 }
 
-.nav {
+.navLink {
+  color: $light-gray-color;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+
+  padding-block: 26px;
+}
+
+.userInetrface {
   display: none;
+  margin-left: auto;
 
   @include on-tablet {
     display: flex;
   }
 }
 
-.list {
-  list-style: none;
-  display: flex;
-  gap: 32px;
-  font-family: Mont-Bold, sans-serif;
-
-  padding-left: 16px;
-  margin: 0;
+.UIfavorite {
+  padding: 16px;
+  cursor: pointer;
+  border-left: 1px solid $midle-gray-color;
 
   @include on-desctop {
-    gap: 64px;
+    padding: 24px;
   }
 }
 
-.link.active::after {
-  content: '';
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background-color: $light-color;
-  bottom: 0;
-  right: 0;
+.UIshopBag {
+  padding: 16px;
+  cursor: pointer;
+  border-left: 1px solid $midle-gray-color;
+
+  @include on-desctop {
+    padding: 24px;
+  }
 }
 
-.link.active {
+.isActiveLink {
   color: $light-color;
-}
-
-.link {
-  text-transform: uppercase;
-  color: $light-gray-color;
+  font-family: Mont-Bold, sans-serif;
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 4%;
-  padding-block: 18px;
+  text-transform: uppercase;
+
+  padding-block: 26px;
+
   position: relative;
 
-  @include on-desctop {
-    padding-block: 26px;
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 100%;
+
+    bottom: 0;
+    left: 0;
   }
 }
 
-.rightContent {
-  display: flex;
+.burger {
+  padding: 16px;
+  cursor: pointer;
+  border-left: 1px solid $midle-gray-color;
   margin-left: auto;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-desctop {
+    padding: 24px;
+  }
 }
