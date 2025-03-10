@@ -19,7 +19,7 @@ export const NewModel: React.FC = () => {
   const isTablet = useMediaQuery('(min-width: 640px)');
   const isDesctop = useMediaQuery('(min-width: 1200px)');
 
-  let slidesView = 0;
+  let slidesView = 1.5;
 
   if (isTablet) {
     slidesView = 2.5;

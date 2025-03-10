@@ -1,9 +1,9 @@
 @import '../../../../style/global';
 
 .container {
-  @include padding-inline;
-
   padding-top: 56px;
+
+  @include padding-inline;
 
   @include on-tablet {
     padding-top: 64px;
