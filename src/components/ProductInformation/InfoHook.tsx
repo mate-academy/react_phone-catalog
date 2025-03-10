@@ -36,19 +36,22 @@ export const InfoHook = () => {
       });
   }, [productId]);
 
-  const updateUrl = () => {
+  const updateUrl = (color: string, memory: string) => {
     const searchParams = new URLSearchParams(window.location.search);
     // const baseUrl = selectedPhone?.namespaceId;
-    const currentPath = location.pathname;
-    const pathSegment = currentPath.split('/');
-    const model = pathSegment[pathSegment.length - 1]
-      .split('-')[0]
-      .toLowerCase();
-    const colors = searchParams.get('color') || '';
-    const capacity = searchParams.get('capacity') || '';
-    const newItemId = `${searchParams}${model}?capacity=${capacity}&color=${colors}`;
+    // const currentPath = location.pathname;
+    // const pathSegment = currentPath.split('/');
+    // const model = pathSegment[pathSegment.length - 1]
+    //   .split('-')[0]
+    //   .toLowerCase();
+    // const colors = searchParams.get('color') || '';
+    // const capacity = searchParams.get('capacity') || '';
 
-    navigate(`/phones/${newItemId}`);
+    searchParams.set('color', color);
+    searchParams.set('capacity', memory);
+    // const newItemId = `${searchParams}${model}?capacity=${capacity}&color=${colors}`;
+
+    navigate(`/phones/${productId}?${searchParams.toString()}`);
   };
 
   const handleChangeColor = (color: string) => {
