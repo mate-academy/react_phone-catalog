@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import { useFavourites } from '../shared/context/FavouritesContext';
 import { useProducts } from '../shared/context/ProductsContext';
-import { ProductItem } from '../shared/ProductItem';
-import style from './ProductsList.module.scss';
+import { ProductsList } from '../shared/ProductsList';
+import style from './FavouriteProductsList.module.scss';
 
-export const ProductsList = () => {
+export const FavouriteProductsList = () => {
   const { favourites } = useFavourites();
   const { products } = useProducts();
   const favouriteProducts = products.filter(product =>
@@ -13,9 +14,9 @@ export const ProductsList = () => {
   return (
     <div className={style.favorites}>
       <div className={style.favorites__header}>
-        <a href="/">
+        <Link to="/">
           <img src="icons/home.png" alt="Back home" />
-        </a>
+        </Link>
         <img src="icons/arrow-right.png" alt="Favorites" />
         <span className={style.favorites__name}>Favourites</span>
       </div>
@@ -23,15 +24,7 @@ export const ProductsList = () => {
       <p className={style.favorites__quantity}>
         {`${favourites.length}`} items
       </p>
-      <div className={style.favorites__items}>
-        {favouriteProducts.map(favouriteProduct => (
-          <ProductItem
-            product={favouriteProduct}
-            key={favouriteProduct.id}
-            styles={{ margin: 0, width: '300px' }}
-          />
-        ))}
-      </div>
+      <ProductsList products={favouriteProducts} />
     </div>
   );
 };

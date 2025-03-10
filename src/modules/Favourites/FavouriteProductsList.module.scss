@@ -27,17 +27,4 @@
     font-size: 14px;
     font-weight: 600;
   }
-
-  &__items {
-    @include mobile {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      justify-content: center;
-    }
-
-    @include tablet {
-      justify-content: flex-start;
-    }
-  }
 }

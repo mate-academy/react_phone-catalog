@@ -13,6 +13,8 @@ type ProductsContextType = {
   phones: Gadget[];
   tablets: Gadget[];
   accessories: Gadget[];
+  loading: boolean;
+  error: boolean;
 };
 
 const ProductsContext = createContext<ProductsContextType | undefined>(
@@ -24,6 +26,8 @@ export const ProductsProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<Gadget[]>([]);
   const [tablets, setTablets] = useState<Gadget[]>([]);
   const [accessories, setAccessories] = useState<Gadget[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetch('./api/products.json')
@@ -36,38 +40,65 @@ export const ProductsProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
+    setError(false);
+    setLoading(true);
     fetch('./api/phones.json')
       .then(res => res.json())
       .then(data => {
-        const phonesFromServer = [...data];
+        setTimeout(() => {
+          const phonesFromServer = [...data];
 
-        setPhones(phonesFromServer);
+          setPhones(phonesFromServer);
+          setLoading(false);
+        }, 1000);
+      })
+      .catch(() => {
+        setError(true);
+        setLoading(false);
       });
   }, []);
 
   useEffect(() => {
+    setError(false);
+    setLoading(true);
     fetch('./api/tablets.json')
       .then(res => res.json())
       .then(data => {
-        const tabletsFromServer = [...data];
+        setTimeout(() => {
+          const tabletsFromServer = [...data];
 
-        setTablets(tabletsFromServer);
+          setTablets(tabletsFromServer);
+          setLoading(false);
+        }, 1000);
+      })
+      .catch(() => {
+        setError(true);
+        setLoading(false);
       });
   }, []);
 
   useEffect(() => {
+    setError(false);
+    setLoading(true);
     fetch('./api/accessories.json')
       .then(res => res.json())
       .then(data => {
-        const accessoriesFromServer = [...data];
+        setTimeout(() => {
+          const accessoriesFromServer = [...data];
 
-        setAccessories(accessoriesFromServer);
+          setAccessories(accessoriesFromServer);
+          setLoading(false);
+        }, 1000);
+      })
+      .catch(() => {
+        setError(true);
+        setLoading(false);
       });
   }, []);
 
   return (
     <ProductsContext.Provider
-      value={{ products, phones, tablets, accessories }}
+      value={{ products, phones, tablets, accessories, loading, error }}
     >
       {children}
     </ProductsContext.Provider>

@@ -34,7 +34,7 @@
   }
 
   @include laptop {
-    max-width: 88%;
+    max-width: 80%;
   }
 
 }
@@ -45,9 +45,9 @@
   }
   @include tablet {
     display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+    width: 95%;
+    margin: 0 auto;
+    object-fit: contain;
   }
 
 }
@@ -78,10 +78,10 @@
 }
 
 .arrowLeft {
-  left: -50px;
+  left: -7%;
 }
 
 .arrowRight {
-  right: -50px;
+  right: -7%;
 }
 

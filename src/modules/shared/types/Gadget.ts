@@ -1,6 +1,6 @@
 export type Gadget = {
   id: string;
-  category: 'phones';
+  category: string;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];

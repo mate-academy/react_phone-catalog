@@ -1,0 +1,95 @@
+@import '../shared/mixins.scss';
+@import '../shared/variables.scss';
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.colors,
+.capacity {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.colors__options,
+.capacity__options {
+  display: flex;
+  gap: 10px;
+  position: relative;
+
+  &::after {
+    @include mobile {
+      content: "";
+      position: absolute;
+      bottom: -24px;
+      width: 100%;
+      height: 1px;
+      background-color: $standard-color;
+    }
+
+    @include laptop {
+      width: 60%;
+    }
+
+  }
+}
+
+.colors {
+  &__label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px $standard-color;
+    display: inline-block;
+  }
+}
+
+input:checked + .colors__circle {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px $hover-color;
+}
+
+.capacity {
+
+  &__label {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__box {
+    display: inline-block;
+    padding: 7px 8px;
+    border: 2px solid $standard-color;
+  }
+}
+
+input:checked + .capacity__box {
+  background-color: $hover-color;
+  color: white;
+  border-color: $hover-color;
+}
+
+.title {
+  margin: 0;
+  color: $grey-color;
+  font-size: 12px;
+  font-weight: 600;
+
+}
+

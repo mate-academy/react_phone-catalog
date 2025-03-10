@@ -1,23 +1,29 @@
-/* eslint-disable no-console */
-import React, { useEffect, useRef } from 'react';
-import style from './ProductsSlider.module.scss';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { useEffect, useRef, useState } from 'react';
+import { Product } from '../shared/types/Product';
+import style from './SuggestedProducts.module.scss';
 import Slider from 'react-slick';
-import { ProductItem } from '../../shared/ProductItem';
-import { Product } from '../../shared/types/Product';
+import { ProductItem } from '../shared/ProductItem';
 
-type Props = {
-  title: string;
-  productsToShow: Product[];
-  discount: boolean;
-};
+export const SuggestedProducts = () => {
+  const getSuggestedProducts = async (count: number) => {
+    const response = await fetch('./api/products.json');
+    const products = await response.json();
 
-export const ProductsSlider: React.FC<Props> = ({
-  title,
-  productsToShow,
-  discount,
-}) => {
+    return products.sort(() => 0.5 - Math.random()).slice(0, count);
+  };
+
+  const [products, setProducts] = useState<Product[]>([]);
   const sliderRef = useRef<Slider | null>(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const suggested = await getSuggestedProducts(12);
+
+      setProducts(suggested);
+    };
+
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     const track = document.querySelector('.slick-track') as HTMLElement;
@@ -27,11 +33,11 @@ export const ProductsSlider: React.FC<Props> = ({
       track.style.transform = 'translateX(-20px)';
       list.style.paddingLeft = '0';
       list.style.paddingRight = '10%';
-      list.style.overflow = 'hidden';
     }
   }, []);
 
   const settings = {
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -61,9 +67,9 @@ export const ProductsSlider: React.FC<Props> = ({
   };
 
   return (
-    <div className={style.products}>
+    <div className={style.suggested}>
       <div className={style.header}>
-        <h2 className={style.title}>{title}</h2>
+        <h2 className={style.title}>You may also like</h2>
         <div className={style.controls}>
           <button
             className={style.prev}
@@ -79,19 +85,17 @@ export const ProductsSlider: React.FC<Props> = ({
           </button>
         </div>
       </div>
-
-      <div className={style.slider}>
-        <Slider {...settings}>
-          {productsToShow.map(product => (
+      <Slider {...settings}>
+        {products.map(product => (
+          <div key={product.id} className={style.slide}>
             <ProductItem
-              key={product.id}
               product={product}
-              discount={discount}
+              discount={true}
               styles={{ width: '90%' }}
             />
-          ))}
-        </Slider>
-      </div>
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };

@@ -15,7 +15,12 @@ export const Footer = () => {
         <ul className={style.navigation__list}>
           {navigation.map(item => (
             <li key={item}>
-              <a href="/" className={style.navigation__link}>
+              <a
+                href="https://github.com/yzhyhaliuk/react_phone-catalog"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={style.navigation__link}
+              >
                 {item}
               </a>
             </li>

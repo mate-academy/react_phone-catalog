@@ -1,0 +1,14 @@
+@import '../shared/mixins.scss';
+
+.items {
+  @include mobile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @include tablet {
+    gap: 4%;
+    justify-content: start;
+  }
+}

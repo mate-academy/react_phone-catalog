@@ -1,0 +1,68 @@
+@import '../shared/variables.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.name {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: $grey-color;
+}
+
+.container {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: url('./icons/arrow-down.png') no-repeat center;
+    background-size: contain;
+    position: absolute;
+    top: 55%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
+
+  &__open::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid $standard-color;
+  padding: 10px 40px 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $hover-color;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $grey-color;
+  }
+
+  &:focus {
+    border: 1px solid $hover-color;
+    outline: none;
+  }
+}
+
+.option {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: $grey-color;
+
+}

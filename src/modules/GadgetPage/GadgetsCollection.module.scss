@@ -1,1 +1,80 @@
+@import '../shared/mixins.scss';
+@import '../shared/variables.scss';
 
+.collection {
+  padding: 33px;
+
+  &__header {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__name {
+    color: $grey-color;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__quantity {
+    color: $grey-color;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__selects {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.title {
+  color: $hover-color;
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  &__prev,
+  &__next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid $grey-color;
+    width: 30px;
+    height: 30px;
+
+    &:hover {
+      border: 1px solid $hover-color;
+    }
+  }
+
+  &__button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid $standard-color;
+    width: 30px;
+    height: 30px;
+    color: $hover-color;
+    font-size: 14px;
+    font-weight: 600;
+
+    &:hover {
+      border: 1px solid $hover-color;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $hover-color;
+    }
+  }
+}

@@ -1,0 +1,126 @@
+@import '../../shared/variables.scss';
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid $border-color;
+
+  &__left {
+    display: flex;
+    padding-left: 24px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__close {
+    display: block;
+    padding: 16px;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+
+    &:hover {
+      border-bottom: 3px solid $hover-color;
+    }
+  }
+
+  &__menuList {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__menuSelect {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    gap: 64px;
+
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $standard-color;
+    font-size: 12px;
+    font-weight: 800;
+    padding-bottom: 20px;
+
+    &:hover {
+      color: $hover-color;
+      border-bottom: 3px solid $hover-color;
+    }
+  }
+
+  &__bottom {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+  }
+
+  &__menuHeart,
+  &__menuCart {
+    display: block;
+    position: relative;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    flex: 1;
+    padding: 16px 0;
+    text-align: center;
+
+
+      &:hover {
+        border: 1px solid $hover-color;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background-color: $hover-color;
+        transition: width 0.3s ease, left 0.3s ease;
+
+      }
+
+      &:hover::after {
+        width: 100%;
+        left: 0;
+      }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+

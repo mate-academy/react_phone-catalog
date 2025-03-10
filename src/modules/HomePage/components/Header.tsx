@@ -21,9 +21,12 @@ export const Header: React.FC = () => {
               <ul className={style.nav__select}>
                 {navigation.map(item => (
                   <li className={style.nav__option} key={item}>
-                    <a className={style.nav__link} href="/">
+                    <Link
+                      className={style.nav__link}
+                      to={`/${item.toLowerCase()}`}
+                    >
                       {item}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -39,60 +42,18 @@ export const Header: React.FC = () => {
               </Link>
             </div>
             <div className={style.nav__cart}>
-              <a href="/">
+              <Link to="/cart">
                 <img src="./icons/cart.png" alt="Cart" />
-              </a>
+              </Link>
             </div>
             <div className={style.nav__menu}>
-              <a href="#menu">
+              <Link to="/menu">
                 <img src="./icons/menu.png" alt="Menu" />
-              </a>
+              </Link>
             </div>
           </div>
         </nav>
       </header>
-
-      <aside className={style.aside} id="menu">
-        <nav className={style.nav}>
-          <div className={style.nav__left}>
-            <div className={style.nav__logo}>
-              <a href="/">
-                <img src="./logo/Logo.png" alt="Logo" />
-              </a>
-            </div>
-          </div>
-          <div className={style.nav__right}>
-            <div className={style.nav__close}>
-              <a href="/">
-                <img src="./icons/Close.png" alt="Close" />
-              </a>
-            </div>
-          </div>
-        </nav>
-        <div className={style.nav__menuList}>
-          <ul className={style.nav__menuSelect}>
-            {navigation.map(item => (
-              <li className={style.nav__option} key={item}>
-                <a className={style.nav__link} href="/">
-                  {item}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={style.nav__bottom}>
-          <div className={style.nav__menuHeart}>
-            <a href="/">
-              <img src="./icons/heart.png" alt="Heart" />
-            </a>
-          </div>
-          <div className={style.nav__menuCart}>
-            <a href="/">
-              <img src="./icons/cart.png" alt="Cart" />
-            </a>
-          </div>
-        </div>
-      </aside>
     </>
   );
 };

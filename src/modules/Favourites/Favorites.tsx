@@ -1,11 +1,11 @@
 import { Header } from '../HomePage/components/Header';
-import { ProductsList } from './ProductsList';
+import { FavouriteProductsList } from './FavouriteProductsList';
 
 export const Favorites = () => {
   return (
     <>
       <Header />
-      <ProductsList />
+      <FavouriteProductsList />
     </>
   );
 };

@@ -3,12 +3,21 @@
 
 .product {
   @include mobile {
+    position: relative;
     box-sizing: border-box;
     border: 1px solid $standard-color;
-    margin: 0 auto;
+    margin: 20px 0;
     padding: 20px 20px;
     height: 506px;
-    width: 90%;
+    width: 100%;
+  }
+
+  @include tablet {
+    width: 48%;
+  }
+
+  @include laptop {
+    width: 22%;
   }
 
   &__image {
@@ -78,10 +87,12 @@
   &__like {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
   }
 
   &__add {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
     width: 160px;
     height: 40px;
     background-color: $hover-color;
@@ -95,11 +106,30 @@
     }
   }
 
+  &__added {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 160px;
+    height: 40px;
+    background-color: #fff;
+    color: #27AE60;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid $standard-color;
+  }
+
   &__heart {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     display: flex;
     border: 1px solid $standard-color;
     align-items: center;
-    padding: 0 15px;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+
 
     &:hover {
       border: 1px solid $hover-color;
