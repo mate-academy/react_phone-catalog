@@ -10,7 +10,10 @@ export const App: React.FC = () => {
       <main className="section">
         <div className="container">
           <Routes>
-            <Route path="/" element={<h1 className="title">Home Page</h1>} />
+            <Route
+              path="/"
+              element={<h1 className="title">Product Catalog</h1>}
+            />
             <Route path="/home" element={<Navigate to="/" replace />} />
             <Route
               path="/menu"
