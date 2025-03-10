@@ -51,7 +51,7 @@ export const InfoHook = () => {
     searchParams.set('capacity', memory);
     // const newItemId = `${searchParams}${model}?capacity=${capacity}&color=${colors}`;
 
-    navigate(`/phones/${productId}?${searchParams.toString()}`);
+    navigate(`/phones/${searchParams}`);
   };
 
   const handleChangeColor = (color: string) => {
