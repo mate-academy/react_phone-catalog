@@ -1,10 +1,21 @@
 import './App.scss';
-import { BurgerMenu } from './Components/BurgerMenu/BurgerMenu';
-import { Header } from './Components/Header';
+import { Footer } from './modules/Footer';
+import { Header } from './modules/Header/Components/Header';
+import { HomePage } from './modules/HomePage';
 
-export const App = () => (
-  <div className="App">
-    <Header />
-    <BurgerMenu />
-  </div>
-);
+export const App = () => {
+  return (
+    <div className="App">
+      <header>
+        <Header />
+      </header>
+
+      <main className="main">
+        <HomePage />
+      </main>
+      <footer className="footer">
+        <Footer />
+      </footer>
+    </div>
+  );
+};

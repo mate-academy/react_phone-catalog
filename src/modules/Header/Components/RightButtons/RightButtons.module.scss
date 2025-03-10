@@ -1,4 +1,4 @@
-@import '../../style/main';
+@import '../../../../style/main';
 
 .right__buttons {
   display: flex;
@@ -12,7 +12,6 @@
     display: grid;
     place-items: center;
     grid-template-columns: 1fr 1fr;
-    z-index: 999;
   }
 
   &_favorite,
@@ -27,7 +26,7 @@
       display: grid;
     }
 
-    @include on-desctop {
+    @include on-desktop {
       width: 64px;
     }
 
@@ -45,8 +44,19 @@
     width: 48px;
     box-shadow: -2px 0 2px $box-shadow;
 
+    // & img {
+    //   background-image: url("./img/icons/burgerMenu.png");
+    //   background-size: cover;
+
+    // }
+
     @include on-tablet {
       display: none;
+    }
+
+    &_style {
+      background-color: $bgc;
+      border: none;
     }
 
     &.onMobile {

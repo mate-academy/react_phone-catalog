@@ -1,0 +1,54 @@
+@import '../../style/main';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 96px;
+  width: 100%;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 16px 0;
+
+
+    &_wrapper {
+      width: 100%;
+    }
+  }
+
+  &__item {
+    padding-block: 16px;
+
+    // display: grid;
+    // place-items: center;
+
+    &_link {
+      text-decoration: none;
+      text-transform: uppercase;
+      list-style: none;
+      color: $text-color;
+
+    }
+  }
+
+  &__back_to_top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 32px 16px;
+    color: $secondary-text-color;
+
+
+    &_button {
+      margin-left: 16px;
+      background-color: #323542;
+      border: none;
+      height: 32px;
+      width: 32px;
+    }
+  }
+}
+

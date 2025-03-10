@@ -1,14 +1,18 @@
-@import '../../style/main';
+@import '../../../../style/main';
 
 .header {
   // display: none !important; // important
+  position: fixed;
+  top: 0;
+  z-index: 5;
   display: flex;
   flex-direction: row;
   box-shadow: 0 1px 1px 1px $box-shadow;
   width: 100%;
   height: 48px;
+  background-color: $bgc;
 
-  @include on-desctop {
+  @include on-desktop {
     height: 64px;
   }
 }
@@ -23,14 +27,22 @@
 
   }
 
-  &__logo {
+  &__logo_wrapper{
     width: 96px;
     display: grid;
     place-items: center;
+    position: relative;
 
-    @include on-desctop {
+    @include on-desktop {
       width: 128px;
     }
   }
-}
 
+  &__logo {
+
+    &_ok {
+      position: absolute;
+      left: 50%;
+    }
+  }
+}

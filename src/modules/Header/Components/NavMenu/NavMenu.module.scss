@@ -1,4 +1,4 @@
-@import '../../style/main';
+@import '../../../../style/main';
 
 
 .nav {
@@ -12,7 +12,6 @@
     display: flex;
     margin: 24px 16px 0;
     justify-content: center;
-
   }
 
   &__list {
@@ -34,7 +33,7 @@
     &:first-child {
       margin-left: 16px;
 
-      @include on-desctop {
+      @include on-desktop {
         margin-left: 24px;
       }
     }
@@ -42,7 +41,7 @@
     &:not(:first-child) {
       margin-left: 32px;
 
-      @include on-desctop {
+      @include on-desktop {
         margin-left: 64px;
       }
     }

@@ -1,3 +1,5 @@
+@import './vars';
+
 @mixin on-mobile {
   @media (min-width: $mobile-min-width){
     @content;
@@ -10,7 +12,7 @@
   }
 }
 
-@mixin on-desctop {
+@mixin on-desktop {
   @media (min-width: $desctop-min-width) {
     @content;
   }
@@ -20,5 +22,36 @@
   transition: #{$_property} 0.3s;
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin page-grid {
+  --column: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include on-tablet {
+    --column: 12;
+
+  }
+
+  @include on-desktop {
+    --column: 24;
+  }
+}
+
+.container {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    margin-inline: auto;
+    max-width: 1200px;
   }
 }

@@ -9,7 +9,14 @@ type Props = {
 
 export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
   const onMobile = { [s.onMobile]: burgerMenu };
-  const { setBurgerMenuActivate } = useContext(BurgerContext);
+  const { burgerMenuActivate, setBurgerMenuActivate } =
+    useContext(BurgerContext);
+
+  const tougleBurgerMenu = () => {
+    return burgerMenuActivate === false
+      ? setBurgerMenuActivate(true)
+      : setBurgerMenuActivate(false);
+  };
 
   return (
     <div className={classNames(s.right__buttons, onMobile)}>
@@ -24,9 +31,16 @@ export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
         </a>
       </div>
       <div className={classNames(s.right__buttons_burgerMenu, onMobile)}>
-        <a href="" onClick={() => setBurgerMenuActivate(true)}>
-          <img src="./img/icons/burgerMenu.png" alt="menu" />
-        </a>
+        <button
+          className={s.right__buttons_burgerMenu_style}
+          onClick={tougleBurgerMenu}
+        >
+          {!burgerMenuActivate ? (
+            <img src="./img/icons/burgerMenu.png" alt="menu" />
+          ) : (
+            <img src="./img/icons/close.png" alt="close" />
+          )}
+        </button>
       </div>
     </div>
   );

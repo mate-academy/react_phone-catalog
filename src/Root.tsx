@@ -1,6 +1,6 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { App } from './App';
-import { BurgerProvider } from './context/BurgerContext';
+import { BurgerProvider } from './modules/Header/context/BurgerContext';
 
 export const Root = () => (
   <BurgerProvider>

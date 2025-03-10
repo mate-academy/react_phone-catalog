@@ -1,21 +1,52 @@
 h1 {
-  font-size: 48px;
-  line-height: 56px;
-  letter-spacing: 0.04em;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
   font-weight: 800;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    font-weight: 800;
+  }
 }
 
 h2 {
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: 0.01em;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: -0.01em;
   font-weight: 800;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: 0;
+    font-weight: 800;
+  }
 }
 
 h3 {
   font-size: 22px;
   line-height: 31px;
   font-weight: 800;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 800;
+  }
 }
 
+h4 {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+
+  @include on-tablet {
+    font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  }
+}
 
