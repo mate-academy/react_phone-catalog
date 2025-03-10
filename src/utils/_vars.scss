@@ -1,0 +1,61 @@
+$accent: #216CFF;
+$secondary-accent: #F447AF;
+$primary: #0F0F11;
+$secondary: #89939A;
+$icons: #B4BDC3;
+$elements: #E2E6E9;
+$hover-BG: #FAFBFC;
+$white: #fff;
+$green: #27AE60;
+$red: #EB5757;
+$f-main-font: Mont, 'Helvetica', 'Arial', sans-serif;
+$f-regular: 500;
+$f-semibold: 600;
+$f-bold: 700;
+$f-title-pc: 144px;
+$f-title-laptop: 136px;
+$f-header-pc: 72px;
+$f-main-text-pc: 96px;
+$f-paragraph-pc: 16px;
+$f-title-t: 80px;
+$f-header-t: 56px;
+$f-title-tel: 64px;
+$f-header-tel: 48px;
+$f-letter-spacing-small: -0.01em;
+$f-letter-spacing-regular: 0.04em;
+$f-line-height-small: 85%;
+$f-line-height-big: 150%;
+$media-tel: 320px;
+$media-tablet: 640px;
+$media-pc: 1200px;
+$grid-gap-regular: 16px;
+$grid-settings: (
+  0: (
+    columns: 4,
+    column-size: 1fr,
+    gap: $grid-gap-regular,
+  ),
+  $media-tablet: (
+    columns: 12,
+    column-size: 1fr,
+    gap: $grid-gap-regular,
+  ),
+  $media-pc: (
+    columns: 24,
+    column-size: 32px,
+    gap: $grid-gap-regular,
+  ),
+);
+$products-quantity: 6;
+$margin-medium: 80px;
+$margin-smaller: 24px;
+$margin-tiny: 16px;
+$margin-regular: 56px;
+$margin-footer: 40px;
+$duration: 0.4s ease;
+$duration-1: 0.3s;
+$duration-2: 0.5s;
+$duration-3: 1s;
+$delay-1: 0s;
+$delay-2: 0.2s;
+$delay-3: 0.5s;

@@ -1,0 +1,177 @@
+@use '../../utils/index' as *;
+
+.navbar {
+  height: 64px;
+  background-color: white;
+  box-shadow: 0 1px 0 0 $elements;
+  position: sticky;
+  top: 0;
+
+  @include responsive-settings-max($media-pc) {
+    height: 48px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+}
+
+.secondary {
+  display: flex;
+  height: 100%;
+
+  @include responsive-settings-max($media-tablet) {
+    @include visually-hidden;
+  }
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 100%;
+  box-shadow: -1px 0 0 0 $elements;
+  position: relative;
+
+  @include responsive-settings-max($media-pc) {
+    width: 48px;
+  }
+
+  &:hover {
+    color: $primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      transform: translateY(1030%);
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+
+      @include responsive-settings-max($media-pc) {
+        transform: translateY(770%);
+      }
+    }
+  }
+
+  &.active {
+    color: $primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      transform: translateY(1030%);
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+
+      @include responsive-settings-max($media-pc) {
+        transform: translateY(770%);
+      }
+    }
+  }
+}
+
+.images {
+  justify-self: center;
+}
+
+.burger {
+  display: flex;
+  height: 100%;
+
+  @include responsive-settings-min($media-tablet) {
+    @include visually-hidden;
+  }
+}
+
+.burgerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 100%;
+  box-shadow: -1px 0 0 0 $elements;
+}
+
+.burgerImages {
+  justify-self: center;
+}
+
+.logo {
+  width: 80px;
+  margin-left: 24px;
+  margin-right: 48px;
+
+  @include responsive-settings-max($media-pc) {
+    width: 64px;
+    margin-left: 16px;
+    margin-right: 32px;
+  }
+}
+
+.navbarItem {
+  @include uppercase-styles;
+
+  margin-right: 64px;
+  text-transform: uppercase;
+  color: $secondary;
+  text-decoration: none;
+  position: relative;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @include responsive-settings-max($media-pc) {
+    margin-right: 32px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    @include visually-hidden;
+  }
+
+  &:hover {
+    color: $primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      transform: translateX(-100%) translateY(1150%);
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+
+      @include responsive-settings-max($media-pc) {
+        transform: translateX(-100%) translateY(900%);
+      }
+    }
+  }
+
+  &.active {
+    color: $primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      transform: translateX(-100%) translateY(1150%);
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+
+      @include responsive-settings-max($media-pc) {
+        transform: translateX(-100%) translateY(900%);
+      }
+    }
+  }
+}
+

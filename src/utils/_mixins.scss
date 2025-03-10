@@ -1,0 +1,60 @@
+@use './vars' as *;
+@use 'sass:map';
+
+@mixin visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin squared-size($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin responsive-grid($settings: $grid-settings) {
+  display: grid;
+  justify-content: center;
+
+  @each $breakpoint, $values in $settings {
+    @media (min-width: #{$breakpoint}) {
+      grid-template-columns: repeat(
+        map.get($values, columns),
+        map.get($values, column-size)
+      );
+      grid-template-rows: auto;
+      column-gap: map.get($values, gap);
+    }
+  }
+}
+
+@mixin responsive-settings-min($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin responsive-settings-max($breakpoint) {
+  @media (max-width: #{$breakpoint - 1px}) {
+    @content;
+  }
+}
+
+@mixin grid-placement(
+  $rowStart: 1,
+  $rowEnd: 2,
+  $columnStart: 1,
+  $columnEnd: -1
+) {
+  grid-area: #{$rowStart} / #{$columnStart} / #{$rowEnd} / #{$columnEnd};
+}
