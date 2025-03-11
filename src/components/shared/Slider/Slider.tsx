@@ -1,11 +1,14 @@
 import './Slider.styles.scss';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Product } from '../../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import classNames from 'classnames';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { loadProducts } from '../../../features/ProductsSlice/ProductsSlice';
+import { useAppSelector } from '../../../app/hooks';
+
+type Props = {
+  products: Product[];
+}
 
 function createSlides(products: Product[], width: number): Product[][] {
   return products.reduce<Product[][]>((accum, product, index) => {
@@ -29,32 +32,16 @@ function createSlides(products: Product[], width: number): Product[][] {
   }, []);
 }
 
-export const Slider = () => {
-  const dispatch = useAppDispatch();
-
-  const hotPrices = useAppSelector(state => state.products.products)
-    .filter(product => product.price)
-    .slice(0, 20);
+export const Slider: React.FC<Props> = ({ products }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  const slides = useMemo(() => createSlides(hotPrices, windowWidth), [hotPrices, windowWidth]);
-
+  const [slides, setSlides] = useState<Product[][]>(() => {
+    return createSlides(products, windowWidth);
+  });
   const [prevSlide, setPrevSlide] = useState<Product[]>();
   const [nextSlide, setNextSlide] = useState<Product[]>();
   const [isPrevActive, setIsPrevActive] = useState<boolean>(true);
   const [prevSlideIndex, setPrevSlideIndex] = useState<number>(0);
   const [nextSlideIndex, setNextSlideIndex] = useState<number>(0);
-
-  useEffect(() => {
-    dispatch(loadProducts());
-  }, []);
-
-  useEffect(() => {
-      setPrevSlide(slides[0]);
-      setNextSlide(slides[1] || slides[slides.length - 1]);
-      setPrevSlideIndex(0);
-      setNextSlideIndex(slides.length > 1 ? 1 : 0);
-  }, [hotPrice]);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -66,6 +53,20 @@ export const Slider = () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
+
+  useEffect(() => {
+    const newSlides = createSlides(products, windowWidth);
+
+    setSlides(newSlides);
+  }, [windowWidth]);
+
+  useEffect(() => {
+      setPrevSlide(slides[0]);
+      setNextSlide(slides[1] || slides[slides.length - 1]);
+      setPrevSlideIndex(0);
+      setNextSlideIndex(slides.length > 1 ? 1 : 0);
+  }, [slides]);
+
 
   const handlePrevSlide = () => {
     if (prevSlideIndex > 0) {
