@@ -1,24 +1,25 @@
+/* eslint-disable @typescript-eslint/indent */
 import { useEffect, useState } from 'react';
 import { ProductDetails } from '../../types/ProductDetails';
 import './ProductInformation.scss';
 import { getPhones } from '../../utils/api';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-export const InfoHook = () => {
+export const useInfoHook = () => {
   const { productId } = useParams<{ productId: string }>(); // Отримуємо productId з URL
   const [phonesInfo, setPhonesInfo] = useState<ProductDetails[]>([]);
   const [selectedPhone, setSelectedPhone] = useState<ProductDetails | null>(
     null,
   );
   const [loading, setLoading] = useState(true);
-  const { pathname } = useLocation(); // URL
+  // const { pathname } = useLocation(); // URL
   const navigate = useNavigate(); // повернення на попередню сторінку
   const [mainImage, setMainImage] = useState<string>('');
   const [selecredColor, setSelectedColor] = useState<string | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<string | null>(null);
-  const urlArr = pathname.split('-'); // URL
+  // const urlArr = pathname.split('-'); // URL
 
-  const colorFrom = urlArr[urlArr.length - 1]; // URL
+  // const colorFrom = urlArr[urlArr.length - 1]; // URL
 
   useEffect(() => {
     setLoading(true);
@@ -41,28 +42,26 @@ export const InfoHook = () => {
   }, [productId]);
 
   // URL
-  const updateUrl = (color: string, memory: string) => {
-    if (colorFrom.split(' ').length > 1) {
-      urlArr.pop();
-    }
+  const updateUrl = (namespaceId: string, color: string, memory: string) => {
+    const newUrl = `/phones/${namespaceId}-${memory.toLowerCase()}-${color}`;
 
-    urlArr.pop();
-    navigate(`${urlArr.join('-')}-${color}-${memory}`);
+    navigate(newUrl);
   };
 
   const handleChangeColor = (color: string) => {
-    if (!selectedMemory) {
+    if (!selectedMemory || !selectedPhone) {
       return;
     }
 
     setSelectedColor(color);
+
     const newPhone = phonesInfo.find(phone => phone.color === color);
 
     if (newPhone) {
       setSelectedPhone(newPhone);
     }
 
-    updateUrl(color, selectedMemory);
+    updateUrl(selectedPhone.namespaceId, color, selectedMemory);
   };
 
   const handleChangeMemory = (memory: string) => {
@@ -73,9 +72,22 @@ export const InfoHook = () => {
     }
 
     if (selecredColor && memory) {
-      updateUrl(selecredColor, memory);
+      updateUrl(selectedPhone!.namespaceId, selecredColor, memory);
     }
   };
+
+  const techInfo = selectedPhone
+    ? [
+        { title: 'Screen', value: selectedPhone.screen },
+        { title: 'Resolution', value: selectedPhone.resolution },
+        { title: 'Processor', value: selectedPhone.processor },
+        { title: 'RAM', value: selectedPhone.ram },
+        { title: 'Built in memory', value: selectedPhone.capacity },
+        { title: 'Camera', value: selectedPhone.camera },
+        { title: 'Zoom', value: selectedPhone.zoom },
+        { title: 'Cell', value: selectedPhone.cell },
+      ]
+    : [];
 
   return {
     productId,
@@ -88,5 +100,7 @@ export const InfoHook = () => {
     handleChangeMemory,
     handleChangeColor,
     setMainImage,
+    techInfo,
+    setSelectedPhone,
   };
 };

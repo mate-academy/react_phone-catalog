@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import logo from '../../../image/logo.svg';
-import Favourites from '../../../image/heart.svg';
-import cart from '../../../image/shopping.svg';
+// import logo from '../../../image/logo.svg';
+// import Favourites from '../../../image/heart.svg';
+// import cart from '../../../image/shopping.svg';
 // import close from '../../../image/close.svg';
 import React from 'react';
 import './Sidebar.scss';
@@ -21,29 +21,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <aside className={`sidebar ${menuIsOpen ? 'open' : ''}`}>
-      <div
-        className="is-fixed-top has-shadow"
-        role="navigation"
-        aria-label="main navigation"
-        style={{ border: '1px solid #323542' }}
-      >
-        <div className="container">
-          <div className="logo">
-            <img src={logo} alt="Logo" />
-          </div>
-
-          <div className="buttons">
-            {/* знизу */}
-            <NavLink className="logo likes" to="/favourites">
-              <img src={Favourites} alt="heart" />
-            </NavLink>
-
-            <NavLink className="logo shopping" to="/cart">
-              <img src={cart} alt="shopping" />
-            </NavLink>
-          </div>
-        </div>
-      </div>
       <div className="sidebar__menu">
         <nav className="sidebar-brand">
           <NavLink className={getLinkActive} to="/" onClick={setMenuIsOpen}>

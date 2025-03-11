@@ -5,16 +5,13 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { App } from './App';
-import { AccessoriesPage } from './components/AccessoriesPage';
 import { CardPge } from './components/CartPage';
 import { FavouritesPage } from './components/Favourites';
 import { HomePage } from './components/HomePage/HomePage';
 import { PageNotFound } from './components/PageNotFound';
 import { PhonesPage } from './components/PhonePage/PhonePage';
-import { TabletsPage } from './components/TabletPage';
 // eslint-disable-next-line max-len
 import { ProductInformation } from './components/ProductInformation/ProductInformation';
-// import { Sidebar } from './components/Sidebar';
 
 export const Root = () => {
   return (
@@ -28,20 +25,18 @@ export const Root = () => {
             <Route path=":productId" element={<ProductInformation />} />
           </Route>
           <Route path="tablets">
-            <Route index element={<TabletsPage />} />
+            <Route index element={<PhonesPage />} />
+            <Route
+              path=":category/:productId"
+              element={<ProductInformation />}
+            />
           </Route>
           <Route path="accessories">
-            <Route index element={<AccessoriesPage />} />
+            <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<ProductInformation />} />
           </Route>
-          <Route path="favourites">
-            <Route index element={<FavouritesPage />} />
-          </Route>
-          <Route path="cart">
-            <Route index element={<CardPge />} />
-          </Route>
-          {/* <Route path="menu">
-            <Route index element={<Sidebar />} />
-          </Route> */}
+          <Route path="favourites" element={<FavouritesPage />} />
+          <Route path="cart" element={<CardPge />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

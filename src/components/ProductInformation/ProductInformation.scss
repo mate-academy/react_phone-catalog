@@ -246,7 +246,7 @@
 
 .productInfo__wrapperAboutTech {
   margin-top: 80px;
-  display: flex;
+  display: block;
   gap: 64px;
 
   @include onTablet {
@@ -254,12 +254,12 @@
   }
 
   @include onDesktop {
-    display: block;
+    display: flex;
   }
 }
 
 .productInfo__paragraph {
-  width: 50%;
+  width: 100%;
 
   @include onTablet {
     width: 100%;
@@ -300,7 +300,7 @@
 }
 
 .productInfo__wrappeTech {
-  width: 50%;
+  width: 100%;
 
   @include onTablet {
     width: 100%;

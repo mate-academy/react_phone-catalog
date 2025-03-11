@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .container {
@@ -65,11 +65,7 @@
   display: flex;
 }
 
-.buttons {
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  // border: 1px #323542 solid;
+.buttons__menu {
   display: flex;
 }
 
@@ -87,6 +83,10 @@
   border: 1px #323542 solid;
   display: none;
 
+  // @include onTablet{
+  //   display: flex;
+  // }
+
   @include onDesktop {
     display: flex;
   }
@@ -94,18 +94,21 @@
 
 .menu {
   border: 1px #323542 solid;
-  display: none;
+  display: flex;
+  // @include onTablet{
+  //   display: flex;
+  // }
 
-  @include onMobile {
-    display: flex;
+  @include onDesktop{
+    display: none;
   }
 }
 
 .close{
   border: 1px #323542 solid;
-  display: none;
+  display: flex;
 
-  @include onMobile{
+  @include onDesktop{
     display: none;
   }
 }

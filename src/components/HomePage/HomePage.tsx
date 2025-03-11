@@ -3,7 +3,7 @@ import './HomePage.scss';
 // import { Slider } from '../Slider/Slider';
 import { SliderSwiper } from '../SliderSwiper/SliderSwiper';
 import { ShopByCategory } from '../ShopByCategory/ShopByCategory';
-import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductSlider } from '../ProductCard/ProductCard';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types/typeRpoduct';
 import { fetchProducts } from '../../utils/api';
@@ -33,7 +33,7 @@ export const HomePage = () => {
           <SliderSwiper />
 
           <div className="homepage__product">
-            <ProductCard products={phones} />
+            <ProductSlider products={phones} />
           </div>
 
           <div className="homepage__category">
@@ -42,7 +42,7 @@ export const HomePage = () => {
           </div>
 
           <div className="homepage__Hotproduct">
-            <ProductCard products={phones} WithAdditionalPrice={true} />
+            <ProductSlider products={phones} WithAdditionalPrice={true} />
           </div>
         </>
       )}

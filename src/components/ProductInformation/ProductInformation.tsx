@@ -1,16 +1,20 @@
-import React from 'react';
-// import { ProductDetails } from '../../types/ProductDetails';
+import React, { useEffect, useState } from 'react';
 import './ProductInformation.scss';
-// import { getPhones } from '../../utils/api';
 import home from '../../../image/home.svg';
 import arrow from '../../../image/arrow.svg';
 import back from '../../../image/back.svg';
-// import { useNavigate, useParams } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
 import like from '../../../image/heart.svg';
-import { InfoHook } from './InfoHook';
+import { useInfoHook } from './InfoHook';
+import { ProductSlider } from '../ProductCard/ProductCard';
+import { Product } from '../../types/typeRpoduct';
+import { fetchProducts } from '../../utils/api';
+import { useParams } from 'react-router-dom';
 
 export const ProductInformation: React.FC = () => {
+  const { category } = useParams<{ category: string }>();
+  const [products, setProducts] = useState<Product[]>([]);
+
   const {
     selectedPhone,
     mainImage,
@@ -22,7 +26,26 @@ export const ProductInformation: React.FC = () => {
     setMainImage,
     selectedMemory,
     selecredColor,
-  } = InfoHook();
+    techInfo,
+  } = useInfoHook();
+
+  const currentCategory = category || 'phones';
+
+  useEffect(() => {
+    fetchProducts().then(data => {
+      const validCategories = ['phones', 'tablets', 'accessories'];
+
+      if (validCategories.includes(currentCategory)) {
+        const filteredProducts = data.filter(
+          product => product.category === currentCategory,
+        );
+
+        setProducts(filteredProducts);
+      } else {
+        setProducts([]);
+      }
+    });
+  }, [currentCategory]);
 
   return (
     <main className="productInfo">
@@ -32,7 +55,12 @@ export const ProductInformation: React.FC = () => {
           <img src={arrow} alt="productInfolink__arrow" />
         </span>
         <p className="productInfolink__title">
-          Phones
+          {category === 'tablets'
+            ? 'Tablets'
+            : category === 'accessories'
+              ? 'Accessories'
+              : 'Phones'}
+
           {productId && (
             <>
               <span>
@@ -63,7 +91,7 @@ export const ProductInformation: React.FC = () => {
                     className="productInfo__Image"
                     key={index}
                     src={image}
-                    alt={`image_phone_${index}`}
+                    alt={`image_${category}_${index}`}
                     onClick={() => setMainImage(image)}
                   />
                 ))}
@@ -81,7 +109,6 @@ export const ProductInformation: React.FC = () => {
             <div className="productInfo__wraperdeteils">
               <div className="productInfo__colors">
                 <h3 className="productInfo__contentTitle">Available colors</h3>
-
                 {selectedPhone.colorsAvailable.map((color, i) => (
                   <button
                     key={i}
@@ -95,13 +122,13 @@ export const ProductInformation: React.FC = () => {
 
               <div className="productInfo__memory">
                 <h3 className="productInfo__contentTitle">Select capacity</h3>
-                {selectedPhone.capacityAvailable.map((memorys, i) => (
+                {selectedPhone.capacityAvailable.map((memory, i) => (
                   <button
                     key={i}
-                    className={`productInfo__memorys ${selectedMemory === memorys ? 'selected' : ''}`}
-                    onClick={() => handleChangeMemory(memorys)}
+                    className={`productInfo__memorys ${selectedMemory === memory ? 'selected' : ''}`}
+                    onClick={() => handleChangeMemory(memory)}
                   >
-                    {memorys}
+                    {memory}
                   </button>
                 ))}
               </div>
@@ -117,7 +144,7 @@ export const ProductInformation: React.FC = () => {
               </div>
 
               <div className="productInfo__button">
-                <button className="productInfo__buttonAdd">Add to card</button>
+                <button className="productInfo__buttonAdd">Add to cart</button>
                 <button className="productInfo__buttonLike">
                   <img src={like} alt="like" />
                 </button>
@@ -175,79 +202,24 @@ export const ProductInformation: React.FC = () => {
               <h3 className="productInfo__about">Tech specs</h3>
               <div className="productInfo__line" />
 
-              <div className="productInfo__TechinformationAll">
-                <h3 className="productInfo__TechscreenTitle">Screen</h3>
-                <h3 className="productInfo__TechscreenDescription">
-                  {selectedPhone.screen}
-                </h3>
-              </div>
-
-              <div className="productInfo__TechinformationAll">
-                <h3 className="productInfo__TechscreenTitle">Resolution</h3>
-                <h3 className="productInfo__TechscreenDescription">
-                  {selectedPhone.resolution}
-                </h3>
-              </div>
-
-              <div className="productInfo__TechinformationAll">
-                <h3 className="productInfo__TechscreenTitle">Processor</h3>
-                <h3 className="productInfo__TechscreenDescription">
-                  {selectedPhone.processor}
-                </h3>
-              </div>
-
-              <div className="productInfo__TechinformationAll">
-                <h3 className="productInfo__TechscreenTitle">RAM</h3>
-                <h3 className="productInfo__TechscreenDescription">
-                  {selectedPhone.ram}
-                </h3>
-              </div>
-
-              <div className="productInfo__TechinformationAll">
-                <h3 className="productInfo__TechscreenTitle">
-                  Built in memory
-                </h3>
-                <h3 className="productInfo__TechscreenDescription">
-                  {selectedPhone.capacity}
-                </h3>
-              </div>
-
-              <div className="productInfo__TechinformationAll">
-                <h3 className="productInfo__TechscreenTitle">Camera</h3>
-                <h3 className="productInfo__TechscreenDescription">
-                  {selectedPhone.camera}
-                </h3>
-              </div>
-
-              <div className="productInfo__TechinformationAll">
-                <h3 className="productInfo__TechscreenTitle">Zoom</h3>
-                <h3 className="productInfo__TechscreenDescription">
-                  {selectedPhone.zoom}
-                </h3>
-              </div>
-
-              <div className="productInfo__TechinformationAll">
-                <h3 className="productInfo__TechscreenTitle">Cell</h3>
-                <h3 className="productInfo__TechscreenDescription">
-                  {selectedPhone.cell}
-                </h3>
-              </div>
+              {techInfo.map((item, index) => (
+                <div className="productInfo__TechinformationAll" key={index}>
+                  <h3 className="productInfo__TechscreenTitle">{item.title}</h3>
+                  <h3 className="productInfo__TechscreenDescription">
+                    {item.value}
+                  </h3>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* <div className="mobile__cards">
-            {currentItems.map(product => (
-              <ProductItem
-                key={product.id}
-                product={product}
-                WithAdditionalPrice
-                onClick={() => setSelectedPhone(product.name)}
-              />
-            ))}
-          </div> */}
+          <div className="">
+            <h1 className="">You may also like</h1>
+            <ProductSlider products={products} WithAdditionalPrice={true} />
+          </div>
         </div>
       ) : (
-        <h2>No phone selected</h2>
+        <h2>No product selected</h2>
       )}
     </main>
   );

@@ -24,3 +24,5 @@ export interface ProductDetails {
   camera: string;
   zoom: string;
 }
+
+export interface Phone extends ProductDetails {}

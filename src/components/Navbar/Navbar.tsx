@@ -49,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               Accessories
             </NavLink>
           </div>
-          <div className="buttons">
+          <div className="buttons__menu">
             <NavLink className="logo likes" to="/favourites">
               <img src={Favourites} alt="heart" />
             </NavLink>
@@ -68,7 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             ) : (
               <div
-                className={`logo menu ${menuIsOpen && 'closeMenu'}`}
+                className={`logo menu`}
                 // to="/menu"
                 onClick={setMenuIsOpen}
               >

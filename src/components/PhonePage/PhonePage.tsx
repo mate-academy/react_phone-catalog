@@ -7,11 +7,13 @@ import arrow from '../../../image/arrow.svg';
 
 import { usePhonesHooks } from './usePhonesHooks';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const PhonesPage = () => {
+  const { category } = useParams<{ category: string }>();
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
   const {
-    phones,
+    // phones,
     loading,
     currentItems,
     currentPage,
@@ -28,6 +30,13 @@ export const PhonesPage = () => {
     pageNumbers.push(i);
   }
 
+  const currentCategory = category || 'phones';
+
+  //функція для фільтрації вибраної карегорії
+  const filteredId = currentItems.filter(
+    item => item.category === currentCategory,
+  );
+
   return (
     <main className="main__phonepage">
       <div className="mobilelink">
@@ -36,6 +45,7 @@ export const PhonesPage = () => {
           <img src={arrow} alt="mobilelink__arrow" />
         </span>
         <p className="mobilelink__title">
+          {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
           Phones
           {selectedPhone && (
             <>
@@ -48,8 +58,10 @@ export const PhonesPage = () => {
         </p>
       </div>
 
-      <h1 className="mobile__title">Mobile phones</h1>
-      <h1 className="mobile__models">{`${phones.length} models`}</h1>
+      <h1 className="mobile__title">
+        {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
+      </h1>
+      <h1 className="mobile__models">{`${filteredId.length} models`}</h1>
 
       {!loading && (
         <>

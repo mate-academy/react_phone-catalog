@@ -1,1 +1,1 @@
-export const TabletsPage = () => <h1 className="title">Tablets Page</h1>;
+// export const TabletsPage = () => <h1 className="title">dasdas</h1>;

@@ -7,7 +7,7 @@ interface Props {
   products: Product[];
   WithAdditionalPrice?: boolean;
 }
-export const ProductCard: React.FC<Props> = ({
+export const ProductSlider: React.FC<Props> = ({
   products,
   WithAdditionalPrice = false,
 }) => {
