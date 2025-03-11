@@ -46,6 +46,7 @@ export const HomePage = () => {
     <main className={styles.homePage}>
       <div className={styles.homePage__container}>
         <section className={styles.section}>
+          <h1>hello</h1>
           <h2 className={styles.section__title}>
             {translate('homePage.title', lang)}
           </h2>
