@@ -1,0 +1,30 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.phones {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &__container {
+    padding-block: 24px 64px;
+
+    @include mix.content-padding-inline;
+
+    @include mix.on-desktop {
+      padding-block: 24px 80px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    color: var(--c-secondary);
+    margin-bottom: 32px;
+
+    @include mix.on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}
