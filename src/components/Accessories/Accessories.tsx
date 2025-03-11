@@ -22,9 +22,9 @@ export const Accessories = () => {
     <div className={styles.accessories}>
       <div className={styles.accessories__container}>
         <Navigation />
-        <h1 className={styles.accessories__title}>
+        <h2 className={styles.accessories__title}>
           {translate('categories.accessories', lang)}
-        </h1>
+        </h2>
         <Catalog items={accessories} />
       </div>
     </div>

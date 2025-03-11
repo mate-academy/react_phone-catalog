@@ -6,6 +6,10 @@ html {
 }
 
 .homePage {
+  &__title {
+    visibility: hidden;
+  }
+  
   &__container {
     padding-block: 24px 64px;
     display: flex;

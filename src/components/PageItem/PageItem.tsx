@@ -63,7 +63,7 @@ export const PageItem = () => {
       <div className={styles.pageItem__container}>
         <Navigation />
         <Back />
-        <h1 className={styles.pageItem__title}>{item?.name}</h1>
+        <h2 className={styles.pageItem__title}>{item?.name}</h2>
         <div className={styles.pageItem__gridContainer}>
           <div className={styles.pageItem__boxImg}>
             <img

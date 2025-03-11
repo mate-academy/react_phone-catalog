@@ -24,7 +24,7 @@ export const PageCart = () => {
     <div className={styles.cart}>
       {checkout && <Modal setCheckout={setCheckout} />}
       <Back />
-      <h1 className={styles.cart__title}>{translate('link.cart', lang)}</h1>
+      <h2 className={styles.cart__title}>{translate('link.cart', lang)}</h2>
       <div className={styles.cart__container}>
         <div className={styles.cart__items}>
           {cartGoods.length > 0 ? (

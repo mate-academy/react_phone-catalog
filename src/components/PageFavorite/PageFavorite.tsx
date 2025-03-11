@@ -15,9 +15,9 @@ export const PageFavorite = () => {
   return (
     <div className={styles.favorite}>
       <Navigation />
-      <h1 className={styles.favorite__title}>
+      <h2 className={styles.favorite__title}>
         {translate('favorite.title', lang)}
-      </h1>
+      </h2>
       <p
         className={styles.favorite__text}
       >{`${favoriteGoods.length} ${translate('categories.models', lang)}`}</p>

@@ -20,9 +20,9 @@ export const PageNotFound = () => {
 
   return (
     <div className={styles.notFound}>
-      <h1 className={styles.notFound__title}>
+      <h2 className={styles.notFound__title}>
         {translate('not-found.title', lang)}
-      </h1>
+      </h2>
       <Link
         to={'/'}
         className={`${styles.notFound__button} ${stylesBtn.button}`}
