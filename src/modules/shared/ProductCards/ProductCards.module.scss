@@ -1,0 +1,94 @@
+@import '../../../style/main';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  background-color: $surface-1;
+  padding: 32px;
+  width: 212px;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+
+  &__img {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    flex-grow: 1;
+
+    & img {
+      width: 148px;
+      height: auto;
+
+
+    }
+  }
+
+  &__title {
+    padding-top: 16px;
+    font-size: 14px;
+
+  }
+
+  &__price {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__full_price {
+    color: $secondary;
+    text-decoration: line-through;
+
+  }
+
+  &__divider {
+    border: 1px solid $elements;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    &_screen {
+      @extend %specs-information;
+
+    }
+
+    &_capacity {
+      @extend %specs-information;
+
+    }
+
+    &_ram {
+      @extend %specs-information;
+
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: 8px;
+
+    &_add {
+      width: 100%;
+      border: none;
+      background-color: $accent;
+      color: $white;
+    }
+
+    &_like {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background-color: $surface-2;
+    }
+  }
+
+}

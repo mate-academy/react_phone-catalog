@@ -55,3 +55,15 @@
     max-width: 1200px;
   }
 }
+
+.block-margin {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}

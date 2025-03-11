@@ -1,4 +1,47 @@
-%h1 {
-  font-family: Roboto, sans-serif;
-  font-weight: 400;
+@import './mixins';
+
+%title-basic {
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 56px;
+  }
+}
+
+%specs-information {
+  display: flex;
+  justify-content: space-between;
+
+  & p {
+    color: $secondary;
+  }
+}
+
+%category-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+
+  & img {
+    height: 100%;
+    position: absolute;
+    top: 25%;
+    left: 20%;
+  }
+}
+
+%button-slider {
+  background-color: $surface-2;
+  border: 1px solid $surface-2;
+  height: 32px;
+  width: 32px;
+
+  &:disabled {
+    background-color: transparent;
+  }
 }

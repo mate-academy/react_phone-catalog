@@ -56,7 +56,7 @@
   }
 
   &__link {
-    color: #75767F;
+    color: $secondary;
     text-decoration: none;
     text-transform: uppercase;
     display: flex;
@@ -66,7 +66,7 @@
     width: 100%;
     position: relative;
 
-    @include hover(color, $text-color);
+    @include hover(color, $white);
 
     &::after {
       position: absolute;
@@ -74,7 +74,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-bottom: 2px solid $text-color;
+      border-bottom: 2px solid $white;
       border-radius: 4px;
       transform: scale(0);
       transition: transform 0.3s;

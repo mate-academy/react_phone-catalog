@@ -1,0 +1,74 @@
+@import '../../../../style/main';
+
+.categories {
+  &__title {
+    @extend %title-basic;
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    column-gap: 16px
+  }
+
+  &__phone {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    width: 100%;
+
+    &_img {
+      @extend %category-img;
+
+      background-color: #6D6474;
+    }
+
+
+    &_quantity {
+      color: $secondary;
+    }
+  }
+
+  &__tablets {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    width: 100%;
+
+    &_img {
+      @extend %category-img;
+
+      background-color: #8D8D92;
+    }
+
+
+    &_quantity {
+      color: $secondary;
+
+    }
+  }
+
+  &__accessories {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    width: 100%;
+
+    &_img {
+      @extend %category-img;
+
+      background-color: #973D5F;
+    }
+
+
+    &_quantity {
+      color: $secondary;
+
+    }
+  }
+}

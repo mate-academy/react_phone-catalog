@@ -4,29 +4,30 @@
   @include page-grid;
 
 
-  height: 400px;
+  height: 320px;
+
+  @include on-tablet {
+    height: auto;
+  }
 
   // &__wrapper {
 
   // }
 
   &__title {
-    text-align: center;
-    margin-bottom: 24px;
+    @extend %title-basic;
+
+    padding-left: 16px;
 
     @include on-tablet {
-      margin-bottom: 32px;
-    }
-
-    @include on-desktop {
-      margin-bottom: 56px;
+      padding: 0;
     }
   }
 
   &__prev {
     display: none;
     grid-column: 0 / 1;
-    background-color: #323542;
+    background-color: $surface-2;
     border: none;
 
     @include on-tablet {
@@ -40,19 +41,25 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    height: auto;
+    width: 100%;
+
 
     @include on-tablet {
       grid-column: 2 / -2;
     }
 
     & img {
+      height: 320px;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
       object-position: right;
+      object-fit: cover;
       animation: animation-img 0.5s ease-in-out;
 
       @include on-tablet {
+        height: auto;
+        width: 100%;
+        object-fit: contain;
         object-position: center;
       }
     }
@@ -71,7 +78,7 @@
   &__next {
     display: none;
     grid-column: -2/ -1;
-    background-color: #323542;
+    background-color: $surface-2;
     border: none;
 
     @include on-tablet {

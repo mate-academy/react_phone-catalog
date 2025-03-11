@@ -3,7 +3,7 @@ import { NavMenu } from '../NavMenu';
 import { RightButtons } from '../RightButtons';
 import s from './BurgerMenu.module.scss';
 import { useContext } from 'react';
-import { BurgerContext } from '../../context/BurgerContext';
+import { BurgerContext } from '../../../shared/context/BurgerContext';
 
 export const BurgerMenu = () => {
   const { burgerMenuActivate } = useContext(BurgerContext);
@@ -11,7 +11,7 @@ export const BurgerMenu = () => {
   return (
     <div
       className={classNames(s.burger, {
-        [s.burger_hidden]: !burgerMenuActivate,
+        [s.burger_enter]: burgerMenuActivate,
       })}
     >
       <NavMenu burgerMenu={true} />

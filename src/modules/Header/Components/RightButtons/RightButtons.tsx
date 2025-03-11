@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import s from './RightButtons.module.scss';
 import classNames from 'classnames';
-import { BurgerContext } from '../../context/BurgerContext';
+import { BurgerContext } from '../../../shared/context/BurgerContext';
 
 type Props = {
   burgerMenu?: boolean;

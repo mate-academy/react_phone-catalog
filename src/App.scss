@@ -4,7 +4,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: $bgc;
+  background-color: $black;
   scroll-behavior: smooth;
 }
 
@@ -15,15 +15,15 @@ html, body {
   font-family: Mont, sans-serif;
   font-weight: 400;
   font-size: 12px;
-  color: $text-color;
+  color: $white;
 }
 
 main {
-  flex-grow: 1;
   padding: 24px 0 64px;
   margin-top: 48px;
 
   @include on-tablet {
+    flex-grow: 1;
     padding: 32px 0 64px;
   }
 

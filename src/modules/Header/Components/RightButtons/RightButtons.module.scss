@@ -20,7 +20,7 @@
     place-items: center;
     height: 100%;
     width: 48px;
-    box-shadow: -1px -1px 1px 1px $box-shadow;
+    box-shadow: -1px -1px 1px 1px $surface-2;
 
     @include on-tablet {
       display: grid;
@@ -42,7 +42,7 @@
     place-items: center;
     height: 100%;
     width: 48px;
-    box-shadow: -2px 0 2px $box-shadow;
+    box-shadow: -2px 0 2px $surface-2;
 
     // & img {
     //   background-image: url("./img/icons/burgerMenu.png");
@@ -55,7 +55,7 @@
     }
 
     &_style {
-      background-color: $bgc;
+      background-color: $black;
       border: none;
     }
 

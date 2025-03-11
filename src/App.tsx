@@ -1,6 +1,6 @@
 import './App.scss';
 import { Footer } from './modules/Footer';
-import { Header } from './modules/Header/Components/Header';
+import { Header } from './modules/Header';
 import { HomePage } from './modules/HomePage';
 
 export const App = () => {

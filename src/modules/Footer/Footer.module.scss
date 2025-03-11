@@ -7,20 +7,29 @@
   height: 96px;
   width: 100%;
 
+  @include on-tablet {
+    flex-direction: row;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;
-    padding: 32px 16px 0;
+    row-gap: 16px;
+    padding: 32px 0 0;
 
 
     &_wrapper {
       width: 100%;
     }
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+    }
   }
 
   &__item {
-    padding-block: 16px;
-
     // display: grid;
     // place-items: center;
 
@@ -28,7 +37,10 @@
       text-decoration: none;
       text-transform: uppercase;
       list-style: none;
-      color: $text-color;
+      color: $white;
+      font-weight: 800;
+      letter-spacing: 4%;
+      line-height: 11px;
 
     }
   }
@@ -37,18 +49,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     padding: 32px 16px;
-    color: $secondary-text-color;
+    color: $secondary;
 
 
     &_button {
       margin-left: 16px;
-      background-color: #323542;
+      background-color: $surface-2;
       border: none;
       height: 32px;
       width: 32px;
     }
   }
 }
-

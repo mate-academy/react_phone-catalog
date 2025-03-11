@@ -1,16 +1,16 @@
 import classNames from 'classnames';
-import s from './Slider.module.scss';
+import s from './BanerSlider.module.scss';
 import { useEffect, useRef, useState } from 'react';
 
-export const Slider = () => {
+export const BanerSlider = () => {
   const [currentIndexImg, setCurrentIndexImg] = useState(0);
   const widthRef = useRef(window.innerWidth);
 
   const banners = [
     './img/banners/banner.png',
-    './img/banners/banner-tablets.png',
+    // './img/banners/banner-tablets.png',
     './img/banners/banner-phones.png',
-    './img/banners/banner-accessories.png',
+    // './img/banners/banner-accessories.png',
   ];
 
   const nextSlide = () => {

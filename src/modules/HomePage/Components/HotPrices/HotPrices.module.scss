@@ -1,0 +1,21 @@
+@import '../../../../style/main';
+
+.title {
+  @extend %title-basic;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+ &__buttons {
+  display: flex;
+  column-gap: 16px;
+  &_prev {
+    @extend %button-slider;
+  }
+  &_next {
+    @extend %button-slider;
+
+  }
+ }
+}
