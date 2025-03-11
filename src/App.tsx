@@ -1,10 +1,10 @@
-import styles from './App.module.scss';
+import './App.scss';
 import { Outlet } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 
 export const App = () => (
-  <div className={styles.App}>
+  <div className="App">
     <Header />
 
     <Outlet />
