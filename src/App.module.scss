@@ -35,6 +35,10 @@ body {
   line-height: 21px;
   background-color: var(--c-page-bg);
   transition: all vars.$transition-time;
+
+  &__title {
+    visibility: hidden;
+  }
 }
 
 h1,
