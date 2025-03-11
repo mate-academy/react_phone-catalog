@@ -36,9 +36,9 @@ body {
   background-color: var(--c-page-bg);
   transition: all vars.$transition-time;
 
-  // &__title {
-  //   visibility: hidden;
-  // }
+  &__title {
+    visibility: hidden;
+  }
 }
 
 h1,

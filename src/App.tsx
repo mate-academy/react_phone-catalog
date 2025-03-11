@@ -6,7 +6,7 @@ import { Header } from './components/Header/Header';
 export const App = () => (
   <div className="App">
     <Header />
-    <h1 hidden>Product Catalog</h1>
+    <h1 className="App__title">Product Catalog</h1>
 
     <Outlet />
 
