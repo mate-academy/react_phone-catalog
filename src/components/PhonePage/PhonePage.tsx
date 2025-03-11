@@ -6,16 +6,20 @@ import home from '../../../image/home.svg';
 import arrow from '../../../image/arrow.svg';
 
 import { usePhonesHooks } from './usePhonesHooks';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Product } from '../../types/typeRpoduct';
+import { fetchProducts } from '../../utils/api';
 
 export const PhonesPage = () => {
-  const { category } = useParams<{ category: string }>();
+  const path = useLocation();
+  const currentCategoty = path.pathname.slice(1);
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
   const {
-    // phones,
+    phones,
     loading,
-    currentItems,
+    // currentItems,
     currentPage,
     totalPages,
     setCurrentPage,
@@ -30,12 +34,26 @@ export const PhonesPage = () => {
     pageNumbers.push(i);
   }
 
-  const currentCategory = category || 'phones';
+  useEffect(() => {
+    fetchProducts().then(data => {
+      const validCategories = ['phones', 'tablets', 'accessories'];
+
+      if (validCategories.includes(currentCategoty)) {
+        const filteredProducts = data.filter(
+          product => product.category === currentCategoty,
+        );
+
+        setProducts(filteredProducts);
+      } else {
+        setProducts([]);
+      }
+    });
+  }, [currentCategoty]);
 
   //функція для фільтрації вибраної карегорії
-  const filteredId = currentItems.filter(
-    item => item.category === currentCategory,
-  );
+  // const filteredId = currentItems.filter(
+  //   item => item.category === currentCategory,
+  // );
 
   return (
     <main className="main__phonepage">
@@ -45,8 +63,8 @@ export const PhonesPage = () => {
           <img src={arrow} alt="mobilelink__arrow" />
         </span>
         <p className="mobilelink__title">
-          {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
-          Phones
+          {currentCategoty}
+          {/* Phones */}
           {selectedPhone && (
             <>
               <span>
@@ -59,9 +77,9 @@ export const PhonesPage = () => {
       </div>
 
       <h1 className="mobile__title">
-        {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
+        {currentCategoty.charAt(0).toUpperCase() + currentCategoty.slice(1)}
       </h1>
-      <h1 className="mobile__models">{`${filteredId.length} models`}</h1>
+      <h1 className="mobile__models">{`${phones.length} models`}</h1>
 
       {!loading && (
         <>
@@ -79,7 +97,7 @@ export const PhonesPage = () => {
             </div>
 
             <div className="mobile__cards">
-              {currentItems.map(product => (
+              {products.map(product => (
                 <ProductItem
                   key={product.id}
                   product={product}

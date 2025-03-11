@@ -26,3 +26,7 @@ export interface ProductDetails {
 }
 
 export interface Phone extends ProductDetails {}
+
+export interface Tablets extends ProductDetails {}
+
+export interface Accessories extends ProductDetails {}

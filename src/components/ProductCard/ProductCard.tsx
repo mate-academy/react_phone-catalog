@@ -4,10 +4,12 @@ import { Product } from '../../types/typeRpoduct';
 import './ProductCard.scss';
 import { ProductItem } from '../ProductItem/ProductItem';
 interface Props {
+  title: string;
   products: Product[];
   WithAdditionalPrice?: boolean;
 }
 export const ProductSlider: React.FC<Props> = ({
+  title,
   products,
   WithAdditionalPrice = false,
 }) => {
@@ -47,7 +49,7 @@ export const ProductSlider: React.FC<Props> = ({
   return (
     <div className="product">
       <div className="product__titleButton">
-        <h2 className="product__title">Brand new models</h2>
+        <h2 className="product__title">{title}</h2>
         <div className="button">
           <button
             className="buttonPrev"

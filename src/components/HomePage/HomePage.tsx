@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '../../types/typeRpoduct';
 import { fetchProducts } from '../../utils/api';
 import { Loader } from '../Loader/Loader';
+import { NameSlider } from '../../nameslider';
 
 export const HomePage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -33,7 +34,7 @@ export const HomePage = () => {
           <SliderSwiper />
 
           <div className="homepage__product">
-            <ProductSlider products={phones} />
+            <ProductSlider products={phones} title={NameSlider.Brand} />
           </div>
 
           <div className="homepage__category">
@@ -42,7 +43,11 @@ export const HomePage = () => {
           </div>
 
           <div className="homepage__Hotproduct">
-            <ProductSlider products={phones} WithAdditionalPrice={true} />
+            <ProductSlider
+              products={phones}
+              WithAdditionalPrice={true}
+              title={NameSlider.Hot}
+            />
           </div>
         </>
       )}
