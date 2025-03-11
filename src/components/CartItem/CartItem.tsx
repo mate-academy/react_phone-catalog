@@ -1,5 +1,7 @@
-import './CartItem.scss';
-import { useAppDispatch } from '../../app/hooks';
+import styles from './CartItem.module.scss';
+import stylesIcon from '../../styles/icon.module.scss';
+import stylesBtn from '../../styles/button.module.scss';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { CartProduct } from '../../types/CartProduct';
 import { cartSlice } from '../../features/cartSlice';
 
@@ -8,29 +10,29 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ item }) => {
+  const { darkTheme } = useAppSelector(state => state.darkTheme);
   const dispatch = useAppDispatch();
 
   return (
-    <div className="cart-item">
-      <div className="cart-item__top">
+    <div className={styles.cartItem}>
+      <div className={styles.cartItem__top}>
         <button
-          className="cart-item__close icon icon--close-grey"
+          className={`${styles.cartItem__close} ${stylesIcon.icon} ${stylesIcon.icon__close__grey}`}
           onClick={() => dispatch(cartSlice.actions.removeGood(item))}
         ></button>
-        <div className="cart-item__img-box">
+        <div className={styles.cartItem__imgBox}>
           <img
-            className="cart-item__img"
+            className={styles.cartItem__img}
             src={`${item.images[0]}`}
             alt={`img ${item.name}`}
           />
         </div>
-        <p className="cart-item__title">{item.name}</p>
+        <p className={styles.cartItem__title}>{item.name}</p>
       </div>
-      <div className="cart-item__bottom">
-        <div className="cart-item__counter">
+      <div className={styles.cartItem__bottom}>
+        <div className={styles.cartItem__counter}>
           <button
-            // eslint-disable-next-line max-len
-            className="cart-item__counter__button--minus icon icon--minus button"
+            className={`${styles.cartItem__counter__button__minus} ${stylesIcon.icon} ${darkTheme ? stylesIcon.icon__minus__dark : stylesIcon.icon__minus} ${stylesBtn.button}`}
             onClick={() =>
               dispatch(
                 cartSlice.actions.updateGood({
@@ -41,9 +43,9 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             }
             disabled={item.quantity === 1}
           ></button>
-          <p className="cart-item__counter__value">{item?.quantity}</p>
+          <p className={styles.cartItem__counter__value}>{item?.quantity}</p>
           <button
-            className="cart-item__counter__button--plus icon icon--plus button"
+            className={`${styles.cartItem__counter__button__plus} ${stylesIcon.icon} ${darkTheme ? stylesIcon.icon__plus__dark : stylesIcon.icon__plus} ${stylesBtn.button}`}
             onClick={() =>
               dispatch(
                 cartSlice.actions.updateGood({
@@ -54,7 +56,9 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             }
           ></button>
         </div>
-        <h3 className="cart-item__price">{`$${item.priceDiscount * item?.quantity}`}</h3>
+        <h3
+          className={styles.cartItem__price}
+        >{`$${item.priceDiscount * item?.quantity}`}</h3>
       </div>
     </div>
   );

@@ -1,10 +1,12 @@
-import './Categories.scss';
+import styles from './Categories.module.scss';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { translate } from '../../utils/translate';
 import { useContext } from 'react';
 import { LangContext } from '../../context/LangContext';
 import { Link } from 'react-router-dom';
 import { navigationSlice } from '../../features/navigationSlice';
+
+const categories = ['phones', 'tablets', 'accessories'];
 
 export const Categories = () => {
   const { phones } = useAppSelector(state => state.phones);
@@ -14,102 +16,43 @@ export const Categories = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="categories">
-      <div className="category">
-        <Link
-          to="/phones"
-          className="categories__img--box categories__img-box--phones"
-        >
-          <img
-            src="img/categories-phones-new.png"
-            alt="category phones"
-            className="categories__img"
+    <div className={styles.categories}>
+      {categories.map(category => (
+        <div className={styles.category} key={category}>
+          <Link to={`/${category}`} className={styles.categories__imgBox}>
+            <img
+              className={styles.categories__img}
+              src={`img/categories-${category}-new.png`}
+              alt={`category ${category}`}
+              onClick={() => {
+                window.scrollTo(0, 0);
+                dispatch(navigationSlice.actions.clearLinks());
+                dispatch(navigationSlice.actions.addLink(category));
+              }}
+            />
+          </Link>
+          <Link
+            to={`/${category}`}
+            className={styles.categories__titleBox}
             onClick={() => {
               window.scrollTo(0, 0);
               dispatch(navigationSlice.actions.clearLinks());
-              dispatch(navigationSlice.actions.addLink('phones'));
+              dispatch(navigationSlice.actions.addLink(category));
             }}
-          />
-        </Link>
-        <Link
-          to="/phones"
-          className="categories__img--box categories__title--box"
-          onClick={() => {
-            window.scrollTo(0, 0);
-            dispatch(navigationSlice.actions.clearLinks());
-            dispatch(navigationSlice.actions.addLink('phones'));
-          }}
-        >
-          <h4 className="categories__title">
-            {translate('categories.phones', lang)}
-          </h4>
-        </Link>
-        <p className="categories__text">{`${phones.length} ${translate('categories.models', lang)}`}</p>
-      </div>
-
-      <div className="category">
-        <Link
-          to="/tablets"
-          className="categories__img--box categories__img-box--tablets"
-          onClick={() => {
-            window.scrollTo(0, 0);
-            dispatch(navigationSlice.actions.clearLinks());
-            dispatch(navigationSlice.actions.addLink('tablets'));
-          }}
-        >
-          <img
-            src="img/categories-tablets-new.png"
-            alt="category tablets"
-            className="categories__img"
-          />
-        </Link>
-        <Link
-          to="/tablets"
-          className="categories__img--box categories__title--box"
-          onClick={() => {
-            window.scrollTo(0, 0);
-            dispatch(navigationSlice.actions.clearLinks());
-            dispatch(navigationSlice.actions.addLink('tablets'));
-          }}
-        >
-          <h4 className="categories__title">
-            {translate('categories.tablets', lang)}
-          </h4>
-        </Link>
-        <p className="categories__text">{`${tablets.length} ${translate('categories.models', lang)}`}</p>
-      </div>
-
-      <div className="category">
-        <Link
-          to="/accessories"
-          className="categories__img--box categories__img-box--accessories"
-          onClick={() => {
-            window.scrollTo(0, 0);
-            dispatch(navigationSlice.actions.clearLinks());
-            dispatch(navigationSlice.actions.addLink('accessories'));
-          }}
-        >
-          <img
-            src="img/categories-assessories-new.png"
-            alt="category accessories"
-            className="categories__img"
-          />
-        </Link>
-        <Link
-          to="/accessories"
-          className="categories__img--box categories__title--box"
-          onClick={() => {
-            window.scrollTo(0, 0);
-            dispatch(navigationSlice.actions.clearLinks());
-            dispatch(navigationSlice.actions.addLink('accessories'));
-          }}
-        >
-          <h4 className="categories__title">
-            {translate('categories.accessories', lang)}
-          </h4>
-        </Link>
-        <p className="categories__text">{`${accessories.length} ${translate('categories.models', lang)}`}</p>
-      </div>
+          >
+            <h4 className={styles.categories__title}>
+              {translate(`categories.${category}`, lang)}
+            </h4>
+          </Link>
+          <p className={styles.categories__text}>{`${
+            category === 'phones'
+              ? phones.length
+              : category === 'tablets'
+                ? tablets.length
+                : accessories.length
+          } ${translate('categories.models', lang)}`}</p>
+        </div>
+      ))}
     </div>
   );
 };

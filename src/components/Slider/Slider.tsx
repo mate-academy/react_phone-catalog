@@ -1,6 +1,9 @@
+import styles from './Slider.module.scss';
+import stylesBtn from '../../styles/button.module.scss';
+import stylesIcon from '../../styles/icon.module.scss';
 import React, { useEffect, useRef, useState } from 'react';
-import './Slider.scss';
 import classNames from 'classnames';
+import { useAppSelector } from '../../app/hooks';
 
 const images = [
   'img/image-main.png',
@@ -9,6 +12,7 @@ const images = [
 ];
 
 export const Slider: React.FC = () => {
+  const { darkTheme } = useAppSelector(state => state.darkTheme);
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const startX = useRef<number | null>(null);
@@ -63,26 +67,26 @@ export const Slider: React.FC = () => {
 
   return (
     <div
-      className="slider"
+      className={styles.slider}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="slider__container">
+      <div className={styles.slider__container}>
         <button
-          className="slider__side-button slider__side-button--left icon button"
+          className={`${styles.slider__sideButton} ${styles.slider__sideButton__right} ${stylesIcon.icon} ${darkTheme ? stylesIcon.icon__arrowLeft__dark : stylesIcon.icon__arrowLeft} ${stylesBtn.button}`}
           onClick={handlePrev}
         ></button>
-        <div ref={sliderRef} className="slider__images">
-          <div className="slider__images__container">
+        <div ref={sliderRef} className={styles.slider__images}>
+          <div className={styles.slider__images__container}>
             {images.map(image => (
               <div
-                className="slider__images__img-box"
+                className={styles.slider__images__imgBox}
                 key={image}
                 style={{ transform: `translateX(-${currentImg * 100}%)` }}
               >
                 <img
-                  className="slider__img"
+                  className={styles.slider__img}
                   src={image}
                   alt={`photo ${currentImg}`}
                 />
@@ -91,16 +95,16 @@ export const Slider: React.FC = () => {
           </div>
         </div>
         <button
-          className="slider__side-button slider__side-button--right icon button"
+          className={`${styles.slider__sideButton} ${styles.slider__sideButton__right} ${stylesIcon.icon} ${darkTheme ? stylesIcon.icon__arrowRight__dark : stylesIcon.icon__arrowRight} ${stylesBtn.button}`}
           onClick={handleNext}
         ></button>
       </div>
-      <div className="slider__buttons">
+      <div className={styles.slider__buttons}>
         {[0, 1, 2].map(digit => (
           <button
             key={digit}
-            className={classNames('slider__button', {
-              'is-active': currentImg === digit,
+            className={classNames(styles.slider__button, {
+              [styles.active]: currentImg === digit,
             })}
             onClick={() => setCurrentImg(digit)}
           ></button>

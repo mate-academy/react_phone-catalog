@@ -1,3 +1,6 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
 .modal {
   position: absolute;
   width: 100vw;
@@ -23,6 +26,19 @@
 
   &__title {
     color: var(--c-primary);
+  }
+
+  &__button {
+    max-width: 200px;
+    width: 100%;
+    color: #fff;
+    background-color: var(--c-accent);
+    font-family: Mont-semibold, sans-serif;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+
+    @include mix.hover(box-shadow, 0 3px 13px 0 #17203166);
   }
 
   &__button__close {

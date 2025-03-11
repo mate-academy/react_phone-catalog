@@ -1,7 +1,10 @@
+import styles from './Carousel.module.scss';
+import stylesIcon from '../../styles/icon.module.scss';
+import stylesBtn from '../../styles/button.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { Product } from '../../types';
-import './Carousel.scss';
 import { Card } from '../Card/Card';
+import { useAppSelector } from '../../app/hooks';
 
 type Props = {
   items: Product[];
@@ -9,6 +12,7 @@ type Props = {
 };
 
 export const Carousel: React.FC<Props> = ({ items, visibleDiscount }) => {
+  const { darkTheme } = useAppSelector(state => state.darkTheme);
   const itemRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [currentShift, setCurrentShift] = useState(0);
@@ -71,29 +75,29 @@ export const Carousel: React.FC<Props> = ({ items, visibleDiscount }) => {
   };
 
   return (
-    <div className="carousel__container" ref={containerRef}>
-      <div className="carousel__nav-buttons">
+    <div className={styles.carousel__container} ref={containerRef}>
+      <div className={styles.carousel__navButtons}>
         <button
-          className="carousel__nav-button--left icon button"
+          className={`${styles.carousel__navButton__left} ${stylesIcon.icon} ${darkTheme ? stylesIcon.icon__arrowLeft__dark : stylesIcon.icon__arrowLeft} ${stylesBtn.button}`}
           onClick={handlePrev}
           disabled={currentShift === 0}
         ></button>
         <button
-          className="carousel__nav-button--right icon button"
+          className={`${styles.carousel__navButton__right} ${stylesIcon.icon} ${darkTheme ? stylesIcon.icon__arrowRight__dark : stylesIcon.icon__arrowRight} ${stylesBtn.button}`}
           onClick={handleNext}
           disabled={currentShift === maxShift}
         ></button>
       </div>
-      <div className="carousel__cards">
+      <div className={styles.carousel__cards}>
         <ul
-          className="carousel__list"
+          className={styles.carousel__list}
           style={{
             transition: `transform 300ms ease-in-out`,
             transform: `translateX(-${currentShift}px)`,
           }}
         >
           {items.map((phone: Product) => (
-            <li key={phone.id} className="carousel__item">
+            <li key={phone.id} className={styles.carousel__item}>
               <div ref={itemRef}>
                 <Card item={phone} discount={visibleDiscount} />
               </div>

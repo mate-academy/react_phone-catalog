@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { translate } from '../../utils/translate';
 import { Navigation } from '../Navigation/Navigation';
-import './Accessories.scss';
+import styles from './Accessories.module.scss';
 import { LangContext } from '../../context/LangContext';
 import { Catalog } from '../Catalog/Catalog';
 import { setPhonesAsync } from '../../features/phonesSlice';
@@ -19,10 +19,10 @@ export const Accessories = () => {
   }, [dispatch, accessories.length]);
 
   return (
-    <div className="accessories">
-      <div className="accessories__container">
+    <div className={styles.accessories}>
+      <div className={styles.accessories__container}>
         <Navigation />
-        <h1 className="accessories__title">
+        <h1 className={styles.accessories__title}>
           {translate('categories.accessories', lang)}
         </h1>
         <Catalog items={accessories} />

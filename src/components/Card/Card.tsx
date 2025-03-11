@@ -1,6 +1,8 @@
+import styles from './Card.module.scss';
+import stylesIcon from '../../styles/icon.module.scss';
+import stylesBtn from '../../styles/button.module.scss';
 import { useContext } from 'react';
 import { Product } from '../../types';
-import './Card.scss';
 import { LangContext } from '../../context/LangContext';
 import { translate } from '../../utils/translate';
 import { Link } from 'react-router-dom';
@@ -12,65 +14,75 @@ import { cartSlice } from '../../features/cartSlice';
 type Props = {
   item: Product;
   discount: boolean;
+  fullwidth?: boolean;
 };
 
-export const Card: React.FC<Props> = ({ item, discount }) => {
+export const Card: React.FC<Props> = ({
+  item,
+  discount,
+  fullwidth = false,
+}) => {
   const { lang } = useContext(LangContext);
   const { favoriteGoods } = useAppSelector(state => state.favorites);
   const { cartGoods } = useAppSelector(state => state.cart);
+  const { darkTheme } = useAppSelector(state => state.darkTheme);
   const dispatch = useAppDispatch();
 
   const isItemInCart = cartGoods.some(good => good.id === item.id);
   const isItemInFavorites = favoriteGoods.some(good => good.id === item.id);
 
   return (
-    <article className="card">
-      <div className="card__container">
+    <article className={styles.card} style={fullwidth ? { width: '100%' } : {}}>
+      <div className={styles.card__container}>
         <Link
           to={`/${item.category}/${item.id}`}
-          className="card__link--photo-link"
+          className={styles.card__link__photoLink}
         >
           <img
             src={item.images[0]}
             alt={`photo ${item.id}`}
-            className="card__link--photo"
+            className={styles.card__link__photo}
           />
         </Link>
         <Link
           to={`/${item.category}/${item.id}`}
-          className="card__link--name-link body-text"
+          className={styles.card__link__nameLink}
         >
           <div>{item.name}</div>
         </Link>
-        <div className="card__prices">
-          <div className="card__price">{`$${item.priceDiscount}`}</div>
+        <div className={styles.card__prices}>
+          <div className={styles.card__price}>{`$${item.priceDiscount}`}</div>
           {discount && (
-            <div className="card__price--discount">{`$${item.priceRegular}`}</div>
+            <div
+              className={styles.card__price__discount}
+            >{`$${item.priceRegular}`}</div>
           )}
         </div>
-        <div className="card__separator"></div>
-        <ul className="card__list">
-          <li className="card__list--item">
-            <p className="card__list--name small-text">
+        <div className={styles.card__separator}></div>
+        <ul className={styles.card__list}>
+          <li className={styles.card__list__item}>
+            <p className={styles.card__list__name}>
               {translate('card.screen', lang)}
             </p>
-            <p className="card__list--value">{item.screen.slice(0, 9)}</p>
+            <p className={styles.card__list__value}>
+              {item.screen.slice(0, 9)}
+            </p>
           </li>
-          <li className="card__list--item">
-            <p className="card__list--name small-text">
+          <li className={styles.card__list__item}>
+            <p className={styles.card__list__name}>
               {translate('card.capacity', lang)}
             </p>
-            <p className="card__list--value">{item.capacity}</p>
+            <p className={styles.card__list__value}>{item.capacity}</p>
           </li>
-          <li className="card__list--item">
-            <p className="card__list--name small-text">RAM</p>
-            <p className="card__list--value">{item.ram}</p>
+          <li className={styles.card__list__item}>
+            <p className={styles.card__list__name}>RAM</p>
+            <p className={styles.card__list__value}>{item.ram}</p>
           </li>
         </ul>
-        <div className="card__buttons">
+        <div className={styles.card__buttons}>
           <button
-            className={classNames('card__button--add', {
-              'in-cart': isItemInCart,
+            className={classNames(styles.card__button__add, {
+              [styles.inCart]: isItemInCart,
             })}
             onClick={() => {
               if (isItemInCart) {
@@ -87,9 +99,15 @@ export const Card: React.FC<Props> = ({ item, discount }) => {
               : translate('card.button', lang)}
           </button>
           <button
-            className={classNames('card__button icon icon--heart button', {
-              'is-favorite': isItemInFavorites,
-            })}
+            className={classNames(
+              styles.card__button,
+              stylesIcon.icon,
+              darkTheme ? stylesIcon.icon__heart__dark : stylesIcon.icon__heart,
+              stylesBtn.button,
+              {
+                [stylesIcon.isFavorite]: isItemInFavorites,
+              },
+            )}
             onClick={() => {
               if (isItemInFavorites) {
                 dispatch(favoriteSlice.actions.removeGood(item));

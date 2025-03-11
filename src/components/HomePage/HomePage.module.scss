@@ -1,0 +1,37 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.homePage {
+  &__container {
+    padding-block: 24px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    max-width: 1136px;
+    margin: 0 auto;
+
+    @include mix.content-padding-inline;
+
+    @include mix.on-tablet {
+      padding-block: 32px 64px;
+    }
+
+    @include mix.on-desktop {
+      padding-block: 56px 80px;
+    }
+  }
+}
+
+.section {
+  &__title {
+    margin-bottom: 24px;
+
+    &__hidden {
+      visibility: hidden;
+    }
+  }
+}

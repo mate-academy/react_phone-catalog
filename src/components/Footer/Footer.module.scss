@@ -2,11 +2,14 @@
 @use '../../styles/utils/mixins' as mix;
 
 .footer {
-  max-width: 1136px;
+  box-shadow: 0 -1px 0 0 var(--c-elements);
+  
+  &__content {
+    max-width: 1136px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 -1px 0 0 var(--c-elements);
-  border-bottom: 1px solid var(--c-elements);
+
+  // border-bottom: 1px solid var(--c-elements);
   padding-block: 32px;
   gap: 32px;
   margin: 0 auto;
@@ -24,6 +27,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
   }
 
   &__nav__list {
@@ -58,10 +62,10 @@
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(50px)
+    transform: translateY(50px);
   }
   to {
     opacity: 1;
-    transform: translateY(0)
+    transform: translateY(0);
   }
 }

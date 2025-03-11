@@ -9,3 +9,11 @@ export enum Category {
   Tablets = 'tablets',
   Accessories = 'accessories',
 }
+
+export enum Sort {
+  Newest = 'new',
+  Alphabetically = 'alpha',
+  AlphabeticallyDesc = 'alpha-desc',
+  Expensive = 'exp',
+  Cheapest = 'cheap',
+}

@@ -1,11 +1,13 @@
+import styles from './SearchForm.module.scss';
+import stylesIcon from '../../styles/icon.module.scss';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import './SearchForm.scss';
 import { querySlice } from '../../features/querySlice';
 import { useLocation } from 'react-router-dom';
 
 export const SearchForm = () => {
   const { query } = useAppSelector(state => state.query);
+  const { darkTheme } = useAppSelector(state => state.darkTheme);
   const dispatch = useAppDispatch();
   const [isClicked, setIsClicked] = useState(false);
   const location = useLocation();
@@ -20,11 +22,11 @@ export const SearchForm = () => {
   }, [location.pathname]);
 
   return (
-    <div className="search-form__container">
+    <div className={styles.searchForm__container}>
       {isClicked ? (
-        <form className="search-form" onSubmit={handleSearch}>
+        <form className={styles.searchForm} onSubmit={handleSearch}>
           <input
-            className="search-form__input"
+            className={styles.searchForm__input}
             type="text"
             placeholder="Search..."
             value={query}
@@ -42,7 +44,7 @@ export const SearchForm = () => {
         </form>
       ) : (
         <div
-          className="icon__nav icon icon--search"
+          className={`${stylesIcon.icon__nav} ${stylesIcon.icon} ${darkTheme ? stylesIcon.icon__search__dark : stylesIcon.icon__search}`}
           onClick={() => {
             setIsClicked(prev => !prev);
           }}

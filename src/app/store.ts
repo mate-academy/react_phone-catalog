@@ -7,6 +7,7 @@ import navigationReducer from '../features/navigationSlice';
 import cartReducer from '../features/cartSlice';
 import favoriteReducer from '../features/favoriteSlice';
 import queryReducer from '../features/querySlice';
+import themeReducer from '../features/themeSlice';
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ export const store = configureStore({
     cart: cartReducer,
     favorites: favoriteReducer,
     query: queryReducer,
+    darkTheme: themeReducer,
   },
 });
 

@@ -1,8 +1,8 @@
+import styles from './Phones.module.scss';
 import { useContext, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { translate } from '../../utils/translate';
 import { Navigation } from '../Navigation/Navigation';
-import './Phones.scss';
 import { LangContext } from '../../context/LangContext';
 import { Catalog } from '../Catalog/Catalog';
 import { setPhonesAsync } from '../../features/phonesSlice';
@@ -19,10 +19,10 @@ export const Phones = () => {
   }, [dispatch, phones.length]);
 
   return (
-    <div className="phones">
-      <div className="phones__container">
+    <div className={styles.phones}>
+      <div className={styles.phones__container}>
         <Navigation />
-        <h1 className="phones__title">
+        <h1 className={styles.phones__title}>
           {translate('categories.phones', lang)}
         </h1>
         <Catalog items={phones} />

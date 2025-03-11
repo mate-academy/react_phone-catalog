@@ -1,13 +1,16 @@
+import styles from './PageItem.module.scss';
+import stylesIcon from '../../styles/icon.module.scss';
+import stylesBtn from '../../styles/button.module.scss';
+import React, { useContext, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
-import './PageItem.scss';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { translate } from '../../utils/translate';
 import { LangContext } from '../../context/LangContext';
-import { navigationSlice } from '../../features/navigationSlice';
 import { favoriteSlice } from '../../features/favoriteSlice';
+import { cartSlice } from '../../features/cartSlice';
+import { Back } from '../Back';
 
 const allColors = {
   gold: '#FCDBC1',
@@ -40,6 +43,7 @@ export const PageItem = () => {
   const { tablets } = useAppSelector(state => state.tablets);
   const { accessories } = useAppSelector(state => state.accessories);
   const { favoriteGoods } = useAppSelector(state => state.favorites);
+  const { cartGoods } = useAppSelector(state => state.cart);
   const dispatch = useAppDispatch();
   const item =
     phones.find(product => product.id === id) ||
@@ -52,38 +56,27 @@ export const PageItem = () => {
   const linkWithoutCapacity = id?.slice(0, preLastIndexDash);
 
   const randomId = Math.floor(100000 + Math.random() * 900000);
+  const isItemInCart = cartGoods.some(good => good.id === item?.id);
 
   return (
-    <div className="page-item">
-      <div className="page-item__container">
+    <div className={styles.pageItem}>
+      <div className={styles.pageItem__container}>
         <Navigation />
-        <div className="page-item__back">
-          <div className="page-item__back--arrow icon icon--arrow-left"></div>
-          <Link
-            to={`/${item?.category}`}
-            className="page-item__back--text"
-            onClick={() => {
-              dispatch(navigationSlice.actions.clearLinks());
-              dispatch(navigationSlice.actions.addLink(`${item?.category}`));
-            }}
-          >
-            {translate('link.back', lang)}
-          </Link>
-        </div>
-        <h1 className="page-item__title">{item?.name}</h1>
-        <div className="page-item__grid-container">
-          <div className="page-item__box-img">
+        <Back />
+        <h1 className={styles.pageItem__title}>{item?.name}</h1>
+        <div className={styles.pageItem__gridContainer}>
+          <div className={styles.pageItem__boxImg}>
             <img
               src={`${item?.images[currentImage]}`}
               alt={`Big photo ${item?.images[currentImage]}`}
-              className="page-item__img--big"
+              className={styles.pageItem__img__big}
             />
           </div>
-          <div className="page-item__images">
+          <div className={styles.pageItem__images}>
             {item?.images.map((image, index) => (
               <div
-                className={classNames('page-item__img', {
-                  active: index === currentImage,
+                className={classNames(styles.pageItem__img, {
+                  [styles.active]: index === currentImage,
                 })}
                 key={image}
                 onClick={() => setCurrentImage(index)}
@@ -92,18 +85,18 @@ export const PageItem = () => {
               </div>
             ))}
           </div>
-          <div className="page-item__controls">
-            <div className="page-item__controls__colors">
-              <p className="page-item__controls__title">
+          <div className={styles.pageItem__controls}>
+            <div className={styles.pageItem__controls__colors}>
+              <p className={styles.pageItem__controls__title}>
                 {translate('item.colors', lang)}
               </p>
-              <div className="page-item__controls__colors__box">
+              <div className={styles.pageItem__controls__colors__box}>
                 {(item?.colorsAvailable as (keyof typeof allColors)[]).map(
                   color => (
                     <Link
                       to={`/${item?.category}/${linkWithoutColor}-${color}`}
-                      className={classNames('page-item__controls__color', {
-                        active: id?.includes(color),
+                      className={classNames(styles.pageItem__controls__color, {
+                        [styles.active]: id?.includes(color),
                       })}
                       key={color}
                       style={{ backgroundColor: allColors[color] }}
@@ -112,17 +105,19 @@ export const PageItem = () => {
                   ),
                 )}
               </div>
-              <span className="page-item__controls__id">ID: {randomId}</span>
-              <div className="page-item__controls__separator"></div>
-              <div className="page-item__controls__capacity__container">
+              <span className={styles.pageItem__controls__id}>
+                ID: {randomId}
+              </span>
+              <div className={styles.pageItem__controls__separator}></div>
+              <div className={styles.pageItem__controls__capacity__container}>
                 <p>{translate('item.cap', lang)}</p>
-                <div className="page-item__controls__capacity__box">
+                <div className={styles.pageItem__controls__capacity__box}>
                   {item?.capacityAvailable.map(cap => (
                     <Link
                       to={`/${item?.category}/${linkWithoutCapacity}-${cap.toLowerCase()}${id?.slice(lastIndexDash, id.length)}`}
                       className={classNames(
-                        'page-item__controls__capacity__button',
-                        { active: id?.includes(cap.toLowerCase()) },
+                        styles.pageItem__controls__capacity__button,
+                        { [styles.active]: id?.includes(cap.toLowerCase()) },
                       )}
                       key={cap}
                       onClick={() => window.scrollTo(0, 0)}
@@ -131,23 +126,47 @@ export const PageItem = () => {
                     </Link>
                   ))}
                 </div>
-                <div className="page-item__controls__separator"></div>
-                <div className="card__prices page-item__prices">
-                  <div className="card__price">{`$${item?.priceDiscount}`}</div>
+                <div className={styles.pageItem__controls__separator}></div>
+                <div className={styles.pageItem__prices}>
+                  <div
+                    className={styles.pageItem__price}
+                  >{`$${item?.priceDiscount}`}</div>
                   {
-                    <div className="card__price--discount">{`$${item?.priceRegular}`}</div>
+                    <div
+                      className={styles.pageItem__price__discount}
+                    >{`$${item?.priceRegular}`}</div>
                   }
                 </div>
-                <div className="card__buttons page-item__buttons">
-                  <button className="card__button--add">
+                <div className={styles.pageItem__buttons}>
+                  <button
+                    className={classNames(styles.pageItem__button__add, {
+                      [styles.inCart]: isItemInCart,
+                    })}
+                    onClick={() => {
+                      if (isItemInCart) {
+                        dispatch(
+                          cartSlice.actions.removeGood({
+                            ...item!,
+                            quantity: 1,
+                          }),
+                        );
+                      } else {
+                        dispatch(
+                          cartSlice.actions.addGood({ ...item!, quantity: 1 }),
+                        );
+                      }
+                    }}
+                  >
                     {translate('card.button', lang)}
                   </button>
-                  {/* eslint-disable-next-line max-len*/}
                   <button
                     className={classNames(
-                      'card__button icon icon--heart button',
+                      styles.pageItem__button,
+                      stylesIcon.icon,
+                      stylesIcon.icon__heart,
+                      stylesBtn.button,
                       {
-                        'is-favorite': favoriteGoods.some(
+                        [stylesIcon.isFavorite]: favoriteGoods.some(
                           good => good.id === item?.id,
                         ),
                       },
@@ -163,92 +182,106 @@ export const PageItem = () => {
                     }}
                   ></button>
                 </div>
-                <ul className="card__list">
-                  <li className="card__list--item">
-                    <p className="card__list--name small-text">
+                <ul className={styles.pageItem__list}>
+                  <li className={styles.pageItem__list__item}>
+                    <p className={styles.pageItem__list__name}>
                       {translate('card.screen', lang)}
                     </p>
-                    <p className="card__list--value">
+                    <p className={styles.pageItem__list__value}>
                       {item?.screen.slice(0, 9)}
                     </p>
                   </li>
-                  <li className="card__list--item">
-                    <p className="card__list--name small-text">
+                  <li className={styles.pageItem__list__item}>
+                    <p className={styles.pageItem__list__name}>
                       {translate('card.resolution', lang)}
                     </p>
-                    <p className="card__list--value">{item?.resolution}</p>
+                    <p className={styles.pageItem__list__value}>
+                      {item?.resolution}
+                    </p>
                   </li>
-                  <li className="card__list--item">
-                    <p className="card__list--name small-text">
+                  <li className={styles.pageItem__list__item}>
+                    <p className={styles.pageItem__list__name}>
                       {translate('card.processor', lang)}
                     </p>
-                    <p className="card__list--value">{item?.processor}</p>
+                    <p className={styles.pageItem__list__value}>
+                      {item?.processor}
+                    </p>
                   </li>
-                  <li className="card__list--item">
-                    <p className="card__list--name small-text">RAM</p>
-                    <p className="card__list--value">{item?.ram}</p>
+                  <li className={styles.pageItem__list__item}>
+                    <p className={styles.pageItem__list__name}>RAM</p>
+                    <p className={styles.pageItem__list__value}>{item?.ram}</p>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div className="page-item__about">
-            <h3 className="page-item__about__title">About</h3>
-            <div className="page-item__controls__separator"></div>
+          <div className={styles.pageItem__about}>
+            <h3 className={styles.pageItem__about__title}>About</h3>
+            <div className={styles.pageItem__controls__separator}></div>
             {item?.description.map(desc => (
               <React.Fragment key={desc.title}>
-                <h4 className="page-item__desc__title">{desc.title}</h4>
-                <p className="page-item__desc__text">{desc.text}</p>
+                <h4 className={styles.pageItem__desc__title}>{desc.title}</h4>
+                <p className={styles.pageItem__desc__text}>{desc.text}</p>
               </React.Fragment>
             ))}
           </div>
-          <div className="page-item__spec">
-            <h3 className="page-item__spec__title">Tech specs</h3>
-            <div className="page-item__controls__separator"></div>
-            <ul className="card__list">
-              <li className="card__list--item">
-                <p className="card__list--name small-text">
+          <div className={styles.pageItem__spec}>
+            <h3 className={styles.pageItem__spec__title}>Tech specs</h3>
+            <div className={styles.pageItem__controls__separator}></div>
+            <ul className={styles.pageItem__list}>
+              <li className={styles.pageItem__list__item}>
+                <p className={styles.pageItem__list__name}>
                   {translate('card.screen', lang)}
                 </p>
-                <p className="card__list--value">{item?.screen.slice(0, 9)}</p>
+                <p className={styles.pageItem__list__value}>
+                  {item?.screen.slice(0, 9)}
+                </p>
               </li>
-              <li className="card__list--item">
-                <p className="card__list--name small-text">
+              <li className={styles.pageItem__list__item}>
+                <p className={styles.pageItem__list__name}>
                   {translate('card.resolution', lang)}
                 </p>
-                <p className="card__list--value">{item?.resolution}</p>
+                <p className={styles.pageItem__list__value}>
+                  {item?.resolution}
+                </p>
               </li>
-              <li className="card__list--item">
-                <p className="card__list--name small-text">
+              <li className={styles.pageItem__list__item}>
+                <p className={styles.pageItem__list__name}>
                   {translate('card.processor', lang)}
                 </p>
-                <p className="card__list--value">{item?.processor}</p>
+                <p className={styles.pageItem__list__value}>
+                  {item?.processor}
+                </p>
               </li>
-              <li className="card__list--item">
-                <p className="card__list--name small-text">RAM</p>
-                <p className="card__list--value">{item?.ram}</p>
+              <li className={styles.pageItem__list__item}>
+                <p className={styles.pageItem__list__name}>RAM</p>
+                <p className={styles.pageItem__list__value}>{item?.ram}</p>
               </li>
-              <li className="card__list--item">
-                <p className="card__list--name small-text">
+              <li className={styles.pageItem__list__item}>
+                <p className={styles.pageItem__list__name}>
                   {translate('card.memory', lang)}
                 </p>
-                <p className="card__list--value">{item?.capacity}</p>
+                <p className={styles.pageItem__list__value}>{item?.capacity}</p>
               </li>
               {item?.category !== 'accessories' && (
                 <>
-                  <li className="card__list--item">
-                    <p className="card__list--name small-text">Camera</p>
-                    <p className="card__list--value">{item?.camera}</p>
+                  <li className={styles.pageItem__list__item}>
+                    <p className={styles.pageItem__list__name}>Camera</p>
+                    <p className={styles.pageItem__list__value}>
+                      {item?.camera}
+                    </p>
                   </li>
-                  <li className="card__list--item">
-                    <p className="card__list--name small-text">Zoom</p>
-                    <p className="card__list--value">{item?.zoom}</p>
+                  <li className={styles.pageItem__list__item}>
+                    <p className={styles.pageItem__list__name}>Zoom</p>
+                    <p className={styles.pageItem__list__value}>{item?.zoom}</p>
                   </li>
                 </>
               )}
-              <li className="card__list--item">
-                <p className="card__list--name small-text">Cell</p>
-                <p className="card__list--value">{item?.cell.join(', ')}</p>
+              <li className={styles.pageItem__list__item}>
+                <p className={styles.pageItem__list__name}>Cell</p>
+                <p className={styles.pageItem__list__value}>
+                  {item?.cell.join(', ')}
+                </p>
               </li>
             </ul>
           </div>

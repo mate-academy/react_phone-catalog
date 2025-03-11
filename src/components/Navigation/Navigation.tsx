@@ -1,5 +1,6 @@
+import styles from './Navigation.module.scss';
+import stylesIcon from '../../styles/icon.module.scss';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import './Navigation.scss';
 import { translate } from '../../utils/translate';
 import React, { useContext, useEffect } from 'react';
 import { LangContext } from '../../context/LangContext';
@@ -12,6 +13,7 @@ export const Navigation = () => {
   const { phones } = useAppSelector(state => state.phones);
   const { tablets } = useAppSelector(state => state.tablets);
   const { accessories } = useAppSelector(state => state.accessories);
+  const { darkTheme } = useAppSelector(state => state.darkTheme);
   const { lang } = useContext(LangContext);
   const { links } = useAppSelector(state => state.navigation);
   const location = useLocation();
@@ -37,25 +39,27 @@ export const Navigation = () => {
   }, [id]);
 
   return (
-    <div className="navigation__container">
+    <div className={styles.navigation__container}>
       <Link
         to="/"
-        className="navigation__link navigation__link--home icon icon--home"
+        className={`${styles.navigation__link} ${styles.navigation__link__home} ${stylesIcon.icon} ${darkTheme ? stylesIcon.icon__home__dark : stylesIcon.icon__home}`}
         onClick={() => dispatch(navigationSlice.actions.clearLinks())}
       ></Link>
-      <nav className="navigation">
-        <ul className="navigation__list">
+      <nav className={styles.navigation}>
+        <ul className={styles.navigation__list}>
           {links.map((link, index) => (
             <React.Fragment key={link}>
-              <li className="navigation__item">
-                <div className="navigation__separator icon"></div>
+              <li className={styles.navigation__item}>
+                <div
+                  className={`${styles.navigation__separator} ${stylesIcon.icon}`}
+                ></div>
               </li>
-              <li key={link} className="navigation__item">
+              <li key={link} className={styles.navigation__item}>
                 {index === 0 ? (
                   <Link
                     to={`/${link}`}
-                    className={classNames('navigation__link', {
-                      'is-active': index === links.length - 1,
+                    className={classNames(styles.navigation__link, {
+                      [styles.active]: index === links.length - 1,
                     })}
                     onClick={() =>
                       dispatch(
@@ -70,8 +74,8 @@ export const Navigation = () => {
                 ) : (
                   <Link
                     to={`/${link}`}
-                    className={classNames('navigation__link', {
-                      'is-active': index === links.length - 1,
+                    className={classNames(styles.navigation__link, {
+                      [styles.active]: index === links.length - 1,
                     })}
                   >
                     {link}

@@ -1,4 +1,4 @@
-import './HomePage.scss';
+import styles from './HomePage.module.scss';
 import { useContext, useEffect, useState } from 'react';
 import { Categories } from '../Categories/Categories';
 import { Slider } from '../Slider/Slider';
@@ -44,29 +44,29 @@ export const HomePage = () => {
   }
 
   return (
-    <main className="home-page">
-      <div className="container">
-        <section className="section section__main" id="main">
-          <h1 className="section__title section__title--main">
+    <main className={styles.homePage}>
+      <div className={styles.homePage__container}>
+        <section className={styles.section}>
+          <h1 className={styles.section__title__hidden}>Product Catalog</h1>
+          <h1 className={styles.section__title}>
             {translate('homePage.title', lang)}
           </h1>
-          {/* <Slider2 /> */}
           <Slider />
         </section>
-        <section className="section section__new-models" id="new-models">
-          <h2 className="section__title">
+        <section className={styles.section}>
+          <h2 className={styles.section__title}>
             {translate('new-models.title', lang)}
           </h2>
           <Carousel items={newModels} visibleDiscount={false} />
         </section>
-        <section className="section section__categories" id="categories">
-          <h2 className="section__title">
+        <section className={styles.section}>
+          <h2 className={styles.section__title}>
             {translate('categories.title', lang)}
           </h2>
           <Categories />
         </section>
-        <section className="section section__hot-prices" id="hot-prices">
-          <h2 className="section__title">
+        <section className={styles.section}>
+          <h2 className={styles.section__title}>
             {translate('hot-prices.title', lang)}
           </h2>
           <Carousel items={hotModels} visibleDiscount={true} />

@@ -1,4 +1,7 @@
-import './Header.scss';
+import styles from './Header.module.scss';
+import stylesNav from '../../styles/nav.module.scss';
+import stylesIcon from '../../styles/icon.module.scss';
+import stylesTheme from '../../styles/theme.module.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { useContext, useState } from 'react';
@@ -10,14 +13,15 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { navigationSlice } from '../../features/navigationSlice';
 import { SearchForm } from '../SearchForm/SearchForm';
 import { querySlice } from '../../features/querySlice';
+import { themeSlice } from '../../features/themeSlice';
 
 export const Header = () => {
   const currentUrl = useLocation();
   const [isMenu, setIsMenu] = useState(false);
-  // const [isSearch, setIsSearch] = useState(false);
   const { lang, setLang } = useContext(LangContext);
   const { favoriteGoods } = useAppSelector(state => state.favorites);
   const { cartGoods } = useAppSelector(state => state.cart);
+  const { darkTheme } = useAppSelector(state => state.darkTheme);
   const dispatch = useAppDispatch();
 
   const handleBurger = () => {
@@ -25,49 +29,66 @@ export const Header = () => {
   };
 
   const handleTheme = () => {
-    const themeToggleButton = document.querySelector('.icon--theme');
-    const appElement = document.querySelector('.App');
+    const bodyElement = document.querySelector('body');
 
-    if (themeToggleButton && appElement) {
-      appElement.classList.toggle('theme--dark');
+    if (bodyElement) {
+      bodyElement.classList.toggle(stylesTheme.theme__dark);
+      dispatch(themeSlice.actions.setDarkTheme(darkTheme ? false : true));
     }
 
     setIsMenu(false);
   };
 
   return (
-    <div className={classNames('header', { 'full--height': isMenu })}>
+    <div
+      className={classNames(styles.header, { [styles.full__height]: isMenu })}
+    >
       <div
-        className={classNames('header__container', {
-          'header__container--visible': isMenu,
+        className={classNames(styles.header__container, {
+          [styles.header__container__visible]: isMenu,
         })}
       >
-        <div className="header__top">
-          <div className="header__top--logo-with-menu">
+        <div className={styles.header__top}>
+          <div className={styles.header__top__logoWithMenu}>
             <Logo />
-            <div className="header__top__search__menu">
-              <div className="header__search-with-menu">
+            <div className={styles.header__top__search__menu}>
+              <div className={styles.header__searchWithMenu}>
                 {(currentUrl.pathname === '/phones' ||
                   currentUrl.pathname === '/tablets' ||
                   currentUrl.pathname === '/accessories') && <SearchForm />}
               </div>
-              <div className="nav__link nav__link--burger">
+              <div
+                className={`${stylesNav.nav__link} ${stylesNav.nav__link__burger}`}
+              >
                 <div
-                  className={classNames('icon icon__nav icon--burger-menu', {
-                    'menu--close': isMenu,
-                  })}
+                  className={classNames(
+                    stylesIcon.icon,
+                    stylesIcon.icon__nav,
+                    darkTheme
+                      ? stylesIcon.icon__burgerMenu__dark
+                      : stylesIcon.icon__burgerMenu,
+                    {
+                      [stylesIcon.menu__close]: isMenu,
+                    },
+                  )}
                   onClick={handleBurger}
                 ></div>
               </div>
             </div>
           </div>
-          <nav className={classNames('nav', { 'nav--visible': isMenu })}>
-            <ul className="nav__list">
-              <li className="list__item">
+          <nav
+            className={classNames(stylesNav.nav, {
+              [stylesNav.nav__visible]: isMenu,
+            })}
+          >
+            <ul className={stylesNav.nav__list}>
+              <li>
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
-                    classNames('nav__link', { 'is-active': isActive })
+                    classNames(stylesNav.nav__link, {
+                      [stylesNav.isActive]: isActive,
+                    })
                   }
                   onClick={() => {
                     setIsMenu(false);
@@ -78,11 +99,13 @@ export const Header = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="list__item">
+              <li>
                 <NavLink
                   to="/phones"
                   className={({ isActive }) =>
-                    classNames('nav__link', { 'is-active': isActive })
+                    classNames(stylesNav.nav__link, {
+                      [stylesNav.isActive]: isActive,
+                    })
                   }
                   onClick={() => {
                     setIsMenu(false);
@@ -95,11 +118,13 @@ export const Header = () => {
                   {translate('header.phones', lang)}
                 </NavLink>
               </li>
-              <li className="list__item">
+              <li>
                 <NavLink
                   to="/tablets"
                   className={({ isActive }) =>
-                    classNames('nav__link', { 'is-active': isActive })
+                    classNames(stylesNav.nav__link, {
+                      [stylesNav.isActive]: isActive,
+                    })
                   }
                   onClick={() => {
                     setIsMenu(false);
@@ -112,11 +137,13 @@ export const Header = () => {
                   {translate('header.tablets', lang)}
                 </NavLink>
               </li>
-              <li className="list__item">
+              <li>
                 <NavLink
                   to="/accessories"
                   className={({ isActive }) =>
-                    classNames('nav__link', { 'is-active': isActive })
+                    classNames(stylesNav.nav__link, {
+                      [stylesNav.isActive]: isActive,
+                    })
                   }
                   onClick={() => {
                     setIsMenu(false);
@@ -129,11 +156,13 @@ export const Header = () => {
                   {translate('header.accessories', lang)}
                 </NavLink>
               </li>
-              <li className="list__item">
-                <div className="nav__link--lang nav__link--with-menu">
+              <li>
+                <div
+                  className={`${stylesNav.nav__link__lang} ${stylesNav.nav__link__withMenu}`}
+                >
                   <span
-                    className={classNames('nav__link--en', {
-                      'is-active': lang === 'en',
+                    className={classNames(stylesNav.nav__link__en, {
+                      [stylesNav.active]: lang === 'en',
                     })}
                     onClick={() => {
                       setLang(Lang.EN);
@@ -144,8 +173,8 @@ export const Header = () => {
                   </span>{' '}
                   |{' '}
                   <span
-                    className={classNames('nav__link--it', {
-                      'is-active': lang === 'it',
+                    className={classNames(stylesNav.nav__link__it, {
+                      [stylesNav.active]: lang === 'it',
                     })}
                     onClick={() => {
                       setLang(Lang.IT);
@@ -156,8 +185,10 @@ export const Header = () => {
                   </span>
                 </div>
               </li>
-              <li className="list__item">
-                <div className="nav__link nav__link--with-menu">
+              <li>
+                <div
+                  className={`${stylesNav.nav__link} ${stylesNav.nav__link__withMenu}`}
+                >
                   <div onClick={handleTheme}>
                     {translate('header.theme', lang)}
                   </div>
@@ -167,12 +198,14 @@ export const Header = () => {
           </nav>
         </div>
         <div
-          className={classNames('header__icons', { 'icons--visible': isMenu })}
+          className={classNames(styles.header__icons, {
+            [styles.icons__visible]: isMenu,
+          })}
         >
-          <div className="nav__link--lang">
+          <div className={stylesNav.nav__link__lang}>
             <span
-              className={classNames('nav__link--en', {
-                'is-active': lang === 'en',
+              className={classNames(stylesNav.nav__link__en, {
+                [stylesNav.active]: lang === 'en',
               })}
               onClick={() => {
                 setLang(Lang.EN);
@@ -183,8 +216,8 @@ export const Header = () => {
             </span>{' '}
             |{' '}
             <span
-              className={classNames('nav__link--it', {
-                'is-active': lang === 'it',
+              className={classNames(stylesNav.nav__link__it, {
+                [stylesNav.active]: lang === 'it',
               })}
               onClick={() => {
                 setLang(Lang.IT);
@@ -194,22 +227,26 @@ export const Header = () => {
               IT
             </span>
           </div>
-          <div className="header__search-with-icons nav__link">
+          <div
+            className={`${styles.header__searchWithIcons} ${stylesNav.nav__link}`}
+          >
             {(currentUrl.pathname === '/phones' ||
               currentUrl.pathname === '/tablets' ||
               currentUrl.pathname === '/accessories') && <SearchForm />}
           </div>
-          <div className="nav__link nav__link--theme">
+          <div
+            className={`${stylesNav.nav__link} ${stylesNav.nav__link__theme}`}
+          >
             <div
-              className="icon icon__nav icon--theme"
+              className={`${stylesIcon.icon} ${stylesIcon.icon__nav} ${darkTheme ? stylesIcon.icon__theme__dark : stylesIcon.icon__theme}`}
               onClick={handleTheme}
             ></div>
           </div>
           <NavLink
             to="/favourites"
             className={({ isActive }) =>
-              classNames('nav__link nav__link--heart', {
-                'is-active': isActive,
+              classNames(stylesNav.nav__link, stylesNav.nav__link__heart, {
+                [stylesNav.isActive]: isActive,
               })
             }
             onClick={() => {
@@ -218,23 +255,30 @@ export const Header = () => {
               dispatch(querySlice.actions.setQuery(''));
               dispatch(navigationSlice.actions.clearLinks());
               dispatch(navigationSlice.actions.clearLinks());
-              dispatch(navigationSlice.actions.addLink('favourite'));
+              dispatch(navigationSlice.actions.addLink('favorite'));
             }}
           >
             <div
               data-count={favoriteGoods.length}
-              className={classNames('icon icon__nav icon--heart', {
-                'has-items': favoriteGoods.length > 0,
-              })}
+              className={classNames(
+                stylesIcon.icon,
+                stylesIcon.icon__nav,
+                darkTheme
+                  ? stylesIcon.icon__heart__dark
+                  : stylesIcon.icon__heart,
+                {
+                  [stylesIcon.hasItems]: favoriteGoods.length > 0,
+                },
+              )}
             ></div>
           </NavLink>
           <NavLink
             to="/cart"
             data-count={cartGoods.length}
             className={({ isActive }) =>
-              classNames('nav__link nav__link--basket', {
-                'is-active': isActive,
-                'has-items': cartGoods.length > 0,
+              classNames(stylesNav.nav__link, stylesNav.nav__link__basket, {
+                [stylesNav.isActive]: isActive,
+                hasItems: cartGoods.length > 0,
               })
             }
             onClick={() => {
@@ -247,9 +291,16 @@ export const Header = () => {
           >
             <div
               data-count={cartGoods.length}
-              className={classNames('icon icon__nav icon--basket', {
-                'has-items': cartGoods.length > 0,
-              })}
+              className={classNames(
+                stylesIcon.icon,
+                stylesIcon.icon__nav,
+                darkTheme
+                  ? stylesIcon.icon__basket__dark
+                  : stylesIcon.icon__basket,
+                {
+                  [stylesIcon.hasItems]: cartGoods.length > 0,
+                },
+              )}
             ></div>
           </NavLink>
         </div>

@@ -1,0 +1,16 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.searchForm {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  @include mix.on-800 {
+    right: 145px;
+  }
+
+  &__input {
+    height: 43px;
+  }
+}

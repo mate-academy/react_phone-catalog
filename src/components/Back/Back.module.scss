@@ -1,0 +1,16 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.back {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+
+  &__text {
+    // text-decoration: none;
+    color: var(--c-secondary);
+    cursor: pointer;
+
+    @include mix.hover(color, var(--c-primary));
+  }
+}

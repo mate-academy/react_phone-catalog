@@ -1,4 +1,6 @@
-import './Catalog.scss';
+import styles from './Catalog.module.scss';
+import stylesIcon from '../../styles/icon.module.scss';
+import stylesBtn from '../../styles/button.module.scss';
 import React, { useContext, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { LangContext } from '../../context/LangContext';
@@ -14,6 +16,7 @@ import classNames from 'classnames';
 import { sortItemsBy } from '../../utils/sort';
 import { translate } from '../../utils/translate';
 import { useAppSelector } from '../../app/hooks';
+import { Sort } from '../../utils/enums';
 
 type Props = {
   items: Product[];
@@ -54,8 +57,10 @@ export const Catalog: React.FC<Props> = ({ items }) => {
     setSearchParams(newSearchParams);
 
     if (dropdownSortRef.current) {
-      dropdownSortRef.current.classList.toggle('dropdown--active');
-      triggerSortRef?.current?.classList.toggle('dropdown__trigger--active');
+      dropdownSortRef.current.classList.toggle(styles.dropdown__active);
+      triggerSortRef?.current?.classList.toggle(
+        styles.dropdown__trigger__active,
+      );
     }
   };
 
@@ -67,52 +72,64 @@ export const Catalog: React.FC<Props> = ({ items }) => {
     setSearchParams(newSearchParams);
 
     if (dropdownPerPageRef.current) {
-      dropdownPerPageRef.current.classList.toggle('dropdown--active');
-      triggerPerPageRef?.current?.classList.toggle('dropdown__trigger--active');
+      dropdownPerPageRef.current.classList.toggle(styles.dropdown__active);
+      triggerPerPageRef?.current?.classList.toggle(
+        styles.dropdown__trigger__active,
+      );
     }
   };
 
   return (
-    <div className="catalog">
-      <p className="phones__text">{`${filteredItems.length} ${translate('categories.models', lang)}`}</p>
+    <div className={styles.catalog}>
+      <p
+        className={styles.catalog__length}
+      >{`${filteredItems.length} ${translate('categories.models', lang)}`}</p>
       {filteredItems.length > 0 ? (
-        <div className="catalog__container">
-          <div className="catalog__top">
-            <div className="dropdown dropdown--sort" ref={dropdownSortRef}>
+        <div className={styles.catalog__container}>
+          <div className={styles.catalog__top}>
+            <div
+              className={`${styles.dropdown} ${styles.dropdown__sort}`}
+              ref={dropdownSortRef}
+            >
               <label
                 htmlFor="dropdown-sort__trigger"
-                className="dropdown__label"
+                className={styles.dropdown__label}
               >
                 Sort by
               </label>
               <div
-                className="dropdown__trigger"
+                className={styles.dropdown__trigger}
                 id="dropdown-sort__trigger"
                 ref={triggerSortRef}
                 onClick={() => {
                   if (dropdownSortRef.current) {
                     dropdownSortRef.current.classList.toggle(
-                      'dropdown--active',
+                      styles.dropdown__active,
                     );
                     triggerSortRef?.current?.classList.toggle(
-                      'dropdown__trigger--active',
+                      styles.dropdown__trigger__active,
                     );
                   }
                 }}
               >
-                <span className="dropdown__trigger__text">Newest</span>
-                <span className="icon icon--arrow-bottom"></span>
+                <span className={styles.dropdown__trigger__text}>Newest</span>
+                <span
+                  className={`${stylesIcon.icon} ${stylesIcon.icon__arrowBottom}`}
+                ></span>
               </div>
 
-              <div className="dropdown__content">
+              <div className={styles.dropdown__content}>
                 <ul>
-                  <li
-                    className="dropdown__item"
-                    onClick={() => onSortChange('new')}
-                  >
-                    {translate('sort.new', lang)}
-                  </li>
-                  <li
+                  {Object.values(Sort).map(sortValue => (
+                    <li
+                      className={styles.dropdown__item}
+                      key={sortValue}
+                      onClick={() => onSortChange(sortValue)}
+                    >
+                      {translate(`sort.${sortValue}`, lang)}
+                    </li>
+                  ))}
+                  {/* <li
                     className="dropdown__item"
                     onClick={() => onSortChange('alpha')}
                   >
@@ -135,54 +152,58 @@ export const Catalog: React.FC<Props> = ({ items }) => {
                     onClick={() => onSortChange('cheap')}
                   >
                     {translate('sort.cheap', lang)}
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
             <div
-              className="dropdown dropdown--per-page"
+              className={`${styles.dropdown} ${styles.dropdown__perPage}`}
               ref={dropdownPerPageRef}
             >
               <label
+                className={styles.dropdown__label}
                 htmlFor="dropdown-per-page__trigger"
-                className="dropdown__label"
               >
                 Items on page
               </label>
               <div
-                className="dropdown__trigger"
+                className={styles.dropdown__trigger}
                 id="dropdown-per-page__trigger"
                 ref={triggerPerPageRef}
                 onClick={() => {
                   if (dropdownPerPageRef.current) {
                     dropdownPerPageRef.current.classList.toggle(
-                      'dropdown--active',
+                      styles.dropdown__active,
                     );
                     triggerPerPageRef?.current?.classList.toggle(
-                      'dropdown__trigger--active',
+                      styles.dropdown__trigger__active,
                     );
                   }
                 }}
               >
-                <span className="dropdown__trigger__text">{itemsPerPage}</span>
-                <span className="icon icon--arrow-bottom"></span>
+                <span className={styles.dropdown__trigger__text}>
+                  {itemsPerPage}
+                </span>
+                <span
+                  className={`${stylesIcon.icon} ${stylesIcon.icon__arrowBottom}`}
+                ></span>
               </div>
-              <div className="dropdown__content">
-                <ul className="dropdown__list">
+              <div className={styles.dropdown__content}>
+                <ul className={styles.dropdown__list}>
                   <li
-                    className="dropdown__item"
+                    className={styles.dropdown__item}
                     onClick={() => onItemsPerPageChange(8)}
                   >
                     8
                   </li>
                   <li
-                    className="dropdown__item"
+                    className={styles.dropdown__item}
                     onClick={() => onItemsPerPageChange(16)}
                   >
                     16
                   </li>
                   <li
-                    className="dropdown__item"
+                    className={styles.dropdown__item}
                     onClick={() => onItemsPerPageChange(24)}
                   >
                     24
@@ -191,24 +212,27 @@ export const Catalog: React.FC<Props> = ({ items }) => {
               </div>
             </div>
           </div>
-          <div className="catalog__list">
+          <div className={styles.catalog__list}>
             {itemsForPrint.map(item => {
               return (
-                <div className="catalog__item" key={item.id}>
-                  <Card item={item} discount={true} />
+                <div className={styles.catalog__item} key={item.id}>
+                  <Card item={item} discount={true} fullwidth={true} />
                 </div>
               );
             })}
           </div>
-          <div className="catalog__pagination">
+          <div className={styles.catalog__pagination}>
             <li
-              className={`catalog__page-item ${currentPage === 1 ? 'disabled' : ''}`}
+              className={`${styles.catalog__pageItem} ${currentPage === 1 ? styles.disabled : ''}`}
             >
               <Link
                 className={classNames(
-                  'catalog__page-link button icon icon--arrow-left',
-                  'catalog__page-link--left',
-                  { disabled: currentPage === 1 },
+                  styles.catalog__pageLink,
+                  stylesBtn.button,
+                  stylesIcon.icon,
+                  stylesIcon.icon__arrowLeft,
+                  styles.catalog__pageLink__left,
+                  { [styles.disabled]: currentPage === 1 },
                 )}
                 to={`?page=${currentPage - 1}&perPage=${itemsPerPage}`}
                 onClick={() => {
@@ -220,13 +244,18 @@ export const Catalog: React.FC<Props> = ({ items }) => {
             </li>
             {getVisiblePages(totalPages, currentPage).map(page => (
               <li
-                className={`catalog__page-item ${page === currentPage ? 'active' : ''}`}
+                className={`${styles.catalog__pageItem} ${page === currentPage ? styles.active : ''}`}
                 key={page}
               >
                 <Link
-                  className={classNames('catalog__page-link button icon', {
-                    active: page === currentPage,
-                  })}
+                  className={classNames(
+                    styles.catalog__pageLink,
+                    stylesBtn.button,
+                    stylesIcon.icon,
+                    {
+                      [styles.active]: page === currentPage,
+                    },
+                  )}
                   to={`?page=${page}&perPage=${itemsPerPage}`}
                   onClick={() => onPageChange(page)}
                 >
@@ -235,15 +264,18 @@ export const Catalog: React.FC<Props> = ({ items }) => {
               </li>
             ))}
             <li
-              className={`catalog__page-item ${
-                currentPage === totalPages ? 'disabled' : ''
+              className={`${styles.catalog__pageItem} ${
+                currentPage === totalPages ? styles.disabled : ''
               }`}
             >
               <Link
                 className={classNames(
-                  'catalog__page-link button icon icon--arrow-right',
-                  'catalog__page-link--right',
-                  { disabled: currentPage === totalPages },
+                  styles.catalog__pageLink,
+                  stylesBtn.button,
+                  stylesIcon.icon,
+                  stylesIcon.icon__arrowRight,
+                  styles.catalog__pageLink__right,
+                  { [styles.disabled]: currentPage === totalPages },
                 )}
                 to={`?page=${currentPage + 1}&perPage=${itemsPerPage}`}
                 onClick={() => {
@@ -256,7 +288,9 @@ export const Catalog: React.FC<Props> = ({ items }) => {
           </div>
         </div>
       ) : (
-        <h4>{translate('favorite.no-items', lang)}!</h4>
+        <div className={styles.catalog__noItems}>
+          <h4>{translate('favorite.no-items', lang)}!</h4>
+        </div>
       )}
     </div>
   );

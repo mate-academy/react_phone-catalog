@@ -1,7 +1,8 @@
+import styles from './PageNotFound.module.scss';
+import stylesBtn from '../../styles/button.module.scss';
 import { useContext, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { translate } from '../../utils/translate';
-import './PageNotFound.scss';
 import { LangContext } from '../../context/LangContext';
 import { setPhonesAsync } from '../../features/phonesSlice';
 import { Link } from 'react-router-dom';
@@ -18,15 +19,20 @@ export const PageNotFound = () => {
   }, [dispatch, tablets.length]);
 
   return (
-    <div className="not-found">
-      <h1 className="not-found__title">{translate('not-found.title', lang)}</h1>
-      <Link to={'/'} className="not-found__button button">
+    <div className={styles.notFound}>
+      <h1 className={styles.notFound__title}>
+        {translate('not-found.title', lang)}
+      </h1>
+      <Link
+        to={'/'}
+        className={`${styles.notFound__button} ${stylesBtn.button}`}
+      >
         {translate('not-found.button', lang)}
       </Link>
       <img
+        className={styles.notFound__img}
         src="img/page-not-found.png"
         alt="img page-not-found"
-        className="not-found__img"
       />
     </div>
   );

@@ -1,0 +1,26 @@
+@use '../styles/utils/mixins' as mix;
+@use '../styles/utils/vars' as vars;
+
+.button {
+  margin: 0;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  background-color: var(--c-surface-2);
+  cursor: pointer;
+  border: 1px solid var(--c-icons);
+
+  @include mix.hover(border-color, var(--c-primary));
+
+  &:disabled {
+    background-color: var(--c-page-bg);
+    border-color: var(--c-elements);
+    cursor: not-allowed;
+  }
+
+  &__backTop {
+    width: 32px;
+    height: 32px;
+  }
+}

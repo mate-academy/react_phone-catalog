@@ -1,0 +1,77 @@
+@use './styles/utils/vars' as vars;
+@use './styles/utils/mixins' as mix;
+@use './styles/utils/topography' as top;
+@use './styles/icon.module';
+@use './styles/button.module';
+@use './styles/nav.module';
+@use './styles/theme.module';
+
+:root {
+  --c-page-bg: #fff;
+  --c-primary: #313237;
+  --c-secondary: #89939A;
+  --c-icons: #B4BDC3;
+  --c-elements: #E2E6E9;
+  --c-hover-bg: #FAFBFC;
+  --c-green: #27AE60;
+  --c-red: #EB5757;
+  --c-accent: #313237;
+  --c-surface-1: #fff;
+  --c-surface-2: #fff;
+  --c-shadow-card: #17203166;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+
+  // --c-page-bg: #fff;
+  // --c-primary: #313237;
+  // --c-secondary: #89939a;
+  // --c-icons: #b4bdc3;
+  // --c-elements: #e2e6e9;
+  // --c-hover-bg: #fafbfc;
+  // --c-green: #27ae60;
+  // --c-red: #eb5757;
+  // --c-accent: #313237;
+  // --c-surface-1: #fff;
+  // --c-surface-2: #fff;
+  // --c-shadow-card: #17203166;
+
+  // &.theme__dark {
+  //   --c-page-bg: #0f1121;
+  //   --c-primary: #f1f2f9;
+  //   --c-secondary: #75767f;
+  //   --c-icons: #4a4d58;
+  //   --c-elements: #3b3e4a;
+  //   --c-hover-bg: #fafbfc;
+  //   --c-green: #f1f2f9;
+  //   --c-red: #eb5757;
+  //   --c-accent: #905bff;
+  //   --c-surface-1: #161827;
+  //   --c-surface-2: #323542;
+  //   --c-shadow-card: #75767f;
+  // }
+}
+
+.App {
+  margin: 0;
+  padding: 0;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  background-color: var(--c-page-bg);
+  transition: all vars.$transition-time;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+ul {
+  margin: 0;
+  padding: 0;
+}
