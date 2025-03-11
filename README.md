@@ -46,3 +46,6 @@ A responsive web application showcasing a diverse catalog of phones, tablets, an
 	5. Start the development server with the command:
 
         npm start
+
+
+
