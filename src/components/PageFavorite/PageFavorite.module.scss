@@ -1,0 +1,61 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.favorite {
+  padding-block: 24px 64px;
+  max-width: 1136px;
+  margin: 0 auto;
+
+  @include mix.content-padding-inline;
+
+  @include mix.on-desktop {
+    padding-block: 24px 80px;
+  }
+
+  &__text {
+    color: var(--c-secondary);
+  }
+
+  &__cards {
+    margin-top: 40px;
+    row-gap: 40px;
+
+    @include mix.page-grid;
+  }
+
+  &__card {
+    grid-column: span 4;
+
+    @include mix.on-500 {
+      grid-column: span 6;
+    }
+
+    @include mix.on-800 {
+      grid-column: span 4;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__notFound__button {
+    display: block;
+    margin-top: 10px;
+    width: 200px;
+    text-align: center;
+    line-height: 40px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: var(--c-primary);
+  }
+
+  &__empty {
+    width: 100%;
+
+    &__img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.carousel {
+  &__container {
+    position: relative;
+
+  }
+
+  &__navButtons {
+    position: absolute;
+    display: flex;
+    gap: 16px;
+    top: -55px;
+    right: 0;
+  }
+
+  &__navButton__left {
+    width: 32px;
+    height: 32px;
+    background-color: var(--c-surface-2);
+
+    &:disabled {
+      background-image: url(/img/icons/arrow-left-grey.svg);
+    }
+  }
+
+  &__navButton__right {
+    width: 32px;
+    height: 32px;
+    background-color: var(--c-surface-2);
+
+    &:disabled {
+      background-image: url(/img/icons/arrow-right-grey.svg);
+    }
+  }
+
+  &__cards {
+    overflow: hidden;
+    padding: 16px;
+    margin-inline: -16px;
+
+    @include mix.on-tablet {
+      margin-right: -32px;
+    }
+
+    @include mix.on-desktop {
+      margin-right: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    list-style: none;
+  }
+}
