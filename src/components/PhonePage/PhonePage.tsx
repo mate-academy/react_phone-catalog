@@ -9,7 +9,7 @@ import { usePhonesHooks } from './usePhonesHooks';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Product } from '../../types/typeRpoduct';
-import { fetchProducts } from '../../utils/api';
+import { fetchAllProducts } from '../../utils/api';
 
 export const PhonesPage = () => {
   const path = useLocation();
@@ -35,7 +35,7 @@ export const PhonesPage = () => {
   }
 
   useEffect(() => {
-    fetchProducts().then(data => {
+    fetchAllProducts().then(data => {
       const validCategories = ['phones', 'tablets', 'accessories'];
 
       if (validCategories.includes(currentCategory)) {
