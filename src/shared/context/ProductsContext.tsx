@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { Product } from '../../../types/Products';
+import { Product } from '../../types/Products';
 
 export const ProductContext = createContext({
   products: [] as Product[],

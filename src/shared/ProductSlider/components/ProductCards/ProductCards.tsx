@@ -1,10 +1,12 @@
-import { useContext } from 'react';
+import React from 'react';
+import { Product } from '../../../../types/Products';
 import s from './ProductCards.module.scss';
-import { ProductContext } from '../context/ProductsContext';
 
-export const ProductCards = () => {
-  const { products } = useContext(ProductContext);
+type Props = {
+  products: Product[];
+};
 
+export const ProductCards: React.FC<Props> = ({ products }) => {
   return (
     <>
       {products.map(product => (

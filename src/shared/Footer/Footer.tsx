@@ -1,4 +1,4 @@
-import { Logo } from '../shared/Logo';
+import { Logo } from '../Logo';
 import s from './Footer.module.scss';
 
 export const Footer = () => {

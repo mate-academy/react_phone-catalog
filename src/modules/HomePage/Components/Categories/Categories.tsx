@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import s from './Categories.module.scss';
 import { useContext } from 'react';
-import { ProductContext } from '../../../shared/context/ProductsContext';
+import { ProductContext } from '../../../../shared/context/ProductsContext';
 
 export const Categories = () => {
   const {

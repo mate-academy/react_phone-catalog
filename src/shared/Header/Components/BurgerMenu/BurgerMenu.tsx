@@ -3,7 +3,7 @@ import { NavMenu } from '../NavMenu';
 import { RightButtons } from '../RightButtons';
 import s from './BurgerMenu.module.scss';
 import { useContext } from 'react';
-import { BurgerContext } from '../../../shared/context/BurgerContext';
+import { BurgerContext } from '../../../context/BurgerContext';
 
 export const BurgerMenu = () => {
   const { burgerMenuActivate } = useContext(BurgerContext);
