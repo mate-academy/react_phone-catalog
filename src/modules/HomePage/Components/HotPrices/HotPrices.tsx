@@ -24,10 +24,10 @@ export const HotPrices = () => {
         </div>
         <div className={s.title__buttons}>
           <button className={s.title__buttons_prev} onClick={prevCard}>
-            <img src="public/img/icons/prev.png" alt="previous" />
+            <img src="./img/icons/prev.png" alt="previous" />
           </button>
           <button className={s.title__buttons_next} onClick={nextCard}>
-            <img src="public/img/icons/next.png" alt="next" />
+            <img src="./img/icons/next.png" alt="next" />
           </button>
         </div>
       </div>

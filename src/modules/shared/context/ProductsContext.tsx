@@ -30,7 +30,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     item => item.category === 'accessories',
   ).length;
 
-  const API_URL = '/api/products.json';
+  const API_URL = './api/products.json';
 
   useEffect(() => {
     fetch(API_URL)

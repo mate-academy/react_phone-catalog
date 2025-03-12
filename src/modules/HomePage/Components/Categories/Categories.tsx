@@ -30,7 +30,7 @@ export const Categories = () => {
 
         <div className={s.category__tablets}>
           <div className={s.category__tablets_img}>
-            <img src="public/img/category-tablets.webp" alt="" />
+            <img src="./img/category-tablets.webp" alt="" />
           </div>
           <div className={s.category__tablets_title}>
             <h4>Tablets</h4>
@@ -42,7 +42,7 @@ export const Categories = () => {
 
         <div className={s.category__accessories}>
           <div className={s.category__accessories_img}>
-            <img src="public/img/category-accessories.png" alt="" />
+            <img src="./img/category-accessories.png" alt="" />
           </div>
           <div className={s.category__accessories_title}>
             <h4>Accessories</h4>
