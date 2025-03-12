@@ -4,13 +4,11 @@ import { MyDropdownItems, MyDropdownSortBy } from '../DropDown/DropDow';
 import './PhonePage.scss';
 import home from '../../../image/home.svg';
 import arrow from '../../../image/arrow.svg';
-
 import { usePhonesHooks } from './usePhonesHooks';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Product } from '../../types/typeRpoduct';
+import { Product } from '../../types/ProductDetails';
 import { fetchAllProducts } from '../../utils/api';
-
 export const PhonesPage = () => {
   const path = useLocation();
   const currentCategory = path.pathname.slice(1);
@@ -27,7 +25,6 @@ export const PhonesPage = () => {
     hanleSortChange,
     // setItemPrevPage,
   } = usePhonesHooks();
-
   const pageNumbers = [];
 
   for (let i = 1; i <= totalPages; i++) {
@@ -70,12 +67,10 @@ export const PhonesPage = () => {
           )}
         </p>
       </div>
-
       <h1 className="mobile__title">
         {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
       </h1>
       <h1 className="mobile__models">{`${phones.length} models`}</h1>
-
       {!loading && (
         <>
           <div className="mobile__choice">
@@ -84,13 +79,11 @@ export const PhonesPage = () => {
                 <h3 className="sortby">Sort by</h3>
                 <MyDropdownSortBy onChange={hanleSortChange} />
               </div>
-
               <div className="mobile__items">
                 <h3 className="item__page">Items on page</h3>
                 <MyDropdownItems onChange={handleItemsChange} />
               </div>
             </div>
-
             <div className="mobile__cards">
               {products.map(product => (
                 <ProductItem
@@ -101,7 +94,6 @@ export const PhonesPage = () => {
                 />
               ))}
             </div>
-
             <div className="mobile__buttons">
               <button
                 className="mobile__buttonsbuttonPrev"

@@ -7,10 +7,10 @@ import { Loader } from '../Loader/Loader';
 import like from '../../../image/heart.svg';
 import { useInfoHook } from './InfoHook';
 import { ProductSlider } from '../ProductCard/ProductCard';
-import { Product } from '../../types/typeRpoduct';
 import { fetchAllProducts } from '../../utils/api';
 import { useParams } from 'react-router-dom';
 import { NameSlider } from '../../nameslider';
+import { Product } from '../../types/ProductDetails';
 
 export const ProductInformation: React.FC = () => {
   const { category } = useParams<{ category: string }>();
@@ -28,25 +28,28 @@ export const ProductInformation: React.FC = () => {
     selectedMemory,
     selecredColor,
     techInfo,
+    setSelectedPhone,
   } = useInfoHook();
 
-  const currentCategory = category || 'phones';
+  // const currentCategory = category || 'phones';
 
   useEffect(() => {
-    fetchAllProducts().then(data => {
-      const validCategories = ['phones', 'tablets', 'accessories'];
+    const fetchData = async () => {
+      const data = await fetchAllProducts();
 
-      if (validCategories.includes(currentCategory)) {
-        const filteredProducts = data.filter(
-          product => product.category === currentCategory,
-        );
+      const filteredProducts = data.filter(
+        product => product.category === category,
+      );
 
-        setProducts(filteredProducts);
-      } else {
-        setProducts([]);
-      }
-    });
-  }, [currentCategory]);
+      setProducts(filteredProducts);
+
+      const product = filteredProducts.find(item => item.id === productId);
+
+      setSelectedPhone(product || null);
+    };
+
+    fetchData();
+  }, [category, productId, setSelectedPhone]);
 
   return (
     <main className="productInfo">

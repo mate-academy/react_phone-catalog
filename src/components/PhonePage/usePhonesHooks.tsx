@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../../types/typeRpoduct';
 import { useSearchParams } from 'react-router-dom';
-import { fetchProducts } from '../../utils/api';
-
+import { Product } from '../../types/ProductDetails';
+import { fetchAllProducts } from '../../utils/api';
 interface DropDownOption {
   value: string;
 }
-
 export const usePhonesHooks = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [itemPrevPage, setItemPrevPage] = useState(8); //початкове відображення карток
@@ -25,20 +23,19 @@ export const usePhonesHooks = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetchProducts()
+    fetchAllProducts()
       .then(data => {
         setPhones(data.filter(dat => dat.category === 'phones'));
+        // console.log(phones);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
-
   //функція для сортування
   const hanleSortChange = () => {
     setSortBy(sortBy);
     setSearchParams(sortBy);
-
     const sortedPhone = [...phones];
 
     if (sortBy === 'Newest') {
@@ -66,13 +63,14 @@ export const usePhonesHooks = () => {
       setItemPrevPage(value);
       setSearchParams({ itemPrevPage: option.value });
     }
-
+    
     setCurrentPage(1);
     // setCurrentPage(1);
     // setSearchParams({ itemPrevPage: option.value });
   };
 
   const indexOfLastItem = currentPage * itemPrevPage;
+
   const indexOfFirstItem = indexOfLastItem - itemPrevPage;
   const currentItems = phones.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(phones.length / itemPrevPage);
