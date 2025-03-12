@@ -8,7 +8,7 @@ import like from '../../../image/heart.svg';
 import { useInfoHook } from './InfoHook';
 import { ProductSlider } from '../ProductCard/ProductCard';
 import { Product } from '../../types/typeRpoduct';
-import { fetchProducts } from '../../utils/api';
+import { fetchAllProducts } from '../../utils/api';
 import { useParams } from 'react-router-dom';
 import { NameSlider } from '../../nameslider';
 
@@ -33,7 +33,7 @@ export const ProductInformation: React.FC = () => {
   const currentCategory = category || 'phones';
 
   useEffect(() => {
-    fetchProducts().then(data => {
+    fetchAllProducts().then(data => {
       const validCategories = ['phones', 'tablets', 'accessories'];
 
       if (validCategories.includes(currentCategory)) {

@@ -15,9 +15,11 @@ export const ProductItem: React.FC<Props> = ({
   WithAdditionalPrice = false,
   // onClick,
 }) => {
+  const productPath = `/${product.category}/${product.itemId}`;
+
   return (
     <NavLink
-      to={`/phones/${product.itemId}`}
+      to={productPath}
       className="product__elements"
       // onClick={onClick}
     >

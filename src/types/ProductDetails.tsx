@@ -1,4 +1,4 @@
-export interface Description {
+interface Description {
   title: string;
   text: string[];
 }
@@ -21,12 +21,16 @@ export interface ProductDetails {
   processor: string;
   ram: string;
   cell: string[];
+}
+
+export interface Accessories extends ProductDetails {}
+
+export interface Phone extends ProductDetails {
   camera: string;
   zoom: string;
 }
 
-export interface Phone extends ProductDetails {}
-
-export interface Tablets extends ProductDetails {}
-
-export interface Accessories extends ProductDetails {}
+export interface Tablets extends ProductDetails {
+  camera: string;
+  zoom: string;
+}

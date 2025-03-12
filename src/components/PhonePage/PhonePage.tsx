@@ -13,7 +13,7 @@ import { fetchProducts } from '../../utils/api';
 
 export const PhonesPage = () => {
   const path = useLocation();
-  const currentCategoty = path.pathname.slice(1);
+  const currentCategory = path.pathname.slice(1);
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const {
@@ -38,9 +38,9 @@ export const PhonesPage = () => {
     fetchProducts().then(data => {
       const validCategories = ['phones', 'tablets', 'accessories'];
 
-      if (validCategories.includes(currentCategoty)) {
+      if (validCategories.includes(currentCategory)) {
         const filteredProducts = data.filter(
-          product => product.category === currentCategoty,
+          product => product.category === currentCategory,
         );
 
         setProducts(filteredProducts);
@@ -48,12 +48,7 @@ export const PhonesPage = () => {
         setProducts([]);
       }
     });
-  }, [currentCategoty]);
-
-  //функція для фільтрації вибраної карегорії
-  // const filteredId = currentItems.filter(
-  //   item => item.category === currentCategory,
-  // );
+  }, [currentCategory]);
 
   return (
     <main className="main__phonepage">
@@ -63,7 +58,7 @@ export const PhonesPage = () => {
           <img src={arrow} alt="mobilelink__arrow" />
         </span>
         <p className="mobilelink__title">
-          {currentCategoty}
+          {currentCategory}
           {/* Phones */}
           {selectedPhone && (
             <>
@@ -77,7 +72,7 @@ export const PhonesPage = () => {
       </div>
 
       <h1 className="mobile__title">
-        {currentCategoty.charAt(0).toUpperCase() + currentCategoty.slice(1)}
+        {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
       </h1>
       <h1 className="mobile__models">{`${phones.length} models`}</h1>
 
