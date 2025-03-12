@@ -1,0 +1,76 @@
+@import '../../../../style/global';
+
+.container {
+  padding-top: 56px;
+
+  @include padding-inline;
+
+  @include on-tablet {
+    padding-top: 64px;
+  }
+
+  @include on-desctop {
+    padding-top: 80px;
+  }
+
+  @include on-large-desctop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.title {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  color: $light-color;
+
+  max-width: 136px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.navigationPrev {
+  border: 1px solid #323542;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 8px;
+
+  cursor: pointer;
+}
+
+.navigationNext {
+  background-color: #323542;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 8px;
+
+  cursor: pointer;
+}
+
+.arrowNext {
+  filter: brightness(0) saturate(100%) invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg)
+    brightness(103%) contrast(103%);
+}
+
+
+.slider {
+  padding-top: 24px;
+}
+

@@ -51,6 +51,17 @@
   padding-top: 8px;
 }
 
+.phonePriceDiscount {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+
+  padding-top: 8px;
+
+  color: $light-gray-color;
+  text-decoration: line-through;
+}
+
 .phoneDescription {
   display: flex;
   gap: 8px;

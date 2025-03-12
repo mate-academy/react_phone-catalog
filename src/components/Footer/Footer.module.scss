@@ -1,0 +1,104 @@
+@import '../../style/global';
+
+.footer {
+  border-top: 1px solid $midle-gray-color;
+
+  margin-top: 64px;
+
+  @include on-large-desctop {
+    margin-top: 80px;
+  }
+
+  @include on-tablet {
+    margin-top: 80px;
+  }
+}
+
+.wrapper {
+  padding-block: 32px;
+
+  @include padding-inline;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include on-large-desctop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.logo {
+  width: 89px;
+  height: 32px;
+}
+
+.nav {
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+
+  font-family: Mont-Bold, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 13px;
+  }
+
+  @include on-desctop {
+    gap: 106px;
+  }
+}
+
+.navItem {
+}
+
+.navLink {
+  color: $light-color;
+}
+
+.backTop {
+  padding-top: 32px;
+
+  @include on-tablet {
+    padding: 0;
+  }
+}
+
+.backTopContent {
+}
+
+.backTopLink {
+  color: $light-gray-color;
+
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrowTop {
+  padding: 8px;
+
+  background-color: $midle-gray-color;
+}
+
+.arrowTopIcon {
+  filter: brightness(0) saturate(100%) invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg)
+    brightness(103%) contrast(103%);
+
+  display: flex;
+}
