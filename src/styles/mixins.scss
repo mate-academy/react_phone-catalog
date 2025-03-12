@@ -1,0 +1,71 @@
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(var(--columns), 32px);
+  
+    --columns: 24;
+  }
+}
+
+@mixin grid-column {
+  display: grid;
+
+  --columns: 4;
+
+  grid-column: span (var(--columns));
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin container-padding() {
+  padding: 24px 16px 56px;
+
+  @include on-tablet {
+    padding: 24px 24px 64px;
+  }
+
+  @include on-desktop {
+    padding: 24px 32px 81px;
+  }
+}
+
+
+@mixin margin-inline {
+  margin-inline: -16px;
+
+  @include on-tablet {
+    margin-inline: 0;
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
+  }
+}
