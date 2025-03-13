@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { useTranslation } from 'react-i18next';
 import { useProducts } from '../../shared/context/ProductsContext';
 import { Categories } from './Categories';
 import { Footer } from './Footer';
@@ -7,6 +9,7 @@ import { ProductsSlider } from './ProductsSlider';
 
 export const HomePage = () => {
   const { products } = useProducts();
+  const { t } = useTranslation();
   const newestProducts = products.sort((a, b) => b.year - a.year).slice(0, 10);
   const discountProducts = products
     .sort((a, b) => b.fullPrice - a.fullPrice)
@@ -17,13 +20,13 @@ export const HomePage = () => {
       <Header />
       <PicturesSlider />
       <ProductsSlider
-        title="Brand new models"
+        title={t('newBrandMessage')}
         productsToShow={newestProducts}
         discount={false}
       />
       <Categories />
       <ProductsSlider
-        title="Hot prices"
+        title={t('hotPricesMessage')}
         productsToShow={discountProducts}
         discount={true}
       />

@@ -1,7 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import style from './ProductOptions.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { t } from 'i18next';
 
 type Props = {
   colors: string[];
@@ -86,7 +88,7 @@ export const ProductOptions: React.FC<Props> = ({
   return (
     <div className={style.options}>
       <div className={style.colors}>
-        <p className={style.title}>Available colors</p>
+        <p className={style.title}>{t('colors')}</p>
         <div className={style.colors__options}>
           {normalizedColors.map(col => (
             <label key={col} className={style.colors__label}>
@@ -110,7 +112,7 @@ export const ProductOptions: React.FC<Props> = ({
         </div>
       </div>
       <div className={style.capacity}>
-        <p className={style.title}>Select capacity</p>
+        <p className={style.title}>{t('selectCapacity')}</p>
         <div className={style.capacity__options}>
           {capacities.map(cap => (
             <label key={cap} className={style.capacity__label}>

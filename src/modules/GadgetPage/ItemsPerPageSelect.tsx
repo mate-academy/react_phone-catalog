@@ -1,10 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useSearchParams } from 'react-router-dom';
 import style from './ItemsPerPageSelect.module.scss';
 import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 export const ItemsPerPageSelect = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLSelectElement>(null);
   const perPage = searchParams.get('perPage') || 'all';
@@ -28,7 +31,7 @@ export const ItemsPerPageSelect = () => {
   return (
     <div className={style.container}>
       <label htmlFor="itemsPerPage" className={style.label}>
-        Items on page
+        {t('itemsOnPage')}
       </label>
       <div
         className={classNames(style.wrapper, { [style.wrapper__open]: isOpen })}
@@ -52,7 +55,7 @@ export const ItemsPerPageSelect = () => {
             16
           </option>
           <option className={style.option} value="all">
-            All
+            {t('all')}
           </option>
         </select>
       </div>

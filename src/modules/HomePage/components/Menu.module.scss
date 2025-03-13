@@ -1,9 +1,13 @@
 @import '../../shared/variables.scss';
 
+.aside {
+  height: 100vh;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
-  border: 1px solid $border-color;
+  border: 1px solid var(--border-color);
 
   &__left {
     display: flex;
@@ -28,11 +32,11 @@
   &__close {
     display: block;
     padding: 16px;
-    border: 1px solid $border-color;
+    border: 1px solid var(--border-color);
     box-sizing: border-box;
 
     &:hover {
-      border-bottom: 3px solid $hover-color;
+      border-bottom: 3px solid var(--hover-color);
     }
   }
 
@@ -53,14 +57,14 @@
 
   &__link {
     text-decoration: none;
-    color: $standard-color;
+    color: $grey-color;
     font-size: 12px;
     font-weight: 800;
     padding-bottom: 20px;
 
     &:hover {
-      color: $hover-color;
-      border-bottom: 3px solid $hover-color;
+      color: var(--hover-color);
+      border-bottom: 3px solid var(--hover-color);
     }
   }
 
@@ -76,7 +80,7 @@
   &__menuCart {
     display: block;
     position: relative;
-    border: 1px solid $border-color;
+    border: 1px solid var(--border-color);
     box-sizing: border-box;
     flex: 1;
     padding: 16px 0;
@@ -84,7 +88,7 @@
 
 
       &:hover {
-        border: 1px solid $hover-color;
+        border: 1px solid var(--hover-color);
       }
 
       &::after {
@@ -94,7 +98,7 @@
         left: 50%;
         width: 0;
         height: 3px;
-        background-color: $hover-color;
+        background-color: var(--hover-color);
         transition: width 0.3s ease, left 0.3s ease;
 
       }

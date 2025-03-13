@@ -14,10 +14,15 @@
     color: $grey-color;
     font-size: 12px;
     font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--button-hover);
+    }
   }
 
   &__title {
-    color: $hover-color;
+    color: var(--hover-color);
     font-size: 48px;
     font-weight: 800;
   }

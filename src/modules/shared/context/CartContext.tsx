@@ -20,6 +20,8 @@ interface CartContextType {
   decreaseQuantity: (productId: string) => void;
   totalQuantity: number;
   totalPrice: number;
+  isInCart: (productId: string) => boolean;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -36,10 +38,19 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const addProduct = (productId: string) => {
-    const updatedProducts = [...products, { id: productId, quantity: 1 }];
+    setProducts(prevProducts => {
+      const existingProduct = prevProducts.find(p => p.id === productId);
 
-    setProducts(updatedProducts);
-    localStorage.setItem('products', JSON.stringify(updatedProducts));
+      if (existingProduct) {
+        return prevProducts;
+      }
+
+      const updatedProducts = [...prevProducts, { id: productId, quantity: 1 }];
+
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
+
+      return updatedProducts;
+    });
   };
 
   const removeProduct = (productId: string) => {
@@ -77,6 +88,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const isInCart = (productId: string) => {
+    return products.some(p => p.id === productId);
+  };
+
+  const clearCart = () => {
+    setProducts([]);
+    localStorage.setItem('products', '[]');
+  };
+
   const totalQuantity = products.reduce((acc, p) => acc + p.quantity, 0);
   const totalPrice = products.reduce((acc, p) => {
     const product = allProducts.find(item => item.id === p.id);
@@ -94,6 +114,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         decreaseQuantity,
         totalPrice,
         totalQuantity,
+        isInCart,
+        clearCart,
       }}
     >
       {children}

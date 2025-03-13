@@ -7,7 +7,7 @@
     line-height: 41px;
     font-weight: 800;
     padding: 16px;
-    color: $hover-color;
+    color: var(--hover-color);
   }
 
   @include tablet {
@@ -65,8 +65,8 @@
     top: 50%;
     transform: translateY(-50%);
     transform-origin: center;
-    background: none;
-    border: 1px solid $standard-color;
+    background-color: var(--default-color);
+    border: 1px solid var(--standard-color);
     cursor: pointer;
     padding: 18% 8px;
     transition: transform 0.3s ease;

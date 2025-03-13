@@ -7,7 +7,7 @@
     flex-direction: column;
     padding: 40px;
     gap: 30px;
-    border-top: 1px solid $border-color;
+    border-top: 1px solid var(--border-color);
   }
 
   @include tablet {
@@ -62,12 +62,13 @@
   }
 
   &__arrow {
-    border: 1px solid $standard-color;
+    border: 1px solid $grey-color;
     padding: 10px;
-    background: none;
+    background-color: var(--default-color);
 
     &:hover {
-      border: 1px solid $hover-color;
+      border: 1px solid var(--hover-color);
+      background-color: var (--icons-color);
     }
   }
 }

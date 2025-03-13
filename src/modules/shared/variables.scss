@@ -1,4 +1,34 @@
-$standard-color: #B4BDC3;
-$hover-color: #313237;
-$border-color: #E2E6E9;
 $grey-color: #89939A;
+
+:root {
+  --hover-color: #313237;
+  --background-color: #fff;
+  --border-color: #E2E6E9;
+  --button-color: #313237;
+  --default-color: #fff;
+  --icons-color: #fff;
+  --button-hover: #313237;
+  --add-color: #fff;
+  --added-color: #27AE60;
+  --cart-background: #fff;
+  --standard-color: #B4BDC3;
+  --skeleton-background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  --skeleton-element: #B4BDC3;
+}
+
+[data-theme="dark"] {
+  --background-color: #0F1121;
+  --hover-color: #F1F2F9;
+  --border-color: #3B3E4A;
+  --button-color: #905BFF;
+  --default-color: #323542;
+  --icons-color: #4A4D58;
+  --button-hover: #A378FF;
+  --add-color: #F1F2F9;
+  --added-color: #F1F2F9;
+  --cart-background: #161827;
+  --standard-color: #161827;
+  --skeleton-background: linear-gradient(90deg, #A378FF 25%, #5A2D96 50%, #A378FF 75%);
+  --skeleton-element: #2C2C2C;
+}
+

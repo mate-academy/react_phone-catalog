@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { Product } from './types/Product';
 import style from './ProductItem.module.scss';
@@ -5,21 +6,22 @@ import { useFavourites } from './context/FavouritesContext';
 import { Gadget } from './types/Gadget';
 import { Link } from 'react-router-dom';
 import { useCart } from './context/CartContext';
-
+import { useTheme } from './context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 type Props = {
   product: Product | Gadget;
   discount?: boolean;
   styles?: React.CSSProperties;
 };
-
 export const ProductItem: React.FC<Props> = ({ product, discount, styles }) => {
   const { favourites, toggleFavourite } = useFavourites();
-  const { addProduct, products } = useCart();
-  const isAdded = products.some(p => p.id === product.id);
-
+  const { t } = useTranslation();
+  const { addProduct, isInCart } = useCart();
   const handleAddProduct = (productId: string) => {
     addProduct(productId);
   };
+
+  const { theme } = useTheme();
 
   return (
     <div className={style.product} style={styles}>
@@ -59,9 +61,9 @@ export const ProductItem: React.FC<Props> = ({ product, discount, styles }) => {
       </div>
       <div className={style.product__description}>
         <div className={style.product__key}>
-          <p>Screen</p>
-          <p>Capacity</p>
-          <p>RAM</p>
+          <p>{t('screen')}</p>
+          <p>{t('capacity')}</p>
+          <p>{t('RAM')}</p>
         </div>
         <div className={style.product__value}>
           <p>{product.screen}</p>
@@ -71,13 +73,19 @@ export const ProductItem: React.FC<Props> = ({ product, discount, styles }) => {
       </div>
       <div className={style.product__like}>
         <button
-          className={isAdded ? style.product__added : style.product__add}
-          disabled={isAdded}
+          className={
+            isInCart('itemId' in product ? product.itemId : product.id)
+              ? style.product__added
+              : style.product__add
+          }
+          disabled={isInCart('itemId' in product ? product.itemId : product.id)}
           onClick={() =>
             handleAddProduct('itemId' in product ? product.itemId : product.id)
           }
         >
-          {isAdded ? 'Added to cart' : 'Add to cart'}
+          {isInCart('itemId' in product ? product.itemId : product.id)
+            ? t('added')
+            : t('add')}
         </button>
         <div
           className={style.product__heart}
@@ -86,8 +94,10 @@ export const ProductItem: React.FC<Props> = ({ product, discount, styles }) => {
           <img
             src={
               favourites.includes(product.id)
-                ? 'icons/heart-red.png'
-                : 'icons/heart.png'
+                ? './icons/heart-red.png'
+                : theme === 'light'
+                  ? './icons/heart.png'
+                  : './icons/heart-dark-theme.png'
             }
             alt="Like"
           ></img>

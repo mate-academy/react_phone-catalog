@@ -4,7 +4,7 @@
 .title {
   font-size: 32px;
   font-weight: 800;
-  color: $hover-color;
+  color: var(--hover-color);
   margin-left: 32px;
 }
 
@@ -52,7 +52,7 @@
         padding-left: 40px;
         font-size: 20px;
         font-weight: 600;
-        color: $hover-color;
+        color: var(--hover-color);
         margin-top: 10px;
         margin-bottom: 5px;
 

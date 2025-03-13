@@ -5,13 +5,13 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: #fff;
+  background-color: var(--background-color);
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
-  border: 1px solid $border-color;
+  border: 1px solid var(--border-color);
 
   &__left {
     display: flex;
@@ -41,23 +41,28 @@
   }
 
   &__select {
-    margin: 0;
-    display: flex;
-    list-style: none;
-    gap: 64px;
+    @include tablet {
+      margin: 0;
+      display: flex;
+      list-style: none;
+      gap: 10%;
+    }
 
+    @include laptop {
+      gap: 64px;
+    }
   }
 
   &__link {
     text-decoration: none;
-    color: $standard-color;
+    color: $grey-color;
     font-size: 12px;
     font-weight: 800;
     padding-bottom: 20px;
 
     &:hover {
-      color: $hover-color;
-      border-bottom: 3px solid $hover-color;
+      color: var(--hover-color);
+      border-bottom: 3px solid var(--hover-color);
     }
   }
 
@@ -76,11 +81,11 @@
       display: inline-block;
       position: relative;
       padding: 16px;
-      border: 1px solid $border-color;
+      border: 1px solid var(--border-color);
       box-sizing: border-box;
 
       &:hover {
-        border-bottom: 3px solid $hover-color;
+        border-bottom: 3px solid var(--hover-color);
       }
     }
   }
@@ -106,10 +111,10 @@
     @include mobile {
       display: block;
       padding: 16px;
-      border: 1px solid $border-color;
+      border: 1px solid var(--border-color);
 
       &:hover {
-        border-bottom: 3px solid $hover-color;
+        border-bottom: 3px solid var(--hover-color);
       }
     }
 

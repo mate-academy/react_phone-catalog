@@ -1,26 +1,37 @@
+@import '../shared/variables.scss';
+
 .loader {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  width: 100%;
   justify-content: center;
   align-items: center;
-
-  &__content {
-    border-radius: 50%;
-    width: 2em;
-    height: 2em;
-    margin: 1em auto;
-    border: 0.3em solid #ddd;
-    border-left-color: #000;
-    animation: load8 1.2s infinite linear;
-  }
 }
 
-@keyframes load8 {
+.loader__content {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: relative;
+  margin: auto;
+  animation: pulse 0.5s infinite ease-in-out;
+  border: 6px solid transparent;
+  border-top: 6px solid var(--button-hover);
+  border-bottom: 6px solid var(--button-hover);
+}
+
+
+@keyframes pulse {
   0% {
-    transform: rotate(0deg);
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
   }
   100% {
-    transform: rotate(360deg);
+    transform: scale(0.8);
+    opacity: 0.7;
   }
 }
-

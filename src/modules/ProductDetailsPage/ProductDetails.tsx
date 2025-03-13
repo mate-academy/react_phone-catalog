@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import style from './ProductDetails.module.scss';
 import { useProducts } from '../shared/context/ProductsContext';
@@ -7,9 +8,14 @@ import { ProductOptions } from './ProductOptions';
 import { useFavourites } from '../shared/context/FavouritesContext';
 import { SuggestedProducts } from './SuggestedProducts';
 import { Loader } from '../shared/Loader';
+import { useCart } from '../shared/context/CartContext';
+import { useTheme } from '../shared/context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export const ProductDetails = () => {
   const { productId } = useParams();
+  const { theme } = useTheme();
+  const { t } = useTranslation();
   const { phones, tablets, accessories, loading } = useProducts();
   const navigate = useNavigate();
   const allProducts = [...phones, ...tablets, ...accessories];
@@ -19,6 +25,16 @@ export const ProductDetails = () => {
     product?.images[0],
   );
   const [isLoading, setIsLoading] = useState<boolean>(loading);
+  const { addProduct, products } = useCart();
+  const [isAdded, setIsAdded] = useState(false);
+
+  useEffect(() => {
+    setIsAdded(products.some(p => p.id === product?.id));
+  }, [products, product?.id]);
+
+  const handleAddProduct = (prodId: string) => {
+    addProduct(prodId);
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,18 +59,29 @@ export const ProductDetails = () => {
     );
   }
 
+  const getTextKey = (text: string) => {
+    return text.split(' ').slice(0, 2).join('_');
+  };
+
   return (
     <div className={style.container}>
       <div className={style.breadcrumbs}>
         <Link to="/" className={style.breadcrumbs__home}>
-          <img src="./icons/home.png" alt="Home" />
+          <img
+            src={
+              theme === 'light'
+                ? './icons/home.png'
+                : './icons/home-dark-theme.png'
+            }
+            alt="Home"
+          />
         </Link>
         <img src="./icons/arrow-right.png" alt="Right" />
         <Link
           to={`/${product?.category}`}
           className={style.breadcrumbs__category}
         >
-          <span>{product?.category}</span>
+          <span>{t(`categories.${product?.category}`)}</span>
         </Link>
         <img src="./icons/arrow-right.png" alt="Right" />
         <span className={style.breadcrumbs__name}>{product?.name}</span>
@@ -64,7 +91,7 @@ export const ProductDetails = () => {
           <img src="./icons/arrow-left.png" alt="Back" />
         </div>
         <span className={style.back__word} onClick={() => navigate(-1)}>
-          Back
+          {t('back')}
         </span>
       </div>
       <h1 className={style.title}>{product?.name}</h1>
@@ -100,7 +127,13 @@ export const ProductDetails = () => {
             <p className={style.details__regular}>${product?.priceRegular}</p>
           </div>
           <div className={style.details__controls}>
-            <button className={style.details__add}>Add to cart</button>
+            <button
+              className={isAdded ? style.details__added : style.details__add}
+              disabled={isAdded}
+              onClick={() => handleAddProduct(product!.id)}
+            >
+              {isAdded ? t('added') : t('add')}
+            </button>
             <button
               className={style.details__heart}
               onClick={() => toggleFavourite(product!.id)}
@@ -109,7 +142,9 @@ export const ProductDetails = () => {
                 src={
                   favourites.includes(product!.id)
                     ? 'icons/heart-red.png'
-                    : 'icons/heart.png'
+                    : theme === 'light'
+                      ? './icons/heart.png'
+                      : './icons/heart-dark-theme.png'
                 }
                 alt="Like"
               />
@@ -117,10 +152,10 @@ export const ProductDetails = () => {
           </div>
           <div className={style.details__charachteristics}>
             <div className={style.details__keys}>
-              <span>Screen</span>
-              <span>Resolution</span>
-              <span>Processor</span>
-              <span>RAM</span>
+              <span>{t('screen')}</span>
+              <span>{t('resolution')}</span>
+              <span>{t('processor')}</span>
+              <span>{t('RAM')}</span>
             </div>
             <div className={style.details__values}>
               <span>{product?.screen}</span>
@@ -133,11 +168,15 @@ export const ProductDetails = () => {
       </div>
       <div className={style.information}>
         <div className={style.about}>
-          <h2 className={style.subtitle}>About</h2>
+          <h2 className={style.subtitle}>{t('about')}</h2>
           {product?.description.map(item => (
             <div className={style.about__info} key={item.title}>
-              <h3 className={style.about__title}>{item.title}</h3>
-              <p className={style.about__text}>{item.text}</p>
+              <h3 className={style.about__title}>
+                {t(`titles.${item.title}`)}
+              </h3>
+              <p className={style.about__text}>
+                {t(`texts.${item.title || getTextKey(item.text[0])}`)}
+              </p>
             </div>
           ))}
         </div>

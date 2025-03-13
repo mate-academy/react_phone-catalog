@@ -1,13 +1,16 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { Link } from 'react-router-dom';
 import { useProducts } from '../../shared/context/ProductsContext';
 import style from './Categories.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export const Categories = () => {
   const { phones, tablets, accessories } = useProducts();
+  const { t } = useTranslation();
 
   return (
     <>
-      <h2 className={style.title}>Shop by category</h2>
+      <h2 className={style.title}>{t('shopByCategory')}</h2>
       <div className={style.categories}>
         <div className={style.category}>
           <Link to="/phones">
@@ -16,8 +19,12 @@ export const Categories = () => {
               className={style.category__image}
             />
           </Link>
-          <p className={style.category__name}>Mobile phones</p>
-          <p className={style.category__quantity}>{phones.length} models</p>
+          <p className={style.category__name}>
+            {t('categories.mobile phones')}
+          </p>
+          <p className={style.category__quantity}>
+            {phones.length} {t('models')}
+          </p>
         </div>
 
         <div className={style.category}>
@@ -27,8 +34,10 @@ export const Categories = () => {
               className={style.category__image}
             />
           </Link>
-          <p className={style.category__name}>Tablets</p>
-          <p className={style.category__quantity}>{tablets.length} models</p>
+          <p className={style.category__name}>{t('categories.tablets')}</p>
+          <p className={style.category__quantity}>
+            {tablets.length} {t('models')}
+          </p>
         </div>
 
         <div className={style.category}>
@@ -38,9 +47,9 @@ export const Categories = () => {
               className={style.category__image}
             />
           </Link>
-          <p className={style.category__name}>Accessories</p>
+          <p className={style.category__name}>{t('categories.accessories')}</p>
           <p className={style.category__quantity}>
-            {accessories.length} models
+            {accessories.length} {t('models')}
           </p>
         </div>
       </div>

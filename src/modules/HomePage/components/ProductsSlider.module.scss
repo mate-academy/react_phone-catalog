@@ -19,6 +19,7 @@
 .title {
   font-size: 32px;
   font-weight: 800;
+  color: var(--hover-color);
 }
 
 .controls {
@@ -27,14 +28,15 @@
 }
 
 .prev, .next {
-  background: none;
-  border: 1px solid $standard-color;
+  background-color: var(--default-color);
+  border: 1px solid var(--standard-color);
   padding: 10px;
   cursor: pointer;
   transition: 0.3s;
 
   &:hover {
     transform: scale(1.1);
-    border: 1px solid $hover-color;
+    border: 1px solid var(--hover-color);
+    background-color: var(--icons-color);
   }
 }

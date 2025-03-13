@@ -4,9 +4,9 @@ import { Header } from '../HomePage/components/Header';
 import { Gadget } from '../shared/types/Gadget';
 import { GadgetsCollection } from './GadgetsCollection';
 import { useProducts } from '../shared/context/ProductsContext';
-import { Loader } from '../shared/Loader';
 import style from './GadgetPage.module.scss';
 import { useSearchParams } from 'react-router-dom';
+import { ProductSkeleton } from './ProductSkeleton';
 
 type Props = {
   gadgets: Gadget[];
@@ -55,7 +55,6 @@ export const GadgetPage: React.FC<Props> = ({ gadgets, category, title }) => {
 
   return (
     <>
-      {(loading || isLoading) && <Loader />}
       {error && !loading && !isLoading && (
         <div className={style.errorContainer}>
           <p className={style.error}>
@@ -77,14 +76,22 @@ export const GadgetPage: React.FC<Props> = ({ gadgets, category, title }) => {
         </div>
       )}
 
-      {!error && !loading && !isLoading && (
+      {!error && (
         <>
           <Header />
-          <GadgetsCollection
-            gadgets={sortedGadgets}
-            category={category}
-            title={title}
-          />
+          {loading || isLoading ? (
+            <div className={style.skeletonContainer}>
+              {Array.from({ length: sortedGadgets.length }).map((_, index) => (
+                <ProductSkeleton key={index} />
+              ))}
+            </div>
+          ) : (
+            <GadgetsCollection
+              gadgets={sortedGadgets}
+              category={category}
+              title={title}
+            />
+          )}
           <Footer />
         </>
       )}

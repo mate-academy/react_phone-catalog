@@ -5,11 +5,12 @@
   @include mobile {
     position: relative;
     box-sizing: border-box;
-    border: 1px solid $standard-color;
+    border: 1px solid var(--standard-color);
     margin: 20px 0;
     padding: 20px 20px;
     height: 506px;
     width: 100%;
+    background-color: var(--cart-background);
   }
 
   @include tablet {
@@ -34,7 +35,7 @@
   }
 
   &__buy {
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid var(--border-color);
   }
 
   &__name {
@@ -42,13 +43,12 @@
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    color: $hover-color;
+    color: var(--hover-color);
     transition: all 0.3s ease;
 
     &:hover {
       transform: scale(1.1);
       text-decoration: underline;
-      color: black;
     }
 
   }
@@ -56,6 +56,7 @@
   &__price {
     font-size: 22px;
     font-weight: 800;
+    color: var(--hover-color);
   }
 
   &__discount {
@@ -78,7 +79,7 @@
   }
 
   &__value {
-    color: $hover-color;
+    color: var(--hover-color);
     font-size: 12px;
     font-weight: 700;
     text-align: right;
@@ -95,8 +96,8 @@
     left: 20px;
     width: 160px;
     height: 40px;
-    background-color: $hover-color;
-    color: #fff;
+    background-color: var(--button-color);
+    color: var(--add-color);
     font-size: 14px;
     font-weight: 700;
     transition: transform 0.1s ease;
@@ -112,19 +113,20 @@
     left: 20px;
     width: 160px;
     height: 40px;
-    background-color: #fff;
-    color: #27AE60;
+    background-color: var(--default-color);
+    color: var(--added-color);
     font-size: 14px;
     font-weight: 700;
-    border: 1px solid $standard-color;
+    border: 1px solid var(--standard-color);
   }
 
   &__heart {
     position: absolute;
+    background-color: var(--default-color);
     bottom: 20px;
     right: 20px;
     display: flex;
-    border: 1px solid $standard-color;
+    border: 1px solid var(--standard-color);
     align-items: center;
     justify-content: center;
     height: 40px;
@@ -132,7 +134,8 @@
 
 
     &:hover {
-      border: 1px solid $hover-color;
+      border: 1px solid var(--hover-color);
+      background-color: var(--icons-color);
     }
   }
 }

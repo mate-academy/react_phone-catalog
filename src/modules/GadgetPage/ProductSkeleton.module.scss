@@ -1,0 +1,78 @@
+@import '../shared/variables.scss';
+@import '../shared/mixins.scss';
+
+.skeleton {
+  width: 100%;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 33px 20px;
+    padding: 20px;
+    height: 406px;
+    background: var(--skeleton-background);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite ease-in-out;
+    border-radius: 8px;
+  }
+
+  @include tablet {
+    width: 48%;
+  }
+
+  @include laptop {
+    width: 22%;
+  }
+
+  &__image {
+    width: 100%;
+    height: 196px;
+    background-color: var(--skeleton-element);
+    border-radius: 8px;
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  &__text {
+    width: 80%;
+    height: 16px;
+    background-color: var(--skeleton-element);
+    margin: 10px 0;
+    border-radius: 4px;
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  &__button {
+    width: 160px;
+    height: 40px;
+    background-color: var(--skeleton-element);
+    border-radius: 4px;
+    position: absolute;
+    bottom: 20px;
+    animation: shimmer 1.5s infinite linear;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

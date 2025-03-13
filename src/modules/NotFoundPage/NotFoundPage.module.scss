@@ -1,0 +1,42 @@
+@import '../shared/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  color: var(--hover-color);
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.text {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.home {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 800;
+  text-decoration: none;
+  color: #fff;
+  background-color: var(--hover-color);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #3a3f45;
+  }
+
+  &:active {
+    background-color: #212528;
+  }
+}

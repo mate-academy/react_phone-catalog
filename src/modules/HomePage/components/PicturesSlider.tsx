@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import style from './PicturesSlider.module.scss';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const PicturesSlider = () => {
   const images = [
@@ -11,6 +12,8 @@ export const PicturesSlider = () => {
     'img/banner-tablets.jpg',
     'img/banner-accessories.png',
   ];
+
+  const { t } = useTranslation();
 
   const sliderRef = useRef<Slider | null>(null);
   const settings = {
@@ -27,7 +30,7 @@ export const PicturesSlider = () => {
 
   return (
     <>
-      <h1 className={style.title}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={style.title}>{t(`welcomeMessage`)}</h1>
       <div className={style.slider}>
         <button
           className={style.arrowLeft}

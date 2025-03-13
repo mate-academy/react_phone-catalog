@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { Gadget } from '../shared/types/Gadget';
 import style from './GadgetsCollection.module.scss';
@@ -6,6 +7,8 @@ import { SortSelect } from './SortSelect';
 import { ItemsPerPageSelect } from './ItemsPerPageSelect';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
+import { useTheme } from '../shared/context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   gadgets: Gadget[];
@@ -19,6 +22,8 @@ export const GadgetsCollection: React.FC<Props> = ({
   title,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { theme } = useTheme();
+  const { t } = useTranslation();
   const perPage = searchParams.get('perPage') || 'all';
   const page = Number(searchParams.get('page')) || 1;
   const itemsPerPage = perPage === 'all' ? gadgets.length : Number(perPage);
@@ -41,13 +46,24 @@ export const GadgetsCollection: React.FC<Props> = ({
     <div className={style.collection}>
       <div className={style.collection__header}>
         <Link to="/">
-          <img src="./icons/home.png" alt="Back home" />
+          <img
+            src={
+              theme === 'light'
+                ? './icons/home.png'
+                : './icons/home-dark-theme.png'
+            }
+            alt="Back home"
+          />
         </Link>
         <img src="./icons/arrow-right.png" alt="Gadgets" />
-        <span className={style.collection__name}>{category}</span>
+        <span className={style.collection__name}>
+          {t(`categories.${category.toLowerCase()}`)}
+        </span>
       </div>
-      <h1 className={style.title}>{title}</h1>
-      <p className={style.collection__quantity}>{gadgets.length} items</p>
+      <h1 className={style.title}>{t(`categories.${title.toLowerCase()}`)}</h1>
+      <p className={style.collection__quantity}>
+        {gadgets.length} {t('items')}
+      </p>
       <div className={style.collection__selects}>
         <SortSelect />
         <ItemsPerPageSelect />

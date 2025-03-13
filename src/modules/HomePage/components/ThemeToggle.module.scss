@@ -1,0 +1,19 @@
+.toggle {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  background-color: var(--button-hover);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

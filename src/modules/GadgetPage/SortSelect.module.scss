@@ -40,11 +40,12 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  border: 1px solid $standard-color;
+  border: 1px solid var(--standard-color);
   padding: 10px 40px 10px 15px;
   font-size: 14px;
   font-weight: 600;
-  color: $hover-color;
+  color: var(--hover-color);
+  background-color: var(--default-color);
   cursor: pointer;
 
   &:hover {
@@ -52,7 +53,7 @@
   }
 
   &:focus {
-    border: 1px solid $hover-color;
+    border: 1px solid var(--hover-color);
     outline: none;
   }
 }

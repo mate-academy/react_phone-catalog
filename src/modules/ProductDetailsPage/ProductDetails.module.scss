@@ -40,7 +40,7 @@
   }
 
   &__category {
-    color: $hover-color;
+    color: var(--hover-color);
     text-decoration: none;
     font-size: 12px;
     font-weight: 600;
@@ -48,7 +48,7 @@
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.1);
+      color: var(--button-hover);
     }
   }
 
@@ -56,6 +56,11 @@
     font-size: 12px;
     font-weight: 600;
     color: $grey-color;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--button-hover);
+    }
   }
 }
 
@@ -79,7 +84,7 @@
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.1);
+      color: var(--button-hover);
     }
   }
 }
@@ -87,7 +92,7 @@
 .title {
   font-size: 32px;
   font-weight: 800;
-  color: $hover-color;
+  color: var(--hover-color);
 }
 
 .details {
@@ -151,7 +156,7 @@
       width: 35px;
       height: 35px;
       object-fit: contain;
-      border: 1px solid $standard-color;
+      border: 1px solid var(--standard-color);
     }
 
     @include laptop {
@@ -162,7 +167,7 @@
   }
 
   &__active {
-    border: 1px solid $hover-color;
+    border: 1px solid var(--button-hover);
   }
 
   &__large {
@@ -212,7 +217,7 @@
   &__discount {
     font-size: 32px;
     font-weight: 800;
-    color: $hover-color;
+    color: var(--hover-color);
   }
 
   &__regular {
@@ -240,24 +245,38 @@
     @include mobile {
       width: 80%;
       height: 48px;
-      background-color: $hover-color;
+      background-color: var(--button-color);
       font-size: 14px;
       font-weight: 700;
-      color: #fff;
+      color: var(--add-color);
       transition: all 0.3s ease-in-out;
 
       &:hover {
         transform: scale(1.05);
-        background: #111;
+        background-color: var(--button-hover);
         border-color: #555;
         box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
       }
 
       &:active {
         transform: scale(0.98);
-        background: #222;
         box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
       }
+    }
+
+    @include laptop {
+      width: 45%;
+    }
+  }
+
+  &__added {
+    @include mobile {
+      width: 80%;
+      height: 48px;
+      background-color: var(--default-color);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--added-color);
     }
 
     @include laptop {
@@ -271,11 +290,12 @@
     align-items: center;
     width: 48px;
     height: 48px;
-    background: none;
-    border: 1px solid $standard-color;
+    background-color: var(--default-color);
+    border: 1px solid var(--standard-color);
 
     &:hover {
-      border: 1px solid $hover-color;
+      border: 1px solid var(--hover-color);
+      background-color: var(--icons-color);
     }
   }
 
@@ -309,7 +329,7 @@
     gap: 8px;
     font-size: 12px;
     font-weight: 600;
-    color: $hover-color;
+    color: var(--hover-color);
 
   }
 }
@@ -338,7 +358,7 @@
   &__title {
     font-size: 20px;
     font-weight: 700;
-    color: $hover-color;
+    color: var(--hover-color);
   }
 
   &__text {
@@ -380,7 +400,7 @@
     text-align: right;
     font-size: 14px;
     font-weight: 500;
-    color: $hover-color;
+    color: var(--hover-color);
   }
 }
 
@@ -388,7 +408,7 @@
   position: relative;
   font-size: 22px;
   font-weight: 800;
-  color: $hover-color;
+  color: var(--hover-color);
   margin-bottom: 48px;
 
   &::after {
@@ -397,7 +417,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background-color: $standard-color;
+    background-color: $grey-color;
     bottom: -24px;
   }
 

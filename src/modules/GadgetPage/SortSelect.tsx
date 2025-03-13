@@ -1,10 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import style from './SortSelect.module.scss';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 export const SortSelect = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLSelectElement>(null);
   const sortValue = searchParams.get('sort') || 'age';
@@ -20,7 +23,7 @@ export const SortSelect = () => {
   return (
     <div className={style.wrapper}>
       <label className={style.name} htmlFor="Sort by">
-        Sort by
+        {t('sortBy')}
       </label>
       <div
         className={classNames(style.container, {
@@ -37,13 +40,13 @@ export const SortSelect = () => {
           onBlur={() => setIsOpen(false)}
         >
           <option className={style.option} value="age">
-            Newest
+            {t('newest')}
           </option>
           <option className={style.option} value="title">
-            Alphabetically
+            {t('alphabetically')}
           </option>
           <option className={style.option} value="price">
-            Cheapest
+            {t('cheapest')}
           </option>
         </select>
       </div>
