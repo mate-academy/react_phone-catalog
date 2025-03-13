@@ -151,7 +151,7 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={styles.main}>
                 <div className={styles.images}>
                   <div className={styles.mainImgContainer}>
-                    <img src={`/${product.images[mainImageIndex]}`} alt="Main product image" />
+                    <img src={`./${product.images[mainImageIndex]}`} alt="Main product image" />
                   </div>
 
                   <div className={styles.imagePreview}>
@@ -161,7 +161,7 @@ export const ProductDetailsPage: React.FC = () => {
                         key={img}
                         onClick={() => setMainImageIndex(i)}
                       >
-                        <img src={`/${img}`} alt={`Product image ${i + 1}`} />
+                        <img src={`./${img}`} alt={`Product image ${i + 1}`} />
                       </div>
                     ))}
                   </div>
