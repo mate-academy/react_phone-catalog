@@ -31,6 +31,7 @@ const colorMap: { [key: string]: string } = {
 export const ProductDetailsPage: React.FC = () => {
   const { isLoading, setIsLoading } = useLoading();
 
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [categoryGoods, setCategoryGoods] = useState<ProductDetailed[]>();
   const [product, setProduct] = useState<ProductDetailed>();
   const [suggestedProducts, setSuggestedProducts] = useState<ProductDetailed[]>([]);
@@ -46,6 +47,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    setIsDataLoaded(false);
 
     const fetchCategoryGoods =
       category === 'phones'
@@ -75,6 +77,7 @@ export const ProductDetailsPage: React.FC = () => {
         .finally(() => {
           setTimeout(() => {
             setIsLoading(false);
+            setIsDataLoaded(true);
           }, 300);
         });
     }
@@ -145,158 +148,165 @@ export const ProductDetailsPage: React.FC = () => {
         <Loader />
       ) : (
         <>
-          {product ? (
+          {isDataLoaded && !product ? (
+            <h1 className={styles.productNotFound}>Product was not found</h1>
+          ) : (
             <>
-              <h1 className={styles.title}>{product?.name}</h1>
-              <div className={styles.main}>
-                <div className={styles.images}>
-                  <div className={styles.mainImgContainer}>
-                    <img src={`./${product.images[mainImageIndex]}`} alt="Main product image" />
-                  </div>
-
-                  <div className={styles.imagePreview}>
-                    {product.images.map((img, i) => (
-                      <div
-                        className={`${styles.smallImage} ${mainImageIndex === i ? styles['smallImage--selected'] : ''}`}
-                        key={img}
-                        onClick={() => setMainImageIndex(i)}
-                      >
-                        <img src={`./${img}`} alt={`Product image ${i + 1}`} />
+              {product && (
+                <>
+                  <h1 className={styles.title}>{product?.name}</h1>
+                  <div className={styles.main}>
+                    <div className={styles.images}>
+                      <div className={styles.mainImgContainer}>
+                        <img src={`./${product.images[mainImageIndex]}`} alt="Main product image" />
                       </div>
-                    ))}
-                  </div>
-                </div>
 
-                <div className={styles.details}>
-                  <div className={styles.colorsContainer}>
-                    <div className={styles.colorsTop}>
-                      <p className={styles.detailsText}>Available colors</p>
-                      <p className={styles.idText}>ID: 123455</p>
+                      <div className={styles.imagePreview}>
+                        {product.images.map((img, i) => (
+                          <div
+                            className={`${styles.smallImage} ${mainImageIndex === i ? styles['smallImage--selected'] : ''}`}
+                            key={img}
+                            onClick={() => setMainImageIndex(i)}
+                          >
+                            <img src={`./${img}`} alt={`Product image ${i + 1}`} />
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
-                    <div className={styles.colorOptions}>
-                      {product.colorsAvailable.map(color => (
-                        <div
-                          key={color}
-                          className={`${styles.colorOption} ${selectedColor === color ? styles['colorOption--selected'] : ''}`}
-                          style={{ backgroundColor: getColorStyle(color) }}
-                          onClick={() => handleColorChange(color)}
-                        >
-                          <div className={styles.insideCircle} style={{ backgroundColor: color }} />
+                    <div className={styles.details}>
+                      <div className={styles.colorsContainer}>
+                        <div className={styles.colorsTop}>
+                          <p className={styles.detailsText}>Available colors</p>
+                          <p className={styles.idText}>ID: 123455</p>
                         </div>
+
+                        <div className={styles.colorOptions}>
+                          {product.colorsAvailable.map(color => (
+                            <div
+                              key={color}
+                              className={`${styles.colorOption} ${selectedColor === color ? styles['colorOption--selected'] : ''}`}
+                              style={{ backgroundColor: getColorStyle(color) }}
+                              onClick={() => handleColorChange(color)}
+                            >
+                              <div
+                                className={styles.insideCircle}
+                                style={{ backgroundColor: color }}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className={styles.capacityContainer}>
+                        <p className={styles.detailsText}>Select capacity</p>
+                        <div className={styles.capacityOptions}>
+                          {product.capacityAvailable.map(capacity => (
+                            <div
+                              key={capacity}
+                              className={`${styles.capacityOption} ${selectedCapacity === capacity ? styles['capacityOption--selected'] : ''}`}
+                              onClick={() => handleCapacityChange(capacity)}
+                            >
+                              {capacity}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className={styles.pricesContainer}>
+                        <p className={styles.price}>${product?.priceDiscount}</p>
+                        <p className={styles.fullPrice}>${product?.priceRegular}</p>
+                      </div>
+
+                      <div className={styles.actions}>
+                        <AddToCartButton product={product} />
+                        <FavouriteButton product={product} />
+                      </div>
+
+                      <div className={styles.description}>
+                        <div>
+                          <p className={styles.detailsText}>Screen</p>
+                          <p className={styles.value}>{product?.screen}</p>
+                        </div>
+                        <div>
+                          <p className={styles.detailsText}>Resolution</p>
+                          <p className={styles.value}>{product?.resolution}</p>
+                        </div>
+                        <div>
+                          <p className={styles.detailsText}>Processor</p>
+                          <p className={styles.value}>{product?.processor}</p>
+                        </div>
+                        <div>
+                          <p className={styles.detailsText}>RAM</p>
+                          <p className={styles.value}>{product?.ram}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={styles.info}>
+                    <div className={styles.about}>
+                      <h3 className={styles.infoTitle}>About</h3>
+
+                      {product?.description.map(item => (
+                        <p key={item.title} className={styles.aboutText}>
+                          {item.text[0]}
+                        </p>
                       ))}
                     </div>
-                  </div>
+                    <div className={styles.techSpecs}>
+                      <h3 className={styles.infoTitle}>Tech specs</h3>
 
-                  <div className={styles.capacityContainer}>
-                    <p className={styles.detailsText}>Select capacity</p>
-                    <div className={styles.capacityOptions}>
-                      {product.capacityAvailable.map(capacity => (
-                        <div
-                          key={capacity}
-                          className={`${styles.capacityOption} ${selectedCapacity === capacity ? styles['capacityOption--selected'] : ''}`}
-                          onClick={() => handleCapacityChange(capacity)}
-                        >
-                          {capacity}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className={styles.pricesContainer}>
-                    <p className={styles.price}>${product?.priceDiscount}</p>
-                    <p className={styles.fullPrice}>${product?.priceRegular}</p>
-                  </div>
-
-                  <div className={styles.actions}>
-                    <AddToCartButton product={product} />
-                    <FavouriteButton product={product} />
-                  </div>
-
-                  <div className={styles.description}>
-                    <div>
-                      <p className={styles.detailsText}>Screen</p>
-                      <p className={styles.value}>{product?.screen}</p>
-                    </div>
-                    <div>
-                      <p className={styles.detailsText}>Resolution</p>
-                      <p className={styles.value}>{product?.resolution}</p>
-                    </div>
-                    <div>
-                      <p className={styles.detailsText}>Processor</p>
-                      <p className={styles.value}>{product?.processor}</p>
-                    </div>
-                    <div>
-                      <p className={styles.detailsText}>RAM</p>
-                      <p className={styles.value}>{product?.ram}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.info}>
-                <div className={styles.about}>
-                  <h3 className={styles.infoTitle}>About</h3>
-
-                  {product?.description.map(item => (
-                    <p key={item.title} className={styles.aboutText}>
-                      {item.text[0]}
-                    </p>
-                  ))}
-                </div>
-                <div className={styles.techSpecs}>
-                  <h3 className={styles.infoTitle}>Tech specs</h3>
-
-                  <div className={styles.techContainer}>
-                    <div className={styles.techBlock}>
-                      <p className={styles.detailsText}>Screen</p>
-                      <p className={styles.value}>{product?.screen}</p>
-                    </div>
-                    <div className={styles.techBlock}>
-                      <p className={styles.detailsText}>Resolution</p>
-                      <p className={styles.value}>{product?.resolution}</p>
-                    </div>
-                    <div className={styles.techBlock}>
-                      <p className={styles.detailsText}>Processor</p>
-                      <p className={styles.value}>{product?.processor}</p>
-                    </div>
-                    <div className={styles.techBlock}>
-                      <p className={styles.detailsText}>RAM</p>
-                      <p className={styles.value}>{product?.ram}</p>
-                    </div>
-                    <div className={styles.techBlock}>
-                      <p className={styles.detailsText}>Built in memory</p>
-                      <p className={styles.value}>{product?.capacity}</p>
-                    </div>
-                    {product.camera && (
-                      <>
+                      <div className={styles.techContainer}>
                         <div className={styles.techBlock}>
-                          <p className={styles.detailsText}>Camera</p>
-                          <p className={styles.value}>{product?.camera}</p>
+                          <p className={styles.detailsText}>Screen</p>
+                          <p className={styles.value}>{product?.screen}</p>
                         </div>
                         <div className={styles.techBlock}>
-                          <p className={styles.detailsText}>Zoom</p>
-                          <p className={styles.value}>{product?.zoom}</p>
+                          <p className={styles.detailsText}>Resolution</p>
+                          <p className={styles.value}>{product?.resolution}</p>
                         </div>
-                      </>
-                    )}
+                        <div className={styles.techBlock}>
+                          <p className={styles.detailsText}>Processor</p>
+                          <p className={styles.value}>{product?.processor}</p>
+                        </div>
+                        <div className={styles.techBlock}>
+                          <p className={styles.detailsText}>RAM</p>
+                          <p className={styles.value}>{product?.ram}</p>
+                        </div>
+                        <div className={styles.techBlock}>
+                          <p className={styles.detailsText}>Built in memory</p>
+                          <p className={styles.value}>{product?.capacity}</p>
+                        </div>
+                        {product.camera && (
+                          <>
+                            <div className={styles.techBlock}>
+                              <p className={styles.detailsText}>Camera</p>
+                              <p className={styles.value}>{product?.camera}</p>
+                            </div>
+                            <div className={styles.techBlock}>
+                              <p className={styles.detailsText}>Zoom</p>
+                              <p className={styles.value}>{product?.zoom}</p>
+                            </div>
+                          </>
+                        )}
 
-                    <div className={styles.techBlock}>
-                      <p className={styles.detailsText}>Cell</p>
-                      <p className={styles.value}>{product?.cell.join(', ')}</p>
+                        <div className={styles.techBlock}>
+                          <p className={styles.detailsText}>Cell</p>
+                          <p className={styles.value}>{product?.cell.join(', ')}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              {categoryGoods && categoryGoods.length > 1 && (
-                <div className={styles.sliderContainer}>
-                  <ProductsSlider title="You may also like" goods={suggestedProducts} />
-                </div>
+                  {categoryGoods && categoryGoods.length > 1 && (
+                    <div className={styles.sliderContainer}>
+                      <ProductsSlider title="You may also like" goods={suggestedProducts} />
+                    </div>
+                  )}
+                </>
               )}
             </>
-          ) : (
-            <h1 className={styles.productNotFound}>Product was not found</h1>
           )}
         </>
       )}
