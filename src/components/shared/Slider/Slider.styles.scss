@@ -35,21 +35,20 @@
     &--prev {
       transform: translateX(0);
 
-      // &-active {
-      //   transform: translateX(0);
-      // }
+      &-active {
+        transform: translateX(0);
+      }
     }
 
     &--next {
       transform: translateX(200%);
-    //   transition: transform 0.3s ease-in-out;
-    //   opacity: 1;
-    //   transition: opacity 0.9s ease-in-out;
+      transition: transform 0.3s ease-in-out;
+      display: none;
 
-    //   &-active {
-    //     transform: translateX(0);
-    //     opacity: 0;
-    //   }
+      &-active {
+        transform: translateX(0);
+        display: flex;
+      }
     }
   }
 }

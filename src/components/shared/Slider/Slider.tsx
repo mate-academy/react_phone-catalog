@@ -13,7 +13,7 @@ function createSlides(products: Product[], width: number): Product[][] {
   return products.reduce<Product[][]>((accum, product, index) => {
     let step;
     if (width < 640) {
-      step = 1;
+      step = 2;
     } else if (width < 1199) {
       step = 3;
     } else {
@@ -88,10 +88,12 @@ export const Slider: React.FC<Props> = ({ products }) => {
       setNextSlide(slides[newNextIndex]);
       setNextSlideIndex(newNextIndex);
 
+    } else {
+      setPrevSlide(nextSlide);
+      setPrevSlideIndex(nextSlideIndex);
 
-      // setIsPrevActive(false);
+      setNextSlideIndex(slides.length);
 
-      // setTimeout(() => setIsPrevActive(true), 300);
     }
   };
 
@@ -110,7 +112,7 @@ export const Slider: React.FC<Props> = ({ products }) => {
           </button>
           <button
             className="slider__button--next"
-            // disabled={nextSlideIndex === slides.length - 1}
+            disabled={nextSlideIndex === slides.length}
             onClick={handleNextSlide}
           >
             next
