@@ -5,12 +5,13 @@ import { SliderSwiper } from '../SliderSwiper/SliderSwiper';
 import { ShopByCategory } from '../ShopByCategory/ShopByCategory';
 import { ProductSlider } from '../ProductCard/ProductCard';
 import { useEffect, useState } from 'react';
-import { Product } from '../../types/ProductDetails';
+import { ProductDetails } from '../../types/ProductDetails';
 import { fetchAllProducts } from '../../utils/api';
 import { Loader } from '../Loader/Loader';
 import { NameSlider } from '../../nameslider';
 export const HomePage = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+  // const [phones, setPhones] = useState<Product[]>([]);
+  const [phones, setPhones] = useState<ProductDetails[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Product } from '../../types/ProductDetails';
+import { ProductDetails } from '../../types/ProductDetails';
 import { fetchAllProducts } from '../../utils/api';
 interface DropDownOption {
   value: string;
 }
 export const usePhonesHooks = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+  // const [phones, setPhones] = useState<Product[]>([]);
+  const [phones, setPhones] = useState<ProductDetails[]>([]);
   const [itemPrevPage, setItemPrevPage] = useState(8); //початкове відображення карток
   const [currentPage, setCurrentPage] = useState(1); // початкова сторінка
   const [sortBy, setSortBy] = useState('Newest'); // початкове сортування
@@ -32,6 +33,7 @@ export const usePhonesHooks = () => {
         setLoading(false);
       });
   }, []);
+
   //функція для сортування
   const hanleSortChange = () => {
     setSortBy(sortBy);
@@ -47,7 +49,7 @@ export const usePhonesHooks = () => {
     }
 
     if (sortBy === 'Cheapest') {
-      sortedPhone.sort((a, b) => a.fullPrice - b.fullPrice);
+      sortedPhone.sort((a, b) => a.priceRegular - b.priceRegular);
     }
 
     setPhones([...sortedPhone]);
@@ -63,7 +65,7 @@ export const usePhonesHooks = () => {
       setItemPrevPage(value);
       setSearchParams({ itemPrevPage: option.value });
     }
-    
+
     setCurrentPage(1);
     // setCurrentPage(1);
     // setSearchParams({ itemPrevPage: option.value });

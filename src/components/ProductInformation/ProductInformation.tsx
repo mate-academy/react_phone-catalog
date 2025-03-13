@@ -10,11 +10,11 @@ import { ProductSlider } from '../ProductCard/ProductCard';
 import { fetchAllProducts } from '../../utils/api';
 import { useParams } from 'react-router-dom';
 import { NameSlider } from '../../nameslider';
-import { Product } from '../../types/ProductDetails';
+import { ProductDetails } from '../../types/ProductDetails';
 
 export const ProductInformation: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductDetails[]>([]);
 
   const {
     selectedPhone,

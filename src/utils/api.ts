@@ -1,10 +1,11 @@
 import phones from '../../public/api/phones.json';
-// import product from '../../public/api/products.json';
+import product from '../../public/api/products.json';
 import tablet from '../../public/api/tablets.json';
 import accessories from '../../public/api/accessories.json';
 import {
   Accessory,
   Phone,
+  Product,
   ProductDetails,
   Tablet,
 } from '../types/ProductDetails';
@@ -17,9 +18,9 @@ export const getPhones = (): Promise<Phone[]> => {
   return delay().then(() => phones);
 };
 
-// export const fetchProducts = (): Promise<Product[]> => {
-//   return delay().then(() => product);
-// };
+export const fetchProducts = (): Promise<Product[]> => {
+  return delay().then(() => product);
+};
 
 export const fetchTable = (): Promise<Tablet[]> => {
   return delay().then(() => tablet);

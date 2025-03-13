@@ -1,11 +1,11 @@
 import React from 'react';
-import { Product } from '../../types/ProductDetails';
+import { ProductDetails } from '../../types/ProductDetails';
 import { NavLink } from 'react-router-dom';
 import like from '../../../image/heart.svg';
 import './ProductItem.scss';
 
 interface Props {
-  product: Product;
+  product: ProductDetails;
   WithAdditionalPrice?: boolean;
   onClick?: () => void;
 }
@@ -15,7 +15,7 @@ export const ProductItem: React.FC<Props> = ({
   WithAdditionalPrice = false,
   // onClick,
 }) => {
-  const productPath = `/${product.category}/${product.itemId}`;
+  const productPath = `/${product.category}/${product.id}`;
 
   return (
     <NavLink
@@ -25,7 +25,7 @@ export const ProductItem: React.FC<Props> = ({
     >
       <div className="product__img-container">
         <img
-          src={product.image}
+          src={product.images[0]}
           alt={`${product.category} image`}
           className="product__image"
         />
@@ -33,9 +33,9 @@ export const ProductItem: React.FC<Props> = ({
 
       <h3 className="product__name">{product.name}</h3>
       <div className="product__discount">
-        <h3 className="product__price">{`$ ${product.price}`}</h3>
+        <h3 className="product__price">{`$ ${product.priceRegular}`}</h3>
         {WithAdditionalPrice && (
-          <h3 className="product__fullprice">{`$ ${product.fullPrice}`}</h3>
+          <h3 className="product__fullprice">{`$ ${product.priceDiscount}`}</h3>
         )}
       </div>
 

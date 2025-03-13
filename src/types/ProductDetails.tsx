@@ -22,7 +22,7 @@ interface BaseProduct {
   processor: string;
   ram: string;
   cell: string[];
-  year?: number;
+  year: number;
 }
 
 // для телефонів
