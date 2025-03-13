@@ -17,12 +17,11 @@
   &__slides {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 571px;
   }
 
   &__slide {
     width: 100%;
-    max-width: 571px;
     height: 506px;
     position: absolute;
     top: 0;
@@ -31,23 +30,26 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
+    margin: auto;
 
     &--prev {
-      transform: translateX(-100%);
-      transition: transform 0.3s ease-in-out;
+      transform: translateX(0);
 
-      &-active {
-        transform: translateX(0);
-      }
+      // &-active {
+      //   transform: translateX(0);
+      // }
     }
 
     &--next {
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
+      transform: translateX(200%);
+    //   transition: transform 0.3s ease-in-out;
+    //   opacity: 1;
+    //   transition: opacity 0.9s ease-in-out;
 
-      &-active {
-        transform: translateX(0);
-      }
+    //   &-active {
+    //     transform: translateX(0);
+    //     opacity: 0;
+    //   }
     }
   }
 }

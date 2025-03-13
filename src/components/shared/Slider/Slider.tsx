@@ -4,11 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { Product } from '../../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import classNames from 'classnames';
-import { useAppSelector } from '../../../app/hooks';
 
 type Props = {
   products: Product[];
-}
+};
 
 function createSlides(products: Product[], width: number): Product[][] {
   return products.reduce<Product[][]>((accum, product, index) => {
@@ -61,30 +60,38 @@ export const Slider: React.FC<Props> = ({ products }) => {
   }, [windowWidth]);
 
   useEffect(() => {
-      setPrevSlide(slides[0]);
-      setNextSlide(slides[1] || slides[slides.length - 1]);
-      setPrevSlideIndex(0);
-      setNextSlideIndex(slides.length > 1 ? 1 : 0);
+    setPrevSlide(slides[0]);
+    setNextSlide(slides[1] || slides[slides.length - 1]);
+    setPrevSlideIndex(0);
+    setNextSlideIndex(1);
   }, [slides]);
-
 
   const handlePrevSlide = () => {
     if (prevSlideIndex > 0) {
       const newPrevIndex = prevSlideIndex - 1;
+
+      setNextSlide(prevSlide);
+      setNextSlideIndex(prevSlideIndex);
+
       setPrevSlide(slides[newPrevIndex]);
       setPrevSlideIndex(newPrevIndex);
-      setIsPrevActive(true);
-
-      console.log(prevSlideIndex);
     }
   };
 
   const handleNextSlide = () => {
     if (nextSlideIndex < slides.length - 1) {
       const newNextIndex = nextSlideIndex + 1;
+
+      setPrevSlide(nextSlide);
+      setPrevSlideIndex(nextSlideIndex);
+
       setNextSlide(slides[newNextIndex]);
       setNextSlideIndex(newNextIndex);
-      setIsPrevActive(false);
+
+
+      // setIsPrevActive(false);
+
+      // setTimeout(() => setIsPrevActive(true), 300);
     }
   };
 
@@ -103,7 +110,7 @@ export const Slider: React.FC<Props> = ({ products }) => {
           </button>
           <button
             className="slider__button--next"
-            disabled={nextSlideIndex === slides.length - 1}
+            // disabled={nextSlideIndex === slides.length - 1}
             onClick={handleNextSlide}
           >
             next

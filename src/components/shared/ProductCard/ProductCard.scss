@@ -2,8 +2,7 @@
   &-card {
     width: 100%;
     max-width: 287px;
-    height: auto;
-    min-height: 440px;
+    height: 439px;
     border: 1px solid $gray-elements;
     display: flex;
     flex-direction: column;
@@ -12,11 +11,12 @@
     padding: 32px;
 
     @include tablet {
-      height: 506px;
+      height: 512px;
     }
 
     @include desktop {
       max-width: 272px;
+      height: 506px;
     }
   }
 
