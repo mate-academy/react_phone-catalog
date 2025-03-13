@@ -2,14 +2,14 @@
 @import '/src/styles/mixins';
 
 .button {
+  cursor: pointer;
   display: flex;
+  gap: 12px;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
   padding: 0;
+  border: none;
+  background: none;
 
   @include on-tablet {
     margin: 0;

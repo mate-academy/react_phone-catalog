@@ -4,15 +4,15 @@
 .footer {
   display: flex;
   flex-direction: column;
+  gap: 32px;
   padding-block: 32px;
   padding-inline: $padding-mobile;
   border-top: 1px solid $elements;
-  gap: 32px;
 
   @include on-tablet {
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding-inline: $padding-tablet;
   }
 
@@ -36,10 +36,10 @@
       font-size: 12px;
       font-weight: 800;
       line-height: 11px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      text-decoration: none;
       color: $secondary;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
 
       @include hover(color, $black);
     }

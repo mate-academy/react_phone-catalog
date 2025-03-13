@@ -3,31 +3,31 @@
 
 .checkoutModal {
   position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
+  inset: 0;
+  background-color: rgb(0 0 0 / 70%);
 
   &__content {
-    width: 80%;
-    border: 1px solid $elements;
-    border-radius: 16px;
-    padding: $padding-mobile;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 80%;
+    padding: $padding-mobile;
+    border: 1px solid $elements;
+    border-radius: 16px;
     background-color: $white;
 
     @include on-tablet {
-      padding-inline: $padding-tablet;
       padding-block: 50px;
+      padding-inline: $padding-tablet;
     }
   }
 
   &__title {
+    margin-bottom: 20px;
     font-size: 16px;
     line-height: 21px;
-    margin-bottom: 20px;
 
     @include on-tablet {
       margin-bottom: 40px;
@@ -41,13 +41,13 @@
   &__actions {
     display: flex;
     gap: 16px;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 
   .button {
     flex-grow: 1;
-    height: 40px;
     max-width: 318px;
+    height: 40px;
   }
 }

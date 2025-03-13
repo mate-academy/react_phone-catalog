@@ -2,10 +2,10 @@
 @import '/src/styles/mixins';
 
 .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 49vh;
   font-size: 16px;
   color: $secondary;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 49vh;
 }

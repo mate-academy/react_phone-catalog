@@ -6,6 +6,7 @@ import { Footer } from './modules/shared/components/Footer';
 export const App: React.FC = () => {
   return (
     <div className="App">
+      <h1 hidden>Product Catalog</h1>
       <Header />
       <div className="content">
         <Outlet />

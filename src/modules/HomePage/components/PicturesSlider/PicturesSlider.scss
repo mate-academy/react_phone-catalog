@@ -39,41 +39,39 @@
     display: none;
 
     @include on-tablet {
-      width: 32px;
       display: block;
-
+      width: 32px;
       border: 1px solid $icons;
       border-radius: 48px;
-
       background-repeat: no-repeat;
       background-position: center;
 
       @include hover('border-color', $black);
 
       &--prev {
-        background-image: url(../../../../../public/img/icons/arrow-left-black.svg);
+        background-image: url("../../../../../public/img/icons/arrow-left-black.svg");
       }
 
       &--next {
-        background-image: url(../../../../../public/img/icons/arrow-right-black.svg);
+        background-image: url("../../../../../public/img/icons/arrow-right-black.svg");
       }
     }
   }
 
   &__pagination {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 12px;
+    align-items: center;
+    justify-content: center;
     height: 24px;
 
     .swiper-pagination-bullet {
       cursor: pointer;
       width: 14px;
       height: 4px;
-      background-color: $icons;
       border-radius: 2px;
       opacity: 0.5;
+      background-color: $icons;
 
       &.swiper-pagination-bullet-active {
         opacity: 1;

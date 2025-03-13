@@ -40,6 +40,7 @@ export {};
 
 declare global {
   namespace Cypress {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Chainable<Subject> {
       getByDataCy(selector: string): Chainable<JQuery<HTMLElement>>;
       byDataCy(name: string): Chainable<JQuery<HTMLElement>>;

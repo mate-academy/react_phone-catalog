@@ -3,28 +3,28 @@
 
 .pagination {
   display: flex;
-  justify-content: center;
   gap: 8px;
+  justify-content: center;
   width: 100%;
 }
 
 .pageLink {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
   font-size: 14px;
 }
 
 .pageNumber,
 .previous,
 .next {
+  cursor: pointer;
   width: 32px;
   height: 32px;
   border: 1px solid $elements;
   border-radius: 48px;
-  cursor: pointer;
 
   @include hover('border-color', $black);
 }
@@ -32,13 +32,13 @@
 .next,
 .previous {
   border-color: $icons;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .previous {
   margin-right: 8px;
-  background-image: url(../../../../../public/img/icons/arrow-left-black.svg);
+  background-image: url("../../../../../public/img/icons/arrow-left-black.svg");
 }
 
 .previous a,
@@ -49,20 +49,20 @@
 }
 
 .previous.disabled {
-  border-color: $elements;
-  background-image: url(../../../../../public/img/icons/arrow-left-grey.svg);
   cursor: auto;
+  border-color: $elements;
+  background-image: url("../../../../../public/img/icons/arrow-left-grey.svg");
 }
 
 .next {
   margin-left: 8px;
-  background-image: url(../../../../../public/img/icons/arrow-right-black.svg);
+  background-image: url("../../../../../public/img/icons/arrow-right-black.svg");
 }
 
 .next.disabled {
-  border-color: $elements;
-  background-image: url(../../../../../public/img/icons/arrow-right-grey.svg);
   cursor: auto;
+  border-color: $elements;
+  background-image: url("../../../../../public/img/icons/arrow-right-grey.svg");
 }
 
 .break {
@@ -70,7 +70,7 @@
 }
 
 .activePage a {
-  background-color: $black;
   border-radius: 48px;
   color: $white;
+  background-color: $black;
 }

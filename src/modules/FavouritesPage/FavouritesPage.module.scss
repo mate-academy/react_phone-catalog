@@ -11,9 +11,9 @@
   }
 
   @include on-desktop {
+    max-width: 1136px + ($padding-desktop * 2);
     margin: 0 auto $margin-bottom-desktop;
     padding: 24px $padding-desktop 0;
-    max-width: 1136px + ($padding-desktop * 2);
   }
 
   .breadCrumbsContainer {

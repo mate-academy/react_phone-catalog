@@ -2,41 +2,41 @@
 @import '/src/styles/mixins';
 
 .cartItem {
-  background-color: $white;
+  padding: $padding-mobile;
   border: 1px solid $elements;
   border-radius: 16px;
-  padding: $padding-mobile;
+  background-color: $white;
 
   @include on-tablet {
-    padding: $padding-tablet;
     display: flex;
     justify-content: space-between;
+    padding: $padding-tablet;
   }
 
   .top {
-    margin-bottom: 16px;
     display: flex;
-    align-items: center;
     gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
 
     @include on-tablet {
-      margin-bottom: 0;
-      margin-right: 24px;
       gap: 24px;
+      margin-right: 24px;
+      margin-bottom: 0;
     }
 
     .deleteButton {
-      background: center no-repeat url('../../../../../public/img/icons/close-icon-grey.svg');
       width: 16px;
       height: 16px;
+      background: center no-repeat url('../../../../../public/img/icons/close-icon-grey.svg');
 
       @include hover(background-image, url('../../../../../public/img/icons/close-icon-black.svg'));
     }
 
     .cartItemLink {
       display: flex;
-      align-items: center;
       gap: 16px;
+      align-items: center;
 
       @include on-tablet {
         gap: 24px;
@@ -55,17 +55,17 @@
       }
 
       .productName {
-        color: $black;
         font-size: 14px;
         line-height: 21px;
+        color: $black;
       }
     }
   }
 
   .bottom {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     @include on-tablet {
       gap: 24px;
@@ -73,17 +73,17 @@
 
     .itemQuantity {
       display: flex;
-      align-items: center;
       gap: 14px;
+      align-items: center;
 
       .decrease,
       .increase {
         width: 32px;
         height: 32px;
-        background-position: center;
-        background-repeat: no-repeat;
         border: 1px solid $icons;
         border-radius: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
 
         @include hover(border-color, $black);
       }
@@ -92,9 +92,9 @@
         background-image: url('../../../../../public/img/icons/minus-icon-black.svg');
 
         &.disabled {
-          background-image: url('../../../../../public/img/icons/minus-icon-grey.svg');
           cursor: not-allowed;
           border-color: $elements;
+          background-image: url('../../../../../public/img/icons/minus-icon-grey.svg');
         }
       }
 
@@ -108,8 +108,8 @@
       font-weight: 800;
 
       @include on-tablet {
-        text-align: right;
         width: 80px;
+        text-align: right;
       }
     }
   }

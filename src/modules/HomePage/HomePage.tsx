@@ -69,7 +69,6 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={styles.HomePage}>
-      <h1 hidden>Product Catalog</h1>
       <h2 className={styles.homeTitle}> Welcome to Nice Gadgets store!</h2>
 
       <div className={styles.picturesContainer}>

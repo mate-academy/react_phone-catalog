@@ -2,10 +2,10 @@
 @import '/src/styles/mixins';
 
 .page {
-  margin: 0 auto 64px;
-  max-width: 1136px;
-  padding: 24px $padding-mobile 0;
   box-sizing: content-box;
+  max-width: 1136px;
+  margin: 0 auto 64px;
+  padding: 24px $padding-mobile 0;
 
   @include on-tablet {
     padding: 24px $padding-tablet 0;
@@ -45,10 +45,9 @@
 
   &__goodsAmount {
     margin-bottom: 32px;
-
-    color: $secondary;
     font-size: 14px;
     line-height: 21px;
+    color: $secondary;
 
     @include on-tablet {
       margin-bottom: 40px;
@@ -62,10 +61,8 @@
 
     &_name {
       margin-bottom: 4px;
-
-      color: $secondary;
-
       font-size: 12px;
+      color: $secondary;
     }
 
     &_sort,
@@ -87,14 +84,14 @@
   width: 100%;
 
   &__button {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 12px;
     width: 100%;
+    padding: 10px 12px;
     border: 1px solid $icons;
     border-radius: 8px;
-    cursor: pointer;
 
     @include hover('border-color', $secondary);
 
@@ -119,28 +116,28 @@
   }
 
   &__content {
-    margin-top: 4px;
     position: absolute;
+    z-index: 10;
     top: 100%;
     left: 0;
-    z-index: 10;
-    width: 100%;
     transform: translateY(-20px);
-    opacity: 0;
+    width: 100%;
+    margin-top: 4px;
+    border: 1px solid $elements;
+    border-radius: 8px;
     visibility: hidden;
+    opacity: 0;
+    background-color: $white;
+    box-shadow: 0 2px 15px 0 #0000000d;
     transition:
       opacity 0.3s,
       visibility 0.3s,
       transform 0.3s;
-    border: 1px solid $elements;
-    border-radius: 8px;
-    background-color: $white;
-    box-shadow: 0 2px 15px 0 #0000000d;
 
     &--active {
-      opacity: 1;
       transform: translateY(0);
       visibility: visible;
+      opacity: 1;
     }
   }
 
@@ -149,44 +146,43 @@
   }
 
   &__option {
-    padding: 6px 12px;
-    width: 100%;
-    height: 32px;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    color: $secondary;
+    width: 100%;
+    height: 32px;
+    padding: 6px 12px;
     font-size: 14px;
     font-weight: 400;
-    cursor: pointer;
+    color: $secondary;
 
     @include hover('color', $black);
 
     &--selected {
       color: $black;
-      background-color: $hover-BG;
+      background-color: $hover-bg;
     }
   }
 }
 
 .error {
-  max-width: 1136px;
-  margin: 0 auto;
-
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 32px;
+  align-items: center;
+  justify-content: center;
+  max-width: 1136px;
+  height: 100vh;
+  margin: 0 auto;
   text-align: center;
 
   &__retryButton {
-    padding: 10px;
-    max-width: 263px;
     width: 100%;
-    color: $white;
+    max-width: 263px;
+    padding: 10px;
     border-radius: 48px;
-    background-color: $accent;
     font-weight: 400;
+    color: $white;
+    background-color: $accent;
   }
 }

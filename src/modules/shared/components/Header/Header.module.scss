@@ -3,8 +3,8 @@
 
 .header {
   position: sticky;
-  top: 0;
   z-index: 1000;
+  top: 0;
 
   &--mobile {
     @include on-tablet {
@@ -14,8 +14,8 @@
 
   .top {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     height: 48px;
     padding: 0 $padding-mobile;
     border-bottom: 1px solid $elements;
@@ -48,11 +48,11 @@
       display: flex;
       place-content: center center;
       align-items: center;
-      border: none;
-      background-color: transparent;
-      padding-left: 16px;
-      border-left: 1px solid $elements;
       height: 100%;
+      padding-left: 16px;
+      border: none;
+      border-left: 1px solid $elements;
+      background-color: transparent;
 
       @include on-tablet {
         display: none;
@@ -61,8 +61,8 @@
   }
 
   .nav {
-    margin-top: 24px;
     flex-grow: 1;
+    margin-top: 24px;
 
     @include on-tablet {
       margin-top: 0;
@@ -90,14 +90,14 @@
     }
 
     &__link {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: $secondary;
       padding-block: 8px;
       border-bottom: 2px solid transparent;
+      font-size: 12px;
+      font-weight: 800;
+      color: $secondary;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
 
       @include hover(color, $black);
 
@@ -108,36 +108,35 @@
       }
 
       &--active {
-        color: black;
         border-bottom-color: $black;
+        color: black;
       }
     }
   }
 
   .menu {
-    height: 100vh;
-    z-index: 1;
     position: fixed;
-    right: 0;
+    z-index: 1;
     top: 0;
+    right: 0;
     left: 0;
+    transform: translateX(100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
     background-color: $white;
     transition: transform 0.3s ease-in-out;
-    transform: translateX(100%);
-
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
 
     &.active {
       transform: translateX(0);
     }
 
     @include on-tablet {
+      position: relative;
       transform: translateX(0%);
       flex-direction: row;
       height: 48px;
-      position: relative;
       border-bottom: 1px solid $elements;
     }
 
@@ -146,8 +145,8 @@
     }
 
     &__icons {
-      height: 64px;
       display: flex;
+      height: 64px;
       border-top: 1px solid $elements;
 
       @include on-tablet {
@@ -160,10 +159,10 @@
       }
 
       .nav__link {
-        width: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 50%;
 
         @include hover(border-bottom, 2px solid $black);
 
@@ -197,36 +196,36 @@
   background-size: contain;
 
   &--menu {
-    background-image: url(../../../../../public/img/icons/menu-icon.svg);
+    background-image: url("../../../../../public/img/icons/menu-icon.svg");
   }
 
   &--close {
-    background-image: url(../../../../../public/img/icons/close-icon-black.svg);
+    background-image: url("../../../../../public/img/icons/close-icon-black.svg");
   }
 
   &--heart {
-    background-image: url(../../../../../public/img/icons/favourites-icon.svg);
+    background-image: url("../../../../../public/img/icons/favourites-icon.svg");
   }
 
   &--cart {
-    background-image: url(../../../../../public/img/icons/cart-icon.svg);
+    background-image: url("../../../../../public/img/icons/cart-icon.svg");
   }
 }
 
 .itemsAmount {
+  transform: translate(50%, -50%);
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 18px;
+  justify-content: center;
   width: 18px;
-  color: $white;
+  height: 18px;
+  padding-top: 2px;
+  padding-left: 1px;
   border: 1px solid $white;
-  background-color: $accent;
   border-radius: 50%;
   font-size: 10px;
   font-weight: 600;
   line-height: 12px;
-  transform: translate(50%, -50%);
-  padding-top: 2px;
-  padding-left: 1px;
+  color: $white;
+  background-color: $accent;
 }

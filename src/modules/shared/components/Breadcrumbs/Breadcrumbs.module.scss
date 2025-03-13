@@ -3,8 +3,8 @@
 
 .breadcrumbs {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
   height: 16px;
   font-size: 12px;
 
@@ -12,27 +12,27 @@
     display: block;
     width: 16px;
     height: 16px;
-    background-image: url(../../../../../public/img/icons/arrow-right-grey.svg);
+    background-image: url("../../../../../public/img/icons/arrow-right-grey.svg");
   }
 
   &__icon {
     width: 16px;
     height: 16px;
-    background: center no-repeat url(../../../../../public/img/icons/home-icon.svg);
+    background: center no-repeat url("../../../../../public/img/icons/home-icon.svg");
   }
 
   &__item {
     height: 16px;
-    color: $black;
     font-weight: 600;
     line-height: 18px;
+    color: $black;
 
     &--active {
+      overflow: hidden;
       font-weight: 400;
       color: $secondary;
-      white-space: nowrap;
-      overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }

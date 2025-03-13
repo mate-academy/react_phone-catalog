@@ -1,3 +1,4 @@
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -20,15 +21,9 @@ const PicturesSlider: React.FC = () => {
           ></button>
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            navigation={{
-              prevEl: `.banner__button--prev`,
-              nextEl: `.banner__button--next`,
-            }}
+            navigation={{ prevEl: `.banner__button--prev`, nextEl: `.banner__button--next` }}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
-            pagination={{
-              el: '.banner__pagination',
-              clickable: true,
-            }}
+            pagination={{ el: '.banner__pagination', clickable: true }}
             speed={500}
             loop={true}
             className="banner__container"

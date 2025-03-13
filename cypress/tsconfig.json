@@ -1,6 +1,4 @@
 {
   "extends": "@mate-academy/students-ts-config",
-  "compilerOptions": {
-    "sourceMap": false
-  }
+  "compilerOptions": { "sourceMap": false, "esModuleInterop": true }
 }

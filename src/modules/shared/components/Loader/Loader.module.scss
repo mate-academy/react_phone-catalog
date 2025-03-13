@@ -2,19 +2,18 @@
 @import '/src/styles/mixins';
 
 .container {
-  height: 50vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 50vh;
 
   .loader {
-    margin: 1em auto;
-    border: 6px solid $elements;
-    border-radius: 50%;
-    border-top: 6px solid $accent;
     width: 60px;
     height: 60px;
-    -webkit-animation: spin 1s linear infinite;
+    margin: 1em auto;
+    border: 6px solid $elements;
+    border-top: 6px solid $accent;
+    border-radius: 50%;
     animation: spin 1s linear infinite;
 
     @include on-tablet {
@@ -26,10 +25,11 @@
 
 @keyframes spin {
   0% {
-    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
+
   100% {
-    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -37,6 +37,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

@@ -4,15 +4,15 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   height: 100vh;
   padding: 0 $padding-mobile;
+  text-align: center;
 
   @include on-tablet {
-    padding: 0 $padding-tablet;
     gap: 32px;
+    padding: 0 $padding-tablet;
   }
 
   @include on-desktop {
@@ -28,13 +28,13 @@
   }
 
   .button {
-    padding: 10px;
-    max-width: 263px;
     width: 100%;
-    color: $white;
+    max-width: 263px;
+    padding: 10px;
     border-radius: 48px;
-    background-color: $accent;
     font-size: 14px;
     line-height: 21px;
+    color: $white;
+    background-color: $accent;
   }
 }
