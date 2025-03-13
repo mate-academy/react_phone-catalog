@@ -1,0 +1,79 @@
+@import '../../styles/mixinsTypography';
+@import '../../styles/variables';
+
+.home {
+  padding: 0;
+
+  &__title {
+    margin: 24px 0;
+    text-align: center;
+    color: $primaryColor;
+
+    @include h1-mobile;
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+    margin: 0 16px;
+    margin-bottom: 56px;
+
+    &_title {
+      margin: 0;
+      margin-bottom: 24px;
+      color: $primaryColor;
+
+      @include h2-mobile;
+    }
+
+    &_links {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &_link {
+      text-decoration: none;
+    }
+
+    &_square {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      flex-shrink: 0;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    &_img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120%;
+      object-fit: cover;
+    }
+
+    &_description {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &_name {
+      margin: 0;
+      color: $primaryColor;
+
+      @include h4-tablet-desktop;
+    }
+
+    &_count {
+      margin: 0;
+      color: $secondaryColor;
+
+      @include body-text;
+    }
+  }
+}
