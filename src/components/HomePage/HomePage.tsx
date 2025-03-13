@@ -15,12 +15,16 @@ export const HomePage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     fetchAllProducts()
       .then(data => {
         setPhones(data.filter(dat => dat.category === 'phones'));
       })
+      // .catch(error => {
+      //   console.error('Error fetching products:', error);
+      // })
       .finally(() => {
-        setLoading(false);
+        setTimeout(() => setLoading(false), 500);
       });
   }, []);
 

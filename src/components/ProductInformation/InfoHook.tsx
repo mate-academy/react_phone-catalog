@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { ProductDetails } from '../../types/ProductDetails';
 import './ProductInformation.scss';
-import { getPhones } from '../../utils/api';
+import { fetchAllProducts } from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export const useInfoHook = () => {
@@ -23,7 +23,7 @@ export const useInfoHook = () => {
 
   useEffect(() => {
     setLoading(true);
-    getPhones()
+    fetchAllProducts()
       .then(data => {
         setPhonesInfo(data);
 
@@ -55,20 +55,44 @@ export const useInfoHook = () => {
 
     setSelectedColor(color);
 
-    const newPhone = phonesInfo.find(phone => phone.color === color);
+    // const newPhone = phonesInfo.find(phone => phone.color === color);
+
+    // if (newPhone) {
+    //   setSelectedPhone(newPhone);
+    // }
+
+    const newPhone = phonesInfo.find(
+      phone =>
+        phone.capacity === selectedMemory &&
+        phone.namespaceId === selectedPhone?.namespaceId &&
+        phone.color === selecredColor,
+    );
 
     if (newPhone) {
       setSelectedPhone(newPhone);
+      setMainImage(newPhone.images[0]);
     }
 
     updateUrl(selectedPhone.namespaceId, color, selectedMemory);
   };
 
   const handleChangeMemory = (memory: string) => {
-    const newPhone = phonesInfo.find(phone => phone.capacity === memory);
+    // const newPhone = phonesInfo.find(phone => phone.capacity === memory);
+
+    // if (newPhone) {
+    //   setSelectedPhone(newPhone);
+    // }
+
+    const newPhone = phonesInfo.find(
+      phone =>
+        phone.capacity === memory &&
+        phone.namespaceId === selectedPhone?.namespaceId &&
+        phone.color === selecredColor,
+    );
 
     if (newPhone) {
       setSelectedPhone(newPhone);
+      setMainImage(newPhone.images[0]);
     }
 
     if (selecredColor && memory) {
