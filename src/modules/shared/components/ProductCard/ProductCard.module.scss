@@ -11,6 +11,7 @@
   border-radius: 8px;
   border: 1px solid $elements-color;
   background-color: $white-color;
+  overflow: hidden;
 
   &__image-wrapper {
     position: relative;
@@ -22,7 +23,7 @@
     transform: translateX(-50%);
     height: 100%;
 
-    @include hover(transform,  translateX(-50%) scale(1.1));
+    @include hover(transform, translateX(-50%) scale(1.1));
   }
 
   &__title {

@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import styles from './ProductsPage.module.scss';
 import { Category } from '../../../../_types/products';
 import {
@@ -13,11 +13,11 @@ import {
 } from '../../constans/dropdownsOptions';
 import { Pagination } from '../Pagination/Pagination';
 import { useSearchParams } from 'react-router-dom';
-import { Loader } from '../../../shared/components/Loader';
-import { getSearchWith } from '../../../shared/utils';
+import { getSearchWith } from '../../../../_utils/getSearchWith';
 import { Breadcrumbs } from '../../../shared/components/Breadcrumbs';
 import { ButtonPrimary } from '../../../shared/components/ButtonPrimary';
 import { useProducts } from '../../../../_hooks/useProducts';
+import { Loader } from '../../../shared/components/Loader';
 
 type Props = {
   category: Category;
@@ -46,27 +46,42 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   const sortField = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const page = +(searchParams.get('page') || 1);
+  const query = searchParams.get('query') || '';
 
-  const visibleProduct = useCallback(() => {
+  const filteredProducts = useMemo(() => {
     if (!products) {
       return [];
     }
 
-    const sortedProducts = getPreparedProducts(products, sortField);
+    let sortedProducts = getPreparedProducts(products, sortField);
+
+    if (query) {
+      sortedProducts = sortedProducts.filter(product =>
+        product.name.toLowerCase().includes(query),
+      );
+    }
+
+    return sortedProducts;
+  }, [query, sortField, products]);
+
+  const visibleProduct = useMemo(() => {
+    if (!filteredProducts) {
+      return [];
+    }
 
     if (perPage === 'all') {
-      return sortedProducts;
+      return filteredProducts;
     }
 
     const startIndex = (page - 1) * +perPage;
     const endIndex = startIndex + +perPage;
 
-    return sortedProducts.slice(startIndex, endIndex);
-  }, [sortField, products, page, perPage]);
+    return filteredProducts.slice(startIndex, endIndex);
+  }, [filteredProducts, page, perPage]);
 
   useEffect(() => {
     setSearchParams(getSearchWith({ page: null }, searchParams));
-  }, [perPage]);
+  }, [perPage, sortField, query]);
 
   return (
     <div className={styles.productsPage}>
@@ -99,19 +114,23 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
               selectedOption={perPage}
             />
           </section>
-
-          <section className={styles['productsPage__products-list']}>
-            {products.length === 0 && !loading && (
+          <section
+            className={styles['productsPage__products-list']}
+            id="product-list"
+          >
+            {products.length === 0 && !loading && !error && (
               <p>There are no {category} yet</p>
             )}
-            {loading && !error && <Loader />}
-            {!loading && !error && <ProductsList products={visibleProduct()} />}
-          </section>
+            {filteredProducts.length === 0 && !loading && !error && (
+              <p>There are no {category} matching the query</p>
+            )}
 
+            {!loading && !error && <ProductsList products={visibleProduct} />}
+          </section>
           {perPage !== 'all' && +perPage < products.length && (
             <div className={styles.productsPage__pagination}>
               <Pagination
-                itemCount={products.length}
+                itemCount={filteredProducts.length}
                 maxPagesCount={VISIBLE_PAGES_LIMIT}
                 perPage={+perPage}
                 activePage={page}

@@ -8,8 +8,7 @@
   color: $primary-color;
 
   @include flex-center;
-
-  @include hoverChild(transform, scale(1.2));
+  @include hover-child(transform, scale(1.2));
 
   &--active {
     box-shadow:

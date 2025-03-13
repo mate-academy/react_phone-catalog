@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 
 import { useContext, useEffect, useMemo, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { NavLinks } from '../NavLinks';
@@ -11,10 +11,15 @@ import { IconLink } from '../IconLink';
 import { FavoritesContext } from '../../_store/FavoritesProvider';
 import { CartContext } from '../../_store/CartProvider';
 import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
+import { CartIcon, Favourites } from '../../_constants/icons';
+import { getSearchWith } from '../../../../_utils/getSearchWith';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get('query') || '');
+  const [showSearch, setShowSearch] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);
@@ -27,6 +32,24 @@ export const Header = () => {
     () => cart.reduce((sum, item) => sum + item.quantity, 0),
     [cart],
   );
+
+  const handleSearchInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setQuery(e.currentTarget.value);
+  };
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      if (query) {
+        setSearchParams(
+          getSearchWith({ query: query.trim().toLowerCase() }, searchParams),
+        );
+      } else {
+        setSearchParams(getSearchWith({ query: null }, searchParams));
+      }
+    }, 1000);
+
+    return () => clearTimeout(handler);
+  }, [query]);
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -41,6 +64,20 @@ export const Header = () => {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    setQuery('');
+    const checkProductList = () => {
+      setShowSearch(!!document.querySelector('#product-list'));
+    };
+
+    checkProductList();
+    const observer = new MutationObserver(checkProductList);
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
   return (
     <header
       className={classNames(styles.header, {
@@ -54,6 +91,16 @@ export const Header = () => {
             <NavLinks />
           </ul>
         </nav>
+
+        {showSearch && (
+          <input
+            type="search"
+            placeholder="Search products..."
+            value={query}
+            onInput={handleSearchInput}
+            className={styles.header__searchInput}
+          />
+        )}
 
         <div className={styles.header__icons}>
           <ThemeSwitcher />
@@ -90,19 +137,23 @@ export const Header = () => {
                   },
                 )
               }
-            />
+            >
+              <Favourites />
+            </NavLink>
             <NavLink
               to="cart"
               className={({ isActive }) =>
                 classNames(
                   styles['header__menu-indicator'],
-                  styles['header__menu-indicator--cart'],
+
                   {
                     [styles['header__menu-indicator--active']]: isActive,
                   },
                 )
               }
-            />
+            >
+              <CartIcon />
+            </NavLink>
           </div>
         </aside>
       )}

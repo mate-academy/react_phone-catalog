@@ -1,4 +1,4 @@
-import { SearchParams } from '../modules/shared/utils';
+import { SearchParams } from '../_utils/getSearchWith';
 
 export type DropdownItem = {
   label: string;

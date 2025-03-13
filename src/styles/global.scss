@@ -19,7 +19,6 @@ body {
   &::-webkit-scrollbar-track {
     -webkit-box-shadow: 5px 5px 1px -5px $primary-color inset;
     background-color: $hover-bg-color;
-    border-radius: 0px;
   }
 
   &::-webkit-scrollbar-thumb {

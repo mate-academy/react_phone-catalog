@@ -2,7 +2,7 @@ import { DropdownItem } from '../../../_types/dropDown';
 import { PerPage } from '../../../_types/PerPage';
 
 export const SORT_OPTIONS: DropdownItem[] = [
-  { label: 'Newest', params: { sort: 'age' }, value: 'age' },
+  { label: 'Newest', params: { sort: null }, value: 'age' },
   { label: 'Alphabetically', params: { sort: 'id' }, value: 'id' },
   {
     label: 'Cheapest',

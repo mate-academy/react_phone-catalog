@@ -58,13 +58,15 @@
 
   &__count {
     width: 32px;
+
     @include flex-center;
   }
 
   &__price {
-    @include flex-center;
     font-size: 22px;
     line-height: 31px;
+
+    @include flex-center;
 
     @include on-tablet {
       padding-left: 29px;

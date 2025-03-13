@@ -30,7 +30,7 @@ export const useProducts = <T>(
       }
     };
 
-    setTimeout(() => fetchData(), 1000);
+    setTimeout(() => fetchData(), 2000);
   }, dependencies);
 
   return { data, loading, error };

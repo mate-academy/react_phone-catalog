@@ -8,7 +8,7 @@
   aspect-ratio: 1;
   cursor: pointer;
 
-  @include hoverChild(transform, scale(1.2));
+  @include hover-child(transform, scale(1.2));
 }
 
 .icon {
