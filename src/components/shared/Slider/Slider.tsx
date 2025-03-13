@@ -1,5 +1,5 @@
 import './Slider.styles.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Product } from '../../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -36,11 +36,8 @@ export const Slider: React.FC<Props> = ({ products }) => {
   const [slides, setSlides] = useState<Product[][]>(() => {
     return createSlides(products, windowWidth);
   });
-  const [prevSlide, setPrevSlide] = useState<Product[]>();
-  const [nextSlide, setNextSlide] = useState<Product[]>();
-  const [isPrevActive, setIsPrevActive] = useState<boolean>(true);
-  const [prevSlideIndex, setPrevSlideIndex] = useState<number>(0);
-  const [nextSlideIndex, setNextSlideIndex] = useState<number>(0);
+  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -59,41 +56,35 @@ export const Slider: React.FC<Props> = ({ products }) => {
     setSlides(newSlides);
   }, [windowWidth]);
 
-  useEffect(() => {
-    setPrevSlide(slides[0]);
-    setNextSlide(slides[1] || slides[slides.length - 1]);
-    setPrevSlideIndex(0);
-    setNextSlideIndex(1);
-  }, [slides]);
-
   const handlePrevSlide = () => {
-    if (prevSlideIndex > 0) {
-      const newPrevIndex = prevSlideIndex - 1;
+    if (activeSlideIndex > 0) {
+      const newActiveIndex = activeSlideIndex - 1;
 
-      setNextSlide(prevSlide);
-      setNextSlideIndex(prevSlideIndex);
+      setActiveSlideIndex(newActiveIndex);
 
-      setPrevSlide(slides[newPrevIndex]);
-      setPrevSlideIndex(newPrevIndex);
+      if (slideRefs.current[activeSlideIndex] && slideRefs.current[newActiveIndex]) {
+
+        slideRefs.current[activeSlideIndex].classList.toggle('slider__slide--active');
+
+        slideRefs.current[newActiveIndex].classList.toggle('slider__slide--active');
+        slideRefs.current[newActiveIndex].classList.toggle('slider__slide--viewed');
+      }
     }
   };
 
   const handleNextSlide = () => {
-    if (nextSlideIndex < slides.length - 1) {
-      const newNextIndex = nextSlideIndex + 1;
+    if (activeSlideIndex < slides.length - 1) {
+      const newActiveIndex = activeSlideIndex + 1;
 
-      setPrevSlide(nextSlide);
-      setPrevSlideIndex(nextSlideIndex);
+      setActiveSlideIndex(newActiveIndex);
 
-      setNextSlide(slides[newNextIndex]);
-      setNextSlideIndex(newNextIndex);
+      if (slideRefs.current[activeSlideIndex] && slideRefs.current[newActiveIndex]) {
 
-    } else {
-      setPrevSlide(nextSlide);
-      setPrevSlideIndex(nextSlideIndex);
+        slideRefs.current[activeSlideIndex].classList.toggle('slider__slide--active');
+        slideRefs.current[activeSlideIndex].classList.toggle('slider__slide--viewed');
 
-      setNextSlideIndex(slides.length);
-
+        slideRefs.current[newActiveIndex].classList.toggle('slider__slide--active');
+      }
     }
   };
 
@@ -105,14 +96,14 @@ export const Slider: React.FC<Props> = ({ products }) => {
         <div className="slider__buttons">
           <button
             className="slider__button--prev"
-            disabled={prevSlideIndex === 0}
+            disabled={activeSlideIndex === 0}
             onClick={handlePrevSlide}
           >
             prev
           </button>
           <button
             className="slider__button--next"
-            disabled={nextSlideIndex === slides.length}
+            disabled={activeSlideIndex === slides.length - 1}
             onClick={handleNextSlide}
           >
             next
@@ -121,23 +112,23 @@ export const Slider: React.FC<Props> = ({ products }) => {
       </div>
 
       <div className="slider__slides">
-        <div
-          className={classNames('slider__slide', 'slider__slide--prev', {
-            'slider__slide--prev-active': isPrevActive,
-          })}
-        >
-          {prevSlide &&
-            prevSlide.map(card => <ProductCard key={card.id} product={card} />)}
-        </div>
-
-        <div
-          className={classNames('slider__slide', 'slider__slide--next', {
-            'slider__slide--next-active': !isPrevActive,
-          })}
-        >
-          {nextSlide &&
-            nextSlide.map(card => <ProductCard key={card.id} product={card} />)}
-        </div>
+        {slides.length > 0 &&
+          slides.map((slide, i) => (
+            <div
+              key={i}
+              ref={el => {
+                (slideRefs.current[i] = el)
+                if (i === 0) {
+                  slideRefs.current[i]?.classList.add('slider__slide--active')
+                }
+              }}
+              className={classNames('slider__slide', {
+              })}
+            >
+              {slide &&
+                slide.map(card => <ProductCard key={card.id} product={card} />)}
+            </div>
+          ))}
       </div>
     </div>
   );
