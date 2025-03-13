@@ -7,7 +7,7 @@ import arrow from '../../../image/arrow.svg';
 import { usePhonesHooks } from './usePhonesHooks';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Product } from '../../types/ProductDetails';
+import { Product, ProductDetails } from '../../types/ProductDetails';
 import { fetchAllProducts } from '../../utils/api';
 export const PhonesPage = () => {
   const path = useLocation();
@@ -36,9 +36,27 @@ export const PhonesPage = () => {
       const validCategories = ['phones', 'tablets', 'accessories'];
 
       if (validCategories.includes(currentCategory)) {
-        const filteredProducts = data.filter(
-          product => product.category === currentCategory,
-        );
+        const filteredProducts: Product[] = data
+          .filter(
+            (product: ProductDetails) => product.category === currentCategory,
+          )
+          .map((item: ProductDetails) => ({
+            id: Number(item.id),
+            category: item.category,
+            itemId: item.namespaceId,
+            name: item.name,
+            fullPrice: item.priceRegular,
+            price: item.priceDiscount,
+            screen: item.screen,
+            capacity: item.capacity,
+            color: item.color,
+            ram: item.ram,
+            year:
+              typeof item.year === 'number'
+                ? item.year
+                : new Date().getFullYear(),
+            image: item.images.length > 0 ? item.images[0] : '',
+          }));
 
         setProducts(filteredProducts);
       } else {

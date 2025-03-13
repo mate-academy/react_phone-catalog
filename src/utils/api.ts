@@ -3,10 +3,10 @@ import phones from '../../public/api/phones.json';
 import tablet from '../../public/api/tablets.json';
 import accessories from '../../public/api/accessories.json';
 import {
-  Accessories,
+  Accessory,
   Phone,
   ProductDetails,
-  Tablets,
+  Tablet,
 } from '../types/ProductDetails';
 // import { Product } from '../types/typeRpoduct';
 // import { Tablets } from '../types/ProductDetails';
@@ -21,11 +21,11 @@ export const getPhones = (): Promise<Phone[]> => {
 //   return delay().then(() => product);
 // };
 
-export const fetchTable = (): Promise<Tablets[]> => {
+export const fetchTable = (): Promise<Tablet[]> => {
   return delay().then(() => tablet);
 };
 
-export const fetchAccessories = (): Promise<Accessories[]> => {
+export const fetchAccessories = (): Promise<Accessory[]> => {
   return delay().then(() => accessories);
 };
 

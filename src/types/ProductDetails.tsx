@@ -3,7 +3,8 @@ interface Description {
   text: string[];
 }
 
-export interface ProductDetails {
+//  інтерфейс для всіх товарів
+interface BaseProduct {
   id: string;
   category: string;
   namespaceId: string;
@@ -21,20 +22,28 @@ export interface ProductDetails {
   processor: string;
   ram: string;
   cell: string[];
+  year?: number;
 }
 
-export interface Accessories extends ProductDetails {}
-
-export interface Phone extends ProductDetails {
+// для телефонів
+export interface Phone extends BaseProduct {
   camera: string;
   zoom: string;
 }
 
-export interface Tablets extends ProductDetails {
+// для планшетів
+export interface Tablet extends BaseProduct {
   camera: string;
   zoom: string;
 }
 
+//  для аксесуарів (у них немає camera та zoom)
+export interface Accessory extends BaseProduct {}
+
+// тип, що об'єднує всі товари
+export type ProductDetails = Phone | Tablet | Accessory;
+
+// інтерфейс для виводу на UI
 export interface Product {
   id: number;
   category: string;
@@ -46,6 +55,6 @@ export interface Product {
   capacity: string;
   color: string;
   ram: string;
-  year: number;
+  year?: number;
   image: string;
 }
