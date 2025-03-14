@@ -48,13 +48,6 @@
 
   transition: top 0.3s ease-in-out, opacity 0.3s ease;
 
-
-  // &.open {
-  //   top: 0;
-  //   opacity: 1;
-  //   pointer-events: all;
-  // }
-
 }
 
 .burger__menu {
@@ -100,9 +93,12 @@
 
   display: flex;
   flex-grow: 1;
+
+  // align-self: stretch;
   align-items: center;
   justify-content: center;
 
+  height: auto;
   border: 1px solid $white;
 
   background-color: $white;
@@ -113,23 +109,5 @@
 
   &.is-active::after {
     transform: scaleX(1);
-  }
-}
-
-.icon {
-  display: block;
-
-  width: 16px;
-  height: 16px;
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-
-  &--heart {
-    background-image: url(/img/icons/Heart.svg);
-  }
-  &--cart {
-    background-image: url(/img/icons/Cart.svg);
   }
 }

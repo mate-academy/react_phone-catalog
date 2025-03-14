@@ -19,7 +19,9 @@ export const HeartIcon: React.FC<Props> = ({
 
   return (
     <div
-      className={classNames(styles.icon__heart, className)}
+      className={classNames(styles.icon__heart, className, {
+        [styles.border__selected]: isSelected,
+      })}
       onClick={handleHeartClick}
     >
       <svg

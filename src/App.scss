@@ -32,6 +32,10 @@ html, body {
   font-size: 12px;
 
   background-color: #fff;
+
+  &:has(.menu__open) {
+    overflow: hidden;
+  }
 }
 
 .App {
@@ -40,12 +44,12 @@ html, body {
   // height: 100%;
   flex-direction: column;
   min-height: 100vh;
-  
+
   // overflow: hidden;
 
-  &:has(.menu__open) {
-    overflow: hidden;
-  }
+  // &:has(.menu__open) {
+  //   overflow: hidden;
+  // }
 }
 
 .menu__open {

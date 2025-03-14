@@ -2,6 +2,14 @@
 
 .main__title {
   padding-block: 56px;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  @include on-mobile {
+    padding-block: 24px;
+  }
 }
 
 .main__content {

@@ -20,10 +20,8 @@ type Action =
         accessories: Accessories[];
       };
     }
-  | { type: 'addFavourite'; payload: Product }
-  | { type: 'removeFavourite'; payload: number }
-  | { type: 'addToCart'; payload: Product }
-  | { type: 'removeFromCart'; payload: number };
+  | { type: 'toggleFavourite'; payload: Product }
+  | { type: 'toggleCart'; payload: Product };
 
 interface State {
   products: Product[];
@@ -44,27 +42,19 @@ function reducer(state: State, action: Action) {
         tablets: action.payload.tablets,
         accessories: action.payload.accessories,
       };
-    case 'addFavourite':
+    case 'toggleFavourite':
       return {
         ...state,
-        favourites: [...state.favourites, action.payload],
+        favourites: state.favourites.includes(action.payload)
+          ? state.favourites.filter(id => id !== action.payload)
+          : [...state.favourites, action.payload],
       };
-    case 'removeFavourite':
+    case 'toggleCart':
       return {
         ...state,
-        favourites: state.favourites.filter(
-          product => product.id !== action.payload,
-        ),
-      };
-    case 'addToCart':
-      return {
-        ...state,
-        cart: [...state.cart, action.payload],
-      };
-    case 'removeFromCart':
-      return {
-        ...state,
-        cart: state.cart.filter(product => product.id !== action.payload),
+        cart: state.cart.includes(action.payload)
+          ? state.cart.filter(id => id !== action.payload)
+          : [...state.cart, action.payload],
       };
     default:
       return state;
