@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useState } from 'react';
 import { Gadget } from '../shared/types/Gadget';
 import style from './GadgetsCollection.module.scss';
 import { ProductsList } from '../shared/ProductsList';
@@ -9,6 +9,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useTheme } from '../shared/context/ThemeContext';
 import { useTranslation } from 'react-i18next';
+import { debounce } from 'lodash';
 
 type Props = {
   gadgets: Gadget[];
@@ -25,12 +26,34 @@ export const GadgetsCollection: React.FC<Props> = ({
   const { theme } = useTheme();
   const { t } = useTranslation();
   const perPage = searchParams.get('perPage') || 'all';
+  const query = searchParams.get('query') || '';
   const page = Number(searchParams.get('page')) || 1;
   const itemsPerPage = perPage === 'all' ? gadgets.length : Number(perPage);
-  const totalPages = Math.ceil(gadgets.length / itemsPerPage);
+  const [searchValue, setSearchValue] = useState(query);
+  const filteredGadgets = gadgets.filter(gadget =>
+    gadget.name.toLowerCase().includes(query.toLowerCase()),
+  );
+  const totalPages = Math.ceil(filteredGadgets.length / itemsPerPage);
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const visibleGadgets = gadgets.slice(startIndex, endIndex);
+  const visibleGadgets = filteredGadgets.slice(startIndex, endIndex);
+
+  const updateSearchParams = debounce((value: string) => {
+    if (value) {
+      searchParams.set('query', value);
+    } else {
+      searchParams.delete('query');
+    }
+
+    setSearchParams(searchParams);
+  }, 500);
+
+  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    setSearchValue(value);
+    updateSearchParams(value);
+  };
 
   const handlePageChange = (newPage: number) => {
     if (newPage === 1) {
@@ -67,8 +90,27 @@ export const GadgetsCollection: React.FC<Props> = ({
       <div className={style.collection__selects}>
         <SortSelect />
         <ItemsPerPageSelect />
+        <div className={style.collection__wrapper}>
+          <label className={style.collection__label} htmlFor="search">
+            {t('enter name')}
+          </label>
+          <input
+            type="text"
+            id="search"
+            placeholder={t('search')}
+            value={searchValue}
+            onChange={handleQueryChange}
+            className={style.collection__query}
+          />
+        </div>
       </div>
-      <ProductsList products={visibleGadgets} discount={true} />
+      {filteredGadgets.length === 0 ? (
+        <p className={style.collection__error}>
+          {t(`no-item-${category.toLowerCase()}`)}
+        </p>
+      ) : (
+        <ProductsList products={visibleGadgets} discount={true} />
+      )}
       {totalPages > 1 && (
         <div className={style.pagination}>
           <button

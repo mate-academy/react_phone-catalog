@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useNavigate } from 'react-router-dom';
 import style from './Cart.module.scss';
 import { useCart } from '../shared/context/CartContext';
@@ -5,6 +6,7 @@ import { useProducts } from '../shared/context/ProductsContext';
 import { useState } from 'react';
 import { Modal } from './Modal';
 import { useTheme } from '../shared/context/ThemeContext';
+import { t } from 'i18next';
 
 export const Cart = () => {
   const navigate = useNavigate();
@@ -43,13 +45,13 @@ export const Cart = () => {
           <img src="./icons/arrow-left.png" alt="Back" />
         </div>
         <span className={style.back__word} onClick={() => navigate(-1)}>
-          Back
+          {t('back')}
         </span>
       </div>
-      <h1 className={style.title}>Cart</h1>
+      <h1 className={style.title}>{t('cart')}</h1>
       {!products.length && (
         <div className={style.warning}>
-          <p className={style.warning__message}>Your cart is empty</p>
+          <p className={style.warning__message}>{t('Your cart is empty')}</p>
         </div>
       )}
       {products.length > 0 && (
@@ -119,12 +121,14 @@ export const Cart = () => {
           </div>
           <div className={style.cart__price}>
             <p className={style.cart__total}>${totalPrice}</p>
-            <p className={style.cart__count}>Total for {totalQuantity} items</p>
+            <p className={style.cart__count}>
+              {t('Total for')} {totalQuantity} {t('items')}
+            </p>
             <button
               className={style.cart__checkout}
               onClick={() => setIsModalOpen(true)}
             >
-              Checkout
+              {t('checkout')}
             </button>
           </div>
         </div>

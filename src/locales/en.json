@@ -6,7 +6,7 @@
     "accessories": "ACCESSORIES"
   },
 
-  "welcomeMessage": "Welcome to Nice Gadgets store!",
+  "welcomeMessage": "Product Catalog",
   "newBrandMessage": "Brand new models",
   "hotPricesMessage": "Hot prices",
   "shopByCategory": "Shop by category",
@@ -106,7 +106,7 @@
     "Cinematic Mode": "Film like a pro with exclusive access to the depth-of-field effect of Cinema mode, now on both the Wide and Telephoto cameras. Add focus transitions for a creative look, and easily switch between cameras to capture more of the moment.",
     "A15 Bionic": "A15 Bionic is the fastest chip ever in a smartphone. It powers incredible experiences in photography, video, gaming, and more — all while delivering great battery life. And it enables the most advanced machine learning capabilities in any smartphone for next-level experiences.",
     "ProMotion": "ProMotion technology automatically adjusts the display to the movement on your screen, for more fluid scrolling, greater responsiveness, and smoother motion — and a battery that lasts all day.",
-    "Experience__incredible": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease.",
+    "apple-ipad-pro": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease.",
     "Stunning Liquid Retina Display": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity.",
     "Versatile Camera System": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance.",
     "Thin, Light, and Powerful": "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go.Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks.",
@@ -116,7 +116,7 @@
     "A15 Bionic Chip and Neural Engine": "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play.Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini.",
     "Advanced Cameras and Center Stage": "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos.The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic.",
     "Versatile and Affordable": "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience.With its large 10.2-inch Retina display, it provides a great viewing experience for all your content.",
-    "Experience__powerful": "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly.From gaming to editing documents, the iPad 10.2 can handle it all with ease.",
+    "apple-ipad-10": "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly.From gaming to editing documents, the iPad 10.2 can handle it all with ease.",
     "Apple Pencil and Smart Keyboard Support": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard.The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist.",
     "Compact and Powerful": "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity.With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly.",
     "Retina Display and True Tone": "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience.From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details.",
@@ -135,7 +135,24 @@
     "Fitness tracking": "The Apple Watch SE offers comprehensive fitness tracking features, including activity tracking, heart rate monitoring, and built-in GPS for tracking your outdoor workouts.",
     "Fitness and health tracking": "The Apple Watch SE helps you stay active and monitors your health with features like heart rate monitoring, activity tracking, and built-in GPS for tracking your outdoor workouts.",
     "Stay connected": "With cellular and Wi-Fi connectivity, you can stay connected on the go. Make and receive calls, send messages, stream music, and access Siri right from your wrist."
-  }
+  },
+
+  "techSpecs": "Tech specs",
+  "builtInMemory": "Built in memory",
+  "camera": "Camera",
+  "zoom": "Zoom",
+  "cell": "Cell",
+  "You may also like": "You may also like",
+  "favourites": "Favourites",
+  "cart": "Cart",
+  "Your cart is empty": "Your cart is empty",
+  "Total for": "Total for",
+  "checkout": "Checkout",
+  "no-item-phones": "There are no phones matching the query",
+  "no-item-tablets": "There are no tablets matching the query",
+  "no-item-accessories": "There are no accessories matching the query",
+  "search": "Search",
+  "enter name": "Enter name"
 
 
 

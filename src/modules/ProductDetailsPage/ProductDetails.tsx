@@ -59,10 +59,6 @@ export const ProductDetails = () => {
     );
   }
 
-  const getTextKey = (text: string) => {
-    return text.split(' ').slice(0, 2).join('_');
-  };
-
   return (
     <div className={style.container}>
       <div className={style.breadcrumbs}>
@@ -175,27 +171,29 @@ export const ProductDetails = () => {
                 {t(`titles.${item.title}`)}
               </h3>
               <p className={style.about__text}>
-                {t(`texts.${item.title || getTextKey(item.text[0])}`)}
+                {t(
+                  `texts.${item.title.includes('Powerful Performance') ? product.id.split('-').slice(0, 3).join('-') : item.title}`,
+                )}
               </p>
             </div>
           ))}
         </div>
         <div className={style.tech}>
-          <h2 className={style.subtitle}>Tech specs</h2>
+          <h2 className={style.subtitle}>{t('techSpecs')}</h2>
           <div className={style.tech__info}>
             <div className={style.tech__keys}>
-              <span>Screen</span>
-              <span>Resolution</span>
-              <span>Processor</span>
-              <span>RAM</span>
-              <span>Built in memory</span>
+              <span>{t('screen')}</span>
+              <span>{t('resolution')}</span>
+              <span>{t('processor')}</span>
+              <span>{t('RAM')}</span>
+              <span>{t('builtInMemory')}</span>
               {product?.category !== 'accessories' && (
                 <>
-                  <span>Camera</span>
-                  <span>Zoom</span>
+                  <span>{t('camera')}</span>
+                  <span>{t('zoom')}</span>
                 </>
               )}
-              <span>Cell</span>
+              <span>{t('cell')}</span>
             </div>
             <div className={style.tech__values}>
               <span>{product?.screen}</span>

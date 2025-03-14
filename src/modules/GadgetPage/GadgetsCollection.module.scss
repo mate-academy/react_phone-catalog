@@ -33,6 +33,37 @@
     align-items: center;
     gap: 16px;
   }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__label {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: $grey-color;
+  }
+
+  &__query {
+    border: 1px solid var(--standard-color);
+    padding: 10px 40px 10px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--hover-color);
+    background-color: var(--default-color);
+
+    &:hover {
+      border: 1px solid $grey-color;
+    }
+
+    &:focus {
+      border: 1px solid var(--hover-color);
+      outline: none;
+    }
+  }
 }
 
 .title {

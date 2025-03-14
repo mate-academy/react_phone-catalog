@@ -1,8 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useEffect, useRef, useState } from 'react';
 import { Product } from '../shared/types/Product';
 import style from './SuggestedProducts.module.scss';
 import Slider from 'react-slick';
 import { ProductItem } from '../shared/ProductItem';
+import { t } from 'i18next';
 
 export const SuggestedProducts = () => {
   const getSuggestedProducts = async (count: number) => {
@@ -69,7 +71,7 @@ export const SuggestedProducts = () => {
   return (
     <div className={style.suggested}>
       <div className={style.header}>
-        <h2 className={style.title}>You may also like</h2>
+        <h2 className={style.title}>{t('You may also like')}</h2>
         <div className={style.controls}>
           <button
             className={style.prev}
