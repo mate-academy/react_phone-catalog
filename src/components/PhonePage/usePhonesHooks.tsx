@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ProductDetails } from '../../types/ProductDetails';
+import { ProductDetails } from '../../types/ProductTypes';
 import { fetchAllProducts } from '../../utils/api';
 interface DropDownOption {
   value: string;

@@ -1,32 +1,30 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useEffect, useState } from 'react';
-import { ProductDetails } from '../../types/ProductDetails';
+import { ProductDetails } from '../../types/ProductTypes';
 import './ProductInformation.scss';
 import { fetchAllProducts } from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export const useInfoHook = () => {
-  const { productId } = useParams<{ productId: string }>(); // Отримуємо productId з URL
+  const { productId, category } = useParams<{
+    productId: string;
+    category: string;
+  }>();
   const [phonesInfo, setPhonesInfo] = useState<ProductDetails[]>([]);
   const [selectedPhone, setSelectedPhone] = useState<ProductDetails | null>(
     null,
   );
   const [loading, setLoading] = useState(true);
-  // const { pathname } = useLocation(); // URL
   const navigate = useNavigate(); // повернення на попередню сторінку
   const [mainImage, setMainImage] = useState<string>('');
   const [selecredColor, setSelectedColor] = useState<string | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<string | null>(null);
-  // const urlArr = pathname.split('-'); // URL
-
-  // const colorFrom = urlArr[urlArr.length - 1]; // URL
 
   useEffect(() => {
     setLoading(true);
     fetchAllProducts()
       .then(data => {
         setPhonesInfo(data);
-
         const foundPhone = data.find(phone => phone.id === productId);
 
         if (foundPhone) {
@@ -41,31 +39,37 @@ export const useInfoHook = () => {
       });
   }, [productId]);
 
+  const normalizeColor = (color: string) => {
+    if (color.length > 1) {
+      return color.split(' ').join('-');
+    }
+
+    return color;
+  };
+
   // URL
   const updateUrl = (namespaceId: string, color: string, memory: string) => {
-    const newUrl = `/phones/${namespaceId}-${memory.toLowerCase()}-${color}`;
+    const normalizedColor = normalizeColor(color);
+    const newUrl = `/${category}/${namespaceId}-${memory.toLowerCase()}-${normalizedColor}`;
 
     navigate(newUrl);
   };
 
+  // зміни кольору
   const handleChangeColor = (color: string) => {
     if (!selectedMemory || !selectedPhone) {
       return;
     }
 
-    setSelectedColor(color);
+    const normalizedColor = normalizeColor(color);
 
-    // const newPhone = phonesInfo.find(phone => phone.color === color);
-
-    // if (newPhone) {
-    //   setSelectedPhone(newPhone);
-    // }
+    setSelectedColor(normalizedColor);
 
     const newPhone = phonesInfo.find(
       phone =>
         phone.capacity === selectedMemory &&
         phone.namespaceId === selectedPhone?.namespaceId &&
-        phone.color === selecredColor,
+        phone.color === normalizedColor,
     );
 
     if (newPhone) {
@@ -73,15 +77,16 @@ export const useInfoHook = () => {
       setMainImage(newPhone.images[0]);
     }
 
-    updateUrl(selectedPhone.namespaceId, color, selectedMemory);
+    updateUrl(selectedPhone!.namespaceId, normalizedColor, selectedMemory!);
   };
 
+  // зміни пам'яті
   const handleChangeMemory = (memory: string) => {
-    // const newPhone = phonesInfo.find(phone => phone.capacity === memory);
+    if (!selecredColor || !selectedPhone) {
+      return;
+    }
 
-    // if (newPhone) {
-    //   setSelectedPhone(newPhone);
-    // }
+    setSelectedMemory(memory);
 
     const newPhone = phonesInfo.find(
       phone =>
@@ -95,9 +100,7 @@ export const useInfoHook = () => {
       setMainImage(newPhone.images[0]);
     }
 
-    if (selecredColor && memory) {
-      updateUrl(selectedPhone!.namespaceId, selecredColor, memory);
-    }
+    updateUrl(selectedPhone!.namespaceId, selecredColor!, memory);
   };
 
   const techInfo = selectedPhone
@@ -107,8 +110,8 @@ export const useInfoHook = () => {
         { title: 'Processor', value: selectedPhone.processor },
         { title: 'RAM', value: selectedPhone.ram },
         { title: 'Built in memory', value: selectedPhone.capacity },
-        { title: 'Camera', value: selectedPhone.camera },
-        { title: 'Zoom', value: selectedPhone.zoom },
+        { title: 'Camera', value: selectedPhone.camera || null },
+        { title: 'Zoom', value: selectedPhone.zoom || null },
         { title: 'Cell', value: selectedPhone.cell },
       ]
     : [];

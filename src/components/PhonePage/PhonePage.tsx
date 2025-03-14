@@ -7,7 +7,7 @@ import arrow from '../../../image/arrow.svg';
 import { usePhonesHooks } from './usePhonesHooks';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ProductDetails } from '../../types/ProductDetails';
+import { ProductDetails } from '../../types/ProductTypes';
 import { fetchAllProducts } from '../../utils/api';
 export const PhonesPage = () => {
   const path = useLocation();

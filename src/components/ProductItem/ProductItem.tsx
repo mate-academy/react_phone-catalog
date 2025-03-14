@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductDetails } from '../../types/ProductDetails';
+import { ProductDetails } from '../../types/ProductTypes';
 import { NavLink } from 'react-router-dom';
 import like from '../../../image/heart.svg';
 import './ProductItem.scss';

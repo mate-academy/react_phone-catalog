@@ -10,7 +10,7 @@ import { ProductSlider } from '../ProductCard/ProductCard';
 import { fetchAllProducts } from '../../utils/api';
 import { useParams } from 'react-router-dom';
 import { NameSlider } from '../../nameslider';
-import { ProductDetails } from '../../types/ProductDetails';
+import { ProductDetails } from '../../types/ProductTypes';
 
 export const ProductInformation: React.FC = () => {
   const { category } = useParams<{ category: string }>();
@@ -218,7 +218,6 @@ export const ProductInformation: React.FC = () => {
           </div>
 
           <div className="">
-            <h1 className="">You may also like</h1>
             <ProductSlider
               products={products}
               WithAdditionalPrice={true}
