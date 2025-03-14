@@ -1,10 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import style from './PicturesSlider.module.scss';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const PicturesSlider = () => {
+  const { t } = useTranslation();
   const images = [
     'img/banner-phones.png',
     'img/banner-tablets.jpg',
@@ -26,7 +29,7 @@ export const PicturesSlider = () => {
 
   return (
     <>
-      <h1 className={style.title}>Product Catalog</h1>
+      <h1 className={style.title}>{t('welcomeMessage')}</h1>
       <div className={style.slider}>
         <button
           className={style.arrowLeft}
