@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import style from './ProductDetails.module.scss';
 import { useProducts } from '../shared/context/ProductsContext';

@@ -5,12 +5,13 @@ import { useProducts } from '../shared/context/ProductsContext';
 import { ProductsList } from '../shared/ProductsList';
 import style from './FavouriteProductsList.module.scss';
 import { useTheme } from '../shared/context/ThemeContext';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 export const FavouriteProductsList = () => {
   const { favourites } = useFavourites();
   const { products } = useProducts();
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const favouriteProducts = products.filter(product =>
     favourites.includes(product.id),
   );
