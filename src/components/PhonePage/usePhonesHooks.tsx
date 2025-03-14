@@ -13,6 +13,7 @@ export const usePhonesHooks = () => {
   const [sortBy, setSortBy] = useState('Newest'); // початкове сортування
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const sortParam = searchParams.get('sort');
@@ -23,15 +24,25 @@ export const usePhonesHooks = () => {
   }, [searchParams]);
 
   useEffect(() => {
-    setLoading(true);
-    fetchAllProducts()
-      .then(data => {
-        setPhones(data.filter(dat => dat.category === 'phones'));
-        // console.log(phones);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const timeout = setTimeout(() => {
+      fetchAllProducts()
+        .then(data => {
+          setPhones(data.filter(dat => dat.category === 'phones'));
+          setError(null);
+        })
+        .catch(() => {
+          setError(
+            'Oops, something went wrong, please check your connection😽',
+          );
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
   //функція для сортування
@@ -80,6 +91,7 @@ export const usePhonesHooks = () => {
   return {
     phones,
     loading,
+    error,
     currentItems,
     currentPage,
     totalPages,

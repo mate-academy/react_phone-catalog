@@ -14,28 +14,29 @@ export const HomePage = () => {
   const [phones, setPhones] = useState<ProductDetails[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  // const [errorTimeout, setErrorTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
 
     const timeout = setTimeout(() => {
       fetchAllProducts()
         .then(data => {
-          if (!data || data.length === 0) {
-            throw new Error('Error');
-          }
-
+          // throw new Error('Error');
+          // console.log('satrt');
           setPhones(data.filter(dat => dat.category === 'phones'));
           setError(null);
         })
         .catch(() => {
-          setError('Oops, something went wrong, please check your connection');
+          // console.log('casda');
+          setError(
+            'Oops, something went wrong, please check your connection🫶💻',
+          );
         })
         .finally(() => {
+          // console.log('final');
           setLoading(false);
         });
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearTimeout(timeout);
@@ -45,7 +46,11 @@ export const HomePage = () => {
   return (
     <main className="main__homepage">
       <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
-      {loading && <Loader />}
+      {loading && (
+        <div className="loader-container">
+          <Loader />
+        </div>
+      )}
       {error && <div className="error-message">{error}</div>}
       {!loading && !error && (
         <>

@@ -92,10 +92,9 @@ export interface Accessory {
   cell: string[];
 }
 
-// тип, що об'єднує всі товари
+// тип що об'єднує всі товари
 export type ProductDetails = Phone | Tablet | Accessory;
 
-// інтерфейс для виводу на UI
 export interface Product {
   id: number;
   category: string;

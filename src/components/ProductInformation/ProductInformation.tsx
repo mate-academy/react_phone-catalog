@@ -63,7 +63,7 @@ export const ProductInformation: React.FC = () => {
             ? 'Tablets'
             : category === 'accessories'
               ? 'Accessories'
-              : 'Phones'}
+              : 'Mobile phones'}
 
           {productId && (
             <>
@@ -83,7 +83,9 @@ export const ProductInformation: React.FC = () => {
       </div>
 
       {loading ? (
-        <Loader />
+        <div className="loader-container">
+          <Loader />
+        </div>
       ) : selectedPhone ? (
         <div key={selectedPhone.id}>
           <h2 className="productInfo__title">{selectedPhone.name}</h2>

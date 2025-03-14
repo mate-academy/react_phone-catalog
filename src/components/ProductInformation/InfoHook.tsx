@@ -21,22 +21,27 @@ export const useInfoHook = () => {
   const [selectedMemory, setSelectedMemory] = useState<string | null>(null);
 
   useEffect(() => {
-    setLoading(true);
-    fetchAllProducts()
-      .then(data => {
-        setPhonesInfo(data);
-        const foundPhone = data.find(phone => phone.id === productId);
+    const timeout = setTimeout(() => {
+      fetchAllProducts()
+        .then(data => {
+          setPhonesInfo(data);
+          const foundPhone = data.find(phone => phone.id === productId);
 
-        if (foundPhone) {
-          setSelectedPhone(foundPhone);
-          setMainImage(foundPhone.images[0]);
-          setSelectedColor(foundPhone.color);
-          setSelectedMemory(foundPhone.capacity);
-        }
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+          if (foundPhone) {
+            setSelectedPhone(foundPhone);
+            setMainImage(foundPhone.images[0]);
+            setSelectedColor(foundPhone.color);
+            setSelectedMemory(foundPhone.capacity);
+          }
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [productId]);
 
   const normalizeColor = (color: string) => {

@@ -9,15 +9,17 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ProductDetails } from '../../types/ProductTypes';
 import { fetchAllProducts } from '../../utils/api';
+import { Loader } from '../Loader/Loader';
 export const PhonesPage = () => {
   const path = useLocation();
   const currentCategory = path.pathname.slice(1);
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
+  // const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<ProductDetails[]>([]);
   const {
     phones,
     loading,
-    // currentItems,
+    error,
     currentPage,
     totalPages,
     setCurrentPage,
@@ -71,6 +73,11 @@ export const PhonesPage = () => {
         {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
       </h1>
       <h1 className="mobile__models">{`${phones.length} models`}</h1>
+      {loading && (
+        <div className="loader-container">
+          <Loader />
+        </div>
+      )}
       {!loading && (
         <>
           <div className="mobile__choice">
