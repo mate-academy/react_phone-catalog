@@ -1,55 +1,67 @@
-@import './styles/variables.module';
-@import './styles/mixins';
+@import './shared/styles/variables.module';
+@import './shared/styles/mixins';
 
 @font-face {
   font-family: Mont;
-  src: url(/fonts/Mont-Regular.otf) format('opentype');
   font-weight: 400;
   font-style: normal;
+  src: url(/fonts/Mont-Regular.otf) format('opentype');
 }
 
 @font-face {
   font-family: Mont;
-  src: url(/fonts/Mont-SemiBold.otf) format('opentype');
   font-weight: 600;
+  src: url(/fonts/Mont-SemiBold.otf) format('opentype');
 }
 
 @font-face {
   font-family: Mont;
-  src: url(/fonts/Mont-Bold.otf) format('opentype');
   font-weight: 700;
   font-style: normal;
+  src: url(/fonts/Mont-Bold.otf) format('opentype');
 }
 
 
 html, body {
+  scrollbar-width: none;
+
+  margin: 0;
+  padding: 0;
+
   font-family: Mont, sans-serif;
   font-size: 12px;
 
-  scrollbar-width: none;
   background-color: #fff;
 }
 
 .App {
-  min-height: 100vh;
-
-  // height: 100vh;
   display: flex;
-  flex-direction: column;
 
-  &__menu-open {
+  // height: 100%;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  // overflow: hidden;
+
+  &:has(.menu__open) {
     overflow: hidden;
   }
 }
 
+.menu__open {
+    pointer-events: all !important;
+  top: 0 !important;
+    opacity: 1 !important;
+}
+
 a {
-  text-decoration: none;
   font-family: Mont, sans-serif;
+  text-decoration: none;
 }
 
 h1 {
-  font-weight: 700;
   font-size: 48px;
+  font-weight: 700;
   color: $primary-color;
 
   @include on-mobile {
@@ -59,8 +71,10 @@ h1 {
 }
 
 h2 {
-  font-weight: 700;
   font-size: 32px;
+  font-weight: 700;
+
+  // line-height: 128%;
   color: $primary-color;
 
   @include on-mobile {
@@ -69,22 +83,31 @@ h2 {
 }
 
 h3 {
-  font-weight: 700;
   font-size: 22px;
+  font-weight: 700;
+
+  // line-height: 128%;
   color: $primary-color;
 
   @include on-mobile {
-    font-weight: 600;
     font-size: 20px;
+    font-weight: 600;
   }
 }
 
 h4 {
-  font-weight: 600;
   font-size: 20px;
+  font-weight: 600;
   color: $primary-color;
 
   @include on-mobile {
     font-size: 16px;
   }
+}
+
+.button_text {
+  font-size: 14px;
+  font-weight: 600;
+  color: $white;
+
 }

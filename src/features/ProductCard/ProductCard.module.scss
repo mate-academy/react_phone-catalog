@@ -1,0 +1,86 @@
+@import '../../shared/styles/variables.module';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  box-sizing: border-box;
+  max-width: 272px;
+  height: 100%;
+  padding: 32px;
+  border: 1px solid $elements-color;
+
+  color: $primary-color;
+
+  &__img {
+    max-width: 100%;
+    
+    // margin-bottom: 24px;
+    height: 196px;
+    object-fit: contain;
+
+    // height: auto;
+  }
+
+  &__title {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+
+    height: 40px;
+    margin-top: 16px;
+
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__crossed {
+    font-weight: 400;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__line {
+    height: 1px;
+    margin: 0;
+    background-color: $elements-color;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-bottom: 8px;
+    padding-block: 8px;
+
+    font-weight: 600;
+    color: $secondary-color;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    span {
+      color: $primary-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    button {
+      flex-grow: 1;
+    }
+  }
+}

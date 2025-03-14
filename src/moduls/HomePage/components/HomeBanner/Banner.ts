@@ -1,4 +1,4 @@
-import { BASE_URL } from '../../../../utils/httpClient';
+import { BASE_URL } from '../../../../shared/utils/httpClient';
 
 export const images = {
   desktop: [

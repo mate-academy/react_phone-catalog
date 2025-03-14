@@ -1,0 +1,20 @@
+@import '../../../styles/variables.module';
+
+.icon__heart {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $icon-color;
+
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}

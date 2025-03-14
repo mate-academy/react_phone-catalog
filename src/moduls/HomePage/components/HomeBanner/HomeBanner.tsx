@@ -9,8 +9,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './SwiperStyles.scss';
 
-import styles from './HomeBanner.module.scss';
 import { images } from './Banner';
+import { ArrowIcon } from '../../../../shared/components/Icons/Arrow/ArrowIcon';
+
+import styles from './HomeBanner.module.scss';
 
 export const HomeBanner = () => {
   const isMobile = useMediaQuery({ maxWidth: 639 });
@@ -19,7 +21,7 @@ export const HomeBanner = () => {
   return (
     <section className={styles.home__banner}>
       <h2 className="is-hidden">Home banner</h2>
-      <button className={styles.prevButton}></button>
+      <ArrowIcon direction="left" className={styles.prevButton} />
       <div className={styles.banner}>
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
@@ -49,7 +51,7 @@ export const HomeBanner = () => {
           ))}
         </Swiper>
       </div>
-      <button className={styles.nextButton}></button>
+      <ArrowIcon direction="right" className={styles.nextButton} />
       <div className="custom-pagination"></div>
     </section>
   );

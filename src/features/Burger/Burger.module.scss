@@ -1,0 +1,135 @@
+@import '../../shared/styles/variables.module';
+
+%underline {
+  position: relative;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    transform: scaleX(0);
+
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    background-color: $primary-color;
+
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.burger {
+  pointer-events: none;
+
+  position: absolute;
+  z-index: 2;
+  top: -100%;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  height: calc(100vh - $header-tablet-height);
+  margin-top: $header-tablet-height;
+  padding-top: 24px;
+  border-top: 1px solid $elements-color;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+
+  opacity: 0;
+  background-color: $white;
+
+  transition: top 0.3s ease-in-out, opacity 0.3s ease;
+
+
+  // &.open {
+  //   top: 0;
+  //   opacity: 1;
+  //   pointer-events: all;
+  // }
+
+}
+
+.burger__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.burger__item {
+  @extend %underline;
+
+  padding: 0;
+
+  line-height: 27px;
+  color: $secondary-color;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover,
+  &.is-active  {
+    color: $primary-color;
+  }
+
+  &.is-active::after {
+    transform: scaleX(1);
+  }
+}
+
+.burger__buttons {
+  display: flex;
+  gap: 1px;
+
+  height: 64px;
+  margin-top: auto;
+  border-top: 1px solid $elements-color;
+
+  background-color: $elements-color;
+}
+
+.button {
+  @extend %underline;
+
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid $white;
+
+  background-color: $white;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &.is-active::after {
+    transform: scaleX(1);
+  }
+}
+
+.icon {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &--heart {
+    background-image: url(/img/icons/Heart.svg);
+  }
+  &--cart {
+    background-image: url(/img/icons/Cart.svg);
+  }
+}

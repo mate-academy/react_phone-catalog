@@ -1,0 +1,23 @@
+@import '../../../styles/variables.module';
+
+.badgeCounter {
+    position: absolute;
+    top: 23%;
+    left: 52%;
+
+  display: block;
+
+    box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+    border: 1px solid $white;
+    border-radius: 50%;
+
+    font-family: Mont, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: $white;
+    text-align: center;
+
+    background-color: $red;
+}

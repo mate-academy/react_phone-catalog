@@ -1,11 +1,11 @@
-@import '../../../../styles/mixins';
-@import '../../../../styles/variables.module';
+@import '../../../../shared/styles/mixins';
+@import '../../../../shared/styles/variables.module';
 
 .home__banner {
   @include grid-page;
 
-  row-gap: 8px;
   grid-template-rows: 400px auto;
+  row-gap: 8px;
 
   @include on-tablet {
     grid-template-rows: 189px auto;
@@ -25,28 +25,8 @@
   }
 }
 
-.prevButton {
-  grid-column: 1/2;
-  background-image: url(/img/icons/Arrow_Left.svg);
-}
-
-.nextButton {
-  grid-column: -1/-2;
-  background-image: url(/img/icons/Arrow_Right.svg);
-}
-
 .prevButton,
 .nextButton {
-  background-color: $white;
-  border: 1px solid $icon-color;
-  cursor: pointer;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  &:hover {
-    border-color: $primary-color;
-  }
-
   @include on-mobile {
     display: none;
   }
@@ -58,12 +38,12 @@
 }
 
 .swiper__slide {
+  overflow: hidden;
+  
   // background-color: #000;
   display: flex;
   justify-content: center;
-
   max-height: 400px;
-  overflow: hidden;
 
   @include on-tablet {
     max-height: 189px;
