@@ -1,10 +1,19 @@
 .slider {
   width: 100%;
-  height: 571px;
+  height: 498px;
+  padding-left: 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 24px;
+
+  @include tablet {
+    height: 577px;
+  }
+
+  @include desktop {
+    padding-inline: 32px;
+  }
 
   &__top {
     display: flex;
@@ -17,30 +26,40 @@
   &__slides {
     position: relative;
     width: 100%;
-    height: 571px;
+    height: 100%;
     overflow: hidden;
   }
 
   &__slide {
-    width: 100%;
-    height: 506px;
+    width: fit-content;
     position: absolute;
     top: 0;
     left: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 16px;
     background-color: #fff;
-    transform: translateX(200%);
-    transition: transform 0.5s ease-in;
+    transition: transform 0.2s ease-in;
 
-    &--active {
-      transform: translate(0);
+    @include tablet {
+      height: 512px;
     }
 
-    &--viewed {
-      transform: translate(-200%);
+    @include desktop {
+      height: 506px;
+      justify-content: center;
+      transform: translateX(200%);
+      width: 100%;
+      padding: 0;
+
+      &--active {
+        transform: translate(0);
+      }
+
+      &--viewed {
+        transform: translate(-200%);
+      }
     }
   }
 }

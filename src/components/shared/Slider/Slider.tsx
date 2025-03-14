@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { Product } from '../../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
-import classNames from 'classnames';
 
 type Props = {
   products: Product[];
@@ -11,14 +10,7 @@ type Props = {
 
 function createSlides(products: Product[], width: number): Product[][] {
   return products.reduce<Product[][]>((accum, product, index) => {
-    let step;
-    if (width < 640) {
-      step = 2;
-    } else if (width < 1199) {
-      step = 3;
-    } else {
-      step = 4;
-    }
+    const step = width < 1199 ? 20 : 4;
 
     const splitIndex = index % step;
     if (splitIndex === 0) {
@@ -39,6 +31,9 @@ export const Slider: React.FC<Props> = ({ products }) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const [offset, setOffset] = useState(0);
+  const [maxOffset, setMaxOffset] = useState<number>(0);
+
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
@@ -56,35 +51,66 @@ export const Slider: React.FC<Props> = ({ products }) => {
     setSlides(newSlides);
   }, [windowWidth]);
 
+  useEffect(() => {
+    if (slideRefs.current[0]) {
+      const slideWidth = slideRefs.current[0].offsetWidth;
+
+      setMaxOffset(-slideWidth + windowWidth - 50);
+    }
+  }, [windowWidth, slides]);
+
   const handlePrevSlide = () => {
-    if (activeSlideIndex > 0) {
+    const step = windowWidth > 640 ? 400 : 150;
+    if (activeSlideIndex > 0 && windowWidth > 1199) {
       const newActiveIndex = activeSlideIndex - 1;
 
       setActiveSlideIndex(newActiveIndex);
 
-      if (slideRefs.current[activeSlideIndex] && slideRefs.current[newActiveIndex]) {
+      if (
+        slideRefs.current[activeSlideIndex] &&
+        slideRefs.current[newActiveIndex]
+      ) {
+        slideRefs.current[activeSlideIndex].classList.remove(
+          'slider__slide--active',
+        );
 
-        slideRefs.current[activeSlideIndex].classList.toggle('slider__slide--active');
-
-        slideRefs.current[newActiveIndex].classList.toggle('slider__slide--active');
-        slideRefs.current[newActiveIndex].classList.toggle('slider__slide--viewed');
+        slideRefs.current[newActiveIndex].classList.remove(
+          'slider__slide--viewed',
+        );
+        slideRefs.current[newActiveIndex].classList.add(
+          'slider__slide--active',
+        );
       }
+    } else {
+      setOffset(prev => Math.min(prev + step, 0));
     }
   };
 
   const handleNextSlide = () => {
-    if (activeSlideIndex < slides.length - 1) {
+    const step = windowWidth > 640 ? 400 : 150;
+
+    if (activeSlideIndex < slides.length - 1 && windowWidth > 1199) {
       const newActiveIndex = activeSlideIndex + 1;
 
       setActiveSlideIndex(newActiveIndex);
 
-      if (slideRefs.current[activeSlideIndex] && slideRefs.current[newActiveIndex]) {
+      if (
+        slideRefs.current[activeSlideIndex] &&
+        slideRefs.current[newActiveIndex]
+      ) {
+        slideRefs.current[activeSlideIndex].classList.remove(
+          'slider__slide--active',
+        );
+        slideRefs.current[activeSlideIndex].classList.add(
+          'slider__slide--viewed',
+        );
 
-        slideRefs.current[activeSlideIndex].classList.toggle('slider__slide--active');
-        slideRefs.current[activeSlideIndex].classList.toggle('slider__slide--viewed');
-
-        slideRefs.current[newActiveIndex].classList.toggle('slider__slide--active');
+        slideRefs.current[newActiveIndex].classList.add(
+          'slider__slide--active',
+        );
       }
+    } else {
+      setOffset(prev => Math.max(prev - step, maxOffset));
     }
   };
 
@@ -96,14 +122,20 @@ export const Slider: React.FC<Props> = ({ products }) => {
         <div className="slider__buttons">
           <button
             className="slider__button--prev"
-            disabled={activeSlideIndex === 0}
+            disabled={
+              (windowWidth > 1199 && activeSlideIndex === 0) ||
+              (windowWidth < 1199 && offset === 0)
+            }
             onClick={handlePrevSlide}
           >
             prev
           </button>
           <button
             className="slider__button--next"
-            disabled={activeSlideIndex === slides.length - 1}
+            disabled={
+              (windowWidth > 1199 && activeSlideIndex === slides.length - 1) ||
+              (windowWidth < 1199 && offset === -maxOffset)
+            }
             onClick={handleNextSlide}
           >
             next
@@ -117,16 +149,21 @@ export const Slider: React.FC<Props> = ({ products }) => {
             <div
               key={i}
               ref={el => {
-                (slideRefs.current[i] = el)
-                if (i === 0) {
-                  slideRefs.current[i]?.classList.add('slider__slide--active')
+                slideRefs.current[i] = el;
+                if (i === 0 && windowWidth > 1199) {
+                  slideRefs.current[i]?.classList.add('slider__slide--active');
                 }
               }}
-              className={classNames('slider__slide', {
-              })}
+              className="slider__slide"
+              style={{
+                transform:
+                  windowWidth < 1199 ? `translateX(${offset}px)` : undefined,
+              }}
             >
               {slide &&
-                slide.map(card => <ProductCard key={card.id} product={card} />)}
+                slide.map(card => (
+                  <ProductCard key={card.id} product={card} slider={true} />
+                ))}
             </div>
           ))}
       </div>

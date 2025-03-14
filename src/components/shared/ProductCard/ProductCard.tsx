@@ -11,9 +11,10 @@ import favIcon from '../../../../public/icons/favourites.svg';
 
 type ProductCardProps = {
   product: Product;
+  slider?: boolean;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, slider }) => {
   const {
     id,
     name,
@@ -32,7 +33,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const isInCart = cartItems.some(item => item.id === id);
 
   return (
-    <div className="product product-card">
+    <div className={classNames("product product-card", {'product product-card--slider': slider})}>
       <img className="product__design" src={image} alt={`${name} design`} />
 
       <p className="product__name">{`${name}(iMT9G2FS/A)`}</p>

@@ -1,7 +1,7 @@
 .product {
   &-card {
     width: 100%;
-    max-width: 287px;
+    max-width: 288px;
     height: 439px;
     border: 1px solid $gray-elements;
     display: flex;
@@ -10,13 +10,26 @@
     gap: 8px;
     padding: 32px;
 
+    &--slider {
+      max-width: 212px;
+      height: 430px;
+    }
+
     @include tablet {
-      height: 512px;
+      height: 506px;
+
+      &--slider {
+        max-width: 237px;
+        height: 512px;
+      }
     }
 
     @include desktop {
       max-width: 272px;
-      height: 506px;
+
+      &--slider {
+        height: 500px;
+      }
     }
   }
 
