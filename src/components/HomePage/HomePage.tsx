@@ -15,32 +15,53 @@ export const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // useEffect(() => {
+  //   // setLoading(true);
+
+  //   const timeout = setTimeout(() => {
+  //     fetchAllProducts()
+  //       .then(data => {
+  //         // throw new Error('Error');
+  //         // console.log('satrt');
+  //         setPhones(data.filter(dat => dat.category === 'phones'));
+  //         setError(null);
+  //       })
+  //       .catch(() => {
+  //         // console.log('casda');
+  //         setError(
+  //           'Oops, something went wrong, please check your connection🫶💻',
+  //         );
+  //       })
+  //       .finally(() => {
+  //         // console.log('final');
+  //         setLoading(false);
+  //       });
+  //   }, 2000);
+
+  //   return () => {
+  //     clearTimeout(timeout);
+  //   };
+  // }, []);
+
   useEffect(() => {
-    // setLoading(true);
+    const fetchData = async () => {
+      try {
+        const data = await fetchAllProducts();
 
-    const timeout = setTimeout(() => {
-      fetchAllProducts()
-        .then(data => {
-          // throw new Error('Error');
-          // console.log('satrt');
-          setPhones(data.filter(dat => dat.category === 'phones'));
-          setError(null);
-        })
-        .catch(() => {
-          // console.log('casda');
-          setError(
-            'Oops, something went wrong, please check your connection🫶💻',
-          );
-        })
-        .finally(() => {
-          // console.log('final');
-          setLoading(false);
-        });
-    }, 2000);
-
-    return () => {
-      clearTimeout(timeout);
+        setPhones(data.filter(product => product.category === 'phones'));
+        setError(null);
+      } catch {
+        setError(
+          'Oops, something went wrong, please check your connection 🫶💻',
+        );
+      } finally {
+        setLoading(false);
+      }
     };
+
+    const timeout = setTimeout(fetchData, 2000);
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
