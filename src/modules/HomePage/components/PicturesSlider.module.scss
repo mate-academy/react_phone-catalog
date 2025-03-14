@@ -6,48 +6,57 @@
     font-size: 32px;
     line-height: 41px;
     font-weight: 800;
-    padding: 16px;
     color: var(--hover-color);
   }
 
   @include tablet {
     font-size: 48px;
     line-height: 56px;
-    padding: 24px;
-  }
-
-  @include laptop {
-    padding: 32px;
   }
 }
 
 .slider {
   @include mobile {
     position: relative;
-    // width: 100%;
     max-width: 1200px;
-    margin: auto;
   }
 
   @include tablet {
-    max-width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    height: 221px;
   }
 
   @include laptop {
-    max-width: 80%;
+    height: 432px;
+  }
+
+  &__wrapper {
+    // flex-grow: 1;
+    overflow: hidden;
+    text-align: center;
+    height: 100%;
   }
 
 }
 
 .image {
   @include mobile {
-    width: 100%;
+    // width: 100%;
   }
+
   @include tablet {
     display: block;
-    width: 95%;
+    max-width: calc(100% - 40px);
+    height: 100%;
     margin: 0 auto;
-    object-fit: contain;
+    object-fit: cover;
+  }
+
+  @include laptop {
+    max-width: 1040px;
+    min-height: 400px;
   }
 
 }
@@ -61,27 +70,11 @@
 
   @include tablet {
     display: block;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transform-origin: center;
     background-color: var(--default-color);
     border: 1px solid var(--standard-color);
     cursor: pointer;
-    padding: 18% 8px;
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: translateY(-50%) scale(1.1);
-    }
+    width: 32px;
+    height: 100%;
   }
-}
-
-.arrowLeft {
-  left: -7%;
-}
-
-.arrowRight {
-  right: -7%;
 }
 

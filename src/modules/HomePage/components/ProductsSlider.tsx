@@ -35,7 +35,7 @@ export const ProductsSlider: React.FC<Props> = ({
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    centerMode: true,
+    // centerMode: true,
     responsive: [
       {
         breakpoint: 1300,

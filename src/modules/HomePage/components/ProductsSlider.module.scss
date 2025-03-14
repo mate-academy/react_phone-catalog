@@ -3,8 +3,8 @@
 
 .products {
   @include mobile {
-    margin: 40px auto;
-    padding: 20px;
+    margin: 40px 0;
+    // padding: 20px;
     box-sizing: border-box;
   }
 }

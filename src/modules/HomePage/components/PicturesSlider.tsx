@@ -9,9 +9,9 @@ import { useTranslation } from 'react-i18next';
 export const PicturesSlider = () => {
   const { t } = useTranslation();
   const images = [
-    'img/banner-phones.png',
-    'img/banner-tablets.jpg',
-    'img/banner-accessories.png',
+    './img/banner-phones.png',
+    './img/gfgfh.png',
+    './img/banner-accessories.png',
   ];
 
   const sliderRef = useRef<Slider | null>(null);
@@ -37,13 +37,15 @@ export const PicturesSlider = () => {
         >
           <img src="icons/arrow-left.png" alt="Previous" />
         </button>
-        <Slider {...settings}>
-          {images.map((img, index) => (
-            <div key={index}>
-              <img src={img} alt={`slide-${index}`} className={style.image} />
-            </div>
-          ))}
-        </Slider>
+        <div className={style.slider__wrapper}>
+          <Slider {...settings}>
+            {images.map((img, index) => (
+              <div key={index}>
+                <img src={img} alt={`slide-${index}`} className={style.image} />
+              </div>
+            ))}
+          </Slider>
+        </div>
         <button
           className={style.arrowRight}
           onClick={() => sliderRef.current?.slickNext()}

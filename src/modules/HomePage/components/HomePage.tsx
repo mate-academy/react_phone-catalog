@@ -6,6 +6,7 @@ import { Footer } from './Footer';
 import { Header } from './Header';
 import { PicturesSlider } from './PicturesSlider';
 import { ProductsSlider } from './ProductsSlider';
+import style from './HomePage.module.scss';
 
 export const HomePage = () => {
   const { products } = useProducts();
@@ -18,19 +19,21 @@ export const HomePage = () => {
   return (
     <>
       <Header />
-      <PicturesSlider />
-      <ProductsSlider
-        title={t('newBrandMessage')}
-        productsToShow={newestProducts}
-        discount={false}
-      />
-      <Categories />
-      <ProductsSlider
-        title={t('hotPricesMessage')}
-        productsToShow={discountProducts}
-        discount={true}
-      />
-      <Footer />
+      <div className={style.container}>
+        <PicturesSlider />
+        <ProductsSlider
+          title={t('newBrandMessage')}
+          productsToShow={newestProducts}
+          discount={false}
+        />
+        <Categories />
+        <ProductsSlider
+          title={t('hotPricesMessage')}
+          productsToShow={discountProducts}
+          discount={true}
+        />
+        <Footer />
+      </div>
     </>
   );
 };
