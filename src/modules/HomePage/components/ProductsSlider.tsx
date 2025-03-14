@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect, useRef } from 'react';
 import style from './ProductsSlider.module.scss';
 // eslint-disable-next-line import/no-extraneous-dependencies
