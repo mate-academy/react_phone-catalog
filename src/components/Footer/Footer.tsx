@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
 
         <div className={style.backTop}>
           <div className={style.backTopContent}>
-            <a href="#" className={style.backTopLink}>
+            <a href="#header" className={style.backTopLink}>
               Back to top
               <div className={style.arrowTop}>
                 <img src={arrowTopImg} alt="Arrow top icon" className={style.arrowTopIcon} />

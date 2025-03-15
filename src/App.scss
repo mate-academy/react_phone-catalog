@@ -2,11 +2,17 @@
 @import './style/global';
 
 .App {
+  background-color: $background-color;
+  min-height: calc(100vh - 49px - 250px);
 
+  @include on-desctop {
+    min-height: calc(100vh - 65px - 100px);
+  }
 }
 
 .page {
   background-color: $background-color;
+
 }
 
 body {

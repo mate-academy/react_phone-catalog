@@ -3,14 +3,14 @@
 .footer {
   border-top: 1px solid $midle-gray-color;
 
-  margin-top: 64px;
+  // margin-top: 64px;
 
   @include on-large-desctop {
-    margin-top: 80px;
+    // margin-top: 80px;
   }
 
   @include on-tablet {
-    margin-top: 80px;
+    // margin-top: 80px;
   }
 }
 

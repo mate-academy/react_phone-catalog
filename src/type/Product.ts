@@ -3,7 +3,7 @@ type DescriptionIte = {
   text: string[];
 }
 
-export type Phone = {
+export type Product = {
   id: string;
   category: string;
   namespaceId: string;

@@ -11,11 +11,11 @@ import arrowLeft from '../../../../shared/assets/icons/chevron-arrow-left.svg';
 import arrowRight from '../../../../shared/assets/icons/chevron-arrow-right.svg';
 import phoneFromServer from '../../../../../public/api/phones.json';
 import { ProductCart } from '../../../../components/ProductCart/ProductCart';
-import { Phone } from '../../../../type/phone';
+import { Product } from '../../../../type/Product';
 import { useMediaQuery } from '@uidotdev/usehooks';
 
 export const NewModel: React.FC = () => {
-  const phones: Phone[] = phoneFromServer.slice(-8);
+  const phones: Product[] = phoneFromServer.slice(-8);
   const isTablet = useMediaQuery('(min-width: 640px)');
   const isDesctop = useMediaQuery('(min-width: 1200px)');
 
@@ -34,11 +34,11 @@ export const NewModel: React.FC = () => {
       <div className={style.top}>
         <h1 className={style.title}>Brand New Model</h1>
         <div className={style.navigation}>
-          <div id='swiper-new-brand-prev' className={style.navigationPrev}>
+          <div id="swiper-new-brand-prev" className={style.navigationPrev}>
             <img src={arrowLeft} alt="arrow left" className={style.arrowPrev} />
           </div>
 
-          <div id='swiper-new-brand-next' className={style.navigationNext}>
+          <div id="swiper-new-brand-next" className={style.navigationNext}>
             <img src={arrowRight} alt="arrow right" className={style.arrowNext} />
           </div>
         </div>
@@ -58,7 +58,7 @@ export const NewModel: React.FC = () => {
           <div className={style.slideContent}>
             {phones.map(phone => (
               <SwiperSlide key={phone.id}>
-                <ProductCart phone={phone} />
+                <ProductCart product={phone} isDiscount={false} key={phone.id}/>
               </SwiperSlide>
             ))}
           </div>

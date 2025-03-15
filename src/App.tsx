@@ -4,13 +4,14 @@ import React from 'react';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 
-
 export const App: React.FC = () => (
-  <div className='page'>
+  <div className="page">
     <Header />
+
     <div className="App">
       <Outlet />
     </div>
+
     <Footer />
   </div>
 );

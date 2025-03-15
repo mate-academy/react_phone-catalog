@@ -1,12 +1,19 @@
 @import '../../style/global';
 
+.header {
+  position: fixed;
+  width: 100%;
+
+  z-index: 100;
+}
+
 .wrapper {
   display: flex;
   align-items: center;
   border-bottom: 1px solid $midle-gray-color;
-  box-sizing: border-box;
 
   background-color: $background-color;
+
 }
 
 .headerLogo {
@@ -43,8 +50,11 @@
   line-height: 11px;
   letter-spacing: 4%;
   text-transform: uppercase;
+  padding-block: 18.5px;
 
-  padding-block: 26px;
+  @include on-desctop {
+    padding-block: 26px;
+  }
 }
 
 .userInetrface {
@@ -60,6 +70,7 @@
   padding: 16px;
   cursor: pointer;
   border-left: 1px solid $midle-gray-color;
+  position: relative;
 
   @include on-desctop {
     padding: 24px;
@@ -83,8 +94,6 @@
   line-height: 11px;
   letter-spacing: 4%;
   text-transform: uppercase;
-
-  padding-block: 26px;
 
   position: relative;
 
