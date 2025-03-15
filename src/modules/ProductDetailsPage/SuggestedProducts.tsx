@@ -27,16 +27,16 @@ export const SuggestedProducts = () => {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    const track = document.querySelector('.slick-track') as HTMLElement;
-    const list = document.querySelector('.slick-list') as HTMLElement;
+  // useEffect(() => {
+  //   const track = document.querySelector('.slick-track') as HTMLElement;
+  //   const list = document.querySelector('.slick-list') as HTMLElement;
 
-    if (track && list) {
-      track.style.transform = 'translateX(-20px)';
-      list.style.paddingLeft = '0';
-      list.style.paddingRight = '10%';
-    }
-  }, []);
+  //   if (track && list) {
+  //     track.style.transform = 'translateX(-20px)';
+  //     list.style.paddingLeft = '0';
+  //     list.style.paddingRight = '10%';
+  //   }
+  // }, []);
 
   const settings = {
     dots: false,
@@ -44,7 +44,7 @@ export const SuggestedProducts = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    centerMode: true,
+    // centerMode: true,
     responsive: [
       {
         breakpoint: 1300,
@@ -93,7 +93,7 @@ export const SuggestedProducts = () => {
             <ProductItem
               product={product}
               discount={true}
-              styles={{ width: '90%' }}
+              styles={{ width: '95%' }}
             />
           </div>
         ))}

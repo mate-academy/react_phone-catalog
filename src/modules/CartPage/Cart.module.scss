@@ -2,8 +2,14 @@
 @import '../shared/variables.scss';
 
 .container {
-  margin: 24px 33px 81px;
-  min-height: 60vh;
+  @include mobile {
+    padding: 24px 16px 81px;
+    min-height: 60vh;
+  }
+
+  @include tablet {
+    padding: 24px 32px 81px;
+  }
 }
 
 .back {
@@ -112,11 +118,12 @@
   &__mobile1 {
     @include mobile {
       display: flex;
-      justify-content: space-between;
+      gap: 16px;
       align-items: center;
     }
 
     @include tablet {
+      width: 70%;
       gap: 24px;
       justify-content: flex-start;
     }
@@ -130,15 +137,25 @@
     }
 
     @include tablet {
+      width: 30%;
       gap: 24px;
     }
   }
 
   &__remove {
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 32px;
+    @include mobile {
+      display: flex;
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 32px;
+    }
+
+    @include tablet {
+      display: block;
+
+    }
   }
 
   &__image {
@@ -154,9 +171,16 @@
   }
 
   &__quantity {
-    display: flex;
-    gap: 7px;
-    align-items: center;
+    @include mobile {
+      display: flex;
+      gap: 13px;
+      align-items: center;
+    }
+
+    @include tablet {
+      gap: 7px;
+    }
+
   }
 
   &__minus,

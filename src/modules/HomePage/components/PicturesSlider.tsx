@@ -9,14 +9,13 @@ import { useTranslation } from 'react-i18next';
 export const PicturesSlider = () => {
   const { t } = useTranslation();
   const images = [
-    './img/banner-phones.png',
-    './img/gfgfh.png',
-    './img/banner-accessories.png',
+    'img/banner-phones.png',
+    'img/gfgfh.png',
+    'img/banner-accessories.png',
   ];
 
   const sliderRef = useRef<Slider | null>(null);
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -25,6 +24,7 @@ export const PicturesSlider = () => {
     autoplay: true,
     autoPlaySpeed: 3000,
     ref: sliderRef,
+    dots: true, // Вмикаємо dots
   };
 
   return (

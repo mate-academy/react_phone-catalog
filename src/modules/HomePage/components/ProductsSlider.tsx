@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import style from './ProductsSlider.module.scss';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Slider from 'react-slick';
@@ -18,24 +18,12 @@ export const ProductsSlider: React.FC<Props> = ({
 }) => {
   const sliderRef = useRef<Slider | null>(null);
 
-  useEffect(() => {
-    const track = document.querySelector('.slick-track') as HTMLElement;
-    const list = document.querySelector('.slick-list') as HTMLElement;
-
-    if (track && list) {
-      track.style.transform = 'translateX(-20px)';
-      list.style.paddingLeft = '0';
-      list.style.paddingRight = '10%';
-      list.style.overflow = 'hidden';
-    }
-  }, []);
-
   const settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    // centerMode: true,
+    centerMode: false,
     responsive: [
       {
         breakpoint: 1300,
@@ -86,7 +74,7 @@ export const ProductsSlider: React.FC<Props> = ({
               key={product.id}
               product={product}
               discount={discount}
-              styles={{ width: '90%' }}
+              styles={{ width: '95%' }}
             />
           ))}
         </Slider>

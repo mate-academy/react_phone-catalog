@@ -1,5 +1,14 @@
+@import '../../shared/mixins.scss';
+
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
+  @include mobile {
+    padding: 0;
+  }
+
+  @include tablet {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
 }

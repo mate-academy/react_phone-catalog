@@ -7,9 +7,12 @@
     line-height: 41px;
     font-weight: 800;
     color: var(--hover-color);
+    padding: 16px;
+    margin-bottom: 56px;
   }
 
   @include tablet {
+    padding: 0;
     font-size: 48px;
     line-height: 56px;
   }
@@ -25,11 +28,11 @@
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    height: 221px;
+    height: 250px;
   }
 
   @include laptop {
-    height: 432px;
+    height: 480px;
   }
 
   &__wrapper {
@@ -37,26 +40,27 @@
     overflow: hidden;
     text-align: center;
     height: 100%;
+    width: 100%;
   }
 
 }
 
 .image {
   @include mobile {
-    // width: 100%;
+    width: 100%;
   }
 
   @include tablet {
     display: block;
-    max-width: calc(100% - 40px);
-    height: 100%;
+    width: calc(100% - 40px);
+    height: 220px;
     margin: 0 auto;
     object-fit: cover;
   }
 
   @include laptop {
-    max-width: 1040px;
-    min-height: 400px;
+    width: calc(100% - 32px);
+    height: 400px;
   }
 
 }
@@ -74,7 +78,11 @@
     border: 1px solid var(--standard-color);
     cursor: pointer;
     width: 32px;
-    height: 100%;
+    height: 220px;
+  }
+
+  @include laptop {
+    height: 400px;
   }
 }
 

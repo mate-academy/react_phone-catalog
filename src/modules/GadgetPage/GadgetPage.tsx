@@ -79,20 +79,24 @@ export const GadgetPage: React.FC<Props> = ({ gadgets, category, title }) => {
       {!error && (
         <>
           <Header />
-          {loading || isLoading ? (
-            <div className={style.skeletonContainer}>
-              {Array.from({ length: sortedGadgets.length }).map((_, index) => (
-                <ProductSkeleton key={index} />
-              ))}
-            </div>
-          ) : (
-            <GadgetsCollection
-              gadgets={sortedGadgets}
-              category={category}
-              title={title}
-            />
-          )}
-          <Footer />
+          <div className={style.container}>
+            {loading || isLoading ? (
+              <div className={style.skeletonContainer}>
+                {Array.from({ length: sortedGadgets.length }).map(
+                  (_, index) => (
+                    <ProductSkeleton key={index} />
+                  ),
+                )}
+              </div>
+            ) : (
+              <GadgetsCollection
+                gadgets={sortedGadgets}
+                category={category}
+                title={title}
+              />
+            )}
+            <Footer />
+          </div>
         </>
       )}
     </>

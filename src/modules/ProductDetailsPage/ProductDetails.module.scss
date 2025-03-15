@@ -134,7 +134,9 @@
     @include tablet {
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
       gap: 16px;
+      margin-block: 0;
     }
 
   }
@@ -173,13 +175,16 @@
   &__large {
     display: flex;
     justify-content: center;
-    perspective: 800px;
+    align-items: flex-start;
+    // perspective: 800px;
   }
 
   &__l {
     @include mobile {
       transition: transform 0.5s ease-in-out;
       transform-origin: center left;
+      object-fit: contain;
+      width: 100%;
 
       &:hover {
         transform: rotateY(15deg);
@@ -187,7 +192,7 @@
     }
 
     @include tablet {
-      width: 70%;
+      width: 80%;
     }
 
     @include laptop {
