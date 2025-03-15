@@ -93,7 +93,7 @@ export const SuggestedProducts = () => {
             <ProductItem
               product={product}
               discount={true}
-              styles={{ width: '95%' }}
+              // styles={{ width: '95%' }}
             />
           </div>
         ))}

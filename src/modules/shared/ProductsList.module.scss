@@ -1,14 +1,24 @@
 @import '../shared/mixins.scss';
 
 .items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-block: 20px;
+
   @include mobile {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    grid-template-columns: 1fr;
   }
 
   @include tablet {
-    gap: 4%;
-    justify-content: start;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include laptop {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

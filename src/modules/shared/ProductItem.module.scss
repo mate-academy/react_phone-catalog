@@ -6,19 +6,23 @@
     position: relative;
     box-sizing: border-box;
     border: 1px solid var(--standard-color);
-    margin: 20px 0;
+    margin: 0;
     padding: 20px 20px;
-    height: 506px;
-    width: 100%;
     background-color: var(--cart-background);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
-  @include tablet {
-    width: 48%;
+  &__top {
+    height: 60%;
   }
 
-  @include laptop {
-    width: 22%;
+  &__bottom {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &__image {
@@ -57,6 +61,7 @@
     font-size: 22px;
     font-weight: 800;
     color: var(--hover-color);
+    margin: 0;
   }
 
   &__discount {
@@ -91,9 +96,9 @@
   }
 
   &__add {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
+    // position: absolute;
+    // bottom: 20px;
+    // left: 20px;
     width: 160px;
     height: 40px;
     background-color: var(--button-color);
@@ -108,9 +113,9 @@
   }
 
   &__added {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
+    // position: absolute;
+    // bottom: 20px;
+    // left: 20px;
     width: 160px;
     height: 40px;
     background-color: var(--default-color);
@@ -121,10 +126,10 @@
   }
 
   &__heart {
-    position: absolute;
+    // position: absolute;
     background-color: var(--default-color);
-    bottom: 20px;
-    right: 20px;
+    // bottom: 20px;
+    // right: 20px;
     display: flex;
     border: 1px solid var(--standard-color);
     align-items: center;

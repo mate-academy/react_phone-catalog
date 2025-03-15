@@ -1,7 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './ProductsSlider.module.scss';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import Slider from 'react-slick';
 import { ProductItem } from '../../shared/ProductItem';
 import { Product } from '../../shared/types/Product';
 
@@ -16,35 +14,40 @@ export const ProductsSlider: React.FC<Props> = ({
   productsToShow,
   discount,
 }) => {
-  const sliderRef = useRef<Slider | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(4);
 
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    centerMode: false,
-    responsive: [
-      {
-        breakpoint: 1300,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 1100,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-    ref: sliderRef,
+  const updateSlidesToShow = () => {
+    const width = window.innerWidth;
+
+    if (width <= 768) {
+      setSlidesToShow(1);
+    } else if (width <= 1100) {
+      setSlidesToShow(2);
+    } else if (width <= 1300) {
+      setSlidesToShow(3);
+    } else {
+      setSlidesToShow(4);
+    }
+  };
+
+  useEffect(() => {
+    updateSlidesToShow();
+    window.addEventListener('resize', updateSlidesToShow);
+
+    return () => {
+      window.removeEventListener('resize', updateSlidesToShow);
+    };
+  }, []);
+
+  const goToSlide = (index: number) => {
+    if (index < 0) {
+      setCurrentSlide(0);
+    } else if (index >= productsToShow.length - slidesToShow) {
+      setCurrentSlide(productsToShow.length - slidesToShow);
+    } else {
+      setCurrentSlide(index);
+    }
   };
 
   return (
@@ -54,13 +57,13 @@ export const ProductsSlider: React.FC<Props> = ({
         <div className={style.controls}>
           <button
             className={style.prev}
-            onClick={() => sliderRef.current?.slickPrev()}
+            onClick={() => goToSlide(currentSlide - 1)}
           >
             <img src="icons/arrow-left.png" alt="Previous" />
           </button>
           <button
             className={style.next}
-            onClick={() => sliderRef.current?.slickNext()}
+            onClick={() => goToSlide(currentSlide + 1)}
           >
             <img src="icons/arrow-right.png" alt="Next" />
           </button>
@@ -68,16 +71,15 @@ export const ProductsSlider: React.FC<Props> = ({
       </div>
 
       <div className={style.slider}>
-        <Slider {...settings}>
-          {productsToShow.map(product => (
-            <ProductItem
-              key={product.id}
-              product={product}
-              discount={discount}
-              styles={{ width: '95%' }}
-            />
-          ))}
-        </Slider>
+        <div className={style.slickTrack}>
+          {productsToShow
+            .slice(currentSlide, currentSlide + slidesToShow)
+            .map(product => (
+              <div key={product.id} className={style.slickSlide}>
+                <ProductItem product={product} discount={discount} />
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
