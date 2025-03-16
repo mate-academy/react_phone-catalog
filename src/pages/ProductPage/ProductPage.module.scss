@@ -1,43 +1,95 @@
-@import '../../utils/scss/variables.scss';
-@import '../../utils/scss/mixin.scss';
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
 
-.page {
-  &__nav {
-    height: 16px;
+.productPage {
+  width: 100%;
 
+  @include page-grid;
+
+  &__backLink {
     display: flex;
     gap: 8px;
 
-    margin: 24px 0;
-  }
+    margin-top: 24px;
 
-  &__homeLink {
-    width: 16px;
-    height: 16px;
+    font-size: 12px;
+    color: $secondary-color;
+    text-decoration: none;
 
-    background-image: url('../../../public/img/icons/Home.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
   }
 
   &__navArrow {
     width: 16px;
     height: 16px;
 
-    background-image: url('../../../public/img/icons/arrow-disabled.png');
+    background-image: url('../../../public/img/icons/arrow.png');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
 
-    transform: rotate(90deg);
+    transform: rotate(-90deg);
   }
 
-  &__pageLink {
-    height: 16px;
+  &__title {
+    margin: 16px 0 32px;
 
-    font-size: 12px;
-    text-decoration: none;
-    color: $secondary-color;
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__splitter {
+    border-top: 1px solid $elements-color;
+  }
+
+  &__about {
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__aboutTitle {
+    margin: 16px 0;
+  }
+
+  &__info {
+    &Container {
+      margin-top: 32px;
+    }
+
+    &Title {
+      margin: 16px 0;
+    }
+
+    &Text {
+      color: $secondary-color;
+    }
+  }
+
+  &__notFoundTitle {
+    width: 100%;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__notFoundImage {
+    width: 100%;
+
+    @include on-tablet {
+      grid-column: 4 / -4;
+    }
+
+    @include on-desktop {
+      grid-column: 7 / -7;
+    }
   }
 }

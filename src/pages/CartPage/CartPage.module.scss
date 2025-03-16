@@ -1,0 +1,226 @@
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
+
+.cart {
+  @include page-grid;
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__cardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    border: 1px solid $elements-color;
+
+    padding: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 24px;
+
+      padding: 24px;
+    }
+
+    &Top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      @include on-tablet {
+        width: 60%;
+        gap: 24px;
+      }
+    }
+
+    &Bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include on-tablet {
+        width: 40%;
+        gap: 24px;
+        justify-content: center;
+      }
+    }
+
+    &Delete {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+
+      background-image: url('../../../public/img/icons/Close-disabled.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+
+      cursor: pointer;
+    }
+
+    &Image {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+
+      object-fit: contain;
+    }
+
+    &Name {
+      font-size: 14px;
+    }
+  }
+
+  &__buttonsSection {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+
+    cursor: pointer;
+
+    @include hover(border-color, $primary-color);
+
+    &Minus {
+      background-image: url('../../../public/img/icons/Minus.png');
+    }
+
+    &Plus {
+      background-image: url('../../../public/img/icons/Plus.png');
+    }
+  }
+
+  &__priceContainer {
+    width: 80px;
+
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__cardPrice {
+    font-family: Mont-Bold, sans-serif;
+    margin: 0;
+  }
+
+  &__summary {
+    margin-top: 32px;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid $elements-color;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+
+      height: 206px;
+
+      margin-top: 0;
+    }
+  }
+
+  &__totalPrice {
+    margin: 0;
+  }
+
+  &__totalItems {
+    font-size: 14px;
+    color: $secondary-color;
+  }
+
+  &__splitter {
+    width: 100%;
+    margin: 16px 0;
+    border-top: 1px solid $elements-color;
+
+    @include on-desktop {
+      margin: 23px 0;
+    }
+  }
+
+  &__checkout {
+    width: 100%;
+    height: 48px;
+
+    border: none;
+
+    background-color: $primary-color;
+    color: $white-color;
+    font-family: Mont-Semi-Bold, sans-serif;
+
+    transition: $effect-duration;
+
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+
+    &:active {
+      background-color: $white-color;
+      color: $green-color;
+      border: 1px solid $elements-color;
+    }
+  }
+
+  &__empty {
+    &Title {
+      color: $secondary-color;
+    }
+
+    &Container {
+      display: flex;
+      place-content: center;
+    }
+
+    &Img {
+      width: 100%;
+
+      @include on-tablet {
+        width: 40%;
+      }
+    }
+  }
+}

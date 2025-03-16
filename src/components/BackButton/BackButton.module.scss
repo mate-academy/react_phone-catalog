@@ -1,0 +1,31 @@
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
+
+.back {
+  display: flex;
+  gap: 8px;
+
+  margin-top: 24px;
+
+  font-size: 12px;
+  color: $secondary-color;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+}
+
+.navArrow {
+  width: 16px;
+  height: 16px;
+
+  background-image: url('../../../public/img/icons/arrow.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+
+  transform: rotate(-90deg);
+}

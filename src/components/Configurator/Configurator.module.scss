@@ -1,0 +1,227 @@
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
+@import '../../utils/scss/productColors';
+
+.configurator {
+  margin-top: 40px;
+
+  @include on-tablet {
+    grid-column: span 4;
+    margin: 0;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / -5;
+  }
+
+  &__topContainer {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__blocksTitle {
+    margin: 0;
+
+    font-size: 12px;
+    color: $secondary-color;
+  }
+
+  &__radioWrapper {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__radioWrapper input[type='radio'] {
+    display: none;
+  }
+
+  &__radioWrapper label {
+    display: inline-block;
+    padding: 7px 8px 4px;
+
+    border: 1px solid $icons-color;
+
+    cursor: pointer;
+    text-align: center;
+  }
+
+  &__radioWrapper input[type='radio']:checked + label {
+    background: $primary-color;
+    border: none;
+    color: white;
+  }
+
+  &__colors {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &Modificator {
+      cursor: pointer;
+    }
+
+    &RadioContainer {
+      display: flex;
+      gap: 8px;
+    }
+
+    &RadioContainer > input[type='radio'] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      padding: 3px;
+
+      margin: 0;
+      background-clip: content-box;
+      border: 1px solid $elements-color;
+      border-radius: 50%;
+      margin-right: 0;
+
+      @each $name, $color in $device-colors {
+        &[data-color='#{"" + $name}'] {
+          background-color: $color;
+        }
+      }
+    }
+
+    &RadioContainer > input[type='radio']:checked {
+      border-color: $primary-color;
+    }
+  }
+
+  &__splitter {
+    border-top: 1px solid $elements-color;
+  }
+
+  &__capacities {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &RadioContainer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+
+  &__bottomContainer {
+    margin-top: 40px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__priceAndButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__actualPrice {
+    margin: 0;
+  }
+
+  &__oldPrice {
+    margin: 0;
+
+    font-size: 22px;
+    color: $secondary-color;
+
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__addToCart {
+    width: calc(100% - 56px);
+    height: 48px;
+
+    background-color: $primary-color;
+    color: $white-color;
+
+    border: none;
+
+    cursor: pointer;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+  }
+
+  &__addedToCart {
+    border: 1px solid $elements-color;
+
+    background-color: $white-color;
+    color: $green-color;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+  }
+
+  &__addToFavourite {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+
+    background-image: url('../../../img/icons/heart-like.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+
+    @include hover(border-color, $primary-color);
+  }
+
+  &__addedToFavourite {
+    background-image: url('../../../img/icons/heart-like-active.png');
+
+    border-color: $elements-color;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 8px;
+
+    padding: 8px 0;
+  }
+
+  &__specContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specContainer p {
+    height: 15px;
+
+    font-family: Mont-Semi-Bold, sans-serif;
+    font-size: 12px;
+
+    margin: 0;
+  }
+
+  &__specContainer p:first-child {
+    color: $secondary-color;
+  }
+}

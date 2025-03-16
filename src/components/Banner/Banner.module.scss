@@ -1,5 +1,5 @@
-@import '../../utils/scss/variables.scss';
-@import '../../utils/scss/mixin.scss';
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
 
 .banner {
   // height: 352px;
@@ -31,7 +31,6 @@
   }
 
   &__wrapper {
-    // height: 320px;
     overflow: hidden;
 
     @include on-tablet {
@@ -48,8 +47,7 @@
   &__button {
     width: 32px;
 
-    border: 1px solid $icons-color;
-    border-radius: 0;
+    border: 1px solid $secondary-color;
 
     background-color: $white-color;
 

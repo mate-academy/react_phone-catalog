@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import styles from './CategoriesBlock.module.scss';
 
 export const CategoriesBlock = () => {
   return (
-    <section className={`${styles.categories} blocksIdentation container`}>
+    <section className={`${styles.categories} blocksIdentation`}>
       <h2 className={styles.categories__title}>Shop by category</h2>
 
       <div className={styles.categories__container}>
-        <a href="" className={styles.category}>
+        <Link to="/phones" className={styles.category}>
           <div
             className={`${styles.category__img} ${styles.category__imgPhones}`}
           ></div>
@@ -16,9 +17,9 @@ export const CategoriesBlock = () => {
 
             <p>95 models</p>
           </div>
-        </a>
+        </Link>
 
-        <a href="" className={styles.category}>
+        <Link to="tablets" className={styles.category}>
           <div
             className={`${styles.category__img} ${styles.category__imgTablets}`}
           ></div>
@@ -28,9 +29,9 @@ export const CategoriesBlock = () => {
 
             <p>24 models</p>
           </div>
-        </a>
+        </Link>
 
-        <a href="" className={styles.category}>
+        <Link to="/accessories" className={styles.category}>
           <div
             className={`${styles.category__img} ${styles.category__imgAccessories}`}
           ></div>
@@ -40,7 +41,7 @@ export const CategoriesBlock = () => {
 
             <p>100 models</p>
           </div>
-        </a>
+        </Link>
       </div>
     </section>
   );

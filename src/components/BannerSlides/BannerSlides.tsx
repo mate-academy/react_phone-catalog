@@ -3,6 +3,7 @@ import styles from './BannerSlides.module.scss';
 import classNames from 'classnames';
 import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
+import { Link } from 'react-router-dom';
 
 export const BannerSlides = () => {
   const isTablet = useMediaQuery({ minWidth: 640 });
@@ -21,18 +22,21 @@ export const BannerSlides = () => {
             <div className={styles.bannerSlides__infoContainer}>
               <div className={styles.bannerSlides__info}>
                 <div className={styles.bannerSlides__textContainer}>
-                  <h1 className={styles.bannerSlides__infoTitle}>
+                  <h2 className={styles.bannerSlides__infoTitle}>
                     {slide.title}
-                  </h1>
+                  </h2>
 
                   <p className={styles.bannerSlides__infoDescription}>
                     {slide.description}
                   </p>
                 </div>
 
-                <button className={styles.bannerSlides__infoButton}>
+                <Link
+                  to={slide.buttonLink}
+                  className={styles.bannerSlides__infoButton}
+                >
                   {slide.buttonText}
-                </button>
+                </Link>
               </div>
             </div>
           )}

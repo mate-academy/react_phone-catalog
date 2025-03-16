@@ -1,31 +1,91 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './ProductCard.module.scss';
 import classNames from 'classnames';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { CategoriesType } from '../../types/CategoriesType';
+import { ProductType } from '../../types/ProductType';
+import { AppContext } from '../../context/AppContext';
 
-export const ProductCard = () => {
+interface ProductCardProps {
+  product: ProductType;
+}
+
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
-  const [isLiked, setisLiked] = useState(false);
-  const { category } = useParams();
-  // const { handleActiveProduct } = useContext(AppContext)!;
+  const [isLiked, setIsLiked] = useState(false);
+  const { handleFavourites, favourites, handleCart, cart } =
+    useContext(AppContext) || {};
+  const locationPath = useLocation().pathname;
+  const { productId } = useParams();
 
-  const productId = 'apple-iphone-14-pro-128gb-spaceblack';
+  const getCategory = (location: string) => {
+    const categories: CategoriesType[] = ['phones', 'tablets', 'accessories'];
+
+    return categories.find(category => location.includes(category));
+  };
+
+  const handleLink = (): string => {
+    const category = getCategory(locationPath);
+
+    if (category && !productId) {
+      return product.itemId;
+    }
+
+    if (category && productId) {
+      return `/${category}/${product.itemId}`;
+    }
+
+    return `/product/${product.itemId}`;
+  };
+
+  const handleLike = () => {
+    setIsLiked(!isLiked);
+
+    if (handleFavourites) {
+      handleFavourites(product);
+    }
+  };
+
+  const handleAddToCart = () => {
+    setIsAddedToCart(!isAddedToCart);
+
+    if (handleCart) {
+      handleCart(product);
+    }
+  };
+
+  useEffect(() => {
+    if (
+      favourites?.some(favouriteItem => favouriteItem.itemId === product.itemId)
+    ) {
+      setIsLiked(true);
+    }
+
+    if (
+      cart?.some(
+        favouriteItem => favouriteItem.product.itemId === product.itemId,
+      )
+    ) {
+      setIsAddedToCart(true);
+    }
+  }, [favourites, cart, product.itemId]);
 
   return (
-    <Link
-      to={category ? productId : `product/${productId}`}
-      className={styles.card}
-      // onClick={() => handleActiveProduct(productId)}
-    >
-      <div className={styles.card__image}></div>
+    <div className={styles.card}>
+      <Link to={handleLink()} className={styles.card__imageContainer}>
+        <img className={styles.card__image} src={product.image} alt="" />
+      </Link>
 
       <div className={styles.card__titleContainer}>
-        <div className={styles.card__title}>
-          Apple iPhone 14 Pro 128GB Space Black (MQ023)
-        </div>
+        <Link to={handleLink()} className={styles.card__title}>
+          {product.name}
+        </Link>
       </div>
 
-      <div className={styles.card__price}>$999</div>
+      <div>
+        <span className={styles.card__price}>${product.price}</span>
+        <span className={styles.card__fullPrice}>${product.fullPrice}</span>
+      </div>
 
       <div className={styles.card__splitter}></div>
 
@@ -33,19 +93,19 @@ export const ProductCard = () => {
         <div className={styles.card__specContainer}>
           <p>Screen</p>
 
-          <p>6.1” OLED</p>
+          <p>{product.screen}</p>
         </div>
 
         <div className={styles.card__specContainer}>
           <p>Capacity</p>
 
-          <p>128 GB</p>
+          <p>{product.capacity}</p>
         </div>
 
         <div className={styles.card__specContainer}>
           <p>RAM</p>
 
-          <p>6 GB</p>
+          <p>{product.ram}</p>
         </div>
       </article>
 
@@ -54,7 +114,7 @@ export const ProductCard = () => {
           className={classNames(styles.card__addToCart, {
             [styles.card__addedToCart]: isAddedToCart,
           })}
-          onClick={() => setIsAddedToCart(!isAddedToCart)}
+          onClick={handleAddToCart}
         >
           {isAddedToCart ? 'Added to cart' : 'Add to cart'}
         </button>
@@ -63,9 +123,9 @@ export const ProductCard = () => {
           className={classNames(styles.card__addToFavourite, {
             [styles.card__addedToFavourite]: isLiked,
           })}
-          onClick={() => setisLiked(!isLiked)}
+          onClick={handleLike}
         ></button>
       </div>
-    </Link>
+    </div>
   );
 };

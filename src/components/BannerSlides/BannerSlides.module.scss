@@ -1,5 +1,5 @@
-@import '../../utils/scss/variables.scss';
-@import '../../utils/scss/mixin.scss';
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
 
 .bannerSlides {
   &__imageSlider {
@@ -7,6 +7,8 @@
     height: 100%;
 
     display: flex;
+
+    transition: none;
   }
 
   &__imageContainer {
@@ -19,10 +21,7 @@
 
     overflow: hidden;
 
-    // background-color: black;
-
-    // object-fit: cover;
-    // object-position: top;
+    transition: none;
   }
 
   &__infoContainer {
@@ -62,6 +61,11 @@
   &__infoTitle {
     margin: 0;
 
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
     background: linear-gradient(
       90deg,
       rgba(123, 77, 244, 1) 0%,
@@ -100,20 +104,28 @@
     width: 176px;
     height: 40px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background-color: transparent;
 
     border: 1px solid $secondary-color;
 
-    font-family: 'Mont-Semi-Bold', sans-serif;
+    font-family: Mont-Semi-Bold, sans-serif;
     font-size: 14px;
     color: $primary-color;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    @include hover(border-color, $primary-color);
   }
 
   &__image {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    // object-position: bottom;
 
     @include on-tablet {
       width: 50%;
@@ -135,7 +147,7 @@
 
     border: 1px solid $icons-color;
 
-    font-family: 'Mont-Semi-Bold', sans-serif;
+    font-family: Mont-Semi-Bold, sans-serif;
     font-size: 14px;
     color: $icons-color;
   }

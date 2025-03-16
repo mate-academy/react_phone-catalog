@@ -1,28 +1,28 @@
-@import '../utils/scss/mixin.scss';
+@import '../utils/scss/mixin';
 
 @font-face {
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold;
   src: url('../../fonts/Mont-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../fonts/Mont-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont-Semi-Bold';
+  font-family: Mont-Semi-Bold;
   src: url('../../fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: semi-bold;
   font-style: normal;
 }
 
 h1 {
-  font-family: 'Mont-Bold', sans-serif;
+  font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
@@ -34,7 +34,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Mont-Bold', sans-serif;
+  font-family: Mont-Bold, sans-serif;
   font-size: 22px;
   line-height: 31px;
 
@@ -46,7 +46,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Mont-Semi-Bold', sans-serif;
+  font-family: Mont-Semi-Bold, sans-serif;
   font-size: 20px;
   line-height: 26px;
 
@@ -57,9 +57,9 @@ h3 {
 }
 
 h4 {
-  font-family: 'Mont-Semi-Bold', sans-serif;
+  font-family: Mont-Semi-Bold, sans-serif;
   font-size: 16px;
-  line-height: 10px;
+  line-height: 20px;
 
   @include on-tablet {
     font-size: 20px;
@@ -91,10 +91,6 @@ h4 {
   }
 }
 
-.hidden {
-  display: none;
-}
-
 html {
   scroll-behavior: smooth;
 
@@ -102,5 +98,34 @@ html {
 
   &:has(.menu:target) {
     overflow: hidden;
+  }
+}
+
+body {
+  background-color: var(--black-color);
+}
+
+.hidden {
+  display: none;
+}
+
+.is-loading {
+  .image,
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
   }
 }

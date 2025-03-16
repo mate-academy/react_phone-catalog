@@ -1,4 +1,9 @@
-export interface PhoneType {
+interface DescriptionItem {
+  title: string;
+  text: string[];
+}
+
+export interface ProductTypeExt {
   id: string;
   category: string;
   namespaceId: string;
@@ -10,7 +15,7 @@ export interface PhoneType {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: object[];
+  description: DescriptionItem[];
   screen: string;
   resolution: string;
   processor: string;

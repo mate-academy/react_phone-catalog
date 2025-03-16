@@ -1,46 +1,7 @@
-@import '../../utils/scss/variables.scss';
-@import '../../utils/scss/mixin.scss';
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
 
 .page {
-  &__nav {
-    height: 16px;
-
-    display: flex;
-    gap: 8px;
-
-    margin: 24px 0;
-  }
-
-  &__homeLink {
-    width: 16px;
-    height: 16px;
-
-    background-image: url('../../../public/img/icons/Home.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-  }
-
-  &__navArrow {
-    width: 16px;
-    height: 16px;
-
-    background-image: url('../../../public/img/icons/arrow-disabled.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-
-    transform: rotate(90deg);
-  }
-
-  &__pageLink {
-    height: 16px;
-
-    font-size: 12px;
-    text-decoration: none;
-    color: $secondary-color;
-  }
-
   &__title {
     margin: 0;
     margin-bottom: 8px;
@@ -51,5 +12,41 @@
 
     font-size: 14px;
     color: $secondary-color;
+  }
+
+  &__catalog {
+    margin-top: 32px;
+  }
+
+  &__sortContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    margin-bottom: 24px;
+
+    @include page-grid;
+  }
+
+  &__sortBy {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      width: auto;
+      grid-column: span 4;
+    }
+  }
+
+  &__itemsOnPage {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      width: auto;
+      grid-column: span 3;
+    }
   }
 }

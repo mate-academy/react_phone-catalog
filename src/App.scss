@@ -1,5 +1,5 @@
-@import '../src/utils/scss/variables.scss';
-@import '../src/utils/scss/mixin.scss';
+@import '../src/utils/scss/variables';
+@import '../src/utils/scss/mixin';
 
 *,
 *::before,
@@ -9,12 +9,21 @@
 
 body {
   margin: 0;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
 
   color: $primary-color;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // Вся висота екрану
+}
+
 .main {
+  flex: 1;
+  width: 100%;
+
   @include on-desktop {
     max-width: 1200px;
 

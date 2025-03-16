@@ -1,5 +1,5 @@
-@import '../../utils/scss/variables.scss';
-@import '../../utils/scss/mixin.scss';
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
 
 .page {
   &__nav {
@@ -9,6 +9,12 @@
     gap: 8px;
 
     margin: 24px 0;
+
+    overflow: hidden;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
   }
 
   &__homeLink {
@@ -35,6 +41,8 @@
 
   &__pageLink {
     height: 16px;
+
+    margin: 0;
 
     font-size: 12px;
     text-decoration: none;

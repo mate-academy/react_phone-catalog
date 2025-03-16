@@ -1,4 +1,4 @@
-@import '../src/utils/scss/variables.scss';
+@import '../src/utils/scss/variables';
 
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
@@ -57,8 +57,4 @@
     transform: scale(0);
     transform-origin: left;
   }
-
-  // &:hover::after {
-  //   transform: scale(1);
-  // }
 }

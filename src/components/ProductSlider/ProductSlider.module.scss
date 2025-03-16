@@ -1,13 +1,16 @@
-@import '../../utils/scss/variables.scss';
-@import '../../utils/scss/mixin.scss';
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
 
 .newProducts {
   width: 100%;
-  // height: 526px;
 
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
 
   &__bar {
     display: flex;

@@ -2,12 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductSlider.module.scss';
 import classNames from 'classnames';
+import { ProductType } from '../../types/ProductType';
 
 interface ProductSliderProps {
   title: string;
+  productsList: ProductType[];
 }
 
-export const ProductSlider: React.FC<ProductSliderProps> = ({ title }) => {
+export const ProductSlider: React.FC<ProductSliderProps> = ({
+  title,
+  productsList,
+}) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(true);
   const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
@@ -48,7 +53,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title }) => {
   }, []);
 
   return (
-    <section className={`${styles.newProducts} blocksIdentation container`}>
+    <section className={`${styles.newProducts} blocksIdentation`}>
       <div className={styles.newProducts__bar}>
         <h2 className={styles.newProducts__title}>{title}</h2>
 
@@ -77,8 +82,8 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title }) => {
       </div>
 
       <div className={styles.newProducts__list} ref={scrollContainerRef}>
-        {[...Array(10)].map((_, index) => (
-          <ProductCard key={index} />
+        {productsList.map((product, index) => (
+          <ProductCard product={product} key={index} />
         ))}
       </div>
     </section>

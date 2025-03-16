@@ -1,5 +1,5 @@
-@import '../src/utils/scss/variables.scss';
-@import '../src/utils/scss/mixin.scss';
+@import '../src/utils/scss/variables';
+@import '../src/utils/scss/mixin';
 
 .menu {
   box-sizing: border-box;
@@ -13,9 +13,6 @@
   right: 0;
 
   transition: all 0.3s;
-  opacity: 0;
-  transform: translateX(-100%);
-  pointer-events: none;
 
   display: flex;
   flex-direction: column;
@@ -26,7 +23,7 @@
   pointer-events: all;
   z-index: 9;
 
-  // animation: fadeIn 0.5s forwards;
+  // overflow: hidden;
 
   &__linksContainer {
     display: flex;
@@ -41,7 +38,7 @@
     position: relative;
     padding: 8px 0;
 
-    font-family: 'Mont-Bold', sans-serif;
+    font-family: Mont-Bold, sans-serif;
 
     color: $secondary-color;
 
@@ -49,8 +46,7 @@
     text-transform: uppercase;
 
     @include hover(color, $primary-color);
-
-    @include underline-animation();
+    @include underline-animation;
 
     &:hover::after {
       transform: scale(1);
@@ -69,6 +65,12 @@
   &__button {
     position: relative;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
     width: 50%;
 
     background-size: 16px;
@@ -76,8 +78,7 @@
     background-position: center;
 
     @include hover(color, $primary-color);
-
-    @include underline-animation();
+    @include underline-animation;
 
     &:hover::after {
       transform: scale(1);
@@ -93,7 +94,7 @@
   }
 
   &__cart {
-    box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
+    box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
 
     background-image: url('../../../public/img/icons/cart-icon.png');
   }
@@ -108,28 +109,30 @@
   &__linkActive {
     color: $primary-color;
 
-    @include underline-animation();
+    @include underline-animation;
 
     &::after {
       transform: scale(1);
     }
   }
+
+  &__count {
+    width: 14px;
+    height: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 15px;
+    margin-bottom: 15px;
+
+    font-size: 9px;
+    color: $white-color;
+
+    background-color: $red-color;
+
+    border-radius: 50%;
+    border: 1px solid $white-color;
+  }
 }
-
-// @keyframes fadeIn {
-//   from {
-//     opacity: 0;
-//     transform: translateY(20px);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: translateY(0);
-//     z-index: 9;
-//   }
-// }
-
-// html {
-//   &:has(.menu:target) {
-//     overflow: hidden;
-//   }
-// }

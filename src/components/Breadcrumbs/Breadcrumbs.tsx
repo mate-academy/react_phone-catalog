@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 
 interface BreadcrumbsProps {
@@ -6,7 +6,13 @@ interface BreadcrumbsProps {
 }
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ productName }) => {
-  const { category, productId } = useParams();
+  const { productId } = useParams();
+
+  const location = useLocation().pathname;
+
+  const pathSegments = location.split('/');
+
+  const secondURLPart = pathSegments[1];
 
   return (
     <section className={styles.page__nav}>
@@ -14,25 +20,25 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ productName }) => {
 
       <div className={styles.page__navArrow}></div>
 
-      <Link
-        to={category ? `/${category}` : '/phones'}
-        className={styles.page__pageLink}
-      >
-        {category
-          ? category.charAt(0).toUpperCase() + category.slice(1)
-          : 'Phones'}
-      </Link>
+      {/* {true && (
+        <Link to={`/${category}`} className={styles.page__pageLink}>
+          {category.charAt(0).toUpperCase() + category.slice(1)}
+        </Link>
+      )} */}
+
+      {secondURLPart && secondURLPart !== 'product' && (
+        <>
+          <Link to={`/${secondURLPart}`} className={styles.page__pageLink}>
+            {secondURLPart.charAt(0).toUpperCase() + secondURLPart.slice(1)}
+          </Link>
+
+          {productId && <div className={styles.page__navArrow}></div>}
+        </>
+      )}
 
       {productId && (
         <>
-          <div className={styles.page__navArrow}></div>
-
-          <Link
-            to={`/${category}/${productId}`}
-            className={styles.page__pageLink}
-          >
-            {productName}
-          </Link>
+          <p className={styles.page__pageLink}>{productName}</p>
         </>
       )}
     </section>

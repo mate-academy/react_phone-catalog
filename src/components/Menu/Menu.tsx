@@ -6,7 +6,7 @@ import { AppContext } from '../../context/AppContext';
 import { NavLink } from 'react-router-dom';
 
 export const Menu = () => {
-  const { activeLink } = useContext(AppContext)!;
+  const { activeLink, favourites, cart } = useContext(AppContext)!;
 
   return (
     <>
@@ -62,14 +62,22 @@ export const Menu = () => {
                 [styles.menu__linkActive]: activeLink === PageLinks.FAVOURITES,
               },
             )}
-          ></NavLink>
+          >
+            {favourites.length > 0 && (
+              <span className={styles.menu__count}>{favourites.length}</span>
+            )}
+          </NavLink>
 
           <NavLink
             to="cart"
             className={classNames(styles.menu__button, styles.menu__cart, {
               [styles.menu__linkActive]: activeLink === PageLinks.CART,
             })}
-          ></NavLink>
+          >
+            {cart.length > 0 && (
+              <span className={styles.menu__count}>{cart.length}</span>
+            )}
+          </NavLink>
         </div>
       </aside>
     </>

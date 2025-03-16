@@ -4,12 +4,13 @@ import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { PageLinks } from '../../types/PageLinks';
 import { AppContext } from '../../context/AppContext';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { ToggleButton } from '../ToggleButton';
 
 export const Header = () => {
   const isTablet = useMediaQuery({ minWidth: 640 });
   const isMobile = useMediaQuery({ maxWidth: 639 });
-  const { activeLink } = useContext(AppContext)!;
+  const { activeLink, favourites, cart } = useContext(AppContext)!;
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -28,7 +29,7 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <a className={styles.header__logo}></a>
+      <Link to="/" className={styles.header__logo}></Link>
 
       {isMobile && (
         <div className={styles.header__buttonsContainer}>
@@ -88,6 +89,10 @@ export const Header = () => {
             </NavLink>
           </div>
 
+          <div>
+            <ToggleButton />
+          </div>
+
           <div className={styles.header__favAndCart}>
             <NavLink
               to="favourites"
@@ -95,11 +100,18 @@ export const Header = () => {
                 styles.header__favAndCartBtn,
                 styles.header__favourites,
                 {
-                  [styles.header__linkActive]: activeLink === PageLinks.LIKED,
+                  [styles.header__linkActive]:
+                    activeLink === PageLinks.FAVOURITES,
                 },
               )}
               // onClick={() => handlePageLinkClick(PageLinks.LIKED)}
-            ></NavLink>
+            >
+              {favourites.length > 0 && (
+                <span className={styles.header__count}>
+                  {favourites.length}
+                </span>
+              )}
+            </NavLink>
 
             <NavLink
               to="cart"
@@ -111,7 +123,11 @@ export const Header = () => {
                 },
               )}
               // onClick={() => handlePageLinkClick(PageLinks.CART)}
-            ></NavLink>
+            >
+              {cart.length > 0 && (
+                <span className={styles.header__count}>{cart.length}</span>
+              )}
+            </NavLink>
           </div>
         </div>
       )}

@@ -1,0 +1,98 @@
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
+
+.productImages {
+  width: 100%;
+
+  grid-template-areas: 'thumbs main';
+
+  @include page-grid;
+
+  @include on-tablet {
+    grid-column: span 7;
+
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  @include on-desktop {
+    grid-column: span 12;
+
+    grid-template-columns: repeat(12, 32px);
+  }
+
+  &__mainImageContainer {
+    width: 100%;
+
+    overflow: hidden;
+
+    @include on-tablet {
+      grid-area: main;
+      grid-column: 2 / 8;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / -1;
+    }
+  }
+
+  &__slider {
+    // width: 100%;
+    // height: 100%;
+
+    display: flex;
+  }
+
+  &__mainImage {
+    flex: 0 0 100%;
+    min-width: 0;
+
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+
+    margin-right: 16px;
+
+    overflow: hidden;
+    object-fit: contain;
+  }
+
+  &__allImages {
+    // height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    margin-top: 16px;
+
+    @include on-tablet {
+      grid-area: thumbs;
+
+      flex-direction: column;
+      justify-content: flex-start;
+
+      margin: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+    }
+  }
+
+  &__image {
+    max-width: calc(20% - 8px);
+    object-fit: contain;
+    border: 1px solid $elements-color;
+
+    aspect-ratio: 1 / 1;
+
+    @include on-tablet {
+      max-width: 100%;
+    }
+
+    &Active {
+      border: 1px solid $primary-color;
+    }
+  }
+}
