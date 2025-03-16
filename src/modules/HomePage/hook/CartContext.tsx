@@ -39,9 +39,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (prev.some(item => item.id === product.id)) {
         return prev.filter(item => item.id !== product.id);
       }
-      // const finalPrice = isDiscount ? product.priceDiscount : product.priceRegular;
       return [...prev, product];
-      // return [...prev, { ...product, finalPrice }]
     })
   }
 

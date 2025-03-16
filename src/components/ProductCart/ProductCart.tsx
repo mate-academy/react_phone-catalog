@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './ProductCart.module.scss';
-import { Favorite } from '../../shared/Favorite/Favorite';
 import { Product } from '../../type/Product';
 import { useCart } from '../../modules/HomePage/hook/CartContext';
 import favouriteIcon from '../../shared/assets/icons/favourites-heart-like.svg';
@@ -19,6 +18,7 @@ export const ProductCart: React.FC<Props> = ({ product, isDiscount = false }) =>
   }
 
   const { addToCart, cart, toggleFavourite, favourite } = cartContext;
+  const isFavorite = favourite.some(item => item.id === product.id);
 
   return (
     <>
@@ -70,12 +70,15 @@ export const ProductCart: React.FC<Props> = ({ product, isDiscount = false }) =>
               Added
             </button>
           )}
-          <div className={`${favourite.includes(product) ? `${style.favoriteActive}` : `${style.favorite}`}`} onClick={() => toggleFavourite(product)}>
-            {favourite.includes(product) ? (
-              <img src={favouriteIconActive} alt="favourite icon" className={style.favouriteIcon} />
-            ) : (
-              <img src={favouriteIcon} alt="favourite icon" className={style.favouriteIcon} />
-            )}
+          <div
+            className={`${isFavorite ? `${style.favoriteActive}` : `${style.favorite}`}`}
+            onClick={() => toggleFavourite(product)}
+          >
+            <img
+              src={isFavorite ? favouriteIconActive : favouriteIcon}
+              alt="favourite icon"
+              className={style.favouriteIcon}
+            />
           </div>
         </div>
       </div>

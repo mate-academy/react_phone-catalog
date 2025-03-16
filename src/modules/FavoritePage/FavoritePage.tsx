@@ -37,7 +37,7 @@ export const FavoritePage: React.FC<FavouriteProps> = () => {
 
         <div className={style.container}>
           {favourite.map((item: Product) => (
-            <ProductCart product={item} key={item.id} />
+            <ProductCart product={item} key={item.id} isDiscount={true} />
           ))}
         </div>
       </div>
