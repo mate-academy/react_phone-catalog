@@ -11,10 +11,10 @@
   }
 
   &__name {
-    color: $grey-color;
+    cursor: pointer;
     font-size: 12px;
     font-weight: 700;
-    cursor: pointer;
+    color: $grey-color;
 
     &:hover {
       color: var(--button-hover);
@@ -22,16 +22,29 @@
   }
 
   &__quantity {
-    color: $grey-color;
     font-size: 14px;
     font-weight: 600;
+    color: $grey-color;
   }
 
   &__selects {
-    margin-top: 40px;
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__selected {
     display: flex;
-    align-items: center;
     gap: 16px;
+    align-items: center;
   }
 
   &__wrapper {
@@ -48,11 +61,13 @@
   }
 
   &__query {
-    border: 1px solid var(--standard-color);
     padding: 10px 40px 10px 15px;
+    border: 1px solid var(--standard-color);
+
     font-size: 14px;
     font-weight: 600;
     color: var(--hover-color);
+
     background-color: var(--default-color);
 
     &:hover {
@@ -67,25 +82,27 @@
 }
 
 .title {
-  color: var(--hover-color);
   font-size: 48px;
   font-weight: 800;
+  color: var(--hover-color);
 }
 
 .pagination {
   display: flex;
-  justify-content: center;
   gap: 10px;
+  justify-content: center;
 
   &__prev,
   &__next {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: none;
-    border: 1px solid $grey-color;
+
     width: 30px;
     height: 30px;
+    border: 1px solid $grey-color;
+
+    background: none;
 
     &:hover {
       border: 1px solid var(--hover-color);
@@ -96,13 +113,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: none;
-    border: 1px solid var(--standard-color);
+
     width: 30px;
     height: 30px;
-    color: var(--hover-color);
+    border: 1px solid var(--standard-color);
+
     font-size: 14px;
     font-weight: 600;
+    color: var(--hover-color);
+
+    background: none;
 
     &:hover {
       border: 1px solid var(--hover-color);

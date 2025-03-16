@@ -88,8 +88,10 @@ export const GadgetsCollection: React.FC<Props> = ({
         {gadgets.length} {t('items')}
       </p>
       <div className={style.collection__selects}>
-        <SortSelect />
-        <ItemsPerPageSelect />
+        <div className={style.collection__selected}>
+          <SortSelect />
+          <ItemsPerPageSelect />
+        </div>
         <div className={style.collection__wrapper}>
           <label className={style.collection__label} htmlFor="search">
             {t('enter name')}

@@ -1,20 +1,21 @@
-@import '../../shared/mixins.scss';
-@import '../../shared/variables.scss';
+@import '../../shared/mixins';
+@import '../../shared/variables';
 
 .footer {
   @include mobile {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    border-top: 1px solid var(--border-color);
+
     padding: 0 16px;
+    border-top: 1px solid var(--border-color);
   }
 
   @include tablet {
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 32px;
+    justify-content: space-between;
+    padding: 32px;
 
   }
 
@@ -26,9 +27,12 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      list-style: none;
+
       padding: 0;
+
+      list-style: none;
     }
+
     @include tablet {
       flex-direction: row;
     }
@@ -50,9 +54,9 @@
 
 .return {
   display: flex;
-  justify-content: center;
   gap: 30px;
   align-items: center;
+  justify-content: center;
 
 
   &__words {
@@ -63,8 +67,8 @@
   }
 
   &__arrow {
-    border: 1px solid $grey-color;
     padding: 10px;
+    border: 1px solid $grey-color;
     background-color: var(--default-color);
 
     &:hover {

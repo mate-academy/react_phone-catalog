@@ -1,11 +1,11 @@
-@import '../../shared/mixins.scss';
-@import '../../shared/variables.scss';
+@import '../../shared/mixins';
+@import '../../shared/variables';
 
 .products {
   @include mobile {
+    box-sizing: border-box;
     margin: 40px 0;
     padding: 16px;
-    box-sizing: border-box;
   }
 
   @include tablet {
@@ -16,8 +16,8 @@
 .header {
   @include mobile {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
   }
 
@@ -38,10 +38,13 @@
 }
 
 .prev, .next {
-  background-color: var(--default-color);
-  border: 1px solid var(--standard-color);
-  padding: 10px;
   cursor: pointer;
+
+  padding: 10px;
+  border: 1px solid var(--standard-color);
+
+  background-color: var(--default-color);
+
   transition: 0.3s;
 
   &:hover {
@@ -52,13 +55,13 @@
 }
 
 .slider {
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
-  overflow: hidden;
+
   width: 100%;
-  padding: 0;
   margin: 0;
-  transition: all 0.3s ease;
+  padding: 0;
 }
 
 .slickTrack {
@@ -69,8 +72,8 @@
 
 .slickSlide {
   flex-shrink: 0;
-  width: calc(25% - 20px);
   box-sizing: border-box;
+  width: calc(25% - 20px);
 }
 
 @media (max-width: 1300px) {

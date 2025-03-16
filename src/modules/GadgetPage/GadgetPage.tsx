@@ -82,11 +82,9 @@ export const GadgetPage: React.FC<Props> = ({ gadgets, category, title }) => {
           <div className={style.container}>
             {loading || isLoading ? (
               <div className={style.skeletonContainer}>
-                {Array.from({ length: sortedGadgets.length }).map(
-                  (_, index) => (
-                    <ProductSkeleton key={index} />
-                  ),
-                )}
+                {Array.from({ length: 8 }).map((_, index) => (
+                  <ProductSkeleton key={index} />
+                ))}
               </div>
             ) : (
               <GadgetsCollection

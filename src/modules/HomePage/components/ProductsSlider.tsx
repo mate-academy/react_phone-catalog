@@ -50,6 +50,8 @@ export const ProductsSlider: React.FC<Props> = ({
     }
   };
 
+  const offset = currentSlide * (100 / slidesToShow);
+
   return (
     <div className={style.products}>
       <div className={style.header}>
@@ -71,7 +73,13 @@ export const ProductsSlider: React.FC<Props> = ({
       </div>
 
       <div className={style.slider}>
-        <div className={style.slickTrack}>
+        <div
+          className={style.slickTrack}
+          style={{
+            transform: `translateX(-${offset}%)`,
+            transition: 'transform 0.5s ease-in-out',
+          }}
+        >
           {productsToShow
             .slice(currentSlide, currentSlide + slidesToShow)
             .map(product => (
