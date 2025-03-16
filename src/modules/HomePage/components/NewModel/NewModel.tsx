@@ -58,7 +58,7 @@ export const NewModel: React.FC = () => {
           <div className={style.slideContent}>
             {phones.map(phone => (
               <SwiperSlide key={phone.id}>
-                <ProductCart product={phone} isDiscount={false} key={phone.id}/>
+                <ProductCart product={phone} isDiscount={false} />
               </SwiperSlide>
             ))}
           </div>

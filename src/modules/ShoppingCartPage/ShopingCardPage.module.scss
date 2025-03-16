@@ -3,13 +3,8 @@
 .shopingBag {
   box-sizing: border-box;
   padding-top: 24px;
+
   @include padding-inline;
-
-  min-height: calc(100vh - 49px - 100px);
-
-  @include on-desctop {
-    min-height: calc(100vh - 65px - 100px);
-  }
 }
 
 .navigate {
@@ -222,10 +217,19 @@
   @include on-desctop {
     display: flex;
   }
+
+  @include on-large-desctop {
+    justify-content: center;
+  }
 }
 
 .onDesctop > div {
   @include on-desctop {
     width: 752px;
   }
+}
+
+.emptyBag {
+  display: flex;
+  width: 100%;
 }

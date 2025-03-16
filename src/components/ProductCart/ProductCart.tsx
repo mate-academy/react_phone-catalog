@@ -3,27 +3,31 @@ import style from './ProductCart.module.scss';
 import { Favorite } from '../../shared/Favorite/Favorite';
 import { Product } from '../../type/Product';
 import { useCart } from '../../modules/HomePage/hook/CartContext';
+import favouriteIcon from '../../shared/assets/icons/favourites-heart-like.svg';
+import favouriteIconActive from '../../shared/assets/icons/favourites-filled-heart-like.svg';
 
 type Props = {
   product: Product;
   isDiscount?: boolean;
 };
 
-export const ProductCart: React.FC<Props> = ({ product, isDiscount }) => {
+export const ProductCart: React.FC<Props> = ({ product, isDiscount = false }) => {
   const cartContext = useCart();
 
   if (!cartContext) {
     return 'CartContext is not loaded';
   }
 
-  const { addToCart, cart } = cartContext;
+  const { addToCart, cart, toggleFavourite, favourite } = cartContext;
 
   return (
     <>
       <div className={style.card}>
         <img src={product.images[0]} alt="phone img" className={style.phoneImg} />
 
-        <h2 className={style.phoneTitle}>{product.name}</h2>
+        <h2 className={style.phoneTitle} title={product.name}>
+          {product.name}
+        </h2>
 
         <p className={style.phonePrice}>
           {isDiscount ? (
@@ -40,7 +44,9 @@ export const ProductCart: React.FC<Props> = ({ product, isDiscount }) => {
         <div className={style.phoneDescription}>
           <div className={style.phoneProperties}>
             <p className={style.propertieTitle}>Screen</p>
-            <p className={style.propertieDescription}>{product.screen}</p>
+            <p className={style.propertieDescription} title={product.screen}>
+              {product.screen}
+            </p>
           </div>
 
           <div className={style.phoneProperties}>
@@ -55,17 +61,21 @@ export const ProductCart: React.FC<Props> = ({ product, isDiscount }) => {
         </div>
 
         <div className={style.phoneFooter}>
-          {!cart.includes(product) ? (
-            <button className={style.addToCart} onClick={() => addToCart(product)}>
+          {!cart.some(item => item.id === product.id) ? (
+            <button className={style.addToCart} onClick={() => addToCart(product, isDiscount)}>
               Add to cart
             </button>
           ) : (
-            <button className={style.addedCart} disabled >
+            <button className={style.addedCart} disabled>
               Added
             </button>
           )}
-          <div className={style.favorite}>
-            <Favorite />
+          <div className={`${favourite.includes(product) ? `${style.favoriteActive}` : `${style.favorite}`}`} onClick={() => toggleFavourite(product)}>
+            {favourite.includes(product) ? (
+              <img src={favouriteIconActive} alt="favourite icon" className={style.favouriteIcon} />
+            ) : (
+              <img src={favouriteIcon} alt="favourite icon" className={style.favouriteIcon} />
+            )}
           </div>
         </div>
       </div>

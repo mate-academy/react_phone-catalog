@@ -3,16 +3,19 @@
 
 .App {
   background-color: $background-color;
-  min-height: calc(100vh - 49px - 250px);
+  min-height: calc(100vh - 49px - 250px - 64px);
+
+  @include on-tablet {
+    min-height: calc(100vh - 49px - 100px - 64px);
+  }
 
   @include on-desctop {
-    min-height: calc(100vh - 65px - 100px);
+    min-height: calc(100vh - 65px - 100px - 80px);
   }
 }
 
 .page {
   background-color: $background-color;
-
 }
 
 body {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './HotPrice.module.scss';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,8 +17,6 @@ export const HotPrice: React.FC = () => {
   const phones: Product[] = phoneFromServer.slice(10, 19);
   const isTablet = useMediaQuery('(min-width: 640px)');
   const isDesctop = useMediaQuery('(min-width: 1200px)');
-
-  const [isDiscount] = useState(true);
 
   let slidesView = 1.5;
 
@@ -58,7 +56,7 @@ export const HotPrice: React.FC = () => {
           <div className={style.slideContent}>
             {phones.map(phone => (
               <SwiperSlide key={phone.id}>
-                <ProductCart product={phone} isDiscount={isDiscount} key={phone.id}/>
+                <ProductCart product={phone} isDiscount={true} key={phone.id} />
               </SwiperSlide>
             ))}
           </div>

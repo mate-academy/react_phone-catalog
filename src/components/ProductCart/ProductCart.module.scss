@@ -40,7 +40,10 @@
   line-height: 21px;
   text-align: center;
 
-  padding-top: 8px; /// LOOKs
+  padding-top: 24px; /// LOOKs
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .phonePrice {
@@ -66,7 +69,7 @@
   display: flex;
   gap: 8px;
   flex-direction: column;
-  padding-top: 8px;
+  padding-top: 16px;
   margin-top: 8px;
 
   border-top: 1px solid $midle-gray-color;
@@ -84,7 +87,7 @@
   color: $light-gray-color;
 }
 
-.propertieDescription{
+.propertieDescription {
   font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   line-height: 16px;
@@ -92,13 +95,18 @@
   text-transform: uppercase;
 
   text-align: right;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
 }
 
 .phoneFooter {
   display: flex;
   gap: 8px;
 
-  padding-top: 8px;
+  padding-top: 16px;
 }
 
 .addToCart {
@@ -145,7 +153,21 @@
   background-color: #323542;
   cursor: pointer;
 
-&:hover {
-  background-color: #4A4D58;
+  &:hover {
+    background-color: #4a4d58;
+  }
 }
+
+.favouriteIcon {
+  display: flex;
+}
+
+.favoriteActive {
+  padding: 11px;
+  border: 1px solid #323542;
+  cursor: pointer;
+
+  // &:hover {
+  //   background-color: #4a4d58;
+  // }
 }

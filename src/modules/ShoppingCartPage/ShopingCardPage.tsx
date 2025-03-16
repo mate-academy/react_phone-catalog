@@ -6,6 +6,7 @@ import plusIcon from '../../shared/assets/icons/plus.svg';
 import minusIcon from '../../shared/assets/icons/minus.svg';
 import removeIcon from '../../shared/assets/icons/close.svg';
 import { Product } from '../../type/Product';
+import EmptyBag from '../../../public/img/cart-is-empty.png';
 
 export const ShopingCardPage: React.FC = () => {
   const cartContext = useCart();
@@ -29,6 +30,9 @@ export const ShopingCardPage: React.FC = () => {
 
       <div className={style.onDesctop}>
         <div>
+          {cart.length === 0 && (
+            <img src={EmptyBag} alt="Empty bag" className={style.emptyBag} />
+          )}
           {cart.map((item: Product) => (
             <div className={style.shopCart} key={item.id}>
               <div className={style.wrapper}>
@@ -54,9 +58,7 @@ export const ShopingCardPage: React.FC = () => {
                     <img src={plusIcon} alt="plus icon" className={style.minusIcon} />
                   </div>
 
-                  <h2 className={style.price}>
-                    ${ item.priceRegular ?? item.priceDiscount}
-                  </h2>
+                  <h2 className={style.price}>${item.finalPrice}</h2>
                 </div>
               </div>
             </div>
