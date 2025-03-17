@@ -182,7 +182,7 @@
     background-color: $white-color;
     border: 1px solid $icons-color;
 
-    background-image: url('../../../img/icons/heart-like.png');
+    background-image: url('public/img/icons/heart-like.png');
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
@@ -193,7 +193,7 @@
   }
 
   &__addedToFavourite {
-    background-image: url('../../../img/icons/heart-like-active.png');
+    background-image: url('public/img/icons/heart-like-active.png');
 
     border-color: $elements-color;
   }

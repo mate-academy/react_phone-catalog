@@ -21,18 +21,6 @@
     }
   }
 
-  &__navArrow {
-    width: 16px;
-    height: 16px;
-
-    background-image: url('../../../public/img/icons/arrow.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-
-    transform: rotate(-90deg);
-  }
-
   &__title {
     margin: 16px 0 32px;
 
