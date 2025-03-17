@@ -1,11 +1,15 @@
-@import '../../shared/variables.scss';
-@import '../../shared/mixins.scss';
+@import '../../shared/variables';
+@import '../../shared/mixins';
 
 .products {
   @include mobile {
-    margin: 40px auto;
-    padding: 20px;
+    margin: 80px 0;
+    padding-left: 16px;
     box-sizing: border-box;
+  }
+
+  @include tablet {
+    padding: 0;
   }
 }
 
@@ -24,14 +28,15 @@
 
 .controls {
   display: flex;
+  justify-content: space-between;
   gap: 10px;
 }
 
-.prev, .next {
+.prev,
+.next {
   background: none;
   border: 1px solid var(--standard-color);
   background-color: var(--default-color);
-  border: 1px solid var(--standard-color);
   padding: 10px;
   cursor: pointer;
   transition: 0.3s;
@@ -39,7 +44,17 @@
   &:hover {
     transform: scale(1.1);
     border: 1px solid var(--hover-color);
-    border: 1px solid var(--hover-color);
     background-color: var(--icons-color);
   }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
 }
+
+.slider {
+  margin-top: 20px;
+}
+
+

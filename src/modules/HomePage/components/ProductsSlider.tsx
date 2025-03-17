@@ -1,59 +1,27 @@
-import React, { useEffect, useRef } from 'react';
-import style from './ProductsSlider.module.scss';
+import React, { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Slider from 'react-slick';
+import { Navigation } from 'swiper/modules';
 import { ProductItem } from '../../shared/ProductItem';
 import { Product } from '../../shared/types/Product';
+import style from './ProductsSlider.module.scss';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 type Props = {
   title: string;
   productsToShow: Product[];
   discount: boolean;
 };
+
 export const ProductsSlider: React.FC<Props> = ({
   title,
   productsToShow,
   discount,
 }) => {
-  const sliderRef = useRef<Slider | null>(null);
-
-  useEffect(() => {
-    const track = document.querySelector('.slick-track') as HTMLElement;
-    const list = document.querySelector('.slick-list') as HTMLElement;
-
-    if (track && list) {
-      track.style.transform = 'translateX(-20px)';
-      list.style.paddingLeft = '0';
-      list.style.paddingRight = '10%';
-      list.style.overflow = 'hidden';
-    }
-  }, []);
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1300,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 1100,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-    ref: sliderRef,
-  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const swiperRef = useRef<any>(null);
 
   return (
     <div className={style.products}>
@@ -62,29 +30,52 @@ export const ProductsSlider: React.FC<Props> = ({
         <div className={style.controls}>
           <button
             className={style.prev}
-            onClick={() => sliderRef.current?.slickPrev()}
+            onClick={() => swiperRef.current?.slidePrev()}
           >
             <img src="icons/arrow-left.png" alt="Previous" />
           </button>
           <button
             className={style.next}
-            onClick={() => sliderRef.current?.slickNext()}
+            onClick={() => swiperRef.current?.slideNext()}
           >
             <img src="icons/arrow-right.png" alt="Next" />
           </button>
         </div>
       </div>
+
       <div className={style.slider}>
-        <Slider {...settings}>
+        <Swiper
+          modules={[Navigation]}
+          onSwiper={swiper => (swiperRef.current = swiper)}
+          spaceBetween={16}
+          slidesPerView={4}
+          breakpoints={{
+            1400: {
+              slidesPerView: 4,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            500: {
+              slidesPerView: 1.5,
+            },
+            320: {
+              slidesPerView: 1,
+            },
+          }}
+          grabCursor={true}
+          loop={true}
+          centeredSlides={false}
+        >
           {productsToShow.map(product => (
-            <ProductItem
-              key={product.id}
-              product={product}
-              discount={discount}
-              className={style.slider__width}
-            />
+            <SwiperSlide key={product.id}>
+              <ProductItem product={product} discount={discount} />
+            </SwiperSlide>
           ))}
-        </Slider>
+        </Swiper>
       </div>
     </div>
   );

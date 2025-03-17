@@ -19,7 +19,6 @@ export const ProductItem: React.FC<Props> = ({
   discount,
   className,
 }) => {
-  console.log("className в ProductItem:", className);
   const { favourites, toggleFavourite } = useFavourites();
   const { t } = useTranslation();
   const { addProduct, isInCart } = useCart();

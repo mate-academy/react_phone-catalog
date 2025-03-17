@@ -1,5 +1,5 @@
-@import '../../shared/variables.scss';
-@import '../../shared/mixins.scss';
+@import '../../shared/variables';
+@import '../../shared/mixins';
 
 .title {
   @include mobile {
@@ -31,7 +31,6 @@
   .category {
     @include mobile {
       width: 100%;
-      margin-bottom: 40px;
     }
 
     @include tablet {

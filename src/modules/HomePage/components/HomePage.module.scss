@@ -1,4 +1,4 @@
-@import '../../shared/mixins.scss';
+@import '../../shared/mixins';
 
 .container {
   @include mobile {
@@ -7,8 +7,10 @@
 
   @include tablet {
     display: block;
+    box-sizing: border-box;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 32px;
+
   }
 }
