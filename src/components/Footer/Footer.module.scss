@@ -30,7 +30,7 @@
     min-width: 90px;
     width: 100%;
 
-    background-image: url('../../../public/img/Logo.png');
+    background-image: url('/img/Logo.png');
     background-repeat: no-repeat;
     background-size: contain;
 
@@ -97,7 +97,7 @@
 
     border: 1px solid $icons-color;
 
-    background-image: url('../../../public/img/icons/arrow.png');
+    background-image: url('/img/icons/arrow.png');
     background-repeat: no-repeat;
     background-size: 16px;
     background-position: center;

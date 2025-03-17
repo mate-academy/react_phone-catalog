@@ -47,7 +47,7 @@ export const ProductImages = () => {
         <div className={styles.productImages__slider}>
           {activeProduct?.images.map((imagePath, index) => (
             <img
-              src={`${imagePath}`}
+              src={`/${imagePath}`}
               className={styles.productImages__mainImage}
               alt={`Product image ${index}`}
               key={index}
@@ -59,7 +59,7 @@ export const ProductImages = () => {
       <div className={styles.productImages__allImages}>
         {activeProduct?.images.map((imagePath, index) => (
           <img
-            src={`${imagePath}`}
+            src={`/${imagePath}`}
             className={classNames(styles.productImages__image, {
               [styles.productImages__imageActive]: index === currentSlide,
             })}

@@ -45,7 +45,7 @@ export const CartPage = () => {
                   ></a>
 
                   <img
-                    src={product.image}
+                    src={`/${product.image}`}
                     className={styles.cart__cardImage}
                     alt={`Image of ${product.name}`}
                   />

@@ -90,13 +90,13 @@
   }
 
   &__favourites {
-    background-image: url('../../../public/img/icons/heart-like.png');
+    background-image: url('/img/icons/heart-like.png');
   }
 
   &__cart {
     box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
 
-    background-image: url('../../../public/img/icons/cart-icon.png');
+    background-image: url('/img/icons/cart-icon.png');
   }
 
   &:target {

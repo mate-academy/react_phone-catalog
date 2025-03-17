@@ -73,7 +73,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className={styles.card}>
       <Link to={handleLink()} className={styles.card__imageContainer}>
-        <img className={styles.card__image} src={product.image} alt="" />
+        <img className={styles.card__image} src={`/${product.image}`} alt="" />
       </Link>
 
       <div className={styles.card__titleContainer}>

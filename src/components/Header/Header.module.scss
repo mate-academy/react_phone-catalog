@@ -32,7 +32,7 @@
     height: 22px;
     margin: 0 16px;
 
-    background-image: url('../../../public/img/Logo.png');
+    background-image: url('/img/Logo.png');
     background-repeat: no-repeat;
     background-size: contain;
 
@@ -62,7 +62,7 @@
     height: 100%;
     width: $header-height;
 
-    background-image: url('../../../public/img/icons/Menu.png');
+    background-image: url('/img/icons/Menu.png');
     background-repeat: no-repeat;
     background-size: 16px;
     background-position: center;
@@ -77,7 +77,7 @@
   }
 
   &__menuButtonClose {
-    background-image: url('../../../img/icons/Close.png');
+    background-image: url('/img/icons/Close.png');
   }
 
   &__navButtons {
@@ -149,7 +149,7 @@
 
     text-decoration: none;
 
-    background-image: url('../../../public/img/icons/heart-like.png');
+    background-image: url('/img/icons/heart-like.png');
   }
 
   &__cart {
@@ -159,7 +159,7 @@
 
     text-decoration: none;
 
-    background-image: url('../../../public/img/icons/cart-icon.png');
+    background-image: url('/img/icons/cart-icon.png');
   }
 
   &__linkActive {

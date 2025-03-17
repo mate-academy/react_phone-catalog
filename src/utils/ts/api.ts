@@ -1,8 +1,9 @@
 import { CategoriesType } from '../../types/CategoriesType';
 import { ProductType } from '../../types/ProductType';
+import { baseUrl } from './baseURL';
 
 export const getBannerSlides = () => {
-  return fetch('public/api/banner.json').then(response => {
+  return fetch(`${baseUrl}/api/banner.json`).then(response => {
     if (!response.ok) {
       throw new Error();
     }
@@ -12,7 +13,7 @@ export const getBannerSlides = () => {
 };
 
 export const getProductsForHomePage = () => {
-  return fetch('public/api/products.json')
+  return fetch(`${baseUrl}/api/products.json`)
     .then(response => {
       if (!response.ok) {
         throw new Error();
@@ -36,7 +37,7 @@ export const getProductsForHomePage = () => {
 };
 
 export const getProducts = (category: CategoriesType) => {
-  return fetch('public/api/products.json')
+  return fetch(`${baseUrl}/api/products.json`)
     .then(response => {
       if (!response.ok) {
         throw new Error();
@@ -56,7 +57,7 @@ export const getProducts = (category: CategoriesType) => {
 };
 
 export const findProduct = (productId: string) => {
-  return fetch('public/api/products.json')
+  return fetch(`${baseUrl}/api/products.json`)
     .then(response => {
       if (!response.ok) {
         throw new Error();
@@ -72,7 +73,7 @@ export const findProduct = (productId: string) => {
 };
 
 export const getProduct = (category: CategoriesType, productId: string) => {
-  return fetch(`public/api/${category}.json`).then(async response => {
+  return fetch(`${baseUrl}/api/${category}.json`).then(async response => {
     if (!response.ok) {
       throw new Error();
     }
@@ -84,7 +85,7 @@ export const getProduct = (category: CategoriesType, productId: string) => {
 };
 
 export const getRandomProducts = () => {
-  return fetch('public/api/products.json')
+  return fetch(`${baseUrl}/api/products.json`)
     .then(response => {
       if (!response.ok) {
         throw new Error();
