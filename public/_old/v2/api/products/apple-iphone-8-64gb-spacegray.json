@@ -9,10 +9,10 @@
 	"colorsAvailable": ["spacegray", "gold", "silver"],
 	"color": "spacegray",
 	"images": [
-		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-8/spacegray/00.jpg",
-		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-8/spacegray/01.jpg",
-		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-8/spacegray/02.jpg",
-		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-8/spacegray/03.jpg"
+		"img/phones/apple-iphone-8/spacegray/00.jpg",
+		"img/phones/apple-iphone-8/spacegray/01.jpg",
+		"img/phones/apple-iphone-8/spacegray/02.jpg",
+		"img/phones/apple-iphone-8/spacegray/03.jpg"
 	],
 	"description": [
 		{

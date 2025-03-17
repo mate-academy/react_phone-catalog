@@ -9,11 +9,11 @@
 	"colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
 	"color": "green",
 	"images": [
-		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-11/green/00.jpg",
-		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-11/green/01.jpg",
-		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-11/green/02.jpg",
-		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-11/green/03.jpg",
-		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-11/green/04.jpg"
+		"img/phones/apple-iphone-11/green/00.jpg",
+		"img/phones/apple-iphone-11/green/01.jpg",
+		"img/phones/apple-iphone-11/green/02.jpg",
+		"img/phones/apple-iphone-11/green/03.jpg",
+		"img/phones/apple-iphone-11/green/04.jpg"
 	],
 	"description": [
 		{
