@@ -1,0 +1,75 @@
+@import '../../../styles/main';
+
+.category {
+  margin-block: 56px;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $textSecondaryColor;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    margin-block: 64px;
+    padding-inline: 0;
+  }
+
+  @include on-desktop {
+    margin-block: 80px;
+  }
+
+  &_title {
+    margin-bottom: 24px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 30.8px;
+    color: $textMainColor;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &_img {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 24px;
+    object-fit: contain;
+    transition: all $animation;
+
+    @include on-desktop {
+      height: 368px;
+      width: 368px;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &_name {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 20px;
+    line-height: 25.56px;
+    color: $textMainColor;
+  }
+}
