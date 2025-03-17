@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { BackButton } from '../../components/BackButton';
 import { ErrorComponent } from '../../components/ErrorComponent';
+import { baseUrl } from '../../utils/ts/baseURL';
 
 export const CartPage = () => {
   const { cart, handleCart, clearCart, updateQuantity, error } =
@@ -45,7 +46,7 @@ export const CartPage = () => {
                   ></a>
 
                   <img
-                    src={`/${product.image}`}
+                    src={`${baseUrl}/${product.image}`}
                     className={styles.cart__cardImage}
                     alt={`Image of ${product.name}`}
                   />
