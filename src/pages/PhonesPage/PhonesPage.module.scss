@@ -1,1 +1,123 @@
-// not empty
+@import '../../styles/variables';
+@import '../../styles/mixinsTypography';
+
+.phones {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+
+  &__navigate_icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    width: 93px;
+  }
+
+  &__navigate_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+
+    &_text {
+      font-family: Montserrat, sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $secondaryColor;
+      margin: 0;
+
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+    color: $primaryColor;
+
+    @include h1-mobile;
+  }
+
+  &__count {
+    margin: 0;
+    margin-bottom: 32px;
+    color: $secondaryColor;
+
+    @include body-text;
+  }
+
+  &__sorts_page {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+
+  &__sorts_sortBy,
+  &__sorts_sortItems {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+
+    &_text {
+      margin: 0;
+      color: $secondaryColor;
+
+      @include small-text;
+    }
+  }
+
+  &__sorts_sortBy {
+    max-width: 187px;
+  }
+
+  &__sorts_sortItems {
+    max-width: 136px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 40px;
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+    &_btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #ccc;
+      background-color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s, color 0.3s;
+
+      &:hover {
+        background: #030202;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+
+      &_active {
+        background-color: #333;
+        color: white;
+        border: none;
+      }
+    }
+  }
+}

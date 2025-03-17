@@ -117,7 +117,6 @@ export const HomePage = () => {
       {products.length > 0 && (
         <ProductSwiper name={names[1]} products={sortedByDifference} />
       )}
-      ;
     </div>
   );
 };

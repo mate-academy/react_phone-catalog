@@ -1,0 +1,53 @@
+@import '../../styles/variables';
+@import '../../styles/mixinsTypography';
+
+.dropdown {
+  position: relative;
+  width: 100%;
+  border: 1px solid $iconsColor;
+
+
+  &__button {
+    width: 100%;
+    padding: 10px;
+    background-color: $whiteColor;
+    border: 1px solid $grayColor;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $primaryColor;
+
+    @include buttons;
+
+    &_img {
+      // not ampty
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: max-content;
+    margin: 0;
+    background-color: $whiteColor;
+    list-style: none;
+    padding: 10px;
+    gap: 10px;
+    border: 1px solid $iconsColor;
+  }
+
+  &__item {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $primaryColor;
+      color: $whiteColor;
+    }
+  }
+}

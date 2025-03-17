@@ -1,0 +1,142 @@
+@import '../../styles/mixinsTypography';
+@import '../../styles/variables';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition:
+    transform 0.4s ease-in,
+    opacity 0.4s ease-in;
+  z-index: 100;
+
+  &_open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    border-bottom: 1px solid $grayColor;
+    margin-bottom: 24px;
+
+    &_logo {
+      height: 48px;
+      width: 96px;
+    }
+
+    &_img {
+      padding: 16px 13px;
+    }
+
+    &_cross {
+      background-color: $whiteColor;
+      height: 48px;
+      width: 48px;
+      border: 0;
+      border-left: 1px solid rgba(226, 230, 233, 1);
+      background-image: url('../../imgs/svg/cross-icon.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: auto;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 27px;
+    width: max-content;
+    color: $secondaryColor;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+
+    @include uppercase;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $primaryColor;
+      transform: scaleX(0);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &:hover {
+      color: $primaryColor;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    margin: 0;
+    height: 64px;
+    width: 100%;
+    border: 1px solid rgba(226, 230, 233, 1);
+
+    &_favorites {
+      background-image: url(../../imgs/svg/favorite-icon.svg);
+    }
+
+    &_cart {
+      background-image: url(../../imgs/svg/cart-icon.svg);
+    }
+
+    &_favorites,
+    &_cart {
+      height: 64px;
+      width: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      transition: background-color 0.2s ease-in-out;
+      box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: $primaryColor;
+        transition:
+          width 0.2s ease-in-out,
+          left 0.2s ease-in-out;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+  }
+}
