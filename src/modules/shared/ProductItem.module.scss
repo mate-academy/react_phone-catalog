@@ -1,5 +1,5 @@
-@import './variables.scss';
-@import './mixins.scss';
+@import './variables';
+@import './mixins';
 
 .product {
   @include mobile {
@@ -96,9 +96,6 @@
   }
 
   &__add {
-    // position: absolute;
-    // bottom: 20px;
-    // left: 20px;
     width: 160px;
     height: 40px;
     background-color: var(--button-color);
@@ -113,9 +110,6 @@
   }
 
   &__added {
-    // position: absolute;
-    // bottom: 20px;
-    // left: 20px;
     width: 160px;
     height: 40px;
     background-color: var(--default-color);
@@ -126,10 +120,7 @@
   }
 
   &__heart {
-    // position: absolute;
     background-color: var(--default-color);
-    // bottom: 20px;
-    // right: 20px;
     display: flex;
     border: 1px solid var(--standard-color);
     align-items: center;
@@ -142,5 +133,15 @@
       border: 1px solid var(--hover-color);
       background-color: var(--icons-color);
     }
+  }
+}
+
+.slider__width {
+  @include tablet {
+    max-width: 288px;
+  }
+
+  @include laptop {
+    width: 272px;
   }
 }

@@ -8,12 +8,18 @@ import { Link } from 'react-router-dom';
 import { useCart } from './context/CartContext';
 import { useTheme } from './context/ThemeContext';
 import { useTranslation } from 'react-i18next';
+import classNames from 'classnames';
 type Props = {
   product: Product | Gadget;
   discount?: boolean;
-  styles?: React.CSSProperties;
+  className?: string;
 };
-export const ProductItem: React.FC<Props> = ({ product, discount, styles }) => {
+export const ProductItem: React.FC<Props> = ({
+  product,
+  discount,
+  className,
+}) => {
+  console.log("className в ProductItem:", className);
   const { favourites, toggleFavourite } = useFavourites();
   const { t } = useTranslation();
   const { addProduct, isInCart } = useCart();
@@ -24,7 +30,7 @@ export const ProductItem: React.FC<Props> = ({ product, discount, styles }) => {
   const { theme } = useTheme();
 
   return (
-    <div className={style.product} style={styles}>
+    <div className={classNames(style.product, className)}>
       <div className={style.product__top}>
         <Link
           to={`/product/${'itemId' in product ? product.itemId : product.id}`}

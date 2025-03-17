@@ -1,29 +1,19 @@
-@import '../../shared/mixins';
-@import '../../shared/variables';
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
 
 .products {
   @include mobile {
+    margin: 40px auto;
+    padding: 20px;
     box-sizing: border-box;
-    margin: 40px 0;
-    padding: 16px;
-  }
-
-  @include tablet {
-    padding: 0;
   }
 }
 
 .header {
-  @include mobile {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-
-  @include tablet {
-    padding: 0;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .title {
@@ -38,60 +28,18 @@
 }
 
 .prev, .next {
-  cursor: pointer;
-
-  padding: 10px;
+  background: none;
   border: 1px solid var(--standard-color);
-
   background-color: var(--default-color);
-
+  border: 1px solid var(--standard-color);
+  padding: 10px;
+  cursor: pointer;
   transition: 0.3s;
 
   &:hover {
     transform: scale(1.1);
     border: 1px solid var(--hover-color);
+    border: 1px solid var(--hover-color);
     background-color: var(--icons-color);
   }
 }
-
-.slider {
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.slickTrack {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.slickSlide {
-  flex-shrink: 0;
-  box-sizing: border-box;
-  width: calc(25% - 20px);
-}
-
-@media (max-width: 1300px) {
-  .slickSlide {
-    width: calc(33.33% - 20px);
-  }
-}
-
-@media (max-width: 1100px) {
-  .slickSlide {
-    width: calc(50% - 20px);
-  }
-}
-
-@media (max-width: 768px) {
-  .slickSlide {
-    width: 100%;
-  }
-}
-
-

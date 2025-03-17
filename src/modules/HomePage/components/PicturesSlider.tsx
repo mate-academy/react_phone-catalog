@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import style from './PicturesSlider.module.scss';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const PicturesSlider = () => {
@@ -13,6 +13,8 @@ export const PicturesSlider = () => {
     'img/gfgfh.png',
     'img/banner-accessories.png',
   ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const sliderRef = useRef<Slider | null>(null);
   const settings = {
@@ -24,7 +26,22 @@ export const PicturesSlider = () => {
     autoplay: true,
     autoPlaySpeed: 3000,
     ref: sliderRef,
-    dots: true, // Вмикаємо dots
+    dots: true,
+    beforeChange: (_current: number, next: number) => {
+      setCurrentSlide(next);
+    },
+    customPaging: (i: number) => (
+      <div
+        style={{
+          width: '20px',
+          height: '6px',
+          backgroundColor: i === currentSlide ? '#313237' : '#E2E6E9',
+          transition: 'background-color 0.3s ease',
+          margin: '0 10px',
+          marginTop: '20px',
+        }}
+      />
+    ),
   };
 
   return (

@@ -1,56 +1,59 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import style from './ProductsSlider.module.scss';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Slider from 'react-slick';
 import { ProductItem } from '../../shared/ProductItem';
 import { Product } from '../../shared/types/Product';
-
 type Props = {
   title: string;
   productsToShow: Product[];
   discount: boolean;
 };
-
 export const ProductsSlider: React.FC<Props> = ({
   title,
   productsToShow,
   discount,
 }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [slidesToShow, setSlidesToShow] = useState(4);
-
-  const updateSlidesToShow = () => {
-    const width = window.innerWidth;
-
-    if (width <= 768) {
-      setSlidesToShow(1);
-    } else if (width <= 1100) {
-      setSlidesToShow(2);
-    } else if (width <= 1300) {
-      setSlidesToShow(3);
-    } else {
-      setSlidesToShow(4);
-    }
-  };
+  const sliderRef = useRef<Slider | null>(null);
 
   useEffect(() => {
-    updateSlidesToShow();
-    window.addEventListener('resize', updateSlidesToShow);
+    const track = document.querySelector('.slick-track') as HTMLElement;
+    const list = document.querySelector('.slick-list') as HTMLElement;
 
-    return () => {
-      window.removeEventListener('resize', updateSlidesToShow);
-    };
-  }, []);
-
-  const goToSlide = (index: number) => {
-    if (index < 0) {
-      setCurrentSlide(0);
-    } else if (index >= productsToShow.length - slidesToShow) {
-      setCurrentSlide(productsToShow.length - slidesToShow);
-    } else {
-      setCurrentSlide(index);
+    if (track && list) {
+      track.style.transform = 'translateX(-20px)';
+      list.style.paddingLeft = '0';
+      list.style.paddingRight = '10%';
+      list.style.overflow = 'hidden';
     }
+  }, []);
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 1100,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+    ref: sliderRef,
   };
-
-  const offset = currentSlide * (100 / slidesToShow);
 
   return (
     <div className={style.products}>
@@ -59,35 +62,29 @@ export const ProductsSlider: React.FC<Props> = ({
         <div className={style.controls}>
           <button
             className={style.prev}
-            onClick={() => goToSlide(currentSlide - 1)}
+            onClick={() => sliderRef.current?.slickPrev()}
           >
             <img src="icons/arrow-left.png" alt="Previous" />
           </button>
           <button
             className={style.next}
-            onClick={() => goToSlide(currentSlide + 1)}
+            onClick={() => sliderRef.current?.slickNext()}
           >
             <img src="icons/arrow-right.png" alt="Next" />
           </button>
         </div>
       </div>
-
       <div className={style.slider}>
-        <div
-          className={style.slickTrack}
-          style={{
-            transform: `translateX(-${offset}%)`,
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
-          {productsToShow
-            .slice(currentSlide, currentSlide + slidesToShow)
-            .map(product => (
-              <div key={product.id} className={style.slickSlide}>
-                <ProductItem product={product} discount={discount} />
-              </div>
-            ))}
-        </div>
+        <Slider {...settings}>
+          {productsToShow.map(product => (
+            <ProductItem
+              key={product.id}
+              product={product}
+              discount={discount}
+              className={style.slider__width}
+            />
+          ))}
+        </Slider>
       </div>
     </div>
   );
