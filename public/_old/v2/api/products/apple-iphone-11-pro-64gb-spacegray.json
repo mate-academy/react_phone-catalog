@@ -9,9 +9,9 @@
 	"colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
 	"color": "spacegray",
 	"images": [
-		"img/phones/apple-iphone-11-pro/spacegray/00.jpg",
-		"img/phones/apple-iphone-11-pro/spacegray/01.jpg",
-		"img/phones/apple-iphone-11-pro/spacegray/02.jpg"
+		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-11-pro/spacegray/00.jpg",
+		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-11-pro/spacegray/01.jpg",
+		"img/s://NataliaTopornitska.github.io/react_phone-catalog/img/phones/apple-iphone-11-pro/spacegray/02.jpg"
 	],
 	"description": [
 		{
