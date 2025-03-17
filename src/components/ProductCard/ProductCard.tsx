@@ -5,6 +5,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { CategoriesType } from '../../types/CategoriesType';
 import { ProductType } from '../../types/ProductType';
 import { AppContext } from '../../context/AppContext';
+import { baseUrl } from '../../utils/ts/baseURL';
 
 interface ProductCardProps {
   product: ProductType;
@@ -73,7 +74,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className={styles.card}>
       <Link to={handleLink()} className={styles.card__imageContainer}>
-        <img className={styles.card__image} src={`/${product.image}`} alt="" />
+        <img
+          className={styles.card__image}
+          src={`${baseUrl}/${product.image}`}
+          alt=""
+        />
       </Link>
 
       <div className={styles.card__titleContainer}>

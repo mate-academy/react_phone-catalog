@@ -4,6 +4,7 @@ import { AppContext } from '../../context/AppContext';
 import styles from './ProductImages.module.scss';
 import useEmblaCarousel from 'embla-carousel-react';
 import classNames from 'classnames';
+import { baseUrl } from '../../utils/ts/baseURL';
 
 export const ProductImages = () => {
   const { activeProduct } = useContext(AppContext)!;
@@ -47,7 +48,7 @@ export const ProductImages = () => {
         <div className={styles.productImages__slider}>
           {activeProduct?.images.map((imagePath, index) => (
             <img
-              src={`/${imagePath}`}
+              src={`${baseUrl}/${imagePath}`}
               className={styles.productImages__mainImage}
               alt={`Product image ${index}`}
               key={index}
@@ -59,7 +60,7 @@ export const ProductImages = () => {
       <div className={styles.productImages__allImages}>
         {activeProduct?.images.map((imagePath, index) => (
           <img
-            src={`/${imagePath}`}
+            src={`${baseUrl}/${imagePath}`}
             className={classNames(styles.productImages__image, {
               [styles.productImages__imageActive]: index === currentSlide,
             })}

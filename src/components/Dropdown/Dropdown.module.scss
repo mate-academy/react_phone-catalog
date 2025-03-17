@@ -23,7 +23,7 @@
     align-items: center;
 
     background-color: $white-color;
-    background-image: url('../../../public/img/icons/arrow-disabled-down.png');
+    background-image: url('#{$base-url}/img/icons/arrow-disabled-down.png');
     background-repeat: no-repeat;
     background-size: 16px;
     background-position-x: calc(100% - 10px);
@@ -36,7 +36,7 @@
     outline: none;
     border-color: $primary-color;
 
-    background-image: url('../../../public/img/icons/arrow-disabled.png');
+    background-image: url('#{$base-url}/img/icons/arrow-disabled.png');
   }
 
   &__itemsList {

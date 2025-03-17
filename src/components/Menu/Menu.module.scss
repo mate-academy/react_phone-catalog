@@ -23,8 +23,6 @@
   pointer-events: all;
   z-index: 9;
 
-  // overflow: hidden;
-
   &__linksContainer {
     display: flex;
     flex-direction: column;
@@ -90,13 +88,13 @@
   }
 
   &__favourites {
-    background-image: url('/img/icons/heart-like.png');
+    background-image: url('#{$base-url}/img/icons/heart-like.png');
   }
 
   &__cart {
     box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
 
-    background-image: url('/img/icons/cart-icon.png');
+    background-image: url('#{$base-url}/img/icons/cart-icon.png');
   }
 
   &:target {

@@ -76,7 +76,7 @@
       height: 16px;
       min-width: 16px;
 
-      background-image: url('/img/icons/Close-disabled.png');
+      background-image: url('#{$base-url}/img/icons/Close-disabled.png');
       background-repeat: no-repeat;
       background-size: 100%;
       background-position: center;
@@ -118,11 +118,11 @@
     @include hover(border-color, $primary-color);
 
     &Minus {
-      background-image: url('/img/icons/Minus.png');
+      background-image: url('#{$base-url}/img/icons/Minus.png');
     }
 
     &Plus {
-      background-image: url('/img/icons/Plus.png');
+      background-image: url('#{$base-url}/img/icons/Plus.png');
     }
   }
 
