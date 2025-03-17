@@ -1,8 +1,8 @@
-@import '../shared/mixins.scss';
+@import '../shared/mixins';
 
 .items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 16px;
   margin-block: 20px;
 
@@ -14,7 +14,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 990px) {
     grid-template-columns: repeat(3, 1fr);
   }
 

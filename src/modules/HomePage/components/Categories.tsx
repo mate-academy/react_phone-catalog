@@ -13,12 +13,14 @@ export const Categories = () => {
       <h2 className={style.title}>{t('shopByCategory')}</h2>
       <div className={style.categories}>
         <div className={style.category}>
-          <Link to="/phones">
-            <img
-              src="./img/mobile-phones-category.png"
-              className={style.category__image}
-            />
-          </Link>
+          <div className={style.image__container}>
+            <Link to="/phones">
+              <img
+                src="./img/mobile-phones-category.png"
+                className={style.category__image}
+              />
+            </Link>
+          </div>
           <p className={style.category__name}>
             {t('categories.mobile phones')}
           </p>
@@ -28,12 +30,14 @@ export const Categories = () => {
         </div>
 
         <div className={style.category}>
-          <Link to="/tablets">
-            <img
-              src="./img/tablets-category.png"
-              className={style.category__image}
-            />
-          </Link>
+          <div className={style.image__container}>
+            <Link to="/tablets">
+              <img
+                src="./img/tablets-category.png"
+                className={style.category__image}
+              />
+            </Link>
+          </div>
           <p className={style.category__name}>{t('categories.tablets')}</p>
           <p className={style.category__quantity}>
             {tablets.length} {t('models')}
@@ -41,12 +45,14 @@ export const Categories = () => {
         </div>
 
         <div className={style.category}>
-          <Link to="/accessories">
-            <img
-              src="./img/accessories-category.png"
-              className={style.category__image}
-            />
-          </Link>
+          <div className={style.image__container}>
+            <Link to="/accessories">
+              <img
+                src="./img/accessories-category.png"
+                className={style.category__image}
+              />
+            </Link>
+          </div>
           <p className={style.category__name}>{t('categories.accessories')}</p>
           <p className={style.category__quantity}>
             {accessories.length} {t('models')}

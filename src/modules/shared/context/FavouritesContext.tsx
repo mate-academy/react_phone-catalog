@@ -8,8 +8,8 @@ import {
 } from 'react';
 
 interface FavouritesContextType {
-  favourites: Array<number | string>;
-  toggleFavourite: (productId: number | string) => void;
+  favourites: string[];
+  toggleFavourite: (productId: string) => void;
 }
 
 const FavouritesContext = createContext<FavouritesContextType | undefined>(
@@ -17,7 +17,7 @@ const FavouritesContext = createContext<FavouritesContextType | undefined>(
 );
 
 export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
-  const [favourites, setFavourites] = useState<Array<number | string>>([]);
+  const [favourites, setFavourites] = useState<string[]>([]);
 
   useEffect(() => {
     const savedFavourites = JSON.parse(
@@ -27,7 +27,7 @@ export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
     setFavourites(savedFavourites);
   }, []);
 
-  const toggleFavourite = (productId: number | string) => {
+  const toggleFavourite = (productId: string) => {
     let updatedFavourites;
 
     if (favourites.includes(productId)) {

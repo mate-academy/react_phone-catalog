@@ -40,6 +40,7 @@
     &__image {
       @include mobile {
         width: 100%;
+        background-color: lightgray;
       }
 
       @include tablet {
@@ -57,17 +58,12 @@
       @include mobile {
         margin: 0;
         text-align: left;
-        padding-left: 40px;
         font-size: 20px;
         font-weight: 600;
         color: var(--hover-color);
-        margin-top: 10px;
+        margin-top: 24px;
         margin-bottom: 5px;
 
-      }
-
-      @include tablet {
-        padding-left: 10px;
       }
     }
 
@@ -75,14 +71,10 @@
       @include mobile {
         margin: 0;
         text-align: left;
-        padding-left: 40px;
         font-size: 14px;
         font-weight: 500;
         color: $grey-color;
-      }
-
-      @include tablet {
-        padding-left: 10px;
+        margin-bottom: 32px;
       }
     }
   }

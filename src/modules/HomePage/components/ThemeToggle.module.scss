@@ -1,19 +1,29 @@
-.toggle {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  width: 30px;
-  height: 30px;
-  margin-right: 5px;
-  background-color: var(--button-hover);
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+@import '../../shared/mixins';
 
-  &:hover {
-    opacity: 0.8;
+.toggle {
+  @include mobile {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    background-color: var(--button-hover);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
+
+  @include laptop {
+    width: 30px;
+    height: 30px;
+  }
+
 }

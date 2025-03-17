@@ -4,14 +4,14 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 1000;
   background-color: var(--background-color);
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
-  border: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 
   &__left {
     display: flex;
@@ -25,6 +25,18 @@
 
     &:hover {
       transform: scale(1.1);
+    }
+  }
+
+  &__image {
+    @include mobile {
+      width: 64px;
+      height: 22px;
+    }
+
+    @include laptop {
+      width: 80px;
+      height: 28px;
     }
   }
 
@@ -54,21 +66,47 @@
   }
 
   &__link {
-    text-decoration: none;
-    color: $grey-color;
-    font-size: 12px;
-    font-weight: 800;
-    padding-bottom: 20px;
+    @include tablet {
+      text-decoration: none;
+      color: $grey-color;
+      font-size: 11px;
+      font-weight: 800;
+      padding-bottom: 16px;
 
-    &:hover {
+      &:hover {
+        color: var(--hover-color);
+        border-bottom: 3px solid var(--hover-color);
+      }
+    }
+
+    @include laptop {
+      font-size: 12px;
+      padding-bottom: 24px;
+    }
+
+    &--active {
       color: var(--hover-color);
       border-bottom: 3px solid var(--hover-color);
     }
+
   }
 
   &__right {
     display: flex;
     align-items: center;
+  }
+
+  &__toggles {
+    display: flex;
+
+    @include tablet {
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    @include laptop {
+      flex-direction: row;
+    }
   }
 
   &__heart,
@@ -81,37 +119,49 @@
       display: inline-block;
       position: relative;
       padding: 16px;
-      border: 1px solid var(--border-color);
+      border-left: 1px solid var(--border-color);
       box-sizing: border-box;
 
       &:hover {
         border-bottom: 3px solid var(--hover-color);
       }
     }
+
+    @include laptop {
+      padding: 24px;
+    }
   }
 
   &__badge {
-    position: absolute;
-    top: 5px;
-    right: 7px;
-    background-color: red;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 50%;
-    border: 2px solid white;
-    width: 14px;
-    height: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include tablet {
+      position: absolute;
+      top: 5px;
+      right: 7px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 50%;
+      border: 2px solid white;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include laptop {
+      top: 12px;
+      right: 14px;
+    }
+
   }
 
   &__menu {
     @include mobile {
       display: block;
       padding: 16px;
-      border: 1px solid var(--border-color);
+      border-left: 1px solid var(--border-color);
 
       &:hover {
         border-bottom: 3px solid var(--hover-color);

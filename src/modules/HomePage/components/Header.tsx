@@ -1,13 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import style from './Header.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useFavourites } from '../../shared/context/FavouritesContext';
 import { useCart } from '../../shared/context/CartContext';
 import { ThemeToggle } from './ThemeToggle';
 import { useTheme } from '../../shared/context/ThemeContext';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from './LangSwitcher';
+import classNames from 'classnames';
 
 export const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ export const Header: React.FC = () => {
   const { favourites } = useFavourites();
   const { products } = useCart();
   const { theme } = useTheme();
+  const location = useLocation();
 
   return (
     <>
@@ -24,6 +26,7 @@ export const Header: React.FC = () => {
             <div className={style.nav__logo}>
               <Link to="/">
                 <img
+                  className={style.nav__image}
                   src={
                     theme === 'light'
                       ? './logo/Logo.png'
@@ -38,7 +41,11 @@ export const Header: React.FC = () => {
                 {navigation.map(item => (
                   <li className={style.nav__option} key={item}>
                     <Link
-                      className={style.nav__link}
+                      className={classNames(style.nav__link, {
+                        [style['nav__link--active']]:
+                          location.pathname ===
+                          `/${item === 'home' ? '' : item}`,
+                      })}
                       to={`/${item.toLowerCase()}`}
                     >
                       {t(`navigation.${item}`)}
@@ -49,8 +56,10 @@ export const Header: React.FC = () => {
             </div>
           </div>
           <div className={style.nav__right}>
-            <LanguageSwitcher />
-            <ThemeToggle />
+            <div className={style.nav__toggles}>
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </div>
             <div className={style.nav__heart}>
               <Link to="/favorites">
                 <img

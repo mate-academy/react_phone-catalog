@@ -39,6 +39,7 @@ export const PicturesSlider = () => {
           transition: 'background-color 0.3s ease',
           margin: '0 10px',
           marginTop: '20px',
+          zIndex: '1000',
         }}
       />
     ),

@@ -104,11 +104,15 @@ export const ProductItem: React.FC<Props> = ({
           </button>
           <div
             className={style.product__heart}
-            onClick={() => toggleFavourite(product.id)}
+            onClick={() =>
+              toggleFavourite('itemId' in product ? product.itemId : product.id)
+            }
           >
             <img
               src={
-                favourites.includes(product.id)
+                favourites.includes(
+                  'itemId' in product ? product.itemId : product.id,
+                )
                   ? './icons/heart-red.png'
                   : theme === 'light'
                     ? './icons/heart.png'
