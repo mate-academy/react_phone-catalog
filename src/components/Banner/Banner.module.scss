@@ -64,7 +64,7 @@
     width: 16px;
     height: 16px;
 
-    background-image: url('/img/icons/arrow.png');
+    background-image: url('#{$base-url}/img/icons/arrow.png');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
@@ -76,7 +76,7 @@
     width: 16px;
     height: 16px;
 
-    background-image: url('/img/icons/arrow.png');
+    background-image: url('#{$base-url}/img/icons/arrow.png');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;

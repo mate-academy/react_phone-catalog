@@ -47,7 +47,7 @@
 
   &__imgTablets {
     background-color: rgba(141, 141, 146, 1);
-    background-image: url('/img/category-tablets.png');
+    background-image: url('#{$base-url}/img/category-tablets.png');
     background-size: 145%;
     background-repeat: no-repeat;
     background-position-x: 20px;
@@ -56,7 +56,7 @@
 
   &__imgAccessories {
     background-color: rgba(151, 61, 95, 1);
-    background-image: url('/img/category-accessories.png');
+    background-image: url('#{$base-url}/img/category-accessories.png');
     background-size: 175%;
     background-repeat: no-repeat;
     background-position-x: 40px;

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../../utils/ts/baseURL';
 
 export const BannerSlides = () => {
   const isTablet = useMediaQuery({ minWidth: 640 });
@@ -41,7 +42,11 @@ export const BannerSlides = () => {
             </div>
           )}
           <img
-            src={isTablet ? slide.image[0] : slide.image[1]}
+            src={
+              isTablet
+                ? `${baseUrl}/${slide.image[0]}`
+                : `${baseUrl}/${slide.image[1]}`
+            }
             className={styles.bannerSlides__image}
             alt={`Image ${index}`}
           ></img>
