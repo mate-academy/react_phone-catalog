@@ -1,5 +1,4 @@
-// Header.tsx
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
 
@@ -10,12 +9,13 @@ export const Header = () => {
     { name: 'TABLETS', path: 'tablets' },
     { name: 'ACCESSORIES', path: 'accessories' },
   ];
+
   return (
     <header className="header page__header">
-      <div className="header__container">
+      <div className="header__content">
         <div className="header__logo">
           <a href="#" className="header__logo-link">
-            <img src="public/img/Logo.svg" alt="logo" />
+            <img src="/img/Logo.svg" alt="logo" />
           </a>
         </div>
 
@@ -23,14 +23,19 @@ export const Header = () => {
           <ul className="nav__list">
             {links.map((link, index) => (
               <li className="nav__item" key={index}>
-                <NavLink to={link.path} className={({isActive})=>classNames("nav__link",{"active":isActive})}>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    classNames('nav__link', { active: isActive })
+                  }
+                >
                   {link.name}
                 </NavLink>
               </li>
             ))}
           </ul>
         </nav>
-       
+
         <ul className="header__actions">
           <li className="header__actions-item header__actions-item--favourite">
             <a href="#" className="icon icon--favourite"></a>

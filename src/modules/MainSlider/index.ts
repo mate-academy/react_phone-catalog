@@ -1,1 +1,0 @@
-export { MainSlider } from './MainSlider';

@@ -1,16 +1,10 @@
 .home-page {
-    box-sizing: border-box;
-    overflow-x: hidden;
-
-    &__container {
-        // padding-inline: 100px;
-        margin: 0 auto;
-        max-width: 1400px;
-
-    }
+    // &__container {
+    //     margin: 0 auto;
+    //     max-width: 1200px;
+    // }
 
     &__slider {
-        // margin: 0 auto;
     }
 
     &__title {
@@ -21,6 +15,11 @@
         letter-spacing: -1%;
     }
 }
-.title {
+
+.new-models {
+    margin: 80px 0;
+}
+.hot-prices {
+    margin-top: 80px;
 }
 

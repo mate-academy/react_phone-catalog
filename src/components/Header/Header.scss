@@ -1,16 +1,14 @@
 
 
 .header {
-  scroll-behavior: smooth;
   width: 100%;
-  &__container {
-    // max-width: 1200px;
+
+  &__content {
     padding-left: 24px;
     display: flex;
     border-bottom: 1px solid #e2e6e9;
     align-items: center;
     justify-content: space-between;
-    margin: 0 auto;
   }
 
   &__logo-link {
@@ -33,7 +31,7 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #f5f5f5;
+      background-color: #89939a63;
     }
 
     &:not(:last-child) {
@@ -72,11 +70,11 @@
 }
 
 .icon--favourite {
-  background-image: url(/public/img/icons/Favourites.svg);
+  background-image: url(/img/icons/Favourites.svg);
 }
 
 .icon--cart {
-  background-image: url(/public/img/icons/Shopping_bag.svg);
+  background-image: url(/img/icons/Shopping_bag.svg);
 }
 
 .nav__list li:first-child .nav-link {

@@ -3,7 +3,6 @@ import { Header } from '../Header';
 import { Footer } from '../Footer';
 
 export const Layout = () => {
-  console.log("Layout component rendered!");
   return (
     <div className="wrapper">
       <Header />
@@ -12,7 +11,5 @@ export const Layout = () => {
       </main>
       <Footer />
     </div>
-   
-    
   );
 };

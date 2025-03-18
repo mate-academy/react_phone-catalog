@@ -1,5 +1,5 @@
-export const NotFoundPage = ()=> {
-    return (
-        <div className="">not page found</div>
-    )
+export const NotFoundPage = () => {
+  return (
+    <div className="">not page found</div>
+  )
 }
