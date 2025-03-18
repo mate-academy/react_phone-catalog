@@ -9,6 +9,7 @@ import { ProductDetails } from '../../types/ProductTypes';
 import { fetchAllProducts } from '../../utils/api';
 import { Loader } from '../Loader/Loader';
 import { NameSlider } from '../../nameslider';
+import catGif from '../../../assets/cat.gif';
 export const HomePage = () => {
   // const [phones, setPhones] = useState<Product[]>([]);
   const [phones, setPhones] = useState<ProductDetails[]>([]);
@@ -22,10 +23,12 @@ export const HomePage = () => {
 
         setPhones(data.filter(product => product.category === 'phones'));
         setError(null);
-      } catch {
-        setError(
-          `Oops, something went wrong, please check your connection 🫶💻`,
-        );
+      } catch (err: any) {
+        if (err.message === 'No internet connection') {
+          setError('No internet connection. Please check your network.');
+        } else {
+          setError('Server is not responding. Please try again later.');
+        }
         // window.alert(
         //   `Oops, something went wrong, please check your connection 🫶💻`,
         // );
@@ -43,7 +46,7 @@ export const HomePage = () => {
     <main className="main__homepage">
       {error && (
         <div className="error__container">
-          <img src="image\cat.gif" alt="Error" className="error__img" />
+          <img src={catGif} alt="Error" className="error__img" />
           <p className="error-message">
             Oops, something went wrong, please check your connection 🫶💻. Try
             again later ❤️.

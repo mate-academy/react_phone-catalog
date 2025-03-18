@@ -52,9 +52,27 @@
   color: #75767f;
   display: flex;
   align-items: center;
+  position: relative;
 
   &:active {
     color: #fff;
+  }
+
+  &::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scale(0);
+    transition: transform 0.4s ease;
+    z-index: 1;
+  }
+
+  &:hover::after{
+    transform: scale(1);
   }
 }
 

@@ -10,6 +10,8 @@ import { useLocation } from 'react-router-dom';
 import { ProductDetails } from '../../types/ProductTypes';
 import { fetchAllProducts } from '../../utils/api';
 import { Loader } from '../Loader/Loader';
+import catGif from '../../../assets/cat.gif';
+
 export const PhonesPage = () => {
   const path = useLocation();
   const currentCategory = path.pathname.slice(1);
@@ -81,7 +83,7 @@ export const PhonesPage = () => {
       </div>
       {error && (
         <div className="error__container">
-          <img src="image\cat.gif" alt="Error" className="error__img"/>
+          <img src={catGif} alt="Error" className="error__img" />
           <p className="error-message">
             Oops, something went wrong, please check your connection 🫶💻. Try
             again later ❤️.

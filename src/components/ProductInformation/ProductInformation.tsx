@@ -11,6 +11,7 @@ import { fetchAllProducts } from '../../utils/api';
 import { useParams } from 'react-router-dom';
 import { NameSlider } from '../../nameslider';
 import { ProductDetails } from '../../types/ProductTypes';
+import catGif from '../../../assets/cat.gif';
 
 export const ProductInformation: React.FC = () => {
   const { category } = useParams<{ category: string }>();
@@ -91,7 +92,7 @@ export const ProductInformation: React.FC = () => {
       </div>
       {error && (
         <div className="error__container">
-          <img src="image\cat.gif" alt="Error" className="error__img" />
+          <img src={catGif} alt="Error" className="error__img" />
           <p className="error-message">
             Oops, something went wrong, please check your connection 🫶💻. Try
             again later ❤️.

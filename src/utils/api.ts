@@ -8,31 +8,21 @@ const fetchData = async (url: string) => {
       throw new Error(`Failed to fetch data from ${url}`);
     }
 
+    if (!navigator.onLine) {
+      throw new Error('No internet connection');
+    }
+
     return await response.json();
   } catch (error) {
-    // console.error(error);
-    // window.alert(
-    //   `Oops, something went wrong, please check your connection 🫶💻`,
-    // );
-
-    return [];
+    return Promise.reject(error);
   }
 };
-
-// Навмисно неправильний шлях
-// export const getPhones = async () => {
-//   await delay();
-
-//   return fetchData(
-//     'https://taniavozniuk.github.io/react_phone-catalog2.0/api/wrong-path.json',
-//   );
-// };
 
 export const getPhones = async () => {
   await delay();
 
   return fetchData(
-    'https://taniavozniuk.github.io/react_phone-catalog2.0/api/phones.json',
+    'https://taniavozniuk.github.io/react_phone-catalog2ввв.0/api/phones.json',
   );
 };
 
