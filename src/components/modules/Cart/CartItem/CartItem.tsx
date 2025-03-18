@@ -3,7 +3,6 @@ import './CartItem.scss';
 import React, { useContext } from 'react';
 
 import { LocalStorageContext } from '../../../../app/Contexts/LocalStorageContext';
-
 import { Product } from '../../../../types/Product';
 
 
