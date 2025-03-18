@@ -105,7 +105,7 @@ export const CartPage = () => {
           <div className={styles.cart__emptyContainer}>
             <img
               className={styles.cart__emptyImg}
-              src="../../../public/img/cart-is-empty.png"
+              src={`${baseUrl}/img/cart-is-empty.png`}
               alt="Page not found image"
             />
           </div>

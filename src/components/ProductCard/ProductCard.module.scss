@@ -3,7 +3,7 @@
 
 .card {
   min-width: 212px;
-  max-width: 400px;
+  max-width: 288px;
   height: 439px;
 
   display: flex;
@@ -18,8 +18,9 @@
   @include hover(box-shadow, 0 2px 15px 0 rgba(0, 0, 0, 0.1));
 
   @include on-tablet {
-    min-width: 237px;
+    min-width: 200px;
     height: 512px;
+    max-width: 320px;
 
     grid-column: span 6;
   }
@@ -39,7 +40,7 @@
   }
 
   &__image {
-    width: 50%;
+    width: 70%;
     aspect-ratio: 1/1;
 
     object-fit: contain;
