@@ -3,11 +3,20 @@ import './SliderCards.scss';
 import { useState } from 'react';
 import { SliderCardsProps } from '../../../../constants/common';
 
+
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store";
+import { toggleFavorite } from "../../../../redux/favoritesSlice";
+
+
 export const SliderCards: React.FC<SliderCardsProps> = ({
   products,
   title,
   discountPrice,
 }) => {
+  const dispatch = useDispatch();
+  const favorites = useSelector((state: RootState) => state.favorites);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const slidesPerView = 4;
   const totalSlides = Math.ceil(products.length / slidesPerView);
@@ -18,8 +27,10 @@ export const SliderCards: React.FC<SliderCardsProps> = ({
     if (currentIndex === 0) {
       setShake(true);
       setTimeout(() => setShake(false), 300);
+
       return;
     }
+
     setCurrentIndex(prevIndex => (prevIndex - 1 + totalSlides) % totalSlides);
   };
 
@@ -27,8 +38,10 @@ export const SliderCards: React.FC<SliderCardsProps> = ({
     if (currentIndex === totalSlides - 1) {
       setShake(true);
       setTimeout(() => setShake(false), 300);
+
       return;
     }
+
     setCurrentIndex(prevIndex => (prevIndex + 1) % totalSlides);
   };
 
@@ -40,26 +53,29 @@ export const SliderCards: React.FC<SliderCardsProps> = ({
           className="slider-cards__track"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {products.map((phone, index) => (
+          {products.map((product, index) => (
             <li className="slider-cards__item" key={index}>
               <article className="product-card">
                 <div className="product-card__content">
-                  <Link to={`/${category?category:"phones"}/${phone.itemId}`} className="product-card__link">
+                  <Link
+                    to={`/${category ? category : 'phones'}/${product.itemId}`}
+                    className="product-card__link"
+                  >
                     <div className="product-card__photo">
                       <img
-                        src={phone.image}
+                        src={product.image}
                         alt="Product Image"
                         className="product-card__image"
                       />
                     </div>
 
-                    <h3 className="product-card__title">{phone.name}</h3>
+                    <h3 className="product-card__title">{product.name}</h3>
 
                     <p className="product-card__price">
-                      <span>${phone.price}</span>
+                      <span>${product.price}</span>
                       {discountPrice && (
                         <span className="product-card__old-price">
-                          ${phone.fullPrice}
+                          ${product.fullPrice}
                         </span>
                       )}
                     </p>
@@ -68,29 +84,33 @@ export const SliderCards: React.FC<SliderCardsProps> = ({
                   <div className="product-card__info">
                     <div className="product-card__info-item">
                       <p className="product-card__info-label">Screen</p>
-                      <p className="product-card__info-value">{phone.screen}</p>
+                      <p className="product-card__info-value">{product.screen}</p>
                     </div>
                     <div className="product-card__info-item">
                       <p className="product-card__info-label">Capacity</p>
                       <p className="product-card__info-value">
-                        {phone.capacity}
+                        {product.capacity}
                       </p>
                     </div>
                     <div className="product-card__info-item">
                       <p className="product-card__info-label">RAM</p>
-                      <p className="product-card__info-value">{phone.ram}</p>
+                      <p className="product-card__info-value">{product.ram}</p>
                     </div>
                   </div>
 
                   <div className="product-card__actions">
-                    <button className="product-card__add-to-cart">
+                    <button 
+                      className="product-card__add-to-cart"
+                      
+                    >
                       Add to cart
                     </button>
-                    <button className="product-card__favorite">
-                      <img
-                        src="/img/icons/add-to-fovourites.svg"
-                        alt=""
-                      />
+                    <button 
+                      className="product-card__favorite" 
+                      onClick={() => dispatch(toggleFavorite(product.itemId))}
+                    >
+                      <img src={favorites.includes(product.itemId) ? "/img/icons/remove-from-fovourites.webp" : "/img/icons/add-to-fovourites.svg"} alt="" />
+                      
                     </button>
                   </div>
                 </div>
@@ -101,7 +121,7 @@ export const SliderCards: React.FC<SliderCardsProps> = ({
       </div>
 
       <div className="slider-cards__buttons">
-      <button
+        <button
           onClick={prevSlide}
           className={`slider-cards__button slider-cards__button--prev ${
             currentIndex === 0 ? 'swiper-button--disabled' : ''
@@ -112,7 +132,9 @@ export const SliderCards: React.FC<SliderCardsProps> = ({
         <button
           onClick={nextSlide}
           className={`slider-cards__button slider-cards__button--next ${
-            currentIndex === totalSlides - 1 ? 'slider-cards__button--disabled' : ''
+            currentIndex === totalSlides - 1
+              ? 'slider-cards__button--disabled'
+              : ''
           }`}
         >
           ❯

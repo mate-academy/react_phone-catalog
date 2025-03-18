@@ -15,7 +15,7 @@ export interface Product {
   capacity: string;
   ram: string;
   year: number;
-  favourite?:boolean
+  favourite?: boolean;
 }
 
 export interface SliderCardsProps {
@@ -70,4 +70,4 @@ export const accessoriesCatalog = productList.filter(
   product => product.category === 'accessories',
 );
 
-export {phones, tablets, accessories}
+export { phones, tablets, accessories };

@@ -20,9 +20,11 @@ export const ProductPage = () => {
   if (category === 'phones') {
     products = phones;
   }
+
   if (category === 'tablets') {
     products = tablets;
   }
+
   if (category === 'accessories') {
     products = accessories;
   }
@@ -67,7 +69,7 @@ export const ProductPage = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     setPhoto(0);
   }, [product]);
 
@@ -76,7 +78,7 @@ export const ProductPage = () => {
       <nav className="breadcrumbs">
         <ul className="breadcrumbs__list">
           <li className="breadcrumbs__item">
-            <Link to={"/"} className="breadcrumbs__link">
+            <Link to={'/'} className="breadcrumbs__link">
               <img src="/img/icons/home.svg" alt="home" />
             </Link>
           </li>
@@ -132,7 +134,10 @@ export const ProductPage = () => {
                 <p className="info-block__title">Available colors</p>
                 <div className="info-block__list">
                   {currentProduct?.colorsAvailable?.map((color, index) => {
-                    if (!product) return null;
+                    if (!product) {
+                      return null;
+                    }
+
                     const currentColor = currentProduct?.colorsAvailable.find(
                       col => product.includes(col.replace(/\s/g, '-')),
                     );
@@ -166,7 +171,10 @@ export const ProductPage = () => {
               <p className="info-block__title">Select capacity</p>
               <div className="info-block__list">
                 {currentProduct?.capacityAvailable?.map((capacity, index) => {
-                  if (!product) return null;
+                  if (!product) {
+                    return null;
+                  }
+
                   const currentCapacity =
                     currentProduct?.capacityAvailable.find(cap =>
                       product.includes(cap.toLowerCase()),
@@ -176,6 +184,7 @@ export const ProductPage = () => {
                     currentCapacity?.toLowerCase() || '',
                     capacity.toLowerCase(),
                   );
+
                   return (
                     <NavLink
                       to={`/${category}/${newProductUrl}`}
@@ -198,7 +207,9 @@ export const ProductPage = () => {
             </div>
             <div className="actions">
               <button className="add-to-cart">Add to cart</button>
-              <button className="add-to-favorite">❤️</button>
+              <button className="add-to-favorite">
+                <img src="/img/icons/add-to-fovourites.svg" alt="" />
+              </button>
             </div>
 
             <div className="card__info">
@@ -297,13 +308,12 @@ export const ProductPage = () => {
             </ul>
           </section>
         </div>
-       
       </div>
       <SliderCards
-          products={recommendedProducts}
-          title="You may also like"
-          discountPrice={true}
-        />
+        products={recommendedProducts}
+        title="You may also like"
+        discountPrice={true}
+      />
     </div>
   );
 };

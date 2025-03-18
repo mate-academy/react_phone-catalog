@@ -10,24 +10,26 @@ import '../../HomePage/components/SliderCards/SliderCards.scss';
 import { useEffect } from 'react';
 
 export const ProductsPage = () => {
-  const { category } = useParams()
-  const [searchParams, setSearchParams]=useSearchParams()
+  const { category } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  let sortByParams = searchParams.get("sort") || "newest"
-  let sortByCount = searchParams.get("perPage") || "4"
+  const sortByParams = searchParams.get('sort') || 'age';
+  const sortByCount = searchParams.get('perPage') || '4';
 
   let products: Product[] = [];
   let title = '';
-  let discountPrice = true;
+  const discountPrice = true;
 
   if (category === 'phones') {
     products = phonesCatalog;
     title = 'Mobile phones';
   }
+
   if (category === 'tablets') {
     products = tabletsCatalog;
     title = 'Tablets';
   }
+
   if (category === 'accessories') {
     products = accessoriesCatalog;
     title = 'Accessories';
@@ -35,38 +37,43 @@ export const ProductsPage = () => {
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
-    const params = new URLSearchParams(searchParams)
-    params.set("perPage", value)
-    setSearchParams(params)
+    const params = new URLSearchParams(searchParams);
+
+    params.set('perPage', value);
+    setSearchParams(params);
   };
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value
-    const params = new URLSearchParams(searchParams)
-    params.set("sort", value)
+    const value = e.target.value;
+    const params = new URLSearchParams(searchParams);
 
-    setSearchParams(params)
+    params.set('sort', value);
+
+    setSearchParams(params);
   };
 
   const filteredProducts =
     sortByCount === 'all' ? products : products.slice(0, Number(sortByCount));
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sortByParams === 'newest') {
+    if (sortByParams === 'age') {
       return b.year - a.year;
     }
-    if (sortByParams === 'alphabetically') {
+
+    if (sortByParams === 'title') {
       return a.name.localeCompare(b.name);
     }
-    if (sortByParams === 'cheapest') {
+
+    if (sortByParams === 'price') {
       return a.price - b.price;
     }
+
     return 0;
   });
 
   useEffect(() => {
-      window.scrollTo(0, 0)
-    }, [category]);
+    window.scrollTo(0, 0);
+  }, [category]);
 
   return (
     <div className="products">
@@ -102,9 +109,9 @@ export const ProductsPage = () => {
               value={sortByParams}
               onChange={handleSortChange}
             >
-              <option value="newest">Newest</option>
-              <option value="alphabetically">Alphabetically</option>
-              <option value="cheapest">Cheapest</option>
+              <option value="age">Newest</option>
+              <option value="title">Alphabetically</option>
+              <option value="price">Cheapest</option>
             </select>
           </div>
 
@@ -179,15 +186,17 @@ export const ProductsPage = () => {
                     </div>
 
                     <div className="product-card__actions">
-                      <button className="product-card__add-to-cart" >
+                      <button className="product-card__add-to-cart">
                         Add to cart
                       </button>
-                      <button className="product-card__favorite" onClick={()=>{
-                        console.log(product);
-                        product.favourite===true
-                        console.log(product);
-                        
-                      }}>
+                      <button
+                        className="product-card__favorite"
+                        onClick={() => {
+                          console.log(product);
+                          product.favourite === true;
+                          console.log(product);
+                        }}
+                      >
                         <img
                           src="public/img/icons/add-to-fovourites.svg"
                           alt=""

@@ -1,1 +1,1 @@
-export {MainSlider} from "./MainSlider"
+export { MainSlider } from './MainSlider';

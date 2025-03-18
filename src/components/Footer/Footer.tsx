@@ -30,10 +30,7 @@ export const Footer = () => {
               Back to top
             </a>
             <a href="#" className="back-to-top-btn">
-              <img
-                src="/img/icons/btn-back-to-top.svg"
-                alt="Back to top"
-              />
+              <img src="/img/icons/btn-back-to-top.svg" alt="Back to top" />
             </a>
           </div>
         </div>

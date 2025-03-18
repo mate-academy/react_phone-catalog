@@ -34,23 +34,28 @@ export const MainSlider = () => {
           {slides.map((slide, index) => (
             <li key={index}>
               <img
-              
-              src={slide.path}
-              className="slider__image"
-              alt={`Slide ${index + 1}`}
-            />
+                src={slide.path}
+                className="slider__image"
+                alt={`Slide ${index + 1}`}
+              />
             </li>
           ))}
         </ul>
       </div>
 
-      <button onClick={prevSlide} className="slider__button slider__button--prev">
+      <button
+        onClick={prevSlide}
+        className="slider__button slider__button--prev"
+      >
         ❮
       </button>
-      <button onClick={nextSlide} className="slider__button slider__button--next">
+      <button
+        onClick={nextSlide}
+        className="slider__button slider__button--next"
+      >
         ❯
       </button>
-      
+
       <div className="slider__pagination">
         {slides.map((_, index) => (
           <button
