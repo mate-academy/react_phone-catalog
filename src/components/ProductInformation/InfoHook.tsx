@@ -15,6 +15,7 @@ export const useInfoHook = () => {
     null,
   );
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate(); // повернення на попередню сторінку
   const [mainImage, setMainImage] = useState<string>('');
   const [selecredColor, setSelectedColor] = useState<string | null>(null);
@@ -134,5 +135,7 @@ export const useInfoHook = () => {
     setMainImage,
     techInfo,
     setSelectedPhone,
+    setError,
+    error,
   };
 };

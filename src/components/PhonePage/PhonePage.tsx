@@ -20,6 +20,7 @@ export const PhonesPage = () => {
     phones,
     loading,
     error,
+    setError,
     currentPage,
     totalPages,
     setCurrentPage,
@@ -34,20 +35,29 @@ export const PhonesPage = () => {
   }
 
   useEffect(() => {
-    fetchAllProducts().then(data => {
-      const validCategories = ['phones', 'tablets', 'accessories'];
+    const fetchData = async () => {
+      try {
+        const data = await fetchAllProducts();
+        const validCategories = ['phones', 'tablets', 'accessories'];
 
-      if (validCategories.includes(currentCategory)) {
-        const filteredProducts = data.filter(
-          product => product.category === currentCategory,
+        if (validCategories.includes(currentCategory)) {
+          const filteredProducts = data.filter(
+            product => product.category === currentCategory,
+          );
+
+          setProducts(filteredProducts);
+        } else {
+          setProducts([]);
+        }
+      } catch {
+        setError(
+          `Oops, something went wrong, please check your connection 🫶💻`,
         );
-
-        setProducts(filteredProducts);
-      } else {
-        setProducts([]);
       }
-    });
-  }, [currentCategory]);
+    };
+
+    fetchData();
+  }, [currentCategory, setError]);
 
   return (
     <main className="main__phonepage">
@@ -69,16 +79,31 @@ export const PhonesPage = () => {
           )}
         </p>
       </div>
-      <h1 className="mobile__title">
-        {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
-      </h1>
-      <h1 className="mobile__models">{`${phones.length} models`}</h1>
+      {error && (
+        <div className="error__container">
+          <img src="image\cat.gif" alt="Error" className="error__img"/>
+          <p className="error-message">
+            Oops, something went wrong, please check your connection 🫶💻. Try
+            again later ❤️.
+          </p>
+        </div>
+      )}
+
+      {!error && (
+        <>
+          <h1 className="mobile__title">
+            {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
+          </h1>
+          <h1 className="mobile__models">{`${phones.length} models`}</h1>
+        </>
+      )}
+
       {loading && (
         <div className="loader-container">
           <Loader />
         </div>
       )}
-      {!loading && (
+      {!loading && !error && (
         <>
           <div className="mobile__choice">
             <div className="mobile__dropdown">

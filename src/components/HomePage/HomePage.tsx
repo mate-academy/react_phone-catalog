@@ -15,34 +15,6 @@ export const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   // setLoading(true);
-
-  //   const timeout = setTimeout(() => {
-  //     fetchAllProducts()
-  //       .then(data => {
-  //         // throw new Error('Error');
-  //         // console.log('satrt');
-  //         setPhones(data.filter(dat => dat.category === 'phones'));
-  //         setError(null);
-  //       })
-  //       .catch(() => {
-  //         // console.log('casda');
-  //         setError(
-  //           'Oops, something went wrong, please check your connection🫶💻',
-  //         );
-  //       })
-  //       .finally(() => {
-  //         // console.log('final');
-  //         setLoading(false);
-  //       });
-  //   }, 2000);
-
-  //   return () => {
-  //     clearTimeout(timeout);
-  //   };
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,8 +24,11 @@ export const HomePage = () => {
         setError(null);
       } catch {
         setError(
-          'Oops, something went wrong, please check your connection 🫶💻',
+          `Oops, something went wrong, please check your connection 🫶💻`,
         );
+        // window.alert(
+        //   `Oops, something went wrong, please check your connection 🫶💻`,
+        // );
       } finally {
         setLoading(false);
       }
@@ -66,13 +41,25 @@ export const HomePage = () => {
 
   return (
     <main className="main__homepage">
-      <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
+      {error && (
+        <div className="error__container">
+          <img src="image\cat.gif" alt="Error" className="error__img" />
+          <p className="error-message">
+            Oops, something went wrong, please check your connection 🫶💻. Try
+            again later ❤️.
+          </p>
+        </div>
+      )}
+      {!error && (
+        <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
+      )}
+
       {loading && (
         <div className="loader-container">
           <Loader />
         </div>
       )}
-      {error && <div className="error-message">{error}</div>}
+
       {!loading && !error && (
         <>
           <SliderSwiper />

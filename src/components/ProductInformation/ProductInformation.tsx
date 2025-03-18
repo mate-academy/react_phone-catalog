@@ -29,27 +29,35 @@ export const ProductInformation: React.FC = () => {
     selecredColor,
     techInfo,
     setSelectedPhone,
+    setError,
+    error,
   } = useInfoHook();
 
   // const currentCategory = category || 'phones';
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchAllProducts();
+      try {
+        const data = await fetchAllProducts();
 
-      const filteredProducts = data.filter(
-        product => product.category === category,
-      );
+        const filteredProducts = data.filter(
+          product => product.category === category,
+        );
 
-      setProducts(filteredProducts);
+        setProducts(filteredProducts);
 
-      const product = filteredProducts.find(item => item.id === productId);
+        const product = filteredProducts.find(item => item.id === productId);
 
-      setSelectedPhone(product || null);
+        setSelectedPhone(product || null);
+      } catch {
+        setError(
+          `Oops, something went wrong, please check your connection 🫶💻`,
+        );
+      }
     };
 
     fetchData();
-  }, [category, productId, setSelectedPhone]);
+  }, [category, productId, setSelectedPhone, setError]);
 
   return (
     <main className="productInfo">
@@ -81,8 +89,17 @@ export const ProductInformation: React.FC = () => {
           Back
         </p>
       </div>
+      {error && (
+        <div className="error__container">
+          <img src="image\cat.gif" alt="Error" className="error__img" />
+          <p className="error-message">
+            Oops, something went wrong, please check your connection 🫶💻. Try
+            again later ❤️.
+          </p>
+        </div>
+      )}
 
-      {loading ? (
+      {error ? null : loading ? (
         <div className="loader-container">
           <Loader />
         </div>

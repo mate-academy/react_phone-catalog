@@ -1,13 +1,3 @@
-// import phones from '../../public/api/phones.json';
-// import tablet from '../../public/api/tablets.json';
-// import accessories from '../../public/api/accessories.json';
-import {
-  // Accessory,
-  // Phone,
-  ProductDetails,
-  // Tablet,
-} from '../types/ProductTypes';
-
 const delay = () => new Promise(resolve => setTimeout(resolve, 500));
 
 const fetchData = async (url: string) => {
@@ -20,28 +10,47 @@ const fetchData = async (url: string) => {
 
     return await response.json();
   } catch (error) {
-    console.error(error);
+    // console.error(error);
+    // window.alert(
+    //   `Oops, something went wrong, please check your connection 🫶💻`,
+    // );
 
     return [];
   }
 };
 
+// Навмисно неправильний шлях
+// export const getPhones = async () => {
+//   await delay();
+
+//   return fetchData(
+//     'https://taniavozniuk.github.io/react_phone-catalog2.0/api/wrong-path.json',
+//   );
+// };
+
 export const getPhones = async () => {
   await delay();
 
-  return fetchData('/api/phones.json');
+  return fetchData(
+    'https://taniavozniuk.github.io/react_phone-catalog2.0/api/phones.json',
+  );
 };
 
 export const fetchTable = async () => {
   await delay();
 
-  return fetchData('/api/tablets.json');
+  return fetchData(
+    'https://taniavozniuk.github.io/react_phone-catalog2.0/api/tablets.json',
+  );
 };
 
 export const fetchAccessories = async () => {
   await delay();
 
-  return fetchData('/api/accessories.json');
+  return fetchData(
+    // eslint-disable-next-line max-len
+    'https://taniavozniuk.github.io/react_phone-catalog2.0/api/accessories.json',
+  );
 };
 
 // export const getPhones = (): Promise<Phone[]> => {
@@ -56,7 +65,8 @@ export const fetchAccessories = async () => {
 //   return delay().then(() => accessories);
 // };
 
-export const fetchAllProducts = async (): Promise<ProductDetails[]> => {
+export const fetchAllProducts = async () => {
+  await delay();
   const [phonesData, tabletsData, accessoriesData] = await Promise.all([
     getPhones(),
     fetchTable(),

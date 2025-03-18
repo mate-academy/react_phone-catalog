@@ -95,6 +95,7 @@ export const usePhonesHooks = () => {
     currentItems,
     currentPage,
     totalPages,
+    setError,
     setCurrentPage,
     handleItemsChange,
     hanleSortChange,
