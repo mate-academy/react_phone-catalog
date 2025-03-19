@@ -11,6 +11,16 @@
   width: 1px;
 }
 
+@mixin visually-visible {
+  clip: auto;
+  clip-path: none;
+  height: auto;
+  overflow: visible;
+  position: static;
+  white-space: normal;
+  width: auto;
+}
+
 @mixin flex-center {
   display: flex;
   justify-content: space-between;

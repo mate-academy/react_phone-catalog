@@ -2,11 +2,13 @@ import { NavLink } from 'react-router-dom';
 import { logo, burger, close } from '../../icons';
 import classNames from 'classnames';
 import styles from './Navigation.module.scss';
-import { useState } from 'react';
 import { iconLinks, navLinks } from './navLinks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { toggleMenu } from '../features/menu';
 
 export const Navigation: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen } = useAppSelector(state => state.menu);
+  const dispatch = useAppDispatch();
 
   const getClass = (base: string) => {
     return ({ isActive }: { isActive: boolean }) =>
@@ -57,11 +59,11 @@ export const Navigation: React.FC = () => {
         </div>
 
         <div className={styles.burger}>
-          <NavLink
-            to="/menu"
+          <button
             aria-label="Go to menu"
+            aria-expanded={isOpen}
             className={styles.burgerContainer}
-            onClick={() => setIsOpen(prev => !prev)}
+            onClick={() => dispatch(toggleMenu())}
           >
             <img
               src={isOpen ? close : burger}
@@ -69,7 +71,7 @@ export const Navigation: React.FC = () => {
               aria-hidden="true"
               className={styles.burgerImages}
             />
-          </NavLink>
+          </button>
         </div>
       </div>
     </nav>

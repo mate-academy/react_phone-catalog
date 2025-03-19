@@ -1,5 +1,143 @@
-@use './utils/index' as *;
+@use '../../utils/index' as *;
 
-.eg {
-  height: 2000px;
+.container {
+  min-width: 272px;
+  height: 506px;
+  border-radius: 8px;
+  padding: 32px;
+  background: $white;
+  border: 1px solid $elements;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+
+  @include responsive-settings-max($media-pc) {
+    min-width: 237px;
+    height: 512px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    min-width: 212px;
+    height: 439px;
+  }
+}
+
+.imageContainer {
+  height: 208px;
+  width: 100%;
+
+  @include responsive-settings-max($media-pc) {
+    height: 202px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    height: 129px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.name {
+  @include body-styles;
+
+  color: $black;
+}
+
+.price {
+  @include h3-styles;
+
+  display: flex;
+}
+
+.priceDiscount {
+  margin-left: 10px;
+  font-weight: $f-regular;
+  color: $secondary;
+  text-decoration: line-through;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: $elements;
+  border: none;
+  margin: 0;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.singleDetailContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.detailName {
+  @include small-text-styles;
+
+  color: $secondary;
+}
+
+.detailInfo {
+  @include small-text-styles;
+
+  color: $primary;
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttonAdd {
+  width: 160px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: $accent;
+  border: none;
+  color: $white;
+  @include buttons-styles;
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  @include responsive-settings-max($media-pc) {
+    width: 125px;
+  }
+
+  @include  responsive-settings-max($media-tablet) {
+    width: 100px;
+  }
+}
+
+.buttonFav {
+  width: 40px;
+  height: 40px;
+  border-radius: 48px;
+  background-color: transparent;
+  border: 1px solid $icons;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
 }

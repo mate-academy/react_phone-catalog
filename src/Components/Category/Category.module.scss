@@ -1,0 +1,121 @@
+@use '../../utils/index' as *;
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-top: 24px;
+
+  @include responsive-settings-max($media-pc) {
+    gap: 8px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    flex-direction: column;
+  }
+}
+
+.categoryPhones {
+  background-color: #6D6474;
+}
+
+.categoryTablets {
+  background-color: #8D8D92;
+}
+
+.categoryAccessories {
+  background-color: #D53C51;
+}
+
+.category {
+  width: 368px;
+  height: 368px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+
+  @include responsive-settings-max($media-pc) {
+    width: 187px;
+    height: 187px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+    height: 288px;
+  }
+}
+
+.title {
+  @include h4-styles;
+
+  margin-top: 24px;
+  color: $primary;
+}
+
+.models {
+  @include body-styles;
+
+  margin-top: 4px;
+  color: $secondary;
+}
+
+.phonesImg {
+  width: 100%;
+  margin: -8px 0 0 30px;
+
+  @include responsive-settings-max($media-pc) {
+    margin-top: 0;
+  }
+}
+
+.phonesSecondImg {
+  width: 80%;
+  position: absolute;
+  top: 45px;
+  left: 190px;
+
+  @include responsive-settings-max($media-pc) {
+    top: 25px;
+    left: 120px;
+  }
+
+  @include responsive-settings-max($media-pc) {
+    top: 42px;
+    left: 170px;
+  }
+}
+
+.tabletsImg {
+  width: 150%;
+  margin: 0 0 0 10px;
+}
+
+.accessoriesImg {
+  height: 92%;
+  margin: 30px 0 0 20px;
+
+  @include responsive-settings-max($media-pc) {
+    margin-top: 15px;
+  }
+
+  @include responsive-settings-max($media-pc) {
+    margin-top: 25px;
+  }
+}
+
+.nav {
+  text-decoration: none;
+  transition: transform 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(104%);
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    margin-top: 32px;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+}

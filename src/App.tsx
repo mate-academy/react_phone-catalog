@@ -1,6 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { Navigation } from './Components/Navigation';
+import { Menu } from './Components/Menu';
+import { Home } from './Components/Home';
+import { Footer } from './Components/Footer';
+import { NotFoundPage } from './Components/NotFoundPage';
 
 export const App: React.FC = () => {
   return (
@@ -10,19 +14,8 @@ export const App: React.FC = () => {
       <main className="section">
         <div className="container">
           <Routes>
-            <Route
-              path="/"
-              element={<h1 className="title">Product Catalog</h1>}
-            />
+            <Route path="/" element={<Home />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
-            <Route
-              path="/menu"
-              element={
-                <>
-                  <h1 className="title">menu Page</h1>
-                </>
-              }
-            />
             <Route
               path="/phones"
               element={
@@ -63,13 +56,14 @@ export const App: React.FC = () => {
                 </>
               }
             />
-            <Route
-              path="*"
-              element={<h1 className="title">Page not found</h1>}
-            />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
+
+        {<Menu />}
       </main>
+
+      <Footer />
     </div>
   );
 };

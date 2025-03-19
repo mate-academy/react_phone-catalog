@@ -8,6 +8,6 @@ export const navLinks = [
 ];
 
 export const iconLinks = [
-  { path: '/favorites', img: fav, alt: 'favorites-icon' },
+  { path: '/favourites', img: fav, alt: 'favourites-icon' },
   { path: '/shopping', img: order, alt: 'shopping-cart-icon' },
 ];

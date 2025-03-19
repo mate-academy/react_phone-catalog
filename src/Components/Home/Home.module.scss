@@ -1,5 +1,108 @@
-@use './utils/index' as *;
+@use '../../utils/index' as *;
 
-.eg {
-  height: 2000px;
+.marginContainer {
+  margin: 0 auto;
+  width: 1136px;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+  }
+}
+
+.title {
+  @include h1-styles;
+
+  color: $primary;
+  margin-top: 56px;
+
+  @include  responsive-settings-max($media-pc) {
+    margin-top: 32px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    margin-top: 24px;
+    @include mobile-h1-styles;
+  }
+}
+
+.carousel {
+  margin: 56px auto 0;
+  width: 1136px;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+    margin-top: 32px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    margin: 24px 0 0;
+    width: 100%;
+  }
+}
+
+.category {
+  @include h2-styles;
+
+  @include responsive-settings-max($media-tablet) {
+    @include mobile-h2-styles;
+  }
+}
+
+.categoryContainer {
+  margin-top: 80px;
+
+  @include responsive-settings-max($media-pc) {
+    margin-top: 64px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    margin-top: 56px;
+  }
+}
+
+.newModelsContainer {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @include responsive-settings-max($media-pc) {
+    margin-top: 64px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    margin-top: 56px;
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  border: 1px solid $icons;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  &:disabled {
+    border: 1px solid $elements;
+    cursor: not-allowed;
+  }
 }

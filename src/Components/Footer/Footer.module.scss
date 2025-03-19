@@ -1,0 +1,90 @@
+@use '../../utils/index' as *;
+
+.container {
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 -1px 0 0 $elements;
+  margin-top: 80px;
+  background-color: $white;
+
+  @include responsive-settings-max($media-pc) {
+    margin-top: 64px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    height: 257px;
+    flex-direction: column;
+    align-items: baseline;
+    padding-left: 16px;
+    justify-content: space-evenly;
+    margin-top: 56px;
+  }
+}
+
+.linksContainer {
+  display: flex;
+  align-items: center;
+  width: 378px;
+  height: 11px;
+  justify-content: space-between;
+
+  @include responsive-settings-max($media-pc) {
+    width: 192px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    flex-direction: column;
+    height: 65px;
+    align-items: baseline;
+    width: 188px;
+  }
+}
+
+.links {
+  @include uppercase-styles;
+
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $secondary;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.returnContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+  height: 32px;
+
+  @include responsive-settings-max($media-tablet) {
+    margin: 0 auto;
+  }
+}
+
+.return {
+  @include small-text-styles;
+
+  color: $secondary;
+}
+
+.returnButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  border: 1px solid $icons;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+}

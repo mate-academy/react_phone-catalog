@@ -1,5 +1,104 @@
-@use './utils/index' as *;
+@use '../../utils/index' as *;
 
-.eg {
-  height: 2000px;
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  &.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.menuNavContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 72px;
+  align-items: center;
+}
+
+.menuNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  height: 27px;
+  text-transform: uppercase;
+  color: $secondary;
+  text-decoration: none;
+  @include uppercase-styles;
+
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    color: $primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      transform:  translateY(700%);
+      width: 100%;
+      height: 2px;
+      background-color: $primary;
+    }
+  }
+}
+
+.menuIcons {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  box-shadow: -1px 0 0 0 $elements;
+
+  &:hover {
+    color: $primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      transform: translateY(1030%);
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+    }
+  }
+}
+
+.menuImages {
+  width: 16px;
+}
+
+.menuIconsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $elements;
+  height: 64px;
+  width: 100%;
+  box-shadow: -1px 0 0 0 $elements;
 }

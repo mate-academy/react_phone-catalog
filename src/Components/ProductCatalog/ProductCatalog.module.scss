@@ -1,5 +1,8 @@
-@use './utils/index' as *;
+@use '../../utils/index' as *;
 
-.eg {
-  height: 2000px;
+.container {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  overflow: hidden;
 }
