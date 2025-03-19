@@ -1,8 +1,7 @@
-@import '../../../../style/global';
+@import '../../../../assets/global';
 
 .container {
   padding-top: 56px;
-  padding-bottom: 64px;
 
   @include padding-inline;
 
@@ -12,12 +11,13 @@
 
   @include on-desctop {
     padding-top: 80px;
-    padding-bottom: 80px;
   }
 
   @include on-large-desctop {
     max-width: 1136px;
     margin: 0 auto;
+    padding: 0;
+    padding-top: 80px;
   }
 }
 
@@ -66,6 +66,10 @@
   cursor: pointer;
 }
 
+.button-disabled {
+  background-color: red;
+}
+
 .arrowNext {
   filter: brightness(0) saturate(100%) invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg)
     brightness(103%) contrast(103%);
@@ -75,4 +79,5 @@
 .slider {
   padding-top: 24px;
 }
+
 

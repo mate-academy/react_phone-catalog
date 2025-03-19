@@ -6,15 +6,19 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import arrowLeft from '../../../../shared/assets/icons/chevron-arrow-left.svg';
-import arrowRight from '../../../../shared/assets/icons/chevron-arrow-right.svg';
-import phoneFromServer from '../../../../../public/api/phones.json';
-import { ProductCart } from '../../../../components/ProductCart/ProductCart';
-import { Product } from '../../../../type/Product';
-import { useMediaQuery } from '@uidotdev/usehooks';
 
-export const HotPrice: React.FC = () => {
-  const phones: Product[] = phoneFromServer.slice(10, 19);
+import arrowLeft from '../../../../shared/icons/chevron-arrow-left.svg';
+import arrowRight from '../../../../shared/icons/chevron-arrow-right.svg';
+import { useMediaQuery } from '@uidotdev/usehooks';
+import { ProductCart } from '@/components/ProductCart/ProductCart';
+import { Product } from '@/types/Products';
+
+type Props = {
+  products: Product[];
+  isDiscount: boolean;
+}
+
+export const HotPrice: React.FC<Props> = ({products, isDiscount}) => {
   const isTablet = useMediaQuery('(min-width: 640px)');
   const isDesctop = useMediaQuery('(min-width: 1200px)');
 
@@ -27,16 +31,17 @@ export const HotPrice: React.FC = () => {
   if (isDesctop) {
     slidesView = 4;
   }
+
   return (
     <div className={style.container}>
       <div className={style.top}>
         <h1 className={style.title}>Hot Price</h1>
         <div className={style.navigation}>
-          <div id="swiper-new-hotPrice-prev" className={style.navigationPrev}>
+          <div id="swiper-hot-price-prev" className={style.navigationPrev}>
             <img src={arrowLeft} alt="arrow left" className={style.arrowPrev} />
           </div>
 
-          <div id="swiper-new-hotPrice-next" className={style.navigationNext}>
+          <div id="swiper-hot-price-next" className={style.navigationNext}>
             <img src={arrowRight} alt="arrow right" className={style.arrowNext} />
           </div>
         </div>
@@ -47,16 +52,16 @@ export const HotPrice: React.FC = () => {
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           slidesPerView={slidesView}
           navigation={{
-            nextEl: `#swiper-new-hotPrice-next`,
-            prevEl: `#swiper-new-hotPrice-prev`,
+            nextEl: `#swiper-hot-price-next`,
+            prevEl: `#swiper-hot-price-prev`,
           }}
           onSwiper={swiper => console.log(swiper)}
           onSlideChange={() => console.log('slide change')}
         >
           <div className={style.slideContent}>
-            {phones.map(phone => (
+            {products.map(phone => (
               <SwiperSlide key={phone.id}>
-                <ProductCart product={phone} isDiscount={true} key={phone.id} />
+                <ProductCart product={phone} isDiscount={isDiscount} />
               </SwiperSlide>
             ))}
           </div>

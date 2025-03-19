@@ -1,0 +1,90 @@
+@import '../../assets/global';
+
+.phone {
+  box-sizing: border-box;
+  padding-top: 24px;
+
+  @include padding-inline;
+}
+
+.navigation {
+  display: flex;
+  gap: 8px;
+}
+
+.navTitle {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+
+  color: $light-gray-color;
+}
+
+.pageInfo {
+}
+
+.title {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  color: $light-color;
+
+  padding-top: 24px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 51px;
+  }
+}
+
+.description {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: $light-gray-color;
+
+  padding-top: 8px;
+}
+
+.sort {
+  padding-top: 40px;
+  display: flex;
+  gap: 16px;
+
+  flex-direction: column;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 40px;
+  justify-content: center;
+  justify-items: center;
+
+  padding-top: 24px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+  }
+
+  @include on-desctop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include on-large-desctop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.pagination {
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+}

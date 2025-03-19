@@ -2,9 +2,13 @@ import React from 'react';
 import style from './Category.module.scss';
 import { NavLink } from 'react-router-dom';
 
-import phonesImg from '../../../../shared/assets/categoryImage/phoneCategory.png';
-import tabletsImg from '../../../../shared/assets/categoryImage/tabletCategory.png';
-import accessoriesImg from '../../../../shared/assets/categoryImage/accessoriesCategory.png';
+import phonesImg from '../../../../shared/img/CategoryImg/phoneCategory.png';
+import tabletsImg from '../../../../shared/img/CategoryImg/tabletCategory.png';
+import accessoriesImg from '../../../../shared/img/CategoryImg/accessoriesCategory.png';
+
+import phones from '../../../../../public/api/phones.json';
+import tablets from '../../../../../public/api/tablets.json';
+import accessories from '../../../../../public/api/accessories.json';
 
 export const Category: React.FC = () => {
   return (
@@ -19,7 +23,7 @@ export const Category: React.FC = () => {
 
           <h2 className={style.categoryTitle}>Mobile phones</h2>
 
-          <p className={style.categoryDescription}>95 models</p>
+          <p className={style.categoryDescription}>{phones.length} models</p>
         </div>
 
         <div className={style.categoryItem}>
@@ -29,7 +33,7 @@ export const Category: React.FC = () => {
 
           <h2 className={style.categoryTitle}>Tablets</h2>
 
-          <p className={style.categoryDescription}>24 models</p>
+          <p className={style.categoryDescription}>{tablets.length} models</p>
         </div>
 
         <div className={style.categoryItem}>
@@ -39,7 +43,7 @@ export const Category: React.FC = () => {
 
           <h2 className={style.categoryTitle}>Accessories</h2>
 
-          <p className={style.categoryDescription}>100 models</p>
+          <p className={style.categoryDescription}>{accessories.length} models</p>
         </div>
       </div>
     </div>

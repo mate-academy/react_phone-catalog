@@ -1,0 +1,32 @@
+@import '../../assets/global';
+
+.phone {
+  box-sizing: border-box;
+  padding-top: 70px;
+
+  @include padding-inline;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 40px;
+  justify-content: center;
+
+  padding-top: 24px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+  }
+
+  @include on-desctop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include on-large-desctop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+

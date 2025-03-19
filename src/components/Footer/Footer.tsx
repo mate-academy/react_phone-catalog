@@ -1,15 +1,16 @@
 import React from 'react';
 import style from './Footer.module.scss';
-import { Logo } from '../../shared/Logo/Logo';
-import arrowTopImg from '../../shared/assets/icons/chevron-arrow-up.svg';
+import footerLogo from '../../shared/icons/logo.png';
+import arrowTopImg from '../../shared/icons/chevron-arrow-up.svg';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   return (
     <div className={style.footer}>
       <div className={style.wrapper}>
-        <div className={style.logo}>
-          <Logo />
-        </div>
+        <Link to='/' className={style.logo}>
+          <img src={footerLogo} alt="Foter logo" />
+        </Link>
 
         <div className={style.nav}>
           <ul className={style.navList}>
@@ -35,7 +36,7 @@ export const Footer: React.FC = () => {
 
         <div className={style.backTop}>
           <div className={style.backTopContent}>
-            <a href="#header" className={style.backTopLink}>
+            <a href="" className={style.backTopLink}>
               Back to top
               <div className={style.arrowTop}>
                 <img src={arrowTopImg} alt="Arrow top icon" className={style.arrowTopIcon} />

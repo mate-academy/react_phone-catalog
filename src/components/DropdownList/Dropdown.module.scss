@@ -1,0 +1,80 @@
+@import '../../assets/global';
+
+.dropdown {
+  position: relative;
+  width: 200px;
+}
+
+.selected {
+  width: 100%;
+  padding: 10px;
+  background-color: #323542;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  color: $light-color;
+
+  font-size: 14px;
+  font-family: Mont-semiBold, sans-serif;
+  line-height: 21px;
+}
+
+.title {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  color: $light-gray-color;
+
+  padding-bottom: 4px;
+}
+
+.arrow {
+  font-size: 12px;
+}
+
+.menu {
+  position: absolute;
+  width: 100%;
+  background-color: #323542;
+  margin-top: 5px;
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  z-index: 100;
+
+  animation: open 0.3s;
+}
+
+.menu li {
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  color: $light-color;
+
+  font-size: 14px;
+  font-family: Mont-semiBold, sans-serif;
+  line-height: 21px;
+}
+
+.menu li:hover {
+  background-color: $midle-gray-color;
+}
+
+.active {
+  background-color: $light-gray-color;
+}
+
+.icon {
+  display: flex;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

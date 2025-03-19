@@ -1,27 +1,24 @@
 // not empty
-@import './style/global';
-
-.App {
-  background-color: $background-color;
-  min-height: calc(100vh - 49px - 250px - 64px);
-
-  @include on-tablet {
-    min-height: calc(100vh - 49px - 100px - 64px);
-  }
-
-  @include on-desctop {
-    min-height: calc(100vh - 65px - 100px - 80px);
-  }
-}
+@import './assets/global';
 
 .page {
   background-color: $background-color;
-}
-
-body {
-  margin: 0;
+  // height: 100vh;
 }
 
 iframe {
   display: none;
+}
+
+.App {
+  background-color: $background-color;
+  min-height: calc(100vh - 225px - 64px);
+
+  @include on-tablet {
+    min-height: calc(100vh - 97px - 64px);
+  }
+
+  @include on-desctop {
+    min-height: calc(100vh - 97px - 80px);
+  }
 }

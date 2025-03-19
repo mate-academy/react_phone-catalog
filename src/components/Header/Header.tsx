@@ -1,91 +1,105 @@
-import { Logo } from '../../shared/Logo/Logo';
-import { Favorite } from '../../shared/Favorite/Favorite';
-import { ShopBag } from '../../shared/ShopBag/ShopBag';
 import React from 'react';
 import style from './Header.module.scss';
-import { NavLink, Link } from 'react-router-dom';
-import { Burger } from '../../shared/Burger/Burger';
+import headerLogo from '@/shared/icons/logo.png';
+import favoriteIcon from '@/shared/icons/favourites-heart-like.svg';
+import cartBagIcon from '@/shared/icons/shopping-bag-cart.svg';
+import burgerMenuIcon from '@/shared/icons/menu.svg';
+import { Link, NavLink } from 'react-router-dom';
+import { useCart } from '@/hooks/useCart';
 
 export const Header: React.FC = () => {
+  const cartContext = useCart();
+
+  if (!cartContext) {
+    return 'CartContext is not loading';
+  }
+
+  const { cart, favourite } = cartContext;
   return (
-    <div className={style.header} id="header">
+    <header className={style.header}>
       <div className={style.wrapper}>
-        <Link to="/" className={style.headerLogo}>
-          <Logo />
+        <Link to='/' className={style.logo}>
+          <img src={headerLogo} alt="Header logo" className={style.logoIcon} />
         </Link>
 
-        <div className={style.navigation}>
-          <ul className={style.navList}>
-            <li className={style.navItem}>
+        <nav className={style.nav}>
+          <ul className={style.list}>
+            <li className={style.item}>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? `${style.isActiveLink} ${style.navLink}` : `${style.navLink}`
+                  isActive ? `${style.active} ${style.link}` : `${style.link}`
                 }
               >
                 Home
               </NavLink>
             </li>
 
-            <li className={style.navItem}>
+            <li className={style.item}>
               <NavLink
                 to="/phones"
                 className={({ isActive }) =>
-                  isActive ? `${style.isActiveLink} ${style.navLink}` : `${style.navLink}`
+                  isActive ? `${style.active} ${style.link}` : `${style.link}`
                 }
               >
                 Phones
               </NavLink>
             </li>
 
-            <li className={style.navItem}>
+            <li className={style.item}>
               <NavLink
                 to="/tablets"
                 className={({ isActive }) =>
-                  isActive ? `${style.isActiveLink} ${style.navLink}` : `${style.navLink}`
+                  isActive ? `${style.active} ${style.link}` : `${style.link}`
                 }
               >
                 Tablets
               </NavLink>
             </li>
 
-            <li className={style.navItem}>
+            <li className={style.item}>
               <NavLink
                 to="/accessories"
                 className={({ isActive }) =>
-                  isActive ? `${style.isActiveLink} ${style.navLink}` : `${style.navLink}`
+                  isActive ? `${style.active} ${style.link}` : `${style.link}`
                 }
               >
                 Accessories
               </NavLink>
             </li>
           </ul>
-        </div>
+        </nav>
 
-        <div className={style.userInetrface}>
+        <div className={style.options}>
           <NavLink
-            to="/favorite"
+            to="/favourite"
             className={({ isActive }) =>
-              isActive ? `${style.isActiveLink} ${style.UIfavorite}` : `${style.UIfavorite}`
+              isActive ? `${style.active} ${style.favourite}` : `${style.favourite}`
             }
           >
-            <Favorite />
+            <div className={style.containerIcon}>
+              <img src={favoriteIcon} alt="favourite icon" className={style.icon}/>
+              {favourite.length > 0 && <span className={style.countProduct}>{favourite.length}</span>}
+            </div>
           </NavLink>
 
           <NavLink
             to="/bag"
             className={({ isActive }) =>
-              isActive ? `${style.isActiveLink} ${style.UIshopBag}` : `${style.UIshopBag}`
+              isActive ? `${style.active} ${style.bag}` : `${style.bag}`
             }
           >
-            <ShopBag />
+            <div className={style.containerIcon}>
+              <img src={cartBagIcon} alt="bag icon" className={style.icon} />
+              {cart.length > 0 && <span className={style.countProduct}>{cart.length}</span>}
+            </div>
+          </NavLink>
+
+          <NavLink to="/menu" className={style.burgerMenu}>
+            <img src={burgerMenuIcon} alt="burger menu icon" className={style.icon}/>
           </NavLink>
         </div>
-
-        <NavLink to="/menu" className={style.burger}>
-          <Burger />
-        </NavLink>
       </div>
-    </div>
+    </header>
   );
 };

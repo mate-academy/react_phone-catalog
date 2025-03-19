@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './ProductCart.module.scss';
-import { Product } from '../../type/Product';
-import { useCart } from '../../modules/HomePage/hook/CartContext';
-import favouriteIcon from '../../shared/assets/icons/favourites-heart-like.svg';
-import favouriteIconActive from '../../shared/assets/icons/favourites-filled-heart-like.svg';
+import favouriteIcon from '../../shared/icons/favourites-heart-like.svg';
+import addedFavouriteIcon from '../../shared/icons/favourites-filled-heart-like.svg';
+import { Product } from '@/types/Products';
+import { useCart } from '@/hooks/useCart';
 
 type Props = {
   product: Product;
@@ -14,16 +14,18 @@ export const ProductCart: React.FC<Props> = ({ product, isDiscount = false }) =>
   const cartContext = useCart();
 
   if (!cartContext) {
-    return 'CartContext is not loaded';
+    return 'CartContext is not loading';
   }
 
-  const { addToCart, cart, toggleFavourite, favourite } = cartContext;
-  const isFavorite = favourite.some(item => item.id === product.id);
+  const { cart, addToCart, favourite, toggleFavourite } = cartContext;
+
+  const isCartAdd = cart.some(item => item.id === product.id);
+  const isCartFavourite = favourite.some(item => item.id === product.id);
 
   return (
     <>
       <div className={style.card}>
-        <img src={product.images[0]} alt="phone img" className={style.phoneImg} />
+        <img src={product.image} alt="phone img" className={style.phoneImg} />
 
         <h2 className={style.phoneTitle} title={product.name}>
           {product.name}
@@ -32,12 +34,12 @@ export const ProductCart: React.FC<Props> = ({ product, isDiscount = false }) =>
         <p className={style.phonePrice}>
           {isDiscount ? (
             <>
-              {`$${product.priceDiscount}     `}
+              {`$${product.price}     `}
 
-              <span className={style.phonePriceDiscount}>{`$${product.priceRegular}`}</span>
+              <span className={style.phonePriceDiscount}>{`$${product.fullPrice}`}</span>
             </>
           ) : (
-            <>{`$${product.priceRegular}`}</>
+            <>{`$${product.fullPrice}`}</>
           )}
         </p>
 
@@ -61,21 +63,22 @@ export const ProductCart: React.FC<Props> = ({ product, isDiscount = false }) =>
         </div>
 
         <div className={style.phoneFooter}>
-          {!cart.some(item => item.id === product.id) ? (
-            <button className={style.addToCart} onClick={() => addToCart(product, isDiscount)}>
-              Add to cart
-            </button>
-          ) : (
+          {isCartAdd ? (
             <button className={style.addedCart} disabled>
               Added
             </button>
+          ) : (
+            <button className={style.addToCart} onClick={() => addToCart(product, isDiscount)}>
+              Add to cart
+            </button>
           )}
+
           <div
-            className={`${isFavorite ? `${style.favoriteActive}` : `${style.favorite}`}`}
-            onClick={() => toggleFavourite(product)}
+            className={`${isCartFavourite ? `${style.favoriteActive}` : `${style.favorite}`}`}
+            onClick={() => toggleFavourite(product, isDiscount)}
           >
             <img
-              src={isFavorite ? favouriteIconActive : favouriteIcon}
+              src={isCartFavourite ? addedFavouriteIcon : favouriteIcon}
               alt="favourite icon"
               className={style.favouriteIcon}
             />

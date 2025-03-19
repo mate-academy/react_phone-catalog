@@ -6,6 +6,10 @@
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"],
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["./*"]
+    }
   }
 }

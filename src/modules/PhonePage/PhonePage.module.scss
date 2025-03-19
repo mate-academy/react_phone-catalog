@@ -1,0 +1,13 @@
+@import '../../assets/global';
+
+.phone {
+  box-sizing: border-box;
+  padding-top: 70px;
+
+  @include padding-inline;
+}
+
+.container {
+  padding-top: 24px;
+}
+

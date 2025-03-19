@@ -1,0 +1,47 @@
+@import '../../assets/global';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+}
+
+.icon {
+  display: flex;
+  filter: brightness(0) saturate(100%) invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg)
+    brightness(103%) contrast(103%);
+}
+
+.tile {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #323542;
+  cursor: pointer;
+  border: none;
+}
+
+.page {
+  display: flex;
+  gap: 8px;
+}
+
+.pageItem {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $light-color;
+  background-color: #161827;
+  cursor: pointer;
+  border: none;
+}
+
+.activePage {
+  background-color: #905BFF;
+}
