@@ -14,6 +14,7 @@ $grey-color: #89939A;
   --standard-color: #B4BDC3;
   --skeleton-background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   --skeleton-element: #B4BDC3;
+  --box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
 }
 
 [data-theme="dark"] {
@@ -30,5 +31,6 @@ $grey-color: #89939A;
   --standard-color: #161827;
   --skeleton-background: linear-gradient(90deg, #A378FF 25%, #5A2D96 50%, #A378FF 75%);
   --skeleton-element: #2C2C2C;
+  --box-shadow: none;
 }
 

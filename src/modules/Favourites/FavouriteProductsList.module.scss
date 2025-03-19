@@ -1,8 +1,19 @@
-@import '../shared/variables.scss';
-@import '../shared/mixins.scss';
+@import '../shared/variables';
+@import '../shared/mixins';
 
 .favorites {
-  padding: 33px;
+  @include mobile {
+    min-height: calc(100vh - 96px - 48px);
+    padding: 16px;
+  }
+
+  @include tablet {
+    padding: 32px;
+  }
+
+  @include laptop {
+    min-height: calc(100vh - 96px - 64px);
+  }
 
   &__header {
     display: flex;

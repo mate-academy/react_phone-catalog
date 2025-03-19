@@ -13,7 +13,7 @@ export const FavouriteProductsList = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const favouriteProducts = products.filter(product =>
-    favourites.includes(product.id),
+    favourites.includes(product.itemId),
   );
 
   return (

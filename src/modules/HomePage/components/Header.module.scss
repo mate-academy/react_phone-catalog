@@ -116,9 +116,12 @@
     }
 
     @include tablet {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
       position: relative;
-      padding: 16px;
       border-left: 1px solid var(--border-color);
       box-sizing: border-box;
 
@@ -128,7 +131,8 @@
     }
 
     @include laptop {
-      padding: 24px;
+      width: 64px;
+      height: 64px;
     }
   }
 
@@ -159,9 +163,13 @@
 
   &__menu {
     @include mobile {
-      display: block;
-      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
       border-left: 1px solid var(--border-color);
+      box-sizing: border-box;
 
       &:hover {
         border-bottom: 3px solid var(--hover-color);

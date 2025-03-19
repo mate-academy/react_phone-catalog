@@ -1,14 +1,18 @@
-@import '../shared/mixins.scss';
-@import '../shared/variables.scss';
+@import '../shared/mixins';
+@import '../shared/variables';
 
 .container {
   @include mobile {
     padding: 24px 16px 81px;
-    min-height: 60vh;
+    min-height: calc(100vh - 96px - 48px);
   }
 
   @include tablet {
     padding: 24px 32px 81px;
+  }
+
+  @include laptop {
+    min-height: calc(100vh - 96px - 64px);
   }
 }
 
@@ -54,7 +58,7 @@
   border-radius: 10px;
   max-width: 400px;
   margin: 20px auto;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
   &__message {
     color: #856404;

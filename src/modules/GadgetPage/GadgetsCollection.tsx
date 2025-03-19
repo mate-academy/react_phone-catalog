@@ -41,6 +41,7 @@ export const GadgetsCollection: React.FC<Props> = ({
   const updateSearchParams = debounce((value: string) => {
     if (value) {
       searchParams.set('query', value);
+      searchParams.delete('page');
     } else {
       searchParams.delete('query');
     }
