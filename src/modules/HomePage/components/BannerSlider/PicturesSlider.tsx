@@ -4,6 +4,7 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import styles from './PicturesSlider.module.scss';
+import { Link } from 'react-router-dom';
 
 export const PicturesSlider: React.FC = () => {
   return (
@@ -33,19 +34,19 @@ export const PicturesSlider: React.FC = () => {
         }}
       >
         <SwiperSlide className={styles.swiperSlide}>
-          <a href="/phones">
+          <Link to="/phones">
             <img src="img/banner/banner-phones.jpg" alt="phone" />
-          </a>
+          </Link>
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
-          <a href="/accessories">
+          <Link to="/accessories">
             <img src="img/banner/banner-accessories.jpg" alt="accessories" />
-          </a>
+          </Link>
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
-          <a href="/tablets">
+          <Link to="/tablets">
             <img src="img/banner/banner-tablets.jpg" alt="tablet" />
-          </a>
+          </Link>
         </SwiperSlide>
       </Swiper>
 

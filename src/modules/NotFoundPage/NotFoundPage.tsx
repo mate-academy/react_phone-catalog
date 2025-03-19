@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPage: React.FC = () => {
   return (
     <div className={styles.notFoundPage}>
       <div className={styles.back}>
-        <a href="/">
+        <Link to="/">
           <div className={styles.backContainer}>
             <img
               className={styles.arrowIcon}
@@ -13,7 +14,7 @@ export const NotFoundPage: React.FC = () => {
             />
             Back to home
           </div>
-        </a>
+        </Link>
       </div>
 
       <h1 className={styles.notFoundMessage}>Page not found</h1>

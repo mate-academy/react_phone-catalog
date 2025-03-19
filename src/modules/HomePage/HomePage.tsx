@@ -35,7 +35,7 @@ export const HomePage: React.FC = () => {
   return (
     <div className={styles.homepage}>
       <div className={styles.section}>
-        <h1 className={styles.visualyHidden}>Product Catalog</h1>
+        <h1 className={styles.visuallyHidden}>Product Catalog</h1>
         <h1 className={styles.mainTitle}>Welcome to Nice Gadgets store!</h1>
         <PicturesSlider />
       </div>

@@ -5,7 +5,7 @@ export const FooterNav: React.FC = () => {
   return (
     <nav className={styles.navbar}>
       <Link
-        to="https://github.com/JaneShavrukova/react_phone-catalog"
+        to="https://github.com/JaneShavrukova/e-commerce-catalog"
         target="_blank"
         className={styles.navbarLink}
       >
