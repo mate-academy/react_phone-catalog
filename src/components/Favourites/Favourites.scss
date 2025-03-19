@@ -1,0 +1,21 @@
+@import '../../utils/mixins';
+
+.favourites{
+  margin: 0 16px 0 16px;
+
+  @include onTablet{
+    margin: 0 24px 0 24px;
+  }
+
+  @include onDesktop{
+    margin: 0 32px 0 32px;
+  }
+}
+
+.favourites__title{
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 46px;
+  line-height: 65px;
+  color: #F1F2F9;
+}

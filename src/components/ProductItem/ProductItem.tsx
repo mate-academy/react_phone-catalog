@@ -1,27 +1,32 @@
 import React from 'react';
 import { ProductDetails } from '../../types/ProductTypes';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import like from '../../../image/heart.svg';
+import liked from '../../../image/liked.svg';
+
 import './ProductItem.scss';
+import { useFavourites } from '../Favourites/FacouritesContext';
 
 interface Props {
   product: ProductDetails;
   WithAdditionalPrice?: boolean;
-  onClick?: () => void;
+  // onClick?: () => void;
 }
 
 export const ProductItem: React.FC<Props> = ({
   product,
   WithAdditionalPrice = false,
-  // onClick,
 }) => {
+  const { favorites, toggleFavorite } = useFavourites();
+  const isFavorite = favorites.some(fav => fav.id === product.id);
   const productPath = `/${product.category}/${product.id}`;
+  const navigate = useNavigate();
 
   return (
-    <NavLink
-      to={productPath}
+    <div
+      // to={productPath}
       className="product__elements"
-      // onClick={onClick}
+      onClick={() => navigate(productPath)}
     >
       <div className="product__img-container">
         <img
@@ -61,10 +66,13 @@ export const ProductItem: React.FC<Props> = ({
         <NavLink className="button__add" to="/...">
           Add to cart
         </NavLink>
-        <NavLink className="buttons__like" to="/?">
-          <img src={like} alt="like" />
-        </NavLink>
+        <button
+          className="buttons__like"
+          onClick={() => toggleFavorite(product)}
+        >
+          <img src={isFavorite ? liked : like} alt="like" />
+        </button>
       </div>
-    </NavLink>
+    </div>
   );
 };

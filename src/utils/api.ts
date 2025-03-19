@@ -22,7 +22,7 @@ export const getPhones = async () => {
   await delay();
 
   return fetchData(
-    'https://taniavozniuk.github.io/react_phone-catalog2ввв.0/api/phones.json',
+    'https://taniavozniuk.github.io/react_phone-catalog2.0/api/phones.json',
   );
 };
 

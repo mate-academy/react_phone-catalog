@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #0f1121;
+  overflow-x: hidden;
 
   @include font-body;
 }
@@ -31,7 +32,7 @@ body {
 .error__img{
   box-shadow: 1px 0 0.4em rgba(217, 217, 214, 0.459);
   width: 50%;
-  
+
 }
 
 
