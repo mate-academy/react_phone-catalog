@@ -1,28 +1,21 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Card.module.scss';
-
-interface Product {
-  id: number;
-  category: string;
-  itemId: string;
-  name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
-  capacity: string;
-  color: string;
-  ram: string;
-  year: number;
-  image: string;
-}
+import { Product } from '../../types/Product';
 
 interface CardProps {
   card: Product;
 }
 
 export const Card: React.FC<CardProps> = ({ card }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/${card.category}/${card.itemId}`);
+  };
+
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={handleClick}>
       <img src={card.image} alt={card.name} className={styles.card__img} />
       <p className={styles.card__name}>{card.name}</p>
       <div className={styles.card__prices}>

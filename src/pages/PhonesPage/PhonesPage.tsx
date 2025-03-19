@@ -1,7 +1,8 @@
-import { useSearchParams } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import styles from './PhonesPage.module.scss';
 import { SortDropdown } from '../../components/SortDropdown';
 import { Card } from '../../components/Card';
+import { Pagination } from '../../components/Pagination';
 import products from '../../../public/api/products.json';
 
 import arrowRight from '../../imgs/svg/arrow-right-icon.svg';
@@ -9,8 +10,8 @@ import homeIcon from '../../imgs/svg/home-icon.svg';
 
 const phoneSortOptions = [
   { value: 'newest', label: 'Newest' },
-  { value: 'priceLow', label: 'Price: Low to High' },
-  { value: 'priceHigh', label: 'Price: High to Low' },
+  { value: 'priceLow', label: 'Price:Ascending' },
+  { value: 'priceHigh', label: 'Price:Descending' },
   { value: 'nameAsc', label: 'Name: A to Z' },
   { value: 'nameDesc', label: 'Name: Z to A' },
 ];
@@ -63,11 +64,13 @@ export const PhonesPage = () => {
   return (
     <div className={styles.phones}>
       <div className={styles.phones__navigate_icons}>
-        <img
-          src={homeIcon}
-          alt="home"
-          className={styles.phones__navigate_icon}
-        />
+        <NavLink to="/">
+          <img
+            src={homeIcon}
+            alt="home"
+            className={styles.phones__navigate_icon}
+          />
+        </NavLink>
         <img
           src={arrowRight}
           alt="arrow"
@@ -113,25 +116,11 @@ export const PhonesPage = () => {
       </div>
 
       {totalPages > 1 && (
-        <div className={styles.phones__pagination}>
-          <button
-            className={styles.phones__pagination_btn}
-            disabled={page <= 1}
-            onClick={() => handlePageChange(page - 1)}
-          >
-            Previous
-          </button>
-          <span className={styles.phones__pagination_text}>
-            {page} / {totalPages}
-          </span>
-          <button
-            className={styles.phones__pagination_btn}
-            disabled={page >= totalPages}
-            onClick={() => handlePageChange(page + 1)}
-          >
-            Next
-          </button>
-        </div>
+        <Pagination
+          totalPages={totalPages}
+          currentPage={page}
+          onPageChange={handlePageChange}
+        />
       )}
     </div>
   );

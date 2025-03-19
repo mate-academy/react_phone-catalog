@@ -1,1 +1,252 @@
-// not empty
+@import '../../styles/variables';
+@import '../../styles/mixinsTypography';
+
+.product {
+  padding: 24px 16px;
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    &_link {
+      text-decoration: none;
+    }
+
+    &_home {
+      height: 16px;
+      width: 16px;
+    }
+
+    &_arrow {
+      height: 16px;
+      width: 16px;
+    }
+
+    &_category {
+      color: $primaryColor;
+      font-family: Montserrat, sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      height: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    &_product {
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $secondaryColor;
+      text-align: center;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    height: 16px;
+    width: max-content;
+    margin-bottom: 16px;
+
+    &_img {
+      height: 16px;
+      width: 16px;
+    }
+
+    &_text {
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $secondaryColor;
+      height: 16px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 32px;
+    color: $primaryColor;
+
+    @include h2-mobile;
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 10px;
+
+    &_main {
+      width: 288px;
+      height: 288px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+
+      &_img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    &_thumbnails {
+      width: 100%;
+      display: flex;
+      height: 49px;
+      gap: 5px;
+    }
+
+    &_thumbnail {
+      width: 100%;
+      max-width: 55px;
+      height: 49px;
+      cursor: pointer;
+      border: 1px solid $grayColor;
+      object-fit: scale-down;
+
+      &:hover {
+        border: 1px solid $secondaryColor;
+      }
+
+      &.active {
+        border: 1px solid $primaryColor;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+
+    &_colors {
+
+      &_title {
+        // Not empty
+      }
+
+      &_buttons {
+        display: flex;
+        gap: 8px;
+      }
+
+      &_button {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        border: 1px solid $grayColor;
+        background-color: color;
+        padding: 4px;
+        background-clip: content-box;
+        box-sizing: border-box;
+
+        &:hover {
+          border: 1px solid $secondaryColor;
+        }
+
+        &:active {
+          border: 1px solid $primaryColor;
+        }
+      }
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 56px;
+
+    &_title {
+      margin: 0;
+      width: 100%;
+      height: 42px;
+      border-bottom: 1px solid $grayColor;
+      color: $primaryColor;
+
+      @include h3-mobile;
+    }
+
+    &_block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      &_title {
+        margin: 0;
+        color: $primaryColor;
+
+        @include h4-mobile;
+      }
+
+      &_text {
+        margin: 0;
+        color: $secondaryColor;
+
+        @include body-text;
+      }
+    }
+  }
+
+  &__techSpecs {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &_title {
+      margin: 0;
+      width: 100%;
+      height: 42px;
+      border-bottom: 1px solid $grayColor;
+      color: $primaryColor;
+
+      @include h3-mobile;
+    }
+
+    &_block {
+      display: flex;
+      flex-direction: column;
+
+      gap: 8px;
+    }
+
+    &_name {
+      display: flex;
+      margin: 0;
+      color: $secondaryColor;
+      width: 100%;
+      justify-content: space-between;
+
+      @include body-text;
+    }
+
+    &_value {
+      margin: 0;
+      color: $primaryColor;
+
+      @include body-text;
+    }
+  }
+}

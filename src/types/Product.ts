@@ -11,4 +11,7 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
+  camera?: string;
+  zoom?: string;
+  cell: string[];
 }

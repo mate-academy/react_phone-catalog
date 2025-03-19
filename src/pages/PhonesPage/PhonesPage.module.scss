@@ -87,37 +87,5 @@
     margin-bottom: 24px;
     gap: 40px;
   }
-
-  &__pagination {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-
-    &_btn {
-      width: 40px;
-      height: 40px;
-      border: 1px solid #ccc;
-      background-color: white;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.3s, color 0.3s;
-
-      &:hover {
-        background: #030202;
-      }
-
-      &:disabled {
-        opacity: 0.5;
-        cursor: default;
-      }
-
-      &_active {
-        background-color: #333;
-        color: white;
-        border: none;
-      }
-    }
-  }
 }
+

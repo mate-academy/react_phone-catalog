@@ -27,7 +27,6 @@ export const SortDropdown: React.FC<Props> = ({ sortOptions, sortKey }) => {
 
       newParams.set(sortKey, selected);
 
-      // Якщо змінюється кількість елементів на сторінці, встановлюємо першу сторінку
       if (sortKey === 'limit' && prevParams.get('limit') !== selected) {
         newParams.set('page', '1');
       }
