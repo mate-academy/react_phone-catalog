@@ -3,6 +3,7 @@ import './Pagination.scss';
 import cn from 'classnames';
 import { ArrowIcon } from '../Icons/ArrowIcon';
 import { NavLink, useLocation } from 'react-router-dom';
+import { getPaginationLinks } from '../../utils/paginationHelper';
 
 type Props = {
   total: number;
@@ -18,11 +19,7 @@ export const Pagination: React.FC<Props> = ({
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const pageCount = Math.ceil(total / itemsPerPage);
-  const pageNumbers = [];
-
-  for (let i = 1; i <= pageCount; i += 1) {
-    pageNumbers.push(i);
-  }
+  const pageNumbers = getPaginationLinks(pageCount, currentPage);
 
   const isHandlePrev = currentPage === 1;
   const isHandleNext = currentPage === pageCount;
@@ -45,6 +42,18 @@ export const Pagination: React.FC<Props> = ({
     return params.toString();
   };
 
+  const getBackSearchPage = () => {
+    params.set('page', String(currentPage - 2));
+
+    return params.toString();
+  };
+
+  const getForwardSearchPage = () => {
+    params.set('page', String(currentPage + 2));
+
+    return params.toString();
+  };
+
   return (
     <ul className="pagination">
       <li className="pagination__item">
@@ -58,18 +67,46 @@ export const Pagination: React.FC<Props> = ({
         </NavLink>
       </li>
 
-      {pageNumbers.map(page => (
-        <li key={page} className="pagination__item">
-          <NavLink
-            className={cn('pagination__link', {
-              'pagination__link--active': currentPage === page,
-            })}
-            to={{ search: getSearchPage(page) }}
-          >
-            {page}
-          </NavLink>
-        </li>
-      ))}
+      {pageNumbers.map(page => {
+        if (page === -1) {
+          return (
+            <li key={-1} className="pagination__item">
+              <NavLink
+                className={'pagination__link'}
+                to={{ search: getBackSearchPage() }}
+              >
+                ...
+              </NavLink>
+            </li>
+          );
+        }
+
+        if (page === 0) {
+          return (
+            <li key={0} className="pagination__item">
+              <NavLink
+                className={'pagination__link'}
+                to={{ search: getForwardSearchPage() }}
+              >
+                ...
+              </NavLink>
+            </li>
+          );
+        }
+
+        return (
+          <li key={page} className="pagination__item">
+            <NavLink
+              className={cn('pagination__link', {
+                'pagination__link--active': currentPage === page,
+              })}
+              to={{ search: getSearchPage(page) }}
+            >
+              {page}
+            </NavLink>
+          </li>
+        );
+      })}
 
       <li className="pagination__item">
         <NavLink

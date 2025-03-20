@@ -14,7 +14,7 @@
   }
 
   &--mobile {
-    @media (max-width: $mobile) {
+    @media (max-width: $tablet) {
       padding-right: 0;
       padding-left: 16px;
     }

@@ -12,7 +12,13 @@
   cursor: pointer;
   transition: all 0.3s;
 
-  &:hover {
+  &:disabled {
+    color: $accent;
+    background: $white;
+    border-color: $elements;
+  }
+
+  &:hover:not(:disabled) {
     box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
   }
 

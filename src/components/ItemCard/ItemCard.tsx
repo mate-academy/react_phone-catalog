@@ -1,8 +1,11 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import './ItemCard.scss';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { useParams } from 'react-router-dom';
 import phones from '../../../public/api/phones.json';
+import tablets from '../../../public/api/tablets.json';
+import accessories from '../../../public/api/accessories.json';
+
 import { BackButton } from '../ButtonBack';
 import { ButtonAdd } from '../ButtonAdd';
 
@@ -12,9 +15,9 @@ import { ItemInfo } from '../ItemInfo';
 import { ItemAbout } from '../ItemAbout';
 import { ItemTech } from '../ItemTech';
 import { ProductsSlider } from '../ProductsSlider';
-// import { Product } from '../types/Product';
 import productsFromServer from '../../../public/api/products.json';
-import { getRandomProducts } from '../../utils/productHelper';
+import { getSuggestedProducts } from '../../utils/productHelper';
+import { Product } from '../types/Product';
 
 function getPhone(id?: string) {
   const list = phones.filter(product => product.id === id);
@@ -23,21 +26,47 @@ function getPhone(id?: string) {
   return product;
 }
 
-// function getSimilaryProducts(products: Product[], year: number) {
-//   const productsList = products.filter(product => {
-//     product.year === year
-//   })
-// }
+function getTablet(id?: string) {
+  const list = tablets.filter(product => product.id === id);
+  const [product] = list;
+
+  return product;
+}
+
+function getAccessory(id?: string) {
+  const list = accessories.filter(product => product.id === id);
+  const [product] = list;
+
+  return product;
+}
 
 export enum ProductType {
   PHONE = 'phone',
   TABLET = 'tablet',
-  //...
+  ACCESSORIES = 'accessories',
 }
 
-export const ItemCard: FC<{ type: ProductType }> = () => {
+function getProduct(type: ProductType, id?: string) {
+  switch (type) {
+    case ProductType.PHONE:
+      return getPhone(id);
+
+    case ProductType.TABLET:
+      return getTablet(id);
+
+    case ProductType.ACCESSORIES:
+      return getAccessory(id);
+  }
+}
+
+export const ItemCard: FC<{ type: ProductType }> = ({ type }) => {
   const { id } = useParams<{ id: string }>();
-  const product = getPhone(id);
+  const product = getProduct(type, id);
+  const p = (productsFromServer as Product[]).find(
+    item => item.itemId === product.id,
+  ) as Product;
+
+  const [isMobile, setIsMobile] = useState(false);
 
   const itemsTech = [
     {
@@ -60,19 +89,27 @@ export const ItemCard: FC<{ type: ProductType }> = () => {
       title: 'Built in memory',
       value: product.capacity,
     },
-    {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    product.camera && {
       title: 'Camera',
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
       value: product.camera,
     },
-    {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    product.zoom && {
       title: 'Zoom',
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
       value: product.zoom,
     },
     {
       title: 'Cell',
       value: product.cell,
     },
-  ];
+  ].filter(Boolean);
 
   const imagesOfGallery: ReactImageGalleryItem[] = product.images.map(image => {
     return {
@@ -84,13 +121,24 @@ export const ItemCard: FC<{ type: ProductType }> = () => {
   });
 
   useEffect(() => {
+    const onResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    onResize();
+    window.addEventListener('resize', onResize);
+
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
 
   return (
     <>
       <div className="item">
-        <div className="container">
+        <div className="container container--with-paddings">
           <div className="item__navigation">
             <Breadcrumbs />
             <BackButton />
@@ -103,7 +151,7 @@ export const ItemCard: FC<{ type: ProductType }> = () => {
               showPlayButton={false}
               showFullscreenButton={false}
               showNav={false}
-              thumbnailPosition={'left'}
+              thumbnailPosition={isMobile ? 'bottom' : 'left'}
               useTranslate3D={false}
               infinite={false}
               slideDuration={0}
@@ -128,8 +176,8 @@ export const ItemCard: FC<{ type: ProductType }> = () => {
                 </div>
 
                 <div className="item__info-buy__holder">
-                  <ButtonAdd />
-                  <ButtonFavs />
+                  <ButtonAdd addedProduct={p} />
+                  <ButtonFavs favourite={p} />
                 </div>
               </div>
 
@@ -145,14 +193,13 @@ export const ItemCard: FC<{ type: ProductType }> = () => {
             <ItemAbout about={product.description} />
             <ItemTech itemsTech={itemsTech} headline={'Tech specs'} />
           </div>
-
-          <div className="item__slider">
-            <h2 className="item__title">You may also like</h2>
-            <ProductsSlider
-              products={getRandomProducts(productsFromServer)}
-              fullPrice={true}
-            />
-          </div>
+        </div>
+        <div className="item__slider container container--mobile">
+          <h2 className="item__title">You may also like</h2>
+          <ProductsSlider
+            products={getSuggestedProducts(productsFromServer)}
+            fullPrice={true}
+          />
         </div>
       </div>
     </>

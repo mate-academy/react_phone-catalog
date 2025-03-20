@@ -8,6 +8,7 @@
   border-left: 1px solid $elements;
 
   &__link {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;

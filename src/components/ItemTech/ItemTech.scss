@@ -5,6 +5,10 @@
   max-width: 512px;
   margin-bottom: 8px;
 
+  @media (max-width: $tablet) {
+    max-width: none;
+  }
+
   &__title {
     @include title-in-item-block;
   }
@@ -15,7 +19,7 @@
 
   &__name {
     @include small-text;
-    
+
     font-weight: $font-weight-regular;
     color: $secondary;
 

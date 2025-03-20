@@ -1,10 +1,9 @@
 @import '../../utils';
 
 .product__title {
-  @include title-main;
+  margin: 40px 0 8px;
 
-  margin-top: 40px;
-  margin-bottom: 8px;
+  @include title-main;
 
   @media (max-width: $mobile) {
     margin-left: 0;

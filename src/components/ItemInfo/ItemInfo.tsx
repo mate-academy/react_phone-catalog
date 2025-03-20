@@ -9,7 +9,12 @@ type Props = {
 export const ItemInfo: React.FC<Props> = ({ availibleData, type }) => {
   return (
     <div className="item-info">
-      <p className="item-info__name">Available colors</p>
+      {type === 'color' ? (
+        <p className="item-info__name">Available colors</p>
+      ) : (
+        <p className="item-info__name">Select capacity</p>
+      )}
+
       <ul className="item-info__list">
         {availibleData.map(data => {
           return (

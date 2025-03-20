@@ -27,7 +27,31 @@ export function getHotPrices(products: Product[]) {
   }, [] as Product[]);
 }
 
-export function getRandomProducts(products: Product[], count = 10) {
+export function sortProducts(products: Product[], sortField: string | null) {
+  const prepearedProducts = [...products];
+
+  if (sortField) {
+    prepearedProducts.sort((product1, product2) => {
+      switch (sortField) {
+        case 'title':
+          return product1.name.localeCompare(product2.name);
+
+        case 'age':
+          return product2.year - product1.year;
+
+        case 'price':
+          return product1.price - product2.price;
+
+        default:
+          return 0;
+      }
+    });
+  }
+
+  return prepearedProducts;
+}
+
+export function getSuggestedProducts(products: Product[], count = 10) {
   const randomProducts: Product[] = [];
 
   for (let i = 1; i <= count; i++) {

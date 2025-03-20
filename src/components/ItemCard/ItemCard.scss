@@ -10,7 +10,13 @@
   }
 
   &__title {
-    @include title-of-blocks;
+    font-family: $font-family;
+    font-size: 32px;
+    font-weight: $font-weight-bolt;
+
+    @media (max-width: $mobile) {
+      font-size: 22px;
+    }
   }
 
   &__details {
@@ -18,21 +24,39 @@
     gap: 64px;
     margin-top: 40px;
     margin-bottom: 80px;
+
+    @media (max-width: $tablet) {
+      margin-bottom: 64px;
+    }
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+    }
   }
 
   .item__characteristics {
     display: flex;
     gap: 64px;
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+    }
   }
 
-  &__slider {
-    margin-top: 48px;
+  &__info-id {
+    @media (max-width: $tablet) {
+      display: none;
+    }
   }
 }
 
 .item__info {
   width: 100%;
   max-width: 320px;
+
+  @media (max-width: $mobile) {
+    max-width: none;
+  }
 
   &-buy__wrapper {
     display: flex;
@@ -73,10 +97,15 @@
 }
 
 .image-gallery {
-  width: 560px;
+  max-width: 560px;
+  width: 100%;
 
   .image-gallery-content .image-gallery-slide .image-gallery-image {
     height: 464px;
+
+    @media (max-width: $mobile) {
+      height: 288px;
+    }
   }
 }
 

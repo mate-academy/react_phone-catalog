@@ -27,12 +27,12 @@ export const Breadcrumbs = () => {
           }
 
           return (
-            <>
+            <div key={key}>
               <NavLink to={key} className="breadcrumb">
                 {breadcrumb}
               </NavLink>
               <VectorIcon />
-            </>
+            </div>
           );
         })}
       </div>

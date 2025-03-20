@@ -1,42 +1,67 @@
 import React from 'react';
 import './ProductFilter.scss';
 
-const options = [4, 8, 16, 'All'];
+const optionsItemsPerPage = [4, 8, 16, 'All'];
+
+const optionsForSort = [
+  {
+    label: 'Newest',
+    value: 'age',
+  },
+  {
+    label: 'Alphabetically',
+    value: 'title',
+  },
+  {
+    label: 'Cheapest',
+    value: 'price',
+  },
+];
 
 type Props = {
-  handlePerChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   itemsPerPage: number;
+  handlePerChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  sortField: string | null;
+  handleSortField: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export const ProductFilter: React.FC<Props> = ({
-  handlePerChange,
   itemsPerPage,
+  handlePerChange,
+  sortField,
+  handleSortField,
 }) => {
   return (
     <div className="filter">
       <div>
         <p className="filter__title">Sort By</p>
-        <select value="" className="filter__select">
-          <option value="newest" className="filter__option">
-            Newest
-          </option>
-          <option value="alphabetically" className="filter__option">
-            Alphabetically
-          </option>
-          <option value="cheapest" className="filter__option">
-            Cheapest
-          </option>
+        <select
+          value={sortField !== null ? sortField : 'Newest'}
+          className="filter__select"
+          onChange={handleSortField}
+        >
+          {optionsForSort.map(option => (
+            <option
+              value={option.value}
+              key={option.label}
+              className="filter__option"
+            >
+              {option.label}
+            </option>
+          ))}
         </select>
       </div>
 
       <div>
         <p className="filter__title">Items on page</p>
         <select
-          value={options.includes(itemsPerPage) ? itemsPerPage : 'All'}
+          value={
+            optionsItemsPerPage.includes(itemsPerPage) ? itemsPerPage : 'All'
+          }
           className="filter__select"
           onChange={handlePerChange}
         >
-          {options.map(v => (
+          {optionsItemsPerPage.map(v => (
             <option value={v} key={v} className="filter__option">
               {v}
             </option>

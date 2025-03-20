@@ -48,34 +48,11 @@ export const ProductCard: React.FC<Props> = ({ product, fullPrice }) => {
         </div>
       </div>
 
-      {/* <div className="product-card__description">
-        <p className="product-card__description-item">
-          Screen
-          <span className="product-card__description-item--value">
-            {product.screen}
-          </span>
-        </p>
-        <p className="product-card__description-item">
-          Capacity
-          <span className="product-card__description-item--value">
-            {product.capacity}
-          </span>
-        </p>
-        <p className="product-card__description-item">
-          RAM
-          <span className="product-card__description-item--value">
-            {product.ram}
-          </span>
-        </p>
-      </div> */}
-
       <ItemTech itemsTech={itemsTech} />
 
       <div className="product-card__buttons">
-        {/* <button className="product-card__button-cart">Add to cart</button>
-        <button className="product-card__button-favs"></button> */}
-        <ButtonAdd />
-        <ButtonFavs />
+        <ButtonAdd addedProduct={product} />
+        <ButtonFavs favourite={product} />
       </div>
     </div>
   );

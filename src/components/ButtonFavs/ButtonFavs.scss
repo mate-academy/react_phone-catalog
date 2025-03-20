@@ -4,13 +4,37 @@
   width: 40px;
   height: 40px;
   background-color: $background;
-  border: none;
-  background-image: url(../../../../img/Add\ to\ fovourites\ -\ Default.svg);
-  cursor: pointer;
+  border: 1px solid $icons_and_placeholders;
+  border-radius: 50%;
+  background-image: url(../../../../img/fovourites-default.svg);
+  background-position: center;
   background-repeat: no-repeat;
-  transition: all 0.3s;
+  cursor: pointer;
+  transition: border-color 0.3s;
 
   &:hover {
-    background-image: url(../../../../img/Add\ to\ fovourites\ -\ Hover.svg);
+    border-color: $primary;
+  }
+
+  &--liked {
+    background-image: url(../../../../img/Add\ to\ fovourites\ -\ Added.svg);
+  }
+
+  &__count {
+    position: absolute;
+    top: -25%;
+    right: -50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eb5757;
+    color: #fff;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    font-size: 9px;
+    font-weight: 700;
+    text-align: center;
   }
 }

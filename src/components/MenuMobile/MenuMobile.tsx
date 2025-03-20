@@ -2,12 +2,13 @@ import React from 'react';
 import './MenuMobile.scss';
 import { Favourites } from '../Favourites';
 import { ShoppingBag } from '../ShoppingBag';
+import { NavLink } from 'react-router-dom';
 
 const pagesOfMenu = [
-  { name: 'Home' },
-  { name: 'Phones' },
-  { name: 'Tablets' },
-  { name: 'Accessories' },
+  { name: 'home' },
+  { name: 'phones' },
+  { name: 'tablets' },
+  { name: 'accessories' },
 ];
 
 export const MenuMobile = () => {
@@ -16,9 +17,9 @@ export const MenuMobile = () => {
       <ul className="menu-mobile__list">
         {pagesOfMenu.map(page => (
           <li className="menu-mobile__item" key={page.name}>
-            <a href={`#${page.name}`} className="menu-mobile__link">
+            <NavLink to={page.name} className="menu-mobile__link">
               {page.name}
-            </a>
+            </NavLink>
           </li>
         ))}
       </ul>

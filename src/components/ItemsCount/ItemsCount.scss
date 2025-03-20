@@ -1,0 +1,21 @@
+@import '../../utils';
+
+.items-count {
+  position: absolute;
+  top: 32%;
+  right: 23%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #476df4;
+  border-radius: 50%;
+  border: 1px solid $white;
+  text-align: center;
+
+  font-family: $font-family;
+  font-weight: $font-weight-regular;
+  font-size: 9px;
+  color: $white;
+}
