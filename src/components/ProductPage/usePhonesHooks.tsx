@@ -43,30 +43,32 @@ export const useProductHooks = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [sortBy]);
+  }, []);
 
   //функція для сортування
-  const hanleSortChange = (option: DropDownOption) => {
-    const sortOption = option.value;
-
-    setSortBy(sortOption);
-    setSearchParams({ sort: sortOption });
-
+  const handleSortChange = (option: string) => {
+    console.log('Before sorting:', phones);
+    setSortBy(option);
+    setSearchParams({ sort: option });
     const sortedPhone = [...phones];
 
     if (sortBy === 'Newest') {
       sortedPhone.sort((a, b) => b.year - a.year);
+      window.alert('sorted by newest');
     }
 
     if (sortBy === 'Alphabetically') {
       sortedPhone.sort((a, b) => a.name.localeCompare(b.name));
+      window.alert('sorted by alf');
     }
 
     if (sortBy === 'Cheapest') {
       sortedPhone.sort((a, b) => a.priceRegular - b.priceRegular);
+      window.alert('sorted by price');
     }
 
-    setPhones(sortedPhone);
+    console.log('After sorting:', sortedPhone);
+    setPhones([...sortedPhone]);
   };
 
   const handleItemsChange = (option: DropDownOption) => {
@@ -101,7 +103,7 @@ export const useProductHooks = () => {
     setError,
     setCurrentPage,
     handleItemsChange,
-    hanleSortChange,
+    handleSortChange,
     setItemPrevPage,
   };
 };

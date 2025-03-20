@@ -49,7 +49,7 @@ export const ProductSlider: React.FC<Props> = ({
   return (
     <div className="product">
       <div className="product__titleButton">
-        <h2 className="product__title">{title}</h2>
+        <h2 className="category__title">{title}</h2>
         <div className="button">
           <button
             className="buttonPrev"

@@ -106,7 +106,7 @@ export const ProductInformation: React.FC = () => {
         </div>
       ) : selectedPhone ? (
         <div key={selectedPhone.id}>
-          <h2 className="productInfo__title">{selectedPhone.name}</h2>
+          <h2 className="category__title">{selectedPhone.name}</h2>
           <div className="productInfo__wrapper">
             <div className="productInfo__wrapperPhone">
               <div className="Image">

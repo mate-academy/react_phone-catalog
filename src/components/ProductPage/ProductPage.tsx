@@ -27,7 +27,7 @@ export const ProductPage = () => {
     totalPages,
     setCurrentPage,
     handleItemsChange,
-    hanleSortChange,
+    handleSortChange,
     // setItemPrevPage,
   } = useProductHooks();
   const pageNumbers = [];
@@ -93,7 +93,7 @@ export const ProductPage = () => {
 
       {!error && (
         <>
-          <h1 className="mobile__title">
+          <h1 className="page__title">
             {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
           </h1>
           <h1 className="mobile__models">{`${phones.length} models`}</h1>
@@ -111,7 +111,11 @@ export const ProductPage = () => {
             <div className="mobile__dropdown">
               <div className="mobile__sortby">
                 <h3 className="sortby">Sort by</h3>
-                <MyDropdownSortBy onChange={hanleSortChange} />
+                <MyDropdownSortBy
+                  onChange={option => {
+                    handleSortChange(option);
+                  }}
+                />
               </div>
               <div className="mobile__items">
                 <h3 className="item__page">Items on page</h3>

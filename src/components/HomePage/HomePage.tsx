@@ -54,7 +54,7 @@ export const HomePage = () => {
         </div>
       )}
       {!error && (
-        <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
+        <h1 className="page__title">Welcome to Nice Gadgets store!</h1>
       )}
 
       {loading && (
@@ -70,7 +70,7 @@ export const HomePage = () => {
             <ProductSlider products={phones} title={NameSlider.Brand} />
           </div>
           <div className="homepage__category">
-            <h2 className="category">Shop by category</h2>
+            <h2 className="category__title">Shop by category</h2>
             <ShopByCategory />
           </div>
           <div className="homepage__Hotproduct">

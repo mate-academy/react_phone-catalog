@@ -17,8 +17,6 @@
 .theme-light {
   background-color: #fff;
   color: #000;
-  border: 1px #E2E6E9 solid;
-
 }
 
 .theme-dark {
@@ -193,6 +191,7 @@
         position: relative;
         border: none;
         margin-top: 2px;
+        background-color: orange;
 
         @include themify($themes) {
           background-color: themed('toggleBackground');

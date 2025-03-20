@@ -11,6 +11,7 @@
   gap: 16px;
   transition: transform 0.3s ease-in-out;
   overflow: hidden;
+  padding-bottom: 80px;
 }
 
 
@@ -20,16 +21,16 @@
   justify-content: space-between;
 }
 
-.product__title {
-  width: 100%;
-  margin: 56px 0;
-  font-family: Mont-Bold, sans-serif;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -1px;
-  overflow: hidden;
-}
+// .product__title {
+//   width: 100%;
+//   margin: 56px 0;
+//   font-family: Mont-Bold, sans-serif;
+//   font-weight: 800;
+//   font-size: 32px;
+//   line-height: 41px;
+//   letter-spacing: -1px;
+//   overflow: hidden;
+// }
 
 
 .button {

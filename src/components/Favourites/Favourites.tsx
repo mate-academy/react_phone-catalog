@@ -25,12 +25,10 @@ export const FavouritesPage = () => {
           Back
         </p>
       </div> */}
-      {favorites.length > 0 && (
-        <h1 className="favourites__title">Favourites</h1>
-      )}
+      {favorites.length > 0 && <h1 className="page__title">Favourites</h1>}
 
       {favorites.length === 0 ? (
-        <p className="favourites__title">No favorite product yet</p>
+        <p className="page__title">No favorite product yet</p>
       ) : (
         <div className="favourites__card">
           {favorites.map(product => (

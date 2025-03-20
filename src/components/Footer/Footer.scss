@@ -1,4 +1,6 @@
 @import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
+
 
 .footer {
   border-top: 1px solid #3b3e4a;
@@ -7,6 +9,9 @@
   // left: 0;
   // right: 0;
   // z-index: 100;
+  @include themify($themes) {
+    background: themed('colorHeaderFooter');
+  }
 }
 
 .footer__container {

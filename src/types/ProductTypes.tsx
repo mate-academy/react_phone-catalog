@@ -106,6 +106,6 @@ export interface Product {
   capacity: string;
   color: string;
   ram: string;
-  year?: number;
+  year: number;
   image: string;
 }

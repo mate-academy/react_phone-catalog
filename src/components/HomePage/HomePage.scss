@@ -1,6 +1,7 @@
 @import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
 
-.homepage__title {
+.page__title {
   width: 100%;
   margin: 56px 0;
   font-family: Mont-Bold, sans-serif;
@@ -21,9 +22,21 @@
     font-size: 32px;
     margin: 24px 0;
   }
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
-.category {
+.theme-light {
+  color: #313237;
+
+}
+
+.theme-dark {
+  color: #fff;
+}
+
+.category__title {
   width: 100%;
   margin: 56px 0;
   font-family: Mont-Bold, sans-serif;
@@ -32,6 +45,9 @@
   line-height: 41px;
   letter-spacing: -1px;
 
+  @include themify($themes) {
+    color: themed('colorText');
+  }
   // @include onTablet{
   //   width: 80%;
   //   margin: 32px 24px;
