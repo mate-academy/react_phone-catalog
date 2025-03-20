@@ -12,7 +12,7 @@ export const Tablets: React.FC = () => {
 
   useEffect(() => {
     fetchProducts().then(data => setProduct(data));
-  },[]);
+  }, []);
 
   return (
     <div className={style.phone}>

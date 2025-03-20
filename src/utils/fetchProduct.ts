@@ -1,5 +1,4 @@
-// const API = '/api/products.json';
-const API = '../../public/api/products.json';
+const API = '/api/products.json';
 
 export const fetchProducts = async () => {
   try {

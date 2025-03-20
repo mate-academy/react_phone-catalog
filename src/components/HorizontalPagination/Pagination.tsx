@@ -17,23 +17,6 @@ export const Pagination: React.FC<PaginationProps> = ({currentPage, setCurrentPa
   };
 
   const renderPageNumbers = () => {
-    // const pages = [];
-
-    // if (totalPages <= 4) {
-    //   for (let i = 1; i <= totalPages; i++) {
-    //     pages.push(i);
-    //   }
-    // } else {
-    //   if (currentPage <= 2) {
-    //     pages.push(1, 2, 3, 4);
-    //   } else if (currentPage >= totalPages - 1) {
-    //     pages.push(totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
-    //   } else {
-    //     pages.push(currentPage - 1, currentPage, currentPage + 1, currentPage + 2);
-    //   }
-    // }
-
-    // return pages;
     let startPage = Math.max(1, currentPage - 1);
     let endPage = startPage + 3;
 
