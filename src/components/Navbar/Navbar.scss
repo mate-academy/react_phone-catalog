@@ -3,16 +3,27 @@
 
 .header {
   @include themify($themes) {
-    background: themed('hearedFooterBackround');
+    background: themed('colorHeaderFooter');
   }
   border: 1px #323542 solid;
-  background-color: #0f1121;
-  // фіксований хедер
+  border-top: none;
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
+}
+
+.theme-light {
+  background-color: #fff;
+  color: #000;
+  border: 1px #E2E6E9 solid;
+
+}
+
+.theme-dark {
+  background-color: #0f1121;
+  color: #fff;
 }
 
 .container {

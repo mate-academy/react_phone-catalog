@@ -25,37 +25,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   const { theme, setTheme } = useContext(ThemeContext);
 
   const handleThemeChange = () => {
-    const isCurrentDark = theme === 'dark';
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
 
-    setTheme(isCurrentDark ? 'light' : 'dark');
-    localStorage.setItem('theme', isCurrentDark ? 'light' : 'dark');
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
   };
 
   return (
     <header className="header">
-      <div className="header-content">
-        <div
-          className={`toggle-btn-section ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}
-        >
-          <div className={`toggle-checkbox m-vertica-auto`}>
-            <input
-              className="toggle-btn__input"
-              type="checkbox"
-              name="checkbox"
-              onChange={handleThemeChange}
-              checked={theme === 'dark'}
-              aria-label="Toggle theme between light and dark"
-            />
-            <button
-              type="button"
-              className={`toggle-btn__input-label`}
-              onClick={handleThemeChange}
-              aria-label="Toggle theme between light and dark"
-            ></button>
-          </div>
-        </div>
-      </div>
-
       <nav
         className="navbar is-fixed-top has-shadow"
         role="navigation"
@@ -81,6 +58,25 @@ export const Navbar: React.FC<NavbarProps> = ({
             <NavLink className="navbar-item" to="/accessories">
               Accessories
             </NavLink>
+          </div>
+          <div className="header-content">
+            <div className={`toggle-btn-section ${theme}`}>
+              <div className="toggle-checkbox">
+                <input
+                  className="toggle-btn__input"
+                  type="checkbox"
+                  onChange={handleThemeChange}
+                  checked={theme === 'dark'}
+                  aria-label="Toggle theme between light and dark"
+                />
+                <button
+                  type="button"
+                  className="toggle-btn__input-label"
+                  onClick={handleThemeChange}
+                  aria-label="Toggle theme between light and dark"
+                ></button>
+              </div>
+            </div>
           </div>
           <div className="buttons__menu">
             <NavLink className="logo likes" to="/favourites">

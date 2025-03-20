@@ -6,19 +6,16 @@ export const categories = [
   {
     image: phone,
     title: 'Mobile phones',
-    description: '95 models',
     link: '/phones',
   },
   {
     image: table,
     title: 'Tablets',
-    description: '24 models',
     link: '/tablets',
   },
   {
     image: accessories,
     title: 'Accessories',
-    description: '100 models',
     link: '/accessories',
   },
 ];

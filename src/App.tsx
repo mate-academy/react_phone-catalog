@@ -7,14 +7,10 @@ import { Footer } from './components/Footer/Footer';
 import { ThemeContext } from './components/ColorThemes/ColorThemes';
 
 export const App = () => {
-  const isBrowserDefaultDark = () =>
-    window.matchMedia('(prefers-color-scheme: light)').matches;
-
   const getDefaultTheme = (): string => {
     const localStorageTheme = localStorage.getItem('theme');
-    const browserDefault = isBrowserDefaultDark() ? 'light' : 'dark';
 
-    return localStorageTheme || browserDefault;
+    return localStorageTheme || 'dark';
   };
 
   const [menuIsOpen, setMenuIsOpen] = useState(false);

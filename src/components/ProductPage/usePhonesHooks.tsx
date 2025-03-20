@@ -5,7 +5,7 @@ import { fetchAllProducts } from '../../utils/api';
 interface DropDownOption {
   value: string;
 }
-export const usePhonesHooks = () => {
+export const useProductHooks = () => {
   // const [phones, setPhones] = useState<Product[]>([]);
   const [phones, setPhones] = useState<ProductDetails[]>([]);
   const [itemPrevPage, setItemPrevPage] = useState(8); //початкове відображення карток
@@ -14,42 +14,6 @@ export const usePhonesHooks = () => {
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState<string | null>(null);
-
-  // const path = useLocation();
-  // const currentCategory = path.pathname.slice(1);
-
-
-  // useEffect(() => {
-  //   const sortParam = searchParams.get('sort');
-
-  //   if (sortParam) {
-  //     setSortBy(sortParam);
-  //   }
-  // }, [searchParams]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const validCategories = ['phones', 'tablets', 'accessories'];
-
-  //       if (validCategories.includes(currentCategory)) {
-  //         const filteredProducts = phones.filter(
-  //           product => product.category === currentCategory,
-  //         );
-
-  //         setPhones(filteredProducts);
-  //       } else {
-  //         setPhones([]);
-  //       }
-  //     } catch {
-  //       setError(
-  //         `Oops, something went wrong, please check your connection 🫶💻`,
-  //       );
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [currentCategory, setError, phones]);
 
   useEffect(() => {
     const sortParam = searchParams.get('sort');
@@ -82,9 +46,12 @@ export const usePhonesHooks = () => {
   }, [sortBy]);
 
   //функція для сортування
-  const hanleSortChange = () => {
-    setSortBy(sortBy);
-    setSearchParams(sortBy);
+  const hanleSortChange = (option: DropDownOption) => {
+    const sortOption = option.value;
+
+    setSortBy(sortOption);
+    setSearchParams({ sort: sortOption });
+
     const sortedPhone = [...phones];
 
     if (sortBy === 'Newest') {
@@ -99,7 +66,7 @@ export const usePhonesHooks = () => {
       sortedPhone.sort((a, b) => a.priceRegular - b.priceRegular);
     }
 
-    setPhones([...sortedPhone]);
+    setPhones(sortedPhone);
   };
 
   const handleItemsChange = (option: DropDownOption) => {
@@ -115,7 +82,7 @@ export const usePhonesHooks = () => {
 
     setCurrentPage(1);
     // setCurrentPage(1);
-    // setSearchParams({ itemPrevPage: option.value });
+    setSearchParams({ itemPrevPage: option.value });
   };
 
   const indexOfLastItem = currentPage * itemPrevPage;
