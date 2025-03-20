@@ -2,13 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const FAVORITES_KEY = "favorites";
 
-// Завантажуємо список улюблених товарів з localStorage
 const loadFavoritesFromStorage = (): string[] => {
   const storedFavorites = localStorage.getItem(FAVORITES_KEY);
   return storedFavorites ? JSON.parse(storedFavorites) : [];
 };
 
-// Початковий стан
 const initialState: string[] = loadFavoritesFromStorage();
 
 const favoritesSlice = createSlice({
@@ -29,7 +27,6 @@ const favoritesSlice = createSlice({
   },
 });
 
-// Автоматично зберігаємо в localStorage при зміні state
 export const saveFavoritesToStorage = (favorites: string[]) => {
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
 };

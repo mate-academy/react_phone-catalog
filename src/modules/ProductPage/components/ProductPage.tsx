@@ -1,33 +1,37 @@
 import { Link, NavLink, useParams } from 'react-router-dom';
 import './ProductPage.scss';
 import '../../HomePage/components/SliderCards/SliderCards.scss';
-import {
-  phones,
-  tablets,
-  accessories,
-  ItemCard,
-  Product,
-} from '../../../../src/constants/common';
+import {ItemCard, Product} from '../../../../src/constants/common';
 import productList from '../../../../public/api/products.json';
 import { SliderCards } from '../../HomePage/components/SliderCards';
 import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
+import { toggleFavorite } from '../../../redux/favoritesSlice';
+import { Breadcrumbs } from '../../../components/Breadcrumbs/Breadcrumbs';
+import { fetchProducts } from '../../../utils/fetchProducts';
 
 export const ProductPage = () => {
   const { category, product } = useParams();
   const [photo, setPhoto] = useState(0);
-  let products: ItemCard[] = [];
+  const [currentProduct, setCurrentProduct] = useState<ItemCard | null >(null);
 
-  if (category === 'phones') {
-    products = phones;
-  }
 
-  if (category === 'tablets') {
-    products = tablets;
-  }
+  const dispatch = useDispatch();
+  const favorites = useSelector((state: RootState) => state.favorites);
 
-  if (category === 'accessories') {
-    products = accessories;
-  }
+  useEffect(() => {
+    if (category && product) {
+      fetchProducts(category, product).then(data => {
+        setCurrentProduct(data);
+        console.log(data);
+        
+      });
+    }
+      // window.scrollTo(0, 0);
+    // setPhoto(0);
+  }, [category, product]);
+
 
   const colorMap: Record<string, string> = {
     midnight: 'black',
@@ -41,20 +45,23 @@ export const ProductPage = () => {
     rosegold: '#F4C2C2',
   };
 
-  const recommendedProducts: Product[] = products.map(item => ({
-    id: Number(item.id),
-    itemId: item.id,
-    image: `/${item.images[0]}`,
-    fullPrice: item.priceRegular,
-    price: item.priceDiscount,
-    name: item.name,
-    screen: item.screen,
-    capacity: item.capacity,
-    ram: item.ram,
-    year: new Date().getFullYear(), // (!!)
-  }));
+  // const recommendedProducts: Product[] = products.map(item => ({
+  //   id: Number(item.id),
+  //   itemId: item.id,
+  //   image: `/${item.images[0]}`,
+  //   fullPrice: item.priceRegular,
+  //   price: item.priceDiscount,
+  //   name: item.name,
+  //   screen: item.screen,
+  //   capacity: item.capacity,
+  //   ram: item.ram,
+  //   year: new Date().getFullYear(), // (!!)
+  // }));
 
-  const currentProduct = products.find(item => item.id === product);
+  // const currentProduct = products.find(item => item.id === product);
+  // if (!currentProduct) {
+  //   return <p>Product not found</p>;
+  // }
 
   const productFromList = productList.find(
     item => item.itemId === currentProduct?.id,
@@ -68,37 +75,11 @@ export const ProductPage = () => {
     setPhoto(index);
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    setPhoto(0);
-  }, [product]);
+  
 
   return (
     <div className="card__container">
-      <nav className="breadcrumbs">
-        <ul className="breadcrumbs__list">
-          <li className="breadcrumbs__item">
-            <Link to={'/'} className="breadcrumbs__link">
-              <img src="/img/icons/home.svg" alt="home" />
-            </Link>
-          </li>
-          <li className="breadcrumbs__item">
-            <Link to={`../${category}`} className="breadcrumbs__link">
-              {' '}
-              {category
-                ? category.charAt(0).toUpperCase() + category.slice(1)
-                : ''}
-            </Link>
-          </li>
-          {currentProduct && (
-            <li className="breadcrumbs__item">
-              <Link to="" className="breadcrumbs__link">
-                {currentProduct.name}
-              </Link>
-            </li>
-          )}
-        </ul>
-      </nav>
+      <Breadcrumbs />
       <Link to={`/${category}`} className="back">
         <span className="back__icon"></span>
         Back
@@ -133,12 +114,12 @@ export const ProductPage = () => {
               <div className="info-block info-block--colors">
                 <p className="info-block__title">Available colors</p>
                 <div className="info-block__list">
-                  {currentProduct?.colorsAvailable?.map((color, index) => {
+                  {currentProduct?.colorsAvailable.map((color, index) => {
                     if (!product) {
                       return null;
                     }
 
-                    const currentColor = currentProduct?.colorsAvailable.find(
+                    const currentColor = currentProduct.colorsAvailable.find(
                       col => product.includes(col.replace(/\s/g, '-')),
                     );
 
@@ -207,8 +188,18 @@ export const ProductPage = () => {
             </div>
             <div className="actions">
               <button className="add-to-cart">Add to cart</button>
-              <button className="add-to-favorite">
-                <img src="/img/icons/add-to-fovourites.svg" alt="" />
+              <button
+                className="add-to-favorite"
+                onClick={() => dispatch(toggleFavorite(currentProduct?.id || ""))}
+              >
+                <img
+                  src={
+                    favorites.includes(currentProduct?.id || "")
+                      ? '/img/icons/remove-from-fovourites.webp'
+                      : '/img/icons/add-to-fovourites.svg'
+                  }
+                  alt=""
+                />
               </button>
             </div>
 
@@ -309,11 +300,11 @@ export const ProductPage = () => {
           </section>
         </div>
       </div>
-      <SliderCards
+      {/* <SliderCards
         products={recommendedProducts}
         title="You may also like"
         discountPrice={true}
-      />
+      /> */}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import accessories from '../../public/api/accessories.json';
 
 export interface Product {
   id: number;
+  category: string;
   itemId: string;
   image: string;
   fullPrice: number;
@@ -15,7 +16,6 @@ export interface Product {
   capacity: string;
   ram: string;
   year: number;
-  favourite?: boolean;
 }
 
 export interface SliderCardsProps {
@@ -49,7 +49,6 @@ export interface ItemCard {
   camera?: string;
   zoom?: string;
   cell: string[];
-  favourite?: boolean; //(! cheack!)
 }
 
 export const newPhones = productList.filter(

@@ -4,36 +4,45 @@ import {
   tabletsCatalog,
   accessoriesCatalog,
   Product,
+  ItemCard,
 } from '../../../constants/common';
 import './ProductsPage.scss';
 import '../../HomePage/components/SliderCards/SliderCards.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { toggleFavorite } from '../../../redux/favoritesSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
+import { Breadcrumbs } from '../../../components/Breadcrumbs/Breadcrumbs';
+import { fetchProducts } from '../../../utils/fetchProducts';
 
 export const ProductsPage = () => {
   const { category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const dispatch = useDispatch();
+  const favorites = useSelector((state: RootState) => state.favorites);
+
+  const discountPrice = true;
 
   const sortByParams = searchParams.get('sort') || 'age';
   const sortByCount = searchParams.get('perPage') || '4';
 
-  let products: Product[] = [];
-  let title = '';
-  const discountPrice = true;
+  const categoryTitles: Record<string, string> = {
+    phones: "Mobile phones",
+    tablets: "Tablets",
+    accessories: "Accessories",
+  };
+  
+  const title = category ? categoryTitles[category] || "Products" : "Products";
 
-  if (category === 'phones') {
-    products = phonesCatalog;
-    title = 'Mobile phones';
-  }
-
-  if (category === 'tablets') {
-    products = tabletsCatalog;
-    title = 'Tablets';
-  }
-
-  if (category === 'accessories') {
-    products = accessoriesCatalog;
-    title = 'Accessories';
-  }
+  useEffect(() => {
+    if (category) {
+      fetchProducts(category).then((data) => {
+        setProducts(data)
+      });
+    }
+  }, [category]);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
@@ -75,27 +84,12 @@ export const ProductsPage = () => {
     window.scrollTo(0, 0);
   }, [category]);
 
+
   return (
     <div className="products">
       <div className="products__container products__container--with-pagination">
-        <nav className="breadcrumbs">
-          <ul className="breadcrumbs__list">
-            <li className="breadcrumbs__item">
-              <Link to={`/`} className="breadcrumbs__link">
-                <img src="/img/icons/home.svg" alt="home" />
-              </Link>
-            </li>
-            <li className="breadcrumbs__item">
-              <a href={`${category}`} className="breadcrumbs__link">
-                {' '}
-                {category
-                  ? category.charAt(0).toUpperCase() + category.slice(1)
-                  : ''}
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <h1 className="products__title">{title}</h1>
+        <Breadcrumbs />
+        <h1 className="products__title title">{title}</h1>
         <p className="products__count">{products.length} models</p>
 
         <div className="products__filter-content">
@@ -146,7 +140,7 @@ export const ProductsPage = () => {
                     >
                       <div className="product-card__photo">
                         <img
-                          src={product.image}
+                          src={`/${product.image}`}
                           alt="Product Image"
                           className="product-card__image"
                         />
@@ -191,14 +185,14 @@ export const ProductsPage = () => {
                       </button>
                       <button
                         className="product-card__favorite"
-                        onClick={() => {
-                          console.log(product);
-                          product.favourite === true;
-                          console.log(product);
-                        }}
+                        onClick={() => dispatch(toggleFavorite(product.itemId))}
                       >
                         <img
-                          src="public/img/icons/add-to-fovourites.svg"
+                          src={
+                            favorites.includes(product.itemId)
+                              ? '/img/icons/remove-from-fovourites.webp'
+                              : '/img/icons/add-to-fovourites.svg'
+                          }
                           alt=""
                         />
                       </button>

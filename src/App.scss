@@ -26,12 +26,12 @@ body {
   padding: 0;
   scroll-behavior: smooth;
   font-family: 'Mont', sans-serif;
+  scrollbar-width: thin;
 }
 
 [class*='__container'] {
   max-width: 1200px;
   margin: 0 auto;
-  // padding: 0 15px;
 }
 
 .wrapper {
@@ -65,9 +65,14 @@ body {
   margin-bottom: 24px;
 }
 
-.page-title {
+.title {
   font-weight: bold;
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -1%;
+  margin-bottom: 8px;
+}
+img {
+ overflow-clip-margin: content-box;
+  overflow: clip;
 }

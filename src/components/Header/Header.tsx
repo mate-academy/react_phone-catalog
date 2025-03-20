@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 export const Header = () => {
   const links = [
@@ -9,6 +11,8 @@ export const Header = () => {
     { name: 'TABLETS', path: 'tablets' },
     { name: 'ACCESSORIES', path: 'accessories' },
   ];
+
+  const favorites = useSelector((state:RootState)=>state.favorites)
 
   return (
     <header className="header page__header">
@@ -38,11 +42,16 @@ export const Header = () => {
 
         <ul className="header__actions">
           <li className="header__actions-item header__actions-item--favourite">
-            <a href="#" className="icon icon--favourite"></a>
+            <NavLink to="favorites" className="icon icon--favourite">
+              {favorites.length>0 && <span className='favorite-count'>{favorites.length}</span>}
+              <img src="/img/icons/favourites.svg" alt="favorite"/>
+              
+            </NavLink>
           </li>
           <li className="header__actions-item header__actions-item--cart">
-            <a href="#" className="icon icon--cart"></a>
-          </li>
+            <NavLink to="cart-page" className="icon icon--cart">
+            <img src="/img/icons/shopping-bag.svg" alt="shopping-bag"/>
+              </NavLink></li>
         </ul>
       </div>
     </header>
