@@ -12,7 +12,11 @@ export const Phones: React.FC = () => {
 
   useEffect(() => {
     fetchProducts()
-      .then(data => setProduct(data));
+      .then(data => {
+        console.log(data);
+
+        setProduct(data)
+      });
   }, []);
 
   return (
