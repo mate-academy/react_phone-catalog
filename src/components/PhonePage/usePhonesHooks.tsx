@@ -15,6 +15,42 @@ export const usePhonesHooks = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState<string | null>(null);
 
+  // const path = useLocation();
+  // const currentCategory = path.pathname.slice(1);
+
+
+  // useEffect(() => {
+  //   const sortParam = searchParams.get('sort');
+
+  //   if (sortParam) {
+  //     setSortBy(sortParam);
+  //   }
+  // }, [searchParams]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const validCategories = ['phones', 'tablets', 'accessories'];
+
+  //       if (validCategories.includes(currentCategory)) {
+  //         const filteredProducts = phones.filter(
+  //           product => product.category === currentCategory,
+  //         );
+
+  //         setPhones(filteredProducts);
+  //       } else {
+  //         setPhones([]);
+  //       }
+  //     } catch {
+  //       setError(
+  //         `Oops, something went wrong, please check your connection 🫶💻`,
+  //       );
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [currentCategory, setError, phones]);
+
   useEffect(() => {
     const sortParam = searchParams.get('sort');
 
@@ -43,7 +79,7 @@ export const usePhonesHooks = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, []);
+  }, [sortBy]);
 
   //функція для сортування
   const hanleSortChange = () => {

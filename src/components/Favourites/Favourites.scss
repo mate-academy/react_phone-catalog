@@ -19,3 +19,20 @@
   line-height: 65px;
   color: #F1F2F9;
 }
+
+.favourites__card{
+  display: grid;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 24px;
+  grid-template-columns: 1fr;
+
+  @include onDesktop{
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    gap: 40px 16px;
+  }
+
+  @include onTablet{
+    grid-template-columns: repeat(auto-fit, minmax(272px, 2fr));
+  }
+}

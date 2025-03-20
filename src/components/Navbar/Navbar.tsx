@@ -6,6 +6,8 @@ import Favourites from '../../../image/heart.svg';
 import cart from '../../../image/shopping.svg';
 import menu from '../../../image/menu.svg';
 import close from '../../../image/close.svg';
+import { useContext } from 'react';
+import { ThemeContext } from '../ColorThemes/ColorThemes';
 
 interface NavbarProps {
   setMenuIsOpen: () => void;
@@ -20,9 +22,40 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-color-white-lighter': isActive });
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  const handleThemeChange = () => {
+    const isCurrentDark = theme === 'dark';
+
+    setTheme(isCurrentDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isCurrentDark ? 'light' : 'dark');
+  };
 
   return (
     <header className="header">
+      <div className="header-content">
+        <div
+          className={`toggle-btn-section ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}
+        >
+          <div className={`toggle-checkbox m-vertica-auto`}>
+            <input
+              className="toggle-btn__input"
+              type="checkbox"
+              name="checkbox"
+              onChange={handleThemeChange}
+              checked={theme === 'dark'}
+              aria-label="Toggle theme between light and dark"
+            />
+            <button
+              type="button"
+              className={`toggle-btn__input-label`}
+              onClick={handleThemeChange}
+              aria-label="Toggle theme between light and dark"
+            ></button>
+          </div>
+        </div>
+      </div>
+
       <nav
         className="navbar is-fixed-top has-shadow"
         role="navigation"

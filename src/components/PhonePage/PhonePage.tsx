@@ -5,10 +5,10 @@ import './PhonePage.scss';
 import home from '../../../image/home.svg';
 import arrow from '../../../image/arrow.svg';
 import { usePhonesHooks } from './usePhonesHooks';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ProductDetails } from '../../types/ProductTypes';
-import { fetchAllProducts } from '../../utils/api';
+// import { ProductDetails } from '../../types/ProductTypes';
+// import { fetchAllProducts } from '../../utils/api';
 import { Loader } from '../Loader/Loader';
 import catGif from '../../../assets/cat.gif';
 
@@ -17,12 +17,12 @@ export const PhonesPage = () => {
   const currentCategory = path.pathname.slice(1);
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
   // const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState<ProductDetails[]>([]);
+  // const [products, setProducts] = useState<ProductDetails[]>([]);
   const {
     phones,
     loading,
     error,
-    setError,
+    // setError,
     currentPage,
     totalPages,
     setCurrentPage,
@@ -36,30 +36,29 @@ export const PhonesPage = () => {
     pageNumbers.push(i);
   }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchAllProducts();
-        const validCategories = ['phones', 'tablets', 'accessories'];
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const validCategories = ['phones', 'tablets', 'accessories'];
 
-        if (validCategories.includes(currentCategory)) {
-          const filteredProducts = data.filter(
-            product => product.category === currentCategory,
-          );
+  //       if (validCategories.includes(currentCategory)) {
+  //         const filteredProducts = phones.filter(
+  //           product => product.category === currentCategory,
+  //         );
 
-          setProducts(filteredProducts);
-        } else {
-          setProducts([]);
-        }
-      } catch {
-        setError(
-          `Oops, something went wrong, please check your connection 🫶💻`,
-        );
-      }
-    };
+  //         setProducts(filteredProducts);
+  //       } else {
+  //         setProducts([]);
+  //       }
+  //     } catch {
+  //       setError(
+  //         `Oops, something went wrong, please check your connection 🫶💻`,
+  //       );
+  //     }
+  //   };
 
-    fetchData();
-  }, [currentCategory, setError]);
+  //   fetchData();
+  // }, [currentCategory, setError, phones]);
 
   return (
     <main className="main__phonepage">
@@ -119,7 +118,7 @@ export const PhonesPage = () => {
               </div>
             </div>
             <div className="mobile__cards">
-              {products.map(product => (
+              {phones.map(product => (
                 <ProductItem
                   key={product.id}
                   product={product}

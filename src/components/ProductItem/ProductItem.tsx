@@ -10,7 +10,7 @@ import { useFavourites } from '../Favourites/FacouritesContext';
 interface Props {
   product: ProductDetails;
   WithAdditionalPrice?: boolean;
-  // onClick?: () => void;
+  onClick?: () => void;
 }
 
 export const ProductItem: React.FC<Props> = ({
@@ -68,7 +68,10 @@ export const ProductItem: React.FC<Props> = ({
         </NavLink>
         <button
           className="buttons__like"
-          onClick={() => toggleFavorite(product)}
+          onClick={(e: React.MouseEvent) => {
+            e.stopPropagation();
+            toggleFavorite(product);
+          }}
         >
           <img src={isFavorite ? liked : like} alt="like" />
         </button>

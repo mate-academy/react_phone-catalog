@@ -25,7 +25,9 @@ export const FavouritesPage = () => {
           Back
         </p>
       </div> */}
-      {/* <h1 className="favourites__title">Favourites</h1> */}
+      {favorites.length > 0 && (
+        <h1 className="favourites__title">Favourites</h1>
+      )}
 
       {favorites.length === 0 ? (
         <p className="favourites__title">No favorite product yet</p>
