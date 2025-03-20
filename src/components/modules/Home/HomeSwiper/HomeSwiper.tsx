@@ -19,11 +19,14 @@ export const HomeSwiper = () => {
   return (
     <Swiper
       modules={[Navigation, A11y, Autoplay, Pagination]}
-      autoplay={true}
+      autoplay={{
+        delay: 3000, 
+      }}
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
       onSlideChange={() => console.log('slide change')}
+      centeredSlides={true}
       className="home-swiper"
     >
       {banners.length > 0 &&

@@ -1,20 +1,33 @@
 .home-swiper {
   width: 100%;
+  height: auto;
   max-width: 1136px;
-  height: fit-content;
-  max-height: 435px;
+  max-height: 432px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
 
   .swiper-button-next {
+    display: none;
     top: 22px;
+    right: 0;
     width: 32px;
-    height: 189px;
+    height: 100%;
+    max-height: 189px;
     background-image: url(public/icons/chevron-arrow-right.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-color: white;
     border: 1px solid #b4bdc3;
+
+    @include tablet {
+      display: block;
+    }
+
     @include desktop {
-      height: 400px;
+      max-height: 400px;
     }
 
     &::after {
@@ -23,16 +36,24 @@
   }
 
   .swiper-button-prev {
+    display: none;
     top: 22px;
     width: 32px;
-    height: 188px;
+    left: 0;
+    height: 100%;
+    max-height: 189px;
     background-image: url(public/icons/chevron-arrow-left.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-color: white;
     border: 1px solid #b4bdc3;
+
+    @include tablet {
+      display: block;
+    }
+
     @include desktop {
-      height: 400px;
+      max-height: 400px;
     }
 
     &::after {
@@ -42,8 +63,9 @@
 
   .swiper-pagination {
     height: 24px;
-    bottom: 0;
+    position: relative;
   }
+
   .swiper-pagination-bullet {
     border-radius: unset;
     background-color: $gray-primary;
@@ -56,10 +78,8 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-height: 189px;
     height: 100%;
-    padding-bottom: 32px;
-    box-sizing: content-box;
+    max-height: 189px;
 
     @include desktop {
       max-height: 400px;
@@ -68,9 +88,15 @@
     &__img {
       object-fit: cover;
       width: 100%;
-      height: auto;
+      height: 100%;
       max-width: 1040px;
-      max-height: 400px;
+      max-height: 189px;
+      padding-inline: 48px;
+
+      @include desktop {
+        max-height: 400px;
+        padding-inline: 0;
+      }
     }
   }
 }
