@@ -1,3 +1,19 @@
 @import 'utils';
 @import 'fonts';
 @import 'typography';
+
+html {
+  @include font;
+
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+  scroll-behavior: smooth;
+  color: $woodsmoke-color;
+  background-color: $athens-gray-color;
+}
+
+.container {
+  max-width: 1440px;
+
+  @include content-padding-inline;
+}

@@ -1,0 +1,59 @@
+@import '../../../styles/utils/mixins';
+@import '../../../styles/utils/vars';
+
+.burger__menu {
+  @include set-size(14px, 10px);
+
+  position: relative;
+  margin: 19px 17px;
+  cursor: pointer;
+  z-index: 5;
+
+  display: none;
+
+  span {
+    @include set-size(100%, 2px);
+
+    transition: all 0.3s ease 0s;
+    top: calc(50% - 0.8px);
+    left: 0;
+    position: absolute;
+    background-color: $woodsmoke-color;
+    border-radius: 2px;
+
+    &:first-child {
+      top: 0;
+    }
+
+    &:last-child {
+      bottom: 0;
+      top: auto;
+    }
+  }
+
+  &--open {
+    span:nth-child(1) {
+      transform: rotate(-45deg);
+      top: calc(50% - 1px);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: rotate(45deg);
+      bottom: calc(50% - 1px);
+    }
+  }
+
+  &:hover {
+    span:nth-child(2) {
+      left: -5px;
+    }
+  }
+
+  @include on-mobile {
+    display: block;
+  }
+}

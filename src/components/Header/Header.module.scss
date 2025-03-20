@@ -1,0 +1,153 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.header {
+  width: 100%;
+  border-bottom: 1px solid $porcelain-color;
+
+  &__container {
+    position: relative;
+
+    @include flex(row, space-between, center);
+
+    height: 64px;
+    gap: 24px;
+
+    @include on-tablet {
+      height: 48px;
+      gap: 16px;
+    }
+  }
+
+  &__logo {
+    @include set-size(80px, 28px);
+
+    padding: 18px 24px;
+
+    img {
+      @include set-size(100%, 100%);
+      @include hover(transform, scale(1.1));
+    }
+
+    @include on-tablet {
+      @include set-size(64px, 22px);
+
+      padding: 13px 16px;
+    }
+  }
+
+  &__left {
+    @include flex(row, space-between, center);
+
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+  }
+
+  &__right {
+    display: flex;
+
+    &:last-child {
+      border-right: 1px solid $porcelain-color;
+
+      @include on-mobile {
+        border-left: 1px solid $porcelain-color;
+        border-right: none;
+      }
+    }
+  }
+
+  &__heart_btn,
+  &__cart_btn {
+    padding: 24px;
+    border-left: 1px solid $porcelain-color;
+
+    img {
+      display: flex;
+    }
+
+    @include on-tablet {
+      padding: 16px;
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+}
+
+.nav {
+  &__list {
+    @include flex(row, space-between, center);
+
+    gap: 64px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    color: $regent-gray-color;
+    padding-block: 26.5px;
+
+    &::after {
+      @include set-size(0, 3px);
+
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      background-color: $woodsmoke-color;
+      transition:
+        width 0.3s ease,
+        color 0.3s ease,
+        left 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      color: $woodsmoke-color;
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &--active {
+      color: $woodsmoke-color;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    @include on-tablet {
+      padding-block: 18.5px;
+    }
+  }
+}
+
+.mobile__menu {
+  position: fixed;
+  top: 48px;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.3s;
+  transform: translateX(-100%);
+  pointer-events: none;
+
+  &.open {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}

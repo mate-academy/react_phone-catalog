@@ -50,3 +50,22 @@
     --columns: 4;
   }
 }
+
+@mixin font(
+  $font-weight: 400,
+  $font-size: 14px,
+  $line-height: 21px,
+  $letter-spacing: 0
+) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}

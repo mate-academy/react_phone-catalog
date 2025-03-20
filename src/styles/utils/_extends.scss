@@ -1,0 +1,13 @@
+%main-title {
+  @include font(700, 48px, 56px, -0.01em);
+
+  @include on-mobile {
+    @include font(700, 32px, 41px, -0.01em);
+  }
+}
+
+%uppercase-text {
+  @include font(700, 12px, 11px, 0.04em);
+
+  text-transform: uppercase;
+}
