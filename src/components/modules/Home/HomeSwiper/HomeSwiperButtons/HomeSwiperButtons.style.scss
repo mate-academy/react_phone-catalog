@@ -1,0 +1,24 @@
+.buttons{
+  display: flex;
+  justify-content: space-between;
+
+  &__button {
+    width: 32px;
+    height: 189px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px, solid #B4BDC3;
+
+    @include desktop {
+      height: 400px;
+    }
+
+    &--next {
+      background-image: url(public/icons/chevron-arrow-right.svg);
+    }
+
+    &--prev {
+      background-image: url(public/icons/chevron-arrow-left.svg);
+    }
+  }
+}

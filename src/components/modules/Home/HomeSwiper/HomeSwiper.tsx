@@ -1,35 +1,42 @@
-// Import Swiper React components
-import {Pagination, Autoplay, Navigation, A11y, EffectFade} from 'swiper/modules';
+import { useEffect, useState } from 'react';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, A11y, Pagination } from 'swiper/modules';
+import 'swiper/swiper-bundle.css';
+import './HomeSwiper.styles.scss';
 
-// Import Swiper styles
-import 'swiper/scss';
-import 'swiper/scss/navigation';
-import 'swiper/scss/pagination';
-import 'swiper/scss/a11y';
-import 'swiper/scss/autoplay';
-import 'swiper/scss/effect-fade';
-
-
+import { getBanners, Banner } from '../../../../api/fetchBanners';
 
 export const HomeSwiper = () => {
+  const [banners, setBanners] = useState<Banner[]>([]);
+
+  useEffect(() => {
+    getBanners()
+      .then(setBanners)
+      .catch(() => console.log('No banners received'));
+  });
+
   return (
     <Swiper
-      // install Swiper modules
-      modules={[Navigation, Pagination, A11y, Autoplay, EffectFade]}
-      spaceBetween={0}
+      modules={[Navigation, A11y, Autoplay, Pagination]}
+      autoplay={true}
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
-      effect="fade"
+      className="home-swiper"
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
+      {banners.length > 0 &&
+        banners.map((banner, index) => (
+          <SwiperSlide key={index} className="home-swiper__slide">
+            <img
+              src={banner.image}
+              alt={`Banner ${index + 1}`}
+              className="home-swiper__slide__img"
+            />
+          </SwiperSlide>
+        ))}
+
     </Swiper>
   );
 };
-
