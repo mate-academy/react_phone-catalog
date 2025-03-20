@@ -1,7 +1,7 @@
 export const fetchProducts = async (category?: string, product?: string) => {
   try {
     if (!product) {
-      const response = await fetch(`/api/products.json`);
+      const response = await fetch(`./api/products.json`);
       if (!response.ok) {
         throw new Error(`Failed to fetch products catalog`);
       }
