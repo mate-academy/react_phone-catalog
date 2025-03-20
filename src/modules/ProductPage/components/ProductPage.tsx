@@ -75,8 +75,6 @@ export const ProductPage = () => {
     setPhoto(index);
   };
 
-  
-
   return (
     <div className="card__container">
       <Breadcrumbs />
@@ -195,8 +193,8 @@ export const ProductPage = () => {
                 <img
                   src={
                     favorites.includes(currentProduct?.id || "")
-                      ? '/img/icons/remove-from-fovourites.webp'
-                      : '/img/icons/add-to-fovourites.svg'
+                      ? './img/icons/remove-from-fovourites.webp'
+                      : './img/icons/add-to-fovourites.svg'
                   }
                   alt=""
                 />

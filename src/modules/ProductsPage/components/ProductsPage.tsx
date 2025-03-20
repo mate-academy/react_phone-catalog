@@ -190,8 +190,8 @@ export const ProductsPage = () => {
                         <img
                           src={
                             favorites.includes(product.itemId)
-                              ? '/img/icons/remove-from-fovourites.webp'
-                              : '/img/icons/add-to-fovourites.svg'
+                              ? './img/icons/remove-from-fovourites.webp'
+                              : './img/icons/add-to-fovourites.svg'
                           }
                           alt=""
                         />

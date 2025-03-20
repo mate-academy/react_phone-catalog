@@ -42,7 +42,7 @@
       height: 16px;
       background-size: contain;
       pointer-events: none;
-      background: url(/img/icons/arrow-down.svg);
+      background: url(./img/icons/arrow-down.svg);
       background-size: contain;
     }
   }
@@ -97,7 +97,7 @@
       width: 16px;
       height: 16px;
       position: absolute;
-      background: url(/img/icons/arrow-right.svg) no-repeat center;
+      background: url(./img/icons/arrow-right.svg) no-repeat center;
    
       top: 50%;
       transform: translateY(-50%);
@@ -130,7 +130,7 @@
 //   content: "";
 //   width: 16px;
 //   height: 16px;
-//   background: url("/img/icons/arrow-right.svg") no-repeat center;
+//   background: url("./img/icons/arrow-right.svg") no-repeat center;
 //   background-size: contain;
 //   position: absolute;
 //   top: 50%;

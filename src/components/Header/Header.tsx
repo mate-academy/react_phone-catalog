@@ -19,7 +19,7 @@ export const Header = () => {
       <div className="header__content">
         <div className="header__logo">
           <a href="#" className="header__logo-link">
-            <img src="/img/Logo.svg" alt="logo" />
+            <img src="./img/Logo.svg" alt="logo" />
           </a>
         </div>
 
@@ -44,13 +44,13 @@ export const Header = () => {
           <li className="header__actions-item header__actions-item--favourite">
             <NavLink to="favorites" className="icon icon--favourite">
               {favorites.length>0 && <span className='favorite-count'>{favorites.length}</span>}
-              <img src="/img/icons/favourites.svg" alt="favorite"/>
+              <img src="./img/icons/favourites.svg" alt="favorite"/>
               
             </NavLink>
           </li>
           <li className="header__actions-item header__actions-item--cart">
             <NavLink to="cart-page" className="icon icon--cart">
-            <img src="/img/icons/shopping-bag.svg" alt="shopping-bag"/>
+            <img src="./img/icons/shopping-bag.svg" alt="shopping-bag"/>
               </NavLink></li>
         </ul>
       </div>

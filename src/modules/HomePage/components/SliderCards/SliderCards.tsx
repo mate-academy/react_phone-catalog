@@ -109,7 +109,7 @@ export const SliderCards: React.FC<SliderCardsProps> = ({
                       className="product-card__favorite" 
                       onClick={() => dispatch(toggleFavorite(product.itemId))}
                     >
-                      <img src={favorites.includes(product.itemId) ? "/img/icons/remove-from-fovourites.webp" : "/img/icons/add-to-fovourites.svg"} alt="" />
+                      <img src={favorites.includes(product.itemId) ? "./img/icons/remove-from-fovourites.webp" : "./img/icons/add-to-fovourites.svg"} alt="" />
                       
                     </button>
                   </div>

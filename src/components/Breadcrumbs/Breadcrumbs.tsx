@@ -26,7 +26,7 @@ export const Breadcrumbs = () => {
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
                 <Link to={'/'} className="breadcrumbs__link">
-                  <img src="/img/icons/home.svg" alt="home" />
+                  <img src="./img/icons/home.svg" alt="home" />
                 </Link>
               </li>
               <li className="breadcrumbs__item">

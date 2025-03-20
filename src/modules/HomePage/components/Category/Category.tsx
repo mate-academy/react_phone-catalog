@@ -11,7 +11,7 @@ export const Category = () => {
           <Link to="/phones" className="category__link">
             <div className="category__image">
               <img
-                src="public/img/category/category-phones.png"
+                src="./img/category/category-phones.png"
                 alt="Mobile phones"
               />
             </div>
@@ -23,7 +23,7 @@ export const Category = () => {
           <Link to="/tablets" className="category__link">
             <div className="category__image">
               <img
-                src="public/img/category/category-tablets.png"
+                src="./img/category/category-tablets.png"
                 alt="Tablets"
               />
             </div>
@@ -35,7 +35,7 @@ export const Category = () => {
           <Link to="/accessories" className="category__link">
             <div className="category__image">
               <img
-                src="public/img/category/category-accessories.png"
+                src="./img/category/category-accessories.png"
                 alt="Accessories"
               />
             </div>

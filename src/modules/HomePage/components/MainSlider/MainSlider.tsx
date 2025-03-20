@@ -4,10 +4,10 @@ import './MainSlider.scss';
 export const MainSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = [
-    { path: '/img/main-banners/banner-accessories.png' },
-    { path: '/img/main-banners/banner-phones.png' },
-    { path: '/img/main-banners/banner-tablets.png' },
-    { path: '/img/main-banners/banner-accessories2.png' },
+    { path: './img/main-banners/banner-accessories.png' },
+    { path: './img/main-banners/banner-phones.png' },
+    { path: './img/main-banners/banner-tablets.png' },
+    { path: './img/main-banners/banner-accessories2.png' },
   ];
 
   const goToSlide = (index: number) => {
