@@ -1,11 +1,30 @@
-.buy{
-  background-color: #161827;
-  display: flex;
-
+.buy {
+  margin-bottom: 17px;
 }
 
-.buy__deleteIcon{
+.buy__item {
+  background-color: #161827;
+  height: 128px;
   display: flex;
+  gap: 24px;
   align-items: center;
-  justify-content: center;
+}
+
+.buy__deleteIcon {
+  height: 16px;
+  width: 16px;
+  margin-left: 24px;
+  cursor: pointer;
+}
+
+.buy__image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.buy__number{
+  width: 32px;
+  height: 32px;
+  margin: 0 13px;
 }

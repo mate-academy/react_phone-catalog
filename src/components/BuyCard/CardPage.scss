@@ -1,0 +1,35 @@
+.card__wraper{
+  display: block;
+}
+
+.window{
+  border: 1px solid #3B3E4A;
+  padding: 24px;
+}
+
+.window__price{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window__title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.Checkout{
+  width: 100%;
+  height: 48px;
+  background-color: #905BFF;
+  border: 1px solid #905BFF;
+  margin-top: 24px;
+  color: #F1F2F9;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+
+}

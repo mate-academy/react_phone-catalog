@@ -47,6 +47,7 @@ export interface Phone {
   zoom: string;
   year?: number;
   cell: string[];
+  quantity?: number;
 }
 
 // для планшетів
@@ -70,6 +71,7 @@ export interface Tablet {
   camera: string;
   zoom: string;
   cell: string[];
+  quantity?: number;
 }
 
 //  для аксесуарів
@@ -91,6 +93,7 @@ export interface Accessory {
   processor: string;
   ram: string;
   cell: string[];
+  quantity?: number;
 }
 
 // тип що об'єднує всі товари

@@ -144,7 +144,7 @@ export const ProductPage = () => {
                   product={product}
                   WithAdditionalPrice
                   onClick={() => setSelectedPhone(product.name)}
-                  addToCard={() => addToCard(product)}
+                  // addToCard={() => addToCard(product)}
                 />
               ))}
             </div>

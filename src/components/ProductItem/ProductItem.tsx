@@ -11,13 +11,12 @@ interface Props {
   product: ProductDetails;
   WithAdditionalPrice?: boolean;
   onClick?: () => void;
-  addToCard: () => void;
+  // addToCard: (product: ProductDetails) => void;
 }
 
 export const ProductItem: React.FC<Props> = ({
   product,
   WithAdditionalPrice = false,
-  addToCard,
 }) => {
   const { favorites, toggleFavorite } = useFavourites();
   const isFavorite = favorites.some(fav => fav.id === product.id);
@@ -37,26 +36,26 @@ export const ProductItem: React.FC<Props> = ({
   const handleToggleCart = (e: React.MouseEvent) => {
     e.stopPropagation();
 
-    // const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    // const isProductInCart = savedCart.some(
-    //   (item: ProductDetails) => item.id === product.id,
-    // );
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const isProductInCart = savedCart.some(
+      (item: ProductDetails) => item.id === product.id,
+    );
 
-    // let updatedCart;
+    let updatedCart;
 
-    // if (isProductInCart) {
-    //   updatedCart = savedCart.filter(
-    //     (item: ProductDetails) => item.id !== product.id,
-    //   );
-    // } else {
-    //   updatedCart = [...savedCart, product];
-    // }
+    if (isProductInCart) {
+      updatedCart = savedCart.filter(
+        (item: ProductDetails) => item.id !== product.id,
+      );
+    } else {
+      updatedCart = [...savedCart, product];
+    }
 
-    // localStorage.setItem('cart', JSON.stringify(updatedCart));
-    // setIsAdded(!isProductInCart);
-    addToCard(product);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    setIsAdded(!isProductInCart);
+    // addToCard(product);
 
-    setIsAdded(true);
+    // setIsAdded(true);
   };
 
   return (

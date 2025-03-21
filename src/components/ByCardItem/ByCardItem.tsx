@@ -1,29 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ProductDetails } from '../../types/ProductTypes';
+import Delete from '../../../image/close.svg';
+import './ByCardItem.scss';
 
 interface CartProps {
-  product: ProductDetails[];
+  product: ProductDetails;
+  onDelete: (productId: string) => void;
+  onUpdate: (productId: string, quantity: number) => void;
 }
 
-export const ByCardItem: React.FC<CartProps> = ({ product }) => {
+export const ByCardItem: React.FC<CartProps> = ({
+  product,
+  onDelete,
+  onUpdate,
+}) => {
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    onUpdate(product.id, quantity);
+  }, [product.id, onUpdate, quantity]);
+
+  const handleDeleteButton = () => {
+    onDelete(product.id);
+  };
+
+  const handleIncrease = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
+
+  const handleDecrease = () => {
+    setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  };
+
+  const totalPriceOneProduct = product.priceRegular * quantity;
+
   return (
-    <div>
-      <h2>Cart</h2>
-      {product.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        product.map(item => (
-          <div key={item.id} className="cart-item">
-            <img
-              src={item.images[0]}
-              alt={item.name}
-              className="cart-item__image"
-            />
-            <h3>{item.name}</h3>
-            <p>{`Price: $${item.priceRegular}`}</p>
+    <>
+      <div className="buy">
+        <div className="buy__item">
+          <img
+            src={Delete}
+            alt="deleteIcon"
+            className="buy__deleteIcon"
+            onClick={handleDeleteButton}
+          />
+          <img
+            src={product.images[0]}
+            alt={product.name}
+            className="buy__image"
+          />
+          <h3>{product.name}</h3>
+          <p>{`$${totalPriceOneProduct}`}</p>
+
+          <div className="buy__button">
+            <button className="buttonPrev" onClick={handleDecrease}>
+              -
+            </button>
+            <span className="buy__number">{quantity}</span>
+            <button className="buttonNext" onClick={handleIncrease}>
+              +
+            </button>
           </div>
-        ))
-      )}
-    </div>
+        </div>
+      </div>
+    </>
   );
 };
