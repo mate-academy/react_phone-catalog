@@ -1,19 +1,20 @@
-import { Product } from '../../types/product';
+import { ProductWithYear } from '../../types/product';
 import styles from './ProductDetailsPage.module.scss';
-import { fav } from '../../icons';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import debounce from 'lodash.debounce';
 import { useEffect, useRef } from 'react';
 import {
   resetHottestOffset,
   resetNewestOffset,
+  resetOfferOffset,
   setItemWidth,
   setTotalWidth,
 } from '../features/scroll';
 import { NavLink } from 'react-router-dom';
+import { CartButtons } from '../CartButtons';
 
 type Props = {
-  item: Product;
+  item: ProductWithYear;
   offset: number;
   discount?: number;
 };
@@ -44,6 +45,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
         dispatch(setTotalWidth(totalWidth));
         dispatch(resetHottestOffset());
         dispatch(resetNewestOffset());
+        dispatch(resetOfferOffset());
       }
     };
 
@@ -102,12 +104,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
           <p className={styles.detailInfo}>{item.ram}</p>
         </div>
       </div>
-      <div className={styles.buttonsContainer}>
-        <button className={styles.buttonAdd}>Add to cart</button>
-        <button className={styles.buttonFav}>
-          <img src={fav} alt="heart-icon" />
-        </button>
-      </div>
+      <CartButtons product={item} />
     </div>
   );
 };

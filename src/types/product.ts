@@ -22,6 +22,7 @@ export type Product = {
   zoom: string;
   cell: string[];
   year: number | null;
+  quantity?: number;
 };
 
 export type ProductWithYear = Product & {

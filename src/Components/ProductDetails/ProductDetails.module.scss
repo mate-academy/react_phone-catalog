@@ -307,49 +307,7 @@
 }
 
 .buttonContainer {
-  display: flex;
   margin-top: 16px;
-}
-
-.buttonAdd {
-  width: 263px;
-  height: 48px;
-  border-radius: 8px;
-  border: none;
-  background-color: $accent;
-  color: $white;
-  @include buttons-styles;
-
-  margin-right: 8px;
-  transition: box-shadow 0.3s ease;
-
-  @include responsive-settings-max($media-pc) {
-    width: 180px;
-  }
-
-  @include responsive-settings-max($media-tablet) {
-    width: 231px;
-  }
-
-  &:hover {
-    box-shadow: 0 3px 13px 0 #17203166;
-  }
-}
-
-.buttonFav {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 40px;
-  border: 1px solid $icons;
-  background-color: transparent;
-  transition: border 0.3s ease;
-
-  &:hover {
-    border: 1px solid $secondary;
-  }
 }
 
 .techContainer {
@@ -446,4 +404,9 @@
     width: 288px;
     margin-top: 56px;
   }
+}
+
+.sliderContainer {
+  width: 100%;
+  overflow: hidden;
 }

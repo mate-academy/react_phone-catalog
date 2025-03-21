@@ -1,5 +1,63 @@
-@use './utils/index' as *;
+@use '../../utils/index' as *;
 
-.eg {
-  height: 2000px;
+.container {
+  margin: 0 auto;
+  width: 1136px;
+  margin-top: 24px;
+  min-height: 65vh;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+  }
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+}
+
+.homeIcon {
+  margin-right: 8px;
+}
+
+.arrowIcon {
+  margin-right: 8px;
+}
+
+.location {
+  @include small-text-styles;
+
+  color: $secondary;
+}
+
+.title {
+  @include h1-styles;
+
+  color: $primary;
+  margin-top: 40px;
+}
+
+.number {
+  @include body-styles;
+
+  color: $secondary;
+  margin-top: 8px;
+}
+
+.favContainer {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.favEmpty {
+  @include h3-styles;
+
+  margin-top: 20px;
 }

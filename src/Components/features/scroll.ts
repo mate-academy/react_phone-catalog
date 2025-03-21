@@ -6,6 +6,7 @@ type CarouselState = {
   totalWidth: number;
   hottestOffset: number;
   newestOffset: number;
+  offerOffset: number;
   maxScroll: number;
   gap: number;
   itemWidth: number;
@@ -17,6 +18,7 @@ const initialState: CarouselState = {
   hottestOffset: 0,
   newestOffset: 0,
   maxScroll: 0,
+  offerOffset: 0,
   gap: 16,
   itemWidth: 0,
 };
@@ -41,12 +43,6 @@ export const scrollSlice = createSlice({
 
       state.newestOffset = Math.min(newOffset, state.maxScroll);
     },
-    resetHottestOffset: state => {
-      const step = state.itemWidth + state.gap;
-      const newOffset = Math.round(state.hottestOffset / step) * step;
-
-      state.hottestOffset = Math.min(newOffset, state.maxScroll);
-    },
     nextNewestScroll: state => {
       const nextOffset = state.newestOffset + state.itemWidth + state.gap;
 
@@ -58,6 +54,12 @@ export const scrollSlice = createSlice({
         state.newestOffset - state.itemWidth - state.gap,
         0,
       );
+    },
+    resetHottestOffset: state => {
+      const step = state.itemWidth + state.gap;
+      const newOffset = Math.round(state.hottestOffset / step) * step;
+
+      state.hottestOffset = Math.min(newOffset, state.maxScroll);
     },
     nextHottestScroll: state => {
       const nextOffset = state.hottestOffset + state.itemWidth + state.gap;
@@ -71,9 +73,28 @@ export const scrollSlice = createSlice({
         0,
       );
     },
+    resetOfferOffset: state => {
+      const step = state.itemWidth + state.gap;
+      const newOffset = Math.round(state.offerOffset / step) * step;
+
+      state.offerOffset = Math.min(newOffset, state.maxScroll);
+    },
+    nextOfferScroll: state => {
+      const nextOffset = state.offerOffset + state.itemWidth + state.gap;
+
+      state.offerOffset =
+        nextOffset >= state.maxScroll ? state.maxScroll : nextOffset;
+    },
+    prevOfferScroll: state => {
+      state.offerOffset = Math.max(
+        state.offerOffset - state.itemWidth - state.gap,
+        0,
+      );
+    },
     resetScroll: state => {
       state.hottestOffset = 0;
       state.newestOffset = 0;
+      state.offerOffset = 0;
     },
   },
 });
@@ -89,4 +110,7 @@ export const {
   resetHottestOffset,
   resetNewestOffset,
   resetScroll,
+  resetOfferOffset,
+  prevOfferScroll,
+  nextOfferScroll,
 } = scrollSlice.actions;

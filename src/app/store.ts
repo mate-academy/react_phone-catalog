@@ -11,6 +11,7 @@ import { scrollSlice } from '../Components/features/scroll';
 import { accessoriesSlice } from '../Components/features/accessories';
 import { tabletsSlice } from '../Components/features/tablets';
 import { catalogSlice } from '../Components/features/catalog';
+import { cartSlice } from '../Components/features/cart';
 
 const rootReducer = combineSlices(
   menuSlice,
@@ -20,6 +21,7 @@ const rootReducer = combineSlices(
   accessoriesSlice,
   tabletsSlice,
   catalogSlice,
+  cartSlice,
 );
 
 export const store = configureStore({

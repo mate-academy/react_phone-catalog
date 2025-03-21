@@ -44,8 +44,7 @@ export const CustomDropdown: React.FC<Props> = ({ label, type }) => {
     if (type === 'sortBy') {
       params.set('sort', `${option}`);
     } else {
-      params.set('perPage', option === 'All' ? 'all' : `${option}`);
-      params.set('page', '1');
+      params.set('perPage', option === 'All' ? 'All' : `${option}`);
     }
 
     setSearchParams(params);

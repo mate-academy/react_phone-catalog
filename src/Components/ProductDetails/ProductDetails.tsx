@@ -2,22 +2,36 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { ProductWithYear } from '../../types/product';
 import { home, arrowRight, arrowLeft } from '../../icons';
 import styles from './ProductDetails.module.scss';
-import { useEffect, useState } from 'react';
-import { fav } from '../../icons';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { ProductNotFound } from '../ProductNotFound/ProductNotFound';
+import { ProductSlider } from '../ProductSlider';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import {
+  nextOfferScroll,
+  prevOfferScroll,
+  setContainerWidth,
+} from '../features/scroll';
+import debounce from 'lodash.debounce';
+import { CartButtons } from '../CartButtons';
 
 type Props = {
   items: ProductWithYear[];
 };
 
 export const ProductDetails: React.FC<Props> = ({ items }) => {
+  const { offerOffset } = useAppSelector(state => state.scroll);
+  const dispatch = useAppDispatch();
   const { productId } = useParams();
   const navigate = useNavigate();
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const phones = useAppSelector(state => state.phones.phones) || [];
+  const tablets = useAppSelector(state => state.tablets.tablets) || [];
+  const accessories =
+    useAppSelector(state => state.accessories.accessories) || [];
+
+  const allProducts = [...phones, ...tablets, ...accessories];
 
   const product = items.find(item => item.id === productId);
 
@@ -27,6 +41,31 @@ export const ProductDetails: React.FC<Props> = ({ items }) => {
 
   const [selectedColor, setSelectedColor] = useState(defaultColor);
   const [selectedCapacity, setSelectedCapacity] = useState(defaultCapacity);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        const width = containerRef.current.offsetWidth;
+
+        dispatch(setContainerWidth(width));
+      }
+    };
+
+    updateWidth();
+    const debouncedUpdate = debounce(updateWidth, 300);
+
+    window.addEventListener('resize', debouncedUpdate);
+
+    return () => {
+      window.removeEventListener('resize', debouncedUpdate);
+      debouncedUpdate.cancel();
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPhoto(product?.images[0] || '');
+  }, [product]);
 
   if (!product) {
     return <ProductNotFound name={productId!} />;
@@ -51,6 +90,28 @@ export const ProductDetails: React.FC<Props> = ({ items }) => {
     setSelectedColor(color);
     setSelectedCapacity(capacity);
   };
+
+  const getSimilarProducts = () => {
+    if (!product) {
+      return [];
+    }
+
+    return allProducts
+      .filter(
+        item =>
+          item.id !== product.id &&
+          Math.abs(item.priceDiscount - product.priceDiscount) <=
+            product.priceDiscount * 0.1,
+      )
+      .sort(
+        (a, b) =>
+          Math.abs(a.priceDiscount - product.priceDiscount) -
+          Math.abs(b.priceDiscount - product.priceDiscount),
+      )
+      .slice(0, 10);
+  };
+
+  const similarProducts = getSimilarProducts();
 
   const colorMap: Record<string, string> = {
     gold: '#FCDBC1',
@@ -173,10 +234,7 @@ export const ProductDetails: React.FC<Props> = ({ items }) => {
               <p className={styles.priceRegular}>${product.priceRegular}</p>
             </div>
             <div className={styles.buttonContainer}>
-              <button className={styles.buttonAdd}>Add to cart</button>
-              <button className={styles.buttonFav}>
-                <img src={fav} alt="favourites-heart-icon" />
-              </button>
+              <CartButtons product={product} />
             </div>
           </div>
 
@@ -260,6 +318,17 @@ export const ProductDetails: React.FC<Props> = ({ items }) => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className={styles.sliderContainer} ref={containerRef}>
+        <ProductSlider
+          title={'You may also like'}
+          offset={offerOffset}
+          discount={true}
+          nextOffset={() => dispatch(nextOfferScroll())}
+          prevOffset={() => dispatch(prevOfferScroll())}
+          items={similarProducts ?? []}
+        />
       </div>
     </div>
   );

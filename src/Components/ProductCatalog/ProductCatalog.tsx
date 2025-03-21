@@ -48,11 +48,11 @@ export const ProductCatalog: React.FC<Props> = ({ title, items }) => {
     }
 
     const perPageParam = searchParams.get('perPage');
-    const allowedValues = ['all', '4', '8', '16'];
+    const allowedValues = ['All', '4', '8', '16'];
 
     if (perPageParam && allowedValues.includes(perPageParam)) {
       const perPageValue =
-        perPageParam === 'all' ? 'All' : Number(perPageParam);
+        perPageParam === 'All' ? 'All' : Number(perPageParam);
 
       dispatch(setItemsPerPage(perPageValue as ItemsPerPageType));
     } else {

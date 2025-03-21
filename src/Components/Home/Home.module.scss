@@ -47,10 +47,6 @@
 
 .category {
   @include h2-styles;
-
-  @include responsive-settings-max($media-tablet) {
-    @include mobile-h2-styles;
-  }
 }
 
 .categoryContainer {
@@ -62,49 +58,5 @@
 
   @include responsive-settings-max($media-tablet) {
     margin-top: 56px;
-  }
-}
-
-.newModelsContainer {
-  margin-top: 80px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-
-  @include responsive-settings-max($media-pc) {
-    margin-top: 64px;
-  }
-
-  @include responsive-settings-max($media-tablet) {
-    margin-top: 56px;
-  }
-}
-
-.buttonWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-
-.button {
-  width: 32px;
-  height: 32px;
-  border-radius: 48px;
-  border: 1px solid $icons;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  transition: border 0.3s ease-in-out;
-
-  &:hover {
-    border: 1px solid $primary;
-  }
-
-  &:disabled {
-    border: 1px solid $elements;
-    cursor: not-allowed;
   }
 }

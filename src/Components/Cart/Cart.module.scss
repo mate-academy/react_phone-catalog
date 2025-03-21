@@ -1,5 +1,246 @@
-@use './utils/index' as *;
+@use '../../utils/index' as *;
 
-.eg {
-  height: 2000px;
+.container {
+  margin: 0 auto;
+  width: 1136px;
+  margin-top: 24px;
+  min-height: 65vh;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+  }
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+}
+
+.cartWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 40px;
+  gap: 16px;
+
+  @include responsive-settings-max($media-pc) {
+    flex-direction: column;
+  }
+}
+
+.homeIcon {
+  margin-right: 8px;
+}
+
+.arrowIcon {
+  margin-right: 8px;
+}
+
+.location {
+  @include small-text-styles;
+
+  color: $secondary;
+}
+
+.title {
+  @include h1-styles;
+
+  color: $primary;
+  margin-top: 40px;
+}
+
+.number {
+  @include body-styles;
+
+  color: $secondary;
+  margin-top: 8px;
+}
+
+.itemsContainer {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 16px;
+  width: 752px;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+  }
+}
+
+.cartEmpty {
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartEmptyTitle {
+  @include h3-styles;
+
+  color: $primary;
+}
+
+.emptyImg {
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+
+  @include responsive-settings-max($media-tablet) {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+.itemWrapper {
+  width: 100%;
+  height: 128px;
+  border-radius: 16px;
+  border: 1px solid $elements;
+  box-sizing: border-box;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @include responsive-settings-max($media-tablet) {
+    flex-wrap: wrap;
+    height: fit-content;
+  }
+}
+
+.delete {
+  height: 16px;
+  width: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(108%);
+  }
+}
+
+.image {
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+}
+
+.productName {
+  @include body-styles;
+
+  color: $primary;
+
+  @include responsive-settings-max($media-pc) {
+    width: 176px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 128px;
+  }
+}
+
+.buttonsContainer {
+  width: 96px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @include responsive-settings-max($media-tablet) {
+    margin-top: 16px;
+  }
+}
+
+.buttons {
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  border: 1px solid $elements;
+  transition: border 0.3s ease;
+  background-color: transparent;
+
+  &:hover {
+    border: 1px solid $secondary;
+  }
+}
+
+.price {
+  @include h3-styles;
+
+  color: $primary;
+}
+
+.checkoutContainer {
+  width: 368px;
+  height: 206px;
+  border: 1px solid $elements;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+  justify-content: space-between;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+  }
+
+  @include responsive-settings-max($media-pc) {
+    width: 288px;
+  }
+}
+
+.line {
+  height: 1px;
+  background-color: $elements;
+  width: 100%;
+  border: none;
+}
+
+.total {
+  @include body-styles;
+
+  color: $secondary;
+  margin-top: -5px;
+}
+
+.totalPrice {
+  @include h2-styles;
+
+  color: $primary;
+  text-align: center;
+}
+
+.checkoutButton {
+  width: 100%;
+  background-color: $accent;
+  border: none;
+  height: 48px;
+  border-radius: 8px;
+  @include buttons-styles;
+
+  color: $white;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 $shadow;
+  }
+}
+
+.numberItems {
+  @include small-text-styles;
 }
