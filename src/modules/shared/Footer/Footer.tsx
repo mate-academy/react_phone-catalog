@@ -5,7 +5,7 @@ import styles from './Footer.module.scss';
 
 const links = [
   { name: 'Github', url: 'https://github.com/Ellworts' },
-  { name: 'Contacts', url: 'https://www.linkedin.com/in/ellworts/' },
+  { name: 'Linkedin', url: 'https://www.linkedin.com/in/ellworts/' },
   { name: 'Rights', url: 'https://mykhailoportfolio.vercel.app/' },
 ];
 
