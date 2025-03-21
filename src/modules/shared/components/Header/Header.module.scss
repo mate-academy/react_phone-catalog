@@ -125,23 +125,25 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
+    padding-bottom: env(safe-area-inset-bottom, 20px);
     background-color: $white;
     transition: transform 0.3s ease-in-out;
-
-    &.active {
-      transform: translateX(0);
-    }
 
     @include on-tablet {
       position: relative;
       transform: translateX(0%);
       flex-direction: row;
       height: 48px;
+      padding-bottom: 0;
       border-bottom: 1px solid $elements;
     }
 
     @include on-desktop {
       height: 64px;
+    }
+
+    &.active {
+      transform: translateX(0);
     }
 
     &__icons {
@@ -196,19 +198,19 @@
   background-size: contain;
 
   &--menu {
-    background-image: url("../../../../../public/img/icons/menu-icon.svg");
+    background-image: url('../../../../../public/img/icons/menu-icon.svg');
   }
 
   &--close {
-    background-image: url("../../../../../public/img/icons/close-icon-black.svg");
+    background-image: url('../../../../../public/img/icons/close-icon-black.svg');
   }
 
   &--heart {
-    background-image: url("../../../../../public/img/icons/favourites-icon.svg");
+    background-image: url('../../../../../public/img/icons/favourites-icon.svg');
   }
 
   &--cart {
-    background-image: url("../../../../../public/img/icons/cart-icon.svg");
+    background-image: url('../../../../../public/img/icons/cart-icon.svg');
   }
 }
 
