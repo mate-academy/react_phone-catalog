@@ -140,7 +140,7 @@ export const ProductsPage = () => {
                     >
                       <div className="product-card__photo">
                         <img
-                          src={`/${product.image}`}
+                          src={`./${product.image}`}
                           alt="Product Image"
                           className="product-card__image"
                         />

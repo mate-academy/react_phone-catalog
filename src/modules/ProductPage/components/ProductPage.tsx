@@ -24,8 +24,6 @@ export const ProductPage = () => {
     if (category && product) {
       fetchProducts(category, product).then(data => {
         setCurrentProduct(data);
-        console.log(data);
-        
       });
     }
       // window.scrollTo(0, 0);
@@ -91,7 +89,7 @@ export const ProductPage = () => {
                 <div className="image-small" key={index}>
                   <img
                     key={index}
-                    src={`/${img}`}
+                    src={`./${img}`}
                     alt={`Thumbnail ${index}`}
                     className={`img-small ${photo === index ? 'active' : ''}`}
                     onClick={() => handlePhotoClick(index)}
@@ -101,7 +99,7 @@ export const ProductPage = () => {
             </div>
             <div className="images-big-box">
               <img
-                src={`/${currentProduct?.images[photo]}`}
+                src={`./${currentProduct?.images[photo]}`}
                 alt={currentProduct?.name}
                 className="img-big"
               />

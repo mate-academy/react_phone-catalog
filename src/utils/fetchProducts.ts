@@ -11,13 +11,13 @@ export const fetchProducts = async (category?: string, product?: string) => {
     }
 
     if (category && product) {
-      const response = await fetch(`/api/${category}.json`);
+      const response = await fetch(`./api/${category}.json`);
       if (!response.ok) {
         throw new Error(`Failed to fetch ${category} data`);
       }
 
       const categoryProducts = await response.json();
-      return categoryProducts.find((product: any) => product.id === product) || null;
+      return categoryProducts.find((item: any) => item.id === product) || null;
     }
 
   } catch (error) {
