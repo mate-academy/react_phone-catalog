@@ -1,0 +1,79 @@
+@import '/src/styles/global';
+
+// .title {
+//   font-family: Mont-Bold;
+//   font-size: 48px;
+//   line-height: 56px;
+//   font-weight: 800;
+//   color: $primary-color;
+//   margin-block: 56px;
+
+//   @include on-tablet {
+//     padding: 0;
+//     font-size: 48px;
+//     line-height: 56px;
+//   }
+// }
+
+.slider {
+  position: relative;
+  max-width: 1200px;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    height: 250px;
+  }
+
+  @include on-desktop {
+    height: 480px;
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 87% 20%;
+  margin: 0 auto;
+
+  @include on-tablet {
+    display: block;
+    max-width: none;
+    width: calc(100% - 40px);
+    height: 220px;
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  @include on-desktop {
+    width: calc(100% - 32px);
+    height: 400px;
+  }
+}
+
+.arrowLeft,
+.arrowRight {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+    cursor: pointer;
+    width: 32px;
+    height: 220px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}

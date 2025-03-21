@@ -1,0 +1,104 @@
+@import '/src/styles/global';
+
+.footer {
+  padding: 32px 0;
+
+  display: flex;
+  justify-content: space-between;
+
+  flex-direction: column;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__logo {
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      scale: 1.1;
+    }
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    color: $secondary-color;
+
+    margin-bottom: 32px;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 80px;
+      // ! to change
+
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    font-family: Mont-Bold;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__backToTop {
+    display: flex;
+    align-items: center;
+
+    font-family: Mont;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+
+    color: $secondary-color;
+
+    width: 100%;
+    justify-content: center;
+    @include on-tablet {
+      width: auto;
+      justify-content: flex-end;
+    }
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $secondary-color;
+
+      cursor: pointer;
+
+      margin-left: 16px;
+
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
+  }
+}

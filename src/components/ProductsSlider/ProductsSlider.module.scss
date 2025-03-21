@@ -1,0 +1,56 @@
+@import '/src/styles/global';
+
+.slider {
+  margin-bottom: 80px;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+
+    align-items: end;
+
+    gap: 16px;
+
+    margin-bottom: 28px;
+  }
+
+  &__arrowLeft,
+  &__arrowRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid $icons-color;
+
+    transition: all 0.2s ease-in-out;
+
+    &:not(:disabled):hover {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+
+  &__arrowLeft {
+  }
+
+  &__arrowRight {
+  }
+}
+
+.disabled {
+  border-color: $elements-color;
+}
