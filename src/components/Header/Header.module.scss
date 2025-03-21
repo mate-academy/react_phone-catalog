@@ -29,8 +29,9 @@
       padding-inline: 16px;
       position: relative;
       height: 50%;
-      @include hover(transform, scale(1.05));
+      object-fit: contain;
 
+      @include hover(transform, scale(1.05));
     }
   }
 

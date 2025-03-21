@@ -17,7 +17,7 @@ export const Header = () => {
       <div className={s.Header__content}>
         <Link to={LINK_TO.HOME} className={(s.Header__link, s.Header__logo)}>
           <img
-            src="/img/icons/icon-logo.svg"
+            src="/img/icons/icon-logo.png"
             alt="logo"
             className={s.Header__logoImg}
           />

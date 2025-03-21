@@ -56,7 +56,7 @@ export const Slider = () => {
                   Now available <br />
                   in our store!{' '}
                   <span className={s.Slider__okay}>
-                    <img src="/img/icons/icon-okey.svg" alt="okay" />
+                    <img src="/img/icons/icon-okey.png" alt="okay" />
                   </span>
                 </p>
                 <p className={s.Slider__beFirst}>Be the first</p>
