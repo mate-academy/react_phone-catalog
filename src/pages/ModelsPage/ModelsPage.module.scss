@@ -3,9 +3,9 @@
 $padding-inline: 10px;
 
 .ModelsPage {
-  @include grid;
-
   row-gap: 40px;
+
+  @include grid;
 
   &__currentPage {
     grid-column: 1 / -1;
@@ -18,10 +18,10 @@ $padding-inline: 10px;
   }
 
   &__cards {
-    @include grid;
-
     grid-column: 1 / -1;
     row-gap: 40px;
+
+    @include grid;
   }
 
   &__card {

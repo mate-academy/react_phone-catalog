@@ -1,11 +1,10 @@
 @use '/src/utils' as *;
 
 .SliderPhones {
-  @include grid;
-
   padding-block: 150px;
-
   row-gap: 24px;
+
+  @include grid;
 
   &__title {
     grid-column: span 2;
@@ -24,9 +23,9 @@
   }
 
   &__slider {
-    @include grid;
-
     grid-column: 1 / -1;
     width: 100%;
+
+    @include grid;
   }
 }

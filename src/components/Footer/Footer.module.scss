@@ -4,13 +4,12 @@
   padding-block: 32px;
   border-top: 1px solid $gray-border;
 
-
   &__content {
-    @include centered;
-
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    @include centered;
 
     @include on-tablet {
       flex-direction: row;

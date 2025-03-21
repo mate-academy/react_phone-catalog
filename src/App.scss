@@ -50,9 +50,9 @@ body {
 }
 
 .main {
-  @include centered;
-
   padding-block: 25px 40px;
+
+  @include centered;
 
   @include on-desktop {
     padding-bottom: 70px;

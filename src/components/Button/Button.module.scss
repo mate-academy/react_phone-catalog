@@ -3,11 +3,11 @@
 .Button {
   @extend %buttons-icon-style;
 
+  padding: 8px;
+
   &__photo {
     @include hover-image;
   }
-
-  padding: 8px;
 
   &__heart {
     width: 40px;

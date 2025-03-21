@@ -1,9 +1,9 @@
 @use '/src/utils' as *;
 
 .ShopPage {
-  @include grid;
-  
   row-gap: 32px;
+
+  @include grid;
 
   &__title {
     grid-column: 1 / -1;

@@ -1,9 +1,9 @@
 @use '/src/utils' as *;
 
 .FavoritePage {
-  @include grid;
-
   row-gap: 50px;
+
+  @include grid;
 
   &__currentPage {
     grid-column: 1 / -1;

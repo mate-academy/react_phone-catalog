@@ -19,15 +19,15 @@
     background-color: #fff;
     border-radius: 10px;
 
-    @include on-tablet {
-      height: 200px;
-    }
-
     display: flex;
     flex-direction: column;
     align-items: center;
 
     gap: 30px;
+
+    @include on-tablet {
+      height: 200px;
+    }
   }
 
   &__close {

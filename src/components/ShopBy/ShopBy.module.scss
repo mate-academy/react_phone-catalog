@@ -1,9 +1,9 @@
 @use '/src/utils' as *;
 
 .ShopBy {
-  @include grid;
-
   row-gap: 24px;
+
+  @include grid;
 
   &__title {
     grid-column: 1 / -1;
@@ -11,10 +11,9 @@
 
   &__categories {
     grid-column: 1 / -1;
+    row-gap: 32px;
 
     @include grid;
-
-    row-gap: 32px;
   }
 
   &__category {
@@ -35,7 +34,7 @@
   &__blockImg {
     aspect-ratio: 1;
     overflow: hidden;
-  
+
     @include hover-image;
 
     &One {

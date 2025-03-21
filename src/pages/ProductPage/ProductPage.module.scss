@@ -3,11 +3,10 @@
 $gap: 8px;
 
 .ProductPage {
-
   &__content {
-    @include grid;
-
     row-gap: 40px;
+
+    @include grid;
 
     @include on-tablet {
       row-gap: 70px;
@@ -22,6 +21,10 @@ $gap: 8px;
     grid-column: 1 / -1;
     height: 500px;
 
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
     @include on-tablet {
       grid-column: span 7;
     }
@@ -30,11 +33,7 @@ $gap: 8px;
       grid-column: span 12;
     }
 
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-
-    @include on-tablet{
+    @include on-tablet {
       flex-direction: row;
     }
   }
@@ -69,6 +68,9 @@ $gap: 8px;
 
   &__mainInfo {
     grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 
     @include on-tablet {
       grid-column: span 5;
@@ -77,10 +79,6 @@ $gap: 8px;
     @include on-desktop {
       grid-column: 14 / 20;
     }
-
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
   }
 
   &__selectBlock {
@@ -159,7 +157,7 @@ $gap: 8px;
 
   &__infoItem {
     @extend %small-text;
-  
+
     line-height: 21px;
 
     display: flex;
@@ -181,13 +179,13 @@ $gap: 8px;
   &__about {
     grid-column: 1 / -1;
 
-    @include on-desktop {
-      grid-column: span 12;
-    }
-
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
   }
 
   &__techSpecs {
@@ -217,7 +215,7 @@ $gap: 8px;
     @extend %body-text;
   }
 
-  &__slider{
+  &__slider {
     grid-column: 1 / -1;
   }
 }
