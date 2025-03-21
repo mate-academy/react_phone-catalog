@@ -45,6 +45,7 @@ export interface Phone {
   ram: string;
   camera: string;
   zoom: string;
+  year?: number;
   cell: string[];
 }
 

@@ -18,6 +18,7 @@ export const ProductPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
   // const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<ProductDetails[]>([]);
+  const [cart, setCart] = useState<ProductDetails[]>([]);
   const {
     phones,
     loading,
@@ -59,7 +60,21 @@ export const ProductPage = () => {
     };
 
     fetchData();
+
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    setCart(savedCart);
   }, [currentCategory, setError]);
+
+  const addToCard = (product: ProductDetails) => {
+    setCart(prevCard => {
+      const updatedCart = [...prevCard, product];
+
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+      return updatedCart;
+    });
+  };
 
   return (
     <main className="main__phonepage">
@@ -113,7 +128,7 @@ export const ProductPage = () => {
                 <h3 className="sortby">Sort by</h3>
                 <MyDropdownSortBy
                   onChange={option => {
-                    handleSortChange(option);
+                    handleSortChange(option.value);
                   }}
                 />
               </div>
@@ -129,6 +144,7 @@ export const ProductPage = () => {
                   product={product}
                   WithAdditionalPrice
                   onClick={() => setSelectedPhone(product.name)}
+                  addToCard={() => addToCard(product)}
                 />
               ))}
             </div>

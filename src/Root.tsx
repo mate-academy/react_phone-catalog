@@ -5,7 +5,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { App } from './App';
-import { CardPge } from './components/CartPage';
+import { CardPage } from './components/BuyCard/CartPage';
 import { FavouritesPage } from './components/Favourites/Favourites';
 import { HomePage } from './components/HomePage/HomePage';
 import { PageNotFound } from './components/PageNotFound';
@@ -30,7 +30,7 @@ export const Root = () => {
               <Route path=":productId" element={<ProductInformation />} />
             </Route>
             <Route path="favourites" element={<FavouritesPage />} />
-            <Route path="cart" element={<CardPge />} />
+            <Route path="cart" element={<CardPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>

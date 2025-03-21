@@ -52,19 +52,24 @@ export const useProductHooks = () => {
     setSearchParams({ sort: option });
     const sortedPhone = [...phones];
 
-    if (sortBy === 'Newest') {
-      sortedPhone.sort((a, b) => b.year - a.year);
-      window.alert('sorted by newest');
+    if (option === 'Newest') {
+      if (sortedPhone.every(phone => phone.year !== undefined)) {
+        sortedPhone.sort((a, b) => b.year - a.year);
+      } else {
+        console.warn(
+          'Year field is missing in some products. Skipping sorting by year.',
+        );
+      }
     }
 
-    if (sortBy === 'Alphabetically') {
+    if (option === 'Alphabetically') {
       sortedPhone.sort((a, b) => a.name.localeCompare(b.name));
-      window.alert('sorted by alf');
+      // window.alert('sorted by alf');
     }
 
-    if (sortBy === 'Cheapest') {
+    if (option === 'Cheapest') {
       sortedPhone.sort((a, b) => a.priceRegular - b.priceRegular);
-      window.alert('sorted by price');
+      // window.alert('sorted by price');
     }
 
     console.log('After sorting:', sortedPhone);

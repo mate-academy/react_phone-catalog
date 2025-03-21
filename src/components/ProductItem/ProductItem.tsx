@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ProductDetails } from '../../types/ProductTypes';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import like from '../../../image/heart.svg';
 import liked from '../../../image/liked.svg';
 
@@ -11,16 +11,53 @@ interface Props {
   product: ProductDetails;
   WithAdditionalPrice?: boolean;
   onClick?: () => void;
+  addToCard: () => void;
 }
 
 export const ProductItem: React.FC<Props> = ({
   product,
   WithAdditionalPrice = false,
+  addToCard,
 }) => {
   const { favorites, toggleFavorite } = useFavourites();
   const isFavorite = favorites.some(fav => fav.id === product.id);
   const productPath = `/${product.category}/${product.id}`;
   const navigate = useNavigate();
+
+  const [isAdded, setIsAdded] = useState(false); // стан кнопки
+
+  useEffect(() => {
+    const saveCard = JSON.parse(localStorage.getItem('card') || '[]');
+
+    if (saveCard.some((item: ProductDetails) => item.id === product.id)) {
+      setIsAdded(true);
+    }
+  }, [product.id]);
+
+  const handleToggleCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    // const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    // const isProductInCart = savedCart.some(
+    //   (item: ProductDetails) => item.id === product.id,
+    // );
+
+    // let updatedCart;
+
+    // if (isProductInCart) {
+    //   updatedCart = savedCart.filter(
+    //     (item: ProductDetails) => item.id !== product.id,
+    //   );
+    // } else {
+    //   updatedCart = [...savedCart, product];
+    // }
+
+    // localStorage.setItem('cart', JSON.stringify(updatedCart));
+    // setIsAdded(!isProductInCart);
+    addToCard(product);
+
+    setIsAdded(true);
+  };
 
   return (
     <div
@@ -63,9 +100,9 @@ export const ProductItem: React.FC<Props> = ({
       </div>
 
       <div className="buttons">
-        <NavLink className="button__add" to="/...">
-          Add to cart
-        </NavLink>
+        <button className="button__add" onClick={handleToggleCart}>
+          {isAdded ? 'Added' : 'Add to cart'}
+        </button>
         <button
           className="buttons__like"
           onClick={(e: React.MouseEvent) => {

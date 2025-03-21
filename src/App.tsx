@@ -5,6 +5,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { useState } from 'react';
 import { Footer } from './components/Footer/Footer';
 import { ThemeContext } from './components/ColorThemes/ColorThemes';
+// import { useProductHooks } from './components/ProductPage/usePhonesHooks';
 
 export const App = () => {
   const getDefaultTheme = (): string => {
@@ -15,6 +16,7 @@ export const App = () => {
 
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [theme, setTheme] = useState(getDefaultTheme());
+  // const { loading } = useProductHooks();
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -37,9 +39,11 @@ export const App = () => {
             </div>
           </div>
 
+          {/* {!loading && ( */}
           <div className="footer__wrapper">
             <Footer />
           </div>
+          {/* )} */}
         </div>
       </div>
     </ThemeContext.Provider>

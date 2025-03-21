@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../../../image/logo.svg';
 import './Footer.scss';
+import { useProductHooks } from '../ProductPage/usePhonesHooks';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -10,13 +11,16 @@ export const Footer = () => {
     });
   };
 
+  const { loading } = useProductHooks();
+
   return (
     <footer className="footer">
       <nav
-        className="footer is-fixed-top has-shadow"
+        // className="footer is-fixed-top has-shadow"
         role="navigation"
         aria-label="footer navigation"
       >
+        {/* {!loading && ( */}
         <div className="footer__container">
           <div className="footer__logo">
             <img src={logo} alt="Logo" />
@@ -41,6 +45,7 @@ export const Footer = () => {
             </button>
           </div>
         </div>
+        {/* )} */}
       </nav>
     </footer>
   );

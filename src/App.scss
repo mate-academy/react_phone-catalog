@@ -32,6 +32,7 @@ body {
 }
 
 .container__page {
+  margin-bottom: 80px;
   background-color: #0f1121;
   @include themify($themes) {
     background: themed('colorHeaderFooter');
