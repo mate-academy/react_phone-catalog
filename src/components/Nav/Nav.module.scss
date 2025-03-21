@@ -1,0 +1,72 @@
+@use '/src/utils' as *;
+
+.Nav {
+  width: 100%;
+  display: flex;
+  gap: 26px;
+  flex-grow: 1;
+  border-bottom: 1px solid $gray-border;
+
+  @include on-desktop {
+    gap: 36px;
+    padding-left: 24px;
+  }
+
+  &__link {
+    @extend %uppercase;
+
+    color: $gray-secondary;
+
+    @include hover(color, $gray-primary);
+
+    &Active {
+      color: $gray-primary;
+
+      &::before {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background-color: $gray-primary;
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+
+  &__list {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+
+    &Menu {
+      width: 100%;
+      display: flex;
+      gap: 26px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-block: 24px;
+      max-height: 100px;
+
+      .Nav__link {
+        font-size: 8px;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    position: relative;
+  }
+}

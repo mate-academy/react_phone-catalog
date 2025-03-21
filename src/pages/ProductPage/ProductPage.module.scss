@@ -1,0 +1,223 @@
+@use '/src/utils' as *;
+
+$gap: 8px;
+
+.ProductPage {
+
+  &__content {
+    @include grid;
+
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 70px;
+    }
+
+    @include on-desktop {
+      row-gap: 80px;
+    }
+  }
+
+  &__blockImages {
+    grid-column: 1 / -1;
+    height: 500px;
+
+    @include on-tablet {
+      grid-column: span 7;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    @include on-tablet{
+      flex-direction: row;
+    }
+  }
+
+  &__otherImages {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__image {
+    width: 50px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border: 1px solid $gray-border;
+
+    @include on-desktop {
+      width: 80px;
+    }
+
+    &Active {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__mainImg {
+    object-fit: contain;
+  }
+
+  &__mainInfo {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 20;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__selectBlock {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $gray-border;
+  }
+
+  &__chooseName {
+    @extend %small-text;
+  }
+
+  &__selectList {
+    display: flex;
+    gap: $gap;
+  }
+
+  &__color {
+    box-sizing: border-box;
+    outline: 1px solid $gray-border;
+    width: 28px;
+    aspect-ratio: 1 / 1;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &Active {
+      outline-color: #000;
+    }
+  }
+
+  &__capacity {
+    box-sizing: border-box;
+    border: 1px solid $gray-border;
+    padding: 8px 7px 4px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    @extend %body-text;
+
+    color: $gray-primary;
+
+    &Active {
+      background-color: $gray-primary;
+      color: #fff;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    &Discount {
+      font-size: 31px;
+    }
+    &Regular {
+      font-size: 22px;
+      color: $gray-secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__addTo {
+    display: flex;
+    gap: $gap;
+  }
+
+  &__someSpecs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__infoItem {
+    @extend %small-text;
+  
+    line-height: 21px;
+
+    display: flex;
+    justify-content: space-between;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    &Bigger {
+      font-size: 14px;
+    }
+  }
+
+  &__span {
+    color: $gray-primary;
+  }
+
+  &__about {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__techSpecs {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__subtitle {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $gray-border;
+  }
+
+  &__otherInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__description {
+    @extend %body-text;
+  }
+
+  &__slider{
+    grid-column: 1 / -1;
+  }
+}

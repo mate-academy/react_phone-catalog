@@ -1,0 +1,25 @@
+@use '/src/utils' as *;
+
+.Button {
+  @extend %buttons-icon-style;
+
+  &__photo {
+    @include hoverImage;
+  }
+
+  padding: 8px;
+
+  &__heart {
+    width: 40px;
+  }
+
+  &:disabled {
+    cursor: default;
+    border-color: $gray-border;
+
+    img {
+      filter: invert(86%) sepia(7%) saturate(226%) hue-rotate(162deg)
+        brightness(97%) contrast(87%);
+    }
+  }
+}

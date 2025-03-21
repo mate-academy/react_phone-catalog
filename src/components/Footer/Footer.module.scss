@@ -1,0 +1,58 @@
+@use '/src/utils' as *;
+
+.Footer {
+  padding-block: 32px;
+  border-top: 1px solid $gray-border;
+
+
+  &__content {
+    @include centered;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 100px;
+    }
+  }
+
+  &__link {
+    @extend %uppercase;
+
+    color: $gray-secondary;
+
+    @include hover(color, $gray-primary);
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &__backTo {
+    @extend %small-text;
+
+    color: $gray-secondary;
+  }
+
+  &__logo {
+    width: fit-content;
+  }
+}

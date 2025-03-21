@@ -1,0 +1,1 @@
+export { CategoryWrapperPage } from './CategoryWraperPage';

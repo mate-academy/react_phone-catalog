@@ -1,0 +1,32 @@
+@use '/src/utils' as *;
+
+.SliderPhones {
+  @include grid;
+
+  padding-block: 150px;
+
+  row-gap: 24px;
+
+  &__title {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 7;
+    }
+  }
+
+  &__buttons {
+    grid-column: -2 / -1;
+    place-self: center flex-end;
+
+    display: flex;
+    gap: 16px;
+  }
+
+  &__slider {
+    @include grid;
+
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}

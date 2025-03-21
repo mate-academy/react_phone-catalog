@@ -1,1 +1,103 @@
-// not empty
+@forward './typography';
+@forward './fonts';
+
+@use './utils' as *;
+@import '../node_modules/reset.css/reset.css';
+
+:root {
+  --opacity-value: 0.5;
+  --box-shadow: 0 0 10px 0 black;
+  --transition: 0.3s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Mont, Arial, sans-serif;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-header {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid $gray-border;
+  border-bottom: 1px solid $gray-border;
+  transition: border-color 0.3s;
+
+  @include padding-inline;
+
+  &:hover {
+    border-color: $gray-primary;
+  }
+
+  &:first-child:hover ~ & {
+    border-left: 1px solid $gray-primary;
+  }
+
+  &--active {
+    border-bottom: 2px solid $gray-primary;
+  }
+}
+
+.main {
+  @include centered;
+
+  padding-block: 25px 40px;
+
+  @include on-desktop {
+    padding-bottom: 70px;
+  }
+}
+
+.line {
+  background-color: #e2e6e9;
+  height: 1px;
+}
+
+.page-title {
+  visibility: hidden;
+  position: absolute;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+.wrong-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__cat {
+    width: 40%;
+  }
+}
+
+.cat-photo {
+  width: 40%;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 400% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}

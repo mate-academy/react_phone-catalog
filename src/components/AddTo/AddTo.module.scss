@@ -1,0 +1,41 @@
+@use '/src/utils' as *;
+
+.AddTo {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+
+  &__addToCard {
+    position: relative;
+
+    flex-grow: 1;
+    background-color: $gray-primary;
+    color: white;
+    border: 0;
+    cursor: pointer;
+
+    @include hover(box-shadow, var(--box-shadow));
+
+    @extend %buttons;
+  }
+
+  &__selected {
+    color: $green;
+    background-color: #fff;
+    border: 1px solid $gray-border;
+  }
+
+  &__message {
+    box-sizing: border-box;
+    position: absolute;
+    background-color: $gray-primary;
+    border: 1px solid $gray-border;
+    width: 200px;
+    left: 50%;
+    bottom: 115%;
+    border-radius: 5%;
+    color: #fff;
+    padding: 5px;
+    pointer-events: none;
+  }
+}

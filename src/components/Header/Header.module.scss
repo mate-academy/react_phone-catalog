@@ -1,0 +1,54 @@
+@use '../../utils' as *;
+
+.Header {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  background-color: #fff;
+  z-index: 999;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+
+    @include on-tablet {
+      height: 64px;
+    }
+  }
+
+  &__logo {
+    box-sizing: border-box;
+    align-self: center;
+    height: 100%;
+    border-bottom: 1px solid $gray-border;
+    display: flex;
+    align-items: center;
+
+    &Img {
+      padding-inline: 16px;
+      position: relative;
+      height: 50%;
+      @include hover(transform, scale(1.05));
+
+    }
+  }
+
+  &__iconsRight {
+    display: flex;
+  }
+
+  &__right {
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__left {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+}

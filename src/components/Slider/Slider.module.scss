@@ -1,0 +1,202 @@
+@use '/src/utils' as *;
+
+$border-radius: 40px;
+$margin-padding-slide: 10px;
+
+.Slider {
+  position: relative;
+
+  @include on-tablet {
+    @include centered;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+
+  &__content {
+    @include grid;
+  }
+
+  &__slides {
+    width: 100%;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+  }
+
+  &__slide {
+    box-sizing: border-box;
+    padding-top: 25px;
+    background-color: black;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    max-height: 400px;
+
+    @include on-tablet {
+      padding-top: 0;
+      align-items: stretch;
+      flex-direction: row;
+      gap: 30px;
+    }
+  }
+
+  &__slideTop {
+    @include on-tablet {
+      margin: 10px;
+      padding: 50px 15px 70px 50px;
+      background-color: $gray-bg;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 40%;
+    }
+  }
+
+  &__textTop {
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__inStore {
+    text-align: center;
+    background: linear-gradient(#891ce8, #7560fa, #e963ff);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-weight: 800;
+    font-size: 34px;
+
+    @include on-tablet {
+      font-size: 40px;
+      text-align: left;
+    }
+  }
+
+  &__okay {
+    display: none;
+
+    @include on-tablet {
+      display: inline-block;
+      vertical-align: middle;
+      width: 24px;
+    }
+  }
+
+  &__beFirst {
+    font-weight: 700;
+    font-size: 16px;
+    color: $gray-light;
+
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__slideBottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+
+    @include on-tablet {
+      max-width: 50%;
+      flex-grow: 1;
+    }
+  }
+
+  &__phoneName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+  }
+
+  &__iphone {
+    font-weight: 800;
+    font-size: 34px;
+    color: #fff;
+
+    @include on-tablet {
+      font-size: 46px;
+    }
+  }
+
+  &__beyond {
+    color: $gray-dark;
+    font-size: 16px;
+  }
+
+  &__phoneImg {
+    position: relative;
+    top: 8%;
+
+    @include on-tablet {
+      z-index: -999;
+      max-width: 90%;
+    }
+  }
+
+  &__order {
+    display: none;
+    max-width: 200px;
+    background-color: $gray-bg;
+    border: 1px solid $gray-dark;
+    text-align: center;
+    border-radius: $border-radius;
+    padding: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__arrow {
+    display: none;
+    background-color: #fff;
+    border: 1px solid $gray-icons-placeholders;
+    cursor: pointer;
+    transition: all var(--transition);
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &:hover {
+      background-color: $gray-primary;
+
+      svg path {
+        fill: white;
+      }
+    }
+  }
+
+  @at-root .swiper {
+    position: static;
+  }
+
+  @at-root .swiper-pagination {
+    bottom: -3em !important;
+  }
+
+  @at-root .swiper-pagination-bullet {
+    width: 25px;
+    height: 6px;
+    border-radius: 0;
+    background-color: $gray-primary;
+  }
+}

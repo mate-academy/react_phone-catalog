@@ -1,0 +1,52 @@
+@use '/src/utils' as *;
+
+$padding-inline: 10px;
+
+.ModelsPage {
+  @include grid;
+
+  row-gap: 40px;
+
+  &__currentPage {
+    grid-column: 1 / -1;
+  }
+
+  &__filter {
+    grid-column: 1 / -1;
+
+    @include grid;
+  }
+
+  &__cards {
+    @include grid;
+
+    grid-column: 1 / -1;
+    row-gap: 40px;
+  }
+
+  &__card {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+
+  &__pagination {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__button {
+    @extend %buttons-icon-style;
+
+    &Active {
+      color: #fff;
+      background-color: $gray-primary;
+      border: 0;
+    }
+  }
+}

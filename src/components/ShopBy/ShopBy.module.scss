@@ -1,0 +1,70 @@
+@use '/src/utils' as *;
+
+.ShopBy {
+  @include grid;
+
+  row-gap: 24px;
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__categories {
+    grid-column: 1 / -1;
+
+    @include grid;
+    
+    row-gap: 32px;
+  }
+
+  &__category {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__blockImg {
+    aspect-ratio: 1;
+    overflow: hidden;
+    @include hoverImage;
+
+    &One {
+      background-color: #3f4043;
+    }
+
+    &Two {
+      background-color: #808185;
+    }
+
+    &Three {
+      background-color: #d25e82;
+    }
+  }
+
+  &__img {
+    object-fit: contain;
+    position: relative;
+    top: 30%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__count {
+    color: $gray-secondary;
+
+    @extend %body-text;
+  }
+}

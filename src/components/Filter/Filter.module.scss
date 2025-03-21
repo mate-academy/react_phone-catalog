@@ -1,0 +1,69 @@
+@use '/src/utils' as *;
+
+.Filter {
+  &__sortBlock {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    &First {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+    &Second {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__buttonMenu {
+    @extend %buttons;
+
+    color: $gray-primary;
+    padding: $padding-inline;
+
+    @extend %buttons-icon-style;
+
+    justify-content: space-between;
+    aspect-ratio: 16/ 3;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__list {
+    box-sizing: border-box;
+    position: absolute;
+    top: 120%;
+    width: 100%;
+    border: 1px solid $gray-border;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+  }
+
+  &__itemMenu {
+    padding: $padding-inline;
+    color: $gray-secondary;
+
+    &:hover {
+      cursor: pointer;
+      color: $gray-primary;
+      background-color: $gray-icons-placeholders;
+    }
+  }
+
+  &__sortBy {
+    @extend %small-text;
+  }
+
+  &__disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+}
