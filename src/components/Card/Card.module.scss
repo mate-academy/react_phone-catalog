@@ -17,7 +17,7 @@
     display: block;
     height: 100%;
 
-    @include hoverImage;
+    @include hover-image;
   }
 
   &__img {

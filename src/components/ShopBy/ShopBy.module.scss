@@ -13,7 +13,7 @@
     grid-column: 1 / -1;
 
     @include grid;
-    
+
     row-gap: 32px;
   }
 
@@ -35,7 +35,8 @@
   &__blockImg {
     aspect-ratio: 1;
     overflow: hidden;
-    @include hoverImage;
+  
+    @include hover-image;
 
     &One {
       background-color: #3f4043;
