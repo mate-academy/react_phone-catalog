@@ -1,0 +1,48 @@
+@import '../../styles/main';
+
+.nfPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightSmallScreen);
+  padding-inline: 16px;
+
+  @include on-tablet {
+    min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightBigScreen);
+    padding-inline: 0;
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - $headerHeightBigScreen - $footerHeightBigScreen);
+  }
+
+  &_title {
+    align-self: flex-start;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &_img {
+    display: block;
+    height: auto;
+    max-height: 400px;
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    object-fit: contain;
+
+    @include on-tablet {
+      max-width: 500px;
+    }
+
+    @include on-desktop {
+      max-width: 600px;
+    }
+  }
+}
