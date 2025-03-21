@@ -7,6 +7,8 @@ interface CartContext {
   addToCart: (product: Product, isDiscount: boolean) => void;
   removeFromCart: (id: number) => void;
   toggleFavourite: (product: Product, isDiscount: boolean) => void;
+  isOpenMenu: boolean;
+  setIsOpenMenu: (isOpen: boolean) => void;
 }
 
 const CartContext = createContext<CartContext | undefined>(undefined);
@@ -14,6 +16,7 @@ const CartContext = createContext<CartContext | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<Product[]>([]);
   const [favourite, setFavourite] = useState<Product[]>([]);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const addToCart = (product: Product, isDiscount: boolean) => {
     if (cart.some(item => item.id === product.id)) {
@@ -47,8 +50,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       addToCart,
       removeFromCart,
       toggleFavourite,
+      isOpenMenu,
+      setIsOpenMenu,
     }),
-    [cart, favourite],
+    [cart, favourite, isOpenMenu],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

@@ -2,14 +2,24 @@
 
 .shopingBag {
   box-sizing: border-box;
-  padding-top: 80px;
+  padding-top: calc(49px + 48px);
 
   @include padding-inline;
+
+  @include on-large-desctop {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding-inline: 0;
+  }
 }
 
 .navigate {
   display: flex;
   gap: 4px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .navigate > p {

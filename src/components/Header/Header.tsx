@@ -4,7 +4,8 @@ import headerLogo from '@/shared/icons/logo.png';
 import favoriteIcon from '@/shared/icons/favourites-heart-like.svg';
 import cartBagIcon from '@/shared/icons/shopping-bag-cart.svg';
 import burgerMenuIcon from '@/shared/icons/menu.svg';
-import { Link, NavLink } from 'react-router-dom';
+import closeIcon from '@/shared/icons/close.svg';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '@/hooks/useCart';
 
 export const Header: React.FC = () => {
@@ -14,11 +15,18 @@ export const Header: React.FC = () => {
     return 'CartContext is not loading';
   }
 
-  const { cart, favourite } = cartContext;
+  const { cart, favourite, setIsOpenMenu, isOpenMenu } = cartContext;
+
+  console.log(isOpenMenu);
+
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
   return (
     <header className={style.header}>
       <div className={style.wrapper}>
-        <Link to='/' className={style.logo}>
+        <Link to="/" className={style.logo}>
           <img src={headerLogo} alt="Header logo" className={style.logoIcon} />
         </Link>
 
@@ -78,8 +86,10 @@ export const Header: React.FC = () => {
             }
           >
             <div className={style.containerIcon}>
-              <img src={favoriteIcon} alt="favourite icon" className={style.icon}/>
-              {favourite.length > 0 && <span className={style.countProduct}>{favourite.length}</span>}
+              <img src={favoriteIcon} alt="favourite icon" className={style.icon} />
+              {favourite.length > 0 && (
+                <span className={style.countProduct}>{favourite.length}</span>
+              )}
             </div>
           </NavLink>
 
@@ -95,9 +105,26 @@ export const Header: React.FC = () => {
             </div>
           </NavLink>
 
-          <NavLink to="/menu" className={style.burgerMenu}>
-            <img src={burgerMenuIcon} alt="burger menu icon" className={style.icon}/>
-          </NavLink>
+          {location.pathname === '/menu' ? (
+            <NavLink
+              to=""
+              onClick={() => {
+                navigate(-1);
+                setIsOpenMenu(false);
+              }}
+              className={style.burgerMenu}
+            >
+              <img src={closeIcon} alt="burger menu icon" className={style.icon} />
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/menu"
+              className={style.burgerMenu}
+              onClick={() => setIsOpenMenu(true)}
+            >
+              <img src={burgerMenuIcon} alt="burger menu icon" className={style.icon} />
+            </NavLink>
+          )}
         </div>
       </div>
     </header>

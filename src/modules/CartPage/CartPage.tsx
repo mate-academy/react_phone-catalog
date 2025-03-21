@@ -5,7 +5,7 @@ import plusIcon from '../../shared/icons/plus.svg';
 import minusIcon from '../../shared/icons/minus.svg';
 import removeIcon from '../../shared/icons/close.svg';
 import EmptyBag from '/img/cart-is-empty.png';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '@/hooks/useCart';
 import { Product } from '@/types/Products';
 
@@ -17,15 +17,16 @@ export const CartPage: React.FC = () => {
   }
 
   const { cart, removeFromCart } = cartContext;
+  const navigate = useNavigate();
 
   const totalPrice = cart.reduce((acc, item) => acc + (item.finalPrice || 0), 0);
 
   return (
     <div className={style.shopingBag}>
-      <NavLink to={''} className={style.navigate}>
+      <button onClick={() => navigate(-1)} className={style.navigate}>
         <img src={arrowLeft} alt="arrow icon left" className={style.whiteIcon} />
         <p>Back</p>
-      </NavLink>
+      </button>
 
       <h1 className={style.title}>Cart</h1>
 

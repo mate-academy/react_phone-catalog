@@ -16,7 +16,7 @@
   padding-top: 24px;
 
   @include on-tablet {
-    grid-template-columns: repeat(2, 1fr);
+    // grid-template-columns: repeat(2, 1fr);
     column-gap: 16px;
   }
 

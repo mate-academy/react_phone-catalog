@@ -5,6 +5,8 @@ import { ProductList } from '@/components/ProductList/ProductList';
 import { fetchProducts } from '@/utils/fetchProduct';
 import { Product } from '@/types/Products';
 
+/// Deteted this componet and change root tsx 
+
 export const Phones: React.FC = () => {
   const [product, setProduct] = useState<Product[]>([]);
 

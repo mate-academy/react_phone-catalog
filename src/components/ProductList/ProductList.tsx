@@ -5,7 +5,7 @@ import style from './ProductList.module.scss';
 import homeIcon from '../../shared/icons/home.svg';
 import rightIcon from '../../shared/icons/chevron-arrow-right.svg';
 import { Dropdown } from '../DropdownList/Dropdown';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../HorizontalPagination/Pagination';
 
 type Props = {
@@ -31,15 +31,18 @@ function sortMethod(
     return;
   } else if (selectField === 'Cheapest') {
     setSortedProduct(prodcut.sort((a, b) => a.fullPrice - b.fullPrice));
+
+    /// return prodcut.sort((a, b) => a.fullPrice - b.fullPrice);
     return;
   }
 }
 
-export const ProductList: React.FC<Props> = ({ proudct, categoryProduct }) => {
-  const optionsSort = ['Newest', 'Alphabetically', 'Cheapest'];
-  const optionViewOnPage = ['4', '8', '16', 'All'];
+const optionViewOnPage = ['4', '8', '16', 'All']; // Uppercase
+const optionsSort = ['Newest', 'Alphabetically', 'Cheapest'];
 
-  const [sortedProduct, setSortedProduct] = useState<Product[]>([]);
+export const ProductList: React.FC<Props> = ({ proudct, categoryProduct }) => {
+
+  const [sortedProduct, setSortedProduct] = useState<Product[]>([]); /// ?
 
   const [searchParams, setSearchParams] = useSearchParams();
   const initialSort = searchParams.get('sort');
@@ -49,18 +52,18 @@ export const ProductList: React.FC<Props> = ({ proudct, categoryProduct }) => {
   const [selectedView, setSelectedView] = useState(initialView || optionViewOnPage[3]);
   const [currentPage, setCurrentPage] = useState(initialPage);
 
-  const choseCategory = useMemo(() => {
+  const selectedCategory = useMemo(() => {
     return proudct.filter(item => item.category === categoryProduct);
   }, [proudct, categoryProduct]);
 
   useEffect(() => {
-    const sorted = [...choseCategory];
+    const sorted = [...selectedCategory];
 
     sortMethod(sorted, selected, setSortedProduct);
 
     setSearchParams({ sort: selected, page: currentPage.toString(), perPage: selectedView });
     setSortedProduct(sorted);
-  }, [selected, choseCategory, setSearchParams, selectedView, currentPage]);
+  }, [selected, selectedCategory, setSearchParams, selectedView, currentPage]);
 
   let titleSection = 'Mobile phone';
   let descriptionSection = 'Phones';
@@ -90,7 +93,7 @@ export const ProductList: React.FC<Props> = ({ proudct, categoryProduct }) => {
       <div className={style.pageInfo}>
         <h1 className={style.title}>{titleSection}</h1>
         <p className={style.description}>
-          {choseCategory.length} {choseCategory.length === 1 ? 'item' : 'items'}
+          {selectedCategory.length} {selectedCategory.length === 1 ? 'item' : 'items'}
         </p>
       </div>
 
@@ -112,7 +115,9 @@ export const ProductList: React.FC<Props> = ({ proudct, categoryProduct }) => {
 
       <div className={style.container}>
         {viewPage.map(item => (
-          <ProductCart product={item} key={item.id} />
+          <Link key={item.id} to={`/${categoryProduct}/${item.itemId}`}>
+            <ProductCart product={item} key={item.id} />
+          </Link>
         ))}
       </div>
 

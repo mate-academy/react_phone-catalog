@@ -5,6 +5,10 @@ import arrowTopImg from '../../shared/icons/chevron-arrow-up.svg';
 import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
+  const scrollToTop = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <div className={style.footer}>
       <div className={style.wrapper}>
@@ -36,12 +40,12 @@ export const Footer: React.FC = () => {
 
         <div className={style.backTop}>
           <div className={style.backTopContent}>
-            <a href="" className={style.backTopLink}>
+            <button className={style.backTopLink} onClick={scrollToTop}>
               Back to top
               <div className={style.arrowTop}>
                 <img src={arrowTopImg} alt="Arrow top icon" className={style.arrowTopIcon} />
               </div>
-            </a>
+            </button>
           </div>
         </div>
       </div>

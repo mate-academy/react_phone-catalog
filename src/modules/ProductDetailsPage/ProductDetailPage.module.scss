@@ -1,0 +1,395 @@
+@import '../../assets/global';
+
+.wrapper {
+  padding-top: calc(49px + 48px);
+  @include padding-inline;
+
+  @include on-large-desctop {
+    margin: 0 auto;
+    padding-inline: 0;
+    max-width: 1136px;
+  }
+}
+
+.navigation {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pageTitle,
+.sectionPhoneTitle {
+  font-family: Mont-semibold, sans-serif;
+  font-size: 12px;
+}
+
+.pageTitle {
+  color: $light-color;
+}
+
+.sectionPhoneTitle {
+  color: $light-gray-color;
+}
+
+.icon {
+  display: flex;
+}
+
+.backButton {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: transparent;
+  color: $light-color;
+  padding: 0;
+  padding-top: 24px;
+}
+
+.back {
+  font-family: Mont-semibold, sans-serif;
+  font-size: 12px;
+}
+
+.backButton .icon {
+  filter: brightness(0) saturate(100%) invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg)
+    brightness(103%) contrast(103%);
+}
+
+.product {
+  @include on-tablet {
+    display: flex;
+    gap: 64px;
+    padding-top: 40px;
+  }
+}
+
+.productTitle {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  color: $light-color;
+
+  padding-top: 16px;
+
+  @include on-tablet {
+    font-size: 32px;
+  }
+}
+
+.leftSide {
+  @include on-tablet {
+    display: flex;
+    width: 50%;
+  }
+
+  @include on-desctop {
+    width: 464px;
+  }
+
+  @include on-large-desctop {
+    width: 50%;
+  }
+}
+
+.slider {
+  padding-top: 32px;
+
+  @include on-tablet {
+    order: 2;
+    width: 100%;
+    padding: 0;
+  }
+
+  @include on-desctop {
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.slideContent {
+  // width: 100%;
+}
+
+.slide {
+  width: 100%;
+  text-align: center;
+}
+
+.slideImg {
+  height: 288px;
+  object-fit: contain;
+
+  @include on-desctop {
+    height: 464px;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+
+  @include on-tablet {
+    order: 1;
+    flex-direction: column;
+    justify-content: start;
+
+    margin: 0;
+    width: 80px;
+  }
+}
+
+.paginationBullet {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $midle-gray-color;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desctop {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.paginationBulletImg {
+  height: 100%;
+  display: flex;
+}
+
+.paginationBulletActive {
+  border: 1px solid $light-color;
+}
+
+.rightSide {
+  padding-top: 40px; /// change on table/desctop/large-dectop
+
+  @include on-tablet {
+    width: 237px;
+    padding: 0;
+  }
+
+  @include on-desctop {
+    width: 320px;
+  }
+
+  @include on-large-desctop {
+    width: 50%;
+  }
+}
+
+.colorProduct {
+}
+
+.titleSection {
+  font-family: Mont-semibold, sans-serif;
+  font-size: 12px;
+  color: $light-gray-color;
+}
+
+.colorList {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.colorItem {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 2px solid $midle-gray-color;
+  border-radius: 50%;
+  padding: 2px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: rosybrown;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.colorItemActive {
+  border: 2px solid $light-color;
+}
+
+.capacityProduct {
+  padding-top: 24px;
+  margin-top: 24px;
+  border-top: 1px solid $midle-gray-color;
+}
+
+.select {
+  border: 1px solid $midle-gray-color;
+  color: $light-color;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+
+  padding: 8px;
+}
+
+.selectActive {
+  background-color: $light-color;
+  color: $hight-dark-color;
+}
+
+.priceProduct {
+  padding-top: 32px;
+  margin-top: 24px;
+
+  border-top: 1px solid $midle-gray-color;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceRegular {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  color: $light-color;
+}
+
+.priceDiscount {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 22px;
+  text-decoration: line-through;
+
+  color: $light-gray-color;
+}
+
+.phoneFooter {
+  display: flex;
+  gap: 8px;
+
+  padding-top: 16px;
+}
+
+.addToCart {
+  display: block;
+  width: 100%;
+  background-color: $accent-color;
+  color: $light-color;
+  padding: 13px;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  border: none;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $accent-color-hover;
+  }
+}
+
+.favorite {
+  padding: 16px;
+  background-color: #323542;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+}
+
+.favouriteIcon {
+  display: flex;
+}
+
+.onDesctopPosition {
+  @include on-desctop {
+    display: flex;
+    justify-content: space-between;
+    gap: 64px;
+  }
+}
+
+.phoneDescription {
+  padding-top: 32px;
+  font-family: Mont-SemitBold, sans-serif;
+  font-size: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phoneProperties {
+  display: flex;
+  justify-content: space-between;
+}
+
+.propertieTitle {
+  color: $light-gray-color;
+}
+
+.propertieDescription {
+  color: $light-color;
+}
+
+.aboutProduct {
+  padding-top: 56px;
+
+  @include on-desctop {
+    width: 50%;
+  }
+}
+
+.sectionTitle {
+  font-family: Mont-SemitBold, sans-serif;
+  font-size: 20px;
+  color: $light-color;
+
+  padding-bottom: 16px;
+  border-bottom: 1px solid $midle-gray-color;
+
+  @include on-tablet {
+    font-size: 22px;
+  }
+}
+
+.article {
+  padding-top: 32px;
+}
+
+.articleTitle {
+  font-family: Mont-SemitBold, sans-serif;
+  font-size: 16px;
+  color: $light-color;
+
+  @include on-tablet {
+    font-size: 16px;
+  }
+}
+
+.articleDescription {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $light-gray-color;
+
+  padding-top: 16px;
+}
