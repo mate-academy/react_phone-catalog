@@ -13,16 +13,12 @@ export const HeartIcon: React.FC<Props> = ({
   onClick,
   className,
 }) => {
-  const handleHeartClick = () => {
-    onClick?.();
-  };
-
   return (
     <div
       className={classNames(styles.icon__heart, className, {
         [styles.border__selected]: isSelected,
       })}
-      onClick={handleHeartClick}
+      onClick={onClick}
     >
       <svg
         width="16"

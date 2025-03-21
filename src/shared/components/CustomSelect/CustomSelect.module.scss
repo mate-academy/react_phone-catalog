@@ -1,0 +1,91 @@
+@import '../../styles/variables.module';
+
+.select {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  min-width: 128px;
+
+
+  &__current {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-block: 10px;
+    padding-inline: 12px;
+    border: 1px solid #bbb;
+
+    font-weight: 600;
+    color: #222;
+
+    background: white;
+
+    transition: border 0.3s;
+
+    &:hover {
+      border-color: #888;
+    }
+
+    svg {
+      fill: $icon-color;
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  &__dropdown {
+    pointer-events: none;
+
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    left: 0;
+    transform: translateY(-10px);
+
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 4px;
+    padding-block: 8px;
+    border: 1px solid $elements-color;
+
+    opacity: 0;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  &__option {
+    padding-left: 12px;
+    line-height: 32px;
+    color: $secondary-color;
+    transition: background 0.3s, color 0.3s;
+
+    &:hover {
+      color: $primary-color;
+      background: $hover-color;
+    }
+  }
+}
+
+.open {
+  .select__current {
+    border-color: $primary-color;
+  }
+
+  svg {
+    transform: rotate(180deg);
+  }
+
+  .select__dropdown {
+    pointer-events: all;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+}
+
+.selected {
+      color: $primary-color;
+  background: $hover-color;
+}

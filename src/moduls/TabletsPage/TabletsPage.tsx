@@ -1,3 +1,13 @@
+import { CategoryContainer } from '../../features/CategoryContainer';
+import { CategorySceleton } from '../../shared/components/CategorySceleton';
+import { useSortedProducts } from '../../shared/utils/hooks/useSortedProducts';
+
 export const TabletsPage = () => {
-  return <h1>Tablets</h1>;
+  const { sortedProducts, isPageLoading } = useSortedProducts('tablets');
+
+  return isPageLoading ? (
+    <CategorySceleton />
+  ) : (
+    <CategoryContainer goods={sortedProducts} title="Tablets" />
+  );
 };

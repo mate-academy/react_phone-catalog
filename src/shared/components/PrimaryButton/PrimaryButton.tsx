@@ -22,6 +22,7 @@ export const PrimaryButton: React.FC<Props> = ({
       className={classNames('button_text', className, styles.primary_Button, {
         [styles.primary_Button__selected]: isSelected,
       })}
+      disabled={isSelected}
     >
       {isSelected ? selectedText : mainText}
     </button>

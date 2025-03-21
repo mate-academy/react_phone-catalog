@@ -1,0 +1,23 @@
+@import '../../shared/styles/variables.module';
+
+.category {
+  padding-top: 24px;
+  padding-bottom: 80px;
+
+  &__top {
+    margin-bottom: 40px;
+
+    p {
+      font-size: 14px;
+      color: $secondary-color;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__breads {
+    margin-bottom: 40px;
+  }
+}

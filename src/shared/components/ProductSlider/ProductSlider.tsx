@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import classNames from 'classnames';
-import { Product } from '../../../../shared/types/Product';
+import { Product } from '../../types/Product';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -8,9 +8,9 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { ArrowIcon } from '../../../../shared/components/Icons/Arrow/ArrowIcon';
+import { ArrowButton } from '../Icons/ArrowButtons/ArrowButton';
 import styles from './ProductSlider.module.scss';
-import { ProductCard } from '../../../../features/ProductCard';
+import { ProductCard } from '../../../features/ProductCard';
 
 type Props = {
   title: string;
@@ -23,7 +23,7 @@ export const ProductSlider: React.FC<Props> = ({ title, goods }) => {
       <div className={styles.ProductSlider__top}>
         <h2>{title}</h2>
         <div className={styles.ProductSlider__buttons}>
-          <ArrowIcon
+          <ArrowButton
             className={classNames(
               styles.ProductSlider__button,
               styles.prevButton,
@@ -31,7 +31,7 @@ export const ProductSlider: React.FC<Props> = ({ title, goods }) => {
             direction="left"
           />
 
-          <ArrowIcon
+          <ArrowButton
             className={classNames(
               styles.ProductSlider__button,
               styles.nextButton,

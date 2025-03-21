@@ -39,8 +39,15 @@
 
   background-color: pink;
 
+  transition: padding 0.3s ease;
+
   img {
     width: 100%;
+  }
+
+  &:hover {
+    padding-top: 50px;
+    padding-left: 50px;
   }
 }
 
@@ -51,7 +58,7 @@
   img {
     transform-origin: left top;
     transform: scale(1.1);
-    
+
     // width: 150%;
     height: auto;
   }

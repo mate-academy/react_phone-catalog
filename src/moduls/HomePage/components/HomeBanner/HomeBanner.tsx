@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import './SwiperStyles.scss';
 
 import { images } from './Banner';
-import { ArrowIcon } from '../../../../shared/components/Icons/Arrow/ArrowIcon';
+import { ArrowButton } from '../../../../shared/components/Icons/ArrowButtons/ArrowButton';
 
 import styles from './HomeBanner.module.scss';
 
@@ -21,7 +21,7 @@ export const HomeBanner = () => {
   return (
     <section className={styles.home__banner}>
       <h2 className="is-hidden">Home banner</h2>
-      <ArrowIcon direction="left" className={styles.prevButton} />
+      <ArrowButton direction="left" className={styles.prevButton} />
       <div className={styles.banner}>
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
@@ -51,7 +51,7 @@ export const HomeBanner = () => {
           ))}
         </Swiper>
       </div>
-      <ArrowIcon direction="right" className={styles.nextButton} />
+      <ArrowButton direction="right" className={styles.nextButton} />
       <div className="custom-pagination"></div>
     </section>
   );

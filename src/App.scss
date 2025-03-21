@@ -23,6 +23,7 @@
 
 
 html, body {
+  scroll-behavior: smooth;
   scrollbar-width: none;
 
   margin: 0;
@@ -66,10 +67,12 @@ a {
 h1 {
   font-size: 48px;
   font-weight: 700;
+  line-height: 56px;
   color: $primary-color;
 
   @include on-mobile {
     font-size: 32px;
+    line-height: 41px;
   }
 
 }
@@ -77,18 +80,21 @@ h1 {
 h2 {
   font-size: 32px;
   font-weight: 700;
+  line-height: 41px;
 
   // line-height: 128%;
   color: $primary-color;
 
   @include on-mobile {
     font-size: 22px;
+    line-height: 31px;
   }
 }
 
 h3 {
   font-size: 22px;
   font-weight: 700;
+  line-height: 31px;
 
   // line-height: 128%;
   color: $primary-color;
@@ -96,12 +102,14 @@ h3 {
   @include on-mobile {
     font-size: 20px;
     font-weight: 600;
+    line-height: 26px;
   }
 }
 
 h4 {
   font-size: 20px;
   font-weight: 600;
+  line-height: 20px;
   color: $primary-color;
 
   @include on-mobile {

@@ -1,0 +1,41 @@
+@import '../../shared/styles/mixins';
+
+.productDetailsPage {
+  padding-top: 24px;
+  padding-bottom: 80px;
+
+}
+
+.navigate {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  // margin-bottom: 16px;
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  img {
+    width: 400px;
+  }
+}
+
+.product {
+  margin-bottom: 80px;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.fullInfo {
+  @include grid-page;
+
+ @include on-tablet-less {
+  row-gap: 64px;
+ }
+}

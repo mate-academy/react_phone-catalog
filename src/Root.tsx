@@ -6,28 +6,27 @@ import { TabletsPage } from './moduls/TabletsPage';
 import { AccessoriesPage } from './moduls/AccessoriesPage';
 import { CartPage } from './moduls/CartPage';
 import { FavouritesPage } from './moduls/FavouritesPage';
-import { ProductPage } from './moduls/ProductPage';
+import { ProductDetailsPage } from './moduls/ProductDetailsPage';
+import { PageNotFound } from './moduls/PageNotFound';
 
 export const Root = () => (
   <Routes>
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
+
       <Route path="home" element={<Navigate to="/" replace />} />
-      <Route path="phones">
-        <Route index element={<PhonesPage />} />
-        <Route path=":slug" element={<ProductPage />} />
+      <Route path="phones" element={<PhonesPage />} />
+      <Route path="tablets" element={<TabletsPage />} />
+      <Route path="accessories" element={<AccessoriesPage />} />
+
+      <Route path=":category/">
+        <Route path=":productId" element={<ProductDetailsPage />} />
       </Route>
-      <Route path="tablets">
-        <Route index element={<TabletsPage />} />
-        <Route path=":slug" element={<ProductPage />} />
-      </Route>
-      <Route path="accessories">
-        <Route index element={<AccessoriesPage />} />
-        <Route path=":slug" element={<ProductPage />} />
-      </Route>
+
       <Route path="favourites" element={<FavouritesPage />} />
       <Route path="cart" element={<CartPage />} />
-      <Route path="*" element={<p>Page not found</p>} />
+
+      <Route path="*" element={<PageNotFound />} />
     </Route>
   </Routes>
 );

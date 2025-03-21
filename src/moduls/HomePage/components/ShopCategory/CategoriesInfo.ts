@@ -1,28 +1,23 @@
-import { Accessories } from '../../../../shared/types/Accessories';
-import { PhonesTablets } from '../../../../shared/types/PhonesTablets';
+import { Product } from '../../../../shared/types/Product';
 import { BASE_URL } from '../../../../shared/utils/httpClient';
 
-export const categoriesInfo = (
-  phones: PhonesTablets[],
-  tablets: PhonesTablets[],
-  accessories: Accessories[],
-) => {
+export const categoriesInfo = (products: Product[]) => {
   return [
     {
       title: 'Mobile phones',
-      count: phones.length,
+      count: products.filter(p => p.category === 'phones').length,
       img: `${BASE_URL}img/categories/category-phones.png`,
       name: 'phones',
     },
     {
       title: 'Tablets',
-      count: tablets.length,
+      count: products.filter(p => p.category === 'tablets').length,
       img: `${BASE_URL}img/categories/category-tablets.png`,
       name: 'tablets',
     },
     {
       title: 'Accessories',
-      count: accessories.length,
+      count: products.filter(p => p.category === 'accessories').length,
       img: `${BASE_URL}img/categories/category-accessories.png`,
       name: 'accessories',
     },

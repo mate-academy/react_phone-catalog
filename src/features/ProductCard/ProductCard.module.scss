@@ -1,26 +1,35 @@
 @import '../../shared/styles/variables.module';
+@import '../../shared/styles/mixins';
 
 .card {
+  cursor: pointer;
+
   display: flex;
   flex-direction: column;
   gap: 8px;
 
   box-sizing: border-box;
-  max-width: 272px;
   height: 100%;
   padding: 32px;
   border: 1px solid $elements-color;
 
   color: $primary-color;
 
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba($primary-color, 0.5);
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
   &__img {
     max-width: 100%;
-    
-    // margin-bottom: 24px;
     height: 196px;
     object-fit: contain;
-
-    // height: auto;
+    transition: transform 0.3s ease;
   }
 
   &__title {

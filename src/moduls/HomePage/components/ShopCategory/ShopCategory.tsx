@@ -5,9 +5,9 @@ import styles from './ShopCategory.module.scss';
 import { categoriesInfo } from './CategoriesInfo';
 
 export const ShopCategory = () => {
-  const { phones, tablets, accessories } = useContext(StateContext);
+  const { products } = useContext(StateContext);
 
-  const categories = categoriesInfo(phones, tablets, accessories);
+  const categories = categoriesInfo(products);
 
   return (
     <section>

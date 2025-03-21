@@ -1,10 +1,18 @@
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { HeartIcon } from '../../shared/components/Icons/HeartIcon';
 import { PrimaryButton } from '../../shared/components/PrimaryButton';
 import { Product } from '../../shared/types/Product';
 import styles from './ProductCard.module.scss';
 import { useContext } from 'react';
 import { DispatchContext, StateContext } from '../../Provider/GadgetsContext';
+
+function navigateToProduct(
+  productId: string,
+  category: string,
+  navigate: (path: string) => void,
+) {
+  navigate(`/${category}/${productId}`);
+}
 
 type Props = {
   product: Product;
@@ -14,25 +22,36 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { favourites, cart } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const handleClick = () => {
-  //   navigate(`/${product.category}/${product.itemId}`);
-  // };
+  const handleClick = (event: React.MouseEvent) => {
+    const target = event.target as HTMLElement;
+
+    if (target.closest(`.${styles.card__buttons}`)) {
+      event.stopPropagation();
+
+      return;
+    }
+
+    navigateToProduct(product.itemId, product.category, navigate);
+  };
 
   const handleAddToFavourites = () => {
-    dispatch({ type: 'toggleFavourite', payload: product });
+    dispatch({ type: 'toggleFavourite', payload: product.itemId });
   };
 
   const handleAddToCart = () => {
-    dispatch({ type: 'toggleCart', payload: product });
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: { id: product.itemId, quantity: 1 },
+    });
   };
 
-  const isFavourite = favourites.includes(product);
-  const isInCart = cart.includes(product);
+  const isFavourite = favourites.some(id => id === product.itemId);
+  const isInCart = cart.some(item => item.id === product.itemId);
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={handleClick}>
       <img src={product.image} alt="" className={styles.card__img} />
       <p className={styles.card__title}>{product.name}</p>
       <div className={styles.card__price}>

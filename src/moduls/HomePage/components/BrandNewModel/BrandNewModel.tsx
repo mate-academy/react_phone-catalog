@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react';
 import { StateContext } from '../../../../Provider/GadgetsContext';
 
-import { ProductSlider } from '../ProductSlider';
+import { ProductSlider } from '../../../../shared/components/ProductSlider';
 
 export const BrandNewModel = () => {
   const { products } = useContext(StateContext);
