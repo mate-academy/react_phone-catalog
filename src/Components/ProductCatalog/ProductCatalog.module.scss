@@ -1,8 +1,139 @@
 @use '../../utils/index' as *;
 
-.container {
-  display: flex;
-  gap: 16px;
+.marginContainer {
+  margin: 0 auto;
+  width: 1136px;
   margin-top: 24px;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+  }
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+}
+
+.homeIcon {
+  margin-right: 8px;
+}
+
+.arrowIcon {
+  margin-right: 8px;
+}
+
+.location {
+  @include small-text-styles;
+
+  color: $secondary;
+}
+
+.title {
+  @include h1-styles;
+
+  color: $primary;
+  margin-top: 40px;
+}
+
+.number {
+  @include body-styles;
+
+  color: $secondary;
+  margin-top: 8px;
+}
+
+.dropdownContainer {
+  display: flex;
+  margin-top: 40px;
+}
+
+.dropdownSortBy {
+  width: 176px;
+  margin-right: 16px;
+}
+
+.dropdownPagination {
+  width: 128px;
+}
+
+.productList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  gap: 16px;
+}
+
+.paginationControls {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.arrows {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 48px;
+  border: 1px solid $icons;
+  background-color: transparent;
+  transition: border 0.3s ease;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  &:disabled {
+    border: 1px solid $elements;
+    cursor: not-allowed;
+  }
+}
+
+.pageNumbersContainer {
+  width: 152px;
   overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 8px;
+  width: fit-content;
+  transition: transform 0.5s ease;
+}
+
+.singleNumber {
+  @include small-text-styles;
+
+  color: $primary;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 48px;
+  border: 1px solid $elements;
+  background-color: transparent;
+  transition: background-color 0.3s ease, border 0.3s ease-in;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+}
+
+.activePage {
+  color: $white;
+  background-color: $primary;
+  border: none;
+  transition: all 0.3 ease;
 }

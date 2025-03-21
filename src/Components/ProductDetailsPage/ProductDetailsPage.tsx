@@ -10,6 +10,7 @@ import {
   setItemWidth,
   setTotalWidth,
 } from '../features/scroll';
+import { NavLink } from 'react-router-dom';
 
 type Props = {
   item: Product;
@@ -70,14 +71,20 @@ export const ProductDetailsPage: React.FC<Props> = ({
       ref={itemRef}
       style={{ transform: `translateX(-${offset}px)` }}
     >
-      <div className={styles.imageContainer}>
-        <img src={item.images[0]} alt={item.id} className={styles.image} />
-      </div>
-      <p className={styles.name}>{item.name}</p>
-      <p className={styles.price}>
+      <NavLink
+        to={`/${item.category}/${item.id}`}
+        className={styles.linkContainer}
+      >
+        <div className={styles.imageContainer}>
+          <img src={item.images[0]} alt={item.id} className={styles.image} />
+        </div>
+        <p className={styles.name}>{item.name}</p>
+      </NavLink>
+
+      <div className={styles.price}>
         ${item.priceDiscount}{' '}
         <p className={styles.priceDiscount}>{discount ? `$${discount}` : ''}</p>
-      </p>
+      </div>
       <hr className={styles.line} />
       <div className={styles.detailsContainer}>
         <div className={styles.singleDetailContainer}>

@@ -7,6 +7,7 @@ type CarouselItem = {
   undername: string;
   title: string;
   cotitle: string;
+  site: string;
 };
 
 type CarouselState = {
@@ -19,6 +20,7 @@ const initialState: CarouselState = {
   items: [
     {
       url: '/react_phone-catalog/img/slider/iphone-14-pro.png',
+      site: '/phones/apple-iphone-11-pro-256gb-gold',
       product: 'iPhone 14 Pro',
       undername: 'Pro. Beyond.',
       title: 'Now available in our store!',
@@ -26,6 +28,7 @@ const initialState: CarouselState = {
     },
     {
       url: '/react_phone-catalog/img/slider/ipad-11-pro.png',
+      site: '/tablets/apple-ipad-pro-11-2021-128gb-spacegray',
       product: 'iPad 11 Pro',
       undername: 'Pro. Beyond.',
       title: "Don't wait, get it now!",
@@ -33,6 +36,7 @@ const initialState: CarouselState = {
     },
     {
       url: '/react_phone-catalog/img/slider/apple-watch-series-6.png',
+      site: '/accessories/apple-watch-series-6-40mm-space-gray',
       product: 'Apple watch series 6',
       undername: 'Pro. Beyond.',
       title: 'Only a few pieces left!',

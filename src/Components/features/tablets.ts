@@ -1,29 +1,51 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Product } from '../../types/product';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Product, ProductWithYear } from '../../types/product';
+import { ProductInfo } from '../../types/productInfo';
 
-type TabletsState = {
-  tablets: Product[] | null;
+type TabletsSlice = {
+  tablets: ProductWithYear[] | null;
   loading: boolean;
   error: string | null;
 };
 
-const initialState: TabletsState = {
+const initialState: TabletsSlice = {
   tablets: null,
   loading: false,
   error: null,
 };
 
-export const fetchTablets = createAsyncThunk<Product[]>(
-  'tablets/fetchTablets',
+export const fetchTabletsWithYear = createAsyncThunk<ProductWithYear[]>(
+  'tablets/fetchTabletsWithYear',
   async () => {
-    const response = await fetch('/react_phone-catalog/api/tablets.json');
+    const [tabletsResponse, productsResponse] = await Promise.all([
+      fetch('/react_phone-catalog/api/tablets.json'),
+      fetch('/react_phone-catalog/api/products.json'),
+    ]);
 
-    if (!response.ok) {
+    if (!tabletsResponse.ok) {
       throw new Error('Failed to fetch tablets');
     }
 
-    return response.json();
+    if (!productsResponse.ok) {
+      throw new Error('Failed to fetch products');
+    }
+
+    const tabletsData: Product[] = await tabletsResponse.json();
+    const productsData: ProductInfo[] = await productsResponse.json();
+
+    const mergedTablets = tabletsData.map(tablet => {
+      const productInfo = productsData.find(
+        product => product.itemId === tablet.id,
+      );
+
+      return {
+        ...tablet,
+        year: productInfo ? productInfo.year : 0,
+      };
+    });
+
+    return mergedTablets;
   },
 );
 
@@ -33,15 +55,18 @@ export const tabletsSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchTablets.pending, state => {
+      .addCase(fetchTabletsWithYear.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchTablets.fulfilled, (state, action) => {
-        state.loading = false;
-        state.tablets = action.payload;
-      })
-      .addCase(fetchTablets.rejected, (state, action) => {
+      .addCase(
+        fetchTabletsWithYear.fulfilled,
+        (state, action: PayloadAction<ProductWithYear[]>) => {
+          state.loading = false;
+          state.tablets = action.payload;
+        },
+      )
+      .addCase(fetchTabletsWithYear.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Something went wrong';
       });

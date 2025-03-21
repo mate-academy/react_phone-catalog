@@ -1,0 +1,30 @@
+@use '../../utils/index' as *;
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  gap: 16px;
+  width: 100%;
+  height: fit-content;
+  box-sizing: border-box;
+  padding: 16px;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 500px;
+}
+
+.title {
+  @include h2-styles;
+}
+
+.notFound {
+  @include h3-styles;
+
+  color: $primary;
+  text-transform: uppercase;
+}

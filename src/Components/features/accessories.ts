@@ -1,29 +1,51 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Product } from '../../types/product';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Product, ProductWithYear } from '../../types/product';
+import { ProductInfo } from '../../types/productInfo';
 
-type AccessoriesState = {
-  accessories: Product[] | null;
+type AccessoriesSlice = {
+  accessories: ProductWithYear[] | null;
   loading: boolean;
   error: string | null;
 };
 
-const initialState: AccessoriesState = {
+const initialState: AccessoriesSlice = {
   accessories: null,
   loading: false,
   error: null,
 };
 
-export const fetchAccessories = createAsyncThunk<Product[]>(
-  'accessories/fetchAccessories',
+export const fetchAccessoriesWithYear = createAsyncThunk<ProductWithYear[]>(
+  'accessories/fetchAccessoriesWithYear',
   async () => {
-    const response = await fetch('/react_phone-catalog/api/accessories.json');
+    const [accessoriesResponse, productsResponse] = await Promise.all([
+      fetch('/react_phone-catalog/api/accessories.json'),
+      fetch('/react_phone-catalog/api/products.json'),
+    ]);
 
-    if (!response.ok) {
+    if (!accessoriesResponse.ok) {
       throw new Error('Failed to fetch accessories');
     }
 
-    return response.json();
+    if (!productsResponse.ok) {
+      throw new Error('Failed to fetch products');
+    }
+
+    const accessoriesData: Product[] = await accessoriesResponse.json();
+    const productsData: ProductInfo[] = await productsResponse.json();
+
+    const mergedAccessories = accessoriesData.map(tablet => {
+      const productInfo = productsData.find(
+        product => product.itemId === tablet.id,
+      );
+
+      return {
+        ...tablet,
+        year: productInfo ? productInfo.year : 0,
+      };
+    });
+
+    return mergedAccessories;
   },
 );
 
@@ -33,15 +55,18 @@ export const accessoriesSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchAccessories.pending, state => {
+      .addCase(fetchAccessoriesWithYear.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchAccessories.fulfilled, (state, action) => {
-        state.loading = false;
-        state.accessories = action.payload;
-      })
-      .addCase(fetchAccessories.rejected, (state, action) => {
+      .addCase(
+        fetchAccessoriesWithYear.fulfilled,
+        (state, action: PayloadAction<ProductWithYear[]>) => {
+          state.loading = false;
+          state.accessories = action.payload;
+        },
+      )
+      .addCase(fetchAccessoriesWithYear.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Something went wrong';
       });

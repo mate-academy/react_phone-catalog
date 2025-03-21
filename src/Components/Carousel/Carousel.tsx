@@ -3,10 +3,12 @@ import { arrowLeft, arrowRight } from '../../icons';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { nextImage, prevImage, setActiveImage } from '../features/carousel';
 import { useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Carousel = () => {
   const dispatch = useAppDispatch();
   const { items, offset } = useAppSelector(state => state.carousel);
+  const navigate = useNavigate();
 
   const handlePrev = () => {
     dispatch(prevImage());
@@ -28,6 +30,10 @@ export const Carousel = () => {
     return () => clearInterval(timer);
   }, [handleNext, offset]);
 
+  const getNavigation = (item: string) => {
+    navigate(`${item}`, { replace: false });
+  };
+
   return (
     <div className={styles.block}>
       <div className={styles.wrapper}>
@@ -47,7 +53,12 @@ export const Carousel = () => {
                     <div className={styles.carouselTextContainer}>
                       <p className={styles.title}>{item.title}</p>
                       <p className={styles.cotitle}>{item.cotitle}</p>
-                      <button className={styles.orderButton}>Order now</button>
+                      <button
+                        className={styles.orderButton}
+                        onClick={() => getNavigation(item.site)}
+                      >
+                        Order now
+                      </button>
                     </div>
                     <div className={styles.productWrapper}>
                       <h3 className={styles.product}>{item.product}</h3>

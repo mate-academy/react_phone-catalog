@@ -1,0 +1,9 @@
+@use '../../utils/index' as *;
+
+.container {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  overflow: hidden;
+  width: max-content;
+}

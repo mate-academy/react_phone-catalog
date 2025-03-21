@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useEffect, useRef } from 'react';
 import { Carousel } from '../Carousel';
-import { ProductCatalog } from '../ProductCatalog/ProductCatalog';
+import { ProductSlider } from '../ProductSlider';
 import styles from './Home.module.scss';
 import { arrowLeft, arrowRight } from '../../icons';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { fetchPhones } from '../features/phones';
 import { Loader } from '../Loader';
-import { Product } from '../../types/product';
+import { Product, ProductWithYear } from '../../types/product';
 import {
   nextHottestScroll,
   nextNewestScroll,
@@ -17,9 +16,6 @@ import {
 } from '../features/scroll';
 import debounce from 'lodash.debounce';
 import { Category } from '../Category';
-import { fetchTablets } from '../features/tablets';
-import { fetchAccessories } from '../features/accessories';
-import { fetchProducts } from '../features/products';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
@@ -27,10 +23,11 @@ export const Home = () => {
   const { hottestOffset, maxScroll, newestOffset } = useAppSelector(
     state => state.scroll,
   );
-  const { products, loading: productsLoading } = useAppSelector(
-    state => state.products,
-  );
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const updateWidth = () => {
@@ -52,28 +49,13 @@ export const Home = () => {
     };
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchPhones());
-    dispatch(fetchTablets());
-    dispatch(fetchAccessories());
-    dispatch(fetchProducts());
-  }, [dispatch]);
+  const sortedPhones = phones
+    ? [...phones].sort(
+        (a: ProductWithYear, b: ProductWithYear) => b.year - a.year,
+      )
+    : [];
 
-  const phonesWithYear =
-    products && phones
-      ? phones.map(phone => {
-          const product = products.find(p => p.itemId === phone.id);
-
-          return {
-            ...phone,
-            year: product ? product.year : 0,
-          };
-        })
-      : [];
-
-  const sortedPhones = phonesWithYear.sort((a, b) => b.year - a.year);
-
-  const uniquePhones = sortedPhones.reduce((acc: Product[], phone) => {
+  const uniquePhones = sortedPhones.reduce((acc: Product[], phone: Product) => {
     const key = `${phone.namespaceId}_${phone.color.toLowerCase()}`;
 
     if (!acc.some(p => `${p.namespaceId}_${p.color.toLowerCase()}` === key)) {
@@ -123,10 +105,10 @@ export const Home = () => {
             </button>
           </div>
         </div>
-        {(loading || productsLoading) && <Loader />}
+        {loading && <Loader />}
         {error && <p>{error}</p>}
         {phones && (
-          <ProductCatalog
+          <ProductSlider
             items={brandNewModels}
             offset={newestOffset}
             discount={false}
@@ -162,7 +144,7 @@ export const Home = () => {
         {loading && <Loader />}
         {error && <p>{error}</p>}
         {phones && (
-          <ProductCatalog
+          <ProductSlider
             items={hottestPrice}
             offset={hottestOffset}
             discount={true}

@@ -49,6 +49,7 @@
   text-decoration: none;
   color: $secondary;
   cursor: pointer;
+  transition: color 0.3s ease;
 
   &:hover {
     color: $primary;
@@ -83,8 +84,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: border 0.3s ease-in-out;
 
   &:hover {
     border: 1px solid $primary;
+  }
+}
+
+.logo {
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(105%);
   }
 }

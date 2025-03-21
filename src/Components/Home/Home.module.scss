@@ -3,6 +3,7 @@
 .marginContainer {
   margin: 0 auto;
   width: 1136px;
+  overflow: hidden;
 
   @include responsive-settings-max($media-pc) {
     width: 592px;
@@ -96,6 +97,7 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  transition: border 0.3s ease-in-out;
 
   &:hover {
     border: 1px solid $primary;

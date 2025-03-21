@@ -1,0 +1,449 @@
+@use '../../utils/index' as *;
+
+.marginContainer {
+  margin: 0 auto;
+  width: 1136px;
+  margin-top: 24px;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+  }
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+}
+
+.homeIcon {
+  margin-right: 8px;
+}
+
+.arrowIcon {
+  margin-right: 8px;
+}
+
+.locationContainer {
+  text-decoration: none;
+}
+
+.location {
+  @include small-text-styles;
+
+  color: $primary;
+  margin-right: 8px;
+}
+
+.productLinkName {
+  @include small-text-styles;
+
+  color: $secondary;
+
+  @include responsive-settings-max($media-tablet) {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+.backButton {
+  @include small-text-styles;
+
+  color: $secondary;
+}
+
+.backContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  cursor: pointer;
+  width: max-content;
+
+  &:hover .backButton {
+    color: $primary;
+  }
+}
+
+.title {
+  @include h2-styles;
+
+  margin-top: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include responsive-settings-max($media-pc) {
+    gap: 8px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    flex-direction: row;
+    margin-top: 16px;
+  }
+}
+
+.imagesContainer {
+  display: flex;
+  margin-right: 64px;
+
+  @include responsive-settings-max($media-pc) {
+    margin-right: 16px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    flex-direction: column-reverse;
+    margin-right: 0;
+    align-items: center;
+  }
+}
+
+.imageContainer {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $elements;
+  box-sizing: border-box;
+
+  @include responsive-settings-max($media-pc) {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 50px;
+    height: 50px;
+  }
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.activeImage {
+  border: 1px solid $primary;
+}
+
+.mainContent {
+  display: flex;
+  margin-top: 40px;
+
+  @include responsive-settings-max($media-tablet) {
+    margin-top: 32px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    flex-direction: column;
+  }
+}
+
+.mainPhotoContainer {
+  height: 464px;
+  width: 464px;
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include responsive-settings-max($media-pc) {
+    width: 287px;
+    height: 287px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    flex-direction: column-reverse;
+    width: 288px;
+    height: 288px;
+  }
+}
+
+.mainPhoto {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.optionsContainer {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+
+  @include responsive-settings-max($media-pc) {
+    width: 237px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+    margin-top: 40px;
+  }
+}
+
+.optionsTitle {
+  @include small-text-styles;
+
+  color: $secondary;
+}
+
+.colorOptions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  width: max-content;
+}
+
+.colorBox {
+  width: 32px;
+  height: 32px;
+  border-radius: 36px;
+  border: 3px solid $white;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: outline 0.3s ease;
+  outline: 1px solid $elements;
+
+  &:hover {
+    outline: 1px solid $primary;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.colorOption input[type="radio"] {
+  display: none;
+}
+
+.colorOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &.active .colorBox {
+    outline: 1px solid $primary;
+  }
+}
+
+.capacityOptions {
+  display: flex;
+  width: max-content;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.capacityOption {
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 8px;
+  @include body-styles;
+
+  border: 1px solid $icons;
+  border-radius: 4px;
+  transition: border 0.3s ease-in-out, background-color 0.5s ease, color 0.3s ease;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  input {
+    display: none;
+  }
+
+  &.active {
+    background-color: $primary;
+    color: white;
+  }
+}
+
+.lines {
+  width: 100%;
+  height: 1px;
+  background-color: $elements;
+  border: none;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+}
+
+.priceDiscount {
+  @include h2-styles;
+
+  color: $primary;
+  margin-right: 8px;
+}
+
+.priceRegular {
+  @include h4-styles;
+
+  color: $secondary;
+  text-decoration: line-through;
+}
+
+.shoppingContainer {
+  width: 100%;
+}
+
+.buttonContainer {
+  display: flex;
+  margin-top: 16px;
+}
+
+.buttonAdd {
+  width: 263px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  background-color: $accent;
+  color: $white;
+  @include buttons-styles;
+
+  margin-right: 8px;
+  transition: box-shadow 0.3s ease;
+
+  @include responsive-settings-max($media-pc) {
+    width: 180px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 231px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+
+.buttonFav {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  border: 1px solid $icons;
+  background-color: transparent;
+  transition: border 0.3s ease;
+
+  &:hover {
+    border: 1px solid $secondary;
+  }
+}
+
+.techContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.singleTech {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.techTitle {
+  @include small-text-styles;
+
+  color: $secondary;
+}
+
+.techParams {
+  @include small-text-styles;
+
+  color: $primary;
+}
+
+.secondaryContent {
+  margin-top: 80px;
+  display: flex;
+
+  @include responsive-settings-max($media-pc) {
+    margin-top: 64px;
+    flex-direction: column;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    margin-top: 56px;
+  }
+}
+
+.aboutContainer {
+  width: 560px;
+  margin-right: 64px;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+    margin-right: 0;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+  }
+}
+
+.aboutTitle {
+  @include h3-styles;
+
+  color: $primary;
+}
+
+.descriptionContainer {
+  margin-top: 32px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.descriptionTitle {
+  @include h4-styles;
+
+  color: $primary;
+}
+
+.descriptionText {
+  @include body-styles;
+
+  color: $secondary;
+  margin-top: 16px;
+  white-space: pre-line;
+}
+
+.techSpecs {
+  width: 512px;
+
+  @include responsive-settings-max($media-pc) {
+    width: 592px;
+    margin-top: 64px;
+  }
+
+  @include responsive-settings-max($media-tablet) {
+    width: 288px;
+    margin-top: 56px;
+  }
+}

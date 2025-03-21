@@ -105,10 +105,10 @@
 
 .nav {
   text-decoration: none;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.2s ease;
 
   &:hover {
-    transform: scale(104%);
+    transform: scale(101%);
   }
 
   @include responsive-settings-max($media-tablet) {

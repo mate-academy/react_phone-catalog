@@ -9,5 +9,5 @@ export const navLinks = [
 
 export const iconLinks = [
   { path: '/favourites', img: fav, alt: 'favourites-icon' },
-  { path: '/shopping', img: order, alt: 'shopping-cart-icon' },
+  { path: '/cart', img: order, alt: 'shopping-cart-icon' },
 ];

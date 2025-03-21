@@ -21,4 +21,9 @@ export type Product = {
   camera: string;
   zoom: string;
   cell: string[];
+  year: number | null;
+};
+
+export type ProductWithYear = Product & {
+  year: number;
 };

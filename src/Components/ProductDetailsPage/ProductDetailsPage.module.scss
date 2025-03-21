@@ -1,7 +1,7 @@
 @use '../../utils/index' as *;
 
 .container {
-  min-width: 272px;
+  width: 272px;
   height: 506px;
   border-radius: 8px;
   padding: 32px;
@@ -12,15 +12,20 @@
   flex-direction: column;
   justify-content: space-between;
   transform: translateX(0);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, background-color 0.2s ease, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $hover-BG;
+    box-shadow: 0 0 2px 0 $shadow;
+  }
 
   @include responsive-settings-max($media-pc) {
-    min-width: 237px;
+    width: 237px;
     height: 512px;
   }
 
   @include responsive-settings-max($media-tablet) {
-    min-width: 212px;
+    width: 212px;
     height: 439px;
   }
 }
@@ -44,10 +49,24 @@
   object-fit: contain;
 }
 
+.linkContainer {
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(105%);
+  }
+}
+
 .name {
   @include body-styles;
 
   color: $black;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+  margin-top: 8px;
+  display: block;
+  height: 42px;
 }
 
 .price {
@@ -112,9 +131,10 @@
   @include buttons-styles;
 
   cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
-    box-shadow: 0 3px 13px 0 #17203166;
+    box-shadow: 0 3px 13px 0 $shadow;
   }
 
   @include responsive-settings-max($media-pc) {
@@ -136,6 +156,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: border 0.3s ease-in-out;
 
   &:hover {
     border: 1px solid $primary;

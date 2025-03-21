@@ -1,9 +1,10 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Phone } from '../../types/product';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Product, ProductWithYear } from '../../types/product';
+import { ProductInfo } from '../../types/productInfo';
 
 type PhonesState = {
-  phones: Phone[] | null;
+  phones: ProductWithYear[] | null;
   loading: boolean;
   error: string | null;
 };
@@ -14,16 +15,37 @@ const initialState: PhonesState = {
   error: null,
 };
 
-export const fetchPhones = createAsyncThunk<Phone[]>(
-  'phones/fetchPhones',
+export const fetchPhonesWithYear = createAsyncThunk<ProductWithYear[]>(
+  'phones/fetchPhonesWithYear',
   async () => {
-    const response = await fetch('/react_phone-catalog/api/phones.json');
+    const [phonesResponse, productsResponse] = await Promise.all([
+      fetch('/react_phone-catalog/api/phones.json'),
+      fetch('/react_phone-catalog/api/products.json'),
+    ]);
 
-    if (!response.ok) {
+    if (!phonesResponse.ok) {
       throw new Error('Failed to fetch phones');
     }
 
-    return response.json();
+    if (!productsResponse.ok) {
+      throw new Error('Failed to fetch products');
+    }
+
+    const phonesData: Product[] = await phonesResponse.json();
+    const productsData: ProductInfo[] = await productsResponse.json();
+
+    const mergedPhones = phonesData.map(phone => {
+      const productInfo = productsData.find(
+        product => product.itemId === phone.id,
+      );
+
+      return {
+        ...phone,
+        year: productInfo ? productInfo.year : 0,
+      };
+    });
+
+    return mergedPhones;
   },
 );
 
@@ -33,15 +55,18 @@ export const phonesSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchPhones.pending, state => {
+      .addCase(fetchPhonesWithYear.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchPhones.fulfilled, (state, action) => {
-        state.loading = false;
-        state.phones = action.payload;
-      })
-      .addCase(fetchPhones.rejected, (state, action) => {
+      .addCase(
+        fetchPhonesWithYear.fulfilled,
+        (state, action: PayloadAction<ProductWithYear[]>) => {
+          state.loading = false;
+          state.phones = action.payload;
+        },
+      )
+      .addCase(fetchPhonesWithYear.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Something went wrong';
       });
