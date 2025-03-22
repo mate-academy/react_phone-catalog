@@ -1,0 +1,65 @@
+@import './utils/variables';
+@import './utils/mixin';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+// @font-face {
+//   font-family: Mont-Bold, sans-serif; //800
+//   src: url(../../public/fonts/Mont-Bold.otf),
+// };
+
+// @font-face {
+//   font-family: Mont-Regular, sans-serif; //600
+//   src: url(../../public/fonts/Mont-Regular.otf),
+// };
+
+// @font-face {
+//   font-family: Mont-SemiBold, sans-serif; //700
+//   src: url(../../public/fonts/Mont-SemiBold.otf),
+// };
+
+@font-face {
+  font-family: Mont-Bold, sans-serif;
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+
+  font-weight: 800;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-Regular, sans-serif;
+  src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+
+  font-weight: 600;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-SemiBold, sans-serif;
+  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+
+  font-weight: 700;
+
+  font-style: normal;
+}
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  font-family: Mont-Bold, sans-serif;
+  color: $main-text-color;
+}
