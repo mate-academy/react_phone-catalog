@@ -1,36 +1,17 @@
 // eslint-disable-next-line max-len
+import { useFiltersContext } from 'contexts/FiltersContext';
+import { useProductsContext } from 'contexts/ProductsContext';
+import { Error } from 'shared/components/layout/Error';
+import { Loader } from 'shared/components/layout/Loader';
+
+import { PicturesSlider } from './components/BannerSlider/PicturesSlider';
 import { ProductsCategory } from './components/ProductsCategory/ProductsCategory';
 import { ProductsSlider } from './components/ProductsSlider/ProductsSlider';
-import {
-  getBrandNewProducts,
-  getHotPriceProducts,
-} from 'modules/shared/services/services';
-import { PicturesSlider } from './components/BannerSlider/PicturesSlider';
 import styles from './HomePage.module.scss';
-import { Product } from 'modules/shared/types/Product';
-import { useEffect, useState } from 'react';
-import { Loader } from 'modules/shared/components/Loader';
 
 export const HomePage: React.FC = () => {
-  const [newModels, setNewModels] = useState<Product[]>([]);
-  const [hotPrices, setHotPrices] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const fetchedNewModels = await getBrandNewProducts();
-        const fetchedHotPrices = await getHotPriceProducts();
-
-        setNewModels(fetchedNewModels);
-        setHotPrices(fetchedHotPrices);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
+  const { loading, error } = useProductsContext();
+  const { newModels, hotModels } = useFiltersContext();
 
   return (
     <div className={styles.homepage}>
@@ -40,15 +21,14 @@ export const HomePage: React.FC = () => {
         <PicturesSlider />
       </div>
 
-      {loading ? (
-        <div>
-          <Loader />
-        </div>
-      ) : (
+      {loading && <Loader />}
+      {error && <Error message={error} />}
+
+      {!loading && !error && (
         <>
           <div className={styles.section}>
             <ProductsSlider
-              title={'Brand new models'}
+              title="Brand new models"
               products={newModels}
               showDiscount={false}
             />
@@ -60,8 +40,8 @@ export const HomePage: React.FC = () => {
 
           <div className={styles.section}>
             <ProductsSlider
-              title={'Hot prices'}
-              products={hotPrices}
+              title="Hot prices"
+              products={hotModels}
               showDiscount={true}
             />
           </div>

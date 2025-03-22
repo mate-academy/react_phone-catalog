@@ -1,9 +1,11 @@
 import { useProductsContext } from 'contexts/ProductsContext';
+
 import { ProductCategory } from '../ProductCategory';
+
 import styles from './ProductsCategory.module.scss';
 
 export const ProductsCategory: React.FC = () => {
-  const { data, loading } = useProductsContext();
+  const { productsByCategory, loading } = useProductsContext();
 
   if (loading) {
     return <p>Loading...</p>;
@@ -14,19 +16,19 @@ export const ProductsCategory: React.FC = () => {
       <h2 className={styles.title}>Shop by category</h2>
       <div className={styles.productsContainer}>
         <ProductCategory
-          products={data.phones || []}
+          products={productsByCategory.phones || []}
           image="img/category-phones.png"
           title="Mobile phones"
           link="/phones"
         />
         <ProductCategory
-          products={data.tablets || []}
+          products={productsByCategory.tablets || []}
           image="img/category-tablets.png"
           title="Tablets"
           link="/tablets"
         />
         <ProductCategory
-          products={data.accessories || []}
+          products={productsByCategory.accessories || []}
           image="img/category-accessories.png"
           title="Accessories"
           link="/accessories"

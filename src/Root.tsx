@@ -1,15 +1,17 @@
 import {
   HashRouter as Router,
+  Navigate,
   Route,
   Routes,
-  Navigate,
 } from 'react-router-dom';
-import { App } from './App';
-import { HomePage } from './modules/HomePage/HomePage';
-import { ProductsPage } from 'modules/ProductsPage';
+
 import { FavoritesPage } from 'modules/FavoritesPage/FavoritesPage';
+import { ProductsPage } from 'modules/ProductsPage';
+
+import { App } from './App';
 import { CartPage } from './modules/CartPage/CartPage';
 import { ContactsPage } from './modules/ContactsPage/ContactsPage';
+import { HomePage } from './modules/HomePage/HomePage';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
 export const Root: React.FC = () => (

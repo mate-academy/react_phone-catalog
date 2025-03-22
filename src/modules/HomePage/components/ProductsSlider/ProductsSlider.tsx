@@ -1,9 +1,12 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import { ProductCard } from 'modules/shared/components/ProductCard/ProductCard';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
-import { Product } from 'modules/shared/types/Product';
+
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { ProductCard } from 'shared/components/layout/ProductCard';
+import { Product } from 'shared/types/Product';
+
 import styles from './ProductsSlider.module.scss';
 
 type Props = {

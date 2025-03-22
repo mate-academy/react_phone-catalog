@@ -1,10 +1,13 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, Autoplay } from 'swiper/modules';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
-import styles from './PicturesSlider.module.scss';
+
 import { Link } from 'react-router-dom';
+
+import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import styles from './PicturesSlider.module.scss';
 
 export const PicturesSlider: React.FC = () => {
   return (

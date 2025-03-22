@@ -1,0 +1,53 @@
+@use '/src/styles/globals.scss' as *;
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  align-items: center;
+  min-height: 96px;
+  border-top: 1px solid $color-elements;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 32px;
+  display: block;
+  width: 1136px;
+
+  @media (max-width: $tablet-breakpoint) {
+    padding: 0 24px;
+    width: 100%;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    padding: 32px 16px;
+    height: 100%;
+  }
+}
+
+.wrapper {
+  @extend %flex-center;
+
+  height: 100%;
+
+  @media (max-width: $mobile-breakpoint) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    > :last-child {
+      align-self: center;
+    }
+
+    gap: 32px;
+  }
+}
+
+.section {
+  flex: 1;
+}
+
+.footerLogo {
+  justify-content: flex-start;
+  height: 32px;
+  width: 89px;
+}

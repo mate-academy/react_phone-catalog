@@ -1,20 +1,24 @@
 /* eslint-disable max-len */
-import { Header } from './modules/shared/components/Header';
-import { Main } from 'modules/shared/components/Main';
-import { Footer } from './modules/shared/components/Footer/Footer';
+import { FiltersProvider } from 'contexts/FiltersContext/FiltersContext';
 import { MenuProvider } from 'contexts/MenuContext/MenuContext';
 import { ProductsProvider } from 'contexts/ProductsContext/ProductsContext';
+import { Main } from 'shared/components/layout/Main';
+
+import { Footer } from './shared/components/layout/Footer/Footer';
+import { Header } from './shared/components/layout/Header';
 
 export const App: React.FC = () => (
   <MenuProvider>
     <ProductsProvider>
-      <div className="App">
-        <Header />
+      <FiltersProvider>
+        <div className="App">
+          <Header />
 
-        <Main />
+          <Main />
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </FiltersProvider>
     </ProductsProvider>
   </MenuProvider>
 );

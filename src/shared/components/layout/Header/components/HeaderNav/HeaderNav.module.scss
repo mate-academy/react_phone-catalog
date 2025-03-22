@@ -1,0 +1,70 @@
+@use '/src/styles/globals.scss' as *;
+
+.navbar {
+  @extend %flex-center;
+  @include uppercase-desktop-tablet;
+
+  justify-content: space-between;
+
+  gap: 64px;
+
+  @media (max-width: $tablet-breakpoint) {
+    gap: 32px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
+  }
+}
+
+.navbarLink {
+  @extend %flex-center;
+
+  position: relative;
+  height: 64px;
+  text-transform: uppercase;
+  color: $color-secondary;
+  outline: none;
+
+  @media (max-width: $mobile-breakpoint) {
+    height: 27px;
+    padding: 8px 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: $color-white;
+    transform: scale(0);
+    transition: transform 0.5s ease-in-out;
+
+    @media (max-width: $mobile-breakpoint) {
+      height: 2px;
+    }
+  }
+
+  @include hover-text($color-white);
+}
+
+.linkActive {
+  color: $color-white;
+
+  &::after {
+    content: '';
+    transform: scale(1);
+  }
+}
+
+.menuOpen {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 24px 16px;
+  gap: 16px;
+}

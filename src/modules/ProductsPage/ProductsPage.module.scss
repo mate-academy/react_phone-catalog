@@ -1,18 +1,4 @@
-@use '../../styles/globals.scss' as *;
-
-.error {
-  @extend %flex-center;
-
-  flex-direction: column;
-  height: 100%;
-  gap: 20px;
-
-  @include h1-desktop-tablet;
-
-  @media (max-width: $mobile-breakpoint) {
-    @include h1-mobile;
-  }
-}
+@use '/src/styles/globals.scss' as *;
 
 .reloadButton {
   @include buttons-text-desktop-tablet;
@@ -20,33 +6,6 @@
 
   width: 200px;
   height: 50px;
-}
-
-.notFoundProducts {
-  @extend %flex-center;
-
-  flex-direction: column;
-  flex: 1;
-  gap: 50px;
-}
-
-.notFoundMessage {
-  @include h1-desktop-tablet;
-
-  @media (max-width: $mobile-breakpoint) {
-    @include h1-mobile;
-  }
-}
-
-.notFoundProductsImage {
-  width: 300px;
-  height: 300px;
-}
-
-.back {
-  @extend %flex-center;
-
-  gap: 8px;
 }
 
 .catalogPage {

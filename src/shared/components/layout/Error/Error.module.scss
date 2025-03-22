@@ -1,0 +1,15 @@
+@use '/src/styles/globals.scss' as *;
+
+.error {
+  @extend %flex-center;
+
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+
+  @include h1-desktop-tablet;
+
+  @media (max-width: $mobile-breakpoint) {
+    @include h1-mobile;
+  }
+}

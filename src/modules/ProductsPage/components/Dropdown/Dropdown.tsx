@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import styles from './Dropdown.module.scss';
+
 import classNames from 'classnames';
+
+import styles from './Dropdown.module.scss';
 
 type DropdownProps = {
   label: string;

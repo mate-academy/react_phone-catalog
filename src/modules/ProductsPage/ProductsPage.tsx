@@ -1,91 +1,73 @@
+import { useMemo } from 'react';
+
+import { useParams, useSearchParams } from 'react-router-dom';
+
 import { useProductsContext } from 'contexts/ProductsContext';
-import { Loader } from 'modules/shared/components/Loader';
-import { RouteParams } from 'modules/shared/types/Routes';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
-import styles from './ProductsPage.module.scss';
-import { ProductCard } from 'modules/shared/components/ProductCard';
 import { NotFoundPage } from 'modules/NotFoundPage';
-import { Breadcrumbs } from 'modules/shared/components/Breadcrumbs';
+import { EmptyState } from 'shared/components/layout/EmptyState';
+import { Error } from 'shared/components/layout/Error';
+import { Loader } from 'shared/components/layout/Loader';
+import { ProductCard } from 'shared/components/layout/ProductCard';
+import { Breadcrumbs } from 'shared/components/ui/Breadcrumbs';
+import { ItemsPerPage, itemsPerPage } from 'shared/constants/paginationOptions';
+import { categories, ProductCategory } from 'shared/constants/productCategory';
+import { SortOptions, sortOptions } from 'shared/constants/sortOptions';
+import { capitalize } from 'shared/helpers/capitalize';
+import { getProductsBySort } from 'shared/helpers/sorting';
+import { updateSearchParams } from 'shared/helpers/urlParams';
+
 import { Dropdown } from './components/Dropdown';
+import styles from './ProductsPage.module.scss';
 
 export const ProductsPage: React.FC = () => {
-  const { category } = useParams<RouteParams>();
-  const { data, loading, error } = useProductsContext();
+  const { category: selectedCategory } = useParams<{
+    category: ProductCategory;
+  }>();
+  const { productsByCategory, loading, error } = useProductsContext();
   const [searchParams, setSearchParams] = useSearchParams();
-  const sortParam = searchParams.get('sort') || 'Newest';
-  const itemsOnPageParam = searchParams.get('itemsOnPage') || 'All';
-
-  const validCategories = ['phones', 'tablets', 'accessories'];
-  const sortByOptions = ['Newest', 'Alphabetically', 'Cheapest'];
-  const itemsOnPageOptions = ['All', '4', '8', '16'];
-
-  const updateSearchParams = (
-    paramName: string,
-    value: string,
-    defaultValue: string,
-  ) => {
-    const curParams = new URLSearchParams(searchParams);
-
-    if (value === defaultValue) {
-      curParams.delete(paramName);
-    } else {
-      curParams.set(paramName, value);
-    }
-
-    setSearchParams(curParams);
-  };
+  const sortParam =
+    (searchParams.get('sort') as SortOptions) || SortOptions.NEWEST;
+  const itemsOnPageParam =
+    (searchParams.get('itemsOnPage') as ItemsPerPage) || ItemsPerPage.ALL;
 
   const handleSortBySelect = (value: string) => {
-    updateSearchParams('sort', value, 'Newest');
+    updateSearchParams(
+      searchParams,
+      'sort',
+      value,
+      SortOptions.NEWEST,
+      setSearchParams,
+    );
   };
 
   const handleItemsOnPageSelect = (value: string) => {
-    updateSearchParams('itemsOnPage', value, 'All');
+    updateSearchParams(
+      searchParams,
+      'itemsOnPage',
+      value,
+      ItemsPerPage.ALL,
+      setSearchParams,
+    );
   };
 
-  if (!validCategories.includes(category || '')) {
+  const products = useMemo(
+    () => (selectedCategory ? productsByCategory[selectedCategory] : []),
+    [selectedCategory, productsByCategory],
+  );
+
+  const sortedProducts = useMemo(() => {
+    return getProductsBySort(products || [], sortParam);
+  }, [products, sortParam]);
+
+  if (loading) return <Loader />;
+  if (error) return <Error message={error} />;
+
+  if (!categories.includes(selectedCategory as ProductCategory)) {
     return <NotFoundPage />;
   }
 
-  const products = category ? data[category] : undefined;
-
-  if (loading) {
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className={styles.error}>
-        <span>{error}</span>
-        <button
-          className={styles.reloadButton}
-          onClick={() => window.location.reload()}
-        >
-          Try again
-        </button>
-      </div>
-    );
-  }
-
   if (!products || products.length === 0) {
-    return (
-      <div className={styles.notFoundProducts}>
-        <div className={styles.back}>
-          <img src="img/icons/arrow-back.svg" alt="arrow-back" />
-          <Link to="/">Back to home</Link>
-        </div>
-        <h1 className={styles.notFoundMessage}>There are no {category} yet.</h1>
-        <img
-          className={styles.notFoundProductsImage}
-          src="img/product-not-found.png"
-          alt="No products found"
-        />
-      </div>
-    );
+    return <EmptyState category={selectedCategory as string} />;
   }
 
   return (
@@ -93,37 +75,35 @@ export const ProductsPage: React.FC = () => {
       <Breadcrumbs />
 
       <h1 className={styles.categoryTitle}>
-        {category
-          ? category.charAt(0).toUpperCase() + category.slice(1)
-          : 'Category'}
+        {selectedCategory ? capitalize(selectedCategory) : 'Category'}
       </h1>
 
-      <span
-        className={styles.numOfProducts}
-      >{`${products?.length} models`}</span>
+      <span className={styles.numOfProducts}>
+        {`${products?.length} models`}
+      </span>
 
       <div className={styles.productsControls}>
         <div className={styles.sortContainer}>
           <Dropdown
-            label={'Sort by'}
+            label="Sort by"
             selectedOption={sortParam}
-            options={sortByOptions}
+            options={sortOptions}
             onSelect={handleSortBySelect}
           />
         </div>
 
         <div className={styles.itemOnPageContainer}>
           <Dropdown
-            label={'Items on page'}
+            label="Items on page"
             selectedOption={itemsOnPageParam}
-            options={itemsOnPageOptions}
+            options={itemsPerPage}
             onSelect={handleItemsOnPageSelect}
           />
         </div>
       </div>
 
       <div className={styles.productsList}>
-        {products.map(product => (
+        {sortedProducts.map(product => (
           <div key={product.id} className={styles.productContainer}>
             <ProductCard product={product} showDiscount={false} />
           </div>

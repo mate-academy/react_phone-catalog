@@ -1,6 +1,8 @@
-import { Product } from 'modules/shared/types/Product';
-import styles from './ProductCategory.module.scss';
 import { Link } from 'react-router-dom';
+
+import { Product } from 'shared/types/Product';
+
+import styles from './ProductCategory.module.scss';
 
 type Props = {
   products: Product[];
