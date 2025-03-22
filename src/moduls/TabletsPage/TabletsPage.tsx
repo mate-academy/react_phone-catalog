@@ -1,13 +1,21 @@
+/* eslint-disable max-len */
 import { CategoryContainer } from '../../features/CategoryContainer';
 import { CategorySceleton } from '../../shared/components/CategorySceleton';
-import { useSortedProducts } from '../../shared/utils/hooks/useSortedProducts';
+import { useFilteredProducts } from '../../shared/utils/hooks/useSortedProducts';
 
 export const TabletsPage = () => {
-  const { sortedProducts, isPageLoading } = useSortedProducts('tablets');
+  const { filteredProducts, isPageLoading, isError } =
+    useFilteredProducts('tablets');
+
+  // const { sortedProducts } = useSortedProducts(filteredProducts);
 
   return isPageLoading ? (
     <CategorySceleton />
   ) : (
-    <CategoryContainer goods={sortedProducts} title="Tablets" />
+    <CategoryContainer
+      filteredProducts={filteredProducts}
+      title="Tablets"
+      isError={isError}
+    />
   );
 };

@@ -1,9 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+/* eslint-disable prettier/prettier */
+/* eslint-disable max-len */
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {
-  DispatchContext,
-  StateContext,
-} from '../../../Provider/GadgetsContext';
 import { Accessories } from '../../../shared/types/Accessories';
 import { PhonesTablets } from '../../../shared/types/PhonesTablets';
 import {
@@ -12,20 +10,61 @@ import {
   getTablets,
 } from '../../../shared/utils/httpClient';
 
+export function getCategoryArr(
+  nameSpace: string,
+  categoryArr: Accessories[] | PhonesTablets[],
+) {
+  const nameSpaceArr = categoryArr.filter(
+    item => item.namespaceId === nameSpace,
+  );
+
+  return nameSpaceArr;
+}
+
+export function getProductVariant(
+  id: string,
+  categoryArr: Accessories[] | PhonesTablets[],
+) {
+  const newProduct = categoryArr.find(item => item.id === id);
+
+  return newProduct;
+}
+
 export function useProductDetails() {
-  const { phones, tablets, accessories } = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
   const { category, productId } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [product, setProduct] = useState<Accessories | PhonesTablets | null>(
     null,
   );
+  const [categoryArr, setCategoryArr] = useState<Accessories[] | PhonesTablets[]>([]);
+  const [nameSpace, setNameSpace] = useState('');
 
-  // Загружаем данные, если их ещё нет
   useEffect(() => {
+    setIsError(false);
     async function loadCategoryData() {
       if (!category || !productId) {
+        return;
+      }
+
+      // if nameSpace haven't changed
+      if (nameSpace.length > 0 && productId.includes(nameSpace)) {
+
+
+
+        try {
+          const productVariation = getProductVariant(productId, categoryArr);
+
+          if (!productVariation) {
+            throw new Error(`Product with id "${productId}" not found`);
+          }
+
+          setProduct(productVariation);
+        } catch(error) {
+          setIsError(true);
+        }
+
         return;
       }
 
@@ -36,34 +75,35 @@ export function useProductDetails() {
 
         switch (category) {
           case 'phones':
-            if (phones.length === 0) {
-              data = await getPhones();
-              dispatch({ type: 'SET_PHONES', payload: data });
-            }
+            data = await getPhones();
 
             break;
 
           case 'tablets':
-            if (tablets.length === 0) {
-              data = await getTablets();
-              dispatch({ type: 'SET_TABLETS', payload: data });
-            }
+            data = await getTablets();
 
             break;
 
           case 'accessories':
-            if (accessories.length === 0) {
-              data = await getAccessories();
-              dispatch({ type: 'SET_ACCESSORIES', payload: data });
-            }
+            data = await getAccessories();
 
             break;
 
           default:
             return;
         }
+
+        const foundProduct = data.find(item => item.id === productId);
+
+
+        setNameSpace(foundProduct?.namespaceId ||  '');
+
+        const variations = getCategoryArr(foundProduct?.namespaceId || '', data);
+
+        setCategoryArr(variations);
+        setProduct(foundProduct || null);
       } catch (error) {
-        throw error;
+        setIsError(true);
       } finally {
         setTimeout(() => {
           setIsLoading(false);
@@ -74,32 +114,5 @@ export function useProductDetails() {
     loadCategoryData();
   }, [productId]);
 
-  // Ищем продукт после загрузки данных
-  useEffect(() => {
-    if (!category || !productId) {
-      return;
-    }
-
-    let allProducts: (Accessories | PhonesTablets)[] = [];
-
-    switch (category) {
-      case 'phones':
-        allProducts = phones;
-        break;
-      case 'tablets':
-        allProducts = tablets;
-        break;
-      case 'accessories':
-        allProducts = accessories;
-        break;
-      default:
-        return;
-    }
-
-    const foundProduct = allProducts.find(item => item.id === productId);
-
-    setProduct(foundProduct || null);
-  }, [productId]);
-
-  return { product, isLoading };
+  return { product, isLoading, isError };
 }

@@ -20,16 +20,6 @@
   font-weight: 700;
 
   background-color: $white;
-
-  // overflow: hidden;
-
-  @include on-desktop {
-    // min-width: $desktop;
-  }
-
-  @include on-tablet {
-    // min-width: $tablet;
-  }
 }
 
 .nav {
@@ -112,7 +102,7 @@
   gap: 1px;
 
   box-sizing: border-box;
-  margin-left: auto;
+  margin-left: 24px;
   border-left: 1px solid $elements-color;
 
   background-color: $elements-color;
@@ -176,26 +166,77 @@
   }
 }
 
-.icon {
-  display: block;
+.search {
+  &__wrapper {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
 
-  width: 16px;
-  height: 16px;
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-
-  &--heart {
-    background-image: url(/img/icons/Heart.svg);
+    // &:hover {
+    //   svg {
+    //     fill: $secondary-color
+    //   }
+    // }
   }
-  &--cart {
-    background-image: url(/img/icons/Cart.svg);
+
+  &__input {
+    // height: 25px;
+    font-size: 12px;
+    // background-color: $hover-color;
+    border: 1px solid $elements-color;
+    border-radius: 5px;
+    padding: 7px;
+    display: block;
+    box-sizing: border-box;
+    width: 110px;
+
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: $icon-color;
+    }
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &:hover + .search__icon svg {
+      fill: $secondary-color
+    }
+
+    &:focus {
+      width: 160px;
+      border-color: $primary-color;
+      outline: 0;
+    }
+
+    &:focus + .search__icon svg {
+      fill: $primary-color;
+    }
   }
-}
+
+  // &__active {
+  //   width: 160px;
+  // }
 
 
-.check {
-  width: 48px;
-  height: 48px;
+
+  &__icon {
+    position: absolute;
+    right: 8px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+
+
+    svg {
+      fill: $icon-color;
+      width: 12px;
+      height: 12px;
+
+      transition: all 0.3s ease;
+    }
+  }
+
 }

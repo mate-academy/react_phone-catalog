@@ -1,0 +1,71 @@
+.skelton {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 64px;
+}
+
+.title {
+  width: 400px;
+  height: 35px;
+  grid-column: 1/-1;
+}
+
+.imageSlider {
+  display: flex;
+  gap: 16px;
+}
+
+.smallImg {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__item {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.bidImg {
+  width: 100%;
+  height: 300px;
+}
+
+.mainSpec {
+  display: flex;
+  flex-direction: column;
+}
+
+.colors, .capacities, .buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 28px;
+}
+
+.color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.capacity {
+  width: 64px;
+  height: 32px;
+}
+
+.button {
+  height: 48px;
+  flex-grow: 1;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+}
+
+.about, .techSpec {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}

@@ -1,32 +1,50 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { StateContext } from '../../../Provider/GadgetsContext';
 import { Product } from '../../types/Product';
 import { sortProducts } from '../sortHelper';
+import { getProducts } from '../httpClient';
 
-export const useSortedProducts = (category: string) => {
-  const { products } = useContext(StateContext);
+export const useFilteredProducts = (category: string) => {
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [isPageLoading, setIsPageLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    async function loadProducts() {
+      setIsPageLoading(true);
+      setIsError(false);
+
+      try {
+        const products = await getProducts();
+        const productsByCategory = products.filter(
+          item => item.category === category,
+        );
+
+        setFilteredProducts(productsByCategory);
+      } catch (error) {
+        setIsError(true);
+      } finally {
+        setTimeout(() => setIsPageLoading(false), 1000);
+      }
+    }
+
+    loadProducts();
+  }, [category]);
+
+  return { filteredProducts, isPageLoading, isError };
+};
+
+export const useSortedProducts = (filteredProducts: Product[]) => {
   const [searchParams] = useSearchParams();
   const sort = searchParams.get('sort');
 
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
-  const [isPageLoading, setIsPageLoading] = useState(true);
 
   useEffect(() => {
-    setIsPageLoading(true);
+    const getSorted = sortProducts(filteredProducts, sort);
 
-    new Promise<Product[]>(resolve => {
-      const filteredProducts = products.filter(
-        item => item.category === category,
-      );
+    setSortedProducts(getSorted);
+  }, [sort]);
 
-      resolve(sortProducts(filteredProducts, sort));
-    })
-      .then(sorted => setSortedProducts(sorted))
-      .finally(() => {
-        setTimeout(() => setIsPageLoading(false), 1000);
-      });
-  }, []);
-
-  return { sortedProducts, isPageLoading };
+  return { sortedProducts };
 };

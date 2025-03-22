@@ -39,6 +39,7 @@ export const HomeBanner = () => {
             clickable: true,
             el: '.custom-pagination',
           }}
+          autoHeight={true}
         >
           {deviceImages.map((src, index) => (
             <SwiperSlide key={index} className={styles.swiper__slide}>
