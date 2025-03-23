@@ -12,6 +12,7 @@ export const App = () => {
 
   return (
     <div className={classNames('App')}>
+      <h1 className="is-sr-only">Product Catalog</h1>
       {isGlobalLoading ? (
         <Loader />
       ) : (
