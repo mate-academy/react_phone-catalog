@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './Card.module.scss';
 import { Product } from '../../types/Product';
+import { ToggleButton } from '../ToggleButton/ToggleButton';
+import styles from './Card.module.scss';
 
 interface CardProps {
   card: Product;
@@ -14,8 +15,18 @@ export const Card: React.FC<CardProps> = ({ card }) => {
     navigate(`/${card.category}/${card.itemId}`);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className={styles.card} onClick={handleClick}>
+    <div
+      className={styles.card}
+      onClick={() => {
+        handleClick();
+        scrollToTop();
+      }}
+    >
       <img src={card.image} alt={card.name} className={styles.card__img} />
       <p className={styles.card__name}>{card.name}</p>
       <div className={styles.card__prices}>
@@ -38,10 +49,8 @@ export const Card: React.FC<CardProps> = ({ card }) => {
         </div>
       </div>
       <div className={styles.card__buttons}>
-        <button type="button" className={styles.card__buttonsAdd}>
-          Add to Cart
-        </button>
-        <button type="button" className={styles.card__buttonsFavorite}></button>
+        <ToggleButton product={card} type="cart" />
+        <ToggleButton product={card} type="favorites" />
       </div>
     </div>
   );

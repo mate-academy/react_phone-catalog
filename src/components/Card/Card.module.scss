@@ -8,7 +8,7 @@
   gap: 8px;
 
   max-width: 288px;
-  max-height: 440px;
+  max-height: 506px;
 
   border: 1px solid $grayColor;
 
@@ -93,11 +93,23 @@
   &__buttonsAdd {
     flex-grow: 1;
     height: 40px;
+    max-width: 263px;
     background-color: $primaryColor;
     color: $whiteColor;
     border: 0;
+    cursor: pointer;
 
     @include buttons;
+
+    &:hover {
+      border: 1px solid $primaryColor;
+    }
+
+    &Active {
+      border: 1px solid $secondaryColor;
+      background-color: $whiteColor;
+      color: $greenColor;
+    }
   }
 
   &__buttonsFavorite {
@@ -109,6 +121,14 @@
     background-image: url(../../imgs/svg/favorite-icon.svg);
     background-position: center;
     background-repeat: no-repeat;
-  }
+    cursor: pointer;
 
+    &:hover {
+      border: 1px solid $primaryColor;
+    }
+
+    &Active {
+      background-image: url(../../imgs/svg/favorite-icon-selected.svg);
+    }
+  }
 }

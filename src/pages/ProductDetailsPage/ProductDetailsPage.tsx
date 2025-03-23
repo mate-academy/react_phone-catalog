@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
+import { ToggleButton } from '../../components/ToggleButton/ToggleButton';
+import classNames from 'classnames';
+
 import phones from '../../../public/api/phones.json';
 import tablets from '../../../public/api/tablets.json';
 import accessories from '../../../public/api/accessories.json';
+
 import { Phones } from '../../types/Phones';
 import { Tablets } from '../../types/Tablets';
 import { Accessories } from '../../types/Accessories';
+import { colorMap } from '../../types/colorMap';
 
 import styles from './ProductDetailsPage.module.scss';
 import homeIcon from '../../imgs/svg/home-icon.svg';
@@ -14,40 +19,59 @@ import arrowLeft from '../../imgs/svg/arrow-left-icon.svg';
 
 type Product = Phones | Tablets | Accessories;
 
-const colorMap: { [key: string]: string } = {
-  black: '#000000',
-  green: '#27ae60',
-  yellow: '#ffdf00',
-  white: '#ffffff',
-  purple: '#800080',
-  red: '#eb5757',
-  gold: '#ffd700',
-  silver: '#c0c0c0',
-  midnightgreen: '#004953',
-  spacegray: '#404040',
-  rosegold: '#ffb6c1',
-  coral: '#ff7f50',
-  skyblue: '#87ceeb',
-  starlight: '#fffaf0',
-  pink: '#ffc0cb',
-  blue: '#0000ff',
-  midnight: '#191970',
-  graphite: '#a9a9a9',
-  sierrablue: '#4682b4',
-  spaceblack: '#000000',
-  'space gray': '#404040',
-};
-
 export const ProductDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const allProducts: Product[] = [...phones, ...tablets, ...accessories];
+  const navigate = useNavigate();
+  const allProducts: Product[] = React.useMemo(
+    () => [...phones, ...tablets, ...accessories],
+    [],
+  );
   const product = allProducts.find(item => item.id === id);
 
   const [selectedImage, setSelectedImage] = useState(product?.images[0] || '');
+  const [selectedColor, setSelectedColor] = useState(product?.color || '');
+  const [selectedCapacity, setSelectedCapacity] = useState(
+    product?.capacity || '',
+  );
+
+  useEffect(() => {
+    const newProduct = allProducts.find(
+      p =>
+        p.namespaceId === product?.namespaceId &&
+        p.color === selectedColor &&
+        p.capacity === selectedCapacity,
+    );
+
+    if (newProduct && newProduct.id !== id) {
+      navigate(`/${product?.category}/${newProduct.id}`);
+    }
+  }, [
+    selectedColor,
+    selectedCapacity,
+    allProducts,
+    id,
+    navigate,
+    product?.namespaceId,
+    product?.category,
+  ]);
+
+  useEffect(() => {
+    if (product) {
+      setSelectedImage(product.images[0]);
+    }
+  }, [product]);
 
   if (!product) {
     return <div>Продукт не знайдено</div>;
   }
+
+  const handleColorChange = (color: string) => {
+    setSelectedColor(color);
+  };
+
+  const handleCapacityChange = (capacity: string) => {
+    setSelectedCapacity(capacity);
+  };
 
   return (
     <div className={styles.product}>
@@ -79,7 +103,7 @@ export const ProductDetailsPage: React.FC = () => {
           alt="arrow-right"
           className={styles.product__icons_arrow}
         />
-        <span className={styles.product__icons_product}>{product.name}</span>
+        <span className={styles.product__icons_name}>{product.name}</span>
       </div>
       <NavLink to={`/${product.category}`} className={styles.product__back}>
         <img
@@ -104,9 +128,9 @@ export const ProductDetailsPage: React.FC = () => {
               key={image}
               src={`/${image}`}
               alt="Thumbnail"
-              className={`${styles.product__gallery_thumbnail} ${
-                selectedImage === image ? styles.active : ''
-              }`}
+              className={classNames(styles.product__gallery_thumbnail, {
+                [styles.active]: selectedImage === image,
+              })}
               onClick={() => setSelectedImage(image)}
             />
           ))}
@@ -122,16 +146,87 @@ export const ProductDetailsPage: React.FC = () => {
               <button
                 key={color}
                 type="button"
-                className={styles.product__controls_colors_button}
+                className={classNames(styles.product__controls_colors_button, {
+                  [styles.active]: selectedColor === color,
+                })}
                 style={{ backgroundColor: colorMap[color] }}
+                onClick={() => handleColorChange(color)}
+                disabled={color === selectedColor}
               ></button>
             ))}
           </div>
         </div>
+        <div className={styles.product__controls_line}></div>
+        <div className={styles.product__controls_capacity}>
+          <p className={styles.product__controls_capacity_title}>
+            Select capacity
+          </p>
+          <div className={styles.product__controls_capacity_buttons}>
+            {product.capacityAvailable.map(capacity => (
+              <button
+                key={capacity}
+                type="button"
+                className={classNames(
+                  styles.product__controls_capacity_button,
+                  {
+                    [styles.active]: selectedCapacity === capacity,
+                  },
+                )}
+                onClick={() => handleCapacityChange(capacity)}
+                disabled={capacity === selectedCapacity}
+              >
+                {capacity}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className={styles.product__controls_line}></div>
+
+        <div className={styles.product__controls_group}>
+          <div className={styles.product__controls_group_prices}>
+            <h3 className={styles.product__controls_group_prices_discount}>
+              ${product.priceDiscount}
+            </h3>
+            <p className={styles.product__controls_group_prices_regular}>
+              ${product.priceRegular}
+            </p>
+          </div>
+          <div className={styles.product__controls_group_buttons}>
+            <ToggleButton product={product} type="cart" />
+            <ToggleButton product={product} type="favorites" />
+          </div>
+        </div>
+        <div className={styles.product__controls_specifications}>
+          <div className={styles.product__controls_specification}>
+            <p className={styles.product__controls_specificationName}>Screen</p>
+            <p className={styles.product__controls_specificationValue}>
+              {product.screen}
+            </p>
+          </div>
+          <div className={styles.product__controls_specification}>
+            <p className={styles.product__controls_specificationName}>
+              Resolution
+            </p>
+            <p className={styles.product__controls_specificationValue}>
+              {product.resolution}
+            </p>
+          </div>
+          <div className={styles.product__controls_specification}>
+            <p className={styles.product__controls_specificationName}>
+              Proccessor
+            </p>
+            <p className={styles.product__controls_specificationValue}>
+              {product.processor}
+            </p>
+          </div>
+          <div className={styles.product__controls_specification}>
+            <p className={styles.product__controls_specificationName}>RAM</p>
+            <p className={styles.product__controls_specificationValue}>
+              {product.ram}
+            </p>
+          </div>
+        </div>
       </div>
-      <p>
-        Ціна: ${product.priceDiscount} (Звичайна ціна: ${product.priceRegular})
-      </p>
       <div className={styles.product__description}>
         <h3 className={styles.product__description_title}>About</h3>
         {product.description.map(desc => (
