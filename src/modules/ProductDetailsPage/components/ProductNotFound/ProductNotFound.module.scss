@@ -1,0 +1,32 @@
+@import "../../../shared/utils/mixins";
+@import "../../../shared/utils/vars";
+
+.prnf {
+  &__img_container {
+    grid-column: span 4;
+    height: 50vh;
+
+    @include padding-inline;
+
+    @include on-tablette {
+      margin-top: 50px;
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+    &__image {
+    @include photo;
+
+    transition: transform $transitionDuration;
+
+    &:hover {
+      transform: scale($hoverScaleSize);
+    }
+  }
+}
+
+

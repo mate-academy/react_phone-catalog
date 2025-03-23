@@ -29,7 +29,6 @@ export const Root = () => {
             )
           }
         />
-        {/* <Route path="*" element={<PageNotFound />} /> */}
         <Route path="phones">
           <Route index element={<PhonesPage />} />
           <Route path=":productId" element={<ProductDetailsPage />} />

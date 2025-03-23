@@ -4,6 +4,7 @@ import { Loader } from '../shared/components/Loader';
 import { useProduct } from '../../store/ProductContext';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
 import { DetailedType } from '../shared/types/DetailedType';
+import { ProductNotFound } from './components/ProductNotFound';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -56,14 +57,24 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   if (!detailedProduct) {
-    return <div>Product was not found</div>;
+    return (
+      <section className="App__section" id="cart">
+        <div className="App__section-content App__section-content">
+          <ProductNotFound />
+        </div>
+      </section>
+    );
   }
 
   return (
-    <ProductDetails
-      detailedProduct={detailedProduct}
-      product={product}
-      products={products}
-    />
+    <section className="App__section" id="cart">
+      <div className="App__section-content App__section-content">
+        <ProductDetails
+          detailedProduct={detailedProduct}
+          product={product}
+          products={products}
+        />
+      </div>
+    </section>
   );
 };
