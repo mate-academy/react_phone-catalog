@@ -1,7 +1,6 @@
 import React from 'react';
 import './Pagination.scss';
 import ReactPaginate from 'react-paginate';
-// import { useSearchParams } from "react-router-dom";
 
 interface PaginationProps {
   totalPages: number;
@@ -14,17 +13,15 @@ export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   onPageChange,
 }) => {
-  // const [searchParams] = useSearchParams();
-  // const currentPage = Number(searchParams.get("page")) || 0;
 
   return (
     <div className="pagination-container">
       <ReactPaginate
         previousLabel={
-          <img src="../../../public/img/icons/arrow-prev.svg" alt="Previous" />
+          <img src="./img/icons/arrow-prev.svg" alt="Previous" />
         }
         nextLabel={
-          <img src="../../../public/img/icons/arrow-next.svg" alt="Next" />
+          <img src="./img/icons/arrow-next.svg" alt="Next" />
         }
         pageCount={totalPages}
         // forcePage={currentPage}

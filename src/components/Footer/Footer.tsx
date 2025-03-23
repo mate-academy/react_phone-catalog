@@ -9,10 +9,7 @@ export const Footer = () => {
     <footer className="footer">
       <div className="footer__logo">
         <a className="footer-logo__link" href="/">
-          <img
-            src="./img/logo/logo-nice-gadgets.svg"
-            alt="logo-nice-gadgets"
-          />
+          <img src="./img/logo/logo-nice-gadgets.svg" alt="logo-nice-gadgets" />
         </a>
       </div>
       <div className="footer__links">
