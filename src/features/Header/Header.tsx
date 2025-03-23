@@ -1,9 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import debounce from 'lodash.debounce';
 import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import classNames from 'classnames';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import logo from '/img/Logo.svg';
 import { Burger } from '../Burger';
@@ -12,6 +13,7 @@ import styles from './Header.module.scss';
 import { BurgerIcon } from '../../shared/components/Icons/BurgerIcon';
 import { SearchIcon } from '../../shared/components/Icons/SearchIcon';
 import { getSearchWith, SearchParams } from '../../shared/utils/searchHelper';
+import { CloseIcon } from '../../shared/components/Icons/CloseIcon';
 
 const getClassName = (baseClass: string) =>
   function ({ isActive }: { isActive: boolean }) {
@@ -21,14 +23,16 @@ const getClassName = (baseClass: string) =>
 const getLinkClass = getClassName('navbar--item');
 
 export const Header = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const isMobile = useMediaQuery({ maxWidth: 639 });
   const navigate = useNavigate();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const query = searchParams.get('query') || '';
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [inputValue, setInputValue] = useState(query);
+
+  const savedPath = useRef<string | null>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);
@@ -36,36 +40,54 @@ export const Header = () => {
 
   function setSearchWith(params: SearchParams) {
     const updatedParams = { ...params };
-
-    if (updatedParams.perPage === 'all') {
-      updatedParams.perPage = null;
-    }
-
-    if (updatedParams.page === '1') {
-      updatedParams.perPage = null;
-    }
-
     const search = getSearchWith(searchParams, updatedParams);
 
     setSearchParams(search, { replace: true });
   }
 
-  function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchWith({ query: event.target.value || null });
-    // navigate(`/search/${event.target.value}`, { replace: true });
-  }
+  // const applyQuery = useCallback(debounce(setInputValue, 1000), []);
 
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter' && query.trim()) {
-      navigate(`/search/${query.trim()}`, { replace: true });
+  function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const newQuery = event.target.value;
+
+    if (!savedPath.current && !query) {
+      savedPath.current = window.location.pathname;
+    }
+
+    setSearchWith({ query: newQuery || null });
+
+    if (newQuery.trim()) {
+      navigate(`/search?query=${encodeURIComponent(newQuery)}`, {
+        replace: true,
+      });
     }
   }
 
-  // useEffect(() => {
-  //   if (query) {
-  //     navigate(`search`);
+  // function handleSearchClick() {
+  //   if (inputValue.trim()) {
+  //     setSearchWith({ query: inputValue }); // Теперь добавляем query в URL
+  //     navigate(`/search?query=${encodeURIComponent(inputValue)}`, {
+  //       replace: true,
+  //     });
   //   }
-  // }, [query]);
+  // }
+
+  const handleClearQuery = () => {
+    setInputValue('');
+    setSearchWith({ query: null });
+
+    if (savedPath.current) {
+      navigate(savedPath.current, { replace: true });
+      savedPath.current = null;
+    }
+  };
+
+  useEffect(() => {
+    if (!query && savedPath.current) {
+      navigate(savedPath.current, { replace: true });
+      savedPath.current = null;
+    }
+  }, [query]);
 
   return (
     <>
@@ -103,8 +125,11 @@ export const Header = () => {
               value={query}
               onChange={handleQueryChange}
             />
-            <span className={classNames(styles.search__icon)}>
-              <SearchIcon />
+            <span
+              className={classNames(styles.search__icon)}
+              onClick={handleClearQuery}
+            >
+              {query ? <CloseIcon /> : <SearchIcon />}
             </span>
           </div>
           <div className={styles.buttons}>

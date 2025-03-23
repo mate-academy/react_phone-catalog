@@ -20,15 +20,15 @@ export const Root = () => (
       <Route path="tablets" element={<TabletsPage />} />
       <Route path="accessories" element={<AccessoriesPage />} />
 
-      <Route path=':category'>
-        <Route path=':productId' element={<ProductDetailsPage />} />
+      <Route path=":category">
+        <Route path=":productId" element={<ProductDetailsPage />} />
       </Route>
 
       <Route path="favourites" element={<FavouritesPage />} />
       <Route path="cart" element={<CartPage />} />
 
-      <Route path='search'>
-        <Route path='?:query' element={<SearchPage />} />
+      <Route path="search" element={<SearchPage />}>
+        {/* <Route path="?:query" element={<SearchPage />} /> */}
       </Route>
 
       <Route path="*" element={<PageNotFound />} />
