@@ -1,0 +1,20 @@
+@import "../../../shared/utils/mixins";
+@import "../../../shared/utils/vars";
+
+.categories {
+  &__title {
+    grid-column: span 4;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+    margin-bottom: 24px;
+
+    @include on-tablette {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+}

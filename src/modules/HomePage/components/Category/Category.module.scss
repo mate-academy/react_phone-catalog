@@ -1,0 +1,39 @@
+@import "../../../shared/utils/mixins";
+@import "../../../shared/utils/vars";
+
+.category {
+  &__container {
+    grid-column: span 4;
+    margin-bottom: 32px;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__image_container {
+    aspect-ratio: 1 / 1;
+
+    @include photo-container;
+  }
+
+  &__image {
+    @include photo;
+  }
+
+  &__name {
+    margin: 24px 0 4px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+  }
+
+  &__counter {
+    color: $c-graySecondary;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $c-grayPrimary;
+  }
+}

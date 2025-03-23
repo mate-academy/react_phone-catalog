@@ -1,0 +1,87 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.icon {
+  display: block;
+  background-size: center;
+  background-repeat: no-repeat;
+  background-position: center;
+
+
+  width: 48px;
+  height: 48px;
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  &__badge {
+    position: absolute;
+    background-color: $c-red;
+    color: $c-white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 4px;
+    min-width: 8px;
+    min-height: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    top: 8px;
+    right: 8px;
+
+    @include on-desktop {
+      top: 10px;
+      right: 10px;
+      min-width: 14px;
+      min-height: 14px;
+    }
+  }
+
+  &--cart {
+    background-image: url(/img/icons/backet.svg);
+
+
+     // position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+
+  }
+
+  &--close {
+    background-image: url(/img/icons/close.svg);
+  }
+
+  &--like {
+    background-image: url(/img/icons/like.svg);
+  }
+
+  &--selected {
+    background-image: url(/img/icons/like-selected.svg);
+  }
+
+  &--menu {
+    background-image: url(/img/icons/menu.svg);
+  }
+
+  &--up {
+    background-image: url(/img/icons/arrow-up.svg);
+  }
+
+  &--home {
+    background-image: url(/img/icons/home.svg);
+  }
+
+  &--right {
+    background-image: url(/img/icons/arrow-right.svg);
+  }
+
+  &--left {
+    background-image: url(/img/icons/arrow-left.svg);
+  }
+}

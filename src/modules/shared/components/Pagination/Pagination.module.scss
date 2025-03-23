@@ -1,0 +1,57 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.pagination {
+
+  &__select_title {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $c-graySecondary;
+  }
+
+  &__list {
+    grid-column: span 4;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 16px;
+
+    @include on-tablette {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $c-graySecondary;
+    text-decoration: none;
+
+    &:active {
+      background-color: $c-grayPrimary;
+      color: $c-white;
+    }
+  }
+
+  &__link {
+    color: $c-grayPrimary;
+    text-decoration: none;
+    outline: none;
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+}

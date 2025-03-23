@@ -1,0 +1,36 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.navbarIcon {
+  &__icon_container {
+    position: relative;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    border-left: 1px solid $c-grayElements;
+    align-items: center;
+
+    &--like {
+      display: none;
+
+      @include on-tablette {
+        display: flex;
+      }
+    }
+
+    &--cart {
+      display: none;
+
+      @include on-tablette {
+        display: flex;
+      }
+    }
+
+    &--menu {
+      @include on-tablette {
+        display: none;
+      }
+    }
+  }
+}

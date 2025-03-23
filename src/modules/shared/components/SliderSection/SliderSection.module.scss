@@ -1,0 +1,93 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.slider {
+  &__title {
+    grid-column: 1 / 3;
+
+    @include on-tablette {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__slider_container {
+    grid-column: span 4;
+
+    @include on-tablette {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__custom_nav {
+    grid-column: 3 / 5;
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+
+    @include padding-right;
+
+    @include on-tablette {
+      grid-column: 11 / 13;
+      margin-bottom: 28px;
+    }
+
+    @include on-desktop {
+      grid-column: span 23 / 25;
+      padding: 0;
+    }
+  }
+
+  &__button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $c-grayIconsPlaceHolders;
+    grid-column: 3 / 5;
+
+    @include on-tablette {
+      grid-column: 11 / 13;
+    }
+
+    @include on-desktop {
+      grid-column: 13 / 25;
+    }
+  }
+
+  &__swiper_button_prev,
+  &__swiper_button_next {
+    top: unset !important;
+    left: unset !important;
+    right: unset !important;
+    bottom: unset !important;
+    width: 100% !important;
+    position: unset !important;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__swiper-controler {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 4;
+    margin-top: 24px;
+
+    @include on-tablette {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+
+      @include padding-right;
+    }
+  }
+}

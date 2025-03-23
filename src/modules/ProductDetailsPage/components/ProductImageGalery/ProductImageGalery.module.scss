@@ -1,0 +1,85 @@
+@import "../../../shared/utils/mixins";
+@import "../../../shared/utils/vars";
+
+.gallery {
+
+  &__container {
+    grid-column: span 4;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    margin-bottom: 40px;
+
+    @include on-tablette {
+      grid-column: 1 / 8;
+      grid-row: 4 / 15;
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__large_img_container {
+    width: 100%;
+
+    @include on-tablette {
+      width: 80%;
+      order: 2;
+   }
+  }
+
+  &__large_img {
+    aspect-ratio: 1 / 1;
+
+    @include photo;
+  }
+
+  &__list {
+    width: 100%;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+    gap: 8px;
+
+    @include on-tablette {
+      width: 20%;
+      flex-direction: column;
+      margin-bottom: 0;
+      order: 1;
+
+    }
+  }
+
+  &__list_item {
+    display: flex;
+    list-style-type: none;
+
+    @include on-tablette {
+      // width: 100%;
+      // height: 100%;
+    }
+
+  }
+
+  &__img {
+    box-sizing: border-box;
+    padding: 3px;
+    border: 1px solid $c-green;
+    border-radius: 4px;
+    aspect-ratio: 1 / 1;
+
+    @include photo;
+  }
+
+  &__thumb {
+    box-sizing: border-box;
+    width: 100%;
+
+    &:hover {
+      border-color: #000;
+    }
+  }
+}

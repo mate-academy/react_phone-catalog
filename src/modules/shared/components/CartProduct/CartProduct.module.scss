@@ -1,0 +1,91 @@
+@import "../../utils/mixins";
+@import "../../utils/vars";
+
+.pc {
+  &__product_card {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 32px;
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    border: 1px solid $c-grayIconsPlaceHolders;
+  }
+
+  &__image_container {
+    width: 100%;
+    border: 1px solid $c-green;
+    aspect-ratio: 1 / 1;
+
+    @include photo-container;
+  }
+
+  &__image {
+    @include photo;
+
+    transition: transform $transitionDuration;
+
+    &:hover {
+      transform: scale($hoverScaleSize);
+    }
+  }
+
+  &__name {
+    display: flex;
+    align-items: stretch;
+    font-weight: 600;
+    height: 60px;
+    padding-top: 16px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+  }
+
+  &__screen,
+  &__capacity,
+  &__ram {
+    display: flex;
+    color: $c-graySecondary;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__bottom_container{
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    width: 100%;
+    background-color: $c-grayPrimary;
+    color: $c-white;
+    font-weight: 700;
+    text-align: center;
+    height: 40px;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border: 1px solid $c-grayIconsPlaceHolders;
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: $c-grayElements;
+  }
+}
+
+
+

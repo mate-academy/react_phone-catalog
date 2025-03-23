@@ -1,0 +1,32 @@
+@import "../../utils/mixins";
+@import "../../utils/vars";
+
+.breadcrumps {
+
+  &__container {
+    grid-column: span 4;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 8px;
+    margin-bottom: 24px;
+    color: $c-graySecondary;
+
+    &:hover{
+      color: $c-grayPrimary;
+    }
+
+    @include on-tablette {
+      grid-column: 1 / 10;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+  }
+}
+
+
+

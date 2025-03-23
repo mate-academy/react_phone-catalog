@@ -1,0 +1,49 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.navbar {
+  box-sizing: border-box;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__logo_container {
+    margin: 13px 16px;
+    height: 22px;
+    width: 64px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+      margin: 18px 24px;
+    }
+  }
+
+  &__menu_container {
+    display: flex;
+    gap: 16px;
+
+    @include on-tablette {
+      gap: 24px;
+    }
+  }
+
+  &__menu {
+    display: none;
+
+    @include on-tablette {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    height: 100%;
+ }
+}
+

@@ -1,0 +1,128 @@
+@import "../../../shared/utils/mixins";
+@import "../../../shared/utils/vars";
+
+.swiper {
+  &__controler {
+    display: flex;
+    grid-column: span 4;
+    aspect-ratio: 1 / 1;
+
+    @include on-tablette {
+      grid-column: 2 / 12;
+      max-height: 200px;
+      aspect-ratio: unset;
+    }
+
+    @include on-desktop {
+      grid-column: 2 / 24;
+      max-height: 432px;
+    }
+  }
+
+  &__slide_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    aspect-ratio: 1 / 1;
+
+    @include on-tablette {
+      aspect-ratio: unset;
+    }
+  }
+
+  &__slide_img {
+    @include photo;
+
+    object-fit: cover;
+  }
+
+  &__pagination_container {
+    padding: 8px;
+    max-height: 189px;
+    grid-column: span 4;
+
+    @include on-tablette {
+      grid-column: span 12;
+
+      @include padding-inline;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 9px;
+    justify-content: center;
+    z-index: unset !important;
+  }
+
+  &__button_prev_container,
+  &__button_next_container {
+    display: none;
+
+    @include on-tablette {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      border: 1px solid $c-grayIconsPlaceHolders;
+      width: 60%;
+    }
+
+    @include on-desktop {
+      width: 100%;
+    }
+  }
+
+  &__button_prev_container {
+    @include on-tablette {
+      grid-column: 1 / 2;
+    }
+  }
+
+  &__button_next_container {
+    @include on-tablette {
+      justify-self: end;
+       grid-column: 12 / 13;
+  }
+
+  @include on-desktop {
+      grid-column: 24 / 25;
+    }
+  }
+
+  &__button_prev,
+  &__pagination,
+  &__button_next {
+    top: unset !important;
+    left: unset !important;
+    right: unset !important;
+    bottom: unset !important;
+    width: auto !important;
+    position: unset !important;
+    font-size: 20px !important;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: $c-grayPrimary;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+
+.swiper-pagination-bullet {
+  all: unset !important;
+  z-index: 2 !important;
+  width: 14px !important;
+  height: 4px !important;
+  background-color: $c-grayElements !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $c-grayPrimary !important;
+}
+
