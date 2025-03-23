@@ -11,7 +11,6 @@ export const Footer = () => {
       </div>
 
       <div className={styles.footer}>
-
         <div className={`${styles.logo} ${styles.footer__logo}`}>
           <Link to="/home">
             <img src={logo} alt="logo" />
@@ -20,17 +19,21 @@ export const Footer = () => {
 
         <div className={styles.footer__links}>
           <div className={styles.footer__link}>
-            <a href="https://github.com/futdevelop" target="_blank">
+            <a
+              href="https://github.com/futdevelop"
+              target="_blank"
+              rel="noreferrer"
+            >
               Github
             </a>
           </div>
           <div className={styles.footer__link}>
-            <a href="https://t.me/kolya2" target="_blank">
+            <a href="https://t.me/kolya2" target="_blank" rel="noreferrer">
               Contacts
             </a>
           </div>
           <div className={styles.footer__link}>
-            <a href="https://t.me/kolya2" target="_blank">
+            <a href="https://t.me/kolya2" target="_blank" rel="noreferrer">
               Rights
             </a>
           </div>
@@ -45,7 +48,6 @@ export const Footer = () => {
             <img src="/public/img/icons/arrow-top.svg" alt="BackToTop" />
           </div>
         </div>
-        
       </div>
     </>
   );

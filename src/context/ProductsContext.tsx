@@ -85,9 +85,9 @@ export const ProductsProvider = ({
       const data = await response.json();
 
       // setTimeout(() => {
-        const accessoriesFromServer = [...data];
+      const accessoriesFromServer = [...data];
 
-        setAccessories(accessoriesFromServer);
+      setAccessories(accessoriesFromServer);
       // }, 1000);
     } catch (error) {
       setError(true);

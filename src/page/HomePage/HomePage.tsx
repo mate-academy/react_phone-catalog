@@ -8,12 +8,14 @@ import { Footer } from '../../components/Footer';
 const HomePage = () => {
   const { products, phones, accessories, tablets } = useProducts();
   const newestProducts = products.sort((a, b) => b.year - a.year).slice(0, 10);
-  const hotPricesProducts = products.sort((a, b) => {
-    const discountA = a.fullPrice - a.price;
-    const discountB = b.fullPrice - b.price;
+  const hotPricesProducts = products
+    .sort((a, b) => {
+      const discountA = a.fullPrice - a.price;
+      const discountB = b.fullPrice - b.price;
 
-    return discountB - discountA;
-  }).slice(0, 10);
+      return discountB - discountA;
+    })
+    .slice(0, 10);
 
   console.log(hotPricesProducts);
 

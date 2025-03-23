@@ -21,6 +21,8 @@
 
     margin-bottom: 32px;
 
+    margin-left: 0 !important;
+
     @include on-tablet {
       margin-bottom: 0;
     }

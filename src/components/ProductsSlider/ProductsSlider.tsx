@@ -63,7 +63,9 @@ export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
       </div>
       <Slider {...settings}>
         {visibleProducts.map(product => {
-          return <ProductCard product={product} isHotPriceBlock={isHotPriceBlock} />;
+          return (
+            <ProductCard product={product} isHotPriceBlock={isHotPriceBlock} />
+          );
         })}
       </Slider>
     </div>

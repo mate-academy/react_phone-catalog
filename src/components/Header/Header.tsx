@@ -1,13 +1,17 @@
 import styles from './Header.module.scss';
 import logo from '../../../public/img/Nice-Gadgets-logo.png';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Squash as Hamburger } from 'hamburger-react';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 const pages = ['Home', 'Phones', 'Tablets', 'Accessories'];
 
-const userPages = ['favourites', 'cart'];
-
 const Header = () => {
   const { pathname } = useLocation();
+  const [isOpen, setOpen] = useState(false);
+
+  const toggleBurger = (value: boolean) => setOpen(value);
 
   return (
     <div className={styles.header}>
@@ -38,23 +42,30 @@ const Header = () => {
       </div>
 
       <div className={styles.header__right}>
-        {userPages.map((page, index) => {
-          console.log(page, 'page');
-          console.log(pathname, 'pathname');
-
-          const isActivePage = pathname.includes(page);
-
-          return (
-            <Link
-              to={`/${page}`}
-              key={index}
-              className={`${styles.header__right_block} ${isActivePage && styles.header__right_block_active}`}
-            >
-              <img src={`/public/img/icons/${page}-icon.png`} alt={page} />
-            </Link>
-          );
-        })}
+        <Link
+          to={`/favourites`}
+          className={`${styles.header__favourites} ${pathname.includes('favourites') && styles.header__favourites_active}`}
+        >
+          <img src={`/public/img/icons/favourites-icon.png`} alt="favourites" />
+        </Link>
+        <Link
+          to={`/cart`}
+          className={`
+            ${styles.header__cart}
+            ${pathname.includes('cart') && styles.header__cart_active}`}
+        >
+          <img src={`/public/img/icons/cart-icon.png`} alt="cart" />
+        </Link>
+        <div className={styles.header__hamburger}>
+          <Hamburger
+            toggled={isOpen}
+            toggle={() => toggleBurger(true)}
+            size={20}
+          />
+        </div>
       </div>
+
+      {isOpen && <BurgerMenu isOpen={isOpen} toggleBurger={toggleBurger} />}
     </div>
   );
 };
