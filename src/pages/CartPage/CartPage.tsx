@@ -28,7 +28,7 @@ export const CartPage = () => {
       {addedToCartProducts.length === 0 ? (
         <div className="cart-empty">
           <img
-            src="/img/cart-is-empty.png"
+            src="./img/cart-is-empty.png"
             className="cart-empty__img"
             alt="cart_is_empty"
           />

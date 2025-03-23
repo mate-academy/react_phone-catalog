@@ -24,8 +24,8 @@
 // };
 
 @font-face {
-  font-family: Mont-Bold, sans-serif;
-  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-family: Mont-Bold;
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
 
   font-weight: 800;
 
@@ -33,8 +33,8 @@
 }
 
 @font-face {
-  font-family: Mont-Regular, sans-serif;
-  src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-family: Mont-Regular;
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
 
   font-weight: 600;
 
@@ -42,8 +42,8 @@
 }
 
 @font-face {
-  font-family: Mont-SemiBold, sans-serif;
-  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont-SemiBold;
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
 
   font-weight: 700;
 

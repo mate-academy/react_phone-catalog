@@ -1,4 +1,4 @@
-const BASE_URL = '../../public/api';
+const BASE_URL = './api'; // ./../public
 
 function request<T>(url: string): Promise<T> {
   return fetch(BASE_URL + url)

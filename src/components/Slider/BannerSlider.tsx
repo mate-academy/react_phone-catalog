@@ -19,7 +19,7 @@ export const BannerSlider = () => {
         <SwiperSlide>
           <div className="swiper__slide">
             <img
-              src="../../public/img/banner-accessories.png"
+              src="./img/banner-accessories.png"
               alt="banner 1"
               className="slider-img"
             />
@@ -28,7 +28,7 @@ export const BannerSlider = () => {
         <SwiperSlide>
           <div className="swiper__slide">
             <img
-              src="../../public/img/banner-phones.png"
+              src="./img/banner-phones.png"
               alt="banner 1"
               className="slider-img"
             />
@@ -37,7 +37,7 @@ export const BannerSlider = () => {
         <SwiperSlide>
           <div className="swiper__slide">
             <img
-              src="../../public/img/banner-tablets.png"
+              src="./img/banner-tablets.png"
               alt="banner 1"
               className="slider-img"
             />
