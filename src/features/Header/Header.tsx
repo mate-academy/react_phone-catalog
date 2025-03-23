@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import debounce from 'lodash.debounce';
 import {
   NavLink,
   useLocation,
@@ -9,7 +8,7 @@ import {
 import { useMediaQuery } from 'react-responsive';
 import classNames from 'classnames';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import logo from '/img/Logo.svg';
 import { Burger } from '../Burger';
@@ -28,8 +27,9 @@ const getClassName = (baseClass: string) =>
 const getLinkClass = getClassName('navbar--item');
 
 export const Header = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const isMobile = useMediaQuery({ maxWidth: 639 });
+
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -37,6 +37,7 @@ export const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [inputValue, setInputValue] = useState(query);
+  const [isFocus, setIsFocus] = useState(false);
 
   const savedPath = useRef<string | null>(null);
 
@@ -51,24 +52,8 @@ export const Header = () => {
     setSearchParams(search, { replace: true });
   }
 
-  // const applyQuery = useCallback(debounce(setInputValue, 1000), []);
-
   function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const newQuery = event.target.value;
-
     setInputValue(event.target.value);
-
-    // if (!savedPath.current && !query) {
-    //   savedPath.current = window.location.pathname;
-    // }
-
-    // setSearchWith({ query: newQuery || null });
-
-    // if (newQuery.trim()) {
-    //   navigate(`/search?query=${encodeURIComponent(newQuery)}`, {
-    //     replace: true,
-    //   });
-    // }
   }
 
   function handleSearchClick() {
@@ -77,7 +62,7 @@ export const Header = () => {
     }
 
     if (inputValue.trim()) {
-      setSearchWith({ query: inputValue }); // Теперь добавляем query в URL
+      setSearchWith({ query: inputValue });
       navigate(`/search?query=${encodeURIComponent(inputValue)}`, {
         replace: true,
       });
@@ -105,12 +90,20 @@ export const Header = () => {
     }
   }, [location.pathname, query]);
 
-  // useEffect(() => {
-  //   if (!query && savedPath.current) {
-  //     navigate(savedPath.current, { replace: true });
-  //     savedPath.current = null;
-  //   }
-  // }, [query]);
+  const handleEnterPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleSearchClick();
+    }
+  };
+
+  const handleOnBlur = () => {
+    setIsFocus(false);
+  };
+
+  const handleOnFocus = () => {
+    setIsFocus(true);
+  };
 
   return (
     <>
@@ -119,24 +112,24 @@ export const Header = () => {
           <NavLink to="/" className={styles.navbarBrand}>
             <img src={logo} alt="Logo" className={styles.logo} />
           </NavLink>
-          {isMobile && (
-            <BurgerIcon isMenuOpen={isMenuOpen} onClick={toggleMenu} />
+
+          {!isMobile && (
+            <div className={styles.navbarMenu}>
+              <NavLink to="/" className={getLinkClass}>
+                Home
+              </NavLink>
+              <NavLink to="phones" className={getLinkClass}>
+                Phones
+              </NavLink>
+              <NavLink to="tablets" className={getLinkClass}>
+                Tablets
+              </NavLink>
+              <NavLink to="accessories" className={getLinkClass}>
+                Accessories
+              </NavLink>
+              <div className="navbar-end"></div>
+            </div>
           )}
-          <div className={styles.navbarMenu}>
-            <NavLink to="/" className={getLinkClass}>
-              Home
-            </NavLink>
-            <NavLink to="phones" className={getLinkClass}>
-              Phones
-            </NavLink>
-            <NavLink to="tablets" className={getLinkClass}>
-              Tablets
-            </NavLink>
-            <NavLink to="accessories" className={getLinkClass}>
-              Accessories
-            </NavLink>
-            <div className="navbar-end"></div>
-          </div>
           <div className={styles.search__wrapper}>
             <div className={styles.search__inputWrapper}>
               <input
@@ -148,13 +141,16 @@ export const Header = () => {
                 placeholder="Search..."
                 value={inputValue}
                 onChange={handleQueryChange}
+                onKeyDown={handleEnterPress}
+                onBlur={handleOnBlur}
+                onFocus={handleOnFocus}
               />
               {/* close icon */}
               <span
                 className={classNames(styles.search__close)}
                 onClick={handleClearQuery}
               >
-                {inputValue && <CloseIcon />}
+                {inputValue && isFocus && <CloseIcon />}
                 {/* <CloseIcon /> */}
               </span>
             </div>
@@ -167,10 +163,15 @@ export const Header = () => {
               <SearchIcon />
             </span>
           </div>
-          <div className={styles.buttons}>
-            <NavIcon icon="heart" link="favourites" />
-            <NavIcon icon="cart" link="cart" />
-          </div>
+          {isMobile && (
+            <BurgerIcon isMenuOpen={isMenuOpen} onClick={toggleMenu} />
+          )}
+          {!isMobile && (
+            <div className={styles.buttons}>
+              <NavIcon icon="heart" link="favourites" />
+              <NavIcon icon="cart" link="cart" />
+            </div>
+          )}
         </nav>
       </header>
       {isMobile && <Burger isMenuOpen={isMenuOpen} onClose={toggleMenu} />}

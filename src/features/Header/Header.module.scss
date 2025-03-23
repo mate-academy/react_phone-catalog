@@ -176,7 +176,9 @@
 
     box-sizing: border-box;
 
+    @include on-mobile {
 
+    }
   }
 
   &__inputWrapper {
@@ -186,7 +188,6 @@
   &__input {
     height: 32px;
     font-size: 12px;
-    // background-color: $hover-color;
     border: 1px solid $elements-color;
     border-radius: 5px 0 0 5px;
     padding: 7px;
@@ -209,6 +210,14 @@
       width: 160px;
       border-color: #cdd1d4;
       outline: 0;
+    }
+
+    @include on-mobile {
+      width: 70px;
+
+      &:focus {
+        width: 110px;
+      }
     }
   }
 
@@ -250,12 +259,14 @@
 
     cursor: pointer;
 
+    svg {
+      fill: $white;
+    }
+
     &:hover {
       background-color: #cdd1d4;
     }
 
-    svg {
-      fill: $white;
-    }
+
   }
 }
