@@ -69,3 +69,42 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin link-styles(
+  $color: $regent-gray-color,
+  $hover-color: $woodsmoke-color,
+  $after-width: 100%
+) {
+  position: relative;
+  display: inline-block;
+  color: $color;
+
+  &::after {
+    @include set-size(0, 3px);
+
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    background-color: $woodsmoke-color;
+    transition:
+      width 0.3s ease,
+      color 0.3s ease,
+      left 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    color: $hover-color;
+    &::after {
+      width: $after-width;
+    }
+  }
+
+  &--active {
+    color: $hover-color;
+    &::after {
+      width: $after-width;
+    }
+  }
+}

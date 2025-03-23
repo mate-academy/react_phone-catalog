@@ -1,13 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { NotFoundPage } from './NotFoundPage';
-import { Header } from '../components/Header';
+import { Layout } from '@components/Layout';
+import { ROUTES } from '@routes/index';
 
 export const App = () => (
-  <>
-    <Header />
-    <Routes>
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-    {/* Footer */}
-  </>
+  <Routes>
+    <Route path={ROUTES.HOME} element={<Layout />}>
+      <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
+    </Route>
+  </Routes>
 );

@@ -1,5 +1,5 @@
-@import '../../../styles/utils/mixins';
-@import '../../../styles/utils/vars';
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
 
 .burger__menu {
   @include set-size(14px, 10px);

@@ -1,20 +1,19 @@
-@import '../../styles/utils/mixins';
-@import '../../styles/utils/vars';
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
 
 .header {
   width: 100%;
   border-bottom: 1px solid $porcelain-color;
 
   &__container {
-    position: relative;
-
     @include flex(row, space-between, center);
 
-    height: 64px;
+    position: relative;
+    height: $header-h-desktop;
     gap: 24px;
 
     @include on-tablet {
-      height: 48px;
+      height: $header-h-tablet;
       gap: 16px;
     }
   }
@@ -94,40 +93,12 @@
   }
 
   &__link {
-    position: relative;
-    display: block;
-    color: $regent-gray-color;
     padding-block: 26.5px;
 
-    &::after {
-      @include set-size(0, 3px);
-
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      background-color: $woodsmoke-color;
-      transition:
-        width 0.3s ease,
-        color 0.3s ease,
-        left 0.3s ease;
-      transform: translateX(-50%);
-    }
-
-    &:hover {
-      color: $woodsmoke-color;
-      &::after {
-        width: 100%;
-      }
-    }
-
-    &--active {
-      color: $woodsmoke-color;
-
-      &::after {
-        width: 100%;
-      }
-    }
+    @include link-styles(
+      $color: $regent-gray-color,
+      $hover-color: $woodsmoke-color
+    );
 
     @include on-tablet {
       padding-block: 18.5px;
@@ -136,18 +107,84 @@
 }
 
 .mobile__menu {
+  @include set-size(100%, calc(100vh - $header-h-tablet));
+  @include flex($direction: column, $content: space-between);
+
   position: fixed;
-  top: 48px;
+  top: $header-h-tablet + 1px;
   right: 0;
   left: 0;
   opacity: 0;
-  transition: all 0.3s;
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
   transform: translateX(-100%);
   pointer-events: none;
+  background-color: $athens-gray-color;
 
   &.open {
     opacity: 1;
     transform: translateX(0);
     pointer-events: all;
+  }
+
+  &_top {
+    padding: 24px 16px;
+  }
+
+  &_list {
+    @include flex($direction: column, $content: center);
+
+    text-align: center;
+    gap: 16px;
+  }
+
+  &_link {
+    @include link-styles(
+      $color: $regent-gray-color,
+      $hover-color: $woodsmoke-color
+    );
+
+    @include on-tablet {
+      padding-block: 8px;
+    }
+  }
+
+  &_bottom {
+    @include flex(row, center, center);
+  }
+
+  &_favorite,
+  &_cart {
+    width: 100%;
+    padding: 24px 72px;
+    border-left: 1px solid $porcelain-color;
+    border-top: 1px solid $porcelain-color;
+
+    img {
+      display: flex;
+      margin: 0 auto;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &--active {
+    position: relative;
+
+    &::after {
+      @include set-size(100%, 2px);
+
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: $woodsmoke-color;
+    }
   }
 }

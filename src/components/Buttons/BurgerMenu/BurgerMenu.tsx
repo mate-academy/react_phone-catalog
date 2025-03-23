@@ -11,6 +11,7 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClick }) => {
     <div
       className={`${styles.burger__menu} ${isOpen ? styles['burger__menu--open'] : ''}`}
       onClick={onClick}
+      role="button"
     >
       <span></span>
       <span></span>
