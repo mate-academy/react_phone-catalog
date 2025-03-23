@@ -1,0 +1,24 @@
+.search {
+  &__page {
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    padding-bottom: 56px;
+  }
+
+  &__noMatch {
+    display: flex;
+    flex-direction: column;
+
+    gap: 100px;
+
+    font-size: 20px;
+
+    img {
+      width: 300px;
+      margin-inline: auto;
+    }
+  }
+}

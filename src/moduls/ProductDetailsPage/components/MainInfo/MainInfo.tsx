@@ -45,6 +45,9 @@ export const MainInfo: React.FC<Props> = ({ item }) => {
     setSelectedImg(newSRC);
   };
 
+  const normalizeColor = (color: string) =>
+    color.replace(/[-\s]/g, '').toLowerCase();
+
   const handleSpecChange = ({
     capacity,
     color,
@@ -52,7 +55,8 @@ export const MainInfo: React.FC<Props> = ({ item }) => {
     capacity?: string;
     color?: string;
   }) => {
-    const newURL = `../${item.namespaceId}-${capacity || item.capacity}-${color || item.color}`;
+    const normalizedColor = color ? normalizeColor(color) : item.color;
+    const newURL = `../${item.namespaceId}-${capacity || item.capacity}-${normalizedColor}`;
 
     navigate(newURL.toLowerCase());
   };
@@ -98,7 +102,9 @@ export const MainInfo: React.FC<Props> = ({ item }) => {
           </div>
           <div className={styles.colors}>
             {item.colorsAvailable.map(color => {
-              const colorCode = COLOR_MAP[color] || color;
+              const normalizedColor = normalizeColor(color);
+              const colorCode = COLOR_MAP[normalizedColor] || color;
+
 
               return (
                 <div

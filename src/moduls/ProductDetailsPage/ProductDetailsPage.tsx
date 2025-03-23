@@ -49,7 +49,7 @@ export const ProductDetailsPage = () => {
             </div>
           </div>
         )}
-        {product && !isLoading && (
+        {product && !isLoading && !isError && (
           <RandomSuggest currentProductId={product?.id} />
         )}
       </div>

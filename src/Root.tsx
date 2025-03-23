@@ -28,7 +28,6 @@ export const Root = () => (
       <Route path="cart" element={<CartPage />} />
 
       <Route path="search" element={<SearchPage />}>
-        {/* <Route path="?:query" element={<SearchPage />} /> */}
       </Route>
 
       <Route path="*" element={<PageNotFound />} />

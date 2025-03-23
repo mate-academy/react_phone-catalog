@@ -8,6 +8,8 @@ import { StateContext } from '../../Provider/GadgetsContext';
 import styles from './SearchPage.module.scss';
 import { ProductList } from '../../features/ProductList';
 
+import productNotFound from '../../../public/img/product-not-found.png';
+
 export const SearchPage = () => {
   const [searchParams] = useSearchParams();
   const { products } = useContext(StateContext);
@@ -32,9 +34,17 @@ export const SearchPage = () => {
   }, [appliedQuery]);
 
   return (
-    <main>
+    <main className={styles.search__page}>
       <div className="page-container">
-        <ProductList goods={filteredProducts} />
+        <h1 className={styles.search__title}>Search products</h1>
+        {filteredProducts.length > 0 ? (
+          <ProductList goods={filteredProducts} />
+        ) : (
+          <div className={styles.search__noMatch}>
+            <p>There are no products matching the query "{appliedQuery}"</p>
+            <img src={productNotFound} alt="" />
+          </div>
+        )}
       </div>
     </main>
   );
