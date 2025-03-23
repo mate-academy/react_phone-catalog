@@ -1,5 +1,4 @@
-@import "../../../shared/utils/mixins";
-@import "../../../shared/utils/vars";
+@use "../../../shared/utils/mixins" as mix;
 
 .categories {
   &__title {
@@ -9,11 +8,11 @@
     line-height: 31px;
     margin-bottom: 24px;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 24;
     }
   }

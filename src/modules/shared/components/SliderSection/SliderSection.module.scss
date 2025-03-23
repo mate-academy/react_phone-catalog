@@ -1,11 +1,11 @@
-@import "../../utils/vars";
-@import "../../utils/mixins";
+@use "../../utils/vars" as vars;
+@use "../../utils/mixins" as mix;
 
 .slider {
   &__title {
     grid-column: 1 / 3;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 1 / 7;
     }
   }
@@ -13,11 +13,11 @@
   &__slider_container {
     grid-column: span 4;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 24;
     }
   }
@@ -28,14 +28,14 @@
     justify-content: end;
     gap: 16px;
 
-    @include padding-right;
+    @include mix.padding-right;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 11 / 13;
       margin-bottom: 28px;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 23 / 25;
       padding: 0;
     }
@@ -47,14 +47,14 @@
     align-items: center;
     height: 32px;
     width: 32px;
-    border: 1px solid $c-grayIconsPlaceHolders;
+    border: 1px solid vars.$c-grayIconsPlaceHolders;
     grid-column: 3 / 5;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 11 / 13;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 13 / 25;
     }
   }
@@ -80,14 +80,14 @@
     grid-column: span 4;
     margin-top: 24px;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 24;
 
-      @include padding-right;
+      @include mix.padding-right;
     }
   }
 }

@@ -1,5 +1,5 @@
-@import "../../utils/mixins";
-@import "../../utils/vars";
+@use "../../utils/mixins" as mix;
+@use "../../utils/vars" as vars;
 
 .pc {
   &__product_card {
@@ -11,24 +11,24 @@
     align-items: stretch;
     flex-flow: column wrap;
     justify-content: space-between;
-    border: 1px solid $c-grayIconsPlaceHolders;
+    border: 1px solid vars.$c-grayIconsPlaceHolders;
   }
 
   &__image_container {
     width: 100%;
-    border: 1px solid $c-green;
+    border: 1px solid vars.$c-green;
     aspect-ratio: 1 / 1;
 
-    @include photo-container;
+    @include mix.photo-container;
   }
 
   &__image {
-    @include photo;
+    @include mix.photo;
 
-    transition: transform $transitionDuration;
+    transition: transform vars.$transitionDuration;
 
     &:hover {
-      transform: scale($hoverScaleSize);
+      transform: scale(vars.$hoverScaleSize);
     }
   }
 
@@ -50,7 +50,7 @@
   &__capacity,
   &__ram {
     display: flex;
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
     justify-content: space-between;
     font-size: 12px;
     font-weight: 700;
@@ -64,7 +64,7 @@
 
   &__button {
     width: 100%;
-    background-color: $c-grayPrimary;
+    background-color: vars.$c-grayPrimary;
     color: $c-white;
     font-weight: 700;
     text-align: center;
@@ -77,13 +77,13 @@
     justify-content: center;
     height: 40px;
     width: 40px;
-    border: 1px solid $c-grayIconsPlaceHolders;
+    border: 1px solid vars.$c-grayIconsPlaceHolders;
   }
 
   &__divider {
     height: 1px;
     width: 100%;
-    background-color: $c-grayElements;
+    background-color: vars.$c-grayElements;
   }
 }
 

@@ -1,26 +1,26 @@
-@import "../../utils/vars";
-@import "../../utils/mixins";
+@use "../../utils/vars" as vars;
+@use "../../utils/mixins" as mix;
 
 .search {
   &__container {
     display: none;
     align-items: center;
 
-    @include on-desktop {
+    @include mix.on-desktop {
       display: flex;
     }
    }
 
    &__input {
     cursor: pointer;
-    background-color: $c-grayHoverBg;
+    background-color: vars.$c-grayHoverBg;
     outline: none;
     padding: 5px;
     height: 40px;
-    border: 1px solid $c-grayElements;
+    border: 1px solid vars.$c-grayElements;
 
     &:focus {
-      border-color: $c-grayPrimary;
+      border-color: vars.$c-grayPrimary;
     }
    }
 }

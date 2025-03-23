@@ -1,3 +1,5 @@
+@use "./vars" as vars;
+
 @mixin on-desktop {
   @media (min-width: 1200px) {
     @content;
@@ -47,7 +49,7 @@
 }
 
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} $transitionDuration;
+  transition: #{$_property} vars.$transitionDuration;
   &:hover {
     #{$_property}: $_toValue;
   }
@@ -64,10 +66,10 @@
   height: max-content;
   box-sizing: border-box;
   overflow: hidden;
-  transition: transform $transitionDuration;
+  transition: transform vars.$transitionDuration;
 
   &:hover {
-    transform: scale($hoverScaleSize);
+    transform: scale(vars.$hoverScaleSize);
   }
 }
 

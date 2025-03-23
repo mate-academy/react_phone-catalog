@@ -1,5 +1,5 @@
-@import "../../utils/vars";
-@import "../../utils/mixins";
+@use "../../utils/vars" as vars;
+@use "../../utils/mixins" as mix;
 
 .pagination {
 
@@ -7,7 +7,7 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
   }
 
   &__list {
@@ -20,11 +20,11 @@
     margin: 0;
     gap: 16px;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 24;
     }
   }
@@ -35,17 +35,17 @@
     align-items: center;
     width: 32px;
     height: 32px;
-    border: 1px solid $c-graySecondary;
+    border: 1px solid vars.$c-graySecondary;
     text-decoration: none;
 
     &:active {
-      background-color: $c-grayPrimary;
-      color: $c-white;
+      background-color: vars.$c-grayPrimary;
+      color: vars.$c-white;
     }
   }
 
   &__link {
-    color: $c-grayPrimary;
+    color: vars.$c-grayPrimary;
     text-decoration: none;
     outline: none;
   }

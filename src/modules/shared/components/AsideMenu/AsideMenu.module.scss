@@ -1,10 +1,9 @@
-@import "../../utils/vars";
-@import "../../utils/mixins";
+@use "../../utils/vars" as vars;
 
 .aside {
   &__container{
     height: 100vh;
-    background-color: $c-grayHoverBg;
+    background-color: vars.$c-grayHoverBg;
     border: 1px solid transparent;
     overflow: hidden;
   }
@@ -13,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
-    border: 1px solid $c-grayElements;
+    border: 1px solid vars.$c-grayElements;
     height: 48px;
   }
 
@@ -29,7 +28,7 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    border-left: 1px solid $c-grayElements;
+    border-left: 1px solid vars.$c-grayElements;
     align-items: center;
 
     &--close {
@@ -44,9 +43,9 @@
       bottom: 0;
       left: 0;
       right: 0;
-      border-top: 1px solid $c-grayElements;
-      border-bottom: 1px solid $c-grayElements;
-      border-right: 1px solid $c-grayElements;
+      border-top: 1px solid vars.$c-grayElements;
+      border-bottom: 1px solid vars.$c-grayElements;
+      border-right: 1px solid vars.$c-grayElements;
       width: 100%;
       display: flex;
   }

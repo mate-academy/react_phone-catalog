@@ -1,5 +1,5 @@
-@import "../../../shared/utils/mixins";
-@import "../../../shared/utils/vars";
+@use "../../../shared/utils/mixins" as mix;
+@use "../../../shared/utils/vars" as vars;
 
 .swiper {
   &__controler {
@@ -7,13 +7,13 @@
     grid-column: span 4;
     aspect-ratio: 1 / 1;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 2 / 12;
       max-height: 200px;
       aspect-ratio: unset;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 2 / 24;
       max-height: 432px;
     }
@@ -26,13 +26,13 @@
     gap: 10px;
     aspect-ratio: 1 / 1;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       aspect-ratio: unset;
     }
   }
 
   &__slide_img {
-    @include photo;
+    @include mix.photo;
 
     object-fit: cover;
   }
@@ -42,13 +42,13 @@
     max-height: 189px;
     grid-column: span 4;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
 
-      @include padding-inline;
+      @include mix.padding-inline;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 24;
     }
   }
@@ -64,33 +64,33 @@
   &__button_next_container {
     display: none;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
-      border: 1px solid $c-grayIconsPlaceHolders;
+      border: 1px solid vars.$c-grayIconsPlaceHolders;
       width: 60%;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       width: 100%;
     }
   }
 
   &__button_prev_container {
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 1 / 2;
     }
   }
 
   &__button_next_container {
-    @include on-tablette {
+    @include mix.on-tablette {
       justify-self: end;
        grid-column: 12 / 13;
   }
 
-  @include on-desktop {
+  @include mix.on-desktop {
       grid-column: 24 / 25;
     }
   }
@@ -108,7 +108,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    color: $c-grayPrimary;
+    color: vars.$c-grayPrimary;
     justify-content: center;
     cursor: pointer;
   }
@@ -119,10 +119,10 @@
   z-index: 2 !important;
   width: 14px !important;
   height: 4px !important;
-  background-color: $c-grayElements !important;
+  background-color: vars.$c-grayElements !important;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: $c-grayPrimary !important;
+  background-color: vars.$c-grayPrimary !important;
 }
 

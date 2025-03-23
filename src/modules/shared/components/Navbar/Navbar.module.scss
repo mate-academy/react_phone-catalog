@@ -1,5 +1,4 @@
-@import "../../utils/vars";
-@import "../../utils/mixins";
+@use "../../utils/mixins" as mix;
 
 .navbar {
   box-sizing: border-box;
@@ -15,7 +14,7 @@
     height: 22px;
     width: 64px;
 
-    @include on-desktop {
+    @include mix.on-desktop {
       height: 28px;
       width: 80px;
       margin: 18px 24px;
@@ -26,7 +25,7 @@
     display: flex;
     gap: 16px;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       gap: 24px;
     }
   }
@@ -34,7 +33,7 @@
   &__menu {
     display: none;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       display: flex;
       align-items: center;
       justify-content: center;

@@ -1,5 +1,5 @@
-@import './modules/shared/utils/vars';
-@import './modules/shared/utils/mixins';
+@use './modules/shared/utils/vars' as vars;
+@use './modules/shared/utils/mixins' as mix;
 
 body {
   margin: 0 auto;
@@ -15,8 +15,8 @@ body {
   min-height: 100vh;
   min-width: 320px;
   font-family: Mont, sans-serif;
-  background-color: $c-grayHoverBg;
-  color: $c-grayPrimary;
+  background-color: vars.$c-grayHoverBg;
+  color: vars.$c-grayPrimary;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -34,17 +34,17 @@ body {
     z-index: 2;
     height: 100vh;
 
-    transition: all $transitionDuration;
+    transition: all vars.$transitionDuration;
     opacity: 0;
     transform: translateX(-100%);
     pointer-events: none;
-    background-color: $c-grayHoverBg;
+    background-color: vars.$c-grayHoverBg;
 
     &:target {
       opacity: 1;
       transform: translateX(0);
       pointer-events: all;
-      transition: all $transitionDuration;
+      transition: all vars.$transitionDuration;
     }
   }
 
@@ -55,10 +55,10 @@ body {
   &__footer {
     display: flex;
     flex-direction: column;
-    border: 1px solid $c-grayElements;
+    border: 1px solid vars.$c-grayElements;
     padding: 0 16px;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       flex-direction: row;
     }
   }
@@ -67,12 +67,12 @@ body {
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: $c-grayHoverBg;
-    border: 1px solid $c-grayElements;
-    color: $c-graySecondary;
+    background-color: vars.$c-grayHoverBg;
+    border: 1px solid vars.$c-grayElements;
+    color: vars.$c-graySecondary;
     height: 48px;
 
-    @include on-desktop {
+    @include mix.on-desktop {
       height: 64px;
     }
   }
@@ -99,13 +99,13 @@ body {
 
     grid-template-columns: repeat(var(--columns), 1fr);
 
-    @include padding-inline;
+    @include mix.padding-inline;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       --columns: 12;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       --columns: 24;
     }
 
@@ -113,20 +113,20 @@ body {
     &--nm {
       padding: 0;
 
-      @include padding-left;
+      @include mix.padding-left;
 
-      @include on-desktop {
-        @include padding-inline;
+      @include mix.on-desktop {
+        @include mix.padding-inline;
       }
     }
 
     &--hs {
       padding: 0;
 
-      @include on-tablette {
+      @include mix.on-tablette {
         justify-content: space-between;
 
-        @include padding-inline;
+        @include mix.padding-inline;
       }
     }
   }
@@ -141,7 +141,7 @@ body {
       line-height: 41px;
       grid-column: span 4;
 
-      @include on-tablette {
+      @include mix.on-tablette {
         font-size: 48px;
         line-height: 56px;
         letter-spacing: -0.01em;
@@ -149,7 +149,7 @@ body {
         margin-bottom: 32px;
       }
 
-      @include on-desktop {
+      @include mix.on-desktop {
           grid-column: span 24;
         }
     }
@@ -159,13 +159,13 @@ body {
     grid-column: span 4;
     margin-bottom: 32px;
 
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 24;
     }
   }
@@ -175,11 +175,11 @@ body {
     padding: 0;
     margin-bottom: 24px;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 1 / 4;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 1 / 5;
     }
   }
@@ -187,11 +187,11 @@ body {
   &__pagination_filter {
     grid-column: 3 / 5;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 4 / 7;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 5 / 8;
     }
   }

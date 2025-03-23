@@ -1,5 +1,5 @@
-@import "../../../shared/utils/mixins";
-@import "../../../shared/utils/vars";
+@use "../../../shared/utils/mixins" as mix;
+@use "../../../shared/utils/vars" as vars;
 
 .pd {
   &__name {
@@ -7,14 +7,14 @@
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
-    color: $c-grayPrimary;
+    color: vars.$c-grayPrimary;
     margin-bottom: 32px;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 24;
     }
 
@@ -26,11 +26,11 @@
     flex-direction: column;
     height: min-content;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 8 / 13;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 14 / 21;
     }
   }
@@ -41,7 +41,7 @@
   }
 
   &__block_title {
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
@@ -58,13 +58,13 @@
     align-items: center;
     justify-content: center;
     padding: 8px 16px;
-    border: 2px solid $c-grayElements;
+    border: 2px solid vars.$c-grayElements;
     border-radius: 5px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: $c-white;
+    background-color: vars.$c-white;
   }
 
   &__capacity_options input[type="radio"] {
@@ -72,8 +72,8 @@
   }
 
   &__capacity_options input[type="radio"]:checked + label {
-    background-color: $c-grayPrimary;
-    color: $c-white;
+    background-color: vars.$c-grayPrimary;
+    color: vars.$c-white;
   }
 
   &__color_options {
@@ -87,13 +87,13 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid $c-grayElements;
+    border: 1px solid vars.$c-grayElements;
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
   &__color_options input[type="radio"]:checked {
-    border: 2px solid $c-grayPrimary;
+    border: 2px solid vars.$c-grayPrimary;
   }
 
   &__price {
@@ -102,22 +102,22 @@
     line-height: 31px;
 
     &--full {
-      color: $c-graySecondary;
+      color: vars.$c-graySecondary;
       text-decoration: line-through;
       margin-left: 6px;
     }
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 8 / 13;
      }
   }
 
   &__price_container {
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 8 / 13;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 14 / 21;
     }
   }
@@ -127,11 +127,11 @@
     display: flex;
     flex-direction: column;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 8 / 13;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 14 / 21;
     }
   }
@@ -146,19 +146,19 @@
     gap: 8px;
     margin-bottom: 32px;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 8 / 13;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 14 / 21;
     }
   }
 
   &__button {
     width: 100%;
-    background-color: $c-grayPrimary;
-    color: $c-white;
+    background-color: vars.$c-grayPrimary;
+    color: vars.$c-white;
     font-weight: 700;
     text-align: center;
     height: 40px;
@@ -170,14 +170,14 @@
     justify-content: center;
     height: 40px;
     width: 40px;
-    border: 1px solid $c-grayIconsPlaceHolders;
+    border: 1px solid vars.$c-grayIconsPlaceHolders;
 
     &:hover {
-      border-color: $c-grayPrimary;
+      border-color: vars.$c-grayPrimary;
     }
 
     &:active {
-      border-color: $c-grayElements;
+      border-color: vars.$c-grayElements;
     }
   }
 
@@ -185,14 +185,14 @@
     grid-column: span 4;
     height: 1px;
     width: 100%;
-    background-color: $c-grayElements;
+    background-color: vars.$c-grayElements;
     margin: 24px 0;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 8 / 13;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 14 / 21;
     }
   }
@@ -200,15 +200,15 @@
   &__spec {
     grid-column: span 4;
     display: flex;
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
     justify-content: space-between;
     margin-bottom: 8px;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 8 / 13;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 14 / 21;
     }
 
@@ -219,11 +219,11 @@
     }
 
     &--title {
-      color: $c-graySecondary;
+      color: vars.$c-graySecondary;
     }
 
     &--value{
-      color: $c-grayPrimary;
+      color: vars.$c-grayPrimary;
     }
   }
 
@@ -231,12 +231,12 @@
     grid-column: span 4;
     margin-top: 56px;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
       margin-top: 64px;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 24;
     }
   }
@@ -255,18 +255,18 @@
 
   &__about_text {
     font-weight: 600;
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
   }
 
   &__tech_specs {
     grid-column: span 4;
     margin: 56px 0;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 24;
     }
   }
@@ -277,17 +277,17 @@
     align-items: center;
     gap: 8px;
     margin-bottom: 24px;
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
 
     &:hover{
-      color: $c-grayPrimary;
+      color: vars.$c-grayPrimary;
     }
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: span 24;
     }
   }
@@ -297,35 +297,35 @@
   }
 }
 
-.black { background-color: $black; }
+.black { background-color: vars.$black; }
 
-.white { background-color: $white; }
+.white { background-color: vars.$white; }
 
-.red { background-color: $red; }
+.red { background-color: vars.$red; }
 
-.blue { background-color: $blue; }
+.blue { background-color: vars.$blue; }
 
-.green { background-color: $green; }
+.green { background-color: vars.$green; }
 
-.yellow { background-color: $yellow; }
+.yellow { background-color: vars.$yellow; }
 
-.purple { background-color: $purple; }
+.purple { background-color: vars.$purple; }
 
-.pink { background-color: $pink; }
+.pink { background-color: vars.$pink; }
 
-.orange { background-color: $orange; }
+.orange { background-color: vars.$orange; }
 
-.gray { background-color: $gray; }
+.gray { background-color: vars.$gray; }
 
-.midnightgreen { background-color: $midnightgreen; }
+.midnightgreen { background-color: vars.$midnightgreen; }
 
-.pacific-blue { background-color: $pacific-blue; }
+.pacific-blue { background-color: vars.$pacific-blue; }
 
-.gold { background-color: $gold; }
+.gold { background-color: vars.$gold; }
 
-.silver { background-color: $silver; }
+.silver { background-color: vars.$silver; }
 
-.rosegold { background-color: $rosegold; }
+.rosegold { background-color: vars.$rosegold; }
 
 
 

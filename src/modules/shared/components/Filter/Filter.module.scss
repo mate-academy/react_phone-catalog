@@ -1,5 +1,4 @@
-@import "../../utils/vars";
-@import "../../utils/mixins";
+@use "../../utils/vars" as vars;
 
 .filter {
   &__container {
@@ -10,7 +9,7 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
   }
 
   &__field_grouped {
@@ -34,30 +33,30 @@
     background: url('../../../../../public/img/icons/arrow-down.svg')
     no-repeat right 10px center;
     background-size: 16px;
-    border-color: $c-grayIconsPlaceHolders;
+    border-color: vars.$c-grayIconsPlaceHolders;
 
     &:hover{
-      border-color: $c-graySecondary;
+      border-color: vars.$c-graySecondary;
     }
 
     &:focus {
       outline: none;
-      border-color: $c-grayPrimary;
+      border-color: vars.$c-grayPrimary;
     }
   }
 
   &__option {
     font-family: Mont, sans-serif;
     padding: 5px;
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
     font-size: 14px;
     line-height: 21px;
     font-weight: 500;
     width: inherit;
 
     &:hover {
-      color: $c-grayPrimary;
-      background-color: $c-grayHoverBg;
+      color: vars.$c-grayPrimary;
+      background-color: vars.$c-grayHoverBg;
     }
   }
 }

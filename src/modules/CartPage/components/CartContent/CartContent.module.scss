@@ -1,24 +1,24 @@
-@import "../../../shared/utils/mixins";
-@import "../../../shared/utils/vars";
+@use "../../../shared/utils/mixins" as mix;
+@use "../../../shared/utils/vars" as vars;
 
 .cart {
   &__item {
-    color: $c-grayPrimary;
+    color: vars.$c-grayPrimary;
     grid-column: span 4;
     display: flex;
     flex-direction: column;
     gap: 16px;
     align-items: flex-start;
-    border-bottom: 1px solid $c-grayElements;
+    border-bottom: 1px solid vars.$c-grayElements;
     margin-bottom: 16px;
 
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
       flex-direction: row;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 1 / 17;
     }
   }
@@ -55,11 +55,11 @@
     justify-content: space-between;
     align-items: center;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: span 12;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       grid-column: 17 / 25;
       grid-row: 3 / 6;
     }
@@ -68,8 +68,8 @@
   &__checkout_btn {
     width: 90%;
     height: 48px;
-    background-color: $c-grayPrimary;
-    color: $c-white;
+    background-color: vars.$c-grayPrimary;
+    color: vars.$c-white;
   }
 
   &__checkout_amnt {
@@ -89,19 +89,19 @@
   &__image_container {
     padding: 5px;
     width: 80px;
-    border: 1px solid $c-green;
+    border: 1px solid vars.$c-green;
     aspect-ratio: 1 / 1;
 
-    @include photo-container;
+    @include mix.photo-container;
   }
 
   &__image {
-    @include photo;
+    @include mix.photo;
 
-    transition: transform $transitionDuration;
+    transition: transform vars.$transitionDuration;
 
     &:hover {
-      transform: scale($hoverScaleSize);
+      transform: scale(vars.$hoverScaleSize);
     }
   }
 
@@ -109,19 +109,19 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
     padding-bottom: 16px;
-    border-bottom: 1px solid $c-grayElements;
+    border-bottom: 1px solid vars.$c-grayElements;
   }
 
   &__btn_container {
-    border: 1px solid $c-grayElements;
+    border: 1px solid vars.$c-grayElements;
     width: 32px;
     aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
   }
 }
 

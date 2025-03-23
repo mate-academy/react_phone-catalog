@@ -1,5 +1,5 @@
-@import "../../utils/mixins";
-@import "../../utils/vars";
+@use "../../utils/mixins" as mix;
+@use "../../utils/vars" as vars;
 
 .breadcrumps {
 
@@ -10,13 +10,13 @@
     justify-content: left;
     gap: 8px;
     margin-bottom: 24px;
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
 
     &:hover{
-      color: $c-grayPrimary;
+      color: vars.$c-grayPrimary;
     }
 
-    @include on-tablette {
+    @include mix.on-tablette {
       grid-column: 1 / 10;
     }
   }

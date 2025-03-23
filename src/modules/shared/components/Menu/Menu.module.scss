@@ -1,21 +1,7 @@
-@import "../../utils/vars";
-@import "../../utils/mixins";
+@use "../../utils/vars" as vars;
+@use "../../utils/mixins" as mix;
 
 .menu {
-  // &__container{
-  //   height: 100vh;
-  //   background-color: $c-grayHoverBg;
-  //   border: 1px solid transparent;
-  //   overflow: hidden;
-  // }
-
-  // &__content {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   gap: 16px;
-  // }
-
   &__list {
     text-decoration: none;
     list-style: none;
@@ -24,15 +10,15 @@
     margin: 48px auto ;
     padding: 0;
 
-    @include padding-inline;
+    @include mix.padding-inline;
 
-    @include on-tablette {
+    @include mix.on-tablette {
       display: flex;
       gap: 32px;
       margin: 0;
     }
 
-    @include on-desktop {
+    @include mix.on-desktop {
       gap: 64px;
     }
   }
@@ -44,7 +30,7 @@
       margin-bottom: 0;
     }
 
-    @include on-tablette {
+    @include mix.on-tablette {
       display: inline;
       margin-bottom: 0;
 
@@ -55,7 +41,7 @@
   }
 
   &__link {
-    color: $c-graySecondary;
+    color: vars.$c-graySecondary;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 13px;
@@ -68,51 +54,8 @@
     width: max-content;
 
     &:hover {
-      border-color: $c-grayPrimary;
+      border-color: vars.$c-grayPrimary;
       border-width: 3px;
     }
   }
-
-  // &__icons {
-  //   position: fixed;
-  //     bottom: 0;
-  //     left: 0;
-  //     right: 0;
-  //     border-top: 1px solid $c-grayElements;
-  //     border-bottom: 1px solid $c-grayElements;
-  //     border-right: 1px solid $c-grayElements;
-  //     width: 100%;
-  //     display: flex;
-
-  // }
-
-  // &__icon_container {
-  //   height: 64px;
-  //   flex: 1;
-  //   display: flex;
-  //   justify-content: center;
-  //   border-left: 1px solid $c-grayElements;
-  //   align-items: center;
-
-  //   &--close {
-  //     width: 48px;
-  //     height: 100%;
-  //     flex: 0;
-  //   }
-
-  // }
-
-  // &__logo_container {
-  //   height: 22px;
-  //   width: 64px;
-  //   margin: 13px 16px;
-  // }
-
-  // &__top {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   margin-bottom: 24px;
-  //   border: 1px solid $c-grayElements;
-  //   height: 48px;
-  // }
 }
