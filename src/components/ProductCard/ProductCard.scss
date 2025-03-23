@@ -2,15 +2,16 @@
 @import '../../style/utils/mixins';
 
 .product-card {
-  align-self: center;
-  box-sizing: border-box;
-  border: 1px solid $elements;
-  padding: 32px;
-  height: 439px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 8px;
+  align-items: center;
+  align-self: center;
+
+  box-sizing: border-box;
+  height: 439px;
+  padding: 32px;
+  border: 1px solid $elements;
 
   @include on-tablet {
     height: 512px;
@@ -24,10 +25,13 @@
   &__imgContainer {
     display: flex;
     justify-content: center;
-    text-align: center;
-    object-fit: contain;
+
     width: 148px;
     height: 129px;
+
+    text-align: center;
+
+    object-fit: contain;
 
     @include on-tablet {
       width: 173px;
@@ -36,37 +40,37 @@
 
     @include on-desktop {
       width: auto;
-      margin-bottom: 8px;
       height: 196px;
+      margin-bottom: 8px;
     }
   }
 
   &__img {
-    background-position: center;
     width: 100%;
     height: 100%;
     object-fit: contain;
+    background-position: center;
   }
 
   &__content {
-    display: flex;
-    height: 172px;;
+    display: flex;;
     flex-direction: column;
     width: 100%;
+    height: 172px;
   }
 
   &__name {
-    &-wrapper {
-      height: 58px;
-      width: 100%;
-    }
-
-    color: $primary;
     font-family: $mont;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
+    color: $primary;
     text-align: left;
+
+    &-wrapper {
+      width: 100%;
+      height: 58px;
+    }
   }
 
   &__price {
@@ -80,12 +84,16 @@
       position: relative;
 
       &::after {
-        position: absolute;
-        display: block;
         content: "";
-        height: 1px;
-        width: 100%;
+
+        position: absolute;
         bottom: -6.5px;
+
+        display: block;
+
+        width: 100%;
+        height: 1px;
+
         background-color: $elements;
       }
     }
@@ -108,8 +116,8 @@
   }
 
   &__bottom {
-    height: 40px;
     box-sizing: border-box;
+    height: 40px;
   }
 
   &__button {

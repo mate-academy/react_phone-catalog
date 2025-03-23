@@ -6,9 +6,9 @@
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
-  letter-spacing: -0.01em;
-  text-align: left;
   color: $primary;
+  text-align: left;
+  letter-spacing: -0.01em;
 
   @include on-tablet {
     font-size: 48px;
@@ -21,8 +21,8 @@
     font-size: 22px;
     font-weight: 800;
     line-height: 30.8px;
-    text-align: left;
     color: $primary;
+    text-align: left;
 
     @include on-tablet {
       font-size: 32px;

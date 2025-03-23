@@ -8,10 +8,11 @@
   &__link {
     display: flex;
     flex-direction: row;
-    align-items: center;
     gap: 8px;
-    list-style: none;
+    align-items: center;
+
     text-decoration: none;
+    list-style: none;
   }
 
   &__text {
@@ -20,7 +21,7 @@
   }
 
   &__home {
-    height: 16px;
     width: 16px;
+    height: 16px;
   }
 }

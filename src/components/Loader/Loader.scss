@@ -1,16 +1,17 @@
 .Loader {
   display: flex;
-  width: 100%;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 
   &__content {
-    border-radius: 50%;
     width: 2em;
     height: 2em;
     margin: 1em auto;
     border: 0.3em solid #ddd;
     border-left-color: #000;
+    border-radius: 50%;
+
     animation: load8 1.2s infinite linear;
   }
 }

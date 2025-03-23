@@ -6,17 +6,17 @@
   @include page-paddings;
 
   @include on-desktop {
-    margin-inline: auto;
     width: 1136px;
+    margin-inline: auto;
   }
 
   &__back {
-    margin-top: 40px;
     grid-column: 1 / -1;
+    margin-top: 40px;
 
     &-arrow {
-      transform: none;
       cursor: pointer;
+      transform: none;
     }
   }
 
@@ -26,10 +26,11 @@
 
   &__container {
     display: flex;
+    grid-column: 1 / -1;
     flex-direction: column;
     gap: 32px;
+
     margin-block: 32px 56px;
-    grid-column: 1 / -1;
 
     @include on-tablet {
       margin-bottom: 64px;
@@ -53,14 +54,15 @@
   }
 
   &__item {
-    box-sizing: border-box;
-    height: 160px;
-    border: 1px solid $elements;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 16px;
+    align-items: center;
+
+    box-sizing: border-box;
+    height: 160px;
     padding-block: 16px;
+    border: 1px solid $elements;
 
     @include on-tablet {
       flex-direction: row;
@@ -70,12 +72,13 @@
     }
 
     &-left {
-      height: 80px;
-      width: 256px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 256px;
+      height: 80px;
 
       @include on-tablet {
         gap: 24px;
@@ -88,13 +91,15 @@
     }
 
     &-link {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+
       width: 256px;
+
       text-decoration: none;
       list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
 
       @include on-tablet {
         gap: 24px;
@@ -117,17 +122,18 @@
     }
 
     &-delete {
+      z-index: 2;
       width: 16px;
       height: 16px;
-      z-index: 2;
     }
 
     &-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       width: 80px;
       height: 80px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     &-picture {
@@ -137,6 +143,13 @@
     }
 
     &-name {
+      font-family: $mont;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: $primary;
+      text-align: left;
+      
       &-wrapper {
         display: flex;
         align-items: center;
@@ -152,13 +165,6 @@
           height: auto;
         }
       }
-
-      font-family: $mont;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 21px;
-      text-align: left;
-      color: $primary;
     }
 
     &-panel {
@@ -168,13 +174,16 @@
     }
 
     &-operator {
-      width: 32px;
-      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
+
+      width: 32px;
+      height: 32px;
       border: 1px solid $icons;
+
       color: $primary;
+
       transition-duration: 0.3s;
       &:hover {
         border-color: $primary;
@@ -189,10 +198,10 @@
     }
 
     &-sign {
-      background-position: center;
-      background-repeat: no-repeat;
       width: 10.67px;
       height: 1.33px;
+      background-repeat: no-repeat;
+      background-position: center;
 
       &--minus {
         background-image: url(../../style/icons/Minus.svg);
@@ -211,12 +220,13 @@
     &-quantity {
       width: 32px;
       height: 32px;
-      line-height: 32px;
+
       font-family: $mont;
       font-size: 14px;
       font-weight: 600;
-      text-align: center;
+      line-height: 32px;
       color: #000;
+      text-align: center;
     }
 
     &-price {
@@ -230,8 +240,8 @@
 
   &__right {
     display: flex;
-    flex-direction: column;
     grid-column: 1 / -1;
+    flex-direction: column;
 
     @include on-desktop {
       width: 368px;
@@ -240,38 +250,44 @@
 
   &__summary {
     box-sizing: border-box;
-    padding: 24px;
     height: 206px;
+    padding: 24px;
     border: 1px solid $elements;
   }
 
   &__button {
+    width: 100%;
     height: 48px;
-    background-color: $primary;
-    color: $white;
+    margin-top: 48px;
+
     font-family: $mont;
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
+    color: $white;
     text-align: center;
-    margin-top: 48px;
-    width: 100%;
+
+    background-color: $primary;
     &:hover{
       box-shadow: 0 3px 13px 0 #17203166;
     }
   }
 
   &__price {
-    text-align: center;
     position: relative;
+    text-align: center;
     ::after {
-      position: absolute;
       content: "";
+
+      position: absolute;
+      bottom: -24px;
+
+      display: block;
+
       width: 100%;
       height: 1px;
+
       background-color: $elements;
-      display: block;
-      bottom: -24px;
     }
   }
 
@@ -280,38 +296,40 @@
     font-size: 32px;
     font-weight: 800;
     line-height: 41px;
-    letter-spacing: -0.01em;
-    text-align: center;
-
     color: $primary;
+    text-align: center;
+    letter-spacing: -0.01em;
 
     &-text {
       font-family: $mont;
       font-size: 14px;
       font-weight: 500;
       line-height: 21px;
-      text-align: center;
       color: $secondary;
+      text-align: center;
     }
   }
 
   &__checkout-message {
     padding-top: 16px;
+
     font-family: $mont;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
-    text-align: center;
     color: $red;
+    text-align: center;
   }
 
   &__empty {
+    grid-column: 1 / -1;
+
     padding-block: 24px;
+
     font-family: $mont;
-    color: $secondary;
     font-size: 22px;
     font-weight: 500;
     line-height: 21px;
-    grid-column: 1 / -1;
+    color: $secondary;
   }
 }

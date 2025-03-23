@@ -7,11 +7,11 @@
   padding-block: 24px 40px;
 
   &__name {
-    text-transform: capitalize;
     font-family: $mont;
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
     text-align: left;
+    text-transform: capitalize;
   }
 }

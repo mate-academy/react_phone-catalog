@@ -2,13 +2,13 @@
 @import '../../style/utils/mixins';
 
 .slider {
+  overflow: hidden;
   height: 526px;
   padding-left: 16px;
-  overflow: hidden;
 
   @include on-tablet {
-    padding-left: 24px;
     height: 577px;
+    padding-left: 24px;
   }
 
   @include on-desktop {
@@ -18,12 +18,15 @@
   }
 
   &__list {
-    max-width: 100vw;
+    z-index: 2;
+
     overflow: hidden;
     display: flex;
     gap: 16px;
+
+    max-width: 100vw;
+
     transition: transform 1s ease;
-    z-index: 2;
 
     @include on-desktop {
       overflow: visible;
@@ -33,8 +36,8 @@
   &__top {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 24px;
     padding-right: 16px;
+    padding-bottom: 24px;
 
     @include on-tablet {
       padding-right: 24px;
@@ -47,8 +50,8 @@
 
   &__arrows {
     display: none;
-    justify-content: space-between;
     gap: 16px;
+    justify-content: space-between;
 
     @include on-desktop {
       display: flex;
@@ -58,9 +61,11 @@
   &__arrow {
     width: 32px;
     height: 32px;
-    background-position: center;
-    background-image: url(../../style/icons/Slider-button-Default-right.svg);
     border: 1px solid $icons;
+
+    background-image: url(../../style/icons/Slider-button-Default-right.svg);
+    background-position: center;
+
     transition-duration: 0.3s;
     &:hover {
       border-color: $primary;
@@ -81,8 +86,8 @@
   }
 
   &__link {
+    display: inline-block;
     text-decoration: none;
     list-style: none;
-    display: inline-block;
   }
 }

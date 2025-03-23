@@ -2,8 +2,8 @@
 
 .back {
   display: flex;
-  align-items: center;
   gap: 4px;
+  align-items: center;
   margin-bottom: 16px;
 
   &__arrow {
@@ -15,7 +15,7 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 15px;
-    text-align: left;
     color: $secondary;
+    text-align: left;
   }
 }

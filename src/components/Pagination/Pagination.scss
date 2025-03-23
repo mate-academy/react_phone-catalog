@@ -3,39 +3,42 @@
 
 .pagination {
   &__content {
-    margin-block: 40px 80px;
     overflow: hidden;
+    margin-block: 40px 80px;
     text-align: center;
   }
 
   &__list {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     gap: 16px;
-    list-style: none;
-    text-align: center;
+    justify-content: center;
+
     padding: 0;
+
+    text-align: center;
+    list-style: none;
   }
 
   &__item {
-    text-decoration: none;
     width: 32px;
     height: 32px;
     text-align: center;
+    text-decoration: none;
 
     &--active {
-      background-color: $primary;
       border: none;
+      background-color: $primary;
     }
   }
 
   &__back-to-first {
     width: 32px;
     height: 32px;
+    border: 1px solid $icons;
+
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid $icons;
     &--img {
       width: 16px;
       height: 16px;
@@ -49,10 +52,11 @@
   &__link {
     width: 32px;
     height: 32px;
+    border: 1px solid $icons;
+
+    background-image: url(../../style/icons/Chevron-Arrow-Right.svg);
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid $icons;
-    background-image: url(../../style/icons/Chevron-Arrow-Right.svg);
 
     &--left {
       transform: rotate(180deg);
@@ -72,14 +76,15 @@
   &__numbers {
     display: flex;
     gap: 8px;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   }
 
   &__number {
     width: 32px;
     height: 32px;
     border: 1px solid $elements;
+
     font-family: $mont;
     font-size: 14px;
     font-weight: 500;

@@ -12,18 +12,20 @@ html {
 }
 
 body {
+  box-sizing: border-box;
   margin: 0;
   background-color: $background-color;
-  box-sizing: border-box;
 }
 
 input[type="search" i] {
-  appearance: none;
   box-sizing: border-box;
   padding: 0;
   border: none;
-  outline: none;
+
   color: $primary;
+
+  appearance: none;
+  outline: none;
   &::-ms-clear {
     display: none;
   }
@@ -33,11 +35,13 @@ input[type="search" i] {
 }
 
 button {
-  outline: none;
-  background-color: transparent;
-  border: transparent;
   cursor: pointer;
+
   padding: 0;
+  border: transparent;
+
+  background-color: transparent;
+  outline: none;
 }
 
 p,
@@ -68,16 +72,20 @@ main {
 }
 
 .header {
-  box-sizing: border-box;
   position: sticky;
-  background-color: $background-color;
   z-index: 3;
   top: 0;
-  height: 48px;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  height: 48px;
+
   line-height: 48px;
+
+  background-color: $background-color;
   box-shadow: 0 1px 0 0 #e2e6e9;
 
   @include on-desktop {
@@ -88,9 +96,9 @@ main {
 
   &--left {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     gap: 24px;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &--right {
@@ -100,9 +108,9 @@ main {
   }
 
   &__logo {
-    padding-left: 24px;
     display: flex;
     align-items: center;
+    padding-left: 24px;
   }
 
   &__nav {
@@ -123,50 +131,60 @@ main {
 
   &__icon {
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    border-left: 1px solid $elements;
-    height: 48px;
+
     width: 48px;
+    height: 48px;
+    border-left: 1px solid $elements;
+
+    text-decoration: none;
 
     @include on-desktop {
-      height: 64px;
       width: 64px;
+      height: 64px;
     }
 
     &--isActive {
       &::after {
-        position: absolute;
-        display: block;
         content: "";
+
+        position: absolute;
+        bottom: 0;
+
+        display: block;
+
         width: 100%;
         height: 3px;
+
         background-color: $primary;
-        bottom: 0;
       }
     }
 
     &-image {
-      height: 16px;
       width: 16px;
+      height: 16px;
     }
 
     &-circle {
       position: absolute;
+      left: 14px;
       transform: translate(150%,-50%);
+
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+
       font-family: $mont;
       font-size: 9px;
       font-weight: 600;
       line-height: 14px;
-      text-align: center;
       color: $white;
-      width: 14px;
-      height: 14px;
-      left: 14px;
+      text-align: center;
+
       background-color: $red;
-      border-radius: 50%;
     }
   }
 
@@ -174,18 +192,20 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    height: 48px;
+
     width: 48px;
+    height: 48px;
     border-left: 1px solid $elements;
+
+    text-decoration: none;
 
     @include on-tablet {
       display: none;
     }
 
     @include on-desktop {
-      height: 64px;
       width: 64px;
+      height: 64px;
     }
   }
 
@@ -205,23 +225,25 @@ main {
 
     &-icon {
       position: absolute;
-      right: 20px;
       top: 50%;
+      right: 20px;
       transform: translateY(-45%);
     }
 
     &-input {
-      outline: none;
-      border: none;
+      width: 50px;
       padding: 24px 23px;
-      background-color: transparent;
+      border: none;
+
       font-family: $mont;
       font-size: 14px;
       font-weight: 600;
       line-height: 18px;
-      text-align: left;
       color: $primary;
-      width: 50px;
+      text-align: left;
+
+      background-color: transparent;
+      outline: none;
 
       @include on-desktop {
         width: 188.8px;
@@ -232,8 +254,9 @@ main {
         font-size: 14px;
         font-weight: 600;
         line-height: 18px;
-        text-align: left;
         color: $icons;
+        text-align: left;
+
         background-color: $background-color;
       }
     }
@@ -241,13 +264,16 @@ main {
 
   &__delete {
     &-button {
-      background-color: transparent;
-      border: none;
-      position: absolute;
       cursor: pointer;
-      right: 20px;
+
+      position: absolute;
       top: 50%;
+      right: 20px;
       transform: translateY(-45%);
+
+      border: none;
+
+      background-color: transparent;
     }
 
     &-icon {
@@ -259,13 +285,15 @@ main {
 
 .nav {
   &__list {
-    list-style: none;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding-inline: 0;
-    margin: 0;
     gap: 32px;
+    justify-content: space-between;
+
+    margin: 0;
+    padding-inline: 0;
+
+    list-style: none;
 
     @include on-desktop {
       gap: 64px;
@@ -278,16 +306,20 @@ main {
   }
 
   &__link {
-    display: inline-block;
-    text-decoration: none;
     cursor: pointer;
-    font-family: $mont;
-    font-weight: 800;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    color: $secondary;
-    text-transform: uppercase;
+
     position: relative;
+
+    display: inline-block;
+
+    font-family: $mont;
+    font-size: 12px;
+    font-weight: 800;
+    color: $secondary;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
     transition-duration: 0.3s;
     &:hover{
       transform: scale(1.1);
@@ -296,21 +328,25 @@ main {
     &--isActive {
       color: $primary;
       &::after {
-        position: absolute;
-        display: block;
         content: "";
+
+        position: absolute;
+        bottom: 0;
+
+        display: block;
+
         width: 100%;
         height: 3px;
+
         background-color: $primary;
-        bottom: 0;
       }
     }
   }
 }
 
 .main {
-  margin: 0 auto;
   min-height: calc(100vh - $headerHeightMobile - $footerHeightMobile);
+  margin: 0 auto;
 
   @include on-tablet {
     min-height: calc(100vh - $headerHeightMobile - $footerHeight);
@@ -330,9 +366,9 @@ main {
     }
 
     @include on-desktop {
+      width: 1136px;
       margin-top: 56px;
       margin-inline: auto;
-      width: 1136px;
     }
   }
 
@@ -354,19 +390,21 @@ main {
 }
 
 .footer {
-  padding-left: 16px;
-  padding-block: 32px;
   position: absolute;
-  background-color: $background-color;
-  left: 0;
   right: 0;
   bottom: -321px;
+  left: 0;
+
+  padding-left: 16px;
+  padding-block: 32px;
+
+  background-color: $background-color;
   box-shadow: 0 -1px 0 0 $elements;
 
   @include on-tablet {
-    padding-inline: 24px;
-    padding-block: 0;
     bottom: -176px;
+    padding-block: 0;
+    padding-inline: 24px;
   }
 
   @include on-desktop {
@@ -374,21 +412,21 @@ main {
   }
 
   &__content {
-    height: 257px;
     display: flex;
-    gap: 32px;
     flex-direction: column;
+    gap: 32px;
+    height: 257px;
 
     @include on-tablet {
-      height: 96px;
       flex-direction: row;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      height: 96px;
     }
 
     @include on-desktop {
-      margin: 0 auto;
       width: 1136px;
+      margin: 0 auto;
     }
   }
 
@@ -408,24 +446,27 @@ main {
 
   &__back {
     display: flex;
-    align-items: center;
     gap: 16px;
+    align-items: center;
 
     &-text {
       font-family: $mont;
-      font-weight: 700;
       font-size: 12px;
+      font-weight: 700;
       color: $secondary;
     }
   }
 
   &__back-link {
-    background-image: url(./style/icons/Slider-button-Default-right.svg);
-    height: 32px;
-    width: 32px;
-    background-position: center;
     transform: rotate(270deg);
+
+    width: 32px;
+    height: 32px;
     border: 1px solid $elements;
+
+    background-image: url(./style/icons/Slider-button-Default-right.svg);
+    background-position: center;
+
     transition-duration: 0.3s;
     &:hover {
       border-color: $primary;
@@ -434,8 +475,8 @@ main {
 }
 
 .shop {
-  height: 1208px;
   max-width: 100vw;
+  height: 1208px;
 
   @include page-paddings;
 
@@ -444,8 +485,8 @@ main {
   }
 
   @include on-desktop {
-    height: 508px;
     width: 1136px;
+    height: 508px;
     margin-inline: auto;
   }
 
@@ -453,8 +494,10 @@ main {
     width: 100%;
     height: 288px;
     margin-block: 24px;
-    background-position: center;
+
     object-fit: cover;
+    background-position: center;
+
 
     &:hover{
       transform: scale(1.05);
@@ -473,8 +516,9 @@ main {
   &__container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 32px;
+    justify-content: space-between;
+
 
     @include on-tablet {
       @include page-grid;
@@ -485,26 +529,28 @@ main {
     @include on-desktop {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
       gap: 16px;
+      justify-content: space-between;
     }
   }
 
   &__category {
-    height: 363px;
-    list-style: none;
-    text-decoration: none;
     display: inline-block;
-    text-align: center;
+
+    height: 363px;
+
     color: $primary;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
 
     @include on-tablet {
       height: 262px;
     }
 
     @include on-desktop {
-      height: 443px;
       width: 368px;
+      height: 443px;
     }
 
     &-name {
@@ -520,13 +566,14 @@ main {
     }
 
     &-amount {
+      padding-top: 4px;
+
       font-family: $mont;
       font-size: 14px;
       font-weight: 500;
       line-height: 21px;
-      text-align: left;
-      padding-top: 4px;
       color: $secondary;
+      text-align: left;
     }
 
     &--phones {
@@ -542,13 +589,14 @@ main {
 }
 
 .banner {
-  box-sizing: border-box;
-  height: 352px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
   max-width: 100vw;
+  height: 352px;
 
   @include on-tablet {
     height: 221px;
@@ -556,10 +604,10 @@ main {
   }
 
   @include on-desktop {
-    height: 432px;
-    padding-inline: 0;
     width: 1136px;
+    height: 432px;
     margin-inline: auto;
+    padding-inline: 0;
   }
 
   &__container {
@@ -574,14 +622,18 @@ main {
     display: none;
 
     @include on-tablet {
-      display: block;
-      background-image: url(./style/icons/Chevron-Arrow-Right.svg);
-      height: 189px;
       cursor: pointer;
+
+      display: block;
+
+      height: 189px;
+      border: 1px solid $icons;
+
       background-color: transparent;
+      background-image: url(./style/icons/Chevron-Arrow-Right.svg);
       background-repeat: no-repeat;
       background-position: center;
-      border: 1px solid $icons;
+
       transition-duration: 0.3s;
       &:hover {
         border-color: $primary;
@@ -643,8 +695,8 @@ main {
 
       &-mobile {
         display: block;
-        height: 100%;
         width: 100%;
+        height: 100%;
         object-position: center -15px;
 
         @include on-tablet {
@@ -665,18 +717,19 @@ main {
 
 
   &__lines {
-    height: 24px;
+    display: flex;
+    gap: 11px;
+    justify-content: space-between;
+
     width: 80px;
+    height: 24px;
     padding-block: 18px 10px;
     padding-inline: 3.5px;
-    display: flex;
-    justify-content: space-between;
-    gap: 11px;
   }
 
   &__line {
-    height: 4px;
     width: 14px;
+    height: 4px;
     background-color: $elements;
 
     &--active {
@@ -687,15 +740,16 @@ main {
 
 .burger-menu {
   position: relative;
-  height: 100vh;
-  width: 100%;
   z-index: 1;
+  width: 100%;
+  height: 100vh;
 
   &__list {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 16px;
+    align-items: center;
+
     margin: 0;
     padding-top: 24px;
   }
@@ -709,41 +763,54 @@ main {
     font-size: 12px;
     font-weight: 800;
     line-height: 11px;
-    letter-spacing: 0.04em;
     color: $secondary;
+    letter-spacing: 0.04em;
 
     &--isActive {
       position: relative;
       color: $primary;
       &::after {
-        position: absolute;
-        display: block;
         content: "";
+
+        position: absolute;
+        bottom: -8px;
+
+        display: block;
+
         width: 100%;
         height: 2px;
+
         background-color: $primary;
-        bottom: -8px;
       }
     }
   }
 
   &__icons-wrapper {
-    display: flex;
     position: absolute;
     bottom: 64px;
+    display: flex;
     width: 100%;
   }
 
 
   &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
     height: 64px;
     border: 1px solid $elements;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &-image {
+      position: relative;
+
+      width: 16px;
+      height: 16px;
+
+      background-repeat: no-repeat;
+      background-position: center;
+
       &--favorite {
         background-image: url(../public/icons/Favourites-Heart-Like.svg);
       }
@@ -751,28 +818,25 @@ main {
       &--cart {
         background-image: url(../public/icons/CartSmall.svg);
       }
-
-      width: 16px;
-      height: 16px;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
     }
 
     &-circle {
       position: absolute;
+      left: 14px;
       transform: translate(-30%,-50%);
+
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+
       font-family: $mont;
       font-size: 9px;
       font-weight: 600;
       line-height: 14px;
-      text-align: center;
       color: $white;
-      width: 14px;
-      height: 14px;
-      left: 14px;
+      text-align: center;
+
       background-color: $red;
-      border-radius: 50%;
     }
   }
 }
@@ -792,7 +856,7 @@ main {
   }
 
   &__items {
-    grid-column: 1 / -1;
     overflow: hidden;
+    grid-column: 1 / -1;
   }
 }

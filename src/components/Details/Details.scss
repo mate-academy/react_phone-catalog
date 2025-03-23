@@ -38,8 +38,8 @@
   }
 
   &__url {
-    padding-inline: 16px;
     margin-bottom: 24px;
+    padding-inline: 16px;
 
     @include on-tablet {
       margin-bottom: 40px;
@@ -55,27 +55,30 @@
     }
 
     &-searchname {
-      color: $secondary;
       overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+
       padding-right: 7px;
+
+      color: $secondary;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 
   &__not-found {
+    margin-bottom: 100px;
+
     font-family: $mont;
     font-size: 21px;
     font-weight: 700;
     line-height: 15px;
     color: $primary;
-    margin-bottom: 100px;
 
     @include page-paddings;
 
     @include on-desktop {
-      margin-inline: auto;
       width: 1136px;
+      margin-inline: auto;
     }
   }
 
@@ -93,17 +96,18 @@
 
   &__images {
     overflow: hidden;
-    width: 100%;
     display: flex;
+    grid-column: 1 / -1;
     flex-direction: row;
     gap: 8px;
-    grid-column: 1 / -1;
+
+    width: 100%;
 
 
     @include on-tablet {
-      flex-direction: column;
       grid-column: 1 / 2;
       grid-row: 1 / 2;
+      flex-direction: column;
     }
 
     @include on-desktop {
@@ -112,14 +116,15 @@
   }
 
   &__image {
+    display: flex;
     grid-column: 1 / -1;
+    align-items: center;
+    justify-content: center;
+
     width: 51.2px;
     height: 49px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid $elements;
     padding-inline: 3px;
+    border: 1px solid $elements;
 
     &--active {
       border-color: $primary;
@@ -137,8 +142,8 @@
   &__picture {
     width: 42.24px;
     height: 40.43px;
-    background-position: center;
     object-fit: contain;
+    background-position: center;
 
     @include on-tablet {
       height: 29px;
@@ -151,11 +156,12 @@
 
   &__main {
     &-image {
-      grid-column: 1 / -1;
-      height: 288px;
       display: flex;
-      justify-content: center;
+      grid-column: 1 / -1;
       align-items: center;
+      justify-content: center;
+
+      height: 288px;
       margin-bottom: 16px;
 
       @include on-tablet {
@@ -171,10 +177,10 @@
     }
 
     &-picture {
-      height: 273px;
       width: 100%;
-      background-position: center;
+      height: 273px;
       object-fit: contain;
+      background-position: center;
 
       @include on-desktop {
         height: 442px;
@@ -228,13 +234,17 @@
       position: relative;
 
       ::after {
-        display: block;
         content: "";
+
         position: absolute;
+        bottom: -16px;
+
+        display: block;
+
         width: 100%;
         height: 1px;
+
         background-color: $elements;
-        bottom: -16px;
       }
     }
 
@@ -243,8 +253,8 @@
       font-size: 22px;
       font-weight: 800;
       line-height: 31px;
-      text-align: left;
       color: $primary;
+      text-align: left;
     }
   }
 
@@ -268,29 +278,34 @@
 
   &__id {
     grid-column: -1 / -2;
+
     font-family: $mont;
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
-    text-align: left;
     color: $icons;
+    text-align: left;
   }
 
   &__section {
     position: relative;
+
+      &::after {
+        content: "";
+
+        position: absolute;
+        bottom: -24px;
+
+        display: block;
+
+        width: 100%;
+        height: 1px;
+
+        background-color: $elements;
+      }
     &:nth-child(2) {
       margin-top: 24px;
     }
-
-      &::after {
-        display: block;
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        background-color: $elements;
-        bottom: -24px;
-      }
 
     &--flex {
       display: flex;
@@ -299,27 +314,30 @@
   }
 
   &__title {
+    padding-bottom: 8px;
+
     font-family: $mont;
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
-    text-align: left;
     color: $secondary;
-    padding-bottom: 8px;
+    text-align: left;
   }
 
   &__elements {
     display: flex;
-    justify-content: start;
     gap: 8px;
+    justify-content: start;
   }
 
   &__circle {
     position: relative;
-    border-radius: 50%;
-    height: 32px;
+
     width: 32px;
+    height: 32px;
     border: 1px solid $elements;
+    border-radius: 50%;
+
     transition-duration: 0.3s;
 
     &:hover {
@@ -336,11 +354,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    box-sizing: border-box;
     width: 30px;
     height: 30px;
-    border-radius: 50%;
     border: 2px solid $white;
-    box-sizing: border-box;
+    border-radius: 50%;
 
     @each $color, $value in (black, $black), (midnight, $midnight), (spaceblack, $spaceblack),
     (sierrablue, $sierrablue), (white, $white), (red, $red), (gray-green, $gray-green),
@@ -354,25 +373,29 @@
   }
 
   &__rectangle {
+    cursor: pointer;
+
     width: 63px;
     height: 32px;
     border: 1px solid $icons;
+
     font-family: $mont;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
-    text-align: center;
     color: $primary;
+    text-align: center;
+
     background-color: $white;
-    cursor: pointer;
+
     transition-duration: 0.3s;
     &:hover{
       border-color: $primary;
     }
 
      &--active {
-      background-color: $primary;
       color: $white;
+      background-color: $primary;
      }
   }
 
@@ -419,13 +442,14 @@
   }
 
   &__title {
+    margin-bottom: 16px;
+
     font-family: $mont;
     font-size: 20px;
     font-weight: 700;
     line-height: 26px;
-    text-align: left;
     color: $primary;
-    margin-bottom: 16px;
+    text-align: left;
   }
 
   &__text {
@@ -433,8 +457,8 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
-    text-align: left;
     color: #89939a;
+    text-align: left;
   }
 }
 

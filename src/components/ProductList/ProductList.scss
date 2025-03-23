@@ -2,38 +2,38 @@
 @import '../../style/utils/mixins';
 
 select {
-  appearance: none;
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .product-list {
   &__top {
     @include page-grid;
 
-    padding-inline: 16px;
+      padding-inline: 16px;
 
     @include on-tablet {
       padding-inline: 24px;
     }
 
     @include on-desktop {
-      padding-inline: 0;
       width: 1136px;
       margin-inline: auto;
+      padding-inline: 0;
     }
   }
 
   &__bottom {
-    padding-inline: 16px;
+      padding-inline: 16px;
 
     @include on-tablet {
       padding-inline: 24px;
     }
 
     @include on-desktop {
-      padding-inline: 0;
       width: 1136px;
       margin-inline: auto;
+      padding-inline: 0;
     }
   }
 
@@ -46,8 +46,8 @@ select {
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
-    text-align: left;
     color: $secondary;
+    text-align: left;
 
     &-content {
       grid-column: 1 / -1;
@@ -57,20 +57,25 @@ select {
 
   &__input {
     position: relative;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 4px;
+    justify-content: space-between;
+
     padding-bottom: 24px;
     &::after {
       content: url(../../style/icons/Chevron-Arrow-Right--disabled.svg);
+
       position: absolute;
-      display: inline-block;
-      height: 16px;
-      width: 16px;
       top: 50%;
       right: 10px;
       transform: translateY(-50%) rotate(90deg);
+
+      display: inline-block;
+
+      width: 16px;
+      height: 16px;
     }
 
     &--focused::after {
@@ -95,40 +100,46 @@ select {
   }
 
   &__select {
+    cursor: pointer;
+
+    position: relative;
+    z-index: 2;
+
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid $icons;
+
     font-family: $mont;
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
     color: $primary;
+
     background-color: transparent;
-    height: 40px;
-    padding: 10px 12px;
-    border: 1px solid $icons;
-    position: relative;
-    z-index: 2;
-    cursor: pointer;
     &:hover {
       border-color: $secondary;
     }
     &:focus {
-      outline: none;
       border-color: $primary;
+      outline: none;
     }
   }
 
   &__option {
+    height: 32px;
+    padding-block: 5px;
     border: 1px solid $elements;
-    box-shadow: 0 2px 15px 0 #0000000D;
-    background-color: $white;
     border-radius: none;
-    color: $secondary;
+
     font-family: $mont;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
+    color: $secondary;
     text-align: left;
-    height: 32px;
-    padding-block: 5px;
+
+    background-color: $white;
+    box-shadow: 0 2px 15px 0 #0000000D;
     &:hover {
       color: $primary;
       background-color: $white;
@@ -140,34 +151,36 @@ select {
     font-size: 12px;
     font-weight: 700;
     line-height: 15px;
-    text-align: left;
     color: $secondary;
+    text-align: left;
   }
 
   &__items {
     display: grid;
-    flex-direction: column;
-    justify-content: center;
     grid-template-columns: repeat(4, 1fr);
+    flex-direction: column;
     gap: 16px;
     row-gap: 40px;
+    justify-content: center;
 
     @include on-tablet {
       grid-template-columns: repeat(auto-fill, minmax(229px, 288px));
     }
 
     @include on-desktop {
-      width: 1136px;
       grid-template-columns: repeat(4, 272px);
+      width: 1136px;
     }
   }
 
   &__link {
     display: inline-block;
-    list-style: none;
-    text-decoration: none;
     grid-column: 1 / -1;
+
     height: 440px;
+
+    text-decoration: none;
+    list-style: none;
 
     @include on-tablet {
       grid-column: auto;
