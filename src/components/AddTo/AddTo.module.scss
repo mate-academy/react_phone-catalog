@@ -15,7 +15,6 @@
     cursor: pointer;
 
     @include hover(box-shadow, var(--box-shadow));
-
     @extend %buttons;
   }
 
