@@ -20,7 +20,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <Link to={`/${product.category}/${product.itemId}`}>
           <img
             className={styles.pc__image}
-            src={`/${product.image}`}
+            src={`./${product.image}`}
             alt={product.name}
           />
         </Link>
