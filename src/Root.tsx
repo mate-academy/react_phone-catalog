@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { App } from './App';
 import { FavoriteProvider } from './context/FavoriteContext';
 import { ShopProvider } from './context/ShopContext';
