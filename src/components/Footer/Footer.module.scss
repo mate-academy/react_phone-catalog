@@ -106,11 +106,11 @@
       height: 32px;
       border: 0;
       transition: background-color 0.5s ease-in-out;
-      background-image: url('./img/pagination/arrowRightDefault.svg');
+      background-image: url('./assets/pagination/arrowRightDefault.svg');
       transform: rotate(270deg);
 
       &:hover {
-        background-image: url('./img/pagination/arrowRightHover.svg');
+        background-image: url('./assets/pagination/arrowRightHover.svg');
       }
     }
   }
