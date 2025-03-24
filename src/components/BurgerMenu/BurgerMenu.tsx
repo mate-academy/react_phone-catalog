@@ -40,6 +40,7 @@ const BurgerMenu: React.FC<Props> = ({ isOpen, toggleBurger }) => {
               return (
                 <li
                   key={index}
+                  onClick={() => toggleBurger(false)}
                   className={`${styles.menu__item} ${activePage && `${styles.menu__item_active}`}`}
                 >
                   <NavLink to={link}>{page}</NavLink>
@@ -53,12 +54,14 @@ const BurgerMenu: React.FC<Props> = ({ isOpen, toggleBurger }) => {
       <div className={styles.menu__bottom}>
         <Link
           to={`/favourites`}
+          onClick={() => toggleBurger(false)}
           className={`${styles.menu__favourites} ${pathname.includes('favourites') && styles.menu__favourites_active}`}
         >
           <img src={`/public/img/icons/favourites-icon.png`} alt="favourites" />
         </Link>
         <Link
           to={`/cart`}
+          onClick={() => toggleBurger(false)}
           className={`
             ${styles.menu__cart}
             ${pathname.includes('cart') && styles.menu__cart_active}`}

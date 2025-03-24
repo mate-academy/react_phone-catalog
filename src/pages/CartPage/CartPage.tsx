@@ -1,11 +1,11 @@
 import { useProducts } from '../../context/ProductsContext';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import styles from './AccessoriesPage.module.scss';
+import styles from './CartPage.module.scss';
 import { Categories } from '../../components/Categories';
 import { Footer } from '../../components/Footer';
 
-const AccessoriesPage = () => {
+const CartPage = () => {
   const { products, phones, accessories, tablets } = useProducts();
   const newestProducts = products.sort((a, b) => b.year - a.year).slice(0, 10);
   const hotPricesProducts = products
@@ -19,11 +19,10 @@ const AccessoriesPage = () => {
 
   return (
     <div className={styles.home}>
-      <h1>Accessories Page</h1>
+      <h1>Cart Page</h1>
 
-      <Footer />
     </div>
   );
 };
 
-export default AccessoriesPage;
+export default CartPage;

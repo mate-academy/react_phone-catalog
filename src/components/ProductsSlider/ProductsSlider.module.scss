@@ -1,13 +1,14 @@
 @import '/src/styles/global';
 
 .slider {
-  margin-bottom: 80px;
+  margin-bottom: 56px;
 
-  &__wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 16px;
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
   }
 
   &__header {
@@ -43,14 +44,15 @@
       color: $primary-color;
     }
   }
-
-  &__arrowLeft {
-  }
-
-  &__arrowRight {
-  }
 }
 
 .disabled {
   border-color: $elements-color;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // ! не працює
 }

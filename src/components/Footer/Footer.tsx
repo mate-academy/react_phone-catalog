@@ -6,9 +6,9 @@ import Divider from '@mui/material/Divider';
 export const Footer = () => {
   return (
     <>
-      <div className={styles.fullWidthDivider}>
+      {/* <div className={styles.fullWidthDivider}>
         <Divider />
-      </div>
+      </div> */}
 
       <div className={styles.footer}>
         <div className={`${styles.logo} ${styles.footer__logo}`}>
@@ -45,7 +45,7 @@ export const Footer = () => {
             className={styles.footer__backToTop__icon}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src="/public/img/icons/arrow-top.svg" alt="BackToTop" />
+            <img src="/public/img/icons/arrows/arrow-top.svg" alt="BackToTop" />
           </div>
         </div>
       </div>

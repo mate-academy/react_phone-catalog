@@ -24,13 +24,19 @@ body {
 
 .title {
   font-family: Mont-Bold;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -1%;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
 
   margin-top: 32px;
 
   margin-bottom: 24px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
 }
 
 .logo {
@@ -46,4 +52,10 @@ body {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

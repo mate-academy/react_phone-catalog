@@ -1,23 +1,26 @@
 @import '/src/styles/global';
 
-// .title {
-//   font-family: Mont-Bold;
-//   font-size: 48px;
-//   line-height: 56px;
-//   font-weight: 800;
-//   color: $primary-color;
-//   margin-block: 56px;
-
-//   @include on-tablet {
-//     padding: 0;
-//     font-size: 48px;
-//     line-height: 56px;
-//   }
-// }
-
 .slider {
   position: relative;
   max-width: 1200px;
+
+  &_title {
+    font-family: Mont-Bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin-block: 24px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
 
   @include on-tablet {
     display: flex;

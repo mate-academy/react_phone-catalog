@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { Squash as Hamburger } from 'hamburger-react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { useFavourites } from '../../context/FavouritesContext';
 
 const pages = ['Home', 'Phones', 'Tablets', 'Accessories'];
 
@@ -12,6 +13,10 @@ const Header = () => {
   const [isOpen, setOpen] = useState(false);
 
   const toggleBurger = (value: boolean) => setOpen(value);
+
+  const { favourites } = useFavourites();
+
+  const favouritesLength = favourites.length;
 
   return (
     <div className={styles.header}>
@@ -46,15 +51,21 @@ const Header = () => {
           to={`/favourites`}
           className={`${styles.header__favourites} ${pathname.includes('favourites') && styles.header__favourites_active}`}
         >
-          <img src={`/public/img/icons/favourites-icon.png`} alt="favourites" />
+          <img src={`/public/img/icons/favourites-icon.svg`} alt="favourites" />
+          {favouritesLength > 0 && (
+            <div className={styles.header__favourites_quantity}>
+              {favouritesLength}
+            </div>
+          )}
         </Link>
+
         <Link
           to={`/cart`}
           className={`
             ${styles.header__cart}
             ${pathname.includes('cart') && styles.header__cart_active}`}
         >
-          <img src={`/public/img/icons/cart-icon.png`} alt="cart" />
+          <img src={`/public/img/icons/cart-icon.svg`} alt="cart" />
         </Link>
         <div className={styles.header__hamburger}>
           <Hamburger

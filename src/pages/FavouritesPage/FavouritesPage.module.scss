@@ -1,0 +1,11 @@
+@import '/src/styles/global';
+
+.favourites {
+  width: 100%;
+  // ! need to change
+  min-height: calc(100vh - 167px);
+
+  &__quantity {
+    margin-bottom: 40px;
+  }
+}

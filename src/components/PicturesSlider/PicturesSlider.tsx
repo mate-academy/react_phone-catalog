@@ -39,13 +39,13 @@ export const PicturesSlider = () => {
 
   return (
     <>
-      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.slider_title}>Welcome to Nice Gadgets store!</h1>
       <div className={styles.slider}>
         <button
           className={styles.arrowLeft}
           onClick={() => sliderRef.current?.slickPrev()}
         >
-          <img src="/public/img/icons/arrow-left-icon.svg" alt="Previous" />
+          <img src="/public/img/icons/arrows/arrow-left-icon.svg" alt="Previous" />
         </button>
         <div className={styles.slider__wrapper}>
           <Slider {...settings}>
@@ -64,7 +64,7 @@ export const PicturesSlider = () => {
           className={styles.arrowRight}
           onClick={() => sliderRef.current?.slickNext()}
         >
-          <img src="/public/img/icons/arrow-right-icon.svg" alt="Next" />
+          <img src="/public/img/icons/arrows/arrow-right-icon.svg" alt="Next" />
         </button>
       </div>
     </>

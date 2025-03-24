@@ -10,6 +10,7 @@
 
   display: flex;
   justify-content: space-between;
+  
 
   @include on-desktop {
     height: 64px;
@@ -30,6 +31,8 @@
 
   &__favourites,
   &__cart {
+    position: relative;
+
     width: 64px;
     display: flex;
     justify-content: center;
@@ -53,6 +56,28 @@
 
     img {
       cursor: pointer;
+    }
+
+    &_quantity {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-family: Mont;
+      font-size: 9px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $white-color;
+      width: 14px;
+      height: 14px;
+      background-color: $red-color;
+      border: 1px solid $white-color;
+      border-radius: 50%;
+
+      position: absolute;
+      content: '';
+      top: 17px;
+      right: 16px;
     }
   }
 
@@ -122,4 +147,7 @@
       }
     }
   }
+}
+
+.header__icon_quantity {
 }

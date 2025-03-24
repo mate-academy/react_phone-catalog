@@ -4,20 +4,14 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import styles from './HomePage.module.scss';
 import { Categories } from '../../components/Categories';
 import { Footer } from '../../components/Footer';
+import { sortProductsByPrice, sortProductsByYear } from '../../utils';
 
 const HomePage = () => {
   const { products, phones, accessories, tablets } = useProducts();
-  const newestProducts = products.sort((a, b) => b.year - a.year).slice(0, 10);
-  const hotPricesProducts = products
-    .sort((a, b) => {
-      const discountA = a.fullPrice - a.price;
-      const discountB = b.fullPrice - b.price;
 
-      return discountB - discountA;
-    })
-    .slice(0, 10);
+  const newestProducts = sortProductsByYear(products);
 
-  console.log(hotPricesProducts);
+  const hotPricesProducts = sortProductsByPrice(products);
 
   return (
     <div className={styles.home}>

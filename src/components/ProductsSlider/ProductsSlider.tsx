@@ -1,11 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import styles from './ProductsSlider.module.scss';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
-import Slider from 'react-slick';
 import { useRef, useState } from 'react';
+import type { Swiper as SwiperType } from 'swiper';
 
 type Props = {
   title: string;
@@ -14,25 +13,20 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
   const [currSlide, setCurrSlide] = useState(0);
-  const sliderRef = useRef<Slider | null>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
 
   const isHotPriceBlock = title === 'Hot prices';
 
-  const settings = {
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    arrows: false,
-    ref: sliderRef,
-    infinite: false,
-    beforeChange: (_current: number, next: number) => {
-      setCurrSlide(next);
-    },
-    className: 'slider__wrapper',
+  const handlePrev = () => {
+    if (swiperRef.current) swiperRef.current.slidePrev();
+  };
+
+  const handleNext = () => {
+    if (swiperRef.current) swiperRef.current.slideNext();
   };
 
   const isPrevBtnDisabled = currSlide === 0;
-  const isNextBtnDisabled = currSlide === 6;
+  const isNextBtnDisabled = currSlide === visibleProducts.length - 1;
 
   return (
     <div className={styles.slider}>
@@ -41,33 +35,61 @@ export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
         <div className={styles.slider__buttons}>
           <button
             className={`${styles.slider__arrowLeft} ${isPrevBtnDisabled && styles.disabled}`}
-            onClick={() => sliderRef.current?.slickPrev()}
+            onClick={handlePrev}
             disabled={isPrevBtnDisabled}
           >
             <img
-              src={`/public/img/icons/arrow-left-icon${isPrevBtnDisabled ? '-dis' : ''}.svg`}
+              src={`/public/img/icons/arrows/arrow-left-icon${isPrevBtnDisabled ? '-dis' : ''}.svg`}
               alt="Previous"
             />
           </button>
           <button
             className={`${styles.slider__arrowRight} ${isNextBtnDisabled && styles.disabled}`}
-            onClick={() => sliderRef.current?.slickNext()}
+            onClick={handleNext}
             disabled={isNextBtnDisabled}
           >
             <img
-              src={`/public/img/icons/arrow-right-icon${isNextBtnDisabled ? '-dis' : ''}.svg`}
+              src={`/public/img/icons/arrows/arrow-right-icon${isNextBtnDisabled ? '-dis' : ''}.svg`}
               alt="Next"
             />
           </button>
         </div>
       </div>
-      <Slider {...settings}>
-        {visibleProducts.map(product => {
-          return (
+      <Swiper
+        spaceBetween={20}
+        onSlideChange={swiper => setCurrSlide(swiper.activeIndex)}
+        onSwiper={swiper => (swiperRef.current = swiper)}
+        watchOverflow={true}
+        breakpoints={{
+          0: {
+            slidesPerView: 1.5,
+          },
+          380: {
+            slidesPerView: 1.5,
+          },
+          480: {
+            slidesPerView: 2,
+          },
+          580: {
+            slidesPerView: 2.5,
+          },
+          780: {
+            slidesPerView: 3,
+          },
+          1000: {
+            slidesPerView: 4,
+          },
+          1200: {
+            slidesPerView: 4,
+          },
+        }}
+      >
+        {visibleProducts.map(product => (
+          <SwiperSlide key={product.id}>
             <ProductCard product={product} isHotPriceBlock={isHotPriceBlock} />
-          );
-        })}
-      </Slider>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
