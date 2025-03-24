@@ -25,9 +25,7 @@ export const ProductDetailsPage: React.FC = () => {
     }
 
     try {
-      const response = await fetch(
-        `${import.meta.env.BASE_URL}api/${selectedProduct?.category}.json`,
-      );
+      const response = await fetch(`./api/${selectedProduct?.category}.json`);
 
       if (!response.ok) {
         throw new Error('Something went wrong. Please try again.');
