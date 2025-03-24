@@ -157,3 +157,27 @@
     right: 18px;
   }
 }
+
+.badge2{
+  position: absolute;
+  top: 17px;
+  right: 18px;
+  background: #eb5757;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include onTablet{
+    right: 144px;
+  }
+
+  @include onDesktop{
+    right: 82px;
+  }
+}

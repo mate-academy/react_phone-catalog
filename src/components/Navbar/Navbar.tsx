@@ -33,10 +33,20 @@ export const Navbar: React.FC<NavbarProps> = ({
   const isDarkMode = theme === 'dark';
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const updateCartCount = () => {
+      const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    setCartCount(savedCart.length);
+      setCartCount(Array.isArray(savedCart) ? savedCart.length : 0);
+    };
+
+    updateCartCount();
+
+    window.addEventListener('storage', updateCartCount);
+
+    return () => window.removeEventListener('storage', updateCartCount);
   }, []);
+
+  useEffect(() => {}, [favorites]);
 
   return (
     <header className="header">
@@ -86,6 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <NavLink className="logo shopping" to="/cart">
               <img src={isDarkMode ? cart : Blackcart} alt="shopping" />
+              {cartCount > 0 && <span className="badge2">{cartCount}</span>}
             </NavLink>
 
             {menuIsOpen ? (
