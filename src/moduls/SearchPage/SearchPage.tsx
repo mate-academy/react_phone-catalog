@@ -41,7 +41,10 @@ export const SearchPage = () => {
           <ProductList goods={filteredProducts} />
         ) : (
           <div className={styles.search__noMatch}>
-            <p>There are no products matching the query "{appliedQuery}"</p>
+            <p>
+              There are no products matching the query &quot;{appliedQuery}
+              &quot;
+            </p>
             <img src={productNotFound} alt="" />
           </div>
         )}

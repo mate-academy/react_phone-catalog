@@ -26,17 +26,19 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  background-color: $hover-color;
-  border: 1px solid $icon-color;
-  padding: 44px;
-  width: fit-content;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 50px;
+  align-items: center;
+
+  width: fit-content;
+  padding: 44px;
+  border: 1px solid $icon-color;
+
+  background-color: $hover-color;
 
   h3 {
-
     color: $secondary-color;
   }
 
@@ -44,9 +46,11 @@
     width: 150px;
     height: 60px;
     border-radius: 30px;
-    color: $white;
-    font-weight: 600;
+
     font-size: 20px;
+    font-weight: 600;
+    color: $white;
+
     background-color: $secondary-color;
 
     transition: transform 0.3s ease;

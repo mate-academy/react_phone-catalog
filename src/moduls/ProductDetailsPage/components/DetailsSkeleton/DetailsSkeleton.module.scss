@@ -5,9 +5,9 @@
 }
 
 .title {
+  grid-column: 1/-1;
   width: 400px;
   height: 35px;
-  grid-column: 1/-1;
 }
 
 .imageSlider {
@@ -55,8 +55,8 @@
 }
 
 .button {
-  height: 48px;
   flex-grow: 1;
+  height: 48px;
 }
 
 .icon {

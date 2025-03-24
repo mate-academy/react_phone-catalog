@@ -168,17 +168,13 @@
 
 .search {
   &__wrapper {
-    margin-left: auto;
     display: flex;
     align-items: center;
-    height: 32px;
-    margin-block: auto;
 
     box-sizing: border-box;
-
-    @include on-mobile {
-
-    }
+    height: 32px;
+    margin-left: auto;
+    margin-block: auto;
   }
 
   &__inputWrapper {
@@ -186,15 +182,17 @@
   }
 
   &__input {
-    height: 32px;
-    font-size: 12px;
-    border: 1px solid $elements-color;
-    border-radius: 5px 0 0 5px;
-    padding: 7px;
     display: block;
+
     box-sizing: border-box;
     width: 110px;
+    height: 32px;
+    padding: 7px;
+    border: 1px solid $elements-color;
     border-right: none;
+    border-radius: 5px 0 0 5px;
+
+    font-size: 12px;
 
     transition: all 0.3s ease;
 
@@ -221,43 +219,21 @@
     }
   }
 
-  &__close {
-    position: absolute;
-    right: 8px;
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    top: 50%;
-    transform: translateY(-50%);
-
-
-    svg {
-      fill: $icon-color;
-      cursor: pointer;
-
-      transition: all 0.3s ease;
-
-
-      &:hover {
-        transform: scale(1.2);
-        fill: $secondary-color;
-      }
-    }
-  }
-
-
   &__iconSearch {
-    background-color: $elements-color;
-    height: 32px;
-    width: 32px;
+    cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    border-radius: 0 5px 5px 0;
-    transition: all 0.3s ease;
 
-    cursor: pointer;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border-radius: 0 5px 5px 0;
+
+    background-color: $elements-color;
+
+    transition: all 0.3s ease;
 
     svg {
       fill: $white;
@@ -269,4 +245,32 @@
 
 
   }
+
+  &__close {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+
+    height: fit-content;
+
+
+    svg {
+      cursor: pointer;
+      fill: $icon-color;
+      transition: all 0.3s ease;
+
+
+      &:hover {
+        transform: scale(1.2);
+        fill: $secondary-color;
+      }
+    }
+  }
+
+
+
 }

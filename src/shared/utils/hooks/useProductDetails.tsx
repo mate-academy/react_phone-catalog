@@ -38,7 +38,9 @@ export function useProductDetails() {
   const [product, setProduct] = useState<Accessories | PhonesTablets | null>(
     null,
   );
-  const [categoryArr, setCategoryArr] = useState<Accessories[] | PhonesTablets[]>([]);
+  const [categoryArr, setCategoryArr] = useState<
+  Accessories[] | PhonesTablets[]
+  >([]);
   const [nameSpace, setNameSpace] = useState('');
 
   useEffect(() => {
@@ -50,9 +52,6 @@ export function useProductDetails() {
 
       // if nameSpace haven't changed
       if (nameSpace.length > 0 && productId.includes(nameSpace)) {
-
-
-
         try {
           const productVariation = getProductVariant(productId, categoryArr);
 
@@ -61,7 +60,7 @@ export function useProductDetails() {
           }
 
           setProduct(productVariation);
-        } catch(error) {
+        } catch (error) {
           setIsError(true);
         }
 
@@ -95,10 +94,12 @@ export function useProductDetails() {
 
         const foundProduct = data.find(item => item.id === productId);
 
+        setNameSpace(foundProduct?.namespaceId || '');
 
-        setNameSpace(foundProduct?.namespaceId ||  '');
-
-        const variations = getCategoryArr(foundProduct?.namespaceId || '', data);
+        const variations = getCategoryArr(
+          foundProduct?.namespaceId || '',
+          data,
+        );
 
         setCategoryArr(variations);
         setProduct(foundProduct || null);
