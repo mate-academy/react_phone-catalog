@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { Product } from '../../types/Product';
@@ -31,12 +31,25 @@ export const ProductList: React.FC<Props> = ({
 }) => {
   const [isSelectFocused, setIsSelectFocused] = useState(false);
   const [isPerPageFocused, setIsPerPageFocused] = useState(false);
-  const [perPage, setPerPage] = useState(16);
+
+  const initialPerPage = searchParams.get('perPage');
+  const [perPage, setPerPage] = useState(
+    initialPerPage ? Number(initialPerPage) : 16,
+  );
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const sort = searchParams.get('sort') || '';
   const location = useLocation();
   const pathNameUrl = location.pathname.slice(1);
+
+  useEffect(() => {
+    const perPageFromUrl = Number(searchParams.get('perPage'));
+
+    if (perPageFromUrl && perPageFromUrl !== perPage) {
+      setPerPage(perPageFromUrl);
+    }
+  }, [searchParams, perPage]);
 
   const handleSortBy = (sortBy: string) => {
     const params = new URLSearchParams(searchParams);
@@ -91,10 +104,9 @@ export const ProductList: React.FC<Props> = ({
 
   const startItem = (currentPage - 1) * perPage + 1;
 
-  const displayedItems = visibleProducts.slice(
-    startItem - 1,
-    startItem - 1 + perPage,
-  );
+  const displayedItems = useMemo(() => {
+    return visibleProducts.slice(startItem - 1, startItem - 1 + perPage);
+  }, [visibleProducts, startItem, perPage]);
 
   const noPagination = visibleProducts.length <= displayedItems.length;
 
