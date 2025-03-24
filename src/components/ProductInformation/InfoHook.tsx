@@ -23,6 +23,7 @@ export const useInfoHook = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
+    setLoading(true);
     const timeout = setTimeout(() => {
       fetchAllProducts()
         .then(data => {

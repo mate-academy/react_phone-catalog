@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { ProductDetails } from '../../types/ProductTypes';
+import { Product } from '../../types/ProductTypes';
 import Delete from '../../../image/close.svg';
 import './ByCardItem.scss';
 import { useNavigate } from 'react-router-dom';
 
 interface CartProps {
-  product: ProductDetails;
+  product: Product;
   onDelete: (productId: string) => void;
   onUpdate: (productId: string, quantity: number) => void;
 }
@@ -25,11 +25,11 @@ export const ByCardItem: React.FC<CartProps> = ({
   useEffect(() => {
     localStorage.setItem(`quantity-${product.id}`, quantity.toString());
 
-    onUpdate(product.id, quantity);
-  }, [product.id, onUpdate, quantity]);
+    onUpdate(product.id.toString(), quantity);
+  }, [product.id, quantity]);
 
   const handleDeleteButton = () => {
-    onDelete(product.id);
+    onDelete(product.id.toString());
     localStorage.removeItem(`quantity-${product.id}`);
   };
 
@@ -41,7 +41,7 @@ export const ByCardItem: React.FC<CartProps> = ({
     setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
   };
 
-  const totalPriceOneProduct = product.priceRegular * quantity;
+  const totalPriceOneProduct = product.fullPrice * quantity;
   const productPath = `/${product.category}/${product.id}`;
 
   return (
@@ -57,11 +57,7 @@ export const ByCardItem: React.FC<CartProps> = ({
               handleDeleteButton();
             }}
           />
-          <img
-            src={product.images[0]}
-            alt={product.name}
-            className="buy__image"
-          />
+          <img src={product.image} alt={product.name} className="buy__image" />
           <h3 className="buy__title">{product.name}</h3>
           <p className="buy__price">{`$${totalPriceOneProduct}`}</p>
 

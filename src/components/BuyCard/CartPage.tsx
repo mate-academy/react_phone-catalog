@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import back from '../../../image/back.svg';
 import { ByCardItem } from '../ByCardItem/ByCardItem';
 import { useInfoHook } from '../ProductInformation/InfoHook';
-import { ProductDetails } from '../../types/ProductTypes';
+import { Product } from '../../types/ProductTypes';
 import './CardPage.scss';
 export const CardPage = () => {
   const { navigate } = useInfoHook();
-  const [cart, setCart] = useState<ProductDetails[]>([]);
+  const [cart, setCart] = useState<Product[]>([]);
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -16,7 +16,9 @@ export const CardPage = () => {
 
   const removeFromCart = (productId: string) => {
     setCart(prevCart => {
-      const updatedCart = prevCart.filter(item => item.id !== productId);
+      const updatedCart = prevCart.filter(
+        item => item.id.toString() !== productId,
+      );
 
       localStorage.setItem('cart', JSON.stringify(updatedCart));
 
@@ -26,18 +28,22 @@ export const CardPage = () => {
 
   const updateQuantify = (productId: string, quantity: number) => {
     setCart(prevCart => {
-      return prevCart.map(item => {
-        if (item.id === productId) {
+      const updatedCart = prevCart.map(item => {
+        if (item.id.toString() === productId) {
           return { ...item, quantity };
         }
 
         return item;
       });
+
+      localStorage.setItem('cart', JSON.stringify(updatedCart)); // Оновлення `localStorage`
+
+      return updatedCart;
     });
   };
 
   const totalCartPrice = cart.reduce((total, item) => {
-    const itemPrice = item.priceRegular * (item.quantity || 1);
+    const itemPrice = item.fullPrice * (item.quantity || 1);
 
     return total + itemPrice;
   }, 0);

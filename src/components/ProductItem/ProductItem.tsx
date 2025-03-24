@@ -26,7 +26,7 @@ export const ProductItem: React.FC<Props> = ({
   const [isAdded, setIsAdded] = useState(false); // стан кнопки
 
   useEffect(() => {
-    const saveCard = JSON.parse(localStorage.getItem('card') || '[]');
+    const saveCard = JSON.parse(localStorage.getItem('cart') || '[]');
 
     if (saveCard.some((item: Product) => item.id === product.id)) {
       setIsAdded(true);
