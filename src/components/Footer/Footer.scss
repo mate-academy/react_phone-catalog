@@ -4,7 +4,8 @@
 
 .footer {
 
-  border-top: 1px solid #3b3e4a;
+  padding-top: 80px;
+  border: none;
   position: sticky;
   bottom: 0;
   left: 0;
@@ -69,6 +70,10 @@
   color: #f1f2f9;
 
   align-items: center;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
 .footer__button {

@@ -2,13 +2,19 @@
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 import logo from '../../../image/logo.svg';
+import BlackLogo from '../../../image/BlackLogo.svg';
 import Favourites from '../../../image/heart.svg';
 import cart from '../../../image/shopping.svg';
+import BlackFavourites from '../../../image/blackHeart.svg';
+import Blackcart from '../../../image/blackShoppinng.svg';
 import menu from '../../../image/menu.svg';
 import close from '../../../image/close.svg';
+import Blackclose from '../../../image/BlackClose.svg';
 import { Switches } from '../Switch/Switches';
+import { useContext, useEffect, useState } from 'react';
 // import { useContext } from 'react';
-// import { ThemeContext } from '../ColorThemes/ColorThemes';
+import { ThemeContext } from '../ColorThemes/ColorThemes';
+import { useFavourites } from '../Favourites/FacouritesContext';
 
 interface NavbarProps {
   setMenuIsOpen: () => void;
@@ -21,8 +27,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   menuIsOpen,
   setMenuIsClose,
 }) => {
-  // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  //   classNames('navbar-item', { 'has-color-white-lighter': isActive });
+  const { theme } = useContext(ThemeContext);
+  const { favorites } = useFavourites();
+  const [cartCount, setCartCount] = useState(0);
+  const isDarkMode = theme === 'dark';
+
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    setCartCount(savedCart.length);
+  }, []);
 
   return (
     <header className="header">
@@ -33,7 +47,11 @@ export const Navbar: React.FC<NavbarProps> = ({
       >
         <div className="container">
           <NavLink className="logo" to="/">
-            <img src={logo} alt="Logo" className="logo__img" />
+            <img
+              src={isDarkMode ? logo : BlackLogo}
+              alt="Logo"
+              className="logo__img"
+            />
           </NavLink>
           <div className="navbar-brand">
             <NavLink className="navbar-item" to="/">
@@ -57,11 +75,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <div className="buttons__menu">
             <NavLink className="logo likes" to="/favourites">
-              <img src={Favourites} alt="heart" />
+              <img
+                src={isDarkMode ? Favourites : BlackFavourites}
+                alt="heart"
+              />
+              {favorites.length > 0 && (
+                <span className="badge">{favorites.length}</span>
+              )}
             </NavLink>
 
             <NavLink className="logo shopping" to="/cart">
-              <img src={cart} alt="shopping" />
+              <img src={isDarkMode ? cart : Blackcart} alt="shopping" />
             </NavLink>
 
             {menuIsOpen ? (
@@ -70,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 // to="/close"
                 onClick={setMenuIsClose}
               >
-                <img src={close} alt="close" />
+                <img src={isDarkMode ? close : Blackclose} alt="close" />
               </div>
             ) : (
               <div

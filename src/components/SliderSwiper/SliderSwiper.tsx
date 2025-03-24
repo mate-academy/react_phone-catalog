@@ -36,6 +36,7 @@ export const SliderSwiper = () => {
       navigation
       autoplay={{ delay: 5000, disableOnInteraction: false }}
       pagination={{ clickable: true }}
+      effect="fade"
     >
       {images.map((image, index) => (
         <SwiperSlide key={index}>

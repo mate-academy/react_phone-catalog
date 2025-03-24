@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../../../image/logo.svg';
+import BlackLogo from '../../../image/BlackLogo.svg';
 import './Footer.scss';
-import { useProductHooks } from '../ProductPage/usePhonesHooks';
+import { useContext } from 'react';
+import { ThemeContext } from '../ColorThemes/ColorThemes';
+// import { useProductHooks } from '../ProductPage/usePhonesHooks';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -11,7 +14,11 @@ export const Footer = () => {
     });
   };
 
-  const { loading } = useProductHooks();
+  // const { loading } = useProductHooks();
+
+  const { theme } = useContext(ThemeContext);
+
+  const isDarkMode = theme === 'dark';
 
   return (
     <footer className="footer">
@@ -23,7 +30,7 @@ export const Footer = () => {
         {/* {!loading && ( */}
         <div className="footer__container">
           <div className="footer__logo">
-            <img src={logo} alt="Logo" />
+            <img src={isDarkMode ? logo : BlackLogo} alt="Logo" />
           </div>
           <ul className="footer-brand">
             <NavLink className="footer-item" to="/">

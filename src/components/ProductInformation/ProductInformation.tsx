@@ -87,15 +87,16 @@ export const ProductInformation: React.FC = () => {
           <div className="productInfo__wrapper">
             <div className="productInfo__wrapperPhone">
               <div className="Image">
-                {selectedPhone.images.map((image, index) => (
-                  <img
-                    className="productInfo__Image"
-                    key={index}
-                    src={image}
-                    alt={`image_${category}_${index}`}
-                    onClick={() => setMainImage(image)}
-                  />
-                ))}
+                {selectedPhone.images &&
+                  selectedPhone.images.map((image, index) => (
+                    <img
+                      className="productInfo__Image"
+                      key={index}
+                      src={image}
+                      alt={`image_${category}_${index}`}
+                      onClick={() => setMainImage(image)}
+                    />
+                  ))}
               </div>
 
               <div className="Main__Image">
@@ -110,28 +111,30 @@ export const ProductInformation: React.FC = () => {
             <div className="productInfo__wraperdeteils">
               <div className="productInfo__colors">
                 <h3 className="productInfo__contentTitle">Available colors</h3>
-                {selectedPhone.colorsAvailable.map((color, i) => (
-                  <button
-                    key={i}
-                    className={`productInfo__color ${selecredColor === color ? 'selected' : ''}`}
-                    onClick={() => handleChangeColor(color)}
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
+                {selectedPhone.colorsAvailable &&
+                  selectedPhone.colorsAvailable.map((color, i) => (
+                    <button
+                      key={i}
+                      className={`productInfo__color ${selecredColor === color ? 'selected' : ''}`}
+                      onClick={() => handleChangeColor(color)}
+                      style={{ backgroundColor: color }}
+                    />
+                  ))}
               </div>
               <div className="productInfo__line"></div>
 
               <div className="productInfo__memory">
                 <h3 className="productInfo__contentTitle">Select capacity</h3>
-                {selectedPhone.capacityAvailable.map((memory, i) => (
-                  <button
-                    key={i}
-                    className={`productInfo__memorys ${selectedMemory === memory ? 'selected' : ''}`}
-                    onClick={() => handleChangeMemory(memory)}
-                  >
-                    {memory}
-                  </button>
-                ))}
+                {selectedPhone.capacityAvailable &&
+                  selectedPhone.capacityAvailable.map((memory, i) => (
+                    <button
+                      key={i}
+                      className={`productInfo__memorys ${selectedMemory === memory ? 'selected' : ''}`}
+                      onClick={() => handleChangeMemory(memory)}
+                    >
+                      {memory}
+                    </button>
+                  ))}
               </div>
               <div className="productInfo__line"></div>
 
@@ -187,16 +190,17 @@ export const ProductInformation: React.FC = () => {
             <div className="productInfo__paragraph">
               <h3 className="productInfo__about">About</h3>
               <div className="productInfo__line"></div>
-              {selectedPhone.description.map((item, index) => (
-                <div className="productInfo__content" key={index}>
-                  <h2 className="productInfo__itemTitle">{item.title}</h2>
-                  {item.text.map((paragraph, i) => (
-                    <p className="productInfo__desctiption" key={i}>
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              ))}
+              {selectedPhone.description &&
+                selectedPhone.description.map((item, index) => (
+                  <div className="productInfo__content" key={index}>
+                    <h2 className="productInfo__itemTitle">{item.title}</h2>
+                    {item.text.map((paragraph, i) => (
+                      <p className="productInfo__desctiption" key={i}>
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ))}
             </div>
 
             <div className="productInfo__wrappeTech">
@@ -207,7 +211,9 @@ export const ProductInformation: React.FC = () => {
                 <div className="productInfo__TechinformationAll" key={index}>
                   <h3 className="productInfo__TechscreenTitle">{item.title}</h3>
                   <h3 className="productInfo__TechscreenDescription">
-                    {item.value}
+                    {Array.isArray(item.value)
+                      ? item.value.join(', ')
+                      : item.value}
                   </h3>
                 </div>
               ))}

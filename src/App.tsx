@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import './App.scss';
 import { Navbar } from './components/Navbar/Navbar';
 import { Sidebar } from './components/Sidebar/Sidebar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Footer } from './components/Footer/Footer';
 import { ThemeContext } from './components/ColorThemes/ColorThemes';
 // import { useProductHooks } from './components/ProductPage/usePhonesHooks';
@@ -17,6 +17,14 @@ export const App = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [theme, setTheme] = useState(getDefaultTheme());
   // const { loading } = useProductHooks();
+
+  useEffect(() => {
+    if (menuIsOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+  }, [menuIsOpen]);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

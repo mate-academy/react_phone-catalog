@@ -14,16 +14,6 @@
   z-index: 100;
 }
 
-.theme-light {
-  background-color: #fff;
-  color: #000;
-}
-
-.theme-dark {
-  background-color: #0f1121;
-  color: #fff;
-}
-
 .container {
   display: flex;
   // align-items: center;
@@ -141,5 +131,29 @@
 
   @include onDesktop {
     display: none;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 17px;
+  right: 18px;
+  background: #eb5757;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include onTablet{
+    right: 144px;
+  }
+
+  @include onDesktop{
+    right: 18px;
   }
 }

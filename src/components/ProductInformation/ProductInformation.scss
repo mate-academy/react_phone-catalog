@@ -1,4 +1,5 @@
 @import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
 
 .productInfo {
   margin: 0 32px;
@@ -149,12 +150,21 @@
   border: 1px solid #3b3e4a;
   color: #f1f2f9;
 
-  &:active,
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+
   &:hover,
   &:focus {
-    background-color: #f1f2f9;
+    background-color: #2a2c36;
+    border: 1px solid #75767f;
+    color: #f1f2f9;
+  }
+
+  &:active {
+    background-color: #1e2028;
     border: 1px solid #f1f2f9;
-    color: #0f1121;
+    color: #f1f2f9;
   }
 }
 
@@ -170,6 +180,10 @@
   font-size: 32px;
   line-height: 41px;
   color: #f1f2f9;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
 .productInfo__priceOld {
@@ -242,6 +256,10 @@
   font-size: 12px;
   line-height: 100%;
   color: #f1f2f9;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
 .productInfo__wrapperAboutTech {
@@ -289,6 +307,10 @@
   font-weight: 700;
   line-height: 100%;
   color: #f1f2f9;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
 .productInfo__desctiption {
@@ -331,4 +353,8 @@
   font-size: 12px;
   line-height: 100%;
   color: #f1f2f9;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }

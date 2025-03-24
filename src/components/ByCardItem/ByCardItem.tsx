@@ -62,8 +62,8 @@ export const ByCardItem: React.FC<CartProps> = ({
             alt={product.name}
             className="buy__image"
           />
-          <h3>{product.name}</h3>
-          <p>{`$${totalPriceOneProduct}`}</p>
+          <h3 className="buy__title">{product.name}</h3>
+          <p className="buy__price">{`$${totalPriceOneProduct}`}</p>
 
           <div className="buy__button">
             <button

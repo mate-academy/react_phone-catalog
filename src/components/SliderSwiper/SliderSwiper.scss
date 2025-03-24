@@ -1,42 +1,54 @@
 @import '../../utils/mixins';
 
-.slider__image{
+.slider__image {
   width: 320px;
   height: 320px;
   object-fit: cover; // не стискає
+  transition: transform 0.5s ease; // Додаємо анімацію при переході
 
-  @include onTablet{
+  &:hover {
+    transform: scale(1.05); // Збільшуємо зображення при наведенні
+  }
+
+  @include onTablet {
     width: 592px;
     height: 221px;
   }
 
-  @include onDesktop{
+  @include onDesktop {
     width: 1040px;
     height: 400px;
   }
 }
 
-.swiper{
+.swiper {
   width: 320px;
   height: 320px;
 
-  @include onTablet{
+  @include onTablet {
     width: 592px;
     height: 221px;
   }
 
-  @include onDesktop{
+  @include onDesktop {
     width: 1040px;
     height: 400px;
   }
 }
 
-.swiper-button-next{
+.swiper-button-next {
   // padding-left: 16px;
   color: #323542;
+
+  &:hover {
+    color: #ffffff;
+  }
 }
 
-.swiper-button-prev{
+.swiper-button-prev {
   color: #323542;
-}
 
+  &:hover {
+    color: #ffffff;
+  }
+}

@@ -1,10 +1,17 @@
 @import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
+
 
 .product__elements {
   text-decoration: none;
   background-color: #161827;
   padding: 32px;
   transition: transform 0.3s ease-in-out;
+  border: #161827 1px solid;
+
+  @include themify($themes) {
+    background: themed('colorHeaderFooter');
+  }
 
   @include onTablet {
     flex: 0 0 33.33%;
@@ -15,7 +22,7 @@
   }
 
   &:hover {
-    box-shadow: 1px 0 0.4em rgb(217, 217, 214);
+    box-shadow: 1px 0 0.4em rgb(90, 121, 233);
     transform: translateY(-3px);
     // border:1px 0 .4em rgb(217, 217, 214);
     border-image: initial;
@@ -49,6 +56,10 @@
   color: #f1f2f9;
   text-transform: uppercase;
   margin: 24px 0 0 0;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
 .product__discount {
@@ -64,6 +75,10 @@
   line-height: 31px;
   color: #f1f2f9;
   margin: 8px 0 0 0;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
 .product__fullprice {
@@ -102,6 +117,10 @@
 .product__screenDescription {
   text-decoration: none;
   color: #f1f2f9;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
 .product__informationAll {

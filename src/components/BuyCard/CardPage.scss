@@ -1,4 +1,6 @@
 @import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
+
 
 .cart__wrapper {
   display: flex;
@@ -54,6 +56,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
 .window__title {
@@ -61,6 +67,10 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 25px;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
 .Checkout {

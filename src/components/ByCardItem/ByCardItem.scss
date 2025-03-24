@@ -1,3 +1,5 @@
+@import '../ColorThemes/ColorThemes.scss';
+
 .buy {
   margin-bottom: 17px;
 }
@@ -8,6 +10,11 @@
   display: flex;
   gap: 24px;
   align-items: center;
+  border: #161827 1px solid;
+
+  @include themify($themes) {
+    background: themed('colorHeaderFooter');
+  }
 }
 
 .buy__deleteIcon {
@@ -24,8 +31,33 @@
   object-fit: contain;
 }
 
+.buy__title{
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
+.buy__price{
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
 .buy__number{
   width: 32px;
   height: 32px;
   margin: 0 13px;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }

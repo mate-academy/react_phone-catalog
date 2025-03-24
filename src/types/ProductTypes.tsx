@@ -72,6 +72,8 @@ export interface Accessory {
   ram: string;
   cell: string[];
   quantity?: number;
+  camera?: string;
+  zoom?: string;
 }
 
 // тип що об'єднує всі товари

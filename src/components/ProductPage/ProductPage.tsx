@@ -5,70 +5,31 @@ import './ProductPage.scss';
 import home from '../../../image/home.svg';
 import arrow from '../../../image/arrow.svg';
 import { useProductHooks } from './usePhonesHooks';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Product, ProductDetails } from '../../types/ProductTypes';
-import { fetchProducts } from '../../utils/api';
+import { useState } from 'react';
+import { Product } from '../../types/ProductTypes';
 import { Loader } from '../Loader/Loader';
 import catGif from '../../../assets/cat.gif';
 
 export const ProductPage = () => {
-  const path = useLocation();
-  const currentCategory = path.pathname.slice(1);
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
   // const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [cart, setCart] = useState<ProductDetails[]>([]);
   const [itemsPrePage, setItemsPrePage] = useState<number | 'all'>(8);
 
   const {
+    products,
     sortBy,
     loading,
     error,
-    setError,
+    currentCategory,
+    // setError,
     currentPage,
     totalPages,
     setCurrentPage,
     // handleItemsChange,
     handleSortChange,
     // setItemPrevPage,
+    // itemPrevPage,
   } = useProductHooks();
-  const pageNumbers = [];
-
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
-
-  //завантажує товари з API і фільтрує за катергоріями
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchProducts();
-        const validCategories = ['phones', 'tablets', 'accessories'];
-
-        if (validCategories.includes(currentCategory)) {
-          const filteredProducts = data.filter(
-            (product: Product) => product.category === currentCategory,
-          );
-
-          setProducts(filteredProducts);
-        } else {
-          setProducts([]);
-        }
-      } catch {
-        setError(
-          `Oops, something went wrong, please check your connection 🫶💻`,
-        );
-      }
-    };
-
-    fetchData();
-
-    // завантажує cart з localstorage
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-    setCart(savedCart);
-  }, [currentCategory, setError]);
 
   // console.log(sortBy);
   const sortedProducts = [...products].sort((a, b) => {
@@ -87,26 +48,20 @@ export const ProductPage = () => {
     return a.name.localeCompare(b.name);
   });
 
-  // console.log(sortBy, sortedProducts);
+  const itemsPerPage = itemsPrePage === 'all' ? products.length : itemsPrePage;
+  const totalsPages = Math.ceil(products.length / itemsPerPage);
 
-  const displayedProducts =
-    itemsPrePage === 'all'
-      ? sortedProducts
-      : sortedProducts.slice(0, itemsPrePage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedProducts = sortedProducts.slice(startIndex, endIndex);
 
   const handleItemsPrePageChange = (option: { value: string }) => {
-    setItemsPrePage(option.value === 'all' ? 'all' : Number(option.value));
+    const newItemsPerPage =
+      option.value === 'all' ? 'all' : Number(option.value);
+
+    setItemsPrePage(newItemsPerPage);
+    setCurrentPage(1);
   };
-
-  // const addToCard = (product: ProductDetails) => {
-  //   setCart(prevCard => {
-  //     const updatedCart = [...prevCard, product];
-
-  //     localStorage.setItem('cart', JSON.stringify(updatedCart));
-
-  //     return updatedCart;
-  //   });
-  // };
 
   return (
     <main className="main__phonepage">
@@ -188,15 +143,17 @@ export const ProductPage = () => {
               >
                 &lt;
               </button>
-              {pageNumbers.map(number => (
-                <button
-                  key={number}
-                  className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
-                  onClick={() => setCurrentPage(number)}
-                >
-                  {number}
-                </button>
-              ))}
+              {Array.from({ length: totalsPages }, (_, i) => i + 1).map(
+                number => (
+                  <button
+                    key={number}
+                    className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
+                    onClick={() => setCurrentPage(number)}
+                  >
+                    {number}
+                  </button>
+                ),
+              )}
               <button
                 className="mobile__buttonsbuttonNext"
                 onClick={() =>
