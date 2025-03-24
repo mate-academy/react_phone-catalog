@@ -1,0 +1,131 @@
+@import '../../styles/common';
+
+.goBackButton__favouritesPage {
+  padding-top: 48px;
+}
+
+.favouritesPage {
+  @include page-grid;
+
+  display: flex;
+  flex-direction: column;
+  grid-column: span 24;
+  margin: 0 16px;
+  margin-bottom: 56px;
+  box-sizing: border-box;
+  max-width: 1136px;
+
+  @include on-tablet {
+    margin: 0 24px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop-small {
+    margin: 0 32px;
+    margin-bottom: 80px;
+  }
+
+  @include on-desktop {
+    margin: 0 auto;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    max-width: 1136px;
+    padding-top: 24px;
+    color: $main-white-color;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin: 0 16px;
+
+    @include on-tablet {
+      margin: 0 $padding-tablet;
+    }
+
+    @include on-desktop-small {
+      margin: 0 $padding-desktop-small;
+    }
+
+    @include on-desktop {
+      margin: 0 auto;
+    }
+  }
+
+  &__amount {
+    max-width: 1136px;
+    padding-top: 8px;
+    margin: 0 16px;
+    color: $light-grey-color;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0;
+
+    @include on-tablet {
+      margin: 0 $padding-tablet;
+    }
+
+    @include on-desktop-small {
+      margin: 0 $padding-desktop-small;
+    }
+
+    @include on-desktop {
+      margin: 0 auto;
+    }
+  }
+
+  &__empty {
+    max-width: 1136px;
+    margin: 0 16px;
+    padding-top: 32px;
+    color: $main-white-color;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    letter-spacing: 0;
+
+    @include on-tablet {
+      margin: 0 $padding-tablet;
+    }
+
+    @include on-desktop-small {
+      margin: 0 $padding-desktop-small;
+    }
+
+    @include on-desktop {
+      margin: 0 auto;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    row-gap: 40px;
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 40px;
+      column-gap: 16px;
+    }
+
+    &--card {
+      background-color: $main-card-color;
+      grid-column: span 24;
+      justify-self: center;
+
+      @include on-tablet {
+        grid-column: span 12;
+      }
+
+      @include on-desktop-small {
+        grid-column: span 8;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+      }
+    }
+  }
+}
