@@ -37,7 +37,8 @@ export const ProductList: React.FC<Props> = ({
     initialPerPage ? Number(initialPerPage) : 16,
   );
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const initialPage = Number(searchParams.get('page')) || 1;
+  const [currentPage, setCurrentPage] = useState(initialPage);
 
   const sort = searchParams.get('sort') || '';
   const location = useLocation();
@@ -50,6 +51,14 @@ export const ProductList: React.FC<Props> = ({
       setPerPage(perPageFromUrl);
     }
   }, [searchParams, perPage]);
+
+  useEffect(() => {
+    const pageFromUrl = Number(searchParams.get('page'));
+
+    if (pageFromUrl && pageFromUrl !== currentPage) {
+      setCurrentPage(pageFromUrl);
+    }
+  }, [searchParams, currentPage]);
 
   const handleSortBy = (sortBy: string) => {
     const params = new URLSearchParams(searchParams);
