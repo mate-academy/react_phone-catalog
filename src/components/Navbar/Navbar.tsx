@@ -11,10 +11,11 @@ import menu from '../../../image/menu.svg';
 import close from '../../../image/close.svg';
 import Blackclose from '../../../image/BlackClose.svg';
 import { Switches } from '../Switch/Switches';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 // import { useContext } from 'react';
 import { ThemeContext } from '../ColorThemes/ColorThemes';
 import { useFavourites } from '../Favourites/FacouritesContext';
+import { useCart } from '../BuyCard/useCard';
 
 interface NavbarProps {
   setMenuIsOpen: () => void;
@@ -29,24 +30,24 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const { theme } = useContext(ThemeContext);
   const { favorites } = useFavourites();
-  const [cartCount, setCartCount] = useState(0);
+  const { cart: cartItems } = useCart();
   const isDarkMode = theme === 'dark';
 
-  useEffect(() => {
-    const updateCartCount = () => {
-      const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+  // useEffect(() => {
+  //   const updateCartCount = () => {
+  //     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
 
-      setCartCount(Array.isArray(savedCart) ? savedCart.length : 0);
-    };
+  //     setCartCount(Array.isArray(savedCart) ? savedCart.length : 0);
+  //   };
 
-    updateCartCount();
+  //   updateCartCount();
 
-    window.addEventListener('storage', updateCartCount);
+  //   window.addEventListener('storage', updateCartCount);
 
-    return () => window.removeEventListener('storage', updateCartCount);
-  }, []);
+  //   return () => window.removeEventListener('storage', updateCartCount);
+  // }, []);
 
-  useEffect(() => {}, [favorites]);
+  // useEffect(() => {}, [favorites]);
 
   return (
     <header className="header">
@@ -90,13 +91,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 alt="heart"
               />
               {favorites.length > 0 && (
-                <span className="badge">{favorites.length}</span>
+                <span className="badge2">{favorites.length}</span>
               )}
             </NavLink>
 
             <NavLink className="logo shopping" to="/cart">
               <img src={isDarkMode ? cart : Blackcart} alt="shopping" />
-              {cartCount > 0 && <span className="badge2">{cartCount}</span>}
+              {cartItems.length > 0 && (
+                <span className="badge">{cartItems.length}</span>
+              )}
             </NavLink>
 
             {menuIsOpen ? (
