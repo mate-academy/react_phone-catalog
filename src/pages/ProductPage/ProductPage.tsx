@@ -123,7 +123,7 @@ export const ProductPage = () => {
       <div className="wrong-page">
         <h1>404 - Product Not Found</h1>
         <img
-          src="/img/product-not-found.png"
+          src="img/product-not-found.png"
           className="wrong-page__cat"
           alt="not-found"
         />
@@ -158,7 +158,7 @@ export const ProductPage = () => {
               exit={{ opacity: 0, y: 50 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
               className={s.ProductPage__mainImg}
-              src={`/${mainImg}`}
+              src={`${mainImg}`}
               alt=""
             />
           </AnimatePresence>

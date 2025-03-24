@@ -94,7 +94,7 @@ export const ShopPage = () => {
           <h2 className={s.ShopPage__timeBuy}>
             Your cart is empty. Time to buy something!
           </h2>
-          <img src="/img/cart-is-empty.png" className="cat-photo"></img>
+          <img src="img/cart-is-empty.png" className="cat-photo"></img>
         </div>
       ) : (
         <div className={s.ShopPage__containerCard}>
@@ -108,8 +108,8 @@ export const ShopPage = () => {
                   <img
                     src={
                       idButton === e.id
-                        ? '/img/icons/icon-closeBlack.svg'
-                        : '/img/icons/icon-close.svg'
+                        ? 'img/icons/icon-closeBlack.svg'
+                        : 'img/icons/icon-close.svg'
                     }
                     onMouseEnter={() => setIdButton(e.id)}
                     onMouseLeave={() => setIdButton(null)}
@@ -119,7 +119,7 @@ export const ShopPage = () => {
                 </button>
                 <div className={s.ShopPage__imgBlock}>
                   <img
-                    src={`/${e.image}`}
+                    src={`${e.image}`}
                     alt="item-photo"
                     className={s.ShopPage__img}
                   />

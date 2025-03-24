@@ -9,7 +9,7 @@ export const Footer = () => {
     <footer className={s.Footer}>
       <div className={s.Footer__content}>
         <Link to="#" className={s.Footer__logo}>
-          <img src="/img/icons/icon-logo.svg" className="logo" alt="logo" />
+          <img src="img/icons/icon-logo.svg" className="logo" alt="logo" />
         </Link>
 
         <div className={s.Footer__links}>

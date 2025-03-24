@@ -22,13 +22,10 @@ export const CurrentPage: React.FC<Props> = ({
     <div className={s.CurrentPage}>
       <div className={s.CurrentPage__toHome}>
         <Link to={LINK_TO.HOME}>
-          <img src="/img/icons/icon-home.svg" alt="icon-home" />
+          <img src="img/icons/icon-home.svg" alt="icon-home" />
         </Link>
         <div className="">
-          <img
-            src="/img/icons/icon-arrowRightGray.svg"
-            alt="icon-arrow-right"
-          />
+          <img src="img/icons/icon-arrowRightGray.svg" alt="icon-arrow-right" />
         </div>
         <Link to={`/${category}`} className={s.CurrentPage__smallLink}>
           {upperCategory}
@@ -38,7 +35,7 @@ export const CurrentPage: React.FC<Props> = ({
           <>
             <div className="">
               <img
-                src="/img/icons/icon-arrowRightGray.svg"
+                src="img/icons/icon-arrowRightGray.svg"
                 alt="icon-arrow-right"
               />
             </div>

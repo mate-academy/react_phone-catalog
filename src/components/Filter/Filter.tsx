@@ -45,7 +45,7 @@ export const Filter: React.FC<Props> = ({ sortField }) => {
         {itemsToShow[sortBy as keyof typeof itemsToShow]}
         <img
           className="icon"
-          src={`/img/icons/icon-arrow${isOpen ? 'UpGray' : 'DownGray'}.svg`}
+          src={`img/icons/icon-arrow${isOpen ? 'UpGray' : 'DownGray'}.svg`}
           alt="arrowDown"
         />
       </button>

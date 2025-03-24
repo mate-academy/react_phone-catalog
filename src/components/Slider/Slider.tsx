@@ -72,7 +72,7 @@ export const Slider = () => {
                   Now available <br />
                   in our store!{' '}
                   <span className={s.Slider__okay}>
-                    <img src="/img/icons/icon-okey.png" alt="okay" />
+                    <img src="img/icons/icon-okey.png" alt="okay" />
                   </span>
                 </p>
                 <p className={s.Slider__beFirst}>Be the first</p>
@@ -87,7 +87,7 @@ export const Slider = () => {
                 <p className={s.Slider__beyond}>Pro.Beyond.</p>
               </div>
               <img
-                src="/img/slider/slider-top/001.png"
+                src="img/slider/slider-top/001.png"
                 alt="001"
                 className={s.Slider__phoneImg}
               />
@@ -95,14 +95,14 @@ export const Slider = () => {
           </SwiperSlide>
           <SwiperSlide className={s.Slider__slide}>
             <img
-              src="/img/banner-phones.png"
+              src="img/banner-phones.png"
               className={s.Slider__images}
               alt=""
             />
           </SwiperSlide>
           <SwiperSlide className={s.Slider__slide}>
             <img
-              src="/img/banner-tablets.png"
+              src="img/banner-tablets.png"
               className={s.Slider__images}
               alt=""
             />

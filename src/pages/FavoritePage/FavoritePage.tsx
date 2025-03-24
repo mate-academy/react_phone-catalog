@@ -28,9 +28,8 @@ export const FavoritePage = () => {
         <CurrentPage productsLength={favorites.length} category="favorites" />
       </div>
       {favorites.length === 0 && (
-        // <p className={s.FavoritePage__noItems}>No items</p>
         <img
-          src="/img/product-not-found.png"
+          src="img/product-not-found.png"
           className={`cat-photo ${s.FavoritePage__noItems}`}
           alt=""
         />

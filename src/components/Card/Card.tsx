@@ -70,7 +70,7 @@ export const Card: React.FC<Props> = ({ product, isHot }) => {
       <div className={s.Card__content}>
         <Link to={`/${category}/${itemId}`} className={s.Card__link}>
           <img
-            src={`/${image}`}
+            src={`${image}`}
             alt={`${itemId}-photo`}
             className={s.Card__img}
           />

@@ -24,13 +24,13 @@ export const IconsFavoriteShop: React.FC<Props> = ({ className = '' }) => {
   return (
     <div className={className}>
       <NavLink to={LINK_TO.FAVORITES} className={getIconClass}>
-        <img src="/img/icons/icon-heart.svg" alt="" className="icon" />
+        <img src="img/icons/icon-heart.svg" alt="" className="icon" />
         {favorite.length > 0 && (
           <span className={s.IconsFavoriteShop__count}>{favorite.length}</span>
         )}
       </NavLink>
       <NavLink to={LINK_TO.SHOP} className={getIconClass}>
-        <img src="/img/icons/icon-shop.svg" alt="" className="icon" />
+        <img src="img/icons/icon-shop.svg" alt="" className="icon" />
         {shop.length > 0 && (
           <span className={s.IconsFavoriteShop__count}>{shop.length}</span>
         )}

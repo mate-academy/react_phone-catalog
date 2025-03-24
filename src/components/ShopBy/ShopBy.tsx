@@ -4,21 +4,21 @@ import s from './ShopBy.module.scss';
 const categories = [
   {
     to: '/phones',
-    imgSrc: '/img/category-phones.webp',
+    imgSrc: 'img/category-phones.webp',
     name: 'Mobile phones',
     count: '95 models',
     imgClass: s.ShopBy__blockImgOne,
   },
   {
     to: '/tablets',
-    imgSrc: '/img/category-tablets.png',
+    imgSrc: 'img/category-tablets.png',
     name: 'Tablets',
     count: '24 models',
     imgClass: s.ShopBy__blockImgTwo,
   },
   {
     to: '/accessories',
-    imgSrc: '/img/category-accessories.webp',
+    imgSrc: 'img/category-accessories.webp',
     name: 'Accessories',
     count: '100 models',
     imgClass: s.ShopBy__blockImgThree,

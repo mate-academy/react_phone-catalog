@@ -17,7 +17,7 @@ export const Button: React.FC<Props> = ({
   isHeart,
   className,
 }) => {
-  const path = `/public/img/icons/icon-${direction}.svg`;
+  const path = `img/icons/icon-${direction}.svg`;
 
   return (
     <button
