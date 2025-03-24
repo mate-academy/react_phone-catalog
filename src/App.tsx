@@ -31,7 +31,7 @@ export const App = () => {
 
   return (
     <>
-      <h1 className="page-title">Product catalog</h1>
+      <h1 className="page-title">Product Catalog</h1>
       <MenuProvider>
         <Header />
         <Menu />
