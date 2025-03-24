@@ -144,7 +144,7 @@ export const ProductPage = () => {
                   [s.ProductPage__imageActive]: mainImg === img,
                 })}
                 key={i}
-                src={`/${img}`}
+                src={`${img}`}
                 alt=""
                 onClick={() => handleChangeImage(img)}
               />
