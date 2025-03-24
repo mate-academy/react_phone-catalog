@@ -10,26 +10,29 @@ import { PhonePage } from './pages/ModelsPage';
 import { ProductPage } from './pages/ProductPage';
 import { ProductsProvider } from './context/ProductsContext';
 import { CategoryWrapperPage } from './pages/CategoryWraperPage';
+import { ErrorProvider } from './context/ErrorContext';
 
 export const Root = () => (
   <Router>
-    <ProductsProvider>
-      <FavoriteProvider>
-        <ShopProvider>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<HomePage />} />
-              <Route path=":category" element={<CategoryWrapperPage />}>
-                <Route index element={<PhonePage />} />
-                <Route path=":id" element={<ProductPage />} />
+    <ErrorProvider>
+      <ProductsProvider>
+        <FavoriteProvider>
+          <ShopProvider>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route index element={<HomePage />} />
+                <Route path=":category" element={<CategoryWrapperPage />}>
+                  <Route index element={<PhonePage />} />
+                  <Route path=":id" element={<ProductPage />} />
+                </Route>
+                <Route path="favorites" element={<FavoritePage />} />
+                <Route path="shop" element={<ShopPage />} />
+                <Route path="*" element={<NotFoundPage />} />
               </Route>
-              <Route path="favorites" element={<FavoritePage />} />
-              <Route path="shop" element={<ShopPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-        </ShopProvider>
-      </FavoriteProvider>
-    </ProductsProvider>
+            </Routes>
+          </ShopProvider>
+        </FavoriteProvider>
+      </ProductsProvider>
+    </ErrorProvider>
   </Router>
 );

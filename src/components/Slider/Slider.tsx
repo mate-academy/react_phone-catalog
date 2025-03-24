@@ -1,15 +1,26 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import s from './Slider.module.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { Swiper as SwiperClass } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useRef } from 'react';
+import s from './Slider.module.scss';
+
+import { useEffect, useRef } from 'react';
 
 export const Slider = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (swiperRef.current) {
+        swiperRef.current.pagination.init();
+        swiperRef.current.pagination.render();
+        swiperRef.current.pagination.update();
+      }
+    }, 0);
+  }, []);
 
   return (
     <div className={s.Slider}>
@@ -38,6 +49,7 @@ export const Slider = () => {
             />
           </svg>
         </button>
+
         <Swiper
           observer={false}
           modules={[Pagination, Autoplay]}
@@ -45,7 +57,11 @@ export const Slider = () => {
           slidesPerView={1}
           loop={true}
           autoplay={{ delay: 5000 }}
-          pagination={{ clickable: true }}
+          pagination={{
+            clickable: true,
+            el: `.${s.Slider__pagination}`,
+            bulletClass: `swiper-pagination-bullet ${s.Slider__bullet}`,
+          }}
           className={s.Slider__slides}
           onSwiper={swiper => (swiperRef.current = swiper)}
         >
@@ -92,6 +108,7 @@ export const Slider = () => {
             />
           </SwiperSlide>
         </Swiper>
+        <div className={s.Slider__pagination}></div>
 
         <button
           className={s.Slider__arrow}

@@ -16,6 +16,8 @@ export const HomePage = () => {
   const [loading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    document.title = `Nice Gadgets`;
+
     const handleLoading = async () => {
       setIsLoading(true);
       await wait();

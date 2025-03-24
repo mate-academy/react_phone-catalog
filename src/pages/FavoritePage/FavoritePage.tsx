@@ -12,6 +12,8 @@ export const FavoritePage = () => {
   const [loading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    document.title = `Nice Gadgets | Favorite`;
+
     setIsLoading(true);
     wait().finally(() => setIsLoading(false));
   }, []);
@@ -26,7 +28,12 @@ export const FavoritePage = () => {
         <CurrentPage productsLength={favorites.length} category="favorites" />
       </div>
       {favorites.length === 0 && (
-        <p className={s.FavoritePage__noItems}>No items</p>
+        // <p className={s.FavoritePage__noItems}>No items</p>
+        <img
+          src="/img/product-not-found.png"
+          className={`cat-photo ${s.FavoritePage__noItems}`}
+          alt=""
+        />
       )}
 
       {favorites.length > 0 &&

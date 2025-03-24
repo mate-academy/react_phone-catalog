@@ -17,8 +17,15 @@ export const ShopPage = () => {
   const [isModalLoading, setIsModalLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    wait().finally(() => setIsLoading(false));
+    document.title = `Nice Gadgets | Cart`;
+
+    const setLoader = async () => {
+      setIsLoading(true);
+      await wait();
+      setIsLoading(false);
+    };
+
+    setLoader();
   }, []);
 
   const [itemsCount, setItemsCount] = useState(

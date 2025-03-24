@@ -11,6 +11,8 @@
 
   &__noItems {
     grid-column: 1 / -1;
+    object-fit: contain;
+    place-self: center;
   }
 
   &__card {

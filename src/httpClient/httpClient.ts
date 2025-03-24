@@ -6,7 +6,7 @@ const BASE_URL = '/api/';
 
 export const wait = () => new Promise(resolve => setTimeout(resolve, 300));
 
-const get = async dataName => {
+const get = async (dataName: string) => {
   await wait();
 
   const data = await fetch(BASE_URL + dataName + '.json').then(res => {

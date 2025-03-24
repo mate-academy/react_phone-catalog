@@ -11,6 +11,8 @@ import cl from 'classnames';
 import { Filter } from '../../components/Filter';
 import { getFilteredData } from '../../services/products';
 import { Loader } from '../../components/Loader';
+import { getUpperFirstChar } from '../../someMethods';
+import { useSetError } from '../../context/ErrorContext';
 
 export const ModelsPage: React.FC = () => {
   const { category } = useParams();
@@ -20,9 +22,10 @@ export const ModelsPage: React.FC = () => {
   const perPage = Number(searchParams.get('perPage')) || 16;
   const sortBy = (searchParams.get('sortBy') || SORT_BY.newest) as SortByKeys;
   const [loading, setIsLoading] = useState(false);
+  const setError = useSetError();
 
   useEffect(() => {
-    setIsLoading(true);
+    document.title = `Nice Gadgets | ${getUpperFirstChar(category as string)}`;
     getProducts()
       .then((data: Product[]) => {
         const defaultParams = {
@@ -37,6 +40,7 @@ export const ModelsPage: React.FC = () => {
 
         setSearchParams(defaultParams, { replace: true });
       })
+      .catch(() => setError('Something went wrong :('))
       .finally(() => setIsLoading(false));
   }, [category]);
 
@@ -55,7 +59,7 @@ export const ModelsPage: React.FC = () => {
   const start = last - perPage;
   const productsToShow = products.slice(start, last);
 
-  const handleChangeSearch = (key: string, value: string) => {
+  const handleChangeSearch = async (key: string, value: string) => {
     const params = new URLSearchParams(searchParams);
 
     params.set(key, value);
@@ -89,7 +93,7 @@ export const ModelsPage: React.FC = () => {
       <div className={s.ModelsPage__cards}>
         {productsToShow.map(p => (
           <div key={p.id} className={s.ModelsPage__card}>
-            <Card product={p} />
+            <Card product={p} isHot />
           </div>
         ))}
       </div>

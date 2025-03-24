@@ -15,6 +15,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { COLORS } from '../../constants';
 import { SliderPhones } from '../../components/SliderPhones';
 import { getMayLikeProducts } from '../../services/products';
+import { useSetError } from '../../context/ErrorContext';
 
 export const ProductPage = () => {
   const { category, id } = useParams();
@@ -32,11 +33,14 @@ export const ProductPage = () => {
     [products],
   );
 
+  const setError = useSetError();
+
   useEffect(() => {
     if (!id || !category) {
       return;
     }
 
+    document.title = `Nice Gadgets | ${getUpperFirstChar(category as string)} | ${getUpperFirstChar(id as string)}}`;
     setIsLoading(true);
 
     getItemById(category as Categories, id)
@@ -51,6 +55,8 @@ export const ProductPage = () => {
           );
         }
       })
+      .catch(() => setError('Something went wrong :('))
+
       .finally(() => setIsLoading(false));
   }, []);
 
