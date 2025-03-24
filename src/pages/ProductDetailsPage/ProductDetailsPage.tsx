@@ -7,9 +7,8 @@ import phones from '../../../public/api/phones.json';
 import tablets from '../../../public/api/tablets.json';
 import accessories from '../../../public/api/accessories.json';
 
-import { Phones } from '../../types/Phones';
-import { Tablets } from '../../types/Tablets';
-import { Accessories } from '../../types/Accessories';
+import { Product } from '../../types/Product';
+import { useCart } from '../../context/CartContext';
 import { colorMap } from '../../types/colorMap';
 
 import styles from './ProductDetailsPage.module.scss';
@@ -17,11 +16,10 @@ import homeIcon from '../../imgs/svg/home-icon.svg';
 import arrowRight from '../../imgs/svg/arrow-right-icon.svg';
 import arrowLeft from '../../imgs/svg/arrow-left-icon.svg';
 
-type Product = Phones | Tablets | Accessories;
-
 export const ProductDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { cart, favorites } = useCart();
   const allProducts: Product[] = React.useMemo(
     () => [...phones, ...tablets, ...accessories],
     [],
@@ -33,6 +31,9 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedCapacity, setSelectedCapacity] = useState(
     product?.capacity || '',
   );
+
+  const isInCart = cart.some(item => item.itemId === product?.id);
+  const isInFavorites = favorites.some(item => item.itemId === product?.id);
 
   useEffect(() => {
     const newProduct = allProducts.find(
@@ -192,8 +193,12 @@ export const ProductDetailsPage: React.FC = () => {
             </p>
           </div>
           <div className={styles.product__controls_group_buttons}>
-            <ToggleButton product={product} type="cart" />
-            <ToggleButton product={product} type="favorites" />
+            <ToggleButton product={product} type="cart" isActive={isInCart} />
+            <ToggleButton
+              product={product}
+              type="favorites"
+              isActive={isInFavorites}
+            />
           </div>
         </div>
         <div className={styles.product__controls_specifications}>

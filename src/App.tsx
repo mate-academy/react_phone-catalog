@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
@@ -16,7 +16,7 @@ import './App.scss';
 export function App() {
   return (
     <CartProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -31,7 +31,7 @@ export function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </CartProvider>
   );
 }

@@ -7,25 +7,16 @@ import styles from './ToggleButton.module.scss';
 interface ToggleButtonProps {
   product: Product;
   type: 'cart' | 'favorites';
+  isActive: boolean;
 }
 
 export const ToggleButton: React.FC<ToggleButtonProps> = ({
   product,
   type,
+  isActive,
 }) => {
-  const {
-    cart,
-    favorites,
-    addToCart,
-    removeFromCart,
-    addToFavorites,
-    removeFromFavorites,
-  } = useCart();
-
-  const isActive =
-    type === 'cart'
-      ? cart.some(item => item.id === product.id)
-      : favorites.some(fav => fav.id === product.id);
+  const { addToCart, removeFromCart, addToFavorites, removeFromFavorites } =
+    useCart();
 
   const toggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();

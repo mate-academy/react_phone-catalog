@@ -14,6 +14,8 @@ interface CartContextProps {
   removeFromCart: (productId: string) => void;
   addToFavorites: (product: Product) => void;
   removeFromFavorites: (productId: string) => void;
+  isInCart: (productId: string) => boolean;
+  isInFavorites: (productId: string) => boolean;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
@@ -44,7 +46,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     setCart(prevCart => [...prevCart, product]);
   };
 
-  const removeFromCart = (productId: number) => {
+  const removeFromCart = (productId: string) => {
     setCart(prevCart => prevCart.filter(product => product.id !== productId));
   };
 
@@ -52,10 +54,18 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     setFavorites(prevFavorites => [...prevFavorites, product]);
   };
 
-  const removeFromFavorites = (productId: number) => {
+  const removeFromFavorites = (productId: string) => {
     setFavorites(prevFavorites =>
       prevFavorites.filter(product => product.id !== productId),
     );
+  };
+
+  const isInCart = (productId: string) => {
+    return cart.some(product => product.id === productId);
+  };
+
+  const isInFavorites = (productId: string) => {
+    return favorites.some(product => product.id === productId);
   };
 
   return (
@@ -67,6 +77,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         removeFromCart,
         addToFavorites,
         removeFromFavorites,
+        isInCart,
+        isInFavorites,
       }}
     >
       {children}

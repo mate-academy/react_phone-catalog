@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
+import { useCart } from '../../context/CartContext';
 import styles from './Card.module.scss';
 
 interface CardProps {
@@ -10,6 +11,10 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ card }) => {
   const navigate = useNavigate();
+  const { cart, favorites } = useCart();
+
+  const isInCart = cart.some(item => item.id === card.id);
+  const isInFavorites = favorites.some(item => item.id === card.id);
 
   const handleClick = () => {
     navigate(`/${card.category}/${card.itemId}`);
@@ -49,8 +54,12 @@ export const Card: React.FC<CardProps> = ({ card }) => {
         </div>
       </div>
       <div className={styles.card__buttons}>
-        <ToggleButton product={card} type="cart" />
-        <ToggleButton product={card} type="favorites" />
+        <ToggleButton product={card} type="cart" isActive={isInCart} />
+        <ToggleButton
+          product={card}
+          type="favorites"
+          isActive={isInFavorites}
+        />
       </div>
     </div>
   );
