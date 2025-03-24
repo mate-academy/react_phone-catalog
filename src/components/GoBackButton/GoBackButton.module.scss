@@ -11,7 +11,7 @@
   transition: 0.25s ease-in-out;
 
   &__arrow {
-    background-image: url('../../../public/img/goBackButton/goBackButton.svg');
+    background-image: url('./img/goBackButton/goBackButton.svg');
     background-repeat: no-repeat;
     background-position: center;
     width: 16px;
@@ -23,7 +23,7 @@
     color: $main-purple-color;
 
     .goBackButton__arrow {
-      background-image: url('../../../public/img/goBackButton/goBackButtonHover.svg');
+      background-image: url('./img/goBackButton/goBackButtonHover.svg');
     }
   }
 

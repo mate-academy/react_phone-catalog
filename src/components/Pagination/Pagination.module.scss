@@ -35,27 +35,27 @@
     &--prev {
       margin-right: 16px;
 
-      background-image: url('../../../public/img/pagination/arrowRightDefault.svg');
+      background-image: url('/img/pagination/arrowRightDefault.svg');
       transform: rotate(180deg);
 
       &:hover {
-        background-image: url('../../../public/img/pagination/arrowRightHover.svg');
+        background-image: url('./img/pagination/arrowRightHover.svg');
       }
     }
 
     &--next {
       margin-left: 16px;
-      background-image: url('../../../public/img/pagination/arrowRightDefault.svg');
+      background-image: url('./img/pagination/arrowRightDefault.svg');
 
       &:hover {
-        background-image: url('../../../public/img/pagination/arrowRightHover.svg');
+        background-image: url('./img/pagination/arrowRightHover.svg');
       }
     }
   }
 
   &__button:disabled {
     background-color: transparent;
-    background-image: url('../../../public/img/pagination/arrowRightDisabled.svg');
+    background-image: url('./img/pagination/arrowRightDisabled.svg');
   }
 }
 
