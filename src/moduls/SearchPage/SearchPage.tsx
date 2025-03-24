@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import debounce from 'lodash.debounce';
 
 import { useSearchParams } from 'react-router-dom';

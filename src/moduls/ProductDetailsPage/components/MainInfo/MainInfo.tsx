@@ -23,6 +23,8 @@ const COLOR_MAP: Record<string, string> = {
   white: '#f8ebe1',
   rosegold: '#ecc5bc',
   midnight: '#1a222b',
+  sierrablue: '#9dbad5',
+  graphite: '#464541',
 };
 
 type Props = {
@@ -39,7 +41,7 @@ export const MainInfo: React.FC<Props> = ({ item }) => {
     const newImg = item.images[0];
 
     setSelectedImg(newImg);
-  }, [item.color]);
+  }, [item.images]);
 
   const handleImgSelect = (newSRC: string) => {
     setSelectedImg(newSRC);

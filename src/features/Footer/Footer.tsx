@@ -13,7 +13,12 @@ export const Footer = () => {
             <img src={logo} alt="Logo" className={styles.logo} />
           </NavLink>
           <div className={styles.links}>
-            <Link to="">Github</Link>
+            <Link
+              to="https://github.com/pdabizha?tab=repositories"
+              target="_blank"
+            >
+              Github
+            </Link>
             <Link to="">Contacts</Link>
             <Link to="">Rights</Link>
           </div>
