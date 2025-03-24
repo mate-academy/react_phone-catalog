@@ -4,6 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import styles from './MobileMenu.module.scss';
 import { useCartValues } from '../../store/CartContext';
 import { useFavouriteValues } from '../../store/FavouriteContext';
+import logo from '/img/Logo.svg';
 
 type Props = {
   isOpenMenu: boolean;
@@ -41,11 +42,7 @@ export const MobileMenu: React.FC<Props> = ({
         >
           <header className="MobileMenu__header headerMenu">
             <div className="headerMenu__logo">
-              <img
-                src="/img/Logo.svg"
-                alt="Logo"
-                className="headerMenu__logo--pict"
-              />
+              <img src={logo} alt="Logo" className="headerMenu__logo--pict" />
             </div>
             <div className="headerMenu__button">
               <button
