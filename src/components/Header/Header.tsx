@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-// import './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { MobileMenu } from '../MobileMenu';
 import { useCartValues } from '../../store/CartContext';
 import { useFavouriteValues } from '../../store/FavouriteContext';
+import logo from '/img/Logo.svg';
 
 export const Header: React.FC = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -31,11 +31,7 @@ export const Header: React.FC = () => {
     <>
       <header className="header">
         <Link to="/" className="header__logo">
-          <img
-            src={'/img/Logo.svg'}
-            alt="Logo"
-            className="header__logo--pict"
-          />
+          <img src={logo} alt="Logo" className="header__logo--pict" />
         </Link>
         <nav className="header__nav">
           <NavLink to="/" className={getLinkClass}>
