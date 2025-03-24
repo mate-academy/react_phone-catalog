@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ProductDetails } from '../../types/ProductTypes';
 import Delete from '../../../image/close.svg';
 import './ByCardItem.scss';
+import { useNavigate } from 'react-router-dom';
 
 interface CartProps {
   product: ProductDetails;
@@ -14,14 +15,22 @@ export const ByCardItem: React.FC<CartProps> = ({
   onDelete,
   onUpdate,
 }) => {
-  const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
+
+  const sevedQuantity = parseInt(
+    localStorage.getItem(`quantity-${product.id}`) || '1',
+  );
+  const [quantity, setQuantity] = useState(sevedQuantity);
 
   useEffect(() => {
+    localStorage.setItem(`quantity-${product.id}`, quantity.toString());
+
     onUpdate(product.id, quantity);
   }, [product.id, onUpdate, quantity]);
 
   const handleDeleteButton = () => {
     onDelete(product.id);
+    localStorage.removeItem(`quantity-${product.id}`);
   };
 
   const handleIncrease = () => {
@@ -33,16 +42,20 @@ export const ByCardItem: React.FC<CartProps> = ({
   };
 
   const totalPriceOneProduct = product.priceRegular * quantity;
+  const productPath = `/${product.category}/${product.id}`;
 
   return (
     <>
       <div className="buy">
-        <div className="buy__item">
+        <div className="buy__item" onClick={() => navigate(productPath)}>
           <img
             src={Delete}
             alt="deleteIcon"
             className="buy__deleteIcon"
-            onClick={handleDeleteButton}
+            onClick={(e: React.MouseEvent) => {
+              e.stopPropagation();
+              handleDeleteButton();
+            }}
           />
           <img
             src={product.images[0]}
@@ -53,11 +66,23 @@ export const ByCardItem: React.FC<CartProps> = ({
           <p>{`$${totalPriceOneProduct}`}</p>
 
           <div className="buy__button">
-            <button className="buttonPrev" onClick={handleDecrease}>
+            <button
+              className="buttonPrev"
+              onClick={(e: React.MouseEvent) => {
+                e.stopPropagation();
+                handleDecrease();
+              }}
+            >
               -
             </button>
             <span className="buy__number">{quantity}</span>
-            <button className="buttonNext" onClick={handleIncrease}>
+            <button
+              className="buttonNext"
+              onClick={(e: React.MouseEvent) => {
+                e.stopPropagation();
+                handleIncrease();
+              }}
+            >
               +
             </button>
           </div>

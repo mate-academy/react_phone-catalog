@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './ProductInformation.scss';
 import home from '../../../image/home.svg';
 import arrow from '../../../image/arrow.svg';
@@ -7,15 +7,15 @@ import { Loader } from '../Loader/Loader';
 import like from '../../../image/heart.svg';
 import { useInfoHook } from './InfoHook';
 import { ProductSlider } from '../ProductCard/ProductCard';
-import { fetchAllProducts } from '../../utils/api';
+// import { fetchAllProducts, fetchProducts } from '../../utils/api';
 import { useParams } from 'react-router-dom';
 import { NameSlider } from '../../nameslider';
-import { ProductDetails } from '../../types/ProductTypes';
+// import { Product, ProductDetails } from '../../types/ProductTypes';
 import catGif from '../../../assets/cat.gif';
 
 export const ProductInformation: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-  const [products, setProducts] = useState<ProductDetails[]>([]);
+  // const [products, setProducts] = useState<Product[]>([]);
 
   const {
     selectedPhone,
@@ -29,36 +29,13 @@ export const ProductInformation: React.FC = () => {
     selectedMemory,
     selecredColor,
     techInfo,
-    setSelectedPhone,
-    setError,
+    // setSelectedPhone,
+    // setError,
     error,
+    products,
   } = useInfoHook();
 
   // const currentCategory = category || 'phones';
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchAllProducts();
-
-        const filteredProducts = data.filter(
-          product => product.category === category,
-        );
-
-        setProducts(filteredProducts);
-
-        const product = filteredProducts.find(item => item.id === productId);
-
-        setSelectedPhone(product || null);
-      } catch {
-        setError(
-          `Oops, something went wrong, please check your connection 🫶💻`,
-        );
-      }
-    };
-
-    fetchData();
-  }, [category, productId, setSelectedPhone, setError]);
 
   return (
     <main className="productInfo">

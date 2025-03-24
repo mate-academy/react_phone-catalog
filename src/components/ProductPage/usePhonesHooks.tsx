@@ -23,6 +23,7 @@ export const useProductHooks = () => {
     }
   }, [searchParams]);
 
+  // отримує лише для телефонів дані
   useEffect(() => {
     const timeout = setTimeout(() => {
       fetchAllProducts()
@@ -38,7 +39,7 @@ export const useProductHooks = () => {
         .finally(() => {
           setLoading(false);
         });
-    }, 3000);
+    }, 1500);
 
     return () => {
       clearTimeout(timeout);
@@ -47,50 +48,47 @@ export const useProductHooks = () => {
 
   //функція для сортування
   const handleSortChange = (option: string) => {
-    console.log('Before sorting:', phones);
     setSortBy(option);
     setSearchParams({ sort: option });
-    const sortedPhone = [...phones];
+    // console.log('Before sorting:', phones);
+    // setSortBy(option);
+    // setSearchParams({ sort: option });
+    // const sortedPhone = [...phones];
 
-    if (option === 'Newest') {
-      if (sortedPhone.every(phone => phone.year !== undefined)) {
-        sortedPhone.sort((a, b) => b.year - a.year);
-      } else {
-        console.warn(
-          'Year field is missing in some products. Skipping sorting by year.',
-        );
-      }
-    }
+    // if (option === 'Newest') {
+    //   sortedPhone.sort((a, b) => b.year - a.year);
+    //   // window.alert('sorted by newest');
+    // }
 
-    if (option === 'Alphabetically') {
-      sortedPhone.sort((a, b) => a.name.localeCompare(b.name));
-      // window.alert('sorted by alf');
-    }
+    // if (option === 'Alphabetically') {
+    //   sortedPhone.sort((a, b) => a.name.localeCompare(b.name));
+    //   // window.alert('sorted by alf');
+    // }
 
-    if (option === 'Cheapest') {
-      sortedPhone.sort((a, b) => a.priceRegular - b.priceRegular);
-      // window.alert('sorted by price');
-    }
+    // if (option === 'Cheapest') {
+    //   sortedPhone.sort((a, b) => a.priceRegular - b.priceRegular);
+    //   // window.alert('sorted by price');
+    // }
 
-    console.log('After sorting:', sortedPhone);
-    setPhones([...sortedPhone]);
+    // console.log('After sorting:', sortedPhone);
+    // setPhones([...sortedPhone]);
   };
 
-  const handleItemsChange = (option: DropDownOption) => {
-    const value = parseInt(option.value, 10);
+  // const handleItemsChange = (option: DropDownOption) => {
+  //   const value = parseInt(option.value, 10);
 
-    if (isNaN(value)) {
-      setItemPrevPage(phones.length);
-      setSearchParams({ itemPrevPage: 'All' });
-    } else {
-      setItemPrevPage(value);
-      setSearchParams({ itemPrevPage: option.value });
-    }
+  //   if (isNaN(value)) {
+  //     setItemPrevPage(phones.length);
+  //     setSearchParams({ itemPrevPage: 'All' });
+  //   } else {
+  //     setItemPrevPage(value);
+  //     setSearchParams({ itemPrevPage: option.value });
+  //   }
 
-    setCurrentPage(1);
-    // setCurrentPage(1);
-    setSearchParams({ itemPrevPage: option.value });
-  };
+  //   setCurrentPage(1);
+  //   // setCurrentPage(1);
+  //   setSearchParams({ itemPrevPage: option.value });
+  // };
 
   const indexOfLastItem = currentPage * itemPrevPage;
 
@@ -107,8 +105,9 @@ export const useProductHooks = () => {
     totalPages,
     setError,
     setCurrentPage,
-    handleItemsChange,
+    // handleItemsChange,
     handleSortChange,
     setItemPrevPage,
+    sortBy,
   };
 };

@@ -4,7 +4,6 @@ import { ByCardItem } from '../ByCardItem/ByCardItem';
 import { useInfoHook } from '../ProductInformation/InfoHook';
 import { ProductDetails } from '../../types/ProductTypes';
 import './CardPage.scss';
-
 export const CardPage = () => {
   const { navigate } = useInfoHook();
   const [cart, setCart] = useState<ProductDetails[]>([]);
@@ -57,26 +56,27 @@ export const CardPage = () => {
         </div>
       </h1>
       <h1 className="page__title">Cart</h1>
-
-      <div className="card__wraper">
-        {cart.length > 0 ? (
-          cart.map(product => (
-            <ByCardItem
-              key={product.id}
-              product={product}
-              onDelete={removeFromCart}
-              onUpdate={updateQuantify}
-            />
-          ))
-        ) : (
-          <p>Your cart is empty</p>
-        )}
-      </div>
-      <div className="window">
-        <h1 className="window__price">{`Total Price: $${totalCartPrice}`}</h1>
-        <p className="window__title">{`Tola for ${cart.length} item`}</p>
-        <div className="product__line"></div>
-        <button className="Checkout">Checkout</button>
+      <div className="cart__wrapper">
+        <div className="cart__wrapper--left">
+          {cart.length > 0 ? (
+            cart.map(product => (
+              <ByCardItem
+                key={product.id}
+                product={product}
+                onDelete={removeFromCart}
+                onUpdate={updateQuantify}
+              />
+            ))
+          ) : (
+            <p>Your cart is empty</p>
+          )}
+        </div>
+        <div className="cart__wrapper--right">
+          <h1 className="window__price">{`Total Price: $${totalCartPrice}`}</h1>
+          <p className="window__title">{`Tola for ${cart.length} item`}</p>
+          <div className="product__line"></div>
+          <button className="Checkout">Checkout</button>
+        </div>
       </div>
     </main>
   );

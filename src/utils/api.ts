@@ -14,7 +14,8 @@ const fetchData = async (url: string) => {
 
     return await response.json();
   } catch (error) {
-    return Promise.reject(error);
+    // return Promise.reject(error);
+    throw error;
   }
 };
 
@@ -43,6 +44,13 @@ export const fetchAccessories = async () => {
   );
 };
 
+export const fetchProducts = async () => {
+  await delay();
+
+  return fetchData(
+    'https://taniavozniuk.github.io/react_phone-catalog2.0/api/products.json',
+  );
+};
 // export const getPhones = (): Promise<Phone[]> => {
 //   return delay().then(() => phones);
 // };

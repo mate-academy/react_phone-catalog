@@ -7,8 +7,8 @@ import arrow from '../../../image/arrow.svg';
 import { useProductHooks } from './usePhonesHooks';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ProductDetails } from '../../types/ProductTypes';
-import { fetchAllProducts } from '../../utils/api';
+import { Product, ProductDetails } from '../../types/ProductTypes';
+import { fetchProducts } from '../../utils/api';
 import { Loader } from '../Loader/Loader';
 import catGif from '../../../assets/cat.gif';
 
@@ -17,17 +17,19 @@ export const ProductPage = () => {
   const currentCategory = path.pathname.slice(1);
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
   // const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState<ProductDetails[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useState<ProductDetails[]>([]);
+  const [itemsPrePage, setItemsPrePage] = useState<number | 'all'>(8);
+
   const {
-    phones,
+    sortBy,
     loading,
     error,
     setError,
     currentPage,
     totalPages,
     setCurrentPage,
-    handleItemsChange,
+    // handleItemsChange,
     handleSortChange,
     // setItemPrevPage,
   } = useProductHooks();
@@ -37,15 +39,16 @@ export const ProductPage = () => {
     pageNumbers.push(i);
   }
 
+  //завантажує товари з API і фільтрує за катергоріями
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchAllProducts();
+        const data = await fetchProducts();
         const validCategories = ['phones', 'tablets', 'accessories'];
 
         if (validCategories.includes(currentCategory)) {
           const filteredProducts = data.filter(
-            product => product.category === currentCategory,
+            (product: Product) => product.category === currentCategory,
           );
 
           setProducts(filteredProducts);
@@ -61,20 +64,49 @@ export const ProductPage = () => {
 
     fetchData();
 
+    // завантажує cart з localstorage
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
 
     setCart(savedCart);
   }, [currentCategory, setError]);
 
-  const addToCard = (product: ProductDetails) => {
-    setCart(prevCard => {
-      const updatedCart = [...prevCard, product];
+  // console.log(sortBy);
+  const sortedProducts = [...products].sort((a, b) => {
+    if (sortBy === 'Newest') {
+      return b.year - a.year;
+    }
 
-      localStorage.setItem('cart', JSON.stringify(updatedCart));
+    if (sortBy === 'Alphabetically') {
+      return a.name.localeCompare(b.name);
+    }
 
-      return updatedCart;
-    });
+    if (sortBy === 'Cheapest') {
+      return a.fullPrice - b.fullPrice;
+    }
+
+    return a.name.localeCompare(b.name);
+  });
+
+  // console.log(sortBy, sortedProducts);
+
+  const displayedProducts =
+    itemsPrePage === 'all'
+      ? sortedProducts
+      : sortedProducts.slice(0, itemsPrePage);
+
+  const handleItemsPrePageChange = (option: { value: string }) => {
+    setItemsPrePage(option.value === 'all' ? 'all' : Number(option.value));
   };
+
+  // const addToCard = (product: ProductDetails) => {
+  //   setCart(prevCard => {
+  //     const updatedCart = [...prevCard, product];
+
+  //     localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+  //     return updatedCart;
+  //   });
+  // };
 
   return (
     <main className="main__phonepage">
@@ -111,7 +143,7 @@ export const ProductPage = () => {
           <h1 className="page__title">
             {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
           </h1>
-          <h1 className="mobile__models">{`${phones.length} models`}</h1>
+          <h1 className="mobile__models">{`${products.length} models`}</h1>
         </>
       )}
 
@@ -134,11 +166,11 @@ export const ProductPage = () => {
               </div>
               <div className="mobile__items">
                 <h3 className="item__page">Items on page</h3>
-                <MyDropdownItems onChange={handleItemsChange} />
+                <MyDropdownItems onChange={handleItemsPrePageChange} />
               </div>
             </div>
             <div className="mobile__cards">
-              {products.map(product => (
+              {displayedProducts.map((product: Product) => (
                 <ProductItem
                   key={product.id}
                   product={product}

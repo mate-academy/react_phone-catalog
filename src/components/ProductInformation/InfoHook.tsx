@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useEffect, useState } from 'react';
-import { ProductDetails } from '../../types/ProductTypes';
+import { Product, ProductDetails } from '../../types/ProductTypes';
 import './ProductInformation.scss';
-import { fetchAllProducts } from '../../utils/api';
+import { fetchAllProducts, fetchProducts } from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export const useInfoHook = () => {
@@ -20,6 +20,7 @@ export const useInfoHook = () => {
   const [mainImage, setMainImage] = useState<string>('');
   const [selecredColor, setSelectedColor] = useState<string | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<string | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -44,6 +45,32 @@ export const useInfoHook = () => {
       clearTimeout(timeout);
     };
   }, [productId]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchProducts();
+
+        const filteredProducts = data.filter(
+          (product: Product) => product.category === category,
+        );
+
+        setProducts(filteredProducts);
+
+        const product = filteredProducts.find(
+          (item: Product) => item.itemId === productId,
+        );
+
+        setSelectedPhone(product || null);
+      } catch {
+        setError(
+          `Oops, something went wrong, please check your connection 🫶💻`,
+        );
+      }
+    };
+
+    fetchData();
+  }, [category, productId, setSelectedPhone, setError]);
 
   const normalizeColor = (color: string) => {
     if (color.length > 1) {
@@ -137,5 +164,6 @@ export const useInfoHook = () => {
     setSelectedPhone,
     setError,
     error,
+    products,
   };
 };

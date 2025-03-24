@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ProductDetails } from '../../types/ProductTypes';
+import { Product } from '../../types/ProductTypes';
 import { useNavigate } from 'react-router-dom';
 import like from '../../../image/heart.svg';
 import liked from '../../../image/liked.svg';
@@ -8,7 +8,7 @@ import './ProductItem.scss';
 import { useFavourites } from '../Favourites/FacouritesContext';
 
 interface Props {
-  product: ProductDetails;
+  product: Product;
   WithAdditionalPrice?: boolean;
   onClick?: () => void;
   // addToCard: (product: ProductDetails) => void;
@@ -19,8 +19,8 @@ export const ProductItem: React.FC<Props> = ({
   WithAdditionalPrice = false,
 }) => {
   const { favorites, toggleFavorite } = useFavourites();
-  const isFavorite = favorites.some(fav => fav.id === product.id);
-  const productPath = `/${product.category}/${product.id}`;
+  const isFavorite = favorites.some(fav => fav.itemId === product.itemId);
+  const productPath = `/${product.category}/${product.itemId}`;
   const navigate = useNavigate();
 
   const [isAdded, setIsAdded] = useState(false); // стан кнопки
@@ -28,7 +28,7 @@ export const ProductItem: React.FC<Props> = ({
   useEffect(() => {
     const saveCard = JSON.parse(localStorage.getItem('card') || '[]');
 
-    if (saveCard.some((item: ProductDetails) => item.id === product.id)) {
+    if (saveCard.some((item: Product) => item.id === product.id)) {
       setIsAdded(true);
     }
   }, [product.id]);
@@ -38,15 +38,13 @@ export const ProductItem: React.FC<Props> = ({
 
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
     const isProductInCart = savedCart.some(
-      (item: ProductDetails) => item.id === product.id,
+      (item: Product) => item.id === product.id,
     );
 
     let updatedCart;
 
     if (isProductInCart) {
-      updatedCart = savedCart.filter(
-        (item: ProductDetails) => item.id !== product.id,
-      );
+      updatedCart = savedCart.filter((item: Product) => item.id !== product.id);
     } else {
       updatedCart = [...savedCart, product];
     }
@@ -66,7 +64,7 @@ export const ProductItem: React.FC<Props> = ({
     >
       <div className="product__img-container">
         <img
-          src={product.images[0]}
+          src={product.image}
           alt={`${product.category} image`}
           className="product__image"
         />
@@ -74,9 +72,9 @@ export const ProductItem: React.FC<Props> = ({
 
       <h3 className="product__name">{product.name}</h3>
       <div className="product__discount">
-        <h3 className="product__price">{`$ ${product.priceRegular}`}</h3>
+        <h3 className="product__price">{`$ ${product.fullPrice}`}</h3>
         {WithAdditionalPrice && (
-          <h3 className="product__fullprice">{`$ ${product.priceDiscount}`}</h3>
+          <h3 className="product__fullprice">{`$ ${product.price}`}</h3>
         )}
       </div>
 

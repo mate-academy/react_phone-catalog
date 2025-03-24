@@ -1,35 +1,77 @@
-.card__wraper{
-  display: block;
+@import '../../utils/mixins';
+
+.cart__wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+  justify-content: space-between;
+
+  &--left {
+    width: 100%;
+  }
+
+  &--right {
+    border: 1px solid #3b3e4a;
+    padding: 24px;
+    max-height: 206px;
+    min-width: 368px;
+  }
 }
 
-.window{
-  border: 1px solid #3B3E4A;
-  padding: 24px;
-}
+// .cart__wrapper {
+//   display: flex;
+//   flex-direction: row;
+//   gap: 16px;
+//   width: 100%;
+//   justify-content: space-between;
 
-.window__price{
+//   &--left {
+//     width: 100%;
+//   }
+
+//   &--right {
+//     border: 1px solid #3b3e4a;
+//     padding: 24px;
+//     max-height: 206px;
+//     min-width: 368px;
+
+//     @include onMobile{
+//       min-width: auto;
+//     }
+//   }
+
+//   @include onTablet{
+//     flex-direction: column;
+//   }
+
+//   @include onMobile{
+//     flex-direction: column;
+//   }
+// }
+
+.window__price {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.window__title{
+.window__title {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 25px;
 }
 
-.Checkout{
+.Checkout {
   width: 100%;
   height: 48px;
-  background-color: #905BFF;
-  border: 1px solid #905BFF;
+  background-color: #905bff;
+  border: 1px solid #905bff;
   margin-top: 24px;
-  color: #F1F2F9;
+  color: #f1f2f9;
   font-family: Mont, sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
-
 }

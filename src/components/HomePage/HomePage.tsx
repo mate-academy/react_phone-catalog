@@ -5,23 +5,25 @@ import { SliderSwiper } from '../SliderSwiper/SliderSwiper';
 import { ShopByCategory } from '../ShopByCategory/ShopByCategory';
 import { ProductSlider } from '../ProductCard/ProductCard';
 import { useEffect, useState } from 'react';
-import { ProductDetails } from '../../types/ProductTypes';
-import { fetchAllProducts } from '../../utils/api';
+import { Product, ProductDetails } from '../../types/ProductTypes';
+import { fetchAllProducts, fetchProducts } from '../../utils/api';
 import { Loader } from '../Loader/Loader';
 import { NameSlider } from '../../nameslider';
 import catGif from '../../../assets/cat.gif';
 export const HomePage = () => {
   // const [phones, setPhones] = useState<Product[]>([]);
-  const [phones, setPhones] = useState<ProductDetails[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchAllProducts();
+        const data = await fetchProducts();
 
-        setPhones(data.filter(product => product.category === 'phones'));
+        setPhones(
+          data.filter((product: Product) => product.category === 'phones'),
+        );
         setError(null);
       } catch (err: any) {
         if (err.message === 'No internet connection') {
