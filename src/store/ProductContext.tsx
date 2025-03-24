@@ -33,7 +33,9 @@ export const ProductProvider: FC<Props> = ({ children }) => {
     setErrorMsg('');
 
     try {
-      const response = await fetch('/api/products.json');
+      const response = await fetch(
+        `${import.meta.env.BASE_URL}api/products.json`,
+      );
 
       if (!response.ok) {
         throw new Error('Something went wrong. Please try again.');

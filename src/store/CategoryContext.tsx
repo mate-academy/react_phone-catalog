@@ -29,7 +29,9 @@ export const CategoryProvider: React.FC<Props> = ({ children }) => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('/api/categories.json');
+      const response = await fetch(
+        `${import.meta.env.BASE_URL}api/categories.json`,
+      );
 
       if (!response.ok) {
         throw new Error('Failed to fetch categories 1');
