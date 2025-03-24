@@ -31,6 +31,8 @@ export const ProductOptions: React.FC<Props> = ({
     graphite: 'lightgrey',
     sierrablue: 'darkblue',
     'space gray': 'lightslategray',
+    'rose gold': 'palevioletred',
+    'sky blue': 'royalblue',
   };
 
   const reverseColorMap = Object.fromEntries(
@@ -61,7 +63,11 @@ export const ProductOptions: React.FC<Props> = ({
 
     const partsId = id.split('-');
 
-    if (partsId[partsId.length - 2] === 'space') {
+    if (
+      partsId[partsId.length - 2] === 'space' ||
+      partsId[partsId.length - 2] === 'rose' ||
+      partsId[partsId.length - 2] === 'sky'
+    ) {
       partsId.splice(partsId.length - 2, 2, originalColor);
     } else {
       partsId[partsId.length - 1] = originalColor;
