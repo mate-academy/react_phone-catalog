@@ -14,16 +14,13 @@ export const App = () => {
   }, [pathname]);
 
   return (
-    <>
+    <div className="App">
       <h1 className="visually-hidden">Product Catalog</h1>
-
-      <div className="App">
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
-    </>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 };
