@@ -2,7 +2,7 @@ import { CATEGORIES } from '../constants';
 import { Categories } from '../types/Categories';
 import { Item } from '../types/Item';
 
-const BASE_URL = '/api/';
+const BASE_URL = 'api/';
 
 export const wait = () => new Promise(resolve => setTimeout(resolve, 300));
 
