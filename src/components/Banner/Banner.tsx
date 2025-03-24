@@ -2,22 +2,24 @@ import React, { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import SwiperCore from 'swiper';
+import prev from '/img/banner/banner_button-prev.svg';
+import next from '/img/banner/banner_button-next.svg';
 
 const images = [
   {
-    mobile: '/img/banner/hero_iphone16pro_small.jpg',
-    tablet: '/img/banner/hero_iphone16pro_medium.jpg',
-    desktop: '/img/banner/hero_iphone16pro_large.jpg',
+    mobile: './img/banner/hero_iphone16pro_small.jpg',
+    tablet: './img/banner/hero_iphone16pro_medium.jpg',
+    desktop: './img/banner/hero_iphone16pro_large.jpg',
   },
   {
-    mobile: '/img/banner/hero_ipadpro_small-v3.webp',
-    tablet: '/img/banner/hero_ipadpro_large.jpg',
-    desktop: '/img/banner/hero_ipadpro_large.jpg',
+    mobile: './img/banner/hero_ipadpro_small-v3.webp',
+    tablet: './img/banner/hero_ipadpro_large.jpg',
+    desktop: './img/banner/hero_ipadpro_large.jpg',
   },
   {
-    mobile: '/img/banner/hero_watchultra2_small.jpg',
-    tablet: '/img/banner/hero_watchultra2_large-v2.webp',
-    desktop: '/img/banner/hero_watchultra2_large-v2.webp',
+    mobile: './img/banner/hero_watchultra2_small.jpg',
+    tablet: './img/banner/hero_watchultra2_large-v2.webp',
+    desktop: './img/banner/hero_watchultra2_large-v2.webp',
   },
 ];
 
@@ -42,7 +44,7 @@ export const Banner: React.FC = () => {
           >
             <img
               className="banner__slider__btn--img"
-              src="/img/banner/banner_button-prev.svg"
+              src={prev}
               alt="Previous"
             />
           </button>
@@ -90,11 +92,7 @@ export const Banner: React.FC = () => {
             className="banner__slider__btn banner__slider__btn--next"
             onClick={() => swiperRef.current?.slideNext()}
           >
-            <img
-              className="banner__slider__btn--img"
-              src="/img/banner/banner_button-next.svg"
-              alt="Next"
-            />
+            <img className="banner__slider__btn--img" src={next} alt="Next" />
           </button>
         </div>
         <div className="banner__dashes">
