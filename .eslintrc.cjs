@@ -11,12 +11,15 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:cypress/recommended',
+    'plugin:tailwindcss/recommended',
   ],
   overrides: [
     {
-      'files': ['**/*.spec.jsx'],
+      'files': ['**/*.spec.jsx', '**/*.css', '**/*.jsx', '**/*.tsx'],
       'rules': {
         'react/jsx-filename-extension': ['off'],
+        'scss/at-rule-no-unknown': ['off'],
+        'tailwindcss/no-custom-classname': 'off',
       }
     }
   ],
@@ -26,7 +29,7 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 12,
-    project: './tsconfig.json',
+    project: ['./tsconfig.json', './tailwind.config.ts'],
     sourceType: 'module',
   },
   plugins: [
@@ -34,10 +37,13 @@ module.exports = {
     'import',
     'react-hooks',
     '@typescript-eslint',
-    'prettier'
+    'prettier',
+    'tailwindcss',
   ],
   rules: {
     // JS
+    'scss/at-rule-no-unknown': 'off',
+    'tailwindcss/classnames-order': 'warn',
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
@@ -99,7 +105,7 @@ module.exports = {
       },
     ],
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress', 'tailwind.config.ts', 'postcss.config.ts'],
   settings: {
     react: {
       version: 'detect',
