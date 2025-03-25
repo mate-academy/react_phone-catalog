@@ -40,24 +40,28 @@ export {};
 
 declare global {
   namespace Cypress {
-    interface Chainable<Subject> {
+    interface Chainable {
       getByDataCy(selector: string): Chainable<JQuery<HTMLElement>>;
       byDataCy(name: string): Chainable<JQuery<HTMLElement>>;
     }
   }
 }
 
-Cypress.Commands.add('getByDataCy', selector => {
-  cy.get(`[data-cy="${selector}"]`);
+Cypress.Commands.add('getByDataCy', (selector: string) => {
+  return cy.get(`[data-cy="${selector}"]`);
 });
 
 Cypress.Commands.add(
   'byDataCy',
-  { prevSubject: 'optional' },
-
-  (subject, name) => {
+  { prevSubject: true },
+  (
+    subject: JQuery<HTMLElement> | undefined,
+    name: string
+  ): Cypress.Chainable<JQuery<HTMLElement>> => {
     const selector = `[data-cy="${name}"]`;
-
-    return subject ? cy.wrap(subject).find(selector) : cy.get(selector);
-  },
+    
+    return subject
+      ? cy.wrap(subject).find(selector)
+      : cy.get(selector);
+  }
 );
