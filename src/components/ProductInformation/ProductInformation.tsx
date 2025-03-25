@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProductInformation.scss';
 import home from '../../../image/home.svg';
 import arrow from '../../../image/arrow.svg';
@@ -7,15 +7,16 @@ import { Loader } from '../Loader/Loader';
 import like from '../../../image/heart.svg';
 import { useInfoHook } from './InfoHook';
 import { ProductSlider } from '../ProductCard/ProductCard';
-// import { fetchAllProducts, fetchProducts } from '../../utils/api';
 import { useParams } from 'react-router-dom';
 import { NameSlider } from '../../nameslider';
-// import { Product, ProductDetails } from '../../types/ProductTypes';
 import catGif from '../../../assets/cat.gif';
+import { useFavourites } from '../Favourites/FacouritesContext';
+import { useCart } from '../BuyCard/CartContext';
+import { Product } from '../../types/ProductTypes';
+import liked from '../../../image/liked.svg';
 
 export const ProductInformation: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-  // const [products, setProducts] = useState<Product[]>([]);
 
   const {
     selectedPhone,
@@ -29,13 +30,63 @@ export const ProductInformation: React.FC = () => {
     selectedMemory,
     selecredColor,
     techInfo,
-    // setSelectedPhone,
-    // setError,
     error,
     products,
   } = useInfoHook();
 
-  // const currentCategory = category || 'phones';
+  const { favorites, toggleFavorite } = useFavourites();
+  const { toggleCart } = useCart();
+
+  const [isAdded, setIsAdded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    if (selectedPhone) {
+      const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const sevedFavorites = JSON.parse(
+        localStorage.getItem('favorites') || '[]',
+      );
+
+      setIsAdded(savedCart.some((item: Product) => item.id === products.id));
+      setIsFavorite(
+        sevedFavorites.some((item: Product) => item.id === products.id),
+      );
+    }
+  }, [selectedPhone]);
+
+  const handleToggleCart = () => {
+    if (!selectedPhone) {
+      return;
+    }
+
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const isProductInCart = savedCart.some(
+      (item: Product) => item.id === products.id,
+    );
+
+    let updatedCart;
+
+    if (isProductInCart) {
+      updatedCart = savedCart.filter(
+        (item: Product) => item.id !== products.id,
+      );
+    } else {
+      updatedCart = [...savedCart, selectedPhone];
+    }
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    toggleCart(selectedPhone);
+    setIsAdded(!isProductInCart);
+  };
+
+  const handleToggleFavorite = () => {
+    if (!selectedPhone) {
+      return;
+    }
+
+    toggleFavorite(selectedPhone);
+    setIsFavorite(!isFavorite);
+  };
 
   return (
     <main className="productInfo">
@@ -148,9 +199,17 @@ export const ProductInformation: React.FC = () => {
               </div>
 
               <div className="productInfo__button">
-                <button className="productInfo__buttonAdd">Add to cart</button>
-                <button className="productInfo__buttonLike">
-                  <img src={like} alt="like" />
+                <button
+                  className="productInfo__buttonAdd"
+                  onClick={handleToggleCart}
+                >
+                  {isAdded ? 'Added' : 'Add to cart'}
+                </button>
+                <button
+                  className="productInfo__buttonLike"
+                  onClick={handleToggleFavorite}
+                >
+                  <img src={isFavorite ? liked : like} alt="like" />
                 </button>
               </div>
 

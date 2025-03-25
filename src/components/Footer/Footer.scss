@@ -3,14 +3,13 @@
 
 
 .footer {
-
-  padding-top: 80px;
+  // padding-top: 80px;
   border: none;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000;
   @include themify($themes) {
     background: themed('colorHeaderFooter');
   }

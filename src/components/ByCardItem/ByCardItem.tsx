@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Product } from '../../types/ProductTypes';
 import Delete from '../../../image/close.svg';
+import DeleteBlack from '../../../image/Close2Black.svg';
 import './ByCardItem.scss';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../ColorThemes/ColorThemes';
 
 interface CartProps {
   product: Product;
@@ -44,43 +46,55 @@ export const ByCardItem: React.FC<CartProps> = ({
   const totalPriceOneProduct = product.fullPrice * quantity;
   const productPath = `/${product.category}/${product.id}`;
 
+  const { theme } = useContext(ThemeContext);
+  const isDarkMode = theme === 'dark';
+
   return (
     <>
       <div className="buy">
         <div className="buy__item" onClick={() => navigate(productPath)}>
-          <img
-            src={Delete}
-            alt="deleteIcon"
-            className="buy__deleteIcon"
-            onClick={(e: React.MouseEvent) => {
-              e.stopPropagation();
-              handleDeleteButton();
-            }}
-          />
-          <img src={product.image} alt={product.name} className="buy__image" />
-          <h3 className="buy__title">{product.name}</h3>
-          <p className="buy__price">{`$${totalPriceOneProduct}`}</p>
+          <div className="buy__firstwrapper">
+            <img
+              src={isDarkMode ? Delete : DeleteBlack}
+              alt="deleteIcon"
+              className="buy__deleteIcon"
+              onClick={(e: React.MouseEvent) => {
+                e.stopPropagation();
+                handleDeleteButton();
+              }}
+            />
+            <img
+              src={product.image}
+              alt={product.name}
+              className="buy__image"
+            />
+            <h3 className="buy__title">{product.name}</h3>
+          </div>
 
-          <div className="buy__button">
-            <button
-              className="buttonPrev"
-              onClick={(e: React.MouseEvent) => {
-                e.stopPropagation();
-                handleDecrease();
-              }}
-            >
-              -
-            </button>
-            <span className="buy__number">{quantity}</span>
-            <button
-              className="buttonNext"
-              onClick={(e: React.MouseEvent) => {
-                e.stopPropagation();
-                handleIncrease();
-              }}
-            >
-              +
-            </button>
+          <div className="buy__secondwrapper">
+            <p className="buy__price">{`$${totalPriceOneProduct}`}</p>
+
+            <div className="buy__button">
+              <button
+                className="buttonPrev"
+                onClick={(e: React.MouseEvent) => {
+                  e.stopPropagation();
+                  handleDecrease();
+                }}
+              >
+                -
+              </button>
+              <span className="buy__number">{quantity}</span>
+              <button
+                className="buttonNext"
+                onClick={(e: React.MouseEvent) => {
+                  e.stopPropagation();
+                  handleIncrease();
+                }}
+              >
+                +
+              </button>
+            </div>
           </div>
         </div>
       </div>

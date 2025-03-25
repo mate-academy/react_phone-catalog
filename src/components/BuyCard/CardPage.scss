@@ -3,7 +3,7 @@
 
 
 .cart__wrapper {
-  display: flex;
+  display: block;
   flex-direction: row;
   gap: 16px;
   width: 100%;
@@ -16,10 +16,21 @@
   &--right {
     border: 1px solid #3b3e4a;
     padding: 24px;
-    max-height: 206px;
+    max-height: 190px;
+    min-width: 25%;
+
+  }
+
+  @include onTablet{
+    display: block;
+  }
+
+  @include onDesktop{
+    display: flex;
     min-width: 368px;
   }
 }
+
 
 // .cart__wrapper {
 //   display: flex;

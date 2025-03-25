@@ -137,7 +137,7 @@
 .badge {
   position: absolute;
   top: 17px;
-  right: 18px;
+  right: 64px;
   background: #eb5757;
   color: white;
   font-size: 10px;
@@ -149,19 +149,19 @@
   justify-content: center;
   align-items: center;
 
-  @include onTablet{
+  @include onTablet {
     right: 144px;
   }
 
-  @include onDesktop{
+  @include onDesktop {
     right: 18px;
   }
 }
 
-.badge2{
+.badge2 {
   position: absolute;
-  top: 17px;
-  right: 18px;
+  top: 18px;
+  right: 224px;
   background: #eb5757;
   color: white;
   font-size: 10px;
@@ -173,11 +173,11 @@
   justify-content: center;
   align-items: center;
 
-  @include onTablet{
-    right: 144px;
+  @include onTablet {
+    right: 463px;
   }
 
-  @include onDesktop{
+  @include onDesktop {
     right: 82px;
   }
 }

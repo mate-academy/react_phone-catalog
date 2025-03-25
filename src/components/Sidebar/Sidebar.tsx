@@ -3,15 +3,17 @@ import { NavLink } from 'react-router-dom';
 // import Favourites from '../../../image/heart.svg';
 // import cart from '../../../image/shopping.svg';
 // import close from '../../../image/close.svg';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import './Sidebar.scss';
 import classNames from 'classnames';
 
 import Favourites from '../../../image/heart.svg';
-import cart from '../../../image/shopping.svg';
+import cartimg from '../../../image/shopping.svg';
 import BlackFavourites from '../../../image/blackHeart.svg';
 import Blackcart from '../../../image/blackShoppinng.svg';
 import { ThemeContext } from '../ColorThemes/ColorThemes';
+import { useFavourites } from '../Favourites/FacouritesContext';
+import { useCart } from '../BuyCard/CartContext';
 // import { useFavourites } from '../Favourites/FacouritesContext';
 
 interface SidebarProps {
@@ -27,15 +29,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
     classNames('navbar-item', { 'active-link': isActive });
 
   const { theme } = useContext(ThemeContext);
-  // const { favorites } = useFavourites();
-  // const [cartCount, setCartCount] = useState(0);
   const isDarkMode = theme === 'dark';
-
-  // useEffect(() => {
-  //   const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-  //   setCartCount(savedCart.length);
-  // }, []);
+  const { favorites } = useFavourites();
+  const { cart } = useCart();
 
   return (
     <aside className={`sidebar ${menuIsOpen ? 'open' : ''}`}>
@@ -77,18 +73,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
           onClick={setMenuIsOpen}
         >
           <img src={isDarkMode ? Favourites : BlackFavourites} alt="heart" />
-          {/* {favorites.length > 0 && (
-            <span className="badge">{favorites.length}</span>
-          )} */}
+          {favorites.length > 0 && (
+            <span className="badge2">{favorites.length}</span>
+          )}
         </NavLink>
 
         <NavLink className="sidebar__buy" to="/cart">
           <img
-            src={isDarkMode ? cart : Blackcart}
+            src={isDarkMode ? cartimg : Blackcart}
             alt="shopping"
             onClick={setMenuIsOpen}
           />
-          {/* {cartCount > 0 && <span className="badge">{cartCount}</span>} */}
+          {cart.length > 0 && <span className="badge">{cart.length}</span>}
         </NavLink>
       </div>
     </aside>

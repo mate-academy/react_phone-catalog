@@ -1,7 +1,6 @@
 @import './fonts/fonts.scss';
 @import './components/ColorThemes/ColorThemes.scss';
 
-
 body {
   margin: 0;
   padding: 0;
@@ -13,7 +12,6 @@ body {
   }
 
   @include font-body;
-
 }
 
 .App {
@@ -28,7 +26,6 @@ body {
 .theme-light {
   background-color: #fff;
   color: #000;
-
 }
 
 .theme-dark {
@@ -45,22 +42,10 @@ body {
   }
 }
 
-// .footer__wrapper{
-//   margin-top: 80px;
-// }
-
-// .error__container{
-//   display: block;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-.error__img{
+.error__img {
   box-shadow: 1px 0 0.4em rgba(217, 217, 214, 0.459);
   width: 50%;
-
 }
-
 
 .error__container {
   display: flex;
@@ -85,4 +70,8 @@ body {
   to {
     opacity: 1;
   }
+}
+
+.product_yet {
+  width: 50%;
 }

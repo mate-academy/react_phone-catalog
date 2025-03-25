@@ -80,7 +80,7 @@ export interface Accessory {
 export type ProductDetails = Phone | Tablet | Accessory;
 
 export interface Product {
-  id: number;
+  id?: number;
   category: string;
   itemId: string;
   name: string;

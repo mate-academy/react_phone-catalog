@@ -30,8 +30,13 @@ export const FavouritesPage = () => {
       {favorites.length > 0 && <h1 className="page__title">Favourites</h1>}
 
       {favorites.length === 0 ? (
-        <p className="page__title">No favorite product yet</p>
+        <img
+          className="product_yet"
+          src="public\img\product-not-found.png"
+          alt="No_favorite_product_yet"
+        />
       ) : (
+        // <p className="page__title">No favorite product yet</p>
         <div className="favourites__card">
           {favorites.map(product => (
             <ProductItem key={product.id} product={product} />

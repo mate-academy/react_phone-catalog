@@ -1,4 +1,5 @@
 @import '../ColorThemes/ColorThemes.scss';
+@import '../../utils/mixins';
 
 .buy {
   margin-bottom: 17px;
@@ -6,14 +7,45 @@
 
 .buy__item {
   background-color: #161827;
-  height: 128px;
-  display: flex;
+  // height: 128px;
+  display: block;
   gap: 24px;
   align-items: center;
   border: #161827 1px solid;
+  padding: 16px;
 
   @include themify($themes) {
     background: themed('colorHeaderFooter');
+  }
+
+  @include onTablet{
+    display: block;
+  }
+
+  @include onDesktop{
+    display: flex;
+  }
+}
+
+
+.buy__firstwrapper{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 16px;
+
+  @include onDesktop{
+    padding-bottom: 0;
+  }
+}
+
+.buy__secondwrapper{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  @include onMobile{
+    gap: 160px;
   }
 }
 
@@ -61,3 +93,9 @@
     color: themed('colorText');
   }
 }
+
+// .buy__button{
+//   @include onMobile{
+//     display: flex;
+//   }
+// }

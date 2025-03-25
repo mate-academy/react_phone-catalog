@@ -6,6 +6,7 @@ import liked from '../../../image/liked.svg';
 
 import './ProductItem.scss';
 import { useFavourites } from '../Favourites/FacouritesContext';
+import { useCart } from '../BuyCard/CartContext';
 
 interface Props {
   product: Product;
@@ -22,15 +23,17 @@ export const ProductItem: React.FC<Props> = ({
   const isFavorite = favorites.some(fav => fav.itemId === product.itemId);
   const productPath = `/${product.category}/${product.itemId}`;
   const navigate = useNavigate();
+  const { toggleCart } = useCart();
 
   const [isAdded, setIsAdded] = useState(false); // стан кнопки
 
   useEffect(() => {
-    const saveCard = JSON.parse(localStorage.getItem('cart') || '[]');
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const isProductInCart = savedCart.some(
+      (item: Product) => item.id === product.id,
+    );
 
-    if (saveCard.some((item: Product) => item.id === product.id)) {
-      setIsAdded(true);
-    }
+    setIsAdded(isProductInCart);
   }, [product.id]);
 
   const handleToggleCart = (e: React.MouseEvent) => {
@@ -50,6 +53,7 @@ export const ProductItem: React.FC<Props> = ({
     }
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
+    toggleCart(product);
     setIsAdded(!isProductInCart);
     // addToCard(product);
 
