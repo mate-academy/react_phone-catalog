@@ -108,7 +108,7 @@ export const AccessoriesPage = () => {
           <Card
             key={tablet.id}
             card={{
-              id: Number(tablet.id),
+              id: tablet.id,
               category: tablet.category,
               itemId: tablet.itemId,
               name: tablet.name,

@@ -1,7 +1,9 @@
+import React from 'react';
 import styles from './BurgerMenu.module.scss';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from '../../imgs/svg/Logo.svg';
+import { useCart } from '../../context/CartContext';
 
 interface Props {
   isOpen: boolean;
@@ -9,6 +11,8 @@ interface Props {
 }
 
 export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
+  const { cart, favorites } = useCart();
+
   return (
     <div className={classNames(styles.menu, { [styles.menu_open]: isOpen })}>
       <div className={styles.menu__header}>
@@ -43,12 +47,22 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
           className={styles.menu__footer_favorites}
           to="/favorites"
           onClick={onClose}
-        ></NavLink>
+        >
+          {favorites.length > 0 && (
+            <span className={styles.menu__footer_badge}>
+              {favorites.length}
+            </span>
+          )}
+        </NavLink>
         <NavLink
           className={styles.menu__footer_cart}
           to="/cart"
           onClick={onClose}
-        ></NavLink>
+        >
+          {cart.length > 0 && (
+            <span className={styles.menu__footer_badge}>{cart.length}</span>
+          )}
+        </NavLink>
       </footer>
     </div>
   );

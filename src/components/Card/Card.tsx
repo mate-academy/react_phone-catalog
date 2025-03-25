@@ -11,7 +11,14 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ card }) => {
   const navigate = useNavigate();
-  const { cart, favorites } = useCart();
+  const {
+    cart,
+    favorites,
+    addToCart,
+    removeFromCart,
+    addToFavorites,
+    removeFromFavorites,
+  } = useCart();
 
   const isInCart = cart.some(item => item.id === card.id);
   const isInFavorites = favorites.some(item => item.id === card.id);
@@ -54,11 +61,23 @@ export const Card: React.FC<CardProps> = ({ card }) => {
         </div>
       </div>
       <div className={styles.card__buttons}>
-        <ToggleButton product={card} type="cart" isActive={isInCart} />
+        <ToggleButton
+          product={card}
+          type="cart"
+          isActive={isInCart}
+          onClick={() => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+            isInCart ? removeFromCart(card.id) : addToCart(card);
+          }}
+        />
         <ToggleButton
           product={card}
           type="favorites"
           isActive={isInFavorites}
+          onClick={() => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+            isInFavorites ? removeFromFavorites(card.id) : addToFavorites(card);
+          }}
         />
       </div>
     </div>

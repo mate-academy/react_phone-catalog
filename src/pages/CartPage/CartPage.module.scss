@@ -1,1 +1,180 @@
-// not empty
+@import '../../styles/variables';
+@import '../../styles/mixinsTypography';
+
+.cart {
+  padding: 24px 16px;
+
+  &__back {
+    display: flex;
+    width: max-content;
+    text-decoration: none;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 8px;
+
+    &_arrow {
+      width: 16px;
+      height: 16px;
+    }
+
+    &_text {
+      color: $secondaryColor;
+      margin: 0;
+
+      @include small-text;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 24px;
+    color: $primaryColor;
+
+    @include h1-mobile;
+  }
+
+  &__empty {
+    color: $secondaryColor;
+
+    @include body-text;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    list-style: none;
+    padding: 0 16px;
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid $grayColor;
+    width: 100%;
+  }
+
+  &__desription {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    gap: 16px;
+  }
+
+  &__remove {
+    background: none;
+    border: none;
+    color: $secondaryColor;
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin: 0;
+  }
+
+  &__name {
+    margin: 0;
+    color: $primaryColor;
+
+    @include body-text;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-height: 32px;
+  }
+
+  &__price {
+    margin: 0;
+    color: $primaryColor;
+
+    @include h3-tablet-desktop;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+  }
+
+  &__quantityButton {
+    background: none;
+    border: 1px solid $iconsColor;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+      border-color: $elementsColor;
+    }
+  }
+
+  &__quantityValue {
+    margin: 0 8px;
+    font-size: 16px;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $grayColor;
+    padding: 24px;
+    gap: 16px;
+
+    &_text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      &_total {
+        margin: 0;
+        color: $primaryColor;
+
+        @include h2-tablet-desktop
+      }
+
+      &_totalItems {
+        margin: 0;
+        color: $secondaryColor;
+
+        @include body-text;
+      }
+    }
+
+    &_line {
+      height: 1px;
+      width: 100%;
+      background-color: $grayColor;
+    }
+
+    &_checkout {
+      height: 48px;
+      width: 100%;
+      background-color: $primaryColor;
+      color: $whiteColor;
+      border: none;
+      cursor: pointer;
+
+      @include buttons;
+    }
+  }
+}

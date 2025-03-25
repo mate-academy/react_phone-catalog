@@ -11,11 +11,12 @@ interface CartContextProps {
   cart: Product[];
   favorites: Product[];
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void;
+  removeFromCart: (productId: number) => void;
   addToFavorites: (product: Product) => void;
-  removeFromFavorites: (productId: string) => void;
-  isInCart: (productId: string) => boolean;
-  isInFavorites: (productId: string) => boolean;
+  removeFromFavorites: (productId: number) => void;
+  clearFavorites: () => void;
+  isInCart: (productId: number) => boolean;
+  isInFavorites: (productId: number) => boolean;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
@@ -46,7 +47,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     setCart(prevCart => [...prevCart, product]);
   };
 
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = (productId: number) => {
     setCart(prevCart => prevCart.filter(product => product.id !== productId));
   };
 
@@ -54,17 +55,21 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     setFavorites(prevFavorites => [...prevFavorites, product]);
   };
 
-  const removeFromFavorites = (productId: string) => {
+  const removeFromFavorites = (productId: number) => {
     setFavorites(prevFavorites =>
       prevFavorites.filter(product => product.id !== productId),
     );
   };
 
-  const isInCart = (productId: string) => {
+  const clearFavorites = () => {
+    setFavorites([]);
+  };
+
+  const isInCart = (productId: number) => {
     return cart.some(product => product.id === productId);
   };
 
-  const isInFavorites = (productId: string) => {
+  const isInFavorites = (productId: number) => {
     return favorites.some(product => product.id === productId);
   };
 
@@ -77,6 +82,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         removeFromCart,
         addToFavorites,
         removeFromFavorites,
+        clearFavorites,
         isInCart,
         isInFavorites,
       }}

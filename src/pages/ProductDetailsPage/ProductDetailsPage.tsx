@@ -7,7 +7,9 @@ import phones from '../../../public/api/phones.json';
 import tablets from '../../../public/api/tablets.json';
 import accessories from '../../../public/api/accessories.json';
 
-import { Product } from '../../types/Product';
+import { Phones } from '../../types/Phones';
+import { Tablets } from '../../types/Tablets';
+import { Accessories } from '../../types/Accessories';
 import { useCart } from '../../context/CartContext';
 import { colorMap } from '../../types/colorMap';
 
@@ -16,11 +18,13 @@ import homeIcon from '../../imgs/svg/home-icon.svg';
 import arrowRight from '../../imgs/svg/arrow-right-icon.svg';
 import arrowLeft from '../../imgs/svg/arrow-left-icon.svg';
 
+type ProductType = Phones | Tablets | Accessories;
+
 export const ProductDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { cart, favorites } = useCart();
-  const allProducts: Product[] = React.useMemo(
+  const allProducts: ProductType[] = React.useMemo(
     () => [...phones, ...tablets, ...accessories],
     [],
   );
@@ -32,8 +36,8 @@ export const ProductDetailsPage: React.FC = () => {
     product?.capacity || '',
   );
 
-  const isInCart = cart.some(item => item.itemId === product?.id);
-  const isInFavorites = favorites.some(item => item.itemId === product?.id);
+  const isInCart = cart.some(item => item.id === product?.id);
+  const isInFavorites = favorites.some(item => item.id === product?.id);
 
   useEffect(() => {
     const newProduct = allProducts.find(
@@ -280,7 +284,7 @@ export const ProductDetailsPage: React.FC = () => {
               {product.capacity}
             </span>
           </p>
-          {product.camera && (
+          {'camera' in product && product.camera && (
             <p className={styles.product__techSpecs_name}>
               Camera
               <span className={styles.product__techSpecs_value}>
@@ -288,7 +292,7 @@ export const ProductDetailsPage: React.FC = () => {
               </span>
             </p>
           )}
-          {product.zoom && (
+          {'camera' in product && product.zoom && (
             <p className={styles.product__techSpecs_name}>
               Zoom
               <span className={styles.product__techSpecs_value}>
