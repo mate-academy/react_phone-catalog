@@ -21,7 +21,7 @@ export const Header = () => {
             to="/"
             className="text-xs font-extrabold uppercase leading-[11px]"
           >
-            Home
+            Homeeeeeeeeeee
           </Link>
           <Link
             to="/phones"
