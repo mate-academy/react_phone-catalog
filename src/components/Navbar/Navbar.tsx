@@ -4,7 +4,7 @@ import './Navbar.scss';
 import logo from '../../../image/logo.svg';
 import BlackLogo from '../../../image/BlackLogo.svg';
 import Favourites from '../../../image/heart.svg';
-import cart from '../../../image/shopping.svg';
+import cartimg from '../../../image/shopping.svg';
 import BlackFavourites from '../../../image/blackHeart.svg';
 import Blackcart from '../../../image/blackShoppinng.svg';
 import menu from '../../../image/menu.svg';
@@ -15,7 +15,7 @@ import { useContext } from 'react';
 // import { useContext } from 'react';
 import { ThemeContext } from '../ColorThemes/ColorThemes';
 import { useFavourites } from '../Favourites/FacouritesContext';
-import { useCart } from '../BuyCard/useCard';
+import { useCart } from '../BuyCard/CartContext';
 
 interface NavbarProps {
   setMenuIsOpen: () => void;
@@ -30,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const { theme } = useContext(ThemeContext);
   const { favorites } = useFavourites();
-  const { cart: cartItems } = useCart();
+  const { cart } = useCart();
   const isDarkMode = theme === 'dark';
 
   // useEffect(() => {
@@ -96,10 +96,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </NavLink>
 
             <NavLink className="logo shopping" to="/cart">
-              <img src={isDarkMode ? cart : Blackcart} alt="shopping" />
-              {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
-              )}
+              <img src={isDarkMode ? cartimg : Blackcart} alt="shopping" />
+              {cart.length > 0 && <span className="badge">{cart.length}</span>}
             </NavLink>
 
             {menuIsOpen ? (

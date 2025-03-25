@@ -5,6 +5,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { useEffect, useState } from 'react';
 import { Footer } from './components/Footer/Footer';
 import { ThemeContext } from './components/ColorThemes/ColorThemes';
+// import { CartProvider } from './components/BuyCard/CartContext';
 // import { useProductHooks } from './components/ProductPage/usePhonesHooks';
 
 export const App = () => {
@@ -28,6 +29,7 @@ export const App = () => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
+      {/* <CartProvider> */}
       <div className={`theme-${theme}`}>
         <div className="App">
           <Navbar
@@ -54,6 +56,7 @@ export const App = () => {
           {/* )} */}
         </div>
       </div>
+      {/* </CartProvider> */}
     </ThemeContext.Provider>
   );
 };
