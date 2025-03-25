@@ -5,7 +5,7 @@ import { Home } from '@/pages/Home';
 // import Phones from '@/pages/Phones';
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/react_phone-catalog'>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
