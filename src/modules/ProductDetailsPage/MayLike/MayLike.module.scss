@@ -1,0 +1,67 @@
+@import '../../../styles/main';
+
+
+.mayLike {
+  &_title {
+    width: 100%;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 56px;
+    padding-bottom: 24px;
+
+    @include on-tablet {
+      padding-top: 64px;
+    }
+
+    @include on-desktop {
+      padding-top: 81px;
+    }
+  }
+
+  &_buttonPrev {
+    display: block;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $borderColorDark;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+    background-image: url('../../../assets/img/icons/arrow-left-icon.svg');
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+
+  &_buttonNext {
+    display: block;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $borderColorDark;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+    background-image: url('../../../assets/img/icons/arrow-right-icon.svg');
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
