@@ -66,6 +66,48 @@ export const GadgetsCollection: React.FC<Props> = ({
     setSearchParams(searchParams);
   };
 
+  const renderPagination = () => {
+    const pageNumbers = [];
+    const totalVisiblePages = 3;
+
+    if (totalPages <= 5) {
+      pageNumbers.push(...Array.from({ length: totalPages }, (_, i) => i + 1));
+    } else {
+      pageNumbers.push(1);
+
+      if (page > totalVisiblePages) {
+        pageNumbers.push('...');
+      }
+
+      const startPage = Math.max(2, page - 1);
+      const endPage = Math.min(totalPages - 1, page + 1);
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i);
+      }
+
+      if (page < totalPages - totalVisiblePages + 1) {
+        pageNumbers.push('...');
+      }
+
+      pageNumbers.push(totalPages);
+    }
+
+    return pageNumbers.map((pageNum, index) => (
+      <button
+        key={index}
+        onClick={() => typeof pageNum === 'number' && handlePageChange(pageNum)}
+        className={classNames(style.pagination__button, {
+          [style['pagination__button--active']]: page === pageNum,
+          [style['pagination__button--dots']]: pageNum === '...',
+        })}
+        disabled={pageNum === '...'}
+      >
+        {pageNum}
+      </button>
+    ));
+  };
+
   return (
     <div className={style.collection}>
       <div className={style.collection__header}>
@@ -73,13 +115,13 @@ export const GadgetsCollection: React.FC<Props> = ({
           <img
             src={
               theme === 'light'
-                ? './icons/home.png'
-                : './icons/home-dark-theme.png'
+                ? './icons/home.svg'
+                : './icons/home-dark-theme.svg'
             }
             alt="Back home"
           />
         </Link>
-        <img src="./icons/arrow-right.png" alt="Gadgets" />
+        <img src="./icons/arrow-right.svg" alt="Gadgets" />
         <span className={style.collection__name}>
           {t(`categories.${category.toLowerCase()}`)}
         </span>
@@ -105,6 +147,7 @@ export const GadgetsCollection: React.FC<Props> = ({
             onChange={handleQueryChange}
             className={style.collection__query}
           />
+          <span className={style.collection__search} />
         </div>
       </div>
       {filteredGadgets.length === 0 ? (
@@ -123,21 +166,11 @@ export const GadgetsCollection: React.FC<Props> = ({
           >
             <img
               className={style.pagination__arrow}
-              src="./icons/arrow-left-dark.png"
+              src="./icons/arrow-left.svg"
               alt="Back"
             />
           </button>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i + 1}
-              onClick={() => handlePageChange(i + 1)}
-              className={classNames(style.pagination__button, {
-                [style['pagination__button--active']]: page === i + 1,
-              })}
-            >
-              {i + 1}
-            </button>
-          ))}
+          {renderPagination()}
           <button
             className={style.pagination__next}
             onClick={() => handlePageChange(page + 1)}
@@ -145,7 +178,7 @@ export const GadgetsCollection: React.FC<Props> = ({
           >
             <img
               className={style.pagination__arrow}
-              src="./icons/arrow-right-dark.png"
+              src="./icons/arrow-right.svg"
               alt="Next"
             />
           </button>

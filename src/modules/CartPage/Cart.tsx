@@ -42,7 +42,7 @@ export const Cart = () => {
     <div className={style.container}>
       <div className={style.back}>
         <div className={style.back__image}>
-          <img src="./icons/arrow-left.png" alt="Back" />
+          <img src="./icons/arrow-left.svg" alt="Back" />
         </div>
         <span className={style.back__word} onClick={() => navigate(-1)}>
           {t('back')}
@@ -67,8 +67,8 @@ export const Cart = () => {
                     <img
                       src={
                         theme === 'light'
-                          ? './icons/close.png'
-                          : './icons/close-dark-theme.png'
+                          ? './icons/close.svg'
+                          : './icons/close-dark-theme.svg'
                       }
                       alt="Remove"
                     />
@@ -89,8 +89,8 @@ export const Cart = () => {
                       <img
                         src={
                           theme === 'light'
-                            ? './icons/minus.png'
-                            : './icons/minus-dark-theme.png'
+                            ? './icons/minus.svg'
+                            : './icons/minus-dark-theme.svg'
                         }
                         alt="Less"
                       />
@@ -105,8 +105,8 @@ export const Cart = () => {
                       <img
                         src={
                           theme === 'light'
-                            ? './icons/plus.png'
-                            : './icons/plus-dark-theme.png'
+                            ? './icons/plus.svg'
+                            : './icons/plus-dark-theme.svg'
                         }
                         alt="More"
                       />

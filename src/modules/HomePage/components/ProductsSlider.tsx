@@ -32,13 +32,13 @@ export const ProductsSlider: React.FC<Props> = ({
             className={style.prev}
             onClick={() => swiperRef.current?.slidePrev()}
           >
-            <img src="icons/arrow-left.png" alt="Previous" />
+            <img src="icons/arrow-left.svg" alt="Previous" />
           </button>
           <button
             className={style.next}
             onClick={() => swiperRef.current?.slideNext()}
           >
-            <img src="icons/arrow-right.png" alt="Next" />
+            <img src="icons/arrow-right.svg" alt="Next" />
           </button>
         </div>
       </div>

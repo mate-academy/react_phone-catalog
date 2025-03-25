@@ -53,7 +53,7 @@ export const PicturesSlider = () => {
           className={style.arrowLeft}
           onClick={() => sliderRef.current?.slickPrev()}
         >
-          <img src="icons/arrow-left.png" alt="Previous" />
+          <img src="icons/arrow-left.svg" alt="Previous" />
         </button>
         <div className={style.slider__wrapper}>
           <Slider {...settings}>
@@ -68,7 +68,7 @@ export const PicturesSlider = () => {
           className={style.arrowRight}
           onClick={() => sliderRef.current?.slickNext()}
         >
-          <img src="icons/arrow-right.png" alt="Next" />
+          <img src="icons/arrow-right.svg" alt="Next" />
         </button>
       </div>
     </>

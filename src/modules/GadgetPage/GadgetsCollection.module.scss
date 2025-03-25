@@ -48,6 +48,7 @@
   }
 
   &__wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -61,7 +62,7 @@
   }
 
   &__query {
-    padding: 10px 40px 10px 15px;
+    padding: 10px 40px;
     border: 1px solid var(--standard-color);
 
     font-size: 14px;
@@ -78,6 +79,16 @@
       border: 1px solid var(--hover-color);
       outline: none;
     }
+  }
+
+  &__search {
+    background-image: var(--search-icon);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
   }
 }
 

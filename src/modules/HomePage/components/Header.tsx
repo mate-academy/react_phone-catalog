@@ -29,8 +29,8 @@ export const Header: React.FC = () => {
                   className={style.nav__image}
                   src={
                     theme === 'light'
-                      ? './logo/Logo.png'
-                      : './logo/Logo-dark-theme.png'
+                      ? './logo/Logo.svg'
+                      : './logo/Logo-dark-theme.svg'
                   }
                   alt="Logo"
                 />
@@ -65,8 +65,8 @@ export const Header: React.FC = () => {
                 <img
                   src={
                     theme === 'light'
-                      ? './icons/heart.png'
-                      : './icons/heart-dark-theme.png'
+                      ? './icons/heart.svg'
+                      : './icons/heart-dark-theme.svg'
                   }
                   alt="Favorites"
                 />
@@ -80,8 +80,8 @@ export const Header: React.FC = () => {
                 <img
                   src={
                     theme === 'light'
-                      ? './icons/cart.png'
-                      : './icons/cart-dark-theme.png'
+                      ? './icons/cart.svg'
+                      : './icons/cart-dark-theme.svg'
                   }
                   alt="Cart"
                 />
@@ -95,8 +95,8 @@ export const Header: React.FC = () => {
                 <img
                   src={
                     theme === 'light'
-                      ? './icons/menu.png'
-                      : './icons/menu-dark-theme.png'
+                      ? './icons/menu.svg'
+                      : './icons/menu-dark-theme.svg'
                   }
                   alt="Menu"
                 />

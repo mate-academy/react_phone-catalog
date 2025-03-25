@@ -23,13 +23,13 @@ export const FavouriteProductsList = () => {
           <img
             src={
               theme === 'light'
-                ? 'icons/home.png'
-                : './icons/home-dark-theme.png'
+                ? 'icons/home.svg'
+                : './icons/home-dark-theme.svg'
             }
             alt="Back home"
           />
         </Link>
-        <img src="icons/arrow-right.png" alt="Favorites" />
+        <img src="icons/arrow-right.svg" alt="Favorites" />
         <span className={style.favorites__name}>{t('favourites')}</span>
       </div>
       <h1 className={style.favorites__title}>{t('favourites')}</h1>

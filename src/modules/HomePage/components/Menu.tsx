@@ -19,8 +19,8 @@ export const Menu = () => {
               <img
                 src={
                   theme === 'light'
-                    ? './logo/Logo.png'
-                    : './logo/Logo-dark-theme.png'
+                    ? './logo/Logo.svg'
+                    : './logo/Logo-dark-theme.svg'
                 }
                 alt="Logo"
               />
@@ -33,8 +33,8 @@ export const Menu = () => {
               <img
                 src={
                   theme === 'light'
-                    ? './icons/close.png'
-                    : './icons/close-dark-theme.png'
+                    ? './icons/close.svg'
+                    : './icons/close-dark-theme.svg'
                 }
                 alt="Close"
               />
@@ -59,8 +59,8 @@ export const Menu = () => {
             <img
               src={
                 theme === 'light'
-                  ? './icons/heart.png'
-                  : './icons/heart-dark-theme.png'
+                  ? './icons/heart.svg'
+                  : './icons/heart-dark-theme.svg'
               }
               alt="Heart"
             />
@@ -74,8 +74,8 @@ export const Menu = () => {
             <img
               src={
                 theme === 'light'
-                  ? './icons/cart.png'
-                  : './icons/cart-dark-theme.png'
+                  ? './icons/cart.svg'
+                  : './icons/cart-dark-theme.svg'
               }
               alt="Cart"
             />

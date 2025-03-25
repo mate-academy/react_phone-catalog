@@ -113,10 +113,10 @@ export const ProductItem: React.FC<Props> = ({
                 favourites.includes(
                   'itemId' in product ? product.itemId : product.id,
                 )
-                  ? './icons/heart-red.png'
+                  ? './icons/heart-red.svg'
                   : theme === 'light'
-                    ? './icons/heart.png'
-                    : './icons/heart-dark-theme.png'
+                    ? './icons/heart.svg'
+                    : './icons/heart-dark-theme.svg'
               }
               alt="Like"
             ></img>
