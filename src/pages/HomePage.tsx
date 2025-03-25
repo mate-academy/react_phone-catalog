@@ -96,7 +96,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <h1 className="main__title title">Welcome to Nice Gadgets store!</h1>
+      <h2 className="main__title title">HomePage</h2>
       <div className="main__home">
         <section className="banner">
           <div className="banner__container">
