@@ -11,7 +11,7 @@ export const Header = () => {
       >
         <Link to="/">
           <img
-            src="../../public/img/Logo.png"
+            src="img/Logo.png"
             alt="Logo"
             className="h-7 w-20"
           />
