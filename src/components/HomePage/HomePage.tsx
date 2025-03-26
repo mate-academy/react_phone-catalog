@@ -25,6 +25,7 @@ export const HomePage = () => {
           data.filter((product: Product) => product.category === 'phones'),
         );
         setError(null);
+        // eslint-disable-next-line
       } catch (err: any) {
         if (err.message === 'No internet connection') {
           setError('No internet connection. Please check your network.');

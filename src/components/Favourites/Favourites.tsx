@@ -21,13 +21,7 @@ export const FavouritesPage = () => {
         </span>
         <p className="mobilelink__title">Favourites</p>
       </div>
-      {/* <div className="productInfolink__back">
-        <img src={back} alt="back__link" onClick={() => navigate(-1)} />
-        <p className="productInfolink__backTitle" onClick={() => navigate(-1)}>
-          Back
-        </p>
-      </div> */}
-      {favorites.length > 0 && <h1 className="page__title">Favourites</h1>}
+      <h1 className="page__title">Favourites</h1>
 
       {favorites.length === 0 ? (
         <div className="nothing">
@@ -38,7 +32,6 @@ export const FavouritesPage = () => {
           />
         </div>
       ) : (
-        // <p className="page__title">No favorite product yet</p>
         <div className="favourites__card">
           {favorites.map(product => (
             <ProductItem key={product.id} product={product} />

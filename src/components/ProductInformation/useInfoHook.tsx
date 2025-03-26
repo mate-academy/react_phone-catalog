@@ -28,7 +28,24 @@ export const useInfoHook = () => {
   const { toggleCart } = useCart();
   const { toggleFavorite } = useFavourites();
 
-  const [isAdded, setIsAdded] = useState(false);
+  const [isAdded, setIsAdded] = useState<boolean>(() => {
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    console.log(
+      selectedPhone,
+
+      savedCart.some(
+        (item: ProductDetails) => String(item.id) === selectedPhone?.id,
+      ),
+    );
+
+    return (
+      !!selectedPhone &&
+      savedCart.some(
+        (item: ProductDetails) => String(item.id) === selectedPhone.id,
+      )
+    );
+  });
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -116,13 +133,13 @@ export const useInfoHook = () => {
     }
 
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const isProductInCart = savedCart.some(
-      (item: ProductDetails) => String(item.id) === selectedPhone.id,
-    );
+    // const isProductInCart = savedCart.some(
+    //   (item: ProductDetails) => String(item.id) === selectedPhone.id,
+    // );
 
     let updatedCart;
 
-    if (isProductInCart) {
+    if (isAdded) {
       updatedCart = savedCart.filter(
         (item: ProductDetails) => String(item.id) !== selectedPhone.id,
       );
@@ -133,7 +150,7 @@ export const useInfoHook = () => {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     if (selectedPhoneProducts) {
       toggleCart(selectedPhoneProducts);
-      setIsAdded(!isProductInCart);
+      setIsAdded(!isAdded);
     }
   };
 
