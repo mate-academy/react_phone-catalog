@@ -5,7 +5,10 @@ import { Home } from '@/pages/Home';
 // import Phones from '@/pages/Phones';
 const App = () => {
   return (
-    <BrowserRouter basename='/react_phone-catalog'>
+    <BrowserRouter 
+    basename='/react_phone-catalog/'
+    future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+    >
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
