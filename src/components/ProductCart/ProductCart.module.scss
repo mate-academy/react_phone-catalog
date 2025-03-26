@@ -18,6 +18,12 @@
     width: 272px;
     height: 506px;
   }
+
+  transition: 0.3s;
+
+  &:hover {
+    scale: 1.05;
+  }
 }
 
 .phoneImg {
@@ -124,6 +130,7 @@
   text-align: center;
 
   cursor: pointer;
+  transition: 0.3s;
 
   &:hover {
     background-color: $accent-color-hover;
@@ -152,6 +159,7 @@
   padding: 12px;
   background-color: #323542;
   cursor: pointer;
+  transition: .3s;
 
   &:hover {
     background-color: #4a4d58;
@@ -166,8 +174,9 @@
   padding: 11px;
   border: 1px solid #323542;
   cursor: pointer;
+  transition: .3s;
 
-  // &:hover {
-  //   background-color: #4a4d58;
-  // }
+  &:hover {
+    background-color: #4a4d58;
+  }
 }

@@ -19,6 +19,11 @@
   font-size: 14px;
   font-family: Mont-semiBold, sans-serif;
   line-height: 21px;
+
+  &:hover {
+    padding: 9px;
+    border: 1px solid white;
+  }
 }
 
 .title {

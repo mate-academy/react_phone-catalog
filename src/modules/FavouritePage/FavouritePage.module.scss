@@ -2,9 +2,17 @@
 
 .favorite {
   box-sizing: border-box;
-  padding-top: 80px;
+  padding-top: 97px;
+
+  height: calc(100vh - 100px);
 
   @include padding-inline;
+
+  @include on-large-desctop {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding-inline: 0;
+  }
 }
 
 .wrapper {

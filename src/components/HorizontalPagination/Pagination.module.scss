@@ -40,8 +40,17 @@
   background-color: #161827;
   cursor: pointer;
   border: none;
+  transition: .3s;
+
+  &:hover {
+    background-color: $midle-gray-color;
+  }
 }
 
 .activePage {
   background-color: #905BFF;
+
+  &:hover {
+    background-color: #905BFF;
+  }
 }

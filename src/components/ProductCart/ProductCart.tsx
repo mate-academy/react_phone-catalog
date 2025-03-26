@@ -4,6 +4,7 @@ import favouriteIcon from '../../shared/icons/favourites-heart-like.svg';
 import addedFavouriteIcon from '../../shared/icons/favourites-filled-heart-like.svg';
 import { Product } from '@/types/Products';
 import { useCart } from '@/hooks/useCart';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -22,14 +23,26 @@ export const ProductCart: React.FC<Props> = ({ product, isDiscount = false }) =>
   const isCartAdd = cart.some(item => item.id === product.id);
   const isCartFavourite = favourite.some(item => item.id === product.id);
 
+  const categoryMap: { [key: string]: string } = {
+    phones: 'phones',
+    tablets: 'tablets',
+    accessories: 'accessories',
+  };
+
+  const selectCategory = categoryMap[product.category] || '';
+
+  console.log('selected category:', selectCategory);
+
   return (
     <>
       <div className={style.card}>
-        <img src={product.image} alt="phone img" className={style.phoneImg} />
+        <Link to={`/${selectCategory}/${product.itemId}`}>
+          <img src={product.image} alt="phone img" className={style.phoneImg} />
 
-        <h2 className={style.phoneTitle} title={product.name}>
-          {product.name}
-        </h2>
+          <h2 className={style.phoneTitle} title={product.name}>
+            {product.name}
+          </h2>
+        </Link>
 
         <p className={style.phonePrice}>
           {isDiscount ? (

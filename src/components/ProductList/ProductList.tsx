@@ -5,7 +5,7 @@ import style from './ProductList.module.scss';
 import homeIcon from '../../shared/icons/home.svg';
 import rightIcon from '../../shared/icons/chevron-arrow-right.svg';
 import { Dropdown } from '../DropdownList/Dropdown';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../HorizontalPagination/Pagination';
 
 type Props = {
@@ -41,7 +41,6 @@ const optionViewOnPage = ['4', '8', '16', 'All']; // Uppercase
 const optionsSort = ['Newest', 'Alphabetically', 'Cheapest'];
 
 export const ProductList: React.FC<Props> = ({ proudct, categoryProduct }) => {
-
   const [sortedProduct, setSortedProduct] = useState<Product[]>([]); /// ?
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -83,7 +82,7 @@ export const ProductList: React.FC<Props> = ({ proudct, categoryProduct }) => {
   const viewPage = sortedProduct.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div>
+    <div className={style.content}>
       <div className={style.navigation}>
         <img src={homeIcon} alt="home icon" />
         <img src={rightIcon} alt="arrow right icon" />
@@ -115,9 +114,7 @@ export const ProductList: React.FC<Props> = ({ proudct, categoryProduct }) => {
 
       <div className={style.container}>
         {viewPage.map(item => (
-          <Link key={item.id} to={`/${categoryProduct}/${item.itemId}`}>
-            <ProductCart product={item} key={item.id} />
-          </Link>
+          <ProductCart product={item} key={item.id} />
         ))}
       </div>
 

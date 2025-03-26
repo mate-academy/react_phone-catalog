@@ -1,18 +1,20 @@
-// import { Outlet } from 'react-router-dom';
 import './App.scss';
 import React from 'react';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 import { Outlet } from 'react-router-dom';
 
-export const App: React.FC = () => (
-  <div className="page">
-    <Header />
+export const App: React.FC = () => {
 
-    <div className="App">
-      <Outlet />
+  return (
+    <div className="page">
+      <Header />
+
+      <div className='App'>
+        <Outlet />
+      </div>
+
+      <Footer />
     </div>
-
-    <Footer />
-  </div>
-);
+  );
+};

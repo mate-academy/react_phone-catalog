@@ -10,6 +10,7 @@ import { CartProvider } from './hooks/useCart';
 import { FavoritePage } from './modules/FavouritePage/FavouritePage';
 import { Menu } from './components/Menu/Menu';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
 export const Root: React.FC = () => {
   return (
@@ -21,12 +22,13 @@ export const Root: React.FC = () => {
             <Route path="phones" element={<Phones />} />
             <Route path="phones/:phoneId" element={<ProductDetailsPage />} />
             <Route path="tablets" element={<Tablets />} />
-            <Route path="tablets/:phoneId" element={<ProductDetailsPage />} />
+            <Route path="tablets/:tabletId" element={<ProductDetailsPage />} />
             <Route path="accessories" element={<Accessories />} />
-            <Route path="accessories/:phoneId" element={<ProductDetailsPage />} />
+            <Route path="accessories/:accessoriesId" element={<ProductDetailsPage />} />
             <Route path="bag" element={<CartPage />} />
             <Route path="favourite" element={<FavoritePage />} />
             <Route path="menu" element={<Menu />} />
+            <Route path='*' element={<NotFoundPage />} />
           </Route>
         </Routes>
       </HashRouter>

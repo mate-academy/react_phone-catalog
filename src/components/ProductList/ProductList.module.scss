@@ -7,6 +7,18 @@
   @include padding-inline;
 }
 
+.content {
+  padding-bottom: 64px;
+
+  @include on-desctop {
+    padding-bottom: 80px;
+  }
+
+  @include on-large-desctop {
+    padding-bottom: 80px;
+  }
+}
+
 .navigation {
   display: flex;
   gap: 8px;

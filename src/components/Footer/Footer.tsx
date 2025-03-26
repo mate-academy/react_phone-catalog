@@ -3,12 +3,9 @@ import style from './Footer.module.scss';
 import footerLogo from '../../shared/icons/logo.png';
 import arrowTopImg from '../../shared/icons/chevron-arrow-up.svg';
 import { Link } from 'react-router-dom';
+import { ScrollToTop } from '@/utils/ScrollToTop';
 
 export const Footer: React.FC = () => {
-  const scrollToTop = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
   return (
     <div className={style.footer}>
       <div className={style.wrapper}>
@@ -40,7 +37,7 @@ export const Footer: React.FC = () => {
 
         <div className={style.backTop}>
           <div className={style.backTopContent}>
-            <button className={style.backTopLink} onClick={scrollToTop}>
+            <button className={style.backTopLink} onClick={ScrollToTop}>
               Back to top
               <div className={style.arrowTop}>
                 <img src={arrowTopImg} alt="Arrow top icon" className={style.arrowTopIcon} />

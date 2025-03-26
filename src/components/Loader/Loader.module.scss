@@ -1,0 +1,47 @@
+@import '../../assets/global';
+
+.loader {
+  display: flex;
+  height: calc(100vh - 100px);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.loaderItem {
+  width: 200px;
+  height: 200px;
+  border: 15px solid rgba(208, 197, 255, 0.3);
+  border-top-color: rgb(117, 43, 255);
+  border-radius: 50%;
+  animation: animate 1s linear infinite;
+}
+
+.logo {
+  position: absolute;
+  animation: logoAnimation 2s linear infinite;
+}
+
+@keyframes animate {
+  to {
+    transform: rotate(360deg);
+  }
+
+  from {
+    transform: rotate(0);
+  }
+}
+
+@keyframes logoAnimation {
+  100% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.2;
+  }
+
+  from {
+    scale: 1;
+  }
+}

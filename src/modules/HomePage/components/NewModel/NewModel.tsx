@@ -60,7 +60,7 @@ export const NewModel: React.FC<Props> = ({products, isDiscount}) => {
         >
           <div className={style.slideContent}>
             {products.map(phone => (
-              <SwiperSlide key={phone.id}>
+              <SwiperSlide key={phone.id} className={style.slides}>
                 <ProductCart product={phone} isDiscount={isDiscount} />
               </SwiperSlide>
             ))}

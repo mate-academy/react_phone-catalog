@@ -9,6 +9,7 @@ interface CartContext {
   toggleFavourite: (product: Product, isDiscount: boolean) => void;
   isOpenMenu: boolean;
   setIsOpenMenu: (isOpen: boolean) => void;
+  setCart: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
 const CartContext = createContext<CartContext | undefined>(undefined);
@@ -52,6 +53,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       toggleFavourite,
       isOpenMenu,
       setIsOpenMenu,
+      setCart,
     }),
     [cart, favourite, isOpenMenu],
   );

@@ -1,3 +1,4 @@
+
 const API = 'https://dushkaaa-babyboss.github.io/react_phone-catalog/api/products.json';
 
 export const fetchProducts = async () => {
@@ -14,3 +15,5 @@ export const fetchProducts = async () => {
     return [];
   }
 };
+
+

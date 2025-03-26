@@ -4,6 +4,8 @@
   box-sizing: border-box;
   padding-top: calc(49px + 48px);
 
+  height: calc(100vh - 99px);
+
   @include padding-inline;
 
   @include on-large-desctop {
@@ -238,6 +240,15 @@
 
 .emptyBag {
   display: flex;
-  width: 90%;
+  width: 100%;
+
+  @include on-tablet {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  @include on-large-desctop {
+    width: 80%;
+  }
 }
 
