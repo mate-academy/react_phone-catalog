@@ -146,6 +146,13 @@
     @include on-desktop {
       padding: 9.5px 22px;
     }
+
+    &_active {
+      color: #27ae60;
+      background-color: $white-color;
+      border: 1px solid #e2e6e9;
+      cursor: default;
+    }
   }
 
   &__favourites {

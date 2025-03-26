@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Squash as Hamburger } from 'hamburger-react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { useFavourites } from '../../context/FavouritesContext';
+import { useCart } from '../../context/CartContext';
 
 const pages = ['Home', 'Phones', 'Tablets', 'Accessories'];
 
@@ -15,8 +16,10 @@ const Header = () => {
   const toggleBurger = (value: boolean) => setOpen(value);
 
   const { favourites } = useFavourites();
+  const { cart } = useCart();
 
   const favouritesLength = favourites.length;
+  const cartLength = cart.length;
 
   return (
     <div className={styles.header}>
@@ -66,7 +69,12 @@ const Header = () => {
             ${pathname.includes('cart') && styles.header__cart_active}`}
         >
           <img src={`/public/img/icons/cart-icon.svg`} alt="cart" />
+
+          {cartLength > 0 && (
+            <div className={styles.header__cart_quantity}>{cartLength}</div>
+          )}
         </Link>
+
         <div className={styles.header__hamburger}>
           <Hamburger
             toggled={isOpen}

@@ -1,25 +1,27 @@
-import { useEffect } from 'react';
 import { useFavourites } from '../../context/FavouritesContext';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
+import { useCart } from '../../context/CartContext';
 
 type Props = {
   product: Product;
   isHotPriceBlock?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, isHotPriceBlock }) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const { favourites, toggleProduct } = useFavourites();
+  const { cart, addProductToCart } = useCart();
 
-  const isFavourite = favourites.some(p => p.id === product.id);
+  const isAddedToFavourites = favourites.some(p => p.id === product.id);
+  const isAddedToCart = cart.some(p => p.id === product.id);
 
-  const handleToggle = () => {
+  const handleToggleFavourite = () => {
     toggleProduct(product);
   };
 
-  useEffect(() => {
-    console.log(favourites);
-  }, [favourites]);
+  const handleAddProductToCart = () => {
+    addProductToCart(product);
+  };
 
   return (
     <div className={styles.product}>
@@ -29,9 +31,7 @@ export const ProductCard: React.FC<Props> = ({ product, isHotPriceBlock }) => {
       <p className={styles.product__name}>{product.name}</p>
       <div className={styles.product__prices}>
         <p className={styles.product__price}>${product.price}</p>
-        {isHotPriceBlock && (
-          <p className={styles.product__price_full}>${product.fullPrice}</p>
-        )}
+        <p className={styles.product__price_full}>${product.fullPrice}</p>
       </div>
 
       <div className={styles.product__features}>
@@ -50,10 +50,19 @@ export const ProductCard: React.FC<Props> = ({ product, isHotPriceBlock }) => {
       </div>
 
       <div className={styles.product__buttons}>
-        <button className={styles.product__cart}>Add to cart</button>
-        <button className={styles.product__favourites} onClick={handleToggle}>
+        <button
+          className={`${styles.product__cart} ${isAddedToCart && styles.product__cart_active}`}
+          onClick={handleAddProductToCart}
+          disabled={isAddedToCart}
+        >
+          {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+        </button>
+        <button
+          className={styles.product__favourites}
+          onClick={handleToggleFavourite}
+        >
           <img
-            src={`/public/img/icons/favourites-icon${isFavourite ? '-active' : ''}.svg`}
+            src={`/public/img/icons/favourites-icon${isAddedToFavourites ? '-active' : ''}.svg`}
             alt="favourites"
           />
         </button>

@@ -1,6 +1,91 @@
 @import '/src/styles/global';
 
-.home {
+.cart {
+  margin-top: 40px;
   width: 100%;
-  height: 100vh;
+  // ! need to change
+  min-height: calc(100vh - 207px);
+
+  &__back {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    p {
+      margin-left: 4px;
+      font-family: Mont-Bold;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+
+      margin-top: 3px;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 32px;
+
+    @include on-desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__items {
+  }
+
+  &__priceBlock {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+
+    max-height: 190px;
+
+    @include on-tablet {
+      max-height: 206px;
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-top: 0;
+      margin-left: 16px;
+      width: 100%;
+    }
+
+    justify-content: center;
+
+    border: 1px solid #e2e6e9;
+  }
+
+  &__price {
+    font-family: Mont-Bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    text-align: center;
+
+    color: $primary-color;
+  }
+
+  &__quantity {
+    font-family: Mont-SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+
+    color: $secondary-color;
+
+    margin-bottom: 32px;
+  }
+
+  &__checkout {
+    background-color: $primary-color;
+    padding: 13.5px 85.5px;
+    width: 100%;
+    color: $white-color;
+  }
 }

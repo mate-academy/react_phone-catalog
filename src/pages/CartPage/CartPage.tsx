@@ -1,26 +1,48 @@
-import { useProducts } from '../../context/ProductsContext';
-import { PicturesSlider } from '../../components/PicturesSlider';
-import { ProductsSlider } from '../../components/ProductsSlider';
 import styles from './CartPage.module.scss';
-import { Categories } from '../../components/Categories';
-import { Footer } from '../../components/Footer';
+import backIcon from '../../../public/img/icons/arrows/arrow-left-icon.svg';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
+import { CartItem } from '../../components/CartItem';
 
 const CartPage = () => {
-  const { products, phones, accessories, tablets } = useProducts();
-  const newestProducts = products.sort((a, b) => b.year - a.year).slice(0, 10);
-  const hotPricesProducts = products
-    .sort((a, b) => {
-      const discountA = a.fullPrice - a.price;
-      const discountB = b.fullPrice - b.price;
+  const { cart, totalPrice } = useCart();
+  const navigate = useNavigate();
 
-      return discountB - discountA;
-    })
-    .slice(0, 10);
+  const goBack = () => {
+    navigate('../');
+  };
 
   return (
-    <div className={styles.home}>
-      <h1>Cart Page</h1>
+    <div className={styles.cart}>
+      <div className={styles.cart__back} onClick={goBack}>
+        <img src={backIcon} alt="back-icon" />
+        <p>Back</p>
+      </div>
 
+      <h1 className={styles.title}>Cart</h1>
+
+      <div className={styles.cart__list}>
+        {cart.length < 1 ? (
+          <p>Your cart is empty</p>
+        ) : (
+          <div className={styles.cart__content}>
+            <div className={styles.cart__items}>
+              {cart.map(cartProduct => (
+                <CartItem key={cartProduct.id} product={cartProduct} />
+              ))}
+            </div>
+
+            <div className={styles.cart__priceBlock}>
+              <p className={styles.cart__price}>${totalPrice}</p>
+              <p className={styles.cart__quantity}>
+                Total for {cart.length} items
+              </p>
+
+              <button className={styles.cart__checkout}>Checkout</button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 @import '/src/styles/global';
 
 .footer {
-  padding: 32px 0;
+  padding-block: 32px;
 
   display: flex;
   justify-content: space-between;
@@ -11,6 +11,18 @@
   @include on-tablet {
     flex-direction: row;
     align-items: center;
+  }
+
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+    padding-inline: 32px;
+    margin-inline: auto;
   }
 
   &__logo {
@@ -41,6 +53,7 @@
       flex-direction: row;
       align-items: center;
       gap: 80px;
+
       // ! to change
 
       margin-bottom: 0;
@@ -49,6 +62,7 @@
     @include on-desktop {
       gap: 106px;
     }
+    
   }
 
   &__link {

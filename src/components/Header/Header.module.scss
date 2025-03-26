@@ -40,6 +40,7 @@
     box-shadow: -1px 0px 0px 0px #e2e6e9;
 
     display: none;
+
     @include on-tablet {
       display: flex;
       align-items: center;
@@ -49,6 +50,7 @@
       color: $primary-color;
       box-sizing: border-box;
       border-bottom: 3px solid $primary-color;
+
       img {
         margin-top: 3px;
       }

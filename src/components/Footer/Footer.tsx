@@ -1,15 +1,10 @@
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 import logo from '../../../public/img/Nice-Gadgets-logo.png';
-import Divider from '@mui/material/Divider';
 
 export const Footer = () => {
   return (
     <>
-      {/* <div className={styles.fullWidthDivider}>
-        <Divider />
-      </div> */}
-
       <div className={styles.footer}>
         <div className={`${styles.logo} ${styles.footer__logo}`}>
           <Link to="/home">
@@ -45,7 +40,10 @@ export const Footer = () => {
             className={styles.footer__backToTop__icon}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src="/public/img/icons/arrows/arrow-top.svg" alt="BackToTop" />
+            <img
+              src="/public/img/icons/arrows/arrow-up-icon.svg"
+              alt="BackToTop"
+            />
           </div>
         </div>
       </div>

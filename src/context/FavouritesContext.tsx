@@ -1,5 +1,4 @@
 import { createContext } from 'react';
-import { Gadget } from '../types/Gadgets';
 import { Product } from '../types/Product';
 import { useContext, useEffect, useState } from 'react';
 
@@ -8,7 +7,7 @@ type FavouritesContextType = {
   toggleProduct: (product: Product) => void;
 };
 
-const ProductsContext = createContext<FavouritesContextType | undefined>(
+const FavouritesContext = createContext<FavouritesContextType | undefined>(
   undefined,
 );
 
@@ -22,11 +21,12 @@ export const FavouritesProvider = ({
   useEffect(() => {
     try {
       const storedFavourites = localStorage.getItem('favourites');
+
       if (storedFavourites) {
         setFavourites(JSON.parse(storedFavourites));
       }
     } catch (error) {
-      console.error('Помилка при зчитуванні з localStorage:', error);
+      // console.error('Помилка при зчитуванні з localStorage:', error);
     }
   }, []);
 
@@ -34,7 +34,7 @@ export const FavouritesProvider = ({
     try {
       localStorage.setItem('favourites', JSON.stringify(favourites));
     } catch (error) {
-      console.error('Помилка при записі в localStorage:', error);
+      // console.error('Помилка при записі в localStorage:', error);
     }
   }, [favourites]);
 
@@ -49,14 +49,14 @@ export const FavouritesProvider = ({
   };
 
   return (
-    <ProductsContext.Provider value={{ favourites, toggleProduct }}>
+    <FavouritesContext.Provider value={{ favourites, toggleProduct }}>
       {children}
-    </ProductsContext.Provider>
+    </FavouritesContext.Provider>
   );
 };
 
 export const useFavourites = () => {
-  const context = useContext(ProductsContext);
+  const context = useContext(FavouritesContext);
 
   if (!context) {
     throw new Error('useFavourites must be used within a FavouritesProvider');
