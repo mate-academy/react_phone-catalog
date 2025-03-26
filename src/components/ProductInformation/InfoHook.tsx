@@ -4,6 +4,8 @@ import { Product, ProductDetails } from '../../types/ProductTypes';
 import './ProductInformation.scss';
 import { fetchAllProducts, fetchProducts } from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useCart } from '../BuyCard/CartContext';
+import { useFavourites } from '../Favourites/FacouritesContext';
 
 export const useInfoHook = () => {
   const { productId, category } = useParams<{
@@ -21,6 +23,37 @@ export const useInfoHook = () => {
   const [selecredColor, setSelectedColor] = useState<string | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
+  const { toggleCart } = useCart();
+  const { toggleFavorite } = useFavourites();
+
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        setLoading(true);
+        const allProducts = await fetchProducts();
+
+        const product = allProducts.find(
+          (prod: Product) => String(prod.id) === productId,
+        );
+
+        if (product) {
+          toggleCart(product);
+          toggleFavorite(product);
+        } else {
+          setError('Product not found');
+        }
+      } catch (err) {
+        setError('Failed to load product details');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (productId) {
+      fetchProductData();
+    }
+  }, [productId, toggleCart, toggleFavorite]);
 
   useEffect(() => {
     setLoading(true);
@@ -166,5 +199,7 @@ export const useInfoHook = () => {
     setError,
     error,
     products,
+    toggleCart,
+    toggleFavorite,
   };
 };

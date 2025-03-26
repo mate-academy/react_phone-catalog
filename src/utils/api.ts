@@ -51,17 +51,6 @@ export const fetchProducts = async () => {
     'https://taniavozniuk.github.io/react_phone-catalog2.0/api/products.json',
   );
 };
-// export const getPhones = (): Promise<Phone[]> => {
-//   return delay().then(() => phones);
-// };
-
-// export const fetchTable = (): Promise<Tablet[]> => {
-//   return delay().then(() => tablet);
-// };
-
-// export const fetchAccessories = (): Promise<Accessory[]> => {
-//   return delay().then(() => accessories);
-// };
 
 export const fetchAllProducts = async () => {
   await delay();

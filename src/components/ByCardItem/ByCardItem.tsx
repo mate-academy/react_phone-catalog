@@ -5,6 +5,7 @@ import DeleteBlack from '../../../image/Close2Black.svg';
 import './ByCardItem.scss';
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../ColorThemes/ColorThemes';
+import { useCart } from '../BuyCard/CartContext';
 
 interface CartProps {
   product: Product;
@@ -18,6 +19,7 @@ export const ByCardItem: React.FC<CartProps> = ({
   onUpdate,
 }) => {
   const navigate = useNavigate();
+  const { toggleCart } = useCart();
 
   const sevedQuantity = parseInt(
     localStorage.getItem(`quantity-${product.id}`) || '1',
@@ -44,7 +46,7 @@ export const ByCardItem: React.FC<CartProps> = ({
   };
 
   const totalPriceOneProduct = product.fullPrice * quantity;
-  const productPath = `/${product.category}/${product.id}`;
+  const productPath = `/${product.category}/${product.itemId}`;
 
   const { theme } = useContext(ThemeContext);
   const isDarkMode = theme === 'dark';
@@ -65,6 +67,7 @@ export const ByCardItem: React.FC<CartProps> = ({
               onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 handleDeleteButton();
+                toggleCart(product);
               }}
             />
             <img

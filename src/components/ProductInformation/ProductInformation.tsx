@@ -10,13 +10,14 @@ import { ProductSlider } from '../ProductCard/ProductCard';
 import { useParams } from 'react-router-dom';
 import { NameSlider } from '../../nameslider';
 import catGif from '../../../assets/cat.gif';
-import { useFavourites } from '../Favourites/FacouritesContext';
-import { useCart } from '../BuyCard/CartContext';
-import { Product } from '../../types/ProductTypes';
+import { Product, ProductDetails } from '../../types/ProductTypes';
 import liked from '../../../image/liked.svg';
 
 export const ProductInformation: React.FC = () => {
   const { category } = useParams<{ category: string }>();
+
+  const [isAdded, setIsAdded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const {
     selectedPhone,
@@ -32,13 +33,9 @@ export const ProductInformation: React.FC = () => {
     techInfo,
     error,
     products,
+    toggleCart,
+    toggleFavorite,
   } = useInfoHook();
-
-  const { toggleFavorite } = useFavourites();
-  const { toggleCart } = useCart();
-
-  const [isAdded, setIsAdded] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     if (selectedPhone) {
@@ -47,16 +44,26 @@ export const ProductInformation: React.FC = () => {
         localStorage.getItem('favorites') || '[]',
       );
 
+      const isProductInCart = savedCart.some(
+        (item: ProductDetails) => String(item.id) === selectedPhone.id,
+      );
+
+      const isProductInFavorite = sevedFavorites.some(
+        (item: ProductDetails) => String(item.id) === selectedPhone.id,
+      );
+
       setIsAdded(
-        savedCart.some((item: Product) => String(item.id) === selectedPhone.id),
+        savedCart.some(
+          (item: ProductDetails) => String(item.id) === selectedPhone.id,
+        ),
       );
       setIsFavorite(
         sevedFavorites.some(
-          (item: Product) => String(item.id) === selectedPhone.id,
+          (item: ProductDetails) => String(item.id) === selectedPhone.id,
         ),
       );
     }
-  }, [selectedPhone]);
+  }, [selectedPhone, isProductInCart, isProductInFavorite]);
 
   const handleToggleCart = () => {
     if (!selectedPhone) {
@@ -65,21 +72,21 @@ export const ProductInformation: React.FC = () => {
 
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
     const isProductInCart = savedCart.some(
-      (item: Product) => String(item.id) === selectedPhone.id,
+      (item: ProductDetails) => String(item.id) === selectedPhone.id,
     );
 
     let updatedCart;
 
     if (isProductInCart) {
       updatedCart = savedCart.filter(
-        (item: Product) => String(item.id) !== selectedPhone.id,
+        (item: ProductDetails) => String(item.id) !== selectedPhone.id,
       );
     } else {
       updatedCart = [...savedCart, selectedPhone];
     }
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
-    toggleCart(selectedPhone);
+    toggleCart(isProductInCart);
     setIsAdded(!isProductInCart);
   };
 
@@ -88,7 +95,7 @@ export const ProductInformation: React.FC = () => {
       return;
     }
 
-    toggleFavorite(selectedPhone);
+    toggleFavorite(isProductInFavorite);
     setIsFavorite(!isFavorite);
   };
 

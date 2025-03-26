@@ -31,9 +31,6 @@ export const HomePage = () => {
         } else {
           setError('Server is not responding. Please try again later.');
         }
-        // window.alert(
-        //   `Oops, something went wrong, please check your connection 🫶💻`,
-        // );
       } finally {
         setLoading(false);
       }
