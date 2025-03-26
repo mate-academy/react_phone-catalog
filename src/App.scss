@@ -17,7 +17,6 @@ body {
   @include font-body;
 }
 
-
 .App {
   @include themify($themes) {
     background: themed('colorHeaderFooter');
@@ -49,7 +48,7 @@ body {
   }
 }
 
-.section{
+.section {
   flex-grow: 1;
 }
 
@@ -72,6 +71,10 @@ body {
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   animation: fadeIn 1s ease-in;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
 }
 
 @keyframes fadeIn {
@@ -85,4 +88,10 @@ body {
 
 .product_yet {
   width: 45%;
+}
+
+.nothing {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }

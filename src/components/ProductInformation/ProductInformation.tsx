@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './ProductInformation.scss';
 import home from '../../../image/home.svg';
 import arrow from '../../../image/arrow.svg';
 import back from '../../../image/back.svg';
 import { Loader } from '../Loader/Loader';
 import like from '../../../image/heart.svg';
-import { useInfoHook } from './InfoHook';
+import { useInfoHook } from './useInfoHook';
 import { ProductSlider } from '../ProductCard/ProductCard';
 import { useParams } from 'react-router-dom';
 import { NameSlider } from '../../nameslider';
 import catGif from '../../../assets/cat.gif';
-import { Product, ProductDetails } from '../../types/ProductTypes';
 import liked from '../../../image/liked.svg';
 
 export const ProductInformation: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-
-  const [isAdded, setIsAdded] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
 
   const {
     selectedPhone,
@@ -33,63 +29,11 @@ export const ProductInformation: React.FC = () => {
     techInfo,
     error,
     products,
-    toggleCart,
-    toggleFavorite,
+    isFavorite,
+    isAdded,
+    handleToggleFavorite,
+    handleToggleCart,
   } = useInfoHook();
-
-  useEffect(() => {
-    if (selectedPhone) {
-      const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-      const savedFavorites = JSON.parse(
-        localStorage.getItem('favorites') || '[]',
-      );
-
-      setIsAdded(
-        savedCart.some(
-          (item: ProductDetails) => String(item.id) === selectedPhone.id,
-        ),
-      );
-      setIsFavorite(
-        savedFavorites.some(
-          (item: ProductDetails) => String(item.id) === selectedPhone.id,
-        ),
-      );
-    }
-  }, [selectedPhone]);
-
-  const handleToggleCart = () => {
-    if (!selectedPhone) {
-      return;
-    }
-
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const isProductInCart = savedCart.some(
-      (item: ProductDetails) => String(item.id) === selectedPhone.id,
-    );
-
-    let updatedCart;
-
-    if (isProductInCart) {
-      updatedCart = savedCart.filter(
-        (item: ProductDetails) => String(item.id) !== selectedPhone.id,
-      );
-    } else {
-      updatedCart = [...savedCart, selectedPhone];
-    }
-
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    toggleCart(selectedPhone);
-    setIsAdded(!isProductInCart);
-  };
-
-  const handleToggleFavorite = () => {
-    if (!selectedPhone) {
-      return;
-    }
-
-    toggleFavorite(selectedPhone);
-    setIsFavorite(!isFavorite);
-  };
 
   return (
     <main className="productInfo">

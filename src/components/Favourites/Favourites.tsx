@@ -30,11 +30,13 @@ export const FavouritesPage = () => {
       {favorites.length > 0 && <h1 className="page__title">Favourites</h1>}
 
       {favorites.length === 0 ? (
-        <img
-          className="product_yet"
-          src="public\img\product-not-found.png"
-          alt="No_favorite_product_yet"
-        />
+        <div className="nothing">
+          <img
+            className="product_yet"
+            src="public\img\product-not-found.png"
+            alt="No_favorite_product_yet"
+          />
+        </div>
       ) : (
         // <p className="page__title">No favorite product yet</p>
         <div className="favourites__card">

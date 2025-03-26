@@ -16,6 +16,8 @@ export const useInfoHook = () => {
   const [selectedPhone, setSelectedPhone] = useState<ProductDetails | null>(
     null,
   );
+  const [selectedPhoneProducts, setSelectedPhoneProducts] =
+    useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate(); // повернення на попередню сторінку
@@ -26,33 +28,8 @@ export const useInfoHook = () => {
   const { toggleCart } = useCart();
   const { toggleFavorite } = useFavourites();
 
-  useEffect(() => {
-    const fetchProductData = async () => {
-      try {
-        setLoading(true);
-        const allProducts = await fetchProducts();
-
-        const product = allProducts.find(
-          (prod: Product) => String(prod.id) === productId,
-        );
-
-        if (product) {
-          toggleCart(product);
-          toggleFavorite(product);
-        } else {
-          setError('Product not found');
-        }
-      } catch (err) {
-        setError('Failed to load product details');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (productId) {
-      fetchProductData();
-    }
-  }, [productId, toggleCart, toggleFavorite]);
+  const [isAdded, setIsAdded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -94,7 +71,7 @@ export const useInfoHook = () => {
           (item: Product) => item.itemId === productId,
         );
 
-        setSelectedPhone(product || null);
+        setSelectedPhoneProducts(product || null);
       } catch {
         setError(
           `Oops, something went wrong, please check your connection 🫶💻`,
@@ -111,6 +88,64 @@ export const useInfoHook = () => {
     }
 
     return color;
+  };
+
+  useEffect(() => {
+    if (selectedPhone) {
+      const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const savedFavorites = JSON.parse(
+        localStorage.getItem('favorites') || '[]',
+      );
+
+      setIsAdded(
+        savedCart.some(
+          (item: ProductDetails) => String(item.id) === selectedPhone.id,
+        ),
+      );
+      setIsFavorite(
+        savedFavorites.some(
+          (item: ProductDetails) => String(item.id) === selectedPhone.id,
+        ),
+      );
+    }
+  }, [selectedPhone]);
+
+  const handleToggleCart = () => {
+    if (!selectedPhone) {
+      return;
+    }
+
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const isProductInCart = savedCart.some(
+      (item: ProductDetails) => String(item.id) === selectedPhone.id,
+    );
+
+    let updatedCart;
+
+    if (isProductInCart) {
+      updatedCart = savedCart.filter(
+        (item: ProductDetails) => String(item.id) !== selectedPhone.id,
+      );
+    } else {
+      updatedCart = [...savedCart, selectedPhone];
+    }
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    if (selectedPhoneProducts) {
+      toggleCart(selectedPhoneProducts);
+      setIsAdded(!isProductInCart);
+    }
+  };
+
+  const handleToggleFavorite = () => {
+    if (!selectedPhone) {
+      return;
+    }
+
+    if (selectedPhoneProducts) {
+      toggleFavorite(selectedPhoneProducts);
+      setIsFavorite(!isFavorite);
+    }
   };
 
   // URL
@@ -198,7 +233,9 @@ export const useInfoHook = () => {
     setError,
     error,
     products,
-    toggleCart,
-    toggleFavorite,
+    isFavorite,
+    isAdded,
+    handleToggleFavorite,
+    handleToggleCart,
   };
 };

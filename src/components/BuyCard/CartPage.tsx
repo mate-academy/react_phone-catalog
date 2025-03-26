@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import back from '../../../image/back.svg';
 import { ByCardItem } from '../ByCardItem/ByCardItem';
-import { useInfoHook } from '../ProductInformation/InfoHook';
+import { useInfoHook } from '../ProductInformation/useInfoHook';
 import { Product } from '../../types/ProductTypes';
 import './CardPage.scss';
 import { useCart } from './CartContext';
@@ -103,11 +103,13 @@ export const CardPage = () => {
           </div>
         </div>
       ) : (
-        <img
-          className="product_yet"
-          src="public\img\product-not-found.png"
-          alt="No_favorite_product_yet"
-        />
+        <div className="nothing">
+          <img
+            className="product_yet"
+            src="public\img\cart-is-empty.png"
+            alt="No_favorite_product_yet"
+          />
+        </div>
       )}
       {isModalOpen && (
         <div className="modal">
