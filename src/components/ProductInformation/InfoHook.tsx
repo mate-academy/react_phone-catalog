@@ -26,7 +26,6 @@ export const useInfoHook = () => {
   const { toggleCart } = useCart();
   const { toggleFavorite } = useFavourites();
 
-
   useEffect(() => {
     const fetchProductData = async () => {
       try {

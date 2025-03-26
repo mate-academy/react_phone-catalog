@@ -40,16 +40,8 @@ export const ProductInformation: React.FC = () => {
   useEffect(() => {
     if (selectedPhone) {
       const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-      const sevedFavorites = JSON.parse(
+      const savedFavorites = JSON.parse(
         localStorage.getItem('favorites') || '[]',
-      );
-
-      const isProductInCart = savedCart.some(
-        (item: ProductDetails) => String(item.id) === selectedPhone.id,
-      );
-
-      const isProductInFavorite = sevedFavorites.some(
-        (item: ProductDetails) => String(item.id) === selectedPhone.id,
       );
 
       setIsAdded(
@@ -58,12 +50,12 @@ export const ProductInformation: React.FC = () => {
         ),
       );
       setIsFavorite(
-        sevedFavorites.some(
+        savedFavorites.some(
           (item: ProductDetails) => String(item.id) === selectedPhone.id,
         ),
       );
     }
-  }, [selectedPhone, isProductInCart, isProductInFavorite]);
+  }, [selectedPhone]);
 
   const handleToggleCart = () => {
     if (!selectedPhone) {
@@ -86,7 +78,7 @@ export const ProductInformation: React.FC = () => {
     }
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
-    toggleCart(isProductInCart);
+    toggleCart(selectedPhone);
     setIsAdded(!isProductInCart);
   };
 
@@ -95,7 +87,7 @@ export const ProductInformation: React.FC = () => {
       return;
     }
 
-    toggleFavorite(isProductInFavorite);
+    toggleFavorite(selectedPhone);
     setIsFavorite(!isFavorite);
   };
 
