@@ -52,7 +52,11 @@ export const ByCardItem: React.FC<CartProps> = ({
   return (
     <>
       <div className="buy">
-        <div className="buy__item" onClick={() => navigate(productPath)}>
+        <div
+          className="buy__item"
+          role="button"
+          onClick={() => navigate(productPath)}
+        >
           <div className="buy__firstwrapper">
             <img
               src={isDarkMode ? Delete : DeleteBlack}

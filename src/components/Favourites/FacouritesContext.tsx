@@ -1,9 +1,9 @@
 import React, { createContext, useEffect, useState, ReactNode } from 'react';
-import { ProductDetails } from '../../types/ProductTypes';
+import { Product } from '../../types/ProductTypes';
 
 interface FavouritesProps {
-  favorites: ProductDetails[];
-  toggleFavorite: (product: ProductDetails) => void;
+  favorites: Product[];
+  toggleFavorite: (product: Product) => void;
 }
 
 const FavoritesContext = createContext<FavouritesProps | undefined>(undefined);
@@ -11,7 +11,7 @@ const FavoritesContext = createContext<FavouritesProps | undefined>(undefined);
 export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [favorites, setFavorites] = useState<ProductDetails[]>(() => {
+  const [favorites, setFavorites] = useState<Product[]>(() => {
     const sortedFavorites = localStorage.getItem('favorites');
 
     return sortedFavorites ? JSON.parse(sortedFavorites) : [];
@@ -21,7 +21,7 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const toggleFavorite = (product: ProductDetails) => {
+  const toggleFavorite = (product: Product) => {
     setFavorites(prevFavorites => {
       const isFavorite = prevFavorites.some(fav => fav.id === product.id);
 

@@ -4,10 +4,15 @@ import { ByCardItem } from '../ByCardItem/ByCardItem';
 import { useInfoHook } from '../ProductInformation/InfoHook';
 import { Product } from '../../types/ProductTypes';
 import './CardPage.scss';
+import { useCart } from './CartContext';
+import ReactConfetti from 'react-confetti';
 
 export const CardPage = () => {
   const { navigate } = useInfoHook();
   const [cart, setCart] = useState<Product[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCheckoutConfirmed, setIsCheckoutConfirmed] = useState(false);
+  const { clearCart } = useCart();
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -18,7 +23,7 @@ export const CardPage = () => {
   const removeFromCart = (productId: string) => {
     setCart(prevCart => {
       const updatedCart = prevCart.filter(
-        item => item.id.toString() !== productId,
+        (item: Product) => String(item.id) !== productId,
       );
 
       localStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -29,8 +34,8 @@ export const CardPage = () => {
 
   const updateQuantify = (productId: string, quantity: number) => {
     setCart(prevCart => {
-      const updatedCart = prevCart.map(item =>
-        item.id.toString() === productId ? { ...item, quantity } : item,
+      const updatedCart = prevCart.map((item: Product) =>
+        String(item.id) === productId ? { ...item, quantity } : item,
       );
 
       localStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -44,6 +49,22 @@ export const CardPage = () => {
 
     return total + itemPrice;
   }, 0);
+
+  const handleCheckout = () => {
+    setIsModalOpen(true);
+  };
+
+  const confirmCheckout = () => {
+    setCart([]);
+    localStorage.removeItem('cart');
+    setIsModalOpen(false);
+    clearCart();
+    setIsCheckoutConfirmed(true);
+
+    setTimeout(() => {
+      setIsCheckoutConfirmed(false);
+    }, 5000);
+  };
 
   return (
     <main className="main__phonepage">
@@ -76,7 +97,9 @@ export const CardPage = () => {
             <h1 className="window__price">{`$${totalCartPrice}`}</h1>
             <p className="window__title">{`Total for ${cart.length} item(s)`}</p>
             <div className="product__line"></div>
-            <button className="Checkout">Checkout</button>
+            <button className="Checkout" onClick={handleCheckout}>
+              Checkout
+            </button>
           </div>
         </div>
       ) : (
@@ -86,6 +109,23 @@ export const CardPage = () => {
           alt="No_favorite_product_yet"
         />
       )}
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal__content">
+            <h2 className="modal__title">Are you sure you want to buy this?</h2>
+            <p className="window__price">{`Total: $${totalCartPrice}`}</p>
+            <div className="modalbutton__wrapper">
+              <button className="confirm" onClick={confirmCheckout}>
+                Confirm
+              </button>
+              <button className="cancel" onClick={() => setIsModalOpen(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {isCheckoutConfirmed && <ReactConfetti />}
     </main>
   );
 };

@@ -6,6 +6,9 @@ body {
   padding: 0;
   background-color: #0f1121;
   overflow-x: hidden;
+  // display: flex;
+  // flex-direction: column;
+  display: block;
 
   &.menu-open {
     overflow: hidden;
@@ -14,13 +17,17 @@ body {
   @include font-body;
 }
 
+
 .App {
   @include themify($themes) {
     background: themed('colorHeaderFooter');
   }
   background-color: #0f1121;
   color: white;
-  height: 100vh;
+  // padding-bottom: 257px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .theme-light {
@@ -40,6 +47,10 @@ body {
   @include themify($themes) {
     background: themed('colorHeaderFooter');
   }
+}
+
+.section{
+  flex-grow: 1;
 }
 
 .error__img {
@@ -73,5 +84,5 @@ body {
 }
 
 .product_yet {
-  width: 50%;
+  width: 45%;
 }

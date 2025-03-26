@@ -1,11 +1,12 @@
 import React, { createContext, useEffect, useState, ReactNode } from 'react';
-import { ProductDetails } from '../../types/ProductTypes';
+import { Product } from '../../types/ProductTypes';
 
 interface CartContextProps {
-  cart: ProductDetails[];
-  toggleCart: (product: ProductDetails) => void;
+  cart: Product[];
+  toggleCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
   getQuantity: (productId: string) => number;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
@@ -13,7 +14,7 @@ const CartContext = createContext<CartContextProps | undefined>(undefined);
 export const CartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<ProductDetails[]>(() => {
+  const [cart, setCart] = useState<Product[]>(() => {
     const savedCart = localStorage.getItem('cart');
 
     return savedCart ? JSON.parse(savedCart) : [];
@@ -23,7 +24,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const toggleCart = (product: ProductDetails) => {
+  const toggleCart = (product: Product) => {
     const isInCart = cart.some(item => item.id === product.id);
 
     if (isInCart) {
@@ -34,18 +35,23 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const removeFromCart = (productId: string) => {
-    setCart(prev => prev.filter(item => item.id !== productId));
+    setCart(prev => prev.filter(item => String(item.id) !== productId));
   };
 
   const getQuantity = (productId: string) => {
-    const product = cart.find(item => item.id === productId);
+    const product = cart.find(item => String(item.id) === productId);
 
     return product?.quantity || 0;
   };
 
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem('cart');
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart, toggleCart, removeFromCart, getQuantity }}
+      value={{ cart, toggleCart, removeFromCart, getQuantity, clearCart }}
     >
       {children}
     </CartContext.Provider>

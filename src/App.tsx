@@ -48,12 +48,9 @@ export const App = () => {
               <Outlet />
             </div>
           </div>
-
-          {/* {!loading && ( */}
-          <div className="footer__wrapper">
-            <Footer />
-          </div>
-          {/* )} */}
+          {/* <div className="footer__wrapper"> */}
+          <Footer />
+          {/* </div> */}
         </div>
       </div>
       {/* </CartProvider> */}

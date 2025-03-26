@@ -4,7 +4,6 @@ import { Product, ProductDetails } from '../../types/ProductTypes';
 import { fetchAllProducts, fetchProducts } from '../../utils/api';
 
 export const useProductHooks = () => {
-  // const [phones, setPhones] = useState<Product[]>([]);
   const [phones, setPhones] = useState<ProductDetails[]>([]);
   const [itemPrevPage, setItemPrevPage] = useState(8); //початкове відображення карток
   const [currentPage, setCurrentPage] = useState(1); // початкова сторінка

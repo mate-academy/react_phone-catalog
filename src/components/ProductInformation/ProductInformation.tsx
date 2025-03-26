@@ -34,7 +34,7 @@ export const ProductInformation: React.FC = () => {
     products,
   } = useInfoHook();
 
-  const { favorites, toggleFavorite } = useFavourites();
+  const { toggleFavorite } = useFavourites();
   const { toggleCart } = useCart();
 
   const [isAdded, setIsAdded] = useState(false);
@@ -47,9 +47,13 @@ export const ProductInformation: React.FC = () => {
         localStorage.getItem('favorites') || '[]',
       );
 
-      setIsAdded(savedCart.some((item: Product) => item.id === products.id));
+      setIsAdded(
+        savedCart.some((item: Product) => String(item.id) === selectedPhone.id),
+      );
       setIsFavorite(
-        sevedFavorites.some((item: Product) => item.id === products.id),
+        sevedFavorites.some(
+          (item: Product) => String(item.id) === selectedPhone.id,
+        ),
       );
     }
   }, [selectedPhone]);
@@ -61,14 +65,14 @@ export const ProductInformation: React.FC = () => {
 
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
     const isProductInCart = savedCart.some(
-      (item: Product) => item.id === products.id,
+      (item: Product) => String(item.id) === selectedPhone.id,
     );
 
     let updatedCart;
 
     if (isProductInCart) {
       updatedCart = savedCart.filter(
-        (item: Product) => item.id !== products.id,
+        (item: Product) => String(item.id) !== selectedPhone.id,
       );
     } else {
       updatedCart = [...savedCart, selectedPhone];

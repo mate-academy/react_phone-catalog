@@ -3,20 +3,20 @@
 
 
 .footer {
-  // padding-top: 80px;
+  padding-top: 80px;
+  // padding-block-start: 80px;
   border: none;
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 100;
   @include themify($themes) {
     background: themed('colorHeaderFooter');
   }
 }
 
 .footer__container {
-
   height: 257px;
   border-top: 1px solid #3b3e4a;
   // margin: 32px 16px 0 16px;
