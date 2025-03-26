@@ -1,0 +1,29 @@
+@import '../../../styles/variables';
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  column-gap: 64px;
+  height: 64px;
+  border-bottom: 1px solid #f1f2f9;
+}
+
+.nav-logo {
+  height: 22px;
+  width: 64px;
+}
+
+.nav-link {
+  display: block;
+  justify-content: space-between;
+  color: #75767f;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 26.5px 0 20.5px 0 ;
+  // box-sizing: border-box;
+  
+  &-active {
+    border-bottom: 3px solid $textMainColor;
+    color: $textMainColor;
+  }
+}

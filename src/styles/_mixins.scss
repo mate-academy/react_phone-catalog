@@ -1,0 +1,59 @@
+@mixin on-tablet {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin on-big-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+
+  @include on-big-desktop {
+    padding-inline: 152px;
+  }
+}
+
+@mixin page-grid {
+  --column: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include on-tablet {
+    --column: 12;
+  }
+
+  @include on-desktop {
+    --column: 24;
+  }
+}
+
+
