@@ -53,17 +53,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const toggleFavourite = (product: Product, isDiscount: boolean) => {
     setFavourite(prev => {
       if (prev.some(item => item.id === product.id)) {
-        return prev.filter(item => item.id !== product.id)
+        return prev.filter(item => item.id !== product.id);
       }
 
       // return [...prev, product]
-      return [...prev, { ...product, isDiscount }]
-    })
-  }
+      return [...prev, { ...product, isDiscount }];
+    });
+  };
 
   const clearCart = () => {
     setCart([]);
-  }
+  };
 
   const value = useMemo(
     () => ({

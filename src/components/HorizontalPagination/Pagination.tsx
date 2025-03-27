@@ -9,7 +9,11 @@ interface PaginationProps {
   setCurrentPage: (page: number) => void;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({currentPage, setCurrentPage, totalPages}) => {
+export const Pagination: React.FC<PaginationProps> = ({
+  currentPage,
+  setCurrentPage,
+  totalPages,
+}) => {
   const handlePageChange = (newPage: number) => {
     if (newPage > 0 && newPage <= totalPages) {
       setCurrentPage(newPage);
@@ -34,7 +38,6 @@ export const Pagination: React.FC<PaginationProps> = ({currentPage, setCurrentPa
         className={style.tile}
         onClick={() => {
           handlePageChange(currentPage - 1);
-
         }}
         disabled={currentPage === 1}
       >

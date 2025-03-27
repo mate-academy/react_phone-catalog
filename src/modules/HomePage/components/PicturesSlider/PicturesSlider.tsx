@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import style from './PicturesSlider.module.scss';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import mobileSlide1 from '../../../../shared/img/Sldier/mobileSide1.png';
@@ -32,7 +32,7 @@ export const PicturesSlider: React.FC = () => {
       <div className={style.slider}>
         <div className={style.sliderContainer}>
           <div id="swiper-button-prev" className={style.navigationPrev}>
-            <img src={arrowLeft} alt="arrow left" className={style.active}/>
+            <img src={arrowLeft} alt="arrow left" className={style.active} />
           </div>
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -82,6 +82,5 @@ export const PicturesSlider: React.FC = () => {
         <div id="swiper-pagination" className={style.pagination}></div>
       </div>
     </div>
-
-  )
-}
+  );
+};

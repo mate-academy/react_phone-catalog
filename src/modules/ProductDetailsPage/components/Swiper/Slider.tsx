@@ -10,10 +10,9 @@ import 'swiper/css/scrollbar';
 
 type Props = {
   product: ProductDetails[];
-}
+};
 
-export const Slider: React.FC<Props> = ({product}) => {
-
+export const Slider: React.FC<Props> = ({ product }) => {
   const productImage = product.flatMap(phone => phone.images);
 
   return (

@@ -4,9 +4,9 @@ import { ProductDetails } from '@/types/Products';
 
 type Props = {
   phone: ProductDetails;
-}
+};
 
-export const AboutProduct: React.FC<Props> = ({phone}) => {
+export const AboutProduct: React.FC<Props> = ({ phone }) => {
   return (
     <section className={style.aboutProduct}>
       <h1 className={style.sectionTitle}>About</h1>

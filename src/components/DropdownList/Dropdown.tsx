@@ -33,7 +33,7 @@ export const Dropdown: React.FC<Props> = ({ options, selected, onSelect, title }
           {isOpen ? (
             <img src={arrowUp} alt="arrowUp icon" className={style.icon} />
           ) : (
-            <img src={arrowDown} alt="arrowDown icon" className={style.icon}/>
+            <img src={arrowDown} alt="arrowDown icon" className={style.icon} />
           )}
         </span>
       </button>

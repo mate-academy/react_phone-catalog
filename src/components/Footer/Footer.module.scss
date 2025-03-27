@@ -87,6 +87,12 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  transition: .3s;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
 }
 
 .arrowTop {

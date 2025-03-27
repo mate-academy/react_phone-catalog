@@ -115,11 +115,7 @@ export const Header: React.FC = () => {
               <img src={closeIcon} alt="burger menu icon" className={style.icon} />
             </NavLink>
           ) : (
-            <NavLink
-              to="/menu"
-              className={style.burgerMenu}
-              onClick={() => setIsOpenMenu(true)}
-            >
+            <NavLink to="/menu" className={style.burgerMenu} onClick={() => setIsOpenMenu(true)}>
               <img src={burgerMenuIcon} alt="burger menu icon" className={style.icon} />
             </NavLink>
           )}

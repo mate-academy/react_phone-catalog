@@ -5,7 +5,7 @@ import plusIcon from '../../shared/icons/plus.svg';
 import minusIcon from '../../shared/icons/minus.svg';
 import removeIcon from '../../shared/icons/close.svg';
 import EmptyBag from '/img/cart-is-empty.png';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useCart } from '@/hooks/useCart';
 import { Product } from '@/types/Products';
 import { Loader } from '@/components/Loader/Loader';
@@ -52,7 +52,6 @@ export const CartPage: React.FC = () => {
 
   console.log('cart', cart);
 
-
   return (
     <>
       {loading ? (
@@ -61,7 +60,7 @@ export const CartPage: React.FC = () => {
         <div className={style.shopingBag}>
           <button onClick={() => navigate(-1)} className={style.navigate}>
             <img src={arrowLeft} alt="arrow icon left" className={style.whiteIcon} />
-            <p>Back</p>
+            <p className={style.linkBack}>Back</p>
           </button>
 
           <h1 className={style.title}>{cart.length === 0 ? 'Your cart is empty' : 'Cart'}</h1>
@@ -82,7 +81,10 @@ export const CartPage: React.FC = () => {
                         onClick={() => removeFromCart(item.id)}
                       />
 
+                      {/* <img src={item.image} alt="phone image" className={style.itemImg} /> */}
+                      <NavLink to={`/${item.category}/${item.itemId}`}>
                       <img src={item.image} alt="phone image" className={style.itemImg} />
+                      </NavLink>
 
                       <h2 className={style.itemTitle}>{item.name}</h2>
                     </div>
@@ -131,7 +133,7 @@ export const CartPage: React.FC = () => {
         </div>
       )}
 
-      <Modal isActive={modalWindow} setModalWindow={setModalWindow} clearCart={clearCart}/>
+      <Modal isActive={modalWindow} setModalWindow={setModalWindow} clearCart={clearCart} />
     </>
   );
 };

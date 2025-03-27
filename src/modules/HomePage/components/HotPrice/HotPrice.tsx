@@ -16,9 +16,9 @@ import { Product } from '@/types/Products';
 type Props = {
   products: Product[];
   isDiscount: boolean;
-}
+};
 
-export const HotPrice: React.FC<Props> = ({products, isDiscount}) => {
+export const HotPrice: React.FC<Props> = ({ products, isDiscount }) => {
   const isTablet = useMediaQuery('(min-width: 640px)');
   const isDesctop = useMediaQuery('(min-width: 1200px)');
 

@@ -22,7 +22,7 @@ export const FavoritePage: React.FC<FavouriteProps> = () => {
   const { favourite } = cartContext;
 
   setInterval(() => {
-    setLoading(false)
+    setLoading(false);
   }, 1000);
 
   return (

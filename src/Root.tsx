@@ -28,7 +28,7 @@ export const Root: React.FC = () => {
             <Route path="bag" element={<CartPage />} />
             <Route path="favourite" element={<FavoritePage />} />
             <Route path="menu" element={<Menu />} />
-            <Route path='*' element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </HashRouter>

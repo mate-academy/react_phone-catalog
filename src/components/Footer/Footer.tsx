@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   return (
     <div className={style.footer}>
       <div className={style.wrapper}>
-        <Link to='/' className={style.logo}>
+        <Link to="/" className={style.logo}>
           <img src={footerLogo} alt="Foter logo" />
         </Link>
 

@@ -7,7 +7,7 @@ import arrowLeft from '../../shared/icons/chevron-arrow-left.svg';
 import productPhone from '../../../public/api/phones.json';
 import productTablets from '../../../public/api/tablets.json';
 import productAccessories from '../../../public/api/accessories.json';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { ProductDetails } from '@/types/Products';
 import { Slider } from './components/Swiper/Slider';
 import { ProductOptions } from './components/ProductOptions/ProductOptions';
@@ -69,10 +69,10 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <>
-      {(product.length === 0) && <ProductNotFound />}
+      {product.length === 0 && <ProductNotFound />}
 
       {loading ? (
-          <Loader />
+        <Loader />
       ) : (
         <div className={style.detailPage}>
           {product.map(phone => (
@@ -80,9 +80,9 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={style.navigation}>
                 <img src={homeIcon} alt="home icon" className={style.icon} />
                 <img src={arrowRight} alt="arrow right" className={style.icon} />
-                <p className={style.pageTitle}>
+                <NavLink to={`/${productSection}`} className={style.pageTitle}>
                   {productSection.charAt(0).toUpperCase() + productSection.slice(1).toLowerCase()}
-                </p>
+                </NavLink>
                 <img src={arrowRight} alt="arrow right" className={style.icon} />
                 <p className={style.sectionPhoneTitle}>{phone.name}</p>
               </div>

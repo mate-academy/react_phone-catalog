@@ -34,6 +34,12 @@
   @include on-desctop {
     height: 196px;
   }
+  
+  transition: .3s;
+
+  &:hover {
+    scale: 1.1;
+  }
 }
 
 .phoneTitle {
@@ -114,6 +120,7 @@
 .addToCart {
   display: block;
   width: 100%;
+  height: 40px; ///
   background-color: $accent-color;
   color: $light-color;
   padding: 9px;
@@ -136,6 +143,7 @@
 .addedCart {
   display: block;
   width: 100%;
+  height: 40px; ///
   color: $light-color;
   padding: 9px;
 
@@ -152,6 +160,8 @@
 }
 
 .favorite {
+  width: 40px;
+  height: 40px;
   padding: 12px;
   background-color: #323542;
   cursor: pointer;
@@ -167,7 +177,9 @@
 }
 
 .favoriteActive {
-  padding: 11px;
+  width: 40px;
+  height: 40px;
+  padding: 12px;
   border: 1px solid #323542;
   cursor: pointer;
   transition: .3s;

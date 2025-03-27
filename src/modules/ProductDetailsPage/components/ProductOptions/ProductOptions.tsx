@@ -14,7 +14,7 @@ type Props = {
   productSection: string;
 };
 
-export const ProductOptions: React.FC<Props> = ({ phone, color, capacity, productSection}) => {
+export const ProductOptions: React.FC<Props> = ({ phone, color, capacity, productSection }) => {
   const [currentProduct, setCurrentProduct] = useState<Product | undefined>();
 
   useEffect(() => {
@@ -64,7 +64,6 @@ export const ProductOptions: React.FC<Props> = ({ phone, color, capacity, produc
   /// hex space gray color #717378
 
   console.log(color);
-
 
   return (
     <div className={style.rightSide}>

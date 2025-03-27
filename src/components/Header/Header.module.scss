@@ -69,8 +69,17 @@
 
   padding-block: 18.5px;
 
+  transition: .3s;
+
   @include on-desctop {
     padding-block: 26px;
+  }
+}
+
+.link {
+
+  &:hover {
+    color: $light-color;
   }
 }
 
@@ -134,7 +143,6 @@
 }
 
 .countProduct {
-  display: block;
   width: 14px;
   height: 14px;
   background-color: $red-color;
