@@ -7,19 +7,19 @@ const bannerItems = [
   {
     id: 'acc',
     path: '/accessories',
-    src: '/img/banner-accessories.png',
+    src: './img/banner-accessories.png',
     alt: 'Shop Accessories',
   },
   {
     id: 'phn',
     path: '/phones',
-    src: '/img/banner-phones.png',
+    src: './img/banner-phones.png',
     alt: 'Shop Phones',
   },
   {
     id: 'tab',
     path: '/tablets',
-    src: '/img/banner-tablets.png',
+    src: './img/banner-tablets.png',
     alt: 'Shop Tablets',
   },
 ];
@@ -106,7 +106,6 @@ const Banner: React.FC = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {' '}
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"

@@ -57,9 +57,7 @@ export const fetchProduct = createAsyncThunk(
     const shortProductInfo =
       (await products.find(item => item.itemId === param)) ?? ({} as Product);
 
-    const response = await fetch(
-      `../../api/${shortProductInfo?.category}.json`,
-    );
+    const response = await fetch(`./api/${shortProductInfo?.category}.json`);
     const fullProducts: ProductDetails[] = await response.json();
     const product =
       fullProducts.find(item => item.id === param) ?? ({} as ProductDetails);

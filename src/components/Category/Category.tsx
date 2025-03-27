@@ -29,19 +29,19 @@ const Category: React.FC = () => {
       <SecondaryTitle>Shop by category</SecondaryTitle>
       <div className={styles.category__cards}>
         <CategoryCard
-          image="../../public/img/category/phones.png"
+          image="./img/category/phones.png"
           title="Mobile phones"
           models={`${phonesLen} models`}
           linkTo="/phones"
         />
         <CategoryCard
-          image="../../public/img/category/tablets.png"
+          image="./img/category/tablets.png"
           title="Tablets"
           models={`${tabletsLen} models`}
           linkTo="/tablets"
         />
         <CategoryCard
-          image="../../public/img/category/accessories.png"
+          image="./img/category/accessories.png"
           title="Accessories"
           models={`${accessoriesLen} models`}
           linkTo="/accessories"
