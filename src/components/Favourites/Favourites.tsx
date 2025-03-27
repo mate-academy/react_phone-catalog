@@ -27,7 +27,7 @@ export const FavouritesPage = () => {
         <div className="nothing">
           <img
             className="product_yet"
-            src="public\img\product-not-found.png"
+            src="assets\page-not-found.png"
             alt="No_favorite_product_yet"
           />
         </div>

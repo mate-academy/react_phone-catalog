@@ -8,6 +8,7 @@ import cartimg from '../../../image/shopping.svg';
 import BlackFavourites from '../../../image/blackHeart.svg';
 import Blackcart from '../../../image/blackShoppinng.svg';
 import menu from '../../../image/menu.svg';
+import menuBlack from '../../../image/menuBlack.svg';
 import close from '../../../image/close.svg';
 import Blackclose from '../../../image/BlackClose.svg';
 import { Switches } from '../Switch/Switches';
@@ -114,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 // to="/menu"
                 onClick={setMenuIsOpen}
               >
-                <img src={menu} alt="menu" />
+                <img src={isDarkMode ? menu : menuBlack} alt="menu" />
               </div>
             )}
           </div>

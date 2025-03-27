@@ -106,7 +106,7 @@ export const CardPage = () => {
         <div className="nothing">
           <img
             className="product_yet"
-            src="public\img\cart-is-empty.png"
+            src="assets\cart-is-empty.png"
             alt="No_favorite_product_yet"
           />
         </div>

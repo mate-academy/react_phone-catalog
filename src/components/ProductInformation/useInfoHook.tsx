@@ -28,25 +28,26 @@ export const useInfoHook = () => {
   const { toggleCart } = useCart();
   const { toggleFavorite } = useFavourites();
 
-  const [isAdded, setIsAdded] = useState<boolean>(() => {
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+  // const [isAdded, setIsAdded] = useState<boolean>(() => {
+  //   const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    console.log(
-      selectedPhone,
+  //   console.log(
+  //     selectedPhone,
 
-      savedCart.some(
-        (item: ProductDetails) => String(item.id) === selectedPhone?.id,
-      ),
-    );
+  //     savedCart.some(
+  //       (item: ProductDetails) => String(item.id) === selectedPhone?.id,
+  //     ),
+  //   );
 
-    return (
-      !!selectedPhone &&
-      savedCart.some(
-        (item: ProductDetails) => String(item.id) === selectedPhone.id,
-      )
-    );
-  });
-  const [isFavorite, setIsFavorite] = useState(false);
+  //   return (
+  //     !!selectedPhone &&
+  //     savedCart.some(
+  //       (item: ProductDetails) => String(item.id) === selectedPhone.id,
+  //     )
+  //   );
+  // });
+  const [isAdded, setIsAdded] = useState<boolean>(false);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);
@@ -124,6 +125,9 @@ export const useInfoHook = () => {
           (item: ProductDetails) => String(item.id) === selectedPhone.id,
         ),
       );
+
+      setIsAdded(savedCart);
+      setIsFavorite(savedFavorites);
     }
   }, [selectedPhone]);
 
@@ -231,7 +235,7 @@ export const useInfoHook = () => {
         { title: 'Camera', value: selectedPhone.camera || null },
         { title: 'Zoom', value: selectedPhone.zoom || null },
         { title: 'Cell', value: selectedPhone.cell },
-      ]
+      ].filter(item => item.value)
     : [];
 
   return {
