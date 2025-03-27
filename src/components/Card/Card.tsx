@@ -27,20 +27,20 @@ const Card: React.FC = () => {
 
   function handleOpenCheckout() {
     setIsOpenCheckout(true);
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflowY = 'hidden';
+    document.documentElement.style.overflowY = 'hidden';
   }
 
   function handleCloseCheckout() {
     setIsOpenCheckout(false);
-    document.body.style.overflow = 'auto';
-    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflowY = 'auto';
+    document.documentElement.style.overflowY = 'auto';
   }
 
   function handleClearAllCards() {
     setIsOpenCheckout(false);
-    document.body.style.overflow = 'auto';
-    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflowY = 'auto';
+    document.documentElement.style.overflowY = 'auto';
 
     cards.forEach(card => {
       dispatch(removeFromCard(card.card.itemId));
