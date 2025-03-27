@@ -13,19 +13,25 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-color: $color-hover-bg;
 }
 
 .app {
   position: relative;
+  min-height: 100vh;
 }
 
 .page {
+  min-height: 100vh;
+
   &__main-container {
     @include container-main-inline;
   }

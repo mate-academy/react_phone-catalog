@@ -3,6 +3,13 @@
 @import '../../styles/fonts';
 
 .footer {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $color-white;
+  z-index: 10;
+
   &__wrapper {
     display: flex;
     flex-direction: column;

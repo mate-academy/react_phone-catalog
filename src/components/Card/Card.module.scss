@@ -6,6 +6,7 @@
   position: relative;
   padding-block: 24px 56px;
   background-color: $color-hover-bg;
+  min-height: 100vh;
 
   @include on-tablet {
     padding-block: 40px 64px;
