@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
     <section className={styles.footer}>
       <div className={`${styles.footer__wrapper} page__footer-wrapper`}>
         <a href="#">
-          <img src="./public/img/footer/logo.png" alt="" />
+          <img src="./img/footer/logo.png" alt="footer logo" />
         </a>
 
         <nav className={styles.footer__nav}>
