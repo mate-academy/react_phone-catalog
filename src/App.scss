@@ -1,1 +1,93 @@
-// not empty
+@import './fonts/fonts.scss';
+@import './components/ColorThemes/ColorThemes.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f1121;
+  overflow-x: hidden;
+  display: block;
+
+  &.menu-open {
+    overflow: hidden;
+  }
+
+  @include font-body;
+}
+
+.App {
+  @include themify($themes) {
+    background: themed('colorHeaderFooter');
+  }
+  background-color: #0f1121;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.theme-light {
+  background-color: #fff;
+  color: #000;
+}
+
+.theme-dark {
+  background-color: #0f1121;
+  color: #fff;
+}
+
+.container__page {
+  background-color: #0f1121;
+
+  @include themify($themes) {
+    background: themed('colorHeaderFooter');
+  }
+}
+
+.section {
+  flex-grow: 1;
+}
+
+.error__img {
+  box-shadow: 1px 0 0.4em rgba(217, 217, 214, 0.459);
+  width: 50%;
+}
+
+.error__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.error-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.product_yet {
+  width: 40%;
+}
+
+.nothing {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

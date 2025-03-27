@@ -1,0 +1,150 @@
+@import '../../utils/mixins';
+
+.main__phonepage{
+  margin: 0 16px 0 16px;
+
+  @include onTablet{
+    margin: 0 24px 0 24px;
+  }
+
+  @include onDesktop{
+    margin: 0 32px 0 32px;
+  }
+}
+
+.mobilelink{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px 0;
+}
+
+.mobilelink__title{
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #75767F;
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.mobile__models{
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939A;
+  margin: 0 0 8px 0;
+}
+
+.mobile__dropdown{
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.sortby{
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939A;
+  margin: 0 0 4px 0;
+}
+
+.item__page{
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939A;
+  margin: 0 0 4px 0;
+}
+
+.mobile__cards{
+  display: grid;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 24px;
+  grid-template-columns: 1fr;
+
+  @include onDesktop{
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    gap: 40px 16px;
+  }
+
+  @include onTablet{
+    grid-template-columns: repeat(auto-fit, minmax(272px, 2fr));
+  }
+}
+
+.mobile__buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+.mobile__buttonsbuttonNext{
+  font-family: Mont-Bold, sans-serif;
+
+  background-color: transparent;
+  border: 1px solid #3b3e4a;
+  color: #4a4d58;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background-color: #323542;
+    border: 1px solid #323542;
+    color: #f1f2f9;
+  }
+}
+
+.mobile__buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+
+}
+
+.mobile__buttonsbuttonPrev{
+  font-family: Mont-Bold, sans-serif;
+
+  background-color: transparent;
+  border: 1px solid #3b3e4a;
+  color: #4a4d58;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background-color: #323542;
+    border: 1px solid #323542;
+    color: #f1f2f9;
+  }
+}
+
+.mobile__pagination{
+  font-family: Mont-Bold, sans-serif;
+
+  background-color: #161827;
+  border: 1px solid #161827;
+  color: #4a4d58;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background-color: #8f5bff87;
+    border: 1px solid #8f5bff87;
+    color: #f1f2f9;
+  }
+
+  &.active {
+    background-color: #905BFF;
+    color: white;
+    font-weight: bold;
+  }
+}

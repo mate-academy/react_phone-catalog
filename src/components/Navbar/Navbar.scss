@@ -1,0 +1,172 @@
+@import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
+
+.header {
+  @include themify($themes) {
+    background: themed('colorHeaderFooter');
+  }
+  border: 1px #323542 solid;
+  border-top: none;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  height: 48px;
+
+  @include onDesktop {
+    height: 64px;
+  }
+}
+
+.closeMenu {
+  display: none !important;
+}
+
+.navbar-brand {
+  display: none;
+  gap: 64px;
+
+  @include onTablet {
+    display: flex;
+    gap: 32px;
+  }
+
+}
+
+.navbar-item {
+  font-family: Mont-SemiBold, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  color: #75767f;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:active {
+    color: #fff;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scale(0);
+    transition: transform 0.4s ease;
+    z-index: 1;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+.logo {
+  padding: 18px 24px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+
+.buttons__menu {
+  display: flex;
+}
+
+.likes {
+  margin-left: auto;
+  border: 1px #323542 solid;
+  display: none;
+
+  @include onDesktop {
+    display: flex;
+  }
+}
+
+.shopping {
+  border: 1px #323542 solid;
+  display: none;
+
+  @include onDesktop {
+    display: flex;
+  }
+}
+
+.menu {
+  border: 1px #323542 solid;
+  display: flex;
+
+  @include onDesktop {
+    display: none;
+  }
+}
+
+.close {
+  border: 1px #323542 solid;
+  display: flex;
+
+  @include onDesktop {
+    display: none;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 17px;
+  right: 64px;
+  background: #eb5757;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include onTablet {
+    right: 144px;
+  }
+
+  @include onDesktop {
+    right: 18px;
+  }
+}
+
+.badge2 {
+  position: absolute;
+  top: 18px;
+  right: 224px;
+  background: #eb5757;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include onTablet {
+    right: 463px;
+  }
+
+  @include onDesktop {
+    right: 82px;
+  }
+}

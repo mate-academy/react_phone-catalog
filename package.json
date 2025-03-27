@@ -1,22 +1,27 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "react_phone-catalog",
+  "homepage": "https://taniavozniuk.github.io/react_phone-catalog2.0",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
   "license": "GPL-3.0",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
+    "bootstrap": "^5.3.3",
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
     "react": "^18.3.1",
+    "react-confetti": "^6.4.0",
     "react-dom": "^18.3.1",
+    "react-dropdown": "^1.11.0",
+    "react-responsive": "^10.0.0",
     "react-router-dom": "^6.25.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "swiper": "^11.2.4"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
-    "@mate-academy/scripts": "^1.8.5",
+    "@mate-academy/scripts": "^2.1.0",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^20.14.10",

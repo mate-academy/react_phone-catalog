@@ -1,0 +1,70 @@
+@import '../../utils/mixins';
+@import '../../utils/variables.scss';
+@import '../ColorThemes/ColorThemes.scss';
+
+.card__image{
+  width: 288px;
+  height: 288px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+
+
+  @include onTablet{
+    width: 187px;
+    height: 187px;
+  }
+
+  @include onDesktop{
+    width: 368px;
+    height: 368px;
+  }
+
+  &:hover{
+    box-shadow: 1px 0 0.4em rgb(217, 217, 214);
+    transform: translateY(-3px);
+    border-image: initial;
+  }
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 16px;
+
+  @include onTablet{
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.card__title{
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  margin: 24px 0 0 0;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
+.card__description{
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 4px 0 0 0;
+  color: #75767F;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
+.card__link{
+  text-decoration: none;
+  color: #F1F2F9;
+}

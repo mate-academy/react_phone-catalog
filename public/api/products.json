@@ -1,47 +1,5 @@
 [
   {
-    "id": 1,
-    "category": "phones",
-    "itemId": "apple-iphone-7-32gb-black",
-    "name": "Apple iPhone 7 32GB Black",
-    "fullPrice": 400,
-    "price": 375,
-    "screen": "4.7' IPS",
-    "capacity": "32GB",
-    "color": "black",
-    "ram": "2GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7/black/00.webp"
-  },
-  {
-    "id": 2,
-    "category": "phones",
-    "itemId": "apple-iphone-7-plus-32gb-black",
-    "name": "Apple iPhone 7 Plus 32GB Black",
-    "fullPrice": 540,
-    "price": 500,
-    "screen": "5.5' IPS",
-    "capacity": "32GB",
-    "color": "black",
-    "ram": "3GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/black/00.webp"
-  },
-  {
-    "id": 3,
-    "category": "phones",
-    "itemId": "apple-iphone-8-64gb-gold",
-    "name": "Apple iPhone 8 64GB Gold",
-    "fullPrice": 600,
-    "price": 550,
-    "screen": "4.7' IPS",
-    "capacity": "64GB",
-    "color": "gold",
-    "ram": "2GB",
-    "year": 2017,
-    "image": "img/phones/apple-iphone-8/gold/00.webp"
-  },
-  {
     "id": 4,
     "category": "phones",
     "itemId": "apple-iphone-11-64gb-black",
@@ -236,34 +194,6 @@
     "ram": "4GB",
     "year": 2018,
     "image": "img/phones/apple-iphone-xs-max/silver/00.webp"
-  },
-  {
-    "id": 18,
-    "category": "phones",
-    "itemId": "apple-iphone-7-32gb-gold",
-    "name": "Apple iPhone 7 32GB Gold",
-    "fullPrice": 400,
-    "price": 375,
-    "screen": "4.7' IPS",
-    "capacity": "32GB",
-    "color": "gold",
-    "ram": "2GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7/gold/00.webp"
-  },
-  {
-    "id": 19,
-    "category": "phones",
-    "itemId": "apple-iphone-7-plus-32gb-silver",
-    "name": "Apple iPhone 7 Plus 32GB Silver",
-    "fullPrice": 540,
-    "price": 500,
-    "screen": "5.5' IPS",
-    "capacity": "32GB",
-    "color": "silver",
-    "ram": "3GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/silver/00.webp"
   },
   {
     "id": 20,
@@ -672,20 +602,6 @@
     "image": "img/phones/apple-iphone-xs-max/spacegray/00.webp"
   },
   {
-    "id": 49,
-    "category": "phones",
-    "itemId": "apple-iphone-7-plus-32gb-rosegold",
-    "name": "Apple iPhone 7 Plus 32GB Rosegold",
-    "fullPrice": 540,
-    "price": 500,
-    "screen": "5.5' IPS",
-    "capacity": "32GB",
-    "color": "rosegold",
-    "ram": "3GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/rosegold/00.webp"
-  },
-  {
     "id": 50,
     "category": "phones",
     "itemId": "apple-iphone-11-64gb-white",
@@ -840,20 +756,6 @@
     "image": "img/phones/apple-iphone-xr/yellow/00.webp"
   },
   {
-    "id": 61,
-    "category": "phones",
-    "itemId": "apple-iphone-7-32gb-silver",
-    "name": "Apple iPhone 7 32GB Silver",
-    "fullPrice": 400,
-    "price": 375,
-    "screen": "4.7' IPS",
-    "capacity": "32GB",
-    "color": "silver",
-    "ram": "2GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7/silver/00.webp"
-  },
-  {
     "id": 62,
     "category": "phones",
     "itemId": "apple-iphone-11-256gb-purple",
@@ -950,20 +852,6 @@
     "ram": "4GB",
     "year": 2018,
     "image": "img/phones/apple-iphone-xs-max/spacegray/00.webp"
-  },
-  {
-    "id": 69,
-    "category": "phones",
-    "itemId": "apple-iphone-7-plus-32gb-gold",
-    "name": "Apple iPhone 7 Plus 32GB Gold",
-    "fullPrice": 540,
-    "price": 500,
-    "screen": "5.5' IPS",
-    "capacity": "32GB",
-    "color": "gold",
-    "ram": "3GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/gold/00.webp"
   },
   {
     "id": 70,

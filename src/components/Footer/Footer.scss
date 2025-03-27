@@ -1,0 +1,103 @@
+@import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
+
+
+.footer {
+  padding-top: 80px;
+  border: none;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  @include themify($themes) {
+    background: themed('colorHeaderFooter');
+  }
+}
+
+.footer__container {
+  height: 257px;
+  border-top: 1px solid #3b3e4a;
+
+  @include onTablet {
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.footer__logo {
+  margin: 32px 0 16px 16px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+
+  @include onTablet {
+    margin: 32px 0 32px 32px;
+  }
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 32px 0 0 16px;
+
+  @include onTablet {
+    margin: 0;
+    flex-direction: row;
+    gap: 13px;
+    justify-content: space-between;
+  }
+
+  @include onDesktop {
+    gap: 106px;
+  }
+}
+
+.footer-item {
+  font-family: Mont-Bold, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  color: #f1f2f9;
+
+  align-items: center;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
+.footer__button {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 32px;
+  gap: 16px;
+
+  @include onTablet {
+    margin: 0 32px 0 0;
+    justify-content: space-between;
+  }
+}
+
+.footer__buttonsTitle {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #323542;
+}
+
+.footer_but {
+  color: #f1f2f9;
+  width: 32px;
+  height: 32px;
+  background-color: #323542;
+  border: 1px solid #323542;
+}

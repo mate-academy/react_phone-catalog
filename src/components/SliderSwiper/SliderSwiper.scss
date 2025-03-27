@@ -1,0 +1,53 @@
+@import '../../utils/mixins';
+
+.slider__image {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include onTablet {
+    width: 592px;
+    height: 221px;
+  }
+
+  @include onDesktop {
+    width: 1040px;
+    height: 400px;
+  }
+}
+
+.swiper {
+  width: 320px;
+  height: 320px;
+
+  @include onTablet {
+    width: 592px;
+    height: 221px;
+  }
+
+  @include onDesktop {
+    width: 1040px;
+    height: 400px;
+  }
+}
+
+.swiper-button-next {
+  color: #323542;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.swiper-button-prev {
+  color: #323542;
+
+  &:hover {
+    color: #ffffff;
+  }
+}

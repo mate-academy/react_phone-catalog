@@ -1,0 +1,76 @@
+@import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
+
+.page__title {
+  width: 100%;
+  margin: 56px 0;
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1px;
+  padding: 0 16px;
+  color: #F1F2F9;
+
+  @include onTablet {
+    width: 80%;
+    margin: 32px 24px;
+  }
+
+  @include onMobile {
+    width: 82%;
+    font-size: 32px;
+    margin: 24px 0;
+  }
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
+
+.category__title {
+  width: 100%;
+  margin: 56px 0;
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1px;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
+.homepage__product {
+  margin: 0 16px 0 16px;
+
+  @include onTablet{
+    margin: 0 32px 0 32px;
+  }
+}
+
+.homepage__category {
+  margin: 0 16px 0 16px;
+
+  @include onTablet{
+    margin: 0 32px 0 32px;
+  }
+}
+
+.homepage__Hotproduct {
+  margin: 0 16px 0 16px;
+
+  @include onTablet{
+    margin: 0 32px 0 32px;
+  }
+}
+
+.homepage__Footer{
+  margin: 64px 0 0 0;
+
+  @include onTablet{
+    margin: 80px 0 0 0;
+  }
+}
+
