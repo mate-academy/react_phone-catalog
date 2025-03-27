@@ -8,6 +8,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="page">
+      <h1>Product Catalog</h1>
       <Header />
 
       <div className='App'>
