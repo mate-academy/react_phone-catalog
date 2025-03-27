@@ -19,7 +19,7 @@ const initialState: PhoneState = {
 export const fetchPhones = createAsyncThunk('phones/fetchPhones', async () => {
   await new Promise(resolve => setTimeout(resolve, 1000));
 
-  const response = await fetch('../../api/products.json');
+  const response = await fetch('../api/products.json');
   const data: Product[] = await response.json();
 
   return data.filter(item => item.category === 'phones');

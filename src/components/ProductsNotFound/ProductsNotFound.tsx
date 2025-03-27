@@ -5,7 +5,7 @@ import '../../styles/App.scss';
 const ProductNotFound: React.FC = () => {
   return (
     <img
-      src="../img/product-not-found.png"
+      src="./img/product-not-found.png"
       alt="Product not found"
       className={styles['products-not-found']}
     />

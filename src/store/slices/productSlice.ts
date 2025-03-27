@@ -52,7 +52,7 @@ export const fetchProduct = createAsyncThunk(
   async (param: string) => {
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    const productsData = await fetch('../../api/products.json');
+    const productsData = await fetch('../api/products.json');
     const products: Product[] = await productsData.json();
     const shortProductInfo =
       (await products.find(item => item.itemId === param)) ?? ({} as Product);

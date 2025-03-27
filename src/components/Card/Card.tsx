@@ -62,7 +62,7 @@ const Card: React.FC = () => {
           <div className={styles.card__bottom}>
             {cardsLength === 0 ? (
               <img
-                src="../img/cart-is-empty.png"
+                src="./img/cart-is-empty.png"
                 alt="Cart is empty"
                 className={styles.card__empty}
               />

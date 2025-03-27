@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenMenu }) => {
         <div className={styles.header__left}>
           <NavLink to="/" className={styles['header__logo-link']}>
             <img
-              src="./../img/logo/logo.png"
+              src="./img/logo/logo.png"
               alt="logo"
               className={styles['header__logo-img']}
             />
