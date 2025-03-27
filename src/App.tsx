@@ -5,8 +5,6 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { useEffect, useState } from 'react';
 import { Footer } from './components/Footer/Footer';
 import { ThemeContext } from './components/ColorThemes/ColorThemes';
-// import { CartProvider } from './components/BuyCard/CartContext';
-// import { useProductHooks } from './components/ProductPage/usePhonesHooks';
 
 export const App = () => {
   const getDefaultTheme = (): string => {
@@ -17,7 +15,6 @@ export const App = () => {
 
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [theme, setTheme] = useState(getDefaultTheme());
-  // const { loading } = useProductHooks();
 
   useEffect(() => {
     if (menuIsOpen) {
@@ -29,7 +26,6 @@ export const App = () => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      {/* <CartProvider> */}
       <div className={`theme-${theme}`}>
         <div className="App">
           <Navbar
@@ -48,12 +44,9 @@ export const App = () => {
               <Outlet />
             </div>
           </div>
-          {/* <div className="footer__wrapper"> */}
           <Footer />
-          {/* </div> */}
         </div>
       </div>
-      {/* </CartProvider> */}
     </ThemeContext.Provider>
   );
 };

@@ -1,8 +1,4 @@
 import { NavLink } from 'react-router-dom';
-// import logo from '../../../image/logo.svg';
-// import Favourites from '../../../image/heart.svg';
-// import cart from '../../../image/shopping.svg';
-// import close from '../../../image/close.svg';
 import React, { useContext } from 'react';
 import './Sidebar.scss';
 import classNames from 'classnames';
@@ -14,7 +10,6 @@ import Blackcart from '../../../image/blackShoppinng.svg';
 import { ThemeContext } from '../ColorThemes/ColorThemes';
 import { useFavourites } from '../Favourites/FacouritesContext';
 import { useCart } from '../BuyCard/CartContext';
-// import { useFavourites } from '../Favourites/FacouritesContext';
 
 interface SidebarProps {
   menuIsOpen: boolean;

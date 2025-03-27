@@ -2,6 +2,8 @@
 @import '../ColorThemes/ColorThemes.scss';
 
 .product__elements {
+  max-width: 272px;
+  min-width: 205px;
   text-decoration: none;
   background-color: #161827;
   padding: 32px;
@@ -23,9 +25,8 @@
   &:hover {
     box-shadow: 1px 0 0.4em rgb(90, 121, 233);
     transform: translateY(-3px);
-    // border:1px 0 .4em rgb(217, 217, 214);
     border-image: initial;
-    border: none;
+    border: 1px solid transparent;
   }
 }
 
@@ -38,10 +39,8 @@
 }
 
 .product__image {
-  width: 208px;
-  // height: 196px;
+  height: 281px;
   object-fit: cover;
-  // margin: 32px;
   overflow: hidden;
 
   &:hover {
@@ -50,6 +49,7 @@
 }
 
 .product__name {
+  min-height: 44px;
   width: 100%;
   font-family: Mont, sans-serif;
   font-weight: 600;
@@ -64,6 +64,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   cursor: pointer;
+
 
   @include themify($themes) {
     color: themed('colorText');
@@ -111,8 +112,6 @@
 
 .product__informationAll {
   gap: 8px;
-  // padding-block: 8px;
-  // height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;

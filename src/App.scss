@@ -6,8 +6,6 @@ body {
   padding: 0;
   background-color: #0f1121;
   overflow-x: hidden;
-  // display: flex;
-  // flex-direction: column;
   display: block;
 
   &.menu-open {
@@ -23,7 +21,6 @@ body {
   }
   background-color: #0f1121;
   color: white;
-  // padding-bottom: 257px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -40,7 +37,6 @@ body {
 }
 
 .container__page {
-  // margin-bottom: 80px;
   background-color: #0f1121;
 
   @include themify($themes) {

@@ -7,7 +7,7 @@ import { Loader } from '../Loader/Loader';
 import like from '../../../image/heart.svg';
 import { useInfoHook } from './useInfoHook';
 import { ProductSlider } from '../ProductCard/ProductCard';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { NameSlider } from '../../nameslider';
 import catGif from '../../../assets/cat.gif';
 import liked from '../../../image/liked.svg';
@@ -38,26 +38,28 @@ export const ProductInformation: React.FC = () => {
   return (
     <main className="productInfo">
       <div className="productInfolink">
-        <img src={home} alt="productInfolink__home" />
+        <NavLink to="/" className="productInfolink__home">
+          <img src={home} alt="Home" />
+        </NavLink>
         <span>
-          <img src={arrow} alt="productInfolink__arrow" />
+          <img src={arrow} alt="Arrow" />
         </span>
-        <p className="productInfolink__title">
+        <NavLink to={`/${category}`} className="productInfolink__title">
           {category === 'tablets'
             ? 'Tablets'
             : category === 'accessories'
               ? 'Accessories'
-              : 'Mobile phones'}
+              : 'Mobile'}
+        </NavLink>
 
-          {productId && (
-            <>
-              <span>
-                <img src={arrow} alt="productInfolink__arrow" />
-              </span>
-              {productId}
-            </>
-          )}
-        </p>
+        {productId && (
+          <>
+            <span>
+              <img src={arrow} alt="Arrow" />
+            </span>
+            <p className="productInfolink__title">{productId}</p>
+          </>
+        )}
       </div>
       <div className="productInfolink__back">
         <img src={back} alt="back__link" onClick={() => navigate(-1)} />

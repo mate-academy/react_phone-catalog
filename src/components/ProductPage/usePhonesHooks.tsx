@@ -11,6 +11,7 @@ export const useProductHooks = () => {
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState<string | null>(null);
+  // eslint-disable-next-line
   const [cart, setCart] = useState<ProductDetails[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const path = useLocation();
@@ -99,7 +100,6 @@ export const useProductHooks = () => {
     totalPages,
     setError,
     setCurrentPage,
-    // handleItemsChange,
     handleSortChange,
     setItemPrevPage,
     itemPrevPage,

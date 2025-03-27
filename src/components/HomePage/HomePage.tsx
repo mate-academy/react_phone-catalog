@@ -1,6 +1,4 @@
-// import React from 'react';
 import './HomePage.scss';
-// import { Slider } from '../Slider/Slider';
 import { SliderSwiper } from '../SliderSwiper/SliderSwiper';
 import { ShopByCategory } from '../ShopByCategory/ShopByCategory';
 import { ProductSlider } from '../ProductCard/ProductCard';
@@ -11,7 +9,6 @@ import { Loader } from '../Loader/Loader';
 import { NameSlider } from '../../nameslider';
 import catGif from '../../../assets/cat.gif';
 export const HomePage = () => {
-  // const [phones, setPhones] = useState<Product[]>([]);
   const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

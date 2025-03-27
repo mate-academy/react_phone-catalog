@@ -3,11 +3,11 @@
 .slider__image {
   width: 320px;
   height: 320px;
-  object-fit: cover; // не стискає
-  transition: transform 0.5s ease; // Додаємо анімацію при переході
+  object-fit: cover;
+  transition: transform 0.5s ease;
 
   &:hover {
-    transform: scale(1.05); // Збільшуємо зображення при наведенні
+    transform: scale(1.05);
   }
 
   @include onTablet {
@@ -37,7 +37,6 @@
 }
 
 .swiper-button-next {
-  // padding-left: 16px;
   color: #323542;
 
   &:hover {

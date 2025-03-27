@@ -4,7 +4,6 @@ import BlackLogo from '../../../image/BlackLogo.svg';
 import './Footer.scss';
 import { useContext } from 'react';
 import { ThemeContext } from '../ColorThemes/ColorThemes';
-// import { useProductHooks } from '../ProductPage/usePhonesHooks';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -14,20 +13,13 @@ export const Footer = () => {
     });
   };
 
-  // const { loading } = useProductHooks();
-
   const { theme } = useContext(ThemeContext);
 
   const isDarkMode = theme === 'dark';
 
   return (
     <footer className="footer">
-      <nav
-        // className="footer is-fixed-top has-shadow"
-        role="navigation"
-        aria-label="footer navigation"
-      >
-        {/* {!loading && ( */}
+      <nav role="navigation" aria-label="footer navigation">
         <div className="footer__container">
           <div className="footer__logo">
             <img src={isDarkMode ? logo : BlackLogo} alt="Logo" />
@@ -52,7 +44,6 @@ export const Footer = () => {
             </button>
           </div>
         </div>
-        {/* )} */}
       </nav>
     </footer>
   );

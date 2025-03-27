@@ -12,7 +12,6 @@ interface Props {
   product: Product;
   WithAdditionalPrice?: boolean;
   onClick?: () => void;
-  // addToCard: (product: ProductDetails) => void;
 }
 
 export const ProductItem: React.FC<Props> = ({
@@ -55,17 +54,10 @@ export const ProductItem: React.FC<Props> = ({
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     toggleCart(product);
     setIsAdded(!isProductInCart);
-    // addToCard(product);
-
-    // setIsAdded(true);
   };
 
   return (
-    <div
-      // to={productPath}
-      className="product__elements"
-      onClick={() => navigate(productPath)}
-    >
+    <div className="product__elements" onClick={() => navigate(productPath)}>
       <div className="product__img-container">
         <img
           src={product.image}

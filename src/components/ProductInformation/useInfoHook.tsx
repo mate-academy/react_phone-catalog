@@ -28,24 +28,6 @@ export const useInfoHook = () => {
   const { toggleCart } = useCart();
   const { toggleFavorite } = useFavourites();
 
-  // const [isAdded, setIsAdded] = useState<boolean>(() => {
-  //   const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-  //   console.log(
-  //     selectedPhone,
-
-  //     savedCart.some(
-  //       (item: ProductDetails) => String(item.id) === selectedPhone?.id,
-  //     ),
-  //   );
-
-  //   return (
-  //     !!selectedPhone &&
-  //     savedCart.some(
-  //       (item: ProductDetails) => String(item.id) === selectedPhone.id,
-  //     )
-  //   );
-  // });
   const [isAdded, setIsAdded] = useState<boolean>(false);
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
@@ -137,9 +119,6 @@ export const useInfoHook = () => {
     }
 
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    // const isProductInCart = savedCart.some(
-    //   (item: ProductDetails) => String(item.id) === selectedPhone.id,
-    // );
 
     let updatedCart;
 

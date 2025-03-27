@@ -25,12 +25,6 @@
   }
 }
 
-// @mixin onBigDesktop {
-//   @media (min-width: $bigdesktop-min-width) {
-//     @content;
-//   }
-// }
-
 @mixin constentPaddingInLine {
   padding-inline: 20px;
 
@@ -61,7 +55,4 @@
     --colums: 12;
   }
 
-  // @include onBigDesktop {
-  //   --colums: 12;
-  // }
 }

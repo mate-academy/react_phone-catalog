@@ -1,16 +1,11 @@
 import './Favourites.scss';
-// import { useNavigate } from 'react-router-dom';
 import arrow from '../../../image/arrow.svg';
-// import back from '../../../image/back.svg';
 import home from '../../../image/home.svg';
 import { useFavourites } from './FacouritesContext';
 import { ProductItem } from '../ProductItem/ProductItem';
-// import { useInfoHook } from '../ProductInformation/InfoHook';
 
 export const FavouritesPage = () => {
-  // const navigate = useNavigate();
   const { favorites } = useFavourites();
-  // const { products } = useInfoHook();
 
   return (
     <main className="favourites">

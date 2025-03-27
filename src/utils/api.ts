@@ -14,7 +14,6 @@ const fetchData = async (url: string) => {
 
     return await response.json();
   } catch (error) {
-    // return Promise.reject(error);
     throw error;
   }
 };

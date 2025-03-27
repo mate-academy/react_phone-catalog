@@ -1,4 +1,3 @@
-// import { useEffect, useRef, useState } from 'react';
 import { ProductItem } from '../ProductItem/ProductItem';
 import { MyDropdownItems, MyDropdownSortBy } from '../DropDown/DropDow';
 import './ProductPage.scss';
@@ -12,7 +11,6 @@ import catGif from '../../../assets/cat.gif';
 
 export const ProductPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
-  // const [loading, setLoading] = useState(true);
   const [itemsPrePage, setItemsPrePage] = useState<number | 'all'>(8);
 
   const {
@@ -21,17 +19,12 @@ export const ProductPage = () => {
     loading,
     error,
     currentCategory,
-    // setError,
     currentPage,
     totalPages,
     setCurrentPage,
-    // handleItemsChange,
     handleSortChange,
-    // setItemPrevPage,
-    // itemPrevPage,
   } = useProductHooks();
 
-  // console.log(sortBy);
   const sortedProducts = [...products].sort((a, b) => {
     if (sortBy === 'Newest') {
       return b.year - a.year;
@@ -131,39 +124,41 @@ export const ProductPage = () => {
                   product={product}
                   WithAdditionalPrice
                   onClick={() => setSelectedPhone(product.name)}
-                  // addToCard={() => addToCard(product)}
                 />
               ))}
             </div>
-            <div className="mobile__buttons">
-              <button
-                className="mobile__buttonsbuttonPrev"
-                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                disabled={currentPage === 1}
-              >
-                &lt;
-              </button>
-              {Array.from({ length: totalsPages }, (_, i) => i + 1).map(
-                number => (
-                  <button
-                    key={number}
-                    className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
-                    onClick={() => setCurrentPage(number)}
-                  >
-                    {number}
-                  </button>
-                ),
-              )}
-              <button
-                className="mobile__buttonsbuttonNext"
-                onClick={() =>
-                  setCurrentPage(prev => Math.min(prev + 1, totalPages))
-                }
-                disabled={currentPage === totalPages}
-              >
-                &gt;
-              </button>
-            </div>
+
+            {itemsPrePage !== 'all' && (
+              <div className="mobile__buttons">
+                <button
+                  className="mobile__buttonsbuttonPrev"
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  disabled={currentPage === 1}
+                >
+                  &lt;
+                </button>
+                {Array.from({ length: totalsPages }, (_, i) => i + 1).map(
+                  number => (
+                    <button
+                      key={number}
+                      className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
+                      onClick={() => setCurrentPage(number)}
+                    >
+                      {number}
+                    </button>
+                  ),
+                )}
+                <button
+                  className="mobile__buttonsbuttonNext"
+                  onClick={() =>
+                    setCurrentPage(prev => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                >
+                  &gt;
+                </button>
+              </div>
+            )}
           </div>
         </>
       )}

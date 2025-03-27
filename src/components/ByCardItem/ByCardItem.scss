@@ -7,7 +7,6 @@
 
 .buy__item {
   background-color: #161827;
-  // height: 128px;
   display: block;
   gap: 24px;
   align-items: center;
@@ -45,7 +44,7 @@
   gap: 24px;
 
   @include onMobile{
-    gap: 160px;
+    gap: 60px;
   }
 }
 
@@ -59,7 +58,6 @@
 .buy__image {
   width: 80px;
   height: 80px;
-  // object-fit: cover;
   object-fit: contain;
 }
 
@@ -87,15 +85,15 @@
 .buy__number{
   width: 32px;
   height: 32px;
-  margin: 0 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @include themify($themes) {
     color: themed('colorText');
   }
 }
 
-// .buy__button{
-//   @include onMobile{
-//     display: flex;
-//   }
-// }
+.buy__button{
+  display: flex;
+}

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import { fetchProducts } from '../../utils/api';
-import { Product } from '../../types/typeRpoduct';
 import './ProductCard.scss';
 import { ProductItem } from '../ProductItem/ProductItem';
+import { Product } from '../../types/ProductTypes';
 interface Props {
   title: string;
   products: Product[];

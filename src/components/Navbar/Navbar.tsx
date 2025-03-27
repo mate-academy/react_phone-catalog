@@ -1,4 +1,3 @@
-// import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 import logo from '../../../image/logo.svg';
@@ -13,7 +12,6 @@ import close from '../../../image/close.svg';
 import Blackclose from '../../../image/BlackClose.svg';
 import { Switches } from '../Switch/Switches';
 import { useContext } from 'react';
-// import { useContext } from 'react';
 import { ThemeContext } from '../ColorThemes/ColorThemes';
 import { useFavourites } from '../Favourites/FacouritesContext';
 import { useCart } from '../BuyCard/CartContext';
@@ -33,22 +31,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const { favorites } = useFavourites();
   const { cart } = useCart();
   const isDarkMode = theme === 'dark';
-
-  // useEffect(() => {
-  //   const updateCartCount = () => {
-  //     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-  //     setCartCount(Array.isArray(savedCart) ? savedCart.length : 0);
-  //   };
-
-  //   updateCartCount();
-
-  //   window.addEventListener('storage', updateCartCount);
-
-  //   return () => window.removeEventListener('storage', updateCartCount);
-  // }, []);
-
-  // useEffect(() => {}, [favorites]);
 
   return (
     <header className="header">
@@ -102,19 +84,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             </NavLink>
 
             {menuIsOpen ? (
-              <div
-                className="logo menu close"
-                // to="/close"
-                onClick={setMenuIsClose}
-              >
+              <div className="logo menu close" onClick={setMenuIsClose}>
                 <img src={isDarkMode ? close : Blackclose} alt="close" />
               </div>
             ) : (
-              <div
-                className={`logo menu`}
-                // to="/menu"
-                onClick={setMenuIsOpen}
-              >
+              <div className={`logo menu`} onClick={setMenuIsOpen}>
                 <img src={isDarkMode ? menu : menuBlack} alt="menu" />
               </div>
             )}

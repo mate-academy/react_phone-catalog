@@ -21,6 +21,7 @@
   align-items: center;
   display: flex;
   gap: 8px;
+  text-decoration: none;
 }
 
 .productInfolink__back {
@@ -38,15 +39,6 @@
   align-items: center;
   display: flex;
 }
-
-// .productInfo__title {
-//   font-family: Mont-SemiBold, sans-serif;
-//   font-weight: 800;
-//   font-size: 32px;
-//   line-height: 41px;
-//   color: #f1f2f9;
-//   margin: 16px 0 40px 0;
-// }
 
 .productInfo__wrapper {
   display: block;
@@ -133,6 +125,15 @@
   cursor: pointer;
   margin: 0 8px 24px 0;
   border: 2px solid #3b3e4a;
+}
+
+.productInfo__color.selected {
+  border: 2px solid rgba(200, 0, 255, 0.356);
+}
+
+.productInfo__memorys.selected {
+  background-color: rgba(200, 0, 255, 0.356);
+  color: white; // Білий текст
 }
 
 .productInfo__line {

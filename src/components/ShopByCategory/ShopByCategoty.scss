@@ -6,7 +6,6 @@
   width: 288px;
   height: 288px;
   object-fit: cover;
-  // background-color: #8D8D92;
   transition: transform 0.3s ease-in-out;
 
 
@@ -23,7 +22,6 @@
   &:hover{
     box-shadow: 1px 0 0.4em rgb(217, 217, 214);
     transform: translateY(-3px);
-    // border:1px 0 .4em rgb(217, 217, 214);
     border-image: initial;
   }
 }
@@ -37,7 +35,6 @@
 
   @include onTablet{
     flex-direction: row;
-    // flex-wrap: wrap;
     justify-content: center;
   }
 }

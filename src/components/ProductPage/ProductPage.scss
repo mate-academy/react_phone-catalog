@@ -137,8 +137,14 @@
   height: 32px;
 
   &:hover {
-    background-color: #905BFF;
-    border: 1px solid #905BFF;
+    background-color: #8f5bff87;
+    border: 1px solid #8f5bff87;
     color: #f1f2f9;
+  }
+
+  &.active {
+    background-color: #905BFF;
+    color: white;
+    font-weight: bold;
   }
 }
