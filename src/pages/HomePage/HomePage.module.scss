@@ -1,15 +1,28 @@
 @import '../../styles/mixinsTypography';
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .home {
   padding: 0;
 
+  @include tablet {
+    padding: 32px 24px;
+  }
+
   &__title {
-    margin: 24px 0;
-    text-align: center;
+    margin: 0;
+    padding: 24px 16px;
+    text-align: start;
     color: $primaryColor;
 
     @include h1-mobile;
+
+    @include tablet {
+      padding: 0;
+      margin-bottom: 32px;
+
+      @include h1-tablet-desktop;
+    }
   }
 
   &__category {
@@ -18,22 +31,40 @@
     margin: 0 16px;
     margin-bottom: 56px;
 
+    @include tablet {
+      margin: 0;
+      margin-bottom: 64px;
+    }
+
     &_title {
       margin: 0;
       margin-bottom: 24px;
       color: $primaryColor;
 
       @include h2-mobile;
+
+      @include tablet {
+        @include h2-tablet-desktop;
+      }
     }
 
     &_links {
       display: flex;
       flex-direction: column;
       gap: 32px;
+
+      @include tablet {
+        flex-direction: row;
+        gap: 16px;
+      }
     }
 
     &_link {
       text-decoration: none;
+
+      @include tablet {
+        width: 100%;
+      }
     }
 
     &_square {

@@ -1,15 +1,11 @@
+import classNames from 'classnames';
 import React from 'react';
 import { useCart } from '../../context/CartContext';
-import { Phones } from '../../types/Phones';
-import { Tablets } from '../../types/Tablets';
-import { Accessories } from '../../types/Accessories';
-import classNames from 'classnames';
+import { Product } from '../../types/Product';
 import styles from './ToggleButton.module.scss';
 
-type ProductType = Phones | Tablets | Accessories;
-
 interface ToggleButtonProps {
-  product: ProductType;
+  product: Product;
   type: 'cart' | 'favorites';
   isActive: boolean;
 }

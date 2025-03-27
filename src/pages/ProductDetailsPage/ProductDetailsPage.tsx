@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import phones from '../../../public/api/phones.json';
 import tablets from '../../../public/api/tablets.json';
 import accessories from '../../../public/api/accessories.json';
+import products from '../../../public/api/products.json';
 
 import { Phones } from '../../types/Phones';
 import { Tablets } from '../../types/Tablets';
@@ -29,15 +30,15 @@ export const ProductDetailsPage: React.FC = () => {
     [],
   );
   const product = allProducts.find(item => item.id === id);
-
+  const realProduct = products.find(prod => prod.itemId === id);
   const [selectedImage, setSelectedImage] = useState(product?.images[0] || '');
   const [selectedColor, setSelectedColor] = useState(product?.color || '');
   const [selectedCapacity, setSelectedCapacity] = useState(
     product?.capacity || '',
   );
 
-  const isInCart = cart.some(item => item.id === product?.id);
-  const isInFavorites = favorites.some(item => item.id === product?.id);
+  const isInCart = cart.some(item => item.itemId === product?.id);
+  const isInFavorites = favorites.some(item => item.itemId === product?.id);
 
   useEffect(() => {
     const newProduct = allProducts.find(
@@ -197,12 +198,20 @@ export const ProductDetailsPage: React.FC = () => {
             </p>
           </div>
           <div className={styles.product__controls_group_buttons}>
-            <ToggleButton product={product} type="cart" isActive={isInCart} />
-            <ToggleButton
-              product={product}
-              type="favorites"
-              isActive={isInFavorites}
-            />
+            {realProduct && (
+              <ToggleButton
+                product={realProduct}
+                type="cart"
+                isActive={isInCart}
+              />
+            )}
+            {realProduct && (
+              <ToggleButton
+                product={realProduct}
+                type="favorites"
+                isActive={isInFavorites}
+              />
+            )}
           </div>
         </div>
         <div className={styles.product__controls_specifications}>

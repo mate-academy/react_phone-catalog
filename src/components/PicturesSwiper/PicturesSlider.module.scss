@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .slider {
   width: 100%;
@@ -6,6 +7,10 @@
   margin: 0 auto;
   margin-bottom: 56px;
   position: relative;
+
+  @include tablet {
+    height: max-content;
+  }
 }
 
 .slide {
@@ -14,18 +19,65 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include tablet {
+    height: auto;
+  }
+
+  &_link {
+    @include tablet {
+      max-width: calc(100% - 150px);
+    }
+  }
 }
 
 .image {
   max-width: 100%;
   height: auto;
+  margin-bottom: 16px;
+
+  @include tablet {
+    max-height: 100%;
+  }
+}
+
+.prevEl,
+.nextEl {
+  position: absolute;
+  width: 32px;
+  height: 100%;
+  background-color: $whiteColor;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: $primaryColor;
+  z-index: 10;
+  border: 1px solid $iconsColor;
+  cursor: pointer;
+
+  @include tablet {
+    display: flex;
+  }
+
+  &::after {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.prevEl {
+  left: 0;
+}
+
+.nextEl {
+  right: 0;
 }
 
 .pagination {
   display: flex;
   justify-content: center;
   gap: 6px;
-  position: absolute;
+  position: static;
   bottom: 10px;
   transform: translateX(-50%);
   margin-left: 50%;
