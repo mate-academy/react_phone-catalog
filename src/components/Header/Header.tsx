@@ -15,9 +15,7 @@ export const Header: React.FC = () => {
     return 'CartContext is not loading';
   }
 
-  const { cart, favourite, setIsOpenMenu, isOpenMenu } = cartContext;
-
-  console.log(isOpenMenu);
+  const { cart, favourite, setIsOpenMenu } = cartContext;
 
   const location = useLocation();
 

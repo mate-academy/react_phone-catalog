@@ -31,8 +31,6 @@ export const ProductCart: React.FC<Props> = ({ product, isDiscount = false }) =>
 
   const selectCategory = categoryMap[product.category] || '';
 
-  console.log('selected category:', selectCategory);
-
   return (
     <>
       <div className={style.card}>

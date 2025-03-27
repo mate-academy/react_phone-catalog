@@ -3,6 +3,7 @@
 .shopingBag {
   box-sizing: border-box;
   padding-top: calc(49px + 48px);
+  padding-bottom: 56px;
 
   height: calc(100vh - 99px);
 
@@ -207,6 +208,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   color: $light-color;
   background-color: $accent-color;
@@ -217,12 +219,15 @@
 
   padding-block: 13.5px;
 
+  transition: .3s;
+
   &:hover {
     background-color: $accent-color-hover;
   }
 }
 
 .onDesctop {
+  position: relative;
   @include on-desctop {
     display: flex;
   }

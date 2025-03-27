@@ -9,19 +9,24 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '@/hooks/useCart';
 import { Product } from '@/types/Products';
 import { Loader } from '@/components/Loader/Loader';
+import { Modal } from './components/ModalWindow/Modal';
 
 export const CartPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
+  const [modalWindow, setModalWindow] = useState(false);
   const cartContext = useCart();
 
   if (!cartContext) {
     return 'CartContext is not loading';
   }
 
-  const { cart, removeFromCart, setCart } = cartContext;
+  const { cart, removeFromCart, setCart, clearCart } = cartContext;
   const navigate = useNavigate();
 
-  const totalPrice = cart.reduce((acc, item) => acc + (item.finalPrice || 0) * (item.quantity || 1), 0);
+  const totalPrice = cart.reduce(
+    (acc, item) => acc + (item.finalPrice || 0) * (item.quantity || 1),
+    0,
+  );
 
   const handleAddProduct = (id: number) => {
     setCart(prevCart =>
@@ -34,7 +39,9 @@ export const CartPage: React.FC = () => {
   const handleSubstraction = (id: number) => {
     setCart(prevCart =>
       prevCart.map(item =>
-        item.id === id && item.quantity > 1 ? { ...item, quantity: (item.quantity || 1) - 1 } : item,
+        item.id === id && item.quantity > 1
+          ? { ...item, quantity: (item.quantity || 1) - 1 }
+          : item,
       ),
     );
   };
@@ -42,6 +49,8 @@ export const CartPage: React.FC = () => {
   setInterval(() => {
     setLoading(false);
   }, 1000);
+
+  console.log('cart', cart);
 
 
   return (
@@ -55,7 +64,7 @@ export const CartPage: React.FC = () => {
             <p>Back</p>
           </button>
 
-          <h1 className={style.title}>Cart</h1>
+          <h1 className={style.title}>{cart.length === 0 ? 'Your cart is empty' : 'Cart'}</h1>
 
           <div className={style.onDesctop}>
             <div>
@@ -112,13 +121,17 @@ export const CartPage: React.FC = () => {
                 </div>
 
                 <div className={style.checkout}>
-                  <button className={style.checkoutBtn}>Checkout</button>
+                  <button className={style.checkoutBtn} onClick={() => setModalWindow(true)}>
+                    Checkout
+                  </button>
                 </div>
               </div>
             )}
           </div>
         </div>
       )}
+
+      <Modal isActive={modalWindow} setModalWindow={setModalWindow} clearCart={clearCart}/>
     </>
   );
 };

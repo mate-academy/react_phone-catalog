@@ -63,6 +63,11 @@
 
 .navLink {
   color: $light-color;
+  transition: .3s;
+
+  &:hover {
+    color: $accent-color-hover;
+  }
 }
 
 .backTop {

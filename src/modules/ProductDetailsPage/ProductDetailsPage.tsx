@@ -14,6 +14,7 @@ import { ProductOptions } from './components/ProductOptions/ProductOptions';
 import { AboutProduct } from './components/AboutProduct/AboutProduct';
 import { TechSpecs } from './components/TechSpecs/TechSpecs';
 import { Loader } from '@/components/Loader/Loader';
+import { ProductNotFound } from './components/ProductNotFound/ProductNotFound';
 
 export const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<ProductDetails[]>([]);
@@ -24,7 +25,6 @@ export const ProductDetailsPage: React.FC = () => {
   const navigate = useNavigate();
 
   const [namespaceId, capacity, color] = (() => {
-
     const parts = productId.split('-');
 
     return [parts.slice(0, -2).join('-'), parts[parts.length - 2], parts[parts.length - 1]];
@@ -61,16 +61,18 @@ export const ProductDetailsPage: React.FC = () => {
     }
 
     setProduct(filteredProduct);
-  }, [productSection, productId]);
+  }, [productSection, productId, capacity, color, namespaceId]);
 
-  setInterval(() => {
+  setTimeout(() => {
     setLoading(false);
   }, 1000);
 
   return (
     <>
+      {(product.length === 0) && <ProductNotFound />}
+
       {loading ? (
-        <Loader />
+          <Loader />
       ) : (
         <div className={style.detailPage}>
           {product.map(phone => (
