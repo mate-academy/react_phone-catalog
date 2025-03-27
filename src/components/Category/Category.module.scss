@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 56px;
+
+  @include bottom-section-indent;
+
+  @include on-tablet {
+    padding-top: 64px;
+  }
+
+  @include on-desktop {
+    padding-top: 80px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+}

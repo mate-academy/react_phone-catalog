@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.home {
+  padding-block: 24px 64px;
+  background-color: $color-hover-bg;
+
+  @include on-tablet {
+    padding-block: 32px 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 56px 80px;
+  }
+
+  &_title {
+    @include typography-h1;
+    @include container-main-inline;
+  }
+}

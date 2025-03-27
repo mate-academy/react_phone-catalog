@@ -1,0 +1,24 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.product__info {
+  display: flex;
+  justify-content: space-between;
+
+  &-title {
+    @include typography-small-text;
+
+    color: $color-secondary;
+  }
+
+  &-description {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15.34px;
+    letter-spacing: 0%;
+    text-align: right;
+    color: $color-primary;
+  }
+}

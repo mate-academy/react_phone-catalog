@@ -1,0 +1,76 @@
+@import './variables';
+@import './mixins';
+@import '../styles/fonts';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.app {
+  position: relative;
+}
+
+.page {
+  &__main-container {
+    @include container-main-inline;
+  }
+
+  &__banner-container {
+    @include on-tablet {
+      padding-inline: $padding-inline-tablet;
+    }
+
+    @include on-desktop {
+      padding-inline: $padding-inline-desktop;
+      max-width: 1440px;
+      margin-inline: auto;
+    }
+  }
+
+  &__product-slider-bottom {
+    @include container-left-indent;
+  }
+
+  &__category {
+    @include container-main-inline;
+  }
+
+  &__prices-bottom {
+    @include container-left-indent;
+  }
+
+  &__footer-wrapper {
+    @include container-main-inline;
+  }
+
+  &__wrapper-center {
+    @include container-main-inline;
+  }
+
+  &__product {
+    padding-top: 56px;
+
+    @include on-tablet {
+      padding-top: 64px;
+    }
+
+    @include on-desktop {
+      padding-top: 80px;
+    }
+  }
+}

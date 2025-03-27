@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.price-big {
+  @include typography-h2;
+
+  color: $color-primary;
+}

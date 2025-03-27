@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.footer {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    padding-block: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 12px;
+    }
+
+    @include on-desktop {
+      gap: 100px;
+    }
+  }
+
+  &__link {
+    @include typography-uppercase;
+
+    text-decoration: none;
+    color: $color-secondary;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    align-self: center;
+
+    @include on-tablet {
+      align-self: flex-start;
+    }
+
+    &-text {
+      @include typography-small-text;
+
+      color: $color-secondary;
+    }
+  }
+}

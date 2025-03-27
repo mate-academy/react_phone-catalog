@@ -1,0 +1,185 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+@import '../../styles/App';
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  background-color: $color-white;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+
+  &--open {
+    display: flex;
+    transform: translateX(-100%);
+  }
+
+  &__header {
+    width: 100%;
+    background-color: #f0f0f0;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+
+      @include container-top-inline;
+    }
+
+    &-left {
+      display: flex;
+      align-items: stretch;
+
+      @include on-tablet {
+        gap: 16px;
+      }
+
+      @include on-desktop {
+        gap: 24px;
+      }
+    }
+
+    &-logo-link {
+      align-self: center;
+    }
+
+    &__buttons {
+      display: flex;
+      align-items: center;
+    }
+
+    &-buttons-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
+
+      @include on-desktop {
+        width: 64px;
+        height: 64px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &-button-menu {
+      display: flex;
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+    flex-grow: 1;
+    justify-content: flex-start;
+
+    @include on-desktop {
+      max-width: 1440px;
+      margin-inline: auto;
+    }
+  }
+
+  &__buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: auto;
+    display: flex;
+    border: 1px solid rgba(226, 230, 233, 1);
+    width: 100%;
+    justify-content: center;
+
+    @include on-desktop {
+      margin-inline: auto;
+    }
+  }
+
+  &__buttons-down {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: $color-primary;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__favorites {
+    padding-right: 72px;
+    padding-block: 25px;
+    justify-content: flex-end;
+  }
+
+  &__shopping-bag {
+    padding-left: 72px;
+    padding-block: 25px;
+    border-left: 1px solid rgba(226, 230, 233, 1);
+    justify-content: flex-start;
+  }
+
+  &__numbers {
+    position: relative;
+
+    &-count {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      top: 0;
+      right: 0;
+      border: 1px solid $color-white;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-family: Mont, sans-serif;
+      font-weight: 500;
+      font-size: 9px;
+      line-height: 100%;
+      text-align: center;
+      color: $color-white;
+      background-color: $color-secondary-accent;
+      transform: translate(50%, -50%);
+
+      &--active {
+        display: flex;
+      }
+    }
+  }
+}

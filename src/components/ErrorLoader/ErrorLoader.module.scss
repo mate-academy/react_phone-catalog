@@ -1,0 +1,46 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.error-loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  height: 75vh;
+  background-image: url('../img/page-not-found.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__title {
+    @include typography-h1;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 176px;
+    height: 40px;
+    border-radius: 8px;
+    color: $color-white;
+    background-color: $color-accent;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+
+    transition: all 0.3s ease;
+
+    @include typography-buttons;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

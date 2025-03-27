@@ -1,0 +1,122 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    height: 320px;
+    width: 100%;
+    align-items: center;
+
+    @include on-tablet {
+      height: 400px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__viewport {
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+  }
+
+  &__image-wrapper {
+    display: flex;
+    height: 100%;
+    width: 300%;
+
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  &__image-link {
+    height: 100%;
+    width: 33.33%;
+    cursor: pointer;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  &__button {
+    display: none;
+    width: 32px;
+    border: 1px solid $color-icons;
+    border-radius: 48px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    align-self: stretch;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+  }
+
+  &__dots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__dot {
+    padding: 0;
+    border: none;
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &--active {
+      background-color: $color-primary;
+    }
+  }
+}
