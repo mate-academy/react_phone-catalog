@@ -19,7 +19,7 @@
 
 .logo {
   position: absolute;
-  animation: logoAnimation 2s linear infinite;
+  animation: logo-animation 2s linear infinite;
 }
 
 @keyframes animate {
@@ -32,7 +32,7 @@
   }
 }
 
-@keyframes logoAnimation {
+@keyframes logo-animation {
   100% {
     scale: 1;
   }
@@ -41,7 +41,7 @@
     scale: 1.2;
   }
 
-  from {
+  0% {
     scale: 1;
   }
 }

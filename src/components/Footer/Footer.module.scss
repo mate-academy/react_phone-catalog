@@ -58,9 +58,6 @@
   }
 }
 
-.navItem {
-}
-
 .navLink {
   color: $light-color;
   transition: .3s;
@@ -74,12 +71,10 @@
   padding-top: 32px;
   display: flex;
   justify-content: center;
+
   @include on-tablet {
     padding: 0;
   }
-}
-
-.backTopContent {
 }
 
 .backTopLink {
