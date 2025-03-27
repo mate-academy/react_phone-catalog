@@ -77,7 +77,7 @@ const ProductChoice: React.FC<ProductChoiceProps> = ({
       <div className={styles['product-choice__photos']}>
         <img
           key={mainProductImage}
-          src={`../public/${mainProductImage}`}
+          src={`./${mainProductImage}`}
           alt=""
           className={styles['product-choice__main-photo']}
         />
@@ -86,7 +86,7 @@ const ProductChoice: React.FC<ProductChoiceProps> = ({
             return (
               <img
                 key={image}
-                src={`../public/${image}`}
+                src={`./${image}`}
                 alt=""
                 className={classNames(styles['product-choice__nav-photo'], {
                   [styles['product-choice__nav-photo--active']]:

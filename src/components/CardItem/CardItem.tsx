@@ -59,9 +59,8 @@ const CardItem: React.FC<CardItemProps> = ({ product, card }) => {
         </svg>
         <div className={styles['card-item__top-links']}>
           <NavLink to={`/${product.category}/${product.itemId}`}>
-            {' '}
             <img
-              src={`../public/${product.image}`}
+              src={`./${product.image}`}
               alt="product img"
               className={styles['card-item__prodcut-img']}
             />

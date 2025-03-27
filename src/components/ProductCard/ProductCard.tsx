@@ -27,7 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ size, product }) => {
         onClick={handleScroll}
       >
         <img
-          src={`../${product.image}`}
+          src={`./${product.image}`}
           alt="product-card"
           className={styles['product-card__image']}
         />
