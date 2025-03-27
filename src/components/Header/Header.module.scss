@@ -21,6 +21,8 @@
   &__logo {
     @include set-size(80px, 28px);
 
+    box-sizing: content-box !important;
+
     padding: 18px 24px;
 
     img {

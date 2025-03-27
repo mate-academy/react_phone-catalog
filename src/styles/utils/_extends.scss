@@ -6,6 +6,30 @@
   }
 }
 
+%secondary-title {
+  @include font(700, 32px, 41px, -0.01em);
+
+  @include on-mobile {
+    @include font(700, 22px, 31px, 0);
+  }
+}
+
+%three-title {
+  @include font(700, 22px, 31px, 0);
+
+  @include on-mobile {
+    @include font(600, 20px, 26px, 0);
+  }
+}
+
+%small-title {
+  @include font(600, 20px, 26px, 0);
+
+  @include on-mobile {
+    @include font(600, 16px, 20px, 0);
+  }
+}
+
 %uppercase-text {
   @include font(700, 12px, 11px, 0.04em);
 

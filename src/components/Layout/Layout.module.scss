@@ -1,0 +1,7 @@
+@import '@styles/utils/mixins';
+
+.main {
+  @include content-padding-inline;
+
+  max-width: 1200px;
+}

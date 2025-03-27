@@ -1,0 +1,43 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.icon {
+  position: relative;
+
+  &__arrowRightDisabled,
+  &__arrowLeftDisabled,
+  &__arrowRightActive,
+  &__arrowLeftActive,
+  &__heart,
+  &__heartActive {
+    @include set-size(16px, 16px);
+
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__arrowRightDisabled {
+    background-image: url('@assets/icons/arrow-right-disable-icon.svg');
+  }
+
+  &__arrowLeftDisabled {
+    background-image: url('@assets/icons/arrow-left-disable-icon.svg');
+  }
+
+  &__arrowRightActive {
+    background-image: url('@assets/icons/arrow-right-icon.svg');
+  }
+
+  &__arrowLeftActive {
+    background-image: url('@assets/icons/arrow-left-icon.svg');
+  }
+
+  &__heartActive {
+    background-image: url('@assets/icons/heart-active-icon.svg');
+  }
+
+  &__heart {
+    background-image: url('@assets/icons/heart-icon.svg');
+  }
+}

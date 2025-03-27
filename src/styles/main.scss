@@ -18,7 +18,41 @@ html {
   @include content-padding-inline;
 }
 
+.section {
+  width: 100%;
+}
+
 .no-scroll {
   overflow: hidden;
   height: 100vh;
+}
+
+.sr-only {
+  @include set-size(1px, 1px);
+
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+.button-icon {
+  @include flex(row, center, center);
+
+  border: 1px solid $submarine-color;
+  border-radius: $radius-xxlarge;
+
+  @include hover(border, 1px solid $woodsmoke-color);
+
+  &.disabled {
+    opacity: 0.5;
+    background-color: transparent;
+    pointer-events: none;
+
+    &:hover {
+      border: 1px solid $submarine-color;
+    }
+  }
 }

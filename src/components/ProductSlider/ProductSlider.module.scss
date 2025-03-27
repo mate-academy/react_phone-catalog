@@ -1,0 +1,27 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.carousel {
+  overflow: hidden;
+  &__top {
+    @include flex(row, space-between, center);
+
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    @include flex($direction: row, $content: space-between);
+
+    gap: 16px;
+  }
+
+  &__navigation {
+    @include flex(row, center, center);
+
+    gap: 16px;
+
+    &_btn {
+      padding: 8px;
+    }
+  }
+}

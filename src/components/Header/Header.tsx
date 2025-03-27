@@ -4,10 +4,10 @@ import { ROUTES } from '@routes/index';
 import { menuItems } from '@data/menuData';
 import { BurgerMenu } from '../Buttons/BurgerMenu';
 import { getNavLinkClass } from '@utils/getNavLinkClass';
+import { HeartIcon } from '@components/Icons/HeartIcon';
 
 import styles from './Header.module.scss';
 import logo from '@assets/icons/logo.svg';
-import heartIcon from '@assets/icons/heart-icon.svg';
 import cartIcon from '@assets/icons/cart-icon.svg';
 
 export const Header = () => {
@@ -62,7 +62,7 @@ export const Header = () => {
         </div>
         <div className={styles.header__right}>
           <NavLink to={ROUTES.FAVORITES} className={styles.header__heart_btn}>
-            <img src={heartIcon} alt="Add to favorite" />
+            <HeartIcon />
           </NavLink>
           <NavLink to={ROUTES.CART} className={styles.header__cart_btn}>
             <img src={cartIcon} alt="Add to cart" />
@@ -102,7 +102,7 @@ export const Header = () => {
               styles['mobile__menu--active'],
             )}
           >
-            <img src={heartIcon} alt="Add to favorite" />
+            <HeartIcon />
           </NavLink>
           <NavLink
             to={ROUTES.CART}

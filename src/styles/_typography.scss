@@ -2,6 +2,18 @@
   @extend %main-title;
 }
 
+.secondary-title {
+  @extend %secondary-title;
+}
+
+.three-title {
+  @extend %three-title;
+}
+
+.small-title {
+  @extend %small-title;
+}
+
 .uppercase-text {
   @extend %uppercase-text;
 }

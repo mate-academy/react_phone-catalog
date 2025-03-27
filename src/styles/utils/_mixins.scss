@@ -1,3 +1,5 @@
+@import '../utils/vars';
+
 @mixin set-size($width: auto, $height: auto) {
   height: $height;
   width: $width;
@@ -106,5 +108,20 @@
     &::after {
       width: $after-width;
     }
+  }
+}
+
+@mixin responsive-padding($desktop, $tablet, $mobile) {
+  padding-top: $desktop;
+  padding-left: $desktop;
+
+  @include on-tablet {
+    padding-top: $tablet;
+    padding-left: $tablet;
+  }
+
+  @include on-mobile {
+    padding-top: $mobile;
+    padding-left: $mobile;
   }
 }

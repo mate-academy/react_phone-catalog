@@ -13,7 +13,10 @@
       "@data/*": ["data/*"],
       "@pages/*": ["pages/*"],
       "@types/*": ["types/*"],
-      "@routes/*": ["routes/*"]
+      "@routes/*": ["routes/*"],
+      "@api/*": ["api/*"],
+      "@enums/*": ["enums/*"],
+      "@hooks/*": ["hooks/*"]
     }
   }
 }

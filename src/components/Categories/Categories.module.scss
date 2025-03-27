@@ -1,0 +1,74 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.category {
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    @include page-grid;
+
+    @include on-mobile {
+      row-gap: 32px;
+    }
+  }
+
+  &__item {
+    grid-column: span 8;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__wrapper {
+    @include responsive-padding(70px, 40px, 55px);
+
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 24px;
+    transition: padding 0.3s ease;
+
+    &_image {
+      transform-origin: left top;
+      height: auto;
+      width: 100%;
+    }
+
+    &:hover {
+      @include responsive-padding(50px, 20px, 25px);
+    }
+
+    @include on-tablet {
+      border-radius: $radius-medium;
+    }
+
+    @include on-mobile {
+      height: 288px;
+    }
+  }
+
+  &__name {
+    color: $woodsmoke-color;
+    margin-bottom: 4px;
+  }
+
+  &__count {
+    color: $regent-gray-color;
+  }
+}
+
+.phones {
+  transform: scale(1.1);
+}
+
+.tablets {
+  transform: scale(2);
+}
+
+.accessories {
+  transform: scale(2.2);
+}
