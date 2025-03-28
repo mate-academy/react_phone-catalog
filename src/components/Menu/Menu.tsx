@@ -33,7 +33,7 @@ const Menu: React.FC<MenuProps> = ({ isMenuOpen, onCloseMenu }) => {
               onClick={onCloseMenu}
             >
               <img
-                src="./../img/logo/logo.png"
+                src="./img/logo/logo.png"
                 alt="logo"
                 className={styles['header__logo-img']}
               />
