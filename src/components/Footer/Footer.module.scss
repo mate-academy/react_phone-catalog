@@ -1,0 +1,75 @@
+@use "../../css-variables/variables.scss" as *;
+@font-face {
+  font-family: Mont-Bold;
+  src: url('fonts/Mont-Bold.otf');
+}
+@font-face {
+  font-family: Mont-Regular;
+  src: url('fonts/Mont-Regular.otf');
+}
+
+.footer_main_container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 16px;
+  border-top: 1px solid $button-border-disabled;
+}
+
+.footer_logo_container {
+  width: 288px;
+  height: 32px;
+}
+
+.footer_logo {
+  width: 90px;
+  height: 32px;
+}
+
+.footer_text_container {
+  width: 288px;
+  height: 66px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer_paragraph {
+  font-family: "Mont-Bold", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 12px;
+  width: fit-content;
+  height: 12px;
+  text-transform: uppercase;
+  color: $main-light-gray;
+  margin: 0;
+}
+
+.footer_back_to_top_container {
+  width: 288px;
+  height: 32px;
+  @include flex_centered;
+  gap: 16px;
+}
+
+.footer_back_to_top_text {
+  font-family: "Mont-Regular", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: $main-light-gray;
+}
+
+.footer_back_to_top_button {
+  background-color: $main-background-white;
+  border: 1px solid $button-border-default;
+  width: 32px;
+  height: 32px;
+  @include flex_centered;
+}
+
+.footer_back_to_top_arrow {
+  transform: rotate(-90deg);
+}

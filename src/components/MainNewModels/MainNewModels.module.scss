@@ -1,0 +1,51 @@
+@use "../../css-variables/variables.scss" as *;
+@font-face {
+  font-family: Mont-Bold;
+  src: url('fonts/Mont-Bold.otf');
+}
+
+.main_header_container {
+  width: 288px;
+  height: 62px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 72px;
+  margin: 0 16px 24px 16px;
+}
+
+.main_header_title_container {
+  width: 136px;
+  height: 62px;
+  @include flex_centered;
+}
+
+.main_header_title {
+  font-family: "Mont-Bold", sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: $main-dark-gray;
+}
+
+.main_header_button_container {
+  @include flex_centered;
+  width: 80px;
+  height: 32px;
+  gap: 16px;
+}
+
+.main_header_button {
+  width: 32px;
+  height: 32px;
+  background-color: $main-background-white;
+  border: 1px solid $button-border-disabled;
+  cursor: pointer;
+  &_left {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  &_default {
+    border: 1px solid $button-border-default;
+  }
+}

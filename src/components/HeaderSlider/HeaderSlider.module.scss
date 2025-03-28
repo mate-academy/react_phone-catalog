@@ -1,0 +1,44 @@
+
+@use '../../css-variables/variables.scss' as *;
+
+.slider_container {
+  width: 100vw;
+  box-sizing: border-box;
+  margin-bottom: 56px;
+}
+.slider_img_wrapper {
+  width: 100vw;
+  height: 320px;
+  margin-bottom: 8px;
+  @include flex_centered;
+}
+
+.slider_button_container {
+  width: 100vw;
+  @include flex_centered;
+}
+
+.slider_button_inner_container {
+  width: 80px;
+  height: 24px;
+  @include flex_centered;
+  flex-direction: row;
+}
+
+.slider_button_wrapper {
+  width: 24px;
+  height: 24px;
+  @include flex_centered;
+}
+
+.slider_button {
+  width: 14px;
+  height: 4px;
+  background-color: $button-border-disabled;
+}
+
+.marked {
+  width: 14px;
+  height: 4px;
+  background-color: $main-dark-gray;
+}

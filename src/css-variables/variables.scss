@@ -1,0 +1,10 @@
+@mixin flex_centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+$button-border-default: #B4BDC3;
+$button-border-disabled: #E2E6E9;
+$main-background-white: #FFFFFF;
+$main-dark-gray: #313237;
+$main-light-gray: #89939A;

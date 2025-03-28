@@ -1,0 +1,94 @@
+@use "../../css-variables/variables.scss" as *;
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('fonts/Mont-Bold.otf');
+}
+
+.side_bar_container {
+  position: absolute;
+  background-color: $main-background-white;
+  height: 100vh;
+  // right: -100vw;
+  // z-index: 1;
+}
+
+.header_nav_container {
+  width: 100vw;
+  background-color: $main-background-white;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  filter: drop-shadow(-1px 1px $button-border-disabled);
+  margin-bottom: 24px;
+}
+
+.header_nav_logo_container {
+  width: 96px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_nav_close_container {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-background-white;
+  border-left: 1px solid $button-border-disabled;
+}
+
+.header_nav_close_button {
+  @include flex_centered;
+  width: 16px;
+  height: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu_container {
+  @include flex_centered;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menu_link {
+  text-decoration: none
+}
+
+.menu_title {
+  @include flex_centered;
+  font-family: 'Mont-Bold', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 12px;
+  width: fit-content;
+  height: 12px;
+  margin: 0;
+  text-transform: uppercase;
+  color: $main-light-gray;
+}
+
+.footer_container {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $main-light-gray;
+}
+
+.footer_button {
+  width: calc(100vw / 2);
+  height: 64px;
+  background-color: $main-background-white;
+  border: none;
+  &:first-child {
+    border-right: 1px solid $main-light-gray;
+  }
+}
