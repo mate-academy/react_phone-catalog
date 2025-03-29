@@ -13,7 +13,12 @@ export const Footer = () => {
 
       <nav className={styles.nav}>
         <div className={styles.navList}>
-          <NavLink to="https://github.com/VKonoplianyi" className={styles.navLink}>
+          <NavLink
+            to="https://github.com/VKonoplianyi"
+            className={styles.navLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Github
           </NavLink>
           <NavLink to="/contacts" className={styles.navLink}>

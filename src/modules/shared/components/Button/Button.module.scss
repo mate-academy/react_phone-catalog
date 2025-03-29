@@ -8,9 +8,22 @@
   font-weight: 500;
   color: $white;
   text-align: center;
-  transition: all 0.3s ease;
+  transition:
+    background-color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out,
+    color 0.3s ease-in-out,
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
 
-  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+  @include on-desktop {
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
 
   &--primary {
     background-color: $accent;

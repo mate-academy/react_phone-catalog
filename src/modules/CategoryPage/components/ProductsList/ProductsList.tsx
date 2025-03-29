@@ -14,9 +14,9 @@ type Props = {
 export const ProductsList: React.FC<Props> = ({ itemsPerPage, items }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialPage = Number(searchParams.get('page')) || 1;
-  const [isParamsChanged, setIsParamsChanged] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(initialPage);
+  const [isLoading, setIsLoading] = useState(false);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -31,41 +31,46 @@ export const ProductsList: React.FC<Props> = ({ itemsPerPage, items }) => {
   const perPage = searchParams.get('perPage');
 
   useEffect(() => {
-    setIsParamsChanged(true);
-
     setCurrentPage(1);
-    const params = new URLSearchParams(searchParams);
+    setIsLoading(true);
 
-    params.delete('page');
-    setSearchParams(params);
+    setSearchParams(prevParams => {
+      const params = new URLSearchParams(prevParams);
+
+      params.delete('page');
+
+      return params;
+    });
 
     setTimeout(() => {
-      setIsParamsChanged(false);
+      setIsLoading(false);
     }, 300);
   }, [sort, perPage, searchParams, setSearchParams]);
 
   const handlePageClick = (page: number) => {
-    setIsParamsChanged(true);
+    setIsLoading(true);
     setCurrentPage(page);
 
-    const params = new URLSearchParams(searchParams);
+    setSearchParams(prevParams => {
+      const params = new URLSearchParams(prevParams);
 
-    if (page > 1) {
-      params.set('page', page.toString());
-    } else {
-      params.delete('page');
-    }
+      if (page > 1) {
+        params.set('page', page.toString());
+      } else {
+        params.delete('page');
+      }
 
-    setSearchParams(params);
+      return params;
+    });
 
     setTimeout(() => {
-      setIsParamsChanged(false);
+      setIsLoading(false);
     }, 300);
   };
 
   return (
     <>
-      {isParamsChanged ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <>
