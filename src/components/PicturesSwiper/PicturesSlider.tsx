@@ -82,7 +82,7 @@ export const PicturesSlider = () => {
           bulletClass: styles.bullet,
           bulletActiveClass: styles.activeBullet,
         }}
-        autoplay={{ delay: 10000000, disableOnInteraction: false }}
+        autoplay={{ delay: 10000, disableOnInteraction: false }}
         loop
       >
         {slides.map(slide => (

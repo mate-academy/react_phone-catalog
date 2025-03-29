@@ -1,13 +1,14 @@
-@import '../../styles/mixinsTypography';
 @import '../../styles/variables';
+@import '../../styles/mixinsTypography';
 
 .slider {
-  margin: 0 16px;
+  margin: 0 auto;
   margin-bottom: 56px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   position: relative;
+  padding: 0 24px;
 
   &__header {
     display: flex;
@@ -18,7 +19,7 @@
 
   &__title {
     margin: 0;
-    width: 136px;
+    width: auto;
     color: $primaryColor;
 
     @include h2-mobile;
@@ -30,18 +31,49 @@
   }
 
   &__container {
-    width: 212px;
-    height: 439px;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  &__slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $whiteColor;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    max-width: 100%;
+    flex: 1 0 auto;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__button {
     width: 32px;
     height: 32px;
-    border: 1px solid #ccc;
-    background-color: white;
+    border: 1px solid $iconsColor;
+    background-color: $whiteColor;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $primaryColor;
+      color: $whiteColor;
+    }
+
+    &:disabled {
+      cursor: default;
+      background-color: $whiteColor;
+      color: $secondaryColor;
+
+    }
   }
 }

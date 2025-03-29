@@ -120,128 +120,135 @@ export const ProductDetailsPage: React.FC = () => {
         <span className={styles.product__back_text}>Back</span>
       </NavLink>
       <h2 className={styles.product__title}>{product.name}</h2>
-      <div className={styles.product__gallery}>
-        <div className={styles.product__gallery_main}>
-          <img
-            className={styles.product__gallery_main_img}
-            src={`/${selectedImage}`}
-            alt="Selected product"
-          />
-        </div>
-        <div className={styles.product__gallery_thumbnails}>
-          {product.images.map(image => (
+      <div className={styles.product__group}>
+        <div className={styles.product__gallery}>
+          <div className={styles.product__gallery_main}>
             <img
-              key={image}
-              src={`/${image}`}
-              alt="Thumbnail"
-              className={classNames(styles.product__gallery_thumbnail, {
-                [styles.active]: selectedImage === image,
-              })}
-              onClick={() => setSelectedImage(image)}
+              className={styles.product__gallery_main_img}
+              src={`/${selectedImage}`}
+              alt="Selected product"
             />
-          ))}
-        </div>
-      </div>
-      <div className={styles.product__controls}>
-        <div className={styles.product__controls_colors}>
-          <p className={styles.product__controls_colors_title}>
-            Available colors
-          </p>
-          <div className={styles.product__controls_colors_buttons}>
-            {product.colorsAvailable.map(color => (
-              <button
-                key={color}
-                type="button"
-                className={classNames(styles.product__controls_colors_button, {
-                  [styles.active]: selectedColor === color,
+          </div>
+          <div className={styles.product__gallery_thumbnails}>
+            {product.images.map(image => (
+              <img
+                key={image}
+                src={`/${image}`}
+                alt="Thumbnail"
+                className={classNames(styles.product__gallery_thumbnail, {
+                  [styles.active]: selectedImage === image,
                 })}
-                style={{ backgroundColor: colorMap[color] }}
-                onClick={() => handleColorChange(color)}
-                disabled={color === selectedColor}
-              ></button>
+                onClick={() => setSelectedImage(image)}
+              />
             ))}
           </div>
         </div>
-        <div className={styles.product__controls_line}></div>
-        <div className={styles.product__controls_capacity}>
-          <p className={styles.product__controls_capacity_title}>
-            Select capacity
-          </p>
-          <div className={styles.product__controls_capacity_buttons}>
-            {product.capacityAvailable.map(capacity => (
-              <button
-                key={capacity}
-                type="button"
-                className={classNames(
-                  styles.product__controls_capacity_button,
-                  {
-                    [styles.active]: selectedCapacity === capacity,
-                  },
-                )}
-                onClick={() => handleCapacityChange(capacity)}
-                disabled={capacity === selectedCapacity}
-              >
-                {capacity}
-              </button>
-            ))}
+        <div className={styles.product__controls}>
+          <div className={styles.product__controls_colors}>
+            <p className={styles.product__controls_colors_title}>
+              Available colors
+            </p>
+            <div className={styles.product__controls_colors_buttons}>
+              {product.colorsAvailable.map(color => (
+                <button
+                  key={color}
+                  type="button"
+                  className={classNames(
+                    styles.product__controls_colors_button,
+                    {
+                      [styles.active]: selectedColor === color,
+                    },
+                  )}
+                  style={{ backgroundColor: colorMap[color] }}
+                  onClick={() => handleColorChange(color)}
+                  disabled={color === selectedColor}
+                ></button>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className={styles.product__controls_line}></div>
+          <div className={styles.product__controls_line}></div>
+          <div className={styles.product__controls_capacity}>
+            <p className={styles.product__controls_capacity_title}>
+              Select capacity
+            </p>
+            <div className={styles.product__controls_capacity_buttons}>
+              {product.capacityAvailable.map(capacity => (
+                <button
+                  key={capacity}
+                  type="button"
+                  className={classNames(
+                    styles.product__controls_capacity_button,
+                    {
+                      [styles.active]: selectedCapacity === capacity,
+                    },
+                  )}
+                  onClick={() => handleCapacityChange(capacity)}
+                  disabled={capacity === selectedCapacity}
+                >
+                  {capacity}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className={styles.product__controls_line}></div>
 
-        <div className={styles.product__controls_group}>
-          <div className={styles.product__controls_group_prices}>
-            <h3 className={styles.product__controls_group_prices_discount}>
-              ${product.priceDiscount}
-            </h3>
-            <p className={styles.product__controls_group_prices_regular}>
-              ${product.priceRegular}
-            </p>
+          <div className={styles.product__controls_group}>
+            <div className={styles.product__controls_group_prices}>
+              <h3 className={styles.product__controls_group_prices_discount}>
+                ${product.priceDiscount}
+              </h3>
+              <p className={styles.product__controls_group_prices_regular}>
+                ${product.priceRegular}
+              </p>
+            </div>
+            <div className={styles.product__controls_group_buttons}>
+              {realProduct && (
+                <ToggleButton
+                  product={realProduct}
+                  type="cart"
+                  isActive={isInCart}
+                />
+              )}
+              {realProduct && (
+                <ToggleButton
+                  product={realProduct}
+                  type="favorites"
+                  isActive={isInFavorites}
+                />
+              )}
+            </div>
           </div>
-          <div className={styles.product__controls_group_buttons}>
-            {realProduct && (
-              <ToggleButton
-                product={realProduct}
-                type="cart"
-                isActive={isInCart}
-              />
-            )}
-            {realProduct && (
-              <ToggleButton
-                product={realProduct}
-                type="favorites"
-                isActive={isInFavorites}
-              />
-            )}
-          </div>
-        </div>
-        <div className={styles.product__controls_specifications}>
-          <div className={styles.product__controls_specification}>
-            <p className={styles.product__controls_specificationName}>Screen</p>
-            <p className={styles.product__controls_specificationValue}>
-              {product.screen}
-            </p>
-          </div>
-          <div className={styles.product__controls_specification}>
-            <p className={styles.product__controls_specificationName}>
-              Resolution
-            </p>
-            <p className={styles.product__controls_specificationValue}>
-              {product.resolution}
-            </p>
-          </div>
-          <div className={styles.product__controls_specification}>
-            <p className={styles.product__controls_specificationName}>
-              Proccessor
-            </p>
-            <p className={styles.product__controls_specificationValue}>
-              {product.processor}
-            </p>
-          </div>
-          <div className={styles.product__controls_specification}>
-            <p className={styles.product__controls_specificationName}>RAM</p>
-            <p className={styles.product__controls_specificationValue}>
-              {product.ram}
-            </p>
+          <div className={styles.product__controls_specifications}>
+            <div className={styles.product__controls_specification}>
+              <p className={styles.product__controls_specificationName}>
+                Screen
+              </p>
+              <p className={styles.product__controls_specificationValue}>
+                {product.screen}
+              </p>
+            </div>
+            <div className={styles.product__controls_specification}>
+              <p className={styles.product__controls_specificationName}>
+                Resolution
+              </p>
+              <p className={styles.product__controls_specificationValue}>
+                {product.resolution}
+              </p>
+            </div>
+            <div className={styles.product__controls_specification}>
+              <p className={styles.product__controls_specificationName}>
+                Proccessor
+              </p>
+              <p className={styles.product__controls_specificationValue}>
+                {product.processor}
+              </p>
+            </div>
+            <div className={styles.product__controls_specification}>
+              <p className={styles.product__controls_specificationName}>RAM</p>
+              <p className={styles.product__controls_specificationValue}>
+                {product.ram}
+              </p>
+            </div>
           </div>
         </div>
       </div>

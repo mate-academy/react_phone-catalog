@@ -47,6 +47,13 @@ export const HomePage = () => {
     (a, b) => b.priceDifference - a.priceDifference,
   );
 
+  const handleNavLinkClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className={styles.home}>
       <h1 className={styles.home__title}>Welcome to Nice Gadgets store!</h1>
@@ -57,7 +64,11 @@ export const HomePage = () => {
       <div className={styles.home__category}>
         <h2 className={styles.home__category_title}>Shop by category</h2>
         <div className={styles.home__category_links}>
-          <NavLink to="/phones" className={styles.home__category_link}>
+          <NavLink
+            to="/phones"
+            className={styles.home__category_link}
+            onClick={handleNavLinkClick}
+          >
             <div
               style={{ backgroundColor: '#6D6474' }}
               className={styles.home__category_square}
@@ -75,7 +86,11 @@ export const HomePage = () => {
               </p>
             </div>
           </NavLink>
-          <NavLink to="/tablets" className={styles.home__category_link}>
+          <NavLink
+            to="/tablets"
+            className={styles.home__category_link}
+            onClick={handleNavLinkClick}
+          >
             <div
               style={{ backgroundColor: '#8D8D92' }}
               className={styles.home__category_square}
@@ -93,13 +108,17 @@ export const HomePage = () => {
               </p>
             </div>
           </NavLink>
-          <NavLink to="/accessories" className={styles.home__category_link}>
+          <NavLink
+            to="/accessories"
+            className={styles.home__category_link}
+            onClick={handleNavLinkClick}
+          >
             <div
               style={{ backgroundColor: '#973D5F' }}
               className={styles.home__category_square}
             >
               <img
-                style={{ top: '120px', left: '30px', width: '180%' }}
+                style={{ height: '80%' }}
                 className={styles.home__category_img}
                 src="/img/category-accessories.png"
                 alt="category accessories"

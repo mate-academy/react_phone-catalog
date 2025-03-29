@@ -12,6 +12,10 @@
 
   border: 1px solid $grayColor;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &__img {
     height: 129px;
     align-self: center;

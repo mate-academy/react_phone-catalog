@@ -61,6 +61,20 @@
 
     &_link {
       text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-radius 0.3s ease;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 40px;
+      }
 
       @include tablet {
         width: 100%;
@@ -77,34 +91,54 @@
       aspect-ratio: 1 / 1;
       overflow: hidden;
       margin-bottom: 24px;
+      transition: background-color 0.3s ease;
     }
 
     &_img {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 120%;
+      bottom: 0;
+      right: 0;
+      width: 90%;
       object-fit: cover;
+      transition: transform 0.3s ease;
+
+      .home__category_link:hover & {
+        transform: scale(1.1);
+      }
     }
 
     &_description {
       display: flex;
       flex-direction: column;
       gap: 4px;
+      transition: color 0.3s ease;
+      padding: 10px;
+      width: max-content;
+
     }
 
     &_name {
       margin: 0;
       color: $primaryColor;
+      width: max-content;
 
       @include h4-tablet-desktop;
+
+      .home__category_link:hover & {
+        color: $redColor;
+      }
     }
 
     &_count {
       margin: 0;
       color: $secondaryColor;
+      width: max-content;
 
       @include body-text;
+
+      .home__category_link:hover & {
+        color: $primaryColor;
+      }
     }
   }
 }
