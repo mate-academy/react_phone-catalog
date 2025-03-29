@@ -1,4 +1,4 @@
-@use "../../css-variables/variables.scss" as *;
+@use '../../css-variables/variables.scss' as *;
 
 .button_wrapper {
   background-color: $main-background-white;
@@ -7,14 +7,14 @@
   height: 32px;
   border: 1px solid $button-border-default;
   cursor: pointer;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   &:hover {
     border: 1px solid $main-dark-gray;
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
   &:active {
-    transform: scale(.8);
+    transform: scale(0.9);
   }
 }
 

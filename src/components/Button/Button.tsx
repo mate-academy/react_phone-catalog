@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Button.module.scss';
 import classNames from 'classnames';
 import { ButtonDirection } from '../../enums/ButtonDirection';
@@ -6,33 +6,41 @@ import { ButtonUrl } from '../../enums/ButtonUrl';
 
 type Props = {
   direction: ButtonDirection;
-  isDisabled: boolean;
   backToTop: boolean;
+  buttonId: number;
+  disabledIds: number[];
+  onClick: () => void;
 };
 
 export const Button: React.FC<Props> = ({
   direction,
-  isDisabled,
   backToTop,
+  buttonId,
+  disabledIds,
+  onClick,
 }) => {
-
-  const handleBackToTop = () => {
-    if (backToTop) {
-      window.scrollTo({top: 0});
-    }
-  }
+  // const handleOnClick = () => {
+  //   if (backToTop) {
+  //     window.scrollTo({ top: 0 });
+  //   } else {
+  //     const scrollContainer = document.getElementById('scroll_container_1');
+  //     if (scrollContainer) {
+  //       scrollContainer.scrollBy({ left: 235, behavior: 'smooth' });
+  //     }
+  //   }
+  // };
 
   return (
     <>
       <button
         className={classNames(`${styles.button_wrapper}`, {
-          [styles.disabled]: isDisabled,
+          [styles.disabled]: Array.isArray(disabledIds) && disabledIds.includes(buttonId),
         })}
-        onClick={handleBackToTop}
-        disabled={isDisabled}
+        onClick={onClick}
+        disabled={Array.isArray(disabledIds) && disabledIds.includes(buttonId)}
       >
         <img
-          src={isDisabled ? ButtonUrl.disabled : ButtonUrl.default}
+          src={Array.isArray(disabledIds) && disabledIds.includes(buttonId) ? ButtonUrl.disabled : ButtonUrl.default}
           alt={`arrow ${direction}`}
           className={`${styles[direction]}`}
         />

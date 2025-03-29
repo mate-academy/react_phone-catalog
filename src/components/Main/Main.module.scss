@@ -1,25 +1,16 @@
 @use "../../css-variables/variables.scss" as *;
 
-.iphone_cards {
-  display: flex;
-  flex-direction: row;
-}
-
-.iphone_cards_swiper {
-  // display: flex;
-  // flex-direction: row;
-  // gap: 16px;
-  // width: 100%;
-  // overflow: hidden;
-}
-
-// .swiper-slide {
-//   display: flex;
-//   justify-content: center; /* Центрує картки по горизонталі */
-//   // margin-right: 16px; /* Відступ між картками */
-// }
-
 .categories {
   display: flex;
   flex-direction: column;
+}
+
+.scroll_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: scroll;
+  flex-direction: row;
+}::-webkit-scrollbar {
+  display: none;
 }

@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import styles from './ProductCard.module.scss';
 
 export const ProductCard = () => {
+  const [clicked, setClicked] = useState(false);
+
   return (
     <>
       <div className={`${styles.product_card_container}`}>
@@ -47,11 +50,17 @@ export const ProductCard = () => {
           <button className={`${styles.button} ${styles.button_add}`}>
             Add to cart
           </button>
-          <button className={`${styles.button} ${styles.button_like}`}>
+          <button
+            className={`${styles.button} ${styles.button_like}`}
+            onClick={() => (clicked ? setClicked(false) : setClicked(true))}
+          >
             <img
-              src="../../img/icons/card-default-like.svg"
+              src={
+                clicked
+                  ? '../../img/icons/card-selected-like.svg'
+                  : '../../img/icons/card-default-like.svg'
+              }
               alt="like button"
-              
             />
           </button>
         </div>

@@ -6,13 +6,16 @@
 }
 
 .header_nav_container {
-  width: 100vw;
+  width: 100%;
   background-color: $main-background-white;
   display: flex;
   justify-content: space-between;
   gap: 16px;
   filter: drop-shadow(-1px 1px $button-border-disabled);
   margin-bottom: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .header_nav_logo_container {
@@ -42,7 +45,7 @@
 }
 
 .header_title_container {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

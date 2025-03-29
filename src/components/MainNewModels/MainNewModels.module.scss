@@ -33,19 +33,3 @@
   height: 32px;
   gap: 16px;
 }
-
-.main_header_button {
-  width: 32px;
-  height: 32px;
-  background-color: $main-background-white;
-  border: 1px solid $button-border-disabled;
-  cursor: pointer;
-  &_left {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-  }
-
-  &_default {
-    border: 1px solid $button-border-default;
-  }
-}

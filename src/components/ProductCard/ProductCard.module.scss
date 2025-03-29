@@ -115,11 +115,31 @@
     font-size: 14px;
     line-height: 21px;
     color: $main-background-white;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      background-color: $main-background-white;
+      color: $main-dark-gray;
+      border: 1px solid $main-dark-gray;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(.9);
+    }
   }
 
   &_like {
     width: 40px;
     background-color: $main-background-white;
     border: 1px solid $button-border-default;
+
+    &:hover {
+      border: 1px solid $main-dark-gray;
+    }
+
+    &:active {
+      border: 1px solid $button-border-default;
+    }
   }
 }

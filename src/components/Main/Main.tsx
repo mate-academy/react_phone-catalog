@@ -2,36 +2,26 @@ import { Categories } from '../Categories/Categories';
 import { MainNewModels } from '../MainNewModels/MainNewModels';
 import { HotPrices } from '../HotPrices/HotPrices';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Main.module.scss';
 
 export const Main: React.FC = () => {
+  const [disabledIds, setDisabledIds] = useState<number[]>([0, 2]);
   return (
     <>
-      <MainNewModels />
-      <Swiper
-        slidesPerView={'auto'}
-        
-        grabCursor={true}
-        className={styles.iphone_cards_swiper}
-      >
+      <MainNewModels disabledIds={disabledIds} setDisabledIds={setDisabledIds}/>
+      <div className={`${styles.scroll_container}`} id='scroll_container_new_models'>
         {[1, 2, 3, 4].map(id => {
-          return (
-            <SwiperSlide key={id}>
-              <ProductCard />
-            </SwiperSlide>
-          );
+          return <ProductCard key={id}/>;
         })}
-      </Swiper>
-
+      </div>
       <Categories />
-      <HotPrices />
-      {/* <div className={`${styles.iphone_cards}`}>
-        {[1, 2, 3, 4].map(() => {
-          return <ProductCard />;
+      <HotPrices disabledIds={disabledIds} setDisabledIds={setDisabledIds} />
+      <div className={`${styles.scroll_container}`} id='scroll_container_hot_prices'>
+        {[1, 2, 3, 4].map(id => {
+          return <ProductCard key={id}/>;
         })}
-      </div> */}
+      </div>
     </>
   );
 };
