@@ -20,6 +20,7 @@ type Props = {
 
 export const ProductProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const API_URL_PRODUCT = './api/products.json';
   const productsPhoneLength = products.filter(
     item => item.category === 'phones',
   ).length;
@@ -30,10 +31,8 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     item => item.category === 'accessories',
   ).length;
 
-  const API_URL = './api/products.json';
-
   useEffect(() => {
-    fetch(API_URL)
+    fetch(API_URL_PRODUCT)
       .then(response => {
         if (response.ok) {
           return response.json();

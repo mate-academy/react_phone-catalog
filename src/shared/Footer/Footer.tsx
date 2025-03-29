@@ -2,6 +2,10 @@ import { Logo } from '../Logo';
 import s from './Footer.module.scss';
 
 export const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <div className="container">
       <div className={s.footer}>
@@ -27,10 +31,11 @@ export const Footer = () => {
         </div>
         <div className={s.footer__back_to_top}>
           Back to top
-          <button className={s.footer__back_to_top_button}>
-            <a href="#">
-              <img src="./img/icons/backToTop.png" alt="back to top" />
-            </a>
+          <button
+            className={s.footer__back_to_top_button}
+            onClick={scrollToTop}
+          >
+            <img src="./img/icons/backToTop.png" alt="back to top" />
           </button>
         </div>
       </div>

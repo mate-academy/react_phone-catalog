@@ -1,0 +1,48 @@
+@import '../../style/main';
+
+.scrolls {
+  display: flex;
+
+  &__wrapper {
+    display: flex;
+    justify-content: center
+  }
+
+  &__back,
+  &__next {
+    @extend %scroll-button;
+
+    background-color: $surface-2;
+
+
+  }
+
+  &__page {
+    @extend %scroll-button;
+
+    color: $white;
+    text-decoration: none;
+
+    background-color: $surface-1;
+
+  }
+}
+
+%scroll-button {
+  height: 32px;
+  width: 32px;
+  display: grid;
+  place-items: center;
+
+  & img {
+    object-fit: contain;
+  }
+
+  a {
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+}

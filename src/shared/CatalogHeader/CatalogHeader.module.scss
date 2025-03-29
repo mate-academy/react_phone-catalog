@@ -1,0 +1,25 @@
+@import '../../style/main';
+
+.header {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+
+  }
+
+
+  &__title {
+
+    &_wrapper {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+    }
+
+    &_quantity {
+      @extend %category-quantity;
+
+    }
+  }
+}

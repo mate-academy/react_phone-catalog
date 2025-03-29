@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import s from './NavMenu.module.scss';
 import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
+import { BurgerContext } from '../../../context/BurgerContext';
 
 type Props = {
   burgerMenu?: boolean;
 };
 
 export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
+  const { setBurgerMenuActivate } = useContext(BurgerContext);
+  const closeBurgerMenu = () => setBurgerMenuActivate(false);
   const navItemClass = classNames(s.nav__item, {
     [s.onMobile]: burgerMenu,
   });
@@ -19,24 +23,36 @@ export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
         })}
       >
         <li className={navItemClass}>
-          <a href="" className={s.nav__link}>
+          <NavLink to="/" className={s.nav__link} onClick={closeBurgerMenu}>
             <p>home</p>
-          </a>
+          </NavLink>
         </li>
         <li className={navItemClass}>
-          <a href="" className={s.nav__link}>
+          <NavLink
+            to="/phones"
+            className={s.nav__link}
+            onClick={closeBurgerMenu}
+          >
             <p>phones</p>
-          </a>
+          </NavLink>
         </li>
         <li className={navItemClass}>
-          <a href="" className={s.nav__link}>
+          <NavLink
+            to="/tablets"
+            className={s.nav__link}
+            onClick={closeBurgerMenu}
+          >
             <p>tablets</p>
-          </a>
+          </NavLink>
         </li>
         <li className={navItemClass}>
-          <a href="" className={s.nav__link}>
+          <NavLink
+            to="/accessories"
+            className={s.nav__link}
+            onClick={closeBurgerMenu}
+          >
             <p>accessories</p>
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>

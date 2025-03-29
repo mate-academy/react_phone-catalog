@@ -21,9 +21,9 @@ html, body {
 main {
   padding: 24px 0 64px;
   margin-top: 48px;
+  flex-grow: 1;
 
   @include on-tablet {
-    flex-grow: 1;
     padding: 32px 0 64px;
   }
 

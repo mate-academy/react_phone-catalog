@@ -1,5 +1,5 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
-import { HomePage } from './modules/HomePage';
 import { Footer } from './shared/Footer';
 import { Header } from './shared/Header';
 
@@ -11,7 +11,7 @@ export const App = () => {
       </header>
 
       <main className="main">
-        <HomePage />
+        <Outlet />
       </main>
       <footer className="footer">
         <Footer />

@@ -1,0 +1,22 @@
+@import './../../style/main';
+
+.catalog {
+  --column-size: 212px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
+  gap: 40px 16px;
+
+  @include on-tablet {
+  --column-size: 237px;
+  }
+
+  @include on-desktop {
+  --column-size: 272px;
+  }
+
+  &__wrapper {
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+}

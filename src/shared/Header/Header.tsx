@@ -7,7 +7,7 @@ import { Logo } from '../Logo';
 export const Header = () => {
   return (
     <>
-      <div className={s.header}>
+      <div className={s.header} id="top">
         <div className={s.nav__wrapper}>
           <Logo />
 

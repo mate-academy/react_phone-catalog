@@ -30,7 +30,7 @@
 
 
     &_quantity {
-      color: $secondary;
+      @extend %category-quantity;
     }
   }
 

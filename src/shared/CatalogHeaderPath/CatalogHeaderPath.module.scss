@@ -1,0 +1,34 @@
+@import './../../style/main';
+
+.header {
+  &__path {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+
+    & a {
+      text-decoration: none;
+      color: $white;
+    }
+
+    &_img {
+      width: 14px;
+      height: 16px;
+      position: relative;
+
+      &_2 {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%)
+      }
+    }
+
+    &_folder {
+      display: flex;
+      align-items: center;
+      height: 16px;
+      color: $secondary;
+    }
+  }
+}

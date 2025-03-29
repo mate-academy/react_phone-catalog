@@ -1,0 +1,35 @@
+@import './../../style/main';
+
+.sort {
+  display: flex;
+  flex-direction: row;
+  column-gap: 16px;
+  margin-top: 32px;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 1 / 8;
+  }
+
+
+  &__wrapper {
+    @include page-grid;
+
+  }
+
+
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__by {
+    @extend %sort-page;
+  }
+
+  &__page {
+    @extend %sort-page;
+  }
+}
+
+

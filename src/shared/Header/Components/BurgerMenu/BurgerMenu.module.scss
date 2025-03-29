@@ -1,13 +1,13 @@
 @import '../../../../style/main';
 
 .burger {
-  position: absolute;
+  position: fixed;
   top: -120%;
   left: 0;
   width: 100%;
   background-color: $black;
-  height: calc(100vh - 72px);
-  margin-top: 72px;
+  height: calc(100vh - 48px);
+  margin-top: 48px;
   box-sizing: border-box;
   z-index: 2;
   transition: all 0.3s ease-in-out;

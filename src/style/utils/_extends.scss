@@ -45,3 +45,32 @@
     background-color: transparent;
   }
 }
+
+%category-quantity {
+  color: $secondary;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+%sort-page {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  row-gap: 4px;
+
+
+  & label {
+    font-weight: 700;
+  }
+
+  & select {
+    border: none;
+    color: $white;
+    height: 40px;
+    border-radius: 0;
+    appearance: none;
+    background: $surface-2 url('./img/icons/down.png') no-repeat right 10px center;
+    padding: 0 12px;
+
+  }
+}
