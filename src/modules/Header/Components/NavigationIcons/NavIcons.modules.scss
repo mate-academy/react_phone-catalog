@@ -29,16 +29,16 @@
       border: none;
       padding: 0;
       background-size: 32px;
-      background-image: url(../../../../../public/icons/daylight.png);
+      background-image: url(../../../../../icons/daylight.png);
     }
 
     &--favorites {
-      background-image: url(../../../../../public/icons/favourites_heart_like.svg);
+      background-image: url(../../../../../icons/favourites_heart_like.svg);
       position: relative;
     }
 
     &--cart {
-      background-image: url(../../../../../public/icons/shoping_cart.svg);
+      background-image: url(../../../../../icons/shoping_cart.svg);
       position: relative;
     }
 
@@ -97,7 +97,7 @@
 
   &__isDarkMode {
     &--button {
-      background-image: url(../../../../../public/icons/night-mode.png);
+      background-image: url(../../../../../icons/night-mode.png);
     }
   }
 }

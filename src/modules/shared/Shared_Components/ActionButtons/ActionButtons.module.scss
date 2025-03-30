@@ -42,7 +42,7 @@
   &__button-favorites {
         width: 45px;
     background-color: $white;
-    background-image: url(../../../../../public/icons/favourites_heart_like.svg);
+    background-image: url(../../../../../icons/favourites_heart_like.svg);
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid $icons-color;
@@ -56,7 +56,7 @@
     }
 
     &--is-added {
-      background-image: url(../../../../../public/icons/favourites_filled_heart_like.svg);
+      background-image: url(../../../../../icons/favourites_filled_heart_like.svg);
     }
 
     @include on-desktop {

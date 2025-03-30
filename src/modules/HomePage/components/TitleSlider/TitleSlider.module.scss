@@ -34,7 +34,7 @@
     }
 
     &--1 {
-      background-image: url(../../../../../public/img/phones_slider-p.webp);
+      background-image: url(../../../../../img/phones_slider-p.webp);
 
       @include on-tablet {
         background-position: center top;
@@ -42,11 +42,11 @@
     }
 
     &--2 {
-      background-image: url(../../../../../public/img/ipad_slider_p.jpeg);
+      background-image: url(../../../../../img/ipad_slider_p.jpeg);
     }
 
     &--3 {
-      background-image: url(../../../../../public/img/accessories_slider_p.jpg);
+      background-image: url(../../../../../img/accessories_slider_p.jpg);
     }
   }
 
@@ -64,7 +64,7 @@
     &--left {
       &::before {
         position: absolute;
-        content: url(../../../../../public//icons/chevron_arrow_right.svg);
+        content: url(../../../../../icons/chevron_arrow_right.svg);
         transform: rotate(-90deg);
         top: 45%;
         left: 30%;
@@ -74,7 +74,7 @@
     &--right {
       &::before {
         position: absolute;
-        content: url(../../../../../public//icons/chevron_arrow_right.svg);
+        content: url(../../../../../icons/chevron_arrow_right.svg);
         transform: rotate(90deg);
         top: 45%;
         left: 20%;

@@ -29,7 +29,7 @@
     }
 
       &::before {
-        content: url(../../../../../public/icons/chevron_arrow_right_disabled.svg);
+        content: url(../../../../../icons/chevron_arrow_right_disabled.svg);
         position: absolute;
         top: 50%;
         left: 50%;
@@ -54,7 +54,7 @@
       border: 1px solid $icons-color;
 
       &::before {
-        content: url(../../../../../public/icons/chevron_arrow_right.svg);
+        content: url(../../../../../icons/chevron_arrow_right.svg);
         top: 50%;
         transform: translate(-50%, -50%) rotate(90deg);
       }
@@ -64,7 +64,7 @@
       border: 1px solid $icons-color;
 
       &::before {
-        content: url(../../../../../public/icons/chevron_arrow_right.svg);
+        content: url(../../../../../icons/chevron_arrow_right.svg);
         top: 50%;
         transform: translate(-50%, -50%) rotate(-90deg);
       }

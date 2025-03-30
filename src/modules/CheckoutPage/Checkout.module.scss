@@ -261,13 +261,13 @@
   &__delivery-image {
     width: 35px;
     height: 35px;
-    background-image: url(../../../public/icons/delivery-truck.png);
+    background-image: url(../../../icons/delivery-truck.png);
     background-position: center;
     background-size: contain;
     transition: $primary-transition-duration;
 
     &--is-Active {
-      background-image: url(../../../public/icons/delivery-truck-NP.png);
+      background-image: url(../../../icons/delivery-truck-NP.png);
     }
   }
 
