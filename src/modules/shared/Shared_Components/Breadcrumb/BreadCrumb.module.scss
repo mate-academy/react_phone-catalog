@@ -11,7 +11,7 @@
 
     &--home {
       display: block;
-      background-image: url(../../../../../icons/home__breadcrumb.svg);
+      background-image: url(/icons/home__breadcrumb.svg);
       width: 20px;
       height: 16px;
       background-repeat: no-repeat;
@@ -31,7 +31,7 @@
     margin-bottom: 10px;
 
     &::after {
-      content: url(../../../../../icons/chevron_arrow_right_disabled.svg);
+      content: url(/icons/chevron_arrow_right_disabled.svg);
       height: 16px;
       transform: rotateZ(180deg);
       align-self: center;

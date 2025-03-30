@@ -158,7 +158,7 @@
 
     &--home {
       display: block;
-      background-image: url(../../../../../icons/home__breadcrumb.svg);
+      background-image: url(/icons/home__breadcrumb.svg);
       width: 16px;
       height: 16px;
     }
@@ -204,7 +204,7 @@
     justify-content: center;
 
     &::after {
-      content: url(../../../../../icons/chevron_arrow_right_disabled.svg);
+      content: url(/icons/chevron_arrow_right_disabled.svg);
       height: 16px;
       transform: rotateZ(-90deg);
       align-self: center;
@@ -256,7 +256,7 @@
       border-color: $icons-color;
 
       &::before {
-        content: url(../../../../../icons/chevron_arrow_right.svg);
+        content: url(/icons/chevron_arrow_right.svg);
         width: 16px;
         height: 16px;
         align-self: center;
@@ -272,7 +272,7 @@
       border-color: $icons-color;
 
       &::before {
-        content: url(../../../../../icons/chevron_arrow_right.svg);
+        content: url(/icons/chevron_arrow_right.svg);
         display: block;
         width: 16px;
         height: 16px;

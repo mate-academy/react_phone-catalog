@@ -17,7 +17,7 @@
   }
 
   &__logo {
-    background-image: url(../../../../logos/main_logo.svg);
+    background-image: url(/logos/main_logo.svg);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -90,7 +90,7 @@
     background-color: $white;
     border: 1px solid $icons-color;
     cursor: pointer;
-    background-image: url(../../../../icons/chevron_arrow_right.svg);
+    background-image: url(/icons/chevron_arrow_right.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px;

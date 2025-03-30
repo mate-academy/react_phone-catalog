@@ -20,7 +20,7 @@
 
   &__logo {
     padding: 0 24px;
-    background-image: url(../../../../../logos/main_logo.svg);
+    background-image: url(/logos/main_logo.svg);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -59,7 +59,7 @@
     justify-content: center;
     align-items: center;
     box-shadow: -1px 0 0 0 $elements-color;
-    background-image: url(../../../../../icons/burger_menu.svg);
+    background-image: url(/icons/burger_menu.svg);
     background-position: center;
     background-repeat: no-repeat;
     border: 0;
@@ -71,7 +71,7 @@
     }
 
     &--active {
-      background-image: url(../../../../../icons/close_menu_icon.svg);
+      background-image: url(/icons/close_menu_icon.svg);
     }
   }
 }
