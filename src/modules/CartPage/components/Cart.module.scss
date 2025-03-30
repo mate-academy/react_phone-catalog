@@ -65,7 +65,7 @@
     background-position: center;
     align-self: center;
     background-size: 24px;
-    background-image: url(../../../../icons/close_menu_icon.svg);
+    background-image: url(icons/close_menu_icon.svg);
 
     &:hover {
       cursor: pointer;
@@ -149,7 +149,7 @@
 
   &__cat-image {
     height: 80vh;
-    background-image: url(../../../../img/cart-is-empty.png);
+    background-image: url(img/cart-is-empty.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
