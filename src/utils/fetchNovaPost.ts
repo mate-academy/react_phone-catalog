@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { wait } from './fetchClient';
 
 const BASE_URL = 'https://api.novaposhta.ua/v2.0/json/';
