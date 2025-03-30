@@ -1,0 +1,19 @@
+@import '/src/styles/global';
+
+.skeleton {
+  padding: 8px;
+
+  @include on-tablet {
+    padding: 12px;
+  }
+
+  @include on-desktop {
+    width: 100vw; /* Повна ширина вікна */
+    height: 100vh; /* Повна висота вікна */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px; /* Відступи, щоб уникнути обрізання */
+    box-sizing: border-box;
+  }
+}

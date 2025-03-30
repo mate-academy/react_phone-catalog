@@ -2,8 +2,6 @@
 
 .favourites {
   width: 100%;
-  // ! need to change
-  min-height: calc(100vh - 167px);
 
   &__quantity {
     margin-bottom: 40px;
@@ -31,5 +29,9 @@
     @include on-desktop {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
+  }
+
+  &__empty {
+    @include empty-block;
   }
 }

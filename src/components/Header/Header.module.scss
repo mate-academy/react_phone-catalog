@@ -1,7 +1,6 @@
 @import '/src/styles/global';
 
 .header {
-  border-bottom: 1px solid $secondary-color;
   width: 100%;
   top: 0;
   right: 0;
@@ -10,7 +9,8 @@
 
   display: flex;
   justify-content: space-between;
-  
+
+  box-shadow: 0px 1px 0px 0px $elements-color;
 
   @include on-desktop {
     height: 64px;
@@ -23,23 +23,18 @@
 
   &__right {
     align-self: center;
-
     height: 100%;
-
     display: flex;
   }
 
   &__favourites,
   &__cart {
     position: relative;
-
     width: 64px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     box-shadow: -1px 0px 0px 0px #e2e6e9;
-
-    display: none;
 
     @include on-tablet {
       display: flex;
@@ -64,7 +59,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
       font-family: Mont;
       font-size: 9px;
       line-height: 100%;
@@ -75,9 +69,7 @@
       background-color: $red-color;
       border: 1px solid $white-color;
       border-radius: 50%;
-
       position: absolute;
-      content: '';
       top: 17px;
       right: 16px;
     }
@@ -100,9 +92,11 @@
       display: flex;
       margin-left: 16px;
     }
+
     @include on-desktop {
       margin-left: 24px;
     }
+
     &__list {
       display: flex;
       justify-content: space-between;
@@ -111,6 +105,7 @@
       @include on-tablet {
         gap: 32px;
       }
+
       @include on-desktop {
         gap: 64px;
       }
@@ -122,13 +117,13 @@
         letter-spacing: 4%;
         text-transform: uppercase;
         color: $secondary-color;
-
         display: flex;
         align-items: center;
 
         @include on-tablet {
           height: 42px;
         }
+
         @include on-desktop {
           height: 58px;
         }
@@ -149,7 +144,4 @@
       }
     }
   }
-}
-
-.header__icon_quantity {
 }

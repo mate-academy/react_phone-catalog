@@ -1,0 +1,23 @@
+@import '/src/styles/global';
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 80px;
+}
+
+// .customPagination .MuiPaginationItem-root {
+//   background-color: #f0f0f0;
+//   color: #333;
+
+//   &:hover {
+//     background-color: #ddd;
+//   }
+
+//   &.Mui-selected {
+//     background-color: #007bff;
+//     color: #fff;
+//   }
+// }

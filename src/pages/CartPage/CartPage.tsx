@@ -3,27 +3,38 @@ import backIcon from '../../../public/img/icons/arrows/arrow-left-icon.svg';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { CartItem } from '../../components/CartItem';
+import { useState } from 'react';
+import Modal from '../../components/Modal/Modal';
+import emptyCartIcon from '../../../public/img/cart-is-empty.png';
+import BackIcon from '../../components/BackIcon/BackIcon';
+
+const EmptyCart = () => (
+  <div className={styles.cart__empty}>
+    <img src={emptyCartIcon} alt="empty cart" />
+  </div>
+);
 
 const CartPage = () => {
-  const { cart, totalPrice } = useCart();
-  const navigate = useNavigate();
+  const { cart, totalPrice, clearCart } = useCart();
 
-  const goBack = () => {
-    navigate('../');
-  };
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpen = () => setOpenModal(true);
+
+  const handleClose = () => setOpenModal(false);
+
+  const handleClearCart = () => clearCart();
 
   return (
     <div className={styles.cart}>
-      <div className={styles.cart__back} onClick={goBack}>
-        <img src={backIcon} alt="back-icon" />
-        <p>Back</p>
-      </div>
+      <BackIcon />
 
       <h1 className={styles.title}>Cart</h1>
 
       <div className={styles.cart__list}>
-        {cart.length < 1 ? (
-          <p>Your cart is empty</p>
+        {cart.length === 0 ? (
+          <EmptyCart />
         ) : (
           <div className={styles.cart__content}>
             <div className={styles.cart__items}>
@@ -38,7 +49,15 @@ const CartPage = () => {
                 Total for {cart.length} items
               </p>
 
-              <button className={styles.cart__checkout}>Checkout</button>
+              <button className={styles.cart__checkout} onClick={handleOpen}>
+                Checkout
+              </button>
+
+              <Modal
+                openModal={openModal}
+                handleClose={handleClose}
+                handleClearCart={handleClearCart}
+              />
             </div>
           </div>
         )}

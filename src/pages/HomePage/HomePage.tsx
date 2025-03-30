@@ -3,7 +3,6 @@ import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import styles from './HomePage.module.scss';
 import { Categories } from '../../components/Categories';
-import { Footer } from '../../components/Footer';
 import { sortProductsByPrice, sortProductsByYear } from '../../utils';
 
 const HomePage = () => {
@@ -15,6 +14,7 @@ const HomePage = () => {
 
   return (
     <div className={styles.home}>
+      <h1 className={styles.hidden_title}>Product Catalog</h1>
       <PicturesSlider />
       <ProductsSlider
         title="Brand new models"
@@ -27,7 +27,6 @@ const HomePage = () => {
       />
 
       <ProductsSlider title="Hot prices" visibleProducts={hotPricesProducts} />
-      <Footer />
     </div>
   );
 };

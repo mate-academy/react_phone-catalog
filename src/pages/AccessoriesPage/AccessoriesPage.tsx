@@ -1,26 +1,115 @@
 import { useProducts } from '../../context/ProductsContext';
-import { PicturesSlider } from '../../components/PicturesSlider';
-import { ProductsSlider } from '../../components/ProductsSlider';
 import styles from './AccessoriesPage.module.scss';
-import { Categories } from '../../components/Categories';
-import { Footer } from '../../components/Footer';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import CustomSelect from '../../components/CustomSelect/CustomSelect';
+import ProductsList from '../../components/ProductsList/ProductsList';
+import { Product } from '../../types/Product';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import PaginationBlock from '../../components/PaginationBlock/PaginationBlock';
+import { itemsForPageOptions, sortingOptions } from '../../utils';
+import Skeleton from '../../components/Skeleton/Skeleton';
 
 const AccessoriesPage = () => {
-  const { products, phones, accessories, tablets } = useProducts();
-  const newestProducts = products.sort((a, b) => b.year - a.year).slice(0, 10);
-  const hotPricesProducts = products
-    .sort((a, b) => {
-      const discountA = a.fullPrice - a.price;
-      const discountB = b.fullPrice - b.price;
+  const { products } = useProducts();
+  const [accessories, setAccessories] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
-      return discountB - discountA;
-    })
-    .slice(0, 10);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const perPage = searchParams.get('perPage') || 'all';
+  const sort = searchParams.get('sort') || 'newest';
+  const page = searchParams.get('page') || '1';
+
+  const paginationLength = Math.ceil(
+    products.filter(p => p.category === 'accessories').length / +perPage,
+  );
+
+  function updateProducts(
+    itemsPerPage: number | 'all',
+    sortOrder: string,
+    currentPage: number,
+  ) {
+    if (products.length === 0) {
+      return;
+    }
+
+    let filteredPhones = products.filter(p => p.category === 'accessories');
+
+    if (sortOrder === 'alphabetically') {
+      filteredPhones.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortOrder === 'cheapest') {
+      filteredPhones.sort((a, b) => a.price - b.price);
+    }
+
+    if (itemsPerPage === 'all') {
+      setAccessories(filteredPhones);
+    } else {
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      setAccessories(
+        filteredPhones.slice(startIndex, startIndex + itemsPerPage),
+      );
+    }
+  }
+
+  useEffect(() => {
+    updateProducts(perPage === 'all' ? 'all' : +perPage, sort, +page);
+  }, [perPage, sort, page]);
+
+  useEffect(() => {
+    setLoading(true);
+
+    setTimeout(() => {
+      updateProducts(perPage === 'all' ? 'all' : +perPage, sort, +page);
+      setLoading(false);
+    }, 1000);
+  }, [products]);
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number,
+  ) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', value.toString());
+    setSearchParams(params);
+  };
+
+  if (loading) {
+    return <Skeleton />;
+  }
 
   return (
-    <div className={styles.home}>
-      <h1>Accessories Page</h1>
+    <div className={styles.accessories}>
+      <Breadcrumbs />
 
+      <h1 className={styles.title}>Accessories</h1>
+
+      <p className={styles.accessories__quantity}>
+        {accessories.length} models
+      </p>
+
+      <div className={styles.accessories__selects}>
+        <CustomSelect
+          label="Sort by"
+          options={sortingOptions}
+          paramName="sort"
+        />
+        <CustomSelect
+          label="Items on page"
+          options={itemsForPageOptions}
+          paramName="perPage"
+        />
+      </div>
+
+      <ProductsList products={accessories} />
+
+      {perPage !== 'all' && (
+        <PaginationBlock
+          handlePageChange={handlePageChange}
+          page={page}
+          paginationLength={paginationLength}
+        />
+      )}
     </div>
   );
 };

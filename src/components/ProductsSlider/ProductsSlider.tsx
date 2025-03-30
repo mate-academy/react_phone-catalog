@@ -15,7 +15,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
   const [currSlide, setCurrSlide] = useState(0);
   const swiperRef = useRef<SwiperType | null>(null);
 
-  const isHotPriceBlock = title === 'Hot prices';
+  const isNewModelsBlock = title === 'Brand new models';
 
   const handlePrev = () => {
     if (swiperRef.current) swiperRef.current.slidePrev();
@@ -86,7 +86,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
       >
         {visibleProducts.map(product => (
           <SwiperSlide key={product.id}>
-            <ProductCard product={product} isHotPriceBlock={isHotPriceBlock} />
+            <ProductCard product={product} isNewModelsBlock={isNewModelsBlock} />
           </SwiperSlide>
         ))}
       </Swiper>

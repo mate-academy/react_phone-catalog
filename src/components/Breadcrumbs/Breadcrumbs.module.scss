@@ -30,5 +30,19 @@
     color: $secondary-color;
 
     padding-top: 2px;
+
+    &_active {
+      color: $primary-color;
+      cursor: pointer;
+      font-family: Mont;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+
+      margin-top: 3px;
+
+      margin-right: 8px;
+    }
   }
 }

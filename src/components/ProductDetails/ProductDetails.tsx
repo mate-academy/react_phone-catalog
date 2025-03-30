@@ -1,0 +1,263 @@
+import { useEffect, useState } from 'react';
+import styles from './ProductDetails.module.scss';
+import { Gadget } from '../../types/Gadgets';
+import { useFavourites } from '../../context/FavouritesContext';
+import { useCart } from '../../context/CartContext';
+import { Link, useLocation } from 'react-router-dom';
+import { useProducts } from '../../context/ProductsContext';
+import { Product } from '../../types/Product';
+import { getBgColorForRadio } from '../../utils';
+
+type Props = {
+  product: Gadget;
+};
+
+const ProductDetails: React.FC<Props> = ({ product }) => {
+  const [formattedProduct, setFormattedProduct] = useState<Product>();
+  const { favourites, toggleProduct } = useFavourites();
+  const { cart, addProductToCart } = useCart();
+  const { getProductById } = useProducts();
+
+  const [currMainImg, setCurrMainImg] = useState(0);
+
+  const { pathname } = useLocation();
+
+  const isAddedToFavourites = favourites.some(
+    p => p.id === (formattedProduct ? +formattedProduct.id : 0),
+  );
+  const isAddedToCart = cart.some(
+    p => p.id === (formattedProduct ? +formattedProduct.id : 0),
+  );
+
+  const handleToggleFavourite = () => {
+    if (formattedProduct) {
+      toggleProduct(formattedProduct);
+    }
+  };
+
+  const handleAddProductToCart = () => {
+    if (formattedProduct) {
+      addProductToCart(formattedProduct);
+    }
+  };
+
+  // console.log(product);
+
+  useEffect(() => {
+    getProductById(product.id).then(res => setFormattedProduct(res));
+  }, [product]);
+
+  console.log(product);
+
+  return (
+    <div className={styles.product_details}>
+      <div className={styles.product_details__top}>
+        <p className={styles.product_details__name}>{product.name}</p>
+        <div className={styles.product_details__content}>
+          <div className={styles.product_details__album}>
+            <div className={styles.product_details__images}>
+              {product.images.map((image, i) => (
+                <div
+                  className={`${styles.product_details__image} ${currMainImg === i && styles.product_details__image_active}`}
+                  onClick={() => setCurrMainImg(i)}
+                >
+                  <img src={`../../../public/${image}`} alt="image" />
+                </div>
+              ))}
+            </div>
+            <div className={styles.product_details__image_big}>
+              <img
+                src={`../../../public/${product.images[currMainImg]}`}
+                alt="image"
+              />
+            </div>
+          </div>
+
+          <div className={styles.product_details__characteristics}>
+            <div className={styles.colors}>
+              <div className={styles.colors__top}>
+                <p className={styles.colors__name}>Available Colors</p>
+                <p className={styles.colors__id}>ID: 802390</p>
+              </div>
+
+              <div className={styles.colors__bottom}>
+                {product.colorsAvailable.map(color => {
+                  const formattedCurrentColor = product.color
+                    .split(' ')
+                    .join('-');
+                  const formattedNewColor = color.split(' ').join('-');
+
+                  const newPath = pathname.replace(
+                    new RegExp(`-${formattedCurrentColor}$`),
+                    `-${formattedNewColor}`,
+                  );
+
+                  const bgColor = getBgColorForRadio(formattedNewColor);
+
+                  return (
+                    <Link key={color} to={newPath}>
+                      <div
+                        className={`${styles.colors__color} ${product.color === color ? styles.colors__color_active : ''}`}
+                        style={{ backgroundColor: bgColor }}
+                      ></div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className={styles.product_details__capacities}>
+              <p className={styles.product_details__capacities_title}>
+                Select capacity
+              </p>
+
+              <div className={styles.product_details__capacities_wrapper}>
+                {product.capacityAvailable.map(capacity => {
+                  const activeCapacity = pathname.includes(
+                    capacity.toLowerCase(),
+                  );
+
+                  const newPath = pathname.replace(
+                    /\d+(gb|mm|tb)/g,
+                    capacity.toLowerCase(),
+                  );
+
+                  return (
+                    <Link to={newPath} key={capacity}>
+                      <button
+                        className={`${styles.product_details__capacity} ${activeCapacity && styles.product_details__capacity_active}`}
+                      >
+                        {capacity}
+                      </button>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className={styles.product_details__prices}>
+              <div className={styles.product_details__price}>
+                ${product.priceRegular}
+              </div>
+              <div className={styles.product_details__fullPrice}>
+                ${product.priceRegular}
+              </div>
+            </div>
+
+            <div className={styles.product_details__buttons}>
+              <button
+                className={`${styles.product_details__cart} ${isAddedToCart && styles.product_details__cart_active}`}
+                onClick={handleAddProductToCart}
+                disabled={isAddedToCart}
+              >
+                {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+              </button>
+              <button
+                className={styles.product_details__favourites}
+                onClick={handleToggleFavourite}
+              >
+                <img
+                  src={`/public/img/icons/favourites-icon${isAddedToFavourites ? '-active' : ''}.svg`}
+                  alt="favourites"
+                />
+              </button>
+            </div>
+
+            <div className={styles.product_details__features}>
+              <div className={styles.product_details__feature}>
+                <p className={styles.product_details__param}>Screen</p>
+                <p className={styles.product_details__value}>
+                  {product.screen}
+                </p>
+              </div>
+              <div className={styles.product_details__feature}>
+                <p className={styles.product_details__param}>Resolution</p>
+                <p className={styles.product_details__value}>
+                  {product.resolution}
+                </p>
+              </div>
+              <div className={styles.product_details__feature}>
+                <p className={styles.product_details__param}>Processor</p>
+                <p className={styles.product_details__value}>
+                  {product.processor}
+                </p>
+              </div>
+              <div className={styles.product_details__feature}>
+                <p className={styles.product_details__param}>Ram</p>
+                <p className={styles.product_details__value}>{product.ram}</p>
+              </div>
+            </div>
+
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.product_details__bottom}>
+        <div className={styles.product_details__left}>
+          <h3 className={styles.product_details__title}>About</h3>
+          <div className={styles.product_details__descriptions}>
+            {product.description.map(desc => (
+              <div className={styles.product_details__description}>
+                <h4 className={styles.product_details__description_title}>
+                  {desc.title}
+                </h4>
+                <div className={styles.product_details__description_text}>
+                  {desc.text[0]}
+                </div>
+                <br />
+                <div className={styles.product_details__description_text}>
+                  {desc.text[1]}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className={styles.product_details__right}>
+          <h3 className={styles.product_details__title}>Tech specs</h3>
+          <div className={styles.product_details__features}>
+            <div className={styles.product_details__feature}>
+              <p className={styles.product_details__param}>Screen</p>
+              <p className={styles.product_details__value}>{product.screen}</p>
+            </div>
+            <div className={styles.product_details__feature}>
+              <p className={styles.product_details__param}>Resolution</p>
+              <p className={styles.product_details__value}>
+                {product.resolution}
+              </p>
+            </div>
+            <div className={styles.product_details__feature}>
+              <p className={styles.product_details__param}>Processor</p>
+              <p className={styles.product_details__value}>
+                {product.processor}
+              </p>
+            </div>
+            <div className={styles.product_details__feature}>
+              <p className={styles.product_details__param}>Ram</p>
+              <p className={styles.product_details__value}>{product.ram}</p>
+            </div>
+            <div className={styles.product_details__feature}>
+              <p className={styles.product_details__param}>Built in memory</p>
+              <p className={styles.product_details__value}>
+                {product.capacity}
+              </p>
+            </div>
+            <div className={styles.product_details__feature}>
+              <p className={styles.product_details__param}>Camera</p>
+              <p className={styles.product_details__value}>{product.camera}</p>
+            </div>
+            <div className={styles.product_details__feature}>
+              <p className={styles.product_details__param}>Zoom</p>
+              <p className={styles.product_details__value}>{product.zoom}</p>
+            </div>
+            <div className={styles.product_details__feature}>
+              <p className={styles.product_details__param}>Cell</p>
+              <p className={styles.product_details__value}>{product.cell.join(', ')}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductDetails;

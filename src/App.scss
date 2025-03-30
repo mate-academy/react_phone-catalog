@@ -1,0 +1,17 @@
+@import './styles/global';
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: 49px 1fr 257px;
+
+  @include on-tablet {
+    grid-template-rows: 49px 1fr 96px;
+  }
+
+  @include on-desktop {
+    grid-template-rows: 65px 1fr 96px;
+  }
+}

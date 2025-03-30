@@ -10,6 +10,8 @@ type ProductsContextType = {
   phones: Gadget[];
   tablets: Gadget[];
   accessories: Gadget[];
+  getGadgetById: (category: string, itemId: string) => Promise<Gadget>;
+  getProductById: (id: string) => Promise<Product>;
 };
 
 const ProductsContext = createContext<ProductsContextType | undefined>(
@@ -84,10 +86,54 @@ export const ProductsProvider = ({
       const response = await fetch('/public/api/accessories.json');
       const data = await response.json();
 
-      // setTimeout(() => {
       const accessoriesFromServer = [...data];
 
       setAccessories(accessoriesFromServer);
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getGadgetById = async (category: string, itemId: string) => {
+    setError(false);
+    setLoading(true);
+
+    try {
+      const response = await fetch(`${`/public/api/${category}.json`}`);
+      const data = await response.json();
+
+      // setTimeout(() => {
+      const products = [...data];
+
+      const neededProduct = products.find(p => p.id === itemId);
+
+      return neededProduct;
+      // }, 1000);
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getProductById = async (id: string) => {
+    setError(false);
+    setLoading(true);
+
+    try {
+      const response = await fetch(`${`/public/api/products.json`}`);
+      const data = await response.json();
+
+      // setTimeout(() => {
+      const products = [...data];
+
+      const neededProduct = products.find(p => p.itemId === id);
+
+      return neededProduct;
       // }, 1000);
     } catch (error) {
       setError(true);
@@ -106,7 +152,16 @@ export const ProductsProvider = ({
 
   return (
     <ProductsContext.Provider
-      value={{ products, loading, error, phones, tablets, accessories }}
+      value={{
+        products,
+        loading,
+        error,
+        phones,
+        tablets,
+        accessories,
+        getGadgetById,
+        getProductById,
+      }}
     >
       {children}
     </ProductsContext.Provider>

@@ -1,18 +1,18 @@
 import styles from './Breadcrumbs.module.scss';
-
 import homeIcon from '../../../public/img/icons/Home.svg';
 import rightArrow from '../../../public/img/icons/arrows/arrow-right-icon.svg';
 import { Link, useLocation } from 'react-router-dom';
+import { upperCase } from '../../utils';
 
-type Props = {};
-
-const Breadcrumbs: React.FC<Props> = () => {
+const Breadcrumbs = () => {
   const { pathname } = useLocation();
+  const clearPath = pathname.slice(1);
 
-  const clearPath = pathname.slice(1, pathname.length);
+  const pathSegments = clearPath.split('/');
+  const isProductDetailsPage = pathSegments.length === 2;
 
-  const path =
-    clearPath.charAt(0).toUpperCase() + clearPath.slice(1, clearPath.length);
+  const categoryPath = upperCase(pathSegments[0]);
+  const productPath = isProductDetailsPage ? upperCase(pathSegments[1]) : '';
 
   return (
     <div className={styles.breadcrumbs}>
@@ -24,9 +24,23 @@ const Breadcrumbs: React.FC<Props> = () => {
         src={rightArrow}
         alt="right arrow"
       />
-      {/* <Link to="/home"> */}
-      <p className={styles.breadcrumbs__pathname}>{path}</p>
-      {/* </Link> */}
+      {!isProductDetailsPage ? (
+        <p className={styles.breadcrumbs__pathname}>{categoryPath}</p>
+      ) : (
+        <Link to={`/${pathSegments[0]}`}>
+          <p className={styles.breadcrumbs__pathname_active}>{categoryPath}</p>
+        </Link>
+      )}
+      {isProductDetailsPage && (
+        <>
+          <img
+            className={styles.breadcrumbs__arrow}
+            src={rightArrow}
+            alt="right arrow"
+          />
+          <span className={styles.breadcrumbs__pathname}>{productPath}</span>
+        </>
+      )}
     </div>
   );
 };

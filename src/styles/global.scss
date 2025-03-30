@@ -47,15 +47,6 @@ body {
   }
 }
 
-.fullWidthDivider {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.hidden_title {
+  display: none;
 }

@@ -57,7 +57,7 @@ const BurgerMenu: React.FC<Props> = ({ isOpen, toggleBurger }) => {
           onClick={() => toggleBurger(false)}
           className={`${styles.menu__favourites} ${pathname.includes('favourites') && styles.menu__favourites_active}`}
         >
-          <img src={`/public/img/icons/favourites-icon.png`} alt="favourites" />
+          <img src={`/public/img/icons/favourites-icon.svg`} alt="favourites" />
         </Link>
         <Link
           to={`/cart`}
@@ -66,7 +66,7 @@ const BurgerMenu: React.FC<Props> = ({ isOpen, toggleBurger }) => {
             ${styles.menu__cart}
             ${pathname.includes('cart') && styles.menu__cart_active}`}
         >
-          <img src={`/public/img/icons/cart-icon.png`} alt="cart" />
+          <img src={`/public/img/icons/cart-icon.svg`} alt="cart" />
         </Link>
       </div>
     </div>

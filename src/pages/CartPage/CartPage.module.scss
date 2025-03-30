@@ -1,26 +1,13 @@
 @import '/src/styles/global';
 
 .cart {
-  margin-top: 40px;
-  width: 100%;
-  // ! need to change
-  min-height: calc(100vh - 207px);
+  margin-top: 24px;
 
-  &__back {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    p {
-      margin-left: 4px;
-      font-family: Mont-Bold;
-      font-size: 12px;
-      line-height: 100%;
-      letter-spacing: 0%;
-
-      margin-top: 3px;
-    }
+  @include on-tablet {
+    margin-top: 40px;
   }
+
+  width: 100%;
 
   &__content {
     width: 100%;
@@ -32,9 +19,6 @@
     @include on-desktop {
       flex-direction: row;
     }
-  }
-
-  &__items {
   }
 
   &__priceBlock {
@@ -57,7 +41,7 @@
 
     justify-content: center;
 
-    border: 1px solid #e2e6e9;
+    border: 1px solid $elements-color;
   }
 
   &__price {
@@ -87,5 +71,11 @@
     padding: 13.5px 85.5px;
     width: 100%;
     color: $white-color;
+
+    cursor: pointer;
+  }
+
+  &__empty {
+    @include empty-block;
   }
 }

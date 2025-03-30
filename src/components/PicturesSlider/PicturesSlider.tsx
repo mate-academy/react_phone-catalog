@@ -39,13 +39,16 @@ export const PicturesSlider = () => {
 
   return (
     <>
-      <h1 className={styles.slider_title}>Welcome to Nice Gadgets store!</h1>
+      <h2 className={styles.slider_title}>Welcome to Nice Gadgets store!</h2>
       <div className={styles.slider}>
         <button
           className={styles.arrowLeft}
           onClick={() => sliderRef.current?.slickPrev()}
         >
-          <img src="/public/img/icons/arrows/arrow-left-icon.svg" alt="Previous" />
+          <img
+            src="/public/img/icons/arrows/arrow-left-icon.svg"
+            alt="Previous"
+          />
         </button>
         <div className={styles.slider__wrapper}>
           <Slider {...settings}>

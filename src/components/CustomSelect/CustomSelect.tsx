@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './CustomSelect.module.scss';
 import arrowDown from '../../../public/img/icons/arrows/arrow-down-icon.svg';
 import arrowUp from '../../../public/img/icons/arrows/arrow-up-icon.svg';
+import { useSearchParams } from 'react-router-dom';
 
 type Option = {
   label: string;
@@ -11,33 +12,36 @@ type Option = {
 type Props = {
   options: Option[];
   label: string;
-  updateProducts?: (itemsPerPage: number | 'all') => void;
+  paramName: string;
 };
 
-const CustomSelect: React.FC<Props> = ({ options, label, updateProducts }) => {
-  const defaultOption = options.length === 4 ? options[3] : options[0];
+const CustomSelect: React.FC<Props> = ({ options, label, paramName }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramValue = searchParams.get(paramName) || (paramName === 'perPage' ? 'all' : paramName === 'sort' ? 'newest' : '');
 
+  const defaultOption = options.find(option => option.value === paramValue) || options[0];
   const [selected, setSelected] = useState(defaultOption);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (option: (typeof options)[0]) => {
     setSelected(option);
     setIsOpen(false);
+
+    const selectedOption = option.value;
+    const params = new URLSearchParams(searchParams);
+
+    if (selectedOption !== 'all') {
+      params.set(paramName, selectedOption.toString());
+    } else {
+      params.delete(paramName);
+    }
+
+    setSearchParams(params);
   };
 
   const toggleDropdown = () => {
     setIsOpen(prev => !prev);
   };
-
-  useEffect(() => {
-    const selectedOption = selected.value;
-
-    if (updateProducts) {
-      updateProducts(
-        selectedOption === 'all' ? selectedOption : +selectedOption,
-      );
-    }
-  }, [selected]);
 
   return (
     <div className={styles.select}>
