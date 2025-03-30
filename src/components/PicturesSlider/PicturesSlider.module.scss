@@ -1,82 +1,120 @@
-@import '/src/styles/global';
+@import '../../styles/global';
 
 .slider {
-  position: relative;
-  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 56px;
 
-  &_title {
-    font-family: Mont-Bold;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -1%;
-    margin-block: 24px;
+  @include on-tablet {
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    height: 320px;
+    width: 100%;
+    align-items: center;
 
     @include on-tablet {
-      font-size: 48px;
-      line-height: 56px;
-      margin-block: 32px;
-    }
-
-    @include on-desktop {
-      margin-block: 56px;
+      height: 400px;
     }
   }
 
-  @include on-tablet {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    height: 250px;
-  }
-
-  @include on-desktop {
-    height: 480px;
-  }
-
-  &__wrapper {
+  &__viewport {
+    flex: 1;
     overflow: hidden;
-    text-align: center;
     height: 100%;
+    position: relative;
+  }
+
+  &__image-wrapper {
+    display: flex;
+    height: 100%;
+    width: 300%;
+
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  &__image {
+    display: block;
     width: 100%;
-  }
-}
+    width: 33.33%;
 
-.image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  object-position: 87% 20%;
-  margin: 0 auto;
-
-  @include on-tablet {
-    display: block;
-    max-width: none;
-    width: calc(100% - 40px);
-    height: 220px;
-    margin: 0 auto;
     object-fit: cover;
+    object-position: 85% center;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &_main {
+      object-position: 10% center;
+    }
   }
 
-  @include on-desktop {
-    width: calc(100% - 32px);
-    height: 400px;
-  }
-}
-
-.arrowLeft,
-.arrowRight {
-  display: none;
-
-  @include on-tablet {
-    display: block;
-    background-color: $white-color;
-    border: 1px solid $icons-color;
-    cursor: pointer;
+  &__button {
+    display: none;
     width: 32px;
-    height: 220px;
+    border: 1px solid $icons-color;
+    // border-radius: 48px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    align-self: stretch;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
   }
 
-  @include on-desktop {
-    height: 400px;
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+  }
+
+  &__dots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__dot {
+    padding: 0;
+    border: none;
+    width: 14px;
+    height: 4px;
+    background-color: $elements-color;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &--active {
+      background-color: $primary-color;
+    }
   }
 }

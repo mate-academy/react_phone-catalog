@@ -6,7 +6,7 @@ import { useCart } from '../../context/CartContext';
 import { Link, useLocation } from 'react-router-dom';
 import { useProducts } from '../../context/ProductsContext';
 import { Product } from '../../types/Product';
-import { getBgColorForRadio } from '../../utils';
+import { getBgColorForRadio, techSpecs } from '../../utils';
 
 type Props = {
   product: Gadget;
@@ -160,28 +160,24 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
             </div>
 
             <div className={styles.product_details__features}>
-              <div className={styles.product_details__feature}>
-                <p className={styles.product_details__param}>Screen</p>
-                <p className={styles.product_details__value}>
-                  {product.screen}
-                </p>
-              </div>
-              <div className={styles.product_details__feature}>
-                <p className={styles.product_details__param}>Resolution</p>
-                <p className={styles.product_details__value}>
-                  {product.resolution}
-                </p>
-              </div>
-              <div className={styles.product_details__feature}>
-                <p className={styles.product_details__param}>Processor</p>
-                <p className={styles.product_details__value}>
-                  {product.processor}
-                </p>
-              </div>
-              <div className={styles.product_details__feature}>
-                <p className={styles.product_details__param}>Ram</p>
-                <p className={styles.product_details__value}>{product.ram}</p>
-              </div>
+              {techSpecs.slice(0, 4).map(spec => {
+                const value = (product as Record<string, any>)[spec];
+                const upperCaseSpec =
+                  spec.charAt(0).toUpperCase() + spec.slice(1);
+
+                return (
+                  value && (
+                    <div key={spec} className={styles.product_details__feature}>
+                      <p className={styles.product_details__param}>
+                        {upperCaseSpec}
+                      </p>
+                      <p className={styles.product_details__value}>
+                        {Array.isArray(value) ? value.join(', ') : value}
+                      </p>
+                    </div>
+                  )
+                );
+              })}
             </div>
 
             <div></div>
@@ -211,44 +207,24 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
         <div className={styles.product_details__right}>
           <h3 className={styles.product_details__title}>Tech specs</h3>
           <div className={styles.product_details__features}>
-            <div className={styles.product_details__feature}>
-              <p className={styles.product_details__param}>Screen</p>
-              <p className={styles.product_details__value}>{product.screen}</p>
-            </div>
-            <div className={styles.product_details__feature}>
-              <p className={styles.product_details__param}>Resolution</p>
-              <p className={styles.product_details__value}>
-                {product.resolution}
-              </p>
-            </div>
-            <div className={styles.product_details__feature}>
-              <p className={styles.product_details__param}>Processor</p>
-              <p className={styles.product_details__value}>
-                {product.processor}
-              </p>
-            </div>
-            <div className={styles.product_details__feature}>
-              <p className={styles.product_details__param}>Ram</p>
-              <p className={styles.product_details__value}>{product.ram}</p>
-            </div>
-            <div className={styles.product_details__feature}>
-              <p className={styles.product_details__param}>Built in memory</p>
-              <p className={styles.product_details__value}>
-                {product.capacity}
-              </p>
-            </div>
-            <div className={styles.product_details__feature}>
-              <p className={styles.product_details__param}>Camera</p>
-              <p className={styles.product_details__value}>{product.camera}</p>
-            </div>
-            <div className={styles.product_details__feature}>
-              <p className={styles.product_details__param}>Zoom</p>
-              <p className={styles.product_details__value}>{product.zoom}</p>
-            </div>
-            <div className={styles.product_details__feature}>
-              <p className={styles.product_details__param}>Cell</p>
-              <p className={styles.product_details__value}>{product.cell.join(', ')}</p>
-            </div>
+            {techSpecs.map(spec => {
+              const value = (product as Record<string, any>)[spec];
+              const upperCaseSpec =
+                spec.charAt(0).toUpperCase() + spec.slice(1);
+
+              return (
+                value && (
+                  <div key={spec} className={`${styles.product_details__feature} ${styles.product_details__feature_big}`}>
+                    <p className={styles.product_details__param}>
+                      {upperCaseSpec}
+                    </p>
+                    <p className={styles.product_details__value}>
+                      {Array.isArray(value) ? value.join(', ') : value}
+                    </p>
+                  </div>
+                )
+              );
+            })}
           </div>
         </div>
       </div>

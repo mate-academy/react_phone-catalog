@@ -86,7 +86,10 @@ export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
       >
         {visibleProducts.map(product => (
           <SwiperSlide key={product.id}>
-            <ProductCard product={product} isNewModelsBlock={isNewModelsBlock} />
+            <ProductCard
+              product={product}
+              isNewModelsBlock={isNewModelsBlock}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

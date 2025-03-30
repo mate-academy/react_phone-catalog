@@ -1,9 +1,9 @@
 import { useProducts } from '../../context/ProductsContext';
-import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import styles from './HomePage.module.scss';
 import { Categories } from '../../components/Categories';
 import { sortProductsByPrice, sortProductsByYear } from '../../utils';
+import PicturesSlider from '../../components/PicturesSlider/PicturesSlider';
 
 const HomePage = () => {
   const { products, phones, accessories, tablets } = useProducts();
@@ -16,10 +16,12 @@ const HomePage = () => {
     <div className={styles.home}>
       <h1 className={styles.hidden_title}>Product Catalog</h1>
       <PicturesSlider />
+
       <ProductsSlider
         title="Brand new models"
         visibleProducts={newestProducts}
       />
+
       <Categories
         phonesQuantity={phones.length}
         tabletsQuantity={tablets.length}

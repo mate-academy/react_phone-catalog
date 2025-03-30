@@ -1,75 +1,139 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import styles from './PicturesSlider.module.scss';
-import { useRef, useState } from 'react';
-import Slider from 'react-slick';
 
-export const PicturesSlider = () => {
-  const [currSlide, setCurrSlide] = useState(0);
-  const sliderRef = useRef<Slider | null>(null);
+const PicturesSlider = () => {
+  const imageWrapperRef = useRef<HTMLDivElement | null>(null);
+  const sliderInterval = useRef<NodeJS.Timeout | null>(null);
+  const [currentImage, setCurrentImage] = useState(0);
 
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    autoplay: true,
-    autoPlaySpeed: 3000,
-    ref: sliderRef,
-    dots: true,
-    beforeChange: (_current: number, next: number) => {
-      setCurrSlide(next);
-    },
-    customPaging: (i: number) => (
-      <div
-        style={{
-          width: '20px',
-          height: '6px',
-          backgroundColor: i === currSlide ? '#313237' : '#E2E6E9',
-          transition: 'background-color 0.3s ease',
-          margin: '0 10px',
-          marginTop: '20px',
-          zIndex: '1000',
-        }}
-      />
-    ),
+  const screenWidth = window.innerWidth;
+  const isMobile = screenWidth < 640;
+
+  const imageCount = 3;
+
+  const stopInterval = useCallback(() => {
+    if (sliderInterval.current) {
+      clearInterval(sliderInterval.current);
+      sliderInterval.current = null;
+    }
+  }, []);
+
+  const startInterval = useCallback(() => {
+    stopInterval();
+    if (imageCount > 1) {
+      sliderInterval.current = setInterval(() => {
+        setCurrentImage(prevIndex => (prevIndex + 1) % imageCount);
+      }, 100000);
+    }
+  }, [stopInterval, imageCount]);
+
+  useEffect(() => {
+    startInterval();
+
+    return stopInterval;
+  }, [startInterval, stopInterval]);
+
+  const handleNextImage = () => {
+    if (imageCount <= 1) {
+      return;
+    }
+
+    setCurrentImage(prevIndex => (prevIndex + 1) % imageCount);
+    startInterval();
   };
 
+  const handlePrevImage = () => {
+    if (imageCount <= 1) {
+      return;
+    }
+
+    setCurrentImage(prevIndex => (prevIndex - 1 + imageCount) % imageCount);
+    startInterval();
+  };
+
+  const handleDotClick = (index: number) => {
+    if (index === currentImage || imageCount <= 1) {
+      return;
+    }
+
+    setCurrentImage(index);
+    startInterval();
+  };
+
+  useEffect(() => {
+    if (imageWrapperRef.current) {
+      const translateXValue = -currentImage * 33.33;
+
+      imageWrapperRef.current.style.transform = `translateX(${translateXValue}%)`;
+
+      imageWrapperRef.current.style.width = `${imageCount * 100}%`;
+    }
+  }, [currentImage, imageCount]);
+
   return (
-    <>
-      <h2 className={styles.slider_title}>Welcome to Nice Gadgets store!</h2>
-      <div className={styles.slider}>
-        <button
-          className={styles.arrowLeft}
-          onClick={() => sliderRef.current?.slickPrev()}
-        >
-          <img
-            src="/public/img/icons/arrows/arrow-left-icon.svg"
-            alt="Previous"
-          />
-        </button>
-        <div className={styles.slider__wrapper}>
-          <Slider {...settings}>
-            {[1, 2, 3].map(index => (
-              <div key={index}>
+    <div className={`${styles.slider}`}>
+      <div className={styles.slider__content}>
+        {imageCount > 1 && (
+          <button
+            className={`${styles.slider__button} ${styles['slider__button-left']}`}
+            onClick={handlePrevImage}
+          >
+            <img
+              src="/public/img/icons/arrows/arrow-left-icon.svg"
+              alt="Previous"
+            />
+          </button>
+        )}
+
+        <div className={styles.slider__viewport}>
+          <div
+            className={styles['slider__image-wrapper']}
+            ref={imageWrapperRef}
+          >
+            {[1, 2, 3].map(index => {
+              const isSmall = isMobile && index === 1;
+              const fileType = index === 1 ? 'png' : 'jpg';
+              const src = `/public/img/banners/banner-${isSmall ? 'small' : 'big'}${!isSmall ? index : ''}.${fileType}`;
+
+              return (
                 <img
-                  src={`/public/img/banners/banner-big${index}.${index === 1 ? 'png' : 'jpg'}`}
+                  src={src}
                   alt={`slide-${index}`}
-                  className={styles.image}
+                  className={`${styles.slider__image} ${index === 1 && styles.slider__image_main}`}
                 />
-              </div>
-            ))}
-          </Slider>
+              );
+            })}
+          </div>
         </div>
-        <button
-          className={styles.arrowRight}
-          onClick={() => sliderRef.current?.slickNext()}
-        >
-          <img src="/public/img/icons/arrows/arrow-right-icon.svg" alt="Next" />
-        </button>
+
+        {imageCount > 1 && (
+          <button
+            className={`${styles.slider__button} ${styles['slider__button-right']}`}
+            onClick={handleNextImage}
+          >
+            <img
+              src="/public/img/icons/arrows/arrow-right-icon.svg"
+              alt="Next"
+            />
+          </button>
+        )}
       </div>
-    </>
+
+      {imageCount > 1 && (
+        <div className={styles.slider__navigation}>
+          <div className={styles.slider__dots}>
+            {[1, 2, 3].map((_, index) => (
+              <button
+                className={`${styles.slider__dot} ${currentImage === index ? styles['slider__dot--active'] : ''}`}
+                key={index}
+                onClick={() => handleDotClick(index)}
+              ></button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
+
+export default PicturesSlider;

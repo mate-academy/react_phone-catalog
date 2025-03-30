@@ -21,19 +21,6 @@ export const upperCase = (lowerPath: string) => {
   );
 };
 
-export const sortingOptions = [
-  { label: 'Newest', value: 'newest' },
-  { label: 'Alphabetically', value: 'alphabetically' },
-  { label: 'Cheapest', value: 'cheapest' },
-];
-
-export const itemsForPageOptions = [
-  { label: '4', value: '4' },
-  { label: '8', value: '8' },
-  { label: '16', value: '16' },
-  { label: 'All', value: 'all' },
-];
-
 export function getBgColorForRadio(color: string) {
   switch (color) {
     case 'spacegray':
@@ -48,3 +35,32 @@ export function getBgColorForRadio(color: string) {
       return color;
   }
 }
+
+export const getRandomProducts = (arr: Product[], num: number) => {
+  const shuffled = [...arr].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, num);
+};
+
+export const sortingOptions = [
+  { label: 'Newest', value: 'newest' },
+  { label: 'Alphabetically', value: 'alphabetically' },
+  { label: 'Cheapest', value: 'cheapest' },
+];
+
+export const itemsForPageOptions = [
+  { label: '4', value: '4' },
+  { label: '8', value: '8' },
+  { label: '16', value: '16' },
+  { label: 'All', value: 'all' },
+];
+
+export const techSpecs = [
+  'screen',
+  'resolution',
+  'processor',
+  'ram',
+  'capacity',
+  'camera',
+  'zoom',
+  'cell',
+];

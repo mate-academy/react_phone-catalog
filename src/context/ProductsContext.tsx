@@ -105,13 +105,15 @@ export const ProductsProvider = ({
       const response = await fetch(`${`/public/api/${category}.json`}`);
       const data = await response.json();
 
-      // setTimeout(() => {
       const products = [...data];
 
       const neededProduct = products.find(p => p.id === itemId);
 
-      return neededProduct;
-      // }, 1000);
+      if (neededProduct) {
+        return neededProduct;
+      } else {
+        setError(true);
+      }
     } catch (error) {
       setError(true);
       setLoading(false);
@@ -128,13 +130,11 @@ export const ProductsProvider = ({
       const response = await fetch(`${`/public/api/products.json`}`);
       const data = await response.json();
 
-      // setTimeout(() => {
       const products = [...data];
 
       const neededProduct = products.find(p => p.itemId === id);
 
       return neededProduct;
-      // }, 1000);
     } catch (error) {
       setError(true);
       setLoading(false);
