@@ -41,13 +41,9 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
     }
   };
 
-  // console.log(product);
-
   useEffect(() => {
     getProductById(product.id).then(res => setFormattedProduct(res));
   }, [product]);
-
-  console.log(product);
 
   return (
     <div className={styles.product_details}>
