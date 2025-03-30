@@ -1,18 +1,67 @@
-import { useParams } from "react-router-dom";
-import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs"
-import "./Favorites.scss"
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import './Favorites.scss';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { ProductCard } from '../../components/ProductCard';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-export const Favorites = ()=> {
-    const { category } = useParams();
+export const Favorites = () => {
+  const favorites = useSelector((state: RootState) => state.favorites);
+  const [showGoBtn, setShowGoBtn] = useState(false);
 
-    console.log(category);
-    
-    return (
-        <div className="favorites">
-            <div className="favorites__container">
-                <Breadcrumbs/>
-                <h1 className="favorites__title title">Favourites</h1>
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (favorites.length === 0) {
+      const timer = setTimeout(() => {
+        setShowGoBtn(true);
+      }, 1500); 
+  
+      return () => clearTimeout(timer);
+    } else {
+      setShowGoBtn(false); 
+    }
+  }, [favorites]);
+  
+
+  return (
+    <div className="favorites">
+      <div className="favorites__container">
+        <Breadcrumbs />
+        {favorites.length > 0 ? (
+          <>
+            <h1 className="favorites__title title">Favourites</h1>
+
+            <div className="products__cards cards">
+              <div className="favourites__count">{favorites.length} Items</div>
+
+              <ul className="cards__list">
+                {favorites.map((product, index) => (
+                  <li className="cards__item" key={index}>
+                    <ProductCard product={product} />
+                  </li>
+                ))}
+              </ul>
             </div>
-        </div>
-    )
-}
+          </>
+        ) : (
+          <>
+            <div className="favourites__empty">
+              <img src="./img/no-favourites.png" alt="" />
+            </div>
+            <Link
+              to="/"
+              className={`no-items__btn ${showGoBtn ? 'no-items__btn--visible' : 'no-items__btn--hidden'}`}
+            >
+              Go shopping!
+            </Link>
+          
+          </>
+        )}
+      </div>
+    </div>
+  );
+};

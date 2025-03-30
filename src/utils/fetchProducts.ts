@@ -19,9 +19,8 @@ export const fetchProducts = async (category?: string, product?: string) => {
       const categoryProducts = await response.json();
       return categoryProducts.find((item: any) => item.id === product) || null;
     }
-
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error('Error fetching data:', error);
     return product ? null : [];
   }
 };

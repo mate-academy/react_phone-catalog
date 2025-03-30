@@ -1,15 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
-import favoritesReducer, { saveFavoritesToStorage } from "./favoritesSlice";
+import favoritesReducer from "./favoritesSlice"; 
+import cartReducer from "./cartSlice";
 
 export const store = configureStore({
   reducer: {
     favorites: favoritesReducer,
+    cart: cartReducer,
   },
 });
 
-// Автоматично зберігаємо зміни у localStorage
+
 store.subscribe(() => {
-  saveFavoritesToStorage(store.getState().favorites);
+  const state = store.getState();
+  const favoritesToSave = state.favorites;
+  localStorage.setItem("favorites", JSON.stringify(favoritesToSave));
 });
 
 export type RootState = ReturnType<typeof store.getState>;

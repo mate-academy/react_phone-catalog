@@ -1,3 +1,5 @@
+@import '/src/styles/media.scss';
+
 @font-face {
   font-family: 'Mont';
   src: url('/fonts/Mont-Regular.otf') format('opentype');
@@ -27,17 +29,29 @@ body {
   scroll-behavior: smooth;
   font-family: 'Mont', sans-serif;
   scrollbar-width: thin;
+
+  overflow-y: scroll;
 }
 
 [class*='__container'] {
-  max-width: 1200px;
+  max-width: 1136px;
   margin: 0 auto;
+  // width: 100%;
+ 
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include mobile {
+    padding-inline: 16px;
+  }
 }
 
 .wrapper {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 .main {
@@ -47,6 +61,15 @@ body {
 .page__main {
   margin-bottom: 80px;
   margin-top: 121px;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include mobile {
+    margin-bottom: 64px;
+    margin-top: 80px;
+  }
 }
 
 .page__header {
@@ -72,7 +95,30 @@ body {
   letter-spacing: -1%;
   margin-bottom: 8px;
 }
+
 img {
- overflow-clip-margin: content-box;
+  //  overflow-clip-margin: content-box;
   overflow: clip;
+}
+
+.error-message {
+  margin-bottom: 30px;
+}
+
+.button-back, .reload-button {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+
+  color: white;
+  background-color: #216cff;
+  padding: 8px 15px;
+  border-radius: 10px;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px #17203166;
+  }
 }

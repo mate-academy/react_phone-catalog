@@ -1,3 +1,5 @@
+@import '/src/styles/media.scss';
+
 .footer {
   &__content {
     display: flex;
@@ -5,6 +7,16 @@
     align-items: center;
     justify-content: space-between;
     border-top: 1px solid #E2E6E9;
+
+    @include tablet {
+      padding: 32px;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      padding-inline: 16px;
+      align-items: start;
+    }
   }
 
   &__logo {
@@ -22,6 +34,17 @@
 
   &__list--footer {
     gap: 106px;
+
+    @include tablet {
+      gap: 14px
+    }
+
+    @include mobile {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      margin: 32px 0;
+    }
   }
 
   &__item {
@@ -36,7 +59,13 @@
     display: flex;
     align-items: center;
     gap: 16px;
+
+    @include mobile {
+      margin: 0 auto;
+    }
   }
+
+  
 }
 
 .footer__btn {

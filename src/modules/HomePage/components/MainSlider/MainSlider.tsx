@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './MainSlider.scss';
+import { Link } from 'react-router-dom';
 
 export const MainSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = [
-    { path: './img/main-banners/banner-accessories.png' },
-    { path: './img/main-banners/banner-phones.png' },
-    { path: './img/main-banners/banner-tablets.png' },
-    { path: './img/main-banners/banner-accessories2.png' },
+    { link: 'phones/apple-iphone-16-pro-max-256gb-blacktitanium', path: './img/main-banners/banner-main.png' },
+    { link: 'phones', path: './img/main-banners/banner-phones.png' },
+    { link: 'tablets', path: './img/main-banners/banner-tablets.png' },
+    { link: 'accessories', path: './img/main-banners/banner-accessories.png' },
   ];
 
   const goToSlide = (index: number) => {
@@ -24,20 +25,30 @@ export const MainSlider = () => {
     );
   };
 
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex(prev => (prev + 1) % slides.length);
+  //   }, 5000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
+
   return (
     <div className="slider">
-      <div className="slider__container">
+      <div className="slider__box">
         <ul
           className="slider__track"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {slides.map((slide, index) => (
             <li key={index}>
-              <img
-                src={slide.path}
-                className="slider__image"
-                alt={`Slide ${index + 1}`}
-              />
+              <Link to={`/${slide.link}`}>
+                <img
+                  src={slide.path}
+                  className="slider__image"
+                  alt={`Slide ${index + 1}`}
+                />
+              </Link>
             </li>
           ))}
         </ul>

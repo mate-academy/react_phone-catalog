@@ -1,0 +1,268 @@
+@import '/src/styles/media.scss';
+.cart-page {
+  // .cart-page__container
+
+  &__container {
+  }
+
+  // .cart-page__content
+
+  &__content {
+    display: flex;
+
+    align-items: flex-start;
+    column-gap: 16px;
+
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+
+  // .cart-page__list
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    flex: 0 1 65%;
+    row-gap: 20px;
+
+    @include tablet {
+      margin-bottom: 32px;
+      min-width: 100%;
+    }
+  }
+
+  // .cart-page__item
+
+  &__item {
+    display: flex;
+    column-gap: 24px;
+    align-items: center;
+    border: 1px solid #e2e6e9;
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  // .cart-page__checkout
+
+  &__checkout {
+    display: flex;
+    border-radius: 16px;
+    border: 1px solid #e2e6e9;
+    padding: 24px;
+    flex-direction: column;
+    text-align: center;
+    flex: 0 1 32%;
+
+    @include tablet {
+      min-width: 100%
+    }
+  }
+}
+.back {
+  // .back__iconw
+  margin-bottom: 40px;
+  transition: all 0.3s;
+  &:hover {
+    color: black;
+  }
+
+  &__icon {
+  }
+}
+.item {
+  // .item__photo-and-title
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  &--removing {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  &__photo-and-title {
+    display: flex;
+    column-gap: 32px;
+    align-items: center;
+    flex: 0 1 65%;
+  }
+
+  // .item__remove-button
+
+  &__remove-button {
+  }
+
+  // .item__photo
+
+  &__photo img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  // .item__title
+
+  &__title {
+    max-width: 300px;
+  }
+
+  // .item__count-and-price
+
+  &__count-and-price {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    margin-left: auto;
+    flex: 0 1 33%;
+  }
+
+  // .item__count-btn
+
+  &__count-btn {
+  }
+
+  // .item__count-btn--plus
+
+  &__count-btn--plus {
+  }
+
+  // .item__count-btn--minus
+
+  &__count-btn--minus {
+    // margin-right: 24px;
+  }
+
+  &__count {
+    text-align: center;
+    width: 10px;
+  }
+
+  &__price {
+    margin-left: 65px;
+
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+}
+.checkout {
+  // .checkout__top
+
+  &__top {
+    margin-bottom: 24px;
+  }
+
+  // .checkout__price
+
+  &__price {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  // .checkout__items-count
+
+  &__items-count {
+    font-family: Mont;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #89939a;
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  // .checkout__bottom
+
+  &__btn {
+    background-color: #216cff;
+    color: white;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    padding: 13.5px 0;
+    border-radius: 8px;
+    width: 100%;
+
+    &--not-active {
+      background-color: #0e0f1027;
+      color: white;
+
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      text-align: center;
+      padding: 13.5px 0;
+      border-radius: 8px;
+      width: 100%;
+
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  // .checkout__button
+
+  &__button {
+  }
+}
+
+.cart-page {
+  // .cart-page__no-items
+
+  &__no-items {
+  }
+}
+.no-items {
+  width: 600px;
+
+  // .no-items__title
+
+  &__title {
+    font-size: 19px;
+  }
+
+  // .no-items__btn
+
+  &__btn {
+    display: inline-block;
+    margin-top: 40px;
+    background-color: #216cff;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+  
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  
+    &--visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.3s;
+
+      &:hover {
+        box-shadow: 0px 3px 13px 0px #17203166;
+      }
+    }
+  
+    &--hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}

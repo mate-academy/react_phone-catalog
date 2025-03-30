@@ -1,3 +1,5 @@
+@import '/src/styles/media.scss';
+
 $slider-button-border: 1px solid rgba(0, 0, 0, 0.435);
 $slider-button-hover-bg: #89939a63;
 $dot-color: #E2E6E9;
@@ -5,12 +7,16 @@ $dot-active-color: #89939a;
 
 .slider {
   position: relative;
-  max-width: 93%;
+  max-width: 90%;
   margin: 0 auto;
   margin-bottom: 80px; 
+
+  @include tablet {
+    max-width: 87%;
+  }
 }
 
-.slider__container {
+.slider__box {
   overflow: hidden;
   border-radius: 10px;
 }
@@ -32,10 +38,9 @@ $dot-active-color: #89939a;
   position: absolute;
   left: 0;
   top: 0;
-  min-width: 100%;
   width: 100%;
   flex-shrink: 0;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 10px;
 }
 

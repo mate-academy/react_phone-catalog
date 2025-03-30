@@ -1,7 +1,11 @@
 import './Footer.scss';
 
 export const Footer = () => {
-  const links = ['GITHUB', 'CONTACTS', 'RIGHTS'];
+  const links = [
+    {name:'GITHUB', page:"https://github.com/kozlovoleksii"},
+    {name:'CONTACTS', page:"#"},
+    {name:'RIGHTS', page:"#"}
+  ];
 
   return (
     <footer className="footer page__footer">
@@ -16,14 +20,13 @@ export const Footer = () => {
           <ul className="nav__list nav__list--footer">
             {links.map((link, index) => (
               <li className="nav__item" key={index}>
-                <a href="#" className="nav__link">
-                  {link}
+                <a href={link.page} target='blank' className="nav__link">
+                  {link.name}
                 </a>
               </li>
             ))}
           </ul>
         </nav>
-
         <div className="footer__btn">
           <div className="back-to-top-container">
             <a href="#" className="back-to-top-text">

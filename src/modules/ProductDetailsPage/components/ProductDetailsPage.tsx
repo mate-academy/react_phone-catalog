@@ -1,7 +1,7 @@
 import { Link, NavLink, useParams } from 'react-router-dom';
-import './ProductPage.scss';
+import './ProductDetailsPage.scss';
 import '../../HomePage/components/SliderCards/SliderCards.scss';
-import {ItemCard, Product} from '../../../../src/constants/common';
+import { ItemCard, Product, colorMap } from '../../../constants/common';
 import productList from '../../../../public/api/products.json';
 import { SliderCards } from '../../HomePage/components/SliderCards';
 import { useEffect, useRef, useState } from 'react';
@@ -10,68 +10,97 @@ import { RootState } from '../../../redux/store';
 import { toggleFavorite } from '../../../redux/favoritesSlice';
 import { Breadcrumbs } from '../../../components/Breadcrumbs/Breadcrumbs';
 import { fetchProducts } from '../../../utils/fetchProducts';
+import { mapToFavoriteItem } from '../../../utils/helpers';
+import { toggleCartItem } from '../../../redux/cartSlice';
+import { withMinDelay } from '../../../utils/delay';
+import { Loader } from '../../../components/Loader';
 
-export const ProductPage = () => {
+export const ProductDetailsPage = () => {
   const { category, product } = useParams();
   const [photo, setPhoto] = useState(0);
-  const [currentProduct, setCurrentProduct] = useState<ItemCard | null >(null);
-
+  const [currentProduct, setCurrentProduct] = useState<ItemCard | null>(null);
+  const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const dispatch = useDispatch();
   const favorites = useSelector((state: RootState) => state.favorites);
+  const cart = useSelector((state: RootState) => state.cart);
 
   useEffect(() => {
     if (category && product) {
-      fetchProducts(category, product).then(data => {
-        setCurrentProduct(data);
+      setIsLoading(true);
+      setHasError(false);
+
+      withMinDelay(fetchProducts(category, product), 300)
+        .then(data => {
+          if (!data) {
+            setHasError(true);
+            return;
+          }
+
+          setCurrentProduct(data);
+          setPhoto(0);
+        })
+        .catch(() => {
+          setHasError(true);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+
+      fetchProducts(category).then(products => {
+        setSimilarProducts(products.filter((p: any) => p.id !== product));
       });
     }
-      // window.scrollTo(0, 0);
-    // setPhoto(0);
+
+    window.scrollTo(0, 0);
   }, [category, product]);
-
-
-  const colorMap: Record<string, string> = {
-    midnight: 'black',
-    white: '#F0F0F0',
-    spacegray: '#4A4A4A',
-    starlight: '#E6E2D3',
-    graphite: '#383428',
-    sierrablue: '#BFDAF7',
-    spaceblack: '#1D1D1F',
-    midnightgreen: '#566D63',
-    rosegold: '#F4C2C2',
-  };
-
-  // const recommendedProducts: Product[] = products.map(item => ({
-  //   id: Number(item.id),
-  //   itemId: item.id,
-  //   image: `/${item.images[0]}`,
-  //   fullPrice: item.priceRegular,
-  //   price: item.priceDiscount,
-  //   name: item.name,
-  //   screen: item.screen,
-  //   capacity: item.capacity,
-  //   ram: item.ram,
-  //   year: new Date().getFullYear(), // (!!)
-  // }));
-
-  // const currentProduct = products.find(item => item.id === product);
-  // if (!currentProduct) {
-  //   return <p>Product not found</p>;
-  // }
 
   const productFromList = productList.find(
     item => item.itemId === currentProduct?.id,
   );
 
-  const productId = productFromList ? productFromList.id : 'Unknown ID';
+  const productId = productFromList ? productFromList.itemId : 'Unknown ID';
+  const id = productFromList ? productFromList.id : 'Unknown ID';
+  const isAdded = cart.some(fav => fav.id === productId);
 
   const activePhotoRef = useRef(0);
+
   const handlePhotoClick = (index: number) => {
     activePhotoRef.current = index;
     setPhoto(index);
   };
+
+  const handleFavoriteClick = (product: Product | ItemCard) => {
+    const item = mapToFavoriteItem(product);
+    dispatch(toggleFavorite(item));
+  };
+
+  const handleCartClick = (product: Product | ItemCard) => {
+    const item = mapToFavoriteItem(product);
+    dispatch(toggleCartItem(item));
+  };
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (hasError) {
+    return (
+      <div className="card__container">
+        <p className="error-message">
+          Oops! Product was not found 😥
+        </p>
+        <Link to={`../${category}`}
+          
+          className="button-back"
+        >
+          Back
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="card__container">
@@ -104,16 +133,18 @@ export const ProductPage = () => {
                 className="img-big"
               />
             </div>
+
+            
           </div>
+
+          <div className="card__details-container">
           <div className="card__details">
             <div className="color-and-id">
               <div className="info-block info-block--colors">
                 <p className="info-block__title">Available colors</p>
                 <div className="info-block__list">
                   {currentProduct?.colorsAvailable.map((color, index) => {
-                    if (!product) {
-                      return null;
-                    }
+                    if (!product) return null;
 
                     const currentColor = currentProduct.colorsAvailable.find(
                       col => product.includes(col.replace(/\s/g, '-')),
@@ -143,19 +174,17 @@ export const ProductPage = () => {
                   })}
                 </div>
               </div>
+              <span className="id-temp">ID: {id}</span>
             </div>
             <div className="info-block info-block--capacity">
               <p className="info-block__title">Select capacity</p>
               <div className="info-block__list">
                 {currentProduct?.capacityAvailable?.map((capacity, index) => {
-                  if (!product) {
-                    return null;
-                  }
+                  if (!product) return null;
 
-                  const currentCapacity =
-                    currentProduct?.capacityAvailable.find(cap =>
-                      product.includes(cap.toLowerCase()),
-                    );
+                  const currentCapacity = currentProduct.capacityAvailable.find(
+                    cap => product.includes(cap.toLowerCase()),
+                  );
 
                   const newProductUrl = product.replace(
                     currentCapacity?.toLowerCase() || '',
@@ -183,20 +212,29 @@ export const ProductPage = () => {
               <span className="old-price">${currentProduct?.priceRegular}</span>
             </div>
             <div className="actions">
-              <button className="add-to-cart">Add to cart</button>
               <button
-                className="add-to-favorite"
-                onClick={() => dispatch(toggleFavorite(currentProduct?.id || ""))}
+                className={isAdded ? 'add-to-cart--added' : 'add-to-cart'}
+                onClick={() =>
+                  currentProduct && handleCartClick(currentProduct)
+                }
               >
-                <img
-                  src={
-                    favorites.includes(currentProduct?.id || "")
-                      ? './img/icons/remove-from-fovourites.webp'
-                      : './img/icons/add-to-fovourites.svg'
-                  }
-                  alt=""
-                />
+                {isAdded ? 'Added to card' : 'Add to card'}
               </button>
+              {currentProduct && (
+                <button
+                  className="add-to-favorite"
+                  onClick={() => handleFavoriteClick(currentProduct)}
+                >
+                  <img
+                    src={
+                      favorites.some(fav => fav.id === currentProduct.id)
+                        ? './img/icons/remove-from-fovourites.webp'
+                        : './img/icons/add-to-fovourites.svg'
+                    }
+                    alt=""
+                  />
+                </button>
+              )}
             </div>
 
             <div className="card__info">
@@ -219,13 +257,15 @@ export const ProductPage = () => {
             </div>
           </div>
           <div className="id">
-            <p>id: {productId}</p>
+            <p>ID: {id}</p>
           </div>
+              </div>
+
+         
         </div>
         <div className="card__description">
           <section className="about-block">
             <h3 className="block-title">About</h3>
-
             {currentProduct?.description.map((info, index) => (
               <div className="about-block__info" key={index}>
                 <h4 className="about-block__title">{info.title}</h4>
@@ -235,7 +275,6 @@ export const ProductPage = () => {
           </section>
           <section className="tech-specs-block">
             <h3 className="block-title">Tech specs</h3>
-
             <ul className="tech-specs-block__list">
               <li className="tech-specs-block__info">
                 <p className="tech-specs-block__info-label">Screen</p>
@@ -285,7 +324,6 @@ export const ProductPage = () => {
                   </li>
                 </>
               )}
-
               <li className="tech-specs-block__info">
                 <p className="tech-specs-block__info-label">Cell</p>
                 <p className="tech-specs-block__info-value">
@@ -296,11 +334,10 @@ export const ProductPage = () => {
           </section>
         </div>
       </div>
-      {/* <SliderCards
-        products={recommendedProducts}
-        title="You may also like"
-        discountPrice={true}
-      /> */}
+
+      {similarProducts.length > 0 && (
+        <SliderCards products={similarProducts} title="You may also like" />
+      )}
     </div>
   );
 };

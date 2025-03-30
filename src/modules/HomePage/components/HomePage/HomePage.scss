@@ -1,25 +1,42 @@
+@import '/src/styles/media.scss';
+
 .home-page {
-    // &__container {
-    //     margin: 0 auto;
-    //     max-width: 1200px;
-    // }
+  // &__container {
+  //     margin: 0 auto;
+  //     max-width: 1200px;
+  // }
 
-    &__slider {
+  &__slider {
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 56px;
+    line-height: 56px;
+    letter-spacing: -1%;
+
+    @include tablet {
+      max-width: 592px;
+      margin-bottom: 32px;
     }
 
-    &__title {
-        font-size: 48px;
-        font-weight: bold;
-        margin-bottom: 56px;
-        line-height: 56px;
-        letter-spacing: -1%;
+    @include mobile {
+      font-size: 32px;
+      line-height: 41px;
+      text-align: center;
+      margin-bottom: 24px;
     }
+  }
 }
 
 .new-models {
-    margin: 80px 0;
+  margin: 80px 0;
+
+  @include tablet {
+    margin: 64px 0;
+  }
 }
 .hot-prices {
-    margin-top: 80px;
+  margin-top: 80px;
 }
-

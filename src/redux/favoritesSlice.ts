@@ -1,35 +1,40 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { FavoriteItem } from "../../src/constants/common"; // імпорт типу
 
 const FAVORITES_KEY = "favorites";
 
-const loadFavoritesFromStorage = (): string[] => {
+const loadFavoritesFromStorage = (): FavoriteItem[] => {
   const storedFavorites = localStorage.getItem(FAVORITES_KEY);
   return storedFavorites ? JSON.parse(storedFavorites) : [];
 };
 
-const initialState: string[] = loadFavoritesFromStorage();
+const initialState: FavoriteItem[] = loadFavoritesFromStorage();
 
 const favoritesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    toggleFavorite: (state, action: PayloadAction<string>) => {
-      const itemId = action.payload;
-      if (state.includes(itemId)) {
-        return state.filter((id) => id !== itemId);
+    toggleFavorite: (state, action: PayloadAction<FavoriteItem>) => {
+      const item = action.payload;
+      const index = state.findIndex((fav) => fav.id === item.id);
+
+      if (index !== -1) {
+        const updated = state.filter((fav) => fav.id !== item.id);
+        localStorage.setItem(FAVORITES_KEY, JSON.stringify(updated));
+        return updated;
       } else {
-        return [...state, itemId];
+        const updated = [...state, item];
+        localStorage.setItem(FAVORITES_KEY, JSON.stringify(updated));
+        return updated;
       }
     },
-    setFavorites: (state, action: PayloadAction<string[]>) => {
+    setFavorites: (state, action: PayloadAction<FavoriteItem[]>) => {
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(action.payload));
       return action.payload;
     },
   },
 });
+;
 
-export const saveFavoritesToStorage = (favorites: string[]) => {
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
-};
-
-export const { toggleFavorite, setFavorites } = favoritesSlice.actions;
+export const { toggleFavorite,setFavorites } = favoritesSlice.actions;
 export default favoritesSlice.reducer;
