@@ -2,11 +2,13 @@
 @use "../../utils/variables" as var;
 
 .error {
-  width: max-content;
-  margin: 0 auto;
-  margin-top: 24px;
+  width: 100%;
 
   @include mixin.flex(flex, center, center, column);
+
+  flex-grow: 1;
+  gap: 16px;
+  overflow: auto;
 
   &__text {
     color: var.$red;

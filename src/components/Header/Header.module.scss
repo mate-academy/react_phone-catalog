@@ -68,7 +68,7 @@
     }
   }
 
-  &__menu-btn--dark {
+  &__menu-btn-dark {
     @include mixin.on-mobile {
       @include mixin.sizes(48px, 48px);
       @include mixin.flex(flex, center, center, false);

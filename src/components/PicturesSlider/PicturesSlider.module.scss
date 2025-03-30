@@ -9,38 +9,52 @@
   @include mixin.responsive-property(margin-left, 0, 24px, 32px);
 
   &__title {
-    @include mixin.h1-mobile;
-    @include mixin.responsive-property(margin-bottom, 16px, 24px, 32px);
-
     color: var.$primary-gray;
-    text-align: center;
+
+    @include mixin.on-mobile {
+      @include mixin.h1-mobile;
+
+      text-align: center;
+      margin-bottom: 16px;
+    }
 
     @include mixin.on-tablet {
+      @include mixin.h1-mobile;
+
       text-align: left;
+      margin-bottom: 24px;
     }
 
     @include mixin.on-desktop {
       @include mixin.h1-desktop-tablet;
 
       text-align-last: left;
+      margin-bottom: 32px;
     }
   }
 
-  &__title--dark {
-    @include mixin.h1-mobile;
-    @include mixin.responsive-property(margin-bottom, 16px, 24px, 32px);
-
+  &__title-dark {
     color: var.$dark-white;
-    text-align: center;
+
+    @include mixin.on-mobile {
+      @include mixin.h1-mobile;
+
+      text-align: center;
+      margin-bottom: 16px;
+    }
 
     @include mixin.on-tablet {
+      @include mixin.h1-mobile;
+
       text-align: left;
+      margin-bottom: 24px;
     }
 
     @include mixin.on-desktop {
       @include mixin.h1-desktop-tablet;
 
       text-align-last: left;
+      margin-bottom: 32px;
     }
   }
 
@@ -91,7 +105,7 @@
     }
   }
 
-  &__button--dark {
+  &__button-dark {
     display: none;
     background-color: var.$dark-surface-2;
     border: solid 1px var.$dark-icons-placeholders;
@@ -200,7 +214,7 @@
     }
   }
 
-  &__item--dark {
+  &__item-dark {
     @include mixin.sizes(14px, 4px);
 
     background-color: var.$dark-elements;

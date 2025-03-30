@@ -36,8 +36,9 @@ export const Footer = () => {
 
   return (
     <div
-      className={cn(styles.footer, {
-        [styles['footer--dark']]: theme === Theme.Dark,
+      className={cn({
+        [styles.footer]: theme === Theme.Light,
+        [styles['footer-dark']]: theme === Theme.Dark,
       })}
     >
       <Logo className={styles.footer__logo} />
@@ -47,8 +48,9 @@ export const Footer = () => {
           <Link
             key={link.title}
             to={link.path}
-            className={cn(styles.footer__item, {
-              [styles['footer__item--dark']]: theme === Theme.Dark,
+            className={cn({
+              [styles.footer__item]: theme === Theme.Light,
+              [styles['footer__item-dark']]: theme === Theme.Dark,
             })}
             target="_blank"
           >
@@ -59,16 +61,18 @@ export const Footer = () => {
 
       <div className={styles.footer__button_container}>
         <span
-          className={cn(styles.footer__text, {
-            [styles['footer__text--dark']]: theme === Theme.Dark,
+          className={cn({
+            [styles.footer__text]: theme === Theme.Light,
+            [styles['footer__text-dark']]: theme === Theme.Dark,
           })}
           onClick={handleClickToTop}
         >
           Back to top
         </span>
         <button
-          className={cn(styles.footer__button, {
-            [styles['footer__button--dark']]: theme === Theme.Dark,
+          className={cn({
+            [styles.footer__button]: theme === Theme.Light,
+            [styles['footer__button-dark']]: theme === Theme.Dark,
           })}
           onClick={handleClickToTop}
         >

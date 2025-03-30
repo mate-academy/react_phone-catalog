@@ -15,6 +15,7 @@ const images = [img1, img2, img3];
 
 export const PicturesSlider = () => {
   const [currentImage, setCurrentImage] = useState<number>(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const { theme } = useContext(ThemeContext);
 
   const goToSlide = (direction: number) => {
@@ -33,23 +34,48 @@ export const PicturesSlider = () => {
     setCurrentImage(index);
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) {
+      return;
+    }
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const swipeDistance = touchStartX - touchEndX;
+
+    if (swipeDistance > 50) {
+      handleNext();
+    } else if (swipeDistance < -50) {
+      handlePrev();
+    }
+
+    setTouchStartX(null);
+  };
+
   return (
     <div className={styles.slider}>
       <h1
-        className={
-          theme === Theme.Light
-            ? styles.slider__title
-            : styles['slider__title--dark']
-        }
+        className={cn({
+          [styles.slider__title]: theme === Theme.Light,
+          [styles['slider__title-dark']]: theme === Theme.Dark,
+        })}
       >
         Welcome to Nice Gadgets store!
       </h1>
-      <div className={styles.slider__container}>
+      <div
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className={styles.slider__container}
+      >
         <button
-          className={cn(styles.slider__button, {
-            [styles['slider__button--dark']]: theme === Theme.Dark,
+          className={cn({
+            [styles.slider__button]: theme === Theme.Light,
             [styles['slider__button--left']]: theme === Theme.Light,
-            [styles['slider__button--dark--left']]: theme === Theme.Dark,
+            [styles['slider__button-dark']]: theme === Theme.Dark,
+            [styles['slider__button-dark--left']]: theme === Theme.Dark,
           })}
           onClick={handlePrev}
         >
@@ -72,10 +98,11 @@ export const PicturesSlider = () => {
         ))}
 
         <button
-          className={cn(styles.slider__button, {
-            [styles['slider__button--dark']]: theme === Theme.Dark,
+          className={cn({
+            [styles.slider__button]: theme === Theme.Light,
             [styles['slider__button--right']]: theme === Theme.Light,
-            [styles['slider__button--dark--right']]: theme === Theme.Dark,
+            [styles['slider__button-dark']]: theme === Theme.Dark,
+            [styles['slider__button-dark--right']]: theme === Theme.Dark,
           })}
           onClick={handleNext}
         >
@@ -91,11 +118,12 @@ export const PicturesSlider = () => {
         {images.map((_, index) => (
           <div key={index} className={styles.dots__container}>
             <button
-              className={cn(styles.dots__item, {
+              className={cn({
+                [styles.dots__item]: theme === Theme.Light,
                 [styles['dots__item--active']]:
                   index === currentImage && theme === Theme.Light,
-                [styles['dots__item--dark']]: theme === Theme.Dark,
-                [styles['dots__item--dark--active']]:
+                [styles['dots__item-dark']]: theme === Theme.Dark,
+                [styles['dots__item-dark--active']]:
                   index === currentImage && theme === Theme.Dark,
               })}
               onClick={() => handleDots(index)}

@@ -17,8 +17,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div
-      className={cn(styles.product, {
-        [styles['product--dark']]: theme === Theme.Dark,
+      className={cn({
+        [styles.product]: theme === Theme.Light,
+        [styles['product-dark']]: theme === Theme.Dark,
       })}
     >
       <Link
@@ -35,36 +36,91 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         to={`/${product.category}/${product.itemId}`}
         className={cn({
           [styles.product__name]: theme === Theme.Light,
-          [styles['product__name--dark']]: theme === Theme.Dark,
+          [styles['product__name-dark']]: theme === Theme.Dark,
         })}
       >
         {product.name}
       </Link>
       <div className={styles.product__prices}>
-        <p className={styles.product__price}>${product.price}</p>
-        <p className={styles.product__fullPrice}>${product.fullPrice}</p>
+        <p
+          className={cn({
+            [styles.product__price]: theme === Theme.Light,
+            [styles['product__price-dark']]: theme === Theme.Dark,
+          })}
+        >
+          ${product.price}
+        </p>
+        <p
+          className={cn({
+            [styles.product__fullPrice]: theme === Theme.Light,
+            [styles['product__fullPrice-dark']]: theme === Theme.Dark,
+          })}
+        >
+          ${product.fullPrice}
+        </p>
       </div>
-
-      <div className={styles.product__line}></div>
-
+      <div
+        className={cn({
+          [styles.product__line]: theme === Theme.Light,
+          [styles['product__line-dark']]: theme === Theme.Dark,
+        })}
+      ></div>
       <div className={styles.product__details}>
         <div className={styles.product__detail}>
-          <p className={cn(styles['product__detail--name'])}>Screen</p>
-          <p className={cn(styles['product__detail--value'])}>
+          <p
+            className={cn({
+              [styles['product__detail-name']]: theme === Theme.Light,
+              [styles['product__detail-name-dark']]: theme === Theme.Dark,
+            })}
+          >
+            Screen
+          </p>
+          <p
+            className={cn({
+              [styles['product__detail-value']]: theme === Theme.Light,
+              [styles['product__detail-value-dark']]: theme === Theme.Dark,
+            })}
+          >
             {product.screen}
           </p>
         </div>
 
         <div className={styles.product__detail}>
-          <p className={cn(styles['product__detail--name'])}>Capacity</p>
-          <p className={cn(styles['product__detail--value'])}>
+          <p
+            className={cn({
+              [styles['product__detail-name']]: theme === Theme.Light,
+              [styles['product__detail-name-dark']]: theme === Theme.Dark,
+            })}
+          >
+            Capacity
+          </p>
+          <p
+            className={cn({
+              [styles['product__detail-value']]: theme === Theme.Light,
+              [styles['product__detail-value-dark']]: theme === Theme.Dark,
+            })}
+          >
             {product.capacity}
           </p>
         </div>
 
         <div className={styles.product__detail}>
-          <p className={cn(styles['product__detail--name'])}>RAM</p>
-          <p className={cn(styles['product__detail--value'])}>{product.ram}</p>
+          <p
+            className={cn({
+              [styles['product__detail-name']]: theme === Theme.Light,
+              [styles['product__detail-name-dark']]: theme === Theme.Dark,
+            })}
+          >
+            RAM
+          </p>
+          <p
+            className={cn({
+              [styles['product__detail-value']]: theme === Theme.Light,
+              [styles['product__detail-value-dark']]: theme === Theme.Dark,
+            })}
+          >
+            {product.ram}
+          </p>
         </div>
 
         <div>

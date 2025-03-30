@@ -8,11 +8,25 @@
   display: flex;
   flex-direction: column;
 
+  @include mixin.on-mobile {
+    min-height: calc(100vh - 257px - 49px);
+  }
+
+  @include mixin.on-tablet {
+    min-height: calc(100vh - 135px - 49px);
+  }
+
+  @include mixin.on-tablet-2 {
+    min-height: calc(100vh - 135px - 49px);
+  }
+
+  @include mixin.on-desktop {
+    min-height: calc(100vh - 135px - 65px);
+  }
+
   &__content {
     margin: 0 auto;
     width: 100%;
-
-    @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
   }
 
   &__title {
@@ -31,8 +45,30 @@
     }
   }
 
+  &__title-dark {
+    color: var.$dark-white;
+
+    @include mixin.on-mobile {
+      @include mixin.h1-mobile;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h1-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h1-desktop-tablet;
+    }
+  }
+
   &__amount {
     color: var.$secondary-gray;
+
+    @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
+  }
+
+  &__amount-dark {
+    color: var.$dark-secondary-gray;
 
     @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
   }

@@ -28,7 +28,7 @@
     }
   }
 
-  &__title--dark {
+  &__title-dark {
     color: var.$dark-white;
     text-align: center;
 
@@ -67,7 +67,7 @@
     }
   }
 
-  &__button--dark {
+  &__button-dark {
     @include mixin.sizes(32px, 32px);
     @include mixin.flex(flex, center, center, false);
 

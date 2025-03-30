@@ -30,7 +30,8 @@ export const BackLink = () => {
 
       <Link
         to={''}
-        className={cn(styles.back__link, {
+        className={cn({
+          [styles.back__link]: theme === Theme.Light,
           [styles['back__link--dark']]: theme === Theme.Dark,
         })}
         onClick={handleBack}

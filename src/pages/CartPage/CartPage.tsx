@@ -1,15 +1,18 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useContext, useState } from 'react';
+import cn from 'classnames';
+import styles from './CartPage.module.scss';
 import { BackLink } from '../../components/BackLink';
 import { CartItem } from '../../components/CartItem';
-import styles from './CartPage.module.scss';
-import { CartContext } from '../../store/CartContext';
-import empty from '/img/cart-is-empty.png';
 import { ModalDialog } from '../../components/ModalDialog';
+import { CartContext } from '../../store/CartContext';
+import { ThemeContext } from '../../store/ThemeContex';
+import { Theme } from '../../types/Theme';
+import empty from '/img/cart-is-empty.png';
 
 export const CartPage = () => {
   const { cartProducts } = useContext(CartContext);
-
+  const { theme } = useContext(ThemeContext);
   const [modalDialog, setModalDialog] = useState(false);
 
   const totalPrice = cartProducts.reduce((total, item) => {
@@ -25,7 +28,14 @@ export const CartPage = () => {
       <div className={styles['cart__btn-back']}>
         <BackLink />
       </div>
-      <h1 className={styles.cart__title}>Cart</h1>
+      <h1
+        className={cn({
+          [styles.cart__title]: theme === Theme.Light,
+          [styles['cart__title-dark']]: theme === Theme.Dark,
+        })}
+      >
+        Cart
+      </h1>
 
       {cartProducts.length > 0 ? (
         <div className={styles.cart__content}>
@@ -38,14 +48,39 @@ export const CartPage = () => {
               );
             })}
           </ul>
-          <div className={styles.cart__right}>
-            <p className={styles['cart__total-price']}>{`$${totalPrice}`}</p>
-            <p className={styles['cart__total-text']}>
+          <div
+            className={cn({
+              [styles.cart__right]: theme === Theme.Light,
+              [styles['cart__right-dark']]: theme === Theme.Dark,
+            })}
+          >
+            <p
+              className={cn({
+                [styles['cart__total-price']]: theme === Theme.Light,
+                [styles['cart__total-price-dark']]: theme === Theme.Dark,
+              })}
+            >
+              {`$${totalPrice}`}
+            </p>
+            <p
+              className={cn({
+                [styles['cart__total-text']]: theme === Theme.Light,
+                [styles['cart__total-text-dark']]: theme === Theme.Dark,
+              })}
+            >
               {`Total for ${totalQuantities} item${cartProducts.length === 1 ? '' : 's'}`}
             </p>
-            <div className={styles.cart__line}></div>
+            <div
+              className={cn({
+                [styles.cart__line]: theme === Theme.Light,
+                [styles['cart__line-dark']]: theme === Theme.Dark,
+              })}
+            ></div>
             <button
-              className={styles.cart__button}
+              className={cn({
+                [styles.cart__button]: theme === Theme.Light,
+                [styles['cart__button-dark']]: theme === Theme.Dark,
+              })}
               onClick={() => setModalDialog(true)}
             >
               Checkout

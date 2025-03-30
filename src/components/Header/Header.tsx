@@ -1,18 +1,19 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import cn from 'classnames';
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
 import { ShoppingCart } from '../ShoppingCart';
 import { Favourites } from '../Favourites';
-
-import styles from './Header.module.scss';
-import menu from '../../images/icons/menu_burger.svg';
-import close from '../../images/icons/close.svg';
 import { ThemeToggler } from '../ThemeToggler';
 import { ThemeContext } from '../../store/ThemeContex';
 import { Theme } from '../../types/Theme';
+import styles from './Header.module.scss';
+import menu from '../../images/icons/menu_burger.svg';
+import menu_dark from '../../images/icons/menu_for_dark.svg';
+import close from '../../images/icons/close.svg';
+import close_dark from '../../images/icons/close_for_dark.svg';
 
 export const Header = () => {
   const { pathname } = useLocation();
@@ -47,7 +48,10 @@ export const Header = () => {
 
   return (
     <nav
-      className={theme === Theme.Light ? styles.header : styles['header--dark']}
+      className={cn({
+        [styles.header]: theme === Theme.Light,
+        [styles['header--dark']]: theme === Theme.Dark,
+      })}
     >
       <div className={styles.header__container}>
         <div className={styles.header__left}>
@@ -59,21 +63,31 @@ export const Header = () => {
           <ThemeToggler className={styles.header__toggler} />
           {openMenu ? (
             <button
-              className={styles['header__menu-btn']}
+              className={cn({
+                [styles['header__menu-btn']]: theme === Theme.Light,
+                [styles['header__menu-btn-dark']]: theme === Theme.Dark,
+              })}
               onClick={handleCloseMenu}
             >
-              <img src={close} className={styles.header__image} />
+              <img
+                src={theme === Theme.Light ? close : close_dark}
+                alt="cross"
+                className={styles.header__image}
+              />
             </button>
           ) : (
             <button
-              className={
-                theme === Theme.Light
-                  ? styles['header__menu-btn']
-                  : styles['header__menu-btn--dark']
-              }
+              className={cn({
+                [styles['header__menu-btn']]: theme === Theme.Light,
+                [styles['header__menu-btn-dark']]: theme === Theme.Dark,
+              })}
               onClick={handleOpenMenu}
             >
-              <img src={menu} className={styles.header__image} />
+              <img
+                src={theme === Theme.Light ? menu : menu_dark}
+                alt="burger"
+                className={styles.header__image}
+              />
             </button>
           )}
 

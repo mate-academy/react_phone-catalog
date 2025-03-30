@@ -8,10 +8,22 @@
   flex-direction: column;
 
   @include mixin.on-mobile {
+    min-height: calc(100vh - 257px - 49px);
     padding: 24px 20px 34px;
   }
 
   @include mixin.on-tablet {
+    min-height: calc(100vh - 135px - 49px);
+    padding: 24px 20px 34px;
+  }
+
+  @include mixin.on-tablet-2 {
+    min-height: calc(100vh - 135px - 49px);
+    padding: 24px 20px 34px;
+  }
+
+  @include mixin.on-desktop {
+    min-height: calc(100vh - 135px - 65px);
     padding: 24px 32px 64px;
   }
 
@@ -48,25 +60,55 @@
     @include mixin.on-desktop {
       @include mixin.h1-desktop-tablet;
     }
+  }
 
-    &--dark {
-      color: var.$dark-white;
+  &__title-dark {
+    color: var.$dark-white;
+
+    @include mixin.on-mobile {
+      @include mixin.h1-mobile;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h1-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h1-desktop-tablet;
     }
   }
 
   &__amount {
     color: var.$secondary-gray;
+  }
 
-    &--dark {
-      color: var.$dark-secondary-gray;
-    }
+  &__amount-dark {
+    color: var.$dark-secondary-gray;
   }
 
   &__filters {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    justify-content: space-between;
 
-    @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
+    @include mixin.on-mobile {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    @include mixin.on-tablet {
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    @include mixin.on-tablet-2 {
+      width: 65%;
+      margin-bottom: 24px;
+    }
+
+    @include mixin.on-desktop {
+      width: 50%;
+      margin-bottom: 32px;
+    }
   }
 }

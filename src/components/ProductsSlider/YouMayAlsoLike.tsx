@@ -65,7 +65,7 @@ export const YouMayAlsoLike: React.FC<Props> = ({ products, title }) => {
           <h2
             className={cn({
               [styles['product-slider__title']]: theme === Theme.Light,
-              [styles['product-slider__title--dark']]: theme === Theme.Dark,
+              [styles['product-slider__title-dark']]: theme === Theme.Dark,
             })}
           >
             {title}
@@ -77,8 +77,8 @@ export const YouMayAlsoLike: React.FC<Props> = ({ products, title }) => {
               className={cn({
                 [styles['product-slider__button']]: theme === Theme.Light,
                 [styles['product-slider__button--prev']]: theme === Theme.Light,
-                [styles['product-slider__button--dark']]: theme === Theme.Dark,
-                [styles['product-slider__button--dark--prev']]:
+                [styles['product-slider__button-dark']]: theme === Theme.Dark,
+                [styles['product-slider__button-dark--prev']]:
                   theme === Theme.Dark,
               })}
             >
@@ -101,8 +101,8 @@ export const YouMayAlsoLike: React.FC<Props> = ({ products, title }) => {
               className={cn({
                 [styles['product-slider__button']]: theme === Theme.Light,
                 [styles['product-slider__button--next']]: theme === Theme.Light,
-                [styles['product-slider__button--dark']]: theme === Theme.Dark,
-                [styles['product-slider__button--dark--next']]:
+                [styles['product-slider__button-dark']]: theme === Theme.Dark,
+                [styles['product-slider__button-dark--next']]:
                   theme === Theme.Dark,
               })}
             >

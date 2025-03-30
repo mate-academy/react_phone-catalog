@@ -6,30 +6,44 @@
     color: var.$primary-gray;
     text-align: left;
 
-    @include mixin.responsive-property(margin-bottom, 32px, 32px, 40px);
-    @include mixin.h2-mobile;
+    @include mixin.on-mobile {
+      margin-bottom: 32px;
+
+      @include mixin.h2-mobile;
+    }
 
     @include mixin.on-tablet {
+      margin-bottom: 32px;
+
       @include mixin.h2-desktop-tablet;
     }
 
     @include mixin.on-desktop {
+      margin-bottom: 40px;
+
       @include mixin.h2-desktop-tablet;
     }
   }
 
-  &__title--dark {
+  &__title-dark {
     color: var.$dark-white;
     text-align: left;
 
-    @include mixin.responsive-property(margin-bottom, 32px, 32px, 40px);
-    @include mixin.h2-mobile;
+    @include mixin.on-mobile {
+      margin-bottom: 32px;
+
+      @include mixin.h2-mobile;
+    }
 
     @include mixin.on-tablet {
+      margin-bottom: 32px;
+
       @include mixin.h2-desktop-tablet;
     }
 
     @include mixin.on-desktop {
+      margin-bottom: 40px;
+
       @include mixin.h2-desktop-tablet;
     }
   }
@@ -78,15 +92,26 @@
     }
   }
 
-  &__name--dark {
+  &__name-dark {
     @include mixin.h4-desktop-tablet;
 
     color: var.$dark-white;
+    transition: text-decoration 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__amount {
     @include mixin.body-text-desktop-tablet;
 
     color: var.$secondary-gray;
+  }
+
+  &__amount-dark {
+    @include mixin.body-text-desktop-tablet;
+
+    color: var.$dark-secondary-gray;
   }
 }

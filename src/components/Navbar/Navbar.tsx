@@ -21,12 +21,11 @@ export const Navbar: React.FC<Props> = ({ className }) => {
 
   const getActiveLink = ({ isActive }: { isActive: boolean }) =>
     cn(
-      styles.navbar__item,
       {
-        [styles['navbar__item--dark']]: theme === Theme.Dark,
+        [styles.navbar__item]: theme === Theme.Light,
         [styles['navbar__item--active']]: theme === Theme.Light && isActive,
-        [styles['navbar__item--dark--active']]:
-          theme === Theme.Dark && isActive,
+        [styles['navbar__item-dark']]: theme === Theme.Dark,
+        [styles['navbar__item-dark--active']]: theme === Theme.Dark && isActive,
       },
       className,
     );

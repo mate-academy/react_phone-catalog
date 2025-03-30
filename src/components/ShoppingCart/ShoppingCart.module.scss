@@ -48,7 +48,7 @@
     }
   }
 
-  &__item--dark {
+  &__item-dark {
     position: relative;
 
     @include mixin.on-mobile {
@@ -63,7 +63,7 @@
       @include mixin.sizes(48px, 48px);
       @include mixin.flex(flex, center, center, false);
 
-      border-left: var.$dark-surface-2;
+      border-left: solid 0.5px var.$dark-surface-2;
       border-top: 0;
     }
 

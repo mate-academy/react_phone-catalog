@@ -93,15 +93,17 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
         </div>
         <div className={styles.catalog__titles}>
           <h1
-            className={cn(styles.catalog__title, {
-              [styles['catalog__title--dark']]: theme === Theme.Dark,
+            className={cn({
+              [styles.catalog__title]: theme === Theme.Light,
+              [styles['catalog__title-dark']]: theme === Theme.Dark,
             })}
           >
             {title}
           </h1>
           <p
-            className={cn(styles.catalog__amount, {
-              [styles['catalog__amount--dark']]: theme === Theme.Dark,
+            className={cn({
+              [styles.catalog__amount]: theme === Theme.Light,
+              [styles['catalog__amount-dark']]: theme === Theme.Dark,
             })}
           >
             {products.length} models

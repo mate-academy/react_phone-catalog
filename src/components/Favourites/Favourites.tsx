@@ -21,10 +21,14 @@ export const Favourites: React.FC<Props> = ({ className }) => {
       to="/favourites"
       className={({ isActive }) =>
         cn(
-          theme === Theme.Light
-            ? styles.favourites__item
-            : styles['favourites__item--dark'],
-          { [styles['favourites__item--active']]: isActive },
+          {
+            [styles.favourites__item]: theme === Theme.Light,
+            [styles['favourites__item--active']]:
+              isActive && theme === Theme.Light,
+            [styles['favourites__item-dark']]: theme === Theme.Dark,
+            [styles['favourites__item-dark--active']]:
+              isActive && theme === Theme.Dark,
+          },
           className,
         )
       }

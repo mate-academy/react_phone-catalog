@@ -1,5 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Theme } from '../types/Theme';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type Context = {
   theme: Theme;
@@ -20,13 +21,11 @@ type Props = {
 };
 
 export const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(Theme.Light);
+  const [theme, setTheme] = useLocalStorage<Theme>('theme', Theme.Light);
 
-  const toggleTheme = () => {
-    setTheme(prevTheme =>
-      prevTheme === Theme.Light ? Theme.Dark : Theme.Light,
-    );
-  };
+  const toggleTheme = useCallback(() => {
+    setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light);
+  }, [theme, setTheme]);
 
   const value = useMemo(
     () => ({
@@ -34,7 +33,7 @@ export const ThemeProvider: React.FC<Props> = ({ children }) => {
       setTheme,
       toggleTheme,
     }),
-    [theme, setTheme],
+    [theme, setTheme, toggleTheme],
   );
 
   return (

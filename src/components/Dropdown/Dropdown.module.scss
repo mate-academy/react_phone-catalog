@@ -17,9 +17,9 @@
 
   &__button {
     @include mixin.on-mobile {
-      @include mixin.sizes(148px, 40px);
+      @include mixin.sizes(140px, 40px);
 
-      padding: 8px;
+      padding: 5px;
     }
 
     @include mixin.on-tablet {
@@ -42,6 +42,12 @@
     &:focus {
       border: 1px solid var.$primary-gray;
     }
+
+    &--dark {
+      background-color: var.$dark-surface-2;
+      border: 1px solid var.$dark-surface-1;
+      color: var.$dark-white;
+    }
   }
 
   &__img {
@@ -56,8 +62,13 @@
     background-color: var.$white;
     z-index: 2;
 
+    &--dark {
+      border: 1px solid var.$dark-surface-1;
+      background-color: var.$dark-surface-2;
+    }
+
     @include mixin.on-mobile {
-      width: 148px;
+      width: 145px;
       padding: 8px;
     }
 
@@ -87,6 +98,28 @@
     &--active {
       color: var.$primary-gray;
       cursor: default;
+    }
+  }
+
+  &__item-dark {
+    color: var.$dark-secondary-gray;
+    padding-bottom: 12px;
+    cursor: pointer;
+    transition:
+      color 0.3s,
+      transform 0.3s;
+
+    &:hover {
+      color: var.$dark-icons-placeholders;
+    }
+
+    &:focus {
+      color: var.$dark-icons-placeholders;
+      transform: scale(1.05);
+    }
+
+    &--active {
+      color: var.$dark-white;
     }
   }
 }

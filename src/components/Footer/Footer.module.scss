@@ -24,8 +24,28 @@
     padding: 32px 25px 32px 0;
   }
 
-  &--dark {
+  &-dark {
+    box-sizing: border-box;
     border-top: solid 0.5px var.$dark-surface-2;
+    width: 100%;
+
+    @include mixin.on-mobile {
+      @include mixin.flex(flex, false, false, column);
+
+      padding: 25px 0 32px;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.flex(flex, center, space-between, row);
+
+      padding: 32px 25px 32px 0;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.flex(flex, center, space-between, row);
+
+      padding: 32px 25px 32px 0;
+    }
   }
 
   &__link_container {
@@ -67,9 +87,31 @@
     @include mixin.on-desktop {
       padding-right: 36px;
     }
+  }
 
-    &--dark {
-      color: var.$dark-white;
+  &__item-dark {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var.$dark-white;
+    transition: text-decoration 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include mixin.uppercase-desktop-tablet;
+
+    @include mixin.on-mobile {
+      padding: 0;
+    }
+
+    @include mixin.on-tablet {
+      padding-right: 24px;
+    }
+
+    @include mixin.on-desktop {
+      padding-right: 36px;
     }
   }
 
@@ -90,9 +132,18 @@
     &:hover {
       @include mixin.hover-effect;
     }
+  }
 
-    &--dark {
-      color: var.$dark-secondary-gray;
+  &__text-dark {
+    @include mixin.small-text-desktop-tablet;
+
+    color: var.$dark-secondary-gray;
+    margin-right: 16px;
+    transition: transform 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      @include mixin.hover-effect;
     }
   }
 
@@ -108,22 +159,27 @@
     &:hover {
       border: 1px solid var.$primary-gray;
     }
+  }
 
-    &--dark {
-      background-color: var.$dark-surface-2;
-      border: 1px solid var.$dark-surface-2;
+  &__button-dark {
+    @include mixin.sizes(32px, 32px);
+    @include mixin.flex(flex, center, center, false);
 
-      &:hover {
-        border: 1px solid var.$dark-icons-placeholders;
-        background-color: var.$dark-icons-placeholders;
-      }
+    background-color: var.$dark-surface-2;
+    border: 1px solid var.$dark-surface-2;
+    transition: border 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var.$dark-icons-placeholders;
+      background-color: var.$dark-icons-placeholders;
     }
   }
 
   &__image {
     @include mixin.sizes(16px, 16px);
 
-    color: var.$primary-gray;
+    color: var.$secondary-gray;
     transition: transform 0.3s;
 
     &:hover {

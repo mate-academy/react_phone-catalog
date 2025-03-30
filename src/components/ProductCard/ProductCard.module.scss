@@ -13,11 +13,15 @@
   transition: box-shadow 0.3s;
 
   @include mixin.on-mobile {
-    @include mixin.sizes(287px, 440px);
+    width: 100%;
+    max-width: 320px;
+    height: 440px;
   }
 
   @include mixin.on-tablet {
-    @include mixin.sizes(272px, 506px);
+    width: 100%;
+    max-width: 320px;
+    height: 506px;
   }
 
   @include mixin.on-desktop {
@@ -75,7 +79,7 @@
     }
   }
 
-  &__name--dark {
+  &__name-dark {
     @include mixin.body-text-desktop-tablet;
 
     font-size: 16px;
@@ -96,7 +100,27 @@
   }
 
   &__price {
-    @include mixin.h3-mobile;
+    color: var.$primary-gray;
+
+    @include mixin.on-mobile {
+      @include mixin.h3-mobile;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h3-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h3-desktop-tablet;
+    }
+  }
+
+  &__price-dark {
+    color: var.$dark-white;
+
+    @include mixin.on-mobile {
+      @include mixin.h3-mobile;
+    }
 
     @include mixin.on-tablet {
       @include mixin.h3-desktop-tablet;
@@ -111,7 +135,26 @@
     color: var.$secondary-gray;
     text-decoration: line-through;
 
-    @include mixin.h3-mobile;
+    @include mixin.on-mobile {
+      @include mixin.h3-mobile;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h3-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h3-desktop-tablet;
+    }
+  }
+
+  &__fullPrice-dark {
+    color: var.$dark-secondary-gray;
+    text-decoration: line-through;
+
+    @include mixin.on-mobile {
+      @include mixin.h3-mobile;
+    }
 
     @include mixin.on-tablet {
       @include mixin.h3-desktop-tablet;
@@ -126,8 +169,16 @@
     display: block;
     width: 100%;
     height: 1px;
-    margin-bottom: 2px;
+    padding: 1px;
     background-color: var.$elements;
+  }
+
+  &__line-dark {
+    display: block;
+    width: 100%;
+    height: 1px;
+    padding-bottom: 1px;
+    background-color: var.$dark-elements;
   }
 
   &__details {
@@ -142,21 +193,34 @@
     @include mixin.flex(flex, space-between, false, false);
 
     width: 100%;
+  }
 
-    &--name {
-      color: var.$secondary-gray;
-      text-align: left;
-      flex: 1;
-    }
+  &__detail-name {
+    color: var.$secondary-gray;
+    text-align: left;
+    flex: 1;
+  }
 
-    &--value {
-      text-align: right;
-      flex: 2;
-    }
+  &__detail-name-dark {
+    color: var.$dark-secondary-gray;
+    text-align: left;
+    flex: 1;
+  }
+
+  &__detail-value {
+    color: var.$primary-gray;
+    text-align: right;
+    flex: 2;
+  }
+
+  &__detail-value-dark {
+    color: var.$dark-white;
+    text-align: right;
+    flex: 2;
   }
 }
 
-.product--dark {
+.product-dark {
   @include mixin.flex(flex, false, space-between, column);
   @include mixin.responsive-property(padding, 24px, 24px, 32px);
 
@@ -164,19 +228,24 @@
   margin: 0 auto;
   border: solid 1px var.$dark-surface-1;
   color: var.$dark-white;
+  background-color: var.$dark-surface-1;
   gap: 8px;
   transition: box-shadow 0.3s;
 
   @include mixin.on-mobile {
-    @include mixin.sizes(287px, 440px);
+    width: 100%;
+    max-width: 320px;
+    height: 440px;
   }
 
   @include mixin.on-tablet {
-    @include mixin.sizes(272px, 506px);
+    width: 100%;
+    max-width: 320px;
+    height: 508px;
   }
 
   @include mixin.on-desktop {
-    @include mixin.sizes(272px, 506px);
+    @include mixin.sizes(272px, 508px);
   }
 
   &:hover {

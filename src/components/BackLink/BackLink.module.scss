@@ -27,6 +27,7 @@
     }
 
     &--dark {
+      text-decoration: none;
       color: var.$dark-white;
 
       &:hover {

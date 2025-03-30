@@ -26,6 +26,30 @@
     }
   }
 
+  &__container--dark {
+    background-color: var.$dark-surface-2;
+    border: 1px solid var.$dark-surface-1;
+    color: var.$dark-white;
+
+    @include mixin.on-mobile {
+      display: none;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.flex(flex, false, space-between, false);
+      @include mixin.sizes(176px, 40px);
+
+      padding: 10px;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.flex(flex, false, space-between, false);
+      @include mixin.sizes(176px, 40px);
+
+      padding: 10px;
+    }
+  }
+
   &__title {
     @include mixin.on-mobile {
       display: none;

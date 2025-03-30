@@ -21,6 +21,27 @@
   color: var.$white;
   border: 1px solid var.$primary-gray;
 
+  &--dark {
+    position: fixed;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 40px;
+    gap: 24px;
+
+    min-width: 320px;
+    max-width: 650px;
+    height: 200px;
+
+    @include mixin.flex(flex, center, center, column);
+
+    background-color: var.$dark-accent;
+    color: var.$dark-white;
+    border: 1px solid var.$dark-accent;
+  }
+
   &__close {
     @include mixin.sizes(24px, 24px);
     @include mixin.flex(flex, center, center, false);
@@ -62,5 +83,13 @@
 
   &__text {
     @include mixin.h3-desktop-tablet;
+
+    color: var.$white;
+  }
+
+  &__text-dark {
+    @include mixin.h3-desktop-tablet;
+
+    color: var.$dark-white;
   }
 }

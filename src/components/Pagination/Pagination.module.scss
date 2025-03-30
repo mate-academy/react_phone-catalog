@@ -25,6 +25,15 @@
     }
   }
 
+  &__button--dark {
+    background-color: var.$dark-surface-2;
+    border: 1px solid var.$dark-surface-2;
+    color: var.$dark-white;
+
+    @include mixin.sizes(32px, 32px);
+    @include mixin.flex(flex, center, center, false);
+  }
+
   &__item {
     @include mixin.body-text-desktop-tablet;
 
@@ -33,6 +42,16 @@
     &--active {
       background-color: var.$primary-gray;
       color: var.$white;
+    }
+
+    &--dark {
+      background-color: var.$dark-surface-1;
+      color: var.$dark-white;
+      border: transparent;
+
+      &--active {
+        background-color: var.$dark-accent;
+      }
     }
   }
 

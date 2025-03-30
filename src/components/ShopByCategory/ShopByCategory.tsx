@@ -56,8 +56,9 @@ export const ShopByCategory = () => {
   return (
     <React.Fragment>
       <h2
-        className={cn(styles.category__title, {
-          [styles['category__title--dark']]: theme === Theme.Dark,
+        className={cn({
+          [styles.category__title]: theme === Theme.Light,
+          [styles['category__title-dark']]: theme === Theme.Dark,
         })}
       >
         Shop by category
@@ -76,13 +77,19 @@ export const ShopByCategory = () => {
                 className={styles.category__image}
               />
               <h4
-                className={cn(styles.category__name, {
-                  [styles['category__name--dark']]: theme === Theme.Dark,
+                className={cn({
+                  [styles.category__name]: theme === Theme.Light,
+                  [styles['category__name-dark']]: theme === Theme.Dark,
                 })}
               >
                 {link.name}
               </h4>
-              <p className={styles.category__amount}>
+              <p
+                className={cn({
+                  [styles.category__amount]: theme === Theme.Light,
+                  [styles['category__amount-dark']]: theme === Theme.Dark,
+                })}
+              >
                 {`${link.amount} models`}
               </p>
             </div>

@@ -29,8 +29,10 @@ export const Buttons: React.FC<Props> = ({ product }) => {
       <div className={styles.button}>
         <button
           onClick={() => addToCart(product)}
-          className={cn(styles.button__add, {
-            [styles['button__add--active']]: isCartProducts,
+          className={cn({
+            [styles.button__add]: theme === Theme.Light,
+            [styles['button__add--active']]:
+              theme === Theme.Light && isCartProducts,
             [styles['button__add--dark']]: theme === Theme.Dark,
             [styles['button__add--dark--active']]:
               isCartProducts && theme === Theme.Dark,
@@ -40,9 +42,11 @@ export const Buttons: React.FC<Props> = ({ product }) => {
         </button>
 
         <button
-          className={cn(styles.button__fav, {
+          className={cn({
+            [styles.button__fav]: theme === Theme.Light,
             [styles['button__fav--dark']]: theme === Theme.Dark,
-            [styles['button__fav--active']]: isFavourite,
+            [styles['button__fav--active']]:
+              isFavourite && theme === Theme.Light,
             [styles['button__fav--dark--active']]:
               isFavourite && theme === Theme.Dark,
           })}

@@ -21,10 +21,13 @@ export const ShoppingCart: React.FC<Props> = ({ className }) => {
       to="/cart"
       className={({ isActive }) =>
         cn(
-          theme === Theme.Light
-            ? styles.cart__item
-            : styles['cart__item--dark'],
-          { [styles['cart__item--active']]: isActive },
+          {
+            [styles.cart__item]: theme === Theme.Light,
+            [styles['cart__item--active']]: isActive && theme === Theme.Light,
+            [styles['cart__item-dark']]: theme === Theme.Dark,
+            [styles['cart__item-dark--active']]:
+              isActive && theme === Theme.Dark,
+          },
           className,
         )
       }

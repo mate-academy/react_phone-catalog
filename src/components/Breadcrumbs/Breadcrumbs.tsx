@@ -57,7 +57,7 @@ export const Breadcrumbs: React.FC<Props> = ({ gadget }) => {
           <>
             <div className={styles.breadcrumbs__arrow}>
               <img
-                src={arrow}
+                src={theme === Theme.Light ? arrow : arrowDark}
                 alt="arrow"
                 className={styles.breadcrumbs__img}
               />

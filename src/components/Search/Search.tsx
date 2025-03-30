@@ -1,10 +1,13 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { debounce } from 'lodash';
-
 import styles from './Search.module.scss';
-
 import close from '../../images/icons/close.svg';
+import closeDark from '../../images/icons/close_for_dark.svg';
 import search from '../../images/icons/search.svg';
+import searchDark from '../../images/icons/search_for_dark.svg';
+import { ThemeContext } from '../../store/ThemeContex';
+import cn from 'classnames';
+import { Theme } from '../../types/Theme';
 
 type Props = {
   query: string;
@@ -21,6 +24,8 @@ export const Search: React.FC<Props> = ({
   searchParams,
   setSearchParams,
 }) => {
+  const { theme } = useContext(ThemeContext);
+
   const debouncedQuery = useMemo(() => {
     const debounced = debounce((value: string) => {
       const trimmedValue = value.trim();
@@ -57,7 +62,12 @@ export const Search: React.FC<Props> = ({
   return (
     <div className={styles.search}>
       <p className={styles.search__title}>Search</p>
-      <div className={styles.search__container}>
+      <div
+        className={cn({
+          [styles.search__container]: theme === Theme.Light,
+          [styles['search__container--dark']]: theme === Theme.Dark,
+        })}
+      >
         <input
           value={query}
           onChange={handleQueryChange}
@@ -68,10 +78,18 @@ export const Search: React.FC<Props> = ({
 
         {query.length > 0 ? (
           <button onClick={clearQuery} className={styles.search__button}>
-            <img className={styles.search__img} src={close} alt="Cross" />
+            <img
+              className={styles.search__img}
+              src={theme === Theme.Dark ? closeDark : close}
+              alt="Cross"
+            />
           </button>
         ) : (
-          <img className={styles.search__img} src={search} alt="Search" />
+          <img
+            className={styles.search__img}
+            src={theme === Theme.Dark ? searchDark : search}
+            alt="Search"
+          />
         )}
       </div>
     </div>

@@ -15,8 +15,11 @@
     @include mixin.flex(flex, center, false, column);
 
     gap: 1rem;
-    margin-top: 32px;
     flex: 1 1 auto;
+
+    @include mixin.on-mobile {
+      padding-top: 60px;
+    }
   }
 
   &__bottom {

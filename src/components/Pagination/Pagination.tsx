@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import styles from './Pagination.module.scss';
 import arrowLeft from '../../images/icons/arrow_left.svg';
+import arrowLeftLight from '../../images/icons/arrow_left_for_dark.svg';
 import arrowLeftDis from '../../images/icons/arrow_left_dis.png';
 import arrowRight from '../../images/icons/arrow_right.svg';
+import arrowRightLight from '../../images/icons/arrow_right_for_dark.svg';
 import arrowRightDis from '../../images/icons/arrow_right_dis.png';
 import { handleClickToTop } from '../../helpers/scrollToTop';
+import { ThemeContext } from '../../store/ThemeContex';
+import { Theme } from '../../types/Theme';
 
 type Props = {
   countPages: number[];
@@ -20,6 +24,7 @@ export const Pagination: React.FC<Props> = ({
   setPage = () => {},
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { theme } = useContext(ThemeContext);
 
   const MAX_VISIBLE_PAGES = 5;
 
@@ -57,12 +62,21 @@ export const Pagination: React.FC<Props> = ({
     <section className={styles.pagination}>
       <div className={styles.pagination__container}>
         <button
-          className={styles.pagination__button}
+          className={cn({
+            [styles.pagination__button]: theme === Theme.Light,
+            [styles['pagination__button--dark']]: theme === Theme.Dark,
+          })}
           onClick={prevPage}
           disabled={disabledLeft}
         >
           <img
-            src={disabledLeft ? arrowLeftDis : arrowLeft}
+            src={
+              disabledLeft
+                ? arrowLeftDis
+                : theme === Theme.Dark
+                  ? arrowLeftLight
+                  : arrowLeft
+            }
             alt="arrow"
             className={styles.pagination__img}
           />
@@ -71,8 +85,12 @@ export const Pagination: React.FC<Props> = ({
         {visiblePages.map(item => (
           <button
             key={item}
-            className={cn(styles.pagination__button, styles.pagination__item, {
+            className={cn(styles.pagination__button, {
+              [styles.pagination__item]: theme === Theme.Light,
+              [styles['pagination__item--dark']]: theme === Theme.Dark,
               [styles['pagination__item--active']]: page === item,
+              [styles['pagination__item--dark--active']]:
+                page === item && theme === Theme.Dark,
             })}
             onClick={() => changePage(item)}
           >
@@ -81,12 +99,21 @@ export const Pagination: React.FC<Props> = ({
         ))}
 
         <button
-          className={styles.pagination__button}
+          className={cn({
+            [styles.pagination__button]: theme === Theme.Light,
+            [styles['pagination__button--dark']]: theme === Theme.Dark,
+          })}
           onClick={nextPage}
           disabled={disabledRight}
         >
           <img
-            src={disabledRight ? arrowRightDis : arrowRight}
+            src={
+              disabledRight
+                ? arrowRightDis
+                : theme === Theme.Dark
+                  ? arrowRightLight
+                  : arrowRight
+            }
             alt="arrow"
             className={styles.pagination__img}
           />

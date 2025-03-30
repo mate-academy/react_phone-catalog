@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 
 import styles from './Dropdown.module.scss';
 import arrowDown from '../../images/icons/arrow_down.png';
 import arrowUp from '../../images/icons/arrow_up.svg';
+import { ThemeContext } from '../../store/ThemeContex';
+import { Theme } from '../../types/Theme';
 
 type Props = {
   name: string;
@@ -23,6 +25,7 @@ export const Dropdown: React.FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const paramValue = searchParams.get(paramName) || defaultValue;
   const [selectedOption, setSelectedOption] = useState(paramValue);
+  const { theme } = useContext(ThemeContext);
 
   const activeOption =
     options.find(option => option === selectedOption) || options[0];
@@ -62,7 +65,9 @@ export const Dropdown: React.FC<Props> = ({
         <p className={styles.dropdown__name}>{name}</p>
         <button
           ref={dropdownRef}
-          className={styles.dropdown__button}
+          className={cn(styles.dropdown__button, {
+            [styles['dropdown__button--dark']]: theme === Theme.Dark,
+          })}
           onClick={() => setOpenDropdown(!openDropdown)}
         >
           {selectedOption}
@@ -74,13 +79,22 @@ export const Dropdown: React.FC<Props> = ({
         </button>
 
         {openDropdown && (
-          <ul className={styles.dropdown__list}>
+          <ul
+            className={cn(styles.dropdown__list, {
+              [styles['dropdown__list--dark']]: theme === Theme.Dark,
+            })}
+          >
             {options.map(option => (
               <li
                 key={option}
                 onClick={() => selectOption(option)}
-                className={cn(styles.dropdown__item, {
-                  [styles['dropdown__item--active']]: option === activeOption,
+                className={cn({
+                  [styles.dropdown__item]: theme === Theme.Light,
+                  [styles['dropdown__item--active']]:
+                    option === activeOption && theme === Theme.Light,
+                  [styles['dropdown__item-dark']]: theme === Theme.Dark,
+                  [styles['dropdown__item-dark--active']]:
+                    option === activeOption && theme === Theme.Dark,
                 })}
               >
                 {option}
