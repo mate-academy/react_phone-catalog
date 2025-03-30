@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import styles from './ProductsList.module.scss';
 import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../../shared/components/Pagination';
@@ -30,37 +30,39 @@ export const ProductsList: React.FC<Props> = ({ itemsPerPage, items }) => {
   const sort = searchParams.get('sort');
   const perPage = searchParams.get('perPage');
 
+  const updateSearchParams = useCallback(
+    (callback: (params: URLSearchParams) => void) => {
+      setSearchParams(prevParams => {
+        const params = new URLSearchParams(prevParams);
+
+        callback(params);
+
+        return params;
+      });
+    },
+    [setSearchParams],
+  );
+
   useEffect(() => {
-    setCurrentPage(1);
     setIsLoading(true);
 
-    setSearchParams(prevParams => {
-      const params = new URLSearchParams(prevParams);
-
-      params.delete('page');
-
-      return params;
-    });
+    updateSearchParams(params => params.delete('page'));
 
     setTimeout(() => {
       setIsLoading(false);
     }, 300);
-  }, [sort, perPage, searchParams, setSearchParams]);
+  }, [sort, perPage, updateSearchParams]);
 
   const handlePageClick = (page: number) => {
     setIsLoading(true);
     setCurrentPage(page);
 
-    setSearchParams(prevParams => {
-      const params = new URLSearchParams(prevParams);
-
+    updateSearchParams(params => {
       if (page > 1) {
         params.set('page', page.toString());
       } else {
         params.delete('page');
       }
-
-      return params;
     });
 
     setTimeout(() => {
