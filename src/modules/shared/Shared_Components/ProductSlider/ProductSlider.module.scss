@@ -1,0 +1,114 @@
+.carousel {
+  @include container-margin-bottom;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: $white;
+    border: 1px solid $elements-color;
+    position: relative;
+    transition: all $primary-transition-duration;
+
+    &--skeleton {
+      @include skeleton;
+
+      &::before {
+        content: none;
+      }
+    }
+
+      &::before {
+        content: url(../../../../../public/icons/chevron_arrow_right_disabled.svg);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transition: content $primary-transition-duration;
+      }
+
+    &--left {
+      &::before {
+        top: 55%;
+        transform: translate(-56%, -50%);
+      }
+    }
+
+    &--right {
+      &::before {
+        top: 42%;
+        transform: translate(-43%, -49%) rotate(180deg);
+      }
+    }
+
+    &--active-right {
+      border: 1px solid $icons-color;
+
+      &::before {
+        content: url(../../../../../public/icons/chevron_arrow_right.svg);
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+      }
+    }
+
+    &--active-left {
+      border: 1px solid $icons-color;
+
+      &::before {
+        content: url(../../../../../public/icons/chevron_arrow_right.svg);
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+      }
+    }
+
+    @include on-desktop {
+      &:hover {
+        transform: scale(130%);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__container {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    overflow-x: scroll;
+  }
+
+  &__card-set {
+    --gallery-column-gap: 22px;
+    display: grid;
+    grid-template-rows: repeat(1, auto);
+    grid-auto-flow: column;
+    grid-column-gap: var(--gallery-column-gap);
+    column-gap: var(--gallery-column-gap);
+    grid-row-gap: 0px;
+    row-gap: 0px;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  &__card-container {
+    display: grid;
+    grid-template-rows: repeat(1, auto);
+    grid-auto-flow: column;
+    grid-column-gap: var(--gallery-column-gap);
+    column-gap: var(--gallery-column-gap);
+    grid-row-gap: 0px;
+    row-gap: 0px;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}

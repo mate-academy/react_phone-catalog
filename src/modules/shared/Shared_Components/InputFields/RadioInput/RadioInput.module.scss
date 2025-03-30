@@ -1,0 +1,28 @@
+.radio-input {
+  display: flex;
+  height: 90px;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid transparent;
+  transition: all $primary-transition-duration;
+  padding: 5px 10px;
+
+  &--is-Checked {
+    border-color: $primary-color;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-color: $primary-color;
+  }
+
+  &__text-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__text {
+    margin: 5px;
+  }
+}

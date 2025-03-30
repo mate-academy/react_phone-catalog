@@ -1,7 +1,14 @@
-import './App.scss';
+import React from 'react';
+import { Header } from './modules/Header/Components/Header/Header';
+// eslint-disable-next-line max-len
+import { AnimatedBody } from './modules/shared/Shared_Components/AnimatedComponents/AnimatedBody';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App: React.FC = () => {
+  return (
+    <div className="App">
+      <Header />
+
+      <AnimatedBody />
+    </div>
+  );
+};

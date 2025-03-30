@@ -1,0 +1,325 @@
+.checkout {
+  border: 1px solid $elements-color;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+
+  @include on-desktop {
+    display: flex;
+  }
+
+  &__data-block {
+    padding-bottom: 30px;
+    border-bottom: 1px solid $elements-color;
+
+    @include on-desktop {
+      width: 60%;
+      border-bottom: none;
+      border-right: 1px solid $elements-color;
+      padding-right: 20px;
+    }
+  }
+
+  &__customer-info {
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__log-in-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__log-in-titles {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 20px;
+  }
+
+  &__log-in-title {
+    &--is-not-active {
+      color: $elements-color;
+    }
+
+    @include on-desktop {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__log-in-info {
+    width: 70%;
+
+    @include on-tablet {
+      width: 55%;
+    }
+  }
+
+  &__inputs-block {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $elements-color;
+
+    @include on-tablet {
+      padding-bottom: 0;
+      border-bottom: none;
+      padding-right: 20px;
+      border-right: 1px solid $elements-color;
+    }
+  }
+
+  &__form-block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__info {
+    @include on-desktop {
+      width: 40%;
+      padding-left: 15px;
+    }
+  }
+
+  &__info-head {
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-block: 20px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__promo-block{
+    display: flex;
+    gap: 5px;
+  }
+
+  &__promo-input {
+    height: 48px;
+    border: 1px solid #B4BDC3;
+    width: 70%;
+    font-family: "Mont SemiBold";
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    padding-left: 15px;
+    transition: all 0.3s;
+    box-sizing: border-box;
+
+    &--is-log-in {
+      width: 100%;
+    }
+  }
+
+  &__text {
+    margin-bottom: 0px;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  &__total-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__total-text {
+    margin: 0;
+
+    &--free {
+      color: $green-color;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 48px;
+    background-color: $primary-color;
+    color: $white;
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    border: none;
+    width: 100%;
+    border: 1px solid transparent;
+    transition: all $primary-transition-duration ease-in-out;
+
+    &--google {
+      width: 70%;
+      align-self: center;
+      border: 1px solid $primary-color;
+      color: $green-color;
+      background-color: $white;
+      pointer-events: none;
+
+      @include on-tablet {
+        width: 40%;
+      }
+    }
+
+    &--promo {
+      width: 30%;
+    }
+
+    &--is-applied {
+      background-color: $white;
+      border: 1px solid $elements-color;
+      color: $green-color;
+      transition: border $primary-transition-duration ease-in-out;
+      pointer-events: none;
+    }
+
+    @include on-desktop {
+      &:hover {
+        cursor: pointer;
+        border: 1px solid $primary-color;
+        color: $green-color;
+        background-color: $white;
+      }
+    }
+  }
+
+  &__delivery-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__deliver-by-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $elements-color;
+    padding: 10px 20px;
+    transition: $primary-transition-duration;
+
+    &--is-Active {
+      border-color: $primary-color;
+    }
+
+    @include on-desktop {
+      &:hover {
+        border-color: $primary-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__delivery-banner {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+    align-items: baseline;
+    justify-content: center;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
+
+  &__deliver-top {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+  }
+
+  &__deliver-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 40px;
+      align-items: center;
+    }
+  }
+
+  &__delivery-image {
+    width: 35px;
+    height: 35px;
+    background-image: url(../../../public/icons/delivery-truck.png);
+    background-position: center;
+    background-size: contain;
+    transition: $primary-transition-duration;
+
+    &--is-Active {
+      background-image: url(../../../public/icons/delivery-truck-NP.png);
+    }
+  }
+
+  &__delivery-by-service {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__inputs-top {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include on-tablet {
+      justify-content: center;
+      flex-direction: row;
+      gap: 50px;
+    }
+
+    @include on-desktop {
+      justify-content: flex-start;
+      gap: 30px;
+    }
+  }
+
+  &__inputs-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input-field {
+    height: 43px;
+    border: 1px solid #B4BDC3;
+    font-family: "Mont SemiBold";
+    font-size: 14px;
+    color: #313237;
+    padding-left: 15px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__inputs-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__payment-options {
+    display: flex;
+    flex-direction: column;
+  }
+}

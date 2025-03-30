@@ -1,0 +1,67 @@
+.categories {
+  @include container-margin-bottom;
+
+  &__container {
+    @include pageGrid;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__text {
+    transform: 0;
+    transition: transform $primary-transition-duration ease-in-out;
+  }
+
+  &__card {
+    grid-column: span 4;
+    transform: translateY(0);
+    border-radius: 0;
+    transition: all $primary-transition-duration ease-in-out;
+
+    @include on-desktop {
+      grid-column: span 8;
+
+      &:hover {
+        transform: translateY(-5%);
+        border-radius: 2%;
+        -webkit-box-shadow: 2px 2px 5px 1px $elements-color;
+        -moz-box-shadow: 2px 2px 5px 1px $elements-color;
+        box-shadow: 2px 2px 5px 1px $elements-color;
+
+        .categories__text {
+          transform: translateX(10%);
+        }
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 288px;
+    margin-bottom: 24px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @include on-tablet {
+      height: 187px;
+    }
+
+    @include on-desktop {
+      height: 368px;
+    }
+
+    &--phones {
+      background-image: url(../../../../../public/img/categories-phones-background.svg);
+    }
+
+    &--tablets {
+      background-image: url(../../../../../public/img/categories-tablets-background.svg);
+    }
+
+    &--accessories {
+      background-image: url(../../../../../public/img/categories-accessories-background.svg);
+    }
+  }
+}

@@ -1,0 +1,110 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 16px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -1px 0 0 $elements-color;
+  gap: 24px;
+
+  @include on-tablet {
+    flex-direction: row;
+    padding: 32px 24px;
+  }
+
+  @include on-desktop-plus {
+    padding: 32px 152px;
+  }
+
+  &__logo {
+    background-image: url(../../../../public/logos/main_logo.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 89px;
+    height: 32px;
+    transform: scale(100%);
+    transition: transform, 0.3s;
+    align-self: flex-start;
+
+    @include on-desktop {
+      &:hover {
+        transform: scale(110%);
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 16px;
+    align-self: flex-start;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-self: center;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    font-family: $font-Mont_Bold;
+    color: $secondary-color;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    transition: color $primary-transition-duration;
+
+    @include on-desktop {
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__end{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__text {
+    font-family: $font-Mont_SemiBold;
+    color: $secondary-color;
+    font-size: 12px;
+    line-height: 15.34px;
+    text-align: right;
+    transition: color $primary-transition-duration;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: $white;
+    border: 1px solid $icons-color;
+    cursor: pointer;
+    background-image: url(../../../../public/icons/chevron_arrow_right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    transition: all, $primary-transition-duration;
+
+    @include on-desktop {
+      &:hover {
+        background-size: 24px;
+        border-color: $primary-color;
+      }
+
+      &:hover + .footer__text {
+          color: $primary-color;
+        }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.no-goods {
+  @include container-margin-bottom;
+
+  &__image {
+    height: 80vh;
+    background-image: url(../../../../../public/img/product-not-found.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}

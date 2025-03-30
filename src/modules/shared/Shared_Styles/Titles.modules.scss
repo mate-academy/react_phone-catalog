@@ -1,0 +1,63 @@
+.title {
+  font-family: $font-Mont_Bold;
+  color: $primary-color;
+  margin-block: 20px;
+
+  &__home--h1 {
+    margin-bottom: 20px;
+
+    @include on-tablet {
+      margin-bottom: 30px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &--h1 {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &--capitalized {
+    text-transform: capitalize;
+  }
+
+  &--h2 {
+    font-size: 22px;
+    line-height: 41px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &--h4 {
+    font-family: $font-Mont_SemiBold;
+    font-size: 16px;
+    line-height: 20px;
+
+    @include on-tablet {
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+}
+
+.body-text {
+  font-family: $font-Mont_Regular;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary-color;
+
+  &--cart {
+    color: $primary-color;
+  }
+}

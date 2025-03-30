@@ -1,0 +1,69 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  gap: 10px;
+
+  &__button-cart {
+    background-color: $primary-color;
+    color: $white;
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    border: none;
+    width: 100%;
+    transition: all $primary-transition-duration ease-in-out;
+
+    &--skeleton {
+      @include skeleton;
+      @include skeletonBoxShadow;
+      pointer-events: none;
+    }
+
+    &--is-in-cart {
+      background-color: $white;
+      border: 1px solid $elements-color;
+      color: $green-color;
+      transition: border $primary-transition-duration ease-in-out;
+      pointer-events: none;
+    }
+
+    @include on-desktop {
+      &:hover {
+        cursor: pointer;
+        border: 1px solid $primary-color;
+        color: $green-color;
+        background-color: $white;
+      }
+    }
+  }
+
+  &__button-favorites {
+        width: 45px;
+    background-color: $white;
+    background-image: url(../../../../../public/icons/favourites_heart_like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $icons-color;
+    transition: all $primary-transition-duration ease-in-out;
+
+    &--skeleton {
+      @include skeleton;
+      @include skeletonBoxShadow;
+      border: none;
+      pointer-events: none;
+    }
+
+    &--is-added {
+      background-image: url(../../../../../public/icons/favourites_filled_heart_like.svg);
+    }
+
+    @include on-desktop {
+      &:hover {
+        cursor: pointer;
+        border-color: $primary-color;
+      }
+    }
+  }
+}

@@ -1,1 +1,46 @@
 // not empty
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+ }
+
+ a {
+  text-decoration: none;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 50px;
+}
+
+.error-message {
+  display: flex
+}
+
+.container {
+  @include content-padding-inline;
+
+  &--slider {
+    padding: 0;
+
+    @include on-tablet {
+      @include content-padding-inline;
+    }
+  }
+}
+
+.contents {
+  display: none;
+
+  &--active {
+    display: contents;
+  }
+}

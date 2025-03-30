@@ -1,0 +1,270 @@
+.details {
+  @include container-margin-bottom;
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+
+    @include on-tablet {
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+
+  &__main-image {
+    width: 90vw;
+    height: 70vh;
+    object-fit: contain;
+    margin-bottom: 10px;
+
+    @include on-tablet {
+      width: 45vw;
+      height: initial;
+      max-height: 500px;
+    }
+
+    @include on-desktop {
+      width: 30vw;
+    }
+
+    &--skeleton {
+      height: 400px;
+      @include skeleton;
+      @include skeletonBoxShadow;
+    }
+  }
+
+    &__secondary-images {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__secondary-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border: 1px solid $elements-color;
+
+    &--active {
+      border-color: $primary-color;
+    }
+
+    @include on-tablet {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &--skeleton {
+      @include skeleton;
+      @include skeletonBoxShadow;
+    }
+  }
+
+  &__controls{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include on-desktop {
+      width: 35vw;
+    }
+
+    &--skeleton {
+      gap: 20px;
+    }
+  }
+
+  &__colors {
+    &--skeleton {
+      height: 30px;
+      @include skeleton;
+      @include skeletonBoxShadow;
+    }
+  }
+
+  &__item-ID {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__colors-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__color-cover {
+    border-radius: 50%;
+    border: 1px solid $elements-color;
+    padding: 2px;
+    transition: all $primary-transition-duration;
+
+    &--active {
+      border-color: $primary-color;
+    }
+
+    @include on-desktop {
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__color {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+
+  &__GB {
+    padding: 8px;
+    border: 1px solid $elements-color;
+    font-family: $font-Mont_Regular;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $primary-color;
+    transition: all $primary-transition-duration;
+
+    &--active {
+      background-color: $primary-color;
+      color: $white;
+      border: none;
+    }
+
+    @include on-desktop {
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__price {
+    font-family: $font-Mont_Bold;
+    color: $primary-color;
+    font-size: 32px;
+    line-height: 41px;
+    text-align: left;
+    margin-block: 25px 15px;
+
+    &--skeleton {
+      height: 50px;
+      margin-block: 10px;
+      @include skeleton;
+      @include skeletonBoxShadow;
+    }
+  }
+
+  &__specs {
+    margin-top: 30px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+
+    @include on-desktop {
+      flex-direction: row;
+      align-items: start;
+      justify-content: space-between;
+    }
+  }
+
+  &__about {
+    margin-bottom: 30px;
+
+    @include on-desktop {
+      width: 40vw;
+    }
+  }
+
+  &__about-block--skeleton {
+    @include skeleton;
+    @include skeletonBoxShadow;
+    height: 200px;
+  }
+
+  &__description-title {
+    border-bottom: 1px solid $elements-color;
+    padding-block: 10px;
+  }
+
+  &__tech-specs {
+    @include on-desktop {
+      width: 35vw;
+    }
+  }
+
+  &__tech-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__tech-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 35px;
+
+    &--skeleton {
+      @include skeleton;
+      @include skeletonBoxShadow;
+      margin-block: 10px;
+    }
+  }
+
+  &__tech-detail-text {
+    font-family: $font-Mont_Regular;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+    margin: 0;
+
+    &--params {
+      text-align: right;
+      font-family: $font-Mont_Regular;
+      font-size: 14px;
+      line-height: 21px;
+      color: $primary-color;
+    }
+  }
+}

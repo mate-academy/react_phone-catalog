@@ -1,0 +1,132 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid $elements-color;
+  scroll-snap-align: start;
+  min-width: 50vw;
+  transition: all $primary-transition-duration ease-in-out;
+
+  &--skeleton {
+    @include skeletonBoxShadow;
+  }
+
+  @include on-tablet {
+    min-width: initial;
+  }
+
+  @include on-desktop {
+    &:hover {
+      -webkit-box-shadow: 2px 2px 5px 1px $elements-color;
+      -moz-box-shadow: 2px 2px 5px 1px $elements-color;
+      box-shadow: 2px 2px 5px 1px $elements-color;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $elements-color;
+    margin-bottom: 25px;
+  }
+
+  &__img {
+    width: 150px;
+    height: 130px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    align-self: center;
+    margin-bottom: 15px;
+
+    &--skeleton {
+      @include skeleton;
+    }
+
+    @include on-desktop {
+      width: 225px;
+      height: 205px;
+    }
+  }
+
+  &__title {
+    font-family: $font-Mont_Regular;
+    font-weight: 600;
+    color: $primary-color;
+    line-height: 21px;
+    font-size: 14px;
+    height: 60px;
+    text-decoration: none;
+    transition: text-decoration $primary-transition-duration;
+
+    &--skeleton {
+      width: 100%;
+      height: 30px;
+
+      @include skeleton;
+    }
+
+    @include on-desktop {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__price-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  &__price {
+    font-family: $font-Mont_Bold;
+    color: $primary-color;
+    font-size: 22px;
+    line-height: 30.8px;
+    text-align: left;
+    margin: 0 0 15px;
+
+    &--skeleton {
+      @include skeleton;
+      height: 20px;
+      width: 100%;
+    }
+
+    &--discount {
+      color: $secondary-color;
+      font-family: $font-Mont_Regular;
+      text-decoration: line-through;
+    }
+  }
+
+  &__details {
+    margin-bottom: 25px;
+  }
+
+  &__detail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  &__text {
+    font-family: $font-Mont_SemiBold;
+    color: $secondary-color;
+    line-height: 15px;
+    font-size: 12px;
+    margin: 0;
+
+    &--skeleton {
+      width: 100%;
+      height: 15px;
+
+      @include skeleton;
+    }
+
+    &--property {
+      color: $primary-color;
+    }
+  }
+}

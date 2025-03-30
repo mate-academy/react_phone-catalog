@@ -1,0 +1,129 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include container-margin-bottom;
+
+  &__top {
+    display: flex;
+    margin-bottom: 10px;
+    gap: 20px;
+  }
+
+  &__slides {
+    width: 100%;
+    z-index: 0;
+  }
+
+  &__slide {
+    width: 100%;
+    height: 320px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+
+    @include on-tablet {
+      height: 189px;
+      border-radius: 30px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+
+    &--1 {
+      background-image: url(../../../../../public/img/phones_slider-p.webp);
+
+      @include on-tablet {
+        background-position: center top;
+      }
+    }
+
+    &--2 {
+      background-image: url(../../../../../public/img/ipad_slider_p.jpeg);
+    }
+
+    &--3 {
+      background-image: url(../../../../../public/img/accessories_slider_p.jpg);
+    }
+  }
+
+  &__side-button {
+    z-index: 1;
+    display: none;
+    width: 32px;
+    height: 189px;
+    background-color: $white;
+    border: 1px solid #B4BDC3;
+    position: relative;
+    transform: initial;
+    transition: all $primary-transition-duration;
+
+    &--left {
+      &::before {
+        position: absolute;
+        content: url(../../../../../public//icons/chevron_arrow_right.svg);
+        transform: rotate(-90deg);
+        top: 45%;
+        left: 30%;
+      }
+    }
+
+    &--right {
+      &::before {
+        position: absolute;
+        content: url(../../../../../public//icons/chevron_arrow_right.svg);
+        transform: rotate(90deg);
+        top: 45%;
+        left: 20%;
+      }
+    }
+
+    @include on-tablet {
+      display: initial;
+    }
+
+    @include on-desktop {
+      height: 400px;
+
+      &:hover {
+        cursor: pointer;
+        border-color: $primary-color;
+        transform: scale(105%);
+        -webkit-box-shadow: 2px 2px 5px 1px $elements-color;
+        -moz-box-shadow: 2px 2px 5px 1px $elements-color;
+        box-shadow: 2px 2px 5px 1px $elements-color;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 24px;
+  }
+
+  &__container {
+    padding-block: 10px;
+
+    @include on-desktop {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__button {
+    width: 14px;
+    height: 4px;
+    background-color: $elements-color;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+}

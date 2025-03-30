@@ -1,0 +1,22 @@
+[
+  {
+    "paymentId": "Cash",
+    "paymentTitle": "Payment by cash after delivery",
+    "paymentDescription": "You can pay for your order in cash, by bank card or online upon receipt"
+  },
+    {
+    "paymentId": "Google",
+    "paymentTitle": "Online payment by GooglePay",
+    "paymentDescription": "After clicking the 'Checkout' button, you will be redirected to the GooglePay payment service page to make the payment"
+  },
+    {
+    "paymentId": "Apple",
+    "paymentTitle": "Online payment by ApplePay",
+    "paymentDescription": "After clicking the 'Checkout' button, you will be redirected to the ApplePay payment service page to make the payment"
+  },
+    {
+    "paymentId": "Card",
+    "paymentTitle": "Online payment by Visa / MasterCard",
+    "paymentDescription": "After placing your order, you will be redirected to the secure payment system page where you can make the payment"
+  }
+]

@@ -1,0 +1,43 @@
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    gap: 10px;
+    padding: 0;
+
+    @include on-desktop {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__arrow {
+    height: 40px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: url(../../../../../public/icons/chevron_arrow_right.svg);
+      height: 16px;
+      width: 16px;
+      transform: rotateZ(-90deg);
+      align-self: center;
+    }
+  }
+
+  &__text {
+    font-family: $font-Mont_Regular;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+  }
+}

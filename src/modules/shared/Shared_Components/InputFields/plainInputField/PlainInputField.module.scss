@@ -1,0 +1,17 @@
+.plain-input {
+  display: flex;
+  flex-direction: column;
+
+  &__field {
+    height: 43px;
+    border: 1px solid $icons-color;
+    font-family: "Mont SemiBold";
+    font-size: 14px;
+    color: $primary-color;
+    padding-left: 15px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+}

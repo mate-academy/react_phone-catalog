@@ -1,0 +1,296 @@
+.product-page {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @include container-margin-bottom;
+
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 16px;
+    row-gap: 40px;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__h1 {
+    margin-bottom: 15px;
+  }
+
+  &__text {
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: $secondary-color;
+    margin-bottom: 0;
+  }
+
+  &__select-container {
+    display: flex;
+    gap: 20px;
+    align-self: flex-start;
+  }
+
+  &__select {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &--input {
+      align-self: flex-start;
+
+      @include on-tablet {
+        align-self: center;
+      }
+    }
+  }
+
+  &__input {
+    height: 43px;
+    padding: 0 0 0 15px;
+    border: 1px solid $icons-color;
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    width: 40vw;
+
+    &::placeholder {
+      color: $primary-color;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+    }
+
+    @include on-tablet {
+      width: 30vw;
+    }
+
+    @include on-desktop {
+      width: 15vw;
+    }
+  }
+
+  &__options {
+    height: 43px;
+    border: 1px solid $icons-color;
+    width: 40vw;
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: $primary-color;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    justify-content: space-between;
+    transition: all $primary-transition-duration;
+
+    &--disabled {
+      pointer-events: none;
+    }
+
+
+    @include on-tablet {
+      width: 30vw;
+    }
+
+    @include on-desktop {
+      width: 15vw;
+    }
+
+    &--pagination {
+      width: 35vw;
+
+      @include on-tablet {
+        width: 20vw;
+      }
+
+      @include on-desktop {
+        width: 10vw;
+      }
+    }
+
+    @include on-desktop {
+      &:hover {
+        border-color: $secondary-color;
+        cursor: pointer;
+      }
+
+      &:focus {
+        border-color: $primary-color;
+        outline: 0;
+      }
+    }
+  }
+
+  &__options-list {
+    border: 1px solid $elements-color;
+    box-shadow: 0px 2px 15px 0px #0000000D;
+    background-color: $white;
+    font-family: $font-Mont_Regular;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 99.5%;
+    top: 105%;
+    z-index: 1;
+  }
+
+  &__link {
+    color: $secondary-color;
+
+    &--home {
+      display: block;
+      background-image: url(../../../../../public/icons/home__breadcrumb.svg);
+      width: 16px;
+      height: 16px;
+    }
+
+    &--is-Active {
+      color: $primary-color;
+    }
+  }
+
+  &__option {
+    list-style: none;
+    height: 32px;
+    align-content: center;
+    padding-left: 15px;
+    transition: all $primary-transition-duration;
+
+    @include on-desktop {
+      &:hover {
+        background-color: $hover_and_BG;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__sort {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 30px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__arrow {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: url(../../../../../public/icons/chevron_arrow_right_disabled.svg);
+      height: 16px;
+      transform: rotateZ(-90deg);
+      align-self: center;
+      margin: auto;
+      transition: all $primary-transition-duration;
+    }
+
+    &--is-Active {
+      &::after {
+        transform: rotateZ(90deg);
+      }
+    }
+  }
+
+  &__buttons {
+    align-self: center;
+    display: flex;
+    gap: 20px;
+  }
+
+  &__page-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $elements-color;
+    background-color: $white;
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-color;
+    transition: all $primary-transition-duration;
+
+    &--active {
+      background-color: $primary-color;
+      color: $white;
+    }
+
+    &--previous {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-color: $icons-color;
+
+      &::before {
+        content: url(../../../../../public/icons/chevron_arrow_right.svg);
+        width: 16px;
+        height: 16px;
+        align-self: center;
+        display: block;
+        transform: rotateZ(-90deg);
+      }
+    }
+
+    &--next {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-color: $icons-color;
+
+      &::before {
+        content: url(../../../../../public/icons/chevron_arrow_right.svg);
+        display: block;
+        width: 16px;
+        height: 16px;
+        align-self: center;
+        transform: rotateZ(90deg);
+      }
+    }
+
+    &--disabled {
+      border-color: $elements-color;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    @include on-desktop {
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+}

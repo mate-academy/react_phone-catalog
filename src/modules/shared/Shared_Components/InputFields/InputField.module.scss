@@ -1,0 +1,86 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &--input {
+    align-self: flex-start;
+
+    @include on-tablet {
+      align-self: center;
+    }
+  }
+
+  &__text {
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: $secondary-color;
+    margin-bottom: 0;
+  }
+
+  &__options {
+    height: 43px;
+    border: 1px solid $icons-color;
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: $primary-color;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    justify-content: space-between;
+    transition: all $primary-transition-duration;
+
+    &--disabled {
+      pointer-events: none;
+    }
+
+    @include on-desktop {
+      &:hover {
+        border-color: $secondary-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__options-list {
+    overflow-y: scroll;
+    max-height: 200px;
+    border: 1px solid $elements-color;
+    box-shadow: 0px 2px 15px 0px #0000000D;
+    background-color: $white;
+    font-family: $font-Mont_Regular;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 99.5%;
+    top: 105%;
+    z-index: 1;
+  }
+
+  &__option {
+    color: $secondary-color;
+    list-style: none;
+    height: 40px;
+    align-content: center;
+    padding-left: 15px;
+    transition: all $primary-transition-duration;
+
+    @include on-desktop {
+      &:hover {
+        background-color: $hover_and_BG;
+        cursor: pointer;
+      }
+    }
+
+    &--is-Active {
+      color: $primary-color;
+    }
+  }
+}

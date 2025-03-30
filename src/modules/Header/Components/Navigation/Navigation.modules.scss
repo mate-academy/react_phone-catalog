@@ -1,0 +1,73 @@
+.nav {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  gap: 16px;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+
+  &__list-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: $font-Mont_Bold;
+    line-height: 11px;
+    font-size: 12px;
+    color: $secondary-color;
+    height: 32px;
+
+    @include on-tablet {
+      height: 48px;
+    }
+
+    @include on-desktop {
+      height: 64px;
+    }
+
+    &::before {
+      position: absolute;
+      height: 0;
+      width: 0;
+      transition: all, 0.3s;
+      align-self: flex-end;
+      background-color: $primary-color;
+      content: '';
+    }
+
+    &--active {
+      color: $primary-color;
+    }
+
+    &:hover::before {
+      height: 3px;
+      width: 100%;
+    }
+
+    &--active::before {
+      align-self: flex-end;
+      content: '';
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+    }
+  }
+}

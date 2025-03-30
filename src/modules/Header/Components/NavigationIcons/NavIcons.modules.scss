@@ -1,0 +1,103 @@
+.icons {
+  display: flex;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 64px;
+    box-shadow: -1px -1px 0 0 $elements-color;
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $white;
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+      box-shadow: -1px 0 0 0 $elements-color;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &--button {
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      background-size: 32px;
+      background-image: url(../../../../../public/icons/daylight.png);
+    }
+
+    &--favorites {
+      background-image: url(../../../../../public/icons/favourites_heart_like.svg);
+      position: relative;
+    }
+
+    &--cart {
+      background-image: url(../../../../../public/icons/shoping_cart.svg);
+      position: relative;
+    }
+
+    &::before {
+      height: 0;
+      width: 0;
+      transition: all, $primary-transition-duration;
+      align-self: flex-end;
+      background-color: $primary-color;
+      content: '';
+    }
+
+    @include on-desktop {
+      &:hover::before {
+        height: 3px;
+        width: 100%;
+      }
+    }
+
+    &--active::before {
+      align-self: flex-end;
+      content: '';
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+    }
+  }
+
+  &__quantity-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    background-color: $red-icon-color;
+    border-radius: 50%;
+    top: 25%;
+    right: 40%;
+    border: 2px solid $white;
+    color: $white;
+    font-family: $font-Mont_SemiBold;
+    font-size: 9px;
+    line-height: 11.5px;
+    position: absolute;
+
+    @include on-tablet {
+      right: 15%;
+      top: 20%;
+    }
+
+    @include on-desktop {
+      right: 20%;
+      top: 25%;
+    }
+  }
+
+  &__isDarkMode {
+    &--button {
+      background-image: url(../../../../../public/icons/night-mode.png);
+    }
+  }
+}
