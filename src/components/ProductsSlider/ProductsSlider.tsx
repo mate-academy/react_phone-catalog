@@ -3,8 +3,14 @@ import 'swiper/css';
 import styles from './ProductsSlider.module.scss';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
+import ArrowButton from '../ArrowButton/ArrowButton';
 import { useRef, useState } from 'react';
 import type { Swiper as SwiperType } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 type Props = {
   title: string;
@@ -17,12 +23,12 @@ export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
 
   const isNewModelsBlock = title === 'Brand new models';
 
-  const handlePrev = () => {
-    if (swiperRef.current) swiperRef.current.slidePrev();
-  };
-
-  const handleNext = () => {
-    if (swiperRef.current) swiperRef.current.slideNext();
+  const handleClickArrow = (direction: string) => {
+    if (direction === 'left') {
+      if (swiperRef.current) swiperRef.current.slidePrev();
+    } else {
+      if (swiperRef.current) swiperRef.current.slideNext();
+    }
   };
 
   const isPrevBtnDisabled = currSlide === 0;
@@ -33,26 +39,16 @@ export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
       <div className={styles.slider__header}>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.slider__buttons}>
-          <button
-            className={`${styles.slider__arrowLeft} ${isPrevBtnDisabled && styles.disabled}`}
-            onClick={handlePrev}
-            disabled={isPrevBtnDisabled}
-          >
-            <img
-              src={`/public/img/icons/arrows/arrow-left-icon${isPrevBtnDisabled ? '-dis' : ''}.svg`}
-              alt="Previous"
-            />
-          </button>
-          <button
-            className={`${styles.slider__arrowRight} ${isNextBtnDisabled && styles.disabled}`}
-            onClick={handleNext}
-            disabled={isNextBtnDisabled}
-          >
-            <img
-              src={`/public/img/icons/arrows/arrow-right-icon${isNextBtnDisabled ? '-dis' : ''}.svg`}
-              alt="Next"
-            />
-          </button>
+          <ArrowButton
+            direction="left"
+            handleClickArrow={handleClickArrow}
+            isBtnDisabled={isPrevBtnDisabled}
+          />
+          <ArrowButton
+            direction="right"
+            handleClickArrow={handleClickArrow}
+            isBtnDisabled={isNextBtnDisabled}
+          />
         </div>
       </div>
       <Swiper

@@ -22,6 +22,7 @@ const HomePage = () => {
         visibleProducts={newestProducts}
       />
 
+
       <Categories
         phonesQuantity={phones.length}
         tabletsQuantity={tablets.length}

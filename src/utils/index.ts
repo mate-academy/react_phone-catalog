@@ -25,6 +25,8 @@ export function getBgColorForRadio(color: string) {
   switch (color) {
     case 'spacegray':
       return '#414143';
+    case 'space-gray':
+      return '#414143';
     case 'midnight':
       return '#191970';
     case 'rosegold':

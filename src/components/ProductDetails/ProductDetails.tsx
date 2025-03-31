@@ -90,6 +90,8 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
 
                   const bgColor = getBgColorForRadio(formattedNewColor);
 
+                  console.log(bgColor, 'bg-color');
+
                   return (
                     <Link key={color} to={newPath}>
                       <div
@@ -214,7 +216,10 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
 
               return (
                 value && (
-                  <div key={spec} className={`${styles.product_details__feature} ${styles.product_details__feature_big}`}>
+                  <div
+                    key={spec}
+                    className={`${styles.product_details__feature} ${styles.product_details__feature_big}`}
+                  >
                     <p className={styles.product_details__param}>
                       {upperCaseSpec}
                     </p>
