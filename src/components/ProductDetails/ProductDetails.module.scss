@@ -80,11 +80,12 @@
     height: 43px;
 
     padding: 3px;
-    border: 1px solid #e2e6e9;
+    border: 1px solid $elements-color;
 
     box-sizing: border-box;
 
     &_active {
+      transition: all 0.5s ease-in-out;
       border-color: $primary-color;
     }
 
@@ -106,8 +107,7 @@
 
     &_big {
       min-width: 100%;
-      width: 288px;
-      height: 288px;
+      height: 400px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -115,7 +115,13 @@
 
       margin-bottom: 16px;
 
+      opacity: 0;
+      transform: translateX(-50%);
+      animation: slideLeft 1s ease-out forwards;
+
       @include on-tablet {
+        transform: translateY(100%);
+        animation: slideUp 1s ease-out forwards;
         width: 310px;
         height: 310px;
         order: 2;
@@ -184,6 +190,10 @@
     padding: 8px;
 
     border: 1px solid #b4bdc3;
+
+    transition:
+      background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out;
 
     &_active {
       background-color: $primary-color;
@@ -420,10 +430,11 @@
     height: 30px;
     border-radius: 32px;
 
-    border: 2px solid #fff;
-    outline: 1px solid #e2e6e9;
+    border: 2px solid $white-color;
+    outline: 2px solid $elements-color;
 
     &_active {
+      transition: all 0.5s ease-in-out;
       outline: 2px solid $primary-color;
     }
   }

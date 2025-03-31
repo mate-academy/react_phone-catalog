@@ -24,12 +24,10 @@
     height: 196px;
 
     @include on-tablet {
-      // width: 173px;
       height: 181px;
     }
 
     @include on-desktop {
-      // width: 208px;
       height: 196px;
     }
 
@@ -177,15 +175,11 @@
 
     &:hover {
       border-color: $primary-color;
+      transition: all 0.3s ease-in-out;
+    }
+
+    img {
+      transition: transform 0.3s ease-in-out;
     }
   }
-}
-
-// .product:not(:nth-child(4)) {
-//   margin-right: 0px;
-// }
-
-.slick-slide {
-  width: 272px !important;
-  max-width: 272px !important;
 }

@@ -1,9 +1,9 @@
 import { useProducts } from '../../context/ProductsContext';
-import { ProductsSlider } from '../../components/ProductsSlider';
 import styles from './HomePage.module.scss';
 import { Categories } from '../../components/Categories';
 import { sortProductsByPrice, sortProductsByYear } from '../../utils';
 import PicturesSlider from '../../components/PicturesSlider/PicturesSlider';
+import { ProductsSlider } from '../../components/ProductsSlider';
 
 const HomePage = () => {
   const { products, phones, accessories, tablets } = useProducts();
@@ -18,10 +18,9 @@ const HomePage = () => {
       <PicturesSlider />
 
       <ProductsSlider
-        title="Brand new models"
-        visibleProducts={newestProducts}
+      // title="Brand new models"
+      // visibleProducts={newestProducts}
       />
-
 
       <Categories
         phonesQuantity={phones.length}
@@ -29,7 +28,9 @@ const HomePage = () => {
         accessoriesQuantity={accessories.length}
       />
 
-      <ProductsSlider title="Hot prices" visibleProducts={hotPricesProducts} />
+      <ProductsSlider
+      //  title="Hot prices" visibleProducts={hotPricesProducts}
+      />
     </div>
   );
 };

@@ -20,8 +20,6 @@ export const ProductCard: React.FC<Props> = ({ product, isNewModelsBlock }) => {
 
   const handleAddProductToCart = () => addProductToCart(product);
 
-  // console.log(product)
-
   return (
     <div className={styles.product}>
       <Link to={`/${product.category}/${product.itemId}`}>
