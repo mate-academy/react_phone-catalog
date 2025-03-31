@@ -10,6 +10,10 @@
   position: relative;
   padding: 0 24px;
 
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
   &__header {
     display: flex;
     flex-direction: row;

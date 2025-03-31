@@ -13,19 +13,19 @@ import { NavLink } from 'react-router-dom';
 const mobileSlides = [
   {
     id: 1,
-    image: '/img/banner-mobile-1.png',
+    image: 'public/img/banner-mobile-1.png',
     alt: 'banner-mobile-1',
     to: '/phones/apple-iphone-14-pro-128gb-spaceblack',
   },
   {
     id: 2,
-    image: '/img/banner-mobile-2.png',
+    image: 'public/img/banner-mobile-2.png',
     alt: 'banner-mobile-2',
     to: '/tablets',
   },
   {
     id: 3,
-    image: '/img/banner-mobile-3.png',
+    image: 'public/img/banner-mobile-3.png',
     alt: 'banner-mobile-3',
     to: '/accessories',
   },
@@ -34,19 +34,19 @@ const mobileSlides = [
 const tabletSlides = [
   {
     id: 1,
-    image: '/img/banner-tablet-1.png',
+    image: 'public/img/banner-tablet-1.png',
     alt: 'banner-tablet-1',
     to: '/phones/apple-iphone-14-pro-128gb-spaceblack',
   },
   {
     id: 2,
-    image: '/img/banner-tablet-2.png',
+    image: 'public/img/banner-tablet-2.png',
     alt: 'banner-tablet-2',
     to: '/tablets',
   },
   {
     id: 3,
-    image: '/img/banner-tablet-3.png',
+    image: 'public/img/banner-tablet-3.png',
     alt: 'banner-tablet-3',
     to: '/accessories',
   },

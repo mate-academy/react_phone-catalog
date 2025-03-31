@@ -16,25 +16,25 @@ export const HomePage = () => {
   const names = ['Brand new models', 'Hot prices'];
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('public/api/products.json')
       .then(response => response.json())
       .then(data => setProducts(data));
   }, []);
 
   useEffect(() => {
-    fetch('/api/phones.json')
+    fetch('public/api/phones.json')
       .then(response => response.json())
       .then(data => setPhones(data));
   }, []);
 
   useEffect(() => {
-    fetch('/api/tablets.json')
+    fetch('public/api/tablets.json')
       .then(response => response.json())
       .then(data => setTablets(data));
   }, []);
 
   useEffect(() => {
-    fetch('/api/accessories.json')
+    fetch('public/api/accessories.json')
       .then(response => response.json())
       .then(data => setAccessories(data));
   }, []);
@@ -76,7 +76,7 @@ export const HomePage = () => {
             >
               <img
                 className={styles.home__category_img}
-                src="/img/category-phones.png"
+                src="public/img/category-phones.png"
                 alt="category phones"
               />
             </div>
@@ -98,7 +98,7 @@ export const HomePage = () => {
             >
               <img
                 className={styles.home__category_img}
-                src="/img/category-tablets.png"
+                src="public/img/category-tablets.png"
                 alt="category tablets"
               />
             </div>
@@ -121,7 +121,7 @@ export const HomePage = () => {
               <img
                 style={{ height: '80%' }}
                 className={styles.home__category_img}
-                src="/img/category-accessories.png"
+                src="public/img/category-accessories.png"
                 alt="category accessories"
               />
             </div>

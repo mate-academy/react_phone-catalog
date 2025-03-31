@@ -65,7 +65,9 @@ export const ProductSwiper: React.FC<NewModelsSliderProps> = ({
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 24,
+          },
+          1200: {
+            slidesPerView: 4,
           },
         }}
         navigation={{ nextEl: '#next', prevEl: '#prev' }}

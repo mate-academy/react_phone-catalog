@@ -32,7 +32,11 @@ export const Card: React.FC<CardProps> = ({ card }) => {
         scrollToTop();
       }}
     >
-      <img src={card.image} alt={card.name} className={styles.card__img} />
+      <img
+        src={`public/${card.image}`}
+        alt={card.name}
+        className={styles.card__img}
+      />
       <p className={styles.card__name}>{card.name}</p>
       <div className={styles.card__prices}>
         <h3 className={styles.card__price}>${card.price}</h3>

@@ -10,6 +10,11 @@
 
   @include tablet {
     height: max-content;
+    margin-bottom: 64px;
+  }
+
+  @include  desktop {
+    margin-bottom: 80px;
   }
 }
 
