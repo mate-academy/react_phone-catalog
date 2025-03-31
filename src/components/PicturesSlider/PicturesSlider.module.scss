@@ -62,8 +62,9 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-
-    @include mixin.grid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @include mixin.on-mobile {
       height: 320px;
