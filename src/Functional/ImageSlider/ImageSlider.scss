@@ -1,0 +1,76 @@
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.slider__image {
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.swiper-pagination-bullet-active {
+  background: white;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: none; /* За замовчуванням ховаємо кнопки */
+}
+
+@media (min-width: 1024px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: flex; /* Використовуємо flex для центрування стрілок */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 40px; /* Збільшуємо ширину для кращої видимості */
+    height: 100%; /* Кнопки займають повну висоту слайдера */
+    position: absolute;
+    top: 0; /* Починаємо з верхнього краю */
+    transform: none; /* Прибираємо transform, оскільки висота 100% */
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    background-repeat: no-repeat;
+    background: #323542;
+  }
+
+  .swiper-button-prev {
+    left: 16px;
+  }
+
+  .swiper-button-next {
+    right: 16px; /* Відстань 16px від правого краю банера */
+  }
+
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    background: #292e35;  
+  }
+}
+
+@media (max-width: 640px) {
+  .slider {
+    aspect-ratio: 3 / 2;
+  }
+}

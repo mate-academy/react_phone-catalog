@@ -1,0 +1,51 @@
+@use 'src/scssComponents/mixins' as *;
+
+
+
+.header {
+  box-sizing: border-box;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+  padding: 16px;
+
+  &__burger-menu {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    transition: transform 0.3s;
+    background-image: url(../public/figmaLogo/Burger.svg);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    @include on-tablet {
+      height: 32px;
+      width: 32px;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+}
+}
