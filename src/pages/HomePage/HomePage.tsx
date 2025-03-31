@@ -16,25 +16,25 @@ export const HomePage = () => {
   const names = ['Brand new models', 'Hot prices'];
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}api/products.json`)
+    fetch(`${import.meta.env.BASE_URL}/api/products.json`)
       .then(response => response.json())
       .then(data => setProducts(data));
   }, []);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
+    fetch(`${import.meta.env.BASE_URL}/api/phones.json`)
       .then(response => response.json())
       .then(data => setPhones(data));
   }, []);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}api/tablets.json`)
+    fetch(`${import.meta.env.BASE_URL}/api/tablets.json`)
       .then(response => response.json())
       .then(data => setTablets(data));
   }, []);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}api/accessories.json`)
+    fetch(`${import.meta.env.BASE_URL}/api/accessories.json`)
       .then(response => response.json())
       .then(data => setAccessories(data));
   }, []);
