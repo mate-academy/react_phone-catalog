@@ -58,7 +58,7 @@ export const CartPage: React.FC = () => {
                     <img src={cross} alt="cross" />
                   </button>
                   <img
-                    src={`public/${product.image}`}
+                    src={`${import.meta.env.BASE_URL}/${product.image}`}
                     alt={product.name}
                     className={styles.cart__image}
                   />

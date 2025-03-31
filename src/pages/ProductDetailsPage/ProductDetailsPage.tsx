@@ -128,7 +128,7 @@ export const ProductDetailsPage: React.FC = () => {
           <div className={styles.product__gallery_main}>
             <img
               className={styles.product__gallery_main_img}
-              src={`public/${selectedImage}`}
+              src={`${import.meta.env.BASE_URL}/${selectedImage}`}
               alt="Selected product"
             />
           </div>
@@ -136,7 +136,7 @@ export const ProductDetailsPage: React.FC = () => {
             {product.images.map(image => (
               <img
                 key={image}
-                src={`public/${image}`}
+                src={`${import.meta.env.BASE_URL}/${image}`}
                 alt="Thumbnail"
                 className={classNames(styles.product__gallery_thumbnail, {
                   [styles.active]: selectedImage === image,

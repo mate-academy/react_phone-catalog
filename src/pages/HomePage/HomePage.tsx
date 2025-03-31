@@ -76,7 +76,7 @@ export const HomePage = () => {
             >
               <img
                 className={styles.home__category_img}
-                src={`${import.meta.env.BASE_URL}img/category-phones.png`}
+                src={`${import.meta.env.BASE_URL}/img/category-phones.png`}
                 alt="category phones"
               />
             </div>
@@ -98,7 +98,7 @@ export const HomePage = () => {
             >
               <img
                 className={styles.home__category_img}
-                src={`${import.meta.env.BASE_URL}img/category-tablets.png`}
+                src={`${import.meta.env.BASE_URL}/img/category-tablets.png`}
                 alt="category tablets"
               />
             </div>
@@ -121,7 +121,7 @@ export const HomePage = () => {
               <img
                 style={{ height: '80%' }}
                 className={styles.home__category_img}
-                src={`${import.meta.env.BASE_URL}img/category-accessories.png`}
+                src={`${import.meta.env.BASE_URL}/img/category-accessories.png`}
                 alt="category accessories"
               />
             </div>
