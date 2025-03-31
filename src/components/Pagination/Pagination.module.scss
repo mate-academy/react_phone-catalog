@@ -29,6 +29,7 @@
     background-color: var.$dark-surface-2;
     border: 1px solid var.$dark-surface-2;
     color: var.$dark-white;
+    cursor: pointer;
 
     @include mixin.sizes(32px, 32px);
     @include mixin.flex(flex, center, center, false);

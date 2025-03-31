@@ -42,7 +42,8 @@ export const Breadcrumbs: React.FC<Props> = ({ gadget }) => {
           />
         </div>
 
-        <p
+        <Link
+          to={`/${nameOfPath}`}
           className={cn(styles.breadcrumbs__path, {
             [styles['breadcrumbs__path--active']]: itemId,
             [styles['breadcrumbs__path--dark']]: theme === Theme.Dark,
@@ -51,7 +52,7 @@ export const Breadcrumbs: React.FC<Props> = ({ gadget }) => {
           })}
         >
           {capitalizedPath}
-        </p>
+        </Link>
 
         {itemId && gadget && (
           <>

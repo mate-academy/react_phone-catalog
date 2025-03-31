@@ -16,6 +16,10 @@ export const ShoppingCart: React.FC<Props> = ({ className }) => {
   const { cartProducts } = useContext(CartContext);
   const { theme } = useContext(ThemeContext);
 
+  const totalQuantities = cartProducts.reduce((total, item) => {
+    return total + item.quantity;
+  }, 0);
+
   return (
     <NavLink
       to="/cart"
@@ -38,7 +42,7 @@ export const ShoppingCart: React.FC<Props> = ({ className }) => {
         className={styles.cart__image}
       />
       {cartProducts.length > 0 && (
-        <span className={styles.cart__count}>{cartProducts.length}</span>
+        <span className={styles.cart__count}>{totalQuantities}</span>
       )}
     </NavLink>
   );

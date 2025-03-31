@@ -76,14 +76,16 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
   );
 
   useEffect(() => {
-    searchParams.set('page', String(page));
-    setSearchParams(searchParams);
-  }, [page, setSearchParams, searchParams]);
+    const totalPages = Math.ceil(amount / Number(perPage));
 
-  const total = amount;
-  const perPageNumber = Number(perPage);
-  const count = Math.ceil(total / perPageNumber);
-  const countPages = getNumbers(1, count);
+    if (page > totalPages) {
+      setPage(1);
+      searchParams.set('page', '1');
+      setSearchParams(searchParams);
+    }
+  }, [amount, perPage, page, searchParams, setSearchParams]);
+
+  const countPages = getNumbers(1, Math.ceil(amount / Number(perPage)));
 
   return (
     <div className={styles.catalog}>

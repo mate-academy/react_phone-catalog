@@ -62,20 +62,25 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     @include mixin.on-mobile {
       height: 320px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     @include mixin.on-tablet {
       height: 400px;
+
+      @include mixin.grid;
     }
 
     @include mixin.on-desktop {
       height: 480px;
+
+      @include mixin.grid;
     }
   }
 
