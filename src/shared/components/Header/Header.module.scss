@@ -1,0 +1,226 @@
+@import '../../../assets/styles/main.scss';
+
+.header {
+  box-shadow: 0px 1px 0px 0px $color-elements;
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logoLink {
+    width: 96px;
+    height: 48px;
+
+    padding: 13px 16px;
+    box-sizing: border-box;
+
+    @include on-desktop {
+      width: 128px;
+      height: 64px;
+
+      padding: 18px 24px;
+    }
+
+    @include on-desktopExtra {
+      width: 128px;
+      height: 64px;
+
+      padding: 18px 24px;
+    }
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+
+    transition: transform 0.3s linear;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+
+    @include on-desktopExtra {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      margin-left: 16px;
+    }
+
+    @include on-desktop {
+      margin-left: 24px;
+    }
+
+    @include on-desktopExtra {
+      margin-left: 24px;
+    }
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item:nth-child(n + 2) {
+    margin-left: 32px;
+
+    @include on-desktop {
+      margin-left: 64px;
+    }
+
+    @include on-desktopExtra {
+      margin-left: 64px;
+    }
+  }
+
+  &__link {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.48px;
+
+    color: $color-secondary;
+
+    transition: color 0.3s linear;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__linkHover {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #000;
+      left: 50%;
+      bottom: -26px;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+      line-height: 64px;
+    }
+
+    &:active::before {
+      width: 100%;
+      color: $color-primary;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+
+    margin-left: auto;
+  }
+
+  &__favoritesLink {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: -1px 0px 0px 0px $color-elements;
+
+      transition: box-shadow 0.2s ease-in-out;
+
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    @include on-desktopExtra {
+      width: 64px;
+      height: 64px;
+    }
+
+    &:hover {
+      box-shadow: 0px 0px 2px 1px $color-primary;
+    }
+  }
+
+  &__cartLink {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: -1px 0px 0px 0px $color-elements;
+
+      transition: box-shadow 0.2s ease-in-out;
+
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    @include on-desktopExtra {
+      width: 64px;
+      height: 64px;
+    }
+
+    &:hover {
+      box-shadow: 0px 0px 2px 1px $color-primary;
+    }
+  }
+
+  &__menuLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px 0px 0px 0px $color-elements;
+
+    transition: box-shadow 0.2s ease-in-out;
+
+    width: 48px;
+    height: 48px;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &:hover {
+      box-shadow: 0px 0px 2px 1px $color-primary;
+    }
+  }
+
+  &__favoritesImg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__cartImg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__menuImg {
+    width: 16px;
+    height: 16px;
+  }
+}

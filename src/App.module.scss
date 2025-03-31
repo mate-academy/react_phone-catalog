@@ -1,0 +1,17 @@
+@import './assets/styles/main.scss';
+
+.main {
+  padding-block: 24px 64px;
+
+  @include on-tablet {
+    padding-block: 32px 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 56px 80px;
+  }
+
+  @include on-desktopExtra {
+    padding-block: 56px 80px;
+  }
+}

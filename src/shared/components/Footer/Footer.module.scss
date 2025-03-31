@@ -1,0 +1,130 @@
+@import '../../../assets/styles/main.scss';
+
+.footer {
+  padding-block: 32px;
+  box-shadow: 0px -1px 0px 0px $color-elements;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    @include content-padding;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__logoLink {
+    width: 89px;
+    height: 32px;
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__logo {
+    width: 100%;
+    height: 100%;
+
+    transition: transform 0.3s linear;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__nav {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__item:nth-child(-n + 2) {
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+      margin-right: 14px;
+    }
+
+    @include on-desktop {
+      margin-right: 107px;
+    }
+
+    @include on-desktopExtra {
+      margin-right: 107px;
+    }
+  }
+
+  &__link {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: $color-secondary;
+
+    transition: color 0.3s linear;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__backTop {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: $color-secondary;
+    cursor: default;
+
+    margin-right: 16px;
+  }
+
+  &__backTopLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $color-icons;
+
+    transition: border 0.3s linear;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+}

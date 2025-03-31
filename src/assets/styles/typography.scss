@@ -1,0 +1,73 @@
+@import './variables.scss';
+
+body {
+  font-family: 'Mont', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: $color-primary;
+}
+
+h1 {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+}
+
+h2 {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+h3 {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+h4 {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@include on-tablet {
+  h1 {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  h2 {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  h3 {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 31px;
+  }
+
+  h4 {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+p {
+  font-family: 'Mont', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+}

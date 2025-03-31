@@ -1,0 +1,151 @@
+@import '../../../../assets/styles/main.scss';
+
+.homeSlider {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  @include on-desktopExtra {
+    margin-bottom: 80px;
+  }
+
+  &__container {
+    @include page-grid;
+
+    @include on-tablet {
+      @include content-padding;
+    }
+  }
+
+  &__leftSliderBtn {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+
+      width: 100%;
+      height: auto;
+      background-color: $color-white;
+      border: 1px solid $color-icons;
+
+      transition: border 0.3s ease-in-out;
+
+      grid-column: 1/2;
+    }
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__leftImgSlider {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__swiperWrapper {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: 2/12;
+    }
+
+    @include on-desktop {
+      grid-column: 2/24;
+    }
+
+    @include on-desktopExtra {
+      grid-column: 2/24;
+    }
+  }
+
+  &__bannerImg {
+    width: 100%;
+    height: 320px;
+
+    @include on-tablet {
+      height: auto;
+    }
+
+    @include on-desktop {
+      height: auto;
+    }
+
+    @include on-desktopExtra {
+      height: auto;
+    }
+  }
+
+  &__rightSliderBtn {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+
+      width: 100%;
+      height: auto;
+      background-color: $color-white;
+      border: 1px solid $color-icons;
+
+      transition: border 0.3s ease-in-out;
+
+      grid-column: 12/13;
+    }
+
+    @include on-desktop {
+      grid-column: 24/25;
+    }
+
+    @include on-desktopExtra {
+      grid-column: 24/25;
+    }
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__rightImgSlider {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__wrapper {
+    grid-column: 2/4;
+    padding: 18px;
+
+    @include on-tablet {
+      grid-column: 6/8;
+    }
+
+    @include on-desktop {
+      grid-column: 12/14;
+    }
+
+    @include on-desktopExtra {
+      grid-column: 12/14;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+  }
+
+  &__paginationBullet {
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+  }
+
+  &__paginationBulletActive {
+    background-color: $color-primary;
+  }
+}
