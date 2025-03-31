@@ -16,25 +16,25 @@ export const HomePage = () => {
   const names = ['Brand new models', 'Hot prices'];
 
   useEffect(() => {
-    fetch('public/api/products.json')
+    fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(response => response.json())
       .then(data => setProducts(data));
   }, []);
 
   useEffect(() => {
-    fetch('public/api/phones.json')
+    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
       .then(response => response.json())
       .then(data => setPhones(data));
   }, []);
 
   useEffect(() => {
-    fetch('public/api/tablets.json')
+    fetch(`${import.meta.env.BASE_URL}api/tablets.json`)
       .then(response => response.json())
       .then(data => setTablets(data));
   }, []);
 
   useEffect(() => {
-    fetch('public/api/accessories.json')
+    fetch(`${import.meta.env.BASE_URL}api/accessories.json`)
       .then(response => response.json())
       .then(data => setAccessories(data));
   }, []);
@@ -76,7 +76,7 @@ export const HomePage = () => {
             >
               <img
                 className={styles.home__category_img}
-                src="public/img/category-phones.png"
+                src={`${import.meta.env.BASE_URL}img/category-phones.png`}
                 alt="category phones"
               />
             </div>
@@ -98,7 +98,7 @@ export const HomePage = () => {
             >
               <img
                 className={styles.home__category_img}
-                src="public/img/category-tablets.png"
+                src={`${import.meta.env.BASE_URL}img/category-tablets.png`}
                 alt="category tablets"
               />
             </div>
@@ -121,7 +121,7 @@ export const HomePage = () => {
               <img
                 style={{ height: '80%' }}
                 className={styles.home__category_img}
-                src="public/img/category-accessories.png"
+                src={`${import.meta.env.BASE_URL}img/category-accessories.png`}
                 alt="category accessories"
               />
             </div>
