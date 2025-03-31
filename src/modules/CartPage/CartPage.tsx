@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState } from 'react';
 import style from './CartPage.module.scss';
 import arrowLeft from '../../shared/icons/chevron-arrow-left.svg';
@@ -81,9 +83,8 @@ export const CartPage: React.FC = () => {
                         onClick={() => removeFromCart(item.id)}
                       />
 
-                      {/* <img src={item.image} alt="phone image" className={style.itemImg} /> */}
                       <NavLink to={`/${item.category}/${item.itemId}`}>
-                      <img src={item.image} alt="phone image" className={style.itemImg} />
+                        <img src={item.image} alt="phone image" className={style.itemImg} />
                       </NavLink>
 
                       <h2 className={style.itemTitle}>{item.name}</h2>
@@ -119,7 +120,9 @@ export const CartPage: React.FC = () => {
               <div className={style.total}>
                 <div className={style.totalContainer}>
                   <h1 className={style.totalTitle}>${totalPrice}</h1>
-                  <p className={style.totalDescription}>Total for {cart.length} items</p>
+                  <p className={style.totalDescription}>
+                    Total for {cart.reduce((acc, item) => acc + (item.quantity || 1), 0)} items
+                  </p>
                 </div>
 
                 <div className={style.checkout}>

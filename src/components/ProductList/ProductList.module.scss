@@ -70,15 +70,16 @@
 
 .container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 237px));
   row-gap: 40px;
+  // justify-items: center;
   justify-content: center;
-  justify-items: center;
 
   padding-top: 24px;
+  column-gap: 16px;
 
   @include on-tablet {
-    grid-template-columns: repeat(2, 1fr);
+    // grid-template-columns: repeat(auto-fit, minmax(200px, 237px));
     column-gap: 16px;
   }
 

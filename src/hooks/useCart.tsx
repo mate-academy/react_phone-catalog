@@ -18,11 +18,13 @@ const CartContext = createContext<CartContext | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<Product[]>(() => {
     const storedCart = localStorage.getItem('cart');
+
     return storedCart ? JSON.parse(storedCart) : [];
   });
 
   const [favourite, setFavourite] = useState<Product[]>(() => {
     const storedFavourite = localStorage.getItem('favourite');
+
     return storedFavourite ? JSON.parse(storedFavourite) : [];
   });
 

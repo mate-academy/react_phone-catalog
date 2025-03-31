@@ -6,7 +6,8 @@
   background-color: $hight-dark-color;
   box-sizing: border-box;
 
-  width: 212px;
+  // width: 212px;
+  width: 100%;
   height: 439px;
 
   @include on-tablet {
@@ -34,7 +35,7 @@
   @include on-desctop {
     height: 196px;
   }
-  
+
   transition: .3s;
 
   &:hover {

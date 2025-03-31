@@ -24,6 +24,7 @@ export const HomePage: React.FC = () => {
     const loadProducts = async () => {
       try {
         const data = await fetchProducts();
+
         setProduct(data); // Фільтруємо тільки телефони
       } catch (error) {
         console.error('Error fetching products:', error);

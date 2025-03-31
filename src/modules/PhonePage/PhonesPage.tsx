@@ -6,8 +6,6 @@ import { fetchProducts } from '@/utils/fetchProduct';
 import { Product } from '@/types/Products';
 import { Loader } from '@/components/Loader/Loader';
 
-/// Deteted this componet and change root tsx
-
 export const Phones: React.FC = () => {
   const [product, setProduct] = useState<Product[]>([]);
   const [loader, setLoader] = useState(true);
@@ -18,7 +16,8 @@ export const Phones: React.FC = () => {
     const loadProducts = async () => {
       try {
         const data = await fetchProducts();
-        setProduct(data); // Фільтруємо тільки телефони
+
+        setProduct(data);
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {

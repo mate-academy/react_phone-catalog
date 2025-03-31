@@ -22,8 +22,10 @@ export const Dropdown: React.FC<Props> = ({ options, selected, onSelect, title }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
   return (
     <div className={style.dropdown} ref={dropdownRef}>
       <p className={style.title}>{title}</p>

@@ -25,9 +25,11 @@ function sortMethod(
 ) {
   if (selectField === 'Newest') {
     setSortedProduct(prodcut.sort((a, b) => b.year - a.year));
+
     return;
   } else if (selectField === 'Alphabetically') {
     setSortedProduct(prodcut.sort((a, b) => a.name.localeCompare(b.name)));
+
     return;
   } else if (selectField === 'Cheapest') {
     setSortedProduct(prodcut.sort((a, b) => a.fullPrice - b.fullPrice));

@@ -20,6 +20,7 @@ export const ProductOptions: React.FC<Props> = ({ phone, color, capacity, produc
   useEffect(() => {
     fetchProducts().then(data => {
       const product = data.find((item: Product) => item.itemId === phone.id);
+
       setCurrentProduct(product);
     });
   }, [phone.id]);
@@ -39,11 +40,13 @@ export const ProductOptions: React.FC<Props> = ({ phone, color, capacity, produc
 
   const handleColorChange = (namespaceId: string, newColor: string) => {
     const newId = `${namespaceId}-${capacity}-${newColor.replace(/\s/g, '-')}`;
+
     navigate(`/${productSection}/${newId}`);
   };
 
   const handleCapacityChange = (namespaceId: string, newCapacity: string) => {
     const newId = `${namespaceId}-${newCapacity}-${color}`;
+
     navigate(`/${productSection}/${newId}`);
   };
 
