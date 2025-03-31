@@ -33,7 +33,7 @@ export const Card: React.FC<CardProps> = ({ card }) => {
       }}
     >
       <img
-        src={`public/${card.image}`}
+        src={`${import.meta.env.BASE_URL}${card.image}`}
         alt={card.name}
         className={styles.card__img}
       />
