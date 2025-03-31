@@ -17,8 +17,6 @@ export const ProductSwiper: React.FC<NewModelsSliderProps> = ({
   name,
   products,
 }) => {
-  const newModels = products.filter(product => product.year === 2022);
-
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
@@ -76,7 +74,7 @@ export const ProductSwiper: React.FC<NewModelsSliderProps> = ({
         onSlideChange={handleSlideChange}
         onSwiper={swiper => (swiperRef.current = swiper)}
       >
-        {newModels.map(product => (
+        {products.map(product => (
           <SwiperSlide key={product.id} className={styles.slider__slide}>
             <Card card={product} />
           </SwiperSlide>

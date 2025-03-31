@@ -41,7 +41,35 @@
   }
 }
 
-.prevEl,
+.prevEl {
+  position: absolute;
+  width: 32px;
+  height: 100%;
+  background-color: $whiteColor;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: $primaryColor;
+  z-index: 10;
+  border: 1px solid $iconsColor;
+  cursor: pointer;
+  left: 0;
+
+  @include tablet {
+    display: flex;
+  }
+
+  &::after {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    background-color: $primaryColor;
+    color: $whiteColor;
+  }
+}
+
 .nextEl {
   position: absolute;
   width: 32px;
@@ -54,6 +82,7 @@
   z-index: 10;
   border: 1px solid $iconsColor;
   cursor: pointer;
+  right: 0;
 
   @include tablet {
     display: flex;
@@ -63,15 +92,13 @@
     font-size: 16px;
     font-weight: bold;
   }
+
+  &:hover {
+    background-color: $primaryColor;
+    color: $whiteColor;
+  }
 }
 
-.prevEl {
-  left: 0;
-}
-
-.nextEl {
-  right: 0;
-}
 
 .pagination {
   display: flex;

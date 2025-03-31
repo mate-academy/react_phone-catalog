@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import { ToggleButton } from '../../components/ToggleButton/ToggleButton';
+import { ProductSwiper } from '../../components/ProductSwiper';
 import classNames from 'classnames';
 
 import phones from '../../../public/api/phones.json';
@@ -78,6 +79,8 @@ export const ProductDetailsPage: React.FC = () => {
   const handleCapacityChange = (capacity: string) => {
     setSelectedCapacity(capacity);
   };
+
+  const newModels = products.filter(item => item.year === 2022);
 
   return (
     <div className={styles.product}>
@@ -324,6 +327,8 @@ export const ProductDetailsPage: React.FC = () => {
           </p>
         </div>
       </div>
+
+      <ProductSwiper name="You may also like" products={newModels} />
     </div>
   );
 };

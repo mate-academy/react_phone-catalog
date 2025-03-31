@@ -308,48 +308,6 @@
       &_buttons {
         display: flex;
         gap: 8px;
-
-        &Add {
-          flex-grow: 1;
-          height: 40px;
-          max-width: 263px;
-          background-color: $primaryColor;
-          color: $whiteColor;
-          border: 0;
-          cursor: pointer;
-
-          @include buttons;
-
-          &:hover {
-            border: 1px solid $primaryColor;
-          }
-
-          &Active {
-            border: 1px solid $secondaryColor;
-            background-color: $whiteColor;
-            color: $greenColor;
-          }
-        }
-
-        &Favorite {
-          flex-shrink: 0;
-          height: 40px;
-          width: 40px;
-          background-color: $whiteColor;
-          border: 1px solid $iconsColor;
-          background-image: url(../../imgs/svg/favorite-icon.svg);
-          background-position: center;
-          background-repeat: no-repeat;
-          cursor: pointer;
-
-          &:hover {
-            border: 1px solid $primaryColor;
-          }
-
-          &Active {
-            background-image: url(../../imgs/svg/favorite-icon-selected.svg);
-          }
-        }
       }
     }
 
@@ -427,6 +385,11 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    margin-bottom: 56px;
+
+    @include tablet {
+      margin-bottom: 64px;
+    }
 
     &_title {
       margin: 0;

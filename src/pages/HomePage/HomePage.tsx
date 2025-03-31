@@ -39,6 +39,7 @@ export const HomePage = () => {
       .then(data => setAccessories(data));
   }, []);
 
+  const newModels = products.filter(product => product.year === 2022);
   const productsWithDifference = products.map(product => ({
     ...product,
     priceDifference: product.fullPrice - product.price,
@@ -59,7 +60,7 @@ export const HomePage = () => {
       <h1 className={styles.home__title}>Welcome to Nice Gadgets store!</h1>
       <PicturesSlider />
       {products.length > 0 && (
-        <ProductSwiper name={names[0]} products={products} />
+        <ProductSwiper name={names[0]} products={newModels} />
       )}
       <div className={styles.home__category}>
         <h2 className={styles.home__category_title}>Shop by category</h2>

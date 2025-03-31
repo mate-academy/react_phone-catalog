@@ -1,5 +1,6 @@
 @import '../../styles/variables';
 @import '../../styles/mixinsTypography';
+@import '../../styles/mixins';
 
 .cart {
   padding: 24px 16px;
@@ -27,10 +28,14 @@
 
   &__title {
     margin: 0;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     color: $primaryColor;
 
     @include h1-mobile;
+
+    @include tablet {
+      @include h1-tablet-desktop;
+    }
   }
 
   &__empty {
@@ -58,6 +63,12 @@
     padding: 16px;
     border: 1px solid $grayColor;
     width: 100%;
+
+    @include tablet {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   &__desription {
