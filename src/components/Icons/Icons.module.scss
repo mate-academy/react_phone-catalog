@@ -9,6 +9,7 @@
   &__arrowRightActive,
   &__arrowLeftActive,
   &__heart,
+  &__home,
   &__heartActive {
     @include set-size(16px, 16px);
 
@@ -39,5 +40,9 @@
 
   &__heart {
     background-image: url('@assets/icons/heart-icon.svg');
+  }
+
+  &__home {
+    background-image: url('@assets/icons/home-icon.svg');
   }
 }

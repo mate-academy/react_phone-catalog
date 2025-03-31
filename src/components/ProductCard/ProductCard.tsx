@@ -16,14 +16,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   card,
   hideOldPrice = false,
 }) => {
-  const { name, price, fullPrice, screen, capacity, ram, image } = card;
+  const {
+    name,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram,
+    image,
+    itemId,
+    category,
+  } = card;
 
   return (
     <div className={styles.card}>
-      <Link to={'#'} className={styles.card__image}>
+      <Link to={`/${category}/${itemId}`} className={styles.card__image}>
         <img src={image} alt={name} />
       </Link>
-      <Link to={'#'}>
+      <Link to={`/${category}/${itemId}`}>
         <h5 className={styles.card__title}>{name}</h5>
       </Link>
       <div className={cn(styles.card__price, 'three-title')}>

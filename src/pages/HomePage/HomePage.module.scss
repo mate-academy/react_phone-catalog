@@ -15,14 +15,5 @@
 
 .home__page {
   @include flex(column, space-between, center);
-
-  gap: 80px;
-
-  @include on-tablet {
-    gap: 64px;
-  }
-
-  @include on-mobile {
-    gap: 56px;
-  }
+  @include responsive-gap;
 }

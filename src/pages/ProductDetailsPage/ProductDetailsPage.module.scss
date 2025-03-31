@@ -1,0 +1,63 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.product_detail {
+  &__title {
+    margin-bottom: 40px;
+
+    @include on-mobile {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__wrapper {
+    @include flex(column, space-between, normal);
+    @include responsive-gap;
+  }
+
+  &__main,
+  &__info {
+    @include page-grid;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    grid-column: 13/25;
+
+    @include on-tablet {
+      grid-column: 8/13;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &_regular {
+      @include font(500, 22px, 100%, 0);
+
+      color: $regent-gray-color;
+      text-decoration: line-through;
+      position: relative;
+    }
+  }
+
+  &__actions {
+    @include flex(row, space-between, center);
+
+    gap: 8px;
+    width: 100%;
+
+    &_heart {
+      padding: 12px;
+    }
+  }
+}
