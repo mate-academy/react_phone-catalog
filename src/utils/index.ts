@@ -43,10 +43,35 @@ export const getRandomProducts = (arr: Product[], num: number) => {
   return shuffled.slice(0, num);
 };
 
+export const updateProducts = (
+  products: Product[],
+  itemsPerPage: number | 'all',
+  sortOrder: string,
+  currentPage: number,
+) => {
+  let filteredProducts = products.filter(p => p.category === 'phones');
+
+  if (sortOrder === 'alphabetically') {
+    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sortOrder === 'cheapest') {
+    filteredProducts.sort((a, b) => a.price - b.price);
+  } else if (sortOrder === 'expensive') {
+    filteredProducts.sort((a, b) => b.price - a.price);
+  }
+
+  if (itemsPerPage === 'all') {
+    return filteredProducts;
+  } else {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    return filteredProducts.slice(startIndex, startIndex + itemsPerPage);
+  }
+};
+
 export const sortingOptions = [
   { label: 'Newest', value: 'newest' },
   { label: 'Alphabetically', value: 'alphabetically' },
   { label: 'Cheapest', value: 'cheapest' },
+  { label: 'Expensive', value: 'expensive' },
 ];
 
 export const itemsForPageOptions = [

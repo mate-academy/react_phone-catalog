@@ -1,14 +1,19 @@
+// PhonesPage.tsx
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Product } from '../../types/Product';
 import { useProducts } from '../../context/ProductsContext';
-import styles from './PhonesPage.module.scss';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import CustomSelect from '../../components/CustomSelect/CustomSelect';
 import ProductsList from '../../components/ProductsList/ProductsList';
-import { Product } from '../../types/Product';
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import PaginationBlock from '../../components/PaginationBlock/PaginationBlock';
-import { itemsForPageOptions, sortingOptions } from '../../utils';
 import Skeleton from '../../components/Skeleton/Skeleton';
+import {
+  itemsForPageOptions,
+  sortingOptions,
+  updateProducts,
+} from '../../utils';
+import styles from './PhonesPage.module.scss';
 
 const PhonesPage = () => {
   const { products } = useProducts();
@@ -25,43 +30,22 @@ const PhonesPage = () => {
     products.filter(p => p.category === 'phones').length / +perPage,
   );
 
-  function updateProducts(
-    itemsPerPage: number | 'all',
-    sortOrder: string,
-    currentPage: number,
-  ) {
-    if (products.length === 0) {
-      return;
-    }
-
-    let filteredPhones = products.filter(p => p.category === 'phones');
-
-    if (sortOrder === 'alphabetically') {
-      filteredPhones.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (sortOrder === 'cheapest') {
-      filteredPhones.sort((a, b) => a.price - b.price);
-    }
-
-    if (itemsPerPage === 'all') {
-      setPhones(filteredPhones);
-    } else {
-      const startIndex = (currentPage - 1) * itemsPerPage;
-      setPhones(filteredPhones.slice(startIndex, startIndex + itemsPerPage));
-    }
-  }
-
-  useEffect(() => {
-    updateProducts(perPage === 'all' ? 'all' : +perPage, sort, +page);
-  }, [perPage, sort, page]);
-
   useEffect(() => {
     setLoading(true);
 
     setTimeout(() => {
-      updateProducts(perPage === 'all' ? 'all' : +perPage, sort, +page);
+      const updatedPhones = updateProducts(
+        products,
+        perPage === 'all' ? 'all' : +perPage,
+        sort,
+        +page,
+      );
+      setPhones(updatedPhones);
       setLoading(false);
     }, 1000);
-  }, [products]);
+  }, [products, perPage, sort, page]);
+
+  // ! змінити всі остальні сторінки
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,

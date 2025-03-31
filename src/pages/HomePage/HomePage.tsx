@@ -18,8 +18,8 @@ const HomePage = () => {
       <PicturesSlider />
 
       <ProductsSlider
-      // title="Brand new models"
-      // visibleProducts={newestProducts}
+      title="Brand new models"
+      visibleProducts={newestProducts}
       />
 
       <Categories
@@ -29,7 +29,7 @@ const HomePage = () => {
       />
 
       <ProductsSlider
-      //  title="Hot prices" visibleProducts={hotPricesProducts}
+       title="Hot prices" visibleProducts={hotPricesProducts}
       />
     </div>
   );

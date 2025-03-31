@@ -1,21 +1,23 @@
 .swiper {
-  width: 100% !important;
-  height: 100% !important;
+  width: 100%;
+}
+
+.swiper-wrapper {
+  max-height: 500px;
 }
 
 .swiper-slide {
-  text-align: center !important;
-  font-size: 18px !important;
-  background: #fff !important;
+  text-align: center;
+  font-size: 18px;
 
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .swiper-slide img {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
