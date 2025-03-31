@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShoppingBag } from 'lucide-react';
 import { MobileMenu } from './MobileMenu';
 
 
@@ -9,8 +8,8 @@ export const Header = () => {
 
   return (
     <header className="bg-background-color-base text-text-color-base-grey sticky top-0 z-50 border-b border-[#3B3E4A]">
-      <div className="mx-auto flex items-center justify-between pl-6 h-12 md:h-[68px] sm:px-6">
-        <div className="flex items-center gap-12 h-full">
+      <div className="mx-auto flex items-center justify-between px-4 pl-4 h-12 md:h-[68px] md:px-6">
+        <div className="flex items-center gap-12 sm:gap-8 h-full">
           <Link to="/">
             <img
               src="img/Logo.png"
@@ -38,16 +37,24 @@ export const Header = () => {
           </nav>
         </div>
         <div className="hidden items-stretch h-full sm:flex">
-          <Link to="/favorites" className="flex items-center justify-center px-6 border-l border-[#3B3E4A] text-text-color-base-white hover:scale-110 transition-all">
-            <Heart size={18} />
+          <Link to="/favorites" className="flex items-center justify-cente px-4 border-l md:px-6 border-[#3B3E4A] text-text-color-base-white group">
+          <img
+              src="public/icons/favourites.svg"
+              alt="favorites"
+              className='group-hover:scale-125 transition-all'
+            />
           </Link>
-          <Link to="/cart" className="flex items-center justify-center pl-6 border-l border-[#3B3E4A] text-text-color-base-white hover:scale-110 transition-all">
-            <ShoppingBag size={18} />
+          <Link to="/cart" className="flex items-center justify-center pl-4 border-l md:pl-6 border-[#3B3E4A] text-text-color-base-white group">
+          <img
+              src="public/icons/shopping_bag.svg"
+              alt="shopping_bag"
+              className='group-hover:scale-125 transition-all'
+            />
           </Link>
         </div>
         <div className="items-stretch h-full flex sm:hidden">
           <button
-            className="flex items-center justify-center pr-4 pl-4 border-l border-[#3B3E4A]"
+            className="flex items-center justify-center pl-4 border-l border-[#3B3E4A]"
             onClick={() => setIsMenuOpen(true)}
           >
             <img src="icons/menu.svg" alt="Menu" className="w-3 h-3" />
