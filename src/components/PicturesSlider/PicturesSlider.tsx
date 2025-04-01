@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import styles from './PicturesSlider.module.scss';
+import arrowLeft from '../../../public/img/icons/arrows/arrow-left-icon.svg'
+import arrowRight from '../../../public/img/icons/arrows/arrow-right-icon.svg'
 
 const PicturesSlider = () => {
   const imageWrapperRef = useRef<HTMLDivElement | null>(null);
@@ -80,7 +82,7 @@ const PicturesSlider = () => {
             onClick={handlePrevImage}
           >
             <img
-              src="/public/img/icons/arrows/arrow-left-icon.svg"
+              src={arrowLeft}
               alt="Previous"
             />
           </button>
@@ -113,7 +115,7 @@ const PicturesSlider = () => {
             onClick={handleNextImage}
           >
             <img
-              src="/public/img/icons/arrows/arrow-right-icon.svg"
+              src={arrowRight}
               alt="Next"
             />
           </button>

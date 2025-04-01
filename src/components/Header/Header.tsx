@@ -6,6 +6,8 @@ import { Squash as Hamburger } from 'hamburger-react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { useFavourites } from '../../context/FavouritesContext';
 import { useCart } from '../../context/CartContext';
+import favouriteIcon from '../../../public/img/icons/favourites-icon.svg';
+import cartIcon from '../../../public/img/icons/cart-icon.svg';
 
 const pages = ['Home', 'Phones', 'Tablets', 'Accessories'];
 
@@ -55,7 +57,7 @@ const Header = () => {
           to={`/favourites`}
           className={`${styles.header__favourites} ${pathname.includes('favourites') && styles.header__favourites_active}`}
         >
-          <img src={`/public/img/icons/favourites-icon.svg`} alt="favourites" />
+          <img src={favouriteIcon} alt="favourites" />
           {favouritesLength > 0 && (
             <div className={styles.header__favourites_quantity}>
               {favouritesLength}
@@ -69,7 +71,7 @@ const Header = () => {
             ${styles.header__cart}
             ${pathname.includes('cart') && styles.header__cart_active}`}
         >
-          <img src={`/public/img/icons/cart-icon.svg`} alt="cart" />
+          <img src={cartIcon} alt="cart" />
 
           {cartLength > 0 && (
             <div className={styles.header__cart_quantity}>{cartLength}</div>

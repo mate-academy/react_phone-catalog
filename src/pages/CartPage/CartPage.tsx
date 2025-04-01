@@ -1,6 +1,4 @@
 import styles from './CartPage.module.scss';
-import backIcon from '../../../public/img/icons/arrows/arrow-left-icon.svg';
-import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { CartItem } from '../../components/CartItem';
 import { useState } from 'react';
@@ -16,7 +14,6 @@ const EmptyCart = () => (
 
 const CartPage = () => {
   const { cart, totalPrice, clearCart } = useCart();
-
 
   const [openModal, setOpenModal] = useState(false);
 
