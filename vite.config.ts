@@ -19,6 +19,7 @@ export default defineConfig({
       '@api': path.resolve(__dirname, 'src/api'),
       '@enums': path.resolve(__dirname, 'src/enums'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@context': path.resolve(__dirname, 'src/context'),
     },
   },
 });

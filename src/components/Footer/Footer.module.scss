@@ -1,0 +1,67 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.footer {
+  width: 100%;
+  border-top: 1px solid $porcelain-color;
+  background-color: $white-color;
+
+  &__container {
+    @include flex(row, space-between, center);
+    @include content-padding-inline;
+
+    margin: 0 auto;
+    min-height: 96px;
+
+    gap: 32px;
+
+    @include on-mobile {
+      @include flex(column, space-between, stretch);
+
+      padding-block: 32px;
+    }
+  }
+
+  &__nav {
+    &_list {
+      @include flex(row, space-between, center);
+
+      gap: 106px;
+
+      @include on-tablet {
+        gap: 16px;
+      }
+
+      @include on-mobile {
+        @include flex(column, space-between, stretch);
+      }
+    }
+
+    &_link {
+      color: $regent-gray-color;
+    }
+  }
+
+  &__back {
+    @include flex(row, center, center);
+
+    gap: 16px;
+
+    &_text {
+      color: $regent-gray-color;
+    }
+
+    &_button {
+      @include set-size(32px, 32px);
+
+      border-radius: 50%;
+      border: 1px solid $submarine-color;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      background-image: url('../../assets/icons/arrow-top-icon.svg');
+
+      @include hover(background-color, $submarine-color);
+    }
+  }
+}

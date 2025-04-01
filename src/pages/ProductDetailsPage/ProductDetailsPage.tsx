@@ -15,6 +15,8 @@ import { HeartIcon } from '@components/Icons/HeartIcon';
 import { ProductSmallSpecs } from '@components/ProductSmallSpecs';
 import { Loader } from '@components/Loader';
 import { YouMayLike } from '@components/YouMayLike';
+import { useFavorites } from '@context/FavoritesContext';
+import { HeartActiveIcon } from '@components/Icons/HeartActiveIcon';
 
 import styles from './ProductDetailsPage.module.scss';
 import cn from 'classnames';
@@ -30,6 +32,9 @@ export const ProductDetailsPage = () => {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [productIdNumber, setProductIdNumber] = useState<number | null>(null);
   const navigate = useNavigate();
+
+  const { favorites, toggleFavorite } = useFavorites();
+  const isFavorite = favorites.includes(String(productIdNumber));
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -131,8 +136,9 @@ export const ProductDetailsPage = () => {
                   styles.product_detail__actions_heart,
                   'button-icon',
                 )}
+                onClick={() => toggleFavorite(String(productIdNumber))}
               >
-                <HeartIcon />
+                {isFavorite ? <HeartActiveIcon /> : <HeartIcon />}
               </button>
             </div>
 

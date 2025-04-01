@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { ProductType } from 'types/productTypes';
 import { HeartIcon } from '@components/Icons/HeartIcon';
 import { PrimaryButton } from '@components/Buttons/PrimaryButton';
+import { useFavorites } from '@context/FavoritesContext';
+import { HeartActiveIcon } from '@components/Icons/HeartActiveIcon';
 
 import React from 'react';
 import cn from 'classnames';
@@ -17,6 +19,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   hideOldPrice = false,
 }) => {
   const {
+    id,
     name,
     price,
     fullPrice,
@@ -27,6 +30,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     itemId,
     category,
   } = card;
+
+  const { favorites, toggleFavorite } = useFavorites();
+  const isFavorite = favorites.includes(String(id));
 
   return (
     <div className={styles.card}>
@@ -67,8 +73,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           onClick={() => {}}
           isSelected={false}
         />
-        <button className={cn(styles.card__buttons_heart, 'button-icon')}>
-          <HeartIcon />
+        <button
+          className={cn(styles.card__buttons_heart, 'button-icon')}
+          onClick={() => toggleFavorite(String(id))}
+        >
+          {isFavorite ? <HeartActiveIcon /> : <HeartIcon />}
         </button>
       </div>
     </div>

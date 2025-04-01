@@ -16,7 +16,8 @@
       "@routes/*": ["routes/*"],
       "@api/*": ["api/*"],
       "@enums/*": ["enums/*"],
-      "@hooks/*": ["hooks/*"]
+      "@hooks/*": ["hooks/*"],
+      "@context/*": ["context/*"]
     }
   }
 }

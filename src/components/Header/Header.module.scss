@@ -4,6 +4,7 @@
 .header {
   width: 100%;
   border-bottom: 1px solid $porcelain-color;
+  background-color: $white-color;
 
   &__container {
     @include flex(row, space-between, center);
@@ -62,6 +63,7 @@
 
   &__heart_btn,
   &__cart_btn {
+    position: relative;
     padding: 24px;
     border-left: 1px solid $porcelain-color;
 
@@ -123,6 +125,7 @@
   transform: translateX(-100%);
   pointer-events: none;
   background-color: $athens-gray-color;
+  z-index: 800;
 
   &.open {
     opacity: 1;
@@ -158,6 +161,7 @@
 
   &_favorite,
   &_cart {
+    position: relative;
     width: 100%;
     padding: 24px 72px;
     border-left: 1px solid $porcelain-color;

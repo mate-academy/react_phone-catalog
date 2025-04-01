@@ -16,6 +16,7 @@
     display: block;
     background-repeat: no-repeat;
     background-position: center;
+    margin: 0 auto;
   }
 
   &__arrowRightDisabled {
@@ -44,5 +45,18 @@
 
   &__home {
     background-image: url('@assets/icons/home-icon.svg');
+  }
+
+  &__count {
+    @include font(400, 9px, 100%, 0);
+    @include set-size(14px, 14px);
+    @include flex(row, center, center);
+
+    position: absolute;
+    top: -5px;
+    right: -7px;
+    background-color: $brilliant-rose-color;
+    border-radius: 50%;
+    color: $white-color;
   }
 }

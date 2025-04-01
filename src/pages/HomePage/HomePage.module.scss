@@ -16,4 +16,10 @@
 .home__page {
   @include flex(column, space-between, center);
   @include responsive-gap;
+
+  margin-bottom: 80px;
+
+  @include on-mobile {
+    margin-bottom: 64px;
+  }
 }
