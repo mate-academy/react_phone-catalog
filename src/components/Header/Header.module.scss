@@ -135,10 +135,19 @@
         }
 
         &_active {
-          margin-top: 3px;
           color: $primary-color;
-          border-bottom: 3px solid $primary-color;
-          transition: border-color 0.3s ease, color 0.3s ease;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: $primary-color;
+            animation: borderExpand 0.3s ease forwards;
+          }
         }
 
         a {

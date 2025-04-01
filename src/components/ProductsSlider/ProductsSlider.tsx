@@ -7,7 +7,6 @@ import type { Swiper as SwiperType } from 'swiper';
 import ArrowButton from '../ArrowButton/ArrowButton';
 
 import 'swiper/css';
-// import './style.css';
 
 type Props = {
   title: string;
@@ -49,6 +48,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
         </div>
       </div>
       <Swiper
+        slidesPerView={1}
         spaceBetween={20}
         onSlideChange={swiper => setCurrSlide(swiper.activeIndex)}
         onSwiper={swiper => (swiperRef.current = swiper)}
@@ -77,30 +77,14 @@ export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
           },
         }}
       >
-        {/* {visibleProducts.slice(0, 5).map(product => (
+        {visibleProducts.map(product => (
           <SwiperSlide key={product.id}>
             <ProductCard
               product={product}
               isNewModelsBlock={isNewModelsBlock}
             />
           </SwiperSlide>
-        ))} */}
-
-        <SwiperSlide>
-          <div style={{ height: '500px', backgroundColor: 'gray' }}>
-            Slide 1
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div style={{ height: '500px', backgroundColor: 'gray' }}>
-            Slide 2
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div style={{ height: '500px', backgroundColor: 'gray' }}>
-            Slide 3
-          </div>
-        </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

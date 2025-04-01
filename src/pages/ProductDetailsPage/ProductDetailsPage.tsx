@@ -44,10 +44,10 @@ const ProductDetailsPage = () => {
 
         <ProductDetails product={product} />
 
-        {/* <ProductsSlider
+        <ProductsSlider
           title="You may also like"
           visibleProducts={randomProducts}
-        /> */}
+        />
       </div>
     );
   }

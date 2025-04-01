@@ -70,7 +70,6 @@
     "predeploy": "npm run build",
     "deploy": "mate-scripts deploy"
   },
-  
   "browserslist": {
     "production": [
       ">0.2%",

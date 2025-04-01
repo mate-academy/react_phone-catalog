@@ -3,6 +3,11 @@
 .favourites {
   width: 100%;
 
+  @include on-desktop {
+    // ! warning 
+    width: 1136px;
+  }
+
   &__quantity {
     margin-bottom: 40px;
   }
@@ -28,6 +33,7 @@
 
     @include on-desktop {
       grid-template-columns: 1fr 1fr 1fr 1fr;
+      
     }
   }
 

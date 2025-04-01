@@ -21,6 +21,16 @@ export const upperCase = (lowerPath: string) => {
   );
 };
 
+export function getNumbers(from: number, to: number): number[] {
+  const numbers = [];
+
+  for (let n = from; n <= to; n += 1) {
+    numbers.push(n);
+  }
+
+  return numbers;
+}
+
 export function getBgColorForRadio(color: string) {
   switch (color) {
     case 'spacegray':
@@ -48,8 +58,9 @@ export const updateProducts = (
   itemsPerPage: number | 'all',
   sortOrder: string,
   currentPage: number,
+  category: string
 ) => {
-  let filteredProducts = products.filter(p => p.category === 'phones');
+  let filteredProducts = products.filter(p => p.category === category);
 
   if (sortOrder === 'alphabetically') {
     filteredProducts.sort((a, b) => a.name.localeCompare(b.name));

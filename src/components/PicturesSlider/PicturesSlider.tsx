@@ -72,6 +72,7 @@ const PicturesSlider = () => {
 
   return (
     <div className={`${styles.slider}`}>
+      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
       <div className={styles.slider__content}>
         {imageCount > 1 && (
           <button

@@ -2,16 +2,14 @@
 
 .container {
   padding-inline: 16px;
-
-  display: flex;
-  flex-direction: column;
+  flex-grow: 1;
 
   @include on-tablet {
     padding-inline: 24px;
   }
 
   @include on-desktop {
-    width: 1136px;
+    max-width: 1136px;
     height: auto;
     margin-inline: auto;
     padding-inline: 32px;

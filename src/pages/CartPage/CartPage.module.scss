@@ -1,13 +1,17 @@
 @import '/src/styles/global';
 
 .cart {
+  width: 100%;
   margin-top: 24px;
 
   @include on-tablet {
     margin-top: 40px;
   }
 
-  width: 100%;
+  @include on-desktop {
+    // ! warning
+    width: 1136px;
+  }
 
   &__content {
     width: 100%;

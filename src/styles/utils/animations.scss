@@ -19,3 +19,12 @@
     transform: translateX(0);
   }
 }
+
+@keyframes borderExpand {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

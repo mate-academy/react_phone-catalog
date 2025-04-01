@@ -1,12 +1,11 @@
 // PhonesPage.tsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { useProducts } from '../../context/ProductsContext';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import CustomSelect from '../../components/CustomSelect/CustomSelect';
 import ProductsList from '../../components/ProductsList/ProductsList';
-import PaginationBlock from '../../components/PaginationBlock/PaginationBlock';
 import Skeleton from '../../components/Skeleton/Skeleton';
 import {
   itemsForPageOptions,
@@ -14,21 +13,20 @@ import {
   updateProducts,
 } from '../../utils';
 import styles from './PhonesPage.module.scss';
+import { Pagination } from '../../components/Pagination';
 
 const PhonesPage = () => {
   const { products } = useProducts();
   const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const perPage = searchParams.get('perPage') || 'all';
   const sort = searchParams.get('sort') || 'newest';
   const page = searchParams.get('page') || '1';
 
-  const paginationLength = Math.ceil(
-    products.filter(p => p.category === 'phones').length / +perPage,
-  );
+  const phonesLength = products.filter(p => p.category === 'phones').length;
 
   useEffect(() => {
     setLoading(true);
@@ -39,22 +37,12 @@ const PhonesPage = () => {
         perPage === 'all' ? 'all' : +perPage,
         sort,
         +page,
+        'phones'
       );
       setPhones(updatedPhones);
       setLoading(false);
     }, 1000);
   }, [products, perPage, sort, page]);
-
-  // ! змінити всі остальні сторінки
-
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number,
-  ) => {
-    const params = new URLSearchParams(searchParams);
-    params.set('page', value.toString());
-    setSearchParams(params);
-  };
 
   if (loading) {
     return <Skeleton />;
@@ -84,11 +72,13 @@ const PhonesPage = () => {
       <ProductsList products={phones} />
 
       {perPage !== 'all' && (
-        <PaginationBlock
-          handlePageChange={handlePageChange}
-          page={page}
-          paginationLength={paginationLength}
-        />
+        <>
+          <Pagination
+            total={phonesLength}
+            perPage={+perPage}
+            currentPage={+page}
+          />
+        </>
       )}
     </div>
   );

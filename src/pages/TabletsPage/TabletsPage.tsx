@@ -6,10 +6,14 @@ import ProductsList from '../../components/ProductsList/ProductsList';
 import { Product } from '../../types/Product';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import PaginationBlock from '../../components/PaginationBlock/PaginationBlock';
-import { itemsForPageOptions, sortingOptions } from '../../utils';
+import {
+  itemsForPageOptions,
+  sortingOptions,
+  updateProducts,
+} from '../../utils';
 import Skeleton from '../../components/Skeleton/Skeleton';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { Pagination } from '../../components/Pagination';
 
 const TabletsPage = () => {
   const { products, error } = useProducts();
@@ -17,62 +21,29 @@ const TabletsPage = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const perPage = searchParams.get('perPage') || 'all';
   const sort = searchParams.get('sort') || 'newest';
   const page = searchParams.get('page') || '1';
 
-  const paginationLength = Math.ceil(
-    products.filter(p => p.category === 'tablets').length / +perPage,
-  );
-
-  function updateProducts(
-    itemsPerPage: number | 'all',
-    sortOrder: string,
-    currentPage: number,
-  ) {
-    if (products.length === 0) {
-      return;
-    }
-
-    let filteredPhones = products.filter(p => p.category === 'tablets');
-
-    if (sortOrder === 'alphabetically') {
-      filteredPhones.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (sortOrder === 'cheapest') {
-      filteredPhones.sort((a, b) => a.price - b.price);
-    }
-
-    if (itemsPerPage === 'all') {
-      setTablets(filteredPhones);
-    } else {
-      const startIndex = (currentPage - 1) * itemsPerPage;
-      setTablets(filteredPhones.slice(startIndex, startIndex + itemsPerPage));
-    }
-  }
-
-  useEffect(() => {
-    updateProducts(perPage === 'all' ? 'all' : +perPage, sort, +page);
-  }, [perPage, sort, page]);
+  const tabletsLength = products.filter(p => p.category === 'tablets').length;
 
   useEffect(() => {
     setLoading(true);
 
     setTimeout(() => {
-      updateProducts(perPage === 'all' ? 'all' : +perPage, sort, +page);
+      const updatedTablets = updateProducts(
+        products,
+        perPage === 'all' ? 'all' : +perPage,
+        sort,
+        +page,
+        'tablets'
+      );
+      setTablets(updatedTablets);
       setLoading(false);
     }, 1000);
-  }, [products]);
-
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number,
-  ) => {
-    const params = new URLSearchParams(searchParams);
-    params.set('page', value.toString());
-    setSearchParams(params);
-  };
+  }, [products, perPage, sort, page]);
 
   if (products.length === 0) {
     return <h2 className={styles.title}>There are no tablets yet</h2>;
@@ -110,10 +81,10 @@ const TabletsPage = () => {
       <ProductsList products={tablets} />
 
       {perPage !== 'all' && (
-        <PaginationBlock
-          handlePageChange={handlePageChange}
-          page={page}
-          paginationLength={paginationLength}
+        <Pagination
+          total={tabletsLength}
+          perPage={+perPage}
+          currentPage={+page}
         />
       )}
     </div>

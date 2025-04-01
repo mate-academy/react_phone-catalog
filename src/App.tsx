@@ -4,12 +4,14 @@ import Header from './components/Header/Header';
 import { Container } from './components/Container';
 import { Footer } from './components/Footer';
 
-export const App = () => (
-  <div className="App">
-    <Header />
-    <Container>
-      <Outlet />
-    </Container>
-    <Footer />
-  </div>
-);
+export const App = () => {
+  return (
+    <div className="App">
+      <Header />
+      <Container>
+        <Outlet />
+      </Container>
+      <Footer />
+    </div>
+  );
+};

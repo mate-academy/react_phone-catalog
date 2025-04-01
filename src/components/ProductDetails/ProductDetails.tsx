@@ -41,6 +41,8 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
     }
   };
 
+  console.log(product);
+
   useEffect(() => {
     getProductById(product.id).then(res => setFormattedProduct(res));
   }, [product]);
@@ -89,8 +91,6 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                   );
 
                   const bgColor = getBgColorForRadio(formattedNewColor);
-
-                  console.log(bgColor, 'bg-color');
 
                   return (
                     <Link key={color} to={newPath}>
