@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  height: 16px;
+  width: max-content;
+  margin-bottom: 16px;
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__text {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $secondaryColor;
+    height: 16px;
+    display: flex;
+    align-items: center;
+  }
+}

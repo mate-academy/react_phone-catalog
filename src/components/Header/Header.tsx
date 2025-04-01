@@ -4,9 +4,9 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import classNames from 'classnames';
 
-import menuIcon from '../../imgs/svg/menu-icon.svg';
 import logo from '../../imgs/svg/Logo.svg';
-import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
+import menuIcon from '../../imgs/svg/menu-icon.svg';
+import { BurgerMenu } from '../BurgerMenu';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

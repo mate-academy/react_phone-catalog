@@ -1,0 +1,39 @@
+@import '../../styles/mixinsTypography';
+@import '../../styles/variables';
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 56px;
+
+  &_title {
+    margin: 0;
+    width: 100%;
+    height: 42px;
+    border-bottom: 1px solid $grayColor;
+    color: $primaryColor;
+
+    @include h3-mobile;
+  }
+
+  &_block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &_title {
+      margin: 0;
+      color: $primaryColor;
+
+      @include h4-mobile;
+    }
+
+    &_text {
+      margin: 0;
+      color: $secondaryColor;
+
+      @include body-text;
+    }
+  }
+}
