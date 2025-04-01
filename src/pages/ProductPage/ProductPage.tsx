@@ -52,13 +52,12 @@ export const ProductPage = () => {
     perPage === 'all' ? 1 : Math.ceil(sortedProducts.length / Number(perPage));
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const displayedProducts =
-    perPage === 'all'
-      ? sortedProducts
-      : sortedProducts.slice(
-          (currentPage - 1) * Number(perPage),
-          currentPage * Number(perPage),
-        );
+  const xxxx = sortedProducts.slice(
+    (currentPage - 1) * Number(perPage),
+    currentPage * Number(perPage),
+  );
+
+  const displayedProducts = perPage === 'all' ? sortedProducts : xxxx;
 
   const onPageChange = (page: number) => {
     setCurrentPage(page);
