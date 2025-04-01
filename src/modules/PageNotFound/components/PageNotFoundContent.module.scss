@@ -1,0 +1,31 @@
+@use "../../shared/utils/mixins.scss" as mix;
+@use "../../shared/utils/vars.scss" as vars;
+
+.pnf {
+  &__img_container {
+    grid-column: span 4;
+    height: 50vh;
+
+    @include mix.padding-inline;
+
+    @include mix.on-tablette {
+      margin-top: 50px;
+      grid-column: span 12;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+    &__image {
+    @include mix.photo;
+
+    transition: transform vars.$transitionDuration;
+
+    &:hover {
+      transform: scale(vars.$hoverScaleSize);
+    }
+  }
+}
+

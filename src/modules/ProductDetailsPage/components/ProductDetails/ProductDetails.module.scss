@@ -1,0 +1,329 @@
+@use "../../../shared/utils/mixins" as mix;
+@use "../../../shared/utils/vars" as vars;
+
+.pd {
+  &__name {
+    grid-column: span 4;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: vars.$c-grayPrimary;
+    margin-bottom: 32px;
+
+    @include mix.on-tablette {
+      grid-column: span 12;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 24;
+    }
+
+  }
+
+  &__colors_container {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+
+    @include mix.on-tablette {
+      grid-column: 8 / 13;
+    }
+
+    @include mix.on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__colors_block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__block_title {
+    color: vars.$c-graySecondary;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__capacity_options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__capacity_options label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border: 2px solid vars.$c-grayElements;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: vars.$c-white;
+  }
+
+  &__capacity_options input[type="radio"] {
+    display: none;
+  }
+
+  &__capacity_options input[type="radio"]:checked + label {
+    background-color: vars.$c-grayPrimary;
+    color: vars.$c-white;
+  }
+
+  &__color_options {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__color_options input[type="radio"] {
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid vars.$c-grayElements;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  &__color_options input[type="radio"]:checked {
+    border: 2px solid vars.$c-grayPrimary;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+
+    &--full {
+      color: vars.$c-graySecondary;
+      text-decoration: line-through;
+      margin-left: 6px;
+    }
+
+    @include mix.on-tablette {
+      grid-column: 8 / 13;
+     }
+  }
+
+  &__price_container {
+    @include mix.on-tablette {
+      grid-column: 8 / 13;
+    }
+
+    @include mix.on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__capacities_container {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+
+    @include mix.on-tablette {
+      grid-column: 8 / 13;
+    }
+
+    @include mix.on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__capacities_title {
+    display: flex;
+  }
+
+  &__bottom_container{
+    grid-column: span 4;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    @include mix.on-tablette {
+      grid-column: 8 / 13;
+    }
+
+    @include mix.on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    background-color: vars.$c-grayPrimary;
+    color: vars.$c-white;
+    font-weight: 700;
+    text-align: center;
+    height: 40px;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border: 1px solid vars.$c-grayIconsPlaceHolders;
+
+    &:hover {
+      border-color: vars.$c-grayPrimary;
+    }
+
+    &:active {
+      border-color: vars.$c-grayElements;
+    }
+  }
+
+  &__divider {
+    grid-column: span 4;
+    height: 1px;
+    width: 100%;
+    background-color: vars.$c-grayElements;
+    margin: 24px 0;
+
+    @include mix.on-tablette {
+      grid-column: 8 / 13;
+    }
+
+    @include mix.on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__spec {
+    grid-column: span 4;
+    display: flex;
+    color: vars.$c-graySecondary;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    @include mix.on-tablette {
+      grid-column: 8 / 13;
+    }
+
+    @include mix.on-desktop {
+      grid-column: 14 / 21;
+    }
+
+    &--small {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+    }
+
+    &--title {
+      color: vars.$c-graySecondary;
+    }
+
+    &--value{
+      color: vars.$c-grayPrimary;
+    }
+  }
+
+  &__about {
+    grid-column: span 4;
+    margin-top: 56px;
+
+    @include mix.on-tablette {
+      grid-column: span 12;
+      margin-top: 64px;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  &__section_title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &__about_text {
+    font-weight: 600;
+    color: vars.$c-graySecondary;
+  }
+
+  &__tech_specs {
+    grid-column: span 4;
+    margin: 56px 0;
+
+    @include mix.on-tablette {
+      grid-column: span 12;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__back {
+    grid-column: 1 / 3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    color: vars.$c-graySecondary;
+
+    &:hover{
+      color: vars.$c-grayPrimary;
+    }
+
+    @include mix.on-tablette {
+      grid-column: span 12;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__container {
+    width: 100%;
+  }
+}
+
+.black { background-color: vars.$black; }
+
+.white { background-color: vars.$white; }
+
+.red { background-color: vars.$red; }
+
+.blue { background-color: vars.$blue; }
+
+.green { background-color: vars.$green; }
+
+.yellow { background-color: vars.$yellow; }
+
+.purple { background-color: vars.$purple; }
+
+.pink { background-color: vars.$pink; }
+
+.orange { background-color: vars.$orange; }
+
+.gray { background-color: vars.$gray; }
+
+.midnightgreen { background-color: vars.$midnightgreen; }
+
+.pacific-blue { background-color: vars.$pacific-blue; }
+
+.gold { background-color: vars.$gold; }
+
+.silver { background-color: vars.$silver; }
+
+.rosegold { background-color: vars.$rosegold; }
+

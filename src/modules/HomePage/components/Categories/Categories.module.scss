@@ -1,0 +1,19 @@
+@use "../../../shared/utils/mixins" as mix;
+
+.categories {
+  &__title {
+    grid-column: span 4;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+    margin-bottom: 24px;
+
+    @include mix.on-tablette {
+      grid-column: span 12;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 24;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use "../../utils/vars" as vars;
+
+.filter {
+  &__container {
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: vars.$c-graySecondary;
+  }
+
+  &__field_grouped {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__select_container {
+    height: 40px;
+  }
+
+  &__select {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 12px;
+
+    appearance: none;
+    background: url('../../../../../public/img/icons/arrow-down.svg')
+    no-repeat right 10px center;
+    background-size: 16px;
+    border-color: vars.$c-grayIconsPlaceHolders;
+
+    &:hover{
+      border-color: vars.$c-graySecondary;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: vars.$c-grayPrimary;
+    }
+  }
+
+  &__option {
+    font-family: Mont, sans-serif;
+    padding: 5px;
+    color: vars.$c-graySecondary;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+    width: inherit;
+
+    &:hover {
+      color: vars.$c-grayPrimary;
+      background-color: vars.$c-grayHoverBg;
+    }
+  }
+}
