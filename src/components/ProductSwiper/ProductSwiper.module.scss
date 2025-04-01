@@ -69,9 +69,11 @@
     cursor: pointer;
     transition: background-color 0.3s;
 
-    &:hover {
-      background-color: $primaryColor;
-      color: $whiteColor;
+    @media (hover: hover) {
+      &:hover {
+        background-color: $primaryColor;
+        color: $whiteColor;
+      }
     }
 
     &:disabled {
@@ -80,4 +82,5 @@
       color: $secondaryColor;
     }
   }
+
 }

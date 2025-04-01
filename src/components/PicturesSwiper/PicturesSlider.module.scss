@@ -69,9 +69,17 @@
     font-weight: bold;
   }
 
-  &:hover {
-    background-color: $primaryColor;
-    color: $whiteColor;
+  @media (hover: hover) {
+    &:hover {
+      background-color: $primaryColor;
+      color: $whiteColor;
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: $whiteColor;
+    color: $secondaryColor;
   }
 }
 
@@ -98,9 +106,17 @@
     font-weight: bold;
   }
 
-  &:hover {
-    background-color: $primaryColor;
-    color: $whiteColor;
+  @media (hover: hover) {
+    &:hover {
+      background-color: $primaryColor;
+      color: $whiteColor;
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: $whiteColor;
+    color: $secondaryColor;
   }
 }
 

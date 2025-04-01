@@ -22,6 +22,9 @@ export const ProductSwiper: React.FC<NewModelsSliderProps> = ({
 
   const swiperRef = useRef<SwiperType | null>(null);
 
+  const prevButtonId = `prev-${Math.random().toString(36).substr(2, 9)}`;
+  const nextButtonId = `next-${Math.random().toString(36).substr(2, 9)}`;
+
   const handleInit = (swiper: SwiperType) => {
     setIsBeginning(swiper.isBeginning);
     setIsEnd(swiper.isEnd);
@@ -40,12 +43,16 @@ export const ProductSwiper: React.FC<NewModelsSliderProps> = ({
         <div className={styles.slider__controls}>
           <button
             className={styles.slider__button}
-            id="prev"
+            id={prevButtonId}
             disabled={isBeginning}
           >
             &lt;
           </button>
-          <button className={styles.slider__button} id="next" disabled={isEnd}>
+          <button
+            className={styles.slider__button}
+            id={nextButtonId}
+            disabled={isEnd}
+          >
             &gt;
           </button>
         </div>
@@ -70,7 +77,7 @@ export const ProductSwiper: React.FC<NewModelsSliderProps> = ({
             slidesPerView: 4,
           },
         }}
-        navigation={{ nextEl: '#next', prevEl: '#prev' }}
+        navigation={{ nextEl: `#${nextButtonId}`, prevEl: `#${prevButtonId}` }} // Прив'язка до унікальних кнопок
         className={styles.slider__container}
         onInit={handleInit}
         onSlideChange={handleSlideChange}
