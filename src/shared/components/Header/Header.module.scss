@@ -1,30 +1,27 @@
-@import '../../../assets/styles/main.scss';
+@import '../../../assets/styles/main';
 
 .header {
-  box-shadow: 0px 1px 0px 0px $color-elements;
+  box-shadow: 0 1px 0 0 $color-elements;
   &__container {
     display: flex;
     align-items: center;
   }
 
   &__logoLink {
+    box-sizing: border-box;
     width: 96px;
     height: 48px;
-
     padding: 13px 16px;
-    box-sizing: border-box;
 
     @include on-desktop {
       width: 128px;
       height: 64px;
-
       padding: 18px 24px;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       width: 128px;
       height: 64px;
-
       padding: 18px 24px;
     }
   }
@@ -32,7 +29,6 @@
   &__logo {
     width: 64px;
     height: 22px;
-
     transition: transform 0.3s linear;
 
     &:hover {
@@ -44,7 +40,7 @@
       height: 28px;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       width: 80px;
       height: 28px;
     }
@@ -62,7 +58,7 @@
       margin-left: 24px;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       margin-left: 24px;
     }
   }
@@ -78,20 +74,19 @@
       margin-left: 64px;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       margin-left: 64px;
     }
   }
 
   &__link {
     font-family: inherit;
-    font-weight: 700;
     font-size: 12px;
+    font-weight: 700;
     line-height: 11px;
+    color: $color-secondary;
     text-transform: uppercase;
     letter-spacing: 0.48px;
-
-    color: $color-secondary;
 
     transition: color 0.3s linear;
 
@@ -105,15 +100,20 @@
 
     &::before {
       content: '';
+
       position: absolute;
+      bottom: -26px;
+      left: 50%;
+      transform: translateX(-50%);
+
       width: 0;
       height: 2px;
-      background-color: #000;
-      left: 50%;
-      bottom: -26px;
-      transform: translateX(-50%);
-      transition: width 0.3s ease;
+
       line-height: 64px;
+
+      background-color: #000;
+
+      transition: width 0.3s ease;
     }
 
     &:active::before {
@@ -125,7 +125,6 @@
   &__wrapper {
     display: flex;
     align-items: center;
-
     margin-left: auto;
   }
 
@@ -134,14 +133,15 @@
 
     @include on-tablet {
       display: flex;
-      justify-content: center;
       align-items: center;
-      box-shadow: -1px 0px 0px 0px $color-elements;
-
-      transition: box-shadow 0.2s ease-in-out;
+      justify-content: center;
 
       width: 48px;
       height: 48px;
+
+      box-shadow: -1px 0 0 0 $color-elements;
+
+      transition: box-shadow 0.2s ease-in-out;
     }
 
     @include on-desktop {
@@ -149,13 +149,13 @@
       height: 64px;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       width: 64px;
       height: 64px;
     }
 
     &:hover {
-      box-shadow: 0px 0px 2px 1px $color-primary;
+      box-shadow: 0  0 2px 1px $color-primary;
     }
   }
 
@@ -164,14 +164,15 @@
 
     @include on-tablet {
       display: flex;
-      justify-content: center;
       align-items: center;
-      box-shadow: -1px 0px 0px 0px $color-elements;
-
-      transition: box-shadow 0.2s ease-in-out;
+      justify-content: center;
 
       width: 48px;
       height: 48px;
+
+      box-shadow: -1px 0 0 0 $color-elements;
+
+      transition: box-shadow 0.2s ease-in-out;
     }
 
     @include on-desktop {
@@ -179,33 +180,34 @@
       height: 64px;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       width: 64px;
       height: 64px;
     }
 
     &:hover {
-      box-shadow: 0px 0px 2px 1px $color-primary;
+      box-shadow: 0 0 2px 1px $color-primary;
     }
   }
 
   &__menuLink {
     display: flex;
-    justify-content: center;
     align-items: center;
-    box-shadow: -1px 0px 0px 0px $color-elements;
-
-    transition: box-shadow 0.2s ease-in-out;
+    justify-content: center;
 
     width: 48px;
     height: 48px;
+
+    box-shadow: -1px 0 0 0 $color-elements;
+
+    transition: box-shadow 0.2s ease-in-out;
 
     @include on-tablet {
       display: none;
     }
 
     &:hover {
-      box-shadow: 0px 0px 2px 1px $color-primary;
+      box-shadow: 0 0 2px 1px $color-primary;
     }
   }
 

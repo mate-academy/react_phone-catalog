@@ -1,9 +1,9 @@
 *,
 *::before,
 *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -26,8 +26,8 @@ h6 {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 ul,
@@ -44,9 +44,9 @@ input,
 button,
 textarea,
 select {
+  border: none;
   font-family: inherit;
   font-size: inherit;
-  border: none;
   outline: none;
 }
 

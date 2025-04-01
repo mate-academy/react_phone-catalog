@@ -1,0 +1,17 @@
+@import '../../assets/styles/main';
+
+.productPage {
+  &__container {
+    padding-block: 24px 64px;
+
+    @include on-desktop {
+      padding-block: 24px 80px;
+    }
+
+    @include on-desktop-extra {
+      padding-block: 24px 80px;
+    }
+
+    @include content-padding;
+  }
+}

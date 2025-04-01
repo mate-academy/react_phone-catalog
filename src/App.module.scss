@@ -1,4 +1,4 @@
-@import './assets/styles/main.scss';
+@import './assets/styles/main.';
 
 .main {
   padding-block: 24px 64px;
@@ -11,7 +11,7 @@
     padding-block: 56px 80px;
   }
 
-  @include on-desktopExtra {
+  @include on-desktop-extra {
     padding-block: 56px 80px;
   }
 }

@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/main.scss';
+@import '../../../../assets/styles/main';
 
 .homeSlider {
   margin-bottom: 56px;
@@ -11,7 +11,7 @@
     margin-bottom: 80px;
   }
 
-  @include on-desktopExtra {
+  @include on-desktop-extra {
     margin-bottom: 80px;
   }
 
@@ -28,15 +28,15 @@
 
     @include on-tablet {
       display: block;
+      grid-column: 1/2;
 
       width: 100%;
       height: auto;
-      background-color: $color-white;
       border: 1px solid $color-icons;
 
-      transition: border 0.3s ease-in-out;
+      background-color: $color-white;
 
-      grid-column: 1/2;
+      transition: border 0.3s ease-in-out;
     }
 
     &:hover {
@@ -60,7 +60,7 @@
       grid-column: 2/24;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       grid-column: 2/24;
     }
   }
@@ -77,7 +77,7 @@
       height: auto;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       height: auto;
     }
   }
@@ -87,22 +87,22 @@
 
     @include on-tablet {
       display: block;
+      grid-column: 12/13;
 
       width: 100%;
       height: auto;
-      background-color: $color-white;
       border: 1px solid $color-icons;
 
-      transition: border 0.3s ease-in-out;
+      background-color: $color-white;
 
-      grid-column: 12/13;
+      transition: border 0.3s ease-in-out;
     }
 
     @include on-desktop {
       grid-column: 24/25;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       grid-column: 24/25;
     }
 
@@ -128,15 +128,15 @@
       grid-column: 12/14;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       grid-column: 12/14;
     }
   }
 
   &__pagination {
     display: flex;
-    justify-content: center;
     gap: 9px;
+    justify-content: center;
   }
 
   &__paginationBullet {

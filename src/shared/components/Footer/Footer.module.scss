@@ -1,8 +1,8 @@
-@import '../../../assets/styles/main.scss';
+@import '../../../assets/styles/main';
 
 .footer {
   padding-block: 32px;
-  box-shadow: 0px -1px 0px 0px $color-elements;
+  box-shadow: 0 -1px 0 0 $color-elements;
 
   &__container {
     display: flex;
@@ -20,7 +20,6 @@
   &__logoLink {
     width: 89px;
     height: 32px;
-
     margin-bottom: 32px;
 
     @include on-tablet {
@@ -31,7 +30,6 @@
   &__logo {
     width: 100%;
     height: 100%;
-
     transition: transform 0.3s linear;
 
     &:hover {
@@ -60,27 +58,27 @@
     margin-bottom: 16px;
 
     @include on-tablet {
-      margin-bottom: 0;
       margin-right: 14px;
+      margin-bottom: 0;
     }
 
     @include on-desktop {
       margin-right: 107px;
     }
 
-    @include on-desktopExtra {
+    @include on-desktop-extra {
       margin-right: 107px;
     }
   }
 
   &__link {
     font-family: inherit;
-    font-weight: 700;
     font-size: 12px;
+    font-weight: 700;
     line-height: 11px;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
     color: $color-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.48px;
 
     transition: color 0.3s linear;
 
@@ -96,24 +94,24 @@
   }
 
   &__backTop {
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 100%;
-    color: $color-secondary;
     cursor: default;
 
     margin-right: 16px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    color: $color-secondary;
   }
 
   &__backTopLink {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     width: 32px;
     height: 32px;
-
     border: 1px solid $color-icons;
 
     transition: border 0.3s linear;

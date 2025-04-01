@@ -1,4 +1,4 @@
-@import '../../assets/styles/main.scss';
+@import '../../assets/styles/main';
 
 .homePage__title {
   margin-bottom: 24px;
@@ -13,7 +13,7 @@
     margin-bottom: 56px;
   }
 
-  @include on-desktopExtra {
+  @include on-desktop-extra {
     margin-bottom: 56px;
   }
 }

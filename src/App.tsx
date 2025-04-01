@@ -1,16 +1,14 @@
 import { HomePage } from './modules/HomePage';
+import { ProductPage } from './modules/ProductPage';
 import { Footer } from './shared/components/Footer';
 import { Header } from './shared/components/Header';
-
-import styles from './App.module.scss';
 
 export const App = () => {
   return (
     <>
       <Header />
-      <main className={styles.main}>
-        <HomePage />
-      </main>
+      <HomePage />
+      <ProductPage />
       <Footer />
     </>
   );
