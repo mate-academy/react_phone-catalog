@@ -5,6 +5,7 @@ import { Navbar } from './Components/Header/Navbar';
 import { Footer } from './Components/Footer/Footer';
 import { SearchParameters } from './SearchParm/SearchParam';
 import Loader from './Components/Loader/Loader';
+import React from 'react';
 
 export const App = () => {
   const [loading, setLoading] = useState(false);

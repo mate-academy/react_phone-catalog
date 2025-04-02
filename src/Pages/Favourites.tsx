@@ -13,7 +13,7 @@ export const Favourites: React.FC = () => {
           key={phone.id}
           item={phone}
           quantity={1}
-          onRemove={() => removeFromFavorites(phone.id)} // Використай removeFromFavorites
+          onRemove={() => removeFromFavorites(phone.id)}
         />
       ))}
       <button className="checkout-button" onClick={clearFavorites}>

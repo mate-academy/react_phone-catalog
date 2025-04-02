@@ -11,7 +11,6 @@ export const Tablets: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Отримуємо значення пошуку з URL
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('query')?.toLowerCase() || '';
@@ -42,7 +41,6 @@ export const Tablets: React.FC = () => {
     fetchTablets();
   }, []);
 
-  // Фільтруємо планшети за пошуковим запитом
   useEffect(() => {
     setFilteredTablets(
       tablets.filter(tablet => tablet.name.toLowerCase().includes(searchQuery)),
