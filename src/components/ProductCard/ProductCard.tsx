@@ -24,7 +24,7 @@ export const ProductCard: React.FC<Props> = ({ product, isNewModelsBlock }) => {
     <div className={styles.product}>
       <Link to={`/${product.category}/${product.itemId}`}>
         <div className={styles.product__image}>
-          <img src={`/public/${product.image}`} alt="product image" />
+          <img src={`/${product.image}`} alt=" product image" />
         </div>
         <p className={styles.product__name}>{product.name}</p>
         <div className={styles.product__prices}>
@@ -63,7 +63,7 @@ export const ProductCard: React.FC<Props> = ({ product, isNewModelsBlock }) => {
           onClick={handleToggleFavourite}
         >
           <img
-            src={`/public/img/icons/favourites-icon${isAddedToFavourites ? '-active' : ''}.svg`}
+            src={`/img/icons/favourites-icon${isAddedToFavourites ? '-active' : ''}.svg`}
             alt="favourites"
           />
         </button>

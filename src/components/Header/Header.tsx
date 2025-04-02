@@ -1,12 +1,12 @@
 import styles from './Header.module.scss';
-import logo from '../../../public/img/Nice-Gadgets-logo.png';
+import logo from '/img/Nice-Gadgets-logo.png';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { Squash as Hamburger } from 'hamburger-react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { useFavourites } from '../../context/FavouritesContext';
 import { useCart } from '../../context/CartContext';
-import favouriteIcon from '../../../public/img/icons/favourites-icon.svg';
+import favouriteIcon from '/img/icons/favourites-icon.svg';
 import cartIcon from '/img/icons/cart-icon.svg';
 
 const pages = ['Home', 'Phones', 'Tablets', 'Accessories'];

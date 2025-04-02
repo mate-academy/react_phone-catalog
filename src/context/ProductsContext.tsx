@@ -32,12 +32,12 @@ export const ProductsProvider = ({
 
   const getProducts = async () => {
     try {
-      const response = await fetch('/public/api/products.json');
+      const response = await fetch('/api/products.json');
       const data = await response.json();
 
-      const products = [...data];
+      const productsFromServer = [...data];
 
-      setProducts(products);
+      setProducts(productsFromServer);
     } catch (error) {
       setError(true);
     }
@@ -47,12 +47,12 @@ export const ProductsProvider = ({
     setError(false);
     setLoading(true);
     try {
-      const response = await fetch('/public/api/phones.json');
+      const response = await fetch('/api/phones.json');
       const data = await response.json();
 
-      const phones = [...data];
+      const phonesFromServer = [...data];
 
-      setPhones(phones);
+      setPhones(phonesFromServer);
     } catch (error) {
       setError(true);
       setLoading(false);
@@ -65,12 +65,12 @@ export const ProductsProvider = ({
     setError(false);
     setLoading(true);
     try {
-      const response = await fetch('/public/api/tablets.json');
+      const response = await fetch('/api/tablets.json');
       const data = await response.json();
 
-      const tablets = [...data];
+      const tabletsFromServer = [...data];
 
-      setTablets(tablets);
+      setTablets(tabletsFromServer);
     } catch (error) {
       setError(true);
       setLoading(false);
@@ -83,7 +83,7 @@ export const ProductsProvider = ({
     setError(false);
     setLoading(true);
     try {
-      const response = await fetch('/public/api/accessories.json');
+      const response = await fetch('/api/accessories.json');
       const data = await response.json();
 
       const accessoriesFromServer = [...data];
@@ -102,12 +102,12 @@ export const ProductsProvider = ({
     setLoading(true);
 
     try {
-      const response = await fetch(`${`/public/api/${category}.json`}`);
+      const response = await fetch(`${`/api/${category}.json`}`);
       const data = await response.json();
 
-      const products = [...data];
+      const productsFromServer = [...data];
 
-      const neededProduct = products.find(p => p.id === itemId);
+      const neededProduct = productsFromServer.find(p => p.id === itemId);
 
       if (neededProduct) {
         return neededProduct;
@@ -127,12 +127,12 @@ export const ProductsProvider = ({
     setLoading(true);
 
     try {
-      const response = await fetch(`${`/public/api/products.json`}`);
+      const response = await fetch(`${`/api/products.json`}`);
       const data = await response.json();
 
-      const products = [...data];
+      const productsForGetById = [...data];
 
-      const neededProduct = products.find(p => p.itemId === id);
+      const neededProduct = productsForGetById.find(p => p.itemId === id);
 
       return neededProduct;
     } catch (error) {
