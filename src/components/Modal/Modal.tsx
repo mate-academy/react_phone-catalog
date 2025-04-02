@@ -30,6 +30,7 @@ export const Modal: React.FC<Props> = ({ isOpen, onCancel, onConfirm }) => {
               styles['modal__button--confirm'],
             )}
             onClick={onConfirm}
+            aria-label="confirm"
           >
             Confirm
           </button>
@@ -39,6 +40,7 @@ export const Modal: React.FC<Props> = ({ isOpen, onCancel, onConfirm }) => {
               styles['modal__button--cancel'],
             )}
             onClick={onCancel}
+            aria-label="cancel"
           >
             Cancel
           </button>

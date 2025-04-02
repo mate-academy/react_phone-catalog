@@ -18,20 +18,22 @@
 
   &__header {
     display: flex;
-  flex-direction: column;
-  gap: 16px;
+    flex-direction: column;
+    gap: 16px;
   }
 
   &__title {
     @include h1-typography;
 
-    margin-bottom: 8px;
+      margin-bottom: 8px;
+
   }
 
   &__quantity {
     @include body-typography;
 
-    color: $secondary;
+      color: $secondary;
+
   }
 
   &__button {
@@ -53,8 +55,10 @@
   &__text {
     @include small-text-typography;
 
-height: 12px;
-    color: $secondary;
+
+      height: 12px;
+      color: $secondary;
+    
 
     &:hover {
       color: $primary;

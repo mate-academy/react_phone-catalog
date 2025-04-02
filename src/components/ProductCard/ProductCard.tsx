@@ -42,7 +42,11 @@ export const ProductCard: React.FC<Props> = ({
         to={`/product/${itemId}`}
         onClick={handleScrollTo}
       >
-        <img className={styles['product-card__img']} src={image} />
+        <img
+          className={styles['product-card__img']}
+          src={image}
+          alt={`${name} img`}
+        />
         <p className={styles['product-card__name']}>{name}</p>
       </Link>
       <div className={styles['product-card__price']}>

@@ -25,6 +25,7 @@ export const FavouritesPage = () => {
             <button
               onClick={() => navigate(-1)}
               className={styles.favourites__button}
+              aria-label="back"
             >
               <div className={styles.favourites__icon}></div>
               <p className={styles.favourites__text}>Back</p>

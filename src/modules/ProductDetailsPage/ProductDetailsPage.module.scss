@@ -9,16 +9,23 @@
     padding-inline: 16px;
   }
 
+  &--error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
   &__content {
     @include page-grid;
 
-    row-gap: 80px;
-    padding-top: 40px;
-
     @include on-tablet {
       row-gap: 64px;
     }
+
+
+      row-gap: 80px;
+      padding-top: 40px;
 
   }
 
@@ -28,9 +35,18 @@
 
   &__title {
     @include h2-typography;
+
+    &--error {
+      margin: 32px;
+    }
   }
 
-  &__slider{
+  &__img {
+    margin: 0 auto;
+    width: 500px;
+  }
+
+  &__slider {
     grid-column: 1 / 13;
 
     @include on-tablet {
@@ -45,12 +61,6 @@
   &__info {
     @include page-grid;
 
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-
-    grid-column: 14 / 21;
-
     @include on-tablet {
       grid-column: 8 / -1;
     }
@@ -58,6 +68,14 @@
     @include on-mobile {
       grid-column: 1 / -1;
     }
+
+
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      grid-column: 14 / 21;
+    
   }
 
   &__about {
@@ -150,7 +168,7 @@
   &__text {
     @include small-text-typography;
 
-height: 12px;
+    height: 12px;
     color: $secondary;
 
     &:hover {

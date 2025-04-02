@@ -40,6 +40,7 @@ export const Footer = () => {
             <button
               className={styles.back__button}
               onClick={scrollToTop}
+              aria-label="scroll to top"
             ></button>
           </div>
         </div>

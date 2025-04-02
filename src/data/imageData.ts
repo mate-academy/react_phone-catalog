@@ -1,11 +1,11 @@
 export const imagesMobile = [
-  './img/banner/mobile-banner-phones.png',
-  './img/banner/mobile-banner-accessories.png',
-  './img/banner/mobile-banner-tablets.png',
+  './img/banner/mobile-banner-phones.webp',
+  './img/banner/mobile-banner-accessories.webp',
+  './img/banner/mobile-banner-tablets.webp',
 ];
 
 export const imagesDesktop = [
-  './img/banner/banner-phones.png',
-  './img/banner/banner-accessories.png',
-  './img/banner/banner-tablets.png',
+  './img/banner/banner-phones.webp',
+  './img/banner/banner-accessories.webp',
+  './img/banner/banner-tablets.webp',
 ];

@@ -55,6 +55,7 @@ export const AddAndLikeButtons: React.FC<Props> = ({ product }) => {
         )}
         style={location === 3 ? { height: '48px' } : { height: '40px' }}
         onClick={handleAdded}
+        aria-label={`${isInCart ? 'Remove' : 'Add to cart'}`}
       >
         {isInCart ? 'Remove' : 'Add to cart'}
       </button>
@@ -68,6 +69,7 @@ export const AddAndLikeButtons: React.FC<Props> = ({ product }) => {
         )}
         style={location === 3 ? { width: '48px' } : { width: '40px' }}
         onClick={handleLiked}
+        aria-label="add or delete favourites"
       ></button>
     </div>
   );

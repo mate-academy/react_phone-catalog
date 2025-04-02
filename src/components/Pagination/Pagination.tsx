@@ -50,6 +50,7 @@ export const Pagination: React.FC<Props> = ({
             styles['button__slider--left'],
           )}
           to={handleClickLeft()}
+          aria-label="prev page"
         ></Link>
       </li>
       {pages.map(page => (
@@ -59,6 +60,7 @@ export const Pagination: React.FC<Props> = ({
               [styles['button__page--selected']]: currentPage === page,
             })}
             to={updateSearchParam('page', page.toString(), '1', searchParams)}
+            aria-label={`${page} page`}
           >
             {page}
           </Link>
@@ -72,6 +74,7 @@ export const Pagination: React.FC<Props> = ({
             styles['button__slider--right'],
           )}
           to={handleClickRight()}
+          aria-label="next page"
         ></Link>
       </li>
     </ul>

@@ -42,8 +42,20 @@ export const ProductDetailsPage = () => {
 
   if (!productId && !loading) {
     return (
-      <div className={styles.product}>
-        <h2 className={styles.product__title}>Product not found</h2>
+      <div className={classNames(styles.product, styles['product--error'])}>
+        <h2
+          className={classNames(
+            styles.product__title,
+            styles['product__title--error'],
+          )}
+        >
+          Product not found
+        </h2>
+        <img
+          className={styles.product__img}
+          src="public/img/product-not-found.webp"
+          alt="product not found"
+        />
       </div>
     );
   }
@@ -58,8 +70,20 @@ export const ProductDetailsPage = () => {
         <Loader />
       </div>
     ) : (
-      <div className={styles.product}>
-        <h2 className={styles.product__title}>Product not found</h2>
+      <div className={classNames(styles.product, styles['product--error'])}>
+        <h2
+          className={classNames(
+            styles.product__title,
+            styles['product__title--error'],
+          )}
+        >
+          Product not found
+        </h2>
+        <img
+          className={styles.product__img}
+          src="public/img/product-not-found.webp"
+          alt="product not found"
+        />
       </div>
     );
   }

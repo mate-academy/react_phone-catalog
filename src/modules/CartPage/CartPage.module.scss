@@ -12,8 +12,9 @@
   &__content {
     @include page-grid;
 
-    row-gap: 32px;
-    padding-top: 40px;
+      row-gap: 32px;
+      padding-top: 40px;
+
   }
 
   &__header {
@@ -21,10 +22,11 @@
   }
 
   &__list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    grid-column: 1 / 17;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      grid-column: 1 / 17;
+
 
     @include on-tablet {
       grid-column: 1 / -1;
@@ -32,9 +34,10 @@
   }
 
   &__checkout {
-    width: 100%;
-    height: min-content;
-    grid-column: 17 / -1;
+      width: 100%;
+      height: min-content;
+      grid-column: 17 / -1;
+
 
     @include on-tablet {
       grid-column: 1 / -1;
@@ -43,6 +46,11 @@
 
   &__title {
     @include h1-typography;
+  }
+
+  &__img {
+    margin: 0 auto;
+    width: 500px;
   }
 }
 
@@ -70,34 +78,34 @@
   &__text {
     @include small-text-typography;
 
-height: 12px;
-    color: $secondary;
-
     &:hover {
       color: $primary;
     }
+
+
+      height: 12px;
+      color: $secondary;
+    
   }
 }
 
 .item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 24px;
-  border: 1px solid $element;
-
   @include on-mobile {
     flex-direction: column;
     gap: 16px;
     padding: 16px;
   }
 
-  &__part {
+
     display: flex;
     align-items: center;
-    gap: 24px;
+    justify-content: space-between;
 
+    padding: 24px;
+    border: 1px solid $element;
+
+
+  &__part {
     @include on-mobile {
       gap: 16px;
       width: 100%;
@@ -106,13 +114,21 @@ height: 12px;
         justify-content: space-between;
       }
     }
+
+
+      display: flex;
+      align-items: center;
+      gap: 24px;
+
   }
 
   &__button {
     @include button-style;
 
-    width: 32px;
-    height: 32px;
+
+      width: 32px;
+      height: 32px;
+
 
     &--remove {
       border: none;
@@ -178,8 +194,10 @@ height: 12px;
   &__price {
     @include h3-typography;
 
-    width: 80px;
-    text-align: end;
+
+      width: 80px;
+      text-align: end;
+
   }
 }
 
@@ -205,18 +223,22 @@ height: 12px;
   &__quantity {
     @include body-typography;
 
-    color: $secondary;
+
+      color: $secondary;
+
   }
 
   &__button {
     @include buttons-typography;
 
-    color: $white;
-    background-color: $primary;
-    border: none;
-    height: 48px;
 
-    transition: box-shadow 0.3s;
+      color: $white;
+      background-color: $primary;
+      border: none;
+      height: 48px;
+
+      transition: box-shadow 0.3s;
+
 
     &:hover {
       box-shadow: 0 3px 13px $shadow;

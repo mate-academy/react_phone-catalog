@@ -12,8 +12,10 @@
   &__content {
     @include page-grid;
 
-    gap: 40px;
-    padding-top: 40px;
+
+      gap: 40px;
+      padding-top: 40px;
+    
   }
 
   &__loader {
@@ -27,7 +29,9 @@
   &__title {
     @include h1-typography;
 
-    margin-bottom: 8px;
+  margin-bottom: 8px;
+
+
   }
 
   &__info {

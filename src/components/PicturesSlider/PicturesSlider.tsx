@@ -51,6 +51,7 @@ export const PicturesSlider = () => {
       <button
         className={`${styles['pictures-slider__button']} ${styles['pictures-slider__button--left']}`}
         onClick={() => handleClick('left')}
+        aria-label="prev slide"
       ></button>
 
       <div className={styles['pictures-slider__images']}>
@@ -98,6 +99,7 @@ export const PicturesSlider = () => {
       <button
         className={`${styles['pictures-slider__button']} ${styles['pictures-slider__button--right']}`}
         onClick={() => handleClick('right')}
+        aria-label="next slide"
       ></button>
 
       <div className={styles['pictures-slider__dots']}>

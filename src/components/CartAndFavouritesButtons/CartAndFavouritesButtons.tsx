@@ -46,6 +46,7 @@ export const CartAndFavouritesButtons: React.FC<Props> = ({
               [styles.active]: isActive,
             })
           }
+          aria-label="open favourites"
         >
           <div
             className={classNames(
@@ -71,6 +72,7 @@ export const CartAndFavouritesButtons: React.FC<Props> = ({
               [styles.active]: isActive,
             })
           }
+          aria-label="open card"
         >
           <div
             className={classNames(

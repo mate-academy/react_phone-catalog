@@ -5,16 +5,16 @@ export const categories = [
   {
     name: 'phones',
     title: 'Mobile phones',
-    img: './img/categories/phones.png',
+    img: './img/categories/phones.webp',
   },
   {
     name: 'accessories',
     title: 'Accessories',
-    img: './img/categories/accessories.png',
+    img: './img/categories/accessories.webp',
   },
   {
     name: 'tablets',
     title: 'Tablets',
-    img: './img/categories/tablets.png',
+    img: './img/categories/tablets.webp',
   },
 ];

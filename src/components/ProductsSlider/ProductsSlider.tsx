@@ -79,10 +79,12 @@ export const ProductsSlider: React.FC<Props> = ({
             className={`${styles['products-slider__button']} ${styles['products-slider__button--left']}`}
             onClick={handleLeftClick}
             disabled={index === 0}
+            aria-label="prev slide"
           ></button>
           <button
             className={`${styles['products-slider__button']} ${styles['products-slider__button--right']}`}
             onClick={handleRightClick}
+            aria-label="next slide"
           ></button>
         </div>
       </div>

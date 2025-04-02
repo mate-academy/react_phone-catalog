@@ -71,12 +71,20 @@ export const CartPage = () => {
                 navigate(-1);
               }}
               className={styles.header__button}
+              aria-label="back"
             >
               <div className={styles.header__icon}></div>
               <p className={styles.header__text}>Back</p>
             </button>
             {!state.products.length ? (
-              <h1 className={styles.cart__title}>Your cart is empty</h1>
+              <>
+                <h1 className={styles.cart__title}>Your cart is empty</h1>
+                <img
+                  className={styles.cart__img}
+                  src="public/img/cart-is-empty.webp"
+                  alt="cart is empty"
+                />
+              </>
             ) : (
               <h1 className={styles.cart__title}>Cart</h1>
             )}
@@ -112,12 +120,17 @@ export const CartPage = () => {
                             styles['item__button--remove'],
                           )}
                           onClick={() => handleRemove(id)}
+                          aria-label="remove"
                         ></button>
                         <Link
                           to={`/product/${itemId}`}
                           className={styles.item__link}
                         >
-                          <img className={styles.item__img} src={image} />
+                          <img
+                            className={styles.item__img}
+                            src={image}
+                            alt="img"
+                          />
                           <p className={styles.item__name}>{name}</p>
                         </Link>
                       </div>
@@ -135,6 +148,7 @@ export const CartPage = () => {
                             )}
                             disabled={quantity === 1}
                             onClick={() => handleUpdate(id, quantity - 1)}
+                            aria-label="minus quantity"
                           ></button>
                           <p className={styles.item__quantity}>{quantity}</p>
                           <button
@@ -143,6 +157,7 @@ export const CartPage = () => {
                               styles['item__button--plus'],
                             )}
                             onClick={() => handleUpdate(id, quantity + 1)}
+                            aria-label="plus quantity"
                           ></button>
                         </div>
                         <h3 className={styles.item__price}>{'$' + price}</h3>
@@ -164,6 +179,7 @@ export const CartPage = () => {
                 <button
                   className={styles.checkout__button}
                   onClick={handleCheckout}
+                  aria-label="Checkout"
                 >
                   Checkout
                 </button>
