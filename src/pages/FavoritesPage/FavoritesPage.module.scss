@@ -7,11 +7,19 @@
   flex-direction: column;
   padding: 24px 16px;
 
+  @include desktop {
+    padding: 16px calc((100% - 1136px) / 2);
+  }
+
   &__navigate_icons {
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
     width: 93px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
   }
 
   &__navigate_icon {
@@ -41,6 +49,10 @@
     color: $primaryColor;
 
     @include h1-mobile;
+
+    @include tablet {
+      @include h1-tablet-desktop;
+    }
   }
 
   &__count {
@@ -49,6 +61,40 @@
     color: $secondaryColor;
 
     @include body-text;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__sorts_page {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+
+  &__sorts_sortBy,
+  &__sorts_sortItems {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+
+    &_text {
+      margin: 0;
+      color: $secondaryColor;
+
+      @include small-text;
+    }
+  }
+
+  &__sorts_sortBy {
+    max-width: 187px;
+  }
+
+  &__sorts_sortItems {
+    max-width: 136px;
   }
 
   &__clearButton {
@@ -56,12 +102,18 @@
     padding: 8px 16px;
     background-color: $primaryColor;
     color: white;
-    border: none;
+    border: 1px solid $primaryColor;
     border-radius: 4px;
     max-width: 263px;
     cursor: pointer;
 
     @include buttons;
+
+    &:hover {
+      border: 1px solid $primaryColor;
+      border-radius: 8px;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
   }
 
   &__list {
@@ -72,6 +124,7 @@
     place-items: center;
 
     @include tablet {
+      margin-bottom: 40px;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 24px;
     }
@@ -81,5 +134,4 @@
       gap: 32px;
     }
   }
-
 }

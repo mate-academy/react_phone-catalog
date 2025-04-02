@@ -1,11 +1,19 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .pagination {
   display: flex;
   gap: 8px;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    margin-bottom: 56px;
+  }
 
   &__btn {
     padding: 6px 12px;

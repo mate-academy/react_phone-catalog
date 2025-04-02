@@ -1,5 +1,6 @@
 @import '../../styles/mixinsTypography';
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .card {
   display: flex;
@@ -9,11 +10,16 @@
 
   max-width: 288px;
   max-height: 506px;
-
   border: 1px solid $grayColor;
+  transition: border 0.3s;
+
+
+  @include hover(transform, scale(1.05));
 
   &:hover {
     cursor: pointer;
+    border-color: $secondaryColor;
+    border-radius: 12px;
   }
 
   &__img {

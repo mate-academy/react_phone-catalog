@@ -5,6 +5,14 @@
 .cart {
   padding: 24px 16px;
 
+  @include tablet {
+    padding: 40px 24px;
+  }
+
+  @include desktop {
+    padding: 16px calc((100% - 1136px) / 2);
+  }
+
   &__back {
     display: flex;
     width: max-content;
@@ -12,6 +20,8 @@
     align-items: center;
     margin-bottom: 24px;
     gap: 8px;
+
+    @include hover(transform, scale(1.2));
 
     &_arrow {
       width: 16px;
@@ -23,6 +33,10 @@
       margin: 0;
 
       @include small-text;
+    }
+
+    &:hover &_text {
+      color: $primaryColor;
     }
   }
 
@@ -44,6 +58,14 @@
     @include body-text;
   }
 
+  &__group {
+    @include desktop {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
   &__list {
     display: flex;
     flex-direction: column;
@@ -52,7 +74,11 @@
     list-style: none;
     padding: 0 16px;
     margin: 0;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
+
+    @include desktop {
+      margin-bottom: auto;
+    }
   }
 
   &__item {
@@ -85,6 +111,8 @@
     border: none;
     color: $secondaryColor;
     cursor: pointer;
+
+    @include hover(transform, scale(1.2))
   }
 
   &__image {
@@ -97,8 +125,17 @@
   &__name {
     margin: 0;
     color: $primaryColor;
+    max-width: 128px;
 
     @include body-text;
+
+    @include tablet {
+      max-width: 176px;
+    }
+
+    @include desktop {
+      max-width: 336px;
+    }
   }
 
   &__details {
@@ -121,7 +158,8 @@
   }
 
   &__quantityButton {
-    background: none;
+    background-color: $whiteColor;
+      color: $primaryColor;
     border: 1px solid $iconsColor;
     width: 32px;
     height: 32px;
@@ -130,9 +168,17 @@
     justify-content: center;
     cursor: pointer;
 
+    &:hover {
+      border-color: $secondaryColor;
+      color: $whiteColor;
+      background-color: $primaryColor;
+    }
+
     &:disabled {
       cursor: default;
       border-color: $elementsColor;
+      background-color: $whiteColor;
+      color: $primaryColor;
     }
   }
 
@@ -149,6 +195,14 @@
     border: 1px solid $grayColor;
     padding: 24px;
     gap: 16px;
+    margin-bottom: 40px;
+
+    @include desktop {
+      width: 368px;
+      height: 206px;
+      margin: 0;
+      gap: 24px;
+    }
 
     &_text {
       display: flex;
@@ -186,6 +240,12 @@
       cursor: pointer;
 
       @include buttons;
+
+      &:hover {
+        border: 1px solid $primaryColor;
+        border-radius: 8px;
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
     }
   }
 }

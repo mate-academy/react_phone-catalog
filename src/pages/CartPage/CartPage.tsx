@@ -47,59 +47,65 @@ export const CartPage: React.FC = () => {
         <p className={styles.cart__empty}>Your cart is empty</p>
       ) : (
         <>
-          <ul className={styles.cart__list}>
-            {cart.map(product => (
-              <li key={product.id} className={styles.cart__item}>
-                <div className={styles.cart__desription}>
-                  <button
-                    className={styles.cart__remove}
-                    onClick={() => removeFromCart(product.id)}
-                  >
-                    <img src={cross} alt="cross" />
-                  </button>
-                  <img
-                    src={`${import.meta.env.BASE_URL}/${product.image}`}
-                    alt={product.name}
-                    className={styles.cart__image}
-                  />
-                  <p className={styles.cart__name}>{product.name}</p>
-                </div>
-
-                <div className={styles.cart__details}>
-                  <div className={styles.cart__quantity}>
+          <div className={styles.cart__group}>
+            <ul className={styles.cart__list}>
+              {cart.map(product => (
+                <li key={product.id} className={styles.cart__item}>
+                  <div className={styles.cart__desription}>
                     <button
-                      className={styles.cart__quantityButton}
-                      onClick={() => handleQuantityChange(product.id, -1)}
-                      disabled={quantities[product.id] === 1}
+                      className={styles.cart__remove}
+                      onClick={() => removeFromCart(product.id)}
                     >
-                      -
+                      <img src={cross} alt="cross" />
                     </button>
-                    <span className={styles.cart__quantityValue}>
-                      {quantities[product.id]}
-                    </span>
-                    <button
-                      className={styles.cart__quantityButton}
-                      onClick={() => handleQuantityChange(product.id, 1)}
-                    >
-                      +
-                    </button>
+                    <img
+                      src={`${import.meta.env.BASE_URL}/${product.image}`}
+                      alt={product.name}
+                      className={styles.cart__image}
+                    />
+                    <p className={styles.cart__name}>{product.name}</p>
                   </div>
-                  <h3 className={styles.cart__price}>
-                    ${product.price * quantities[product.id]}
-                  </h3>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <div className={styles.cart__summary}>
-            <div className={styles.cart__summary_text}>
-              <h2 className={styles.cart__summary_text_total}>${totalPrice}</h2>
-              <p className={styles.cart__summary_text_totalItems}>
-                Total for {cart.length} items
-              </p>
+
+                  <div className={styles.cart__details}>
+                    <div className={styles.cart__quantity}>
+                      <button
+                        className={styles.cart__quantityButton}
+                        onClick={() => handleQuantityChange(product.id, -1)}
+                        disabled={quantities[product.id] === 1}
+                      >
+                        -
+                      </button>
+                      <span className={styles.cart__quantityValue}>
+                        {quantities[product.id]}
+                      </span>
+                      <button
+                        className={styles.cart__quantityButton}
+                        onClick={() => handleQuantityChange(product.id, 1)}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <h3 className={styles.cart__price}>
+                      ${product.price * quantities[product.id]}
+                    </h3>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className={styles.cart__summary}>
+              <div className={styles.cart__summary_text}>
+                <h2 className={styles.cart__summary_text_total}>
+                  ${totalPrice}
+                </h2>
+                <p className={styles.cart__summary_text_totalItems}>
+                  Total for {cart.length} items
+                </p>
+              </div>
+              <div className={styles.cart__summary_line}></div>
+              <button className={styles.cart__summary_checkout}>
+                Checkout
+              </button>
             </div>
-            <div className={styles.cart__summary_line}></div>
-            <button className={styles.cart__summary_checkout}>Checkout</button>
           </div>
         </>
       )}

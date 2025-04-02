@@ -5,6 +5,10 @@
 .product {
   padding: 24px 16px;
 
+  @include desktop {
+    padding: 16px calc((100% - 1136px) / 2);
+  }
+
   &__title {
     margin: 0;
     margin-bottom: 32px;
@@ -13,12 +17,29 @@
     @include h2-mobile;
   }
 
-  &__group {
+  &__group_1 {
     @include tablet {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      gap: 17px;
       margin-bottom: 64px;
+    }
+
+    @include desktop {
+      gap: 64px;
+    }
+  }
+
+  &__group_2 {
+    @include desktop {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+      margin-bottom: 64px;
+    }
+
+    @include desktop {
+      gap: 64px;
     }
   }
 }

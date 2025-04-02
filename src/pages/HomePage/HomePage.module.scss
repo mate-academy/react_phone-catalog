@@ -9,6 +9,12 @@
     padding: 32px 24px;
   }
 
+  @include desktop {
+    padding: 56px calc((100% - 1136px) / 2);
+    max-width: 1136px;
+    align-self: center;
+  }
+
   &__title {
     margin: 0;
     padding: 24px 16px;
@@ -34,6 +40,10 @@
     @include tablet {
       margin: 0;
       margin-bottom: 64px;
+    }
+
+    @include desktop {
+      margin-bottom: 80px;
     }
 
     &_title {

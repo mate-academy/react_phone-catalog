@@ -6,7 +6,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { BackButton } from '../../components/BackButton';
 import { ProductGallery } from '../../components/ProductGallery';
 import { ProductControls } from '../../components/ProductControls';
-import { TechSpecs } from '../../components/techSpecs';
+import { TechSpecs } from '../../components/TechSpecs';
 import { Description } from '../../components/Description/Description';
 
 import { Phones } from '../../types/Phones';
@@ -141,7 +141,7 @@ export const ProductDetailsPage: React.FC = () => {
       <Breadcrumbs category={product.category} name={product.name} />
       <BackButton category={product.category} />
       <h2 className={styles.product__title}>{product.name}</h2>
-      <div className={styles.product__group}>
+      <div className={styles.product__group_1}>
         <ProductGallery
           images={product.images}
           selectedImage={selectedImage}
@@ -157,8 +157,10 @@ export const ProductDetailsPage: React.FC = () => {
           handleCapacityChange={handleCapacityChange}
         />
       </div>
-      <Description product={product} />
-      <TechSpecs product={product} />
+      <div className={styles.product__group_2}>
+        <Description product={product} />
+        <TechSpecs product={product} />
+      </div>
       <ProductSwiper name="You may also like" products={relatedProducts} />
     </div>
   );

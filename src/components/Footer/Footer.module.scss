@@ -2,7 +2,6 @@
 @import '../../styles/mixins';
 @import '../../styles/variables';
 
-
 .footer {
   display: flex;
   flex-direction: column;
@@ -10,11 +9,28 @@
   margin: 0;
   padding: 32px 16px;
   gap: 32px;
+  box-shadow: 0 -1px 0 0 rgba(226, 230, 233, 1);
+
+  @include tablet {
+    flex-direction: row;
+    padding: 32px;
+    gap: 0;
+    justify-content: space-between;
+    max-height: 32px;
+  }
+
+  @include desktop {
+    padding: 32px calc((100% - 1136px) / 2);
+  }
 
   &__logo {
     margin: 0;
     height: 32px;
     align-self: start;
+
+    @include tablet {
+      width: 89px;
+    }
   }
 
   &__links {
@@ -22,6 +38,14 @@
     flex-direction: column;
     gap: 16px;
 
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include desktop {
+      gap: 136px;
+    }
   }
 
   &__link {
@@ -30,6 +54,15 @@
     color: $secondaryColor;
 
     @include uppercase;
+    @include hover(transform, scale(1.1));
+
+    &:hover {
+      color: $primaryColor;
+    }
+
+    @include tablet {
+      width: max-content;
+    }
   }
 
   &__button {
@@ -45,15 +78,31 @@
 
     @include hover(transform, scale(1.2));
 
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include tablet {
+      width: max-content;
+    }
+
     &_text {
       margin: 0;
       color: $secondaryColor;
       text-align: center;
     }
 
+    &:hover &_text {
+      color: $primaryColor;
+    }
+
     &_img {
       padding: 13.3px 11.3px;
-      border: 1px solid rgba(180, 189, 195, 1)
+      border: 1px solid $iconsColor;
+    }
+
+    &:hover &_img {
+      border-color: $secondaryColor;
     }
   }
 }

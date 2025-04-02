@@ -15,6 +15,11 @@
     margin-bottom: 64px;
   }
 
+  @include desktop {
+    padding: 0;
+    margin-bottom: 80px;
+  }
+
   &__header {
     display: flex;
     flex-direction: row;
@@ -28,6 +33,10 @@
     color: $primaryColor;
 
     @include h2-mobile;
+
+    @include tablet {
+      @include h2-tablet-desktop;
+    }
   }
 
   &__controls {
@@ -40,6 +49,10 @@
     height: auto;
     overflow: hidden;
     padding: 0;
+
+    @include tablet {
+      padding: 15px;
+    }
   }
 
   &__slide {
@@ -49,13 +62,8 @@
     justify-content: center;
     background-color: $whiteColor;
     border-radius: 8px;
-    transition: transform 0.3s;
     max-width: 100%;
     flex: 1 0 auto;
-
-    &:hover {
-      transform: scale(1.05);
-    }
   }
 
   &__button {
