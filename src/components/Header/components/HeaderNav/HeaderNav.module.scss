@@ -1,0 +1,48 @@
+@import '/src/styles/main';
+
+.nav {
+  font-weight: 800;
+
+  @include onTablet {
+    height: 100%;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    position: relative;
+    margin: auto 0;
+    height: 27px;
+
+    @include onTablet {
+      height: 100%;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 12px;
+    line-height: 11px;
+    color: $secondary-color;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

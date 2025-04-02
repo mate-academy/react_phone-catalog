@@ -14,7 +14,11 @@ export const SiteLogo: React.FC<Props> = ({ className = '' }) => {
       to={ROUTES.HOME}
       className={classNames(className, logoStyles.logo)}
     >
-      <img src="img/logo.svg" alt="Nice Gadgets" />
+      <img
+        src="img/logo.svg"
+        alt="Nice Gadgets"
+        className={logoStyles.logo__image}
+      />
     </NavLink>
   );
 };

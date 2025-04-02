@@ -1,0 +1,19 @@
+@import '/src/styles/main';
+
+.goBack {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  border: none;
+  background-color: $white-color;
+
+  &__text {
+    font-family: Mont;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+  }
+}

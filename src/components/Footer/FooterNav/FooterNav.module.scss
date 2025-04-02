@@ -16,6 +16,11 @@
 
     @include onTablet {
       flex-direction: row;
+      gap: 16.17px;
+    }
+
+    @include onDesktop {
+      gap: 106.83px;
     }
   }
 

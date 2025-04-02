@@ -6,23 +6,25 @@ import { ProductPage } from './modules/ProductPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { ShoppingCartPage } from './modules/ShoppingCartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
-import { CategoriesProvider } from './context/СategoriesContext';
+import { ProductsProvider } from './context/ProductsContext';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 export const Root = () => (
-  <CategoriesProvider>
+  <ProductsProvider>
     <HashRouter>
       <Routes>
         <Route path={ROUTES.HOME} element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to={ROUTES.HOME} />} />
-          <Route path={ROUTES.PHONES} element={<ProductPage />}></Route>
-          <Route path={ROUTES.TABLETS} element={<ProductPage />}></Route>
-          <Route path={ROUTES.ACCESSORIES} element={<ProductPage />}></Route>
+          <Route path={`:category`}>
+            <Route index element={<ProductPage />} />
+            <Route path=":itemId?" element={<ProductDetailsPage />} />
+          </Route>
           <Route path={ROUTES.FAVORITES} element={<FavoritesPage />} />
           <Route path={ROUTES.CART} element={<ShoppingCartPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </HashRouter>
-  </CategoriesProvider>
+  </ProductsProvider>
 );

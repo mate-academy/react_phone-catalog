@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin onTablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -12,20 +14,16 @@
 
 @mixin pageGrid {
   --columns: 4;
-  --column-width: 1fr;
 
   display: grid;
-  grid-template-columns: repeat(var(--columns), var(--column-width));
-  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 40px 16px;
 
   @include onTablet {
-    --column: 12;
-    max-width: $tablet-min-width;
+    --columns: 12;
   }
 
   @include onDesktop {
-    --column: 24;
-    --column-width: 32px;
-    max-width: $desktop-min-width;
+    --columns: 24;
   }
 }

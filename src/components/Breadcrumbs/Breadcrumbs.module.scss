@@ -1,0 +1,32 @@
+@import '/src/styles/main';
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $primary-color;
+
+    &--is-last {
+      color: $secondary-color;
+    }
+  }
+
+  &__separator {
+    margin-inline: 8px;
+  }
+}

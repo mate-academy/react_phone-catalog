@@ -1,0 +1,29 @@
+@import '/src/styles/main';
+
+.productSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label {
+    color: $secondary-color;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  &__value {
+    color: $primary-color;;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+}

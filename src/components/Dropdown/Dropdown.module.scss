@@ -1,0 +1,78 @@
+@import '/src/styles/main';
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 180px;
+  position: relative;
+
+  &__title {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $secondary-color;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+    font-family: Mont;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+
+    &:hover {
+      border: 1px solid $secondary-color;
+      cursor: pointer;
+    }
+
+    &--active {
+      border-color: $primary-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    border: 1px solid $elements-color;
+    opacity: 0;
+    visibility: hidden;
+    background-color: $white-color;
+    padding-block: 8px;
+    box-shadow: 0px 2px 15px 0px #0000000D;
+    // transition: all 0.3s ease;
+
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__item {
+    padding: 6px 12px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+
+    &:hover {
+      background-color: $hover-bg-color;
+      color: $primary-color;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@import '/src/styles/main';
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: $primary-color;
+  }
+}

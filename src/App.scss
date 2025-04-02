@@ -3,7 +3,25 @@
 @import './styles/mixins.scss';
 @import './styles/reset.scss';
 
-.icon {
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 320px;
+}
+
+.page {
+  flex: 1;
+  padding: 32px;
+  padding-bottom: 80px;
+
+  &__content {
+    margin-inline: auto;
+    max-width: $max-width;
+  }
+}
+
+.button {
   height: $header-mobile-height;
   aspect-ratio: 1 / 1;
   background-color: $white-color;
@@ -17,4 +35,16 @@
   @include onDesktop {
     height: $desktop-min-width;
   }
+}
+
+.disabled {
+  color: $icons-color;
+  fill: $icons-color;
+  pointer-events: none;
+}
+
+.horizontal-line {
+  width: 100%;
+  border: 1px solid $elements-color;
+  margin: 0;
 }

@@ -1,8 +1,6 @@
 export const ROUTES = {
   HOME: '/',
-  PHONES: 'phones',
-  TABLETS: 'tablets',
-  ACCESSORIES: 'accessories',
+  PRODUCTS: 'products',
   FAVORITES: 'favorites',
   CART: 'cart',
 };

@@ -2,7 +2,9 @@
 @import '/src/styles/mixins';
 
 .footer {
-  &__container {
+  box-shadow: 0px -1px 0px 0px $elements-color;
+
+  &__content {
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -11,7 +13,7 @@
     color: $secondary-color;
     max-width: 1200px;
     margin-inline: auto;
-    padding: 32px 0;
+    padding: 32px;
 
     @include onTablet {
       flex-direction: row;

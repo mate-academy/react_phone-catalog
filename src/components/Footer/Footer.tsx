@@ -7,7 +7,7 @@ import { BackToTop } from './BackToTop';
 export const Footer = () => {
   return (
     <footer className={footerStyles.footer}>
-      <div className={footerStyles.footer__container}>
+      <div className={footerStyles.footer__content}>
         <SiteLogo />
         <FooterNav />
         <BackToTop />

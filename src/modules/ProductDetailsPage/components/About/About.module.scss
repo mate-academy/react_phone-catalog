@@ -1,0 +1,46 @@
+@import '/src/styles/main';
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: $primary-color;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &Title {
+      font-family: Mont;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $primary-color;
+    }
+
+    &Paragraph {
+      font-family: Mont;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: $secondary-color;
+    }
+  }
+}

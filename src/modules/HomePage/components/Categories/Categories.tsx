@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { SectionTitle } from '../SectionTitle/SectionTitle';
-import { CategoriesContext } from '../../../../context/СategoriesContext';
+import { ProductsContext } from '../../../../context/ProductsContext';
 
 export const Categories = () => {
-  const categories = useContext(CategoriesContext);
+  const { categories } = useContext(ProductsContext);
 
   return (
     <section>

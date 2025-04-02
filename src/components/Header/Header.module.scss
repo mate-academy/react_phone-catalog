@@ -1,13 +1,10 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '/src/styles/main';
 
 .header {
   background-color: $white-color;
   padding: 0;
   width: 100%;
   height: $header-mobile-height;
-  box-sizing: border-box;
-  box-shadow: 0px 1px 0px 0px $elements-color;
   position: relative;
   z-index: 50;
 
@@ -23,10 +20,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     height: 100%;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 0px 0px $elements-color;
+    z-index: 10;
   }
 
-  &__container {
+  &__topBarContainer {
     display: none;
 
     @include onTablet {
@@ -34,13 +35,12 @@
     }
   }
 
-  &__mobileMenu {
+  &__mobileTopBarContainer {
     display: flex;
 
     @include onTablet {
       display: none;
     }
-
   }
 
   &__menuBtn {
@@ -56,14 +56,14 @@
       }
   }
 
-  &__nav {
+  &__productNav {
     display: flex;
     align-items: center;
     gap: 24px;
     height: 100%;
   }
 
-  &__icons {
+  &__userControls {
     display: flex;
     align-items: center;
     gap: 24px;
