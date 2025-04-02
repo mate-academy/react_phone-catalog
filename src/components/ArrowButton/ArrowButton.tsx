@@ -19,7 +19,7 @@ const ArrowButton: React.FC<Props> = ({
         className={`${styles.arrow} ${isBtnDisabled ? styles.disabled : ''}`}
       >
         <img
-          src={`/public/img/icons/arrows/arrow-${direction}-icon${isBtnDisabled ? '-dis' : ''}.svg`}
+          src={`/img/icons/arrows/arrow-${direction}-icon${isBtnDisabled ? '-dis' : ''}.svg`}
           alt="Previous"
         />
       </button>

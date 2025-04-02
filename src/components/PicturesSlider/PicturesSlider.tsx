@@ -93,7 +93,7 @@ const PicturesSlider = () => {
             {[1, 2, 3].map(index => {
               const isSmall = isMobile && index === 1;
               const fileType = index === 1 ? 'png' : 'jpg';
-              const src = `/public/img/banners/banner-${isSmall ? 'small' : 'big'}${!isSmall ? index : ''}.${fileType}`;
+              const src = `/img/banners/banner-${isSmall ? 'small' : 'big'}${!isSmall ? index : ''}.${fileType}`;
 
               return (
                 <img

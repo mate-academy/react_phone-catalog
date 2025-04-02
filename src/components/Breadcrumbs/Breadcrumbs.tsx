@@ -6,7 +6,7 @@ import { upperCase } from '../../utils';
 
 const Breadcrumbs = () => {
   const { pathname } = useLocation();
-  
+
   const clearPath = pathname.slice(1);
 
   const pathSegments = clearPath.split('/');
