@@ -4,6 +4,7 @@ module.exports = {
     es2024: true,
   },
   extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
     "plugin:react-hooks/recommended",
     'airbnb-typescript',
@@ -11,6 +12,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:cypress/recommended',
+    'prettier',
   ],
   overrides: [
     {
@@ -30,6 +32,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
+    'react',
     'jsx-a11y',
     'import',
     'react-hooks',
