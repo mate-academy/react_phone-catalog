@@ -1,0 +1,282 @@
+@import '../../assets/styles/main';
+
+.cart {
+  &__container {
+    padding-block: 24px 56px;
+
+    @include on-tablet {
+      padding-block: 40px 64px;
+    }
+
+    @include on-desktop {
+      padding-block: 40px 80px;
+    }
+
+    @include on-desktop-extra {
+      padding-block: 40px 80px;
+    }
+
+    @include content-padding;
+  }
+}
+
+.cart__wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.cart__backButtonWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 16px;
+  }
+}
+
+.cart__backArrowImg {
+  width: 16px;
+  height: 16px;
+}
+
+.cart__backButton {
+  cursor: pointer;
+
+  margin-left: 4px;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: $color-secondary;
+}
+
+.cart__items {
+  row-gap: 32px;
+
+  @include page-grid;
+}
+
+.cart__itemsWrapper {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    grid-column: span 16;
+  }
+
+  @include on-desktop-extra {
+    grid-column: span 16;
+  }
+}
+
+.cart__item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid $color-elements;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    height: 128px;
+  }
+
+  @include on-desktop-extra {
+    height: 128px;
+  }
+}
+
+.cart__item:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.cart__description {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    margin-bottom: 0;
+  }
+}
+
+.cart__itemDeleteBtn {
+  width: 16px;
+  height: 16px;
+  background-color: $color-white;
+}
+
+.cart__itemImage {
+  margin-left: 16px;
+  width: 80px;
+  height: 80px;
+
+  @include on-tablet {
+    margin-left: 24px;
+  }
+}
+
+.cart__itemDescription {
+  margin-left: 16px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-primary;
+
+  @include on-tablet {
+    margin-left: 24px;
+  }
+}
+
+.cart__toPay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart__itemControl {
+  display: flex;
+  align-items: center;
+}
+
+.cart__minusBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid $color-elements;
+
+  background-color: $color-white;
+}
+
+.cart__minusBtnImg {
+  width: 16px;
+  height: 16px;
+}
+
+.cart__addedItems {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.cart__plusBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-elements;
+
+  background-color: $color-white;
+}
+
+.cart__plusBtnImg {
+  width: 16px;
+  height: 16px;
+}
+
+.cart__price {
+  font-family: inherit;
+  font-size: 22px;
+  font-weight: 00;
+  line-height: 140%;
+  color: $color-primary;
+
+  @include on-tablet {
+    margin-left: 53px;
+  }
+}
+
+.cart__totalPrice {
+  padding: 24px;
+  grid-column: span 4;
+
+  border: 1px solid $color-elements;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    grid-column: 17/-1;
+    height: 206px;
+  }
+
+  @include on-desktop-extra {
+    grid-column: 17/-1;
+    height: 206px;
+  }
+}
+
+.cart__listItems {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.cart__listItemPrice {
+  font-family: inherit;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  color: $color-primary;
+  text-align: center;
+}
+
+.cart__listItemInfo {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-secondary;
+  text-align: center;
+}
+
+.cart__line {
+  display: block;
+
+  margin-bottom: 16px;
+  width: 100%;
+  height: 1px;
+
+  background-color: $color-elements;
+}
+
+.cart__checkout {
+  width: 100%;
+  padding-block: 13px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-white;
+  text-align: center;
+
+  background-color: $color-primary;
+
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
