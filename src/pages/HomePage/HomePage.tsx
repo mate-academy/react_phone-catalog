@@ -8,7 +8,6 @@ import { ShopByCategory } from '../../components/ShopByCategory';
 export const HomePage = () => {
   return (
     <>
-      <h1 className={styles['visually-hidden']}>Product Catalog</h1>
       <div className={styles['home-slider']}>
         <PicturesSlider />
       </div>

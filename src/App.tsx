@@ -25,6 +25,7 @@ export const App = () => {
           <Header />
         </div>
         <div className="app__main">
+          <h1 className="visually-hidden">Product Catalog</h1>
           <Outlet />
         </div>
         <div className="app__footer">

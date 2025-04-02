@@ -57,14 +57,14 @@ export const PicturesSlider = () => {
 
   return (
     <div className={styles.slider}>
-      <h1
+      <h2
         className={cn({
           [styles.slider__title]: theme === Theme.Light,
           [styles['slider__title-dark']]: theme === Theme.Dark,
         })}
       >
         Welcome to Nice Gadgets store!
-      </h1>
+      </h2>
       <div
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
