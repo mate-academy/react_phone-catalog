@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // <--- [NEW] add this line
+  base: '/react_phone-catalog/'
 });
