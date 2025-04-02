@@ -1,6 +1,7 @@
 import './Footer.scss';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import React from 'react';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames('footer-item', { 'has-background-grey-lighter': isActive });

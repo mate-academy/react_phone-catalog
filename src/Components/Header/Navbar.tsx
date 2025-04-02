@@ -4,6 +4,7 @@ import iconf from '/public/img/favourites.png';
 import './Navbar.scss';
 import { CartIcon } from '../../Pages/Cart/CartIcon';
 import { useState, useEffect } from 'react';
+import React from 'react';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames('navbar-item', { 'has-background-grey-lighter': isActive });

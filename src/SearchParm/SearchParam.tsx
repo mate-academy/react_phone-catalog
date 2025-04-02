@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import './SearchParam.scss';
+import React from 'react';
 
 export const SearchParameters = () => {
   const { pathname, search } = useLocation();

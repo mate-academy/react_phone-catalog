@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Slide.scss';
+import React from 'react';
 
 interface SlideshowProps {
   images: string[];

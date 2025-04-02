@@ -1,4 +1,4 @@
-// import spinner from './../../../public/img/spinner.svg';
+import React from 'react';
 import './spinner.scss';
 const Loader = () => {
   return (
