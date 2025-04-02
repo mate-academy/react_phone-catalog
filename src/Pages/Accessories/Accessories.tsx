@@ -7,6 +7,7 @@ import './Accessories.scss';
 
 export const Accessories: React.FC = () => {
   const [accessories, setAccessories] = useState<AccessoriesType[]>([]);
+  // prettier-ignore
   const [filteredAccessories, setFilteredAccessories] = useState<
   AccessoriesType[]
   >([]);

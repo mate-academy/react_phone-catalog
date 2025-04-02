@@ -16,7 +16,7 @@
   }
 
   .navbar-item {
-    color: #585858; // Example link color
+    color: #585858;
     position: relative;
     text-decoration: none;
     font-weight: bold;
@@ -30,27 +30,26 @@
 
 .navbar-container {
   display: flex;
-  justify-content: space-between; /* Розділяє на ліву і праву частини */
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 10px;
+  padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-left {
   display: flex;
-  gap: 40px; /* Відступи між елементами */
+  gap: 40px;
 }
 
 .navbar-right {
   display: flex;
-  gap: 40px; /* Відступи між іконками */
+  gap: 40px;
 }
 
-/* Стилі для активного підкреслення */
 .navbar-item.has-background-grey-lighter::after {
   content: "";
   position: absolute;
-  bottom: -12px; /* Підняв лінію трохи вище */
+  bottom: -12px;
   left: 0;
   width: 100%;
   height: 2px;
@@ -81,8 +80,9 @@
   }
 }
 
+// prettier-ignore
 .navbar-center {
-  margin: 0px 10px;
+  margin: 1px 10px;
   flex-grow: 1;
   display: flex;
   align-items: center;

@@ -111,6 +111,7 @@
     &--new {
       color: red;
       font-weight: bold;
+      margin-right: 120px;
     }
   }
 
@@ -169,11 +170,3 @@
   }
 }
 
-.phone-card a {
-  color: #35383b;
-  text-decoration: none;
-}
-
-.phone-card__price--new {
-  margin-right: 120px; // або будь-яке інше значення
-}

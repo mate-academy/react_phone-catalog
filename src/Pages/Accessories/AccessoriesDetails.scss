@@ -10,11 +10,9 @@
   color: rgb(63, 61, 61);
 }
 
-/* Галерея зображень */
 .accessory-gallery {
   display: flex;
   justify-content: start;
-  // width: 100%;
   gap: 50px;
   align-items: center;
   flex: 1;
@@ -63,10 +61,8 @@
   margin-top: 10px;
   cursor: pointer;
 }
-
+/* stylelint-disable-next-line no-descending-specificity */
 .capacity-picker button {
-  // width: 35px;
-  // height: 35px;
   border-radius: 50%;
   cursor: pointer;
   border: 3px solid gray;
@@ -76,8 +72,7 @@
     transform: scale(1.05);
   }
 }
-
-
+/* stylelint-disable-next-line no-descending-specificity */
 .color-picker button {
   width: 35px;
   height: 35px;
@@ -85,13 +80,17 @@
   cursor: pointer;
   border: 3px solid transparent;
   transition: all 0.3s ease;
-
+  /* stylelint-disable-next-line no-descending-specificity */
   &:hover {
     transform: scale(1.05);
     border: 4px double rgb(182, 178, 178);
     transition: box-shadow 0.3s ease;
   }
 }
+
+
+
+
 
 .color-picker button.selected {
   border: 4px double rgb(182, 178, 178);
