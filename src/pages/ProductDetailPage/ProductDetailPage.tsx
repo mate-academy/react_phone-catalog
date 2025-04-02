@@ -46,7 +46,9 @@ export const ProductDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`/api/${product}.json`);
+        const response = await fetch(
+          `https://roman-logos-frontend.github.io/react_phone-catalog/api/${product}.json`,
+        );
         const data = await response.json();
 
         const productDetailId = data.find(
