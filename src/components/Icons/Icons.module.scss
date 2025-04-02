@@ -10,7 +10,12 @@
   &__arrowLeftActive,
   &__heart,
   &__home,
-  &__heartActive {
+  &__heartActive,
+  &__closeIcon,
+  &__plusIcon,
+  &__minusIcon,
+  &__minusDisableIcon,
+  &__cart {
     @include set-size(16px, 16px);
 
     display: block;
@@ -45,6 +50,26 @@
 
   &__home {
     background-image: url('@assets/icons/home-icon.svg');
+  }
+
+  &__closeIcon {
+    background-image: url('@assets/icons/close-icon.svg');
+  }
+
+  &__plusIcon {
+    background-image: url('@assets/icons/plus-icon.svg');
+  }
+
+  &__minusIcon {
+    background-image: url('@assets/icons/minus-icon.svg');
+  }
+
+  &__minusDisableIcon {
+    background-image: url('@assets/icons/minus-disable-icon.svg');
+  }
+
+  &__cart {
+    background-image: url('@assets/icons/cart-icon.svg');
   }
 
   &__count {

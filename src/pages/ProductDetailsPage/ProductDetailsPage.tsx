@@ -17,6 +17,8 @@ import { Loader } from '@components/Loader';
 import { YouMayLike } from '@components/YouMayLike';
 import { useFavorites } from '@context/FavoritesContext';
 import { HeartActiveIcon } from '@components/Icons/HeartActiveIcon';
+import { useCart } from '@context/CartContext';
+import { ProductType } from 'types/productTypes';
 
 import styles from './ProductDetailsPage.module.scss';
 import cn from 'classnames';
@@ -26,12 +28,16 @@ export const ProductDetailsPage = () => {
     category: string;
     productId: string;
   }>();
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [productDetails, setProductDetails] =
     useState<ProductDetailsType | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [productIdNumber, setProductIdNumber] = useState<number | null>(null);
   const navigate = useNavigate();
+
+  const { cart, addToCart } = useCart();
+  const [isInCart, setIsInCart] = useState(false);
 
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorite = favorites.includes(String(productIdNumber));
@@ -60,6 +66,7 @@ export const ProductDetailsPage = () => {
         setProductIdNumber(foundProduct.id);
       }
 
+      setProducts(allProducts);
       setProductDetails(fixedProduct);
       setSelectedColor(fixedProduct.color);
       setSelectedCapacity(fixedProduct.capacity);
@@ -67,6 +74,14 @@ export const ProductDetailsPage = () => {
 
     fetchProduct();
   }, [productId, category]);
+
+  useEffect(() => {
+    const isProductInCart = cart.some(
+      item => item.id === String(productIdNumber),
+    );
+
+    setIsInCart(isProductInCart);
+  }, [cart, productIdNumber]);
 
   const handleColorChange = (color: string) => {
     if (!productDetails || !selectedCapacity) {
@@ -86,6 +101,18 @@ export const ProductDetailsPage = () => {
     const newProductId = `${productDetails.namespaceId}-${capacity.toLowerCase()}-${selectedColor.replace(/\s+/g, '-').toLowerCase()}`;
 
     navigate(`/${productDetails.category}/${newProductId}`);
+  };
+
+  const handleAddToCart = () => {
+    if (productDetails) {
+      const productToAdd = products.find(
+        product => product.id === productIdNumber,
+      );
+
+      if (productToAdd) {
+        addToCart(productToAdd);
+      }
+    }
   };
 
   if (!productDetails) {
@@ -128,8 +155,8 @@ export const ProductDetailsPage = () => {
               <PrimaryButton
                 mainText="Add to cart"
                 selectedText="Added"
-                onClick={() => {}}
-                isSelected={false}
+                onClick={handleAddToCart}
+                isSelected={isInCart}
               />
               <button
                 className={cn(

@@ -3,6 +3,9 @@
 
 .footer {
   width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   border-top: 1px solid $porcelain-color;
   background-color: $white-color;
 

@@ -1,5 +1,15 @@
 @import '@styles/utils/mixins';
 
+.layout {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 96px;
+
+  @include on-mobile {
+    padding-bottom: 257px;
+  }
+}
+
 .main {
   @include content-padding-inline;
 

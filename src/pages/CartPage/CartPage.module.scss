@@ -1,0 +1,144 @@
+@import '@styles/utils/mixins';
+
+.cart {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+
+  &__container {
+    @include page-grid;
+
+    gap: 16px;
+    padding-block: 32px 80px;
+
+    @include on-tablet {
+      gap: 32px;
+      padding-block: 32px 64px;
+    }
+  }
+
+  &__list {
+    @include flex($direction: column);
+
+    grid-column: span 16;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+    }
+  }
+
+  &__item {
+    @include flex(row, space-between, center);
+
+    background-color: $white-color;
+    border: 1px solid $porcelain-color;
+    border-radius: $radius-large;
+    padding: 24px;
+    gap: 24px;
+
+    &_img {
+      @include set-size(80px, 80px);
+
+      object-fit: contain;
+    }
+
+    &_remove {
+      @include hover(transform, rotate(360deg));
+    }
+
+    &_name {
+      flex-wrap: wrap;
+    }
+
+    @include on-mobile {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__content {
+    @include flex(row, start, center);
+
+    gap: 24px;
+  }
+
+  &__actions {
+    @include flex(row, space-between, center);
+
+    gap: 24px;
+
+    @include on-mobile {
+      width: 100%;
+    }
+  }
+
+  &__quantity_controls {
+    @include flex(row, space-between, center);
+
+    gap: 14px;
+  }
+
+  &__minus,
+  &__plus {
+    padding: 8px;
+  }
+
+  &__summary {
+    @include flex(column, space-between, center);
+
+    box-sizing: border-box;
+    grid-column: 17/24;
+    padding: 24px;
+    background-color: $white-color;
+    border: 1px solid $porcelain-color;
+    border-radius: $radius-large;
+    height: 206px;
+    width: 100%;
+    text-align: center;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+    }
+  }
+
+  &__total_items {
+    width: 100%;
+
+    color: $regent-gray-color;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $porcelain-color;
+  }
+
+  &__checkout_btn {
+    width: 100%;
+    padding-top: 16px;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.empty {
+  @include flex(column, center, center);
+
+  gap: 24px;
+
+  &__title {
+    @include font(700, 25px, 100%, 0%);
+  }
+  &__img {
+    @include set-size(100%, 100%);
+
+    max-width: 400px;
+    object-fit: contain;
+  }
+}

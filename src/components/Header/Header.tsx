@@ -6,14 +6,16 @@ import { BurgerMenu } from '../Buttons/BurgerMenu';
 import { getNavLinkClass } from '@utils/getNavLinkClass';
 import { HeartIcon } from '@components/Icons/HeartIcon';
 import { useFavorites } from '@context/FavoritesContext';
+import { useCart } from '@context/CartContext';
+import { CartIcon } from '@components/Icons/CartIcon';
 
 import styles from './Header.module.scss';
 import logo from '@assets/icons/logo.svg';
-import cartIcon from '@assets/icons/cart-icon.svg';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { favorites } = useFavorites();
+  const { cart } = useCart();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -79,7 +81,7 @@ export const Header = () => {
               styles['mobile__menu--active'],
             )}
           >
-            <img src={cartIcon} alt="Add to cart" />
+            <CartIcon count={cart.length} />
           </NavLink>
 
           <BurgerMenu isOpen={isMenuOpen} onClick={toggleMenu} />
@@ -115,6 +117,7 @@ export const Header = () => {
               styles.mobile__menu_favorite,
               styles['mobile__menu--active'],
             )}
+            onClick={closeMenu}
           >
             <HeartIcon count={favorites.length} />
           </NavLink>
@@ -124,8 +127,9 @@ export const Header = () => {
               styles.mobile__menu_cart,
               styles['mobile__menu--active'],
             )}
+            onClick={closeMenu}
           >
-            <img src={cartIcon} alt="Add to cart" />
+            <CartIcon count={cart.length} />
           </NavLink>
         </div>
       </div>

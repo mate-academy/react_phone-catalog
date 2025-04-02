@@ -4,6 +4,7 @@ import { HeartIcon } from '@components/Icons/HeartIcon';
 import { PrimaryButton } from '@components/Buttons/PrimaryButton';
 import { useFavorites } from '@context/FavoritesContext';
 import { HeartActiveIcon } from '@components/Icons/HeartActiveIcon';
+import { useCart } from '@context/CartContext';
 
 import React from 'react';
 import cn from 'classnames';
@@ -33,6 +34,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorite = favorites.includes(String(id));
+
+  const { cart, addToCart } = useCart();
+  const isInCart = cart.some(item => item.id === String(id));
+
+  const handleAddToCart = () => {
+    if (!isInCart) {
+      addToCart(card);
+    }
+  };
 
   return (
     <div className={styles.card}>
@@ -70,8 +80,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <PrimaryButton
           mainText="Add to cart"
           selectedText="Added"
-          onClick={() => {}}
-          isSelected={false}
+          onClick={handleAddToCart}
+          isSelected={isInCart}
         />
         <button
           className={cn(styles.card__buttons_heart, 'button-icon')}

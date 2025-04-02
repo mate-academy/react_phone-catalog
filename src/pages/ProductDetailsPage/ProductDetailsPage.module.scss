@@ -2,6 +2,7 @@
 @import '@styles/utils/vars';
 
 .product_detail {
+  margin-bottom: 80px;
   &__title {
     margin-bottom: 40px;
 
@@ -59,5 +60,9 @@
     &_heart {
       padding: 12px;
     }
+  }
+
+  @include on-tablet {
+    margin-bottom: 64px;
   }
 }
