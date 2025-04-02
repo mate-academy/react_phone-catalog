@@ -1,0 +1,67 @@
+.tablet-list {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tablet-card{
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 20px;
+  width: 200px;
+  height: 100%;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.tablet-info{
+  text-align: start;
+  font-size: 15px;
+  justify-content: space-between;
+}
+
+.tablet-cardname {
+  font-size: 15px;
+}
+
+.tabletcardprice {
+  font-size: 20px;
+}
+
+
+.tablet-image{
+  width: 50%;
+  height: 50%;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.tablet-card a{
+  text-decoration: none;
+  color: #333;
+}
+
+.tablet-card__detail{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #363535;
+}
+
+.tablet-card__detail span {
+  white-space: nowrap;
+}
+
+.tablet-card__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}

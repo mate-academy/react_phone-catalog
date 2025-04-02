@@ -1,0 +1,179 @@
+.hot-prices {
+  text-align: center;
+  margin-top: 20px;
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
+
+.phone-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.phone-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;.brand-new-models {
+    text-align: center;
+    margin-top: 20px;
+
+    &__title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .phonelist {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .phonecard {
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 20px;
+    width: 200px;
+    height: 100%;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+
+  .phone-info{
+    text-align: start;
+    font-size: 15px;
+    justify-content: space-between;
+  }
+
+  .phone-cardname {
+    font-size: 15px;
+  }
+
+  .phonecardprice {
+    font-size: 20px;
+  }
+
+
+  .phone-cardimage{
+    width: 50%;
+    height: 50%;
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .phonecard a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .phone-card__detail {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 14px;
+    color: #363535;
+  }
+
+  .phone-card__detail span {
+    white-space: nowrap;
+  }
+
+
+
+  &__name {
+    font-size: 15px;
+    margin: 10px 0;
+  }
+
+  &__price {
+    display: flex;
+    gap: 130px;
+    font-size: 16px;
+    align-items: center;
+
+    &--old {
+      text-decoration: line-through;
+      color: gray;
+      margin-right: 5px;
+    }
+
+    &--new {
+      color: red;
+      font-weight: bold;
+    }
+  }
+
+  &__capacity,
+  &__color {
+    font-size: 14px;
+    color: #666;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+
+  &-primary {
+    background: #1a1c1f;
+    color: white;
+  }
+
+  &-favorite {
+    background: transparent;
+    border: 1px solid #405870;
+    color: #1c2024;
+  }
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  &__button {
+    padding: 10px 15px;
+    border: none;
+    background: #202429;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+
+    &:disabled {
+      background: gray;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.phone-card a {
+  color: #35383b;
+  text-decoration: none;
+}
+
+.phone-card__price--new {
+  margin-right: 120px; // або будь-яке інше значення
+}

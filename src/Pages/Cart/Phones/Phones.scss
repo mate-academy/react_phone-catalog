@@ -1,0 +1,52 @@
+.phonelist {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.phone-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 20px;
+  width: 200px;
+  height: 100%;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.phone-cardimage{
+  width: 50%;
+  height: 50%;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.phone-card a {
+  text-decoration: none;
+  color: #333;
+}
+
+.phone-card__detail{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #363535;
+}
+
+.phone-card__detail span {
+  white-space: nowrap;
+}
+
+.phone-card__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}

@@ -1,0 +1,47 @@
+.shopby-category {
+  text-align: center;
+  padding: 40px;
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  &__grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+.category-card {
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  width: 300px;
+
+  &__image {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    object-fit: cover;
+
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    font-size: 18px;
+    margin: 10px 0 5px;
+  }
+
+  &__models {
+    font-size: 14px;
+    color: #666;
+  }
+}

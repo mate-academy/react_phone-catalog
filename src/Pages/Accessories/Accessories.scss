@@ -1,0 +1,67 @@
+.accessories-list {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.accessories-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 20px;
+  width: 200px;
+  height: 100%;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.accessories-image {
+  width: 50%;
+  height: 50%;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.accessories-name {
+  font-size: 16px;
+}
+
+.accessories-capacity,
+.accessories-color {
+  font-size: 15px;
+}
+
+.accessories-price {
+  font-size: 20px;
+}
+
+button {
+  font-size: 12px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.accessories-card a {
+  color: #3b3e41;
+  text-decoration: none;
+}
+
+.accessories-info {
+  text-align: start;
+  font-size: 15px;
+  justify-content: space-between;
+}
+
+.accessories-card__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+

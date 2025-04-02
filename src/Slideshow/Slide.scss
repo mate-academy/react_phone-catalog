@@ -1,0 +1,16 @@
+.slideshow {
+  height: 350px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  gap: 10px;
+}
+
+.img {
+  width: 60%;
+  object-fit:contain;
+}
+
