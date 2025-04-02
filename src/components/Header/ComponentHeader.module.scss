@@ -125,10 +125,10 @@
         outline: none;
         height: 16px;
         width: 16px;
-        background-image: url('../../public/icons/menu.png');
+        background-image: url('./icons/menu.png');
 
         &:hover {
-          background-image: url('../../public/icons/menu-hover.png');
+          background-image: url('./icons/menu-hover.png');
         }
       }
 
@@ -203,7 +203,7 @@
           outline: none;
           height: 16px;
           width: 16px;
-          background-image: url('../../public/icons/menu-close.png');
+          background-image: url('./icons/menu-close.png');
         }
       }
     }
@@ -270,11 +270,11 @@
         }
 
         &__favorite{
-          background-image: url('../../public/icons/heart.png');
+          background-image: url('./icons/heart.png');
         }
 
         &__cart{
-          background-image: url('../../public/icons/cart.png');
+          background-image: url('./icons/cart.png');
         }
       }
     }

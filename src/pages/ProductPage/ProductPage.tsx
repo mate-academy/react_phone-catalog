@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams, useParams, NavLink } from 'react-router-dom';
 import styles from './ProductPage.module.scss';
 import { ProductCart } from '../../components/ProductCart';

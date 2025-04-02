@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './ComponentFooter.module.scss';
 
 export const ComponentFooter = () => {
@@ -13,7 +12,7 @@ export const ComponentFooter = () => {
     <footer>
       <div className={styles.container}>
         <a href="#" className={styles.container__logo}>
-          <img src="../../public/img/Logo.png" alt="NICE GADGETS" />
+          <img src="./img/Logo.png" alt="NICE GADGETS" />
         </a>
 
         <nav className={styles.nav}>
