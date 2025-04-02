@@ -1,6 +1,6 @@
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
-import logo from '../../../public/img/Nice-Gadgets-logo.png';
+import logo from '/img/Nice-Gadgets-logo.png';
 import BackToTop from '../BackToTop/BackToTop';
 
 const footerLinks = [
@@ -21,8 +21,8 @@ export const Footer = () => {
           </div>
 
           <div className={styles.footer__links}>
-            {footerLinks.map(link => (
-              <div className={styles.footer__link}>
+            {footerLinks.map((link, idx) => (
+              <div className={styles.footer__link} key={idx}>
                 <a href={link.href} target="_blank" rel="noreferrer">
                   {link.text}
                 </a>

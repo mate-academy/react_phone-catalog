@@ -3,7 +3,7 @@ import { useCart } from '../../context/CartContext';
 import { CartItem } from '../../components/CartItem';
 import { useState } from 'react';
 import Modal from '../../components/Modal/Modal';
-import emptyCartIcon from '../../../public/img/cart-is-empty.png';
+import emptyCartIcon from '/img/cart-is-empty.png';
 import BackIcon from '../../components/BackIcon/BackIcon';
 
 const EmptyCart = () => (

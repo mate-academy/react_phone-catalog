@@ -3,7 +3,7 @@ import { useFavourites } from '../../context/FavouritesContext';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../../components/ProductCard';
-import emptyFavouritesIcon from '../../../public/img/product-not-found.png';
+import emptyFavouritesIcon from '/img/product-not-found.png';
 
 const EmptyWishList = () => (
   <div className={styles.favourites__empty}>

@@ -1,5 +1,5 @@
 import styles from './BurgerMenu.module.scss';
-import logo from '../../../public/img/Nice-Gadgets-logo.png';
+import logo from '/img/Nice-Gadgets-logo.png';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Squash as Hamburger } from 'hamburger-react';
 
@@ -7,7 +7,7 @@ const pages = ['Home', 'Phones', 'Tablets', 'Accessories'];
 
 type Props = {
   isOpen: boolean;
-  toggleBurger: (value: any) => void;
+  toggleBurger: (value: boolean) => void;
 };
 
 const BurgerMenu: React.FC<Props> = ({ isOpen, toggleBurger }) => {

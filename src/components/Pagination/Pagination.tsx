@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Pagination.module.scss';
 import { useSearchParams } from 'react-router-dom';
-import arrowLeft from '../../../public/img/icons/arrows/arrow-left-icon.svg';
-import arrowRight from '../../../public/img/icons/arrows/arrow-right-icon.svg';
+import arrowLeft from '/img/icons/arrows/arrow-left-icon.svg';
+import arrowRight from '/img/icons/arrows/arrow-right-icon.svg';
 
 type Props = {
   total: number;
@@ -19,8 +19,12 @@ export const Pagination: React.FC<Props> = ({
   const pages = Math.ceil(total / perPage);
 
   const handlePageChange = (value: number) => {
-    if (value < 1 || value > pages) return;
+    if (value < 1 || value > pages) {
+      return;
+    }
+
     const params = new URLSearchParams(searchParams);
+
     params.set('page', value.toString());
     setSearchParams(params);
   };
@@ -36,7 +40,9 @@ export const Pagination: React.FC<Props> = ({
       const showRightDots = currentPage < pages - visiblePages - 1;
 
       pagination.push(1);
-      if (showLeftDots) pagination.push('...');
+      if (showLeftDots) {
+        pagination.push('...');
+      }
 
       const start = Math.max(2, currentPage - visiblePages);
       const end = Math.min(pages - 1, currentPage + visiblePages);
@@ -45,7 +51,10 @@ export const Pagination: React.FC<Props> = ({
         pagination.push(i);
       }
 
-      if (showRightDots) pagination.push('...');
+      if (showRightDots) {
+        pagination.push('...');
+      }
+
       pagination.push(pages);
     }
 

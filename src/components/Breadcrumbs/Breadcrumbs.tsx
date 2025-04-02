@@ -1,6 +1,6 @@
 import styles from './Breadcrumbs.module.scss';
-import homeIcon from '../../../public/img/icons/Home.svg';
-import rightArrow from '../../../public/img/icons/arrows/arrow-right-icon.svg';
+import homeIcon from '/img/icons/Home.svg';
+import rightArrow from '/img/icons/arrows/arrow-right-icon.svg';
 import { Link, useLocation } from 'react-router-dom';
 import { upperCase } from '../../utils';
 

@@ -1,6 +1,6 @@
 import styles from './BackToTop.module.scss';
 
-import arrowUpIcon from '../../../public/img/icons/arrows/arrow-up-icon.svg';
+import arrowUpIcon from '/img/icons/arrows/arrow-up-icon.svg';
 
 type Props = {};
 

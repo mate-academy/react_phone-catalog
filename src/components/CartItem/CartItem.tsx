@@ -1,9 +1,9 @@
 import { Product } from '../../types/Product';
 import styles from './CartItem.module.scss';
 import { useCart } from '../../context/CartContext';
-import deleteIcon from '../../../public/img/icons/close.svg';
-import minusIcon from '../../../public/img/icons/minus.svg';
-import plusIcon from '../../../public/img/icons/plus.svg';
+import deleteIcon from '/img/icons/close.svg';
+import minusIcon from '/img/icons/minus.svg';
+import plusIcon from '/img/icons/plus.svg';
 
 type Props = {
   product: Product;

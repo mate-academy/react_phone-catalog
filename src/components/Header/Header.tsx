@@ -7,7 +7,7 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { useFavourites } from '../../context/FavouritesContext';
 import { useCart } from '../../context/CartContext';
 import favouriteIcon from '../../../public/img/icons/favourites-icon.svg';
-import cartIcon from '../../../public/img/icons/cart-icon.svg';
+import cartIcon from '/img/icons/cart-icon.svg';
 
 const pages = ['Home', 'Phones', 'Tablets', 'Accessories'];
 

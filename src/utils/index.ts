@@ -50,6 +50,7 @@ export function getBgColorForRadio(color: string) {
 
 export const getRandomProducts = (arr: Product[], num: number) => {
   const shuffled = [...arr].sort(() => 0.5 - Math.random());
+
   return shuffled.slice(0, num);
 };
 
@@ -58,9 +59,9 @@ export const updateProducts = (
   itemsPerPage: number | 'all',
   sortOrder: string,
   currentPage: number,
-  category: string
+  category: string,
 ) => {
-  let filteredProducts = products.filter(p => p.category === category);
+  const filteredProducts = products.filter(p => p.category === category);
 
   if (sortOrder === 'alphabetically') {
     filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
@@ -74,6 +75,7 @@ export const updateProducts = (
     return filteredProducts;
   } else {
     const startIndex = (currentPage - 1) * itemsPerPage;
+
     return filteredProducts.slice(startIndex, startIndex + itemsPerPage);
   }
 };

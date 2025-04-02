@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './CustomSelect.module.scss';
-import arrowDown from '../../../public/img/icons/arrows/arrow-down-icon.svg';
-import arrowUp from '../../../public/img/icons/arrows/arrow-up-icon.svg';
+import arrowDown from '/img/icons/arrows/arrow-down-icon.svg';
+import arrowUp from '/img/icons/arrows/arrow-up-icon.svg';
 import { useSearchParams } from 'react-router-dom';
 
 type Option = {
@@ -17,9 +17,12 @@ type Props = {
 
 const CustomSelect: React.FC<Props> = ({ options, label, paramName }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const paramValue = searchParams.get(paramName) || (paramName === 'perPage' ? 'all' : paramName === 'sort' ? 'newest' : '');
+  const paramValue =
+    searchParams.get(paramName) ||
+    (paramName === 'perPage' ? 'all' : paramName === 'sort' ? 'newest' : '');
 
-  const defaultOption = options.find(option => option.value === paramValue) || options[0];
+  const defaultOption =
+    options.find(option => option.value === paramValue) || options[0];
   const [selected, setSelected] = useState(defaultOption);
   const [isOpen, setIsOpen] = useState(false);
 

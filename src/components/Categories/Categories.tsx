@@ -17,7 +17,6 @@ export const Categories: React.FC<Props> = ({
       <h2 className={styles.title}>Shop by category</h2>
 
       <div className={styles.categories__items}>
-        
         <div className={styles.categories__item}>
           <div className={styles.categories__image}>
             <Link to="phones">
@@ -65,7 +64,6 @@ export const Categories: React.FC<Props> = ({
             {accessoriesQuantity} models
           </p>
         </div>
-
       </div>
     </div>
   );

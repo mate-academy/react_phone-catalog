@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import styles from './PicturesSlider.module.scss';
-import arrowLeft from '../../../public/img/icons/arrows/arrow-left-icon.svg'
-import arrowRight from '../../../public/img/icons/arrows/arrow-right-icon.svg'
+import arrowLeft from '/img/icons/arrows/arrow-left-icon.svg';
+import arrowRight from '/img/icons/arrows/arrow-right-icon.svg';
 
 const PicturesSlider = () => {
   const imageWrapperRef = useRef<HTMLDivElement | null>(null);
@@ -81,10 +81,7 @@ const PicturesSlider = () => {
             className={`${styles.slider__button} ${styles['slider__button-left']}`}
             onClick={handlePrevImage}
           >
-            <img
-              src={arrowLeft}
-              alt="Previous"
-            />
+            <img src={arrowLeft} alt="Previous" />
           </button>
         )}
 
@@ -101,6 +98,7 @@ const PicturesSlider = () => {
               return (
                 <img
                   src={src}
+                  key={index}
                   alt={`slide-${index}`}
                   className={`${styles.slider__image} ${index === 1 && styles.slider__image_main}`}
                 />
@@ -114,10 +112,7 @@ const PicturesSlider = () => {
             className={`${styles.slider__button} ${styles['slider__button-right']}`}
             onClick={handleNextImage}
           >
-            <img
-              src={arrowRight}
-              alt="Next"
-            />
+            <img src={arrowRight} alt="Next" />
           </button>
         )}
       </div>
