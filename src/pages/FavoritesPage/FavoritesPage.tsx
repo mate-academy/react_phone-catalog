@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './FavoritesPage.module.scss';
 import { useFavorites } from '../../context/FavoritesContext';
 import { ProductCart } from '../../components/ProductCart';

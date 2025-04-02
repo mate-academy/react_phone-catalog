@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { ProductSlider } from '../../components/ProductSlider';
 import jsonData from '../../../public/api/products.json';
 import { NavLink } from 'react-router-dom';
@@ -94,17 +94,25 @@ export const HomePage = () => {
           className={styles.mySwiper}
         >
           <SwiperSlide>
-            <img className={styles.img} src="/img/image16.png" alt="Gadget 1" />
+            <img
+              className={styles.img}
+              src="./img/image16.png"
+              alt="Gadget 1"
+            />
           </SwiperSlide>
           <SwiperSlide>
             <img
               className={styles.img}
-              src="/img/picthree.bdd2e0fc.png"
+              src="./img/picthree.bdd2e0fc.png"
               alt="Gadget 2"
             />
           </SwiperSlide>
           <SwiperSlide>
-            <img className={styles.img} src="/img/image16.png" alt="Gadget 3" />
+            <img
+              className={styles.img}
+              src="./img/image16.png"
+              alt="Gadget 3"
+            />
           </SwiperSlide>
         </Swiper>
         <button
@@ -129,7 +137,7 @@ export const HomePage = () => {
             className={`${styles.category__block__link} ${styles.phones}`}
             to="/phones"
           >
-            <img src="public/img/category-phones.webp" alt="Mobile Phones" />
+            <img src="./img/category-phones.webp" alt="Mobile Phones" />
           </NavLink>
           <div className={styles.category__block__info}>
             <h4 className={styles.name}>Mobile phones</h4>
@@ -142,7 +150,7 @@ export const HomePage = () => {
             className={`${styles.category__block__link} ${styles.tablets}`}
             to="/tablets"
           >
-            <img src="public/img/category-tablets.png" alt="Tablets" />
+            <img src="./img/category-tablets.png" alt="Tablets" />
           </NavLink>
           <div className={styles.category__block__info}>
             <h4 className={styles.name}>Tablets</h4>
@@ -157,7 +165,7 @@ export const HomePage = () => {
           >
             <img
               className={styles.img}
-              src="public/img/category-accessories.png"
+              src="./img/category-accessories.png"
               alt="Accessories"
             />
           </NavLink>

@@ -81,7 +81,7 @@ export const ProductCart: React.FC<ProductCartProps> = ({
           onClick={() => toggleFavorite()}
         >
           <img
-            src={isFavorite ? '/icons/heartAdd.png' : '/icons/heart.png'}
+            src={isFavorite ? './icons/heartAdd.png' : './icons/heart.png'}
             alt="favorite icon"
           />
         </button>
