@@ -16,15 +16,18 @@ export const Footer = () => {
       </NavLink>
 
       <div className={styles.footer__links}>
-        <a href="#" className={styles.footer__link}>
+        <a
+          href="https://github.com/Alex-redman/react_phone-catalog/tree/develop"
+          className={styles.footer__link}
+        >
           Github
         </a>
-        <a href="#" className={styles.footer__link}>
+        <NavLink to="/contacts" className={styles.footer__link}>
           Contacts
-        </a>
-        <a href="#" className={styles.footer__link}>
+        </NavLink>
+        <NavLink to="/rights" className={styles.footer__link}>
           rights
-        </a>
+        </NavLink>
       </div>
 
       <button

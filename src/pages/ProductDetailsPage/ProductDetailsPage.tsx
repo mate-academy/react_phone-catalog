@@ -109,7 +109,16 @@ export const ProductDetailsPage: React.FC = () => {
   ]);
 
   if (!product) {
-    return <div>Продукт не знайдено</div>;
+    return (
+      <div className={styles.notFound}>
+        <h3 className={styles.notFound_text}>Product not found</h3>
+        <img
+          className={styles.notFound_img}
+          src={`${import.meta.env.BASE_URL}/img/product-not-found.png`}
+          alt="age-not-found"
+        />
+      </div>
+    );
   }
 
   const handleColorChange = (color: string) => {

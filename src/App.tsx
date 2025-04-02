@@ -18,18 +18,20 @@ export function App() {
     <CartProvider>
       <HashRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/phones" element={<PhonesPage />} />
-          <Route path="/tablets" element={<TabletsPage />} />
-          <Route path="/accessories" element={<AccessoriesPage />} />
-          <Route path="/phones/:id" element={<ProductDetailsPage />} />
-          <Route path="/tablets/:id" element={<ProductDetailsPage />} />
-          <Route path="/accessories/:id" element={<ProductDetailsPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/phones" element={<PhonesPage />} />
+            <Route path="/tablets" element={<TabletsPage />} />
+            <Route path="/accessories" element={<AccessoriesPage />} />
+            <Route path="/phones/:id" element={<ProductDetailsPage />} />
+            <Route path="/tablets/:id" element={<ProductDetailsPage />} />
+            <Route path="/accessories/:id" element={<ProductDetailsPage />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
         <Footer />
       </HashRouter>
     </CartProvider>

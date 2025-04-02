@@ -8,3 +8,13 @@ body {
   min-height: 100vh;
 }
 
+/* stylelint-disable-next-line selector-max-id */
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+main {
+  flex: 1;
+}
