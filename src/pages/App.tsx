@@ -8,6 +8,8 @@ import { FavoritesPage } from './FavoritesPage';
 import { FavoritesProvider } from '@context/FavoritesContext';
 import { CartProvider } from '@context/CartContext';
 import { CartPage } from './CartPage';
+import { ProductPage } from './ProductPage';
+import { CategoryName } from '@enums/CategoryName';
 
 export const App = () => (
   <FavoritesProvider>
@@ -19,8 +21,20 @@ export const App = () => (
             path={ROUTES.PRODUCT_DETAILS(':category', ':productId')}
             element={<ProductDetailsPage />}
           />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path={ROUTES.FAVORITES} element={<FavoritesPage />} />
+          <Route path={ROUTES.CART} element={<CartPage />} />
+          <Route
+            path={ROUTES.PHONES}
+            element={<ProductPage category={CategoryName.PHONES} />}
+          />
+          <Route
+            path={ROUTES.TABLETS}
+            element={<ProductPage category={CategoryName.TABLETS} />}
+          />
+          <Route
+            path={ROUTES.ACCESSORIES}
+            element={<ProductPage category={CategoryName.ACCESSORIES} />}
+          />
 
           <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
         </Route>

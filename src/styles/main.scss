@@ -19,7 +19,11 @@ html {
 }
 
 .section {
-  width: 100%;
+  margin-bottom: 80px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
 }
 
 .no-scroll {
@@ -55,4 +59,8 @@ html {
       border: 1px solid $submarine-color;
     }
   }
+}
+
+.w-full {
+  width: 100%;
 }

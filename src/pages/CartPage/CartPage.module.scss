@@ -9,11 +9,10 @@
     @include page-grid;
 
     gap: 16px;
-    padding-block: 32px 80px;
+    padding-top: 32px;
 
     @include on-tablet {
       gap: 32px;
-      padding-block: 32px 64px;
     }
   }
 

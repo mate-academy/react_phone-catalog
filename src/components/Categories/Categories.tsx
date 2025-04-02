@@ -6,7 +6,7 @@ import styles from './Categories.module.scss';
 
 export const Categories = () => {
   return (
-    <section className={cn(styles.category, 'section')}>
+    <section className={cn(styles.category, 'w-full')}>
       <h2 className={cn(styles.category__title, 'secondary-title')}>
         Shop by category
       </h2>

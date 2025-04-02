@@ -1,16 +1,18 @@
+import { useState } from 'react';
 import { useCart } from '@context/CartContext';
-import styles from './CartPage.module.scss';
 import { BackButton } from '@components/Buttons/BackButton';
-import EmptyImg from '../../../public/img/cart-is-empty.png';
 import { CloseIcon } from '@components/Icons/CloseIcon';
-import cn from 'classnames';
 import { PlusIcon } from '@components/Icons/PlusIcon';
 import { MinusIcon } from '@components/Icons/MinusIcon';
 import { PrimaryButton } from '@components/Buttons/PrimaryButton';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@routes/index';
-import { useState } from 'react';
 import { Modal } from '@components/Modal';
+
+import cn from 'classnames';
+import EmptyImg from '../../../public/img/cart-is-empty.png';
+import styles from './CartPage.module.scss';
+
 export const CartPage = () => {
   const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,7 +39,7 @@ export const CartPage = () => {
         onClose={() => setIsModalOpen(false)}
         onConfirm={handleConfirmCheckout}
       />
-      <section className={styles.cart}>
+      <section className={cn(styles.cart, 'section')}>
         <BackButton />
         <h1 className={cn(styles.cart__title, 'main-title')}>Cart</h1>
 
@@ -62,7 +64,6 @@ export const CartPage = () => {
                     >
                       <CloseIcon />
                     </button>
-                    {/* Зроблено фото товару лінкою */}
                     <Link
                       to={ROUTES.PRODUCT_DETAILS(
                         product.category,
@@ -76,7 +77,6 @@ export const CartPage = () => {
                       />
                     </Link>
 
-                    {/* Зроблено назву товару лінкою */}
                     <Link
                       to={ROUTES.PRODUCT_DETAILS(
                         product.category,

@@ -15,7 +15,7 @@ export const HotPrice = () => {
   }, []);
 
   return (
-    <section className="section">
+    <section className="w-full">
       <ProductSlider data={products} title={'Hot Prices'} />
     </section>
   );
