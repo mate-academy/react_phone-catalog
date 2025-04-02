@@ -34,7 +34,7 @@ const Header = () => {
         <nav className={styles.header__nav}>
           <ul className={styles.header__nav__list}>
             {pages.map((page, index) => {
-              const link = `/${page.toLowerCase()}`;
+              const link = `/${page.toLowerCase()}` ; 
 
               const activePage =
                 pathname === link || (pathname === '/' && page === 'Home');
