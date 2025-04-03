@@ -13,6 +13,13 @@
 
     @include buttons;
 
+    transition:
+      background-color 0.3s ease-in-out,
+      border 0.3s ease-in-out,
+      border-radius 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out,
+      color 0.3s ease-in-out;
+
     &:hover {
       border: 1px solid $primaryColor;
       border-radius: 8px;
@@ -36,6 +43,11 @@
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+
+    transition:
+      background-color 0.3s ease-in-out,
+      border 0.3s ease-in-out,
+      background-image 0.3s ease-in-out; // Додаємо плавний перехід
 
     &:hover {
       border: 1px solid $primaryColor;

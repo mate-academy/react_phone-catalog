@@ -75,19 +75,21 @@ export const SortDropdown: React.FC<Props> = ({ sortOptions, sortKey }) => {
         />
       </button>
 
-      {isOpen && (
-        <ul className={styles.dropdown__menu}>
-          {sortOptions.map(option => (
-            <li
-              key={option.value}
-              className={styles.dropdown__item}
-              onClick={() => handleSelect(option.value)}
-            >
-              {option.label}
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul
+        className={`${styles.dropdown__menu} ${
+          isOpen ? styles['dropdown__menu--open'] : ''
+        }`}
+      >
+        {sortOptions.map(option => (
+          <li
+            key={option.value}
+            className={styles.dropdown__item}
+            onClick={() => handleSelect(option.value)}
+          >
+            {option.label}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

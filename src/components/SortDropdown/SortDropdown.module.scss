@@ -6,7 +6,6 @@
   width: 100%;
   border: 1px solid $iconsColor;
 
-
   &__button {
     width: 100%;
     padding: 10px;
@@ -20,10 +19,6 @@
     color: $primaryColor;
 
     @include buttons;
-
-    &_img {
-      // not ampty
-    }
   }
 
   &__menu {
@@ -36,9 +31,22 @@
     margin: 0;
     background-color: $whiteColor;
     list-style: none;
-    padding: 10px;
+    padding: 0;
     gap: 10px;
     border: 1px solid $iconsColor;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease,
+      padding 0.3s ease;
+  }
+
+  &__menu--open {
+    max-height: 300px;
+    opacity: 1;
+    padding: 10px;
   }
 
   &__item {

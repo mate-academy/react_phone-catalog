@@ -22,6 +22,11 @@ export const CartPage: React.FC = () => {
     0,
   );
 
+  const totalItems = Object.values(quantities).reduce(
+    (total, quantity) => total + quantity,
+    0,
+  );
+
   const handleQuantityChange = (productId: number, delta: number) => {
     setQuantities(prevQuantities => {
       const newQuantities = { ...prevQuantities };
@@ -98,7 +103,7 @@ export const CartPage: React.FC = () => {
                   ${totalPrice}
                 </h2>
                 <p className={styles.cart__summary_text_totalItems}>
-                  Total for {cart.length} items
+                  Total for {totalItems} items
                 </p>
               </div>
               <div className={styles.cart__summary_line}></div>

@@ -11,7 +11,7 @@
   max-width: 288px;
   max-height: 506px;
   border: 1px solid $grayColor;
-  transition: border 0.3s;
+  transition: border ease-in-out;
 
 
   @include hover(transform, scale(1.05));

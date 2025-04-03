@@ -60,6 +60,8 @@
   cursor: pointer;
   left: 0;
 
+  transition: all 0.3s;
+
   @include tablet {
     display: flex;
   }
@@ -96,6 +98,8 @@
   border: 1px solid $iconsColor;
   cursor: pointer;
   right: 0;
+
+  transition: all 0.3s;
 
   @include tablet {
     display: flex;

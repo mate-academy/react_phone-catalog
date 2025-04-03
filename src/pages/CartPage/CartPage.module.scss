@@ -170,6 +170,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: all 0.3s;
 
     &:hover {
       border-color: $secondaryColor;
@@ -241,6 +242,7 @@
       color: $whiteColor;
       border: none;
       cursor: pointer;
+      transition: all 0.3s;
 
       @include buttons;
 
