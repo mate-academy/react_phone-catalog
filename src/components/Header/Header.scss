@@ -29,6 +29,7 @@
     @include on-tablet {
     display: none;
     }
+
     @include on-desktop {
     display: none;
     }
@@ -93,7 +94,7 @@
   &__packet {
     border: 1px solid #3B3E4A;
     cursor: pointer;
-    padding: 30px 30px;
+    padding: 30px;
 
     @include on-phone {
       display: none;
