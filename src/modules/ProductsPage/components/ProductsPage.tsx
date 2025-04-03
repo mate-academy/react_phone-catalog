@@ -26,16 +26,11 @@ export const ProductsPage = () => {
   const page = Number(searchParams.get('page') || '1');
   const perPage = sortByCount === 'all' ? products.length : Number(sortByCount);
 
-  const pageCount = sortByCount === 'all' ? 1 : Math.ceil(products.length / perPage);
+  const pageCount =
+    sortByCount === 'all' ? 1 : Math.ceil(products.length / perPage);
 
   const startIndex = (page - 1) * perPage;
   const endIndex = startIndex + perPage;
-
-  
-
-  if (!category || !validCategories.includes(category)) {
-    return <Navigate to="/not-found" replace />;
-  }
 
   const categoryTitles: Record<string, string> = {
     phones: 'Mobile phones',
@@ -45,59 +40,26 @@ export const ProductsPage = () => {
 
   const title = category ? categoryTitles[category] || 'Products' : 'Products';
 
-  useEffect(() => {
-    if (category) {
-      setIsLoading(true);
-      setHasError(false);
-
-      withMinDelay(fetchProducts(category), 1000)
-        .then(data => {
-          setProducts(data);
-        })
-        .catch(() => {
-          setHasError(true);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  }, [category]);
-
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    const params = new URLSearchParams(searchParams);
-
-    params.set('perPage', value);
-    params.delete('page'); // reset page to 1 on perPage change
-    setSearchParams(params);
-    setIsOpen(false);
-  };
-
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    const params = new URLSearchParams(searchParams);
-
-    params.set('sort', value);
-    setSearchParams(params);
-    setIsOpen(false);
-  };
-
   const sortedProducts = [...products].sort((a, b) => {
     if (sortByParams === 'age') {
       return b.year - a.year;
     }
+
     if (sortByParams === 'title') {
       return a.name.localeCompare(b.name);
     }
+
     if (sortByParams === 'price') {
       return a.price - b.price;
     }
+
     return 0;
   });
 
-  const visibleProducts = sortByCount === 'all'
-    ? sortedProducts
-    : sortedProducts.slice(startIndex, endIndex);
+  const visibleProducts =
+    sortByCount === 'all'
+      ? sortedProducts
+      : sortedProducts.slice(startIndex, endIndex);
 
   const MAX_VISIBLE_PAGES = 5;
   let startPage = Math.max(1, page - Math.floor(MAX_VISIBLE_PAGES / 2));
@@ -109,13 +71,46 @@ export const ProductsPage = () => {
   }
 
   const visiblePageNumbers = [];
+
   for (let i = startPage; i <= endPage; i++) {
     visiblePageNumbers.push(i);
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (!category) {
+      return;
+    }
+
+    setIsLoading(true);
+    setHasError(false);
+
+    withMinDelay(fetchProducts(category), 1000)
+      .then(data => {
+        setProducts(data);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [category]);
+
+  useEffect(() => {
+    const isMobileOrTablet = window.innerWidth < 1024;
+    const shouldScroll = isMobileOrTablet || visibleProducts.length > 4;
+
+    if (shouldScroll) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, [category, page, visibleProducts.length]);
+
+  if (!category || !validCategories.includes(category)) {
+    return <Navigate to="/not-found" replace />;
+  }
 
   return (
     <div className="products">
@@ -156,7 +151,13 @@ export const ProductsPage = () => {
                   onBlur={() => setIsOpen(false)}
                   className={`products__filter-select ${isOpen ? 'products__filter-select--open' : ''}`}
                   value={sortByParams}
-                  onChange={handleSortChange}
+                  onChange={e => {
+                    const params = new URLSearchParams(searchParams);
+
+                    params.set('sort', e.target.value);
+                    setSearchParams(params);
+                    setIsOpen(false);
+                  }}
                 >
                   <option value="age">Newest</option>
                   <option value="title">Alphabetically</option>
@@ -165,7 +166,10 @@ export const ProductsPage = () => {
               </div>
 
               <div className="products__filter-group">
-                <label htmlFor="items-per-page" className="products__filter-label">
+                <label
+                  htmlFor="items-per-page"
+                  className="products__filter-label"
+                >
                   Items on page
                 </label>
                 <select
@@ -174,7 +178,14 @@ export const ProductsPage = () => {
                   onBlur={() => setIsOpen(false)}
                   className={`products__filter-select ${isOpen ? 'products__filter-select--open' : ''}`}
                   value={sortByCount}
-                  onChange={handleSelectChange}
+                  onChange={e => {
+                    const params = new URLSearchParams(searchParams);
+
+                    params.set('perPage', e.target.value);
+                    params.delete('page');
+                    setSearchParams(params);
+                    setIsOpen(false);
+                  }}
                 >
                   <option value="4">4</option>
                   <option value="8">8</option>
@@ -200,15 +211,17 @@ export const ProductsPage = () => {
                   <li>
                     <button
                       disabled={page === 1}
-                      onClick={() => setSearchParams(prev => {
-                        const newParams = new URLSearchParams(prev);
+                      onClick={() => {
+                        const newParams = new URLSearchParams(searchParams);
+
                         if (page - 1 > 1) {
                           newParams.set('page', String(page - 1));
                         } else {
                           newParams.delete('page');
                         }
-                        return newParams;
-                      })}
+
+                        setSearchParams(newParams);
+                      }}
                     >
                       {'<'}
                     </button>
@@ -218,15 +231,17 @@ export const ProductsPage = () => {
                     <li key={num}>
                       <button
                         className={num === page ? 'active-btn' : ''}
-                        onClick={() => setSearchParams(prev => {
-                          const newParams = new URLSearchParams(prev);
+                        onClick={() => {
+                          const newParams = new URLSearchParams(searchParams);
+
                           if (num === 1) {
                             newParams.delete('page');
                           } else {
                             newParams.set('page', String(num));
                           }
-                          return newParams;
-                        })}
+
+                          setSearchParams(newParams);
+                        }}
                       >
                         {num}
                       </button>
@@ -236,11 +251,12 @@ export const ProductsPage = () => {
                   <li>
                     <button
                       disabled={page === pageCount}
-                      onClick={() => setSearchParams(prev => {
-                        const newParams = new URLSearchParams(prev);
+                      onClick={() => {
+                        const newParams = new URLSearchParams(searchParams);
+
                         newParams.set('page', String(page + 1));
-                        return newParams;
-                      })}
+                        setSearchParams(newParams);
+                      }}
                     >
                       {'>'}
                     </button>

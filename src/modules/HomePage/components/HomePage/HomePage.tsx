@@ -16,7 +16,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     if (category) {
-      // setIsLoading(true);
+      setIsLoading(true);
       setHasError(false);
 
       withMinDelay(fetchProducts(category), 1000)
@@ -25,7 +25,7 @@ export const HomePage = () => {
         .finally(() => setIsLoading(false));
     }
   }, []);
-  
+
   if (isLoading) {
     return <Loader />;
   }
@@ -34,7 +34,12 @@ export const HomePage = () => {
     return (
       <div className="home-page__error">
         <p>Oops! Something went wrong 😢</p>
-        <button className='reload-button' onClick={() => window.location.reload()}>Reload</button>
+        <button
+          className="reload-button"
+          onClick={() => window.location.reload()}
+        >
+          Reload
+        </button>
       </div>
     );
   }

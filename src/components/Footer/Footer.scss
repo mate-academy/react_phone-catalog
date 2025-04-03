@@ -1,4 +1,4 @@
-@import '/src/styles/media.scss';
+@import '/src/styles/media';
 
 .footer {
   &__content {
@@ -18,20 +18,9 @@
       align-items: start;
     }
   }
-
-  &__logo {
-  }
-
-  &__nav {
-  }
-
-  &__btn {
-  }
 }
-.nav {
-  &__list {
-  }
 
+.nav {
   &__list--footer {
     gap: 106px;
 
@@ -46,31 +35,23 @@
       margin: 32px 0;
     }
   }
-
-  &__item {
-  }
-
-  &__link {
-  }
 }
 
-.footer {
+.page__footer{
   &__btn {
     display: flex;
     align-items: center;
     gap: 16px;
-
-    @include mobile {
-      margin: 0 auto;
-    }
   }
-
-  
 }
 
 .footer__btn {
   display: flex;
   gap: 10px;
+
+  @include mobile {
+    margin: 0 auto;
+  }
 }
 
 .back-to-top-container {

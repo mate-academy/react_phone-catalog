@@ -4,33 +4,51 @@ import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { links } from '../../constants/common';
-import { useState } from 'react';
 
+type HeaderProps = {
+  isMenuOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-export const Header = () => {
+export const Header: React.FC<HeaderProps> = ({
+  setIsMenuOpen,
+  isMenuOpen,
+}) => {
   const favorites = useSelector((state: RootState) => state.favorites);
   const cart = useSelector((state: RootState) => state.cart);
 
   const location = useLocation();
   const navigate = useNavigate();
-// const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-const toggleMenu = () => {
-  if (location.pathname === '/menu') {
-    navigate('/'); // Закриває меню
-  } else {
-    navigate('/menu'); // Відкриває меню
-  }
-};
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev);
+  };
 
+  const handleLogoClick = () => {
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setIsMenuOpen(false);
+    } else {
+      setIsMenuOpen(false);
+      navigate('/');
+
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    }
+  };
 
   return (
     <header className="header page__header">
       <div className="header__content">
         <div className="header__logo">
-          <a href="#" className="header__logo-link">
+          <NavLink
+            to="/"
+            className="header__logo-link"
+            onClick={handleLogoClick}
+          >
             <img src="./img/Logo.svg" alt="logo" />
-          </a>
+          </NavLink>
         </div>
 
         <nav className="header__nav nav">
@@ -51,7 +69,10 @@ const toggleMenu = () => {
         </nav>
 
         <ul className="header__actions">
-          <li className="header__actions-item header__actions-item--favourite active">
+          <li
+            className="header__actions-item 
+            header__actions-item--favourite active"
+          >
             <NavLink
               to="favorites"
               className={({ isActive }) =>
@@ -78,13 +99,10 @@ const toggleMenu = () => {
             </NavLink>
           </li>
           <li className="header__actions-item header__actions-item--menu">
-            <button
-               onClick={toggleMenu}
-               className="icon icon--menu"
-            >
+            <button onClick={toggleMenu} className="icon icon--menu">
               <img
                 src={
-                  location.pathname === '/menu'
+                  isMenuOpen
                     ? './img/icons/close-menu.svg'
                     : './img/icons/menu.svg'
                 }

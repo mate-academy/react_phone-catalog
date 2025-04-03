@@ -1,4 +1,4 @@
-@import '/src/styles/media.scss';
+@import '/src/styles/media';
 
 $slider-button-hover-bg: #89939a63;
 $dot-active-color: #89939a;
@@ -34,13 +34,15 @@ $dot-active-color: #89939a;
 .slider-cards {
   position: relative;
   max-width: 100%;
-  margin: 0 auto;
 
- 
   &__track {
     display: flex;
-    column-gap: 12px;
+    gap: 12px;
     transition: transform 0.5s ease-in-out;
+
+    @media (min-width: 640px) {
+      will-change: transform;
+    }
   }
 
   &__buttons {
@@ -52,47 +54,67 @@ $dot-active-color: #89939a;
   &__item {
     display: flex;
     flex: 0 0 calc(25% - 12px);
-    max-width: calc(25% - 12px);
+    width: calc(25% - 12px);
 
-
-    @media(max-width: 1199px) {
-    flex: 0 0 calc((100% /3 ) - 12px);
-    max-width: calc((100% /3 ) - 12px);
+    @media (max-width: 1199px) {
+      flex: 0 0 calc(100% / 3 - 12px);
+     width: calc(100% / 3 - 12px);
+     
     }
 
-    @media(max-width: 850px) {
+    @media (max-width: 850px) {
       flex: 0 0 calc(40% - 12px);
-      max-width: calc(40% - 12px);
+      width: calc(40% - 12px);
     }
 
-    &:first-child {
-      margin-left: 4px;
-    }
-
-    &:last-child {
-      margin-right: 4px;
+    @include mobile {
+      flex: 0 0 calc(100% / 1.5 - 12px);
+     width: calc(100% / 1.5 - 12px);
     }
   }
-}
 
-.slider-cards {
   &__box {
-    margin: 0 auto;
     overflow: hidden;
     padding-block: 7px;
-    width: 100%;
+    min-width: 100%;
+    
+
+    @include tablet {
+     overflow: hidden;
+     margin: 0 2px;
+    }
+    
+    @include mobile {
+      padding-inline: 4px;
+    }
   }
 
   &__button {
     border: 1px solid $dot-active-color;
-    padding: 13px 19px;
-    margin-inline: 10px;
-    right: 0;
+    padding: 12px 19px;
     border-radius: 50%;
     transition: all 0.3s;
 
     &:hover {
       background-color: $slider-button-hover-bg;
+    }
+
+    &--disabled {
+      border: 1px solid #E2E6E9;
+      color: #E2E6E9;
+
+      &:hover {
+        cursor: not-allowed;
+        background-color:white;
+      }
+    }
+
+    &:first-child {
+      margin-right: 10px;
+    }
+
+    @include mobile {
+      padding: 6px 14px;
     }
   }
 }

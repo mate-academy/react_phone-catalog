@@ -1,21 +1,21 @@
-@import '/src/styles/media.scss';
+@import '/src/styles/media';
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
@@ -27,17 +27,13 @@ body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   scrollbar-width: thin;
-
-  overflow-y: scroll;
 }
 
 [class*='__container'] {
   max-width: 1136px;
   margin: 0 auto;
-  // width: 100%;
- 
 
   @include tablet {
     padding-inline: 24px;
@@ -49,33 +45,32 @@ body {
 }
 
 .wrapper {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-}
 
-.main {
-  flex: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .page__main {
   margin-bottom: 80px;
   margin-top: 121px;
+  flex-grow: 1;
 
   @include tablet {
     margin-bottom: 64px;
   }
 
   @include mobile {
+    position: relative;
+    margin-top: 90px;
     margin-bottom: 64px;
-    margin-top: 80px;
   }
 }
 
 .page__header {
-  margin-bottom: 56px;
   position: fixed;
-
   background-color: rgb(255, 255, 255);
   z-index: 100;
 }
@@ -86,6 +81,13 @@ body {
   line-height: 41px;
   letter-spacing: -1%;
   margin-bottom: 24px;
+
+  @include mobile {
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    max-width: 70%;
+  }
 }
 
 .title {
@@ -94,10 +96,14 @@ body {
   line-height: 56px;
   letter-spacing: -1%;
   margin-bottom: 8px;
+
+  @include mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
 }
 
 img {
-  //  overflow-clip-margin: content-box;
   overflow: clip;
 }
 
@@ -105,7 +111,8 @@ img {
   margin-bottom: 30px;
 }
 
-.button-back, .reload-button {
+.button-back,
+.reload-button {
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
@@ -119,6 +126,12 @@ img {
   transition: all 0.3s;
 
   &:hover {
-    box-shadow: 0px 3px 13px 0px #17203166;
+    box-shadow: 0 3px 13px 0 #17203166;
   }
+}
+
+.layout__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }

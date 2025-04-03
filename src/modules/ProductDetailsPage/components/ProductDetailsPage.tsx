@@ -34,8 +34,9 @@ export const ProductDetailsPage = () => {
 
       withMinDelay(fetchProducts(category, product), 300)
         .then(data => {
-          if (!data) {
+          if (!data || Array.isArray(data)) {
             setHasError(true);
+
             return;
           }
 
@@ -50,7 +51,13 @@ export const ProductDetailsPage = () => {
         });
 
       fetchProducts(category).then(products => {
-        setSimilarProducts(products.filter((p: any) => p.id !== product));
+        if (product) {
+          setSimilarProducts(
+            (products as Product[]).filter(
+              (p: Product) => p.id !== Number(product),
+            ),
+          );
+        }
       });
     }
 
@@ -72,13 +79,15 @@ export const ProductDetailsPage = () => {
     setPhoto(index);
   };
 
-  const handleFavoriteClick = (product: Product | ItemCard) => {
-    const item = mapToFavoriteItem(product);
+  const handleFavoriteClick = (prod: Product | ItemCard) => {
+    const item = mapToFavoriteItem(prod);
+
     dispatch(toggleFavorite(item));
   };
 
-  const handleCartClick = (product: Product | ItemCard) => {
-    const item = mapToFavoriteItem(product);
+  const handleCartClick = (prod: Product | ItemCard) => {
+    const item = mapToFavoriteItem(prod);
+
     dispatch(toggleCartItem(item));
   };
 
@@ -89,13 +98,8 @@ export const ProductDetailsPage = () => {
   if (hasError) {
     return (
       <div className="card__container">
-        <p className="error-message">
-          Oops! Product was not found 😥
-        </p>
-        <Link to={`../${category}`}
-          
-          className="button-back"
-        >
+        <p className="error-message">Oops! Product was not found 😥</p>
+        <Link to={`../${category}`} className="button-back">
           Back
         </Link>
       </div>
@@ -133,26 +137,66 @@ export const ProductDetailsPage = () => {
                 className="img-big"
               />
             </div>
-
-            
           </div>
 
           <div className="card__details-container">
-          <div className="card__details">
-            <div className="color-and-id">
-              <div className="info-block info-block--colors">
-                <p className="info-block__title">Available colors</p>
-                <div className="info-block__list">
-                  {currentProduct?.colorsAvailable.map((color, index) => {
-                    if (!product) return null;
+            <div className="card__details">
+              <div className="color-and-id">
+                <div className="info-block info-block--colors">
+                  <p className="info-block__title">Available colors</p>
+                  <div className="info-block__list">
+                    {currentProduct?.colorsAvailable.map((color, index) => {
+                      if (!product) {
+                        return null;
+                      }
 
-                    const currentColor = currentProduct.colorsAvailable.find(
-                      col => product.includes(col.replace(/\s/g, '-')),
-                    );
+                      const currentColor = currentProduct.colorsAvailable.find(
+                        col => product.includes(col.replace(/\s/g, '-')),
+                      );
+
+                      const newProductUrl = product.replace(
+                        currentColor?.replace(/\s/g, '-') || '',
+                        color.replace(/\s/g, '-'),
+                      );
+
+                      return (
+                        <NavLink
+                          to={`/${category}/${newProductUrl}`}
+                          key={index}
+                          className={({ isActive }) =>
+                            isActive
+                              ? 'info-block__item info-block__item--clr active'
+                              : 'info-block__item info-block__item--clr'
+                          }
+                          style={{
+                            backgroundColor:
+                              colorMap[
+                                color.toLowerCase().replace(/\s/g, '')
+                              ] || color,
+                          }}
+                        ></NavLink>
+                      );
+                    })}
+                  </div>
+                </div>
+                <span className="id-temp">ID: {id}</span>
+              </div>
+              <div className="info-block info-block--capacity">
+                <p className="info-block__title">Select capacity</p>
+                <div className="info-block__list">
+                  {currentProduct?.capacityAvailable?.map((capacity, index) => {
+                    if (!product) {
+                      return null;
+                    }
+
+                    const currentCapacity =
+                      currentProduct.capacityAvailable.find(cap =>
+                        product.includes(cap.toLowerCase()),
+                      );
 
                     const newProductUrl = product.replace(
-                      currentColor?.replace(/\s/g, '-') || '',
-                      color.replace(/\s/g, '-'),
+                      currentCapacity?.toLowerCase() || '',
+                      capacity.toLowerCase(),
                     );
 
                     return (
@@ -161,107 +205,73 @@ export const ProductDetailsPage = () => {
                         key={index}
                         className={({ isActive }) =>
                           isActive
-                            ? 'info-block__item info-block__item--color active'
-                            : 'info-block__item info-block__item--color'
+                            ? 'info-block__item info-block__item--cpcty active'
+                            : 'info-block__item info-block__item--cpcty'
                         }
-                        style={{
-                          backgroundColor:
-                            colorMap[color.toLowerCase().replace(/\s/g, '')] ||
-                            color,
-                        }}
-                      ></NavLink>
+                      >
+                        {capacity}
+                      </NavLink>
                     );
                   })}
                 </div>
               </div>
-              <span className="id-temp">ID: {id}</span>
-            </div>
-            <div className="info-block info-block--capacity">
-              <p className="info-block__title">Select capacity</p>
-              <div className="info-block__list">
-                {currentProduct?.capacityAvailable?.map((capacity, index) => {
-                  if (!product) return null;
-
-                  const currentCapacity = currentProduct.capacityAvailable.find(
-                    cap => product.includes(cap.toLowerCase()),
-                  );
-
-                  const newProductUrl = product.replace(
-                    currentCapacity?.toLowerCase() || '',
-                    capacity.toLowerCase(),
-                  );
-
-                  return (
-                    <NavLink
-                      to={`/${category}/${newProductUrl}`}
-                      key={index}
-                      className={({ isActive }) =>
-                        isActive
-                          ? 'info-block__item info-block__item--capacity active'
-                          : 'info-block__item info-block__item--capacity'
-                      }
-                    >
-                      {capacity}
-                    </NavLink>
-                  );
-                })}
+              <div className="price">
+                <p>${currentProduct?.priceDiscount}</p>
+                <span className="old-price">
+                  ${currentProduct?.priceRegular}
+                </span>
               </div>
-            </div>
-            <div className="price">
-              <p>${currentProduct?.priceDiscount}</p>
-              <span className="old-price">${currentProduct?.priceRegular}</span>
-            </div>
-            <div className="actions">
-              <button
-                className={isAdded ? 'add-to-cart--added' : 'add-to-cart'}
-                onClick={() =>
-                  currentProduct && handleCartClick(currentProduct)
-                }
-              >
-                {isAdded ? 'Added to card' : 'Add to card'}
-              </button>
-              {currentProduct && (
+              <div className="actions">
                 <button
-                  className="add-to-favorite"
-                  onClick={() => handleFavoriteClick(currentProduct)}
+                  className={isAdded ? 'add-to-cart--added' : 'add-to-cart'}
+                  onClick={() =>
+                    currentProduct && handleCartClick(currentProduct)
+                  }
                 >
-                  <img
-                    src={
-                      favorites.some(fav => fav.id === currentProduct.id)
-                        ? './img/icons/remove-from-fovourites.webp'
-                        : './img/icons/add-to-fovourites.svg'
-                    }
-                    alt=""
-                  />
+                  {isAdded ? 'Added to card' : 'Add to card'}
                 </button>
-              )}
-            </div>
-
-            <div className="card__info">
-              <div className="card__info-item">
-                <p className="card__info-label">Screen</p>
-                <p className="card__info-value">{currentProduct?.screen}</p>
-              </div>
-              <div className="card__info-item">
-                <p className="card__info-label">Capacity</p>
-                <p className="card__info-value">{currentProduct?.capacity}</p>
-              </div>
-              <div className="card__info-item">
-                <p className="card__info-label">Processor</p>
-                <p className="card__info-value">{currentProduct?.processor}</p>
-              </div>
-              <div className="card__info-item">
-                <p className="card__info-label">RAM</p>
-                <p className="card__info-value">{currentProduct?.ram}</p>
-              </div>
-            </div>
-          </div>
-          <div className="id">
-            <p>ID: {id}</p>
-          </div>
+                {currentProduct && (
+                  <button
+                    className="add-to-favorite"
+                    onClick={() => handleFavoriteClick(currentProduct)}
+                  >
+                    <img
+                      src={
+                        favorites.some(fav => fav.id === currentProduct.id)
+                          ? './img/icons/remove-from-fovourites.webp'
+                          : './img/icons/add-to-fovourites.svg'
+                      }
+                      alt=""
+                    />
+                  </button>
+                )}
               </div>
 
-         
+              <div className="card__info">
+                <div className="card__info-item">
+                  <p className="card__info-label">Screen</p>
+                  <p className="card__info-value">{currentProduct?.screen}</p>
+                </div>
+                <div className="card__info-item">
+                  <p className="card__info-label">Capacity</p>
+                  <p className="card__info-value">{currentProduct?.capacity}</p>
+                </div>
+                <div className="card__info-item">
+                  <p className="card__info-label">Processor</p>
+                  <p className="card__info-value">
+                    {currentProduct?.processor}
+                  </p>
+                </div>
+                <div className="card__info-item">
+                  <p className="card__info-label">RAM</p>
+                  <p className="card__info-value">{currentProduct?.ram}</p>
+                </div>
+              </div>
+            </div>
+            <div className="id">
+              <p>ID: {id}</p>
+            </div>
+          </div>
         </div>
         <div className="card__description">
           <section className="about-block">

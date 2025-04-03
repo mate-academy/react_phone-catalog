@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    animation: fadeIn 0.3s ease-in-out;
+    animation: fade-in 0.3s ease-in-out;
   
     &__content {
       background: #fff;
@@ -15,7 +15,7 @@
       max-width: 400px;
       width: 90%;
       text-align: center;
-      animation: slideUp 0.3s ease-out;
+      animation: slide-up 0.3s ease-out;
     }
   
     &__text {
@@ -58,7 +58,7 @@
     }
   }
   
-  @keyframes fadeIn {
+  @keyframes fade-in {
     from {
       background: rgba(0, 0, 0, 0);
     }
@@ -67,7 +67,7 @@
     }
   }
   
-  @keyframes slideUp {
+  @keyframes slide-up {
     from {
       opacity: 0;
       transform: translateY(40px);

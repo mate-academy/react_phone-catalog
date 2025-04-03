@@ -1,14 +1,6 @@
-@import '/src/styles/media.scss';
+@import '/src/styles/media';
 
 .home-page {
-  // &__container {
-  //     margin: 0 auto;
-  //     max-width: 1200px;
-  // }
-
-  &__slider {
-  }
-
   &__title {
     font-size: 48px;
     font-weight: bold;
@@ -36,7 +28,12 @@
   @include tablet {
     margin: 64px 0;
   }
+
+  @include mobile {
+    margin: 56px 0;
+  }
 }
+
 .hot-prices {
   margin-top: 80px;
 }

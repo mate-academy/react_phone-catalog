@@ -1,21 +1,21 @@
-import { Link } from "react-router-dom";
-import "./NotFoundPage.scss"
-import { useEffect, useState } from "react";
-import { Loader } from "../../../components/Loader";
+import { Link } from 'react-router-dom';
+import './NotFoundPage.scss';
+import { useEffect, useState } from 'react';
+import { Loader } from '../../../components/Loader';
 
 export const NotFoundPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(()=>{
-    setIsLoading(true)
-    
-    setTimeout(()=>{
-      setIsLoading(false)
-    }, 1500)
-  },[])
+  useEffect(() => {
+    setIsLoading(true);
 
-  if(isLoading){
-    return <Loader/>
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (

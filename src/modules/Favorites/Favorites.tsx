@@ -18,14 +18,13 @@ export const Favorites = () => {
     if (favorites.length === 0) {
       const timer = setTimeout(() => {
         setShowGoBtn(true);
-      }, 1500); 
-  
+      }, 1500);
+
       return () => clearTimeout(timer);
     } else {
-      setShowGoBtn(false); 
+      setShowGoBtn(false);
     }
   }, [favorites]);
-  
 
   return (
     <div className="favorites">
@@ -50,15 +49,14 @@ export const Favorites = () => {
         ) : (
           <>
             <div className="favourites__empty">
+              <Link
+                to="/"
+                className={`no-items__btn ${showGoBtn ? 'no-items__btn--visible' : 'no-items__btn--hidden'}`}
+              >
+                Go shopping!
+              </Link>
               <img src="./img/no-favourites.png" alt="" />
             </div>
-            <Link
-              to="/"
-              className={`no-items__btn ${showGoBtn ? 'no-items__btn--visible' : 'no-items__btn--hidden'}`}
-            >
-              Go shopping!
-            </Link>
-          
           </>
         )}
       </div>

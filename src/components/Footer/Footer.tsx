@@ -1,12 +1,7 @@
+import { footerLinks } from '../../constants/common';
 import './Footer.scss';
 
 export const Footer = () => {
-  const links = [
-    {name:'GITHUB', page:"https://github.com/kozlovoleksii"},
-    {name:'CONTACTS', page:"#"},
-    {name:'RIGHTS', page:"#"}
-  ];
-
   return (
     <footer className="footer page__footer">
       <div className="footer__content">
@@ -18,9 +13,9 @@ export const Footer = () => {
 
         <nav className="footer__nav nav">
           <ul className="nav__list nav__list--footer">
-            {links.map((link, index) => (
+            {footerLinks.map((link, index) => (
               <li className="nav__item" key={index}>
-                <a href={link.page} target='blank' className="nav__link">
+                <a href={link.page} target="blank" className="nav__link">
                   {link.name}
                 </a>
               </li>
@@ -29,12 +24,18 @@ export const Footer = () => {
         </nav>
         <div className="footer__btn">
           <div className="back-to-top-container">
-            <a href="#" className="back-to-top-text">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="back-to-top-text"
+            >
               Back to top
-            </a>
-            <a href="#" className="back-to-top-btn">
+            </button>
+            <button
+              className="back-to-top-btn"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
               <img src="./img/icons/btn-back-to-top.svg" alt="Back to top" />
-            </a>
+            </button>
           </div>
         </div>
       </div>

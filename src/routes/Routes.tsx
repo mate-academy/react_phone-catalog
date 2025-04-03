@@ -6,7 +6,6 @@ import { ProductsPage } from '../modules/ProductsPage/components';
 import { ProductDetailsPage } from '../modules/ProductDetailsPage/components';
 import { Favorites } from '../modules/Favorites';
 import { CartPage } from '../modules/CartPage/components';
-import { Menu } from '../components/Menu';
 
 export const AppRoutes = () => {
   return (
@@ -20,8 +19,6 @@ export const AppRoutes = () => {
         <Route path="not-found" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to="/not-found" replace />} />
       </Route>
-
-      <Route path="menu" element={<Menu />} />
     </Routes>
   );
 };

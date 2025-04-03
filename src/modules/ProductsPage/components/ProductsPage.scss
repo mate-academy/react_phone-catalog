@@ -1,12 +1,6 @@
-@import '/src/styles/media.scss';
+@import '/src/styles/media';
 
 .products {
-  &__container {
-  }
-
-  &__title {
-  }
-
   &__count {
     font-weight: 600;
     font-size: 14px;
@@ -14,6 +8,10 @@
     letter-spacing: 0%;
     color: #89939a;
     margin-bottom: 40px;
+
+    @include mobile {
+      margin-bottom: 32px;
+    }
   }
 
   &__filter-content {
@@ -26,6 +24,10 @@
     display: flex;
     flex-direction: column;
     position: relative;
+
+    @include mobile {
+      flex: 50%;
+    }
   }
 
   &__filter-label {
@@ -60,13 +62,17 @@
       box-shadow 0.2s ease;
 
     &:hover {
-      border-color: #000000;
+      border-color: #000;
       box-shadow: 0 0 0 3px rgba(33, 108, 255, 0.1);
     }
   }
 
   &__cards {
-    margin-bottom: 40px !important;
+    margin-bottom: 40px;
+
+    @include mobile {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -76,6 +82,8 @@
 
 .breadcrumbs {
   margin-bottom: 40px;
+
+
   &__list {
     display: flex;
     position: relative;
@@ -95,7 +103,7 @@
       width: 16px;
       height: 16px;
       position: absolute;
-      background: url('./img/icons/arrow-right.svg') no-repeat center;
+      background: url('/img/icons/arrow-right.svg') no-repeat center;
 
       top: 50%;
       transform: translateY(-50%);
@@ -106,12 +114,13 @@
     }
   }
 }
+
 .cards {
   &__list {
     display: flex;
     flex-wrap: wrap;
-    row-gap: 40px;
-    column-gap: 16px;
+    gap: 40px 16px;
+    margin-bottom: 40px;
   }
 
   &__item {
@@ -126,6 +135,11 @@
     @media (max-width: 850px) {
       flex: 0 0 calc(50% - 16px);
       max-width: calc(50% - 16px);
+    }
+
+    @include mobile {
+      flex: 0 0 100%;
+      max-width: 100%;
     }
   }
 }

@@ -2,11 +2,12 @@ import './SliderCards.scss';
 import { useEffect, useState } from 'react';
 import { SliderCardsProps } from '../../../../constants/common';
 import { ProductCard } from '../../../../components/ProductCard';
+import { useSwipe } from '../../../../utils/swipeCallbacks';
 
 export const SliderCards: React.FC<SliderCardsProps> = ({
   products,
   title,
-  discountPrice = false
+  discountPrice = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -14,15 +15,22 @@ export const SliderCards: React.FC<SliderCardsProps> = ({
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
+
     window.addEventListener('resize', handleResize);
+
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Визначаємо slidesPerView на основі ширини вікна
   const slidesPerView =
-    windowWidth <= 850 ? 2.5 : windowWidth <= 1199 ? 3 : 4;
+    windowWidth <= 639
+      ? 1.5
+      : windowWidth <= 850
+        ? 2.5
+        : windowWidth <= 1199
+          ? 3
+          : 4;
 
-  const itemsPerStep = Math.floor(slidesPerView);
+  const itemsPerStep = windowWidth <= 639 ? 1 : Math.floor(slidesPerView);
   const maxIndex = Math.max(0, Math.ceil(products.length - slidesPerView));
   const translateX = (currentIndex / slidesPerView) * 100;
 
@@ -30,8 +38,10 @@ export const SliderCards: React.FC<SliderCardsProps> = ({
     if (currentIndex === 0) {
       setShake(true);
       setTimeout(() => setShake(false), 300);
+
       return;
     }
+
     setCurrentIndex(prev => Math.max(prev - itemsPerStep, 0));
   };
 
@@ -39,15 +49,27 @@ export const SliderCards: React.FC<SliderCardsProps> = ({
     if (currentIndex >= maxIndex) {
       setShake(true);
       setTimeout(() => setShake(false), 300);
+
       return;
     }
+
     setCurrentIndex(prev => Math.min(prev + itemsPerStep, maxIndex));
   };
+
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useSwipe({
+    onSwipeLeft: nextSlide,
+    onSwipeRight: prevSlide,
+  });
 
   return (
     <div className="slider-cards">
       <h2 className="section-title">{title}</h2>
-      <div className={`slider-cards__box ${shake ? 'shake' : ''}`}>
+      <div
+        className={`slider-cards__box ${shake ? 'shake' : ''}`}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <ul
           className="slider-cards__track"
           style={{ transform: `translateX(-${translateX}%)` }}

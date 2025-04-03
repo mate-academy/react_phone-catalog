@@ -10,9 +10,11 @@ export const Breadcrumbs = () => {
   if (category === 'phones') {
     products = phones;
   }
+
   if (category === 'tablets') {
     products = tablets;
   }
+
   if (category === 'accessories') {
     products = accessories;
   }
@@ -30,7 +32,10 @@ export const Breadcrumbs = () => {
         </li>
 
         {category && (
-          <li className="breadcrumbs__item" style={{color: category && product ? "black" : "grey" }}>
+          <li
+            className="breadcrumbs__item"
+            style={{ color: category && product ? 'black' : 'grey' }}
+          >
             <Link to={`/${category}`} className="breadcrumbs__link">
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </Link>

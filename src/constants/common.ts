@@ -4,9 +4,15 @@ import accessories from '../../public/api/accessories.json';
 
 export const links = [
   { name: 'HOME', path: '/' },
-  { name: 'PHONES', path: 'phones' },
-  { name: 'TABLETS', path: 'tablets' },
-  { name: 'ACCESSORIES', path: 'accessories' },
+  { name: 'PHONES', path: '../phones' },
+  { name: 'TABLETS', path: '../tablets' },
+  { name: 'ACCESSORIES', path: '../accessories' },
+];
+
+export const footerLinks = [
+  { name: 'GITHUB', page: 'https://github.com/kozlovoleksii' },
+  { name: 'CONTACTS', page: '#' },
+  { name: 'RIGHTS', page: '#' },
 ];
 
 export interface Product {
@@ -64,11 +70,11 @@ export interface FavoriteItem {
   category: string;
   screen: string;
   capacity: string;
-  ram: string
+  ram: string;
   quantity: number;
 }
 
-export  const colorMap: Record<string, string> = {
+export const colorMap: Record<string, string> = {
   midnight: 'black',
   white: '#F0F0F0',
   spacegray: '#4A4A4A',
@@ -78,7 +84,27 @@ export  const colorMap: Record<string, string> = {
   spaceblack: '#1D1D1F',
   midnightgreen: '#566D63',
   rosegold: '#F4C2C2',
-  blacktitanium: "black",
+  blacktitanium: 'black',
 };
 
 export { phones, tablets, accessories };
+
+export const mobileSlides = [
+  {
+    link: 'phones/apple-iphone-16-pro-max-256gb-blacktitanium',
+    path: './img/main-banners/banner-main-m.png',
+  },
+  { link: 'phones', path: './img/main-banners/banner-phones-m.png' },
+  { link: 'tablets', path: './img/main-banners/banner-tablets-m.png' },
+  { link: 'accessories', path: './img/main-banners/banner-accessories-m.png' },
+];
+
+export const desktopSlides = [
+  {
+    link: 'phones/apple-iphone-16-pro-max-256gb-blacktitanium',
+    path: './img/main-banners/banner-main.png',
+  },
+  { link: 'phones', path: './img/main-banners/banner-phones.png' },
+  { link: 'tablets', path: './img/main-banners/banner-tablets.png' },
+  { link: 'accessories', path: './img/main-banners/banner-accessories.png' },
+];

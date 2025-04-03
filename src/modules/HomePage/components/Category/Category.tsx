@@ -22,10 +22,7 @@ export const Category = () => {
         <li className="category__item">
           <Link to="/tablets" className="category__link">
             <div className="category__image">
-              <img
-                src="./img/category/category-tablets.png"
-                alt="Tablets"
-              />
+              <img src="./img/category/category-tablets.png" alt="Tablets" />
             </div>
             <h4 className="category__name">Tablets</h4>
             <p className="category__count">{tablets.length} models</p>

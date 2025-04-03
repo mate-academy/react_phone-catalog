@@ -1,11 +1,11 @@
-import "./ProductCard.scss";
-import { Link, useParams } from "react-router-dom";
-import { FavoriteItem, ItemCard, Product } from "../../constants/common";
-import { mapToFavoriteItem } from "../../utils/helpers";
-import { toggleFavorite } from "../../redux/favoritesSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import { toggleCartItem } from "../../redux/cartSlice";
+import './ProductCard.scss';
+import { Link, useParams } from 'react-router-dom';
+import { FavoriteItem, ItemCard, Product } from '../../constants/common';
+import { mapToFavoriteItem } from '../../utils/helpers';
+import { toggleFavorite } from '../../redux/favoritesSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { toggleCartItem } from '../../redux/cartSlice';
 
 type ProductCardProps = {
   product: Product | ItemCard | FavoriteItem;
@@ -21,46 +21,40 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const favorites = useSelector((state: RootState) => state.favorites);
   const cart = useSelector((state: RootState) => state.cart);
 
-  const productId =
-    "itemId" in product ? product.itemId : product.id;
+  const productId = 'itemId' in product ? product.itemId : product.id;
 
-  const image =
-    "image" in product
-      ? product.image
-      : `/${product.images[0]}`;
+  const image = 'image' in product ? product.image : `/${product.images[0]}`;
 
-  const price =
-    "price" in product ? product.price : product.priceDiscount;
+  const price = 'price' in product ? product.price : product.priceDiscount;
 
-  const fullPrice =
-    "fullPrice" in product ? product.fullPrice : undefined;
+  const fullPrice = 'fullPrice' in product ? product.fullPrice : undefined;
 
   const isFavorite = favorites.some(fav => fav.id === productId);
   const isAdded = cart.some(fav => fav.id === productId);
 
   const handleFavoriteClick = () => {
     const item = mapToFavoriteItem(product as Product | ItemCard);
+
     dispatch(toggleFavorite(item));
   };
 
-  const handleCardClick = () => {
+  const handleCardClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const item = mapToFavoriteItem(product as Product | ItemCard);
+
     dispatch(toggleCartItem(item));
+
+    e.currentTarget.blur();
   };
 
   return (
     <article className="product-card">
       <div className="product-card__content">
         <Link
-          to={`/${category ?? "phones"}/${productId}`}
+          to={`/${category ? category : product.category}/${productId}`}
           className="product-card__link"
         >
           <div className="product-card__photo">
-            <img
-              src={image}
-              alt="Product"
-              className="product-card__image"
-            />
+            <img src={image} alt="Product" className="product-card__image" />
           </div>
 
           <h3 className="product-card__title">{product.name}</h3>
@@ -88,11 +82,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </div>
         </div>
 
-        <div className={"product-card__actions"} >
-          <button 
-            className={isAdded?"product-card__add-to-cart--added":"product-card__add-to-cart"}
+        <div className={'product-card__actions'}>
+          <button
+            className={
+              isAdded
+                ? 'product-card__add-to-cart--added'
+                : 'product-card__add-to-cart'
+            }
             onClick={handleCardClick}
-          >{isAdded? "Added to card": "Add to card"}</button>
+          >
+            {isAdded ? 'Added to card' : 'Add to card'}
+          </button>
           <button
             className="product-card__favorite"
             onClick={handleFavoriteClick}
@@ -100,8 +100,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <img
               src={
                 isFavorite
-                  ? "./img/icons/remove-from-fovourites.webp"
-                  : "./img/icons/add-to-fovourites.svg"
+                  ? './img/icons/remove-from-fovourites.webp'
+                  : './img/icons/add-to-fovourites.svg'
               }
               alt="Favorite"
             />

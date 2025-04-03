@@ -10,7 +10,6 @@ import {
 import { useEffect, useState } from 'react';
 import { Modal } from '../../../components/Modal';
 
-
 export const CartPage = () => {
   const cart = useSelector((state: RootState) => state.cart);
   const [removingId, setRemovingId] = useState<string | null>(null);
@@ -36,6 +35,8 @@ export const CartPage = () => {
 
       return () => clearTimeout(timer);
     }
+
+    return undefined;
   }, [totalCount]);
 
   return (
@@ -52,7 +53,7 @@ export const CartPage = () => {
           {totalCount === 0 && (
             <div className="cart-page__no-items no-items">
               <h3 className="no-items__title">
-              Oops... Looks like your cart is empty! 😄
+                Oops... Looks like your cart is empty! 😄
               </h3>
 
               <Link
@@ -64,13 +65,13 @@ export const CartPage = () => {
             </div>
           )}
 
-          <ul className="cart-page__list">
+          <div className="cart-page__list">
             {cart.map(product => (
               <article
                 className={`cart-page__item item ${removingId === product.id ? 'item--removing' : ''}`}
                 key={product.id}
               >
-                <li className="item__photo-and-title">
+                <div className="item__photo-and-title">
                   <button
                     className="item__remove-button"
                     onClick={() => {
@@ -94,7 +95,7 @@ export const CartPage = () => {
                   >
                     {product.name}
                   </Link>
-                </li>
+                </div>
 
                 <div className="item__count-and-price">
                   <button
@@ -119,7 +120,7 @@ export const CartPage = () => {
                 </div>
               </article>
             ))}
-          </ul>
+          </div>
           <div className="cart-page__checkout checkout">
             <div className="checkout__top">
               <div className="checkout__price">${totalPrice}</div>
@@ -128,33 +129,33 @@ export const CartPage = () => {
               </p>
             </div>
             <div className="checkout__bottom">
-            <button
-  className={
-    totalCount > 0 ? 'checkout__btn' : 'checkout__btn--not-active'
-  }
-  onClick={() => {
-    if (totalCount > 0) {
-      setIsModalOpen(true);
-    }
-  }}
->
-  Checkout
-</button>
+              <button
+                className={
+                  totalCount > 0 ? 'checkout__btn' : 'checkout__btn--not-active'
+                }
+                onClick={() => {
+                  if (totalCount > 0) {
+                    setIsModalOpen(true);
+                  }
+                }}
+              >
+                Checkout
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       {isModalOpen && (
-  <Modal
-    text="Checkout is not implemented yet. Do you want to clear the Cart?"
-    onConfirm={() => {
-      cart.forEach(product => dispatch(removeProduct(product.id)));
-      setIsModalOpen(false);
-    }}
-    onCancel={() => setIsModalOpen(false)}
-  />
-)}
+        <Modal
+          text="Checkout is not implemented yet. Do you want to clear the Cart?"
+          onConfirm={() => {
+            cart.forEach(product => dispatch(removeProduct(product.id)));
+            setIsModalOpen(false);
+          }}
+          onCancel={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 };

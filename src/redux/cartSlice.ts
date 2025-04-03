@@ -5,6 +5,7 @@ const CART_KEY = 'cart';
 
 const loadCartFromStorage = (): FavoriteItem[] => {
   const storedCart = localStorage.getItem(CART_KEY);
+
   return storedCart ? JSON.parse(storedCart) : [];
 };
 
@@ -20,18 +21,23 @@ const cartSlice = createSlice({
 
       if (index !== -1) {
         const updated = state.filter(cartItem => cartItem.id !== item.id);
+
         localStorage.setItem(CART_KEY, JSON.stringify(updated));
+
         return updated;
       } else {
         const newItem = { ...item, quantity: 1 };
         const updated = [...state, newItem];
+
         localStorage.setItem(CART_KEY, JSON.stringify(updated));
+
         return updated;
       }
     },
 
     increaseQuantity: (state, action: PayloadAction<string>) => {
       const item = state.find(prod => prod.id === action.payload);
+
       if (item) {
         item.quantity += 1;
         localStorage.setItem(CART_KEY, JSON.stringify(state));
@@ -40,6 +46,7 @@ const cartSlice = createSlice({
 
     decreaseQuantity: (state, action: PayloadAction<string>) => {
       const item = state.find(prod => prod.id === action.payload);
+
       if (item && item.quantity > 1) {
         item.quantity -= 1;
         localStorage.setItem(CART_KEY, JSON.stringify(state));
@@ -48,8 +55,10 @@ const cartSlice = createSlice({
 
     removeProduct: (state, action: PayloadAction<string>) => {
       const updated = state.filter(product => product.id !== action.payload);
+
       localStorage.setItem(CART_KEY, JSON.stringify(updated));
-      return updated; 
+
+      return updated;
     },
   },
 });
