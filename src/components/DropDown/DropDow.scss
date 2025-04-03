@@ -1,0 +1,50 @@
+@import '../../utils/mixins';
+
+.Dropdown-control{
+  background-color: $colorDarkGray;
+  border: 1px solid $colorDarkGray;
+  width: 136px;
+  height: 40px;
+  color: $colorWhite;
+
+  &:active{
+    border: 1px solid black;
+  }
+
+  @include onTablet{
+    width: 187px;
+  }
+
+  @include onDesktop{
+    width: 176px;
+  }
+}
+
+
+.Dropdown-menu{
+  background-color: $colorDarkGray;
+  border: 1px solid $colorDarkGray;
+  width: 136px;
+  color: $colorWhite;
+
+  &:active{
+    border: 1px solid black;
+  }
+
+  @include onTablet{
+    width: 187px;
+  }
+
+  @include onDesktop{
+    width: 176px;
+  }
+}
+
+.Dropdown-option{
+  color: $colorWhite;
+}
+
+.Dropdown-option.is-selected {
+  background-color: $colorDarkGray;
+  color: $colorWhite;
+}

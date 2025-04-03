@@ -1,0 +1,361 @@
+@import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
+
+.productInfo {
+  margin: 0 32px;
+}
+
+.productInfolink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px 0;
+}
+
+.productInfolink__title {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: $colorGrayTitle;
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.productInfolink__back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.productInfolink__backTitle {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: $colorGrayTitle;
+  align-items: center;
+  display: flex;
+}
+
+.productInfo__wrapper {
+  display: block;
+  gap: 64px;
+
+  @include onTablet {
+    display: flex;
+    gap: 17px;
+  }
+
+  @include onDesktop {
+    display: flex;
+    gap: 64px;
+  }
+}
+
+.productInfo__wrapperPhone {
+  display: flex;
+  align-items: flex-start;
+}
+
+.Image {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.productInfo__Image {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  border: 1px solid $colorButtonsText;
+
+  @include onTablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include onDesktop {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.Main__Image {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.productInfo__mainImage {
+  width: 287px;
+  height: 287px;
+  object-fit: contain;
+
+  @include onTablet {
+    width: 287px;
+    height: 287px;
+  }
+
+  @include onDesktop {
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.productInfo__colors {
+  margin-bottom: 24px;
+}
+
+.productInfo__contentTitle {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: $colorGrayTitle;
+  margin: 0 0 8px 0;
+}
+
+.productInfo__color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 8px 24px 0;
+  border: 2px solid $colorButtonsText;
+}
+
+.productInfo__color.selected {
+  border: 2px solid rgba(200, 0, 255, 0.356);
+}
+
+.productInfo__memorys.selected {
+  background-color: rgba(200, 0, 255, 0.356);
+  color: $colorWhite;
+}
+
+.productInfo__line {
+  border: 1px solid $colorButtonsText;
+}
+
+.productInfo__memory {
+  margin-top: 24px;
+}
+
+.productInfo__memorys {
+  margin: 0 8px 24px 0;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid $colorButtonsText;
+  color: $colorWhite;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #2a2c36;
+    border: 1px solid $colorGrayTitle;
+    color: $colorWhite;
+  }
+
+  &:active {
+    background-color: #1e2028;
+    border: 1px solid $colorWhite;
+    color: $colorWhite;
+  }
+}
+
+.productInfo__price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.productInfo__priceNew {
+  font-family: Mont-Bold;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: $colorWhite;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
+.productInfo__priceOld {
+  font-family: Mont-Bold;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  text-decoration: line-through;
+  color: $colorGrayTitle;
+}
+
+.productInfo__button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.productInfo__buttonAdd {
+  text-decoration: none;
+  background-color: $colorButtonsPink;
+  border: 1px solid $colorButtonsPink;
+  color: $colorWhite;
+  width: 263px;
+  height: 48px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+
+  @include onTablet {
+    width: 180px;
+  }
+
+  @include onDesktop {
+    width: 263px;
+  }
+}
+
+.productInfo__buttonLike {
+  width: 48px;
+  height: 48px;
+  background-color: $colorDarkGray;
+  border: 1px solid $colorDarkGray;
+  color: $colorWhite;
+}
+
+.productInfo__Information {
+  margin-top: 32px;
+}
+
+.productInfo__informationAll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.productInfo__screenTitle {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: $colorGrayTitle;
+}
+
+.productInfo__screenDescription {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: $colorWhite;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
+.productInfo__wrapperAboutTech {
+  margin-top: 80px;
+  display: block;
+  gap: 64px;
+
+  @include onTablet {
+    display: block;
+  }
+
+  @include onDesktop {
+    display: flex;
+  }
+}
+
+.productInfo__paragraph {
+  width: 100%;
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  @include onDesktop {
+    width: 50%;
+  }
+}
+
+.productInfo__about {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: $colorWhite;
+  margin: 0 0 16px 0;
+}
+
+.productInfo__content {
+  margin: 32px 0 0 0;
+}
+
+.productInfo__itemTitle {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  color: $colorWhite;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}
+
+.productInfo__desctiption {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $colorGrayTitle;
+}
+
+.productInfo__wrappeTech {
+  width: 100%;
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  @include onDesktop {
+    width: 50%;
+  }
+}
+
+.productInfo__TechinformationAll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productInfo__TechscreenTitle {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: $colorGrayTitle;
+}
+
+.productInfo__TechscreenDescription {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: $colorWhite;
+
+  @include themify($themes) {
+    color: themed('colorText');
+  }
+}

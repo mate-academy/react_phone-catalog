@@ -1,0 +1,65 @@
+@import '../../utils/mixins';
+
+
+.product{
+  width: 100%;
+}
+
+.product__cards {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+
+
+.product__titleButton {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.buttonPrev {
+  font-family: Mont-Bold, sans-serif;
+
+  background-color: transparent;
+  border: 1px solid $colorButtonsText;
+  color: $colorButtons;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background-color: $colorDarkGray;
+    border: 1px solid $colorDarkGray;
+    color: $colorWhite;
+  }
+}
+
+.buttonNext {
+  font-family: Mont-Bold, sans-serif;
+
+  background-color: transparent;
+  border: 1px solid $colorButtonsText;
+  color: $colorButtons;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background-color: $colorDarkGray;
+    border: 1px solid $colorDarkGray;
+    color: $colorWhite;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+

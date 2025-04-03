@@ -1,0 +1,91 @@
+@import '../ColorThemes/ColorThemes.scss';
+
+.header-content {
+  max-width: 1200px;
+  display: flex;
+  .logo-section {
+    height: 50px;
+    text-decoration: none;
+    display: flex;
+    width: 430px;
+    @include themify($themes) {
+      color: themed('textColor');
+    }
+    font-weight: 600;
+    text-transform: uppercase;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    span {
+      display: inline-block;
+      font-size: 30px;
+      margin: auto;
+    }
+  }
+  .toggle-btn-section {
+    margin: auto 0 auto auto;
+    .toggle-checkbox {
+      justify-content: center;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+
+      .toggle-btn__input {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+      }
+
+      .toggle-btn__input-label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 46px;
+        height: 20px;
+        display: block;
+        border-radius: 23px;
+        position: relative;
+        border: none;
+        margin-top: 2px;
+        background-color: orange;
+
+        @include themify($themes) {
+          background-color: themed('toggleBackground');
+        }
+
+        &::after {
+          content: '?';
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          transition: 0.3s;
+          box-shadow: 0 5px 10px rgba(153, 153, 153, 0.4);
+          background-color: $colorWhite;
+        }
+      }
+
+      .toggle-btn__input:checked ~ .toggle-btn__input-label {
+        &:after {
+          background: $colorWhite;
+          left: calc(100% - 3px);
+          transform: translateX(-100%);
+        }
+      }
+
+      .toggle-btn__input:checked ~ .toggle-btn__theme {
+        &:after {
+          background: $colorWhite;
+          left: calc(100% - 3px);
+          transform: translateX(-100%);
+        }
+      }
+    }
+
+    .toggle-btn__input:checked ~ .toggle-btn__input-label {
+      background-color: #82deff;
+    }
+  }
+}
