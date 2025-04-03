@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ProductCard.scss';
 import { ProductItem } from '../ProductItem/ProductItem';
 import { Product } from '../../types/ProductTypes';
+import { useSwipeable } from 'react-swipeable';
 interface Props {
   title: string;
   products: Product[];
@@ -45,8 +46,14 @@ export const ProductSlider: React.FC<Props> = ({
     }
   };
 
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+    trackMouse: true,
+  });
+
   return (
-    <div className="product">
+    <div className="product" {...handlers}>
       <div className="product__titleButton">
         <h2 className="category__title">{title}</h2>
         <div className="button">
@@ -66,16 +73,18 @@ export const ProductSlider: React.FC<Props> = ({
           </button>
         </div>
       </div>
-      <div className="product__cards">
-        {products
-          .slice(currentIndex, currentIndex + itemsPerPage)
-          .map(product => (
-            <ProductItem
-              key={product.id}
-              product={product}
-              WithAdditionalPrice={WithAdditionalPrice}
-            />
-          ))}
+      <div className="111">
+        <div className="product__cards">
+          {products
+            .slice(currentIndex, currentIndex + itemsPerPage)
+            .map(product => (
+              <ProductItem
+                key={product.id}
+                product={product}
+                WithAdditionalPrice={WithAdditionalPrice}
+              />
+            ))}
+        </div>
       </div>
     </div>
   );

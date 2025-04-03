@@ -7,7 +7,7 @@ import { useProductHooks } from './usePhonesHooks';
 import { useState } from 'react';
 import { Product } from '../../types/ProductTypes';
 import { Loader } from '../Loader/Loader';
-import catGif from '../../../assets/cat.gif';
+// import catGif from '../../../assets/cat.gif';
 
 export const ProductPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
@@ -78,7 +78,11 @@ export const ProductPage = () => {
       </div>
       {error && (
         <div className="error__container">
-          <img src={catGif} alt="Error" className="error__img" />
+          <img
+            src="public\assets\page-not-found.png"
+            alt="Error"
+            className="error__img"
+          />
           <p className="error-message">
             Oops, something went wrong, please check your connection 🫶💻. Try
             again later ❤️.

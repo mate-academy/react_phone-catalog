@@ -90,6 +90,8 @@
   margin-left: auto;
   border: 1px $colorDarkGray solid;
   display: none;
+  position: relative;
+
 
   @include onDesktop {
     display: flex;
@@ -97,6 +99,7 @@
 }
 
 .shopping {
+  position: relative;
   border: 1px $colorDarkGray solid;
   display: none;
 
@@ -125,8 +128,8 @@
 
 .badge {
   position: absolute;
-  top: 28%;
-  left: 50%;
+  top: 17px;
+  left: 80px;
   background: #eb5757;
   color: $colorWhite;
   font-size: 10px;
@@ -139,18 +142,18 @@
   align-items: center;
 
   @include onTablet {
-    left: 50%;
+    left: 172px;
   }
 
   @include onDesktop {
-    left: 97.5%;
+    left: 34px;
   }
 }
 
 .badge2 {
   position: absolute;
-  top: 28%;
-  left: 50%;
+  top: 17px;
+  left: 80px;
   background: #eb5757;
   color: $colorWhite;
   font-size: 10px;
@@ -163,10 +166,10 @@
   align-items: center;
 
   @include onTablet {
-    left: 50%;
+    left: 172px;
   }
 
   @include onDesktop {
-    left: 92%;
+    left: 34px;
   }
 }

@@ -9,7 +9,7 @@ import { useInfoHook } from './useInfoHook';
 import { ProductSlider } from '../ProductCard/ProductCard';
 import { NavLink, useParams } from 'react-router-dom';
 import { NameSlider } from '../../types/nameslider';
-import catGif from '../../../assets/cat.gif';
+// import catGif from '../../../public/assets/';
 import liked from '../../../image/liked.svg';
 
 export const ProductInformation: React.FC = () => {
@@ -69,7 +69,11 @@ export const ProductInformation: React.FC = () => {
       </div>
       {error && (
         <div className="error__container">
-          <img src={catGif} alt="Error" className="error__img" />
+          <img
+            src="public\assets\page-not-found.png"
+            alt="Error"
+            className="error__img"
+          />
           <p className="error-message">
             Oops, something went wrong, please check your connection 🫶💻. Try
             again later ❤️.

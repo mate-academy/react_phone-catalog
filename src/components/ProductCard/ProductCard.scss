@@ -7,10 +7,14 @@
 
 .product__cards {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
   transition: transform 0.3s ease-in-out;
   overflow: hidden;
+
+  @include onDesktop{
+    justify-content: center;
+  }
 }
 
 

@@ -7,7 +7,8 @@ import { Product } from '../../types/ProductTypes';
 import { fetchProducts } from '../../utils/api';
 import { Loader } from '../Loader/Loader';
 import { NameSlider } from '../../types/nameslider';
-import catGif from '../../../assets/cat.gif';
+// import catGif from '../../../public/assets/cat.gif';
+
 export const HomePage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -43,7 +44,11 @@ export const HomePage = () => {
     <main className="main__homepage">
       {error && (
         <div className="error__container">
-          <img src={catGif} alt="Error" className="error__img" />
+          <img
+            src="public\assets\page-not-found.png"
+            alt="Error"
+            className="error__img"
+          />
           <p className="error-message">
             Oops, something went wrong, please check your connection 🫶💻. Try
             again later ❤️.
