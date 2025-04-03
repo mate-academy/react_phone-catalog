@@ -1,35 +1,36 @@
 @use 'src/scssComponents/mixins' as *;
 
-
-
 .header {
   box-sizing: border-box;
-  height: 100%;
+  height: auto;
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
   width: 100%;
-  padding: 16px;
+  border: 1px solid #3B3E4A;
 
   &__burger-menu {
-    display: block;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     transition: transform 0.3s;
-    background-image: url(../public/figmaLogo/Burger.svg);
+    background-image: url(/figmaLogo/Burger.svg);
     align-items: center;
     justify-content: center;
     display: flex;
+    margin-right: 30px;
 
     @include on-tablet {
-      height: 32px;
-      width: 32px;
+    display: none;
+    }
+    @include on-desktop {
+    display: none;
     }
 
     &:hover {
@@ -38,14 +39,122 @@
   }
 
   &__top {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
   }
 
   &__logo {
     display: flex;
     align-items: center;
+  padding: 10px 20px;
+
+  }
+
+  &__nav {
+    display: flex;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      flex: 1;
+    }
+
+    @include on-phone {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+
+  &__head--logo {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+  }
+
+  &__heart,
+  &__packet {
+    border: 1px solid #3B3E4A;
+    cursor: pointer;
+    padding: 30px 30px;
+
+    @include on-phone {
+      display: none;
+    }
+  }
+
+  &__heart {
+    &__top {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url('/figmaLogo/HeartLove.svg');
+    }
+  }
+
+
+
+&__packet {
+  &__top {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/figmaLogo/Packet.svg');
+  }
+}
+
+
 
 }
+
+.nav__link {
+  color: #75767F;
+  margin: 0 8px;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  padding-bottom: 4px;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.07s ease-in-out;
+  }
+
+  &:active {
+    color: white;
+  }
+
+  &:active::after,
+  &:focus::after {
+    width: 100%;
+  }
 }

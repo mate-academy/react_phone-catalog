@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
@@ -15,18 +13,6 @@ const images = [
 ];
 
 export default function ImageSlider() {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
     <div className="slider">
       <Swiper
@@ -36,12 +22,24 @@ export default function ImageSlider() {
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000 }}
         loop
-        navigation={isDesktop} // Використовуємо вбудовані кнопки Swiper
-        allowTouchMove={true} // Сенсорне перегортання увімкнене
+        navigation={{
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }}
+        allowTouchMove={true}
       >
+        <button className="swiper-button-prev"></button>
+        <button className="swiper-button-next"></button>
+
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <img className="slider__image" src={image} alt={`Slide ${index}`} />
+            <div className="slider__image-container">
+              <img
+                className="slider__image"
+                src={image}
+                alt={`Slide ${index}`}
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

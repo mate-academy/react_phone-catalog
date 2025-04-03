@@ -5,6 +5,9 @@
   aspect-ratio: 4 / 3;
   max-width: 1200px;
   margin: 0 auto;
+  z-index: 1;
+  background-color: #fff;
+  margin: auto;
 }
 
 .swiper-slide {
@@ -13,59 +16,74 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-block: auto;
+}
+
+.slider__image-container {
+  width: 100%;
+  height: 100%;
 }
 
 .slider__image {
-  width: 80%;
+  width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
 }
 
 .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
   background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
 }
 
 .swiper-pagination-bullet-active {
   background: white;
 }
 
+/* Стили для кнопок навігації */
 .swiper-button-prev,
 .swiper-button-next {
-  display: none; /* За замовчуванням ховаємо кнопки */
+  display: none;
 }
 
 @media (min-width: 1024px) {
+  /* Показуємо кнопки навігації на великих екранах */
   .swiper-button-prev,
   .swiper-button-next {
-    display: flex; /* Використовуємо flex для центрування стрілок */
+    display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    width: 40px; /* Збільшуємо ширину для кращої видимості */
-    height: 100%; /* Кнопки займають повну висоту слайдера */
+    background: #323542;
+    width: 40px;
+    height: 100%;
     position: absolute;
-    top: 0; /* Починаємо з верхнього краю */
-    transform: none; /* Прибираємо transform, оскільки висота 100% */
+    top: 0;
     font-size: 14px;
     border: none;
     cursor: pointer;
     z-index: 10;
-    background-repeat: no-repeat;
-    background: #323542;
   }
 
   .swiper-button-prev {
-    left: 16px;
+    left: 0;
   }
 
   .swiper-button-next {
-    right: 16px; /* Відстань 16px від правого краю банера */
+    right: 0;
   }
 
   .swiper-button-prev:hover,
   .swiper-button-next:hover {
-    background: #292e35;  
+    background: #292e35;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 640px) {
+  .slider {
+    aspect-ratio: 3 / 2;
   }
 }
 
