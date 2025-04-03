@@ -15,7 +15,7 @@ export const TabletDetails: React.FC = () => {
   useEffect(() => {
     const fetchTabletDetails = async () => {
       try {
-        const response = await fetch('/api/tablets.json'); // Тут шлях до планшетів
+        const response = await fetch('./api/tablets.json');
 
         if (!response.ok) {
           throw new Error('Failed to fetch tablet details');

@@ -22,7 +22,7 @@ export const Accessories: React.FC = () => {
   useEffect(() => {
     const fetchAccessories = async () => {
       try {
-        const response = await fetch('/api/accessories.json');
+        const response = await fetch('./api/accessories.json');
 
         if (!response.ok) {
           throw new Error('Failed to fetch phones');

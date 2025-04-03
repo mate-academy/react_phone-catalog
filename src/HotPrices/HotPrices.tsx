@@ -16,7 +16,7 @@ export const HotPrices: React.FC = () => {
     const controller = new AbortController();
     const fetchPhones = async () => {
       try {
-        const response = await fetch('/api/phones.json', {
+        const response = await fetch('./api/phones.json', {
           signal: controller.signal,
         });
 

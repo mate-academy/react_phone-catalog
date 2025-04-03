@@ -15,7 +15,7 @@ export const PhoneDetails: React.FC = () => {
   useEffect(() => {
     const fetchPhoneDetails = async () => {
       try {
-        const response = await fetch('/api/phones.json');
+        const response = await fetch('./api/phones.json');
 
         if (!response.ok) {
           throw new Error('Failed to fetch phone details');

@@ -15,7 +15,7 @@ export const BrandNewModels: React.FC = () => {
   useEffect(() => {
     const fetchPhones = async () => {
       try {
-        const response = await fetch('/public/api/phones.json');
+        const response = await fetch('./api/phones.json');
 
         if (!response.ok) {
           throw new Error('Failed to fetch phones');

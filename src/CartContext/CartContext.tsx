@@ -17,6 +17,7 @@ interface CartContextProps {
   removeFromFavorites: (itemId: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   cartCount: number;
+  favouritesCount: number;
   clearCart: () => void;
   clearFavorites: () => void;
 }
@@ -50,7 +51,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const addToFavorites = (item: Phone | Tablet | Accessories) => {
-    setFavorites(prev => [...prev, item]);
+    setFavorites(prev => {
+      if (!prev.some(fav => fav.id === item.id)) {
+        return [...prev, item];
+      }
+
+      return prev;
+    });
   };
 
   const removeFromCart = (itemId: string) => {
@@ -70,11 +77,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const clearCart = () => {
-    setCart([]); // Очищає всю корзину
+    setCart([]);
   };
 
   const clearFavorites = () => {
-    setFavorites([]); // Очищає всі улюблені товари
+    setFavorites([]);
   };
 
   return (
@@ -88,6 +95,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         removeFromFavorites,
         updateQuantity,
         cartCount,
+        favouritesCount: favorites.length,
         clearCart,
         clearFavorites,
       }}

@@ -18,7 +18,9 @@ export const Phones: React.FC = () => {
   useEffect(() => {
     const fetchPhones = async () => {
       try {
-        const response = await fetch('/api/phones.json');
+        // eslint-disable-next-line no-console
+        console.log('Fetching phones...');
+        const response = await fetch('./api/phones.json');
 
         if (!response.ok) {
           throw new Error('Failed to fetch phones');
@@ -27,6 +29,8 @@ export const Phones: React.FC = () => {
         const data: Phone[] = await response.json();
 
         setPhones(data);
+        // eslint-disable-next-line no-console
+        console.log('Phones loaded:', data);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
@@ -41,7 +45,6 @@ export const Phones: React.FC = () => {
     fetchPhones();
   }, []);
 
-  // 🔹 Оновлюємо `filteredPhones`, коли змінюється `searchQuery` або `phones`
   useEffect(() => {
     setFilteredPhones(
       phones.filter(phone => phone.name.toLowerCase().includes(searchQuery)),
@@ -64,7 +67,7 @@ export const Phones: React.FC = () => {
           <div key={phone.id} className="phone-card a">
             <Link to={`/phones/${phone.id}`}>
               <img
-                src={phone.images?.[0] || '/placeholder.jpg'}
+                src={phone.images?.[0] || '/img/product-not-found.png'}
                 alt={phone.name}
                 className="phone-cardimage"
               />

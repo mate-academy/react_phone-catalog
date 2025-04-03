@@ -1,8 +1,8 @@
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import iconf from '/public/img/favourites.png';
 import './Navbar.scss';
 import { CartIcon } from '../../Pages/Cart/CartIcon';
+import { FavouritesIcon } from '../../Pages/FavouritesIcon';
 import { useState, useEffect } from 'react';
 import React from 'react';
 
@@ -74,9 +74,7 @@ export const Navbar = () => {
 
           {/* Права сторона навбару */}
           <div className="navbar-right">
-            <NavLink to="/favourites" className="favourites">
-              <img src={iconf} alt="Favourites" width="24" height="24" />
-            </NavLink>
+            <FavouritesIcon />
 
             <CartIcon />
           </div>

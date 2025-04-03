@@ -6,14 +6,8 @@ export interface BaseItem {
   images: string[];
 }
 
-export interface Phone extends BaseItem {
-  // додаткові властивості для Phone
-}
+export interface Phone extends BaseItem {}
 
-export interface Tablet extends BaseItem {
-  // додаткові властивості для Tablet
-}
+export interface Tablet extends BaseItem {}
 
-export interface Accessories extends BaseItem {
-  // додаткові властивості для Accessories
-}
+export interface Accessories extends BaseItem {}

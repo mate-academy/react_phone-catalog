@@ -16,7 +16,7 @@ export const AccessoryDetails: React.FC = () => {
   useEffect(() => {
     const fetchAccessoryDetails = async () => {
       try {
-        const response = await fetch('/api/accessories.json');
+        const response = await fetch('./api/accessories.json');
 
         if (!response.ok) {
           throw new Error('Failed to fetch accessory details');
