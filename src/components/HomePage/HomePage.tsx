@@ -44,11 +44,6 @@ export const HomePage = () => {
     <main className="main__homepage">
       {error && (
         <div className="error__container">
-          <img
-            src="public\assets\page-not-found.png"
-            alt="Error"
-            className="error__img"
-          />
           <p className="error-message">
             Oops, something went wrong, please check your connection 🫶💻. Try
             again later ❤️.

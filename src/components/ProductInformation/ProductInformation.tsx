@@ -69,11 +69,6 @@ export const ProductInformation: React.FC = () => {
       </div>
       {error && (
         <div className="error__container">
-          <img
-            src="public\assets\page-not-found.png"
-            alt="Error"
-            className="error__img"
-          />
           <p className="error-message">
             Oops, something went wrong, please check your connection 🫶💻. Try
             again later ❤️.
@@ -241,7 +236,16 @@ export const ProductInformation: React.FC = () => {
           </div>
         </div>
       ) : (
-        <h2>No product selected</h2>
+        <div className="not-found">
+          <h2>
+            Oops something is wrong, please reload the page or check back later
+          </h2>
+          <img
+            src="public\img\product-not-found.png"
+            alt="Error"
+            className="error__img"
+          />
+        </div>
       )}
     </main>
   );

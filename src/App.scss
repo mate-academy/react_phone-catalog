@@ -49,8 +49,10 @@ body {
 }
 
 .error__img {
-  box-shadow: 1px 0 0.4em rgba(217, 217, 214, 0.459);
   width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .error__container {
