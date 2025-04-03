@@ -46,6 +46,10 @@
       object-fit: contain;
     }
 
+    &_link {
+      color: $woodsmoke-color;
+    }
+
     &_remove {
       @include hover(transform, rotate(360deg));
     }

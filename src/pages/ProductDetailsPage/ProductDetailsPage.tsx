@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getProductById } from '@api/productsApi';
+import { BASE_URL, getProductById } from '@api/productsApi';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ProductImageCarousel } from '@components/ProductImageCarousel';
 import { ProductDetailsType } from 'types/productInfoTypes';
@@ -57,7 +57,7 @@ export const ProductDetailsPage = () => {
 
       const fixedProduct = {
         ...fetchedProduct,
-        images: fetchedProduct.images.map(img => `/${img}`),
+        images: fetchedProduct.images.map(img => `${BASE_URL}${img}`),
       };
 
       const foundProduct = allProducts.find(item => item.itemId === productId);

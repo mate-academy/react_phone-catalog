@@ -1,5 +1,5 @@
 import { ProductSlider } from '@components/ProductSlider';
-import { getProducts } from '@api/productsApi';
+import { BASE_URL, getProducts } from '@api/productsApi';
 import { ProductType } from 'types/productTypes';
 
 import React, { useEffect, useState } from 'react';
@@ -17,7 +17,7 @@ export const YouMayLike: React.FC = () => {
 
       const updatedProducts = randomProducts.map(product => ({
         ...product,
-        image: `/${product.image}`,
+        image: `${BASE_URL}${product.image}`,
       }));
 
       setProducts(updatedProducts);

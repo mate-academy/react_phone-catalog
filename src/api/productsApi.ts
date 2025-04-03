@@ -3,7 +3,7 @@ import { CategoryName } from '@enums/CategoryName';
 import { ProductDetailsType } from 'types/productInfoTypes';
 import { ProductType } from 'types/productTypes';
 
-const BASE_URL = '/api/';
+export const BASE_URL = 'https://OlehYavoriv.github.io/react_phone-catalog/';
 
 export const getProducts = async (): Promise<ProductType[]> => {
   const response = await fetch(BASE_URL + ApiRoutes.PRODUCTS);

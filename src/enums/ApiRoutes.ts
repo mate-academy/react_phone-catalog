@@ -1,6 +1,6 @@
 export enum ApiRoutes {
-  PRODUCTS = 'products.json',
-  PHONES = 'phones.json',
-  TABLETS = 'tablets.json',
-  ACCESSORIES = 'accessories.json',
+  PRODUCTS = 'api/products.json',
+  PHONES = 'api/phones.json',
+  TABLETS = 'api/tablets.json',
+  ACCESSORIES = 'api/accessories.json',
 }

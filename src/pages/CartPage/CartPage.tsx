@@ -82,6 +82,7 @@ export const CartPage = () => {
                         product.category,
                         String(product.itemId),
                       )}
+                      className={styles.cart__item_link}
                     >
                       <p className={styles.cart__item_name}>{product.name}</p>
                     </Link>
