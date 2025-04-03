@@ -1,0 +1,45 @@
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('fonts/Mont-Bold.otf');
+}
+
+.header_title_container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 24px;
+  @include on-tablet() {
+    margin-bottom: 32px;
+  }
+  @include on-desktop() {
+    height: 56px;
+    margin-bottom: 56px;
+  }
+}
+
+.header_title {
+  font-family: "Mont-Bold", sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -.01em;
+  color: $main-dark-gray;
+  height: 82px;
+  width: 288px;
+  margin: 0 auto;
+  @include on-tablet() {
+    font-size: 48px;
+    line-height: 56px;
+    width: 592px;
+    height: 112px;
+  }
+  @include on-desktop() {
+    font-size: 48px;
+    width: 1136px;
+    height: 56px;
+  }
+}

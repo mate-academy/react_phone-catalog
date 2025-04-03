@@ -4,23 +4,47 @@ import { HotPrices } from '../HotPrices/HotPrices';
 import { ProductCard } from '../ProductCard/ProductCard';
 import React, { useState } from 'react';
 import styles from './Main.module.scss';
+// import phones from '../../../public/json/phones.json';
+import phones from '../../../public/api/phones.json';
 
-export const Main: React.FC = () => {
-  const [disabledIds, setDisabledIds] = useState<number[]>([0, 2]);
+type Props = {
+  setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
+  disabledIds: number[];
+  width: number;
+};
+export const Main: React.FC<Props> = ({
+  setDisabledIds,
+  disabledIds,
+  width,
+}) => {
   return (
     <>
-      <MainNewModels disabledIds={disabledIds} setDisabledIds={setDisabledIds}/>
-      <div className={`${styles.scroll_container}`} id='scroll_container_new_models'>
-        {[1, 2, 3, 4].map(id => {
-          return <ProductCard key={id}/>;
-        })}
-      </div>
-      <Categories />
-      <HotPrices disabledIds={disabledIds} setDisabledIds={setDisabledIds} />
-      <div className={`${styles.scroll_container}`} id='scroll_container_hot_prices'>
-        {[1, 2, 3, 4].map(id => {
-          return <ProductCard key={id}/>;
-        })}
+      <div className={`${styles.main_container}`}>
+        <MainNewModels
+          disabledIds={disabledIds}
+          setDisabledIds={setDisabledIds}
+          width={width}
+        />
+        <div
+          className={`${styles.scroll_container}`}
+          id="scroll_container_new_models"
+        >
+          {phones.map(
+            phone =>
+              !phone.priceDiscount && <ProductCard key={phone.id} phone={phone} />,
+          )}
+        </div>
+        <Categories />
+        <HotPrices disabledIds={disabledIds} setDisabledIds={setDisabledIds} />
+        <div
+          className={`${styles.scroll_container}`}
+          id="scroll_container_hot_prices"
+        >
+          {phones.map(
+            phone =>
+              phone.priceDiscount && <ProductCard key={phone.id} phone={phone} />,
+          )}
+        </div>
       </div>
     </>
   );

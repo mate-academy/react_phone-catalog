@@ -6,7 +6,6 @@ import { ButtonUrl } from '../../enums/ButtonUrl';
 
 type Props = {
   direction: ButtonDirection;
-  backToTop: boolean;
   buttonId: number;
   disabledIds: number[];
   onClick: () => void;
@@ -14,22 +13,10 @@ type Props = {
 
 export const Button: React.FC<Props> = ({
   direction,
-  backToTop,
   buttonId,
   disabledIds,
   onClick,
 }) => {
-  // const handleOnClick = () => {
-  //   if (backToTop) {
-  //     window.scrollTo({ top: 0 });
-  //   } else {
-  //     const scrollContainer = document.getElementById('scroll_container_1');
-  //     if (scrollContainer) {
-  //       scrollContainer.scrollBy({ left: 235, behavior: 'smooth' });
-  //     }
-  //   }
-  // };
-
   return (
     <>
       <button

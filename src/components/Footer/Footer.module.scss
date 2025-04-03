@@ -1,4 +1,6 @@
-@use "../../css-variables/variables.scss" as *;
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
 @font-face {
   font-family: Mont-Bold;
   src: url('fonts/Mont-Bold.otf');
@@ -9,17 +11,33 @@
 }
 
 .footer_main_container {
+  width: 100%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   gap: 32px;
   padding: 32px 16px;
   border-top: 1px solid $button-border-disabled;
+  @include on-tablet() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 96px;
+    padding: 32px;
+    box-sizing: border-box;
+  }
 }
 
 .footer_logo_container {
   width: 288px;
   height: 32px;
+  @include on-tablet() {
+    width: 192px;
+  }
+  @include on-desktop() {
+    width: 376px;
+  }
 }
 
 .footer_logo {
@@ -33,10 +51,35 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  @include on-tablet() {
+    width: 192px;
+    height: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+  @include on-desktop() {
+    width: 376px;
+  }
+}
+
+.footer_paragraph_wrapper {
+  @include on-tablet() {
+    @include flex_centered;
+    height: 32px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover .footer_paragraph {
+    color: $main-dark-gray;
+    animation: bounce .5s ease-in-out;
+  }
 }
 
 .footer_paragraph {
-  font-family: "Mont-Bold", sans-serif;
+  font-family: 'Mont-Bold', sans-serif;
   font-weight: 800;
   font-size: 12px;
   line-height: 12px;
@@ -48,14 +91,28 @@
 }
 
 .footer_back_to_top_container {
-  width: 288px;
+  width: 100%;
   height: 32px;
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover .footer_back_to_top_text {
+    color: $main-dark-gray;
+    animation: bounce .5s ease-in-out;
+  }
   @include flex_centered;
   gap: 16px;
+  @include on-tablet() {
+    width: 192px;
+    justify-content: flex-end;
+  }
+  @include on-desktop() {
+    width: 376px;
+  }
 }
 
 .footer_back_to_top_text {
-  font-family: "Mont-Regular", sans-serif;
+  font-family: 'Mont-Regular', sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;

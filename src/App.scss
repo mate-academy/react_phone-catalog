@@ -6,6 +6,20 @@ html, body {
   width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
-  overflow: visible;
+  // overflow: visible;
   scroll-behavior: smooth;
+}
+
+.SideBar {
+  position: fixed;
+  left: -100vw;
+  transition: left .5s ease-in-out;
+  z-index: 20;
+}
+
+.activeSideBar {
+  left: 0;
+}
+.inactiveSideBar {
+  left: -100vw;
 }

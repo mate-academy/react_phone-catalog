@@ -1,0 +1,28 @@
+@use './variables.scss' as *;
+
+@mixin header_button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-background-white;
+  border: none;
+  border-left: 1px solid $button-border-disabled;
+  @include on-desktop() {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@mixin on-tablet() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}

@@ -1,4 +1,6 @@
-@use "../../css-variables/variables.scss" as *;
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
 @font-face {
   font-family: Mont-Bold;
   src: url('fonts/Mont-Bold.otf');
@@ -12,28 +14,78 @@
   @include flex_centered;
   flex-direction: column;
   margin-bottom: 56px;
+  @include on-tablet() {
+    width: 592px;
+    height: 328px;
+    margin-bottom: 64px;
+  }
+  @include on-desktop() {
+    width: 1136px;
+    height: 508px;
+    margin-bottom: 80px;
+  }
 }
 
 .all_categories {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  @include on-tablet() {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.category_card {
+  @include on-tablet() {
+    width: 188px;
+    height: 262px;
+  }
+  @include on-desktop() {
+    width: 368px;
+    height: 444px;
+  }
 }
 
 .category_title {
-  font-family: "Mont-Bold", sans-serif;
+  font-family: 'Mont-Bold', sans-serif;
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
   color: $main-dark-gray;
   width: 288px;
   height: 32px;
+  @include on-tablet() {
+    width: 592px;
+    font-size: 32px;
+    line-height: 42px;
+    letter-spacing: -.01em;
+  }
+  @include on-desktop() {
+    width: 1136px;
+  }
 }
 
 .category_image {
   width: 288px;
   height: 288px;
   margin-bottom: 24px;
+  transition: all .5s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    transform: scale(.9);
+  }
+  &:active {
+    transform: scale(1);
+  }
+  @include on-tablet() {
+    width: 188px;
+    height: 188px;
+  }
+  @include on-desktop() {
+    width: 368px;
+    height: 368px;
+  }
 }
 
 .category_info_container {
@@ -42,7 +94,7 @@
 }
 
 .category_name {
-  font-family: "Mont-Regular", sans-serif;
+  font-family: 'Mont-Regular', sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 100%;
@@ -50,10 +102,17 @@
   width: 188px;
   height: 26px;
   margin: 0 0 4px 0;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  @include on-desktop() {
+    font-weight: 600;
+  }
 }
 
 .category_items_count {
-  font-family: "Mont-Regular", sans-serif;
+  font-family: 'Mont-Regular', sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
@@ -61,4 +120,7 @@
   width: 188px;
   height: 22px;
   margin: 0;
+  @include on-desktop() {
+    font-weight: 500;
+  }
 }

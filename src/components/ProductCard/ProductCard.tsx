@@ -1,26 +1,33 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
+// import phones from '../../../public/json/phones.json';
+import { Phone } from '../../types/Phone';
 
-export const ProductCard = () => {
+type Props = {
+  phone: Phone;
+}
+
+export const ProductCard: React.FC<Props> = ({ phone }) => {
   const [clicked, setClicked] = useState(false);
 
   return (
     <>
       <div className={`${styles.product_card_container}`}>
-        <div className={`${styles.img_wrapper}`}>
-          <img
-            src="../../img/products/phones/white-phone.png"
-            alt="phone image"
-            className={`${styles.image}`}
-          />
-        </div>
-        <div className={`${styles.title_wrapper}`}>
-          <h3 className={`${styles.title}`}>
-            Apple iPhone 14 Pro 128GB Silver (MQ023)
-          </h3>
+        <div className={`${styles.img_and_title_wrapper}`}>
+          <div className={`${styles.img_wrapper}`}>
+            <img
+              src={phone.images[0]}
+              alt={phone.name}
+              className={`${styles.image}`}
+            />
+          </div>
+          <div className={`${styles.title_wrapper}`}>
+            <h3 className={`${styles.title}`}>{phone.name}</h3>
+          </div>
         </div>
         <div className={`${styles.price_wrapper}`}>
-          <h2 className={`${styles.price}`}>$999</h2>
+          <h2 className={`${styles.price}`}>{`$${phone.priceRegular}`}</h2>
+          <h2 className={`${styles.oldPrice}`}>{`$${phone.priceDiscount}`}</h2>
         </div>
 
         <div className={`${styles.line}`} />
@@ -29,19 +36,19 @@ export const ProductCard = () => {
           <div className={`${styles.phone_charact}`}>
             <p className={`${styles.phone_charact_parag}`}>Screen</p>
             <p className={`${styles.phone_charact_parag} ${styles.char_value}`}>
-              6.1” OLED
+              {phone.screen}
             </p>
           </div>
           <div className={`${styles.phone_charact}`}>
             <p className={`${styles.phone_charact_parag}`}>Capacity</p>
             <p className={`${styles.phone_charact_parag} ${styles.char_value}`}>
-              128 GB
+              {phone.capacity}
             </p>
           </div>
           <div className={`${styles.phone_charact}`}>
             <p className={`${styles.phone_charact_parag}`}>RAM</p>
             <p className={`${styles.phone_charact_parag} ${styles.char_value}`}>
-              6 GB
+              {phone.ram}
             </p>
           </div>
         </div>

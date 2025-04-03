@@ -1,0 +1,211 @@
+import React, { useEffect, useState } from 'react';
+import { Header } from '../Header/Header';
+import styles from './MobileCategory.module.scss';
+import phones from '../../../public/api/phones.json';
+import { ProductCard } from '../ProductCard/ProductCard';
+import { Footer } from '../Footer/Footer';
+import { DropDown } from '../Dropdown/DropDown';
+import { useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
+import products from '../../../public/api/products.json';
+
+type Props = {
+  setActiveAside: (arg: boolean) => void;
+  width: number;
+  disabledIds: number[];
+};
+
+export const MobileCategory: React.FC<Props> = ({
+  setActiveAside,
+  width,
+  disabledIds,
+}) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [itemsCount, setItemsCount] = useState(searchParams.get('count') || '');
+  const [sortBy, setSortBy] = useState(searchParams.get('sortBy') || '');
+  const [pageNum, setPageNum] = useState(searchParams.get('pageNum') || '1');
+  const [buttonsCount, setButtonsCount] = useState<string[]>(['1']);
+
+  const sortByData = [
+    {
+      id: '0',
+      name: 'Newest',
+    },
+    {
+      id: '1',
+      name: 'Oldest',
+    },
+  ];
+  const itemsOnPageData = [
+    {
+      id: '0',
+      name: '30',
+    },
+    {
+      id: '1',
+      name: '16',
+    },
+    {
+      id: '2',
+      name: '20',
+    },
+  ];
+  // url params
+  useEffect(() => {
+    const newParams = new URLSearchParams(searchParams.toString());
+
+    if (itemsCount) {
+      newParams.set('count', itemsCount);
+    } else {
+      newParams.delete('count');
+    }
+    if (sortBy) {
+      newParams.set('sortBy', sortBy);
+    } else {
+      newParams.delete('sortBy');
+    }
+    if (pageNum) {
+      pageNum !== '1' && newParams.set('pageNum', pageNum);
+    } else {
+      newParams.delete('pageNum');
+    }
+
+    setSearchParams(newParams);
+  }, [itemsCount, sortBy, pageNum, setSearchParams]);
+
+  // buttons count
+  useEffect(() => {
+    let numOfButtons;
+    if (itemsCount) {
+      numOfButtons = Math.ceil(phones.length / Number(itemsCount));
+    } else {
+      numOfButtons = 1;
+    }
+    const result = Array.from({ length: numOfButtons }, (_, i) =>
+      (i + 1).toString(),
+    );
+    setButtonsCount(result);
+  }, [itemsCount]);
+
+  const sortByCount = () => {
+    if (itemsCount) {
+      return [
+        Number(itemsCount) * (Number(pageNum) - 1),
+        Number(itemsCount) * Number(pageNum),
+      ];
+    } else {
+      return [0, phones.length];
+    }
+  };
+
+  const sortByCategory = () => {
+    if (sortBy) {
+      const sortDirection = sortBy === 'Newest' ? -1 : 1;
+      const sortedPhones = [...phones].sort((a, b) => {
+        const productA = products.find(product => product.itemId === a.id);
+        const productB = products.find(product => product.itemId === b.id);
+
+        if (!productA || !productB) return 0;
+
+        return (productA.year - productB.year) * sortDirection;
+      });
+      return sortedPhones;
+    }
+    return phones;
+  };
+
+  const handleButtonClassName = (number: string) => {
+    return classNames([styles.mobile_page_num], {
+      [styles.selected_page]: pageNum === number,
+    });
+  };
+
+  const handlePageChange = (number: string) => {
+    setPageNum(number);
+    window.scrollTo({ top: 0 });
+  };
+
+  return (
+    <>
+      <Header setActiveAside={setActiveAside} width={width} />
+      <div className={`${styles.mobile_main_container}`}>
+        <div className={`${styles.mobile_path_container}`}>
+          <img
+            src="../../img/icons/home-icon.svg"
+            alt="home icon"
+            className={`${styles.mobile_header_icon}`}
+          />
+          <img
+            src="../../img/icons/main-disabled-arrow.svg"
+            alt="right arrow"
+            className={`${styles.mobile_header_icon}`}
+          />
+          <p className={`${styles.mobile_path}`}>Phones</p>
+        </div>
+        <h1 className={`${styles.mobile_header}`}>Mobile phones</h1>
+        <p className={`${styles.mobile_models_count}`}>
+          {phones.length} models
+        </p>
+
+        <div className={`${styles.mobile_main_select_container}`}>
+          <div className={`${styles.mobile_select_container}`}>
+            <p className={`${styles.mobile_select_parag}`}>Sort by</p>
+            <DropDown
+              id={'0'}
+              data={sortByData}
+              setSort={setSortBy}
+              searchParams={searchParams}
+            />
+          </div>
+          <div className={`${styles.mobile_select_container}`}>
+            <p className={`${styles.mobile_select_parag}`}>Items on page</p>
+            <DropDown
+              id={'1'}
+              data={itemsOnPageData}
+              setSort={setItemsCount}
+              searchParams={searchParams}
+            />
+          </div>
+        </div>
+        <div className={`${styles.mobile_phones_container}`}>
+          {sortByCategory()
+            .slice(sortByCount()[0], sortByCount()[1])
+            .map(phone => (
+              <ProductCard phone={phone} key={phone.id} />
+            ))}
+        </div>
+
+        <div className={`${styles.mobile_button_container}`}>
+          <button
+            className={`${styles.mobile_arrow_button} ${styles.mobile_arrow_left}`}
+          >
+            <img
+              src="../../img/icons/main-default-arrow.svg"
+              alt="left arrow"
+            />
+          </button>
+          <div className={`${styles.mobile_page_num_container}`}>
+            {buttonsCount.map((button, id) => {
+              return (
+                <button
+                  className={handleButtonClassName(button)}
+                  onClick={() => handlePageChange(button)}
+                  key={id}
+                >
+                  {button}
+                </button>
+              );
+            })}
+          </div>
+          <button className={`${styles.mobile_arrow_button}`}>
+            <img
+              src="../../img/icons/main-default-arrow.svg"
+              alt="right arrow"
+            />
+          </button>
+        </div>
+      </div>
+      <Footer disabledIds={disabledIds} />
+    </>
+  );
+};

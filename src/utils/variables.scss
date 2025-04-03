@@ -1,0 +1,26 @@
+@mixin flex_centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+$button-border-default: #B4BDC3;
+$button-border-disabled: #E2E6E9;
+$main-background-white: #FFFFFF;
+$main-dark-gray: #313237;
+$main-light-gray: #89939A;
+
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px

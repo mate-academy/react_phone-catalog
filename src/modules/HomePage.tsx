@@ -1,20 +1,45 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Footer } from '../components/Footer/Footer';
 import { Header } from '../components/Header/Header';
 import { HeaderSlider } from '../components/HeaderSlider/HeaderSlider';
 import { Main } from '../components/Main/Main';
+import { HeaderTitle } from '../components/HeaderTitle/HeaderTitle';
+import { useOutletContext } from 'react-router-dom';
 
 // type Props = {
-//   setSideBarVisible: (arg: boolean) => void;
-// }
+//   setActiveAside: (arg: boolean) => void;
+// };
+
+type ContextType = {
+  setActiveAside: (arg: boolean) => void;
+  width: number;
+  setWidth: (arg: number) => void;
+  disabledIds: number[];
+  setDisabledIds: Dispatch<SetStateAction<number[]>>;
+};
 
 export const HomePage: React.FC = () => {
+  const { setActiveAside, width, setWidth, disabledIds, setDisabledIds } = useOutletContext<ContextType>();
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+
   return (
     <>
-      <Header />
-      <HeaderSlider />
-      <Main/>
-      <Footer/>
+    
+      <Header setActiveAside={setActiveAside} width={width} />
+      <HeaderTitle/>
+      <HeaderSlider width={width} />
+      <Main
+        disabledIds={disabledIds}
+        setDisabledIds={setDisabledIds}
+        width={width}
+      />
+      <Footer disabledIds={disabledIds} />
     </>
   );
 };

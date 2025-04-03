@@ -5,11 +5,16 @@ import styles from './MainNewModels.module.scss';
 
 type Props = {
   // setDisabledIds: (arg: number) => void;
-  setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>
+  setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
   disabledIds: number[];
-}
+  width: number;
+};
 
-export const MainNewModels: React.FC<Props> = ({ disabledIds, setDisabledIds }) => {
+export const MainNewModels: React.FC<Props> = ({
+  disabledIds,
+  setDisabledIds,
+  width,
+}) => {
   const handleButtonState = (element: HTMLElement) => {
     const scrollLeft = element.scrollLeft;
     const scrollWidth = element.scrollWidth;
@@ -24,8 +29,7 @@ export const MainNewModels: React.FC<Props> = ({ disabledIds, setDisabledIds }) 
     } else if (!atStart) {
       newDisabledIds = newDisabledIds.filter(id => id !== 0);
     }
-    
-    
+
     if (atEnd && !newDisabledIds.includes(1)) {
       newDisabledIds.push(1);
     } else if (!atEnd) {
@@ -35,23 +39,23 @@ export const MainNewModels: React.FC<Props> = ({ disabledIds, setDisabledIds }) 
     if (JSON.stringify(newDisabledIds) !== JSON.stringify(disabledIds)) {
       setDisabledIds(newDisabledIds);
     }
-  }
+  };
   const handleScrollLeft = () => {
     const container = document.getElementById('scroll_container_new_models');
     if (container) {
-      container.scrollBy({ left: -220, behavior: 'smooth'});
+      container.scrollBy({ left: -220, behavior: 'smooth' });
 
       setTimeout(() => handleButtonState(container), 100);
     }
-  }
+  };
   const handleScrollRight = () => {
     const container = document.getElementById('scroll_container_new_models');
     if (container) {
-      container.scrollBy({ left: 220, behavior: 'smooth'});
+      container.scrollBy({ left: 220, behavior: 'smooth' });
 
       setTimeout(() => handleButtonState(container), 100);
     }
-  }
+  };
 
   useEffect(() => {
     const container = document.getElementById('scroll_container_new_models');
@@ -74,14 +78,12 @@ export const MainNewModels: React.FC<Props> = ({ disabledIds, setDisabledIds }) 
         <div className={`${styles.main_header_button_container}`}>
           <Button
             direction={ButtonDirection.left}
-            backToTop={false}
             onClick={handleScrollLeft}
             buttonId={0}
             disabledIds={disabledIds}
           />
           <Button
             direction={ButtonDirection.right}
-            backToTop={false}
             onClick={handleScrollRight}
             buttonId={1}
             disabledIds={disabledIds}

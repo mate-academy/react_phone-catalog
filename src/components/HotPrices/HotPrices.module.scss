@@ -1,4 +1,6 @@
-@use "../../css-variables/variables.scss" as *;
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
 @font-face {
   font-family: Mont-Bold;
   src: url('fonts/Mont-Bold.otf');
@@ -12,13 +14,25 @@
   align-items: center;
   gap: 72px;
   margin: 0 16px 24px 16px;
+  @include on-tablet() {
+    width: 592px;
+    margin: 0 24px 24px 24px;
+    height: 42px;
+  }
+  @include on-desktop() {
+    width: 1136px;
+    margin: 0 32px 24px 32px;
+  }
 }
 
 .main_header_title_container {
-  width: 136px;
+  width: fit-content;
   height: 32px;
   display: flex;
   align-items: center;
+  @include on-tablet() {
+    height: 42px;
+  }
 }
 
 .main_header_title {
@@ -26,6 +40,11 @@
   font-weight: 800;
   font-size: 22px;
   color: $main-dark-gray;
+  @include on-tablet() {
+    font-size: 32px;
+    line-height: 42px;
+    letter-spacing: -0.01em
+  }
 }
 
 .main_header_button_container {

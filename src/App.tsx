@@ -1,16 +1,24 @@
 import { useState } from 'react';
 import './App.scss';
-import { HomePage } from './modules/HomePage';
-import { SideBarPage } from './modules/SideBarPage';
 import 'swiper/css'
+import { SideBar } from './components/SideBar/SideBar';
+import classNames from 'classnames';
+import { Outlet } from 'react-router-dom';
 
 export const App = () => {
-  const [sideBarVisible, setSideBarVisible] = useState(false);
+  const [activeAside, setActiveAside] = useState(false);
+  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [disabledIds, setDisabledIds] = useState<number[]>([0, 2]);
 
   return (
     <div className="App">
-      { sideBarVisible && (<SideBarPage />)}
-      <HomePage />
+    <div className={classNames("SideBar", {
+            'activeSideBar': activeAside,
+            'inactiveSideBar': !activeAside,
+          })}>
+            <SideBar setActiveAside={setActiveAside}/>
+          </div>
+      <Outlet context={{setActiveAside, width, setWidth, disabledIds, setDisabledIds}} />
     </div>
   );
 };

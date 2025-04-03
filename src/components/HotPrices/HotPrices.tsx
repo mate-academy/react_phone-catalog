@@ -36,7 +36,7 @@ export const HotPrices: React.FC<Props> = ({setDisabledIds, disabledIds}) => {
       }
     }
     const handleScrollLeft = () => {
-      const container = document.getElementById('scroll_container_new_models');
+      const container = document.getElementById('scroll_container_hot_prices');
       if (container) {
         container.scrollBy({ left: -220, behavior: 'smooth'});
   
@@ -44,7 +44,7 @@ export const HotPrices: React.FC<Props> = ({setDisabledIds, disabledIds}) => {
       }
     }
     const handleScrollRight = () => {
-      const container = document.getElementById('scroll_container_new_models');
+      const container = document.getElementById('scroll_container_hot_prices');
       if (container) {
         container.scrollBy({ left: 220, behavior: 'smooth'});
   
@@ -53,13 +53,13 @@ export const HotPrices: React.FC<Props> = ({setDisabledIds, disabledIds}) => {
     }
   
     useEffect(() => {
-      const container = document.getElementById('scroll_container_new_models');
+      const container = document.getElementById('scroll_container_hot_prices');
       if (container) {
-        const handleScroll = () => handleButtonState(container);
+        const handleScroll1 = () => handleButtonState(container);
   
         handleButtonState(container);
-        container.addEventListener('scroll', handleScroll);
-        return () => container.removeEventListener('scroll', handleScroll);
+        container.addEventListener('scroll', handleScroll1);
+        return () => container.removeEventListener('scroll', handleScroll1);
       }
       return;
     }, [disabledIds]);
@@ -72,17 +72,15 @@ export const HotPrices: React.FC<Props> = ({setDisabledIds, disabledIds}) => {
         <div className={`${styles.main_header_button_container}`}>
           <Button
             direction={ButtonDirection.left}
-            backToTop={false}
             onClick={handleScrollLeft}
             buttonId={2}
-            disabledIds={[]}
+            disabledIds={disabledIds}
           />
           <Button
             direction={ButtonDirection.right}
-            backToTop={false}
             onClick={handleScrollRight}
             buttonId={3}
-            disabledIds={[]}
+            disabledIds={disabledIds}
           />
         </div>
       </div>
