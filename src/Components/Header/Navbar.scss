@@ -3,12 +3,14 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
   .logo {
-    color: #161616;
-    font-weight: bold;
     font-size: 13px;
+    font-weight: bold;
+    color: #161616;
     text-decoration: none;
-    transition: transform 0.3s ease-in-out;
     margin-top: -10px;
+
+    transition: transform 0.3s ease-in-out;
+
 
     &:hover {
       transform: scale(1.1);
@@ -16,11 +18,13 @@
   }
 
   .navbar-item {
-    color: #585858;
+
     position: relative;
+    color: #585858;
+
     text-decoration: none;
-    font-weight: bold;
     font-size: 13px;
+    font-weight: bold;
 
     &:hover {
       color: #000;
@@ -30,9 +34,11 @@
 
 .navbar-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
   padding: 10px;
+
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -48,6 +54,7 @@
 
 .navbar-item.has-background-grey-lighter::after {
   content: "";
+  
   position: absolute;
   bottom: -12px;
   left: 0;
