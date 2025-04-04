@@ -37,7 +37,7 @@
     cursor: pointer;
     transition: 0.2s;
 
-    &:hover {
+    @include hover {
       background: #f0f0f0;
     }
   }

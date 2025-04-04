@@ -21,7 +21,7 @@
     margin-bottom: 24px;
     gap: 8px;
 
-    @include hover(transform, scale(1.2));
+    @include hover-scale(transform, scale(1.2));
 
     &_arrow {
       width: 16px;
@@ -115,7 +115,7 @@
     color: $secondaryColor;
     cursor: pointer;
 
-    @include hover(transform, scale(1.2))
+    @include hover-scale(transform, scale(1.2));
   }
 
   &__image {
@@ -143,14 +143,17 @@
 
   &__details {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     max-height: 32px;
   }
 
   &__price {
     margin: 0;
+    display: flex;
+    align-items: center;
     color: $primaryColor;
+    width: 100px;
 
     @include h3-tablet-desktop;
   }
@@ -162,7 +165,7 @@
 
   &__quantityButton {
     background-color: $whiteColor;
-      color: $primaryColor;
+    color: $primaryColor;
     border: 1px solid $iconsColor;
     width: 32px;
     height: 32px;
@@ -172,7 +175,7 @@
     cursor: pointer;
     transition: all 0.3s;
 
-    &:hover {
+    @include hover {
       border-color: $secondaryColor;
       color: $whiteColor;
       background-color: $primaryColor;
@@ -187,8 +190,14 @@
   }
 
   &__quantityValue {
-    margin: 0 8px;
-    font-size: 16px;
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: $primaryColor;
   }
 
   &__summary {
@@ -218,7 +227,7 @@
         margin: 0;
         color: $primaryColor;
 
-        @include h2-tablet-desktop
+        @include h2-tablet-desktop;
       }
 
       &_totalItems {
@@ -246,7 +255,7 @@
 
       @include buttons;
 
-      &:hover {
+      @include hover {
         border: 1px solid $primaryColor;
         border-radius: 8px;
         box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);

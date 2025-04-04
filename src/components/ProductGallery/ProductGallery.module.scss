@@ -59,7 +59,7 @@
     border: 1px solid $grayColor;
     object-fit: scale-down;
 
-    &:hover {
+    @include hover {
       border: 1px solid $secondaryColor;
     }
 

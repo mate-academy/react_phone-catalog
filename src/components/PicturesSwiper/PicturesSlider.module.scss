@@ -13,7 +13,7 @@
     margin-bottom: 64px;
   }
 
-  @include  desktop {
+  @include desktop {
     margin-bottom: 80px;
   }
 }
@@ -71,11 +71,9 @@
     font-weight: bold;
   }
 
-  @media (hover: hover) {
-    &:hover {
-      background-color: $primaryColor;
-      color: $whiteColor;
-    }
+  @include hover {
+    background-color: $primaryColor;
+    color: $whiteColor;
   }
 
   &:disabled {
@@ -110,11 +108,9 @@
     font-weight: bold;
   }
 
-  @media (hover: hover) {
-    &:hover {
-      background-color: $primaryColor;
-      color: $whiteColor;
-    }
+  @include hover {
+    background-color: $primaryColor;
+    color: $whiteColor;
   }
 
   &:disabled {
@@ -123,7 +119,6 @@
     color: $secondaryColor;
   }
 }
-
 
 .pagination {
   display: flex;

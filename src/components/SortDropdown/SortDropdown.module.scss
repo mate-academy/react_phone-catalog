@@ -1,5 +1,6 @@
 @import '../../styles/variables';
 @import '../../styles/mixinsTypography';
+@import '../../styles/mixins';
 
 .dropdown {
   position: relative;
@@ -37,6 +38,7 @@
     overflow: hidden;
     max-height: 0;
     opacity: 0;
+    z-index: 10;
     transition:
       max-height 0.3s ease,
       opacity 0.3s ease,
@@ -53,9 +55,20 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
 
-    &:hover {
+    @include hover {
       background-color: $primaryColor;
       color: $whiteColor;
+    }
+
+    &--disabled {
+      cursor: default;
+      background-color: $whiteColor;
+      color: $secondaryColor;
+
+      @include hover {
+        background-color: $whiteColor;
+        color: $secondaryColor;
+      }
     }
   }
 }

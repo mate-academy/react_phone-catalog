@@ -54,9 +54,9 @@
     color: $secondaryColor;
 
     @include uppercase;
-    @include hover(transform, scale(1.1));
+    @include hover-scale(transform, scale(1.1));
 
-    &:hover {
+    @include hover {
       color: $primaryColor;
     }
 
@@ -76,9 +76,9 @@
     height: 32px;
     gap: 16px;
 
-    @include hover(transform, scale(1.2));
+    @include hover-scale(transform, scale(1.2));
 
-    &:hover {
+    @include hover {
       cursor: pointer;
     }
 

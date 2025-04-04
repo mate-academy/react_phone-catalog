@@ -16,14 +16,23 @@
   &__logo {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 96px;
+    justify-content: start;
+    padding-left: 10px;
+    width: 130px;
     height: 100%;
 
     &_img {
       width: 64px;
       height: 20.79px;
     }
+  }
+
+  &__group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
   }
 
   &__links {
@@ -62,7 +71,7 @@
         transition: transform 0.2s ease-in-out;
       }
 
-      &:hover {
+      @include hover {
         color: $primaryColor;
 
         &::after {
@@ -109,7 +118,7 @@
         transition: transform 0.2s ease-in-out;
       }
 
-      &:hover {
+      @include hover {
         color: $primaryColor;
 
         &::after {
@@ -140,7 +149,7 @@
         transition: transform 0.2s ease-in-out;
       }
 
-      &:hover {
+      @include hover {
         color: $primaryColor;
 
         &::after {

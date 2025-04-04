@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
 import styles from './SortDropdown.module.scss';
 
 import arrowBottom from '../../imgs/svg/arrow-bottom-icon.svg';
@@ -57,8 +58,10 @@ export const SortDropdown: React.FC<Props> = ({ sortOptions, sortKey }) => {
   }, [isOpen]);
 
   const handleSelect = (value: string) => {
-    setSelected(value);
-    setIsOpen(false);
+    if (value !== selected) {
+      setSelected(value);
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -76,14 +79,16 @@ export const SortDropdown: React.FC<Props> = ({ sortOptions, sortKey }) => {
       </button>
 
       <ul
-        className={`${styles.dropdown__menu} ${
-          isOpen ? styles['dropdown__menu--open'] : ''
-        }`}
+        className={classNames(styles.dropdown__menu, {
+          [styles['dropdown__menu--open']]: isOpen,
+        })}
       >
         {sortOptions.map(option => (
           <li
             key={option.value}
-            className={styles.dropdown__item}
+            className={classNames(styles.dropdown__item, {
+              [styles['dropdown__item--disabled']]: option.value === selected,
+            })}
             onClick={() => handleSelect(option.value)}
           >
             {option.label}

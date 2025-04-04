@@ -4,28 +4,28 @@
 
 .backButton {
   display: flex;
-    width: max-content;
-    text-decoration: none;
-    align-items: center;
-    margin-bottom: 24px;
+  width: max-content;
+  text-decoration: none;
+  align-items: center;
+  margin-bottom: 24px;
+  color: $secondaryColor;
+  gap: 8px;
+
+  @include hover-scale(transform, scale(1.2));
+
+  @include hover {
+    color: $primaryColor;
+  }
+
+  &_icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &_text {
     color: $secondaryColor;
-    gap: 8px;
+    margin: 0;
 
-    &:hover {
-      color: $primaryColor;
-    }
-
-    @include hover(transform, scale(1.2));
-
-    &_icon {
-      width: 16px;
-      height: 16px;
-    }
-
-    &_text {
-      color: $secondaryColor;
-      margin: 0;
-
-      @include small-text;
-    }
+    @include small-text;
+  }
 }

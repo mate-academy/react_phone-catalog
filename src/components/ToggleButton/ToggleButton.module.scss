@@ -1,5 +1,6 @@
 @import '../../styles/variables';
 @import '../../styles/mixinsTypography';
+@import '../../styles/mixins';
 
 .toggleButton {
   &.cart {
@@ -20,7 +21,7 @@
       box-shadow 0.3s ease-in-out,
       color 0.3s ease-in-out;
 
-    &:hover {
+    @include hover {
       border: 1px solid $primaryColor;
       border-radius: 8px;
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
@@ -49,7 +50,7 @@
       border 0.3s ease-in-out,
       background-image 0.3s ease-in-out; // Додаємо плавний перехід
 
-    &:hover {
+    @include hover {
       border: 1px solid $primaryColor;
     }
 

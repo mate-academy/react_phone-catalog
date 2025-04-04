@@ -13,10 +13,9 @@
   border: 1px solid $grayColor;
   transition: border ease-in-out;
 
+  @include hover-scale(transform, scale(1.05));
 
-  @include hover(transform, scale(1.05));
-
-  &:hover {
+  @include hover {
     cursor: pointer;
     border-color: $secondaryColor;
     border-radius: 12px;

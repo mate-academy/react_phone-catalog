@@ -43,7 +43,7 @@
       background-clip: content-box;
       box-sizing: border-box;
 
-      &:hover {
+      @include hover {
         border: 1px solid $secondaryColor;
         cursor: pointer;
       }
@@ -83,7 +83,7 @@
       border: 1px solid $grayColor;
       color: $primaryColor;
 
-      &:hover {
+      @include hover {
         border: 1px solid $secondaryColor;
         cursor: pointer;
       }

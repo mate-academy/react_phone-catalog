@@ -1,5 +1,6 @@
 @import '../../styles/mixinsTypography';
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .menu {
   position: fixed;
@@ -84,7 +85,7 @@
       transition: transform 0.2s ease-in-out;
     }
 
-    &:hover {
+    @include hover {
       color: $primaryColor;
 
       &::after {
@@ -132,7 +133,7 @@
           left 0.2s ease-in-out;
       }
 
-      &:hover {
+      @include hover {
         &::after {
           width: 100%;
           left: 0;

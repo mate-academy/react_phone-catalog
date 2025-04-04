@@ -18,7 +18,7 @@
     height: 16px;
     width: 16px;
 
-    @include hover(transform, scale(1.15));
+    @include hover-scale(transform, scale(1.15));
   }
 
   &__category {
@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
 
-    @include hover(transform, scale(1.15));
+    @include hover-scale(transform, scale(1.15));
   }
 
   &__name {
