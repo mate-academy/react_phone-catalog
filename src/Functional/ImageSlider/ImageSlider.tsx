@@ -12,37 +12,27 @@ const images = [
   '/img/banner-tablets.png',
 ];
 
-export default function ImageSlider() {
+export default function SliderSwiper() {
   return (
-    <div className="slider">
-      <Swiper
-        modules={[Autoplay, Navigation, Pagination]}
-        spaceBetween={50}
-        slidesPerView={1}
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 5000 }}
-        loop
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
-        allowTouchMove={true}
-      >
-        <button className="swiper-button-prev"></button>
-        <button className="swiper-button-next"></button>
-
-        {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <div className="slider__image-container">
-              <img
-                className="slider__image"
-                src={image}
-                alt={`Slide ${index}`}
-              />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <Swiper
+      modules={[Autoplay, Navigation, Pagination]}
+      spaceBetween={30}
+      slidesPerView={1}
+      navigation={{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }}
+      autoplay={{ delay: 5000, disableOnInteraction: false }}
+      pagination={{ clickable: true }}
+      effect="fade"
+    >
+      <button className="swiper-button-prev"></button>
+      <button className="swiper-button-next"></button>
+      {images.map((image, index) => (
+        <SwiperSlide key={index}>
+          <img src={image} alt={`Slide ${index}`} className="slider__image" />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }

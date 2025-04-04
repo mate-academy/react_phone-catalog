@@ -1,14 +1,6 @@
 @import '../../scssComponents/mixins';
 
 .menu {
-  @include on-tablet {
-    display: none;
-  }
-
-  @include on-desktop {
-    display: none;
-  }
-
   position: fixed;
   top: 0;
   left: 0;
@@ -22,7 +14,13 @@
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   z-index: 2;
 
+  @include on-tablet {
+    display: none;
+  }
 
+  @include on-desktop {
+    display: none;
+  }
 
   &:target {
     z-index: 3;

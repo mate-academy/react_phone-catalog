@@ -1,93 +1,70 @@
-.slider {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  max-width: 1200px;
-  z-index: 1;
-  background-color: #fff;
-  margin: auto;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  margin-block: auto;
-}
-
-.slider__image-container {
-  width: 100%;
-  height: 100%;
-}
+@use '../../scssComponents/mixins.scss' as *;
 
 .slider__image {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
+  height: 320px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  background-color: #FDF5E6;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include on-tablet {
+    width: 592px;
+    height: 221px;
+  }
+
+  @include on-desktop {
+    width: 1040px;
+    height: 400px;
+  }
 }
 
-.swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
+.swiper {
+  width: 100%;
+  @include on-tablet {
+    width: 592px;
+    height: 221px;
+  }
+
+  @include on-desktop {
+    width: 1040px;
+    height: 400px;
+  }
 }
 
-.swiper-pagination-bullet-active {
-  background: white;
-}
-
-/* Стили для кнопок навігації */
-.swiper-button-prev,
-.swiper-button-next {
+.swiper-button-next,
+.swiper-button-prev  {
   display: none;
+  @media  (min-width: 500px) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 100vh;
+    color: #323542;
+  }
 }
 
-@media (min-width: 1024px) {
-  /* Показуємо кнопки навігації на великих екранах */
-  .swiper-button-prev,
+
+@media  (min-width: 500px) {
   .swiper-button-next {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background: #323542;
-    width: 40px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-    z-index: 10;
+    right: 0;
+    &:hover {
+      color: gray;
+    }
   }
 
   .swiper-button-prev {
-    left: 0;
-  }
-
-  .swiper-button-next {
-    right: 0;
-  }
-
-  .swiper-button-prev:hover,
-  .swiper-button-next:hover {
-    background: #292e35;
+  left: 0;
+    &:hover {
+      color: gray;
+    }
   }
 }
 
-@media (max-width: 1024px) and (min-width: 640px) {
-  .slider {
-    aspect-ratio: 3 / 2;
-  }
-}
-
-@media (max-width: 640px) {
-  .slider {
-    aspect-ratio: 3 / 2;
-  }
-}

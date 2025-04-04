@@ -99,6 +99,12 @@
     @include on-phone {
       display: none;
     }
+
+    @include on-tablet {
+    padding: 20px;
+
+    }
+
   }
 
   &__heart {
