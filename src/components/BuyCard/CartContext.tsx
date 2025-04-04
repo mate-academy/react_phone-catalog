@@ -28,7 +28,13 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     const isInCart = cart.some(item => item.id === product.id);
 
     if (isInCart) {
-      setCart(prev => prev.filter(item => item.id !== product.id));
+      setCart(prev => {
+        return prev.map(item =>
+          item.id === product.id
+            ? { ...item, quantity: (item.quantity ?? 0) + 1 }
+            : item,
+        );
+      });
     } else {
       setCart(prev => [...prev, { ...product, quantity: 1 }]);
     }
@@ -65,5 +71,14 @@ export const useCart = () => {
     throw new Error('useCart must be used within a CartProvider');
   }
 
-  return context;
+  const totalQuantity = context.cart.reduce(
+    (sum, item) =>
+      sum + parseInt(localStorage.getItem(`quantity-${item.id}`) || '1'),
+    0,
+  );
+
+  return {
+    ...context,
+    totalQuantity,
+  };
 };

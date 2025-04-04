@@ -38,11 +38,27 @@ export const ByCardItem: React.FC<CartProps> = ({
   };
 
   const handleIncrease = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
+    setQuantity(prevQuantity => {
+      const newQuantity = prevQuantity + 1;
+
+      toggleCart({ ...product, quantity: newQuantity });
+
+      return newQuantity;
+    });
   };
 
   const handleDecrease = () => {
-    setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+    setQuantity(prevQuantity => {
+      if (prevQuantity > 1) {
+        const newQuantity = prevQuantity - 1;
+
+        toggleCart({ ...product, quantity: newQuantity });
+
+        return newQuantity;
+      }
+
+      return prevQuantity; // Не зменшую, якщо вже 1
+    });
   };
 
   const totalPriceOneProduct = product.fullPrice * quantity;
