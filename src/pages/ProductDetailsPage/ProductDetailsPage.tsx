@@ -8,28 +8,52 @@ import ProductDetails from '../../components/ProductDetails/ProductDetails';
 import { Gadget } from '../../types/Gadgets';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { getRandomProducts } from '../../utils';
+import Loader from '../../components/Loader/Loader';
 
-const ProductDetailsPage = () => {
-  const { products } = useProducts();
-  const [product, setProduct] = useState<Gadget | null>(null);
+export const ProductDetailsPage = () => {
+  const { getGadgetById, products } = useProducts();
+  const [product, setProduct] = useState<Gadget>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  const { error, loading, getGadgetById } = useProducts();
   const { pathname } = useLocation();
 
   const splittedPath = pathname.split('/');
-
-  const randomProducts = getRandomProducts(products, 10);
-
   const itemId = splittedPath[2];
   const category = splittedPath[1];
 
+  const randomProducts = getRandomProducts(products, 10);
+
   useEffect(() => {
-    getGadgetById(category, itemId).then(res => setProduct(res));
+    const delay = (ms: number) =>
+      new Promise(resolve => setTimeout(resolve, ms));
+
+    const fetchProduct = async () => {
+      setLoading(true);
+      setError(false);
+
+      try {
+        await delay(1000);
+
+        const result = await getGadgetById(category, itemId);
+        if (result) {
+          setProduct(result);
+        } else {
+          setError(true);
+        }
+      } catch {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
   }, [pathname]);
 
-  // if (loading) {
-  //   return <h1>Loading</h1>;
-  // }
+  if (loading) {
+    return <Loader />;
+  }
 
   if (error) {
     return <h1 className={styles.product_not_found}>Product Not Found</h1>;
@@ -39,11 +63,8 @@ const ProductDetailsPage = () => {
     return (
       <div className={styles.productDetailsPage}>
         <Breadcrumbs />
-
         <BackIcon />
-
         <ProductDetails product={product} />
-
         <ProductsSlider
           title="You may also like"
           visibleProducts={randomProducts}
@@ -51,6 +72,6 @@ const ProductDetailsPage = () => {
       </div>
     );
   }
-};
 
-export default ProductDetailsPage;
+  return null;
+};

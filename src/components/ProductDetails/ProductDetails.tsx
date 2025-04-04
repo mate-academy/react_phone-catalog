@@ -7,20 +7,25 @@ import { Link, useLocation } from 'react-router-dom';
 import { useProducts } from '../../context/ProductsContext';
 import { Product } from '../../types/Product';
 import { getBgColorForRadio, techSpecs } from '../../utils';
+import { useSnackbar } from 'notistack';
+import { createHandleClickVariant } from '../../utils/snackbarHelpers';
+
+const BASE_URL = import.meta.env.BASE_URL || '/';
 
 type Props = {
   product: Gadget;
 };
 
 const ProductDetails: React.FC<Props> = ({ product }) => {
+  const [currMainImg, setCurrMainImg] = useState(0);
   const [formattedProduct, setFormattedProduct] = useState<Product>();
   const { favourites, toggleProduct } = useFavourites();
   const { cart, addProductToCart } = useCart();
   const { getProductById } = useProducts();
-
-  const [currMainImg, setCurrMainImg] = useState(0);
-
   const { pathname } = useLocation();
+
+  const { enqueueSnackbar } = useSnackbar();
+  const handleClickVariant = createHandleClickVariant(enqueueSnackbar);
 
   const isAddedToFavourites = favourites.some(
     p => p.id === (formattedProduct ? +formattedProduct.id : 0),
@@ -32,16 +37,20 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
   const handleToggleFavourite = () => {
     if (formattedProduct) {
       toggleProduct(formattedProduct);
+      if (isAddedToFavourites) {
+        handleClickVariant(`Product was removed from wishlist`, 'warning')();
+      } else {
+        handleClickVariant(`Product was added to wishlist`, 'success')();
+      }
     }
   };
 
   const handleAddProductToCart = () => {
     if (formattedProduct) {
       addProductToCart(formattedProduct);
+      handleClickVariant('Product was added to cart', 'success')();
     }
   };
-
-  console.log(product);
 
   useEffect(() => {
     getProductById(product.id).then(res => setFormattedProduct(res));
@@ -59,13 +68,13 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                   className={`${styles.product_details__image} ${currMainImg === i && styles.product_details__image_active}`}
                   onClick={() => setCurrMainImg(i)}
                 >
-                  <img src={`../../../public/${image}`} alt="image" />
+                  <img src={`${BASE_URL}/${image}`} alt="image" />
                 </div>
               ))}
             </div>
             <div className={styles.product_details__image_big}>
               <img
-                src={`../../../public/${product.images[currMainImg]}`}
+                src={`${BASE_URL}/${product.images[currMainImg]}`}
                 alt="image"
               />
             </div>
@@ -135,7 +144,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
 
             <div className={styles.product_details__prices}>
               <div className={styles.product_details__price}>
-                ${product.priceRegular}
+                ${product.priceDiscount}
               </div>
               <div className={styles.product_details__fullPrice}>
                 ${product.priceRegular}
@@ -155,7 +164,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                 onClick={handleToggleFavourite}
               >
                 <img
-                  src={`/public/img/icons/favourites-icon${isAddedToFavourites ? '-active' : ''}.svg`}
+                  src={`${BASE_URL}/img/icons/favourites-icon${isAddedToFavourites ? '-active' : ''}.svg`}
                   alt="favourites"
                 />
               </button>

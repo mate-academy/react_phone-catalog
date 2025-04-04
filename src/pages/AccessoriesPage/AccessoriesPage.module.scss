@@ -1,17 +1,1 @@
 @import '/src/styles/global';
-
-.accessories {
-  width: 100%;
-  min-height: 90vh;
-
-  &__quantity {
-    margin-bottom: 40px;
-  }
-
-  &__selects {
-    display: flex;
-    gap: 16px;
-
-    margin-bottom: 24px;
-  }
-}

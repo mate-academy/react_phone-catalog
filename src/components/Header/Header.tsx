@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-import logo from '/img/Nice-Gadgets-logo.png';
+import logo from '/img/nice-gadgets-logo.svg';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { Squash as Hamburger } from 'hamburger-react';

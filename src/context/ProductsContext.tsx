@@ -1,15 +1,13 @@
-import { createContext } from 'react';
-import { Gadget } from '../types/Gadgets';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { Product } from '../types/Product';
-import { useContext, useEffect, useState } from 'react';
+import { Gadget } from '../types/Gadgets';
+
+const BASE_URL = import.meta.env.BASE_URL || '/';
 
 type ProductsContextType = {
   products: Product[];
   loading: boolean;
   error: boolean;
-  phones: Gadget[];
-  tablets: Gadget[];
-  accessories: Gadget[];
   getGadgetById: (category: string, itemId: string) => Promise<Gadget>;
   getProductById: (id: string) => Promise<Product>;
 };
@@ -24,110 +22,41 @@ export const ProductsProvider = ({
   children: React.ReactNode;
 }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [phones, setPhones] = useState<Gadget[]>([]);
-  const [tablets, setTablets] = useState<Gadget[]>([]);
-  const [accessories, setAccessories] = useState<Gadget[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const getProducts = async () => {
-    try {
-      const response = await fetch('/api/products.json');
-      const data = await response.json();
-
-      const productsFromServer = [...data];
-
-      setProducts(productsFromServer);
-    } catch (error) {
-      setError(true);
-    }
-  };
-
-  const getPhones = async () => {
-    setError(false);
     setLoading(true);
+    setError(false);
     try {
-      const response = await fetch('/api/phones.json');
+      const response = await fetch(`${BASE_URL}/api/products.json`);
       const data = await response.json();
-
-      const phonesFromServer = [...data];
-
-      setPhones(phonesFromServer);
-    } catch (error) {
+      setProducts([...data]);
+    } catch {
       setError(true);
-      setLoading(false);
     } finally {
       setLoading(false);
     }
   };
 
-  const getTablets = async () => {
-    setError(false);
-    setLoading(true);
-    try {
-      const response = await fetch('/api/tablets.json');
-      const data = await response.json();
-
-      const tabletsFromServer = [...data];
-
-      setTablets(tabletsFromServer);
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getAccessories = async () => {
-    setError(false);
-    setLoading(true);
-    try {
-      const response = await fetch('/api/accessories.json');
-      const data = await response.json();
-
-      const accessoriesFromServer = [...data];
-
-      setAccessories(accessoriesFromServer);
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    } finally {
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const getGadgetById = async (category: string, itemId: string) => {
-    setError(false);
-    setLoading(true);
-
     try {
-      const response = await fetch(`${`/api/${category}.json`}`);
+      const response = await fetch(`${BASE_URL}/api/${category}.json`);
       const data = await response.json();
 
-      const productsFromServer = [...data];
-
-      const neededProduct = productsFromServer.find(p => p.id === itemId);
-
-      if (neededProduct) {
-        return neededProduct;
-      } else {
-        setError(true);
-      }
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    } finally {
-      setLoading(false);
+      return data.find((p: Gadget) => p.id === itemId);
+    } catch (e) {
+      return null;
     }
   };
 
   const getProductById = async (id: string) => {
-    setError(false);
-    setLoading(true);
-
     try {
-      const response = await fetch(`${`/api/products.json`}`);
+      const response = await fetch(`${BASE_URL}/api/products.json`);
       const data = await response.json();
 
       const productsForGetById = [...data];
@@ -136,32 +65,13 @@ export const ProductsProvider = ({
 
       return neededProduct;
     } catch (error) {
-      setError(true);
-      setLoading(false);
-    } finally {
-      setLoading(false);
+      console.log(error);
     }
   };
 
-  useEffect(() => {
-    getProducts();
-    getPhones();
-    getTablets();
-    getAccessories();
-  }, []);
-
   return (
     <ProductsContext.Provider
-      value={{
-        products,
-        loading,
-        error,
-        phones,
-        tablets,
-        accessories,
-        getGadgetById,
-        getProductById,
-      }}
+      value={{ products, loading, error, getProductById, getGadgetById }}
     >
       {children}
     </ProductsContext.Provider>
@@ -170,10 +80,8 @@ export const ProductsProvider = ({
 
 export const useProducts = () => {
   const context = useContext(ProductsContext);
-
   if (!context) {
     throw new Error('useProducts must be used within a ProductsProvider');
   }
-
   return context;
 };

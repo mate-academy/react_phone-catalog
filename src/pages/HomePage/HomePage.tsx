@@ -4,9 +4,15 @@ import { Categories } from '../../components/Categories';
 import { sortProductsByPrice, sortProductsByYear } from '../../utils';
 import PicturesSlider from '../../components/PicturesSlider/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import { usePhones } from '../../context/PhonesContext';
+import { useAccessories } from '../../context/AccessoriesContext';
+import { useTablets } from '../../context/TabletsContext';
 
 const HomePage = () => {
-  const { products, phones, accessories, tablets } = useProducts();
+  const { products } = useProducts();
+  const { tablets } = useTablets();
+  const { accessories } = useAccessories();
+  const { phones } = usePhones();
 
   const newestProducts = sortProductsByYear(products);
 

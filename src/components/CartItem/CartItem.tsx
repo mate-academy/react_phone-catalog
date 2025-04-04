@@ -4,6 +4,10 @@ import { useCart } from '../../context/CartContext';
 import deleteIcon from '/img/icons/close.svg';
 import minusIcon from '/img/icons/minus.svg';
 import plusIcon from '/img/icons/plus.svg';
+import { createHandleClickVariant } from '../../utils/snackbarHelpers';
+import { useSnackbar } from 'notistack';
+
+const BASE_URL = import.meta.env.BASE_URL || '/';
 
 type Props = {
   product: Product;
@@ -11,6 +15,9 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ product }) => {
+  const { enqueueSnackbar } = useSnackbar();
+  const handleClickVariant = createHandleClickVariant(enqueueSnackbar);
+
   const {
     deleteProductFromCart,
     increaseProductQuantity,
@@ -19,6 +26,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   const handleDeleteProductFromCart = () => {
     deleteProductFromCart(product);
+    handleClickVariant('Product was removed from cart', 'success')();
   };
 
   const handleDecreaseQuantity = () => {
@@ -39,7 +47,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           <img src={deleteIcon} alt="delete icon" />
         </div>
         <div className={styles.cart__image}>
-          <img src={`../../../public/${product.image}`} alt="image" />
+          <img src={`${BASE_URL}/${product.image}`} alt="image" />
         </div>
         <p className={styles.cart__name}>{product.name}</p>
       </div>

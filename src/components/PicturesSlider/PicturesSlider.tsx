@@ -3,6 +3,8 @@ import styles from './PicturesSlider.module.scss';
 import arrowLeft from '/img/icons/arrows/arrow-left-icon.svg';
 import arrowRight from '/img/icons/arrows/arrow-right-icon.svg';
 
+const BASE_URL = import.meta.env.BASE_URL || '/';
+
 const PicturesSlider = () => {
   const imageWrapperRef = useRef<HTMLDivElement | null>(null);
   const sliderInterval = useRef<NodeJS.Timeout | null>(null);
@@ -93,11 +95,11 @@ const PicturesSlider = () => {
             {[1, 2, 3].map(index => {
               const isSmall = isMobile && index === 1;
               const fileType = index === 1 ? 'png' : 'jpg';
-              const src = `/img/banners/banner-${isSmall ? 'small' : 'big'}${!isSmall ? index : ''}.${fileType}`;
+              const src = `${BASE_URL}/img/banners/banner-${isSmall ? 'small' : 'big'}${!isSmall ? index : ''}.${fileType}`;
 
               return (
                 <img
-                  src={src}
+                  src={`${src}`}
                   key={index}
                   alt={`slide-${index}`}
                   className={`${styles.slider__image} ${index === 1 && styles.slider__image_main}`}

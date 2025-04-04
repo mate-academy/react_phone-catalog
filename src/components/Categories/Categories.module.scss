@@ -70,7 +70,11 @@
 
     cursor: pointer;
 
-    width: 150px;
+    min-width: 100%;
+
+    @include on-tablet {
+      width: 150px;
+    }
 
     &:hover {
       transform: scale(1.1);

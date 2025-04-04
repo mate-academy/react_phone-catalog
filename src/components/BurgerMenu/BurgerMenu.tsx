@@ -3,6 +3,8 @@ import logo from '/img/Nice-Gadgets-logo.png';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Squash as Hamburger } from 'hamburger-react';
 
+const BASE_URL = import.meta.env.BASE_URL || '/';
+
 const pages = ['Home', 'Phones', 'Tablets', 'Accessories'];
 
 type Props = {
@@ -57,7 +59,7 @@ const BurgerMenu: React.FC<Props> = ({ isOpen, toggleBurger }) => {
           onClick={() => toggleBurger(false)}
           className={`${styles.menu__favourites} ${pathname.includes('favourites') && styles.menu__favourites_active}`}
         >
-          <img src={`/public/img/icons/favourites-icon.svg`} alt="favourites" />
+          <img src={`${BASE_URL}/img/icons/favourites-icon.svg`} alt="favourites" />
         </Link>
         <Link
           to={`/cart`}
@@ -66,7 +68,7 @@ const BurgerMenu: React.FC<Props> = ({ isOpen, toggleBurger }) => {
             ${styles.menu__cart}
             ${pathname.includes('cart') && styles.menu__cart_active}`}
         >
-          <img src={`/public/img/icons/cart-icon.svg`} alt="cart" />
+          <img src={`${BASE_URL}/img/icons/cart-icon.svg`} alt="cart" />
         </Link>
       </div>
     </div>
