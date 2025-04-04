@@ -47,7 +47,7 @@ export const ProductsPages: React.FC<Props> = ({
         perPage === 'all' ? 'all' : +perPage,
         +page,
       ),
-    [products, perPage, sort, page, structuredProducts],
+    [perPage, sort, page, structuredProducts],
   );
 
   if (loading) {
