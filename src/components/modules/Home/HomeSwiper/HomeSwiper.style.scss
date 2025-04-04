@@ -91,7 +91,10 @@
       height: 100%;
       max-width: 1040px;
       max-height: 189px;
-      padding-inline: 48px;
+
+      @include tablet {
+        padding-inline: 48px;
+      }
 
       @include desktop {
         max-height: 400px;

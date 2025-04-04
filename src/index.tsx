@@ -10,6 +10,7 @@ import { Home } from './components/modules/Home/Home';
 // import { Tablets } from './components/modules/Tablets/Tablets';
 import { Phones } from './components/modules/Phones/Phones';
 import { Cart } from './components/modules/Cart/Cart';
+import { routes } from './components/shared/Routs/Routs';
 // import { Accessories } from './components/modules/Accessories/Accessories';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
@@ -19,11 +20,11 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
-            {/* <Route path="tablets" element={<Tablets />} /> */}
-            <Route path="phones" element={<Phones />} />
-            {/* <Route path="accessories" element={<Accessories />} /> */}
-            {/* <Route path="fav" element={</>} /> */}
-            <Route path="cart" element={<Cart />} />
+            <Route path={routes.phones} element={<Phones />} />
+            {/* <Route path={routes.tablets} element={<Tablets />} /> */}
+            {/* <Route path={routes.accessories} element={<Accessories />} /> */}
+            {/* <Route path={routs.fav} element={</>} /> */}
+            <Route path={routes.cart} element={<Cart />} />
             <Route path="*" element={<p>Page not found</p>}></Route>
           </Route>
         </Routes>

@@ -1,13 +1,14 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { useState } from 'react';
-import './Header.scss';
+import './Header.style.scss';
 
 import burger from '../../../../public/icons/menu.svg';
 import closeIcon from '../../../../public/icons/close.svg';
 import favIcon from '../../../../public/icons/favourites.svg';
 import cart from '../../../../public/icons/shopping-cart.svg';
-
+import { routes } from '../Routs/Routs';
+import { Categories } from '../../../types/Categories';
 
 export const Header = () => {
   const [isMenuActive, setMenuActive] = useState(false);
@@ -33,7 +34,10 @@ export const Header = () => {
   return (
     <div className={classNames('top', { 'top--full-screen': isMenuActive })}>
       <div className="mobile-header top__mobile-header">
-        <div className="logo mobile-header__logo" onClick={() => navigate('/')}></div>
+        <div
+          className="logo mobile-header__logo"
+          onClick={() => navigate(routes.home)}
+        ></div>
         <div
           className="burger mobile-header__burger"
           onClick={toggleBurgerMenu}
@@ -53,27 +57,24 @@ export const Header = () => {
         })}
       >
         <nav className={classNames('nav', 'menu__nav')}>
-          <NavLink to="/" className="nav__item">
-            home
-          </NavLink>
-          <NavLink to="/phones" className="nav__item">
-            phones
-          </NavLink>
-          <NavLink to="/tablets" className="nav__item">
-            tablets
-          </NavLink>
-          <NavLink to="/accessories" className="nav__item">
-            accessories
-          </NavLink>
+          {Object.keys(Categories).map(key => (
+            <NavLink to={routes[key]} className="nav__item">
+              {key}
+            </NavLink>
+          ))}
         </nav>
+
         <div className={classNames('choice', 'menu__choice')}>
           <div
             className="choice__icon choice__icon--favorite"
-            onClick={() => navigate('/fav')}
+            onClick={() => navigate(routes.cart)}
           >
             <img className="icon" src={favIcon} />
           </div>
-          <div className="choice__icon choice__icon--shopping-cart" onClick={() => navigate('/cart')}>
+          <div
+            className="choice__icon choice__icon--shopping-cart"
+            onClick={() => navigate(routes.cart)}
+          >
             <img className="icon" src={cart} />
           </div>
         </div>

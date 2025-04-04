@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, A11y, Pagination } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
-import './HomeSwiper.styles.scss';
+import './HomeSwiper.style.scss';
 
 import { getBanners, Banner } from '../../../../api/fetchBanners';
 

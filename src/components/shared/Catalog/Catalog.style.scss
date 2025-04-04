@@ -1,0 +1,43 @@
+.catalog {
+  padding: 24px 16px 80px;
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include desktop {
+    padding-inline: 32px;
+  }
+
+  &__location {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+
+    &__guide {
+      @include text12;
+      color: $gray-secondary;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+
+    @include tablet {
+      gap: 16px;
+    }
+
+    @include desktop {
+      justify-content: space-between;
+    }
+  }
+}

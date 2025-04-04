@@ -1,4 +1,4 @@
-import './Home.scss';
+import './Home.style.scss';
 
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
@@ -15,6 +15,7 @@ import { loadPhones } from '../../../features/PhonesSlice/PhonesSlice';
 import { loadTablets } from '../../../features/TabletsSlice/TabletsSlice';
 import { loadAccessories } from '../../../features/AccessoriesSlice/AccessoriesSlice';
 import { useNavigate } from 'react-router-dom';
+import { routes } from '../../shared/Routs/Routs';
 
 interface ProductNumber {
   [key: string]: number;
@@ -59,17 +60,11 @@ export const Home = () => {
         <h2 className="categories__title">Shop by category</h2>
 
         <div className="categories__blocks blocks">
-          {Object.keys(Categories).map(key => {
+          {Object.keys(Categories).filter(key => key !== 'home').map(key => {
             return (
               <div
                 className="blocks__block block"
-                onClick={() => {
-                  if (key === 'phones') {
-                    navigate('/phones');
-                  } else if (key === 'tablets') {
-                    navigate('/tablets');
-                  } else navigate('/accessories');
-                }}
+                onClick={() => navigate(routes[key])}
               >
                 <img
                   className="block__img"
@@ -83,7 +78,7 @@ export const Home = () => {
                   alt={`go to ${key === 'phones' ? 'phones' : key === 'tablets' ? 'tablets' : 'accessories'}`}
                 ></img>
                 <h4 className="block__name">
-                  {`${key === 'phones' ? 'Mobile phones' : key === 'tablets' ? 'Tablets' : 'Accessories'}`}
+                  {`${key === 'phones' ? 'Mobile phones' : key.slice(0, 1).toUpperCase().concat(key.slice(1))}`}
                 </h4>
                 <p className="block__items-number">{`${productNumber[key]} models`}</p>
               </div>
@@ -100,10 +95,3 @@ export const Home = () => {
     </div>
   );
 };
-
-// const routes = {
-//   phones: '/phones',
-//   tablets: '/tablets',
-// };
-
-// navigate(routes[key] || '/accessories');

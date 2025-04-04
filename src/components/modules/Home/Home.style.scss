@@ -68,6 +68,11 @@
           max-width: 288px;
           height: auto;
           margin-bottom: 24px;
+          transition: transform 0.3s ease-out;
+
+          &:hover {
+            transform: scale(1.05);
+          }
 
           @include tablet {
             max-width: 368px;
