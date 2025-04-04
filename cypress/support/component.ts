@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 // ***********************************************************
 // This example support/component.ts is processed and
 // loaded automatically before your test files.
@@ -19,12 +20,12 @@ import './commands';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-import { mount } from 'cypress/react18';
+import { mount } from './../../node_modules/cypress/angular';
 
 // Augment the Cypress namespace to include type definitions for
-// your custom command.
-// Alternatively, can be defined in cypress/support/component.d.ts
-// with a <reference path="./component" /> at the top of your spec.
+// your custom commands.
+// Alternatively, can be defined in cypress/support/index.d.ts
+// to be globally available.
 declare global {
   namespace Cypress {
     interface Chainable {

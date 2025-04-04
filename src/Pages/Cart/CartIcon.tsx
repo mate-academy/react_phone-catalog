@@ -1,13 +1,21 @@
 import React from 'react';
-import { useCartContext } from '../../CartContext/CartContext';
+import { useCartContext } from './../../CartContext/useCartContext';
 import { Link } from 'react-router-dom';
 
 export const CartIcon: React.FC = () => {
   const { cartCount } = useCartContext();
 
   return (
-    <Link to="/cart" style={{ position: 'relative', display: 'inline-block' }}>
-      <img src="./img/cart.png" alt="Cart" width="24" height="24" />
+    <Link
+      to="/cart"
+      style={{ position: 'relative', display: 'inline-block' }}
+    >
+      <img
+        src="./img/cart.png"
+        alt="Cart"
+        width="24"
+        height="24"
+      />
       {cartCount > 0 && (
         <span
           style={{

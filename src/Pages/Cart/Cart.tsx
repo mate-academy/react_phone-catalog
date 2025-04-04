@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCartContext } from '../../../src/CartContext/CartContext';
+import { useCartContext } from '../../../src/CartContext/useCartContext';
 import { CartItem } from './CartItem';
 
 export const Cart: React.FC = () => {
@@ -24,7 +24,10 @@ export const Cart: React.FC = () => {
       ))}
       <div className="cart-total">
         <h3>Total: ${total.toFixed(2)}</h3>
-        <button onClick={clearCart} className="checkout-button">
+        <button
+          onClick={clearCart}
+          className="checkout-button"
+        >
           Clear
         </button>
       </div>

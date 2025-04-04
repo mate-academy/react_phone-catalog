@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Tablet, Accessories } from '../../../src/Types/BaseItem';
-import { useCartContext } from '../../../src/CartContext/CartContext';
+import { useCartContext } from '../../../src/CartContext/useCartContext';
 import './CartItem.scss';
 
 interface CartItemProps {
@@ -27,15 +27,17 @@ export const CartItem: React.FC<CartItemProps> = ({
   };
 
   const itemLink =
-    'priceDiscount' in item
-      ? `/phones/${item.id}`
-      : 'price' in item
-        ? `/tablets/${item.id}`
-        : `/accessories/${item}`;
+    'priceDiscount' in item ? `/phones/${item.id}`
+    : 'price' in item ? `/tablets/${item.id}`
+    : `/accessories/${item}`;
 
   return (
     <div className="cart-item">
-      <img src={item.images[0]} alt={item.name} className="cart-item__image" />
+      <img
+        src={item.images[0]}
+        alt={item.name}
+        className="cart-item__image"
+      />
       <div className="cart-item__info">
         <h3 className="cart-item__name">
           <Link to={itemLink}>{item.name}</Link>{' '}
@@ -62,9 +64,9 @@ export const CartItem: React.FC<CartItemProps> = ({
       </div>
       <p className="cart-item__total">
         $
-        {'priceDiscount' in item
-          ? item.priceDiscount
-          : item.price * itemQuantity}
+        {'priceDiscount' in item ?
+          item.priceDiscount
+        : item.price * itemQuantity}
       </p>
       <button
         onClick={onRemove} // Використовуємо onRemove переданий через пропси

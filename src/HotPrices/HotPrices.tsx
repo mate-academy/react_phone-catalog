@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './HotPrices.scss';
 import { Phone } from '../Types/Types';
-import { useCartContext } from '../CartContext/CartContext';
+import { useCartContext } from '../CartContext/useCartContext';
 import { Link } from 'react-router-dom';
 
 export const HotPrices: React.FC = () => {
@@ -68,7 +68,10 @@ export const HotPrices: React.FC = () => {
       <h2 className="hot-prices__title">Hot Prices</h2>
       <div className="phonelist">
         {visiblePhones.map((phone: Phone) => (
-          <div key={phone.id} className="phonecard a">
+          <div
+            key={phone.id}
+            className="phonecard a"
+          >
             <Link to={`/phones/${phone.id}`}>
               <img
                 src={phone.images[0]}

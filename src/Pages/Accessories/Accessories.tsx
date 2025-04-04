@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Accessories as AccessoriesType } from '../../Types/Accessories';
 
-import { useCartContext } from '../../CartContext/CartContext';
+import { useCartContext } from '../../CartContext/useCartContext';
 import { Link, useLocation } from 'react-router-dom';
 import './Accessories.scss';
 
@@ -47,7 +47,7 @@ export const Accessories: React.FC = () => {
 
   useEffect(() => {
     setFilteredAccessories(
-      accessories.filter(accessory =>
+      accessories.filter((accessory) =>
         accessory.name.toLowerCase().includes(searchQuery),
       ),
     );
@@ -67,8 +67,11 @@ export const Accessories: React.FC = () => {
         {filteredAccessories.length} Accessories Available
       </h2>
       <div className="accessories-list">
-        {filteredAccessories.map(accessory => (
-          <div key={accessory.id} className="accessories-card a">
+        {filteredAccessories.map((accessory) => (
+          <div
+            key={accessory.id}
+            className="accessories-card a"
+          >
             <Link to={`/accessories/${accessory.id}`}>
               <img
                 src={accessory.images[0]}

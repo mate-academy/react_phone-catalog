@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 /// <reference types="cypress" />
 // ***********************************************
 // This example commands.ts shows you how to
@@ -24,40 +25,36 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
-
-export {};
 
 declare global {
   namespace Cypress {
-    interface Chainable<Subject> {
-      getByDataCy(selector: string): Chainable<JQuery<HTMLElement>>;
-      byDataCy(name: string): Chainable<JQuery<HTMLElement>>;
+    interface Chainable {
+      getByDataCy(selector: string): Cypress.Chainable<JQuery<HTMLElement>>;
+      byDataCy<S extends JQuery<HTMLElement>>(
+        name: string,
+      ): Cypress.Chainable<S>;
     }
   }
 }
 
-Cypress.Commands.add('getByDataCy', selector => {
-  cy.get(`[data-cy="${selector}"]`);
+Cypress.Commands.add('getByDataCy', (selector: string) => {
+  return cy.get(`[data-cy="${selector}"]`);
 });
 
+// @ts-expect-error Incompatible types between subject and prevSubject in Cypress.Commands.add for 'byDataCy'
 Cypress.Commands.add(
   'byDataCy',
-  { prevSubject: 'optional' },
-
-  (subject, name) => {
+  { prevSubject: ['optional', 'element'] },
+  (
+    subject:
+      | Cypress.Chainable<JQuery<HTMLElement>>
+      | JQuery<HTMLElement>
+      | null,
+    name: string,
+  ): Cypress.Chainable<JQuery<HTMLElement>> => {
     const selector = `[data-cy="${name}"]`;
-
     return subject ? cy.wrap(subject).find(selector) : cy.get(selector);
   },
 );
+
+export {};

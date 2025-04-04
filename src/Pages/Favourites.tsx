@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCartContext } from '../CartContext/CartContext';
+import { useCartContext } from '../CartContext/useCartContext';
 import { CartItem } from './Cart/CartItem';
 
 export const Favourites: React.FC = () => {
@@ -8,7 +8,7 @@ export const Favourites: React.FC = () => {
   return (
     <div>
       <h2>Favorites</h2>
-      {favorites.map(phone => (
+      {favorites.map((phone) => (
         <CartItem
           key={phone.id}
           item={phone}
@@ -16,7 +16,10 @@ export const Favourites: React.FC = () => {
           onRemove={() => removeFromFavorites(phone.id)}
         />
       ))}
-      <button className="checkout-button" onClick={clearFavorites}>
+      <button
+        className="checkout-button"
+        onClick={clearFavorites}
+      >
         Remove
       </button>
     </div>

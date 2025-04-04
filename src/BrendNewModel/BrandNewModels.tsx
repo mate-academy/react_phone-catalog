@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../BrendNewModel/BrandNewModels.scss';
 import { Phone } from '../Types/Types';
-import { useCartContext } from '../CartContext/CartContext';
+import { useCartContext } from '../CartContext/useCartContext';
 import { Link } from 'react-router-dom';
 
 export const BrandNewModels: React.FC = () => {
@@ -65,7 +65,10 @@ export const BrandNewModels: React.FC = () => {
       <h2 className="brand-new-models__title">Brand new models</h2>
       <div className="phonelist">
         {visiblePhones.map((phone: Phone) => (
-          <div key={phone.id} className="phonecard a">
+          <div
+            key={phone.id}
+            className="phonecard a"
+          >
             <Link to={`/phones/${phone.id}`}>
               <img
                 src={phone.images[0]}

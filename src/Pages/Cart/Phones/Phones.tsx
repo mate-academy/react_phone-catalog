@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Phone } from '../../../Types/Types';
 import './Phones.scss';
-import { useCartContext } from '../../../CartContext/CartContext';
+import { useCartContext } from '../../../CartContext/useCartContext';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Phones: React.FC = () => {
@@ -47,7 +47,7 @@ export const Phones: React.FC = () => {
 
   useEffect(() => {
     setFilteredPhones(
-      phones.filter(phone => phone.name.toLowerCase().includes(searchQuery)),
+      phones.filter((phone) => phone.name.toLowerCase().includes(searchQuery)),
     );
   }, [searchQuery, phones]);
 
@@ -64,7 +64,10 @@ export const Phones: React.FC = () => {
       <h2 className="phones-header">{phones.length} Phones Available</h2>
       <div className="phone-list">
         {filteredPhones.map((phone: Phone) => (
-          <div key={phone.id} className="phone-card a">
+          <div
+            key={phone.id}
+            className="phone-card a"
+          >
             <Link to={`/phones/${phone.id}`}>
               <img
                 src={phone.images?.[0] || '/img/product-not-found.png'}

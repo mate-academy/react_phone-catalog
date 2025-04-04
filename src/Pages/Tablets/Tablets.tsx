@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Tablet } from '../../Types/Tablet';
-import { useCartContext } from '../../CartContext/CartContext';
+import { useCartContext } from '../../CartContext/useCartContext';
 import { Link, useLocation } from 'react-router-dom';
 import './Tablet.scss';
 
@@ -43,7 +43,9 @@ export const Tablets: React.FC = () => {
 
   useEffect(() => {
     setFilteredTablets(
-      tablets.filter(tablet => tablet.name.toLowerCase().includes(searchQuery)),
+      tablets.filter((tablet) =>
+        tablet.name.toLowerCase().includes(searchQuery),
+      ),
     );
   }, [searchQuery, tablets]);
 
@@ -62,7 +64,10 @@ export const Tablets: React.FC = () => {
       </h2>
       <div className="tablet-list">
         {filteredTablets.map((tablet: Tablet) => (
-          <div key={tablet.id} className="tablet-card a">
+          <div
+            key={tablet.id}
+            className="tablet-card a"
+          >
             <Link to={`/tablets/${tablet.id}`}>
               <img
                 src={tablet.images[0]}

@@ -1,6 +1,6 @@
 describe('App', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('http://localhost:5173/');
   });
 
   it('should have h1', () => {
