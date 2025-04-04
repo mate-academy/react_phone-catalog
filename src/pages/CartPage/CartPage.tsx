@@ -13,7 +13,7 @@ const EmptyCart = () => (
 );
 
 const CartPage = () => {
-  const { cart, totalPrice, clearCart } = useCart();
+  const { cart, totalPrice, cartLength, clearCart } = useCart();
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -43,7 +43,7 @@ const CartPage = () => {
             <div className={styles.cart__priceBlock}>
               <p className={styles.cart__price}>${totalPrice}</p>
               <p className={styles.cart__quantity}>
-                Total for {cart.length} items
+                Total for {cartLength} items
               </p>
 
               <button className={styles.cart__checkout} onClick={handleOpen}>

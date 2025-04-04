@@ -1,11 +1,11 @@
 import { createContext } from 'react';
 import { Product } from '../types/Product';
 import { useContext, useEffect, useState } from 'react';
-import { Gadget } from '../types/Gadgets';
 
 type CartContextType = {
   cart: Product[];
   totalPrice: number;
+  cartLength: number;
   addProductToCart: (product: Product) => void;
   deleteProductFromCart: (product: Product) => void;
   increaseProductQuantity: (productId: number) => void;
@@ -17,6 +17,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<Product[]>([]);
+  const [cartLength, setCartLength] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -39,6 +40,14 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       0,
     );
 
+    const length = cart.reduce((totalSum, product) => {
+      const quantity = Number(product.quantity ?? 1);
+
+      return totalSum + quantity;
+    }, 0);
+
+    setCartLength(length);
+
     setTotalPrice(total);
   }, [cart]);
 
@@ -47,6 +56,9 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const deleteProductFromCart = (product: Product) => {
+    const quantity = Number(product.quantity ?? 1);
+
+    setCartLength(prevLength => prevLength - quantity);
     setCart(prevCart => prevCart.filter(p => p.id !== product.id));
   };
 
@@ -73,19 +85,20 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const clearCart = () => {
-    setCart([])
-  }
+    setCart([]);
+  };
 
   return (
     <CartContext.Provider
       value={{
         cart,
         totalPrice,
+        cartLength,
         addProductToCart,
         deleteProductFromCart,
         increaseProductQuantity,
         decreaseProductQuantity,
-        clearCart
+        clearCart,
       }}
     >
       {children}

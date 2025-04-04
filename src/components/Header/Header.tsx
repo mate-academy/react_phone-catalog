@@ -18,10 +18,9 @@ const Header = () => {
   const toggleBurger = (value: boolean) => setOpen(value);
 
   const { favourites } = useFavourites();
-  const { cart } = useCart();
+  const { cartLength } = useCart();
 
   const favouritesLength = favourites.length;
-  const cartLength = cart.length;
 
   return (
     <div className={styles.header}>
