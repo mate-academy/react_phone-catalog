@@ -1,9 +1,9 @@
-import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import { HomePage } from './modules/HomePage';
 
 export const App = () => {
   return (
     <>
-      <ProductDetailsPage />
+      <HomePage />
     </>
   );
 };

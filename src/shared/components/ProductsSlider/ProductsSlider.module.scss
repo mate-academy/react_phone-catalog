@@ -1,19 +1,19 @@
 @import '../../../assets/styles/main';
 
 .productSlider {
-  margin-bottom: 56px;
+  // margin-bottom: 56px;
 
-  @include on-tablet {
-    margin-bottom: 64px;
-  }
+  // @include on-tablet {
+  //   margin-bottom: 64px;
+  // }
 
-  @include on-desktop {
-    margin-bottom: 80px;
-  }
+  // @include on-desktop {
+  //   margin-bottom: 80px;
+  // }
 
-  @include on-desktop-extra {
-    margin-bottom: 80px;
-  }
+  // @include on-desktop-extra {
+  //   margin-bottom: 80px;
+  // }
 
   &__container {
     @include page-grid;

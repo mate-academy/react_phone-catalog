@@ -1,20 +1,6 @@
 @import '../../../../assets/styles/main';
 
 .category {
-  margin-bottom: 56px;
-
-  @include on-tablet {
-    margin-bottom: 64px;
-  }
-
-  @include on-desktop {
-    margin-bottom: 80px;
-  }
-
-  @include on-desktop-extra {
-    margin-bottom: 80px;
-  }
-
   &__container {
     @include page-grid;
     @include content-padding;
@@ -79,18 +65,6 @@
     &:hover {
       box-shadow: 0 5px 10px 2px $color-primary;
     }
-  }
-
-  &__imagePhone {
-    background-color: $color-phone-bg;
-  }
-
-  &__imageTablets {
-    background-color: $color-tablet-bg;
-  }
-
-  &__imageAccessories {
-    background-color: $color-accesories-bg;
   }
 
   &__cardTitle {

@@ -6,13 +6,14 @@ import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   return (
-    <>
-      <h1 className={styles.homePage__title}>Welcome to Nice Gadgets store!</h1>
-
-      <HomePageSlider />
-      <ProductsSlider />
-      <CategoryCards />
-      <ProductsSlider />
-    </>
+    <main className={styles.main}>
+      <h1 className={styles.main__title}>Welcome to Nice Gadgets store!</h1>
+      <div className={styles.main__wrapper}>
+        <HomePageSlider />
+        <ProductsSlider />
+        <CategoryCards />
+        <ProductsSlider />
+      </div>
+    </main>
   );
 };

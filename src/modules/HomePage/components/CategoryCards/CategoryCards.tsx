@@ -20,7 +20,7 @@ export const CategoryCards = () => {
 
               <img
                 loading="lazy"
-                className={`${styles.category__image} ${styles.category__imagePhone}`}
+                className={styles.category__image}
                 src="src\assets\images\shopCategory\shop-category-phones-mobile.png" // eslint-disable-line
                 alt="Головний слайдер"
               />
@@ -41,7 +41,7 @@ export const CategoryCards = () => {
 
               <img
                 loading="lazy"
-                className={`${styles.category__image} ${styles.category__imageTablets}`}
+                className={styles.category__image}
                 src="src\assets\images\shopCategory\shop-category-tablets-mobile.png" // eslint-disable-line
                 alt="Головний слайдер"
               />
@@ -63,7 +63,7 @@ export const CategoryCards = () => {
 
               <img
                 loading="lazy"
-                className={`${styles.category__image} ${styles.category__imageAccessories}`}
+                className={styles.category__image}
                 src="src\assets\images\shopCategory\shop-category-accessories-mobile.png" // eslint-disable-line
                 alt="Головний слайдер"
               />

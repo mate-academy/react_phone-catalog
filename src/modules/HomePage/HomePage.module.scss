@@ -1,6 +1,22 @@
 @import '../../assets/styles/main';
 
-.homePage__title {
+.main {
+  padding-block: 24px 64px;
+
+  @include on-tablet {
+    padding-block: 32px 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 56px 80px;
+  }
+
+  @include on-desktop-extra {
+    padding-block: 56px 80px;
+  }
+}
+
+.main__title {
   margin-bottom: 24px;
 
   @include content-padding;
@@ -15,5 +31,23 @@
 
   @include on-desktop-extra {
     margin-bottom: 56px;
+  }
+}
+
+.main__wrapper {
+  display: flex;
+  gap: 56px;
+  flex-direction: column;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+
+  @include on-desktop-extra {
+    gap: 80px;
   }
 }
