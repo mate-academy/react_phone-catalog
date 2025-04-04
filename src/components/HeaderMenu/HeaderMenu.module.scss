@@ -1,0 +1,13 @@
+@import '/src/utils/global';
+
+.header {
+  height: 48px;
+  border-bottom: 1px solid $gray;
+  max-width: $desktop-max-width;
+  margin: auto;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+}

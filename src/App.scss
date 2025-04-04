@@ -1,1 +1,92 @@
-// not empty
+@import './utils/global';
+
+.page {
+  cursor: url('../public/img/tools/Mice.png'), pointer;
+  scroll-behavior: smooth;
+
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  background-color: $fon;
+  color: $text-color;
+
+  &__menu {
+    opacity: 0;
+    height: calc(100vh - 50px);
+    position: fixed;
+    top: 49px;
+    left: 0;
+    z-index: 1000;
+    transform: translate(-100%);
+    transition: all 0.3s;
+    pointer-events: none;
+    width: 100%;
+    background-color: $fon;
+
+    &--active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+
+      @include on-desktop {
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $white;
+}
+
+*,
+*::before,
+*::after {
+  cursor: inherit;
+  font-family: inherit;
+  user-select: none;
+  color: $white;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  cursor: inherit;
+  padding-inline: $mobile-padding;
+
+  @include on-tablet {
+    padding-inline: $tablet-padding;
+  }
+
+  @include on-desktop {
+    max-width: $desktop-min-width;
+    margin: 0;
+    margin-inline: auto;
+    padding-inline: $desktop-padding;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+}
