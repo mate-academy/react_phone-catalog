@@ -50,7 +50,7 @@ export const ProductDetailsPage = () => {
     };
 
     fetchProduct();
-  }, [pathname]);
+  }, [pathname, category, getGadgetById, itemId]);
 
   if (loading) {
     return <Loader />;

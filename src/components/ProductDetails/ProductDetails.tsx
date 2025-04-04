@@ -56,7 +56,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
 
   useEffect(() => {
     getProductById(product.id).then(res => setFormattedProduct(res));
-  }, [product]);
+  }, [product, getProductById]);
 
   return (
     <div className={styles.product_details}>
