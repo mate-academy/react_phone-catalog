@@ -16,13 +16,16 @@ import Loader from '../../components/Loader/Loader';
 import { Gadget } from '../../types/Gadgets';
 
 type Props = {
-  products: Gadget[],
-  error: boolean
-  loading: boolean
-}
+  products: Gadget[];
+  error: boolean;
+  loading: boolean;
+};
 
-export const ProductsPages: React.FC<Props> = ({ products, error, loading }) => {
-
+export const ProductsPages: React.FC<Props> = ({
+  products,
+  error,
+  loading,
+}) => {
   const [searchParams] = useSearchParams();
 
   const perPage = searchParams.get('perPage') || 'all';

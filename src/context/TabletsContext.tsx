@@ -26,6 +26,7 @@ export const TabletsProvider = ({
     try {
       const response = await fetch(`${BASE_URL}/api/tablets.json`);
       const data = await response.json();
+
       setTablets([...data]);
     } catch {
       setError(true);
@@ -47,8 +48,10 @@ export const TabletsProvider = ({
 
 export const useTablets = () => {
   const context = useContext(TabletsContext);
+
   if (!context) {
     throw new Error('useTablets must be used within a TabletsProvider');
   }
+
   return context;
 };

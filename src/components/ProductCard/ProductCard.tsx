@@ -29,6 +29,7 @@ export const ProductCard: React.FC<Props> = ({ product, isNewModelsBlock }) => {
     } else {
       handleClickVariant(`Product was added to wishlist`, 'success')();
     }
+
     toggleProduct(product);
   };
 

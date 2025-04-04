@@ -31,6 +31,7 @@ export const ProductsProvider = ({
     try {
       const response = await fetch(`${BASE_URL}/api/products.json`);
       const data = await response.json();
+
       setProducts([...data]);
     } catch {
       setError(true);
@@ -64,9 +65,7 @@ export const ProductsProvider = ({
       const neededProduct = productsForGetById.find(p => p.itemId === id);
 
       return neededProduct;
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (e) {}
   };
 
   return (
@@ -80,8 +79,10 @@ export const ProductsProvider = ({
 
 export const useProducts = () => {
   const context = useContext(ProductsContext);
+
   if (!context) {
     throw new Error('useProducts must be used within a ProductsProvider');
   }
+
   return context;
 };

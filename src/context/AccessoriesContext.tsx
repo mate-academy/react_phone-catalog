@@ -28,6 +28,7 @@ export const AccessoriesProvider = ({
     try {
       const response = await fetch(`${BASE_URL}/api/accessories.json`);
       const data = await response.json();
+
       setAccessories([...data]);
     } catch {
       setError(true);
@@ -49,10 +50,12 @@ export const AccessoriesProvider = ({
 
 export const useAccessories = () => {
   const context = useContext(AccessoriesContext);
+
   if (!context) {
     throw new Error(
       'useAccessories must be used within an AccessoriesProvider',
     );
   }
+
   return context;
 };

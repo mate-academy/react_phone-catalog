@@ -23,6 +23,7 @@ export const PhonesProvider = ({ children }: { children: React.ReactNode }) => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       const response = await fetch(`${BASE_URL}/api/phones.json`);
       const data = await response.json();
+
       setPhones([...data]);
     } catch {
       setError(true);
@@ -36,9 +37,7 @@ export const PhonesProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <PhonesContext.Provider
-      value={{ phones, loading, error }}
-    >
+    <PhonesContext.Provider value={{ phones, loading, error }}>
       {children}
     </PhonesContext.Provider>
   );
@@ -46,8 +45,10 @@ export const PhonesProvider = ({ children }: { children: React.ReactNode }) => {
 
 export const usePhones = () => {
   const context = useContext(PhonesContext);
+
   if (!context) {
     throw new Error('usePhones must be used within a PhonesProvider');
   }
+
   return context;
 };

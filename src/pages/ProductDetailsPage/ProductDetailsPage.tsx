@@ -36,6 +36,7 @@ export const ProductDetailsPage = () => {
         await delay(1000);
 
         const result = await getGadgetById(category, itemId);
+
         if (result) {
           setProduct(result);
         } else {

@@ -68,7 +68,7 @@ export const filterAndSortProducts = (
   perPage: number | 'all',
   page: number,
 ): Product[] => {
-  let sortedPhones = [...products];
+  const sortedPhones = [...products];
 
   if (sort === 'alphabetically') {
     sortedPhones.sort((a, b) => a.name.localeCompare(b.name));
@@ -84,6 +84,7 @@ export const filterAndSortProducts = (
     return sortedPhones;
   } else {
     const startIndex = (page - 1) * perPage;
+
     return sortedPhones.slice(startIndex, startIndex + perPage);
   }
 };
@@ -151,4 +152,10 @@ export const categoriesData: Category[] = [
     image: 'accessories-category.png',
     quantity: 'accessoriesQuantity',
   },
+];
+
+export const footerLinks = [
+  { text: 'Github', href: 'https://github.com/futdevelop' },
+  { text: 'Contacts', href: 'https://t.me/kolya2' },
+  { text: 'Rights', href: 'https://t.me/kolya2' },
 ];

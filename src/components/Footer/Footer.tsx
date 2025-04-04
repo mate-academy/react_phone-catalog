@@ -1,13 +1,8 @@
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
-import logo from '/img/Nice-Gadgets-logo.png';
+import logo from '/img/nice-gadgets-logo.svg';
 import BackToTop from '../BackToTop/BackToTop';
-
-const footerLinks = [
-  { text: 'Github', href: 'https://github.com/futdevelop' },
-  { text: 'Contacts', href: 'https://t.me/kolya2' },
-  { text: 'Rights', href: 'https://t.me/kolya2' },
-];
+import { footerLinks } from '../../utils';
 
 export const Footer = () => {
   return (

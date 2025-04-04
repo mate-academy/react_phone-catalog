@@ -16,6 +16,8 @@ type Props = {
   product: Gadget;
 };
 
+type ProductSpecKey = keyof Gadget;
+
 const ProductDetails: React.FC<Props> = ({ product }) => {
   const [currMainImg, setCurrMainImg] = useState(0);
   const [formattedProduct, setFormattedProduct] = useState<Product>();
@@ -67,6 +69,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                 <div
                   className={`${styles.product_details__image} ${currMainImg === i && styles.product_details__image_active}`}
                   onClick={() => setCurrMainImg(i)}
+                  key={i}
                 >
                   <img src={`${BASE_URL}/${image}`} alt="image" />
                 </div>
@@ -172,7 +175,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
 
             <div className={styles.product_details__features}>
               {techSpecs.slice(0, 4).map(spec => {
-                const value = (product as Record<string, any>)[spec];
+                const value = product[spec as ProductSpecKey];
                 const upperCaseSpec =
                   spec.charAt(0).toUpperCase() + spec.slice(1);
 
@@ -199,8 +202,8 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
         <div className={styles.product_details__left}>
           <h3 className={styles.product_details__title}>About</h3>
           <div className={styles.product_details__descriptions}>
-            {product.description.map(desc => (
-              <div className={styles.product_details__description}>
+            {product.description.map((desc, idx) => (
+              <div className={styles.product_details__description} key={idx}>
                 <h4 className={styles.product_details__description_title}>
                   {desc.title}
                 </h4>
@@ -219,7 +222,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
           <h3 className={styles.product_details__title}>Tech specs</h3>
           <div className={styles.product_details__features}>
             {techSpecs.map(spec => {
-              const value = (product as Record<string, any>)[spec];
+              const value = product[spec as ProductSpecKey];
               const upperCaseSpec =
                 spec.charAt(0).toUpperCase() + spec.slice(1);
 
