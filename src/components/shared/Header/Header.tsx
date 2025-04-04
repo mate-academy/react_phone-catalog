@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { useState } from 'react';
 import './Header.scss';
@@ -6,13 +6,13 @@ import './Header.scss';
 import burger from '../../../../public/icons/menu.svg';
 import closeIcon from '../../../../public/icons/close.svg';
 import favIcon from '../../../../public/icons/favourites.svg';
-import favIconFilled from '../../../../public/icons/favourites-filled.svg';
 import cart from '../../../../public/icons/shopping-cart.svg';
+
 
 export const Header = () => {
   const [isMenuActive, setMenuActive] = useState(false);
   const [canTransform, setCanTransform] = useState(false);
-  const [isFav, setIsFav] = useState(false);
+  const navigate = useNavigate();
 
   const toggleBurgerMenu = () => {
     if (isMenuActive) {
@@ -33,7 +33,7 @@ export const Header = () => {
   return (
     <div className={classNames('top', { 'top--full-screen': isMenuActive })}>
       <div className="mobile-header top__mobile-header">
-        <div className="logo mobile-header__logo"></div>
+        <div className="logo mobile-header__logo" onClick={() => navigate('/')}></div>
         <div
           className="burger mobile-header__burger"
           onClick={toggleBurgerMenu}
@@ -53,27 +53,27 @@ export const Header = () => {
         })}
       >
         <nav className={classNames('nav', 'menu__nav')}>
-          <NavLink to="#" className="nav__item">
+          <NavLink to="/" className="nav__item">
             home
           </NavLink>
-          <NavLink to="#" className="nav__item">
+          <NavLink to="/phones" className="nav__item">
             phones
           </NavLink>
-          <NavLink to="#" className="nav__item">
+          <NavLink to="/tablets" className="nav__item">
             tablets
           </NavLink>
-          <NavLink to="#" className="nav__item">
+          <NavLink to="/accessories" className="nav__item">
             accessories
           </NavLink>
         </nav>
         <div className={classNames('choice', 'menu__choice')}>
           <div
             className="choice__icon choice__icon--favorite"
-            onClick={() => setIsFav(!isFav)}
+            onClick={() => navigate('/fav')}
           >
-            <img className="icon" src={isFav ? favIconFilled : favIcon} />
+            <img className="icon" src={favIcon} />
           </div>
-          <div className="choice__icon choice__icon--shopping-cart">
+          <div className="choice__icon choice__icon--shopping-cart" onClick={() => navigate('/cart')}>
             <img className="icon" src={cart} />
           </div>
         </div>

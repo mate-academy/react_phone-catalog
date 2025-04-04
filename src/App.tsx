@@ -4,6 +4,7 @@ import { Header } from './components/shared/Header/Header';
 import { Footer } from './components/shared/Footer/Footer';
 import { Cart } from './components/modules/Cart/Cart';
 import { Home } from './components/modules/Home/Home';
+import { Outlet } from 'react-router-dom';
 
 export const App = () => {
 
@@ -11,11 +12,14 @@ export const App = () => {
     <>
       <Header />
       <main className="container">
-        {/* <Phones />
-      <Cart /> */}
-      <Home />
+        <Outlet />
       </main>
       <Footer />
     </>
   );
 };
+
+
+// {/* <Phones />
+//       <Cart /> */}
+//       <Home />

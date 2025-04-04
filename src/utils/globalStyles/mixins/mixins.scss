@@ -172,3 +172,19 @@
     line-height: 25.56px;
   }
 }
+
+@mixin text14 {
+  font-family: 'Mont-Regular';
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+@mixin text12 {
+  font-family: 'Mont-Semibold';
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}

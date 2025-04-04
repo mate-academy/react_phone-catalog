@@ -6,9 +6,10 @@ import { store } from './app/store';
 import { LocalStorageContextProvider } from './app/Contexts/LocalStorageContext';
 
 import { App } from './App';
-// import { Home } from './components/modules/Home/Home';
+import { Home } from './components/modules/Home/Home';
 // import { Tablets } from './components/modules/Tablets/Tablets';
-// import { Phones } from './components/modules/Phones/Phones';
+import { Phones } from './components/modules/Phones/Phones';
+import { Cart } from './components/modules/Cart/Cart';
 // import { Accessories } from './components/modules/Accessories/Accessories';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
@@ -17,10 +18,12 @@ createRoot(document.getElementById('root') as HTMLElement).render(
       <Router>
         <Routes>
           <Route path="/" element={<App />}>
-            {/* <Route index element={<Home />} />
-          <Route path="tablets" element={<Tablets />} />
-          <Route path="phones" element={<Phones />} />
-          <Route path="accessories" element={<Accessories />} /> */}
+            <Route index element={<Home />} />
+            {/* <Route path="tablets" element={<Tablets />} /> */}
+            <Route path="phones" element={<Phones />} />
+            {/* <Route path="accessories" element={<Accessories />} /> */}
+            {/* <Route path="fav" element={</>} /> */}
+            <Route path="cart" element={<Cart />} />
             <Route path="*" element={<p>Page not found</p>}></Route>
           </Route>
         </Routes>

@@ -1,0 +1,104 @@
+.home {
+  &__h1 {
+    @include h1;
+    padding: 24px 16px;
+
+    @include tablet {
+      padding: 32px 24px;
+    }
+
+    @include desktop {
+      padding: 56px 32px;
+    }
+  }
+
+  &__new-models {
+    padding: 56px 16px;
+
+    @include tablet {
+      padding: 64px 24px;
+    }
+
+    @include desktop {
+      padding: 80px 32px;
+    }
+  }
+
+  .categories {
+    padding: 56px 16px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
+
+    @include tablet {
+      padding: 64px 24px;
+    }
+
+    @include desktop {
+      padding: 80px 32px;
+    }
+
+    &__title {
+      @include h2;
+    }
+
+    .blocks {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+
+      @include tablet {
+        flex-direction: row;
+      }
+
+      .block {
+        width: 100%;
+        max-width: 288px;
+        height: auto;
+
+        @include tablet {
+          max-width: 368px;
+        }
+
+        &__img {
+          width: 100%;
+          max-width: 288px;
+          height: auto;
+          margin-bottom: 24px;
+
+          @include tablet {
+            max-width: 368px;
+          }
+        }
+
+        &__name {
+          @include h4;
+          margin-top: 0;
+          margin-bottom: 8px;
+        }
+
+        &__items-number {
+          @include text14;
+          color: $gray-secondary;
+        }
+      }
+    }
+  }
+
+  &__hot-prices {
+    padding-block: 56px;
+    padding-left: 16px;
+
+    @include tablet {
+      padding-block: 64px;
+      padding-left: 24px;
+    }
+
+    @include desktop {
+      padding: 80px 32px;
+    }
+  }
+}

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+
+
 export function useLocaleStorage<T>(
   key: string,
   startValue: T,
@@ -22,3 +24,4 @@ export function useLocaleStorage<T>(
   };
   return [value, save];
 }
+
