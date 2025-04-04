@@ -1,24 +1,43 @@
-name: Github Page Deploy Workflow
+name: Deploy to GitHub Pages
+
+permissions:
+  contents: write # Required to push to the repository
+  pages: write # Required for GitHub Pages deployment
 
 on:
   push:
-    branches: [develop]
+    branches:
+      - develop # Make sure you have the correct name of your branch here
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: "20.x"
-      - run: npm ci
-      - run: npm run build
-      - run: ls -la build
-      - name: Deploy
-        uses: crazy-max/ghaction-github-pages@v1
+          node-version: '20' # Adjust Node.js version as needed
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Build the app
+      - name: Build the app
+        run: |
+          npm run build
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          target_branch: gh-pages
-          build_dir: build
+          branch: gh-pages # Branch where the app will be deployed
+          folder: dist # Folder containing the built React app
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically generated token for authentication
