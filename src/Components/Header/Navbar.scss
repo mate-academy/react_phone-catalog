@@ -18,7 +18,6 @@
   }
 
   .navbar-item {
-
     position: relative;
     color: #585858;
 
@@ -54,7 +53,7 @@
 
 .navbar-item.has-background-grey-lighter::after {
   content: "";
-  
+
   position: absolute;
   bottom: -12px;
   left: 0;
