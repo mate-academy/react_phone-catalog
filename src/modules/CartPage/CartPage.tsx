@@ -56,7 +56,7 @@ export const CartPage = () => {
                     />
                   </button>
                 </div>
-                <p className={styles.cart__price}>$999</p>
+                <h3 className={styles.cart__price}>$999</h3>
               </div>
             </div>
             <div className={styles.cart__item}>
@@ -95,7 +95,7 @@ export const CartPage = () => {
                     />
                   </button>
                 </div>
-                <p className={styles.cart__price}>$999</p>
+                <h3 className={styles.cart__price}>$999</h3>
               </div>
             </div>
           </div>

@@ -25,7 +25,7 @@ export const CategoryCards = () => {
                 alt="Головний слайдер"
               />
             </picture>
-            <h3 className={styles.category__cardTitle}>Mobile phones</h3>
+            <h4 className={styles.category__cardTitle}>Mobile phones</h4>
             <p className={styles.category__cardDescription}>95 models</p>
           </div>
           <div className={styles.category__card}>
@@ -46,7 +46,7 @@ export const CategoryCards = () => {
                 alt="Головний слайдер"
               />
             </picture>
-            <h3 className={styles.category__cardTitle}>Tablets</h3>
+            <h4 className={styles.category__cardTitle}>Tablets</h4>
             <p className={styles.category__cardDescription}>24 models</p>
           </div>
 
@@ -68,7 +68,7 @@ export const CategoryCards = () => {
                 alt="Головний слайдер"
               />
             </picture>
-            <h3 className={styles.category__cardTitle}>Accessories</h3>
+            <h4 className={styles.category__cardTitle}>Accessories</h4>
             <p className={styles.category__cardDescription}>100 models</p>
           </div>
         </div>

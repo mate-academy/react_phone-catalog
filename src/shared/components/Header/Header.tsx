@@ -64,7 +64,7 @@ export const Header = () => {
               className={styles.header__cartImg}
             />
           </a>
-          <a href="#" className={styles.header__menuLink}>
+          <a href="#menu" className={styles.header__menuLink}>
             <img
               src="src/assets/icons/header-icons/hamburger-icon.svg"
               alt="Меню"

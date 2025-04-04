@@ -46,7 +46,6 @@
 
   margin-left: 4px;
 
-  font-family: inherit;
   font-size: 12px;
   font-weight: 600;
   line-height: 100%;
@@ -130,9 +129,8 @@
 .cart__itemDescription {
   margin-left: 16px;
 
-  font-family: inherit;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 21px;
   color: $color-primary;
 
@@ -196,10 +194,6 @@
 }
 
 .cart__price {
-  font-family: inherit;
-  font-size: 22px;
-  font-weight: 00;
-  line-height: 140%;
   color: $color-primary;
 
   @include on-tablet {
@@ -264,12 +258,7 @@
   width: 100%;
   padding-block: 13px;
 
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 21px;
   color: $color-white;
-  text-align: center;
 
   background-color: $color-primary;
 

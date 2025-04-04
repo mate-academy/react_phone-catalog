@@ -80,7 +80,6 @@
   }
 
   &__link {
-    font-family: inherit;
     font-size: 12px;
     font-weight: 700;
     line-height: 11px;
@@ -155,7 +154,7 @@
     }
 
     &:hover {
-      box-shadow: 0  0 2px 1px $color-primary;
+      box-shadow: 0 0 2px 1px $color-primary;
     }
   }
 

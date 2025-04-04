@@ -33,8 +33,6 @@
 
   &__description {
     margin-bottom: 8px;
-
-    font-family: inherit;
     font-weight: 600;
     line-height: 21px;
     text-align: balance;
@@ -42,11 +40,6 @@
 
   &__price {
     margin-bottom: 8px;
-
-    font-family: inherit;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 140%;
   }
 
   &__line {
@@ -73,7 +66,6 @@
   }
 
   &__featureTitle {
-    font-family: inherit;
     font-size: 12px;
     font-weight: 600;
     line-height: 100%;
@@ -81,7 +73,6 @@
   }
 
   &__featureValue {
-    font-family: inherit;
     font-size: 12px;
     font-weight: 600;
     line-height: 100%;
@@ -99,12 +90,7 @@
 
     padding-block: 10px;
 
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
     color: $color-white;
-    text-align: center;
 
     background-color: $color-primary;
 
