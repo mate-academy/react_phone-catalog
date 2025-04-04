@@ -9,7 +9,6 @@ import { useInfoHook } from './useInfoHook';
 import { ProductSlider } from '../ProductCard/ProductCard';
 import { NavLink, useParams } from 'react-router-dom';
 import { NameSlider } from '../../types/nameslider';
-// import catGif from '../../../public/assets/';
 import liked from '../../../image/liked.svg';
 
 export const ProductInformation: React.FC = () => {
@@ -151,7 +150,7 @@ export const ProductInformation: React.FC = () => {
                   className="productInfo__buttonAdd"
                   onClick={handleToggleCart}
                 >
-                  {isAdded ? 'Added' : 'Add to cart'}
+                  {isAdded ? 'Remove' : 'Add to cart'}
                 </button>
                 <button
                   className="productInfo__buttonLike"

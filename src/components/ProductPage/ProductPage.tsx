@@ -7,7 +7,6 @@ import { useProductHooks } from './usePhonesHooks';
 import { useState } from 'react';
 import { Product } from '../../types/ProductTypes';
 import { Loader } from '../Loader/Loader';
-// import catGif from '../../../assets/cat.gif';
 
 export const ProductPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);

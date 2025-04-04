@@ -94,7 +94,7 @@ export const ProductItem: React.FC<Props> = ({
 
       <div className="buttons">
         <button className="button__add" onClick={handleToggleCart}>
-          {isAdded ? 'Added' : 'Add to cart'}
+          {isAdded ? 'Remove' : 'Add to cart'}
         </button>
         <button
           className="buttons__like"

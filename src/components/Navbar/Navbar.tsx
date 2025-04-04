@@ -29,8 +29,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const { theme } = useContext(ThemeContext);
   const { favorites } = useFavourites();
-  const { totalQuantity } = useCart();
+  const { cart } = useCart();
   const isDarkMode = theme === 'dark';
+
+  const totalItemCount = cart.reduce((total, item) => {
+    return total + (item.quantity || 1);
+  }, 0);
 
   return (
     <header className="header">
@@ -80,8 +84,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <NavLink className="logo shopping" to="/cart">
               <img src={isDarkMode ? cartimg : Blackcart} alt="shopping" />
-              {totalQuantity > 0 && (
-                <span className="badge">{totalQuantity}</span>
+              {cart.length > 0 && (
+                <span className="badge">{totalItemCount}</span>
               )}
             </NavLink>
 

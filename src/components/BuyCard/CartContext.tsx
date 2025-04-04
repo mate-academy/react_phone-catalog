@@ -1,14 +1,13 @@
 import React, { createContext, useEffect, useState, ReactNode } from 'react';
 import { Product } from '../../types/ProductTypes';
-
 interface CartContextProps {
   cart: Product[];
   toggleCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
   getQuantity: (productId: string) => number;
   clearCart: () => void;
+  updateQuantify: (productId: string, quantity: number) => void;
 }
-
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({
@@ -40,6 +39,18 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
+  const updateQuantify = (productId: string, quantity: number) => {
+    setCart(prevCart => {
+      const updatedCart = prevCart.map((item: Product) =>
+        String(item.id) === productId ? { ...item, quantity } : item,
+      );
+
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+      return updatedCart;
+    });
+  };
+
   const removeFromCart = (productId: string) => {
     setCart(prev => prev.filter(item => String(item.id) !== productId));
   };
@@ -57,7 +68,14 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 
   return (
     <CartContext.Provider
-      value={{ cart, toggleCart, removeFromCart, getQuantity, clearCart }}
+      value={{
+        cart,
+        toggleCart,
+        removeFromCart,
+        getQuantity,
+        clearCart,
+        updateQuantify,
+      }}
     >
       {children}
     </CartContext.Provider>
@@ -71,14 +89,7 @@ export const useCart = () => {
     throw new Error('useCart must be used within a CartProvider');
   }
 
-  const totalQuantity = context.cart.reduce(
-    (sum, item) =>
-      sum + parseInt(localStorage.getItem(`quantity-${item.id}`) || '1'),
-    0,
-  );
-
   return {
     ...context,
-    totalQuantity,
   };
 };

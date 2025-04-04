@@ -57,7 +57,7 @@ export const ByCardItem: React.FC<CartProps> = ({
         return newQuantity;
       }
 
-      return prevQuantity; // Не зменшую, якщо вже 1
+      return prevQuantity;
     });
   };
 

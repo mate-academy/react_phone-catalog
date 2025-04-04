@@ -7,7 +7,6 @@ import { Product } from '../../types/ProductTypes';
 import { fetchProducts } from '../../utils/api';
 import { Loader } from '../Loader/Loader';
 import { NameSlider } from '../../types/nameslider';
-// import catGif from '../../../public/assets/cat.gif';
 
 export const HomePage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
