@@ -22,9 +22,6 @@
     @include on-tablet {
       flex-direction: row;
     }
-
-    @include on-desktop {
-    }
   }
 
   &__item {
@@ -55,7 +52,7 @@
   }
 
   &__name {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 20px;
     line-height: 100%;
@@ -82,7 +79,7 @@
   }
 
   &__text {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;

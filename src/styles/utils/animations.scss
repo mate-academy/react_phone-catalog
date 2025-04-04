@@ -1,4 +1,4 @@
-@keyframes slideUp {
+@keyframes slide-up {
   from {
     opacity: 0;
     transform: translateY(50%);
@@ -9,7 +9,7 @@
   }
 }
 
-@keyframes slideLeft {
+@keyframes slide-left {
   from {
     opacity: 0;
     transform: translateX(-50%);
@@ -20,7 +20,7 @@
   }
 }
 
-@keyframes borderExpand {
+@keyframes border-expand {
   from {
     width: 0%;
   }

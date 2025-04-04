@@ -9,8 +9,7 @@ body {
   font-family: Mont, sans-serif;
   color: $primary-color;
   background-color: $hover-bg-color;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
@@ -24,7 +23,7 @@ body {
 }
 
 .title {
-  font-family: Mont-Bold;
+  font-family: Mont-Bold, sans-serif;
   font-size: 22px;
   line-height: 140%;
   letter-spacing: 0%;
@@ -41,13 +40,9 @@ body {
 }
 
 .logo {
-  margin: 0 16px 0 16px;
+  margin: 0 16px;
 
   @include on-desktop {
-    margin: 0 24px 0 24px;
+    margin: 0 24px;
   }
-}
-
-.hidden_title {
-  display: none;
 }

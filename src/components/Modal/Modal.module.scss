@@ -10,7 +10,7 @@
   background-color: $white-color;
 
   &__title {
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, sans-serif;
     font-size: 28px;
     line-height: 41px;
     letter-spacing: -1%;
@@ -19,7 +19,7 @@
   }
 
   &__text {
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-size: 22px;
     line-height: 41px;
     letter-spacing: -1%;
@@ -42,7 +42,7 @@
     width: 60%;
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px #17203166;
+      box-shadow: 0 3px 13px 0 #17203166;
     }
   }
 
@@ -57,7 +57,7 @@
     width: 30%;
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px #17203166;
+      box-shadow: 0 3px 13px 0 #17203166;
     }
   }
 }

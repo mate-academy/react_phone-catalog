@@ -47,7 +47,6 @@
 
   &__image {
     display: block;
-    width: 100%;
     width: 33.33%;
 
     object-fit: cover;
@@ -67,7 +66,6 @@
     display: none;
     width: 32px;
     border: 1px solid $icons-color;
-    // border-radius: 48px;
     background-color: transparent;
     cursor: pointer;
     transition: all 0.1s ease-in-out;

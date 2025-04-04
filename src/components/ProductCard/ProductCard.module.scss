@@ -1,6 +1,7 @@
 @import '/src/styles/global';
 
 .product {
+  font-family: Mont, sans-serif;
   border: 1px solid #e2e6e9;
   display: flex;
   flex-direction: column;
@@ -12,7 +13,7 @@
   transition: all 0.4s ease-in-out;
 
   &:hover {
-    box-shadow: -2px 0px 26px -6px rgba(66, 68, 90, 1);
+    box-shadow: -2px 0 26px -6px rgba(66, 68, 90, 1);
   }
 
   &__image {
@@ -46,7 +47,6 @@
   }
 
   &__name {
-    font-family: Mont;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
@@ -63,7 +63,7 @@
   }
 
   &__price {
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, sans-serif;
     font-size: 22px;
     line-height: 140%;
     letter-spacing: 0%;
@@ -83,7 +83,6 @@
     }
 
     &_full {
-      font-family: Mont;
       font-size: 22px;
       line-height: 100%;
       text-decoration: line-through;
@@ -103,7 +102,6 @@
   }
 
   &__param {
-    font-family: Mont;
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;
@@ -111,7 +109,6 @@
   }
 
   &__value {
-    font-family: Mont;
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;
@@ -128,7 +125,6 @@
     padding: 9.5px;
     background-color: #313237;
     color: #fff;
-    font-family: Mont;
     font-weight: 700;
     font-size: 12px;
     line-height: 21px;
@@ -138,7 +134,7 @@
     transition: all 0.3s ease-in-out;
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px #17203166;
+      box-shadow: 0 3px 13px 0 #17203166;
     }
 
     @include on-tablet {

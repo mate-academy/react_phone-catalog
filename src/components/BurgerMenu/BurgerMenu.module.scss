@@ -16,7 +16,7 @@
   z-index: 100;
 
   &__hamburger {
-    box-shadow: -1px 0px 0px 0px #e2e6e9;
+    box-shadow: -1px 0 0 0 #e2e6e9;
   }
 
   &__header {
@@ -39,7 +39,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: -1px 0px 0px 0px #e2e6e9;
+    box-shadow: -1px 0 0 0 #e2e6e9;
 
     &_active {
       color: $primary-color;
@@ -69,7 +69,7 @@
   }
 
   &__item {
-    font-family: Mont-Bold;
+    font-family: Mont-Bold, sans-serif;
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 4%;

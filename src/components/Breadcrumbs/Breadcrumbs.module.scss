@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
 
-  margin: 24px 0 40px 0;
+  margin: 24px 0 40px;
 
   &__home {
     margin-right: 8px;
@@ -23,7 +23,7 @@
   }
 
   &__pathname {
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, sans-serif;
     font-size: 12px;
     line-height: 100%;
     letter-spacing: 0%;
@@ -34,7 +34,7 @@
     &_active {
       color: $primary-color;
       cursor: pointer;
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 600;
       font-size: 12px;
       line-height: 100%;
