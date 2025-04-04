@@ -1,18 +1,18 @@
 @import '/src/utils/global';
 
 .top-bar {
-  padding-left: 16px;
   height: inherit;
   display: flex;
-
-  @include on-desktop {
-    padding-left: 24px;
-  }
 
   &__logo {
     display: flex;
     align-items: center;
+    padding-inline: 16px;
 
+    @include on-desktop {
+      padding-inline: 24px;
+    }
+    
     & img {
       height: 22px;
       width: 64px;

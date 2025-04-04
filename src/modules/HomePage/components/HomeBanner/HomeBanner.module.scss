@@ -1,0 +1,29 @@
+@import '/src/utils/global';
+
+.banner {
+  position: relative;
+  padding-bottom: 22px;
+
+  @include on-mobile {
+    width: calc(100% + $mobile-padding * 2);
+    left: -$mobile-padding;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 19px;
+    margin-top: 24px;
+    height: 320px;
+
+    @include on-tablet {
+      margin-top: 32px;
+      height: 189px;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+      gap: 16px;
+      height: 400px;
+    }
+  }
+}

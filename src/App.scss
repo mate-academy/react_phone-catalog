@@ -8,6 +8,10 @@
   font-weight: 400;
   background-color: $fon;
   color: $text-color;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   &__menu {
     opacity: 0;
@@ -33,6 +37,13 @@
     }
   }
 
+  &:has(.page__menu--active) {
+    overflow: hidden;
+  }
+}
+
+.page::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -62,14 +73,15 @@ p {
 
 .container {
   cursor: inherit;
+  box-sizing: border-box;
   padding-inline: $mobile-padding;
+  max-width: $desktop-min-width;
 
   @include on-tablet {
     padding-inline: $tablet-padding;
   }
 
   @include on-desktop {
-    max-width: $desktop-min-width;
     margin: 0;
     margin-inline: auto;
     padding-inline: $desktop-padding;
@@ -90,3 +102,5 @@ ul {
   min-height: 100vh;
   position: relative;
 }
+
+

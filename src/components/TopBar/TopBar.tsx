@@ -11,6 +11,7 @@ import { useMediaQuery } from 'react-responsive';
 const TopBar = () => {
   const isMenu = useAppSelector(state => state.menu.isOpenMenu);
   const isTablet = useMediaQuery({ minWidth: 640 });
+  const isMobile = useMediaQuery({ maxWidth: 640 });
   const dispatch = useAppDispatch();
 
   return (
@@ -36,16 +37,18 @@ const TopBar = () => {
           <span></span>
           <span></span>
         </a>
-        <TopBarActions
-          favouriteBtnClass={classNames(
-            styles['top-bar__btn'],
-            styles['top-bar__favourite-btn'],
-          )}
-          cardBtnClass={classNames(
-            styles['top-bar__btn'],
-            styles['top-bar__card-btn'],
-          )}
-        />
+        {!isMobile && (
+          <TopBarActions
+            favouriteBtnClass={classNames(
+              styles['top-bar__btn'],
+              styles['top-bar__favourite-btn'],
+            )}
+            cardBtnClass={classNames(
+              styles['top-bar__btn'],
+              styles['top-bar__card-btn'],
+            )}
+          />
+        )}
       </div>
     </div>
   );

@@ -1,10 +1,9 @@
 @import '/src/utils/global';
 
-
 .bottom-action {
   display: grid;
   place-content: center;
-  
+
   height: inherit;
   position: relative;
   border-bottom: 2px solid $fon;
