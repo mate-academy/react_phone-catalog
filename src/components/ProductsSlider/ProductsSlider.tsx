@@ -21,9 +21,13 @@ export const ProductsSlider: React.FC<Props> = ({ title, visibleProducts }) => {
 
   const handleClickArrow = (direction: string) => {
     if (direction === 'left') {
-      if (swiperRef.current) swiperRef.current.slidePrev();
+      if (swiperRef.current) {
+        swiperRef.current.slidePrev();
+      }
     } else {
-      if (swiperRef.current) swiperRef.current.slideNext();
+      if (swiperRef.current) {
+        swiperRef.current.slideNext();
+      }
     }
   };
 

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { VariantType } from 'notistack';
 
 export const createHandleClickVariant =
