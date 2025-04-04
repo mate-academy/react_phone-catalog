@@ -16,7 +16,7 @@ export const ProductDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
 
   const splittedPath = pathname.split('/');
   const itemId = splittedPath[2];
