@@ -1,0 +1,118 @@
+@import '../../../styles/main';
+
+.footer {
+  border-top: 1px solid $borderColor;
+  padding-block: 32px;
+  padding-inline: 16px;
+  width: 100%;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+
+  &_container {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &_block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &_logo {
+    display: block;
+    height: 32px;
+    width: 89px;
+    user-select: none;
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &_item {
+    &:hover {
+      transform: scale(1.02);
+      cursor: pointer;
+    }
+  }
+
+  &_link {
+    display: block;
+    height: 100%;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    color: $textSecondaryColor;
+
+    &:hover {
+      color: $textMainColor;
+    }
+  }
+
+  &_toTop {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    gap: 16px;
+  }
+
+  &_toTopText {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $textSecondaryColor;
+
+    &:hover {
+      color: $textMainColor;
+      cursor: pointer;
+    }
+  }
+
+  &_toTopLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $borderColorDark;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      height: 16px;
+      width: 16px;
+      background-size: cover;
+      background-image: url('../../../assets/img/icons/arrow-up-icon.svg');
+    }
+  }
+}
