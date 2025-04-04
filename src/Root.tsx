@@ -15,6 +15,7 @@ import CartPage from './pages/CartPage/CartPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { GlobalProvider } from './context/GlobalProvider';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { SearchPage } from './pages/SearchPage';
 
 const Root = () => (
   <Router>
@@ -31,6 +32,7 @@ const Root = () => (
           <Route path="accessories" element={<AccessoriesPage />} />
           <Route path="favourites" element={<FavouritesPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="search" element={<SearchPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

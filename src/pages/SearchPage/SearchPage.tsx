@@ -1,74 +1,67 @@
-import styles from './ProductsPages.module.scss';
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import CustomSelect from '../../components/CustomSelect/CustomSelect';
-import ProductsList from '../../components/ProductsList/ProductsList';
-import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useProducts } from '../../context/ProductsContext';
+import { useMemo, useEffect, useState } from 'react';
 import {
   filterAndSortProducts,
   itemsForPageOptions,
   sortingOptions,
-  structureProducts,
 } from '../../utils';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Pagination } from '../../components/Pagination';
 import Loader from '../../components/Loader/Loader';
-import { Gadget } from '../../types/Gadgets';
+import styles from './SearchPage.module.scss';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import CustomSelect from '../../components/CustomSelect/CustomSelect';
+import ProductsList from '../../components/ProductsList/ProductsList';
+import { Pagination } from '../../components/Pagination';
 
-type Props = {
-  products: Gadget[];
-  error: boolean;
-  loading: boolean;
-  title: string;
-};
+export const SearchPage = () => {
+  const { error, products } = useProducts();
+  const [loading, setLoading] = useState(true);
 
-export const ProductsPages: React.FC<Props> = ({
-  products,
-  error,
-  loading,
-  title,
-}) => {
   const [searchParams] = useSearchParams();
 
   const perPage = searchParams.get('perPage') || 'all';
   const sort = searchParams.get('sort') || 'newest';
   const page = searchParams.get('page') || '1';
+  const query = searchParams.get('query') || '';
 
-  const structuredProducts = useMemo(
-    () => structureProducts(products),
-    [products],
-  );
+  useEffect(() => {
+    setLoading(true);
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, [products, query, page, sort, perPage]);
 
   const { total, items } = useMemo(
     () =>
       filterAndSortProducts(
-        structuredProducts,
+        products,
         sort,
         perPage === 'all' ? 'all' : +perPage,
         +page,
+        query,
       ),
-    [products, perPage, sort, page],
+    [products, perPage, sort, page, query],
   );
 
   if (loading) {
     return <Loader />;
   }
 
-  if (products.length === 0) {
-    return <h2 className={styles.title}>There are no tablets yet</h2>;
-  }
-
   if (error) {
     return <ErrorMessage />;
   }
 
+  if (items.length === 0) {
+    return <h2 className={styles.title}>{`No results for ${query}`}</h2>;
+  }
+
   return (
     <div className={styles.products}>
-      <Breadcrumbs />
+      <h1 className={styles.title}>{`Search results for ${query}`}</h1>
 
-      <h1 className={styles.title}>{title}</h1>
-
-      <p className={styles.products__quantity}>{products.length} models</p>
+      <p className={styles.products__quantity}>{total} models</p>
 
       <div className={styles.products__selects}>
         <CustomSelect

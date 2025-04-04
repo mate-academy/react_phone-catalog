@@ -5,7 +5,12 @@ const TabletsPage = () => {
   const { error, accessories, loading } = useAccessories();
 
   return (
-    <ProductsPages products={accessories} error={error} loading={loading} />
+    <ProductsPages
+      products={accessories}
+      error={error}
+      loading={loading}
+      title="Accessories"
+    />
   );
 };
 

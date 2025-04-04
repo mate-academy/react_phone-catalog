@@ -8,6 +8,7 @@ import { useFavourites } from '../../context/FavouritesContext';
 import { useCart } from '../../context/CartContext';
 import favouriteIcon from '/img/icons/favourites-icon.svg';
 import cartIcon from '/img/icons/cart-icon.svg';
+import SearchInput from '../SearchInput/SearchInput';
 
 const pages = ['Home', 'Phones', 'Tablets', 'Accessories'];
 
@@ -52,6 +53,8 @@ const Header = () => {
       </div>
 
       <div className={styles.header__right}>
+        <SearchInput />
+
         <Link
           to={`/favourites`}
           className={`${styles.header__favourites} ${pathname.includes('favourites') && styles.header__favourites_active}`}

@@ -1,4 +1,5 @@
 import { Category } from '../types/Category';
+import { FilterAndSortResult } from '../types/filterAndSortType';
 import { Gadget } from '../types/Gadgets';
 import { Product } from '../types/Product';
 
@@ -67,25 +68,35 @@ export const filterAndSortProducts = (
   sort: string,
   perPage: number | 'all',
   page: number,
-): Product[] => {
-  const sortedPhones = [...products];
+  query?: string,
+): FilterAndSortResult => {
+  const sortedProducts = [...products];
+
+  const searchedProducts = sortedProducts.filter(product =>
+    product.name?.toLowerCase().includes(query?.toLowerCase() ?? ''),
+  );
 
   if (sort === 'alphabetically') {
-    sortedPhones.sort((a, b) => a.name.localeCompare(b.name));
+    searchedProducts.sort((a, b) => a.name.localeCompare(b.name));
   } else if (sort === 'cheapest') {
-    sortedPhones.sort((a, b) => a.price - b.price);
+    searchedProducts.sort((a, b) => a.price - b.price);
   } else if (sort === 'expensive') {
-    sortedPhones.sort((a, b) => b.price - a.price);
+    searchedProducts.sort((a, b) => b.price - a.price);
   } else if (sort === 'newest') {
-    sortedPhones.reverse();
+    searchedProducts.reverse();
   }
 
+  const total = searchedProducts.length;
+
   if (perPage === 'all') {
-    return sortedPhones;
+    return { total, items: searchedProducts };
   } else {
     const startIndex = (page - 1) * perPage;
 
-    return sortedPhones.slice(startIndex, startIndex + perPage);
+    return {
+      total,
+      items: searchedProducts.slice(startIndex, startIndex + perPage),
+    };
   }
 };
 
