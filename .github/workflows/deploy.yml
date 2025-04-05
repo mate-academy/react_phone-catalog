@@ -1,22 +1,44 @@
 name: Deploy to GitHub Pages
 
+permissions:
+  contents: write # Required to push to the repository
+  pages: write # Required for GitHub Pages deployment
+
 on:
   push:
     branches:
-      - develop
+      - develop # Make sure you have the correct name of your branch here
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Copy files to deploy directory
-      run: cp -r ./src/* ./dist/
+      # Set up Node.js (optional, якщо потрібен Node.js для якихось процесів)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x' # Adjust Node.js version as needed
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        folder: dist
+      # Install dependencies (якщо вони вам потрібні для роботи зі статичними файлами)
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Копіюємо зібрані файли з іншої папки, якщо вони вже є
+      - name: Copy static files to deploy directory
+        run: |
+          mkdir -p ./dist
+          cp -r ./src/* ./dist/  # Копіюємо файли з іншої папки
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # Branch where the app will be deployed
+          folder: dist # Папка, що містить готові файли
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
