@@ -13,11 +13,8 @@ export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
   const { burgerMenuActivate, setBurgerMenuActivate } =
     useContext(BurgerContext);
 
-  const tougleBurgerMenu = () => {
-    return burgerMenuActivate === false
-      ? setBurgerMenuActivate(true)
-      : setBurgerMenuActivate(false);
-  };
+  const toggleBurgerMenu = () =>
+    setBurgerMenuActivate((prev: boolean) => !prev);
 
   return (
     <div className={classNames(s.right__buttons, onMobile)}>
@@ -29,21 +26,21 @@ export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
             [s.is_active]: isActive,
           })
         }
-        onClick={tougleBurgerMenu}
+        onClick={burgerMenu ? toggleBurgerMenu : undefined}
       >
         <img src="./img/icons/favourites.png" alt="favourite" />
       </NavLink>
       <NavLink
         to={'shopping-bag'}
         className={classNames(s.right__buttons_cart, onMobile)}
-        onClick={tougleBurgerMenu}
+        onClick={burgerMenu ? toggleBurgerMenu : undefined}
       >
         <img src="./img/icons/shoppingBag.png" alt="shopping bag" />
       </NavLink>
       <div className={classNames(s.right__buttons_burgerMenu, onMobile)}>
         <button
           className={s.right__buttons_burgerMenu_style}
-          onClick={tougleBurgerMenu}
+          onClick={toggleBurgerMenu}
         >
           {!burgerMenuActivate ? (
             <img src="./img/icons/burgerMenu.png" alt="menu" />

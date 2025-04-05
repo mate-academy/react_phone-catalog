@@ -2,7 +2,7 @@ import React, { createContext, ReactNode, useMemo, useState } from 'react';
 
 interface BurgerContextType {
   burgerMenuActivate: boolean;
-  setBurgerMenuActivate: (value: boolean) => void;
+  setBurgerMenuActivate: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const BurgerContext = createContext<BurgerContextType>({
