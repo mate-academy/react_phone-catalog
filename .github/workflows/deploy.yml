@@ -17,28 +17,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Set up Node.js (optional, якщо потрібен Node.js для якихось процесів)
+      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x' # Adjust Node.js version as needed
+          node-version: '20' # Adjust Node.js version as needed
 
-      # Install dependencies (якщо вони вам потрібні для роботи зі статичними файлами)
+      # Install dependencies
       - name: Install dependencies
         run: |
           npm install
 
-      # Копіюємо зібрані файли з іншої папки, якщо вони вже є
-      - name: Copy static files to deploy directory
+      # Build the app
+      - name: Build the app
         run: |
-          mkdir -p ./dist
-          cp -r ./src/* ./dist/  # Копіюємо файли з іншої папки
+          npm run build
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # Branch where the app will be deployed
-          folder: dist # Папка, що містить готові файли
+          folder: dist # Folder containing the built React app
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically generated token for authentication
