@@ -2,8 +2,13 @@
 
 .favourites-product {
   margin-top: 24px;
+  margin-bottom: 200px;
 
   @include padding-inline;
+
+  @include tablet {
+    margin-bottom: 390px;
+  }
 
 
   &__title {
