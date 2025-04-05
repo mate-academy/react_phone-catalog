@@ -22,7 +22,7 @@ export const TabletDetails: React.FC = () => {
         }
 
         const data: Tablet[] = await response.json();
-        const foundTablet = data.find(item => item.id === id);
+        const foundTablet = data.find((item) => item.id === id);
 
         if (!foundTablet) {
           throw new Error('Tablet not found');
@@ -55,7 +55,7 @@ export const TabletDetails: React.FC = () => {
     setSelectedColor(color);
 
     // Створюємо новий шлях до зображень для обраного кольору
-    const newImages = tablet.images.map(image =>
+    const newImages = tablet.images.map((image) =>
       image.replace(tablet.color, color),
     );
 
@@ -78,7 +78,10 @@ export const TabletDetails: React.FC = () => {
   return (
     <div className="tablet-card_detail">
       <div className="top">
-        <Link className="back-button" to="/tablets">
+        <Link
+          className="back-button"
+          to="/tablets"
+        >
           Back to Tablets
         </Link>
         <h2>{tablet.name}</h2>
@@ -111,7 +114,7 @@ export const TabletDetails: React.FC = () => {
           {/* Вибір кольору */}
           <h3>Choose a color:</h3>
           <div className="color-picker">
-            {tablet.colorsAvailable.map(color => (
+            {tablet.colorsAvailable.map((color) => (
               <button
                 key={color}
                 onClick={() => handleColorChange(color)}

@@ -23,7 +23,7 @@ export const AccessoryDetails: React.FC = () => {
         }
 
         const data: Accessories[] = await response.json();
-        const foundAccessory = data.find(item => item.id === id);
+        const foundAccessory = data.find((item) => item.id === id);
 
         if (!foundAccessory) {
           throw new Error('Accessory not found');
@@ -57,7 +57,7 @@ export const AccessoryDetails: React.FC = () => {
     setSelectedColor(color);
 
     // Create new image path for the selected color
-    const newImages = accessory.images.map(image =>
+    const newImages = accessory.images.map((image) =>
       image.replace(accessory.color, color),
     );
 
@@ -85,7 +85,10 @@ export const AccessoryDetails: React.FC = () => {
   return (
     <div className="accessory-card_detail">
       <div className="top">
-        <Link className="back-button" to="/accessories">
+        <Link
+          className="back-button"
+          to="/accessories"
+        >
           Back to Accessories
         </Link>
         <h2>{accessory.name}</h2>
@@ -118,7 +121,7 @@ export const AccessoryDetails: React.FC = () => {
           {/* Capacity Selection */}
           <h3>Choose a Capacity:</h3>
           <div className="capacity-picker">
-            {accessory.capacityAvailable.map(capacity => (
+            {accessory.capacityAvailable.map((capacity) => (
               <button
                 key={capacity}
                 onClick={() => handleCapacityChange(capacity)}
@@ -130,7 +133,7 @@ export const AccessoryDetails: React.FC = () => {
           {/* Choose a color */}
           <h3>Choose a color:</h3>
           <div className="color-picker">
-            {accessory.colorsAvailable.map(color => (
+            {accessory.colorsAvailable.map((color) => (
               <button
                 key={color}
                 onClick={() => handleColorChange(color)}

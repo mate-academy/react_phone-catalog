@@ -24,7 +24,9 @@ export const App = () => {
     <div data-cy="app">
       <Navbar />
       <SearchParameters />
-      {loading ? <Loader /> : <Outlet />}
+      {loading ?
+        <Loader />
+      : <Outlet />}
       <Footer />
     </div>
   );

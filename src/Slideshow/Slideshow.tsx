@@ -13,7 +13,7 @@ export const Slideshow: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 3500);
 
     return () => clearInterval(interval);
@@ -21,12 +21,12 @@ export const Slideshow: React.FC = () => {
 
   const handlePrev = () => {
     setCurrentIndex(
-      prevIndex => (prevIndex - 1 + images.length) % images.length,
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
     );
   };
 
   const handleNext = () => {
-    setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
   //eslint-disable-next-line
   console.log('Current slide:', images[currentIndex]);

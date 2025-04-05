@@ -22,7 +22,7 @@ export const PhoneDetails: React.FC = () => {
         }
 
         const data: Phone[] = await response.json();
-        const foundPhone = data.find(item => item.id === id);
+        const foundPhone = data.find((item) => item.id === id);
 
         if (!foundPhone) {
           throw new Error('Phone not found');
@@ -55,7 +55,7 @@ export const PhoneDetails: React.FC = () => {
     setSelectedColor(color);
 
     // Створюємо новий шлях до зображень для обраного кольору
-    const newImages = phone.images.map(image =>
+    const newImages = phone.images.map((image) =>
       image.replace(phone.color, color),
     );
 
@@ -78,7 +78,10 @@ export const PhoneDetails: React.FC = () => {
   return (
     <div className="phone-card_detail">
       <div className="top">
-        <Link className="back-button" to="/phones">
+        <Link
+          className="back-button"
+          to="/phones"
+        >
           Back to Phones
         </Link>
         <h2>{phone.name}</h2>
@@ -111,7 +114,7 @@ export const PhoneDetails: React.FC = () => {
           {/* Вибір кольору */}
           <h3>Choose a color:</h3>
           <div className="color-picker">
-            {phone.colorsAvailable.map(color => (
+            {phone.colorsAvailable.map((color) => (
               <button
                 key={color}
                 onClick={() => handleColorChange(color)}

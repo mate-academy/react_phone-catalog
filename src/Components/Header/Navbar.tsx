@@ -38,25 +38,40 @@ export const Navbar = () => {
         <div className="container navbar-container">
           {/* Ліва сторона навбару */}
           <div className="navbar-left">
-            <NavLink to="/" className="logo">
+            <NavLink
+              to="/"
+              className="logo"
+            >
               NICE👌
               <br />
               GADGETS
             </NavLink>
 
-            <NavLink to="/" className={getLinkClass}>
+            <NavLink
+              to="/"
+              className={getLinkClass}
+            >
               HOME
             </NavLink>
 
-            <NavLink to="/phones" className={getLinkClass}>
+            <NavLink
+              to="/phones"
+              className={getLinkClass}
+            >
               PHONES
             </NavLink>
 
-            <NavLink to="/tablets" className={getLinkClass}>
+            <NavLink
+              to="/tablets"
+              className={getLinkClass}
+            >
               TABLETS
             </NavLink>
 
-            <NavLink to="/accessories" className={getLinkClass}>
+            <NavLink
+              to="/accessories"
+              className={getLinkClass}
+            >
               ACCESSORIES
             </NavLink>
           </div>
@@ -65,9 +80,10 @@ export const Navbar = () => {
           <div className="navbar-center">
             <input
               type="text"
+              name="search"
               placeholder="Search..."
               value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="search-input"
             />
           </div>
