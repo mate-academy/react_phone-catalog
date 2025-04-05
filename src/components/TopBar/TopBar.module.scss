@@ -12,7 +12,7 @@
     @include on-desktop {
       padding-inline: 24px;
     }
-    
+
     & img {
       height: 22px;
       width: 64px;
@@ -40,7 +40,7 @@
     position: relative;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       width: 0.5px;
       height: calc(100% + 2px);
@@ -75,7 +75,7 @@
       width: 14px;
       border-radius: 1px;
       background-color: $white;
-      transition: .3s;
+      transition: 0.3s;
       transform-origin: center center;
     }
 
