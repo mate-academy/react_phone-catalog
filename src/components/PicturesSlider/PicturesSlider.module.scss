@@ -64,12 +64,16 @@
   }
 
   &__ctaButton {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+
     position: absolute;
     content: '';
     bottom: 50px;
     left: 2%;
-
-    z-index: 2;
 
     text-transform: uppercase;
 
