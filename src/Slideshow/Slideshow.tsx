@@ -1,3 +1,4 @@
+/* eslint react-refresh/only-export-components: off */
 import { useEffect, useState } from 'react';
 import './Slide.scss';
 import React from 'react';
