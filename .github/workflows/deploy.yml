@@ -14,9 +14,9 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Copy files to deploy directory
-      run: cp -r ./src/* ./deploy-directory/
+      run: cp -r ./src/* ./dist/
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: src
+        folder: dist
