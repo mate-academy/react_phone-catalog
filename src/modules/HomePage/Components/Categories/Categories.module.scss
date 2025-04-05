@@ -1,4 +1,4 @@
-@import '../../../../style/main';
+@use '../../../../style/main' as *;
 
 .categories {
   &__title {

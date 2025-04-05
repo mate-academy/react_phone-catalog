@@ -1,4 +1,4 @@
-@import './style/main';
+@use './style/main' as *;
 
 html, body {
   height: 100%;

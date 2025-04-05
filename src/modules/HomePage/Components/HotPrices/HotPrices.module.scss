@@ -1,4 +1,4 @@
-@import '../../../../style/main';
+@use '../../../../style/main' as *;
 
 .title {
   @extend %title-basic;
