@@ -58,7 +58,7 @@ export const Header = () => {
       >
         <nav className={classNames('nav', 'menu__nav')}>
           {Object.keys(Categories).map(key => (
-            <NavLink to={routes[key]} className="nav__item">
+            <NavLink to={routes[key]} key={key} className="nav__item">
               {key}
             </NavLink>
           ))}

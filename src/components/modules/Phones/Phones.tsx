@@ -17,7 +17,7 @@ export const Phones = () => {
 
   return (
     <>
-      <Catalog items={phonesList} />
+      <Catalog items={phonesList} category={'phones'} />
     </>
   );
 };

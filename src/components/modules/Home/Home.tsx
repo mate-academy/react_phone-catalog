@@ -1,6 +1,6 @@
 import './Home.style.scss';
 
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { Slider } from '../../shared/Slider/Slider';
 import { loadProducts } from '../../../features/ProductsSlice/ProductsSlice';
@@ -60,30 +60,33 @@ export const Home = () => {
         <h2 className="categories__title">Shop by category</h2>
 
         <div className="categories__blocks blocks">
-          {Object.keys(Categories).filter(key => key !== 'home').map(key => {
-            return (
-              <div
-                className="blocks__block block"
-                onClick={() => navigate(routes[key])}
-              >
-                <img
-                  className="block__img"
-                  src={
-                    key === 'phones'
-                      ? phones
-                      : key === 'tablets'
-                        ? tablets
-                        : accessories
-                  }
-                  alt={`go to ${key === 'phones' ? 'phones' : key === 'tablets' ? 'tablets' : 'accessories'}`}
-                ></img>
-                <h4 className="block__name">
-                  {`${key === 'phones' ? 'Mobile phones' : key.slice(0, 1).toUpperCase().concat(key.slice(1))}`}
-                </h4>
-                <p className="block__items-number">{`${productNumber[key]} models`}</p>
-              </div>
-            );
-          })}
+          {Object.keys(Categories)
+            .filter(key => key !== 'home')
+            .map(key => {
+              return (
+                <div
+                  key={key}
+                  className="blocks__block block"
+                  onClick={() => navigate(routes[key])}
+                >
+                  <img
+                    className="block__img"
+                    src={
+                      key === 'phones'
+                        ? phones
+                        : key === 'tablets'
+                          ? tablets
+                          : accessories
+                    }
+                    alt={`go to ${key === 'phones' ? 'phones' : key === 'tablets' ? 'tablets' : 'accessories'}`}
+                  ></img>
+                  <h4 className="block__name">
+                    {`${key === 'phones' ? 'Mobile phones' : key.slice(0, 1).toUpperCase().concat(key.slice(1))}`}
+                  </h4>
+                  <p className="block__items-number">{`${productNumber[key]} models`}</p>
+                </div>
+              );
+            })}
         </div>
       </div>
 

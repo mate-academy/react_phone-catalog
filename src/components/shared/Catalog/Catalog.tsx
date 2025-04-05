@@ -1,58 +1,186 @@
+import './Catalog.style.scss';
+
 import { Product } from '../../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
-import './Catalog.style.scss';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import { useAppSelector } from '../../../app/hooks';
+import classNames from 'classnames';
+import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 
 type Props = {
   items: Product[];
+  category: 'phones' | 'tablets' | 'accessories';
 };
 
-export const Catalog: React.FC<Props> = ({ items }) => {
+interface CurrentSearchParams {
+  [key: string]: string;
+}
+
+interface IsSelecting {
+  [key: string]: boolean;
+}
+
+const selectors = {
+  sortBy: ['newest', 'alphabetically', 'cheapest'],
+  itemsOnPage: ['4', '8', '16', 'all'],
+};
+
+const isSelectingInitialState: IsSelecting = {
+  sortBy: false,
+  itemsOnPage: false,
+};
+
+export const Catalog: React.FC<Props> = ({ items, category }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [isSelecting, setIsSelecting] = useState(isSelectingInitialState);
+  const [canSelectionTransform, setCanSelectionTransform] = useState(
+    isSelectingInitialState,
+  );
+
+  const currentSelection: CurrentSearchParams = {
+    sortBy: searchParams.get('sortBy') || 'Newest',
+    itemsOnPage: searchParams.get('itemsOnPage') || '16',
+  };
+
+  const productNumber = {
+    phones: useAppSelector(state => state.phones.phones).length,
+    tablets: useAppSelector(state => state.tablets.tablets).length,
+    accessories: useAppSelector(state => state.accessories.accessories).length,
+  };
+
+  const handleSelectionOpen = (param: string) => {
+    const prevState = isSelecting[param];
+
+    if (prevState) {
+      setCanSelectionTransform(prev => ({ ...prev, [param]: !prevState }));
+      setTimeout(() => {
+        setIsSelecting(prev => ({ ...prev, [param]: !prevState }));
+      }, 300);
+    } else {
+      setIsSelecting(prev => ({ ...prev, [param]: !prevState }));
+      setTimeout(() => {
+        setCanSelectionTransform(prev => ({ ...prev, [param]: !prevState }));
+      }, 1);
+    }
+  };
+
+  const handleSelection = (param: string, value: string) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+    const prevState = isSelecting[param];
+    
+    newSearchParams.set(param, value);
+    setSearchParams(newSearchParams);
+
+
+    setCanSelectionTransform(prev => ({ ...prev, [param]: !prevState }));
+    setTimeout(() => {
+      setIsSelecting(prev => ({ ...prev, [param]: !prevState }));
+    }, 300);
+  };
+
   return (
     <div className="catalog">
-      <div className="catalog__location">
-        <svg
-          className="catalog__location__home"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M7.59087 0.807088C7.83161 0.619846 8.16872 0.619846 8.40946 0.807088L14.4095 5.47375C14.5718 5.60006 14.6668 5.79426 14.6668 5.99999V13.3333C14.6668 13.8638 14.4561 14.3725 14.081 14.7475C13.706 15.1226 13.1973 15.3333 12.6668 15.3333H3.3335C2.80306 15.3333 2.29436 15.1226 1.91928 14.7475C1.54421 14.3725 1.3335 13.8638 1.3335 13.3333V5.99999C1.3335 5.79426 1.42848 5.60006 1.59087 5.47375L7.59087 0.807088ZM2.66683 6.32605V13.3333C2.66683 13.5101 2.73707 13.6797 2.86209 13.8047C2.98712 13.9298 3.15669 14 3.3335 14H12.6668C12.8436 14 13.0132 13.9298 13.1382 13.8047C13.2633 13.6797 13.3335 13.5101 13.3335 13.3333V6.32605L8.00016 2.1779L2.66683 6.32605Z"
-            fill="#313237"
-          />
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M5.3335 8.00001C5.3335 7.63182 5.63197 7.33334 6.00016 7.33334H10.0002C10.3684 7.33334 10.6668 7.63182 10.6668 8.00001V14.6667C10.6668 15.0349 10.3684 15.3333 10.0002 15.3333C9.63197 15.3333 9.3335 15.0349 9.3335 14.6667V8.66668H6.66683V14.6667C6.66683 15.0349 6.36835 15.3333 6.00016 15.3333C5.63197 15.3333 5.3335 15.0349 5.3335 14.6667V8.00001Z"
-            fill="#313237"
-          />
-        </svg>
+      <Breadcrumbs />
 
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M5.52876 3.52861C5.78911 3.26826 6.21122 3.26826 6.47157 3.52861L10.4716 7.52861C10.7319 7.78896 10.7319 8.21107 10.4716 8.47141L6.47157 12.4714C6.21122 12.7318 5.78911 12.7318 5.52876 12.4714C5.26841 12.2111 5.26841 11.789 5.52876 11.5286L9.05735 8.00001L5.52876 4.47141C5.26841 4.21107 5.26841 3.78896 5.52876 3.52861Z"
-            fill="#B4BDC4"
-          />
-        </svg>
+      <div className="catalog__title">
+        <h1 className="catalog__title__heading">
+          {category === 'phones'
+            ? 'Mobile phones'
+            : category.slice(0, 1).toUpperCase().concat(category.slice(1))}
+        </h1>
 
-        <p className='catalog__location__guide'>Phones</p>
+        <p className="catalog__title__subtitle">
+          {`${productNumber[category]} models`}
+        </p>
       </div>
 
-      <div className="catalog__title"></div>
+      <div className="catalog__selectors">
+        {Object.entries(selectors).map(([key, value]) => (
+          <div
+            key={key}
+            className={classNames(
+              'catalog__selectors__selector',
+              'selector',
+              {
+                selector__sortBy: key === 'sortBy',
+              },
+              { 'selector__items-on-page': key === 'itemsOnPage' },
+            )}
+          >
+            <p className="selector__title">
+              {key === 'sortBy' ? 'Sort by' : 'Items on page'}
+            </p>
 
-      <div className="catalog__selectors"></div>
+            <div className="selector__selection">
+              <div
+                className={classNames('selector__current-option', {
+                  'selector__current-option__focused': isSelecting[key],
+                })}
+              >
+                <p className="selector__current-option__name">
+                  {currentSelection[key]
+                    .slice(0, 1)
+                    .toUpperCase()
+                    .concat(currentSelection[key].slice(1))}
+                </p>
+
+                <div
+                  className={classNames('selector__choose-option', {
+                    'selector__choose-option__focused':
+                      canSelectionTransform[key],
+                  })}
+                  onClick={() => handleSelectionOpen(key)}
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M3.52876 10.4714C3.26841 10.211 3.26841 9.7889 3.52876 9.52855L7.52876 5.52856C7.78911 5.26821 8.21122 5.26821 8.47157 5.52856L12.4716 9.52856C12.7319 9.78891 12.7319 10.211 12.4716 10.4714C12.2112 10.7317 11.7891 10.7317 11.5288 10.4714L8.00016 6.94277L4.47157 10.4714C4.21122 10.7317 3.78911 10.7317 3.52876 10.4714Z"
+                      fill="#B4BDC4"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div
+                className={classNames(
+                  'selector__all-options',
+                  {
+                    'selector__all-options__open': isSelecting[key],
+                  },
+                  {
+                    'selector__all-options__transform':
+                      canSelectionTransform[key],
+                  },
+                )}
+              >
+                {value.map(option => (
+                  <div
+                    key={option}
+                    className="selector__option"
+                    onClick={() => handleSelection(key, option)}
+                  >
+                    <p className="selector__option__name">
+                      {option
+                        .slice(0, 1)
+                        .toUpperCase()
+                        .concat(option.slice(1))}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
       <div className="catalog__items">
         {items.length > 0 &&

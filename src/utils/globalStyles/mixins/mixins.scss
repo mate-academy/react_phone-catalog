@@ -74,6 +74,7 @@
 }
 
 @mixin device-title {
+  margin: 0;
   font-family: 'Mont-Regular';
   font-size: 14px;
   font-weight: 500;
@@ -86,6 +87,7 @@
 }
 
 @mixin device-description-short {
+  margin: 0;
   font-family: 'Mont-Semibold';
   font-size: 12px;
   font-weight: 600;
@@ -97,6 +99,7 @@
 }
 
 @mixin device-description-extended {
+  margin: 0;
   font-family: 'Mont-Regular';
   font-size: 14px;
   font-weight: 500;
@@ -108,6 +111,7 @@
 }
 
 @mixin h1 {
+  margin: 0;
   font-family: 'Mont-Bold';
   font-size: 32px;
   line-height: 41px;
@@ -125,6 +129,7 @@
 }
 
 @mixin h2 {
+  margin: 0;
   font-family: 'Mont-Bold';
   font-size: 22px;
   line-height: 30.8px;
@@ -140,6 +145,7 @@
 }
 
 @mixin h3 {
+  margin: 0;
   font-family: 'Mont-Bold';
   font-size: 20px;
   font-weight: 800;
@@ -157,6 +163,7 @@
 }
 
 @mixin h4 {
+  margin: 0;
   font-family: 'Mont-Semibold';
   font-size: 16px;
   font-weight: 700;
@@ -174,6 +181,7 @@
 }
 
 @mixin text14 {
+  margin: 0;
   font-family: 'Mont-Regular';
   font-weight: 600;
   font-size: 14px;
@@ -182,9 +190,19 @@
 }
 
 @mixin text12 {
+  margin: 0;
   font-family: 'Mont-Semibold';
   font-weight: 600;
   font-size: 12px;
   line-height: 100%;
+  letter-spacing: 0%;
+}
+
+@mixin buttons {
+  margin: 0;
+  font-family: 'Mont-Semibold';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
   letter-spacing: 0%;
 }

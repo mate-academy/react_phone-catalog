@@ -30,6 +30,10 @@
     background: $white;
     border: 1px solid $icons-placeholders;
 
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
     &:disabled {
       border: 1px solid $gray-elements;
     }
