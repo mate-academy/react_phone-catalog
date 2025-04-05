@@ -2,6 +2,7 @@ import React from 'react';
 import { Product } from '../../../../types/Products';
 import s from './ProductCards.module.scss';
 import { Link } from 'react-router-dom';
+import { useLocalStorage } from '../../../../hooks/useLocalStorage';
 
 type Props = {
   products: Product[];
@@ -9,6 +10,27 @@ type Props = {
 };
 
 export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
+  const [favourites, setFavourites] = useLocalStorage<number[]>(
+    'favourites',
+    [],
+  );
+
+  const toggleFavourites = (id: number) => {
+    const newItem = products.find(item => item.id === id)?.id;
+
+    if (!newItem) {
+      return;
+    }
+
+    if (!favourites.find(item => item === id)) {
+      setFavourites([...favourites, newItem]);
+    } else {
+      const deleteFavourites = favourites.filter(item => item !== newItem);
+
+      setFavourites(deleteFavourites);
+    }
+  };
+
   return (
     <>
       {products.map(product => (
@@ -43,8 +65,20 @@ export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
           </div>
           <div className={s.card__buttons}>
             <button className={s.card__buttons_add}>Add to cart</button>
-            <button className={s.card__buttons_like}>
-              <img src="./img/icons/like.png" alt="like" />
+            <button
+              className={s.card__buttons_like}
+              onClick={() => {
+                toggleFavourites(product.id);
+              }}
+            >
+              {favourites.includes(product.id) ? (
+                <img
+                  src="./img/icons/likeActive.png"
+                  alt="remove from favourites"
+                />
+              ) : (
+                <img src="./img/icons/like.png" alt="add to favourites" />
+              )}
             </button>
           </div>
         </div>

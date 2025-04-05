@@ -14,6 +14,10 @@ export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
   const navItemClass = classNames(s.nav__item, {
     [s.onMobile]: burgerMenu,
   });
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    classNames(s.nav__link, {
+      [s.is_active]: isActive,
+    });
 
   return (
     <nav className={classNames(s.nav, { [s.onMobile]: burgerMenu })}>
@@ -23,14 +27,14 @@ export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
         })}
       >
         <li className={navItemClass}>
-          <NavLink to="/" className={s.nav__link} onClick={closeBurgerMenu}>
+          <NavLink to="/" className={getLinkClass} onClick={closeBurgerMenu}>
             <p>home</p>
           </NavLink>
         </li>
         <li className={navItemClass}>
           <NavLink
             to="/phones"
-            className={s.nav__link}
+            className={getLinkClass}
             onClick={closeBurgerMenu}
           >
             <p>phones</p>
@@ -39,7 +43,7 @@ export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
         <li className={navItemClass}>
           <NavLink
             to="/tablets"
-            className={s.nav__link}
+            className={getLinkClass}
             onClick={closeBurgerMenu}
           >
             <p>tablets</p>
@@ -48,7 +52,7 @@ export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
         <li className={navItemClass}>
           <NavLink
             to="/accessories"
-            className={s.nav__link}
+            className={getLinkClass}
             onClick={closeBurgerMenu}
           >
             <p>accessories</p>

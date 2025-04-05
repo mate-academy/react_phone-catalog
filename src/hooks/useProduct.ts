@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import { ProductContext } from '../context/ProductsContext';
 import { useParams } from 'react-router-dom';
-import { ProductItem } from '../../types/ProductItem';
+import { ProductContext } from '../shared/context/ProductsContext';
+import { ProductItem } from '../types/ProductItem';
 
 export const useProduct = () => {
   const { products } = useContext(ProductContext);

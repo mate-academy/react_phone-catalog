@@ -7,6 +7,8 @@ import { Phones } from './modules/Phones';
 import { Tablets } from './modules/Tablets';
 import { Accessories } from './modules/Accessories';
 import { ItemCard } from './modules/ItemCard';
+import { NotFoundPage } from './modules/NotFoundPage';
+import { Favourites } from './modules/Favourites';
 
 export const Root = () => (
   <ProductProvider>
@@ -26,9 +28,15 @@ export const Root = () => (
             </Route>
             <Route path="accessories">
               <Route index element={<Accessories />} />
-              <Route path=":productId" element={<ItemCard />} />
+              <Route path=":productId" element={<ItemCard />} />/
+            </Route>
+            <Route path=":productId" element={<ItemCard />} />
+            <Route path="favourites">
+              <Route index element={<Favourites />} />
+              <Route path=":productId" element={<ItemCard />} />/
             </Route>
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
     </BurgerProvider>

@@ -13,7 +13,10 @@ export const Footer = () => {
         <div className={s.footer__list_wrapper}>
           <ul className={s.footer__list}>
             <li className={s.footer__item}>
-              <a href="#" className={s.footer__item_link}>
+              <a
+                href="https://vitalii120296.github.io/react_phone-catalog/"
+                className={s.footer__item_link}
+              >
                 Github
               </a>
             </li>

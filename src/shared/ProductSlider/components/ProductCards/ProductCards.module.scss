@@ -23,7 +23,7 @@
   &__price,
   &__specs,
   &__buttons {
-    z-index: 2;
+    z-index: 3;
   }
 
   @include on-tablet {
@@ -104,13 +104,20 @@
       border: none;
       background-color: $accent;
       color: $white;
+      padding: 0;
     }
 
     &_like {
-      width: 40px;
+      min-width: 40px;
       height: 40px;
       border: none;
       background-color: $surface-2;
+      padding: 0;
+
+      & img {
+        height: 13px;
+        width: 15px;
+      }
     }
   }
 

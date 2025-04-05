@@ -48,6 +48,7 @@
 
     &.onMobile {
       margin: 0;
+
       &:not(:last-child) {
         margin-bottom: 16px;
       }
@@ -82,6 +83,14 @@
 
     &:hover::after {
       transform: scale(1);
+    }
+
+    &.is_active {
+      color: $white;
+
+      &::after {
+        transform: scale(1);
+      }
     }
   }
 }
