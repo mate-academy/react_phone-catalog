@@ -10,9 +10,12 @@ const SearchInput: React.FC = () => {
   const navigate = useNavigate();
 
   const handleClickSearch = () => {
-    if (!value.trim()) return;
+    if (!value.trim()) {
+      return;
+    }
 
     const params = new URLSearchParams({ query: value.trim() });
+
     navigate(`/search?${params.toString()}`);
   };
 

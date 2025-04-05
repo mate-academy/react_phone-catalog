@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import styles from './PicturesSlider.module.scss';
 import arrowLeft from '/img/icons/arrows/arrow-left-icon.svg';
 import arrowRight from '/img/icons/arrows/arrow-right-icon.svg';
+import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.BASE_URL || '/';
 
@@ -9,6 +10,8 @@ const PicturesSlider = () => {
   const imageWrapperRef = useRef<HTMLDivElement | null>(null);
   const sliderInterval = useRef<NodeJS.Timeout | null>(null);
   const [currentImage, setCurrentImage] = useState(0);
+
+  const navigate = useNavigate();
 
   const screenWidth = window.innerWidth;
   const isMobile = screenWidth < 640;
@@ -27,7 +30,7 @@ const PicturesSlider = () => {
     if (imageCount > 1) {
       sliderInterval.current = setInterval(() => {
         setCurrentImage(prevIndex => (prevIndex + 1) % imageCount);
-      }, 100000);
+      }, 5000);
     }
   }, [stopInterval, imageCount]);
 
@@ -99,12 +102,23 @@ const PicturesSlider = () => {
               const src = `${BASE_URL}/img/banners/banner-${isSmall ? 'small' : 'big'}${!isSmall ? index : ''}.${fileType}`;
 
               return (
-                <img
-                  src={`${src}`}
-                  key={index}
-                  alt={`slide-${index}`}
-                  className={`${styles.slider__image} ${index === 1 && styles.slider__image_main}`}
-                />
+                <>
+                  <img
+                    src={src}
+                    alt={`slide-${index}`}
+                    className={`${styles.slider__image} ${index === 1 ? styles.slider__image_main : ''}`}
+                  />
+                  {index === 1 && (
+                    <button
+                      className={styles.slider__ctaButton}
+                      onClick={() =>
+                        navigate('/phones/apple-iphone-14-pro-1tb-gold')
+                      }
+                    >
+                      Order now
+                    </button>
+                  )}
+                </>
               );
             })}
           </div>

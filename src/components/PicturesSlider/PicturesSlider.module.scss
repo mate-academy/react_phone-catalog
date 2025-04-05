@@ -51,6 +51,7 @@
 
     object-fit: cover;
     object-position: 85% center;
+    position: relative;
 
     img {
       width: 100%;
@@ -59,6 +60,32 @@
 
     &_main {
       object-position: 10% center;
+    }
+  }
+
+  &__ctaButton {
+    position: absolute;
+    content: '';
+    bottom: 50px;
+    left: 2%;
+
+    z-index: 2;
+
+    text-transform: uppercase;
+
+    font-family: Mont-SemiBold, sans-serif;
+    padding: 15px 35px;
+    background: transparent;
+    color: $white-color;
+
+    border: 1px solid $icons-color;
+    border-radius: 25px;
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $white-color;
+      color: $primary-color;
     }
   }
 
