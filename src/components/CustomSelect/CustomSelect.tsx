@@ -17,6 +17,7 @@ type Props = {
 
 const CustomSelect: React.FC<Props> = ({ options, label, paramName }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const paramValue =
     searchParams.get(paramName) ||
     (paramName === 'perPage' ? 'all' : paramName === 'sort' ? 'newest' : '');
@@ -38,6 +39,8 @@ const CustomSelect: React.FC<Props> = ({ options, label, paramName }) => {
     } else {
       params.delete(paramName);
     }
+
+    params.set('page', '1');
 
     setSearchParams(params);
   };

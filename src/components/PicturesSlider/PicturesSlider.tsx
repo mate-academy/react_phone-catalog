@@ -106,7 +106,9 @@ const PicturesSlider = () => {
                   <img
                     src={src}
                     alt={`slide-${index}`}
-                    className={`${styles.slider__image} ${index === 1 ? styles.slider__image_main : ''}`}
+                    className={`
+                    ${styles.slider__image}
+                    ${index === 1 ? styles.slider__image_main : ''}`}
                   />
                   {index === 1 && (
                     <button
