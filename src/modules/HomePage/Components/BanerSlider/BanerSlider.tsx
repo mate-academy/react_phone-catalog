@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import s from './BanerSlider.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const BanerSlider = () => {
   const [currentIndexImg, setCurrentIndexImg] = useState(0);
@@ -13,17 +13,17 @@ export const BanerSlider = () => {
     // './img/banners/banner-accessories.png',
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndexImg(prevIndex =>
       prevIndex === banners.length - 1 ? 0 : prevIndex + 1,
     );
-  };
+  }, [banners.length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndexImg(prevIndex =>
       prevIndex === 0 ? banners.length - 1 : prevIndex - 1,
     );
-  };
+  }, [banners.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
