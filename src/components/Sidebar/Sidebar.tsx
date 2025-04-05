@@ -28,6 +28,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const { favorites } = useFavourites();
   const { cart } = useCart();
 
+  const totalItemCount = cart.reduce((total, item) => {
+    return total + (item.quantity || 1);
+  }, 0);
+
   return (
     <aside className={`sidebar ${menuIsOpen ? 'open' : ''}`}>
       <div className="sidebar__menu">
@@ -79,7 +83,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             alt="shopping"
             onClick={setMenuIsOpen}
           />
-          {cart.length > 0 && <span className="badge">{cart.length}</span>}
+          {cart.length > 0 && <span className="badge">{totalItemCount}</span>}
         </NavLink>
       </div>
     </aside>
