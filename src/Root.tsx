@@ -2,7 +2,7 @@ import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './modules/HomePage';
 import { ROUTES } from './constants/routes';
-import { ProductPage } from './modules/ProductPage';
+import { ProductPage } from './modules/ProductsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { ShoppingCartPage } from './modules/ShoppingCartPage';
 import { NotFoundPage } from './modules/NotFoundPage';

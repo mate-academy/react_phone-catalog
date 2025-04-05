@@ -1,17 +1,32 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 import breadcrumbsStyles from './Breadcrumbs.module.scss';
 import { IconSvg } from '../IconSvg/IconSvg';
 import { ICON_DATA_PATHS } from '../../constants/iconDataPaths';
 import { getCapitalizationFirstLetter } from '../../helpers/stringHelper';
+import classNames from 'classnames';
+import { useEffect, useState } from 'react';
+import { getProductById } from '../../helpers/productHelper';
+import { ProductDetailed } from '../../types/ProductDetailed';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
-
-  console.log(location.pathname.split('/'));
-
   const pathnames = location.pathname.split('/').filter(x => x);
+  const [category, productId] = pathnames;
+  const [product, setProduct] = useState<ProductDetailed>();
+
+  console.log(location.pathname);
+
+  useEffect(() => {
+    if (productId) {
+      getProductById(category, productId).then(setProduct);
+    }
+  }, [category, productId]);
+
+  if (pathnames.length === 0 || pathnames[0] === ROUTES.CART) {
+    return null;
+  }
 
   return (
     <nav className={breadcrumbsStyles.breadcrumbs}>
@@ -36,9 +51,14 @@ export const Breadcrumbs = () => {
               />
               {isLast ? (
                 <span
-                  className={`${breadcrumbsStyles.breadcrumbs__link} ${breadcrumbsStyles['breadcrumbs__link--is-last']}`}
+                  className={classNames(
+                    breadcrumbsStyles.breadcrumbs__link,
+                    breadcrumbsStyles['breadcrumbs__link--is-last'],
+                  )}
                 >
-                  {getCapitalizationFirstLetter(name)}
+                  {productId
+                    ? product?.name
+                    : getCapitalizationFirstLetter(name)}
                 </span>
               ) : (
                 <Link

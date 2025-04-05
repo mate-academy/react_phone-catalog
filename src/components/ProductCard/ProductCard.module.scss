@@ -107,6 +107,11 @@
     line-height: 21px;
     letter-spacing: 0%;
     text-align: center;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px #17203166;
+      cursor: pointer;
+    }
   }
 
   &__addToFavorite {
@@ -116,6 +121,11 @@
     height: 40px;
     aspect-ratio: 1 / 1;
     background-color: $white-color;
-    border: 1px solid $secondary-color;
+    border: 1px solid $icons-color;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
   }
 }

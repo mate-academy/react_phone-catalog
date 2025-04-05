@@ -20,7 +20,7 @@ export const Pagination: React.FC<Props> = ({
   onPageChange,
 }) => {
   if (maxVisiblePages <= 0) {
-    throw new Error('Icorrect maxVisiblePages value');
+    throw new Error('Incorrect maxVisiblePages value');
   }
 
   const totalPages = Math.ceil(totalProducts / perPage);
@@ -79,13 +79,16 @@ export const Pagination: React.FC<Props> = ({
           <button
             disabled={isFirstPage}
             aria-disabled={isFirstPage}
-            className={classNames(paginationStyles.pagination__button, {
-              [paginationStyles['pagination__button--disabled']]: isFirstPage,
+            className={classNames('button', {
+              ['button--disabled']: isFirstPage,
             })}
             aria-label="Previous page"
             onClick={() => onPageChange(currentPage - 1)}
           >
-            <IconSvg dataPath={ICON_DATA_PATHS.ARROW.LEFT} />
+            <IconSvg
+              dataPath={ICON_DATA_PATHS.ARROW.LEFT}
+              isDisabled={isFirstPage}
+            />
           </button>
         </li>
         {pages.map((page, index) => (
@@ -129,13 +132,16 @@ export const Pagination: React.FC<Props> = ({
           <button
             disabled={isLastPage}
             aria-disabled={isLastPage}
-            className={classNames(paginationStyles.pagination__button, {
-              [paginationStyles['pagination__button--disabled']]: isLastPage,
+            className={classNames('button', {
+              ['button--disabled']: isLastPage,
             })}
             aria-label="Next page"
             onClick={() => onPageChange(currentPage + 1)}
           >
-            <IconSvg dataPath={ICON_DATA_PATHS.ARROW.RIGHT} />
+            <IconSvg
+              dataPath={ICON_DATA_PATHS.ARROW.RIGHT}
+              isDisabled={isLastPage}
+            />
           </button>
         </li>
       </ul>

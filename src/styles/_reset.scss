@@ -1,12 +1,24 @@
-body {
+body,
+ul,
+p,
+h1,
+h2,
+h3,
+hr {
   margin: 0;
+}
+
+body,
+ul,
+fieldset {
   padding: 0;
+}
+
+body {
   font-family: 'Mont';
 }
 
 ul {
-  margin: 0;
-  padding: 0;
   list-style: none;
 }
 
@@ -14,27 +26,6 @@ a {
   text-decoration: none;
 }
 
-p {
-  margin: 0;
-}
-
-h1 {
-  margin: 0;
-}
-
-h2 {
-  margin: 0;
-}
-
-h3 {
-  margin: 0;
-}
-
 fieldset {
   border: none;
-  padding: 0;
-}
-
-hr {
-  margin: 0;
 }

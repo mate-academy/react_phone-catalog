@@ -7,6 +7,7 @@ type Props = {
   height?: number;
   className?: string;
   dataPath: string[];
+  isDisabled?: boolean;
 };
 
 export const IconSvg: React.FC<Props> = ({
@@ -14,6 +15,7 @@ export const IconSvg: React.FC<Props> = ({
   height = 16,
   className = '',
   dataPath,
+  isDisabled = false,
 }) => {
   return (
     <svg
@@ -22,7 +24,9 @@ export const IconSvg: React.FC<Props> = ({
       viewBox={`0 0 ${width} ${height}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={classNames(iconSvgStyles.icon, className)}
+      className={classNames(iconSvgStyles.icon, className, {
+        [iconSvgStyles['icon--disabled']]: isDisabled,
+      })}
     >
       {dataPath.map((d, index) => (
         <path

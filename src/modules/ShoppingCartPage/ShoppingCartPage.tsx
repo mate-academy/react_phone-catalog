@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Navigation, Pagination } from 'swiper/modules';
 import shoppingCartPageStyles from './ShoppingCartPage.module.scss';
+import { Loader } from '../../components/Loader';
 
 export const ShoppingCartPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -16,18 +17,19 @@ export const ShoppingCartPage = () => {
   const colorSet = Array.from(new Set(products.map(product => product.color)));
 
   return (
-    <Swiper
-      modules={[Navigation, Pagination]}
-      spaceBetween={10}
-      slidesPerView="auto"
-      // navigation
-      // pagination={{ clickable: true }}
-    >
-      {colorSet.map(color => (
-        <SwiperSlide key={color} className={shoppingCartPageStyles.slide}>
-          <span className={shoppingCartPageStyles.span}>{color}</span>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    // <Swiper
+    //   modules={[Navigation, Pagination]}
+    //   spaceBetween={10}
+    //   slidesPerView="auto"
+    //   // navigation
+    //   // pagination={{ clickable: true }}
+    // >
+    //   {colorSet.map(color => (
+    //     <SwiperSlide key={color} className={shoppingCartPageStyles.slide}>
+    //       <span className={shoppingCartPageStyles.span}>{color}</span>
+    //     </SwiperSlide>
+    //   ))}
+    // </Swiper>
+    <Loader />
   );
 };

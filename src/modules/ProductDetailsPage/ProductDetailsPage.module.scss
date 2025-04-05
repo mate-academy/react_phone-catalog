@@ -1,6 +1,9 @@
 @import '/src/styles/main';
 
 .details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   &__container {
     @include pageGrid;
 
@@ -50,6 +53,14 @@
     @include onDesktop {
       grid-row: 2;
       grid-column: 14 / -1;
+    }
+  }
+
+  &__youMayAlsoLike {
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-row: 3;
     }
   }
 }

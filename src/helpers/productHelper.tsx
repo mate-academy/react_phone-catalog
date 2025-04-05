@@ -23,26 +23,6 @@ export const getProductsByNamespaceId = (
   );
 };
 
-export const getProductsByColor = (
-  category: string,
-  namespaceId: string,
-  color: string,
-) => {
-  return getData<ProductDetailed[]>(`${category}.json`).then(products =>
-    products
-      .filter(product => product.namespaceId === namespaceId)
-      .filter(product => product.color === color),
-  );
-};
-
-export const getProductsByCapacity = (
-  category: string,
-  namespaceId: string,
-  capacity: string,
-) => {
-  return getData<ProductDetailed[]>(`${category}.json`).then(products =>
-    products
-      .filter(product => product.namespaceId === namespaceId)
-      .filter(product => product.capacity === capacity),
-  );
-};
+// export const getSuggestedProductsByCategory = (category: string) => {
+//   return getData<Product[]>();
+// };

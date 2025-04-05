@@ -1,11 +1,20 @@
+import classNames from 'classnames';
 import loaderStyles from './Loader.module.scss';
 
 export const Loader = () => {
-  console.log('loader');
-
   return (
-    <div className={loaderStyles.loader}>
-      <div className={loaderStyles.loader__content} />
+    <div className={classNames(loaderStyles.loader)}>
+      <div className={loaderStyles.loader__content}>
+        {/* <div className={loaderStyles.loader__square} />
+        <div className={loaderStyles.loader__square} />
+        <div className={loaderStyles.loader__square} />
+        <div className={loaderStyles.loader__square} />
+        <div className={loaderStyles.loader__square} />
+        <div className={loaderStyles.loader__square} />
+        <div className={loaderStyles.loader__square} />
+        <div className={loaderStyles.loader__square} />
+        <div className={loaderStyles.loader__square} /> */}
+      </div>
     </div>
   );
 };

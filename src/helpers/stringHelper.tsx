@@ -1,7 +1,7 @@
 export const getCapitalizationFirstLetter = (word: string) =>
   word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 
-export const getNolmalizedTitle = (title: string) => {
+export const getNormalizedTitle = (title: string) => {
   if (title === 'phones') {
     return 'Mobile phones';
   }

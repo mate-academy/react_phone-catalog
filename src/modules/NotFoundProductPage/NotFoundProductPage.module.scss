@@ -1,0 +1,46 @@
+@import '/src/styles/main.scss';
+
+.notFoundProduct {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  &__title {
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $primary-color;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__text {
+    font-family: Mont;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+  }
+
+  &__linkHome {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $primary-color;
+    text-decoration: underline;
+  }
+
+  &__image {
+    max-width: 640px;
+    width: 100%;
+  }
+}

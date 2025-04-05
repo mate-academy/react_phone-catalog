@@ -1,18 +1,24 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import productPageStyles from './ProductPage.module.scss';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import productsPageStyles from './ProductsPage.module.scss';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { getProductsByCategory } from '../../helpers/productHelper';
 import { ProductList } from '../../components/ProductList';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Dropdown } from '../../components/Dropdown/Dropdown';
 import { Pagination } from '../../components/Pagination';
 import { getSearchWith, SearchParams } from '../../helpers/searchHelper';
 import { Option } from '../../types/Option';
-import { getNolmalizedTitle } from '../../helpers/stringHelper';
+import { getNormalizedTitle } from '../../helpers/stringHelper';
 import { Loader } from '../../components/Loader';
 import isEqual from 'lodash.isequal';
-import { GoBack } from '../../components/GoBack';
+import { ProductsContext } from '../../context/ProductsContext';
+import { NotFoundPage } from '../NotFoundPage';
 
 const SORT_OPTIONS: Option[] = [
   { label: 'Newest', value: null },
@@ -36,26 +42,23 @@ export const ProductPage = React.memo(() => {
     : null;
   const currentPage = +(searchParams.get('page') || 1);
   const { category } = useParams();
-
-  const updateProducts = useCallback(
-    (newProducts: Product[]) => {
-      if (!isEqual(products, newProducts)) {
-        setProducts(newProducts);
-      }
-    },
-    [products],
-  );
+  const { categories } = useContext(ProductsContext);
 
   useEffect(() => {
-    if (!category) {
+    if (!category || !categories.includes(category)) {
       return;
     }
 
     setIsLoading(true);
     getProductsByCategory(category)
-      .then(updateProducts)
+      .then(newProducts =>
+        setProducts(prevProducts =>
+          !isEqual(prevProducts, newProducts) ? newProducts : prevProducts,
+        ),
+      )
+      .catch(() => console.log('somethims wrong'))
       .finally(() => setIsLoading(false));
-  }, [category, updateProducts]);
+  }, [categories, category]);
 
   const setSearchWith = useCallback(
     (params: SearchParams) => {
@@ -93,60 +96,61 @@ export const ProductPage = React.memo(() => {
     [products, sort, firstIndex, lastIndex],
   );
 
+  if (!category || !categories.includes(category)) {
+    return <NotFoundPage />;
+  }
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <section className={productPageStyles.productPage}>
-          <Breadcrumbs />
-          <div className="">
-            <h1 className={productPageStyles.productPage__title}>
-              {getNolmalizedTitle(category)}
-            </h1>
-            <p
-              className={productPageStyles.productPage__subtitle}
-            >{`${products.length} models`}</p>
-          </div>
-          <div className={productPageStyles.productPage__products}>
-            <div className={productPageStyles.productPage__dropdowns}>
-              <Dropdown
-                options={SORT_OPTIONS}
-                label="Sort by"
-                defaultValue={sort}
-                onSelect={option =>
-                  setSearchWith(
-                    perPage ? { sort: option, page: 1 } : { sort: option },
-                  )
-                }
-              />
-              <Dropdown
-                options={PER_PAGE_OPTIONS}
-                label="Items on page"
-                defaultValue={perPage}
-                onSelect={option =>
-                  setSearchWith(
-                    !option
-                      ? { page: null, perPage: option }
-                      : { page: 1, perPage: option },
-                  )
-                }
-              />
-            </div>
-            <ProductList products={visibleProducts} />
-          </div>
-          {perPage && (
-            <Pagination
-              totalProducts={products.length}
-              perPage={perPage}
-              currentPage={currentPage}
-              maxVisiblePages={4}
-              onPageChange={page => setSearchWith({ page: page.toString() })}
-            />
-          )}
-        </section>
+    <section className={productsPageStyles.productPage}>
+      <div className="">
+        <h1 className={productsPageStyles.productPage__title}>
+          {getNormalizedTitle(category)}
+        </h1>
+        <p
+          className={productsPageStyles.productPage__subtitle}
+        >{`${products.length} models`}</p>
+      </div>
+      <div className={productsPageStyles.productPage__products}>
+        <div className={productsPageStyles.productPage__dropdowns}>
+          <Dropdown
+            options={SORT_OPTIONS}
+            label="Sort by"
+            defaultValue={sort}
+            onSelect={option =>
+              setSearchWith(
+                perPage ? { sort: option, page: 1 } : { sort: option },
+              )
+            }
+          />
+          <Dropdown
+            options={PER_PAGE_OPTIONS}
+            label="Items on page"
+            defaultValue={perPage}
+            onSelect={option =>
+              setSearchWith(
+                !option
+                  ? { page: null, perPage: option }
+                  : { page: 1, perPage: option },
+              )
+            }
+          />
+        </div>
+        <ProductList products={visibleProducts} />
+      </div>
+      {perPage && (
+        <Pagination
+          totalProducts={products.length}
+          perPage={perPage}
+          currentPage={currentPage}
+          maxVisiblePages={4}
+          onPageChange={page => setSearchWith({ page: page.toString() })}
+        />
       )}
-    </>
+    </section>
   );
 });
 

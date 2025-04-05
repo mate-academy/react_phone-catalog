@@ -5,31 +5,26 @@ import { ICON_DATA_PATHS } from '../../constants/iconDataPaths';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Spec } from '../../types/Spec';
 import { ProductSpecs } from '../ProductSpecs/ProductSpecs';
+import { Product } from '../../types/Product';
+import classNames from 'classnames';
 
 type Props = {
-  id: string;
-  title: string;
-  imageSrc: string;
-  imageAlt: string;
-  fullPrice: number;
-  discountPrice: number;
-  screen: string;
-  capacity: string;
-  ram: string;
+  product: Product;
+  className?: string;
 };
 
-export const ProductCard: React.FC<Props> = ({
-  id,
-  title,
-  imageSrc,
-  imageAlt,
-  fullPrice,
-  discountPrice,
-  screen,
-  capacity,
-  ram,
-}) => {
+export const ProductCard: React.FC<Props> = ({ product, className }) => {
   const [searchParams] = useSearchParams();
+  const {
+    itemId,
+    name,
+    image,
+    fullPrice,
+    price: discountPrice,
+    screen,
+    capacity,
+    ram,
+  } = product;
   const specs: Spec[] = useMemo(
     () => [
       { label: 'Screen', value: screen },
@@ -40,20 +35,20 @@ export const ProductCard: React.FC<Props> = ({
   );
 
   return (
-    <article className={productCardStyles.productCard}>
+    <article className={classNames(className, productCardStyles.productCard)}>
       <Link
-        to={`${id}`}
+        to={`${itemId}`}
         state={{ search: searchParams.toString() }}
         className={productCardStyles.productCard__link}
       >
         <div className={productCardStyles.productCard__imageContainer}>
           <img
-            src={imageSrc}
-            alt={imageAlt}
+            src={image}
+            alt={name}
             className={productCardStyles.productCard__image}
           />
         </div>
-        <h3 className={productCardStyles.productCard__title}>{title}</h3>
+        <h3 className={productCardStyles.productCard__title}>{name}</h3>
         <div className={productCardStyles.productCard__prices}>
           <p className={productCardStyles.productCard__discountPrice}>
             ${discountPrice}

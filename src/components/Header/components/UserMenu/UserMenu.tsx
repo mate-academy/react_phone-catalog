@@ -26,7 +26,10 @@ export const UserMenu: React.FC<Props> = ({ onClose = () => {} }) => {
     <nav className={userMenuStyles.userMenu} aria-label="User menu">
       <ul className={userMenuStyles.userMenu__list}>
         {userMenuItems.map(({ path, dataPath }) => (
-          <li className={`${userMenuStyles.userMenu__item} button`} key={path}>
+          <li
+            className={`${userMenuStyles.userMenu__item} headerButton`}
+            key={path}
+          >
             <NavLink
               to={path}
               className={({ isActive }) =>

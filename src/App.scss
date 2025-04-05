@@ -14,14 +14,20 @@
   flex: 1;
   padding: 32px;
   padding-bottom: 80px;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
 
   &__content {
+    position: relative;
+    height: 100%;
     margin-inline: auto;
     max-width: $max-width;
   }
 }
 
-.button {
+.headerButton {
   height: $header-mobile-height;
   aspect-ratio: 1 / 1;
   background-color: $white-color;
@@ -37,10 +43,34 @@
   }
 }
 
-.disabled {
-  color: $icons-color;
-  fill: $icons-color;
-  pointer-events: none;
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons-color;
+  background-color: $white-color;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &--active {
+    background-color: $primary-color;
+    color: $white-color;
+  }
+
+  &--disabled {
+    border-color: $elements-color;
+    color: $elements-color;
+    pointer-events: none;
+
+    &:hover {
+      border-color: $elements-color;
+    }
+  }
 }
 
 .horizontal-line {

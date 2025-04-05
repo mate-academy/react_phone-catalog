@@ -1,0 +1,16 @@
+.categories {
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__item {
+    flex: 1;
+  }
+
+  &__image {
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+}

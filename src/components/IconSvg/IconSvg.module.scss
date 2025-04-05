@@ -2,4 +2,8 @@
 
 .icon {
   color: $primary-color;
+
+  &--disabled {
+    color: $elements-color;
+  }
 }

@@ -58,7 +58,7 @@ export const Header = () => {
       >
         <SiteLogo className={headerStyles.header__logo} />
         <button
-          className={classNames(headerStyles.header__menuBtn, 'button')}
+          className={classNames(headerStyles.header__menuBtn, 'headerButton')}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <IconSvg
