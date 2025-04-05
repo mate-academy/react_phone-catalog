@@ -17,6 +17,7 @@ export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(s.nav__link, {
       [s.is_active]: isActive,
+      [s.onMobile]: burgerMenu,
     });
 
   return (

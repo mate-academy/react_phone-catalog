@@ -17,7 +17,11 @@ export const Root = () => (
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
-            <Route path="home" element={<HomePage />} />
+            <Route path=":productId" element={<ItemCard />} />
+            <Route path="home">
+              <Route index element={<HomePage />} />
+              <Route path=":productId" element={<ItemCard />} />
+            </Route>
             <Route path="phones">
               <Route index element={<Phones />} />
               <Route path=":productId" element={<ItemCard />} />
@@ -30,7 +34,6 @@ export const Root = () => (
               <Route index element={<Accessories />} />
               <Route path=":productId" element={<ItemCard />} />/
             </Route>
-            <Route path=":productId" element={<ItemCard />} />
             <Route path="favourites">
               <Route index element={<Favourites />} />
               <Route path=":productId" element={<ItemCard />} />/

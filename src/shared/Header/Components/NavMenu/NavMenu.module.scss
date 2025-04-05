@@ -67,6 +67,10 @@
     width: 100%;
     position: relative;
 
+    &.onMobile {
+      height: 27px
+    }
+
     @include hover(color, $white);
 
     &::after {

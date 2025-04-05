@@ -14,7 +14,7 @@ export const CatalogHeaderPath = () => {
   return (
     <div className={s.header__path}>
       <div className={s.header__path_img}>
-        <Link to="/home">
+        <Link to="/">
           <img
             src="./img/icons/homePart1.png"
             alt="go home"
@@ -30,7 +30,7 @@ export const CatalogHeaderPath = () => {
       <img src="./img/icons/next.png" alt="next" />
       <div className={s.header__path_folder}>
         <Link
-          to={`${pathname}`}
+          to={productId ? `..` : ''}
           style={{ color: productId ? '$white' : 'inherit' }}
         >
           {pathname.length > 1

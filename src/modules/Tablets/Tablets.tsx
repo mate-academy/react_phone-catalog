@@ -12,7 +12,7 @@ export const Tablets = () => {
 
   return (
     <div className={s.tablets}>
-      <CatalogHeader products={productsTablets} />
+      <CatalogHeader products={productsTablets} title={'Tablets'} />
       <CatalogFilter />
       <Catalog products={productsTablets} />
       <ScrollButtons />

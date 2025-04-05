@@ -14,7 +14,7 @@ export const Accessories = () => {
 
   return (
     <div className={s.accessories}>
-      <CatalogHeader products={productsAccessories} />
+      <CatalogHeader products={productsAccessories} title={'Accessories'} />
       <CatalogFilter />
       <Catalog products={productsAccessories} />
       <ScrollButtons />

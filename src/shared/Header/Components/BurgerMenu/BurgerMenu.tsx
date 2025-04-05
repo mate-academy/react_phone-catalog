@@ -11,7 +11,7 @@ export const BurgerMenu = () => {
   return (
     <div
       className={classNames(s.burger, {
-        [s.burger_enter]: burgerMenuActivate,
+        [s.active]: burgerMenuActivate,
       })}
     >
       <NavMenu burgerMenu={true} />

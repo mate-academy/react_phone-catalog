@@ -15,7 +15,7 @@ export const Favourites = () => {
 
   return (
     <div className={classNames(s.favourites, 'container')}>
-      <CatalogHeader products={favouritesProducts} />
+      <CatalogHeader products={favouritesProducts} title={'Favourites'} />
       <Catalog products={favouritesProducts} />
     </div>
   );

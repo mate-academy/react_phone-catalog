@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import s from './Categories.module.scss';
 import { useContext } from 'react';
 import { ProductContext } from '../../../../shared/context/ProductsContext';
+import { Link } from 'react-router-dom';
 
 export const Categories = () => {
   const {
@@ -16,7 +17,7 @@ export const Categories = () => {
         <h2>Shop by category</h2>
       </div>
       <div className={s.category}>
-        <div className={s.category__phone}>
+        <Link to={'/phones'} className={s.category__phone}>
           <div className={s.category__phone_img}>
             <img src="./img/category-phones.webp" alt="" />
           </div>
@@ -26,9 +27,9 @@ export const Categories = () => {
               {productsPhoneLength} models
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className={s.category__tablets}>
+        <Link to={'/tablets'} className={s.category__tablets}>
           <div className={s.category__tablets_img}>
             <img src="./img/category-tablets.webp" alt="" />
           </div>
@@ -38,9 +39,9 @@ export const Categories = () => {
               {productsTabletLength} models
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className={s.category__accessories}>
+        <Link to={'/accessories'} className={s.category__accessories}>
           <div className={s.category__accessories_img}>
             <img src="./img/category-accessories.png" alt="" />
           </div>
@@ -50,7 +51,7 @@ export const Categories = () => {
               {productsAccessoriesLength} models
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

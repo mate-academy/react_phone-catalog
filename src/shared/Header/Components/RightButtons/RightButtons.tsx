@@ -29,17 +29,19 @@ export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
             [s.is_active]: isActive,
           })
         }
+        onClick={tougleBurgerMenu}
       >
         <img src="./img/icons/favourites.png" alt="favourite" />
       </NavLink>
-      <div className={classNames(s.right__buttons_cart, onMobile)}>
-        <a href="">
-          <img src="./img/icons/shoppingBag.png" alt="shopping bag" />
-        </a>
-      </div>
+      <NavLink
+        to={'shopping-bag'}
+        className={classNames(s.right__buttons_cart, onMobile)}
+        onClick={tougleBurgerMenu}
+      >
+        <img src="./img/icons/shoppingBag.png" alt="shopping bag" />
+      </NavLink>
       <div className={classNames(s.right__buttons_burgerMenu, onMobile)}>
-        <NavLink
-          to={'shopping-bag'}
+        <button
           className={s.right__buttons_burgerMenu_style}
           onClick={tougleBurgerMenu}
         >
@@ -48,7 +50,7 @@ export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
           ) : (
             <img src="./img/icons/close.png" alt="close" />
           )}
-        </NavLink>
+        </button>
       </div>
     </div>
   );

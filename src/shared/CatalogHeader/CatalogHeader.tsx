@@ -6,34 +6,18 @@ import { CatalogHeaderPath } from '../CatalogHeaderPath';
 
 type Props = {
   products: Product[];
+  title: string;
 };
 
-export const CatalogHeader: React.FC<Props> = ({ products }) => {
+export const CatalogHeader: React.FC<Props> = ({ products, title }) => {
   const productsPhoneLength = products.length;
-
-  const title = () => {
-    if (products.length === 0) {
-      return 'No products';
-    }
-
-    switch (products[0].category) {
-      case 'phones':
-        return 'Mobile phones';
-      case 'tablets':
-        return 'Tablets';
-      case 'accessories':
-        return 'Accessories';
-      default:
-        return 'Products';
-    }
-  };
 
   return (
     <div className={classNames(s.header__wrapper, 'container')}>
       <CatalogHeaderPath />
       <div className={s.header__title_wrapper}>
         <div className={s.header__title}>
-          <h1>{title()}</h1>
+          <h1>{title}</h1>
         </div>
         <div className={s.header__title_quantity}>
           {productsPhoneLength} models
