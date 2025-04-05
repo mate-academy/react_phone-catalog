@@ -1,4 +1,23 @@
-@import './vars';
+@use './vars' as *;
+
+@mixin page-grid {
+  & {
+    --column: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--column), 1fr);
+  }
+
+  @include on-tablet {
+    --column: 12;
+
+  }
+
+  @include on-desktop {
+    --column: 24;
+  }
+}
 
 @mixin on-mobile {
   @media (min-width: $mobile-min-width){
@@ -25,22 +44,6 @@
   }
 }
 
-@mixin page-grid {
-  --column: 4;
-
-  display: grid;
-  column-gap: 16px;
-  grid-template-columns: repeat(var(--column), 1fr);
-
-  @include on-tablet {
-    --column: 12;
-
-  }
-
-  @include on-desktop {
-    --column: 24;
-  }
-}
 
 .container {
   padding-inline: 16px;

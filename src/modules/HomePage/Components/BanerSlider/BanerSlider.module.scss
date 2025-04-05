@@ -1,14 +1,13 @@
 @use '../../../../style/main' as *;
 
 .slider {
-  @include page-grid;
-
-
   height: 320px;
 
   @include on-tablet {
     height: auto;
   }
+
+  @include page-grid;
 
   // &__wrapper {
 

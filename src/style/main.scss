@@ -1,8 +1,6 @@
-@import './utils/extends';
-@import './utils/mixins';
-@import './utils/vars';
-@import './utils/normalize';
-@import './fonts';
-@import './typography';
-
-
+@forward './utils/extends';
+@forward './utils/mixins';
+@forward './utils/vars';
+@forward './utils/normalize';
+@forward './fonts';
+@forward './typography';

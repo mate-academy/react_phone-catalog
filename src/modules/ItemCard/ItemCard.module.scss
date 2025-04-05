@@ -35,9 +35,9 @@
 
 .previews {
   &__wrapper {
-    @include page-grid;
-
     row-gap: 16px;
+
+    @include page-grid;
   }
 
   &__photo {

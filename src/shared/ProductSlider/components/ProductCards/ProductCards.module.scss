@@ -65,7 +65,7 @@
   }
 
   &__full_price {
-    color: $secondary;
+    color: &secondary;
     text-decoration: line-through;
 
   }

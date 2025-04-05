@@ -1,4 +1,4 @@
-@import './utils/mixins';
+@use './utils/mixins' as *;
 
 h1 {
   font-size: 32px;
