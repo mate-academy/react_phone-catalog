@@ -4,4 +4,3 @@ import './fonts.scss';
 import React from 'react';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(<Root />);
-//
