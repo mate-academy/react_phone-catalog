@@ -9,6 +9,14 @@
 
   margin-right: 20px;
 
+  @include on-tablet {
+    display: none;
+  }
+
+  @media (min-width: 740px) {
+    display: flex;
+  }
+
   &__input {
     width: 120px;
     height: 28px;
@@ -22,6 +30,10 @@
     border-bottom-left-radius: 5px;
 
     transition: all 0.3s ease-in-out;
+
+    @include on-tablet {
+      width: 90px;
+    }
 
     @include on-desktop {
       width: 150px;
@@ -53,6 +65,10 @@
     border-bottom-left-radius: 5px;
 
     transition: all 0.3s ease-in-out;
+
+    @include on-tablet {
+      width: 120px;
+    }
 
     @include on-desktop {
       width: 180px;

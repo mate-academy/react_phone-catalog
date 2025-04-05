@@ -3,17 +3,16 @@ import styles from './SearchInput.module.scss';
 import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.BASE_URL || '/';
+const iconSrc = `${BASE_URL}/img/icons/search.svg`;
 
-type Props = {};
-
-const SearchInput: React.FC<Props> = () => {
+const SearchInput: React.FC = () => {
   const [value, setValue] = useState('');
   const navigate = useNavigate();
 
   const handleClickSearch = () => {
-    const params = new URLSearchParams();
+    if (!value.trim()) return;
 
-    params.set('query', value);
+    const params = new URLSearchParams({ query: value.trim() });
     navigate(`/search?${params.toString()}`);
   };
 
@@ -34,8 +33,13 @@ const SearchInput: React.FC<Props> = () => {
           onChange={e => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <button onClick={handleClickSearch} className={styles.search__icon}>
-          <img src={`${BASE_URL}/img/icons/search.svg`} alt="search icon" />
+        <button
+          type="button"
+          aria-label="Search"
+          onClick={handleClickSearch}
+          className={styles.search__icon}
+        >
+          <img src={iconSrc} alt="search icon" />
         </button>
       </div>
     </div>
