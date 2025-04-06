@@ -1,0 +1,120 @@
+@import '../../styles/variables';
+@import '../../styles/mixinsTypography';
+@import '../../styles/mixins';
+
+.tablets {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+
+  @include desktop {
+    padding: 16px calc((100% - 1136px) / 2);
+  }
+
+  &__navigate_icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    width: 93px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__navigate_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+
+    @include hover-scale(transform, scale(1.15));
+
+    &_text {
+      font-family: Montserrat, sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $secondaryColor;
+      margin: 0;
+
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+    color: $primaryColor;
+
+    @include h1-mobile;
+
+    @include tablet {
+      @include h1-tablet-desktop;
+    }
+  }
+
+  &__count {
+    margin: 0;
+    margin-bottom: 32px;
+    color: $secondaryColor;
+
+    @include body-text;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__sorts_page {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+
+  &__sorts_sortBy,
+  &__sorts_sortItems {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+
+    &_text {
+      margin: 0;
+      color: $secondaryColor;
+
+      @include small-text;
+    }
+  }
+
+  &__sorts_sortBy {
+    max-width: 187px;
+  }
+
+  &__sorts_sortItems {
+    max-width: 136px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 24px;
+    place-items: center;
+
+    @include tablet {
+      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import '../../styles/variables';
+@import '../../styles/mixinsTypography';
+@import '../../styles/mixins';
+
+.toggleButton {
+  &.cart {
+    flex-grow: 1;
+    height: 40px;
+    max-width: 263px;
+    background-color: $primaryColor;
+    color: $whiteColor;
+    border: 0;
+    cursor: pointer;
+
+    @include buttons;
+
+    transition:
+      background-color 0.3s ease-in-out,
+      border 0.3s ease-in-out,
+      border-radius 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out,
+      color 0.3s ease-in-out;
+
+    @include hover {
+      border: 1px solid $primaryColor;
+      border-radius: 8px;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+
+    &.active {
+      border: 1px solid $secondaryColor;
+      background-color: $whiteColor;
+      color: $greenColor;
+    }
+  }
+
+  &.favorites {
+    flex-shrink: 0;
+    height: 40px;
+    width: 40px;
+    background-color: $whiteColor;
+    border: 1px solid $iconsColor;
+    background-image: url(../../imgs/svg/favorite-icon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    transition:
+      background-color 0.3s ease-in-out,
+      border 0.3s ease-in-out,
+      background-image 0.3s ease-in-out; // Додаємо плавний перехід
+
+    @include hover {
+      border: 1px solid $primaryColor;
+    }
+
+    &.active {
+      background-image: url(../../imgs/svg/favorite-icon-selected.svg);
+    }
+  }
+}

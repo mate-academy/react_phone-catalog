@@ -1,0 +1,35 @@
+$tabletMinWidth: 640px;
+$desktopMinWidth: 1200px;
+$largeDesktopMinWidth: 1440px;
+$primaryColor: rgba(49, 50, 55, 1);
+$secondaryColor: rgba(137, 147, 154, 1);
+$iconsColor: rgba(180, 189, 195, 1);
+$elementsColor: rgba(226, 230, 233, 1);
+$hoverBGColor: rgba(250, 251, 252, 1);
+$grayColor: rgba(226, 230, 233, 1);
+$whiteColor: rgba(255, 255, 255, 1);
+$greenColor: rgba(39, 174, 96, 1);
+$redColor: rgba(235, 87, 87, 1);
+
+:root {
+  --black-button-color: #202322;
+  --green-button-color: #AFE2CC;
+  --yellow-button-color: #FAE470;
+  --white-button-color: #FFFBF7;
+  --purple-button-color: #E7DCEB;
+  --red-button-color: #C7223A;
+  --gold-button-color: #F2E4CD;
+  --silver-button-color: #E6E4E2;
+  --midnightgreen-button-color: #455048;
+  --spacegray-button-color: #383635;
+  --rosegold-button-color: #F1C9C2;
+  --coral-button-color: #FF6452;
+  --skyblue-button-color: #C2D3DF;
+  --starlight-button-color: #F0EAE5;
+  --pink-button-color: #F9E5E5;
+  --blue-button-color: #32374E;
+  --midnight-button-color: #1D242D;
+  --graphite-button-color: #5F5D59;
+  --sierrablue-button-color: #9BB5CE;
+  --spaceblack-button-color: #45433F;
+}

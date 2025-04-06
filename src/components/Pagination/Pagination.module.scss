@@ -1,0 +1,50 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    margin-bottom: 56px;
+  }
+
+  &__btn {
+    padding: 6px 12px;
+    font-size: 16px;
+    background: $grayColor;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+
+  &__number {
+    padding: 6px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    transition: 0.2s;
+
+    @include hover {
+      background: #f0f0f0;
+    }
+  }
+
+  &__active {
+    background: $primaryColor;
+    color: white;
+    border: 1px solid $secondaryColor;
+  }
+}

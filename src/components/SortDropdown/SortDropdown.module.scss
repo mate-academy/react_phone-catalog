@@ -1,0 +1,78 @@
+@import '../../styles/variables';
+@import '../../styles/mixinsTypography';
+@import '../../styles/mixins';
+
+.dropdown {
+  position: relative;
+  width: 100%;
+  border: 1px solid $iconsColor;
+  box-sizing: border-box;
+
+  &__button {
+    width: 100%;
+    padding: 10px;
+    background-color: $whiteColor;
+    border: 1px solid $grayColor;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $primaryColor;
+    box-sizing: border-box;
+
+    @include buttons;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    background-color: $whiteColor;
+    list-style: none;
+    padding: 0;
+    gap: 10px;
+    border: 1px solid $iconsColor;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    z-index: 10;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease,
+      padding 0.3s ease;
+
+  }
+
+  &__menu--open {
+    max-height: 300px;
+    opacity: 1;
+    padding: 10px;
+  }
+
+  &__item {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    @include hover {
+      background-color: $primaryColor;
+      color: $whiteColor;
+    }
+
+    &--disabled {
+      cursor: default;
+      background-color: $whiteColor;
+      color: $secondaryColor;
+
+      @include hover {
+        background-color: $whiteColor;
+        color: $secondaryColor;
+      }
+    }
+  }
+}

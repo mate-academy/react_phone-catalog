@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/mixinsTypography';
+
+.backButton {
+  display: flex;
+  width: max-content;
+  text-decoration: none;
+  align-items: center;
+  margin-bottom: 24px;
+  color: $secondaryColor;
+  gap: 8px;
+
+  @include hover-scale(transform, scale(1.2));
+
+  @include hover {
+    color: $primaryColor;
+  }
+
+  &_icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &_text {
+    color: $secondaryColor;
+    margin: 0;
+
+    @include small-text;
+  }
+}

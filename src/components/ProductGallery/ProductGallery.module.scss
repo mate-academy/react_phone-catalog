@@ -1,0 +1,70 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 10px;
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: 'thumbnails main';
+    gap: 16px;
+    align-items: start;
+    margin: 0;
+  }
+
+  &__main {
+    width: 288px;
+    height: 288px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+    @include tablet {
+      grid-area: main;
+      width: 100%;
+      height: auto;
+    }
+
+    &Image {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__thumbnails {
+    width: 100%;
+    display: flex;
+    height: 49px;
+    gap: 5px;
+
+    @include tablet {
+      grid-area: thumbnails;
+      flex-direction: column;
+      width: auto;
+      height: auto;
+    }
+  }
+
+  &__thumbnail {
+    width: 100%;
+    max-width: 55px;
+    height: 49px;
+    cursor: pointer;
+    border: 1px solid $grayColor;
+    object-fit: scale-down;
+
+    @include hover {
+      border: 1px solid $secondaryColor;
+    }
+
+    &.active {
+      border: 1px solid $primaryColor;
+    }
+  }
+}

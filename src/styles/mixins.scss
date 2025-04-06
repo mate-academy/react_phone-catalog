@@ -1,0 +1,38 @@
+@mixin tablet {
+  @media (min-width: $tabletMinWidth) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktopMinWidth) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: $largeDesktopMinWidth) {
+    @content;
+  }
+}
+
+@mixin hover-scale($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}

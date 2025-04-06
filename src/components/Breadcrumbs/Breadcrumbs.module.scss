@@ -1,0 +1,52 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin-bottom: 24px;
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+
+    @include hover-scale(transform, scale(1.15));
+  }
+
+  &__category {
+    color: $primaryColor;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    height: 16px;
+    display: flex;
+    align-items: center;
+
+    @include hover-scale(transform, scale(1.15));
+  }
+
+  &__name {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $secondaryColor;
+    text-align: start;
+  }
+}

@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+@import '../../styles/mixinsTypography';
+@import '../../styles/mixins';
+
+.notFound {
+  width: 100%;
+
+  &_text {
+    color: $primaryColor;
+
+    @include h1-mobile;
+
+    @include tablet {
+      @include h1-tablet-desktop;
+    }
+  }
+
+  &_img {
+    width: 100%;
+  }
+}

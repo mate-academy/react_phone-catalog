@@ -1,0 +1,101 @@
+@import '../../styles/mixinsTypography';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 8px;
+
+  max-width: 288px;
+  max-height: 506px;
+  border: 1px solid $grayColor;
+  transition: border ease-in-out;
+
+  @include hover-scale(transform, scale(1.05));
+
+  @include hover {
+    cursor: pointer;
+    border-color: $secondaryColor;
+    border-radius: 12px;
+  }
+
+  &__img {
+    height: 129px;
+    align-self: center;
+  }
+
+  &__name {
+    margin: 0;
+    color: $primaryColor;
+
+    @include body-text;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__price {
+    margin: 0;
+    color: $primaryColor;
+
+    @include h3-tablet-desktop;
+  }
+
+  &__fullprice {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: line-through;
+    color: $secondaryColor;
+  }
+
+  &__line {
+    width: 100%;
+    border: 1px solid rgba(226, 230, 233, 1);
+  }
+
+  &__specifications {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 8px;
+  }
+
+  &__specification {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__specificationName {
+    margin: 0;
+    color: $secondaryColor;
+
+    @include small-text;
+  }
+
+  &__specificationValue {
+    margin: 0;
+    color: $primaryColor;
+
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

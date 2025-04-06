@@ -1,0 +1,154 @@
+@import '../../styles/mixinsTypography';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.home {
+  padding: 0;
+
+  @include tablet {
+    padding: 32px 24px;
+  }
+
+  @include desktop {
+    padding: 56px calc((100% - 1136px) / 2);
+    max-width: 1136px;
+    align-self: center;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 24px 16px;
+    text-align: start;
+    color: $primaryColor;
+
+    @include h1-mobile;
+
+    @include tablet {
+      padding: 0;
+      margin-bottom: 32px;
+
+      @include h1-tablet-desktop;
+    }
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+    margin: 0 16px;
+    margin-bottom: 56px;
+
+    @include tablet {
+      margin: 0;
+      margin-bottom: 64px;
+    }
+
+    @include desktop {
+      margin-bottom: 80px;
+    }
+
+    &_title {
+      margin: 0;
+      margin-bottom: 24px;
+      color: $primaryColor;
+
+      @include h2-mobile;
+
+      @include tablet {
+        @include h2-tablet-desktop;
+      }
+    }
+
+    &_links {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      @include tablet {
+        flex-direction: row;
+        gap: 16px;
+      }
+    }
+
+    &_link {
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-radius 0.3s ease;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      @include hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 40px;
+      }
+
+      @include tablet {
+        width: 100%;
+      }
+    }
+
+    &_square {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      flex-shrink: 0;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      margin-bottom: 24px;
+      transition: background-color 0.3s ease;
+    }
+
+    &_img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 90%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+
+      .home__category_link:hover & {
+        transform: scale(1.1);
+      }
+    }
+
+    &_description {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: color 0.3s ease;
+      padding: 10px;
+      width: max-content;
+
+    }
+
+    &_name {
+      margin: 0;
+      color: $primaryColor;
+      width: max-content;
+
+      @include h4-tablet-desktop;
+
+      .home__category_link:hover & {
+        color: $redColor;
+      }
+    }
+
+    &_count {
+      margin: 0;
+      color: $secondaryColor;
+      width: max-content;
+
+      @include body-text;
+
+      .home__category_link:hover & {
+        color: $primaryColor;
+      }
+    }
+  }
+}

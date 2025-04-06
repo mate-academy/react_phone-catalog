@@ -1,0 +1,265 @@
+@import '../../styles/variables';
+@import '../../styles/mixinsTypography';
+@import '../../styles/mixins';
+
+.cart {
+  padding: 24px 16px;
+
+  @include tablet {
+    padding: 40px 24px;
+  }
+
+  @include desktop {
+    padding: 16px calc((100% - 1136px) / 2);
+  }
+
+  &__back {
+    display: flex;
+    width: max-content;
+    text-decoration: none;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 8px;
+
+    @include hover-scale(transform, scale(1.2));
+
+    &_arrow {
+      width: 16px;
+      height: 16px;
+    }
+
+    &_text {
+      color: $secondaryColor;
+      margin: 0;
+
+      @include small-text;
+    }
+
+    &:hover &_text {
+      color: $primaryColor;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 32px;
+    color: $primaryColor;
+
+    @include h1-mobile;
+
+    @include tablet {
+      @include h1-tablet-desktop;
+    }
+  }
+
+  &__empty {
+    color: $secondaryColor;
+
+    @include body-text;
+  }
+
+  &__group {
+    @include desktop {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    list-style: none;
+    padding: 0 16px;
+    margin: 0;
+    margin-bottom: 32px;
+
+    @include desktop {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid $grayColor;
+    width: 100%;
+    box-sizing: border-box;
+
+    @include tablet {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__desription {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80px;
+    gap: 24px;
+  }
+
+  &__remove {
+    background: none;
+    border: none;
+    color: $secondaryColor;
+    cursor: pointer;
+
+    @include hover-scale(transform, scale(1.2));
+  }
+
+  &__image {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin: 0;
+  }
+
+  &__name {
+    margin: 0;
+    color: $primaryColor;
+    max-width: 128px;
+
+    @include body-text;
+
+    @include tablet {
+      max-width: 100%;
+    }
+
+    @include desktop {
+      width: 336px;
+    }
+  }
+
+  &__details {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    max-height: 32px;
+    gap: 24px;
+  }
+
+  &__price {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    color: $primaryColor;
+    width: 100px;
+
+    @include h3-tablet-desktop;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+  }
+
+  &__quantityButton {
+    background-color: $whiteColor;
+    color: $primaryColor;
+    border: 1px solid $iconsColor;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    @include hover {
+      border-color: $secondaryColor;
+      color: $whiteColor;
+      background-color: $primaryColor;
+    }
+
+    &:disabled {
+      cursor: default;
+      border-color: $elementsColor;
+      background-color: $whiteColor;
+      color: $primaryColor;
+    }
+  }
+
+  &__quantityValue {
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: $primaryColor;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $grayColor;
+    padding: 24px;
+    gap: 16px;
+    margin-bottom: 40px;
+
+    @include desktop {
+      width: 368px;
+      height: 206px;
+      margin: 0;
+      gap: 24px;
+    }
+
+    &_text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      &_total {
+        margin: 0;
+        color: $primaryColor;
+
+        @include h2-tablet-desktop;
+      }
+
+      &_totalItems {
+        margin: 0;
+        color: $secondaryColor;
+
+        @include body-text;
+      }
+    }
+
+    &_line {
+      height: 1px;
+      width: 100%;
+      background-color: $grayColor;
+    }
+
+    &_checkout {
+      height: 48px;
+      width: 100%;
+      background-color: $primaryColor;
+      color: $whiteColor;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      @include buttons;
+
+      @include hover {
+        border: 1px solid $primaryColor;
+        border-radius: 8px;
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
+    }
+  }
+}
