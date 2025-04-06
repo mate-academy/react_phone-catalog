@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Product } from '../../types/ProductTypes';
 import { useNavigate } from 'react-router-dom';
 import like from '../../../image/heart.svg';
@@ -11,7 +11,6 @@ import { useCart } from '../BuyCard/CartContext';
 interface Props {
   product: Product;
   WithAdditionalPrice?: boolean;
-  onClick?: () => void;
 }
 
 export const ProductItem: React.FC<Props> = ({
@@ -19,41 +18,20 @@ export const ProductItem: React.FC<Props> = ({
   WithAdditionalPrice = false,
 }) => {
   const { favorites, toggleFavorite } = useFavourites();
+  const { cart, toggleCart } = useCart();
   const isFavorite = favorites.some(fav => fav.itemId === product.itemId);
+  const isInCart = cart.some(item => item.id === product.id);
   const productPath = `/${product.category}/${product.itemId}`;
   const navigate = useNavigate();
-  const { toggleCart } = useCart();
-
-  const [isAdded, setIsAdded] = useState(false);
-
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const isProductInCart = savedCart.some(
-      (item: Product) => item.id === product.id,
-    );
-
-    setIsAdded(isProductInCart);
-  }, [product.id]);
 
   const handleToggleCart = (e: React.MouseEvent) => {
     e.stopPropagation();
-
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const isProductInCart = savedCart.some(
-      (item: Product) => item.id === product.id,
-    );
-
-    let updatedCart;
-
-    if (isProductInCart) {
-      updatedCart = savedCart.filter((item: Product) => item.id !== product.id);
-    } else {
-      updatedCart = [...savedCart, product];
-    }
-
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
     toggleCart(product);
-    setIsAdded(!isProductInCart);
+  };
+
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleFavorite(product);
   };
 
   return (
@@ -75,6 +53,7 @@ export const ProductItem: React.FC<Props> = ({
       </div>
 
       <div className="product__line"></div>
+
       <div className="product__information">
         <div className="product__informationAll">
           <h3 className="product__screenTitle">Screen</h3>
@@ -94,15 +73,9 @@ export const ProductItem: React.FC<Props> = ({
 
       <div className="buttons">
         <button className="button__add" onClick={handleToggleCart}>
-          {isAdded ? 'Remove' : 'Add to cart'}
+          {isInCart ? 'Remove' : 'Add to cart'}
         </button>
-        <button
-          className="buttons__like"
-          onClick={(e: React.MouseEvent) => {
-            e.stopPropagation();
-            toggleFavorite(product);
-          }}
-        >
+        <button className="buttons__like" onClick={handleToggleFavorite}>
           <img src={isFavorite ? liked : like} alt="like" />
         </button>
       </div>
