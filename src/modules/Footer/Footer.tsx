@@ -12,9 +12,9 @@ export const Footer = () => {
   };
 
   const links = [
-    { title: 'GITHUB', path: '#' },
-    { title: 'CONTACTS', path: '#' },
-    { title: 'RIGHTS', path: '#' },
+    { title: 'GITHUB', path: 'https://github.com/DimaK88' },
+    { title: 'CONTACTS', path: 'https://github.com/DimaK88' },
+    { title: 'RIGHTS', path: 'https://github.com/DimaK88' },
   ];
 
   return (
