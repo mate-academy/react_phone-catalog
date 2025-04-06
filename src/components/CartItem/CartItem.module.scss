@@ -104,7 +104,11 @@
   }
 
   &__quantity {
-    padding-inline: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
   }
 
   &__price {

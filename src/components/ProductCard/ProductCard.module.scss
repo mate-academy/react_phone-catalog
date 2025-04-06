@@ -119,9 +119,12 @@
   &__buttons {
     display: flex;
     justify-content: space-between;
+
+    gap: 8px;
   }
 
   &__cart {
+    width: 100%;
     padding: 9.5px;
     background-color: #313237;
     color: #fff;
@@ -155,15 +158,13 @@
   }
 
   &__favourites {
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     border: 1px solid $secondary-color;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
-    margin-left: 8px;
 
     cursor: pointer;
 

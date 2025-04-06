@@ -98,7 +98,6 @@
   &__nav {
     height: 100%;
     display: none;
-    align-items: center;
 
     @include on-tablet {
       display: flex;
@@ -112,7 +111,7 @@
     &__list {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      min-height: 100%;
 
       @include on-tablet {
         gap: 32px;
@@ -130,8 +129,25 @@
         text-transform: uppercase;
         color: $secondary-color;
 
-        display: flex;
-        align-items: center;
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100%;
+          transition: all 0.3s ease-in-out;
+
+          @include on-tablet {
+            height: 48px;
+          }
+
+          @include on-desktop {
+            height: 64px;
+          }
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
 
         @include on-tablet {
           height: 42px;
@@ -154,14 +170,6 @@
             height: 3px;
             background-color: $primary-color;
             animation: borderExpand 0.3s ease forwards;
-          }
-        }
-
-        a {
-          transition: all 0.3s ease-in-out;
-
-          &:hover {
-            color: $primary-color;
           }
         }
       }

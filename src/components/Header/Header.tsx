@@ -31,6 +31,7 @@ const Header = () => {
             <img src={logo} alt="logo" />
           </Link>
         </div>
+
         <nav className={styles.header__nav}>
           <ul className={styles.header__nav__list}>
             {pages.map((page, index) => {
