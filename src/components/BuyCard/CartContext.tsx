@@ -7,6 +7,7 @@ interface CartContextProps {
   getQuantity: (productId: string) => number;
   clearCart: () => void;
   updateQuantify: (productId: string, quantity: number) => void;
+  setCartFromOutside: (updatedCart: Product[]) => void;
 }
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 
@@ -66,6 +67,10 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.removeItem('cart');
   };
 
+  const setCartFromOutside = (updatedCart: Product[]) => {
+    setCart(updatedCart);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -75,6 +80,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         getQuantity,
         clearCart,
         updateQuantify,
+        setCartFromOutside,
       }}
     >
       {children}

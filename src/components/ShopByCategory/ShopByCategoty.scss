@@ -33,6 +33,7 @@
   align-items: center;
   margin: 0 auto;
   gap: 16px;
+  padding-top: 50px;
 
   @include onTablet{
     flex-direction: row;

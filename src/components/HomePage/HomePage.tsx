@@ -66,8 +66,10 @@ export const HomePage = () => {
             <ProductSlider products={phones} title={NameSlider.Brand} />
           </div>
           <div className="homepage__category">
-            <h2 className="category__title">Shop by category</h2>
-            <ShopByCategory />
+            <div className="category__wraperr">
+              <h2 className="category__title">Shop by category</h2>
+              <ShopByCategory />
+            </div>
           </div>
           <div className="homepage__Hotproduct">
             <ProductSlider

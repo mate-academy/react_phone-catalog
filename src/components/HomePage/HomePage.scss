@@ -27,10 +27,15 @@
   }
 }
 
+.category__wraperr{
+  max-width: 1200px; // або твоя ширина карточок
+  margin: 0 auto;
+  padding: 0 20px; // трохи відступів з боків, якщо треба}}
+}
 
 .category__title {
   width: 100%;
-  margin: 56px 0 0 0;
+  margin: 56px 0 40px 0;
   font-family: Mont-Bold, sans-serif;
   font-weight: 800;
   font-size: 32px;
@@ -45,7 +50,7 @@
 .homepage__product {
   margin: 0 16px 0 16px;
 
-  @include onTablet{
+  @include onTablet {
     margin: 0 32px 0 32px;
   }
 }
@@ -53,7 +58,7 @@
 .homepage__category {
   margin: 0 16px 0 16px;
 
-  @include onTablet{
+  @include onTablet {
     margin: 0 32px 0 32px;
   }
 }
@@ -61,16 +66,15 @@
 .homepage__Hotproduct {
   margin: 0 16px 0 16px;
 
-  @include onTablet{
+  @include onTablet {
     margin: 0 32px 0 32px;
   }
 }
 
-.homepage__Footer{
+.homepage__Footer {
   margin: 64px 0 0 0;
 
-  @include onTablet{
+  @include onTablet {
     margin: 80px 0 0 0;
   }
 }
-

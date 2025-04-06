@@ -15,6 +15,7 @@ import { useContext } from 'react';
 import { ThemeContext } from '../ColorThemes/ColorThemes';
 import { useFavourites } from '../Favourites/FacouritesContext';
 import { useCart } from '../BuyCard/CartContext';
+import classNames from 'classnames';
 
 interface NavbarProps {
   setMenuIsOpen: () => void;
@@ -36,6 +37,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     return total + (item.quantity || 1);
   }, 0);
 
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    classNames('navbar-item', { 'navbar-item--active': isActive });
+
   return (
     <header className="header">
       <nav
@@ -53,19 +57,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               />
             </NavLink>
             <div className="navbar-brand">
-              <NavLink className="navbar-item" to="/">
+              <NavLink className={getLinkClass} to="/">
                 Home
               </NavLink>
 
-              <NavLink className="navbar-item" to="/phones">
+              <NavLink className={getLinkClass} to="/phones">
                 Phones
               </NavLink>
 
-              <NavLink className="navbar-item" to="/tablets">
+              <NavLink className={getLinkClass} to="/tablets">
                 Tablets
               </NavLink>
 
-              <NavLink className="navbar-item" to="/accessories">
+              <NavLink className={getLinkClass} to="/accessories">
                 Accessories
               </NavLink>
             </div>

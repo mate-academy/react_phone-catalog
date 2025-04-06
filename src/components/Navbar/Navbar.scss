@@ -87,6 +87,11 @@
   &:hover::after {
     transform: scale(1);
   }
+
+  &--active::after {
+    transform: scale(1);
+    background-color: $colorWhite;
+  }
 }
 
 .logo {

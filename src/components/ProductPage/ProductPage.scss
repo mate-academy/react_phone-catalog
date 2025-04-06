@@ -70,13 +70,13 @@
   margin-top: 24px;
   grid-template-columns: 1fr;
 
-  @include onDesktop{
-    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
-    gap: 40px 16px;
-  }
-
   @include onTablet{
     grid-template-columns: repeat(auto-fit, minmax(272px, 2fr));
+  }
+
+  @include onDesktop{
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    gap: 40px 16px;
   }
 }
 
@@ -94,6 +94,8 @@
   color: $colorButtons;
   width: 32px;
   height: 32px;
+  cursor: pointer;
+
 
   &:hover {
     background-color: $colorDarkGray;
@@ -119,6 +121,8 @@
   color: $colorButtons;
   width: 32px;
   height: 32px;
+  cursor: pointer;
+
 
   &:hover {
     background-color: $colorDarkGray;
@@ -135,6 +139,7 @@
   color: $colorButtons;
   width: 32px;
   height: 32px;
+  cursor: pointer;
 
   &:hover {
     background-color: $colorButtonsPinkHover;
