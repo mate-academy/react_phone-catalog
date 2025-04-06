@@ -8,10 +8,10 @@
 .buy__item {
   background-color: $colorBlackBackground;
   display: block;
-  gap: 24px;
   align-items: center;
   border: $colorBlackBackground 1px solid;
   padding: 16px;
+  justify-content: space-between;
 
   @include themify($themes) {
     background: themed('colorHeaderFooter');

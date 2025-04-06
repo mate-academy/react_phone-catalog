@@ -26,6 +26,15 @@
   }
 }
 
+.wraper__navbar{
+  display: flex;
+  gap: 24px;
+
+  @include onTablet {
+    gap: 16px;
+  }
+}
+
 .closeMenu {
   display: none !important;
 }
@@ -36,7 +45,12 @@
 
   @include onTablet {
     display: flex;
-    gap: 32px;
+    gap: 26px;
+  }
+
+  @include onDesktop {
+    display: flex;
+    gap: 64px;
   }
 
 }
@@ -96,6 +110,10 @@
   @include onDesktop {
     display: flex;
   }
+
+  @include onTablet {
+    display: flex;
+  }
 }
 
 .shopping {
@@ -106,6 +124,10 @@
   @include onDesktop {
     display: flex;
   }
+
+  @include onTablet {
+    display: flex;
+  }
 }
 
 .menu {
@@ -113,6 +135,10 @@
   display: flex;
 
   @include onDesktop {
+    display: none;
+  }
+
+  @include onTablet {
     display: none;
   }
 }
@@ -142,10 +168,12 @@
   align-items: center;
 
   @include onTablet {
-    left: 172px;
+    top: 11px;
+    left: 35px;
   }
 
   @include onDesktop {
+    top: 17px;
     left: 34px;
   }
 }
@@ -166,10 +194,12 @@
   align-items: center;
 
   @include onTablet {
-    left: 172px;
+    top: 11px;
+    left: 35px;
   }
 
   @include onDesktop {
+    top: 17px;
     left: 34px;
   }
 }

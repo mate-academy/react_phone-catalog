@@ -44,29 +44,31 @@ export const Navbar: React.FC<NavbarProps> = ({
         aria-label="main navigation"
       >
         <div className="container">
-          <NavLink className="logo" to="/">
-            <img
-              src={isDarkMode ? logo : BlackLogo}
-              alt="Logo"
-              className="logo__img"
-            />
-          </NavLink>
-          <div className="navbar-brand">
-            <NavLink className="navbar-item" to="/">
-              Home
+          <div className="wraper__navbar">
+            <NavLink className="logo" to="/">
+              <img
+                src={isDarkMode ? logo : BlackLogo}
+                alt="Logo"
+                className="logo__img"
+              />
             </NavLink>
+            <div className="navbar-brand">
+              <NavLink className="navbar-item" to="/">
+                Home
+              </NavLink>
 
-            <NavLink className="navbar-item" to="/phones">
-              Phones
-            </NavLink>
+              <NavLink className="navbar-item" to="/phones">
+                Phones
+              </NavLink>
 
-            <NavLink className="navbar-item" to="/tablets">
-              Tablets
-            </NavLink>
+              <NavLink className="navbar-item" to="/tablets">
+                Tablets
+              </NavLink>
 
-            <NavLink className="navbar-item" to="/accessories">
-              Accessories
-            </NavLink>
+              <NavLink className="navbar-item" to="/accessories">
+                Accessories
+              </NavLink>
+            </div>
           </div>
 
           <Switches />
