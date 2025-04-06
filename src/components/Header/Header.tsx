@@ -10,7 +10,7 @@ import { BurgerMenu } from '../BurgerMenu';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { cart, favorites } = useCart();
+  const { totalItems, favorites } = useCart();
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -89,8 +89,8 @@ export const Header = () => {
             }
             to="/cart"
           >
-            {cart.length > 0 && (
-              <span className={styles.header__add_badge}>{cart.length}</span>
+            {totalItems > 0 && (
+              <span className={styles.header__add_badge}>{totalItems}</span>
             )}
           </NavLink>
         </div>

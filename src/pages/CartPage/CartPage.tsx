@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
 import { NavLink } from 'react-router-dom';
@@ -7,15 +6,13 @@ import arrowLeft from '../../imgs/svg/arrow-left-icon.svg';
 import cross from '../../imgs/svg/cross-icon.svg';
 
 export const CartPage: React.FC = () => {
-  const { cart, removeFromCart } = useCart();
-  const [quantities, setQuantities] = useState<{ [key: number]: number }>(
-    cart.reduce(
-      (acc, product) => {
-        return { ...acc, [product.id]: 1 };
-      },
-      {} as { [key: number]: number },
-    ),
-  );
+  const {
+    cart,
+    removeFromCart,
+    quantities,
+    increaseQuantity,
+    decreaseQuantity,
+  } = useCart();
 
   const totalPrice = cart.reduce(
     (total, product) => total + product.price * quantities[product.id],
@@ -27,14 +24,12 @@ export const CartPage: React.FC = () => {
     0,
   );
 
-  const handleQuantityChange = (productId: number, delta: number) => {
-    setQuantities(prevQuantities => {
-      const newQuantities = { ...prevQuantities };
+  const handleIncrease = (productId: number) => {
+    increaseQuantity(productId);
+  };
 
-      newQuantities[productId] = Math.max(1, newQuantities[productId] + delta);
-
-      return newQuantities;
-    });
+  const handleDecrease = (productId: number) => {
+    decreaseQuantity(productId);
   };
 
   return (
@@ -75,7 +70,7 @@ export const CartPage: React.FC = () => {
                     <div className={styles.cart__quantity}>
                       <button
                         className={styles.cart__quantityButton}
-                        onClick={() => handleQuantityChange(product.id, -1)}
+                        onClick={() => handleDecrease(product.id)}
                         disabled={quantities[product.id] === 1}
                       >
                         -
@@ -85,7 +80,7 @@ export const CartPage: React.FC = () => {
                       </span>
                       <button
                         className={styles.cart__quantityButton}
-                        onClick={() => handleQuantityChange(product.id, 1)}
+                        onClick={() => handleIncrease(product.id)}
                       >
                         +
                       </button>

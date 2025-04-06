@@ -4,14 +4,19 @@ import React, {
   useContext,
   ReactNode,
   useEffect,
+  useMemo,
 } from 'react';
 import { Product } from '../types/Product';
 
 interface CartContextProps {
   cart: Product[];
   favorites: Product[];
+  quantities: { [productId: number]: number };
+  totalItems: number;
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
+  increaseQuantity: (productId: number) => void;
+  decreaseQuantity: (productId: number) => void;
   addToFavorites: (product: Product) => void;
   removeFromFavorites: (productId: number) => void;
   clearFavorites: () => void;
@@ -34,6 +39,35 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
+  const [quantities, setQuantities] = useState<{ [productId: number]: number }>(
+    () => {
+      const saved = localStorage.getItem('quantities');
+
+      return saved ? JSON.parse(saved) : {};
+    },
+  );
+
+  const increaseQuantity = (productId: number) => {
+    setQuantities(prev => ({
+      ...prev,
+      [productId]: (prev[productId] || 0) + 1,
+    }));
+  };
+
+  const decreaseQuantity = (productId: number) => {
+    setQuantities(prev => {
+      const current = prev[productId];
+
+      if (!current || current === 1) {
+        return prev;
+      }
+
+      return {
+        ...prev,
+        [productId]: current - 1,
+      };
+    });
+  };
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -43,12 +77,30 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
+  useEffect(() => {
+    localStorage.setItem('quantities', JSON.stringify(quantities));
+  }, [quantities]);
+
   const addToCart = (product: Product) => {
-    setCart(prevCart => [...prevCart, product]);
+    const alreadyInCart = cart.find(item => item.id === product.id);
+
+    if (!alreadyInCart) {
+      setCart(prev => [...prev, product]);
+    }
+
+    increaseQuantity(product.id);
   };
 
   const removeFromCart = (productId: number) => {
-    setCart(prevCart => prevCart.filter(product => product.id !== productId));
+    setCart(prev => prev.filter(product => product.id !== productId));
+
+    setQuantities(prev => {
+      const newQuantities = { ...prev };
+
+      delete newQuantities[productId];
+
+      return newQuantities;
+    });
   };
 
   const addToFavorites = (product: Product) => {
@@ -73,13 +125,21 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     return favorites.some(product => product.id === productId);
   };
 
+  const totalItems = useMemo(() => {
+    return Object.values(quantities).reduce((sum, qty) => sum + qty, 0);
+  }, [quantities]);
+
   return (
     <CartContext.Provider
       value={{
         cart,
         favorites,
+        quantities,
+        totalItems,
         addToCart,
         removeFromCart,
+        increaseQuantity,
+        decreaseQuantity,
         addToFavorites,
         removeFromFavorites,
         clearFavorites,

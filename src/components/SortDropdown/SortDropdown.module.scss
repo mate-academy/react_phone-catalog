@@ -6,6 +6,7 @@
   position: relative;
   width: 100%;
   border: 1px solid $iconsColor;
+  box-sizing: border-box;
 
   &__button {
     width: 100%;
@@ -18,6 +19,7 @@
     align-items: center;
     justify-content: space-between;
     color: $primaryColor;
+    box-sizing: border-box;
 
     @include buttons;
   }
@@ -28,7 +30,8 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: max-content;
+    width: 100%;
+    box-sizing: border-box;
     margin: 0;
     background-color: $whiteColor;
     list-style: none;
@@ -43,6 +46,7 @@
       max-height 0.3s ease,
       opacity 0.3s ease,
       padding 0.3s ease;
+
   }
 
   &__menu--open {
