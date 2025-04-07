@@ -1,0 +1,31 @@
+@import 'src/styles/main';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  min-width: 320px;
+
+  scroll-behavior: smooth;
+}
+
+.Layout__content {
+  flex-grow: 1;
+}
+
+.Layout__header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+body.theme_dark {
+  background-color: var(--color-bg);
+}
+
