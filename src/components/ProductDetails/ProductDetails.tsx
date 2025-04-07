@@ -58,6 +58,8 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
     getProductById(product.id).then(res => setFormattedProduct(res));
   }, [product, getProductById]);
 
+  const randomInt = Math.floor(Math.random() * (1000 - 10 + 1)) + 10;
+
   return (
     <div className={styles.product_details}>
       <div className={styles.product_details__top}>
@@ -87,7 +89,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
             <div className={styles.colors}>
               <div className={styles.colors__top}>
                 <p className={styles.colors__name}>Available Colors</p>
-                <p className={styles.colors__id}>ID: 802390</p>
+                <p className={styles.colors__id}>{`ID: ${randomInt}`}</p>
               </div>
 
               <div className={styles.colors__bottom}>

@@ -29,13 +29,9 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     handleClickVariant('Product was removed from cart', 'success')();
   };
 
-  const handleDecreaseQuantity = () => {
-    decreaseProductQuantity(product.id);
-  };
+  const handleDecreaseQuantity = () => decreaseProductQuantity(product.id);
 
-  const handleIncreaseQuantity = () => {
-    increaseProductQuantity(product.id);
-  };
+  const handleIncreaseQuantity = () => increaseProductQuantity(product.id);
 
   return (
     <div className={styles.cart}>
@@ -57,7 +53,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           <button
             className={`${styles.cart__minus} ${product.quantity === 1 && styles.cart__minus_disabled}`}
             onClick={handleDecreaseQuantity}
-            disabled={product.quantity === 1}
+            disabled={product.quantity === 1 || product.quantity === undefined}
           >
             <img src={minusIcon} alt="minus icon" />
           </button>

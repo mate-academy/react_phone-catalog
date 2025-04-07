@@ -45,9 +45,7 @@ const CustomSelect: React.FC<Props> = ({ options, label, paramName }) => {
     setSearchParams(params);
   };
 
-  const toggleDropdown = () => {
-    setIsOpen(prev => !prev);
-  };
+  const toggleDropdown = () => setIsOpen(prev => !prev);
 
   return (
     <div className={styles.select}>
@@ -66,7 +64,11 @@ const CustomSelect: React.FC<Props> = ({ options, label, paramName }) => {
           {options.map(option => (
             <div
               key={option.value}
-              className={styles.select__option}
+              className={`${styles.select__option} ${
+                selected.value === option.value
+                  ? styles.select__option_selected
+                  : ''
+              }`}
               onClick={() => handleSelect(option)}
             >
               {option.label}
