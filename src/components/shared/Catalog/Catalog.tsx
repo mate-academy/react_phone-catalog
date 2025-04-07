@@ -8,19 +8,16 @@ import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { useMemo, useState } from 'react';
 import { Button } from '../Buttons/Buttons';
+import {
+  IsSelecting,
+  SearchParams,
+  SearchParamsKeys,
+} from '../../../types/CatalogTypes';
 
 type Props = {
   items: Product[];
   category: 'phones' | 'tablets' | 'accessories';
 };
-
-interface CurrentSearchParams {
-  [key: string]: string;
-}
-
-interface IsSelecting {
-  [key: string]: boolean;
-}
 
 const selectors = {
   sortBy: ['newest', 'alphabetically', 'cheapest'],
@@ -34,9 +31,9 @@ const isSelectingInitialState: IsSelecting = {
 
 function sortBySearchParams(
   products: Product[],
-  pageNumber: number,
+  pageNumber: string,
   sortBy: string = 'newest',
-  itemsOnPage: number = 16,
+  itemsOnPage: string = '16',
 ) {
   const newProducts = [...products].sort((a, b) => {
     switch (sortBy) {
@@ -50,8 +47,13 @@ function sortBySearchParams(
         return b.year - a.year;
     }
   });
-  const firstItemOnPage = (pageNumber - 1) * itemsOnPage;
-  const lastItemOnPage = firstItemOnPage + itemsOnPage;
+
+  if (itemsOnPage === 'all') {
+    return newProducts;
+  }
+
+  const firstItemOnPage = (+pageNumber - 1) * +itemsOnPage;
+  const lastItemOnPage = firstItemOnPage + +itemsOnPage;
 
   return newProducts.slice(firstItemOnPage, lastItemOnPage);
 }
@@ -59,18 +61,27 @@ function sortBySearchParams(
 export const Catalog: React.FC<Props> = ({ items, category }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const currentSearchParams: CurrentSearchParams = {
+  const currentSearchParams: SearchParams = {
     activePageNumber: searchParams.get('activePageNumber') || '1',
     firstVisiblePage: searchParams.get('firstVisiblePage') || '1',
     sortBy: searchParams.get('sortBy') || 'newest',
     itemsOnPage: searchParams.get('itemsOnPage') || '16',
   };
 
-  const maxNumberOfPages = items.length / +currentSearchParams.itemsOnPage;
-  const pages = Array.from({ length: maxNumberOfPages }, (_, index) => index);
-  const lastVisiblePage = +currentSearchParams.firstVisiblePage + 4;
+  const maxNumberOfPages = Math.ceil(
+    items.length / +currentSearchParams.itemsOnPage,
+  );
+
+  const pages = Array.from(
+    { length: maxNumberOfPages },
+    (_, index) => index + 1,
+  );
+
+  const lastVisiblePage =
+    pages.length < 4 ? pages.length : +currentSearchParams.firstVisiblePage + 3;
+
   const visiblePages = pages.slice(
-    +currentSearchParams.firstVisiblePage,
+    +currentSearchParams.firstVisiblePage - 1,
     lastVisiblePage,
   );
 
@@ -78,9 +89,9 @@ export const Catalog: React.FC<Props> = ({ items, category }) => {
     () =>
       sortBySearchParams(
         items,
-        +currentSearchParams.activePageNumber,
+        currentSearchParams.activePageNumber,
         currentSearchParams.sortBy,
-        +currentSearchParams.itemsOnPage,
+        currentSearchParams.itemsOnPage,
       ),
     [items, currentSearchParams],
   );
@@ -112,20 +123,30 @@ export const Catalog: React.FC<Props> = ({ items, category }) => {
     }
   };
 
-  const handleSearchParams = (param: string, value: string) => {
+  const handleSearchParams = (param: Partial<SearchParams>) => {
     const newSearchParams = new URLSearchParams(searchParams);
 
-    if (param === 'sortBy' || param === 'itemsOnPage') {
-      const prevState = isSelecting[param];
+    for (const [key, value] of Object.entries(param)) {
+      const shouldAnimate = key === 'sortBy' || key === 'itemsOnPage';
 
-      setCanSelectionTransform(prev => ({ ...prev, [param]: !prevState }));
-      setTimeout(() => {
-        setIsSelecting(prev => ({ ...prev, [param]: !prevState }));
-      }, 300);
+      if (shouldAnimate) {
+        const prevState = isSelecting[key];
+
+        setCanSelectionTransform(prev => ({ ...prev, [key]: !prevState }));
+        setTimeout(() => {
+          setIsSelecting(prev => ({ ...prev, [key]: !prevState }));
+        }, 300);
+
+
+        setSearchParams({[key]: value});
+
+        return;
+      } else {
+        newSearchParams.set(key, value);
+
+        setSearchParams(newSearchParams);
+      }
     }
-
-    newSearchParams.set(param, value);
-    setSearchParams(newSearchParams);
   };
 
   return (
@@ -168,10 +189,12 @@ export const Catalog: React.FC<Props> = ({ items, category }) => {
                 })}
               >
                 <p className="selector__current-option__name">
-                  {currentSearchParams[key]
+                  {currentSearchParams[key as SearchParamsKeys]
                     .slice(0, 1)
                     .toUpperCase()
-                    .concat(currentSearchParams[key].slice(1))}
+                    .concat(
+                      currentSearchParams[key as SearchParamsKeys].slice(1),
+                    )}
                 </p>
 
                 <div
@@ -214,7 +237,7 @@ export const Catalog: React.FC<Props> = ({ items, category }) => {
                   <div
                     key={option}
                     className="selector__option"
-                    onClick={() => handleSearchParams(key, option)}
+                    onClick={() => handleSearchParams({ [key]: option })}
                   >
                     <p className="selector__option__name">
                       {option.slice(0, 1).toUpperCase().concat(option.slice(1))}
@@ -229,50 +252,301 @@ export const Catalog: React.FC<Props> = ({ items, category }) => {
 
       <div className="catalog__items">
         {sortedItems.length > 0 &&
-          sortedItems.map((item: Product) => {
-            return <ProductCard key={item.id} product={item} />;
-          })}
-      </div>
-
-      <div className="catalog__pagination">
-        <Button
-          direction={'back'}
-          disabled={currentSearchParams.firstVisiblePage === '1'}
-          handleClick={() =>
-            handleSearchParams(
-              'firstVisiblePage',
-              (+currentSearchParams.firstVisiblePage - 1).toString(),
-            )
-          }
-        />
-
-        <div className="catalog__pages">
-          {visiblePages.map(page => (
-            <div
-              className={classNames('catalog__page', {
-                'catalog__page--active':
-                  +currentSearchParams.activePageNumber === page,
-              })}
-              onClick={() =>
-                handleSearchParams('activePageNumber', page.toString())
-              }
-            >
-              <p className="catalog__page__content">{page}</p>
-            </div>
+          sortedItems.map((item: Product) => (
+            <ProductCard key={item.id} product={item} />
           ))}
-        </div>
-
-        <Button
-          direction={'forward'}
-          disabled={lastVisiblePage === maxNumberOfPages}
-          handleClick={() =>
-            handleSearchParams(
-              'firstVisiblePage',
-              (+currentSearchParams.firstVisiblePage + 1).toString(),
-            )
-          }
-        />
       </div>
+
+      {currentSearchParams.itemsOnPage !== 'all' && (
+        <div className="catalog__pagination">
+          <Button
+            direction={'back'}
+            disabled={currentSearchParams.activePageNumber === '1'}
+            handleClick={() => {
+              if (
+                currentSearchParams.activePageNumber ===
+                currentSearchParams.firstVisiblePage
+              ) {
+                handleSearchParams({
+                  firstVisiblePage: (
+                    +currentSearchParams.firstVisiblePage - 1
+                  ).toString(),
+                  activePageNumber: (
+                    +currentSearchParams.activePageNumber - 1
+                  ).toString(),
+                });
+              } else {
+                handleSearchParams({
+                  activePageNumber: (
+                    +currentSearchParams.activePageNumber - 1
+                  ).toString(),
+                });
+              }
+            }}
+          />
+
+          <div className="catalog__pages">
+            {visiblePages.map(page => (
+              <div
+                key={page}
+                className={classNames('catalog__page', {
+                  'catalog__page--active':
+                    +currentSearchParams.activePageNumber === page,
+                })}
+                onClick={() =>
+                  handleSearchParams({ activePageNumber: page.toString() })
+                }
+              >
+                <p className="catalog__page__content">{page}</p>
+              </div>
+            ))}
+          </div>
+
+          <Button
+            direction={'forward'}
+            disabled={
+              +currentSearchParams.activePageNumber === maxNumberOfPages
+            }
+            handleClick={() => {
+              if (+currentSearchParams.activePageNumber === lastVisiblePage) {
+                handleSearchParams({
+                  firstVisiblePage: (
+                    +currentSearchParams.firstVisiblePage + 1
+                  ).toString(),
+                  activePageNumber: (
+                    +currentSearchParams.activePageNumber + 1
+                  ).toString(),
+                });
+              } else {
+                handleSearchParams({
+                  activePageNumber: (
+                    +currentSearchParams.activePageNumber + 1
+                  ).toString(),
+                });
+              }
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
+
+
+
+// 🧠 Mental Model: How to break it down without breaking everything
+// 🔄 What’s actually repeated?
+// You use searchParams.get(...) in multiple places
+
+// You handle state animations (isSelecting) in 2 selectors
+
+// You render dropdowns that follow the same pattern
+
+// You render a paginated list (with forward/back buttons)
+
+// So the goal is: “Lift the logic up” into custom hooks or utilities, and “Push the display down” into smaller dumb components.
+
+// ✅ What to break and how
+// 1. 🔌 useCatalogSearchParams.ts
+// What goes here?
+
+// Getting and setting search params
+
+// Calculating derived values like activePage, itemsOnPageNumber, visiblePages
+
+// ts
+// Копировать
+// Редактировать
+// // useCatalogSearchParams.ts
+// export function useCatalogSearchParams(totalItems: number) {
+//   const [searchParams, setSearchParams] = useSearchParams();
+
+//   const activePageNumber = +(searchParams.get('activePageNumber') || '1');
+//   const itemsOnPageRaw = searchParams.get('itemsOnPage') || '16';
+//   const itemsOnPage = itemsOnPageRaw === 'all' ? Infinity : +itemsOnPageRaw;
+//   const sortBy = searchParams.get('sortBy') || 'newest';
+
+//   const totalPages = Math.ceil(totalItems / itemsOnPage);
+
+//   const firstVisiblePage = +(searchParams.get('firstVisiblePage') || '1');
+//   const lastVisiblePage =
+//     totalPages < 4 ? totalPages : firstVisiblePage + 3;
+
+//   const visiblePages = Array.from(
+//     { length: lastVisiblePage - firstVisiblePage + 1 },
+//     (_, i) => firstVisiblePage + i,
+//   );
+
+//   const updateParams = (params: Partial<SearchParams>) => {
+//     const newParams = new URLSearchParams(searchParams);
+//     for (const [key, value] of Object.entries(params)) {
+//       newParams.set(key, value);
+//     }
+//     setSearchParams(newParams);
+//   };
+
+//   return {
+//     activePageNumber,
+//     itemsOnPage,
+//     sortBy,
+//     visiblePages,
+//     totalPages,
+//     updateParams,
+//     firstVisiblePage,
+//     lastVisiblePage,
+//   };
+// }
+// 2. 🧭 Pagination.tsx
+// This component just gets props like:
+
+// ts
+// Копировать
+// Редактировать
+// <Pagination
+//   current={activePageNumber}
+//   visiblePages={visiblePages}
+//   totalPages={totalPages}
+//   onChangePage={handlePageChange}
+// />
+// It doesn't need to know about searchParams — that’s handled above 👆
+
+// 3. ⬇️ SelectDropdown.tsx
+// Props:
+
+// ts
+// Копировать
+// Редактировать
+// <SelectDropdown
+//   title="Sort by"
+//   options={['newest', 'alphabetically', 'cheapest']}
+//   currentValue="alphabetically"
+//   onSelect={(val) => updateParams({ sortBy: val })}
+// />
+// Then it can manage its own animation state internally (no need to pass isSelecting from parent).
+
+// 4. 🧼 utils/sortProducts.ts
+// ts
+// Копировать
+// Редактировать
+// export function sortProducts(
+//   products: Product[],
+//   sortBy: string
+// ): Product[] {
+//   return [...products].sort((a, b) => {
+//     switch (sortBy) {
+//       case 'newest': return b.year - a.year;
+//       case 'alphabetically': return a.name.localeCompare(b.name);
+//       case 'cheapest': return a.price - b.price;
+//       default: return b.year - a.year;
+//     }
+//   });
+// }
+// Then in your component:
+
+// ts
+// Копировать
+// Редактировать
+// const sortedItems = useMemo(() => {
+//   const sorted = sortProducts(items, sortBy);
+//   if (itemsOnPage === Infinity) return sorted;
+//   const start = (activePageNumber - 1) * itemsOnPage;
+//   return sorted.slice(start, start + itemsOnPage);
+// }, [items, sortBy, activePageNumber, itemsOnPage]);
+// ✨ The result?
+// Now your Catalog.tsx is:
+
+// One useCatalogSearchParams() call
+
+// One useMemo() for sortedItems
+
+// <Pagination />
+
+// <SelectDropdown /> twice
+
+// items.map(...)
+
+// No animation state, no raw URLSearchParams, no spaghetti logic.
+
+// Want me to actually start breaking this into files/components for you, or generate some of the refactored code?
+
+
+
+
+
+
+
+// Вы сказали:
+//  const updateParams = (params: Partial<SearchParams>) => {
+//     const newParams = new URLSearchParams(searchParams);
+//     for (const [key, value] of Object.entries(params)) {
+//       newParams.set(key, value);
+//     }
+//     setSearchParams(newParams);
+//   };
+
+// here you're ommitting o much that I depend on? for example I need to change the state? and more over I have to regect all other params except items on page or the way I sort? so I can't just set
+
+
+// ChatGPT сказал:
+// I understand your concern about managing URL search parameters without unintentionally overriding existing ones. To address this, you can update specific parameters while preserving others by following these steps:
+
+// Clone the Current Parameters: Create a new instance of URLSearchParams based on the existing searchParams.​
+
+// Modify the Desired Parameters: Use the set method to update or add specific parameters.​
+
+// Apply the Updated Parameters: Use setSearchParams to update the URL with the modified parameters.​
+// Reddit
+
+// Here's how you can implement this:
+
+// jsx
+// Копировать
+// Редактировать
+// const updateParams = (params: Partial<SearchParams>) => {
+//   const newParams = new URLSearchParams(searchParams);
+
+//   Object.entries(params).forEach(([key, value]) => {
+//     if (value === null || value === undefined) {
+//       newParams.delete(key); // Remove the parameter if the value is null or undefined
+//     } else {
+//       newParams.set(key, value.toString()); // Update or add the parameter
+//     }
+//   });
+
+//   setSearchParams(newParams);
+// };
+// Explanation:
+
+// Cloning Existing Parameters: new URLSearchParams(searchParams) creates a new instance containing all current parameters, ensuring you don't mutate the original searchParams.​
+
+// Updating Specific Parameters: By iterating over the params object, you can set new values or delete parameters as needed. This approach ensures that only the specified parameters are modified, leaving others intact.​
+
+// Applying Changes: setSearchParams(newParams) updates the URL with the modified parameters without affecting other existing parameters.​
+
+// This method allows you to manage URL parameters effectively, ensuring that updates to specific parameters don't inadvertently override others.​
+
+
+
+// Источники
+
+
+
+
+
+
+// Вы сказали:
+// Thanks I will refactor it))
+
+
+// ChatGPT сказал:
+// You're welcome! Refactoring your code to manage URL search parameters more effectively is a great step. If you have any further questions or need assistance during the process, feel free to ask. Happy coding!
+
+
+// Источники
+
+
+
+
+
+
+

@@ -14,17 +14,11 @@ type ProductCardProps = {
   slider?: boolean;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, slider }) => {
-  const {
-    id,
-    name,
-    fullPrice,
-    price,
-    screen,
-    capacity,
-    ram,
-    image,
-  } = product;
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  slider,
+}) => {
+  const { id, name, fullPrice, price, screen, capacity, ram, image } = product;
 
   const { cartItems, favItems, updateFavList, updateCart } =
     useContext(LocalStorageContext);
@@ -33,7 +27,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, slider }) => 
   const isInCart = cartItems.some(item => item.id === id);
 
   return (
-    <div className={classNames("product product-card", {'product product-card--slider': slider})}>
+    <div
+      className={classNames('product product-card', {
+        'product product-card--slider': slider,
+      })}
+    >
       <img className="product__design" src={image} alt={`${name} design`} />
 
       <p className="product__name">{`${name}(iMT9G2FS/A)`}</p>
@@ -41,9 +39,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, slider }) => 
       <div className="price product__price">
         <p className="price--regular">{`$${fullPrice}`}</p>
 
-        {price && (
-          <p className="price--discount">{`$${price}`}</p>
-        )}
+        {price && <p className="price--discount">{`$${price}`}</p>}
       </div>
 
       <div className="details product__details">
@@ -67,7 +63,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, slider }) => 
         <button
           type="button"
           onClick={() => updateCart(product)}
-          className={classNames('buttons__add-to-cart', { selected: isInCart })}
+          className={classNames(
+            'buttons__add-to-cart',
+            { selected: isInCart },
+            { 'buttons__add-to-cart--slider': slider },
+          )}
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>

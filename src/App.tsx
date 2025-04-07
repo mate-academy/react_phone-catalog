@@ -18,8 +18,3 @@ export const App = () => {
     </>
   );
 };
-
-
-// {/* <Phones />
-//       <Cart /> */}
-//       <Home />

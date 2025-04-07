@@ -110,6 +110,18 @@
       height: 40px;
       transition: box-shadow 0.3s ease;
 
+      &--slider {
+        max-width: 100px;
+
+        @include tablet {
+          max-width: 125px;
+        }
+
+        @include desktop {
+          max-width: 160px;
+        }
+      }
+
       &:hover {
         box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
       }

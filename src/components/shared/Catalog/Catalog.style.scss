@@ -129,7 +129,7 @@
         top: 44px;
         left: 0;
         z-index: 5;
-        transition: opacity 0.3s ease-in-out;
+        transition: opacity 0.2s ease-in;
 
         &__open {
           display: block;
@@ -167,17 +167,13 @@
   }
 
   &__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 272px);
     gap: 40px;
+    justify-content: center;
 
     @include tablet {
       gap: 16px;
-    }
-
-    @include desktop {
-      justify-content: space-between;
     }
   }
 
