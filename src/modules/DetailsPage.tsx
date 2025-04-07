@@ -14,7 +14,7 @@ export const DetailsPage: React.FC = () => {
   return (
     <>
       <ProductDetails
-        phoneId={phoneId}
+        productId={phoneId}
         disabledIds={disabledIds}
         setDisabledIds={setDisabledIds}
       />

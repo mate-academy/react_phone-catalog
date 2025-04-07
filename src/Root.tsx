@@ -3,6 +3,7 @@ import { App } from './App';
 import { HomePage } from './modules/HomePage';
 import { HomePageCategory } from './modules/HomePageCategory';
 import { DetailsPage } from './modules/DetailsPage';
+import { AccessoryPage } from './modules/AccessoryPage';
 
 export const Root = () => {
   return (
@@ -13,6 +14,9 @@ export const Root = () => {
           <Route path="home" element={<Navigate to={'/'} replace />} />
           <Route path="phones" element={<HomePageCategory />}>
             <Route path=":phoneId" element={<DetailsPage />} />
+          </Route>
+          <Route path="accessories" element={<HomePageCategory />}>
+            <Route path=":accessoryId" element={<AccessoryPage />} />
           </Route>
         </Route>
       </Routes>

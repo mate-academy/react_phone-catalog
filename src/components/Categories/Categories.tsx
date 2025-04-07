@@ -1,30 +1,31 @@
 import React from 'react';
 import styles from './Categories.module.scss';
 import phones from '../../../public/api/phones.json';
+import accessories from '../../../public/api/accessories.json'
 import { Link } from 'react-router-dom';
 
 export const Categories: React.FC = () => {
   const CategoriesCollection = [
     {
-      src: '../../img/categories/phones.png',
+      src: '/img/categories/phones.png',
       alt: 'phone image',
       title: 'Mobile phones',
       count: phones.length.toString(),
       href: '/phones',
     },
     {
-      src: '../../img/categories/tablets.png',
+      src: '/img/categories/tablets.png',
       alt: 'tablet image',
       title: 'Tablets',
       count: '24',
       href: '/',
     },
     {
-      src: '../../img/categories/accessories.png',
-      alt: 'phone image',
+      src: '/img/categories/accessories.png',
+      alt: 'accessory image',
       title: 'Accessories',
-      count: '100',
-      href: '/',
+      count: accessories.length.toString(),
+      href: '/accessories',
     },
   ];
 

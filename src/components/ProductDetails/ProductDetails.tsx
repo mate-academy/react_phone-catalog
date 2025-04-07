@@ -9,17 +9,17 @@ import { TitleAndButtonSlider } from '../TitleAndButtonSlider/TitleAndButtonSlid
 import { ProductCard } from '../ProductCard/ProductCard';
 
 type Props = {
-  phoneId?: string;
+  productId?: string;
   disabledIds: number[];
   setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
 };
 
 export const ProductDetails: React.FC<Props> = ({
-  phoneId,
+  productId,
   disabledIds,
   setDisabledIds,
 }) => {
-  const phone = phones.find(phone_ => phone_.id === phoneId);
+  const phone = phones.find(phone_ => phone_.id === productId);
   const [activePhone, setActivePhone] = useState(phone);
   const [image, setImage] = useState(activePhone?.images[0]);
   const [activeColor, setActiveColor] = useState<string | undefined>(
@@ -43,7 +43,7 @@ export const ProductDetails: React.FC<Props> = ({
   const navigate = useNavigate();
   const { search } = useLocation();
   const { phoneId: phoneIdFromUrl } = useParams();
-  const productId = products.find(product => product.itemId === phone?.id);
+  const productIdtext = products.find(product => product.itemId === phone?.id);
 
   const handleChangeColor = (color: string) => {
     const newPhone = phones.find(
@@ -160,7 +160,7 @@ export const ProductDetails: React.FC<Props> = ({
               <p className={`${styles.details_available_header}`}>
                 Available colors
               </p>
-              <p className={`${styles.details_available_id}`}>{`ID: ${productId?.id}`}</p>
+              <p className={`${styles.details_available_id}`}>{`ID: ${productIdtext?.id}`}</p>
             </div>
             <div className={`${styles.details_available_colors_container}`}>
               {activePhone?.colorsAvailable.map((color, id) => {

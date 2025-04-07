@@ -14,6 +14,8 @@ type ContextType = {
 
 export const HomePageCategory: React.FC = () => {
   const { phoneId } = useParams();
+  const { accessoryId } = useParams();
+  console.log(phoneId);
 
   const { setActiveAside, width, disabledIds, setWidth, setDisabledIds } =
     useOutletContext<ContextType>();

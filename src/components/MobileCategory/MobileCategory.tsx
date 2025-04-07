@@ -229,15 +229,6 @@ export const MobileCategory: React.FC<Props> = ({
         </div>
 
         <div className={`${styles.mobile_button_container}`}>
-          {/* <button
-            className={`${styles.mobile_arrow_button} ${styles.mobile_arrow_left}`}
-            onClick={() => handleOnButtonPageChange('left')}
-          >
-            <img
-              src="../../img/icons/main-default-arrow.svg"
-              alt="left arrow"
-            />
-          </button> */}
           <Button
             direction={ButtonDirection.left}
             onClick={handlePageChangeLeft}
