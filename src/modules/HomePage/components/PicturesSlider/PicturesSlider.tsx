@@ -13,7 +13,7 @@ const slides: Slide[] = [
         mobile: 'img/banner-home-mobile.png',
     },
     {
-        desktop: 'img/banner-phones.png',
+        desktop: 'img/banner-home.png',
         mobile: 'img/banner-home-mobile.png',
     }, 
     {
@@ -57,8 +57,8 @@ export const PicturesSlider = () => {
     }, [currentSlide]);
 
     return (
-        <div className="mb-20">
-            <div className="flex sm:mx-5 mb-[18px] lg:mx-4 xl:mx-[156px]">
+        <div>
+            <div className="flex sm:mx-6 mb-[18px] lg:mx-8 xl:mx-[156px]">
                 <div className="justify-center min-w-8 max-h-[400px] bg-background-color-btn hidden sm:flex">
                     <button onClick={prevSlide}>
                         <img src="icons/arrow-left.svg" alt="left" />

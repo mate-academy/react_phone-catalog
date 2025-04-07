@@ -7,7 +7,10 @@ const config: Config = {
         'text-color-base-white': '#F1F2F9',
         'text-color-base-grey': '#75767F',
         'background-color-base': '#0F1121',
-        'background-color-btn': '#323542'
+        'background-color-btn': '#323542',
+        'color-arrow': '#3B3E4A',
+        'color-btn-purple': '#905BFF',
+        'color-btn-purple-hover': '#A378FF',
       },
       animation: {
         fade: 'fadeIn 0.7s ease-out',
