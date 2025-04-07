@@ -17,7 +17,7 @@ export const Footer: React.FC<Props> = ({ disabledIds }) => {
       <div className={`${styles.footer_main_container}`}>
         <div className={`${styles.footer_logo_container}`}>
           <img
-            src="/img/logo/logo-main.svg"
+            src="./img/logo/logo-main.svg"
             alt="logo"
             className={`${styles.footer_logo}`}
           />

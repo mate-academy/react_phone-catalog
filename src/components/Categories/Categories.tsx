@@ -7,21 +7,21 @@ import { Link } from 'react-router-dom';
 export const Categories: React.FC = () => {
   const CategoriesCollection = [
     {
-      src: '/img/categories/phones.png',
+      src: './img/categories/phones.png',
       alt: 'phone image',
       title: 'Mobile phones',
       count: phones.length.toString(),
       href: '/phones',
     },
     {
-      src: '/img/categories/tablets.png',
+      src: './img/categories/tablets.png',
       alt: 'tablet image',
       title: 'Tablets',
       count: '24',
-      href: '/',
+      href: '/tablets',
     },
     {
-      src: '/img/categories/accessories.png',
+      src: './img/categories/accessories.png',
       alt: 'accessory image',
       title: 'Accessories',
       count: accessories.length.toString(),

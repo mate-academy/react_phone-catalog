@@ -15,9 +15,9 @@ export type Phone = {
   resolution: string;
   processor: string;
   ram: string;
-  camera: string;
-  zoom: string;
   cell: string[];
+  camera?: string;
+  zoom?: string;
 };
 
 export type Description = {

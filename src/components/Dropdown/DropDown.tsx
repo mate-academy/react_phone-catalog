@@ -105,7 +105,6 @@ export const DropDown: React.FC<DropdownProps> = ({
                   onClick={() => handleChange(item)}
                   className={classNames(
                     [styles.dropdown_item],
-                    // { 'bg-gray-300': selectedItem?.id === item.id },
                   )}
                 >
                   <span>{item.name}</span>

@@ -53,6 +53,7 @@
   font-size: 12px;
   line-height: 100%;
   color: $main-light-gray;
+  text-transform: capitalize;
 }
 
 .mobile_header {
@@ -65,6 +66,7 @@
   width: 288px;
   height: 42px;
   margin: 0 0 8px;
+  text-transform: capitalize;
 
   @include on-tablet {
     width: 592px;

@@ -5,13 +5,13 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 type Props = {
-  phone: Phone;
+  product: Phone;
+  category: string;
   onPage?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ phone, onPage }) => {
+export const ProductCard: React.FC<Props> = ({ product, category, onPage }) => {
   const [clicked, setClicked] = useState(false);
-
   return (
     <>
       <div
@@ -25,25 +25,25 @@ export const ProductCard: React.FC<Props> = ({ phone, onPage }) => {
           })}
         >
           <Link
-            to={`/phones/${phone.id}`}
+            to={`/${category}/${product.id}`}
             className={`${styles.title_link} ${styles.img_wrapper}`}
           >
             <img
-              src={phone.images[0]}
-              alt={phone.name}
+              src={product.images[0]}
+              alt={product.name}
               className={`${styles.image}`}
             />
           </Link>
           <Link
-            to={`/phones/${phone.id}`}
+            to={`/${category}/${product.id}`}
             className={`${styles.title_link} ${styles.title_wrapper}`}
           >
-            <h3 className={`${styles.title}`}>{phone.name}</h3>
+            <h3 className={`${styles.title}`}>{product.name}</h3>
           </Link>
         </div>
         <div className={`${styles.price_wrapper}`}>
-          <h2 className={`${styles.price}`}>{`$${phone.priceRegular}`}</h2>
-          <h2 className={`${styles.oldPrice}`}>{`$${phone.priceDiscount}`}</h2>
+          <h2 className={`${styles.price}`}>{`$${product.priceRegular}`}</h2>
+          <h2 className={`${styles.oldPrice}`}>{`$${product.priceDiscount}`}</h2>
         </div>
 
         <div className={`${styles.line}`} />
@@ -60,7 +60,7 @@ export const ProductCard: React.FC<Props> = ({ phone, onPage }) => {
           >
             <p className={`${styles.phone_charact_parag}`}>Screen</p>
             <p className={`${styles.phone_charact_parag} ${styles.char_value}`}>
-              {phone.screen}
+              {product.screen}
             </p>
           </div>
           <div
@@ -70,7 +70,7 @@ export const ProductCard: React.FC<Props> = ({ phone, onPage }) => {
           >
             <p className={`${styles.phone_charact_parag}`}>Capacity</p>
             <p className={`${styles.phone_charact_parag} ${styles.char_value}`}>
-              {phone.capacity}
+              {product.capacity}
             </p>
           </div>
           <div
@@ -80,7 +80,7 @@ export const ProductCard: React.FC<Props> = ({ phone, onPage }) => {
           >
             <p className={`${styles.phone_charact_parag}`}>RAM</p>
             <p className={`${styles.phone_charact_parag} ${styles.char_value}`}>
-              {phone.ram}
+              {product.ram}
             </p>
           </div>
         </div>
@@ -104,8 +104,8 @@ export const ProductCard: React.FC<Props> = ({ phone, onPage }) => {
             <img
               src={
                 clicked
-                  ? '/img/icons/card-selected-like.svg'
-                  : '/img/icons/card-default-like.svg'
+                  ? './img/icons/card-selected-like.svg'
+                  : './img/icons/card-default-like.svg'
               }
               alt="like button"
             />

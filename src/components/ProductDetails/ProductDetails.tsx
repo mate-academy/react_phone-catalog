@@ -12,24 +12,27 @@ type Props = {
   productId?: string;
   disabledIds: number[];
   setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
+  category: Phone[];
 };
 
 export const ProductDetails: React.FC<Props> = ({
   productId,
   disabledIds,
   setDisabledIds,
+  category,
 }) => {
-  const phone = phones.find(phone_ => phone_.id === productId);
-  const [activePhone, setActivePhone] = useState(phone);
-  const [image, setImage] = useState(activePhone?.images[0]);
+  const categoryName = category[0].category;
+  const product = category.find(product_ => product_.id === productId);
+  const [activeProduct, setActiveProduct] = useState(product);
+  const [image, setImage] = useState(activeProduct?.images[0]);
   const [activeColor, setActiveColor] = useState<string | undefined>(
-    activePhone?.colorsAvailable[0],
+    activeProduct?.colorsAvailable[0],
   );
   const [activeCapacity, setActiveCapacity] = useState<string | undefined>(
-    activePhone?.capacity,
+    activeProduct?.capacity,
   );
   const [clicked, setClicked] = useState(false);
-  const techDetails: Record<string, keyof Phone> = {
+  const techDetails = {
     Screen: 'screen',
     Resolution: 'resolution',
     Processor: 'processor',
@@ -38,26 +41,28 @@ export const ProductDetails: React.FC<Props> = ({
     Camera: 'camera',
     Zoom: 'zoom',
     Cell: 'cell',
-  };
+  } as Record<string, keyof Phone>;
 
   const navigate = useNavigate();
   const { search } = useLocation();
-  const { phoneId: phoneIdFromUrl } = useParams();
-  const productIdtext = products.find(product => product.itemId === phone?.id);
+  const { productId: productIdFromUrl } = useParams();
+  const productIdtext = products.find(
+    product_ => product_.itemId === product?.id,
+  );
 
   const handleChangeColor = (color: string) => {
-    const newPhone = phones.find(
-      iphone =>
-        activePhone?.namespaceId === iphone.namespaceId &&
-        activePhone.capacity === iphone.capacity &&
-        iphone.color === color,
+    const newProduct = category.find(
+      item =>
+        activeProduct?.namespaceId === item.namespaceId &&
+        activeProduct.capacity === item.capacity &&
+        item.color === color,
     );
 
-    if (newPhone) {
+    if (newProduct) {
       setActiveColor(color);
-      setActivePhone(newPhone);
-      setImage(newPhone.images[0]);
-      navigate(`/phones/${newPhone.id}`);
+      setActiveProduct(newProduct);
+      setImage(newProduct.images[0]);
+      navigate(`/${categoryName}/${newProduct.id}`);
     }
   };
 
@@ -66,27 +71,32 @@ export const ProductDetails: React.FC<Props> = ({
   };
 
   const handleCapacityChange = (capacity: string) => {
-    const newPhone = phones.find(
-      iphone =>
-        iphone.capacity === capacity &&
-        activePhone?.namespaceId === iphone.namespaceId,
+    const newProduct = category.find(
+      product_ =>
+        product_.capacity === capacity &&
+        activeProduct?.namespaceId === product_.namespaceId,
     );
 
-    if (newPhone) {
+    if (newProduct) {
       setActiveCapacity(capacity);
-      setActivePhone(newPhone);
-      navigate(`/phones/${newPhone.id}`);
+      setActiveProduct(newProduct);
+      navigate(`/${categoryName}/${newProduct.id}`);
     }
   };
 
-  useEffect(() => {
-    const phoneActive = phones.find(_phone => _phone.id === phoneIdFromUrl);
+  const getTechValue = (key: keyof Phone) => {
+    const value = activeProduct?.[key];
+    return Array.isArray(value) ? value.join(', ') : (value ?? 'N/A');
+  };
 
-    if (phoneActive) {
-      setActiveColor(phoneActive.color);
-      setActivePhone(phoneActive);
-      setImage(phoneActive.images[0]);
-      setActiveCapacity(phoneActive.capacity);
+  useEffect(() => {
+    const productActive = category.find(_phone => _phone.id === productIdFromUrl);
+
+    if (productActive) {
+      setActiveColor(productActive.color);
+      setActiveProduct(productActive);
+      setImage(productActive.images[0]);
+      setActiveCapacity(productActive.capacity);
       window.scrollTo({ top: 0 });
     }
   }, [navigate]);
@@ -96,22 +106,22 @@ export const ProductDetails: React.FC<Props> = ({
       <div className={`${styles.details_main_container}`}>
         <div className={`${styles.details_path_container}`}>
           <img
-            src="../../img/icons/home-icon.svg"
+            src="./img/icons/home-icon.svg"
             alt="home icon"
             className={`${styles.details_header_icon}`}
           />
           <img
-            src="../../img/icons/main-disabled-arrow.svg"
+            src="./img/icons/main-disabled-arrow.svg"
             alt="right arrow"
             className={`${styles.details_header_icon}`}
           />
-          <p className={`${styles.details_path} ${styles.dark_gray}`}>Phones</p>
+          <p className={`${styles.details_path} ${styles.dark_gray}`}>{categoryName}</p>
           <img
-            src="../../img/icons/main-disabled-arrow.svg"
+            src="./img/icons/main-disabled-arrow.svg"
             alt="right arrow"
             className={`${styles.details_header_icon}`}
           />
-          <p className={`${styles.details_path}`}>{activePhone?.name}</p>
+          <p className={`${styles.details_path}`}>{activeProduct?.name}</p>
         </div>
 
         <div
@@ -119,13 +129,13 @@ export const ProductDetails: React.FC<Props> = ({
           onClick={handleBackButton}
         >
           <img
-            src="../../img/icons/main-default-arrow.svg"
+            src="./img/icons/main-default-arrow.svg"
             alt="left arrow"
             className={`${styles.details_back_icon}`}
           />
           <p className={`${styles.details_back_text}`}>Back</p>
         </div>
-        <h1 className={`${styles.details_header}`}>{activePhone?.name}</h1>
+        <h1 className={`${styles.details_header}`}>{activeProduct?.name}</h1>
         <div className={`${styles.details_main_info_container}`}>
           <img
             src={image}
@@ -134,7 +144,7 @@ export const ProductDetails: React.FC<Props> = ({
           />
 
           <div className={`${styles.details_slider_image_container}`}>
-            {activePhone?.images.map((img, id) => {
+            {activeProduct?.images.map((img, id) => {
               return (
                 <div
                   className={classNames(
@@ -160,20 +170,23 @@ export const ProductDetails: React.FC<Props> = ({
               <p className={`${styles.details_available_header}`}>
                 Available colors
               </p>
-              <p className={`${styles.details_available_id}`}>{`ID: ${productIdtext?.id}`}</p>
+              {productIdtext && (
+                <p
+                  className={`${styles.details_available_id}`}
+                >{`ID: ${productIdtext.id}`}</p>
+              )}
             </div>
             <div className={`${styles.details_available_colors_container}`}>
-              {activePhone?.colorsAvailable.map((color, id) => {
+              {activeProduct?.colorsAvailable.map((color, id) => {
                 return (
                   <div
                     className={classNames(`${styles.details_color_wrapper}`, {
                       [styles.details_active_color]: activeColor === color,
                     })}
-                    style={{backgroundColor: color}}
+                    style={{ backgroundColor: color }}
                     key={id}
                     onClick={() => handleChangeColor(color)}
-                  >
-                  </div>
+                  ></div>
                 );
               })}
             </div>
@@ -185,7 +198,7 @@ export const ProductDetails: React.FC<Props> = ({
                 Select capacity
               </p>
               <div className={`${styles.details_capacity_amount_cont}`}>
-                {activePhone?.capacityAvailable.map((capacity, id) => {
+                {activeProduct?.capacityAvailable.map((capacity, id) => {
                   return (
                     <div
                       key={id}
@@ -211,10 +224,10 @@ export const ProductDetails: React.FC<Props> = ({
             <div className={`${styles.price_wrapper}`}>
               <h2
                 className={`${styles.price}`}
-              >{`$${activePhone?.priceRegular}`}</h2>
+              >{`$${activeProduct?.priceRegular}`}</h2>
               <h2
                 className={`${styles.oldPrice}`}
-              >{`$${activePhone?.priceDiscount}`}</h2>
+              >{`$${activeProduct?.priceDiscount}`}</h2>
             </div>
 
             <div className={classNames(`${styles.buttons_container}`)}>
@@ -230,8 +243,8 @@ export const ProductDetails: React.FC<Props> = ({
                 <img
                   src={
                     clicked
-                      ? '../../img/icons/card-selected-like.svg'
-                      : '../../img/icons/card-default-like.svg'
+                      ? './img/icons/card-selected-like.svg'
+                      : './img/icons/card-default-like.svg'
                   }
                   alt="like button"
                 />
@@ -244,7 +257,7 @@ export const ProductDetails: React.FC<Props> = ({
                 <p
                   className={`${styles.phone_charact_parag} ${styles.char_value}`}
                 >
-                  {activePhone?.screen}
+                  {activeProduct?.screen}
                 </p>
               </div>
               <div className={classNames(`${styles.phone_charact}`)}>
@@ -252,7 +265,7 @@ export const ProductDetails: React.FC<Props> = ({
                 <p
                   className={`${styles.phone_charact_parag} ${styles.char_value}`}
                 >
-                  {activePhone?.resolution}
+                  {activeProduct?.resolution}
                 </p>
               </div>
               <div className={classNames(`${styles.phone_charact}`)}>
@@ -260,7 +273,7 @@ export const ProductDetails: React.FC<Props> = ({
                 <p
                   className={`${styles.phone_charact_parag} ${styles.char_value}`}
                 >
-                  {activePhone?.processor}
+                  {activeProduct?.processor}
                 </p>
               </div>
               <div className={classNames(`${styles.phone_charact}`)}>
@@ -268,7 +281,7 @@ export const ProductDetails: React.FC<Props> = ({
                 <p
                   className={`${styles.phone_charact_parag} ${styles.char_value}`}
                 >
-                  {activePhone?.ram}
+                  {activeProduct?.ram}
                 </p>
               </div>
             </div>
@@ -281,7 +294,7 @@ export const ProductDetails: React.FC<Props> = ({
               <h3 className={`${styles.details_descr_title}`}>About</h3>
               <hr className={`${styles.details_line} ${styles.margin_0}`} />
             </div>
-            {activePhone?.description.map((descr, id) => {
+            {activeProduct?.description.map((descr, id) => {
               return (
                 <div className={`${styles.details_descr_wrapper}`} key={id}>
                   <h2 className={`${styles.details_descr_title}`}>
@@ -296,7 +309,7 @@ export const ProductDetails: React.FC<Props> = ({
           <div className={`${styles.details_tech_container}`}>
             <h3 className={`${styles.details_descr_title}`}>Tech specs</h3>
             <hr className={`${styles.details_line} ${styles.margin_bot_16}`} />
-            {Object.entries(techDetails).map(([label, phoneKey], id) => {
+            {Object.entries(techDetails).map(([label, productKey], id) => {
               return (
                 <div
                   className={classNames(
@@ -314,9 +327,7 @@ export const ProductDetails: React.FC<Props> = ({
                   ${styles.tech_charact_parag} ${styles.char_value}
                   ${styles.tech_char_value}`}
                   >
-                    {Array.isArray(activePhone?.[phoneKey])
-                      ? (activePhone?.[phoneKey] as string[]).join(', ')
-                      : activePhone?.[phoneKey]}
+                    {getTechValue(productKey)}
                   </p>
                 </div>
               );
@@ -337,8 +348,12 @@ export const ProductDetails: React.FC<Props> = ({
           className={`${styles.details_scroll_container}`}
           id="scroll_container_also_like"
         >
-          {phones.map(phonei => (
-            <ProductCard key={phonei.id} phone={phonei} />
+          {category.map(productItem=> (
+            <ProductCard
+              key={productItem.id}
+              product={productItem}
+              category={`${categoryName}`}
+            />
           ))}
         </div>
       </div>

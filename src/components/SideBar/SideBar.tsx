@@ -20,7 +20,7 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
         <nav className={`${styles.header_nav_container}`}>
           <div className={`${styles.header_nav_logo_container}`}>
             <a href="/">
-              <img src="../../img/logo/logo-main.svg" alt="logo nice gadgets" />
+              <img src="./img/logo/logo-main.svg" alt="logo nice gadgets" />
             </a>
           </div>
 
@@ -29,7 +29,7 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
             onClick={() => setActiveAside(false)}
           >
             <button className={`${styles.header_nav_close_button}`}>
-              <img src="../../img/icons/close-icon.svg" alt="close burron" />
+              <img src="./img/icons/close-icon.svg" alt="close burron" />
             </button>
           </div>
         </nav>
@@ -68,14 +68,14 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
         <div className={`${styles.footer_container}`}>
           <button className={`${styles.footer_button}`}>
             <img
-              src="../../img/icons/card-default-like.svg"
+              src="./img/icons/card-default-like.svg"
               alt="like icon"
               className={`${styles.footer_img_icon}`}
             />
           </button>
           <button className={`${styles.footer_button}`}>
             <img
-              src="../../img/icons/shopping-bag.svg"
+              src="./img/icons/shopping-bag.svg"
               alt="shopping bag icon"
               className={`${styles.footer_img_icon}`}
             />

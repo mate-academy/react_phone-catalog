@@ -1,9 +1,18 @@
 import React, { useEffect } from 'react';
 import { MobileCategory } from '../components/MobileCategory/MobileCategory';
-import { Outlet, useOutletContext, useParams } from 'react-router-dom';
+import {
+  Outlet,
+  useLocation,
+  useOutletContext,
+  useParams,
+} from 'react-router-dom';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
-import { AccessoryPage } from './AccessoryPage';
+import accessories from '../../public/api/accessories.json';
+import phones from '../../public/api/phones.json';
+import tablets from '../../public/api/tablets.json';
+
+import { Phone } from '../types/Phone';
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;
@@ -13,13 +22,30 @@ type ContextType = {
   setDisabledIds: (arg: number[]) => void;
 };
 
-export const HomePageCategory: React.FC = () => {
-  const { phoneId } = useParams();
-  const { accessoryId } = useParams();
-  console.log(phoneId);
+type Props = {
+  url: string;
+};
 
+export const HomePageCategory: React.FC<Props> = ({ url }) => {
+  const { productId } = useParams();
   const { setActiveAside, width, disabledIds, setWidth, setDisabledIds } =
     useOutletContext<ContextType>();
+
+  let category: Phone[];
+
+  switch (url) {
+    case 'accessories':
+      category = accessories;
+      break;
+    case 'phones':
+      category = phones;
+      break;
+    case 'tablets':
+      category = tablets;
+      break;
+    default:
+      category = [];
+  }
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -32,15 +58,15 @@ export const HomePageCategory: React.FC = () => {
   return (
     <>
       <Header setActiveAside={setActiveAside} width={width} />
-      {/* {!phoneId ? (
+      {!productId ? (
         <MobileCategory
           disabledIds={disabledIds}
           setDisabledIds={setDisabledIds}
+          categoryName={category}
         />
       ) : (
-        <Outlet context={{ disabledIds, setDisabledIds }} />
-      )} */}
-      {<AccessoryPage/>}
+        <Outlet context={{ disabledIds, setDisabledIds, category }} />
+      )}
       <Footer disabledIds={disabledIds} />
     </>
   );

@@ -1,8 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styles from './MobileCategory.module.scss';
-import phones from '../../../public/api/phones.json';
-import accessories from '../../../public/api/accessories.json';
-import tablets from '../../../public/api/tablets.json';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { DropDown } from '../Dropdown/DropDown';
 import { useSearchParams } from 'react-router-dom';
@@ -10,11 +7,12 @@ import classNames from 'classnames';
 import products from '../../../public/api/products.json';
 import { Button } from '../Button/Button';
 import { ButtonDirection } from '../../enums/ButtonDirection';
+import { Phone } from '../../types/Phone';
 
 type Props = {
   setDisabledIds: (arg: number[]) => void;
   disabledIds: number[];
-  categoryName: string;
+  categoryName: Phone[];
 };
 
 export const MobileCategory: React.FC<Props> = ({
@@ -27,7 +25,8 @@ export const MobileCategory: React.FC<Props> = ({
   const [sortBy, setSortBy] = useState(searchParams.get('sortBy') || '');
   const [pageNum, setPageNum] = useState(searchParams.get('pageNum') || '1');
   const [buttonsCount, setButtonsCount] = useState<string[]>(['1']);
-  
+  const category = categoryName[0].category;
+
   const sortByData = [
     {
       id: '0',
@@ -60,14 +59,14 @@ export const MobileCategory: React.FC<Props> = ({
         Number(itemsCount) * Number(pageNum),
       ];
     } else {
-      return [0, phones.length];
+      return [0, categoryName.length];
     }
   };
 
   const sortByCategory = () => {
     if (sortBy) {
       const sortDirection = sortBy === 'Newest' ? -1 : 1;
-      const sortedPhones = [...phones].sort((a, b) => {
+      const sortedPhones = [...categoryName].sort((a, b) => {
         const productA = products.find(product => product.itemId === a.id);
         const productB = products.find(product => product.itemId === b.id);
 
@@ -81,7 +80,7 @@ export const MobileCategory: React.FC<Props> = ({
       return sortedPhones;
     }
 
-    return phones;
+    return categoryName;
   };
 
   const handleButtonClassName = (number: string) => {
@@ -164,7 +163,7 @@ export const MobileCategory: React.FC<Props> = ({
     let numOfButtons;
 
     if (itemsCount) {
-      numOfButtons = Math.ceil(phones.length / Number(itemsCount));
+      numOfButtons = Math.ceil(categoryName.length / Number(itemsCount));
     } else {
       numOfButtons = 1;
     }
@@ -181,20 +180,20 @@ export const MobileCategory: React.FC<Props> = ({
       <div className={`${styles.mobile_main_container}`}>
         <div className={`${styles.mobile_path_container}`}>
           <img
-            src="/img/icons/home-icon.svg"
+            src="./img/icons/home-icon.svg"
             alt="home icon"
             className={`${styles.mobile_header_icon}`}
           />
           <img
-            src="/img/icons/main-disabled-arrow.svg"
+            src="./img/icons/main-disabled-arrow.svg"
             alt="right arrow"
             className={`${styles.mobile_header_icon}`}
           />
-          <p className={`${styles.mobile_path}`}>Phones</p>
+          <p className={`${styles.mobile_path}`}>{category}</p>
         </div>
-        <h1 className={`${styles.mobile_header}`}>Mobile phones</h1>
+        <h1 className={`${styles.mobile_header}`}>{category === 'phones' ? 'Mobile Phones' : category}</h1>
         <p className={`${styles.mobile_models_count}`}>
-          {phones.length} models
+          {categoryName.length} models
         </p>
 
         <div className={`${styles.mobile_main_select_container}`}>
@@ -227,8 +226,8 @@ export const MobileCategory: React.FC<Props> = ({
         <div className={`${styles.mobile_phones_container}`}>
           {sortByCategory()
             .slice(sortByCount()[0], sortByCount()[1])
-            .map(phone => (
-              <ProductCard phone={phone} key={phone.id} onPage={true} />
+            .map(product => (
+              <ProductCard product={product} key={product.id} onPage={true} category={`${categoryName[0].category}`}/>
             ))}
         </div>
 
@@ -253,15 +252,6 @@ export const MobileCategory: React.FC<Props> = ({
               );
             })}
           </div>
-          {/* <button
-            className={`${styles.mobile_arrow_button}`}
-            onClick={() => handleOnButtonPageChange('right')}
-          >
-            <img
-              src="../../img/icons/main-default-arrow.svg"
-              alt="right arrow"
-            />
-          </button> */}
           <Button
             direction={ButtonDirection.right}
             onClick={handlePageChangeRigt}

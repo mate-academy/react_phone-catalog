@@ -28,7 +28,7 @@ export const Main: React.FC<Props> = ({ setDisabledIds, disabledIds }) => {
           {phones.map(
             phone =>
               phone.priceDiscount && (
-                <ProductCard key={phone.id} phone={phone} />
+                <ProductCard key={phone.id} product={phone} category='phones'/>
               ),
           )}
         </div>
@@ -48,7 +48,7 @@ export const Main: React.FC<Props> = ({ setDisabledIds, disabledIds }) => {
           {phones.map(
             phone =>
               phone.priceDiscount && (
-                <ProductCard key={phone.id} phone={phone} />
+                <ProductCard key={phone.id} product={phone} category='phones' />
               ),
           )}
         </div>
