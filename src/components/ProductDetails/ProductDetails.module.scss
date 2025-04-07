@@ -298,27 +298,26 @@
 .details_color_wrapper {
   width: 32px;
   height: 32px;
-  border-radius: 36px;
-  border: 1px solid #E2E6E9;
+  border-radius: 50%;
+  border: 3px solid $main-background-white;
+  outline: 1px solid #E2E6E9;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;
   &:hover {
-    border: 1px solid $main-dark-gray;
+    outline: 1px solid $main-dark-gray;
   }
 }
 
 .details_active_color {
-  border: 1px solid $main-dark-gray;
+  outline: 1px solid $main-dark-gray;
 }
 
 .details_color {
   width: 30px;
   height: 30px;
-  top: 1px;
-  left: 1px;
   box-sizing: border-box;
   border-radius: 36px;
   border: 2px solid $main-background-white;

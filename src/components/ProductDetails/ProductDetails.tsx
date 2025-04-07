@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ProductDetails.module.scss';
 import phones from '../../../public/api/phones.json';
+import products from '../../../public/api/products.json';
 import classNames from 'classnames';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
@@ -42,6 +43,7 @@ export const ProductDetails: React.FC<Props> = ({
   const navigate = useNavigate();
   const { search } = useLocation();
   const { phoneId: phoneIdFromUrl } = useParams();
+  const productId = products.find(product => product.itemId === phone?.id);
 
   const handleChangeColor = (color: string) => {
     const newPhone = phones.find(
@@ -158,7 +160,7 @@ export const ProductDetails: React.FC<Props> = ({
               <p className={`${styles.details_available_header}`}>
                 Available colors
               </p>
-              <p className={`${styles.details_available_id}`}>ID: 802390</p>
+              <p className={`${styles.details_available_id}`}>{`ID: ${productId?.id}`}</p>
             </div>
             <div className={`${styles.details_available_colors_container}`}>
               {activePhone?.colorsAvailable.map((color, id) => {
@@ -167,13 +169,10 @@ export const ProductDetails: React.FC<Props> = ({
                     className={classNames(`${styles.details_color_wrapper}`, {
                       [styles.details_active_color]: activeColor === color,
                     })}
+                    style={{backgroundColor: color}}
                     key={id}
                     onClick={() => handleChangeColor(color)}
                   >
-                    <div
-                      style={{ backgroundColor: color }}
-                      className={`${styles.details_color}`}
-                    ></div>
                   </div>
                 );
               })}
