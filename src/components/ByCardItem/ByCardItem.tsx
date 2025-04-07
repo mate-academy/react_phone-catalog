@@ -38,27 +38,19 @@ export const ByCardItem: React.FC<CartProps> = ({
   };
 
   const handleIncrease = () => {
-    setQuantity(prevQuantity => {
-      const newQuantity = prevQuantity + 1;
+    const newQuantity = quantity + 1;
 
-      toggleCart({ ...product, quantity: newQuantity });
-
-      return newQuantity;
-    });
+    setQuantity(newQuantity);
+    onUpdate(product.id.toString(), newQuantity);
   };
 
   const handleDecrease = () => {
-    setQuantity(prevQuantity => {
-      if (prevQuantity > 1) {
-        const newQuantity = prevQuantity - 1;
+    if (quantity > 1) {
+      const newQuantity = quantity - 1;
 
-        toggleCart({ ...product, quantity: newQuantity });
-
-        return newQuantity;
-      }
-
-      return prevQuantity;
-    });
+      setQuantity(newQuantity);
+      onUpdate(product.id.toString(), newQuantity);
+    }
   };
 
   const totalPriceOneProduct = product.fullPrice * quantity;

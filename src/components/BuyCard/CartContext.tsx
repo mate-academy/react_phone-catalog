@@ -27,13 +27,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     const isInCart = cart.some(item => item.id === product.id);
 
     if (isInCart) {
-      setCart(prev => {
-        return prev.map(item =>
-          item.id === product.id
-            ? { ...item, quantity: (item.quantity ?? 0) + 1 }
-            : item,
-        );
-      });
+      setCart(prev => prev.filter(item => item.id !== product.id));
     } else {
       setCart(prev => [...prev, { ...product, quantity: 1 }]);
     }
