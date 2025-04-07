@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styles from './MobileCategory.module.scss';
 import phones from '../../../public/api/phones.json';
+import accessories from '../../../public/api/accessories.json';
+import tablets from '../../../public/api/tablets.json';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { DropDown } from '../Dropdown/DropDown';
 import { useSearchParams } from 'react-router-dom';
@@ -12,18 +14,20 @@ import { ButtonDirection } from '../../enums/ButtonDirection';
 type Props = {
   setDisabledIds: (arg: number[]) => void;
   disabledIds: number[];
+  categoryName: string;
 };
 
 export const MobileCategory: React.FC<Props> = ({
   setDisabledIds,
   disabledIds,
+  categoryName,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [itemsCount, setItemsCount] = useState(searchParams.get('count') || '');
   const [sortBy, setSortBy] = useState(searchParams.get('sortBy') || '');
   const [pageNum, setPageNum] = useState(searchParams.get('pageNum') || '1');
   const [buttonsCount, setButtonsCount] = useState<string[]>(['1']);
-
+  
   const sortByData = [
     {
       id: '0',
@@ -177,12 +181,12 @@ export const MobileCategory: React.FC<Props> = ({
       <div className={`${styles.mobile_main_container}`}>
         <div className={`${styles.mobile_path_container}`}>
           <img
-            src="../../img/icons/home-icon.svg"
+            src="/img/icons/home-icon.svg"
             alt="home icon"
             className={`${styles.mobile_header_icon}`}
           />
           <img
-            src="../../img/icons/main-disabled-arrow.svg"
+            src="/img/icons/main-disabled-arrow.svg"
             alt="right arrow"
             className={`${styles.mobile_header_icon}`}
           />

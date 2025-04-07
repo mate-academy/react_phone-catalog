@@ -24,7 +24,7 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
             <div className={`${styles.header_nav_logo_container}`}>
               <Link to="/">
                 <img
-                  src="/img/logo/logo-main.svg"
+                  src="./img/logo/logo-main.svg"
                   alt="logo nice gadgets"
                 />
               </Link>
@@ -38,7 +38,7 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
             >
               <button className={`${styles.header_nav_burger_button}`}>
                 <img
-                  src="/img/icons/burger-menu-icon.svg"
+                  src="./img/icons/burger-menu-icon.svg"
                   alt="burger menu"
                 />
               </button>
@@ -52,7 +52,7 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
             <div className={`${styles.header_nav_logo_container}`}>
               <Link to="/">
                 <img
-                  src="/img/logo/logo-main.svg"
+                  src="./img/logo/logo-main.svg"
                   alt="logo nice gadgets"
                 />
               </Link>
@@ -84,14 +84,14 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
             <div className={`${styles.header_nav_buttons_container}`}>
               <button className={`${styles.header_nav_favourite_button}`}>
                 <img
-                  src="/img/icons/card-default-like.svg"
+                  src="./img/icons/card-default-like.svg"
                   alt="favourite items"
                   className={`${styles.header_nav_icon}`}
                 />
               </button>
               <button className={`${styles.header_nav_shop_bag_button}`}>
                 <img
-                  src="/img/icons/shopping-bag.svg"
+                  src="./img/icons/shopping-bag.svg"
                   alt="shopping bag"
                   className={`${styles.header_nav_icon}`}
                 />

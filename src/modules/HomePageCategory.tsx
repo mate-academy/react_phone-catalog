@@ -3,6 +3,7 @@ import { MobileCategory } from '../components/MobileCategory/MobileCategory';
 import { Outlet, useOutletContext, useParams } from 'react-router-dom';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
+import { AccessoryPage } from './AccessoryPage';
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;
@@ -31,14 +32,15 @@ export const HomePageCategory: React.FC = () => {
   return (
     <>
       <Header setActiveAside={setActiveAside} width={width} />
-      {!phoneId ? (
+      {/* {!phoneId ? (
         <MobileCategory
           disabledIds={disabledIds}
           setDisabledIds={setDisabledIds}
         />
       ) : (
         <Outlet context={{ disabledIds, setDisabledIds }} />
-      )}
+      )} */}
+      {<AccessoryPage/>}
       <Footer disabledIds={disabledIds} />
     </>
   );

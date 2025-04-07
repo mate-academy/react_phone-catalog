@@ -27,7 +27,7 @@ export const AccessoryPage: React.FC = () => {
 
   return (
     <>
-      <Header setActiveAside={setActiveAside} width={width} />
+      <h1>Hello World</h1>
     </>
   );
 };
