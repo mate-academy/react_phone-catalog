@@ -11,43 +11,43 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
   const [index, setIndex] = useState(0);
   const ImageCollectionPhone = [
     {
-      src: '../../img/banners/header-slider-for-phone.png',
+      src: '/img/banners/header-slider-for-phone.png',
       alt: 'iphone banner',
     },
     {
-      src: '../../img/banners/tablet-banner.png',
+      src: '/img/banners/tablet-banner.png',
       alt: 'tablets banner',
     },
     {
-      src: '../../img/banners/laptop-banner.png',
+      src: '/img/banners/laptop-banner.png',
       alt: 'accessories banner',
     },
   ];
   const ImageCollectionTablet = [
     {
-      src: '../../img/banners/big-banner.png',
+      src: '/img/banners/big-banner.png',
       alt: 'iphone banner',
     },
     {
-      src: '../../img/banners/big-banner.png',
+      src: '/img/banners/big-banner.png',
       alt: 'tablets banner',
     },
     {
-      src: '../../img/banners/big-banner.png',
+      src: '/img/banners/big-banner.png',
       alt: 'accessories banner',
     },
   ];
   const ImageCollectionDesktop = [
     {
-      src: '../../img/banners/desktop-banner.png',
+      src: '/img/banners/desktop-banner.png',
       alt: 'iphone banner',
     },
     {
-      src: '../../img/banners/desktop-banner.png',
+      src: '/img/banners/desktop-banner.png',
       alt: 'tablets banner',
     },
     {
-      src: '../../img/banners/desktop-banner.png',
+      src: '/img/banners/desktop-banner.png',
       alt: 'accessories banner',
     },
   ];
@@ -102,7 +102,7 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
           <div className={`${styles.slider_img_and_buttons_container}`}>
             <button className={`${styles.slider_swipe_button_container}`}>
               <img
-                src="../../img/icons/main-default-arrow.svg"
+                src="/img/icons/main-default-arrow.svg"
                 alt="arrow left"
                 className={`${styles.swipe_button} ${styles.left_arrow}`}
               />
@@ -138,7 +138,7 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
 
             <button className={`${styles.slider_swipe_button_container}`}>
               <img
-                src="../../img/icons/main-default-arrow.svg"
+                src="/img/icons/main-default-arrow.svg"
                 alt="arrow right"
                 className={`${styles.swipe_button}`}
               />

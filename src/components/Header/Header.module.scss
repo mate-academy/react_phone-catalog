@@ -73,6 +73,10 @@
   transition: all .5s ease-in-out;
 }
 
+.active_link .header_nav_title{
+  color: $main-dark-gray;
+}
+
 .header_nav_title_wrapper {
   width: fit-content;
   height: 48px;
@@ -97,9 +101,7 @@
   border-bottom: 3px solid $main-dark-gray;
 }
 
-.active_link .header_nav_title{
-  color: $main-dark-gray;
-}
+
 
 .header_nav_buttons_container {
   width: 184px;

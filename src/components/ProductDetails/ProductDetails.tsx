@@ -18,7 +18,7 @@ export const ProductDetails: React.FC<Props> = ({
   disabledIds,
   setDisabledIds,
 }) => {
-  const phone = phones.find(phone => phone.id === phoneId);
+  const phone = phones.find(phone_ => phone_.id === phoneId);
   const [activePhone, setActivePhone] = useState(phone);
   const [image, setImage] = useState(activePhone?.images[0]);
   const [activeColor, setActiveColor] = useState<string | undefined>(
@@ -50,6 +50,7 @@ export const ProductDetails: React.FC<Props> = ({
         activePhone.capacity === iphone.capacity &&
         iphone.color === color,
     );
+
     if (newPhone) {
       setActiveColor(color);
       setActivePhone(newPhone);
@@ -68,9 +69,8 @@ export const ProductDetails: React.FC<Props> = ({
         iphone.capacity === capacity &&
         activePhone?.namespaceId === iphone.namespaceId,
     );
+
     if (newPhone) {
-      setActiveColor(newPhone.colorsAvailable[0]);
-      setImage(newPhone.images[0]);
       setActiveCapacity(capacity);
       setActivePhone(newPhone);
       navigate(`/phones/${newPhone.id}`);
@@ -78,7 +78,7 @@ export const ProductDetails: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    const phoneActive = phones.find(phone => phone.id === phoneIdFromUrl);
+    const phoneActive = phones.find(_phone => _phone.id === phoneIdFromUrl);
 
     if (phoneActive) {
       setActiveColor(phoneActive.color);
@@ -88,6 +88,7 @@ export const ProductDetails: React.FC<Props> = ({
       window.scrollTo({ top: 0 });
     }
   }, [navigate]);
+
   return (
     <>
       <div className={`${styles.details_main_container}`}>
@@ -122,7 +123,7 @@ export const ProductDetails: React.FC<Props> = ({
           />
           <p className={`${styles.details_back_text}`}>Back</p>
         </div>
-          <h1 className={`${styles.details_header}`}>{activePhone?.name}</h1>
+        <h1 className={`${styles.details_header}`}>{activePhone?.name}</h1>
         <div className={`${styles.details_main_info_container}`}>
           <img
             src={image}
@@ -275,40 +276,53 @@ export const ProductDetails: React.FC<Props> = ({
           </div>
         </div>
 
-        <div className={`${styles.details_descr_container}`}>
-          <div className={`${styles.details_descr_wrapper}`}>
-            <h3 className={`${styles.details_descr_title}`}>About</h3>
-            <hr className={`${styles.details_line} ${styles.margin_0}`} />
+        <div className={`${styles.details_main_descr_container}`}>
+          <div className={`${styles.details_descr_container}`}>
+            <div className={`${styles.details_descr_wrapper}`}>
+              <h3 className={`${styles.details_descr_title}`}>About</h3>
+              <hr className={`${styles.details_line} ${styles.margin_0}`} />
+            </div>
+            {activePhone?.description.map((descr, id) => {
+              return (
+                <div className={`${styles.details_descr_wrapper}`} key={id}>
+                  <h2 className={`${styles.details_descr_title}`}>
+                    {descr.title}
+                  </h2>
+                  <p className={`${styles.details_descr_text}`}>{descr.text}</p>
+                </div>
+              );
+            })}
           </div>
-          {activePhone?.description.map((descr, id) => {
-            return (
-              <div className={`${styles.details_descr_wrapper}`} key={id}>
-                <h2 className={`${styles.details_descr_title}`}>
-                  {descr.title}
-                </h2>
-                <p className={`${styles.details_descr_text}`}>{descr.text}</p>
-              </div>
-            );
-          })}
-        </div>
 
-        <div className={`${styles.details_tech_container}`}>
-          <h3 className={`${styles.details_descr_title}`}>Tech specs</h3>
-          <hr className={`${styles.details_line} ${styles.margin_bot_16}`} />
-          {Object.entries(techDetails).map(([label, phoneKey], id) => {
-            return (
-              <div className={classNames(`${styles.phone_charact}`)} key={id}>
-                <p className={`${styles.phone_charact_parag}`}>{label}</p>
-                <p
-                  className={`${styles.phone_charact_parag} ${styles.char_value}`}
+          <div className={`${styles.details_tech_container}`}>
+            <h3 className={`${styles.details_descr_title}`}>Tech specs</h3>
+            <hr className={`${styles.details_line} ${styles.margin_bot_16}`} />
+            {Object.entries(techDetails).map(([label, phoneKey], id) => {
+              return (
+                <div
+                  className={classNames(
+                    `${styles.phone_charact} ${styles.tech_charact}`,
+                  )}
+                  key={id}
                 >
-                  {Array.isArray(activePhone?.[phoneKey])
-                    ? (activePhone?.[phoneKey] as string[]).join(', ')
-                    : activePhone?.[phoneKey]}
-                </p>
-              </div>
-            );
-          })}
+                  <p
+                    className={`${styles.phone_charact_parag} ${styles.tech_charact_parag}`}
+                  >
+                    {label}
+                  </p>
+                  <p
+                    className={`${styles.phone_charact_parag}
+                  ${styles.tech_charact_parag} ${styles.char_value}
+                  ${styles.tech_char_value}`}
+                  >
+                    {Array.isArray(activePhone?.[phoneKey])
+                      ? (activePhone?.[phoneKey] as string[]).join(', ')
+                      : activePhone?.[phoneKey]}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <TitleAndButtonSlider
@@ -324,8 +338,8 @@ export const ProductDetails: React.FC<Props> = ({
           className={`${styles.details_scroll_container}`}
           id="scroll_container_also_like"
         >
-          {phones.map(phone => (
-            <ProductCard key={phone.id} phone={phone} />
+          {phones.map(phonei => (
+            <ProductCard key={phonei.id} phone={phonei} />
           ))}
         </div>
       </div>

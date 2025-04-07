@@ -11,8 +11,9 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
   const handlerActiveLinkClass = ({ isActive }: { isActive: boolean }) => {
     return classNames(`${styles.menu_link}`, {
       [styles.active_link]: isActive,
-    })
-  }
+    });
+  };
+
   return (
     <>
       <div className={`${styles.side_bar_container}`}>

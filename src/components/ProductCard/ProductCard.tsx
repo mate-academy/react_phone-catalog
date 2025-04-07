@@ -104,8 +104,8 @@ export const ProductCard: React.FC<Props> = ({ phone, onPage }) => {
             <img
               src={
                 clicked
-                  ? '../../img/icons/card-selected-like.svg'
-                  : '../../img/icons/card-default-like.svg'
+                  ? '/img/icons/card-selected-like.svg'
+                  : '/img/icons/card-default-like.svg'
               }
               alt="like button"
             />

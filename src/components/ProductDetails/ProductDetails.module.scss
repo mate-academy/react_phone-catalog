@@ -33,10 +33,6 @@
     margin-bottom: 40px;
   }
 
-  @include columns-3-grid {
-    width: 722px;
-  }
-
   @include on-desktop {
     width: 1136px;
   }
@@ -59,6 +55,15 @@
   color: $main-dark-gray;
 }
 
+.details_back_text {
+  font-family: Mont-Regular, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: $main-light-gray;
+  margin: 0;
+}
+
 .details_back_container {
   width: 288px;
   height: 16px;
@@ -77,10 +82,6 @@
     margin-bottom: 16px;
   }
 
-  @include columns-3-grid {
-    width: 722px;
-  }
-
   @include on-desktop {
     width: 1136px;
   }
@@ -88,24 +89,6 @@
 
 .details_back_icon {
   transform: rotate(180deg);
-}
-
-.details_back_text {
-  font-family: Mont-Regular, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 100%;
-  color: $main-light-gray;
-  margin: 0;
-}
-
-.details_main_info_container {
-  width: 100%;
-  @include flex-centered;
-  flex-direction: column;
-  @include on-tablet {
-    flex-direction: row;
-  }
 }
 
 .details_header {
@@ -124,8 +107,25 @@
     margin-bottom: 40px;
   }
 
-  @include columns-3-grid {
-    width: 722px;
+  @include on-desktop {
+    width: 1136px;
+  }
+}
+
+.details_main_info_container {
+  width: 288px;
+
+  @include flex-centered;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    width: 592px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 64px;
+    gap: 16px;
   }
 
   @include on-desktop {
@@ -138,6 +138,16 @@
   height: 288px;
   object-fit: contain;
   margin-bottom: 16px;
+  order: 2;
+
+  @include on-tablet {
+    margin: 0;
+  }
+
+  @include on-desktop {
+    width: 464px;
+    height: 464px;
+  }
 }
 
 .details_slider_image_container {
@@ -148,6 +158,17 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 40px;
+  order: 1;
+
+  @include on-tablet {
+    height: 100%;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  @include on-desktop {
+    height: 464px;
+  }
 }
 
 .details_slider_image_wrapper {
@@ -162,6 +183,16 @@
   &:hover {
     border: 1px solid $main-dark-gray;
   }
+
+  @include on-tablet {
+    width: 36px;
+    height: 36px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .details_active_image {
@@ -172,6 +203,16 @@
   width: 42px;
   height: 40px;
   object-fit: contain;
+
+  @include on-tablet {
+    width: 26px;
+    height: 26px;
+  }
+
+  @include on-desktop {
+    width: 70px;
+    height: 70px;
+  }
 }
 
 .details_controls_container {
@@ -182,6 +223,19 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 56px;
+  order: 3;
+
+  @include on-tablet {
+    width: 236px;
+    margin: 0;
+  }
+
+  @include on-desktop {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 512px;
+  }
 }
 
 .details_available_header_container {
@@ -191,6 +245,14 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+
+  @include on-tablet {
+    width: 236px;
+  }
+
+  @include on-desktop {
+    width: 512px;
+  }
 }
 
 .details_available_header {
@@ -223,6 +285,14 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
+
+  @include on-tablet {
+    width: 236px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
 }
 
 .details_color_wrapper {
@@ -260,6 +330,10 @@
   background-color: #E2E6E9;
   border: none;
   margin: 0 0 24px;
+
+  @include on-desktop {
+    width: 320px;
+  }
 }
 
 .margin_bot_32 {
@@ -295,6 +369,7 @@
   height: 32px;
   border: 1px solid $button-border-default;
   background-color: $main-background-white;
+
   @include flex-centered;
 }
 
@@ -326,6 +401,10 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
+
+  @include on-desktop {
+    width: 320px;
+  }
 }
 
 .price {
@@ -353,6 +432,10 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 32px;
+
+  @include on-desktop {
+    width: 320px;
+  }
 }
 
 .button {
@@ -381,6 +464,14 @@
     &:active {
       transform: scale(0.9);
     }
+
+    @include on-tablet {
+      width: 180px;
+    }
+
+    @include on-desktop {
+      width: 264px;
+    }
   }
 
   &_like {
@@ -401,6 +492,14 @@
 .phone_charact_container {
   width: 288px;
   height: 84px;
+
+  @include on-tablet {
+    width: 238px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
 }
 
 .phone_charact {
@@ -412,6 +511,13 @@
   flex-direction: row;
   margin-bottom: 8px;
 
+  @include on-tablet {
+    width: 238px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
 }
 
 .phone_charact_parag {
@@ -426,20 +532,48 @@
   color: $main-dark-gray;
 }
 
+.details_main_descr_container {
+  @include on-desktop {
+    width: 1136px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 64px;
+  }
+}
+
 .details_descr_container {
   width: 288px;
   height: fit-content;
+
   @include flex-centered;
   flex-direction: column;
   gap: 32px;
   margin-bottom: 56px;
+
+  @include on-tablet {
+    width: 592px;
+  }
+
+  @include on-desktop {
+    width: 560px;
+  }
 }
 
 .details_descr_wrapper {
   width: 288px;
   height: fit-content;
+
   @include flex-centered;
   flex-direction: column;
+
+  @include on-tablet {
+    width: 592px;
+  }
+
+  @include on-desktop {
+    width: 560px;
+  }
 }
 
 .details_descr_title {
@@ -450,6 +584,14 @@
   font-size: 16px;
   line-height: 100%;
   color: $main-dark-gray;
+
+  @include on-tablet {
+    width: 592px;
+  }
+
+  @include on-desktop {
+    width: 560px;
+  }
 }
 
 .details_descr_text {
@@ -460,6 +602,14 @@
   font-size: 14px;
   line-height: 21px;
   color: $main-light-gray;
+
+  @include on-tablet {
+    width: 592px;
+  }
+
+  @include on-desktop {
+    width: 560px;
+  }
 }
 
 .margin_0 {
@@ -472,7 +622,48 @@
 
 .details_tech_container {
   margin-bottom: 56px;
+
+  @include on-tablet {
+    width: 592px;
+  }
+
+  @include on-desktop {
+    width: 512px;
+  }
 }
+
+.tech_charact {
+  @include on-tablet {
+    width: 592px;
+  }
+
+  @include on-desktop {
+    width: 512px;
+  }
+}
+
+.tech_char_value {
+  @include on-tablet {
+    width: 592px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @include on-desktop {
+    width: 512px;
+  }
+}
+
+.tech_charact_parag {
+  @include on-tablet {
+    width: 592px;
+  }
+
+  @include on-desktop {
+    width: 512px;
+  }
+}
+
 .details_scroll_container {
   width: 288px;
   display: flex;
@@ -483,15 +674,13 @@
   gap: 16px;
   margin-bottom: 56px;
 
-  // @include on-tablet {
-  //   width: 592px;
-  //   margin-bottom: 64px;
-  // }
+  @include on-tablet {
+    width: 592px;
+  }
 
-  // @include on-desktop {
-  //   width: 1136px;
-  //   margin-bottom: 80px;
-  // }
+  @include on-desktop {
+    width: 1136px;
+  }
 }
 
 ::-webkit-scrollbar {

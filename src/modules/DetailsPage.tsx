@@ -10,6 +10,7 @@ type ContextType = {
 export const DetailsPage: React.FC = () => {
   const { phoneId } = useParams();
   const { disabledIds, setDisabledIds } = useOutletContext<ContextType>();
+
   return (
     <>
       <ProductDetails

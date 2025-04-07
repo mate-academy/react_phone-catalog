@@ -49,6 +49,75 @@ export const MobileCategory: React.FC<Props> = ({
     },
   ];
 
+  const sortByCount = () => {
+    if (itemsCount) {
+      return [
+        Number(itemsCount) * (Number(pageNum) - 1),
+        Number(itemsCount) * Number(pageNum),
+      ];
+    } else {
+      return [0, phones.length];
+    }
+  };
+
+  const sortByCategory = () => {
+    if (sortBy) {
+      const sortDirection = sortBy === 'Newest' ? -1 : 1;
+      const sortedPhones = [...phones].sort((a, b) => {
+        const productA = products.find(product => product.itemId === a.id);
+        const productB = products.find(product => product.itemId === b.id);
+
+        if (!productA || !productB) {
+          return 0;
+        }
+
+        return (productA.year - productB.year) * sortDirection;
+      });
+
+      return sortedPhones;
+    }
+
+    return phones;
+  };
+
+  const handleButtonClassName = (number: string) => {
+    return classNames([styles.mobile_page_num], {
+      [styles.selected_page]: pageNum === number,
+    });
+  };
+
+  const handlePageChange = (number: string) => {
+    setPageNum(number);
+  };
+
+  const handleButtonState = useCallback(() => {
+    let newDisabledIds = [...disabledIds];
+
+    if (pageNum === '1') {
+      newDisabledIds.push(5);
+    } else if (pageNum !== '1') {
+      newDisabledIds = newDisabledIds.filter(id => id !== 5);
+    }
+
+    if (pageNum === buttonsCount[buttonsCount.length - 1]) {
+      newDisabledIds.push(6);
+    } else if (pageNum !== buttonsCount[buttonsCount.length - 1]) {
+      newDisabledIds = newDisabledIds.filter(id => id !== 6);
+    }
+
+    if (JSON.stringify(newDisabledIds) !== JSON.stringify(disabledIds)) {
+      setDisabledIds(newDisabledIds);
+    }
+  }, [disabledIds, setDisabledIds, buttonsCount, pageNum]);
+
+  const handlePageChangeLeft = () => {
+    setPageNum((Number(pageNum) - 1).toString());
+  };
+
+  const handlePageChangeRigt = () => {
+    setPageNum((Number(pageNum) + 1).toString());
+  };
+
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, [pageNum]);
@@ -102,74 +171,6 @@ export const MobileCategory: React.FC<Props> = ({
 
     setButtonsCount(result);
   }, [itemsCount]);
-
-  const sortByCount = () => {
-    if (itemsCount) {
-      return [
-        Number(itemsCount) * (Number(pageNum) - 1),
-        Number(itemsCount) * Number(pageNum),
-      ];
-    } else {
-      return [0, phones.length];
-    }
-  };
-
-  const sortByCategory = () => {
-    if (sortBy) {
-      const sortDirection = sortBy === 'Newest' ? -1 : 1;
-      const sortedPhones = [...phones].sort((a, b) => {
-        const productA = products.find(product => product.itemId === a.id);
-        const productB = products.find(product => product.itemId === b.id);
-
-        if (!productA || !productB) {
-          return 0;
-        }
-
-        return (productA.year - productB.year) * sortDirection;
-      });
-
-      return sortedPhones;
-    }
-
-    return phones;
-  };
-
-  const handleButtonClassName = (number: string) => {
-    return classNames([styles.mobile_page_num], {
-      [styles.selected_page]: pageNum === number,
-    });
-  };
-
-  const handlePageChange = (number: string) => {
-    setPageNum(number);
-  };
-
-  const handleButtonState = useCallback(() => {
-    let newDisabledIds = [...disabledIds];
-    if (pageNum === '1') {
-      newDisabledIds.push(5);
-    } else if (pageNum !== '1') {
-      newDisabledIds = newDisabledIds.filter(id => id !== 5);
-    }
-
-    if (pageNum === buttonsCount[buttonsCount.length - 1]) {
-      newDisabledIds.push(6);
-    } else if (pageNum !== buttonsCount[buttonsCount.length - 1]) {
-      newDisabledIds = newDisabledIds.filter(id => id !== 6);
-    }
-
-    if (JSON.stringify(newDisabledIds) !== JSON.stringify(disabledIds)) {
-      setDisabledIds(newDisabledIds);
-    }
-  }, [disabledIds, setDisabledIds, buttonsCount, pageNum]);
-
-  const handlePageChangeLeft = () => {
-    setPageNum((Number(pageNum) - 1).toString());
-  };
-
-  const handlePageChangeRigt = () => {
-    setPageNum((Number(pageNum) + 1).toString());
-  };
 
   return (
     <>
