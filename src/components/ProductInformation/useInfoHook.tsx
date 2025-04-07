@@ -25,8 +25,8 @@ export const useInfoHook = () => {
   const [selecredColor, setSelectedColor] = useState<string | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
-  const { toggleCart } = useCart();
-  const { toggleFavorite } = useFavourites();
+  const { cart, toggleCart } = useCart();
+  const { favorites, toggleFavorite } = useFavourites();
 
   const [isAdded, setIsAdded] = useState<boolean>(false);
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
@@ -92,26 +92,20 @@ export const useInfoHook = () => {
 
   useEffect(() => {
     if (selectedPhone) {
-      const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-      const savedFavorites = JSON.parse(
-        localStorage.getItem('favorites') || '[]',
-      );
+      // const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+      // const savedFavorites = JSON.parse(
+      //   localStorage.getItem('favorites') || '[]',
+      // );
 
-      setIsAdded(
-        savedCart.some(
-          (item: ProductDetails) => String(item.id) === selectedPhone.id,
-        ),
-      );
+      setIsAdded(cart.some(item => String(item.itemId) === selectedPhone.id));
       setIsFavorite(
-        savedFavorites.some(
-          (item: ProductDetails) => String(item.id) === selectedPhone.id,
-        ),
+        favorites.some(item => String(item.itemId) === selectedPhone.id),
       );
 
-      setIsAdded(savedCart);
-      setIsFavorite(savedFavorites);
+      // setIsAdded(savedCart);
+      // setIsFavorite(savedFavorites);
     }
-  }, [selectedPhone]);
+  }, [selectedPhone, cart, favorites]);
 
   const handleToggleCart = () => {
     if (!selectedPhone) {
