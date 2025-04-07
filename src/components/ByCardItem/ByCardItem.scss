@@ -6,44 +6,43 @@
 }
 
 .buy__item {
-  background-color: $colorBlackBackground;
+  background-color: #161827;
   display: block;
   align-items: center;
   border: $colorBlackBackground 1px solid;
-  padding: 16px;
+  padding: 24px;
   justify-content: space-between;
 
   @include themify($themes) {
-    background: themed('colorHeaderFooter');
+    background: themed('colorCartBy');
   }
 
-  @include onTablet{
+  @include onTablet {
     display: block;
   }
 
-  @include onDesktop{
+  @include onDesktop {
     display: flex;
   }
 }
 
-
-.buy__firstwrapper{
+.buy__firstwrapper {
   display: flex;
   align-items: center;
   gap: 24px;
   padding-bottom: 16px;
 
-  @include onDesktop{
+  @include onDesktop {
     padding-bottom: 0;
   }
 }
 
-.buy__secondwrapper{
+.buy__secondwrapper {
   display: flex;
   align-items: center;
   gap: 24px;
 
-  @include onMobile{
+  @include onMobile {
     gap: 60px;
   }
 }
@@ -51,7 +50,7 @@
 .buy__deleteIcon {
   height: 16px;
   width: 16px;
-  margin-left: 24px;
+  // margin-left: 24px;
   cursor: pointer;
 }
 
@@ -61,7 +60,7 @@
   object-fit: contain;
 }
 
-.buy__title{
+.buy__title {
   font-family: Mont, sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -72,7 +71,7 @@
   }
 }
 
-.buy__price{
+.buy__price {
   font-family: Mont, sans-serif;
   font-weight: 800;
   font-size: 22px;
@@ -82,7 +81,7 @@
   }
 }
 
-.buy__number{
+.buy__number {
   width: 32px;
   height: 32px;
   display: flex;
@@ -94,6 +93,6 @@
   }
 }
 
-.buy__button{
+.buy__button {
   display: flex;
 }

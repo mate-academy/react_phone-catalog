@@ -2,11 +2,13 @@
 
 $themes: (
   dark: (
+    colorCartBy: #161827,
     colorHeaderFooter: $colorBlack,
     colorText: $colorWhite,
     colorBackround: $colorBlack,
   ),
   light: (
+    colorCartBy: $colorWhite,
     colorHeaderFooter: $colorWhite,
     colorText: $colorBlack,
     colorBackround: $colorWhite,

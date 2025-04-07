@@ -34,7 +34,7 @@ export const HomePage = () => {
       }
     };
 
-    const timeout = setTimeout(fetchData, 2000);
+    const timeout = setTimeout(fetchData, 1500);
 
     return () => clearTimeout(timeout);
   }, []);

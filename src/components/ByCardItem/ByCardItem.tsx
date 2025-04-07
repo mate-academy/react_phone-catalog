@@ -87,8 +87,6 @@ export const ByCardItem: React.FC<CartProps> = ({
           </div>
 
           <div className="buy__secondwrapper">
-            <p className="buy__price">{`$${totalPriceOneProduct}`}</p>
-
             <div className="buy__button">
               <button
                 className="buttonPrev"
@@ -99,6 +97,7 @@ export const ByCardItem: React.FC<CartProps> = ({
               >
                 -
               </button>
+
               <span className="buy__number">{quantity}</span>
               <button
                 className="buttonNext"
@@ -110,6 +109,7 @@ export const ByCardItem: React.FC<CartProps> = ({
                 +
               </button>
             </div>
+            <p className="buy__price">{`$${totalPriceOneProduct}`}</p>
           </div>
         </div>
       </div>

@@ -80,8 +80,8 @@ export const CardPage = () => {
         </div>
       )}
       {isModalOpen && (
-        <div className="modal">
-          <div className="modal__content">
+        <div className="modal" onClick={() => setIsModalOpen(false)}>
+          <div className="modal__content" onClick={e => e.stopPropagation()}>
             <h2 className="modal__title">Are you sure you want to buy this?</h2>
             <p className="window__price">{`Total: $${totalCartPrice}`}</p>
             <div className="modalbutton__wrapper">
