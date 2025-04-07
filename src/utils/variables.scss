@@ -1,7 +1,7 @@
-@mixin flex_centered {
+@mixin flex-centered {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 @keyframes bounce {
@@ -18,9 +18,8 @@
 
 $button-border-default: #B4BDC3;
 $button-border-disabled: #E2E6E9;
-$main-background-white: #FFFFFF;
+$main-background-white: #FFF;
 $main-dark-gray: #313237;
 $main-light-gray: #89939A;
-
 $tablet-min-width: 640px;
 $desktop-min-width: 1200px

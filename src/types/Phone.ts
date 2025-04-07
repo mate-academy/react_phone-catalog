@@ -23,4 +23,4 @@ export type Phone = {
 export type Description = {
   title: string;
   text: string[];
-}
+};

@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Header } from '../Header/Header';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from './MobileCategory.module.scss';
 import phones from '../../../public/api/phones.json';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { Footer } from '../Footer/Footer';
 import { DropDown } from '../Dropdown/DropDown';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import products from '../../../public/api/products.json';
+import { Button } from '../Button/Button';
+import { ButtonDirection } from '../../enums/ButtonDirection';
 
 type Props = {
-  setActiveAside: (arg: boolean) => void;
-  width: number;
+  setDisabledIds: (arg: number[]) => void;
   disabledIds: number[];
 };
 
 export const MobileCategory: React.FC<Props> = ({
-  setActiveAside,
-  width,
+  setDisabledIds,
   disabledIds,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -50,6 +48,15 @@ export const MobileCategory: React.FC<Props> = ({
       name: '20',
     },
   ];
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [pageNum]);
+
+  useEffect(() => {
+    setTimeout(() => handleButtonState(), 1000);
+  }, [pageNum, buttonsCount, disabledIds]);
+
   // url params
   useEffect(() => {
     const newParams = new URLSearchParams(searchParams.toString());
@@ -59,31 +66,40 @@ export const MobileCategory: React.FC<Props> = ({
     } else {
       newParams.delete('count');
     }
+
     if (sortBy) {
       newParams.set('sortBy', sortBy);
     } else {
       newParams.delete('sortBy');
     }
+
     if (pageNum) {
-      pageNum !== '1' && newParams.set('pageNum', pageNum);
+      if (pageNum !== '1') {
+        newParams.set('pageNum', pageNum);
+      }
     } else {
       newParams.delete('pageNum');
     }
 
-    setSearchParams(newParams);
-  }, [itemsCount, sortBy, pageNum, setSearchParams]);
+    if (newParams.toString() !== searchParams.toString()) {
+      setSearchParams(newParams);
+    }
+  }, [itemsCount, sortBy, pageNum, setSearchParams, searchParams]);
 
   // buttons count
   useEffect(() => {
     let numOfButtons;
+
     if (itemsCount) {
       numOfButtons = Math.ceil(phones.length / Number(itemsCount));
     } else {
       numOfButtons = 1;
     }
+
     const result = Array.from({ length: numOfButtons }, (_, i) =>
       (i + 1).toString(),
     );
+
     setButtonsCount(result);
   }, [itemsCount]);
 
@@ -105,12 +121,16 @@ export const MobileCategory: React.FC<Props> = ({
         const productA = products.find(product => product.itemId === a.id);
         const productB = products.find(product => product.itemId === b.id);
 
-        if (!productA || !productB) return 0;
+        if (!productA || !productB) {
+          return 0;
+        }
 
         return (productA.year - productB.year) * sortDirection;
       });
+
       return sortedPhones;
     }
+
     return phones;
   };
 
@@ -122,12 +142,37 @@ export const MobileCategory: React.FC<Props> = ({
 
   const handlePageChange = (number: string) => {
     setPageNum(number);
-    window.scrollTo({ top: 0 });
+  };
+
+  const handleButtonState = useCallback(() => {
+    let newDisabledIds = [...disabledIds];
+    if (pageNum === '1') {
+      newDisabledIds.push(5);
+    } else if (pageNum !== '1') {
+      newDisabledIds = newDisabledIds.filter(id => id !== 5);
+    }
+
+    if (pageNum === buttonsCount[buttonsCount.length - 1]) {
+      newDisabledIds.push(6);
+    } else if (pageNum !== buttonsCount[buttonsCount.length - 1]) {
+      newDisabledIds = newDisabledIds.filter(id => id !== 6);
+    }
+
+    if (JSON.stringify(newDisabledIds) !== JSON.stringify(disabledIds)) {
+      setDisabledIds(newDisabledIds);
+    }
+  }, [disabledIds, setDisabledIds, buttonsCount, pageNum]);
+
+  const handlePageChangeLeft = () => {
+    setPageNum((Number(pageNum) - 1).toString());
+  };
+
+  const handlePageChangeRigt = () => {
+    setPageNum((Number(pageNum) + 1).toString());
   };
 
   return (
     <>
-      <Header setActiveAside={setActiveAside} width={width} />
       <div className={`${styles.mobile_main_container}`}>
         <div className={`${styles.mobile_path_container}`}>
           <img
@@ -149,7 +194,13 @@ export const MobileCategory: React.FC<Props> = ({
 
         <div className={`${styles.mobile_main_select_container}`}>
           <div className={`${styles.mobile_select_container}`}>
-            <p className={`${styles.mobile_select_parag}`}>Sort by</p>
+            <p
+              className={classNames(
+                `${styles.mobile_select_parag} ${styles.first_select_button}`,
+              )}
+            >
+              Sort by
+            </p>
             <DropDown
               id={'0'}
               data={sortByData}
@@ -167,23 +218,32 @@ export const MobileCategory: React.FC<Props> = ({
             />
           </div>
         </div>
+
         <div className={`${styles.mobile_phones_container}`}>
           {sortByCategory()
             .slice(sortByCount()[0], sortByCount()[1])
             .map(phone => (
-              <ProductCard phone={phone} key={phone.id} />
+              <ProductCard phone={phone} key={phone.id} onPage={true} />
             ))}
         </div>
 
         <div className={`${styles.mobile_button_container}`}>
-          <button
+          {/* <button
             className={`${styles.mobile_arrow_button} ${styles.mobile_arrow_left}`}
+            onClick={() => handleOnButtonPageChange('left')}
           >
             <img
               src="../../img/icons/main-default-arrow.svg"
               alt="left arrow"
             />
-          </button>
+          </button> */}
+          <Button
+            direction={ButtonDirection.left}
+            onClick={handlePageChangeLeft}
+            buttonId={5}
+            disabledIds={disabledIds}
+          />
+
           <div className={`${styles.mobile_page_num_container}`}>
             {buttonsCount.map((button, id) => {
               return (
@@ -197,15 +257,23 @@ export const MobileCategory: React.FC<Props> = ({
               );
             })}
           </div>
-          <button className={`${styles.mobile_arrow_button}`}>
+          {/* <button
+            className={`${styles.mobile_arrow_button}`}
+            onClick={() => handleOnButtonPageChange('right')}
+          >
             <img
               src="../../img/icons/main-default-arrow.svg"
               alt="right arrow"
             />
-          </button>
+          </button> */}
+          <Button
+            direction={ButtonDirection.right}
+            onClick={handlePageChangeRigt}
+            buttonId={6}
+            disabledIds={disabledIds}
+          />
         </div>
       </div>
-      <Footer disabledIds={disabledIds} />
     </>
   );
 };

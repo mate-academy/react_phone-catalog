@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import styles from './HeaderSlider.module.scss';
 import classNames from 'classnames';
@@ -53,45 +54,48 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      index < 2 ? setIndex(index + 1) : setIndex(0);
+      if (index < 2) {
+        setIndex(index + 1);
+      } else {
+        setIndex(0);
+      }
     }, 3000);
+
     return () => clearTimeout(timer);
   }, [index]);
 
   return (
     <>
       {width < 640 && (
-        <>
-          <div className={`${styles.slider_container}`}>
-            <div className={`${styles.slider_img_wrapper}`}>
-              {ImageCollectionPhone.map((image, id) => {
-                return (
-                  <img
-                    key={id}
-                    src={image.src}
-                    alt={image.alt}
-                    className={classNames(`${styles.slider_img}`, {
-                      [styles.active]: index === id,
+        <div className={`${styles.slider_container}`}>
+          <div className={`${styles.slider_img_wrapper}`}>
+            {ImageCollectionPhone.map((image, id) => {
+              return (
+                <img
+                  key={id}
+                  src={image.src}
+                  alt={image.alt}
+                  className={classNames(`${styles.slider_img}`, {
+                    [styles.active]: index === id,
+                  })}
+                />
+              );
+            })}
+          </div>
+          <div className={`${styles.slider_button_container}`}>
+            <div className={`${styles.slider_button_inner_container}`}>
+              {ImageCollectionPhone.map((_, idNum) => (
+                <div className={styles.slider_button_wrapper} key={idNum}>
+                  <div
+                    className={classNames(styles.slider_button, {
+                      [styles.marked]: index === idNum,
                     })}
-                  />
-                );
-              })}
-            </div>
-            <div className={`${styles.slider_button_container}`}>
-              <div className={`${styles.slider_button_inner_container}`}>
-                {ImageCollectionPhone.map((_, idNum) => (
-                  <div className={styles.slider_button_wrapper} key={idNum}>
-                    <div
-                      className={classNames(styles.slider_button, {
-                        [styles.marked]: index === idNum,
-                      })}
-                    ></div>
-                  </div>
-                ))}
-              </div>
+                  ></div>
+                </div>
+              ))}
             </div>
           </div>
-        </>
+        </div>
       )}
       {width >= 640 && (
         <div className={`${styles.slider_container}`}>

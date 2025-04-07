@@ -1,12 +1,18 @@
 import React from 'react';
 import styles from './SideBar.module.scss';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 
 type Props = {
   setActiveAside: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
+  const handlerActiveLinkClass = ({ isActive }: { isActive: boolean }) => {
+    return classNames(`${styles.menu_link}`, {
+      [styles.active_link]: isActive,
+    })
+  }
   return (
     <>
       <div className={`${styles.side_bar_container}`}>
@@ -30,14 +36,14 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
         <div className={`${styles.menu_container}`}>
           <NavLink
             to="/"
-            className={`${styles.menu_link} ${styles.active_link}`}
+            className={handlerActiveLinkClass}
             onClick={() => setActiveAside(false)}
           >
             <p className={`${styles.menu_title}`}>home</p>
           </NavLink>
           <NavLink
             to="/phones"
-            className={`${styles.menu_link}`}
+            className={handlerActiveLinkClass}
             onClick={() => setActiveAside(false)}
           >
             <p className={`${styles.menu_title}`}>phones</p>

@@ -1,18 +1,16 @@
 @use './variables.scss' as *;
 
-@mixin header_button {
+@mixin header-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 48px;
   height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $main-background-white;
   border: none;
   border-left: 1px solid $button-border-disabled;
-  @include on-desktop() {
-    width: 64px;
-    height: 64px;
-  }
+
+  background-color: $main-background-white;
 }
 
 @mixin on-tablet() {
@@ -23,6 +21,27 @@
 
 @mixin on-desktop() {
   @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin columns-1-grid() {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+@mixin columns-2-grid() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+@mixin columns-3-grid() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin columns-4-grid() {
+  @media (min-width: 1200px) {
     @content;
   }
 }

@@ -29,6 +29,17 @@
   align-items: center;
 }
 
+.header_nav_close_button {
+  @include flex_centered;
+
+  width: 16px;
+  height: 16px;
+  background: none;
+  border: none;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+}
+
 .header_nav_close_container {
   width: 48px;
   height: 48px;
@@ -38,27 +49,22 @@
   background-color: $main-background-white;
   border-left: 1px solid $button-border-disabled;
   box-sizing: border-box;
+
   &:hover {
     border: 1px solid $main-dark-gray;
     cursor: pointer;
   }
+
   &:hover .header_nav_close_button{
     transform: rotate(90deg) scale(1.1);
   }
 }
 
-.header_nav_close_button {
-  @include flex_centered;
-  width: 16px;
-  height: 16px;
-  background: none;
-  border: none;
-  transition: all .5s ease-in-out;
-  cursor: pointer;
-}
+
 
 .menu_container {
   @include flex_centered;
+
   flex-direction: column;
   gap: 16px;
 }
@@ -67,16 +73,10 @@
   text-decoration: none;
 }
 
-.active_link {
-  border-bottom: 2px solid $main-dark-gray;
-  .menu_title {
-    color: $main-dark-gray;
-  }
-}
-
 .menu_title {
   @include flex_centered;
-  font-family: 'Mont-Bold', sans-serif;
+
+  font-family: Mont-Bold, sans-serif;
   font-weight: 800;
   font-size: 12px;
   line-height: 12px;
@@ -85,11 +85,22 @@
   margin: 0;
   text-transform: uppercase;
   color: $main-light-gray;
+
   &:hover {
     color: $main-dark-gray;
     animation: bounce .5s ease-in-out;
   }
 }
+
+.active_link {
+  border-bottom: 2px solid $main-dark-gray;
+
+  .menu_title {
+    color: $main-dark-gray;
+  }
+}
+
+
 
 .footer_container {
   position: fixed;
@@ -102,28 +113,34 @@
   border-top: 1px solid $main-light-gray;
 }
 
+.footer_img_icon {
+  transition: all .5s ease-in-out;
+}
+
+
 .footer_button {
   width: calc(100vw / 2);
   height: 64px;
   background-color: $main-background-white;
   border: none;
+
   &:first-child {
     border-right: 1px solid $main-light-gray;
   }
+
   &:hover {
     cursor: pointer;
     border: 1px solid $main-dark-gray;
   }
+
   &:hover .footer_img_icon {
     transform: scale(1.2);
   }
+
   &:active .footer_img_icon {
     transform: scale(.8);
   }
 }
 
-.footer_img_icon {
-  transition: all .5s ease-in-out;
-}
 
 

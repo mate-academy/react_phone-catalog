@@ -27,6 +27,19 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
+
+  @include on-tablet {
+    width: 592px;
+    margin-bottom: 40px;
+  }
+
+  @include columns-3-grid {
+    width: 722px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+  }
 }
 
 .mobile_header_icon {
@@ -35,7 +48,7 @@
 }
 
 .mobile_path {
-  font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-Regular, sans-serif;
   font-weight: 600;
   font-size: 12px;
   line-height: 100%;
@@ -43,7 +56,7 @@
 }
 
 .mobile_header {
-  font-family: 'Mont-Bold', sans-serif; 
+  font-family: Mont-Bold, sans-serif;
   font-weight: 800;
   font-size: 32px;
   line-height: 42px;
@@ -51,27 +64,69 @@
   color: $main-dark-gray;
   width: 288px;
   height: 42px;
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
+
+  @include on-tablet {
+    width: 592px;
+    font-size: 48px;
+    line-height: 56px;
+    height: 56px;
+  }
+
+  @include columns-3-grid {
+    width: 722px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+  }
 }
 
 .mobile_models_count {
-  font-family: 'Mont-Regular', sans-serif; 
+  font-family: Mont-Regular, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   color: $main-light-gray;
   width: 288px;
   height: 21px;
-  margin: 0 0 32px 0;
+  margin: 0 0 32px;
+
+  @include on-tablet {
+    width: 592px;
+    margin: 0 0 40px;
+  }
+
+  @include columns-3-grid {
+    width: 722px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+  }
 }
 
 .mobile_main_select_container {
   width: 288px;
   height: 60px;
   @include flex_centered;
+
   flex-direction: row;
   gap: 16px;
   margin-bottom: 24px;
+
+  @include on-tablet {
+    width: 592px;
+    justify-content: flex-start;
+  }
+
+  @include columns-3-grid {
+    width: 722px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+  }
 }
 
 .mobile_select_container {
@@ -82,10 +137,22 @@
   align-items: center;
   flex-direction: column;
   gap: 4px;
+
+  @include on-tablet {
+    &:first-child {
+      width: 188px;
+    }
+  }
+
+  @include on-tablet {
+    &:first-child {
+      width: 176px;
+    }
+  }
 }
 
 .mobile_select_parag {
-  font-family: 'Mont-Regular', sans-serif; 
+  font-family: Mont-Regular, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
@@ -93,6 +160,16 @@
   width: 136px;
   margin: 0;
   height: 16px;
+}
+
+.first_select_button {
+  @include on-tablet {
+    width: 188px;
+  }
+
+  @include columns-3-grid {
+    width: 176px;
+  }
 }
 
 .mobile_select_custom {
@@ -113,13 +190,34 @@
 }
 
 .mobile_phones_container {
-  width: 288px;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  gap: 40px;
+  row-gap: 40px;
   margin-bottom: 24px;
+
+  @include on-tablet {
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 288px);
+    column-gap: 16px;
+  }
+
+  @include columns-3-grid {
+    grid-template-columns: repeat(3, 230px);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 272px);
+  }
+}
+
+.mobile_phone_wrapper {
+  .product_card_container {
+    width: 288px;
+  }
 }
 
 .mobile_button_container {
@@ -141,6 +239,7 @@
   align-items: center;
   background-color: $main-background-white;
   border: 1px solid $button-border-default;
+
   &:hover {
     cursor: pointer;
     border: 1px solid $main-dark-gray;
@@ -166,12 +265,13 @@
   height: 32px;
   border: 1px solid $button-border-disabled;
   background-color: $main-background-white;
-  font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-Regular, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   color: $main-dark-gray;
   box-sizing: border-box;
+
   &:hover {
     cursor: pointer;
     border: 1px solid $main-dark-gray;

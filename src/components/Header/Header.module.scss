@@ -17,11 +17,13 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  @include on-tablet() {
+
+  @include on-tablet {
     margin-bottom: 32px;
     height: 48px;
   }
-  @include on-desktop() {
+
+  @include on-desktop {
     margin-bottom: 56px;
     height: 64px;
     gap: 24px;
@@ -33,22 +35,42 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  @include on-desktop() {
+
+  @include on-desktop {
     width: 128px
   }
 }
 
 .header_nav_link {
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  height: 100%
 }
 
 .header_nav_pages_container {
   @include flex_centered;
+
   flex-direction: row;
   gap: 32px;
-  @include on-desktop() {
+
+  @include on-desktop {
     gap: 64px;
   }
+}
+
+.header_nav_title {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: .04em;
+  color: $main-light-gray;
+  text-transform: uppercase;
+}
+
+.header_nav_title_wrapper .header_nav_title {
+  transition: all .5s ease-in-out;
 }
 
 .header_nav_title_wrapper {
@@ -63,32 +85,19 @@
     animation: bounce .5s ease-in-out;
   }
   @include flex_centered;
+
   box-sizing: border-box;
-  @include on-desktop() {
+
+  @include on-desktop {
     height: 64px;
   }
 }
-
-.header_nav_title_wrapper .header_nav_title {
-  transition: all .5s ease-in-out;
-}
-
 
 .active_wrapper {
   border-bottom: 3px solid $main-dark-gray;
 }
 
-.header_nav_title {
-  font-family: "Mont-Bold", sans-serif;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: .04em; // .04em === 4%
-  color: $main-light-gray;
-  text-transform: uppercase;
-}
-
-.active_link {
+.active_link .header_nav_title{
   color: $main-dark-gray;
 }
 
@@ -98,16 +107,24 @@
   justify-content: flex-end;
   align-items: center;
   flex-direction: row;
-  @include on-desktop() {
+
+  @include on-desktop {
     width: 600px;
   }
 }
+
 .header_nav_icon {
   transition: all .5s ease-in-out;
 }
 
 .header_nav_favourite_button {
-  @include header_button;
+  @include header-button;
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
   &:hover {
     cursor: pointer;
     border: 1px solid $main-dark-gray;
@@ -121,7 +138,13 @@
 }
 
 .header_nav_shop_bag_button {
-  @include header_button;
+  @include header-button;
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
   &:hover {
     cursor: pointer;
     border: 1px solid $main-dark-gray;
@@ -134,21 +157,9 @@
   }
 }
 
-.header_nav_burger_container {
-  @include header_button;
-  box-sizing: border-box;
-  &:hover {
-    border: 1px solid $main-dark-gray;
-    cursor: pointer;
-  }
-  &:hover .header_nav_burger_button {
-    transform: rotate(-180deg) scale(1.1);
-    
-  }
-}
-
 .header_nav_burger_button {
   @include flex_centered;
+
   width: 16px;
   height: 16px;
   background: none;
@@ -156,4 +167,27 @@
   cursor: pointer;
   transition: all .5s ease-in-out;
 }
+
+.header_nav_burger_container {
+  @include header-button;
+
+  box-sizing: border-box;
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  &:hover {
+    border: 1px solid $main-dark-gray;
+    cursor: pointer;
+  }
+
+  &:hover .header_nav_burger_button {
+    transform: rotate(-180deg) scale(1.1);
+    
+  }
+}
+
+
 

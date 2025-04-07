@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Button.module.scss';
 import classNames from 'classnames';
 import { ButtonDirection } from '../../enums/ButtonDirection';
@@ -21,13 +21,18 @@ export const Button: React.FC<Props> = ({
     <>
       <button
         className={classNames(`${styles.button_wrapper}`, {
-          [styles.disabled]: Array.isArray(disabledIds) && disabledIds.includes(buttonId),
+          [styles.disabled]:
+            Array.isArray(disabledIds) && disabledIds.includes(buttonId),
         })}
         onClick={onClick}
         disabled={Array.isArray(disabledIds) && disabledIds.includes(buttonId)}
       >
         <img
-          src={Array.isArray(disabledIds) && disabledIds.includes(buttonId) ? ButtonUrl.disabled : ButtonUrl.default}
+          src={
+            Array.isArray(disabledIds) && disabledIds.includes(buttonId)
+              ? ButtonUrl.disabled
+              : ButtonUrl.default
+          }
           alt={`arrow ${direction}`}
           className={`${styles[direction]}`}
         />

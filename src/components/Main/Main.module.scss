@@ -20,14 +20,20 @@
   align-items: center;
   overflow-x: scroll;
   flex-direction: row;
-  @include on-tablet() {
+  gap: 16px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
     width: 592px;
-    // margin-left: 24px;
+    margin-bottom: 64px;
   }
-  @include on-desktop() {
+
+  @include on-desktop {
     width: 1136px;
-    // margin-left: 32px;
+    margin-bottom: 80px;
   }
-}::-webkit-scrollbar {
+}
+
+::-webkit-scrollbar {
   display: none;
 }

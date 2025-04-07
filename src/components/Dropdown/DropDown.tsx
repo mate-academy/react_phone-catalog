@@ -30,7 +30,10 @@ export const DropDown: React.FC<DropdownProps> = ({
   const [selectedItem, setSelectedItem] = useState<DropdownItem | null>(null);
 
   const handleChange = (item: DropdownItem) => {
-    onSelect && onSelect(item.id);
+    if (onSelect) {
+      onSelect(item.id);
+    }
+
     setSort(item.name);
     setIsOpen(false);
   };
@@ -39,15 +42,18 @@ export const DropDown: React.FC<DropdownProps> = ({
     if (id === '0') {
       const sortParam = searchParams.get('sortBy');
       const newSelectedItem = data.find(item => item.name === sortParam);
+
       setSelectedItem(newSelectedItem || null);
     } else if (id === '1') {
       const countParam = searchParams.get('count');
       const newSelectedItem = data.find(item => item.name === countParam);
+
       setSelectedItem(newSelectedItem || null);
     }
   }, [searchParams, data, id]);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+
   useOutsideClick({
     ref: dropdownRef,
     handler: () => setIsOpen(false),
@@ -55,7 +61,12 @@ export const DropDown: React.FC<DropdownProps> = ({
 
   return (
     <>
-      <div ref={dropdownRef} className={`${styles.select_container}`}>
+      <div
+        ref={dropdownRef}
+        className={classNames([styles.select_container], {
+          [styles.dropdown_button_first]: id === '0',
+        })}
+      >
         <button
           id={id}
           aria-label="Toggle dropdown"
@@ -63,7 +74,9 @@ export const DropDown: React.FC<DropdownProps> = ({
           aria-expanded={isOpen}
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className={classNames([styles.dropdown_button])}
+          className={classNames([styles.dropdown_button], {
+            [styles.dropdown_button_first]: id === '0',
+          })}
         >
           <span>{selectedItem?.name || title}</span>
           <GoChevronDown
@@ -76,7 +89,9 @@ export const DropDown: React.FC<DropdownProps> = ({
         {isOpen && (
           <div
             aria-label="Dropdown menu"
-            className={`${styles.main_option_container}`}
+            className={classNames(`${styles.main_option_container}`, {
+              [styles.dropdown_button_first]: id === '0',
+            })}
           >
             <ul
               role="menu"

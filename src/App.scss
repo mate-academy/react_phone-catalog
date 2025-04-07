@@ -1,25 +1,25 @@
-// not empty
-
 html, body {
+  scroll-behavior: smooth;
+
+  overflow-x: hidden;
+
+  box-sizing: border-box;
+  width: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  // overflow: visible;
-  scroll-behavior: smooth;
 }
 
 .SideBar {
   position: fixed;
+  z-index: 20;
   left: -100vw;
   transition: left .5s ease-in-out;
-  z-index: 20;
 }
 
 .activeSideBar {
   left: 0;
 }
+
 .inactiveSideBar {
   left: -100vw;
 }

@@ -1,30 +1,36 @@
 @use '../../utils/variables.scss' as *;
 
 .button_wrapper {
-  background-color: $main-background-white;
-  @include flex_centered;
+  @include flex-centered;
+
+  cursor: pointer;
+
   width: 32px;
   height: 32px;
   border: 1px solid $button-border-default;
-  cursor: pointer;
+
+  background-color: $main-background-white;
+
   transition: all 0.5s ease-in-out;
 
   &:hover {
-    border: 1px solid $main-dark-gray;
     transform: scale(1.1);
+    border: 1px solid $main-dark-gray;
   }
+
   &:active {
     transform: scale(0.9);
   }
 }
 
 .disabled {
-  border: 1px solid $button-border-disabled;
   cursor: not-allowed;
+  border: 1px solid $button-border-disabled;
   transition: none;
+
   &:hover {
-    border: 1px solid $button-border-disabled;
     transform: none;
+    border: 1px solid $button-border-disabled;
   }
 }
 
