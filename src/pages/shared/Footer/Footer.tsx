@@ -28,7 +28,7 @@ export const Footer: FC = () => {
 
         <div className="footer__items">
           <Link
-            to="/"
+            to="https://github.com/Manuilenkoart"
             className="footer__link"
             target="_blank"
             rel="noopener noreferrer"

@@ -47,6 +47,12 @@
     height: 16px;
   }
 
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
   &__title {
     font-family: Mont-Regular, sans-serif;
     font-size: 14px;

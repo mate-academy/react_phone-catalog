@@ -134,4 +134,35 @@ export const icons: Record<string, Icon> = {
       path: './icons/home_dark.svg',
     },
   },
+
+  plus: {
+    light: {
+      title: 'Plus icon',
+      path: './icons/plus.svg',
+    },
+    dark: {
+      title: 'Plus dark icon',
+      path: './icons/plus_dark.svg',
+    },
+  },
+  minus: {
+    light: {
+      title: 'Minus icon',
+      path: './icons/minus.svg',
+    },
+    dark: {
+      title: 'Minus dark icon',
+      path: './icons/minus_dark.svg',
+    },
+  },
+  minus__disabled: {
+    light: {
+      title: 'Minus icon',
+      path: './icons/minus__disabled.svg',
+    },
+    dark: {
+      title: 'Minus dark icon',
+      path: './icons/minus_dark__disabled.svg',
+    },
+  },
 };
