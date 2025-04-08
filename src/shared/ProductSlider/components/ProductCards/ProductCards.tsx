@@ -14,6 +14,10 @@ export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
     'favourites',
     [],
   );
+  const [shoppingBag, setShoppingBag] = useLocalStorage<Record<number, number>>(
+    'shopping-bag',
+    {},
+  );
 
   const toggleFavourites = (id: number) => {
     const newItem = products.find(item => item.id === id)?.id;
@@ -29,6 +33,19 @@ export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
 
       setFavourites(deleteFavourites);
     }
+  };
+
+  const addToShoppingBag = (id: number) => {
+    const newItem = products.find(item => item.id === id)?.id;
+
+    if (!newItem) {
+      return;
+    }
+
+    setShoppingBag({
+      ...shoppingBag,
+      [newItem]: 1,
+    });
   };
 
   return (
@@ -64,7 +81,12 @@ export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
             </div>
           </div>
           <div className={s.card__buttons}>
-            <button className={s.card__buttons_add}>Add to cart</button>
+            <button
+              className={s.card__buttons_add}
+              onClick={() => addToShoppingBag(product.id)}
+            >
+              Add to cart
+            </button>
             <button
               className={s.card__buttons_like}
               onClick={() => {

@@ -18,6 +18,10 @@ export const ItemCard = () => {
     'favourites',
     [],
   );
+  const [shoppingBag, setShoppingBag] = useLocalStorage<number[]>(
+    'shopping-bag',
+    [],
+  );
   const getProductId = (id: string) => {
     return products.find(item => item.itemId === id)?.id || 0;
   };
@@ -35,6 +39,18 @@ export const ItemCard = () => {
       const deleteFavourites = favourites.filter(item => item !== newItem);
 
       return setFavourites(deleteFavourites);
+    }
+  };
+
+  const addToShoppingBag = (id: string) => {
+    const newItem = getProductId(id);
+
+    if (!newItem) {
+      return;
+    }
+
+    if (!shoppingBag.find(item => item === newItem)) {
+      return setShoppingBag([...shoppingBag, newItem]);
     }
   };
 
@@ -121,15 +137,14 @@ export const ItemCard = () => {
               <button
                 className={s.previews__controls_buttons_add}
                 aria-label="Add to cart"
+                onClick={() => addToShoppingBag(product.id)}
               >
                 Add to cart
               </button>
               <button
                 className={s.previews__controls_buttons_like}
                 aria-label="Add to favourites"
-                onClick={() => {
-                  toggleFavourites(product.id);
-                }}
+                onClick={() => toggleFavourites(product.id)}
               >
                 {favourites.includes(getProductId(product.id)) ? (
                   <img

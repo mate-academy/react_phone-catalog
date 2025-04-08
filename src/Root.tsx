@@ -9,6 +9,7 @@ import { Accessories } from './modules/Accessories';
 import { ItemCard } from './modules/ItemCard';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { Favourites } from './modules/Favourites';
+import { ShoppingBag } from './modules/ShoppingBag';
 
 export const Root = () => (
   <ProductProvider>
@@ -36,6 +37,10 @@ export const Root = () => (
             </Route>
             <Route path="favourites">
               <Route index element={<Favourites />} />
+              <Route path=":productId" element={<ItemCard />} />/
+            </Route>
+            <Route path="shopping-bag">
+              <Route index element={<ShoppingBag />} />
               <Route path=":productId" element={<ItemCard />} />/
             </Route>
           </Route>
