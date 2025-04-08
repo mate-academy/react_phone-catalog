@@ -2,7 +2,8 @@
 @import '../ColorThemes/ColorThemes.scss';
 
 .slider__image {
-  width: 320px;
+  width: 100%;
+  // width: 320px;
   height: 320px;
   object-fit: cover;
   transition: transform 0.5s ease;
@@ -12,12 +13,12 @@
   }
 
   @include onTablet {
-    width: 592px;
+    // width: 592px;
     height: 221px;
   }
 
   @include onDesktop {
-    width: 1040px;
+    // width: 1040px;
     height: 400px;
   }
 }
@@ -37,13 +38,17 @@
   }
 }
 
-.slider__wrapper{
+.slider__wrapper {
   display: flex;
   gap: 16px;
 
+  @include onTablet {
+    padding: 0 24px;
+  }
 }
 
 .custom-next {
+  display: none;
   color: #f1f2f9;
   width: 32px;
   background-color: $colorDarkGray;
@@ -57,10 +62,21 @@
   @include themify($themes) {
     background-color: themed('colorSwiperBG');
     color: themed('colorSwiperText');
+  }
+
+  @include onTablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include onDesktop {
+    display: flex;
   }
 }
 
 .custom-prev {
+  display: none;
   color: #f1f2f9;
   width: 32px;
   background-color: $colorDarkGray;
@@ -74,5 +90,15 @@
   @include themify($themes) {
     background-color: themed('colorSwiperBG');
     color: themed('colorSwiperText');
+  }
+
+  @include onTablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include onDesktop {
+    display: flex;
   }
 }
