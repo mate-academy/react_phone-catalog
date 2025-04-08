@@ -41,6 +41,7 @@
 .product__image {
   height: 281px;
   object-fit: cover;
+  transition: all 1s ease;
 
   &:hover {
     transform: scale(1.05);

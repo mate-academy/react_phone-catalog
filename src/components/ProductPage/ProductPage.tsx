@@ -149,6 +149,7 @@ export const ProductPage = () => {
                         setCurrentPage(number);
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
+                      disabled={currentPage === number}
                     >
                       {number}
                     </button>

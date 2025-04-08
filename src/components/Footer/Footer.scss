@@ -71,6 +71,10 @@
   @include themify($themes) {
     color: themed('colorText');
   }
+
+  &:hover{
+    color: #969595;
+  }
 }
 
 .footer__button {
@@ -100,4 +104,5 @@
   height: 32px;
   background-color: $colorDarkGray;
   border: 1px solid $colorDarkGray;
+  cursor: pointer;
 }

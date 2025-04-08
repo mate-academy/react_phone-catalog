@@ -2,12 +2,16 @@
 
 $themes: (
   dark: (
+    colorSwiperBG: $colorDarkGray,
+    colorSwiperText: #f1f2f9,
     colorCartBy: #161827,
     colorHeaderFooter: $colorBlack,
     colorText: $colorWhite,
     colorBackround: $colorBlack,
   ),
   light: (
+    colorSwiperBG: $colorWhite,
+    colorSwiperText: $colorDarkGray,
     colorCartBy: $colorWhite,
     colorHeaderFooter: $colorWhite,
     colorText: $colorBlack,

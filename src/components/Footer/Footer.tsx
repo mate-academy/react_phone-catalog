@@ -25,15 +25,24 @@ export const Footer = () => {
             <img src={isDarkMode ? logo : BlackLogo} alt="Logo" />
           </div>
           <ul className="footer-brand">
-            <NavLink className="footer-item" to="/">
+            <NavLink
+              className="footer-item"
+              to="https://github.com/taniavozniuk"
+              target="_blank"
+            >
               Github
             </NavLink>
 
-            <NavLink className="footer-item" to="/">
+            <NavLink
+              className="footer-item"
+              // eslint-disable-next-line max-len
+              to="https://www.linkedin.com/in/%D1%82%D0%B0%D0%BD%D1%8F-%D0%B2%D0%BE%D0%B7%D0%BD%D1%8E%D0%BA-3192432a3/"
+              target="_blank"
+            >
               Contacts
             </NavLink>
 
-            <NavLink className="footer-item" to="/">
+            <NavLink className="footer-item" to="/" target="_blank">
               rights
             </NavLink>
           </ul>

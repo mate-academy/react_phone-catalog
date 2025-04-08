@@ -25,20 +25,27 @@ export const SliderSwiper = () => {
   const images = isMobile ? mobileImages : desktopImages;
 
   return (
-    <Swiper
-      modules={[Autoplay, Navigation, Pagination]}
-      spaceBetween={30}
-      slidesPerView={1}
-      navigation
-      autoplay={{ delay: 5000, disableOnInteraction: false }}
-      pagination={{ clickable: true }}
-      effect="fade"
-    >
-      {images.map((image, index) => (
-        <SwiperSlide key={index}>
-          <img src={image} alt={`Slide ${index}`} className="slider__image" />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="slider__wrapper">
+      <button className="custom-prev">‹</button>
+      <Swiper
+        modules={[Autoplay, Navigation, Pagination]}
+        spaceBetween={30}
+        slidesPerView={1}
+        navigation={{
+          prevEl: '.custom-prev',
+          nextEl: '.custom-next',
+        }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
+        effect="fade"
+      >
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <img src={image} alt={`Slide ${index}`} className="slider__image" />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <button className="custom-next">›</button>
+    </div>
   );
 };

@@ -9,12 +9,14 @@
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -1px;
+  padding: 0 20px;
   // padding: 0 16px;
   color: $colorWhite;
 
   @include onTablet {
     width: 80%;
     margin: 32px 24px;
+
   }
 
   @include onMobile {
@@ -31,7 +33,7 @@
   margin-top: 56px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  // padding: 0 20px;
 }
 
 .category__wraperr{

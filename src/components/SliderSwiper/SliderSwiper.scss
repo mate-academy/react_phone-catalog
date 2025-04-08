@@ -1,4 +1,5 @@
 @import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
 
 .slider__image {
   width: 320px;
@@ -36,18 +37,42 @@
   }
 }
 
-.swiper-button-next {
-  color: $colorDarkGray;
+.slider__wrapper{
+  display: flex;
+  gap: 16px;
+
+}
+
+.custom-next {
+  color: #f1f2f9;
+  width: 32px;
+  background-color: $colorDarkGray;
+  border: 1px solid $colorDarkGray;
 
   &:hover {
     color: $colorWhite;
+    background-color: $colorButtons;
+  }
+
+  @include themify($themes) {
+    background-color: themed('colorSwiperBG');
+    color: themed('colorSwiperText');
   }
 }
 
-.swiper-button-prev {
-  color: $colorDarkGray;
+.custom-prev {
+  color: #f1f2f9;
+  width: 32px;
+  background-color: $colorDarkGray;
+  border: 1px solid $colorDarkGray;
 
   &:hover {
     color: $colorWhite;
+    background-color: $colorButtons;
+  }
+
+  @include themify($themes) {
+    background-color: themed('colorSwiperBG');
+    color: themed('colorSwiperText');
   }
 }
