@@ -97,7 +97,7 @@
     display: flex;
 
 
-    & div {
+    & button, & div {
       height: 32px;
       width: 32px;
       display: flex;
@@ -107,13 +107,16 @@
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;
+      background-color: transparent;
     }
 
     &_subtract {
       border: 1px solid $elements;
-    }
 
-    // &_quantity {}
+      &:disabled {
+        color: $icons;
+      }
+    }
 
     &_add {
       border: 1px solid $elements;
@@ -123,8 +126,12 @@
 
   &__price {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
+
+    @include on-tablet {
+      width: 80px;
+    }
   }
 }
 
@@ -177,4 +184,11 @@
     color: $white;
     border: none;
   }
+}
+
+.empty {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+
+
 }

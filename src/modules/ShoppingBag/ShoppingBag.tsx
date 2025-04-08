@@ -1,15 +1,12 @@
 import { useContext } from 'react';
 import s from './ShoppingBag.module.scss';
 import { ProductContext } from '../../shared/context/ProductsContext';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Link } from 'react-router-dom';
+import { RightButtonContext } from '../../shared/context/RightButtonContext';
 
 export const ShoppingBag = () => {
   const { products } = useContext(ProductContext);
-  const [shoppingBag, setShoppingBag] = useLocalStorage<Record<number, number>>(
-    'shopping-bag',
-    {},
-  );
+  const { shoppingBag, setShoppingBag } = useContext(RightButtonContext);
   const shoppingBagProducts = products.filter(item =>
     shoppingBag.hasOwnProperty(item.id),
   );
@@ -33,6 +30,12 @@ export const ShoppingBag = () => {
     setShoppingBag(updatedShoppingBag);
   };
 
+  const totalPrice = shoppingBagProducts.reduce((total, product) => {
+    const quantity = shoppingBag[product.id] || 0;
+
+    return total + product.price * quantity;
+  }, 0);
+
   return (
     <div className="container">
       <div className={s.header__title}>
@@ -43,59 +46,74 @@ export const ShoppingBag = () => {
         <h2>Cart</h2>
       </div>
       <div className={s.cart__wrapper}>
-        {shoppingBagProducts.map(product => (
-          <div className={s.cart} key={product.id}>
-            <div className={s.cart__header}>
-              <div
-                className={s.cart__delete}
-                onClick={() => removeItem(product.id)}
-              >
-                <img
-                  src="./img/icons/close.png"
-                  alt="delete from shopping bag"
-                />
-              </div>
-              <div className={s.cart__photo}>
-                <img src={product.image} alt={product.name} />
-              </div>
-              <div className={s.cart__title}>{product.name}</div>
-            </div>
-            <div className={s.cart__bottom}>
-              <div className={s.cart__buttons}>
+        {shoppingBagProducts.length > 0 ? (
+          shoppingBagProducts.map(product => (
+            <div className={s.cart} key={product.id}>
+              <div className={s.cart__header}>
                 <div
-                  className={s.cart__buttons_subtract}
-                  onClick={() => changeQuantity(product.id, 'decrement')}
+                  className={s.cart__delete}
+                  onClick={() => removeItem(product.id)}
                 >
-                  -
+                  <img
+                    src="./img/icons/close.png"
+                    alt="delete from shopping bag"
+                  />
                 </div>
-                <div className={s.cart__buttons_quantity}>
-                  {shoppingBag[product.id]}
+                <div className={s.cart__photo}>
+                  <img src={product.image} alt={product.name} />
                 </div>
-                <div
-                  className={s.cart__buttons_add}
-                  onClick={() => changeQuantity(product.id, 'increment')}
-                >
-                  +
-                </div>
+                <div className={s.cart__title}>{product.name}</div>
               </div>
+              <div className={s.cart__bottom}>
+                <div className={s.cart__buttons}>
+                  <button
+                    className={s.cart__buttons_subtract}
+                    onClick={() => changeQuantity(product.id, 'decrement')}
+                    disabled={shoppingBag[product.id] === 1}
+                  >
+                    -
+                  </button>
+                  <div className={s.cart__buttons_quantity}>
+                    {shoppingBag[product.id]}
+                  </div>
+                  <button
+                    className={s.cart__buttons_add}
+                    onClick={() => changeQuantity(product.id, 'increment')}
+                  >
+                    +
+                  </button>
+                </div>
 
-              <div className={s.cart__price}>
-                <h3>${product.price}</h3>
+                <div className={s.cart__price}>
+                  <h3>${product.price}</h3>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <h1 className={s.empty}>Your cart is empty</h1>
+        )}
         <div className={s.price__wrapper}>
           <div className={s.price}>
             <div className={s.price__title}>
-              <h2>
-                $
-                {shoppingBagProducts.reduce((sum, item) => sum + item.price, 0)}
-              </h2>
+              <h2>${totalPrice}</h2>
               <p>Total for {shoppingBagProducts.length} items</p>
             </div>
             <div className={s.price__line}></div>
-            <button type="button" className={s.price__checkout}>
+            <button
+              type="button"
+              className={s.price__checkout}
+              onClick={() => {
+                const confirmed = window.confirm(
+                  // eslint-disable-next-line max-len
+                  'Checkout is not implemented yet. Do you want to clear the Cart?',
+                );
+
+                if (confirmed) {
+                  setShoppingBag({});
+                }
+              }}
+            >
               Checkout
             </button>
           </div>

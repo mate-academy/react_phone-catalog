@@ -1,25 +1,17 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import s from './RightButtons.module.scss';
 import classNames from 'classnames';
 import { BurgerContext } from '../../../context/BurgerContext';
 import { NavLink } from 'react-router-dom';
-import { useLocalStorage } from '../../../../hooks/useLocalStorage';
+import { RightButtonContext } from '../../../context/RightButtonContext';
 
 type Props = {
   burgerMenu?: boolean;
 };
 
 export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
-  const [favourites] = useLocalStorage('favourites', []);
-  const [shoppingBag] = useLocalStorage<Record<number, number>>(
-    'shopping-bag',
-    {},
-  );
-
-  const shoppingBagLength = useMemo(
-    () => Object.keys(shoppingBag).length,
-    [shoppingBag],
-  );
+  const { favouritesLength, shoppingBagLength } =
+    useContext(RightButtonContext);
 
   const onMobile = { [s.onMobile]: burgerMenu };
   const { burgerMenuActivate, setBurgerMenuActivate } =
@@ -41,7 +33,7 @@ export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
         onClick={burgerMenu ? toggleBurgerMenu : undefined}
       >
         <img src="./img/icons/favourites.png" alt="favourite" />
-        <span>{favourites.length}</span>
+        <span>{favouritesLength}</span>
       </NavLink>
       <NavLink
         to={'shopping-bag'}

@@ -6,7 +6,7 @@ import { CatalogHeaderPath } from '../../shared/CatalogHeaderPath';
 import { ProductSlider } from '../../shared/ProductSlider';
 import { Link } from 'react-router-dom';
 import { useProduct } from '../../hooks/useProduct';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { RightButtonContext } from '../../shared/context/RightButtonContext';
 
 export const ItemCard = () => {
   const { product } = useProduct();
@@ -14,14 +14,9 @@ export const ItemCard = () => {
   const [indexOfPhoto, setIndexOfPhoto] = useState(0);
   const [productColor, setProductColor] = useState(0);
   const [productCapacity, setProductCapacity] = useState(0);
-  const [favourites, setFavourites] = useLocalStorage<number[]>(
-    'favourites',
-    [],
-  );
-  const [shoppingBag, setShoppingBag] = useLocalStorage<number[]>(
-    'shopping-bag',
-    [],
-  );
+  const { favourites, setFavourites, shoppingBag, setShoppingBag } =
+    useContext(RightButtonContext);
+
   const getProductId = (id: string) => {
     return products.find(item => item.itemId === id)?.id || 0;
   };
@@ -49,9 +44,10 @@ export const ItemCard = () => {
       return;
     }
 
-    if (!shoppingBag.find(item => item === newItem)) {
-      return setShoppingBag([...shoppingBag, newItem]);
-    }
+    setShoppingBag({
+      ...shoppingBag,
+      [newItem]: 1,
+    });
   };
 
   if (!product) {

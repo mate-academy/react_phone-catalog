@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Product } from '../../../../types/Products';
 import s from './ProductCards.module.scss';
 import { Link } from 'react-router-dom';
-import { useLocalStorage } from '../../../../hooks/useLocalStorage';
+import { RightButtonContext } from '../../../context/RightButtonContext';
 
 type Props = {
   products: Product[];
@@ -10,14 +10,8 @@ type Props = {
 };
 
 export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
-  const [favourites, setFavourites] = useLocalStorage<number[]>(
-    'favourites',
-    [],
-  );
-  const [shoppingBag, setShoppingBag] = useLocalStorage<Record<number, number>>(
-    'shopping-bag',
-    {},
-  );
+  const { favourites, setFavourites, shoppingBag, setShoppingBag } =
+    useContext(RightButtonContext);
 
   const toggleFavourites = (id: number) => {
     const newItem = products.find(item => item.id === id)?.id;
