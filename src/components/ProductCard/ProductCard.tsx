@@ -1,26 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { addFavouriteProduct } from '../../services/productsApi';
+import { useFavourites } from '../Favourites/FavouritesContext';
+import { useCartProducts } from '../Cart/CartContext';
 
 type Props = {
   product: Product;
-  category: string;
   onPage?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, category, onPage }) => {
-  const [clicked, setClicked] = useState(false);
+export const ProductCard: React.FC<Props> = ({ product, onPage }) => {
+  const { favourites, toggleFavourite } = useFavourites();
+  const { cartProducts, toggleCartProduct} = useCartProducts();
+  const isFavourite = favourites.some(fav => fav.id === product.id);
+  const isInCart = cartProducts.some(item => item.id === product.id);
 
-  const handleAddToFavourite = () => {
-    if (clicked) {
-      setClicked(false);
-    } else {
-      setClicked(true);
-    }
-    addFavouriteProduct(product);
+  const handletoggleFavourite = (e: React.MouseEvent) => {
+    e.stopPropagation;
+    toggleFavourite(product);
+  }
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation;
+    toggleCartProduct(product);
   }
 
   return (
@@ -36,7 +40,7 @@ export const ProductCard: React.FC<Props> = ({ product, category, onPage }) => {
           })}
         >
           <Link
-            to={`/${category}/${product.id}`}
+            to={`/${product.category}/${product.id}`}
             className={`${styles.title_link} ${styles.img_wrapper}`}
           >
             <img
@@ -46,7 +50,7 @@ export const ProductCard: React.FC<Props> = ({ product, category, onPage }) => {
             />
           </Link>
           <Link
-            to={`/${category}/${product.id}`}
+            to={`/${product.category}/${product.id}`}
             className={`${styles.title_link} ${styles.title_wrapper}`}
           >
             <h3 className={`${styles.title}`}>{product.name}</h3>
@@ -104,17 +108,19 @@ export const ProductCard: React.FC<Props> = ({ product, category, onPage }) => {
           <button
             className={classNames(`${styles.button} ${styles.button_add}`, {
               [styles.button_add_on_page]: onPage,
+              [styles.button_in_cart]: isInCart,
             })}
+            onClick={handleAddToCart}
           >
-            Add to cart
+            {isInCart ? 'Selected' : 'Add to cart'}
           </button>
           <button
             className={`${styles.button} ${styles.button_like}`}
-            onClick={handleAddToFavourite}
+            onClick={handletoggleFavourite}
           >
             <img
               src={
-                clicked
+                isFavourite
                   ? './img/icons/card-selected-like.svg'
                   : './img/icons/card-default-like.svg'
               }

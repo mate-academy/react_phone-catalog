@@ -9,9 +9,3 @@ export const getProducts = (category: string) => {
 export const getAllProducts = () => {
   return client.get<Products[]>(`api/products.json`)
 }
-
-export const addFavouriteProduct = (product: Product) => {
-  return client.post<Product>(`api/favourites.json`, product)
-}
-
-// export const addProduct = ({})

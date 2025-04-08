@@ -73,10 +73,6 @@
   transition: all .5s ease-in-out;
 }
 
-.active_link .header_nav_title{
-  color: $main-dark-gray;
-}
-
 .header_nav_title_wrapper {
   width: fit-content;
   height: 48px;
@@ -97,9 +93,6 @@
   }
 }
 
-.active_wrapper {
-  border-bottom: 3px solid $main-dark-gray;
-}
 
 
 
@@ -121,6 +114,7 @@
 
 .header_nav_favourite_button {
   @include header-button;
+  box-sizing: border-box;
 
   @include on-desktop {
     width: 64px;
@@ -191,5 +185,53 @@
   }
 }
 
+.active_link .header_nav_title{
+  color: $main-dark-gray;
+}
 
+.active_wrapper {
+  border-bottom: 3px solid $main-dark-gray;
+}
 
+.active_fav_and_shop_wrapper {
+  &:hover {
+    border-bottom: 3px solid $main-dark-gray;
+  }
+}
+
+.header_fav_count {
+  @include on-tablet {
+    position: absolute;
+    @include flex_centered;
+    width: 14px;
+    height: 14px;
+    background-color: #EB5757;
+    color: $main-background-white;
+    border-radius: 50%;
+    font-family: Mont-Bold, sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 100%;
+    outline: 1px solid $main-background-white;
+    top: 10px;
+    right: 58px;
+    z-index: 10;
+  }
+
+  @include on-desktop {
+    top: 18px;
+    right: 82px;
+  }
+}
+
+.active_cart {
+
+  @include on-tablet {
+    top: 10px;
+    right: 10px;
+  }
+
+  @include on-desktop {
+    right: 18px;
+  }
+}

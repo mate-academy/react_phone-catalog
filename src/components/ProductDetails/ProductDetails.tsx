@@ -8,6 +8,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { getAllProducts, getProducts } from '../../services/productsApi';
 import { Products } from '../../types/Products';
 import { TechDetails } from '../../utils/TechDetails';
+import { ZoomImage } from '../ZoomImage/ZoomImage';
 
 type Props = {
   productId?: string;
@@ -126,7 +127,6 @@ export const ProductDetails: React.FC<Props> = ({
     <>
       {activeData.length > 0 && product && (
         <>
-        {console.log(product)}
           <div className={`${styles.details_main_container}`}>
             <div className={`${styles.details_path_container}`}>
               <img
@@ -161,15 +161,9 @@ export const ProductDetails: React.FC<Props> = ({
               />
               <p className={`${styles.details_back_text}`}>Back</p>
             </div>
-            <h1 className={`${styles.details_header}`}>
-              {product?.name}
-            </h1>
+            <h1 className={`${styles.details_header}`}>{product?.name}</h1>
             <div className={`${styles.details_main_info_container}`}>
-              <img
-                src={image || product.images[0]}
-                alt="phone image"
-                className={`${styles.details_main_image}`}
-              />
+              <ZoomImage src={image || product.images[0]} />
 
               <div className={`${styles.details_slider_image_container}`}>
                 {product?.images.map((img, id) => {
@@ -241,7 +235,9 @@ export const ProductDetails: React.FC<Props> = ({
                                 activeCapacity === capacity,
                             },
                           )}
-                          onClick={() => handleCapacityChange(capacity, activeColor)}
+                          onClick={() =>
+                            handleCapacityChange(capacity, activeColor)
+                          }
                         >
                           <p className={`${styles.details_capacity_amount}`}>
                             {capacity}
@@ -399,7 +395,6 @@ export const ProductDetails: React.FC<Props> = ({
                 <ProductCard
                   key={productItem.id}
                   product={productItem}
-                  category={`${activeData[0].category}`}
                 />
               ))}
             </div>
