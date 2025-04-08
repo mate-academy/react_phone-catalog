@@ -1,0 +1,55 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.description {
+  order: 5;
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  &__titles {
+    margin-bottom: 16px;
+    margin-top: 16px;
+  }
+
+  &__about {
+    width: 100%;
+  }
+
+  &__specs {
+    margin-top: 56px;
+    width: 100%;
+
+    @include on-desktop {
+      margin-top: 0;
+    }
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.divider {
+  width: 100%;
+  border-top: 1px solid $element-color;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}

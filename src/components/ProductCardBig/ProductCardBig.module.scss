@@ -1,0 +1,189 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 287px;
+  height: 440px;
+  border: 1px solid $element-color;
+  transition: all $duration $type;
+  color: $primary-color;
+
+  &__name {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
+
+  &__name:hover {
+    cursor: pointer;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30.8px;
+    letter-spacing: 0;
+    margin-right: 8px;
+  }
+
+  &__oldPrice {
+    color: $secondary-color;
+    text-decoration: line-through;
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  &__discountPrice {
+    display: flex;
+    align-items: center;
+  }
+
+
+  &__description {
+    padding: 0 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  @include on-tablet {
+    width: 288px;
+    height: 506px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
+
+  &__imageContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 148px;
+    height: 129px;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: 173px;
+      height: 181px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+      height: 196px;
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    height: 0;
+    border-bottom: 1px solid $element-color;
+  }
+
+  &__params {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__param {
+    color: $secondary-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15.34px;
+    letter-spacing: 0;
+  }
+
+  &__value {
+    color: $primary-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15.34px;
+    letter-spacing: 0;
+    text-align: right;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__buttons {
+    display: flex;
+    margin-top: 8px;
+    gap: 8px;
+  }
+
+  &__buttonAdd {
+    border: 0;
+    color: $white-color;
+    background-color: $primary-color;
+    padding: 9.5px;
+    width: 175px;
+    height: 40px;
+    cursor: pointer;
+    transition: all $duration $type;
+
+    &:hover {
+      box-shadow: 0 3px 13px $shadow-color;
+    }
+
+    &:active {
+      box-shadow: 0 3px 13px $shadow-color;
+      border: 1px solid $element-color;
+      background-color: $white-color;
+      color: $green-color;
+    }
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-tablet {
+      width: 160px;
+    }
+  }
+
+  &__buttonAdd--added {
+    box-shadow: none;
+    border: 1px solid $element-color;
+    background-color: $white-color;
+    color: $green-color;
+  }
+
+  &__buttonFav {
+    border: 1px solid $icon-color;
+    color: $primary-color;
+    background-color: $white-color;
+    min-height: 40px;
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $duration $type;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+  }
+}
+
+.card:hover {
+  border: 1px solid $primary-color;
+  box-shadow: 0 2px 16px $shadow-color;
+  ;
+}
