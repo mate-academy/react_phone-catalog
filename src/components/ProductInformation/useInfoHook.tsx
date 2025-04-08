@@ -49,7 +49,7 @@ export const useInfoHook = () => {
         .finally(() => {
           setLoading(false);
         });
-    }, 1500);
+    }, 500);
 
     return () => {
       clearTimeout(timeout);

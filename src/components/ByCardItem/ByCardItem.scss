@@ -40,10 +40,10 @@
 .buy__secondwrapper {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 60px;
 
-  @include onMobile {
-    gap: 60px;
+  @include onDesktop {
+    gap: 24px;
   }
 }
 
@@ -75,6 +75,7 @@
   font-family: Mont, sans-serif;
   font-weight: 800;
   font-size: 22px;
+  width: 70px;
 
   @include themify($themes) {
     color: themed('colorText');
