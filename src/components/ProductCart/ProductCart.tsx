@@ -14,7 +14,7 @@ export const ProductCart: React.FC<ProductCartProps> = ({
   item,
   hideFullPrice,
 }) => {
-  const { dispatch: cartDispatch } = useCart();
+  const { state: cartState, dispatch: cartDispatch } = useCart();
   const { state: favoritesState, dispatch: favoritesDispatch } = useFavorites();
   const isFavorite = favoritesState.items.some(
     favoriteItem => favoriteItem.product.id === item.id,
@@ -30,6 +30,8 @@ export const ProductCart: React.FC<ProductCartProps> = ({
       },
     });
   };
+
+  const isInCart = cartState.items.some(cartItem => cartItem.id === item.id);
 
   const toggleFavorite = () => {
     if (isFavorite) {
@@ -73,9 +75,17 @@ export const ProductCart: React.FC<ProductCartProps> = ({
         </div>
       </div>
       <div className={styles.cart__buttons}>
-        <button className={styles.add} onClick={() => handleAddToCart(item)}>
-          Add to cart
+        <button
+          className={
+            !isInCart
+              ? `${styles.add} ${styles.button}`
+              : `${styles.added} ${styles.button}`
+          }
+          onClick={!isInCart ? () => handleAddToCart(item) : undefined}
+        >
+          {!isInCart ? 'Add to cart' : 'Added'}
         </button>
+
         <button
           className={`${styles.favorite} ${isFavorite ? styles.active : ''}`}
           onClick={() => toggleFavorite()}

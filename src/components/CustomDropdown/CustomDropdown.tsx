@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './CustomDropdown.module.scss';
 
 interface Option {
@@ -20,21 +20,42 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
   string,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleSelect = (optionValue: string) => {
     onChange(optionValue);
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className={styles.dropdown}>
+    <div className={styles.dropdown} ref={dropdownRef}>
       <div
         onClick={() => setIsOpen(!isOpen)}
         className={`${styles.label} smallText`}
       >
         {string}
       </div>
-      <div className={styles.selected} onClick={() => setIsOpen(!isOpen)}>
+      <div
+        className={`${styles.selected} buttons`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         {options.find(option => option.value === selected)?.label || 'Select'}
       </div>
       {isOpen && (
@@ -43,7 +64,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
             <li
               key={option.value}
               onClick={() => handleSelect(option.value)}
-              className={option.value === selected ? styles.active : ''}
+              className={`${option.value === selected ? styles.active : ''} bodyText`}
             >
               {option.label}
             </li>

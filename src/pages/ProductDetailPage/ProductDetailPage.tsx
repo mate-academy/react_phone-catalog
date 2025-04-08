@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useParams, useLocation } from 'react-router-dom';
 import styles from './ProductDetailPage.module.scss';
 import { ProductDetails } from '../../types';
 import { ProductSlider } from '../../components/ProductSlider';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { VectorBreadCrumbs } from '../../components/VectorBreadCrumbs';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper';
+import 'swiper/css';
 
 export const ProductDetailPage: React.FC = () => {
   const { product, productId } = useParams();
@@ -42,6 +46,8 @@ export const ProductDetailPage: React.FC = () => {
 
     return parts.join('-');
   };
+
+  const swiperRef = useRef<SwiperType | null>(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -88,6 +94,13 @@ export const ProductDetailPage: React.FC = () => {
     }
   }, [productDetail, location.pathname]);
 
+  const handleSlideChange = (swiper: SwiperType) => {
+    const activeIndex = swiper.activeIndex;
+    const newImage = productDetail?.images[activeIndex] || '';
+
+    setSelectedImage(newImage);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -100,28 +113,66 @@ export const ProductDetailPage: React.FC = () => {
     return <div>Product not found</div>;
   }
 
+  const colorMap: Record<string, string> = {
+    black: '#000000',
+    white: '#FFFFFF',
+    red: '#FF0000',
+    blue: '#0000FF',
+    green: '#008000',
+    gray: '#808080',
+    spacegray: '#4A4A4A',
+    starlight: '#E5C29F',
+    midnight: '#222C39',
+    purple: '#800080',
+    yellow: '#FFFF00',
+    graphite: '#4B4F54',
+    gold: '#FFD700',
+    sierrablue: '#A1B6D6',
+    rosegold: '#B76E79',
+    silver: '#C0C0C0',
+    pink: '#FFC0CB',
+    skyblue: '#87CEEB',
+    spaceblack: '#101820',
+    midnightgreen: '#004953',
+  };
+
   return (
     <div className={styles.container}>
       <BreadCrumbs name={productDetail.name}></BreadCrumbs>
       <VectorBreadCrumbs></VectorBreadCrumbs>
       <h2 className={styles.title}>{productDetail.name}</h2>
       <div className={styles.section}>
-        <div className={styles.container__images}>
-          <img
-            src={selectedImage}
-            alt={productDetail.name}
-            className={styles.image}
-          />
-        </div>
+        <Swiper
+          effect="flip"
+          grabCursor={true}
+          className={styles.container__images}
+          onSlideChange={handleSlideChange}
+          onSwiper={swiper => {
+            swiperRef.current = swiper;
+          }}
+        >
+          {productDetail.images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img
+                src={image}
+                alt={productDetail.name}
+                className={styles.image}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
         <div className={styles.selectImage}>
-          {productDetail.images.map(image => (
+          {productDetail.images.map((image, index) => (
             <div
               className={`${styles.imageDiv} ${selectedImage === image ? styles.selectedImage : ''}`}
               key={image}
             >
               <img
-                onClick={() => setSelectedImage(image)}
+                onClick={() => {
+                  setSelectedImage(image);
+                  swiperRef.current?.slideTo(index);
+                }}
                 className={styles.image}
                 src={image}
               />
@@ -138,8 +189,12 @@ export const ProductDetailPage: React.FC = () => {
                   <NavLink
                     className={`${styles.colorDiv} ${selectedColor === color ? styles.selectedColor : ''}`}
                     key={color}
-                    style={{ backgroundColor: color }}
+                    style={{ backgroundColor: colorMap[color] }}
                     to={`/${product}/${getNewIdColor(color)}`}
+                    onClick={() => {
+                      setSelectedImage(productDetail?.images[0] || '');
+                      swiperRef.current?.slideTo(0);
+                    }}
                   />
                 ))}
               </div>
@@ -155,6 +210,10 @@ export const ProductDetailPage: React.FC = () => {
                     className={`${styles.capacityDiv} ${selectedCapacity === capacity.toLowerCase() ? styles.selectedCapacity : ''}`}
                     key={capacity}
                     to={`/${product}/${getNewIdCapacity(capacity)}`}
+                    onClick={() => {
+                      setSelectedImage(productDetail?.images[0] || '');
+                      swiperRef.current?.slideTo(0);
+                    }}
                   >
                     {capacity}
                   </NavLink>

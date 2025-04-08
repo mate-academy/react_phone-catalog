@@ -91,11 +91,9 @@
     display: grid;
     justify-content: space-between;
 
-    .add{
+    .button{
       grid-column: span 3;
-      background: rgba(33, 108, 255, 1);
       border-radius: 8px;
-      border: none;
       font-family: Mont, sans-serif;
       font-size: 14px;
       font-weight: 700;
@@ -103,9 +101,14 @@
       text-align: center;
       text-underline-position: from-font;
       text-decoration-skip-ink: none;
-      color: #fff;
       min-width: 100px;
       cursor: pointer;
+    }
+
+    .add{
+      background: rgba(33, 108, 255, 1);
+      border: none;
+      color: #fff;
 
       &:hover{
         border: 1px solid rgba(33, 108, 255, 1);
@@ -113,6 +116,12 @@
         background-color: inherit;
         transition-duration: 0.5s;
       }
+    }
+
+    .added{
+      background-color: white;
+      color: rgba(33, 108, 255, 1);
+      border: 1px solid rgba(226, 230, 233, 1);
     }
 
     .favorite{

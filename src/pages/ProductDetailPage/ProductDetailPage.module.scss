@@ -24,8 +24,9 @@
   &__images{
     grid-column: span 4;
     height: 288px;
-    background-color: white;
     margin-bottom: 16px;
+    overflow: hidden;
+    max-width: 100%;
 
     @include on-tablet{
       grid-column: span 6;
@@ -33,6 +34,19 @@
 
     @include on-desktop{
       grid-column: span 10;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100% !important;
+      height: 100% !important;
     }
 
     .image{

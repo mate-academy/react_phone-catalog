@@ -34,6 +34,10 @@ export const ProductPage = () => {
     setSearchParams(params);
   }, [perPage, sortBy, currentPage, setSearchParams]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [perPage]);
+
   const filteredProducts = jsonData.filter(item => item.category === product);
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
