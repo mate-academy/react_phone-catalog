@@ -12,6 +12,7 @@ import { Phones } from './components/modules/Phones/Phones';
 import { Cart } from './components/modules/Cart/Cart';
 import { routes } from './components/shared/Routs/Routs';
 import { Accessories } from './components/modules/Accessories/Accessories';
+import { Favorites } from './components/modules/Favorites/Favorites';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
@@ -23,7 +24,7 @@ createRoot(document.getElementById('root') as HTMLElement).render(
             <Route path={routes.phones} element={<Phones />} />
             <Route path={routes.tablets} element={<Tablets />} />
             <Route path={routes.accessories} element={<Accessories />} />
-            {/* <Route path={routs.fav} element={</>} /> */}
+            <Route path={routes.fav} element={<Favorites />} />
             <Route path={routes.cart} element={<Cart />} />
             <Route path="*" element={<p>Page not found</p>}></Route>
           </Route>

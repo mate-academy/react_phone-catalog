@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './Header.style.scss';
 
 import burger from '../../../../public/icons/menu.svg';
@@ -9,8 +9,10 @@ import favIcon from '../../../../public/icons/favourites.svg';
 import cart from '../../../../public/icons/shopping-cart.svg';
 import { routes } from '../Routs/Routs';
 import { Categories } from '../../../types/Categories';
+import { LocalStorageContext } from '../../../app/Contexts/LocalStorageContext';
 
 export const Header = () => {
+  const { favItems, cartItems } = useContext(LocalStorageContext);
   const [isMenuActive, setMenuActive] = useState(false);
   const [canTransform, setCanTransform] = useState(false);
   const navigate = useNavigate();
@@ -67,14 +69,24 @@ export const Header = () => {
         <div className={classNames('choice', 'menu__choice')}>
           <div
             className="choice__icon choice__icon--favorite"
-            onClick={() => navigate(routes.cart)}
+            onClick={() => navigate(routes.fav)}
           >
+            {favItems.length > 0 && (
+              <div className="choice__icon__number">
+                <p>{favItems.length}</p>
+              </div>
+            )}
             <img className="icon" src={favIcon} />
           </div>
           <div
             className="choice__icon choice__icon--shopping-cart"
             onClick={() => navigate(routes.cart)}
           >
+            {cartItems.length > 0 && (
+              <div className="choice__icon__number">
+                <p>{cartItems.length}</p>
+              </div>
+            )}
             <img className="icon" src={cart} />
           </div>
         </div>

@@ -1,0 +1,43 @@
+.pagination {
+  padding-top: 32px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  &__pages {
+    width: 100%;
+    max-width: 160px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__page {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $gray-elements;
+
+    &--active {
+      background-color: $gray-primary;
+
+      .pagination__page__content {
+        color: $white;
+      }
+    }
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
+    &__content {
+      @include text14;
+      color: $gray-primary;
+    }
+  }
+}

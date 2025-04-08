@@ -11,6 +11,3 @@ export type SearchParamsKeys =
   | 'sortBy'
   | 'itemsOnPage';
 
-export interface IsSelecting {
-  [key: string]: boolean;
-}

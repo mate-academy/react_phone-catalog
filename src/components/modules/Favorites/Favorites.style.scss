@@ -1,20 +1,12 @@
-.catalog {
-  padding: 24px 16px 64px;
+.favorites {
+  padding: 24px 16px 56px;
 
   @include tablet {
-    padding-inline: 32px;
+    padding: 24px 32px 64px;
   }
 
   @include desktop {
-    padding: 24px 32ps 80px;
-  }
-
-  @include tablet {
-    padding-inline: 24px;
-  }
-
-  @include desktop {
-    padding-inline: 32px;
+    padding-bottom: 80px;
   }
 
   &__title {

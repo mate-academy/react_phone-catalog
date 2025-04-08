@@ -8,5 +8,5 @@ export const routes: Routes = {
   tablets: '/tablets',
   accessories: '/accessories',
   cart: '/cart',
-  fav: '/fav',
+  fav: '/favorites',
 };

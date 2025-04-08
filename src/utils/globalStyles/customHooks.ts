@@ -1,5 +1,6 @@
 import { useState } from 'react';
-
+import { useSearchParams } from 'react-router-dom';
+import { SearchParams } from '../../types/SearchParams';
 
 export function useLocaleStorage<T>(
   key: string,
@@ -25,3 +26,51 @@ export function useLocaleStorage<T>(
   return [value, save];
 }
 
+export function useCatalogSearchParams(itemsNumber: number) {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortBy = searchParams.get('sortBy') || 'newest';
+  const itemsOnPageRaw = searchParams.get('itemsOnPage') || '16';
+  const itemsOnPage = itemsOnPageRaw === 'all' ? Infinity : +itemsOnPageRaw;
+
+  const totalPages = Math.ceil(itemsNumber / itemsOnPage);
+
+  const activePageNumber = +(searchParams.get('activePageNumber') || '1');
+  const firstVisiblePage = +(searchParams.get('firstVisiblePage') || '1');
+  const lastVisiblePage = totalPages < 4 ? totalPages : firstVisiblePage + 3;
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const visiblePages = pages.slice(firstVisiblePage - 1, lastVisiblePage);
+
+  const updateParams = (params: Partial<SearchParams>) => {
+    const newParams = new URLSearchParams(searchParams);
+    const shouldReset = 'sortBy' in params || 'itemsOnPage' in params;
+
+    if (shouldReset) {
+      const keysToDelete = Array.from(newParams.keys()).filter(
+        key => key !== 'sortBy' && key !== 'itemsOnPage'
+      );
+      keysToDelete.forEach(key => newParams.delete(key));
+    }
+
+    for (const [key, value] of Object.entries(params)) {
+      if (value !== undefined) {
+        newParams.set(key, value);
+      }
+    }
+
+    setSearchParams(newParams);
+  };
+
+  return {
+    searchParams,
+    itemsOnPageRaw,
+    itemsOnPage,
+    sortBy,
+    totalPages,
+    visiblePages,
+    activePageNumber,
+    firstVisiblePage,
+    lastVisiblePage,
+    updateParams,
+  };
+}

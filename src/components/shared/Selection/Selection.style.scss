@@ -1,0 +1,130 @@
+.selectors {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  padding-bottom: 24px;
+
+  .selector {
+    width: 136px;
+    height: 59px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__sort-by {
+      @include tablet {
+        width: 187px;
+      }
+
+      @include desktop {
+        width: 176px;
+      }
+    }
+
+    &__title {
+      @include text12;
+      color: $gray-secondary;
+    }
+
+    &__selection {
+      width: 100%;
+      position: relative;
+    }
+
+    &__current-option {
+      height: 40px;
+      border: 1px solid $icons-placeholders;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      transition: border 0.3s ease-in-out;
+
+      &__focused {
+        border: 1px solid $gray-primary;
+      }
+
+      &:hover {
+        border: 1px solid $gray-secondary;
+      }
+
+      &__name {
+        @include text12;
+        color: $gray-primary;
+      }
+    }
+
+    &__choose-option {
+      transition: transform 0.3s ease-in-out;
+      transform: rotate(180deg);
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        path {
+          transition: fill 0.3s ease-in-out;
+          fill: #B4BDC4;
+        }
+      }
+
+      &:hover svg path {
+        transition: fill 0.3s ease-in-out;
+        fill: $gray-primary;
+      }
+
+      &__focused {
+        transform: rotate(0);
+      }
+    }
+
+    &__all-options {
+      display: none;
+      opacity: 0;
+      width: inherit;
+      height: auto;
+      background-color: $white;
+      border: 1px solid $gray-elements;
+      padding-block: 8px;
+      position: absolute;
+      top: 44px;
+      left: 0;
+      z-index: 5;
+      transition: opacity 0.2s ease-in;
+
+      &__open {
+        display: block;
+      }
+
+      &__transform {
+        opacity: 1;
+      }
+    }
+
+    &__option {
+      width: 100%;
+      height: 32px;
+      background-color: $white;
+      transition: background-color 0.3s ease-in-out;
+      display: flex;
+      align-items: center;
+      padding: 5px 12px;
+
+      &:hover {
+        background-color: $gray-elements-hover;
+
+        .selector__option__name {
+          color: $gray-primary;
+        }
+      }
+
+      &__name {
+        @include text14;
+        color: $gray-secondary;
+        transition: color 0.3s ease-in-out;
+      }
+    }
+  }
+}

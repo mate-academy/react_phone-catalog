@@ -150,6 +150,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
 
         &--shopping-cart {
           border-left: 1px solid $gray-elements;
@@ -161,6 +162,36 @@
         }
         @include desktop {
           width: 64px;
+        }
+
+        &__number {
+          width: 14px;
+          height: 14px;
+          background-color: $red;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50px;
+          border: 1px solid $white;
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          z-index: 99;
+
+          @include desktop {
+            top: 18px;
+            right: 18px;
+          }
+
+          p {
+            font-family: 'Mont-Semibold';
+            font-weight: 700;
+            font-size: 9px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-align: center;
+            color: $white;
+          }
         }
 
         .icon {
