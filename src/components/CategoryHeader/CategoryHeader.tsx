@@ -1,0 +1,37 @@
+import React from 'react';
+import styles from './CategoryHeader.module.scss';
+import { Product } from '../../types/Product';
+
+type Props = {
+  categoryData: Product[];
+};
+
+export const CategoryHeader: React.FC<Props> = ({ categoryData }) => {
+  if (!categoryData || categoryData.length === 0) {
+    return (<div>Loading...</div>)
+  }
+  const categoryName = categoryData[0].category;
+  return (
+    <>
+      <div className={`${styles.mobile_path_container}`}>
+        <img
+          src="./img/icons/home-icon.svg"
+          alt="home icon"
+          className={`${styles.mobile_header_icon}`}
+        />
+        <img
+          src="./img/icons/main-disabled-arrow.svg"
+          alt="right arrow"
+          className={`${styles.mobile_header_icon}`}
+        />
+        <p className={`${styles.mobile_path}`}>{categoryName}</p>
+      </div>
+      <h1 className={`${styles.mobile_header}`}>
+        {categoryName === 'phones' ? 'Mobile Phones' : categoryName}
+      </h1>
+      <p className={`${styles.mobile_models_count}`}>
+        {categoryData.length} models
+      </p>
+    </>
+  );
+};

@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
-import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Product';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { addFavouriteProduct } from '../../services/productsApi';
 
 type Props = {
-  product: Phone;
+  product: Product;
   category: string;
   onPage?: boolean;
 };
 
 export const ProductCard: React.FC<Props> = ({ product, category, onPage }) => {
   const [clicked, setClicked] = useState(false);
+
+  const handleAddToFavourite = () => {
+    if (clicked) {
+      setClicked(false);
+    } else {
+      setClicked(true);
+    }
+    addFavouriteProduct(product);
+  }
+
   return (
     <>
       <div
@@ -42,8 +53,8 @@ export const ProductCard: React.FC<Props> = ({ product, category, onPage }) => {
           </Link>
         </div>
         <div className={`${styles.price_wrapper}`}>
-          <h2 className={`${styles.price}`}>{`$${product.priceRegular}`}</h2>
-          <h2 className={`${styles.oldPrice}`}>{`$${product.priceDiscount}`}</h2>
+          <h2 className={`${styles.price}`}>{`$${product.priceDiscount}`}</h2>
+          <h2 className={`${styles.oldPrice}`}>{`$${product.priceRegular}`}</h2>
         </div>
 
         <div className={`${styles.line}`} />
@@ -99,7 +110,7 @@ export const ProductCard: React.FC<Props> = ({ product, category, onPage }) => {
           </button>
           <button
             className={`${styles.button} ${styles.button_like}`}
-            onClick={() => (clicked ? setClicked(false) : setClicked(true))}
+            onClick={handleAddToFavourite}
           >
             <img
               src={

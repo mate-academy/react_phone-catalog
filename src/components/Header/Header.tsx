@@ -82,13 +82,13 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
             </div>
 
             <div className={`${styles.header_nav_buttons_container}`}>
-              <button className={`${styles.header_nav_favourite_button}`}>
+              <Link to={'/favourites'} className={`${styles.header_nav_favourite_button}`}>
                 <img
                   src="./img/icons/card-default-like.svg"
                   alt="favourite items"
                   className={`${styles.header_nav_icon}`}
                 />
-              </button>
+              </Link>
               <button className={`${styles.header_nav_shop_bag_button}`}>
                 <img
                   src="./img/icons/shopping-bag.svg"

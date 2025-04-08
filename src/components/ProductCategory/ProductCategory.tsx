@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import styles from './MobileCategory.module.scss';
+import styles from './ProductCategory.module.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { DropDown } from '../Dropdown/DropDown';
 import { useSearchParams } from 'react-router-dom';
@@ -7,25 +7,28 @@ import classNames from 'classnames';
 import products from '../../../public/api/products.json';
 import { Button } from '../Button/Button';
 import { ButtonDirection } from '../../enums/ButtonDirection';
-import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Product';
+import { CategoryHeader } from '../CategoryHeader/CategoryHeader';
+import { getProducts } from '../../services/productsApi';
 
 type Props = {
   setDisabledIds: (arg: number[]) => void;
   disabledIds: number[];
-  categoryName: Phone[];
+  url: string;
 };
 
-export const MobileCategory: React.FC<Props> = ({
+export const ProductCategory: React.FC<Props> = ({
   setDisabledIds,
   disabledIds,
-  categoryName,
+  url,
 }) => {
+  const [activeData, setActiveData] = useState<Product[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [itemsCount, setItemsCount] = useState(searchParams.get('count') || '');
   const [sortBy, setSortBy] = useState(searchParams.get('sortBy') || '');
   const [pageNum, setPageNum] = useState(searchParams.get('pageNum') || '1');
   const [buttonsCount, setButtonsCount] = useState<string[]>(['1']);
-  const category = categoryName[0].category;
+  // const categoryName = activeData && activeData[0].category;
 
   const sortByData = [
     {
@@ -59,14 +62,14 @@ export const MobileCategory: React.FC<Props> = ({
         Number(itemsCount) * Number(pageNum),
       ];
     } else {
-      return [0, categoryName.length];
+      return [0, activeData.length];
     }
   };
 
   const sortByCategory = () => {
     if (sortBy) {
       const sortDirection = sortBy === 'Newest' ? -1 : 1;
-      const sortedPhones = [...categoryName].sort((a, b) => {
+      const sortedPhones = [...activeData].sort((a, b) => {
         const productA = products.find(product => product.itemId === a.id);
         const productB = products.find(product => product.itemId === b.id);
 
@@ -80,7 +83,7 @@ export const MobileCategory: React.FC<Props> = ({
       return sortedPhones;
     }
 
-    return categoryName;
+    return activeData;
   };
 
   const handleButtonClassName = (number: string) => {
@@ -163,7 +166,7 @@ export const MobileCategory: React.FC<Props> = ({
     let numOfButtons;
 
     if (itemsCount) {
-      numOfButtons = Math.ceil(categoryName.length / Number(itemsCount));
+      numOfButtons = Math.ceil(activeData.length / Number(itemsCount));
     } else {
       numOfButtons = 1;
     }
@@ -175,91 +178,94 @@ export const MobileCategory: React.FC<Props> = ({
     setButtonsCount(result);
   }, [itemsCount]);
 
+  useEffect(() => {
+    getProducts(`${url}`)
+      .then(data => {
+        console.log('fetcched Data: ', data);
+        setActiveData(data);
+      })
+      .catch(e => {
+        throw new Error(e);
+      });
+  }, [url]);
+
   return (
     <>
+    {activeData ? (
       <div className={`${styles.mobile_main_container}`}>
-        <div className={`${styles.mobile_path_container}`}>
-          <img
-            src="./img/icons/home-icon.svg"
-            alt="home icon"
-            className={`${styles.mobile_header_icon}`}
+      <CategoryHeader categoryData={activeData} />
+
+      <div className={`${styles.mobile_main_select_container}`}>
+        <div className={`${styles.mobile_select_container}`}>
+          <p
+            className={classNames(
+              `${styles.mobile_select_parag} ${styles.first_select_button}`,
+            )}
+          >
+            Sort by
+          </p>
+          <DropDown
+            id={'0'}
+            data={sortByData}
+            setSort={setSortBy}
+            searchParams={searchParams}
           />
-          <img
-            src="./img/icons/main-disabled-arrow.svg"
-            alt="right arrow"
-            className={`${styles.mobile_header_icon}`}
-          />
-          <p className={`${styles.mobile_path}`}>{category}</p>
         </div>
-        <h1 className={`${styles.mobile_header}`}>{category === 'phones' ? 'Mobile Phones' : category}</h1>
-        <p className={`${styles.mobile_models_count}`}>
-          {categoryName.length} models
-        </p>
-
-        <div className={`${styles.mobile_main_select_container}`}>
-          <div className={`${styles.mobile_select_container}`}>
-            <p
-              className={classNames(
-                `${styles.mobile_select_parag} ${styles.first_select_button}`,
-              )}
-            >
-              Sort by
-            </p>
-            <DropDown
-              id={'0'}
-              data={sortByData}
-              setSort={setSortBy}
-              searchParams={searchParams}
-            />
-          </div>
-          <div className={`${styles.mobile_select_container}`}>
-            <p className={`${styles.mobile_select_parag}`}>Items on page</p>
-            <DropDown
-              id={'1'}
-              data={itemsOnPageData}
-              setSort={setItemsCount}
-              searchParams={searchParams}
-            />
-          </div>
-        </div>
-
-        <div className={`${styles.mobile_phones_container}`}>
-          {sortByCategory()
-            .slice(sortByCount()[0], sortByCount()[1])
-            .map(product => (
-              <ProductCard product={product} key={product.id} onPage={true} category={`${categoryName[0].category}`}/>
-            ))}
-        </div>
-
-        <div className={`${styles.mobile_button_container}`}>
-          <Button
-            direction={ButtonDirection.left}
-            onClick={handlePageChangeLeft}
-            buttonId={5}
-            disabledIds={disabledIds}
-          />
-
-          <div className={`${styles.mobile_page_num_container}`}>
-            {buttonsCount.map((button, id) => {
-              return (
-                <button
-                  className={handleButtonClassName(button)}
-                  onClick={() => handlePageChange(button)}
-                  key={id}
-                >
-                  {button}
-                </button>
-              );
-            })}
-          </div>
-          <Button
-            direction={ButtonDirection.right}
-            onClick={handlePageChangeRigt}
-            buttonId={6}
-            disabledIds={disabledIds}
+        <div className={`${styles.mobile_select_container}`}>
+          <p className={`${styles.mobile_select_parag}`}>Items on page</p>
+          <DropDown
+            id={'1'}
+            data={itemsOnPageData}
+            setSort={setItemsCount}
+            searchParams={searchParams}
           />
         </div>
       </div>
+
+      <div className={`${styles.mobile_phones_container}`}>
+        {sortByCategory()
+          .slice(sortByCount()[0], sortByCount()[1])
+          .map(product => (
+            <ProductCard
+              product={product}
+              key={product.id}
+              onPage={true}
+              category={`${activeData[0].category}`}
+            />
+          ))}
+      </div>
+
+      <div className={`${styles.mobile_button_container}`}>
+        <Button
+          direction={ButtonDirection.left}
+          onClick={handlePageChangeLeft}
+          buttonId={5}
+          disabledIds={disabledIds}
+        />
+
+        <div className={`${styles.mobile_page_num_container}`}>
+          {buttonsCount.map((button, id) => {
+            return (
+              <button
+                className={handleButtonClassName(button)}
+                onClick={() => handlePageChange(button)}
+                key={id}
+              >
+                {button}
+              </button>
+            );
+          })}
+        </div>
+        <Button
+          direction={ButtonDirection.right}
+          onClick={handlePageChangeRigt}
+          buttonId={6}
+          disabledIds={disabledIds}
+        />
+      </div>
+    </div>
+    ) : (<div>Loading...</div>)}
+      
     </>
   );
 };

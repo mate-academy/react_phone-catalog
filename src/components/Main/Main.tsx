@@ -1,15 +1,31 @@
 import { Categories } from '../Categories/Categories';
 import { TitleAndButtonSlider } from '../TitleAndButtonSlider/TitleAndButtonSlider';
 import { ProductCard } from '../ProductCard/ProductCard';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Main.module.scss';
-import phones from '../../../public/api/phones.json';
+import { Product } from '../../types/Product';
+import { getProducts } from '../../services/productsApi';
 
 type Props = {
   setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
   disabledIds: number[];
 };
 export const Main: React.FC<Props> = ({ setDisabledIds, disabledIds }) => {
+  const [phones, setPhones] = useState<Product[]>();
+
+  useEffect(() => {
+      getProducts('phones')
+        .then(setPhones)
+        .catch(e => {
+          throw new Error(e);
+        });
+    }, []);
+
+  if (!phones) {
+    return (
+      <div>Loading...</div>
+    )
+  }
   return (
     <>
       <div className={`${styles.main_container}`}>

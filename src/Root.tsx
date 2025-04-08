@@ -3,6 +3,7 @@ import { App } from './App';
 import { HomePage } from './modules/HomePage';
 import { HomePageCategory } from './modules/HomePageCategory';
 import { DetailsPage } from './modules/DetailsPage';
+import { FavouritesPage } from './modules/FavouritesPage';
 
 export const Root = () => {
   return (
@@ -12,14 +13,15 @@ export const Root = () => {
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to={'/'} replace />} />
           <Route path="phones" element={<HomePageCategory url='phones'/>}>
-            <Route path=":productId" element={<DetailsPage />} />
+            <Route path=":productId" element={<DetailsPage url='phones' />} />
           </Route>
           <Route path="accessories" element={<HomePageCategory url='accessories'/>}>
-            <Route path=":productId" element={<DetailsPage />} />
+            <Route path=":productId" element={<DetailsPage url='accessories' />} />
           </Route>
           <Route path="tablets" element={<HomePageCategory url='tablets'/>}>
-            <Route path=":productId" element={<DetailsPage />} />
+            <Route path=":productId" element={<DetailsPage url='tablets'/>} />
           </Route>
+          <Route path='favourites' element={<FavouritesPage/>} />
         </Route>
       </Routes>
     </HashRouter>

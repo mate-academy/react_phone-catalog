@@ -31,7 +31,7 @@ export const HomePage: React.FC = () => {
       <Header setActiveAside={setActiveAside} width={width} />
       <HeaderTitle />
       <HeaderSlider width={width} />
-      <Main disabledIds={disabledIds} setDisabledIds={setDisabledIds} />
+      <Main disabledIds={disabledIds} setDisabledIds={setDisabledIds}/>
       <Footer disabledIds={disabledIds} />
     </>
   );
