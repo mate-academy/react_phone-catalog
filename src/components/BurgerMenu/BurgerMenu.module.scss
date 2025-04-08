@@ -1,9 +1,13 @@
 @import '/src/styles/global';
 
 .menu {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+
   width: 100vw;
   height: 100%;
-  background-color: #fffefe;
+  background-color: $white-color;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,8 +19,13 @@
   right: 0;
   z-index: 100;
 
+  &--visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   &__hamburger {
-    box-shadow: -1px 0 0 0 #e2e6e9;
+    box-shadow: -1px 0 0 0 $elements-color;
   }
 
   &__header {
@@ -29,7 +38,7 @@
 
   &__bottom {
     display: flex;
-    border-top: 1px solid #e2e6e9;
+    border-top: 1px solid $elements-color;
   }
 
   &__favourites,
@@ -39,7 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: -1px 0 0 0 #e2e6e9;
+    box-shadow: -1px 0 0 0 $elements-color;
 
     &_active {
       color: $primary-color;

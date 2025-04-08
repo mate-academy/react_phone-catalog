@@ -12,6 +12,8 @@
 
   transition: all 0.2s ease-in-out;
 
+  cursor: pointer;
+
   &:not(:disabled):hover {
     border-color: $primary-color;
     color: $primary-color;

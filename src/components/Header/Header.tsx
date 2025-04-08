@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 import logo from '/img/nice-gadgets-logo.svg';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Squash as Hamburger } from 'hamburger-react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { useFavourites } from '../../context/FavouritesContext';
@@ -22,6 +22,18 @@ const Header = () => {
   const { cartLength } = useCart();
 
   const favouritesLength = favourites.length;
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   return (
     <div className={styles.header}>
@@ -90,7 +102,7 @@ const Header = () => {
         </div>
       </div>
 
-      {isOpen && <BurgerMenu isOpen={isOpen} toggleBurger={toggleBurger} />}
+      <BurgerMenu isOpen={isOpen} toggleBurger={toggleBurger} />
     </div>
   );
 };

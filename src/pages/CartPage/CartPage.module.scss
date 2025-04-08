@@ -30,11 +30,9 @@
     display: flex;
     flex-direction: column;
 
-    max-height: 190px;
-
     justify-content: center;
-
     border: 1px solid $elements-color;
+    max-height: 190px;
 
     @include on-tablet {
       max-height: 206px;
@@ -42,9 +40,9 @@
     }
 
     @include on-desktop {
+      min-width: 368px;
       margin-top: 0;
       margin-left: 16px;
-      width: 100%;
     }
   }
 

@@ -16,7 +16,7 @@ const BurgerMenu: React.FC<Props> = ({ isOpen, toggleBurger }) => {
   const { pathname } = useLocation();
 
   return (
-    <div className={styles.menu}>
+    <div className={`${styles.menu} ${isOpen ? styles['menu--visible'] : ''}`}>
       <div className={styles.menu__top}>
         <div className={styles.menu__header}>
           <div className={styles.logo}>
