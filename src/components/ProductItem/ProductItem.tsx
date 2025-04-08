@@ -11,6 +11,7 @@ import { useCart } from '../BuyCard/CartContext';
 interface Props {
   product: Product;
   WithAdditionalPrice?: boolean;
+  onClick?: () => void;
 }
 
 export const ProductItem: React.FC<Props> = ({

@@ -27,10 +27,17 @@
   }
 }
 
-.category__wraperr{
-  max-width: 1200px; // або твоя ширина карточок
+.main__homepage{
+  margin-top: 56px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px; // трохи відступів з боків, якщо треба}}
+  padding: 0 20px;
+}
+
+.category__wraperr{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .category__title {

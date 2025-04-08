@@ -129,8 +129,13 @@ export const ProductPage = () => {
             {itemsPrePage !== 'all' && (
               <div className="mobile__buttons">
                 <button
-                  className="mobile__buttonsbuttonPrev"
-                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  className={`mobile__buttonsbuttonPrev ${currentPage === 1 ? 'disabled' : ''}`}
+                  onClick={() => {
+                    if (currentPage > 1) {
+                      setCurrentPage(prev => prev - 1);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
                   disabled={currentPage === 1}
                 >
                   &lt;
@@ -140,17 +145,23 @@ export const ProductPage = () => {
                     <button
                       key={number}
                       className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
-                      onClick={() => setCurrentPage(number)}
+                      onClick={() => {
+                        setCurrentPage(number);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
                     >
                       {number}
                     </button>
                   ),
                 )}
                 <button
-                  className="mobile__buttonsbuttonNext"
-                  onClick={() =>
-                    setCurrentPage(prev => Math.min(prev + 1, totalPages))
-                  }
+                  className={`mobile__buttonsbuttonNext ${currentPage === totalPages ? 'disabled' : ''}`}
+                  onClick={() => {
+                    if (currentPage < totalPages) {
+                      setCurrentPage(prev => prev + 1);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
                   disabled={currentPage === totalPages}
                 >
                   &gt;

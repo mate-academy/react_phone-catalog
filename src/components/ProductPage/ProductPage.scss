@@ -104,6 +104,13 @@
   }
 }
 
+.mobile__buttonsbuttonPrev.disabled,
+.mobile__buttonsbuttonNext.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .mobile__buttons{
   display: flex;
   align-items: center;
