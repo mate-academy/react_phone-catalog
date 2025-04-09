@@ -1,0 +1,112 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.menu {
+  position: fixed;
+  width: 100%;
+  height: calc(100vh - 48px);
+  top: 48px;
+  left: 0;
+  min-width: 320px;
+  background-color: $white-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  transform: translateY(-120%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+  justify-content: space-between;
+  padding-top: 24px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+  }
+
+  &__li {
+    height: 27px;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    color: $secondary-color;
+    height: 27px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icons {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    border-top: 1px solid $element-color;
+  }
+
+  &__iconsLink {
+    width: 50%;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    border-right: 1px solid $element-color;
+    position: relative;
+    padding-bottom: 3px;
+
+    &--active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $primary-color;
+    }
+  }
+}
+
+.menu__link--active {
+  color: $primary-color;
+  border-bottom: 3px solid $primary-color;
+}
+
+.menu--open {
+  transform: translateY(0);
+}
+
+.menu__iconsLink:last-child {
+  border-right: none;
+}
+
+.menu__iconQuantity {
+  width: 14px;
+  top: 15px;
+  right: calc(25vw - 16px);
+  height: 14px;
+  position: absolute;
+  border: 1px solid $white-color;
+  border-radius: 1000px;
+  background-color: $red-color;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white-color;
+
+  @include on-desktop {
+    top: 16px;
+    right: 16px;
+  }
+}
