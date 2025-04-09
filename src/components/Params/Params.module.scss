@@ -1,0 +1,113 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.params {
+  margin-bottom: 8px;
+  order: 3;
+  color: $secondary-color;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 7 / -1;
+    max-width: 320px;
+  }
+
+  @include on-desktop {
+    grid-column: 13 / -1;
+  }
+  &__color {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__allParams {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__colorContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $element-color;
+  }
+
+  &__colorContainer--active {
+    border-color: $primary-color;
+  }
+
+  &__theColor {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+  }
+
+  &__divider {
+    width: 100%;
+    border-top: 1px solid $element-color;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    height: 32px;
+    border: 1px solid $element-color;
+    background-color: white;
+    color: $primary-color;
+    padding: 7px 8px;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &--active {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+    }
+  }
+
+  &__crossedPrice {
+    text-decoration: line-through;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+}
+
+.buttons {
+  order: 4;
+  display: flex;
+  gap: 8px;
+
+  &__add {
+    width: 70%;
+    height: 48px;
+  }
+
+  &__fav {
+    width: 30%;
+    height: 48px;
+  }
+}
+
+.chars {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+}
