@@ -1,0 +1,41 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.card {
+  width: 100%;
+  height: auto;
+  border: 1px solid $element-color;
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__part1 {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin: 16px
+  }
+
+
+
+  &__part2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px
+  }
+
+  &__button {
+    border: solid 1px $icon-color;
+    padding: 8px;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}

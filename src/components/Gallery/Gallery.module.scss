@@ -1,0 +1,65 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.carousel {
+  grid-column: 1 / -1;
+  overflow: hidden;
+  order: 1;
+
+  @include on-tablet {
+    order: 2;
+    grid-column: 2 / 7
+  }
+
+  @include on-desktop {
+    grid-column: 3 / 13;
+  }
+
+  &__images {
+    grid-column: 1 / -1;
+    aspect-ratio: 1/1;
+    display: flex;
+    width: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.images {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  order: 2;
+
+  @include on-tablet {
+    order: 1;
+    grid-column: 1 / 2;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+
+  &__image {
+    width: 50px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border: 1px solid $element-color;
+
+    @include on-tablet {
+      width: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+    }
+  }
+
+  &__image--active {
+    border-color: $primary-color;
+  }
+}

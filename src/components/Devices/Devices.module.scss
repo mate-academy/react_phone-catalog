@@ -1,0 +1,56 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.quantity {
+  color: $secondary-color;
+  margin-top: 8px;
+}
+
+.list {
+  margin: 24px 0;
+  display: grid;
+}
+
+.pages {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  & button {
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    transition: all $duration $type;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__arrow {
+    border: 1px solid $icon-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__nums {
+    border: 1px solid $element-color;
+  }
+
+  .pages__nums--active {
+    color: $white-color;
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+}
+
+
+.pages button:first-child {
+  margin-right: 8px;
+}
+
+.pages button:last-child {
+  margin-left: 8px;
+}
