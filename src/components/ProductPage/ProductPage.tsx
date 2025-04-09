@@ -11,6 +11,7 @@ import { NavLink } from 'react-router-dom';
 
 export const ProductPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
+  // eslint-disable-next-line
   const [itemsPrePage, setItemsPrePage] = useState<number | 'all'>(8);
 
   const {
@@ -21,8 +22,10 @@ export const ProductPage = () => {
     currentCategory,
     currentPage,
     totalPages,
-    setCurrentPage,
+    // setCurrentPage,
     handleSortChange,
+    handleItemsPerPageChange,
+    handlePageChange,
   } = useProductHooks();
 
   const sortedProducts = [...products].sort((a, b) => {
@@ -48,13 +51,13 @@ export const ProductPage = () => {
   const endIndex = startIndex + itemsPerPage;
   const displayedProducts = sortedProducts.slice(startIndex, endIndex);
 
-  const handleItemsPrePageChange = (option: { value: string }) => {
-    const newItemsPerPage =
-      option.value === 'all' ? 'all' : Number(option.value);
+  // const handleItemsPrePageChange = (option: { value: string }) => {
+  //   const newItemsPerPage =
+  //     option.value === 'all' ? 'all' : Number(option.value);
 
-    setItemsPrePage(newItemsPerPage);
-    setCurrentPage(1);
-  };
+  //   setItemsPrePage(newItemsPerPage);
+  //   setCurrentPage(1);
+  // };
 
   return (
     <main className="main__phonepage">
@@ -115,7 +118,11 @@ export const ProductPage = () => {
               </div>
               <div className="mobile__items">
                 <h3 className="item__page">Items on page</h3>
-                <MyDropdownItems onChange={handleItemsPrePageChange} />
+                <MyDropdownItems
+                  onChange={option =>
+                    handleItemsPerPageChange(Number(option.value))
+                  }
+                />
               </div>
             </div>
             <div className="mobile__cards">
@@ -133,12 +140,7 @@ export const ProductPage = () => {
               <div className="mobile__buttons">
                 <button
                   className={`mobile__buttonsbuttonPrev ${currentPage === 1 ? 'disabled' : ''}`}
-                  onClick={() => {
-                    if (currentPage > 1) {
-                      setCurrentPage(prev => prev - 1);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
                 >
                   &lt;
@@ -148,10 +150,7 @@ export const ProductPage = () => {
                     <button
                       key={number}
                       className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
-                      onClick={() => {
-                        setCurrentPage(number);
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }}
+                      onClick={() => handlePageChange(number)}
                       disabled={currentPage === number}
                     >
                       {number}
@@ -160,12 +159,7 @@ export const ProductPage = () => {
                 )}
                 <button
                   className={`mobile__buttonsbuttonNext ${currentPage === totalPages ? 'disabled' : ''}`}
-                  onClick={() => {
-                    if (currentPage < totalPages) {
-                      setCurrentPage(prev => prev + 1);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
                 >
                   &gt;

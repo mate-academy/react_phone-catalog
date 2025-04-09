@@ -19,9 +19,19 @@ export const useProductHooks = () => {
 
   useEffect(() => {
     const sortParam = searchParams.get('sort');
+    const pageParam = searchParams.get('page');
+    const itemsPerPageParam = searchParams.get('itemsPerPage');
 
     if (sortParam) {
       setSortBy(sortParam);
+    }
+
+    if (pageParam) {
+      setCurrentPage(Number(pageParam));
+    }
+
+    if (itemsPerPageParam) {
+      setItemPrevPage(Number(itemsPerPageParam));
     }
   }, [searchParams]);
 
@@ -76,9 +86,53 @@ export const useProductHooks = () => {
     setCart(savedCart);
   }, [currentCategory, setError]);
 
+  // const handleSortChange = (option: string) => {
+  //   setSortBy(option);
+  //   setSearchParams({ sort: option });
+  // };
+
+  // const handlePageChange = (newPage: number) => {
+  //   setCurrentPage(newPage);
+  //   setSearchParams({
+  //     sort: sortBy,
+  //     page: String(newPage),
+  //     itemsPerPage: String(itemPrevPage),
+  //   });
+  // };
+
+  // const handleItemsPerPageChange = (newItemsPerPage: number) => {
+  //   setItemPrevPage(newItemsPerPage);
+  //   setSearchParams({
+  //     sort: sortBy,
+  //     itemsPerPage: String(newItemsPerPage),
+  //     page: '1',
+  //   });
+  // };
   const handleSortChange = (option: string) => {
     setSortBy(option);
-    setSearchParams({ sort: option });
+    setSearchParams({
+      sort: option,
+      page: '1',
+      itemsPerPage: String(itemPrevPage),
+    });
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    setSearchParams({
+      sort: sortBy,
+      page: String(newPage),
+      itemsPerPage: String(itemPrevPage),
+    });
+  };
+
+  const handleItemsPerPageChange = (newItemsPerPage: number) => {
+    setItemPrevPage(newItemsPerPage);
+    setSearchParams({
+      sort: sortBy,
+      page: '1',
+      itemsPerPage: String(newItemsPerPage),
+    });
   };
 
   const indexOfLastItem = currentPage * itemPrevPage;
@@ -102,5 +156,7 @@ export const useProductHooks = () => {
     sortBy,
     products,
     currentCategory,
+    handleItemsPerPageChange,
+    handlePageChange,
   };
 };

@@ -22,13 +22,14 @@ export const SliderSwiper = () => {
   const images = isMobile ? mobileImages : desktopImages;
 
   return (
-    <div className="swiper">
+    <div>
       <div className="slider__wrapper">
         <button className="custom-prev">‹</button>
         <Swiper
           modules={[Autoplay, Navigation, Pagination]}
           spaceBetween={30}
           slidesPerView={1}
+          className="swiper"
           navigation={{
             prevEl: '.custom-prev',
             nextEl: '.custom-next',

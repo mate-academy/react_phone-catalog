@@ -17,10 +17,12 @@
 
   @include onTablet {
     flex: 0 0 33.33%;
+    margin: 0;
   }
 
   @include onDesktop {
     flex: 0 0 calc(50% / 4);
+    margin: 0;
   }
 
   &:hover {
