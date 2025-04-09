@@ -10,7 +10,7 @@ import { ProdDetailsPage } from './pages/ProdDetailsPage/ProdDetailsPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { HomePage } from './pages/ HomePage';
+import { HomePage } from './pages/HomePage/123';
 
 export const Root = () => {
   return (

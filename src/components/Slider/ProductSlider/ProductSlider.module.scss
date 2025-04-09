@@ -1,0 +1,109 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/colors.scss';
+@import '../../../styles/mixins';
+
+.product-slider {
+  &__image-container {
+    max-height: 100%;
+    display: flex !important;
+    justify-content: center;
+
+    &__image {
+      max-width: 100%;
+      padding: 2px;
+      max-height: 100%;
+    }
+  }
+
+  .slick-slider {
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    margin-bottom: 44px;
+
+
+    @media (min-width: $tablet) {
+      margin-left: 44px;
+      width: calc(100% - 44px);
+      margin-bottom: 0;
+    }
+
+    @media (min-width: $pc) {
+      margin-left: 96px;
+      width: calc(100% - 80px);
+    }
+  }
+
+  .slick-list {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .slick-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: $tablet) {
+      height: 450px;
+    }
+
+    :first-child {
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+
+      @media (min-width: $tablet) {
+        height: 100%;
+        aspect-ratio: unset;
+      }
+    }
+  }
+
+  .slick-track {
+    height: 100%;
+  }
+
+  .slider-dot {
+    height: auto;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  .slick-arrow {
+    &::before {
+      display: none;
+    }
+  }
+
+  .slick-dots {
+    display: flex !important;
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+    height: 28px;
+    bottom: -44px;
+    left: 0;
+
+    @media (min-width: $tablet) {
+      flex-direction: column;
+      top: 0;
+      left: -44px;
+      width: 28px;
+      height: 100%;
+    }
+
+    @media (min-width: $pc) {
+      width: 80px;
+      left: -96px;
+    }
+
+    li {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

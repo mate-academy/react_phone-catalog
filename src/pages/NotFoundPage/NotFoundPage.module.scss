@@ -1,0 +1,23 @@
+@import '../../styles/_mixins';
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+.pagenotfound {
+  max-width: 100%;
+}
+
+.container {
+  padding: 0 16px 16px;
+
+  @include on-tablet {
+    padding: 0 24px 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px 32px;
+  }
+
+  @include on-tv {
+    padding: 0 calc((100dvw - 1136px) / 2) 32px;
+  }
+}

@@ -1,0 +1,122 @@
+@import '../../styles/_mixins';
+@import '../src/App';
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+.footer {
+  background: $black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  border-top: 1px solid $elements;
+  padding: 32px 16px;
+  gap: 32px;
+
+  @include on-tablet {
+    padding: 32px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 32px calc((100dvw - 1136px) / 2);
+  }
+
+  &__logo {
+    &__img {
+      cursor: pointer;
+      transition: transform $hover-transition ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13px;
+    }
+
+    @include on-desktop {
+      gap: 100px;
+    }
+  }
+
+  &__item {
+    &__link {
+      text-decoration: none;
+      color: $white;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      cursor: pointer;
+
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        color:$gray;
+      }
+    }
+  };
+
+  &__button {
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: transparent;
+    cursor: pointer;
+
+    &__text {
+      color: $gray;
+      transition: all .3s ease-in-out .1s;
+
+      &:hover {
+        color: $bg-color;
+      }
+    }
+
+    &__icon {
+      background: $icons;
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+    border: 1px solid $gray;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      border-color: $bg-color;
+    }
+
+    &::after {
+      content: "";
+      height: 16px;
+      width: 16px;
+      transform: rotate(-90deg);
+      cursor: pointer;
+    }
+    }
+  }
+
+  &__back {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    cursor: pointer;
+    align-self: center;
+  }
+}

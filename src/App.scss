@@ -1,1 +1,52 @@
-// not empty
+@import './styles/variables.scss';
+@import './styles/colors.scss';
+@import './styles/mixins';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  background: #0F1121;
+  color: #F1F2F9;
+  font-family: Mont, sans-serif;
+  margin: 0;
+
+  > :first-child {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+
+    main {
+      flex-grow: 1;
+    }
+  }
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background: $elements;
+}
+
+.container {
+  padding: 0 16px 16px;
+
+  @include on-tablet {
+    padding: 0 24px 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px 32px;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 0 calc((100dvw - 1136px) / 2) 32px;
+  }
+}

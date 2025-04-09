@@ -1,0 +1,104 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/colors.scss';
+@import '../../../styles/mixins';
+
+.products-slider {
+  width: 100%;
+  max-height: 439px;
+
+  @media (min-width: $tablet) {
+    max-height: 512px;
+  }
+
+  @media (min-width: $pc) {
+    max-height: 506px;
+  }
+
+  .product-card {
+    width: 212px !important;
+
+    @media (min-width: $tablet) {
+      width: 237px !important;
+    }
+
+    @media (min-width: $pc) {
+      width: 272px !important;
+    }
+  }
+
+  .slick-list {
+    height: 439px;
+
+    @media (min-width: $tablet) {
+      height: 512px;
+    }
+
+    @media (min-width: $pc) {
+      height: 506px;
+    }
+  }
+
+  .slick-next {
+    right: 0;
+
+    &.slick-disabled {
+      &::after {
+        background-image: url('../../../public/img/icons/arrow-right.svg');
+      }
+    }
+
+    &::before {
+      background-image: url('../../../public/img/icons/arrow-right-white.svg');
+    }
+  }
+
+  .slick-prev {
+    right: 48px;
+
+    &.slick-disabled {
+      &::before {
+        background-image: url('../../../public/img/icons/arrow-left.svg');
+      }
+    }
+
+    &::before {
+      background-image: url('../../../public/img/icons/arrow-left-white.svg');
+    }
+  }
+
+  .slick-next,
+  .slick-prev {
+    top: -46px;
+    left: unset;
+    background: $surface-second;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements;
+    transition: background-color $hover-transition ease;
+
+    &.slick-disabled {
+      background: transparent;
+    }
+
+    &:hover {
+      background: $icons;
+    }
+
+    &::before {
+      content: '';
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .slick-slide {
+    height: 506px;
+    margin-right: 16px;
+  }
+}
