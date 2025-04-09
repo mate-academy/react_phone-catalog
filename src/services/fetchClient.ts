@@ -5,7 +5,7 @@ function wait(delay: number) {
     setTimeout(resolve, delay);
   });
 }
-type RequestMethod = 'GET' | 'POST';
+type RequestMethod = 'GET' | 'POST' | 'PATCH';
 function request<T>(
   url: string,
   method: RequestMethod = 'GET',

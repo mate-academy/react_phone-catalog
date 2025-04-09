@@ -18,6 +18,7 @@ export type Product = {
   cell: string[];
   camera?: string;
   zoom?: string;
+  quantity?: number;
 };
 
 export type Description = {

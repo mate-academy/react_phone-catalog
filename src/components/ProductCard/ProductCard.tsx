@@ -13,7 +13,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product, onPage }) => {
   const { favourites, toggleFavourite } = useFavourites();
-  const { cartProducts, toggleCartProduct} = useCartProducts();
+  const { cartProducts, addProductToCart} = useCartProducts();
   const isFavourite = favourites.some(fav => fav.id === product.id);
   const isInCart = cartProducts.some(item => item.id === product.id);
 
@@ -24,7 +24,7 @@ export const ProductCard: React.FC<Props> = ({ product, onPage }) => {
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation;
-    toggleCartProduct(product);
+    addProductToCart(product);
   }
 
   return (
