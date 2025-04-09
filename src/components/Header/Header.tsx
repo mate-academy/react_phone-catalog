@@ -98,9 +98,11 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
                   alt="favourite items"
                   className={`${styles.header_nav_icon}`}
                 />
-                <span className={`${styles.header_fav_count}`}>
-                  {favourites.length > 0 && favourites.length > 9 ? '9+' : favourites.length}
-                </span>
+                {favourites.length > 0 && (
+                  <span className={`${styles.header_fav_count}`}>
+                    {favourites.length > 9 ? '9+' : favourites.length}
+                  </span>
+                )}
               </NavLink>
               <NavLink to={'/cart'} className={handleCartLink}>
                 <img
@@ -108,9 +110,13 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
                   alt="shopping bag"
                   className={`${styles.header_nav_icon}`}
                 />
-                <span className={`${styles.header_fav_count} ${styles.active_cart}`}>
-                  {cartProducts.length > 0 && cartProducts.length > 9 ? '9+' : cartProducts.length}
-                </span>
+                {cartProducts.length > 0 && (
+                  <span
+                    className={`${styles.header_fav_count} ${styles.active_cart}`}
+                  >
+                    {cartProducts.length > 9 ? '9+' : cartProducts.length}
+                  </span>
+                )}
               </NavLink>
             </div>
           </nav>
