@@ -1,6 +1,34 @@
-@use '../../scssComponents/mixins.scss' as *;
+@use '../../mixins.scss' as *;
 
-.slider__image {
+.swiper--top {
+
+  @include padding-inline();
+
+
+&__conteiner {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 16px;
+}
+
+&__images {
+  width: 100%;
+
+  @include on-tablet {
+    width: 592px;
+    height: 221px;
+  }
+
+  @include on-desktop {
+    width: 1040px;
+    height: 400px;
+  }
+}
+
+&__banner {
+  // position: absolute;
   width: 100%;
   height: 320px;
   object-fit: cover;
@@ -22,49 +50,51 @@
   }
 }
 
-.swiper {
-  width: 100%;
-  @include on-tablet {
-    width: 592px;
-    height: 221px;
-  }
-
-  @include on-desktop {
-    width: 1040px;
-    height: 400px;
-  }
-}
-
-.swiper-button-next,
-.swiper-button-prev  {
+&-button-next,
+&-button-prev  {
   display: none;
+
   @media  (min-width: 500px) {
+    border: none;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    height: 100vh;
-    color: #323542;
+    height: 100%;
+    color: white;
+    background-color: #323542;
   }
 }
 
 
 @media  (min-width: 500px) {
-  .swiper-button-next {
-    right: 0;
+  &-button-next {
+    right: 0px;
     &:hover {
-      color: gray;
+      background-color: gray;
     }
   }
 
-  .swiper-button-prev {
+  &-button-prev {
   left: 0;
     &:hover {
       color: gray;
     }
   }
+}
+
+&-pagination-bullet {
+  width: 14px;
+  height: 4px;
+  border-radius: 0;
+  background: #323542;
+  opacity: 1;
+  transition: background-color 0.3s ease;
+}
+
+&-pagination-bullet-active {
+  background: #ccc;
+}
 }
 

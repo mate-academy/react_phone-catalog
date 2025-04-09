@@ -1,0 +1,102 @@
+@use 'src/mixins' as *;
+
+.footer {
+  background-color: #0f1120;
+  padding: 24px 40px;
+  color: white;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  &__img img {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 32px;
+    }
+    @include on-desktop {
+      flex-direction: row;
+      gap: 32px;
+    }
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.3s;
+
+    &:hover {
+      color: gray;
+    }
+  }
+
+  &__up-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 12px;
+
+    img {
+      width: 24px;
+      height: 24px;
+      background-color: #323542;
+      padding: 4px;
+      border-radius: 4px;
+    }
+
+    &:hover {
+      color: gray;
+    }
+
+    @include on-phone {
+      align-self: center;
+    }
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}

@@ -15,3 +15,16 @@
     @content;
   }
 }
+
+
+@mixin padding-inline {
+  padding: 16px;
+
+  @include on-tablet() {
+    padding: 50px 24px;
+  }
+
+  @include on-desktop() {
+    padding: 50px 120px;
+  }
+}

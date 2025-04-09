@@ -1,0 +1,94 @@
+@use '../../mixins.scss' as *;
+
+.shop {
+  margin-top: 56px;
+  @include padding-inline();
+
+
+  &__title {
+    margin: 10px 0;
+    color: white;
+  }
+
+  &__main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__phone {
+    background-color: #6D6474;
+    overflow: hidden;
+    position: relative;
+    width: 288px;
+    height: 320px;
+
+    &--img {
+      width: 302px;
+      height: 357px;
+      object-fit: contain;
+      position: absolute;
+      top: 70px;
+      right: -50px;
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__tablet {
+    background-color: #A9A9A9;
+    width: 288px;
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+
+    &--img {
+      width: 302px;
+      height: 357px;
+      object-fit: contain;
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__accessories {
+    background-color: #AE0062;
+    width: 288px;
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+
+
+    &--img {
+      width: 560px;
+      height: 357px;
+      object-fit: contain;
+      position: absolute;
+      top: 15px;
+      right: -270px;
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__models--title {
+    margin: 0;
+    color: #89939A;
+  }
+}

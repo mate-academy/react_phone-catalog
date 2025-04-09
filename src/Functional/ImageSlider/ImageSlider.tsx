@@ -14,25 +14,35 @@ const images = [
 
 export default function SliderSwiper() {
   return (
-    <Swiper
-      modules={[Autoplay, Navigation, Pagination]}
-      spaceBetween={30}
-      slidesPerView={1}
-      navigation={{
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      }}
-      autoplay={{ delay: 5000, disableOnInteraction: false }}
-      pagination={{ clickable: true }}
-      effect="fade"
-    >
-      <button className="swiper-button-prev"></button>
-      <button className="swiper-button-next"></button>
-      {images.map((image, index) => (
-        <SwiperSlide key={index}>
-          <img src={image} alt={`Slide ${index}`} className="slider__image" />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="swiper--top">
+      <div className="swiper--top__conteiner">
+        <button className="swiper--top-button-prev">{'<'}</button>
+        <button className="swiper--top-button-next">{'>'}</button>
+
+        <Swiper
+          modules={[Autoplay, Navigation, Pagination]}
+          spaceBetween={30}
+          slidesPerView={1}
+          navigation={{
+            nextEl: '.swiper--top-button-next',
+            prevEl: '.swiper--top-button-prev',
+          }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          effect="fade"
+          className="swiper--top__images"
+        >
+          {images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img
+                src={image}
+                alt={`Slide ${index}`}
+                className="swiper--top__banner"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
   );
 }
