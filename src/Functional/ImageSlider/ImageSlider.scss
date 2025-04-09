@@ -1,8 +1,7 @@
 @use '../../mixins.scss' as *;
 
 .swiper--top {
-
-  @include padding-inline();
+  @include padding-inline;
 
 
 &__conteiner {
@@ -70,7 +69,7 @@
 
 @media  (min-width: 500px) {
   &-button-next {
-    right: 0px;
+    right: 0;
     &:hover {
       background-color: gray;
     }

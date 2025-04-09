@@ -7,14 +7,14 @@
 .brand {
   margin-top: 56px;
 
-@include padding-inline();
+@include padding-inline;
 
 
-@include on-tablet() {
+@include on-tablet {
   height: 577px;
 }
 
-@include on-desktop() {
+@include on-desktop {
 height: 571px;
 }
 
@@ -69,12 +69,12 @@ height: 571px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
-  @include on-tablet() {
+  @include on-tablet {
     padding: 20px;
     max-width: 272px;
   }
 
-  @include on-desktop() {
+  @include on-desktop {
     max-width: 272px;
   }
 }
@@ -183,9 +183,9 @@ height: 571px;
 }
 
 &__card-spec-value {
-
   color: white;
 }
+
 }
 
 .swiper-button-next,

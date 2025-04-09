@@ -7,9 +7,9 @@ import 'swiper/css/pagination';
 import './ImageSlider.scss';
 
 const images = [
-  '/img/banner-accessories.png',
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
+  './img/banner-accessories.png',
+  './img/banner-phones.png',
+  './img/banner-tablets.png',
 ];
 
 export default function SliderSwiper() {
