@@ -9,7 +9,7 @@
   padding: 32px;
   transition: transform 0.3s ease-in-out;
   border: $colorBlackBackground 1px solid;
-  margin: 0 auto;
+  margin: auto;
 
   @include themify($themes) {
     background: themed('colorHeaderFooter');

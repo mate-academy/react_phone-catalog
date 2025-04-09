@@ -8,6 +8,8 @@ $themes: (
     colorHeaderFooter: $colorBlack,
     colorText: $colorWhite,
     colorBackround: $colorBlack,
+    colorPaginationActive: $colorWhite,
+    colorPagination: #3B3E4A,
   ),
   light: (
     colorSwiperBG: $colorWhite,
@@ -16,6 +18,8 @@ $themes: (
     colorHeaderFooter: $colorWhite,
     colorText: $colorBlack,
     colorBackround: $colorWhite,
+    colorPaginationActive: #313237,
+    colorPagination: #E2E6E9,
   ),
 );
 

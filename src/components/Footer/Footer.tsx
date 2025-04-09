@@ -21,9 +21,9 @@ export const Footer = () => {
     <footer className="footer">
       <nav role="navigation" aria-label="footer navigation">
         <div className="footer__container">
-          <div className="footer__logo">
+          <NavLink className="footer__logo" to="/">
             <img src={isDarkMode ? logo : BlackLogo} alt="Logo" />
-          </div>
+          </NavLink>
           <ul className="footer-brand">
             <NavLink
               className="footer-item"

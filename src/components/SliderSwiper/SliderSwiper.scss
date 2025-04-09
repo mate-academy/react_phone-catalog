@@ -72,25 +72,53 @@
   }
 }
 
-// .custom-pagination {
-//   display: flex;
-//   justify-content: center;
-//   margin-top: 10px;
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 
-//   .swiper-pagination-bullet {
-//     background-color: gray;
-//     opacity: 0.7;
-//     margin: 0 5px;
-//     width: 10px;
-//     height: 10px;
-//     border-radius: 50%;
+  .swiper-pagination-bullet {
+    background-color: gray;
+    opacity: 0.7;
+    margin: 0 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 
-//     &-active {
-//       background-color: black;
-//       opacity: 1;
-//     }
-//   }
-// }
+    &-active {
+      background-color: black;
+      opacity: 1;
+    }
+  }
+}
+
+.swiper {
+  overflow: visible;
+}
+
+.swiper-pagination-bullet {
+  width: 14px;
+  height: 4px;
+  border: none;
+}
+
+.custom-pagination .swiper-pagination-bullet {
+  width: 14px;
+  height: 4px;
+  border-radius: 0;
+  transition: background-color 0.3s ease;
+
+  @include themify($themes) {
+    background-color: themed('colorPagination');
+  }
+}
+
+
+.custom-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @include themify($themes) {
+    background-color: themed('colorPaginationActive');
+  }
+}
 
 .custom-prev {
   color: #f1f2f9;
@@ -98,7 +126,6 @@
   background-color: $colorDarkGray;
   border: 1px solid $colorDarkGray;
   display: none;
-
 
   &:hover {
     color: $colorWhite;

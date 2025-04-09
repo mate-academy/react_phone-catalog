@@ -7,6 +7,7 @@ import { useProductHooks } from './usePhonesHooks';
 import { useState } from 'react';
 import { Product } from '../../types/ProductTypes';
 import { Loader } from '../Loader/Loader';
+import { NavLink } from 'react-router-dom';
 
 export const ProductPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
@@ -58,7 +59,9 @@ export const ProductPage = () => {
   return (
     <main className="main__phonepage">
       <div className="mobilelink">
-        <img src={home} alt="mobilelink__home" />
+        <NavLink to="/">
+          <img src={home} alt="mobilelink__home" />
+        </NavLink>
         <span>
           <img src={arrow} alt="mobilelink__arrow" />
         </span>

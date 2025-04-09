@@ -1,19 +1,16 @@
 // eslint-disable-next-line max-len
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './SliderSwiper.scss';
 import { useMediaQuery } from 'react-responsive';
-
 const desktopImages = [
   'img/banner-iphone.png',
   'img/banner-tablets.png',
   'img/banner-phones.png',
 ];
-
 const mobileImages = [
   'img/banner-iphone-mobver.png',
   'img/banner-tablets-mobver.png',
@@ -52,7 +49,7 @@ export const SliderSwiper = () => {
         </Swiper>
         <button className="custom-next">›</button>
       </div>
-      <div id="pagination"></div>
+      <div id="pagination" className="custom-pagination"></div>
     </div>
   );
 };

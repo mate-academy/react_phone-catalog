@@ -71,6 +71,17 @@
   height: 35px;
   object-fit: contain;
   border: 1px solid $colorButtonsText;
+  cursor: pointer;
+
+  &.active {
+    border-color: #007bff;
+    transform: scale(1.05);
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
+
+  &:hover {
+    border-color: orange;
+  }
 
   @include onTablet {
     width: 35px;
@@ -150,6 +161,7 @@
   background-color: transparent;
   border: 1px solid $colorButtonsText;
   color: $colorWhite;
+  cursor: pointer;
 
   @include themify($themes) {
     color: themed('colorText');
@@ -214,6 +226,7 @@
   font-size: 14px;
   line-height: 21px;
   text-align: center;
+  cursor: pointer;
 
   @include onTablet {
     width: 180px;
@@ -230,6 +243,7 @@
   background-color: $colorDarkGray;
   border: 1px solid $colorDarkGray;
   color: $colorWhite;
+  cursor: pointer;
 }
 
 .productInfo__Information {

@@ -32,6 +32,7 @@
   align-items: center;
   justify-content: space-between;
   display: flex;
+  cursor: pointer;
 
   @include onTablet {
     margin: 32px 0 32px 32px;

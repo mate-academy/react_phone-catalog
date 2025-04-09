@@ -3,6 +3,7 @@ import arrow from '../../../image/arrow.svg';
 import home from '../../../image/home.svg';
 import { useFavourites } from './FacouritesContext';
 import { ProductItem } from '../ProductItem/ProductItem';
+import { NavLink } from 'react-router-dom';
 
 export const FavouritesPage = () => {
   const { favorites } = useFavourites();
@@ -10,7 +11,10 @@ export const FavouritesPage = () => {
   return (
     <main className="favourites">
       <div className="mobilelink">
-        <img src={home} alt="mobilelink__home" />
+        <NavLink to="/">
+          <img src={home} alt="mobilelink__home" />
+        </NavLink>
+
         <span>
           <img src={arrow} alt="mobilelink__arrow" />
         </span>

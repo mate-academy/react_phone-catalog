@@ -88,7 +88,7 @@ export const ProductInformation: React.FC = () => {
                 {selectedPhone.images &&
                   selectedPhone.images.map((image, index) => (
                     <img
-                      className="productInfo__Image"
+                      className={`productInfo__Image ${mainImage === image ? 'active' : ''}`}
                       key={index}
                       src={image}
                       alt={`image_${category}_${index}`}
