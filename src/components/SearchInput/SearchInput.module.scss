@@ -6,19 +6,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  margin-right: 20px;
+  margin-right: 5px;
 
   @include on-tablet {
     display: none;
+    margin-right: 10px;
   }
 
   @media (min-width: 740px) {
     display: flex;
+    margin-right: 20px;
   }
 
   &__input {
-    width: 120px;
+    width: 100px;
     height: 28px;
 
     box-sizing: border-box;
@@ -55,7 +56,7 @@
 
   &__wrapper {
     background-color: $elements-color;
-    width: 150px;
+    width: 130px;
     height: 30px;
 
     display: flex;

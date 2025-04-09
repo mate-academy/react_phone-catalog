@@ -1,6 +1,6 @@
 import styles from './Header.module.scss';
 import logo from '/img/nice-gadgets-logo.svg';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Squash as Hamburger } from 'hamburger-react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
@@ -9,6 +9,7 @@ import { useCart } from '../../context/CartContext';
 import favouriteIcon from '/img/icons/favourites-icon.svg';
 import cartIcon from '/img/icons/cart-icon.svg';
 import SearchInput from '../SearchInput/SearchInput';
+import Nav from '../Nav/Nav';
 
 const pages = ['Home', 'Phones', 'Tablets', 'Accessories'];
 
@@ -44,25 +45,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <nav className={styles.header__nav}>
-          <ul className={styles.header__nav__list}>
-            {pages.map((page, index) => {
-              const link = `/${page.toLowerCase()}`;
-
-              const activePage =
-                pathname === link || (pathname === '/' && page === 'Home');
-
-              return (
-                <li
-                  key={index}
-                  className={`${styles.header__nav__list__item} ${activePage && `${styles.header__nav__list__item_active}`}`}
-                >
-                  <NavLink to={link}>{page}</NavLink>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        <Nav pages={pages} pathname={pathname} />
       </div>
 
       <div className={styles.header__right}>

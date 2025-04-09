@@ -13,7 +13,7 @@
   box-shadow: 0 1px 0 0 $elements-color;
 
   @include on-desktop {
-    height: 64px;
+    height: 63px;
   }
 
   &__left {
@@ -95,84 +95,5 @@
     }
   }
 
-  &__nav {
-    height: 100%;
-    display: none;
 
-    @include on-tablet {
-      display: flex;
-      margin-left: 16px;
-    }
-
-    @include on-desktop {
-      margin-left: 24px;
-    }
-
-    &__list {
-      display: flex;
-      justify-content: space-between;
-      min-height: 100%;
-
-      @include on-tablet {
-        gap: 32px;
-      }
-
-      @include on-desktop {
-        gap: 64px;
-      }
-
-      &__item {
-        font-family: Mont-Bold, sans-serif;
-        font-size: 12px;
-        line-height: 11px;
-        letter-spacing: 4%;
-        text-transform: uppercase;
-        color: $secondary-color;
-
-        a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          min-height: 100%;
-          transition: all 0.3s ease-in-out;
-
-          @include on-tablet {
-            height: 48px;
-          }
-
-          @include on-desktop {
-            height: 64px;
-          }
-
-          &:hover {
-            color: $primary-color;
-          }
-        }
-
-        @include on-tablet {
-          height: 42px;
-        }
-
-        @include on-desktop {
-          height: 58px;
-        }
-
-        &_active {
-          color: $primary-color;
-          position: relative;
-
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background-color: $primary-color;
-            animation: borderExpand 0.3s ease forwards;
-          }
-        }
-      }
-    }
-  }
 }
