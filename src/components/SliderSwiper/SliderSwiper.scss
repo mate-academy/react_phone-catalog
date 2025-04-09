@@ -1,37 +1,44 @@
 @import '../../utils/mixins';
 @import '../ColorThemes/ColorThemes.scss';
 
+// .swiper{
+//   display: block;
+// }
+
 .slider__image {
-  width: 100%;
-  // width: 320px;
+  width: 320px;
   height: 320px;
   object-fit: cover;
   transition: transform 0.5s ease;
-
   &:hover {
     transform: scale(1.05);
   }
-
   @include onTablet {
-    // width: 592px;
+    width: 592px;
     height: 221px;
   }
-
   @include onDesktop {
-    // width: 1040px;
+    width: 1040px;
     height: 400px;
   }
+}
+
+.swiper-slide {
+  opacity: 0 !important;
+  transition: opacity 0.5s ease;
+}
+.swiper-slide-active {
+  opacity: 1 !important;
+  z-index: 2;
 }
 
 .swiper {
   width: 320px;
   height: 320px;
-
   @include onTablet {
     width: 592px;
     height: 221px;
   }
-
   @include onDesktop {
     width: 1040px;
     height: 400px;
@@ -41,10 +48,6 @@
 .slider__wrapper {
   display: flex;
   gap: 16px;
-
-  @include onTablet {
-    padding: 0 24px;
-  }
 }
 
 .custom-next {
@@ -53,12 +56,10 @@
   width: 32px;
   background-color: $colorDarkGray;
   border: 1px solid $colorDarkGray;
-
   &:hover {
     color: $colorWhite;
     background-color: $colorButtons;
   }
-
   @include themify($themes) {
     background-color: themed('colorSwiperBG');
     color: themed('colorSwiperText');
@@ -69,24 +70,40 @@
     align-items: center;
     justify-content: center;
   }
-
-  @include onDesktop {
-    display: flex;
-  }
 }
 
+// .custom-pagination {
+//   display: flex;
+//   justify-content: center;
+//   margin-top: 10px;
+
+//   .swiper-pagination-bullet {
+//     background-color: gray;
+//     opacity: 0.7;
+//     margin: 0 5px;
+//     width: 10px;
+//     height: 10px;
+//     border-radius: 50%;
+
+//     &-active {
+//       background-color: black;
+//       opacity: 1;
+//     }
+//   }
+// }
+
 .custom-prev {
-  display: none;
   color: #f1f2f9;
   width: 32px;
   background-color: $colorDarkGray;
   border: 1px solid $colorDarkGray;
+  display: none;
+
 
   &:hover {
     color: $colorWhite;
     background-color: $colorButtons;
   }
-
   @include themify($themes) {
     background-color: themed('colorSwiperBG');
     color: themed('colorSwiperText');
@@ -96,9 +113,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  @include onDesktop {
-    display: flex;
   }
 }
