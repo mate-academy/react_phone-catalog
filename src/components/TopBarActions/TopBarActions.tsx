@@ -15,7 +15,7 @@ const TopBarActions: React.FC<Props> = ({
   favouriteBtnClass,
   cardBtnClass,
 }) => {
-  const isMenu = useAppSelector(state => state.menu.isOpenMenu);
+  const isMenu = useAppSelector(state => state.store.isOpenMenu);
   const isMobile = useMediaQuery({ maxWidth: 640 });
 
   return (

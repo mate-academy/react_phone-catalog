@@ -11,6 +11,8 @@
   margin: auto;
   background-color: $fon;
 
+  z-index: 1000;
+  
   @include on-desktop {
     height: 64px;
   }

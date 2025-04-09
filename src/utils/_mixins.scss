@@ -33,8 +33,6 @@
 
   @include on-tablet {
     --columns: 12;
-
-    column-gap: 30px;
   }
 
   @include on-desktop {

@@ -1,7 +1,7 @@
 @import './utils/global';
 
 .page {
-  cursor: url('../public/img/tools/Mice.png'), pointer;
+  cursor: url('./assets/img/tools/Mice.png'), pointer;
   scroll-behavior: smooth;
 
   font-family: Mont, sans-serif;
@@ -104,3 +104,6 @@ ul {
 }
 
 
+.hidden {
+  display: none;
+}

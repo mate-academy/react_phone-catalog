@@ -7,33 +7,34 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import './SwiperStyles.scss';
+import Arrow from '../../../../components/Icons/Arrow/Arrow';
+import { ArrowDirection } from '../../../../types/arrowDirection';
 
 const bannerImg = [
   {
     id: 1,
     alt: 'accessories',
-    src: '/img/banner/banner-iphone.png',
+    src: 'img/banner/banner-iphone.png',
   },
   {
     id: 2,
     alt: 'accessories',
-    src: '/img/banner/banner-iphone-bg.png',
+    src: 'img/banner/banner-iphone-bg.png',
   },
   {
     id: 3,
     alt: 'accessories',
-    src: '/img/banner/banner-accessories.png',
+    src: 'img/banner/banner-accessories.png',
   },
   {
     id: 4,
     alt: 'phones',
-    src: '/img/banner/banner-phones.png',
+    src: 'img/banner/banner-phones.png',
   },
   {
     id: 5,
     alt: 'tablets',
-    src: '/img/banner/banner-tablets.png',
+    src: 'img/banner/banner-tablets.png',
   },
 ];
 
@@ -46,20 +47,26 @@ const HomeBanner = () => {
   return (
     <section className={classNames(styles.banner)}>
       <div className={styles.banner__wrapper}>
-        <div className={classNames('swiper-button-prev', 'nav-button')} />
+        <Arrow
+          className={classNames(styles.prev)}
+          direction={ArrowDirection.left}
+        />
+
         <Swiper
-          className="swiper"
+          className={classNames(styles.swiper)}
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
           navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: `.${styles.next}`,
+            prevEl: `.${styles.prev}`,
           }}
           pagination={{
             clickable: true,
-            el: '.swiper-pagination',
+            el: `.${styles['swiper-pagination']}`,
+            bulletClass: styles['swiper-pagination-bullet'],
+            bulletActiveClass: styles['swiper-pagination-bullet-active'],
           }}
           autoplay={{
             delay: 5000,
@@ -69,9 +76,9 @@ const HomeBanner = () => {
         >
           {preparedImgs.map(banner => (
             <SwiperSlide key={banner.id}>
-              <div className="swiper__wrapper">
+              <div className={styles.swiper__wrapper}>
                 <img
-                  className="swiper__img"
+                  className={styles.swiper__img}
                   src={banner.src}
                   alt={banner.alt}
                 />
@@ -79,9 +86,14 @@ const HomeBanner = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className={classNames('swiper-button-next', 'nav-button')} />
+
+        <Arrow
+          className={classNames(styles.next)}
+          direction={ArrowDirection.right}
+        />
       </div>
-      <div className={classNames('swiper-pagination')} />
+
+      <div className={classNames(styles['swiper-pagination'])} />
     </section>
   );
 };

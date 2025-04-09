@@ -26,5 +26,17 @@
 
   &__content {
     grid-column: 1 / -1;
+
+    @include page-grid;
+
+    row-gap: 56px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+
+    @include on-desktop {
+      row-gap: 80px;
+    }
   }
 }

@@ -1,0 +1,10 @@
+@import '/src/utils/global';
+
+.arrow {
+
+  & svg {
+    stroke: $white;
+    width: 16px;
+    height: 16px;
+  }
+}

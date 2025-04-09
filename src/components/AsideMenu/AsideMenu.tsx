@@ -7,7 +7,7 @@ import TopBarActions from '../TopBarActions/TopBarActions';
 import styles from './AsideMenu.module.scss';
 
 const AsideMenu = () => {
-  const isMenu = useAppSelector(state => state.menu.isOpenMenu);
+  const isMenu = useAppSelector(state => state.store.isOpenMenu);
   const isTablet = useMediaQuery({ minWidth: 639 });
 
   if (isTablet) {

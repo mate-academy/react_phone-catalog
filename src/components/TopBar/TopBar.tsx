@@ -9,7 +9,7 @@ import logo from '../../assets/img/tools/Logo.svg';
 import { useMediaQuery } from 'react-responsive';
 
 const TopBar = () => {
-  const isMenu = useAppSelector(state => state.menu.isOpenMenu);
+  const isMenu = useAppSelector(state => state.store.isOpenMenu);
   const isTablet = useMediaQuery({ minWidth: 640 });
   const isMobile = useMediaQuery({ maxWidth: 640 });
   const dispatch = useAppDispatch();

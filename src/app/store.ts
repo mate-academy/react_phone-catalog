@@ -3,7 +3,7 @@ import { settingsSlice } from '../features/settingsSlice';
 
 export const store = configureStore({
   reducer: {
-    menu: settingsSlice.reducer,
+    store: settingsSlice.reducer,
   },
 });
 
