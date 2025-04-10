@@ -4,12 +4,13 @@ import classNames from 'classnames';
 
 import styles from './Slider.module.scss';
 
-const banner1Big = '/img/baner1.svg';
-const banner1Small = '/img/baner1small.svg';
-const banner2Big = '/img/banner-accessoriesReady.png';
-const banner2Small = '/img/banner-accessoriesReadySmall.png';
-const banner3Big = '/img/banner-phones.png';
-const banner3Small = '/img/banner-phonesSmall.png';
+const banner1Big = '/react_phone-catalog/img/banner1.svg';
+const banner1Small = '/react_phone-catalog/img/baner1small.svg';
+const banner2Big = '/react_phone-catalog/img/banner-accessoriesReady.png';
+const banner2Small =
+  '/react_phone-catalog/img/banner-accessoriesReadySmall.png';
+const banner3Big = '/react_phone-catalog/img/banner-phones.png';
+const banner3Small = '/react_phone-catalog/img/banner-phonesSmall.png';
 
 import arrowLeft from '../../assets/Icons/Arrow-left.svg';
 import arrowRight from '../../assets/Icons/Arrow-right.svg';
