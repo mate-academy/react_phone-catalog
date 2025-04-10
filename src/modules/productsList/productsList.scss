@@ -1,5 +1,5 @@
-@import '../../utils/fonts.scss';
-@import '../../utils/mixin.scss';
+@import '../../utils/fonts';
+@import '../../utils/mixin';
 
 .productList {
   grid-column: 1 / -1;
@@ -25,7 +25,7 @@
     }
 
     &--name {
-      font-family: 'Mont', sans-serif;
+      font-family: Mont, sans-serif;
       font-weight: 700;
       font-size: 12px;
       line-height: 100%;
@@ -43,7 +43,7 @@
   }
 
   &__check {
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;

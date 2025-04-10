@@ -1,5 +1,5 @@
-@import '../../utils/fonts.scss';
-@import '../../utils/mixin.scss';
+@import '../../utils/fonts';
+@import '../../utils/mixin';
 
 .cart__button {
   flex-grow: 1;
@@ -7,7 +7,7 @@
   background-color: #905BFF;
   color: #F1F2F9;
   border: none;
-  font-family: "Mont", sans-serif;
+  font-family: Mont, sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;

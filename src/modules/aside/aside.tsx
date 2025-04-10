@@ -61,7 +61,11 @@ export const Aside: FC<AsideProps> = ({ setIsMenuOpen, isMenuOpen }) => {
           <li className="aside__menu--list--item">
             <NavLink
               to="/"
-              className="aside__menu--list--link"
+              className={({ isActive }) =>
+                isActive
+                  ? 'aside__menu--list--link active'
+                  : 'aside__menu--list--link'
+              }
               onClick={() => setIsMenuOpen(false)}
             >
               HOME
@@ -70,7 +74,11 @@ export const Aside: FC<AsideProps> = ({ setIsMenuOpen, isMenuOpen }) => {
           <li className="aside__menu--list--item">
             <NavLink
               to="/phones"
-              className="aside__menu--list--link"
+              className={({ isActive }) =>
+                isActive
+                  ? 'aside__menu--list--link active'
+                  : 'aside__menu--list--link'
+              }
               onClick={() => setIsMenuOpen(false)}
             >
               PHONES
@@ -79,7 +87,11 @@ export const Aside: FC<AsideProps> = ({ setIsMenuOpen, isMenuOpen }) => {
           <li className="aside__menu--list--item">
             <NavLink
               to="/tablets"
-              className="aside__menu--list--link"
+              className={({ isActive }) =>
+                isActive
+                  ? 'aside__menu--list--link active'
+                  : 'aside__menu--list--link'
+              }
               onClick={() => setIsMenuOpen(false)}
             >
               TABLETS
@@ -88,7 +100,11 @@ export const Aside: FC<AsideProps> = ({ setIsMenuOpen, isMenuOpen }) => {
           <li className="aside__menu--list--item">
             <NavLink
               to="/accessories"
-              className="aside__menu--list--link"
+              className={({ isActive }) =>
+                isActive
+                  ? 'aside__menu--list--link active'
+                  : 'aside__menu--list--link'
+              }
               onClick={() => setIsMenuOpen(false)}
             >
               ACESSORIES

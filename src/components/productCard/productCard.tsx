@@ -32,12 +32,12 @@ export const ProductCard = ({
           className="productCard__box--img"
         />
       </div>
-      <h3
-        className="productCard__name"
+      <div
+        className="productCard__nameClick"
         onClick={() => handleProductClick(product.itemId)}
       >
-        {product.name}
-      </h3>
+        <h3 className="productCard__name">{product.name}</h3>
+      </div>
       <div className="productCard__prices">
         <p className="productCard__prices--price">${product.price}</p>
         {isFullPrice ? (

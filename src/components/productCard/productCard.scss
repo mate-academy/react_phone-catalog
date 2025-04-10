@@ -1,5 +1,5 @@
-@import '../../utils/fonts.scss';
-@import '../../utils/mixin.scss';
+@import '../../utils/fonts';
+@import '../../utils/mixin';
 
 .productCard {
   width: 212px;
@@ -46,7 +46,7 @@
   }
 
   &__name {
-    font-family: "Mont", sans-serif;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
@@ -57,8 +57,12 @@
     white-space: normal;
   }
 
+  &__nameClick {
+    cursor: pointer;
+  }
+
   &__full {
-    font-family: "Mont", sans-serif;
+    font-family: Mont, sans-serif;
     font-weight: bold;
     font-weight: 800;
     font-size: 22px;
@@ -73,7 +77,7 @@
     margin-bottom: 8px;
 
     &--price {
-      font-family: "Mont", sans-serif;
+      font-family: Mont, sans-serif;
       font-weight: bold;
       font-weight: 800;
       font-size: 22px;
@@ -83,7 +87,7 @@
     }
 
     &--full {
-      font-family: "Mont", sans-serif;
+      font-family: Mont, sans-serif;
       font-weight: 600;
       font-size: 22px;
       line-height: 140%;
@@ -92,7 +96,7 @@
       color: #75767F;
     }
   }
-  &__line:after {
+  &__line::after {
     content: "";
     display: block;
     width: 100%;
@@ -105,7 +109,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: "Mont", sans-serif;
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 12px;
     margin-bottom: 8px;

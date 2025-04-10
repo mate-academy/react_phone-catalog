@@ -16,7 +16,7 @@ $grid-gutter: 16px;
   @media (min-width: #{$desktop}) { @content; }
 }
 
-@mixin greatDesktop {
+@mixin great-desktop {
   @media (min-width: #{$greatDesktop}) { @content; }
 }
 
@@ -46,7 +46,7 @@ $grid-gutter: 16px;
     @include grid(24, 32px);
   }
 
-  @include greatDesktop {
+  @include great-desktop {
     @include grid(24, 152px);
   }
 }

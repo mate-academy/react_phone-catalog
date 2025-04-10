@@ -1,5 +1,5 @@
-@import '../../utils/fonts.scss';
-@import '../../utils/mixin.scss';
+@import '../../utils/fonts';
+@import '../../utils/mixin';
 
 .favorites {
   grid-column: 1 / -1;
@@ -25,7 +25,7 @@
     }
 
     &--name {
-      font-family: 'Mont', sans-serif;
+      font-family: Mont, sans-serif;
       font-weight: 700;
       font-size: 12px;
       line-height: 100%;
@@ -49,6 +49,7 @@
     @include tablet {
       margin-bottom: 64px;
     }
+
     @include desktop {
       margin-bottom: 80px;
     }
@@ -60,13 +61,13 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    justify-items: center;
-    align-items: center;
+    place-items: center;
 
 
     @include tablet {
       margin-bottom: 64px;
     }
+
     @include desktop {
       margin-bottom: 80px;
     }

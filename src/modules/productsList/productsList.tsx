@@ -225,12 +225,6 @@ export const ProductsList: React.FC<ProductsListProps> = ({ category }) => {
             </button>
           </div>
         )}
-        {!isLoading && !hasError && filteredProducts.length > 0 && (
-          <div className="productList__noProducts">
-            <p className="bodyText">There are no {category} yet.</p>
-          </div>
-        )}
-
         <div className="productList__title">
           <h1 className="h1">{title}</h1>
           <p className="bodyText">

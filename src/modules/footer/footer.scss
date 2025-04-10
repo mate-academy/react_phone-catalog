@@ -1,5 +1,5 @@
-@import '../../utils/fonts.scss';
-@import '../../utils/mixin.scss';
+@import '../../utils/fonts';
+@import '../../utils/mixin';
 
 .line {
   display: block;
@@ -27,8 +27,8 @@
     margin-bottom: 32px;
 
     &--logo {
-      width: 32px;
       width: 89px;
+      height: 32px;
     }
   }
 
@@ -98,8 +98,8 @@
     }
   }
 }
+
 .sliderTop {
   width: 16px;
   height: 16px;
-
 }

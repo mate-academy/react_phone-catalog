@@ -1,9 +1,9 @@
-@import '../../utils/fonts.scss';
-@import '../../utils/mixin.scss';
+@import '../../utils/fonts';
+@import '../../utils/mixin';
 
 .custom-select {
   position: relative;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
 
   &__arrow {
     width: 16px;

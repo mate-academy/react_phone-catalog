@@ -1,5 +1,5 @@
-@import '../../utils/fonts.scss';
-@import '../../utils/mixin.scss';
+@import '../../utils/fonts';
+@import '../../utils/mixin';
 
 .cartPage {
   grid-column: 1 / -1;
@@ -20,7 +20,7 @@
     }
 
     &--name {
-      font-family: 'Mont', sans-serif;
+      font-family: Mont, sans-serif;
       font-weight: 700;
       font-size: 12px;
       line-height: 100%;
@@ -39,13 +39,12 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    justify-items: center;
-    align-items: center;
-
+    place-items: center;
 
     @include tablet {
       margin-bottom: 64px;
     }
+
     @include desktop {
       margin-bottom: 80px;
     }
@@ -107,7 +106,7 @@
     }
 
     &--price {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 800;
       font-size: 32px;
       line-height: 41px;
@@ -117,7 +116,7 @@
     }
 
     &--item {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 600;
       font-size: 14px;
       line-height: 21px;
@@ -129,13 +128,12 @@
     &--button {
       display: flex;
       align-items: center;
+      justify-content: center;
       height: 48px;
       width: 100%;
-      align-items: center;
-      justify-content: center;
       border: none;
       background-color: #905BFF;
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 700;
       font-size: 14px;
       line-height: 21px;
@@ -200,7 +198,7 @@
     }
 
     &--name {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 600;
       font-size: 14px;
       line-height: 21px;
@@ -258,7 +256,7 @@
       }
 
       &--number {
-        font-family: Mont;
+        font-family: Mont, sans-serif;
         font-weight: 600;
         font-size: 14px;
         line-height: 21px;
@@ -269,7 +267,7 @@
     }
 
     &--price {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 800;
       font-size: 22px;
       line-height: 140%;

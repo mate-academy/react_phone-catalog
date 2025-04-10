@@ -1,5 +1,5 @@
-@import '../../utils/fonts.scss';
-@import '../../utils/mixin.scss';
+@import '../../utils/fonts';
+@import '../../utils/mixin';
 
 .header {
   width: 100%;
@@ -67,7 +67,7 @@
     }
 
     &--itens {
-      font-family: 'Mont', sans-serif;
+      font-family: Mont, sans-serif;
       font-weight: bold;
       font-size: 12px;
       line-height: 11px;
@@ -179,12 +179,12 @@
     right: -8px;
     background-color: #EB5757;
     color: #F1F2F9;
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     font-size: 9px;
     font-weight: bold;
     width: 14px;
     height: 14px;
-    padding: 3px 3px;
+    padding: 3px;
     border-radius: 50%;
     line-height: 1;
     min-width: 10px;
@@ -202,12 +202,12 @@
     right: -8px;
     background-color: #EB5757;
     color: #F1F2F9;
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     font-size: 9px;
     font-weight: bold;
     width: 14px;
     height: 14px;
-    padding: 3px 3px;
+    padding: 3px;
     border-radius: 50%;
     line-height: 1;
     min-width: 10px;
