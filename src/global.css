@@ -22,3 +22,8 @@
     font-weight: 600;
     font-style: normal;
   }
+
+  html, 
+  body {
+    @apply bg-background-color-base;
+  }

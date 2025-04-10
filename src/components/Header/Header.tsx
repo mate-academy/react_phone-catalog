@@ -7,12 +7,12 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-background-color-base text-text-color-base-grey sticky top-0 z-50 border-b border-[#3B3E4A]">
+    <header className="bg-background-color-base text-text-color-base-grey sticky top-0 z-50 border-b border-color-border">
       <div className="mx-auto flex items-center justify-between px-4 pl-4 h-12 md:h-[68px] md:px-6">
         <div className="flex items-center gap-12 sm:gap-8 h-full">
           <Link to="/">
             <img
-              src="img/Logo.png"
+              src="img/Logo2x.svg"
               alt="Logo"
               className="h-5 w-14 transition-all hover:scale-110 md:w-20 md:h-7"
             />

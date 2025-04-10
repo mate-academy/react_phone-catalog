@@ -58,7 +58,7 @@ export const PicturesSlider = () => {
 
     return (
         <div>
-            <div className="flex sm:mx-6 mb-[18px] lg:mx-8 xl:mx-[156px]">
+            <div className="flex sm:mx-6 mb-[18px] lg:mx-8 xl:mx-[152px]">
                 <div className="justify-center min-w-8 max-h-[400px] bg-background-color-btn hidden sm:flex">
                     <button onClick={prevSlide}>
                         <img src="icons/arrow-left.svg" alt="left" />

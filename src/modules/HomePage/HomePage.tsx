@@ -1,6 +1,7 @@
 import { PicturesSlider } from "@/modules/HomePage/components/PicturesSlider";
-import { ProductsSlider } from "@/modules/HomePage/components/ProductsSlider";
 import { ShopByCategory } from "./components/ShopByCategory";
+import { HotSlider } from "./components/HotSlider";
+import { BrandNewSlider } from "./components/BrandNewSlider";
 
 
 export const HomePage = () => {
@@ -14,8 +15,9 @@ export const HomePage = () => {
         Welcome to Nice Gadgets store!
       </h1>
       <PicturesSlider />
-      <ProductsSlider />
+      <BrandNewSlider />
       <ShopByCategory />
+      <HotSlider />
     </main>
 
   );

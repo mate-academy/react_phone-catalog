@@ -13,7 +13,7 @@ export const MobileMenu = ({ isMenuOpenNow, onClose }: MobileMenuProps) => {
             <div>
                 <div className="flex items-center justify-between border-b border-[#3B3E4A] pl-4 h-12">
                     <Link to="/">
-                        <img src="img/Logo.png" alt="Logo" className="h-5 w-14" />
+                        <img src="img/Logo2x.svg" alt="Logo" className="h-5 w-14" />
                     </Link>
                     <button
                         className="pr-4 pl-4 h-full border-l border-[#3B3E4A]"
@@ -43,7 +43,7 @@ export const MobileMenu = ({ isMenuOpenNow, onClose }: MobileMenuProps) => {
             </div>
 
             <div className="flex border-t border-[#3B3E4A]">
-                <Link to="/favorites" className="flex-1 flex items-center justify-center h-12 border-r border-[#3B3E4A] text-white
+                <Link to="/favorites" className="flex-1 flex items-center justify-center h-12 border-r border-[#3B3E4A] text-text-color-base-white
                                                 hover:text-text-color-base-white relative group">
                     <img
                         src="public/icons/favourites.svg"
@@ -51,7 +51,7 @@ export const MobileMenu = ({ isMenuOpenNow, onClose }: MobileMenuProps) => {
                     />
                     <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full" />
                 </Link>
-                <Link to="/cart" className="flex-1 flex items-center justify-center h-12 text-white
+                <Link to="/cart" className="flex-1 flex items-center justify-center h-12 text-text-color-base-white
                                             hover:text-text-color-base-white relative group">
                     <img
                         src="public/icons/shopping_bag.svg"
