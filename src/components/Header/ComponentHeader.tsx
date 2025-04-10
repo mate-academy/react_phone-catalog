@@ -14,6 +14,11 @@ export const ComponentHeader: React.FC = () => {
     setIsMenuOpen(prev => !prev);
   };
 
+  const totalQuantity = cart.items.reduce(
+    (acc, item) => acc + item.quantity,
+    0,
+  );
+
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>
@@ -76,7 +81,7 @@ export const ComponentHeader: React.FC = () => {
                 <img src="./icons/cart.png" alt="Cart" />
                 {cart.items.length > 0 && (
                   <span className={`${styles.icon__badge} icon`}>
-                    {cart.items.length}
+                    {totalQuantity}
                   </span>
                 )}
               </div>

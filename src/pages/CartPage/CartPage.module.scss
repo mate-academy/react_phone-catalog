@@ -88,6 +88,8 @@
           font-size: 14px;
           font-weight: 600;
           line-height: 21px;
+          color: black;
+          text-decoration: none;
         }
       }
 
@@ -103,6 +105,8 @@
         .controls{
           display: flex;
           gap: 14px;
+          flex: 1;
+
           .button{
             width: 32px;
             height: 32px;
@@ -117,6 +121,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            min-width: 24px;
+            text-align: center;
           }
         }
 
@@ -126,6 +132,8 @@
           font-weight: 800;
           line-height: 30.8px;
           margin: 0;
+          min-width: 80px;
+          text-align: right;
         }
       }
     }

@@ -11,28 +11,29 @@
     padding: 32px;
     flex-direction: row;
     justify-content: space-between;
+    gap: 0;
   }
 
   .nav{
     display: flex;
     align-items: center;
 
-    @include on-tablet{
-      width: 50%;
-    }
-
     &__list{
       width: 100%;
       padding: 0;
       margin: 0;
       display: flex;
-      row-gap: 8px;
+      gap: 16px;
       flex-direction: column;
       list-style: none;
-      justify-content: space-between;
 
       @include on-tablet{
         flex-direction: row;
+        gap: 24px;
+      }
+
+      @include on-desktop{
+        gap: 107px;
       }
     }
 

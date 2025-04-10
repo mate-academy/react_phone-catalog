@@ -6,27 +6,25 @@ import { VectorBreadCrumbs } from '../../components/VectorBreadCrumbs';
 export const CartPage: React.FC = () => {
   const { state, dispatch } = useCart();
 
-  const handleIncrease = (id: number) => {
+  const updateQuantity = (id: number, delta: number) => {
     const item = state.items.find(items => items.id === id);
 
-    if (item) {
+    if (!item) {
+      return;
+    }
+
+    const newQuantity = item.quantity + delta;
+
+    if (newQuantity > 0) {
       dispatch({
         type: 'UPDATE_QUANTITY',
-        payload: { id, quantity: item.quantity + 1 },
+        payload: { id, quantity: newQuantity },
       });
     }
   };
 
-  const handleDecrease = (id: number) => {
-    const item = state.items.find(items => items.id === id);
-
-    if (item && item.quantity > 1) {
-      dispatch({
-        type: 'UPDATE_QUANTITY',
-        payload: { id, quantity: item.quantity - 1 },
-      });
-    }
-  };
+  const handleIncrease = (id: number) => updateQuantity(id, 1);
+  const handleDecrease = (id: number) => updateQuantity(id, -1);
 
   const handleRemove = (id: number) => {
     dispatch({ type: 'REMOVE_ITEM', payload: { id } });
@@ -46,6 +44,11 @@ export const CartPage: React.FC = () => {
       dispatch({ type: 'CLEAR_CART' });
     }
   };
+
+  const totalQuantity = state.items.reduce(
+    (acc, item) => acc + item.quantity,
+    0,
+  );
 
   return (
     <div className={styles.container}>
@@ -102,7 +105,7 @@ export const CartPage: React.FC = () => {
       <div className={styles.checkout}>
         <div className={styles.checkout__info}>
           <h2>${totalPrice}</h2>
-          <p>Total for {state.items.length} items</p>
+          <p>Total for {totalQuantity} items</p>
         </div>
         <hr />
         <button
