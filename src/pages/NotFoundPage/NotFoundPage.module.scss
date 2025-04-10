@@ -2,12 +2,18 @@
 @import '../../styles/colors';
 @import '../../styles/variables';
 
-.pagenotfound {
+.pageNotFound {
   max-width: 100%;
+  width: 40vw;
+  height: 40vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container {
   padding: 0 16px 16px;
+  background-color: rgb(42, 39, 39);
 
   @include on-tablet {
     padding: 0 24px 24px;

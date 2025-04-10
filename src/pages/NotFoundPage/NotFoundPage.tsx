@@ -7,7 +7,7 @@ export const NotFoundPage = () => {
       <img
         src="../../../public/img/page-not-found.png"
         alt="Page not found"
-        className={s.pagenotfound}
+        className={s.pageNotFound}
       />
     </div>
   );

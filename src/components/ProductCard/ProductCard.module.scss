@@ -1,4 +1,8 @@
-.product-card {
+@import '../../styles/mixins';
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+.productCard {
   background: $surface;
   height: 439px;
   min-width: 212px;
@@ -8,20 +12,20 @@
   flex-direction: column;
   flex-grow: 1;
 
-  @media (min-width: $tablet) {
+  @include on-tablet {
     height: 512px;
     min-width: 237px;
     flex-basis: calc(50% - 8px);
     flex-grow: unset;
   }
 
-  @media (min-width: $pc) {
+  @include on-desktop{
     height: 506px;
     width: 272px;
     flex-basis: unset;
   }
 
-  &__image-container {
+  &__imageContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,17 +35,17 @@
       height: 129px;
       object-fit: contain;
       transition: transform $hover-transition ease;
-
+      
       &:hover {
         transform: scale(1.1);
       }
 
-      @media (min-width: $tablet) {
+      @include on-tablet {
         width: 173px;
         height: 202px;
       }
 
-      @media (min-width: $pc) {
+      @include on-desktop{
         width: 208px;
         height: 196px;
       }
@@ -67,7 +71,7 @@
     font-size: 22px;
     line-height: 31px;
 
-    &__full-price {
+    &__fullPrice {
       color: $gray;
       text-decoration: line-through;
       font-weight: 600;

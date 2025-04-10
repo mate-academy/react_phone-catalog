@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/DispatchSelector';
 import { cartSlice } from '../../utils/cart';
 import { Product } from '../../types/Product';
 import { CartProduct } from '../../types/CartProduct';
-import classNames from 'classnames';
+import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import s from './CartPage.module.scss';
 
@@ -62,68 +62,67 @@ export const CartPage = () => {
   return (
     <main>
       <button className={s.back} onClick={goBack}>
-        <div className="back__arrow">
-          <img
-            src="../../../public/img/icons/Chevron\ \(Arrow\ Right\).svg"
-            alt="Arrow left"
-          />
+        <div className={s.back__arrow}>
+          <img src="../../../public/img/icons/arr_left.svg" alt="Arrow left" />
         </div>
-        <span className="back__text">Back</span>
+        <span className={s.back__text}>Back</span>
       </button>
       <h2>Cart</h2>
-      <div className="cart">
-        <div className="cart__list">
+      <div className={s.cart}>
+        <div className={s.cart__list}>
           {productsToShow.map((product: CartProduct) => (
-            <div key={product.id} className="cart__item">
+            <div key={product.id} className={s.cart__item}>
               <img
-                src="./img/icons/cross-x.svg"
+                src="../../../public/img/icons/Close.png"
                 alt="Remove mark"
-                className="cart__item__remove"
+                className={s.cart__item__remove}
                 onClick={() => handleRemove(product)}
               />
               <img
                 src={product.image}
                 alt="Product"
-                className="cart__item__image"
+                className={s.cart__item__image}
               />
-              <h3 className="cart__item__title">{product.name}</h3>
-              <div className="cart__item__count quantity-counter">
+              <h3 className={s.cart__item__title}>{product.name}</h3>
+              <div className={(s.cart__item__count, quantityCounter)}>
                 <div
-                  className="quantity-counter__item"
+                  className={s.quantityCounter__item}
                   onClick={() => handleDecreaseProduct(product)}
                 >
-                  <img src="./img/icons/minus.svg" alt="Minus" />
+                  <img src="../../../public/img/icons/Minus.png" alt="Minus" />
                 </div>
-                <span className="quantitycounter__item quantitycounter__count">
+                <span
+                  className={(s.quantityCounter__item, quantityCounter__count)}
+                >
                   {product.amount}
                 </span>
                 <div
-                  className={s.quantitycounter__item}
+                  className={s.quantityCounter__item}
                   onClick={() => handleIncreaseProduct(product)}
                 >
-                  <img src="./img/icons/plus.svg" alt="Plus" />
+                  <img src="../../../public/img/icons/Plus.png" alt="Plus" />
                 </div>
               </div>
-              <h3 className="cart__item__price">${product.price}</h3>
+              <h3 className={s.cart__item__price}>${product.price}</h3>
             </div>
           ))}
           {!productsToShow.length && (
             <img
-              src="./img/cart-is-empty.png"
+              src="../../../public/img/cart-is-empty.png"
               alt="Cart is empty"
-              className="cart__list--empty"
+    //          className={s.cart__list--empty}
             />
           )}
         </div>
         <div
-          className={classNames('cart__checkout', {
-            'cart__checkout--hidden': !itemsCount,
+          className={cn(s.cart__checkout, {
+            [s['cart__checkout--hidden']]: !itemsCount,
           })}
         >
-          <h4 className="cart__checkout__price">${totalPrice}</h4>
-          <p className="cart__checkout__info">Total for {itemsCount} items</p>
-          <div className="divider"></div>
-          <button className="cart__checkout__button" onClick={handleCheckout}>
+          <h4 className={s.cart__checkout__price}>${totalPrice}</h4>
+          <p className={s.cart__checkout__info}>Total for {itemsCount} items</p>
+          <div className={s.divider}></div>
+          <button className={s.cart__checkout__button} onClick={handleCheckout}>
             Checkout
           </button>
         </div>

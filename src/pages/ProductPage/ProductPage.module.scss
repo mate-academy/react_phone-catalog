@@ -43,7 +43,7 @@
     }
   }
 
-  &__arrow-fon {
+  &__arrowFon {
     transition: background-color $hover-transition ease;
 
     &:hover {
@@ -105,7 +105,7 @@
       color: $gray;
     }
 
-    .selectdropdown {
+    .selectDropdown {
       list-style: none;
       border: 1px solid $surface-second;
       background: $surface;

@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { SortBy } from '../../types/SortBy';
 import cn from 'classnames';
 import s from './ProductPage.module.scss';
+import { Navigates } from '../../components/Navigate';
 
 export const ProductPage = () => {
   const [sortBy, setSortBy] = useState(SortBy.new);
@@ -116,57 +117,58 @@ export const ProductPage = () => {
 
   return (
     <main>
+      <Navigates />
       <h2>{categoryTitle()}</h2>
       <p className={s.subtitle}>{productsCount} models</p>
-      <div className="filters">
-        <div className="filters__group">
-          <label htmlFor="sortBy" className="filters__group__label">
+      <div className={s.filters}>
+        <div className={s.filters__group}>
+          <label htmlFor="sortBy" className={s.filters__group__label}>
             Sort by
           </label>
           <div
-            className={cn('select', {
-              'select--open': isOpenSortBy,
+            className={cn(s.select, {
+              [s['select--open']]: isOpenSortBy,
             })}
             id="sortBy"
             onClick={handleSortByDropdown}
           >
-            <div className="select__input">{sortBy}</div>
+            <div className={s.select__input}>{sortBy}</div>
             {isOpenSortBy ? (
               <img
-                src="./img/icons/arrow-top.svg"
+                src="./img/icons/arr_up.png"
                 alt="Up arrow"
-                className="select__arrow"
+                className={s.select__arrow}
               />
             ) : (
               <img
-                src="./img/icons/arrow-down.svg"
+                src="./img/icons/arr_down.png"
                 alt="Down arrow"
-                className="select__arrow"
+                className={s.select__arrow}
               />
             )}
           </div>
           {isOpenSortBy && (
-            <ul className="selectdropdown">
+            <ul className={s.selectDropdown}>
               <li
-                className={s.selectdropdown__item}
+                className={s.selectDropdown__item}
                 onClick={() => handleSortBy(SortBy.new)}
               >
                 {SortBy.new}
               </li>
               <li
-                className={s.selectdropdown__item}
+                className={s.selectDropdown__item}
                 onClick={() => handleSortBy(SortBy.old)}
               >
                 {SortBy.old}
               </li>
               <li
-                className={s.selectdropdown__item}
+                className={s.selectDropdown__item}
                 onClick={() => handleSortBy(SortBy.cheap)}
               >
                 {SortBy.cheap}
               </li>
               <li
-                className={s.selectdropdown__item}
+                className={s.selectDropdown__item}
                 onClick={() => handleSortBy(SortBy.expansive)}
               >
                 {SortBy.expansive}
@@ -174,54 +176,54 @@ export const ProductPage = () => {
             </ul>
           )}
         </div>
-        <div className="filters__group">
-          <label htmlFor="perPage" className="filters__group__label">
+        <div className={s.filters__group}>
+          <label htmlFor="perPage" className={s.filters__group__label}>
             Items on page
           </label>
           <div
-            className={cn('select', {
-              'select--open': isOpenPerPage,
+            className={cn(s.select, {
+              [s['select--open']]: isOpenPerPage,
             })}
             id="perPage"
             onClick={handlePerPageDropdown}
           >
-            <div className="select__input">{perPage}</div>
+            <div className={s.select__input}>{perPage}</div>
             {isOpenPerPage ? (
               <img
-                src="./img/icons/arrow-top.svg"
+                src="./img/icons/arr_up.png"
                 alt="Up arrow"
-                className="select__arrow"
+                className={s.select__arrow}
               />
             ) : (
               <img
-                src="./img/icons/arrow-down.svg"
+                src="./img/icons/arr_down.png"
                 alt="Down arrow"
-                className="select__arrow"
+                className={s.select__arrow}
               />
             )}
           </div>
           {isOpenPerPage && (
-            <ul className="select-dropdown">
+            <ul className={s.selectDropdown}>
               <li
-                className="select-dropdown__item"
+                className={s.selectDropdown__item}
                 onClick={() => handlePerPage(32)}
               >
                 32
               </li>
               <li
-                className="select-dropdown__item"
+                className={s.selectDropdown__item}
                 onClick={() => handlePerPage(16)}
               >
                 16
               </li>
               <li
-                className="select-dropdown__item"
+                className={s.selectDropdown__item}
                 onClick={() => handlePerPage(8)}
               >
                 8
               </li>
               <li
-                className="select-dropdown__item"
+                className={s.selectDropdown__item}
                 onClick={() => handlePerPage(4)}
               >
                 4
@@ -230,32 +232,32 @@ export const ProductPage = () => {
           )}
         </div>
       </div>
-      <div className="products">
+      <div className={s.products}>
         {productsToShow.map((product, index) => (
           <ProductCard key={index} product={product} />
         ))}
       </div>
       {showPagination && (
-        <div className="pagination">
+        <div className={s.pagination}>
           <Link
             to={generatePageLink(
               currentPage - 1 < 1 ? currentPage : currentPage - 1,
             )}
-            className={cn('pagination__item pagination__arrow-fon', {
-              'pagination__item--disabled': currentPage === 1,
+            className={cn(s.pagination__item, pagination__arrowFon, {
+              [s['pagination__item--disabled']]: currentPage === 1,
             })}
           >
             {currentPage === 1 ? (
               <img
                 src="./img/icons/arrow-left.svg"
                 alt="Left arrow"
-                className="pagination__arrow"
+                className={s.pagination__arrow}
               />
             ) : (
               <img
                 src="./img/icons/arrow-left-white.svg"
                 alt="Left arrow"
-                className="pagination__arrow"
+                className={s.pagination__arrow}
               />
             )}
           </Link>
@@ -263,8 +265,8 @@ export const ProductPage = () => {
             <Link
               key={pageNumber}
               to={generatePageLink(pageNumber)}
-              className={cn('pagination__page pagination__item', {
-                'pagination__page--active': currentPage === pageNumber,
+              className={cn(s.pagination__page, pagination__item, {
+                [s['pagination__page--active']]: currentPage === pageNumber,
               })}
             >
               {pageNumber}
@@ -274,21 +276,21 @@ export const ProductPage = () => {
             to={generatePageLink(
               currentPage + 1 > totalPages ? currentPage : currentPage + 1,
             )}
-            className={cn('pagination__item pagination__arrow-fon', {
-              'pagination__item--disabled': currentPage === totalPages,
+            className={cn(s.pagination__item, pagination__arrowFon, {
+              [s['pagination__item--disabled']]: currentPage === totalPages,
             })}
           >
             {currentPage === totalPages ? (
               <img
                 src="./img/icons/arrow-right.svg"
                 alt="Right arrow"
-                className="pagination__arrow"
+                className={s.pagination__arrow}
               />
             ) : (
               <img
                 src="./img/icons/arrow-right-white.svg"
                 alt="Right arrow"
-                className="pagination__arrow"
+                className={s.pagination__arrow}
               />
             )}
           </Link>

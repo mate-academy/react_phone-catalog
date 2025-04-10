@@ -4,7 +4,8 @@ import { Product } from '../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../hooks/DispatchSelector';
 import { cartSlice } from '../../utils/cart';
 import { favouriteSlice } from '../../utils/favourite';
-import classNames from 'classnames';
+import cn from 'classnames';
+import s from './ProductCard.module.scss';
 
 interface Props {
   product: Product;
@@ -42,78 +43,84 @@ export const ProductCard: React.FC<Props> = ({
   };
 
   return (
-    <article className="product-card">
+    <article className={s.productCard}>
       <Link
         to={`/${product.category}/${product.itemId}`}
-        className="product-card__image-container"
+        className={s.productCard__imageContainer}
       >
         <img
           src={product.image}
           alt={product.name}
-          className="product-card__image-container__image"
+          className={s.productCard__imageContainer__image}
         />
       </Link>
 
       <Link
         to={`/${product.category}/${product.itemId}`}
-        className="product-card__title"
+        className={s.productCard__title}
       >
         {product.name}
       </Link>
 
-      <h3 className="product-card__price">
+      <h3 className={s.productCard__price}>
         ${product.price}
         {withFullPrice && (
-          <span className="product-card__price__full-price">
+          <span className={s.productCard__price__fullPrice}>
             ${product.fullPrice}
           </span>
         )}
       </h3>
 
-      <hr className="divider"></hr>
+      <hr className={s.divider}></hr>
 
-      <ul className="product-card__description">
-        <li className="product-card__description__item">
-          <span className="product-card__description__item__name">Screen</span>
-          <span className="product-card__description__item__value">
+      <ul className={s.productCard__description}>
+        <li className={s.productCard__description__item}>
+          <span className={s.productCard__description__item__name}>Screen</span>
+          <span className={s.productCard__description__item__value}>
             {product.screen}
           </span>
         </li>
-        <li className="product-card__description__item">
-          <span className="product-card__description__item__name">
+        <li className={s.productCard__description__item}>
+          <span className={s.productCard__description__item__name}>
             Capacity
           </span>
-          <span className="product-card__description__item__value">
+          <span className={s.productCard__description__item__value}>
             {product.capacity}
           </span>
         </li>
-        <li className="product-card__description__item">
-          <span className="product-card__description__item__name">Ram</span>
-          <span className="product-card__description__item__value">
+        <li className={s.productCard__description__item}>
+          <span className={s.productCard__description__item__name}>Ram</span>
+          <span className={s.productCard__description__item__value}>
             {product.ram}
           </span>
         </li>
       </ul>
 
-      <div className="product-card__actions">
+      <div className={s.productCard__actions}>
         <button
-          className={classNames('product-card__actions__add', {
-            'product-card__actions__add--selected': isInCart,
+          className={cn(s.productCard__actions__add, {
+            [s['productCard__actions__add--selected']]: isInCart,
           })}
           onClick={handleAddToCart}
         >
           {isInCart ? 'Remove from cart' : 'Add to cart'}
         </button>
         <div
-          className={classNames('product-card__actions__favourite', {
-            'product-card__actions__favourite--selected': isFavourite,
+          className={cn(s.productCard__actions__favourite, {
+            [s['product-card__actions__favourite--selected']]: isFavourite,
           })}
           onClick={handleAddToFavourite}
         >
           {isFavourite ? (
-            <img src="./img/icons/heart-filled.svg" alt="Favourite" />
+            <img
+              src="../../../public/img/icons/Favourites\ Filled.png"
+              alt="Favourite"
+            />
           ) : (
-            <img src="./img/icons/favourites-heart.svg" alt="Favourite" />
+            <img
+              src=".../../../public/img/icons/Favourites.png"
+              alt="Favourite"
+            />
           )}
         </div>
       </div>

@@ -7,7 +7,7 @@ import cn from 'classnames';
 import { cartSlice } from '../../utils/cart';
 import { favouriteSlice } from '../../utils/favourite';
 import { useEffect, useState } from 'react';
-import { transformToUpperCase } from '../../utils/helpers';
+import { Navigates } from '../../components/Navigate';
 import s from './ProdDetailsPage.module.scss';
 import { ProductsSlider } from '../../components/Slider/ProductsSlider';
 import {
@@ -38,12 +38,6 @@ export const ProdDetailsPage = () => {
     (item: Product) => item.color === product?.color,
   );
   const goBack = () => navigate('..');
-
-  const getCategory = () => {
-    const lastIndex = location.pathname.lastIndexOf('/');
-
-    return location.pathname.slice(1, lastIndex);
-  };
 
   useEffect(() => {
     getAllProducts().then(setProducts);
@@ -134,85 +128,54 @@ export const ProdDetailsPage = () => {
 
   return (
     <main>
-      <div className={s.breadcrumbs}>
-        <Link to="/" className="breadcrumbs__item breadcrumbs__item--link">
-          <img
-            src="../../../public/img/icons/Home.svg"
-            alt="Home"
-            className="breadcrumbs__item__image"
-          />
-        </Link>
-
-        <div className="breadcrumbs__item">
-          <img
-            src="../../../public/img/icons/Chevron\ \(Arrow\ Right\)\ 2.svg"
-            alt="Arrow right"
-          />
+      <Navigates />
+      <button className={s.back} onClick={goBack}>
+        <div className={s.back__arrow}>
+          <img src="../../../public/img/icons/arr_left.svg" alt="Arrow left" />
         </div>
-        <Link to=".." className="breadcrumbs__item--link">
-          {transformToUpperCase(getCategory())}
-        </Link>
-
-        <div className="breadcrumbs__item">
-          <img
-            src="../../../public/img/icons/Chevron\ \(Arrow\ Right\)\ 2.svg"
-            alt="Arrow right"
-          />
-        </div>
-
-        <div className="product-details__current-page">
-          {product?.name || 'Nothing was found'}
-        </div>
-      </div>
-      <button className="back" onClick={goBack}>
-        <div className="back__arrow">
-          <img
-            src="../../../public/img/icons/Chevron\ \(Arrow\ Right\).svg"
-            alt="Arrow left"
-          />
-        </div>
-        <span className="back__text">Back</span>
+        <span className={s.back__text}>Back</span>
       </button>
 
       {product && (
         <>
           <h2>{product.name}</h2>
-          <div className="product-overview">
+          <div className={s.productOverview}>
             <SmallSlider2 />
-            <div className="main-information">
-              <div className="main-information__item-id">ID: {getId()}</div>
-              <div className="main-information__color">
-                <h4 className="main-information__color__title">
+            <div className={s.mainInformation}>
+              <div className={s.mainInformation__itemId}>ID: {getId()}</div>
+              <div className={s.mainInformation__color}>
+                <h4 className={s.mainInformation__color__title}>
                   Available colors
                 </h4>
-                <div className="main-information__color__picker">
+                <div className={s.mainInformation__color__picker}>
                   {colorsAvailable().map((color, index) => (
                     <Link
                       to={getColorLink(color)}
                       key={index}
-                      className={cn('color-container', {
-                        'color-container--active':
+                      className={cn(s.colorContainer, {
+                        [s['color-container--active']]:
                           product.color.replace(' ', '-') === color,
                       })}
                       style={{ background: getBackgroundColor(color) }}
                     >
-                      <div className="color-item"></div>
+                      <div className={s.colorItem}></div>
                     </Link>
                   ))}
                 </div>
               </div>
-              <div className="divider"></div>
-              <div className="main-information__capacity">
-                <h4 className="main-information__capacity__title">
+              <div className={s.divider}></div>
+              <div className={s.mainInformation__capacity}>
+                <h4 className={s.mainInformation__capacity__title}>
                   Select capacity
                 </h4>
-                <div className="main-information__capacity__picker">
+                <div className={s.mainInformation__capacity__picker}>
                   {product.capacityAvailable.map((capacity, index) => (
                     <Link
                       to={getCapacityLink(capacity)}
                       key={index}
-                      className={cn('capacity__item', {
-                        'capacity__item--active': product.capacity === capacity,
+                      className={cn(s.capacity__item, {
+                        [s['capacity__item--active']]:
+                          product.capacity === capacity,
                       })}
                     >
                       {capacity}
@@ -220,10 +183,10 @@ export const ProdDetailsPage = () => {
                   ))}
                 </div>
               </div>
-              <div className="divider"></div>
-              <div className="main-information__price">
-                <span className="regular-price">${product.priceDiscount}</span>
-                <span className="full-price">${product.priceRegular}</span>
+              <div className={s.divider}></div>
+              <div className={s.mainInformation__price}>
+                <span className={s.regularPrice}>${product.priceDiscount}</span>
+                <span className={s.fullPrice}>${product.priceRegular}</span>
               </div>
               <div className="main-information__actions">
                 <button

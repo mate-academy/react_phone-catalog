@@ -1,0 +1,51 @@
+@import '../../styles/_mixins';
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+.navigate{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0;
+  height: 16px;
+
+  @include on-tablet {
+    margin: 24px 0 40px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $gray;
+    transition: color $hover-transition ease;
+
+    &__image {
+      transition: transform $hover-transition ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &__link {
+      color: $white;
+      text-decoration: none;
+
+      &:hover {
+        color: $accent;
+      }
+    }
+
+    &__last {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+    }
+  }
+}

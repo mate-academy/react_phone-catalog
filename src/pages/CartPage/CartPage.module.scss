@@ -66,7 +66,7 @@
       margin-left: auto;
     }
 
-    .quantitycounter {
+    .quantityCounter {
       &__item {
         height: 32px;
         width: 32px;
@@ -143,5 +143,39 @@
 
   @include on-desktop {
     flex-direction: row;
+  }
+}
+
+.back {
+  border: none;
+  background: transparent;
+  margin-top: 24px;
+  height: 16px;
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+  transition: color $hover-transition ease;
+  color: $white;
+  font-family: inherit;
+
+  &__arrow{
+    height: 16px;
+    width: 16px;
+  }
+  &__text{
+    color: inherit;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &:hover {
+    color: $accent;
+  }
+
+  @include on-tablet {
+    margin-top: 40px;
   }
 }
