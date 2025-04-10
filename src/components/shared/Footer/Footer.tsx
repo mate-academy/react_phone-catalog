@@ -3,17 +3,22 @@ import './Footer.styles.scss';
 import { Link } from 'react-router-dom';
 
 import logo from '../../../../public/icons/logo.svg';
+import { routes } from '../Routs/Routs';
+import { useScrollToTop } from '../../../utils/customHooks';
 
 export const Footer = () => {
+
+  useScrollToTop();
+
   return (
     <div className="footer">
-      <div className="footer__logo">
+      <Link to={routes.home} className="footer__logo">
         <img src={logo} alt="footer logo" />
-      </div>
+      </Link>
 
       <ul className="footer__links">
         <li>
-          <a href="#" className="footer__link">
+          <a href="https://github.com/VikaChereushenko" className="footer__link">
             Github
           </a>
         </li>
@@ -31,7 +36,7 @@ export const Footer = () => {
 
       <div className="footer__back-to-top-section back-to-top-section">
         <p className="back-to-top-section__title">Back to top</p>
-        <Link to='/' className="back-to-top-section__buton">
+        <div onClick={() =>  window.scrollTo(0, 0)} className="back-to-top-section__button">
           <svg
             className='arrow-up'
             width="16"
@@ -47,7 +52,7 @@ export const Footer = () => {
               fill="#313237"
             />
           </svg>
-        </Link>
+        </div>
       </div>
     </div>
   );

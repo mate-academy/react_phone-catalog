@@ -5,8 +5,8 @@ import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { useAppSelector } from '../../../app/hooks';
 import { useMemo } from 'react';
 import { SearchParams } from '../../../types/SearchParams';
-import { useCatalogSearchParams } from '../../../utils/globalStyles/customHooks';
-import { sortBySearchParams } from '../../../utils/globalStyles/helpers';
+import { useCatalogSearchParams } from '../../../utils/customHooks';
+import { sortBySearchParams } from '../../../utils/helpers';
 import { Pagination } from '../Pagination/Pagination';
 import { ProductList } from '../ProductList/ProductList';
 import { Selection } from '../Selection/Selection';
@@ -60,23 +60,29 @@ export const Catalog: React.FC<Props> = ({ items, category }) => {
         </p>
       </div>
 
-      <Selection
-        sortBy={sortBy}
-        itemsOnPageRaw={itemsOnPageRaw}
-        handleSelection={handleSearchParams}
-      />
+      {items.length > 0 ? (
+        <>
+          <Selection
+            sortBy={sortBy}
+            itemsOnPageRaw={itemsOnPageRaw}
+            handleSelection={handleSearchParams}
+          />
 
-      <ProductList products={sortedItems} />
+          <ProductList products={sortedItems} />
 
-      {itemsOnPage !== Infinity && (
-        <Pagination
-          totalPages={totalPages}
-          visiblePages={visiblePages}
-          activePageNumber={activePageNumber}
-          firstVisiblePage={firstVisiblePage}
-          lastVisiblePage={lastVisiblePage}
-          handlePagination={handleSearchParams}
-        />
+          {itemsOnPage !== Infinity && (
+            <Pagination
+              totalPages={totalPages}
+              visiblePages={visiblePages}
+              activePageNumber={activePageNumber}
+              firstVisiblePage={firstVisiblePage}
+              lastVisiblePage={lastVisiblePage}
+              handlePagination={handleSearchParams}
+            />
+          )}
+        </>
+      ) : (
+        <p>There are no {category} yet</p>
       )}
     </div>
   );

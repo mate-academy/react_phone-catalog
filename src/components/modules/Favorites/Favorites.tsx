@@ -1,6 +1,7 @@
+import './Favorites.module.scss';
+
 import { useContext } from 'react';
 import { ProductList } from '../../shared/ProductList/ProductList';
-import './Favorites.style.scss';
 import { LocalStorageContext } from '../../../app/Contexts/LocalStorageContext';
 import { Breadcrumbs } from '../../shared/Breadcrumbs/Breadcrumbs';
 

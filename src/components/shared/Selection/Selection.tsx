@@ -66,6 +66,7 @@ export const Selection: React.FC<Props> = ({
     <div className="selectors">
       {Object.entries(selectors).map(([key, value]) => {
         const param = key === 'sortBy' ? sortBy : itemsOnPageRaw;
+
         return (
           <div
             key={key}
@@ -73,7 +74,7 @@ export const Selection: React.FC<Props> = ({
               'selectors__selector',
               'selector',
               {
-                selector__sortBy: key === 'sortBy',
+                'selector__sortBy': key === 'sortBy',
               },
               { 'selector__items-on-page': key === 'itemsOnPage' },
             )}
@@ -89,7 +90,7 @@ export const Selection: React.FC<Props> = ({
                 })}
               >
                 <p className="selector__current-option__name">
-                  {param?.slice(0, 1).toUpperCase().concat(param.slice(1))}
+                  {param}
                 </p>
 
                 <div
@@ -135,7 +136,7 @@ export const Selection: React.FC<Props> = ({
                     onClick={() => handleSelection({ [key]: option })}
                   >
                     <p className="selector__option__name">
-                      {option.slice(0, 1).toUpperCase().concat(option.slice(1))}
+                      {option}
                     </p>
                   </div>
                 ))}

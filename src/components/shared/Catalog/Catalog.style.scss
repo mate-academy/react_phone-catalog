@@ -1,21 +1,5 @@
 .catalog {
-  padding: 24px 16px 64px;
-
-  @include tablet {
-    padding-inline: 32px;
-  }
-
-  @include desktop {
-    padding: 24px 32ps 80px;
-  }
-
-  @include tablet {
-    padding-inline: 24px;
-  }
-
-  @include desktop {
-    padding-inline: 32px;
-  }
+  @include paddings-page;
 
   &__title {
     padding-block: 32px;

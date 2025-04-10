@@ -1,8 +1,9 @@
 import React from 'react';
 import './Pagination.style.scss';
-import { Button } from '../Buttons/Buttons';
+import { ArrowButton } from '../Buttons/ArrowButton/ArrowButton';
 import classNames from 'classnames';
 import { SearchParams } from '../../../types/SearchParams';
+import { useScrollToTop } from '../../../utils/customHooks';
 
 type Props = {
   totalPages: number;
@@ -21,9 +22,12 @@ export const Pagination: React.FC<Props> = ({
   lastVisiblePage,
   handlePagination,
 }) => {
+
+  useScrollToTop();
+
   return (
     <div className="pagination">
-      <Button
+      <ArrowButton
         direction={'back'}
         disabled={activePageNumber === 1}
         handleClick={() => {
@@ -56,7 +60,7 @@ export const Pagination: React.FC<Props> = ({
         ))}
       </div>
 
-      <Button
+      <ArrowButton
         direction={'forward'}
         disabled={activePageNumber === totalPages}
         handleClick={() => {

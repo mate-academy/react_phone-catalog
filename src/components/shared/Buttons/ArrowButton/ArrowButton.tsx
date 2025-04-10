@@ -1,4 +1,4 @@
-import './Buttons.style.scss';
+import './ArrowButton.style.scss';
 
 import classNames from 'classnames';
 import React from 'react';
@@ -9,14 +9,14 @@ type Props = {
   handleClick: (arg?: any) => void;
 };
 
-export const Button: React.FC<Props> = ({
+export const ArrowButton: React.FC<Props> = ({
   direction,
   disabled,
   handleClick,
 }) => {
   return (
     <button
-      className={classNames("button", 
+      className={classNames("button",
         { prev: direction === 'back' },
         { next: direction === 'forward' },
       )}

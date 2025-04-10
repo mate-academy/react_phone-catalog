@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { SearchParams } from '../../types/SearchParams';
+import { useEffect, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { SearchParams } from '../types/SearchParams';
 
 export function useLocaleStorage<T>(
   key: string,
@@ -30,7 +30,7 @@ export function useCatalogSearchParams(itemsNumber: number) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = searchParams.get('sortBy') || 'newest';
-  const itemsOnPageRaw = searchParams.get('itemsOnPage') || '16';
+  const itemsOnPageRaw = searchParams.get('itemsOnPage') || 'all';
   const itemsOnPage = itemsOnPageRaw === 'all' ? Infinity : +itemsOnPageRaw;
 
   const totalPages = Math.ceil(itemsNumber / itemsOnPage);
@@ -47,7 +47,7 @@ export function useCatalogSearchParams(itemsNumber: number) {
 
     if (shouldReset) {
       const keysToDelete = Array.from(newParams.keys()).filter(
-        key => key !== 'sortBy' && key !== 'itemsOnPage'
+        key => key !== 'sortBy' && key !== 'itemsOnPage',
       );
       keysToDelete.forEach(key => newParams.delete(key));
     }
@@ -74,3 +74,11 @@ export function useCatalogSearchParams(itemsNumber: number) {
     updateParams,
   };
 }
+
+export const useScrollToTop = () => {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname, search]);
+};

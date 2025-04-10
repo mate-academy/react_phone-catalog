@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 32px 16px;
+  border-top: 1px solid $gray-elements;
   box-sizing: border-box;
 
   @include tablet {
@@ -50,6 +51,7 @@
     line-height: 11px;
     letter-spacing: 4%;
     color: $gray-secondary;
+    transition: color 0.3s ease-in-out;
 
     &:active {
       color: $gray-primary;
@@ -80,7 +82,7 @@
       letter-spacing: 0;
     }
 
-    &__buton {
+    &__button {
       width: 32px;
       height: 32px;
       display: flex;

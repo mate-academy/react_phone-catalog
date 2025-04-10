@@ -1,0 +1,32 @@
+.back-button {
+  width: 66px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+
+  &:hover {
+    .back-button__name {
+      color: $gray-primary;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__name {
+    @include text12;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+    color: $gray-secondary;
+    transition: color 0.3s ease-in-out;
+  }
+}

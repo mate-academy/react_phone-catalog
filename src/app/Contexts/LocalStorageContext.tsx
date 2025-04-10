@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { createContext } from 'react';
 import { Product } from '../../types/Product';
-import { useLocaleStorage } from '../../utils/globalStyles/customHooks';
+import { useLocaleStorage } from '../../utils/customHooks';
 
 interface LocalStorageContextType {
   cartItems: Product[];

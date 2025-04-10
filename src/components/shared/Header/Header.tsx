@@ -1,45 +1,51 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import classNames from 'classnames';
-import { useContext, useState } from 'react';
 import './Header.style.scss';
+
+import { Link, NavLink } from 'react-router-dom';
+import { useContext, useRef, useState } from 'react';
+import classNames from 'classnames';
+
+import { routes } from '../Routs/Routs';
+import { Categories } from '../../../types/Categories';
+import { LocalStorageContext } from '../../../app/Contexts/LocalStorageContext';
+import { calculateTotalQuantity } from '../../../utils/helpers';
 
 import burger from '../../../../public/icons/menu.svg';
 import closeIcon from '../../../../public/icons/close.svg';
 import favIcon from '../../../../public/icons/favourites.svg';
 import cart from '../../../../public/icons/shopping-cart.svg';
-import { routes } from '../Routs/Routs';
-import { Categories } from '../../../types/Categories';
-import { LocalStorageContext } from '../../../app/Contexts/LocalStorageContext';
+import { useScrollToTop } from '../../../utils/customHooks';
+
 
 export const Header = () => {
   const { favItems, cartItems } = useContext(LocalStorageContext);
+  const cartItemsQuantity = calculateTotalQuantity(cartItems);
   const [isMenuActive, setMenuActive] = useState(false);
   const [canTransform, setCanTransform] = useState(false);
-  const navigate = useNavigate();
+  const bodyRef = useRef(document.body);
 
   const toggleBurgerMenu = () => {
     if (isMenuActive) {
       setCanTransform(false);
-      // eslint-disable-next-line no-undef
-      setTimeout(() => {
-        setMenuActive(false);
-      }, 100);
+      setMenuActive(false);
+
+      bodyRef.current.classList.remove('no-scroll');
     } else {
       setMenuActive(true);
-      // eslint-disable-next-line no-undef
-      setTimeout(() => {
-        setCanTransform(true);
-      }, 1);
+      setCanTransform(true);
+
+      bodyRef.current.classList.add('no-scroll');
     }
   };
 
+  useScrollToTop();
+
   return (
-    <div className={classNames('top', { 'top--full-screen': isMenuActive })}>
+    <div className={classNames('top')}>
       <div className="mobile-header top__mobile-header">
-        <div
+        <Link
+          to={routes.home}
           className="logo mobile-header__logo"
-          onClick={() => navigate(routes.home)}
-        ></div>
+        ></Link>
         <div
           className="burger mobile-header__burger"
           onClick={toggleBurgerMenu}
@@ -67,28 +73,32 @@ export const Header = () => {
         </nav>
 
         <div className={classNames('choice', 'menu__choice')}>
-          <div
+          <NavLink
             className="choice__icon choice__icon--favorite"
-            onClick={() => navigate(routes.fav)}
+            to={routes.fav}
           >
-            {favItems.length > 0 && (
-              <div className="choice__icon__number">
-                <p>{favItems.length}</p>
-              </div>
-            )}
-            <img className="icon" src={favIcon} />
-          </div>
-          <div
+            <div className="choice__icon__wrap">
+              {favItems.length > 0 && (
+                <div className="choice__icon__number__wrap">
+                  <p className="choice__icon__number">{favItems.length}</p>
+                </div>
+              )}
+              <img className="icon" src={favIcon} />
+            </div>
+          </NavLink>
+          <NavLink
             className="choice__icon choice__icon--shopping-cart"
-            onClick={() => navigate(routes.cart)}
+            to={routes.cart}
           >
-            {cartItems.length > 0 && (
-              <div className="choice__icon__number">
-                <p>{cartItems.length}</p>
-              </div>
-            )}
-            <img className="icon" src={cart} />
-          </div>
+            <div className="choice__icon__wrap">
+              {cartItems.length > 0 && (
+                <div className="choice__icon__number__wrap">
+                  <p className="choice__icon__number">{cartItemsQuantity}</p>
+                </div>
+              )}
+              <img className="icon" src={cart} />
+            </div>
+          </NavLink>
         </div>
       </div>
     </div>

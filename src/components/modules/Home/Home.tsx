@@ -1,6 +1,6 @@
-import './Home.style.scss';
+import './Home.module.scss';
 
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { Slider } from '../../shared/Slider/Slider';
 import { loadProducts } from '../../../features/ProductsSlice/ProductsSlice';

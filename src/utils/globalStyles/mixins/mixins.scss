@@ -16,6 +16,18 @@
   }
 }
 
+@mixin paddings-page {
+  padding: 24px 16px 64px;
+
+  @include tablet {
+    padding-inline: 32px;
+  }
+
+  @include desktop {
+    padding: 24px 32ps 80px;
+  }
+}
+
 @mixin paddings-footer {
   @include mobile {
     padding: 32px 16px;
@@ -44,11 +56,6 @@
   height: 27px;
   transition: transform 0.3s ease;
 
-  &.active {
-    color: $gray-primary;
-    border-bottom: 2px solid $gray-primary;
-  }
-
   &:hover {
     color: $gray-primary;
     border-bottom: 2px solid $gray-primary;
@@ -56,11 +63,6 @@
 
   @include tablet {
     height: 48px;
-
-    &.active {
-      color: $gray-primary;
-      border-bottom: 3px solid $gray-primary;
-    }
 
     &:hover {
       color: $gray-primary;

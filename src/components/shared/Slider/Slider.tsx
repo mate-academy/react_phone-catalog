@@ -3,27 +3,13 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { Product } from '../../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { Button } from '../Buttons/Buttons';
+import { ArrowButton } from '../Buttons/ArrowButton/ArrowButton';
+import { createSlides } from '../../../utils/helpers';
 
 type Props = {
   category: 'newModels' | 'hotPrices' | 'mayLike';
   products: Product[];
 };
-
-function createSlides(products: Product[], width: number): Product[][] {
-  return products.reduce<Product[][]>((accum, product, index) => {
-    const step = width < 1199 ? 20 : 4;
-
-    const splitIndex = index % step;
-    if (splitIndex === 0) {
-      accum.push([product]);
-    } else {
-      accum[accum.length - 1].push(product);
-    }
-
-    return accum;
-  }, []);
-}
 
 export const Slider: React.FC<Props> = ({ category, products }) => {
   const categoryMap = {
@@ -76,6 +62,7 @@ export const Slider: React.FC<Props> = ({ category, products }) => {
 
   const handlePrevSlide = () => {
     const step = windowWidth > 640 ? 400 : 150;
+
     if (activeSlideIndex > 0 && windowWidth > 1199) {
       const newActiveIndex = activeSlideIndex - 1;
 
@@ -135,8 +122,8 @@ export const Slider: React.FC<Props> = ({ category, products }) => {
         <h2 className="slider__title"> {categoryMap[category]}</h2>
 
         <div className="slider__buttons">
-          <Button direction={'back'} disabled={disabledLeft} handleClick={handlePrevSlide}/>
-          <Button  direction={'forward'} disabled={disabledRight} handleClick={handleNextSlide}/>
+          <ArrowButton direction={'back'} disabled={disabledLeft} handleClick={handlePrevSlide}/>
+          <ArrowButton  direction={'forward'} disabled={disabledRight} handleClick={handleNextSlide}/>
         </div>
       </div>
 

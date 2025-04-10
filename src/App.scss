@@ -10,6 +10,7 @@ html {
   scroll-behavior: smooth;
   font-family: 'Mont-regular';
   font-weight: 600;
+  cursor: default;
 }
 
 
@@ -18,7 +19,15 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
+
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
 
 #root {
   display: flex;

@@ -1,0 +1,26 @@
+.details {
+  padding-block: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @include device-description-short;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__info {
+    @include device-description-short;
+    color: $gray-primary;
+  }
+}

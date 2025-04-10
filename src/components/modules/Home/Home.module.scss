@@ -69,6 +69,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 32px;
+      padding-top: 24px;
 
       @include tablet {
         flex-direction: row;

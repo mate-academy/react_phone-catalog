@@ -22,10 +22,10 @@ export const HomeSwiper = () => {
       autoplay={{
         delay: 3000,
       }}
+      loop={true}
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
-      centeredSlides={true}
       className="home-swiper"
     >
       {banners.length > 0 &&
