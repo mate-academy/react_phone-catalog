@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import styles from './Slider.module.scss';
 
-const banner1Big = '/react_phone-catalog/img/banner1.svg';
+const banner1Big = '/react_phone-catalog/img/baner1.svg';
 const banner1Small = '/react_phone-catalog/img/baner1small.svg';
 const banner2Big = '/react_phone-catalog/img/banner-accessoriesReady.png';
 const banner2Small =
