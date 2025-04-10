@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './CategoryHeader.module.scss';
 import { Product } from '../../types/Product';
+import { Loader } from '../Loader/Loader';
 
 type Props = {
   categoryData: Product[];
@@ -8,7 +9,11 @@ type Props = {
 
 export const CategoryHeader: React.FC<Props> = ({ categoryData }) => {
   if (!categoryData || categoryData.length === 0) {
-    return (<div>Loading...</div>)
+    return (
+      <div className={`${styles.loader}`}>
+        <Loader />
+      </div>
+    );
   }
   const categoryName = categoryData[0].category;
   return (

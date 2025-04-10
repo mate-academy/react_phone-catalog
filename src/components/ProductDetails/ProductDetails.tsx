@@ -9,6 +9,8 @@ import { getAllProducts, getProducts } from '../../services/productsApi';
 import { Products } from '../../types/Products';
 import { TechDetails } from '../../utils/TechDetails';
 import { ZoomImage } from '../ZoomImage/ZoomImage';
+import { useCartProducts } from '../Cart/CartContext';
+import { Loader } from '../Loader/Loader';
 
 type Props = {
   productId?: string;
@@ -34,13 +36,21 @@ export const ProductDetails: React.FC<Props> = ({
     product?.capacity,
   );
   const [clicked, setClicked] = useState(false);
-
+  const { cartProducts, addProductToCart, removeFromCart } = useCartProducts();
   const navigate = useNavigate();
   const { search } = useLocation();
   const productIdtext = activeProducts.find(
     product_ => product_.itemId === product?.id,
   );
 
+  const isInCart = product && cartProducts.find(item => item.id === product.id);
+  const handleAddToCart = (product: Product) => {
+    if (isInCart) {
+      removeFromCart(product);
+    } else {
+      addProductToCart(product);
+    }
+  };
   const handleChangeColor = (color: string) => {
     const newProduct = activeData.find(
       item =>
@@ -95,7 +105,7 @@ export const ProductDetails: React.FC<Props> = ({
       setActiveCapacity(productActive.capacity);
       window.scrollTo({ top: 0 });
     }
-  }, [activeData, setActiveData]);
+  }, [activeData, setActiveData, location]);
 
   useEffect(() => {
     getProducts(`${categoryName}`)
@@ -119,8 +129,12 @@ export const ProductDetails: React.FC<Props> = ({
       });
   }, [categoryName]);
 
-  if (activeData.length === 0) {
-    return <div>Loading</div>;
+  if (!activeData) {
+    return (
+    <div className={`${styles.loader}`}>
+      <Loader />
+    </div>
+    )
   }
 
   return (
@@ -265,9 +279,13 @@ export const ProductDetails: React.FC<Props> = ({
                   <button
                     className={classNames(
                       `${styles.button} ${styles.button_add}`,
+                      {
+                        [styles.button_in_cart]: isInCart,
+                      },
                     )}
+                    onClick={() => handleAddToCart(product)}
                   >
-                    Add to cart
+                    {isInCart ? 'Selected' : 'Add to cart'}
                   </button>
                   <button
                     className={`${styles.button} ${styles.button_like}`}
@@ -392,10 +410,7 @@ export const ProductDetails: React.FC<Props> = ({
               id="scroll_container_also_like"
             >
               {activeData.map(productItem => (
-                <ProductCard
-                  key={productItem.id}
-                  product={productItem}
-                />
+                <ProductCard key={productItem.id} product={productItem} />
               ))}
             </div>
           </div>

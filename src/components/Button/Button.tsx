@@ -3,6 +3,7 @@ import styles from './Button.module.scss';
 import classNames from 'classnames';
 import { ButtonDirection } from '../../enums/ButtonDirection';
 import { ButtonUrl } from '../../enums/ButtonUrl';
+import { useTheme } from '../ThemeContext/ThemeContext';
 
 type Props = {
   direction: ButtonDirection;
@@ -17,6 +18,9 @@ export const Button: React.FC<Props> = ({
   disabledIds,
   onClick,
 }) => {
+  const { theme } = useTheme();
+  const isLightTheme = theme === 'light';
+
   return (
     <>
       <button
@@ -30,8 +34,8 @@ export const Button: React.FC<Props> = ({
         <img
           src={
             Array.isArray(disabledIds) && disabledIds.includes(buttonId)
-              ? ButtonUrl.disabled
-              : ButtonUrl.default
+              ? isLightTheme ?  ButtonUrl.disabled : ButtonUrl.disabled_dark
+              : isLightTheme ? ButtonUrl.default : ButtonUrl.default_dark
           }
           alt={`arrow ${direction}`}
           className={`${styles[direction]}`}

@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { useFavourites } from '../Favourites/FavouritesContext';
 import { useCartProducts } from '../Cart/CartContext';
+import { useTheme } from '../ThemeContext/ThemeContext';
 
 type Props = {
   product: Product;
@@ -14,6 +15,8 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product, onPage }) => {
   const { favourites, toggleFavourite } = useFavourites();
   const { cartProducts, addProductToCart} = useCartProducts();
+  const { theme } = useTheme();
+  const isLightTheme = theme === 'light';
   const isFavourite = favourites.some(fav => fav.id === product.id);
   const isInCart = cartProducts.some(item => item.id === product.id);
 
@@ -42,6 +45,7 @@ export const ProductCard: React.FC<Props> = ({ product, onPage }) => {
           <Link
             to={`/${product.category}/${product.id}`}
             className={`${styles.title_link} ${styles.img_wrapper}`}
+            onClick={() => window.scrollTo({top: 0})}
           >
             <img
               src={product.images[0]}
@@ -52,6 +56,7 @@ export const ProductCard: React.FC<Props> = ({ product, onPage }) => {
           <Link
             to={`/${product.category}/${product.id}`}
             className={`${styles.title_link} ${styles.title_wrapper}`}
+            onClick={() => window.scrollTo({top: 0})}
           >
             <h3 className={`${styles.title}`}>{product.name}</h3>
           </Link>
@@ -121,8 +126,8 @@ export const ProductCard: React.FC<Props> = ({ product, onPage }) => {
             <img
               src={
                 isFavourite
-                  ? './img/icons/card-selected-like.svg'
-                  : './img/icons/card-default-like.svg'
+                  ?  './img/icons/card-selected-like.svg'
+                  : isLightTheme ? './img/icons/card-default-like.svg' : './img/icons/like-dark-theme.svg'
               }
               alt="like button"
             />

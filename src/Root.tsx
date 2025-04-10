@@ -12,45 +12,53 @@ import { FavouritesPage } from './modules/FavouritesPage';
 import { FavouritesProvider } from './components/Favourites/FavouritesContext';
 import { CartPage } from './modules/CartPage';
 import { CartProvider } from './components/Cart/CartContext';
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
+import { ThemeProvider } from './components/ThemeContext/ThemeContext';
 
 export const Root = () => {
   return (
     <FavouritesProvider>
       <CartProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<HomePage />} />
-              <Route path="home" element={<Navigate to={'/'} replace />} />
-              <Route path="phones" element={<HomePageCategory url="phones" />}>
+        <ThemeProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route index element={<HomePage />} />
+                <Route path="home" element={<Navigate to={'/'} replace />} />
                 <Route
-                  path=":productId"
-                  element={<DetailsPage url="phones" />}
-                />
-              </Route>
-              <Route
-                path="accessories"
-                element={<HomePageCategory url="accessories" />}
-              >
+                  path="phones"
+                  element={<HomePageCategory url="phones" />}
+                >
+                  <Route
+                    path=":productId"
+                    element={<DetailsPage url="phones" />}
+                  />
+                </Route>
                 <Route
-                  path=":productId"
-                  element={<DetailsPage url="accessories" />}
-                />
-              </Route>
-              <Route
-                path="tablets"
-                element={<HomePageCategory url="tablets" />}
-              >
+                  path="accessories"
+                  element={<HomePageCategory url="accessories" />}
+                >
+                  <Route
+                    path=":productId"
+                    element={<DetailsPage url="accessories" />}
+                  />
+                </Route>
                 <Route
-                  path=":productId"
-                  element={<DetailsPage url="tablets" />}
-                />
+                  path="tablets"
+                  element={<HomePageCategory url="tablets" />}
+                >
+                  <Route
+                    path=":productId"
+                    element={<DetailsPage url="tablets" />}
+                  />
+                </Route>
+                <Route path="favourites" element={<FavouritesPage />} />
+                <Route path="cart" element={<CartPage />} />
               </Route>
-              <Route path="favourites" element={<FavouritesPage />} />
-              <Route path="cart" element={<CartPage />} />
-            </Route>
-          </Routes>
-        </Router>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Router>
+        </ThemeProvider>
       </CartProvider>
     </FavouritesProvider>
   );

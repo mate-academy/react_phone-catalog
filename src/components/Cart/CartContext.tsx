@@ -25,8 +25,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   }, [cartProducts]);
 
   const clearCart = () => {
-    localStorage.removeItem('cart'); // видалення з localStorage
-    setCartProducts([]); // очищення стану корзини
+    localStorage.removeItem('cart');
+    setCartProducts([]);
   };
 
   const addProductToCart = (product: Product) => {

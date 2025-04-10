@@ -11,24 +11,25 @@ export const App = () => {
   const [disabledIds, setDisabledIds] = useState<number[]>([0, 2, 5]);
 
   return (
-    <div className="App">
-      <div
-        className={classNames('SideBar', {
-          activeSideBar: activeAside,
-          inactiveSideBar: !activeAside,
-        })}
-      >
-        <SideBar setActiveAside={setActiveAside} />
+      <div className="App">
+        <div
+          className={classNames('SideBar', {
+            activeSideBar: activeAside,
+            inactiveSideBar: !activeAside,
+          })}
+        >
+          <SideBar setActiveAside={setActiveAside} />
+        </div>
+        <Outlet
+          context={{
+            setActiveAside,
+            width,
+            setWidth,
+            disabledIds,
+            setDisabledIds,
+          }}
+        />
       </div>
-      <Outlet
-        context={{
-          setActiveAside,
-          width,
-          setWidth,
-          disabledIds,
-          setDisabledIds,
-        }}
-      />
-    </div>
+    
   );
 };

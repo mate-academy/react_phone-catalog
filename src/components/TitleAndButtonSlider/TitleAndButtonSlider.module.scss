@@ -50,7 +50,8 @@
   font-family: Mont-Bold, sans-serif;
   font-weight: 800;
   font-size: 22px;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
+  transition: all .5s ease-in-out;
   width: fit-content;
   margin: 0;
 

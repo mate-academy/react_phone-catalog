@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Main.module.scss';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../services/productsApi';
+import { Loader } from '../Loader/Loader';
 
 type Props = {
   setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
@@ -23,7 +24,9 @@ export const Main: React.FC<Props> = ({ setDisabledIds, disabledIds }) => {
 
   if (!phones) {
     return (
-      <div>Loading...</div>
+      <div className={`${styles.loader_container}`}>
+        <Loader/>
+      </div>
     )
   }
   return (

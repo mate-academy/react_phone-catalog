@@ -7,15 +7,15 @@
 
   width: 32px;
   height: 32px;
-  border: 1px solid $button-border-default;
+  border: 1px solid var(--button-border-default);
 
-  background-color: $main-background-white;
+  background-color: var(--slider-swipe-button);
 
   transition: all 0.5s ease-in-out;
 
   &:hover {
     transform: scale(1.1);
-    border: 1px solid $main-dark-gray;
+    border: 1px solid var(--text-color-main);
   }
 
   &:active {
@@ -25,12 +25,14 @@
 
 .disabled {
   cursor: not-allowed;
-  border: 1px solid $button-border-disabled;
+  border: 1px solid var(--button-border-disabled);
   transition: none;
+
+  background-color: var(--bg-color);
 
   &:hover {
     transform: none;
-    border: 1px solid $button-border-disabled;
+    border: 1px solid var(--button-border-disabled);
   }
 }
 

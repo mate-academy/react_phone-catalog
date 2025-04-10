@@ -100,3 +100,8 @@
     width: 1136px;
   }
 }
+
+.loader {
+  width: 100vw;
+  @include flex-centered;
+}

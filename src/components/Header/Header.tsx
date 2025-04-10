@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { useFavourites } from '../Favourites/FavouritesContext';
 import { useCartProducts } from '../Cart/CartContext';
+import { useTheme } from '../ThemeContext/ThemeContext';
 
 type Props = {
   setActiveAside: (arg: boolean) => void;
@@ -13,6 +14,7 @@ type Props = {
 export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
   const { favourites } = useFavourites();
   const { cartProducts } = useCartProducts();
+  const { theme, toggleTheme } = useTheme();
 
   const handleActiveLink = ({ isActive }: { isActive: boolean }) => {
     return classNames(`${styles.header_nav_link}`, {
@@ -35,6 +37,11 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
     });
   };
 
+  const handleChangeTheme = () => {
+    toggleTheme();
+    console.log('1');
+  };
+
   return (
     <>
       {width < 640 && (
@@ -42,8 +49,25 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
           <nav className={`${styles.header_nav_container}`}>
             <div className={`${styles.header_nav_logo_container}`}>
               <Link to="/">
-                <img src="./img/logo/logo-main.svg" alt="logo nice gadgets" />
+                <img
+                  src={
+                    theme === 'light'
+                      ? './img/logo/logo-main.svg'
+                      : './img/logo/logo-dark-theme.svg'
+                  }
+                  alt="logo nice gadgets"
+                />
               </Link>
+            </div>
+            <div className={`${styles.switch_wrapper} ${styles.switch_cont_on_phone}`}>
+              <label id="switch" className={`${styles.switch}`}>
+                <input
+                  type="checkbox"
+                  onChange={() => toggleTheme()}
+                  id="slider"
+                />
+                <span className={`${styles.slider} ${styles.round}`}></span>
+              </label>
             </div>
 
             <div
@@ -53,7 +77,14 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
               }}
             >
               <button className={`${styles.header_nav_burger_button}`}>
-                <img src="./img/icons/burger-menu-icon.svg" alt="burger menu" />
+                <img
+                  src={
+                    theme === 'light'
+                      ? './img/icons/burger-menu-icon.svg'
+                      : './img/icons/burger-menu-dark-theme.svg'
+                  }
+                  alt="burger menu"
+                />
               </button>
             </div>
           </nav>
@@ -63,8 +94,15 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
         <>
           <nav className={`${styles.header_nav_container}`}>
             <div className={`${styles.header_nav_logo_container}`}>
-              <Link to="/">
-                <img src="./img/logo/logo-main.svg" alt="logo nice gadgets" />
+              <Link to="/" onClick={handleChangeTheme}>
+                <img
+                  src={
+                    theme === 'light'
+                      ? './img/logo/logo-main.svg'
+                      : './img/logo/logo-dark-theme.svg'
+                  }
+                  alt="logo nice gadgets"
+                />
               </Link>
             </div>
 
@@ -92,9 +130,23 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
             </div>
 
             <div className={`${styles.header_nav_buttons_container}`}>
+              <div className={`${styles.switch_wrapper}`}>
+                <label id="switch" className={`${styles.switch}`}>
+                  <input
+                    type="checkbox"
+                    onChange={() => toggleTheme()}
+                    id="slider"
+                  />
+                  <span className={`${styles.slider} ${styles.round}`}></span>
+                </label>
+              </div>
               <NavLink to={'/favourites'} className={handleFavLink}>
                 <img
-                  src="./img/icons/card-default-like.svg"
+                  src={
+                    theme === 'light'
+                      ? './img/icons/card-default-like.svg'
+                      : './img/icons/like-dark-theme.svg'
+                  }
                   alt="favourite items"
                   className={`${styles.header_nav_icon}`}
                 />
@@ -106,7 +158,11 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
               </NavLink>
               <NavLink to={'/cart'} className={handleCartLink}>
                 <img
-                  src="./img/icons/shopping-bag.svg"
+                  src={
+                    theme === 'light'
+                      ? './img/icons/shopping-bag.svg'
+                      : './img/icons/shopping-bag-dark-theme.svg'
+                  }
                   alt="shopping bag"
                   className={`${styles.header_nav_icon}`}
                 />

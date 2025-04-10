@@ -29,10 +29,11 @@
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -.01em;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
   height: 82px;
   width: 288px;
   margin: 0 auto;
+  transition: all .5s ease-in-out;
 
   @include on-tablet {
     font-size: 48px;

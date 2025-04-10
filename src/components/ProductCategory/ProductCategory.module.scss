@@ -285,3 +285,9 @@
   color: $main-background-white;
   border: 1px solid $main-dark-gray;
 }
+
+.loader_container {
+  width: 100vw;
+  height: calc(100vh - 200px);
+  @include flex-centered;
+}

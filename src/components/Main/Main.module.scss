@@ -37,3 +37,8 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.loader_container {
+  width: 100vw;
+  @include flex-centered;
+}

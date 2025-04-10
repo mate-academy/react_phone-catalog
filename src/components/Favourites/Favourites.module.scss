@@ -2,14 +2,15 @@
 @use '../../utils/mixins.scss' as *;
 
 @font-face {
+  font-family: Mont-Bold;
+  src: url('fonts/Mont-Bold.otf');
+}
+
+@font-face {
   font-family: Mont-Regular;
   src: url('fonts/Mont-Regular.otf');
 }
 
-@font-face {
-  font-family: Mont-Bold;
-  src: url('fonts/Mont-Bold.otf');
-}
 
 
 .favourite_main_container {
@@ -131,5 +132,47 @@
 
   @include on-desktop {
     grid-template-columns: repeat(4, 272px);
+  }
+}
+.cart_empty_container {
+  width: 100vw;
+  height: fit-content;
+  @include flex-centered;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  @include on-desktop {
+    margin-bottom: 60px;
+  }
+}
+
+.cart_empty_title {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  height: 48px;
+  line-height: 48px;
+  letter-spacing: -0.01em;
+  width: fit-content;
+  margin: 0 0 20px;
+  color: $main-dark-gray;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+.cart_empty_image {
+  width: 360px;
+  height: 360px;
+  object-fit: contain;
+  transition: all .5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
   }
 }

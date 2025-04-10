@@ -704,3 +704,14 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.button_in_cart {
+  border: 1px solid $button-border-disabled;
+  background-color: $main-background-white;
+  color: #27AE60;
+}
+
+.loader {
+  width: 100vw;
+  @include flex-centered;
+}

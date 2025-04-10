@@ -14,6 +14,12 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
     });
   };
 
+  const handleActiveFooterButton = ({ isActive }: { isActive: boolean }) => {
+    return classNames(`${styles.footer_button}`, {
+      [styles.active_footer_button]: isActive,
+    })
+  }
+
   return (
     <>
       <div className={`${styles.side_bar_container}`}>
@@ -51,14 +57,14 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
           </NavLink>
           <NavLink
             to="/tablets"
-            className={`${styles.menu_link}`}
+            className={handlerActiveLinkClass}
             onClick={() => setActiveAside(false)}
           >
             <p className={`${styles.menu_title}`}>tablets</p>
           </NavLink>
           <NavLink
             to="/accessories"
-            className={`${styles.menu_link}`}
+            className={handlerActiveLinkClass}
             onClick={() => setActiveAside(false)}
           >
             <p className={`${styles.menu_title}`}>accessories</p>
@@ -66,20 +72,28 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
         </div>
 
         <div className={`${styles.footer_container}`}>
-          <button className={`${styles.footer_button}`}>
+          <NavLink
+            to="/favourites"
+            className={handleActiveFooterButton}
+            onClick={() => setActiveAside(false)}
+          >
             <img
               src="./img/icons/card-default-like.svg"
               alt="like icon"
               className={`${styles.footer_img_icon}`}
             />
-          </button>
-          <button className={`${styles.footer_button}`}>
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={handleActiveFooterButton}
+            onClick={() => setActiveAside(false)}
+          >
             <img
               src="./img/icons/shopping-bag.svg"
               alt="shopping bag icon"
               className={`${styles.footer_img_icon}`}
             />
-          </button>
+          </NavLink>
         </div>
       </div>
     </>

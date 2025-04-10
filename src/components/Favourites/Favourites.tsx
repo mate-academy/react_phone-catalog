@@ -11,7 +11,18 @@ export const Favourites: React.FC<Props> = () => {
   const { favourites } = useFavourites();
 
   if (!favourites) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
+  } else if (favourites.length === 0) {
+    return (
+      <div className={`${styles.cart_empty_container}`}>
+        <h1 className={`${styles.cart_empty_title}`}>Favourites is empty</h1>
+        <img
+          src="./img/favourites-not-found.png"
+          alt="favourites empty icon"
+          className={`${styles.cart_empty_image}`}
+        />
+      </div>
+    );
   }
   return (
     <>
@@ -30,13 +41,13 @@ export const Favourites: React.FC<Props> = () => {
           <p className={`${styles.favourite_path}`}>Favourites</p>
         </div>
         <h1 className={`${styles.favourite_header}`}>Favourites</h1>
-        <p className={`${styles.favourite_models_count}`}>{favourites.length} models</p>
+        <p className={`${styles.favourite_models_count}`}>
+          {favourites.length} models
+        </p>
 
         <div className={styles.favourite_products_container}>
           {favourites.map(item => {
-            return (
-              <ProductCard product={item} key={item.id}/>
-            )
+            return <ProductCard product={item} key={item.id} />;
           })}
         </div>
       </div>

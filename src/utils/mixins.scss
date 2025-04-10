@@ -9,9 +9,9 @@
   width: 48px;
   height: 48px;
   border: none;
-  border-left: 1px solid $button-border-disabled;
-
-  background-color: $main-background-white;
+  border-left: 1px solid var(--button-border-disabled);
+  transition: all 0.5s ease-in-out;
+  background-color: var(--bg-color);
 }
 
 @mixin on-tablet() {

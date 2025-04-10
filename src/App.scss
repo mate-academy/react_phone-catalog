@@ -1,12 +1,51 @@
+@use './utils/variables.scss' as *;
+
 html, body {
   scroll-behavior: smooth;
-
+  transition: all .5s ease-in-out;
   overflow-x: hidden;
+  background-color: var(--bg-color);
 
   box-sizing: border-box;
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+body {
+  --bg-color: #FFF;
+  --text-color-main: #313237;
+  --text-color-secondary: #89939A;
+  --button-border-disabled: #E2E6E9;
+  --button-border-default: #B4BDC3;
+  --slider-swipe-button: #FFF;
+  --slider-swipe-button-hover: #FFF;
+  --slider-swipe-outline-hover: #313237;
+  --theme-circle: #000;
+  --bg-prod-card: #FFF;
+  --border-prod-card: #E2E6E9;
+  --add-to-cart-but: #313237;
+  --add-to-cart-but-hover: #FFF;
+  --add-to-cart-text: #FFF;
+  --add-to-cart-text-hover: #313237;
+}
+
+body.dark {
+  --bg-color: #0F1121;
+  --text-color-main: #F1F2F9;
+  --text-color-secondary: #75767F;
+  --button-border-disabled: #3B3E4A;
+  --button-border-default: #323542;
+  --slider-swipe-button: #323542;
+  --slider-swipe-button-hover: #4A4D58;
+  --slider-swipe-outline-hover: #4A4D58;
+  --theme-circle: #FFF;
+  --bg-prod-card: #161827;
+  --border-prod-card: #161827;
+  --add-to-cart-but: #905BFF;
+  --add-to-cart-but-hover: #A378FF;
+  --add-to-cart-text: #F1F2F9;
+  --add-to-cart-text-hover: #F1F2F9;
 }
 
 .SideBar {

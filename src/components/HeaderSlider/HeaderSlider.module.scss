@@ -76,11 +76,12 @@
 .slider_swipe_button_container {
   width: 32px;
   height: 190px;
-  background-color: $main-background-white;
-  border: 1px solid $button-border-default;
+  background-color: var(--slider-swipe-button);
+  border: 1px solid var(--button-border-default);
+  transition: all .5s ease-in-out;
   &:hover {
     cursor: pointer;
-    border: 1px solid $main-dark-gray;
+    border: 1px solid var(--text-color-main);
   }
   @include on-desktop {
     height: 400px;
@@ -122,9 +123,10 @@
 .slider_button {
   width: 14px;
   height: 4px;
-  background-color: $button-border-disabled;
+  background-color: var(--button-border-disabled);
+  transition: all .5s ease-in-out;
 }
 
 .marked {
-  background-color: $main-dark-gray;
+  background-color: var(--text-color-main);
 }

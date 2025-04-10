@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './HeaderSlider.module.scss';
 import classNames from 'classnames';
+import { useTheme } from '../ThemeContext/ThemeContext';
 
 type Props = {
   width: number;
@@ -9,6 +10,8 @@ type Props = {
 
 export const HeaderSlider: React.FC<Props> = ({ width }) => {
   const [index, setIndex] = useState(0);
+  const { theme } = useTheme();
+  const isLightTheme = theme === 'light';
   const ImageCollectionPhone = [
     {
       src: './img/banners/header-slider-for-phone.png',
@@ -102,7 +105,7 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
           <div className={`${styles.slider_img_and_buttons_container}`}>
             <button className={`${styles.slider_swipe_button_container}`}>
               <img
-                src="./img/icons/main-default-arrow.svg"
+                src={isLightTheme ? "./img/icons/main-default-arrow.svg" : "./img/icons/dark-theme-arrow.svg"}
                 alt="arrow left"
                 className={`${styles.swipe_button} ${styles.left_arrow}`}
               />
@@ -138,7 +141,7 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
 
             <button className={`${styles.slider_swipe_button_container}`}>
               <img
-                src="./img/icons/main-default-arrow.svg"
+                src={isLightTheme ? "./img/icons/main-default-arrow.svg" : "./img/icons/dark-theme-arrow.svg"}
                 alt="arrow right"
                 className={`${styles.swipe_button}`}
               />
