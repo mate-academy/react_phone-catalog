@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { GoChevronDown } from 'react-icons/go';
 import { useOutsideClick } from '../../hooks/useOutsideClick';
 import styles from './DropDown.module.scss';
+import { useTheme } from '../ThemeContext/ThemeContext';
 
 interface DropdownItem {
   id: string;
@@ -28,6 +29,7 @@ export const DropDown: React.FC<DropdownProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<DropdownItem | null>(null);
+  const { theme } = useTheme();
 
   const handleChange = (item: DropdownItem) => {
     if (onSelect) {
@@ -104,7 +106,10 @@ export const DropDown: React.FC<DropdownProps> = ({
                   key={item.id}
                   onClick={() => handleChange(item)}
                   className={classNames(
-                    [styles.dropdown_item],
+                    [styles.dropdown_item], {
+                      [styles.dropdown_item_hover_dark] : theme === 'dark',
+                      [styles.dropdown_button_first_hover] : id === '0',
+                    }
                   )}
                 >
                   <span>{item.name}</span>

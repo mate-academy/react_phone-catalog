@@ -3,12 +3,15 @@ import styles from './Cart.module.scss';
 import { useCartProducts } from './CartContext';
 import { Product } from '../../types/Product';
 import { Loader } from '../Loader/Loader';
+import { useTheme } from '../ThemeContext/ThemeContext';
 
 export const Cart = () => {
   const navigate = useNavigate();
   const { search } = useLocation();
   const { cartProducts, addQuantity, removeFromCart, subtractQuantity } =
     useCartProducts();
+  const { theme } = useTheme();
+  const isLightTheme = theme === 'light';
   const totalPrice = cartProducts.reduce(
     (curr, acc) => acc.priceDiscount * (acc.quantity ? acc.quantity : 1) + curr,
     0,
@@ -58,7 +61,11 @@ export const Cart = () => {
             onClick={handleBackButton}
           >
             <img
-              src="./img/icons/main-default-arrow.svg"
+              src={
+                isLightTheme
+                  ? './img/icons/main-default-arrow.svg'
+                  : './img/icons/dark-theme-arrow.svg'
+              }
               alt="left arrow"
               className={`${styles.cart_back_icon}`}
             />
@@ -79,7 +86,11 @@ export const Cart = () => {
                         onClick={() => handleDeleteButton(item)}
                       >
                         <img
-                          src="./img/icons/close-icon-light.svg"
+                          src={
+                            isLightTheme
+                              ? './img/icons/close-icon.svg'
+                              : './img/icons/close-icon-dark-theme.svg'
+                          }
                           alt="close icon"
                           className={`${styles.cart_delete_icon}`}
                         />
@@ -108,7 +119,17 @@ export const Cart = () => {
                           onClick={() => handleSubstract(item)}
                         >
                           <img
-                            src="./img/icons/minus-icon-disabled.svg"
+                            src={
+                              item.quantity
+                                ? isLightTheme
+                                  ? item.quantity > 1
+                                    ? './img/icons/minus-icon.svg'
+                                    : './img/icons/minus-icon-disabled.svg'
+                                  : item.quantity > 1
+                                    ? './img/icons/minus-dark-theme.svg'
+                                    : './img/icons/minus-dark-theme-disabled.svg'
+                                : './img/icons/minus-icon-disabled.svg'
+                            }
                             alt="minus icon"
                             className={`${styles.cart_button}`}
                           />
@@ -121,7 +142,11 @@ export const Cart = () => {
                           onClick={() => handleIncrease(item)}
                         >
                           <img
-                            src="./img/icons/plus-icon.svg"
+                            src={
+                              isLightTheme
+                                ? './img/icons/plus-icon.svg'
+                                : './img/icons/plus-dark-theme.svg'
+                            }
                             alt="plus icon"
                             className={`${styles.cart_button}`}
                           />

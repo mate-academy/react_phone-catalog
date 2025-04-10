@@ -52,7 +52,7 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 100%;
-  color: $main-light-gray;
+  color: var(--text-color-secondary);
   text-transform: capitalize;
 }
 
@@ -62,7 +62,7 @@
   font-size: 32px;
   line-height: 42px;
   letter-spacing: -0.01em;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
   width: 288px;
   height: 42px;
   margin: 0 0 8px;
@@ -89,7 +89,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: $main-light-gray;
+  color: var(--text-color-secondary);
   width: 288px;
   height: 21px;
   margin: 0 0 32px;
@@ -158,7 +158,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
-  color: $main-light-gray;
+  color: var(--text-color-secondary);
   width: 136px;
   margin: 0;
   height: 16px;
@@ -177,7 +177,7 @@
 .mobile_select_custom {
   width: 136px;
   height: 40px;
-  border: 1px solid $button-border-default;
+  border: 1px solid var(--slider-swipe-button);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -233,24 +233,24 @@
   gap: 16px;
 }
 
-.mobile_arrow_button {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $main-background-white;
-  border: 1px solid $button-border-default;
+// .mobile_arrow_button {
+//   width: 32px;
+//   height: 32px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: $main-background-white;
+//   border: 1px solid $button-border-default;
 
-  &:hover {
-    cursor: pointer;
-    border: 1px solid $main-dark-gray;
-  }
-}
+//   &:hover {
+//     cursor: pointer;
+//     border: 1px solid $main-dark-gray;
+//   }
+// }
 
-.mobile_arrow_left {
-  transform: rotate(180deg);
-}
+// .mobile_arrow_left {
+//   transform: rotate(180deg);
+// }
 
 .mobile_page_num_container {
   width: fit-content;
@@ -265,25 +265,25 @@
 .mobile_page_num {
   width: 32px;
   height: 32px;
-  border: 1px solid $button-border-disabled;
-  background-color: $main-background-white;
+  border: 1px solid var(--border-prod-card);
+  background-color: var(--bg-prod-card);
   font-family: Mont-Regular, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
   box-sizing: border-box;
 
   &:hover {
     cursor: pointer;
-    border: 1px solid $main-dark-gray;
+    border: 1px solid var(--page-num-hover-border);
   }
 }
 
 .selected_page {
-  background-color: $main-dark-gray;
+  background-color: var(--add-to-cart-but);
   color: $main-background-white;
-  border: 1px solid $main-dark-gray;
+  border: 1px solid var(--border-prod-card);
 }
 
 .loader_container {

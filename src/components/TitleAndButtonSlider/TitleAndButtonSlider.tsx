@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { ButtonDirection } from '../../enums/ButtonDirection';
 import { Button } from '../Button/Button';
 import styles from './TitleAndButtonSlider.module.scss';
+import classNames from 'classnames';
 
 type Props = {
   setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
@@ -10,6 +11,7 @@ type Props = {
   startId: number;
   endId: number;
   containerId: string;
+  width?: number;
 };
 
 export const TitleAndButtonSlider: React.FC<Props> = ({
@@ -19,7 +21,9 @@ export const TitleAndButtonSlider: React.FC<Props> = ({
   startId,
   endId,
   containerId,
+  width,
 }) => {
+  const newModels = title === 'Brand new models';
   const handleButtonState = useCallback(
     (element: HTMLElement) => {
       const scrollLeft = element.scrollLeft;
@@ -87,7 +91,9 @@ export const TitleAndButtonSlider: React.FC<Props> = ({
   return (
     <>
       <div className={`${styles.main_header_container}`}>
-        <div className={`${styles.main_header_title_container}`}>
+        <div className={classNames(`${styles.main_header_title_container}`, {
+          [styles.new_models]: newModels && width && width < 640,
+        })}>
           <h2 className={`${styles.main_header_title}`}>{title}</h2>
         </div>
         <div className={`${styles.main_header_button_container}`}>

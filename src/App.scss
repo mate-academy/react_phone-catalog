@@ -28,6 +28,16 @@ body {
   --add-to-cart-but-hover: #FFF;
   --add-to-cart-text: #FFF;
   --add-to-cart-text-hover: #313237;
+  --text-color-footer: #89939A;
+  --text-color-footer-hover: #313237;
+  --dropdown-arrow: #89939A;
+  --dropdown-border: #E2E6E9;
+  --dropdown-text-hover: #89939A;
+  --page-num-hover-border: #313237;
+  --cart-back-text: #89939A;
+  --details-img-wrapper: #313237;
+  --details-img-wrapper-disabled: #c4c4c4;
+  --details-prod-id: #B4BDC3;
 }
 
 body.dark {
@@ -46,6 +56,17 @@ body.dark {
   --add-to-cart-but-hover: #A378FF;
   --add-to-cart-text: #F1F2F9;
   --add-to-cart-text-hover: #F1F2F9;
+  --text-color-footer: #F1F2F9;
+  --text-color-footer-hover: #905BFF;
+  --dropdown-arrow: #75767F;
+  --dropdown-border: #323542;
+  --dropdown-text-hover: #F1F2F9;
+  --custom-select-border: ;///////
+  --page-num-hover-border: #905BFF;
+  --cart-back-text: #F1F2F9;
+  --details-img-wrapper: #F1F2F9;
+  --details-img-wrapper-disabled: #3B3E4A;
+  --details-prod-id: #4A4D58;
 }
 
 .SideBar {

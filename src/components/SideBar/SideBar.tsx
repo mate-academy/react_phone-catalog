@@ -2,12 +2,16 @@ import React from 'react';
 import styles from './SideBar.module.scss';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import { useTheme } from '../ThemeContext/ThemeContext';
 
 type Props = {
   setActiveAside: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   const handlerActiveLinkClass = ({ isActive }: { isActive: boolean }) => {
     return classNames(`${styles.menu_link}`, {
       [styles.active_link]: isActive,
@@ -26,7 +30,7 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
         <nav className={`${styles.header_nav_container}`}>
           <div className={`${styles.header_nav_logo_container}`}>
             <a href="/">
-              <img src="./img/logo/logo-main.svg" alt="logo nice gadgets" />
+              <img src={isLight ? "./img/logo/logo-main.svg" : "./img/logo/logo-dark-theme.svg"} alt="logo nice gadgets" />
             </a>
           </div>
 
@@ -35,7 +39,7 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
             onClick={() => setActiveAside(false)}
           >
             <button className={`${styles.header_nav_close_button}`}>
-              <img src="./img/icons/close-icon.svg" alt="close burron" />
+              <img src={isLight ? "./img/icons/close-icon.svg" : "./img/icons/close-icon-dark-theme.svg"} alt="close burron" />
             </button>
           </div>
         </nav>
@@ -78,7 +82,7 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
             onClick={() => setActiveAside(false)}
           >
             <img
-              src="./img/icons/card-default-like.svg"
+              src={isLight ? "./img/icons/card-default-like.svg" : "./img/icons/like-dark-theme.svg"}
               alt="like icon"
               className={`${styles.footer_img_icon}`}
             />
@@ -89,7 +93,7 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
             onClick={() => setActiveAside(false)}
           >
             <img
-              src="./img/icons/shopping-bag.svg"
+              src={isLight ? "./img/icons/shopping-bag.svg" : "./img/icons/shopping-bag-dark-theme.svg"}
               alt="shopping bag icon"
               className={`${styles.footer_img_icon}`}
             />

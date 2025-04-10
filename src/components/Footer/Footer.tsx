@@ -2,12 +2,15 @@ import React from 'react';
 import { ButtonDirection } from '../../enums/ButtonDirection';
 import { Button } from '../Button/Button';
 import styles from './Footer.module.scss';
+import { useTheme } from '../ThemeContext/ThemeContext';
 
 type Props = {
   disabledIds: number[];
 };
 
 export const Footer: React.FC<Props> = ({ disabledIds }) => {
+  const { theme } = useTheme();
+
   const handleBackToTop = () => {
     window.scrollTo({ top: 0 });
   };
@@ -17,7 +20,7 @@ export const Footer: React.FC<Props> = ({ disabledIds }) => {
       <div className={`${styles.footer_main_container}`}>
         <div className={`${styles.footer_logo_container}`}>
           <img
-            src="./img/logo/logo-main.svg"
+            src={theme === 'light' ? "./img/logo/logo-main.svg" : "./img/logo/logo-dark-theme.svg"}
             alt="logo"
             className={`${styles.footer_logo}`}
           />

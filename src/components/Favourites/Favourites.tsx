@@ -17,7 +17,7 @@ export const Favourites: React.FC<Props> = () => {
       <div className={`${styles.cart_empty_container}`}>
         <h1 className={`${styles.cart_empty_title}`}>Favourites is empty</h1>
         <img
-          src="./img/favourites-not-found.png"
+          src="./img/page-not-found.png"
           alt="favourites empty icon"
           className={`${styles.cart_empty_image}`}
         />

@@ -13,11 +13,12 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  filter: drop-shadow(-1px 1px var(--button-border-disabled));
+  border-bottom: 1px solid var(--button-border-disabled);
   margin-bottom: 24px;
   position: sticky;
   top: 0;
   z-index: 10;
+  box-sizing: border-box;
 
   @include on-tablet {
     margin-bottom: 32px;
@@ -47,6 +48,7 @@
   align-items: center;
   text-decoration: none;
   height: 100%;
+  box-sizing: border-box
 }
 
 .header_nav_pages_container {
@@ -113,6 +115,7 @@
 .header_nav_favourite_button {
   @include header-button;
   box-sizing: border-box;
+  border-bottom: 1px solid var(--button-border-disabled);
 
   @include on-desktop {
     width: 64px;

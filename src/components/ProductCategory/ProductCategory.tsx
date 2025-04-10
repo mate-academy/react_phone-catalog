@@ -177,7 +177,7 @@ export const ProductCategory: React.FC<Props> = ({
     );
 
     setButtonsCount(result);
-  }, [itemsCount]);
+  }, [itemsCount, sortBy, activeData]);
 
   useEffect(() => {
     getProducts(`${url}`)

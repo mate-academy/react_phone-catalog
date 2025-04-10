@@ -10,8 +10,9 @@ import { Loader } from '../Loader/Loader';
 type Props = {
   setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
   disabledIds: number[];
+  width: number;
 };
-export const Main: React.FC<Props> = ({ setDisabledIds, disabledIds }) => {
+export const Main: React.FC<Props> = ({ setDisabledIds, disabledIds, width }) => {
   const [phones, setPhones] = useState<Product[]>();
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export const Main: React.FC<Props> = ({ setDisabledIds, disabledIds }) => {
           startId={0}
           endId={1}
           containerId={'scroll_container_new_models'}
+          width={width}
         />
         <div
           className={`${styles.scroll_container}`}
@@ -59,6 +61,7 @@ export const Main: React.FC<Props> = ({ setDisabledIds, disabledIds }) => {
           startId={2}
           endId={3}
           containerId={'scroll_container_hot_prices'}
+          width={width}
         />
         <div
           className={`${styles.scroll_container}`}

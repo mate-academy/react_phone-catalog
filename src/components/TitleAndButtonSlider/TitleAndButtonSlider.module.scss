@@ -8,13 +8,11 @@
 
 .main_header_container {
   width: 288px;
-  // height: 62px;
   height: fit-content;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // gap: 72px;
-  margin: 0 16px 24px;
+  margin-bottom: 24px;
 
   @include on-tablet {
     width: 592px;
@@ -32,8 +30,6 @@
 }
 
 .main_header_title_container {
-  // width: 136px;
-  // height: 62px;
   height: fit-content;
   width: fit-content;
 
@@ -44,6 +40,11 @@
     height: 42px;
     justify-content: flex-start;
   }
+}
+
+.new_models {
+  width: 136px;
+  height: 62px;
 }
 
 .main_header_title {

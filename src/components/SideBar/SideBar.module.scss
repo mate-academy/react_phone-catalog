@@ -7,18 +7,18 @@
 
 .side_bar_container {
   position: absolute;
-  background-color: $main-background-white;
+  background-color: var(--bg-color);
   height: 100vh;
   z-index: 20;
 }
 
 .header_nav_container {
   width: 100vw;
-  background-color: $main-background-white;
+  background-color: var(--bg-color);
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  filter: drop-shadow(-1px 1px $button-border-disabled);
+  filter: drop-shadow(-1px 1px var(--button-border-disabled));
   margin-bottom: 24px;
 }
 
@@ -34,7 +34,7 @@
 
   width: 16px;
   height: 16px;
-  background: none;
+  background: var(--bg-color);
   border: none;
   transition: all .5s ease-in-out;
   cursor: pointer;
@@ -46,12 +46,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $main-background-white;
-  border-left: 1px solid $button-border-disabled;
+  background-color: var(--bg-color);
+  border-left: 1px solid var(--button-border-disabled);
   box-sizing: border-box;
 
   &:hover {
-    border: 1px solid $main-dark-gray;
+    border: 1px solid var(--text-color-main);
     cursor: pointer;
   }
 
@@ -82,19 +82,20 @@
   height: 12px;
   margin: 0;
   text-transform: uppercase;
-  color: $main-light-gray;
+  transition: all .5s ease-in-out;
+  color: var(--text-color-secondary);
 
   &:hover {
-    color: $main-dark-gray;
+    color: var(--text-color-main);
     animation: bounce .5s ease-in-out;
   }
 }
 
 .active_link {
-  border-bottom: 2px solid $main-dark-gray;
+  border-bottom: 2px solid var(--text-color-main);
 
   .menu_title {
-    color: $main-dark-gray;
+    color: var(--text-color-main);
   }
 }
 
@@ -108,7 +109,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid $main-light-gray;
+  border-top: 1px solid var(--text-color-secondary);
 }
 
 .footer_img_icon {
@@ -119,17 +120,17 @@
 .footer_button {
   width: calc(100vw / 2);
   height: 64px;
-  background-color: $main-background-white;
+  background-color: var(--bg-color);
 
   @include flex_centered;
 
   &:first-child {
-    border-right: 1px solid $main-light-gray;
+    border-right: 1px solid var(--text-color-secondary);
   }
 
   &:hover {
     cursor: pointer;
-    border: 1px solid $main-dark-gray;
+    border: 1px solid var(--text-color-main);
   }
 
   &:hover .footer_img_icon {
@@ -142,8 +143,8 @@
 }
 
 .active_footer_button {
-  border-top: 1px solid $main-light-gray;
-  border-bottom: 2px solid $main-dark-gray;
+  border-top: 1px solid var(--button-border-disabled);
+  border-bottom: 2px solid var(--text-color-main);
 }
 
 

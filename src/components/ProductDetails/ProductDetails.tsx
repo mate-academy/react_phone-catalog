@@ -11,6 +11,8 @@ import { TechDetails } from '../../utils/TechDetails';
 import { ZoomImage } from '../ZoomImage/ZoomImage';
 import { useCartProducts } from '../Cart/CartContext';
 import { Loader } from '../Loader/Loader';
+import { useTheme } from '../ThemeContext/ThemeContext';
+import { useFavourites } from '../Favourites/FavouritesContext';
 
 type Props = {
   productId?: string;
@@ -35,13 +37,16 @@ export const ProductDetails: React.FC<Props> = ({
   const [activeCapacity, setActiveCapacity] = useState<string | undefined>(
     product?.capacity,
   );
-  const [clicked, setClicked] = useState(false);
   const { cartProducts, addProductToCart, removeFromCart } = useCartProducts();
   const navigate = useNavigate();
   const { search } = useLocation();
   const productIdtext = activeProducts.find(
     product_ => product_.itemId === product?.id,
   );
+  const { theme } = useTheme();
+  const isLightTheme = theme === 'light';
+  const { favourites, toggleFavourite } = useFavourites();
+  const isFavourite = product && favourites.some(fav => fav.id === product.id);
 
   const isInCart = product && cartProducts.find(item => item.id === product.id);
   const handleAddToCart = (product: Product) => {
@@ -91,6 +96,13 @@ export const ProductDetails: React.FC<Props> = ({
     return Array.isArray(value) ? value.join(', ') : (value ?? 'N/A');
   };
 
+  const handletoggleFavourite = (e: React.MouseEvent) => {
+      e.stopPropagation;
+      if (product) {
+        toggleFavourite(product);
+      }
+    };
+
   useEffect(() => {
     if (!product) {
       return;
@@ -110,7 +122,6 @@ export const ProductDetails: React.FC<Props> = ({
   useEffect(() => {
     getProducts(`${categoryName}`)
       .then(data => {
-        console.log('fetcched Data: ', data);
         setActiveData(data);
       })
       .catch(e => {
@@ -121,7 +132,6 @@ export const ProductDetails: React.FC<Props> = ({
   useEffect(() => {
     getAllProducts()
       .then(data => {
-        console.log('fetcched Data: ', data);
         setActiveProducts(data);
       })
       .catch(e => {
@@ -131,10 +141,10 @@ export const ProductDetails: React.FC<Props> = ({
 
   if (!activeData) {
     return (
-    <div className={`${styles.loader}`}>
-      <Loader />
-    </div>
-    )
+      <div className={`${styles.loader}`}>
+        <Loader />
+      </div>
+    );
   }
 
   return (
@@ -144,12 +154,20 @@ export const ProductDetails: React.FC<Props> = ({
           <div className={`${styles.details_main_container}`}>
             <div className={`${styles.details_path_container}`}>
               <img
-                src="./img/icons/home-icon.svg"
+                src={
+                  isLightTheme
+                    ? './img/icons/home-icon.svg'
+                    : './img/icons/home-icon-dark-theme.svg'
+                }
                 alt="home icon"
                 className={`${styles.details_header_icon}`}
               />
               <img
-                src="./img/icons/main-disabled-arrow.svg"
+                src={
+                  isLightTheme
+                    ? './img/icons/main-disabled-arrow.svg'
+                    : './img/icons/dark-theme-arrow-disabled.svg'
+                }
                 alt="right arrow"
                 className={`${styles.details_header_icon}`}
               />
@@ -157,7 +175,11 @@ export const ProductDetails: React.FC<Props> = ({
                 {product.category}
               </p>
               <img
-                src="./img/icons/main-disabled-arrow.svg"
+                src={
+                  isLightTheme
+                    ? './img/icons/main-disabled-arrow.svg'
+                    : './img/icons/dark-theme-arrow-disabled.svg'
+                }
                 alt="right arrow"
                 className={`${styles.details_header_icon}`}
               />
@@ -169,7 +191,11 @@ export const ProductDetails: React.FC<Props> = ({
               onClick={handleBackButton}
             >
               <img
-                src="./img/icons/main-default-arrow.svg"
+                src={
+                  isLightTheme
+                    ? './img/icons/main-default-arrow.svg'
+                    : './img/icons/dark-theme-arrow.svg'
+                }
                 alt="left arrow"
                 className={`${styles.details_back_icon}`}
               />
@@ -289,15 +315,15 @@ export const ProductDetails: React.FC<Props> = ({
                   </button>
                   <button
                     className={`${styles.button} ${styles.button_like}`}
-                    onClick={() =>
-                      clicked ? setClicked(false) : setClicked(true)
-                    }
+                    onClick={handletoggleFavourite}
                   >
                     <img
                       src={
-                        clicked
+                        isFavourite
                           ? './img/icons/card-selected-like.svg'
-                          : './img/icons/card-default-like.svg'
+                          : isLightTheme
+                            ? './img/icons/card-default-like.svg'
+                            : './img/icons/like-dark-theme.svg'
                       }
                       alt="like button"
                     />

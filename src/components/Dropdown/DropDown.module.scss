@@ -15,21 +15,21 @@
   justify-content: space-between;
   width: 136px;
   height: 40px;
-  border: 1px solid $button-border-disabled;
+  border: 1px solid var(--button-border-disabled);
   font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  background-color: $main-background-white;
-  color: $main-dark-gray;
+  background-color: var(--slider-swipe-button);
+  color: var(--text-color-main);
   box-sizing: border-box;
 
   &:hover {
-    border: 1px solid $main-light-gray;
+    border: 1px solid var(--text-color-secondary);
   }
 
   &:active {
-    border: 1px solid $main-dark-gray;
+    border: 1px solid var(--text-color-main);
   }
 }
 
@@ -39,7 +39,7 @@
   width: 16px;
   height: 16px;
   transition: all .5s ease-in-out;
-  color: $button-border-default;
+  color: var(--dropdown-arrow);
 }
 
 .rotate_180 {
@@ -49,18 +49,21 @@
 .main_option_container {
   width: 136px;
   height: fit-content;
-  background-color: $main-background-white;
-  border: 1px solid $button-border-disabled;
+  background-color: var(--bg-color);
+  border: 1px solid var(--dropdown-border);
   box-sizing: border-box;
 }
 
 .dropdown_list {
+  width: 136px;
   line-height: 32px;
-  padding-left: 12px;
+  box-sizing: border-box;
+  padding: 0;
 }
 
 .dropdown_item {
-  width: 100%;
+  width: 135px;
+  height: 32px;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -68,11 +71,19 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
-  color: $main-light-gray;
+  padding-left: 12px;
+  color: var(--text-color-secondary);
   margin: 6px 0;
+  box-sizing: border-box;
 
   &:hover {
-    color: $main-dark-gray;
+    color: var(--dropdown-text-hover);
+  }
+}
+
+.dropdown_item_hover_dark {
+  &:hover {
+    background-color: #323542;
   }
 }
 
@@ -82,5 +93,14 @@
   }
   @include on-tablet {
     width: 176px;
+  }
+}
+
+.dropdown_button_first_hover {
+  @include on-tablet {
+    width: 187px;
+  }
+  @include on-tablet {
+    width: 175px;
   }
 }

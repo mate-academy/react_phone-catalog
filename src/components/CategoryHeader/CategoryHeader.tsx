@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './CategoryHeader.module.scss';
 import { Product } from '../../types/Product';
 import { Loader } from '../Loader/Loader';
+import { useTheme } from '../ThemeContext/ThemeContext';
 
 type Props = {
   categoryData: Product[];
@@ -15,17 +16,26 @@ export const CategoryHeader: React.FC<Props> = ({ categoryData }) => {
       </div>
     );
   }
+  const { theme } = useTheme();
   const categoryName = categoryData[0].category;
   return (
     <>
       <div className={`${styles.category_path_container}`}>
         <img
-          src="./img/icons/home-icon.svg"
+          src={
+            theme === 'light'
+              ? './img/icons/home-icon.svg'
+              : './img/icons/home-icon-dark-theme.svg'
+          }
           alt="home icon"
           className={`${styles.category_header_icon}`}
         />
         <img
-          src="./img/icons/main-disabled-arrow.svg"
+          src={
+            theme === 'light'
+              ? './img/icons/main-disabled-arrow.svg'
+              : './img/icons/dark-theme-arrow-disabled.svg'
+          }
           alt="right arrow"
           className={`${styles.category_header_icon}`}
         />

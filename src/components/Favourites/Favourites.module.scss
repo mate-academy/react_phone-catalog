@@ -11,8 +11,6 @@
   src: url('fonts/Mont-Regular.otf');
 }
 
-
-
 .favourite_main_container {
   width: 100%;
   display: flex;
@@ -54,7 +52,7 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 100%;
-  color: $main-light-gray;
+  color: var(--text-color-secondary);
   text-transform: capitalize;
 }
 
@@ -64,7 +62,7 @@
   font-size: 32px;
   line-height: 42px;
   letter-spacing: -0.01em;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
   width: 288px;
   height: 42px;
   margin: 0 0 8px;
@@ -91,7 +89,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: $main-light-gray;
+  color: var(--text-color-secondary);
   width: 288px;
   height: 21px;
   margin: 0 0 32px;
@@ -155,7 +153,7 @@
   letter-spacing: -0.01em;
   width: fit-content;
   margin: 0 0 20px;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
 
   @include on-tablet {
     font-size: 48px;
@@ -163,10 +161,10 @@
 }
 
 .cart_empty_image {
-  width: 360px;
-  height: 360px;
+  width: 180px;
+  height: 180px;
   object-fit: contain;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   &:hover {
     transform: scale(1.1);
@@ -174,5 +172,10 @@
 
   &:active {
     transform: scale(0.9);
+  }
+
+  @include on-tablet {
+    width: 360px;
+    height: 360px;
   }
 }

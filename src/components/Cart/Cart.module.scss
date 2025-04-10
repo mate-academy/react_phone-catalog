@@ -25,7 +25,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
-  color: $main-light-gray;
+  color: var(--cart-back-text);
   margin: 0;
 }
 
@@ -38,8 +38,8 @@
   gap: 4px;
   margin-bottom: 16px;
   cursor: pointer;
-  &:hover .details_back_text {
-    color: $main-dark-gray;
+  &:hover .cart_back_text {
+    color: var(--text-color-footer-hover);
   }
 
   @include on-tablet {
@@ -63,7 +63,7 @@
   font-weight: 800;
   font-size: 32px;
   line-height: 42px;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
   letter-spacing: -0.01em;
   margin: 0;
   margin-bottom: 32px;
@@ -112,7 +112,7 @@
 .cart_main_product_contian {
   width: 288px;
   height: 160px;
-  border: 1px solid $button-border-disabled;
+  border: 1px solid var(--border-prod-card);
   padding: 16px;
   gap: 16px;
   box-sizing: border-box;
@@ -152,7 +152,8 @@
   justify-content: flex-start;
   align-items: center;
   padding: 0;
-  background-color: $main-background-white;
+  background-color: var(--bg-color);
+  transition: all .5s ease-in-out;
   border: none;
 }
 
@@ -160,6 +161,7 @@
   width: 16px;
   height: 16px;
   cursor: pointer;
+  transition: all .5s ease-in-out;
 }
 
 .cart_product_image {
@@ -174,7 +176,6 @@
   height: 100%;
   @include flex_centered;
 
-  // margin-bottom: 8px;
   overflow: hidden;
 
   &:hover .image {
@@ -210,7 +211,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
   margin: 0;
 }
 
@@ -235,8 +236,8 @@
 .cart_button_wrapper {
   width: 32px;
   height: 32px;
-  background-color: $main-background-white;
-  border: 1px solid $button-border-default;
+  background-color: var(--slider-swipe-button);
+  border: 1px solid var(--button-border-default);
   @include flex-centered;
   cursor: pointer;
   box-sizing: border-box;
@@ -244,7 +245,8 @@
 
 .cart_button_disabled {
   cursor: not-allowed;
-  border: 1px solid $button-border-disabled;
+  background-color: var(--bg-color);
+  border: 1px solid var(--button-border-disabled);
 }
 
 .cart_button {
@@ -261,7 +263,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
   margin: 0;
 }
 
@@ -270,7 +272,7 @@
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
   margin: 0;
 }
 
@@ -310,7 +312,7 @@
   font-size: 32px;
   line-height: 42px;
   letter-spacing: -0.01em;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
   margin: 0;
 }
 
@@ -321,7 +323,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
-  color: $main-light-gray;
+  color: var(--text-color-secondary);
   margin: 0;
 
   @include on-desktop {
@@ -332,7 +334,7 @@
 .cart_line {
   width: 100%;
   height: 1px;
-  background-color: $button-border-disabled;
+  background-color: var(--button-border-disabled);
   border: none;
   margin: 0;
 }
@@ -343,19 +345,19 @@
   @include flex_centered;
 
   width: 100%;
-  background-color: $main-dark-gray;
+  background-color: var(--add-to-cart-but);
   border: none;
   font-family: Mont-Regular, sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
-  color: $main-background-white;
+  color: var(--add-to-cart-text);
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    background-color: $main-background-white;
-    color: $main-dark-gray;
-    border: 1px solid $main-dark-gray;
+    background-color: var(--add-to-cart-but-hover);
+    color: var(--add-to-cart-text-hover);
+    border: 1px solid var(--add-to-cart-but-hover);
     transform: scale(1.05);
   }
 
@@ -393,7 +395,7 @@
   letter-spacing: -0.01em;
   width: fit-content;
   margin: 0 0 20px;
-  color: $main-dark-gray;
+  color: var(--text-color-main);
 
   @include on-tablet {
     font-size: 48px;
