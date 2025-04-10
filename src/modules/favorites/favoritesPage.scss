@@ -1,0 +1,95 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixin.scss';
+
+.favorites {
+  grid-column: 1 / -1;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    background-color: #0F1121;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 24px;
+    padding: 0;
+    gap: 8px;
+
+    &--logoHome {
+      height: 16px;
+      width: 16px;
+    }
+
+    &--sliderRight {
+      height: 16px;
+      width: 16px;
+    }
+
+    &--name {
+      font-family: 'Mont', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #75767F;
+    }
+  }
+
+  &__title {
+    margin: 24px 0;
+  }
+
+  &__carousel {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-bottom: 56px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    @include tablet {
+      margin-bottom: 64px;
+    }
+    @include desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__noFound {
+    grid-column: 1 / -1;
+    margin-bottom: 56px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+
+
+    @include tablet {
+      margin-bottom: 64px;
+    }
+    @include desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__img {
+    display: flex;
+    width: 200px;
+
+    @include tablet {
+      width: 300px;
+    }
+
+    @include desktop {
+      width: 400px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+}
+

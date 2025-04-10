@@ -1,0 +1,280 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixin.scss';
+
+.cartPage {
+  grid-column: 1 / -1;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    background-color: #0F1121;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 24px;
+    padding: 0;
+    gap: 8px;
+
+    &--sliderLeft {
+      height: 12px;
+      width: 12px;
+    }
+
+    &--name {
+      font-family: 'Mont', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #F1F2F9;
+    }
+  }
+
+  &__title {
+    margin: 24px 0;
+  }
+
+  &__noFound {
+    grid-column: 1 / -1;
+    margin-bottom: 56px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+
+
+    @include tablet {
+      margin-bottom: 64px;
+    }
+    @include desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__img {
+    display: flex;
+    width: 200px;
+
+    @include tablet {
+      width: 300px;
+    }
+
+    @include desktop {
+      width: 400px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__checkout {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 190px;
+    border: 1px solid #3B3E4A;
+    display: flex;
+    gap: 32px;
+    padding: 24px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 56px;
+
+    @include desktop {
+      grid-column: 17 / 25;
+    }
+
+    &--value {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+      align-items: center;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -16px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #3B3E4A;
+      }
+    }
+
+    &--price {
+      font-family: Mont;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      text-align: center;
+      color: #F1F2F9;
+    }
+
+    &--item {
+      font-family: Mont;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      text-align: center;
+      color: #89939A;
+    }
+
+    &--button {
+      display: flex;
+      align-items: center;
+      height: 48px;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: #905BFF;
+      font-family: Mont;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      text-align: center;
+      color: #F1F2F9;
+
+      @include smooth;
+
+      &:hover {
+        background-color: #A378FF;
+      }
+    }
+  }
+
+  &__main{
+    grid-column: 1 / -1;
+    margin-bottom: 32px;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+
+    @include desktop {
+      grid-column: 1 / 17;
+    }
+  }
+}
+
+
+.card {
+  width: 100%;
+  height: 160px;
+  background-color: #161827;
+  flex-direction: column;
+  display: flex;
+  padding: 16px;
+  gap: 16px;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__details {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &--remove {
+      width: 16px;
+      height: 16px;
+    }
+
+    &--box {
+      width: 80px;
+      height: 80px;
+      display: flex;
+
+      &--img {
+        object-fit: contain;
+      }
+    }
+
+    &--name {
+      font-family: Mont;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: #F1F2F9;
+    }
+  }
+
+  &__amount {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include tablet {
+      gap: 24px;
+    }
+
+    &--box {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      align-items: center;
+
+      &--minus, &--plus {
+        display: flex;
+        height: 32px;
+        width: 32px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &--img {
+        height: 16px;
+        width: 16px;
+      }
+
+      &--minus {
+        border: 1px solid #3B3E4A;
+
+        &--active {
+          background-color: #323542;
+        }
+      }
+
+      &--plus {
+        border: 1px solid #323542;
+        background-color: #323542;
+
+        @include smooth;
+
+        &:hover {
+          background-color: #4A4D58;
+        }
+      }
+
+      &--number {
+        font-family: Mont;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #F1F2F9;
+      }
+    }
+
+    &--price {
+      font-family: Mont;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+      color: #F1F2F9;
+    }
+  }
+}

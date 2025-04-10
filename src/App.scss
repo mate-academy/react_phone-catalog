@@ -1,1 +1,19 @@
-// not empty
+@import '../src/utils/fonts.scss';
+@import '../src/utils/mixin.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.productCatalog {
+  display: none;
+}
+

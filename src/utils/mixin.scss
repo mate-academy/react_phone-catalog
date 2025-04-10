@@ -1,0 +1,64 @@
+$mobile: 639px;
+$tablet: 640px;
+$desktop: 1200px;
+$greatDesktop: 1440px;
+$grid-gutter: 16px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) { @content; }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) { @content; }
+}
+
+@mixin greatDesktop {
+  @media (min-width: #{$greatDesktop}) { @content; }
+}
+
+@mixin grid($columns, $padding) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $grid-gutter;
+  padding: 0 $padding;
+}
+
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0F1121;
+  display: grid;
+
+  @include mobile {
+    @include grid(4, 16px);
+  }
+
+  @include tablet {
+    @include grid(12, 24px);
+  }
+
+  @include desktop {
+    @include grid(24, 32px);
+  }
+
+  @include greatDesktop {
+    @include grid(24, 152px);
+  }
+}
+
+@mixin hover-scale($scale: 1.1, $transition: 0.3s) {
+  transition: transform $transition ease-in-out;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+@mixin smooth {
+  transition: all 0.3s ease-in-out;
+}

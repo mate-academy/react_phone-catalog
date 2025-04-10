@@ -1,0 +1,27 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixin.scss';
+
+.cart__button {
+  flex-grow: 1;
+  height: 40px;
+  background-color: #905BFF;
+  color: #F1F2F9;
+  border: none;
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+
+  @include smooth;
+
+  &:hover {
+    background-color: #A378FF;
+  }
+
+  &.active {
+    background-color: #323542;
+  }
+}
+

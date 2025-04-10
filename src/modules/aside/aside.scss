@@ -1,0 +1,148 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixin.scss';
+
+.aside {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #0F1121;
+  flex-direction: column;
+  z-index: 10;
+  transform: translateX(100%);
+  @include smooth;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  &__header {
+    width: 100%;
+    height: 48px;
+    background-color: #0F1121;
+    border-bottom: 1px solid #3B3E4A;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    &--logo {
+      display: flex;
+      align-items: center;
+      height: 48px;
+      width: 96px;
+      padding: 0 16px;
+
+      &--img {
+        height: 22px;
+        width: 64px;
+      }
+    }
+
+    &--icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      width: 48px;
+      padding: 0 16px;
+      border-left: 1px solid #3B3E4A;
+
+      &--img {
+        height: 16px;
+        width: 16px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    flex-grow: 1;
+    overflow-y: auto;
+
+    &--list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      list-style: none;
+      gap: 24px;
+
+      &--item {
+        display: flex;
+      }
+
+      &--link {
+        position: relative;
+        text-decoration: none;
+        color: #F1F2F9;
+        font-family: "Mont", sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 11px;
+        letter-spacing: 4%;
+      }
+    }
+  }
+
+  &__footer {
+    height: 64px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-shrink: 0;
+
+    &--box {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #3B3E4A;
+      position: relative;
+
+      @include smooth;
+
+      &:hover::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #FFF;
+
+        @include desktop {
+          bottom: -27px;
+          }
+        }
+
+      &.active {
+        color: #FFF;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: #FFF;
+        }
+      }
+    }
+
+    &--icon {
+      height: 16px;
+      width: 16px;
+      cursor: pointer;
+    }
+  }
+}
+

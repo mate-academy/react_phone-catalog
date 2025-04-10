@@ -1,0 +1,57 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixin.scss';
+
+.custom-select {
+  position: relative;
+  font-family: 'Mont', sans-serif;
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+  }
+
+  &__selected {
+    background-color: #323542;
+    color: #f1f2f9;
+    padding: 10px 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include smooth;
+
+    &:hover {
+      border: 1px solid #905bff;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #0F1121;
+    border: 1px solid #3B3E4A;
+    margin-top: 4px;
+    z-index: 10;
+    list-style: none;
+    overflow-y: hidden;
+    padding: 0;
+  }
+
+  &__option {
+    padding: 10px 16px;
+    color: #75767F;
+    cursor: pointer;
+    height: 32px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: #323542;
+      color: #F1F2F9;
+    }
+  }
+}

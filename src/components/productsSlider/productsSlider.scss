@@ -1,0 +1,66 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixin.scss';
+
+.productsSlider {
+  grid-column: 1 / -1;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__sliders {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+
+    &--button {
+      border: 1px solid #323542;
+      height: 32px;
+      width: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #323542;
+
+      @include smooth;
+
+      &:hover {
+        background-color: #4A4D58;
+        cursor: pointer;
+      }
+
+      &:disabled {
+        background-color: #0F1121;
+      }
+    }
+
+    &--img {
+      width: 5px;
+      height: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      transition: none;
+    }
+  }
+
+  &__card {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 56px;
+
+    @include tablet {
+      margin-bottom: 64px;
+    }
+
+    @include desktop {
+      margin-bottom: 64px;
+    }
+  }
+}

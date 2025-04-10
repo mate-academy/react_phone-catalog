@@ -1,0 +1,105 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixin.scss';
+
+.line {
+  display: block;
+  width: 100%;
+  border: 1px solid #3B3E4A;
+}
+
+.footer {
+  grid-column: 1 / -1;
+  background-color: #0F1121;
+  height: 257px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+
+  @include tablet {
+    height: 96px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 32px;
+    width: 100%;
+    margin-bottom: 32px;
+
+    &--logo {
+      width: 32px;
+      width: 89px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-items: left;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &--text {
+      font-family: "Mont;", sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+      color: #F1F2F9;
+      text-decoration: none;
+    }
+  }
+
+  &__end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+
+    @include tablet {
+      justify-content: right;
+      margin-bottom: 32px;
+
+
+    }
+
+    &--text {
+      font-family: "Mont;", sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 17px;
+      color: #75767F;
+    }
+
+    &--sliderTop {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #323542;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #323542;
+      cursor: pointer;
+
+      @include smooth;
+
+      &:hover {
+        background-color: #4A4D58;
+      }
+    }
+  }
+}
+.sliderTop {
+  width: 16px;
+  height: 16px;
+
+}

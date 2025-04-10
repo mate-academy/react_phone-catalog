@@ -1,0 +1,29 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixin.scss';
+
+.homePage {
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    grid-column: 1 / -1;
+    margin: 24px 0;
+
+    @include tablet {
+      margin: 32px 0;
+    }
+
+    &--title {
+      margin-bottom: 24px;
+
+      @include tablet {
+        margin: 32px 0;
+      }
+    }
+  }
+
+  &__end {
+    margin-bottom: 64px;
+    grid-column: 1 / -1;
+  }
+}

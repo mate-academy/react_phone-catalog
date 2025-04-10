@@ -1,0 +1,25 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixin.scss';
+
+.favorite__button {
+  height: 40px;
+  width: 40px;
+  background-color: #323542;
+  border: none;
+
+  @include smooth;
+
+  &:hover {
+    background-color: #4A4D58;
+  }
+
+  &--icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.active {
+    background-color: #0F1121;
+    border: 1px solid #3B3E4A;
+  }
+}

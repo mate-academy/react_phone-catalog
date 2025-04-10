@@ -1,0 +1,66 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixin.scss';
+
+.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-column: 1 / -1;
+
+
+  @include tablet {
+    flex-direction: row;
+    column-gap: 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    grid-column: 1 / -1;
+  }
+
+  &__subtitle {
+    margin-bottom: 4px;
+    text-decoration: none;
+  }
+
+  &__bodyText {
+    margin-bottom: 32px;
+  }
+
+  &__boxColor {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 288px;
+    margin-bottom: 24px;
+
+    @include tablet {
+      height: 187px;
+    }
+
+    @include desktop {
+      height: 443px;
+    }
+  }
+
+  &__phones {
+    background-color: #6D6474;
+  }
+
+  &__tablets {
+    background-color: #75767F;
+  }
+
+  &__accessories {
+    background-color: #EB5757;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: -10% 10%;
+
+    @include hover-scale;
+  }
+}
