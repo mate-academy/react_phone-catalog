@@ -33,7 +33,7 @@ export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
         onClick={burgerMenu ? toggleBurgerMenu : undefined}
       >
         <img src="./img/icons/favourites.png" alt="favourite" />
-        <span>{favouritesLength}</span>
+        {favouritesLength > 0 && <span>{favouritesLength}</span>}
       </NavLink>
       <NavLink
         to={'shopping-bag'}
@@ -41,7 +41,7 @@ export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
         onClick={burgerMenu ? toggleBurgerMenu : undefined}
       >
         <img src="./img/icons/shoppingBag.png" alt="shopping bag" />
-        <span>{shoppingBagLength}</span>
+        {shoppingBagLength > 0 && <span>{shoppingBagLength}</span>}
       </NavLink>
       <div className={classNames(s.right__buttons_burgerMenu, onMobile)}>
         <button

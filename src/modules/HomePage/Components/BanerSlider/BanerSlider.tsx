@@ -36,7 +36,7 @@ export const BanerSlider = () => {
   return (
     <div className={classNames({ container: widthRef.current > 640 })}>
       <div className={s.slider__wrapper}>
-        <h1 className={s.slider__title}>Product Catalog</h1>
+        <h1 className={s.slider__title}>Welcome to Nice Gadgets store!</h1>
         <div className={s.slider}>
           <button className={s.slider__prev} onClick={prevSlide}>
             <img src="./img/icons/prev.png" alt="previous picture" />

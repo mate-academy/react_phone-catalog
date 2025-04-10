@@ -1,1 +1,7 @@
 @use '../../style/main' as *;
+
+.title {
+  position: absolute;
+  top: -150%;
+  right: -150%;
+}

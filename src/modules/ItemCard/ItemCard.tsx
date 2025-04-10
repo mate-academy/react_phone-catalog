@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { ProductContext } from '../../shared/context/ProductsContext';
 import { CatalogHeaderPath } from '../../shared/CatalogHeaderPath';
 import { ProductSlider } from '../../shared/ProductSlider';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useProduct } from '../../hooks/useProduct';
 import { RightButtonContext } from '../../shared/context/RightButtonContext';
 
@@ -50,8 +50,12 @@ export const ItemCard = () => {
     });
   };
 
+  if (product === null) {
+    return <Navigate to="/not-found" />;
+  }
+
   if (!product) {
-    return <p>loading</p>;
+    return <p>Loading...</p>;
   }
 
   const filteredProducts = [...products]

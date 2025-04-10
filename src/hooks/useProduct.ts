@@ -6,20 +6,23 @@ import { ProductItem } from '../types/ProductItem';
 export const useProduct = () => {
   const { products } = useContext(ProductContext);
   const { productId } = useParams();
-  const numberProductId = productId ? +productId : 0;
   const [product, setProduct] = useState<ProductItem | null>(null);
 
   useEffect(() => {
-    if (!products.length || !numberProductId) {
+    if (!products.length || !productId) {
       return;
     }
 
+    const numberProductId = +productId;
     const productItem = products.find(p => p.id === numberProductId);
-    const itemCategory = productItem?.category;
 
-    if (!itemCategory) {
+    if (!productItem) {
+      setProduct(null);
+
       return;
     }
+
+    const itemCategory = productItem.category;
 
     const API_URL_PRODUCT = () => {
       switch (itemCategory) {
@@ -36,19 +39,19 @@ export const useProduct = () => {
 
     fetch(API_URL_PRODUCT())
       .then(response => {
-        if (response.ok) {
-          return response.json();
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
         }
 
-        throw new Error('Failed to fetch products');
+        return response.json();
       })
       .then((data: ProductItem[]) => {
         setProduct(data.find(item => item.id === productItem.itemId) || null);
       })
-      .catch(error => {
-        throw error;
+      .catch(() => {
+        setProduct(null);
       });
-  }, [products, numberProductId]);
+  }, [products, productId]);
 
   return { product };
 };

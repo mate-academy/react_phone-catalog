@@ -1,5 +1,7 @@
 @use './../../../../style/main' as *;
 
+
+
 .card {
   display: flex;
   flex-direction: column;
@@ -8,23 +10,7 @@
   padding: 32px;
   box-sizing: border-box;
   min-width: 212px;
-  position: relative;
 
-  &__link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-
-  &__title,
-  &__price,
-  &__specs,
-  &__buttons {
-    z-index: 3;
-  }
 
   @include on-tablet {
     min-width: 237px;
@@ -43,25 +29,15 @@
     display: grid;
     place-items: center;
     width: 100%;
-    flex-grow: 1;
-    z-index: 4;
-    transition: transform 0.3s;
+    height: 208px;
+    border-radius: 50%;
 
-
-    &:hover {
-      transform: scale(1.1);
-    }
-
-    & img {
-      width: 148px;
-      height: auto;
-    }
   }
 
   &__title {
     padding-top: 16px;
     font-size: 14px;
-
+    min-height: 10px;
   }
 
   &__price {
@@ -69,35 +45,9 @@
     column-gap: 8px;
   }
 
-  &__full_price {
-    color: $secondary;
-    text-decoration: line-through;
-
-  }
 
   &__divider {
     border: 1px solid $elements;
-  }
-
-  &__specs {
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
-
-    &_screen {
-      @extend %specs-information;
-
-    }
-
-    &_capacity {
-      @extend %specs-information;
-
-    }
-
-    &_ram {
-      @extend %specs-information;
-
-    }
   }
 
   &__buttons {
@@ -126,4 +76,29 @@
     }
   }
 
+}
+
+.loading .card__img,
+.loading .card__title,
+.loading .card__price,
+.loading .card__full_price,
+.loading .card__specs,
+.loading .card__buttons_add,
+.loading .card__buttons_like {
+  // width: 100px;
+  // height: 100px;
+  background: linear-gradient(100deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, .5) 50%,
+      rgba(255, 255, 255, 0) 60%) $black;
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1s loading ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -20%;
+  }
 }

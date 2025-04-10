@@ -45,8 +45,9 @@ export const Root = () => (
                 <Route index element={<ShoppingBag />} />
                 <Route path=":productId" element={<ItemCard />} />/
               </Route>
+              <Route path="not-found" element={<NotFoundPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
-            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
       </RightButtonProvider>
