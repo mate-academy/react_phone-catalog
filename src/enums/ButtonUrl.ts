@@ -1,4 +1,3 @@
-
 export enum ButtonUrl {
   default = './img/icons/main-default-arrow.svg',
   default_dark = './img/icons/dark-theme-arrow.svg',

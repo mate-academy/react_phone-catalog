@@ -5,5 +5,5 @@ export const Loader = () => {
     <>
       <span className={`${styles.loader}`}></span>
     </>
-  )
-}
+  );
+};

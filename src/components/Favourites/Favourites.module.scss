@@ -132,10 +132,12 @@
     grid-template-columns: repeat(4, 272px);
   }
 }
+
 .cart_empty_container {
   width: 100vw;
   height: fit-content;
   @include flex-centered;
+
   flex-direction: column;
   margin-bottom: 10px;
 

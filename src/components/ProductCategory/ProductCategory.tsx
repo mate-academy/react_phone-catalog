@@ -11,6 +11,7 @@ import { Product } from '../../types/Product';
 import { CategoryHeader } from '../CategoryHeader/CategoryHeader';
 import { getProducts } from '../../services/productsApi';
 import { Loader } from '../Loader/Loader';
+import { itemsOnPageData, sortByData } from '../../utils/SortCategory';
 
 type Props = {
   setDisabledIds: (arg: number[]) => void;
@@ -31,33 +32,12 @@ export const ProductCategory: React.FC<Props> = ({
   const [buttonsCount, setButtonsCount] = useState<string[]>(['1']);
   const [loader, setLoader] = useState(false);
 
-  const sortByData = [
-    {
-      id: '0',
-      name: 'Newest',
-    },
-    {
-      id: '1',
-      name: 'Oldest',
-    },
-  ];
-  const itemsOnPageData = [
-    {
-      id: '0',
-      name: '30',
-    },
-    {
-      id: '1',
-      name: '16',
-    },
-    {
-      id: '2',
-      name: '20',
-    },
-  ];
-
   const sortByCount = () => {
     if (itemsCount) {
+      if (itemsCount === 'All') {
+        return [0, activeData.length];
+      }
+
       return [
         Number(itemsCount) * (Number(pageNum) - 1),
         Number(itemsCount) * Number(pageNum),
@@ -68,7 +48,7 @@ export const ProductCategory: React.FC<Props> = ({
   };
 
   const sortByCategory = () => {
-    if (sortBy) {
+    if (sortBy && (sortBy === 'Newest' || sortBy === 'Oldest')) {
       const sortDirection = sortBy === 'Newest' ? -1 : 1;
       const sortedPhones = [...activeData].sort((a, b) => {
         const productA = products.find(product => product.itemId === a.id);
@@ -82,6 +62,22 @@ export const ProductCategory: React.FC<Props> = ({
       });
 
       return sortedPhones;
+    } else if (
+      sortBy &&
+      (sortBy === 'Cheapest' || sortBy === 'Most expensive')
+    ) {
+      const sortDirection = sortBy === 'Cheapest' ? 1 : -1;
+      const sorted = [...activeData].sort(
+        (a, b) => (a.priceDiscount - b.priceDiscount) * sortDirection,
+      );
+
+      return sorted;
+    } else if (sortBy && sortBy === 'Alphabetically') {
+      const sorted = [...activeData].sort((a, b) =>
+        a.name.localeCompare(b.name),
+      );
+
+      return sorted;
     }
 
     return activeData;
@@ -131,7 +127,7 @@ export const ProductCategory: React.FC<Props> = ({
 
   useEffect(() => {
     setTimeout(() => handleButtonState(), 1000);
-  }, [pageNum, buttonsCount, disabledIds]);
+  }, [pageNum, buttonsCount, disabledIds, handleButtonState]);
 
   // url params
   useEffect(() => {
@@ -167,9 +163,13 @@ export const ProductCategory: React.FC<Props> = ({
     let numOfButtons;
 
     if (itemsCount) {
-      numOfButtons = Math.ceil(activeData.length / Number(itemsCount));
+      if (itemsCount === 'All') {
+        numOfButtons = 0;
+      } else {
+        numOfButtons = Math.ceil(activeData.length / Number(itemsCount));
+      }
     } else {
-      numOfButtons = 1;
+      numOfButtons = 0;
     }
 
     const result = Array.from({ length: numOfButtons }, (_, i) =>
@@ -177,6 +177,7 @@ export const ProductCategory: React.FC<Props> = ({
     );
 
     setButtonsCount(result);
+    setPageNum('1');
   }, [itemsCount, sortBy, activeData]);
 
   useEffect(() => {
@@ -187,7 +188,8 @@ export const ProductCategory: React.FC<Props> = ({
       })
       .catch(e => {
         throw new Error(e);
-      }).finally(() => setLoader(false));
+      })
+      .finally(() => setLoader(false));
   }, [url]);
 
   if (loader) {
@@ -195,80 +197,80 @@ export const ProductCategory: React.FC<Props> = ({
       <div className={`${styles.loader_container}`}>
         <Loader />
       </div>
-    )
+    );
   } else {
     return (
       <>
         <div className={`${styles.mobile_main_container}`}>
-        <CategoryHeader categoryData={activeData} />
-        <div className={`${styles.mobile_main_select_container}`}>
-          <div className={`${styles.mobile_select_container}`}>
-            <p
-              className={classNames(
-                `${styles.mobile_select_parag} ${styles.first_select_button}`,
-              )}
-            >
-              Sort by
-            </p>
-            <DropDown
-              id={'0'}
-              data={sortByData}
-              setSort={setSortBy}
-              searchParams={searchParams}
-            />
-          </div>
-          <div className={`${styles.mobile_select_container}`}>
-            <p className={`${styles.mobile_select_parag}`}>Items on page</p>
-            <DropDown
-              id={'1'}
-              data={itemsOnPageData}
-              setSort={setItemsCount}
-              searchParams={searchParams}
-            />
-          </div>
-        </div>
-  
-        <div className={`${styles.mobile_phones_container}`}>
-          {sortByCategory()
-            .slice(sortByCount()[0], sortByCount()[1])
-            .map(product => (
-              <ProductCard
-                product={product}
-                key={product.id}
-                onPage={true}
+          <CategoryHeader categoryData={activeData} />
+          <div className={`${styles.mobile_main_select_container}`}>
+            <div className={`${styles.mobile_select_container}`}>
+              <p
+                className={classNames(
+                  `${styles.mobile_select_parag} ${styles.first_select_button}`,
+                )}
+              >
+                Sort by
+              </p>
+              <DropDown
+                id={'0'}
+                data={sortByData}
+                setSort={setSortBy}
+                searchParams={searchParams}
               />
-            ))}
-        </div>
-  
-        <div className={`${styles.mobile_button_container}`}>
-          <Button
-            direction={ButtonDirection.left}
-            onClick={handlePageChangeLeft}
-            buttonId={5}
-            disabledIds={disabledIds}
-          />
-  
-          <div className={`${styles.mobile_page_num_container}`}>
-            {buttonsCount.map((button, id) => {
-              return (
-                <button
-                  className={handleButtonClassName(button)}
-                  onClick={() => handlePageChange(button)}
-                  key={id}
-                >
-                  {button}
-                </button>
-              );
-            })}
+            </div>
+            <div className={`${styles.mobile_select_container}`}>
+              <p className={`${styles.mobile_select_parag}`}>Items on page</p>
+              <DropDown
+                id={'1'}
+                data={itemsOnPageData}
+                setSort={setItemsCount}
+                searchParams={searchParams}
+              />
+            </div>
           </div>
-          <Button
-            direction={ButtonDirection.right}
-            onClick={handlePageChangeRigt}
-            buttonId={6}
-            disabledIds={disabledIds}
-          />
+
+          <div className={`${styles.mobile_phones_container}`}>
+            {sortByCategory()
+              .slice(sortByCount()[0], sortByCount()[1])
+              .map(product => (
+                <ProductCard product={product} key={product.id} onPage={true} />
+              ))}
+          </div>
+
+          <div className={`${styles.mobile_button_container}`}>
+            {buttonsCount.length > 0 && buttonsCount[0] !== '0' && (
+              <Button
+                direction={ButtonDirection.left}
+                onClick={handlePageChangeLeft}
+                buttonId={5}
+                disabledIds={disabledIds}
+              />
+            )}
+
+            <div className={`${styles.mobile_page_num_container}`}>
+              {buttonsCount.map((button, id) => {
+                return (
+                  <button
+                    className={handleButtonClassName(button)}
+                    onClick={() => handlePageChange(button)}
+                    key={id}
+                  >
+                    {button}
+                  </button>
+                );
+              })}
+            </div>
+            {buttonsCount.length > 0 && buttonsCount[0] !== '0' && (
+              <Button
+                direction={ButtonDirection.right}
+                onClick={handlePageChangeRigt}
+                buttonId={6}
+                disabledIds={disabledIds}
+              />
+            )}
+          </div>
         </div>
-      </div>
       </>
     );
   }

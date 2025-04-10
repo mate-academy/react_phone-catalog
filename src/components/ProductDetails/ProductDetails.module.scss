@@ -117,6 +117,7 @@
   width: 288px;
 
   @include flex-centered;
+
   flex-direction: column;
   box-sizing: border-box;
 
@@ -381,13 +382,26 @@
   gap: 8px;
 }
 
+.details_capacity_amount {
+  font-family: Mont-Bold, sans-serif;
+  width: fit-content;
+  height: fit-content;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--text-color-main);
+  transition: all 0.5s ease-in-out;
+  margin: 0;
+  cursor: pointer;
+}
+
 .details_capacity_amount_wrapper {
   width: fit-content;
   padding: 0 8px;
   height: 32px;
   border: 1px solid var(--details-prod-id);
   background-color: var(--bg-color);
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   @include flex-centered;
 
@@ -399,23 +413,10 @@
   }
 }
 
-.details_capacity_amount {
-  font-family: Mont-Bold, sans-serif;
-  width: fit-content;
-  height: fit-content;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 100%;
-  color: var(--text-color-main);
-  transition: all .5s ease-in-out;
-  margin: 0;
-  cursor: pointer;
-}
-
 .activeCapacity {
   background-color: var(--text-color-main);
   border: 1px solid var(--text-color-main);
-  .details_capacity_amount {
+  &.details_capacity_amount {
     color: var(--bg-color);
   }
 }
@@ -553,7 +554,7 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 100%;
-  color:var(--text-color-secondary);
+  color: var(--text-color-secondary);
 }
 
 .char_value {
@@ -561,6 +562,7 @@
 }
 
 .details_main_descr_container {
+
   @include on-desktop {
     width: 1136px;
     display: flex;
@@ -575,6 +577,7 @@
   height: fit-content;
 
   @include flex-centered;
+
   flex-direction: column;
   gap: 32px;
   margin-bottom: 56px;
@@ -593,6 +596,7 @@
   height: fit-content;
 
   @include flex-centered;
+
   flex-direction: column;
 
   @include on-tablet {
@@ -693,7 +697,8 @@
 }
 
 .details_scroll_container {
-  width: 288px;
+  width: 100vw;
+  padding-left: 16px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -703,11 +708,11 @@
   margin-bottom: 56px;
 
   @include on-tablet {
-    width: 592px;
+    padding-left: 24px;
   }
 
   @include on-desktop {
-    width: 1136px;
+    padding-left: 32px;
   }
 }
 

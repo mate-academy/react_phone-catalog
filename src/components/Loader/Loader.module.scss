@@ -1,21 +1,27 @@
 /* HTML: <div class="loader"></div> */
 @use '../../utils/variables.scss' as *;
+
 .loader {
   height: 80px;
   aspect-ratio: 1;
   display: grid;
 }
-.loader:before,
-.loader:after {
+
+.loader::before,
+.loader::after {
   content: "";
+
   --c:no-repeat linear-gradient(#313237 0 0);
+
   background: var(--c), var(--c);
   background-size: 25% 50%;
   animation: l5 1.5s infinite linear;
 }
-.loader:after {
+
+.loader::after {
   transform: scale(-1);
 }
+
 @keyframes l5 {
   0%,
   5%   {background-position:33.4% 100%,66.6% 100%}

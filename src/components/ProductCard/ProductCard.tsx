@@ -21,12 +21,12 @@ export const ProductCard: React.FC<Props> = ({ product, onPage }) => {
   const isInCart = cartProducts.some(item => item.id === product.id);
 
   const handletoggleFavourite = (e: React.MouseEvent) => {
-    e.stopPropagation;
+    e.stopPropagation();
     toggleFavourite(product);
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
-    e.stopPropagation;
+    e.stopPropagation();
     addProductToCart(product);
   };
 

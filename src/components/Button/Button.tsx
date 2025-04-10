@@ -34,8 +34,12 @@ export const Button: React.FC<Props> = ({
         <img
           src={
             Array.isArray(disabledIds) && disabledIds.includes(buttonId)
-              ? isLightTheme ?  ButtonUrl.disabled : ButtonUrl.disabled_dark
-              : isLightTheme ? ButtonUrl.default : ButtonUrl.default_dark
+              ? isLightTheme
+                ? ButtonUrl.disabled
+                : ButtonUrl.disabled_dark
+              : isLightTheme
+                ? ButtonUrl.default
+                : ButtonUrl.default_dark
           }
           alt={`arrow ${direction}`}
           className={`${styles[direction]}`}

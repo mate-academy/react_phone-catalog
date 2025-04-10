@@ -9,6 +9,8 @@ type Props = {
 };
 
 export const CategoryHeader: React.FC<Props> = ({ categoryData }) => {
+  const { theme } = useTheme();
+
   if (!categoryData || categoryData.length === 0) {
     return (
       <div className={`${styles.loader}`}>
@@ -16,8 +18,9 @@ export const CategoryHeader: React.FC<Props> = ({ categoryData }) => {
       </div>
     );
   }
-  const { theme } = useTheme();
+
   const categoryName = categoryData[0].category;
+
   return (
     <>
       <div className={`${styles.category_path_container}`}>

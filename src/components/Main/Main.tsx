@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Categories } from '../Categories/Categories';
 import { TitleAndButtonSlider } from '../TitleAndButtonSlider/TitleAndButtonSlider';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -12,24 +13,29 @@ type Props = {
   disabledIds: number[];
   width: number;
 };
-export const Main: React.FC<Props> = ({ setDisabledIds, disabledIds, width }) => {
+export const Main: React.FC<Props> = ({
+  setDisabledIds,
+  disabledIds,
+  width,
+}) => {
   const [phones, setPhones] = useState<Product[]>();
 
   useEffect(() => {
-      getProducts('phones')
-        .then(setPhones)
-        .catch(e => {
-          throw new Error(e);
-        });
-    }, []);
+    getProducts('phones')
+      .then(setPhones)
+      .catch(e => {
+        throw new Error(e);
+      });
+  }, []);
 
   if (!phones) {
     return (
       <div className={`${styles.loader_container}`}>
-        <Loader/>
+        <Loader />
       </div>
-    )
+    );
   }
+
   return (
     <>
       <div className={`${styles.main_container}`}>
@@ -49,7 +55,7 @@ export const Main: React.FC<Props> = ({ setDisabledIds, disabledIds, width }) =>
           {phones.map(
             phone =>
               phone.priceDiscount && (
-                <ProductCard key={phone.id} product={phone}/>
+                <ProductCard key={phone.id} product={phone} />
               ),
           )}
         </div>

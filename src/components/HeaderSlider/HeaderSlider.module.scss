@@ -58,6 +58,7 @@
   height: 320px;
   opacity: 0;
   position: absolute;
+  object-fit:cover;
   transition: opacity 0.5s ease-in-out;
   @include on-tablet {
     width: 490px;
@@ -81,7 +82,11 @@
   transition: all .5s ease-in-out;
   &:hover {
     cursor: pointer;
+    transform: scale(1.1);
     border: 1px solid var(--text-color-main);
+  }
+  &:active {
+    transform: scale(0.9);
   }
   @include on-desktop {
     height: 400px;

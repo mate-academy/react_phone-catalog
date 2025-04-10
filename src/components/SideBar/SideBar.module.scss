@@ -1,4 +1,5 @@
 @use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
 
 @font-face {
   font-family: Mont-Bold;
@@ -36,7 +37,7 @@
   height: 16px;
   background: var(--bg-color);
   border: none;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   cursor: pointer;
 }
 
@@ -55,7 +56,7 @@
     cursor: pointer;
   }
 
-  &:hover .header_nav_close_button{
+  &:hover .header_nav_close_button {
     transform: rotate(90deg) scale(1.1);
   }
 }
@@ -82,12 +83,12 @@
   height: 12px;
   margin: 0;
   text-transform: uppercase;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   color: var(--text-color-secondary);
 
   &:hover {
     color: var(--text-color-main);
-    animation: bounce .5s ease-in-out;
+    animation: bounce 0.5s ease-in-out;
   }
 }
 
@@ -98,8 +99,6 @@
     color: var(--text-color-main);
   }
 }
-
-
 
 .footer_container {
   position: fixed;
@@ -113,9 +112,8 @@
 }
 
 .footer_img_icon {
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
-
 
 .footer_button {
   width: calc(100vw / 2);
@@ -138,7 +136,7 @@
   }
 
   &:active .footer_img_icon {
-    transform: scale(.8);
+    transform: scale(0.8);
   }
 }
 
@@ -147,5 +145,31 @@
   border-bottom: 2px solid var(--text-color-main);
 }
 
+.footer_icon_wrapper {
+  width: 16px;
+  height: 16px;
+}
 
+.side_bar_fav_count {
+  position: absolute;
+  @include flex_centered;
 
+  width: 14px;
+  height: 14px;
+  background-color: #eb5757;
+  color: var(--prod-in-cart-count);
+  border-radius: 50%;
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 100%;
+  outline: 1px solid var(--bg-color);
+  top: 18px;
+  right: calc(75vw - 15px);
+  z-index: 10;
+}
+
+.active_cart {
+  top: 18px;
+  right: calc(25vw - 15px);
+}

@@ -76,6 +76,10 @@
   transition: all 0.5s ease-in-out;
 }
 
+.active_link .header_nav_title {
+  color: var(--text-color-main);
+}
+
 .header_nav_title_wrapper {
   width: fit-content;
   height: 48px;
@@ -114,8 +118,10 @@
 
 .header_nav_favourite_button {
   @include header-button;
+
   box-sizing: border-box;
   border-bottom: 1px solid var(--button-border-disabled);
+  transition: all .5s ease-in-out;
 
   @include on-desktop {
     width: 64px;
@@ -136,6 +142,8 @@
 
 .header_nav_shop_bag_button {
   @include header-button;
+
+  transition: all .5s ease-in-out;
 
   @include on-desktop {
     width: 64px;
@@ -186,9 +194,7 @@
   }
 }
 
-.active_link .header_nav_title {
-  color: var(--text-color-main);
-}
+
 
 .active_wrapper {
   border-bottom: 3px solid var(--text-color-main);
@@ -203,11 +209,13 @@
 .header_fav_count {
   @include on-tablet {
     position: absolute;
+
     @include flex_centered;
+
     width: 14px;
     height: 14px;
     background-color: #eb5757;
-    color: var(--bg-color);
+    color: var(--prod-in-cart-count);
     border-radius: 50%;
     font-family: Mont-Bold, sans-serif;
     font-weight: 700;
@@ -260,9 +268,7 @@
 .switch {
   position: relative;
   display: inline-block;
-  // width: 60px;
   width: 52px;
-  // height: 34px;
   height: 26px;
 }
 
@@ -275,30 +281,24 @@
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: #ccc;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
-.slider:before {
+.slider::before {
   position: absolute;
   content: "";
   height: 30px;
   width: 30px;
-  // height: 40px;
-  // width: 40px;
-  left: 0px;
-  bottom: 4px;
+  left: 0;
   top: 0;
   bottom: 0;
   margin: auto 0;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  box-shadow: 0 0px 15px #2020203d;
+  box-shadow: 0 0 15px #2020203d;
   background: white url('https://i.ibb.co/FxzBYR9/night.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -312,7 +312,7 @@ input:focus + .slider {
   box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked + .slider:before {
+input:checked + .slider::before {
   -webkit-transform: translateX(24px);
   -ms-transform: translateX(24px);
   transform: translateX(24px);
@@ -323,9 +323,8 @@ input:checked + .slider:before {
 
 .slider.round {
   border-radius: 26px;
-  // border-radius: 34px;
 }
 
-.slider.round:before {
+.slider.round::before {
   border-radius: 50%;
 }

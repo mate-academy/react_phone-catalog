@@ -20,7 +20,11 @@ export const Footer: React.FC<Props> = ({ disabledIds }) => {
       <div className={`${styles.footer_main_container}`}>
         <div className={`${styles.footer_logo_container}`}>
           <img
-            src={theme === 'light' ? "./img/logo/logo-main.svg" : "./img/logo/logo-dark-theme.svg"}
+            src={
+              theme === 'light'
+                ? './img/logo/logo-main.svg'
+                : './img/logo/logo-dark-theme.svg'
+            }
             alt="logo"
             className={`${styles.footer_logo}`}
           />

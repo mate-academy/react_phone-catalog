@@ -17,6 +17,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [cartProducts, setCartProducts] = useState<Product[]>(() => {
     const sortedCart = localStorage.getItem('cart');
+
     return sortedCart ? JSON.parse(sortedCart) : [];
   });
 
@@ -55,6 +56,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         if (p.quantity && p.id === product.id) {
           return { ...p, quantity: p.quantity - 1 };
         }
+
         return p;
       }),
     );

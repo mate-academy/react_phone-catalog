@@ -4,7 +4,7 @@ export const NotFoundPage = () => {
   return (
     <>
       <div className={`${styles.not_found_container}`}>
-        <h1 className={`${styles.not_found_title}`}>Not Found "404"</h1>
+        <h1 className={`${styles.not_found_title}`}>Not Found 404</h1>
         <img
           src="./img/page-not-found.png"
           alt="not found icon"
@@ -12,5 +12,5 @@ export const NotFoundPage = () => {
         />
       </div>
     </>
-  )
-}
+  );
+};

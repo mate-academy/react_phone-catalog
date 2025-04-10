@@ -105,12 +105,10 @@ export const DropDown: React.FC<DropdownProps> = ({
                 <li
                   key={item.id}
                   onClick={() => handleChange(item)}
-                  className={classNames(
-                    [styles.dropdown_item], {
-                      [styles.dropdown_item_hover_dark] : theme === 'dark',
-                      [styles.dropdown_button_first_hover] : id === '0',
-                    }
-                  )}
+                  className={classNames([styles.dropdown_item], {
+                    [styles.dropdown_item_hover_dark]: theme === 'dark',
+                    [styles.dropdown_button_first_hover]: id === '0',
+                  })}
                 >
                   <span>{item.name}</span>
                 </li>

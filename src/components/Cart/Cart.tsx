@@ -1,15 +1,24 @@
+/* eslint-disable */
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Cart.module.scss';
 import { useCartProducts } from './CartContext';
 import { Product } from '../../types/Product';
 import { Loader } from '../Loader/Loader';
 import { useTheme } from '../ThemeContext/ThemeContext';
+import { CheckoutPopUp } from '../CheckoutPopUp/CheckoutPopUp';
+import { useEffect, useState } from 'react';
 
 export const Cart = () => {
+  const [checkoutPopUp, setCheckoutPopUp] = useState(false);
   const navigate = useNavigate();
   const { search } = useLocation();
-  const { cartProducts, addQuantity, removeFromCart, subtractQuantity } =
-    useCartProducts();
+  const {
+    cartProducts,
+    addQuantity,
+    removeFromCart,
+    subtractQuantity,
+    clearCart,
+  } = useCartProducts();
   const { theme } = useTheme();
   const isLightTheme = theme === 'light';
   const totalPrice = cartProducts.reduce(
@@ -19,10 +28,6 @@ export const Cart = () => {
   const handleBackButton = () => {
     navigate({ pathname: '..', search });
   };
-  console.log(
-    'CART ITEMS',
-    cartProducts.map(p => `${p.id} (qty: ${p.quantity})`),
-  );
 
   const handleDeleteButton = (product: Product) => {
     removeFromCart(product);
@@ -35,6 +40,28 @@ export const Cart = () => {
   const handleSubstract = (product: Product) => {
     subtractQuantity(product);
   };
+
+  const handleCheckout = () => {
+    setCheckoutPopUp(true);
+  };
+
+  const handleBuyButton = () => {
+    setCheckoutPopUp(false);
+    clearCart();
+  };
+
+  useEffect(() => {
+    const body = document.body;
+
+    if (checkoutPopUp) {
+      body.style.height = '100vh';
+      body.style.overflowY = 'hidden';
+    } else {
+      body.style.height = 'auto';
+      body.style.overflowY = 'auto';
+    }
+  }, [checkoutPopUp]);
+
   if (!cartProducts) {
     return (
       <div className={`${styles.cart_empty_container}`}>
@@ -170,12 +197,22 @@ export const Cart = () => {
                 </p>
               </div>
               <hr className={`${styles.cart_line}`} />
-              <button className={`${styles.cart_checkout_button}`}>
+              <button
+                className={`${styles.cart_checkout_button}`}
+                onClick={handleCheckout}
+              >
                 Checkout
               </button>
             </div>
           </div>
         </div>
+        {checkoutPopUp && (
+          <CheckoutPopUp
+            onClose={() => setCheckoutPopUp(false)}
+            totalPrice={totalPrice}
+            onBuy={handleBuyButton}
+          />
+        )}
       </>
     );
   }

@@ -9,7 +9,7 @@ type ContextType = {
 
 type Props = {
   url: string;
-}
+};
 
 export const DetailsPage: React.FC<Props> = () => {
   const { disabledIds, setDisabledIds } = useOutletContext<ContextType>();

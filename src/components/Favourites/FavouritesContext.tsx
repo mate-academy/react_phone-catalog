@@ -15,32 +15,32 @@ export const FavouritesProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [favourites, setFavourites] = useState<Product[]>(() => {
     const sortedFavourites = localStorage.getItem('favourites');
+
     return sortedFavourites ? JSON.parse(sortedFavourites) : [];
   });
 
   useEffect(() => {
     localStorage.setItem('favourites', JSON.stringify(favourites));
-  }, [favourites])
+  }, [favourites]);
 
   const toggleFavourite = (product: Product) => {
     setFavourites(prevFavourites => {
       const isFavourite = prevFavourites.some(prev => prev.id === product.id);
-      
+
       if (isFavourite) {
         return prevFavourites.filter(fav => fav.id !== product.id);
       }
 
       return [...prevFavourites, product];
-    })
-  }
+    });
+  };
 
   return (
-      <FavouritesContext.Provider value={{ favourites, toggleFavourite}}>
-        {children}
-      </FavouritesContext.Provider>
-  )
+    <FavouritesContext.Provider value={{ favourites, toggleFavourite }}>
+      {children}
+    </FavouritesContext.Provider>
+  );
 };
-
 
 export const useFavourites = () => {
   const context = React.useContext(FavouritesContext);
@@ -50,4 +50,4 @@ export const useFavourites = () => {
   }
 
   return context;
-}
+};

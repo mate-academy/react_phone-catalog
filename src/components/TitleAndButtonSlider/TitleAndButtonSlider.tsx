@@ -50,7 +50,7 @@ export const TitleAndButtonSlider: React.FC<Props> = ({
         setDisabledIds(newDisabledIds);
       }
     },
-    [disabledIds, setDisabledIds],
+    [disabledIds, setDisabledIds, endId, startId],
   );
 
   const handleScrollLeft = () => {
@@ -86,14 +86,16 @@ export const TitleAndButtonSlider: React.FC<Props> = ({
     }
 
     return;
-  }, [disabledIds, handleButtonState]);
+  }, [disabledIds, handleButtonState, containerId]);
 
   return (
     <>
       <div className={`${styles.main_header_container}`}>
-        <div className={classNames(`${styles.main_header_title_container}`, {
-          [styles.new_models]: newModels && width && width < 640,
-        })}>
+        <div
+          className={classNames(`${styles.main_header_title_container}`, {
+            [styles.new_models]: newModels && width && width < 640,
+          })}
+        >
           <h2 className={`${styles.main_header_title}`}>{title}</h2>
         </div>
         <div className={`${styles.main_header_button_container}`}>

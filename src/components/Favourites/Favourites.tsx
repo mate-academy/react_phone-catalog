@@ -24,6 +24,7 @@ export const Favourites: React.FC<Props> = () => {
       </div>
     );
   }
+
   return (
     <>
       <div className={`${styles.favourite_main_container}`}>

@@ -20,6 +20,7 @@ export const HomePageCategory: React.FC<Props> = ({ url }) => {
   const { productId } = useParams();
   const { setActiveAside, width, disabledIds, setWidth, setDisabledIds } =
     useOutletContext<ContextType>();
+
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
 

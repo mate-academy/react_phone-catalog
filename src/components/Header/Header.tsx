@@ -39,7 +39,6 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
 
   const handleChangeTheme = () => {
     toggleTheme();
-    console.log('1');
   };
 
   return (
@@ -59,12 +58,15 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
                 />
               </Link>
             </div>
-            <div className={`${styles.switch_wrapper} ${styles.switch_cont_on_phone}`}>
+            <div
+              className={`${styles.switch_wrapper} ${styles.switch_cont_on_phone}`}
+            >
               <label id="switch" className={`${styles.switch}`}>
                 <input
                   type="checkbox"
                   onChange={() => toggleTheme()}
                   id="slider"
+                  aria-label="Toggle theme"
                 />
                 <span className={`${styles.slider} ${styles.round}`}></span>
               </label>
@@ -136,6 +138,7 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
                     type="checkbox"
                     onChange={() => toggleTheme()}
                     id="slider"
+                    aria-label="Toggle theme"
                   />
                   <span className={`${styles.slider} ${styles.round}`}></span>
                 </label>

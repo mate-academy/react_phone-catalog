@@ -1,18 +1,22 @@
 import React, { useRef } from 'react';
 import styles from './ZoomImage.module.scss';
 
-export const ZoomImage = ({ src }: { src: string}) => {
+export const ZoomImage = ({ src }: { src: string }) => {
   const imageRef = useRef<HTMLImageElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const image = imageRef.current;
-    if(!image) return;
+
+    if (!image) {
+      return;
+    }
+
     const rect = image.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
 
     image.style.transformOrigin = `${x}% ${y}%`;
-  }
+  };
 
   const handleMouseEnter = () => {
     const image = imageRef.current;
@@ -20,7 +24,7 @@ export const ZoomImage = ({ src }: { src: string}) => {
     if (image) {
       image.style.transform = 'scale(1.4)';
     }
-  }
+  };
 
   const handleMouseLeave = () => {
     const image = imageRef.current;
@@ -28,7 +32,7 @@ export const ZoomImage = ({ src }: { src: string}) => {
     if (image) {
       image.style.transform = 'scale(1)';
     }
-  }
+  };
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Categories.module.scss';
 import phones from '../../../public/api/phones.json';
-import accessories from '../../../public/api/accessories.json'
+import accessories from '../../../public/api/accessories.json';
 import { Link } from 'react-router-dom';
 
 export const Categories: React.FC = () => {

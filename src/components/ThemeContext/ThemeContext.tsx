@@ -12,6 +12,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [theme, setTheme] = useState<string>(() => {
     const activeTheme = localStorage.getItem('theme');
+
     return activeTheme ? activeTheme : 'light';
   });
 
@@ -20,9 +21,10 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
     document.body.classList.remove('light', 'dark');
     document.body.classList.add(theme ? theme : '');
     const slider = document.getElementById('slider') as HTMLInputElement;
+
     if (theme && theme === 'dark') {
       if (slider) {
-        slider.checked = false
+        slider.checked = false;
       }
     } else {
       if (slider) {
@@ -32,10 +34,18 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   }, [theme]);
 
   const toggleTheme = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
   };
 
-  return <ThemeContext.Provider value={{theme, toggleTheme}}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export const useTheme = () => {

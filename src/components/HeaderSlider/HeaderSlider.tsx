@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react';
 import styles from './HeaderSlider.module.scss';
 import classNames from 'classnames';
 import { useTheme } from '../ThemeContext/ThemeContext';
+import {
+  ImageCollectionDesktop,
+  ImageCollectionPhone,
+} from '../../utils/Banners';
 
 type Props = {
   width: number;
@@ -10,50 +14,9 @@ type Props = {
 
 export const HeaderSlider: React.FC<Props> = ({ width }) => {
   const [index, setIndex] = useState(0);
+  const [imageId, setImageId] = useState(0);
   const { theme } = useTheme();
   const isLightTheme = theme === 'light';
-  const ImageCollectionPhone = [
-    {
-      src: './img/banners/header-slider-for-phone.png',
-      alt: 'iphone banner',
-    },
-    {
-      src: './img/banners/tablet-banner.png',
-      alt: 'tablets banner',
-    },
-    {
-      src: './img/banners/laptop-banner.png',
-      alt: 'accessories banner',
-    },
-  ];
-  const ImageCollectionTablet = [
-    {
-      src: './img/banners/big-banner.png',
-      alt: 'iphone banner',
-    },
-    {
-      src: './img/banners/big-banner.png',
-      alt: 'tablets banner',
-    },
-    {
-      src: './img/banners/big-banner.png',
-      alt: 'accessories banner',
-    },
-  ];
-  const ImageCollectionDesktop = [
-    {
-      src: './img/banners/desktop-banner.png',
-      alt: 'iphone banner',
-    },
-    {
-      src: './img/banners/desktop-banner.png',
-      alt: 'tablets banner',
-    },
-    {
-      src: './img/banners/desktop-banner.png',
-      alt: 'accessories banner',
-    },
-  ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -66,6 +29,28 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
 
     return () => clearTimeout(timer);
   }, [index]);
+
+  const handleSwipeLeft = (id: number) => {
+    switch (id) {
+      case 0:
+        setImageId(2);
+        break;
+      default:
+        setImageId(prev => prev - 1);
+        break;
+    }
+  };
+
+  const handleSwipeRight = (id: number) => {
+    switch (id) {
+      case 2:
+        setImageId(0);
+        break;
+      default:
+        setImageId(prev => prev + 1);
+        break;
+    }
+  };
 
   return (
     <>
@@ -103,45 +88,46 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
       {width >= 640 && (
         <div className={`${styles.slider_container}`}>
           <div className={`${styles.slider_img_and_buttons_container}`}>
-            <button className={`${styles.slider_swipe_button_container}`}>
+            <button
+              className={`${styles.slider_swipe_button_container}`}
+              onClick={() => handleSwipeLeft(imageId)}
+            >
               <img
-                src={isLightTheme ? "./img/icons/main-default-arrow.svg" : "./img/icons/dark-theme-arrow.svg"}
+                src={
+                  isLightTheme
+                    ? './img/icons/main-default-arrow.svg'
+                    : './img/icons/dark-theme-arrow.svg'
+                }
                 alt="arrow left"
                 className={`${styles.swipe_button} ${styles.left_arrow}`}
               />
             </button>
 
             <div className={`${styles.slider_img_wrapper}`}>
-              {width < 1200
-                ? ImageCollectionTablet.map((image, id) => {
-                    return (
-                      <img
-                        key={id}
-                        src={image.src}
-                        alt={image.alt}
-                        className={classNames(`${styles.slider_img}`, {
-                          [styles.active]: index === id,
-                        })}
-                      />
-                    );
-                  })
-                : ImageCollectionDesktop.map((image, id) => {
-                    return (
-                      <img
-                        key={id}
-                        src={image.src}
-                        alt={image.alt}
-                        className={classNames(`${styles.slider_img}`, {
-                          [styles.active]: index === id,
-                        })}
-                      />
-                    );
-                  })}
+              {ImageCollectionDesktop.map((image, id) => {
+                return (
+                  <img
+                    key={id}
+                    src={image.src}
+                    alt={image.alt}
+                    className={classNames(`${styles.slider_img}`, {
+                      [styles.active]: imageId === id,
+                    })}
+                  />
+                );
+              })}
             </div>
 
-            <button className={`${styles.slider_swipe_button_container}`}>
+            <button
+              className={`${styles.slider_swipe_button_container}`}
+              onClick={() => handleSwipeRight(imageId)}
+            >
               <img
-                src={isLightTheme ? "./img/icons/main-default-arrow.svg" : "./img/icons/dark-theme-arrow.svg"}
+                src={
+                  isLightTheme
+                    ? './img/icons/main-default-arrow.svg'
+                    : './img/icons/dark-theme-arrow.svg'
+                }
                 alt="arrow right"
                 className={`${styles.swipe_button}`}
               />
@@ -154,7 +140,7 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
                 <div className={styles.slider_button_wrapper} key={idNum}>
                   <div
                     className={classNames(styles.slider_button, {
-                      [styles.marked]: index === idNum,
+                      [styles.marked]: imageId === idNum,
                     })}
                   ></div>
                 </div>

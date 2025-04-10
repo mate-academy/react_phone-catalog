@@ -9,8 +9,8 @@
   width: 48px;
   height: 48px;
   border: none;
-  border-left: 1px solid var(--button-border-disabled);
   transition: all 0.5s ease-in-out;
+  border-left: 1px solid var(--button-border-disabled);
   background-color: var(--bg-color);
 }
 

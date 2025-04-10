@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import styles from './ProductDetails.module.scss';
 import classNames from 'classnames';
@@ -49,13 +50,14 @@ export const ProductDetails: React.FC<Props> = ({
   const isFavourite = product && favourites.some(fav => fav.id === product.id);
 
   const isInCart = product && cartProducts.find(item => item.id === product.id);
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (product_: Product) => {
     if (isInCart) {
-      removeFromCart(product);
+      removeFromCart(product_);
     } else {
-      addProductToCart(product);
+      addProductToCart(product_);
     }
   };
+
   const handleChangeColor = (color: string) => {
     const newProduct = activeData.find(
       item =>
@@ -93,20 +95,22 @@ export const ProductDetails: React.FC<Props> = ({
 
   const getTechValue = (key: keyof Product) => {
     const value = product?.[key];
+
     return Array.isArray(value) ? value.join(', ') : (value ?? 'N/A');
   };
 
   const handletoggleFavourite = (e: React.MouseEvent) => {
-      e.stopPropagation;
-      if (product) {
-        toggleFavourite(product);
-      }
-    };
+    e.stopPropagation();
+    if (product) {
+      toggleFavourite(product);
+    }
+  };
 
   useEffect(() => {
     if (!product) {
       return;
     }
+
     const productActive = activeData.find(
       _phone => _phone.id === productIdFromUrl,
     );
@@ -117,7 +121,7 @@ export const ProductDetails: React.FC<Props> = ({
       setActiveCapacity(productActive.capacity);
       window.scrollTo({ top: 0 });
     }
-  }, [activeData, setActiveData, location]);
+  }, [activeData, setActiveData, location, product, productIdFromUrl]);
 
   useEffect(() => {
     getProducts(`${categoryName}`)

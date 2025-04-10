@@ -3,6 +3,8 @@ import styles from './SideBar.module.scss';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { useTheme } from '../ThemeContext/ThemeContext';
+import { useFavourites } from '../Favourites/FavouritesContext';
+import { useCartProducts } from '../Cart/CartContext';
 
 type Props = {
   setActiveAside: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,6 +13,8 @@ type Props = {
 export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
   const { theme } = useTheme();
   const isLight = theme === 'light';
+  const { favourites } = useFavourites();
+  const { cartProducts } = useCartProducts();
 
   const handlerActiveLinkClass = ({ isActive }: { isActive: boolean }) => {
     return classNames(`${styles.menu_link}`, {
@@ -21,8 +25,8 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
   const handleActiveFooterButton = ({ isActive }: { isActive: boolean }) => {
     return classNames(`${styles.footer_button}`, {
       [styles.active_footer_button]: isActive,
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -30,7 +34,14 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
         <nav className={`${styles.header_nav_container}`}>
           <div className={`${styles.header_nav_logo_container}`}>
             <a href="/">
-              <img src={isLight ? "./img/logo/logo-main.svg" : "./img/logo/logo-dark-theme.svg"} alt="logo nice gadgets" />
+              <img
+                src={
+                  isLight
+                    ? './img/logo/logo-main.svg'
+                    : './img/logo/logo-dark-theme.svg'
+                }
+                alt="logo nice gadgets"
+              />
             </a>
           </div>
 
@@ -39,7 +50,14 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
             onClick={() => setActiveAside(false)}
           >
             <button className={`${styles.header_nav_close_button}`}>
-              <img src={isLight ? "./img/icons/close-icon.svg" : "./img/icons/close-icon-dark-theme.svg"} alt="close burron" />
+              <img
+                src={
+                  isLight
+                    ? './img/icons/close-icon.svg'
+                    : './img/icons/close-icon-dark-theme.svg'
+                }
+                alt="close burron"
+              />
             </button>
           </div>
         </nav>
@@ -82,21 +100,43 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
             onClick={() => setActiveAside(false)}
           >
             <img
-              src={isLight ? "./img/icons/card-default-like.svg" : "./img/icons/like-dark-theme.svg"}
+              src={
+                isLight
+                  ? './img/icons/card-default-like.svg'
+                  : './img/icons/like-dark-theme.svg'
+              }
               alt="like icon"
               className={`${styles.footer_img_icon}`}
             />
+            {favourites.length > 0 && (
+              <span className={`${styles.side_bar_fav_count}`}>
+                {favourites.length > 9 ? '9+' : favourites.length}
+              </span>
+            )}
           </NavLink>
           <NavLink
             to="/cart"
             className={handleActiveFooterButton}
             onClick={() => setActiveAside(false)}
           >
-            <img
-              src={isLight ? "./img/icons/shopping-bag.svg" : "./img/icons/shopping-bag-dark-theme.svg"}
-              alt="shopping bag icon"
-              className={`${styles.footer_img_icon}`}
-            />
+            <div className={`${styles.footer_icon_wrapper}`}>
+              <img
+                src={
+                  isLight
+                    ? './img/icons/shopping-bag.svg'
+                    : './img/icons/shopping-bag-dark-theme.svg'
+                }
+                alt="shopping bag icon"
+                className={`${styles.footer_img_icon}`}
+              />
+              {cartProducts.length > 0 && (
+                <span
+                  className={`${styles.side_bar_fav_count} ${styles.active_cart}`}
+                >
+                  {cartProducts.length > 9 ? '9+' : cartProducts.length}
+                </span>
+              )}
+            </div>
           </NavLink>
         </div>
       </div>
