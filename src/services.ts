@@ -2,7 +2,7 @@ import { DeviceShort } from './types/DeviceShort';
 
 export const getData = async <T>(name: string): Promise<T> => {
   try {
-    const response = await fetch(`../public/api/${name}.json`);
+    const response = await fetch(`./api/${name}.json`);
 
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
