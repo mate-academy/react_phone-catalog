@@ -4,7 +4,7 @@ export const HeaderTitle = () => {
   return (
     <div className={`${styles.header_title_container}`}>
       <h1 className={`${styles.header_title}`}>
-        Welcome to Nice Gadgets store!
+        Product Catalog
       </h1>
     </div>
   );
