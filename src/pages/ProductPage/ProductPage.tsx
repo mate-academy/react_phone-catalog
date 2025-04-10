@@ -243,7 +243,7 @@ export const ProductPage = () => {
             to={generatePageLink(
               currentPage - 1 < 1 ? currentPage : currentPage - 1,
             )}
-            className={cn(s.pagination__item, pagination__arrowFon, {
+            className={cn(s.pagination__item, s.pagination__arrowFon, {
               [s['pagination__item--disabled']]: currentPage === 1,
             })}
           >
@@ -265,7 +265,7 @@ export const ProductPage = () => {
             <Link
               key={pageNumber}
               to={generatePageLink(pageNumber)}
-              className={cn(s.pagination__page, pagination__item, {
+              className={cn(s.pagination__page, s.pagination__item, {
                 [s['pagination__page--active']]: currentPage === pageNumber,
               })}
             >
@@ -276,7 +276,7 @@ export const ProductPage = () => {
             to={generatePageLink(
               currentPage + 1 > totalPages ? currentPage : currentPage + 1,
             )}
-            className={cn(s.pagination__item, pagination__arrowFon, {
+            className={cn(s.pagination__item, s.pagination__arrowFon, {
               [s['pagination__item--disabled']]: currentPage === totalPages,
             })}
           >

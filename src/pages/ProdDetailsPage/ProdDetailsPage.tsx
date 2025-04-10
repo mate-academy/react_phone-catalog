@@ -188,48 +188,54 @@ export const ProdDetailsPage = () => {
                 <span className={s.regularPrice}>${product.priceDiscount}</span>
                 <span className={s.fullPrice}>${product.priceRegular}</span>
               </div>
-              <div className="main-information__actions">
+              <div className={s.mainInformation__actions}>
                 <button
-                  className={cn('main-information__actions__add', {
-                    'main-information__actions__add--selected': isInCart,
+                  className={cn(s.mainInformation__actions__add, {
+                    [s['main-information__actions__add--selected']]: isInCart,
                   })}
                   onClick={handleAddToCart}
                 >
                   {isInCart ? 'Remove from cart' : 'Add to cart'}
                 </button>
                 <div
-                  className={cn('main-information__actions__favourite', {
-                    'main-information__actions__favourite--selected':
+                  className={cn(s.mainInformation__actions__favourite, {
+                    [s['mainInformation__actions__favourite--selected']]:
                       isFavourite,
                   })}
                   onClick={handleAddToFavourite}
                 >
                   {isFavourite ? (
-                    <img src="./img/icons/heart-filled.svg" alt="Heart" />
+                    <img
+                      src="../../../public/img/icons/Favourites\ Filled.png"
+                      alt="Heart"
+                    />
                   ) : (
-                    <img src="./img/icons/favourites-heart.svg" alt="Heart" />
+                    <img
+                      src="../../../public/img/icons/Favourites.png"
+                      alt="Heart"
+                    />
                   )}
                 </div>
               </div>
-              <ul className="main-information__description">
-                <li className="main-information__description__item">
-                  <span className="main-information__description__item__name">
+              <ul className={s.mainInformation__description}>
+                <li className={s.mainInformation__description__item}>
+                  <span className={s.mainInformation__description__item__name}>
                     Screen
                   </span>
-                  <span className="main-information__description__item__value">
+                  <span className={s.mainInformation__description__item__value}>
                     {product.screen}
                   </span>
                 </li>
-                <li className="main-information__description__item">
-                  <span className="main-information__description__item__name">
+                <li className={s.mainInformation__description__item}>
+                  <span className={s.mainInformation__description__item__name}>
                     Capacity
                   </span>
-                  <span className="main-information__description__item__value">
+                  <span className={s.mainInformation__description__item__value}>
                     {product.capacity}
                   </span>
                 </li>
-                <li className="main-information__description__item">
-                  <span className="main-information__description__item__name">
+                <li className={s.mainInformation__description__item}>
+                  <span className={s.mainInformation__description__item__name}>
                     Processor
                   </span>
                   <span className="main-information__description__item__value">

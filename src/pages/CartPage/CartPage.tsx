@@ -84,7 +84,7 @@ export const CartPage = () => {
                 className={s.cart__item__image}
               />
               <h3 className={s.cart__item__title}>{product.name}</h3>
-              <div className={(s.cart__item__count, quantityCounter)}>
+              <div className={(s.cart__item__count, s.quantityCounter)}>
                 <div
                   className={s.quantityCounter__item}
                   onClick={() => handleDecreaseProduct(product)}
@@ -92,7 +92,9 @@ export const CartPage = () => {
                   <img src="../../../public/img/icons/Minus.png" alt="Minus" />
                 </div>
                 <span
-                  className={(s.quantityCounter__item, quantityCounter__count)}
+                  className={
+                    (s.quantityCounter__item, s.quantityCounter__count)
+                  }
                 >
                   {product.amount}
                 </span>
@@ -110,7 +112,7 @@ export const CartPage = () => {
             <img
               src="../../../public/img/cart-is-empty.png"
               alt="Cart is empty"
-    //          className={s.cart__list--empty}
+              //          className={s.cart__list--empty}
             />
           )}
         </div>

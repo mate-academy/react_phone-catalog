@@ -16,7 +16,7 @@ export const Navigates = () => {
 
   return (
     <div className={s.navigate}>
-      <Link to="/" className={(s.navigate__item, navigate__item__link)}>
+      <Link to="/" className={(s.navigate__item, s.navigate__item__link)}>
         <img
           src="./img/icons/home.svg"
           alt="Home"
@@ -36,7 +36,7 @@ export const Navigates = () => {
                 {crumbName}
               </Link>
             ) : (
-              <span className={(s.navigate__item, navigate__item__last)}>
+              <span className={(s.navigate__item, s.navigate__item__last)}>
                 {crumbName}
               </span>
             )}
