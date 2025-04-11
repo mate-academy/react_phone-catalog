@@ -28,6 +28,7 @@ export const Categories: React.FC = () => {
       href: '/accessories',
     },
   ];
+
   return (
     <>
       <section className={`${styles.category_main_container}`}>

@@ -21,7 +21,7 @@ type Props = {
   setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
 };
 
-export const ProductDetails: React.FC<Props> = ({
+const ProductDetails: React.FC<Props> = ({
   disabledIds,
   setDisabledIds,
 }) => {
@@ -454,3 +454,5 @@ export const ProductDetails: React.FC<Props> = ({
     </>
   );
 };
+
+export default ProductDetails;
