@@ -1,0 +1,28 @@
+.price {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  height: 31px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $gray-elements;
+
+  &__discount {
+    @include h3;
+  }
+
+  &__regular {
+    @include h3;
+
+    &--crossed {
+      font-family: 'Mont-Regular';
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-decoration: line-through;
+      color: $gray-secondary;
+    }
+  }
+}

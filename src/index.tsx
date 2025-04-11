@@ -13,6 +13,7 @@ import { Cart } from './components/modules/Cart/Cart';
 import { routes } from './components/shared/Routs/Routs';
 import { Accessories } from './components/modules/Accessories/Accessories';
 import { Favorites } from './components/modules/Favorites/Favorites';
+import { ProductDetails } from './components/modules/ProductDetails/ProductDetails';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
@@ -21,11 +22,29 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
-            <Route path={routes.phones} element={<Phones />} />
-            <Route path={routes.tablets} element={<Tablets />} />
-            <Route path={routes.accessories} element={<Accessories />} />
-            <Route path={routes.fav} element={<Favorites />} />
-            <Route path={routes.cart} element={<Cart />} />
+
+
+            <Route path={routes.phones} element={<Phones />}>
+              <Route path=":id" element={<ProductDetails />} />
+            </Route>
+
+            <Route path={routes.tablets} element={<Tablets />}>
+              <Route path=":id" element={<ProductDetails />} />
+            </Route>
+
+            <Route path={routes.accessories} element={<Accessories />}>
+              <Route path=":id" element={<ProductDetails />} />
+            </Route>
+
+            <Route path={routes.fav} element={<Favorites />}>
+              <Route path=":id" element={<ProductDetails />} />
+            </Route>
+
+            <Route path={routes.cart} element={<Cart />}>
+              <Route path=":id" element={<ProductDetails />} />
+            </Route>
+
+
             <Route path="*" element={<p>Page not found</p>}></Route>
           </Route>
         </Routes>

@@ -1,4 +1,4 @@
-import './Home.module.scss';
+import './Home.style.scss';
 
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';

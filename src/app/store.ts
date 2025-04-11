@@ -4,16 +4,16 @@ import {
   ThunkAction,
   Action,
 } from '@reduxjs/toolkit';
-import phonesReducer from '../features/PhonesSlice/PhonesSlice';
-import productsReducer from '../features/ProductsSlice/ProductsSlice';
-import tabletsReducer from '../features/TabletsSlice/TabletsSlice';
-import accessoriesReducer from '../features/AccessoriesSlice/AccessoriesSlice';
+import phones from '../features/PhonesSlice/PhonesSlice';
+import products from '../features/ProductsSlice/ProductsSlice';
+import tablets from '../features/TabletsSlice/TabletsSlice';
+import accessories from '../features/AccessoriesSlice/AccessoriesSlice';
 
 const rootReducer = combineSlices({
-  phones: phonesReducer,
-  products: productsReducer,
-  tablets: tabletsReducer,
-  accessories: accessoriesReducer,
+  phones: phones,
+  products: products,
+  tablets: tablets,
+  accessories: accessories,
 });
 
 export const store = configureStore({

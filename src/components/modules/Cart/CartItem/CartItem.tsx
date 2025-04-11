@@ -1,4 +1,4 @@
-import './CartItem.module.scss';
+import './CartItem.style.scss';
 
 import React, { useContext } from 'react';
 

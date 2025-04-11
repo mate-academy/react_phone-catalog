@@ -1,24 +1,6 @@
 .product-info {
   &__name {
     @include device-title;
-  }
-
-  &__price {
-    display: flex;
-    justify-content: flex-start;
-    gap: 8px;
-    width: 100%;
     padding-bottom: 8px;
-    border-bottom: 1px solid $gray-elements;
-
-    &--regular {
-      @include h3;
-    }
-
-    &--discount {
-      @include h3;
-      text-decoration: line-through;
-      color: $gray-secondary;
-    }
   }
 }

@@ -1,4 +1,4 @@
-import './Favorites.module.scss';
+import './Favorites.style.scss';
 
 import { useContext } from 'react';
 import { ProductList } from '../../shared/ProductList/ProductList';
@@ -19,7 +19,11 @@ export const Favorites = () => {
         </p>
       </div>
 
-      <ProductList products={favItems} />
+      {favItems.length > 0 ? (
+        <ProductList products={favItems} />
+      ) : (
+        <p>You have not chosen favorite products yet</p>
+      )}
     </div>
   );
 };
