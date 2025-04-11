@@ -42,10 +42,6 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
     });
   };
 
-  const handleChangeTheme = () => {
-    toggleTheme();
-  };
-
   return (
     <>
       {width < 640 && (
@@ -101,7 +97,7 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
         <>
           <nav className={`${styles.header_nav_container}`}>
             <div className={`${styles.header_nav_logo_container}`}>
-              <Link to="/" onClick={handleChangeTheme}>
+              <Link to="/">
                 <img
                   src={
                     theme === 'light'

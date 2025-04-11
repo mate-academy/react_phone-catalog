@@ -30,7 +30,7 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
 
   return (
     <>
-      <div className={`${styles.side_bar_container}`}>
+      <aside className={`${styles.side_bar_container}`}>
         <nav className={`${styles.header_nav_container}`}>
           <div className={`${styles.header_nav_logo_container}`}>
             <a href="/">
@@ -139,7 +139,7 @@ export const SideBar: React.FC<Props> = ({ setActiveAside }) => {
             </div>
           </NavLink>
         </div>
-      </div>
+      </aside>
     </>
   );
 };

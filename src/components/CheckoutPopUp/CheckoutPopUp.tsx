@@ -14,7 +14,7 @@ export const CheckoutPopUp: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <div className={`${styles.checkout_container}`}>
+      <section className={`${styles.checkout_container}`}>
         <div className={`${styles.checkout_inner_container}`}>
           <h2 className={`${styles.checkout_title}`}>
             Are you sure you wanna buy ?
@@ -31,7 +31,7 @@ export const CheckoutPopUp: React.FC<Props> = ({
             </button>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

@@ -23,7 +23,7 @@ export const App = () => {
   }, [activeAside]);
 
   return (
-    <div className="App">
+    <main className="App">
       <div
         className={classNames('SideBar', {
           activeSideBar: activeAside,
@@ -41,6 +41,6 @@ export const App = () => {
           setDisabledIds,
         }}
       />
-    </div>
+    </main>
   );
 };

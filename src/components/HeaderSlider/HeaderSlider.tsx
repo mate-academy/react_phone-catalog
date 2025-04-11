@@ -55,7 +55,7 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
   return (
     <>
       {width < 640 && (
-        <div className={`${styles.slider_container}`}>
+        <section className={`${styles.slider_container}`}>
           <div className={`${styles.slider_img_wrapper}`}>
             {ImageCollectionPhone.map((image, id) => {
               return (
@@ -83,10 +83,10 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
               ))}
             </div>
           </div>
-        </div>
+        </section>
       )}
       {width >= 640 && (
-        <div className={`${styles.slider_container}`}>
+        <section className={`${styles.slider_container}`}>
           <div className={`${styles.slider_img_and_buttons_container}`}>
             <button
               className={`${styles.slider_swipe_button_container}`}
@@ -147,7 +147,7 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
               ))}
             </div>
           </div>
-        </div>
+        </section>
       )}
     </>
   );

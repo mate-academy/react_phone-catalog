@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Favourites.module.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useFavourites } from './FavouritesContext';
+import { Loader } from '../Loader/Loader';
 
 type Props = {
   // categoryData: Phone[];
@@ -11,23 +12,27 @@ export const Favourites: React.FC<Props> = () => {
   const { favourites } = useFavourites();
 
   if (!favourites) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   } else if (favourites.length === 0) {
     return (
-      <div className={`${styles.cart_empty_container}`}>
+      <section className={`${styles.cart_empty_container}`}>
         <h1 className={`${styles.cart_empty_title}`}>Favourites is empty</h1>
         <img
           src="./img/page-not-found.png"
           alt="favourites empty icon"
           className={`${styles.cart_empty_image}`}
         />
-      </div>
+      </section>
     );
   }
 
   return (
     <>
-      <div className={`${styles.favourite_main_container}`}>
+      <section className={`${styles.favourite_main_container}`}>
         <div className={`${styles.favourite_path_container}`}>
           <img
             src="./img/icons/home-icon.svg"
@@ -51,7 +56,7 @@ export const Favourites: React.FC<Props> = () => {
             return <ProductCard product={item} key={item.id} />;
           })}
         </div>
-      </div>
+      </section>
     </>
   );
 };

@@ -31,7 +31,7 @@ export const Footer: React.FC<Props> = ({ disabledIds }) => {
 
   return (
     <>
-      <div className={`${styles.footer_main_container}`}>
+      <footer className={`${styles.footer_main_container}`}>
         <div className={`${styles.footer_logo_container}`}>
           <img
             src={
@@ -82,7 +82,7 @@ export const Footer: React.FC<Props> = ({ disabledIds }) => {
             disabledIds={disabledIds}
           />
         </div>
-      </div>
+      </footer>
     </>
   );
 };

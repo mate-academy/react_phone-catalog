@@ -38,7 +38,7 @@ export const Main: React.FC<Props> = ({
 
   return (
     <>
-      <div className={`${styles.main_container}`}>
+      <main className={`${styles.main_container}`}>
         <TitleAndButtonSlider
           disabledIds={disabledIds}
           setDisabledIds={setDisabledIds}
@@ -48,7 +48,7 @@ export const Main: React.FC<Props> = ({
           containerId={'scroll_container_new_models'}
           width={width}
         />
-        <div
+        <section
           className={`${styles.scroll_container}`}
           id="scroll_container_new_models"
         >
@@ -58,7 +58,7 @@ export const Main: React.FC<Props> = ({
                 <ProductCard key={phone.id} product={phone} />
               ),
           )}
-        </div>
+        </section>
         <Categories />
         <TitleAndButtonSlider
           disabledIds={disabledIds}
@@ -69,7 +69,7 @@ export const Main: React.FC<Props> = ({
           containerId={'scroll_container_hot_prices'}
           width={width}
         />
-        <div
+        <section
           className={`${styles.scroll_container}`}
           id="scroll_container_hot_prices"
         >
@@ -79,8 +79,8 @@ export const Main: React.FC<Props> = ({
                 <ProductCard key={phone.id} product={phone} />
               ),
           )}
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 };

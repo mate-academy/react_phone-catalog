@@ -91,14 +91,14 @@ export const TitleAndButtonSlider: React.FC<Props> = ({
   return (
     <>
       <div className={`${styles.main_header_container}`}>
-        <div
+        <header
           className={classNames(`${styles.main_header_title_container}`, {
             [styles.new_models]: newModels && width && width < 640,
           })}
         >
           <h2 className={`${styles.main_header_title}`}>{title}</h2>
-        </div>
-        <div className={`${styles.main_header_button_container}`}>
+        </header>
+        <section className={`${styles.main_header_button_container}`}>
           <Button
             direction={ButtonDirection.left}
             onClick={handleScrollLeft}
@@ -111,7 +111,7 @@ export const TitleAndButtonSlider: React.FC<Props> = ({
             buttonId={endId}
             disabledIds={disabledIds}
           />
-        </div>
+        </section>
       </div>
     </>
   );

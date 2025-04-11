@@ -155,7 +155,7 @@ export const ProductDetails: React.FC<Props> = ({
     <>
       {activeData.length > 0 && product && (
         <>
-          <div className={`${styles.details_main_container}`}>
+          <main className={`${styles.details_main_container}`}>
             <div className={`${styles.details_path_container}`}>
               <Link to={'/'} className={`${styles.details_link}`}>
                 <img
@@ -211,7 +211,7 @@ export const ProductDetails: React.FC<Props> = ({
               <p className={`${styles.details_back_text}`}>Back</p>
             </div>
             <h1 className={`${styles.details_header}`}>{product?.name}</h1>
-            <div className={`${styles.details_main_info_container}`}>
+            <article className={`${styles.details_main_info_container}`}>
               <ZoomImage src={image || product.images[0]} />
 
               <div className={`${styles.details_slider_image_container}`}>
@@ -378,10 +378,10 @@ export const ProductDetails: React.FC<Props> = ({
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
 
-            <div className={`${styles.details_main_descr_container}`}>
-              <div className={`${styles.details_descr_container}`}>
+            <section className={`${styles.details_main_descr_container}`}>
+              <section className={`${styles.details_descr_container}`}>
                 <div className={`${styles.details_descr_wrapper}`}>
                   <h3 className={`${styles.details_descr_title}`}>About</h3>
                   <hr className={`${styles.details_line} ${styles.margin_0}`} />
@@ -398,9 +398,9 @@ export const ProductDetails: React.FC<Props> = ({
                     </div>
                   );
                 })}
-              </div>
+              </section>
 
-              <div className={`${styles.details_tech_container}`}>
+              <section className={`${styles.details_tech_container}`}>
                 <h3 className={`${styles.details_descr_title}`}>Tech specs</h3>
                 <hr
                   className={`${styles.details_line} ${styles.margin_bot_16}`}
@@ -428,8 +428,8 @@ export const ProductDetails: React.FC<Props> = ({
                     </div>
                   );
                 })}
-              </div>
-            </div>
+              </section>
+            </section>
 
             <TitleAndButtonSlider
               disabledIds={disabledIds}
@@ -440,15 +440,15 @@ export const ProductDetails: React.FC<Props> = ({
               containerId={'scroll_container_also_like'}
             />
 
-            <div
+            <section
               className={`${styles.details_scroll_container}`}
               id="scroll_container_also_like"
             >
               {activeData.map(productItem => (
                 <ProductCard key={productItem.id} product={productItem} />
               ))}
-            </div>
-          </div>
+            </section>
+          </main>
         </>
       )}
     </>

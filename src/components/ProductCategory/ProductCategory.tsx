@@ -201,7 +201,7 @@ export const ProductCategory: React.FC<Props> = ({
   } else {
     return (
       <>
-        <div className={`${styles.mobile_main_container}`}>
+        <main className={`${styles.mobile_main_container}`}>
           <CategoryHeader categoryData={activeData} />
           <div className={`${styles.mobile_main_select_container}`}>
             <div className={`${styles.mobile_select_container}`}>
@@ -230,15 +230,15 @@ export const ProductCategory: React.FC<Props> = ({
             </div>
           </div>
 
-          <div className={`${styles.mobile_phones_container}`}>
+          <section className={`${styles.mobile_phones_container}`}>
             {sortByCategory()
               .slice(sortByCount()[0], sortByCount()[1])
               .map(product => (
                 <ProductCard product={product} key={product.id} onPage={true} />
               ))}
-          </div>
+          </section>
 
-          <div className={`${styles.mobile_button_container}`}>
+          <section className={`${styles.mobile_button_container}`}>
             {buttonsCount.length > 0 && buttonsCount[0] !== '0' && (
               <Button
                 direction={ButtonDirection.left}
@@ -269,8 +269,8 @@ export const ProductCategory: React.FC<Props> = ({
                 disabledIds={disabledIds}
               />
             )}
-          </div>
-        </div>
+          </section>
+        </main>
       </>
     );
   }

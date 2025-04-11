@@ -75,19 +75,19 @@ export const Cart = () => {
     );
   } else if (cartProducts.length === 0) {
     return (
-      <div className={`${styles.cart_empty_container}`}>
+      <main className={`${styles.cart_empty_container}`}>
         <h1 className={`${styles.cart_empty_title}`}>Cart is empty</h1>
         <img
           src="./img/cart-is-empty.png"
           alt="empty cart icon"
           className={`${styles.cart_empty_image}`}
         />
-      </div>
+      </main>
     );
   } else {
     return (
       <>
-        <div className={`${styles.cart_main_container}`}>
+        <main className={`${styles.cart_main_container}`}>
           <div
             className={`${styles.cart_back_container}`}
             onClick={handleBackButton}
@@ -104,7 +104,7 @@ export const Cart = () => {
             <p className={`${styles.cart_back_text}`}>Back</p>
           </div>
           <h1 className={`${styles.cart_header}`}>Cart</h1>
-          <div className={`${styles.cart_products_and_checkout_cont}`}>
+          <section className={`${styles.cart_products_and_checkout_cont}`}>
             <div className={styles.cart_products_container}>
               {cartProducts.map(item => {
                 return (
@@ -209,8 +209,8 @@ export const Cart = () => {
                 Checkout
               </button>
             </div>
-          </div>
-        </div>
+          </section>
+        </main>
         {checkoutPopUp && (
           <CheckoutPopUp
             onClose={() => setCheckoutPopUp(false)}

@@ -28,10 +28,9 @@ export const Categories: React.FC = () => {
       href: '/accessories',
     },
   ];
-
   return (
     <>
-      <div className={`${styles.category_main_container}`}>
+      <section className={`${styles.category_main_container}`}>
         <h2 className={`${styles.category_title}`}>Shop by category</h2>
         <div className={`${styles.all_categories}`}>
           {CategoriesCollection.map((category, id) => {
@@ -66,7 +65,7 @@ export const Categories: React.FC = () => {
             );
           })}
         </div>
-      </div>
+      </section>
     </>
   );
 };
