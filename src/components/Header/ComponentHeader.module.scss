@@ -202,7 +202,6 @@
         &__close {
           padding: 0;
           background-color: inherit;
-          background-position: center;
           background-repeat: no-repeat;
           border: none;
           outline: none;
@@ -271,12 +270,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-size: cover;
         flex-direction: column;
         background-position: center;
         box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
         background-size: auto;
-        background-position: center;
         background-repeat: no-repeat;
         border-bottom: 3px solid white;
         border-top: 3px solid white;
