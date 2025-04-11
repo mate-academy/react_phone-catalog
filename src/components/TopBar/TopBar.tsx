@@ -5,8 +5,8 @@ import { Navigation } from '../Navigation';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { toggleMenu } from '../../features/settingsSlice';
 import TopBarActions from '../TopBarActions/TopBarActions';
-import logo from '../../assets/img/tools/Logo.svg';
 import { useMediaQuery } from 'react-responsive';
+import Logo from '../Logo/Logo';
 
 const TopBar = () => {
   const isMenu = useAppSelector(state => state.store.isOpenMenu);
@@ -16,9 +16,7 @@ const TopBar = () => {
 
   return (
     <div className={styles['top-bar']}>
-      <a href="#" className={styles['top-bar__logo']}>
-        <img src={logo} alt="logo" />
-      </a>
+      <Logo />
 
       {isTablet && <Navigation />}
 

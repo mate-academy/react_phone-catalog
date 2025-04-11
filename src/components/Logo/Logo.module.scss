@@ -1,0 +1,21 @@
+@import '/src/utils/global';
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding-inline: 16px;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+
+  & img {
+    height: 22px;
+    width: 64px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+  }
+}

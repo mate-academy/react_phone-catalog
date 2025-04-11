@@ -47,6 +47,9 @@
     font-size: 14px;
     letter-spacing: 0;
     line-height: 21px;
+    height: calc(21px * 2);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__price {

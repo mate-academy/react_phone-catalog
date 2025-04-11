@@ -2,18 +2,38 @@ import React from 'react';
 import styles from './CardItem.module.scss';
 import favouriteIcon from '../../assets/img/tools/favourite_ico.svg';
 import { Product } from '../../types/products';
+import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   product: Product;
+  className?: string;
 };
 
-const CardItem: React.FC<Props> = ({ product }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image } = product;
+const CardItem: React.FC<Props> = ({ product, className = '' }) => {
+  const { id, name, fullPrice, price, screen, capacity, ram, image } = product;
+  const fullName = `${name} (MQ${id.toString().padStart(3, '0')})`;
+  const navigate = useNavigate();
+
+  const handleAddToCartClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
+
+  const handleFavouriteClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
+
+  const handleCartClick = () => {
+    navigate(`/${product.category}/${product.itemId}`);
+  };
 
   return (
-    <article className={styles.card}>
+    <article
+      className={classNames(styles.card, className)}
+      onClick={handleCartClick}
+    >
       <img src={image} alt="iphone" className={styles.card__img} />
-      <p className={styles.card__title}>{name}</p>
+      <p className={styles.card__title}>{fullName}</p>
       <p className={styles.card__price}>
         {`$${price} `}
         {fullPrice !== price && (
@@ -39,8 +59,13 @@ const CardItem: React.FC<Props> = ({ product }) => {
       </ul>
 
       <div className={styles.card__buttons}>
-        <button className={styles.card__addBtn}>Add to cart</button>
-        <button className={styles.card__favouriteBtn}>
+        <button className={styles.card__addBtn} onClick={handleAddToCartClick}>
+          Add to cart
+        </button>
+        <button
+          className={styles.card__favouriteBtn}
+          onClick={handleFavouriteClick}
+        >
           <img src={favouriteIcon} alt="favourite" />
         </button>
       </div>

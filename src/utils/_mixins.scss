@@ -18,6 +18,12 @@
   }
 }
 
+@mixin on-laptop {
+  @media (min-width: $laptop-min-width) {
+    @content;
+  }
+}
+
 @mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;

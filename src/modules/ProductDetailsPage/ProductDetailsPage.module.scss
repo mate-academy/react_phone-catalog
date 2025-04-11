@@ -1,0 +1,18 @@
+@import '/src/utils/global';
+
+.ProductDetails {
+  &__title {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+    }
+  }
+}

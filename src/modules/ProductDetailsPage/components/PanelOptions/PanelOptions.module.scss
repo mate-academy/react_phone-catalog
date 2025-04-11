@@ -1,0 +1,62 @@
+@import '/src/utils/global';
+
+.PanelOptions {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 13 / -5;
+  }
+
+  &__colors {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    & p {
+      color: $ligth-gray;
+    }
+
+    & span {
+      color: #4a4d58;
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &__colorsList {
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border: 2px solid $fon;
+    outline: 1px solid #3B3E4A;
+    border-radius: 50%;
+
+    @include hover(outline-color, $white);
+  }
+
+  & hr {
+    background-color: #3B3E4A;
+    border: none;
+    height: 1px;
+    margin-block: 24px;
+
+    &:nth-of-type(2) {
+      margin-bottom: 32px;
+    }
+  }
+}

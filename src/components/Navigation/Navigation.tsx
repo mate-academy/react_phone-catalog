@@ -2,9 +2,22 @@ import React from 'react';
 import styles from './Navigation.module.scss';
 import classNames from 'classnames';
 import { useMediaQuery } from 'react-responsive';
+import { NavLink } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
+import { toggleMenu } from '../../features/settingsSlice';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames(styles.nav__link, {
+    [styles.nav__link_active]: isActive,
+  });
 
 export const Navigation = () => {
   const isTablet = useMediaQuery({ minWidth: 640 });
+  const dispatch = useAppDispatch();
+
+  const handleClick = () => {
+    dispatch(toggleMenu());
+  };
 
   return (
     <nav
@@ -18,24 +31,28 @@ export const Navigation = () => {
         })}
       >
         <li className={styles.nav__item}>
-          <a href="#about" className={styles.nav__link}>
+          <NavLink to="/" className={getLinkClass} onClick={handleClick}>
             home
-          </a>
+          </NavLink>
         </li>
         <li className={styles.nav__item}>
-          <a href="#process" className={styles.nav__link}>
+          <NavLink to="phones" className={getLinkClass} onClick={handleClick}>
             Phones
-          </a>
+          </NavLink>
         </li>
         <li className={styles.nav__item}>
-          <a href="#testimonials" className={styles.nav__link}>
+          <NavLink to="tablets" className={getLinkClass} onClick={handleClick}>
             tablets
-          </a>
+          </NavLink>
         </li>
         <li className={styles.nav__item}>
-          <a href="#contacts" className={styles.nav__link}>
+          <NavLink
+            to="accessories"
+            className={getLinkClass}
+            onClick={handleClick}
+          >
             accessories
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>

@@ -3,6 +3,7 @@ import styles from './HomePage.module.scss';
 import HomeBanner from './components/HomeBanner/HomeBanner';
 import Brands from './components/Brands/Brands';
 import Categorys from './components/Categorys/Categorys';
+import HotPrices from './components/HotPrices/HotPrices';
 
 const HomePage = () => {
   return (
@@ -14,6 +15,8 @@ const HomePage = () => {
         <Brands />
 
         <Categorys />
+
+        <HotPrices />
       </div>
     </main>
   );

@@ -1,5 +1,4 @@
 import './App.scss';
-import HomePage from './modules/HomePage/HomePage';
 import HeaderMenu from './components/HeaderMenu/HeaderMenu';
 import AsideMenu from './components/AsideMenu/AsideMenu';
 import { useEffect } from 'react';
@@ -7,6 +6,8 @@ import { useAppDispatch, useAppSelector } from './app/hooks';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { Product } from './types/products';
 import { loadProducts, settingsSlice } from './features/settingsSlice';
+import { Outlet } from 'react-router-dom';
+import Footer from './components/Footer/Footer';
 
 export const App = () => {
   const productsFromRedux = useAppSelector(state => state.store.products);
@@ -36,7 +37,8 @@ export const App = () => {
       <AsideMenu />
 
       <div className="container">
-        <HomePage />
+        <Outlet />
+        <Footer />
       </div>
     </div>
   );

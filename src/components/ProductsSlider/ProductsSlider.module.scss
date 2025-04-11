@@ -3,15 +3,18 @@
 .swiper {
   overflow: hidden;
 
-  &:global(.swiper-wrapper) {
-    display: flex;
-    width: fit-content;
-    height: 100%;
-    gap: 16px;
+  & :global(.swiper-wrapper) {
+    // display: flex;
+    // width: fit-content;
+    // height: 100%;
+    // gap: 16px;
   }
 
   &-slide {
-    width: fit-content !important;
+    // width: fit-content !important;
+    & article {
+      width: 100%;
+    }
   }
 }
 

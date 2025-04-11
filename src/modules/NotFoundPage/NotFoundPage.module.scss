@@ -1,0 +1,21 @@
+@import '/src/utils/global';
+
+.not_found {
+  text-align: center;
+  height: calc(100vh - 297px - 48px);
+  width: 100%;
+
+  @include on-tablet {
+    height: calc(100vh - 102px - 48px);
+  }
+
+  @include on-desktop {
+    height: calc(100vh - 102px - 64px);
+  }
+
+  & img {
+    height: 100%;
+    width: 100%;
+    object-fit: scale-down;
+  }
+}

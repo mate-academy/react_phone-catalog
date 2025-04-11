@@ -31,11 +31,6 @@ const bannerImg = [
     alt: 'phones',
     src: 'img/banner/banner-phones.png',
   },
-  {
-    id: 5,
-    alt: 'tablets',
-    src: 'img/banner/banner-tablets.png',
-  },
 ];
 
 const HomeBanner = () => {
@@ -47,10 +42,9 @@ const HomeBanner = () => {
   return (
     <section className={classNames(styles.banner)}>
       <div className={styles.banner__wrapper}>
-        <Arrow
-          className={classNames(styles.prev)}
-          direction={ArrowDirection.left}
-        />
+        <button className={classNames(styles.prev)}>
+          <Arrow direction={ArrowDirection.left} />
+        </button>
 
         <Swiper
           className={classNames(styles.swiper)}
@@ -87,10 +81,9 @@ const HomeBanner = () => {
           ))}
         </Swiper>
 
-        <Arrow
-          className={classNames(styles.next)}
-          direction={ArrowDirection.right}
-        />
+        <button className={classNames(styles.next)}>
+          <Arrow direction={ArrowDirection.right} />
+        </button>
       </div>
 
       <div className={classNames(styles['swiper-pagination'])} />
