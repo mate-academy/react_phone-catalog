@@ -112,58 +112,38 @@ export const ProductPage = () => {
           </div>
 
           {perPage !== 'all' && (
-            <ul className={styles.pagination}>
-              <li
-                className={`${styles.pagination__button} ${
-                  currentPage === 1 ? 'disabled' : ''
-                }`}
+            <div className={styles.pagination}>
+              <NavLink
+                to={`?page=${currentPage - 1}&perPage=${perPage}&sort=${sortBy}`}
+                className={`${styles.pagination__link} ${currentPage === 1 ? 'disabled' : ''}`}
+                data-cy="prevLink"
+                onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
               >
-                <NavLink
-                  data-cy="prevLink"
-                  className={`${styles.pagination__link}`}
-                  to={`?page=${currentPage - 1}&perPage=${perPage}&sort=${sortBy}`}
-                  onClick={() =>
-                    currentPage > 1 && onPageChange(currentPage - 1)
-                  }
-                >
-                  «
-                </NavLink>
-              </li>
+                «
+              </NavLink>
+
               {pages.map(page => (
-                <li
-                  key={page}
-                  className={`${styles.pagination__button} ${
-                    currentPage === page ? styles.activePage : ''
-                  }`}
-                >
-                  <NavLink
-                    className={`${styles.pagination__link} ${
-                      currentPage === page ? styles.activePage : ''
-                    }`}
-                    to={`?page=${page}&perPage=${perPage}&sort=${sortBy}`}
-                    onClick={() => onPageChange(page)}
-                  >
-                    {page}
-                  </NavLink>
-                </li>
-              ))}
-              <li
-                className={`${styles.pagination__button} ${
-                  currentPage === totalPages ? 'disabled' : ''
-                }`}
-              >
                 <NavLink
-                  data-cy="nextLink"
-                  className={`${styles.pagination__link}`}
-                  to={`?page=${currentPage + 1}&perPage=${perPage}&sort=${sortBy}`}
-                  onClick={() =>
-                    currentPage < totalPages && onPageChange(currentPage + 1)
-                  }
+                  key={page}
+                  to={`?page=${page}&perPage=${perPage}&sort=${sortBy}`}
+                  className={`${styles.pagination__link} ${currentPage === page ? styles.activePage : ''}`}
+                  onClick={() => onPageChange(page)}
                 >
-                  »
+                  {page}
                 </NavLink>
-              </li>
-            </ul>
+              ))}
+
+              <NavLink
+                to={`?page=${currentPage + 1}&perPage=${perPage}&sort=${sortBy}`}
+                className={`${styles.pagination__link} ${currentPage === totalPages ? 'disabled' : ''}`}
+                data-cy="nextLink"
+                onClick={() =>
+                  currentPage < totalPages && onPageChange(currentPage + 1)
+                }
+              >
+                »
+              </NavLink>
+            </div>
           )}
         </div>
       )}

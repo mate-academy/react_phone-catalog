@@ -79,6 +79,7 @@ export const CartPage: React.FC = () => {
                     className={styles.button}
                     type="button"
                     onClick={() => handleDecrease(item.id)}
+                    disabled={item.quantity === 1}
                   >
                     -
                   </button>

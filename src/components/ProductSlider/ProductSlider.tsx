@@ -33,14 +33,14 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
         <div className={styles.sliderBtns}>
           <button
             ref={prevRef}
-            className={`${styles.sliderBtn} ${styles.prev}`}
+            className={styles.sliderBtn}
             aria-label="prevEl"
           >
             ⟨
           </button>
           <button
             ref={nextRef}
-            className={`${styles.sliderBtn} ${styles.next}`}
+            className={styles.sliderBtn}
             aria-label="nextEl"
           >
             ⟩

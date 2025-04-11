@@ -68,11 +68,16 @@
           border: none;
           background-color: white;
           padding: 0;
-          width: 16px;
-          height: 16px;
           display: flex;
           color: rgb(180, 189, 195);
           align-items: center;
+          cursor: pointer;
+          font-size: 16px;
+
+          &:hover{
+            color: black;
+            transition-duration: 0.5s;
+          }
         }
 
         .img{
@@ -113,6 +118,21 @@
             background-color: inherit;
             border: 1px solid rgba(226, 230, 233, 1);
             border-radius: 48px;
+            cursor: pointer;
+
+            &:hover {
+              border: 1px solid rgba(15, 15, 17, 1);
+              transition-duration: 0.5s;
+            }
+
+            &:disabled {
+              cursor: auto;
+              opacity: 0.5;
+            }
+
+            &:disabled:hover {
+              border-color: rgba(226, 230, 233, 1);
+            }
           }
 
           .input{
@@ -200,6 +220,13 @@
       width: 100%;
       cursor: pointer;
       height: 48px;
+
+      &:hover{
+        background: inherit;
+        border: 1px solid rgba(33, 108, 255, 1);
+        color: black;
+        transition-duration: 0.5s;
+      }
     }
   }
 }

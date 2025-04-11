@@ -51,7 +51,10 @@
       }
 
       .img{
+        background-color: black;
         width: 100%;
+        object-fit: cover;
+        height: 100%;
       }
     }
 
@@ -79,6 +82,12 @@
 
       @include on-desktop {
         height: 400px;
+      }
+
+      &:hover{
+        background-color: white;
+        border: 1px solid rgba(15, 15, 17, 1);
+        transition-duration: 0.5s;
       }
     }
 

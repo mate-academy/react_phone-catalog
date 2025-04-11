@@ -95,6 +95,7 @@
       box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
       border-bottom: 3px solid white;
       border-top: 3px solid white;
+      cursor: pointer;
 
       &:hover{
         border-bottom: 3px solid rgba(49, 50, 55, 1);
@@ -123,11 +124,15 @@
         background-color: inherit;
         border: none;
         outline: none;
-        height: 16px;
-        width: 16px;
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
         background-image: url('/icons/menu.png');
 
         &:hover {
+          cursor: pointer;
+          transition-duration: 0.5s;
           background-image: url('/icons/menu-hover.png');
         }
       }
@@ -201,9 +206,18 @@
           background-repeat: no-repeat;
           border: none;
           outline: none;
-          height: 16px;
-          width: 16px;
+          height: 100%;
+          width: 100%;
+          background-position: center;
+          cursor: pointer;
           background-image: url('/icons/menu-close.png');
+          border-bottom: 3px solid white;
+          border-top: 3px solid white;
+
+          &:hover{
+            border-bottom: 3px solid black;
+            transition-duration: 0.5s;
+          }
         }
       }
     }
@@ -261,12 +275,15 @@
         flex-direction: column;
         background-position: center;
         box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
+        background-size: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-bottom: 3px solid white;
+        border-top: 3px solid white;
 
-        &__menu {
-          background-position: center;
-          background-repeat: no-repeat;
-          height: 16px;
-          width: 16px;
+        &:hover{
+          border-bottom: 3px solid black;
+          transition-duration: 0.5s;
         }
 
         &__favorite{

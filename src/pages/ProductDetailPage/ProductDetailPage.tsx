@@ -295,14 +295,18 @@ export const ProductDetailPage: React.FC = () => {
             <p>RAM</p>
             <p>{productDetail.ram}</p>
           </div>
-          <div className={styles.specs}>
-            <p>Camera</p>
-            <p>{productDetail.camera}</p>
-          </div>
-          <div className={styles.specs}>
-            <p>Zoom</p>
-            <p>{productDetail.zoom}</p>
-          </div>
+          {productDetail.camera && (
+            <div className={styles.specs}>
+              <p>Camera</p>
+              <p>{productDetail.camera}</p>
+            </div>
+          )}
+          {productDetail.camera && (
+            <div className={styles.specs}>
+              <p>Zoom</p>
+              <p>{productDetail.zoom}</p>
+            </div>
+          )}
           <div className={styles.specs}>
             <p>Cell</p>
             <p>{productDetail.cell.join(', ')}</p>

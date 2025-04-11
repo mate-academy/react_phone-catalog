@@ -76,7 +76,9 @@
     padding: 0;
     margin: 24px 0 0;
 
-    &__button{
+    &__link{
+      color: rgba(15, 15, 17, 1);
+      text-decoration: none;
       background-color: inherit;
       margin: 0 8px;
       height: 32px;
@@ -91,11 +93,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-    }
+      cursor: pointer;
 
-    &__link{
-      color: rgba(15, 15, 17, 1);
-      text-decoration: none;
+      &:hover{
+        border: 1px solid rgba(15, 15, 17, 1);
+        transition-duration: 0.5s;
+      }
     }
 
     .activePage {

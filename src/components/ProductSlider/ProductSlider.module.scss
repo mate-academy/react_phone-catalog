@@ -26,7 +26,24 @@
         width: 32px;
         height: 32px;
         border-radius: 50px;
-        border: 1px solid rgba(180, 189, 195, 1)
+        border: 1px solid rgba(180, 189, 195, 1);
+        cursor: pointer;
+        background-color: inherit;
+
+        &:hover{
+          background-color: white;
+          border: 1px solid rgba(15, 15, 17, 1);
+          transition-duration: 0.5s;
+        }
+
+        &:disabled {
+          cursor: auto;
+          opacity: 0.5;
+        }
+
+        &:disabled:hover {
+          border-color: inherit;
+        }
       }
     }
   }

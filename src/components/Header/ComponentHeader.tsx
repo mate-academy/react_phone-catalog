@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ComponentHeader.module.scss';
 import { ComponentLogo } from '../Logo';
 import { NavLink } from 'react-router-dom';
@@ -14,6 +14,25 @@ export const ComponentHeader: React.FC = () => {
     setIsMenuOpen(prev => !prev);
   };
 
+  const navLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/phones', label: 'Phones' },
+    { path: '/tablets', label: 'Tablets' },
+    { path: '/accessories', label: 'Accessories' },
+  ];
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   const totalQuantity = cart.items.reduce(
     (acc, item) => acc + item.quantity,
     0,
@@ -27,7 +46,7 @@ export const ComponentHeader: React.FC = () => {
         <nav className={styles.nav}>
           <ul className={styles.nav__list}>
             {['/', '/phones', '/tablets', '/accessories'].map((path, index) => (
-              <li className={styles.nav__item} key={path} onClick={toggleMenu}>
+              <li className={styles.nav__item} key={path}>
                 <NavLink
                   className={({ isActive }) =>
                     isActive
@@ -48,7 +67,7 @@ export const ComponentHeader: React.FC = () => {
         <nav className={styles.nav}>
           <ul className={styles.nav__list}>
             <li
-              className={styles.icon}
+              className={`${styles.icon} ${styles.menu}`}
               onClick={toggleMenu}
               aria-label="Open menu"
             >
@@ -106,45 +125,32 @@ export const ComponentHeader: React.FC = () => {
           </div>
           <nav className={styles.nav}>
             <ul className={styles.nav__list}>
-              <li className={styles.nav__item} onClick={toggleMenu}>
-                <NavLink className={styles.nav__link} to="/">
-                  Home
-                </NavLink>
-              </li>
-              <li className={styles.nav__item} onClick={toggleMenu}>
-                <NavLink className={styles.nav__link} to="/phones">
-                  Phones
-                </NavLink>
-              </li>
-              <li className={styles.nav__item} onClick={toggleMenu}>
-                <NavLink className={styles.nav__link} to="/tablets">
-                  Tablets
-                </NavLink>
-              </li>
-              <li className={styles.nav__item} onClick={toggleMenu}>
-                <NavLink className={styles.nav__link} to="/accessories">
-                  Accessories
-                </NavLink>
-              </li>
+              {navLinks.map(({ path, label }) => (
+                <li
+                  key={path}
+                  className={styles.nav__item}
+                  onClick={toggleMenu}
+                >
+                  <NavLink className={styles.nav__link} to={path}>
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
-
         <div className={styles.aside__bottom}>
-          <li className={styles.icon}>
-            <NavLink
-              onClick={toggleMenu}
-              className={`${styles.icon__menu} ${styles.icon__favorite}`}
-              to="/favorites"
-            ></NavLink>
-          </li>
-          <li className={styles.icon}>
-            <NavLink
-              onClick={toggleMenu}
-              className={`${styles.icon__menu} ${styles.icon__cart}`}
-              to="/cart"
-            ></NavLink>
-          </li>
+          <NavLink
+            className={`${styles.icon} ${styles.icon__favorite}`}
+            onClick={toggleMenu}
+            to="/favorites"
+          />
+
+          <NavLink
+            className={`${styles.icon} ${styles.icon__cart}`}
+            onClick={toggleMenu}
+            to="/cart"
+          />
         </div>
       </aside>
 

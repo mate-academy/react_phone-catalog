@@ -96,21 +96,21 @@ export const HomePage = () => {
           <SwiperSlide>
             <img
               className={styles.img}
-              src="./img/image16.png"
+              src="./img/banner-phones.png"
               alt="Gadget 1"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
               className={styles.img}
-              src="./img/picthree.bdd2e0fc.png"
+              src="./img/banner-tablets.png"
               alt="Gadget 2"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
               className={styles.img}
-              src="./img/image16.png"
+              src="./img/banner-accessories.png"
               alt="Gadget 3"
             />
           </SwiperSlide>

@@ -137,6 +137,11 @@
       background-position: center;
       background-size: 50%;
       cursor: pointer;
+
+      &:hover{
+        border: 1px solid rgba(15, 15, 17, 1);
+        transition-duration: 0.5s;
+      }
     }
   }
 }

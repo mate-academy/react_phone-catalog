@@ -61,6 +61,11 @@
       font-weight: 700;
       line-height: 15.34px;
       color: rgba(137, 147, 154, 1);
+
+      &:hover{
+        color: black;
+        transition-duration: 0.5s;
+      }
     }
 
     .button{
@@ -76,6 +81,11 @@
       background-position: center;
       background-size: 50%;
       cursor: pointer;
+
+      &:hover{
+        border: 1px solid rgba(15, 15, 17, 1);
+        transition-duration: 0.5s;
+      }
     }
   }
 }
