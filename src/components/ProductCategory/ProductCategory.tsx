@@ -11,7 +11,7 @@ import { CategoryHeader } from '../CategoryHeader/CategoryHeader';
 import { getProducts } from '../../services/productsApi';
 import { Loader } from '../Loader/Loader';
 import { itemsOnPageData, sortByData } from '../../utils/SortCategory';
-const ProductCard = React.lazy(() => import('../ProductCard/ProductCard'))
+const ProductCard = React.lazy(() => import('../ProductCard/ProductCard'));
 
 type Props = {
   setDisabledIds: (arg: number[]) => void;

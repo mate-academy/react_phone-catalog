@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { TitleAndButtonSlider } from '../TitleAndButtonSlider/TitleAndButtonSlider';
-import { ProductCard } from '../ProductCard/ProductCard';
 import { getAllProducts, getProducts } from '../../services/productsApi';
 import { Products } from '../../types/Products';
 import { TechDetails } from '../../utils/TechDetails';
@@ -14,6 +13,7 @@ import { useCartProducts } from '../Cart/CartContext';
 import { Loader } from '../Loader/Loader';
 import { useTheme } from '../ThemeContext/ThemeContext';
 import { useFavourites } from '../Favourites/FavouritesContext';
+const ProductCard = React.lazy(() => import('../ProductCard/ProductCard'));
 
 type Props = {
   productId?: string;
