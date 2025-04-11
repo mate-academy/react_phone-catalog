@@ -10,7 +10,7 @@ type Props = {
   disabledIds: number[];
 };
 
-export const Footer: React.FC<Props> = ({ disabledIds }) => {
+const Footer: React.FC<Props> = ({ disabledIds }) => {
   const { theme } = useTheme();
 
   const handleBackToTop = () => {
@@ -86,3 +86,5 @@ export const Footer: React.FC<Props> = ({ disabledIds }) => {
     </>
   );
 };
+
+export default Footer;

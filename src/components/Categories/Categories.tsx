@@ -4,7 +4,7 @@ import phones from '../../../public/api/phones.json';
 import accessories from '../../../public/api/accessories.json';
 import { Link } from 'react-router-dom';
 
-export const Categories: React.FC = () => {
+const Categories: React.FC = () => {
   const CategoriesCollection = [
     {
       src: './img/categories/phones.png',
@@ -70,3 +70,4 @@ export const Categories: React.FC = () => {
     </>
   );
 };
+export default Categories;

@@ -1,8 +1,9 @@
 import { useOutletContext } from 'react-router-dom';
-import { Footer } from '../components/Footer/Footer';
-import { Header } from '../components/Header/Header';
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
+import { Loader } from '../components/Loader/Loader';
 const Cart = React.lazy(() => import('../components/Cart/Cart'));
+const Header = React.lazy(() => import('../components/Header/Header'));
+const Footer = React.lazy(() => import('../components/Footer/Footer'));
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;
@@ -25,9 +26,11 @@ export const CartPage = () => {
 
   return (
     <>
-      <Header setActiveAside={setActiveAside} width={width} />
-      <Cart />
-      <Footer disabledIds={disabledIds} />
+      <Suspense fallback={<Loader />}>
+        <Header setActiveAside={setActiveAside} width={width} />
+        <Cart />
+        <Footer disabledIds={disabledIds} />
+      </Suspense>
     </>
   );
 };

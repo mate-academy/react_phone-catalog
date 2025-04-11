@@ -1,6 +1,4 @@
 import React, { Dispatch, SetStateAction, Suspense, useEffect } from 'react';
-import { Footer } from '../components/Footer/Footer';
-import { Header } from '../components/Header/Header';
 import { useOutletContext } from 'react-router-dom';
 import { Loader } from '../components/Loader/Loader';
 
@@ -11,6 +9,8 @@ const HeaderSlider = React.lazy(
   () => import('../components/HeaderSlider/HeaderSlider'),
 );
 const Main = React.lazy(() => import('../components/Main/Main'));
+const Header = React.lazy(() => import('../components/Header/Header'));
+const Footer = React.lazy(() => import('../components/Footer/Footer'));
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;
@@ -34,8 +34,8 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <Header setActiveAside={setActiveAside} width={width} />
       <Suspense fallback={<Loader />}>
+        <Header setActiveAside={setActiveAside} width={width} />
         <HeaderTitle />
         <HeaderSlider width={width} />
         <Main
@@ -43,8 +43,8 @@ export const HomePage: React.FC = () => {
           setDisabledIds={setDisabledIds}
           width={width}
         />
+        <Footer disabledIds={disabledIds} />
       </Suspense>
-      <Footer disabledIds={disabledIds} />
     </>
   );
 };

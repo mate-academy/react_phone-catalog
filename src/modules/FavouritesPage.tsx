@@ -1,11 +1,12 @@
 import React, { Suspense, useEffect } from 'react';
-import { Header } from '../components/Header/Header';
 import { useOutletContext } from 'react-router-dom';
-import { Footer } from '../components/Footer/Footer';
+
 import { Loader } from '../components/Loader/Loader';
 const Favourites = React.lazy(
   () => import('../components/Favourites/Favourites'),
 );
+const Header = React.lazy(() => import('../components/Header/Header'));
+const Footer = React.lazy(() => import('../components/Footer/Footer'));
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;
@@ -28,11 +29,11 @@ export const FavouritesPage: React.FC = () => {
 
   return (
     <>
-      <Header setActiveAside={setActiveAside} width={width} />
       <Suspense fallback={<Loader />}>
+        <Header setActiveAside={setActiveAside} width={width} />
         <Favourites />
+        <Footer disabledIds={disabledIds} />
       </Suspense>
-      <Footer disabledIds={disabledIds} />
     </>
   );
 };

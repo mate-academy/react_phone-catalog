@@ -1,10 +1,14 @@
 import React, { Suspense, useEffect } from 'react';
 import { Outlet, useOutletContext, useParams } from 'react-router-dom';
-import { Header } from '../components/Header/Header';
-import { Footer } from '../components/Footer/Footer';
 import { Loader } from '../components/Loader/Loader';
 const ProductCategory = React.lazy(
   () => import('../components/ProductCategory/ProductCategory'),
+);
+const Header = React.lazy(
+  () => import('../components/Header/Header'),
+);
+const Footer = React.lazy(
+  () => import('../components/Footer/Footer'),
 );
 
 type ContextType = {
@@ -34,19 +38,19 @@ export const HomePageCategory: React.FC<Props> = ({ url }) => {
 
   return (
     <>
-      <Header setActiveAside={setActiveAside} width={width} />
-      {!productId ? (
-        <Suspense fallback={<Loader />}>
+      <Suspense fallback={<Loader />}>
+        <Header setActiveAside={setActiveAside} width={width} />
+        {!productId ? (
           <ProductCategory
             disabledIds={disabledIds}
             setDisabledIds={setDisabledIds}
             url={url}
           />
-        </Suspense>
-      ) : (
-        <Outlet context={{ disabledIds, setDisabledIds }} />
-      )}
-      <Footer disabledIds={disabledIds} />
+        ) : (
+          <Outlet context={{ disabledIds, setDisabledIds }} />
+        )}
+        <Footer disabledIds={disabledIds} />
+      </Suspense>
     </>
   );
 };

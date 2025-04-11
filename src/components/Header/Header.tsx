@@ -11,7 +11,7 @@ type Props = {
   width: number;
 };
 
-export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
+const Header: React.FC<Props> = ({ setActiveAside, width }) => {
   const { favourites } = useFavourites();
   const { cartProducts } = useCartProducts();
   const { theme, toggleTheme } = useTheme();
@@ -185,3 +185,5 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
     </>
   );
 };
+
+export default Header;

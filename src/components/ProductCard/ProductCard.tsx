@@ -12,7 +12,7 @@ type Props = {
   onPage?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, onPage }) => {
+const ProductCard: React.FC<Props> = ({ product, onPage }) => {
   const { favourites, toggleFavourite } = useFavourites();
   const { cartProducts, addProductToCart } = useCartProducts();
   const { theme } = useTheme();
@@ -139,3 +139,5 @@ export const ProductCard: React.FC<Props> = ({ product, onPage }) => {
     </>
   );
 };
+
+export default ProductCard;
