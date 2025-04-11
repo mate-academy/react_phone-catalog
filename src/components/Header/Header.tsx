@@ -16,6 +16,11 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
   const { cartProducts } = useCartProducts();
   const { theme, toggleTheme } = useTheme();
 
+  const totalQuantity = cartProducts.reduce(
+    (curr, acc) => (acc.quantity || 1) + curr,
+    0,
+  );
+
   const handleActiveLink = ({ isActive }: { isActive: boolean }) => {
     return classNames(`${styles.header_nav_link}`, {
       [styles.active_link]: isActive,
@@ -173,7 +178,7 @@ export const Header: React.FC<Props> = ({ setActiveAside, width }) => {
                   <span
                     className={`${styles.header_fav_count} ${styles.active_cart}`}
                   >
-                    {cartProducts.length > 9 ? '9+' : cartProducts.length}
+                    {totalQuantity > 9 ? '9+' : totalQuantity}
                   </span>
                 )}
               </NavLink>

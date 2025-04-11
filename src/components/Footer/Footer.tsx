@@ -3,6 +3,7 @@ import { ButtonDirection } from '../../enums/ButtonDirection';
 import { Button } from '../Button/Button';
 import styles from './Footer.module.scss';
 import { useTheme } from '../ThemeContext/ThemeContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   disabledIds: number[];
@@ -32,10 +33,25 @@ export const Footer: React.FC<Props> = ({ disabledIds }) => {
 
         <div className={`${styles.footer_text_container}`}>
           <div className={`${styles.footer_paragraph_wrapper}`}>
-            <p className={`${styles.footer_paragraph}`}>Github</p>
+            <Link
+              to={'https://github.com/Artemida1609'}
+              className={`${styles.footer_paragraph}`}
+            >
+              Github
+            </Link>
           </div>
           <div className={`${styles.footer_paragraph_wrapper}`}>
-            <p className={`${styles.footer_paragraph}`}>Contacts</p>
+            <Link
+              to={'#'}
+              onClick={e => {
+                window.location.href =
+                  'https://mail.google.com/mail/u/0/#inbox?compose=CllgCJfnbnQwJCpnvccJshzJtZTCtnFDXFjGlJHBBNVjMKBWGqdJmLNblbWgKKVRCJnDFvNfWWg';
+                e.preventDefault();
+              }}
+              className={`${styles.footer_paragraph}`}
+            >
+              Contacts
+            </Link>
           </div>
           <div className={`${styles.footer_paragraph_wrapper}`}>
             <p className={`${styles.footer_paragraph}`}>rights</p>

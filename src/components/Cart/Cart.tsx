@@ -29,6 +29,10 @@ export const Cart = () => {
     navigate({ pathname: '..', search });
   };
 
+  const totalQuantity = cartProducts.reduce(
+    (curr, acc) => (acc.quantity || 1) + curr, 0,
+  );
+
   const handleDeleteButton = (product: Product) => {
     removeFromCart(product);
   };
@@ -192,8 +196,8 @@ export const Cart = () => {
                 <p className={`${styles.cart_price}`}>{`$${totalPrice}`}</p>
                 <p className={`${styles.cart_count}`}>
                   {cartProducts.length > 1
-                    ? `Total for ${cartProducts.length} items`
-                    : `Total for ${cartProducts.length} item`}
+                    ? `Total for ${totalQuantity} items`
+                    : `Total for ${totalQuantity} item`}
                 </p>
               </div>
               <hr className={`${styles.cart_line}`} />
