@@ -1,7 +1,5 @@
 import React, { Suspense, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-
-import { Loader } from '../components/Loader/Loader';
 const Favourites = React.lazy(
   () => import('../components/Favourites/Favourites'),
 );
@@ -29,7 +27,7 @@ export const FavouritesPage: React.FC = () => {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense>
         <Header setActiveAside={setActiveAside} width={width} />
         <Favourites />
         <Footer disabledIds={disabledIds} />

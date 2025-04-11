@@ -35,7 +35,7 @@ const Main: React.FC<Props> = ({ setDisabledIds, disabledIds, width }) => {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense>
         <main className={`${styles.main_container}`}>
           <TitleAndButtonSlider
             disabledIds={disabledIds}

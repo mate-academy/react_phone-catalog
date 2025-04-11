@@ -1,6 +1,5 @@
 import React, { Suspense, useEffect } from 'react';
 import { Outlet, useOutletContext, useParams } from 'react-router-dom';
-import { Loader } from '../components/Loader/Loader';
 const ProductCategory = React.lazy(
   () => import('../components/ProductCategory/ProductCategory'),
 );
@@ -34,7 +33,7 @@ export const HomePageCategory: React.FC<Props> = ({ url }) => {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense>
         <Header setActiveAside={setActiveAside} width={width} />
         {!productId ? (
           <ProductCategory

@@ -3,14 +3,13 @@
 
 @font-face {
   font-family: Mont-Regular;
-  src: url('/react_phone-catalog/fonts/Mont-Regular.otf') format('opentype');
+  src: url('fonts/Mont-Regular.otf');
 }
 
 @font-face {
   font-family: Mont-Bold;
-  src: url('/react_phone-catalog/fonts/Mont-Bold.otf') format('opentype');
+  src: url('fonts/Mont-Bold.otf');
 }
-
 
 .category_path_container {
   width: 288px;

@@ -181,18 +181,19 @@ const ProductCategory: React.FC<Props> = ({
   }, [itemsCount, sortBy, activeData]);
 
   useEffect(() => {
+    setLoader(true);
     getProducts(`${url}`)
       .then(data => {
-        setLoader(true);
+        setLoader(false);
         setActiveData(data);
       })
       .catch(e => {
+        setLoader(false);
         throw new Error(e);
-      })
-      .finally(() => setLoader(false));
+      });
   }, [url]);
 
-  if (loader) {
+  if (loader || !activeData) {
     return (
       <div className={`${styles.loader_container}`}>
         <Loader />

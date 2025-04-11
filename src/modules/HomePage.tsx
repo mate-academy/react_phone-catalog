@@ -1,7 +1,5 @@
 import React, { Dispatch, SetStateAction, Suspense, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Loader } from '../components/Loader/Loader';
-
 const HeaderTitle = React.lazy(
   () => import('../components/HeaderTitle/HeaderTitle'),
 );
@@ -34,7 +32,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense>
         <Header setActiveAside={setActiveAside} width={width} />
         <HeaderTitle />
         <HeaderSlider width={width} />
