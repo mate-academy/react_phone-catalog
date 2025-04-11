@@ -14,7 +14,6 @@
 }
 
 .scroll_container {
-  // width: 288px;
   width: 100vw;
   display: flex;
   justify-content: flex-start;
@@ -26,13 +25,11 @@
   padding-left: 16px;
 
   @include on-tablet {
-    // width: 592px;
     padding-left: 24px;
     margin-bottom: 64px;
   }
 
   @include on-desktop {
-    // width: 1136px;
     padding-left: 32px;
     margin-bottom: 80px;
   }

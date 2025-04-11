@@ -3,7 +3,9 @@ import { Outlet, useOutletContext, useParams } from 'react-router-dom';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 import { Loader } from '../components/Loader/Loader';
-const ProductCategory = React.lazy(() => import('../components/ProductCategory/ProductCategory'));
+const ProductCategory = React.lazy(
+  () => import('../components/ProductCategory/ProductCategory'),
+);
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;

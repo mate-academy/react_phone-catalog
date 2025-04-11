@@ -4,10 +4,13 @@ import { Header } from '../components/Header/Header';
 import { useOutletContext } from 'react-router-dom';
 import { Loader } from '../components/Loader/Loader';
 
-const HeaderTitle = React.lazy(() => import('../components/HeaderTitle/HeaderTitle'));
-const HeaderSlider = React.lazy(() => import('../components/HeaderSlider/HeaderSlider'));
+const HeaderTitle = React.lazy(
+  () => import('../components/HeaderTitle/HeaderTitle'),
+);
+const HeaderSlider = React.lazy(
+  () => import('../components/HeaderSlider/HeaderSlider'),
+);
 const Main = React.lazy(() => import('../components/Main/Main'));
-
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;
