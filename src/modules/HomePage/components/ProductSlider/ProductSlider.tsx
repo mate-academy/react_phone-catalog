@@ -93,10 +93,10 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
       </div>
 
       <div className={styles['product-slider__wrapp']}>
-        <ul className={styles['product-slider__list']}>
+        <div className={styles['product-slider__list']}>
           {products.map(product => {
             return (
-              <li
+              <div
                 key={product.id}
                 className={styles['product-slider__item']}
                 style={{
@@ -104,10 +104,10 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
                 }}
               >
                 <ProductCard products={product} />
-              </li>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
     </section>
   );

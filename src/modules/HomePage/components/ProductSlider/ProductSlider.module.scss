@@ -3,12 +3,12 @@
 .product-slider {
   margin-top: 50px;
 
+  @include padding-inline;
+
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    @include padding-inline;
   }
 
   &__title {
@@ -58,29 +58,27 @@
   }
 
   &__wrapp {
-    padding-left: 16px;
     margin-top: 24px;
-
-    @include tablet {
-      padding-left: 24px;
-    }
-
-    @include desktop {
-      @include padding-inline;
-    }
+    overflow: hidden;
   }
 
   &__list {
     display: flex;
     gap: 15px;
-    height: 100%;
-    overflow: hidden;
   }
 
   &__item {
     display: flex;
     transition: transform 0.3s ease-in-out;
-    flex: 0 0 212px;
+    height: 439px;
+
+    @include tablet {
+      height: 512px;
+    }
+
+    @include desktop {
+      height: 506px;
+    }
   }
 }
 

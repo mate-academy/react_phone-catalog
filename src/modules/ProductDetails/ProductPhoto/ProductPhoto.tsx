@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './ProductPhoto.module.scss';
+import cn from 'classnames';
 
 interface Props {
   photos: string[];
@@ -30,7 +31,12 @@ export const ProductPhoto: React.FC<Props> = ({ photos }) => {
               key={index}
               onClick={() => setCurrentImage(img)}
             >
-              <button className={styles['product-photo__button']}>
+              <button
+                className={cn(styles['product-photo__button'], {
+                  [styles['product-photo__button--active']]:
+                    img === currentImage,
+                })}
+              >
                 <img
                   src={img}
                   alt="image"

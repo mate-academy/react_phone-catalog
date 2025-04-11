@@ -13,20 +13,28 @@
 
   &__wrapp {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid $hover-color;
     position: sticky;
     z-index: 2;
+    gap: 16px;
 
     @include tablet {
-      gap: 16px;
       padding-right: 0;
+      gap: 24px;
+    }
+
+    @include big-desktop {
+      gap: 40px;
     }
   }
 
   &__link {
     padding-left: 16px;
+
+    @include desktop {
+      padding-left: 24px;
+    }
   }
 
   &__burger {
@@ -63,7 +71,7 @@
     @include tablet {
       display: flex;
       justify-content: space-between;
-      gap: 100px;
+      width: 100%;
     }
 
     @media(min-width: 750px) {

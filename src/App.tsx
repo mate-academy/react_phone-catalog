@@ -5,9 +5,9 @@ import { Footer } from './modules/Footer';
 
 export const App = () => {
   return (
-    <div className="">
+    <div className="container">
       <Header />
-      <main className="">
+      <main className="main">
         <Outlet />
       </main>
       <Footer />

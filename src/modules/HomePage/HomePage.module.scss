@@ -13,16 +13,15 @@
     flex-direction: column;
     gap: 25px;
 
+    @include padding-inline;
+
     @include desktop {
       gap: 56px;
     }
   }
 
   &__title {
-    padding-inline: $padding-inline-mobile;
-
     @include tablet {
-      padding-inline: $padding-inline-tablet;
       font-size: 48px;
     }
 

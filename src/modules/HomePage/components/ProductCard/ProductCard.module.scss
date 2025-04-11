@@ -5,10 +5,15 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: space-between;
   gap: 8px;
   background-color: #161827;
   height: 100%;
-  width: 100%;
+  width: 237px;
+
+  @include desktop {
+    width: 272px;
+  }
 
   @include scale-on-hover;
 

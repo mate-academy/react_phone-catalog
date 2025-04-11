@@ -21,6 +21,7 @@ ul, li {
 body {
   margin: 0;
   background-color: $background-color;
+  height: 100vh;
 }
 
 body.sidebar-open {
@@ -29,4 +30,18 @@ body.sidebar-open {
 
 * {
   box-sizing: border-box;
+}
+
+.root {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main {
+  flex-grow: 1;
 }
