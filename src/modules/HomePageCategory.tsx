@@ -4,12 +4,8 @@ import { Loader } from '../components/Loader/Loader';
 const ProductCategory = React.lazy(
   () => import('../components/ProductCategory/ProductCategory'),
 );
-const Header = React.lazy(
-  () => import('../components/Header/Header'),
-);
-const Footer = React.lazy(
-  () => import('../components/Footer/Footer'),
-);
+const Header = React.lazy(() => import('../components/Header/Header'));
+const Footer = React.lazy(() => import('../components/Footer/Footer'));
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;

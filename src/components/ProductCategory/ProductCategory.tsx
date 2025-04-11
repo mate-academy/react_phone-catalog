@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styles from './ProductCategory.module.scss';
-import { ProductCard } from '../ProductCard/ProductCard';
 import { DropDown } from '../Dropdown/DropDown';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
@@ -12,6 +11,7 @@ import { CategoryHeader } from '../CategoryHeader/CategoryHeader';
 import { getProducts } from '../../services/productsApi';
 import { Loader } from '../Loader/Loader';
 import { itemsOnPageData, sortByData } from '../../utils/SortCategory';
+const ProductCard = React.lazy(() => import('../ProductCard/ProductCard'))
 
 type Props = {
   setDisabledIds: (arg: number[]) => void;
