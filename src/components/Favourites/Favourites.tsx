@@ -9,7 +9,7 @@ const Favourites: React.FC = () => {
 
   if (!favourites) {
     return (
-      <div>
+      <div className={`${styles.loader}`}>
         <Loader />
       </div>
     );
