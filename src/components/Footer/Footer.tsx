@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { ButtonDirection } from '../../enums/ButtonDirection';
 import { Button } from '../Button/Button';
@@ -14,6 +15,18 @@ export const Footer: React.FC<Props> = ({ disabledIds }) => {
 
   const handleBackToTop = () => {
     window.scrollTo({ top: 0 });
+  };
+
+  const handleMailTo = (e: React.MouseEvent) => {
+    window.location.href =
+      'https://mail.google.com/mail/u/0/#inbox?compose=CllgCJfnbnQwJCpnvccJshzJtZTCtnFDXFjGlJHBBNVjMKBWGqdJmLNblbWgKKVRCJnDFvNfWWg';
+    e.preventDefault();
+  };
+
+  const hadleRightsClick = (e: React.MouseEvent) => {
+    window.location.href =
+      'https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github';
+    e.preventDefault();
   };
 
   return (
@@ -43,18 +56,20 @@ export const Footer: React.FC<Props> = ({ disabledIds }) => {
           <div className={`${styles.footer_paragraph_wrapper}`}>
             <Link
               to={'#'}
-              onClick={e => {
-                window.location.href =
-                  'https://mail.google.com/mail/u/0/#inbox?compose=CllgCJfnbnQwJCpnvccJshzJtZTCtnFDXFjGlJHBBNVjMKBWGqdJmLNblbWgKKVRCJnDFvNfWWg';
-                e.preventDefault();
-              }}
+              onClick={handleMailTo}
               className={`${styles.footer_paragraph}`}
             >
               Contacts
             </Link>
           </div>
           <div className={`${styles.footer_paragraph_wrapper}`}>
-            <p className={`${styles.footer_paragraph}`}>rights</p>
+            <Link
+              to={'#'}
+              onClick={hadleRightsClick}
+              className={`${styles.footer_paragraph}`}
+            >
+              Rights
+            </Link>
           </div>
         </div>
 

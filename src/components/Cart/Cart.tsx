@@ -30,7 +30,8 @@ export const Cart = () => {
   };
 
   const totalQuantity = cartProducts.reduce(
-    (curr, acc) => (acc.quantity || 1) + curr, 0,
+    (curr, acc) => (acc.quantity || 1) + curr,
+    0,
   );
 
   const handleDeleteButton = (product: Product) => {

@@ -3,6 +3,7 @@ import styles from './CategoryHeader.module.scss';
 import { Product } from '../../types/Product';
 import { Loader } from '../Loader/Loader';
 import { useTheme } from '../ThemeContext/ThemeContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   categoryData: Product[];
@@ -24,15 +25,17 @@ export const CategoryHeader: React.FC<Props> = ({ categoryData }) => {
   return (
     <>
       <div className={`${styles.category_path_container}`}>
-        <img
-          src={
-            theme === 'light'
-              ? './img/icons/home-icon.svg'
-              : './img/icons/home-icon-dark-theme.svg'
-          }
-          alt="home icon"
-          className={`${styles.category_header_icon}`}
-        />
+        <Link to={'/'} className={`${styles.category_header_link}`}>
+          <img
+            src={
+              theme === 'light'
+                ? './img/icons/home-icon.svg'
+                : './img/icons/home-icon-dark-theme.svg'
+            }
+            alt="home icon"
+            className={`${styles.category_header_icon}`}
+          />
+        </Link>
         <img
           src={
             theme === 'light'

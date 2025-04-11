@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ProductDetails.module.scss';
 import classNames from 'classnames';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { TitleAndButtonSlider } from '../TitleAndButtonSlider/TitleAndButtonSlider';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -157,15 +157,17 @@ export const ProductDetails: React.FC<Props> = ({
         <>
           <div className={`${styles.details_main_container}`}>
             <div className={`${styles.details_path_container}`}>
-              <img
-                src={
-                  isLightTheme
-                    ? './img/icons/home-icon.svg'
-                    : './img/icons/home-icon-dark-theme.svg'
-                }
-                alt="home icon"
-                className={`${styles.details_header_icon}`}
-              />
+              <Link to={'/'} className={`${styles.details_link}`}>
+                <img
+                  src={
+                    isLightTheme
+                      ? './img/icons/home-icon.svg'
+                      : './img/icons/home-icon-dark-theme.svg'
+                  }
+                  alt="home icon"
+                  className={`${styles.details_header_icon}`}
+                />
+              </Link>
               <img
                 src={
                   isLightTheme
@@ -175,9 +177,12 @@ export const ProductDetails: React.FC<Props> = ({
                 alt="right arrow"
                 className={`${styles.details_header_icon}`}
               />
-              <p className={`${styles.details_path} ${styles.dark_gray}`}>
+              <Link
+                to={`../`}
+                className={`${styles.details_link} ${styles.details_path} ${styles.dark_gray}`}
+              >
                 {product.category}
-              </p>
+              </Link>
               <img
                 src={
                   isLightTheme

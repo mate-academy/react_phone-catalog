@@ -105,3 +105,7 @@
   width: 100vw;
   @include flex-centered;
 }
+
+.category_header_link {
+  cursor: pointer;
+}

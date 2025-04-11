@@ -251,9 +251,11 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding-right: 8px;
 
   @include on-tablet {
-    margin-right: 8px;
+    padding: none;
+    margin-right: 16px;
   }
 
   @include on-desktop {

@@ -1,3 +1,4 @@
+/* stylelint-disable */
 @use '../../utils/variables.scss' as *;
 @use '../../utils/mixins.scss' as *;
 
@@ -35,6 +36,15 @@
 
   @include on-desktop {
     width: 1136px;
+  }
+}
+
+.details_link {
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--bread-crumbs-hover);
   }
 }
 
@@ -325,6 +335,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  transition: all 0.5s ease-in-out;
   cursor: pointer;
   &:hover {
     outline: 1px solid var(--text-color-main);
@@ -349,6 +360,7 @@
   background-color: var(--button-border-disabled);
   border: none;
   margin: 0 0 24px;
+  transition: all 0.5s ease-in-out;
 
   @include on-desktop {
     width: 320px;
@@ -402,6 +414,7 @@
   border: 1px solid var(--details-prod-id);
   background-color: var(--bg-color);
   transition: all 0.5s ease-in-out;
+  cursor: pointer;
 
   @include flex-centered;
 
@@ -416,7 +429,7 @@
 .activeCapacity {
   background-color: var(--text-color-main);
   border: 1px solid var(--text-color-main);
-  &.details_capacity_amount {
+  .details_capacity_amount {
     color: var(--bg-color);
   }
 }
@@ -429,6 +442,7 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
+  transition: all 0.5s ease-in-out;
 
   @include on-desktop {
     width: 320px;
@@ -442,6 +456,7 @@
   line-height: 42px;
   letter-spacing: -0.01em;
   color: var(--text-color-main);
+  transition: all 0.5s ease-in-out;
 }
 
 .oldPrice {
@@ -562,7 +577,6 @@
 }
 
 .details_main_descr_container {
-
   @include on-desktop {
     width: 1136px;
     display: flex;

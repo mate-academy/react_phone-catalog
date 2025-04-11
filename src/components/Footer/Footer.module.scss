@@ -21,8 +21,6 @@
   border-top: 1px solid var(--button-border-disabled);
   bottom: 0;
   left: 0;
-  position: fixed;
-  z-index: 1000;
 
   @include on-tablet {
     display: flex;
