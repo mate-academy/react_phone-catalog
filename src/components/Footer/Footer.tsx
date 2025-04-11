@@ -27,6 +27,8 @@ export const Footer = () => {
               <a
                 href="https://github.com/sborichevskyi"
                 className={styles.footer__link}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Github
               </a>
@@ -35,6 +37,8 @@ export const Footer = () => {
               <a
                 href="https://github.com/sborichevskyi"
                 className={styles.footer__link}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Contacts
               </a>
@@ -43,6 +47,8 @@ export const Footer = () => {
               <a
                 href="https://github.com/sborichevskyi"
                 className={styles.footer__link}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Rights
               </a>
