@@ -33,10 +33,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 
   &__nums {
     border: 1px solid $element-color;
+    cursor: pointer;
   }
 
   .pages__nums--active {

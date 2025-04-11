@@ -24,13 +24,28 @@ export const Footer = () => {
         <div className={styles.footer__part}>
           <ul className={styles.footer__list}>
             <ul className={classNames(styles.footer__link, 'uppercase')}>
-              Github
+              <a
+                href="https://github.com/sborichevskyi"
+                className={styles.footer__link}
+              >
+                Github
+              </a>
             </ul>
             <ul className={classNames(styles.footer__link, 'uppercase')}>
-              Contacts
+              <a
+                href="https://github.com/sborichevskyi"
+                className={styles.footer__link}
+              >
+                Contacts
+              </a>
             </ul>
             <ul className={classNames(styles.footer__link, 'uppercase')}>
-              Rights
+              <a
+                href="https://github.com/sborichevskyi"
+                className={styles.footer__link}
+              >
+                Rights
+              </a>
             </ul>
           </ul>
         </div>

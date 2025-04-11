@@ -49,6 +49,7 @@
     aspect-ratio: 1 / 1;
     object-fit: contain;
     border: 1px solid $element-color;
+    cursor: pointer;
 
     @include on-tablet {
       width: 35px;

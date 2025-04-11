@@ -35,6 +35,7 @@
     width: 32px;
     height: 32px;
     border: 1px solid $element-color;
+    cursor: pointer;
   }
 
   &__colorContainer--active {
@@ -60,6 +61,7 @@
     background-color: white;
     color: $primary-color;
     padding: 7px 8px;
+    cursor: pointer;
 
     &:hover {
       border-color: $secondary-color;
@@ -92,11 +94,13 @@
   &__add {
     width: 70%;
     height: 48px;
+    cursor: pointer;
   }
 
   &__fav {
     width: 30%;
     height: 48px;
+    cursor: pointer;
   }
 }
 

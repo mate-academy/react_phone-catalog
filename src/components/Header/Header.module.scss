@@ -162,6 +162,10 @@
     }
   }
 
+  &__listLink:hover {
+    color: $primary-color;
+  }
+
   &__li {
     display: flex;
     align-items: center;

@@ -5,6 +5,12 @@
   width: 100%;
   height: auto;
   border: 1px solid $element-color;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
 
   &__image {
     width: 80px;
@@ -19,8 +25,6 @@
     margin: 16px
   }
 
-
-
   &__part2 {
     display: flex;
     align-items: center;
@@ -31,11 +35,17 @@
   &__button {
     border: solid 1px $icon-color;
     padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
   }
 
   &__block {
     display: flex;
     align-items: center;
     gap: 16px;
+    margin-right: 24px;
   }
 }

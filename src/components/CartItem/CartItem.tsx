@@ -15,7 +15,6 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ item, quantity }) => {
-  // const [quantity, setQuantity] = useState(1);
   const { setCartItems, hotProducts } = UseHooks();
 
   const minusQuantity = (curItem: DeviceShort) => {
@@ -72,7 +71,7 @@ export const CartItem: React.FC<Props> = ({ item, quantity }) => {
             alt="minus"
             onClick={() => minusQuantity(item)}
           />
-          <p className={styles.card__quantity}>{quantity}</p>
+          <p className={(styles.card__quantity, 'body-text')}>{quantity}</p>
           <img
             className={classNames(styles.card__button)}
             src={plus}
