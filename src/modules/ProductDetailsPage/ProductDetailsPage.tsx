@@ -14,10 +14,8 @@ import { Controls } from './components/Controls';
 import { About } from './components/About';
 import { TechSpecs } from './components/TechSpecs';
 import { GoBack } from '../../components/GoBack';
-import { YouMayAlsoLike } from './components/YouMayAlsoLike';
-import { getData } from '../../utils/fetchClient';
 import { Product } from '../../types/Product';
-import { set } from 'lodash';
+import { SliderSection } from '../../components/SliderSection';
 
 export const ProductDetailsPage = () => {
   const { itemId, category } = useParams();
@@ -96,10 +94,11 @@ export const ProductDetailsPage = () => {
           className={productDetailsPageStyles.details__techSpecs}
           selectedProduct={selectedProduct}
         />
-        <YouMayAlsoLike
+        {/* <YouMayAlsoLike
           className={productDetailsPageStyles.details__youMayAlsoLike}
           products={categoryProducts}
-        />
+        /> */}
+        <SliderSection products={categoryProducts} title="You may also like" />
       </div>
     </div>
   );

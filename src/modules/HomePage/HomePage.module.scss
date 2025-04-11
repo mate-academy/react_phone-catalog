@@ -1,0 +1,29 @@
+@import '/src/styles/main';
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include onTablet {
+    gap: 64px;
+  }
+
+  @include onDesktop {
+    gap: 80px;
+  }
+
+  &__sectionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include onTablet {
+      gap: 32px;
+    }
+
+    @include onDesktop {
+      gap: 56px;
+    }
+  }
+}

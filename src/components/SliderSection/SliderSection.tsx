@@ -6,29 +6,40 @@ import 'swiper/css/pagination';
 import { Grid, Navigation } from 'swiper/modules';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
-import productSliderStyles from './ProductSlider.module.scss';
-import { IconSvg } from '../IconSvg/IconSvg';
-import { ICON_DATA_PATHS } from '../../constants/iconDataPaths';
+import sliderSectionStyles from './SliderSection.module.scss';
 import classNames from 'classnames';
+import { ICON_DATA_PATHS } from '../../constants/iconDataPaths';
+import { IconSvg } from '../IconSvg/IconSvg';
+import { SectionTitle } from '../SectionTitle/SectionTitle';
 
 type Props = {
   products: Product[];
-  children?: React.ReactNode;
+  title: string;
+  sortFn?: (a: Product, b: Product) => number;
+  className?: string;
 };
 
-export const ProductSlider: React.FC<Props> = ({ products, children = '' }) => {
-  const visibleProducts = useMemo(() => products.slice(0, 10), [products]);
+export const SliderSection: React.FC<Props> = ({
+  products,
+  title,
+  sortFn = () => 0,
+  className = '',
+}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const prevButtonRef = useRef<HTMLButtonElement | null>(null);
   const nextButtonRef = useRef<HTMLButtonElement | null>(null);
+  const visibleProducts = useMemo(
+    () => [...products].sort(sortFn),
+    [products, sortFn],
+  );
   const isFirstSlide = activeIndex === 0;
   const isLastSlide = activeIndex === visibleProducts.length - 1;
 
   return (
-    <div className={productSliderStyles.productSlider}>
-      <div className={productSliderStyles.productSlider__header}>
-        {children}
-        <div className={productSliderStyles.productSlider__navButtons}>
+    <div className={classNames(className, sliderSectionStyles.sliderSection)}>
+      <div className={sliderSectionStyles.sliderSection__header}>
+        <SectionTitle title={title} />
+        <div className={sliderSectionStyles.sliderSection__navButtons}>
           <button
             ref={prevButtonRef}
             className={classNames('button', {
@@ -56,10 +67,10 @@ export const ProductSlider: React.FC<Props> = ({ products, children = '' }) => {
         </div>
       </div>
 
-      <div className={productSliderStyles.productSlider__sliderWrapper}>
+      <div className={sliderSectionStyles.sliderSection__sliderWrapper}>
         <Swiper
           modules={[Grid, Navigation]}
-          className={productSliderStyles.productSlider___slider}
+          className={sliderSectionStyles.sliderSection___slider}
           grid={{
             rows: 1,
             fill: 'row',
@@ -70,6 +81,14 @@ export const ProductSlider: React.FC<Props> = ({ products, children = '' }) => {
           }}
           onSlideChange={swiper => setActiveIndex(swiper.activeIndex)}
           spaceBetween={16}
+          onBeforeInit={swiper => {
+            const navigationParams = swiper.params.navigation;
+
+            if (navigationParams && typeof navigationParams !== 'boolean') {
+              navigationParams.prevEl = prevButtonRef.current;
+              navigationParams.nextEl = nextButtonRef.current;
+            }
+          }}
           breakpoints={{
             320: {
               slidesPerView: 4 / 3,
@@ -85,11 +104,11 @@ export const ProductSlider: React.FC<Props> = ({ products, children = '' }) => {
           {visibleProducts.map(product => (
             <SwiperSlide
               key={product.id}
-              className={productSliderStyles.productSlider___slide}
+              className={sliderSectionStyles.sliderSection___slide}
             >
               <ProductCard
                 product={product}
-                className={productSliderStyles.productSlider__productCard}
+                className={sliderSectionStyles.sliderSection__productCard}
               />
             </SwiperSlide>
           ))}

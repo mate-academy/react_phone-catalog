@@ -1,0 +1,33 @@
+@import '/src/styles/main';
+
+.pagination {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  gap: 4px;
+
+  @include onTablet {
+    display: flex;
+  }
+
+  &__button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white-color;
+    cursor: pointer;
+  }
+
+  &__buttonContent {
+    width: 100%;
+    height: 20%;
+    background-color: $elements-color;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+}

@@ -1,7 +1,73 @@
+@import '/src/styles/main';
+
 .carousel {
-  &__image {
-    width: 100px;
-    height: 100px;
-    background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+
+  &__sliderWrapper {
+    display: flex;
+    flex-direction: row;
+
+    @include pageGrid;
+  }
+
+  &__prevButton,
+  &__nextButton,
+  &__slider {
+    grid-row: 1;
+  }
+
+  &__prevButton,
+  &__nextButton {
+    display: none;
+    height: 100%;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  &__prevButton {
+    grid-column: 1;
+
+  }
+
+  &__nextButton {
+    grid-column: 12;
+    justify-self: end;
+
+    @include onDesktop {
+      grid-column: 24;
+    }
+  }
+
+  &__slider {
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 2 / -2;
+    }
+  }
+
+  &__slide {
+    box-sizing: border-box;
+    padding: 8px;
+    height: 320px;
+    padding: 0;
+    cursor: grab;
+
+    &--grabbing {
+      cursor: grabbing;
+    }
+
+    @include onTablet {
+      height: 250px;
+    }
+
+    @include onDesktop {
+      height: 400px;
+    }
   }
 }
