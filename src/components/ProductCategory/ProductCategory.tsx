@@ -19,7 +19,7 @@ type Props = {
   url: string;
 };
 
-export const ProductCategory: React.FC<Props> = ({
+const ProductCategory: React.FC<Props> = ({
   setDisabledIds,
   disabledIds,
   url,
@@ -275,3 +275,5 @@ export const ProductCategory: React.FC<Props> = ({
     );
   }
 };
+
+export default ProductCategory;

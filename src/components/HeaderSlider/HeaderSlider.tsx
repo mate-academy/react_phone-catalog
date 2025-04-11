@@ -12,7 +12,7 @@ type Props = {
   width: number;
 };
 
-export const HeaderSlider: React.FC<Props> = ({ width }) => {
+const HeaderSlider: React.FC<Props> = ({ width }) => {
   const [index, setIndex] = useState(0);
   const [imageId, setImageId] = useState(0);
   const { theme } = useTheme();
@@ -152,3 +152,5 @@ export const HeaderSlider: React.FC<Props> = ({ width }) => {
     </>
   );
 };
+
+export default HeaderSlider;

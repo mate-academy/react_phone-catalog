@@ -1,8 +1,8 @@
 import { useOutletContext } from 'react-router-dom';
-import { Cart } from '../components/Cart/Cart';
 import { Footer } from '../components/Footer/Footer';
 import { Header } from '../components/Header/Header';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+const Cart = React.lazy(() => import('../components/Cart/Cart'));
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;

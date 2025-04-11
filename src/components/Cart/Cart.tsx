@@ -8,7 +8,7 @@ import { useTheme } from '../ThemeContext/ThemeContext';
 import { CheckoutPopUp } from '../CheckoutPopUp/CheckoutPopUp';
 import { useEffect, useState } from 'react';
 
-export const Cart = () => {
+const Cart = () => {
   const [checkoutPopUp, setCheckoutPopUp] = useState(false);
   const navigate = useNavigate();
   const { search } = useLocation();
@@ -222,3 +222,5 @@ export const Cart = () => {
     );
   }
 };
+
+export default Cart;

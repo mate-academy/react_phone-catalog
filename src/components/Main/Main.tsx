@@ -13,7 +13,7 @@ type Props = {
   disabledIds: number[];
   width: number;
 };
-export const Main: React.FC<Props> = ({
+const Main: React.FC<Props> = ({
   setDisabledIds,
   disabledIds,
   width,
@@ -84,3 +84,5 @@ export const Main: React.FC<Props> = ({
     </>
   );
 };
+
+export default Main;

@@ -4,11 +4,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { useFavourites } from './FavouritesContext';
 import { Loader } from '../Loader/Loader';
 
-type Props = {
-  // categoryData: Phone[];
-};
-
-export const Favourites: React.FC<Props> = () => {
+const Favourites: React.FC = () => {
   const { favourites } = useFavourites();
 
   if (!favourites) {
@@ -60,3 +56,5 @@ export const Favourites: React.FC<Props> = () => {
     </>
   );
 };
+
+export default Favourites;
