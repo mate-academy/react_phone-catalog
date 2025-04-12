@@ -1,5 +1,15 @@
 @use './utils/variables.scss' as *;
 
+@font-face {
+  font-family: Mont-Regular;
+  src: url('./fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('./fonts/Mont-Bold.otf');
+}
+
 html, body {
   scroll-behavior: smooth;
   transition: all .5s ease-in-out;

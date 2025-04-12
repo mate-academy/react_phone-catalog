@@ -1,11 +1,6 @@
 @use '../../utils/variables.scss' as *;
 @use '../../utils/mixins.scss' as *;
 
-@font-face {
-  font-family: Mont-Bold;
-  src: url('./fonts/Mont-Bold.otf');
-}
-
 .header_nav_container {
   width: 100%;
   transition: all .5s ease-in-out;
@@ -272,6 +267,8 @@
   display: inline-block;
   width: 52px;
   height: 26px;
+  box-shadow: 0 0 20px var(--bread-crumbs-hover);
+  border-radius: 26px;
 }
 
 .switch input {
@@ -301,24 +298,24 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   box-shadow: 0 0 15px #2020203d;
-  background: white url('https://i.ibb.co/FxzBYR9/night.png');
+  background: #F1F2F9 ;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #4A4D58;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px #4A4D58;
 }
 
 input:checked + .slider::before {
   -webkit-transform: translateX(24px);
   -ms-transform: translateX(24px);
   transform: translateX(24px);
-  background: white url('https://i.ibb.co/7JfqXxB/sunny.png');
+  background: #313237 ;
   background-repeat: no-repeat;
   background-position: center;
 }

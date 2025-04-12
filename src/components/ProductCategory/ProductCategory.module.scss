@@ -1,16 +1,6 @@
 @use '../../utils/variables.scss' as *;
 @use '../../utils/mixins.scss' as *;
 
-@font-face {
-  font-family: Mont-Regular;
-  src: url('./fonts/Mont-Regular.otf');
-}
-
-@font-face {
-  font-family: Mont-Bold;
-  src: url('./fonts/Mont-Bold.otf');
-}
-
 .mobile_main_container {
   width: 100%;
   display: flex;
@@ -232,25 +222,6 @@
   flex-direction: row;
   gap: 16px;
 }
-
-// .mobile_arrow_button {
-//   width: 32px;
-//   height: 32px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: $main-background-white;
-//   border: 1px solid $button-border-default;
-
-//   &:hover {
-//     cursor: pointer;
-//     border: 1px solid $main-dark-gray;
-//   }
-// }
-
-// .mobile_arrow_left {
-//   transform: rotate(180deg);
-// }
 
 .mobile_page_num_container {
   width: fit-content;

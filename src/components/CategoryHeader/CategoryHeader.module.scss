@@ -1,15 +1,6 @@
 @use '../../utils/variables.scss' as *;
 @use '../../utils/mixins.scss' as *;
 
-@font-face {
-  font-family: Mont-Regular;
-  src: url('./fonts/Mont-Regular.otf');
-}
-
-@font-face {
-  font-family: Mont-Bold;
-  src: url('./fonts/Mont-Bold.otf');
-}
 
 .category_path_container {
   width: 288px;

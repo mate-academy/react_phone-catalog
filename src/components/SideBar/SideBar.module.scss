@@ -1,12 +1,6 @@
 @use '../../utils/variables.scss' as *;
 @use '../../utils/mixins.scss' as *;
 
-
-@font-face {
-  font-family: Mont-Bold;
-  src: url('./fonts/Mont-Bold.otf');
-}
-
 .side_bar_container {
   position: absolute;
   background-color: var(--bg-color);

@@ -1,16 +1,6 @@
 @use '../../utils/variables.scss' as *;
 @use '../../utils/mixins.scss' as *;
 
-@font-face {
-  font-family: Mont-Regular;
-  src: url('./fonts/Mont-Regular.otf');
-}
-
-@font-face {
-  font-family: Mont-Bold;
-  src: url('./fonts/Mont-Bold.otf');
-}
-
 .cart_main_container {
   width: 100%;
   min-height: 100vh;
