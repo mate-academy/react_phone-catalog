@@ -25,9 +25,9 @@ const CartPage = () => {
 
   return (
     <>
-        <Header setActiveAside={setActiveAside} width={width} />
-        <Cart />
-        <Footer disabledIds={disabledIds} />
+      <Header setActiveAside={setActiveAside} width={width} />
+      <Cart />
+      <Footer disabledIds={disabledIds} />
     </>
   );
 };

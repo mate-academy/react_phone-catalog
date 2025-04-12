@@ -12,10 +12,10 @@ const DetailsPage: React.FC = () => {
 
   return (
     <>
-        <ProductDetails
-          disabledIds={disabledIds}
-          setDisabledIds={setDisabledIds}
-        />
+      <ProductDetails
+        disabledIds={disabledIds}
+        setDisabledIds={setDisabledIds}
+      />
     </>
   );
 };

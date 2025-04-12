@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Outlet, useOutletContext, useParams } from 'react-router-dom';
 import { Footer, Header, ProductCategory } from '../utils/lazyComponents';
 
@@ -14,7 +14,7 @@ type Props = {
   url: string;
 };
 
-const AccessoriesPage: React.FC<Props> = ({ url }) => {
+export const HomePageCategory: React.FC<Props> = ({ url }) => {
   const { productId } = useParams();
   const { setActiveAside, width, disabledIds, setWidth, setDisabledIds } =
     useOutletContext<ContextType>();
@@ -29,19 +29,19 @@ const AccessoriesPage: React.FC<Props> = ({ url }) => {
 
   return (
     <>
-      <Header setActiveAside={setActiveAside} width={width} />
-      {!productId ? (
-        <ProductCategory
-          disabledIds={disabledIds}
-          setDisabledIds={setDisabledIds}
-          url={url}
-        />
-      ) : (
-        <Outlet context={{ disabledIds, setDisabledIds }} />
-      )}
-      <Footer disabledIds={disabledIds} />
+      <Suspense>
+        <Header setActiveAside={setActiveAside} width={width} />
+        {!productId ? (
+          <ProductCategory
+            disabledIds={disabledIds}
+            setDisabledIds={setDisabledIds}
+            url={url}
+          />
+        ) : (
+          <Outlet context={{ disabledIds, setDisabledIds }} />
+        )}
+        <Footer disabledIds={disabledIds} />
+      </Suspense>
     </>
   );
 };
-
-export default AccessoriesPage;

@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Cart.module.scss';
 import { useCartProducts } from './CartContext';
 import { Product } from '../../types/Product';
-import { Loader } from '../Loader/Loader';
 import { useTheme } from '../ThemeContext/ThemeContext';
 import { CheckoutPopUp } from '../CheckoutPopUp/CheckoutPopUp';
 import { useEffect, useState } from 'react';
@@ -67,13 +66,7 @@ const Cart = () => {
     }
   }, [checkoutPopUp]);
 
-  if (!cartProducts) {
-    return (
-      <div className={`${styles.cart_empty_container}`}>
-        <Loader />
-      </div>
-    );
-  } else if (cartProducts.length === 0) {
+  if (cartProducts.length === 0) {
     return (
       <main className={`${styles.cart_empty_container}`}>
         <h1 className={`${styles.cart_empty_title}`}>Cart is empty</h1>

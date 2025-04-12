@@ -145,9 +145,7 @@ const ProductDetails: React.FC<Props> = ({
 
   if (!activeData) {
     return (
-      <div className={`${styles.loader}`}>
         <Loader />
-      </div>
     );
   }
 

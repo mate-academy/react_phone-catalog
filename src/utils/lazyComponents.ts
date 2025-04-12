@@ -29,7 +29,9 @@ export const PhonesPage = React.lazy(() => import('../modules/PhonesPage'));
 export const TabletsPage = React.lazy(() => import('../modules/TabletsPage'));
 export const CartPage = React.lazy(() => import('../modules/CartPage'));
 export const DetailsPage = React.lazy(() => import('../modules/DetailsPage'));
-export const FavouritesPage = React.lazy(() => import('../modules/FavouritesPage'));
+export const FavouritesPage = React.lazy(
+  () => import('../modules/FavouritesPage'),
+);
 export const AccessoriesPage = React.lazy(
   () => import('../modules/AccessoriesPage'),
 );

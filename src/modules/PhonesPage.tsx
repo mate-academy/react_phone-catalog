@@ -29,17 +29,17 @@ const PhonesPage: React.FC<Props> = ({ url }) => {
 
   return (
     <>
-        <Header setActiveAside={setActiveAside} width={width} />
-        {!productId ? (
-          <ProductCategory
-            disabledIds={disabledIds}
-            setDisabledIds={setDisabledIds}
-            url={url}
-          />
-        ) : (
-          <Outlet context={{ disabledIds, setDisabledIds }} />
-        )}
-        <Footer disabledIds={disabledIds} />
+      <Header setActiveAside={setActiveAside} width={width} />
+      {!productId ? (
+        <ProductCategory
+          disabledIds={disabledIds}
+          setDisabledIds={setDisabledIds}
+          url={url}
+        />
+      ) : (
+        <Outlet context={{ disabledIds, setDisabledIds }} />
+      )}
+      <Footer disabledIds={disabledIds} />
     </>
   );
 };

@@ -1,19 +1,11 @@
 import React from 'react';
 import styles from './Favourites.module.scss';
 import { useFavourites } from './FavouritesContext';
-import { Loader } from '../Loader/Loader';
 import { ProductCard } from '../../utils/lazyComponents';
 
 const Favourites: React.FC = () => {
   const { favourites } = useFavourites();
-
-  if (!favourites) {
-    return (
-      <div className={`${styles.loader}`}>
-        <Loader />
-      </div>
-    );
-  } else if (favourites.length === 0) {
+  if (favourites.length === 0) {
     return (
       <section className={`${styles.cart_empty_container}`}>
         <h1 className={`${styles.cart_empty_title}`}>Favourites is empty</h1>

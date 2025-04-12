@@ -285,9 +285,3 @@
   color: $main-background-white;
   border: 1px solid var(--border-prod-card);
 }
-
-.loader_container {
-  width: 100vw;
-  height: calc(100vh - 200px);
-  @include flex-centered;
-}

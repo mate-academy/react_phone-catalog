@@ -1,6 +1,12 @@
 /* HTML: <div class="loader"></div> */
 @use '../../utils/variables.scss' as *;
 
+.loader_wrapper {
+  height: 100vh;
+  width: 100vw;
+  @include flex-centered;
+}
+
 .loader {
   height: 80px;
   aspect-ratio: 1;

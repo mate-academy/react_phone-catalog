@@ -34,9 +34,7 @@ export const Root = () => {
                   element={
                     <Suspense
                       fallback={
-                        <div>
                           <Loader />
-                        </div>
                       }
                     >
                       <HomePage />
@@ -49,9 +47,7 @@ export const Root = () => {
                   element={
                     <Suspense
                       fallback={
-                        <div>
                           <Loader />
-                        </div>
                       }
                     >
                       <PhonesPage url="phones" />
@@ -63,9 +59,7 @@ export const Root = () => {
                     element={
                       <Suspense
                         fallback={
-                          <div>
                             <Loader />
-                          </div>
                         }
                       >
                         <DetailsPage />
@@ -78,9 +72,7 @@ export const Root = () => {
                   element={
                     <Suspense
                       fallback={
-                        <div>
                           <Loader />
-                        </div>
                       }
                     >
                       <AccessoriesPage url="accessories" />
@@ -92,9 +84,7 @@ export const Root = () => {
                     element={
                       <Suspense
                         fallback={
-                          <div>
                             <Loader />
-                          </div>
                         }
                       >
                         <DetailsPage />
@@ -107,9 +97,7 @@ export const Root = () => {
                   element={
                     <Suspense
                       fallback={
-                        <div>
                           <Loader />
-                        </div>
                       }
                     >
                       <TabletsPage url="tablets" />
@@ -121,9 +109,7 @@ export const Root = () => {
                     element={
                       <Suspense
                         fallback={
-                          <div>
                             <Loader />
-                          </div>
                         }
                       >
                         <DetailsPage />
@@ -136,9 +122,7 @@ export const Root = () => {
                   element={
                     <Suspense
                       fallback={
-                        <div>
                           <Loader />
-                        </div>
                       }
                     >
                       <FavouritesPage />
@@ -150,9 +134,7 @@ export const Root = () => {
                   element={
                     <Suspense
                       fallback={
-                        <div>
                           <Loader />
-                        </div>
                       }
                     >
                       <CartPage />

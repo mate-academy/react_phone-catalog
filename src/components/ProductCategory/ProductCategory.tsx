@@ -9,7 +9,6 @@ import { ButtonDirection } from '../../enums/ButtonDirection';
 import { Product } from '../../types/Product';
 import { CategoryHeader } from '../CategoryHeader/CategoryHeader';
 import { getProducts } from '../../services/productsApi';
-import { Loader } from '../Loader/Loader';
 import { itemsOnPageData, sortByData } from '../../utils/SortCategory';
 import { ProductCard } from '../../utils/lazyComponents';
 
@@ -30,7 +29,6 @@ const ProductCategory: React.FC<Props> = ({
   const [sortBy, setSortBy] = useState(searchParams.get('sortBy') || '');
   const [pageNum, setPageNum] = useState(searchParams.get('pageNum') || '1');
   const [buttonsCount, setButtonsCount] = useState<string[]>(['1']);
-  const [loader, setLoader] = useState(false);
 
   const sortByCount = () => {
     if (itemsCount) {
@@ -181,100 +179,89 @@ const ProductCategory: React.FC<Props> = ({
   }, [itemsCount, sortBy, activeData]);
 
   useEffect(() => {
-    setLoader(true);
     getProducts(`${url}`)
       .then(data => {
-        setLoader(false);
         setActiveData(data);
       })
       .catch(e => {
-        setLoader(false);
         throw new Error(e);
       });
   }, [url]);
 
-  if (loader || !activeData) {
-    return (
-      <div className={`${styles.loader_container}`}>
-        <Loader />
-      </div>
-    );
-  } else {
-    return (
-      <>
-        <main className={`${styles.mobile_main_container}`}>
-          <CategoryHeader categoryData={activeData} />
-          <div className={`${styles.mobile_main_select_container}`}>
-            <div className={`${styles.mobile_select_container}`}>
-              <p
-                className={classNames(
-                  `${styles.mobile_select_parag} ${styles.first_select_button}`,
-                )}
-              >
-                Sort by
-              </p>
-              <DropDown
-                id={'0'}
-                data={sortByData}
-                setSort={setSortBy}
-                searchParams={searchParams}
-              />
-            </div>
-            <div className={`${styles.mobile_select_container}`}>
-              <p className={`${styles.mobile_select_parag}`}>Items on page</p>
-              <DropDown
-                id={'1'}
-                data={itemsOnPageData}
-                setSort={setItemsCount}
-                searchParams={searchParams}
-              />
-            </div>
+  return (
+    <>
+      <main className={`${styles.mobile_main_container}`}>
+        <CategoryHeader categoryData={activeData} />
+        <div className={`${styles.mobile_main_select_container}`}>
+          <div className={`${styles.mobile_select_container}`}>
+            <p
+              className={classNames(
+                `${styles.mobile_select_parag} ${styles.first_select_button}`,
+              )}
+            >
+              Sort by
+            </p>
+            <DropDown
+              id={'0'}
+              data={sortByData}
+              setSort={setSortBy}
+              searchParams={searchParams}
+            />
           </div>
+          <div className={`${styles.mobile_select_container}`}>
+            <p className={`${styles.mobile_select_parag}`}>Items on page</p>
+            <DropDown
+              id={'1'}
+              data={itemsOnPageData}
+              setSort={setItemsCount}
+              searchParams={searchParams}
+            />
+          </div>
+        </div>
 
-          <section className={`${styles.mobile_phones_container}`}>
-            {sortByCategory()
-              .slice(sortByCount()[0], sortByCount()[1])
-              .map(product => (
-                <ProductCard product={product} key={product.id} onPage={true} />
-              ))}
-          </section>
+        <section className={`${styles.mobile_phones_container}`}>
+          {sortByCategory()
+            .slice(sortByCount()[0], sortByCount()[1])
+            .map(product => (
+              <ProductCard product={product} key={product.id} onPage={true} />
+            ))}
+        </section>
 
-          <section className={`${styles.mobile_button_container}`}>
-            {buttonsCount.length > 0 && buttonsCount[0] !== '0' && (
-              <Button
-                direction={ButtonDirection.left}
-                onClick={handlePageChangeLeft}
-                buttonId={5}
-                disabledIds={disabledIds}
-              />
-            )}
+        <section className={`${styles.mobile_button_container}`}>
+          {buttonsCount.length > 0 && buttonsCount[0] !== '0' && (
+            <Button
+              direction={ButtonDirection.left}
+              onClick={handlePageChangeLeft}
+              buttonId={5}
+              disabledIds={disabledIds}
+            />
+          )}
 
-            <div className={`${styles.mobile_page_num_container}`}>
-              {buttonsCount.map((button, id) => {
-                return (
-                  <button
-                    className={handleButtonClassName(button)}
-                    onClick={() => handlePageChange(button)}
-                    key={id}
-                  >
-                    {button}
-                  </button>
-                );
-              })}
-            </div>
-            {buttonsCount.length > 0 && buttonsCount[0] !== '0' && (
-              <Button
-                direction={ButtonDirection.right}
-                onClick={handlePageChangeRigt}
-                buttonId={6}
-                disabledIds={disabledIds}
-              />
-            )}
-          </section>
-        </main>
-      </>
-    );
-  }
+          <div className={`${styles.mobile_page_num_container}`}>
+            {buttonsCount.map((button, id) => {
+              return (
+                <button
+                  className={handleButtonClassName(button)}
+                  onClick={() => handlePageChange(button)}
+                  key={id}
+                >
+                  {button}
+                </button>
+              );
+            })}
+          </div>
+          {buttonsCount.length > 0 && buttonsCount[0] !== '0' && (
+            <Button
+              direction={ButtonDirection.right}
+              onClick={handlePageChangeRigt}
+              buttonId={6}
+              disabledIds={disabledIds}
+            />
+          )}
+        </section>
+      </main>
+    </>
+  );
 };
 
 export default ProductCategory;
