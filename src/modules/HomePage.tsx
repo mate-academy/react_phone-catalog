@@ -1,14 +1,7 @@
 import React, { Dispatch, SetStateAction, Suspense, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-const HeaderTitle = React.lazy(
-  () => import('../components/HeaderTitle/HeaderTitle'),
-);
-const HeaderSlider = React.lazy(
-  () => import('../components/HeaderSlider/HeaderSlider'),
-);
-const Main = React.lazy(() => import('../components/Main/Main'));
-const Header = React.lazy(() => import('../components/Header/Header'));
-const Footer = React.lazy(() => import('../components/Footer/Footer'));
+import { Footer, Header, HeaderSlider, HeaderTitle, Main } from '../utils/lazyComponents';
+
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;

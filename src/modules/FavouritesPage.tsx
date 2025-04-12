@@ -1,10 +1,7 @@
 import React, { Suspense, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-const Favourites = React.lazy(
-  () => import('../components/Favourites/Favourites'),
-);
-const Header = React.lazy(() => import('../components/Header/Header'));
-const Footer = React.lazy(() => import('../components/Footer/Footer'));
+import { Favourites, Footer, Header } from '../utils/lazyComponents';
+
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;

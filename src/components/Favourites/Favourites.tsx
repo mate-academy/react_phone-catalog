@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Favourites.module.scss';
 import { useFavourites } from './FavouritesContext';
 import { Loader } from '../Loader/Loader';
-const ProductCard = React.lazy(() => import('../ProductCard/ProductCard'));
+import { ProductCard } from '../../utils/lazyComponents';
 
 const Favourites: React.FC = () => {
   const { favourites } = useFavourites();

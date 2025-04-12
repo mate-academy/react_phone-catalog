@@ -1,8 +1,7 @@
 import React, { Suspense } from 'react';
 import { useOutletContext } from 'react-router-dom';
-const ProductDetails = React.lazy(
-  () => import('../components/ProductDetails/ProductDetails'),
-);
+import { ProductDetails } from '../utils/lazyComponents';
+
 
 type ContextType = {
   disabledIds: number[];

@@ -13,7 +13,7 @@ import { useCartProducts } from '../Cart/CartContext';
 import { Loader } from '../Loader/Loader';
 import { useTheme } from '../ThemeContext/ThemeContext';
 import { useFavourites } from '../Favourites/FavouritesContext';
-const ProductCard = React.lazy(() => import('../ProductCard/ProductCard'));
+import { ProductCard } from '../../utils/lazyComponents';
 
 type Props = {
   productId?: string;

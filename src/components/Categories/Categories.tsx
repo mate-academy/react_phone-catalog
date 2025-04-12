@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Categories.module.scss';
 import phones from '../../../public/api/phones.json';
 import accessories from '../../../public/api/accessories.json';
+import tablets from '../../../public/api/tablets.json';
 import { Link } from 'react-router-dom';
 
 const Categories: React.FC = () => {
@@ -17,7 +18,7 @@ const Categories: React.FC = () => {
       src: './img/categories/tablets.png',
       alt: 'tablet image',
       title: 'Tablets',
-      count: '24',
+      count: tablets.length.toString(),
       href: '/tablets',
     },
     {

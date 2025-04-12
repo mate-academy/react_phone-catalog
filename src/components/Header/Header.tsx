@@ -48,7 +48,7 @@ const Header: React.FC<Props> = ({ setActiveAside, width }) => {
         <>
           <nav className={`${styles.header_nav_container}`}>
             <div className={`${styles.header_nav_logo_container}`}>
-              <Link to="/">
+              <Link to="../">
                 <img
                   src={
                     theme === 'light'
@@ -97,7 +97,7 @@ const Header: React.FC<Props> = ({ setActiveAside, width }) => {
         <>
           <nav className={`${styles.header_nav_container}`}>
             <div className={`${styles.header_nav_logo_container}`}>
-              <Link to="/">
+              <Link to="../">
                 <img
                   src={
                     theme === 'light'
@@ -110,22 +110,22 @@ const Header: React.FC<Props> = ({ setActiveAside, width }) => {
             </div>
 
             <div className={`${styles.header_nav_pages_container}`}>
-              <NavLink to="/" className={handleActiveLink}>
+              <NavLink to="../" className={handleActiveLink}>
                 <div className={`${styles.header_nav_title_wrapper}`}>
                   <h3 className={`${styles.header_nav_title} `}>home</h3>
                 </div>
               </NavLink>
-              <NavLink to="/phones" className={handleActiveLink}>
+              <NavLink to="../phones" className={handleActiveLink}>
                 <div className={`${styles.header_nav_title_wrapper}`}>
                   <h3 className={`${styles.header_nav_title}`}>phones</h3>
                 </div>
               </NavLink>
-              <NavLink to="/tablets" className={handleActiveLink}>
+              <NavLink to="../tablets" className={handleActiveLink}>
                 <div className={`${styles.header_nav_title_wrapper}`}>
                   <h3 className={`${styles.header_nav_title}`}>tablets</h3>
                 </div>
               </NavLink>
-              <NavLink to="/accessories" className={handleActiveLink}>
+              <NavLink to="../accessories" className={handleActiveLink}>
                 <div className={`${styles.header_nav_title_wrapper}`}>
                   <h3 className={`${styles.header_nav_title}`}>accessories</h3>
                 </div>
@@ -144,7 +144,7 @@ const Header: React.FC<Props> = ({ setActiveAside, width }) => {
                   <span className={`${styles.slider} ${styles.round}`}></span>
                 </label>
               </div>
-              <NavLink to={'/favourites'} className={handleFavLink}>
+              <NavLink to={'../favourites'} className={handleFavLink}>
                 <img
                   src={
                     theme === 'light'
@@ -160,7 +160,7 @@ const Header: React.FC<Props> = ({ setActiveAside, width }) => {
                   </span>
                 )}
               </NavLink>
-              <NavLink to={'/cart'} className={handleCartLink}>
+              <NavLink to={'../cart'} className={handleCartLink}>
                 <img
                   src={
                     theme === 'light'

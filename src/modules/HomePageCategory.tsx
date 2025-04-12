@@ -1,10 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import { Outlet, useOutletContext, useParams } from 'react-router-dom';
-const ProductCategory = React.lazy(
-  () => import('../components/ProductCategory/ProductCategory'),
-);
-const Header = React.lazy(() => import('../components/Header/Header'));
-const Footer = React.lazy(() => import('../components/Footer/Footer'));
+import { Footer, Header, ProductCategory } from '../utils/lazyComponents';
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;
