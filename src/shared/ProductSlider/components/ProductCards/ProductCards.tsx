@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Product } from '../../../../types/Products';
 import s from './ProductCards.module.scss';
 import { Link } from 'react-router-dom';
@@ -21,34 +21,40 @@ export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
     setLoadedImages(prev => [...prev, id]);
   };
 
-  const toggleFavourites = (id: number) => {
-    const newItem = products.find(item => item.id === id)?.id;
+  const toggleFavourites = useCallback(
+    (id: number) => {
+      const newItem = products.find(item => item.id === id)?.id;
 
-    if (!newItem) {
-      return;
-    }
+      if (!newItem) {
+        return;
+      }
 
-    if (!favourites.find(item => item === id)) {
-      setFavourites([...favourites, newItem]);
-    } else {
-      const deleteFavourites = favourites.filter(item => item !== newItem);
+      if (!favourites.find(item => item === id)) {
+        setFavourites([...favourites, newItem]);
+      } else {
+        const deleteFavourites = favourites.filter(item => item !== newItem);
 
-      setFavourites(deleteFavourites);
-    }
-  };
+        setFavourites(deleteFavourites);
+      }
+    },
+    [products, favourites, setFavourites],
+  );
 
-  const addToShoppingBag = (id: number) => {
-    const newItem = products.find(item => item.id === id)?.id;
+  const addToShoppingBag = useCallback(
+    (id: number) => {
+      const newItem = products.find(item => item.id === id)?.id;
 
-    if (!newItem) {
-      return;
-    }
+      if (!newItem) {
+        return;
+      }
 
-    setShoppingBag({
-      ...shoppingBag,
-      [newItem]: 1,
-    });
-  };
+      setShoppingBag({
+        ...shoppingBag,
+        [newItem]: 1,
+      });
+    },
+    [products, shoppingBag, setShoppingBag],
+  );
 
   useEffect(() => {
     if (products.length > 0) {

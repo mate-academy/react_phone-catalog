@@ -1,5 +1,5 @@
 import s from './ItemCard.module.scss';
-import { useContext, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import classNames from 'classnames';
 import { ProductContext } from '../../shared/context/ProductsContext';
 import { CatalogHeaderPath } from '../../shared/CatalogHeaderPath';
@@ -19,38 +19,47 @@ export const ItemCard = () => {
     useContext(RightButtonContext);
   const { productId } = useParams();
 
-  const getProductId = (id: string) => {
-    return products.find(item => item.itemId === id)?.id || 0;
-  };
+  const getProductId = useCallback(
+    (id: string) => {
+      return products.find(item => item.itemId === id)?.id || 0;
+    },
+    [products],
+  );
 
-  const toggleFavourites = (id: string) => {
-    const newItem = getProductId(id);
+  const toggleFavourites = useCallback(
+    (id: string) => {
+      const newItem = getProductId(id);
 
-    if (!newItem) {
-      return;
-    }
+      if (!newItem) {
+        return;
+      }
 
-    if (!favourites.find(item => item === newItem)) {
-      return setFavourites([...favourites, newItem]);
-    } else {
-      const deleteFavourites = favourites.filter(item => item !== newItem);
+      if (!favourites.find(item => item === newItem)) {
+        return setFavourites([...favourites, newItem]);
+      } else {
+        const deleteFavourites = favourites.filter(item => item !== newItem);
 
-      return setFavourites(deleteFavourites);
-    }
-  };
+        return setFavourites(deleteFavourites);
+      }
+    },
+    [favourites, setFavourites, getProductId],
+  );
 
-  const addToShoppingBag = (id: string) => {
-    const newItem = getProductId(id);
+  const addToShoppingBag = useCallback(
+    (id: string) => {
+      const newItem = getProductId(id);
 
-    if (!newItem) {
-      return;
-    }
+      if (!newItem) {
+        return;
+      }
 
-    setShoppingBag({
-      ...shoppingBag,
-      [newItem]: 1,
-    });
-  };
+      setShoppingBag({
+        ...shoppingBag,
+        [newItem]: 1,
+      });
+    },
+    [shoppingBag, setShoppingBag, getProductId],
+  );
 
   if (!productId || !+productId || Number.isInteger(productId)) {
     return <Navigate to="/not-found" />;

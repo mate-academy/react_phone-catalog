@@ -55,7 +55,12 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       productsTabletLength,
       productsAccessoriesLength,
     }),
-    [products],
+    [
+      products,
+      productsPhoneLength,
+      productsTabletLength,
+      productsAccessoriesLength,
+    ],
   );
 
   return (
