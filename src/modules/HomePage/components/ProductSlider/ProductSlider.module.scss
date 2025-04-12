@@ -78,6 +78,7 @@
 
     @include desktop {
       height: 506px;
+      flex: 0 0 calc((100% - 4 * 15px) / 4);
     }
   }
 }

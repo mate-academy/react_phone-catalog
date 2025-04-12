@@ -44,6 +44,7 @@
 
   &__item {
     min-width: 100%;
+    height: 100%;
     box-sizing: border-box;
     overflow: hidden;
   }
@@ -52,10 +53,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-
-    @media(min-width: 2000px) {
-      height: 1000px;
-    }
   }
 
   &__arrow {
