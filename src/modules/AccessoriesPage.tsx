@@ -14,7 +14,7 @@ type Props = {
   url: string;
 };
 
-export const AccessoriesPage: React.FC<Props> = ({ url }) => {
+const AccessoriesPage: React.FC<Props> = ({ url }) => {
   const { productId } = useParams();
   const { setActiveAside, width, disabledIds, setWidth, setDisabledIds } =
     useOutletContext<ContextType>();
@@ -45,3 +45,5 @@ export const AccessoriesPage: React.FC<Props> = ({ url }) => {
     </>
   );
 };
+
+export default AccessoriesPage;

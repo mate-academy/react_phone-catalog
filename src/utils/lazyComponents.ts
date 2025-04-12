@@ -25,3 +25,6 @@ export const HeaderSlider = React.lazy(
 export const ProductCategory = React.lazy(
   () => import('../components/ProductCategory/ProductCategory'),
 );
+export const PhonesPage = React.lazy(() => import('../modules/PhonesPage'));
+export const TabletsPage = React.lazy(() => import('../modules/TabletsPage'));
+export const AccessoriesPage = React.lazy(() => import('../modules/AccessoriesPage'));
