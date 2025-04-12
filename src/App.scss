@@ -38,3 +38,8 @@ main {
 footer {
   width: 100%;
 }
+
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none; // блокує свайпи на мобілках
+}

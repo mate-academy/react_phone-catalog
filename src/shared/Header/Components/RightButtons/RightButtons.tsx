@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import s from './RightButtons.module.scss';
 import classNames from 'classnames';
 import { BurgerContext } from '../../../context/BurgerContext';
@@ -19,6 +19,18 @@ export const RightButtons: React.FC<Props> = ({ burgerMenu = false }) => {
 
   const toggleBurgerMenu = () =>
     setBurgerMenuActivate((prev: boolean) => !prev);
+
+  useEffect(() => {
+    if (burgerMenuActivate) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [burgerMenuActivate]);
 
   return (
     <div className={classNames(s.right__buttons, onMobile)}>
