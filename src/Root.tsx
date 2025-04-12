@@ -32,11 +32,7 @@ export const Root = () => {
                 <Route
                   index
                   element={
-                    <Suspense
-                      fallback={
-                          <Loader />
-                      }
-                    >
+                    <Suspense fallback={<Loader />}>
                       <HomePage />
                     </Suspense>
                   }
@@ -45,11 +41,7 @@ export const Root = () => {
                 <Route
                   path="phones"
                   element={
-                    <Suspense
-                      fallback={
-                          <Loader />
-                      }
-                    >
+                    <Suspense fallback={<Loader />}>
                       <PhonesPage url="phones" />
                     </Suspense>
                   }
@@ -57,11 +49,7 @@ export const Root = () => {
                   <Route
                     path=":productId"
                     element={
-                      <Suspense
-                        fallback={
-                            <Loader />
-                        }
-                      >
+                      <Suspense fallback={<Loader />}>
                         <DetailsPage />
                       </Suspense>
                     }
@@ -70,11 +58,7 @@ export const Root = () => {
                 <Route
                   path="accessories"
                   element={
-                    <Suspense
-                      fallback={
-                          <Loader />
-                      }
-                    >
+                    <Suspense fallback={<Loader />}>
                       <AccessoriesPage url="accessories" />
                     </Suspense>
                   }
@@ -82,11 +66,7 @@ export const Root = () => {
                   <Route
                     path=":productId"
                     element={
-                      <Suspense
-                        fallback={
-                            <Loader />
-                        }
-                      >
+                      <Suspense fallback={<Loader />}>
                         <DetailsPage />
                       </Suspense>
                     }
@@ -95,11 +75,7 @@ export const Root = () => {
                 <Route
                   path="tablets"
                   element={
-                    <Suspense
-                      fallback={
-                          <Loader />
-                      }
-                    >
+                    <Suspense fallback={<Loader />}>
                       <TabletsPage url="tablets" />
                     </Suspense>
                   }
@@ -107,11 +83,7 @@ export const Root = () => {
                   <Route
                     path=":productId"
                     element={
-                      <Suspense
-                        fallback={
-                            <Loader />
-                        }
-                      >
+                      <Suspense fallback={<Loader />}>
                         <DetailsPage />
                       </Suspense>
                     }
@@ -120,11 +92,7 @@ export const Root = () => {
                 <Route
                   path="favourites"
                   element={
-                    <Suspense
-                      fallback={
-                          <Loader />
-                      }
-                    >
+                    <Suspense fallback={<Loader />}>
                       <FavouritesPage />
                     </Suspense>
                   }
@@ -132,11 +100,7 @@ export const Root = () => {
                 <Route
                   path="cart"
                   element={
-                    <Suspense
-                      fallback={
-                          <Loader />
-                      }
-                    >
+                    <Suspense fallback={<Loader />}>
                       <CartPage />
                     </Suspense>
                   }

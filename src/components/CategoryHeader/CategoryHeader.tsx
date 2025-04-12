@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './CategoryHeader.module.scss';
 import { Product } from '../../types/Product';
+import { Loader } from '../Loader/Loader';
 import { useTheme } from '../ThemeContext/ThemeContext';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +11,15 @@ type Props = {
 
 export const CategoryHeader: React.FC<Props> = ({ categoryData }) => {
   const { theme } = useTheme();
+
+  if (!categoryData || categoryData.length === 0) {
+    return (
+      <div className={`${styles.loader}`}>
+        <Loader />
+      </div>
+    );
+  }
+
   const categoryName = categoryData[0].category;
 
   return (

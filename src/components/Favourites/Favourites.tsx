@@ -5,6 +5,7 @@ import { ProductCard } from '../../utils/lazyComponents';
 
 const Favourites: React.FC = () => {
   const { favourites } = useFavourites();
+
   if (favourites.length === 0) {
     return (
       <section className={`${styles.cart_empty_container}`}>
