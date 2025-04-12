@@ -1,7 +1,12 @@
 import React, { Dispatch, SetStateAction, Suspense, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Footer, Header, HeaderSlider, HeaderTitle, Main } from '../utils/lazyComponents';
-
+import {
+  Footer,
+  Header,
+  HeaderSlider,
+  HeaderTitle,
+  Main,
+} from '../utils/lazyComponents';
 
 type ContextType = {
   setActiveAside: (arg: boolean) => void;

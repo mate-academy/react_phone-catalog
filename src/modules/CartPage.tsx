@@ -4,7 +4,6 @@ import Header from '../components/Header/Header';
 import Cart from '../components/Cart/Cart';
 import Footer from '../components/Footer/Footer';
 
-
 type ContextType = {
   setActiveAside: (arg: boolean) => void;
   width: number;

@@ -2,7 +2,6 @@ import React, { Suspense, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { Favourites, Footer, Header } from '../utils/lazyComponents';
 
-
 type ContextType = {
   setActiveAside: (arg: boolean) => void;
   width: number;

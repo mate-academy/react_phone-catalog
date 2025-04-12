@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './modules/HomePage';
-import { HomePageCategory } from './modules/HomePageCategory';
 import { DetailsPage } from './modules/DetailsPage';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { FavouritesProvider } from './components/Favourites/FavouritesContext';
@@ -14,6 +13,9 @@ import { CartPage } from './modules/CartPage';
 import { CartProvider } from './components/Cart/CartContext';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { ThemeProvider } from './components/ThemeContext/ThemeContext';
+import { PhonesPage } from './modules/PhonesPage';
+import { AccessoriesPage } from './modules/AccessoriesPage';
+import { TabletsPage } from './modules/TabletsPage';
 
 export const Root = () => {
   return (
@@ -27,30 +29,21 @@ export const Root = () => {
                 <Route path="home" element={<Navigate to={'/'} replace />} />
                 <Route
                   path="phones"
-                  element={<HomePageCategory url="phones" />}
+                  element={<PhonesPage url="phones" />}
                 >
-                  <Route
-                    path=":productId"
-                    element={<DetailsPage />}
-                  />
+                  <Route path=":productId" element={<DetailsPage />} />
                 </Route>
                 <Route
                   path="accessories"
-                  element={<HomePageCategory url="accessories" />}
+                  element={<AccessoriesPage url="accessories" />}
                 >
-                  <Route
-                    path=":productId"
-                    element={<DetailsPage />}
-                  />
+                  <Route path=":productId" element={<DetailsPage />} />
                 </Route>
                 <Route
                   path="tablets"
-                  element={<HomePageCategory url="tablets" />}
+                  element={<TabletsPage url="tablets" />}
                 >
-                  <Route
-                    path=":productId"
-                    element={<DetailsPage />}
-                  />
+                  <Route path=":productId" element={<DetailsPage />} />
                 </Route>
                 <Route path="favourites" element={<FavouritesPage />} />
                 <Route path="cart" element={<CartPage />} />

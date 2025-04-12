@@ -1,7 +1,11 @@
 import React from 'react';
 
-export const ProductCard = React.lazy(() => import('../components/ProductCard/ProductCard'));
-export const Categories = React.lazy(() => import('../components/Categories/Categories'));
+export const ProductCard = React.lazy(
+  () => import('../components/ProductCard/ProductCard'),
+);
+export const Categories = React.lazy(
+  () => import('../components/Categories/Categories'),
+);
 export const Cart = React.lazy(() => import('../components/Cart/Cart'));
 export const Header = React.lazy(() => import('../components/Header/Header'));
 export const Footer = React.lazy(() => import('../components/Footer/Footer'));

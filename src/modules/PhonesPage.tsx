@@ -14,7 +14,7 @@ type Props = {
   url: string;
 };
 
-export const HomePageCategory: React.FC<Props> = ({ url }) => {
+export const PhonesPage: React.FC<Props> = ({ url }) => {
   const { productId } = useParams();
   const { setActiveAside, width, disabledIds, setWidth, setDisabledIds } =
     useOutletContext<ContextType>();
