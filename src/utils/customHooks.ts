@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { SearchParams } from '../types/SearchParams';
+import { useAppSelector } from "../app/hooks";
+
+export interface ProductNumber {
+  [key: string]: number;
+}
 
 export function useLocaleStorage<T>(
   key: string,
@@ -81,4 +86,14 @@ export const useScrollToTop = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname, search]);
+};
+
+export const useProductNumbers = (): ProductNumber => {
+  const products = useAppSelector(state => state.products.products);
+
+  return {
+    phones: products.filter(p => p.category === 'phones').length,
+    tablets: products.filter(p => p.category === 'tablets').length,
+    accessories: products.filter(p => p.category === 'accessories').length,
+  };
 };

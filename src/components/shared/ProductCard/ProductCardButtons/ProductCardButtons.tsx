@@ -1,31 +1,36 @@
 import './ProductCardButtons.style.scss';
 import classNames from 'classnames';
 
-import { Product } from '../../../../types/Product';
 import { LocalStorageContext } from '../../../../app/Contexts/LocalStorageContext';
 import { useContext } from 'react';
 
 import favIconFilled from '../../../../../public/icons/favourites-filled.svg';
 import favIcon from '../../../../../public/icons/favourites.svg';
+import { useAppSelector } from '../../../../app/hooks';
 
 type Props = {
-  product: Product;
+  id: string;
+  productPage?: boolean;
 };
 
-export const ProductCardButtons: React.FC<Props> = ({ product }) => {
-  const { id } = product;
-
+export const ProductCardButtons: React.FC<Props> = ({ id, productPage }) => {
   const { cartItems, favItems, updateFavList, updateCart } =
     useContext(LocalStorageContext);
 
-  const isFav = favItems.some(item => item.id === id);
-  const isInCart = cartItems.some(item => item.id === id);
+  const isFav = favItems.some(item => item.itemId === id);
+  const isInCart = cartItems.some(item => item.itemId === id);
+
+  const product = useAppSelector(state => state.products.products).find(product => product.itemId === id);
 
   return (
-    <div className="buttons">
+    <div className={classNames("buttons", {"buttons--product-page": productPage})}>
       <button
         type="button"
-        onClick={() => updateCart(product)}
+        onClick={() => {
+          if (product) {
+            updateCart(product)
+          }
+        }}
         className={classNames(
           'buttons__add-to-cart',
           { selected: isInCart },
@@ -35,7 +40,11 @@ export const ProductCardButtons: React.FC<Props> = ({ product }) => {
       </button>
 
       <div
-        onClick={() => updateFavList(product)}
+        onClick={() => () => {
+          if(product) {
+            updateFavList(product)
+          }
+        }}
         className="buttons__add-to-fav"
       >
         <img

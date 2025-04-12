@@ -1,12 +1,20 @@
 import './Favorites.style.scss';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ProductList } from '../../shared/ProductList/ProductList';
 import { LocalStorageContext } from '../../../app/Contexts/LocalStorageContext';
 import { Breadcrumbs } from '../../shared/Breadcrumbs/Breadcrumbs';
+import { resetCrumbs } from '../../../features/CrumbsSlice/CrumbsSlice';
+import { useAppDispatch } from '../../../app/hooks';
 
 export const Favorites = () => {
   const { favItems } = useContext(LocalStorageContext);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(resetCrumbs(['favorite']));
+  });
+
   return (
     <div className="favorites">
       <Breadcrumbs />

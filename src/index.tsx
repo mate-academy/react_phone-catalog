@@ -23,27 +23,30 @@ createRoot(document.getElementById('root') as HTMLElement).render(
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
 
-
-            <Route path={routes.phones} element={<Phones />}>
+            <Route path={routes.phones}>
+              <Route index element={<Phones />} />
               <Route path=":id" element={<ProductDetails />} />
             </Route>
 
-            <Route path={routes.tablets} element={<Tablets />}>
+            <Route path={routes.tablets}>
+              <Route index element={<Tablets />} />
               <Route path=":id" element={<ProductDetails />} />
             </Route>
 
-            <Route path={routes.accessories} element={<Accessories />}>
+            <Route path={routes.accessories}>
+              <Route index element={<Accessories />} />
               <Route path=":id" element={<ProductDetails />} />
             </Route>
 
-            <Route path={routes.fav} element={<Favorites />}>
+            <Route path={routes.fav}>
+              <Route index element={<Favorites />} />
               <Route path=":id" element={<ProductDetails />} />
             </Route>
 
-            <Route path={routes.cart} element={<Cart />}>
+            <Route path={routes.cart}>
+              <Route index element={<Cart />} />
               <Route path=":id" element={<ProductDetails />} />
             </Route>
-
 
             <Route path="*" element={<p>Page not found</p>}></Route>
           </Route>

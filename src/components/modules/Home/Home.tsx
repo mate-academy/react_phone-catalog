@@ -4,42 +4,34 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { Slider } from '../../shared/Slider/Slider';
 import { loadProducts } from '../../../features/ProductsSlice/ProductsSlice';
-import { HomeSwiper } from './HomeSwiper/HomeSwiper';
+import { CustomSwiper } from '../../shared/Swiper/Swiper';
 
 import { Categories } from '../../../types/Categories';
 
 import phones from '../../../../public/img/phones.png';
 import tablets from '../../../../public/img/tablets.png';
 import accessories from '../../../../public/img/accessories.png';
-import { loadPhones } from '../../../features/PhonesSlice/PhonesSlice';
-import { loadTablets } from '../../../features/TabletsSlice/TabletsSlice';
-import { loadAccessories } from '../../../features/AccessoriesSlice/AccessoriesSlice';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../shared/Routs/Routs';
-
-interface ProductNumber {
-  [key: string]: number;
-}
+import { useProductNumbers } from '../../../utils/customHooks';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
+
   const hotPrices = useAppSelector(state => state.products.products)
-    .filter(product => product.price)
+    .toSorted((a , b) => a.price - b.price)
     .slice(0, 20);
 
-  const productNumber: ProductNumber = {
-    phones: useAppSelector(state => state.phones.phones).length,
-    tablets: useAppSelector(state => state.tablets.tablets).length,
-    accessories: useAppSelector(state => state.accessories.accessories).length,
-  };
+  const newModels = useAppSelector(state => state.products.products)
+  .toSorted((a, b) => b.year - a.year)
+  .slice(0, 20);
 
   const navigate = useNavigate();
 
+  const productNumber = useProductNumbers();
+
   useEffect(() => {
     dispatch(loadProducts());
-    dispatch(loadPhones());
-    dispatch(loadTablets());
-    dispatch(loadAccessories());
   }, []);
 
   return (
@@ -47,12 +39,12 @@ export const Home = () => {
       <h1 className="home__h1">Welcome to Nice Gadgets store!</h1>
 
       <div className="home__swiper">
-        <HomeSwiper />
+        <CustomSwiper />
       </div>
 
       <div className="home__new-models">
         {hotPrices.length > 0 && (
-          <Slider category={'newModels'} products={hotPrices} />
+          <Slider category={'newModels'} products={newModels} />
         )}
       </div>
 

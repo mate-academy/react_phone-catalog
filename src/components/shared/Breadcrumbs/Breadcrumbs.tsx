@@ -1,15 +1,15 @@
 import './Breadcrumbs.style.scss';
 
 import classNames from 'classnames';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { routes } from '../Routs/Routs';
+import { useAppSelector } from '../../../app/hooks';
+
 
 export const Breadcrumbs = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const breadcrumbs = location.pathname
-    .split('/')
-    .filter(path => path.trim().length > 0);
+
+  const breadcrumbs = useAppSelector(state => state.crumbs.crumbs);
 
   return (
     <div className="breadcrumbs">
@@ -37,14 +37,14 @@ export const Breadcrumbs = () => {
       </svg>
 
       {breadcrumbs.length > 0 &&
-        breadcrumbs.map((crumb, i) => (
+        breadcrumbs.map((crumb, i, arr) => (
           <p
             key={crumb}
             className={classNames('breadcrumbs__crumb', {
-              'breadcrumbs__crumb--current': i === breadcrumbs.length - 1,
+              'breadcrumbs__crumb--current': i === arr.length - 1,
             })}
           >
-            {crumb.slice(0,1).toUpperCase().concat(crumb.slice(1))}
+            {crumb}
           </p>
         ))}
     </div>

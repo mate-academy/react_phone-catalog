@@ -19,6 +19,7 @@
     gap: 8px;
     align-items: center;
     color: $gray-primary;
+    text-transform: capitalize;
 
     &::before {
       display: block;

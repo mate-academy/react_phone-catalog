@@ -1,15 +1,21 @@
 import './Catalog.style.scss';
 
+import { useEffect, useMemo } from 'react';
+
 import { Product } from '../../../types/Product';
-import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
-import { useAppSelector } from '../../../app/hooks';
-import { useMemo } from 'react';
 import { SearchParams } from '../../../types/SearchParams';
-import { useCatalogSearchParams } from '../../../utils/customHooks';
+
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import { useCatalogSearchParams, useProductNumbers } from '../../../utils/customHooks';
+import { useAppDispatch } from '../../../app/hooks';
+
 import { sortBySearchParams } from '../../../utils/helpers';
+
 import { Pagination } from '../Pagination/Pagination';
 import { ProductList } from '../ProductList/ProductList';
 import { Selection } from '../Selection/Selection';
+
+import { resetCrumbs } from '../../../features/CrumbsSlice/CrumbsSlice';
 
 type Props = {
   items: Product[];
@@ -17,6 +23,8 @@ type Props = {
 };
 
 export const Catalog: React.FC<Props> = ({ items, category }) => {
+  const dispatch = useAppDispatch();
+
   const {
     itemsOnPageRaw,
     itemsOnPage,
@@ -29,20 +37,20 @@ export const Catalog: React.FC<Props> = ({ items, category }) => {
     updateParams,
   } = useCatalogSearchParams(items.length);
 
+  const productNumber = useProductNumbers();
+
   const sortedItems = useMemo(
     () => sortBySearchParams(items, activePageNumber, sortBy, itemsOnPage),
     [items, activePageNumber, sortBy, itemsOnPage],
   );
 
-  const productNumber = {
-    phones: useAppSelector(state => state.phones.phones).length,
-    tablets: useAppSelector(state => state.tablets.tablets).length,
-    accessories: useAppSelector(state => state.accessories.accessories).length,
-  };
-
   const handleSearchParams = (param: Partial<SearchParams>) => {
     updateParams(param);
   };
+
+  useEffect(() => {
+    dispatch(resetCrumbs([category]))
+  }, [category])
 
   return (
     <div className="catalog">

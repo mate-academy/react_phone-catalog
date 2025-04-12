@@ -1,0 +1,60 @@
+.product-page {
+  @include paddings-page;
+
+  &__crumbs {
+    padding-bottom: 24px;
+
+    @include tablet {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__backbutton {
+    padding-bottom: 16px;
+  }
+
+  &__title {
+    @include h2;
+    color: $gray-primary;
+  }
+
+  &__sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 56px;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 64px;
+    }
+
+    @include desktop {
+      gap: 80px;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    @include tablet {
+    }
+
+    @include desktop {
+      gap: 64px;
+    }
+  }
+
+  &__product-design {
+    padding-top:  32px;
+
+    @include tablet {
+      padding-top: 40px;
+    }
+  }
+}

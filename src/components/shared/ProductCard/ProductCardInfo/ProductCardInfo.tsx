@@ -22,8 +22,7 @@ export const ProductCardInfo: React.FC<Props> = ({ product }) => {
 
       <ProductTechSpecs specs={productSpecs}/>
 
-      <ProductCardButtons product={product} />
-
+      <ProductCardButtons id={product.itemId} />
     </div>
   );
 };

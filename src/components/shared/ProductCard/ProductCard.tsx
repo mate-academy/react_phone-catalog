@@ -8,7 +8,6 @@ import { Product } from '../../../types/Product';
 
 import { ProductCardInfo } from './ProductCardInfo/ProductCardInfo';
 import { useNavigate } from 'react-router-dom';
-import { routes } from '../Routs/Routs';
 
 type ProductCardProps = {
   product: Product;
@@ -19,17 +18,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   slider,
 }) => {
-  const { image, name, id } = product;
+  const { image, name, itemId } = product;
   const navigate = useNavigate();
 
-  const handleProductPageNavigation = () => {
-    navigate(`${id}`);
+  const navToProductPage = () => {
+    navigate(`${itemId}`);
 
   }
 
   return (
     <div
-    onClick={handleProductPageNavigation}
+    onClick={navToProductPage}
       className={classNames('product product-card', {
         'product product-card--slider': slider,
       })}

@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, A11y, Pagination } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
-import './HomeSwiper.style.scss';
+import './Swiper.style.scss';
 
-import { getBanners, Banner } from '../../../../api/fetchBanners';
+import { getBanners, Banner } from '../../../api/fetchBanners';
 
-export const HomeSwiper = () => {
+export const CustomSwiper = () => {
   const [banners, setBanners] = useState<Banner[]>([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const HomeSwiper = () => {
       autoplay={{
         delay: 3000,
       }}
-      loop={true}
+      loop={banners.length >= 3}
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}

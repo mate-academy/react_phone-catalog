@@ -1,13 +1,15 @@
 import './Cart.style.scss';
 
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
 import { LocalStorageContext } from '../../../app/Contexts/LocalStorageContext';
 
 import { Product } from '../../../types/Product';
 
 import { CartItem } from './CartItem/CartItem';
 import { BackButton } from '../../shared/BackButton/BackButton';
-import { Link } from 'react-router-dom';
+
 import {
   calculateTotalPrice,
   calculateTotalQuantity,
