@@ -239,8 +239,18 @@
 
   @include flex-centered;
 
+  transition: all 0.5s ease-in-out;
+
   cursor: pointer;
   box-sizing: border-box;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
 }
 
 .cart_button_disabled {
