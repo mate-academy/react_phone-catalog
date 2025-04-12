@@ -1,31 +1,42 @@
 @import '/src/utils/global';
 
+.ProductsSlider {
+  position: relative;
+
+  &__wrapper {
+    width: calc(100% + $mobile-padding);
+
+    @include on-tablet {
+      width: calc(100% + $tablet-padding);
+    }
+
+    @include on-desktop {
+      width: 100%;
+    }
+  }
+
+  &__navigation {
+    position: absolute;
+    display: flex;
+
+    top: -60px;
+    gap: 16px;
+    z-index: 1000;
+    right: 0;
+  }
+}
+
 .swiper {
   overflow: hidden;
 
-  & :global(.swiper-wrapper) {
-    // display: flex;
-    // width: fit-content;
-    // height: 100%;
-    // gap: 16px;
-  }
-
   &-slide {
-    // width: fit-content !important;
     & article {
       width: 100%;
     }
   }
 }
 
-.navigation {
-  position: absolute;
-  display: flex;
-  gap: 16px;
-  top: 0;
-  right: 0;
-  z-index: 1000;
-}
+
 
 .prev,
 .next {
@@ -33,7 +44,7 @@
   height: 32px;
   background-color: $gray;
 
-  border: 1px solid #3B3E4A;
+  border: 1px solid #3b3e4a;
   transition: all 0.3s;
 
   display: flex;
@@ -48,5 +59,3 @@
     border: 1px solid $white;
   }
 }
-
-

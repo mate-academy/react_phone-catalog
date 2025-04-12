@@ -23,15 +23,4 @@
     }
   }
 
-  &__slider {
-    width: calc(100% + $mobile-padding);
-
-    @include on-tablet {
-      width: calc(100% + $tablet-padding);
-    }
-
-    @include on-desktop {
-      width: 100%;
-    }
-  }
 }

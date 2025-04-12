@@ -1,8 +1,10 @@
 import {
   Navigate,
+  Outlet,
   Route,
   HashRouter as Router,
   Routes,
+  useParams,
 } from 'react-router-dom';
 import { App } from './App';
 import { Provider } from 'react-redux';
@@ -14,6 +16,17 @@ import ProductPages from './modules/ProductPages/ProductPages';
 // eslint-disable-next-line max-len
 import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
 
+const ProductLayout = ({ category }: { category: TypeProduct }) => {
+  const { productId } = useParams();
+
+  return (
+    <>
+      {!productId && <ProductPages category={category} />}
+      {productId && <Outlet />}
+    </>
+  );
+};
+
 export const Root = () => {
   return (
     <Provider store={store}>
@@ -23,26 +36,22 @@ export const Root = () => {
             <Route index element={<HomePage />} />
             <Route
               path="/phones"
-              element={<ProductPages category={TypeProduct.phones} />}
-            />
+              element={<ProductLayout category={TypeProduct.phones} />}
+            >
+              <Route path=":productId" element={<ProductDetailsPage />} />
+            </Route>
             <Route
               path="/tablets"
-              element={<ProductPages category={TypeProduct.tablets} />}
-            />
+              element={<ProductLayout category={TypeProduct.tablets} />}
+            >
+              <Route path=":productId" element={<ProductDetailsPage />} />
+            </Route>
             <Route
               path="/accessories"
-              element={<ProductPages category={TypeProduct.accessories} />}
-            />
-            <Route path="/phones/:productId" element={<ProductDetailsPage />} />
-            <Route
-              path="/tablets/:productId"
-              element={<ProductDetailsPage />}
-            />
-            <Route
-              path="/accessories/:productId"
-              element={<ProductDetailsPage />}
-            />
-
+              element={<ProductLayout category={TypeProduct.accessories} />}
+            >
+              <Route path=":productId" element={<ProductDetailsPage />} />
+            </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Route>
           <Route path="/home" element={<Navigate to="/" replace />} />

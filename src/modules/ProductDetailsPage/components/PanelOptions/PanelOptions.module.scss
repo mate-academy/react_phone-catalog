@@ -11,7 +11,7 @@
     grid-column: 13 / -5;
   }
 
-  &__colors {
+  &__option {
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;
@@ -39,24 +39,155 @@
   }
 
   &__color {
+    display: block;
     box-sizing: border-box;
     width: 32px;
     height: 32px;
     border: 2px solid $fon;
-    outline: 1px solid #3B3E4A;
+    outline: 1px solid #3b3e4a;
     border-radius: 50%;
 
     @include hover(outline-color, $white);
+
+    &_active {
+      outline: 1px solid $white;
+    }
   }
 
   & hr {
-    background-color: #3B3E4A;
+    background-color: #3b3e4a;
     border: none;
     height: 1px;
     margin-block: 24px;
 
     &:nth-of-type(2) {
       margin-bottom: 32px;
+    }
+  }
+
+  &__capacityList {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  &__capacity {
+    box-sizing: border-box;
+    height: 32px;
+    padding-inline: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #4a4d58;
+
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $accent;
+      border-color: $accent;
+    }
+
+    &_active {
+      border: 1px solid $white;
+      background-color: $white;
+      color: $fon;
+    }
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    & span {
+      margin-left: 8px;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      letter-spacing: 0;
+      text-decoration: line-through;
+      color: $ligth-gray;
+    }
+  }
+
+  &__buttons {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__cart {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    text-align: center;
+
+    box-sizing: border-box;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background-color: $accent;
+    transition: all 0.3s;
+
+    border: none;
+
+    &:hover {
+      box-shadow: 0 5px 20px #905bffd1;
+    }
+
+    &_active {
+      border: 1px solid $dark-gray !important;
+      background-color: $dark-gray;
+      color: $white;
+    }
+  }
+
+  &__favourite {
+    box-sizing: border-box;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $gray;
+
+    border: 1px solid transparent;
+
+    @include hover(border-color, $white);
+  }
+
+  &__details {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    & li {
+      display: flex;
+      justify-content: space-between;
+
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0;
+
+      & span {
+        color: $ligth-gray;
+      }
     }
   }
 }

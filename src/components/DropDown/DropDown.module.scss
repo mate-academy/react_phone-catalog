@@ -38,6 +38,7 @@
   }
 
   &__list {
+    pointer-events: none;
     box-sizing: border-box;
     position: absolute;
     width: 100%;
@@ -53,6 +54,7 @@
     box-shadow: 0 3px 5px rgba(255, 255, 255, 0.5) ;
 
     &_active {
+      pointer-events: all;
       opacity: 1;
       transform: scaleY(100%);
     }

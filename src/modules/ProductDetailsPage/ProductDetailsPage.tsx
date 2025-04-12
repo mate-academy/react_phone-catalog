@@ -7,6 +7,32 @@ import { TypeProduct } from '../../types/category';
 import { getAccessories, getPhones, getTablets } from '../../api/products';
 import { BackBreadcrumb } from './components/BackBreadcrumb';
 import { OverviewSection } from './sections/OverviewSection';
+import { AboutSection } from './sections/AboutSection';
+import classNames from 'classnames';
+import { TechSpecsSection } from './sections/TechSpecsSection';
+import ProductsSlider from '../../components/ProductsSlider/ProductsSlider';
+import { Product } from '../../types/products';
+import { useAppSelector } from '../../app/hooks';
+
+const getSuggestedProducts = (products: Product[]): Product[] => {
+  if (products.length <= 10) {
+    return [...products];
+  }
+
+  const randomProducts: Product[] = [];
+  const usedIndices = new Set<number>();
+
+  while (randomProducts.length < 10 && usedIndices.size < products.length) {
+    const randomIndex = Math.floor(Math.random() * products.length);
+
+    if (!usedIndices.has(randomIndex)) {
+      randomProducts.push(products[randomIndex]);
+      usedIndices.add(randomIndex);
+    }
+  }
+
+  return randomProducts;
+};
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -17,56 +43,56 @@ const ProductDetailsPage = () => {
   const [curGadget, setCurGadgets] = useState<ProductDetail | null>(null);
   const location = useLocation();
   const category = location.pathname.split('/').filter(el => el)[0];
+  const products = useAppSelector(state => state.store.products);
+  const suggestedProducts = getSuggestedProducts(products);
 
   useEffect(() => {
-    if (gadgets.length === 0) {
-      setIsLoad(true);
-      switch (category) {
-        case TypeProduct.phones:
-          getPhones()
-            .then(res => {
-              setGadgets(res);
-              setIsError(false);
-            })
-            .catch(() => {
-              setIsError(true);
-            })
-            .finally(() => {
-              setIsLoad(false);
-            });
-          break;
-        case TypeProduct.accessories:
-          getAccessories()
-            .then(res => {
-              setGadgets(res);
-              setIsError(false);
-            })
-            .catch(() => {
-              setIsError(false);
-            })
-            .finally(() => {
-              setIsLoad(false);
-            });
-          break;
-        case TypeProduct.tablets:
-          getTablets()
-            .then(res => {
-              setGadgets(res);
-              setIsError(false);
-            })
-            .catch(() => {
-              setIsError(true);
-            })
-            .finally(() => {
-              setIsLoad(false);
-            });
-          break;
-        default:
-          setIsError(true);
-          break;
-      }
+    setIsLoad(true);
+    switch (category) {
+      case TypeProduct.phones:
+        getPhones()
+          .then(res => {
+            setGadgets(res);
+            setIsError(false);
+          })
+          .catch(() => {
+            setIsError(true);
+          })
+          .finally(() => {
+            setIsLoad(false);
+          });
+        break;
+      case TypeProduct.accessories:
+        getAccessories()
+          .then(res => {
+            setGadgets(res);
+            setIsError(false);
+          })
+          .catch(() => {
+            setIsError(false);
+          })
+          .finally(() => {
+            setIsLoad(false);
+          });
+        break;
+      case TypeProduct.tablets:
+        getTablets()
+          .then(res => {
+            setGadgets(res);
+            setIsError(false);
+          })
+          .catch(() => {
+            setIsError(true);
+          })
+          .finally(() => {
+            setIsLoad(false);
+          });
+        break;
+      default:
+        setIsError(true);
+        break;
     }
-  }, [category, gadgets]);
+  }, [category]);
 
   useEffect(() => {
     if (gadgets.length !== 0) {
@@ -79,11 +105,7 @@ const ProductDetailsPage = () => {
       setSimilarGadgets(similar);
       setCurGadgets(curProduct);
     }
-  }, [productId, gadgets]);
-
-  if (!curGadget) {
-    return <p>error</p>;
-  }
+  }, [productId, gadgets, category]);
 
   return (
     <main className={styles.ProductDetails}>
@@ -91,15 +113,32 @@ const ProductDetailsPage = () => {
 
       <BackBreadcrumb />
 
-      <h2 className={styles.ProductDetails__title}>{curGadget?.name}</h2>
+      {curGadget && (
+        <>
+          <h2 className={styles.ProductDetails__title}>{curGadget?.name}</h2>
 
-      <OverviewSection
-        curProduct={curGadget}
-        similarProducts={similarGadgets}
-      />
+          <div
+            className={classNames(
+              styles.ProductDetails__content,
+              'main__content',
+            )}
+          >
+            <OverviewSection
+              curProduct={curGadget}
+              similarProducts={similarGadgets}
+            />
 
-      <div style={{ backgroundColor: curGadget?.color }}>dfdf</div>
-      {curGadget && curGadget.id}
+            <AboutSection curProduct={curGadget} />
+
+            <TechSpecsSection curProduct={curGadget} />
+
+            <div className={styles.ProductDetails__suggested}>
+              <h3>You may also like</h3>
+              <ProductsSlider products={suggestedProducts} />
+            </div>
+          </div>
+        </>
+      )}
     </main>
   );
 };

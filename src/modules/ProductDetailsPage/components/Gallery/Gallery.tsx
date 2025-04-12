@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Gallery.module.scss';
 import classNames from 'classnames';
 
@@ -12,6 +12,10 @@ export const Gallery: React.FC<Props> = ({ images }) => {
   const changeCurImg = (src: string) => {
     setCurImg(src);
   };
+
+  useEffect(() => {
+    setCurImg(images[0]);
+  }, [images]);
 
   return (
     <div className={styles.Gallery}>

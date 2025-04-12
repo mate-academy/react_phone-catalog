@@ -1,0 +1,52 @@
+@import '/src/utils/global';
+
+.TechSpecsSection {
+  position: relative;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 13 / -1;
+  }
+
+  & h3 {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    margin-bottom: 16px;
+  }
+
+  & hr {
+    margin: 0;
+    border: none;
+    height: 1px;
+    background-color: #3b3e4a;
+  }
+
+  &__list {
+    margin-top: 25px;
+  }
+
+  &__item {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    & span {
+      color: $ligth-gray;
+    }
+
+    & p {
+      text-align: right;
+      word-break: break-word;
+    }
+  }
+}

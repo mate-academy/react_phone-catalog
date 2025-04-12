@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './CardItem.module.scss';
-import favouriteIcon from '../../assets/img/tools/favourite_ico.svg';
 import { Product } from '../../types/products';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
+import { storage } from '../../app/localStorage';
+import HeartIco from '../Icons/Heart/Heart';
 
 type Props = {
   product: Product;
@@ -11,16 +12,42 @@ type Props = {
 };
 
 const CardItem: React.FC<Props> = ({ product, className = '' }) => {
-  const { id, name, fullPrice, price, screen, capacity, ram, image } = product;
+  const { id, itemId, name, fullPrice, price, screen, capacity, ram, image } =
+    product;
   const fullName = `${name} (MQ${id.toString().padStart(3, '0')})`;
   const navigate = useNavigate();
+  const [isFavourite, setIsFavourite] = useState(
+    () => storage.getAllItems<string>('favourites')?.includes(itemId) || false,
+  );
+  const [isInCart, setIsInCart] = useState(
+    () => storage.getAllItems<string>('cart')?.includes(itemId) || false,
+  );
+
+  // useEffect(() => {
+  //   const handleStorageUpdate = () => {
+  //     setIsFavourite(
+  //       storage.getAllItems('favourites')?.includes(itemId) ?? false,
+  //     );
+  //     setIsInCart(storage.getAllItems('cart')?.includes(itemId) ?? false);
+  //   };
+
+  //   window.addEventListener('storage', handleStorageUpdate);
+
+  //   return () => window.removeEventListener('storage', handleStorageUpdate);
+  // }, [itemId]);
 
   const handleAddToCartClick = (event: React.MouseEvent) => {
     event.stopPropagation();
+    const isAdded = storage.smartAddToArray('cart', product.itemId);
+
+    setIsInCart(isAdded);
   };
 
   const handleFavouriteClick = (event: React.MouseEvent) => {
     event.stopPropagation();
+    const isAdded = storage.smartAddToArray('favourites', product.itemId);
+
+    setIsFavourite(isAdded);
   };
 
   const handleCartClick = () => {
@@ -59,14 +86,19 @@ const CardItem: React.FC<Props> = ({ product, className = '' }) => {
       </ul>
 
       <div className={styles.card__buttons}>
-        <button className={styles.card__addBtn} onClick={handleAddToCartClick}>
-          Add to cart
+        <button
+          className={classNames(styles.card__addBtn, {
+            [styles.card__addBtn_active]: isInCart,
+          })}
+          onClick={handleAddToCartClick}
+        >
+          {isInCart ? `Remove` : `Add to cart`}
         </button>
         <button
           className={styles.card__favouriteBtn}
           onClick={handleFavouriteClick}
         >
-          <img src={favouriteIcon} alt="favourite" />
+          <HeartIco active={isFavourite} />
         </button>
       </div>
     </article>

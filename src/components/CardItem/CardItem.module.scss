@@ -78,6 +78,7 @@
   &__buttons {
     display: flex;
     justify-content: space-between;
+    gap: 8px;
 
     & button {
       border: none;
@@ -91,7 +92,7 @@
     line-height: 21px;
     letter-spacing: 0;
     text-align: center;
-    width: 100px;
+    flex-grow: 1;
     height: 40px;
 
     @include on-tablet {
@@ -105,7 +106,13 @@
     transition: box-shadow 0.3s ease-in-out;
 
     &:hover {
-      box-shadow: 0 2px 16px rgba(144, 91, 255, 0.3);
+      box-shadow: 0 5px 20px #905bffd1;
+    }
+
+    &_active {
+      border: 1px solid $dark-gray !important;
+      background-color: $dark-gray;
+      color: $white;
     }
   }
 
