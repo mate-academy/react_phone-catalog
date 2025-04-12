@@ -10,6 +10,9 @@ export const CatalogHeaderPath = () => {
   const productName = productId
     ? products.find(item => item.id === +productId)?.name
     : '';
+  const productCategory = productId
+    ? products.find(item => item.id === +productId)?.category
+    : '';
 
   return (
     <div className={s.header__path}>
@@ -30,12 +33,12 @@ export const CatalogHeaderPath = () => {
       <img src="./img/icons/next.png" alt="next" />
       <div className={s.header__path_folder}>
         <Link
-          to={productId ? `..` : ''}
+          to={productId ? `../${productCategory}` : ''}
           style={{ color: productId ? '$white' : 'inherit' }}
         >
-          {pathname.length > 1
-            ? pathname[1].toUpperCase() + pathname.slice(2).split('/')[0]
-            : 'Home'}
+          {productCategory
+            ? productCategory[0].toUpperCase() + productCategory.slice(1)
+            : pathname[1].toUpperCase() + pathname.slice(2)}
         </Link>
       </div>
       {productId && (

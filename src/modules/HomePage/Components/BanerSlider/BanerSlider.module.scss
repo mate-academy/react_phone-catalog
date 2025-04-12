@@ -9,9 +9,6 @@
 
   @include page-grid;
 
-  // &__wrapper {
-
-  // }
 
   &__title {
     @extend %title-basic;
@@ -28,6 +25,14 @@
     grid-column: 0 / 1;
     background-color: $surface-2;
     border: none;
+
+    &:hover {
+      background-color: $icons;
+    }
+
+    html[data-theme="light"] & {
+      border: 1px solid #B4BDC3;
+    }
 
     @include on-tablet {
       display: block;
@@ -79,6 +84,14 @@
     grid-column: -2/ -1;
     background-color: $surface-2;
     border: none;
+
+    &:hover {
+      background-color: $icons;
+    }
+
+    html[data-theme="light"] & {
+      border: 1px solid #B4BDC3;
+    }
 
     @include on-tablet {
       display: block;

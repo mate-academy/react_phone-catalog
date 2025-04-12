@@ -13,14 +13,12 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [cardWidth, setCardWidth] = useState(0);
-  // const touchStartX = useRef(0);
-  // const touchEndX = useRef(0);
 
   useEffect(() => {
     if (cardRef.current) {
       setCardWidth(cardRef.current.offsetWidth + 16);
     }
-  }, [products]);
+  }, [products, currentIndex]);
 
   const nextCard = () => {
     setCurrentIndex(prev => prev + 1);
@@ -29,24 +27,6 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   const prevCard = () => {
     setCurrentIndex(prev => prev - 1);
   };
-
-  // const handleTouchStart = (e: React.TouchEvent) => {
-  //   touchStartX.current = e.touches[0].clientX;
-  // };
-
-  // const handleTouchMove = (e: React.TouchEvent) => {
-  //   touchEndX.current = e.touches[0].clientX;
-  // };
-
-  // const handleTouchEnd = () => {
-  //   const deltaX = touchStartX.current - touchEndX.current;
-
-  //   if (deltaX > 100) {
-  //     nextCard();
-  //   } else if (deltaX < -100) {
-  //     prevCard();
-  //   }
-  // };
 
   return (
     <div className="block-margin">
@@ -69,12 +49,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
           </button>
         </div>
       </div>
-      <div
-        className={classNames(s.cards_slider, 'container')}
-        // onTouchStart={handleTouchStart}
-        // onTouchMove={handleTouchMove}
-        // onTouchEnd={handleTouchEnd}
-      >
+      <div className={classNames(s.cards_slider, 'container')}>
         <div
           className={s.cards_slide}
           style={{ transform: `translateX(-${currentIndex * cardWidth}px)` }}

@@ -13,6 +13,10 @@
   height: 48px;
   background-color: $black;
 
+  html[data-theme="light"] & {
+    box-shadow: 0 1px 1px 1px $elements;
+  }
+
   @include on-desktop {
     height: 64px;
   }

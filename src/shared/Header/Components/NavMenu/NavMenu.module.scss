@@ -4,8 +4,22 @@
 .nav {
   display: none;
 
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+
+    @include on-tablet {
+      justify-content: space-between;
+
+    }
+
+  }
+
   @include on-tablet {
     display: flex;
+
   }
 
   &.onMobile {
@@ -97,4 +111,45 @@
       }
     }
   }
+}
+
+.theme {
+  margin-left: auto;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  width: 50px;
+  height: 25px;
+  box-sizing: border-box;
+  background-color: var(--black);
+  border: 1px solid var(--elements);
+  border-radius: 25px;
+  position: relative;
+  transition: background-color 0.3s ease;
+
+
+  &.onMobile {
+    display: none;
+    background-color: blue;
+  }
+
+  &__button {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: var(--white);
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    transition: left 0.3s ease,
+    background-color 1.3s ease;
+
+    &.light {
+      left: calc(100% - 20px);
+      background-color: $white;
+    }
+  }
+
 }

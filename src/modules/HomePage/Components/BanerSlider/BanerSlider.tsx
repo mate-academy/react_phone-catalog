@@ -31,7 +31,7 @@ export const BanerSlider = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndexImg]);
+  }, [currentIndexImg, nextSlide]);
 
   return (
     <div className={classNames({ container: widthRef.current > 640 })}>

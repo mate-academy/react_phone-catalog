@@ -14,19 +14,25 @@ export const Footer = () => {
           <ul className={s.footer__list}>
             <li className={s.footer__item}>
               <a
-                href="https://vitalii120296.github.io/react_phone-catalog/"
+                href="https://github.com/Vitalii120296"
                 className={s.footer__item_link}
               >
                 Github
               </a>
             </li>
             <li className={s.footer__item}>
-              <a href="#" className={s.footer__item_link}>
+              <a
+                href="https://github.com/Vitalii120296"
+                className={s.footer__item_link}
+              >
                 Contacts
               </a>
             </li>
             <li className={s.footer__item}>
-              <a href="#" className={s.footer__item_link}>
+              <a
+                href="https://github.com/Vitalii120296"
+                className={s.footer__item_link}
+              >
                 Rights
               </a>
             </li>

@@ -11,12 +11,14 @@ import { NotFoundPage } from './modules/NotFoundPage';
 import { Favourites } from './modules/Favourites';
 import { ShoppingBag } from './modules/ShoppingBag';
 import { RightButtonProvider } from './shared/context/RightButtonContext';
+import { ScrollToTop } from './shared/ScrollToTop/ScrollToTop';
 
 export const Root = () => (
   <ProductProvider>
     <BurgerProvider>
       <RightButtonProvider>
         <Router>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<App />}>
               <Route index element={<HomePage />} />
@@ -27,23 +29,18 @@ export const Root = () => (
               </Route>
               <Route path="phones">
                 <Route index element={<Phones />} />
-                <Route path=":productId" element={<ItemCard />} />
               </Route>
               <Route path="tablets">
                 <Route index element={<Tablets />} />
-                <Route path=":productId" element={<ItemCard />} />
               </Route>
               <Route path="accessories">
                 <Route index element={<Accessories />} />
-                <Route path=":productId" element={<ItemCard />} />/
               </Route>
               <Route path="favourites">
                 <Route index element={<Favourites />} />
-                <Route path=":productId" element={<ItemCard />} />/
               </Route>
               <Route path="shopping-bag">
                 <Route index element={<ShoppingBag />} />
-                <Route path=":productId" element={<ItemCard />} />/
               </Route>
               <Route path="not-found" element={<NotFoundPage />} />
               <Route path="*" element={<NotFoundPage />} />

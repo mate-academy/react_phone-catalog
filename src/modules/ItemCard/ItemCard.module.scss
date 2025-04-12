@@ -25,6 +25,10 @@
       column-gap: 4px;
       height: 16px;
 
+      &:hover {
+        color: $accent;
+      }
+
 
       & p {
         line-height: 16px;
@@ -188,27 +192,18 @@
       padding-bottom: 32px;
 
       &_add {
-        background-color: #905BFF;
-        border: none;
         height: 48px;
         width: 100%;
-        font-size: 14px;
-        color: $white;
-        font-weight: 700;
-        padding: 0;
+
+        @extend %button-add;
+
       }
 
       &_like {
         min-width: 48px;
         height: 48px;
-        background-color: $surface-2;
-        border: none;
-        padding: 0;
-
-        & img {
-          height: 13px;
-          width: 15px;
-        }
+        
+        @extend %button-like;
       }
     }
 

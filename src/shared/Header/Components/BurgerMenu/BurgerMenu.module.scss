@@ -13,7 +13,7 @@
   transition: top 0.3s ease-in-out, height 0.3s ease-in-out;
 
   &.active {
-    top: 48px;
+    top: 49px;
     height: calc(100dvh - 48px);
   }
 }

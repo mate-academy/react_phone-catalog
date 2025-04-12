@@ -4,9 +4,10 @@ import classNames from 'classnames';
 import { ProductContext } from '../../shared/context/ProductsContext';
 import { CatalogHeaderPath } from '../../shared/CatalogHeaderPath';
 import { ProductSlider } from '../../shared/ProductSlider';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { useProduct } from '../../hooks/useProduct';
 import { RightButtonContext } from '../../shared/context/RightButtonContext';
+import { LoadingSpinner } from '../../shared/LoadingSpiner';
 
 export const ItemCard = () => {
   const { product } = useProduct();
@@ -16,6 +17,7 @@ export const ItemCard = () => {
   const [productCapacity, setProductCapacity] = useState(0);
   const { favourites, setFavourites, shoppingBag, setShoppingBag } =
     useContext(RightButtonContext);
+  const { productId } = useParams();
 
   const getProductId = (id: string) => {
     return products.find(item => item.itemId === id)?.id || 0;
@@ -50,12 +52,12 @@ export const ItemCard = () => {
     });
   };
 
-  if (product === null) {
+  if (!productId || !+productId || Number.isInteger(productId)) {
     return <Navigate to="/not-found" />;
   }
 
   if (!product) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />;
   }
 
   const filteredProducts = [...products]
@@ -138,11 +140,19 @@ export const ItemCard = () => {
                 className={s.previews__controls_buttons_add}
                 aria-label="Add to cart"
                 onClick={() => addToShoppingBag(product.id)}
+                disabled={Object.hasOwn(
+                  shoppingBag,
+                  `${getProductId(product.id)}`,
+                )}
               >
-                Add to cart
+                {Object.hasOwn(shoppingBag, `${getProductId(product.id)}`)
+                  ? 'Added to cart'
+                  : 'Add to cart'}
               </button>
               <button
-                className={s.previews__controls_buttons_like}
+                className={classNames(s.previews__controls_buttons_like, {
+                  [s.added]: favourites.includes(getProductId(product.id)),
+                })}
                 aria-label="Add to favourites"
                 onClick={() => toggleFavourites(product.id)}
               >

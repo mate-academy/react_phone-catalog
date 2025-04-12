@@ -1,14 +1,41 @@
+
+html[data-theme="light"] {
+  --white: #313237;
+  --secondary: #89939A;
+  --black: #FFF;
+  --surface-1: #FFF;
+  --surface-2: #FFF;
+  --icons: #B4BDC3;
+  --elements: #E2E6E9;
+  --accent: #313237;
+  --green: #27AE60;
+  --red: #EB5757;
+}
+
+html[data-theme="dark"] {
+  --white: #F1F2F9;
+  --secondary: #75767F;
+  --black: #0F1121;
+  --surface-1: #161827;
+  --surface-2: #323542;
+  --icons: #4A4D58;
+  --elements: #3B3E4A;
+  --accent: #905BFF;
+  --green: #27AE60;
+  --red: #EB5757;
+}
+
+
 $mobile-min-width: 320px;
 $tablet-min-width: 640px;
 $desctop-min-width: 1200px;
-$white: #F1F2F9;
-$secondary: #75767F;
-$black: #0F1121;
-$surface-1: #161827;
-$surface-2: #323542;
-$icons: #4A4D58;
-$elements: #3B3E4A;
-$accent: #905BFF;
-$green: #27AE60;
-$red: #EB5757;
-$loading-grey: #ededed;
+$white: var(--white);
+$secondary: var(--secondary);
+$black: var(--black);
+$surface-1: var(--surface-1);
+$surface-2: var(--surface-2);
+$icons: var(--icons);
+$elements: var(--elements);
+$accent: var(--accent);
+$green: var(--green);
+$red: var(--red);
