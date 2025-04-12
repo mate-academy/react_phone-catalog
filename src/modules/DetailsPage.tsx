@@ -14,7 +14,7 @@ export const DetailsPage: React.FC = () => {
 
   return (
     <>
-      <Suspense >
+      <Suspense>
         <ProductDetails
           disabledIds={disabledIds}
           setDisabledIds={setDisabledIds}

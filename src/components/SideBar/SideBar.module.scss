@@ -1,9 +1,10 @@
 @use '../../utils/variables.scss' as *;
 @use '../../utils/mixins.scss' as *;
 
+
 @font-face {
   font-family: Mont-Bold;
-  src: url('fonts/Mont-Bold.otf');
+  src: url('./fonts/Mont-Bold.otf');
 }
 
 .side_bar_container {
