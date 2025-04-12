@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useOutletContext, useParams } from 'react-router-dom';
 import { Footer, Header, ProductCategory } from '../utils/lazyComponents';
 
@@ -29,7 +29,6 @@ const AccessoriesPage: React.FC<Props> = ({ url }) => {
 
   return (
     <>
-      <Suspense>
         <Header setActiveAside={setActiveAside} width={width} />
         {!productId ? (
           <ProductCategory
@@ -41,7 +40,6 @@ const AccessoriesPage: React.FC<Props> = ({ url }) => {
           <Outlet context={{ disabledIds, setDisabledIds }} />
         )}
         <Footer disabledIds={disabledIds} />
-      </Suspense>
     </>
   );
 };

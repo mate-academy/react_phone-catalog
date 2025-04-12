@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { ProductDetails } from '../utils/lazyComponents';
 
@@ -7,17 +7,17 @@ type ContextType = {
   setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
 };
 
-export const DetailsPage: React.FC = () => {
+const DetailsPage: React.FC = () => {
   const { disabledIds, setDisabledIds } = useOutletContext<ContextType>();
 
   return (
     <>
-      <Suspense>
         <ProductDetails
           disabledIds={disabledIds}
           setDisabledIds={setDisabledIds}
         />
-      </Suspense>
     </>
   );
 };
+
+export default DetailsPage;

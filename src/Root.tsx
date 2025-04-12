@@ -6,10 +6,7 @@ import {
 } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './modules/HomePage';
-import { DetailsPage } from './modules/DetailsPage';
-import { FavouritesPage } from './modules/FavouritesPage';
 import { FavouritesProvider } from './components/Favourites/FavouritesContext';
-import { CartPage } from './modules/CartPage';
 import { CartProvider } from './components/Cart/CartContext';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { ThemeProvider } from './components/ThemeContext/ThemeContext';
@@ -17,8 +14,12 @@ import {
   AccessoriesPage,
   PhonesPage,
   TabletsPage,
+  CartPage,
+  DetailsPage,
+  FavouritesPage,
 } from './utils/lazyComponents';
 import { Suspense } from 'react';
+import { Loader } from './components/Loader/Loader';
 
 export const Root = () => {
   return (
@@ -26,29 +27,141 @@ export const Root = () => {
       <CartProvider>
         <ThemeProvider>
           <Router>
-            <Suspense>
-              <Routes>
-                <Route path="/" element={<App />}>
-                  <Route index element={<HomePage />} />
-                  <Route path="home" element={<Navigate to={'/'} replace />} />
-                  <Route path="phones" element={<PhonesPage url="phones" />}>
-                    <Route path=":productId" element={<DetailsPage />} />
-                  </Route>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route
+                  index
+                  element={
+                    <Suspense
+                      fallback={
+                        <div>
+                          <Loader />
+                        </div>
+                      }
+                    >
+                      <HomePage />
+                    </Suspense>
+                  }
+                />
+                <Route path="home" element={<Navigate to={'/'} replace />} />
+                <Route
+                  path="phones"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div>
+                          <Loader />
+                        </div>
+                      }
+                    >
+                      <PhonesPage url="phones" />
+                    </Suspense>
+                  }
+                >
                   <Route
-                    path="accessories"
-                    element={<AccessoriesPage url="accessories" />}
-                  >
-                    <Route path=":productId" element={<DetailsPage />} />
-                  </Route>
-                  <Route path="tablets" element={<TabletsPage url="tablets" />}>
-                    <Route path=":productId" element={<DetailsPage />} />
-                  </Route>
-                  <Route path="favourites" element={<FavouritesPage />} />
-                  <Route path="cart" element={<CartPage />} />
+                    path=":productId"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div>
+                            <Loader />
+                          </div>
+                        }
+                      >
+                        <DetailsPage />
+                      </Suspense>
+                    }
+                  />
                 </Route>
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            </Suspense>
+                <Route
+                  path="accessories"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div>
+                          <Loader />
+                        </div>
+                      }
+                    >
+                      <AccessoriesPage url="accessories" />
+                    </Suspense>
+                  }
+                >
+                  <Route
+                    path=":productId"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div>
+                            <Loader />
+                          </div>
+                        }
+                      >
+                        <DetailsPage />
+                      </Suspense>
+                    }
+                  />
+                </Route>
+                <Route
+                  path="tablets"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div>
+                          <Loader />
+                        </div>
+                      }
+                    >
+                      <TabletsPage url="tablets" />
+                    </Suspense>
+                  }
+                >
+                  <Route
+                    path=":productId"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div>
+                            <Loader />
+                          </div>
+                        }
+                      >
+                        <DetailsPage />
+                      </Suspense>
+                    }
+                  />
+                </Route>
+                <Route
+                  path="favourites"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div>
+                          <Loader />
+                        </div>
+                      }
+                    >
+                      <FavouritesPage />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="cart"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div>
+                          <Loader />
+                        </div>
+                      }
+                    >
+                      <CartPage />
+                    </Suspense>
+                  }
+                />
+              </Route>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
           </Router>
         </ThemeProvider>
       </CartProvider>

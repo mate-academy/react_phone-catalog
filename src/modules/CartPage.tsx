@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router-dom';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import Header from '../components/Header/Header';
 import Cart from '../components/Cart/Cart';
 import Footer from '../components/Footer/Footer';
@@ -11,7 +11,7 @@ type ContextType = {
   setWidth: (arg: number) => void;
 };
 
-export const CartPage = () => {
+const CartPage = () => {
   const { setActiveAside, width, disabledIds, setWidth } =
     useOutletContext<ContextType>();
 
@@ -25,11 +25,11 @@ export const CartPage = () => {
 
   return (
     <>
-      <Suspense>
         <Header setActiveAside={setActiveAside} width={width} />
         <Cart />
         <Footer disabledIds={disabledIds} />
-      </Suspense>
     </>
   );
 };
+
+export default CartPage;

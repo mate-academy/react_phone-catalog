@@ -9,7 +9,7 @@ type ContextType = {
   setWidth: (arg: number) => void;
 };
 
-export const FavouritesPage: React.FC = () => {
+const FavouritesPage: React.FC = () => {
   const { setActiveAside, width, disabledIds, setWidth } =
     useOutletContext<ContextType>();
 
@@ -31,3 +31,5 @@ export const FavouritesPage: React.FC = () => {
     </>
   );
 };
+
+export default FavouritesPage;

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, Suspense, useEffect } from 'react';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import {
   Footer,
@@ -30,7 +30,6 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <Suspense>
         <Header setActiveAside={setActiveAside} width={width} />
         <HeaderTitle />
         <HeaderSlider width={width} />
@@ -40,7 +39,6 @@ export const HomePage: React.FC = () => {
           width={width}
         />
         <Footer disabledIds={disabledIds} />
-      </Suspense>
     </>
   );
 };
