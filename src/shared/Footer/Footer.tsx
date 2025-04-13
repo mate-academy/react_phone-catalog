@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import { Logo } from '../Logo';
 import s from './Footer.module.scss';
 
 export const Footer = () => {
+  const { t } = useTranslation('Footer');
   const scrollToTop = () => {
     window.scrollTo({ top: 0 });
   };
@@ -17,7 +19,7 @@ export const Footer = () => {
                 href="https://github.com/Vitalii120296"
                 className={s.footer__item_link}
               >
-                Github
+                {t('Github')}
               </a>
             </li>
             <li className={s.footer__item}>
@@ -25,7 +27,7 @@ export const Footer = () => {
                 href="https://github.com/Vitalii120296"
                 className={s.footer__item_link}
               >
-                Contacts
+                {t('Contacts')}
               </a>
             </li>
             <li className={s.footer__item}>
@@ -33,13 +35,13 @@ export const Footer = () => {
                 href="https://github.com/Vitalii120296"
                 className={s.footer__item_link}
               >
-                Rights
+                {t('Rights')}
               </a>
             </li>
           </ul>
         </div>
         <div className={s.footer__back_to_top}>
-          Back to top
+          {t('Back to top')}
           <button
             className={s.footer__back_to_top_button}
             onClick={scrollToTop}

@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Product } from '../../types/Products';
 import { CatalogHeaderPath } from '../CatalogHeaderPath';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   products: Product[];
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export const CatalogHeader: React.FC<Props> = ({ products, title }) => {
+  const { t } = useTranslation('HomePage');
   const productsPhoneLength = products.length;
 
   return (
@@ -20,7 +22,7 @@ export const CatalogHeader: React.FC<Props> = ({ products, title }) => {
           <h1>{title}</h1>
         </div>
         <div className={s.header__title_quantity}>
-          {productsPhoneLength} models
+          {productsPhoneLength} {t('models')}
         </div>
       </div>
     </div>

@@ -8,8 +8,10 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { useProduct } from '../../hooks/useProduct';
 import { RightButtonContext } from '../../shared/context/RightButtonContext';
 import { LoadingSpinner } from '../../shared/LoadingSpiner';
+import { useTranslation } from 'react-i18next';
 
 export const ItemCard = () => {
+  const { t } = useTranslation('ItemCard');
   const { product } = useProduct();
   const { products } = useContext(ProductContext);
   const [indexOfPhoto, setIndexOfPhoto] = useState(0);
@@ -80,7 +82,7 @@ export const ItemCard = () => {
         <div className={s.header__title}>
           <Link to={'..'} className={s.header__title_back}>
             <img src="./img/icons/prev.png" alt="back" />
-            <p>Back</p>
+            <p>{t('Back')}</p>
           </Link>
           <h2>{product.name}</h2>
         </div>
@@ -102,7 +104,7 @@ export const ItemCard = () => {
           </div>
           <div className={s.previews__controls}>
             <div className={s.previews__controls_colors}>
-              <p>Available colors</p>
+              <p>{t('Available colors')}</p>
               <div className={s.previews__controls_colors_choose}>
                 {product.colorsAvailable.map((color, index) => (
                   <div
@@ -120,7 +122,7 @@ export const ItemCard = () => {
               </div>
             </div>
             <div className={s.previews__controls_capacity}>
-              <p>Select capacity</p>
+              <p>{t('Select capacity')}</p>
               <div className={s.previews__controls_capacity_choose}>
                 {product.capacityAvailable.map((capacity, index) => (
                   <div
@@ -155,8 +157,8 @@ export const ItemCard = () => {
                 )}
               >
                 {Object.hasOwn(shoppingBag, `${getProductId(product.id)}`)
-                  ? 'Added to cart'
-                  : 'Add to cart'}
+                  ? t('Added to cart')
+                  : t('Add to cart')}
               </button>
               <button
                 className={classNames(s.previews__controls_buttons_like, {
@@ -177,57 +179,59 @@ export const ItemCard = () => {
             </div>
             <div className={s.previews__controls_characteristic}>
               <div className={s.previews__controls_characteristic_category}>
-                Screen <p>{product.screen}</p>
+                {t('Screen')} <p>{product.screen}</p>
               </div>
               <div className={s.previews__controls_characteristic_category}>
-                Resolution <p>{product.resolution}</p>
+                {t('Resolution')} <p>{product.resolution}</p>
               </div>
               <div className={s.previews__controls_characteristic_category}>
-                Processor <p>{product.processor}</p>
+                {t('Processor')} <p>{product.processor}</p>
               </div>
               <div className={s.previews__controls_characteristic_category}>
-                RAM <p>{product.ram}</p>
+                {t('RAM')} <p>{product.ram}</p>
               </div>
             </div>
           </div>
           <div className={classNames(s.about, 'block-margin')}>
             <div className={s.about__title}>
-              <h3>About</h3>
+              <h3>{t('About')}</h3>
             </div>
             {product.description.map((item, index) => (
               <div key={index}>
                 <h4>{item.title}</h4>
-                <p>{item.text}</p>
+                {item.text.map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
               </div>
             ))}
           </div>
           <div className={classNames(s.specs, 'block-margin')}>
             <div className={s.specs__title}>
-              <h3>Tech specs</h3>
+              <h3>{t('Tech specs')}</h3>
             </div>
             <div className={s.specs__category}>
-              Screen <p>{product.screen}</p>
+              {t('Screen')} <p>{product.screen}</p>
             </div>
             <div className={s.specs__category}>
-              Resolution <p>{product.resolution}</p>
+              {t('Resolution')} <p>{product.resolution}</p>
             </div>
             <div className={s.specs__category}>
-              Processor <p>{product.processor}</p>
+              {t('Processor')} <p>{product.processor}</p>
             </div>
             <div className={s.specs__category}>
-              RAM <p>{product.ram}</p>
+              {t('RAM')} <p>{product.ram}</p>
             </div>
             <div className={s.specs__category}>
-              Built in memory <p>{product.capacity}</p>
+              {t('Built in memory')} <p>{product.capacity}</p>
             </div>
             <div className={s.specs__category}>
-              Camera <p>{product.camera}</p>
+              {t('Camera')} <p>{product.camera}</p>
             </div>
             <div className={s.specs__category}>
-              Zoom <p>{product.zoom}</p>
+              {t('Zoom')} <p>{product.zoom}</p>
             </div>
             <div className={s.specs__category}>
-              Cell <p>{product.cell}</p>
+              {t('Cell')} <p>{product.cell}</p>
             </div>
           </div>
         </div>

@@ -5,8 +5,10 @@ import { ProductContext } from '../../shared/context/ProductsContext';
 import { Catalog } from '../../shared/Catalog';
 import { CatalogHeader } from '../../shared/CatalogHeader';
 import { RightButtonContext } from '../../shared/context/RightButtonContext';
+import { useTranslation } from 'react-i18next';
 
 export const Favourites = () => {
+  const { t } = useTranslation('Favourites');
   const { favourites } = useContext(RightButtonContext);
   const { products } = useContext(ProductContext);
   const favouritesProducts = products.filter(item =>
@@ -15,7 +17,7 @@ export const Favourites = () => {
 
   return (
     <div className={classNames(s.favourites, 'container')}>
-      <CatalogHeader products={favouritesProducts} title={'Favourites'} />
+      <CatalogHeader products={favouritesProducts} title={t('Favourites')} />
       <Catalog products={favouritesProducts} />
     </div>
   );

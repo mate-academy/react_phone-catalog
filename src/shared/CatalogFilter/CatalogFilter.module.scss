@@ -71,17 +71,16 @@
     top: 44px;
     height: 0;
     opacity: 0;
-    display: none;
+    display: block;
     overflow: hidden;
     width: 100%;
     background-color: $black;
     list-style: none;
     border: 1px solid $elements;
     z-index: 5;
-    transition: 0.3s;
+    transition: all 0.3s;
 
     &.open {
-      display: block;
       opacity: 1;
       height: auto;
     }

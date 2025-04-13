@@ -5,8 +5,10 @@ import { ProductContext } from '../../shared/context/ProductsContext';
 import { CatalogFilter } from '../../shared/CatalogFilter';
 import { ScrollButtons } from '../../shared/ScrollButtons';
 import { Catalog } from '../../shared/Catalog';
+import { useTranslation } from 'react-i18next';
 
 export const Accessories = () => {
+  const { t } = useTranslation('Accessories');
   const { products } = useContext(ProductContext);
   const productsAccessories = products.filter(
     item => item.category === 'accessories',
@@ -14,7 +16,7 @@ export const Accessories = () => {
 
   return (
     <div className={s.accessories}>
-      <CatalogHeader products={productsAccessories} title={'Accessories'} />
+      <CatalogHeader products={productsAccessories} title={t('Accessories')} />
       <CatalogFilter />
       <Catalog products={productsAccessories} />
       <ScrollButtons />

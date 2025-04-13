@@ -3,6 +3,7 @@ import s from './CatalogFilter.module.scss';
 import { useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import { ItemsQuantity, SortBy } from '../../types/enums/Page.quantity';
+import { useTranslation } from 'react-i18next';
 
 type Param = string | number;
 type Params = {
@@ -27,6 +28,7 @@ function getSearchWith(params: Params, search?: string | URLSearchParams) {
 }
 
 export const CatalogFilter = () => {
+  const { t } = useTranslation('CatalogFilter');
   const [searchParams, setSearchParams] = useSearchParams();
   const [itemsQuantityOpen, setItemsQuantityOpen] = useState(false);
   const itemsQuantity = searchParams.get('quantity') || '';
@@ -55,7 +57,7 @@ export const CatalogFilter = () => {
       <div className={s.sort}>
         <div className={s.dropdown__wrapper}>
           <label htmlFor="sort_by" className={s.sort__by_title}>
-            Sort by
+            {t('Sort by')}
           </label>
           <div className={s.dropdown}>
             <button
@@ -64,7 +66,7 @@ export const CatalogFilter = () => {
               onClick={toggleSortButton}
             >
               <span className={s.dropdown__select_selected}>
-                {sortBy || 'Newest'}
+                {t(sortBy) || t(SortBy.newest)}
               </span>
               <div
                 className={classNames(s.dropdown__select_caret, {
@@ -87,7 +89,7 @@ export const CatalogFilter = () => {
                     setSortByOpen(false);
                   }}
                 >
-                  {value}
+                  {t(value)}
                 </li>
               ))}
             </ul>
@@ -95,7 +97,7 @@ export const CatalogFilter = () => {
         </div>
         <div className={s.dropdown__wrapper}>
           <label htmlFor="page_quantity" className={s.sort__by_title}>
-            Items on page
+            {t('Items on page')}
           </label>
           <div className={s.dropdown}>
             <button
@@ -104,7 +106,7 @@ export const CatalogFilter = () => {
               onClick={toggleQuantityButton}
             >
               <span className={s.dropdown__select_selected}>
-                {itemsQuantity || 'All'}
+                {t(itemsQuantity) || t('All')}
               </span>
               <div
                 className={classNames(s.dropdown__select_caret, {
@@ -127,7 +129,7 @@ export const CatalogFilter = () => {
                     setItemsQuantityOpen(false);
                   }}
                 >
-                  {value}
+                  {t(value)}
                 </li>
               ))}
             </ul>

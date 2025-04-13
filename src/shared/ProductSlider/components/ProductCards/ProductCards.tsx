@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { RightButtonContext } from '../../../context/RightButtonContext';
 import { SkeletonCard } from '../SkeletonCard';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   products: Product[];
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
+  const { t } = useTranslation('ProductCards');
   const { favourites, setFavourites, shoppingBag, setShoppingBag } =
     useContext(RightButtonContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -94,15 +96,15 @@ export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
             <div className={s.card__divider}></div>
             <div className={s.card__specs}>
               <div className={s.card__specs_screen}>
-                <p>Screen</p>
+                <p>{t('Screen')}</p>
                 {product.screen}
               </div>
               <div className={s.card__specs_capacity}>
-                <p>Capacity</p>
+                <p>{t('Capacity')}</p>
                 {product.capacity}
               </div>
               <div className={s.card__specs_ram}>
-                <p>RAM</p>
+                <p>{t('RAM')}</p>
                 {product.ram}
               </div>
             </div>
@@ -113,8 +115,8 @@ export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
                 disabled={Object.hasOwn(shoppingBag, `${product.id}`)}
               >
                 {Object.hasOwn(shoppingBag, `${product.id}`)
-                  ? 'Added to cart'
-                  : 'Add to cart'}
+                  ? t('Added to cart')
+                  : t('Add to cart')}
               </button>
               <button
                 className={classNames(s.card__buttons_like, {

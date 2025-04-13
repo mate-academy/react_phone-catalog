@@ -3,8 +3,10 @@ import s from './ShoppingBag.module.scss';
 import { ProductContext } from '../../shared/context/ProductsContext';
 import { Link } from 'react-router-dom';
 import { RightButtonContext } from '../../shared/context/RightButtonContext';
+import { useTranslation } from 'react-i18next';
 
 export const ShoppingBag = () => {
+  const { t } = useTranslation('ShoppingBag');
   const { products } = useContext(ProductContext);
   const { shoppingBag, setShoppingBag } = useContext(RightButtonContext);
   const shoppingBagProducts = products.filter(item =>
@@ -41,9 +43,9 @@ export const ShoppingBag = () => {
       <div className={s.header__title}>
         <Link to={'..'} className={s.header__title_back}>
           <img src="./img/icons/prev.png" alt="back" />
-          <p>Back</p>
+          <p>{t('Back')}</p>
         </Link>
-        <h2>Cart</h2>
+        <h2>{t('Cart')}</h2>
       </div>
       <div className={s.cart__wrapper}>
         {shoppingBagProducts.length > 0 ? (
@@ -91,13 +93,15 @@ export const ShoppingBag = () => {
             </div>
           ))
         ) : (
-          <h1 className={s.empty}>Your cart is empty</h1>
+          <h1 className={s.empty}>{t('Your cart is empty')}</h1>
         )}
         <div className={s.price__wrapper}>
           <div className={s.price}>
             <div className={s.price__title}>
               <h2>${totalPrice}</h2>
-              <p>Total for {shoppingBagProducts.length} items</p>
+              <p>
+                {t('Total for')} {shoppingBagProducts.length} {t('items')}
+              </p>
             </div>
             <div className={s.price__line}></div>
             <button
@@ -114,7 +118,7 @@ export const ShoppingBag = () => {
                 }
               }}
             >
-              Checkout
+              {t('Checkout')}
             </button>
           </div>
         </div>
