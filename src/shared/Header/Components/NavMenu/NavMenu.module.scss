@@ -114,10 +114,6 @@
 }
 
 .theme {
-  margin-left: auto;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   width: 50px;
   height: 25px;
@@ -129,11 +125,6 @@
   transition: background-color 0.3s ease;
 
 
-  &.onMobile {
-    display: none;
-    background-color: blue;
-  }
-
   &__button {
     height: 15px;
     width: 15px;
@@ -144,7 +135,7 @@
     left: 5px;
     transform: translateY(-50%);
     transition: left 0.3s ease,
-    background-color 1.3s ease;
+      background-color 1.3s ease;
 
     &.light {
       left: calc(100% - 20px);
@@ -152,4 +143,77 @@
     }
   }
 
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  height: auto;
+  right: 0;
+  margin-left: auto;
+  cursor: pointer;
+  position: relative;
+
+  &.onMobile {
+    display: none;
+    background-color: $black;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    display: flex;
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: $black;
+    top: 50px;
+    right: 0;
+    border: 1px solid $icons;
+    padding: 12px;
+    border-radius: 1rem;
+    row-gap: 8px;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    scale: 0;
+    transform-origin: top right;
+    transition: all 0.3s;
+
+    &_active {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+      scale: 1;
+
+    }
+
+    @include on-desktop {
+      top: 66px;
+    }
+
+    &_item {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+
+      &_active {
+        text-decoration: underline;
+      }
+    }
+
+  }
 }
