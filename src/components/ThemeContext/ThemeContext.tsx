@@ -20,17 +20,6 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.setItem('theme', theme);
     document.body.classList.remove('light', 'dark');
     document.body.classList.add(theme ? theme : '');
-    const slider = document.getElementById('slider') as HTMLInputElement;
-
-    if (theme && theme === 'dark') {
-      if (slider) {
-        slider.checked = false;
-      }
-    } else {
-      if (slider) {
-        slider.checked = true;
-      }
-    }
   }, [theme]);
 
   const toggleTheme = () => {

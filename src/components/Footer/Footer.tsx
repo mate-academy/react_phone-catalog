@@ -74,7 +74,12 @@ const Footer: React.FC<Props> = ({ disabledIds }) => {
         </div>
 
         <div className={`${styles.footer_back_to_top_container}`}>
-          <p className={`${styles.footer_back_to_top_text}`}>Back to top</p>
+          <p
+            className={`${styles.footer_back_to_top_text}`}
+            onClick={handleBackToTop}
+          >
+            Back to top
+          </p>
           <Button
             direction={ButtonDirection.up}
             onClick={handleBackToTop}

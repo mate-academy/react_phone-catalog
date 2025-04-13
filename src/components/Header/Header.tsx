@@ -67,9 +67,12 @@ const Header: React.FC<Props> = ({ setActiveAside, width }) => {
                   type="checkbox"
                   onChange={() => toggleTheme()}
                   id="slider"
+                  checked={theme === 'dark'}
                   aria-label="Toggle theme"
                 />
-                <span className={`${styles.slider} ${styles.round}`}></span>
+                <span
+                  className={classNames(`${styles.slider} ${styles.round}`)}
+                ></span>
               </label>
             </div>
 
@@ -139,9 +142,12 @@ const Header: React.FC<Props> = ({ setActiveAside, width }) => {
                     type="checkbox"
                     onChange={() => toggleTheme()}
                     id="slider"
+                    checked={theme === 'light'}
                     aria-label="Toggle theme"
                   />
-                  <span className={`${styles.slider} ${styles.round}`}></span>
+                  <span
+                    className={classNames(`${styles.slider} ${styles.round}`)}
+                  ></span>
                 </label>
               </div>
               <NavLink to={'../favourites'} className={handleFavLink}>

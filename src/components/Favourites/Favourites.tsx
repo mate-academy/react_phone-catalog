@@ -2,9 +2,14 @@ import React from 'react';
 import styles from './Favourites.module.scss';
 import { useFavourites } from './FavouritesContext';
 import { ProductCard } from '../../utils/lazyComponents';
+import { Link } from 'react-router-dom';
+import { useTheme } from '../ThemeContext/ThemeContext';
 
 const Favourites: React.FC = () => {
   const { favourites } = useFavourites();
+  const { theme } = useTheme();
+
+  const isLightTheme = theme === 'light';
 
   if (favourites.length === 0) {
     return (
@@ -23,11 +28,17 @@ const Favourites: React.FC = () => {
     <>
       <section className={`${styles.favourite_main_container}`}>
         <div className={`${styles.favourite_path_container}`}>
-          <img
-            src="./img/icons/home-icon.svg"
-            alt="home icon"
-            className={`${styles.favourite_header_icon}`}
-          />
+          <Link to={'/'} className={`${styles.home_link}`}>
+            <img
+              src={
+                isLightTheme
+                  ? './img/icons/home-icon.svg'
+                  : './img/icons/home-icon-dark-theme.svg'
+              }
+              alt="home icon"
+              className={`${styles.favourite_header_icon}`}
+            />
+          </Link>
           <img
             src="./img/icons/main-disabled-arrow.svg"
             alt="right arrow"
