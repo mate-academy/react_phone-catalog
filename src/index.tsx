@@ -5,6 +5,4 @@ import '../public/fonts/Mont-Bold.otf';
 import '../public/fonts/Mont-Regular.otf';
 import '../public/fonts/Mont-SemiBold.otf';
 
-import '../src/App';
-
 createRoot(document.getElementById('root') as HTMLElement).render(<Root />);
