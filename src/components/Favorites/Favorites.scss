@@ -1,0 +1,43 @@
+@import '../../styles/utils';
+
+.favorites {
+  @include grid;
+
+  padding-inline: 16px;
+  padding-top: 48px;
+
+  @include on-desktop {
+    padding-top: 64px;
+  }
+
+  &__text {
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-description {
+      color: $color-secondary;
+    }
+  }
+
+  &__list {
+    grid-column: span 4;
+
+    margin-top: 32px;
+    margin-bottom: 56px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(229px, auto));
+    gap: 40px 16px;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+}

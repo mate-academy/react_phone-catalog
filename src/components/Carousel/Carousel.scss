@@ -1,0 +1,77 @@
+@import '../../styles/utils';
+
+.carousel {
+  display: flex;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    padding-inline: 16px;
+    margin-block: 24px;
+
+    overflow-x: auto;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include on-tablet {
+      padding: 0;
+    }
+
+    @include on-desktop {
+      gap: 14px;
+    }
+  }
+
+  &__arrows {
+    position: absolute;
+    top: 0;
+    right: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 80px;
+    height: 32px;
+
+    @include on-tablet {
+      right: 0;
+    }
+
+    &-arrow {
+      background-color: transparent;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid $color-icons;
+      cursor: pointer;
+      transition: border 0.3s ease-in-out;
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+
+      &--disabled {
+        border: 1px solid $color-elements;
+        cursor: auto;
+
+        &:hover {
+          border: 1px solid $color-elements;
+        }
+      }
+    }
+  }
+
+  &--product-details {
+    .carousel__arrows {
+      right: 0;
+    }
+
+    .carousel__content {
+      padding-inline: 0;
+    }
+  }
+}

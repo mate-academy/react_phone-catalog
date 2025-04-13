@@ -1,0 +1,83 @@
+@import '../../styles/utils';
+
+.button-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  z-index: 1;
+
+  &__add {
+    width: 70%;
+    height: 40px;
+    border-radius: 8px;
+    background-color: $color-accent;
+    color: $color-white;
+    border: none;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    transition: box-shadow 0.3s ease-in-out;
+
+    @include on-tablet {
+      width: 125px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 12px 4px #17203166;
+    }
+
+    &--added {
+      background-color: transparent;
+      border: 1px solid $color-elements;
+      color: $color-accent;
+      cursor: not-allowed;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__like {
+    border-radius: 50%;
+    border: 1px solid $color-icons;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    background-position: center;
+    background-size: auto;
+    transition: border 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &--details {
+    justify-content: center;
+
+    @include on-tablet {
+      justify-content: flex-start;
+    }
+
+    &-add {
+      width: 231px;
+      height: 48px;
+
+      @include on-tablet {
+        width: 180px;
+      }
+    }
+
+    &-like {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}

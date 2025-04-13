@@ -1,0 +1,87 @@
+@import '../../styles/utils';
+
+.card {
+  overflow: hidden;
+  display: grid;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px;
+  min-width: 148px;
+
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid $color-elements;
+  transition: all 0.3s ease-in-out;
+
+  @include on-tablet {
+    min-width: 166px;
+  }
+
+  @include on-desktop {
+    min-width: 206px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 12px 4px #17203166;
+    transform: scale(1.1);
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $color-elements;
+    text-decoration: none;
+
+    @include on-tablet {
+      max-width: 100%;
+    }
+
+    &-img {
+      width: 148px;
+      height: 129px;
+      object-fit: contain;
+
+      @include on-tablet {
+        width: 173px;
+        height: 202px;
+      }
+    }
+
+    &-text {
+      display: grid;
+      gap: 8px;
+      align-items: center;
+      grid-template-rows: 1fr 31px;
+
+      &--name {
+        grid-row: 1;
+        grid-column: span 2;
+        height: auto;
+        text-align: justify;
+        color: $color-primary;
+      }
+
+      &--price {
+        grid-row: 2;
+        justify-self: left;
+        font-size: 22px;
+        line-height: 31px;
+        letter-spacing: 0;
+
+        &-discount {
+          color: $color-secondary;
+          text-decoration: line-through;
+          width: 50px;
+
+          @include on-tablet {
+            line-height: 40px;
+          }
+        }
+      }
+    }
+  }
+}

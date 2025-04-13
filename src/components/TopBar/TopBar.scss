@@ -1,0 +1,182 @@
+@import '../../styles/utils';
+
+.top-bar {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  justify-content: center;
+  align-items: center;
+
+  height: 48px;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-elements;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    height: 64px;
+
+    display: grid;
+    grid-template-columns: 1fr repeat(20, 32px) 1fr;
+  }
+
+  @include on-big-screen {
+    display: grid;
+    grid-template-columns: 1fr repeat(24, 32px) 1fr;
+    column-gap: 16px;
+  }
+
+  &__logo {
+    grid-column: 1;
+    margin-left: 16px;
+
+    @include on-laptop {
+      margin-left: 24px;
+    }
+
+    @include on-big-screen {
+      grid-row: 1;
+      grid-column: 1;
+      justify-self: start;
+    }
+  }
+
+  &__menu {
+    grid-column: 4;
+    padding: 16px;
+    background-size: auto;
+    background-position: center;
+    justify-self: end;
+    border-left: 1px solid $color-elements;
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  &__shopping {
+    display: none;
+    width: 96px;
+    height: 48px;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: end;
+    }
+
+    @include on-desktop {
+      grid-row: 1;
+      grid-column: 22;
+      width: 100%;
+      height: 100%;
+    }
+
+    @include on-big-screen {
+      grid-column: 26;
+    }
+
+    &-heart {
+      width: 63px;
+      height: 100%;
+      position: relative;
+      border-left: 1px solid $color-elements;
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        width: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $color-primary;
+
+        transition: all 0.3s ease-in-out;
+
+        @include on-tablet {
+          height: 3px;
+        }
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+
+    &-bag {
+      width: 63px;
+      height: 100%;
+      border-left: 1px solid $color-elements;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        width: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $color-primary;
+
+        transition: all 0.3s ease-in-out;
+
+        @include on-tablet {
+          height: 3px;
+        }
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__close {
+    grid-column: 4;
+    padding: 16px;
+    background-size: auto;
+    background-position: center;
+    justify-self: end;
+    border-left: 1px solid $color-elements;
+  }
+
+  &--aside {
+    grid-row: 1;
+    grid-column: 1 / 5;
+  }
+}
+
+.active {
+  color: $color-primary;
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: $color-primary;
+
+    transition: all 0.3s ease-in-out;
+
+    @include on-tablet {
+      height: 3px;
+    }
+  }
+}

@@ -1,0 +1,139 @@
+@import '../../styles/utils';
+
+.category {
+  grid-column: 1 / 5;
+  padding-inline: 16px;
+
+  display: grid;
+  grid-template-rows: 31px 1fr;
+  row-gap: 24px;
+
+  @include on-tablet {
+    grid-column: 1 / 13;
+    padding-inline: 0;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 25;
+  }
+
+  &__title {
+    grid-row: 1;
+    grid-column: span 4;
+  }
+
+  &__content {
+    grid-row: 2;
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      padding-inline: 0;
+    }
+
+    &-card {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      text-decoration: none;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      &--image {
+        width: 100%;
+        height: 288px;
+        overflow: hidden;
+        border-radius: 8px;
+        position: relative;
+
+        @include on-tablet {
+          height: 200px;
+        }
+
+        @include on-desktop {
+          height: 368px;
+          border-radius: 0;
+        }
+
+        &-first {
+          position: absolute;
+          top: 20%;
+          left: 20%;
+          background-image: url(../../../public/img/category-phones.webp);
+          background-repeat: no-repeat;
+          width: 100%;
+          height: 302px;
+          background-size: cover;
+        }
+
+        &-second {
+          position: absolute;
+          top: 7%;
+          left: 7%;
+          background-image: url(/img/category-tablets.png);
+          background-repeat: no-repeat;
+          width: 100%;
+          height: 427px;
+          background-size: cover;
+        }
+
+        &-third {
+          position: absolute;
+          top: 18%;
+          left: 14%;
+          background-image: url(/img/category-accessories.png);
+          background-repeat: no-repeat;
+          width: 100%;
+          height: 236px;
+          background-size: cover;
+
+          @include on-desktop {
+            top: 13%;
+            left: 8%;
+            height: 320px;
+          }
+        }
+      }
+
+      &--text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        &-title {
+          font-size: 20px;
+          color: $color-primary;
+        }
+
+        &-desc {
+          color: $color-secondary;
+        }
+      }
+    }
+  }
+
+  &__bg-color {
+    &--first {
+      background-color: #6D6474;
+    }
+
+    &--second {
+      background-color: #8D8D92;
+    }
+
+    &--third {
+      background-color: #973D5F;
+    }
+  }
+}
+

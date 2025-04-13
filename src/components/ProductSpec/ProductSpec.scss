@@ -1,0 +1,25 @@
+@import '../../styles/utils';
+
+.product-spec {
+  display: flex;
+  flex-direction: column;
+  padding-block: 8px;
+  gap: 8px;
+
+  @include on-tablet {
+    max-width: 100%;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &-right {
+      text-align: end;
+    }
+
+    &-left {
+      color: $color-secondary;
+    }
+  }
+}

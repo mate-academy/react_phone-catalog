@@ -1,1 +1,14 @@
-// not empty
+@import './styles/utils/';
+@import './styles/blocks/page';
+@import './styles/blocks/icon';
+@import './styles/blocks/text';
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+
+  &__main {
+    flex-grow: 1;
+  }
+}

@@ -1,0 +1,238 @@
+@import '../../styles/utils';
+
+.cart {
+  @include grid;
+
+  row-gap: 32px;
+  padding-inline: 16px;
+  padding-top: 72px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+    padding-top: 96px;
+    align-items: flex-start;
+  }
+
+  &__top {
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 25;
+      justify-content: center;
+    }
+
+    &-button {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+
+      &--back {
+        background: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        line-height: 20px;
+        color: $color-secondary;
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  &__list {
+    grid-column: span 4;
+
+    @include grid;
+
+    row-gap: 16px;
+
+    @include on-tablet {
+      grid-column: span 12;
+      padding-inline: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+      grid-row: 2;
+
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    border-radius: 16px;
+    padding: 16px;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+
+      flex-direction: row;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    @include on-desktop {
+      justify-content: space-between;
+    }
+
+    &-top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+
+      @include on-tablet {
+        gap: 24px;
+      }
+    }
+
+    &-bottom {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 104px;
+
+      @include on-tablet {
+        gap: 80px;
+      }
+    }
+
+    &-remove {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    &-image {
+      display: block;
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    &-quantity {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+
+      &--button {
+        border-radius: 50%;
+        border: 1px solid $color-icons;
+        width: 32px;
+        height: 32px;
+        background-color: transparent;
+        padding: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          border: 1px solid $color-primary;
+        }
+      }
+    }
+
+    &-price {
+      @include on-tablet {
+        text-align: end;
+      }
+    }
+  }
+
+  &__total {
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    border: 1px solid $color-elements;
+    border-radius: 16px;
+    padding: 24px;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
+
+    @include on-desktop {
+      grid-column: 17 / 25;
+      grid-row: 2;
+    }
+
+    &-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      border-bottom: 1px solid $color-elements;
+      padding-bottom: 12px;
+
+      &--price {
+        margin: 0;
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+      }
+
+      &--items {
+        color: $color-secondary;
+      }
+    }
+
+    &-bottom {
+      @include on-tablet {
+        width: 100%;
+      }
+
+      &--checkout {
+        width: 240px;
+        height: 48px;
+        color: $color-white;
+        background-color: $color-accent;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+
+        @include on-tablet {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &--empty {
+    padding-top: 0;
+    margin-bottom: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+}
