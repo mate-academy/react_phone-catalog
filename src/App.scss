@@ -43,3 +43,7 @@ body.no-scroll {
   overflow: hidden;
   touch-action: none; // блокує свайпи на мобілках
 }
+
+body.no-transition {
+  transition: none !important;
+}

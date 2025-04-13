@@ -3,8 +3,10 @@ import s from './Categories.module.scss';
 import { useContext } from 'react';
 import { ProductContext } from '../../../../shared/context/ProductsContext';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const Categories = () => {
+  const { t } = useTranslation('HomePage');
   const {
     productsPhoneLength,
     productsTabletLength,
@@ -14,7 +16,7 @@ export const Categories = () => {
   return (
     <div className={classNames(s.categories, 'container', 'block-margin')}>
       <div className={s.categories__title}>
-        <h2>Shop by category</h2>
+        <h2>{t('Shop by category')}</h2>
       </div>
       <div className={s.category}>
         <Link to={'/phones'} className={s.category__phone}>
@@ -22,9 +24,9 @@ export const Categories = () => {
             <img src="./img/category-phones.webp" alt="" />
           </div>
           <div className={s.category__phone_title}>
-            <h4>Mobile phones</h4>
+            <h4>{t('Mobile phones')}</h4>
             <div className={s.category__phone_quantity}>
-              {productsPhoneLength} models
+              {productsPhoneLength} {t('models')}
             </div>
           </div>
         </Link>
@@ -34,9 +36,9 @@ export const Categories = () => {
             <img src="./img/category-tablets.webp" alt="" />
           </div>
           <div className={s.category__tablets_title}>
-            <h4>Tablets</h4>
+            <h4>{t('Tablets')}</h4>
             <div className={s.category__tablets_quantity}>
-              {productsTabletLength} models
+              {productsTabletLength} {t('models')}
             </div>
           </div>
         </Link>
@@ -46,9 +48,9 @@ export const Categories = () => {
             <img src="./img/category-accessories.png" alt="" />
           </div>
           <div className={s.category__accessories_title}>
-            <h4>Accessories</h4>
+            <h4>{t('Accessories')}</h4>
             <div className={s.category__accessories_quantity}>
-              {productsAccessoriesLength} models
+              {productsAccessoriesLength} {t('models')}
             </div>
           </div>
         </Link>

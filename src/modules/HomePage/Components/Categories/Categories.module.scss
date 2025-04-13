@@ -53,8 +53,7 @@
 
 
     &_quantity {
-      color: $secondary;
-
+      @extend %category-quantity;
     }
   }
 
@@ -72,7 +71,7 @@
 
 
     &_quantity {
-      color: $secondary;
+      @extend %category-quantity;
 
     }
   }

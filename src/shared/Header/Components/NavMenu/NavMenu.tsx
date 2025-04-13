@@ -4,12 +4,14 @@ import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { BurgerContext } from '../../../context/BurgerContext';
 import { useTheme } from '../../../../hooks/useTheme';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   burgerMenu?: boolean;
 };
 
 export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
+  const { t } = useTranslation('Header');
   const { setBurgerMenuActivate } = useContext(BurgerContext);
   const [theme, setTheme] = useTheme();
   const closeBurgerMenu = () => setBurgerMenuActivate(false);
@@ -40,7 +42,7 @@ export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
         >
           <li className={navItemClass}>
             <NavLink to="/" className={getLinkClass} onClick={closeBurgerMenu}>
-              <p>home</p>
+              <p>{t('home')}</p>
             </NavLink>
           </li>
           <li className={navItemClass}>
@@ -49,7 +51,7 @@ export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
               className={getLinkClass}
               onClick={closeBurgerMenu}
             >
-              <p>phones</p>
+              <p>{t('phones')}</p>
             </NavLink>
           </li>
           <li className={navItemClass}>
@@ -58,7 +60,7 @@ export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
               className={getLinkClass}
               onClick={closeBurgerMenu}
             >
-              <p>tablets</p>
+              <p>{t('tablets')}</p>
             </NavLink>
           </li>
           <li className={navItemClass}>
@@ -67,7 +69,7 @@ export const NavMenu: React.FC<Props> = ({ burgerMenu = false }) => {
               className={getLinkClass}
               onClick={closeBurgerMenu}
             >
-              <p>accessories</p>
+              <p>{t('accessories')}</p>
             </NavLink>
           </li>
         </ul>

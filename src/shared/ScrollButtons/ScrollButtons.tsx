@@ -34,27 +34,27 @@ export const ScrollButtons = () => {
       className={classNames(s.scrolls__wrapper, 'container', 'block-margin')}
     >
       <div className={s.scrolls}>
-        <div className={s.scrolls__back}>
-          <Link
-            className={classNames({
-              [s.disabled]: pageNumber <= 1,
-            })}
-            to={{
-              pathname,
-              search: new URLSearchParams({
-                ...Object.fromEntries(searchParams.entries()),
-                page: `${pageNumber - 1}`,
-              }).toString(),
-            }}
-            onClick={e => pageNumber <= 1 && e.preventDefault()}
-          >
-            <img src="./img/icons/prev.png" alt="previous page" />
-          </Link>
-        </div>
+        <Link
+          className={classNames(s.scrolls__back, {
+            [s.disabled]: pageNumber <= 1,
+          })}
+          to={{
+            pathname,
+            search: new URLSearchParams({
+              ...Object.fromEntries(searchParams.entries()),
+              page: `${pageNumber - 1}`,
+            }).toString(),
+          }}
+          onClick={e => pageNumber <= 1 && e.preventDefault()}
+        >
+          <img src="./img/icons/prev.png" alt="previous page" />
+        </Link>
         {scrollPages.slice(pageNumber - 1, pageNumber + 3).map(page => (
           <Link
             key={page}
-            className={s.scrolls__page}
+            className={classNames(s.scrolls__page, {
+              [s.active]: pageNumber === page,
+            })}
             to={{
               pathname,
               search: new URLSearchParams({
@@ -66,23 +66,21 @@ export const ScrollButtons = () => {
             {page}
           </Link>
         ))}
-        <div className={s.scrolls__next}>
-          <Link
-            className={classNames({
-              [s.disabled]: pageNumber >= scrollLength,
-            })}
-            to={{
-              pathname,
-              search: new URLSearchParams({
-                ...Object.fromEntries(searchParams.entries()),
-                page: `${pageNumber + 1}`,
-              }).toString(),
-            }}
-            onClick={e => pageNumber >= scrollLength && e.preventDefault()}
-          >
-            <img src="./img/icons/next.png" alt="next page" />
-          </Link>
-        </div>
+        <Link
+          className={classNames(s.scrolls__next, {
+            [s.disabled]: pageNumber >= scrollLength,
+          })}
+          to={{
+            pathname,
+            search: new URLSearchParams({
+              ...Object.fromEntries(searchParams.entries()),
+              page: `${pageNumber + 1}`,
+            }).toString(),
+          }}
+          onClick={e => pageNumber >= scrollLength && e.preventDefault()}
+        >
+          <img src="./img/icons/next.png" alt="next page" />
+        </Link>
       </div>
     </div>
   );

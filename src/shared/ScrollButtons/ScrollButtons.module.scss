@@ -3,6 +3,10 @@
 .scrolls {
   display: flex;
 
+  & a:hover {
+    background-color: $icons;
+  }
+
   &__wrapper {
     display: flex;
     justify-content: center
@@ -24,6 +28,10 @@
     text-decoration: none;
 
     background-color: $surface-1;
+
+    &.active {
+      background-color: $accent;
+    }
 
   }
 }

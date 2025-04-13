@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import s from './CatalogFilter.module.scss';
 import { useSearchParams } from 'react-router-dom';
-import React from 'react';
+import { useState } from 'react';
 import { ItemsQuantity, SortBy } from '../../types/enums/Page.quantity';
 
 type Param = string | number;
@@ -28,8 +28,13 @@ function getSearchWith(params: Params, search?: string | URLSearchParams) {
 
 export const CatalogFilter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [itemsQuantityOpen, setItemsQuantityOpen] = useState(false);
   const itemsQuantity = searchParams.get('quantity') || '';
+  const [sortByOpen, setSortByOpen] = useState(false);
   const sortBy = searchParams.get('sort') || '';
+
+  const toggleQuantityButton = () => setItemsQuantityOpen(prev => !prev);
+  const toggleSortButton = () => setSortByOpen(prev => !prev);
 
   function setSearchWith(params: Params) {
     const search = getSearchWith(params, searchParams);
@@ -37,48 +42,96 @@ export const CatalogFilter = () => {
     setSearchParams(search);
   }
 
-  const sortFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchWith({ quantity: +event.target.value || null });
+  const sortFilter = (value: string) => {
+    setSearchWith({ quantity: +value || null });
   };
 
-  const sortedBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchWith({ sort: event.target.value || null });
+  const sortedBy = (value: string) => {
+    setSearchWith({ sort: value || null });
   };
 
   return (
     <div className={classNames(s.sort__wrapper, 'container')}>
       <div className={s.sort}>
-        <div className={s.sort__by}>
+        <div className={s.dropdown__wrapper}>
           <label htmlFor="sort_by" className={s.sort__by_title}>
             Sort by
           </label>
-          <select
-            id="sort_by"
-            className={s.sort__by_select}
-            onChange={sortedBy}
-            value={sortBy || 'newest'}
-          >
-            <option value={SortBy.newest}>Newest</option>
-            <option value={SortBy.alphabetically}>Alphabetically</option>
-            <option value={SortBy.cheapest}>Cheapest</option>
-          </select>
+          <div className={s.dropdown}>
+            <button
+              id="sort_by"
+              className={s.dropdown__select}
+              onClick={toggleSortButton}
+            >
+              <span className={s.dropdown__select_selected}>
+                {sortBy || 'Newest'}
+              </span>
+              <div
+                className={classNames(s.dropdown__select_caret, {
+                  [s.rotate]: sortByOpen,
+                })}
+              >
+                <img src="./img/icons/down.png" alt="" />
+              </div>
+            </button>
+            <ul
+              className={classNames(s.dropdown__menu, {
+                [s.open]: sortByOpen,
+              })}
+            >
+              {Object.values(SortBy).map(value => (
+                <li
+                  key={value}
+                  onClick={() => {
+                    sortedBy(value);
+                    setSortByOpen(false);
+                  }}
+                >
+                  {value}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div className={s.sort__page}>
-          <label htmlFor="page_quantity" className={s.sort__title}>
+        <div className={s.dropdown__wrapper}>
+          <label htmlFor="page_quantity" className={s.sort__by_title}>
             Items on page
           </label>
-          <select
-            id="page_quantity"
-            className={s.sort__page_select}
-            onChange={sortFilter}
-            value={itemsQuantity || ItemsQuantity.all}
-          >
-            {Object.values(ItemsQuantity).map(value => (
-              <option value={value} key={value}>
-                {value}
-              </option>
-            ))}
-          </select>
+          <div className={s.dropdown}>
+            <button
+              className={s.dropdown__select}
+              id="page_quantity"
+              onClick={toggleQuantityButton}
+            >
+              <span className={s.dropdown__select_selected}>
+                {itemsQuantity || 'All'}
+              </span>
+              <div
+                className={classNames(s.dropdown__select_caret, {
+                  [s.rotate]: itemsQuantityOpen,
+                })}
+              >
+                <img src="./img/icons/down.png" alt="" />
+              </div>
+            </button>
+            <ul
+              className={classNames(s.dropdown__menu, {
+                [s.open]: itemsQuantityOpen,
+              })}
+            >
+              {Object.values(ItemsQuantity).map(value => (
+                <li
+                  key={value}
+                  onClick={() => {
+                    sortFilter(value);
+                    setItemsQuantityOpen(false);
+                  }}
+                >
+                  {value}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
