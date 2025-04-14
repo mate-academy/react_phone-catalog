@@ -1,0 +1,33 @@
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desctop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin on-large-desctop {
+  @media (min-width: 1201px) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desctop {
+    padding-inline: 32px;
+  }
+  
+  @include on-large-desctop {
+    padding-inline: 152px;
+  }
+}
