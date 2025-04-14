@@ -1,14 +1,17 @@
+import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 
 export const ProductCard = () => {
   return (
     <div className={styles.productCard}>
-      <img
-        loading="lazy"
-        className={styles.productCard__mainImage}
-        src="src/assets/images/productsSlider/products-phone.png"
-        alt=""
-      />
+      <Link to="/phones/15">
+        <img
+          loading="lazy"
+          className={styles.productCard__mainImage}
+          src="src/assets/images/productsSlider/products-phone.png"
+          alt="Зображення продукту"
+        />
+      </Link>
       <p className={styles.productCard__description}>
         Apple iPhone 14 Pro 128GB Silver (MQ023)
       </p>
@@ -34,7 +37,7 @@ export const ProductCard = () => {
           <img
             loading="lazy"
             src="src/assets/images/productsSlider/favorites-icon.svg"
-            alt=""
+            alt="Іконка для додавання в улюбленні"
           />
         </button>
       </div>

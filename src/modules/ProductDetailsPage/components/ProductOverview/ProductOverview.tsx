@@ -2,7 +2,7 @@ import styles from './ProductOverview.module.scss';
 
 export const ProductOverview = () => {
   return (
-    <div className={styles.productOverview}>
+    <section className={styles.productOverview}>
       <section className={styles.productOverview__details}>
         <img
           className={styles.details__mainImage}
@@ -126,6 +126,6 @@ export const ProductOverview = () => {
           </ul>
         </div>
       </section>
-    </div>
+    </section>
   );
 };

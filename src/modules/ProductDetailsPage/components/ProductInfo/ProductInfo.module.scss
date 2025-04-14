@@ -1,6 +1,20 @@
 @import '../../../../assets/styles/main';
 
 .productInfo {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  @include on-desktop-extra {
+    margin-bottom: 80px;
+  }
+
   @include page-grid;
 }
 

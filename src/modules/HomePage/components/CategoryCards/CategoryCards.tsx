@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styles from './CategoryCards.module.scss';
 
 export const CategoryCards = () => {
@@ -18,12 +19,14 @@ export const CategoryCards = () => {
                 srcSet="src\assets\images\shopCategory\shop-category-phones-tablet.png" // eslint-disable-line
               />
 
-              <img
-                loading="lazy"
-                className={styles.category__image}
-                src="src\assets\images\shopCategory\shop-category-phones-mobile.png" // eslint-disable-line
-                alt="Головний слайдер"
-              />
+              <NavLink to="/phones">
+                <img
+                  loading="lazy"
+                  className={styles.category__image}
+                  src="src\assets\images\shopCategory\shop-category-phones-mobile.png" // eslint-disable-line
+                  alt="Головний слайдер"
+                />
+              </NavLink>
             </picture>
             <h4 className={styles.category__cardTitle}>Mobile phones</h4>
             <p className={styles.category__cardDescription}>95 models</p>
@@ -39,12 +42,14 @@ export const CategoryCards = () => {
                 srcSet="src\assets\images\shopCategory\shop-category-tablets-tablet.png" // eslint-disable-line
               />
 
-              <img
-                loading="lazy"
-                className={styles.category__image}
-                src="src\assets\images\shopCategory\shop-category-tablets-mobile.png" // eslint-disable-line
-                alt="Головний слайдер"
-              />
+              <NavLink to="/tablets">
+                <img
+                  loading="lazy"
+                  className={styles.category__image}
+                  src="src\assets\images\shopCategory\shop-category-tablets-mobile.png" // eslint-disable-line
+                  alt="Головний слайдер"
+                />
+              </NavLink>
             </picture>
             <h4 className={styles.category__cardTitle}>Tablets</h4>
             <p className={styles.category__cardDescription}>24 models</p>
@@ -61,12 +66,14 @@ export const CategoryCards = () => {
                 srcSet="src\assets\images\shopCategory\shop-category-accessories-tablet.png" // eslint-disable-line
               />
 
-              <img
-                loading="lazy"
-                className={styles.category__image}
-                src="src\assets\images\shopCategory\shop-category-accessories-mobile.png" // eslint-disable-line
-                alt="Головний слайдер"
-              />
+              <NavLink to="/accessories">
+                <img
+                  loading="lazy"
+                  className={styles.category__image}
+                  src="src\assets\images\shopCategory\shop-category-accessories-mobile.png" // eslint-disable-line
+                  alt="Головний слайдер"
+                />
+              </NavLink>
             </picture>
             <h4 className={styles.category__cardTitle}>Accessories</h4>
             <p className={styles.category__cardDescription}>100 models</p>

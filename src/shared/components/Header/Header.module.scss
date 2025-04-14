@@ -1,6 +1,12 @@
 @import '../../../assets/styles/main';
 
 .header {
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background-color: #fff;
+
   box-shadow: 0 1px 0 0 $color-elements;
   &__container {
     display: flex;
@@ -80,6 +86,8 @@
   }
 
   &__link {
+    position: relative;
+
     font-size: 12px;
     font-weight: 700;
     line-height: 11px;
@@ -92,16 +100,12 @@
     &:hover {
       color: $color-primary;
     }
-  }
-
-  &__linkHover {
-    position: relative;
 
     &::before {
       content: '';
 
       position: absolute;
-      bottom: -26px;
+      bottom: -25px;
       left: 50%;
       transform: translateX(-50%);
 
@@ -114,10 +118,13 @@
 
       transition: width 0.3s ease;
     }
+  }
 
-    &:active::before {
+  &__linkActive {
+    color: $color-primary;
+
+    &::before {
       width: 100%;
-      color: $color-primary;
     }
   }
 
@@ -223,5 +230,9 @@
   &__menuImg {
     width: 16px;
     height: 16px;
+  }
+
+  &__imageLinkActive {
+    box-shadow: 0 1px 2px 0 $color-primary;
   }
 }

@@ -1,76 +1,131 @@
+import { Link, NavLink } from 'react-router-dom';
+
 import styles from './Header.module.scss';
+
+import { getClassLink } from '../../utils/activeClassName';
 
 export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <a href="#" className={styles.header__logoLink}>
+        <Link to="/" className={styles.header__logoLink}>
           <img
             src="src/assets/icons/header-icons/logo-icon.svg"
             alt="Логотип"
             className={styles.header__logo}
           />
-        </a>
+        </Link>
 
         <nav className={styles.header__nav}>
           <ul className={styles.header__list}>
             <li className={styles.header__item}>
-              <a
-                href="#"
-                className={`${styles.header__link} ${styles.header__linkHover}`}
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  getClassLink({
+                    isActive,
+                    baseClass: styles.header__link,
+                    activeClass: styles.header__linkActive,
+                  })
+                }
               >
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className={styles.header__item}>
-              <a
-                href="#"
-                className={`${styles.header__link} ${styles.header__linkHover}`}
+              <NavLink
+                to="/phones"
+                className={({ isActive }) =>
+                  getClassLink({
+                    isActive,
+                    baseClass: styles.header__link,
+                    activeClass: styles.header__linkActive,
+                  })
+                }
               >
                 Phones
-              </a>
+              </NavLink>
             </li>
             <li className={styles.header__item}>
-              <a
-                href="#"
-                className={`${styles.header__link} ${styles.header__linkHover}`}
+              <NavLink
+                to="/tablets"
+                className={({ isActive }) =>
+                  getClassLink({
+                    isActive,
+                    baseClass: styles.header__link,
+                    activeClass: styles.header__linkActive,
+                  })
+                }
               >
                 Tablets
-              </a>
+              </NavLink>
             </li>
             <li className={styles.header__item}>
-              <a
-                href="#"
-                className={`${styles.header__link} ${styles.header__linkHover}`}
+              <NavLink
+                to="/accessories"
+                className={({ isActive }) =>
+                  getClassLink({
+                    isActive,
+                    baseClass: styles.header__link,
+                    activeClass: styles.header__linkActive,
+                  })
+                }
               >
                 Accessories
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>
 
         <div className={styles.header__wrapper}>
-          <a href="#" className={styles.header__favoritesLink}>
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              getClassLink({
+                isActive,
+                baseClass: styles.header__favoritesLink,
+                activeClass: styles.header__imageLinkActive,
+              })
+            }
+          >
             <img
               src="src/assets/icons/header-icons/favorites-icon.svg"
               alt="Улюблені"
               className={styles.header__favoritesImg}
             />
-          </a>
-          <a href="#" className={styles.header__cartLink}>
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              getClassLink({
+                isActive,
+                baseClass: styles.header__cartLink,
+                activeClass: styles.header__imageLinkActive,
+              })
+            }
+          >
             <img
               src="src/assets/icons/header-icons/cart-icon.svg"
               alt="Корзина"
               className={styles.header__cartImg}
             />
-          </a>
-          <a href="#menu" className={styles.header__menuLink}>
+          </NavLink>
+          <NavLink
+            to="/aside-menu"
+            className={({ isActive }) =>
+              getClassLink({
+                isActive,
+                baseClass: styles.header__menuLink,
+                activeClass: styles.header__imageLinkActive,
+              })
+            }
+          >
             <img
               src="src/assets/icons/header-icons/hamburger-icon.svg"
               alt="Меню"
               className={styles.header__menuImg}
             />
-          </a>
+          </NavLink>
         </div>
       </div>
     </header>

@@ -19,3 +19,15 @@
     @include content-padding;
   }
 }
+
+.favorites__cardWrapper {
+  @include page-grid;
+}
+
+.favorites__card {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+}

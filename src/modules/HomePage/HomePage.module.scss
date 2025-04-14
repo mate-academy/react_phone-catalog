@@ -36,8 +36,8 @@
 
 .main__wrapper {
   display: flex;
-  gap: 56px;
   flex-direction: column;
+  gap: 56px;
 
   @include on-tablet {
     gap: 64px;
@@ -50,4 +50,16 @@
   @include on-desktop-extra {
     gap: 80px;
   }
+}
+
+.main__visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

@@ -1,5 +1,5 @@
 import { CurrentPage } from '../../shared/components/CurrentPage';
-import { ProductCatalog } from '../ProductPage/components';
+import { ProductCard } from '../../shared/components/ProductCard';
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage = () => {
@@ -8,7 +8,38 @@ export const FavoritesPage = () => {
       <div className={styles.favorites__container}>
         <CurrentPage />
 
-        <ProductCatalog />
+        <div className={styles.favorites__cardWrapper}>
+          <div className={styles.favorites__card}>
+            <ProductCard />
+          </div>
+          <div className={styles.favorites__card}>
+            <ProductCard />
+          </div>
+          <div className={styles.favorites__card}>
+            <ProductCard />
+          </div>
+          <div className={styles.favorites__card}>
+            <ProductCard />
+          </div>
+          <div className={styles.favorites__card}>
+            <ProductCard />
+          </div>
+          <div className={styles.favorites__card}>
+            <ProductCard />
+          </div>
+          <div className={styles.favorites__card}>
+            <ProductCard />
+          </div>
+          <div className={styles.favorites__card}>
+            <ProductCard />
+          </div>
+          <div className={styles.favorites__card}>
+            <ProductCard />
+          </div>
+          <div className={styles.favorites__card}>
+            <ProductCard />
+          </div>
+        </div>
       </div>
     </main>
   );

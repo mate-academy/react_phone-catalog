@@ -1,3 +1,4 @@
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
@@ -5,14 +6,19 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss/autoplay';
+
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 
-export const ProductsSlider = () => {
+type Props = {
+  title: string;
+};
+
+export const ProductsSlider: React.FC<Props> = ({ title }) => {
   return (
     <section className={styles.productSlider}>
       <div className={styles.productSlider__container}>
-        <h2 className={styles.productSlider__title}>Brand new models</h2>
+        <h2 className={styles.productSlider__title}>{title}</h2>
         <div className={styles.productSlider__btn}>
           <button className={styles.productSlider__leftBtn} id="prevProduct">
             <img
