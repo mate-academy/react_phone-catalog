@@ -25,12 +25,12 @@ export const ComponentFooter = () => {
               </a>
             </li>
             <li className={styles.nav__item}>
-              <a href="/home" className={styles.nav__link}>
+              <a href="/" className={styles.nav__link}>
                 Contacts
               </a>
             </li>
             <li className={styles.nav__item}>
-              <a href="/home" className={styles.nav__link}>
+              <a href="/" className={styles.nav__link}>
                 Rights
               </a>
             </li>
