@@ -1,0 +1,119 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  gap: 0 16px;
+  background-color: #fff;
+  justify-content: space-between;
+
+  height: 48px;
+  width: 100vw;
+  align-items: center;
+  box-shadow: 0 1px 0 0 #e2e6e9;
+
+  @include onDesctop {
+    height: 64px;
+    gap: 0 24px;
+  }
+
+  &Logo {
+    width: 64px;
+    height: 22px;
+
+    @include onDesctop {
+      width: 80px;
+      height: 28px;
+    }
+
+    &Link {
+      display: flex;
+      padding: 13px 16px;
+
+      @include onDesctop {
+        padding: 18px 24px;
+      }
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+
+  @include onTablet {
+    flex-grow: 1;
+  }
+
+  &List {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &LinkText {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+  }
+
+  &LinkIcon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onDesctop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+}
+
+.textList {
+  gap: 0 32px;
+  display: none;
+
+  @include onTablet {
+    display: flex;
+  }
+
+  @include onDesctop {
+    gap: 0 64px;
+  }
+}
+
+.favourites {
+  background-image: url(../../../../../public/img/icons/favourites.svg);
+  display: none;
+
+  @include onTablet {
+    display: block;
+  }
+}
+
+.cart {
+  background-image: url(../../../../../public/img/icons/cart.svg);
+  display: none;
+
+  @include onTablet {
+    display: block;
+  }
+}
+
+.burgerMenu {
+  background-image: url(../../../../../public/img/icons/burger-menu.svg);
+
+  @include onTablet {
+    display: none;
+  }
+}

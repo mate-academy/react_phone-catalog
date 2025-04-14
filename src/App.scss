@@ -1,1 +1,36 @@
-// not empty
+@import './modules/shared/styles/variables';
+@import './modules/shared/styles/mixins';
+@import './modules/shared/styles/container';
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-Regular.otf);
+  width: 600;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-SemiBold.otf);
+  width: 700;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-Bold.otf);
+  font-weight: 800;
+}
+
+:root {
+  font-family: Mont, sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: $main-background-color;
+}
+
+.link {
+  color: $secondary-text-color;
+  text-decoration: none;
+}

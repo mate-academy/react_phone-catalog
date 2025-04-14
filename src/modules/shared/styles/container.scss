@@ -1,0 +1,17 @@
+.container {
+  box-sizing: border-box;
+  margin-inline: auto;
+  padding-inline: 16px;
+  background-color: aqua;
+
+  @include onTablet {
+    background-color: pink;
+    padding-inline: 24px;
+  }
+
+  @include onDesctop {
+    background-color: magenta;
+    max-width: 1200px;
+    padding-inline: 32px;
+  }
+}

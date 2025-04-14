@@ -1,0 +1,17 @@
+@mixin onMobile {
+  @media (max-width: $maxMobileSize) {
+    @content
+  }
+};
+
+@mixin onTablet {
+  @media (min-width: $tabletSize) {
+    @content
+  }
+};
+
+@mixin onDesctop{
+  @media (min-width: $desctopSize) {
+    @content
+  }
+};
