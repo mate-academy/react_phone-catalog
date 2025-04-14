@@ -1,74 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import styles from './TopBarActions.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import HeartIco from '../Icons/Heart/Heart';
 import CartIco from '../Icons/Cart/CartIco';
-import { storage } from '../../app/localStorage';
+import { storage, StorageKey } from '../../app/localStorage';
+import { Link } from 'react-router-dom';
+import { toggleMenu } from '../../features/settingsSlice';
 
 interface Props {
   favouriteBtnClass: string;
   cardBtnClass: string;
 }
 
+const getCount = (key: StorageKey): number => {
+  return storage.getAllItems<string>(key)?.length || 0;
+};
+
 const TopBarActions: React.FC<Props> = ({
   favouriteBtnClass,
   cardBtnClass,
 }) => {
+  const favourites = useAppSelector(state => state.favourite);
+  const cart = useAppSelector(state => state.cart);
+
+  const dispatch = useAppDispatch();
   const isMenu = useAppSelector(state => state.store.isOpenMenu);
   const isMobile = useMediaQuery({ maxWidth: 640 });
 
-  const [favourites, setFavouritesCount] = useState(
-    () => storage.getAllItems<string>('favourites')?.length || 0,
-  );
-  const [cart, setCartCount] = useState(
-    () => storage.getAllItems<string>('cart')?.length || 0,
-  );
+  const [favCount, setFavCount] = useState(getCount('favourites'));
+  const [cartCount, setCartCount] = useState(getCount('cart'));
 
   useEffect(() => {
-    const handleStorageUpdate = (e: StorageEvent | CustomEvent) => {
-      if (e instanceof StorageEvent) {
-        if (e.key === 'favourites') {
-          setFavouritesCount(storage.getAllItems('favourites')?.length || 0);
-        }
+    setFavCount(getCount('favourites'));
+  }, [favourites]);
 
-        if (e.key === 'cart') {
-          setCartCount(storage.getAllItems('cart')?.length || 0);
-        }
-      }
+  useEffect(() => {
+    setCartCount(getCount('cart'));
+  }, [cart]);
 
-      if (e instanceof CustomEvent && e.type === 'localStorageChange') {
-        const { key } = e.detail;
-
-        if (key === 'favourites') {
-          setFavouritesCount(prev =>
-            e.detail.action === 'add' ? prev + 1 : prev - 1,
-          );
-        }
-
-        if (key === 'cart') {
-          setCartCount(prev =>
-            e.detail.action === 'add' ? prev + 1 : prev - 1,
-          );
-        }
-      }
-    };
-
-    window.addEventListener('storage', handleStorageUpdate);
-    window.addEventListener(
-      'localStorageChange',
-      handleStorageUpdate as EventListener,
-    );
-
-    return () => {
-      window.removeEventListener('storage', handleStorageUpdate);
-      window.removeEventListener(
-        'localStorageChange',
-        handleStorageUpdate as EventListener,
-      );
-    };
-  }, []);
+  const handleClick = () => {
+    dispatch(toggleMenu());
+  };
 
   return (
     <div
@@ -76,12 +50,20 @@ const TopBarActions: React.FC<Props> = ({
         [styles['top-bar__actions--mobile']]: isMenu && isMobile,
       })}
     >
-      <a className={classNames(favouriteBtnClass)}>
-        <HeartIco counter={favourites} />
-      </a>
-      <a className={classNames(cardBtnClass)}>
-        <CartIco counter={cart} />
-      </a>
+      <Link
+        to={'./favourites'}
+        className={classNames(favouriteBtnClass)}
+        onClick={handleClick}
+      >
+        <HeartIco counter={favCount} />
+      </Link>
+      <Link
+        to={'./cart'}
+        className={classNames(cardBtnClass)}
+        onClick={handleClick}
+      >
+        <CartIco counter={cartCount} />
+      </Link>
     </div>
   );
 };

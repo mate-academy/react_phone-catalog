@@ -23,10 +23,12 @@
 
   &:hover &__name {
     color: $accent;
+    cursor: pointer;
   }
 
   &:hover &__arrow {
     stroke: $accent !important;
+    cursor: pointer;
   }
 
 }

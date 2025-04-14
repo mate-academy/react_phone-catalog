@@ -18,6 +18,8 @@
     width: 272px;
   }
 
+
+
   &__img {
     height: 129px;
     width: auto;
@@ -31,14 +33,6 @@
 
     @include on-desktop {
       height: 196px;
-    }
-  }
-
-  &:hover {
-    box-shadow: 0 0 10px $gray;
-
-    & .card__img {
-      transform: scale(1.1);
     }
   }
 
@@ -86,7 +80,6 @@
   }
 
   &__addBtn {
-    background-color: $accent;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
@@ -103,17 +96,6 @@
       width: 160px;
     }
 
-    transition: box-shadow 0.3s ease-in-out;
-
-    &:hover {
-      box-shadow: 0 5px 20px #905bffd1;
-    }
-
-    &_active {
-      border: 1px solid $dark-gray !important;
-      background-color: $dark-gray;
-      color: $white;
-    }
   }
 
   &__favouriteBtn {
@@ -129,10 +111,6 @@
     & img {
       display: block;
       height: 16px;
-    }
-
-    &:hover {
-      border: 1px solid $white !important;
     }
   }
 }
@@ -150,8 +128,64 @@
     line-height: auto;
     letter-spacing: 0;
   }
+}
 
+.skeleton {
   &__title {
-    color: $ligth-gray;
+    height: 42px;
+    margin-top: 16px;
+
+    .content-loader {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__price {
+    height: 31px;
+
+    .content-loader {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__property {
+    width: 100%;
+    height: 12px;
+
+    .content-loader {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__button {
+    flex-grow: 1;
+    height: 40px;
+
+    @include on-tablet {
+      width: 125px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+    }
+
+    .content-loader {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+
+    .content-loader {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
+

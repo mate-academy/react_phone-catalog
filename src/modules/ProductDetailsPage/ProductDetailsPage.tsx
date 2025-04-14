@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import { useLocation, useParams } from 'react-router-dom';
@@ -5,7 +6,6 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductDetail } from '../../types/productDetail';
 import { TypeProduct } from '../../types/category';
 import { getAccessories, getPhones, getTablets } from '../../api/products';
-import { BackBreadcrumb } from './components/BackBreadcrumb';
 import { OverviewSection } from './sections/OverviewSection';
 import { AboutSection } from './sections/AboutSection';
 import classNames from 'classnames';
@@ -13,6 +13,10 @@ import { TechSpecsSection } from './sections/TechSpecsSection';
 import ProductsSlider from '../../components/ProductsSlider/ProductsSlider';
 import { Product } from '../../types/products';
 import { useAppSelector } from '../../app/hooks';
+import { BackBreadcrumb } from '../../components/BackBreadcrumb';
+import { NotFoundProduct } from './components/NotFoundProduct';
+import { OverviewSectionSceleton } from './sections/OverviewSection/OverviewSectionSceleton';
+import ContentLoader from 'react-content-loader';
 
 const getSuggestedProducts = (products: Product[]): Product[] => {
   if (products.length <= 10) {
@@ -36,7 +40,7 @@ const getSuggestedProducts = (products: Product[]): Product[] => {
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
-  const [, setIsLoad] = useState(false);
+  const [isLoad, setIsLoad] = useState(false);
   const [, setIsError] = useState(false);
   const [gadgets, setGadgets] = useState<ProductDetail[]>([]);
   const [similarGadgets, setSimilarGadgets] = useState<ProductDetail[]>([]);
@@ -113,6 +117,20 @@ const ProductDetailsPage = () => {
 
       <BackBreadcrumb />
 
+      {isLoad && (
+        <>
+          <ContentLoader
+            speed={2}
+            backgroundColor="#161827"
+            foregroundColor="#263050"
+            className={styles.skeleton__title}
+          >
+            <rect x="0" y="0" width="250px" height="31px" />
+          </ContentLoader>
+          <OverviewSectionSceleton />
+        </>
+      )}
+      {!curGadget && !isLoad && <NotFoundProduct />}
       {curGadget && (
         <>
           <h2 className={styles.ProductDetails__title}>{curGadget?.name}</h2>

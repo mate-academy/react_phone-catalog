@@ -1,33 +1,24 @@
 @import '/src/utils/global';
 
 .products {
-  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 
-  @include page-grid;
-  
+  gap: 16px;
   row-gap: 40px;
 
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(230px, .5fr));
+  }
+
+  @include on-laptop {
+    grid-template-columns: repeat(auto-fit, minmax(230px, .33fr));
+
+  }
+
   &__item {
-    grid-column: 1 / -1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
     & article {
-      @include on-tablet {
-        width: 100%;
-      }
-    }
-    @include on-tablet {
-      grid-column: span 6;
-    }
-
-    @include on-laptop {
-      grid-column: span 4;
-    }
-
-    @include on-desktop {
-      grid-column: span 6;
+      width: 100%;
     }
   }
 }

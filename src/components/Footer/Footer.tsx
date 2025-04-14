@@ -33,48 +33,45 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <Logo className={styles.footer__logo} />
-
-      <nav className={styles.footer_nav}>
-        <ul className={styles.footer__list}>
-          <li className={styles.footer__item}>
-            <a
-              href="https://github.com/dvdmsk"
-              target="_blank"
-              rel="noreferrer"
-              className={styles.footer__link}
-            >
-              Github
-            </a>
-          </li>
-
-          <li className={styles.footer__item}>
-            <a href="#" className={styles.footer__link}>
-              Contacts
-            </a>
-          </li>
-
-          <li className={styles.footer__item}>
-            <a href="#" className={styles.footer__link}>
-              rights
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <button
-        className={classNames(styles.footer__upside, {
-          [styles.footer__upside_hiden]: !isScrolBtn,
-        })}
-        disabled={!isScrolBtn}
-        onClick={scrollToTop}
-      >
-        <p>Back to top</p>
-
-        <div>
-          <Arrow direction={ArrowDirection.up} />
-        </div>
-      </button>
+      <div className={classNames('container', styles.footer__container)}>
+        <Logo className={styles.footer__logo} />
+        <nav className={styles.footer_nav}>
+          <ul className={styles.footer__list}>
+            <li className={styles.footer__item}>
+              <a
+                href="https://github.com/dvdmsk"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer__link}
+              >
+                Github
+              </a>
+            </li>
+            <li className={styles.footer__item}>
+              <a href="#" className={styles.footer__link}>
+                Contacts
+              </a>
+            </li>
+            <li className={styles.footer__item}>
+              <a href="#" className={styles.footer__link}>
+                rights
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <button
+          className={classNames(styles.footer__upside, {
+            [styles.footer__upside_hiden]: !isScrolBtn,
+          })}
+          disabled={!isScrolBtn}
+          onClick={scrollToTop}
+        >
+          <p>Back to top</p>
+          <div>
+            <Arrow direction={ArrowDirection.up} />
+          </div>
+        </button>
+      </div>
     </footer>
   );
 };

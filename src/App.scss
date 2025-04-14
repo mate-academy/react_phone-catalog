@@ -73,6 +73,7 @@ p {
 
 .container {
   cursor: inherit;
+  flex-grow: 1;
   box-sizing: border-box;
   padding-inline: $mobile-padding;
   max-width: $desktop-min-width;
@@ -90,6 +91,7 @@ p {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 ul {
@@ -101,9 +103,12 @@ ul {
 .App {
   min-height: 100vh;
   position: relative;
+  display: flex
+;
+  flex-direction: column;
 }
 
 
 .hidden {
-  display: none;
+  display: none !important;
 }

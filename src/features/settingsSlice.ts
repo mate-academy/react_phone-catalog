@@ -2,31 +2,18 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, RootState } from '../app/store';
 import { Product } from '../types/products';
-import {
-  getAccessories,
-  getPhones,
-  getProducts,
-  getTablets,
-} from '../api/products';
-import { ProductDetail } from '../types/productDetail';
-import { TypeProduct } from '../types/category';
+import { getProducts } from '../api/products';
 
 export interface AppState {
   isOpenMenu: boolean;
   isLoadProducts: boolean;
   products: Product[];
-  phones: ProductDetail[];
-  tablets: ProductDetail[];
-  accessories: ProductDetail[];
 }
 
 const initialState: AppState = {
   isOpenMenu: false,
   isLoadProducts: false,
   products: [],
-  phones: [],
-  tablets: [],
-  accessories: [],
 };
 
 export const loadProducts = createAsyncThunk(
@@ -35,22 +22,6 @@ export const loadProducts = createAsyncThunk(
     const value = await getProducts();
 
     return value;
-  },
-);
-
-export const loadProductsByType = createAsyncThunk(
-  'store/fetchProductsByType',
-  async (fetchType: TypeProduct) => {
-    switch (fetchType) {
-      case TypeProduct.phones:
-        return getPhones();
-      case TypeProduct.tablets:
-        return getTablets();
-      case TypeProduct.accessories:
-        return getAccessories();
-      default:
-        return [];
-    }
   },
 );
 
@@ -78,40 +49,6 @@ export const settingsSlice = createSlice({
         state.products = action.payload;
       })
       .addCase(loadProducts.rejected, state => {
-        state.isLoadProducts = false;
-      })
-
-      .addCase(loadProductsByType.pending, state => {
-        state.isLoadProducts = true;
-      })
-      .addCase(
-        loadProductsByType.fulfilled,
-        (
-          state: {
-            isLoadProducts: boolean;
-            phones: ProductDetail[];
-            tablets: ProductDetail[];
-            accessories: ProductDetail[];
-          },
-          action: { payload: ProductDetail[]; meta: { arg: TypeProduct } },
-        ) => {
-          state.isLoadProducts = false;
-          switch (action.meta.arg) {
-            case TypeProduct.phones:
-              state.phones = action.payload as ProductDetail[];
-              break;
-            case TypeProduct.tablets:
-              state.tablets = action.payload as ProductDetail[];
-              break;
-            case TypeProduct.accessories:
-              state.accessories = action.payload as ProductDetail[];
-              break;
-            default:
-              break;
-          }
-        },
-      )
-      .addCase(loadProductsByType.rejected, state => {
         state.isLoadProducts = false;
       });
   },

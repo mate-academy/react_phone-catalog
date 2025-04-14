@@ -1,0 +1,16 @@
+@import '/src/utils/global';
+
+.Checkout {
+  grid-column: 1 / -1;
+
+  display: grid;
+  row-gap: 16px;
+
+  @include on-laptop {
+    grid-column: 1 / 8;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / -9;
+  }
+}

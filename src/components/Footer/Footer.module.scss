@@ -1,17 +1,29 @@
 @import '/src/utils/global';
 
 .footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  gap: 32px;
+  // position: absolute;
+  // width: 100%;
+  // bottom: 0;
+  margin-top: 64px;
   padding-block: 32px;
+  border-top: 1px solid $gray;
 
-  @include on-tablet {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__logo {

@@ -25,6 +25,10 @@ const getMaxCountPage = (products: Product[], perPage: number): number => {
 const getPages = (products: Product[], perPage: number): number[] => {
   const pages = getMaxCountPage(products, +perPage);
 
+  if (isNaN(perPage)) {
+    return [];
+  }
+
   return Array.from(Array(pages).keys()).map(el => el + 1);
 };
 
@@ -178,7 +182,11 @@ export const Pagination: React.FC<Props> = ({ products }) => {
 
       <ProductsList products={preparedProducts} />
 
-      <div className={styles.Pagination__buttons}>
+      <div
+        className={classNames(styles.Pagination__buttons, {
+          hidden: pages.length === 0,
+        })}
+      >
         <button
           className={classNames(
             styles.Pagination__btn,

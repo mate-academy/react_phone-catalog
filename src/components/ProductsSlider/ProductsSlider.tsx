@@ -9,7 +9,7 @@ import { Mousewheel, Navigation } from 'swiper/modules';
 import { Product } from '../../types/products';
 import { ArrowDirection } from '../../types/arrowDirection';
 import Arrow from '../Icons/Arrow/Arrow';
-import CardItem from '../CardItem/CardItem';
+import ProductItem from '../ProductItem/ProductItem';
 
 type Props = {
   products: Product[];
@@ -34,8 +34,6 @@ const ProductsSlider: React.FC<Props> = ({ products }) => {
           className={classNames(styles.swiper)}
           modules={[Navigation, Mousewheel]}
           spaceBetween={16}
-          // slidesPerView={4}
-          // slidesPerGroup={1}
           breakpoints={{
             320: { slidesPerView: 1.4 },
             480: { slidesPerView: 2 },
@@ -65,7 +63,7 @@ const ProductsSlider: React.FC<Props> = ({ products }) => {
               key={`${product.id}-slider`}
               className={styles['swiper-slide']}
             >
-              <CardItem product={product} />
+              <ProductItem product={product} />
             </SwiperSlide>
           ))}
         </Swiper>

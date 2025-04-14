@@ -1,0 +1,29 @@
+@import '/src/utils/global';
+
+.FavouritesPage {
+  width: 100%;
+
+  &__count {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    color: $ligth-gray;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__img {
+    display: block;
+    position: relative;
+    left: 50%;
+    height: auto;
+    object-fit: scale-down;
+    transform: translateX(-50%);
+    width: 400px;
+    max-width: 100%;
+  }
+}

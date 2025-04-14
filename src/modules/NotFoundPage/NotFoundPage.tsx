@@ -1,11 +1,10 @@
 import React from 'react';
-import styles from './NotFoundPage.module.scss';
-import notFoundSrc from '../../assets/img/product-not-found.png';
+import notFoundSrc from '../../assets/img/page-not-found.png';
 
 const NotFoundPage = () => {
   return (
-    <div className={styles.not_found}>
-      <img src={notFoundSrc} alt="Not Found" />
+    <div className="empty">
+      <img className="empty_img" src={notFoundSrc} alt="Not Found" />
     </div>
   );
 };

@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { ProductDetail } from '../../../../types/productDetail';
 import styles from './PanelOptions.module.scss';
 import classNames from 'classnames';
 import HeartIco from '../../../../components/Icons/Heart/Heart';
 import { storage, StorageKey } from '../../../../app/localStorage';
 import { useEffect, useState } from 'react';
+import { toggleFavourite } from '../../../../features/favouritesSlice';
+import { toggleCartItem } from '../../../../features/cartSlice';
+import { CartType } from '../../../../types/cart';
 
 const COLOR_MAP: Record<string, string> = {
   black: '#000000',
@@ -73,12 +76,21 @@ type Props = {
 };
 
 const inLocalStorage = (key: StorageKey, id: string) => {
+  if (key === 'cart') {
+    return (
+      storage.getAllItems<CartType>(key)?.some(el => el.id === id) || false
+    );
+  }
+
   return storage.getAllItems<string>(key)?.includes(id) || false;
 };
 
 export const PanelOptions: React.FC<Props> = ({ similar, current }) => {
   const products = useAppSelector(state => state.store.products);
   const id = products.find(product => product.itemId === current.id)?.id;
+  const favourites = useAppSelector(state => state.favourite);
+  const cart = useAppSelector(state => state.cart);
+  const dispatch = useAppDispatch();
   const [isInCart, setIsInCart] = useState<boolean>(
     inLocalStorage('cart', current.id),
   );
@@ -87,53 +99,60 @@ export const PanelOptions: React.FC<Props> = ({ similar, current }) => {
   );
 
   useEffect(() => {
-    const handleStorageUpdate = (e: StorageEvent | CustomEvent) => {
-      if (e instanceof StorageEvent) {
-        if (e.key === 'favourites') {
-          setIsInFavourites(inLocalStorage('favourites', current.id));
-        }
+    setIsInFavourites(inLocalStorage('favourites', current.id));
+  }, [current.id, favourites]);
 
-        if (e.key === 'cart') {
-          setIsInCart(inLocalStorage('cart', current.id));
-        }
-      }
+  useEffect(() => {
+    setIsInCart(inLocalStorage('cart', current.id));
+  }, [current.id, cart]);
+  // useEffect(() => {
+  //   const handleStorageUpdate = (e: StorageEvent | CustomEvent) => {
+  //     if (e instanceof StorageEvent) {
+  //       if (e.key === 'favourites') {
+  //         setIsInFavourites(inLocalStorage('favourites', current.id));
+  //       }
 
-      if (e instanceof CustomEvent && e.type === 'localStorageChange') {
-        const { key } = e.detail;
+  //       if (e.key === 'cart') {
+  //         setIsInCart(inLocalStorage('cart', current.id));
+  //       }
+  //     }
 
-        if (key === 'favourites') {
-          setIsInFavourites(inLocalStorage('favourites', current.id));
-        }
+  //     if (e instanceof CustomEvent && e.type === 'localStorageChange') {
+  //       const { key } = e.detail;
 
-        if (key === 'cart') {
-          setIsInCart(inLocalStorage('cart', current.id));
-        }
-      }
-    };
+  //       if (key === 'favourites') {
+  //         setIsInFavourites(inLocalStorage('favourites', current.id));
+  //       }
 
-    window.addEventListener('storage', handleStorageUpdate);
-    window.addEventListener(
-      'localStorageChange',
-      handleStorageUpdate as EventListener,
-    );
+  //       if (key === 'cart') {
+  //         setIsInCart(inLocalStorage('cart', current.id));
+  //       }
+  //     }
+  //   };
 
-    return () => {
-      window.removeEventListener('storage', handleStorageUpdate);
-      window.removeEventListener(
-        'localStorageChange',
-        handleStorageUpdate as EventListener,
-      );
-    };
-  }, [current.id]);
+  //   window.addEventListener('storage', handleStorageUpdate);
+  //   window.addEventListener(
+  //     'localStorageChange',
+  //     handleStorageUpdate as EventListener,
+  //   );
+
+  //   return () => {
+  //     window.removeEventListener('storage', handleStorageUpdate);
+  //     window.removeEventListener(
+  //       'localStorageChange',
+  //       handleStorageUpdate as EventListener,
+  //     );
+  //   };
+  // }, [current.id]);
 
   const handleAddToCartClick = (event: React.MouseEvent) => {
     event.stopPropagation();
-    storage.smartAddToArray('cart', current.id);
+    dispatch(toggleCartItem(current.id));
   };
 
   const handleFavouriteClick = (event: React.MouseEvent) => {
     event.stopPropagation();
-    storage.smartAddToArray('favourites', current.id);
+    dispatch(toggleFavourite(current.id));
   };
 
   return (

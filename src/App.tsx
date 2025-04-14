@@ -8,6 +8,9 @@ import { Product } from './types/products';
 import { loadProducts, settingsSlice } from './features/settingsSlice';
 import { Outlet } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
+import { syncCart } from './features/cartSlice';
+import { syncFavourites } from './features/favouritesSlice';
+import { storage, StorageKey } from './app/localStorage';
 
 export const App = () => {
   const productsFromRedux = useAppSelector(state => state.store.products);
@@ -16,6 +19,46 @@ export const App = () => {
     [],
     'products',
   );
+
+  useEffect(() => {
+    const handleStorageSync = (
+      e: StorageEvent | CustomEvent<{ key: StorageKey }>,
+    ) => {
+      if (e instanceof StorageEvent) {
+        if (e.key === 'cart') {
+          dispatch(syncCart());
+        }
+      }
+
+      if (e instanceof CustomEvent && e.type === 'localStorageChange') {
+        const key = e.detail.key;
+
+        if (key === 'cart') {
+          dispatch(syncCart());
+        }
+
+        if (key === 'favourites') {
+          const newFavs = storage.getAllItems<string>('favourites') || [];
+
+          dispatch(syncFavourites(newFavs));
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageSync);
+    window.addEventListener(
+      'localStorageChange',
+      handleStorageSync as EventListener,
+    );
+
+    return () => {
+      window.removeEventListener('storage', handleStorageSync);
+      window.removeEventListener(
+        'localStorageChange',
+        handleStorageSync as EventListener,
+      );
+    };
+  }, [dispatch]);
 
   useEffect(() => {
     if (storedProducts.length === 0) {
@@ -38,8 +81,8 @@ export const App = () => {
 
       <div className="container">
         <Outlet />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

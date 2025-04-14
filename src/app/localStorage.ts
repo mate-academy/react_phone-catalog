@@ -1,4 +1,6 @@
-export type StorageKey = 'favourites' | 'cart';
+import { CartType } from '../types/cart';
+
+export type StorageKey = 'favourites' | 'cart' | 'products';
 
 type StorageUtils = {
   get: <T>(key: StorageKey) => T | null;
@@ -8,6 +10,7 @@ type StorageUtils = {
   removeFromArray: <T>(key: StorageKey, item: T) => void;
   clear: (key: StorageKey) => void;
   getAllItems: <T>(key: StorageKey) => T[] | null;
+  getCartById: (id: string) => CartType | null;
 };
 
 const isArrayCheck = (value: unknown): value is unknown[] => {
@@ -27,27 +30,40 @@ export const storage: StorageUtils = {
 
   set: <T>(key: StorageKey, value: T): void => {
     try {
+      const dispatchEvent = (action: 'add' | 'remove') => {
+        window.dispatchEvent(
+          new CustomEvent('localStorageChange', {
+            detail: { key, action },
+          }),
+        );
+      };
+
       localStorage.setItem(key, JSON.stringify(value));
+      dispatchEvent('add');
     } catch (error) {}
   },
 
   addToArray: <T>(key: StorageKey, item: T): void => {
     const currentValue = storage.get<unknown>(key);
 
-    window.dispatchEvent(
-      new CustomEvent('localStorageChange', {
-        detail: { key, action: 'add' },
-      }),
-    );
+    const dispatchEvent = (action: 'add' | 'remove') => {
+      window.dispatchEvent(
+        new CustomEvent('localStorageChange', {
+          detail: { key, action },
+        }),
+      );
+    };
 
     if (currentValue === null) {
       storage.set(key, [item]);
+      dispatchEvent('add');
 
       return;
     }
 
     if (!isArrayCheck(currentValue)) {
       storage.set(key, [item]);
+      dispatchEvent('add');
 
       return;
     }
@@ -58,20 +74,31 @@ export const storage: StorageUtils = {
       )
     ) {
       storage.set(key, [...currentValue, item]);
+      dispatchEvent('add');
     }
   },
 
   smartAddToArray: <T>(key: StorageKey, item: T): boolean => {
     const currentValue = storage.get<unknown>(key);
 
+    const dispatchEvent = (action: 'add' | 'remove') => {
+      window.dispatchEvent(
+        new CustomEvent('localStorageChange', {
+          detail: { key, action },
+        }),
+      );
+    };
+
     if (currentValue === null) {
       storage.set(key, [item]);
+      dispatchEvent('add');
 
       return true;
     }
 
     if (!isArrayCheck(currentValue)) {
       storage.set(key, [item]);
+      dispatchEvent('add');
 
       return true;
     }
@@ -82,15 +109,12 @@ export const storage: StorageUtils = {
       )
     ) {
       storage.set(key, [...currentValue, item]);
-      window.dispatchEvent(
-        new CustomEvent('localStorageChange', {
-          detail: { key, action: 'add' },
-        }),
-      );
+      dispatchEvent('add');
 
       return true;
     } else {
       storage.removeFromArray(key, item);
+      dispatchEvent('remove');
 
       return false;
     }
@@ -99,6 +123,14 @@ export const storage: StorageUtils = {
   removeFromArray: <T>(key: StorageKey, item: T): void => {
     const currentValue = storage.get<unknown>(key);
 
+    const dispatchEvent = (action: 'add' | 'remove') => {
+      window.dispatchEvent(
+        new CustomEvent('localStorageChange', {
+          detail: { key, action },
+        }),
+      );
+    };
+
     if (isArrayCheck(currentValue)) {
       const updatedArray = currentValue.filter(
         existingItem => JSON.stringify(existingItem) !== JSON.stringify(item),
@@ -106,24 +138,34 @@ export const storage: StorageUtils = {
 
       storage.set(key, updatedArray);
 
-      window.dispatchEvent(
-        new CustomEvent('localStorageChange', {
-          detail: { key, action: 'remove' },
-        }),
-      );
+      dispatchEvent('remove');
     }
   },
 
   clear: (key: StorageKey): void => {
-    window.dispatchEvent(
-      new CustomEvent('localStorageUpdate', { detail: key }),
-    );
+    const dispatchEvent = (action: 'add' | 'remove') => {
+      window.dispatchEvent(
+        new CustomEvent('localStorageChange', {
+          detail: { key, action },
+        }),
+      );
+    };
+
     localStorage.removeItem(key);
+    dispatchEvent('remove');
   },
 
   getAllItems: <T>(key: StorageKey): T[] | null => {
     const items = storage.get<T[]>(key);
 
     return items && isArrayCheck(items) ? items : null;
+  },
+
+  getCartById: (id: string): CartType | null => {
+    const items = storage.getAllItems<CartType>('cart');
+
+    return items && isArrayCheck(items)
+      ? items.find(el => el.id === id) || null
+      : null;
   },
 };

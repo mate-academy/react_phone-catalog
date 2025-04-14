@@ -15,6 +15,8 @@ import { TypeProduct } from './types/category';
 import ProductPages from './modules/ProductPages/ProductPages';
 // eslint-disable-next-line max-len
 import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
+import FavouritesPage from './modules/FavouritesPage/FavouritesPage';
+import CartPage from './modules/CartPage/CartPage';
 
 const ProductLayout = ({ category }: { category: TypeProduct }) => {
   const { productId } = useParams();
@@ -52,6 +54,8 @@ export const Root = () => {
             >
               <Route path=":productId" element={<ProductDetailsPage />} />
             </Route>
+            <Route path="/favourites" element={<FavouritesPage />} />
+            <Route path="/cart" element={<CartPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
           <Route path="/home" element={<Navigate to="/" replace />} />

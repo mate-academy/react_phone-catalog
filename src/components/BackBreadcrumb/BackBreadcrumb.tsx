@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import Arrow from '../../../../components/Icons/Arrow/Arrow';
-import { ArrowDirection } from '../../../../types/arrowDirection';
 import styles from './BackBreadcrumb.module.scss';
+import Arrow from '../Icons/Arrow/Arrow';
+import { ArrowDirection } from '../../types/arrowDirection';
 
 export const BackBreadcrumb = () => {
   const navigate = useNavigate();

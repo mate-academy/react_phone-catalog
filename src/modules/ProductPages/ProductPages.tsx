@@ -5,10 +5,11 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Product } from '../../types/products';
 import { getProducts } from '../../api/products';
 import { settingsSlice } from '../../features/settingsSlice';
-import { Loader } from '../../components/Loader';
 import classNames from 'classnames';
 import { Pagination } from '../../components/Pagination';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+// eslint-disable-next-line max-len
+import SceletonListProducts from '../../components/ProductsList/SceletonListProducts';
 
 type Props = {
   category: TypeProduct;
@@ -54,7 +55,7 @@ const ProductPages: React.FC<Props> = ({ category }) => {
       >{`${productsByCategory.length} models`}</p>
       <div className={classNames('main__content')}>
         <Pagination products={productsByCategory} />
-        {isLoad && <Loader />}
+        {isLoad && <SceletonListProducts />}
       </div>
     </main>
   );
