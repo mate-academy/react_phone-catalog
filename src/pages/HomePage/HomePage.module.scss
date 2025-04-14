@@ -175,6 +175,11 @@
         display: grid;
         gap: 4px;
 
+        .name{
+          text-decoration: none;
+          color: black;
+        }
+
         .model{
           font-family: Mont, sans-serif;
           font-size: 14px;

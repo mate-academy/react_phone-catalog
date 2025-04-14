@@ -11,6 +11,12 @@ import 'swiper/css/navigation';
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   const filteredItemsNew = jsonData.filter(item => item.year === 2022);
 
   const filteredDiscount = jsonData.sort((a, b) => {
@@ -136,11 +142,14 @@ export const HomePage = () => {
           <NavLink
             className={`${styles.category__block__link} ${styles.phones}`}
             to="/phones"
+            onClick={scrollToTop}
           >
             <img src="./img/category-phones.webp" alt="Mobile Phones" />
           </NavLink>
           <div className={styles.category__block__info}>
-            <h4 className={styles.name}>Mobile phones</h4>
+            <NavLink to="/phones" onClick={scrollToTop} className={styles.name}>
+              <h4>Mobile phones</h4>
+            </NavLink>
             <p className={styles.model}>95 models</p>
           </div>
         </div>
@@ -149,11 +158,18 @@ export const HomePage = () => {
           <NavLink
             className={`${styles.category__block__link} ${styles.tablets}`}
             to="/tablets"
+            onClick={scrollToTop}
           >
             <img src="./img/category-tablets.png" alt="Tablets" />
           </NavLink>
           <div className={styles.category__block__info}>
-            <h4 className={styles.name}>Tablets</h4>
+            <NavLink
+              to="/tablets"
+              onClick={scrollToTop}
+              className={styles.name}
+            >
+              <h4>Tablets</h4>
+            </NavLink>
             <p className={styles.model}>24 models</p>
           </div>
         </div>
@@ -162,6 +178,7 @@ export const HomePage = () => {
           <NavLink
             className={`${styles.category__block__link} ${styles.accessories}`}
             to="/accessories"
+            onClick={scrollToTop}
           >
             <img
               className={styles.img}
@@ -170,7 +187,13 @@ export const HomePage = () => {
             />
           </NavLink>
           <div className={styles.category__block__info}>
-            <h4 className={styles.name}>Accessories</h4>
+            <NavLink
+              to="/accessories"
+              onClick={scrollToTop}
+              className={styles.name}
+            >
+              <h4>Accessories</h4>
+            </NavLink>
             <p className={styles.model}>100 models</p>
           </div>
         </div>

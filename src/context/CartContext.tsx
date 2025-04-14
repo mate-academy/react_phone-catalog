@@ -1,12 +1,9 @@
 import React, { createContext, useReducer, useContext, useEffect } from 'react';
+import { Product } from '../types';
 
 interface CartItem {
   id: number;
-  product: {
-    name: string;
-    price: number;
-    image: string;
-  };
+  product: Product;
   quantity: number;
 }
 

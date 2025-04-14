@@ -1,5 +1,7 @@
 import styles from './ComponentFooter.module.scss';
 
+const gitHub = 'https://github.com/roman-logos-frontend/react_phone-catalog';
+
 export const ComponentFooter = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -18,17 +20,17 @@ export const ComponentFooter = () => {
         <nav className={styles.nav}>
           <ul className={styles.nav__list}>
             <li className={styles.nav__item}>
-              <a href="/Github" className={styles.nav__link}>
+              <a href={gitHub} className={styles.nav__link}>
                 Github
               </a>
             </li>
             <li className={styles.nav__item}>
-              <a href="/Contacts" className={styles.nav__link}>
+              <a href="/home" className={styles.nav__link}>
                 Contacts
               </a>
             </li>
             <li className={styles.nav__item}>
-              <a href="/Rights" className={styles.nav__link}>
+              <a href="/home" className={styles.nav__link}>
                 Rights
               </a>
             </li>

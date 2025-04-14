@@ -2,6 +2,7 @@ import React from 'react';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
 import { VectorBreadCrumbs } from '../../components/VectorBreadCrumbs';
+import { NavLink } from 'react-router-dom';
 
 export const CartPage: React.FC = () => {
   const { state, dispatch } = useCart();
@@ -68,10 +69,18 @@ export const CartPage: React.FC = () => {
                 >
                   x
                 </button>
-                <a href="#" className={styles.img}>
+                <NavLink
+                  to={`/${item.product.category}/${item.product.itemId}`}
+                  className={styles.img}
+                >
                   <img src={item.product.image} alt={item.product.name} />
-                </a>
-                <a className={styles.name}>{item.product.name}</a>
+                </NavLink>
+                <NavLink
+                  to={`/${item.product.category}/${item.product.itemId}`}
+                  className={styles.name}
+                >
+                  {item.product.name}
+                </NavLink>
               </div>
               <div className={styles.cart__bottom}>
                 <div className={styles.controls}>
