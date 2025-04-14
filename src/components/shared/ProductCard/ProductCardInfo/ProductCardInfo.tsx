@@ -11,18 +11,20 @@ type Props = {
 };
 
 export const ProductCardInfo: React.FC<Props> = ({ product }) => {
-  const { name, screen, capacity, ram } = product;
-  const productSpecs = {screen, capacity, ram};
+  const { name, screen, capacity, ram, itemId, fullPrice, price } = product;
+  const productSpecs = { screen, capacity, ram };
 
   return (
     <div className="product-info">
-      <p className="product-info__name">{`${name}(iMT9G2FS/A)`}</p>
+      <p className="product-info__name">{name}</p>
 
-      <ProductPrice regularPrice={product.fullPrice} discountPrice={product.price}/>
+      <div className="product-info__price-wrap">
+        <ProductPrice regularPrice={fullPrice} discountPrice={price} />
+      </div>
 
-      <ProductTechSpecs specs={productSpecs}/>
+      <ProductTechSpecs specs={productSpecs} />
 
-      <ProductCardButtons id={product.itemId} />
+      <ProductCardButtons id={itemId} />
     </div>
   );
 };

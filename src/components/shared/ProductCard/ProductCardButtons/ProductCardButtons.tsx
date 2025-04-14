@@ -23,29 +23,32 @@ export const ProductCardButtons: React.FC<Props> = ({ id, productPage }) => {
   const product = useAppSelector(state => state.products.products).find(product => product.itemId === id);
 
   return (
-    <div className={classNames("buttons", {"buttons--product-page": productPage})}>
+    <div className="buttons">
       <button
         type="button"
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
           if (product) {
             updateCart(product)
           }
         }}
         className={classNames(
           'buttons__add-to-cart',
-          { selected: isInCart },
+          { "buttons__add-to-cart__selected": isInCart },
+          {"buttons__add-to-cart--product-page": productPage}
         )}
       >
         {isInCart ? 'Added to cart' : 'Add to cart'}
       </button>
 
       <div
-        onClick={() => () => {
+        onClick={(e) => {
+          e.stopPropagation();
           if(product) {
             updateFavList(product)
           }
         }}
-        className="buttons__add-to-fav"
+        className={classNames("buttons__add-to-fav", {"buttons__add-to-fav--product-page": productPage})}
       >
         <img
           className="fav-icon"

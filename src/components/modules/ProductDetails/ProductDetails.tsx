@@ -16,6 +16,7 @@ import { ProductTechSpecs } from '../../shared/ProductCard/ProductTechSpecs/Prod
 import { ProductCardButtons } from '../../shared/ProductCard/ProductCardButtons/ProductCardButtons';
 
 import { ShopItem } from '../../../types/ShopItem';
+import classNames from 'classnames';
 
 export const ProductDetails = () => {
   const dispatch = useAppDispatch();
@@ -33,6 +34,9 @@ export const ProductDetails = () => {
   const [product, setProduct] = useState<ShopItem>();
   const [error, setError] = useState<any>();
 
+  const [productColor, setProductColor] = useState<string>();
+  const [productCapacity, setProductCapacity] = useState<string>();
+
   const findProduct = async () => {
     try {
       const result = await getProduct(productCategory, productId);
@@ -48,6 +52,13 @@ export const ProductDetails = () => {
     findProduct();
     dispatch(updateCrumbs(productId.split('-').join(' ')));
   }, [productCategory, productId, dispatch]);
+
+  useEffect(() => {
+    if (product) {
+      setProductCapacity(product.capacity);
+      setProductColor(product.color);
+    }
+  }, [productId]);
 
   if (!product)
     return (
@@ -101,48 +112,64 @@ export const ProductDetails = () => {
         <h1 className="product-page__title">{name}</h1>
 
         <div className="product-page__sections">
-          <div className="product-page__section">
+          <div className="product-page__section product-page__section--design">
             <div className="product-page__product-design">
-              <img src={images[0]} alt="product image" />
+              <img
+                src={images[0]}
+                alt="product image"
+                className="product-page__product-design__photo"
+              />
             </div>
 
-            <div className="product-page__article article">
-              <h3 className="article__title"></h3>
-
-              <div className="article__paragraphs">
-                {description.map((info: any) => {
-                  const { title, text } = info;
-                  return (
-                    <div key={title} className="article__paragrapgh">
-                      <h4 className="article__paragrapgh__heading">{title}</h4>
-                      <div className="article__paragraph__text">{text}</div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          <div className="product-page__section">
             <div className="product-page__sidebar sidebar">
               <div className="sidebar__options">
-                <div className="sidebar__options__color">
-                  {colorsAvailable.map((color: any) => (
-                    <div key={color} className={`${color}`}></div>
-                  ))}
+                <div className="sidebar__options__block">
+                  <p className="sidebar__options__title">available colors</p>
+
+                  <div className="sidebar__options__wrap">
+                    {colorsAvailable.map((color: any) => {
+                      const normalizeColor = color
+                        .split(' ')
+                        .join('-')
+                        .toLowerCase();
+
+                      console.log(normalizeColor, productColor);
+
+                      return (
+                        <div
+                          key={color}
+                          className={classNames(
+                            'sidebar__options__color-wrap',
+                            {
+                              'sidebar__options__color-wrap--picked':
+                                normalizeColor === productColor,
+                            },
+                          )}
+                        >
+                          <div
+                            className={`sidebar__options__color sidebar__options__color--${normalizeColor}`}
+                          ></div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
 
-                <div className="sidebar__options__capacity">
-                  {capacityAvailable.map((capacity: any) => (
-                    <div
-                      key={capacity}
-                      className="sidebar__options__capacity__info-wrap"
-                    >
-                      <p className="sidebar__options__capacity__info">
+                <div className="sidebar__options__block sidebar__options__block--capacity">
+                  <p className="sidebar__options__title">select capacity</p>
+                  <div className="sidebar__options__wrap">
+                    {capacityAvailable.map((capacity: any) => (
+                      <p
+                        key={capacity}
+                        className={classNames('sidebar__options__capacity', {
+                          'sidebar__options__capacity--picked':
+                            productCapacity === capacity,
+                        })}
+                      >
                         {capacity}
                       </p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -152,21 +179,44 @@ export const ProductDetails = () => {
                   discountPrice={priceDiscount}
                 />
 
-                <ProductCardButtons id={id} />
+                <ProductCardButtons id={id} productPage={true} />
               </div>
 
               <div className="sidebar__tech-specs">
                 <ProductTechSpecs specs={shortTechSpecs} />
               </div>
             </div>
+          </div>
 
-            <div className="product-page__tech-specs">
-              <ProductTechSpecs specs={extendedTechSpecs} />
+          <div className="product-page__section product-page__section--info">
+            <div className="product-page__article article">
+              <h3 className="article__title">about</h3>
+
+              <div className="article__paragraphs">
+                {description.map((info: any) => {
+                  const { title, text } = info;
+                  return (
+                    <div key={title} className="article__paragraph">
+                      <h4 className="article__paragraph__heading">{title}</h4>
+                      <div className="article__paragraph__text">{text}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="product-page__tech-specs tech-specs">
+              <h3 className="tech-specs__title">tech specs</h3>
+              <div className="tech-specs__content">
+                <ProductTechSpecs specs={extendedTechSpecs} />
+              </div>
             </div>
           </div>
         </div>
 
-        <Slider category={'mayLike'} products={recommendations} />
+        <div className="product-page__slider">
+          <Slider category={'mayLike'} products={recommendations} />
+        </div>
       </div>
     </div>
   );
