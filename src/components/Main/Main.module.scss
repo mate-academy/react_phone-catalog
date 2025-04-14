@@ -14,7 +14,7 @@
 }
 
 .scroll_container {
-  width: 100vw;
+  width: 288px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -22,15 +22,14 @@
   flex-direction: row;
   gap: 16px;
   margin-bottom: 56px;
-  padding-left: 16px;
 
   @include on-tablet {
-    padding-left: 24px;
+    width: 592px;
     margin-bottom: 64px;
   }
 
   @include on-desktop {
-    padding-left: 32px;
+    width: 1136px;
     margin-bottom: 80px;
   }
 }

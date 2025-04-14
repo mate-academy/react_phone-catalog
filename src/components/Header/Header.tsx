@@ -67,7 +67,7 @@ const Header: React.FC<Props> = ({ setActiveAside, width }) => {
                   type="checkbox"
                   onChange={() => toggleTheme()}
                   id="slider"
-                  checked={theme === 'dark'}
+                  checked={theme === 'light'}
                   aria-label="Toggle theme"
                 />
                 <span

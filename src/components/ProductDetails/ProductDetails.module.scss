@@ -174,7 +174,6 @@
   width: fit-content;
   height: 50px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 8px;
   margin-bottom: 40px;
@@ -701,8 +700,7 @@
 }
 
 .details_scroll_container {
-  width: 100vw;
-  padding-left: 16px;
+  width: 288px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -712,11 +710,11 @@
   margin-bottom: 56px;
 
   @include on-tablet {
-    padding-left: 24px;
+    width: 592px;
   }
 
   @include on-desktop {
-    padding-left: 32px;
+    width: 1136px;
   }
 }
 

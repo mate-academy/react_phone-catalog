@@ -14,6 +14,7 @@ import { Loader } from '../Loader/Loader';
 import { useTheme } from '../ThemeContext/ThemeContext';
 import { useFavourites } from '../Favourites/FavouritesContext';
 import { ProductCard } from '../../utils/lazyComponents';
+import { colorMap } from '../../utils/Colors';
 
 type Props = {
   productId?: string;
@@ -21,10 +22,7 @@ type Props = {
   setDisabledIds: React.Dispatch<React.SetStateAction<number[]>>;
 };
 
-const ProductDetails: React.FC<Props> = ({
-  disabledIds,
-  setDisabledIds,
-}) => {
+const ProductDetails: React.FC<Props> = ({ disabledIds, setDisabledIds }) => {
   const location = useLocation();
   const categoryName = location.pathname.split('/')[1];
   const { productId: productIdFromUrl } = useParams();
@@ -144,9 +142,7 @@ const ProductDetails: React.FC<Props> = ({
   }, [categoryName]);
 
   if (!activeData) {
-    return (
-        <Loader />
-    );
+    return <Loader />;
   }
 
   return (
@@ -256,7 +252,7 @@ const ProductDetails: React.FC<Props> = ({
                               activeColor === color,
                           },
                         )}
-                        style={{ backgroundColor: color }}
+                        style={{ backgroundColor: colorMap[color] || 'gray' }}
                         key={id}
                         onClick={() => handleChangeColor(color)}
                       ></div>
@@ -437,15 +433,14 @@ const ProductDetails: React.FC<Props> = ({
               endId={8}
               containerId={'scroll_container_also_like'}
             />
-
-            <section
-              className={`${styles.details_scroll_container}`}
-              id="scroll_container_also_like"
-            >
-              {activeData.map(productItem => (
-                <ProductCard key={productItem.id} product={productItem} />
-              ))}
-            </section>
+              <section
+                className={`${styles.details_scroll_container}`}
+                id="scroll_container_also_like"
+              >
+                {activeData.map(productItem => (
+                  <ProductCard key={productItem.id} product={productItem} />
+                ))}
+              </section>
           </main>
         </>
       )}
