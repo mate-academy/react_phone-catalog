@@ -76,6 +76,7 @@ export const App = () => {
 
   return (
     <div className="App">
+      <h1 className="hidden">Nice Gadgets</h1>
       <HeaderMenu />
       <AsideMenu />
 
