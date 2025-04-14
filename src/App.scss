@@ -74,6 +74,7 @@ p {
 .container {
   cursor: inherit;
   flex-grow: 1;
+  width: 100%;
   box-sizing: border-box;
   padding-inline: $mobile-padding;
   max-width: $desktop-min-width;
