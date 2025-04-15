@@ -1,9 +1,8 @@
-import styles from './Logo.module.scss';
 import logo from '../../../public/img/logo/Logo (3).png';
 
 const Logo = () => {
   return (
-    <div className={styles.logo}>
+    <div >
       <img src={logo} alt="" />
     </div>
   );

@@ -98,7 +98,7 @@ const ActionButtons = ({ product }: ActionButtonProps) => {
 
       localStorage.setItem('favourites', JSON.stringify(updatedFavourites));
     },
-    [product, setIsProductInFavourites],
+    [product, setIsProductInFavourites, dispatch],
   );
 
   return (

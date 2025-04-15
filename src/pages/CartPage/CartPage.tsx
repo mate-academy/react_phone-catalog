@@ -23,7 +23,7 @@ const CartPage = () => {
       try {
         setCart(JSON.parse(storedCart));
       } catch (e) {
-        console.error('Ошибка при разборе favourites из localStorage', e);
+        // console.error('Ошибка при разборе favourites из localStorage', e);
       }
     }
   }, [cartProducts]);

@@ -1,5 +1,5 @@
 * {
-  font-family: 'Mont-bold', sans-serif;
+  font-family: Mont-bold, sans-serif;
   font-style: normal;
   font-weight: 800;
   font-size: 12px;
@@ -26,6 +26,7 @@ a {
     margin: 0;
     gap: 60px;
   }
+
   @media (max-width: 768px) {
     .navbar__burgerMenuIcons {
       display: flex;

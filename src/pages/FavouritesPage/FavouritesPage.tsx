@@ -25,7 +25,7 @@ const FavouritesPage = () => {
       try {
         setFavourites(JSON.parse(storedFavourites));
       } catch (e) {
-        console.error('Ошибка при разборе favourites из localStorage', e);
+        // console.error('Ошибка при разборе favourites из localStorage', e);
       }
     }
   }, [favouriteProducts]);

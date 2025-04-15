@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'MyFont';
+  font-family:MyFont;
   src: url('../../../public/fonts/Mont.otf') format('opentype');
 }
 
@@ -11,7 +11,7 @@ body {
 
 * {
   box-sizing: border-box;
-  font-family: 'MyFont', sans-serif;
+  font-family: MyFont, sans-serif;
 }
 
 .container {
