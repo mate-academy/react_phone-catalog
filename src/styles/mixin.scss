@@ -1,0 +1,29 @@
+@mixin useFont ($fontName, $fontWeight) {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: $fontWeight;
+  font-style: normal;
+}
+
+$desktop: 1200px;
+$tablet: 640px;
+$mobile: 320px;
+
+@mixin grid {
+  display: grid;
+  column-gap: 16px;
+
+  @media (max-width: $desktop) {
+    grid-template-columns: 32px repeat(24, 1fr);
+    column-gap: 16px;
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 24px repeat(12, 1fr);
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 16px repeat(4, 1fr);
+
+  }
+}
