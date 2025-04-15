@@ -16,18 +16,8 @@ export const Navigation = () => {
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    const timeout = setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 0);
-
     dispatch(toggleMenu());
-
-    return () => {
-      clearTimeout(timeout);
-      if ('scrollRestoration' in window.history) {
-        window.history.scrollRestoration = 'auto';
-      }
-    };
+    window.scrollTo(0, 0);
   };
 
   return (
