@@ -7,13 +7,14 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url(/img/product-not-found.png);
+  background-image: url(../../../public/img/page-not-found.png);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   @include on-tablet {
+    background-size: auto;
     grid-column: 1 / 13;
   }
 
