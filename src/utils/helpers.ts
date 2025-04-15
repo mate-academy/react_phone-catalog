@@ -60,5 +60,5 @@ export function createSlides(products: Product[], width: number): Product[][] {
 }
 
 export function createId(...details: string[]): string {
-  return details.map(detail => detail.toLowerCase().trim().split(' ').join('-')).join('-');
+  return details.map(detail => detail.toLowerCase().trim().replace(/\s+/g, '-')).join('-');
 }

@@ -88,7 +88,7 @@ export const ProductDetails = () => {
   useEffect(() => {
     findProduct();
     dispatch(resetCrumbs([productCategory,productId.split('-').join(' ')]));
-  }, [productCategory, dispatch, location]);
+  }, [productCategory, productId, dispatch]);
 
   return (
     <div className="product-page">
@@ -120,7 +120,7 @@ export const ProductDetails = () => {
                     <p className="sidebar__options__title">available colors</p>
 
                     <div className="sidebar__options__wrap">
-                      {product.colorsAvailable.map((color: any) => {
+                      {product.colorsAvailable.map((color: string) => {
                         const normalizeColor = color
                           .split(' ')
                           .join('-')
@@ -151,7 +151,7 @@ export const ProductDetails = () => {
                   <div className="sidebar__options__block sidebar__options__block--capacity">
                     <p className="sidebar__options__title">select capacity</p>
                     <div className="sidebar__options__wrap">
-                      {product.capacityAvailable.map((capacity: any) => (
+                      {product.capacityAvailable.map((capacity: string) => (
                         <p
                           key={capacity}
                           className={classNames('sidebar__options__capacity', {
@@ -187,7 +187,7 @@ export const ProductDetails = () => {
                 <h3 className="article__title">about</h3>
 
                 <div className="article__paragraphs">
-                  {product.description.map((info: any) => {
+                  {product.description.map((info: { title: string; text: string[] }) => {
                     const { title, text } = info;
                     return (
                       <div key={title} className="article__paragraph">
