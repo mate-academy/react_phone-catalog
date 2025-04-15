@@ -1,10 +1,12 @@
 // not empty
-@import './utils/typografy';
-@import './utils/variables';
+@import './style/global';
 
 .App {
   background-color: $background-color;
-  height: 100vh;
+}
+
+body {
+  margin: 0;
 }
 
 iframe {

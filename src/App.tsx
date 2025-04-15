@@ -1,9 +1,13 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
 import React from 'react';
-import { HomePage } from './modules/HomePage/HomePage';
+import { Header } from './components/Header/Header';
 
 export const App: React.FC = () => (
-  <div className="App">
-    <HomePage />
-  </div>
+  <>
+    <Header />
+    <div className="App">
+      <Outlet />
+    </div>
+  </>
 );

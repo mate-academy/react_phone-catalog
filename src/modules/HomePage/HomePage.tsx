@@ -1,13 +1,18 @@
 import React from 'react';
-
-import { Header } from '../../components/Header/Header';
-import { HeroSection } from './components/HeroSection/HeroSection';
+import style from './HomePage.module.scss';
+import { Slider } from './components/Slider/Slider';
+import { NewModel } from './components/NewModel/NewModel';
 
 export const HomePage: React.FC = () => {
   return (
-    <div>
-      <Header />
-      <HeroSection />
+    <div className={style.page}>
+      <Slider />
+
+      <NewModel />
+
+      <div>Category</div>
+
+      <div>Hot price</div>
     </div>
   );
 };
