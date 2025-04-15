@@ -2,51 +2,54 @@ import s from './Header.module.scss';
 
 export const Header = () => {
   return (
-    <nav className={s.nav}>
-      <a className={s.logo}>
-        <img src="../../img/icons/logo.svg" alt="logo" />
-      </a>
-      <div className={s.nav__flex}>
-        <li className={s.nav__list}>
-          <ul className={s.nav__item}>
-            <a href="#" className={s.nav__link}>
-              Home
+    <header className={s.header}>
+      <nav className={`${s.nav} ${s.container}`}>
+        <a href="#" className={s.logo}>
+          <img
+            src="../../img/icons/logo.svg"
+            alt="logo"
+            className={s.logo__img}
+          />
+        </a>
+
+        <ul className={s.nav__list}>
+          <li className={s.nav__item}>
+            <a href="" className={s.nav__link}>
+              home
             </a>
-          </ul>
-          <ul className={s.nav__item}>
-            <a href="#" className={s.nav__link}>
-              Phones
-            </a>
-          </ul>
-          <ul className={s.nav__item}>
-            <a href="#" className={s.nav__link}>
-              Tablets
-            </a>
-          </ul>
-          <ul className={s.nav__item}>
-            <a href="#" className={s.nav__link}>
-              Label
-            </a>
-          </ul>
-        </li>
-        <div className={s.menu}>
-          <li className={s.controls}>
-            <ul className={s.controls__item}>
-              <a href="">
-                <img src="../../img/icons/shoping-bag.svg" alt="" />
-              </a>
-            </ul>
-            <ul className={s.controls__item}>
-              <a href="">
-                <img src="../../img/icons/heard.svg" alt="" />
-              </a>
-            </ul>
           </li>
-          <a href="" className={s.menu__colapsed}>
-            <img src="" alt="" />
-          </a>
-        </div>
+          <li className={s.nav__item}>
+            <a href="" className={s.nav__link}>
+              phones
+            </a>
+          </li>
+          <li className={s.nav__item}>
+            <a href="" className={s.nav__link}>
+              tablets
+            </a>
+          </li>
+          <li className={s.nav__item}>
+            <a href="" className={s.nav__link}>
+              accessories
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div className={s.controls}>
+        <a href="" className={`${s.controls__visible} ${s.button}`}>
+          <img src="../../img/icons/heard.svg" alt="" />
+        </a>
+        <a href="" className={`${s.controls__visible} ${s.button}`}>
+          <img src="../../img/icons/shoping-bag.svg" alt="" />
+        </a>
+        <a
+          href=""
+          className={`${s.controls__button} ${s.controls__hidden} ${s.button}`}
+        >
+          <img src="../../img/icons/menu.svg" alt="" />
+        </a>
       </div>
-    </nav>
+    </header>
   );
 };

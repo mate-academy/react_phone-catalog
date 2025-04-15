@@ -1,52 +1,115 @@
-  @use '../../styles/mixin.scss' as *;
-  @use '../../styles/variables.scss' as *;
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixin.scss' as *;
 
-  .nav {
-    display: flex;
-    height: 64px;
-    box-shadow: 0px 1px 0px $elements;
-    align-items: center;
+.container {
+  @include container;
+}
 
-    &__list {
-      display: flex;
-    }
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  box-shadow: 0 1px 0 $elements;
+  height: 64px;
 
-    &__link {
-      color: $primary;
-    }
+  @include on-tablet {
+    height: 48px;
+  }
+}
 
-    &__flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.logo {
+  height: 28px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    height: 22px;
+    width: 64px;
   }
 
-  .logo {
-    padding-inline: 0 24px;
-    margin-right: 24px;
+  img {
+    max-width: 100%;
+    max-height: 100%;
   }
+}
 
 
-  .controls {
+.nav {
+  @include flex-centered;
+
+  justify-content: center;
+
+  &__list {
     display: flex;
-    width: 100%;
-
-    &__item {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 64px;
-      height: 64px  ;
-      box-shadow: -1px 0px 0px $elements;
-    }
-  }
-
-  .menu {
-    display: flex;
+    gap: 16px;
     height: 100%;
 
-    &__colapsed {
+    @include on-tablet {
+      gap: 4px;
+    }
+
+    @include on-mobile {
       display: none;
     }
   }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    padding-inline: 24px;
+    display: block;
+    height: 100%;
+    align-content: center;
+    text-transform: uppercase;
+    color: $secondary;
+
+    @include use-font(800);
+
+    @include on-tablet {
+      padding-inline: 14px;
+    }
+  }
+}
+
+.controls {
+  @include flex-centered;
+
+  // make the propperty for collapsing menu on small screens
+
+  &__visible {
+    display: flex;
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__hidden {
+    display: none;
+
+    @include on-mobile {
+      display: flex;
+    }
+  }
+}
+
+.button {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+
+  justify-content: center;
+  align-items: center;
+
+  // add styles on hover
+  box-shadow: -1px 0 0 $elements;
+
+  &:hover {
+    box-shadow: -1px 0 0 $primary;
+  }
+}

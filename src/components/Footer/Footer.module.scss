@@ -1,0 +1,48 @@
+@use '../../styles/mixin.scss' as *;
+
+.container {
+  @include container;
+}
+
+.logo {
+  height: 32px;
+  width: 89px;
+}
+
+.footer {
+  display: grid; // обов'язково!
+  align-items: center;
+  height: 96px;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  &__front {
+    grid-column: 1 / 2;
+    justify-self: start;
+  }
+
+  &__list {
+    grid-column: 2 / 3;
+    justify-self: center;
+    @include flex-centered;
+
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__back {
+    justify-self: end;
+    display: flex;
+    grid-column: 3 / 4;
+  }
+
+  &__item {
+    @include flex-centered;
+  }
+
+  &__link {
+    padding-inline: 30px;
+    @include flex-centered;
+  }
+}
+

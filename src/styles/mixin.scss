@@ -1,8 +1,10 @@
-@mixin useFont ($fontName, $fontWeight) {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
+@mixin use-font($fontWeight) {
+  font-family: "Mont sans-serif";
   font-weight: $fontWeight;
-  font-style: normal;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
 }
 
 $desktop: 1200px;
@@ -26,4 +28,39 @@ $mobile: 320px;
     grid-template-columns: 16px repeat(4, 1fr);
 
   }
+}
+
+
+@mixin on-tablet {
+  @media (max-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin container {
+  @include grid;
+
+  padding-inline: 150px;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+}
+
+
+@mixin flex-centered {
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
