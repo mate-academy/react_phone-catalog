@@ -18,6 +18,7 @@ import { ProductCardButtons } from '../../shared/ProductCard/ProductCardButtons/
 import { ShopItem } from '../../../types/ShopItem';
 import classNames from 'classnames';
 import { createId } from '../../../utils/helpers';
+import { CustomSwiper } from '../../shared/Swiper/Swiper';
 
 export const ProductDetails = () => {
   const dispatch = useAppDispatch();
@@ -107,11 +108,9 @@ export const ProductDetails = () => {
           <div className="product-page__sections">
             <div className="product-page__section product-page__section--design">
               <div className="product-page__product-design">
-                <img
-                  src={product.images[0]}
-                  alt="product image"
-                  className="product-page__product-design__photo"
-                />
+
+
+                <CustomSwiper page='productDetailsPage' thumbs={product.images}/>
               </div>
 
               <div className="product-page__sidebar sidebar">
@@ -218,3 +217,14 @@ export const ProductDetails = () => {
     </div>
   );
 };
+
+
+
+
+
+
+  {/* <img
+                  src={product.images[0]}
+                  alt="product image"
+                  className="product-page__product-design__photo"
+                /> */}

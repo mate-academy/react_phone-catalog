@@ -44,7 +44,7 @@
     width: 100%;
     height: auto;
 
-    &--design{
+    &--design {
       padding-top: 40px;
     }
 
@@ -68,13 +68,15 @@
   &__product-design {
     width: 100%;
     max-width: 530px;
-    height: 464px;
+    height: auto;
+    max-height: 339px;
 
-    &__photo {
-      width: 100%;
-      max-width: 464px;
-      height: 464px;
-      object-fit: contain;
+    @include tablet {
+      max-height: 287px;
+    }
+
+    @include desktop {
+      max-height: 464px;
     }
   }
 
@@ -268,7 +270,7 @@
 
       &__text {
         @include text14;
-        color: #89939A;
+        color: #89939a;
       }
     }
   }

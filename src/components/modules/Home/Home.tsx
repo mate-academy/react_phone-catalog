@@ -39,7 +39,7 @@ export const Home = () => {
       <h1 className="home__h1">Welcome to Nice Gadgets store!</h1>
 
       <div className="home__swiper">
-        <CustomSwiper />
+        <CustomSwiper page='homePage' />
       </div>
 
       <div className="home__new-models">
