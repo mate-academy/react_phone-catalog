@@ -183,7 +183,7 @@ export const ProductDetailPage: React.FC = () => {
         <div className={styles.container__specs}>
           <div className={styles.container__specs__top}>
             <div className={styles.selectOptions}>
-              <span>Available colors</span>
+              <span className="smallText">Available colors</span>
               <div className={styles.select}>
                 {productDetail.colorsAvailable.map(color => (
                   <NavLink
@@ -203,11 +203,11 @@ export const ProductDetailPage: React.FC = () => {
             <hr />
 
             <div className={styles.selectOptions}>
-              <span>Select capacity</span>
+              <span className="smallText">Select capacity</span>
               <div className={styles.select}>
                 {productDetail.capacityAvailable.map(capacity => (
                   <NavLink
-                    className={`${styles.capacityDiv} ${selectedCapacity === capacity.toLowerCase() ? styles.selectedCapacity : ''}`}
+                    className={`${styles.capacityDiv} ${selectedCapacity === capacity.toLowerCase() ? styles.selectedCapacity : ''} bodyText`}
                     key={capacity}
                     to={`/${product}/${getNewIdCapacity(capacity)}`}
                     onClick={() => {

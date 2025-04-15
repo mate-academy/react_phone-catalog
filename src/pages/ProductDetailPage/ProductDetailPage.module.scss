@@ -115,6 +115,10 @@
         flex-direction: column;
         gap: 8px;
 
+        span{
+          color:rgba(137, 147, 154, 1);
+        }
+
         .select{
           gap: 8px;
           display: flex;
@@ -124,7 +128,8 @@
             width: 30px;
             height: 30px;
             border-radius: 36px;
-            border: 2px solid rgba(226, 230, 233, 1);
+            border: 2px solid white;
+            outline: 2px solid rgb(226, 230, 233);
           }
 
           .capacityDiv{
@@ -147,7 +152,7 @@
           }
 
           .selectedColor{
-            border: 2px solid black;
+            outline: 2px solid black;
           }
         }
       }

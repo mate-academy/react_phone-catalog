@@ -45,6 +45,12 @@
       letter-spacing: 0.04em;
       color: rgba(137, 147, 154, 1);
       text-decoration: none;
+
+      &:hover{
+        cursor: pointer;
+        color: black;
+        transition-duration: 0.3s;
+      }
     }
   }
 
