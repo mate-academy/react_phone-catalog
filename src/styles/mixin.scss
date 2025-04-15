@@ -1,5 +1,5 @@
 @mixin use-font($fontWeight) {
-  font-family: "Mont sans-serif";
+  font-family: 'Courier New', Courier, monospace;
   font-weight: $fontWeight;
   font-size: 12px;
   line-height: 11px;

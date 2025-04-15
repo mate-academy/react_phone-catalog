@@ -24,6 +24,7 @@
   &__list {
     grid-column: 2 / 3;
     justify-self: center;
+
     @include flex-centered;
 
     width: 100%;
@@ -42,6 +43,7 @@
 
   &__link {
     padding-inline: 30px;
+
     @include flex-centered;
   }
 }
