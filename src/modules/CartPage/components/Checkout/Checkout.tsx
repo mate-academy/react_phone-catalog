@@ -9,6 +9,7 @@ type Props = {
 export const Checkout: React.FC<Props> = ({ onClick }) => {
   const totalPrice = useAppSelector(state => state.cart.totalPrice);
   const cart = useAppSelector(state => state.cart.cart);
+  const totalCount = cart.reduce((acc, cur) => acc + cur.quantity, 0);
 
   return (
     <div
@@ -20,7 +21,7 @@ export const Checkout: React.FC<Props> = ({ onClick }) => {
 
       <p
         className={styles.Checkout__count}
-      >{`Total for ${cart.length} items`}</p>
+      >{`Total for ${totalCount} items`}</p>
 
       <hr />
 

@@ -66,26 +66,20 @@ export const cartSlice = createSlice({
     },
     increaseQuantity: (state, action: PayloadAction<string>) => {
       const id = action.payload;
-      const newItem = state.cart.find(el => el.id === id);
-      const index = state.cart.findIndex(el => el.id === id);
+      const item = state.cart.find(el => el.id === id);
 
-      if (newItem) {
-        const newQuantity = newItem.quantity + 1;
-
-        state.cart.splice(index, 1, { ...newItem, quantity: newQuantity });
+      if (item) {
+        item.quantity += 1;
         storage.set('cart', state.cart);
         state.totalPrice = getTotalPrice();
       }
     },
     decreaseQuantity: (state, action: PayloadAction<string>) => {
       const id = action.payload;
-      const newItem = state.cart.find(el => el.id === id);
-      const index = state.cart.findIndex(el => el.id === id);
+      const item = state.cart.find(el => el.id === id);
 
-      if (newItem) {
-        const newQuantity = newItem.quantity - 1;
-
-        state.cart.splice(index, 1, { ...newItem, quantity: newQuantity });
+      if (item) {
+        item.quantity -= 1;
         storage.set('cart', state.cart);
         state.totalPrice = getTotalPrice();
       }

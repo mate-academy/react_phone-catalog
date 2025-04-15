@@ -48,13 +48,23 @@ const Footer = () => {
               </a>
             </li>
             <li className={styles.footer__item}>
-              <a href="#" className={styles.footer__link}>
-                Contacts
+              <a
+                href="https://github.com/dvdmsk"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer__link}
+              >
+                Github
               </a>
             </li>
             <li className={styles.footer__item}>
-              <a href="#" className={styles.footer__link}>
-                rights
+              <a
+                href="https://github.com/dvdmsk"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer__link}
+              >
+                Github
               </a>
             </li>
           </ul>
