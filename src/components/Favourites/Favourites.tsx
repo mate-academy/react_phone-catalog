@@ -53,7 +53,7 @@ const Favourites: React.FC = () => {
 
         <div className={styles.favourite_products_container}>
           {favourites.map(item => {
-            return <ProductCard product={item} key={item.id} />;
+            return <ProductCard product={item} key={item.id} onPage={true} />;
           })}
         </div>
       </section>

@@ -194,11 +194,7 @@ const ProductCategory: React.FC<Props> = ({
         <CategoryHeader categoryData={activeData} />
         <div className={`${styles.mobile_main_select_container}`}>
           <div className={`${styles.mobile_select_container}`}>
-            <p
-              className={classNames(
-                `${styles.mobile_select_parag} ${styles.first_select_button}`,
-              )}
-            >
+            <p className={classNames(`${styles.mobile_select_parag}`)}>
               Sort by
             </p>
             <DropDown
@@ -228,6 +224,7 @@ const ProductCategory: React.FC<Props> = ({
         </section>
 
         <section className={`${styles.mobile_button_container}`}>
+          {/* <div className={`${styles.buttons_wrapper}`}> */}
           {buttonsCount.length > 0 && buttonsCount[0] !== '0' && (
             <Button
               direction={ButtonDirection.left}
@@ -258,6 +255,7 @@ const ProductCategory: React.FC<Props> = ({
               disabledIds={disabledIds}
             />
           )}
+          {/* </div> */}
         </section>
       </main>
     </>

@@ -9,116 +9,18 @@
   flex-direction: column;
 }
 
-.mobile_path_container {
-  width: 288px;
-  height: 16px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-
-  @include on-tablet {
-    width: 592px;
-    margin-bottom: 40px;
-  }
-
-  @include columns-3-grid {
-    width: 722px;
-  }
-
-  @include on-desktop {
-    width: 1136px;
-  }
-}
-
-.mobile_header_icon {
-  width: 16px;
-  height: 16px;
-}
-
-.mobile_path {
-  font-family: Mont-Regular, sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 100%;
-  color: var(--text-color-secondary);
-  text-transform: capitalize;
-}
-
-.mobile_header {
-  font-family: Mont-Bold, sans-serif;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 42px;
-  letter-spacing: -0.01em;
-  color: var(--text-color-main);
-  width: 288px;
-  height: 42px;
-  margin: 0 0 8px;
-  text-transform: capitalize;
-
-  @include on-tablet {
-    width: 592px;
-    font-size: 48px;
-    line-height: 56px;
-    height: 56px;
-  }
-
-  @include columns-3-grid {
-    width: 722px;
-  }
-
-  @include on-desktop {
-    width: 1136px;
-  }
-}
-
-.mobile_models_count {
-  font-family: Mont-Regular, sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  color: var(--text-color-secondary);
-  width: 288px;
-  height: 21px;
-  margin: 0 0 32px;
-
-  @include on-tablet {
-    width: 592px;
-    margin: 0 0 40px;
-  }
-
-  @include columns-3-grid {
-    width: 722px;
-  }
-
-  @include on-desktop {
-    width: 1136px;
-  }
-}
-
 .mobile_main_select_container {
-  width: 288px;
+  width: 100%;
   height: 60px;
-  @include flex_centered;
+  display: flex;
+
+  justify-content: flex-start;
 
   flex-direction: row;
   gap: 16px;
   margin-bottom: 24px;
 
-  @include on-tablet {
-    width: 592px;
-    justify-content: flex-start;
-  }
-
-  @include columns-3-grid {
-    width: 722px;
-  }
-
-  @include on-desktop {
-    width: 1136px;
-  }
+  @include width;
 }
 
 .mobile_select_container {
@@ -149,19 +51,9 @@
   font-size: 12px;
   line-height: 100%;
   color: var(--text-color-secondary);
-  width: 136px;
+  width: 100%;
   margin: 0;
   height: 16px;
-}
-
-.first_select_button {
-  @include on-tablet {
-    width: 188px;
-  }
-
-  @include columns-3-grid {
-    width: 176px;
-  }
 }
 
 .mobile_select_custom {
@@ -182,16 +74,17 @@
 }
 
 .mobile_phones_container {
-  width: 100vw;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   row-gap: 40px;
   margin-bottom: 24px;
 
+  @include width;
+
   @include on-tablet {
-    width: auto;
     display: grid;
     grid-template-columns: repeat(2, 288px);
     column-gap: 16px;
@@ -213,11 +106,11 @@
 }
 
 .mobile_button_container {
-  width: fit-content;
+  width: 100vw;
   height: 32px;
   margin-bottom: 64px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
   gap: 16px;

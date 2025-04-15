@@ -6,6 +6,12 @@ import styles from './Footer.module.scss';
 import { useTheme } from '../ThemeContext/ThemeContext';
 import { Link } from 'react-router-dom';
 
+const GITHUB_LINK = 'https://github.com/Artemida1609';
+const MAIL_LINK =
+  'https://mail.google.com/mail/u/0/#inbox?compose=CllgCJfnbnQwJCpnvccJshzJtZTCtnFDXFjGlJHBBNVjMKBWGqdJmLNblbWgKKVRCJnDFvNfWWg';
+const RIGHTS_LINK =
+  'https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github';
+
 type Props = {
   disabledIds: number[];
 };
@@ -15,18 +21,6 @@ const Footer: React.FC<Props> = ({ disabledIds }) => {
 
   const handleBackToTop = () => {
     window.scrollTo({ top: 0 });
-  };
-
-  const handleMailTo = (e: React.MouseEvent) => {
-    window.location.href =
-      'https://mail.google.com/mail/u/0/#inbox?compose=CllgCJfnbnQwJCpnvccJshzJtZTCtnFDXFjGlJHBBNVjMKBWGqdJmLNblbWgKKVRCJnDFvNfWWg';
-    e.preventDefault();
-  };
-
-  const hadleRightsClick = (e: React.MouseEvent) => {
-    window.location.href =
-      'https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github';
-    e.preventDefault();
   };
 
   return (
@@ -47,7 +41,8 @@ const Footer: React.FC<Props> = ({ disabledIds }) => {
         <div className={`${styles.footer_text_container}`}>
           <div className={`${styles.footer_paragraph_wrapper}`}>
             <Link
-              to={'https://github.com/Artemida1609'}
+              target="_blank"
+              to={GITHUB_LINK}
               className={`${styles.footer_paragraph}`}
             >
               Github
@@ -55,8 +50,8 @@ const Footer: React.FC<Props> = ({ disabledIds }) => {
           </div>
           <div className={`${styles.footer_paragraph_wrapper}`}>
             <Link
-              to={'#'}
-              onClick={handleMailTo}
+              target="_blank"
+              to={MAIL_LINK}
               className={`${styles.footer_paragraph}`}
             >
               Contacts
@@ -64,8 +59,8 @@ const Footer: React.FC<Props> = ({ disabledIds }) => {
           </div>
           <div className={`${styles.footer_paragraph_wrapper}`}>
             <Link
-              to={'#'}
-              onClick={hadleRightsClick}
+              target="_blank"
+              to={RIGHTS_LINK}
               className={`${styles.footer_paragraph}`}
             >
               Rights

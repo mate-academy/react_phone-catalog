@@ -433,14 +433,14 @@ const ProductDetails: React.FC<Props> = ({ disabledIds, setDisabledIds }) => {
               endId={8}
               containerId={'scroll_container_also_like'}
             />
-              <section
-                className={`${styles.details_scroll_container}`}
-                id="scroll_container_also_like"
-              >
-                {activeData.map(productItem => (
-                  <ProductCard key={productItem.id} product={productItem} />
-                ))}
-              </section>
+            <section
+              className={`${styles.details_scroll_container}`}
+              id="scroll_container_also_like"
+            >
+              {activeData.map(productItem => (
+                <ProductCard key={productItem.id} product={productItem} />
+              ))}
+            </section>
           </main>
         </>
       )}

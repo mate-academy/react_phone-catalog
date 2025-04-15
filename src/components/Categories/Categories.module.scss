@@ -2,19 +2,16 @@
 @use '../../utils/mixins.scss' as *;
 
 .category_main_container {
-  @include flex_centered;
-
+  width: 100%;
   flex-direction: column;
   margin-bottom: 56px;
 
   @include on-tablet {
-    width: 592px;
     height: 328px;
     margin-bottom: 64px;
   }
 
   @include on-desktop {
-    width: 1136px;
     height: 508px;
     margin-bottom: 80px;
   }
@@ -24,6 +21,8 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+
+  @include width;
 
   @include on-tablet {
     flex-direction: row;
@@ -52,21 +51,17 @@
   font-size: 22px;
   font-weight: 800;
 
-  width: 288px;
+  @include width;
+
   height: 32px;
   
   color: var(--text-color-main);
   line-height: 140%;
   
   @include on-tablet {
-    width: 592px;
     font-size: 32px;
     line-height: 42px;
     letter-spacing: -.01em;
-  }
-  
-  @include on-desktop {
-    width: 1136px;
   }
 }
 

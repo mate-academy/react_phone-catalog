@@ -26,6 +26,35 @@
   }
 }
 
+@mixin padding-left() {
+  padding-left: calc((100% - 288px) / 2);
+
+  @media (min-width: $tablet-min-width) {
+    padding-left: calc((100% - 592px) / 2);
+  }
+
+  @media (min-width: 768px) {
+    padding-left: calc((100% - 720px) / 2);
+  }
+
+  @media (min-width: $desktop-min-width) {
+    padding-left: calc((100% - 1136px) / 2);
+  }
+}
+
+@mixin width() {
+  width: 288px;
+  @media (min-width: $tablet-min-width) {
+    width: 592px;
+  }
+  @media (min-width: 768px) {
+    width: 720px;
+  }
+  @media (min-width: $desktop-min-width) {
+    width: 1136px;
+  }
+}
+
 @mixin columns-1-grid() {
   @media (min-width: 320px) {
     @content;

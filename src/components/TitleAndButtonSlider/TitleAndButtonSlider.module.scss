@@ -2,25 +2,16 @@
 @use '../../utils/mixins.scss' as *;
 
 .main_header_container {
-  width: 288px;
   height: fit-content;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  justify-content: space-between;
+
+  @include width;
 
   @include on-tablet {
-    width: 592px;
     height: 42px;
-    margin: 0 24px 24px;
-    gap: 20px;
-  }
-
-  @include on-desktop {
-    width: 1136px;
-    height: 42px;
-    margin: 0 32px 24px;
-    gap: 20px;
   }
 }
 
@@ -31,7 +22,6 @@
   @include flex_centered;
 
   @include on-tablet {
-    width: 492px;
     height: 42px;
     justify-content: flex-start;
   }

@@ -19,4 +19,4 @@ export const colorMap: { [key: string]: string } = {
   'sky blue': '#87CEEB',
   starlink: '#F8F9EC',
   'space gray': '#343d46',
-}
+};

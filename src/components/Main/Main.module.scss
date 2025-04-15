@@ -2,10 +2,15 @@
 @use '../../utils/mixins.scss' as *;
 
 .main_container {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
+
+  box-sizing: border-box;
+
+  @include padding-left;
 }
 
 .categories {
@@ -14,7 +19,7 @@
 }
 
 .scroll_container {
-  width: 288px;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -24,12 +29,10 @@
   margin-bottom: 56px;
 
   @include on-tablet {
-    width: 592px;
     margin-bottom: 64px;
   }
 
   @include on-desktop {
-    width: 1136px;
     margin-bottom: 80px;
   }
 }

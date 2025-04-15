@@ -8,6 +8,8 @@
   align-items: center;
   margin-bottom: 24px;
 
+  @include padding-left;
+
   @include on-tablet {
     margin-bottom: 32px;
   }
@@ -25,21 +27,19 @@
   line-height: 41px;
   letter-spacing: -.01em;
   color: var(--text-color-main);
-  height: 82px;
-  width: 288px;
-  margin: 0 auto;
+  height: fit-content;
+  width: 100%;
+  margin: 0;
   transition: all .5s ease-in-out;
 
   @include on-tablet {
     font-size: 48px;
     line-height: 56px;
-    width: 592px;
     height: 112px;
   }
 
   @include on-desktop {
     font-size: 48px;
-    width: 1136px;
     height: 56px;
   }
 }

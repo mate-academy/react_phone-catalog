@@ -23,6 +23,7 @@
   background-color: var(--slider-swipe-button);
   color: var(--text-color-main);
   box-sizing: border-box;
+  transition: all 0.5s ease-in-out;
 
   &:hover {
     border: 1px solid var(--text-color-secondary);

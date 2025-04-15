@@ -6,7 +6,6 @@
   transition: all .5s ease-in-out;
   background-color: var(--bg-color);
   display: flex;
-  justify-content: space-between;
   gap: 16px;
   border-bottom: 1px solid var(--button-border-disabled);
   margin-bottom: 24px;
@@ -96,15 +95,12 @@
 }
 
 .header_nav_buttons_container {
-  width: 184px;
+  position: absolute;
+  right: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: row;
-
-  @include on-desktop {
-    width: 600px;
-  }
 }
 
 .header_nav_icon {
@@ -192,6 +188,7 @@
 
 
 .active_wrapper {
+  transition: all 0.5s ease-in-out;
   border-bottom: 3px solid var(--text-color-main);
 }
 
