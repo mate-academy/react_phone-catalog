@@ -1,3 +1,3 @@
 import './Empty.scss';
 
-export const Empty = () => <div className="not-found"></div>;
+export const Empty = () => <div className="empty"></div>;
