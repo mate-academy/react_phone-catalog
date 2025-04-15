@@ -12,7 +12,18 @@ export const ProductTechSpecs: React.FC<Props> = ({ specs }) => {
       {Object.entries(specs).map(([spec, value]) => (
         <div key={spec} className="details__wrap">
           <p className="details__title">{spec}</p>
-          <p className="details__info">{value}</p>
+
+          <div className="details__info__wrap">
+            {Array.isArray(value) ? (
+              value.map((v, i) => (
+                <p key={v} className="details__info">
+                  {i !== value.length - 1 ? `${v},` : v}
+                </p>
+              ))
+            ) : (
+              <p className="details__info">{value}</p>
+            )}
+          </div>
         </div>
       ))}
     </div>

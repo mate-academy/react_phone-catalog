@@ -23,5 +23,14 @@
   &__info {
     @include device-description-short;
     color: $gray-primary;
+
+    &__wrap {
+      width: fit-content;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
   }
 }

@@ -58,3 +58,7 @@ export function createSlides(products: Product[], width: number): Product[][] {
     return accum;
   }, []);
 }
+
+export function createId(...details: string[]): string {
+  return details.map(detail => detail.toLowerCase().trim().split(' ').join('-')).join('-');
+}
