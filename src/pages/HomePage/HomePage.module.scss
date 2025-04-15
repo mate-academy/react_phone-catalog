@@ -1,0 +1,150 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('../../../public/fonts/Mont.otf') format('opentype');
+}
+
+* {
+  font-family: 'MyFont', sans-serif;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brandNewModels {
+  margin-top: 80px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    margin: 0;
+  }
+
+  &__arrows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+
+    &-disabled {
+      cursor: not-allowed;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+  }
+
+  &__main {
+    margin-top: 30px;
+  }
+
+  &__phones {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__phone {
+    width: 100%;
+    border: 1px solid #e2e6e9;
+    padding: 20px 30px;
+    transition: 0.5s;
+
+    &:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &__verticalLine {
+    border: 0.5px solid #e2e6e9;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  &__phoneTitle {
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+  }
+
+  &__imageContainer img {
+    width: 50%;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__screen,
+  &__ram,
+  &__capacity {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label {
+    color: #89939a;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  &__addToCart {
+    background-color: #313237;
+    color: white;
+    padding: 10px 40px;
+    border: none;
+    width: 80%;
+  }
+
+  &__favourites {
+    background: none;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+  }
+
+  &__favourites svg {
+    height: 100%; // Makes the icon fill the button's height
+    display: block;
+  }
+}

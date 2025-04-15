@@ -1,0 +1,61 @@
+li {
+  list-style-type: none;
+}
+
+@mixin link-styles($bottom: -2px) {
+  color: #89939a;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: $bottom;
+    height: 2px;
+    background: black;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: black;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &--active {
+    color: black;
+    font-weight: bold;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.navbar {
+  &__link {
+    @include link-styles(-2rem);
+  }
+
+  @media (max-width: 768px) {
+    &__link {
+      display: none;
+    }
+  }
+}
+
+.burger {
+  &__item {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  &__link {
+    @include link-styles(-2px); // Custom bottom for burger
+  }
+}

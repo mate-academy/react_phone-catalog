@@ -1,0 +1,45 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 10px;
+
+  &__addToCart {
+    background-color: #313237;
+    color: white;
+    padding: 10px 40px;
+    border: none;
+    width: 80%;
+    height: 35px;
+    white-space: nowrap;
+
+    &_active {
+      background: white;
+      color: green;
+      box-sizing: border-box;
+      box-shadow: 0 0 0 1px #000000;
+    }
+  }
+
+  &__favourites {
+    background: none;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+
+    &_active svg {
+      color: red;
+    }
+
+    &_active {
+      border-color: red;
+    }
+  }
+
+  &__favourites svg {
+    height: 100%; // Makes the icon fill the button's height
+    display: block;
+  }
+}

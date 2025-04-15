@@ -1,1 +1,28 @@
-// not empty
+@font-face {
+  font-family: 'MyFont';
+  src: url('../../../public/fonts/Mont.otf') format('opentype');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'MyFont', sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  max-width: 1136px;
+  width: 100%;
+  margin-top: 35px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
