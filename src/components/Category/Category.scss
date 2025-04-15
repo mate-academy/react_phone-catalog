@@ -55,6 +55,7 @@
         overflow: hidden;
         border-radius: 8px;
         position: relative;
+        transition: all 0.3s ease-in-out;
 
         @include on-tablet {
           height: 200px;
@@ -63,6 +64,10 @@
         @include on-desktop {
           height: 368px;
           border-radius: 0;
+        }
+
+        &:hover {
+          transform: scale(0.9);
         }
 
         &-first {

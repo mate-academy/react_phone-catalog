@@ -10,6 +10,7 @@ import { Favorites } from './components/Favorites';
 import { FavoritesProvider } from './components/Favorites/FavoritesContext';
 import { Cart } from './components/Cart';
 import { CartProvider } from './components/Cart/CartContext';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const Root = () => (
   <Router>
@@ -28,6 +29,7 @@ export const Root = () => (
 
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </CartProvider>
