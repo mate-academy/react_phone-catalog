@@ -33,7 +33,7 @@ export const Carousel: React.FC<Props> = ({ children }) => {
           )}
           style={{
             transform: canScrollLeft ? 'rotate(180deg)' : 'none',
-            backgroundImage: `url(/img/icons/icon-arrow${canScrollLeft ? '-active' : ''}.svg)`,
+            backgroundImage: `url(${import.meta.env.BASE_URL}img/icons/icon-arrow${canScrollLeft ? '-active' : ''}.svg)`,
           }}
           disabled={!canScrollLeft}
         ></button>
@@ -50,7 +50,7 @@ export const Carousel: React.FC<Props> = ({ children }) => {
             },
           )}
           style={{
-            backgroundImage: `url(/img/icons/icon-arrow${canScrollRight ? '-active' : ''}.svg)`,
+            backgroundImage: `url(${import.meta.env.BASE_URL}img/icons/icon-arrow${canScrollRight ? '-active' : ''}.svg)`,
             transform: !canScrollRight ? 'rotate(180deg)' : 'none',
           }}
           disabled={!canScrollRight}
