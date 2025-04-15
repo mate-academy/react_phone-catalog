@@ -48,11 +48,7 @@ export const Card: React.FC<Props> = ({
   return (
     <div className="card">
       <Link className="card__top" to={`/${category}/${id}`}>
-        <img
-          src={`${import.meta.env.BASE_URL}${image}`}
-          alt={name}
-          className="card__top-img"
-        />
+        <img src={image} alt={name} className="card__top-img" />
 
         <div className="card__top-text">
           <p className="card__top-text--name text text__body">{name}</p>
