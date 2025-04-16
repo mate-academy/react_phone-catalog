@@ -1,7 +1,7 @@
 import './ProductDetails.style.scss';
 
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
@@ -19,19 +19,19 @@ import { ShopItem } from '../../../types/ShopItem';
 import classNames from 'classnames';
 import { createId } from '../../../utils/helpers';
 import { CustomSwiper } from '../../shared/Swiper/Swiper';
+import { loadProducts } from '../../../features/ProductsSlice/ProductsSlice';
 
 export const ProductDetails = () => {
   const dispatch = useAppDispatch();
 
-  const recommendations = useAppSelector(
-    state => state.products.products,
-  ).slice(0, 20);
+  const allProducts = useAppSelector(state => state.products.products);
+  const recommendations = allProducts.slice(0, 20);
 
   const location = useLocation()
     .pathname.split('/')
-    .filter(path => path.trim().length > 0);
-  const productCategory = location[0];
-  const productId = location[1];
+    .map(path => path.split('-').join(' ').trim())
+    .filter(path => path.length > 0);
+  const { id: productId } = useParams();
   const [product, setProduct] = useState<ShopItem>();
   const [productColor, setProductColor] = useState<string>();
   const [productCapacity, setProductCapacity] = useState<string>();
@@ -68,28 +68,36 @@ export const ProductDetails = () => {
       const newId = createId(namespaceId, capacity, color);
 
       if (newId !== productId) {
-        navigate(`/${productCategory}/${newId}`);
+        navigate(`../${newId}`, { replace: true });
       }
     }
   };
 
   const findProduct = async () => {
-    try {
-      const result = await getProduct(productCategory, productId);
-      if (result) {
-        setProduct(result);
-        setProductCapacity(result.capacity);
-        setProductColor(result.color);
+    const product = allProducts.find(product => product.itemId === productId);
+
+    if (product) {
+      try {
+        const result = await getProduct(product.category, product.itemId);
+
+        if (result) {
+          setProduct(result);
+          setProductCapacity(result.capacity);
+          setProductColor(result.color);
+        }
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
+    } else {
+      console.log('something went wrong');
     }
   };
 
   useEffect(() => {
     findProduct();
-    dispatch(resetCrumbs([productCategory,productId.split('-').join(' ')]));
-  }, [productCategory, productId, dispatch]);
+    dispatch(resetCrumbs(location));
+    dispatch(loadProducts);
+  }, [location, productId, dispatch]);
 
   return (
     <div className="product-page">
@@ -108,9 +116,10 @@ export const ProductDetails = () => {
           <div className="product-page__sections">
             <div className="product-page__section product-page__section--design">
               <div className="product-page__product-design">
-
-
-                <CustomSwiper page='productDetailsPage' thumbs={product.images}/>
+                <CustomSwiper
+                  page="productDetailsPage"
+                  thumbs={product.images}
+                />
               </div>
 
               <div className="product-page__sidebar sidebar">
@@ -134,9 +143,7 @@ export const ProductDetails = () => {
                                   color === productColor,
                               },
                             )}
-                            onClick={() =>
-                              handleChoice({ color, })
-                            }
+                            onClick={() => handleChoice({ color })}
                           >
                             <div
                               className={`sidebar__options__color sidebar__options__color--${normalizeColor}`}
@@ -186,15 +193,19 @@ export const ProductDetails = () => {
                 <h3 className="article__title">about</h3>
 
                 <div className="article__paragraphs">
-                  {product.description.map((info: { title: string; text: string[] }) => {
-                    const { title, text } = info;
-                    return (
-                      <div key={title} className="article__paragraph">
-                        <h4 className="article__paragraph__heading">{title}</h4>
-                        <div className="article__paragraph__text">{text}</div>
-                      </div>
-                    );
-                  })}
+                  {product.description.map(
+                    (info: { title: string; text: string[] }) => {
+                      const { title, text } = info;
+                      return (
+                        <div key={title} className="article__paragraph">
+                          <h4 className="article__paragraph__heading">
+                            {title}
+                          </h4>
+                          <div className="article__paragraph__text">{text}</div>
+                        </div>
+                      );
+                    },
+                  )}
                 </div>
               </div>
 
@@ -218,13 +229,10 @@ export const ProductDetails = () => {
   );
 };
 
-
-
-
-
-
-  {/* <img
+{
+  /* <img
                   src={product.images[0]}
                   alt="product image"
                   className="product-page__product-design__photo"
-                /> */}
+                /> */
+}
