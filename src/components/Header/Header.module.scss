@@ -11,8 +11,9 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  box-shadow: 0 1px 0 $elements;
+  border: 1px $elements solid;
   height: 64px;
+  border-collapse:collapse;
 
   @include on-tablet {
     height: 48px;
@@ -78,11 +79,13 @@
 
 .controls {
   @include flex-centered;
+  height: 100%;
 
   // make the propperty for collapsing menu on small screens
 
   &__visible {
-    display: flex;
+    height: 100%;
+    display: flex; // visible on the tablet and larger screens
 
     @include on-mobile {
       display: none;
@@ -90,26 +93,12 @@
   }
 
   &__hidden {
+    height: 100%;
     display: none;
 
     @include on-mobile {
-      display: flex;
+      display: flex; // visible on the mobile screens
     }
   }
 }
 
-.button {
-  height: 100%;
-  aspect-ratio: 1 / 1;
-  box-sizing: border-box;
-
-  justify-content: center;
-  align-items: center;
-
-  // add styles on hover
-  box-shadow: -1px 0 0 $elements;
-
-  &:hover {
-    box-shadow: -1px 0 0 $primary;
-  }
-}

@@ -1,4 +1,5 @@
 @use '../../styles/mixin.scss' as *;
+@use '../../styles/variables.scss' as *;
 
 .container {
   @include container;
@@ -10,15 +11,25 @@
 }
 
 .footer {
-  display: grid; // обов'язково!
+  display: grid;
   align-items: center;
   height: 96px;
 
   grid-template-columns: repeat(3, 1fr);
 
+  &__link {
+    padding-inline: 30px;
+    color: $secondary;
+
+    @include flex-centered;
+    @include use-font(700);
+  }
+
   &__front {
     grid-column: 1 / 2;
     justify-self: start;
+
+    padding-left: 0; // to fix the left padding in logo 
   }
 
   &__list {
@@ -38,12 +49,6 @@
   }
 
   &__item {
-    @include flex-centered;
-  }
-
-  &__link {
-    padding-inline: 30px;
-
     @include flex-centered;
   }
 }

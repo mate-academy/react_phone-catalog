@@ -1,0 +1,42 @@
+@use '../../styles/variables.scss' as *;
+
+.button {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  &__icon {
+    fill: $primary;
+    aspect-ratio: 1 / 1;
+
+  }
+
+  &:hover {
+    border-color: $primary;
+  }
+  
+  &:disabled {
+    &__icon {
+      fill: $elements;
+    }
+  }
+}
+
+

@@ -1,10 +1,11 @@
+import { Button } from '../../shared/Button/Button';
 import s from './Footer.module.scss';
 
 export const Footer = () => {
   return (
     <footer className={`${s.footer} ${s.container}`}>
       <a href="#" className={`${s.footer__link} ${s.footer__front}`}>
-        <img src="../../img/icons/logo.svg" alt="logo" className={s.logo} />
+        <img src="../../icons/logo.svg" alt="logo" className={s.logo} />
       </a>
       <ul className={s.footer__list}>
         <li className={s.footer__item}>
@@ -23,9 +24,12 @@ export const Footer = () => {
           </a>
         </li>
       </ul>
-      <a href="#" className={s.footer__back}>
-        fasdfsa
-      </a>
+      <div className={s.footer__back}>
+        <a href="#" className={s.footer__back}>
+          fasdfsa
+        </a>
+        <Button iconName="arrow-up" />
+      </div>
     </footer>
   );
 };

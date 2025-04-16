@@ -1,3 +1,4 @@
+import { Button } from '../../shared/Button/Button';
 import s from './Header.module.scss';
 
 export const Header = () => {
@@ -5,11 +6,7 @@ export const Header = () => {
     <header className={s.header}>
       <nav className={`${s.nav} ${s.container}`}>
         <a href="#" className={s.logo}>
-          <img
-            src="../../img/icons/logo.svg"
-            alt="logo"
-            className={s.logo__img}
-          />
+          <img src="../../icons/logo.svg" alt="logo" className={s.logo__img} />
         </a>
 
         <ul className={s.nav__list}>
@@ -37,18 +34,13 @@ export const Header = () => {
       </nav>
 
       <div className={s.controls}>
-        <a href="" className={`${s.controls__visible} ${s.button}`}>
-          <img src="../../img/icons/heard.svg" alt="" />
-        </a>
-        <a href="" className={`${s.controls__visible} ${s.button}`}>
-          <img src="../../img/icons/shoping-bag.svg" alt="" />
-        </a>
-        <a
-          href=""
-          className={`${s.controls__button} ${s.controls__hidden} ${s.button}`}
-        >
-          <img src="../../img/icons/menu.svg" alt="" />
-        </a>
+        <div className={s.controls__visible}>
+          <Button iconName="heard" />
+          <Button iconName="shoping-bag" />
+        </div>
+        <div className={s.controls__hidden}>
+          <Button iconName="menu" />
+        </div>
       </div>
     </header>
   );
