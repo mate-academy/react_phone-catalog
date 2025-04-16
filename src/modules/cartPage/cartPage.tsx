@@ -91,7 +91,7 @@ export const CartPage = () => {
                 <div className="card__details--box">
                   <img
                     className="card__details--box--img"
-                    src={product.image}
+                    src={`../../${product.image}`}
                     alt="Image Product"
                   />
                 </div>
