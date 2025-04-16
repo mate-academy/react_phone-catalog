@@ -24,17 +24,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      @include tablet {
+        gap: 24px;
+      }
     }
   }
 
   &__count {
     display: flex;
-    gap: 10px;
     align-items: center;
-
-    @include tablet {
-      gap: 14px;
-    }
+    text-align: center;
   }
 
   &__button {
@@ -81,6 +81,7 @@
     font-size: 14px;
     font-weight: 600;
     color: $color-white;
+    width: 32px;
   }
 
   &__price {

@@ -18,6 +18,7 @@
     position: sticky;
     z-index: 2;
     gap: 16px;
+    justify-content: space-between;
 
     @include tablet {
       padding-right: 0;

@@ -6,11 +6,6 @@
 
   @include padding-inline;
 
-  @include tablet {
-    margin-bottom: 390px;
-  }
-
-
   &__title {
     margin: 24px 0 8px;
   }

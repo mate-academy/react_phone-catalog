@@ -61,7 +61,7 @@
   }
 }
 
-@mixin scale-on-hover($scale: 1.05, $duration: 0.3s) {
+@mixin scale-on-hover($scale: 1.03, $duration: 0.3s) {
   transition: transform $duration ease-in-out;
 
   &:hover {
