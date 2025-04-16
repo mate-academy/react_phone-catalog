@@ -40,4 +40,14 @@
       grid-column: span 24;
     }
   }
+
+  &--not-found {
+    padding-top: 48px;
+    margin-bottom: 0;
+    overflow: hidden;
+
+    @include on-tablet {
+      height: calc(100vh - 146px);
+    }
+  }
 }

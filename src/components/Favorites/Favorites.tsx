@@ -9,7 +9,7 @@ export const Favorites = () => {
   const { favorites } = useFavorites();
 
   return (
-    <section className="favorites">
+    <section className="favorites favorites--not-found">
       {favorites.length === 0 ? (
         <NotFoundProduct />
       ) : (

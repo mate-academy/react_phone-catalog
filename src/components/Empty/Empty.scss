@@ -3,7 +3,7 @@
 .empty {
   grid-column: 1 / 5;
   width: 100%;
-  height: 100vh;
+  height: 300px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -14,8 +14,8 @@
   justify-content: center;
 
   @include on-tablet {
-    background-size: auto;
     grid-column: 1 / 13;
+    height: 100vh;
   }
 
   @include on-desktop {

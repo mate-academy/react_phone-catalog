@@ -4,27 +4,29 @@ import './Footer.scss';
 export const Footer = () => {
   return (
     <footer className="footer">
-      <a href="#" className="footer__logo icon icon--logo"></a>
+      <Link to="/" className="footer__logo icon icon--logo"></Link>
 
       <nav className="footer__nav">
         <ul className="footer__nav-list">
           <li className="footer__nav-list--item">
             <Link
-              to="https://github.com/"
+              to="https://github.com/kravets111?tab=repositories"
               className="text__body--uppercase nav__link"
+              target="_blank"
+              rel="noreferrer"
             >
               Github
             </Link>
           </li>
 
           <li className="footer__nav-list--item">
-            <Link to="/contacts" className="text__body--uppercase nav__link">
+            <Link to="#" className="text__body--uppercase nav__link">
               Contacts
             </Link>
           </li>
 
           <li className="footer__nav-list--item">
-            <Link to="/rights" className="text__body--uppercase nav__link">
+            <Link to="#" className="text__body--uppercase nav__link">
               rights
             </Link>
           </li>
