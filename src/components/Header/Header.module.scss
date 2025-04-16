@@ -12,11 +12,10 @@
   align-items: center;
   box-sizing: border-box;
   border: 1px $elements solid;
-  height: 64px;
-  border-collapse:collapse;
+  height: calc($gap * 2);
 
   @include on-tablet {
-    height: 48px;
+    height: calc($gap * 1.5);
   }
 }
 
@@ -45,11 +44,11 @@
 
   &__list {
     display: flex;
-    gap: 16px;
+    gap: calc($gap / 2);
     height: 100%;
 
     @include on-tablet {
-      gap: 4px;
+      gap: calc($gap / 8);
     }
 
     @include on-mobile {
@@ -62,7 +61,7 @@
   }
 
   &__link {
-    padding-inline: 24px;
+    padding-inline: calc($gap / 3 * 2);
     display: block;
     height: 100%;
     align-content: center;
@@ -72,7 +71,7 @@
     @include use-font(800);
 
     @include on-tablet {
-      padding-inline: 14px;
+      padding-inline: calc($gap / 2);
     }
   }
 }
@@ -86,6 +85,7 @@
   &__visible {
     height: 100%;
     display: flex; // visible on the tablet and larger screens
+    gap: 1px;
 
     @include on-mobile {
       display: none;

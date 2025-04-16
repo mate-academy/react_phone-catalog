@@ -13,43 +13,73 @@
 .footer {
   display: grid;
   align-items: center;
-  height: 96px;
-
+  height: $gap * 3;
   grid-template-columns: repeat(3, 1fr);
+  border: 1px $elements solid;
+  box-sizing: border-box;
+
+  @include on-mobile {
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-block: $gap;
+  }
 
   &__link {
-    padding-inline: 30px;
+    padding-inline: $gap;
     color: $secondary;
+    text-transform: uppercase;
 
     @include flex-centered;
     @include use-font(700);
+
+    @include on-mobile {
+      padding-inline: 0;
+    }
   }
 
   &__front {
     grid-column: 1 / 2;
     justify-self: start;
 
-    padding-left: 0; // to fix the left padding in logo 
+    padding-left: 0; // to fix the left padding in logo
   }
 
   &__list {
     grid-column: 2 / 3;
     justify-self: center;
-
     @include flex-centered;
-
-    width: 100%;
     justify-content: space-between;
+    width: 100%;
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: calc($gap / 2);
+      align-items: flex-start;
+    }
   }
 
   &__back {
-    justify-self: end;
+    @include use-font(600);
     display: flex;
+    align-items: center;
+    gap: calc($gap / 2);
+
+    justify-self: end;
     grid-column: 3 / 4;
+
+    color: $secondary;
+
+    @include on-mobile {
+      align-self: center;
+    }
   }
 
   &__item {
     @include flex-centered;
   }
 }
-

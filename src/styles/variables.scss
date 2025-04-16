@@ -1,4 +1,27 @@
 $primary: #313237;
-$secondary: #89939A;
-$elements: #E2E6E9;
-$header-height: 64px;
+$secondary: #89939a;
+$elements: #e2e6e9;
+
+$gap: 48px;
+
+/* Where gap constant ratio & where it was used:
+
+on-tablet / on-mobile
+
+        Header
+2x        / 1.5x            -> height
+
+        Header-Nav
+0.5x      / 0.125x   __list -> gap
+0.6x      / 0.5      __link -> padding-inline
+
+        Footer
+3x        / auto            -> height
+1x        / 0        __link -> padding-inline
+auto      / 0.5x     __list -> gap
+0.5x      / auto     __back -> gap
+
+        Mixins
+1x        / 0.5x     container -> padding-inline
+1x     0.6x     0.5x grid      -> template-columns
+*/

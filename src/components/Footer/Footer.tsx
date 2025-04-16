@@ -26,7 +26,7 @@ export const Footer = () => {
       </ul>
       <div className={s.footer__back}>
         <a href="#" className={s.footer__back}>
-          fasdfsa
+          Back to top
         </a>
         <Button iconName="arrow-up" />
       </div>

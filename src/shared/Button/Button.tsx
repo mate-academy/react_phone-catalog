@@ -1,5 +1,7 @@
 import s from './Button.module.scss';
 
+// make import svg as react component
+
 type Props = {
   iconName: string;
   className?: string; // Optional className property
