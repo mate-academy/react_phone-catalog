@@ -8,7 +8,7 @@ import { Burger } from '../../shared/Burger/Burger';
 
 export const Header: React.FC = () => {
   return (
-    <div className={style.header}>
+    <div className={style.header} id="header">
       <div className={style.wrapper}>
         <Link to="/" className={style.headerLogo}>
           <Logo />
@@ -20,7 +20,9 @@ export const Header: React.FC = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? `${style.isActiveLink}` : `${style.navLink}`
+                  isActive
+                    ? `${style.isActiveLink} ${style.navLink}`
+                    : `${style.navLink}`
                 }
               >
                 Home
@@ -31,7 +33,9 @@ export const Header: React.FC = () => {
               <NavLink
                 to="/phones"
                 className={({ isActive }) =>
-                  isActive ? `${style.isActiveLink}` : `${style.navLink}`
+                  isActive
+                    ? `${style.isActiveLink} ${style.navLink}`
+                    : `${style.navLink}`
                 }
               >
                 Phones
@@ -42,7 +46,9 @@ export const Header: React.FC = () => {
               <NavLink
                 to="/tablets"
                 className={({ isActive }) =>
-                  isActive ? `${style.isActiveLink}` : `${style.navLink}`
+                  isActive
+                    ? `${style.isActiveLink} ${style.navLink}`
+                    : `${style.navLink}`
                 }
               >
                 Tablets
@@ -53,7 +59,9 @@ export const Header: React.FC = () => {
               <NavLink
                 to="/accessories"
                 className={({ isActive }) =>
-                  isActive ? `${style.isActiveLink}` : `${style.navLink}`
+                  isActive
+                    ? `${style.isActiveLink} ${style.navLink}`
+                    : `${style.navLink}`
                 }
               >
                 Accessories
@@ -63,11 +71,25 @@ export const Header: React.FC = () => {
         </div>
 
         <div className={style.userInetrface}>
-          <NavLink to="/favorite" className={style.UIfavorite}>
+          <NavLink
+            to="/favorite"
+            className={({ isActive }) =>
+              isActive
+                ? `${style.isActiveLink} ${style.UIfavorite}`
+                : `${style.UIfavorite}`
+            }
+          >
             <Favorite />
           </NavLink>
 
-          <NavLink to="/bag" className={style.UIshopBag}>
+          <NavLink
+            to="/bag"
+            className={({ isActive }) =>
+              isActive
+                ? `${style.isActiveLink} ${style.UIshopBag}`
+                : `${style.UIshopBag}`
+            }
+          >
             <ShopBag />
           </NavLink>
         </div>

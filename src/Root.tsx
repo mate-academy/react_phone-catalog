@@ -8,21 +8,24 @@ import { Accessories } from './modules/Accessories/Accessories';
 import { ShopingCardPage } from './modules/ShoppingCartPage/ShopingCardPage';
 import { FavoritePage } from './modules/FavoritePage/FavoritePage';
 import { Menu } from './components/Menu/Menu';
+import { CartProvider } from './modules/HomePage/hook/CartContext';
 
 export const Root: React.FC = () => {
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route path="phones" element={<Phones />} />
-          <Route path="tablets" element={<Tablets />} />
-          <Route path="accessories" element={<Accessories />} />
-          <Route path="favorite" element={<FavoritePage />} />
-          <Route path="bag" element={<ShopingCardPage />} />
-          <Route path="menu" element={<Menu />} />
-        </Route>
-      </Routes>
-    </HashRouter>
+    <CartProvider>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+            <Route path="phones" element={<Phones />} />
+            <Route path="tablets" element={<Tablets />} />
+            <Route path="accessories" element={<Accessories />} />
+            <Route path="favorite" element={<FavoritePage />} />
+            <Route path="bag" element={<ShopingCardPage />} />
+            <Route path="menu" element={<Menu />} />
+          </Route>
+        </Routes>
+      </HashRouter>
+    </CartProvider>
   );
 };

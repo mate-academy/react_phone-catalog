@@ -1,5 +1,5 @@
-import React from 'react';
-import style from './NewModel.module.scss';
+import React, { useState } from 'react';
+import style from './HotPrice.module.scss';
 import {
   Navigation,
   Pagination,
@@ -12,7 +12,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
 import arrowLeft from '../../../../shared/assets/icons/chevron-arrow-left.svg';
 // eslint-disable-next-line max-len
 import arrowRight from '../../../../shared/assets/icons/chevron-arrow-right.svg';
@@ -21,10 +20,12 @@ import { ProductCart } from '../../../../components/ProductCart/ProductCart';
 import { Product } from '../../../../type/Product';
 import { useMediaQuery } from '@uidotdev/usehooks';
 
-export const NewModel: React.FC = () => {
-  const phones: Product[] = phoneFromServer.slice(-8);
+export const HotPrice: React.FC = () => {
+  const phones: Product[] = phoneFromServer.slice(10, 19);
   const isTablet = useMediaQuery('(min-width: 640px)');
   const isDesctop = useMediaQuery('(min-width: 1200px)');
+
+  const [isDiscount] = useState(true);
 
   let slidesView = 1.5;
 
@@ -39,13 +40,13 @@ export const NewModel: React.FC = () => {
   return (
     <div className={style.container}>
       <div className={style.top}>
-        <h1 className={style.title}>Brand New Model</h1>
+        <h1 className={style.title}>Hot Price</h1>
         <div className={style.navigation}>
-          <div id="swiper-new-brand-prev" className={style.navigationPrev}>
+          <div id="swiper-new-hotPrice-prev" className={style.navigationPrev}>
             <img src={arrowLeft} alt="arrow left" className={style.arrowPrev} />
           </div>
 
-          <div id="swiper-new-brand-next" className={style.navigationNext}>
+          <div id="swiper-new-hotPrice-next" className={style.navigationNext}>
             <img
               src={arrowRight}
               alt="arrow right"
@@ -60,8 +61,8 @@ export const NewModel: React.FC = () => {
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           slidesPerView={slidesView}
           navigation={{
-            nextEl: `#swiper-new-brand-next`,
-            prevEl: `#swiper-new-brand-prev`,
+            nextEl: `#swiper-new-hotPrice-next`,
+            prevEl: `#swiper-new-hotPrice-prev`,
           }}
           // eslint-disable-next-line no-console
           onSwiper={swiper => console.log(swiper)}
@@ -73,7 +74,7 @@ export const NewModel: React.FC = () => {
               <SwiperSlide key={phone.id}>
                 <ProductCart
                   product={phone}
-                  isDiscount={false}
+                  isDiscount={isDiscount}
                   key={phone.id}
                 />
               </SwiperSlide>

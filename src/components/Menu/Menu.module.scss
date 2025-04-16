@@ -1,7 +1,7 @@
 @import '../../style/global';
 
 .content {
-  height: calc(100vh - 49px);
+  height: calc(100vh - 49px - 250px);
 
   display: flex;
   flex-direction: column;

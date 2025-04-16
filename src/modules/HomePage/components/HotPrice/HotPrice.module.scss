@@ -2,6 +2,7 @@
 
 .container {
   padding-top: 56px;
+  padding-bottom: 64px;
 
   @include padding-inline;
 
@@ -11,6 +12,7 @@
 
   @include on-desctop {
     padding-top: 80px;
+    padding-bottom: 80px;
   }
 
   @include on-large-desctop {
@@ -62,10 +64,6 @@
   padding: 8px;
 
   cursor: pointer;
-}
-
-.button-disabled {
-  background-color: red;
 }
 
 .arrowNext {

@@ -51,6 +51,17 @@
   padding-top: 8px;
 }
 
+.phonePriceDiscount {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+
+  padding-top: 8px;
+
+  color: $light-gray-color;
+  text-decoration: line-through;
+}
+
 .phoneDescription {
   display: flex;
   gap: 8px;
@@ -100,12 +111,41 @@
   font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   line-height: 21px;
+  border: none;
 
   text-align: center;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $accent-color-hover;
+  }
+}
+
+.addedCart {
+  display: block;
+  width: 100%;
+  color: $light-color;
+  padding: 9px;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  border: none;
+
+  text-align: center;
+
+  &:disabled {
+    background-color: #323542;
+  }
 }
 
 .favorite {
   padding: 12px;
   background-color: #323542;
   cursor: pointer;
+
+&:hover {
+  background-color: #4A4D58;
+}
 }
