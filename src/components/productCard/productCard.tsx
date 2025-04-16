@@ -25,7 +25,7 @@ export const ProductCard = ({
     <div className="productCard" key={product.id}>
       <div className="productCard__box">
         <img
-          src={`../../${product.image}`}
+          src={`../public/${product.image}`}
           alt={product.name}
           onClick={() => handleProductClick(product.itemId)}
           style={{ cursor: 'pointer' }}

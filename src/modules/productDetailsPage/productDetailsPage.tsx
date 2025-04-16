@@ -225,7 +225,7 @@ export const ProductDetailsPage = () => {
       <div className="cardImg">
         <div className="cardImg__box">
           <img
-            src={`../../${selectedImage}`}
+            src={`../public/${selectedImage}`}
             alt="ProductImage"
             className="cardImg__box--img"
           />
@@ -239,7 +239,7 @@ export const ProductDetailsPage = () => {
             key={index}
           >
             <img
-              src={`../../${image}`}
+              src={`../public/${image}`}
               alt={`Product image ${index + 1}`}
               className="cardPhotos__box--img"
             />
