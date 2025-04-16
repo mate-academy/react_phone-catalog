@@ -35,7 +35,7 @@ export const Header = () => {
 
       <div className={s.controls}>
         <div className={s.controls__visible}>
-          <Button iconName="heard" />
+          <Button iconName="heart" />
           <Button iconName="shoping-bag" />
         </div>
         <div className={s.controls__hidden}>

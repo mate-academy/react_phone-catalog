@@ -78,6 +78,7 @@
 
 .controls {
   @include flex-centered;
+
   height: 100%;
 
   // make the propperty for collapsing menu on small screens
