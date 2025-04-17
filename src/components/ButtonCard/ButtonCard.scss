@@ -25,7 +25,7 @@
     transition: box-shadow 0.3s ease-in-out;
 
     @include on-tablet {
-      width: 125px;
+      width: 80%;
     }
 
     &:hover {

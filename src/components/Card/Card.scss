@@ -72,6 +72,12 @@
         line-height: 31px;
         letter-spacing: 0;
 
+        &-block {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
         &-discount {
           color: $color-secondary;
           text-decoration: line-through;

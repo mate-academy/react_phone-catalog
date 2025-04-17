@@ -56,13 +56,13 @@ export const Card: React.FC<Props> = ({
           {price === undefined ? (
             <h3 className="card__top-text--price text">${fullPrice}</h3>
           ) : (
-            <>
+            <div className="card__top-text--price-block">
               <h3 className="card__top-text--price text">${price}</h3>
 
               <p className="card__top-text--price card__top-text--price-discount text">
                 ${fullPrice}
               </p>
-            </>
+            </div>
           )}
         </div>
       </Link>

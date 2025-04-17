@@ -6,8 +6,13 @@ import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
 export const Cart = () => {
-  const { cart, increaseQuantity, decreaseQuantity, removeFromCart } =
-    useCart();
+  const {
+    cart,
+    increaseQuantity,
+    decreaseQuantity,
+    removeFromCart,
+    clearCart,
+  } = useCart();
 
   const navigate = useNavigate();
 
@@ -83,9 +88,7 @@ export const Cart = () => {
                     ></button>
                   </div>
 
-                  <p className="cart__item-price text text__title text__title--basic">
-                    ${item.price}
-                  </p>
+                  <p className="cart__item-price text">${item.price}</p>
                 </div>
               </div>
             ))}
@@ -108,9 +111,7 @@ export const Cart = () => {
           <div className="cart__total-bottom">
             <button
               className="cart__total-bottom--checkout text text__body--buttons"
-              onClick={() => {
-                alert('Checkout is not implement yet');
-              }}
+              onClick={clearCart}
             >
               Checkout
             </button>

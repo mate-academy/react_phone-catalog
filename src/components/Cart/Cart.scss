@@ -79,7 +79,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 23px;
 
     background-color: $color-white;
     border: 1px solid $color-elements;
@@ -88,27 +88,20 @@
 
     @include on-tablet {
       grid-column: 1 / 13;
-
-      flex-direction: row;
-      gap: 24px;
-      padding: 24px;
-    }
-
-    @include on-desktop {
+      gap: 0;
       justify-content: space-between;
+      flex-direction: row;
+      padding: 24px;
     }
 
     &-top {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
-      gap: 16px;
+      gap: 23px;
 
       @include on-tablet {
-        gap: 24px;
-        width: 60%;
-        justify-content: flex-start;
+        gap: 31px;
       }
     }
 
@@ -116,11 +109,10 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 104px;
+      justify-content: space-between;
 
       @include on-tablet {
-        gap: 68px;
-        width: 40%;
+        gap: 24px;
       }
     }
 
@@ -137,11 +129,24 @@
       object-fit: contain;
     }
 
+    &-title {
+      @include on-tablet {
+        width: 176px;
+      }
+
+      @include on-desktop {
+        width: 336px;
+      }
+    }
+
     &-quantity {
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 14px;
+      justify-content: space-between;
+
+      width: 96px;
+      height: 32px;
 
       &--button {
         border-radius: 50%;
@@ -160,7 +165,12 @@
     }
 
     &-price {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+
       @include on-tablet {
+        width: 80px;
         text-align: end;
       }
     }
