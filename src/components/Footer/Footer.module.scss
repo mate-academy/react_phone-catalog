@@ -35,7 +35,7 @@
 
     @include flex-centered;
     @include use-font(700);
-  
+
     @include on-mobile {
       padding-inline: 0;
     }

@@ -1,0 +1,21 @@
+.menu {
+  // just for tests
+
+  height: 100vh;
+  background-color: gray;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: transform 0.3s;
+  transform: translateX(-100%);
+  overflow: auto;
+
+    &:target {
+    pointer-events: all;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

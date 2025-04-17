@@ -1,0 +1,41 @@
+@use '../../../../styles/mixin.scss' as *;
+@use '../../../../styles/variables.scss' as *;
+
+.banner {
+  @include on-mobile {
+    padding: 0;
+  }
+}
+
+.slider {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 20px;
+
+
+  &__content {
+    height: 400px;
+    width: 100%;
+    object-fit:fill;
+    display: block;
+
+    @include on-tablet {
+      height: 200px;
+      width: 100%;
+    }
+
+    @include on-mobile {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+    }
+  }
+}
+
+.button {
+  width: 32px;
+  border: 1px $elements solid;
+
+  @include on-mobile {
+    display: none;
+  }
+}

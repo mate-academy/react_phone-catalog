@@ -1,0 +1,29 @@
+@use '../../styles/mixin.scss' as *;
+
+.container {
+  @include container;
+}
+
+.home {
+  height: 100vh; // for tests
+
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @include use-font(800); // should be on top
+
+    width: 100%;
+    line-height: 56px;
+    font-size: 48px;
+    padding-block: 56px;
+
+    @include on-tablet {
+      padding-block: 32px;
+    }
+
+    @include on-mobile {
+      padding-block: 24px;
+    }
+  }
+}

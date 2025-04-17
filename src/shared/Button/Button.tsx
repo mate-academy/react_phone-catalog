@@ -11,7 +11,7 @@ const ICON_PATH = '../../icons/';
 
 export const Button: React.FC<Props> = ({ iconName, className }) => {
   return (
-    <a href="#" className={`${s.button} ${className || ''}`}>
+    <a href={`#${iconName}`} className={`${s.button} ${className || ''}`}>
       <img
         className={s.button__icon}
         src={ICON_PATH + iconName + '.svg'}

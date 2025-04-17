@@ -36,7 +36,6 @@
   }
 }
 
-
 .nav {
   @include flex-centered;
 
@@ -61,17 +60,41 @@
   }
 
   &__link {
+    display: inline-block;
     padding-inline: calc($gap / 3 * 2);
-    display: block;
     height: 100%;
     align-content: center;
     text-transform: uppercase;
     color: $secondary;
+    position: relative;
 
     @include use-font(800);
 
     @include on-tablet {
       padding-inline: calc($gap / 2);
+    }
+
+    & > span {
+      display: inline-block;
+      height: 100%;
+      position: relative;
+      align-items: center;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background-color: $primary;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+    }
+
+    &.isActive > span::after {
+      opacity: 1;
     }
   }
 }
@@ -102,4 +125,3 @@
     }
   }
 }
-

@@ -13,6 +13,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",
     "react-transition-group": "^4.4.5",
+    "router": "^2.2.0",
     "scss": "^0.2.4"
   },
   "devDependencies": {
