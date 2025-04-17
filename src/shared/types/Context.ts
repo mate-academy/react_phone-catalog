@@ -7,6 +7,7 @@ export type ProductsByCategory = Record<ProductCategory, Product[]>;
 export type ProductsContextType = {
   allProducts: Product[];
   productsByCategory: ProductsByCategory;
+  countsByCategory: Record<ProductCategory, number>;
   loading: boolean;
   error: string | null;
 };

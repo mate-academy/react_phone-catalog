@@ -16,7 +16,7 @@ export const Breadcrumbs: React.FC = () => {
 
       <div>
         <img
-          src="img/icons/arrow-down-light-gray.svg"
+          src="img/icons/arrow-down-dark-gray.svg"
           alt="arrow"
           className={styles.arrow}
         />
@@ -37,7 +37,7 @@ export const Breadcrumbs: React.FC = () => {
                 <Link to={`/${name}`}>{name}</Link>
                 <div>
                   <img
-                    src="img/icons/arrow-down-light-gray.svg"
+                    src="img/icons/arrow-down-dark-gray.svg"
                     alt="arrow"
                     className={styles.arrow}
                   />

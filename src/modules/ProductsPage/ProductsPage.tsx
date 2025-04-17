@@ -1,6 +1,6 @@
-import { useMemo } from 'react';
+import { useEffect } from 'react';
 
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { useProductsContext } from 'contexts/ProductsContext';
 import { NotFoundPage } from 'modules/NotFoundPage';
@@ -10,78 +10,88 @@ import { Loader } from 'shared/components/layout/Loader';
 import { ProductCard } from 'shared/components/layout/ProductCard';
 import { Breadcrumbs } from 'shared/components/ui/Breadcrumbs';
 import { ItemsPerPage, itemsPerPage } from 'shared/constants/paginationOptions';
-import { categories, ProductCategory } from 'shared/constants/productCategory';
+import { ProductCategory } from 'shared/constants/productCategory';
 import { SortOptions, sortOptions } from 'shared/constants/sortOptions';
 import { capitalize } from 'shared/helpers/capitalize';
-import { getProductsBySort } from 'shared/helpers/sorting';
-import { updateSearchParams } from 'shared/helpers/urlParams';
+import { useItemsPerPage } from 'shared/hooks/useItemsPerPage';
+import { usePagedProducts } from 'shared/hooks/usePagedProducts';
+import { useProductQueryParams } from 'shared/hooks/useProductQueryParams';
+import { useProductsByCategory } from 'shared/hooks/useProductsByCategory';
+import { useSortProducts } from 'shared/hooks/useSortProducts';
+import { useUpdateSearchParams } from 'shared/hooks/useUpdateSearchParams';
 
 import { Dropdown } from './components/Dropdown';
+import { Pagination } from './components/Pagination';
 import styles from './ProductsPage.module.scss';
 
+type Params = {
+  category: ProductCategory;
+};
+
 export const ProductsPage: React.FC = () => {
-  const { category: selectedCategory } = useParams<{
-    category: ProductCategory;
-  }>();
-  const { productsByCategory, loading, error } = useProductsContext();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const sortParam =
-    (searchParams.get('sort') as SortOptions) || SortOptions.NEWEST;
-  const itemsOnPageParam =
-    (searchParams.get('itemsOnPage') as ItemsPerPage) || ItemsPerPage.ALL;
+  const { category } = useParams<Params>();
+  const {
+    sortParam,
+    itemsOnPageParam,
+    currentPage,
+    searchParams,
+    setSearchParams,
+  } = useProductQueryParams();
+
+  const { productsByCategory, countsByCategory, loading, error } =
+    useProductsContext();
+
+  const selectedCategory = category as ProductCategory;
+
+  const isAllSelected = itemsOnPageParam === ItemsPerPage.ALL;
+  const products = useProductsByCategory(selectedCategory, productsByCategory);
+  const sortedProducts = useSortProducts(products, sortParam);
+  const perPage = useItemsPerPage(itemsOnPageParam, isAllSelected);
+  const pagedProducts = usePagedProducts(
+    currentPage,
+    isAllSelected,
+    sortedProducts,
+    perPage,
+  );
+
+  const { updateParam, updatePage } = useUpdateSearchParams(
+    searchParams,
+    setSearchParams,
+  );
 
   const handleSortBySelect = (value: string) => {
-    updateSearchParams(
-      searchParams,
-      'sort',
-      value,
-      SortOptions.NEWEST,
-      setSearchParams,
-    );
+    updateParam('sort', value, SortOptions.NEWEST);
   };
 
   const handleItemsOnPageSelect = (value: string) => {
-    updateSearchParams(
-      searchParams,
-      'itemsOnPage',
-      value,
-      ItemsPerPage.ALL,
-      setSearchParams,
-    );
+    updateParam('itemsOnPage', value, ItemsPerPage.ALL);
   };
 
-  const products = useMemo(
-    () => (selectedCategory ? productsByCategory[selectedCategory] : []),
-    [selectedCategory, productsByCategory],
-  );
+  const handleChangePage = (page: number) => {
+    updatePage(page);
+  };
 
-  const sortedProducts = useMemo(() => {
-    return getProductsBySort(products || [], sortParam);
-  }, [products, sortParam]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   if (loading) return <Loader />;
   if (error) return <Error message={error} />;
-
-  if (!categories.includes(selectedCategory as ProductCategory)) {
+  if (!productsByCategory[selectedCategory]) {
     return <NotFoundPage />;
   }
 
-  if (!products || products.length === 0) {
-    return <EmptyState category={selectedCategory as string} />;
+  if (countsByCategory[selectedCategory] === 0) {
+    return <EmptyState category={selectedCategory} />;
   }
 
   return (
     <div className={styles.catalogPage}>
       <Breadcrumbs />
-
-      <h1 className={styles.categoryTitle}>
-        {selectedCategory ? capitalize(selectedCategory) : 'Category'}
-      </h1>
-
+      <h1 className={styles.categoryTitle}>{capitalize(selectedCategory)}</h1>
       <span className={styles.numOfProducts}>
-        {`${products?.length} models`}
+        {`${countsByCategory[selectedCategory]} models`}
       </span>
-
       <div className={styles.productsControls}>
         <div className={styles.sortContainer}>
           <Dropdown
@@ -101,16 +111,22 @@ export const ProductsPage: React.FC = () => {
           />
         </div>
       </div>
-
       <div className={styles.productsList}>
-        {sortedProducts.map(product => (
+        {pagedProducts.map(product => (
           <div key={product.id} className={styles.productContainer}>
             <ProductCard product={product} showDiscount={false} />
           </div>
         ))}
       </div>
 
-      <div className={styles.pagination}></div>
+      {!isAllSelected && (
+        <Pagination
+          totalItems={countsByCategory[selectedCategory]}
+          perPage={perPage}
+          curPage={currentPage}
+          onPageChange={handleChangePage}
+        />
+      )}
     </div>
   );
 };

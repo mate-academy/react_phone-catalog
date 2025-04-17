@@ -1,0 +1,54 @@
+@use '/src/styles/globals.scss' as *;
+
+.pagination {
+  margin-top: 40px;
+
+  .paginationList {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .button {
+    cursor: pointer;
+
+    @extend %flex-center;
+    @include body-text-desktop-tablet;
+
+    flex-direction: row;
+    background-color: $color-surface2;
+    border: none;
+    height: 32px;
+    width: 32px;
+    transition: background-color 0.5s ease-in-out;
+
+    &Page {
+      background-color: $color-surface1;
+    }
+
+    &Dots {
+      background-color: $color-surface1;
+      cursor: default;
+    }
+
+    &Active {
+      background-color: $color-accent;
+    }
+
+    &Next {
+      transform: rotate(180deg);
+    }
+
+    &Disabled {
+      cursor: default;
+      background-color: $color-surface1;
+      border: 1px solid $color-elements;
+    }
+
+    &:hover {
+      background-color: $color-icons;
+    }
+  }
+}
+

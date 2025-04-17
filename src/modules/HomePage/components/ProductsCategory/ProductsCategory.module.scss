@@ -2,6 +2,7 @@
 
 .container {
   max-width: 1136px;
+  min-height: 320px;
 
   @media (max-width: $tablet-breakpoint) {
     padding: 0 24px;

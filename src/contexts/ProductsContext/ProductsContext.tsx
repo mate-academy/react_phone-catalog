@@ -1,5 +1,6 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
 
+import { ProductCategory } from 'shared/constants/productCategory';
 import { getAllProducts } from 'shared/services/services';
 import { ProductsByCategory, ProductsContextType } from 'shared/types/Context';
 import { Product } from 'shared/types/Product';
@@ -15,6 +16,7 @@ export const ProductsContext = createContext<ProductsContextType>({
     tablets: [] as Product[],
     accessories: [] as Product[],
   },
+  countsByCategory: {} as Record<ProductCategory, number>,
   loading: false,
   error: null,
 });
@@ -41,17 +43,33 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     loadProducts();
   }, []);
 
-  const productsByCategory: ProductsByCategory = useMemo(() => {
-    return {
+  const productsByCategory: ProductsByCategory = useMemo(
+    () => ({
       phones: allProducts.filter(p => p.category === 'phones'),
       tablets: allProducts.filter(p => p.category === 'tablets'),
       accessories: allProducts.filter(p => p.category === 'accessories'),
-    };
-  }, [allProducts]);
+    }),
+    [allProducts],
+  );
+
+  const countsByCategory: Record<ProductCategory, number> = useMemo(
+    () => ({
+      phones: productsByCategory.phones.length,
+      tablets: productsByCategory.tablets.length,
+      accessories: productsByCategory.accessories.length,
+    }),
+    [productsByCategory],
+  );
 
   return (
     <ProductsContext.Provider
-      value={{ allProducts, productsByCategory, loading, error }}
+      value={{
+        allProducts,
+        productsByCategory,
+        countsByCategory,
+        loading,
+        error,
+      }}
     >
       {children}
     </ProductsContext.Provider>

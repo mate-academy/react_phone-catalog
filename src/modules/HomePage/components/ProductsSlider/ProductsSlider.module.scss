@@ -5,6 +5,7 @@
 
   flex-direction: column;
   max-width: 1136px;
+  min-height: 189px;
 }
 
 .topWrapper {
@@ -63,12 +64,12 @@
   border: 1px solid $color-elements;
 
   &.sliderButtonPrev {
-    background-image: url('~/public/img/icons/arrow-down-light-gray.svg');
+    background-image: url('~/public/img/icons/arrow-down-dark-gray.svg');
     transform: rotate(90deg);
   }
 
   &.sliderButtonNext {
-    background-image: url('~/public/img/icons/arrow-down-light-gray.svg');
+    background-image: url('~/public/img/icons/arrow-down-dark-gray.svg');
     transform: rotate(-90deg);
   }
 }

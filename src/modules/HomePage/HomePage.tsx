@@ -4,7 +4,7 @@ import { useProductsContext } from 'contexts/ProductsContext';
 import { Error } from 'shared/components/layout/Error';
 import { Loader } from 'shared/components/layout/Loader';
 
-import { PicturesSlider } from './components/BannerSlider/PicturesSlider';
+import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
 import { ProductsCategory } from './components/ProductsCategory/ProductsCategory';
 import { ProductsSlider } from './components/ProductsSlider/ProductsSlider';
 import styles from './HomePage.module.scss';
