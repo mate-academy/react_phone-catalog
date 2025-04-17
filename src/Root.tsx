@@ -11,29 +11,32 @@ import { AccessoriesPage } from './pages/Accessories/AccessoriesPage';
 import { FavouritesPage } from './pages/Favourites/FavouritesPage';
 import { ProductsSwiperProvider } from './context/ProductsSwiperContext';
 import { ProductDetailsProvider } from './context/ProductDetailsContext';
+import { ProductProvider } from './context/ProductContext';
 
 export const Root = () => (
   <Router>
-    <ProductsSwiperProvider>
-      <ProductDetailsProvider>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />}></Route>
-            <Route path="home" element={<HomeRedirect />}></Route>
-            <Route path="phones" element={<PhonesPage />}>
-              <Route path=":itemId" element={<ProductDetailsPage />} />
+    <ProductProvider>
+      <ProductsSwiperProvider>
+        <ProductDetailsProvider>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<HomePage />}></Route>
+              <Route path="home" element={<HomeRedirect />}></Route>
+              <Route path="phones" element={<PhonesPage />}>
+                <Route path=":itemId" element={<ProductDetailsPage />} />
+              </Route>
+              <Route path="tablets" element={<TabletsPage />}>
+                <Route path=":itemId" element={<ProductDetailsPage />} />
+              </Route>
+              <Route path="accessories" element={<AccessoriesPage />}>
+                <Route path=":itemId" element={<ProductDetailsPage />} />
+              </Route>
+              <Route path="favourites" element={<FavouritesPage />} />
             </Route>
-            <Route path="tablets" element={<TabletsPage />}>
-              <Route path=":itemId" element={<ProductDetailsPage />} />
-            </Route>
-            <Route path="accessories" element={<AccessoriesPage />}>
-              <Route path=":itemId" element={<ProductDetailsPage />} />
-            </Route>
-            <Route path="favourites" element={<FavouritesPage />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />}></Route>
-        </Routes>
-      </ProductDetailsProvider>
-    </ProductsSwiperProvider>
+            <Route path="*" element={<NotFoundPage />}></Route>
+          </Routes>
+        </ProductDetailsProvider>
+      </ProductsSwiperProvider>
+    </ProductProvider>
   </Router>
 );

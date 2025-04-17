@@ -1,23 +1,25 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
 import styles from './ProductCatalog.module.scss';
-
-import productsList from '../../../../public/api/products.json';
-
 import { Pagination } from '../Pagination';
 import { ProductCard } from '../ProductCard';
 import { ProductSkeleton } from '../ProductSkeleton/ProductSkeleton';
-
 import ArrowRight from 'assets/icons/ArrowRight.svg?react';
-
 import { Product } from '@/types/product';
 import { sortOptionType } from '@/types/sortOptionType';
 
-export const ProductCatalog: React.FC = () => {
-  // #region State and Refs
+type Props = {
+  title: string;
+  products: Product[];
+  isLoading?: boolean;
+};
+
+export const ProductCatalog: React.FC<Props> = ({
+  title,
+  products,
+  isLoading: parentIsLoading = false,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [sortOption, setSortOption] = useState<sortOptionType>('newest');
   const [perPage, setPerPage] = useState<number>(16);
@@ -25,20 +27,14 @@ export const ProductCatalog: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
-
   const sortRef = useRef<HTMLDivElement>(null);
   const perPageRef = useRef<HTMLDivElement>(null);
-  // #endregion
 
   useEffect(() => {
-    const phones = productsList.filter(
-      product => product.category === 'phones',
-    );
-
-    setProducts(phones);
-    setFilteredProducts(phones);
-    setIsLoading(false);
-  }, []);
+    setIsLoading(true);
+    setFilteredProducts(products);
+    setIsLoading(parentIsLoading);
+  }, [products, parentIsLoading]);
 
   useEffect(() => {
     const sort = searchParams.get('sort');
@@ -46,14 +42,19 @@ export const ProductCatalog: React.FC = () => {
 
     if (sort && ['newest', 'alphabetically', 'cheapest'].includes(sort)) {
       setSortOption(sort as sortOptionType);
+    } else {
+      setSortOption('newest');
     }
 
     if (per && [4, 8, 16].includes(parseInt(per, 10))) {
       setPerPage(parseInt(per, 10));
+    } else {
+      setPerPage(16);
     }
   }, [searchParams]);
 
   useEffect(() => {
+    setIsLoading(true);
     const sorted = [...products];
 
     switch (sortOption) {
@@ -69,17 +70,16 @@ export const ProductCatalog: React.FC = () => {
         );
         break;
     }
-
     setFilteredProducts(sorted);
+    setCurrentPage(1);
+    setIsLoading(false);
   }, [sortOption, products]);
 
-  // #region Click Outside Handler
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
         setIsSortOpen(false);
       }
-
       if (
         perPageRef.current &&
         !perPageRef.current.contains(event.target as Node)
@@ -87,47 +87,49 @@ export const ProductCatalog: React.FC = () => {
         setIsPerPageOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-  // #endregion
 
-  const startIndex = (currentPage - 1) * perPage;
-  const endIndex = startIndex + perPage;
-  const currentItems = filteredProducts.slice(startIndex, endIndex);
+  const currentItems = useMemo(() => {
+    const startIndex = (currentPage - 1) * perPage;
+    const endIndex = startIndex + perPage;
+    return filteredProducts.slice(startIndex, endIndex);
+  }, [currentPage, perPage, filteredProducts]);
 
-  // #region Handlers
   const handleSortChange = (value: sortOptionType) => {
     setSortOption(value);
-    setSearchParams(prev => {
-      prev.set('sort', value);
-
-      return prev;
-    });
+    setSearchParams(
+      prev => {
+        prev.set('sort', value);
+        return prev;
+      },
+      { replace: true },
+    );
+    setCurrentPage(1);
     setIsSortOpen(false);
   };
 
   const handlePerPageChange = (value: number) => {
     setPerPage(value);
+    setSearchParams(
+      prev => {
+        prev.set('perPage', value.toString());
+        return prev;
+      },
+      { replace: true },
+    );
     setCurrentPage(1);
-    setSearchParams(prev => {
-      prev.set('perPage', value.toString());
-
-      return prev;
-    });
     setIsPerPageOpen(false);
   };
 
   const onPageChange = (page: number) => {
     setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  // #endregion
 
-  // #region Dropdown Options
   const sortOptions = [
     { value: 'newest', label: 'Newest' },
     { value: 'alphabetically', label: 'Alphabetically' },
@@ -139,11 +141,10 @@ export const ProductCatalog: React.FC = () => {
     { value: 8, label: '8' },
     { value: 16, label: '16' },
   ];
-  // #endregion
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Mobile phones</h1>
+      <h1 className={styles.title}>{title}</h1>
       <p className={styles.counterModels}>{filteredProducts.length} models</p>
 
       <div className={styles.controlsWrapper}>
@@ -156,9 +157,7 @@ export const ProductCatalog: React.FC = () => {
             >
               {sortOptions.find(opt => opt.value === sortOption)?.label}
               <ArrowRight
-                className={`${styles.selectArrow} ${
-                  isSortOpen ? styles.selectArrowOpen : ''
-                }`}
+                className={`${styles.selectArrow} ${isSortOpen ? styles.selectArrowOpen : ''}`}
               />
             </div>
             {isSortOpen && (
@@ -166,11 +165,7 @@ export const ProductCatalog: React.FC = () => {
                 {sortOptions.map(option => (
                   <li
                     key={option.value}
-                    className={`${styles.dropdownItem} ${
-                      sortOption === option.value
-                        ? styles.dropdownItemSelected
-                        : ''
-                    }`}
+                    className={`${styles.dropdownItem} ${sortOption === option.value ? styles.dropdownItemSelected : ''}`}
                     onClick={() =>
                       handleSortChange(option.value as sortOptionType)
                     }
@@ -191,9 +186,7 @@ export const ProductCatalog: React.FC = () => {
             >
               {perPage}
               <ArrowRight
-                className={`${styles.selectArrow} ${
-                  isPerPageOpen ? styles.selectArrowOpen : ''
-                }`}
+                className={`${styles.selectArrow} ${isPerPageOpen ? styles.selectArrowOpen : ''}`}
               />
             </div>
             {isPerPageOpen && (
@@ -201,11 +194,7 @@ export const ProductCatalog: React.FC = () => {
                 {perPageOptions.map(option => (
                   <li
                     key={option.value}
-                    className={`${styles.dropdownItem} ${
-                      perPage === option.value
-                        ? styles.dropdownItemSelected
-                        : ''
-                    }`}
+                    className={`${styles.dropdownItem} ${perPage === option.value ? styles.dropdownItemSelected : ''}`}
                     onClick={() => handlePerPageChange(option.value)}
                   >
                     {option.label}
@@ -220,7 +209,9 @@ export const ProductCatalog: React.FC = () => {
       <div className={styles.productGridContainer}>
         {isLoading ? (
           Array.from({ length: perPage }).map((_, index) => (
-            <ProductSkeleton key={index} />
+            <div key={index} className={styles.productItem}>
+              <ProductSkeleton />
+            </div>
           ))
         ) : currentItems.length > 0 ? (
           currentItems.map(product => (
@@ -229,16 +220,18 @@ export const ProductCatalog: React.FC = () => {
             </div>
           ))
         ) : (
-          <p>No products available</p>
+          <p>No products found for this category</p>
         )}
       </div>
 
-      <Pagination
-        total={filteredProducts.length}
-        perPage={perPage}
-        currentPage={currentPage}
-        onPageChange={onPageChange}
-      />
+      {!isLoading && filteredProducts.length > perPage && (
+        <Pagination
+          total={filteredProducts.length}
+          perPage={perPage}
+          currentPage={currentPage}
+          onPageChange={onPageChange}
+        />
+      )}
     </div>
   );
 };

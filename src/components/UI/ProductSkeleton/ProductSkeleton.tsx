@@ -5,7 +5,7 @@ import styles from './ProductSkeleton.module.scss';
 
 export const ProductSkeleton: React.FC = () => {
   return (
-    <SkeletonTheme baseColor="#1f2937" highlightColor="#374151">
+    <SkeletonTheme baseColor="#0F1121" highlightColor="#232336">
       <div className={styles.productCard}>
         <Skeleton className={styles.productImage} />
         <Skeleton className={styles.productName} />
