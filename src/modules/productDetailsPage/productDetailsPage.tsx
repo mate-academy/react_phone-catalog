@@ -225,7 +225,7 @@ export const ProductDetailsPage = () => {
       <div className="cardImg">
         <div className="cardImg__box">
           <img
-            src={`${process.env.PUBLIC_URL}/${selectedImage}`}
+            src={`/${selectedImage}`}
             alt="ProductImage"
             className="cardImg__box--img"
           />

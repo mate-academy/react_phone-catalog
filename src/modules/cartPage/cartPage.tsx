@@ -91,7 +91,7 @@ export const CartPage = () => {
                 <div className="card__details--box">
                   <img
                     className="card__details--box--img"
-                    src={`${process.env.PUBLIC_URL}/${product.image}`}
+                    src={`/${product.image}`}
                     alt="Image Product"
                   />
                 </div>

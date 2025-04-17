@@ -21,11 +21,17 @@ export const ProductCard = ({
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
   };
 
+  const isGitHubPages = window.location.hostname === 'renatoveludo.github.io';
+
   return (
     <div className="productCard" key={product.id}>
       <div className="productCard__box">
         <img
-          src={`${process.env.PUBLIC_URL}/${product.image}`}
+          src={
+            isGitHubPages
+              ? `/react_phone-catalog/${product.image}`
+              : `${product.image}`
+          }
           alt={product.name}
           onClick={() => handleProductClick(product.itemId)}
           style={{ cursor: 'pointer' }}
