@@ -1,0 +1,183 @@
+@use '../../../styles/utils/' as u;
+
+.container {
+  @include u.padding-inline;
+
+  @include u.on-desktop {
+    padding-inline: 32px;
+  }
+
+  margin-top: 24px;
+  margin-bottom: 64px;
+}
+
+.title {
+  margin-bottom: 8px;
+
+  font-size: 32px;
+  line-height: 41px;
+  color: u.$white;
+  letter-spacing: -1%;
+}
+
+.counterModels {
+  margin-bottom: 32px;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: u.$secondary;
+  letter-spacing: 0%;
+}
+
+.controlsWrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.sortContainer,
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sortDescription,
+.filterDescription {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: u.$secondary;
+}
+
+.selectWrapper {
+  position: relative;
+  display: flex;
+  width: 136px;
+  margin-bottom: 24px;
+}
+
+.controlSelect {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: u.$white;
+
+  background-color: u.$surface-2;
+
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    background-color: u.$surface-2;
+  }
+
+  &:focus-within {
+    border: 1px solid u.$accent;
+  }
+}
+
+.selectArrow {
+  transform: rotate(90deg);
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+
+  path {
+    fill: u.$secondary;
+  }
+}
+
+.selectArrowOpen {
+  transform: rotate(270deg);
+}
+
+.dropdownList {
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  right: 0;
+  left: 0;
+
+  overflow-y: auto;
+
+  max-height: 144px;
+  margin-top: 4px;
+  padding: 8px 0;
+  border: 1px solid u.$elements;
+  border-radius: 4px;
+
+  list-style: none;
+
+  background-color: u.$black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdownItem {
+  cursor: pointer;
+
+  padding: 6px 12px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: u.$secondary;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    color: u.$white;
+    background-color: u.$surface-2;
+  }
+}
+
+.dropdownItemSelected {
+  font-weight: 700;
+  background-color: u.$surface-1;
+}
+
+.productGridContainer {
+  @include u.page-grid;
+
+  gap: 40px;
+  margin-bottom: 24px;
+
+  @include u.on-tablet {
+    gap: 16px;
+    row-gap: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.productItem {
+  display: flex;
+  grid-column: span 4;
+  justify-content: center;
+  width: 100%;
+
+  @include u.on-tablet {
+    grid-column: span 6;
+  }
+
+  @media (min-width: 768px) {
+    grid-column: span 4;
+  }
+
+  @include u.on-desktop {
+    grid-column: span 6;
+  }
+}

@@ -1,0 +1,61 @@
+@use '../../../styles/utils/' as u;
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  list-style: none;
+}
+.pageLink {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 1px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: u.$white;
+  text-decoration: none;
+  letter-spacing: 0%;
+
+  background-color: u.$surface-1;
+
+  &:hover:not(.disabled) {
+    background-color: u.$elements;
+  }
+}
+
+.pageItem {
+  &.disabled {
+    pointer-events: none;
+    border: 1px solid u.$elements;
+    background-color: transparent;
+
+    path {
+      fill: u.$icons;
+    }
+  }
+
+  &.active {
+    .pageLink {
+      color: u.$white;
+      background-color: u.$accent;
+    }
+  }
+}
+
+.pageLinkNavBtn {
+  background-color: u.$surface-2;
+}
+

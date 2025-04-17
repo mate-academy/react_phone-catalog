@@ -1,0 +1,14 @@
+@use "styles/utils" as u;
+
+.app {
+  min-height: 100vh;
+  background-color: u.$black;
+}
+
+// .mainContent {
+//   padding-top: 48px;
+
+//   @include u.on-desktop {
+//     padding-top: 64px;
+//   }
+// }
