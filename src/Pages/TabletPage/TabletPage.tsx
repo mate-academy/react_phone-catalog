@@ -115,7 +115,7 @@ export const TabletPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Tablets</p>
@@ -139,7 +139,7 @@ export const TabletPage = () => {
           currentItems.map(tablet => (
             <div key={tablet.id} className="tablets__card">
               <img
-                src={tablet.images[0]}
+                src={'/' + tablet.images[0]}
                 alt={tablet.name}
                 className="tablets__card-image"
                 onError={e =>

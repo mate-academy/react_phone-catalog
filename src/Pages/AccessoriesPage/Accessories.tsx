@@ -127,7 +127,7 @@ export const AccessoriesPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Accessories</p>
@@ -153,7 +153,7 @@ export const AccessoriesPage = () => {
           currentItems.map(accessory => (
             <div key={accessory.id} className="accessories__card">
               <img
-                src={accessory.images[0]}
+                src={'/' + accessory.images[0]}
                 alt={accessory.name}
                 className="accessories__card-image"
                 onError={e =>

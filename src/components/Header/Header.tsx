@@ -44,12 +44,20 @@ export const Header = () => {
           </div>
 
           <div className="header__packet">
-            <button className="header__packet__top" onClick={handlePacketClick}>
-              {/* Кількість товарів */}
+            <a
+              href="#"
+              className="header__packet__top"
+              onClick={handlePacketClick}
+            >
+              <img
+                src="/figmaLogo/Packet.svg"
+                alt="Packet icon"
+                className="header__packet__top__btn"
+              />
               {cart.length > 0 && (
                 <span className="cart-count">{cart.length}</span>
               )}
-            </button>
+            </a>
           </div>
         </div>
       </div>

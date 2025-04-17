@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Phone, Tablet, Accessories } from '../../Interface';
 import './ProductDetailsPage.scss';
@@ -7,6 +7,7 @@ import './ProductDetailsPage.scss';
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const [product, setProduct] = useState<Phone | Tablet | Accessories | null>(
     null,
@@ -20,7 +21,7 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     if (product?.images?.[0]) {
-      setSelectedImage(product.images[0]);
+      setSelectedImage('/' + product.images[0]);
     }
   }, [product]);
 
@@ -59,11 +60,7 @@ export const ProductDetailsPage = () => {
           params.set('capacity', found.capacityAvailable[0]);
         }
 
-        window.history.replaceState(
-          {},
-          '',
-          `${window.location.pathname}?${params}`,
-        );
+        window.history.replaceState({}, '', `${pathname}?${params}`);
       } else {
         setProduct(null);
       }
@@ -151,7 +148,7 @@ export const ProductDetailsPage = () => {
             {product?.images?.map((image, index) => (
               <img
                 key={index}
-                src={image}
+                src={'/' + image}
                 alt={`${product.name} thumbnail ${index + 1}`}
                 className={`thumbnail ${selectedImage === image ? 'thumbnail--active' : ''}`}
                 onClick={() => setSelectedImage(image)}
@@ -172,7 +169,7 @@ export const ProductDetailsPage = () => {
                   onClick={() => handleColorChange(color)}
                   aria-label={`Select ${color} color`}
                   aria-selected={selectedColor === color}
-                ></button>
+                />
               ))}
             </div>
           </div>

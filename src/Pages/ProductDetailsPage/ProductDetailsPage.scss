@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap';
+
 
 :root {
   --primary-color: #0057ff;
-  --text-color: #ffffff;
+  --text-color: #fff;
   --text-muted: #d1d1d1;
   --background: #1f1f2b;
   --card-bg: #2a2a2a;
@@ -14,7 +15,8 @@
   margin: 0 auto;
   background-color: var(--background);
   color: var(--text-color);
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
+
 
   &__title {
     font-size: 36px;
@@ -174,8 +176,7 @@
 
     @media (max-width: 768px) {
       flex-direction: row;
-      overflow-x: auto;
-      overflow-y: hidden;
+      overflow: auto;
       max-height: none;
       gap: 8px;
     }
@@ -228,12 +229,12 @@
     cursor: pointer;
     transition: border-color 0.3s, transform 0.2s;
 
-    &--black { background-color: #000000; }
+    &--black { background-color: #000; }
     &--green { background-color: #006400; }
-    &--yellow { background-color: #ffff00; }
-    &--white { background-color: #ffffff; }
+    &--yellow { background-color: #ff0; }
+    &--white { background-color: #fff; }
     &--purple { background-color: #800080; }
-    &--red { background-color: #ff0000; }
+    &--red { background-color: #f00; }
 
     &[aria-selected='true'] {
       border-color: #fff;
@@ -366,8 +367,7 @@
 
     .gallery__thumbnails {
       flex-direction: row;
-      overflow-x: auto;
-      overflow-y: hidden;
+      overflow: auto;
       max-height: none;
       gap: 8px;
     }

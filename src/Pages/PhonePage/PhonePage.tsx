@@ -125,7 +125,7 @@ export const PhonePage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Phones</p>
@@ -155,7 +155,7 @@ export const PhonePage = () => {
               className="phone__card"
             >
               <img
-                src={phone.images[0]}
+                src={'/' + phone.images[0]}
                 alt={phone.name}
                 className="phone__card-image"
                 onError={e =>

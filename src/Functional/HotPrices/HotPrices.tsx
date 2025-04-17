@@ -107,7 +107,7 @@ export default function HotPrices() {
           {phones.slice(20, 28).map(phone => (
             <SwiperSlide key={phone.id} className="brand__card">
               <img
-                src={phone.images[0]}
+                src={'/' + phone.images[0]}
                 alt={phone.name}
                 className="brand__card-image"
                 onError={e =>

@@ -56,6 +56,7 @@
         width: 210px;
         height: 200px;
       }
+
       @include on-desktop {
         top: 80px;
         width: 302px;
@@ -99,6 +100,7 @@
         width: 210px;
         height: 200px;
       }
+
       @include on-desktop {
         top: 45px;
         width: 402px;
@@ -119,6 +121,7 @@
       width: 187px;
       height: 187px;
     }
+
       @include on-desktop {
       width: 368px;
       height: 368px;
@@ -147,7 +150,7 @@
       @include on-desktop {
         width: 670px;
         height: 430px;
-        top: 0px;
+        top: 0;
         right: -330px;
       }
     }
