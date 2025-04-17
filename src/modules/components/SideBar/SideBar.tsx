@@ -24,7 +24,7 @@ export const SideBar: FC<Props> = ({ links, burgerOpen }) => {
 
   return (
     <aside
-      className={`${styles.sidebar} ${burgerOpen ? styles['sidebar__menu--open'] : ''}`}
+      className={`${styles.sidebar} ${burgerOpen ? styles['sidebar--open'] : ''}`}
     >
       <nav
         className={`${styles.sidebar__nav} ${

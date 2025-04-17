@@ -46,7 +46,7 @@ export const Header = () => {
         </div>
       </div>
 
-      {burgerOpen && <SideBar links={links} burgerOpen={burgerOpen} />}
+      <SideBar links={links} burgerOpen={burgerOpen} />
     </header>
   );
 };
