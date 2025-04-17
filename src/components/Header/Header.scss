@@ -96,6 +96,7 @@
     cursor: pointer;
     padding: 30px;
 
+
     @include on-phone {
       display: none;
     }
@@ -121,6 +122,8 @@
 
 
 &__packet {
+  position: relative;
+
   &__top {
     display: flex;
     width: 24px;
@@ -135,16 +138,17 @@
 
 }
 
-.nav__link {
+.navbar-item {
   color: #75767F;
-  margin: 0 8px;
+  margin: 0 12px;
   cursor: pointer;
   position: relative;
   text-decoration: none;
   font-weight: 700;
   text-transform: uppercase;
-  display: inline-block;
   padding-bottom: 4px;
+  transition: color 0.2s ease;
+
   &::after {
     content: "";
     position: absolute;
@@ -152,16 +156,34 @@
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: white;
-    transition: width 0.07s ease-in-out;
+    background-color: #fff;
+    transition: width 0.5s ease-in-out;
   }
 
-  &:active {
-    color: white;
-  }
+  &:hover {
+    color: #fff;
 
-  &:active::after,
-  &:focus::after {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.is-active {
+  color: #fff;
+
+  &::after {
     width: 100%;
   }
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
 }

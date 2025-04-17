@@ -1,17 +1,25 @@
+/* eslint-disable max-len */
+import { Route, Routes } from 'react-router-dom';
 import './App.scss';
+import { AccessoriesPage } from './Pages/AccessoriesPage/Accessories';
+import { HomePage } from './Pages/HomePage/HomePage';
+import { PhonePage } from './Pages/PhonePage/PhonePage';
+import { TabletPage } from './Pages/TabletPage/TabletPage';
+import { Layout } from './components/Header/Layout';
 import { Aside } from './components/Aside/Aside';
-import { Footer } from './components/Footer/Footer';
-import { Header } from './components/Header/Header';
-import { Main } from './components/Main/Main';
+import { ProductDetailsPage } from './Pages/ProductDetailsPage/ProductDetailsPage';
 
 export const App = () => {
   return (
-    <div>
-      <h1 className="visually-hidden">Product Catalog</h1>
-      <Header />
-      <Aside />
-      <Main />
-      <Footer />
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/menu" element={<Aside />} />
+        <Route path="/phones" element={<PhonePage />} />
+        <Route path="/tablets" element={<TabletPage />} />
+        <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route path="/products/:productId" element={<ProductDetailsPage />} />
+      </Routes>
+    </Layout>
   );
 };

@@ -2,21 +2,47 @@
 
 .section {
   position: relative;
+
+  @include padding-inline--category;
+
+  &__text {
+    color: white;
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: 800;
+  }
+
+  &__top-bar {
+    max-width: 400px;
+  }
 }
 
-.brand {
 
-@include padding-inline;
+.tablets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  gap: 24px;
+  margin-top: 56px;
+
+  @include on-phone {
+  justify-items: center;
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    gap: 24px;
+  }
 
 
-@include on-tablet {
-  height: 577px;
-}
-
-@include on-desktop {
-height: 571px;
-}
-
+  &__card-spec {
+    display: flex;
+    justify-content: space-between;
+  }
 
 
 
@@ -63,7 +89,7 @@ height: 571px;
   border-radius: 10px;
   padding: 8px;
   width: 212px;
-  height: 439px;
+  min-height: 439px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -111,24 +137,22 @@ height: 571px;
   text-decoration: line-through;
 }
 
-&__card-spec {
+&__card-specs {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 8px;
+  margin-bottom: 16px;
+  flex-grow: 1;
 }
 
 &__card-actions {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 20px;
-
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
   gap: 10px;
   padding: 0 16px;
 }
+
 &__card-btn {
   display: flex;
   align-items: center;
@@ -185,10 +209,14 @@ height: 571px;
   color: white;
 }
 
+
+&__no-results {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  padding: 40px 0;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  height: 32px;
-  width: 32px;
 }

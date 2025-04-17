@@ -28,3 +28,16 @@
     padding: 50px 120px;
   }
 }
+
+
+@mixin padding-inline--category {
+  padding: 16px;
+
+  @include on-tablet() {
+    padding: 0 24px;
+  }
+
+  @include on-desktop() {
+    padding: 0 120px;
+  }
+}

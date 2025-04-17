@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { MainSlider } from './MainSlider';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,11 +14,14 @@ const images = [
 ];
 
 export default function SliderSwiper() {
+  const { handlePrevSlide, handleNextSlide, onSwiperInit } = MainSlider();
+
   return (
     <div className="swiper--top">
       <div className="swiper--top__conteiner">
-        <button className="swiper--top-button-prev">{'<'}</button>
-        <button className="swiper--top-button-next">{'>'}</button>
+        <button className="swiper--top-button-prev" onClick={handlePrevSlide}>
+          {'<'}
+        </button>
 
         <Swiper
           modules={[Autoplay, Navigation, Pagination]}
@@ -27,10 +31,11 @@ export default function SliderSwiper() {
             nextEl: '.swiper--top-button-next',
             prevEl: '.swiper--top-button-prev',
           }}
-          // autoplay={{ delay: 5000, disableOnInteraction: false }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           effect="fade"
           className="swiper--top__images"
+          onSwiper={onSwiperInit}
         >
           {images.map((image, index) => (
             <SwiperSlide key={index}>
@@ -42,6 +47,9 @@ export default function SliderSwiper() {
             </SwiperSlide>
           ))}
         </Swiper>
+        <button className="swiper--top-button-next" onClick={handleNextSlide}>
+          {'>'}
+        </button>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Aside.scss';
 
 export const Aside = () => {
@@ -13,18 +14,18 @@ export const Aside = () => {
       </div>
       <div className="menu__content">
         <nav className="menu__nav">
-          <a href="#" className="nav__link--phone">
-            HOME
-          </a>
-          <a href="#" className="nav__link--phone">
-            PHONES
-          </a>
-          <a href="#" className="nav__link--phone">
-            TABLETS
-          </a>
-          <a href="#" className="nav__link--phone">
-            ACCESSORIES
-          </a>
+          <Link to="/">
+            <div className="nav__link--phone">HOME</div>
+          </Link>
+          <Link to="/phones">
+            <div className="nav__link--phone">PHONES</div>
+          </Link>
+          <Link to="/tablets">
+            <div className="nav__link--phone">TABLETS</div>
+          </Link>
+          <Link to="/accessories">
+            <div className="nav__link--phone">ACCESSORIES</div>
+          </Link>
         </nav>
       </div>
       <div className="menu__footer">
