@@ -17,8 +17,10 @@ import { CartPage } from './modules/cartPage';
 export const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const isGitHubPages = window.location.hostname === 'renatoveludo.github.io';
+
   return (
-    <Router>
+    <Router basename={isGitHubPages ? '/react_phone-catalog' : ''}>
       <CartProvider>
         <FavoritesProvider>
           <h1 className="productCatalog">Product Catalog</h1>
