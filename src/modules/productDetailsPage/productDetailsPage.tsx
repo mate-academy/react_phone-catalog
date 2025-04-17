@@ -170,6 +170,8 @@ export const ProductDetailsPage = () => {
     navigate(-1);
   };
 
+  const isGitHubPages = window.location.hostname === 'renatoveludo.github.io';
+
   return (
     <div className="container">
       <div className="cardHeader">
@@ -225,7 +227,11 @@ export const ProductDetailsPage = () => {
       <div className="cardImg">
         <div className="cardImg__box">
           <img
-            src={`/${selectedImage}`}
+            src={
+              isGitHubPages
+                ? `/react_phone-catalog/${selectedImage}`
+                : `/${selectedImage}`
+            }
             alt="ProductImage"
             className="cardImg__box--img"
           />
@@ -239,7 +245,9 @@ export const ProductDetailsPage = () => {
             key={index}
           >
             <img
-              src={`../public/${image}`}
+              src={
+                isGitHubPages ? `/react_phone-catalog/${image}` : `/${image}`
+              }
               alt={`Product image ${index + 1}`}
               className="cardPhotos__box--img"
             />

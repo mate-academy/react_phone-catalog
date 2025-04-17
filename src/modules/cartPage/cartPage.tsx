@@ -56,6 +56,8 @@ export const CartPage = () => {
     navigate(-1);
   };
 
+  const isGitHubPages = window.location.hostname === 'renatoveludo.github.io';
+
   return (
     <div className="container">
       <div className="cartPage">
@@ -91,7 +93,11 @@ export const CartPage = () => {
                 <div className="card__details--box">
                   <img
                     className="card__details--box--img"
-                    src={`/${product.image}`}
+                    src={
+                      isGitHubPages
+                        ? `/react_phone-catalog/${product.image}`
+                        : product.image
+                    }
                     alt="Image Product"
                   />
                 </div>
