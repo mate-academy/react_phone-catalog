@@ -30,7 +30,7 @@ export const ProductCard = ({
           src={
             isGitHubPages
               ? `/react_phone-catalog/${product.image}`
-              : `${product.image}`
+              : product.image
           }
           alt={product.name}
           onClick={() => handleProductClick(product.itemId)}
