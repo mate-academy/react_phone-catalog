@@ -6,10 +6,12 @@ import {
 } from '@reduxjs/toolkit';
 import products from '../features/ProductsSlice/ProductsSlice';
 import crumbs from '../features/CrumbsSlice/CrumbsSlice';
+import productDetails from '../features/ProductDetailsSlice/ProductDetailsSlice';
 
 const rootReducer = combineSlices({
   products: products,
   crumbs: crumbs,
+  productDetails: productDetails,
 });
 
 export const store = configureStore({

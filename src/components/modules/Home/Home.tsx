@@ -14,19 +14,17 @@ import accessories from '../../../../public/img/accessories.png';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../shared/Routs/Routs';
 import { useProductNumbers } from '../../../utils/customHooks';
+import { Skeleton } from '../../shared/Skeleton/Skeleton';
+import { PageNotFound } from '../PageNotFound/PageNotFound';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
 
-  const isLoading = useAppSelector(state => state.products.loading);
+  const { loading, error, products } = useAppSelector(state => state.products);
 
-  const hotPrices = useAppSelector(state => state.products.products)
-    .toSorted((a , b) => a.price - b.price)
-    .slice(0, 20);
+  const hotPrices = products.toSorted((a, b) => a.price - b.price).slice(0, 20);
 
-  const newModels = useAppSelector(state => state.products.products)
-  .toSorted((a, b) => b.year - a.year)
-  .slice(0, 20);
+  const newModels = products.toSorted((a, b) => b.year - a.year).slice(0, 20);
 
   const navigate = useNavigate();
 
@@ -36,12 +34,20 @@ export const Home = () => {
     dispatch(loadProducts());
   }, []);
 
+  if (loading) {
+    return <Skeleton page="home" />;
+  }
+
+  if (error) {
+    return <PageNotFound />;
+  }
+
   return (
     <div className="home">
       <h1 className="home__h1">Welcome to Nice Gadgets store!</h1>
 
       <div className="home__swiper">
-        <CustomSwiper page='home' />
+        <CustomSwiper page="home" />
       </div>
 
       <div className="home__new-models">
