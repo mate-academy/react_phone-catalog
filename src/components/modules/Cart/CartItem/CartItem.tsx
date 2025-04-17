@@ -4,23 +4,30 @@ import React, { useContext } from 'react';
 
 import { LocalStorageContext } from '../../../../app/Contexts/LocalStorageContext';
 import { Product } from '../../../../types/Product';
-
+import { useCustomNavigation } from '../../../../utils/customHooks';
 
 type Props = {
   item: Product;
 };
 
 export const CartItem: React.FC<Props> = ({ item }) => {
-  const { image, name, fullPrice, price } = item;
+  const { image, name, fullPrice, price, itemId } = item;
   const quantity = item.quantity || 1;
-  const { addToCart, deleteFromCart, updateCart } = useContext(LocalStorageContext);
+  const { addToCart, deleteFromCart, updateCart } =
+    useContext(LocalStorageContext);
+  const { doNavigation } = useCustomNavigation();
 
   return (
-    <div className="cart__item item">
+    <div
+      className="cart__item item"
+      onClick={() => doNavigation({ newProductId: itemId })}
+    >
       <div className="item__presentation">
         <svg
           className="item__remove"
-          onClick={() => updateCart(item)}
+          onClick={e => {
+            e.stopPropagation(), updateCart(item);
+          }}
           width="16"
           height="16"
           viewBox="0 0 16 16"
@@ -44,8 +51,10 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <div className="item__toolbox toolbox">
           <button
             disabled={quantity === 1}
-            className='toolbox__tool toolbox__tool--delete'
-            onClick={() => deleteFromCart(item)}
+            className="toolbox__tool toolbox__tool--delete"
+            onClick={e => {
+              e.stopPropagation(), deleteFromCart(item);
+            }}
           >
             <svg
               width="16"
@@ -69,7 +78,9 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
           <button
             className="toolbox__tool toolbox__tool--add"
-            onClick={() => addToCart(item)}
+            onClick={e => {
+              e.stopPropagation(), addToCart(item);
+            }}
           >
             <svg
               width="16"

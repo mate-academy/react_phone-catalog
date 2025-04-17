@@ -4,9 +4,9 @@ interface Routes {
 
 export const routes: Routes = {
   home: '/',
-  phones: '/phones',
-  tablets: '/tablets',
-  accessories: '/accessories',
-  cart: '/cart',
-  fav: '/favorites',
+  phones: 'phones',
+  tablets: 'tablets',
+  accessories: 'accessories',
+  cart: 'cart',
+  fav: 'favorites',
 };

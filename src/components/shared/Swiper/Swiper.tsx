@@ -8,14 +8,15 @@ import 'swiper/swiper-bundle.css';
 import './Swiper.style.scss';
 
 import { getBanners, Banner } from '../../../api/fetchBanners';
+import { Page } from '../../../types/Page';
 
 type Props = {
-  page: 'homePage' | 'productDetailsPage';
+  page: Page;
   thumbs?: string[];
 };
 
 export const CustomSwiper: React.FC<Props> = ({ page, thumbs }) => {
-  if (page === 'homePage') {
+  if (page === 'home') {
     const [banners, setBanners] = useState<Banner[]>([]);
 
     useEffect(() => {
@@ -50,7 +51,7 @@ export const CustomSwiper: React.FC<Props> = ({ page, thumbs }) => {
     );
   }
 
-  if (page === 'productDetailsPage' && thumbs) {
+  if (page === 'productDetails' && thumbs) {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
     return (

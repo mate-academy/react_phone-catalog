@@ -1,15 +1,26 @@
 import './Breadcrumbs.style.scss';
 
 import classNames from 'classnames';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { routes } from '../Routs/Routs';
-import { useAppSelector } from '../../../app/hooks';
-
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useEffect } from 'react';
+import { resetCrumbs } from '../../../features/CrumbsSlice/CrumbsSlice';
 
 export const Breadcrumbs = () => {
   const navigate = useNavigate();
-
+  const dispatch = useAppDispatch();
   const breadcrumbs = useAppSelector(state => state.crumbs.crumbs);
+  const { pathname } = useLocation();
+
+  const parsedLocation = pathname
+    .split('/')
+    .map(path => path.replace(/[^a-zA-Zа-яА-ЯіІїЇєЄ0-9 ]+/g, ' ').trim())
+    .filter(path => path.length > 0);
+
+  useEffect(() => {
+    dispatch(resetCrumbs(parsedLocation));
+  }, [pathname]);
 
   return (
     <div className="breadcrumbs">

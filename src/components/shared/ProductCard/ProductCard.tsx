@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Product } from '../../../types/Product';
 
 import { ProductCardInfo } from './ProductCardInfo/ProductCardInfo';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useCustomNavigation } from '../../../utils/customHooks';
 
 type ProductCardProps = {
   product: Product;
@@ -17,17 +17,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   slider,
 }) => {
-  const { image, name, itemId, category } = product;
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const navToProductPage = () => {
-    navigate(`/${category}/${itemId}`, { state: { from: location.pathname } });
-  };
+  const { image, name, itemId } = product;
+  const { doNavigation } = useCustomNavigation();
 
   return (
     <div
-      onClick={navToProductPage}
+      onClick={() => doNavigation({ newProductId: itemId })}
       className={classNames('product product-card', {
         'product product-card--slider': slider,
       })}

@@ -157,8 +157,23 @@
         &--midnight {
           background-color: #5f7170;
         }
+        &--spaceblack{
+          background-color: #4c4c4c;
+        }
         &--black {
           background-color: #4c4c4c;
+        }
+        &--graphite{
+          background-color: rgba(98, 91, 91, 0.811);
+        }
+        &--space-gray, &--spacegray {
+          background-color: #5f7170;
+        }
+        &--silver {
+          background-color: silver;
+        }
+        &--midnightgreen {
+          background-color: rgb(58, 75, 58);
         }
         &--green {
           background-color: aquamarine;
@@ -166,29 +181,26 @@
         &--blue {
           background-color: cornflowerblue;
         }
-        &--yellow {
-          background-color: rgb(253, 243, 109);
-        }
-        &--white {
-          background-color: #f0f0f0;
+        &--sierrablue {
+          background-color: rgb(163, 190, 239);
         }
         &--purple {
           background-color: rgb(209, 171, 245);
         }
-        &--red {
-          background-color: crimson;
+        &--white {
+          background-color: #f0f0f0;
         }
-        &--space-gray {
-          background-color: #5f7170;
-        }
-        &--spacegray {
-          background-color: #5f7170;
-        }
-        &--silver {
-          background-color: silver;
+        &--yellow {
+          background-color: rgb(253, 243, 109);
         }
         &--gold {
           background-color: #fcdbc1;
+        }
+        &--red {
+          background-color: crimson;
+        }
+        &--pink, &--rosegold {
+          background-color: pink;
         }
       }
 

@@ -1,10 +1,20 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { SearchParams } from '../types/SearchParams';
-import { useAppSelector } from "../app/hooks";
+import { useAppSelector } from '../app/hooks';
+import { createId } from './helpers';
+import { ShopItem } from '../types/ShopItem';
 
 export interface ProductNumber {
   [key: string]: number;
+}
+
+export interface NavigationParams {
+  product: ShopItem;
+  namespaceId: string;
+  capacity: string;
+  color: string;
+  newProductId: string;
 }
 
 export function useLocaleStorage<T>(
@@ -96,4 +106,38 @@ export const useProductNumbers = (): ProductNumber => {
     tablets: products.filter(p => p.category === 'tablets').length,
     accessories: products.filter(p => p.category === 'accessories').length,
   };
+};
+
+export const useCustomNavigation = () => {
+  const navigate = useNavigate();
+  const currentPath = useLocation().pathname;
+  const { id: currentProductId} = useParams();
+
+  const doNavigation = (params: Partial<NavigationParams>) => {
+    const { product, newProductId } = params;
+    const {
+      namespaceId = product?.namespaceId,
+      capacity = product?.capacity,
+      color = product?.color,
+    } = params;
+
+    if (namespaceId && capacity && color) {
+      const newId = createId(namespaceId, capacity, color);
+
+      if (newId !== currentProductId) {
+        navigate(`../${newId}`, { replace: true });
+      }
+    } else if (
+      currentProductId &&
+      newProductId &&
+      newProductId !== currentProductId
+    ) {
+      const newPath = currentPath.replace(currentProductId, newProductId);
+      navigate(`${newPath}`);
+    } else {
+      navigate(`${newProductId}`);
+    }
+  };
+
+  return {doNavigation};
 };

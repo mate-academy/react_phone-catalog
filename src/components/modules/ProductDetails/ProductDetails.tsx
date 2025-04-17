@@ -1,11 +1,13 @@
 import './ProductDetails.style.scss';
 
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import classNames from 'classnames';
 
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
-import { resetCrumbs } from '../../../features/CrumbsSlice/CrumbsSlice';
+import { loadProducts } from '../../../features/ProductsSlice/ProductsSlice';
+
 import { getProduct } from '../../../api/fetchProducts';
 
 import { Breadcrumbs } from '../../shared/Breadcrumbs/Breadcrumbs';
@@ -14,12 +16,11 @@ import { Slider } from '../../shared/Slider/Slider';
 import { ProductPrice } from '../../shared/ProductCard/ProductPrice/ProductPrice';
 import { ProductTechSpecs } from '../../shared/ProductCard/ProductTechSpecs/ProductTechSpec';
 import { ProductCardButtons } from '../../shared/ProductCard/ProductCardButtons/ProductCardButtons';
+import { CustomSwiper } from '../../shared/Swiper/Swiper';
 
 import { ShopItem } from '../../../types/ShopItem';
-import classNames from 'classnames';
-import { createId } from '../../../utils/helpers';
-import { CustomSwiper } from '../../shared/Swiper/Swiper';
-import { loadProducts } from '../../../features/ProductsSlice/ProductsSlice';
+import { useCustomNavigation } from '../../../utils/customHooks';
+import { PageNotFound } from '../PageNotFound/PageNotFound';
 
 export const ProductDetails = () => {
   const dispatch = useAppDispatch();
@@ -27,15 +28,11 @@ export const ProductDetails = () => {
   const allProducts = useAppSelector(state => state.products.products);
   const recommendations = allProducts.slice(0, 20);
 
-  const location = useLocation()
-    .pathname.split('/')
-    .map(path => path.split('-').join(' ').trim())
-    .filter(path => path.length > 0);
   const { id: productId } = useParams();
   const [product, setProduct] = useState<ShopItem>();
   const [productColor, setProductColor] = useState<string>();
   const [productCapacity, setProductCapacity] = useState<string>();
-  const navigate = useNavigate();
+  const { doNavigation } = useCustomNavigation();
 
   const shortTechSpecs = {
     screen: product?.screen,
@@ -51,29 +48,7 @@ export const ProductDetails = () => {
     cell: product?.cell || 'not applicable',
   };
 
-  const handleChoice = (
-    choice: Partial<{
-      namespaceId: string;
-      capacity: string;
-      color: string;
-    }> = {},
-  ) => {
-    const {
-      namespaceId = product?.namespaceId,
-      capacity = product?.capacity,
-      color = product?.color,
-    } = choice;
-
-    if (namespaceId && capacity && color) {
-      const newId = createId(namespaceId, capacity, color);
-
-      if (newId !== productId) {
-        navigate(`../${newId}`, { replace: true });
-      }
-    }
-  };
-
-  const findProduct = async () => {
+  const fetchProduct = async () => {
     const product = allProducts.find(product => product.itemId === productId);
 
     if (product) {
@@ -94,16 +69,17 @@ export const ProductDetails = () => {
   };
 
   useEffect(() => {
-    findProduct();
-    dispatch(resetCrumbs(location));
+    fetchProduct();
     dispatch(loadProducts);
-  }, [location, productId, dispatch]);
+  }, [productId, dispatch]);
 
   return (
     <div className="product-page">
-      <div className="product-page__crumbs">
-        <Breadcrumbs />
-      </div>
+      {product && (
+        <div className="product-page__crumbs">
+          <Breadcrumbs />
+        </div>
+      )}
 
       <div className="product-page__backbutton">
         <BackButton />
@@ -117,7 +93,7 @@ export const ProductDetails = () => {
             <div className="product-page__section product-page__section--design">
               <div className="product-page__product-design">
                 <CustomSwiper
-                  page="productDetailsPage"
+                  page="productDetails"
                   thumbs={product.images}
                 />
               </div>
@@ -143,7 +119,7 @@ export const ProductDetails = () => {
                                   color === productColor,
                               },
                             )}
-                            onClick={() => handleChoice({ color })}
+                            onClick={() => doNavigation({ product, color })}
                           >
                             <div
                               className={`sidebar__options__color sidebar__options__color--${normalizeColor}`}
@@ -164,7 +140,7 @@ export const ProductDetails = () => {
                             'sidebar__options__capacity--picked':
                               productCapacity === capacity,
                           })}
-                          onClick={() => handleChoice({ capacity })}
+                          onClick={() => doNavigation({ product, capacity })}
                         >
                           {capacity}
                         </p>
@@ -223,16 +199,8 @@ export const ProductDetails = () => {
           </div>
         </div>
       ) : (
-        <p>Product not found</p>
+        <PageNotFound />
       )}
     </div>
   );
 };
-
-{
-  /* <img
-                  src={product.images[0]}
-                  alt="product image"
-                  className="product-page__product-design__photo"
-                /> */
-}

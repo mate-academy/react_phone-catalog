@@ -14,6 +14,7 @@ import { routes } from './components/shared/Routs/Routs';
 import { Accessories } from './components/modules/Accessories/Accessories';
 import { Favorites } from './components/modules/Favorites/Favorites';
 import { ProductDetails } from './components/modules/ProductDetails/ProductDetails';
+import { PageNotFound } from './components/modules/PageNotFound/PageNotFound';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
@@ -49,7 +50,7 @@ createRoot(document.getElementById('root') as HTMLElement).render(
               <Route path=":id" element={<ProductDetails />} />
             </Route>
 
-            <Route path="*" element={<p>Page not found</p>}></Route>
+            <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>
       </Router>

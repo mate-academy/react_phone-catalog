@@ -18,6 +18,8 @@ import { useProductNumbers } from '../../../utils/customHooks';
 export const Home = () => {
   const dispatch = useAppDispatch();
 
+  const isLoading = useAppSelector(state => state.products.loading);
+
   const hotPrices = useAppSelector(state => state.products.products)
     .toSorted((a , b) => a.price - b.price)
     .slice(0, 20);
@@ -39,7 +41,7 @@ export const Home = () => {
       <h1 className="home__h1">Welcome to Nice Gadgets store!</h1>
 
       <div className="home__swiper">
-        <CustomSwiper page='homePage' />
+        <CustomSwiper page='home' />
       </div>
 
       <div className="home__new-models">
