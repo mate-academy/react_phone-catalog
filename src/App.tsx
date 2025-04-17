@@ -18,7 +18,7 @@ export const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <Router>
+    <Router basename="/react_phone-catalog">
       <CartProvider>
         <FavoritesProvider>
           <h1 className="productCatalog">Product Catalog</h1>
