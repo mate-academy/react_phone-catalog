@@ -159,10 +159,7 @@ export const PhonePage = () => {
                 alt={phone.name}
                 className="phone__card-image"
                 onError={e =>
-                  e.currentTarget.setAttribute(
-                    'src',
-                    '/public/img/page-not-found.png',
-                  )
+                  e.currentTarget.setAttribute('src', '/img/page-not-found.png')
                 }
               />
               <h3 className="phone__card-title">{phone.name}</h3>

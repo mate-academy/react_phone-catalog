@@ -25,6 +25,12 @@ export const ProductDetailsPage = () => {
     }
   }, [product]);
 
+  const isPhoneOrTablet = (
+    item: Phone | Tablet | Accessories,
+  ): item is Phone | Tablet => {
+    return 'capacityAvailable' in item && !!item.capacityAvailable;
+  };
+
   useEffect(() => {
     const fetchProducts = async () => {
       const urls = [
@@ -33,6 +39,12 @@ export const ProductDetailsPage = () => {
         '/api/accessories.json',
       ];
       const allData: (Phone | Tablet | Accessories)[] = [];
+
+      const extractCapacityFromId = (id: string) => {
+        const match = id.match(/-(\d+gb)-/i);
+
+        return match ? match[1].toUpperCase() : null;
+      };
 
       for (const url of urls) {
         const res = await fetch(url);
@@ -48,19 +60,30 @@ export const ProductDetailsPage = () => {
       if (found) {
         setProduct(found);
         setSelectedColor(found.color);
-        setSelectedImage(found.images?.[0] || '/public/img/page-not-found.png');
-        if ('capacityAvailable' in found && found.capacityAvailable) {
-          setSelectedCapacity(found.capacityAvailable[0]);
+        setSelectedImage(found.images?.[0] || '/img/page-not-found.png');
+
+        const extractedCapacity = productId
+          ? extractCapacityFromId(productId)
+          : null;
+
+        if (isPhoneOrTablet(found) && !selectedCapacity) {
+          setSelectedCapacity(extractedCapacity || found.capacityAvailable[0]);
         }
 
         const params = new URLSearchParams(window.location.search);
 
         params.set('color', found.color.toLowerCase().replace(' ', '-'));
-        if ('capacityAvailable' in found && found.capacityAvailable?.[0]) {
-          params.set('capacity', found.capacityAvailable[0]);
+
+        if (isPhoneOrTablet(found) && found.capacityAvailable[0]) {
+          params.set(
+            'capacity',
+            selectedCapacity || found.capacityAvailable[0],
+          );
         }
 
-        window.history.replaceState({}, '', `${pathname}?${params}`);
+        navigate(`${pathname}?${params.toString()}`, {
+          replace: true,
+        });
       } else {
         setProduct(null);
       }
@@ -87,9 +110,7 @@ export const ProductDetailsPage = () => {
       );
       setProduct(newProduct);
       setSelectedColor(color);
-      setSelectedImage(
-        newProduct.images?.[0] || '/public/img/page-not-found.png',
-      );
+      setSelectedImage(newProduct.images?.[0] || '/img/page-not-found.png');
     }
   };
 
@@ -107,23 +128,13 @@ export const ProductDetailsPage = () => {
 
     if (newProduct) {
       setSelectedCapacity(capacity);
-
       setProduct(newProduct);
-
-      setSelectedImage(
-        newProduct.images?.[0] || '/public/img/page-not-found.png',
-      );
+      setSelectedImage(newProduct.images?.[0] || '/img/page-not-found.png');
 
       navigate(
         `/products/${newProduct.id}?color=${selectedColor?.toLowerCase().replace(' ', '-') || ''}&capacity=${capacity}`,
       );
     }
-  };
-
-  const isPhoneOrTablet = (
-    item: Phone | Tablet | Accessories,
-  ): item is Phone | Tablet => {
-    return 'capacityAvailable' in item && !!item.capacityAvailable;
   };
 
   if (!product) {
@@ -139,7 +150,7 @@ export const ProductDetailsPage = () => {
         <div className="product-details__gallery">
           <div className="gallery__main-image">
             <img
-              src={selectedImage || '/public/img/page-not-found.png'}
+              src={selectedImage || '/img/page-not-found.png'}
               alt={product?.name || 'No image available'}
               loading="lazy"
             />
@@ -235,22 +246,6 @@ export const ProductDetailsPage = () => {
           <p>Cell: {product.cell.join(', ')}</p>
         )}
       </div>
-
-      {/* <div className="product-details__recommendations">
-        <h2>You may also like</h2>
-        <div className="recommendations__list">
-          <div className="recommendation-card">
-            <img
-              src="img/phones/sample-phone-1.jpg"
-              alt="Sample Phone 1"
-              loading="lazy"
-            />
-            <p>Apple iPhone 11 64GB Black</p>
-            <p>$799</p>
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </div> */}
     </section>
   );
 };
