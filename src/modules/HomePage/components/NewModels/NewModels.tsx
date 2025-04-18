@@ -1,4 +1,3 @@
-import styles from './NewModels.module.scss';
 import React from 'react';
 import { Product } from '../../../../shared/types/Product';
 import classNames from 'classnames';

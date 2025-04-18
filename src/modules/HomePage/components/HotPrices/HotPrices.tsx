@@ -1,7 +1,5 @@
-import styles from './HotPrices.module.scss';
 import React from 'react';
 import { Product } from '../../../../shared/types/Product';
-import classNames from 'classnames';
 import { ProductsGallery } from '../../../../components/ProductsGallery';
 
 type Props = {
@@ -15,7 +13,7 @@ export const HotPrices: React.FC<Props> = ({ products, className }) => {
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
 
   return (
-    <div className={classNames(styles.NewModels, className)}>
+    <div className={className}>
       <ProductsGallery products={hotPrices} title={'Hot prices'} />
     </div>
   );
