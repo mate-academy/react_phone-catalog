@@ -1,34 +1,47 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
+import { AllProducts } from '../../types/AllProducts/AllProducts';
+import React from 'react';
 
-export const ProductCard = () => {
+type Props = {
+  product: AllProducts;
+};
+
+export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.productCard}>
       <Link to="/phones/15">
         <img
           loading="lazy"
           className={styles.productCard__mainImage}
-          src="src/assets/images/productsSlider/products-phone.png"
+          src={`${product.image}`}
           alt="Зображення продукту"
         />
       </Link>
-      <p className={styles.productCard__description}>
-        Apple iPhone 14 Pro 128GB Silver (MQ023)
-      </p>
-      <h3 className={styles.productCard__price}>$999</h3>
+      <p className={styles.productCard__description}>{product.name}</p>
+      {product?.hotPrice ? (
+        <div className={styles.productCard__priceContainer}>
+          <h3 className={styles.productCard__price}>{`$${product.price}`}</h3>
+          <h3
+            className={styles.productCard__fullPrice}
+          >{`$${product.fullPrice}`}</h3>
+        </div>
+      ) : (
+        <h3 className={styles.productCard__price}>{`$${product.fullPrice}`}</h3>
+      )}
       <span className={styles.productCard__line}></span>
       <div className={styles.productCard__featureWrapper}>
         <div className={styles.productCard__feature}>
           <p className={styles.productCard__featureTitle}>Screen</p>
-          <p className={styles.productCard__featureValue}>6.1” OLED</p>
+          <p className={styles.productCard__featureValue}>{product.screen}</p>
         </div>
         <div className={styles.productCard__feature}>
           <p className={styles.productCard__featureTitle}>Capacity</p>
-          <p className={styles.productCard__featureValue}>128 GB</p>
+          <p className={styles.productCard__featureValue}>{product.capacity}</p>
         </div>
         <div className={styles.productCard__feature}>
           <p className={styles.productCard__featureTitle}>RAM</p>
-          <p className={styles.productCard__featureValue}>6 GB</p>
+          <p className={styles.productCard__featureValue}>{product.ram}</p>
         </div>
       </div>
       <div className={styles.productCard__buttons}>

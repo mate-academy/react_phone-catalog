@@ -1,6 +1,21 @@
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
 import styles from './CurrentPage.module.scss';
 
-export const CurrentPage = () => {
+import { getPageTitle } from '../../utils/getPageTitle';
+import { AllProducts } from '../../types/AllProducts/AllProducts';
+
+type Props = {
+  products: AllProducts[];
+};
+
+export const CurrentPage: React.FC<Props> = ({ products }) => {
+  const { pathname } = useLocation();
+  const normalizedPathName = pathname.replace('/', '');
+
+  const title = getPageTitle(normalizedPathName);
+
   return (
     <div className={styles.productPage__location}>
       <div className={styles.productPage__wrapper}>
@@ -25,8 +40,8 @@ export const CurrentPage = () => {
           </a>
         </div>
       </div>
-      <h1 className={styles.productPage__productTitle}>Mobile phones</h1>
-      <p className={styles.productPage__items}>95 models</p>
+      <h1 className={styles.productPage__productTitle}>{title}</h1>
+      <p className={styles.productPage__items}>{`${products.length} models`}</p>
     </div>
   );
 };

@@ -28,10 +28,10 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const loadProduct = async () => {
-      setLoading(true);
-      setError('');
+    setLoading(true);
+    setError('');
 
+    const loadProduct = async () => {
       try {
         const response = await getAllProducts('/products.json');
 

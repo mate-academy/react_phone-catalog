@@ -1,21 +1,46 @@
+import { useContext } from 'react';
+
+import styles from './HomePage.module.scss';
+
 import { ProductsSlider } from '../../shared/components/ProductsSlider';
 import { CategoryCards } from './components/CategoryCards';
 import { HomePageSlider } from './components/HomePageSlider';
 
-import styles from './HomePage.module.scss';
-
+import { ProductContext } from '../../shared/store/GlobalProvider';
 import { SectionTitles } from '../../shared/constants/sectionTitles';
+import { SliderId } from '../../shared/constants/sliderId';
+import { productFilterByNew } from '../../shared/utils/productFilterByNew';
+// eslint-disable-next-line
+import { getHotProductsWithDiscount } from '../../shared/utils/getHotProductsWithDiscount';
+import { Loader } from '../../shared/components/Loader';
 
 export const HomePage = () => {
+  const { data, loading } = useContext(ProductContext);
+
+  const newProducts = productFilterByNew(data);
+  const productsWithHotPrice = getHotProductsWithDiscount(data);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <main className={styles.main}>
       <h1 className={styles.main__visuallyHidden}>Product Catalog</h1>
       <h1 className={styles.main__title}>Welcome to Nice Gadgets store!</h1>
       <div className={styles.main__wrapper}>
         <HomePageSlider />
-        <ProductsSlider title={SectionTitles.NewModels} />
-        <CategoryCards />
-        <ProductsSlider title={SectionTitles.HotPrices} />
+        <ProductsSlider
+          title={SectionTitles.NewModels}
+          products={newProducts}
+          sliderId={SliderId.New}
+        />
+        <CategoryCards data={data} />
+        <ProductsSlider
+          title={SectionTitles.HotPrices}
+          products={productsWithHotPrice}
+          sliderId={SliderId.Hot}
+        />
       </div>
     </main>
   );

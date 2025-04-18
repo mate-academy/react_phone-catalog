@@ -1,7 +1,23 @@
 import { NavLink } from 'react-router-dom';
+
 import styles from './CategoryCards.module.scss';
 
-export const CategoryCards = () => {
+// eslint-disable-next-line
+import { productFilterByCategory } from '../../../../shared/utils/productFilterByCategory';
+import { AllProducts } from '../../../../shared/types/AllProducts/AllProducts';
+
+type Props = {
+  data: AllProducts[];
+};
+
+export const CategoryCards: React.FC<Props> = ({ data }) => {
+  const phonesLength = productFilterByCategory(data, '/phones').length;
+  const tabletsLength = productFilterByCategory(data, '/tablets').length;
+  const accessoriesLength = productFilterByCategory(
+    data,
+    '/accessories',
+  ).length;
+
   return (
     <section className={styles.category}>
       <div className={styles.category__container}>
@@ -29,7 +45,9 @@ export const CategoryCards = () => {
               </NavLink>
             </picture>
             <h4 className={styles.category__cardTitle}>Mobile phones</h4>
-            <p className={styles.category__cardDescription}>95 models</p>
+            <p className={styles.category__cardDescription}>
+              {`${phonesLength} models`}
+            </p>
           </div>
           <div className={styles.category__card}>
             <picture className={styles.category__picture}>
@@ -52,7 +70,9 @@ export const CategoryCards = () => {
               </NavLink>
             </picture>
             <h4 className={styles.category__cardTitle}>Tablets</h4>
-            <p className={styles.category__cardDescription}>24 models</p>
+            <p
+              className={styles.category__cardDescription}
+            >{`${tabletsLength} models`}</p>
           </div>
 
           <div className={styles.category__card}>
@@ -76,7 +96,9 @@ export const CategoryCards = () => {
               </NavLink>
             </picture>
             <h4 className={styles.category__cardTitle}>Accessories</h4>
-            <p className={styles.category__cardDescription}>100 models</p>
+            <p
+              className={styles.category__cardDescription}
+            >{`${accessoriesLength} models`}</p>
           </div>
         </div>
       </div>

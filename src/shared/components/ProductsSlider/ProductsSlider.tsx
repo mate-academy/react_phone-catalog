@@ -9,18 +9,28 @@ import 'swiper/scss/autoplay';
 
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
+import { AllProducts } from '../../types/AllProducts/AllProducts';
 
 type Props = {
   title: string;
+  products: AllProducts[];
+  sliderId: string;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  sliderId,
+}) => {
   return (
     <section className={styles.productSlider}>
       <div className={styles.productSlider__container}>
         <h2 className={styles.productSlider__title}>{title}</h2>
         <div className={styles.productSlider__btn}>
-          <button className={styles.productSlider__leftBtn} id="prevProduct">
+          <button
+            className={styles.productSlider__leftBtn}
+            id={`prev${sliderId}`}
+          >
             <img
               loading="lazy"
               className={styles.productSlider__leftBtnImage}
@@ -28,7 +38,10 @@ export const ProductsSlider: React.FC<Props> = ({ title }) => {
               alt="Попередній продукт"
             />
           </button>
-          <button className={styles.productSlider__rightBtn} id="nextProduct">
+          <button
+            className={styles.productSlider__rightBtn}
+            id={`next${sliderId}`}
+          >
             <img
               loading="lazy"
               className={styles.productSlider__rightBtnImage}
@@ -57,34 +70,15 @@ export const ProductsSlider: React.FC<Props> = ({ title }) => {
               },
             }}
             navigation={{
-              prevEl: '#prevProduct',
-              nextEl: '#nextProduct',
+              prevEl: `#prev${sliderId}`,
+              nextEl: `#next${sliderId}`,
             }}
           >
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
+            {products.map(product => (
+              <SwiperSlide key={product.id}>
+                <ProductCard product={product} />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>

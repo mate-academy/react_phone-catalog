@@ -34,12 +34,23 @@
   &__description {
     margin-bottom: 8px;
     font-weight: 600;
-    line-height: 21px;
-    text-align: balance;
+    line-height: 1.4;
+    height: 2.8em;
+  }
+
+  &__priceContainer {
+    display: flex;
+    gap: 8px;
   }
 
   &__price {
     margin-bottom: 8px;
+  }
+
+  &__fullPrice {
+    font-weight: 400;
+    text-decoration: line-through;
+    color: #89939a;
   }
 
   &__line {
