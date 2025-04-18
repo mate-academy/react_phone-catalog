@@ -15,6 +15,18 @@
 
     padding-left: 16px;
 
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    font-weight: 800;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+      font-weight: 800;
+    }
+
     @include on-tablet {
       padding: 0;
     }

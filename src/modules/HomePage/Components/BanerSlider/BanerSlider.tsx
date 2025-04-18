@@ -36,11 +36,11 @@ export const BanerSlider = () => {
   }, [currentIndexImg, nextSlide]);
 
   return (
-    <div className={classNames({ container: widthRef.current > 640 })}>
+    <section className={classNames({ container: widthRef.current > 640 })}>
       <div className={s.slider__wrapper}>
-        <h1 className={s.slider__title}>
+        <h2 className={s.slider__title}>
           {t('Welcome to Nice Gadgets store!')}
-        </h1>
+        </h2>
         <div className={s.slider}>
           <button className={s.slider__prev} onClick={prevSlide}>
             <img src="./img/icons/prev.png" alt="previous picture" />
@@ -76,6 +76,6 @@ export const BanerSlider = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
