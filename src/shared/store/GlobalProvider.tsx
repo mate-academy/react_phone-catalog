@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
 
 import { AllProducts } from '../types/AllProducts/AllProducts';
-
-import { getAllProducts } from '../services/apiServices';
 
 interface ProductContextType {
   data: AllProducts[];
   loading: boolean;
   error: string;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setData: React.Dispatch<React.SetStateAction<AllProducts[]>>;
+  setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
 type Props = {
@@ -19,37 +19,23 @@ export const ProductContext = React.createContext<ProductContextType>({
   data: [],
   loading: false,
   error: '',
+  setLoading: () => {},
+  setData: () => {},
+  setError: () => {},
 });
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [data, setData] = useState<AllProducts[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    setLoading(true);
-    setError('');
-
-    const loadProduct = async () => {
-      try {
-        const response = await getAllProducts('/products.json');
-
-        setData(response.data);
-      } catch {
-        setError('Something get wrong');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadProduct();
-  }, [pathname]);
 
   const value = {
     data,
     loading,
     error,
+    setLoading,
+    setData,
+    setError,
   };
 
   return (
