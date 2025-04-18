@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 import classNames from 'classnames';
-import productsFromServer from '../../../public/api/products.json';
+import productsFromServer from '../../api/products.json';
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
