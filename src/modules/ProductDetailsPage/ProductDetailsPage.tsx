@@ -128,9 +128,7 @@ export const ProductDetailsPage: React.FC = () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 300));
 
-      const response = await fetch(
-        `https://maksym-kostetskyi.github.io/react_phone-catalog/api/${category}.json`,
-      );
+      const response = await fetch(`/api/${category}.json`);
 
       if (!response.ok) {
         throw new Error('Failed to fetch products');
