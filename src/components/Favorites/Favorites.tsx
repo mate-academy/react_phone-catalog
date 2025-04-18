@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
+import classNames from 'classnames';
 import { Card } from '../Card';
 import { CategoryHeader } from '../CategoryHeader';
 import { NotFoundProduct } from '../NotFoundProduct';
@@ -9,7 +10,11 @@ export const Favorites = () => {
   const { favorites } = useFavorites();
 
   return (
-    <section className="favorites favorites--not-found">
+    <section
+      className={classNames('favorites', {
+        'favorites--not-found': favorites.length === 0,
+      })}
+    >
       {favorites.length === 0 ? (
         <NotFoundProduct />
       ) : (
