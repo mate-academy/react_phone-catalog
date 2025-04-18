@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
-import products from '../../../../public/api/products.json';
+import products from 'data/api/products.json';
 import HomeIcon from '@/assets/icons/Home.svg?react';
 import ArrowRight from '@/assets/icons/ArrowRight.svg?react';
 

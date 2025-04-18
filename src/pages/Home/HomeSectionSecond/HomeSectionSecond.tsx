@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import styles from './HomeSectionSecond.module.scss';
-import products from '../../../../public/api/products.json';
+import products from 'data/api/products.json';
 import { Product } from '@/types/product';
 import { Link } from 'react-router-dom';
 

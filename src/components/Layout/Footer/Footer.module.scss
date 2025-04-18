@@ -1,4 +1,4 @@
-@use '../../../styles/utils' as u;
+@use 'styles/utils' as u;
 
 .footerContainer {
   border-top: 1px solid u.$elements;
@@ -23,7 +23,6 @@
   @include u.on-desktop {
     max-width: calc(1200px - 64px);
   }
-
 
   @include u.on-tablet {
     & > *:nth-child(2) {
@@ -78,15 +77,15 @@
   gap: 16px;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .textBackToTop {
-  cursor: pointer;
   font-size: 12px;
   font-weight: 700;
   color: u.$secondary;
 
-  @include u.hover(color, u.$icons)
+  @include u.hover(color, u.$icons);
 }
 
 .btnBackToTop {
@@ -101,7 +100,7 @@
 
   background-color: u.$surface-2;
 
-  @include u.hover(background-color, u.$icons)
+  @include u.hover(background-color, u.$icons);
 }
 
 .btnBackToTopIcon {

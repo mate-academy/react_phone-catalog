@@ -1,5 +1,6 @@
-@use '../../styles/utils/' as vars;
+@use 'styles/utils' as vars;
 
+// for background under page layer!!!!!!
 body {
-  background-color: vars.$black; // for background under page layer
+  background-color: vars.$black;
 }

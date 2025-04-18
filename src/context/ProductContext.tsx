@@ -6,7 +6,7 @@ import React, {
   ReactNode,
 } from 'react';
 import { Product } from '@/types/product';
-import productsList from '../../public/api/products.json';
+import productsList from 'data/api/products.json';
 
 export type ProductContextType = {
   allProducts: Product[];

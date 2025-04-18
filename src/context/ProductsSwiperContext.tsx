@@ -1,7 +1,7 @@
 import { Product } from '@/types/product';
 import React from 'react';
 
-import productsList from '../../public/api/products.json';
+import productsList from 'data/api/products.json';
 
 type ProductsSwiperContextType = {
   filteredProductsByNewModels: Product[];

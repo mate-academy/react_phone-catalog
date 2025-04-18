@@ -1,4 +1,4 @@
-@use '../../../styles/utils/' as u;
+@use 'styles/utils' as u;
 @use 'sass:color' as color;
 
 .productCard {
@@ -178,10 +178,7 @@
 .productFavoriteBtn {
   background-color: u.$surface-2;
 
-  @include u.hover(
-    background-color,
-    u.$icons
-  );
+  @include u.hover(background-color, u.$icons);
 }
 
 .productFavoriteIcon {

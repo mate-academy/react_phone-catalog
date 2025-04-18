@@ -1,11 +1,10 @@
 import React, { useContext, useMemo } from 'react';
-import styles from './PhonesHeroSection.module.scss';
+// import styles from './PhonesHeroSection.module.scss';
 import { Breadcrumbs } from '@/components/UI/Breadcrumbs';
 import { Outlet } from 'react-router-dom';
 import { ProductCatalog } from '@/components/UI/ProductCatalog';
 
 import { ProductContext, ProductContextType } from '@/context/ProductContext';
-// import { Loader } from '@/components/UI/Loader';
 
 export const PhonesHeroSection: React.FC = () => {
   const { allProducts, isLoading, error } = useContext(
@@ -19,12 +18,6 @@ export const PhonesHeroSection: React.FC = () => {
   if (error) {
     return <div>Error loading products: {error}</div>;
   }
-
-  // if (isLoading) {
-  //   return (
-  //     <Loader/>
-  //   )
-  // }
 
   return (
     <>

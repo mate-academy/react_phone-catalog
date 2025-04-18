@@ -45,11 +45,10 @@ export const Footer: React.FC = () => {
             rights
           </a>
         </div>
-        <div className={styles.backToTop}>
-          <p onClick={scrollToTop} className={styles.textBackToTop}>
-            Back to top
-          </p>
-          <button onClick={scrollToTop} className={styles.btnBackToTop}>
+        <div className={styles.backToTop} onClick={scrollToTop}>
+          <p className={styles.textBackToTop}>Back to top</p>
+
+          <button className={styles.btnBackToTop}>
             <ArrowRight className={styles.btnBackToTopIcon} />
           </button>
         </div>

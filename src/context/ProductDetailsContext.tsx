@@ -1,7 +1,7 @@
 import React, { createContext, useMemo } from 'react';
-import phones from '../../public/api/phones.json';
-import tablets from '../../public/api/tablets.json';
-import accessories from '../../public/api/accessories.json';
+import phones from 'data/api/phones.json';
+import tablets from 'data/api/tablets.json';
+import accessories from 'data/api/accessories.json';
 import { ProductDetails } from '@/types/productDetails';
 
 type ProductDetailsContextType = {
