@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import './TabletPage.scss';
 import { Tablet } from '../../Interface';
 import { SortForm } from '../../Functional/SortForm/SortForm';
+import { Link } from 'react-router-dom';
 
 export const TabletPage = () => {
   const [tablets, setTablets] = useState<Tablet[]>([]);
@@ -137,7 +138,11 @@ export const TabletPage = () => {
           <p className="tablets__no-results">No tablets found.</p>
         ) : (
           currentItems.map(tablet => (
-            <div key={tablet.id} className="tablets__card">
+            <Link
+              to={`/products/${tablet.id}`}
+              key={tablet.id}
+              className="tablets__card"
+            >
               <img
                 src={'/' + tablet.images[0]}
                 alt={tablet.name}
@@ -190,7 +195,7 @@ export const TabletPage = () => {
                   />
                 </button>
               </div>
-            </div>
+            </Link>
           ))
         )}
       </div>

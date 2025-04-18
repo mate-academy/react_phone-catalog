@@ -14,13 +14,14 @@ const Root = () => (
   <Router>
     <CartProvider>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route index element={<HomePage />} />
-        <Route path="menu" element={<Aside />} />
-        <Route path="phones" element={<PhonePage />} />
-        <Route path="tablets" element={<TabletPage />} />
-        <Route path="accessories" element={<AccessoriesPage />} />
-        <Route path="products/:productId" element={<ProductDetailsPage />} />
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="menu" element={<Aside />} />
+          <Route path="phones" element={<PhonePage />} />
+          <Route path="tablets" element={<TabletPage />} />
+          <Route path="accessories" element={<AccessoriesPage />} />
+          <Route path="products/:productId" element={<ProductDetailsPage />} />
+        </Route>
       </Routes>
     </CartProvider>
   </Router>

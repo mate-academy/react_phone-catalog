@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/indent */
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -66,7 +67,7 @@ export const ProductDetailsPage = () => {
           ? extractCapacityFromId(productId)
           : null;
 
-        if (isPhoneOrTablet(found) && !selectedCapacity) {
+        if (isPhoneOrTablet(found)) {
           setSelectedCapacity(extractedCapacity || found.capacityAvailable[0]);
         }
 
@@ -77,13 +78,11 @@ export const ProductDetailsPage = () => {
         if (isPhoneOrTablet(found) && found.capacityAvailable[0]) {
           params.set(
             'capacity',
-            selectedCapacity || found.capacityAvailable[0],
+            extractedCapacity || found.capacityAvailable[0],
           );
         }
 
-        navigate(`${pathname}?${params.toString()}`, {
-          replace: true,
-        });
+        navigate(`${pathname}?${params.toString()}`, { replace: true });
       } else {
         setProduct(null);
       }
@@ -151,18 +150,18 @@ export const ProductDetailsPage = () => {
           <div className="gallery__main-image">
             <img
               src={selectedImage || '/img/page-not-found.png'}
-              alt={product?.name || 'No image available'}
+              alt={product.name || 'No image available'}
               loading="lazy"
             />
           </div>
           <div className="gallery__thumbnails">
-            {product?.images?.map((image, index) => (
+            {product.images?.map((image, index) => (
               <img
                 key={index}
                 src={'/' + image}
                 alt={`${product.name} thumbnail ${index + 1}`}
-                className={`thumbnail ${selectedImage === image ? 'thumbnail--active' : ''}`}
-                onClick={() => setSelectedImage(image)}
+                className={`thumbnail ${selectedImage === '/' + image ? 'thumbnail--active' : ''}`}
+                onClick={() => setSelectedImage('/' + image)}
                 loading="lazy"
               />
             ))}
@@ -192,11 +191,7 @@ export const ProductDetailsPage = () => {
                 {product.capacityAvailable.map(option => (
                   <button
                     key={option}
-                    className={`capacity-option ${
-                      selectedCapacity === option
-                        ? 'capacity-option--active'
-                        : ''
-                    }`}
+                    className={`capacity-option ${selectedCapacity === option ? 'capacity-option--active' : ''}`}
                     onClick={() => handleMemoryChange(option)}
                     aria-label={`Select ${option} capacity`}
                     aria-selected={selectedCapacity === option}

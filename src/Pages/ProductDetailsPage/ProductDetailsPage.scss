@@ -235,6 +235,13 @@
     &--white { background-color: #fff; }
     &--purple { background-color: #800080; }
     &--red { background-color: #f00; }
+    &--spacegray { background-color: #64646c; }
+    &--spaceblack { background-color: #333334; }
+    &--midnightgreen { background-color: #004953; }
+    &--gold { background-color: #ffd700; }
+    &--silver { background-color: #c0c0c0; }
+    &--graphite { background-color: #4f555b; }
+    &--sierrablue { background-color: #69abce; }
 
     &[aria-selected='true'] {
       border-color: #fff;

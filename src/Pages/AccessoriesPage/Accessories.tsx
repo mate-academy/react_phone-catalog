@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import './Accessories.scss';
 import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Accessories } from '../../Interface';
+import { Link } from 'react-router-dom';
 
 export const AccessoriesPage = () => {
   const [accessories, setAccessories] = useState<Accessories[]>([]);
@@ -151,7 +152,11 @@ export const AccessoriesPage = () => {
           <p className="accessories__no-results">No accessories found.</p>
         ) : (
           currentItems.map(accessory => (
-            <div key={accessory.id} className="accessories__card">
+            <Link
+              to={`/product/${accessory.id}`}
+              key={accessory.id}
+              className="accessories__card"
+            >
               <img
                 src={'/' + accessory.images[0]}
                 alt={accessory.name}
@@ -194,7 +199,7 @@ export const AccessoriesPage = () => {
                   />
                 </button>
               </div>
-            </div>
+            </Link>
           ))
         )}
       </div>
