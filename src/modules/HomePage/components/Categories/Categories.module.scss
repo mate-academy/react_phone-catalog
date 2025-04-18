@@ -1,0 +1,88 @@
+@import '../../../../shared/colors';
+@import '../../../../shared/mixins';
+
+.Categories {
+  @include responsive-grid;
+
+  &__title {
+    margin-bottom: 24px;
+    grid-column: 1 / 5;
+
+    @media screen and (min-width: 640px) {
+      grid-column: 1 / 13;
+    }
+
+    @media screen and (min-width: 1200px) {
+      grid-column: 1 / 25;
+    }
+  }
+
+  &__category {
+    grid-column: 1 / 5;
+    margin-bottom: 32px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @media screen and (min-width: 640px) {
+      grid-column: span 4;
+    }
+
+    @media screen and (min-width: 1200px) {
+      grid-column: span 8;
+    }
+  }
+
+  &__imgWrapper {
+    border-radius: 8px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+
+    @media screen and (min-width: 1200px) {
+      border-radius: 0;
+    }
+
+    &Phones {
+      background: linear-gradient(135deg, #493d3d 0%, #436b80 100%);
+    }
+
+    &Tablets {
+      background: linear-gradient(135deg, #436b80 0%, #493d3d 100%);
+    }
+
+    &Accessories {
+      background: linear-gradient(135deg, #df9090 0%, #e15353 100%);
+    }
+
+    &:hover {
+      transform: scale(105%);
+    }
+  }
+
+  &__image {
+    height: 288px;
+    width: 288px;
+    object-fit: contain;
+    transform: translate(15%, 15%);
+
+    @media screen and (min-width: 640px) {
+      height: 187px;
+      width: 187px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      height: 368px;
+      width: 368px;
+    }
+  }
+
+  &__categoryTitle {
+    margin-bottom: 4px;
+  }
+
+  &__counter {
+    color: $secondary;
+  }
+}
