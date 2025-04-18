@@ -74,8 +74,8 @@ export const ProductCards: React.FC<Props> = ({ products, cardWidth }) => {
             key={product.id}
             ref={products[0].id === product.id ? cardWidth : null}
           >
-            <Link to={`../${product.id}`} className={s.card__link}></Link>
-            <Link to={`../${product.id}`} className={s.card__img}>
+            <Link to={`../${product.itemId}`} className={s.card__link}></Link>
+            <Link to={`../${product.itemId}`} className={s.card__img}>
               {!loadedImages.includes(product.id) && (
                 <div className={s.card__img_loading}></div>
               )}

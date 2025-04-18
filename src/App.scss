@@ -33,6 +33,13 @@ main {
     padding: 56px 0 80px;
     margin-top: 68px;
   }
+
+  & a,
+  & button {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 footer {

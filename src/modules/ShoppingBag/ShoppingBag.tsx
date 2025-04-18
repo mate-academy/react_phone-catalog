@@ -32,11 +32,27 @@ export const ShoppingBag = () => {
     setShoppingBag(updatedShoppingBag);
   };
 
+  const totalQuantity = Object.values(shoppingBag).reduce(
+    (total, quantity) => total + quantity,
+    0,
+  );
+
   const totalPrice = shoppingBagProducts.reduce((total, product) => {
     const quantity = shoppingBag[product.id] || 0;
 
     return total + product.price * quantity;
   }, 0);
+
+  const checkout = () => {
+    const confirmed = window.confirm(
+      // eslint-disable-next-line max-len
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (confirmed) {
+      setShoppingBag({});
+    }
+  };
 
   return (
     <div className="container">
@@ -52,7 +68,7 @@ export const ShoppingBag = () => {
           shoppingBagProducts.map(product => (
             <div className={s.cart} key={product.id}>
               <div className={s.cart__header}>
-                <div
+                <button
                   className={s.cart__delete}
                   onClick={() => removeItem(product.id)}
                 >
@@ -60,11 +76,13 @@ export const ShoppingBag = () => {
                     src="./img/icons/close.png"
                     alt="delete from shopping bag"
                   />
-                </div>
-                <div className={s.cart__photo}>
+                </button>
+                <Link to={`../${product.itemId}`} className={s.cart__photo}>
                   <img src={product.image} alt={product.name} />
-                </div>
-                <div className={s.cart__title}>{product.name}</div>
+                </Link>
+                <Link to={`../${product.itemId}`} className={s.cart__title}>
+                  {product.name}
+                </Link>
               </div>
               <div className={s.cart__bottom}>
                 <div className={s.cart__buttons}>
@@ -100,23 +118,14 @@ export const ShoppingBag = () => {
             <div className={s.price__title}>
               <h2>${totalPrice}</h2>
               <p>
-                {t('Total for')} {shoppingBagProducts.length} {t('items')}
+                {t('Total for')} {totalQuantity} {t('items')}
               </p>
             </div>
             <div className={s.price__line}></div>
             <button
               type="button"
               className={s.price__checkout}
-              onClick={() => {
-                const confirmed = window.confirm(
-                  // eslint-disable-next-line max-len
-                  'Checkout is not implemented yet. Do you want to clear the Cart?',
-                );
-
-                if (confirmed) {
-                  setShoppingBag({});
-                }
-              }}
+              onClick={checkout}
             >
               {t('Checkout')}
             </button>

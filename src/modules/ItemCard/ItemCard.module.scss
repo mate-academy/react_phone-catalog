@@ -74,15 +74,18 @@
     height: 49px;
     width: 100%;
     margin-bottom: 40px;
+    cursor: pointer;
 
     @include on-tablet {
       grid-column: 1 / 2;
       grid-row: 1 / 2;
       flex-direction: column;
+      row-gap: 8px;
     }
 
     @include on-desktop {
       grid-column: 1 / 3;
+      row-gap: 16px;
     }
 
     & img {
@@ -124,11 +127,13 @@
         width: auto;
 
         &_color {
+          display: block;
           width: 30px;
           height: 30px;
           border: 2px solid $black;
           border-radius: 50%;
           outline: 1px solid $elements;
+          background-color: $black;
 
           &.active {
             outline: 1px solid $white;
@@ -159,6 +164,8 @@
         &_memory {
           padding: 7px 8px 4px;
           border: 1px solid $icons;
+          background-color: $black;
+          color: $white;
 
           &.active {
             background-color: $white;
@@ -202,7 +209,7 @@
       &_like {
         min-width: 48px;
         height: 48px;
-        
+
         @extend %button-like;
       }
     }

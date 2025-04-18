@@ -17,6 +17,7 @@ export const Footer = () => {
             <li className={s.footer__item}>
               <a
                 href="https://github.com/Vitalii120296"
+                target="blank"
                 className={s.footer__item_link}
               >
                 {t('Github')}
@@ -25,6 +26,7 @@ export const Footer = () => {
             <li className={s.footer__item}>
               <a
                 href="https://github.com/Vitalii120296"
+                target="blank"
                 className={s.footer__item_link}
               >
                 {t('Contacts')}
@@ -33,6 +35,7 @@ export const Footer = () => {
             <li className={s.footer__item}>
               <a
                 href="https://github.com/Vitalii120296"
+                target="blank"
                 className={s.footer__item_link}
               >
                 {t('Rights')}

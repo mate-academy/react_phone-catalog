@@ -7,7 +7,7 @@ import s from './HomePage.module.scss';
 export const HomePage = () => {
   return (
     <div className={s.home}>
-      <h1 className={s.title}>Product catalog!</h1>
+      <h1 className={s.title}>Product Catalog</h1>
       <BanerSlider />
       <NewModelsSlider />
       <Categories />

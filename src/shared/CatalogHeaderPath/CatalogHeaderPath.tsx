@@ -8,10 +8,10 @@ export const CatalogHeaderPath = () => {
   const { productId } = useParams();
   const { products } = useContext(ProductContext);
   const productName = productId
-    ? products.find(item => item.id === +productId)?.name
+    ? products.find(item => item.itemId === productId)?.name
     : '';
   const productCategory = productId
-    ? products.find(item => item.id === +productId)?.category
+    ? products.find(item => item.itemId === productId)?.category
     : '';
 
   return (

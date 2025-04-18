@@ -5,7 +5,7 @@ import { ProductItem } from '../types/ProductItem';
 
 export const useProduct = () => {
   const { products } = useContext(ProductContext);
-  const { productId } = useParams();
+  const { productId } = useParams<string>();
   const [product, setProduct] = useState<ProductItem | null>(null);
 
   useEffect(() => {
@@ -13,8 +13,7 @@ export const useProduct = () => {
       return;
     }
 
-    const numberProductId = +productId;
-    const productItem = products.find(p => p.id === numberProductId);
+    const productItem = products.find(p => p.itemId === productId);
 
     if (!productItem) {
       setProduct(null);

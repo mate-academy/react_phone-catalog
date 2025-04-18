@@ -15,11 +15,28 @@ export const ItemCard = () => {
   const { product } = useProduct();
   const { products } = useContext(ProductContext);
   const [indexOfPhoto, setIndexOfPhoto] = useState(0);
-  const [productColor, setProductColor] = useState(0);
-  const [productCapacity, setProductCapacity] = useState(0);
   const { favourites, setFavourites, shoppingBag, setShoppingBag } =
     useContext(RightButtonContext);
   const { productId } = useParams();
+  const productCapacity = product?.capacityAvailable.find(capacity =>
+    productId?.includes(capacity.toLowerCase()),
+  );
+  const productColor = () => {
+    const parts = productId?.split('-');
+    const capacityIndex = parts?.findIndex(
+      part => part.toLowerCase() === productCapacity?.toLowerCase(),
+    );
+
+    if (!parts || !capacityIndex) {
+      return '';
+    }
+
+    return parts?.splice(capacityIndex + 1).join('-');
+  };
+
+  const linkForColor = (color: string) => {
+    return color.split(' ').join('-');
+  };
 
   const getProductId = useCallback(
     (id: string) => {
@@ -28,42 +45,36 @@ export const ItemCard = () => {
     [products],
   );
 
-  const toggleFavourites = useCallback(
-    (id: string) => {
-      const newItem = getProductId(id);
+  const toggleFavourites = (id: string) => {
+    const newItem = getProductId(id);
 
-      if (!newItem) {
-        return;
-      }
+    if (!newItem) {
+      return;
+    }
 
-      if (!favourites.find(item => item === newItem)) {
-        return setFavourites([...favourites, newItem]);
-      } else {
-        const deleteFavourites = favourites.filter(item => item !== newItem);
+    if (!favourites.find(item => item === newItem)) {
+      return setFavourites([...favourites, newItem]);
+    } else {
+      const deleteFavourites = favourites.filter(item => item !== newItem);
 
-        return setFavourites(deleteFavourites);
-      }
-    },
-    [favourites, setFavourites, getProductId],
-  );
+      return setFavourites(deleteFavourites);
+    }
+  };
 
-  const addToShoppingBag = useCallback(
-    (id: string) => {
-      const newItem = getProductId(id);
+  const addToShoppingBag = (id: string) => {
+    const newItem = getProductId(id);
 
-      if (!newItem) {
-        return;
-      }
+    if (!newItem) {
+      return;
+    }
 
-      setShoppingBag({
-        ...shoppingBag,
-        [newItem]: 1,
-      });
-    },
-    [shoppingBag, setShoppingBag, getProductId],
-  );
+    setShoppingBag({
+      ...shoppingBag,
+      [newItem]: 1,
+    });
+  };
 
-  if (!productId || !+productId || Number.isInteger(productId)) {
+  if (!productId) {
     return <Navigate to="/not-found" />;
   }
 
@@ -107,17 +118,17 @@ export const ItemCard = () => {
               <p>{t('Available colors')}</p>
               <div className={s.previews__controls_colors_choose}>
                 {product.colorsAvailable.map((color, index) => (
-                  <div
+                  <Link
+                    to={`../${product.namespaceId}-${productCapacity?.toLowerCase()}-${linkForColor(color)}`}
                     key={index}
                     className={classNames(
                       s.previews__controls_colors_choose_color,
                       {
-                        [s.active]: productColor === index,
+                        [s.active]: color === productColor(),
                       },
                     )}
                     style={{ backgroundColor: color }}
-                    onClick={() => setProductColor(index)}
-                  ></div>
+                  ></Link>
                 ))}
               </div>
             </div>
@@ -125,18 +136,18 @@ export const ItemCard = () => {
               <p>{t('Select capacity')}</p>
               <div className={s.previews__controls_capacity_choose}>
                 {product.capacityAvailable.map((capacity, index) => (
-                  <div
+                  <Link
+                    to={`../${product.namespaceId}-${capacity.toLowerCase()}-${productColor()}`}
                     key={index}
                     className={classNames(
                       s.previews__controls_capacity_choose_memory,
                       {
-                        [s.active]: productCapacity === index,
+                        [s.active]: capacity === productCapacity,
                       },
                     )}
-                    onClick={() => setProductCapacity(index)}
                   >
                     {capacity}
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -236,7 +247,10 @@ export const ItemCard = () => {
           </div>
         </div>
       </div>
-      <ProductSlider title={'You may also like'} products={filteredProducts} />
+      <ProductSlider
+        title={t('You may also like')}
+        products={filteredProducts}
+      />
     </div>
   );
 };
