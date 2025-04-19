@@ -27,6 +27,7 @@ export const ProductDetails = () => {
   const location = useLocation();
   const category = location.pathname.split('/')[1] as Category;
   const id = params.id as string;
+  const fromCategory = location.state?.from || '/';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,7 +56,7 @@ export const ProductDetails = () => {
     <div className={styles['product-details']}>
       <div className={styles['product-details__nav']}>
         <ProductNav />
-        <BackLink />
+        <BackLink fromCategory={fromCategory} />
       </div>
 
       {currentGadget && currentProduct ? (

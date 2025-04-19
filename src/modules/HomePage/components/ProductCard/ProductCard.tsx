@@ -1,6 +1,6 @@
 import { Products } from '../../../../types/Products';
 import styles from './ProductCard.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { scrollToTop } from '../../../../utils/scroolTop';
 import { AddSelection } from '../../../components/AddSelection/AddSelection';
 
@@ -28,6 +28,7 @@ export const ProductCard: React.FC<Props> = ({ products }) => {
   ];
 
   const path = `/${category}/${itemId}`;
+  const location = useLocation();
 
   return (
     <div className={styles['product-card']}>
@@ -35,6 +36,7 @@ export const ProductCard: React.FC<Props> = ({ products }) => {
         to={path}
         className={styles['product-card__image']}
         onClick={scrollToTop}
+        state={{ from: location.pathname }}
       >
         <img
           src={image}
