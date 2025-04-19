@@ -1,7 +1,33 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HomePage } from './components/HomePage/HomePage';
+import { PhonesPage } from './components/PhonesPage/PhonesPage';
+import { ProductPage } from './components/ProductDetailsPage';
+import { FavoritesList } from './components/FavoritesList/FavoritesList';
+import { CartPage } from './components/CartPage/CartPage';
+import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
+import { FavoritesProvider } from './context/FavoritesContext';
+import { CartProvider } from './context/CartContext';
+import { ProductProvider } from './context/ProductContext';
 import './App.scss';
 
 export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
+  <ProductProvider>
+    <FavoritesProvider>
+      <CartProvider>
+        <Router>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/phones" element={<PhonesPage />} />
+              <Route path="/product/:productId" element={<ProductPage />} />
+              <Route path="/favorites" element={<FavoritesList />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </div>
+        </Router>
+      </CartProvider>
+    </FavoritesProvider>
+  </ProductProvider>
 );

@@ -1,0 +1,190 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.product-details {
+  display: flex;
+  padding: 40px 0;
+  color: #fff;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  &__images {
+    width: 50%;
+    padding-right: 40px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding-right: 0;
+      margin-bottom: 30px;
+    }
+
+    .product-images {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__info {
+    width: 50%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  &__options {
+    margin-bottom: 30px;
+  }
+
+  &__option-group {
+    margin-bottom: 20px;
+  }
+
+  &__option-title {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  &__colors {
+    display: flex;
+  }
+
+  &__color-btn {
+    width: 32px;
+    height: 32px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: border-color $transition-duration;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--active {
+      border-color: $primary-color;
+    }
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity-btn {
+    padding: 8px 12px;
+    background-color: $background-light-color;
+    border: none;
+    border-radius: 4px;
+    color: $text-color;
+    cursor: pointer;
+    transition: background-color $transition-duration;
+
+    &:hover {
+      background-color: $background-hover-color;
+    }
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+
+  &__price-container {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    color: $text-secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__add-button {
+    @include button-primary;
+
+    flex-grow: 1;
+    height: 48px;
+  }
+
+  &__favorite-button {
+    @include flex-center;
+
+    width: 48px;
+    height: 48px;
+    background-color: $background-light-color;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color $transition-duration;
+
+    &:hover {
+      background-color: $background-hover-color;
+    }
+
+    &--active {
+      background-color: rgba($primary-color, 0.1);
+    }
+  }
+
+  &__favorite-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__favorite-img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0) invert(1);
+    transition: filter $transition-duration;
+
+    &--active {
+      filter: none;
+    }
+  }
+
+  &__specs {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 24px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__spec-name {
+    color: $text-secondary-color;
+  }
+
+  &__spec-value {
+    text-align: right;
+  }
+}

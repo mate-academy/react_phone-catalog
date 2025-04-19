@@ -1,0 +1,129 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.not-found {
+  @include flex-center;
+
+  min-height: 90vh;
+  padding: $spacing-large;
+  text-align: center;
+  background-color: rgb(22, 24, 39);
+
+  &__content {
+    @include flex-column;
+
+    align-items: center;
+    max-width: 600px;
+    padding: $spacing-large * 2;
+    border-radius: 12px;
+    animation: not-found-fade-in 0.5s ease-out;
+
+    @media (max-width: 768px) {
+      padding: $spacing-large;
+      width: 90%;
+    }
+  }
+
+  &__title {
+    font-size: 150px;
+    font-weight: 800;
+    margin: 0;
+    color: $primary-color;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: pulse 3s infinite;
+
+    @media (max-width: 768px) {
+      font-size: 100px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 80px;
+    }
+  }
+
+  &__message {
+    font-size: $font-size-large * 2;
+    font-weight: 700;
+    margin: $spacing-medium 0 $spacing-large;
+    background: linear-gradient(90deg, $primary-color, color.adjust($primary-color, $lightness: 15%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @media (max-width: 768px) {
+      font-size: $font-size-large * 1.5;
+    }
+
+    @media (max-width: 480px) {
+      font-size: $font-size-large;
+    }
+  }
+
+  &__description {
+    font-size: $font-size-medium;
+    color: $text-secondary-color;
+    margin-bottom: $spacing-large * 2;
+    max-width: 80%;
+    line-height: 1.6;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+      margin-bottom: $spacing-large;
+      font-size: $font-size-base;
+    }
+  }
+
+  &__button {
+    @include button-primary;
+
+    padding: $spacing-medium $spacing-large * 2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: $font-size-medium;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      padding: $spacing-medium $spacing-large;
+      font-size: $font-size-base;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+@keyframes not-found-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}

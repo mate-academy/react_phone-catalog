@@ -1,0 +1,72 @@
+.category-section {
+  width: 100%;
+  margin-bottom: 30px;
+
+  &__content {
+    height: 100%;
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    overflow: hidden;
+    height: 100%;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  &__image-container {
+    width: 368px;
+    height: 368px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    position: relative;
+
+    // Category-specific backgrounds
+    &--1 {
+      background: rgb(109, 100, 116); // Purple-gray for mobile phones
+    }
+
+    &--2 {
+      background-color: rgb(107, 107, 107); // Gray for tablets
+    }
+
+    &--3 {
+      background: rgb(213, 60, 81); // Changed to pink-red for accessories
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    padding-top: 60px;
+    margin-top: 5px;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    padding: 15px 0 0;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__count {
+    padding: 5px 0 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #75767F;
+    margin: 0;
+  }
+}
