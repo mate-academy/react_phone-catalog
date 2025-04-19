@@ -1,3 +1,4 @@
+@use "sass:color";
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
@@ -110,6 +111,10 @@
 
     flex-grow: 1;
     height: 40px;
+
+    &:hover {
+      background-color: $primary-dark-color;
+    }
   }
 
   .product-card .product-card__add-button.product-card__add-button--added {
