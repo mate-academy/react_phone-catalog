@@ -1,33 +1,100 @@
 .footer {
-  max-width: 100vw;
-  width: 100%;
-  bottom: 0;
-  // background-color: #f8f8f8;
-  background-color: #ff6347;
-  text-align: center;
   display: flex;
-  justify-content: space-between;
-  height: 96px;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 320px;
+  height: 257px;
+  padding: 32px  0;
+  background-color: #fff;
+  margin: 64px 32px 16px;
+}
+
+.logo {
+  margin-bottom: 32px;
+}
+
+.links {
+  font-family: Mont;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939A;
+  margin-bottom: 16px;
 }
 
 .footer a {
-  color: #333;
   text-decoration: none;
-  font-weight: bold;
-  justify-content: space-between;
+}
+
+.top {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+  margin-top: 32px;
 }
 
-.backToTop {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
+.button {
+  width: 32px;
+  height: 32px;
+  gap: 16px;
+  background-color: #fff;
+  border: 1px solid #B4BDC3;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.backToTop:hover {
-  background-color: #ff6347;
+.button img {
+  transform: rotate(90deg);
+}
+
+.back_to_top {
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: right;
+  color: #89939A;
+}
+
+
+
+@media screen and (min-width: 1200px){
+  .footer {
+    max-width: 100vw;
+    width: 100%;
+    bottom: 0;
+    background-color: #f8f8f8;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    height: 96px;
+    margin-top: 50px;
+  }
+
+  .footer a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .backToTop {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .backToTop:hover {
+    background-color: #ff6347;
+  }
 }

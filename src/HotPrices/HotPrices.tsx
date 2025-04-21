@@ -85,7 +85,7 @@ export const HotPrices: React.FC = () => {
 
   return (
     <div className={styles.productList}>
-      <h1>Hot Prices</h1>
+      <h1 className={styles.title}>Hot Prices</h1>
       <div className={styles.buttonsGroup}>
         <button
           onClick={handlePrev}

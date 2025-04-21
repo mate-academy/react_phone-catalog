@@ -16,7 +16,8 @@ interface Product {
   screen: string;
   capacity: string;
   ram: string;
-  images: string[];
+  images?: string[];
+  image?: string[];
   imageUrl: string;
 }
 

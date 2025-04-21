@@ -7,17 +7,23 @@ export const Footer: React.FC = () => {
     <>
       <footer className={style.footer}>
         <Link to="/">
-          <img src="img/Logo.png" alt="Logo" />
+          <img src="img/Logo.png" alt="Logo" className={style.logo} />
         </Link>
         <Link to="https://github.com/ogchy">
-          <p>GitHub</p>
+          <p className={style.links}>GitHub</p>
         </Link>
         <Link to="/">
-          <p>Contacts</p>
+          <p className={style.links}>Contacts</p>
         </Link>
         <Link to="/">
-          <p>Rights</p>
+          <p className={style.links}>Rights</p>
         </Link>
+        <div className={style.top}>
+          <p className={style.back_to_top}>Back to top</p>
+          <button className={style.button}>
+            <img src="img/Arrow-left.png" alt="arrow-up" />
+          </button>
+        </div>
       </footer>
     </>
   );

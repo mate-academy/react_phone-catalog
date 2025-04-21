@@ -2,6 +2,21 @@ import React from 'react';
 import { useCart } from '../UseCart/UseCart';
 import styles from './Cart.module.scss';
 import { useNavigate } from 'react-router-dom';
+import phones from '../../public/api/phones.json';
+import tablets from '../../public/api/tablets.json';
+import accessories from '../../public/api/accessories.json';
+
+type AllProduct = {
+  id: string;
+  name: string;
+  priceRegular: number;
+  priceDiscount?: number;
+  images: string[];
+  quantity: number;
+  screen?: string;
+  capacity?: string;
+  ram?: string;
+};
 
 export const Cart: React.FC = () => {
   const { state, dispatch } = useCart();
@@ -14,6 +29,12 @@ export const Cart: React.FC = () => {
 
     return total + price * (product.quantity || 1);
   }, 0);
+
+  // const findSameProduct = (product): AllProduct => {
+  //   const allProduct = [...phones, ...tablets, ...accessories];
+
+  //   const foundProduct = allProduct.find(p => p.id === product.id || p.itemId === product.id)
+  // }
 
   const navigate = useNavigate();
   const handleBackClick = () => {
@@ -52,7 +73,7 @@ export const Cart: React.FC = () => {
                 </button>
 
                 <img
-                  src={product.images[0]}
+                  // src={findSameProduct(product.image[0] || product.images[0])}
                   alt={product.name}
                   className={styles.productImage}
                 />

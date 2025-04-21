@@ -1,100 +1,28 @@
-@media screen and (min-width: 1200px){
   .productList {
-    padding: 20px;
-    width: 1136px;
-    height: 571px;
-    margin-bottom: 140px;
-  }
-
-  .buttonsGroup {
-    display: flex;
-    gap: 16px;
-  }
-
-  .buttons_controls {
-    width: 32px;
-    height: 32px;
-    gap: 16px;
-    background-color: #fff;
-    border: 1px solid gray;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-    cursor: pointer;
-  }
-
-  .buttons_controls:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .productGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-top: 20px;
-  }
-
-  .linkProduct {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 1199px){
-  .productList {
-    padding: 20px;
-    width: 1136px;
-    height: 571px;
-    margin: 24px 0 120px;
-  }
-
-  .buttonsGroup {
-    display: flex;
-    gap: 16px;
-  }
-
-  .buttons_controls {
-    width: 32px;
-    height: 32px;
-    gap: 16px;
-    background-color: #fff;
-    border: 1px solid gray;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-    cursor: pointer;
-  }
-
-  .buttons_controls:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .productGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-top: 20px;
-    width: 744px;
-    height: 577px;
+    height: 526px;
     overflow: hidden;
   }
 
-  .linkProduct {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+  .controls {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 288px;
   }
-}
 
-@media screen and (max-width: 640px){
-  .productList {
-    padding: 20px;
-    max-width: 640px;
-    margin: 0 auto;
+  .title {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+    max-width: 136px;
   }
 
   .buttonsGroup {
     display: flex;
     gap: 16px;
+    margin-left: auto;
   }
 
   .buttons_controls {
@@ -116,9 +44,6 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    margin-top: 20px;
-    width: 440px;
-    height: 526px;
   }
 
   .linkProduct {
@@ -127,23 +52,44 @@
     display: block;
   }
 
-  .buttonsGroup {
-    display: flex;
-    gap: 16px;
-  }
+  @media screen and (min-width: 1200px){
+    .productList {
+      padding: 20px;
+      width: 1136px;
+      height: 571px;
+      margin-bottom: 140px;
+    }
 
-  .buttons_controls {
-    width: 32px;
-    height: 32px;
-    gap: 16px;
-    background-color: #fff;
-    border: 1px solid gray;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-    cursor: pointer;
-  }
+    .buttonsGroup {
+      display: flex;
+      gap: 16px;
+    }
 
-  .buttons_controls:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+    .buttons_controls {
+      width: 32px;
+      height: 32px;
+      gap: 16px;
+      background-color: #fff;
+      border: 1px solid gray;
+      transition: background-color 0.3s ease, opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    .buttons_controls:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .productGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .linkProduct {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
   }
-}

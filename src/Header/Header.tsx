@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
-import '../../public/img/Logo.png';
 
 export const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,13 +21,13 @@ export const Header: React.FC = () => {
         {menuOpen ? (
           <img
             src="img/close.png"
-            alt="Burger Menu"
+            alt="Burger close"
             className={styles.burger_img}
           />
         ) : (
           <img
             src="img/burger-menu.png"
-            alt="Burger Menu"
+            alt="Burger menu"
             className={styles.burger_img}
           />
         )}
@@ -58,12 +57,24 @@ export const Header: React.FC = () => {
           </li>
         </ul>
 
-        <div className={styles.nav_bottom}>
-          <Link to="/Favorites" onClick={toggleMenu}>
-            <img src="img/Favourites.svg" alt="Favorites" />
+        <div className={styles.nav_right}>
+          <Link
+            to="/Favorites"
+            onClick={toggleMenu}
+            className={styles.nav_favorite}
+          >
+            <img
+              src="img/Favourites.svg"
+              alt="Favorites"
+              className={styles.nav_img}
+            />
           </Link>
-          <Link to="/Cart" onClick={toggleMenu}>
-            <img src="img/shopping-bag.svg" alt="Cart" />
+          <Link to="/Cart" onClick={toggleMenu} className={styles.nav_cart}>
+            <img
+              src="img/shopping-bag.svg"
+              alt="Cart"
+              className={styles.nav_img}
+            />
           </Link>
         </div>
       </nav>

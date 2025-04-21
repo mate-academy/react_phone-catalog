@@ -48,28 +48,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div className={styles.productCard}>
       <div className={styles.product_container_img}>
-        <img src={imageUrl} alt={name} className={styles.productImage} />
+        <img src={imageUrl} alt={name} className={styles.product_image} />
       </div>
-      <div className={styles.productDetails}>
-        <h3 className={styles.productTitle}>{name}</h3>
+      <div className={styles.product_details}>
+        <div className={styles.product_container_title}></div>
+        <h3 className={styles.product_title}>{name}</h3>
         <div className={styles.price_section}>${price}</div>
-        <div className={styles.productInfo}>
-          <div className={styles.productFeature}>
-            <span className={styles.featureLabel}>Screen</span>
-            <span className={styles.featureValue}>{filteredScreen}</span>
+        <div className={styles.product_info}>
+          <div className={styles.product_feature}>
+            <span className={styles.feature_label}>Screen</span>
+            <span className={styles.feature_value}>{filteredScreen}</span>
           </div>
-          <div className={styles.productFeature}>
-            <span className={styles.featureLabel}>Capacity</span>
-            <span className={styles.featureValue}>{capacity}</span>
+          <div className={styles.product_feature}>
+            <span className={styles.feature_label}>Capacity</span>
+            <span className={styles.feature_value}>{capacity}</span>
           </div>
-          <div className={styles.productFeature}>
-            <span className={styles.featureLabel}>RAM</span>
-            <span className={styles.featureValue}>{ram}</span>
+          <div className={styles.product_feature}>
+            <span className={styles.feature_label}>RAM</span>
+            <span className={styles.feature_value}>{ram}</span>
           </div>
         </div>
         <div className={styles.bottom_buttons}>
           <button
-            className={`${styles.addToCartButton} ${isInCart ? styles.addedToCart : ''}`}
+            className={`${styles.add_to_cart_button} ${isInCart ? styles.addedToCart : ''}`}
             onClick={handleAddToCart}
           >
             {isInCart ? 'Added to Cart' : 'Add to Cart'}

@@ -19,7 +19,7 @@ export const ShopByCategory: React.FC = () => {
       <div className={style.category}>
         <h1 className={style.title}>Shop by category</h1>
         <div className={style.categorys}>
-          <div className={style.categoryItem}>
+          <div className={style.category_item}>
             <div className={style.mobile}>
               <Link to="/phones">
                 <img
@@ -35,7 +35,7 @@ export const ShopByCategory: React.FC = () => {
             </div>
           </div>
 
-          <div className={style.categoryItem}>
+          <div className={style.category_item}>
             <div className={style.tablet}>
               <Link to="/tablets">
                 <img
@@ -51,7 +51,7 @@ export const ShopByCategory: React.FC = () => {
             </div>
           </div>
 
-          <div className={style.categoryItem}>
+          <div className={style.category_item}>
             <div className={style.accessories}>
               <Link to="/accessories">
                 <img
