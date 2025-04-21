@@ -49,6 +49,7 @@
 
 .nav {
   @include flex-centered;
+
   justify-content: center;
 
   &__list {
@@ -62,6 +63,7 @@
 
     @include on-mobile {
       @include flex-centered;
+
       padding: calc($gap / 1.5) calc($gap / 2);
       flex-direction: column;
       gap: calc($gap / 2);

@@ -1,6 +1,6 @@
 @use './styles/mixin.scss' as *;
 
-html, body, #root {
+html, body {
   height: 100%;
   overflow-x: hidden;
 }
