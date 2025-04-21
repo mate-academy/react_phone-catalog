@@ -7,11 +7,13 @@ import {
 import products from '../features/ProductsSlice/ProductsSlice';
 import crumbs from '../features/CrumbsSlice/CrumbsSlice';
 import productDetails from '../features/ProductDetailsSlice/ProductDetailsSlice';
+import banners from '../features/BannersSlice/BannersSlice';
 
 const rootReducer = combineSlices({
   products: products,
   crumbs: crumbs,
   productDetails: productDetails,
+  banners: banners,
 });
 
 export const store = configureStore({

@@ -23,30 +23,36 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
-            <Route path=":id" element={<ProductDetails />} />
+            <Route path="404" element={<PageNotFound />} />
+            <Route path=":id" element={<ProductDetails />} />{' '}
 
             <Route path={routes.phones}>
               <Route index element={<Phones />} />
-              <Route path=":id" element={<ProductDetails />} />
+              <Route path="404" element={<PageNotFound />} />
+              <Route path=":id" element={<ProductDetails />} />{' '}
             </Route>
 
             <Route path={routes.tablets}>
               <Route index element={<Tablets />} />
+              <Route path="404" element={<PageNotFound />} />
               <Route path=":id" element={<ProductDetails />} />
             </Route>
 
             <Route path={routes.accessories}>
               <Route index element={<Accessories />} />
-              <Route path=":id" element={<ProductDetails />} />
+              <Route path="404" element={<PageNotFound />} />
+              <Route path=":id" element={<ProductDetails />} />{' '}
             </Route>
 
             <Route path={routes.fav}>
               <Route index element={<Favorites />} />
-              <Route path=":id" element={<ProductDetails />} />
+              <Route path="404" element={<PageNotFound />} />
+              <Route path=":id" element={<ProductDetails />} />{' '}
             </Route>
 
             <Route path={routes.cart}>
               <Route index element={<Cart />} />
+              <Route path="404" element={<PageNotFound />} />
               <Route path=":id" element={<ProductDetails />} />
             </Route>
 

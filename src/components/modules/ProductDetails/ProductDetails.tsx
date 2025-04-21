@@ -1,7 +1,6 @@
 import './ProductDetails.style.scss';
 
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
@@ -20,6 +19,7 @@ import { useCustomNavigation } from '../../../utils/customHooks';
 import { PageNotFound } from '../PageNotFound/PageNotFound';
 import { loadProductDetails } from '../../../features/ProductDetailsSlice/ProductDetailsSlice';
 import { Skeleton } from '../../shared/Skeleton/Skeleton';
+import { useParams } from 'react-router-dom';
 
 export const ProductDetails = () => {
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ export const ProductDetails = () => {
   const allProducts = useAppSelector(state => state.products.products);
   const recommendations = allProducts.slice(0, 20);
 
-  const { loading, error, productDetails } = useAppSelector(
+  const { loading, productDetails } = useAppSelector(
     state => state.productDetails,
   );
 
@@ -64,20 +64,8 @@ export const ProductDetails = () => {
     }
   }, [allProducts, productId, dispatch]);
 
-
   if (loading) {
-    return <Skeleton page='productDetails' />;
-  }
-
-  if (error) {
-    return (
-      <>
-        <div className="product-page__backbutton">
-          <BackButton />
-        </div>
-        <PageNotFound />;
-      </>
-    );
+    return <Skeleton page="productDetails" />;
   }
 
   if (productDetails) {
@@ -124,7 +112,9 @@ export const ProductDetails = () => {
                                   color === productDetails.color,
                               },
                             )}
-                            onClick={() => doNavigation({ product: productDetails, color })}
+                            onClick={() =>
+                              doNavigation({ product: productDetails, color })
+                            }
                           >
                             <div
                               className={`sidebar__options__color sidebar__options__color--${normalizeColor}`}
@@ -149,7 +139,12 @@ export const ProductDetails = () => {
                                   capacity === productDetails.capacity,
                               },
                             )}
-                            onClick={() => doNavigation({ product: productDetails, capacity })}
+                            onClick={() =>
+                              doNavigation({
+                                product: productDetails,
+                                capacity,
+                              })
+                            }
                           >
                             {capacity}
                           </p>
@@ -214,4 +209,13 @@ export const ProductDetails = () => {
       </div>
     );
   }
+
+  return (
+    <>
+      <div className="product-page__backbutton">
+        <BackButton />
+      </div>
+      <PageNotFound />;
+    </>
+  );
 };

@@ -55,7 +55,7 @@
       display: flex;
       gap: 16px;
       flex-wrap: nowrap;
-      overflow-x: auto;
+      overflow-x: hidden;
 
       .skeleton-home__card {
         flex: 0 0 240px;

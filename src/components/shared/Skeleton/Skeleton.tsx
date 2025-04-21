@@ -11,21 +11,13 @@ type Props = {
 };
 
 export const Skeleton: React.FC<Props> = ({ page }) => {
-  if (page === 'home') {
-    return (
-      <HomeSkeleton />
-    );
-  }
-
   if (page === 'products') {
-    return (
-      <CatalogSkeleton />
-    );
+    return <CatalogSkeleton />;
   }
 
   if (page === 'productDetails') {
-    return (
-      <ProductPageSkeleton />
-    );
+    return <ProductPageSkeleton />;
   }
+
+  return <HomeSkeleton />;
 };
