@@ -6,7 +6,10 @@ import { Product } from '../../../types/Product';
 import { SearchParams } from '../../../types/SearchParams';
 
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
-import { useCatalogSearchParams, useProductNumbers } from '../../../utils/customHooks';
+import {
+  useCatalogSearchParams,
+  useProductNumbers,
+} from '../../../utils/customHooks';
 import { useAppDispatch } from '../../../app/hooks';
 
 import { sortBySearchParams } from '../../../utils/helpers';
@@ -49,8 +52,8 @@ export const Catalog: React.FC<Props> = ({ items, category }) => {
   };
 
   useEffect(() => {
-    dispatch(resetCrumbs([category]))
-  }, [category])
+    dispatch(resetCrumbs([category]));
+  }, [category]);
 
   return (
     <div className="catalog">

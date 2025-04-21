@@ -122,8 +122,16 @@ export const Slider: React.FC<Props> = ({ category, products }) => {
         <h2 className="slider__title"> {categoryMap[category]}</h2>
 
         <div className="slider__buttons">
-          <ArrowButton direction={'back'} disabled={disabledLeft} handleClick={handlePrevSlide}/>
-          <ArrowButton  direction={'forward'} disabled={disabledRight} handleClick={handleNextSlide}/>
+          <ArrowButton
+            direction={'back'}
+            disabled={disabledLeft}
+            handleClick={handlePrevSlide}
+          />
+          <ArrowButton
+            direction={'forward'}
+            disabled={disabledRight}
+            handleClick={handleNextSlide}
+          />
         </div>
       </div>
 

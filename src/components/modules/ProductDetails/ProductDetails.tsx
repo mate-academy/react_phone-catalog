@@ -27,7 +27,7 @@ export const ProductDetails = () => {
   const allProducts = useAppSelector(state => state.products.products);
   const recommendations = allProducts.slice(0, 20);
 
-  const { loading, productDetails } = useAppSelector(
+  const { loading, productDetails, error } = useAppSelector(
     state => state.productDetails,
   );
 
@@ -210,12 +210,14 @@ export const ProductDetails = () => {
     );
   }
 
-  return (
-    <>
-      <div className="product-page__backbutton">
-        <BackButton />
-      </div>
-      <PageNotFound />;
-    </>
-  );
+  if (error) {
+    return (
+      <>
+        <div className="product-page__backbutton">
+          <BackButton />
+        </div>
+        <PageNotFound />;
+      </>
+    );
+  }
 };

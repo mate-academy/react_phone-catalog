@@ -16,7 +16,8 @@ export const ArrowButton: React.FC<Props> = ({
 }) => {
   return (
     <button
-      className={classNames("button",
+      className={classNames(
+        'button',
         { prev: direction === 'back' },
         { next: direction === 'forward' },
       )}

@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 import { SearchParams } from '../types/SearchParams';
 import { useAppSelector } from '../app/hooks';
 import { createId } from './helpers';
@@ -111,7 +116,7 @@ export const useProductNumbers = (): ProductNumber => {
 export const useCustomNavigation = () => {
   const navigate = useNavigate();
   const currentPath = useLocation().pathname;
-  const { id: currentProductId} = useParams();
+  const { id: currentProductId } = useParams();
 
   const doNavigation = (params: Partial<NavigationParams>) => {
     const { product, newProductId } = params;
@@ -139,5 +144,5 @@ export const useCustomNavigation = () => {
     }
   };
 
-  return {doNavigation};
+  return { doNavigation };
 };

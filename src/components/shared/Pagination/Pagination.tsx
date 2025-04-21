@@ -12,7 +12,7 @@ type Props = {
   firstVisiblePage: number;
   lastVisiblePage: number;
   handlePagination: (param: Partial<SearchParams>) => void;
-}
+};
 
 export const Pagination: React.FC<Props> = ({
   totalPages,
@@ -22,7 +22,6 @@ export const Pagination: React.FC<Props> = ({
   lastVisiblePage,
   handlePagination,
 }) => {
-
   useScrollToTop();
 
   return (

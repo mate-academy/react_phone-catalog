@@ -45,10 +45,11 @@ export const Cart = () => {
                 <p className="cart__checkout__items-quantity">{`Total for ${cartItemsQuantity} items`}</p>
               </div>
 
-              <button className="cart__checkout__button" onClick={() => navigate('../404', { replace: true })}>
-                <p className="cart__checkout__button__navigation">
-                  Checkout
-                </p>
+              <button
+                className="cart__checkout__button"
+                onClick={() => navigate('../404', { replace: true })}
+              >
+                <p className="cart__checkout__button__navigation">Checkout</p>
               </button>
             </div>
           </>

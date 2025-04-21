@@ -8,7 +8,7 @@ type Props = {
   sortBy: string;
   itemsOnPageRaw: string;
   handleSelection: (params: Partial<SearchParams>) => void;
-}
+};
 
 export interface IsSelecting {
   [key: string]: boolean;
@@ -51,16 +51,15 @@ export const Selection: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setCanSelectionTransform(prev => Object.fromEntries(Object.keys(prev).map(key => [key, false])));
+    setCanSelectionTransform(prev =>
+      Object.fromEntries(Object.keys(prev).map(key => [key, false])),
+    );
     setTimeout(() => {
       setIsSelecting(prev =>
-        Object.fromEntries(
-          Object.keys(prev).map(key => [key, false])
-        )
+        Object.fromEntries(Object.keys(prev).map(key => [key, false])),
       );
-    }, 300)
-
-  },[sortBy, itemsOnPageRaw])
+    }, 300);
+  }, [sortBy, itemsOnPageRaw]);
 
   return (
     <div className="selectors">
@@ -74,7 +73,7 @@ export const Selection: React.FC<Props> = ({
               'selectors__selector',
               'selector',
               {
-                'selector__sortBy': key === 'sortBy',
+                selector__sortBy: key === 'sortBy',
               },
               { 'selector__items-on-page': key === 'itemsOnPage' },
             )}
@@ -89,9 +88,7 @@ export const Selection: React.FC<Props> = ({
                   'selector__current-option__focused': isSelecting[key],
                 })}
               >
-                <p className="selector__current-option__name">
-                  {param}
-                </p>
+                <p className="selector__current-option__name">{param}</p>
 
                 <div
                   className={classNames('selector__choose-option', {
@@ -135,9 +132,7 @@ export const Selection: React.FC<Props> = ({
                     className="selector__option"
                     onClick={() => handleSelection({ [key]: option })}
                   >
-                    <p className="selector__option__name">
-                      {option}
-                    </p>
+                    <p className="selector__option__name">{option}</p>
                   </div>
                 ))}
               </div>

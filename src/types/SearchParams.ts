@@ -10,4 +10,3 @@ export type SearchParamsKeys =
   | 'firstVisiblePage'
   | 'sortBy'
   | 'itemsOnPage';
-

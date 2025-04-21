@@ -15,7 +15,6 @@ import favIcon from '../../../../public/icons/favourites.svg';
 import cart from '../../../../public/icons/shopping-cart.svg';
 import { useScrollToTop } from '../../../utils/customHooks';
 
-
 export const Header = () => {
   const { favItems, cartItems } = useContext(LocalStorageContext);
   const cartItemsQuantity = calculateTotalQuantity(cartItems);
@@ -37,6 +36,12 @@ export const Header = () => {
     }
   };
 
+  const handleHideMenu = () => {
+    setCanTransform(false);
+    setMenuActive(false);
+    bodyRef.current.classList.remove('no-scroll');
+  };
+
   useScrollToTop();
 
   return (
@@ -45,6 +50,7 @@ export const Header = () => {
         <Link
           to={routes.home}
           className="logo mobile-header__logo"
+          onClick={handleHideMenu}
         ></Link>
         <div
           className="burger mobile-header__burger"
@@ -66,7 +72,12 @@ export const Header = () => {
       >
         <nav className={classNames('nav', 'menu__nav')}>
           {Object.keys(Categories).map(key => (
-            <NavLink to={routes[key]} key={key} className="nav__item">
+            <NavLink
+              to={routes[key]}
+              key={key}
+              className="nav__item"
+              onClick={handleHideMenu}
+            >
               {key}
             </NavLink>
           ))}
@@ -76,6 +87,7 @@ export const Header = () => {
           <NavLink
             className="choice__icon choice__icon--favorite"
             to={routes.fav}
+            onClick={handleHideMenu}
           >
             <div className="choice__icon__wrap">
               {favItems.length > 0 && (
@@ -89,6 +101,7 @@ export const Header = () => {
           <NavLink
             className="choice__icon choice__icon--shopping-cart"
             to={routes.cart}
+            onClick={handleHideMenu}
           >
             <div className="choice__icon__wrap">
               {cartItems.length > 0 && (

@@ -16,11 +16,14 @@ const initialState: Products = {
   error: false,
 };
 
-export const loadProducts = createAsyncThunk('products/loadProducts', async () => {
-  const products = await getProducts();
+export const loadProducts = createAsyncThunk(
+  'products/loadProducts',
+  async () => {
+    const products = await getProducts();
 
-  return products;
-});
+    return products;
+  },
+);
 
 export const ProductsSlice = createSlice({
   name: 'products',

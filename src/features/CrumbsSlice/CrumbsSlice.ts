@@ -6,7 +6,7 @@ export interface initialState {
 
 const initialState: initialState = {
   crumbs: [],
-}
+};
 
 export const CrumbsSlice = createSlice({
   name: 'crumbs',

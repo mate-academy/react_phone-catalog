@@ -3,7 +3,6 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getBanners } from '../../api/fetchBanners';
 import { Banner } from '../../api/fetchBanners';
 
-
 export interface Banners {
   banners: Banner[];
   loading: boolean;
@@ -16,14 +15,11 @@ const initialState: Banners = {
   error: false,
 };
 
-export const loadBanners = createAsyncThunk(
-  'banners/loadBanners',
-  async () => {
-    const banners = await getBanners();
+export const loadBanners = createAsyncThunk('banners/loadBanners', async () => {
+  const banners = await getBanners();
 
-    return banners;
-  },
-);
+  return banners;
+});
 
 export const BannersSlice = createSlice({
   name: 'banners',

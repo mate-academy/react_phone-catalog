@@ -7,7 +7,6 @@ import { routes } from '../Routs/Routs';
 import { useScrollToTop } from '../../../utils/customHooks';
 
 export const Footer = () => {
-
   useScrollToTop();
 
   return (
@@ -18,7 +17,10 @@ export const Footer = () => {
 
       <ul className="footer__links">
         <li>
-          <a href="https://github.com/VikaChereushenko" className="footer__link">
+          <a
+            href="https://github.com/VikaChereushenko"
+            className="footer__link"
+          >
             Github
           </a>
         </li>
@@ -36,9 +38,12 @@ export const Footer = () => {
 
       <div className="footer__back-to-top-section back-to-top-section">
         <p className="back-to-top-section__title">Back to top</p>
-        <div onClick={() =>  window.scrollTo(0, 0)} className="back-to-top-section__button">
+        <div
+          onClick={() => window.scrollTo(0, 0)}
+          className="back-to-top-section__button"
+        >
           <svg
-            className='arrow-up'
+            className="arrow-up"
             width="16"
             height="16"
             viewBox="0 0 16 16"

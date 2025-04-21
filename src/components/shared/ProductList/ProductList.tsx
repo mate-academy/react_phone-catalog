@@ -1,13 +1,13 @@
 import './ProductList.style.scss';
 
-import { Product } from "../../../types/Product";
-import { ProductCard } from "../ProductCard/ProductCard";
+import { Product } from '../../../types/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 type Props = {
   products: Product[];
-}
+};
 
-export const ProductList:React.FC<Props> = ({ products }) => {
+export const ProductList: React.FC<Props> = ({ products }) => {
   return (
     <div className="product-list">
       {products.length > 0 &&

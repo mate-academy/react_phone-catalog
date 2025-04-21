@@ -20,35 +20,39 @@ export const ProductCardButtons: React.FC<Props> = ({ id, productPage }) => {
   const isFav = favItems.some(item => item.itemId === id);
   const isInCart = cartItems.some(item => item.itemId === id);
 
-  const product = useAppSelector(state => state.products.products).find(product => product.itemId === id);
+  const product = useAppSelector(state => state.products.products).find(
+    product => product.itemId === id,
+  );
 
   return (
     <div className="buttons">
       <button
         type="button"
-        onClick={(e) => {
+        onClick={e => {
           e.stopPropagation();
           if (product) {
-            updateCart(product)
+            updateCart(product);
           }
         }}
         className={classNames(
           'buttons__add-to-cart',
-          { "buttons__add-to-cart__selected": isInCart },
-          {"buttons__add-to-cart--product-page": productPage}
+          { 'buttons__add-to-cart__selected': isInCart },
+          { 'buttons__add-to-cart--product-page': productPage },
         )}
       >
         {isInCart ? 'Added to cart' : 'Add to cart'}
       </button>
 
       <div
-        onClick={(e) => {
+        onClick={e => {
           e.stopPropagation();
-          if(product) {
-            updateFavList(product)
+          if (product) {
+            updateFavList(product);
           }
         }}
-        className={classNames("buttons__add-to-fav", {"buttons__add-to-fav--product-page": productPage})}
+        className={classNames('buttons__add-to-fav', {
+          'buttons__add-to-fav--product-page': productPage,
+        })}
       >
         <img
           className="fav-icon"

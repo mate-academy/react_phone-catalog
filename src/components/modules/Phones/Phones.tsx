@@ -17,15 +17,11 @@ export const Phones = () => {
   }, []);
 
   if (loading) {
-    return (
-      <Skeleton page='products' />
-    )
+    return <Skeleton page="products" />;
   }
 
   if (error) {
-    return (
-      <PageNotFound />
-    )
+    return <PageNotFound />;
   }
 
   return (

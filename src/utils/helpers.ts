@@ -1,4 +1,4 @@
-import { Product } from "../types/Product";
+import { Product } from '../types/Product';
 
 export function sortBySearchParams(
   products: Product[],
@@ -60,5 +60,7 @@ export function createSlides(products: Product[], width: number): Product[][] {
 }
 
 export function createId(...details: string[]): string {
-  return details.map(detail => detail.toLowerCase().trim().replace(/\s+/g, '-')).join('-');
+  return details
+    .map(detail => detail.toLowerCase().trim().replace(/\s+/g, '-'))
+    .join('-');
 }

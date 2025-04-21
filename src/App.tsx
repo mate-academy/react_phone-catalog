@@ -4,7 +4,6 @@ import { Footer } from './components/shared/Footer/Footer';
 import { Outlet } from 'react-router-dom';
 
 export const App = () => {
-
   return (
     <>
       <Header />

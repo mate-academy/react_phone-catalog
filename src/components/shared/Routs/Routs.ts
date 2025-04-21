@@ -1,5 +1,5 @@
 interface Routes {
-  [key: string]: string,
+  [key: string]: string;
 }
 
 export const routes: Routes = {
