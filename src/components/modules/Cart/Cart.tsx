@@ -1,7 +1,7 @@
 import './Cart.style.scss';
 
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { LocalStorageContext } from '../../../app/Contexts/LocalStorageContext';
 
@@ -16,6 +16,7 @@ import {
 } from '../../../utils/helpers';
 
 export const Cart = () => {
+  const navigate = useNavigate();
   const { cartItems } = useContext(LocalStorageContext);
 
   const totalPrice = calculateTotalPrice(cartItems);
@@ -44,10 +45,10 @@ export const Cart = () => {
                 <p className="cart__checkout__items-quantity">{`Total for ${cartItemsQuantity} items`}</p>
               </div>
 
-              <button className="cart__checkout__button">
-                <Link to={'*'} className="cart__checkout__button__navigation">
+              <button className="cart__checkout__button" onClick={() => navigate('*')}>
+                <p className="cart__checkout__button__navigation">
                   Checkout
-                </Link>
+                </p>
               </button>
             </div>
           </>
