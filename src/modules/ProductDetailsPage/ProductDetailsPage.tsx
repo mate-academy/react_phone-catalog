@@ -10,6 +10,7 @@ import { ProductsGallery } from '../../components/ProductsGallery';
 import { Product } from '../../shared/types/Product';
 import classNames from 'classnames';
 import { NotFoundPage } from '../NotFoundPage';
+import { useGlobalState } from '../../shared/constants/GlobalContext';
 
 type ProductDetails = Phone | Tablet | Accessory;
 
@@ -56,6 +57,30 @@ export const ProductDetailsPage: React.FC = () => {
     'rose gold': '#b76e79',
     'sky-blue': '#87ceeb',
     starlight: '#f0e6d2',
+  };
+  const { state, dispatch } = useGlobalState();
+  const product = products?.find(prod => prod.itemId === productId);
+
+  const handleAddToCart = () => {
+    if (product) {
+      if (state.cart.some(cart => cart.itemId === product.itemId)) {
+        dispatch({ type: 'REMOVE_FROM_CART', payload: product });
+      } else {
+        dispatch({ type: 'ADD_TO_CART', payload: product });
+      }
+    }
+  };
+
+  const handleAddToFavorites = () => {
+    if (product) {
+      if (
+        state.favorites.some(favorite => favorite.itemId === product.itemId)
+      ) {
+        dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: product });
+      } else {
+        dispatch({ type: 'ADD_TO_FAVORITES', payload: product });
+      }
+    }
   };
 
   const handleImageClick = (index: number) => {
@@ -124,7 +149,7 @@ export const ProductDetailsPage: React.FC = () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 300));
 
-      const response = await fetch(`/api/${category}.json`);
+      const response = await fetch(`api/${category}.json`);
 
       if (!response.ok) {
         throw new Error('Failed to fetch products');
@@ -154,7 +179,7 @@ export const ProductDetailsPage: React.FC = () => {
         return;
       }
 
-      const productIds = products.map(product => product.itemId);
+      const productIds = products.map(prod => prod.itemId);
 
       if (!productIds.includes(productId as string)) {
         setHasError(true);
@@ -313,11 +338,26 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
 
               <div className={styles.ProductDetailsPage__bottomButtons}>
-                <button className={styles.ProductDetailsPage__addCart}>
-                  Add to cart
+                <button
+                  onClick={handleAddToCart}
+                  className={classNames(
+                    styles.ProductDetailsPage__addCart,
+                    state.cart.some(cart => cart.itemId === product?.itemId) &&
+                      styles.ProductDetailsPage__addCartSelected,
+                  )}
+                >
+                  {state.cart.some(cart => cart.itemId === product?.itemId)
+                    ? 'Added to cart'
+                    : 'Add to cart'}
                 </button>
                 <button
-                  className={styles.ProductDetailsPage__addFavorite}
+                  onClick={handleAddToFavorites}
+                  className={classNames(
+                    styles.ProductDetailsPage__addFavorite,
+                    state.favorites.some(
+                      fav => fav.itemId === product?.itemId,
+                    ) && styles.ProductDetailsPage__addFavoriteSelected,
+                  )}
                 ></button>
               </div>
 

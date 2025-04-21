@@ -348,6 +348,7 @@
     color: $white;
     font-size: 14px;
     cursor: pointer;
+    box-sizing: border-box;
 
     &:hover {
       box-shadow: 0 3px 13px 0 #17203166;
@@ -369,13 +370,15 @@
     justify-content: center;
 
     background-image: url('img/buttons/add-favorite.svg');
-
+    box-sizing: border-box;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
+    transition: background-image 300ms ease-in-out;
 
     &:hover {
-      background-image: url('img/buttons/add-favorite-hover.svg');
+      border: 1px solid $primary;
+      border-radius: 50%;
     }
 
     &Selected {

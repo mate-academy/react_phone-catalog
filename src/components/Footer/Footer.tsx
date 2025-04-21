@@ -21,6 +21,7 @@ export const Footer = () => {
         <div className={styles.Footer__contacts}>
           <Link
             to={'https://github.com/maksym-kostetskyi'}
+            target="_blank"
             className={styles.Footer__contactsLink}
           >
             Github
@@ -33,6 +34,7 @@ export const Footer = () => {
           </Link>
           <Link
             to={'https://github.com/maksym-kostetskyi'}
+            target="_blank"
             className={styles.Footer__contactsLink}
           >
             Rights
