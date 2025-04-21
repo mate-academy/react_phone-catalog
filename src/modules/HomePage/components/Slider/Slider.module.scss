@@ -92,7 +92,7 @@
       background-repeat: no-repeat;
       background-size: contain;
       background-color: $hover-bg;
-      background-image: url('../../../../../img/buttons/slider-button-left.svg');
+      background-image: url('img/buttons/slider-button-left.svg');
     }
 
     &__container {
@@ -116,7 +116,7 @@
       cursor: pointer;
       border: none;
       background-color: $hover-bg;
-      background-image: url('../../../../../img/buttons/slider-button-right.svg');
+      background-image: url('img/buttons/slider-button-right.svg');
       background-repeat: no-repeat;
       background-size: contain;
     }
@@ -132,7 +132,7 @@
   .Slider {
     &__leftButton {
       grid-column: 1 / 2;
-      background-image: url('../../../../../img/buttons/slider-button-left-1200.svg');
+      background-image: url('img/buttons/slider-button-left-1200.svg');
     }
 
     &__container {
@@ -141,7 +141,7 @@
 
     &__rightButton {
       grid-column: 24 / 25;
-      background-image: url('../../../../../img/buttons/slider-button-right-1200.svg');
+      background-image: url('img/buttons/slider-button-right-1200.svg');
     }
 
     &__buttons {

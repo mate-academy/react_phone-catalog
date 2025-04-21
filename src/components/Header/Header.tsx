@@ -49,7 +49,7 @@ export const Header: React.FC = () => {
         <div className={styles.Header__logoWrapper}>
           <Link to={'/'} onClick={goToTop}>
             <img
-              src="/img/icons/Logo.svg"
+              src="img/icons/Logo.svg"
               alt="company logo"
               className={styles.Header__logo}
             />
@@ -63,7 +63,7 @@ export const Header: React.FC = () => {
         <div className={styles.Header__burgerWrapper}>
           <Link to="#" onClick={toggleMenu}>
             <img
-              src="/img/icons/Menu.svg"
+              src="img/icons/Menu.svg"
               alt="burger menu"
               className={styles.Header__burger}
             />

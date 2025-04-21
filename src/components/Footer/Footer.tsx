@@ -12,20 +12,29 @@ export const Footer = () => {
         <div className={styles.Footer__logoWrapper}>
           <Link to={'/'} onClick={goToTop}>
             <img
-              src="/img/icons/Logo.svg"
+              src="img/icons/Logo.svg"
               alt="company logo"
               className={styles.Footer__logo}
             />
           </Link>
         </div>
         <div className={styles.Footer__contacts}>
-          <Link to={'/'} className={styles.Footer__contactsLink}>
+          <Link
+            to={'https://github.com/maksym-kostetskyi'}
+            className={styles.Footer__contactsLink}
+          >
             Github
           </Link>
-          <Link to={'/'} className={styles.Footer__contactsLink}>
+          <Link
+            to={'mailto:mkost996@gmail.com'}
+            className={styles.Footer__contactsLink}
+          >
             Contacts
           </Link>
-          <Link to={'/'} className={styles.Footer__contactsLink}>
+          <Link
+            to={'https://github.com/maksym-kostetskyi'}
+            className={styles.Footer__contactsLink}
+          >
             Rights
           </Link>
         </div>

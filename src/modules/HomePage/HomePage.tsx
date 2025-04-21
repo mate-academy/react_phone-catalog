@@ -3,7 +3,7 @@ import styles from './HomePage.module.scss';
 import { Slider } from './components/Slider';
 import { NewModels } from './components/NewModels';
 import { Product } from '../../shared/types/Product';
-import productsFromServer from '../../../public/api/products.json';
+import productsFromServer from 'api/products.json';
 import { Categories } from './components/Categories';
 import { HotPrices } from './components/HotPrices';
 

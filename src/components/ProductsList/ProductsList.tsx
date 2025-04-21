@@ -33,7 +33,7 @@ export const ProductsList: React.FC<Props> = ({ category }) => {
     try {
       await new Promise(resolve => setTimeout(resolve, 300));
 
-      const response = await fetch('/api/products.json');
+      const response = await fetch('api/products.json');
 
       if (!response.ok) {
         throw new Error('Failed to fetch products');

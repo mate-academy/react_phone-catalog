@@ -63,7 +63,7 @@ export const Navigation: React.FC<Props> = ({ toggleMenu }) => {
             `${styles.navLinkBottom__Item} ${isActive ? styles.navLinkBottom__ItemActive : ''}`
           }
         >
-          <img src="/img/icons/Favourites-Heart-Like.svg" alt="favorites" />
+          <img src="img/icons/Favourites-Heart-Like.svg" alt="favorites" />
           <div className={styles.navLinkBottom__counter}>
             {state.favorites.length}
           </div>
@@ -75,7 +75,7 @@ export const Navigation: React.FC<Props> = ({ toggleMenu }) => {
             `${styles.navLinkBottom__Item} ${isActive ? styles.navLinkBottom__ItemActive : ''}`
           }
         >
-          <img src="/img/icons/Shopping-Cart.svg" alt="shopping cart" />
+          <img src="img/icons/Shopping-Cart.svg" alt="shopping cart" />
           <div className={styles.navLinkBottom__counter}>{cartAmount}</div>
         </NavLink>
       </div>

@@ -62,21 +62,21 @@
     }
 
     &Left {
-      background-image: url('/img/buttons/arrow-left.svg');
+      background-image: url('img/buttons/arrow-left.svg');
 
       &Disabled,
       &Disabled:hover {
-        background-image: url('/img/buttons/arrow-left-disabled.svg');
+        background-image: url('img/buttons/arrow-left-disabled.svg');
         border: 1px solid $icons;
       }
     }
 
     &Right {
-      background-image: url('/img/buttons/arrow-right.svg');
+      background-image: url('img/buttons/arrow-right.svg');
 
       &Disabled,
       &Disabled:hover {
-        background-image: url('/img/buttons/arrow-right-disabled.svg');
+        background-image: url('img/buttons/arrow-right-disabled.svg');
         border: 1px solid $icons;
       }
     }

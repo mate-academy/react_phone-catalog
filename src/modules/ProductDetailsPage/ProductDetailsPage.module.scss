@@ -368,18 +368,18 @@
     align-items: center;
     justify-content: center;
 
-    background-image: url('../../../img/buttons/add-favorite.svg');
+    background-image: url('img/buttons/add-favorite.svg');
 
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
 
     &:hover {
-      background-image: url('../../../img/buttons/add-favorite-hover.svg');
+      background-image: url('img/buttons/add-favorite-hover.svg');
     }
 
     &Selected {
-      background-image: url('../../../img/buttons/add-favorite-selected.svg');
+      background-image: url('img/buttons/add-favorite-selected.svg');
     }
   }
 
