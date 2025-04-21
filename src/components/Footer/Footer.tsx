@@ -1,11 +1,14 @@
-import { Button } from '../../shared/Button/Button';
+/* eslint-disable max-len */
+import { NavLink } from 'react-router-dom';
 import s from './Footer.module.scss';
+import { ArrowUpSVG } from '../../assets/ArrowUpSVG';
+import { LogoSVG } from '../../assets/LogoSVG';
 
 export const Footer = () => {
   return (
     <footer className={`${s.footer} ${s.container}`}>
       <a href="#" className={`${s.footer__link} ${s.footer__front}`}>
-        <img src="../../icons/logo.svg" alt="logo" className={s.logo} />
+        <LogoSVG />
       </a>
       <ul className={s.footer__list}>
         <li className={s.footer__item}>
@@ -25,10 +28,10 @@ export const Footer = () => {
         </li>
       </ul>
       <div className={s.footer__back}>
-        <a href="#" className={s.footer__back}>
-          Back to top
-        </a>
-        <Button iconName="arrow-up" />
+        <NavLink to="home" className={s.footer__back}>
+          <span>Back to top</span>
+          <ArrowUpSVG />
+        </NavLink>
       </div>
     </footer>
   );

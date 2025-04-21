@@ -36,9 +36,19 @@
   }
 }
 
+.aside {
+  position: fixed;
+  height: calc(100vh - calc($gap * 2.5));
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+}
+
 .nav {
   @include flex-centered;
-
   justify-content: center;
 
   &__list {
@@ -51,12 +61,20 @@
     }
 
     @include on-mobile {
-      display: none;
+      @include flex-centered;
+      padding: calc($gap / 1.5) calc($gap / 2);
+      flex-direction: column;
+      gap: calc($gap / 2);
     }
   }
 
   &__item {
     height: 100%;
+
+    @include on-mobile {
+      height: fit-content;
+      width: 100%;
+    }
   }
 
   &__link {
@@ -67,6 +85,11 @@
     text-transform: uppercase;
     color: $secondary;
     position: relative;
+
+    &_text {
+      display: flex;
+      align-content: center;
+    }
 
     @include use-font(800);
 
@@ -80,6 +103,10 @@
       position: relative;
       align-items: center;
 
+      @include on-mobile {
+        padding-block: 8px;
+      }
+
       &::after {
         content: '';
         position: absolute;
@@ -90,11 +117,24 @@
         background-color: $primary;
         opacity: 0;
         transition: opacity 0.3s;
+
+        @include on-mobile {
+          height: 2px;
+        }
       }
     }
 
     &.isActive > span::after {
       opacity: 1;
+    }
+
+    @include on-mobile {
+      width: 100%;
+      padding-inline: 0;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
     }
   }
 }
@@ -122,6 +162,37 @@
 
     @include on-mobile {
       display: flex; // visible on the mobile screens
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    width: 100%;
+    gap: 1px;
+    padding-bottom: 2px;
+
+    height: calc($gap * 2);
+
+    &_link {
+      width: 100%;
+    }
+
+    &_button {
+      position: relative;
+      aspect-ratio: unset;
+
+      &::after {
+        border: 1px $elements solid;
+        height: 100%;
+      }
+
+      &:hover {
+        &::after {
+          height: calc(100% - 1px);
+          border: 1px $elements solid;
+          border-bottom: 2px $primary solid;
+        }
+      }
     }
   }
 }
