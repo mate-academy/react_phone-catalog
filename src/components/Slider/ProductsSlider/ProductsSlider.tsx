@@ -7,6 +7,7 @@ import Slider from 'react-slick';
 import { ProductCard } from '../../ProductCard';
 import React from 'react';
 import { Product } from '../../../types/Product';
+import './ProductsSlider.scss';
 
 interface Props {
   products: Product[];

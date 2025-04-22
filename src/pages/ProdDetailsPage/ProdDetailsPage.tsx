@@ -1,5 +1,3 @@
-import { SmallSlider2 } from '../../components/Slider/SmallSlider2';
-//import { ProductSlider } from '../../components/ProductSlider';
 import { Product } from '../../types/Product';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/DispatchSelector';
@@ -20,6 +18,7 @@ import { ProductData } from '../../types/ProductData';
 import { useNavigate } from 'react-router-dom';
 
 export const ProdDetailsPage = () => {
+  const [mainImageIndex, setMainImageIndex] = useState(0);
   const [product, setProduct] = useState<ProductData | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [categoryProducts, setCategoryProducts] = useState<ProductData[]>([]);
@@ -138,9 +137,29 @@ export const ProdDetailsPage = () => {
 
       {product && (
         <>
-          <h2>{product.name}</h2>
+          <h2 className={s.productDetails__title}>{product.name}</h2>
           <div className={s.productOverview}>
-            <SmallSlider2 />
+            <div className={s.images}>
+              <div className={s.mainImgContainer}>
+                <img
+                  src={`./${product.images[mainImageIndex]}`}
+                  alt="Main product image"
+                />
+              </div>
+
+              <div className={s.imagePreview}>
+                {product.images.map((img, i) => (
+                  <div
+                    className={`${s.smallImage} ${mainImageIndex === i ? s['smallImage--selected'] : ''}`}
+                    key={img}
+                    onClick={() => setMainImageIndex(i)}
+                  >
+                    <img src={`./${img}`} alt={`Product image ${i + 1}`} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className={s.mainInformation}>
               <div className={s.mainInformation__itemId}>ID: {getId()}</div>
               <div className={s.mainInformation__color}>
@@ -206,7 +225,7 @@ export const ProdDetailsPage = () => {
                 >
                   {isFavourite ? (
                     <img
-                      src="../../../public/img/icons/Favourites\ Filled.png"
+                      src="../../../public/img/icons/heart-filled.svg"
                       alt="Heart"
                     />
                   ) : (
@@ -238,77 +257,83 @@ export const ProdDetailsPage = () => {
                   <span className={s.mainInformation__description__item__name}>
                     Processor
                   </span>
-                  <span className="main-information__description__item__value">
+                  <span className={s.mainInformation__description__item__value}>
                     {product.processor}
                   </span>
                 </li>
-                <li className="main-information__description__item">
-                  <span className="main-information__description__item__name">
+                <li className={s.mainInformation__description__item}>
+                  <span className={s.mainInformation__description__item__name}>
                     Ram
                   </span>
-                  <span className="main-information__description__item__value">
+                  <span className={s.mainInformation__description__item__value}>
                     {product.ram}
                   </span>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="product-description">
-            <div className="product-description__part">
-              <h3 className="product-description__part__title">About</h3>
-              <div className="divider"></div>
+          <div className={s.productDescription}>
+            <div className={s.productDescription__part}>
+              <h3 className={s.productDescription__part__titl}>About</h3>
+              <div className={s.divider}></div>
               {product.description.map((info, index) => (
                 <div key={index}>
-                  <h4 className="product-description__part__subtitle">
+                  <h4 className={s.productDescription__part__subtitle}>
                     {info.title}
                   </h4>
                   {info.text.map((text, i) => (
-                    <p key={i} className="product-description__part__text">
+                    <p key={i} className={s.productDescription__part__text}>
                       {text}
                     </p>
                   ))}
                 </div>
               ))}
             </div>
-            <div className="product-description__part">
-              <h3 className="product-description__part__title">Tech specs</h3>
-              <div className="divider"></div>
-              <div className="product-description__tech">
-                <div className="tech-info">
-                  <span className="tech-info__name">Screen</span>
-                  <span className="tech-info__value">{product.screen}</span>
+            <div className={s.productDescription__part}>
+              <h3 className={s.productDescription__part__title}>Tech specs</h3>
+              <div className={s.divider}></div>
+              <div className={s.productDescription__tech}>
+                <div className={s.techInfo}>
+                  <span className={s.techInfo__name}>Screen</span>
+                  <span className={s.techInfo__value}>{product.screen}</span>
                 </div>
-                <div className="tech-info">
-                  <span className="tech-info__name">Resolution</span>
-                  <span className="tech-info__value">{product.resolution}</span>
+                <div className={s.techInfo}>
+                  <span className={s.techInfo__name}>Resolution</span>
+                  <span className={s.techInfo__value}>
+                    {product.resolution}
+                  </span>
                 </div>
-                <div className="tech-info">
-                  <span className="tech-info__name">Processor</span>
-                  <span className="tech-info__value">{product.processor}</span>
+                <div className={s.techInfo}>
+                  <span className={s.techInfo__name}>Processor</span>
+                  <span className={s.techInfo__value}>{product.processor}</span>
                 </div>
-                <div className="tech-info">
-                  <span className="tech-info__name">RAM</span>
-                  <span className="tech-info__value">{product.ram}</span>
+                <div className={s.techInfo}>
+                  <span className={s.techInfo__name}>RAM</span>
+                  <span className={s.techInfo__value}>{product.ram}</span>
                 </div>
-                <div className="tech-info">
-                  <span className="tech-info__name">Built in memory</span>
-                  <span className="tech-info__value">{product.capacity}</span>
+                <div className={s.techInfo}>
+                  <span className={s.techInfo__name}>Built in memory</span>
+                  <span className={s.techInfo__value}>{product.capacity}</span>
                 </div>
                 {product.camera && (
-                  <div className="tech-info">
-                    <span className="tech-info__name">Camera</span>
-                    <span className="tech-info__value">{product.camera}</span>
+                  <div className={s.techInfo}>
+                    <span className={s.techInfo__name}>Camera</span>
+                    <span className={s.techInfo__value}>{product.camera}</span>
                   </div>
                 )}
                 {product.zoom && (
-                  <div className="tech-info">
-                    <span className="tech-info__name">Zoom</span>
-                    <span className="tech-info__value">{product.zoom}</span>
+                  <div className={s.techInfo}>
+                    <span className={s.techInfo__name}>Zoom</span>
+                    <span className={s.techInfo__value}>{product.zoom}</span>
                   </div>
                 )}
-                <div className="tech-info">
-                  <span className="tech-info__name">Cell</span>
-                  <span className="tech-info__value">{product.cell}</span>
+                <div className={s.techInfo}>
+                  <span className={s.techInfo__name}>Cell</span>
+                  <span className={s.techInfo__value}>
+                    {Array.isArray(product.cell)
+                      ? product.cell.join(', ')
+                      : product.cell}
+                  </span>
                 </div>
               </div>
             </div>

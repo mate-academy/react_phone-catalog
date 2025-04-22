@@ -1,6 +1,7 @@
-@import '../../styles/_mixins';
+@import '../../styles/mixins';
 @import '../../styles/colors';
 @import '../../styles/variables';
+@import '../../styles/general';
 
 .product-description {
   display: flex;
@@ -24,8 +25,12 @@
     gap: 16px;
     flex-grow: 1;
 
-    &--empty {
-      max-width: 100%;
+    &__empty {
+height: 100%;
+width: 20%;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
     }
   }
 
@@ -72,6 +77,7 @@
         width: 32px;
         border: 1px solid $surface-second;
         display: flex;
+
         justify-content: center;
         align-items: center;
         cursor: pointer;
@@ -99,6 +105,9 @@
     padding: 24px;
     margin-bottom: auto;
 
+@include on-desktop {
+  width: 368px;
+}
     &--hidden {
       display: none;
     }
@@ -179,3 +188,5 @@
     margin-top: 40px;
   }
 }
+
+

@@ -1,7 +1,8 @@
-@import '../../styles/_mixins';
+@import '../../styles/mixins';
 @import '../src/App';
 @import '../../styles/colors';
 @import '../../styles/variables';
+@import '../../styles/general';
 
 .header {
   display: flex;
@@ -14,14 +15,13 @@
 
   @include on-desktop {
     height: 64px;
-
   }
 
   &__container {
     position: relative;
     width: 100%;
 
-  @include on-tablet {
+    @include on-tablet {
       display: flex;
     }
   }
@@ -52,19 +52,15 @@
   &__logo {
     cursor: pointer;
     margin-right: 16px;
-    height: 22px;
-    z-index: 10;
+    height: 100%;
     transition: transform $hover-transition ease;
-
 
     &:hover {
       transform: scale(1.1);
     }
 
     @include on-desktop {
-      margin-inline: 15px;
-      height: 28px;
-      width: 80px;
+      margin-right: 24px;
     }
   }
 
@@ -133,7 +129,7 @@
           background: $white;
 
           @include on-tablet {
-            height: 4px;
+            height: 2px;
           }
         }
       }
@@ -142,7 +138,6 @@
     &__icons {
       display: flex;
       width: 100%;
-
 
       @include on-tablet {
         height: 100%;
@@ -179,7 +174,7 @@
             background: $white;
 
             @include on-tablet {
-              height: 4px;
+              height: 2px;
             }
           }
         }
@@ -192,7 +187,7 @@
       justify-content: center;
       align-items: center;
       text-decoration: none;
-      color: $white;
+      color: $gray;
       font-size: 12px;
       line-height: 11px;
       font-weight: 800;
@@ -200,9 +195,23 @@
 
       &:hover {
         transform: scale(1.1);
+        color: $bg-color;
+      }
+      &:has(:first-child.navigation__link--active) {
+        &::after {
+          color: white;
+        }
       }
     }
 
+    &__text {
+      color: $gray;
+      transition: all .3s ease-in-out .1s;
+
+      &:hover {
+        color: $bg-color;
+      }
+    }
     &__list {
       display: flex;
       list-style: none;
@@ -224,11 +233,12 @@
     }
   }
 
-  .badge-items {
+  .badgeItems {
     position: relative;
 
     &__count {
       position: absolute;
+      left: 28px;
       width: 16px;
       height: 16px;
       background: $red;
@@ -246,3 +256,5 @@
     }
   }
 }
+
+

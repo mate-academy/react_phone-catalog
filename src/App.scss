@@ -1,6 +1,8 @@
-@import './styles/variables.scss';
-@import './styles/colors.scss';
+@import './styles/variables';
+@import './styles/colors';
 @import './styles/mixins';
+@import './styles/fonts';
+@import './styles/general';
 
 * {
   box-sizing: border-box;
@@ -50,3 +52,47 @@ body {
     padding: 0 calc((100dvw - 1136px) / 2) 32px;
   }
 }
+
+
+h1 {
+  font-weight: 800;
+  line-height: 41px;
+  font-size: 32px;
+  margin: 24px 0;
+
+  @include on-tablet {
+    line-height: 56px;
+    font-size: 48px;
+    margin: 32px 0;
+
+    &:not(:first-child) {
+      margin: 40px 0 8px;
+    }
+  }
+}
+
+h2 {
+  font-weight: 800;
+  line-height: 31px;
+  font-size: 22px;
+  margin: 24px 0;
+
+  &:has(+ .subtitle) {
+    margin: 24px 0 8px;
+  }
+
+  @include on-tablet {
+    line-height: 41px;
+    font-size: 32px;
+  }
+}
+
+:has(.back) + h2 {
+  margin: 16px 0 32px;
+
+  @include on-tablet {
+    margin: 16px 0 40px;
+  }
+}
+
+

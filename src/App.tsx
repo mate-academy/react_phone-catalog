@@ -7,35 +7,37 @@ import { getAllProducts } from './api/products';
 import { productsSlice } from './utils/products';
 import { useAppDispatch } from './hooks/DispatchSelector';
 
-export const App = () => (
-    const dispatch = useAppDispatch();
-    const { pathname } = useLocation();
+export const App = () => {
+  const dispatch = useAppDispatch();
+  const { pathname } = useLocation();
 
-    useEffect(() => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
-    }, [pathname]);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, [pathname]);
 
-    useEffect(() => {
-      const fetchProducts = async () => {
-        try {
-          const products = await getAllProducts().then(response => response);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const products = await getAllProducts().then(response => response);
 
-          dispatch(productsSlice.actions.setProducts(products));
-        } catch (error) {}
-      };
+        dispatch(productsSlice.actions.setProducts(products));
+      } catch (error) {}
+    };
 
-      fetchProducts();
-    }, [dispatch]);
+    fetchProducts();
+  }, [dispatch]);
 
-  <>
-    <Header />
-    <main className="container">
-      <Outlet />
-    </main>
-    <Footer />
-  </>
-);
+  return (
+    <>
+      <Header />
+      <main className="container">
+        <Outlet />
+      </main>
+      <Footer />
+    </>
+  );
+};

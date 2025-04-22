@@ -22,7 +22,7 @@ export const Category: React.FC<Props> = ({ products }) => {
   return (
     <>
       <div className={styles.categories}>
-        <ul className={styles.categories__list}>
+        <div className={styles.categories__group}>
           <div className={styles.categories__item}>
             <div className={styles.categories__background}>
               <Link to="phones">
@@ -34,7 +34,7 @@ export const Category: React.FC<Props> = ({ products }) => {
               </Link>
             </div>
             <div className={styles.categories__description}>
-              <h2 className={styles.categories__name}>Mobile phones</h2>
+              <h3 className={styles.categories__name}>Mobile phones</h3>
               <p className={styles.categories__count}>{phonesCount} models</p>
             </div>
           </div>
@@ -49,7 +49,7 @@ export const Category: React.FC<Props> = ({ products }) => {
               </Link>
             </div>
             <div className={styles.categories__description}>
-              <h2 className={styles.categories__name}>Tablets</h2>
+              <h3 className={styles.categories__name}>Tablets</h3>
               <p className={styles.categories__count}>{tabletsCount} models</p>
             </div>
           </div>
@@ -64,13 +64,13 @@ export const Category: React.FC<Props> = ({ products }) => {
               </Link>
             </div>
             <div className={styles.categories__description}>
-              <h2 className={styles.categories__name}>Accessories</h2>
+              <h3 className={styles.categories__name}>Accessories</h3>
               <p className={styles.categories__count}>
                 {accessoriesCount} models
               </p>
             </div>
           </div>
-        </ul>
+        </div>
       </div>
     </>
   );

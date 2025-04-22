@@ -113,7 +113,7 @@ export const ProductCard: React.FC<Props> = ({
         >
           {isFavourite ? (
             <img
-              src="../../../public/img/icons/Favourites\ Filled.png"
+              src="../../../public/img/icons/heart-filled.svg"
               alt="Favourite"
             />
           ) : (

@@ -30,7 +30,7 @@ export const ProductPage = () => {
   const categoryTitle = () => {
     switch (path) {
       case 'phones':
-        return 'Phones';
+        return 'Mobile phones';
       case 'tablets':
         return 'Tablets';
       case 'accessories':
@@ -118,7 +118,7 @@ export const ProductPage = () => {
   return (
     <main>
       <Navigates />
-      <h2>{categoryTitle()}</h2>
+      <h1>{categoryTitle()}</h1>
       <p className={s.subtitle}>{productsCount} models</p>
       <div className={s.filters}>
         <div className={s.filters__group}>

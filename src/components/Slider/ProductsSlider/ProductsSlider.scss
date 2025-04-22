@@ -6,22 +6,22 @@
   width: 100%;
   max-height: 439px;
 
-  @media (min-width: $tablet) {
+  @include on-tablet {
     max-height: 512px;
   }
 
-  @media (min-width: $pc) {
+  @include on-desktop {
     max-height: 506px;
   }
 
   .product-card {
     width: 212px !important;
 
-    @media (min-width: $tablet) {
+    @include on-tablet {
       width: 237px !important;
     }
 
-    @media (min-width: $pc) {
+    @include on-desktop {
       width: 272px !important;
     }
   }
@@ -29,11 +29,11 @@
   .slick-list {
     height: 439px;
 
-    @media (min-width: $tablet) {
+    @include on-tablet {
       height: 512px;
     }
 
-    @media (min-width: $pc) {
+    @include on-desktop {
       height: 506px;
     }
   }

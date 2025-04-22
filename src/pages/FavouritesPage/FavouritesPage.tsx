@@ -14,7 +14,7 @@ export const FavouritesPage = () => {
   return (
     <>
       <Navigates />
-      <h2>Favourites</h2>
+      <h1>Favourites</h1>
       <p className={s.subtitle}>{productsCount} models</p>
       <div className={s.products}>
         {products.length === 0 ? (

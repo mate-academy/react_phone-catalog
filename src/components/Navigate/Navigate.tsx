@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/DispatchSelector';
 import { Product } from '../../types/Product';
 import s from './Navigate.module.scss';
+import cn from 'classnames';
 
 export const Navigates = () => {
   const location = useLocation();
@@ -18,7 +19,7 @@ export const Navigates = () => {
     <div className={s.navigate}>
       <Link to="/" className={(s.navigate__item, s.navigate__item__link)}>
         <img
-          src="./img/icons/home.svg"
+          src="./img/icons/Home.svg"
           alt="Home"
           className={s.navigate__item__image}
         />
@@ -36,7 +37,7 @@ export const Navigates = () => {
                 {crumbName}
               </Link>
             ) : (
-              <span className={(s.navigate__item, s.navigate__item__last)}>
+              <span className={cn(s.navigate__item, s.navigate__item__last)}>
                 {crumbName}
               </span>
             )}

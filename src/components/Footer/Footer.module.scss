@@ -1,7 +1,8 @@
-@import '../../styles/_mixins';
+@import '../../styles/mixins';
 @import '../src/App';
 @import '../../styles/colors';
 @import '../../styles/variables';
+@import '../../styles/general';
 
 .footer {
   background: $black;
@@ -54,7 +55,8 @@
   &__item {
     &__link {
       text-decoration: none;
-      color: $white;
+
+      color:$gray;
       font-weight: 800;
       font-size: 12px;
       line-height: 11px;
@@ -63,7 +65,7 @@
       transition: all .3s ease-in-out;
 
       &:hover {
-        color:$gray;
+        color: $white;
       }
     }
   };

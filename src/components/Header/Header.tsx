@@ -2,11 +2,14 @@ import { Link, NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { useState } from 'react';
 import styles from './Header.module.scss';
-//import { useAppSelector } from '../../Hooks/hooks';
+import { useAppSelector } from '../../hooks/DispatchSelector';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  //const { favorites, cart } = useAppSelector(state => state.products);
+  const cart = useAppSelector(state => state.cart);
+  const favourite = useAppSelector(state => state.favourite);
+  const cartItemsCount = cart.length;
+  const favouriteItemsCount = favourite.length;
   const getLinkClasses = ({ isActive }: { isActive: boolean }) => {
     return cn(styles.navigation__link, {
       [styles['navigation__link--active']]: isActive,
@@ -27,7 +30,7 @@ export const Header = () => {
         <div className={styles.header__menu}>
           <Link to="/" onClick={closeMenu}>
             <img
-              src={'../../../public/img/logo/Logo.svg'}
+              src={'./img/icons/logo.svg'}
               alt="Logo"
               className={styles.header__logo}
             />
@@ -92,22 +95,27 @@ export const Header = () => {
               <NavLink
                 to="favourites"
                 className={({ isActive }) =>
-                  `${getLinkClasses({ isActive })} badge-items`
+                  `${getLinkClasses({ isActive })} badgeItems`
                 }
                 onClick={closeMenu}
               >
                 <img
-                  src={'../../../public/img/logo/Heart.svg'}
+                  src={'./img/icons/favourites-heart.svg'}
                   alt="Heart"
                   className={styles.navigation__icon}
                 />
+                {!!favouriteItemsCount && (
+                  <span className={styles.badgeItems__count}>
+                    {favouriteItemsCount}
+                  </span>
+                )}
               </NavLink>
             </div>
             <div className={styles.navigation__icons__item}>
               <NavLink
                 to="cart"
                 className={({ isActive }) =>
-                  `${getLinkClasses({ isActive })} badge-items`
+                  `${getLinkClasses({ isActive })} badgeItems`
                 }
                 onClick={closeMenu}
               >
@@ -116,6 +124,11 @@ export const Header = () => {
                   alt="Cart"
                   className={styles.navigation__icon}
                 />
+                {!!cartItemsCount && (
+                  <span className={styles.badgeItems__count}>
+                    {cartItemsCount}
+                  </span>
+                )}
               </NavLink>
             </div>
           </div>

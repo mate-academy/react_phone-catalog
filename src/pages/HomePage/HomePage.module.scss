@@ -1,29 +1,10 @@
-@import '../../styles/_mixins';
+@import '../../styles/mixins';
 @import '../../styles/colors';
 @import '../../styles/variables';
+@import '../../styles/fonts';
+@import '../../styles/general';
 
 .title{
-  font-weight: 800;
-  line-height: 41px;
-  font-size: 32px;
-  margin: 24px 0;
-
-  @include on-tablet {
-    line-height: 56px;
-    font-size: 48px;
-    margin: 32px 0;
-
-    &:not(:first-child) {
-      margin: 40px 0 8px;
-    }
-  }
-
-  @include on-desktop {
-    margin: 56px 0;
-
-    &:not(:first-child) {
-      margin: 40px 0 8px;
-    }
-  }
+  padding: 16px 0px 40px;
 }
 

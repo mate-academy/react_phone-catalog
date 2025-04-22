@@ -1,26 +1,26 @@
-@import '../../../styles/variables.scss';
-@import '../../../styles/colors.scss';
+@import '../../../styles/variables';
+@import '../../../styles/colors';
 @import '../../../styles/mixins';
 
 
-#SmallSlider {
-  height: 100%;
-}
-html,
 
+html,
 
 .swiper {
   width: 100%;
-  height: 432px;
-
+  height: 100%;
 
 }
 
 .swiper-slide {
+  height: 189px;
   text-align: center;
   font-size: 18px;
   background: #0F1121;
 
+@include on-desktop{
+  height: 432px;
+}
 
 
 
@@ -46,39 +46,63 @@ html,
 .swiper-button-prev {
   background-image: url('../../../public/img/icons/left.svg');
   width: 32px;
-  height: 400px;
+  height: 182px;
   top: 22px;
-  margin-left: 14px;
+  margin-left: -9px;
   background-repeat: no-repeat;
    background-position: center;
   background-size: cover;
   outline: 1px solid #323542;
 transition: all .3s ease-in-out;
+
+@include on-desktop {
+height: 400px;
+}
+
 &:hover {
   outline:1px solid $gray;
   outline-offset:-1px;
 }
+
+@include on-mobile{
+  display: none;
 }
+
+}
+
 .swiper-button-prev::after {
   display: none;
 }
+
 .swiper-button-next{
   background-image: url('../../../public/img/icons/right.svg');
   top: 22px;
   width: 32px;
-  height: 400px;
-  margin-right: 14px;
+  height: 182px;
+  margin-right: -9px;
+  background-repeat: no-repeat;
+  background-position: center;
+ background-size: cover;
 
   outline: 1px solid #323542;
   transition: all .3s ease-in-out;
+
+  @include on-desktop {
+    height: 400px;
+    }
+
   &:hover {
     outline:1px solid $gray;
     outline-offset:-1px;
   }
+
+  @include on-mobile{
+    display: none;
+  }
   }
 
-  .swiper-button-next:after{
-display: none;
+  .swiper-button-next::after{
+    display: none;
   }
 
   .swiper-pagination-bullet {
@@ -92,6 +116,7 @@ display: none;
     transition: background-color 250ms ease;
     cursor: pointer;
   }
+
   .swiper-pagination {
     position: absolute;
     height: 20px;

@@ -1,11 +1,12 @@
 @import '../../styles/variables';
-@import '../../styles/colors.scss';
+@import '../../styles/colors';
 @import '../../styles/mixins';
+@import '../../styles/general';
 
 .categories {
   margin-bottom: 56px;
 
-  &__list {
+  &__group {
     display: flex;
     flex-direction: column;
     gap: 32px;
