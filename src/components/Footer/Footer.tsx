@@ -9,7 +9,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <Link to="/" className={styles.footer__logo} onClick={scrollToTop}>
         <img
-          src={'../../../public/img/logo/Logo.svg'}
+          src={'/public/img/logo/Logo.svg'}
           alt="Logo"
           className={styles.footer__logo}
         />
@@ -50,7 +50,7 @@ export const Footer = () => {
         </div>
         <button className={styles.footer__button} onClick={scrollToTop}>
           <img
-            src="../../../public/img/icons/back.svg"
+            src="/public/img/icons/back.svg"
             alt="To top"
             className={styles.footer__button__icon}
           />

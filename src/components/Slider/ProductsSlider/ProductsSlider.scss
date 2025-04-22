@@ -43,12 +43,12 @@
 
     &.slick-disabled {
       &::after {
-        background-image: url('../../../public/img/icons/arrow-right.svg');
+        background-image: url('/public/img/icons/arrow-right.svg');
       }
     }
 
     &::before {
-      background-image: url('../../../public/img/icons/arrow-right-white.svg');
+      background-image: url('/public/img/icons/arrow-right-white.svg');
     }
   }
 
@@ -57,12 +57,12 @@
 
     &.slick-disabled {
       &::before {
-        background-image: url('../../../public/img/icons/arrow-left.svg');
+        background-image: url('/public/img/icons/arrow-left.svg');
       }
     }
 
     &::before {
-      background-image: url('../../../public/img/icons/arrow-left-white.svg');
+      background-image: url('/public/img/icons/arrow-left-white.svg');
     }
   }
 

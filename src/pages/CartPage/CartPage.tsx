@@ -63,7 +63,7 @@ export const CartPage = () => {
     <main>
       <button className={s.back} onClick={goBack}>
         <div className={s.back__arrow}>
-          <img src="../../../public/img/icons/arr_left.svg" alt="Arrow left" />
+          <img src="/public/img/icons/arr_left.svg" alt="Arrow left" />
         </div>
         <span className={s.back__text}>Back</span>
       </button>
