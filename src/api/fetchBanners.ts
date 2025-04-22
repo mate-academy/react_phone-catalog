@@ -9,6 +9,7 @@ export function getBanners(): Promise<Banner[]> {
     if (!res.ok) {
       throw new Error('Network response was not ok');
     }
+
     return res.json();
   });
 }

@@ -39,9 +39,10 @@
 }
 
 @mixin category-name {
+  position: relative;
   text-transform: uppercase;
   color: $gray-secondary;
-  font-family: 'Mont-Bold';
+  font-family: "Mont-Bold";
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
@@ -56,18 +57,27 @@
   height: 27px;
   transition: transform 0.3s ease;
 
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: $gray-primary;
+    transition: width 0.3s ease;
+  }
+
   &:hover {
     color: $gray-primary;
-    border-bottom: 2px solid $gray-primary;
+
+    &::after {
+      width: 100%;
+    }
   }
 
   @include tablet {
     height: 48px;
-
-    &:hover {
-      color: $gray-primary;
-      border-bottom: 3px solid $gray-primary;
-    }
   }
 
   @include desktop {

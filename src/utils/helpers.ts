@@ -49,6 +49,7 @@ export function createSlides(products: Product[], width: number): Product[][] {
     const step = width < 1199 ? 20 : 4;
 
     const splitIndex = index % step;
+
     if (splitIndex === 0) {
       accum.push([product]);
     } else {

@@ -33,6 +33,7 @@ export const LocalStorageContextProvider = ({
 
   const updateFavList = (product: Product) => {
     const existingItem = favItems.find(favItem => favItem.id === product.id);
+
     if (existingItem) {
       setFavItems(favItems.filter(favItem => favItem.id !== product.id));
     } else {
@@ -66,6 +67,7 @@ export const LocalStorageContextProvider = ({
 
   const handleCartUpdate = (product: Product) => {
     const existingItem = cartItems.find(cartItem => cartItem.id === product.id);
+
     if (existingItem) {
       setCartItems(cartItems.filter(cartItem => cartItem.id !== product.id));
     } else {

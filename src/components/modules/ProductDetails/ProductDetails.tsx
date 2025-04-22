@@ -27,7 +27,7 @@ export const ProductDetails = () => {
   const allProducts = useAppSelector(state => state.products.products);
   const recommendations = allProducts.slice(0, 20);
 
-  const { loading, productDetails, error } = useAppSelector(
+  const { loading, productDetails } = useAppSelector(
     state => state.productDetails,
   );
 
@@ -53,7 +53,9 @@ export const ProductDetails = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (!allProducts || allProducts.length === 0) return;
+    if (!allProducts || allProducts.length === 0) {
+      return;
+    }
 
     const product = allProducts.find(p => p.itemId === productId);
 
@@ -102,6 +104,7 @@ export const ProductDetails = () => {
                           .split(' ')
                           .join('-')
                           .toLowerCase();
+
                         return (
                           <div
                             key={color}
@@ -180,6 +183,7 @@ export const ProductDetails = () => {
                   {productDetails.description.map(
                     (info: { title: string; text: string[] }) => {
                       const { title, text } = info;
+
                       return (
                         <div key={title} className="article__paragraph">
                           <h4 className="article__paragraph__heading">
@@ -210,14 +214,12 @@ export const ProductDetails = () => {
     );
   }
 
-  if (error) {
-    return (
-      <>
-        <div className="product-page__backbutton">
-          <BackButton />
-        </div>
-        <PageNotFound />;
-      </>
-    );
-  }
+  return (
+    <>
+      <div className="product-page__backbutton">
+        <BackButton />
+      </div>
+      <PageNotFound />;
+    </>
+  );
 };

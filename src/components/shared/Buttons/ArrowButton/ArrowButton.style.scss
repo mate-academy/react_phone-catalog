@@ -14,4 +14,8 @@
   &:disabled {
     border: 1px solid $gray-elements;
   }
+
+  &:active {
+    background-color: $gray-elements;
+  }
 }

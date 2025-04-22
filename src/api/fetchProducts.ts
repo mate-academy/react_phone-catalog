@@ -25,6 +25,7 @@ export async function getProduct(
   if (!product) {
     throw new Error(`Product not found`);
   }
+
   return product;
 }
 
@@ -33,6 +34,7 @@ export function getProducts(): Promise<Product[]> {
     if (!res.ok) {
       throw new Error('Network response was not ok');
     }
+
     return res.json();
   });
 }

@@ -28,10 +28,13 @@ export function useLocaleStorage<T>(
 ): [T, (v: T) => void] {
   const [value, setValue] = useState(() => {
     const data = localStorage.getItem(key);
+
     if (data === null) {
       localStorage.setItem(key, JSON.stringify(startValue));
+
       return startValue;
     }
+
     try {
       return JSON.parse(data);
     } catch {
@@ -43,6 +46,7 @@ export function useLocaleStorage<T>(
     localStorage.setItem(key, JSON.stringify(newValue));
     setValue(newValue);
   };
+
   return [value, save];
 }
 
@@ -69,6 +73,7 @@ export function useCatalogSearchParams(itemsNumber: number) {
       const keysToDelete = Array.from(newParams.keys()).filter(
         key => key !== 'sortBy' && key !== 'itemsOnPage',
       );
+
       keysToDelete.forEach(key => newParams.delete(key));
     }
 
@@ -138,6 +143,7 @@ export const useCustomNavigation = () => {
       newProductId !== currentProductId
     ) {
       const newPath = currentPath.replace(currentProductId, newProductId);
+
       navigate(`${newPath}`);
     } else {
       navigate(`${newProductId}`);

@@ -39,6 +39,7 @@ export const Slider: React.FC<Props> = ({ category, products }) => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
     };
+
     window.addEventListener('resize', handleWindowResize);
 
     return () => {
