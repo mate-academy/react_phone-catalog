@@ -120,7 +120,7 @@ export const Header = () => {
                 onClick={closeMenu}
               >
                 <img
-                  src={'../../../public/img/logo/Cart.svg'}
+                  src={'./img/logo/Cart.svg'}
                   alt="Cart"
                   className={styles.navigation__icon}
                 />
