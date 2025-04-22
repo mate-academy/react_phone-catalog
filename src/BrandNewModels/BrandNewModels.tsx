@@ -85,10 +85,10 @@ export const BrandNewModels: React.FC = () => {
   };
 
   return (
-    <div className={styles.productList}>
+    <div className={styles.product_list}>
       <div className={styles.controls}>
         <h1 className={styles.title}>Brand new models</h1>
-        <div className={styles.buttonsGroup}>
+        <div className={styles.buttons_group}>
           <button
             onClick={handlePrev}
             disabled={currentIndex === 0}
@@ -106,14 +106,14 @@ export const BrandNewModels: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.productGrid}>
+      <div className={styles.product_grid}>
         {sortedProducts
           .slice(currentIndex, currentIndex + productsPerPage)
           .map(product => (
             <Link
               to={`/product/${product.id}`}
               key={product.id}
-              className={styles.linkProduct}
+              className={styles.link_product}
             >
               <ProductCard
                 key={product.id}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -13,6 +13,17 @@ export const PicturesSlider = () => {
     { image: 'img/banner-tablets.png', alt: 'Tablets' },
     { image: 'img/banner-accessories.png', alt: 'Accessories' },
   ];
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className={styles.pictures_slider}>
@@ -20,6 +31,7 @@ export const PicturesSlider = () => {
         <img src="../../public/img/Arrow-right.png" alt="" />
       </button>
       <Swiper
+
         style={{
           '--swiper-pagination-color': '#313237',
           '--swiper-pagination-bullet-inactive-color': '#999999',
@@ -29,8 +41,8 @@ export const PicturesSlider = () => {
           '--swiper-pagination-bullet-border-radius': '0px',
           '--swiper-pagination-bullet-horizontal-gap': '6px',
         }}
-        navigation
-        pagination={{ clickable: true }}
+        pagination={!isMobile ? { clickable: true } : false}
+        navigation={!isMobile}
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={50}
         autoplay={{ delay: 5000 }}
