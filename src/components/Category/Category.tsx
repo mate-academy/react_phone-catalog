@@ -27,7 +27,7 @@ export const Category: React.FC<Props> = ({ products }) => {
             <div className={styles.categories__background}>
               <Link to="phones">
                 <img
-                  src={'../../../public/img/category-phones.png'}
+                  src={'./img/category-phones.png'}
                   alt="phones"
                   className={styles.categories__image}
                 />
@@ -42,7 +42,7 @@ export const Category: React.FC<Props> = ({ products }) => {
             <div className={styles.categories__background}>
               <Link to="tablets">
                 <img
-                  src={'../../../public/img/category-tablets.png'}
+                  src={'./img/category-tablets.png'}
                   alt="tablets"
                   className={styles.categories__image}
                 />
@@ -57,7 +57,7 @@ export const Category: React.FC<Props> = ({ products }) => {
             <div className={styles.categories__background}>
               <Link to="accessories">
                 <img
-                  src={'../../../public/img/category-accessories.png'}
+                  src={'./img/category-accessories.png'}
                   alt="accessories"
                   className={styles.categories__image}
                 />
