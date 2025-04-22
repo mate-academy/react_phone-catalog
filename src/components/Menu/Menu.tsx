@@ -1,12 +1,24 @@
 import React from 'react';
 import style from './Menu.module.scss';
 import { NavLink } from 'react-router-dom';
-import { Favorite } from '../../shared/Favorite/Favorite';
-import { ShopBag } from '../../shared/ShopBag/ShopBag';
+import favoriteIcon from '../../shared/icons/favourites-heart-like.svg';
+import cartBagIcon from '../../shared/icons/shopping-bag-cart.svg';
+import { useCart } from '../../hooks/useCart';
 
 export const Menu: React.FC = () => {
+  const cartContext = useCart();
+
+  if (!cartContext) {
+    return 'CartContext is not loading';
+  }
+
+  const { cart, favourite, isOpenMenu } = cartContext;
+
+  // eslint-disable-next-line no-console
+  console.log(isOpenMenu);
+
   return (
-    <div className={style.content}>
+    <div className={`${style.content} ${isOpenMenu ? `${style.isOpen}` : ''}`}>
       <div className={style.navigation}>
         <ul className={style.navList}>
           <li className={style.navItem}>
@@ -56,12 +68,40 @@ export const Menu: React.FC = () => {
       </div>
 
       <div className={style.userInetrface}>
-        <NavLink to="/favorite" className={style.UIfavorite}>
-          <Favorite />
+        <NavLink
+          to="/favourite"
+          className={({ isActive }) =>
+            isActive
+              ? `${style.active} ${style.UIfavorite}`
+              : `${style.UIfavorite}`
+          }
+        >
+          <div className={style.containerIcon}>
+            <img
+              src={favoriteIcon}
+              alt="favourite icon"
+              className={style.icon}
+            />
+            {favourite.length > 0 && (
+              <span className={style.countProduct}>{favourite.length}</span>
+            )}
+          </div>
         </NavLink>
 
-        <NavLink to="/bag" className={style.UIshopBag}>
-          <ShopBag />
+        <NavLink
+          to="/bag"
+          className={({ isActive }) =>
+            isActive
+              ? `${style.active} ${style.UIshopBag}`
+              : `${style.UIshopBag}`
+          }
+        >
+          <div className={style.containerIcon}>
+            <img src={cartBagIcon} alt="bag icon" className={style.icon} />
+            {cart.length > 0 && (
+              <span className={style.countProduct}>{cart.length}</span>
+            )}
+          </div>
         </NavLink>
       </div>
     </div>

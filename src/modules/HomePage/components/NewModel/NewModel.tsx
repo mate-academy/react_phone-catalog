@@ -13,16 +13,18 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import arrowLeft from '../../../../shared/assets/icons/chevron-arrow-left.svg';
-// eslint-disable-next-line max-len
-import arrowRight from '../../../../shared/assets/icons/chevron-arrow-right.svg';
-import phoneFromServer from '../../../../../public/api/phones.json';
-import { ProductCart } from '../../../../components/ProductCart/ProductCart';
-import { Product } from '../../../../type/Product';
+import arrowLeft from '../../../../shared/icons/chevron-arrow-left.svg';
+import arrowRight from '../../../../shared/icons/chevron-arrow-right.svg';
 import { useMediaQuery } from '@uidotdev/usehooks';
+import { ProductCart } from '../../../../components/ProductCart/ProductCart';
+import { Product } from '../../../../types/Products';
 
-export const NewModel: React.FC = () => {
-  const phones: Product[] = phoneFromServer.slice(-8);
+type Props = {
+  products: Product[];
+  isDiscount: boolean;
+};
+
+export const NewModel: React.FC<Props> = ({ products, isDiscount }) => {
   const isTablet = useMediaQuery('(min-width: 640px)');
   const isDesctop = useMediaQuery('(min-width: 1200px)');
 
@@ -69,13 +71,9 @@ export const NewModel: React.FC = () => {
           onSlideChange={() => console.log('slide change')}
         >
           <div className={style.slideContent}>
-            {phones.map(phone => (
-              <SwiperSlide key={phone.id}>
-                <ProductCart
-                  product={phone}
-                  isDiscount={false}
-                  key={phone.id}
-                />
+            {products.map(phone => (
+              <SwiperSlide key={phone.id} className={style.slides}>
+                <ProductCart product={phone} isDiscount={isDiscount} />
               </SwiperSlide>
             ))}
           </div>

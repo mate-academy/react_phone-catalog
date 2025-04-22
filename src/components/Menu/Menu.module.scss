@@ -1,15 +1,25 @@
-@import '../../style/global';
+@import '../../assets/global';
 
 .content {
-  height: calc(100vh - 49px - 250px);
+  height: calc(100vh - 260px);
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+
+  @include on-tablet  {
+    height: calc(100vh - 99px);
+  }
+}
+
+.isOpen {
+  transform: translateX(0);
 }
 
 .navigation {
-  padding-top: 24px;
+  padding-top: calc(49px + 24px);
 }
 
 .navList {
@@ -21,7 +31,6 @@
   margin: 0;
 
   gap: 16px;
-
 }
 
 .navLink {
@@ -36,9 +45,9 @@
 }
 
 .userInetrface {
- display: flex;
+  display: flex;
 
- border-top: 1px solid $midle-gray-color;
+  border-top: 1px solid $midle-gray-color;
 }
 
 .UIfavorite {
@@ -68,7 +77,6 @@
   letter-spacing: 4%;
   text-transform: uppercase;
 
-
   padding-block: 26px;
 
   position: relative;
@@ -83,4 +91,34 @@
     bottom: 0;
     left: 0;
   }
+}
+
+.containerIcon {
+  position: relative;
+}
+
+.icon {
+  display: flex;
+}
+
+.countProduct {
+  width: 14px;
+  height: 14px;
+  background-color: $red-color;
+  border: 1px solid $hight-dark-color;
+
+  border-radius: 50%;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $light-color;
+
+  position: absolute;
+
+  top: -10px;
+  left: 7px;
 }

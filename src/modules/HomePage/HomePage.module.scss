@@ -1,7 +1,5 @@
-@import '../../style/global';
+@import '../../assets/global';
 
-.page {
-  // height: 100vh;
-}
-
-
+.container {
+  background-color: $background-color;
+ }

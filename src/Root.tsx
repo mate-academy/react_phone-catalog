@@ -1,14 +1,17 @@
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
-import { App } from './App';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { HomePage } from './modules/HomePage/HomePage';
-import { Phones } from './modules/Phones/Phones';
-import { Tablets } from './modules/Tablets/Tablets';
-import { Accessories } from './modules/Accessories/Accessories';
-import { ShopingCardPage } from './modules/ShoppingCartPage/ShopingCardPage';
-import { FavoritePage } from './modules/FavoritePage/FavoritePage';
+import { App } from './App';
+import { Phones } from './modules/PhonePage/PhonesPage';
+import { Tablets } from './modules/TabletsPage/TabletsPage';
+import { Accessories } from './modules/AccessoriesPage/AccessoriesPage';
+import { CartPage } from './modules/CartPage/CartPage';
+import { CartProvider } from './hooks/useCart';
+import { FavoritePage } from './modules/FavouritePage/FavouritePage';
 import { Menu } from './components/Menu/Menu';
-import { CartProvider } from './modules/HomePage/hook/CartContext';
+// eslint-disable-next-line max-len
+import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
 export const Root: React.FC = () => {
   return (
@@ -18,11 +21,18 @@ export const Root: React.FC = () => {
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
             <Route path="phones" element={<Phones />} />
+            <Route path="phones/:phoneId" element={<ProductDetailsPage />} />
             <Route path="tablets" element={<Tablets />} />
+            <Route path="tablets/:tabletId" element={<ProductDetailsPage />} />
             <Route path="accessories" element={<Accessories />} />
-            <Route path="favorite" element={<FavoritePage />} />
-            <Route path="bag" element={<ShopingCardPage />} />
+            <Route
+              path="accessories/:accessoriesId"
+              element={<ProductDetailsPage />}
+            />
+            <Route path="bag" element={<CartPage />} />
+            <Route path="favourite" element={<FavoritePage />} />
             <Route path="menu" element={<Menu />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </HashRouter>

@@ -7,7 +7,7 @@ export const HeroSection: React.FC = () => {
   return (
     <div className={style.hero}>
       <div className={style.wrapper}>
-        <h1 className={style.title}>Welcome to Nice Gadgets store!</h1>
+        <h1 className={style.title}>Welcome to Nice Gadgets stores!</h1>
 
         <Slider />
       </div>
