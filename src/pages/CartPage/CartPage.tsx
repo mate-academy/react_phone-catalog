@@ -111,7 +111,7 @@ export const CartPage = () => {
           ))}
           {!productsToShow.length && (
             <img
-              src="../../../public/img/cart-is-empty.png"
+              src="./img/cart-is-empty.png"
               alt="Cart is empty"
               className={s.cart__list__empty}
             />

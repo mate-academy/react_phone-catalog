@@ -130,7 +130,7 @@ export const ProdDetailsPage = () => {
       <Navigates />
       <button className={s.back} onClick={goBack}>
         <div className={s.back__arrow}>
-          <img src="/public/img/icons/arr_left.svg" alt="Arrow left" />
+          <img src="./img/icons/arr_left.svg" alt="Arrow left" />
         </div>
         <span className={s.back__text}>Back</span>
       </button>
@@ -224,12 +224,9 @@ export const ProdDetailsPage = () => {
                   onClick={handleAddToFavourite}
                 >
                   {isFavourite ? (
-                    <img src="/public/img/icons/heart-filled.svg" alt="Heart" />
+                    <img src="./img/icons/heart-filled.svg" alt="Heart" />
                   ) : (
-                    <img
-                      src="../../../public/img/icons/Favourites.png"
-                      alt="Heart"
-                    />
+                    <img src="./img/icons/Favourites.png" alt="Heart" />
                   )}
                 </div>
               </div>
