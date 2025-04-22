@@ -112,9 +112,9 @@ export const ProductCard: React.FC<Props> = ({
           onClick={handleAddToFavourite}
         >
           {isFavourite ? (
-            <img src="/public/img/icons/heart-filled.svg" alt="Favourite" />
+            <img src="./img/icons/heart-filled.svg" alt="Favourite" />
           ) : (
-            <img src="/public/img/icons/Favourites.png" alt="Favourite" />
+            <img src="./img/icons/Favourites.png" alt="Favourite" />
           )}
         </div>
       </div>
