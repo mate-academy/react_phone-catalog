@@ -1,4 +1,5 @@
 @use './globals.scss' as *;
+@use './globals/reset' as *;
 @import 'normalize.css';
 
 body {
