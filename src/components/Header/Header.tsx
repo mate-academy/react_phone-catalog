@@ -38,13 +38,13 @@ export const Header = () => {
           <div className={styles.header__burger}>
             {isMenuOpen ? (
               <img
-                src="/public/img/logo/Close.svg"
+                src="./img/logo/Close.svg"
                 alt="Close menu"
                 onClick={handleMenu}
               />
             ) : (
               <img
-                src="/public/img/logo/Menu.svg"
+                src="./img/logo/Menu.svg"
                 alt="Open menu"
                 onClick={handleMenu}
               />
@@ -120,7 +120,7 @@ export const Header = () => {
                 onClick={closeMenu}
               >
                 <img
-                  src={'/public/img/logo/Cart.svg'}
+                  src={'./img/logo/Cart.svg'}
                   alt="Cart"
                   className={styles.navigation__icon}
                 />

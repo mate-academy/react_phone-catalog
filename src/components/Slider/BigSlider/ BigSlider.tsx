@@ -32,13 +32,13 @@ export default function BigSlider() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="/img/banner-phones.png" />
+          <img src="./img/banner-phones.png" />
         </SwiperSlide>
         <SwiperSlide>
           <img src="./img/banner-accessories.png" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="../../../public/img/banner-tablets.png" />
+          <img src="./img/banner-tablets.png" />
         </SwiperSlide>
       </Swiper>
     </>
