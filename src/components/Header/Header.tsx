@@ -1,29 +1,27 @@
-import { NavLink } from 'react-router-dom';
+/* eslint-disable max-len */
+import { NavLink, Link } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
 import { useCart } from '../../Functional/CartContext/CartContext';
 
 export const Header = () => {
-  const { cart } = useCart();
+  const { cart, favorites } = useCart();
+
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar-item', {
       'is-active': isActive,
     });
 
-  const handlePacketClick = () => {
-    alert('Open Cart!');
-  };
-
   return (
     <header className="header">
       <div className="header__top">
         <div className="header__logo">
-          <a href="#" className="header__logo">
-            <img src="/figmaLogo/Logo.svg" alt="NiceGadgets_logo" />
-          </a>
+          <Link to="/">
+            <img src="/figmaLogo/Logo.svg" alt="NiceGadgets logo" />
+          </Link>
         </div>
 
-        <div className="header__nav">
+        <nav className="header__nav">
           <NavLink to="/" className={getLinkClass}>
             HOME
           </NavLink>
@@ -36,28 +34,37 @@ export const Header = () => {
           <NavLink to="/accessories" className={getLinkClass}>
             ACCESSORIES
           </NavLink>
-        </div>
+        </nav>
 
         <div className="header__head--logo">
           <div className="header__heart">
-            <a href="#" className="header__heart__top"></a>
+            <Link to="/favorites" className="header__heart__top">
+              <img
+                src="/figmaLogo/HeartLove.svg"
+                alt="Favorites"
+                className="header__heart__top__btn"
+              />
+              {favorites.length > 0 && (
+                <span className="cart-count cart-count--favorites">
+                  {favorites.length}
+                </span>
+              )}
+            </Link>
           </div>
 
           <div className="header__packet">
-            <a
-              href="#"
-              className="header__packet__top"
-              onClick={handlePacketClick}
-            >
+            <Link to="/cart" className="header__packet__top">
               <img
                 src="/figmaLogo/Packet.svg"
-                alt="Packet icon"
+                alt="Cart"
                 className="header__packet__top__btn"
               />
               {cart.length > 0 && (
-                <span className="cart-count">{cart.length}</span>
+                <span className="cart-count cart-count--cart">
+                  {cart.length}
+                </span>
               )}
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 @use 'src/mixins' as *;
 
 .footer {
+  margin-top: 81px;
   background-color: #0f1120;
   padding: 24px 40px;
   color: white;
@@ -44,7 +45,7 @@
       flex-direction: row;
       gap: 32px;
     }
-    
+
     @include on-desktop {
       flex-direction: row;
       gap: 32px;

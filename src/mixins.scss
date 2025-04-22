@@ -1,17 +1,17 @@
 @mixin on-phone {
-  @media (max-width: 500px) {
+  @media (max-width: 639px) {
     @content;
   }
 }
 
 @mixin on-tablet {
-  @media (min-width: 500px) and (max-width: 1024px) {
+  @media (min-width: 640px) and (max-width: 1199px) {
     @content;
   }
 }
 
 @mixin on-desktop {
-  @media (min-width: 1025px) {
+  @media (min-width: 1200px) {
     @content;
   }
 }
@@ -43,3 +43,15 @@
   }
 }
 
+@mixin card-box {
+  background-color: #2a2a3e;
+  border-radius: 12px;
+}
+
+@mixin button-base {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}

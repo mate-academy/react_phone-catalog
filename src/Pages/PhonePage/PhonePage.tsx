@@ -5,7 +5,18 @@ import { Phone } from '../../Interface';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
 
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  color: string;
+  capacity?: string;
+  quantity: number;
+}
+
 export const PhonePage = () => {
+  const { addToCart, toggleFavorite, cart, favorites } = useCart();
   const [phones, setPhones] = useState<Phone[]>([]);
   const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
   const [loading, setLoading] = useState(true);
@@ -14,13 +25,12 @@ export const PhonePage = () => {
   const [sortBy, setSortBy] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredPhones.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(filteredPhones.length / itemsPerPage);
-
-  const { addToCart } = useCart();
 
   useEffect(() => {
     setLoading(true);
@@ -101,6 +111,25 @@ export const PhonePage = () => {
     return pages;
   };
 
+  const handleAddToCart = (phone: Phone) => {
+    const selectedColor = phone.color || 'default';
+    const cartItem: CartItem = {
+      id: phone.id,
+      name: phone.name,
+      price: phone.priceDiscount,
+      image: `/${phone.images[0]}`,
+      color: selectedColor,
+      capacity: phone.capacity,
+      quantity: 1,
+    };
+
+    addToCart(cartItem);
+  };
+
+  const handleImageError = (imageSrc: string) => {
+    setImageError(prev => ({ ...prev, [imageSrc]: true }));
+  };
+
   if (loading) {
     return (
       <section className="section">
@@ -149,66 +178,96 @@ export const PhonePage = () => {
           <p className="phone__no-results">No phones found.</p>
         ) : (
           currentItems.map(phone => (
-            <Link
-              to={`/products/${phone.id}`}
-              key={phone.id}
-              className="phone__card"
-            >
-              <img
-                src={'/' + phone.images[0]}
-                alt={phone.name}
-                className="phone__card-image"
-                onError={e =>
-                  e.currentTarget.setAttribute('src', '/img/page-not-found.png')
-                }
-              />
-              <h3 className="phone__card-title">{phone.name}</h3>
-              <div className="phone__card-prices">
-                <span className="phone__card-price">
-                  ${phone.priceDiscount}
-                </span>
-                {phone.priceRegular > phone.priceDiscount && (
-                  <span className="phone__card-old-price">
-                    ${phone.priceRegular}
-                  </span>
-                )}
-              </div>
-              <div className="phone__card-specs">
-                <div className="phone__card-spec">
-                  <span className="phone__card-spec-label">Screen</span>
-                  <span className="phone__card-spec-value">{phone.screen}</span>
-                </div>
-                <div className="phone__card-spec">
-                  <span className="phone__card-spec-label">Capacity</span>
-                  <span className="phone__card-spec-value">
-                    {phone.capacity}
+            <div key={phone.id} className="phone__card">
+              <Link to={`/products/${phone.id}`}>
+                <img
+                  src={
+                    imageError[`/${phone.images[0]}`]
+                      ? '/public/img/page-not-found.png'
+                      : `/${phone.images[0]}`
+                  }
+                  alt={phone.name}
+                  className="phone__card-image"
+                  onError={() => handleImageError(`/${phone.images[0]}`)}
+                />
+                <h3 className="phone__card-title">{phone.name}</h3>
+                <div className="phone__card-prices">
+                  <span className="phone__card-price">
+                    ${phone.priceDiscount}
                   </span>
                 </div>
-                <div className="phone__card-spec">
-                  <span className="phone__card-spec-label">RAM</span>
-                  <span className="phone__card-spec-value">{phone.ram}</span>
+                <div className="phone__card-specs">
+                  <div className="phone__card-spec">
+                    <span className="phone__card-spec-label">Screen</span>
+                    <span className="phone__card-spec-value">
+                      {phone.screen}
+                    </span>
+                  </div>
+                  <div className="phone__card-spec">
+                    <span className="phone__card-spec-label">Capacity</span>
+                    <span className="phone__card-spec-value">
+                      {phone.capacity}
+                    </span>
+                  </div>
+                  <div className="phone__card-spec">
+                    <span className="phone__card-spec-label">RAM</span>
+                    <span className="phone__card-spec-value">{phone.ram}</span>
+                  </div>
                 </div>
-              </div>
+              </Link>
               <div className="phone__card-actions">
                 <button
-                  className="phone__card-btn phone__card-btn--add"
+                  className={`phone__card-btn phone__card-btn--add ${
+                    cart.some(
+                      item =>
+                        item.id === phone.id &&
+                        item.color === phone.color &&
+                        item.capacity === phone.capacity,
+                    )
+                      ? 'added'
+                      : ''
+                  }`}
                   onClick={e => {
                     e.preventDefault();
-                    addToCart(phone);
+                    handleAddToCart(phone);
+                  }}
+                  disabled={cart.some(
+                    item =>
+                      item.id === phone.id &&
+                      item.color === phone.color &&
+                      item.capacity === phone.capacity,
+                  )}
+                >
+                  {cart.some(
+                    item =>
+                      item.id === phone.id &&
+                      item.color === phone.color &&
+                      item.capacity === phone.capacity,
+                  )
+                    ? 'Added to cart'
+                    : 'Add to cart'}
+                </button>
+                <button
+                  className={`phone__card-btn phone__card-btn--favorite ${
+                    favorites.includes(phone.id) ? 'favorite--active' : ''
+                  }`}
+                  onClick={e => {
+                    e.preventDefault();
+                    toggleFavorite(phone.id);
                   }}
                 >
-                  Add to cart
-                </button>
-
-                <button className="phone__card-btn phone__card-btn--favorite">
                   <img
-                    src="/figmaLogo/HeartLove.svg"
+                    src={
+                      favorites.includes(phone.id)
+                        ? '/figmaLogo/ActiveHeart.svg'
+                        : '/figmaLogo/HeartLove.svg'
+                    }
                     alt="Favorite"
                     className="phone__card-btn-icon"
                   />
                 </button>
               </div>
-            </Link>
+            </div>
           ))
         )}
       </div>
@@ -221,7 +280,6 @@ export const PhonePage = () => {
         >
           {'<'}
         </button>
-
         {getPageNumbers().map((page, index) => (
           <button
             key={index}
@@ -232,7 +290,6 @@ export const PhonePage = () => {
             {page}
           </button>
         ))}
-
         <button
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}

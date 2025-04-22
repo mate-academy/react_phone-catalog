@@ -4,8 +4,20 @@ import './TabletPage.scss';
 import { Tablet } from '../../Interface';
 import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../Functional/CartContext/CartContext';
+
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  color: string;
+  capacity?: string;
+  quantity: number;
+}
 
 export const TabletPage = () => {
+  const { addToCart, toggleFavorite, cart, favorites } = useCart();
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [filteredTablets, setFilteredTablets] = useState<Tablet[]>([]);
   const [loading, setLoading] = useState(true);
@@ -14,11 +26,56 @@ export const TabletPage = () => {
   const [sortBy, setSortBy] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredTablets.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(filteredTablets.length / itemsPerPage);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch('/api/tablets.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(
+            `Failed to fetch tablets.json: ${response.status} ${response.statusText}`,
+          );
+        }
+
+        return response.json();
+      })
+      .then(data => {
+        setTablets(data);
+        setFilteredTablets(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.message || 'Failed to load tablets');
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    let updated = [...tablets];
+
+    if (searchTerm) {
+      updated = updated.filter(item =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()),
+      );
+    }
+
+    if (sortBy === 'priceLow') {
+      updated.sort((a, b) => a.priceDiscount - b.priceDiscount);
+    } else if (sortBy === 'priceHigh') {
+      updated.sort((a, b) => b.priceDiscount - a.priceDiscount);
+    } else if (sortBy === 'newest') {
+      updated.sort((a, b) => b.year - a.year);
+    }
+
+    setFilteredTablets(updated);
+    setCurrentPage(1);
+  }, [searchTerm, sortBy, tablets]);
 
   const getPageNumbers = () => {
     const maxPagesToShow = 5;
@@ -48,49 +105,24 @@ export const TabletPage = () => {
     return pages;
   };
 
-  useEffect(() => {
-    let updated = [...tablets];
+  const handleAddToCart = (tablet: Tablet) => {
+    const selectedColor = tablet.color || 'default';
+    const cartItem: CartItem = {
+      id: tablet.id,
+      name: tablet.name,
+      price: tablet.priceDiscount,
+      image: `/${tablet.images[0]}`,
+      color: selectedColor,
+      capacity: tablet.capacity,
+      quantity: 1,
+    };
 
-    if (searchTerm) {
-      updated = updated.filter(item =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase()),
-      );
-    }
+    addToCart(cartItem);
+  };
 
-    if (sortBy === 'priceLow') {
-      updated.sort((a, b) => a.priceDiscount - b.priceDiscount);
-    } else if (sortBy === 'priceHigh') {
-      updated.sort((a, b) => b.priceDiscount - a.priceDiscount);
-    } else if (sortBy === 'newest') {
-      updated.sort((a, b) => b.year - a.year);
-    }
-
-    setFilteredTablets(updated);
-    setCurrentPage(1);
-  }, [searchTerm, sortBy, tablets]);
-
-  useEffect(() => {
-    setLoading(true);
-    fetch('/api/tablets.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(
-            `Failed to fetch tablets.json: ${response.status} ${response.statusText}`,
-          );
-        }
-
-        return response.json();
-      })
-      .then(data => {
-        setTablets(data);
-        setFilteredTablets(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message || 'Failed to load tablets');
-        setLoading(false);
-      });
-  }, []);
+  const handleImageError = (imageSrc: string) => {
+    setImageError(prev => ({ ...prev, [imageSrc]: true }));
+  };
 
   if (loading) {
     return (
@@ -138,64 +170,98 @@ export const TabletPage = () => {
           <p className="tablets__no-results">No tablets found.</p>
         ) : (
           currentItems.map(tablet => (
-            <Link
-              to={`/products/${tablet.id}`}
-              key={tablet.id}
-              className="tablets__card"
-            >
-              <img
-                src={'/' + tablet.images[0]}
-                alt={tablet.name}
-                className="tablets__card-image"
-                onError={e =>
-                  e.currentTarget.setAttribute(
-                    'src',
-                    '/public/img/page-not-found.png',
-                  )
-                }
-              />
-              <h3 className="tablets__card-title">{tablet.name}</h3>
-              <div className="tablets__card-prices">
-                <span className="tablets__card-price">
-                  ${tablet.priceDiscount}
-                </span>
-                {tablet.priceRegular > tablet.priceDiscount && (
-                  <span className="tablets__card-old-price">
-                    ${tablet.priceRegular}
-                  </span>
-                )}
-              </div>
-              <div className="tablets__card-specs">
-                <div className="tablets__card-spec">
-                  <span className="tablets__card-spec-label">Screen</span>
-                  <span className="tablets__card-spec-value">
-                    {tablet.screen}
+            <div key={tablet.id} className="tablets__card">
+              <Link to={`/products/${tablet.id}`}>
+                <img
+                  src={
+                    imageError[`/${tablet.images[0]}`]
+                      ? '/public/img/page-not-found.png'
+                      : `/${tablet.images[0]}`
+                  }
+                  alt={tablet.name}
+                  className="tablets__card-image"
+                  onError={() => handleImageError(`/${tablet.images[0]}`)}
+                />
+                <h3 className="tablets__card-title">{tablet.name}</h3>
+                <div className="tablets__card-prices">
+                  <span className="tablets__card-price">
+                    ${tablet.priceDiscount}
                   </span>
                 </div>
-                <div className="tablets__card-spec">
-                  <span className="tablets__card-spec-label">Capacity</span>
-                  <span className="tablets__card-spec-value">
-                    {tablet.capacity}
-                  </span>
+                <div className="tablets__card-specs">
+                  <div className="tablets__card-spec">
+                    <span className="tablets__card-spec-label">Screen</span>
+                    <span className="tablets__card-spec-value">
+                      {tablet.screen}
+                    </span>
+                  </div>
+                  <div className="tablets__card-spec">
+                    <span className="tablets__card-spec-label">Capacity</span>
+                    <span className="tablets__card-spec-value">
+                      {tablet.capacity}
+                    </span>
+                  </div>
+                  <div className="tablets__card-spec">
+                    <span className="tablets__card-spec-label">RAM</span>
+                    <span className="tablets__card-spec-value">
+                      {tablet.ram}
+                    </span>
+                  </div>
                 </div>
-                <div className="tablets__card-spec">
-                  <span className="tablets__card-spec-label">RAM</span>
-                  <span className="tablets__card-spec-value">{tablet.ram}</span>
-                </div>
-              </div>
+              </Link>
               <div className="tablets__card-actions">
-                <button className="tablets__card-btn tablets__card-btn--add">
-                  Add to cart
+                <button
+                  className={`tablets__card-btn tablets__card-btn--add ${
+                    cart.some(
+                      item =>
+                        item.id === tablet.id &&
+                        item.color === tablet.color &&
+                        item.capacity === tablet.capacity,
+                    )
+                      ? 'added'
+                      : ''
+                  }`}
+                  onClick={e => {
+                    e.preventDefault();
+                    handleAddToCart(tablet);
+                  }}
+                  disabled={cart.some(
+                    item =>
+                      item.id === tablet.id &&
+                      item.color === tablet.color &&
+                      item.capacity === tablet.capacity,
+                  )}
+                >
+                  {cart.some(
+                    item =>
+                      item.id === tablet.id &&
+                      item.color === tablet.color &&
+                      item.capacity === tablet.capacity,
+                  )
+                    ? 'Added to cart'
+                    : 'Add to cart'}
                 </button>
-                <button className="tablets__card-btn tablets__card-btn--favorite">
+                <button
+                  className={`tablets__card-btn tablets__card-btn--favorite ${
+                    favorites.includes(tablet.id) ? 'favorite--active' : ''
+                  }`}
+                  onClick={e => {
+                    e.preventDefault();
+                    toggleFavorite(tablet.id);
+                  }}
+                >
                   <img
-                    src="/figmaLogo/HeartLove.svg"
+                    src={
+                      favorites.includes(tablet.id)
+                        ? '/figmaLogo/ActiveHeart.svg'
+                        : '/figmaLogo/HeartLove.svg'
+                    }
                     alt="Favorite"
                     className="tablets__card-btn-icon"
                   />
                 </button>
               </div>
-            </Link>
+            </div>
           ))
         )}
       </div>
@@ -207,7 +273,6 @@ export const TabletPage = () => {
         >
           {'<'}
         </button>
-
         {getPageNumbers().map((page, index) => (
           <button
             key={index}
@@ -218,7 +283,6 @@ export const TabletPage = () => {
             {page}
           </button>
         ))}
-
         <button
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}

@@ -1,5 +1,4 @@
-@use 'src/mixins' as *;
-
+@use '../../mixins.scss' as *;
 .header {
   box-sizing: border-box;
   height: auto;
@@ -12,6 +11,7 @@
   margin: 0 auto;
   width: 100%;
   border: 1px solid #3B3E4A;
+
 
   &__burger-menu {
     width: 24px;
@@ -50,8 +50,7 @@
   &__logo {
     display: flex;
     align-items: center;
-  padding: 10px 20px;
-
+    padding:  10px 10px;
   }
 
   &__nav {
@@ -92,6 +91,7 @@
 
   &__heart,
   &__packet {
+    position: relative;
     border: 1px solid #3B3E4A;
     cursor: pointer;
     padding: 30px;
@@ -115,7 +115,6 @@
       height: 24px;
       background-size: contain;
       background-repeat: no-repeat;
-      background-image: url('/figmaLogo/HeartLove.svg');
     }
   }
 
@@ -179,11 +178,26 @@
 
 .cart-count {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: red;
+  top: 16px;
+  right: 15px;
+  width: 12px;
+  height: 12px;
+  background-color: #eb5757;
   color: white;
+  font-size: 8px;
+  font-weight: bold;
   border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
+  background-color: #e74c3c;
+
+  @include on-desktop {
+    width: 17px;
+    height: 17px;
+    top: 25px;
+    right: 20px;
+  }
 }

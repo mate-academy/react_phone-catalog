@@ -4,8 +4,10 @@ import './Accessories.scss';
 import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Accessories } from '../../Interface';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../Functional/CartContext/CartContext';
 
 export const AccessoriesPage = () => {
+  const { addToCart, toggleFavorite, cart, favorites } = useCart();
   const [accessories, setAccessories] = useState<Accessories[]>([]);
   const [filteredAccessories, setFilteredAccessories] = useState<Accessories[]>(
     [],
@@ -16,6 +18,7 @@ export const AccessoriesPage = () => {
   const [sortBy, setSortBy] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -31,7 +34,7 @@ export const AccessoriesPage = () => {
       .then(response => {
         if (!response.ok) {
           throw new Error(
-            `Failed to fetch accessories.json: ${response.status} ${response.statusText}`,
+            `Failed to fetch accessories.json: ${response.status}`,
           );
         }
 
@@ -104,6 +107,21 @@ export const AccessoriesPage = () => {
     return pages;
   };
 
+  const handleAddToCart = (accessory: Accessories) => {
+    addToCart({
+      id: accessory.id,
+      name: accessory.name,
+      price: accessory.priceDiscount,
+      image: `/${accessory.images[0]}`,
+      color: accessory.color,
+      quantity: 1,
+    });
+  };
+
+  const handleImageError = (imageSrc: string) => {
+    setImageError(prev => ({ ...prev, [imageSrc]: true }));
+  };
+
   if (loading) {
     return (
       <section className="section">
@@ -152,54 +170,83 @@ export const AccessoriesPage = () => {
           <p className="accessories__no-results">No accessories found.</p>
         ) : (
           currentItems.map(accessory => (
-            <Link
-              to={`/product/${accessory.id}`}
-              key={accessory.id}
-              className="accessories__card"
-            >
-              <img
-                src={'/' + accessory.images[0]}
-                alt={accessory.name}
-                className="accessories__card-image"
-                onError={e =>
-                  e.currentTarget.setAttribute(
-                    'src',
-                    '/public/img/page-not-found.png',
-                  )
-                }
-              />
-              <h3 className="accessories__card-title">{accessory.name}</h3>
-              <div className="accessories__card-prices">
-                <span className="accessories__card-price">
-                  ${accessory.priceDiscount}
-                </span>
-                {accessory.priceRegular > accessory.priceDiscount && (
-                  <span className="accessories__card-old-price">
-                    ${accessory.priceRegular}
-                  </span>
-                )}
-              </div>
-              <div className="accessories__card-specs">
-                <div className="accessories__card-spec">
-                  <span className="accessories__card-spec-label">Color</span>
-                  <span className="accessories__card-spec-value">
-                    {accessory.color}
+            <div key={accessory.id} className="accessories__card">
+              <Link to={`/products/${accessory.id}`}>
+                <img
+                  src={
+                    imageError[`/${accessory.images[0]}`]
+                      ? '/public/img/page-not-found.png'
+                      : `/${accessory.images[0]}`
+                  }
+                  alt={accessory.name}
+                  className="accessories__card-image"
+                  onError={() => handleImageError(`/${accessory.images[0]}`)}
+                />
+                <h3 className="accessories__card-title">{accessory.name}</h3>
+                <div className="accessories__card-prices">
+                  <span className="accessories__card-price">
+                    ${accessory.priceDiscount}
                   </span>
                 </div>
-              </div>
+                <div className="accessories__card-specs">
+                  <div className="accessories__card-spec">
+                    <span className="accessories__card-spec-label">Color</span>
+                    <span className="accessories__card-spec-value">
+                      {accessory.color}
+                    </span>
+                  </div>
+                </div>
+              </Link>
               <div className="accessories__card-actions">
-                <button className="accessories__card-btn accessories__card-btn--add">
-                  Add to cart
+                <button
+                  className={`accessories__card-btn accessories__card-btn--add ${
+                    cart.some(
+                      item =>
+                        item.id === accessory.id &&
+                        item.color === accessory.color,
+                    )
+                      ? 'added'
+                      : ''
+                  }`}
+                  onClick={e => {
+                    e.preventDefault();
+                    handleAddToCart(accessory);
+                  }}
+                  disabled={cart.some(
+                    item =>
+                      item.id === accessory.id &&
+                      item.color === accessory.color,
+                  )}
+                >
+                  {cart.some(
+                    item =>
+                      item.id === accessory.id &&
+                      item.color === accessory.color,
+                  )
+                    ? 'Added to cart'
+                    : 'Add to cart'}
                 </button>
-                <button className="accessories__card-btn accessories__card-btn--favorite">
+                <button
+                  className={`accessories__card-btn accessories__card-btn--favorite ${
+                    favorites.includes(accessory.id) ? 'favorite--active' : ''
+                  }`}
+                  onClick={e => {
+                    e.preventDefault();
+                    toggleFavorite(accessory.id);
+                  }}
+                >
                   <img
-                    src="/figmaLogo/HeartLove.svg"
+                    src={
+                      favorites.includes(accessory.id)
+                        ? '/figmaLogo/ActiveHeart.svg'
+                        : '/figmaLogo/HeartLove.svg'
+                    }
                     alt="Favorite"
                     className="accessories__card-btn-icon"
                   />
                 </button>
               </div>
-            </Link>
+            </div>
           ))
         )}
       </div>
@@ -212,7 +259,6 @@ export const AccessoriesPage = () => {
         >
           {'<'}
         </button>
-
         {getPageNumbers().map((page, index) => (
           <button
             key={index}
@@ -223,7 +269,6 @@ export const AccessoriesPage = () => {
             {page}
           </button>
         ))}
-
         <button
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}

@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Link } from 'react-router-dom';
 
 interface Phone {
   id: string;
@@ -106,56 +107,60 @@ export default function HotPrices() {
         >
           {phones.slice(20, 28).map(phone => (
             <SwiperSlide key={phone.id} className="brand__card">
-              <img
-                src={'/' + phone.images[0]}
-                alt={phone.name}
-                className="brand__card-image"
-                onError={e =>
-                  e.currentTarget.setAttribute(
-                    'src',
-                    '/public/img/page-not-found.png',
-                  )
-                }
-              />
-              <h3 className="brand__card-title">{phone.name}</h3>
-              <div className="brand__card-prices">
-                <span className="brand__card-price">
-                  ${phone.priceDiscount}
-                </span>
-                {phone.priceRegular > phone.priceDiscount && (
-                  <span className="brand__card-old-price">
-                    ${phone.priceRegular}
+              <Link to={`/products/${phone.id}`} key={phone.id}>
+                <img
+                  src={'/' + phone.images[0]}
+                  alt={phone.name}
+                  className="brand__card-image"
+                  onError={e =>
+                    e.currentTarget.setAttribute(
+                      'src',
+                      '/public/img/page-not-found.png',
+                    )
+                  }
+                />
+                <h3 className="brand__card-title">{phone.name}</h3>
+                <div className="brand__card-prices">
+                  <span className="brand__card-price">
+                    ${phone.priceDiscount}
                   </span>
-                )}
-              </div>
-              <div className="brand__card-specs">
-                <div className="brand__card-spec">
-                  <span className="brand__card-spec-label">Screen</span>
-                  <span className="brand__card-spec-value">{phone.screen}</span>
+                  {phone.priceRegular > phone.priceDiscount && (
+                    <span className="brand__card-old-price">
+                      ${phone.priceRegular}
+                    </span>
+                  )}
                 </div>
-                <div className="brand__card-spec">
-                  <span className="brand__card-spec-label">Capacity</span>
-                  <span className="brand__card-spec-value">
-                    {phone.capacity}
-                  </span>
+                <div className="brand__card-specs">
+                  <div className="brand__card-spec">
+                    <span className="brand__card-spec-label">Screen</span>
+                    <span className="brand__card-spec-value">
+                      {phone.screen}
+                    </span>
+                  </div>
+                  <div className="brand__card-spec">
+                    <span className="brand__card-spec-label">Capacity</span>
+                    <span className="brand__card-spec-value">
+                      {phone.capacity}
+                    </span>
+                  </div>
+                  <div className="brand__card-spec">
+                    <span className="brand__card-spec-label">RAM</span>
+                    <span className="brand__card-spec-value">{phone.ram}</span>
+                  </div>
                 </div>
-                <div className="brand__card-spec">
-                  <span className="brand__card-spec-label">RAM</span>
-                  <span className="brand__card-spec-value">{phone.ram}</span>
+                <div className="brand__card-actions">
+                  <button className="brand__card-btn brand__card-btn--add">
+                    Add to cart
+                  </button>
+                  <button className="brand__card-btn brand__card-btn--favorite">
+                    <img
+                      src="/figmaLogo/HeartLove.svg"
+                      alt="Favorite"
+                      className="brand__card-btn-icon"
+                    />
+                  </button>
                 </div>
-              </div>
-              <div className="brand__card-actions">
-                <button className="brand__card-btn brand__card-btn--add">
-                  Add to cart
-                </button>
-                <button className="brand__card-btn brand__card-btn--favorite">
-                  <img
-                    src="/figmaLogo/HeartLove.svg"
-                    alt="Favorite"
-                    className="brand__card-btn-icon"
-                  />
-                </button>
-              </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
