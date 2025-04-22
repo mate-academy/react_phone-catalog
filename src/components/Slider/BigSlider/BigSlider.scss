@@ -44,7 +44,7 @@ html,
 }
 
 .swiper-button-prev {
-  background-image: url('./img/icons/left.svg');
+  background-image: url('../../../../public/img/icons/left.svg');
   width: 32px;
   height: 182px;
   top: 22px;
@@ -75,7 +75,7 @@ height: 400px;
 }
 
 .swiper-button-next{
-  background-image: url('public/img/icons/right.svg');
+  background-image: url('/public/img/icons/right.svg');
   top: 22px;
   width: 32px;
   height: 182px;

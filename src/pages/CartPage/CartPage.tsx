@@ -63,7 +63,7 @@ export const CartPage = () => {
     <main>
       <button className={s.back} onClick={goBack}>
         <div className={s.back__arrow}>
-          <img src="/public/img/icons/arr_left.svg" alt="Arrow left" />
+          <img src="./img/icons/arr_left.svg" alt="Arrow left" />
         </div>
         <span className={s.back__text}>Back</span>
       </button>
@@ -73,7 +73,7 @@ export const CartPage = () => {
           {productsToShow.map((product: CartProduct) => (
             <div key={product.id} className={s.cart__item}>
               <img
-                src="../../../public/img/icons/Close.png"
+                src="./img/icons/Close.png"
                 alt="Remove mark"
                 className={s.cart__item__remove}
                 onClick={() => handleRemove(product)}
@@ -89,7 +89,7 @@ export const CartPage = () => {
                   className={s.quantityCounter__item}
                   onClick={() => handleDecreaseProduct(product)}
                 >
-                  <img src="../../../public/img/icons/Minus.png" alt="Minus" />
+                  <img src="./img/icons/Minus.png" alt="Minus" />
                 </div>
                 <span
                   className={cn(
@@ -103,7 +103,7 @@ export const CartPage = () => {
                   className={s.quantityCounter__item}
                   onClick={() => handleIncreaseProduct(product)}
                 >
-                  <img src="../../../public/img/icons/Plus.png" alt="Plus" />
+                  <img src="./img/icons/Plus.png" alt="Plus" />
                 </div>
               </div>
               <h3 className={s.cart__item__price}>${product.price}</h3>
