@@ -1,0 +1,68 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.footer {
+  box-sizing: border-box;
+  padding-block: 32px;
+  background-color: #fff;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+
+  &Nav {
+    display: flex;
+    flex-direction: column;
+    gap: 32px 0;
+
+    @include onTablet {
+      align-items: center;
+      flex-direction: row;
+    }
+  }
+}
+
+.goTopBox {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  height: 32px;
+
+  @include onTablet {
+    justify-content: flex-end;
+  }
+
+  &Content {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    cursor: pointer;
+  }
+
+  &Text {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: $secondary-text-color;
+  }
+}
+
+.list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px 0;
+
+  @include onTablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.footerLogo {
+  display: block;
+  width: 89px;
+  height: 32px;
+
+  &Link {
+    flex: 1;
+  }
+}

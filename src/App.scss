@@ -1,17 +1,18 @@
 @import './modules/shared/styles/variables';
 @import './modules/shared/styles/mixins';
-@import './modules/shared/styles/container';
+@import './modules/shared/styles/globalStyles';
 
+// #region font-face
 @font-face {
   font-family: Mont;
   src: url(/fonts/Mont-Regular.otf);
-  width: 600;
+  font-weight: 600;
 }
 
 @font-face {
   font-family: Mont;
   src: url(/fonts/Mont-SemiBold.otf);
-  width: 700;
+  font-weight: 700;
 }
 
 @font-face {
@@ -20,17 +21,24 @@
   font-weight: 800;
 }
 
+// #endregion
+
 :root {
   font-family: Mont, sans-serif;
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 body {
+  height: 100vh;
   padding: 0;
   margin: 0;
   background-color: $main-background-color;
 }
 
-.link {
-  color: $secondary-text-color;
-  text-decoration: none;
-}
+

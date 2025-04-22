@@ -1,0 +1,38 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.textList {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+    gap: 0 32px;
+  }
+
+  @include onDesctop {
+    gap: 0 64px;
+  }
+}
+
+.navItem {
+  display: flex;
+}
+
+.textLink {
+  position: relative;
+  align-items: center;
+
+  &Active{
+    color: $main-text-color;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $main-text-color;
+    }
+  }
+}

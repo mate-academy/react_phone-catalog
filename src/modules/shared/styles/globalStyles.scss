@@ -1,0 +1,17 @@
+.link {
+  display: flex;
+  text-transform: uppercase;
+  color: $secondary-text-color;
+  text-decoration: none;
+  line-height: 11px;
+  
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.48px;
+}
+
+.icons {
+  height: 16px;
+  width: 16px;
+  pointer-events: none;
+}

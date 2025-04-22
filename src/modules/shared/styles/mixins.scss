@@ -1,17 +1,25 @@
-@mixin onMobile {
-  @media (max-width: $maxMobileSize) {
-    @content
-  }
-};
-
 @mixin onTablet {
   @media (min-width: $tabletSize) {
     @content
   }
 };
 
-@mixin onDesctop{
+@mixin onDesctop {
   @media (min-width: $desctopSize) {
     @content
   }
 };
+
+@mixin pageGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onDesctop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}
