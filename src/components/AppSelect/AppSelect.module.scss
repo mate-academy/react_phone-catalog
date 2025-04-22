@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  label {
+    color: #89939A;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .selectWrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .select {
+    width: 100%;
+    border: 1px solid #B4BDC3;
+    padding: 10px 12px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+
+    &:focus {
+      outline: none;
+      border-color: #313237;
+    }
+  }
+
+  .chevron {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #B4BDC3;
+  }
+}

@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+
+  &__amount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 14px;
+  }
+}

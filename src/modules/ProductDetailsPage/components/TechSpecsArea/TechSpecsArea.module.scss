@@ -1,0 +1,11 @@
+.container {
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  hr {
+    border: 1px solid #E2E6E9;
+    margin: 16px 0 25px;
+  }
+}

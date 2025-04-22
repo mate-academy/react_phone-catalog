@@ -1,0 +1,33 @@
+.container {
+  max-height: 27.69rem;
+
+  &__photo {
+    display: flex;
+    max-width: 368px;
+    max-height: 368px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    aspect-ratio: 1;
+
+    img {
+      object-fit: contain;
+      width: calc(100% - 0.01px);
+      transform: translate(70px, 10px);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    &__amount {
+      font-size: 0.88rem;
+      color: #89939A;
+    }
+  }
+}

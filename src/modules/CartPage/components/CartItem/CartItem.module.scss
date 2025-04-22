@@ -1,0 +1,53 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border: 1px solid #E2E6E9;
+  justify-content: space-between;
+  max-width: 752px;
+  padding: 24px;
+
+  &__product {
+    display: flex;
+    flex: 2;
+    gap: 24px;
+    align-items: center;
+
+    img {
+      display: flex;
+      align-items: center;
+      aspect-ratio: 1;
+      object-fit: contain;
+      max-width: 66px;
+      max-height: 66px;
+    }
+
+    &__name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #313237;
+    }
+
+    &__display {
+      display: flex;
+      gap: 54px;
+
+      &__price {
+        font-size: 22px;
+        font-weight: 800;
+        color: #313237;
+      }
+    }
+  }
+
+  @include tablet {
+    max-width: 100%;
+  }
+
+  @include mobile {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

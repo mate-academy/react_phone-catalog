@@ -1,0 +1,1 @@
+export { ProductInfoDisplay } from './ProductInfoDisplay';

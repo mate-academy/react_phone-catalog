@@ -1,0 +1,55 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &__id {
+    font-size: 12px;
+    color: #B4BDC3;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    hr {
+      border: 1px solid #E2E6E9;
+      margin: 24px 0;
+    }
+
+    &__prices {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &__current {
+        font-size: 32px;
+        font-weight: 800;
+        color: #313237;
+        line-height: 1;
+      }
+
+      &__full {
+        font-size: 22px;
+        font-weight: 500;
+        color: #89939A;
+        text-decoration: line-through;
+        line-height: 1;
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0 32px;
+    }
+  }
+
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+  }
+}

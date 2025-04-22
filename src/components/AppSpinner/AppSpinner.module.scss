@@ -1,0 +1,26 @@
+.spinnerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center
+}
+
+.loadingLabel {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 16px;
+}
