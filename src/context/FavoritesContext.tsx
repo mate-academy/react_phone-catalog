@@ -14,9 +14,11 @@ const FavoritesContext = createContext<FavoritesContextProps | undefined>(
 export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  // Initialize with an empty array instead of loading from localStorage
   const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
+    // Clear any existing favorites in localStorage and save the current state
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 

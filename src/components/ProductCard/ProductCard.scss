@@ -10,6 +10,8 @@
   height: 100%;
   transition: transform $transition-duration, box-shadow $transition-duration;
   overflow: hidden;
+  flex-shrink: 0;
+  box-sizing: border-box;
 
   &:hover {
     transform: translateY(-5px);

@@ -22,13 +22,11 @@ const CartContext = createContext<CartContextProps | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    const savedCart = localStorage.getItem('cart');
-
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  // Initialize with an empty array instead of loading from localStorage
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
+    // Clear any existing cart items in localStorage and save the current state
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 

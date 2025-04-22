@@ -55,6 +55,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <Link to={`/product/${id}`} className="product-card">
       <div className="product-card__image-container">
         <ProductImages
+          key={`image-${id}-${new Date().getTime()}`}
           name={name}
           mainImage={image}
           galleryImages={galleryImages}

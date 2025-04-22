@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { Dropdown } from '../Dropdown/Dropdown';
-import { useFavorites } from '../../context/FavoritesContext';
+import { Product } from '../../types/Product';
 import './PhonesPage.scss';
 
 // Import phone images
@@ -34,8 +34,13 @@ const sharedGalleryImages = [
   sharedImage6,
 ];
 
+// Extended Product type to include additional properties
+interface ExtendedProduct extends Product {
+  galleryImages?: string[];
+}
+
 // Phone data based on the images
-const phones = [
+const phones: ExtendedProduct[] = [
   // Row 1
   {
     id: 1,
@@ -57,7 +62,6 @@ const phones = [
     screen: '6.5" OLED',
     capacity: '64 GB',
     ram: '4 GB',
-    favorite: true,
     galleryImages: sharedGalleryImages,
   },
   {
@@ -80,7 +84,6 @@ const phones = [
     screen: '5.8" OLED',
     capacity: '256 GB',
     ram: '3 GB',
-    inCart: true,
     galleryImages: sharedGalleryImages,
   },
   // Row 2
@@ -220,41 +223,10 @@ const phones = [
   },
 ];
 
-const sortOptions = [
-  { value: 'newest', label: 'Newest' },
-  { value: 'alphabetically', label: 'Alphabetically' },
-  { value: 'cheapest', label: 'Cheapest' },
-];
-
-const itemsPerPageOptions = [
-  { value: '16', label: '16' },
-  { value: '8', label: '8' },
-  { value: '4', label: '4' },
-];
-
 export const PhonesPage: React.FC = () => {
   const [sortBy, setSortBy] = useState('newest');
   const [itemsPerPage, setItemsPerPage] = useState('16');
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPhones = 95; // Total count from the screenshot
-  const { addToFavorites } = useFavorites();
-  const [isInitialized, setIsInitialized] = useState(false);
-
-  // Ініціалізуємо стан для вибраних телефонів
-  useEffect(() => {
-    if (isInitialized) {
-      return;
-    }
-
-    // Додаємо телефон з id 2 до вибраних щоб відтворити дизайн з картинки
-    const phoneToFavorite = phones.find(phone => phone.favorite);
-
-    if (phoneToFavorite) {
-      addToFavorites(phoneToFavorite.id.toString());
-    }
-
-    setIsInitialized(true);
-  }, [addToFavorites, isInitialized]);
 
   const handleSortChange = (value: string) => {
     setSortBy(value);
@@ -265,13 +237,52 @@ export const PhonesPage: React.FC = () => {
     setCurrentPage(1); // Reset to first page when changing items per page
   };
 
+  // Sort phones based on selected sort option
+  const sortedPhones = [...phones].sort((a, b) => {
+    if (sortBy === 'newest') {
+      return b.id - a.id;
+    }
+
+    if (sortBy === 'alphabetically') {
+      return a.name.localeCompare(b.name);
+    }
+
+    if (sortBy === 'cheapest') {
+      return a.price - b.price;
+    }
+
+    return 0;
+  });
+
+  // Calculate pagination
+  const phonesPerPage = parseInt(itemsPerPage, 10);
+  const totalPages = Math.ceil(sortedPhones.length / phonesPerPage);
+  const startIndex = (currentPage - 1) * phonesPerPage;
+  const displayedPhones = sortedPhones.slice(
+    startIndex,
+    startIndex + phonesPerPage,
+  );
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
-  const totalPages = Math.ceil(totalPhones / Number(itemsPerPage));
-
-  const breadcrumbItems = [{ label: 'Phones' }];
+  // Generate pagination buttons
+  const paginationButtons = [];
+  
+  for (let i = 1; i <= totalPages; i++) {
+    paginationButtons.push(
+      <button
+        key={i}
+        className={`phones-page__pagination-button ${
+          i === currentPage ? 'phones-page__pagination-button--active' : ''
+        }`}
+        onClick={() => handlePageChange(i)}
+      >
+        {i}
+      </button>,
+    );
+  }
 
   return (
     <div className="phones-page">
@@ -279,100 +290,68 @@ export const PhonesPage: React.FC = () => {
 
       <main className="phones-page__main">
         <div className="container">
-          <Breadcrumbs items={breadcrumbItems} />
+          <Breadcrumbs
+            items={[
+              { label: 'Home', link: '/' },
+              { label: 'Phones', link: '/phones' },
+            ]}
+          />
 
           <h1 className="phones-page__title">Mobile phones</h1>
-          <p className="phones-page__count">{totalPhones} models</p>
+          <p className="phones-page__count">{phones.length} models</p>
 
           <div className="phones-page__filters">
-            <Dropdown
-              label="Sort by"
-              options={sortOptions}
-              value={sortBy}
-              onChange={handleSortChange}
-              className="phones-page__sort"
-            />
+            <div className="phones-page__filter">
+              <p className="phones-page__filter-title">Sort by</p>
+              <Dropdown
+                label="Sort by"
+                options={[
+                  { value: 'newest', label: 'Newest' },
+                  { value: 'alphabetically', label: 'Alphabetically' },
+                  { value: 'cheapest', label: 'Cheapest' },
+                ]}
+                value={sortBy}
+                onChange={handleSortChange}
+              />
+            </div>
 
-            <Dropdown
-              label="Items on page"
-              options={itemsPerPageOptions}
-              value={itemsPerPage}
-              onChange={handleItemsPerPageChange}
-              className="phones-page__items-per-page"
-            />
+            <div className="phones-page__filter">
+              <p className="phones-page__filter-title">Items on page</p>
+              <Dropdown
+                label="Items on page"
+                options={[
+                  { value: '4', label: '4' },
+                  { value: '8', label: '8' },
+                  { value: '16', label: '16' },
+                  { value: '32', label: '32' },
+                ]}
+                value={itemsPerPage}
+                onChange={handleItemsPerPageChange}
+              />
+            </div>
           </div>
 
           <div className="phones-page__grid">
-            {phones.map(phone => (
+            {displayedPhones.map(phone => (
               <ProductCard key={phone.id} {...phone} />
             ))}
           </div>
 
           <div className="phones-page__pagination">
             <button
-              className={
-                'phones-page__pagination-arrow ' +
-                'phones-page__pagination-prev'
-              }
-              disabled={currentPage === 1}
+              className="phones-page__pagination-button phones-page__pagination-button--arrow"
               onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
             >
               &lt;
             </button>
 
-            {(() => {
-              // Logic to show only 4 pagination items
-              let pagesToShow = [];
-
-              if (totalPages <= 4) {
-                // If total pages are 4 or less, show all
-                pagesToShow = Array.from(
-                  { length: totalPages },
-                  (_, i) => i + 1,
-                );
-              } else {
-                // If more than 4 pages, show a window of 4 around the current page
-                if (currentPage <= 2) {
-                  pagesToShow = [1, 2, 3, 4];
-                } else if (currentPage >= totalPages - 1) {
-                  pagesToShow = [
-                    totalPages - 3,
-                    totalPages - 2,
-                    totalPages - 1,
-                    totalPages,
-                  ];
-                } else {
-                  pagesToShow = [
-                    currentPage - 1,
-                    currentPage,
-                    currentPage + 1,
-                    currentPage + 2,
-                  ];
-                }
-              }
-
-              return pagesToShow.map(page => (
-                <button
-                  key={page}
-                  className={`phones-page__pagination-item ${
-                    page === currentPage
-                      ? 'phones-page__pagination-item--active'
-                      : ''
-                  }`}
-                  onClick={() => handlePageChange(page)}
-                >
-                  {page}
-                </button>
-              ));
-            })()}
+            {paginationButtons}
 
             <button
-              className={
-                'phones-page__pagination-arrow ' +
-                'phones-page__pagination-next'
-              }
-              disabled={currentPage === totalPages}
+              className="phones-page__pagination-button phones-page__pagination-button--arrow"
               onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
             >
               &gt;
             </button>

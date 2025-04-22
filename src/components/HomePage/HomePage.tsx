@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { Slider } from '../Slider/Slider';
@@ -8,7 +8,7 @@ import './HomePage.scss';
 
 // Import image paths
 import bannerIphone14 from '../../assets/img/banners/Banner.png';
-import bannerSamsungS23 from '../../assets/img/banners/Banner.png';
+import bannerSamsungS23 from '../../assets/img/banners/new_banner.png';
 
 // Brand new models
 import iphone14ProSilver from '../../assets/img/phones/14pro_Silver.png';
@@ -30,6 +30,35 @@ import categoryAccessories from '../../assets/img/categories/third_Category-accs
 /* eslint-enable max-len */
 
 export const HomePage: React.FC = () => {
+  const [itemsToShow, setItemsToShow] = useState(4);
+
+  // Handle responsive behavior for carousel
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 480) {
+        setItemsToShow(1);
+      } else if (width <= 768) {
+        setItemsToShow(2);
+      } else if (width <= 1200) {
+        setItemsToShow(3);
+      } else {
+        setItemsToShow(4);
+      }
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const sliderData = [
     {
       id: 1,
@@ -98,6 +127,54 @@ export const HomePage: React.FC = () => {
       ram: '6 GB',
       color: 'red',
     },
+    {
+      id: 9,
+      category: 'phones',
+      phoneId: 'apple-iphone-14-pro-256gb-silver',
+      name: 'Apple iPhone 14 Pro 256GB Silver (MQ0E3)',
+      price: 1099,
+      image: iphone14ProSilver,
+      screen: '6.1" OLED',
+      capacity: '256 GB',
+      ram: '6 GB',
+      color: 'silver',
+    },
+    {
+      id: 10,
+      category: 'phones',
+      phoneId: 'apple-iphone-14-pro-512gb-purple',
+      name: 'Apple iPhone 14 Pro 512GB Deep Purple (MQ1D3)',
+      price: 1299,
+      image: iphone14ProPurple,
+      screen: '6.1" OLED',
+      capacity: '512 GB',
+      ram: '6 GB',
+      color: 'purple',
+    },
+    {
+      id: 11,
+      category: 'phones',
+      phoneId: 'apple-iphone-14-pro-1tb-gold',
+      name: 'Apple iPhone 14 Pro 1TB Gold (MQ1K3)',
+      price: 1499,
+      image: iphone14ProGold,
+      screen: '6.1" OLED',
+      capacity: '1 TB',
+      ram: '6 GB',
+      color: 'gold',
+    },
+    {
+      id: 12,
+      category: 'phones',
+      phoneId: 'apple-iphone-14-plus-256gb-red',
+      name: 'Apple iPhone 14 Plus 256GB PRODUCT Red (MQ2E3)',
+      price: 959,
+      image: iphone14PlusRed,
+      screen: '6.7" OLED',
+      capacity: '256 GB',
+      ram: '6 GB',
+      color: 'red',
+    },
   ];
 
   const hotPrices = [
@@ -153,6 +230,58 @@ export const HomePage: React.FC = () => {
       ram: '4 GB',
       color: 'red',
     },
+    {
+      id: 13,
+      category: 'phones',
+      phoneId: 'apple-iphone-11-pro-max-256gb-green',
+      name: 'Apple iPhone 11 Pro Max 256GB Midnight Green (MWFK2FS/A)',
+      price: 799,
+      oldPrice: 1099,
+      image: iphone11ProMaxGreen,
+      screen: '6.5" OLED',
+      capacity: '256 GB',
+      ram: '4 GB',
+      color: 'green',
+    },
+    {
+      id: 14,
+      category: 'phones',
+      phoneId: 'apple-iphone-11-pro-max-128gb-gold',
+      name: 'Apple iPhone 11 Pro Max 128GB Gold (MWFN2FS/A)',
+      price: 749,
+      oldPrice: 949,
+      image: iphone11ProMaxGold,
+      screen: '6.5" OLED',
+      capacity: '128 GB',
+      ram: '4 GB',
+      color: 'gold',
+    },
+    {
+      id: 15,
+      category: 'phones',
+      phoneId: 'apple-iphone-11-64gb-purple',
+      name: 'Apple iPhone 11 64GB Purple (MWFP2FS/A)',
+      price: 649,
+      oldPrice: 799,
+      image: iphone11Purple,
+      screen: '6.2" IPS',
+      capacity: '64 GB',
+      ram: '4 GB',
+      color: 'purple',
+    },
+    {
+      id: 16,
+      category: 'phones',
+      phoneId: 'apple-iphone-11-256gb-red',
+      name: 'Apple iPhone 11 256GB (Product) Red (MWFQ2FS/A)',
+      price: 749,
+      oldPrice: 949,
+      image: iphone11Red,
+      screen: '6.2" IPS',
+      capacity: '256 GB',
+      ram: '4 GB',
+      color: 'red',
+    },
   ];
 
   const categories = [
@@ -191,7 +320,11 @@ export const HomePage: React.FC = () => {
           </section>
 
           <section className="home-page__section">
-            <ProductList title="Brand new models" products={newModels} />
+            <ProductList
+              title="Brand new models"
+              products={newModels}
+              itemsToShow={itemsToShow}
+            />
           </section>
 
           <section className="home-page__section">
@@ -211,7 +344,11 @@ export const HomePage: React.FC = () => {
           </section>
 
           <section className="home-page__section">
-            <ProductList title="Hot prices" products={hotPrices} />
+            <ProductList
+              title="Hot prices"
+              products={hotPrices}
+              itemsToShow={itemsToShow}
+            />
           </section>
         </div>
       </main>

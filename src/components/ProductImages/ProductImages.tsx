@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductImages.scss';
 
 interface ProductImagesProps {
@@ -14,8 +14,19 @@ export const ProductImages: React.FC<ProductImagesProps> = ({
   galleryImages,
   isDetailsView = false,
 }) => {
+  // Add a random query parameter to force browser to reload the image
+  const getImageUrl = (url: string) => {
+    // Add a cache-busting parameter to force the browser to reload the image
+    return `${url}?t=${new Date().getTime()}`;
+  };
+
   const [selectedImage, setSelectedImage] = useState(mainImage);
   const hasGallery = isDetailsView && galleryImages && galleryImages.length > 0;
+
+  // Update selectedImage when mainImage changes
+  useEffect(() => {
+    setSelectedImage(mainImage);
+  }, [mainImage]);
 
   return (
     <div className="product-images">
@@ -24,7 +35,7 @@ export const ProductImages: React.FC<ProductImagesProps> = ({
           <div className="product-images__thumbnails">
             {galleryImages.map((image, index) => (
               <button
-                key={index}
+                key={`thumb-${index}-${image}`}
                 className={`product-images__thumbnail-btn ${
                   selectedImage === image
                     ? 'product-images__thumbnail-btn--active'
@@ -33,7 +44,7 @@ export const ProductImages: React.FC<ProductImagesProps> = ({
                 onClick={() => setSelectedImage(image)}
               >
                 <img
-                  src={image}
+                  src={getImageUrl(image)}
                   alt={`${name} thumbnail ${index + 1}`}
                   className="product-images__thumbnail-img"
                 />
@@ -43,7 +54,7 @@ export const ProductImages: React.FC<ProductImagesProps> = ({
 
           <div className="product-images__main-container">
             <img
-              src={selectedImage}
+              src={getImageUrl(selectedImage)}
               alt={name}
               className="product-images__main"
             />
@@ -51,7 +62,12 @@ export const ProductImages: React.FC<ProductImagesProps> = ({
         </>
       ) : (
         <div className="product-images__single-container">
-          <img src={mainImage} alt={name} className="product-images__single" />
+          <img
+            src={getImageUrl(selectedImage)}
+            alt={name}
+            className="product-images__single"
+            key={`img-${mainImage}-${new Date().getTime()}`}
+          />
         </div>
       )}
     </div>
