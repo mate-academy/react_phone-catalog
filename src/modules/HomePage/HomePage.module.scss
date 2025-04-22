@@ -6,7 +6,7 @@ $column-size: 32px;
 
 .slideButton {
     border-radius: 25px;
-    border: 3px solid $color-element-black;
+    border: 1px solid $color-element-black;
     width: 32px;
     height: 100%;
     transition: all 0.3s;
@@ -16,7 +16,7 @@ $column-size: 32px;
     @include set-font($font-mont, 20px, 700);
 
     &:hover {
-        transform: scale(110%);
+        transform: scale(1.1);
         border-color: $color-element-black;
     }
 
@@ -47,7 +47,7 @@ $column-size: 32px;
     }
 
     @media (max-width: 768px) {
-        grid-template-rows: minmax(80px, 120px) minmax(140px, 220px);
+        grid-template-rows: minmax(80px, 120px) minmax(140px, 300px);
     }
 
     @include on-phone{

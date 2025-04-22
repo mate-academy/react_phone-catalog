@@ -8,14 +8,13 @@ img {
     @include set-size(100%, 96px);
     @include flex-center;
 
-    bottom: 0;
     max-width: $element-max-width;
     box-sizing: border-box;
     box-shadow: 0 1px 4px rgba(226, 230, 233, 0.75);
     justify-content: space-between;
     padding-inline: minmax(32px, 152px);
-    margin-top: 200px;
     margin-inline: auto;
+    margin-top: 200px;
 
     @include on-phone{
         height: 40vh;

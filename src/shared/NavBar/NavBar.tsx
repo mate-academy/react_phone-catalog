@@ -108,6 +108,7 @@ export const NavBar: React.FC = () => {
                     : changeLanguage('en')
                 }
                 style={{
+                  cursor: 'pointer',
                   padding: windowWidth < 790 ? 0 : undefined,
                   background: 'none',
                   border: 'none',
@@ -128,6 +129,7 @@ export const NavBar: React.FC = () => {
                   theme === 'light' ? setTheme('dark') : setTheme('light')
                 }
                 style={{
+                  cursor: 'pointer',
                   padding: windowWidth < 790 ? 0 : undefined,
                   backgroundColor: theme === 'light' ? '#fff' : '#B4BDC3',
                   border: 'none',

@@ -19,20 +19,19 @@ export const Carousel: React.FC<Props> = ({
   isInfo = false,
 }) => {
   const [index, setIndex] = useState<number>(0);
-  const [itemWidth, setItemWidth] = useState<number>(0); // Додаємо стан для ширини елемента
+  const [itemWidth, setItemWidth] = useState<number>(0);
   const windowWidth = useWindowWidth();
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const startX = useRef<number | null>(null);
   const lastMotion = useRef<'left' | 'right' | null>(null);
 
-  // Визначаємо ширину одного елемента після завантаження компонента
   useEffect(() => {
     if (carouselRef.current) {
       const firstItem = carouselRef.current.children[0] as HTMLElement;
 
       if (firstItem) {
-        setItemWidth(firstItem.offsetWidth); // Отримуємо ширину першого елемента
+        setItemWidth(firstItem.offsetWidth);
       }
     }
   }, [windowWidth, items]);
@@ -40,44 +39,12 @@ export const Carousel: React.FC<Props> = ({
   const visibleItems = windowWidth > 500 ? 4 : 1;
   const maxIndex = items.length - visibleItems;
 
-  // Обробник свайпу
-  const handleTouchStart = (e: React.TouchEvent) => {
-    startX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (startX.current === null) {
-      return;
-    }
-
-    const endX = e.changedTouches[0].clientX;
-    const diffX = startX.current - endX;
-
-    const swipeThreshold = 50; // Мінімальна відстань для свайпу
-
-    if (Math.abs(diffX) > swipeThreshold) {
-      if (diffX > 0 && index < maxIndex) {
-        lastMotion.current = 'left';
-        setIndex(prev => prev + 1);
-      } else if (diffX < 0 && index > 0) {
-        lastMotion.current = 'right';
-        setIndex(prev => prev - 1);
-      }
-    }
-
-    startX.current = null;
-  };
-
   useEffect(() => {
     setIndex(0);
   }, [items]);
 
   return (
-    <div
-      className={styles.carousel}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
+    <div className={styles.carousel}>
       <div className={styles.wrapper}>
         <h2 className={styles.title}>{title}</h2>
 

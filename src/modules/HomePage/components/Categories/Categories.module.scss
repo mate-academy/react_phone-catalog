@@ -30,6 +30,8 @@
 
     &__category {
         @include set-size(100%, 100%);
+        overflow: hidden;
+        border-radius: 10px;
     
         @include on-phone{
             margin-bottom: 32px;
@@ -68,7 +70,7 @@
         transition: all 0.3s;
 
         &:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
     }

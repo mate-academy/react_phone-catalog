@@ -21,9 +21,11 @@
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
-    "@mate-academy/scripts": "^1.9.12",
+    "@mate-academy/scripts": "^2.1.1",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
+    "@types/lodash": "^4.17.16",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -45,12 +47,12 @@
     "mochawesome-merge": "^4.3.0",
     "mochawesome-report-generator": "^6.2.0",
     "prettier": "^3.3.2",
+    "react": "^18.0.0",
+    "react-i18next": "^13.0.0",
     "sass": "^1.77.8",
     "stylelint": "^16.7.0",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1",
-    "react": "^18.0.0",
-    "react-i18next": "^13.0.0"
+    "vite": "^5.3.1"
   },
   "scripts": {
     "start": "mate-scripts start -l",

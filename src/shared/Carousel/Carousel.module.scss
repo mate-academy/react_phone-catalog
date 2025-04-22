@@ -44,8 +44,10 @@
 }
 
 .viewport {
-    overflow: hidden;
+  @include flex-center;
+  flex-direction: column;
     width: 100%;
+    overflow-x: scroll;
 }
 
 .items {
@@ -53,5 +55,5 @@
 
     flex-flow: row nowrap;
     gap: 16px;
-    width: fit-content; 
+    width: 100%; 
 }

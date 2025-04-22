@@ -14,9 +14,14 @@ body {
     margin: auto;
     max-width: $content-max-width;
     min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    
 }
 
 main {
+    width: 100%;
     padding: auto;
     box-sizing: border-box;
     margin: auto;
