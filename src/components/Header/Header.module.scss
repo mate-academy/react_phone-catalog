@@ -74,6 +74,11 @@
   }
 }
 
+.link:not(.active):hover {
+  transition: transform 0.5s ease;
+  transform: scale(1.6);
+}
+
 .active {
   color: $light-color;
   position: relative;

@@ -2,17 +2,22 @@
 
 .shopingBag {
   box-sizing: border-box;
-  padding-top: calc(49px + 48px);
+    padding-top: 97px;
+    padding-bottom: 56px;
 
-  height: calc(100vh - 99px);
+    height: calc(100vh - 260px + 100%);
 
-  @include padding-inline;
+    @include padding-inline;
 
-  @include on-large-desctop {
-    max-width: 1136px;
-    margin: 0 auto;
-    padding-inline: 0;
-  }
+    @include on-tablet {
+      height: calc(100vh - 99px + 100%);
+    }
+
+    @include on-large-desctop {
+      max-width: 1136px;
+      margin: 0 auto;
+      padding-inline: 0;
+    }
 }
 
 .navigate {
@@ -24,7 +29,7 @@
   cursor: pointer;
 }
 
-.navigate > p {
+.navigate>p {
   font-family: Mont-Bold, sans-serif;
   font-weight: 700;
   font-size: 12px;
@@ -128,8 +133,7 @@
 }
 
 .whiteIcon {
-  filter: brightness(0) saturate(100%) invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg)
-    brightness(103%) contrast(103%);
+  filter: brightness(0) saturate(100%) invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg) brightness(103%) contrast(103%);
 }
 
 .minusIcon,
@@ -207,6 +211,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   color: $light-color;
   background-color: $accent-color;
@@ -217,12 +222,16 @@
 
   padding-block: 13.5px;
 
+  transition: .3s;
+
   &:hover {
     background-color: $accent-color-hover;
   }
 }
 
 .onDesctop {
+  position: relative;
+
   @include on-desctop {
     display: flex;
   }
@@ -232,7 +241,7 @@
   }
 }
 
-.onDesctop > div {
+.onDesctop>div {
   @include on-desctop {
     width: 752px;
   }
@@ -251,4 +260,3 @@
     width: 80%;
   }
 }
-

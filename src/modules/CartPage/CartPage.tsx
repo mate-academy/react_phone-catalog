@@ -22,6 +22,8 @@ export const CartPage: React.FC = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const navigate = useNavigate();
 
+  const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+
   const totalPrice = cart.reduce(
     (acc, item) => acc + (item.finalPrice || 0) * (item.quantity || 1),
     0,
@@ -130,7 +132,7 @@ export const CartPage: React.FC = () => {
                 <div className={style.totalContainer}>
                   <h1 className={style.totalTitle}>${totalPrice}</h1>
                   <p className={style.totalDescription}>
-                    Total for {cart.length} items
+                    Total for {totalItems} items
                   </p>
                 </div>
 

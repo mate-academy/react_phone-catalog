@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
         <div className={style.nav}>
           <ul className={style.navList}>
             <li className={style.navItem}>
-              <a href="#" className={style.navLink}>
+              <a href="https://github.com/Valbel93" className={style.navLink}>
                 Github
               </a>
             </li>
