@@ -29,10 +29,21 @@ export const ProductDetailPage: React.FC = () => {
     }
 
     const parts = productDetail.id.split('-');
+    const sizeIndex = parts.findIndex(
+      p => p.endsWith('mm') || p.endsWith('gb') || p.endsWith('tb'),
+    );
 
-    parts[parts.length - 1] = color;
+    if (sizeIndex === -1) {
+      return productId || '';
+    }
 
-    return parts.join('-');
+    const formattedColor = color.trim().replace(/\s+/g, '-');
+
+    const baseParts = parts.slice(0, sizeIndex + 1);
+
+    baseParts.push(formattedColor);
+
+    return baseParts.join('-');
   };
 
   const getNewIdCapacity = (capacity: string) => {
@@ -41,8 +52,15 @@ export const ProductDetailPage: React.FC = () => {
     }
 
     const parts = productDetail.id.split('-');
+    const sizeIndex = parts.findIndex(
+      p => p.endsWith('mm') || p.endsWith('gb') || p.endsWith('tb'),
+    );
 
-    parts[parts.length - 2] = capacity.toLowerCase();
+    if (sizeIndex === -1) {
+      return productId || '';
+    }
+
+    parts[sizeIndex] = capacity.toLowerCase();
 
     return parts.join('-');
   };
@@ -76,22 +94,45 @@ export const ProductDetailPage: React.FC = () => {
     fetchProduct();
   }, [product, productId]);
 
+  const normalize = (value: string) =>
+    value.toLowerCase().replace(/\s+/g, '').replace(/-+/g, '');
+
   useEffect(() => {
-    if (productDetail) {
-      setSelectedImage(productDetail.images[0]);
-
-      const colorFromUrl = location.pathname.split('-').pop();
-      const capacityFromUrl =
-        location.pathname.split('-')[location.pathname.split('-').length - 2];
-
-      if (colorFromUrl) {
-        setSelectedColor(colorFromUrl);
-      }
-
-      if (capacityFromUrl) {
-        setSelectedCapacity(capacityFromUrl);
-      }
+    if (!productDetail) {
+      return;
     }
+
+    const pathParts = location.pathname.split('-');
+    const colorFromUrl = pathParts[pathParts.length - 1];
+    const capacityFromUrl = pathParts[pathParts.length - 2];
+
+    setSelectedImage(productDetail.images[0]);
+
+    const normalizedColors = productDetail.colorsAvailable.map(c =>
+      normalize(c),
+    );
+    const normalizedColorFromUrl = normalize(colorFromUrl);
+
+    const matchingColorIndex = normalizedColors.findIndex(
+      c => c === normalizedColorFromUrl,
+    );
+
+    if (matchingColorIndex !== -1) {
+      setSelectedColor(productDetail.colorsAvailable[matchingColorIndex]);
+    }
+
+    const normalizedCapacityFromUrl = normalize(capacityFromUrl || '');
+
+    if (
+      normalizedCapacityFromUrl &&
+      productDetail.capacityAvailable
+        .map(c => normalize(c))
+        .includes(normalizedCapacityFromUrl)
+    ) {
+      setSelectedCapacity(normalizedCapacityFromUrl);
+    }
+
+    setSelectedImage(productDetail.images[0]);
   }, [productDetail, location.pathname]);
 
   const handleSlideChange = (swiper: SwiperType) => {
@@ -187,13 +228,20 @@ export const ProductDetailPage: React.FC = () => {
               <div className={styles.select}>
                 {productDetail.colorsAvailable.map(color => (
                   <NavLink
-                    className={`${styles.colorDiv} ${selectedColor === color ? styles.selectedColor : ''}`}
+                    className={`${styles.colorDiv} ${
+                      normalize(selectedColor) === normalize(color)
+                        ? styles.selectedColor
+                        : ''
+                    }`}
                     key={color}
-                    style={{ backgroundColor: colorMap[color] }}
+                    style={{
+                      backgroundColor: colorMap[normalize(color)],
+                    }}
                     to={`/${product}/${getNewIdColor(color)}`}
                     onClick={() => {
                       setSelectedImage(productDetail?.images[0] || '');
                       swiperRef.current?.slideTo(0);
+                      setSelectedColor(color);
                     }}
                   />
                 ))}
@@ -213,6 +261,7 @@ export const ProductDetailPage: React.FC = () => {
                     onClick={() => {
                       setSelectedImage(productDetail?.images[0] || '');
                       swiperRef.current?.slideTo(0);
+                      setSelectedCapacity(capacity);
                     }}
                   >
                     {capacity}
