@@ -16,7 +16,6 @@ import { capitalize } from 'shared/helpers/capitalize';
 import { useItemsPerPage } from 'shared/hooks/useItemsPerPage';
 import { usePagedProducts } from 'shared/hooks/usePagedProducts';
 import { useProductQueryParams } from 'shared/hooks/useProductQueryParams';
-import { useProductsByCategory } from 'shared/hooks/useProductsByCategory';
 import { useSortProducts } from 'shared/hooks/useSortProducts';
 import { useUpdateSearchParams } from 'shared/hooks/useUpdateSearchParams';
 
@@ -41,10 +40,15 @@ export const ProductsPage: React.FC = () => {
   const { productsByCategory, countsByCategory, loading, error } =
     useProductsContext();
 
+  const isValidCategory =
+    category && Object.values(ProductCategory).includes(category);
   const selectedCategory = category as ProductCategory;
-
+  const products = isValidCategory
+    ? productsByCategory[selectedCategory] || []
+    : [];
+  const isReady = isValidCategory && Array.isArray(products);
   const isAllSelected = itemsOnPageParam === ItemsPerPage.ALL;
-  const products = useProductsByCategory(selectedCategory, productsByCategory);
+
   const sortedProducts = useSortProducts(products, sortParam);
   const perPage = useItemsPerPage(itemsOnPageParam, isAllSelected);
   const pagedProducts = usePagedProducts(
@@ -75,58 +79,66 @@ export const ProductsPage: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
-  if (loading) return <Loader />;
-  if (error) return <Error message={error} />;
-  if (!productsByCategory[selectedCategory]) {
-    return <NotFoundPage />;
-  }
+  let content = null;
 
-  if (countsByCategory[selectedCategory] === 0) {
-    return <EmptyState category={selectedCategory} />;
-  }
+  if (loading) {
+    content = <Loader />;
+  } else if (error) {
+    content = <Error message={error} />;
+  } else if (!isReady) {
+    content = <NotFoundPage />;
+  } else if (countsByCategory[selectedCategory] === 0) {
+    content = <EmptyState category={selectedCategory} />;
+  } else {
+    content = (
+      <>
+        <Breadcrumbs />
 
-  return (
-    <div className={styles.catalogPage}>
-      <Breadcrumbs />
-      <h1 className={styles.categoryTitle}>{capitalize(selectedCategory)}</h1>
-      <span className={styles.numOfProducts}>
-        {`${countsByCategory[selectedCategory]} models`}
-      </span>
-      <div className={styles.productsControls}>
-        <div className={styles.sortContainer}>
-          <Dropdown
-            label="Sort by"
-            selectedOption={sortParam}
-            options={sortOptions}
-            onSelect={handleSortBySelect}
-          />
-        </div>
+        <h1 className={styles.categoryTitle}>{capitalize(selectedCategory)}</h1>
 
-        <div className={styles.itemOnPageContainer}>
-          <Dropdown
-            label="Items on page"
-            selectedOption={itemsOnPageParam}
-            options={itemsPerPage}
-            onSelect={handleItemsOnPageSelect}
-          />
-        </div>
-      </div>
-      <div className={styles.productsList}>
-        {pagedProducts.map(product => (
-          <div key={product.id} className={styles.productContainer}>
-            <ProductCard product={product} showDiscount={false} />
+        <span className={styles.numOfProducts}>
+          {`${countsByCategory[selectedCategory]} models`}
+        </span>
+
+        <div className={styles.productsControls}>
+          <div className={styles.sortContainer}>
+            <Dropdown
+              label="Sort by"
+              selectedOption={sortParam}
+              options={sortOptions}
+              onSelect={handleSortBySelect}
+            />
           </div>
-        ))}
-      </div>
 
-      {!isAllSelected && (
-        <Pagination
-          totalItems={countsByCategory[selectedCategory]}
-          perPage={perPage}
-          curPage={currentPage}
-          onPageChange={handleChangePage}
-        />
-      )}
-    </div>
-  );
+          <div className={styles.itemOnPageContainer}>
+            <Dropdown
+              label="Items on page"
+              selectedOption={itemsOnPageParam}
+              options={itemsPerPage}
+              onSelect={handleItemsOnPageSelect}
+            />
+          </div>
+        </div>
+
+        <div className={styles.productsList}>
+          {pagedProducts.map(product => (
+            <div key={product.id} className={styles.productContainer}>
+              <ProductCard product={product} showDiscount={false} />
+            </div>
+          ))}
+        </div>
+
+        {!isAllSelected && (
+          <Pagination
+            totalItems={countsByCategory[selectedCategory]}
+            perPage={perPage}
+            curPage={currentPage}
+            onPageChange={handleChangePage}
+          />
+        )}
+      </>
+    );
+  }
+
+  return <div className={styles.catalogPage}>{content}</div>;
 };

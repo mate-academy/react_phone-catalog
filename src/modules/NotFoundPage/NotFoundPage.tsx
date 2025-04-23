@@ -2,7 +2,15 @@ import { Link } from 'react-router-dom';
 
 import styles from './NotFoundPage.module.scss';
 
-export const NotFoundPage: React.FC = () => {
+type Props = {
+  message?: string;
+  imageSrc?: string;
+};
+
+export const NotFoundPage: React.FC<Props> = ({
+  message = 'Page not found',
+  imageSrc = 'img/page-not-found.png',
+}) => {
   return (
     <div className={styles.notFoundPage}>
       <div className={styles.back}>
@@ -18,12 +26,8 @@ export const NotFoundPage: React.FC = () => {
         </Link>
       </div>
 
-      <h1 className={styles.notFoundMessage}>Page not found</h1>
-      <img
-        className={styles.notFoundImg}
-        src="img/page-not-found.png"
-        alt="Page not found"
-      />
+      <h1 className={styles.notFoundMessage}>{message}</h1>
+      <img className={styles.notFoundImg} src={imageSrc} alt="Page not found" />
     </div>
   );
 };

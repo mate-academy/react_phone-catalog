@@ -1,11 +1,12 @@
 import {
-  HashRouter as Router,
   Navigate,
   Route,
+  HashRouter as Router,
   Routes,
 } from 'react-router-dom';
 
 import { FavoritesPage } from 'modules/FavoritesPage/FavoritesPage';
+import { ProductDetailsPage } from 'modules/ProductDetailsPage/ProductDetailsPage';
 import { ProductsPage } from 'modules/ProductsPage';
 
 import { App } from './App';
@@ -21,9 +22,8 @@ export const Root: React.FC = () => (
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
 
-        <Route path=":category" element={<ProductsPage />}>
-          <Route path=":id" element={<ProductsPage />} />
-        </Route>
+        <Route path=":category" element={<ProductsPage />} />
+        <Route path=":category/:id" element={<ProductDetailsPage />} />
 
         <Route path="favorites" element={<FavoritesPage />} />
         <Route path="cart" element={<CartPage />} />

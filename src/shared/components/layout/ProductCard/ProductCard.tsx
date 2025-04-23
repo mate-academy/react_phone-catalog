@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { AddToCartButton } from 'shared/components/ui/AddToCartButton';
 import { FavoriteButton } from 'shared/components/ui/FavoriteButton';
 import { Product } from 'shared/types/Product';
@@ -12,12 +14,20 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   return (
     <div className={styles.productCard}>
-      <div className={styles.imageWrapper}>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className={styles.imageWrapper}
+      >
         <img className={styles.image} src={product.image} alt={product.name} />
-      </div>
+      </Link>
 
       <div className={styles.productInfo}>
-        <h2 className={styles.title}>{product.name}</h2>
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+          className={styles.title}
+        >
+          {product.name}
+        </Link>
 
         <div className={styles.priceWrapper}>
           <p className={styles.productPrice}>${product.price}</p>
