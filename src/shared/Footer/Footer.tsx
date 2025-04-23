@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
 
       <div className={styles.footer__links}>
         <a
-          href="https://github.com/nikalaiii/react_phone-catalog"
+          href="https://github.com/nikalaiii/Nice-Gadgets"
           className={styles.footer__link}
         >
           git hub

@@ -37,7 +37,13 @@ export const Carousel: React.FC<Props> = ({
   }, [windowWidth, items]);
 
   const visibleItems = windowWidth > 500 ? 4 : 1;
-  const maxIndex = items.length - visibleItems;
+
+  const maxIndex = Math.max(
+    0,
+    Math.ceil(
+      items.length - (carouselRef.current?.offsetWidth ?? 0) / itemWidth,
+    ),
+  );
 
   useEffect(() => {
     setIndex(0);

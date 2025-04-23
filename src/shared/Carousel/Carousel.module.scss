@@ -1,6 +1,7 @@
 @import '../styles/index';
 
 .carousel {
+  box-sizing: border-box;
   max-width: $carousel-max-width;
   display: flex;
   flex-direction: column;
@@ -44,16 +45,23 @@
 }
 
 .viewport {
-  @include flex-center;
-  flex-direction: column;
-    width: 100%;
+  width: 100%;
+  overflow-x: hidden;
+
+  @include on-tablet {
     overflow-x: scroll;
+  }
+
+  // Видаляємо:
+  // @include flex-center;
+  // flex-direction: column;
 }
 
 .items {
-    @include flex-center;
-
-    flex-flow: row nowrap;
-    gap: 16px;
-    width: 100%; 
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 16px;
+  // Видаляємо: width: 100% та @include flex-center
+  // Додаємо:
+  justify-content: flex-start;
 }
