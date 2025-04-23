@@ -82,16 +82,16 @@
   }
 
   .menu {
+    position: fixed;
     width: 100%;
     height: calc(100vh - 64px);
     flex-direction: column;
-    transform: translateX(200%);
+    transform: translateX(100%);
     background-color: $white;
     display: flex;
     transition: transform 0.2s ease-in-out;
 
     &--active{
-      position: fixed;
       top: 64px;
       left: 0;
       z-index: 10;
