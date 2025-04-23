@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { createContext } from 'react';
 import { Product } from '../../types/Product';
 import { useLocaleStorage } from '../../utils/customHooks';
@@ -31,53 +31,67 @@ export const LocalStorageContextProvider = ({
   const [cartItems, setCartItems] = useLocaleStorage<Product[]>('cart', []);
   const [favItems, setFavItems] = useLocaleStorage<Product[]>('fav', []);
 
-  const updateFavList = (product: Product) => {
-    const existingItem = favItems.find(favItem => favItem.id === product.id);
+  const updateFavList = useCallback(
+    (product: Product) => {
+      const existingItem = favItems.find(favItem => favItem.id === product.id);
 
-    if (existingItem) {
-      setFavItems(favItems.filter(favItem => favItem.id !== product.id));
-    } else {
-      setFavItems([...favItems, product]);
-    }
-  };
-
-  const handleAddToCart = (product: Product) => {
-    const newCartItems = cartItems.map(item => {
-      if (item.id === product.id && item.quantity) {
-        return { ...product, quantity: item.quantity + 1 };
+      if (existingItem) {
+        setFavItems(favItems.filter(favItem => favItem.id !== product.id));
+      } else {
+        setFavItems([...favItems, product]);
       }
+    },
+    [favItems, setFavItems],
+  );
 
-      return item;
-    });
+  const handleAddToCart = useCallback(
+    (product: Product) => {
+      const newCartItems = cartItems.map(item => {
+        if (item.id === product.id && item.quantity) {
+          return { ...product, quantity: item.quantity + 1 };
+        }
 
-    setCartItems(newCartItems);
-  };
+        return item;
+      });
 
-  const handleDeleteFromCart = (product: Product) => {
-    const newCartItems = cartItems.map(item => {
-      if (item.id === product.id && item.quantity) {
-        return { ...product, quantity: item.quantity - 1 };
+      setCartItems(newCartItems);
+    },
+    [cartItems, setCartItems],
+  );
+
+  const handleDeleteFromCart = useCallback(
+    (product: Product) => {
+      const newCartItems = cartItems.map(item => {
+        if (item.id === product.id && item.quantity) {
+          return { ...product, quantity: item.quantity - 1 };
+        }
+
+        return item;
+      });
+
+      setCartItems(newCartItems);
+    },
+    [cartItems, setCartItems],
+  );
+
+  const handleCartUpdate = useCallback(
+    (product: Product) => {
+      const existingItem = cartItems.find(
+        cartItem => cartItem.id === product.id,
+      );
+
+      if (existingItem) {
+        setCartItems(cartItems.filter(cartItem => cartItem.id !== product.id));
+      } else {
+        setCartItems([...cartItems, { ...product, quantity: 1 }]);
       }
+    },
+    [cartItems, setCartItems],
+  );
 
-      return item;
-    });
-
-    setCartItems(newCartItems);
-  };
-
-  const handleCartUpdate = (product: Product) => {
-    const existingItem = cartItems.find(cartItem => cartItem.id === product.id);
-
-    if (existingItem) {
-      setCartItems(cartItems.filter(cartItem => cartItem.id !== product.id));
-    } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
-    }
-  };
-
-  const deleteOnCheckout = () => {
+  const deleteOnCheckout = useCallback(() => {
     setCartItems([]);
-  };
+  }, [setCartItems]);
 
   const values = useMemo(
     () => ({
@@ -89,7 +103,15 @@ export const LocalStorageContextProvider = ({
       updateCart: handleCartUpdate,
       checkout: deleteOnCheckout,
     }),
-    [cartItems, favItems],
+    [
+      deleteOnCheckout,
+      handleAddToCart,
+      handleCartUpdate,
+      handleDeleteFromCart,
+      updateFavList,
+      cartItems,
+      favItems,
+    ],
   );
 
   return (

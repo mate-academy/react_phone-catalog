@@ -2,7 +2,7 @@ export type Banner = {
   image: string;
 };
 
-const API_URL_BANNERS = '/api/banners.json';
+const API_URL_BANNERS = './api/banners.json';
 
 export function getBanners(): Promise<Banner[]> {
   return fetch(`${API_URL_BANNERS}`).then(res => {
