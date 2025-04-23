@@ -185,11 +185,8 @@ export const ProductDetails = () => {
                       const { title, text } = info;
 
                       return (
-                        <div key={title} className="article__paragraph">
-                          <h4 className="article__paragraph__heading">
-                            {title}
-                          </h4>
-                          <div className="article__paragraph__text">{text}</div>
+                        <div key={title} className="article__paragraph__text">
+                          {text}
                         </div>
                       );
                     },

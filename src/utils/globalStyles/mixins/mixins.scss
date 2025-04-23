@@ -66,6 +66,10 @@
     height: 2px;
     background-color: $gray-primary;
     transition: width 0.3s ease;
+
+    @include desktop {
+      height: 3px;
+    }
   }
 
   &:hover {

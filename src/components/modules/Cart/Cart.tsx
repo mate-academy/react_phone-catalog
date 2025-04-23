@@ -1,7 +1,6 @@
 import './Cart.style.scss';
 
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
 
 import { LocalStorageContext } from '../../../app/Contexts/LocalStorageContext';
 
@@ -9,6 +8,7 @@ import { Product } from '../../../types/Product';
 
 import { CartItem } from './CartItem/CartItem';
 import { BackButton } from '../../shared/BackButton/BackButton';
+import { Modal } from '../../shared/ModalWindow/ModalWindow';
 
 import {
   calculateTotalPrice,
@@ -17,10 +17,14 @@ import {
 
 export const Cart = () => {
   const { cartItems } = useContext(LocalStorageContext);
-  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   const totalPrice = calculateTotalPrice(cartItems);
   const cartItemsQuantity = calculateTotalQuantity(cartItems);
+
+  const handleModal = () => {
+    setShowModal(!showModal);
+  };
 
   return (
     <div className="cart">
@@ -45,13 +49,12 @@ export const Cart = () => {
                 <p className="cart__checkout__items-quantity">{`Total for ${cartItemsQuantity} items`}</p>
               </div>
 
-              <button
-                className="cart__checkout__button"
-                onClick={() => navigate('../404', { replace: true })}
-              >
+              <button className="cart__checkout__button" onClick={handleModal}>
                 <p className="cart__checkout__button__navigation">Checkout</p>
               </button>
             </div>
+
+            {showModal && <Modal cancel={handleModal} />}
           </>
         ) : (
           <p>No items in your cart yet</p>
