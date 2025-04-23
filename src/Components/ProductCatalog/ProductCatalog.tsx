@@ -2,15 +2,9 @@ import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import styles from './ProductCatalog.module.scss';
 import { home, arrowRight, arrowLeft } from '../../icons';
 import { ProductWithYear } from '../../types/product';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { CustomDropdown } from '../CustomDropdown';
 import { useEffect, useMemo, useState } from 'react';
-import {
-  ItemsPerPageType,
-  setItemsPerPage,
-  setSortBy,
-  SortBy,
-} from '../features/catalog';
+import { SortBy } from '../features/catalog';
 import { ProductDetailsPage } from '../ProductDetailsPage/ProductDetailsPage';
 import classNames from 'classnames';
 
@@ -24,9 +18,11 @@ export const ProductCatalog: React.FC<Props> = ({ title, items }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const path = location.pathname.split('/')[1];
   const capitalizedPath = path.charAt(0).toUpperCase() + path.slice(1);
-  const { sortBy, itemsPerPage } = useAppSelector(state => state.catalog);
-  const dispatch = useAppDispatch();
-  const defaultPerPage = 'All';
+
+  const sortBy = (searchParams.get('sort') as SortBy) || SortBy.Newest;
+  const itemsPerPageParam = searchParams.get('perPage') || 'All';
+  const itemsPerPage =
+    itemsPerPageParam === 'All' ? 'All' : Number(itemsPerPageParam);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -35,48 +31,6 @@ export const ProductCatalog: React.FC<Props> = ({ title, items }) => {
       ? 1
       : Math.ceil(items.length / (itemsPerPage as number));
   }, [items, itemsPerPage]);
-
-  useEffect(() => {
-    const sortParam = searchParams.get('sort');
-
-    window.scrollTo(0, 0);
-
-    if (sortParam && Object.values(SortBy).includes(sortParam as SortBy)) {
-      dispatch(setSortBy(sortParam as SortBy));
-    } else {
-      dispatch(setSortBy(SortBy.Newest));
-    }
-
-    const perPageParam = searchParams.get('perPage');
-    const allowedValues = ['All', '4', '8', '16'];
-
-    if (perPageParam && allowedValues.includes(perPageParam)) {
-      const perPageValue =
-        perPageParam === 'All' ? 'All' : Number(perPageParam);
-
-      dispatch(setItemsPerPage(perPageValue as ItemsPerPageType));
-    } else {
-      dispatch(setItemsPerPage(defaultPerPage));
-    }
-  }, [dispatch, searchParams, path]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-
-    if (sortBy !== SortBy.Newest) {
-      params.set('sort', `${sortBy}`);
-    } else {
-      params.delete('sort');
-    }
-
-    if (itemsPerPage !== defaultPerPage) {
-      params.set('perPage', `${itemsPerPage}`);
-    } else {
-      params.delete('perPage');
-    }
-
-    setSearchParams(params);
-  }, [sortBy, itemsPerPage, currentPage, setSearchParams, searchParams, path]);
 
   const sortedItems = useMemo(() => {
     const itemsCopy = [...items];
@@ -104,35 +58,31 @@ export const ProductCatalog: React.FC<Props> = ({ title, items }) => {
   }, [sortedItems, currentPage, itemsPerPage]);
 
   const goToPage = (page: number) => {
-    const newPage = page;
-
     const params = new URLSearchParams(searchParams);
 
-    params.set('page', `${newPage}`);
-    setSearchParams(params);
+    params.set('page', `${page}`);
+    setSearchParams(params, { replace: false });
   };
 
-  const handlePrev = () => {
-    if (currentPage > 1) {
-      const newPage = currentPage - 1;
+  useEffect(() => {
+    const pageParam = searchParams.get('page');
+    const pageNumber = Number(pageParam);
 
+    if (isNaN(pageNumber) || pageNumber <= 1 || pageNumber > totalPages) {
       const params = new URLSearchParams(searchParams);
 
-      params.set('page', `${newPage}`);
-      setSearchParams(params);
+      if (params.has('page')) {
+        params.delete('page');
+        setSearchParams(params, { replace: false });
+      }
+
+      setCurrentPage(1);
+    } else {
+      setCurrentPage(pageNumber);
     }
-  };
 
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      const newPage = currentPage + 1;
-
-      const params = new URLSearchParams(searchParams);
-
-      params.set('page', `${newPage}`);
-      setSearchParams(params);
-    }
-  };
+    window.scrollTo(0, 0);
+  }, [searchParams, setSearchParams, totalPages]);
 
   function getPaginationClass(index: number) {
     return classNames(styles.singleNumber, {
@@ -151,29 +101,6 @@ export const ProductCatalog: React.FC<Props> = ({ title, items }) => {
     return `translateX(-${Math.min(offset, maxOffset - 152 - 8)}px)`;
   }
 
-  useEffect(() => {
-    const pageParam = searchParams.get('page');
-    const pageNumber = Number(pageParam);
-
-    if (isNaN(pageNumber) || pageNumber <= 1 || pageNumber > totalPages) {
-      const params = new URLSearchParams(searchParams);
-
-      params.delete('page');
-      setSearchParams(params);
-
-      setCurrentPage(1);
-    } else {
-      setCurrentPage(pageNumber);
-    }
-  }, [
-    searchParams,
-    totalPages,
-    setSearchParams,
-    currentPage,
-    itemsPerPage,
-    path,
-  ]);
-
   return (
     <section className={styles.marginContainer}>
       <div className={styles.navContainer}>
@@ -183,6 +110,7 @@ export const ProductCatalog: React.FC<Props> = ({ title, items }) => {
         <img src={arrowRight} alt="arrow-right" className={styles.arrowIcon} />
         <p className={styles.location}>{capitalizedPath}</p>
       </div>
+
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.number}>{items.length} models</p>
 
@@ -209,7 +137,7 @@ export const ProductCatalog: React.FC<Props> = ({ title, items }) => {
       {totalPages > 1 && (
         <div className={styles.paginationControls}>
           <button
-            onClick={handlePrev}
+            onClick={() => goToPage(currentPage - 1)}
             disabled={currentPage === 1}
             className={styles.arrows}
           >
@@ -221,9 +149,7 @@ export const ProductCatalog: React.FC<Props> = ({ title, items }) => {
           >
             <div
               className={styles.pageNumbers}
-              style={{
-                transform: getPaginationTransform(),
-              }}
+              style={{ transform: getPaginationTransform() }}
             >
               {Array.from({ length: totalPages }, (_, index) => (
                 <button
@@ -237,11 +163,11 @@ export const ProductCatalog: React.FC<Props> = ({ title, items }) => {
             </div>
           </div>
           <button
-            onClick={handleNext}
+            onClick={() => goToPage(currentPage + 1)}
             disabled={currentPage === totalPages}
             className={styles.arrows}
           >
-            <img src={arrowRight} alt="icon-arrow-left" />
+            <img src={arrowRight} alt="icon-arrow-right" />
           </button>
         </div>
       )}

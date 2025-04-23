@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import styles from './CustomDropdown.module.scss';
 import { arrowDown } from '../../icons';
 import { ItemsPerPageType, SortBy } from '../features/catalog';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 type Props = {
   label: string;
@@ -11,17 +11,38 @@ type Props = {
 };
 
 export const CustomDropdown: React.FC<Props> = ({ label, type }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const itemsPerPageOptions: ItemsPerPageType[] = [4, 8, 16, 'All'];
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const selected =
-    type === 'sortBy'
-      ? searchParams.get('sort') || SortBy.Newest
-      : searchParams.get('perPage') || 'All';
+  const itemsPerPageOptions: ItemsPerPageType[] = [4, 8, 16, 'All'];
   const options =
     type === 'sortBy' ? Object.values(SortBy) : itemsPerPageOptions;
+
+  const selected = useMemo(() => {
+    const current = new URLSearchParams(location.search);
+
+    return type === 'sortBy'
+      ? current.get('sort') || SortBy.Newest
+      : current.get('perPage') || 'All';
+  }, [location.search, type]);
+
+  const handleSelect = (option: string | number) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (type === 'sortBy') {
+      params.set('sort', `${option}`);
+      params.delete('page');
+    } else {
+      params.set('perPage', option === 'All' ? 'All' : `${option}`);
+      params.delete('page');
+    }
+
+    navigate(`?${params.toString()}`, { replace: false });
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -37,19 +58,6 @@ export const CustomDropdown: React.FC<Props> = ({ label, type }) => {
 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const handleSelect = (option: string | number) => {
-    const params = new URLSearchParams(searchParams);
-
-    if (type === 'sortBy') {
-      params.set('sort', `${option}`);
-    } else {
-      params.set('perPage', option === 'All' ? 'All' : `${option}`);
-    }
-
-    setSearchParams(params);
-    setIsOpen(false);
-  };
 
   return (
     <div className={styles.dropdownContainer} ref={dropdownRef}>
@@ -72,7 +80,7 @@ export const CustomDropdown: React.FC<Props> = ({ label, type }) => {
             <li
               key={option}
               className={classNames(styles.dropdownItem, {
-                [styles.active]: option === selected,
+                [styles.active]: option.toString() === selected,
               })}
               onClick={() => handleSelect(option)}
             >
