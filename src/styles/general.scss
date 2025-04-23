@@ -12,6 +12,14 @@
   display: none;
 }
 
+.no-scroll {
+  overflow: hidden;
+  
+  @include on-tablet{
+    overflow: visible;
+  }
+}
+
 body {
   background: $black;
   color: $white;

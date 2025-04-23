@@ -18,10 +18,12 @@ export const Header = () => {
 
   const handleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    document.body.classList.add('no-scroll');
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    document.body.classList.remove('no-scroll');
   };
 
   return (
@@ -40,7 +42,7 @@ export const Header = () => {
               <img
                 src="./img/logo/Close.svg"
                 alt="Close menu"
-                onClick={handleMenu}
+                onClick={closeMenu}
               />
             ) : (
               <img

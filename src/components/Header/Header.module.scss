@@ -100,6 +100,7 @@
       min-height: calc(100vh - 49px);
       max-height: calc(100vh - 49px);
 
+
       @include on-tablet {
         min-height: unset;
         max-height: unset;
@@ -118,7 +119,8 @@
         height: 100%;
       }
 
-      &:has(:first-child.navigation__link--active) {
+.navigation__link--active {
+       color: white;
         &::after {
           position: absolute;
           content: '';
@@ -256,5 +258,4 @@
     }
   }
 }
-
 
