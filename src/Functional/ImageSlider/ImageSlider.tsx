@@ -36,6 +36,7 @@ export default function SliderSwiper() {
           effect="fade"
           className="swiper--top__images"
           onSwiper={onSwiperInit}
+          loop={true}
         >
           {images.map((image, index) => (
             <SwiperSlide key={index}>

@@ -18,7 +18,10 @@ export const Footer = () => {
         </div>
 
         <div className="footer__links">
-          <a href="#" className="footer__link">
+          <a
+            href="https://github.com/DavidKuznets?tab=repositories"
+            className="footer__link"
+          >
             Github
           </a>
           <a href="#" className="footer__link">

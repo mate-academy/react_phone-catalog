@@ -1,4 +1,5 @@
 @use '../../mixins.scss' as *;
+
 .header {
   box-sizing: border-box;
   height: auto;
@@ -11,6 +12,10 @@
   margin: 0 auto;
   width: 100%;
   border: 1px solid #3B3E4A;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  background-color: #1f1f2b;
 
 
   &__burger-menu {
@@ -50,7 +55,7 @@
   &__logo {
     display: flex;
     align-items: center;
-    padding:  10px 10px;
+    padding: 10px;
   }
 
   &__nav {
@@ -192,7 +197,6 @@
   justify-content: center;
   line-height: 1;
   pointer-events: none;
-  background-color: #e74c3c;
 
   @include on-desktop {
     width: 17px;

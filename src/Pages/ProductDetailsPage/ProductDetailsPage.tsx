@@ -34,6 +34,10 @@ export const ProductDetailsPage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
+  useEffect(() => {
     const fetchProducts = async () => {
       const urls = [
         '/api/phones.json',
@@ -127,9 +131,7 @@ export const ProductDetailsPage = () => {
           ? `/${newProduct.images[0]}`
           : '/img/page-not-found.png',
       );
-      navigate(
-        `/products/${newProduct.id}?color=${color.toLowerCase().replace(' ', '-')}&capacity=${selectedCapacity || ''}`,
-      );
+      navigate(`/products/${newProduct.id}`);
     }
   };
 
@@ -153,9 +155,7 @@ export const ProductDetailsPage = () => {
           ? `/${newProduct.images[0]}`
           : '/img/page-not-found.png',
       );
-      navigate(
-        `/products/${newProduct.id}?color=${selectedColor?.toLowerCase().replace(' ', '-') || ''}&capacity=${capacity}`,
-      );
+      navigate(`/products/${newProduct.id}`);
     }
   };
 
@@ -346,6 +346,33 @@ export const ProductDetailsPage = () => {
               />
             </button>
           </div>
+          {product && isPhoneOrTablet(product) && (
+            <div className="product__tech-specs">
+              <h2 className="product__section-title">Tech specs</h2>
+              <div className="product__specs-list">
+                <div className="product__spec">
+                  <span className="product__spec-title">Screen</span>
+                  <span className="product__spec-value">{product.screen}</span>
+                </div>
+                <div className="product__spec">
+                  <span className="product__spec-title">Resolution</span>
+                  <span className="product__spec-value">
+                    {product.resolution}
+                  </span>
+                </div>
+                <div className="product__spec">
+                  <span className="product__spec-title">Processor</span>
+                  <span className="product__spec-value">
+                    {product.processor}
+                  </span>
+                </div>
+                <div className="product__spec">
+                  <span className="product__spec-title">RAM</span>
+                  <span className="product__spec-value">{product.ram}</span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

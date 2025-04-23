@@ -31,7 +31,9 @@
   &__item {
     display: flex;
     gap: 16px;
+
     @include card-box;
+
     padding: 16px;
   }
 
@@ -75,7 +77,9 @@
       background-color: var(--primary-color);
       color: var(--text-color);
       font-size: 16px;
+
       @include button-base;
+
     }
 
     & span {
@@ -96,7 +100,9 @@
 
   &__summary {
     flex: 1;
+
     @include card-box;
+
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -122,7 +128,9 @@
     background-color: var(--primary-color);
     color: var(--text-color);
     font-size: 16px;
+
     @include button-base;
+
   }
 
   &__item-remove {
@@ -130,6 +138,7 @@
     color: var(--text-color);
     padding: 8px 16px;
     align-self: flex-start;
+    
     @include button-base;
   }
 }
@@ -174,6 +183,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     @include button-base;
 
     &:hover {
@@ -186,7 +196,9 @@
     flex-direction: column;
     justify-content: flex-start;
     position: relative;
+
     @include card-box;
+
     padding: 8px;
     width: 212px;
     height: 443px;
@@ -271,6 +283,7 @@
     height: 40px;
     font-size: 14px;
     text-align: center;
+
     @include button-base;
   }
 
