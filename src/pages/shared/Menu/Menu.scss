@@ -1,0 +1,82 @@
+@import '../../../styles/main';
+
+.menu {
+  pointer-events: none;
+
+  position: fixed;
+  z-index: 1;
+  top: 48px;
+  bottom: 64px;
+  transform: translateX(-100%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  opacity: 0;
+  background-color: var(--color-bg);
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+
+  list-style: none;
+}
+
+.menu__link {
+  position: relative;
+
+  display: flex;
+
+  font-family: Molt-Bold, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--color-gray-secondary);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  &:hover {
+    color: var(--color-gray-primary);
+  }
+}
+
+.menu__link::after {
+  content: '';
+
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+
+  display: block;
+
+  box-sizing: content-box;
+  width: 100%;
+  height: 0;
+
+  background-color: var(--color-gray-primary);
+
+  transition: height 0.3s ease;
+}
+
+.menu__link:hover::after {
+  height: 1px;
+}
+
+.menu--open {
+  pointer-events: all;
+  transform: translateX(0);
+  opacity: 1;
+}
