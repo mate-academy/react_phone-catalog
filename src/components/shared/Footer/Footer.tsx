@@ -20,6 +20,8 @@ export const Footer = () => {
           <a
             href="https://github.com/VikaChereushenko"
             className="footer__link"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Github
           </a>

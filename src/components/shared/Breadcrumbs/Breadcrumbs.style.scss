@@ -6,6 +6,7 @@
 
   &__navigate-home {
     transition: transform 0.3s ease-in;
+    cursor: pointer;
 
     &:hover {
       transform: scale(1.3);

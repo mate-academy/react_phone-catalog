@@ -18,6 +18,7 @@
     width: 160px;
     height: 40px;
     transition: box-shadow 0.3s ease;
+    cursor: pointer;
 
     &--slider {
       max-width: 100px;
@@ -56,6 +57,7 @@
     justify-content: center;
     border: 1px solid $gray-elements;
     transition: border-color 0.3s ease;
+    cursor: pointer;
 
     &:hover {
       border-color: $gray-primary;

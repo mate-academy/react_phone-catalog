@@ -129,6 +129,8 @@
         @include category-name;
 
         &.active {
+          color: $gray-primary;
+          
           &::after {
             content: '';
             position: absolute;
