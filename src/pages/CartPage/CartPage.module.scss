@@ -1,0 +1,192 @@
+@import '../../styles/mixins';
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/general';
+
+.product-description {
+  display: flex;
+  gap: 20px;
+}
+
+.tech-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-grow: 1;
+
+    &__empty {
+height: 100%;
+width: 20%;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
+    }
+  }
+
+  &__item {
+    background: $surface;
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    &__remove {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    &__image {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    &__title {
+      width: 50%;
+      flex-shrink: 2;
+    }
+
+    &__count {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: auto;
+    }
+
+    &__price {
+      margin-left: auto;
+    }
+
+    .quantityCounter {
+      &__item {
+        height: 32px;
+        width: 32px;
+        border: 1px solid $surface-second;
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+          background: $surface-second;
+        }
+      }
+
+      &__count {
+        background: transparent !important;
+        border: none;
+        cursor: auto;
+      }
+    }
+
+    @include on-tablet {
+      padding: 24px;
+      gap: 24px;
+    }
+  }
+
+  &__checkout {
+    border: 1px solid $elements;
+    padding: 24px;
+    margin-bottom: auto;
+
+@include on-desktop {
+  width: 368px;
+}
+    &--hidden {
+      display: none;
+    }
+
+    &__price {
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      text-align: center;
+    }
+
+    &__info {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: $gray;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    &__button {
+      margin-top: 16px;
+      background: $accent;
+      padding: 13px 85px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      color: $white;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color $hover-transition ease;
+
+      &:hover {
+        background: $accent-hover;
+      }
+    }
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+  }
+}
+
+.back {
+  border: none;
+  background: transparent;
+  margin-top: 24px;
+  height: 16px;
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+  transition: color $hover-transition ease;
+  color: $white;
+  font-family: inherit;
+
+  &__arrow{
+    height: 16px;
+    width: 16px;
+  }
+  &__text{
+    color: inherit;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &:hover {
+    color: $accent;
+  }
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+
