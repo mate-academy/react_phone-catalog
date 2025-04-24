@@ -1,0 +1,232 @@
+@import '/src/styles/mixins';
+
+.container{
+  @include container-padding;
+  @include page-grid;
+
+  row-gap: 32px;
+  background-color: rgba(250, 251, 252, 1);
+
+  @include on-desktop{
+    justify-content: center;
+  }
+
+  &__top{
+    @include grid-column;
+
+    display: grid;
+    gap: 24px;
+
+    &__title{
+      font-family: Mont, sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+  }
+
+  &__box{
+    @include grid-column;
+
+    display: grid;
+    row-gap: 16px;
+
+    @include on-desktop{
+      grid-column: 1/17;
+    }
+
+    .cart{
+      height: fit-content;
+      background-color: white;
+      padding: 16px;
+      gap: 16px;
+      border-radius: 16px;
+      border: 1px solid rgb(226, 230, 233);
+      display: flex;
+      flex-direction: column;
+
+      @include on-tablet {
+        flex-direction: row;
+        gap: 24px;
+        padding: 24px;
+        justify-content: space-between;
+      }
+
+      &__top{
+        height: 80px;
+        display: flex;
+        column-gap: 16px;
+        align-items: center;
+
+        @include on-tablet {
+          column-gap: 24px;
+        }
+
+        .button{
+          border: none;
+          background-color: white;
+          padding: 0;
+          display: flex;
+          color: rgb(180, 189, 195);
+          align-items: center;
+          cursor: pointer;
+          font-size: 16px;
+
+          &:hover{
+            color: black;
+            transition-duration: 0.5s;
+          }
+        }
+
+        .img{
+          img{
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+          }
+        }
+
+        .name{
+          font-family: Mont, sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 21px;
+          color: black;
+          text-decoration: none;
+        }
+      }
+
+      &__bottom{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include on-tablet{
+          gap: 24px;
+        }
+
+        .controls{
+          display: flex;
+          gap: 14px;
+          flex: 1;
+
+          .button{
+            width: 32px;
+            height: 32px;
+            background-color: inherit;
+            border: 1px solid rgba(226, 230, 233, 1);
+            border-radius: 48px;
+            cursor: pointer;
+
+            &:hover {
+              border: 1px solid rgba(15, 15, 17, 1);
+              transition-duration: 0.5s;
+            }
+
+            &:disabled {
+              cursor: auto;
+              opacity: 0.5;
+            }
+
+            &:disabled:hover {
+              border-color: rgba(226, 230, 233, 1);
+            }
+          }
+
+          .input{
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            text-align: center;
+          }
+        }
+
+        .price{
+          font-family: Mont, sans-serif;
+          font-size: 22px;
+          font-weight: 800;
+          line-height: 30.8px;
+          margin: 0;
+          min-width: 80px;
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  .checkout{
+    @include grid-column;
+
+    height: fit-content;
+    display: grid;
+    gap: 16px;
+    padding: 24px;
+    border: 1px solid rgba(226, 230, 233, 1);
+    background-color: white;
+    border-radius: 16px;
+    justify-items: center;
+
+    @include on-desktop{
+      grid-column: 17/-1;
+      gap: 24px;
+    }
+
+    &__info{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2{
+      margin: 0;
+      font-family: Mont, sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+
+    p{
+      margin: 0;
+      color: rgba(137, 147, 154, 1);
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+
+    hr{
+      margin: 0;
+      width: 100%;
+      background-color: rgb(226, 230, 233);
+      height: 1px;
+      border: none;
+    }
+
+    &__button{
+      background: rgba(33, 108, 255, 1);
+      border-radius: 8px;
+      border: 1px solid rgba(33, 108, 255, 1);
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      color: #fff;
+      width: 100%;
+      cursor: pointer;
+      height: 48px;
+
+      &:hover{
+        background: inherit;
+        border: 1px solid rgba(33, 108, 255, 1);
+        color: black;
+        transition-duration: 0.5s;
+      }
+    }
+  }
+}

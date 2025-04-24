@@ -1,0 +1,79 @@
+@import '/src/styles/mixins';
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  &:first-child{
+    grid-column: span 2;
+
+    @include on-tablet{
+      grid-column: span 4;
+    }
+  }
+
+  &:last-child{
+    grid-column: span 2;
+
+    @include on-tablet{
+      grid-column: span 3;
+    }
+  }
+
+  .label{
+    color: rgba(137, 147, 154, 1);
+    padding-bottom: 4px;
+  }
+
+  .selected {
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 8px;
+    height: 40px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: #888;
+    }
+  }
+}
+
+.options {
+  position: absolute;
+  width: 100%;
+  padding: 2px 0;
+  margin-top: 4px;
+  list-style: none;
+  border-radius: 8px;
+  border: 1px solid rgba(226, 230, 233, 1);
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+
+  li {
+    padding: 8px 12px;
+    color: gray;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(240, 240, 240, 1);
+      color: black;
+      border-radius: 8px;
+    }
+  }
+}
+
+.active {
+  background-color: rgba(200, 200, 200, 1);
+  color: black;
+}

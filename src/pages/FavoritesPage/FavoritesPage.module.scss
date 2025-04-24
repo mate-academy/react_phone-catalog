@@ -1,0 +1,40 @@
+@import '/src/styles/mixins';
+
+$card-weight: 288px;
+
+.container{
+ @include container-padding;
+ @include page-grid;
+
+ justify-content: center;
+
+  h1{
+    @include grid-column;
+
+    margin-bottom: 8px;
+  }
+
+  span{
+    @include grid-column;
+
+    margin-bottom: 32px;
+  }
+
+  .stateDiv{
+    @include grid-column;
+
+    justify-content: center;
+    gap: 40px 16px;
+    grid-template-columns: repeat(auto-fit, minmax(229px, 288px));
+
+    @include on-tablet {
+      justify-items: start;
+      grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+}

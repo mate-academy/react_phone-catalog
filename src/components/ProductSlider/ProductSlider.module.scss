@@ -1,0 +1,63 @@
+@import '/src/styles/mixins';
+
+.newModels{
+  display: grid;
+  gap: 24px;
+
+  @include grid-column;
+
+  &__top{
+    display: grid;
+    gap: 16px;
+    box-sizing: border-box;
+    .newModels__title{
+      grid-column: span 2;
+    }
+
+    .sliderBtns{
+      grid-column: 3/5;
+      width: 80px;
+      display: flex;
+      justify-content: space-between;
+      justify-self: end;
+      align-items: center;
+
+      .sliderBtn{
+        width: 32px;
+        height: 32px;
+        border-radius: 50px;
+        border: 1px solid rgba(180, 189, 195, 1);
+        cursor: pointer;
+        background-color: inherit;
+
+        &:hover{
+          background-color: white;
+          border: 1px solid rgba(15, 15, 17, 1);
+          transition-duration: 0.5s;
+        }
+
+        &:disabled {
+          cursor: auto;
+          opacity: 0.5;
+        }
+
+        &:disabled:hover {
+          border-color: inherit;
+        }
+      }
+    }
+  }
+
+  &__bottom{
+    overflow: hidden;
+
+    .slider{
+      padding-right: 100px;
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: repeat(auto-fit, minmax(212px, 272px));
+      gap: 16px;
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+}

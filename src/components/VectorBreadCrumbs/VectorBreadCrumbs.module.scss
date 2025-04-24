@@ -1,0 +1,42 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 16px;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  li {
+    cursor: pointer;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    color: rgba(137, 147, 154, 1);
+    line-height: normal;
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &:first-child{
+      background-image: url('/icons/Vector.png');
+      height: 16px;
+      width: 16px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}

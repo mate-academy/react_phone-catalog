@@ -1,0 +1,195 @@
+@import '/src/styles/mixins';
+
+.container {
+  @include page-grid;
+  @include container-padding;
+
+  row-gap: 56px;
+  justify-content: center;
+
+  @include on-tablet{
+    row-gap: 64px;
+  }
+
+  @include on-desktop{
+    row-gap: 80px;
+  }
+
+  .radio{
+    @include grid-column;
+    @include page-grid;
+
+    row-gap: 24px;
+
+    @include on-tablet {
+      row-gap: 32px;
+    }
+
+    @include on-desktop {
+      row-gap: 56px;
+    }
+
+    h1{
+      @include grid-column;
+    }
+
+    .mySwiper{
+      grid-column: span 4;
+      margin-left: -16px;
+      margin-right: -16px;
+
+      @include  on-tablet{
+        grid-column: 2 / 12;
+        margin: 0;
+        border-radius: 8px;
+        height: 189px;
+      }
+
+      @include on-desktop{
+        grid-column: 2 / 24;
+        height: 400px;
+      }
+
+      .img{
+        background-color: black;
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+
+    .prev{
+      grid-column: 1;
+    }
+
+    .next{
+      place-self: flex-end;
+      grid-column: -2;
+    }
+
+    .prev, .next{
+      display: none;
+      cursor: pointer;
+      background-color: inherit;
+
+      @include on-tablet{
+        display: inline;
+        height: 189px;
+        width: 32px;
+        border: 1px solid rgba(180, 189, 195, 1);
+        border-radius: 48px;
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+
+      &:hover{
+        background-color: white;
+        border: 1px solid rgba(15, 15, 17, 1);
+        transition-duration: 0.5s;
+      }
+    }
+
+    .pagination {
+      @include grid-column;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bullet {
+      cursor: pointer;
+      margin-right: 19px;
+      width: 14px;
+      height: 4px;
+      background: rgba(226, 230, 233, 1);
+      opacity: 0.6;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    .bulletActive{
+      background: rgba(15, 15, 17, 1);
+    }
+  }
+
+  .category{
+    @include grid-column;
+    @include page-grid;
+
+    row-gap: 24px;
+
+    h2{
+      @include grid-column;
+    }
+
+    &__block{
+      grid-column: span 4;
+      display: grid;
+      gap: 24px;
+      justify-content: center;
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+
+      &__link{
+        display: flex;
+        justify-content: center;
+        height: 288px;
+        border-radius: 8px;
+        overflow: hidden;
+
+        @include on-tablet {
+          height: 187px;
+        }
+
+        @include on-desktop {
+          height: 368px;
+        }
+
+        img {
+          aspect-ratio: 1 / 1;
+          height: 100%;
+          position: relative;
+          top: 54px;
+          left: 48px;
+        }
+      }
+
+      .phones{
+        background: rgba(109, 100, 116, 1);
+      }
+
+      .tablets{
+        background: gray
+      }
+
+      .accessories {
+        background: rgba(213, 60, 81, 1)
+      }
+
+      &__info{
+        display: grid;
+        gap: 4px;
+
+        .name{
+          text-decoration: none;
+          color: black;
+        }
+
+        .model{
+          font-family: Mont, sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 21px;
+          color:rgba(137, 147, 154, 1);
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
