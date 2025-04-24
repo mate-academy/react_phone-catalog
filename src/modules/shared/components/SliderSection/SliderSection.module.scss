@@ -1,0 +1,93 @@
+@use "../../utils/vars" as vars;
+@use "../../utils/mixins" as mix;
+
+.slider {
+  &__title {
+    grid-column: 1 / 3;
+
+    @include mix.on-tablette {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__slider_container {
+    grid-column: span 4;
+
+    @include mix.on-tablette {
+      grid-column: span 12;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__custom_nav {
+    grid-column: 3 / 5;
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+
+    @include mix.padding-right;
+
+    @include mix.on-tablette {
+      grid-column: 11 / 13;
+      margin-bottom: 28px;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 23 / 25;
+      padding: 0;
+    }
+  }
+
+  &__button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid vars.$c-grayIconsPlaceHolders;
+    grid-column: 3 / 5;
+
+    @include mix.on-tablette {
+      grid-column: 11 / 13;
+    }
+
+    @include mix.on-desktop {
+      grid-column: 13 / 25;
+    }
+  }
+
+  &__swiper_button_prev,
+  &__swiper_button_next {
+    top: unset !important;
+    left: unset !important;
+    right: unset !important;
+    bottom: unset !important;
+    width: 100% !important;
+    position: unset !important;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__swiper-controler {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 4;
+    margin-top: 24px;
+
+    @include mix.on-tablette {
+      grid-column: span 12;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 24;
+
+      @include mix.padding-right;
+    }
+  }
+}

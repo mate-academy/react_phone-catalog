@@ -1,0 +1,91 @@
+@use "../../utils/vars" as vars;
+@use "../../utils/mixins" as mix;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include mix.on-tablette {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  &__logo_container {
+    margin: 13px 0 16px;
+    height: 32px;
+    width: 89px;
+    flex: 1;
+  }
+
+  &__icon_container {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid vars.$c-grayElements;
+    align-items: center;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include mix.on-tablette {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+    }
+  }
+
+  &__menu_link {
+    color: vars.$c-graySecondary;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 3px;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 8px;
+    transition: border-color 1s;
+    width: max-content;
+
+    &:hover {
+      border-color: vars.$c-grayPrimary;
+      border-width: 3px;
+    }
+  }
+
+  &__button {
+    gap: 16px;
+    background-color: vars.$c-grayHoverBg;
+    border-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin: 0 auto 32px;;
+
+    @include mix.on-tablette {
+      flex: 1;
+      justify-content: end;
+      margin-bottom: 0;
+      height: 96px;
+    }
+  }
+
+  &__button_text {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: vars.$c-graySecondary;
+  }
+}

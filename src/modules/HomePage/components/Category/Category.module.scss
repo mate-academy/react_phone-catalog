@@ -1,0 +1,39 @@
+@use "../../../shared/utils/mixins" as mix;
+@use "../../../shared/utils/vars" as vars;
+
+.category {
+  &__container {
+    grid-column: span 4;
+    margin-bottom: 32px;
+
+    @include mix.on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__image_container {
+    aspect-ratio: 1 / 1;
+
+    @include mix.photo-container;
+  }
+
+  &__image {
+    @include mix.photo;
+  }
+
+  &__name {
+    margin: 24px 0 4px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+  }
+
+  &__counter {
+    color: vars.$c-graySecondary;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: vars.$c-grayPrimary;
+  }
+}

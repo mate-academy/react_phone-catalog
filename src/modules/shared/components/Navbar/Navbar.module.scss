@@ -1,0 +1,47 @@
+@use "../../utils/mixins" as mix;
+
+.navbar {
+  box-sizing: border-box;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__logo_container {
+    margin: 13px 16px;
+    height: 22px;
+    width: 64px;
+
+    @include mix.on-desktop {
+      height: 28px;
+      width: 80px;
+      margin: 18px 24px;
+    }
+  }
+
+  &__menu_container {
+    display: flex;
+    gap: 16px;
+
+    @include mix.on-tablette {
+      gap: 24px;
+    }
+  }
+
+  &__menu {
+    display: none;
+
+    @include mix.on-tablette {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    height: 100%;
+ }
+}

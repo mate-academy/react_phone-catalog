@@ -1,0 +1,36 @@
+@use "../../utils/vars" as vars;
+@use "../../utils/mixins" as mix;
+
+.navbarIcon {
+  &__icon_container {
+    position: relative;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    border-left: 1px solid vars.$c-grayElements;
+    align-items: center;
+
+    &--like {
+      display: none;
+
+      @include mix.on-tablette {
+        display: flex;
+      }
+    }
+
+    &--cart {
+      display: none;
+
+      @include mix.on-tablette {
+        display: flex;
+      }
+    }
+
+    &--menu {
+      @include mix.on-tablette {
+        display: none;
+      }
+    }
+  }
+}

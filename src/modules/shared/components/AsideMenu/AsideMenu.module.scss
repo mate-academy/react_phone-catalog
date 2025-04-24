@@ -1,0 +1,52 @@
+@use "../../utils/vars" as vars;
+
+.aside {
+  &__container{
+    height: 100vh;
+    background-color: vars.$c-grayHoverBg;
+    border: 1px solid transparent;
+    overflow: hidden;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    border: 1px solid vars.$c-grayElements;
+    height: 48px;
+  }
+
+  &__logo_container {
+    height: 22px;
+    width: 64px;
+    margin: 13px 16px;
+  }
+
+  &__icon_container {
+    position: relative;
+    height: 64px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    border-left: 1px solid vars.$c-grayElements;
+    align-items: center;
+
+    &--close {
+      width: 48px;
+      height: 100%;
+      flex: 0;
+    }
+  }
+
+  &__icons {
+    position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 1px solid vars.$c-grayElements;
+      border-bottom: 1px solid vars.$c-grayElements;
+      border-right: 1px solid vars.$c-grayElements;
+      width: 100%;
+      display: flex;
+  }
+}
