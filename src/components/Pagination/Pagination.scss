@@ -1,0 +1,60 @@
+@import '../../styles/utils';
+
+.pagination {
+  grid-row: 3;
+  grid-column: span 4;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    grid-column: 4 / 10;
+  }
+
+  @include on-desktop {
+    grid-column: 10 / 16;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $color-icons;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+
+    &-arrows {
+      &:first-child {
+        transform: rotate(180deg);
+        margin-right: 8px;
+      }
+
+      &:last-child {
+        margin-left: 8px;
+      }
+
+      &--active {
+        background-color: $color-primary;
+        color: $color-white;
+        border: none;
+      }
+    }
+
+    &:hover {
+      border: 1px solid $color-primary;
+      transform: scale(1.1);
+    }
+  }
+
+  .disabled {
+    &:hover {
+      border: 1px solid $color-icons;
+    }
+  }
+}

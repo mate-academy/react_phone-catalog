@@ -1,0 +1,123 @@
+@import '../../styles/utils';
+
+.nav {
+  grid-row: 2;
+  grid-column: 1 / 5;
+
+  @include on-desktop {
+    grid-row: 1;
+    grid-column: 2 / 12;
+    justify-self: center;
+  }
+
+  @include on-big-screen {
+    grid-row: 1;
+    grid-column: 2 / 12;
+    justify-self: left;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-secondary;
+    transition: all 0.3s ease-in-out;
+    padding-block: 8px;
+
+
+    @include on-tablet {
+      padding-block: 15px;
+    }
+
+    @include on-desktop {
+      padding-block: 24px;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: flex-start;
+      height: 100%;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+
+    @include on-big-screen {
+      justify-content: center;
+    }
+
+    &-item {
+      position: relative;
+
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      padding-block: 8px;
+
+
+      @include on-tablet {
+        padding-block: 15px;
+      }
+
+      @include on-desktop {
+        padding-block: 24px;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        width: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $color-primary;
+
+        transition: all 0.3s ease-in-out;
+
+        @include on-tablet {
+          height: 3px;
+        }
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+
+      &:hover .nav__link {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .active {
+    color: $color-primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      background-color: $color-primary;
+
+      transition: all 0.3s ease-in-out;
+
+      @include on-tablet {
+        height: 3px;
+      }
+    }
+  }
+}
+

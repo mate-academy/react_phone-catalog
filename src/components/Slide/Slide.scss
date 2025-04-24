@@ -1,0 +1,137 @@
+@import '../../styles/utils';
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 8px;
+
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+
+  &--active {
+    display: flex;
+    opacity: 1;
+  }
+
+  @include on-tablet {
+    background-color: #000;
+    border-radius: 8px;
+    flex-direction: row;
+    box-sizing: border-box;
+    height: 189px;
+    width: 100%;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+
+  &__content {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      gap: 40px;
+      width: 100%;
+      height: 180px;
+      background-color: #222;
+      border-radius: 12px;
+      margin-left: 8px;
+      padding-left: 20px;
+    }
+
+    @include on-desktop {
+      width: 70%;
+      height: 380px;
+      padding-left: 54px;
+      justify-content: space-around;
+      border-radius: 20px;
+    }
+
+    &-text {
+      position: relative;
+      width: 148px;
+
+      &--title {
+        font-size: 22px;
+        font-weight: 800;
+        background: linear-gradient(75.28deg, #891CE8 -22.43%, #7560FA 35.22%, #E963FF 100.1%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        @include on-desktop {
+          font-size: 48px;
+          width: 318px;
+        }
+      }
+
+      &--description {
+        color: #aeaeae;
+        margin: 0;
+        font-size: 10px;
+
+        @include on-desktop {
+          font-size: 20px;
+        }
+      }
+
+      &--smile {
+        position: absolute;
+        right: 0;
+        top: 23px;
+
+        @include on-desktop {
+          font-size: 40px;
+        }
+      }
+    }
+
+    &-button {
+      border-radius: 48px;
+      border: 1px solid #444;
+      background-color: transparent;
+      color: $color-white;
+      padding-block: 10px;
+      padding-inline: 20px;
+      text-transform: uppercase;
+      font-size: 8px;
+      font-weight: 400;
+      cursor: pointer;
+
+      @include on-desktop {
+        padding-inline: 50px;
+        padding-block: 18px;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+
+    &-phone {
+      width: 100%;
+      object-fit: contain;
+
+      @include on-tablet {
+        border-radius: 8px;
+        width: 100%;
+        height: 176px;
+        object-fit: cover;
+        object-position: bottom;
+      }
+
+      @include on-desktop {
+        height: 372px;
+      }
+    }
+  }
+}
+

@@ -1426,5 +1426,6 @@
     "processor": "Apple S5",
     "ram": "1GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    
   }
 ]

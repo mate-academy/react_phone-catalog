@@ -1,0 +1,154 @@
+@import '../../styles/utils';
+
+.header {
+  height: max-content;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      @include grid;
+
+      align-items: end;
+      grid-template-rows: 176px 222px 1fr;
+    }
+
+    @include on-laptop {
+      grid-template-rows: 176px 245px 1fr;
+    }
+
+    @include on-desktop {
+      grid-template-rows: 1fr 400px 32px;
+    }
+
+    &-text {
+      padding-block: 24px;
+      padding-inline: 16px;
+      margin-top: 50px;
+
+      @include on-tablet {
+        display: block;
+        grid-column: 1 / 10;
+        grid-row: 1;
+        padding: 0;
+        margin-top: 0;
+      }
+
+      @include on-desktop {
+        margin-top: 64px;
+        grid-column: 1 / 17;
+        padding-block: 56px;
+      }
+    }
+
+    &-slider {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+
+      box-sizing: border-box;
+      width: 100%;
+
+      @include on-tablet {
+        grid-column: 2 / 12;
+        grid-row: 2;
+      }
+
+      @include on-desktop {
+        grid-column: 2 / 24;
+      }
+
+      &-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+      }
+    }
+
+    &-button {
+      display: none;
+      transition: border 0.3s ease-in-out;
+
+      @include on-tablet {
+        display: grid;
+        justify-self: center;
+        width: 32px;
+        height: 189px;
+        grid-row: 2;
+        border: 1px solid $color-icons;
+        border-radius: 48px;
+        background-color: transparent;
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+
+      &--left {
+        grid-column: 1;
+        background-image: url(/img/icons/icon-arrow-active.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: rotate(180deg);
+      }
+
+      &--right {
+        grid-column: 12;
+        background-image: url(/img/icons/icon-arrow-active.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+
+        @include on-desktop {
+          grid-column: 24;
+        }
+      }
+    }
+
+    &-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+
+      width: 80px;
+      height: 24px;
+
+      @include on-tablet {
+        grid-column: 6 / 9;
+        grid-row: 3;
+      }
+
+      @include on-desktop {
+        grid-column: 12 / 14;
+      }
+
+      &--dot {
+        cursor: pointer;
+        width: 14px;
+        height: 4px;
+        background-color: $color-elements;
+        border: none;
+
+        &-active {
+          background-color: $color-primary;
+        }
+      }
+    }
+  }
+}
