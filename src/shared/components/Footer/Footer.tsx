@@ -1,40 +1,42 @@
+import { Link } from 'react-router-dom';
+
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // плавна прокрутка
+      behavior: 'smooth',
     });
   };
 
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
-        <a href="#" className={styles.footer__logoLink}>
+        <Link to="/" className={styles.footer__logoLink}>
           <img
             src="src/assets/icons/footer-icons/footer__logo.svg"
             alt="Логотип"
             className={styles.footer__logo}
           />
-        </a>
+        </Link>
 
         <nav className={styles.footer__nav}>
           <ul className={styles.footer__list}>
             <li className={styles.footer__item}>
-              <a href="#" className={styles.footer__link}>
+              <Link to="/github.com" className={styles.footer__link}>
                 Github
-              </a>
+              </Link>
             </li>
             <li className={styles.footer__item}>
-              <a href="#" className={styles.footer__link}>
+              <Link to="/contacts" className={styles.footer__link}>
                 Contacts
-              </a>
+              </Link>
             </li>
             <li className={styles.footer__item}>
-              <a href="#" className={styles.footer__link}>
+              <Link to="/rights" className={styles.footer__link}>
                 Rights
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -42,12 +44,13 @@ export const Footer = () => {
         <div className={styles.footer__wrapper}>
           <p className={styles.footer__backTop}>Back to top</p>
           <button
-            className={styles.footer__backTopLink}
+            className={styles.footer__backTopBlock}
             onClick={handleScrollToTop}
+            aria-label="Переміститись на початок сторінки"
           >
             <img
               src="src/assets/icons/footer-icons/scroll-to-top.svg"
-              alt="Стрілка"
+              alt="Переміститись на початок сторінки"
               className={styles.footer__arrow}
             />
           </button>

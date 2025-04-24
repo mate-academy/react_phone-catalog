@@ -17,31 +17,31 @@ export const CurrentPage: React.FC<Props> = ({ products }) => {
   const title = getPageTitle(normalizedPathName);
 
   return (
-    <div className={styles.productPage__location}>
-      <div className={styles.productPage__wrapper}>
-        <a href="#" className={styles.productPage__homeLink}>
+    <div className={styles.currentPage}>
+      <div className={styles.currentPage__wrapper}>
+        <a href="#" className={styles.currentPage__homeLink}>
           <img
             loading="lazy"
-            src="src/assets/images/productPage/home-icon.svg"
+            src="src/assets/images/currentPage/home-icon.svg"
             alt="Іконка домашньої сторінки"
-            className={styles.productPage__homeimg}
+            className={styles.currentPage__homeImg}
           />
         </a>
 
-        <div className={styles.productPage__currentLocation}>
+        <div className={styles.currentPage__location}>
           <img
-            src="src/assets/images/productPage/home-arrow.svg"
+            src="src/assets/images/currentPage/home-arrow.svg"
             alt="Стрілка поточної сторінки"
             loading="lazy"
-            className={styles.productPage__arrow}
+            className={styles.currentPage__arrow}
           />
-          <a href="#" className={styles.productPage__currentTitle}>
+          <a href="#" className={styles.currentPage__currentTitle}>
             Phones
           </a>
         </div>
       </div>
-      <h1 className={styles.productPage__productTitle}>{title}</h1>
-      <p className={styles.productPage__items}>{`${products.length} models`}</p>
+      <h1 className={styles.currentPage__productTitle}>{title}</h1>
+      <p className={styles.currentPage__items}>{`${products.length} models`}</p>
     </div>
   );
 };

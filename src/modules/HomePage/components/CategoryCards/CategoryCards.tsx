@@ -28,19 +28,19 @@ export const CategoryCards: React.FC<Props> = ({ data }) => {
             <picture className={styles.category__picture}>
               <source
                 media="(min-width: 1119px)"
-                srcSet="src\assets\images\shopCategory\shop-category-phones-desktop.png" // eslint-disable-line
+                srcSet="src/assets/images/shopCategory/shop-category-phones-desktop.png" // eslint-disable-line
               />
               <source
                 media="(min-width: 639px)"
-                srcSet="src\assets\images\shopCategory\shop-category-phones-tablet.png" // eslint-disable-line
+                srcSet="src/assets/images/shopCategory/shop-category-phones-tablet.png" // eslint-disable-line
               />
 
               <NavLink to="/phones">
                 <img
                   loading="lazy"
                   className={styles.category__image}
-                  src="src\assets\images\shopCategory\shop-category-phones-mobile.png" // eslint-disable-line
-                  alt="Головний слайдер"
+                  src="src/assets/images/shopCategory/shop-category-phones-mobile.png" // eslint-disable-line
+                  alt="Зображення категорії мобільних телефонів"
                 />
               </NavLink>
             </picture>
@@ -53,19 +53,19 @@ export const CategoryCards: React.FC<Props> = ({ data }) => {
             <picture className={styles.category__picture}>
               <source
                 media="(min-width: 1119px)"
-                srcSet="src\assets\images\shopCategory\shop-category-tablets-desktop.png" // eslint-disable-line
+                srcSet="src/assets/images/shopCategory/shop-category-tablets-desktop.png" // eslint-disable-line
               />
               <source
                 media="(min-width: 639px)"
-                srcSet="src\assets\images\shopCategory\shop-category-tablets-tablet.png" // eslint-disable-line
+                srcSet="src/assets/images/shopCategory/shop-category-tablets-tablet.png" // eslint-disable-line
               />
 
               <NavLink to="/tablets">
                 <img
                   loading="lazy"
                   className={styles.category__image}
-                  src="src\assets\images\shopCategory\shop-category-tablets-mobile.png" // eslint-disable-line
-                  alt="Головний слайдер"
+                  src="src/assets/images/shopCategory/shop-category-tablets-mobile.png" // eslint-disable-line
+                  alt="Зображення категорії планшетів"
                 />
               </NavLink>
             </picture>
@@ -79,19 +79,19 @@ export const CategoryCards: React.FC<Props> = ({ data }) => {
             <picture className={styles.category__picture}>
               <source
                 media="(min-width: 1119px)"
-                srcSet="src\assets\images\shopCategory\shop-category-accessories-desktop.png" // eslint-disable-line
+                srcSet="src/assets/images/shopCategory/shop-category-accessories-desktop.png" // eslint-disable-line
               />
               <source
                 media="(min-width: 639px)"
-                srcSet="src\assets\images\shopCategory\shop-category-accessories-tablet.png" // eslint-disable-line
+                srcSet="src/assets/images/shopCategory/shop-category-accessories-tablet.png" // eslint-disable-line
               />
 
               <NavLink to="/accessories">
                 <img
                   loading="lazy"
                   className={styles.category__image}
-                  src="src\assets\images\shopCategory\shop-category-accessories-mobile.png" // eslint-disable-line
-                  alt="Головний слайдер"
+                  src="src/assets/images/shopCategory/shop-category-accessories-mobile.png" // eslint-disable-line
+                  alt="Зображення категорії аксесуарів"
                 />
               </NavLink>
             </picture>

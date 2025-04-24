@@ -14,56 +14,56 @@
   @include on-desktop-extra {
     padding-block: 56px 80px;
   }
-}
 
-.main__title {
-  margin-bottom: 24px;
+  &__title {
+    margin-bottom: 24px;
 
-  @include content-padding;
+    @include content-padding;
 
-  @include on-tablet {
-    margin-bottom: 32px;
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+
+    @include on-desktop-extra {
+      margin-bottom: 56px;
+    }
   }
 
-  @include on-desktop {
-    margin-bottom: 56px;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+    }
+
+    @include on-desktop-extra {
+      gap: 80px;
+    }
   }
 
-  @include on-desktop-extra {
-    margin-bottom: 56px;
+  &__visuallyHidden {
+    position: absolute;
+
+    overflow: hidden;
+
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+
+    white-space: nowrap;
+
+    clip: rect(0, 0, 0, 0);
   }
-}
-
-.main__wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 56px;
-
-  @include on-tablet {
-    gap: 64px;
-  }
-
-  @include on-desktop {
-    gap: 80px;
-  }
-
-  @include on-desktop-extra {
-    gap: 80px;
-  }
-}
-
-.main__visuallyHidden {
-  position: absolute;
-
-  overflow: hidden;
-
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-
-  white-space: nowrap;
-
-  clip: rect(0, 0, 0, 0);
 }

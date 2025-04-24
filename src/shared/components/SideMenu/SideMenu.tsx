@@ -1,78 +1,79 @@
+import { Link } from 'react-router-dom';
 import styles from './SideMenu.module.scss';
 
 export const SideMenu = () => {
   return (
     <aside className={styles.menu} id="menu">
-      <header className={styles.header__container}>
-        <a href="#" className={styles.header__logoLink}>
+      <header className={styles.menu__container}>
+        <Link to="/" className={styles.menu__logoLink}>
           <img
             src="src/assets/icons/header-icons/logo-icon.svg"
             alt="Логотип"
-            className={styles.header__logo}
+            className={styles.menu__logo}
           />
-        </a>
+        </Link>
 
-        <a href="#" className={styles.header__close}>
+        <button className={styles.menu__close}>
           <img
             src="src/assets/icons/aside-icons/aside-close-icon.svg"
             alt="Закрити меню"
-            className={styles.header__closeMenu}
+            className={styles.menu__closeMenu}
           />
-        </a>
+        </button>
       </header>
 
-      <nav className={styles.nav}>
-        <ul className={styles.nav__list}>
-          <li className={styles.nav__item}>
-            <a
-              href="#"
-              className={`${styles.nav__link} ${styles.nav__linkHover}`}
+      <nav className={styles.menu__nav}>
+        <ul className={styles.menu__list}>
+          <li className={styles.menu__item}>
+            <Link
+              to="/"
+              className={`${styles.menu__link} ${styles.menu__linkHover}`}
             >
               Home
-            </a>
+            </Link>
           </li>
-          <li className={styles.nav__item}>
-            <a
-              href="#"
-              className={`${styles.nav__link} ${styles.nav__linkHover}`}
+          <li className={styles.menu__item}>
+            <Link
+              to="/phones"
+              className={`${styles.menu__link} ${styles.menu__linkHover}`}
             >
               Phones
-            </a>
+            </Link>
           </li>
-          <li className={styles.nav__item}>
-            <a
-              href="#"
-              className={`${styles.nav__link} ${styles.nav__linkHover}`}
+          <li className={styles.menu__item}>
+            <Link
+              to="/tablets"
+              className={`${styles.menu__link} ${styles.menu__linkHover}`}
             >
               Tablets
-            </a>
+            </Link>
           </li>
-          <li className={styles.nav__item}>
-            <a
-              href="#"
-              className={`${styles.nav__link} ${styles.nav__linkHover}`}
+          <li className={styles.menu__item}>
+            <Link
+              to="/accessories"
+              className={`${styles.menu__link} ${styles.menu__linkHover}`}
             >
               Accessories
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
 
       <div className={styles.menu__icons}>
-        <a href="#" className={styles.menu__favorites}>
+        <Link to="/favorites" className={styles.menu__favorites}>
           <img
             src="src/assets/icons/aside-icons/favorites-icon.svg"
-            alt="Закрити меню"
+            alt="Улюблені товари"
             className={styles.menu__favoritesIcon}
           />
-        </a>
-        <a href="#" className={styles.menu__cart}>
+        </Link>
+        <Link to="/cart" className={styles.menu__cart}>
           <img
             src="src/assets/icons/aside-icons/cart-icon.svg"
-            alt="Закрити меню"
+            alt="Кошик"
             className={styles.menu__cartIcon}
           />
-        </a>
+        </Link>
       </div>
     </aside>
   );

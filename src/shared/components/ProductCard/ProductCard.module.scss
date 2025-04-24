@@ -96,7 +96,7 @@
     justify-content: space-between;
   }
 
-  &__add {
+  &__addToCart {
     flex-grow: 1;
 
     padding-block: 10px;
@@ -112,7 +112,7 @@
     }
   }
 
-  &__favorites {
+  &__addToFavorites {
     display: flex;
     align-items: center;
     justify-content: center;

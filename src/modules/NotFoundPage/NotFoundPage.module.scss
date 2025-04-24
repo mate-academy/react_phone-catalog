@@ -1,17 +1,17 @@
 .notFound {
   height: calc(100vh - 64px - 96px);
   padding: 10px;
-}
 
-.notFound__title {
-  text-align: center;
-}
+  &__title {
+    text-align: center;
+  }
 
-.notFound__bg {
-  height: 90%;
+  &__bg {
+    height: 90%;
 
-  background-image: url('src/assets/images/notFoundPage/page-not-found.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+    background-image: url('src/assets/images/notFoundPage/page-not-found.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
 }

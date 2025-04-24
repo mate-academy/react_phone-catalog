@@ -14,8 +14,8 @@
   @include on-desktop-extra {
     padding-block: 24px 80px;
   }
-}
 
-.details__container {
-  @include content-padding;
+  &__container {
+    @include content-padding;
+  }
 }

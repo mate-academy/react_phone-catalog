@@ -90,7 +90,7 @@ export const Header = () => {
           >
             <img
               src="src/assets/icons/header-icons/favorites-icon.svg"
-              alt="Улюблені"
+              alt="Відкрити улюблені товари"
               className={styles.header__favoritesImg}
             />
           </NavLink>
@@ -106,26 +106,23 @@ export const Header = () => {
           >
             <img
               src="src/assets/icons/header-icons/cart-icon.svg"
-              alt="Корзина"
+              alt="Відкрити корзину"
               className={styles.header__cartImg}
             />
           </NavLink>
-          <NavLink
-            to="/aside-menu"
-            className={({ isActive }) =>
-              getClassLink({
-                isActive,
-                baseClass: styles.header__menuLink,
-                activeClass: styles.header__imageLinkActive,
-              })
-            }
+          <button
+            className={getClassLink({
+              isActive: true,
+              baseClass: styles.header__menuLink,
+              activeClass: styles.header__imageLinkActive,
+            })}
           >
             <img
               src="src/assets/icons/header-icons/hamburger-icon.svg"
-              alt="Меню"
+              alt="Відкрити меню"
               className={styles.header__menuImg}
             />
-          </NavLink>
+          </button>
         </div>
       </div>
     </header>

@@ -9,20 +9,14 @@ import { HomePageSlider } from './components/HomePageSlider';
 import { ProductContext } from '../../shared/store/GlobalProvider';
 import { SectionTitles } from '../../shared/constants/sectionTitles';
 import { SliderId } from '../../shared/constants/sliderId';
-import { productFilterByNew } from '../../shared/utils/productFilterByNew';
+import { productFilterByNew } from './utils/productFilterByNew';
 // eslint-disable-next-line
-import { getHotProductsWithDiscount } from '../../shared/utils/getHotProductsWithDiscount';
-import { Loader } from '../../shared/components/Loader';
+import { getHotProductsWithDiscount } from './utils/getHotProductsWithDiscount';
 
 export const HomePage = () => {
-  const { data, loading } = useContext(ProductContext);
-
+  const { data } = useContext(ProductContext);
   const newProducts = productFilterByNew(data);
   const productsWithHotPrice = getHotProductsWithDiscount(data);
-
-  if (loading) {
-    return <Loader />;
-  }
 
   return (
     <main className={styles.main}>

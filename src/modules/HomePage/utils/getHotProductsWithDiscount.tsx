@@ -1,4 +1,4 @@
-import { AllProducts } from '../types/AllProducts/AllProducts';
+import { AllProducts } from '../../../shared/types/AllProducts/AllProducts';
 
 export const getHotProductsWithDiscount = (
   products: AllProducts[],

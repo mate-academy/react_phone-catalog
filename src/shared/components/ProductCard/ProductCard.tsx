@@ -4,13 +4,13 @@ import { AllProducts } from '../../types/AllProducts/AllProducts';
 import React from 'react';
 
 type Props = {
-  product: AllProducts;
+  product: AllProducts & { hotPrice?: number };
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.productCard}>
-      <Link to="/phones/15">
+      <Link to={`/${product.category}/${product.itemId}`}>
         <img
           loading="lazy"
           className={styles.productCard__mainImage}
@@ -45,8 +45,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </div>
       <div className={styles.productCard__buttons}>
-        <button className={styles.productCard__add}>Add to cart</button>
-        <button className={styles.productCard__favorites}>
+        <button className={styles.productCard__addToCart}>Add to cart</button>
+        <button className={styles.productCard__addToFavorites}>
           <img
             loading="lazy"
             src="src/assets/images/productsSlider/favorites-icon.svg"
