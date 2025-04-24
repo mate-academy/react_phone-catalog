@@ -1,0 +1,10 @@
+@import 'mixins';
+.main {
+  display: grid;
+
+  @include onDesktop{
+    row-gap: 80px;
+    column-gap: 16px;
+    padding-block: 24px;
+  }
+}

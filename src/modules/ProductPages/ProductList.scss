@@ -1,0 +1,169 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Mont-Bold';
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-style: normal;
+}
+
+.product__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-top: 24px;
+
+  &-card {
+    border: 1px solid #e2e6e9;
+    padding-top: 24px;
+    padding: 32px;
+  }
+
+  &-image {
+    width: 100%;
+    height: 196px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: opacity 1s ease-in-out;
+  }
+
+  &-position {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+  }
+
+  &-name {
+    font-size: 14px;
+    font-weight: 600px;
+    line-height: 21px;
+    padding-top: 16px;
+  }
+
+  &-costs {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    padding-top: 8px;
+  }
+
+  &-sale {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    color: #89939a;
+    position: relative;
+    display: inline-block;
+    text-decoration: line-through;
+    justify-content: left;
+    padding-top: 9.5px;
+    align-items: flex-end;
+  }
+
+  &-small-line {
+    height: 1px;
+    width: 100%;
+    background-color: #e2e6e9;
+    display: block;
+    margin-top: 8px;
+  }
+
+  &-screen {
+    font-size: 12px;
+    font-weight: 700px;
+    line-height: 100%;
+    color: #89939a;
+  }
+
+  &-oled {
+    font-size: 12px;
+    font-weight: 700px;
+    line-height: 100%;
+  }
+
+  &-capacity {
+    color: #89939a;
+    font-size: 12px;
+    font-weight: 700px;
+    line-height: 100%;
+  }
+
+  &-gb {
+    font-size: 12px;
+    color: #0f0f11;
+    font-weight: 700px;
+    line-height: 100%;
+  }
+
+  &-ram {
+    font-size: 12px;
+    font-weight: 700px;
+    line-height: 100%;
+    color: #89939a;
+  }
+
+  &-ram-gb {
+    font-size: 12px;
+    font-weight: 700px;
+    line-height: 100%;
+  }
+
+  &-add-to-cart {
+    text-decoration: none;
+    color: white;
+    background-color: #4219d0;
+    border-radius: 48px;
+    width: 160px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700px;
+    line-height: 21px;
+
+    &:hover {
+      text-decoration: none;
+      color: #4219d0;
+      background-color: #ffffff;
+      border-radius: 48px;
+      width: 160px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700px;
+      line-height: 21px;
+      border: 1px solid #b4bdc3;
+    }
+  }
+
+  &-button-like {
+    position: relative;
+    border-radius: 50%;
+    border: 1px solid #b4bdc3;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    cursor: pointer;
+    z-index: 0;
+    margin-left: 8px;
+  }
+
+  &-like {
+    position: absolute;
+    text-decoration: none;
+    background-image: url('../../public/img/navbar/like.png');
+    width: 15.33px;
+    height: 13.55px;
+    background-size: cover;
+    z-index: 1;
+  }
+}
