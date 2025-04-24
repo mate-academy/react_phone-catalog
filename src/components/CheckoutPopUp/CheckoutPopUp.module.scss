@@ -1,0 +1,89 @@
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
+.checkout_container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(1px) grayscale(50%);
+
+  @include flex-centered;
+
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.checkout_inner_container {
+  width: 280px;
+  height: 280px;
+  background-color: var(--pop-up-cont-bg);
+
+  @include flex-centered;
+
+  flex-direction: column;
+}
+
+.checkout_title {
+  width: 280px;
+  height: calc(100% / 2);
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 42px;
+  color: var(--text-color-main);
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-align: center;
+
+  @include flex-centered;
+}
+
+.checkout_button_container {
+  width: 100%;
+  height: calc(100% / 2);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.checkout_button {
+  height: 48px;
+  cursor: pointer;
+  @include flex_centered;
+
+  width: 100px;
+  background-color: var(--add-to-cart-but);
+  border: none;
+  font-family: Mont-Regular, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--add-to-cart-text);
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--add-to-cart-but-hover);
+    color: var(--add-to-cart-text-hover);
+    border: 1px solid var(--add-to-cart-but-hover);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.checkout_total_price {
+  width: fit-content;
+  height: 20px;
+  font-family: Mont-Regular, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-color-checkout);
+  margin: 0;
+}

@@ -1,0 +1,45 @@
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
+.header_title_container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 24px;
+
+  @include padding-left;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+
+  @include on-desktop {
+    height: 56px;
+    margin-bottom: 56px;
+  }
+}
+
+.header_title {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -.01em;
+  color: var(--text-color-main);
+  height: fit-content;
+  width: 100%;
+  margin: 0;
+  transition: all .5s ease-in-out;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    height: 112px;
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+    height: 56px;
+  }
+}
