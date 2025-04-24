@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.products {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  gap: 16px;
+  justify-content: center; 
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  }
+}

@@ -1,0 +1,64 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.product-description {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+  }
+
+  &-about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  &-title {
+    @include typography-h3;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-title {
+      @include typography-h4;
+
+      color: 1px solid $color-primary;
+    }
+
+    &-text {
+      @include typography-body-text;
+
+      color: $color-secondary;
+    }
+  }
+
+  &-specs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+    gap: 32px;
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+}

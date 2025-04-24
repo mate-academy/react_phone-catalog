@@ -1,0 +1,180 @@
+@mixin on-mobile {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin on-large-desktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin container-top-inline {
+  padding-left: $padding-inline-mobile;
+
+  @include on-tablet {
+    padding-left: $padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: $padding-inline-desktop;
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+}
+
+@mixin container-left-indent {
+  padding-left: $padding-inline-mobile;
+
+  @include on-tablet {
+    padding-left: $padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: $padding-inline-desktop;
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+}
+
+@mixin container-main-inline {
+  box-sizing: border-box;
+  padding-inline: $padding-inline-mobile;
+
+  @include on-tablet {
+    padding-inline: $padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: $padding-inline-desktop;
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+}
+
+@mixin bottom-section-indent {
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+@mixin typography-h1 {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-block: 0;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin typography-h2 {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-block: 0;
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin typography-h3 {
+  font-family: Mont, sans-serif;
+
+  @include on-mobile {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+  }
+
+  letter-spacing: 0;
+}
+
+@mixin typography-h4 {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+
+  @include on-mobile {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin typography-uppercase {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin typography-buttons {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin typography-body-text {
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin typography-small-text {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}

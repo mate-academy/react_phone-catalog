@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.products {
+  display: grid;
+  gap: 24px;
+  max-width: 100%;
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include on-tablet {
+    gap: 40px;
+  }
+}

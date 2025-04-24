@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__home-link {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__icon {
+    color: $color-primary;
+  }
+}

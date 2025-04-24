@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $color-icons;
+  color: $color-primary;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &--active {
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &--disabled {
+    border-color: $color-elements;
+    color: $color-icons;
+    cursor: not-allowed;
+  }
+}

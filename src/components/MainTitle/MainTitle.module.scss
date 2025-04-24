@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.title {
+  color: $color-primary;
+
+  @include typography-h1;
+}

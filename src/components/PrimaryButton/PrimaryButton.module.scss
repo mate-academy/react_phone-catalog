@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 40px;
+  border-radius: 8px;
+  color: $color-white;
+  background-color: $color-accent;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  flex: 1;
+  transition: all 0.3s ease;
+
+  @include typography-buttons;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &--selected {
+    border: 1px solid $color-elements;
+    background-color: transparent;
+    color: $color-accent;
+  }
+}

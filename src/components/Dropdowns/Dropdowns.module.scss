@@ -1,0 +1,89 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  width: 100%;
+
+  &__title {
+    @include typography-small-text;
+
+    color: $color-secondary;
+  }
+
+  &__button {
+    @include typography-buttons;
+
+    box-sizing: border-box;
+    width: 100%;
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    cursor: pointer;
+    border: 1px solid $color-icons;
+    border-radius: 8px;
+    background-color: transparent;
+
+    &-text {
+      overflow-x: hidden;
+      white-space: nowrap;
+    }
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
+
+    &-icon {
+      transition: transform 0.3s ease-in-out;
+
+      &--rotated {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__list {
+    position: absolute;
+    z-index: 100;
+    top: 66px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    width: 100%;
+    padding: 8px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__item {
+    padding: 6px 12px;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+
+    @include typography-body-text;
+
+    color: $color-secondary;
+
+    &:hover {
+      background-color: $color-hover-bg;
+      color: $color-primary;
+    }
+  }
+}

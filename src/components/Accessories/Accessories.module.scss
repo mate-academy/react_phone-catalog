@@ -1,0 +1,56 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.accessories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 24px 64px;
+  background-color: $color-hover-bg;
+
+  @include on-desktop {
+    padding-block: 24px 80px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 40px;
+    }
+  }
+
+  &__title {
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+
+  &__models-count {
+    @include typography-body-text;
+
+    color: $color-secondary;
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 24px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__dropdown-sort {
+    max-width: 186px;
+    flex: 1;
+  }
+}
