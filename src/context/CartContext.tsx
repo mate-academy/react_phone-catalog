@@ -1,56 +1,105 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { Product } from '../types/Product';
+import { Product, getProductIdentifier } from '../types/Product';
 
 interface CartItem {
-  productId: string;
+  productId: string; // This will store the uniqueId of the product
   quantity: number;
 }
 
 interface CartContextProps {
   cartItems: CartItem[];
-  addToCart: (productId: string) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
-  isInCart: (productId: string) => boolean;
-  getCartItemQuantity: (productId: string) => number;
+  addToCart: (productOrId: Product | string) => void;
+  removeFromCart: (productOrId: Product | string) => void;
+  updateQuantity: (productOrId: Product | string, quantity: number) => void;
+  isInCart: (productOrId: Product | string) => boolean;
+  getCartItemQuantity: (productOrId: Product | string) => number;
   getTotalItems: () => number;
   getTotalPrice: (products: Product[]) => number;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 
+// Set this to true if you want to start with an empty cart each time the app loads
+const RESET_CART_ON_RELOAD = true;
+
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  // Initialize with an empty array instead of loading from localStorage
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  // Initialize cart items from localStorage if available
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    // Check if we should reset the cart
+    if (RESET_CART_ON_RELOAD) {
+      localStorage.removeItem('cart');
 
+      return [];
+    }
+
+    try {
+      const storedCart = localStorage.getItem('cart');
+
+      return storedCart ? JSON.parse(storedCart) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // Save cart items to localStorage whenever they change
   useEffect(() => {
-    // Clear any existing cart items in localStorage and save the current state
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (productId: string) => {
+  // Function to clear the cart
+  const clearCart = () => {
+    setCartItems([]);
+    localStorage.removeItem('cart');
+  };
+
+  // Add a product to the cart using either the product object or its ID
+  const addToCart = (productOrId: Product | string) => {
+    // Get a consistent product identifier
+    const productId =
+      typeof productOrId === 'string'
+        ? productOrId
+        : getProductIdentifier(productOrId);
+
     setCartItems(prev => {
+      // Check if this product is already in the cart
       const existingItem = prev.find(item => item.productId === productId);
 
       if (existingItem) {
+        // If it exists, increment the quantity
         return prev.map(item =>
           item.productId === productId
             ? { ...item, quantity: item.quantity + 1 }
             : item,
         );
       } else {
+        // If it doesn't exist, add it with quantity 1
         return [...prev, { productId, quantity: 1 }];
       }
     });
   };
 
-  const removeFromCart = (productId: string) => {
+  // Remove a product from the cart using either the product object or its ID
+  const removeFromCart = (productOrId: Product | string) => {
+    // Get a consistent product identifier
+    const productId =
+      typeof productOrId === 'string'
+        ? productOrId
+        : getProductIdentifier(productOrId);
+
     setCartItems(prev => prev.filter(item => item.productId !== productId));
   };
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  // Update the quantity of a product in the cart
+  const updateQuantity = (productOrId: Product | string, quantity: number) => {
+    // Get a consistent product identifier
+    const productId =
+      typeof productOrId === 'string'
+        ? productOrId
+        : getProductIdentifier(productOrId);
+
     if (quantity <= 0) {
       removeFromCart(productId);
 
@@ -64,25 +113,58 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  const isInCart = (productId: string) => {
+  // Check if a product is in the cart
+  const isInCart = (productOrId: Product | string) => {
+    // Get a consistent product identifier
+    const productId =
+      typeof productOrId === 'string'
+        ? productOrId
+        : getProductIdentifier(productOrId);
+
     return cartItems.some(item => item.productId === productId);
   };
 
-  const getCartItemQuantity = (productId: string) => {
+  // Get the quantity of a product in the cart
+  const getCartItemQuantity = (productOrId: Product | string) => {
+    // Get a consistent product identifier
+    const productId =
+      typeof productOrId === 'string'
+        ? productOrId
+        : getProductIdentifier(productOrId);
+
     const cartItem = cartItems.find(item => item.productId === productId);
 
     return cartItem ? cartItem.quantity : 0;
   };
 
   const getTotalItems = () => {
+    // Make sure we only count items that actually exist in the cart
+    if (!cartItems || cartItems.length === 0) {
+      return 0;
+    }
+
     return cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0);
   };
 
   const getTotalPrice = (products: Product[]) => {
+    // Make sure we have valid cart items and products
+    if (
+      !cartItems ||
+      cartItems.length === 0 ||
+      !products ||
+      products.length === 0
+    ) {
+      return 0;
+    }
+
     return cartItems.reduce((total, cartItem) => {
-      const product = products.find(
-        prod => prod.id.toString() === cartItem.productId,
-      );
+      // Find the product using the stored productId
+      // This will work with both uniqueId and legacy string IDs
+      const product = products.find(prod => {
+        const prodId = getProductIdentifier(prod);
+
+        return prodId === cartItem.productId;
+      });
 
       if (product) {
         return total + product.price * cartItem.quantity;
@@ -103,6 +185,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         getCartItemQuantity,
         getTotalItems,
         getTotalPrice,
+        clearCart,
       }}
     >
       {children}

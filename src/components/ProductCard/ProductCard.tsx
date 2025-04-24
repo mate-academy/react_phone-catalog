@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from '../../types/Product';
+import { Product, getProductIdentifier } from '../../types/Product';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
 import { ProductImages } from '../ProductImages/ProductImages';
@@ -8,13 +8,15 @@ import favoriteIcon from '../../assets/img/Icons/favorite.png';
 import favoriteFilledIcon from '../../assets/img/Icons/favorite-filed.svg';
 import './ProductCard.scss';
 
-interface ProductCardProps
-  extends Omit<Product, 'category' | 'phoneId' | 'color'> {
+interface ProductCardProps extends Omit<Product, 'phoneId' | 'color'> {
   galleryImages?: string[];
+  uniqueId?: string; // Make uniqueId optional for backward compatibility
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   id,
+  uniqueId,
+  category,
   name,
   price,
   oldPrice,
@@ -26,17 +28,39 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
   const { isInCart, addToCart, removeFromCart } = useCart();
-  const isProductFavorite = isFavorite(id.toString());
-  const isProductInCart = isInCart(id.toString());
+
+  // Create a complete product object with all required fields
+  const product: Product = {
+    id,
+    uniqueId,
+    category,
+    name,
+    price,
+    oldPrice,
+    image,
+    screen,
+    capacity,
+    ram,
+  };
+
+  // Use the product identifier for cart and favorites operations
+  const productId = getProductIdentifier(product);
+  const isProductFavorite = isFavorite(productId);
+  const isProductInCart = isInCart(productId);
+
+  // Debug log for tracking product identifiers
+  useEffect(() => {
+    // Removed console.log statement
+  }, [name, productId, isProductInCart]);
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
     if (isProductFavorite) {
-      removeFromFavorites(id.toString());
+      removeFromFavorites(productId);
     } else {
-      addToFavorites(id.toString());
+      addToFavorites(productId);
     }
   };
 
@@ -44,10 +68,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     e.preventDefault();
     e.stopPropagation();
 
+    // Removed console.log statement
+
     if (isProductInCart) {
-      removeFromCart(id.toString());
+      removeFromCart(product);
     } else {
-      addToCart(id.toString());
+      addToCart(product);
     }
   };
 
@@ -55,7 +81,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <Link to={`/product/${id}`} className="product-card">
       <div className="product-card__image-container">
         <ProductImages
-          key={`image-${id}-${new Date().getTime()}`}
+          key={`image-${id}`}
           name={name}
           mainImage={image}
           galleryImages={galleryImages}

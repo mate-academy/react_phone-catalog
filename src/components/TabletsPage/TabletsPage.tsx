@@ -42,10 +42,11 @@ interface ExtendedProduct extends Product {
 }
 
 // Tablet data with images
-const tablets: ExtendedProduct[] = [
+export const tablets: ExtendedProduct[] = [
   // Row 1
   {
-    id: 1,
+    id: 101, // Updated ID to be unique
+    uniqueId: 'tablet-101',
     name: 'Apple iPad 10.2" 64GB Space Gray (2021)',
     price: 329,
     oldPrice: 399,
@@ -57,7 +58,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 2,
+    id: 102, // Updated ID to be unique
+    uniqueId: 'tablet-102',
     name: 'Apple iPad Air 10.9" 256GB Silver (2022)',
     price: 599,
     oldPrice: 749,
@@ -69,7 +71,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 3,
+    id: 103, // Updated ID to be unique
+    uniqueId: 'tablet-103',
     name: 'Apple iPad Pro 11" 128GB Space Gray (2022)',
     price: 799,
     oldPrice: 899,
@@ -81,7 +84,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 4,
+    id: 104, // Updated ID to be unique
+    uniqueId: 'tablet-104',
     name: 'Apple iPad mini 8.3" 64GB Purple (2021)',
     price: 499,
     oldPrice: 599,
@@ -94,7 +98,8 @@ const tablets: ExtendedProduct[] = [
   },
   // Row 2
   {
-    id: 5,
+    id: 105, // Updated ID to be unique
+    uniqueId: 'tablet-105',
     name: 'Samsung Galaxy Tab S8 11" 128GB Graphite',
     price: 699,
     oldPrice: 799,
@@ -106,7 +111,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 6,
+    id: 106,
+    uniqueId: 'tablet-106',
     name: 'Samsung Galaxy Tab S8+ 12.4" 256GB Silver',
     price: 899,
     oldPrice: 999,
@@ -118,7 +124,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 7,
+    id: 107,
+    uniqueId: 'tablet-107',
     name: 'Samsung Galaxy Tab S8 Ultra 14.6" 512GB Graphite',
     price: 1199,
     oldPrice: 1399,
@@ -130,7 +137,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 8,
+    id: 108,
+    uniqueId: 'tablet-108',
     name: 'Microsoft Surface Pro 9 13" 256GB Platinum',
     price: 999,
     oldPrice: 1099,
@@ -143,7 +151,8 @@ const tablets: ExtendedProduct[] = [
   },
   // Row 3
   {
-    id: 9,
+    id: 109,
+    uniqueId: 'tablet-109',
     name: 'Lenovo Tab P11 Pro 11.5" 128GB Storm Grey',
     price: 499,
     oldPrice: 599,
@@ -155,7 +164,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 10,
+    id: 110,
+    uniqueId: 'tablet-110',
     name: 'Xiaomi Pad 5 11" 128GB Cosmic Gray',
     price: 349,
     oldPrice: 399,
@@ -167,7 +177,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 11,
+    id: 111,
+    uniqueId: 'tablet-111',
     name: 'Huawei MatePad Pro 12.6" 256GB Olive Green',
     price: 749,
     oldPrice: 849,
@@ -179,7 +190,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 12,
+    id: 112,
+    uniqueId: 'tablet-112',
     name: 'Apple iPad Pro 12.9" 512GB Silver (2022)',
     price: 1399,
     oldPrice: 1499,
@@ -192,7 +204,8 @@ const tablets: ExtendedProduct[] = [
   },
   // Row 4
   {
-    id: 13,
+    id: 113,
+    uniqueId: 'tablet-113',
     name: 'Amazon Fire HD 10 Plus 10.1" 64GB Black',
     price: 179,
     oldPrice: 219,
@@ -204,7 +217,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 14,
+    id: 114,
+    uniqueId: 'tablet-114',
     name: 'Google Pixel Tablet 10.95" 256GB Porcelain',
     price: 599,
     oldPrice: 699,
@@ -216,7 +230,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 15,
+    id: 115,
+    uniqueId: 'tablet-115',
     name: 'OnePlus Pad 11.61" 128GB Halo Green',
     price: 479,
     oldPrice: 529,
@@ -228,7 +243,8 @@ const tablets: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 16,
+    id: 116,
+    uniqueId: 'tablet-116',
     name: 'Apple iPad Air 10.9" 64GB Blue (2022)',
     price: 599,
     oldPrice: 649,

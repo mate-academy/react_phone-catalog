@@ -36,6 +36,7 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
+
       if (width <= 480) {
         setItemsToShow(1);
       } else if (width <= 768) {

@@ -32,14 +32,14 @@ export const ProductList: React.FC<ProductListProps> = ({
   };
 
   const isAtStart = currentPage === 0;
-  const isAtEnd = currentPage === totalPages - 1 || products.length <= itemsToShow;
+  const isAtEnd =
+    currentPage === totalPages - 1 || products.length <= itemsToShow;
 
   // Calculate which products to display
   const startIndex = currentPage * itemsToShow;
   const endIndex = Math.min(startIndex + itemsToShow, products.length);
   const displayedProducts = products.slice(startIndex, endIndex);
 
-  
   return (
     <section className="product-list">
       <div className="product-list__header">

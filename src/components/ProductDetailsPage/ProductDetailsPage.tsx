@@ -156,8 +156,10 @@ export const ProductPage: React.FC = () => {
   const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
   const { isInCart, addToCart, removeFromCart } = useCart();
 
-  const isProductFavorite = productId ? isFavorite(productId) : false;
-  const isProductInCart = productId ? isInCart(productId) : false;
+  // Ensure consistent string conversion for product IDs
+  const productIdStr = productId ? String(productId) : '';
+  const isProductFavorite = productId ? isFavorite(productIdStr) : false;
+  const isProductInCart = productId ? isInCart(productIdStr) : false;
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -221,9 +223,9 @@ export const ProductPage: React.FC = () => {
   const handleAddToCart = () => {
     if (productId) {
       if (isProductInCart) {
-        removeFromCart(productId);
+        removeFromCart(productIdStr);
       } else {
-        addToCart(productId);
+        addToCart(productIdStr);
       }
     }
   };
@@ -232,9 +234,9 @@ export const ProductPage: React.FC = () => {
   const handleAddToFavorites = () => {
     if (productId) {
       if (isProductFavorite) {
-        removeFromFavorites(productId);
+        removeFromFavorites(productIdStr);
       } else {
-        addToFavorites(productId);
+        addToFavorites(productIdStr);
       }
     }
   };

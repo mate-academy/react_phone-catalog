@@ -40,10 +40,12 @@ interface ExtendedProduct extends Product {
 }
 
 // Phone data based on the images
-const phones: ExtendedProduct[] = [
+export const phones: ExtendedProduct[] = [
   // Row 1
   {
     id: 1,
+    uniqueId: 'phone-1',
+    category: 'phones',
     name: 'Apple iPhone Xs 64GB Silver (MT9G2FS/A)',
     price: 799,
     oldPrice: 899,
@@ -55,6 +57,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 2,
+    uniqueId: 'phone-2',
+    category: 'phones',
     name: 'Apple iPhone 11 Pro Max 64GB Gold (MT9G2FS/A)',
     price: 799,
     oldPrice: 1199,
@@ -66,6 +70,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 3,
+    uniqueId: 'phone-3',
+    category: 'phones',
     name: 'Apple iPhone 11 128GB Purple (MT9G2FS/A)',
     price: 799,
     oldPrice: 899,
@@ -77,6 +83,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 4,
+    uniqueId: 'phone-4',
+    category: 'phones',
     name: 'Apple iPhone X 256GB Silver (MT9G2FS/A)',
     price: 859,
     oldPrice: 899,
@@ -89,6 +97,8 @@ const phones: ExtendedProduct[] = [
   // Row 2
   {
     id: 5,
+    uniqueId: 'phone-5',
+    category: 'phones',
     name: 'Apple iPhone 11 128GB Red (MT9G2FS/A)',
     price: 799,
     oldPrice: 899,
@@ -100,6 +110,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 6,
+    uniqueId: 'phone-6',
+    category: 'phones',
     name: 'Apple iPhone 11 Pro Max 256GB Green (MT9G2FS/A)',
     price: 949,
     oldPrice: 1299,
@@ -111,6 +123,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 7,
+    uniqueId: 'phone-7',
+    category: 'phones',
     name: 'Apple iPhone 14 Plus 128GB Red (MT9G2FS/A)',
     price: 899,
     oldPrice: 999,
@@ -122,6 +136,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 8,
+    uniqueId: 'phone-8',
+    category: 'phones',
     name: 'Apple iPhone 14 Pro 128GB Silver (MT9G2FS/A)',
     price: 999,
     oldPrice: 1099,
@@ -134,6 +150,8 @@ const phones: ExtendedProduct[] = [
   // Row 3
   {
     id: 9,
+    uniqueId: 'phone-9',
+    category: 'phones',
     name: 'Apple iPhone 14 Pro 128GB Gold (MT9G2FS/A)',
     price: 999,
     oldPrice: 1099,
@@ -145,6 +163,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 10,
+    uniqueId: 'phone-10',
+    category: 'phones',
     name: 'Apple iPhone 14 Pro 128GB Purple (MT9G2FS/A)',
     price: 999,
     oldPrice: 1099,
@@ -156,6 +176,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 11,
+    uniqueId: 'phone-11',
+    category: 'phones',
     name: 'Apple iPhone Xs 128GB Silver (MT9G2FS/A)',
     price: 749,
     oldPrice: 849,
@@ -167,6 +189,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 12,
+    uniqueId: 'phone-12',
+    category: 'phones',
     name: 'Apple iPhone 11 256GB Purple (MT9G2FS/A)',
     price: 849,
     oldPrice: 949,
@@ -179,6 +203,8 @@ const phones: ExtendedProduct[] = [
   // Row 4
   {
     id: 13,
+    uniqueId: 'phone-13',
+    category: 'phones',
     name: 'Apple iPhone 11 256GB Red (MT9G2FS/A)',
     price: 849,
     oldPrice: 949,
@@ -190,6 +216,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 14,
+    uniqueId: 'phone-14',
+    category: 'phones',
     name: 'Apple iPhone 11 Pro Max 512GB Gold (MT9G2FS/A)',
     price: 1099,
     oldPrice: 1399,
@@ -201,6 +229,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 15,
+    uniqueId: 'phone-15',
+    category: 'phones',
     name: 'Apple iPhone 14 Pro 256GB Purple (MT9G2FS/A)',
     price: 1099,
     oldPrice: 1199,
@@ -212,6 +242,8 @@ const phones: ExtendedProduct[] = [
   },
   {
     id: 16,
+    uniqueId: 'phone-16',
+    category: 'phones',
     name: 'Apple iPhone 14 Plus 256GB Red (MT9G2FS/A)',
     price: 999,
     oldPrice: 1099,
@@ -269,7 +301,7 @@ export const PhonesPage: React.FC = () => {
 
   // Generate pagination buttons
   const paginationButtons = [];
-  
+
   for (let i = 1; i <= totalPages; i++) {
     paginationButtons.push(
       <button
@@ -302,7 +334,6 @@ export const PhonesPage: React.FC = () => {
 
           <div className="phones-page__filters">
             <div className="phones-page__filter">
-              <p className="phones-page__filter-title">Sort by</p>
               <Dropdown
                 label="Sort by"
                 options={[
@@ -316,7 +347,6 @@ export const PhonesPage: React.FC = () => {
             </div>
 
             <div className="phones-page__filter">
-              <p className="phones-page__filter-title">Items on page</p>
               <Dropdown
                 label="Items on page"
                 options={[

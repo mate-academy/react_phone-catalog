@@ -264,3 +264,41 @@
     }
   }
 }
+
+.cart-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  padding-right: 16px;
+
+  &__clear-btn {
+    background-color: rgba(255, 87, 87, 0.8);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba(255, 87, 87, 1);
+    }
+  }
+}
+
+.cart-loading {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+
+  .cart-debug {
+    font-size: 12px;
+    color: #999;
+    margin: 5px 0;
+    font-family: monospace;
+  }
+}

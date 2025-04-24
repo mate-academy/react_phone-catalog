@@ -91,11 +91,57 @@
     }
   }
 
+  &__burger-line {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+  }
+
+  &__burger-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+    margin-right: 16px;
+    z-index: 1010;
+    position: relative;
+
+    @media (max-width: $breakpoint-tablet) {
+      display: flex;
+    }
+
+    &--active {
+      .header__burger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .header__burger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .header__burger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+
   &__nav {
     display: flex;
     justify-content: flex-start;
     flex-grow: 0;
     height: 100%;
+
+    @media (max-width: $breakpoint-tablet) {
+      display: none;
+    }
 
     &-list {
       display: flex;
@@ -145,10 +191,144 @@
     }
   }
 
+  &__mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(24, 15, 38);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  &__mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__mobile-close-button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__mobile-close-icon {
+    display: block;
+    line-height: 1;
+  }
+
+  &__mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__mobile-nav {
+    flex-grow: 1;
+    padding: 40px 0;
+
+    &-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &-item {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 48px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &-link {
+      display: block;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 0;
+      transition: color 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      &:hover {
+        color: #fff;
+      }
+
+      &--active {
+        color: #fff;
+        position: relative;
+        font-weight: 600;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -8px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+  &__mobile-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    gap: 64px;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__mobile-footer-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &__mobile-footer-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
   &__icons {
     display: flex;
     align-items: center;
     margin-left: auto;
+
+    @media (max-width: $breakpoint-tablet) {
+      margin-left: 0;
+    }
   }
 
   &__icon-button {
@@ -200,5 +380,35 @@
     justify-content: center;
     align-items: center;
     padding: 0 4px;
+  }
+
+  &__back-button {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 16px;
+  }
+
+  &__back-icon {
+    margin-right: 8px;
+    font-size: 18px;
+  }
+
+  &__back-text {
+    font-weight: 500;
+  }
+
+  &__page-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+    flex-grow: 1;
+    text-align: center;
   }
 }

@@ -10,6 +10,10 @@
   &__main {
     flex-grow: 1;
     padding: 24px 0;
+
+    @media (max-width: 480px) {
+      padding: 16px 0;
+    }
   }
 
   .container {
@@ -24,12 +28,21 @@
     &:last-child {
       margin-bottom: 0;
     }
+
+    @media (max-width: 480px) {
+      margin-bottom: 40px;
+    }
   }
 
   &__title {
     font-size: 32px;
     margin: 0 0 30px;
     text-align: left;
+
+    @media (max-width: 480px) {
+      font-size: 24px;
+      margin: 0 0 20px;
+    }
   }
 
   &__section-header {
@@ -37,11 +50,20 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+
+    @media (max-width: 480px) {
+      margin-bottom: 20px;
+    }
   }
 
   &__section-title {
     font-size: 28px;
     margin: 0 0 30px;
+
+    @media (max-width: 480px) {
+      font-size: 22px;
+      margin: 0 0 20px;
+    }
   }
 
   &__section-controls {
@@ -85,10 +107,12 @@
 
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
 
     @media (max-width: 480px) {
       grid-template-columns: 1fr;
+      gap: 12px;
     }
   }
 
@@ -99,10 +123,12 @@
 
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
 
     @media (max-width: 480px) {
       grid-template-columns: 1fr;
+      gap: 12px;
     }
   }
 }

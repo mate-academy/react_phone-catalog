@@ -4,6 +4,14 @@ import handIcon from '../../assets/img/hand.svg';
 import './Footer.scss';
 
 export const Footer: React.FC = () => {
+  const scrollToTop = (event: React.MouseEvent) => {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="footer__content">
@@ -25,7 +33,7 @@ export const Footer: React.FC = () => {
           <ul className="footer__nav-list">
             <li className="footer__nav-item">
               <a
-                href="https://github.com/your-username/react_phone-catalog"
+                href="https://github.com/GGLUTT /react_phone-catalog"
                 className="footer__nav-link"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -47,7 +55,7 @@ export const Footer: React.FC = () => {
         </nav>
 
         <div className="footer__back-to-top">
-          <a href="#top" className="footer__back-link">
+          <a href="#" className="footer__back-link" onClick={scrollToTop}>
             <span className="footer__back-text">Back to top</span>
             <span className="footer__back-icon">↑</span>
           </a>

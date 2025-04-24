@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
 import { PhonesPage } from './components/PhonesPage/PhonesPage';
 import { TabletsPage } from './components/TabletsPage/TabletsPage';
@@ -7,6 +7,7 @@ import { AccessoriesPage } from './components/AccessoriesPage/AccessoriesPage';
 import { ProductPage } from './components/ProductDetailsPage';
 import { FavoritesList } from './components/FavoritesList/FavoritesList';
 import { CartPage } from './components/CartPage/CartPage';
+import { ContactsPage } from './components/ContactsPage/ContactsPage';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { CartProvider } from './context/CartContext';
@@ -27,6 +28,7 @@ export const App = () => (
               <Route path="/product/:productId" element={<ProductPage />} />
               <Route path="/favorites" element={<FavoritesList />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/contacts" element={<ContactsPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>

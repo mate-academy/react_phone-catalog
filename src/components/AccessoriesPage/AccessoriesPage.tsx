@@ -37,10 +37,11 @@ interface ExtendedProduct extends Product {
 }
 
 // Accessories data with actual images
-const accessories: ExtendedProduct[] = [
+export const accessories: ExtendedProduct[] = [
   // Row 1
   {
-    id: 1,
+    id: 201, // Updated ID to be unique
+    uniqueId: 'accessory-201',
     name: 'Apple AirPods Pro 2nd Generation',
     price: 249,
     oldPrice: 279,
@@ -52,7 +53,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 2,
+    id: 202, // Updated ID to be unique
+    uniqueId: 'accessory-202',
     name: 'Samsung Galaxy Buds Pro',
     price: 199,
     oldPrice: 229,
@@ -64,7 +66,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 3,
+    id: 203, // Updated ID to be unique
+    uniqueId: 'accessory-203',
     name: 'Apple Watch Series 9 49mm',
     price: 429,
     oldPrice: 459,
@@ -76,7 +79,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 4,
+    id: 204, // Updated ID to be unique
+    uniqueId: 'accessory-204',
     name: 'Samsung Galaxy Watch 6 44mm',
     price: 299,
     oldPrice: 329,
@@ -89,7 +93,8 @@ const accessories: ExtendedProduct[] = [
   },
   // Row 2
   {
-    id: 5,
+    id: 205, // Updated ID to be unique
+    uniqueId: 'accessory-205',
     name: 'Apple AirPods Max Silver',
     price: 549,
     oldPrice: 599,
@@ -101,7 +106,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 6,
+    id: 206,
+    uniqueId: 'accessory-206',
     name: 'Samsung Galaxy Buds 2',
     price: 149,
     oldPrice: 179,
@@ -113,7 +119,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 7,
+    id: 207,
+    uniqueId: 'accessory-207',
     name: 'Apple Watch SE 40mm',
     price: 249,
     oldPrice: 279,
@@ -125,7 +132,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 8,
+    id: 208,
+    uniqueId: 'accessory-208',
     name: 'Samsung Galaxy Watch 5 40mm',
     price: 249,
     oldPrice: 279,
@@ -138,7 +146,8 @@ const accessories: ExtendedProduct[] = [
   },
   // Row 3
   {
-    id: 9,
+    id: 209,
+    uniqueId: 'accessory-209',
     name: 'Apple AirPods 3rd Generation',
     price: 179,
     oldPrice: 199,
@@ -150,7 +159,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 10,
+    id: 210,
+    uniqueId: 'accessory-210',
     name: 'Samsung Galaxy Buds Live',
     price: 169,
     oldPrice: 199,
@@ -162,7 +172,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 11,
+    id: 211,
+    uniqueId: 'accessory-211',
     name: 'Apple Watch Ultra 49mm',
     price: 799,
     oldPrice: 899,
@@ -174,7 +185,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 12,
+    id: 212,
+    uniqueId: 'accessory-212',
     name: 'Samsung Galaxy Watch 4 Classic 46mm',
     price: 349,
     oldPrice: 399,
@@ -187,7 +199,8 @@ const accessories: ExtendedProduct[] = [
   },
   // Row 4
   {
-    id: 13,
+    id: 213,
+    uniqueId: 'accessory-213',
     name: 'Apple AirPods 2nd Generation',
     price: 129,
     oldPrice: 159,
@@ -199,7 +212,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 14,
+    id: 214,
+    uniqueId: 'accessory-214',
     name: 'Samsung Galaxy Buds+',
     price: 149,
     oldPrice: 169,
@@ -211,7 +225,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 15,
+    id: 215,
+    uniqueId: 'accessory-215',
     name: 'Apple Watch Series 8 45mm',
     price: 399,
     oldPrice: 429,
@@ -223,7 +238,8 @@ const accessories: ExtendedProduct[] = [
     galleryImages: sharedGalleryImages,
   },
   {
-    id: 16,
+    id: 216,
+    uniqueId: 'accessory-216',
     name: 'Samsung Galaxy Watch 3 45mm',
     price: 299,
     oldPrice: 349,
