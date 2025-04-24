@@ -1,0 +1,8 @@
+@use '../../style/main' as *;
+
+.title {
+  display: flex;
+  position: absolute;
+  top: -150%;
+  right: -150%;
+}

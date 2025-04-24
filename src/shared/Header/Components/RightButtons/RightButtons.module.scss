@@ -1,0 +1,113 @@
+@use './../../../../style/main' as *;
+
+.right__buttons {
+  display: flex;
+  flex-direction: row;
+
+  &.onMobile {
+    position: absolute;
+    bottom: 0;
+    height: 48px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+  }
+
+
+  &_favorite,
+  &_cart {
+    display: none;
+    place-items: center;
+    height: 100%;
+    width: 48px;
+    box-shadow: -1px -1px 1px 1px $surface-2;
+    position: relative;
+
+
+    html[data-theme="light"] & {
+      box-shadow: -1px -1px 1px 1px $elements;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-bottom: 2px solid $white;
+      border-radius: 4px;
+      transform: scale(0);
+      transition: transform 0.3s;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    &.is_active {
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+
+
+    @include on-tablet {
+      display: grid;
+    }
+
+    @include on-desktop {
+      width: 64px;
+    }
+
+    &.onMobile {
+      display: grid;
+      width: 100%;
+    }
+
+    & img {
+      position: relative;
+
+      &+span {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 14px;
+        width: 14px;
+        bottom: 50%;
+        left: 50%;
+        background-color: $red;
+        border-radius: 50%;
+        color: $white;
+        border: 1px solid $black;
+        font-size: 9px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &_burgerMenu {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    width: 48px;
+    box-shadow: -2px 0 2px $surface-2;
+
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &_style {
+      background-color: $black;
+      border: none;
+    }
+
+    &.onMobile {
+      display: none;
+    }
+
+  }
+}
