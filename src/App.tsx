@@ -3,8 +3,11 @@ import { GlobalProvider } from './context/GlobalContext';
 
 export const App = () => {
   return (
-    <GlobalProvider>
-      <AppRoutes />
-    </GlobalProvider>
+    <>
+      <h1 className="visually-hidden">Product Catalog</h1>
+      <GlobalProvider>
+        <AppRoutes />
+      </GlobalProvider>
+    </>
   );
 };

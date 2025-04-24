@@ -14,7 +14,7 @@ import { GlobalContext } from '../../../context/GlobalContext';
 import { icons } from '../../../constants/iconsObject';
 import { Icon } from '../Icon';
 import { navLinks } from '../../../constants/navLinks';
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 import { getSearchWith } from '../../../utils/searchHelper';
 
 const getActiveItem = ({ isActive }: { isActive: boolean }) =>
