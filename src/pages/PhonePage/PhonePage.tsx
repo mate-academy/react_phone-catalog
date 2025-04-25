@@ -126,7 +126,7 @@ const PhonePage = () => {
         return prevProduct;
       });
     },
-    [product, products, colorMap, navigate, dispatch],
+    [product, products, colorMap, navigate],
   );
 
   const handleCapacity = useCallback(
@@ -152,7 +152,7 @@ const PhonePage = () => {
         return prevProduct;
       });
     },
-    [product, products, navigate, dispatch],
+    [product, products, navigate],
   );
 
   const ImageGalleryItem = React.memo(

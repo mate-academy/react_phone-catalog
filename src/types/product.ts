@@ -18,6 +18,7 @@ export interface Product {
   camera?: string;
   zoom?: string;
   cell?: string[];
+  quantity?: number;
 }
 
 interface Description {

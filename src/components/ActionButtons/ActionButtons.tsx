@@ -8,6 +8,10 @@ import {
   addToFavourites,
   removeFromFavourites,
 } from '../../store/slices/favouriteProductsSlice';
+import {
+  addToCart,
+  removeFromCart,
+} from '../../store/slices/cartProductsSlice';
 
 interface ActionButtonProps {
   product?: Product;
@@ -53,11 +57,11 @@ const ActionButtons = ({ product }: ActionButtonProps) => {
 
       if (isAlreadyCart) {
         updatedCart = cart.filter(item => item.id !== product.id);
-        // dispatch(removeFromFavourites(product));
+        dispatch(removeFromCart({ ...product, quantity: 1 }));
         setIsProductInCart(false);
       } else {
-        updatedCart = [...cart, product];
-        // dispatch(addToFavourites(product));
+        updatedCart = [...cart, { ...product, quantity: 1 }];
+        dispatch(addToCart({ ...product, quantity: 1 }));
 
         setIsProductInCart(true);
       }
@@ -98,7 +102,7 @@ const ActionButtons = ({ product }: ActionButtonProps) => {
 
       localStorage.setItem('favourites', JSON.stringify(updatedFavourites));
     },
-    [product, setIsProductInFavourites, dispatch],
+    [product, setIsProductInFavourites],
   );
 
   return (

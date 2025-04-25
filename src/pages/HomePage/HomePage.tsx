@@ -3,6 +3,7 @@ import styles from './HomePage.module.scss';
 import Banner from '../../components/Banner/Banner';
 import BrandNewModels from '../../components/BrandNewModels/BrandNewModels';
 import ShopByCategory from '../../components/ShopByCategory/ShopByCategory';
+import HotPrices from '../../components/HotPrices/HotPrices';
 
 const HomePage = () => {
   return (
@@ -18,6 +19,10 @@ const HomePage = () => {
 
       <section className={styles.shopByCategory}>
         <ShopByCategory />
+      </section>
+
+      <section className={styles.hotPrices}>
+        <HotPrices />
       </section>
     </>
   );

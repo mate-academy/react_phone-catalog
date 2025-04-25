@@ -7,6 +7,7 @@ import ProductsCategory from './pages/Phones/ProductsCategory';
 import React from 'react';
 import FavouritesPage from './pages/FavouritesPage/FavouritesPage';
 import CartPage from './pages/CartPage/CartPage';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   return (
@@ -36,6 +37,12 @@ const App = () => {
             <Route path={`/:category/:slug`} element={<PhonePage />} />
           </Routes>
         </main>
+      </div>
+
+      <div className="container" id="footer-container">
+        <footer>
+          <Footer />
+        </footer>
       </div>
     </>
   );

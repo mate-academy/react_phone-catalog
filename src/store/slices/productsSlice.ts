@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Product } from '../../types/product';
@@ -21,7 +20,7 @@ const initialState: ProductState = {
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (category: string) => {
-    const response = await axios.get(`../../../public/api/${category}.json`); // Fetch dynamically
+    const response = await axios.get(`api/${category}.json`); // Fetch dynamically
 
     return { category, data: response.data };
   },

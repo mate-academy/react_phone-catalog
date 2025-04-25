@@ -6,11 +6,11 @@ import ProductCard from '../ProductCard/ProductCard';
 import { Product } from '../../types/product';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import styles from './BrandNewModels.module.scss';
+import styles from './HotPrices.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { setSelectedProduct } from '../../store/slices/selectedProductSlice';
 
-const BrandNewModels = () => {
+const HorPrices = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const { loading, products, error } = useSelector(
@@ -24,7 +24,7 @@ const BrandNewModels = () => {
   const [startIndex, setStartIndex] = useState(4);
   const phonesPerPage = 4;
   const maxPages = 3;
-  const phones = products.phones || [];
+  const phones = [...(products.phones || [])].reverse();
 
   const totalPhones = phones.length;
 
@@ -58,17 +58,17 @@ const BrandNewModels = () => {
 
   return (
     <>
-      <div className={styles.brandNewModels__header}>
-        <h1 className={styles.brandNewModels__title}>Brand new models</h1>
-        <div className={styles.brandNewModels__arrows}>
+      <div className={styles.hotPrices__header}>
+        <h1 className={styles.hotPrices__title}>Hot Prices</h1>
+        <div className={styles.hotPrices__arrows}>
           <div
-            className={`${styles.brandNewModels__arrow} ${startIndex === 0 && styles['brandNewModels__arrow-disabled']}`}
+            className={`${styles.hotPrices__arrow} ${startIndex === 0 && styles['hotPrices__arrow-disabled']}`}
             onClick={handlePrevious}
           >
             <ArrowBackIosNewIcon />
           </div>
           <div
-            className={`${styles.brandNewModels__arrow} ${startIndex + phonesPerPage >= totalPhones || startIndex / phonesPerPage >= maxPages - 1 ? styles['brandNewModels__arrow-disabled'] : ''}`}
+            className={`${styles.hotPrices__arrow} ${startIndex + phonesPerPage >= totalPhones || startIndex / phonesPerPage >= maxPages - 1 ? styles['hotPrices__arrow-disabled'] : ''}`}
             onClick={handleNext}
           >
             <ArrowForwardIosIcon />
@@ -76,8 +76,8 @@ const BrandNewModels = () => {
         </div>
       </div>
 
-      <div className={styles.brandNewModels__main}>
-        <div className={styles.brandNewModels__phones}>
+      <div className={styles.hotPrices__main}>
+        <div className={styles.hotPrices__phones}>
           {phones
             .slice(startIndex, startIndex + phonesPerPage)
             .map((phone: Product) => (
@@ -93,4 +93,4 @@ const BrandNewModels = () => {
   );
 };
 
-export default BrandNewModels;
+export default HorPrices;

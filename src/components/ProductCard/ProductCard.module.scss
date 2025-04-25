@@ -1,6 +1,7 @@
 .productCard {
-  width: 100%;
+  width: 272px;
   border: 1px solid #e2e6e9;
+  height: 506px;
   padding: 20px 30px;
   transition: 0.5s;
   display: flex;
@@ -14,25 +15,23 @@
   &__verticalLine {
     border: 0.5px solid #e2e6e9;
     width: 100%;
-    margin-top: 10px;
   }
 
   &__productTitle {
     font-weight: 600;
     font-size: 12px;
-    margin-top: 20px;
+    margin-top: 10px;
     height: 30px;
   }
 
   &__price {
     font-weight: 800;
     font-size: 22px;
-    margin-top: 10px;
   }
 
   &__imageContainer img {
-    width: 50%;
-    height: 100px;
+    width: 100%;
+    height: 150px;
     transition: 0.5s;
     object-fit: contain;
 
@@ -49,10 +48,9 @@
     height: 137px;
   }
 
-  &__description {
-    margin-top: 20px;
-    margin-bottom: 15px;
-  }
+  // &__description {
+  //   // margin-bottom: 15px;
+  // }
 
   &__screen,
   &__ram,
