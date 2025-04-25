@@ -4,8 +4,7 @@ export const useSafeNavigate = () => {
   const navigate = useNavigate();
 
   return (path: string) => {
-    const base = '/react_phone-catalog';
-    const cleanPath = path.startsWith(base) ? path.slice(base.length) : path;
+    const cleanPath = path.replace(/(\/[a-z-]+)\/\1/g, '$1');
 
     navigate(cleanPath);
   };

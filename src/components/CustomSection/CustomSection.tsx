@@ -3,7 +3,7 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { IconButton } from 'components/IconButton';
 import { ProductCard } from 'components/ProductCard';
 import { Product } from 'types/Product';
-import { useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
 type CustomSectionProps = {
   title: string;
@@ -15,14 +15,23 @@ export const CustomSection = ({ title, products }: CustomSectionProps) => {
   const visibleCount = 4;
 
   const handlePrev = () => {
-    setStartIndex(prev => Math.max(prev - 4, 0));
+    setStartIndex(prev => Math.max(prev - visibleCount, 0));
   };
 
   const handleNext = () => {
     const maxIndex = products.length - visibleCount;
 
-    setStartIndex(prev => Math.min(prev + 4, maxIndex));
+    setStartIndex(prev => Math.min(prev + visibleCount, maxIndex));
   };
+
+  const initialProductsRef = useRef(products);
+
+  const visibleProducts = useMemo(() => {
+    return initialProductsRef.current.slice(
+      startIndex,
+      startIndex + visibleCount,
+    );
+  }, [startIndex]);
 
   return (
     <section className={styles.container}>
@@ -64,13 +73,11 @@ export const CustomSection = ({ title, products }: CustomSectionProps) => {
 
       <div className={styles.container__listWrapper}>
         <div className={styles.container__list}>
-          {products
-            .slice(startIndex, startIndex + visibleCount)
-            .map(product => (
-              <div key={product.id} className={styles.container__item}>
-                <ProductCard product={product} />
-              </div>
-            ))}
+          {visibleProducts.map(product => (
+            <div key={product.id} className={styles.container__item}>
+              <ProductCard product={product} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

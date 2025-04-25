@@ -28,7 +28,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   const [isFavoriteChecked, setIsFavoriteChecked] = useState(false);
 
-  const handleOnClick = () => {
+  const handleOnClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     navigate(`/${product.category}/${product.itemId}`);
   };
 
