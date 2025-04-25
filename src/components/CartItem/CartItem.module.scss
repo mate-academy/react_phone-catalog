@@ -1,0 +1,124 @@
+@import '/src/styles/global';
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-direction: column;
+
+  padding: 16px;
+
+  border: 1px solid $elements-color;
+
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  &__leftPart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__rightPart {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__delete {
+    width: 16px;
+    height: 16px;
+
+    margin-right: 24px;
+
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+
+    margin-right: 24px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__name {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $primary-color;
+
+    margin-right: 24px;
+
+    @include on-tablet {
+      min-width: 200px;
+    }
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+
+    margin-right: 24px;
+  }
+
+  &__minus,
+  &__plus {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid $icons-color;
+    cursor: pointer;
+
+    transition: all 0.3s ease-in-out;
+
+    &:not(:disabled):hover {
+      border-color: $primary-color;
+    }
+
+    &_disabled {
+      border-color: $elements-color;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+  }
+
+  &__price {
+    font-family: Mont-Bold, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: right;
+
+    margin-top: 3px;
+  }
+}

@@ -1,0 +1,47 @@
+@import './utils/normalize';
+@import './utils/variables';
+@import './utils/fonts';
+@import './utils/mixins';
+@import './utils/animations';
+
+body {
+  font-family: Mont, sans-serif;
+  color: $primary-color;
+  background-color: $hover-bg-color;
+  overflow: hidden auto;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 1px -5px $primary-color inset;
+    background-color: $hover-bg-color;
+  }
+}
+
+.title {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  margin-top: 32px;
+
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+.logo {
+  margin: 0 16px;
+
+  @include on-desktop {
+    margin: 0 24px;
+  }
+}

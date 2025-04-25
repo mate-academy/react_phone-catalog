@@ -1,0 +1,15 @@
+@import '/src/styles/global';
+
+.loader {
+  padding: 8px;
+  width: 100%;
+  height: 60vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include on-tablet {
+    padding: 12px;
+  }
+}

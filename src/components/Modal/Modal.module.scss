@@ -1,0 +1,63 @@
+@import '/src/styles/global';
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  padding: 20px;
+  background-color: $white-color;
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 28px;
+    line-height: 41px;
+    letter-spacing: -1%;
+
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin-bottom: 25px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__clear {
+    padding: 10px 15px;
+    border: 1px solid $elements-color;
+    color: $white-color;
+    background-color: $primary-color;
+
+    transition: all 0.3s ease-in-out;
+
+    width: 60%;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &__cancel {
+    padding: 10px 15px;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    background-color: $white-color;
+
+    transition: all 0.3s ease-in-out;
+
+    width: 30%;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+}

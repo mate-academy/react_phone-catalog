@@ -1,0 +1,99 @@
+@import '/src/styles/global';
+
+.header {
+  border-bottom: 1px solid $secondary-color;
+  width: 100%;
+  top: 0;
+  right: 0;
+  height: 48px;
+
+  display: flex;
+  justify-content: space-between;
+
+  box-shadow: 0 1px 0 0 $elements-color;
+
+  @include on-desktop {
+    height: 63px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__right {
+    align-self: center;
+    height: 100%;
+
+    display: flex;
+  }
+
+  &__favourites,
+  &__cart {
+    position: relative;
+    width: 64px;
+
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+    }
+
+    &_active {
+      color: $primary-color;
+      box-sizing: border-box;
+      border-bottom: 3px solid $primary-color;
+
+      img {
+        margin-top: 3px;
+      }
+    }
+
+    img {
+      cursor: pointer;
+    }
+
+    &_quantity {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-family: Mont, sans-serif;
+      font-size: 9px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $white-color;
+      width: 14px;
+      height: 14px;
+      background-color: $red-color;
+      border: 1px solid $white-color;
+      border-radius: 50%;
+
+      position: absolute;
+      content: '';
+
+      top: 10px;
+      right: 14px;
+
+      @include on-desktop {
+        top: 17px;
+        right: 16px;
+      }
+    }
+  }
+
+  &__hamburger {
+    display: block;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+
+}

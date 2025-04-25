@@ -1,0 +1,35 @@
+@import '/src/styles/global';
+
+.backToTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: right;
+  color: $secondary-color;
+  width: 100%;
+
+  @include on-tablet {
+    width: auto;
+    justify-content: flex-end;
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $secondary-color;
+    margin-left: 16px;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+}

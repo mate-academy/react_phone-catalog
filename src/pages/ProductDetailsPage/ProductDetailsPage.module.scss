@@ -1,0 +1,17 @@
+@import '/src/styles/global';
+
+.productDetailsPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.product_not_found {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+}

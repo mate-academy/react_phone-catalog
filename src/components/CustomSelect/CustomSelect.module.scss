@@ -1,0 +1,72 @@
+@import '/src/styles/global';
+
+.select {
+  position: relative;
+  width: 175px;
+
+  &__label {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: $secondary-color;
+  }
+
+  &__box {
+    border: 1px solid $icons-color;
+    padding: 10px 12px;
+    background-color: $white-color;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__selected {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+    margin-top: 4px;
+    z-index: 10;
+  }
+
+  &__option {
+    padding: 10px 12px;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $elements-color;
+    }
+
+    &_selected {
+      background-color: $elements-color;
+      color: $primary-color;
+    }
+  }
+
+  &.open &__arrow {
+    transform: rotate(180deg);
+  }
+}

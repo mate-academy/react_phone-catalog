@@ -1,0 +1,14 @@
+@import '/src/styles/global';
+
+.notFoundPage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__message {
+    font-size: 32px;
+    font-family: Mont-SemiBold, sans-serif;
+  }
+}

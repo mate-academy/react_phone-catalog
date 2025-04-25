@@ -1,0 +1,154 @@
+@import '../../styles/global';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    height: 320px;
+    width: 100%;
+    align-items: center;
+
+    @include on-tablet {
+      height: 400px;
+    }
+  }
+
+  &__viewport {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  &__image-wrapper {
+    display: flex;
+    width: 300%;
+    height: 100%;
+
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  &__image {
+    display: block;
+    width: 33.33%;
+    position: relative;
+
+    object-fit: cover;
+    object-position: 85% center;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &_main {
+      object-position: 10% center;
+    }
+  }
+
+  &__ctaButton {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    left: 2%;
+
+    padding: 15px 35px;
+
+    font-family: Mont-SemiBold, sans-serif;
+    text-transform: uppercase;
+    color: $white-color;
+
+    background: transparent;
+    border: 1px solid $icons-color;
+    border-radius: 25px;
+
+    transition: all 0.3s ease-in-out;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &:hover {
+      background-color: $white-color;
+      color: $primary-color;
+    }
+  }
+
+  &__button {
+    display: none;
+    width: 32px;
+    align-self: stretch;
+
+    background-color: transparent;
+    border: 1px solid $icons-color;
+
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+  }
+
+  &__dots {
+    display: flex;
+    gap: 14px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    padding: 0;
+    border: none;
+
+    background-color: $elements-color;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+}
+
+.hidden_title {
+  display: none;
+}

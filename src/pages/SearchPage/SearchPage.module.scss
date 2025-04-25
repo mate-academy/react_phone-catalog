@@ -1,0 +1,17 @@
+@import '/src/styles/global';
+
+.products {
+  width: 100%;
+  min-height: 90vh;
+
+  &__quantity {
+    margin-bottom: 40px;
+  }
+
+  &__selects {
+    display: flex;
+    gap: 16px;
+
+    margin-bottom: 24px;
+  }
+}

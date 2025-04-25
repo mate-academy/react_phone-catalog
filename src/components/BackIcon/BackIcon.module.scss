@@ -1,0 +1,17 @@
+@import '/src/styles/global';
+
+.back {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  p {
+    margin-left: 4px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    margin-top: 3px;
+  }
+}

@@ -1,0 +1,43 @@
+@import '/src/styles/global';
+
+.favourites {
+  width: 100%;
+
+  @include on-desktop {
+    // ! warning 
+    width: 1136px;
+  }
+
+  &__quantity {
+    margin-bottom: 40px;
+  }
+
+  &__products {
+    width: 100%;
+
+    display: grid;
+    gap: 16px;
+    row-gap: 40px;
+
+    margin-bottom: 40px;
+
+    grid-template-columns: 1fr;
+
+    @include on-tablet {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: 1050px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include on-desktop {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      
+    }
+  }
+
+  &__empty {
+    @include empty-block;
+  }
+}

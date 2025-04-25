@@ -1,0 +1,32 @@
+@import '/src/styles/global';
+
+.slider {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+
+    align-items: end;
+
+    gap: 16px;
+
+    margin-bottom: 28px;
+  }
+}
+
+.disabled {
+  border-color: $elements-color;
+}

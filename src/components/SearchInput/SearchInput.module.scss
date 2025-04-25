@@ -1,0 +1,102 @@
+@import '/src/styles/global';
+
+.search {
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+
+  @include on-tablet {
+    display: none;
+    margin-right: 10px;
+  }
+
+  @media (min-width: 740px) {
+    display: flex;
+    margin-right: 20px;
+  }
+
+  &__input {
+    width: 100px;
+    height: 28px;
+
+    box-sizing: border-box;
+
+    border: 1px solid $elements-color;
+    padding-inline: 10px;
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+    transition: all 0.3s ease-in-out;
+
+    @include on-tablet {
+      width: 90px;
+    }
+
+    @include on-desktop {
+      width: 150px;
+    }
+
+    &:focus {
+      border: 1px solid $icons-color;
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $icons-color;
+    }
+
+    &:hover {
+      border: 1px solid $icons-color;
+    }
+  }
+
+  &__wrapper {
+    background-color: $elements-color;
+    width: 130px;
+    height: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+    transition: all 0.3s ease-in-out;
+
+    @include on-tablet {
+      width: 120px;
+    }
+
+    @include on-desktop {
+      width: 180px;
+    }
+
+    &:hover {
+      background-color: $icons-color;
+
+      .search__input {
+        border: 1px solid $icons-color;
+      }
+    }
+
+    &:focus-within {
+      background-color: $icons-color;
+    }
+  }
+
+  &__icon {
+    width: 100%;
+    height: 20px;
+
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

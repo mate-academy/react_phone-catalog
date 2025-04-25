@@ -1,0 +1,72 @@
+@import '/src/styles/global';
+
+.footer-wrapper {
+  width: 100%;
+  box-shadow: 0 -1px 0 0 $elements-color;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 32px 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+    padding-inline: 32px;
+    margin-inline: auto;
+  }
+
+  &__logo {
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 32px;
+    margin-left: 0 !important;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    color: $secondary-color;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 80px;
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
