@@ -1,5 +1,4 @@
 import styles from './ProductCard.module.scss';
-import { useNavigate } from 'react-router-dom';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 import { IconButton } from 'components/IconButton';
@@ -10,13 +9,14 @@ import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from 'store/ProductsContext';
 import { Product } from 'types/Product';
 import { resolveImagePath } from 'utils/appImagePath';
+import { useSafeNavigate } from 'hooks/useSafeNavigate';
 
 type ProductCardProps = {
   product: Product;
 };
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const navigate = useNavigate();
+  const navigate = useSafeNavigate();
 
   const {
     products,
