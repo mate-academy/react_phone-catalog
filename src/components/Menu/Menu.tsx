@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './Menu.module.scss';
 import { NavLink } from 'react-router-dom';
-import favoriteIcon from '../../shared/icons/favourites-heart-like.svg';
-import cartBagIcon from '../../shared/icons/shopping-bag-cart.svg';
+import favoriteIcon from '@/shared/icons/favourites-heart-like.svg';
+import cartBagIcon from '@/shared/icons/shopping-bag-cart.svg';
 import { useCart } from '../../hooks/useCart';
 
 export const Menu: React.FC = () => {

@@ -1,10 +1,11 @@
+/* eslint-disable max-len */
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-shadow */
 import React, { useEffect, useState } from 'react';
 import style from './ProductOptions.module.scss';
 import favouriteIcon from '../../../../shared/icons/favourites-heart-like.svg';
-// eslint-disable-next-line max-len
 import addedFavouriteIcon from '../../../../shared/icons/favourites-filled-heart-like.svg';
-import { Product, ProductDetails } from '../../../../types/Products';
+import { Product, ProductDetails } from 'types/Products';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../../../hooks/useCart';
 import { fetchProducts } from '../../../../utils/fetchProduct';
@@ -63,7 +64,6 @@ export const ProductOptions: React.FC<Props> = ({
     if (currentProduct) {
       addToCart(currentProduct, true);
     } else {
-      // eslint-disable-next-line no-console
       console.error('Product is not loaded yet');
     }
   };
@@ -74,7 +74,6 @@ export const ProductOptions: React.FC<Props> = ({
     }
   };
 
-  // eslint-disable-next-line no-console
   console.log(color);
 
   return (

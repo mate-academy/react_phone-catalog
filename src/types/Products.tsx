@@ -42,5 +42,3 @@ export interface ProductDetails {
   zoom?: string;
   cell: string[];
 }
-
-// export type categoryProducts = 'phones' | 'tablets' | 'accessories';

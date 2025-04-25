@@ -69,14 +69,18 @@
 
   padding-block: 18.5px;
 
+  transition: .3s;
+
   @include on-desctop {
     padding-block: 26px;
   }
 }
 
-.link:not(.active):hover {
-  transition: transform 0.5s ease;
-  transform: scale(1.6);
+.link {
+
+  &:hover {
+    color: $light-color;
+  }
 }
 
 .active {

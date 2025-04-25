@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './TechSpecs.module.scss';
-import { ProductDetails } from '../../../../types/Products';
+import { ProductDetails } from 'types/Products';
 
 type Props = {
   phone: ProductDetails;

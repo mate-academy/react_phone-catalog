@@ -17,7 +17,7 @@ export const Accessories: React.FC = () => {
       try {
         const data = await fetchProducts();
 
-        setProduct(data);
+        setProduct(data); // Фільтруємо тільки телефони
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Error fetching products:', error);

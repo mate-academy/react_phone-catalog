@@ -1,7 +1,7 @@
 @import '../../../../assets/global';
 
 .rightSide {
-  padding-top: 40px; /// change on table/desctop/large-dectop
+  padding-top: 40px;
 
   @include on-tablet {
     width: 237px;

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import style from './HotPrice.module.scss';
 import {
@@ -17,7 +18,7 @@ import arrowLeft from '../../../../shared/icons/chevron-arrow-left.svg';
 import arrowRight from '../../../../shared/icons/chevron-arrow-right.svg';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import { ProductCart } from '../../../../components/ProductCart/ProductCart';
-import { Product } from '../../../../type/Product';
+import { Product } from '../../../../types/Products';
 
 type Props = {
   products: Product[];
@@ -27,6 +28,7 @@ type Props = {
 export const HotPrice: React.FC<Props> = ({ products, isDiscount }) => {
   const isTablet = useMediaQuery('(min-width: 640px)');
   const isDesctop = useMediaQuery('(min-width: 1200px)');
+
   let slidesView = 1.5;
 
   if (isTablet) {
@@ -64,9 +66,7 @@ export const HotPrice: React.FC<Props> = ({ products, isDiscount }) => {
             nextEl: `#swiper-hot-price-next`,
             prevEl: `#swiper-hot-price-prev`,
           }}
-          // eslint-disable-next-line no-console
           onSwiper={swiper => console.log(swiper)}
-          // eslint-disable-next-line no-console
           onSlideChange={() => console.log('slide change')}
         >
           <div className={style.slideContent}>

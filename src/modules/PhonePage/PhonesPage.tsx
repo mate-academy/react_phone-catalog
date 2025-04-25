@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import style from './PhonePage.module.scss';
 import React, { useEffect, useState } from 'react';
 
@@ -5,8 +6,6 @@ import { ProductList } from '../../components/ProductList/ProductList';
 import { fetchProducts } from '../../utils/fetchProduct';
 import { Product } from '../../types/Products';
 import { Loader } from '../../components/Loader/Loader';
-
-/// Deteted this componet and change root tsx
 
 export const Phones: React.FC = () => {
   const [product, setProduct] = useState<Product[]>([]);
@@ -21,7 +20,6 @@ export const Phones: React.FC = () => {
 
         setProduct(data);
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.error('Error fetching products:', error);
       } finally {
         setTimeout(() => {

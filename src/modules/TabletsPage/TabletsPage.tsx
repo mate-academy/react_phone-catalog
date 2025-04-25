@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import style from './TabletsPage.module.scss';
 import React, { useEffect, useState } from 'react';
 
@@ -19,7 +20,6 @@ export const Tablets: React.FC = () => {
 
         setProduct(data);
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.error('Error fetching products:', error);
       } finally {
         setTimeout(() => {

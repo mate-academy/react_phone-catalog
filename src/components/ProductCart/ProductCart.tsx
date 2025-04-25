@@ -35,9 +35,6 @@ export const ProductCart: React.FC<Props> = ({
 
   const selectCategory = categoryMap[product.category] || '';
 
-  // eslint-disable-next-line no-console
-  console.log('selected category:', selectCategory);
-
   return (
     <>
       <div className={style.card}>

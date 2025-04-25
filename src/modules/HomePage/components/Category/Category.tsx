@@ -1,10 +1,10 @@
+/* eslint-disable max-len */
 import React from 'react';
 import style from './Category.module.scss';
 import { NavLink } from 'react-router-dom';
 
 import phonesImg from '../../../../shared/img/CategoryImg/phoneCategory.png';
 import tabletsImg from '../../../../shared/img/CategoryImg/tabletCategory.png';
-// eslint-disable-next-line max-len
 import accessoriesImg from '../../../../shared/img/CategoryImg/accessoriesCategory.png';
 
 import phones from '../../../../../public/api/phones.json';

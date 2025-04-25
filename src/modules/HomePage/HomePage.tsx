@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import style from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
@@ -25,9 +26,8 @@ export const HomePage: React.FC = () => {
       try {
         const data = await fetchProducts();
 
-        setProduct(data);
+        setProduct(data); // Фільтруємо тільки телефони
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.error('Error fetching products:', error);
       } finally {
         setTimeout(() => {

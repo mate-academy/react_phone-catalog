@@ -144,4 +144,4 @@ Show `input:search` in the header when a page contains a `ProductList` to search
 
 ### Demo Link
 
-[DEMO LINK] (https://Valbel93.github.io/react_phone-catalog/#/)
+[DEMO LINK](https://Valbel93.github.io/react_phone-catalog/#/)

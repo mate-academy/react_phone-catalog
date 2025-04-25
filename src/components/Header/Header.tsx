@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './Header.module.scss';
-import headerLogo from '../../shared/icons/logo.png';
-import favoriteIcon from '../../shared/icons/favourites-heart-like.svg';
-import cartBagIcon from '../../shared/icons/shopping-bag-cart.svg';
-import burgerMenuIcon from '../../shared/icons/menu.svg';
-import closeIcon from '../../shared/icons/close.svg';
+import headerLogo from '@/shared/icons/logo.png';
+import favoriteIcon from '@/shared/icons/favourites-heart-like.svg';
+import cartBagIcon from '@/shared/icons/shopping-bag-cart.svg';
+import burgerMenuIcon from '@/shared/icons/menu.svg';
+import closeIcon from '@/shared/icons/close.svg';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 
@@ -15,10 +15,7 @@ export const Header: React.FC = () => {
     return 'CartContext is not loading';
   }
 
-  const { cart, favourite, setIsOpenMenu, isOpenMenu } = cartContext;
-
-  // eslint-disable-next-line no-console
-  console.log(isOpenMenu);
+  const { cart, favourite, setIsOpenMenu } = cartContext;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const location = useLocation();

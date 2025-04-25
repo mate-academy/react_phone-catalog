@@ -1,7 +1,13 @@
 import { Product } from '../types/Products';
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
-interface CartContext {
+interface ICartContext {
   cart: Product[];
   favourite: Product[];
   addToCart: (product: Product, isDiscount: boolean) => void;
@@ -10,19 +16,36 @@ interface CartContext {
   isOpenMenu: boolean;
   setIsOpenMenu: (isOpen: boolean) => void;
   setCart: React.Dispatch<React.SetStateAction<Product[]>>;
+  clearCart: () => void;
 }
 
-// eslint-disable-next-line no-redeclare, @typescript-eslint/no-redeclare
-const CartContext = createContext<CartContext | undefined>(undefined);
+const CartContext = createContext<ICartContext | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<Product[]>([]);
-  const [favourite, setFavourite] = useState<Product[]>([]);
+  const [cart, setCart] = useState<Product[]>(() => {
+    const storedCart = localStorage.getItem('cart');
+
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+
+  const [favourite, setFavourite] = useState<Product[]>(() => {
+    const storedFavourite = localStorage.getItem('favourite');
+
+    return storedFavourite ? JSON.parse(storedFavourite) : [];
+  });
+
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem('favourite', JSON.stringify(favourite));
+  }, [favourite]);
+
   const addToCart = (product: Product, isDiscount: boolean) => {
     if (cart.some(item => item.id === product.id)) {
       return;
@@ -43,8 +66,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         return prev.filter(item => item.id !== product.id);
       }
 
+      // return [...prev, product]
       return [...prev, { ...product, isDiscount }];
     });
+  };
+
+  const clearCart = () => {
+    setCart([]);
   };
 
   const value = useMemo(
@@ -57,8 +85,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       isOpenMenu,
       setIsOpenMenu,
       setCart,
+      clearCart,
     }),
-    [addToCart, cart, favourite, isOpenMenu],
+    [cart, favourite, isOpenMenu],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

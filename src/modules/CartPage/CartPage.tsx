@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import style from './CartPage.module.scss';
 import arrowLeft from '../../shared/icons/chevron-arrow-left.svg';
@@ -5,24 +7,25 @@ import plusIcon from '../../shared/icons/plus.svg';
 import minusIcon from '../../shared/icons/minus.svg';
 import removeIcon from '../../shared/icons/close.svg';
 import EmptyBag from '/img/cart-is-empty.png';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 import { Product } from '../../types/Products';
 import { Loader } from '../../components/Loader/Loader';
+import { Modal } from './components/ModalWindow/Modal';
 
 export const CartPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
+  const [modalWindow, setModalWindow] = useState(false);
   const cartContext = useCart();
 
   if (!cartContext) {
     return 'CartContext is not loading';
   }
 
-  const { cart, removeFromCart, setCart } = cartContext;
+  const { cart, removeFromCart, setCart, clearCart } = cartContext;
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const navigate = useNavigate();
-
-  const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
   const totalPrice = cart.reduce(
     (acc, item) => acc + (item.finalPrice || 0) * (item.quantity || 1),
@@ -51,6 +54,8 @@ export const CartPage: React.FC = () => {
     setLoading(false);
   }, 1000);
 
+  console.log('cart', cart);
+
   return (
     <>
       {loading ? (
@@ -63,10 +68,12 @@ export const CartPage: React.FC = () => {
               alt="arrow icon left"
               className={style.whiteIcon}
             />
-            <p>Back</p>
+            <p className={style.linkBack}>Back</p>
           </button>
 
-          <h1 className={style.title}>Cart</h1>
+          <h1 className={style.title}>
+            {cart.length === 0 ? 'Your cart is empty' : 'Cart'}
+          </h1>
 
           <div className={style.onDesctop}>
             <div>
@@ -88,11 +95,13 @@ export const CartPage: React.FC = () => {
                         onClick={() => removeFromCart(item.id)}
                       />
 
-                      <img
-                        src={item.image}
-                        alt="phone image"
-                        className={style.itemImg}
-                      />
+                      <NavLink to={`/${item.category}/${item.itemId}`}>
+                        <img
+                          src={item.image}
+                          alt="phone image"
+                          className={style.itemImg}
+                        />
+                      </NavLink>
 
                       <h2 className={style.itemTitle}>{item.name}</h2>
                     </div>
@@ -132,18 +141,31 @@ export const CartPage: React.FC = () => {
                 <div className={style.totalContainer}>
                   <h1 className={style.totalTitle}>${totalPrice}</h1>
                   <p className={style.totalDescription}>
-                    Total for {totalItems} items
+                    Total for{' '}
+                    {cart.reduce((acc, item) => acc + (item.quantity || 1), 0)}{' '}
+                    items
                   </p>
                 </div>
 
                 <div className={style.checkout}>
-                  <button className={style.checkoutBtn}>Checkout</button>
+                  <button
+                    className={style.checkoutBtn}
+                    onClick={() => setModalWindow(true)}
+                  >
+                    Checkout
+                  </button>
                 </div>
               </div>
             )}
           </div>
         </div>
       )}
+
+      <Modal
+        isActive={modalWindow}
+        setModalWindow={setModalWindow}
+        clearCart={clearCart}
+      />
     </>
   );
 };

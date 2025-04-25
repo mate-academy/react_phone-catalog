@@ -1,0 +1,22 @@
+@import '../../../../assets/global';
+
+.notfount {
+  padding-top: 100px;
+  color: $light-color;
+
+  height: calc(100vh - 99px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Mont-Bold, sans-serif;
+  font-size: 25px;
+
+  @include on-tablet {
+    font-size: 4em;
+  }
+
+  @include on-desctop {
+    font-size: 6em;
+  }
+}

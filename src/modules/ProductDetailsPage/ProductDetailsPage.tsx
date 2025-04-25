@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import style from './ProductDetailPage.module.scss';
 import homeIcon from '../../shared/icons/home.svg';
@@ -7,13 +9,14 @@ import arrowLeft from '../../shared/icons/chevron-arrow-left.svg';
 import productPhone from '../../../public/api/phones.json';
 import productTablets from '../../../public/api/tablets.json';
 import productAccessories from '../../../public/api/accessories.json';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { ProductDetails } from '../../types/Products';
 import { Slider } from './components/Swiper/Slider';
 import { ProductOptions } from './components/ProductOptions/ProductOptions';
 import { AboutProduct } from './components/AboutProduct/AboutProduct';
 import { TechSpecs } from './components/TechSpecs/TechSpecs';
 import { Loader } from '../../components/Loader/Loader';
+import { ProductNotFound } from './components/ProductNotFound/ProductNotFound';
 
 export const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<ProductDetails[]>([]);
@@ -33,11 +36,8 @@ export const ProductDetailsPage: React.FC = () => {
     ];
   })();
 
-  // eslint-disable-next-line no-console
   console.log(`Capacity: ${capacity}`);
-  // eslint-disable-next-line no-console
   console.log(`Namespace: ${namespaceId}`);
-  // eslint-disable-next-line no-console
   console.log(`color: ${color}`);
 
   useEffect(() => {
@@ -67,14 +67,16 @@ export const ProductDetailsPage: React.FC = () => {
     }
 
     setProduct(filteredProduct);
-  }, [productSection, productId, namespaceId, capacity, color]);
+  }, [productSection, productId, capacity, color, namespaceId]);
 
-  setInterval(() => {
+  setTimeout(() => {
     setLoading(false);
   }, 1000);
 
   return (
     <>
+      {product.length === 0 && <ProductNotFound />}
+
       {loading ? (
         <Loader />
       ) : (
@@ -88,10 +90,10 @@ export const ProductDetailsPage: React.FC = () => {
                   alt="arrow right"
                   className={style.icon}
                 />
-                <p className={style.pageTitle}>
+                <NavLink to={`/${productSection}`} className={style.pageTitle}>
                   {productSection.charAt(0).toUpperCase() +
                     productSection.slice(1).toLowerCase()}
-                </p>
+                </NavLink>
                 <img
                   src={arrowRight}
                   alt="arrow right"

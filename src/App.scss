@@ -2,6 +2,9 @@
 
 .page {
   background-color: $background-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 iframe {
@@ -10,13 +13,17 @@ iframe {
 
 .App {
   background-color: $background-color;
-  min-height: calc(100vh - 225px - 64px);
+  min-height: calc(100vh - 260px);
 
   @include on-tablet {
-    min-height: calc(100vh - 97px - 64px);
+    min-height: calc(100vh - 100px);
   }
 
   @include on-desctop {
-    min-height: calc(100vh - 97px - 80px);
+    min-height: calc(100vh - 99px);
   }
+}
+
+.title {
+  position: absolute;
 }

@@ -26,6 +26,8 @@
 }
 
 .category {
+  box-sizing: border-box;
+
   @include on-tablet {
     display: flex;
     gap: 16px;
@@ -37,7 +39,12 @@
 }
 
 .categoryImg {
-  width: 100%;
+  width: 95%;
+  transition: .3s;
+
+  &:hover {
+    scale: 1.1;
+  }
 }
 
 .categoryTitle {

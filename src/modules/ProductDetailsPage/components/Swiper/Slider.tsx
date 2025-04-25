@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
 import React from 'react';
 import style from './Slider.module.scss';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ProductDetails } from '../../../../types/Products';
+import { ProductDetails } from 'types/Products';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -33,9 +34,7 @@ export const Slider: React.FC<Props> = ({ product }) => {
                         </span>
                       `,
           }}
-          // eslint-disable-next-line no-console
           onSwiper={swiper => console.log(swiper)}
-          // eslint-disable-next-line no-console
           onSlideChange={() => console.log('slide change')}
         >
           <div className={style.slideContent}>

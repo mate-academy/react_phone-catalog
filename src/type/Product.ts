@@ -1,9 +1,27 @@
-type DescriptionIte = {
+export interface Product {
+  id: number;
+  category: string;
+  itemId: string;
+  name: string;
+  fullPrice: number;
+  price: number;
+  screen: string;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+  image: string;
+  finalPrice?: number;
+  isDiscount?: boolean;
+  quantity: number;
+}
+
+type ProductDescription = {
   title: string;
   text: string[];
 };
 
-export type Product = {
+export interface ProductDetails {
   id: string;
   category: string;
   namespaceId: string;
@@ -15,12 +33,12 @@ export type Product = {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: DescriptionIte[];
+  description: ProductDescription[];
   screen: string;
   resolution: string;
   processor: string;
   ram: string;
-  camera: string;
-  zoom: string;
+  camera?: string;
+  zoom?: string;
   cell: string[];
-};
+}

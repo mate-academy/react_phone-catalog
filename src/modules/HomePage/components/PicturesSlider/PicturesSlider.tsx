@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import style from './PicturesSlider.module.scss';
 import {
@@ -58,9 +59,7 @@ export const PicturesSlider: React.FC = () => {
               bulletClass: `${style.paginationBullet}`,
               bulletActiveClass: `${style.paginationBulletActive}`,
             }}
-            // eslint-disable-next-line no-console
             onSwiper={swiper => console.log(swiper)}
-            // eslint-disable-next-line no-console
             onSlideChange={() => console.log('slide change')}
           >
             <div className={style.slideContents}>

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import style from './NewModel.module.scss';
 import {
@@ -65,9 +66,7 @@ export const NewModel: React.FC<Props> = ({ products, isDiscount }) => {
             nextEl: `#swiper-new-brand-next`,
             prevEl: `#swiper-new-brand-prev`,
           }}
-          // eslint-disable-next-line no-console
           onSwiper={swiper => console.log(swiper)}
-          // eslint-disable-next-line no-console
           onSlideChange={() => console.log('slide change')}
         >
           <div className={style.slideContent}>
