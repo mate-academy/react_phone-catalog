@@ -1,0 +1,38 @@
+.slide_Image {
+  width: 100%;
+  max-height: 362px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.sliderWrapper {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+  padding-top: 24px;
+}
+
+.firstSlide {
+  margin-bottom: 110px;
+  margin-top: 50px;
+}
+
+.secondSlide {
+  margin-top: 70px;
+}
+
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 4px !important;
+  border-radius: 0 !important;
+  background: #b4bdc3 !important;
+  opacity: 1 !important;
+  margin: 0 4px !important;
+
+}
+
+.swiper-pagination-bullet-active {
+  background: #313237 !important;
+}
+
+

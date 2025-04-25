@@ -1,1 +1,25 @@
-// not empty
+@font-face {
+  font-family:MyFont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: MyFont, sans-serif;
+}
+
+main {
+  max-width: 1136px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
