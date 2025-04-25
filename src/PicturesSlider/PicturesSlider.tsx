@@ -7,23 +7,17 @@ import 'swiper/css/autoplay';
 import styles from './PicturesSlider.module.scss';
 
 export const PicturesSlider = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
   const images = [
-    { image: 'img/Banner1.svg', alt: 'Banner 1' },
+    {
+      image: isMobile ? 'img/Banner-phone.png' : 'img/Banner1.svg',
+      alt: 'Banner 1',
+    },
     { image: 'img/banner-phones.png', alt: 'Phones' },
     { image: 'img/banner-tablets.png', alt: 'Tablets' },
     { image: 'img/banner-accessories.png', alt: 'Accessories' },
   ];
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (
     <div className={styles.pictures_slider}>
@@ -31,7 +25,6 @@ export const PicturesSlider = () => {
         <img src="../../public/img/Arrow-right.png" alt="" />
       </button>
       <Swiper
-
         style={{
           '--swiper-pagination-color': '#313237',
           '--swiper-pagination-bullet-inactive-color': '#999999',
@@ -41,8 +34,7 @@ export const PicturesSlider = () => {
           '--swiper-pagination-bullet-border-radius': '0px',
           '--swiper-pagination-bullet-horizontal-gap': '6px',
         }}
-        pagination={!isMobile ? { clickable: true } : false}
-        navigation={!isMobile}
+        pagination={{ clickable: true }}
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={50}
         autoplay={{ delay: 5000 }}

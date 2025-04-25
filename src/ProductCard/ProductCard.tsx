@@ -46,7 +46,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div className={styles.productCard}>
+    <div className={styles.product_card}>
       <div className={styles.product_container_img}>
         <img src={imageUrl} alt={name} className={styles.product_image} />
       </div>
@@ -70,14 +70,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
         <div className={styles.bottom_buttons}>
           <button
-            className={`${styles.add_to_cart_button} ${isInCart ? styles.addedToCart : ''}`}
+            className={`${styles.add_to_cart_button} ${isInCart ? styles.added_to_cart : ''}`}
             onClick={handleAddToCart}
           >
             {isInCart ? 'Added to Cart' : 'Add to Cart'}
           </button>
 
           <button
-            className={styles.favoriteButton}
+            className={styles.favorite_button}
             onClick={handleToggleFavorite}
           >
             <img

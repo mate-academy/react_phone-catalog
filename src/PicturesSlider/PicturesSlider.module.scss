@@ -1,13 +1,10 @@
 .pictures_slider {
-  width: 100vw;
-  height: 320px;
-  margin: 0;
+  width: 100%;
+  max-width: 592px;
+  height: auto;
+  margin: 32px auto;
   padding: 0;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
   overflow: hidden;
 }
 
@@ -22,10 +19,74 @@
   object-fit: cover;
 }
 
-.swiper-pagination,
 .button_right,
 .button_left {
   display: none;
+}
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet {
+  opacity: 0.5;
+  background-color: #fff;
+}
+
+.swiper-pagination-bullet-active {
+opacity: 1;
+}
+
+@media screen and (min-width: 640px){
+  .pictures_slider {
+    display: flex;
+    width: 592px;
+    height: 221px;
+    position: relative;
+    gap: 19px;
+  }
+  .button_right,
+  .button_left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 189px;
+    background: transparent;
+    border: 1px solid #B4BDC3;
+    cursor: pointer;
+  }
+
+  .button_right img,
+  .button_left img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .picture_img {
+    width: 490px;
+    height: 189px;
+  }
+
+  .button_left {
+    transform: rotate(-180deg);
+  }
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .swiper-pagination-bullet {
+    opacity: 0.5;
+    background-color: #fff;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
 }
 
 @media screen and (min-width: 1200px){
@@ -82,56 +143,3 @@
 }
 
 }
-
-@media screen and (min-width: 640px){
-  .pictures_slider {
-    display: flex;
-    width: 592px;
-    height: 221px;
-    margin: 32px 24px;
-    position: relative;
-    gap: 19px;
-  }
-  .button_right,
-  .button_left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 189px;
-    background: transparent;
-    border: 1px solid #B4BDC3;
-    cursor: pointer;
-  }
-
-  .button_right img,
-  .button_left img {
-    width: 16px;
-    height: 16px;
-  }
-
-  .picture_img {
-    width: 490px;
-    height: 189px;
-  }
-
-  .button_left {
-    transform: rotate(-180deg);
-  }
-
-  .swiper-pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-
-  .swiper-pagination-bullet {
-    opacity: 0.5;
-    background-color: #fff;
-}
-
-.swiper-pagination-bullet-active {
-  opacity: 1;
-}
-}
-

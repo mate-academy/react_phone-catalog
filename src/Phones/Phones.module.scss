@@ -1,3 +1,70 @@
+.productList {
+  max-width: 639px;
+  max-height: 100vh;
+  margin: 16px auto;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 4fr);
+  gap: 16px;
+}
+
+.linkProduct {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.activePage {
+  background-color: #ff6347;
+  color: black;
+  border-color: #ff6347;
+}
+
+.select{
+  display: flex;
+  gap: 16px;
+}
+
+.selection {
+  max-width: 176px;
+  max-height: 40px;
+  border: 1px #B4BDC3;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+
+}
+
+.select__title {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+}
+
+
 @media screen and (min-width: 1200px){
   .productList {
     padding: 20px;
@@ -71,7 +138,7 @@
   }
 }
 
-@media screen and (max-width: 1199px){
+@media screen and (min-width: 640px){
   .productList {
     padding: 20px;
     max-width: 640px;
@@ -142,73 +209,4 @@
     line-height: 15.34px;
     text-align: left;
   }
-}
-
-@media screen and (max-width: 640px){
-  .productList {
-    max-width: 639px;
-    max-height: 100vh;
-    margin: 16px auto;
-  }
-
-  .productGrid {
-    display: grid;
-    grid-template-columns: repeat(1, 4fr);
-    gap: 16px;
-  }
-
-  .linkProduct {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-  }
-
-  .pagination button {
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    cursor: pointer;
-  }
-
-  .pagination button:hover {
-    background-color: black;
-    color: #fff;
-  }
-
-  .activePage {
-    background-color: #ff6347;
-    color: black;
-    border-color: #ff6347;
-  }
-
-  .select{
-    display: flex;
-    gap: 16px;
-  }
-
-  .selection {
-    max-width: 176px;
-    max-height: 40px;
-    border: 1px #B4BDC3;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    text-align: left;
-
-  }
-
-  .select__title {
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 15.34px;
-    text-align: left;
-  }
-
 }
