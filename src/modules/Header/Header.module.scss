@@ -1,0 +1,40 @@
+@use '../../utils/mixins' as mixin;
+
+.header {
+  margin: auto;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: 0 1px 0 #E2E6E9;
+  background-color: rgba(255, 255, 255, 1);
+
+  @include mixin.on-desktop {
+    height: 64px;
+    gap: 24px;
+  }
+
+  @include mixin.on-tablet {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  gap: 64px;
+  height: auto;
+  list-style: none;
+
+  &__link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}

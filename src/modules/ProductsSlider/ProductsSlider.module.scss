@@ -1,0 +1,47 @@
+@use '../../utils/mixins';
+
+.productSlider {
+  @include mixins.page-grid;
+
+  &__swiper {
+    width: 100%;
+    height: 100%;
+
+    grid-column: 1 / -1;
+
+    @include mixins.on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include mixins.on-tablet {
+      align-self: stretch;
+    }
+  }
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  height: 32px;
+  margin-bottom: 24px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.slider2-prev {
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(180, 189, 195, 1);
+  height: 100%;
+  width: 32px;
+}
+
+.slider2-next {
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(180, 189, 195, 1);
+  height: 100%;
+  width: 32px;
+}
+

@@ -1,0 +1,17 @@
+@use '../../utils/mixins' as mixin;
+
+.icons {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  width: fit-content;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 100%;
+  box-shadow: -1px 0 0 #E2E6E9;
+}
