@@ -9,6 +9,7 @@ import { addFavorite, isFavorite, removeFavorite } from 'utils/appLocalStorage';
 import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from 'store/ProductsContext';
 import { Product } from 'types/Product';
+import { resolveImagePath } from 'utils/appImagePath';
 
 type ProductCardProps = {
   product: Product;
@@ -82,7 +83,9 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className={styles.container} onClick={handleOnClick}>
       <div className={styles.container__content}>
-        {product.image && <img src={`/${product.image}`} alt="Product photo" />}
+        {product.image && (
+          <img src={resolveImagePath(product.image)} alt="Product photo" />
+        )}
         <span className={styles.container__content__name}>{product.name}</span>
         <div className={styles.container__content__price}>
           <span className={styles.container__content__price__item}>

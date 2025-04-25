@@ -10,7 +10,6 @@ import { CustomSelectorsArea } from './components/CustomSelectorsArea';
 import { AboutArea } from './components/AboutArea';
 import { TechSpecsArea } from './components/TechSpecsArea';
 import { useContext, useEffect, useState } from 'react';
-import { ProductsContext } from 'store/ProductsContext';
 import { AppSpinner } from 'components/AppSpinner';
 import { ProductDetailsContext } from 'store/ProductDetailsContext';
 import {
@@ -23,7 +22,7 @@ import { Product } from 'types/Product';
 
 export const ProductDetailsPage = () => {
   const { type, id } = useParams();
-  const { products } = useContext(ProductsContext);
+  const [products, setProducts] = useState<Product[]>([]);
   const { product, setProduct } = useContext(ProductDetailsContext);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -39,6 +38,8 @@ export const ProductDetailsPage = () => {
         setIsLoading(true);
         const data = await getProductDetails(id, type as Category);
         const productsList = await getProducts();
+
+        setProducts(productsList);
 
         const productFound = productsList.find(p => p.itemId === data.id);
 
