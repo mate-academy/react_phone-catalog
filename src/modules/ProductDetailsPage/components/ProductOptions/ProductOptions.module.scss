@@ -1,0 +1,211 @@
+@import '../../../../assets/global';
+
+.rightSide {
+  padding-top: 40px; /// change on table/desctop/large-dectop
+
+  @include on-tablet {
+    width: 237px;
+    padding: 0;
+  }
+
+  @include on-desctop {
+    width: 320px;
+  }
+
+  @include on-large-desctop {
+    width: 50%;
+  }
+}
+
+.titleSection {
+  font-family: Mont-semibold, sans-serif;
+  font-size: 12px;
+  color: $light-gray-color;
+}
+
+.colorList {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.colorItem {
+  display: block;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: 2px solid $hight-dark-color;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.colorButton {
+  border: 1px solid $midle-gray-color;
+  border-radius: 50%;
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    border: 1px solid $light-gray-color;
+  }
+}
+
+.colorItemActive {
+  border: 1px solid $light-color;
+  border-radius: 50%;
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  cursor: pointer;
+}
+
+.capacityProduct {
+  padding-top: 24px;
+  margin-top: 24px;
+  border-top: 1px solid $midle-gray-color;
+}
+
+.select {
+  border: 1px solid $midle-gray-color;
+  color: $light-color;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  background-color: transparent;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.selectActive {
+  background-color: $light-color;
+  color: $hight-dark-color;
+}
+
+.priceProduct {
+  padding-top: 32px;
+  margin-top: 24px;
+
+  border-top: 1px solid $midle-gray-color;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceRegular {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  color: $light-color;
+}
+
+.priceDiscount {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 22px;
+  text-decoration: line-through;
+
+  color: $light-gray-color;
+}
+
+.phoneFooter {
+  display: flex;
+  gap: 8px;
+
+  padding-top: 16px;
+}
+
+.addToCart {
+  display: block;
+  width: 100%;
+  background-color: $accent-color;
+  color: $light-color;
+  padding: 13px;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  border: none;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $accent-color-hover;
+  }
+}
+
+.addedCart {
+  display: block;
+  width: 100%;
+  color: $light-color;
+  padding: 9px;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  border: none;
+
+  text-align: center;
+
+  &:disabled {
+    background-color: #323542;
+  }
+}
+
+.favorite {
+  padding: 16px;
+  background-color: #323542;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+}
+
+.favouriteIcon {
+  display: flex;
+}
+
+.favoriteActive {
+  padding: 15px;
+  border: 1px solid #323542;
+  cursor: pointer;
+
+  // &:hover {
+  //   background-color: #4a4d58;
+  // }
+}
+
+.phoneDescription {
+  padding-top: 32px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phoneProperties {
+  display: flex;
+  justify-content: space-between;
+}
+
+.propertieTitle {
+  color: $light-gray-color;
+}
+
+.propertieDescription {
+  color: $light-color;
+}

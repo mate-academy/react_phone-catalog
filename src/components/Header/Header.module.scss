@@ -1,0 +1,175 @@
+@import '../../assets/global';
+
+.header {
+  box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid $midle-gray-color;
+  background-color: $background-color;
+}
+
+.logo {
+  padding: 13px 16px;
+
+  @include on-desctop {
+    padding: 18px 24px;
+  }
+}
+
+.logoIcon {
+  display: flex;
+  width: 64px;
+  height: 22px;
+
+  @include on-desctop {
+    width: 80px;
+    height: 28px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+    margin-left: 16px;
+  }
+
+  @include on-desctop {
+    margin-left: 24px;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 32px;
+
+  padding-right: 16px;
+
+  @include on-desctop {
+    gap: 64px;
+  }
+}
+
+.link,
+.active {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+
+  color: $light-gray-color;
+
+  padding-block: 18.5px;
+
+  transition: .3s;
+
+  @include on-desctop {
+    padding-block: 26px;
+  }
+}
+
+.link {
+
+  &:hover {
+    color: $light-color;
+  }
+}
+
+.active {
+  color: $light-color;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: $light-color;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+.options {
+  margin-left: auto;
+
+  display: flex;
+}
+
+.favourite {
+  border-left: 1px solid $midle-gray-color;
+  display: none;
+
+  padding: 16px;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-desctop {
+    padding: 24px;
+  }
+}
+
+.bag {
+  border-left: 1px solid $midle-gray-color;
+  display: none;
+
+  padding: 16px;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-desctop {
+    padding: 24px;
+  }
+}
+
+.containerIcon {
+  position: relative;
+}
+
+.icon {
+  display: flex;
+}
+
+.countProduct {
+  width: 14px;
+  height: 14px;
+  background-color: $red-color;
+  border: 1px solid $hight-dark-color;
+
+  border-radius: 50%;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $light-color;
+
+  position: absolute;
+
+  top: -10px;
+  left: 7px;
+}
+
+.burgerMenu {
+  padding: 16px;
+  display: flex;
+  border-left: 1px solid $midle-gray-color;
+
+  @include on-tablet {
+    display: none;
+  }
+}

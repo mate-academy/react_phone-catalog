@@ -1,0 +1,191 @@
+@import '../../assets/global';
+
+.card {
+  color: $light-color;
+  padding: 32px;
+  background-color: $hight-dark-color;
+  box-sizing: border-box;
+
+  // width: 212px;
+  width: 100%;
+  height: 439px;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desctop {
+    width: 272px;
+    height: 506px;
+  }
+
+  transition: 0.3s;
+}
+
+.phoneImg {
+  height: 129px;
+  display: block;
+  margin: 0 auto;
+
+  @include on-tablet {
+    height: 202px;
+  }
+
+  @include on-desctop {
+    height: 196px;
+  }
+
+  transition: .3s;
+
+  &:hover {
+    scale: 1.1;
+  }
+}
+
+.phoneTitle {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+
+  padding-top: 24px; /// LOOKs
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.phonePrice {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+
+  padding-top: 8px;
+}
+
+.phonePriceDiscount {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+
+  padding-top: 8px;
+
+  color: $light-gray-color;
+  text-decoration: line-through;
+}
+
+.phoneDescription {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  padding-top: 16px;
+  margin-top: 8px;
+
+  border-top: 1px solid $midle-gray-color;
+}
+
+.phoneProperties {
+  display: flex;
+  justify-content: space-between;
+}
+
+.propertieTitle {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: $light-gray-color;
+}
+
+.propertieDescription {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: $light-color;
+  text-transform: uppercase;
+
+  text-align: right;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+
+.phoneFooter {
+  display: flex;
+  gap: 8px;
+
+  padding-top: 16px;
+}
+
+.addToCart {
+  display: block;
+  width: 100%;
+  height: 40px; ///
+  background-color: $accent-color;
+  color: $light-color;
+  padding: 9px;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  border: none;
+
+  text-align: center;
+
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $accent-color-hover;
+  }
+}
+
+.addedCart {
+  display: block;
+  width: 100%;
+  height: 40px; ///
+  color: $light-color;
+  padding: 9px;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  border: none;
+
+  text-align: center;
+
+  &:disabled {
+    background-color: #323542;
+  }
+}
+
+.favorite {
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  background-color: #323542;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+}
+
+.favouriteIcon {
+  display: flex;
+}
+
+.favoriteActive {
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  border: 1px solid #323542;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+}
