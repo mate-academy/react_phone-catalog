@@ -79,6 +79,7 @@
         width: 100%;
         max-width: 288px;
         height: auto;
+        cursor: pointer;
 
         @include tablet {
           max-width: 368px;

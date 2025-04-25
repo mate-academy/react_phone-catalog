@@ -82,7 +82,10 @@ export const Selection: React.FC<Props> = ({
               {key === 'sortBy' ? 'Sort by' : 'Items on page'}
             </p>
 
-            <div className="selector__selection">
+            <div
+              className="selector__selection"
+              onClick={() => handleSelectionOpen(key)}
+            >
               <div
                 className={classNames('selector__current-option', {
                   'selector__current-option__focused': isSelecting[key],
@@ -95,7 +98,6 @@ export const Selection: React.FC<Props> = ({
                     'selector__choose-option__focused':
                       canSelectionTransform[key],
                   })}
-                  onClick={() => handleSelectionOpen(key)}
                 >
                   <svg
                     width="16"

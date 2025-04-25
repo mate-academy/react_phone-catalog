@@ -136,6 +136,7 @@
         height: 100%;
         border-radius: 50%;
         box-sizing: border-box;
+        cursor: pointer;
 
         &-wrap {
           border: 1px solid $gray-elements;
@@ -213,6 +214,7 @@
         box-sizing: border-box;
         border: 1px solid $icons-placeholders;
         color: $gray-primary;
+        cursor: pointer;
 
         @include text14;
 

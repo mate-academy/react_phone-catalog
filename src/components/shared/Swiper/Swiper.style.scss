@@ -21,6 +21,7 @@
     background-repeat: no-repeat;
     background-color: white;
     border: 1px solid #b4bdc3;
+    cursor: pointer;
 
     @include tablet {
       display: block;
@@ -51,6 +52,7 @@
     background-repeat: no-repeat;
     background-color: white;
     border: 1px solid #b4bdc3;
+    cursor: pointer;
 
     @include tablet {
       display: block;
@@ -79,6 +81,7 @@
     background-color: $gray-primary;
     width: 14px;
     height: 4px;
+    cursor: pointer;
   }
 
   &__slide {
@@ -88,6 +91,7 @@
     width: 100%;
     height: 100%;
     max-height: 189px;
+    cursor: pointer;
 
     @include desktop {
       max-height: 400px;
@@ -173,6 +177,7 @@
       width: 100%;
       height: 49px;
 
+
       @include tablet {
         height: auto;
         max-width: 35px;
@@ -191,6 +196,7 @@
         box-sizing: border-box;
         width: 49px  !important;
         height: 49px  !important;
+        cursor: pointer;
 
         @include tablet {
           height: auto  !important;

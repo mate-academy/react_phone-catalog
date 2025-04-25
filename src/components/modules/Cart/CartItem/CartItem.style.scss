@@ -8,6 +8,7 @@
   border: 1px solid $gray-elements;
   padding: 16px;
   box-sizing: border-box;
+  cursor: pointer;
 
   @include tablet {
     flex-direction: row;
@@ -92,6 +93,7 @@
       align-items: center;
       justify-content: center;
       padding: 8px;
+      cursor: pointer;
 
       &--delete,
       &--add {
