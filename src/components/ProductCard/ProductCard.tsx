@@ -9,14 +9,14 @@ import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from 'store/ProductsContext';
 import { Product } from 'types/Product';
 import { resolveImagePath } from 'utils/appImagePath';
-import { useSafeNavigate } from 'hooks/useSafeNavigate';
+import { useNavigate } from 'react-router-dom';
 
 type ProductCardProps = {
   product: Product;
 };
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const navigate = useSafeNavigate();
+  const navigate = useNavigate();
 
   const {
     products,

@@ -2,7 +2,8 @@
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  min-width: 320px;
+  grid-template-columns: 2fr 0.5fr;
 
   &__id {
     font-size: 12px;

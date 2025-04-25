@@ -25,6 +25,8 @@
   }
 
   &__main {
+    max-width: 400px;
+    min-height: 400px;
     aspect-ratio: 1;
 
     img {
