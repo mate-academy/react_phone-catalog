@@ -31,7 +31,7 @@ export const Modal: React.FC<Props> = ({
     }
 
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isActive]);
+  }, [isActive, setModalWindow]);
 
   const handleClearCart = () => {
     clearCart();

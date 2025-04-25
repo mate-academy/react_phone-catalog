@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Product } from '../types/Products';
 import React, {
   createContext,
@@ -66,7 +67,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         return prev.filter(item => item.id !== product.id);
       }
 
-      // return [...prev, product]
       return [...prev, { ...product, isDiscount }];
     });
   };
@@ -87,7 +87,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       setCart,
       clearCart,
     }),
-    [cart, favourite, isOpenMenu],
+    [addToCart, cart, favourite, isOpenMenu],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
