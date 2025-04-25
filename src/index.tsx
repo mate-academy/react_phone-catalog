@@ -7,9 +7,10 @@ import { ProductsPage } from './modules/ProductsPage';
 import { CartPage } from './modules/CartPage';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { NotFoundPage } from 'modules/NotFoundPage';
+import { APP_BASE_PATH } from 'config/config';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <Router>
+  <Router basename={APP_BASE_PATH}>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
