@@ -6,6 +6,10 @@ export const useSafeNavigate = () => {
   return (path: string) => {
     const cleanPath = path.replace(/(\/[a-z-]+)\/\1/g, '$1');
 
-    navigate(cleanPath);
+    if (cleanPath !== path) {
+      navigate(cleanPath);
+    } else {
+      navigate(path);
+    }
   };
 };
