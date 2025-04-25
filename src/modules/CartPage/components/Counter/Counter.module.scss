@@ -1,0 +1,29 @@
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
+@use '@styles/extends' as *;
+
+.counter {
+  display: flex;
+
+  &__value,
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 32px;
+    aspect-ratio: 1;
+    position: relative;
+  }
+
+  &__count {
+    @include body-text;
+
+    &--skeleton {
+      width: 20px;
+      height: 20px;
+
+      @extend %skeleton;
+    }
+  }
+}

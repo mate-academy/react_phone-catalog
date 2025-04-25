@@ -1,0 +1,44 @@
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
+
+.cart-page {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    row-gap: 32px;
+
+    @include page-grid;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__message,
+  &__cart-list {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / -9;
+    }
+  }
+
+  &__message {
+    justify-self: center;
+
+    &--image {
+      width: 30%;
+    }
+  }
+
+  &__checkout {
+    align-self: start;
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: -9 / -1;
+    }
+  }
+}
