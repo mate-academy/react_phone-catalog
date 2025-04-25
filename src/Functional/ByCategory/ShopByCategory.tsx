@@ -4,7 +4,7 @@ import './ShopByCategory.scss';
 export default function ShopByCategory() {
   return (
     <div className="shop">
-      <h1 className="shop__title">Shop by category</h1>
+      <h2 className="shop__title">Shop by category</h2>
       <div className="shop__main">
         <div className="shop__container">
           <Link to="/phones">

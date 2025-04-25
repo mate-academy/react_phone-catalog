@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/indent */
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
@@ -9,6 +10,8 @@ import { YourComponent } from './YourComponent';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react'; // Use Swiper from swiper/react
+import { Navigation } from 'swiper/modules';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -210,11 +213,9 @@ export const ProductDetailsPage = () => {
     return '#/accessories';
   };
 
-  const relatedProducts = allProducts
-    .filter(
-      item => item.category === product?.category && item.id !== product?.id,
-    )
-    .slice(0, 4);
+  const relatedProducts = allProducts.filter(
+    item => item.category === product?.category && item.id !== product?.id,
+  );
 
   if (!product) {
     return <div className="product-details">Loading...</div>;
@@ -404,130 +405,166 @@ export const ProductDetailsPage = () => {
 
       <div className="related-products">
         <h2>You may also like</h2>
+        <div className="related-products__nav">
+          <button className="brand__nav-btn brand__nav-btn--prev swiper-button-p">
+            {'<'}
+          </button>
+          <button className="brand__nav-btn brand__nav-btn--next swiper-button-n">
+            {'>'}
+          </button>
+        </div>
         <div className="related-products__grid">
           {relatedProducts.length === 0 ? (
             <p>No related products found.</p>
           ) : (
-            relatedProducts.map(item => (
-              <div key={item.id} className="related-products__card">
-                <Link to={`/products/${item.id}`} key={item.id}>
-                  <img
-                    src={
-                      imageError[`/${item.images[0]}`]
-                        ? '/public/img/page-not-found.png'
-                        : `/${item.images[0]}`
-                    }
-                    alt={item.name}
-                    className="related-products__card-image"
-                    onError={() => handleImageError(`/${item.images[0]}`)}
-                  />
-                  <h3 className="related-products__card-title">{item.name}</h3>
-                  <div className="related-products__card-prices">
-                    <span className="related-products__card-price">
-                      ${item.priceDiscount}
-                    </span>
-                    <span className="related-products__card-price--old">
-                      ${item.priceRegular}
-                    </span>
-                  </div>
-                  <div className="related-products__card-specs">
-                    {'screen' in item && (
-                      <p>
-                        <span className="related-products__card-spec-label">
-                          Screen:
-                        </span>
-                        <span className="related-products__card-spec-value">
-                          {item.screen}
-                        </span>
-                      </p>
-                    )}
-                    {'ram' in item && (
-                      <p>
-                        <span className="related-products__card-spec-label">
-                          RAM:
-                        </span>
-                        <span className="related-products__card-spec-value">
-                          {item.ram}
-                        </span>
-                      </p>
-                    )}
-                    {'capacity' in item && (
-                      <p>
-                        <span className="related-products__card-spec-label">
-                          Capacity:
-                        </span>
-                        <span className="related-products__card-spec-value">
-                          {item.capacity}
-                        </span>
-                      </p>
-                    )}
-                  </div>
-                </Link>
-                <div className="related-products__card-actions">
-                  <button
-                    className={`related-products__card-btn related-products__card-btn--add ${
-                      cart.some(
-                        cartItem =>
-                          cartItem.id === item.id &&
-                          cartItem.color === item.color &&
-                          ('capacity' in item
-                            ? cartItem.capacity === item.capacity
-                            : true),
-                      )
-                        ? 'added'
-                        : ''
-                    }`}
-                    onClick={() =>
-                      addToCart({
-                        id: item.id,
-                        name: item.name,
-                        price: item.priceDiscount,
-                        image: `/${item.images[0]}`,
-                        color: item.color,
-                        capacity:
-                          'capacity' in item ? item.capacity : undefined,
-                        quantity: 1,
-                      })
-                    }
-                    disabled={cart.some(
-                      cartItem =>
-                        cartItem.id === item.id &&
-                        cartItem.color === item.color &&
-                        ('capacity' in item
-                          ? cartItem.capacity === item.capacity
-                          : true),
-                    )}
-                  >
-                    {cart.some(
-                      cartItem =>
-                        cartItem.id === item.id &&
-                        cartItem.color === item.color &&
-                        ('capacity' in item
-                          ? cartItem.capacity === item.capacity
-                          : true),
-                    )
-                      ? 'Added to cart'
-                      : 'Add to cart'}
-                  </button>
-                  <button
-                    className={`related-products__card-btn related-products__card-btn--favorite ${
-                      favorites.includes(item.id) ? 'favorite--active' : ''
-                    }`}
-                    onClick={() => toggleFavorite(item.id)}
-                  >
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={16}
+              navigation={{
+                nextEl: '.swiper-button-n',
+                prevEl: '.swiper-button-p',
+              }}
+              breakpoints={{
+                320: { slidesPerView: 2, spaceBetween: 8 },
+                480: { slidesPerView: 3, spaceBetween: 12 },
+                768: { slidesPerView: 4, spaceBetween: 16 },
+                1024: { slidesPerView: 4, spaceBetween: 16 },
+              }}
+              className="brand__swiper"
+            >
+              {relatedProducts.slice(10, 18).map(relatedItem => (
+                <SwiperSlide key={relatedItem.id} className="brand__card">
+                  <Link to={`/products/${relatedItem.id}`}>
                     <img
                       src={
-                        favorites.includes(item.id)
-                          ? '/figmaLogo/ActiveHeart.svg'
-                          : '/figmaLogo/HeartLove.svg'
+                        imageError[`/${relatedItem.images[0]}`]
+                          ? '/public/img/page-not-found.png'
+                          : `/${relatedItem.images[0]}`
                       }
-                      alt="Favorite"
-                      className="related-products__card-btn-icon"
+                      alt={relatedItem.name}
+                      className="related-products__card-image"
+                      onError={() =>
+                        handleImageError(`/${relatedItem.images[0]}`)
+                      }
                     />
-                  </button>
-                </div>
-              </div>
-            ))
+                    <h3 className="related-products__card-title">
+                      {relatedItem.name}
+                    </h3>
+                    <div className="related-products__card-prices">
+                      <span className="related-products__card-price">
+                        ${relatedItem.priceDiscount}
+                      </span>
+                      <span className="related-products__card-price--old">
+                        ${relatedItem.priceRegular}
+                      </span>
+                    </div>
+                    <div className="related-products__card-specs">
+                      {'screen' in relatedItem && (
+                        <p>
+                          <span className="related-products__card-spec-label">
+                            Screen:
+                          </span>
+                          <span className="related-products__card-spec-value">
+                            {relatedItem.screen}
+                          </span>
+                        </p>
+                      )}
+                      {'ram' in relatedItem && (
+                        <p>
+                          <span className="related-products__card-spec-label">
+                            RAM:
+                          </span>
+                          <span className="related-products__card-spec-value">
+                            {relatedItem.ram}
+                          </span>
+                        </p>
+                      )}
+                      {'capacity' in relatedItem && (
+                        <p>
+                          <span className="related-products__card-spec-label">
+                            Capacity:
+                          </span>
+                          <span className="related-products__card-spec-value">
+                            {relatedItem.capacity}
+                          </span>
+                        </p>
+                      )}
+                    </div>
+                  </Link>
+                  <div className="related-products__card-actions">
+                    <button
+                      className={`related-products__card-btn related-products__card-btn--add ${
+                        cart.some(
+                          cartItem =>
+                            cartItem.id === relatedItem.id &&
+                            cartItem.color === relatedItem.color &&
+                            ('capacity' in relatedItem
+                              ? cartItem.capacity === relatedItem.capacity
+                              : true),
+                        )
+                          ? 'added'
+                          : ''
+                      }`}
+                      onClick={e => {
+                        e.stopPropagation();
+                        addToCart({
+                          id: relatedItem.id,
+                          name: relatedItem.name,
+                          price: relatedItem.priceDiscount,
+                          image: `/${relatedItem.images[0]}`,
+                          color: relatedItem.color,
+                          capacity:
+                            'capacity' in relatedItem
+                              ? relatedItem.capacity
+                              : undefined,
+                          quantity: 1,
+                        });
+                      }}
+                      disabled={cart.some(
+                        cartItem =>
+                          cartItem.id === relatedItem.id &&
+                          cartItem.color === relatedItem.color &&
+                          ('capacity' in relatedItem
+                            ? cartItem.capacity === relatedItem.capacity
+                            : true),
+                      )}
+                    >
+                      {cart.some(
+                        cartItem =>
+                          cartItem.id === relatedItem.id &&
+                          cartItem.color === relatedItem.color &&
+                          ('capacity' in relatedItem
+                            ? cartItem.capacity === relatedItem.capacity
+                            : true),
+                      )
+                        ? 'Added to cart'
+                        : 'Add to cart'}
+                    </button>
+                    <button
+                      className={`related-products__card-btn related-products__card-btn--favorite ${
+                        favorites.includes(relatedItem.id)
+                          ? 'favorite--active'
+                          : ''
+                      }`}
+                      onClick={e => {
+                        e.stopPropagation();
+                        toggleFavorite(relatedItem.id);
+                      }}
+                    >
+                      <img
+                        src={
+                          favorites.includes(relatedItem.id)
+                            ? '/figmaLogo/ActiveHeart.svg'
+                            : '/figmaLogo/HeartLove.svg'
+                        }
+                        alt="Favorite"
+                        className="related-products__card-btn-icon"
+                      />
+                    </button>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           )}
         </div>
       </div>

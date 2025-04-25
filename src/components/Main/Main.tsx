@@ -8,7 +8,7 @@ export const Main = () => {
   return (
     <main>
       <div className="main">
-        <h1 className="main__title">Welcome to Nice Gadgets store!</h1>
+        <h2 className="main__title">Welcome to Nice Gadgets store!</h2>
       </div>
       <ImageSlider />
       <NewBrand />

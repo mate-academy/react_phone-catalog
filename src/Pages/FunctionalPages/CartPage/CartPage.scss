@@ -138,7 +138,7 @@
     color: var(--text-color);
     padding: 8px 16px;
     align-self: flex-start;
-    
+
     @include button-base;
   }
 }
@@ -201,7 +201,7 @@
 
     padding: 8px;
     width: 212px;
-    height: 443px;
+    min-height: 443px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

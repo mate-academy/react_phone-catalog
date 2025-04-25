@@ -393,8 +393,16 @@
     padding-bottom: 8px;
   }
 
+  &__nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
   &__grid {
-    display: grid;
+    position: relative;
+    width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
     gap: 16px;
 
@@ -427,7 +435,6 @@
     background-color: #2a2a3e;
     border-radius: 10px;
     padding: 8px;
-    width: 212px;
     height: 470px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;

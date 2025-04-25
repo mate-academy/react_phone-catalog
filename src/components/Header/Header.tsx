@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
 import { useCart } from '../../Functional/CartContext/CartContext';
+import { Aside } from '../Aside/Aside';
 
 export const Header = () => {
   const { cart, favorites } = useCart();
@@ -66,8 +67,13 @@ export const Header = () => {
               )}
             </Link>
           </div>
+
+          <div className="header__burger">
+            <Link to="#menu" className="header__burger-menu"></Link>
+          </div>
         </div>
       </div>
+      <Aside />
     </header>
   );
 };
