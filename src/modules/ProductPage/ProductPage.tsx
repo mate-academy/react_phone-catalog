@@ -19,7 +19,7 @@ export const ProductPage = () => {
   return (
     <main className={styles.productPage}>
       <div className={styles.productPage__container}>
-        <CurrentPage products={products} />
+        <CurrentPage showProductsCount={products.length} />
         <ProductCatalog products={products} />
       </div>
     </main>

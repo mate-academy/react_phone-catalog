@@ -6,8 +6,13 @@ import { ProductInfo } from './components/ProductInfo';
 import { ProductOverview } from './components/ProductOverview';
 
 import { SectionTitles } from '../../shared/constants/sectionTitles';
+import { useContext } from 'react';
+import { ProductContext } from '../../shared/store/GlobalProvider';
+import { SliderId } from '../../shared/constants/sliderId';
 
 export const ProductDetailsPage = () => {
+  const { data } = useContext(ProductContext);
+
   return (
     <main className={styles.details}>
       <div className={styles.details__container}>
@@ -15,7 +20,11 @@ export const ProductDetailsPage = () => {
         <ProductOverview />
         <ProductInfo />
       </div>
-      <ProductsSlider title={SectionTitles.AlsoLike} />
+      <ProductsSlider
+        title={SectionTitles.AlsoLike}
+        products={data}
+        sliderId={SliderId.Like}
+      />
     </main>
   );
 };

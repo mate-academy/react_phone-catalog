@@ -4,13 +4,12 @@ import { useLocation } from 'react-router-dom';
 import styles from './CurrentPage.module.scss';
 
 import { getPageTitle } from '../../utils/getPageTitle';
-import { AllProducts } from '../../types/AllProducts/AllProducts';
 
 type Props = {
-  products: AllProducts[];
+  showProductsCount?: number;
 };
 
-export const CurrentPage: React.FC<Props> = ({ products }) => {
+export const CurrentPage: React.FC<Props> = ({ showProductsCount }) => {
   const { pathname } = useLocation();
   const normalizedPathName = pathname.replace('/', '');
 
@@ -41,7 +40,9 @@ export const CurrentPage: React.FC<Props> = ({ products }) => {
         </div>
       </div>
       <h1 className={styles.currentPage__productTitle}>{title}</h1>
-      <p className={styles.currentPage__items}>{`${products.length} models`}</p>
+      <p
+        className={styles.currentPage__items}
+      >{`${showProductsCount} models`}</p>
     </div>
   );
 };

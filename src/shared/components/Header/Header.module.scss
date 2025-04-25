@@ -137,6 +137,7 @@
 
   &__favoritesLink {
     display: none;
+    position: relative;
 
     @include on-tablet {
       display: flex;
@@ -168,6 +169,7 @@
 
   &__cartLink {
     display: none;
+    position: relative;
 
     @include on-tablet {
       display: flex;
@@ -194,6 +196,38 @@
 
     &:hover {
       box-shadow: 0 0 2px 1px $color-primary;
+    }
+  }
+
+  &__cartBadge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    top: 10px;
+    right: 10px;
+
+    font-size: 9px;
+    font-weight: 400;
+    color: $color-white;
+    text-align: center;
+
+    border: 1px solid $color-white;
+    border-radius: 50%;
+
+    background-color: #eb5757;
+
+    @include on-desktop {
+      top: 17px;
+      right: 17px;
+    }
+
+    @include on-desktop-extra {
+      top: 17px;
+      right: 17px;
     }
   }
 

@@ -1,10 +1,14 @@
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
 import { getClassLink } from '../../utils/activeClassName';
+import { FavoritesStateContext } from '../../store/FavoritesProvider';
 
 export const Header = () => {
+  const favoritesProduct = useContext(FavoritesStateContext);
+
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
@@ -93,6 +97,11 @@ export const Header = () => {
               alt="Відкрити улюблені товари"
               className={styles.header__favoritesImg}
             />
+            {favoritesProduct.length > 0 && (
+              <span className={styles.header__cartBadge}>
+                {favoritesProduct.length}
+              </span>
+            )}
           </NavLink>
           <NavLink
             to="/cart"
@@ -109,6 +118,7 @@ export const Header = () => {
               alt="Відкрити корзину"
               className={styles.header__cartImg}
             />
+            <span className={styles.header__cartBadge}></span>
           </NavLink>
           <button
             className={getClassLink({
