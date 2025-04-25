@@ -2,9 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  // base: '/react_phone-catalog/',
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/react_phone-catalog/' : '/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -19,4 +18,4 @@ export default defineConfig({
       hooks: path.resolve(__dirname, 'src/hooks')
     },
   },
-})
+}));
