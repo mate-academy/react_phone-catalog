@@ -28,7 +28,7 @@ export const Aside = () => {
           </Link>
         </nav>
       </div>
-      <div className="menu__footer">
+      <div className="menu__bottom">
         <div className="menu__heart">
           <a href="#" className="menu__heart__top"></a>
         </div>

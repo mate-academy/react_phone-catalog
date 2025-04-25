@@ -69,11 +69,11 @@ export const Header = () => {
           </div>
 
           <div className="header__burger">
-            <Link to="#menu" className="header__burger-menu"></Link>
+            <Link to="menu" className="header__burger-menu"></Link>
           </div>
         </div>
+        <Aside />
       </div>
-      <Aside />
     </header>
   );
 };
