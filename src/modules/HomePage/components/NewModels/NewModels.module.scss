@@ -1,0 +1,5 @@
+@use '../../../../utils/mixins.scss' as *;
+
+.newModels {
+  @include content-padding-inline;
+}
