@@ -1,0 +1,36 @@
+@import '../../styles/main';
+
+.detailsPage {
+  @include content-padding-inline;
+
+  &__title {
+    margin-bottom: 32px;
+    font-size: 22px;
+    font-family: Mont-Bold, sans-serif;
+
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: var(--color-gray-primary);
+
+    @include on-tablet {
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+  }
+
+  &__error-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-top: 40px;
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--color-gray-primary);
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
