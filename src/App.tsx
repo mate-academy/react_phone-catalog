@@ -5,8 +5,8 @@ export const App = () => {
   return (
     <>
       <GlobalProvider>
-        <AppRoutes />
         <h1 className="visually-hidden">Product Catalog</h1>
+        <AppRoutes />
       </GlobalProvider>
     </>
   );
