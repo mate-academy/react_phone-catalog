@@ -1,1 +1,33 @@
-// not empty
+@import "./assets/scss/variables";
+
+html {
+  overflow: auto;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: $black;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  @include font-body;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  color: $white;
+  min-height: 100vh;
+}
+
+.visually-hidden {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+}
