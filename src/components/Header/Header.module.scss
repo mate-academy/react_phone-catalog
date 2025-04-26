@@ -1,0 +1,150 @@
+@import '../../styles/utils';
+
+.container {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-white;
+  box-shadow: 0 1px 0 0 $color-elements;
+  z-index: 1;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 64px 0 24px;
+  }
+}
+
+.burger {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: none;
+  border-left: 1px solid $color-elements;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.logo > svg {
+  @include on-tablet {
+    margin-top: -4px;
+  }
+}
+
+.leftSide,
+.rightSide {
+  display: flex;
+  width: 100%;
+
+  @include on-tablet {
+    width: auto;
+  }
+}
+
+.leftSide {
+  @include on-mobile {
+    justify-content: space-between;
+  }
+}
+
+.rightSide {
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.searchWrapper {
+  display: none;
+
+  @include on-desktop {
+    display: flex;
+    align-items: center;
+
+    & span {
+      position: absolute;
+      margin-left: 16px;
+    }
+  }
+}
+
+.search {
+  height: 100%;
+  padding-left: 44px;
+  color: $color-secondary;
+
+  @include bodytext14;
+
+  border: none;
+  border-left: 1px solid $color-elements;
+  outline: none;
+}
+
+.icon {
+  margin: 24px;
+}
+
+.favourite,
+.cart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  background-color: $color-white;
+  box-shadow: -1px 0 0 0 $color-elements;
+  border-bottom: 3px solid transparent;
+  transition: border-bottom $hover-delay;
+
+  &:hover {
+    border-bottom: 3px solid $color-primary;
+  }
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.active {
+  border-bottom: 3px solid $color-primary;
+}
+
+.counter {
+  position: absolute;
+  top: 18px;
+  left: 33px;
+  width: 14px;
+  height: 14px;
+  color: white;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 12.5px;
+  text-align: center;
+  background-color: $color-red;
+  border: 1px solid white;
+  border-radius: 50%;
+
+  @include on-tablet {
+    top: 10px;
+    left: 24px;
+  }
+
+  @include on-desktop {
+    top: 18px;
+    left: 33px;
+  }
+}
