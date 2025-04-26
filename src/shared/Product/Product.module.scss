@@ -1,0 +1,137 @@
+@use '../../styles/utils' as utils;
+
+.product {
+  padding: 32px;
+  background-color: utils.$color-surface-1;
+
+  &__content {
+    @extend %flex-column;
+
+    gap: 8px;
+  }
+
+  &__img {
+    @extend %flex-center;
+
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+    }
+  }
+
+  &__title {
+    font-family: utils.$font-main;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 21px;
+    color: utils.$color-white;
+  }
+
+  &__price {
+    font-family: utils.$font-main;
+    font-size: 22px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 140%;
+    color: utils.$color-white;
+  }
+
+  &__line {
+    width: 100%;
+    border: utils.$default-border;
+  }
+
+  &__info {
+    &Row {
+      @extend %flex-between-center;
+
+      padding: 8px 0;
+    }
+
+    &Title {
+      font-family: utils.$font-main;
+      font-size: 12px;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 15px;
+      color: utils.$color-secondary;
+    }
+
+    &Value {
+      font-family: utils.$font-main;
+      font-size: 12px;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 15px;
+      color: utils.$color-white;
+      text-align: right;
+    }
+  }
+
+  &__buttons {
+    @extend %flex-between-center;
+
+    gap: 8px;
+  }
+
+  &__addToCart {
+    cursor: pointer;
+
+    width: 100%;
+    padding: 10px;
+    border: none;
+
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 21px;
+    color: utils.$color-white;
+
+    appearance: none;
+    background-color: utils.$color-accent;
+
+    transition: background-color utils.$animation-duration;
+
+    &:hover {
+      background-color: utils.$color-accent-hover;
+    }
+  }
+
+  &__like {
+    cursor: pointer;
+
+    padding: 12px;
+    border: none;
+
+    appearance: none;
+    background-color: utils.$color-surface-2;
+
+    transition: background-color utils.$animation-duration;
+
+    a {
+      @extend %flex-center;
+
+      align-items: center;
+      width: 100%;
+      height: 100%;
+
+      img {
+        display: block;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &:hover {
+      background-color: utils.$color-icons;
+    }
+  }
+}

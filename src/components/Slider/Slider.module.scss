@@ -1,0 +1,104 @@
+@use '../../styles/utils' as utils;
+
+.wrapper {
+  position: relative;
+
+  .slider {
+    width: 100%;
+    max-height: 400px;
+
+    @include utils.on-tablet {
+      width: calc(100% - 100px);
+      height: 300px;
+    }
+
+    @include utils.on-desktop {
+      height: 400px;
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+
+      @include utils.on-desktop {
+        height: 400px;
+      }
+    }
+  }
+
+  .slider__controlsPrev,
+  .slider__controlsNext {
+    display: none;
+
+    @include utils.on-tablet {
+      cursor: pointer;
+
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      bottom: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+
+      background-color: utils.$color-surface-2;
+
+      transition: background-color utils.$animation-duration;
+
+      &:hover {
+        background-color: utils.$color-icons;
+      }
+
+      & .slider__prev,
+      & .slider__next {
+        width: 6px;
+        height: 9px;
+      }
+    }
+  }
+
+  .slider__controlsPrev {
+    left: 0;
+
+    .slider__prev {
+      background-image: url('img/icons/arrow-left.svg');
+    }
+  }
+
+  .slider__controlsNext {
+    right: 0;
+
+    .slider__next {
+      background-image: url('img/icons/arrow-right.svg');
+    }
+  }
+}
+
+.slider__pagination {
+  @extend %flex-center;
+
+  gap: 8px;
+  margin-top: 16px;
+
+  span {
+    cursor: pointer;
+
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+
+    background-color: utils.$color-elements;
+
+    transition: background-color 0.3s;
+  }
+
+  span,
+  .swiper-pagination-bullet-active {
+    background-color: utils.$color-white;
+  }
+}

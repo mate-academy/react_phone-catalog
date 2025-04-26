@@ -1,0 +1,11 @@
+@use './utils' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background-color: $color-black;
+}

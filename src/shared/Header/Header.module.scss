@@ -1,0 +1,352 @@
+@use '../../styles/utils' as utils;
+
+.header {
+  position: relative;
+  z-index: 10;
+  padding: 0 0 0 16px;
+  border-bottom: utils.$default-border;
+
+  &__content {
+    @extend %flex-between-center;
+
+    @include utils.on-tablet {
+      gap: 32px;
+      justify-content: flex-start;
+    }
+
+    @include utils.on-desktop {
+      gap: 48px;
+    }
+  }
+
+  &__logo {
+    a {
+      display: block;
+
+      img {
+        display: inline-block;
+        width: 64px;
+        height: 22px;
+
+        @include utils.on-desktop {
+          width: 80px;
+          height: 28px;
+        }
+      }
+    }
+  }
+
+  &__logo--mobile {
+    padding: 10px 16px;
+    border-bottom: utils.$default-border;
+
+    .header__logo {
+      display: inline-block;
+      width: 62px;
+      height: 100%;
+    }
+
+    @include utils.on-tablet {
+      display: none;
+    }
+  }
+
+  &__burger {
+    cursor: pointer;
+
+    z-index: 10;
+
+    display: flex;
+
+    padding: 15px;
+    border-left: utils.$default-border;
+
+    transition: background-color utils.$animation-duration;
+
+    @include utils.on-tablet {
+      display: none;
+    }
+
+    &:hover {
+      background-color: utils.$color-icons;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+
+    position: relative;
+
+    display: inline-block;
+
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    border: none;
+
+    appearance: none;
+    background: none;
+
+    transition: all utils.$animation-duration;
+
+    span {
+      position: absolute;
+      left: 0;
+
+      display: inline-block;
+
+      width: 100%;
+      height: 2px;
+      border-radius: 4px;
+
+      background-color: #fff;
+
+      transition: all utils.$animation-duration;
+
+      &:nth-of-type(1) {
+        top: 0;
+      }
+
+      &:nth-of-type(2) {
+        top: 6px;
+
+        &::after {
+          content: '';
+
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          width: 100%;
+          height: 2px;
+          border-radius: 4px;
+
+          background-color: #fff;
+
+          transition: all utils.$animation-duration;
+        }
+      }
+
+      &:nth-of-type(3) {
+        bottom: 2px;
+      }
+    }
+
+    &.active {
+      span:nth-of-type(1) {
+        transform: translate(50%) scale(0);
+      }
+
+      span:nth-of-type(2) {
+        transform: rotate(45deg);
+
+        &::after {
+          transform: rotate(90deg);
+        }
+      }
+
+      span:nth-of-type(3) {
+        transform: translate(-50%) scale(0);
+      }
+    }
+  }
+
+  &__nav {
+    @extend %flex-column;
+
+    pointer-events: none;
+
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100vh;
+
+    opacity: 0;
+    background-color: utils.$color-black;
+
+    transition:
+      transform 0.6s ease,
+      opacity 0.6s ease;
+
+    &--active {
+      pointer-events: auto;
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    ul {
+      @extend %flex-column;
+
+      gap: 26px;
+      align-items: center;
+      justify-content: center;
+
+      @include utils.on-tablet {
+        flex-direction: row;
+        gap: 32px;
+      }
+
+      @include utils.on-desktop {
+        gap: 64px;
+      }
+
+      li {
+        position: relative;
+        list-style: none;
+      }
+    }
+
+    .header__actions {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      border-top: utils.$default-border;
+
+      @include utils.on-tablet {
+        width: auto;
+        border-top: none;
+      }
+    }
+
+    .header__cart {
+      border-left: utils.$default-border;
+    }
+
+    .header__favorites {
+      border-left: utils.$default-border;
+    }
+
+    .header__cart,
+    .header__favorites {
+      cursor: pointer;
+
+      position: relative;
+
+      width: 100%;
+      border: none;
+
+      appearance: none;
+      background-color: transparent;
+
+      transition: background-color utils.$animation-duration;
+      a {
+        @extend %flex-center;
+
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 16px;
+
+        &::after {
+          bottom: 0;
+        }
+
+        img {
+          display: block;
+          width: 16px;
+          height: 16px;
+        }
+
+        @include utils.on-desktop {
+          padding: 24px;
+        }
+      }
+      &:hover {
+        background-color: utils.$color-icons;
+      }
+    }
+
+    @include utils.on-tablet {
+      pointer-events: auto;
+
+      position: static;
+      transform: none;
+
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 100%;
+      height: auto;
+
+      opacity: 1;
+
+      transition: none;
+    }
+  }
+
+  &__link {
+    font-family: utils.$font-main;
+    font-size: 12px;
+    font-weight: 800;
+    font-style: normal;
+    color: utils.$color-secondary;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    transition: color utils.$animation-duration;
+
+    @include utils.on-tablet {
+      padding: 18px 0;
+    }
+
+    @include utils.on-desktop {
+      padding: 26px 0;
+    }
+
+    &:hover {
+      color: utils.$color-white;
+    }
+  }
+
+  .active-link {
+    color: utils.$color-white;
+
+    &::after {
+      pointer-events: none;
+      content: '';
+
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+
+      width: 100%;
+      height: 3px;
+
+      background-color: utils.$color-white;
+
+      @include utils.on-tablet {
+        bottom: -15px;
+      }
+
+      @include utils.on-desktop {
+        bottom: -22px;
+      }
+    }
+  }
+
+  @include utils.on-tablet {
+    &__list {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+
+      @include utils.on-desktop {
+        gap: 64px;
+      }
+    }
+
+    &__item {
+      position: relative;
+    }
+  }
+}
