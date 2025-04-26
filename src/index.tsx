@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { HomePage } from './modules/HomePage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { ProductsPage } from './modules/ProductsPage';
