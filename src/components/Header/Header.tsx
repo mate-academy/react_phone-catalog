@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
 import favoriteIcon from '../../assets/img/Icons/favorite.png';
@@ -10,38 +10,18 @@ import './Header.scss';
 
 export const Header: React.FC = () => {
   const { favorites } = useFavorites();
-  const { getTotalItems } = useCart();
-  const cartItemsCount = getTotalItems();
+  const { getTotalItems, cartItems } = useCart();
+  const [cartItemsCount, setCartItemsCount] = useState(getTotalItems());
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const location = useLocation();
-  const navigate = useNavigate();
 
-  // Pages that should show the back button
-  const pagesWithBackButton = ['/cart', '/favorites'];
-  const shouldShowBackButton = pagesWithBackButton.some(page =>
-    location.pathname.startsWith(page),
-  );
-
-  // Get page title based on the current path
-  const getPageTitle = () => {
-    if (location.pathname.startsWith('/cart')) {
-      return 'Cart';
-    }
-
-    if (location.pathname.startsWith('/favorites')) {
-      return 'Favourites';
-    }
-
-    return '';
-  };
+  // Update cart items count whenever cartItems changes
+  useEffect(() => {
+    setCartItemsCount(getTotalItems());
+  }, [getTotalItems, cartItems]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(prev => !prev);
-  };
-
-  const handleBack = () => {
-    navigate(-1);
   };
 
   // Close mobile menu when clicking outside
@@ -65,87 +45,6 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header__content">
-        {shouldShowBackButton ? (
-          <>
-            <button
-              className="header__back-button"
-              onClick={handleBack}
-              aria-label="Go back"
-            >
-              <span className="header__back-icon">←</span>
-              <span className="header__back-text">Back</span>
-            </button>
-
-            <h1 className="header__page-title">{getPageTitle()}</h1>
-          </>
-        ) : (
-          <>
-            <div className="header__logo">
-              <Link to="/" className="header__logo-link">
-                <div className="header__logo-container">
-                  <div className="header__logo-text">
-                    <div className="header__logo-nice-container">
-                      <span className="header__logo-nice">NICE</span>
-                      <img
-                        src={handIcon}
-                        alt="OK"
-                        className="header__logo-hand"
-                      />
-                    </div>
-                    <span className="header__logo-gadgets">GADGETS</span>
-                  </div>
-                </div>
-              </Link>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item">
-                  <NavLink
-                    to="/"
-                    className={({ isActive }) =>
-                      `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`
-                    }
-                  >
-                    HOME
-                  </NavLink>
-                </li>
-                <li className="header__nav-item">
-                  <NavLink
-                    to="/phones"
-                    className={({ isActive }) =>
-                      `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`
-                    }
-                  >
-                    PHONES
-                  </NavLink>
-                </li>
-                <li className="header__nav-item">
-                  <NavLink
-                    to="/tablets"
-                    className={({ isActive }) =>
-                      `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`
-                    }
-                  >
-                    TABLETS
-                  </NavLink>
-                </li>
-                <li className="header__nav-item">
-                  <NavLink
-                    to="/accessories"
-                    className={({ isActive }) =>
-                      `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`
-                    }
-                  >
-                    ACCESSORIES
-                  </NavLink>
-                </li>
-              </ul>
-            </nav>
-          </>
-        )}
-
         {/* Mobile Burger Menu Button */}
         <button
           className={`header__burger-button ${isMobileMenuOpen ? 'header__burger-button--active' : ''}`}
@@ -157,6 +56,68 @@ export const Header: React.FC = () => {
           <span className="header__burger-line"></span>
         </button>
 
+        {/* Logo - Desktop and Mobile */}
+        <div className="header__logo">
+          <Link to="/" className="header__logo-link">
+            <div className="header__logo-container">
+              <div className="header__logo-text">
+                <div className="header__logo-nice-container">
+                  <span className="header__logo-nice">NICE</span>
+                  <img src={handIcon} alt="OK" className="header__logo-hand" />
+                </div>
+                <span className="header__logo-gadgets">GADGETS</span>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="header__nav">
+          <ul className="header__nav-list">
+            <li className="header__nav-item">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`
+                }
+              >
+                HOME
+              </NavLink>
+            </li>
+            <li className="header__nav-item">
+              <NavLink
+                to="/phones"
+                className={({ isActive }) =>
+                  `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`
+                }
+              >
+                PHONES
+              </NavLink>
+            </li>
+            <li className="header__nav-item">
+              <NavLink
+                to="/tablets"
+                className={({ isActive }) =>
+                  `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`
+                }
+              >
+                TABLETS
+              </NavLink>
+            </li>
+            <li className="header__nav-item">
+              <NavLink
+                to="/accessories"
+                className={({ isActive }) =>
+                  `header__nav-link ${isActive ? 'header__nav-link--active' : ''}`
+                }
+              >
+                ACCESSORIES
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Desktop Icons */}
         <div className="header__icons">
           <Link to="/favorites" className="header__icon-button">
             <span className="header__icon header__icon--favorites">
@@ -181,13 +142,12 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - with only one close button */}
       {isMobileMenuOpen && (
         <div className="header__mobile-menu" ref={mobileMenuRef}>
           <div className="header__mobile-menu-content">
-            {/* Logo section at the top of the menu */}
             <div className="header__mobile-menu-header">
-              <div className="header__logo">
+              <div className="header__logo header__mobile-logo">
                 <Link to="/" className="header__logo-link">
                   <div className="header__logo-container">
                     <div className="header__logo-text">
@@ -210,7 +170,7 @@ export const Header: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Close menu"
               >
-                <span className="header__mobile-close-icon">✕</span>
+                ✕
               </button>
             </div>
 

@@ -5,6 +5,7 @@ import { Slider } from '../Slider/Slider';
 import { ProductList } from '../ProductList/ProductList';
 import { CategorySection } from '../CategorySection/CategorySection';
 import './HomePage.scss';
+import { generateProductUniqueId } from '../../types/Product';
 
 // Import image paths
 import bannerIphone14 from '../../assets/img/banners/Banner.png';
@@ -84,6 +85,7 @@ export const HomePage: React.FC = () => {
       id: 1,
       category: 'phones',
       phoneId: 'apple-iphone-14-pro-128gb-silver',
+      uniqueId: 'phone-1', // Match the format used in catalog page
       name: 'Apple iPhone 14 Pro 128GB Silver (MQ023)',
       price: 999,
       image: iphone14ProSilver,
@@ -96,6 +98,7 @@ export const HomePage: React.FC = () => {
       id: 2,
       category: 'phones',
       phoneId: 'apple-iphone-14-pro-128gb-purple',
+      uniqueId: 'phone-2', // Match the format used in catalog page
       name: 'Apple iPhone 14 Pro 128GB Deep Purple (MQ0D3)',
       price: 999,
       image: iphone14ProPurple,
@@ -108,6 +111,7 @@ export const HomePage: React.FC = () => {
       id: 3,
       category: 'phones',
       phoneId: 'apple-iphone-14-pro-128gb-gold',
+      uniqueId: 'phone-3', // Match the format used in catalog page
       name: 'Apple iPhone 14 Pro 128GB Gold (MQ083)',
       price: 999,
       image: iphone14ProGold,
@@ -120,6 +124,7 @@ export const HomePage: React.FC = () => {
       id: 4,
       category: 'phones',
       phoneId: 'apple-iphone-14-plus-128gb-red',
+      uniqueId: 'phone-4', // Match the format used in catalog page
       name: 'Apple iPhone 14 Plus 128GB PRODUCT Red (MQ253)',
       price: 859,
       image: iphone14PlusRed,
@@ -132,6 +137,7 @@ export const HomePage: React.FC = () => {
       id: 9,
       category: 'phones',
       phoneId: 'apple-iphone-14-pro-256gb-silver',
+      uniqueId: generateProductUniqueId('phones', 9),
       name: 'Apple iPhone 14 Pro 256GB Silver (MQ0E3)',
       price: 1099,
       image: iphone14ProSilver,
@@ -144,6 +150,7 @@ export const HomePage: React.FC = () => {
       id: 10,
       category: 'phones',
       phoneId: 'apple-iphone-14-pro-512gb-purple',
+      uniqueId: generateProductUniqueId('phones', 10),
       name: 'Apple iPhone 14 Pro 512GB Deep Purple (MQ1D3)',
       price: 1299,
       image: iphone14ProPurple,
@@ -156,6 +163,7 @@ export const HomePage: React.FC = () => {
       id: 11,
       category: 'phones',
       phoneId: 'apple-iphone-14-pro-1tb-gold',
+      uniqueId: generateProductUniqueId('phones', 11),
       name: 'Apple iPhone 14 Pro 1TB Gold (MQ1K3)',
       price: 1499,
       image: iphone14ProGold,
@@ -168,6 +176,7 @@ export const HomePage: React.FC = () => {
       id: 12,
       category: 'phones',
       phoneId: 'apple-iphone-14-plus-256gb-red',
+      uniqueId: generateProductUniqueId('phones', 12),
       name: 'Apple iPhone 14 Plus 256GB PRODUCT Red (MQ2E3)',
       price: 959,
       image: iphone14PlusRed,
@@ -182,13 +191,14 @@ export const HomePage: React.FC = () => {
     {
       id: 5,
       category: 'phones',
-      phoneId: 'apple-iphone-11-pro-max-512gb-green',
-      name: 'Apple iPhone 11 Pro Max 512GB Midnight Green (MWFJ2FS/A)',
-      price: 849,
-      oldPrice: 1199,
+      phoneId: 'apple-iphone-11-pro-max-256gb-green',
+      uniqueId: 'phone-5', // Match the format used in catalog page
+      name: 'Apple iPhone 11 Pro Max 256GB Midnight Green (MWFK2FS/A)',
+      price: 799,
+      oldPrice: 1099,
       image: iphone11ProMaxGreen,
       screen: '6.5" OLED',
-      capacity: '512 GB',
+      capacity: '256 GB',
       ram: '4 GB',
       color: 'green',
     },
@@ -196,6 +206,7 @@ export const HomePage: React.FC = () => {
       id: 6,
       category: 'phones',
       phoneId: 'apple-iphone-11-pro-max-64gb-gold',
+      uniqueId: 'phone-6', // Match the format used in catalog page
       name: 'Apple iPhone 11 Pro Max 64GB Gold (MWFJ2FS/A)',
       price: 799,
       oldPrice: 999,
@@ -209,6 +220,7 @@ export const HomePage: React.FC = () => {
       id: 7,
       category: 'phones',
       phoneId: 'apple-iphone-11-256gb-purple',
+      uniqueId: 'phone-7', // Match the format used in catalog page
       name: 'Apple iPhone 11 256GB Purple (MWFJ2FS/A)',
       price: 729,
       oldPrice: 859,
@@ -222,6 +234,7 @@ export const HomePage: React.FC = () => {
       id: 8,
       category: 'phones',
       phoneId: 'apple-iphone-11-128gb-red',
+      uniqueId: 'phone-8', // Match the format used in catalog page
       name: 'Apple iPhone 11 128GB (Product) Red (MWFJ2FS/A)',
       price: 699,
       oldPrice: 899,
@@ -235,6 +248,7 @@ export const HomePage: React.FC = () => {
       id: 13,
       category: 'phones',
       phoneId: 'apple-iphone-11-pro-max-256gb-green',
+      uniqueId: 'phone-13', // Match the format used in catalog page
       name: 'Apple iPhone 11 Pro Max 256GB Midnight Green (MWFK2FS/A)',
       price: 799,
       oldPrice: 1099,
@@ -248,6 +262,7 @@ export const HomePage: React.FC = () => {
       id: 14,
       category: 'phones',
       phoneId: 'apple-iphone-11-pro-max-128gb-gold',
+      uniqueId: 'phone-14', // Match the format used in catalog page
       name: 'Apple iPhone 11 Pro Max 128GB Gold (MWFN2FS/A)',
       price: 749,
       oldPrice: 949,
@@ -261,6 +276,7 @@ export const HomePage: React.FC = () => {
       id: 15,
       category: 'phones',
       phoneId: 'apple-iphone-11-64gb-purple',
+      uniqueId: 'phone-15', // Match the format used in catalog page
       name: 'Apple iPhone 11 64GB Purple (MWFP2FS/A)',
       price: 649,
       oldPrice: 799,
@@ -274,6 +290,7 @@ export const HomePage: React.FC = () => {
       id: 16,
       category: 'phones',
       phoneId: 'apple-iphone-11-256gb-red',
+      uniqueId: 'phone-16', // Match the format used in catalog page
       name: 'Apple iPhone 11 256GB (Product) Red (MWFQ2FS/A)',
       price: 749,
       oldPrice: 949,

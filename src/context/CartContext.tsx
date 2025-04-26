@@ -1,5 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { Product, getProductIdentifier } from '../types/Product';
+import {
+  Product,
+  getProductIdentifier,
+  areProductIdsEquivalent,
+} from '../types/Product';
 
 interface CartItem {
   productId: string; // This will store the uniqueId of the product
@@ -15,6 +19,10 @@ interface CartContextProps {
   getCartItemQuantity: (productOrId: Product | string) => number;
   getTotalItems: () => number;
   getTotalPrice: (products: Product[]) => number;
+  getCartSummary: (products: Product[]) => {
+    totalItems: number;
+    totalPrice: number;
+  };
   clearCart: () => void;
 }
 
@@ -63,6 +71,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         ? productOrId
         : getProductIdentifier(productOrId);
 
+    // Debug logging for troubleshooting
+    // eslint-disable-next-line no-console
+    console.log('Adding to cart:', {
+      productId,
+      isString: typeof productOrId === 'string',
+      hasData: typeof productOrId !== 'string',
+    });
+
     setCartItems(prev => {
       // Check if this product is already in the cart
       const existingItem = prev.find(item => item.productId === productId);
@@ -89,7 +105,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         ? productOrId
         : getProductIdentifier(productOrId);
 
-    setCartItems(prev => prev.filter(item => item.productId !== productId));
+    setCartItems(prev =>
+      prev.filter(item => !areProductIdsEquivalent(item.productId, productId)),
+    );
   };
 
   // Update the quantity of a product in the cart
@@ -108,7 +126,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
     setCartItems(prev =>
       prev.map(item =>
-        item.productId === productId ? { ...item, quantity } : item,
+        areProductIdsEquivalent(item.productId, productId)
+          ? { ...item, quantity }
+          : item,
       ),
     );
   };
@@ -121,7 +141,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         ? productOrId
         : getProductIdentifier(productOrId);
 
-    return cartItems.some(item => item.productId === productId);
+    return cartItems.some(item =>
+      areProductIdsEquivalent(item.productId, productId),
+    );
   };
 
   // Get the quantity of a product in the cart
@@ -132,7 +154,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         ? productOrId
         : getProductIdentifier(productOrId);
 
-    const cartItem = cartItems.find(item => item.productId === productId);
+    const cartItem = cartItems.find(item =>
+      areProductIdsEquivalent(item.productId, productId),
+    );
 
     return cartItem ? cartItem.quantity : 0;
   };
@@ -154,24 +178,90 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       !products ||
       products.length === 0
     ) {
+      // eslint-disable-next-line no-console
+      console.log('getTotalPrice: No valid cart items or products');
+
       return 0;
     }
 
-    return cartItems.reduce((total, cartItem) => {
+    // eslint-disable-next-line no-console
+    console.log('getTotalPrice inputs:', {
+      cartItems,
+      productCount: products.length,
+      products: products.slice(0, 5).map(p => ({
+        id: p.id,
+        uniqueId: p.uniqueId,
+        name: p.name,
+        price: p.price,
+      })),
+    });
+
+    let total = 0;
+    let productsFound = 0;
+    let productsNotFound = 0;
+
+    cartItems.forEach(cartItem => {
       // Find the product using the stored productId
-      // This will work with both uniqueId and legacy string IDs
       const product = products.find(prod => {
         const prodId = getProductIdentifier(prod);
 
-        return prodId === cartItem.productId;
+        return areProductIdsEquivalent(prodId, cartItem.productId);
       });
 
       if (product) {
-        return total + product.price * cartItem.quantity;
-      }
+        productsFound++;
+        const itemTotal = product.price * cartItem.quantity;
 
-      return total;
-    }, 0);
+        total += itemTotal;
+
+        // eslint-disable-next-line no-console
+        console.log(`Found product for cart item ${cartItem.productId}:`, {
+          name: product.name,
+          price: product.price,
+          quantity: cartItem.quantity,
+          itemTotal,
+        });
+      } else {
+        productsNotFound++;
+        // eslint-disable-next-line no-console
+        console.log(`No product found for cart item ${cartItem.productId}`);
+      }
+    });
+
+    // eslint-disable-next-line no-console
+    console.log('getTotalPrice result:', {
+      total,
+      productsFound,
+      productsNotFound,
+    });
+
+    return total;
+  };
+
+  // Add a specific function to get cart information for display in summary
+  const getCartSummary = (products: Product[]) => {
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    if (cartItems.length === 0 || products.length === 0) {
+      return { totalItems, totalPrice };
+    }
+
+    // Calculate total items directly from cart
+    totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+    // Calculate total price
+    cartItems.forEach(cartItem => {
+      const product = products.find(p =>
+        areProductIdsEquivalent(getProductIdentifier(p), cartItem.productId),
+      );
+
+      if (product) {
+        totalPrice += product.price * cartItem.quantity;
+      }
+    });
+
+    return { totalItems, totalPrice };
   };
 
   return (
@@ -185,6 +275,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         getCartItemQuantity,
         getTotalItems,
         getTotalPrice,
+        getCartSummary,
         clearCart,
       }}
     >

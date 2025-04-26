@@ -69,6 +69,8 @@ export const ProductList: React.FC<ProductListProps> = ({
           <div key={`item-${product.id}`} className="product-list__item">
             <ProductCard
               id={product.id}
+              uniqueId={product.uniqueId}
+              category={product.category}
               name={product.name}
               price={product.price}
               oldPrice={product.oldPrice}

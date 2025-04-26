@@ -269,52 +269,34 @@ export const PhonesPage: React.FC = () => {
     setCurrentPage(1); // Reset to first page when changing items per page
   };
 
-  // Sort phones based on selected sort option
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  // Apply sorting to phones
   const sortedPhones = [...phones].sort((a, b) => {
-    if (sortBy === 'newest') {
-      return b.id - a.id;
+    switch (sortBy) {
+      case 'alphabetically':
+        return a.name.localeCompare(b.name);
+      case 'cheapest':
+        return a.price - b.price;
+      case 'newest':
+      default:
+        return b.id - a.id; // Assuming higher IDs are newer phones
     }
-
-    if (sortBy === 'alphabetically') {
-      return a.name.localeCompare(b.name);
-    }
-
-    if (sortBy === 'cheapest') {
-      return a.price - b.price;
-    }
-
-    return 0;
   });
 
-  // Calculate pagination
+  // Apply pagination
   const phonesPerPage = parseInt(itemsPerPage, 10);
-  const totalPages = Math.ceil(sortedPhones.length / phonesPerPage);
   const startIndex = (currentPage - 1) * phonesPerPage;
   const displayedPhones = sortedPhones.slice(
     startIndex,
     startIndex + phonesPerPage,
   );
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  // Generate pagination buttons
-  const paginationButtons = [];
-
-  for (let i = 1; i <= totalPages; i++) {
-    paginationButtons.push(
-      <button
-        key={i}
-        className={`phones-page__pagination-button ${
-          i === currentPage ? 'phones-page__pagination-button--active' : ''
-        }`}
-        onClick={() => handlePageChange(i)}
-      >
-        {i}
-      </button>,
-    );
-  }
+  // Calculate total pages based on actual phones array length
+  const actualTotalPhones = phones.length;
+  const totalPages = Math.ceil(actualTotalPhones / Number(itemsPerPage));
 
   return (
     <div className="phones-page">
@@ -369,19 +351,69 @@ export const PhonesPage: React.FC = () => {
 
           <div className="phones-page__pagination">
             <button
-              className="phones-page__pagination-button phones-page__pagination-button--arrow"
-              onClick={() => handlePageChange(currentPage - 1)}
+              className={
+                'phones-page__pagination-arrow ' +
+                'phones-page__pagination-prev'
+              }
               disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
             >
               &lt;
             </button>
 
-            {paginationButtons}
+            {(() => {
+              // Logic to show only 4 pagination items
+              let pagesToShow = [];
+
+              if (totalPages <= 4) {
+                // If total pages are 4 or less, show all
+                pagesToShow = Array.from(
+                  { length: totalPages },
+                  (_, i) => i + 1,
+                );
+              } else {
+                // If more than 4 pages, show a window of 4 around the current page
+                if (currentPage <= 2) {
+                  pagesToShow = [1, 2, 3, 4];
+                } else if (currentPage >= totalPages - 1) {
+                  pagesToShow = [
+                    totalPages - 3,
+                    totalPages - 2,
+                    totalPages - 1,
+                    totalPages,
+                  ];
+                } else {
+                  pagesToShow = [
+                    currentPage - 1,
+                    currentPage,
+                    currentPage + 1,
+                    currentPage + 2,
+                  ];
+                }
+              }
+
+              return pagesToShow.map(page => (
+                <button
+                  key={page}
+                  className={`phones-page__pagination-item ${
+                    page === currentPage
+                      ? 'phones-page__pagination-item--active'
+                      : ''
+                  }`}
+                  onClick={() => handlePageChange(page)}
+                >
+                  {page}
+                </button>
+              ));
+            })()}
 
             <button
-              className="phones-page__pagination-button phones-page__pagination-button--arrow"
-              onClick={() => handlePageChange(currentPage + 1)}
+              className={
+                'phones-page__pagination-arrow ' +
+                'phones-page__pagination-next'
+              }
               disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
             >
               &gt;
             </button>

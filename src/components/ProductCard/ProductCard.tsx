@@ -68,8 +68,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     e.preventDefault();
     e.stopPropagation();
 
-    // Removed console.log statement
-
     if (isProductInCart) {
       removeFromCart(product);
     } else {

@@ -35,6 +35,35 @@ export const getProductIdentifier = (product: Product): string => {
   return fallbackId;
 };
 
+/**
+ * Used for checking if two product identifiers refer to the same product
+ * This handles various formats of IDs
+ * @param id1 First product ID
+ * @param id2 Second product ID
+ * @returns Boolean indicating if they refer to the same product
+ */
+export const areProductIdsEquivalent = (id1: string, id2: string): boolean => {
+  // Exact match
+  if (id1 === id2) {
+    return true;
+  }
+
+  // Check if one is in the format "category-id" and the other is just "id"
+  const id1Parts = id1.split('-');
+  const id2Parts = id2.split('-');
+
+  // If one has parts and the other is a simple ID
+  if (id1Parts.length > 1 && !isNaN(Number(id2))) {
+    return id1Parts[id1Parts.length - 1] === id2;
+  }
+
+  if (id2Parts.length > 1 && !isNaN(Number(id1))) {
+    return id2Parts[id2Parts.length - 1] === id1;
+  }
+
+  return false;
+};
+
 export interface Product {
   id: number;
   // Unique identifier that includes category information (optional for backward compatibility)
