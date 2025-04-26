@@ -14,7 +14,6 @@ export const HotSlider = () => {
     <ProductsSlider
       title="Hot prices"
       sortFunction={sortByBiggestDiscount}
-      cardProps={{ showDiscount: true }}
-    />
+      cardProps={{ showDiscount: true }} subtitle={''} className={''}    />
   );
 };

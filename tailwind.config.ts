@@ -12,6 +12,7 @@ const config: Config = {
         'color-border': '#3B3E4A',
         'color-btn-purple': '#905BFF',
         'color-btn-purple-hover': '#A378FF',
+        'color-btn-pagin': '#161827',
       },
       animation: {
         fade: 'fadeIn 0.7s ease-out',

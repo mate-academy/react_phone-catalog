@@ -10,8 +10,10 @@ import { ProductsSliderProps } from '@/types/Product';
 
 export const ProductsSlider = ({ 
   title,
+  subtitle,
   sortFunction,
-  cardProps
+  cardProps,
+  className = 'mt-20'
  }: ProductsSliderProps) => {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.products.items);
@@ -48,11 +50,14 @@ export const ProductsSlider = ({
   }
 
   return (
-    <div className="overflow-hidden px-4 sm:px-8 xl:px-[152px] relative mt-20">
+    <section className={`overflow-hidden px-4 sm:px-8 xl:px-[152px] relative mt-20 ${className}`}>
       <div className="flex justify-between items-center mb-6 max-w-[1136px]">
-        <h2 className="text-[22px] sm:text-[32px] text-text-color-base-white font-extrabold font-mont leading-[1.4]">
-          {title}
-        </h2>
+        <div>
+          <h2 className="text-[22px] sm:text-[32px] text-text-color-base-white font-extrabold font-mont leading-[1.4]">
+            {title}
+          </h2>
+          <span className='text-text-color-base-grey font-mont font-semibold leading-[21px] text-sm'>{subtitle}</span>
+        </div>
         <div className="flex gap-4">
           <button
             onClick={prevSlide}
@@ -70,7 +75,7 @@ export const ProductsSlider = ({
             disabled={currentIndex === maxIndex}
             className={`w-8 h-8 flex items-center justify-center ${currentIndex === maxIndex
               ? 'border border-color-border opacity-70 cursor-not-allowed'
-              : 'bg-[#3E3E4A] hover:bg-[#4E4E5A]'
+              : 'bg-background-color-btn hover:bg-background-color-btn-hover'
               }`}
           >
             <img src="icons/arrow-right.svg" alt="right" />
@@ -92,6 +97,6 @@ export const ProductsSlider = ({
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };

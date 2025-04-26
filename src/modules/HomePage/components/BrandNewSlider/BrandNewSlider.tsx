@@ -14,7 +14,6 @@ export const BrandNewSlider = () => {
     return (
       <ProductsSlider
         title="Brand new models"
-        sortFunction={sortByModelNumber}
-      />
+        sortFunction={sortByModelNumber} subtitle={""} className={""}      />
     );
   };

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const ShopByCategory = () => {
 
     return (
-        <div className="xl:px-[152px] lg:px-8 sm:px-6 px-4 mt-20 font-mont">
+        <section className="xl:px-[152px] lg:px-8 sm:px-6 px-4 mt-20 font-mont">
             <h2 className="text-[22px] sm:text-[32px] text-text-color-base-white font-extrabold leading-[1.4]">
                 Shop by category
             </h2>
@@ -36,6 +36,6 @@ export const ShopByCategory = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };

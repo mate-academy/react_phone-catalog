@@ -57,7 +57,7 @@ export const PicturesSlider = () => {
     }, [currentSlide]);
 
     return (
-        <div>
+        <section>
             <div className="flex sm:mx-6 mb-[18px] lg:mx-8 xl:mx-[152px]">
                 <div className="justify-center min-w-8 max-h-[400px] bg-background-color-btn hidden sm:flex">
                     <button onClick={prevSlide}>
@@ -94,6 +94,6 @@ export const PicturesSlider = () => {
                 ))}
 
             </div>
-        </div>
+        </section>
     );
 };
