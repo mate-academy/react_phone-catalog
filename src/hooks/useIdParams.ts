@@ -1,6 +1,8 @@
+import { useLocation } from 'react-router-dom';
+
 const useIdParams = () => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
+  const location = useLocation();
+  const urlParams = new URLSearchParams(location.search);
   const id = urlParams.get('id');
 
   return { id };

@@ -35,7 +35,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       return;
     }
 
-    navigate(`/${product.category}/${product.itemId}`);
+    const searchParams = new URLSearchParams(location.search);
+
+    searchParams.set('id', product.id.toString());
+
+    navigate(
+      `/${product.category}/${product.itemId}?${searchParams.toString()}`,
+    );
   };
 
   const handleProductCart = (event: React.MouseEvent<HTMLDivElement>) => {

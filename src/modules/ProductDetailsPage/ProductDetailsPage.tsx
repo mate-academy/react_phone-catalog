@@ -28,42 +28,6 @@ export const ProductDetailsPage = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const loadData = async () => {
-  //     if (!id) {
-  //       return;
-  //     }
-
-  //     try {
-  //       setIsLoading(true);
-  //       const data = await getProductDetails(id, type as Category);
-  //       const productsList = await getProducts();
-
-  //       setProducts(productsList);
-
-  //       const productFound = productsList.find(p => p.itemId === data.id);
-
-  //       if (productFound) {
-  //         const searchParams = new URLSearchParams(location.search);
-
-  //         searchParams.set('id', productFound.id.toString());
-
-  //         navigate(`${location.pathname}?${searchParams.toString()}`, {
-  //           replace: true,
-  //         });
-  //       }
-
-  //       setProduct(data);
-  //     } catch (error) {
-  //       console.error('Error loading product details:', error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-
-  //   loadData();
-  // }, [id, type, navigate, setProduct]);
-
   useEffect(() => {
     const loadData = async () => {
       if (!id || !type) {
