@@ -11,8 +11,8 @@ const navLinks = [
 ];
 
 const actionLinks = [
-  { to: '/favorites', icon: '/img/icons/favorites.svg', alt: 'favorites' },
-  { to: '/cart', icon: '/img/icons/cart.svg', alt: 'cart' },
+  { to: '/favorites', icon: '/img/favorites.svg', alt: 'favorites' },
+  { to: '/cart', icon: '/img/cart.svg', alt: 'cart' },
 ];
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -47,7 +47,7 @@ export const Header: React.FC = () => {
       <div className={styles.header__content}>
         <div className={styles.header__logo}>
           <Link to="/">
-            <img src="/img/icons/logo.svg" alt="logo" />
+            <img src="/img/logo.svg" alt="logo" />
           </Link>
         </div>
 
@@ -60,7 +60,7 @@ export const Header: React.FC = () => {
             <Link to="/" onClick={() => setIsBurgerActive(false)}>
               <img
                 className={styles.header__logo}
-                src="/img/icons/logo.svg"
+                src="/img/logo.svg"
                 alt="logo"
               />
             </Link>
