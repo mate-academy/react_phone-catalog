@@ -1,0 +1,31 @@
+@import '../../styles/main';
+
+.productDetailsPage {
+  &__back {
+    width: 66px;
+    height: 16px;
+    gap: 4px;
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    border-style: none;
+    background-color: inherit;
+    cursor: pointer;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    &--img {
+      transform: rotate(180deg);
+    }
+
+    &--text {
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15.34px;
+      color: var(--cart-back-text);
+    }
+  }
+}
