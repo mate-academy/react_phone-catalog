@@ -1,0 +1,34 @@
+.swiper-button-prev {
+  left: auto !important;
+  right: 60px !important;
+}
+
+.swiper-button-next {
+  right: 10px !important;
+}
+
+.customNext,
+.customPrev {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(180, 189, 195, 1);
+  background-color: rgba(255, 255, 255, 1);
+  margin-left: 16px;
+  margin-top: 20px;
+}
+
+.buttons {
+  display: flex;
+}
+
+.brandNew_text {
+  padding-top: 66px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 39px;
+}
+
+.customNext:hover,
+.customPrev:hover {
+  border: 1px solid rgba(49, 50, 55, 1)
+}

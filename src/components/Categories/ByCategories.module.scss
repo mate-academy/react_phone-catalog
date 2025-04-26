@@ -1,0 +1,54 @@
+@font-face {
+  font-family: SmallFont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+.categoriesSection {
+  width: 288px;
+  height: 363px;
+  margin-bottom: 32px;
+}
+
+.sectionCatgerory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.categoriesName {
+  margin-top: 56px;
+  margin-bottom: 24px;
+}
+
+.categoryImage {
+  margin-bottom: 24px;
+  transition: transform 0.3s ease;
+}
+
+.categoryName {
+  font-size: 20px;
+  line-height: 100%;
+  color: rgba(49, 50, 55, 1);
+  margin-bottom: 4px;
+  font-family: SmallFont;
+}
+
+.categoryNameLink {
+  text-decoration: none;
+}
+
+.countCategory {
+  font-family: SmallFont;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: rgba(137, 147, 154, 1);
+}
+
+.categoryImage {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
