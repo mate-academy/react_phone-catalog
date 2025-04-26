@@ -11,41 +11,48 @@ export function MySlider() {
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <div className="sliderWrapper">
-      <div className="slider-buttons">
-        <button ref={prevRef} className="customPrev">
-          &lt;
-        </button>
-        <button ref={nextRef} className="customNext">
-          &gt;
-        </button>
+    <div className="outerSliderWrapper">
+      <button ref={prevRef} className="customPrev">
+        &lt;
+      </button>
+      <div className="sliderWrapper">
+        <div className="sliderContainer">
+          <Swiper
+            modules={[Pagination, Autoplay, Navigation]}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            loop={true}
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            }}
+            onBeforeInit={swiper => {
+              // @ts-ignore
+              swiper.params.navigation.prevEl = prevRef.current;
+              // @ts-ignore
+              swiper.params.navigation.nextEl = nextRef.current;
+            }}
+            className="slider"
+          >
+            <SwiperSlide>
+              <img src="/img/BannerSlide2.svg" alt="1" className="slide_Image" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="/img/banner-tablets.png" alt="2" className="slide_Image firstSlide" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                src="/img/category-accessories.png"
+                alt="3"
+                className="slide_Image secondSlide"
+              />
+            </SwiperSlide>
+          </Swiper>
+        </div>
       </div>
-
-      <Swiper
-        modules={[Pagination, Autoplay, Navigation]}
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop={true}
-        onInit={swiper => {
-          // @ts-ignore
-          swiper.params.navigation.prevEl = prevRef.current;
-          // @ts-ignore
-          swiper.params.navigation.nextEl = nextRef.current;
-          swiper.navigation.init();
-          swiper.navigation.update();
-        }}
-        className="slider"
-      >
-        <SwiperSlide>
-          <img src="/img/BannerSlide2.svg" alt="1" className="slide_Image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/img/banner-tablets.png" alt="2" className="slide_Image firstSlide" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/img/category-accessories.png" alt="3" className="slide_Image secondSlide" />
-        </SwiperSlide>
-      </Swiper>
+      <button ref={nextRef} className="customNext">
+        &gt;
+      </button>
     </div>
   );
 }
