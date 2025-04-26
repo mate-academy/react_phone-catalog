@@ -30,7 +30,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   const handleOnClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    navigate(`/${product.category}/${product.itemId}`.replace(/\/\/+/g, '/'));
+    navigate(`${product.category}/${product.itemId}`);
   };
 
   const handleProductCart = (event: React.MouseEvent<HTMLDivElement>) => {
