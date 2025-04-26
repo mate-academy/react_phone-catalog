@@ -1,7 +1,7 @@
 import './ProductContentTop.scss';
-import { NavLink } from 'react-router-dom';
-import { ProductDetails } from '../../../../types/ProductDetails';
 import { FC, useCallback, useContext, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ProductDetails } from '../../../../types/ProductDetails';
 import { Colors, colors } from '../../../../constants/colors';
 import { GlobalContext } from '../../../../context/GlobalContext';
 import { Icon } from '../../../shared/Icon';
@@ -25,12 +25,14 @@ export const ProductContentTop: FC<Props> = ({
   selectedProduct,
   specificProducts,
 }) => {
+  const navigate = useNavigate();
+
   const { allProducts, cart, favorites, toggleFavorites, addToCart, theme } =
     useContext(GlobalContext);
 
   const [selectedPhoto, setSelectedPhoto] = useState(0);
 
-  const handleShoppingCard = useCallback(
+  const handleShoppingCart = useCallback(
     (currentProduct: ProductDetails) => {
       const productToAdd = getProductBySelectedProductId(
         allProducts,
@@ -93,6 +95,12 @@ export const ProductContentTop: FC<Props> = ({
     [favorites, selectedProduct.id],
   );
 
+  const handleSelectOption = (option: 'color' | 'capacity', value: string) => {
+    const newLink = `/${selectedProduct.category}/${getLink(option, value)}`;
+
+    navigate(newLink, { replace: true });
+  };
+
   return (
     <div className="detailsPage__content-top">
       <div className="detailsPage__container-imageSlider">
@@ -127,75 +135,67 @@ export const ProductContentTop: FC<Props> = ({
       </div>
 
       <div className="detailsPage__characteristics">
+        {/* COLORS */}
         <div className="detailsPage__colors">
-          <span
-            className="
-              detailsPage__colors-title detailsPage__info"
-          >
+          <span className="detailsPage__colors-title detailsPage__info">
             Available colors
           </span>
           <ul className="detailsPage__colors-list">
             {selectedProduct.colorsAvailable.map(color => (
-              <NavLink
+              <li
                 key={color}
-                to={`/${selectedProduct.category}/${getLink('color', color)}`}
+                className={classNames('detailsPage__color-item', {
+                  'detailsPage__color-item--selected':
+                    selectedProduct.color === color,
+                })}
+                onClick={() => handleSelectOption('color', color)}
+                style={{ cursor: 'pointer' }}
               >
-                <li
-                  key={color}
-                  className={classNames('detailsPage__color-item', {
-                    'detailsPage__color-item--selected':
-                      selectedProduct.color === color,
-                  })}
-                >
-                  <span
-                    className="detailsPage__color-circle"
-                    style={{ backgroundColor: colors[color as keyof Colors] }}
-                  ></span>
-                </li>
-              </NavLink>
+                <span
+                  className="detailsPage__color-circle"
+                  style={{
+                    backgroundColor: colors[color as keyof Colors],
+                  }}
+                ></span>
+              </li>
             ))}
           </ul>
         </div>
 
         <div className="detailsPage__line"></div>
 
+        {/* CAPACITY */}
         <div className="detailsPage__capacity">
-          <span
-            className="
-                detailsPage__capacity-title detailsPage__info"
-          >
+          <span className="detailsPage__capacity-title detailsPage__info">
             Select capacity
           </span>
           <ul className="detailsPage__capacity-list">
             {selectedProduct.capacityAvailable.map(capacity => (
-              <NavLink
+              <li
                 key={capacity}
-                to={`/${selectedProduct.category}/${getLink('capacity', capacity)}`}
-                style={{ textDecoration: 'none' }}
+                className={classNames('detailsPage__capacity-item', {
+                  'detailsPage__capacity-item--selected':
+                    selectedProduct.capacity === capacity,
+                })}
+                onClick={() => handleSelectOption('capacity', capacity)}
+                style={{ cursor: 'pointer' }}
               >
-                <li
-                  key={capacity}
-                  className={classNames('detailsPage__capacity-item', {
-                    'detailsPage__capacity-item--selected':
+                <span
+                  className={classNames('detailsPage__capacity-block', {
+                    'detailsPage__capacity-block--selected':
                       selectedProduct.capacity === capacity,
                   })}
                 >
-                  <span
-                    className={classNames('detailsPage__capacity-block', {
-                      'detailsPage__capacity-block--selected':
-                        selectedProduct.capacity === capacity,
-                    })}
-                  >
-                    {capacity.split('GB').join(' GB')}
-                  </span>
-                </li>
-              </NavLink>
+                  {capacity.split('GB').join(' GB')}
+                </span>
+              </li>
             ))}
           </ul>
         </div>
 
         <div className="detailsPage__line"></div>
 
+        {/* PRICE */}
         <div className="detailsPage__container-price">
           <span className="detailsPage__price-discount">
             {`$${selectedProduct.priceDiscount}`}
@@ -205,6 +205,7 @@ export const ProductContentTop: FC<Props> = ({
           </span>
         </div>
 
+        {/* BUTTONS */}
         <div className="detailsPage__container-buttons">
           <button
             className={classNames(
@@ -212,7 +213,7 @@ export const ProductContentTop: FC<Props> = ({
               'detailsPage__button-card',
               { 'detailsPage__button-card--active': isInCart },
             )}
-            onClick={() => handleShoppingCard(selectedProduct)}
+            onClick={() => handleShoppingCart(selectedProduct)}
           >
             {isInCart ? 'Added' : 'Add to cart'}
           </button>
@@ -233,6 +234,7 @@ export const ProductContentTop: FC<Props> = ({
           </button>
         </div>
 
+        {/* SPECIFICATIONS */}
         <div className="detailsPage__container-specifications">
           <div className="detailsPage__block">
             <span className="detailsPage__info">Screen</span>
