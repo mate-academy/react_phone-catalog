@@ -1,0 +1,43 @@
+@import '../../../styles/main';
+
+.breadcrumbs {
+  &__item {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-gray-secondary);
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+
+    &--dark {
+      text-decoration: none;
+      color: var(--color-gray-primary);
+    }
+  }
+
+  &__link-home,
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__container {
+    height: 16px;
+    margin-block: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}
