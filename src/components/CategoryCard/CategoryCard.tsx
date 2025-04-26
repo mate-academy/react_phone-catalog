@@ -4,6 +4,7 @@ type CategoryCardProps = {
   imgUrl: string;
   title: string;
   description: string;
+  onClick: () => void;
   backgroundColor?: string;
   imgHeight?: string;
   imgWidth?: string;
@@ -14,13 +15,14 @@ export const CategoryCard = ({
   imgUrl,
   title,
   description,
+  onClick,
   backgroundColor,
   imgWidth,
   imgHeight,
   imgTransform,
 }: CategoryCardProps) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={onClick}>
       <div
         className={styles.container__photo}
         style={{

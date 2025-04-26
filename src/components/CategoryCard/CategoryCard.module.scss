@@ -1,5 +1,7 @@
 .container {
   max-height: 27.69rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 
   &__photo {
     display: flex;
@@ -29,5 +31,9 @@
       font-size: 0.88rem;
       color: #89939A;
     }
+  }
+
+  &:hover {
+    transform: translateY(-5px);
   }
 }

@@ -17,7 +17,7 @@ export const ImageItem = ({
       className={cn(styles.container, { [styles.selected]: isSelected })}
       onClick={setSelectedImage}
     >
-      <img src={`/${imageUrl}`} alt="image-item" />
+      <img src={`${imageUrl}`} alt="image-item" />
     </div>
   );
 };

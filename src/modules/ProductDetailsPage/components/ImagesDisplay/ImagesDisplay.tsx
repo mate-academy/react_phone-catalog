@@ -37,7 +37,7 @@ export const ImagesDisplay = () => {
         </ul>
       )}
       <div className={styles.container__main}>
-        <img src={`/${selectedImage}`} />
+        <img src={`${selectedImage}`} />
       </div>
       {isMobile && (
         <ul className={styles.container__row}>

@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { FiHeart, FiMenu, FiShoppingBag } from 'react-icons/fi';
 import { Logo } from 'components/Logo';
 import { IconButton } from 'components/IconButton';
@@ -14,10 +14,10 @@ import { SearchField } from 'components/SearchField';
 
 export const Header = () => {
   const { isCartPage, isFavouritesPage, isValidType } = useCheckUrl();
-  const { searchProduct, setSearchProduct } = useContext(ProductsContext);
-
   const { isTablet } = useCheckMediaQuery();
-  const showSearchInput = useMediaQuery({ minWidth: 850 });
+  const { id } = useParams();
+
+  const showSearchInput = useMediaQuery({ minWidth: 850 }) && !id;
 
   const navigate = useNavigate();
 
@@ -65,9 +65,7 @@ export const Header = () => {
           ))}
         </nav>
 
-        {isValidType && showSearchInput && (
-          <SearchField onChange={setSearchProduct} value={searchProduct} />
-        )}
+        {isValidType && showSearchInput && <SearchField />}
 
         <div className={styles.container__content__buttonsArea}>
           <BadgeButton
