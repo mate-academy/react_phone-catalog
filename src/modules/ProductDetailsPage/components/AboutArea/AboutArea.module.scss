@@ -1,0 +1,32 @@
+.container {
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  hr {
+    border: 1px solid #E2E6E9;
+    margin: 16px 0 32px;
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &__item {
+      &__subtitle {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      p {
+        margin-top: 16px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #89939A;
+        line-height: 21px;
+      }
+    }
+  }
+}

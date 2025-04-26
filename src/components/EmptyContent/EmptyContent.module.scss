@@ -1,0 +1,17 @@
+.container {
+  margin: 5rem auto 0;
+  max-width: 450px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 310px);
+
+    img {
+      display: flex;
+      justify-content: center;
+      margin-top: 64px;
+      width: 500px;
+    }
+  }
+}

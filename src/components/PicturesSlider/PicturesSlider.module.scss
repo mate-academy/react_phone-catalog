@@ -1,0 +1,72 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &__content {
+    margin-top: 3.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    position: relative;
+    height: 400px;
+    background-color: #B4BDC3;
+
+    &__button {
+      background-color: #fff;
+    }
+
+    img {
+      max-height: 400px;
+      width: 1004px;
+      object-fit: cover;
+      transition: opacity 0.5s ease;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    gap: 0.63rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+
+    &__item {
+      width: 0.88rem;
+      height: 0.25rem;
+      background-color: #E2E6E9;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #b4bdc3;
+      }
+
+      &.active {
+        background-color: #313237;
+      }
+    }
+  }
+
+  @include tablet {
+    img {
+      max-width: calc(100% - 100px);
+    }
+  }
+
+  @include mobile {
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    &__button {
+      display: none;
+    }
+  }
+}

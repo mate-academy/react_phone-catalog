@@ -37,6 +37,12 @@ module.exports = {
     'prettier'
   ],
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     // JS
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
