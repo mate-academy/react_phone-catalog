@@ -22,6 +22,7 @@
 
   &__grid {
     display: grid;
+    max-width: 1136px;
     margin: 40px 0;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
@@ -47,6 +48,21 @@
 
     &__grid {
       gap: 17px;
+    }
+
+    &__grid__info {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+  }
+
+  @include small-tablet {
+    padding: 0 16px;
+
+    &__grid {
+      display: flex;
+      flex-direction: column;
     }
 
     &__grid__info {

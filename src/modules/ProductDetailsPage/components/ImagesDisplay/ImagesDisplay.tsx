@@ -11,7 +11,7 @@ export const ImagesDisplay = () => {
     product ? product.images[0] : '',
   );
 
-  const { isMobile } = useCheckMediaQuery();
+  const { isSmallTablet } = useCheckMediaQuery();
 
   const handleSetSelectedImage = (image: string) => {
     setSelectedImage(image);
@@ -23,7 +23,7 @@ export const ImagesDisplay = () => {
 
   return (
     <div className={styles.container}>
-      {!isMobile && (
+      {!isSmallTablet && (
         <ul className={styles.container__list}>
           {product.images.map(i => (
             <li key={i} className={styles.item}>
@@ -39,7 +39,7 @@ export const ImagesDisplay = () => {
       <div className={styles.container__main}>
         <img src={`${selectedImage}`} />
       </div>
-      {isMobile && (
+      {isSmallTablet && (
         <ul className={styles.container__row}>
           {product.images.map(i => (
             <li key={i} className={styles.item}>

@@ -42,12 +42,25 @@
     &__main {
       display: flex;
       justify-content: center;
+    }
+  }
+
+  @include small-tablet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__main {
+      margin-top: 32px;
+      display: flex;
       max-width: 287px;
       min-height: 287px;
 
       img {
         height: 273px;
         width: 273px;
+        transform: translate(0, -40px);
       }
     }
   }
