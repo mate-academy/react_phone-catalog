@@ -1,19 +1,27 @@
 import { useContext } from 'react';
 import styles from './ColorSelector.module.scss';
 import cn from 'classnames';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { COLOR_MAP } from 'types/ProductColors';
 import { ProductDetailsContext } from 'store/ProductDetailsContext';
 import useCheckMediaQuery from 'hooks/useCheckMediaQuery';
-import useIdParams from 'hooks/useIdParams';
+import { Product } from 'types/Product';
 
-export const ColorSelector = () => {
+type ColorSelectorProps = {
+  products: Product[];
+};
+
+export const ColorSelector = ({ products }: ColorSelectorProps) => {
   const { isTablet } = useCheckMediaQuery();
   const { type } = useParams();
-  const { id } = useIdParams();
+
   const navigate = useNavigate();
 
   const { product } = useContext(ProductDetailsContext);
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const productId = searchParams.get('id');
 
   const handleColorSelector = (color: string) => {
     if (!product) {
@@ -22,7 +30,14 @@ export const ColorSelector = () => {
 
     const productUrl = `${product.namespaceId}-${product.capacity.toLocaleLowerCase()}-${color}`;
 
-    navigate(`/${type}/${productUrl}`);
+    const productFound = products?.find(
+      p =>
+        p.itemId === product.id &&
+        p.capacity === product.capacity &&
+        p.color === product.color,
+    );
+
+    navigate(`/${type}/${productUrl}?id=${productFound?.id}`);
   };
 
   if (!product) {
@@ -33,8 +48,10 @@ export const ColorSelector = () => {
     <div className={styles.container}>
       <div className={styles.container__label}>
         <span className={styles.container__label__info}>Available colors</span>
-        {isTablet && (
-          <span className={styles.container__label__id}>{`ID: ${id}`}</span>
+        {isTablet && productId && (
+          <span
+            className={styles.container__label__id}
+          >{`ID: ${productId}`}</span>
         )}
       </div>
       <div className={styles.container__content}>

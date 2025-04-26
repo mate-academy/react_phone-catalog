@@ -12,14 +12,18 @@ import { FaHeart } from 'react-icons/fa';
 import { ProductsContext } from 'store/ProductsContext';
 import useCheckMediaQuery from 'hooks/useCheckMediaQuery';
 import useIdParams from 'hooks/useIdParams';
+import { Product } from 'types/Product';
 
-export const CustomSelectorsArea = () => {
+type CustomSelectorsAreaProps = {
+  products: Product[];
+};
+
+export const CustomSelectorsArea = ({ products }: CustomSelectorsAreaProps) => {
   const { id } = useIdParams();
   const { isTablet } = useCheckMediaQuery();
   const { product } = useContext(ProductDetailsContext);
 
   const {
-    products,
     setFavouriteAmount,
     cartProducts,
     setCartProducts,
@@ -86,7 +90,7 @@ export const CustomSelectorsArea = () => {
   return (
     <div className={styles.container}>
       <div className={styles.container__content}>
-        <ColorSelector />
+        <ColorSelector products={products} />
         <hr />
         <CapacitySelector />
         <hr />

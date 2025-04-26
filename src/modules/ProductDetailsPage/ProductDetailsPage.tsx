@@ -78,7 +78,7 @@ export const ProductDetailsPage = () => {
 
       <div className={styles.container__grid}>
         <ImagesDisplay />
-        <CustomSelectorsArea />
+        <CustomSelectorsArea products={products} />
       </div>
 
       <div className={styles.container__grid__info}>
