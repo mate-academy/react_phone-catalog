@@ -1,0 +1,43 @@
+@import '../mixins';
+
+.icon-path {
+  width: 16px;
+  height: 16px;
+  background-position: center;
+
+  @include hover(transform, scale(1.05));
+
+  &--home {
+    background-image: var(--home);
+  }
+
+  &--next {
+    background-image: var(--parh-to-page);
+  }
+}
+
+.path-to-page {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.title-link {
+  color: var(--text-color-prev-page);
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+  font-family: Mont-SemiBold, sans-serif;
+  text-align: center;
+
+  &--active {
+    color: var(--text-color-device-page);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+}
