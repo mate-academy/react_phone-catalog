@@ -40,7 +40,7 @@ export const Product: React.FC<Props> = ({ product }) => {
         <div className={styles.product__buttons}>
           <button className={styles.product__addToCart}>Add to cart</button>
           <button className={styles.product__like}>
-            <img src="/img/favorites.svg" alt="Add to favorites" />
+            <img src="/img/icons/favorites.svg" alt="Add to favorites" />
           </button>
         </div>
       </div>

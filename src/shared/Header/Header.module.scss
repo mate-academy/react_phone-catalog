@@ -214,27 +214,17 @@
       }
     }
 
-    .header__cart {
-      border-left: utils.$default-border;
-    }
-
-    .header__favorites {
-      border-left: utils.$default-border;
-    }
-
     .header__cart,
     .header__favorites {
       cursor: pointer;
-
       position: relative;
-
       width: 100%;
       border: none;
-
       appearance: none;
       background-color: transparent;
-
       transition: background-color utils.$animation-duration;
+      border-left: utils.$default-border;
+
       a {
         @extend %flex-center;
 
@@ -264,21 +254,16 @@
 
     @include utils.on-tablet {
       pointer-events: auto;
-
       position: static;
       transform: none;
-
       display: flex;
       flex-direction: row;
       gap: 32px;
       align-items: center;
       justify-content: space-between;
-
       width: 100%;
       height: auto;
-
       opacity: 1;
-
       transition: none;
     }
   }
@@ -292,7 +277,6 @@
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-
     transition: color utils.$animation-duration;
 
     @include utils.on-tablet {
@@ -314,14 +298,11 @@
     &::after {
       pointer-events: none;
       content: '';
-
       position: absolute;
       bottom: -8px;
       left: 0;
-
       width: 100%;
       height: 3px;
-
       background-color: utils.$color-white;
 
       @include utils.on-tablet {
