@@ -49,10 +49,10 @@ export const Slider: React.FC = () => {
         </Swiper>
 
         <div className={styles.slider__controlsPrev}>
-          <div className={styles.slider__prev} />
+          <span className={styles.slider__prev} />
         </div>
         <div className={styles.slider__controlsNext}>
-          <div className={styles.slider__next} />
+          <span className={styles.slider__next} />
         </div>
       </div>
       <div className={styles.slider__pagination} />

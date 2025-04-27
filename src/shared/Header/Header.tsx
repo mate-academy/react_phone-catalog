@@ -13,13 +13,13 @@ const navLinks = [
 const actionLinks = [
   {
     to: '/favorites',
-    icon: '/img/icons/favorites.svg',
+    icon: 'img/icons/favorites.svg',
     alt: 'favorites',
     className: 'header__favorites',
   },
   {
     to: '/cart',
-    icon: '/img/icons/cart.svg',
+    icon: 'img/icons/cart.svg',
     alt: 'cart',
     className: 'header__cart',
   },
@@ -57,7 +57,7 @@ export const Header: React.FC = () => {
       <div className={styles.header__content}>
         <div className={styles.header__logo}>
           <Link to="/">
-            <img src="/img/icons/logo.svg" alt="logo" />
+            <img src="img/icons/logo.svg" alt="logo" />
           </Link>
         </div>
 
@@ -70,7 +70,7 @@ export const Header: React.FC = () => {
             <Link to="/" onClick={() => setIsBurgerActive(false)}>
               <img
                 className={styles.header__logo}
-                src="/img/icons/logo.svg"
+                src="img/icons/logo.svg"
                 alt="logo"
               />
             </Link>
