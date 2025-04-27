@@ -1,0 +1,33 @@
+{
+  "welcomeMessage": "Welcome to our application",
+  "languageSelector": "Choose your language",
+  "navigation": {
+    "logo":"LOGO",
+    "home": "HOME",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favorites": "Favorites",
+    "cart": "Cart",
+    "about": "About",
+    "contact": "Contact",
+    "services": "Services",
+    "search_placeholder": "search"
+  },
+  "home": {
+    "title": "Our Amazing Application",
+    "subtitle": "Discover our features",
+    "description": "This is an example of a multilingual application using React, Redux, and i18next."
+  },
+  "footer": {
+    "copyright": "© 2025 Your Company. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit"
+  }
+}

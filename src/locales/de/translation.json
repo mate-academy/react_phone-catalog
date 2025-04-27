@@ -1,0 +1,33 @@
+{
+  "welcomeMessage": "Willkommen in unserer Anwendung",
+  "languageSelector": "Wählen Sie Ihre Sprache",
+  "navigation": {
+    "logo": "LOGO",
+    "home": "Startseite",
+    "phones": "Handys",
+    "tablets": "Tablets",
+    "accessories": "Zubehör",
+    "favorites": "Favoriten",
+    "cart": "Warenkorb",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "services": "Dienstleistungen",
+    "search_placeholder": "suchen"
+  },
+  "home": {
+    "title": "Unsere erstaunliche Anwendung",
+    "subtitle": "Entdecken Sie unsere Funktionen",
+    "description": "Dies ist ein Beispiel für eine mehrsprachige Anwendung mit React, Redux und i18next."
+  },
+  "footer": {
+    "copyright": "© 2025 Ihre Firma. Alle Rechte vorbehalten.",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termsOfService": "Nutzungsbedingungen"
+  },
+  "form": {
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "submit": "Absenden"
+  }
+}

@@ -1,0 +1,90 @@
+import { Link } from 'react-router-dom';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart, removeFromCart } from '../../redux/cartSlice';
+import { addToFavorites, removeFromFavorites }
+  from '../../redux/favoritesSlice';
+import './Phones.scss';
+import productsJson from '../../../public/api/products.json'; // '../../_new/products.json';
+import { Accessory } from '../Accessories/Accessories';
+import { Tablet } from '../Tablets/Tablets';
+import { useAppSelector } from '../../redux/store';
+
+export type Phone = {
+  id: string;
+  category: string;
+  phoneId: string;
+  itemId: string;
+  name: string;
+  fullPrice: number;
+  price: number;
+  screen: string;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+  image: string;
+};
+
+export const useProductState = () => {
+  const cartItems = useAppSelector(state => state.cart.items);
+  const favoriteItems = useAppSelector(state => state.favorites.items);
+
+  return {
+    isInCart: (productId: string) => cartItems
+      .some((item: Phone | Tablet | Accessory) => item.id === productId),
+    isInFavorites: (productId: string) => favoriteItems
+      .some((item: Phone | Tablet | Accessory) => item.id === productId),
+  };
+};
+
+export const Phones: React.FC = () => {
+  const products = JSON.parse(JSON.stringify(productsJson)); // TS workaround
+  const dispatch = useDispatch();
+  const { isInCart, isInFavorites } = useProductState();
+
+  return (
+    <div className="phones_page">
+      <h1>Phones PAGE</h1>
+      {products.filter((phone: Phone) => phone.category === 'phones')
+        .sort((a:Phone, b:Phone) => b.price - a.price)
+        .map((phone:Phone) => (
+          <div className="card" key={phone.itemId}>
+            <img
+              src={`../../../public/${phone.image}`}
+              alt="here should be an image"
+              height="300"
+            />
+            <br/>
+            <Link
+              to={`/phones/${phone.itemId}`}
+            >
+              {`${phone.name}`}
+            </Link>
+            <br />
+            {`${phone.price} $`} &emsp;<s>{`${phone.fullPrice} $`}</s>
+            <br />
+            Screen &emsp;{`${phone.screen}`}
+            <br />
+            Capacity &emsp;{`${phone.capacity}`}
+            <br />
+            RAM &emsp;{`${phone.ram}`}
+            <br />
+
+            <button className={`add-to-cart-button ${isInCart(phone?.id) ? 'in-cart' : ''}`}
+              onClick={() => isInCart(phone?.id)
+                ? dispatch(removeFromCart(phone?.id))
+                : dispatch(addToCart(phone))
+              }>add_to_cart</button>
+            <button className={`favorite-button ${isInFavorites(phone?.id) ? 'in-favorites' : ''}`}
+              onClick={() => isInFavorites(phone?.id)
+                ? dispatch(removeFromFavorites(phone?.id))
+                : dispatch(addToFavorites(phone))
+              }>♥️</button>
+            <br />
+            <br />
+          </div>
+        ))}
+    </div>
+  );
+};

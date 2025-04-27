@@ -1,0 +1,33 @@
+{
+  "welcomeMessage": "Ласкаво просимо до нашого додатку",
+  "languageSelector": "Оберіть вашу мову",
+  "navigation": {
+    "logo":"ЛОГО",
+    "home": "Головна",
+    "phones": "Смартфони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "favorites": "Улюблені",
+    "cart": "Кошик",
+    "about": "Про нас",
+    "contact": "Контакти",
+    "services": "Послуги",
+    "search_placeholder": "Пошук"
+  },
+  "home": {
+    "title": "Наш чудовий додаток",
+    "subtitle": "Дізнайтеся про наші функції",
+    "description": "Це приклад багатомовного додатку з використанням React, Redux та i18next."
+  },
+  "footer": {
+    "copyright": "© 2025 Ваша Компанія. Усі права захищено.",
+    "privacyPolicy": "Політика конфіденційності",
+    "termsOfService": "Умови використання"
+  },
+  "form": {
+    "name": "Ім'я",
+    "email": "Електронна пошта",
+    "message": "Повідомлення",
+    "submit": "Надіслати"
+  }
+}
