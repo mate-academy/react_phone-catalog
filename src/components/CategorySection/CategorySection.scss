@@ -45,8 +45,8 @@
       height: 280px;
     }
 
-    @media (max-width: 480px) {
-      height: 240px;
+    @media (max-width: 480px) {width: 320px;
+      height: 320px;
     }
 
     // Category-specific backgrounds
@@ -71,8 +71,12 @@
     padding-top: 60px;
     margin-top: 5px;
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       padding-top: 40px;
+    }
+
+    @media (max-width: 480px) {
+      padding-top: 20px;
     }
 
     &:hover {

@@ -28,6 +28,10 @@
       flex-direction: column;
       align-items: flex-start;
     }
+
+    @media (max-width: 480px) {
+      padding: 0 12px;
+    }
   }
 
   &__logo {
@@ -36,6 +40,10 @@
 
     @media (max-width: 768px) {
       margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+      margin-bottom: 16px;
     }
 
     &-link {
@@ -49,6 +57,10 @@
       display: flex;
       align-items: center;
       padding: 0 24px;
+
+      @media (max-width: 480px) {
+        padding: 0 12px;
+      }
     }
 
     &-text {
@@ -99,6 +111,10 @@
       margin-bottom: 20px;
       width: 100%;
     }
+
+    @media (max-width: 480px) {
+      margin-bottom: 16px;
+    }
   }
 
   &__nav-list {
@@ -110,6 +126,11 @@
 
     @media (max-width: 768px) {
       flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 12px;
     }
   }
 
@@ -126,6 +147,10 @@
 
     @media (max-width: 768px) {
       margin: 0 0 10px;
+    }
+
+    @media (max-width: 480px) {
+      margin: 0 0 8px;
     }
   }
 

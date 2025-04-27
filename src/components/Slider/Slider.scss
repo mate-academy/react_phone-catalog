@@ -10,6 +10,23 @@
   box-sizing: content-box;
   font-family: Montserrat, sans-serif;
 
+  @media (max-width: 1199px) {
+    width: 100%;
+    padding: 0 40px;
+  }
+
+  @media (max-width: 768px) {
+    height: 350px;
+    margin-bottom: 30px;
+    padding: 0 32px;
+  }
+
+  @media (max-width: 480px) {
+    height: 300px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+
   &__container {
     position: relative;
     width: 100%;
@@ -65,12 +82,32 @@
     cursor: pointer;
     z-index: 2;
 
+    @media (max-width: 768px) {
+      height: 350px;
+      width: 28px;
+      font-size: 28px;
+    }
+
+    @media (max-width: 480px) {
+      height: 300px;
+      width: 24px;
+      font-size: 24px;
+    }
+
     &--prev {
       left: -15px;
+
+      @media (max-width: 480px) {
+        left: -10px;
+      }
     }
 
     &--next {
       right: -15px;
+
+      @media (max-width: 480px) {
+        right: -10px;
+      }
     }
   }
 
@@ -81,6 +118,10 @@
     transform: translateX(-50%);
     display: flex;
     z-index: 2;
+
+    @media (max-width: 480px) {
+      bottom: 12px;
+    }
   }
 
   &__dot {
@@ -91,6 +132,12 @@
     padding: 0;
     border: none;
     cursor: pointer;
+
+    @media (max-width: 480px) {
+      width: 8px;
+      height: 8px;
+      margin: 0 4px;
+    }
 
     &--active {
       background-color: #fff;

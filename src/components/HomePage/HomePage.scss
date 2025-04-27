@@ -10,9 +10,15 @@
   &__main {
     flex-grow: 1;
     padding: 24px 0;
+    margin-top: 48px; /* To compensate for fixed header */
+
+    @media (max-width: 768px) {
+      margin-top: 40px;
+    }
 
     @media (max-width: 480px) {
       padding: 16px 0;
+      margin-top: 36px;
     }
   }
 
@@ -20,6 +26,10 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 16px;
+
+    @media (max-width: 480px) {
+      padding: 0 12px;
+    }
   }
 
   &__section {
@@ -27,6 +37,10 @@
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 50px;
     }
 
     @media (max-width: 480px) {
@@ -38,6 +52,11 @@
     font-size: 32px;
     margin: 0 0 30px;
     text-align: left;
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+      margin: 0 0 24px;
+    }
 
     @media (max-width: 480px) {
       font-size: 24px;
@@ -51,6 +70,10 @@
     align-items: center;
     margin-bottom: 30px;
 
+    @media (max-width: 768px) {
+      margin-bottom: 24px;
+    }
+
     @media (max-width: 480px) {
       margin-bottom: 20px;
     }
@@ -59,6 +82,11 @@
   &__section-title {
     font-size: 28px;
     margin: 0 0 30px;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      margin: 0 0 24px;
+    }
 
     @media (max-width: 480px) {
       font-size: 22px;
@@ -120,8 +148,9 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    margin-top: 24px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
@@ -129,6 +158,7 @@
     @media (max-width: 480px) {
       grid-template-columns: 1fr;
       gap: 12px;
+      margin-top: 16px;
     }
   }
 }
