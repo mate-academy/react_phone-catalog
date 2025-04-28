@@ -186,9 +186,9 @@ export const PhonePage = () => {
               <Link to={`/products/${phone.id}`}>
                 <img
                   src={
-                    imageError[`/${phone.images[0]}`]
+                    imageError[`${phone.images[0]}`]
                       ? pageNotFound
-                      : `/${phone.images[0]}`
+                      : `${phone.images[0]}`
                   }
                   alt={phone.name}
                   className="phone__card-image"

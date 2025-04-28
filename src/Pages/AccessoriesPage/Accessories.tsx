@@ -180,7 +180,7 @@ export const AccessoriesPage = () => {
                   src={
                     imageError[`/${accessory.images[0]}`]
                       ? pageNotFound
-                      : `/${accessory.images[0]}`
+                      : `${accessory.images[0]}`
                   }
                   alt={accessory.name}
                   className="accessories__card-image"

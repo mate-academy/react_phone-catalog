@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import './FavoritesPage.scss';
 import { useEffect, useState } from 'react';
 import { Accessories, Phone, Tablet } from '../../../Interface';
+import activeSvg from '../../../../public/figmaLogo/ActiveHeart.svg';
+import pageNotFound from '../../../../public/img/page-not-found.png';
 
 export const FavoritesPage = () => {
   const { favorites, toggleFavorite, cart, addToCart } = useCart();
@@ -103,14 +105,14 @@ export const FavoritesPage = () => {
             <Link to={`/products/${product.id}`}>
               <img
                 src={
-                  imageError[`/${product.images[0]}`] || !product.images[0]
-                    ? '/public/img/page-not-found.png'
-                    : `/${product.images[0]}`
+                  imageError[`${product.images[0]}`] || !product.images[0]
+                    ? pageNotFound
+                    : `${product.images[0]}`
                 }
                 alt={product.name}
                 className="favorites__item-image"
                 onError={() =>
-                  product.images[0] && handleImageError(`/${product.images[0]}`)
+                  product.images[0] && handleImageError(`${product.images[0]}`)
                 }
               />
               <h3 className="favorites__item-name">{product.name}</h3>
@@ -132,8 +134,8 @@ export const FavoritesPage = () => {
                     name: product.name,
                     price: product.priceDiscount,
                     image: product.images[0]
-                      ? `/${product.images[0]}`
-                      : '/public/img/page-not-found.png',
+                      ? `${product.images[0]}`
+                      : pageNotFound,
                     color: product.color,
                     quantity: 1,
                     ...(isPhoneOrTablet(product) && {
@@ -158,7 +160,7 @@ export const FavoritesPage = () => {
                 onClick={() => toggleFavorite(product.id)}
               >
                 <img
-                  src="/figmaLogo/ActiveHeart.svg"
+                  src={activeSvg}
                   alt="Remove from favorites"
                   className="favorites__item-btn-icon"
                 />

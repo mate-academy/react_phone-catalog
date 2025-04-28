@@ -89,7 +89,7 @@ export const ProductDetailsPage = () => {
           setProduct(newProduct);
           setSelectedColor(urlColor);
           setSelectedImage(
-            newProduct.images?.[0] ? `/${newProduct.images[0]}` : pageNotFound,
+            newProduct.images?.[0] ? `${newProduct.images[0]}` : pageNotFound,
           );
           setSelectedCapacity(urlCapacity);
 
@@ -132,7 +132,7 @@ export const ProductDetailsPage = () => {
       setProduct(newProduct);
       setSelectedColor(color);
       setSelectedImage(
-        newProduct.images?.[0] ? `/${newProduct.images[0]}` : pageNotFound,
+        newProduct.images?.[0] ? `${newProduct.images[0]}` : pageNotFound,
       );
       navigate(`/products/${newProduct.id}`);
     }
@@ -154,7 +154,7 @@ export const ProductDetailsPage = () => {
       setSelectedCapacity(capacity);
       setProduct(newProduct);
       setSelectedImage(
-        newProduct.images?.[0] ? `/${newProduct.images[0]}` : pageNotFound,
+        newProduct.images?.[0] ? `${newProduct.images[0]}` : pageNotFound,
       );
       navigate(`/products/${newProduct.id}`);
     }
@@ -258,12 +258,12 @@ export const ProductDetailsPage = () => {
             {product.images?.map((image, index) => (
               <img
                 key={index}
-                src={imageError[`/${image}`] ? pageNotFound : `/${image}`}
+                src={imageError[`${image}`] ? pageNotFound : `${image}`}
                 alt={`${product.name} thumbnail ${index + 1}`}
-                className={`thumbnail ${selectedImage === `/${image}` ? 'thumbnail--active' : ''}`}
-                onClick={() => setSelectedImage(`/${image}`)}
+                className={`thumbnail ${selectedImage === `${image}` ? 'thumbnail--active' : ''}`}
+                onClick={() => setSelectedImage(`${image}`)}
                 loading="lazy"
-                onError={() => handleImageError(`/${image}`)}
+                onError={() => handleImageError(`${image}`)}
               />
             ))}
           </div>
@@ -427,14 +427,14 @@ export const ProductDetailsPage = () => {
                   <Link to={`/products/${relatedItem.id}`}>
                     <img
                       src={
-                        imageError[`/${relatedItem.images[0]}`]
+                        imageError[`${relatedItem.images[0]}`]
                           ? pageNotFound
-                          : `/${relatedItem.images[0]}`
+                          : `${relatedItem.images[0]}`
                       }
                       alt={relatedItem.name}
                       className="related-products__card-image"
                       onError={() =>
-                        handleImageError(`/${relatedItem.images[0]}`)
+                        handleImageError(`${relatedItem.images[0]}`)
                       }
                     />
                     <h3 className="related-products__card-title">
@@ -501,7 +501,7 @@ export const ProductDetailsPage = () => {
                           id: relatedItem.id,
                           name: relatedItem.name,
                           price: relatedItem.priceDiscount,
-                          image: `/${relatedItem.images[0]}`,
+                          image: `${relatedItem.images[0]}`,
                           color: relatedItem.color,
                           capacity:
                             'capacity' in relatedItem

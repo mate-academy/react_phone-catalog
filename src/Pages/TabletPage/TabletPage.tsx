@@ -180,7 +180,7 @@ export const TabletPage = () => {
                   src={
                     imageError[`/${tablet.images[0]}`]
                       ? pageNotFound
-                      : `/${tablet.images[0]}`
+                      : `${tablet.images[0]}`
                   }
                   alt={tablet.name}
                   className="tablets__card-image"

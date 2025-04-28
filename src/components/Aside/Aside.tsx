@@ -3,8 +3,8 @@ import './Aside.scss';
 import figmaLogo from '../../../public/figmaLogo/Logo.svg';
 
 type Props = {
-  isMenuOpen: boolean;
-  onClose: () => void;
+  isMenuOpen?: boolean;
+  onClose?: () => void;
 };
 
 export const Aside: React.FC<Props> = ({ isMenuOpen, onClose }) => {
