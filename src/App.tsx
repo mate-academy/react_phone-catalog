@@ -12,7 +12,6 @@ import Footer from './components/Footer/Footer';
 const App = () => {
   return (
     <>
-      <h1>Product Catalog</h1>
       <header>
         <NavBar />
       </header>

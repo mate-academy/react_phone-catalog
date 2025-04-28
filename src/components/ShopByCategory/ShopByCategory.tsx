@@ -21,7 +21,7 @@ const ShopByCategory = () => {
 
   return (
     <>
-      <h1 className={styles.shopByCategory__title}>Shop By Category</h1>
+      <h2 className={styles.shopByCategory__title}>Shop By Category</h2>
       <div className={styles.shopByCategory}>
         <article className={styles.shopByCategory__item}>
           <NavLink to="/phones" className={styles.shopByCategory__image}>

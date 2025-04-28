@@ -59,7 +59,7 @@ const HorPrices = () => {
   return (
     <>
       <div className={styles.hotPrices__header}>
-        <h1 className={styles.hotPrices__title}>Hot Prices</h1>
+        <h2 className={styles.hotPrices__title}>Hot Prices</h2>
         <div className={styles.hotPrices__arrows}>
           <div
             className={`${styles.hotPrices__arrow} ${startIndex === 0 && styles['hotPrices__arrow-disabled']}`}

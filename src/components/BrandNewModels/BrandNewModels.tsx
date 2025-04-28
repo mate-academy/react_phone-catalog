@@ -59,7 +59,7 @@ const BrandNewModels = () => {
   return (
     <>
       <div className={styles.brandNewModels__header}>
-        <h1 className={styles.brandNewModels__title}>Brand new models</h1>
+        <h2 className={styles.brandNewModels__title}>Brand new models</h2>
         <div className={styles.brandNewModels__arrows}>
           <div
             className={`${styles.brandNewModels__arrow} ${startIndex === 0 && styles['brandNewModels__arrow-disabled']}`}
