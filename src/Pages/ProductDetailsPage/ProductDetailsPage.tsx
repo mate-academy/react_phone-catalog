@@ -47,9 +47,9 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const urls = [
-        '/api/phones.json',
-        '/api/tablets.json',
-        '/api/accessories.json',
+        'api/phones.json',
+        'api/tablets.json',
+        'api/accessories.json',
       ];
       const allData: (Phone | Tablet | Accessories)[] = [];
 

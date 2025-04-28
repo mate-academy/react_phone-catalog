@@ -31,7 +31,7 @@ export default function HotPrices() {
 
   useEffect(() => {
     setLoading(true);
-    fetch('../../../public/api/phones.json')
+    fetch('api/phones.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(

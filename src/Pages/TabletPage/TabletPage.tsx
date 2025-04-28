@@ -39,7 +39,7 @@ export const TabletPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('/api/tablets.json')
+    fetch('api/tablets.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(

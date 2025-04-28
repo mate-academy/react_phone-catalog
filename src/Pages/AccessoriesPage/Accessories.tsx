@@ -34,7 +34,7 @@ export const AccessoriesPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('/api/accessories.json')
+    fetch('api/accessories.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(

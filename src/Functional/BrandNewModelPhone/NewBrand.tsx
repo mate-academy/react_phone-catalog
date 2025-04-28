@@ -28,7 +28,7 @@ export default function NewBrand() {
 
   useEffect(() => {
     setLoading(true);
-    fetch('/api/phones.json')
+    fetch('api/phones.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(
