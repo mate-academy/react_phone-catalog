@@ -12,6 +12,7 @@ import Footer from './components/Footer/Footer';
 const App = () => {
   return (
     <>
+      <h1>Product Catalog</h1>
       <header>
         <NavBar />
       </header>
@@ -39,7 +40,7 @@ const App = () => {
         </main>
       </div>
 
-      <div className="container" id="footer-container">
+      <div className="container footer-container">
         <footer>
           <Footer />
         </footer>

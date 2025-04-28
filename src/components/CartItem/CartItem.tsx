@@ -65,7 +65,7 @@ const CartItem: React.FC<CartItemProps> = ({ product }) => {
       setCart(updatedCart);
       localStorage.setItem('cart', JSON.stringify(updatedCart));
     }
-  }, [amount, product]);
+  }, [amount, product, dispatch]);
 
   return (
     <div className={styles.cartItem}>

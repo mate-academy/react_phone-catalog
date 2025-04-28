@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'MyFont';
-  src: url('../../../public/fonts/Mont.otf') format('opentype');
+  font-family: MyFont;
+  src: url('fonts/Mont.otf') format('opentype');
 }
 
 body {
@@ -11,7 +11,7 @@ body {
 
 * {
   box-sizing: border-box;
-  font-family: 'MyFont', sans-serif;
+  font-family: MyFont, sans-serif;
 }
 
 .container {
@@ -29,10 +29,10 @@ footer {
 }
 
 footer {
-  padding: 10px 20px 30px 20px;
+  padding: 10px 20px 30px;
 }
 
-#footer-container {
+.footer-container {
   border-top: 1px solid rgb(220, 220, 220);
   margin-top: 100px;
 }

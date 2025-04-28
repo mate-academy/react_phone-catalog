@@ -1,7 +1,6 @@
-import React from 'react';
-import styles from './Footer.module.scss';
 import logo from '../../../public/img/logo/Logo (3).png';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import styles from './Footer.module.scss';
 
 const Footer = () => {
   const scrollToTop = () => {

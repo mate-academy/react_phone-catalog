@@ -65,7 +65,8 @@
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
-    "deploy": "mate-scripts deploy"
+    "deploy": "mate-scripts deploy",
+    "dev": "NODE_OPTIONS=--max-old-space-size=4096 vite"
   },
   "browserslist": {
     "production": [

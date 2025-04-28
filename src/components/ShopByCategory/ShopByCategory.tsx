@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom'; // Импорт NavLink
 import styles from './ShopByCategory.module.scss';
 import PhonesImage from '../../../public/img/category-phones-new.png';

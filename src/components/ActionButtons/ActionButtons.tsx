@@ -68,7 +68,7 @@ const ActionButtons = ({ product }: ActionButtonProps) => {
 
       localStorage.setItem('cart', JSON.stringify(updatedCart));
     },
-    [product, setIsProductInCart],
+    [product, setIsProductInCart, dispatch],
   );
 
   const triggerFavourites = useCallback(
@@ -102,7 +102,7 @@ const ActionButtons = ({ product }: ActionButtonProps) => {
 
       localStorage.setItem('favourites', JSON.stringify(updatedFavourites));
     },
-    [product, setIsProductInFavourites],
+    [product, setIsProductInFavourites, dispatch],
   );
 
   return (

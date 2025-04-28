@@ -1,7 +1,8 @@
+import React from 'react';
 import styles from './WelcomeText.module.scss';
 
 const WelcomeText = () => {
-  return <h1 className={styles.welcomeText}>Welcome to Nice Gadgets store!</h1>;
+  return <h1 className={styles.welcomeText}>Product Catalog</h1>;
 };
 
 export default WelcomeText;

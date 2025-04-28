@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import styles from './CartPage.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Product } from '../../types/product';
 import { RootState } from '../../store';
@@ -14,11 +14,15 @@ const CartPage = () => {
 
   useEffect(() => {
     const calculatedTotal = cartProducts.reduce((acc, item) => {
-      return acc + item.priceRegular * item.quantity;
+      if (item.quantity !== undefined) {
+        return acc + item.priceRegular * item.quantity;
+      } else {
+        return acc;
+      }
     }, 0);
 
     setTotalPrice(calculatedTotal);
-    console.log();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartProducts.map(item => item.quantity).join(','), cartProducts]);
 
   useEffect(() => {
