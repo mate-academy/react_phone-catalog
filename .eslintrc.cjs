@@ -48,6 +48,8 @@ module.exports = {
     }],
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,
+    'no-descending-specificity': 'off',
+    'no-param-reassign': ["error", { "props": false }],
     'operator-linebreak': 0,
     'brace-style': [2, '1tbs'],
     'arrow-body-style': 0,
