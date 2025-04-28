@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <div className={styles.container}>
-      <div><img src="./images/logo/Logo.png" className={styles.logo} /></div>
+      <div><img src="/images/logo/Logo.png" className={styles.logo} /></div>
       <ul className={styles.nav}>
         <li onClick={handleScrollTop}>
           <Link to={'https://github.com/OlyaVidzi'}>GITHUB</Link>
