@@ -13,11 +13,9 @@
 .product-details {
   max-width: 1200px;
   margin: 0 auto;
-  background-color: var(--background);
   color: var(--text-color);
   font-family: Inter, sans-serif;
 
-  @include padding-inline-category;
 
   &__actions {
     margin-top: auto;

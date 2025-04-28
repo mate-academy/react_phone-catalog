@@ -4,14 +4,20 @@ import './Header.scss';
 import classNames from 'classnames';
 import { useCart } from '../../Functional/CartContext/CartContext';
 import { Aside } from '../Aside/Aside';
+import { useState } from 'react';
 
 export const Header = () => {
   const { cart, favorites } = useCart();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar-item', {
       'is-active': isActive,
     });
+
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev);
+  };
 
   return (
     <header className="header">
@@ -68,11 +74,21 @@ export const Header = () => {
             </Link>
           </div>
 
-          <div className="header__burger">
-            <Link to="menu" className="header__burger-menu"></Link>
+          <div className="header__burger-wrapper">
+            <div className="header__burger">
+              <button
+                type="button"
+                className="header__burger-menu"
+                onClick={toggleMenu}
+              >
+                <span />
+                <span />
+                <span />
+              </button>
+            </div>
           </div>
         </div>
-        <Aside />
+        <Aside isMenuOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       </div>
     </header>
   );

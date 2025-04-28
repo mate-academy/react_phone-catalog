@@ -11,38 +11,61 @@
   align-items: center;
   margin: 0 auto;
   width: 100%;
-  border: 1px solid #3B3E4A;
   z-index: 1000;
   position: sticky;
   top: 0;
   background-color: #1f1f2b;
 
 
+&__burger-wrapper{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #3B3E4A;
+  padding-left: 30px;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
   &__burger-menu {
     width: 24px;
     height: 24px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    transition: transform 0.3s;
-    background-image: url(/figmaLogo/Burger.svg);
-    align-items: center;
-    justify-content: center;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
     margin-right: 30px;
 
+    span {
+      width: 24px;
+      height: 2px;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    &:hover span {
+      background-color: #75767F;
+    }
+
     @include on-tablet {
-    display: none;
+      display: none;
     }
 
     @include on-desktop {
-    display: none;
-    }
-
-    &:hover {
-      transform: scale(1.2);
+      display: none;
     }
   }
+
 
   &__top {
     width: 100%;
@@ -50,6 +73,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+    border-bottom: 1px solid #3B3E4A;
   }
 
   &__logo {
@@ -97,7 +121,8 @@
   &__heart,
   &__packet {
     position: relative;
-    border: 1px solid #3B3E4A;
+    border-left: 1px solid #3B3E4A;
+    padding-left: 30px;
     cursor: pointer;
     padding: 30px;
 

@@ -9,10 +9,17 @@
   background-color: #0F1121;
   box-sizing: border-box;
   opacity: 0;
-  pointer-events: none;
-  transform: translateX(-100%);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   z-index: 2;
+  transform: translateX(-100%);
+  pointer-events: none;
+
+  transition: transform 0.3s, opacity 0.3s;
+  &--open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 
   @include on-tablet {
     display: none;
@@ -35,27 +42,39 @@
     align-items: center;
     width: 100%;
     margin-bottom: 32px;
-    border: 1px solid #3B3E4A;
+    border: none;
+    border-bottom: 1px solid #3B3E4A;
+  }
+
+  &__close-wrapper {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid #3B3E4A;
+    padding-left: 30px;
   }
 
   &__close {
     display: flex;
-
-    padding: 20px 35px;
-    border: 1px solid #3B3E4A;
   }
 
   &__closes {
     background-image: url('/figmaLogo/Close.svg');
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
     width: 20px;
     height: 20px;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin-right: 30px;
   }
 
+
   &__logo {
-    margin: 16px 13px;
+    padding: 10px;
   }
 
   &__content {
