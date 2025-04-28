@@ -17,34 +17,17 @@ export const Navbar: React.FC = () => {
   const dispatch = useDispatch();
   const currentTheme = useAppSelector(
     (state: { theme: { current: string; }; }) => state.theme.current);
-/*   const { currentTheme, loadedStyles } = useSelector((state: RootState) =>
-    state.theme);
-  const componentName = 'Navbar';
-  const styleKey = `${componentName}_${currentTheme}`; */
-
-/*   useEffect(() => {
-    // Завантажуємо стилі, якщо вони ще не завантажені
-    if (!loadedStyles[styleKey]) {
-      dispatch(loadComponentStyles({ componentName, theme: currentTheme }));
-    }
-  }, [currentTheme, dispatch, loadedStyles, styleKey]); */
-
-  const componentName = 'Navbar';
-
-  useEffect(() => {
-    // Завантажуємо стилі, якщо вони ще не завантажені
-    import(`./${componentName}_${currentTheme}.scss`);
-    console.log(`${currentTheme} imported for ${componentName}`);
-  }, [currentTheme]);
 
   return (
     <nav
       data-cy="nav"
       role="navigation"
       aria-label="main navigation"
+      className={`navbar-body ${currentTheme}`}
     >
-      <div className="navbar-container">
+      <div className={`navbar-container ${currentTheme}`}>
         <div className="navbar-brand">
+          current theme {currentTheme}
           <NavLink
             to="/"
             className={() => classNames(

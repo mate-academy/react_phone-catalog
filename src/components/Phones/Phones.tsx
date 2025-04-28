@@ -43,48 +43,53 @@ export const Phones: React.FC = () => {
   const dispatch = useDispatch();
   const { isInCart, isInFavorites } = useProductState();
 
-  return (
-    <div className="phones_page">
-      <h1>Phones PAGE</h1>
-      {products.filter((phone: Phone) => phone.category === 'phones')
-        .sort((a:Phone, b:Phone) => b.price - a.price)
-        .map((phone:Phone) => (
-          <div className="card" key={phone.itemId}>
-            <img
-              src={`../../../public/${phone.image}`}
-              alt="here should be an image"
-              height="300"
-            />
-            <br/>
-            <Link
-              to={`/phones/${phone.itemId}`}
-            >
-              {`${phone.name}`}
-            </Link>
-            <br />
-            {`${phone.price} $`} &emsp;<s>{`${phone.fullPrice} $`}</s>
-            <br />
-            Screen &emsp;{`${phone.screen}`}
-            <br />
-            Capacity &emsp;{`${phone.capacity}`}
-            <br />
-            RAM &emsp;{`${phone.ram}`}
-            <br />
+  const currentTheme = useAppSelector(
+    (state: { theme: { current: string; }; }) => state.theme.current);
 
-            <button className={`add-to-cart-button ${isInCart(phone?.id) ? 'in-cart' : ''}`}
-              onClick={() => isInCart(phone?.id)
-                ? dispatch(removeFromCart(phone?.id))
-                : dispatch(addToCart(phone))
-              }>add_to_cart</button>
-            <button className={`favorite-button ${isInFavorites(phone?.id) ? 'in-favorites' : ''}`}
-              onClick={() => isInFavorites(phone?.id)
-                ? dispatch(removeFromFavorites(phone?.id))
-                : dispatch(addToFavorites(phone))
-              }>♥️</button>
-            <br />
-            <br />
-          </div>
-        ))}
-    </div>
+  return (
+    <>
+      <div className={`phones_page ${currentTheme}`}>
+        <h1>Phones PAGE with {currentTheme}</h1>
+        {products.filter((phone: Phone) => phone.category === 'phones')
+          .sort((a:Phone, b:Phone) => b.price - a.price)
+          .map((phone:Phone) => (
+            <div className="card" key={phone.itemId}>
+              <img
+                src={`../../../public/${phone.image}`}
+                alt="here should be an image"
+                height="300"
+              />
+              <br/>
+              <Link
+                to={`/phones/${phone.itemId}`}
+              >
+                {`${phone.name}`}
+              </Link>
+              <br />
+              {`${phone.price} $`} &emsp;<s>{`${phone.fullPrice} $`}</s>
+              <br />
+              Screen &emsp;{`${phone.screen}`}
+              <br />
+              Capacity &emsp;{`${phone.capacity}`}
+              <br />
+              RAM &emsp;{`${phone.ram}`}
+              <br />
+
+              <button className={`add-to-cart-button ${isInCart(phone?.id) ? 'in-cart' : ''} ${currentTheme}`}
+                onClick={() => isInCart(phone?.id)
+                  ? dispatch(removeFromCart(phone?.id))
+                  : dispatch(addToCart(phone))
+                }>add_to_cart</button>
+              <button className={`favorite-button ${isInFavorites(phone?.id) ? 'in-favorites' : ''} ${currentTheme}`}
+                onClick={() => isInFavorites(phone?.id)
+                  ? dispatch(removeFromFavorites(phone?.id))
+                  : dispatch(addToFavorites(phone))
+                }>♥️</button>
+              <br />
+              <br />
+            </div>
+          ))}
+      </div>
+    </>
   );
 };
