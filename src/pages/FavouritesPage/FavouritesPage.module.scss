@@ -1,0 +1,59 @@
+@import '../../styles/main';
+
+.favourites-page {
+  &__breadcrumbs {
+    margin: 24px 0;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+    letter-spacing: -1%;
+    color: $color-primary;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__empty {
+    font-size: 20px;
+    color: $color-secondary;
+    text-align: center;
+
+    @include on-tablet {
+      font-size: 30px;
+    }
+  }
+
+  &__items-count {
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    color: $color-secondary;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__items {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}

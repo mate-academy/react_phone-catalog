@@ -1,0 +1,105 @@
+@import '../../styles/main';
+
+.aside {
+  position: fixed;
+  top: 49px;
+  bottom: 0;
+  width: 100%;
+  background-color: $color-white;
+  opacity: 0;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition:
+    opacity $effect-duration,
+    transform $effect-duration;
+
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
+
+  &--open {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__link {
+    position: relative;
+    padding-block: 8px;
+    color: $color-secondary;
+
+    @extend %font-uppercase;
+
+    &--active {
+      @include header-active-link;
+    }
+  }
+}
+
+.icons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  border-top: 1px solid $color-elements;
+
+  &__item {
+    position: relative;
+    height: 100%;
+    width: 50%;
+    box-shadow: -1px 0 0 0 $color-elements;
+
+    &--active {
+      @include header-active-link;
+    }
+  }
+
+  &__link {
+    &--active {
+      @include header-active-link;
+    }
+  }
+
+  &__icon {
+    margin-inline: auto;
+    padding-block: 24px;
+  }
+
+  &__count-badge {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    bottom: 50%;
+    left: 50%;
+    background-color: #eb5757;
+    border-radius: 50%;
+    border: 1px solid $color-white;
+    font-size: 9px;
+    line-height: 11px;
+    font-weight: 700;
+    color: $color-white;
+
+    @include on-desktop {
+      top: 18px;
+      right: 18px;
+    }
+  }
+}

@@ -1,0 +1,152 @@
+@import '../../styles/main';
+
+.product-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  height: 440px;
+  border: 1px solid $color-elements;
+
+  @include hover(box-shadow, 0 2px 15 0 #0000001a);
+
+  @include on-tablet {
+    height: 506px;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include hover(opacity, 0.7);
+  }
+
+  &__img-container {
+    display: flex;
+    height: 130px;
+    width: 100%;
+
+    @include on-tablet {
+      height: 196px;
+    }
+  }
+
+  &__img {
+    margin-inline: auto;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    padding-top: 16px;
+    color: $color-primary;
+
+    @extend %font-body-text;
+  }
+
+  &__prices {
+    position: relative;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    padding-bottom: 8px;
+    color: $color-primary;
+
+    @extend %font-h3-desktop;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $color-elements;
+    }
+  }
+
+  &__hot-price {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: $fw-regular;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__description {
+    padding-block: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__description-item {
+    display: flex;
+    justify-content: space-between;
+    color: $color-secondary;
+
+    @extend %font-small-text;
+  }
+
+  &__description-value {
+    color: $color-primary;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    height: 40px;
+  }
+
+  &__button-add,
+  &__button-favourites {
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+
+    transition: all 0.3s ease-in-out;
+  }
+
+  &__button-add {
+    width: 100%;
+    color: $color-white;
+    background-color: $color-primary;
+
+    @extend %font-buttons;
+  }
+
+  &__button-favourites {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    width: 40px;
+    height: 40px;
+    transition: all $effect-duration;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+
+    &--active {
+      border: 1px solid $color-elements;
+    }
+  }
+
+  &__button-icon {
+    position: absolute;
+    width: 30px;
+    height: 16px;
+    opacity: 0;
+    transition: all $effect-duration;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+}
