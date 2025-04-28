@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Aside.scss';
+import figmaLogo from '../../../public/figmaLogo/Logo.svg';
 
 type Props = {
   isMenuOpen: boolean;
@@ -11,7 +12,7 @@ export const Aside: React.FC<Props> = ({ isMenuOpen, onClose }) => {
     <aside className={`menu ${isMenuOpen ? 'menu--open' : ''}`}>
       <div className="menu__top">
         <Link to="/" className="menu__logo">
-          <img src="/figmaLogo/Logo.svg" alt="NiceGadgets_logo" />
+          <img src={figmaLogo} alt="NiceGadgets_logo" />
         </Link>
         <div className="menu__close-wrapper">
           <div className="menu__close">

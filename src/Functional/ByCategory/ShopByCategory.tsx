@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import './ShopByCategory.scss';
+import categoryPhones from '../../../public/img/category-phones.webp';
+import categoryTablets from '../../../public/img/category-tablets.png';
+import categoryAccessories from '../../../public/img/category-accessories.png';
 
 export default function ShopByCategory() {
   return (
@@ -10,7 +13,7 @@ export default function ShopByCategory() {
           <Link to="/phones">
             <div className="shop__phone">
               <img
-                src="/public/img/category-phones.webp"
+                src={categoryPhones}
                 alt="phones-category"
                 className="shop__phone--img"
               />
@@ -23,7 +26,7 @@ export default function ShopByCategory() {
           <Link to="/tablets">
             <div className="shop__tablet">
               <img
-                src="/public/img/category-tablets.png"
+                src={categoryTablets}
                 alt="tablets-category"
                 className="shop__tablet--img"
               />
@@ -36,7 +39,7 @@ export default function ShopByCategory() {
           <Link to="/accessories">
             <div className="shop__accessories">
               <img
-                src="/public/img/category-accessories.png"
+                src={categoryAccessories}
                 alt="accessories-category"
                 className="shop__accessories--img"
               />

@@ -5,6 +5,8 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Link } from 'react-router-dom';
+import heartLove from '../../../public/figmaLogo/HeartLove.svg';
+import pageNotFound from '../../../public/img/page-not-found.png';
 // import phonesApi from '../../../public/api/phones.json';
 
 interface Phone {
@@ -114,10 +116,7 @@ export default function HotPrices() {
                   alt={phone.name}
                   className="brand__card-image"
                   onError={e =>
-                    e.currentTarget.setAttribute(
-                      'src',
-                      '/public/img/page-not-found.png',
-                    )
+                    e.currentTarget.setAttribute('src', pageNotFound)
                   }
                 />
                 <h3 className="brand__card-title">{phone.name}</h3>
@@ -155,7 +154,7 @@ export default function HotPrices() {
                   </button>
                   <button className="brand__card-btn brand__card-btn--favorite">
                     <img
-                      src="/figmaLogo/HeartLove.svg"
+                      src={heartLove}
                       alt="Favorite"
                       className="brand__card-btn-icon"
                     />
