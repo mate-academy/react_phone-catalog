@@ -1,0 +1,43 @@
+@import '../../../../shared/mixins';
+@import '../../../../shared/colors';
+
+.CheckoutModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  &__modal {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  &__button {
+    all: unset;
+
+    padding: 8px 16px;
+    cursor: pointer;
+    border: 1px solid $elements;
+    border-radius: 20px;
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+}
