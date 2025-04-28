@@ -47,7 +47,7 @@ const CartPage = () => {
           </div>
         </div>
       ) : (
-        <EmptyContent title="Your cart is empty" img="/img/is-empty.png"/>
+        <EmptyContent title="Your cart is empty" img="img/is-empty.png"/>
       )}
 
     </div>

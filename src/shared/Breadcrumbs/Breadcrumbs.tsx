@@ -14,16 +14,16 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   return (
     <div className={styles.container}>
       <Link to={'/'}>
-        <img src="/images/icons/Home.png" className={styles.iconHome} />
+        <img src="images/icons/Home.png" className={styles.iconHome} />
       </Link>
-      <img src="/images/icons/Vector.png" className={styles.iconVector} />
+      <img src="images/icons/Vector.png" className={styles.iconVector} />
       <Link to={`/${categoryName}`}>
         <h4 className={cn(styles.h4, { [styles.h4__white]: productName })}>
           {categoryName}
         </h4>
       </Link>
       {productName &&
-        (<img src="/images/icons/Vector.png" className={styles.iconVector} />)
+        (<img src="images/icons/Vector.png" className={styles.iconVector} />)
       }
       <h4 className={styles.h4__name}>{productName}</h4>
     </div>

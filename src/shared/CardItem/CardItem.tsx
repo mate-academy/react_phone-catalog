@@ -16,7 +16,7 @@ const CardItem: React.FC<CardItemProps> = ({ product }) => {
     <div className={styles.container}>
       <Link to={LinkTo}>
         <div className={styles.imgDiv}>
-          <img src={`./${product.image}`}/>
+          <img src={`${product.image}`}/>
         </div>
       </Link>
 

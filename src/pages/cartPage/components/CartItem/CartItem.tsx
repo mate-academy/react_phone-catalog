@@ -12,7 +12,7 @@ const CartItem: React.FC<{ item: ICart }> = ({ item }) => {
     <div className={styles.container}>
       <div className={styles.left}>
         <button onClick={() => deleteWithCart(item)}>
-          <img src="/images/icons/Close.png" />
+          <img src="images/icons/Close.png" />
         </button>
         <div className={styles.left__img}>
           <Link to={LinkTo}><img src={item.product.image}/></Link>

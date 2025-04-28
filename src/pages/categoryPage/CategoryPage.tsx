@@ -117,7 +117,7 @@ const CategoryPage: React.FC<{ category: CategoryType }> = ({ category }) => {
             {error ? (
               <EmptyContent
                 title="No items available in this category"
-                img="/img/is-empty.png"
+                img="img/is-empty.png"
               />
             ) : (
               <div className={styles.cards}>

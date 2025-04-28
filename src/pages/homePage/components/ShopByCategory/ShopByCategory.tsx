@@ -41,21 +41,21 @@ const ShopByCategory = () => {
         <div className={styles.categories}>
           <Link to={'/phones'} className={styles.categories__item}>
             <div>
-              <img src="/img/category-phones.png" />
+              <img src="img/category-phones.png" />
               <h3>Mobile phones</h3>
               <h4>{`${countPhones.length} models`}</h4>
             </div>
           </Link>
           <Link to={'/tablets'} className={styles.categories__item}>
             <div>
-              <img src="/img/category-tablets.png" />
+              <img src="img/category-tablets.png" />
               <h3>Tablets</h3>
               <h4>{`${countTablets.length} models`}</h4>
             </div>
           </Link>
           <Link to={'/accessories'} className={styles.categories__item}>
             <div>
-              <img src="/img/category-accessories.png" />
+              <img src="img/category-accessories.png" />
               <h3>Accessories</h3>
               <h4>{`${countAccessories.length} models`}</h4>
             </div>

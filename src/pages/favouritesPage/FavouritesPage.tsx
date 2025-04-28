@@ -41,7 +41,7 @@ const FavouritesPage = () => {
         ) : (
           <EmptyContent
             title="Your favourites is empty"
-            img="/img/is-empty.png"
+            img="img/is-empty.png"
           />
         )
       )}

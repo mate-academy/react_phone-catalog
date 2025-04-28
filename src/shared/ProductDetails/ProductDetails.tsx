@@ -179,7 +179,7 @@ const ProductDetails = () => {
           </>
         ) : (
           <EmptyContent
-            img='/img/product-not-found.png'
+            img='img/product-not-found.png'
             title='Product not found'
           />
         )
