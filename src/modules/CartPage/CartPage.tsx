@@ -7,25 +7,14 @@ import {
   CartStateContext,
 } from '../../shared/store/CartProvider';
 import { Dialog } from './components/Dialog';
+import { CartProduct } from './components/CartProduct';
+import { CartTotalPrice } from './components/CartTotalPrice';
 
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const cartsProduct = useContext(CartStateContext);
   const dispatchCart = useContext(CartDispatchContext);
   const [loadingByIds, setLoadingByIds] = useState<number[]>([]);
-
-  const totalPrice =
-    Array.isArray(cartsProduct) &&
-    cartsProduct.length > 0 &&
-    cartsProduct.reduce(
-      (acc, item) => acc + item.product.price * item.quantity,
-      0,
-    );
-
-  const totalItems =
-    Array.isArray(cartsProduct) &&
-    cartsProduct.length > 0 &&
-    cartsProduct.reduce((acc, item) => acc + item.quantity, 0);
 
   const handleDeleteProduct = async (id: number) => {
     setLoadingByIds(prev => {
@@ -70,90 +59,17 @@ export const CartPage = () => {
           <section className={styles.cart__items}>
             <div className={styles.cart__itemsWrapper}>
               {cartsProduct.map(cartProduct => (
-                <div className={styles.cart__item} key={cartProduct.id}>
-                  <div className={styles.cart__description}>
-                    <button
-                      className={styles.cart__itemDeleteBtn}
-                      onClick={() =>
-                        handleDeleteProduct(cartProduct.product.id)
-                      }
-                    >
-                      <img
-                        className={styles.cart__itemDeleteImg}
-                        src="src/assets/icons/cart-icons/cart-delete-icons.svg"
-                        alt="Видалити товар з корзини"
-                      />
-                    </button>
-                    <img
-                      className={styles.cart__itemImage}
-                      src={cartProduct.product.image}
-                      alt="Фото товару"
-                    />
-
-                    <p className={styles.cart__itemDescription}>
-                      {cartProduct.product.name}
-                    </p>
-                  </div>
-                  <div className={styles.cart__toPay}>
-                    <div className={styles.cart__itemControl}>
-                      <button
-                        className={styles.cart__minusBtn}
-                        onClick={() =>
-                          handleChangeQuantity(
-                            cartProduct.product.id,
-                            cartProduct.quantity - 1,
-                          )
-                        }
-                        disabled={cartProduct.quantity === 1}
-                      >
-                        <img
-                          className={styles.cart__minusBtnImg}
-                          src={`src/assets/icons/cart-icons/${cartProduct.quantity === 1 ? 'cart-minus-icon.svg' : 'cart-minus-icon-active.svg'}`}
-                          alt=""
-                        />
-                      </button>
-                      <p className={styles.cart__addedItems}>
-                        {cartProduct.quantity}
-                      </p>
-                      <button
-                        className={styles.cart__plusBtn}
-                        onClick={() =>
-                          handleChangeQuantity(
-                            cartProduct.product.id,
-                            cartProduct.quantity + 1,
-                          )
-                        }
-                      >
-                        <img
-                          className={styles.cart__plusBtnImg}
-                          src="src/assets/icons/cart-icons/cart-plus-icon.svg"
-                          alt=""
-                        />
-                      </button>
-                    </div>
-                    <h3 className={styles.cart__price}>
-                      {`$${cartProduct.quantity * cartProduct.product.price}`}
-                    </h3>
-                  </div>
-                </div>
+                <CartProduct
+                  key={cartProduct.id}
+                  cartProduct={cartProduct}
+                  isLoading={loadingByIds.includes(cartProduct.id)}
+                  deleteProduct={handleDeleteProduct}
+                  changeQuantity={handleChangeQuantity}
+                />
               ))}
             </div>
 
-            <div className={styles.cart__totalPrice}>
-              <ul className={styles.cart__listItems}>
-                <li className={styles.cart__listItemPrice}>${totalPrice}</li>
-                <li
-                  className={styles.cart__listItemInfo}
-                >{`Total for ${totalItems} items`}</li>
-              </ul>
-              <span className={styles.cart__line}></span>
-              <button
-                className={styles.cart__checkout}
-                onClick={() => setIsModalOpen(true)}
-              >
-                Checkout
-              </button>
-            </div>
+            <CartTotalPrice setIsModalOpen={setIsModalOpen} />
           </section>
         ) : (
           <h2 className={styles.cart__emptyTitle}>Your cart is empty</h2>
