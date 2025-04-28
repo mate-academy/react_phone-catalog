@@ -74,10 +74,16 @@ const Header = () => {
           <button onClick={() => setMenuOpen(prev => !prev)}>
             {menuOpen === true
               ? (
-                <img src="./images/icons/Close.png" className={styles.menuImg} />
+                <img
+                  src="./images/icons/Close.png"
+                  className={styles.menuImg}
+                />
               )
               : (
-                <img src="./images/icons/Menu.png" className={styles.menuImg} />
+                <img
+                  src="./images/icons/Menu.png"
+                  className={styles.menuImg}
+                />
               )
             }
           </button>
