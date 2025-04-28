@@ -1,0 +1,85 @@
+@import '../../../../styles/index';
+
+.dropdown {
+  display: flex;
+  gap: 16px;
+
+  @media (max-width: 575px) {
+    width: 100%;
+  }
+
+  &__itemsPerPage {
+    width: 128px;
+
+    @media (max-width: 575px) {
+      width: 50%;
+    }
+  }
+
+  &__sort {
+    width: 176px;
+
+    @media (max-width: 575px) {
+      width: 50%;
+    }
+  }
+
+  &__btnWrapper {
+    @include button;
+
+    position: relative;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid $grey-color;
+
+    @include hover((border-color, $main-text-color));
+  }
+
+  &__btn {
+    @include flex;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    svg {
+      transform: rotate(-90deg);
+      fill: $grey-color;
+    }
+
+    &__open {
+      > svg {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &__label {
+    margin-bottom: 4px;
+    color: $secondary-text-color;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    width: 100%;
+    padding: 8px 0;
+    background-color: $white-color;
+    border-radius: 8px;
+    border: 1px solid $grey-color;
+    color: $secondary-text-color;
+    text-align: left;
+    z-index: 20;
+  }
+
+  &__item {
+    padding: 6px 13px;
+    cursor: pointer;
+
+    @include hover(
+      (background-color, $light-grey-color),
+      (color, $main-text-color)
+    );
+  }
+}
