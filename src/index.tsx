@@ -8,7 +8,7 @@ import { store } from "./store/store";
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <Router>
+      <Router basename='/react_phone-catalog'>
         <App />
       </Router>
     </Provider>
