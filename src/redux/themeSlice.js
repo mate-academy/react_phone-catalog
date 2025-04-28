@@ -1,20 +1,15 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
-type ThemeType = 'theme0' | 'theme1' | 'theme2' | 'theme3' | 'theme4';
-
-interface ThemeState {
-  currentTheme: ThemeType;
-  loadedStyles: Record<string, boolean>;
-  loadingStyles: Record<string, boolean>; // loadingProgress
-}
-
-const initialState: ThemeState = {
-  currentTheme: 'theme0',
-  loadedStyles: {},
-  loadingStyles: {},
+const savedTheme = localStorage.getItem('theme');
+const initialState = {
+  currentTheme: ['theme0', 'theme1', 'theme2', 'theme3', 'theme4']
+    .includes(savedTheme)
+    ? savedTheme
+    : 'theme0',
 };
 
-export const loadComponentStyles = createAsyncThunk(
+/* export const loadComponentStyles = createAsyncThunk(
   'theme/loadComponentStyles',
   async ({ componentName, theme }: { componentName: string; theme: ThemeType },
     { rejectWithValue }) => {
@@ -29,17 +24,15 @@ export const loadComponentStyles = createAsyncThunk(
       return rejectWithValue({ componentName, theme, error });
     }
   },
-);
+); */
 
 export const themeSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
-    setTheme: (state, action: PayloadAction<ThemeType>) => {
-      state.currentTheme = action.payload;
-      // Можна додати логіку для скидання стану завантажених стилів при зміні теми
-      state.loadedStyles = {};
-      localStorage.setItem('website-theme', action.payload);
+    setTheme: (state, action) => {
+      state.current = action.payload;
+      localStorage.setItem('theme', action.payload);
     },
   },
 /*   extraReducers: (builder) => {
@@ -66,4 +59,5 @@ export const themeSlice = createSlice({
 });
 
 export const { setTheme } = themeSlice.actions;
+export const currentTheme = (state) => state.theme.current;
 export default themeSlice.reducer;

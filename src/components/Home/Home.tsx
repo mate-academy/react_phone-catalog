@@ -10,12 +10,12 @@ export const Home: React.FC = () => {
   const styleKey = `${componentName}_${currentTheme}`;
   const dispatch = useDispatch();
 
-  useEffect(() => {
+/*   useEffect(() => {
     // Завантажуємо стилі, якщо вони ще не завантажені
     if (!loadedStyles[styleKey]) {
       dispatch(loadComponentStyles({ componentName, theme: currentTheme }));
     }
-  }, []);
+  }, []); */
 
   return (
     <div className="main">

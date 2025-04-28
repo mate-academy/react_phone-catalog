@@ -1,11 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { RootState } from '../../redux/store';
+import { RootState, useAppSelector } from '../../redux/store';
 import { loadComponentStyles, setTheme } from '../../redux/themeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import './Navbar_theme0.scss';
 
 type ThemeType = 'theme0' | 'theme1' | 'theme2' | 'theme3' | 'theme4';
 
@@ -13,24 +15,27 @@ export const Navbar: React.FC = () => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
-  const { currentTheme, loadedStyles } = useSelector((state: RootState) =>
+  const currentTheme = useAppSelector(
+    (state: { theme: { current: string; }; }) => state.theme.current);
+/*   const { currentTheme, loadedStyles } = useSelector((state: RootState) =>
     state.theme);
   const componentName = 'Navbar';
-  const styleKey = `${componentName}_${currentTheme}`;
+  const styleKey = `${componentName}_${currentTheme}`; */
+
+/*   useEffect(() => {
+    // Завантажуємо стилі, якщо вони ще не завантажені
+    if (!loadedStyles[styleKey]) {
+      dispatch(loadComponentStyles({ componentName, theme: currentTheme }));
+    }
+  }, [currentTheme, dispatch, loadedStyles, styleKey]); */
+
+  const componentName = 'Navbar';
 
   useEffect(() => {
     // Завантажуємо стилі, якщо вони ще не завантажені
-    if (!loadedStyles[styleKey]) {
-      dispatch(loadComponentStyles({ componentName, theme: currentTheme }));
-    }
-  }, [currentTheme, dispatch, loadedStyles, styleKey]);
-
-  /*   useEffect(() => {
-    // Завантажуємо стилі, якщо вони ще не завантажені
-    if (!loadedStyles[styleKey]) {
-      dispatch(loadComponentStyles({ componentName, theme: currentTheme }));
-    }
-  }, [dispatch, currentTheme, loadedStyles, styleKey, componentName]); */
+    import(`./${componentName}_${currentTheme}.scss`);
+    console.log(`${currentTheme} imported for ${componentName}`);
+  }, [currentTheme]);
 
   return (
     <nav
@@ -113,25 +118,7 @@ export const Navbar: React.FC = () => {
 
           <LanguageSwitcher />
 
-          <div className="theme-selector">
-            <label htmlFor="theme-select">Тема сайту: </label>
-            <select
-              id="theme-select"
-              value={useSelector((state) => state.theme.currentTheme)}
-              onChange={(e) => {
-                const newTheme = e.target.value as ThemeType;
-
-                dispatch(setTheme(newTheme));
-              }}
-              className="theme-select"
-            >
-              <option value="theme0">Класична</option>
-              <option value="theme1">Темна</option>
-              <option value="theme2">Світла</option>
-              <option value="theme3">Контрастна</option>
-              <option value="theme4">Мінімалістична</option>
-            </select>
-          </div>
+          <ThemeSwitcher />
         </div>
       </div>
     </nav>

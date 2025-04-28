@@ -3,7 +3,6 @@ import languageReducer from './languageSlice';
 import cartReducer from './cartSlice';
 import favoritesReducer from './favoritesSlice';
 import themeReducer from './themeSlice';
-import { themeMiddleware } from './themeMiddleware';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 export const store = configureStore({
@@ -13,8 +12,6 @@ export const store = configureStore({
     favorites: favoritesReducer,
     theme: themeReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(themeMiddleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
