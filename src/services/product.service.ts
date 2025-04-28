@@ -5,7 +5,7 @@ export const BASE_URL = 'https://olyavidzi.github.io/react_phone-catalog/';
 export const ProductService = {
   async getAll() {
     try {
-      const response = await fetch(`${BASE_URL}/api/products.json`);
+      const response = await fetch(`./api/products.json`);
 
       if (!response.ok) {
         throw new Error('Failed to fetch products');
@@ -31,7 +31,7 @@ export const ProductService = {
 
   async getByProductIdDetails(productId: string, category: string) {
     try {
-      const response = await fetch(`${BASE_URL}/api/${category}.json`);
+      const response = await fetch(`./api/${category}.json`);
       const products: IProductDetails[] = await response.json();
 
       return products.find(product => product.id === productId);
@@ -43,7 +43,7 @@ export const ProductService = {
 
   async getByProductId(productId: string) {
     try {
-      const response = await fetch(`${BASE_URL}/api/products.json`);
+      const response = await fetch(`./api/products.json`);
       const products: IProductCard[] = await response.json();
 
       return products.find(product => product.itemId === productId);
