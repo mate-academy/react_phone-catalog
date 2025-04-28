@@ -6,7 +6,7 @@ export const PhonesPage: React.FC = () => (
     <div className="container">
       <h1 className="title">Mobile Phones</h1>
       <label htmlFor="filter-select">Sort by:</label>
-<Filter id="filter-select" />
+      <Filter id="filter-select" />
 
       <ProductList category="phones" />
     </div>

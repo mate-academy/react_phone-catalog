@@ -51,7 +51,7 @@ export const SliderHotPrices: React.FC = () => {
       return;
     }
 
-    direction = 'next'
+    direction === 'next'
       ? sliderRef.current.slickNext()
       : sliderRef.current.slickPrev();
   };
