@@ -1,0 +1,107 @@
+// add styles here
+
+
+.card-image img {
+  object-fit: contain;
+  height: 196px;
+  width: 208px;
+}
+
+.card {
+  box-sizing: border-box;
+  height: 506px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #E2E6E9;
+  font-family: Montserrat, sans-serif;
+  color: #313237;
+}
+
+.custom-padding {
+  padding: 0 !important;
+  padding-inline: 32px !important ;
+  padding-block: 32px !important;  
+}
+
+hr {
+margin-bottom: 16px;
+margin-top: 8px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.5em;       
+  height: 3em;              
+  overflow: hidden;
+  margin-bottom: 8px !important;
+}
+
+.new__price {
+font-weight: 800;
+font-size: 22px;
+
+}
+
+.old__price {
+color: #89939A;
+font-weight: 600;
+font-size: 22px;
+text-decoration: line-through;
+
+}
+
+.product__price {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.product__info {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+text-align: center;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+padding-bottom: 8px;
+margin-bottom: 8px;
+}
+
+.buttons {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+text-align: center;
+align-items: center;
+}
+
+.feature {
+color: #89939A;
+}
+
+.addButton {
+  text-decoration: none;
+  display: flex;
+  width: 150px;
+  height: 40px;
+  padding: auto;
+  justify-content: center;
+  align-items: center;
+  background: #313237;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.icon__heart {
+  border: 1px solid #89939A;;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

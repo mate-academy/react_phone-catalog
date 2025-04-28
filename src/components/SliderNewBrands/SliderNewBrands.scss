@@ -1,0 +1,24 @@
+.arrows {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.arrowPrev, .arrowNext {
+  cursor: pointer;
+}
+
+.slick-container {
+  width:100%;
+  height: 571px; 
+}
+
+ .slick-container .card {
+  max-height: 506px;
+  margin-left: 16px;
+ }
+
+.slider__heading {
+  margin-bottom: 24px;
+}
