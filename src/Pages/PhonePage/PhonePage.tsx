@@ -4,6 +4,10 @@ import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Phone } from '../../Interface';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
+import homeSvg from '../../../public/figmaLogo/Home.svg';
+import heartLove from '../../../public/figmaLogo/HeartLove.svg';
+import activeSvg from '../../../public/figmaLogo/ActiveHeart.svg';
+import pageNotFound from '../../../public/img/page-not-found.png';
 
 interface CartItem {
   id: string;
@@ -154,7 +158,7 @@ export const PhonePage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src={homeSvg} alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Phones</p>
@@ -183,7 +187,7 @@ export const PhonePage = () => {
                 <img
                   src={
                     imageError[`/${phone.images[0]}`]
-                      ? '/public/img/page-not-found.png'
+                      ? pageNotFound
                       : `/${phone.images[0]}`
                   }
                   alt={phone.name}
@@ -257,11 +261,7 @@ export const PhonePage = () => {
                   }}
                 >
                   <img
-                    src={
-                      favorites.includes(phone.id)
-                        ? '/figmaLogo/ActiveHeart.svg'
-                        : '/figmaLogo/HeartLove.svg'
-                    }
+                    src={favorites.includes(phone.id) ? activeSvg : heartLove}
                     alt="Favorite"
                     className="phone__card-btn-icon"
                   />

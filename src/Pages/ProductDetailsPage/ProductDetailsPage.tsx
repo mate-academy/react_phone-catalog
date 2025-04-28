@@ -12,6 +12,10 @@ import 'swiper/css/navigation';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react'; // Use Swiper from swiper/react
 import { Navigation } from 'swiper/modules';
+import pageNotFound from '../../../public/img/page-not-found.png';
+import heartLove from '../../../public/figmaLogo/HeartLove.svg';
+import activeSvg from '../../../public/figmaLogo/ActiveHeart.svg';
+import homeSvg from '../../../public/figmaLogo/Home.svg';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -85,9 +89,7 @@ export const ProductDetailsPage = () => {
           setProduct(newProduct);
           setSelectedColor(urlColor);
           setSelectedImage(
-            newProduct.images?.[0]
-              ? `/${newProduct.images[0]}`
-              : '/img/page-not-found.png',
+            newProduct.images?.[0] ? `/${newProduct.images[0]}` : pageNotFound,
           );
           setSelectedCapacity(urlCapacity);
 
@@ -130,9 +132,7 @@ export const ProductDetailsPage = () => {
       setProduct(newProduct);
       setSelectedColor(color);
       setSelectedImage(
-        newProduct.images?.[0]
-          ? `/${newProduct.images[0]}`
-          : '/img/page-not-found.png',
+        newProduct.images?.[0] ? `/${newProduct.images[0]}` : pageNotFound,
       );
       navigate(`/products/${newProduct.id}`);
     }
@@ -154,9 +154,7 @@ export const ProductDetailsPage = () => {
       setSelectedCapacity(capacity);
       setProduct(newProduct);
       setSelectedImage(
-        newProduct.images?.[0]
-          ? `/${newProduct.images[0]}`
-          : '/img/page-not-found.png',
+        newProduct.images?.[0] ? `/${newProduct.images[0]}` : pageNotFound,
       );
       navigate(`/products/${newProduct.id}`);
     }
@@ -171,7 +169,7 @@ export const ProductDetailsPage = () => {
       id: product.id,
       name: product.name,
       price: product.priceDiscount,
-      image: selectedImage || '/img/page-not-found.png',
+      image: selectedImage || pageNotFound,
       color: selectedColor || product.color,
       capacity: selectedCapacity || undefined,
       quantity: 1,
@@ -225,7 +223,7 @@ export const ProductDetailsPage = () => {
     <section className="product-details section">
       <div className="home--nav">
         <a href="#">
-          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src={homeSvg} alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <a href={getCategoryLink()}>
@@ -248,8 +246,8 @@ export const ProductDetailsPage = () => {
             <img
               src={
                 imageError[selectedImage || '']
-                  ? '/img/page-not-found.png'
-                  : selectedImage || '/img/page-not-found.png'
+                  ? pageNotFound
+                  : selectedImage || pageNotFound
               }
               alt={product.name || 'No image available'}
               loading="lazy"
@@ -260,11 +258,7 @@ export const ProductDetailsPage = () => {
             {product.images?.map((image, index) => (
               <img
                 key={index}
-                src={
-                  imageError[`/${image}`]
-                    ? '/img/page-not-found.png'
-                    : `/${image}`
-                }
+                src={imageError[`/${image}`] ? pageNotFound : `/${image}`}
                 alt={`${product.name} thumbnail ${index + 1}`}
                 className={`thumbnail ${selectedImage === `/${image}` ? 'thumbnail--active' : ''}`}
                 onClick={() => setSelectedImage(`/${image}`)}
@@ -337,11 +331,7 @@ export const ProductDetailsPage = () => {
               }
             >
               <img
-                src={
-                  favorites.includes(product.id)
-                    ? '/figmaLogo/ActiveHeart.svg'
-                    : '/figmaLogo/HeartLove.svg'
-                }
+                src={favorites.includes(product.id) ? activeSvg : heartLove}
                 alt="Favorite"
                 className="product-details__favorite-icon"
               />
@@ -438,7 +428,7 @@ export const ProductDetailsPage = () => {
                     <img
                       src={
                         imageError[`/${relatedItem.images[0]}`]
-                          ? '/public/img/page-not-found.png'
+                          ? pageNotFound
                           : `/${relatedItem.images[0]}`
                       }
                       alt={relatedItem.name}
@@ -554,8 +544,8 @@ export const ProductDetailsPage = () => {
                       <img
                         src={
                           favorites.includes(relatedItem.id)
-                            ? '/figmaLogo/ActiveHeart.svg'
-                            : '/figmaLogo/HeartLove.svg'
+                            ? activeSvg
+                            : heartLove
                         }
                         alt="Favorite"
                         className="related-products__card-btn-icon"

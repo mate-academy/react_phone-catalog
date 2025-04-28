@@ -5,6 +5,10 @@ import { Tablet } from '../../Interface';
 import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
+import homeSvg from '../../../public/figmaLogo/Home.svg';
+import heartLove from '../../../public/figmaLogo/HeartLove.svg';
+import activeSvg from '../../../public/figmaLogo/ActiveHeart.svg';
+import pageNotFound from '../../../public/img/page-not-found.png';
 
 interface CartItem {
   id: string;
@@ -148,7 +152,7 @@ export const TabletPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src={homeSvg} alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Tablets</p>
@@ -175,7 +179,7 @@ export const TabletPage = () => {
                 <img
                   src={
                     imageError[`/${tablet.images[0]}`]
-                      ? '/public/img/page-not-found.png'
+                      ? pageNotFound
                       : `/${tablet.images[0]}`
                   }
                   alt={tablet.name}
@@ -251,11 +255,7 @@ export const TabletPage = () => {
                   }}
                 >
                   <img
-                    src={
-                      favorites.includes(tablet.id)
-                        ? '/figmaLogo/ActiveHeart.svg'
-                        : '/figmaLogo/HeartLove.svg'
-                    }
+                    src={favorites.includes(tablet.id) ? activeSvg : heartLove}
                     alt="Favorite"
                     className="tablets__card-btn-icon"
                   />

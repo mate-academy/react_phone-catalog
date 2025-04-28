@@ -5,6 +5,10 @@ import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Accessories } from '../../Interface';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
+import homeSvg from '../../../public/figmaLogo/Home.svg';
+import heartLove from '../../../public/figmaLogo/HeartLove.svg';
+import activeSvg from '../../../public/figmaLogo/ActiveHeart.svg';
+import pageNotFound from '../../../public/img/page-not-found.png';
 
 export const AccessoriesPage = () => {
   const { addToCart, toggleFavorite, cart, favorites } = useCart();
@@ -146,7 +150,7 @@ export const AccessoriesPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src={homeSvg} alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Accessories</p>
@@ -175,7 +179,7 @@ export const AccessoriesPage = () => {
                 <img
                   src={
                     imageError[`/${accessory.images[0]}`]
-                      ? '/public/img/page-not-found.png'
+                      ? pageNotFound
                       : `/${accessory.images[0]}`
                   }
                   alt={accessory.name}
@@ -237,9 +241,7 @@ export const AccessoriesPage = () => {
                 >
                   <img
                     src={
-                      favorites.includes(accessory.id)
-                        ? '/figmaLogo/ActiveHeart.svg'
-                        : '/figmaLogo/HeartLove.svg'
+                      favorites.includes(accessory.id) ? activeSvg : heartLove
                     }
                     alt="Favorite"
                     className="accessories__card-btn-icon"
