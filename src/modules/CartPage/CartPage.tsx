@@ -12,15 +12,32 @@ export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const cartsProduct = useContext(CartStateContext);
   const dispatchCart = useContext(CartDispatchContext);
+  const [loadingByIds, setLoadingByIds] = useState<number[]>([]);
 
-  const totalPrice = cartsProduct.reduce(
-    (acc, item) => acc + item.product.price * item.quantity,
-    0,
-  );
+  const totalPrice =
+    Array.isArray(cartsProduct) &&
+    cartsProduct.length > 0 &&
+    cartsProduct.reduce(
+      (acc, item) => acc + item.product.price * item.quantity,
+      0,
+    );
 
-  const totalItems = cartsProduct.reduce((acc, item) => acc + item.quantity, 0);
+  const totalItems =
+    Array.isArray(cartsProduct) &&
+    cartsProduct.length > 0 &&
+    cartsProduct.reduce((acc, item) => acc + item.quantity, 0);
 
-  const handleDeleteProduct = (id: number) => {
+  const handleDeleteProduct = async (id: number) => {
+    setLoadingByIds(prev => {
+      if (!prev.includes(id)) {
+        return [...prev, id];
+      } else {
+        return prev;
+      }
+    });
+
+    await new Promise(resolve => setTimeout(resolve, 300));
+
     dispatchCart({ type: 'deleteCartProduct', payload: id });
   };
 

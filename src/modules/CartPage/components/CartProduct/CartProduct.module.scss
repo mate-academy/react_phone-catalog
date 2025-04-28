@@ -1,0 +1,149 @@
+@import '../../../../assets/styles/main';
+
+.cart__item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid $color-elements;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    height: 128px;
+  }
+
+  @include on-desktop-extra {
+    height: 128px;
+  }
+}
+
+.cart__item:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.cart__description {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    margin-bottom: 0;
+  }
+}
+
+.cart__itemDeleteBtn {
+  width: 16px;
+  height: 16px;
+  background-color: $color-white;
+}
+
+.cart__itemDeleteImg {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(180deg);
+  }
+}
+
+.cart__itemImage {
+  width: auto;
+  height: 80px;
+  margin-left: 16px;
+
+  @include on-tablet {
+    margin-left: 24px;
+  }
+}
+
+.cart__itemDescription {
+  margin-left: 16px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-primary;
+
+  @include on-tablet {
+    margin-left: 24px;
+  }
+}
+
+.cart__toPay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart__itemControl {
+  display: flex;
+  align-items: center;
+}
+
+.cart__minusBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-icons;
+
+  background-color: $color-white;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+
+  &:disabled {
+    border: 1px solid $color-elements;
+  }
+}
+
+.cart__minusBtnImg {
+  width: 16px;
+  height: 16px;
+}
+
+.cart__addedItems {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+}
+
+.cart__plusBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-icons;
+
+  background-color: $color-white;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+}
+
+.cart__plusBtnImg {
+  width: 16px;
+  height: 16px;
+}
+
+.cart__price {
+  width: 60px;
+  color: $color-primary;
+
+  @include on-tablet {
+    margin-left: 53px;
+  }
+}

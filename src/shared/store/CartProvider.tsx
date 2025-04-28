@@ -29,10 +29,7 @@ const reducer = (state: Cart[], action: Action) => {
           : cartProduct,
       );
     case 'clearCart':
-      return {
-        ...state,
-        items: [],
-      };
+      return [];
     default:
       return state;
   }
