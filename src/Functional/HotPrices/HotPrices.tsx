@@ -5,6 +5,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Link } from 'react-router-dom';
+// import phonesApi from '../../../public/api/phones.json';
 
 interface Phone {
   id: string;
@@ -28,7 +29,7 @@ export default function HotPrices() {
 
   useEffect(() => {
     setLoading(true);
-    fetch('/api/phones.json')
+    fetch('../../../public/api/phones.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(
