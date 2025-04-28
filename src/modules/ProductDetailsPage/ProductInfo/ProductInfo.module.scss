@@ -1,0 +1,87 @@
+@import '../../../styles/main';
+
+.productInfo {
+  &_container {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+    }
+  }
+
+  &_title {
+    padding-bottom: 16px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 20px;
+    line-height: 100%;
+    border-bottom: 1px solid $borderColor;
+
+    @include on-tablet {
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+
+  &_text {
+    color: $textSecondaryColor;
+  }
+
+  &_details {
+    color: $textMainColor;
+  }
+
+  &_aboutContainer {
+    width: 100%;
+
+    @include on-desktop {
+      width: 50%;
+    }
+
+    &_title {
+      padding-bottom: 16px;
+      font-family: Mont, sans-serif;
+      font-size: 16px;
+      line-height: 100%;
+
+      @include on-tablet {
+        font-size: 20px;
+      }
+    }
+
+    &_list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-top: 25px;
+    }
+  }
+
+  &_techSpecsContainer {
+    width: 100%;
+
+    @include on-desktop {
+      width: 50%;
+    }
+
+    &_list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 25px;
+    }
+
+    &_item {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
