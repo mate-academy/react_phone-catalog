@@ -1,0 +1,313 @@
+@import '../../../styles/main';
+
+.cart {
+  min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightSmallScreen);
+  padding-bottom: 56px;
+  padding-inline: 16px;
+  font-family: Mont, sans-serif;
+  color: $textMainColor;
+
+  @include on-tablet {
+    min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightBigScreen);
+    padding-bottom: 64px;
+    padding-inline: 0;
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - $headerHeightBigScreen - $footerHeightBigScreen);
+  }
+
+  &_backContainer {
+    padding-top: 25px;
+    padding-bottom: 16px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &_backText {
+    display: flex;
+    align-items: flex-end;
+    max-width: fit-content;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $textSecondaryColor;
+
+    &:hover {
+      color: $textMainColor;
+      cursor: pointer;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      height: 16px;
+      width: 16px;
+      background-repeat: no-repeat;
+      background-image: url('../../../assets/img/icons/arrow-left-icon.svg');
+    }
+  }
+
+  &_title {
+    margin-bottom: 32px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &_emptyImg {
+    display: block;
+    height: auto;
+    max-height: 400px;
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    object-fit: contain;
+
+    @include on-tablet {
+      max-width: 500px;
+    }
+
+    @include on-desktop {
+      max-width: 600px;
+    }
+  }
+
+  &_container {
+    @include on-desktop {
+      display: flex;
+      padding-bottom: 16px;
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid $borderColor;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0;
+      padding: 24px;
+    }
+  }
+
+  &_containerDetails {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &_delete {
+    display: inline-block;
+    height: 9.33px;
+    width: 9.33px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    content: url('../../../assets/img/icons/delete-icon.png');
+    transition: all $animation;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+
+    @include on-tablet {
+      margin-right: 8px;
+    }
+  }
+
+  &_img {
+    display: block;
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    transition: all $animation;
+
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+
+  &_name {
+    width: 100%;
+    font-size: 14px;
+    line-height: 21px;
+    color: $textMainColor;
+
+    @include on-tablet {
+      margin-right: 24px;
+    }
+  }
+
+  &_containerCountPrice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_buttons {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &_buttonSubtract {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $borderColorDark;
+    transition: all $animation;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      height: 16px;
+      width: 16px;
+      background-size: cover;
+      background-image: url('../../../assets/img/icons/minus-icon.png');
+    }
+
+    &:disabled {
+      border: 1px solid $borderColor;
+      cursor: auto;
+
+      &::after {
+        background-image: url('../../../assets/img/icons/minus-grey-icon.png');
+      }
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &_buttonAdd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $borderColorDark;
+    transition: all $animation;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      height: 16px;
+      width: 16px;
+      background-size: cover;
+      background-image: url('../../../assets/img/icons/plus-icon.png');
+    }
+  }
+
+  &_count {
+    min-width: 32px;
+    text-align: center;
+  }
+
+  &_price {
+    min-width: 123px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 30.8px;
+    text-align: right;
+  }
+
+  &_order {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 190px;
+    width: 100%;
+    margin-top: 32px;
+    padding: 24px;
+    border: 1px solid $borderColor;
+
+    @include on-desktop {
+      max-width: 368px;
+      margin: 0;
+      margin-left: 16px;
+    }
+
+    &_price {
+      font-family: Mont-Bold, sans-serif;
+      font-size: 32px;
+      line-height: 41px;
+      color: $textMainColor;
+    }
+
+    &_totalPrice {
+      font-size: 14px;
+      line-height: 21px;
+      color: $textSecondaryColor;
+    }
+  }
+
+  &_checkout {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 100%;
+    margin-top: 32px;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+    background-color: $textMainColor;
+    transition: all $animation;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -16px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: $borderColor;
+    }
+  }
+}

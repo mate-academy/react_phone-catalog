@@ -1,0 +1,119 @@
+@import '../../../styles/main';
+
+.slaider {
+  position: relative;
+  margin-top: 24px;
+  margin-bottom: 88px;
+
+  @include on-tablet {
+    margin-top: 32px;
+    padding-block: 24px;
+    font-size: 12px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+    padding-block: 32px;
+    font-size: 18px;
+  }
+
+  &_title {
+    margin-bottom: 24px;
+    padding-inline: 16px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+
+    @include on-tablet {
+      padding-inline: 0;
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &_banner {
+    display: block;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+
+    @include on-tablet {
+      max-width: calc(100% - 50px);
+      margin: 0 auto;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &_button {
+    position: fixed;
+    display: none;
+    border: 1px solid #404040;
+    border-radius: 28px;
+    font-family: Mont, sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    transition: all $animation;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      width: 150px;
+      left: 90px;
+      bottom: 50px;
+      font-size: 12px;
+      background-color: #222;
+    }
+
+    @include on-desktop {
+      height: 60px;
+      font-size: 16px;
+    }
+
+    &:hover {
+      background-color: $textMainColor;
+    }
+  }
+}
+
+.button_prev {
+  position: fixed;
+  left: -16px;
+  z-index: 1001;
+  display: none;
+  height: 100%;
+  width: 32px;
+  border: 1px solid $borderColorDark;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  background-image: url('../../../assets/img/icons/arrow-left-icon.svg');
+  cursor: pointer;
+
+  @include on-tablet {
+    display: block;
+  }
+}
+
+.button_next {
+  position: fixed;
+  right: -16px;
+  z-index: 1001;
+  display: none;
+  height: 100%;
+  width: 32px;
+  border: 1px solid $borderColorDark;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  background-image: url('../../../assets/img/icons/arrow-right-icon.svg');
+  cursor: pointer;
+
+  @include on-tablet {
+    display: block;
+  }
+}
