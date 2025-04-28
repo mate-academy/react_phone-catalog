@@ -2,7 +2,7 @@ import { SortOption } from "../enums/SortOption";
 import { IProductCard } from "../interfaces/ProductCard.interface";
 
 export const sortProducts = (value: string, data: IProductCard[]) => {
-  let sortedProducts = [...data];
+  const sortedProducts = [...data];
 
   switch (value) {
     case SortOption.Newest:

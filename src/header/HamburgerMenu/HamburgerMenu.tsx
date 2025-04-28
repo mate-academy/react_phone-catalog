@@ -12,7 +12,7 @@ const HamburgerMenu: React.FC<IHamburgerMenuProps> = ({ setMenuOpen }) => {
 
   const handleCloseMenu = () => {
     setMenuOpen(false);
-  }
+  };
 
   useEffect(() => {
     setActive(pathname);
@@ -55,20 +55,20 @@ const HamburgerMenu: React.FC<IHamburgerMenuProps> = ({ setMenuOpen }) => {
         </li>
       </ul>
 
-        <div className={styles.icons}>
-          <div className={styles.icons__link} onClick={handleCloseMenu}>
-            <Link to={'/favourites'}>
-              <img src="/images/icons/Favourites.png" className={styles.icon} />
-            </Link>
-          </div>
-          <div className={styles.icons__link} onClick={handleCloseMenu}>
-            <Link to={'/cart'}>
-              <img src="/images/icons/Cart.png" className={styles.icon}/>
-            </Link>
-          </div>
+      <div className={styles.icons}>
+        <div className={styles.icons__link} onClick={handleCloseMenu}>
+          <Link to={'/favourites'}>
+            <img src="/images/icons/Favourites.png" className={styles.icon} />
+          </Link>
         </div>
+        <div className={styles.icons__link} onClick={handleCloseMenu}>
+          <Link to={'/cart'}>
+            <img src="/images/icons/Cart.png" className={styles.icon}/>
+          </Link>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default HamburgerMenu;

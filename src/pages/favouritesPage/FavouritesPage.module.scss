@@ -18,11 +18,11 @@
   gap: 8px;
 
   & h1 {
-    @include pageTitle;
+    @include page-title;
   }
 
   & h4 {
-    @include itemsCount;
+    @include items-count;
   }
 }
 

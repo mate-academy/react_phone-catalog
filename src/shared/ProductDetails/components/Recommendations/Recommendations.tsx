@@ -3,18 +3,24 @@ import { IProductCard } from '../../../../interfaces/ProductCard.interface';
 import { ProductService } from '../../../../services/product.service';
 import ProductsSlider from '../../../ProductsSlider';
 
-const Recommendations: React.FC<{ productCategory: string }> = ({ productCategory }) => {
+const Recommendations: React.FC<{
+  productCategory: string,
+}> = ({ productCategory }) => {
   const [products, setProducts] = useState<IProductCard[]>([]);
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
+      setError('');
+
       try {
         if (productCategory) {
           const data = await ProductService.getByCategory(productCategory);
+
           setProducts(data);
         }
-      } catch (error) {
-        console.error('Error fetching products by category:', error);
+      } catch (err) {
+        setError('Error fetching products by category');
       }
     };
 
@@ -22,10 +28,12 @@ const Recommendations: React.FC<{ productCategory: string }> = ({ productCategor
   }, [productCategory]);
 
   return (
-    <ProductsSlider 
-      products={products} 
-      title='You may also like'
-    />
+    !error && (
+      <ProductsSlider
+        products={products}
+        title='You may also like'
+      />
+    )
   );
 };
 

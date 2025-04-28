@@ -17,7 +17,7 @@ const CartItem: React.FC<{ item: ICart }> = ({ item }) => {
         <div className={styles.left__img}>
           <Link to={LinkTo}><img src={item.product.image}/></Link>
         </div>
-          <Link to={LinkTo}><h3>{item.product.name}</h3></Link>
+        <Link to={LinkTo}><h3>{item.product.name}</h3></Link>
       </div>
 
       <div className={styles.right}>
@@ -33,7 +33,7 @@ const CartItem: React.FC<{ item: ICart }> = ({ item }) => {
         <div className={styles.right__price}>{`$${item.product.price}`}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default CartItem;

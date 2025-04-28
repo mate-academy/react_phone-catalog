@@ -4,15 +4,16 @@
 .container {
   display: flex;
   flex-direction: column;
-  
+
   & > h1 {
-    @include pageTitle;
-    margin-bottom: 56px;  
+    @include page-title;
+
+    margin-bottom: 56px;
 
     @media(max-width: $tablet) {
       margin-bottom: 32px;
     }
-  
+
     @media(max-width: $mobile) {
       margin-bottom: 24px;
     }
@@ -67,7 +68,39 @@
   &__link {
     margin-top: auto;
   }
-  
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    width: 50%;
+    padding: 18px;
+    color: $main-color;
+    background-color: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid $element-bg;
+
+    @media(max-width: $desktop-medium) {
+      font-size: 10px;
+      padding: 14px;
+    }
+
+    @media(max-width: $tablet) {
+      font-size: 8px;
+      width: 60%;
+    }
+
+    @media(max-width: $mobile-medium) {
+      display: none;
+    }
+
+    &:hover {
+      background-color: $element-bg;
+    }
+  }
+
   &__left {
     display: flex;
     flex-direction: column;
@@ -92,10 +125,10 @@
       font-size: 38px;
       line-height: 36px;
       letter-spacing: -1%;
-      margin-bottom: 12px;    
+      margin-bottom: 12px;
       background: linear-gradient(90deg, #a855f7, #7c3aed);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;  
+      -webkit-text-fill-color: transparent;
 
       @media(max-width: $desktop-medium) {
         font-size: 28px;
@@ -131,38 +164,6 @@
         display: none;
       }
     }
-
-    & button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 30px;
-      width: 50%;
-      padding: 18px;
-      color: $main-color;
-      background-color: inherit;
-      font-weight: 600;
-      font-size: 14px;
-      border: 1px solid $element-bg;
-
-      @media(max-width: $desktop-medium) {
-        font-size: 10px;
-        padding: 14px;
-      }
-
-      @media(max-width: $tablet) {
-        font-size: 8px;
-        width: 60%;
-      }
-
-      @media(max-width: $mobile-medium) {
-        display: none;
-      }
-
-      &:hover {
-        background-color: $element-bg;
-      }
-    }
   }
 
   &__right {
@@ -171,12 +172,12 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+  }
 
-    & img {
-      width: 90%;
-      height: 90%;
-      object-fit: contain;
-    }
+  &__rightSlider {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
   }
 }
 

@@ -55,7 +55,7 @@ const CardItem: React.FC<CardItemProps> = ({ product }) => {
         <ButtonAddToFavorites product={product} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default CardItem;

@@ -8,7 +8,10 @@ interface IProductsSliderProps {
   title: string,
 }
 
-const ProductsSlider: React.FC<IProductsSliderProps> = ({ products, title }) => {
+const ProductsSlider: React.FC<IProductsSliderProps> = ({
+  products,
+  title,
+}) => {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const slideLeft = () => {
@@ -41,7 +44,7 @@ const ProductsSlider: React.FC<IProductsSliderProps> = ({ products, title }) => 
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ProductsSlider;

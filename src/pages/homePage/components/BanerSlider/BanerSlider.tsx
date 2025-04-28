@@ -43,11 +43,14 @@ const BanerSlider = () => {
             <Link
               to={'/phones/apple-iphone-11-128gb-black'}
               className={styles.content__link}>
-              <button>ORDER NOW</button>
+              <button className={styles.content__btn}>ORDER NOW</button>
             </Link>
           </div>
           <div className={styles.content__right}>
-            <img src={slider[currentIndex]} />
+            <img
+              src={slider[currentIndex]}
+              className={styles.content__rightSlider}
+            />
           </div>
         </div>
 

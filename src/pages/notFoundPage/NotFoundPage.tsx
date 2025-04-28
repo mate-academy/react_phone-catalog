@@ -6,7 +6,7 @@ const NotFoundPage = () => {
     <div className={styles.container}>
       <EmptyContent img='/img/page-not-found.png'/>
     </div>
-  )
-}
+  );
+};
 
 export default NotFoundPage;

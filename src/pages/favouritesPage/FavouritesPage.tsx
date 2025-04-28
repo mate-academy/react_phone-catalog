@@ -1,11 +1,11 @@
 import { useLocation } from "react-router-dom";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import CardItem from "../../shared/CardItem";
 import styles from './FavouritesPage.module.scss';
 import Breadcrumbs from "../../shared/Breadcrumbs";
 import EmptyContent from "../../shared/EmptyContent";
 import { useEffect, useState } from "react";
 import Loader from "../../shared/Loader";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const FavouritesPage = () => {
   const items = useTypedSelector(state => state.favourites.items);
@@ -35,15 +35,18 @@ const FavouritesPage = () => {
         items.length !== 0 ? (
           <div className={styles.items}>
             {items.map(item => (
-              <CardItem product={item}/>
+              <CardItem product={item} key={item.id}/>
             ))}
           </div>
         ) : (
-          <EmptyContent title="Your favourites is empty" img="/img/is-empty.png"/>
+          <EmptyContent
+            title="Your favourites is empty"
+            img="/img/is-empty.png"
+          />
         )
       )}
     </div>
-  )
-}
+  );
+};
 
 export default FavouritesPage;

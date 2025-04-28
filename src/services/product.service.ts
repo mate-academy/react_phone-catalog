@@ -5,19 +5,26 @@ export const ProductService = {
   async getAll() {
     try {
       const response = await fetch('/api/products.json');
-      return response.json();
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+
+      return await response.json();
     } catch (error) {
-      console.error('Error fetching products:', error);
+      throw new Error('Products not found: ' +
+        (error instanceof Error ? error.message : 'Unknown error'));
     }
   },
 
-  async getByCategory(category: string) {
+  async getByCategory(category: string): Promise<IProductCard[]> {
     try {
       const products: IProductCard[] = await this.getAll();
+
       return products.filter(product => product.category === category);
     } catch (error) {
-      console.error('Error fetching products by category:', error);
-      return [];
+      throw new Error('Error fetching products by category: ' +
+        (error instanceof Error ? error.message : 'Unknown error'));
     }
   },
 
@@ -25,9 +32,11 @@ export const ProductService = {
     try {
       const response = await fetch(`/api/${category}.json`);
       const products: IProductDetails[] = await response.json();
+
       return products.find(product => product.id === productId);
     } catch (error) {
-      console.error('Product not found', error);
+      throw new Error('Product not found: ' +
+        (error instanceof Error ? error.message : 'Unknown error'));
     }
   },
 
@@ -35,9 +44,11 @@ export const ProductService = {
     try {
       const response = await fetch(`/api/products.json`);
       const products: IProductCard[] = await response.json();
+
       return products.find(product => product.itemId === productId);
     } catch (error) {
-      console.error('Product not found', error);
+      throw new Error('Product not found: ' +
+        (error instanceof Error ? error.message : 'Unknown error'));
     }
   },
-}
+};

@@ -1,37 +1,37 @@
 @use '../styles/variables.scss' as *;
 
-@mixin pageTitle {
+@mixin page-title {
   font-weight: 800;
   font-size: 48px;
   line-height: 56px;
-  letter-spacing: -1%;  
+  letter-spacing: -1%;
 
   @media(max-width: $mobile) {
     font-size: 32px;
-    line-height: 41px; 
+    line-height: 41px;
   }
 }
 
-@mixin sectionTitle {
+@mixin section-title {
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
-  letter-spacing: -1%;  
+  letter-spacing: -1%;
 
   @media(max-width: $mobile) {
     font-size: 22px;
-    line-height: 140%;  
+    line-height: 140%;
   }
 }
 
-@mixin itemsCount {
+@mixin items-count {
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
   color: $secondary-color;
 }
 
-@mixin navAfterLine {
+@mixin nav-after-line {
   &::after {
     content: '';
     position: absolute;
@@ -50,7 +50,7 @@
   }
 }
 
-@mixin priceAfter {
+@mixin price-after {
   &::after {
     content: '';
     position: absolute;
@@ -68,12 +68,12 @@
   background-color: $element-bg;
 }
 
-@mixin hoverShadow {
+@mixin hover-shadow {
   &:hover {
     box-shadow: 0 0 5px $btn-hover-add-bg;
   }
 }
 
-@mixin defaultTransition {
+@mixin default-transition {
   transition: all 0.3s ease;
 }

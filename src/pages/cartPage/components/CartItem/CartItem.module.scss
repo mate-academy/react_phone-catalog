@@ -31,10 +31,6 @@
     width: 16px;
     height: 16px;
     background-color: inherit;
-
-    & img {
-      color: $icon-bg;
-    }
   }
 
   &__img {
@@ -44,6 +40,10 @@
       width: 80px;
       height: 80px;
     }
+  }
+
+  & img {
+    color: $icon-bg; /* Переміщено сюди */
   }
 }
 
@@ -81,6 +81,6 @@
   &__price {
     font-weight: 800;
     font-size: 22px;
-    line-height: 140%;  
+    line-height: 140%;
   }
 }

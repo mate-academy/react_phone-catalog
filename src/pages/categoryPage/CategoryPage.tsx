@@ -11,6 +11,7 @@ import { sortProducts } from "../../helpers/sortProducts";
 import { useSearchParams } from "react-router-dom";
 import Breadcrumbs from "../../shared/Breadcrumbs";
 import Loader from "../../shared/Loader";
+import EmptyContent from "../../shared/EmptyContent";
 
 const CategoryPage: React.FC<{ category: CategoryType }> = ({ category }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,11 +20,13 @@ const CategoryPage: React.FC<{ category: CategoryType }> = ({ category }) => {
   const [perPage, setPerPage] = useState<string>('8');
   const [currentPage, setCurrentPage] = useState<string>('1');
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>('');
 
-  const totalPages = useMemo(() => Math.ceil(products.length / +perPage), 
+  const totalPages = useMemo(() => Math.ceil(products.length / +perPage),
     [perPage, products.length]);
-  
-  const sortedProducts = useMemo(() => sortProducts(sort, products), [sort, products]);
+
+  const sortedProducts =
+    useMemo(() => sortProducts(sort, products), [sort, products]);
 
   const visibleProducts = useMemo(() => {
     if (perPage === 'all') {
@@ -32,20 +35,20 @@ const CategoryPage: React.FC<{ category: CategoryType }> = ({ category }) => {
 
     const startIndex = (+currentPage - 1) * +perPage;
     const endIndex = startIndex + +perPage;
-    
+
     return sortedProducts.slice(startIndex, endIndex);
   }, [sortedProducts, currentPage, perPage]);
-  
+
   useEffect(() => {
     const newParams = new URLSearchParams(searchParams);
     const updatedSort = searchParams.get('sort') || 'Newest';
     const updatedPerPage = searchParams.get('perPage') || '8';
     const updatedPage = searchParams.get('page') || '1';
-  
+
     setSort(updatedSort);
     setPerPage(updatedPerPage);
     setCurrentPage(updatedPage);
-  
+
     let shouldUpdate = false;
 
     if (!searchParams.get('sort')) {
@@ -62,30 +65,31 @@ const CategoryPage: React.FC<{ category: CategoryType }> = ({ category }) => {
       newParams.set('page', '1');
       shouldUpdate = true;
     }
-  
+
     if (shouldUpdate) {
       setSearchParams(newParams);
     }
-  }, [searchParams, setSearchParams]);  
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
-    const fetchData = async () => { 
+    const fetchData = async () => {
       setIsLoading(true);
+      setError('');
 
       try {
         if (category) {
           await new Promise(resolve => setTimeout(resolve, 300));
+          const data = await ProductService.getByCategory(category);
 
-          const data = await ProductService.getByCategory(category); 
           setProducts(data);
         }
-      } catch (error) {
-        console.error('Error fetching products by category:', error);
+      } catch (err) {
+        setError('Products by category not found');
       } finally {
         setIsLoading(false);
       }
     };
-  
+
     fetchData();
   }, [category]);
 
@@ -110,25 +114,32 @@ const CategoryPage: React.FC<{ category: CategoryType }> = ({ category }) => {
               <DropdownCout />
             </div>
 
-            <div className={styles.cards}>
-              {visibleProducts.map((product) => (
-                <CardItem product={product} key={product.id} />
-              ))}
-            </div>
+            {error ? (
+              <EmptyContent
+                title="No items available in this category"
+                img="/img/is-empty.png"
+              />
+            ) : (
+              <div className={styles.cards}>
+                {visibleProducts.map((product) => (
+                  <CardItem product={product} key={product.id} />
+                ))}
+              </div>
+            )}
           </div>
         </>
       )}
 
-      {perPage !== 'all' && (
-        <Pagination 
-          totalPages={totalPages} 
+      {perPage !== 'all' && !error && (
+        <Pagination
+          totalPages={totalPages}
           currentPage={currentPage}
-          searchParams={searchParams} 
-          setSearchParams={setSearchParams} 
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
         />
       )}
     </div>
   );
-}
+};
 
 export default CategoryPage;

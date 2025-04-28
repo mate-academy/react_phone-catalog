@@ -81,10 +81,10 @@
     border: 1px solid $btn-selected-fav-bg;
     padding: 6px;
     cursor: pointer;
-    @include defaultTransition;
 
-    @include hoverShadow;
-
+    @include default-transition;
+    @include hover-shadow;
+    
     @media(max-width: $tablet) {
       width: 35px;
       height: 35px;
@@ -153,9 +153,9 @@
     border-radius: 100%;
     border: 1px solid $element-bg;
     cursor: pointer;
-    @include defaultTransition;
 
-    @include hoverShadow;
+    @include default-transition;
+    @include hover-shadow;
 
     &__selected {
       outline: 3px solid rgb(69, 6, 70);
@@ -188,9 +188,9 @@
     font-size: 14px;
     line-height: 21px;
     cursor: pointer;
-    @include defaultTransition;
 
-    @include hoverShadow;
+    @include default-transition;
+    @include hover-shadow;
 
     &__selected {
       background-color: $main-color;
@@ -215,7 +215,7 @@
     font-weight: 600;
     line-height: 100%;
 
-    @include priceAfter;
+    @include price-after;
   }
 
   &__buttons {
@@ -236,7 +236,7 @@
         font-weight: 700;
         color: $secondary-lite-color;
       }
-  
+
       & > h4 {
         font-weight: 700;
       }

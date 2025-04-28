@@ -9,5 +9,5 @@ export const loadFavouritesFromLocalStorage = () => {
 
   return {
     items: items ? JSON.parse(items) : [],
-  }
+  };
 };

@@ -12,7 +12,7 @@
   }
 
   & h1 {
-    @include pageTitle;
+    @include page-title;
   }
 }
 
@@ -49,13 +49,13 @@
       font-weight: 800;
       font-size: 32px;
       line-height: 41px;
-      letter-spacing: -1%;      
+      letter-spacing: -1%;
     }
 
     & h4 {
       font-weight: 600;
       font-size: 14px;
-      line-height: 21px;    
+      line-height: 21px;
       color: $secondary-color;
       margin-bottom: 26px;
     }
@@ -65,7 +65,7 @@
       height: 48px;
       font-weight: 700;
       font-size: 14px;
-      line-height: 21px;   
+      line-height: 21px;
       color: $main-color;
       background-color: $btn-default-add-bg;
 
@@ -78,5 +78,6 @@
 
 .line {
   @include line;
+
   margin-bottom: 24px;
 }

@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Breadcrumbs from "../../shared/Breadcrumbs";
 import styles from './CartPage.module.scss';
 import CartItem from "./components/CartItem";
 import { useLocation } from "react-router-dom";
 import Loader from "../../shared/Loader";
 import EmptyContent from "../../shared/EmptyContent";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const CartPage = () => {
   const items = useTypedSelector(state => state.cart.items);
   const { totalPrice } = useTypedSelector(state => state.cart);
-  const countItemsInCart = items.reduce((total, item) => total + item.quantity, 0);
+  const countItemsInCart =
+    items.reduce((total, item) => total + item.quantity, 0);
   const { pathname } = useLocation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -34,7 +35,7 @@ const CartPage = () => {
         <div className={styles.main}>
           <div className={styles.main__items}>
             {items.map(item => (
-              <CartItem item={item} />
+              <CartItem item={item} key={item.id}/>
             ))}
           </div>
 
@@ -50,7 +51,7 @@ const CartPage = () => {
       )}
 
     </div>
-  )
-}
+  );
+};
 
 export default CartPage;

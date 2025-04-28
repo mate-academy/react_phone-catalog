@@ -35,7 +35,7 @@
     line-height: 11px;
     letter-spacing: 4%;
 
-    @include navAfterLine;
+    @include nav-after-line;
   }
 }
 
@@ -54,8 +54,8 @@
     font-weight: 800;
     font-size: 12px;
 
-    @include navAfterLine;
-    
+    @include nav-after-line;
+
     &:hover {
       box-shadow: 0 0 2px $secondary-color;
     }

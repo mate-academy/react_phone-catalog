@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './Description.module.scss';
-import { IProductDetails } from '../../../../interfaces/ProductDetails.interface';
+import {
+  IProductDetails,
+} from '../../../../interfaces/ProductDetails.interface';
 
 const Description: React.FC<{ product: IProductDetails }> = ({ product }) => {
   const specs = [
@@ -20,7 +22,7 @@ const Description: React.FC<{ product: IProductDetails }> = ({ product }) => {
         <h2>About</h2>
         <div className={styles.line}></div>
         {product.description.map(item => (
-          <div className={styles.about__item}>
+          <div className={styles.about__item} key={item.title}>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
           </div>
@@ -41,7 +43,7 @@ const Description: React.FC<{ product: IProductDetails }> = ({ product }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Description;

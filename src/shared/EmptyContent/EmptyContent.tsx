@@ -12,7 +12,7 @@ const EmptyContent: React.FC<IEmptyContentProps> = ({ title, img }) => {
       <h1>{title}</h1>
       <img src={img} />
     </div>
-  )
-}
+  );
+};
 
 export default EmptyContent;

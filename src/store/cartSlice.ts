@@ -1,6 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ICart, IChangQuantityPayload, IInitialStateCart } from "../interfaces/Cart.interface";
-import { loadCartFromLocalStorage, saveCartToLocalStorage } from "../helpers/CartLocalStorage";
+import {
+  ICart,
+  IChangQuantityPayload,
+  IInitialStateCart
+} from "../interfaces/Cart.interface";
+import {
+  loadCartFromLocalStorage,
+  saveCartToLocalStorage
+} from "../helpers/CartLocalStorage";
 
 const initialState: IInitialStateCart = loadCartFromLocalStorage();
 
@@ -9,7 +16,8 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action: PayloadAction<ICart>) {
-      const existingItem = state.items.find(item => item.id === action.payload.id);
+      const existingItem =
+        state.items.find(item => item.id === action.payload.id);
 
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
@@ -22,7 +30,8 @@ const cartSlice = createSlice({
     },
 
     deleteWithCart(state, action: PayloadAction<ICart>) {
-      const existingItem = state.items.find(item => item.id === action.payload.id);
+      const existingItem =
+        state.items.find(item => item.id === action.payload.id);
 
       if (existingItem) {
         state.items = state.items.filter(item => item.id !== action.payload.id);
@@ -33,7 +42,8 @@ const cartSlice = createSlice({
     },
 
     changeQuantity(state, action: PayloadAction<IChangQuantityPayload>) {
-      const existingItem = state.items.find(item => item.id === action.payload.id);
+      const existingItem =
+        state.items.find(item => item.id === action.payload.id);
 
       if (existingItem) {
         if (action.payload.type === 'plus') {

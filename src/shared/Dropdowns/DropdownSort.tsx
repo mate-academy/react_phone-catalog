@@ -12,6 +12,7 @@ const DropdownSort: React.FC = () => {
     setValue(option);
     
     const params = new URLSearchParams(searchParams);
+
     params.set('sort', option);
     setSearchParams(params);
     
@@ -61,7 +62,7 @@ const DropdownSort: React.FC = () => {
                 onMouseDown={() => handleSelect(option)} 
                 className={styles.select__option}
               >
-               {option}
+                {option}
               </div>
             ))}
           </div>

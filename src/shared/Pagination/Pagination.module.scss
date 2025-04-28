@@ -6,20 +6,20 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  
+
   & > button {
     height: 32px;
     width: 32px;
     background-color: inherit;
     border: 1px solid $element-bg;
-    
+
     & > span {
       color: $element-bg;
     }
-    
+
     &:hover {
       background-color: $element-bg;
-      
+
       & > span {
         color: $main-color;
       }
@@ -28,11 +28,11 @@
     &:disabled {
       opacity: 0.5;
       cursor: default;
-  
+
       & > span {
         color: $element-bg;
       }
-  
+
       &:hover {
         background-color: inherit;
       }
@@ -65,7 +65,8 @@
       font-size: 14px;
       line-height: 21px;
       cursor: pointer;
-      @include defaultTransition;
+
+      @include default-transition;
 
       &:hover {
         background-color: $element-bg;

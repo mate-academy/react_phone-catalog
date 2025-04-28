@@ -10,7 +10,7 @@
 
 body {
   color: $main-color;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   font-size: 12px;
 }
 
@@ -49,5 +49,6 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-  @include defaultTransition;
+
+  @include default-transition;
 }

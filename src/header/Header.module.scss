@@ -34,7 +34,7 @@
     align-items: center;
     height: 100%;
 
-    @include navAfterLine;
+    @include nav-after-line;
   }
 }
 
@@ -72,8 +72,8 @@
     font-weight: 800;
     font-size: 12px;
 
-    @include navAfterLine;
-    
+    @include nav-after-line;
+
     &:hover {
       box-shadow: 0 0 2px $secondary-color;
     }
@@ -95,7 +95,7 @@
     top: 18px;
     right: 20px;
     font-weight: 700;
-    font-size: 9px; 
+    font-size: 9px;
   }
 }
 

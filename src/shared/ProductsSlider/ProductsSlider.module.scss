@@ -9,7 +9,7 @@
     margin-bottom: 24px;
 
     & > h2 {
-      @include sectionTitle;
+      @include section-title;
     }
 
     & > div {
@@ -48,7 +48,7 @@
     gap: 12px;
     overflow-x: auto;
     scroll-behavior: smooth;
-  
+
     &::-webkit-scrollbar {
       display: none;
     }

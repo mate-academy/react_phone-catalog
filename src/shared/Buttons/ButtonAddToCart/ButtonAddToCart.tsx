@@ -14,23 +14,23 @@ const ButtonAddToCart: React.FC<{ product: IProductCard }> = ({ product }) => {
     if (existingItem) {
       deleteWithCart(existingItem);
     } else {
-        addToCart({
-          id: product.id,
-          product,
-          quantity: 1,
-          price: product.price,
-        });
+      addToCart({
+        id: product.id,
+        product,
+        quantity: 1,
+        price: product.price,
+      });
     }
-  }
+  };
 
   return (
-    <button 
+    <button
       className={cn(styles.btn, { [styles.selected]: existingItem })}
       onClick={handleAddToCart}
     >
       {existingItem ? 'Added' : 'Add to cart'}
     </button>
-  )
-}
+  );
+};
 
 export default ButtonAddToCart;
