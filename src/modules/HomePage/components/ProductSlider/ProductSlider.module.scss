@@ -1,0 +1,85 @@
+@import '../../../../styles/utils';
+
+.product-slider {
+  margin-top: 50px;
+
+  @include padding-inline;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    grid-column: 1/4;
+
+    @include tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    background-color: $background-color;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    border: none;
+
+    &:disabled {
+      border: 1px solid $hover-color;
+      background-color: $background-color;
+    }
+
+    &--prev,
+    &--next {
+      .product-slider__btn-icon {
+        filter: brightness(1);
+      }
+    }
+
+    &--prev:disabled,
+    &--next:disabled {
+      .product-slider__btn-icon {
+        filter: brightness(0.5);
+      }
+    }
+
+    &--next {
+      &:hover {
+        @include hover-button;
+      }
+    }
+  }
+
+  &__wrapp {
+    margin-top: 24px;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__item {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    height: 439px;
+
+    @include tablet {
+      height: 512px;
+    }
+
+    @include desktop {
+      height: 506px;
+      flex: 0 0 calc((100% - 4 * 15px) / 4);
+    }
+  }
+}
+

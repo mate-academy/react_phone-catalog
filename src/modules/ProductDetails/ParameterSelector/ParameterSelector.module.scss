@@ -1,0 +1,75 @@
+@import '../../../styles/utils';
+
+.parameter-selector {
+  position: relative;
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 16px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+    grid-column: 1/1;
+
+    &--discount {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+    }
+
+    &--full {
+      color: #75767F;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 28px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+    grid-column: 1/1;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__term {
+    font-size: 12px;
+    color: $color-grey;
+    font-weight: 700;
+  }
+
+  &__desc {
+    font-size: 12px;
+    font-weight: 700;
+    color: $color-white;
+  }
+
+  &__button {
+    grid-column: 1/1;
+  }
+
+  &__id {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    color: #4A4D58;
+    font-weight: 700;
+
+    @include desktop {
+      text-align: right;
+    }
+  }
+}

@@ -1,0 +1,95 @@
+@import '../../../styles/utils';
+
+.action {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #3B3E4A;
+  height: 64px;
+  position: relative;
+
+  @include tablet {
+    border: none;
+    height: 48px;
+  }
+
+  @include desktop {
+    height: 63px;
+  }
+
+  &__link {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    @include tablet {
+      width: 48px;
+    }
+
+    @include desktop {
+      width: 64px;
+    }
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      border-left: 1px solid $hover-color;
+
+      @media (max-width: 640px) {
+        &:nth-child(1) {
+          border-left: none;
+        }
+      }
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $color-white;
+      bottom: 0;
+      left: 0;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &:hover {
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__image {
+    height: 16px;
+
+    &:hover {
+      @include shake;
+    }
+  }
+
+  &__count {
+    position: absolute;
+    font-size: 9px;
+    font-weight: 700;
+    bottom: 50%;
+    left: 50%;
+    background-color: $red-color;
+    border-radius: 50%;
+    color: $color-white;
+    height: 14px;
+    width: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+

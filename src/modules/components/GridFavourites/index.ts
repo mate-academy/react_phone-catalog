@@ -1,0 +1,1 @@
+export { GridFavourites } from './GridFavourites';

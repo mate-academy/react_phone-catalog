@@ -1,0 +1,39 @@
+@import '../../../styles/utils';
+
+.add-selection {
+  display: flex;
+  gap: 5px;
+  height: 40px;
+  width: 100%;
+  justify-content: space-between;
+
+  &__button-cart{
+    width: 100%;
+    background-color: #905BFF;
+    color: $color-white;
+    font-size: 14px;
+    border: none;
+
+    &:hover {
+      background-color: $hover-button-purple;
+    }
+  }
+
+  &__button-favourites {
+    width: 40px;
+    background-color: #323542;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 0;
+
+    &:hover {
+      background-color: $hover-button;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+  }
+}

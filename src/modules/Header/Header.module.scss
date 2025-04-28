@@ -1,0 +1,94 @@
+@import '../../styles/utils';
+
+.header {
+  position: sticky;
+  top: 0;
+  height: 50px;
+  background-color: $background-color;
+  z-index: 1;
+
+  @include desktop {
+    height: 64px;
+  }
+
+  &__wrapp {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $hover-color;
+    position: sticky;
+    z-index: 2;
+    gap: 16px;
+    justify-content: space-between;
+
+    @include tablet {
+      padding-right: 0;
+      gap: 24px;
+    }
+
+    @include big-desktop {
+      gap: 40px;
+    }
+  }
+
+  &__link {
+    padding-left: 16px;
+
+    @include desktop {
+      padding-left: 24px;
+    }
+  }
+
+  &__burger {
+    display: flex;
+    z-index: 2;
+    border-left: 1px solid $hover-color;
+    padding: 16px;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__logo {
+    height: 22px;
+    z-index: 10;
+
+    &:hover {
+      @include scale-on-hover;
+    }
+
+    @include desktop {
+      height: 28px;
+    }
+  }
+
+  &__icon {
+    height: 16px;
+  }
+
+  &__navbar {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    @media(min-width: 750px) {
+      gap: 130px;
+    }
+
+    @media(min-width: 900px) {
+      gap: 300px;
+    }
+
+    @include desktop {
+      gap: 495px;
+    }
+
+    @include big-desktop {
+      gap: 711px;
+    }
+  }
+}
