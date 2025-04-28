@@ -1,0 +1,61 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 40px;
+
+  @media (max-width: $mobile) {
+    gap: 24px;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  & h1 {
+    @include pageTitle;
+  }
+
+  & h4 {
+    @include itemsCount;
+  }
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  
+  &__dropdown {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  @media(max-width: $desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media(max-width: $desktop-medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media(max-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media(max-width: $mobile-medium) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

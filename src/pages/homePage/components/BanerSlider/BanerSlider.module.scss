@@ -1,0 +1,199 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  
+  & > h1 {
+    @include pageTitle;
+    margin-bottom: 56px;  
+
+    @media(max-width: $tablet) {
+      margin-bottom: 32px;
+    }
+  
+    @media(max-width: $mobile) {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.main {
+  display: flex;
+  height: 360px;
+  gap: 16px;
+  margin-bottom: 8px;
+
+  @media(max-width: $desktop-medium) {
+    height: 260px;
+  }
+
+  @media(max-width: $mobile-medium) {
+    height: 360px;
+  }
+
+  & > button {
+    width: 32px;
+    background-color: inherit;
+    outline: none;
+    border: 1px solid $element-bg;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $element-bg;
+    }
+
+    & img {
+      width: 6px;
+      height: 10px;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  gap: 20px;
+  background-color: black;
+  width: 100%;
+
+  @media(max-width: $mobile-medium) {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__link {
+    margin-top: auto;
+  }
+  
+  &__left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 16px;
+    padding: 46px;
+    background-color: #1f2021;
+    border-radius: 16px;
+
+    @media(max-width: $desktop-medium) {
+      margin: 10px;
+      padding: 26px;
+    }
+
+    @media(max-width: $mobile-medium) {
+      background-color: inherit;
+      width: 80%;
+    }
+
+    & h2 {
+      font-weight: 800;
+      font-size: 38px;
+      line-height: 36px;
+      letter-spacing: -1%;
+      margin-bottom: 12px;    
+      background: linear-gradient(90deg, #a855f7, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;  
+
+      @media(max-width: $desktop-medium) {
+        font-size: 28px;
+        line-height: 26px;
+      }
+
+      @media(max-width: $tablet) {
+        font-size: 20px;
+        line-height: 20px;
+      }
+
+      @media(max-width: $mobile-medium) {
+        font-size: 28px;
+        line-height: 26px;
+        margin-bottom: 0;
+      }
+    }
+
+    & h3 {
+      font-weight: 600;
+      font-size: 12px;
+      color: $secondary-color;
+
+      @media(max-width: $desktop-medium) {
+        font-size: 10px;
+      }
+
+      @media(max-width: $tablet) {
+        font-size: 8px;
+      }
+
+      @media(max-width: $mobile-medium) {
+        display: none;
+      }
+    }
+
+    & button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 30px;
+      width: 50%;
+      padding: 18px;
+      color: $main-color;
+      background-color: inherit;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid $element-bg;
+
+      @media(max-width: $desktop-medium) {
+        font-size: 10px;
+        padding: 14px;
+      }
+
+      @media(max-width: $tablet) {
+        font-size: 8px;
+        width: 60%;
+      }
+
+      @media(max-width: $mobile-medium) {
+        display: none;
+      }
+
+      &:hover {
+        background-color: $element-bg;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    & img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+    }
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: $element-bg;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &__activeDot {
+    background-color: $main-color;
+  }
+}

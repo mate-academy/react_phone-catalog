@@ -1,0 +1,22 @@
+@use '../../../styles/variables.scss' as *;
+
+.btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  color: $main-color;
+  background-color: $btn-default-add-bg;
+
+  &:hover {
+    background-color: $btn-hover-add-bg;
+  }
+}
+
+.selected {
+  background-color: $btn-selected-add-bg;
+}

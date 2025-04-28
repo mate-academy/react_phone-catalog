@@ -1,0 +1,121 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins.scss' as *;
+
+.container {
+  position: sticky;
+  display: flex;
+  gap: 24px;
+  height: 64px;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  background-color: $main-bg;
+  border-bottom: 1px solid $secondary-color;
+
+  @media(max-width: $tablet) {
+    height: 48px;
+    gap: 16px;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 64px;
+  color: $secondary-color;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    @include navAfterLine;
+  }
+}
+
+.logo {
+  width: 80px;
+  height: 28px;
+  margin: 18px 24px;
+  object-fit: contain;
+
+  @media (max-width: $tablet) {
+    width: 64px;
+    height: 22px;
+    margin: 13px 16px;
+  }
+}
+
+.icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 100%;
+    box-shadow: 0 0 1px $secondary-color;
+    font-weight: 800;
+    font-size: 12px;
+
+    @include navAfterLine;
+    
+    &:hover {
+      box-shadow: 0 0 2px $secondary-color;
+    }
+  }
+
+  & img {
+    width: 16px;
+  }
+
+  & div {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EB5757;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: 18px;
+    right: 20px;
+    font-weight: 700;
+    font-size: 9px; 
+  }
+}
+
+.burgerIcon {
+  display: none;
+
+  @media (max-width: $tablet) {
+    display: flex;
+    width: 100vh;
+    justify-content: flex-end;
+  }
+
+  & button {
+    background-color: inherit;
+    align-items: center;
+    width: 48px;
+    border: none;
+  }
+
+  & img {
+    width: 16px;
+  }
+}

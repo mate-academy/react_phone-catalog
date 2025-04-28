@@ -1,0 +1,64 @@
+@use '../styles/variables' as *;
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 96px;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: $main-bg;
+  padding: 32px 152px;
+  border-top: 1px solid $secondary-color;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    height: 256px;
+    padding: 16px 32px;
+    gap: 32px;
+  }
+}
+
+.logo {
+  width: 80px;
+  height: 28px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 104px;
+
+  @media (max-width: $desktop) {
+    gap: 56px;
+  }
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+.backToTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  & h4 {
+    font-weight: 700;
+    color: $secondary-color;
+  }
+
+  & img {
+    width: 32px;
+  }
+}

@@ -1,0 +1,57 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.slider {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    & > h2 {
+      @include sectionTitle;
+    }
+
+    & > div {
+      display: flex;
+      gap: 16px;
+
+      & > button {
+        width: 32px;
+        height: 32px;
+        background-color: inherit;
+        border: 1px solid $element-bg;
+
+        & > span {
+          color: $element-bg;
+        }
+
+        &:hover {
+          background-color: $element-bg;
+
+          & > span {
+            color: $main-color;
+          }
+        }
+      }
+    }
+  }
+
+  &__main {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__mainItems {
+    display: flex;
+    padding: 4px;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+

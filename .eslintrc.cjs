@@ -98,6 +98,7 @@ module.exports = {
         },
       },
     ],
+    'quotes': ['off'],
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
   settings: {
