@@ -57,13 +57,13 @@ const Header = () => {
 
         <div className={styles.icons}>
           <Link to="/favourites" className={`${styles.icons__link} ${active === '/favourites' ? styles.active : ''}`}>
-            <img src="/images/icons/Favourites.png"/>
+            <img src="./images/icons/Favourites.png"/>
             {favouritesItems.length > 0 && (
               <div>{favouritesItems.length}</div>
             )}
           </Link>
           <Link to="/cart" className={styles.icons__link}>
-            <img src="/images/icons/Cart.png"/>
+            <img src="./images/icons/Cart.png"/>
             {cartItems.length > 0 && (
               <div>{cartItems.length}</div>
             )}
@@ -74,10 +74,10 @@ const Header = () => {
           <button onClick={() => setMenuOpen(prev => !prev)}>
             {menuOpen === true
               ? (
-                <img src="/images/icons/Close.png" className={styles.menuImg} />
+                <img src="./images/icons/Close.png" className={styles.menuImg} />
               )
               : (
-                <img src="/images/icons/Menu.png" className={styles.menuImg} />
+                <img src="./images/icons/Menu.png" className={styles.menuImg} />
               )
             }
           </button>
