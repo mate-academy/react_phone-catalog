@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import styles from './NewModels.module.scss';
+import styles from './HotPrices.module.scss';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -8,7 +9,7 @@ import 'swiper/css/pagination';
 import { Product } from '../../shared/Product';
 import { ProductType } from '../../types/ProductType';
 
-export const NewModels: React.FC = () => {
+export const HotPrices: React.FC = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [isTablet, setIsTablet] = useState<boolean>(window.innerWidth >= 640);
   const [isDesktop, setIsDesktop] = useState<boolean>(
@@ -32,9 +33,12 @@ export const NewModels: React.FC = () => {
       const data: ProductType[] = await res.json();
 
       const filteredProducts = data
-        .filter(product => product.category === 'phones')
-        .filter(product => product.capacity === '512GB')
-        .reverse();
+        .map(product => ({
+          ...product,
+          discount: product.fullPrice - product.price,
+        }))
+        .sort((a, b) => b.discount - a.discount)
+        .slice(0, 20);
 
       setProducts(filteredProducts);
     } catch (error) {
@@ -51,7 +55,7 @@ export const NewModels: React.FC = () => {
     <section className={styles.new__models}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Brand new models</h2>
+          <h2 className={styles.title}>Hot prices</h2>
           <div className={styles.slider__controls}>
             <button className={styles.slider__controlsPrev}>
               <span />
@@ -78,7 +82,7 @@ export const NewModels: React.FC = () => {
           >
             {products.map(product => (
               <SwiperSlide key={product.id} className={styles.slider__slide}>
-                <Product product={product} fullPriceActive={false} />
+                <Product product={product} fullPriceActive={true} />
               </SwiperSlide>
             ))}
           </Swiper>

@@ -1,10 +1,14 @@
 @use '../../styles/utils' as utils;
 
 .header {
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  z-index: 100;
+
+  width: 100%;
   padding: 0 0 0 16px;
   border-bottom: utils.$default-border;
+
+  background-color: utils.$color-black;
 
   &__content {
     @extend %flex-between-center;
@@ -165,7 +169,7 @@
     justify-content: space-between;
 
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
 
     opacity: 0;
     background-color: utils.$color-black;
@@ -183,11 +187,12 @@
     ul {
       @extend %flex-column;
 
+      overflow-y: auto;
       gap: 26px;
       align-items: center;
-      justify-content: center;
 
       @include utils.on-tablet {
+        overflow-y: visible;
         flex-direction: row;
         gap: 32px;
       }
@@ -217,13 +222,17 @@
     .header__cart,
     .header__favorites {
       cursor: pointer;
+
       position: relative;
+
       width: 100%;
       border: none;
+      border-left: utils.$default-border;
+
       appearance: none;
       background-color: transparent;
+
       transition: background-color utils.$animation-duration;
-      border-left: utils.$default-border;
 
       a {
         @extend %flex-center;
@@ -254,16 +263,21 @@
 
     @include utils.on-tablet {
       pointer-events: auto;
+
       position: static;
       transform: none;
+
       display: flex;
       flex-direction: row;
       gap: 32px;
       align-items: center;
       justify-content: space-between;
+
       width: 100%;
       height: auto;
+
       opacity: 1;
+
       transition: none;
     }
   }
@@ -277,6 +291,7 @@
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+
     transition: color utils.$animation-duration;
 
     @include utils.on-tablet {
@@ -298,11 +313,14 @@
     &::after {
       pointer-events: none;
       content: '';
+
       position: absolute;
       bottom: -8px;
       left: 0;
+
       width: 100%;
       height: 3px;
+
       background-color: utils.$color-white;
 
       @include utils.on-tablet {

@@ -33,9 +33,19 @@ const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
 export const Header: React.FC = () => {
   const [isBurgerActive, setIsBurgerActive] = useState(false);
 
+  const bodyRef = React.useRef(document.body);
+
   const toggleBurger = () => {
     setIsBurgerActive(prev => !prev);
   };
+
+  useEffect(() => {
+    if (isBurgerActive) {
+      bodyRef.current.classList.add('lock-scroll');
+    } else {
+      bodyRef.current.classList.remove('lock-scroll');
+    }
+  }, [isBurgerActive]);
 
   useEffect(() => {
     const handleResize = () => {

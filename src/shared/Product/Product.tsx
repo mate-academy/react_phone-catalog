@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from './Product.module.scss';
-import { ProductType } from '../../types/ProductType'; // проверь правильный путь
+import { ProductType } from '../../types/ProductType';
 
 type Props = {
   product: ProductType;
+  fullPriceActive: boolean;
 };
 
-export const Product: React.FC<Props> = ({ product }) => {
-  const { name, price, image, screen, capacity, ram } = product;
+export const Product: React.FC<Props> = ({ product, fullPriceActive }) => {
+  const { name, price, fullPrice, image, screen, capacity, ram } = product;
 
   return (
     <article className={styles.product}>
@@ -18,7 +19,13 @@ export const Product: React.FC<Props> = ({ product }) => {
 
         <h3 className={styles.product__title}>{name}</h3>
 
-        <span className={styles.product__price}>{`$${price}`}</span>
+        <div className={styles.product__prices}>
+          <span className={styles.product__price}>{`$${price}`}</span>
+
+          {fullPriceActive && (
+            <span className={styles.product__fullPrice}>{`$${fullPrice}`}</span>
+          )}
+        </div>
 
         <div className={styles.product__line} />
 
@@ -39,7 +46,7 @@ export const Product: React.FC<Props> = ({ product }) => {
 
         <div className={styles.product__buttons}>
           <button className={styles.product__addToCart}>Add to cart</button>
-          <button className={styles.product__like}>
+          <button type="button" className={styles.product__like}>
             <img src="img/icons/favorites.svg" alt="Add to favorites" />
           </button>
         </div>

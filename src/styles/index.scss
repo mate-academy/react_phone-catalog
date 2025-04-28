@@ -9,3 +9,16 @@
 .App {
   background-color: $color-black;
 }
+
+main {
+  padding-top: 64px;
+}
+
+.lock-scroll {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  overflow-y: scroll;
+}

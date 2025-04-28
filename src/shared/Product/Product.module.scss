@@ -34,6 +34,22 @@
     color: utils.$color-white;
   }
 
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__fullPrice {
+    font-family: utils.$font-main;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 100%;
+    color: #75767f;
+    text-decoration-line: line-through;
+  }
+
   &__price {
     font-family: utils.$font-main;
     font-size: 22px;

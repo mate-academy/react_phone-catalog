@@ -94,7 +94,7 @@
 
     background-color: utils.$color-elements;
 
-    transition: background-color 0.3s;
+    transition: background-color utils.$animation-duration;
   }
 
   span,
