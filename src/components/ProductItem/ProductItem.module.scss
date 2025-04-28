@@ -1,0 +1,158 @@
+@import '/src/utils/global';
+
+.card {
+  box-sizing: border-box;
+  width: 212px;
+  padding: 32px;
+  background-color: $dark-blue-gray;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.3s;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+
+  &__img {
+    height: 129px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    transition: all 0.3s;
+
+    @include on-tablet {
+      height: 181px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px $gray;
+    cursor: pointer;
+    
+    & .card__img {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    padding-top: 16px;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 21px;
+    height: calc(21px * 2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 0;
+    line-height: 140%;
+
+    &_action {
+      color: $ligth-gray;
+      text-decoration: line-through;
+      font-weight: 600;
+      line-height: 100%;
+      letter-spacing: 0%;
+    }
+  }
+
+  &__hr {
+    margin: 0;
+    background-color: $line-color;
+    width: 100%;
+    height: 1px;
+    border: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    & button {
+      border: none;
+    }
+  }
+
+  &__addBtn {
+    background-color: $accent;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    text-align: center;
+    flex-grow: 1;
+    height: 40px;
+
+    @include on-tablet {
+      width: 125px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+    }
+
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 5px 20px #905bffd1;
+    }
+
+    &_active {
+      border: 1px solid $dark-gray !important;
+      background-color: $dark-gray;
+      color: $white;
+    }
+  }
+
+  &__favouriteBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $gray;
+    width: 40px;
+    height: 40px;
+    border: 1px solid transparent !important;
+    transition: border 0.3s;
+
+    & img {
+      display: block;
+      height: 16px;
+    }
+
+    &:hover {
+      border: 1px solid $white !important;
+    }
+  }
+}
+
+.propertys {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: auto;
+    letter-spacing: 0;
+  }
+
+  &__title {
+    color: $ligth-gray;
+  }
+}

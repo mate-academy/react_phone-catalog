@@ -1,0 +1,95 @@
+@import '/src/utils/global';
+
+.nav {
+  display: none;
+  height: inherit;
+  margin-left: 16px;
+
+  @include on-mobile {
+    margin-top: 24px;
+  }
+
+  @include on-tablet {
+    display: block;
+  }
+
+  @include on-desktop {
+    margin-left: 24px;
+  }
+
+  &--mobile {
+    display: block;
+  }
+
+  &__list {
+    display: flex;
+    gap: 32px;
+    height: inherit;
+
+    &--mobile {
+      flex-direction: column;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    height: inherit;
+    display: grid;
+    place-content: center;
+
+    @include on-mobile {
+      height: auto;
+    }
+  }
+
+  &__link {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: inherit;
+
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 11px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: $ligth-gray;
+
+    text-transform: uppercase;
+    width: fit-content;
+
+    @include hover(color, $white);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $white;
+      border-radius: 4px;
+      transform-origin: center top;
+      transform: scaleX(0);
+      transition: all 0.3s;
+
+      @include on-mobile {
+        bottom: -8px;
+      }
+    }
+
+    &_active {
+      box-sizing: border-box;
+      color: $white;
+
+      &::after {
+        transform: scaleX(100%);
+      }
+
+    }
+  }
+}
