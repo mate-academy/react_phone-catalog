@@ -1,0 +1,29 @@
+@import '../../styles/variables.module';
+
+.list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 16px;
+
+  a {
+    font-weight: 600;
+    line-height: 1;
+    color: $primary-color;
+    text-transform: capitalize;
+  }
+
+  svg {
+    fill: $icon-color;
+  }
+}
+
+.item {
+  display: flex;
+  gap: 8px;
+  align-items: self-end;
+  &:last-child a {
+    pointer-events: none;
+    color: $secondary-color;
+  }
+}

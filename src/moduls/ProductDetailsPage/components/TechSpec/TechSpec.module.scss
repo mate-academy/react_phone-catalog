@@ -1,0 +1,35 @@
+@import '../../../../shared/styles/variables.module';
+@import '../../../../shared/styles/mixins';
+
+.tech {
+  grid-column: 14/-1;
+
+  @include on-tablet {
+    grid-column: 8/-1;
+  }
+
+  @include on-tablet-less {
+    grid-column: 1/ -1;
+  }
+
+  hr {
+    margin-bottom: 25px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: $secondary-color;
+
+    span {
+      color: $primary-color;
+    }
+  }
+}

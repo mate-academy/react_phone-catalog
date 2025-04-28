@@ -1,0 +1,70 @@
+@import '../../shared/styles/variables.module';
+@import '../../shared/styles/mixins';
+
+.productList {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 0.25fr ));
+  gap: 16px;
+  row-gap: 40px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 0.33fr));
+  }
+
+  @include on-tablet-less {
+    grid-template-columns: repeat(auto-fit, minmax(272px, 0.5fr));
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+}
+
+.filter {
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__option {
+    position: relative;
+    p {
+      margin-bottom: 4px;
+      font-weight: 600;
+      color: $secondary-color;
+    }
+
+    select {
+      cursor: pointer;
+
+      box-sizing: border-box;
+      min-width: 128px;
+      padding-block: 10px;
+      padding-inline: 12px;
+      border: 1px solid $icon-color;
+
+      appearance: none;
+      outline: none;
+
+      transition: border 0.3s ease;
+
+      &:hover {
+        border-color: $secondary-color;
+      }
+
+      &:focus {
+        display: block;
+      }
+    }
+  }
+}
+
+.pagination {
+  margin-top: 40px;
+}
