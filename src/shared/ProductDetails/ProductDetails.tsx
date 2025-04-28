@@ -86,7 +86,7 @@ const ProductDetails = () => {
             <Link to={`/${category}`} className={styles.backLink}>
               <div className={styles.back}>
                 <img
-                  src="./images/icons/VectorLeft.png"
+                  src="images/icons/VectorLeft.png"
                   className={styles.back__img}
                 />
                 <h4>Back</h4>
@@ -103,12 +103,12 @@ const ProductDetails = () => {
                       [styles.images__smallBlock__selected]:
                         isSelectedImg === image,
                     })}>
-                      <img src={`./${image}`} onClick={() => setIsSelectedImg(image)} />
+                      <img src={`${image}`} onClick={() => setIsSelectedImg(image)} />
                     </div>
                   ))}
                 </div>
                 <div className={styles.images__big}>
-                  <img src={`./${isSelectedImg}`} />
+                  <img src={`${isSelectedImg}`} />
                 </div>
               </div>
               <div className={styles.details}>

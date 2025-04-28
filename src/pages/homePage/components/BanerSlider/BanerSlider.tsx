@@ -33,7 +33,7 @@ const BanerSlider = () => {
 
       <div className={styles.main}>
         <button onClick={handleClickLeft}>
-          <img src="./images/icons/VectorLeft.png"/>
+          <img src="images/icons/VectorLeft.png"/>
         </button>
 
         <div className={styles.content}>
@@ -55,7 +55,7 @@ const BanerSlider = () => {
         </div>
 
         <button onClick={handleClickRight}>
-          <img src="./images/icons/VectorRight.png" />
+          <img src="images/icons/VectorRight.png" />
         </button>
       </div>
 
