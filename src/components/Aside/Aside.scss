@@ -14,7 +14,6 @@
   transform: translateX(-100%);
   pointer-events: none;
 
-  transition: transform 0.3s, opacity 0.3s;
   &--open {
     transform: translateX(0);
     opacity: 1;

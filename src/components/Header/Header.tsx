@@ -5,6 +5,9 @@ import classNames from 'classnames';
 import { useCart } from '../../Functional/CartContext/CartContext';
 import { Aside } from '../Aside/Aside';
 import { useState } from 'react';
+import heartLove from '../../../public/figmaLogo/HeartLove.svg';
+import figmaLogo from '../../../public/figmaLogo/Logo.svg';
+import packetImg from '../../../public/figmaLogo/Packet.svg';
 
 export const Header = () => {
   const { cart, favorites } = useCart();
@@ -24,7 +27,7 @@ export const Header = () => {
       <div className="header__top">
         <div className="header__logo">
           <Link to="/">
-            <img src="/figmaLogo/Logo.svg" alt="NiceGadgets logo" />
+            <img src={figmaLogo} alt="NiceGadgets logo" />
           </Link>
         </div>
 
@@ -47,7 +50,7 @@ export const Header = () => {
           <div className="header__heart">
             <Link to="/favorites" className="header__heart__top">
               <img
-                src="/figmaLogo/HeartLove.svg"
+                src={heartLove}
                 alt="Favorites"
                 className="header__heart__top__btn"
               />
@@ -62,7 +65,7 @@ export const Header = () => {
           <div className="header__packet">
             <Link to="/cart" className="header__packet__top">
               <img
-                src="/figmaLogo/Packet.svg"
+                src={packetImg}
                 alt="Cart"
                 className="header__packet__top__btn"
               />

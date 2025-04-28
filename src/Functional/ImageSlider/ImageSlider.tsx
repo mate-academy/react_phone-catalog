@@ -1,17 +1,16 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { MainSlider } from './MainSlider';
+import bannerAccessories from '../../../public/img/banner-accessories.png';
+import bannerPhones from '../../../public/img/banner-phones.png';
+import bannerTablets from '../../../public/img/banner-tablets.png';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './ImageSlider.scss';
 
-const images = [
-  '/img/banner-accessories.png',
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
-];
+const images = [bannerAccessories, bannerPhones, bannerTablets];
 
 export default function SliderSwiper() {
   const { handlePrevSlide, handleNextSlide, onSwiperInit } = MainSlider();
