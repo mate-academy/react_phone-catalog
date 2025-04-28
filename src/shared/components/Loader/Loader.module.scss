@@ -1,7 +1,7 @@
 @import '../../../assets/styles/main';
 
 .spinner {
-  height: calc(100vh - 64px - 96px);
+  min-height: calc(100vh - 64px - 96px);
 
   position: relative;
 

@@ -1,5 +1,5 @@
 .notFound {
-  height: calc(100vh - 64px - 96px);
+  min-height: calc(100vh - 64px - 96px);
   padding: 10px;
 
   &__title {

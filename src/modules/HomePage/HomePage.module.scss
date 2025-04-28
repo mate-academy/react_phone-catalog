@@ -1,6 +1,7 @@
 @import '../../assets/styles/main';
 
 .main {
+  min-height: calc(100vh - 64px - 96px);
   padding-block: 24px 64px;
 
   @include on-tablet {

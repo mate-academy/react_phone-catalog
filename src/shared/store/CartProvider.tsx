@@ -9,14 +9,30 @@ export interface Cart {
 
 export type Action =
   | { type: 'addCartProduct'; payload: Cart }
-  | { type: 'deleteCartProduct'; payload: number };
+  | { type: 'deleteCartProduct'; payload: number }
+  | {
+      type: 'updateCartProductQuantity';
+      payload: { id: number; amount: number };
+    }
+  | { type: 'clearCart'; payload?: never };
 
 const reducer = (state: Cart[], action: Action) => {
   switch (action.type) {
     case 'addCartProduct':
       return [...state, action.payload];
     case 'deleteCartProduct':
-      return state;
+      return state.filter(cartProduct => cartProduct.id !== action.payload);
+    case 'updateCartProductQuantity':
+      return state.map(cartProduct =>
+        cartProduct.id === action.payload.id
+          ? { ...cartProduct, quantity: action.payload.amount }
+          : cartProduct,
+      );
+    case 'clearCart':
+      return {
+        ...state,
+        items: [],
+      };
     default:
       return state;
   }
@@ -41,7 +57,7 @@ export type Props = {
   children: React.ReactNode;
 };
 
-export const FavoritesProvider: React.FC<Props> = ({ children }) => {
+export const CartProvider: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, loadStateFromLocalStorage());
 
   useEffect(() => {

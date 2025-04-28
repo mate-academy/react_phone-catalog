@@ -1,6 +1,8 @@
 @import '../../assets/styles/main';
 
 .favorites {
+  min-height: calc(100vh - 64px - 96px);
+
   &__container {
     padding-block: 24px 56px;
 
@@ -30,4 +32,15 @@
   @include on-tablet {
     grid-column: span 6;
   }
+}
+
+.favorites__cardTitleWrapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorites__cartTitle {
+  font-size: 32px;
+  text-align: balance;
 }

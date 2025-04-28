@@ -104,11 +104,19 @@
     color: $color-white;
 
     background-color: $color-primary;
+    border: 1px solid $color-primary;
 
     transition: box-shadow 0.3s ease-in-out;
 
     &:hover {
       box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &:disabled {
+      color: $color-green;
+      border: 1px solid $color-elements;
+      background-color: $color-white;
+      box-shadow: 0 0 0 0;
     }
   }
 

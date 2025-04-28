@@ -5,9 +5,11 @@ import styles from './Header.module.scss';
 
 import { getClassLink } from '../../utils/activeClassName';
 import { FavoritesStateContext } from '../../store/FavoritesProvider';
+import { CartStateContext } from '../../store/CartProvider';
 
 export const Header = () => {
   const favoritesProduct = useContext(FavoritesStateContext);
+  const cartsProduct = useContext(CartStateContext);
 
   return (
     <header className={styles.header}>
@@ -118,7 +120,11 @@ export const Header = () => {
               alt="Відкрити корзину"
               className={styles.header__cartImg}
             />
-            <span className={styles.header__cartBadge}></span>
+            {cartsProduct.length > 0 && (
+              <span className={styles.header__cartBadge}>
+                {cartsProduct.length}
+              </span>
+            )}
           </NavLink>
           <button
             className={getClassLink({

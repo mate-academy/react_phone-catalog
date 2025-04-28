@@ -1,6 +1,8 @@
 @import '../../assets/styles/main';
 
 .productPage {
+  min-height: calc(100vh - 64px - 96px);
+
   &__container {
     padding-block: 24px 64px;
 

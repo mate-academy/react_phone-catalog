@@ -7,6 +7,10 @@ import {
   FavoritesDispatchContext,
   FavoritesStateContext,
 } from '../../store/FavoritesProvider';
+import {
+  CartDispatchContext,
+  CartStateContext,
+} from '../../store/CartProvider';
 
 type Props = {
   product: AllProducts & { hotPrice?: number };
@@ -14,7 +18,9 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const favoritesProduct = useContext(FavoritesStateContext);
-  const dispatch = useContext(FavoritesDispatchContext);
+  const cartsProduct = useContext(CartStateContext);
+  const dispatchFavorites = useContext(FavoritesDispatchContext);
+  const dispatchCart = useContext(CartDispatchContext);
 
   const handleFavoritesProducts = (value: AllProducts) => {
     const isFavorites = favoritesProduct.some(
@@ -22,14 +28,28 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     );
 
     if (isFavorites) {
-      dispatch({ type: 'deleteFavoritesProduct', payload: value.id });
+      dispatchFavorites({ type: 'deleteFavoritesProduct', payload: value.id });
     } else {
-      dispatch({ type: 'addFavoritesProduct', payload: value });
+      dispatchFavorites({ type: 'addFavoritesProduct', payload: value });
     }
+  };
+
+  const handleCart = (value: AllProducts) => {
+    const newCartItem = {
+      id: value.id,
+      quantity: 1,
+      product: value,
+    };
+
+    dispatchCart({ type: 'addCartProduct', payload: newCartItem });
   };
 
   const isFavorites = (id: number) => {
     return favoritesProduct.some(favoriteProduct => favoriteProduct.id === id);
+  };
+
+  const isCart = (id: number) => {
+    return cartsProduct.some(cartsProducts => cartsProducts.id === id);
   };
 
   return (
@@ -69,7 +89,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </div>
       <div className={styles.productCard__buttons}>
-        <button className={styles.productCard__addToCart}>Add to cart</button>
+        <button
+          className={styles.productCard__addToCart}
+          disabled={isCart(product.id)}
+          onClick={() => handleCart(product)}
+        >
+          Add to cart
+        </button>
         <button
           className={styles.productCard__addToFavorites}
           onClick={() => handleFavoritesProducts(product)}
