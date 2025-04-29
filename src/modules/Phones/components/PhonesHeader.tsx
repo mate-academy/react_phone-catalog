@@ -7,8 +7,8 @@ import { PhonesHeaderProps } from "@/types/Product";
 export const PhonesHeader = ({ sortBy, setSortBy, itemsOnPage, setItemsOnPage }: PhonesHeaderProps) => {
     return (
         <div>
-            <div className="mt-10 px-4 sm:px-6 md:px-8 xl:px-[152px]">
-                <h1 className=" text-[32px] sm:text-5xl font-extrabold text-text-color-base-white font-mont mb-1">Mobile phones</h1>
+            <div className="mt-10 px-3 sm:px-6 md:px-8 xl:px-[152px]">
+                <h1 className="text-[32px] sm:text-5xl font-extrabold text-text-color-base-white font-mont mb-1">Mobile phones</h1>
                 <p className="text-text-color-base-grey text-sm font-mont mb-6">95 models</p>
 
                 <div className="flex gap-4">

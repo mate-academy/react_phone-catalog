@@ -37,7 +37,7 @@ export const PhonesGridWithPagination = ({
 
 
   const itemsPerPage =
-    itemsOnPage === 'All' ? products.length : parseInt(itemsOnPage || '4');
+    itemsOnPage === 'All' ? products.length : parseInt(itemsOnPage || '8');
 
   const sortedProducts = useMemo(() => {
     if (!products.length) return [];
@@ -120,18 +120,18 @@ export const PhonesGridWithPagination = ({
 
   return (
     <div className="px-4 mt-10 font-mont sm:px-6 md:px-8 xl:px-[152px]">
-      <div className="grid grid-cols-4 gap-4 mb-10">
+      <div className="flex flex-wrap justify-center md:justify-normal gap-4 mb-10">
         {paginatedProducts.map((product) => (
           <PhoneCard key={product.id} product={product} showDiscount />
         ))}
       </div>
 
       {itemsOnPage !== 'All' && (
-        <div className="flex justify-center items-center gap-2 mt-8">
+        <div className="flex gap-2 justify-center items-center mt-8">
           <button
             onClick={handlePrev}
             disabled={currentPage === 1}
-            className={`w-8 h-8 flex items-center justify-center ${
+            className={`w-8 h-8 flex mr-2 items-center justify-center ${
               currentPage === 1
                 ? 'border border-color-border opacity-70 cursor-not-allowed'
                 : 'bg-background-color-btn hover:bg-background-color-btn-hover'
@@ -145,7 +145,7 @@ export const PhonesGridWithPagination = ({
           <button
             onClick={handleNext}
             disabled={currentPage === totalPages}
-            className={`w-8 h-8 flex items-center justify-center ${
+            className={`w-8 h-8 flex ml-2 items-center justify-center ${
               currentPage === totalPages
                 ? 'border border-color-border opacity-70 cursor-not-allowed'
                 : 'bg-background-color-btn hover:bg-background-color-btn-hover'

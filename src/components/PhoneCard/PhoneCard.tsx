@@ -7,7 +7,6 @@ export const PhoneCard = ({ product, showDiscount = false }: PhoneCardProps) => 
   const [isSelectedFav, setIsSelectedFav] = useState(false);
   const [isSelectedBtn, setIsSelectedBtn] = useState(false);
 
-  // take name in the field 'screen'
   const formatScreen = (screen: string) => {
     const screenMatch = screen.match(/([\d.]+)[’']?\s+([A-Za-z\s]*)/i);
 
@@ -25,7 +24,7 @@ export const PhoneCard = ({ product, showDiscount = false }: PhoneCardProps) => 
 
   return (
     <div className="w-[272px] h-[506px] bg-[#161827] flex p-8 flex-col font-mont">
-      <Link to={''}>
+      <Link to={`/phones/${product.id}`}>
         <img src={product.images[0]} alt={product.name} className="w-full h-[196px] object-contain mb-6 transition-transform duration-300 hover:scale-110" />
       </Link>
 
