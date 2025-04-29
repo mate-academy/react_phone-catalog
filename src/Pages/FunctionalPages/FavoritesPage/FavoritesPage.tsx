@@ -9,7 +9,8 @@ import activeSvg from '../../../../public/figmaLogo/ActiveHeart.svg';
 import pageNotFound from '../../../../public/img/page-not-found.png';
 
 export const FavoritesPage = () => {
-  const { favorites, toggleFavorite, cart, addToCart } = useCart();
+  const { favorites, toggleFavorite, cart, addToCart, removeFromCart } =
+    useCart();
   const [allProducts, setAllProducts] = useState<
     (Phone | Tablet | Accessories)[]
   >([]);
@@ -69,6 +70,28 @@ export const FavoritesPage = () => {
     setImageError(prev => ({ ...prev, [imageSrc]: true }));
   };
 
+  const handleCartToggle = (product: Phone | Tablet | Accessories) => {
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      price: product.priceDiscount,
+      image: product.images[0] ? `${product.images[0]}` : pageNotFound,
+      color: product.color,
+      quantity: 1,
+      ...(isPhoneOrTablet(product) && {
+        capacity: product.capacity,
+      }),
+    };
+
+    const isInCart = cart.some(item => item.id === product.id);
+
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(cartItem);
+    }
+  };
+
   if (loading) {
     return (
       <section className="favorites section">
@@ -121,43 +144,25 @@ export const FavoritesPage = () => {
             <div className="favorites__item-actions">
               <button
                 className={`favorites__item-btn ${
-                  cart.some(
-                    item =>
-                      item.id === product.id && item.color === product.color,
-                  )
-                    ? 'added'
-                    : ''
+                  cart.some(item => item.id === product.id) ? 'added' : ''
                 }`}
-                onClick={() =>
-                  addToCart({
-                    id: product.id,
-                    name: product.name,
-                    price: product.priceDiscount,
-                    image: product.images[0]
-                      ? `${product.images[0]}`
-                      : pageNotFound,
-                    color: product.color,
-                    quantity: 1,
-                    ...(isPhoneOrTablet(product) && {
-                      capacity: product.capacity,
-                    }),
-                  })
-                }
-                disabled={cart.some(
-                  item =>
-                    item.id === product.id && item.color === product.color,
-                )}
+                onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleCartToggle(product);
+                }}
               >
-                {cart.some(
-                  item =>
-                    item.id === product.id && item.color === product.color,
-                )
-                  ? 'Added to cart'
+                {cart.some(item => item.id === product.id)
+                  ? 'Added'
                   : 'Add to cart'}
               </button>
               <button
                 className="favorites__item-btn favorites__item-btn--favorite favorite--active"
-                onClick={() => toggleFavorite(product.id)}
+                onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  toggleFavorite(product.id);
+                }}
               >
                 <img
                   src={activeSvg}

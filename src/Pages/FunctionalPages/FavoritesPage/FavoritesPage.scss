@@ -82,7 +82,7 @@
 
     &.added {
       background-color: var(--text-muted);
-      cursor: not-allowed;
+      cursor: pointer;
     }
 
     &:hover {

@@ -1,13 +1,15 @@
-import '..//BrandNewModelPhone/NewBrand.scss';
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import '../BrandNewModelPhone/NewBrand.scss';
 import { Link } from 'react-router-dom';
 import heartLove from '../../../public/figmaLogo/HeartLove.svg';
+import activeSvg from '../../../public/figmaLogo/ActiveHeart.svg';
 import pageNotFound from '../../../public/img/page-not-found.png';
-// import phonesApi from '../../../public/api/phones.json';
+import { useCart } from '../../Functional/CartContext/CartContext';
 
 interface Phone {
   id: string;
@@ -24,7 +26,19 @@ interface Phone {
   images: string[];
 }
 
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  color: string;
+  capacity?: string;
+  quantity: number;
+}
+
 export default function HotPrices() {
+  const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
+    useCart();
   const [phones, setPhones] = useState<Phone[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -51,6 +65,32 @@ export default function HotPrices() {
       });
   }, []);
 
+  const handleCartToggle = (phone: Phone) => {
+    const selectedColor = phone.color || 'default';
+    const cartItem: CartItem = {
+      id: phone.id,
+      name: phone.name,
+      price: phone.priceDiscount,
+      image: `/${phone.images[0]}`,
+      color: selectedColor,
+      capacity: phone.capacity,
+      quantity: 1,
+    };
+
+    const isInCart = cart.some(
+      item =>
+        item.id === phone.id &&
+        item.color === phone.color &&
+        item.capacity === phone.capacity,
+    );
+
+    if (isInCart) {
+      removeFromCart(phone.id);
+    } else {
+      addToCart(cartItem);
+    }
+  };
+
   if (loading) {
     return (
       <section className="section">
@@ -76,18 +116,11 @@ export default function HotPrices() {
       <div className="brand">
         <div className="brand__header">
           <h2 className="brand__title">Hot prices</h2>
-
           <div className="brand__nav">
-            <button
-              className="brand__nav-btn brand__nav-btn--prev
-            swiper-button-p"
-            >
+            <button className="brand__nav-btn brand__nav-btn--prev swiper-button-p">
               {'<'}
             </button>
-            <button
-              className="brand__nav-btn brand__nav-btn--next
-             swiper-button-n"
-            >
+            <button className="brand__nav-btn brand__nav-btn--next swiper-button-n">
               {'>'}
             </button>
           </div>
@@ -110,7 +143,7 @@ export default function HotPrices() {
         >
           {phones.slice(20, 28).map(phone => (
             <SwiperSlide key={phone.id} className="brand__card">
-              <Link to={`/products/${phone.id}`} key={phone.id}>
+              <Link to={`/products/${phone.id}`}>
                 <img
                   src={phone.images[0]}
                   alt={phone.name}
@@ -148,19 +181,51 @@ export default function HotPrices() {
                     <span className="brand__card-spec-value">{phone.ram}</span>
                   </div>
                 </div>
-                <div className="brand__card-actions">
-                  <button className="brand__card-btn brand__card-btn--add">
-                    Add to cart
-                  </button>
-                  <button className="brand__card-btn brand__card-btn--favorite">
-                    <img
-                      src={heartLove}
-                      alt="Favorite"
-                      className="brand__card-btn-icon"
-                    />
-                  </button>
-                </div>
               </Link>
+              <div className="brand__card-actions">
+                <button
+                  className={`brand__card-btn brand__card-btn--add ${
+                    cart.some(
+                      item =>
+                        item.id === phone.id &&
+                        item.color === phone.color &&
+                        item.capacity === phone.capacity,
+                    )
+                      ? 'added'
+                      : ''
+                  }`}
+                  onClick={e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleCartToggle(phone);
+                  }}
+                >
+                  {cart.some(
+                    item =>
+                      item.id === phone.id &&
+                      item.color === phone.color &&
+                      item.capacity === phone.capacity,
+                  )
+                    ? 'Added'
+                    : 'Add to cart'}
+                </button>
+                <button
+                  className={`brand__card-btn brand__card-btn--favorite ${
+                    favorites.includes(phone.id) ? 'favorite--active' : ''
+                  }`}
+                  onClick={e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleFavorite(phone.id);
+                  }}
+                >
+                  <img
+                    src={favorites.includes(phone.id) ? activeSvg : heartLove}
+                    alt="Favorite"
+                    className="brand__card-btn-icon"
+                  />
+                </button>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

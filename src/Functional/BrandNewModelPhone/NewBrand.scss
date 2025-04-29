@@ -153,13 +153,24 @@ height: 571px;
 &__card-btn--add {
   flex: 1;
   background-color: #a855f7;
-  border: 1px solid #905BFF;
+  border: 1px solid #905bff;
   color: white;
   padding: 0 16px;
   text-decoration: none;
 
   &:hover {
     background-color: #9333ea;
+  }
+
+  &.added {
+    background-color: #4b5563;
+    border-color: #4b5563;
+    cursor: pointer;
+    opacity: 0.7;
+
+    &:hover {
+      background-color: #4b5563;
+    }
   }
 }
 
