@@ -7,7 +7,7 @@ export const GoBack: React.FC = () => {
 
   return (
     <div className={styles.goBack} onClick={() => navigate(-1)}>
-      <img src="img/icons/arrow-back.svg" alt="arrow-back" />
+      <img src="img/icons/arrow-back-white.svg" alt="arrow-back" />
       <span>Back</span>
     </div>
   );

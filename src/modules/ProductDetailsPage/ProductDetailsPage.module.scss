@@ -1,0 +1,17 @@
+@use '/src/styles/globals.scss' as *;
+
+.productPage {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  height: 100%;
+
+  @media (max-width: $tablet-breakpoint) {
+    padding: 24px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    padding: 16px;
+  }
+}
+

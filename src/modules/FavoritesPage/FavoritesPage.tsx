@@ -4,7 +4,7 @@ export const FavoritesPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <h1>Favorites</h1>
-      <p className={styles.underConstruction}>
+      {/* <p className={styles.underConstruction}>
         🚧 This page is under development! 🚧
       </p>
 
@@ -16,7 +16,7 @@ export const FavoritesPage: React.FC = () => {
           <li>🔄 Sync favorites with header icon</li>
           <li>📜 Display favorite products as a list</li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

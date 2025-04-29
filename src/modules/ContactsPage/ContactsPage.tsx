@@ -3,7 +3,7 @@ import styles from './ContactsPage.module.scss';
 export const ContactsPage: React.FC = () => {
   return (
     <div className={styles.container}>
-      <h1>📞 Contact Me</h1>
+      {/* <h1>📞 Contact Me</h1>
 
       <div className={styles.content}>
         <p>
@@ -43,7 +43,7 @@ export const ContactsPage: React.FC = () => {
             ☎ Phone: <a href="tel:+17789551609">+1 (778) 955-1609</a>
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

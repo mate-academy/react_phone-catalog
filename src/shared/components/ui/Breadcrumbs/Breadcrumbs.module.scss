@@ -1,5 +1,9 @@
 @use '/src/styles/globals.scss' as *;
 
+.container {
+  margin-bottom: 40px;
+}
+
 .breadcrumbs {
   @include small-text-desktop-tablet;
 
@@ -11,17 +15,39 @@
 }
 
 .breadcrumbItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
+  @extend %flex-center;
 
-  &.lastBreadcrumb {
-    color: $color-secondary;
+  color: $color-white;
+
+  &.currentBreadcrumb {
     cursor: default;
+    color: $color-secondary;
   }
 }
 
+.link {
+  color: $color-white;
+
+  @include hover-text($color-accent);
+}
+
+.icon {
+  @extend %flex-center;
+
+  width: 16px;
+  height: 16px;
+}
+
+.homeLink {
+  @extend %flex-center;
+
+  width: 16px;
+  height: 16px;
+
+  @include hover-scale(1.15);
+}
+
 .arrow {
+  cursor: default;
   transform: rotate(-90deg);
 }
