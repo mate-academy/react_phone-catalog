@@ -1,4 +1,4 @@
-  .productList {
+  .product_list {
     height: 526px;
     overflow: hidden;
   }
@@ -19,7 +19,7 @@
     max-width: 136px;
   }
 
-  .buttonsGroup {
+  .buttons_group {
     display: flex;
     gap: 16px;
     margin-left: auto;
@@ -40,7 +40,7 @@
     cursor: not-allowed;
   }
 
-  .productGrid {
+  .product_grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
@@ -52,15 +52,83 @@
     display: block;
   }
 
+  @media screen and (min-width: 640px){
+    .product_list {
+      max-width: 1199px;
+      width: 100%;
+      max-height: 744px;
+      height: 100%;
+      margin-top: 96px;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 592px;
+    }
+
+    .title {
+      font-family: Mont;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      white-space: nowrap;
+    }
+
+    .buttons_group {
+      display: flex;
+      margin-left: auto;
+      gap: 16px;
+    }
+
+    .buttons_controls {
+      width: 32px;
+      height: 32px;
+      gap: 16px;
+      background-color: #fff;
+      border: 1px solid gray;
+      transition: background-color 0.3s ease, opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    .buttons_controls:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .product_grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 100%;
+    }
+
+    .link_product {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+  }
+
+
   @media screen and (min-width: 1200px){
-    .productList {
+    .product_list {
       padding: 20px;
       width: 1136px;
       height: 571px;
       margin-bottom: 140px;
     }
 
-    .buttonsGroup {
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 592px;
+    }
+
+    .buttons_group {
       display: flex;
       gap: 16px;
     }
@@ -80,7 +148,7 @@
       cursor: not-allowed;
     }
 
-    .productGrid {
+    .product_grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;

@@ -84,33 +84,35 @@ export const HotPrices: React.FC = () => {
   };
 
   return (
-    <div className={styles.productList}>
-      <h1 className={styles.title}>Hot Prices</h1>
-      <div className={styles.buttonsGroup}>
-        <button
-          onClick={handlePrev}
-          disabled={currentIndex === 0}
-          className={styles.buttons_controls}
-        >
-          <img src="img/Arrow-left.png" alt="Previous" />
-        </button>
-        <button
-          onClick={handleNext}
-          disabled={
-            currentIndex + productsPerPage >= productsWithMaxDiscount.length
-          }
-          className={styles.buttons_controls}
-        >
-          <img src="img/Arrow-right.png" alt="Next" />
-        </button>
+    <div className={styles.product_list}>
+      <div className={styles.controls}>
+        <h1 className={styles.title}>Hot Prices</h1>
+        <div className={styles.buttons_group}>
+          <button
+            onClick={handlePrev}
+            disabled={currentIndex === 0}
+            className={styles.buttons_controls}
+          >
+            <img src="img/Arrow-left.png" alt="Previous" />
+          </button>
+          <button
+            onClick={handleNext}
+            disabled={
+              currentIndex + productsPerPage >= productsWithMaxDiscount.length
+            }
+            className={styles.buttons_controls}
+          >
+            <img src="img/Arrow-right.png" alt="Next" />
+          </button>
+        </div>
       </div>
 
-      <div className={styles.productGrid}>
+      <div className={styles.product_grid}>
         {productsWithMaxDiscount.map(product => (
           <Link
             to={`/product/${product?.id}`}
             key={product?.id}
-            className={styles.linkProduct}
+            className={styles.link_product}
           >
             <DiscountProductCard
               key={product?.id}
