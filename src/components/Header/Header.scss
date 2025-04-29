@@ -1,0 +1,472 @@
+@import '../../styles/utils/variables';
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-background-dark;
+  color: #fff;
+  width: 100%;
+  height: 48px;
+  position: fixed;
+  padding: 24px 0;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+  @media (max-width: $breakpoint-md) {
+    padding: 16px 0;
+    height: 40px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 24px;
+    height: 100%;
+
+    @media (max-width: $breakpoint-md) {
+      justify-content: space-between;
+      position: relative;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      padding: 0 16px;
+    }
+  }
+
+  &__logo {
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 24px;
+
+    @media (max-width: $breakpoint-md) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-right: 0;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      transform: translateX(-50%) scale(0.9);
+    }
+
+    &-link {
+      color: #75767F;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 0.9;
+      width: 80px;
+      height: 26px;
+      position: relative;
+    }
+
+    &-nice-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    &-nice {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: #fff;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    &-gadgets {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: #fff;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    &-hand {
+      width: 10.92px;
+      height: 14.58px;
+      margin-left: 2px;
+      margin-top: 0;
+      object-fit: contain;
+      filter: brightness(1.2) saturate(1.2);
+    }
+
+    &-img {
+      padding: 0 24px;
+    }
+  }
+
+  &__burger-line {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+  }
+
+  &__burger-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 16px;
+    z-index: 1010;
+    position: relative;
+
+    @media (max-width: $breakpoint-md) {
+      display: flex;
+      margin-left: 0;
+      margin-right: 0;
+      z-index: 1020;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      width: 18px;
+      height: 14px;
+    }
+
+    &--active {
+      .header__burger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+
+        @media (max-width: $breakpoint-sm) {
+          transform: translateY(6px) rotate(45deg);
+        }
+      }
+
+      .header__burger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .header__burger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+
+        @media (max-width: $breakpoint-sm) {
+          transform: translateY(-6px) rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 0;
+    height: 100%;
+
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+
+    &-list {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    &-link {
+      color: #75767F;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 0 20px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #ccc;
+      }
+
+      &--active {
+        position: relative;
+        color: #fff;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -24px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+  &__mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgb(15, 17, 33);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  &__mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    @media (max-width: $breakpoint-sm) {
+      padding: 16px 12px;
+    }
+  }
+
+  &__mobile-logo {
+    position: static;
+    transform: none;
+    margin-right: 0;
+  }
+
+  &__mobile-close-button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__mobile-nav {
+    flex-grow: 1;
+    padding: 40px 0;
+
+    @media (max-width: $breakpoint-sm) {
+      padding: 24px 0;
+    }
+
+    &-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &-item {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 32px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        margin-bottom: 24px;
+      }
+    }
+
+    &-link {
+      display: block;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 0;
+      transition: color 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      &:hover {
+        color: #fff;
+      }
+
+      &--active {
+        color: #fff;
+        position: relative;
+        font-weight: 600;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 50px;
+          height: 2px;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+  &__mobile-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0;
+    gap: 80px;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    @media (max-width: $breakpoint-sm) {
+      padding: 16px 0;
+      gap: 50px;
+    }
+  }
+
+  &__mobile-footer-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &__mobile-footer-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  // Special case for pages with back button
+  .header__page-title + .header__icons {
+    @media (max-width: $breakpoint-md) {
+      display: flex;
+      position: absolute;
+      right: 16px;
+    }
+  }
+
+  &__icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+
+    @media (max-width: $breakpoint-sm) {
+      margin-left: 16px;
+    }
+
+    // Make icons smaller on back button pages in mobile view
+    .header__page-title + .header__icons & {
+      @media (max-width: $breakpoint-md) {
+        margin-left: 16px;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    color: #fff;
+
+    &--favorites {
+      color: #7e57c2;
+    }
+
+    &--cart {
+      color: #7e57c2;
+    }
+  }
+
+  &__icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__icon-counter {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #EB5757;
+    color: #fff;
+    font-size: 10px;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 4px;
+  }
+
+  // Remove back button styles
+  &__back-button,
+  &__back-icon,
+  &__back-text,
+  &__page-title {
+    display: none;
+  }
+}

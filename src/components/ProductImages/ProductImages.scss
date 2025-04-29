@@ -1,0 +1,67 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.product-images {
+  display: flex;
+  gap: $spacing-medium;
+  width: 100%;
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-small;
+  }
+
+  &__thumbnail-btn {
+    width: 80px;
+    height: 80px;
+    padding: 4px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    transition: border-color $transition-duration;
+
+    &--active {
+      border-color: $primary-color;
+    }
+  }
+
+  &__thumbnail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__main-container,
+  &__single-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $background-light-color;
+    border-radius: 8px;
+    padding: $spacing-medium;
+  }
+
+  &__main,
+  &__single {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+
+    &__thumbnails {
+      flex-direction: row;
+      overflow-x: auto;
+      padding-bottom: $spacing-small;
+    }
+
+    &__thumbnail-btn {
+      flex-shrink: 0;
+    }
+  }
+}

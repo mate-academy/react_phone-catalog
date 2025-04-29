@@ -1,0 +1,85 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.dropdown {
+  @include flex-column;
+
+  position: relative;
+
+  &__label {
+    font-size: $font-size-small;
+    color: $text-secondary-color;
+    margin-bottom: $spacing-small;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(50, 53, 66);
+    border: none;
+    color: $text-color;
+    padding: $spacing-medium $spacing-large;
+    width: 176px;
+    cursor: pointer;
+    font-size: $font-size-base;
+    text-align: left;
+    transition: background-color $transition-duration;
+
+    &:hover {
+      background: rgb(50, 53, 66);
+    }
+  }
+
+  &--open &__button {
+    background: rgb(50, 53, 66);
+  }
+
+  &__arrow {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: transform $transition-duration;
+  }
+
+  &--open &__arrow {
+    transform: rotate(180deg);
+  }
+
+  &__options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgb(15, 17, 33);
+    border-radius: 0 0 $border-radius $border-radius;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &__option {
+    padding: $spacing-medium $spacing-large;
+    cursor: pointer;
+    transition: background-color $transition-duration;
+
+    &:hover {
+      box-sizing: border-box;
+      border: 1px solid rgb(74, 77, 88);
+      background: rgb(50, 53, 66);
+    }
+
+    &--selected {
+      background: rgb(50, 53, 66);
+      font-weight: 500;
+    }
+  }
+}
