@@ -368,20 +368,24 @@ export const ProductPage: React.FC = () => {
               </div>
               <div className="product-details-page__colors-list">
                 {standardColors.map((color, index) => (
-                  <button
+                  <a
                     key={index}
+                    href="#"
                     className={`product-details-page__colors-option ${
                       selectedColor === index
                         ? 'product-details-page__colors-option--active'
                         : ''
                     }`}
-                    onClick={() => handleColorSelect(index)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleColorSelect(index);
+                    }}
                   >
                     <span
                       className="product-details-page__colors-option-inner"
                       style={{ backgroundColor: color }}
                     ></span>
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>

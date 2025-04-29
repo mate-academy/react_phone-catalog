@@ -152,6 +152,10 @@
       border: 2px solid transparent;
       position: relative;
       overflow: hidden;
+      display: block;
+      padding: 0;
+      background: none;
+      text-decoration: none;
 
       &--active {
         border-color: $primary-color;
