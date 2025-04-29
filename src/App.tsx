@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Header } from './shared/Header';
 import HomePage from './modules/HomePage/HomePage';
 import { Footer } from './shared/Footer';
+import { PhonesPage } from './modules/PhonesPage/PhonesPage';
 
 export const App = () => (
   <div className="App">
@@ -18,6 +19,7 @@ export const App = () => (
           </main>
         }
       />
+      <Route path="/phones" element={<PhonesPage />} />
     </Routes>
     <Footer />
   </div>

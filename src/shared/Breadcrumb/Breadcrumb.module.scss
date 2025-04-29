@@ -1,0 +1,56 @@
+@use '../../styles/utils' as utils;
+
+.breadcrumb {
+  margin-bottom: 24px;
+
+  @include utils.on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+  }
+
+  &__link {
+    font-family: utils.$font-main;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  &__current,
+  &__text {
+    font-family: utils.$font-main;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: utils.$color-secondary;
+    text-transform: capitalize;
+  }
+
+  &__arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__icon {
+    display: block;
+    width: 14px;
+    height: 14px;
+  }
+}

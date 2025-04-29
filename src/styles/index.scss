@@ -11,7 +11,15 @@
 }
 
 main {
-  padding-top: 64px;
+  padding-top: 47px;
+
+  @include on-tablet {
+    padding-top: 49px;
+  }
+
+  @include on-desktop {
+    padding-top: 65px;
+  }
 }
 
 .lock-scroll {
