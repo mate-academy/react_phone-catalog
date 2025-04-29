@@ -43,11 +43,18 @@ export type OptionProps = {
     setItemsOnPage: (value: string) => void;
   }
 
-
   export interface PhonesGridWithPaginationProps {
     sortBy: string;
     sortFunction?: (a: Product, b: Product) => number;
     itemsOnPage: string;
     currentPage: number;
     setCurrentPage: (page: number) => void;
+  }
+
+  export interface BreadcrumbsProps {
+    currentName?: string;
+  }
+
+  export interface PhoneDetailsPageProps {
+    product?: PhoneCardProps['product'];
   }

@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
+import { BreadcrumbsProps } from "@/types/Product";
 
-export const Breadcrumbs = () => {
+export const Breadcrumbs = ({ currentName }: BreadcrumbsProps) => {
     const location = useLocation();
 
     const pathnames = location.pathname.split('/').filter((x) => x);
@@ -20,7 +21,9 @@ export const Breadcrumbs = () => {
                     <div className="flex gap-x-2" key={accumulatedPath}>
                         <img src='icons/arrow-right-dark.svg' alt="arrow-right" />
                         {isLast ? (
-                            <span className="text-text-color-base-grey">{decodeURIComponent(name)}</span>
+                            <span className="text-text-color-base-grey">
+                                {currentName || decodeURIComponent(name)}
+                            </span>
                         ): (
                             <Link to={accumulatedPath} className="hover:underline text-text-color-base-white">
                                 {decodeURIComponent(name.charAt(0).toUpperCase() + name.slice(1))}
