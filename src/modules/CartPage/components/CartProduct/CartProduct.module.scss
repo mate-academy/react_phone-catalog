@@ -3,6 +3,7 @@
 .cart {
   &__item {
     display: flex;
+    position: relative;
     flex-direction: column;
     padding: 16px;
     border: 1px solid $color-elements;
@@ -148,4 +149,12 @@
       margin-left: 53px;
     }
   }
+}
+
+.cart__laoder {
+  position: absolute;
+  width: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
 }
