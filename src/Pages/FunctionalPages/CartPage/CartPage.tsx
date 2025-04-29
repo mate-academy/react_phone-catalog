@@ -40,7 +40,7 @@ export const CartPage = () => {
               </button>
 
               <img
-                src={item.image}
+                src={item.image.slice(1)}
                 alt={item.name}
                 className="cart__item-image"
               />

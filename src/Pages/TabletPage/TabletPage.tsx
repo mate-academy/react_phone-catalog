@@ -178,7 +178,7 @@ export const TabletPage = () => {
               <Link to={`/products/${tablet.id}`}>
                 <img
                   src={
-                    imageError[`/${tablet.images[0]}`]
+                    imageError[`${tablet.images[0]}`]
                       ? pageNotFound
                       : `${tablet.images[0]}`
                   }
