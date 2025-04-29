@@ -15,6 +15,5 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
         <div className="px-4 sm:px-6 md:px-8 xl:px-[152px] text-text-color-base-white font-mont">
             <Breadcrumbs currentName={product.name} />
         </div>
-
     );
 }

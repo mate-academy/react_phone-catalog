@@ -39,14 +39,14 @@ export const Header = () => {
         <div className="hidden items-stretch h-full sm:flex">
           <Link to="/favorites" className="flex items-center justify-cente px-4 border-l md:px-6 border-[#3B3E4A] text-text-color-base-white group">
           <img
-              src="public/icons/favourites.svg"
+              src="icons/favourites.svg"
               alt="favorites"
               className='group-hover:scale-125 transition-all'
             />
           </Link>
           <Link to="/cart" className="flex items-center justify-center pl-4 border-l md:pl-6 border-[#3B3E4A] text-text-color-base-white group">
           <img
-              src="public/icons/shopping_bag.svg"
+              src="icons/shopping_bag.svg"
               alt="shopping_bag"
               className='group-hover:scale-125 transition-all'
             />
