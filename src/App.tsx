@@ -3,6 +3,8 @@ import { Header } from './shared/Header';
 import HomePage from './modules/HomePage/HomePage';
 import { Footer } from './shared/Footer';
 import { PhonesPage } from './modules/PhonesPage/PhonesPage';
+import { TabletsPage } from './modules/TabletsPage';
+import { AccessoriesPage } from './modules/AccessoriesPage';
 
 export const App = () => (
   <div className="App">
@@ -20,6 +22,8 @@ export const App = () => (
         }
       />
       <Route path="/phones" element={<PhonesPage />} />
+      <Route path="/tablets" element={<TabletsPage />} />
+      <Route path="/accessories" element={<AccessoriesPage />} />
     </Routes>
     <Footer />
   </div>

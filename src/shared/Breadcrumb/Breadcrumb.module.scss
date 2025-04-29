@@ -9,22 +9,22 @@
 
   &__list {
     display: flex;
-    align-items: center;
     gap: 8px;
+    align-items: center;
   }
 
   &__item {
     display: flex;
-    align-items: center;
     gap: 8px;
+    align-items: center;
     list-style: none;
   }
 
   &__link {
     font-family: utils.$font-main;
-    font-style: normal;
-    font-weight: 400;
     font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
     line-height: 15px;
     color: #fff;
     text-decoration: none;
@@ -34,9 +34,9 @@
   &__current,
   &__text {
     font-family: utils.$font-main;
-    font-style: normal;
-    font-weight: 400;
     font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
     line-height: 15px;
     color: utils.$color-secondary;
     text-transform: capitalize;

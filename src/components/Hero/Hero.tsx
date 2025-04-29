@@ -6,7 +6,7 @@ export const Hero: React.FC = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
-        <h1 className={styles.hero__title}>Welcome to Nice Gadgets store!</h1>
+        <h1 className={styles.hero__title}>Product Catalog</h1>
 
         <Slider />
       </div>

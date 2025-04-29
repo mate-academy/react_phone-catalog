@@ -8,10 +8,6 @@
     padding: 32px 0;
   }
 
-  @include utils.on-desktop {
-    padding: 40px 0;
-  }
-
   &__content {
     @extend %flex-column;
 
@@ -120,7 +116,7 @@
         width: 16px;
         height: 16px;
 
-        background-image: url('img/icons/arrow-top.svg');
+        background-image: url('/img/icons/arrow-top.svg');
       }
     }
 
