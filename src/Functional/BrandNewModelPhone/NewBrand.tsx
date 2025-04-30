@@ -141,7 +141,7 @@ export default function NewBrand() {
           }}
           className="brand__swiper"
         >
-          {phones.slice(0, 8).map(phone => (
+          {phones.slice(0, 12).map(phone => (
             <SwiperSlide key={phone.id} className="brand__card">
               <Link to={`/products/${phone.id}`}>
                 <img

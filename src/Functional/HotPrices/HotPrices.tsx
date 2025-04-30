@@ -141,7 +141,7 @@ export default function HotPrices() {
           }}
           className="brand__swiper"
         >
-          {phones.slice(20, 28).map(phone => (
+          {phones.slice(20, 32).map(phone => (
             <SwiperSlide key={phone.id} className="brand__card">
               <Link to={`/products/${phone.id}`}>
                 <img

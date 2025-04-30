@@ -15,13 +15,17 @@
   &__images {
     width: 100%;
 
-    @include on-tablet {
-      height: 221px;
-    }
+    // @include on-tablet {
+    //   height: 221px;
+    // }
 
-    @include on-desktop {
-      height: 400px;
-    }
+    // @include on-desktop {
+    //   height: 400px;
+    // }
+  }
+
+  &__slider {
+    width: 100%;
   }
 
   &__banner {
@@ -35,12 +39,28 @@
       transform: scale(1.02);
     }
 
-    @include on-tablet {
-      height: 290px;
+    @media (min-width: 800px) and (max-width: 1199px) {
+      height: 320px;
     }
 
-    @include on-desktop {
+    @media (min-width: 640px) and (max-width: 799px) {
+      height: 280px;
+    }
+
+    @media (min-width: 1100px) and (max-width: 1499px) {
       height: 400px;
+    }
+
+    @media (min-width: 1500px) and (max-width: 1699px) {
+      height: 500px;
+    }
+
+    @media (min-width: 1700px)  and (max-width: 2100px) {
+      height: 600px;
+    }
+
+    @media (min-width: 1700px) {
+      height: 700px;
     }
   }
 

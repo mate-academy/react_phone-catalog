@@ -39,11 +39,13 @@ export default function SliderSwiper() {
         >
           {images.map((image, index) => (
             <SwiperSlide key={index}>
-              <img
-                src={image}
-                alt={`Slide ${index}`}
-                className="swiper--top__banner"
-              />
+              <div className="swiper--top__slider">
+                <img
+                  src={image}
+                  alt={`Slide ${index}`}
+                  className="swiper--top__banner"
+                />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

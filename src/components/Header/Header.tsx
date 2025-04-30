@@ -47,35 +47,21 @@ export const Header = () => {
         </nav>
 
         <div className="header__head--logo">
-          <div className="header__heart">
-            <Link to="/favorites" className="header__heart__top">
-              <img
-                src={heartLove}
-                alt="Favorites"
-                className="header__heart__top__btn"
-              />
-              {favorites.length > 0 && (
-                <span className="cart-count cart-count--favorites">
-                  {favorites.length}
-                </span>
-              )}
-            </Link>
-          </div>
+          <Link to="/favorites" className="header__heart">
+            <img src={heartLove} alt="Favorites" className="header__icon" />
+            {favorites.length > 0 && (
+              <span className="cart-count cart-count--favorites">
+                {favorites.length}
+              </span>
+            )}
+          </Link>
 
-          <div className="header__packet">
-            <Link to="/cart" className="header__packet__top">
-              <img
-                src={packetImg}
-                alt="Cart"
-                className="header__packet__top__btn"
-              />
-              {cart.length > 0 && (
-                <span className="cart-count cart-count--cart">
-                  {cart.length}
-                </span>
-              )}
-            </Link>
-          </div>
+          <Link to="/cart" className="header__packet">
+            <img src={packetImg} alt="Cart" className="header__icon" />
+            {cart.length > 0 && (
+              <span className="cart-count cart-count--cart">{cart.length}</span>
+            )}
+          </Link>
 
           <div className="header__burger-wrapper">
             <div className="header__burger">

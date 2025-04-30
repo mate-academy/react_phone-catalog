@@ -6,12 +6,12 @@ import { Footer } from './components/Footer/Footer';
 
 export const App = () => {
   return (
-    <>
+    <div className="page">
       <Header />
-      <main>
+      <main className="main">
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };

@@ -104,6 +104,10 @@
     border: 1px solid #3B3E4A;
     cursor: pointer;
     padding: 20px 100px;
+
+    @media (min-width: 450px) and (max-width: 639px) {
+    padding: 20px 150px;
+    }
   }
 
   &__heart {

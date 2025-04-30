@@ -18,3 +18,13 @@ body {
   border: 0;
   white-space: nowrap;
 }
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex-grow: 1;
+}
