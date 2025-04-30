@@ -1,0 +1,32 @@
+@use '../../../utils/mixins';
+
+.icons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @include mixins.on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+a {
+  display: flex;
+  align-items: center;
+}
+
+.modelsNumber {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #89939A;
+  margin-bottom: 40px;
+}
+
+.form {
+  display: flex;
+  gap: 16px;
+}

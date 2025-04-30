@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from '../../types/product';
-import { Navigation, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -8,6 +8,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import ProductCard from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
+import ArrowNav from '../shared/components/ArrowNav';
+import { Direction } from '../shared/components/ArrowNav/ArrowNav';
 
 type Props = {
   items: Product[];
@@ -20,20 +22,16 @@ export const ProductsSlider: React.FC<Props> = ({ items, title }) => {
       <div className={styles.box}>
         <h2>{title}</h2>
         <div className={styles.buttons}>
-          <button className={styles['slider2-prev']}>
-            <img src="/img/icons/leftArrowSlider.svg" alt="Prev" />
-          </button>
-          <button className={styles['slider2-next']}>
-            <img src="/img/icons/rightArrowSlider.svg" alt="Next" />
-          </button>
+          <ArrowNav classname={'prevButton'} direction={Direction.Left} />
+          <ArrowNav classname={'nextButton'} direction={Direction.Right} />
         </div>
       </div>
       <div className={styles.productSlider}>
         <Swiper
-          modules={[Navigation, Scrollbar, A11y]}
+          modules={[Navigation]}
           navigation={{
-            prevEl: '.slider2-prev',
-            nextEl: '.slider2-next',
+            nextEl: '.nextButton',
+            prevEl: '.prevButton',
           }}
           spaceBetween={16}
           breakpoints={{
@@ -45,7 +43,7 @@ export const ProductsSlider: React.FC<Props> = ({ items, title }) => {
             1024: { slidesPerView: 4 },
           }}
           className={styles.productSlider__swiper}
-          loop={true}
+          loop={true && title !== 'Hot prices'}
         >
           {items.map((item, index) => (
             <SwiperSlide

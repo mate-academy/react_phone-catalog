@@ -1,10 +1,4 @@
-import {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Autoplay,
-} from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import styles from './BannerSlider.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -14,6 +8,8 @@ import 'swiper/css/scrollbar';
 import './SwiperStyles.scss';
 import { useMediaQuery } from 'react-responsive';
 import classNames from 'classnames';
+import ArrowNav from '../shared/components/ArrowNav';
+import { Direction } from '../shared/components/ArrowNav/ArrowNav';
 
 export const BannerSlider = () => {
   const sliderImgs = [
@@ -27,20 +23,18 @@ export const BannerSlider = () => {
     <>
       <div className={classNames(styles.mainBanner, { container: !isMobile })}>
         {!isMobile && (
-          <button className={styles['slider1-prev']}>
-            <img src="/img/icons/leftArrowSlider.svg" alt="Prev" />
-          </button>
+          <ArrowNav classname={'BannerPrevButton'} direction={Direction.Left} />
         )}
 
         <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          modules={[Navigation, Pagination, Autoplay]}
           pagination={{
             clickable: true,
             el: '.custom-pagination',
           }}
           navigation={{
-            prevEl: '.slider1-prev',
-            nextEl: '.slider1-next',
+            nextEl: '.BannerNextButton',
+            prevEl: '.BannerPrevButton',
           }}
           slidesPerView={1}
           className={styles.mainBanner__slider}
@@ -62,9 +56,10 @@ export const BannerSlider = () => {
         </Swiper>
 
         {!isMobile && (
-          <button className={styles['slider1-next']}>
-            <img src="/img/icons/rightArrowSlider.svg" alt="Next" />
-          </button>
+          <ArrowNav
+            classname={'BannerNextButton'}
+            direction={Direction.Right}
+          />
         )}
       </div>
       <div className="custom-pagination"></div>
