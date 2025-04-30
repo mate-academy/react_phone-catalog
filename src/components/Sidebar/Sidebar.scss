@@ -1,0 +1,111 @@
+@import '../../utils/mixins';
+@import '../ColorThemes/ColorThemes.scss';
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  background-color: $colorBlack;
+  background-repeat: no-repeat;
+  height: 100vh;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar.open {
+  opacity: 1;
+  transform: translateY(0);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  background-color: $colorBlack;
+  background-repeat: no-repeat;
+  height: 100vh;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+
+  @include themify($themes) {
+    background: themed('colorHeaderFooter');
+  }
+}
+
+.sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-top: 72px;
+  margin: auto 0;
+}
+
+.sidebar-item {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 20px;
+  color: $colorGrayTitle;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $colorWhite;
+  }
+}
+
+.close {
+  display: none;
+
+  @include onMobile {
+    display: flex;
+  }
+}
+
+.sidebar__menu {
+  padding-top: 24px;
+}
+
+.active-link {
+  color: $colorWhite;
+  border-bottom: 2px solid $colorWhite;
+  padding-bottom: 4px;
+}
+
+.sidebar__icons {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  width: 100%;
+  height: 64px;
+
+}
+
+.sidebar__favorite {
+  position: relative;
+  border: $colorDarkGray solid 1px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.sidebar__buy {
+  position: relative;
+  border: $colorDarkGray solid 1px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
