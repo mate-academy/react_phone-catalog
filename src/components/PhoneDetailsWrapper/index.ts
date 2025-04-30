@@ -1,1 +1,1 @@
-export * from './PhoneDetailsWrapper'
+export * from './PhoneDetailsWrapper';

@@ -8,12 +8,10 @@ import pluginTailwindcss from 'eslint-plugin-tailwindcss';
 import pluginImport from 'eslint-plugin-import';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
-
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
-
   // React + Hooks
   {
     plugins: {
@@ -38,7 +36,6 @@ export default [
       },
     },
   },
-
   // Prettier
   {
     plugins: {
@@ -48,7 +45,6 @@ export default [
       'prettier/prettier': 'error',
     },
   },
-
   // Accessibility (jsx-a11y)
   {
     plugins: {
@@ -56,14 +52,16 @@ export default [
     },
     rules: {
       'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
-      'jsx-a11y/label-has-for': [2, {
-        components: ['Label'],
-        required: { some: ['id', 'nesting'] },
-        allowChildren: true,
-      }],
+      'jsx-a11y/label-has-for': [
+        2,
+        {
+          components: ['Label'],
+          required: { some: ['id', 'nesting'] },
+          allowChildren: true,
+        },
+      ],
     },
   },
-
   // Import
   {
     plugins: {
@@ -73,7 +71,6 @@ export default [
       'import/prefer-default-export': 'off',
     },
   },
-
   // TailwindCSS
   {
     plugins: {
@@ -84,18 +81,19 @@ export default [
       'tailwindcss/no-custom-classname': 'off',
     },
   },
-
   // General Rules (JS/TS)
   {
     rules: {
-      semi: 'off',
-      'semi': ['error', 'always'],
+      semi: ['error', 'always'],
       'prefer-const': 'error',
       curly: ['error', 'all'],
-      'max-len': ['error', {
-        ignoreTemplateLiterals: true,
-        ignoreComments: true,
-      }],
+      'max-len': [
+        'error',
+        {
+          ignoreTemplateLiterals: true,
+          ignoreComments: true,
+        },
+      ],
       'no-redeclare': ['error', { builtinGlobals: true }],
       'no-console': 'error',
       'operator-linebreak': 'off',
@@ -107,29 +105,25 @@ export default [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },
         { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
-        { blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] },
+        {
+          blankLine: 'any',
+          prev: ['const', 'let', 'var'],
+          next: ['const', 'let', 'var'],
+        },
         { blankLine: 'always', prev: 'directive', next: '*' },
         { blankLine: 'always', prev: 'block-like', next: '*' },
       ],
     },
   },
-
   // TypeScript Rules
   {
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-unused-vars': ['error'],
-      '@typescript-eslint/indent': ['error', 2],
-      '@typescript-eslint/ban-types': ['error', {
-        extendDefaults: true,
-        types: {
-          '{}': false,
-        },
-      }],
+      indent: ['error', 2],
     },
   },
-
   // Cypress
   {
     files: ['cypress/**/*.{ts,js}'],
@@ -149,13 +143,15 @@ export default [
     },
     rules: {
       '@typescript-eslint/no-namespace': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
     },
   },
-
   // Project files
   {
     files: ['src/**/*.{ts,tsx,js,jsx}'],
@@ -165,7 +161,6 @@ export default [
       globals: globals.browser,
     },
   },
-
   // Configs (Node)
   {
     files: ['*.config.{js,ts}', '*.cjs', 'vite.config.ts', '.stylelintrc.js'],
@@ -175,7 +170,6 @@ export default [
       globals: globals.node,
     },
   },
-
   // Ignore specific files/folders
   {
     ignores: [

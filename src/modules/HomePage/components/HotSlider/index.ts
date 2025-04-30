@@ -1,1 +1,1 @@
-export * from './HotSlider'
+export * from './HotSlider';

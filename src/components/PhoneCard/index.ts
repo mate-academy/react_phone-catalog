@@ -1,1 +1,1 @@
-export * from './PhoneCard'
+export * from './PhoneCard';

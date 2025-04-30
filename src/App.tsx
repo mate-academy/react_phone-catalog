@@ -17,7 +17,7 @@ const App = () => {
             <Route path="phones" element={<Phones />} />
             <Route path="phones/:slug" element={<PhoneDetailsWrapper />} />
           </Route>
-          <Route path='*' element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </HashRouter>
     </Provider>

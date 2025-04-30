@@ -1,1 +1,1 @@
-export * from './PicturesSlider'
+export * from './PicturesSlider';

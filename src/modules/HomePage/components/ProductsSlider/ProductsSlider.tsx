@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store';
@@ -8,13 +8,13 @@ import { PhoneCard } from '@/components/PhoneCard';
 import { useEffect, useState, useMemo } from 'react';
 import { ProductsSliderProps } from '@/types/Product';
 
-export const ProductsSlider = ({ 
+export const ProductsSlider = ({
   title,
   subtitle,
   sortFunction,
   cardProps,
-  className = 'mt-20'
- }: ProductsSliderProps) => {
+  className = 'mt-20',
+}: ProductsSliderProps) => {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.products.items);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,7 +24,6 @@ export const ProductsSlider = ({
     dispatch(setProducts(data));
   }, [dispatch]);
 
-  
   const filteredSortedProducts = useMemo(() => {
     let result = [...products];
 
@@ -46,26 +45,31 @@ export const ProductsSlider = ({
   };
 
   if (!filteredSortedProducts || filteredSortedProducts.length === 0) {
-    return <p className='text-text-color-base-white'>No products found</p>
+    return <p className="text-text-color-base-white">No products found</p>;
   }
 
   return (
-    <section className={`overflow-hidden px-4 sm:px-8 xl:px-[152px] relative mt-20 ${className}`}>
+    <section
+      className={`overflow-hidden px-4 sm:px-8 xl:px-[152px] relative mt-20 ${className}`}
+    >
       <div className="flex justify-between items-center mb-6 max-w-[1136px]">
         <div>
           <h2 className="text-[22px] sm:text-[32px] text-text-color-base-white font-extrabold font-mont leading-[1.4]">
             {title}
           </h2>
-          <span className='text-text-color-base-grey font-mont font-semibold leading-[21px] text-sm'>{subtitle}</span>
+          <span className="text-text-color-base-grey font-mont font-semibold leading-[21px] text-sm">
+            {subtitle}
+          </span>
         </div>
         <div className="flex gap-4">
           <button
             onClick={prevSlide}
             disabled={currentIndex === 0}
-            className={`w-8 h-8 flex items-center justify-center ${currentIndex === 0
-              ? 'border border-color-border opacity-70 cursor-not-allowed'
-              : 'bg-background-color-btn hover:bg-background-color-btn-hover'
-              }`}
+            className={`w-8 h-8 flex items-center justify-center ${
+              currentIndex === 0
+                ? 'border border-color-border opacity-70 cursor-not-allowed'
+                : 'bg-background-color-btn hover:bg-background-color-btn-hover'
+            }`}
           >
             <img src="icons/arrow-left.svg" alt="left" />
           </button>
@@ -73,10 +77,11 @@ export const ProductsSlider = ({
           <button
             onClick={nextSlide}
             disabled={currentIndex === maxIndex}
-            className={`w-8 h-8 flex items-center justify-center ${currentIndex === maxIndex
-              ? 'border border-color-border opacity-70 cursor-not-allowed'
-              : 'bg-background-color-btn hover:bg-background-color-btn-hover'
-              }`}
+            className={`w-8 h-8 flex items-center justify-center ${
+              currentIndex === maxIndex
+                ? 'border border-color-border opacity-70 cursor-not-allowed'
+                : 'bg-background-color-btn hover:bg-background-color-btn-hover'
+            }`}
           >
             <img src="icons/arrow-right.svg" alt="right" />
           </button>
@@ -90,7 +95,7 @@ export const ProductsSlider = ({
             transform: `translateX(-${currentIndex * (272 + 16)}px)`,
           }}
         >
-          {filteredSortedProducts.map((product) => (
+          {filteredSortedProducts.map(product => (
             <div key={product.id} style={{ flex: '0 0 272px' }}>
               <PhoneCard product={product} {...cardProps} />
             </div>

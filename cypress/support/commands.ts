@@ -56,12 +56,10 @@ Cypress.Commands.add(
   { prevSubject: true },
   (
     subject: JQuery<HTMLElement> | undefined,
-    name: string
+    name: string,
   ): Cypress.Chainable<JQuery<HTMLElement>> => {
     const selector = `[data-cy="${name}"]`;
-    
-    return subject
-      ? cy.wrap(subject).find(selector)
-      : cy.get(selector);
-  }
+
+    return subject ? cy.wrap(subject).find(selector) : cy.get(selector);
+  },
 );

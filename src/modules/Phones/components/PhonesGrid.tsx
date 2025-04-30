@@ -1,5 +1,4 @@
-'use client'
-
+'use client';
 
 import { PhonesGridWithPaginationProps, Product } from '@/types/Product';
 import { PhonesGridWithPagination } from './PhonesGridWithPagination';
@@ -17,25 +16,25 @@ const getSortFunction = (sortBy: string) => {
           return match ? parseInt(match[1], 10) : 0;
         };
         return getModelNumber(b.namespaceId) - getModelNumber(a.namespaceId);
-      }
+      };
     default:
       return undefined;
   }
 };
 
-export const PhonesGrid = ({ 
-  sortBy, 
-  itemsOnPage, 
-  currentPage, 
-  setCurrentPage 
+export const PhonesGrid = ({
+  sortBy,
+  itemsOnPage,
+  currentPage,
+  setCurrentPage,
 }: PhonesGridWithPaginationProps) => {
   return (
     <PhonesGridWithPagination
       sortFunction={getSortFunction(sortBy)}
       itemsOnPage={itemsOnPage}
       currentPage={currentPage}
-      setCurrentPage={setCurrentPage} 
-      sortBy={''}    />
-    
+      setCurrentPage={setCurrentPage}
+      sortBy={''}
+    />
   );
-}; 
+};

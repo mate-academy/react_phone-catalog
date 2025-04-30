@@ -7,6 +7,7 @@ import { setProducts } from '@/store/features/products/productsSlice';
 import data from '@/api/phones.json';
 import { PhoneCard } from '@/components/PhoneCard';
 import { PhonesGridWithPaginationProps } from '@/types/Product';
+import { SkeletonCard } from './SkeletonCard';
 
 export const PhonesGridWithPagination = ({
   sortFunction,
@@ -35,7 +36,6 @@ export const PhonesGridWithPagination = ({
     return () => clearTimeout(timer);
   }, [dispatch]);
 
-
   const itemsPerPage =
     itemsOnPage === 'All' ? products.length : parseInt(itemsOnPage || '8');
 
@@ -47,7 +47,7 @@ export const PhonesGridWithPagination = ({
 
   const paginatedProducts = sortedProducts.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
@@ -82,7 +82,7 @@ export const PhonesGridWithPagination = ({
           }`}
         >
           {i}
-        </button>
+        </button>,
       );
     }
 
@@ -91,8 +91,12 @@ export const PhonesGridWithPagination = ({
 
   if (loading)
     return (
-      <div className="text-text-color-base-white font-mont text-2xl text-center my-10">
-        Loading...
+      <div className="px-4 mt-10 font-mont sm:px-6 md:px-8 xl:px-[152px]">
+        <div className="flex flex-wrap justify-center md:justify-normal gap-4 mb-10">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </div>
       </div>
     );
 
@@ -121,7 +125,7 @@ export const PhonesGridWithPagination = ({
   return (
     <div className="px-4 mt-10 font-mont sm:px-6 md:px-8 xl:px-[152px]">
       <div className="flex flex-wrap justify-center md:justify-normal gap-4 mb-10">
-        {paginatedProducts.map((product) => (
+        {paginatedProducts.map(product => (
           <PhoneCard key={product.id} product={product} showDiscount />
         ))}
       </div>

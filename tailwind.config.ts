@@ -23,10 +23,10 @@ const config: Config = {
           '100%': { opacity: '1', transform: 'translateX(0)' },
         },
       },
-      fontFamily : {
-        mont : ['Mont', 'sans-serif'],
+      fontFamily: {
+        mont: ['Mont', 'sans-serif'],
       },
-      letterSpacing : {
+      letterSpacing: {
         'negative-1': '-0.01em',
         '4pct': '0.04em',
       },
