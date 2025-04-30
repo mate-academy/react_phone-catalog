@@ -32,8 +32,6 @@ export const ProductDetailsPage = () => {
   const currentProduct = getProduct(products, slug);
 
   useEffect(() => {
-    setIsLoading(true);
-
     const loadProduct = async () => {
       try {
         const response = await getAllProducts(`/${path}.json`);

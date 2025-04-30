@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './ProductOptions.module.scss';
 
@@ -14,6 +15,8 @@ import {
 } from '../../../../../../shared/store/CartProvider';
 // eslint-disable-next-line
 import { AllProducts } from '../../../../../../shared/types/AllProducts/AllProducts';
+import { generateProductUrl } from '../../../../utils/generateProductUrl';
+import { getClassLink } from '../../../../../../shared/utils/activeClassName';
 
 type Props = {
   product: Product;
@@ -68,16 +71,30 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
           <p className={styles.productOverview__colorTitle}>Available colors</p>
           <div className={styles.productOverview__colorWrapper}>
             {product.colorsAvailable.map((color, index) => (
-              <div key={index} className={styles.productOverview__colorOption}>
-                <span
+              <div
+                key={index}
+                className={getClassLink({
+                  isActive: product.color === color,
+                  baseClass: styles.productOverview__colorOption,
+                  activeClass: styles.productOverview__colorActive,
+                })}
+              >
+                <Link
+                  to={generateProductUrl(
+                    product.category,
+                    product.namespaceId,
+                    product.capacity,
+                    color,
+                  )}
                   className={`${styles[`productOverview__${color.replace(' ', '')}`]}`}
-                  style={{ width: '100%', height: '100%' }}
-                ></span>
+                ></Link>
               </div>
             ))}
           </div>
         </div>
-        <p className={styles.productOverview__productId}>ID: 802390</p>
+        <p className={styles.productOverview__productId}>
+          ID: {findProduct?.id}
+        </p>
       </div>
 
       <hr className={styles.productOverview__line} />
@@ -86,12 +103,22 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
         <p className={styles.productOverview__capacityTitle}>Select capacity</p>
         <div className={styles.productOverview__capacityButtons}>
           {product.capacityAvailable.map(capacity => (
-            <button
-              className={styles.productOverview__capacityOption}
+            <Link
+              to={generateProductUrl(
+                product.category,
+                product.namespaceId,
+                capacity,
+                product.color,
+              )}
+              className={getClassLink({
+                isActive: product.capacity === capacity,
+                baseClass: styles.productOverview__capacityOption,
+                activeClass: styles.productOverview__optionActive,
+              })}
               key={capacity}
             >
               {capacity}
-            </button>
+            </Link>
           ))}
         </div>
       </div>
