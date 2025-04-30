@@ -28,13 +28,13 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
       <Swiper
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Thumbs]}
-        className={styles.details__mainImageSwiper}
+        className={styles.productOverview__mainImageSwiper}
         onSlideChange={swiper => setActiveIndex(swiper.activeIndex)}
       >
         {product.images.map(image => (
           <SwiperSlide key={image}>
             <img
-              className={styles.details__mainImage}
+              className={styles.productOverview__mainImage}
               src={`${image}`}
               alt=""
             />
@@ -48,7 +48,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
         spaceBetween={8}
         modules={[Thumbs]}
         watchSlidesProgress
-        className={styles.details__imageWrapperSwiper}
+        className={styles.productOverview__imageWrapperSwiper}
         breakpoints={{
           1119: {
             spaceBetween: 16,
@@ -62,12 +62,12 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
             <div
               className={getClassLink({
                 isActive: activeIndex === index,
-                baseClass: styles.details__imageWrapper,
-                activeClass: styles.details__imageWrapperActive,
+                baseClass: styles.productOverview__imageWrapper,
+                activeClass: styles.productOverview__imageWrapperActive,
               })}
             >
               <img
-                className={styles.details__thumbnail}
+                className={styles.productOverview__thumbnail}
                 src={`${image}`}
                 alt=""
               />

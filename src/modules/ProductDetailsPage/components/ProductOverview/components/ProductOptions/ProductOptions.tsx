@@ -18,7 +18,7 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
             {product.colorsAvailable.map((color, index) => (
               <div key={index} className={styles.productOverview__colorOption}>
                 <span
-                  className={`${styles[`colorCircle__${color.replace(' ', '')}`]}`}
+                  className={`${styles[`productOverview__${color.replace(' ', '')}`]}`}
                   style={{ width: '100%', height: '100%' }}
                 ></span>
               </div>
@@ -33,15 +33,14 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
       <div className={styles.productOverview__capacity}>
         <p className={styles.productOverview__capacityTitle}>Select capacity</p>
         <div className={styles.productOverview__capacityButtons}>
-          <button className={styles.productOverview__capacityOption}>
-            64 GB
-          </button>
-          <button className={styles.productOverview__capacityOption}>
-            256 GB
-          </button>
-          <button className={styles.productOverview__capacityOption}>
-            512 GB
-          </button>
+          {product.capacityAvailable.map(capacity => (
+            <button
+              className={styles.productOverview__capacityOption}
+              key={capacity}
+            >
+              {capacity}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -49,8 +48,12 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
 
       <div className={styles.productOverview__cta}>
         <div className={styles.productOverview__price}>
-          <h2 className={styles.productOverview__currentPrice}>$799</h2>
-          <p className={styles.productOverview__discountPrice}>$1199</p>
+          <h2 className={styles.productOverview__currentPrice}>
+            ${product.priceDiscount}
+          </h2>
+          <p className={styles.productOverview__discountPrice}>
+            ${product.priceRegular}
+          </p>
         </div>
 
         <div className={styles.productOverview__addToCart}>
@@ -71,19 +74,27 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
         <ul className={styles.details__specList}>
           <li className={styles.details__specItem}>
             <p className={styles.details__specDesc}>Screen</p>
-            <p className={styles.details__specCh}>6.5” OLED</p>
+            <p className={styles.details__specCh}>
+              {product.screen ? product.screen : '-'}
+            </p>
           </li>
           <li className={styles.details__specItem}>
             <p className={styles.details__specDesc}>Resolution</p>
-            <p className={styles.details__specCh}>2688x1242</p>
+            <p className={styles.details__specCh}>
+              {product.resolution ? product.resolution : '-'}
+            </p>
           </li>
           <li className={styles.details__specItem}>
             <p className={styles.details__specDesc}>Processor</p>
-            <p className={styles.details__specCh}>Apple A12 Bionic</p>
+            <p className={styles.details__specCh}>
+              {product.processor ? product.processor : '-'}
+            </p>
           </li>
           <li className={styles.details__specItem}>
             <p className={styles.details__specDesc}>RAM</p>
-            <p className={styles.details__specCh}>3 GB</p>
+            <p className={styles.details__specCh}>
+              {product.ram ? product.ram : '-'}
+            </p>
           </li>
         </ul>
       </div>

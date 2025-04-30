@@ -229,7 +229,7 @@ hr:nth-of-type(2) {
 }
 
 @each $name, $value in $colors {
-  .colorCircle__#{$name} {
+  .productOverview__#{$name} {
     display: block;
     width: 100%;
     height: 100%;
