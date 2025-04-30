@@ -1,15 +1,14 @@
 @use '/src/styles/globals.scss' as *;
 
 main {
-  grid-area: main;
-
   display: flex;
   justify-content: center;
+  grid-area: main;
 }
 
 .container {
   display: block;
-  margin: 0 auto;
-  max-width: 1136px;
   width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
 }

@@ -3,8 +3,8 @@
 .productPage {
   display: flex;
   flex-direction: column;
-  padding: 32px;
   height: 100%;
+  padding: 32px;
 
   @media (max-width: $tablet-breakpoint) {
     padding: 24px;
@@ -14,4 +14,3 @@
     padding: 16px;
   }
 }
-

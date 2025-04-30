@@ -11,39 +11,39 @@
 .dropDownButton {
   @include apply-typography(buttons-desktop);
 
-  position: relative;
-
   display: flex;
+
+  position: relative;
   justify-content: left;
   align-items: center;
-  height: 40px;
   width: 100%;
+  height: 40px;
   margin-top: 4px;
   padding-left: 12px;
   background-color: $color-surface2;
   border: 1px solid $color-surface2;
-  cursor: pointer;
   transition: border 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     border: 1px solid $color-icons;
   }
 
   &::after {
-    content: '';
     position: absolute;
+    top: 50%;
+    right: 12px;
     width: 16px;
     height: 16px;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-size: auto;
-    background-repeat: no-repeat;
     background-image: url('../../../../assets/img/icons/arrow-down-light-gray.svg');
+    background-size: auto;
     background-position: center;
+    background-repeat: no-repeat;
     transition:
       background-image 0.3s ease,
       transform 0.3s ease;
+    transform: translateY(-50%);
+    content: '';
   }
 
   &:hover::after {
@@ -68,18 +68,18 @@
 
 .dropdownContent {
   position: absolute;
+  z-index: 100;
+  width: 100%;
   margin-top: 4px;
+  padding: 8px 0;
   background-color: $color-black;
   border: 1px solid $color-elements;
-  width: 100%;
-  padding: 8px 0;
-  z-index: 100;
 
   opacity: 0;
-  transform: translateY(-10px);
   transition:
     opacity 0.3s ease-in-out,
     transform 0.3s ease-in-out;
+  transform: translateY(-10px);
 
   &.animate {
     opacity: 1;
@@ -90,14 +90,14 @@
 .option {
   display: flex;
   align-items: center;
-  list-style: none;
   width: 100%;
   height: 32px;
   padding: 6px 12px;
 
-  @include apply-typography(body-desktop);
-
   color: $color-secondary;
+  list-style: none;
+
+  @include apply-typography(body-desktop);
 
   &:hover {
     color: $color-white;

@@ -9,27 +9,28 @@
   height: 432px;
 
   @media (max-width: $tablet-breakpoint) {
-    padding: 0 24px;
     height: 221px;
+    padding: 0 24px;
   }
 
   @media (max-width: $mobile-breakpoint) {
     display: block;
-    padding: 0;
     width: 100%;
     height: calc(100vw + 32px);
+    padding: 0;
   }
 
   .swiperButtonPrev,
   .swiperButtonNext {
     @extend %flex-center;
 
-    cursor: pointer;
     position: relative;
     width: 32px;
     height: 400px;
     background-color: $color-surface2;
     transition: background-color 0.5s ease-in-out;
+
+    cursor: pointer;
 
     @media (max-width: $tablet-breakpoint) {
       height: 189px;
@@ -56,17 +57,17 @@
   }
 
   .swiper {
-    margin: 0 16px;
     width: 100%;
     height: 400px;
+    margin: 0 16px;
 
     @media (max-width: $tablet-breakpoint) {
       height: 189px;
     }
 
     @media (max-width: $mobile-breakpoint) {
-      margin: 0 0 8px;
       height: 0;
+      margin: 0 0 8px;
       padding-bottom: 100%;
       overflow: hidden;
     }
@@ -84,11 +85,11 @@
 
       img {
         position: absolute;
-        width: 100%;
-        height: 100%;
         top: 0;
         left: 0;
+        width: 100%;
         max-width: 100%;
+        height: 100%;
         object-fit: cover;
         object-position: center;
       }
@@ -98,12 +99,12 @@
   .swiperPagination {
     position: absolute;
     bottom: 0;
-
-    @extend %flex-center;
+    z-index: 10;
 
     width: 100%;
     height: 24px;
-    z-index: 10;
+
+    @extend %flex-center;
   }
 
   .swiperPaginationBullet {

@@ -1,27 +1,27 @@
 @use '/src/styles/globals.scss' as *;
 
 .footer {
-  grid-area: footer;
   display: flex;
   align-items: center;
+  grid-area: footer;
   min-height: 96px;
   border-top: 1px solid $color-elements;
 }
 
 .container {
-  margin: 0 auto;
-  padding: 0 32px;
   display: block;
   width: 1136px;
+  margin: 0 auto;
+  padding: 0 32px;
 
   @media (max-width: $tablet-breakpoint) {
-    padding: 0 24px;
     width: 100%;
+    padding: 0 24px;
   }
 
   @media (max-width: $mobile-breakpoint) {
-    padding: 32px 16px;
     height: 100%;
+    padding: 32px 16px;
   }
 }
 
@@ -48,6 +48,6 @@
 
 .footerLogo {
   justify-content: flex-start;
-  height: 32px;
   width: 89px;
+  height: 32px;
 }

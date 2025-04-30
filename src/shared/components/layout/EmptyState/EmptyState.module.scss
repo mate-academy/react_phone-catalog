@@ -3,8 +3,9 @@
 .notFoundProducts {
   @extend %flex-center;
 
-  flex-direction: column;
   flex: 1;
+
+  flex-direction: column;
   gap: 50px;
 }
 

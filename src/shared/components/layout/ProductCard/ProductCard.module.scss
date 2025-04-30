@@ -1,16 +1,16 @@
 @use '/src/styles/globals.scss' as *;
 
 .productCard {
-  position: relative;
-  background-color: $color-surface1;
   display: flex;
+  position: relative;
+  z-index: 1;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
   height: 100%;
   padding: 32px;
+  background-color: $color-surface1;
   border: 1px solid transparent;
-  z-index: 1;
 
   &:hover {
     border: 1px solid $color-surface2;
@@ -18,10 +18,10 @@
 }
 
 .productInfo {
-  cursor: default;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  cursor: default;
 }
 
 .imageWrapper {
@@ -51,8 +51,9 @@
 .title {
   @include apply-typography(body-desktop);
 
-  cursor: pointer;
   margin-top: 16px;
+
+  cursor: pointer;
 }
 
 .priceWrapper {
@@ -68,11 +69,12 @@
 .productDiscount {
   @include apply-typography(h3-desktop);
 
-  color: $color-secondary;
-  text-decoration: line-through;
   font-size: 22px;
   font-weight: 600;
   line-height: 28px;
+  text-decoration: line-through;
+
+  color: $color-secondary;
 }
 
 .divider {

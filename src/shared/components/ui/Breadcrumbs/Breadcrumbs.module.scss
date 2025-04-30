@@ -20,8 +20,8 @@
   color: $color-white;
 
   &.currentBreadcrumb {
-    cursor: default;
     color: $color-secondary;
+    cursor: default;
   }
 }
 
@@ -48,6 +48,6 @@
 }
 
 .arrow {
-  cursor: default;
   transform: rotate(-90deg);
+  cursor: default;
 }

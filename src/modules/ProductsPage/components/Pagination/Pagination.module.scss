@@ -6,22 +6,21 @@
   .paginationList {
     display: flex;
     flex-direction: row;
-    gap: 8px;
     justify-content: center;
+    gap: 8px;
   }
 
   .button {
+    flex-direction: row;
+    width: 32px;
+    height: 32px;
+    background-color: $color-surface2;
+    border: none;
+    transition: background-color 0.5s ease-in-out;
     cursor: pointer;
 
     @extend %flex-center;
     @include apply-typography(body-desktop);
-
-    flex-direction: row;
-    background-color: $color-surface2;
-    border: none;
-    height: 32px;
-    width: 32px;
-    transition: background-color 0.5s ease-in-out;
 
     &Page {
       background-color: $color-surface1;
@@ -41,9 +40,9 @@
     }
 
     &Disabled {
-      cursor: default;
       background-color: $color-surface1;
       border: 1px solid $color-elements;
+      cursor: default;
     }
 
     &:hover {

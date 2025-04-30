@@ -4,8 +4,8 @@
   @extend %flex-center;
 
   flex-direction: column;
-  height: 100%;
   gap: 20px;
+  height: 100%;
 
   @include apply-typography(h1-desktop);
 

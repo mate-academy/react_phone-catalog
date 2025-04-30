@@ -25,15 +25,15 @@
   }
 
   &::after {
-    content: '';
     position: absolute;
-    left: 0;
     bottom: 0;
-    height: 3px;
+    left: 0;
     width: 100%;
+    height: 3px;
     background-color: $color-white;
-    transform: scale(0);
     transition: transform 0.5s ease-in-out;
+    transform: scale(0);
+    content: '';
 
     @media (max-width: $mobile-breakpoint) {
       height: 2px;
@@ -43,8 +43,8 @@
 
 .linkActive {
   &::after {
-    content: '';
     transform: scale(1);
+    content: '';
   }
 }
 

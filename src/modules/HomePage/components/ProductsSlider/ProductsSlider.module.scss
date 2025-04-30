@@ -30,18 +30,17 @@
 
 .sliderButtonPrev,
 .sliderButtonNext {
+  flex-direction: row;
+  width: 32px;
+  height: 32px;
+  background-color: $color-surface2;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  transition: background-color 0.5s ease-in-out;
   cursor: pointer;
 
   @extend %flex-center;
-
-  flex-direction: row;
-  background-color: $color-surface2;
-  border: none;
-  height: 32px;
-  width: 32px;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: background-color 0.5s ease-in-out;
 
   &.sliderButtonPrev {
     background-image: url('../../../../assets/img/icons/arrow-back-white.svg');
@@ -59,9 +58,9 @@
 
 .lockedButton,
 .lockedButton:hover {
-  pointer-events: none;
   background-color: $color-surface1;
   border: 1px solid $color-elements;
+  pointer-events: none;
 
   &.sliderButtonPrev {
     background-image: url('../../../../assets/img/icons/arrow-down-dark-gray.svg');
@@ -82,8 +81,9 @@
   @media (max-width: $mobile-breakpoint) {
     @include apply-typography(h2-mobile);
 
-    margin: 0 0 16px;
     width: 136px;
+
+    margin: 0 0 16px;
   }
 }
 

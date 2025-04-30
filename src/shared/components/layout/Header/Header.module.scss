@@ -1,13 +1,13 @@
 @use '/src/styles/globals.scss' as *;
 
 .header {
-  grid-area: header;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
+  grid-area: header;
   width: 100%;
   height: 64px;
-  z-index: 1000;
 
   @media (max-width: $mobile-breakpoint) {
     height: 48px;
@@ -17,11 +17,12 @@
 .wrapper {
   @extend %flex-center;
 
+  z-index: 1002;
+
   justify-content: space-between;
+  height: 100%;
   background-color: $color-black;
   border-bottom: 1px solid $color-elements;
-  height: 100%;
-  z-index: 1002;
 }
 
 .headerLeft {
@@ -35,9 +36,9 @@
 }
 
 .headerLogo {
+  z-index: 1001;
   width: 128px;
   height: 64px;
-  z-index: 1001;
 
   @media (max-width: $tablet-breakpoint) {
     width: 96px;
@@ -66,19 +67,18 @@
 @media (max-width: $mobile-breakpoint) {
   .menuContainer {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
     position: absolute;
     top: 48px;
     left: 0;
+    z-index: -1;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     height: calc(100vh - 48px);
-    z-index: -1;
     background-color: $color-black;
+    transition: transform 0.3s ease-in-out;
 
     transform: translateY(-100%);
-    transition: transform 0.3s ease-in-out;
   }
 }
 

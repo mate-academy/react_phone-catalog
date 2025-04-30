@@ -72,7 +72,7 @@ export const ProductDetailsPage: React.FC = () => {
     );
   } else {
     content = (
-      <div className={styles.productPage}>
+      <>
         <Breadcrumbs />
 
         <GoBack />
@@ -85,7 +85,7 @@ export const ProductDetailsPage: React.FC = () => {
           showDiscount={true}
           title="You may also like"
         />
-      </div>
+      </>
     );
   }
 

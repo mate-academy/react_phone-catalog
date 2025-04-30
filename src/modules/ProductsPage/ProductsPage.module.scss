@@ -3,8 +3,8 @@
 .catalogPage {
   display: flex;
   flex-direction: column;
-  padding: 32px;
   height: 100%;
+  padding: 32px;
 
   @media (max-width: $tablet-breakpoint) {
     padding: 24px;
@@ -19,6 +19,7 @@
   @include apply-typography(h1-desktop);
 
   margin-top: 40px;
+
   margin-bottom: 0;
 
   @media (max-width: $mobile-breakpoint) {
@@ -31,8 +32,9 @@
 .numOfProducts {
   @include apply-typography(body-desktop);
 
-  color: $color-secondary;
   margin-top: 8px;
+
+  color: $color-secondary;
 }
 
 .productsList {

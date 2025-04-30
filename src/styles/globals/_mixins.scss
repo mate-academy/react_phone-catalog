@@ -39,7 +39,6 @@
   }
 }
 
-
 @mixin primary-button {
   @include apply-typography(buttons-desktop);
   @extend %flex-center;

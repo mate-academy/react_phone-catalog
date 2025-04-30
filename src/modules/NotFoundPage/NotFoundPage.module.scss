@@ -3,18 +3,20 @@
 .notFoundPage {
   @extend %flex-center;
 
-  height: 100%;
   flex-direction: column;
   gap: 20px;
+
+  height: 100%;
 }
 
 .back {
   @extend %flex-center;
   @include apply-typography(small-desktop);
 
+  font-size: 14px;
+
 
   color: $color-secondary;
-  font-size: 14px;
 }
 
 .backContainer {
@@ -45,14 +47,14 @@
 .goBack {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 16px;
   gap: 8px;
+  margin-bottom: 16px;
 }
 
 .arrow {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 16px;
   height: 16px;
 }

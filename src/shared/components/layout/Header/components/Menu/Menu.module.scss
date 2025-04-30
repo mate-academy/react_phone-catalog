@@ -5,8 +5,8 @@
   z-index: 1001;
 
   @media (max-width: $mobile-breakpoint) {
-    position: relative;
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: center;
     align-items: center;
