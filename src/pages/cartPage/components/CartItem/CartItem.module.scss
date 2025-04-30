@@ -31,6 +31,10 @@
     width: 16px;
     height: 16px;
     background-color: inherit;
+
+    &:hover {
+      opacity: 0.5;
+    }
   }
 
   &__img {
@@ -60,21 +64,33 @@
   &__buttons {
     display: flex;
 
-    & button {
-      width: 32px;
-      height: 32px;
-      border: 1px solid $element-bg;
-      background-color: inherit;
-      color: $element-bg;
-      font-size: 20px;
-    }
-
     & h4 {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 32px;
       height: 32px;
+    }
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $element-bg;
+    background-color: inherit;
+    color: $element-bg;
+    font-size: 20px;
+
+    &:hover {
+      background-color: $btn-hover-fav-bg;
+      color: $main-color;
+    }
+
+    &:disabled {
+      background-color: inherit;
+      cursor: not-allowed;
+      color: $secondary-color;
+      opacity: 0.5;
     }
   }
 

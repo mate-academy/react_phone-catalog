@@ -10,6 +10,8 @@ const Header = () => {
   const { pathname } = useLocation();
   const cartItems = useTypedSelector(state => state.cart.items);
   const favouritesItems = useTypedSelector(state => state.favourites.items);
+  const countItemsInCart =
+    cartItems.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     setActive(pathname);
@@ -30,7 +32,9 @@ const Header = () => {
   return (
     <>
       <div className={styles.container}>
-        <div><img src="images/logo/Logo.png" className={styles.logo} /></div>
+        <Link to="/">
+          <img src="images/logo/Logo.png" className={styles.logo} />
+        </Link>
 
         <ul className={styles.nav}>
           <li>
@@ -62,10 +66,10 @@ const Header = () => {
               <div>{favouritesItems.length}</div>
             )}
           </Link>
-          <Link to="/cart" className={styles.icons__link}>
+          <Link to="/cart" className={`${styles.icons__link} ${active === '/cart' ? styles.active : ''}`}>
             <img src="images/icons/Cart.png"/>
             {cartItems.length > 0 && (
-              <div>{cartItems.length}</div>
+              <div>{countItemsInCart}</div>
             )}
           </Link>
         </div>

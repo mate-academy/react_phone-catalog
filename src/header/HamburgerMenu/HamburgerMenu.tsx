@@ -22,32 +22,32 @@ const HamburgerMenu: React.FC<IHamburgerMenuProps> = ({ setMenuOpen }) => {
     <div className={styles.container}>
       <ul className={styles.nav}>
         <li onClick={handleCloseMenu}>
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className={`${styles.nav__link} ${active === '/' ? styles.active : ''}`}
           >
             HOME
           </Link>
         </li>
         <li onClick={handleCloseMenu}>
-          <Link 
-            to="/phones" 
+          <Link
+            to="/phones"
             className={`${styles.nav__link} ${active === '/phones' ? styles.active : ''}`}
           >
             PHONES
           </Link>
         </li>
         <li onClick={handleCloseMenu}>
-          <Link 
-            to="/tablets" 
+          <Link
+            to="/tablets"
             className={`${styles.nav__link} ${active === '/tablets' ? styles.active : ''}`}
           >
             TABLETS
           </Link>
         </li>
         <li onClick={handleCloseMenu}>
-          <Link 
-            to="/accessories" 
+          <Link
+            to="/accessories"
             className={`${styles.nav__link} ${active === '/accessories' ? styles.active : ''}`}
           >
             ACCESSORIES
@@ -58,12 +58,12 @@ const HamburgerMenu: React.FC<IHamburgerMenuProps> = ({ setMenuOpen }) => {
       <div className={styles.icons}>
         <div className={styles.icons__link} onClick={handleCloseMenu}>
           <Link to={'/favourites'}>
-            <img src="/images/icons/Favourites.png" className={styles.icon} />
+            <img src="images/icons/Favourites.png" className={styles.icon} />
           </Link>
         </div>
         <div className={styles.icons__link} onClick={handleCloseMenu}>
           <Link to={'/cart'}>
-            <img src="/images/icons/Cart.png" className={styles.icon}/>
+            <img src="images/icons/Cart.png" className={styles.icon}/>
           </Link>
         </div>
       </div>

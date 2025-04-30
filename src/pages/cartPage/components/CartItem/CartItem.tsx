@@ -22,11 +22,18 @@ const CartItem: React.FC<{ item: ICart }> = ({ item }) => {
 
       <div className={styles.right}>
         <div className={styles.right__buttons}>
-          <button onClick={() => changeQuantity({ id: item.id, type: 'minus'})}>
+          <button
+            onClick={() => changeQuantity({ id: item.id, type: 'minus'})}
+            className={styles.right__btn}
+            disabled={item.quantity === 1}
+          >
             -
           </button>
           <h4>{item.quantity}</h4>
-          <button onClick={() => changeQuantity({ id: item.id, type: 'plus'})}>
+          <button
+            onClick={() => changeQuantity({ id: item.id, type: 'plus'})}
+            className={styles.right__btn}
+          >
             +
           </button>
         </div>

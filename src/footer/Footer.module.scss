@@ -1,4 +1,5 @@
 @use '../styles/variables' as *;
+@use '../styles/mixins.scss' as *;
 
 .container {
   display: flex;
@@ -23,6 +24,13 @@
 .logo {
   width: 80px;
   height: 28px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.6;
+
+    @include default-transition;
+  }
 }
 
 .nav {
@@ -38,6 +46,12 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+  }
+
+  & li:hover {
+    color: $secondary-color;
+
+    @include default-transition;
   }
 }
 

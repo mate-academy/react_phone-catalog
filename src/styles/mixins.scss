@@ -36,17 +36,18 @@
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
     width: 100%;
     height: 2px;
     background-color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: transform 0.3s ease;
   }
 
   &:hover::after,
   &.active::after {
-    opacity: 1;
+    transform: translateX(-50%) scaleX(1);
   }
 }
 

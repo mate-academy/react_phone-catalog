@@ -8,10 +8,18 @@ const Footer = () => {
 
   return (
     <div className={styles.container}>
-      <div><img src="./images/logo/Logo.png" className={styles.logo} /></div>
+      <Link to={'/'}>
+        <img src="./images/logo/Logo.png" className={styles.logo} />
+      </Link>
       <ul className={styles.nav}>
         <li onClick={handleScrollTop}>
-          <Link to={'https://github.com/OlyaVidzi'}>GITHUB</Link>
+          <a
+            href="https://github.com/OlyaVidzi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GITHUB
+          </a>
         </li>
         <li onClick={handleScrollTop}>
           <Link to={'/'}>CONTACTS</Link>
