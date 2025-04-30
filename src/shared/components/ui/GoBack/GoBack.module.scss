@@ -17,7 +17,8 @@
 
 .text {
   @include apply-typography(small-desktop);
-  @include hover-text($color-accent);
 
   color: $color-white;
+  
+  @include hover-text($color-accent);
 }

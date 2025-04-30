@@ -29,21 +29,21 @@ export const ProductsSlider: React.FC<Props> = ({
         <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.navButtons}>
-          <div id={navigationPrevId} className={styles.sliderButtonPrev}></div>
-          <div id={navigationNextId} className={styles.sliderButtonNext}></div>
+          <div className={styles.sliderButtonPrev} id={navigationPrevId}></div>
+          <div className={styles.sliderButtonNext} id={navigationNextId}></div>
         </div>
       </div>
 
       <Swiper
-        modules={[Navigation]}
         className={styles.swiper}
-        spaceBetween={16}
-        slidesPerView={4}
+        modules={[Navigation]}
         navigation={{
           prevEl: `#${navigationPrevId}`,
           nextEl: `#${navigationNextId}`,
           disabledClass: styles.lockedButton,
         }}
+        slidesPerView={4}
+        spaceBetween={16}
       >
         {products.map(product => (
           <SwiperSlide key={product.id} className={styles.swiperSlide}>

@@ -21,7 +21,7 @@ export const ProductCategory: React.FC<Props> = ({
     <Link className={styles.link} to={link}>
       <div className={styles.categoryContainer}>
         <div className={styles.imageWrapper}>
-          <img className={styles.image} src={image} alt={title} />
+          <img alt={title} className={styles.image} src={image} />
         </div>
         <div className={styles.categoryInfo}>
           <span className={styles.categoryName}>{title}</span>

@@ -1,6 +1,9 @@
-import { useProductsContext } from 'contexts/ProductsContext';
+import accessoriesImg from 'assets/img/ui/category-accessories.png';
+import phonesImg from 'assets/img/ui/category-phones.png';
+import tabletsImg from 'assets/img/ui/category-tablets.png';
 
-import { ProductCategory } from '../ProductCategory';
+import { useProductsContext } from 'contexts/ProductsContext';
+import { ProductCategory } from 'modules/HomePage/components/ProductCategory';
 
 import styles from './ProductsCategory.module.scss';
 
@@ -16,22 +19,22 @@ export const ProductsCategory: React.FC = () => {
       <h2 className={styles.title}>Shop by category</h2>
       <div className={styles.productsContainer}>
         <ProductCategory
-          products={productsByCategory.phones || []}
-          image="img/category-phones.png"
-          title="Mobile phones"
+          image={phonesImg}
           link="/phones"
+          products={productsByCategory.phones || []}
+          title="Mobile phones"
         />
         <ProductCategory
-          products={productsByCategory.tablets || []}
-          image="img/category-tablets.png"
-          title="Tablets"
+          image={tabletsImg}
           link="/tablets"
+          products={productsByCategory.tablets || []}
+          title="Tablets"
         />
         <ProductCategory
-          products={productsByCategory.accessories || []}
-          image="img/category-accessories.png"
-          title="Accessories"
+          image={accessoriesImg}
           link="/accessories"
+          products={productsByCategory.accessories || []}
+          title="Accessories"
         />
       </div>
     </div>

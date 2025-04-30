@@ -18,19 +18,19 @@ import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 export const Root: React.FC = () => (
   <Router>
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route element={<App />} path="/">
         <Route index element={<HomePage />} />
-        <Route path="home" element={<Navigate to="/" replace />} />
+        <Route element={<Navigate replace to="/" />} path="home" />
 
-        <Route path=":category" element={<ProductsPage />} />
-        <Route path=":category/:id" element={<ProductDetailsPage />} />
+        <Route element={<ProductsPage />} path=":category" />
+        <Route element={<ProductDetailsPage />} path=":category/:id" />
 
-        <Route path="favorites" element={<FavoritesPage />} />
-        <Route path="cart" element={<CartPage />} />
+        <Route element={<FavoritesPage />} path="favorites" />
+        <Route element={<CartPage />} path="cart" />
 
-        <Route path="contacts" element={<ContactsPage />} />
+        <Route element={<ContactsPage />} path="contacts" />
 
-        <Route path="*" element={<NotFoundPage />} />
+        <Route element={<NotFoundPage />} path="*" />
       </Route>
     </Routes>
   </Router>

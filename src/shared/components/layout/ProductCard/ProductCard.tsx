@@ -15,16 +15,16 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   return (
     <div className={styles.productCard}>
       <Link
-        to={`/${product.category}/${product.itemId}`}
         className={styles.imageWrapper}
+        to={`/${product.category}/${product.itemId}`}
       >
-        <img className={styles.image} src={product.image} alt={product.name} />
+        <img alt={product.name} className={styles.image} src={product.image} />
       </Link>
 
       <div className={styles.productInfo}>
         <Link
-          to={`/${product.category}/${product.itemId}`}
           className={styles.title}
+          to={`/${product.category}/${product.itemId}`}
         >
           {product.name}
         </Link>

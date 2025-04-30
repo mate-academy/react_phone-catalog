@@ -28,8 +28,9 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const loadProducts = async () => {
+      setError(null);
+      setLoading(true);
       try {
-        setLoading(true);
         const products = await getAllProducts();
 
         setAllProducts(products);

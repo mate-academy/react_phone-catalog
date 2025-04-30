@@ -6,7 +6,11 @@
     "types": ["node", "cypress"],
     "baseUrl": "src",
     "paths": {
-      "Styles/*": ["styles/*"]
+      "Styles/*": ["styles/*"],
+      "constants/*": ["shared/constants/*"],
+      "shared/*": ["shared/*"],
+      "assets/*": ["assets/*"],
+      "modules/*": ["modules/*"]
     }
   }
-  }
+}

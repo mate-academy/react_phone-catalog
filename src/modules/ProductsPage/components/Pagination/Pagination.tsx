@@ -1,3 +1,5 @@
+import arrowGray from 'assets/img/icons/arrow-back-dark-gray.svg';
+import arrowWhite from 'assets/img/icons/arrow-back-white.svg';
 import classNames from 'classnames';
 
 import { getVisiblePages } from 'shared/helpers/getVisiblePages';
@@ -38,12 +40,8 @@ export const Pagination: React.FC<Props> = ({
             onClick={() => handleChangePage(curPage - 1)}
           >
             <img
-              src={
-                isFirstPageSelected
-                  ? 'img/icons/arrow-back-dark-gray.svg'
-                  : 'img/icons/arrow-back-white.svg'
-              }
               alt="arrow-back"
+              src={isFirstPageSelected ? arrowGray : arrowWhite}
             />
           </button>
         </li>
@@ -76,12 +74,8 @@ export const Pagination: React.FC<Props> = ({
             onClick={() => handleChangePage(curPage + 1)}
           >
             <img
-              src={
-                isLastPageSelected
-                  ? 'img/icons/arrow-back-dark-gray.svg'
-                  : 'img/icons/arrow-back-white.svg'
-              }
               alt="arrow-forward"
+              src={isLastPageSelected ? arrowGray : arrowWhite}
             />
           </button>
         </li>

@@ -41,3 +41,26 @@
   width: 100%;
   max-width: 400px;
 }
+
+.goBack {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.text {
+  @include apply-typography(small-desktop);
+
+  color: $color-white;
+
+  @include hover-text($color-accent);
+}

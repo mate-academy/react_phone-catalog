@@ -41,5 +41,19 @@ module.exports = {
         },
       },
     ],
+    'react/jsx-sort-props': [
+      'warn',
+      {
+        callbacksLast: true,
+        shorthandFirst: true,
+        noSortAlphabetically: false,
+        reservedFirst: true,
+      },
+    ],
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };

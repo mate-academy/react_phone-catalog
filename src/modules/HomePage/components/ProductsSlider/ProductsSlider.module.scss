@@ -44,11 +44,11 @@
   transition: background-color 0.5s ease-in-out;
 
   &.sliderButtonPrev {
-    background-image: url('~/public/img/icons/arrow-back-white.svg');
+    background-image: url('../../../../assets/img/icons/arrow-back-white.svg');
   }
 
   &.sliderButtonNext {
-    background-image: url('~/public/img/icons/arrow-back-white.svg');
+    background-image: url('../../../../assets/img/icons/arrow-back-white.svg');
     transform: rotate(180deg);
   }
 
@@ -64,12 +64,12 @@
   border: 1px solid $color-elements;
 
   &.sliderButtonPrev {
-    background-image: url('~/public/img/icons/arrow-down-dark-gray.svg');
+    background-image: url('../../../../assets/img/icons/arrow-down-dark-gray.svg');
     transform: rotate(90deg);
   }
 
   &.sliderButtonNext {
-    background-image: url('~/public/img/icons/arrow-down-dark-gray.svg');
+    background-image: url('../../../../assets/img/icons/arrow-down-dark-gray.svg');
     transform: rotate(-90deg);
   }
 }

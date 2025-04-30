@@ -28,9 +28,9 @@ export const HomePage: React.FC = () => {
         <>
           <div className={styles.section}>
             <ProductsSlider
-              title="Brand new models"
               products={newModels}
               showDiscount={false}
+              title="Brand new models"
             />
           </div>
 
@@ -40,9 +40,9 @@ export const HomePage: React.FC = () => {
 
           <div className={styles.section}>
             <ProductsSlider
-              title="Hot prices"
               products={hotModels}
               showDiscount={true}
+              title="Hot prices"
             />
           </div>
         </>

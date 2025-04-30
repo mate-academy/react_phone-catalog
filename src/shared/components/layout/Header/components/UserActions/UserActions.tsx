@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
+import cartIcon from 'assets/img/icons/cart.svg';
+import heartIcon from 'assets/img/icons/heart.svg';
 import classNames from 'classnames';
 
 import { useMenuContext } from 'contexts/MenuContext';
@@ -22,23 +24,19 @@ export const UserActions: React.FC = () => {
       })}
     >
       <NavLink
-        to="/favorites"
         className={getLinkClass}
+        to="/favorites"
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
-        <img
-          className={styles.image}
-          src="img/icons/heart.svg"
-          alt="Favorites"
-        />
+        <img alt="Favorites" className={styles.image} src={heartIcon} />
       </NavLink>
 
       <NavLink
-        to="/cart"
         className={getLinkClass}
+        to="/cart"
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
-        <img className={styles.image} src="img/icons/cart.svg" alt="Cart" />
+        <img alt="Cart" className={styles.image} src={cartIcon} />
       </NavLink>
     </div>
   );

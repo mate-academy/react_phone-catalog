@@ -4,6 +4,10 @@ import 'swiper/scss/pagination';
 
 import { Link } from 'react-router-dom';
 
+import bannerAccessories from 'assets/img/banner/banner-accessories.jpg';
+import bannerPhones from 'assets/img/banner/banner-phones.jpg';
+import bannerTablets from 'assets/img/banner/banner-tablets.jpg';
+import arrowWhite from 'assets/img/icons/arrow-back-white.svg';
 import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -13,16 +17,14 @@ export const PicturesSlider: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.swiperButtonPrev}>
-        <img src="img/icons/arrow-back-white.svg" alt="arrow-back" />
+        <img alt="arrow-back" src={arrowWhite} />
       </div>
 
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar, Autoplay]}
-        className={styles.swiper}
-        spaceBetween={0}
-        slidesPerView={1}
         autoplay={{ delay: 5000 }}
+        className={styles.swiper}
         loop={true}
+        modules={[Navigation, Pagination, Scrollbar, Autoplay]}
         navigation={{
           prevEl: `.${styles.swiperButtonPrev}`,
           nextEl: `.${styles.swiperButtonNext}`,
@@ -35,20 +37,22 @@ export const PicturesSlider: React.FC = () => {
           bulletClass: styles.swiperPaginationBullet,
           bulletActiveClass: styles.swiperPaginationBulletActive,
         }}
+        slidesPerView={1}
+        spaceBetween={0}
       >
         <SwiperSlide className={styles.swiperSlide}>
           <Link to="/phones">
-            <img src="img/banner/banner-phones.jpg" alt="phone" />
+            <img alt="phone" src={bannerPhones} />
           </Link>
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
           <Link to="/accessories">
-            <img src="img/banner/banner-accessories.jpg" alt="accessories" />
+            <img alt="accessories" src={bannerAccessories} />
           </Link>
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
           <Link to="/tablets">
-            <img src="img/banner/banner-tablets.jpg" alt="tablet" />
+            <img alt="tablet" src={bannerTablets} />
           </Link>
         </SwiperSlide>
       </Swiper>
@@ -56,7 +60,7 @@ export const PicturesSlider: React.FC = () => {
       <div className={styles.swiperPagination}></div>
 
       <div className={styles.swiperButtonNext}>
-        <img src="img/icons/arrow-back-white.svg" alt="arrow-forward" />
+        <img alt="arrow-forward" src={arrowWhite} />
       </div>
     </div>
   );

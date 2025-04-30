@@ -20,32 +20,32 @@ export const HeaderNav: React.FC = () => {
       className={classNames(styles.navbar, { [styles.menuOpen]: isMenuOpen })}
     >
       <NavLink
-        to="/"
         className={getLinkClass}
+        to="/"
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         Home
       </NavLink>
 
       <NavLink
-        to="/phones"
         className={getLinkClass}
+        to="/phones"
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         Phones
       </NavLink>
 
       <NavLink
-        to="/tablets"
         className={getLinkClass}
+        to="/tablets"
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         Tablets
       </NavLink>
 
       <NavLink
-        to="/accessories"
         className={getLinkClass}
+        to="/accessories"
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         Accessories

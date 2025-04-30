@@ -2,6 +2,9 @@ import React from 'react';
 
 import { Link, useLocation } from 'react-router-dom';
 
+import arrow from 'assets/img/icons/arrow-down-dark-gray.svg';
+import homeIcon from 'assets/img/icons/home.svg';
+
 import styles from './Breadcrumbs.module.scss';
 
 export const Breadcrumbs: React.FC = () => {
@@ -15,8 +18,8 @@ export const Breadcrumbs: React.FC = () => {
     <nav className={styles.container}>
       <ul className={styles.breadcrumbs}>
         <li className={styles.breadcrumbItem}>
-          <Link to="/" className={styles.homeLink}>
-            <img src="img/icons/home.svg" alt="home" />
+          <Link className={styles.homeLink} to="/">
+            <img alt="home" src={homeIcon} />
           </Link>
         </li>
 
@@ -27,11 +30,7 @@ export const Breadcrumbs: React.FC = () => {
           return (
             <React.Fragment key={path}>
               <li className={styles.icon}>
-                <img
-                  src="img/icons/arrow-down-dark-gray.svg"
-                  alt="arrow"
-                  className={styles.arrow}
-                />
+                <img alt="arrow" className={styles.arrow} src={arrow} />
               </li>
 
               <li
@@ -40,7 +39,7 @@ export const Breadcrumbs: React.FC = () => {
                 {isLast ? (
                   <span>{name}</span>
                 ) : (
-                  <Link to={`/${name}`} className={styles.link}>
+                  <Link className={styles.link} to={`/${name}`}>
                     {name}
                   </Link>
                 )}

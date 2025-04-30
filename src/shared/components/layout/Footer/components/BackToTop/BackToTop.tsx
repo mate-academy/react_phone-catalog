@@ -1,3 +1,5 @@
+import arrowBack from 'assets/img/icons/arrow-back-white.svg';
+
 import style from './BackToTop.module.scss';
 
 export const BackToTop: React.FC = () => {
@@ -8,8 +10,8 @@ export const BackToTop: React.FC = () => {
   return (
     <div className={style.backToTopBlock}>
       <span className={style.text}>Back to top</span>
-      <button type="button" className={style.button} onClick={goToTop}>
-        <img src="img/icons/arrow-back-white.svg" alt="arrow-top" />
+      <button className={style.button} type="button" onClick={goToTop}>
+        <img alt="arrow-top" src={arrowBack} />
       </button>
     </div>
   );

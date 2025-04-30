@@ -1,3 +1,6 @@
+import burger from 'assets/img/icons/burger.svg';
+import cross from 'assets/img/icons/cross.svg';
+
 import { useMenuContext } from 'contexts/MenuContext';
 
 import styles from './Menu.module.scss';
@@ -8,9 +11,9 @@ export const Menu: React.FC = () => {
   return (
     <div className={styles.burger} onClick={toggleMenu}>
       {!isMenuOpen ? (
-        <img className={styles.image} src="img/icons/burger.svg" alt="menu" />
+        <img alt="menu" className={styles.image} src={burger} />
       ) : (
-        <img className={styles.image} src="img/icons/close.svg" alt="cross" />
+        <img alt="cross" className={styles.image} src={cross} />
       )}
     </div>
   );

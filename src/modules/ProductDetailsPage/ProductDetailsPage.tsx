@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 
+import notFoundImg from 'assets/img/ui/product-not-found.png';
+
 import { useProductsContext } from 'contexts/ProductsContext';
 import { ProductsSlider } from 'modules/HomePage/components/ProductsSlider';
 import { NotFoundPage } from 'modules/NotFoundPage';
@@ -66,14 +68,11 @@ export const ProductDetailsPage: React.FC = () => {
     content = <Error message={error} />;
   } else if (!detailedProduct) {
     content = (
-      <NotFoundPage
-        message="Product not found"
-        imageSrc="img/product-not-found.png"
-      />
+      <NotFoundPage imageSrc={notFoundImg} message="Product not found" />
     );
   } else {
     content = (
-      <>
+      <div className={styles.productPage}>
         <Breadcrumbs />
 
         <GoBack />
@@ -82,11 +81,11 @@ export const ProductDetailsPage: React.FC = () => {
 
         <ProductsSlider
           key={id}
-          title="You may also like"
           products={suggestedProducts}
           showDiscount={true}
+          title="You may also like"
         />
-      </>
+      </div>
     );
   }
 

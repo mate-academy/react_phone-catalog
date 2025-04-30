@@ -6,19 +6,19 @@ export const FooterNav: React.FC = () => {
   return (
     <nav className={styles.navbar}>
       <Link
-        to="https://github.com/JaneShavrukova/e-commerce-catalog"
-        target="_blank"
         className={styles.navbarLink}
+        target="_blank"
+        to="https://github.com/JaneShavrukova/e-commerce-catalog"
       >
         GitHub
       </Link>
-      <Link to="/contacts" className={styles.navbarLink}>
+      <Link className={styles.navbarLink} to="/contacts">
         Contacts
       </Link>
       <Link
-        to="https://github.com/JaneShavrukova"
-        target="_blank"
         className={styles.navbarLink}
+        target="_blank"
+        to="https://github.com/JaneShavrukova"
       >
         Rights
       </Link>

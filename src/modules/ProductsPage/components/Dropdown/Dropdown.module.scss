@@ -39,7 +39,7 @@
     transform: translateY(-50%);
     background-size: auto;
     background-repeat: no-repeat;
-    background-image: url('~/public/img/icons/arrow-down-light-gray.svg');
+    background-image: url('../../../../assets/img/icons/arrow-down-light-gray.svg');
     background-position: center;
     transition:
       background-image 0.3s ease,
@@ -47,16 +47,16 @@
   }
 
   &:hover::after {
-    background-image: url('~/public/img/icons/arrow-down-dark-gray.svg');
+    background-image: url('../../../../assets/img/icons/arrow-down-dark-gray.svg');
   }
 
   &.open::after {
-    background-image: url('~/public/img/icons/arrow-down-light-gray.svg');
+    background-image: url('../../../../assets/img/icons/arrow-down-light-gray.svg');
     transform: translateY(-50%) rotate(180deg);
   }
 
   &.open:hover::after {
-    background-image: url('~/public/img/icons/arrow-down-dark-gray.svg');
+    background-image: url('../../../../assets/img/icons/arrow-down-dark-gray.svg');
   }
 
   &:focus,

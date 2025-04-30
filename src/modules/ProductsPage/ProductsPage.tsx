@@ -104,8 +104,8 @@ export const ProductsPage: React.FC = () => {
           <div className={styles.sortContainer}>
             <Dropdown
               label="Sort by"
-              selectedOption={sortParam}
               options={sortOptions}
+              selectedOption={sortParam}
               onSelect={handleSortBySelect}
             />
           </div>
@@ -113,8 +113,8 @@ export const ProductsPage: React.FC = () => {
           <div className={styles.itemOnPageContainer}>
             <Dropdown
               label="Items on page"
-              selectedOption={itemsOnPageParam}
               options={itemsPerPage}
+              selectedOption={itemsOnPageParam}
               onSelect={handleItemsOnPageSelect}
             />
           </div>
@@ -130,9 +130,9 @@ export const ProductsPage: React.FC = () => {
 
         {!isAllSelected && (
           <Pagination
-            totalItems={countsByCategory[selectedCategory]}
-            perPage={perPage}
             curPage={currentPage}
+            perPage={perPage}
+            totalItems={countsByCategory[selectedCategory]}
             onPageChange={handleChangePage}
           />
         )}

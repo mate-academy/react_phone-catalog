@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import logoImg from 'assets/img/logo/logo.svg';
+
 import style from './Logo.module.scss';
 
 type LogoProps = {
@@ -8,8 +10,8 @@ type LogoProps = {
 
 export const Logo: React.FC<LogoProps> = ({ className }) => {
   return (
-    <Link to="/" className={`${style.logo} ${className}`}>
-      <img src="img/logo/logo.svg" alt="Logo" />
+    <Link className={`${style.logo} ${className}`} to="/">
+      <img alt="Logo" src={logoImg} />
     </Link>
   );
 };

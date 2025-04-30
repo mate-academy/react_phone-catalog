@@ -4,9 +4,8 @@ import { useMediaQuery } from '@mui/material';
 import classNames from 'classnames';
 
 import { useMenuContext } from 'contexts/MenuContext';
+import { Logo } from 'shared/components/layout/Logo';
 import { closeMenu } from 'shared/helpers/handlers';
-
-import { Logo } from '../Logo';
 
 import { HeaderNav } from './components/HeaderNav/HeaderNav';
 import { Menu } from './components/Menu';
