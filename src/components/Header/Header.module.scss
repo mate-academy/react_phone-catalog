@@ -11,23 +11,23 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  border: 1px $elements solid;
-  height: calc($gap * 2);
+  border: $border $elements solid;
+  height: $header-height;
 
   @include on-tablet {
-    height: calc($gap * 1.5);
+    height: $header-height-tablet;
   }
 }
 
 .logo {
-  height: 28px;
-  width: 80px;
+  height: $header-logo-height;
+  width: $header-logo-height;
   display: flex;
   align-items: center;
 
   @include on-tablet {
-    height: 22px;
-    width: 64px;
+    height: $header-logo-height-tablet;
+    width: $header-logo-width-tablet;
   }
 
   img {
@@ -38,7 +38,7 @@
 
 .aside {
   position: fixed;
-  height: calc(100vh - calc($gap * 2.5));
+  height: $aside-height;
   width: 100%;
   z-index: 1000;
   background-color: white;
@@ -54,19 +54,19 @@
 
   &__list {
     display: flex;
-    gap: calc($gap / 2);
+    gap: $nav-list-gap;
     height: 100%;
 
     @include on-tablet {
-      gap: calc($gap / 8);
+      gap: $nav-list-gap-tablet;
     }
 
     @include on-mobile {
       @include flex-centered;
 
-      padding: calc($gap / 1.5) calc($gap / 2);
+      padding: $nav-list-padding-mobile;
       flex-direction: column;
-      gap: calc($gap / 2);
+      gap: $nav-list-gap-mobile;
     }
   }
 
@@ -81,7 +81,7 @@
 
   &__link {
     display: inline-block;
-    padding-inline: calc($gap / 3 * 2);
+    padding-inline: $nav-link-padding-inline;
     height: 100%;
     align-content: center;
     text-transform: uppercase;
@@ -106,7 +106,7 @@
       align-items: center;
 
       @include on-mobile {
-        padding-block: 8px;
+        padding-block: $nav-link-span-padding-block-mobile;
       }
 
       &::after {
@@ -114,14 +114,14 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        height: 3px;
+        height: $nav-link-after-height;
         width: 100%;
         background-color: $primary;
         opacity: 0;
         transition: opacity 0.3s;
 
         @include on-mobile {
-          height: 2px;
+          height: $nav-link-after-height-mobile;
         }
       }
     }
@@ -151,7 +151,7 @@
   &__visible {
     height: 100%;
     display: flex; // visible on the tablet and larger screens
-    gap: 1px;
+    gap: $border; // to make border colapse on bigger screens
 
     @include on-mobile {
       display: none;
@@ -170,10 +170,10 @@
   &__bottom {
     display: flex;
     width: 100%;
-    gap: 1px;
-    padding-bottom: 2px;
+    gap: $border; // to make borders colapse
+    padding-bottom: $header-bottom-padding-bottom;
 
-    height: calc($gap * 2);
+    height: $header-bottom-height;
 
     &_link {
       width: 100%;
@@ -184,15 +184,15 @@
       aspect-ratio: unset;
 
       &::after {
-        border: 1px $elements solid;
+        border: $border $elements solid;
         height: 100%;
       }
 
       &:hover {
         &::after {
           height: calc(100% - 1px);
-          border: 1px $elements solid;
-          border-bottom: 2px $primary solid;
+          border: $border $elements solid;
+          border-bottom: $header-bottom-button-after-height-hover $primary solid;
         }
       }
     }

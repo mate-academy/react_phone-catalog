@@ -6,16 +6,16 @@
 }
 
 .logo {
-  height: 32px;
-  width: 89px;
+  height: $footer-logo-height;
+  width: $footer-logo-width;
 }
 
 .footer {
   display: grid;
   align-items: center;
-  height: $gap * 3;
+  height: $footer-height;
   grid-template-columns: repeat(3, 1fr);
-  border: 1px $elements solid;
+  border: $border $elements solid;
   box-sizing: border-box;
 
   @include on-mobile {
@@ -25,11 +25,11 @@
     gap: $gap;
     align-items: flex-start;
     justify-content: space-between;
-    padding-block: $gap;
+    padding-block: $footer-padding-block;
   }
 
   &__link {
-    padding-inline: $gap;
+    padding-inline: $footer-link-padding-inline;
     color: $secondary;
     text-transform: uppercase;
 
@@ -37,7 +37,7 @@
     @include use-font(700);
 
     @include on-mobile {
-      padding-inline: 0;
+      padding-inline: $footer-link-padding-inline-mobile;
     }
   }
 
@@ -59,7 +59,7 @@
     @include on-mobile {
       display: flex;
       flex-direction: column;
-      gap: calc($gap / 2);
+      gap: $footer-list-gap-mobile;
       align-items: flex-start;
     }
   }
@@ -69,7 +69,7 @@
 
     display: flex;
     align-items: center;
-    gap: calc($gap / 2);
+    gap: $footer-back-gap;
 
     justify-self: end;
     grid-column: 3 / 4;

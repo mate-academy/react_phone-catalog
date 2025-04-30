@@ -60,3 +60,18 @@ $mobile: 320px;
   height: 100%;
   align-items: center;
 }
+
+
+@mixin responsive-property($property, $mobile-value, $tablet-value, $desktop-value: null) {
+  #{$property}: $mobile-value; // Default for mobile
+
+  @include on-tablet {
+    #{$property}: $tablet-value; // Override for tablet
+  }
+
+  @include on-desktop {
+    @if $desktop-value != null {
+      #{$property}: $desktop-value; // Optional override for desktop
+    }
+  }
+}

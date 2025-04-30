@@ -3,7 +3,52 @@ $secondary: #89939a;
 $elements: #e2e6e9;
 $back-ground: white;
 $gap: 32px;
+$border: 1px;
 
+//header 
+$header-height: calc($gap * 2);
+$header-height-tablet: calc($gap * 1.5);
+
+$header-logo-height: 28px;
+$header-logo-width: 80px;
+
+$header-logo-height-tablet: 22px;
+$header-logo-width-tablet: 64px;
+
+$nav-list-gap: calc($gap / 2);
+$nav-list-gap-tablet: calc($gap / 8);
+$nav-list-gap-mobile: calc($gap / 2);
+
+$nav-list-padding-mobile: calc($gap / 1.5) calc($gap / 2);
+
+$nav-link-padding-inline: calc($gap / 3 * 2);
+$nav-link-padding-tablet: calc($gap / 2);
+
+$nav-link-span-padding-block-mobile: 8px;
+$nav-link-after-height: 3px;
+$nav-link-after-height-mobile: 2px;
+
+$header-bottom-height: calc($gap * 2);
+$header-bottom-padding-bottom: 2px;
+$header-bottom-button-after-height-hover: calc($border * 2);
+
+//aside 
+$aside-height: calc(100vh - calc($gap * 2.5));
+
+
+//footer
+$footer-logo-height: 32px;
+$footer-logo-width: 89px;
+
+$footer-height: calc($gap * 3);
+$footer-padding-block: $gap;
+
+$footer-link-padding-inline: $gap;
+$footer-link-padding-inline-mobile: 0;
+
+$footer-list-gap-mobile: calc($gap / 2);
+
+$footer-back-gap: calc($gap / 2);
 /* Where gap constant ratio & where it was used:
 
 on-tablet / on-mobile
