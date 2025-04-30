@@ -1,0 +1,80 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  & > button {
+    height: 32px;
+    width: 32px;
+    background-color: inherit;
+    border: 1px solid $element-bg;
+
+    & > span {
+      color: $element-bg;
+    }
+
+    &:hover {
+      background-color: $element-bg;
+
+      & > span {
+        color: $main-color;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      & > span {
+        color: $element-bg;
+      }
+
+      &:hover {
+        background-color: inherit;
+      }
+    }
+  }
+
+  & > ul {
+    display: flex;
+    justify-content: start;
+    gap: 8px;
+    max-width: 272px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    & > li {
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      background-color: $secondary-bg;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      cursor: pointer;
+
+      @include default-transition;
+
+      &:hover {
+        background-color: $element-bg;
+      }
+
+      &.selected {
+        background-color: $accent-bg;
+      }
+    }
+  }
+}

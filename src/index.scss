@@ -1,0 +1,54 @@
+@use './styles/variables' as *;
+@use './styles/mixins.scss' as *;
+@use './styles/fonts' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: $main-color;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  background-color: $main-bg;
+  min-height: 100vh;
+  padding: 32px;
+
+  @media(max-width: $tablet) {
+    padding: 24px;
+  }
+
+  @media(max-width: $mobile) {
+    padding: 16px;
+  }
+}
+
+.main-container {
+  display: flex;
+  max-width: 1136px;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  @include default-transition;
+}

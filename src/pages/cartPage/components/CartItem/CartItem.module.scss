@@ -1,0 +1,102 @@
+@use '../../../../styles/variables.scss' as *;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  gap: 24px;
+  background-color: $secondary-bg;
+
+  @media(max-width: $mobile-medium) {
+    flex-direction: column;
+  }
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+
+  @media(max-width: $tablet) {
+    gap: 12px;
+  }
+
+  @media(max-width: $mobile-medium) {
+    justify-content: left;
+  }
+
+  & button {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    background-color: inherit;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__img {
+    padding: 6px;
+
+    & img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  & img {
+    color: $icon-bg; /* Переміщено сюди */
+  }
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 54px;
+
+  @media(max-width: $mobile-medium) {
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+
+    & h4 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $element-bg;
+    background-color: inherit;
+    color: $element-bg;
+    font-size: 20px;
+
+    &:hover {
+      background-color: $btn-hover-fav-bg;
+      color: $main-color;
+    }
+
+    &:disabled {
+      background-color: inherit;
+      cursor: not-allowed;
+      color: $secondary-color;
+      opacity: 0.5;
+    }
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
