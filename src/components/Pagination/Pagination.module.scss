@@ -1,0 +1,20 @@
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
+
+.pagination {
+  margin-top: 32px;
+
+  &__label {
+    font-size: 12px;
+    color: $secondary-color;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 40px;
+
+    @include page-grid;
+  }
+}

@@ -1,0 +1,107 @@
+@import '../../utils/scss/variables';
+@import '../../utils/scss/mixin';
+
+.footer {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 64px;
+  padding: 32px 16px;
+
+  box-shadow: 0 -1px 0 0 $elements-color;
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 20px;
+    }
+  }
+
+  &__logo {
+    height: 32px;
+    min-width: 90px;
+    width: 100%;
+
+    background-image: url('/img/Logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      width: 100%;
+
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__contactLink {
+    position: relative;
+    font-family: Mont-Bold, sans-serif;
+    color: $secondary-color;
+    text-decoration: none;
+
+    margin: 0;
+
+    text-transform: uppercase;
+
+    @include hover(color, $primary-color);
+  }
+
+  &__buttonSection {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      justify-content: right;
+    }
+  }
+
+  &__buttonSection p {
+    color: $secondary-color;
+
+    margin: 0;
+  }
+
+  &__buttonSection a {
+    width: 32px;
+    height: 32px;
+
+    background-color: #fff;
+
+    border: 1px solid $icons-color;
+
+    background-image: url('/img/icons/arrow.png');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+
+    @include hover(border-color, $primary-color);
+  }
+}
