@@ -1,0 +1,33 @@
+[
+  {
+    "name": "All",
+    "image": "",
+    "fullName": "All products",
+    "page": "all"
+  },
+  {
+    "name": "Phones",
+    "image": "/img/category-phones.webp",
+    "fullName": "Mobile phones",
+    "page": "phones"
+  },
+  {
+    "name": "Tablets",
+    "image": "/img/category-tablets.webp",
+    "fullName": "Tablets",
+    "page": "tablets"
+  },
+  {
+    "name": "Accessories",
+    "image": "/img/category-accessories.webp",
+    "fullName": "Accessories",
+    "page": "accessories"
+  },
+  {
+    "name": "Favorites",
+    "image": "",
+    "fullName": "Favorites",
+    "page": "favorites"
+  }
+
+]
