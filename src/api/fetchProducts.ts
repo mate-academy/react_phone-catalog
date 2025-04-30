@@ -36,3 +36,48 @@ export function getProducts(): Promise<Product[]> {
     return res.json();
   });
 }
+
+
+
+
+
+// export const getNotificationsWithLogo = async () => {
+//   const notificationsWithLogo: Notification[] = [];
+
+//   try {
+//     const notificationsResponse = await getAllNotifications();
+
+//     if (notificationsResponse.data.results && notificationsResponse.data.results.length > 0) {
+//       const notifications = notificationsResponse.data.results;
+
+//       for (const notification of notifications) {
+//         if (notification.data.email) {
+//           try {
+//             const email = await getEmails(notification.data.email);
+
+//             if (email.data.results && email.data.results.length > 0) {
+//               const uuid = email.data.results[0].related_website;
+
+//               try {
+//                 const websiteResponse = await companiesServices.getCompanyByUUID(uuid);
+
+//                 if (websiteResponse.data) {
+//                   const logoUrl = websiteResponse.data?.logo_url || null;
+//                   notificationsWithLogo.push({ ...notification, logo_url: logoUrl });
+//                 }
+//               } catch (e) {
+//                 console.log(`error in getCompanyByUUID ${e}`);
+//               }
+//             }
+//           } catch (e) {
+//             console.log(`error in getEmails ${e}`);
+//           }
+//         }
+//       }
+//     }
+//   } catch (e) {
+//     console.log(`error in getAllNotifications ${e}`);
+//   }
+
+//   return notificationsWithLogo;
+// };
