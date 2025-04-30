@@ -5,7 +5,7 @@
 
   justify-content: space-between;
 
-  @include uppercase-desktop-tablet;
+  @include apply-typography(uppercase-desktop);
 
   @media (max-width: $mobile-breakpoint) {
     flex-direction: column;

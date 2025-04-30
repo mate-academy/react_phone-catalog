@@ -1,97 +1,22 @@
 @use './variables' as *;
 
-@mixin h1-desktop-tablet {
-  color: $color-white;
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 56px;
-  letter-spacing: -0.01em;
-}
+$typography: (
+  h1-desktop: (48px, 800, 56px, -0.01em, $color-white),
+  h2-desktop: (32px, 800, 41px, -0.01em, $color-white),
+  h3-desktop: (22px, 800, 31px, 0, $color-white),
+  h4-desktop: (20px, 700, 26px, 0, $color-white),
 
-@mixin h2-desktop-tablet {
-  color: $color-white;
-  font-size: 32px;
-  font-weight: 800;
-  line-height: 41px;
-  letter-spacing: -0.01em;
-}
+  uppercase-desktop: (12px, 800, 11px, 0.04em, $color-white),
+  buttons-desktop: (14px, 700, 21px, 0, $color-white),
+  body-desktop: (14px, 600, 21px, 0, $color-white),
+  small-desktop: (12px, 700, 15px, 0, $color-secondary),
 
-@mixin h3-desktop-tablet {
-  color: $color-white;
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 31px;
-  letter-spacing: 0;
-}
+  h1-mobile: (32px, 800, 41px, -0.01em, $color-white),
+  h2-mobile: (22px, 800, 31px, 0, $color-white),
+  h3-mobile: (20px, 700, 26px, 0, $color-white),
+  h4-mobile: (16px, 700, 20px, 0, $color-white)
+);
 
-@mixin h4-desktop-tablet {
-  color: $color-white;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 26px;
-  letter-spacing: 0;
-}
-
-@mixin uppercase-desktop-tablet {
-  color: $color-secondary;
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 11px;
-  letter-spacing: 0.04em;
-}
-
-@mixin buttons-text-desktop-tablet {
-  color: $color-white;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 21px;
-  letter-spacing: 0;
-}
-
-@mixin body-text-desktop-tablet {
-  color: $color-white;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 21px;
-  letter-spacing: 0;
-}
-
-@mixin small-text-desktop-tablet {
-  color: $color-secondary;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: 0;
-}
-
-@mixin h1-mobile {
-  color: $color-white;
-  font-size: 32px;
-  font-weight: 800;
-  line-height: 41px;
-  letter-spacing: -0.01em;
-}
-
-@mixin h2-mobile {
-  color: $color-white;
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 31px;
-  letter-spacing: 0;
-}
-
-@mixin h3-mobile {
-  color: $color-white;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 26px;
-  letter-spacing: 0;
-}
-
-@mixin h4-mobile {
-  color: $color-white;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0;
+@function get($key) {
+  @return map-get($typography, $key);
 }

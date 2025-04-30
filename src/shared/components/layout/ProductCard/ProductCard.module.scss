@@ -49,7 +49,7 @@
 }
 
 .title {
-  @include body-text-desktop-tablet;
+  @include apply-typography(body-desktop);
 
   cursor: pointer;
   margin-top: 16px;
@@ -62,11 +62,11 @@
 }
 
 .productPrice {
-  @include h3-desktop-tablet;
+  @include apply-typography(h3-desktop);
 }
 
 .productDiscount {
-  @include h3-desktop-tablet;
+  @include apply-typography(h3-desktop);
 
   color: $color-secondary;
   text-decoration: line-through;
@@ -91,11 +91,11 @@
 }
 
 .featureName {
-  @include small-text-desktop-tablet;
+  @include apply-typography(small-desktop);
 }
 
 .featureValue {
-  @include body-text-desktop-tablet;
+  @include apply-typography(body-desktop);
 }
 
 .actions {

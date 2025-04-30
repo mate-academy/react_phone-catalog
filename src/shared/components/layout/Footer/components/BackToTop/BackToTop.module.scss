@@ -7,7 +7,7 @@
 }
 
 .text {
-  @include small-text-desktop-tablet;
+  @include apply-typography(small-desktop);
 
   cursor: pointer;
   padding-right: 16px;

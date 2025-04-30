@@ -26,7 +26,7 @@
 }
 
 .mainTitle {
-  @include h1-desktop-tablet;
+  @include apply-typography(h1-desktop);
 
   margin: 56px 0;
 
@@ -35,7 +35,7 @@
   }
 
   @media (max-width: $mobile-breakpoint) {
-    @include h2-desktop-tablet;
+    @include apply-typography(h1-mobile);
 
     margin: 24px 16px;
   }

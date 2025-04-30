@@ -1,7 +1,7 @@
 @use '/src/styles/globals.scss' as *;
 
 .label {
-  @include small-text-desktop-tablet;
+  @include apply-typography(small-desktop);
 }
 
 .select {
@@ -9,7 +9,7 @@
 }
 
 .dropDownButton {
-  @include buttons-text-desktop-tablet;
+  @include apply-typography(buttons-desktop);
 
   position: relative;
 
@@ -95,7 +95,7 @@
   height: 32px;
   padding: 6px 12px;
 
-  @include body-text-desktop-tablet;
+  @include apply-typography(body-desktop);
 
   color: $color-secondary;
 

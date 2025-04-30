@@ -1,5 +1,19 @@
 @use './variables' as *;
-@use './typography' as *;
+@use './typography';
+@use 'sass:list';
+@use 'sass:map';
+
+@mixin apply-typography($style-name) {
+  $style: map.get(typography.$typography, $style-name);
+
+  @if $style {
+    font-size: list.nth($style, 1);
+    font-weight: list.nth($style, 2);
+    line-height: list.nth($style, 3);
+    letter-spacing: list.nth($style, 4);
+    color: list.nth($style, 5);
+  }
+}
 
 @mixin hover-text($color) {
   transition: color 0.5s ease;
@@ -27,7 +41,7 @@
 
 
 @mixin primary-button {
-  @include buttons-text-desktop-tablet;
+  @include apply-typography(buttons-desktop);
   @extend %flex-center;
 
   height: 40px;

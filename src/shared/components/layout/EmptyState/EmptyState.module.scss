@@ -9,10 +9,10 @@
 }
 
 .notFoundMessage {
-  @include h1-desktop-tablet;
+  @include apply-typography(h1-desktop);
 
   @media (max-width: $mobile-breakpoint) {
-    @include h1-mobile;
+    @include apply-typography(h1-mobile);
   }
 }
 

@@ -7,9 +7,16 @@
   height: 100%;
   gap: 20px;
 
-  @include h1-desktop-tablet;
+  @include apply-typography(h1-desktop);
 
   @media (max-width: $mobile-breakpoint) {
-    @include h1-mobile;
+    @include apply-typography(h1-mobile);
   }
+}
+
+.reloadButton {
+  @include primary-button;
+
+  width: 200px;
+  height: 50px;
 }

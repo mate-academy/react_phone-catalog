@@ -14,7 +14,7 @@
     cursor: pointer;
 
     @extend %flex-center;
-    @include body-text-desktop-tablet;
+    @include apply-typography(body-desktop);
 
     flex-direction: row;
     background-color: $color-surface2;

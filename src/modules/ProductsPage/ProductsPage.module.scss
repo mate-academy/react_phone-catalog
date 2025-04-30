@@ -1,13 +1,5 @@
 @use '/src/styles/globals.scss' as *;
 
-.reloadButton {
-  @include buttons-text-desktop-tablet;
-  @include primary-button;
-
-  width: 200px;
-  height: 50px;
-}
-
 .catalogPage {
   display: flex;
   flex-direction: column;
@@ -24,21 +16,20 @@
 }
 
 .categoryTitle {
-  @include h1-desktop-tablet;
+  @include apply-typography(h1-desktop);
 
   margin-top: 40px;
+  margin-bottom: 0;
 
   @media (max-width: $mobile-breakpoint) {
-    @include h1-mobile;
+    @include apply-typography(h1-mobile);
 
     margin-top: 24px;
   }
-
-  margin-bottom: 0;
 }
 
 .numOfProducts {
-  @include body-text-desktop-tablet;
+  @include apply-typography(body-desktop);
 
   color: $color-secondary;
   margin-top: 8px;

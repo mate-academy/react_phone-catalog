@@ -75,12 +75,12 @@
 }
 
 .title {
-  @include h2-desktop-tablet;
+  @include apply-typography(h2-desktop);
 
   margin: 0 0 24px;
 
   @media (max-width: $mobile-breakpoint) {
-    @include h2-mobile;
+    @include apply-typography(h2-mobile);
 
     margin: 0 0 16px;
     width: 136px;

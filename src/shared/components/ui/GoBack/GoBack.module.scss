@@ -1,5 +1,23 @@
+@use '/src/styles/globals.scss' as *;
+
 .goBack {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.arrow {
   display: flex;
   align-items: center;
-  cursor: pointer;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.text {
+  @include apply-typography(small-desktop);
+  @include hover-text($color-accent);
+
+  color: $color-white;
 }

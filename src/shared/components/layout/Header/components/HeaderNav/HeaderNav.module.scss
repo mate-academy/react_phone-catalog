@@ -2,7 +2,7 @@
 
 .navbar {
   @extend %flex-center;
-  @include uppercase-desktop-tablet;
+  @include apply-typography(uppercase-desktop);
 
   justify-content: space-between;
 

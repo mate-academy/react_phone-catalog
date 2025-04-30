@@ -30,11 +30,11 @@
 }
 
 .categoryName {
-  @include h4-desktop-tablet;
+  @include apply-typography(h4-desktop);
 }
 
 .categoryAmount {
-  @include body-text-desktop-tablet;
+  @include apply-typography(body-desktop);
 
-  color: $color-secondary;
+   color: $color-secondary;
 }
