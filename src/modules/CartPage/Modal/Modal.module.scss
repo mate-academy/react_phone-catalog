@@ -1,0 +1,85 @@
+@import '../../../styles/main';
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: $animation;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal {
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  background: $textMainColor;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(0.9);
+  transition: transform $animation;
+
+  .overlay.show & {
+    transform: scale(1);
+  }
+
+  &_message {
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #fff;
+  }
+
+  &_buttonsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+.confirm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 18px;
+  color: $textMainColor;
+  background-color: #27ae60;
+  cursor: pointer;
+  transition: all $animation;
+
+  &:hover {
+    color: #fff;
+    background-color: #239e58;
+  }
+}
+
+.cancel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 18px;
+  color: $textMainColor;
+  background-color: #e74c3c;
+  cursor: pointer;
+  transition: all $animation;
+
+  &:hover {
+    color: #fff;
+    background-color: #c0392b;
+  }
+}
