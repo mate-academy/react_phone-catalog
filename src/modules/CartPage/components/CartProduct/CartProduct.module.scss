@@ -153,8 +153,9 @@
 
 .cart__laoder {
   position: absolute;
-  width: auto;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: rgba(42, 39, 39, 0.074);
+  backdrop-filter: blur(10px);
 }

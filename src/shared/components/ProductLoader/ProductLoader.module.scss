@@ -1,8 +1,11 @@
 @import '../../../assets/styles/main';
 
 .spinner {
-  width: 100%;
-  height: 100%;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  transform: translateY(50%);
 }
 
 .spinner__spin {

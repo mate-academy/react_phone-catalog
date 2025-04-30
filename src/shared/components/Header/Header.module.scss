@@ -106,7 +106,7 @@
       content: '';
 
       position: absolute;
-      bottom: -25px;
+      bottom: -15px;
       left: 50%;
       transform: translateX(-50%);
 
@@ -118,6 +118,14 @@
       background-color: #000;
 
       transition: width 0.3s ease;
+
+      @include on-desktop {
+        bottom: -24px;
+      }
+
+      @include on-desktop-extra {
+        bottom: -24px;
+      }
     }
   }
 

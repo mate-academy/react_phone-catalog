@@ -1,28 +1,66 @@
+import { useContext, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import styles from './ProductDetailsPage.module.scss';
 
+import { ProductContext } from '../../shared/store/GlobalProvider';
 import { CurrentPage } from '../../shared/components/CurrentPage';
 import { ProductsSlider } from '../../shared/components/ProductsSlider';
 import { ProductInfo } from './components/ProductInfo';
 import { ProductOverview } from './components/ProductOverview';
+import { Loader } from '../../shared/components/Loader';
 
 import { SectionTitles } from '../../shared/constants/sectionTitles';
-import { useContext } from 'react';
-import { ProductContext } from '../../shared/store/GlobalProvider';
 import { SliderId } from '../../shared/constants/sliderId';
+import { Product } from '../../shared/types/Product/Product';
+
+import { getRandomInteger } from './utils/randomInteger';
+import { getRandomProduct } from './utils/randomProduct';
+import { getAllProducts } from '../../shared/services/apiServices';
+import { getProduct } from './utils/currentProduct';
 
 export const ProductDetailsPage = () => {
   const { data } = useContext(ProductContext);
+  const [products, setProduct] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { pathname } = useLocation();
+  const [, path, slug] = pathname.split('/');
+
+  const randomIntegers = getRandomInteger(0, data.length, 30);
+  const randomProducts = getRandomProduct(randomIntegers, data);
+
+  const currentProduct = getProduct(products, slug);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const loadProduct = async () => {
+      try {
+        const response = await getAllProducts(`/${path}.json`);
+
+        setProduct(response.data);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadProduct();
+  }, [path, data]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <main className={styles.details}>
       <div className={styles.details__container}>
         <CurrentPage />
-        <ProductOverview />
-        <ProductInfo />
+        <ProductOverview product={currentProduct!} />
+        <ProductInfo productInfo={currentProduct!} />
       </div>
       <ProductsSlider
         title={SectionTitles.AlsoLike}
-        products={data}
+        products={randomProducts}
         sliderId={SliderId.Like}
       />
     </main>

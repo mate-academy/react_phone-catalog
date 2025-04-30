@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 import styles from './ProductCatalog.module.scss';
 
@@ -14,6 +14,7 @@ import { getVisiblePages } from '../utils/visiblePages';
 import { handlePageChange } from '../utils/pageChange';
 import { SortBy } from '../../../shared/constants/sortBy';
 import { ItemsOnPage } from '../../../shared/constants/itemsOnPage';
+import { SkeletonProduct } from '../../../shared/components/SkeletonProduct';
 
 type Props = {
   products: AllProducts[];
@@ -22,6 +23,8 @@ type Props = {
 export const ProductCatalog: React.FC<Props> = ({ products }) => {
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isItemsOpen, setIsItemsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const { pathname } = useLocation();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const sortBy = searchParams.get('sort') || 'Newest';
@@ -50,6 +53,14 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
       pagesPerPage,
     );
   };
+
+  useEffect(() => {
+    const timer = new Promise(resolve => setTimeout(resolve, 600));
+
+    timer.then(() => {
+      setIsLoading(false);
+    });
+  }, [pathname]);
 
   return (
     <section className={styles.product}>
@@ -136,7 +147,11 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
       <div className={styles.product__cards}>
         {itemsPerPages.map(product => (
           <div className={styles.product__card} key={product.id}>
-            <ProductCard product={product} />
+            {isLoading ? (
+              <SkeletonProduct />
+            ) : (
+              <ProductCard product={product} />
+            )}
           </div>
         ))}
       </div>

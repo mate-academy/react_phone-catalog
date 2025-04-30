@@ -1,13 +1,25 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import styles from './FavoritesPage.module.scss';
 
 import { CurrentPage } from '../../shared/components/CurrentPage';
 import { ProductCard } from '../../shared/components/ProductCard';
 import { FavoritesStateContext } from '../../shared/store/FavoritesProvider';
+import { useLocation } from 'react-router-dom';
+import { SkeletonProduct } from '../../shared/components/SkeletonProduct';
 
 export const FavoritesPage = () => {
   const favoritesProduct = useContext(FavoritesStateContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const timer = new Promise(resolve => setTimeout(resolve, 600));
+
+    timer.then(() => {
+      setIsLoading(false);
+    });
+  }, [pathname]);
 
   return (
     <main className={styles.favorites}>
@@ -18,7 +30,11 @@ export const FavoritesPage = () => {
           <div className={styles.favorites__cardWrapper}>
             {favoritesProduct.map(favoriteProduct => (
               <div className={styles.favorites__card} key={favoriteProduct.id}>
-                <ProductCard product={favoriteProduct} />
+                {isLoading ? (
+                  <SkeletonProduct />
+                ) : (
+                  <ProductCard product={favoriteProduct} />
+                )}
               </div>
             ))}
           </div>

@@ -4,6 +4,7 @@ import styles from './CartProduct.module.scss';
 
 import { Cart } from '../../../../shared/store/CartProvider';
 import { ProductLoader } from '../../../../shared/components/ProductLoader';
+import { Link } from 'react-router-dom';
 
 type Props = {
   cartProduct: Cart;
@@ -31,11 +32,15 @@ export const CartProduct: React.FC<Props> = ({
             alt="Видалити товар з корзини"
           />
         </button>
-        <img
-          className={styles.cart__itemImage}
-          src={cartProduct.product.image}
-          alt="Фото товару"
-        />
+        <Link
+          to={`/${cartProduct.product.category}/${cartProduct.product.itemId}`}
+        >
+          <img
+            className={styles.cart__itemImage}
+            src={cartProduct.product.image}
+            alt="Фото товару"
+          />
+        </Link>
 
         <p className={styles.cart__itemDescription}>
           {cartProduct.product.name}
