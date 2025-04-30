@@ -1,0 +1,61 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.category {
+  @include flex-column;
+}
+
+.photoContainer {
+  margin-bottom: 24px;
+  aspect-ratio: 1 / 1;
+
+  padding-top: 70px;
+  padding-left: 80px;
+
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.phonesContainer {
+  background-color: #6c6373;
+}
+
+.tabletsContainer {
+  background-color: #8d8d91;
+}
+
+.accessoriesContainer {
+  background-color: #ab385f;
+}
+
+.photo {
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition: transform $hover-transition;
+}
+
+.photo:hover {
+  transform: scale(1.1);
+}
+
+.phonesPhoto {
+  background-image: url('/img/cuted/category-phones(copy).png');
+}
+
+.tabletsPhoto {
+  background-image: url('/img/cuted/category-tablets(copy).png');
+  width: 160%;
+}
+
+.accessoriesPhoto {
+  background-image: url('/img/cuted/category-accessories(copy).png');
+}
+
+.categoryDescription {
+  @include flex-column;
+
+  gap: 4px;
+}

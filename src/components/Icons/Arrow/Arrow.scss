@@ -1,0 +1,10 @@
+@import './../../../StylesBlocks/variables';
+
+.arrow {
+  fill: $primary;
+
+  &[aria-disabled='true'] {
+    fill: #b4bdc3;
+    cursor: not-allowed;
+  }
+}

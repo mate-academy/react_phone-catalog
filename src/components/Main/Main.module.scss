@@ -1,0 +1,44 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.main {
+  @include flex-column;
+
+  margin-top: 56px;
+
+  gap: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+
+    gap: 80px;
+  }
+}
+
+.productsSlider {
+  overflow-x: hidden;
+}
+
+.slider {
+  margin-left: 16px;
+
+  @include on-tablet {
+    margin-left: 24px;
+  }
+
+  @include on-desktop {
+    @include section-padding-inline;
+  }
+}
+
+.shopByCategorys {
+  @include section-padding-inline;
+
+  width: 100%;
+}
