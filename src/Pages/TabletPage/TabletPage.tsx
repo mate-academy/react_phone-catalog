@@ -21,7 +21,8 @@ interface CartItem {
 }
 
 export const TabletPage = () => {
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
+    useCart();
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [filteredTablets, setFilteredTablets] = useState<Tablet[]>([]);
   const [loading, setLoading] = useState(true);
@@ -109,7 +110,7 @@ export const TabletPage = () => {
     return pages;
   };
 
-  const handleAddToCart = (tablet: Tablet) => {
+  const handleCartToggle = (tablet: Tablet) => {
     const selectedColor = tablet.color || 'default';
     const cartItem: CartItem = {
       id: tablet.id,
@@ -121,7 +122,13 @@ export const TabletPage = () => {
       quantity: 1,
     };
 
-    addToCart(cartItem);
+    const isInCart = cart.some(item => item.id === tablet.id);
+
+    if (isInCart) {
+      removeFromCart(tablet.id);
+    } else {
+      addToCart(cartItem);
+    }
   };
 
   const handleImageError = (imageSrc: string) => {
@@ -216,33 +223,16 @@ export const TabletPage = () => {
               <div className="tablets__card-actions">
                 <button
                   className={`tablets__card-btn tablets__card-btn--add ${
-                    cart.some(
-                      item =>
-                        item.id === tablet.id &&
-                        item.color === tablet.color &&
-                        item.capacity === tablet.capacity,
-                    )
-                      ? 'added'
-                      : ''
+                    cart.some(item => item.id === tablet.id) ? 'added' : ''
                   }`}
                   onClick={e => {
                     e.preventDefault();
-                    handleAddToCart(tablet);
+                    e.stopPropagation();
+                    handleCartToggle(tablet);
                   }}
-                  disabled={cart.some(
-                    item =>
-                      item.id === tablet.id &&
-                      item.color === tablet.color &&
-                      item.capacity === tablet.capacity,
-                  )}
                 >
-                  {cart.some(
-                    item =>
-                      item.id === tablet.id &&
-                      item.color === tablet.color &&
-                      item.capacity === tablet.capacity,
-                  )
-                    ? 'Added to cart'
+                  {cart.some(item => item.id === tablet.id)
+                    ? 'Added'
                     : 'Add to cart'}
                 </button>
                 <button
@@ -251,6 +241,7 @@ export const TabletPage = () => {
                   }`}
                   onClick={e => {
                     e.preventDefault();
+                    e.stopPropagation();
                     toggleFavorite(tablet.id);
                   }}
                 >

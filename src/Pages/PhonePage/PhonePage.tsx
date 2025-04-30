@@ -20,7 +20,8 @@ interface CartItem {
 }
 
 export const PhonePage = () => {
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
+    useCart();
   const [phones, setPhones] = useState<Phone[]>([]);
   const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
   const [loading, setLoading] = useState(true);
@@ -115,7 +116,7 @@ export const PhonePage = () => {
     return pages;
   };
 
-  const handleAddToCart = (phone: Phone) => {
+  const handleCartToggle = (phone: Phone) => {
     const selectedColor = phone.color || 'default';
     const cartItem: CartItem = {
       id: phone.id,
@@ -127,7 +128,13 @@ export const PhonePage = () => {
       quantity: 1,
     };
 
-    addToCart(cartItem);
+    const isInCart = cart.some(item => item.id === phone.id);
+
+    if (isInCart) {
+      removeFromCart(phone.id);
+    } else {
+      addToCart(cartItem);
+    }
   };
 
   const handleImageError = (imageSrc: string) => {
@@ -222,33 +229,16 @@ export const PhonePage = () => {
               <div className="phone__card-actions">
                 <button
                   className={`phone__card-btn phone__card-btn--add ${
-                    cart.some(
-                      item =>
-                        item.id === phone.id &&
-                        item.color === phone.color &&
-                        item.capacity === phone.capacity,
-                    )
-                      ? 'added'
-                      : ''
+                    cart.some(item => item.id === phone.id) ? 'added' : ''
                   }`}
                   onClick={e => {
                     e.preventDefault();
-                    handleAddToCart(phone);
+                    e.stopPropagation();
+                    handleCartToggle(phone);
                   }}
-                  disabled={cart.some(
-                    item =>
-                      item.id === phone.id &&
-                      item.color === phone.color &&
-                      item.capacity === phone.capacity,
-                  )}
                 >
-                  {cart.some(
-                    item =>
-                      item.id === phone.id &&
-                      item.color === phone.color &&
-                      item.capacity === phone.capacity,
-                  )
-                    ? 'Added to cart'
+                  {cart.some(item => item.id === phone.id)
+                    ? 'Added'
                     : 'Add to cart'}
                 </button>
                 <button
@@ -257,6 +247,7 @@ export const PhonePage = () => {
                   }`}
                   onClick={e => {
                     e.preventDefault();
+                    e.stopPropagation();
                     toggleFavorite(phone.id);
                   }}
                 >

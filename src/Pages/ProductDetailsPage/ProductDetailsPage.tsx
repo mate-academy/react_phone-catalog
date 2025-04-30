@@ -10,7 +10,7 @@ import { YourComponent } from './YourComponent';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react'; // Use Swiper from swiper/react
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import pageNotFound from '../../../public/img/page-not-found.png';
 import heartLove from '../../../public/figmaLogo/HeartLove.svg';
@@ -21,7 +21,8 @@ export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const { pathname, search } = useLocation();
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
+    useCart();
 
   const [product, setProduct] = useState<Phone | Tablet | Accessories | null>(
     null,
@@ -160,12 +161,12 @@ export const ProductDetailsPage = () => {
     }
   };
 
-  const handleAddToCart = () => {
+  const handleCartToggle = () => {
     if (!product) {
       return;
     }
 
-    addToCart({
+    const cartItem = {
       id: product.id,
       name: product.name,
       price: product.priceDiscount,
@@ -173,7 +174,37 @@ export const ProductDetailsPage = () => {
       color: selectedColor || product.color,
       capacity: selectedCapacity || undefined,
       quantity: 1,
-    });
+    };
+
+    const isInCart = cart.some(item => item.id === product.id);
+
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(cartItem);
+    }
+  };
+
+  const handleRelatedCartToggle = (
+    relatedItem: Phone | Tablet | Accessories,
+  ) => {
+    const cartItem = {
+      id: relatedItem.id,
+      name: relatedItem.name,
+      price: relatedItem.priceDiscount,
+      image: `${relatedItem.images[0]}`,
+      color: relatedItem.color,
+      capacity: 'capacity' in relatedItem ? relatedItem.capacity : undefined,
+      quantity: 1,
+    };
+
+    const isInCart = cart.some(item => item.id === relatedItem.id);
+
+    if (isInCart) {
+      removeFromCart(relatedItem.id);
+    } else {
+      addToCart(cartItem);
+    }
   };
 
   const handleToggleFavorite = () => {
@@ -188,12 +219,7 @@ export const ProductDetailsPage = () => {
     setImageError(prev => ({ ...prev, [imageSrc]: true }));
   };
 
-  const isInCart = cart.some(
-    item =>
-      item.id === product?.id &&
-      item.color === selectedColor &&
-      item.capacity === selectedCapacity,
-  );
+  const isInCart = cart.some(item => item.id === product?.id);
 
   const getCategoryLink = () => {
     if (!product) {
@@ -316,18 +342,15 @@ export const ProductDetailsPage = () => {
           <div className="product-details__actions">
             <button
               className={`product-details__add-to-cart ${isInCart ? 'added' : ''}`}
-              onClick={handleAddToCart}
-              disabled={isInCart}
+              onClick={handleCartToggle}
             >
-              {isInCart ? 'Added to cart' : 'Add to cart'}
+              {isInCart ? 'Added' : 'Add to cart'}
             </button>
             <button
               className={`product-details__favorite ${favorites.includes(product.id) ? 'favorite--active' : ''}`}
               onClick={handleToggleFavorite}
               aria-label={
-                favorites.includes(product.id)
-                  ? 'Remove from favorites'
-                  : 'Add to favorites'
+                favorites.includes(product.id) ? 'Added' : 'Add to favorites'
               }
             >
               <img
@@ -484,50 +507,17 @@ export const ProductDetailsPage = () => {
                   <div className="related-products__card-actions">
                     <button
                       className={`related-products__card-btn related-products__card-btn--add ${
-                        cart.some(
-                          cartItem =>
-                            cartItem.id === relatedItem.id &&
-                            cartItem.color === relatedItem.color &&
-                            ('capacity' in relatedItem
-                              ? cartItem.capacity === relatedItem.capacity
-                              : true),
-                        )
+                        cart.some(cartItem => cartItem.id === relatedItem.id)
                           ? 'added'
                           : ''
                       }`}
                       onClick={e => {
                         e.stopPropagation();
-                        addToCart({
-                          id: relatedItem.id,
-                          name: relatedItem.name,
-                          price: relatedItem.priceDiscount,
-                          image: `${relatedItem.images[0]}`,
-                          color: relatedItem.color,
-                          capacity:
-                            'capacity' in relatedItem
-                              ? relatedItem.capacity
-                              : undefined,
-                          quantity: 1,
-                        });
+                        handleRelatedCartToggle(relatedItem);
                       }}
-                      disabled={cart.some(
-                        cartItem =>
-                          cartItem.id === relatedItem.id &&
-                          cartItem.color === relatedItem.color &&
-                          ('capacity' in relatedItem
-                            ? cartItem.capacity === relatedItem.capacity
-                            : true),
-                      )}
                     >
-                      {cart.some(
-                        cartItem =>
-                          cartItem.id === relatedItem.id &&
-                          cartItem.color === relatedItem.color &&
-                          ('capacity' in relatedItem
-                            ? cartItem.capacity === relatedItem.capacity
-                            : true),
-                      )
-                        ? 'Added to cart'
+                      {cart.some(cartItem => cartItem.id === relatedItem.id)
+                        ? 'Added'
                         : 'Add to cart'}
                     </button>
                     <button

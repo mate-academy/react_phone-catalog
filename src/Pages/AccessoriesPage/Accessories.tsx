@@ -11,7 +11,8 @@ import activeSvg from '../../../public/figmaLogo/ActiveHeart.svg';
 import pageNotFound from '../../../public/img/page-not-found.png';
 
 export const AccessoriesPage = () => {
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
+    useCart();
   const [accessories, setAccessories] = useState<Accessories[]>([]);
   const [filteredAccessories, setFilteredAccessories] = useState<Accessories[]>(
     [],
@@ -111,15 +112,23 @@ export const AccessoriesPage = () => {
     return pages;
   };
 
-  const handleAddToCart = (accessory: Accessories) => {
-    addToCart({
+  const handleCartToggle = (accessory: Accessories) => {
+    const cartItem = {
       id: accessory.id,
       name: accessory.name,
       price: accessory.priceDiscount,
       image: `/${accessory.images[0]}`,
       color: accessory.color,
       quantity: 1,
-    });
+    };
+
+    const isInCart = cart.some(item => item.id === accessory.id);
+
+    if (isInCart) {
+      removeFromCart(accessory.id);
+    } else {
+      addToCart(cartItem);
+    }
   };
 
   const handleImageError = (imageSrc: string) => {
@@ -204,30 +213,16 @@ export const AccessoriesPage = () => {
               <div className="accessories__card-actions">
                 <button
                   className={`accessories__card-btn accessories__card-btn--add ${
-                    cart.some(
-                      item =>
-                        item.id === accessory.id &&
-                        item.color === accessory.color,
-                    )
-                      ? 'added'
-                      : ''
+                    cart.some(item => item.id === accessory.id) ? 'added' : ''
                   }`}
                   onClick={e => {
                     e.preventDefault();
-                    handleAddToCart(accessory);
+                    e.stopPropagation();
+                    handleCartToggle(accessory);
                   }}
-                  disabled={cart.some(
-                    item =>
-                      item.id === accessory.id &&
-                      item.color === accessory.color,
-                  )}
                 >
-                  {cart.some(
-                    item =>
-                      item.id === accessory.id &&
-                      item.color === accessory.color,
-                  )
-                    ? 'Added to cart'
+                  {cart.some(item => item.id === accessory.id)
+                    ? 'Added'
                     : 'Add to cart'}
                 </button>
                 <button
@@ -236,6 +231,7 @@ export const AccessoriesPage = () => {
                   }`}
                   onClick={e => {
                     e.preventDefault();
+                    e.stopPropagation();
                     toggleFavorite(accessory.id);
                   }}
                 >

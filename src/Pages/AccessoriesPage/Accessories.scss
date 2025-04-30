@@ -2,7 +2,7 @@
 
 .section {
   position: relative;
-  
+
   @include padding-inline-category;
 
   &__text {
