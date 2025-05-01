@@ -36,7 +36,7 @@ export const ProductCard: React.FC<Props> = ({}) => {
   };
 
   return (
-    <div className={styles['product-card']}>
+    <article className={styles['product-card']}>
       <div className={styles['product-card__image-wrapper']}>
         <img
           className={styles['product-card__image']}
@@ -80,6 +80,6 @@ export const ProductCard: React.FC<Props> = ({}) => {
 
         <ButtonFavorite selected={isFavorite} onClick={handleAddToFavorite} />
       </div>
-    </div>
+    </article>
   );
 };

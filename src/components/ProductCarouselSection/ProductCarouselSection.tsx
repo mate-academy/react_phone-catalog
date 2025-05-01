@@ -10,14 +10,17 @@ import { ProductCard } from '../ProductCard';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import styles from './ProductCarousel.module.scss';
+import styles from './ProductCarouselSection.module.scss';
 
 type Props = {
-  title?: string;
+  sectionTitle?: string;
   products?: Product[];
 };
 
-export const ProductCarousel: React.FC<Props> = ({ title, products = [] }) => {
+export const ProductCarouselSection: React.FC<Props> = ({
+  sectionTitle,
+  products = [],
+}) => {
   // const [centered, setCentered] = useState(false);
   const swiperRef = useRef<SwiperType | null>(null);
   const swiperPrevBtnRef = useRef<HTMLButtonElement>(null);
@@ -48,7 +51,7 @@ export const ProductCarousel: React.FC<Props> = ({ title, products = [] }) => {
     <section className="section">
       <div className="container">
         <div className="section-title-wrapper">
-          <h2>{title}</h2>
+          <h2>{sectionTitle}</h2>
           <div className={styles['product-carousel__navigation-warpper']}>
             <button
               ref={swiperPrevBtnRef}

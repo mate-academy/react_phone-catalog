@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
+
 import React from 'react';
 import styles from './Home.module.scss';
 import { Header } from '../../components/Header';
-import { ProductCarousel } from '../../components/ProductCarousel';
+import { ProductCarouselSection } from '../../components/ProductCarouselSection';
+import { ProductCategorySection } from '../../components/ProductCategorySection';
 
 export const Home = () => {
   return (
@@ -12,7 +15,9 @@ export const Home = () => {
         <h1>Welcome to Nice Gadgets store!</h1>
         {/* <div className={styles['home-page__slider']}></div> */}
       </div>
-      <ProductCarousel title={'Brand new models'} />
+      <ProductCarouselSection sectionTitle={'Brand new models'} />
+      <ProductCategorySection />
+      <ProductCarouselSection sectionTitle={'Hot prices'} />
     </section>
   );
 };
