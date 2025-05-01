@@ -6,6 +6,8 @@ import { useProductState } from '../Phones/Phones';
 import { addToCart, removeFromCart } from '../../redux/cartSlice';
 import { addToFavorites, removeFromFavorites }
   from '../../redux/favoritesSlice';
+import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '../../redux/store';
 
 export type Accessory = {
   id: string;
@@ -26,9 +28,21 @@ export const Accessories: React.FC = () => {
   const products = JSON.parse(JSON.stringify(productsJson));
   const dispatch = useDispatch();
   const { isInCart, isInFavorites } = useProductState();
+  const { t } = useTranslation();
+  const currentTheme = useAppSelector(
+    (state: { theme: { current: string; }; }) => state.theme.current);
 
   return (
-    <div>
+    <div className={`tablets_page ${currentTheme}`}>
+      <Link
+        to={'/'}
+      >
+        🏠
+      </Link> -{'> '}
+      <Link
+        to={'/accessories'}
+      >{t('navigation.accessories')}
+      </Link>
       <h1>Accessories PAGE</h1>
       {products.filter((access: Accessory) => access.category === 'accessories')
         .sort((a:Accessory, b:Accessory) => b.price - a.price)
@@ -42,6 +56,7 @@ export const Accessories: React.FC = () => {
             <br/>
             <Link
               to={`/accessories/${access.itemId}`}
+              onClick={() => window.scrollTo(0, 0)}
             >
               {`${access.name}`}
             </Link>

@@ -32,11 +32,11 @@ const ThemeSwitcher = () => {
         }}
         className="theme-select"
       >
-        <option value="theme0">Класична</option>
-        <option value="theme1">Темна</option>
-        <option value="theme2">Світла</option>
-        <option value="theme3">Контрастна</option>
-        <option value="theme4">Мінімалістична</option>
+        <option value="theme0">Original</option>
+        <option value="theme1">Original Dark</option>
+        <option value="theme2">Rounded Blue</option>
+        <option value="theme3">Rounded Purple</option>
+        <option value="theme4">Rounded Orange</option>
       </select>
     </div>
   );

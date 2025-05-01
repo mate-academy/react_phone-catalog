@@ -9,6 +9,7 @@ import productsJson from '../../../public/api/products.json'; // '../../_new/pro
 import { Accessory } from '../Accessories/Accessories';
 import { Tablet } from '../Tablets/Tablets';
 import { useAppSelector } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
 
 export type Phone = {
   id: string;
@@ -39,6 +40,7 @@ export const useProductState = () => {
 };
 
 export const Phones: React.FC = () => {
+  const { t } = useTranslation();
   const products = JSON.parse(JSON.stringify(productsJson)); // TS workaround
   const dispatch = useDispatch();
   const { isInCart, isInFavorites } = useProductState();
@@ -49,6 +51,15 @@ export const Phones: React.FC = () => {
   return (
     <>
       <div className={`phones_page ${currentTheme}`}>
+        <Link
+          to={'/'}
+        >
+          🏠
+        </Link> -{'> '}
+        <Link
+          to={'/phones'}
+        >{t('navigation.phones')}
+        </Link>
         <h1>Phones PAGE with {currentTheme}</h1>
         {products.filter((phone: Phone) => phone.category === 'phones')
           .sort((a:Phone, b:Phone) => b.price - a.price)
@@ -62,6 +73,7 @@ export const Phones: React.FC = () => {
               <br/>
               <Link
                 to={`/phones/${phone.itemId}`}
+                onClick={() => window.scrollTo(0, 0)}
               >
                 {`${phone.name}`}
               </Link>

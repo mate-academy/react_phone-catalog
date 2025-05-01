@@ -1,7 +1,12 @@
 .itemBody {
-  background-color: aqua;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .stupid_info {
   background-color: #83ff52;
+}
+
+.non-linkable-color {
+  color: white;
+  background-color: black;
 }

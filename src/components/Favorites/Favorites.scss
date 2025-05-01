@@ -1,0 +1,41 @@
+.fav-container {
+  &.theme0 {
+    background-color: #f0debd;
+
+    & .fav-itemCart {
+      background-color: rgb(238, 255, 0);
+    }
+  }
+
+  &.theme1 {
+    background-color: #ffa601;
+
+    & .fav-itemCart {
+      background-color: rgb(60, 255, 0);
+    }
+  }
+
+  &.theme2 {
+    background-color: #f0bdbd;
+
+    & .fav-itemCart {
+      background-color: rgb(0, 255, 136);
+    }
+  }
+
+  &.theme3 {
+    background-color: #bdf0c0;
+
+    & .fav-itemCart {
+      background-color: rgb(0, 255, 242);
+    }
+  }
+
+  &.theme4 {
+    background-color: #eebdf0;
+
+    & .fav-itemCart {
+      background-color: rgb(255, 0, 212);
+    }
+  }
+}

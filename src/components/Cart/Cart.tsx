@@ -1,5 +1,5 @@
 import { currentCartItems, currentCartTotalQuantity, currentCartTotalPrice,
-  removeFromCart, updateCartQuantity, clearCart } from '../../redux/cartSlice';
+  removeFromCart, updateCartQuantity } from '../../redux/cartSlice';
 import { currentTheme } from '../../redux/themeSlice';
 import { useAppSelector } from '../../redux/store';
 import { useNavigate } from 'react-router-dom';

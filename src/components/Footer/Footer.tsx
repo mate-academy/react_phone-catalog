@@ -20,7 +20,9 @@ export const Footer: React.FC = () => {
           </NavLink>
 
           <NavLink
-            to="/"
+            to="https://github.com/andriy-fesych/react_phone-catalog/tree/develop"
+            target="_blank"
+            rel="noopener noreferrer"
             className={({ isActive }) => classNames(
               'Footer-item',
               { 'has-background-grey-lighter': isActive },

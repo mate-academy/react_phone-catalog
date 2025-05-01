@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import './ItemPage.scss';
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import productsJson from '../../../public/api/products.json'; // '../../_new/products.json';
 // import classNames from 'classnames';
 import { Phone, useProductState } from '../Phones/Phones';
@@ -15,11 +15,13 @@ import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../../redux/cartSlice';
 import { addToFavorites, removeFromFavorites }
   from '../../redux/favoritesSlice';
+import { useTranslation } from 'react-i18next';
 
 export const ItemPage: React.FC = () => {
   const products = JSON.parse(JSON.stringify(productsJson));
   const { slug = '' } = useParams();
   const [item, setItem] = useState<Phone | Tablet | Accessory>();
+  const [topLink, setTopLink] = useState<string>('home');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [additionalInfo, setAdditionalInfo] = useState<any>();
   const imgPath = `../../../public/${item?.image}`;
@@ -29,6 +31,9 @@ export const ItemPage: React.FC = () => {
   const accessories = JSON.parse(JSON.stringify(accessoriesJSON));
   const { isInCart, isInFavorites } = useProductState();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const [itemColor, setItemColor] = useState<string>('');
+  const [itemMemory, setItemMemory] = useState<string>('');
 
   useEffect(() => {
     const heroProduct = products
@@ -68,11 +73,37 @@ export const ItemPage: React.FC = () => {
         setAdditionalInfo(additional);
       }
     }
+
+    setTopLink(heroProduct.category);
+    setItemColor(heroProduct.color);
+    setItemMemory(heroProduct.capacity);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   return (
-    <div className="itemBody">
+    <div className="itemBody" key={item?.id}>
+      <Link
+        to={'/'}
+      >
+        🏠
+      </Link> -{'> '}
+      <Link
+        to={`/${topLink}`}
+      >{t(`navigation.${topLink}`)}
+      </Link>
+      {' -> '}{item?.name}
+      <br/>
+      <a
+        href="#"
+        className="back-link"
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(-1);
+        }}
+      >
+        ← Back to previous page
+      </a>
+      <br/>
       {item?.name}
       <br />
       <img
@@ -81,26 +112,68 @@ export const ItemPage: React.FC = () => {
       />
       <br/>
       {additionalInfo?.images.map((pic: string) => (
-        <img key={pic}
+        <img
+          key={`${pic}${item.id}`}
           src={`../../../public/${pic}`}
           alt="here should be an image"
           height="300"
         />
       ))}
       <br />
+      item.color - <br/>
+      color in state - {itemColor}
       Available colors:
       <br />
-      {additionalInfo?.colorsAvailable.map((color: string) => (
-        <div key={color} >{color}</div>
-      ))}
+      {additionalInfo?.colorsAvailable.map((color: string) => {
+        if (color.replace(' ', '-').toLowerCase()
+          === itemColor.replace(' ', '-').toLowerCase()) {
+          return (
+            <div key={`${color}${item?.id}`}>
+              <div key={`${color}-${item?.id}`} className='non-linkable-color'>{color}</div>
+            </div>
+          );
+        }
+
+        return (
+          <div key={`${color}+${item?.id}`}>
+            <Link
+              key={`${color} ${item?.id}`}
+              to={`/${topLink}/${`${item?.itemId}`.replace(item.color.replace(' ', '-'), color).replace(' ', '-')}`}
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              {color}
+            </Link>
+            <br/>
+          </div>
+        );
+      })}
       <br/>
-      Select capacity:
-      {additionalInfo?.capacityAvailable.map((cap: string) => (
-        <div key={cap} >{cap}</div>
-      ))}
+      Select capacity:<br/>
+      {additionalInfo?.capacityAvailable.map((cap: string) => {
+        if (cap === itemMemory) {
+          return (
+            <div key={`${cap}++${item?.id}`}>
+              <div key={`${cap}${item?.id}`} className='non-linkable-color'>{cap}</div>
+            </div>
+          );
+        }
+
+        return (
+          <div key={`${cap}+-${item?.id}`}>
+            <Link
+              key={`${cap} ${item?.id}`}
+              to={`/${topLink}/${`${item?.itemId}`.replace(item.capacity.toLowerCase(), cap.toLowerCase())}`}
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              {cap}
+            </Link>
+            <br/>
+          </div>
+        );
+      })}
       <br/>
-      ${additionalInfo?.priceDiscount}{'  '}{/* remove this string */}
-      <s>${additionalInfo?.priceRegular}</s>{/* and all BRs and S tag */}
+      ${additionalInfo?.priceDiscount}{'  '}
+      <s>${additionalInfo?.priceRegular}</s>
       <br/>
       <button className={`add-to-cart-button ${isInCart(item?.id) ? 'in-cart' : ''}`}
         onClick={() => isInCart(item?.id)
@@ -127,15 +200,15 @@ export const ItemPage: React.FC = () => {
       Cell..........{additionalInfo?.cell.map((cel: string) => (
         `${cel}`
       )).join(', ')}<br/><br/><br/>
-      {additionalInfo?.description.map((paragraph: any) => (
-        <>
+      {additionalInfo?.description.map((paragraph: any, ind: number) => (
+        <div key={`${additionalInfo?.description}${ind}`}>
           <div key={paragraph?.title}>
             {paragraph?.title}
           </div>
           <div>
             {paragraph?.text}
           </div><br/>
-        </>
+        </div>
       ))}
     </div>
   );

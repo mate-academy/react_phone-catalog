@@ -7,7 +7,7 @@ import { RootState, useAppSelector } from '../../redux/store';
 import { loadComponentStyles, setTheme } from '../../redux/themeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import './Navbar_theme0.scss';
+import './Navbar.scss';
 
 type ThemeType = 'theme0' | 'theme1' | 'theme2' | 'theme3' | 'theme4';
 
