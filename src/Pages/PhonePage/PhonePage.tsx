@@ -180,7 +180,10 @@ export const PhonePage = () => {
           sortBy={sortBy}
           onSortChange={setSortBy}
           onResultChange={setFilteredPhones}
-          onItemsPerPageChange={setItemsPerPage}
+          onItemsPerPageChange={value => {
+            setItemsPerPage(value);
+            setCurrentPage(1);
+          }}
         />
       </div>
 

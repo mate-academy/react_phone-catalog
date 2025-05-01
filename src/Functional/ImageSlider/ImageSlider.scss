@@ -80,18 +80,17 @@
       transition: background-color 0.3s ease;
     }
   }
+}
 
+.swiper-pagination-bullet {
+  width: 14px;
+  height: 4px;
+  border-radius: 0;
+  background: #323542;
+  opacity: 1;
+  transition: background-color 0.3s ease;
+}
 
-  &-pagination-bullet {
-    width: 14px;
-    height: 4px;
-    border-radius: 0;
-    background: #323542;
-    opacity: 1;
-    transition: background-color 0.3s ease;
-  }
-
-  &-pagination-bullet-active {
-    background: #ccc;
-  }
+.swiper-pagination-bullet-active {
+  background-color: #ccc;
 }
