@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
 
 import { Product } from '../../types/Product';
-import { Button } from '../UI/Button';
+import { ButtonAddToCart } from '../UI/ButtonAddToCart';
 import { ButtonFavorite } from '../UI/ButtonFavorite';
 
 type Props = {
@@ -71,11 +71,13 @@ export const ProductCard: React.FC<Props> = ({}) => {
       </p>
       <div className={styles['product-card__buttons-wrapper']}>
         {inCart ? (
-          <Button variant="selected" onClick={handleAddToCart}>
+          <ButtonAddToCart variant="selected" onClick={handleAddToCart}>
             Added
-          </Button>
+          </ButtonAddToCart>
         ) : (
-          <Button onClick={handleAddToCart}>Add to cart</Button>
+          <ButtonAddToCart onClick={handleAddToCart}>
+            Add to cart
+          </ButtonAddToCart>
         )}
 
         <ButtonFavorite selected={isFavorite} onClick={handleAddToFavorite} />

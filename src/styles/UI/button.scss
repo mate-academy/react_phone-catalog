@@ -1,0 +1,100 @@
+@import '../variables/variables.scss';
+
+.button-box {
+  width: $button-size;
+  height: $button-size;
+  border: 1px solid $gray;
+  box-sizing: border-box;
+
+  position: relative;
+  transition: $animation-duration;
+
+  &--sm {
+    width: $button-size--sm;
+    height: $button-size--sm;
+    border: 1px solid $light-gray;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid $primary;
+  }
+}
+
+.button {
+  &--favorite {
+    &-selected {
+      border: 1px solid $light-gray;
+    }
+  }
+
+  &--arrow-top::before,
+  &--arrow-left::before,
+  &--arrow-right::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+
+    border-top: 1px solid $light-gray;
+    border-right: 1px solid $light-gray;
+
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: $animation-duration;
+  }
+
+  &--arrow-top::before {
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &--arrow-left::before {
+    left: 55%;
+    transform: translate(-50%, -50%) rotate(225deg);
+  }
+
+  &--arrow-right::before {
+    left: 45%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &--arrow-top:hover::before,
+  &--arrow-left:hover::before,
+  &--arrow-right:hover::before {
+    border-top: 1px solid $primary;
+    border-right: 1px solid $primary;
+  }
+}
+
+.button-add-to-cart {
+  background-color: $primary;
+  border: none;
+  box-sizing: border-box;
+  color: $white;
+
+  width: 100%;
+  height: $button-size;
+  flex: 1;
+
+  transition: $animation-duration;
+
+  &--selected {
+    background-color: transparent;
+    border: 1px solid $light-gray;
+
+    & > p {
+      color: $green;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(23, 32, 49, 0.4);
+
+    & > p {
+      cursor: pointer;
+    }
+  }
+}

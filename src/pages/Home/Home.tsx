@@ -2,9 +2,11 @@
 
 import React from 'react';
 import styles from './Home.module.scss';
+
 import { Header } from '../../components/Header';
 import { ProductCarouselSection } from '../../components/ProductCarouselSection';
 import { ProductCategorySection } from '../../components/ProductCategorySection';
+import { Footer } from '../../components/Footer';
 
 export const Home = () => {
   return (
@@ -18,6 +20,8 @@ export const Home = () => {
       <ProductCarouselSection sectionTitle={'Brand new models'} />
       <ProductCategorySection />
       <ProductCarouselSection sectionTitle={'Hot prices'} />
+
+      <Footer />
     </section>
   );
 };

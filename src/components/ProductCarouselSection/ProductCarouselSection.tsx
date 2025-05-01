@@ -21,7 +21,6 @@ export const ProductCarouselSection: React.FC<Props> = ({
   sectionTitle,
   products = [],
 }) => {
-  // const [centered, setCentered] = useState(false);
   const swiperRef = useRef<SwiperType | null>(null);
   const swiperPrevBtnRef = useRef<HTMLButtonElement>(null);
   const swiperNextBtnRef = useRef<HTMLButtonElement>(null);
@@ -33,20 +32,6 @@ export const ProductCarouselSection: React.FC<Props> = ({
     });
   };
 
-  // implements centering of slide after scrolling
-  // and returns centering if user reaches first/last element
-  // const handleSlideChange = (swiper: SwiperType) => {
-  //   const slidesPerView =
-  //     typeof swiper.params.slidesPerView === 'number'
-  //       ? swiper.params.slidesPerView
-  //       : 1;
-
-  //   const isFirst = swiper.activeIndex === 0;
-  //   const isLast = swiper.activeIndex >= swiper.slides.length - slidesPerView;
-
-  //   setCentered(!(isFirst || isLast));
-  // };
-
   return (
     <section className="section">
       <div className="container">
@@ -55,11 +40,11 @@ export const ProductCarouselSection: React.FC<Props> = ({
           <div className={styles['product-carousel__navigation-warpper']}>
             <button
               ref={swiperPrevBtnRef}
-              className={`${styles['product-carousel__navigation-button']} ${styles['product-carousel__navigation-button--prev']}`}
+              className="button-box button-box--sm button--arrow-left"
             ></button>
             <button
               ref={swiperNextBtnRef}
-              className={`${styles['product-carousel__navigation-button']} ${styles['product-carousel__navigation-button--next']}`}
+              className="button-box button-box--sm button--arrow-right"
             ></button>
           </div>
         </div>
@@ -71,12 +56,9 @@ export const ProductCarouselSection: React.FC<Props> = ({
           }}
           onBeforeInit={onBeforeInit}
           spaceBetween={16}
-          // centeredSlides={centered}
-          // centeredSlides={false}
           onSwiper={(swiper: SwiperType) => {
             swiperRef.current = swiper;
           }}
-          // onSlideChange={handleSlideChange}
           breakpoints={{
             0: {
               slidesPerView: 1.25,

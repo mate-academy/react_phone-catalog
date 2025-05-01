@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Button.module.scss';
 import classNames from 'classnames';
 
 type ButtonVariant = 'primary' | 'selected';
@@ -10,7 +9,7 @@ type Props = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export const Button: React.FC<Props> = ({
+export const ButtonAddToCart: React.FC<Props> = ({
   children,
   variant = 'primary',
   onClick = () => {},
@@ -18,8 +17,8 @@ export const Button: React.FC<Props> = ({
 }) => {
   return (
     <button
-      className={classNames(styles['main-btn'], {
-        [styles['main-btn--selected']]: variant === 'selected',
+      className={classNames('button-add-to-cart', {
+        'button-add-to-cart--selected': variant === 'selected',
       })}
       onClick={onClick}
       {...rest}

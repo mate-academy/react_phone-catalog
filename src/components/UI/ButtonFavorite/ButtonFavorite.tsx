@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ButtonFavorite.module.scss';
+// import styles from './ButtonFavorite.module.scss';
 
 import classNames from 'classnames';
 import { HeartIcon } from '../../../img/icons/heart-icon/HeartIcon';
@@ -16,8 +16,8 @@ export const ButtonFavorite: React.FC<Props> = ({
 }) => {
   return (
     <button
-      className={classNames(styles['favorite-btn'], {
-        [styles['favorite-btn--selected']]: selected,
+      className={classNames('button-box button--favorite', {
+        'button--favorite-selected': selected,
       })}
       onClick={onClick}
       {...rest}
