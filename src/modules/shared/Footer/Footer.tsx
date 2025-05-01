@@ -45,7 +45,7 @@ export const Footer = () => {
                     >
                       {website}
                     </a>
-                )
+                  </li>
                 ))}
               </ul>
             </nav>
@@ -68,16 +68,16 @@ export const Footer = () => {
             <div className={styles.footer__icons}>
               <Link
                 className={classNames(styles.footer__icon, {
-                  { [styles.footer__icon_heart]: true }
-                )}
+                  [styles.footer__icon_heart]: true
+                })}
                 to="/"
               >
                 <img src={IconHeart} alt="Icon-heart" />
               </Link>
               <Link
                 className={classNames(styles.footer__icon, {
-                  { [styles.footer__icon_cart]: true }
-                )}
+                  [styles.footer__icon_cart]: true
+                })}
                 to="/"
               >
                 <img src={IconCart} alt="Icon-cart" />
