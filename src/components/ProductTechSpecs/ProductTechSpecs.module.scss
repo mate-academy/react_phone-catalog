@@ -1,0 +1,30 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.product_tech_spec {
+  grid-column: 13/25;
+
+  &__title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $porcelain-color;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 25px;
+  }
+
+  &__item {
+    @include flex(row, space-between, center);
+
+    &_name {
+      color: $regent-gray-color;
+    }
+  }
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+}

@@ -1,0 +1,44 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.overlay {
+  @include set-size(100%, 100%);
+  @include flex(row, center, center);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal {
+  background: $white-color;
+  padding: 20px;
+  border-radius: $radius-medium;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  &__actions {
+    @include flex(row, space-between, center);
+
+    gap: 16px;
+  }
+
+  &__title {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  &__message {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  @include on-mobile {
+    max-width: 320px;
+    width: 70%;
+  }
+}

@@ -1,0 +1,139 @@
+@import '../utils/vars';
+
+@mixin set-size($width: auto, $height: auto) {
+  height: $height;
+  width: $width;
+}
+
+@mixin flex($direction: row, $content: flex-start, $items: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $items;
+}
+
+@mixin on-tablet {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  margin-inline: auto;
+  padding-inline: 32px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 24;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-mobile {
+    --columns: 4;
+  }
+}
+
+@mixin font(
+  $font-weight: 400,
+  $font-size: 14px,
+  $line-height: 21px,
+  $letter-spacing: 0
+) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin link-styles(
+  $color: $regent-gray-color,
+  $hover-color: $woodsmoke-color,
+  $after-width: 100%
+) {
+  position: relative;
+  display: inline-block;
+  color: $color;
+
+  &::after {
+    @include set-size(0, 3px);
+
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    background-color: $woodsmoke-color;
+    transition:
+      width 0.3s ease,
+      color 0.3s ease,
+      left 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    color: $hover-color;
+    &::after {
+      width: $after-width;
+    }
+  }
+
+  &--active {
+    color: $hover-color;
+    &::after {
+      width: $after-width;
+    }
+  }
+}
+
+@mixin responsive-padding($desktop, $tablet, $mobile) {
+  padding-top: $desktop;
+  padding-left: $desktop;
+
+  @include on-tablet {
+    padding-top: $tablet;
+    padding-left: $tablet;
+  }
+
+  @include on-mobile {
+    padding-top: $mobile;
+    padding-left: $mobile;
+  }
+}
+
+@mixin responsive-gap {
+  gap: 80px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-mobile {
+    gap: 56px;
+  }
+}
