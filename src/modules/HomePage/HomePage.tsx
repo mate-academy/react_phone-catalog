@@ -4,7 +4,7 @@ import { NewModels } from '../../components/NewModels';
 import { Category } from '../../components/Category';
 import { HotPrices } from '../../components/HotPrices';
 
-const HomePage: React.FC = () => {
+export const HomePage: React.FC = () => {
   const [phonesTotal, setPhonesTotal] = useState(0);
   const [tabletsTotal, setTabletsTotal] = useState(0);
   const [accessoriesTotal, setAccessoriesTotal] = useState(0);
@@ -45,5 +45,3 @@ const HomePage: React.FC = () => {
     </main>
   );
 };
-
-export default HomePage;

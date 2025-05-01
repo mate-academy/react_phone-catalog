@@ -1,8 +1,17 @@
 @use '../../styles/utils' as utils;
 
 .product {
-  padding: 32px;
+  border: 1px solid transparent;
   background-color: utils.$color-surface-1;
+  transition: border utils.$animation-duration ease;
+
+  &:hover {
+    border: 1px solid utils.$color-icons;
+  }
+
+  &:hover .product__img img {
+    transform: scale(1.05);
+  }
 
   &__content {
     @extend %flex-column;
@@ -10,19 +19,29 @@
     gap: 8px;
   }
 
-  &__img {
+  &__link {
+    display: block;
+    padding: 32px;
+    text-decoration: none;
+  }
+
+  &__imgWrapper {
     @extend %flex-center;
 
     align-items: center;
     width: 100%;
     height: 100%;
+  }
 
-    img {
-      display: block;
-      width: 100%;
-      height: 200px;
-      object-fit: contain;
-    }
+  &__img {
+    display: block;
+
+    width: 100%;
+    height: 200px;
+
+    object-fit: contain;
+
+    transition: transform utils.$animation-duration ease;
   }
 
   &__title {
@@ -131,20 +150,6 @@
     background-color: utils.$color-surface-2;
 
     transition: background-color utils.$animation-duration;
-
-    a {
-      @extend %flex-center;
-
-      align-items: center;
-      width: 100%;
-      height: 100%;
-
-      img {
-        display: block;
-        width: 16px;
-        height: 16px;
-      }
-    }
 
     &:hover {
       background-color: utils.$color-icons;

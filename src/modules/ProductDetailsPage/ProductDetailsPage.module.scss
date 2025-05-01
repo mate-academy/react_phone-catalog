@@ -1,0 +1,101 @@
+@use '../../styles/utils' as utils;
+
+.productDetails {
+  padding: 24px 0 56px;
+
+  &__btn {
+    cursor: pointer;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-bottom: 16px;
+    border: none;
+
+    font-family: utils.$font-main;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 15px;
+    color: utils.$color-white;
+
+    background: transparent;
+
+    &::before {
+
+      @extend %background-cover;
+
+      content: '';
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      color: utils.$color-white;
+
+      background-image: url('/img/icons/arrow-left.svg');
+    }
+  }
+
+  &__title {
+    font-family: utils.$font-main;
+    font-size: 22px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 140%;
+    color: utils.$color-white;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  &__large {
+    max-width: 300px;
+  }
+
+  &__img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 1;
+    object-fit: contain;
+
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  &__item {
+    cursor: pointer;
+
+    max-width: 80px;
+    max-height: 80px;
+    padding: 5px;
+    border: 1px solid #3b3e4a;
+
+    list-style: none;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+}

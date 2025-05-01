@@ -1,5 +1,5 @@
 export interface ProductType {
-  id: number;
+  id: string;
   category: string;
   itemId: string;
   name: string;
@@ -11,4 +11,5 @@ export interface ProductType {
   screen: string;
   ram: string;
   year: number;
+  images: string[];
 }

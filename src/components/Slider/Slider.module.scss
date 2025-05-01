@@ -56,8 +56,9 @@
 
       & .slider__prev,
       & .slider__next {
-        width: 6px;
-        height: 9px;
+        display: block;
+        width: 16px;
+        height: 16px;
       }
     }
   }
