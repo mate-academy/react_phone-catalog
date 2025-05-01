@@ -10,6 +10,7 @@ import { Product } from '../../types/Product/Product';
 import HomeIcon from '../../../assets/icons/currentPage/home-icon.svg';
 import HomeArrow from '../../../assets/icons/currentPage/home-arrow.svg';
 import BackArrow from '../../../assets/icons/currentPage/back-arrow-icon.svg';
+import { getClassLink } from '../../utils/activeClassName';
 
 type Props = {
   showProductsCount?: number;
@@ -26,6 +27,8 @@ export const CurrentPage: React.FC<Props> = ({
   const slug = segments[2] || '';
 
   const title = getPageTitle(path);
+  const itemTitle =
+    path.slice(0, 1).toUpperCase() + path.slice(1).toLowerCase();
   const itemLabel = title === PageTitle.Favorites ? 'items' : 'models';
 
   return (
@@ -47,8 +50,15 @@ export const CurrentPage: React.FC<Props> = ({
             loading="lazy"
             className={styles.currentPage__arrow}
           />
-          <Link to={`/${path}`} className={styles.currentPage__currentTitle}>
-            {title}
+          <Link
+            to={`/${path}`}
+            className={getClassLink({
+              isActive: !!slug,
+              baseClass: styles.currentPage__currentTitle,
+              activeClass: styles.currentPage__currentTitleActive,
+            })}
+          >
+            {itemTitle}
           </Link>
         </div>
         {slug && (

@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import styles from './ProductPage.module.scss';
 
 import { CurrentPage } from '../../shared/components/CurrentPage';
-import { ProductCatalog } from './components';
+import { ProductCatalog } from './components/ProductCatalog';
 import { ProductContext } from '../../shared/store/GlobalProvider';
 
 // eslint-disable-next-line

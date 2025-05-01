@@ -50,6 +50,10 @@
     color: $color-secondary;
   }
 
+  &__currentTitleActive {
+    color: $color-primary;
+  }
+
   &__backButtonWrapper {
     display: flex;
     align-items: center;

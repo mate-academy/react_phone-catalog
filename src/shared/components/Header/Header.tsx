@@ -13,8 +13,14 @@ import FavoritesIcon from '../../../assets/icons/header-icons/favorites-icon.svg
 import CartIcon from '../../../assets/icons/header-icons/cart-icon.svg';
 // eslint-disable-next-line
 import HamburgerIcon from '../../../assets/icons/header-icons/hamburger-icon.svg';
+import CloseIcon from '../../../assets/icons/aside-icons/aside-close-icon.svg';
 
-export const Header: React.FC = () => {
+type Props = {
+  isOpenSide: boolean;
+  setIsOpenSide: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const Header: React.FC<Props> = ({ isOpenSide, setIsOpenSide }) => {
   const favoritesProduct = useContext(FavoritesStateContext);
   const cartsProduct = useContext(CartStateContext);
 
@@ -131,15 +137,16 @@ export const Header: React.FC = () => {
           </NavLink>
           <button
             className={getClassLink({
-              isActive: false,
+              isActive: isOpenSide,
               baseClass: styles.header__menuLink,
               activeClass: styles.header__imageLinkActive,
             })}
             aria-label="Відкрити меню"
+            onClick={() => setIsOpenSide(prev => !prev)}
           >
             <img
-              src={HamburgerIcon}
-              alt="Відкрити меню"
+              src={!isOpenSide ? HamburgerIcon : CloseIcon}
+              alt={!isOpenSide ? 'Відкрити меню' : 'Закрити меню'}
               className={styles.header__menuImg}
             />
           </button>

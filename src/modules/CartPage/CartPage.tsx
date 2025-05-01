@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import styles from './CartPage.module.scss';
 
@@ -12,12 +12,24 @@ import { CartProduct } from './components/CartProduct';
 import { CartTotalPrice } from './components/CartTotalPrice';
 
 import CartArrow from '../../assets/icons/cart-icons/cart-arrow-icon.svg';
+import { CartSkeleton } from './components/CartSkeleton';
+import { CartTotalSkeleton } from './components/CartTotalSkeleton';
 
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const cartsProduct = useContext(CartStateContext);
   const dispatchCart = useContext(CartDispatchContext);
   const [loadingByIds, setLoadingByIds] = useState<number[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const timer = new Promise(resolve => setTimeout(resolve, 600));
+
+    timer.then(() => {
+      setIsLoading(false);
+    });
+  }, [pathname]);
 
   const handleDeleteProduct = async (id: number) => {
     setLoadingByIds(prev => {
@@ -61,18 +73,26 @@ export const CartPage = () => {
         {cartsProduct.length > 0 ? (
           <section className={styles.cart__items}>
             <div className={styles.cart__itemsWrapper}>
-              {cartsProduct.map(cartProduct => (
-                <CartProduct
-                  key={cartProduct.id}
-                  cartProduct={cartProduct}
-                  isLoading={loadingByIds.includes(cartProduct.id)}
-                  deleteProduct={handleDeleteProduct}
-                  changeQuantity={handleChangeQuantity}
-                />
-              ))}
+              {cartsProduct.map(cartProduct =>
+                isLoading ? (
+                  <CartSkeleton key={cartProduct.id} />
+                ) : (
+                  <CartProduct
+                    key={cartProduct.id}
+                    cartProduct={cartProduct}
+                    isLoading={loadingByIds.includes(cartProduct.id)}
+                    deleteProduct={handleDeleteProduct}
+                    changeQuantity={handleChangeQuantity}
+                  />
+                ),
+              )}
             </div>
 
-            <CartTotalPrice setIsModalOpen={setIsModalOpen} />
+            {isLoading ? (
+              <CartTotalSkeleton />
+            ) : (
+              <CartTotalPrice setIsModalOpen={setIsModalOpen} />
+            )}
           </section>
         ) : (
           <h2 className={styles.cart__emptyTitle}>Your cart is empty</h2>

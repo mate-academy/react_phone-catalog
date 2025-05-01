@@ -3,11 +3,11 @@
 .spinner {
   position: relative;
 
-  min-height: calc(100vh - 64px - 96px);
-
   display: flex;
   align-items: center;
   justify-content: center;
+
+  min-height: calc(100vh - 64px - 96px);
 
   background-color: $color-white;
 

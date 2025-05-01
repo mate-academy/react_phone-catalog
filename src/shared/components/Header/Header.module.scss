@@ -247,6 +247,7 @@
     width: 48px;
     height: 48px;
 
+    background-color: $color-white;
     box-shadow: -1px 0 0 0 $color-elements;
 
     transition: box-shadow 0.2s ease-in-out;
@@ -276,6 +277,7 @@
   }
 
   &__imageLinkActive {
+    background-color: $color-white;
     box-shadow: 0 1px 2px 0 $color-primary;
   }
 }

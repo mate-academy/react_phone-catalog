@@ -3,21 +3,21 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 import styles from './ProductCatalog.module.scss';
 
-import { ProductCard } from '../../../shared/components/ProductCard';
-import { AllProducts } from '../../../shared/types/AllProducts/AllProducts';
+import { ProductCard } from '../../../../shared/components/ProductCard';
+import { SkeletonProduct } from '../../../../shared/components/SkeletonProduct';
+import { ProductPaginaton } from '../ProductPaginaton';
 
-import { getClassLink } from '../../../shared/utils/activeClassName';
-import { getSearchWith } from '../../../shared/utils/searchHelper';
-import { sortProducts } from '../utils/sortProducts';
-import { getPageNumber } from '../utils/pageNumber';
-import { getVisiblePages } from '../utils/visiblePages';
-import { handlePageChange } from '../utils/pageChange';
-import { SortBy } from '../../../shared/constants/sortBy';
-import { ItemsOnPage } from '../../../shared/constants/itemsOnPage';
-import { SkeletonProduct } from '../../../shared/components/SkeletonProduct';
+import { AllProducts } from '../../../../shared/types/AllProducts/AllProducts';
+import { SortBy } from '../../../../shared/constants/sortBy';
 
-import LeftArrow from '../../../assets/icons/productPage/left-arrow.svg';
-import RightArrow from '../../../assets/icons/productPage/right-arrow.svg';
+import { getClassLink } from '../../../../shared/utils/activeClassName';
+import { getSearchWith } from '../../../../shared/utils/searchHelper';
+import { sortProducts } from '../../utils/sortProducts';
+import { getPageNumber } from '../../utils/pageNumber';
+import { getVisiblePages } from '../../utils/visiblePages';
+import { handlePageChange } from '../../utils/pageChange';
+
+import { ItemsOnPage } from '../../../../shared/constants/itemsOnPage';
 
 type Props = {
   products: AllProducts[];
@@ -163,46 +163,12 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
       </div>
 
       {pagesPerPage.length > 1 && (
-        <div className={styles.product__pagination}>
-          <button
-            aria-label="Перейти на попередню сторінку"
-            className={styles.product__LeftBtn}
-            onClick={() => handlePage('prev')}
-          >
-            <img
-              src={LeftArrow}
-              alt="Перейти на попередню сторінку"
-              className={styles.product__BtnImg}
-            />
-          </button>
-          {visilbePages.map(page => (
-            <Link
-              to={{
-                search: getSearchWith(searchParams, { page: page.toString() }),
-              }}
-              className={getClassLink({
-                isActive: page === +currentPage,
-                baseClass: styles.product__paginationNums,
-                activeClass: styles.product__paginationNumsActive,
-              })}
-              onClick={() => scrollTo(0, 0)}
-              key={page}
-            >
-              {page}
-            </Link>
-          ))}
-          <button
-            className={styles.product__rightBtn}
-            onClick={() => handlePage('next')}
-            aria-label="Перейти на наступну сторінку"
-          >
-            <img
-              src={RightArrow}
-              alt="Перейти на наступну сторінку"
-              className={styles.product__BtnImg}
-            />
-          </button>
-        </div>
+        <ProductPaginaton
+          currentPage={currentPage}
+          visilbePages={visilbePages}
+          searchParams={searchParams}
+          handlePage={handlePage}
+        />
       )}
     </section>
   );
