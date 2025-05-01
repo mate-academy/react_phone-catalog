@@ -1,0 +1,19 @@
+@import '../../styles/main.scss';
+
+.breadcrumbs {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__segment {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    cursor: pointer;
+  }
+}
