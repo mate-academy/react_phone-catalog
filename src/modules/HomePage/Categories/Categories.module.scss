@@ -1,0 +1,53 @@
+@import '../../../styles/main.scss';
+
+.category {
+  @include on-mobile {
+    padding: 0 16px;
+  }
+
+  &__title {}
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+      column-gap: 16px;
+    }
+  }
+
+  &__item {
+    flex: 1 1 33.333%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__link {
+    // display: flex;
+    position: relative;
+    // overflow: hidden;
+    min-height: 288px;
+    
+    @include on-tablet {
+      min-height: 28vw;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    // padding-bottom: 200%;
+    object-fit: contain;
+
+    @include on-desktop {
+      // max-width: 100%;
+    }
+  }
+}

@@ -1,29 +1,127 @@
-@import '../../../styles/variables';
+@import '../../../styles/main';
 
-.nav-bar {
-  display: flex;
-  align-items: center;
-  column-gap: 64px;
-  height: 64px;
-  border-bottom: 1px solid #f1f2f9;
-}
+.header {
+  width: 100vw;
 
-.nav-logo {
-  height: 22px;
-  width: 64px;
-}
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $textNotActiveColor;
 
-.nav-link {
-  display: block;
-  justify-content: space-between;
-  color: #75767f;
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 26.5px 0 20.5px 0 ;
-  // box-sizing: border-box;
-  
-  &-active {
-    border-bottom: 3px solid $textMainColor;
-    color: $textMainColor;
+    @include on-mobile {
+      margin-inline: -16px;
+    }
   }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: inherit;
+    border-left: 1px solid $textNotActiveColor;
+
+    &_heart {
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &_cart {
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &_menu {
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    & img {
+      height: 25%;
+      object-fit: contain;
+      object-position: center;
+
+      @include hover(scale, 1.1);
+
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  height: 48px;
+  width: 70vw;
+
+  @include on-desktop {
+    height: 68px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    width: 96px;
+
+    @include hover(scale, 1.1);
+
+
+    @include on-tablet {
+      margin-right: 16px;
+    }
+
+    @include on-desktop {
+      width: 128px;
+      margin-right: 24px;
+    }
+  }
+
+  &__list{
+    // width: inherit;
+    flex: 1 1 auto;
+    display: flex;
+    height: inherit;
+    align-items: center;
+    justify-content: space-around;
+
+    @include on-mobile {
+      display: none;
+    }
+
+    @include on-tablet {
+      min-width: 330px;
+    }
+
+    @include on-desktop {
+      justify-content: space-between;
+      max-width: 425px;
+    }
+  }
+
+  &__item {
+    height: inherit;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    height: inherit;
+    font-size: 12px;
+    font-weight: bold;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    color: $textNotActiveColor;
+    text-transform: uppercase;
+  }
+}
+
+.activeHeaderLink {
+  color: $textMainColor;
+  border-bottom: 3px solid;
 }

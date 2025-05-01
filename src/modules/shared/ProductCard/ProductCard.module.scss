@@ -1,0 +1,113 @@
+@import '../../../styles/main.scss';
+
+.productCard {
+  // font-family: Mont, sans-serif;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  height: 506px;
+  min-width: 272px;
+  background-color: #161827;
+
+  &__image {
+    object-fit: contain;
+    height: 196px;
+    margin-bottom: 20px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 200%;
+    border-bottom: 1px solid $textNotActiveColor;
+
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 77px;
+    margin-bottom: 8px;
+  }
+
+  &__screen {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__capacity {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__ram {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+  }
+
+  &__property {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    line-height: 100%;
+    font-weight: 700;
+    color: $textNotActiveColor;
+  }
+
+  &__value {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+  }
+
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+  }
+
+  &__button_addToCart {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: $textMainColor;
+    background-color: $mainPurpleButtonColor;
+    width: 160px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $hoverPurpleButtonColor;
+      transform: scale(1.05);
+    }
+  }
+
+  &__button_favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    background: $mainIconButtonColor;
+    transition: all 0.3s;
+
+
+    &:hover {
+      background-color: $hoverIconButtonColor;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.emptyCart {
+  height: 10px;
+  width: 10px;
+}

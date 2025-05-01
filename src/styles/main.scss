@@ -1,4 +1,54 @@
 @import './fonts';
 @import './mixins';
 @import './reset';
-@import '../modules/shared/Header/Header.module.scss'
+@import './variables';
+@import './container';
+
+html {
+  background-color: $pageBackground;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  color : $textMainColor;
+}
+
+.main {
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1600px;
+  width: 100%;
+}
+
+.swiper {
+  display: flex !important;
+
+}
+
+.swiper-wrapper {
+  display: flex !important;
+  column-gap: 16px !important;
+  position: relative !important;
+}
+
+.swiper-slide {
+  // flex: 1 1 auto !important;
+}
+
+.swiper-pagination {
+  position: absolute !important;
+  bottom: -27px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 4px !important;
+  border-radius: 0 !important;
+  background-color: $mainGreyColor !important;
+
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $textMainColor !important;
+}

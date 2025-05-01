@@ -12,4 +12,5 @@ export interface Product {
   ram: string;
   year: number;
   quantity: number;
-};
+  addToCart: boolean;
+}

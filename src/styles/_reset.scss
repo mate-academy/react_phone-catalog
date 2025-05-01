@@ -1,16 +1,28 @@
 @import './variables';
 @import './fonts';
 
-html {
-  background-color: $pageBackground;
-}
-
 body {
   margin: 0;
 }
 
+h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
 }
 
 a {

@@ -1,0 +1,132 @@
+@import '../../../styles/main';
+
+.footer {
+  width: 100vw;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid $textNotActiveColor;
+    height: 48px;
+  }
+
+  &__main_content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    width: 96px;
+
+    @include hover(scale, 1.1);
+
+    @include on-tablet {
+      margin-right: 16px;
+    }
+
+    @include on-desktop {
+      width: 128px;
+      margin-right: 24px;
+    }
+  }
+
+  &__navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+    // width: 70vw;
+
+    @include on-desktop {
+      height: 68px;
+    }
+
+    &_list{
+      flex: 1 1 auto;
+      display: flex;
+      height: inherit;
+      align-items: center;
+      justify-content: space-around;
+  
+      @include on-mobile {
+        display: none;
+      }
+  
+      @include on-tablet {
+        min-width: 330px;
+      }
+  
+      @include on-desktop {
+        justify-content: space-between;
+        max-width: 425px;
+      }
+    }
+  
+    &_item {
+      height: inherit;
+      display: flex;
+      align-items: center;
+    }
+  
+    &_link {
+      height: inherit;
+      font-size: 12px;
+      font-weight: bold;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      color: $textNotActiveColor;
+      text-transform: uppercase;
+
+      @include hover(color, $textMainColor);
+    }
+  }
+
+  &__arrow_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 16px;
+
+  }
+
+  &__backToTop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #323542;
+    height: 32px;
+    width: 32px;
+
+    & img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    width: 100vw;
+  }
+
+  &__icon {
+    // flex: 50% 50% auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: inherit;
+    border-left: 1px solid $textNotActiveColor;
+
+    &_heart {
+
+    }
+
+    &_cart {
+
+    }
+  }
+}

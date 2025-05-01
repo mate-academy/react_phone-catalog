@@ -1,0 +1,43 @@
+@import '../../../styles/main.scss';
+
+.newModels {
+  margin-top: 80px;
+  margin-bottom: 80px;
+
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: $textMainColor;
+    margin-bottom: 32px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    height: 32px;
+    width: 80px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $pageBackground;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $hoverIconButtonColor;
+    }
+  }
+
+  &__button_prev {}
+
+  &__button_next {}
+
+}

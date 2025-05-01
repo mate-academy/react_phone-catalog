@@ -1,17 +1,34 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import { App } from './App';
-import { Header } from './modules/shared/Header';
-import { HomePage } from './modules/HomePage/HomePage';
+import { HomePage } from './modules/HomePage/HomePage/HomePage';
+import { GlobalProvider } from './store/GlobalContext';
+import { PhonesPage } from './modules/PhonesPage/PhonesPage';
+import { TabletsPage } from './modules/TabletsPage/TabletsPage';
+import { AccessoriesPage } from './modules/AccessoriesPage/AccessoriesPage';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
 export const Root = () => (
   <Router>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="home" element={<Header />} />
-        {/* <Route path="phones" element={<HomePage/>}/>
-        <Route path="tablets" element={<CartPage/>}/>
-        <Route path="accessories" element={<Catalog/>}/> */}
-      </Route>
-    </Routes>
+    <Provider store={store}>
+      <GlobalProvider>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+            <Route path="home" element={<Navigate to="/" replace />} />
+            <Route path="phones/*" element={<PhonesPage />} />
+            <Route path="tablets/*" element={<TabletsPage />} />
+            <Route path="accessories/*" element={<AccessoriesPage />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </GlobalProvider>
+    </Provider>
   </Router>
 );

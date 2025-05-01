@@ -1,5 +1,12 @@
-@mixin on-tablet {
-  @media (max-width: 639px) {
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: 639.98px) {
     @content;
   }
 }
@@ -11,20 +18,20 @@
 }
 
 @mixin on-desktop {
-  @media (max-width: 1199px) {
+  @media (min-width: 1200px) {
     @content;
   }
 }
 
 @mixin on-big-desktop {
-  @media (min-width: 1200px) {
+  @media (min-width: 1440px) {
     @content;
   }
 }
 
 @mixin content-padding-inline {
   @include on-mobile {
-    padding-inline: 16px;
+    // padding-inline: 16px;
   }
 
   @include on-tablet {
