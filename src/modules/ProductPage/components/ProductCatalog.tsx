@@ -16,6 +16,9 @@ import { SortBy } from '../../../shared/constants/sortBy';
 import { ItemsOnPage } from '../../../shared/constants/itemsOnPage';
 import { SkeletonProduct } from '../../../shared/components/SkeletonProduct';
 
+import LeftArrow from '../../../assets/icons/productPage/left-arrow.svg';
+import RightArrow from '../../../assets/icons/productPage/right-arrow.svg';
+
 type Props = {
   products: AllProducts[];
 };
@@ -68,6 +71,7 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
         <div className={styles.product__sortBy}>
           <p className={styles.product__sortByTitle}>Sort by</p>
           <button
+            aria-label="Сортувати товар"
             className={getClassLink({
               isActive: isSortOpen,
               baseClass: styles.product__sortButton,
@@ -103,9 +107,11 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
             </div>
           )}
         </div>
+
         <div className={styles.product__itemsPerPage}>
           <p className={styles.product__sortByTitle}>Items on page</p>
           <button
+            aria-label="Кількість товару на сторінці"
             className={getClassLink({
               isActive: isItemsOpen,
               baseClass: styles.product__sortButton,
@@ -150,7 +156,7 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
             {isLoading ? (
               <SkeletonProduct />
             ) : (
-              <ProductCard product={product} />
+              <ProductCard product={product} isHotPrice={true} />
             )}
           </div>
         ))}
@@ -159,12 +165,13 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
       {pagesPerPage.length > 1 && (
         <div className={styles.product__pagination}>
           <button
+            aria-label="Перейти на попередню сторінку"
             className={styles.product__LeftBtn}
             onClick={() => handlePage('prev')}
           >
             <img
-              src="src/assets/images/productPage/left-arrow.svg"
-              alt=""
+              src={LeftArrow}
+              alt="Перейти на попередню сторінку"
               className={styles.product__BtnImg}
             />
           </button>
@@ -187,10 +194,11 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
           <button
             className={styles.product__rightBtn}
             onClick={() => handlePage('next')}
+            aria-label="Перейти на наступну сторінку"
           >
             <img
-              src="src/assets/images/productPage/right-arrow.svg"
-              alt=""
+              src={RightArrow}
+              alt="Перейти на наступну сторінку"
               className={styles.product__BtnImg}
             />
           </button>

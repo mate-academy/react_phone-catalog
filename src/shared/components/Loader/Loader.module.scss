@@ -1,29 +1,29 @@
 @import '../../../assets/styles/main';
 
 .spinner {
-  min-height: calc(100vh - 64px - 96px);
-
   position: relative;
+
+  min-height: calc(100vh - 64px - 96px);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   background-color: $color-white;
-}
 
-.spinner__spin {
-  width: 120px;
-  height: 120px;
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid $color-primary;
-  border-radius: 50%;
+  &__spin {
+    width: 120px;
+    height: 120px;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid $color-primary;
+    border-radius: 50%;
 
-  animation: spin 2s linear infinite;
-}
+    animation: spin 2s linear infinite;
+  }
 
-.spinner__logo {
-  position: absolute;
+  &__logo {
+    position: absolute;
+  }
 }
 
 @keyframes spin {

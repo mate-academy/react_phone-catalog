@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
@@ -7,7 +7,14 @@ import { getClassLink } from '../../utils/activeClassName';
 import { FavoritesStateContext } from '../../store/FavoritesProvider';
 import { CartStateContext } from '../../store/CartProvider';
 
-export const Header = () => {
+import LogoIcon from '../../../assets/icons/header-icons/logo-icon.svg';
+// eslint-disable-next-line
+import FavoritesIcon from '../../../assets/icons/header-icons/favorites-icon.svg';
+import CartIcon from '../../../assets/icons/header-icons/cart-icon.svg';
+// eslint-disable-next-line
+import HamburgerIcon from '../../../assets/icons/header-icons/hamburger-icon.svg';
+
+export const Header: React.FC = () => {
   const favoritesProduct = useContext(FavoritesStateContext);
   const cartsProduct = useContext(CartStateContext);
 
@@ -15,11 +22,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__container}>
         <Link to="/" className={styles.header__logoLink}>
-          <img
-            src="src/assets/icons/header-icons/logo-icon.svg"
-            alt="Логотип"
-            className={styles.header__logo}
-          />
+          <img src={LogoIcon} alt="Логотип" className={styles.header__logo} />
         </Link>
 
         <nav className={styles.header__nav}>
@@ -95,7 +98,7 @@ export const Header = () => {
             }
           >
             <img
-              src="src/assets/icons/header-icons/favorites-icon.svg"
+              src={FavoritesIcon}
               alt="Відкрити улюблені товари"
               className={styles.header__favoritesImg}
             />
@@ -116,7 +119,7 @@ export const Header = () => {
             }
           >
             <img
-              src="src/assets/icons/header-icons/cart-icon.svg"
+              src={CartIcon}
               alt="Відкрити корзину"
               className={styles.header__cartImg}
             />
@@ -128,13 +131,14 @@ export const Header = () => {
           </NavLink>
           <button
             className={getClassLink({
-              isActive: true,
+              isActive: false,
               baseClass: styles.header__menuLink,
               activeClass: styles.header__imageLinkActive,
             })}
+            aria-label="Відкрити меню"
           >
             <img
-              src="src/assets/icons/header-icons/hamburger-icon.svg"
+              src={HamburgerIcon}
               alt="Відкрити меню"
               className={styles.header__menuImg}
             />

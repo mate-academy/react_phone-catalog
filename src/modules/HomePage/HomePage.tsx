@@ -28,12 +28,14 @@ export const HomePage = () => {
           title={SectionTitles.NewModels}
           products={newProducts}
           sliderId={SliderId.New}
+          isHotPrice={false}
         />
         <CategoryCards data={data} />
         <ProductsSlider
           title={SectionTitles.HotPrices}
           products={productsWithHotPrice}
           sliderId={SliderId.Hot}
+          isHotPrice={true}
         />
       </div>
     </main>

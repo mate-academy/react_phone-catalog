@@ -50,6 +50,30 @@
     color: $color-secondary;
   }
 
+  &__backButtonWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 16px;
+    }
+  }
+  &__backArrowImg {
+    width: 16px;
+    height: 16px;
+  }
+  &__backButton {
+    cursor: pointer;
+
+    margin-left: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    color: $color-secondary;
+  }
+
   &__productTitle {
     margin-bottom: 8px;
     color: $color-primary;

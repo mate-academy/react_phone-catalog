@@ -1,56 +1,97 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import styles from './CurrentPage.module.scss';
 
 import { getPageTitle } from '../../utils/getPageTitle';
 import { PageTitle } from '../../constants/pageTitle';
+import { Product } from '../../types/Product/Product';
+
+import HomeIcon from '../../../assets/icons/currentPage/home-icon.svg';
+import HomeArrow from '../../../assets/icons/currentPage/home-arrow.svg';
+import BackArrow from '../../../assets/icons/currentPage/back-arrow-icon.svg';
 
 type Props = {
   showProductsCount?: number;
+  currentProduct?: Product;
 };
 
-export const CurrentPage: React.FC<Props> = ({ showProductsCount }) => {
+export const CurrentPage: React.FC<Props> = ({
+  showProductsCount,
+  currentProduct,
+}) => {
   const { pathname } = useLocation();
-  const normalizedPathName = pathname.replace('/', '');
+  const segments = pathname.split('/');
+  const path = segments[1] || '';
+  const slug = segments[2] || '';
 
-  const title = getPageTitle(normalizedPathName);
+  const title = getPageTitle(path);
+  const itemLabel = title === PageTitle.Favorites ? 'items' : 'models';
 
   return (
     <div className={styles.currentPage}>
       <div className={styles.currentPage__wrapper}>
-        <a href="#" className={styles.currentPage__homeLink}>
+        <Link to="/" className={styles.currentPage__homeLink}>
           <img
             loading="lazy"
-            src="src/assets/images/currentPage/home-icon.svg"
+            src={HomeIcon}
             alt="Іконка домашньої сторінки"
             className={styles.currentPage__homeImg}
           />
-        </a>
+        </Link>
 
         <div className={styles.currentPage__location}>
           <img
-            src="src/assets/images/currentPage/home-arrow.svg"
+            src={HomeArrow}
             alt="Стрілка поточної сторінки"
             loading="lazy"
             className={styles.currentPage__arrow}
           />
-          <a href="#" className={styles.currentPage__currentTitle}>
+          <Link to={`/${path}`} className={styles.currentPage__currentTitle}>
             {title}
-          </a>
+          </Link>
         </div>
+        {slug && (
+          <div className={styles.currentPage__location}>
+            <img
+              src={HomeArrow}
+              alt="Стрілка поточної сторінки"
+              loading="lazy"
+              className={styles.currentPage__arrow}
+            />
+            <Link
+              to={`${pathname}`}
+              className={styles.currentPage__currentTitle}
+            >
+              {currentProduct?.name}
+            </Link>
+          </div>
+        )}
       </div>
-      <h1 className={styles.currentPage__productTitle}>{title}</h1>
-      {!!showProductsCount &&
-        (title === PageTitle.Favorites ? (
-          <p
-            className={styles.currentPage__items}
-          >{`${showProductsCount} items`}</p>
-        ) : (
-          <p
-            className={styles.currentPage__items}
-          >{`${showProductsCount} models`}</p>
-        ))}
+      {slug ? (
+        <>
+          <div className={styles.currentPage__backButtonWrapper}>
+            <img
+              src={BackArrow}
+              alt="Повернутись до попередньої сторінки"
+              className={styles.currentPage__backArrowImg}
+            />
+            <Link to={`/${path}`} className={styles.currentPage__backButton}>
+              Back
+            </Link>
+          </div>
+          <h2 className={styles.currentPage__productTitle}>
+            {currentProduct?.name}
+          </h2>
+        </>
+      ) : (
+        <h1 className={styles.currentPage__productTitle}>{title}</h1>
+      )}
+      {!!showProductsCount && !slug && (
+        <p
+          className={styles.currentPage__items}
+        >{`${showProductsCount} ${itemLabel}`}</p>
+      )}
     </div>
   );
 };

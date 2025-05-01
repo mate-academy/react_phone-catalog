@@ -12,11 +12,17 @@ import {
   CartStateContext,
 } from '../../store/CartProvider';
 
+// eslint-disable-next-line
+import FavoriteIcon from '../../../assets/images/productsSlider/favorites-icon.svg';
+// eslint-disable-next-line
+import FavoriteAddedIcon from '../../../assets/images/productsSlider/favorites-icon-added.svg';
+
 type Props = {
-  product: AllProducts & { hotPrice?: number };
+  product: AllProducts;
+  isHotPrice: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, isHotPrice }) => {
   const favoritesProduct = useContext(FavoritesStateContext);
   const cartsProduct = useContext(CartStateContext);
   const dispatchFavorites = useContext(FavoritesDispatchContext);
@@ -63,7 +69,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         />
       </Link>
       <p className={styles.productCard__description}>{product.name}</p>
-      {product?.hotPrice ? (
+      {isHotPrice ? (
         <div className={styles.productCard__priceContainer}>
           <h3 className={styles.productCard__price}>{`$${product.price}`}</h3>
           <h3
@@ -92,17 +98,19 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <button
           className={styles.productCard__addToCart}
           disabled={isCart(product.id)}
+          aria-label="Додати до корзини"
           onClick={() => handleCart(product)}
         >
           Add to cart
         </button>
         <button
           className={styles.productCard__addToFavorites}
+          aria-label="Додати до улюбленого"
           onClick={() => handleFavoritesProducts(product)}
         >
           <img
             loading="lazy"
-            src={`src/assets/images/productsSlider/${isFavorites(product.id) ? 'favorites-icon-added.svg' : 'favorites-icon.svg'}`}
+            src={isFavorites(product.id) ? FavoriteAddedIcon : FavoriteIcon}
             alt="Іконка для додавання в улюбленні"
           />
         </button>

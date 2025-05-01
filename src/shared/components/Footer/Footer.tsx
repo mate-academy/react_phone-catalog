@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 
 import styles from './Footer.module.scss';
 
+import FooterLogo from '../../../assets/icons/footer-icons/footer__logo.svg';
+import ScrollToTop from '../../../assets/icons/footer-icons/scroll-to-top.svg';
+
 export const Footer = () => {
   const handleScrollToTop = () => {
     window.scrollTo({
@@ -14,11 +17,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
         <Link to="/" className={styles.footer__logoLink}>
-          <img
-            src="src/assets/icons/footer-icons/footer__logo.svg"
-            alt="Логотип"
-            className={styles.footer__logo}
-          />
+          <img src={FooterLogo} alt="Логотип" className={styles.footer__logo} />
         </Link>
 
         <nav className={styles.footer__nav}>
@@ -49,7 +48,7 @@ export const Footer = () => {
             aria-label="Переміститись на початок сторінки"
           >
             <img
-              src="src/assets/icons/footer-icons/scroll-to-top.svg"
+              src={ScrollToTop}
               alt="Переміститись на початок сторінки"
               className={styles.footer__arrow}
             />

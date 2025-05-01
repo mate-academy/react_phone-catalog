@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 import { Navigation } from 'swiper/modules';
 
 import 'swiper/scss';
@@ -11,21 +12,30 @@ import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 import { AllProducts } from '../../types/AllProducts/AllProducts';
 
+import LeftArrow from '../../../assets/icons/slider-icons/left-arrow.svg';
+// eslint-disable-next-line
+import LeftArrowDisabled from '../../../assets/icons/slider-icons/left-arrow-disabled.svg';
+import RightArrow from '../../../assets/icons/slider-icons/right-arrow.svg';
+// eslint-disable-next-line
+import RightArrowDisabled from '../../../assets/icons/slider-icons/right-arrow-disabled.svg';
+
 type Props = {
   title: string;
   products: AllProducts[];
   sliderId: string;
+  isHotPrice: boolean;
 };
 
 export const ProductsSlider: React.FC<Props> = ({
   title,
   products,
   sliderId,
+  isHotPrice,
 }) => {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
 
-  const handleSlideChange = (swiper: any) => {
+  const handleSlideChange = (swiper: SwiperType) => {
     setIsFirstSlide(swiper.isBeginning);
     setIsLastSlide(swiper.isEnd);
   };
@@ -39,11 +49,12 @@ export const ProductsSlider: React.FC<Props> = ({
             className={styles.productSlider__leftBtn}
             id={`prev${sliderId}`}
             disabled={isFirstSlide}
+            aria-label="Попередній продукт"
           >
             <img
               loading="lazy"
               className={styles.productSlider__leftBtnImage}
-              src={`src/assets/icons/slider-icons/${isFirstSlide ? 'left-arrow-disabled.svg' : 'left-arrow.svg'}`}
+              src={isFirstSlide ? LeftArrowDisabled : LeftArrow}
               alt="Попередній продукт"
             />
           </button>
@@ -51,11 +62,12 @@ export const ProductsSlider: React.FC<Props> = ({
             className={styles.productSlider__rightBtn}
             id={`next${sliderId}`}
             disabled={isLastSlide}
+            aria-label="Наступний продукт"
           >
             <img
               loading="lazy"
               className={styles.productSlider__rightBtnImage}
-              src={`src/assets/icons/slider-icons/${isLastSlide ? 'right-arrow-disabled.svg' : 'right-arrow.svg'}`}
+              src={isLastSlide ? RightArrowDisabled : RightArrow}
               alt="Наступний продукт"
             />
           </button>
@@ -87,7 +99,7 @@ export const ProductsSlider: React.FC<Props> = ({
           >
             {products.map(product => (
               <SwiperSlide key={product.id}>
-                <ProductCard product={product} />
+                <ProductCard product={product} isHotPrice={isHotPrice} />
               </SwiperSlide>
             ))}
           </Swiper>

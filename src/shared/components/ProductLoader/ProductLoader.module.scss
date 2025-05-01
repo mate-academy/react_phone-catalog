@@ -2,21 +2,24 @@
 
 .spinner {
   position: relative;
+
   width: 60px;
   height: 60px;
+
   left: 50%;
   transform: translateY(50%);
-}
 
-.spinner__spin {
-  width: 60px;
-  height: 60px;
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid $color-primary;
-  border-radius: 50%;
-  backdrop-filter: blur(10px);
+  &__spin {
+    width: 60px;
+    height: 60px;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid $color-primary;
+    border-radius: 50%;
 
-  animation: spin 2s linear infinite;
+    backdrop-filter: blur(10px);
+
+    animation: spin 2s linear infinite;
+  }
 }
 
 @keyframes spin {

@@ -52,7 +52,10 @@ export const ProductDetailsPage = () => {
   return (
     <main className={styles.details}>
       <div className={styles.details__container}>
-        <CurrentPage />
+        <CurrentPage
+          showProductsCount={products.length}
+          currentProduct={currentProduct}
+        />
         <ProductOverview product={currentProduct!} />
         <ProductInfo productInfo={currentProduct!} />
       </div>
@@ -60,6 +63,7 @@ export const ProductDetailsPage = () => {
         title={SectionTitles.AlsoLike}
         products={randomProducts}
         sliderId={SliderId.Like}
+        isHotPrice={true}
       />
     </main>
   );

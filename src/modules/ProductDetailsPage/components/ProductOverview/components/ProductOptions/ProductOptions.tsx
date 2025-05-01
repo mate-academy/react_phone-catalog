@@ -18,6 +18,11 @@ import { AllProducts } from '../../../../../../shared/types/AllProducts/AllProdu
 import { generateProductUrl } from '../../../../utils/generateProductUrl';
 import { getClassLink } from '../../../../../../shared/utils/activeClassName';
 
+// eslint-disable-next-line
+import FavoritesIcon from '../../../../../../assets/icons/product-details/favorites-icon.svg';
+// eslint-disable-next-line
+import FavoritesAddedIcon from '../../../../../../assets/icons/product-details/favorites-icon-added.svg';
+
 type Props = {
   product: Product;
 };
@@ -149,7 +154,7 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
           >
             <img
               className={styles.productOverview__addIcon}
-              src={`src/assets/icons/product-details/${isFavorites ? 'favorites-icon-added.svg' : 'favorites-icon.svg'}`}
+              src={isFavorites ? FavoritesAddedIcon : FavoritesIcon}
               alt="Add to cart"
             />
           </button>

@@ -20,27 +20,27 @@
 
     @include content-padding;
   }
-}
 
-.favorites__cardWrapper {
-  @include page-grid;
-}
-
-.favorites__card {
-  grid-column: span 4;
-
-  @include on-tablet {
-    grid-column: span 6;
+  &__cardWrapper {
+    @include page-grid;
   }
-}
 
-.favorites__cardTitleWrapp {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  &__card {
+    grid-column: span 4;
 
-.favorites__cartTitle {
-  font-size: 32px;
-  text-align: balance;
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+
+  &__cardTitleWrapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__cartTitle {
+    font-size: 32px;
+    text-align: balance;
+  }
 }

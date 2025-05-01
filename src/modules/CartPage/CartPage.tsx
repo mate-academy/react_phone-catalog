@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './CartPage.module.scss';
 
@@ -9,6 +10,8 @@ import {
 import { Dialog } from './components/Dialog';
 import { CartProduct } from './components/CartProduct';
 import { CartTotalPrice } from './components/CartTotalPrice';
+
+import CartArrow from '../../assets/icons/cart-icons/cart-arrow-icon.svg';
 
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,13 +47,13 @@ export const CartPage = () => {
         <div className={styles.cart__wrapper}>
           <div className={styles.cart__backButtonWrapper}>
             <img
-              src="src/assets/icons/cart-icons/cart-arrow-icon.svg"
-              alt="Back to previous page"
+              src={CartArrow}
+              alt="Повернутись назад"
               className={styles.cart__backArrowImg}
             />
-            <a href="#" className={styles.cart__backButton}>
+            <Link to="/" className={styles.cart__backButton}>
               Back
-            </a>
+            </Link>
           </div>
           <h1 className={styles.cart__title}>Cart</h1>
         </div>

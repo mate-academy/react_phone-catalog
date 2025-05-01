@@ -6,6 +6,13 @@ import { Cart } from '../../../../shared/store/CartProvider';
 import { ProductLoader } from '../../../../shared/components/ProductLoader';
 import { Link } from 'react-router-dom';
 
+// eslint-disable-next-line
+import CartDelete from '../../../../assets/icons/cart-icons/cart-delete-icons.svg';
+import CartMinus from '../../../../assets/icons/cart-icons/cart-minus-icon.svg';
+// eslint-disable-next-line
+import CartMinusActive from '../../../../assets/icons/cart-icons/cart-minus-icon-active.svg';
+import CartPlus from '../../../../assets/icons/cart-icons/cart-plus-icon.svg';
+
 type Props = {
   cartProduct: Cart;
   isLoading: boolean;
@@ -25,11 +32,13 @@ export const CartProduct: React.FC<Props> = ({
         <button
           className={styles.cart__itemDeleteBtn}
           onClick={() => deleteProduct(cartProduct.product.id)}
+          aria-label="Видалити товар з корзини"
         >
           <img
             className={styles.cart__itemDeleteImg}
-            src="src/assets/icons/cart-icons/cart-delete-icons.svg"
+            src={CartDelete}
             alt="Видалити товар з корзини"
+            loading="lazy"
           />
         </button>
         <Link
@@ -39,6 +48,7 @@ export const CartProduct: React.FC<Props> = ({
             className={styles.cart__itemImage}
             src={cartProduct.product.image}
             alt="Фото товару"
+            loading="lazy"
           />
         </Link>
 
@@ -50,28 +60,32 @@ export const CartProduct: React.FC<Props> = ({
         <div className={styles.cart__itemControl}>
           <button
             className={styles.cart__minusBtn}
+            disabled={cartProduct.quantity === 1}
+            aria-label="Зменшити кількість товару"
             onClick={() =>
               changeQuantity(cartProduct.product.id, cartProduct.quantity - 1)
             }
-            disabled={cartProduct.quantity === 1}
           >
             <img
               className={styles.cart__minusBtnImg}
-              src={`src/assets/icons/cart-icons/${cartProduct.quantity === 1 ? 'cart-minus-icon.svg' : 'cart-minus-icon-active.svg'}`}
-              alt=""
+              src={cartProduct.quantity === 1 ? CartMinus : CartMinusActive}
+              alt="Зменшити кількість товару"
+              loading="lazy"
             />
           </button>
           <p className={styles.cart__addedItems}>{cartProduct.quantity}</p>
           <button
             className={styles.cart__plusBtn}
+            aria-label="Збільшити кількість товару"
             onClick={() =>
               changeQuantity(cartProduct.product.id, cartProduct.quantity + 1)
             }
           >
             <img
               className={styles.cart__plusBtnImg}
-              src="src/assets/icons/cart-icons/cart-plus-icon.svg"
-              alt=""
+              src={CartPlus}
+              alt="Збільшити кількість товару"
+              loading="lazy"
             />
           </button>
         </div>

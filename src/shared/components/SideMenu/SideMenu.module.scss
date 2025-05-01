@@ -1,26 +1,6 @@
 @import '../../../assets/styles/main';
 
-menu {
-  pointer-events: none;
-
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  transform: translateX(-100%);
-
-  overflow: hidden;
-
-  opacity: 0;
-
-  transition: all 0.3s;
-
-  &:target {
-    pointer-events: all;
-    transform: translateX(0);
-    opacity: 1;
-  }
-
+.menu {
   &__container {
     display: flex;
     align-items: center;

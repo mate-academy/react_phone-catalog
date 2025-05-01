@@ -33,7 +33,7 @@ export const FavoritesPage = () => {
                 {isLoading ? (
                   <SkeletonProduct />
                 ) : (
-                  <ProductCard product={favoriteProduct} />
+                  <ProductCard product={favoriteProduct} isHotPrice={true} />
                 )}
               </div>
             ))}
@@ -41,7 +41,7 @@ export const FavoritesPage = () => {
         ) : (
           <div className={styles.favorites__cardTitleWrapp}>
             <h1 className={styles.favorites__cartTitle}>
-              Your favorites list is looking a little lonely... 😢
+              Your favorites list is looking a little lonely...
               <br />
               Start adding items you love and we will keep them safe right here!
             </h1>

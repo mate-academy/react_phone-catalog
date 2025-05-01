@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 import { FreeMode, Thumbs } from 'swiper/modules';
 
 import 'swiper/css';
@@ -18,7 +19,7 @@ type Props = {
 };
 
 export const ProductDetails: React.FC<Props> = ({ product }) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const isMobile = useMediaQuery('(max-width: 639px)');
   const swiperDirection = isMobile ? 'horizontal' : 'vertical';
