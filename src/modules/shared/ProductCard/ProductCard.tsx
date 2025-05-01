@@ -70,9 +70,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     cart.map(p => p.itemId),
   );
 
-  // useEffect(() => {
-  //   console.log(cart);
-  // }, [cart]);
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
 
   return (
     <div className={styles.productCard}>
