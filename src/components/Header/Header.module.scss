@@ -1,0 +1,98 @@
+@use '../../styles/utils/mixins' as *;
+@import '../../styles/variables/variables';
+
+.header {
+  box-sizing: border-box;
+  border-bottom: 1px solid $header-border-color;
+
+  height: 48px;
+  padding-left: 16px;
+}
+
+.header--show-on-mobile {
+  display: flex;
+}
+
+.header--hide-on-mobile {
+  display: none;
+}
+
+@include on-tablet {
+  .header {
+    height: 64px;
+  }
+
+  .header--show-on-mobile {
+    display: none;
+  }
+
+  .header--hide-on-mobile {
+    display: flex;
+  }
+}
+
+@include on-desktop {
+  .header {
+    padding-left: 24px;
+  }
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &--left {
+    display: flex;
+    align-items: center;
+  }
+
+  &--right {
+    // height: 100%;
+  }
+}
+
+@include on-tablet {
+  .header__content--left {
+    gap: 32px;
+  }
+}
+
+@include on-desktop {
+  .header__content--left {
+    gap: 48px;
+  }
+}
+
+.header__btn {
+  border-left: 1px solid $header-border-color;
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@include on-tablet {
+  .header__btn {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.header__nav-list {
+  display: flex;
+}
+
+@include on-tablet {
+  .header__nav-list {
+    gap: 32px;
+  }
+}
+
+@include on-desktop {
+  .header__nav-list {
+    gap: 64px;
+  }
+}

@@ -1,0 +1,19 @@
+@import '../../../styles/variables/variables.scss';
+
+.favorite-btn {
+  width: $button-size;
+  height: $button-size;
+  border: 1px solid $gray;
+
+  transition: $animation-duration;
+
+  &--selected {
+    border: 1px solid $light-gray;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    border: 1px solid $primary;
+  }
+}

@@ -1,0 +1,34 @@
+// section colors
+$primary: #313237;
+$secondary: #89939A;
+
+$white: #fff;
+$green: #27AE60;
+$red: #EB5757;
+$gray: #B4BDC3;
+$light-gray: #E2E6E9;
+
+$icons: $gray;
+$elements: $light-gray;
+$hover: $light-gray;
+// END colors
+
+// typography
+$font-family-main: 'Mont', sans-serif;
+
+$text-color: $primary;
+$text-color-secondary: $secondary;
+$heading-text-color: $primary;
+$button-text-color: $primary;
+// END typography
+
+// utility variables
+$animation-duration: .2s;
+$button-size: 40px;
+
+$grid-column-desktop-size: 32px;
+// END utility variables
+
+// components
+$header-border-color: $light-gray;
+//END components

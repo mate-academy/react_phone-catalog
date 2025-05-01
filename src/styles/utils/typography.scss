@@ -1,0 +1,153 @@
+@import '../variables/variables.scss';
+
+%heading-base {
+  font-family: $font-family-main;
+  color: $heading-text-color;
+}
+
+%main-text-base {
+  font-family: $font-family-main;
+  color: $text-color;
+}
+
+%button-text-base {
+  font-family: $font-family-main;
+  color: $button-text-color;
+}
+
+h1 {
+  @extend %heading-base;
+
+  font-weight: 800;
+  font-size: 32px;
+  font-style: bold;
+
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@include on-tablet {
+  h1 {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  @extend %heading-base;
+
+  font-weight: 800;
+  font-size: 22px;
+  font-style: bold;
+
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@include on-tablet {
+  h2 {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+h3 {
+  @extend %heading-base;
+
+  font-weight: 700;
+  font-size: 20px;
+  font-style: bold;
+
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@include on-tablet {
+  h3 {
+    font-weight: 800;
+    font-size: 22px;
+
+    line-height: 31px;
+  }
+}
+
+h4 {
+  @extend %heading-base;
+
+  font-size: 20px;
+  font-style: bold;
+
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+.uppercase-text {
+  @extend %main-text-base;
+
+  font-weight: 700;
+  font-size: 12px;
+  font-style: normal;
+
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.button-text {
+  @extend %button-text-base;
+
+  font-weight: 600;
+  font-size: 14px;
+  font-style: normal;
+
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.main-text {
+  @extend %main-text-base;
+
+  font-weight: 500;
+  font-size: 14px;
+  font-style: normal;
+
+  line-height: 21px;
+  letter-spacing: 0;
+
+  &--sm {
+    font-weight: 600;
+    font-size: 12px;
+
+    line-height: 15px;
+  }
+
+  &--secondary {
+    color: $text-color-secondary;
+  }
+
+  &--primary {
+    color: $text-color;
+  }
+
+  &--white {
+    color: $white;
+  }
+}
+
+.price-discount {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 102%;
+    height: 2px;
+    background-color: $text-color-secondary;
+    mix-blend-mode: color-dodge;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}

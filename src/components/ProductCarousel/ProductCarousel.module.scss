@@ -1,0 +1,54 @@
+@import '../../styles/variables/variables.scss';
+
+.product-carousel__navigation-warpper {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  gap: 16px;
+}
+
+.product-carousel__navigation-button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+
+  box-sizing: border-box;
+  border: 1px solid $light-gray;
+  transition: $animation-duration;
+
+  &--prev::before,
+  &--next::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-top: 1px solid $light-gray;
+    border-right: 1px solid $light-gray;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: $animation-duration;
+  }
+
+  &--prev::before {
+    left: 55%;
+    transform: translate(-50%, -50%) rotate(225deg);
+  }
+
+  &--next::before {
+    left: 45%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &--prev:hover::before,
+  &--next:hover::before {
+    border-top: 1px solid $primary;
+    border-right: 1px solid $primary;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid $primary;
+  }
+}

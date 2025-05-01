@@ -1,0 +1,33 @@
+@use '../../styles/utils/mixins' as *;
+@import '../../styles/variables/variables.scss';
+
+.product-card {
+  box-sizing: border-box;
+  border: 1px solid $light-gray;
+
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 8px;
+}
+
+.product-card__image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.product-card__image {
+  width: 100%;
+}
+
+.product-card__description {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-card__buttons-wrapper {
+  display: flex;
+  gap: 8px;
+}
