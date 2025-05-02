@@ -19,17 +19,17 @@ export const ProductCategorySection: React.FC<Props> = () => {
         <div className={styles['product-category__categories-wrapper']}>
           <ProductCategoryCard
             title="Mobile Phone"
-            counter={10}
+            productsAmount={10}
             category={Category.Phone}
           />
           <ProductCategoryCard
-            title={'Tablet'}
-            counter={10}
+            title="Tablet"
+            productsAmount={10}
             category={Category.Tablet}
           />
           <ProductCategoryCard
-            title={'Accessories'}
-            counter={10}
+            title="Accessories"
+            productsAmount={10}
             category={Category.Accessories}
           />
         </div>

@@ -7,13 +7,13 @@ import styles from './ProductCategoryCard.module.scss';
 
 type Props = {
   title: string;
-  counter: number;
+  productsAmount: number;
   category: Category;
 };
 
 export const ProductCategoryCard: React.FC<Props> = ({
   title,
-  counter,
+  productsAmount,
   category,
 }) => {
   return (
@@ -32,7 +32,7 @@ export const ProductCategoryCard: React.FC<Props> = ({
 
       <div className={styles['product-category__card-title-wrapper']}>
         <h4>{title}</h4>
-        <p className="main-text main-text-secondary">{counter}</p>
+        <p className="main-text main-text-secondary">{productsAmount}</p>
       </div>
     </div>
   );

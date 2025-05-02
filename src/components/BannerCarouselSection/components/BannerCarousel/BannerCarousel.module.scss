@@ -1,0 +1,33 @@
+@use '../../../../styles/utils/mixins' as *;
+
+.banner-carousel-wrapper {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 0fr 1fr 0fr;
+
+  @include on-tablet {
+    grid-template-columns: 1fr 10fr 1fr;
+  }
+
+  @include on-desktop{
+    grid-template-columns: 1fr 22fr 1fr;
+  }
+}
+
+
+.banner-carousel {
+  width: 100%;
+}
+
+.banner-carousel__btn-prev {
+  display: block;
+}
+
+.banner-carousel__btn-next {
+  display: block;
+}
+
+.banner-carousel__pagination {
+  display: flex;
+  justify-content: center;
+}

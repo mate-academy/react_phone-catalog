@@ -32,15 +32,7 @@ export const Footer = () => {
               </li>
             </ul>
           </div>
-          <ButtonScrollToTop />
-          {/* <a href="#" className={styles['footer__btn-scroll-top-wrapper']}>
-            <p className="main-text main-text--sm main-text--secondary">
-              Back to top
-            </p>
-            <button
-              className={`button-box button-box--sm button--arrow-top ${styles['footer__btn-scroll-top']}`}
-            ></button>
-          </a> */}
+          <ButtonScrollToTop label="Back to top" />
         </div>
       </div>
     </footer>

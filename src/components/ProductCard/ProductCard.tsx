@@ -46,7 +46,7 @@ export const ProductCard: React.FC<Props> = ({}) => {
       </div>
       <p className="main-text">{product.name}</p>
       <h3>
-        {product.fullPrice}{' '}
+        ${product.fullPrice}{' '}
         {product.price && (
           <span className="main-text--secondary price-discount">
             ${product.price}
