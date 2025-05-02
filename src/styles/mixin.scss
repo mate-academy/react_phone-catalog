@@ -15,17 +15,21 @@ $mobile: 320px;
 @mixin grid {
   display: grid;
   column-gap: 16px;
+  
 
-  @media (max-width: $desktop) {
-    grid-template-columns: $gap repeat(24, 1fr);
-  }
+  grid-template-columns: repeat(24, 1fr);	
+
 
   @media (max-width: $tablet) {
-    grid-template-columns: calc($gap / 3 * 2) repeat(12, 1fr);
+    grid-template-columns:  repeat(12, 1fr);
+    column-gap: calc($gap / 3 * 2);
+
   }
 
   @media (max-width: $mobile) {
-    grid-template-columns: calc($gap / 2) repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: calc($gap / 2);
+
   }
 }
 
@@ -59,19 +63,4 @@ $mobile: 320px;
   display: flex;
   height: 100%;
   align-items: center;
-}
-
-
-@mixin responsive-property($property, $mobile-value, $tablet-value, $desktop-value: null) {
-  #{$property}: $mobile-value; // Default for mobile
-
-  @include on-tablet {
-    #{$property}: $tablet-value; // Override for tablet
-  }
-
-  @include on-desktop {
-    @if $desktop-value != null {
-      #{$property}: $desktop-value; // Optional override for desktop
-    }
-  }
 }
