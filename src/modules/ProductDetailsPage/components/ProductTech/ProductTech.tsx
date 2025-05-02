@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './ProductTech.module.scss';
 
-import { Product } from '../../../../../../shared/types/Product/Product';
+import { Product } from '../../../../shared/types/Product/Product';
 
 type Props = {
   productInfo: Product;

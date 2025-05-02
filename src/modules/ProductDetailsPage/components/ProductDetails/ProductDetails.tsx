@@ -10,9 +10,9 @@ import 'swiper/css/thumbs';
 
 import styles from './ProductDetails.module.scss';
 
-import useMediaQuery from '../../../../../../shared/hooks/useMediaQuery';
-import { Product } from '../../../../../../shared/types/Product/Product';
-import { getClassLink } from '../../../../../../shared/utils/activeClassName';
+import useMediaQuery from '../../../../shared/hooks/useMediaQuery';
+import { Product } from '../../../../shared/types/Product/Product';
+import { getClassLink } from '../../../../shared/utils/activeClassName';
 
 type Props = {
   product: Product;

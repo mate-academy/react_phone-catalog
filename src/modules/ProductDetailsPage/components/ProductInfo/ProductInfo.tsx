@@ -3,8 +3,9 @@ import React from 'react';
 import styles from './ProductInfo.module.scss';
 
 import { Product } from '../../../../shared/types/Product/Product';
-import { ProductAbout } from './components/ProductAbout/ProductAbout';
-import { ProductTech } from './components/ProductTech/ProductTech';
+
+import { ProductAbout } from '../ProductAbout/ProductAbout';
+import { ProductTech } from '../ProductTech/ProductTech';
 
 type Props = {
   productInfo: Product;

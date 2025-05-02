@@ -1,6 +1,8 @@
 import React from 'react';
+
 import styles from './ProductAbout.module.scss';
-import { Product } from '../../../../../../shared/types/Product/Product';
+
+import { Product } from '../../../../shared/types/Product/Product';
 
 type Props = {
   productInfo: Product;

@@ -13,9 +13,9 @@ import {
 } from '../../store/CartProvider';
 
 // eslint-disable-next-line
-import FavoriteIcon from '../../../assets/images/productsSlider/favorites-icon.svg';
+import FavoriteIcon from '../../../assets/icons/favorites-icon/favorites-icon.svg';
 // eslint-disable-next-line
-import FavoriteAddedIcon from '../../../assets/images/productsSlider/favorites-icon-added.svg';
+import FavoriteAddedIcon from '../../../assets/icons/favorites-icon/favorites-icon-added.svg';
 
 type Props = {
   product: AllProducts;

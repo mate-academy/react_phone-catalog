@@ -3,25 +3,25 @@ import { Link } from 'react-router-dom';
 
 import styles from './ProductOptions.module.scss';
 
-import { Product } from '../../../../../../shared/types/Product/Product';
+import { Product } from '../../../../shared/types/Product/Product';
 import {
   FavoritesDispatchContext,
   FavoritesStateContext,
-} from '../../../../../../shared/store/FavoritesProvider';
-import { ProductContext } from '../../../../../../shared/store/GlobalProvider';
+} from '../../../../shared/store/FavoritesProvider';
+import { ProductContext } from '../../../../shared/store/GlobalProvider';
 import {
   CartDispatchContext,
   CartStateContext,
-} from '../../../../../../shared/store/CartProvider';
+} from '../../../../shared/store/CartProvider';
 // eslint-disable-next-line
-import { AllProducts } from '../../../../../../shared/types/AllProducts/AllProducts';
-import { generateProductUrl } from '../../../../utils/generateProductUrl';
-import { getClassLink } from '../../../../../../shared/utils/activeClassName';
+import { AllProducts } from '../../../../shared/types/AllProducts/AllProducts';
+import { generateProductUrl } from '../../utils/generateProductUrl';
+import { getClassLink } from '../../../../shared/utils/activeClassName';
 
 // eslint-disable-next-line
-import FavoritesIcon from '../../../../../../assets/icons/product-details/favorites-icon.svg';
+import FavoritesIcon from '../../../../assets/icons/favorites-icon/favorites-icon.svg';
 // eslint-disable-next-line
-import FavoritesAddedIcon from '../../../../../../assets/icons/product-details/favorites-icon-added.svg';
+import FavoritesAddedIcon from '../../../../assets/icons/favorites-icon/favorites-icon-added.svg';
 
 type Props = {
   product: Product;

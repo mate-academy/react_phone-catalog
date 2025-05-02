@@ -6,6 +6,18 @@ import styles from './CategoryCards.module.scss';
 import { productFilterByCategory } from '../../../../shared/utils/productFilterByCategory';
 import { AllProducts } from '../../../../shared/types/AllProducts/AllProducts';
 
+import PhonesMobile from '../../../../assets/images/shopCategory/phones-mobile.png'; // eslint-disable-line
+import PhonesTablet from '../../../../assets/images/shopCategory/phones-tablet.png'; // eslint-disable-line
+import PhonesDesktop from '../../../../assets/images/shopCategory/phones-desktop.png'; // eslint-disable-line
+
+import TabletsMobile from '../../../../assets/images/shopCategory/tablets-mobile.png'; // eslint-disable-line
+import TabletsTablet from '../../../../assets/images/shopCategory/tablets-tablet.png'; // eslint-disable-line
+import TabletsDesktop from '../../../../assets/images/shopCategory/tablets-desktop.png'; // eslint-disable-line
+
+import AccMobile from '../../../../assets/images/shopCategory/accessories-mobile.png'; // eslint-disable-line
+import AccTablet from '../../../../assets/images/shopCategory/accessories-tablet.png'; // eslint-disable-line
+import AccDesktop from '../../../../assets/images/shopCategory/accessories-desktop.png'; // eslint-disable-line
+
 type Props = {
   data: AllProducts[];
 };
@@ -26,20 +38,14 @@ export const CategoryCards: React.FC<Props> = ({ data }) => {
         <div className={styles.category__cards}>
           <div className={styles.category__card}>
             <picture className={styles.category__picture}>
-              <source
-                media="(min-width: 1119px)"
-                srcSet="src/assets/images/shopCategory/shop-category-phones-desktop.png" // eslint-disable-line
-              />
-              <source
-                media="(min-width: 639px)"
-                srcSet="src/assets/images/shopCategory/shop-category-phones-tablet.png" // eslint-disable-line
-              />
+              <source media="(min-width: 1119px)" srcSet={PhonesDesktop} />
+              <source media="(min-width: 639px)" srcSet={PhonesTablet} />
 
               <NavLink to="/phones">
                 <img
                   loading="lazy"
                   className={styles.category__image}
-                  src="src/assets/images/shopCategory/shop-category-phones-mobile.png" // eslint-disable-line
+                  src={PhonesMobile}
                   alt="Зображення категорії мобільних телефонів"
                 />
               </NavLink>
@@ -51,20 +57,14 @@ export const CategoryCards: React.FC<Props> = ({ data }) => {
           </div>
           <div className={styles.category__card}>
             <picture className={styles.category__picture}>
-              <source
-                media="(min-width: 1119px)"
-                srcSet="src/assets/images/shopCategory/shop-category-tablets-desktop.png" // eslint-disable-line
-              />
-              <source
-                media="(min-width: 639px)"
-                srcSet="src/assets/images/shopCategory/shop-category-tablets-tablet.png" // eslint-disable-line
-              />
+              <source media="(min-width: 1119px)" srcSet={TabletsDesktop} />
+              <source media="(min-width: 639px)" srcSet={TabletsTablet} />
 
               <NavLink to="/tablets">
                 <img
                   loading="lazy"
                   className={styles.category__image}
-                  src="src/assets/images/shopCategory/shop-category-tablets-mobile.png" // eslint-disable-line
+                  src={TabletsMobile}
                   alt="Зображення категорії планшетів"
                 />
               </NavLink>
@@ -77,20 +77,14 @@ export const CategoryCards: React.FC<Props> = ({ data }) => {
 
           <div className={styles.category__card}>
             <picture className={styles.category__picture}>
-              <source
-                media="(min-width: 1119px)"
-                srcSet="src/assets/images/shopCategory/shop-category-accessories-desktop.png" // eslint-disable-line
-              />
-              <source
-                media="(min-width: 639px)"
-                srcSet="src/assets/images/shopCategory/shop-category-accessories-tablet.png" // eslint-disable-line
-              />
+              <source media="(min-width: 1119px)" srcSet={AccDesktop} />
+              <source media="(min-width: 639px)" srcSet={AccTablet} />
 
               <NavLink to="/accessories">
                 <img
                   loading="lazy"
                   className={styles.category__image}
-                  src="src/assets/images/shopCategory/shop-category-accessories-mobile.png" // eslint-disable-line
+                  src={AccMobile}
                   alt="Зображення категорії аксесуарів"
                 />
               </NavLink>

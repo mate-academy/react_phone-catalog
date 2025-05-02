@@ -8,8 +8,8 @@ import 'swiper/css/thumbs';
 import styles from './ProductOverview.module.scss';
 
 import { Product } from '../../../../shared/types/Product/Product';
-import { ProductDetails } from './components/ProductDetails';
-import { ProductOptions } from './components/ProductOptions';
+import { ProductDetails } from '../ProductDetails';
+import { ProductOptions } from '../ProductOptions';
 
 type Props = {
   product: Product;
