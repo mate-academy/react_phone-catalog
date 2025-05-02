@@ -8,24 +8,22 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className={s.card}>
-      <div className={s.picture}>
-        <img className={s.img} src={product.image} alt="Product image" />
-      </div>
-      <span>{product.name}</span>
+      <img className={s.img} src={product.image} alt="Product image" />
+      <span className={s.name}>{product.name}</span>
 
       <span>{product.price}</span>
 
       <div>__</div>
 
-      <div>
+      <div className={s.parametrs}>
         <span>Screen</span>
         <span>{product.screen}</span>
       </div>
-      <div>
+      <div className={s.parametrs}>
         <span>Capacity</span>
         <span>{product.capacity}</span>
       </div>
-      <div>
+      <div className={s.parametrs}>
         <span>Ram</span>
         <span>{product.ram}</span>
       </div>
