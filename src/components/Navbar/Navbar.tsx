@@ -26,83 +26,81 @@ export const Navbar: React.FC = () => {
       className={`navbar-body ${currentTheme}`}
     >
       <div className={`navbar-container ${currentTheme}`}>
-        <div className="navbar-brand">
-          current theme {currentTheme}
-          <NavLink
-            to="/"
-            className={() => classNames(
-              'navbar-item',
-            )}
-          >
-            {t('navigation.logo')}
-          </NavLink>
+        current theme {currentTheme}<br/>
+        <NavLink
+          to="/"
+          className={() => classNames(
+            'navbar-item',
+          )}
+        >
+          {t('navigation.logo')}
+        </NavLink>
 
-          <NavLink
-            to="/"
-            className={({ isActive }) => classNames(
-              'navbar-item',
-              { 'has-background-grey-lighter': isActive },
-            )}
-          >
-            {t('navigation.home')}
-          </NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) => classNames(
+            'navbar-item',
+            { 'has-background-grey-lighter': isActive },
+          )}
+        >
+          {t('navigation.home')}
+        </NavLink>
 
-          <NavLink
-            to="/phones"
-            className={({ isActive }) => classNames(
-              'navbar-item',
-              { 'has-background-grey-lighter': isActive },
-            )}
-          >
-            {t('navigation.phones')}
-          </NavLink>
+        <NavLink
+          to="/phones"
+          className={({ isActive }) => classNames(
+            'navbar-item',
+            { 'has-background-grey-lighter': isActive },
+          )}
+        >
+          {t('navigation.phones')}
+        </NavLink>
 
-          <NavLink
-            to="/tablets"
-            className={({ isActive }) => classNames(
-              'navbar-item',
-              { 'has-background-grey-lighter': isActive },
-            )}
-          >
-            {t('navigation.tablets')}
-          </NavLink>
+        <NavLink
+          to="/tablets"
+          className={({ isActive }) => classNames(
+            'navbar-item navbar-tablets',
+            { 'has-background-grey-lighter': isActive },
+          )}
+        >
+          {t('navigation.tablets')}
+        </NavLink>
 
-          <NavLink
-            to="/accessories"
-            className={({ isActive }) => classNames(
-              'navbar-item',
-              { 'has-background-grey-lighter': isActive },
-            )}
-          >
-            {t('navigation.accessories')}
-          </NavLink>
+        <NavLink
+          to="/accessories"
+          className={({ isActive }) => classNames(
+            'navbar-item',
+            { 'has-background-grey-lighter': isActive },
+          )}
+        >
+          {t('navigation.accessories')}
+        </NavLink>
 
-          <input type="text" placeholder={t('navigation.search_placeholder')} />
+        <input type="text" placeholder={t('navigation.search_placeholder')} />
 
-          <NavLink
-            to="/favorites"
-            className={({ isActive }) => classNames(
-              'navbar-item',
-              { 'has-background-grey-lighter': isActive },
-            )}
-          >
-            {t('navigation.favorites')}
-          </NavLink>
+        <NavLink
+          to="/favorites"
+          className={({ isActive }) => classNames(
+            'navbar-item',
+            { 'has-background-grey-lighter': isActive },
+          )}
+        >
+          {t('navigation.favorites')}
+        </NavLink>
 
-          <NavLink
-            to="/cart"
-            className={({ isActive }) => classNames(
-              'navbar-item',
-              { 'has-background-grey-lighter': isActive },
-            )}
-          >
-            {t('navigation.cart')}
-          </NavLink>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) => classNames(
+            'navbar-item',
+            { 'has-background-grey-lighter': isActive },
+          )}
+        >
+          {t('navigation.cart')}
+        </NavLink>
 
-          <LanguageSwitcher />
+        <LanguageSwitcher />
 
-          <ThemeSwitcher />
-        </div>
+        <ThemeSwitcher />
       </div>
     </nav>
   );

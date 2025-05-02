@@ -7,6 +7,9 @@
 }
 
 .navbar-container {
+  display: flex;
+  flex-wrap: wrap;
+
   &.theme0 {
     background-color: aqua;
   }

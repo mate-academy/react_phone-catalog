@@ -7,9 +7,10 @@ export const Footer: React.FC = () => {
     <nav
       data-cy="footer"
       aria-label="main footer"
+      className="nav-footer-container"
     >
-      <div className="container">
-        <div className="Footer-brand">
+      <div className="footer-container">
+        <div className="footer-brand">
           <NavLink
             to="/"
             className={() => classNames(

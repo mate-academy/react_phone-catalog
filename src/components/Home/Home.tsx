@@ -1,25 +1,24 @@
 import { useEffect } from 'react';
+
 import { loadComponentStyles } from '../../redux/themeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import SomeSwiperino from '../Swiper/Swiper';
+import './Home.scss';
+
 
 export const Home: React.FC = () => {
-  const { currentTheme, loadedStyles } = useSelector((state: RootState) =>
+  const { currentTheme } = useSelector((state: RootState) =>
     state.theme);
   const componentName = 'Home';
-  const styleKey = `${componentName}_${currentTheme}`;
   const dispatch = useDispatch();
-
-/*   useEffect(() => {
-    // Завантажуємо стилі, якщо вони ще не завантажені
-    if (!loadedStyles[styleKey]) {
-      dispatch(loadComponentStyles({ componentName, theme: currentTheme }));
-    }
-  }, []); */
 
   return (
     <div className="main">
       <h1>Home PAGE</h1>
+      <div className='slider-container'>
+        <SomeSwiperino />
+      </div>
     </div>
   );
 };
