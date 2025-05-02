@@ -5,6 +5,8 @@ import { getProducts } from '../../../../utils/fetchClient';
 import styles from './ProductsList.module.scss';
 import { Loader } from '../Loader';
 import { useSearchParams } from 'react-router-dom';
+import CustomSelect from '../CustomSelect';
+import Pagination from '../Pagination';
 
 type Props = {
   type: string;
@@ -14,12 +16,13 @@ export const ProductsList: React.FC<Props> = ({ type }) => {
   const [items, setItems] = useState<Product[]>([]);
   const [visibleItems, setVisibleItems] = useState(items);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchParams] = useSearchParams();
-  const sort = searchParams.get('sort') || '';
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'All';
   const currentPage = searchParams.get('page') || 1;
   const startIndex = perPage === 'All' ? 0 : (+currentPage - 1) * +perPage;
   const endIndex = perPage === 'All' ? -1 : startIndex + +perPage;
+  const [selectOption, setSelectOption] = useState<string>();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -58,16 +61,100 @@ export const ProductsList: React.FC<Props> = ({ type }) => {
     setVisibleItems(items.slice(startIndex, endIndex));
   }, [endIndex, startIndex, items]);
 
+  function changePerPage(e: string) {
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.delete('page');
+
+    if (e === 'All') {
+      newParams.delete('perPage');
+    } else {
+      newParams.set('perPage', e);
+    }
+
+    setSearchParams(newParams);
+  }
+
+  function changeSorting(e: string) {
+    const newParams = new URLSearchParams(searchParams);
+
+    setSelectOption(e);
+    newParams.set('sort', e);
+    setSearchParams(newParams);
+  }
+
+  useEffect(() => {
+    switch (sort) {
+      case 'age':
+        setSelectOption('Newest');
+        break;
+      case 'price':
+        setSelectOption('Cheapest');
+        break;
+      case 'title':
+        setSelectOption('Alphabetically');
+        break;
+    }
+  }, [sort]);
+
+  function selectPage(page: number) {
+    const newParams = new URLSearchParams(searchParams);
+
+    if (page === 1) {
+      newParams.delete('page');
+    } else {
+      newParams.set('page', page.toString());
+    }
+
+    setSearchParams(newParams);
+  }
+
   return (
     <>
-      {!isLoading ? (
-        <div className={styles.list}>
-          {visibleItems.map(item => (
-            <div key={item.id} className={styles.list__item}>
-              <ProductCard product={item} />
-            </div>
-          ))}
+      <form className={styles.form}>
+        <div className={styles.form__control}>
+          <CustomSelect
+            onSelect={changeSorting}
+            selected={selectOption || 'Newest'}
+            options={[
+              { label: 'Newest', value: 'age' },
+              { label: 'Alphabetically', value: 'title' },
+              { label: 'Cheapest', value: 'price' },
+            ]}
+          />
         </div>
+        <div className={styles.form__control}>
+          <CustomSelect
+            onSelect={changePerPage}
+            selected={perPage || 'All'}
+            options={[
+              { label: '4', value: '4' },
+              { label: '8', value: '8' },
+              { label: '16', value: '16' },
+              { label: 'All', value: 'All' },
+            ]}
+          />
+        </div>
+      </form>
+      {!isLoading ? (
+        <>
+          <div className={styles.list}>
+            {visibleItems.map(item => (
+              <div key={item.id} className={styles.list__item}>
+                <ProductCard product={item} />
+              </div>
+            ))}
+          </div>
+
+          {perPage !== 'All' && (
+            <Pagination
+              totalItems={items.length}
+              currentPage={+currentPage || 1}
+              setPage={selectPage}
+              perPage={+perPage}
+            />
+          )}
+        </>
       ) : (
         <Loader />
       )}

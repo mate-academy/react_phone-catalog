@@ -26,7 +26,7 @@ export async function getTablets(): Promise<Tablet[]> {
 }
 
 export async function getAccessories(): Promise<Accessorie[]> {
-  const response = await fetch(`${BASE_URL}/api/accessories.json`);
+  const response = await fetch(`${BASE_URL}/accessories.json`);
 
   return response.json();
 }
