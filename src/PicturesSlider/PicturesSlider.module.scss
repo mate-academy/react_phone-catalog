@@ -92,8 +92,11 @@ opacity: 1;
 @media screen and (min-width: 1200px){
   .pictures_slider {
     display: flex;
+    max-width: 100%;
     width: 1136px;
-    height: 432px;
+    height: 100%;
+    height: 100%;
+
     margin: 0 0 80px;
     position: relative;
     gap: 19px;

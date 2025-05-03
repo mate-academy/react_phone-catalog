@@ -120,19 +120,23 @@
 @media screen and (min-width: 1200px){
   .product_list {
     padding: 20px;
-    max-width: 1199px;
+    max-width: 1440px;
     height: 577px;
-    margin-bottom: 80px;
   }
 
   .controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%;
   }
 
   .title {
-    text-align: left;
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
   }
 
   .buttons_group {
@@ -155,7 +159,8 @@
   }
 
   .product_grid {
-    display: grid;
+    display: flex;
+    justify-content: flex-start;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin-top: 20px;

@@ -197,8 +197,7 @@
   }
 }
 
-
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1200px) {
   .header {
     position: fixed;
     width: 100%;
@@ -206,36 +205,26 @@
     top: 0;
     left: 0;
     z-index: 1000;
-
     background-color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
 
-  .container {
-    max-width: 1180px;
-    height: 100px;
-    margin: 0 auto;
+  .header__container {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .logo {
+    margin-right: 24px;
   }
 
   .burger {
     display: none;
   }
 
-  .header__body {
-    position: sticky;
-    z-index: -2;
-    display: flex;
-    justify-content: space-between;
-    height: 64px;
-    align-items: center;
-  }
-
-  .logo {
-    margin: 18px 24px;
-  }
 
   .logo a {
     font-size: 24px;
@@ -244,56 +233,38 @@
     color: #333;
   }
 
-  .nav ul {
+  .nav {
     display: flex;
+    flex-grow: 1;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav_left {
+    display: flex;
+    gap: 64px;
     list-style: none;
-    padding: 0;
+    margin-right: auto;
+    width: auto;
+  }
+
+  .nav_right {
+    display: flex;
+    margin-left: auto;
   }
 
   .nav li {
-    margin-left: 20px;
     font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 800;
     line-height: 11px;
     letter-spacing: 0.04em;
-    text-align: left;
-
   }
 
   .nav a {
     text-decoration: none;
     color: #333;
     transition: color 0.3s ease;
-  }
-
-  .nav {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .nav_left, .nav_right {
-    display: flex;
-    list-style: none;
-  }
-
-  .nav-left li, .nav-right li {
-    margin-left: 20px;
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 11px;
-    letter-spacing: 0.04em;
-    text-align: left;
-  }
-
-
-  .nav_left {
-    display: flex;
-    gap: 64px;
-    justify-content: center;
-    align-items: center;
   }
 
   .nav_favorite,
@@ -310,6 +281,4 @@
     width: 16px;
     height: 16px;
   }
-
 }
-

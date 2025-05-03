@@ -7,7 +7,6 @@
   font-family: Mont;
   font-weight: 800;
   font-size: 22px;
-
 }
 
 .categorys {
@@ -82,7 +81,7 @@
 
   .categorys {
     display: flex;
-    flex-direction: row; // Горизонтальное расположение
+    flex-direction: row;
     width: 100%;
     max-width: 1136px;
     gap: 16px;
@@ -134,20 +133,28 @@
 
 @media screen and (min-width: 1200px){
 
+  .category {
+    max-width: 1920px;
+    width: 100%;
+    max-height: 588px;
+    height: 100%;
+  }
+
   .title {
     margin-bottom: 24px;
   }
 
   .categorys {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1136px;
+    justify-content: flex-start;
+    max-width: 100%;
     max-height: 506px;
+    gap: 0;
   }
 
   .category_item {
-    width: 360px;
+    width: 368px;
+    height: 368px;
     margin: 0 10px;
     gap: 16px;
 
@@ -173,8 +180,10 @@
   }
 
   .image {
-    width: 368px;
-    height: 368px;
+    max-width: 368px;
+    width: 100%;
+    max-height: 368px;
+    height: 100%;
     object-position: 49px 40px;
     margin-bottom: -20px;
 
