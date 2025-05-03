@@ -117,6 +117,16 @@ export const ProductDetailsPage = () => {
     fetchProducts();
   }, [productId]);
 
+  useEffect(() => {
+    if (product && isPhoneOrTablet(product)) {
+      const params = new URLSearchParams(search);
+      const urlCapacity =
+        params.get('capacity') || product.capacityAvailable[0];
+
+      setSelectedCapacity(urlCapacity);
+    }
+  }, [product, search]);
+
   const handleColorChange = (color: string) => {
     if (!product) {
       return;
@@ -157,7 +167,9 @@ export const ProductDetailsPage = () => {
       setSelectedImage(
         newProduct.images?.[0] ? `${newProduct.images[0]}` : pageNotFound,
       );
-      navigate(`/products/${newProduct.id}`);
+      setTimeout(() => {
+        navigate(`/products/${newProduct.id}`);
+      }, 0);
     }
   };
 
@@ -256,7 +268,7 @@ export const ProductDetailsPage = () => {
           <YourComponent product={product} />
         </a>
         <p className="home--nav-top">{'>'}</p>
-        <span className="product-details__id">ID: {product.id}</span>
+        <span className="product-details__id">{product.id}</span>
       </div>
       <div className="product-details--back">
         <a href={getCategoryLink()}>
@@ -318,10 +330,10 @@ export const ProductDetailsPage = () => {
                 {product.capacityAvailable.map(option => (
                   <button
                     key={option}
-                    className={`capacity-option ${selectedCapacity === option ? 'capacity-option--active' : ''}`}
+                    className={`capacity-option ${selectedCapacity?.trim() === option.trim() ? 'capacity-option--active' : ''}`}
                     onClick={() => handleMemoryChange(option)}
                     aria-label={`Select ${option} capacity`}
-                    aria-selected={selectedCapacity === option}
+                    aria-selected={selectedCapacity?.trim() === option.trim()}
                   >
                     {option}
                   </button>
