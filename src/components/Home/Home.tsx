@@ -4,6 +4,7 @@ import { loadComponentStyles } from '../../redux/themeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import SomeSwiperino from '../Swiper/Swiper';
+import SliderDemo from '../CustomSlider/CustomSlider';
 import './Home.scss';
 
 
@@ -14,11 +15,9 @@ export const Home: React.FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="main">
+    <div className="home-main">
       <h1>Home PAGE</h1>
-      <div className='slider-container'>
-        <SomeSwiperino />
-      </div>
+      <SliderDemo />
     </div>
   );
 };

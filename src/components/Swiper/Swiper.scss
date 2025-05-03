@@ -26,18 +26,19 @@
   bottom: 0 !important;
   left: 0 !important;
   width: 100%;
-  margin-top: 0; /* Space between slider and bullets */
+  margin-top: 0 !important; /* Space between slider and bullets */
   background-color: red;
-  height: 40px !important;
+  height: 20px !important;
 }
 
 
 .swiper-pagination-bullet {
-  width: 14px !important;;
-  height: 4px !important;;
-  border-radius: 0 !important;;
-  background-color: #E2E6E9 !important;;
-  opacity: 1 !important;;
+  width: 14px !important;
+  height: 4px !important;
+  border-radius: 0 !important;
+  background-color: #E2E6E9 !important;
+  opacity: 1 !important;
+  margin-top: 0 !important;
 }
 
 .swiper-pagination-bullet-active {

@@ -1,0 +1,232 @@
+$--tablet-width: 640px;
+
+.slider-wrapper {
+  display: block;
+  margin-bottom: 40px;
+
+  @media (min-width: $--tablet-width) {
+    height: calc(490 / 640 / 2.5 * 100vw);
+  }
+}
+
+.slider {
+  width: 100%;
+  height: 100vw;
+  overflow: hidden;
+  background-color: #1a1a1a33;
+  border-radius: 8px;
+
+  @media (min-width: $--tablet-width) {
+    width: calc(490 / 640 * 100vw);
+    height: calc(490 / 640 / 2.5 * 100vw);
+  }
+}
+
+.slider__container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: $--tablet-width) {
+    width: calc(490 / 640 * 100vw);
+    height: calc(490 / 640 / 2.5 * 100vw);
+  }
+}
+
+.slider__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+
+  @media (min-width: $--tablet-width) {
+    width: calc(490 / 640 * 100vw);
+    height: calc(490 / 640 / 2.5 * 100vw);
+  }
+}
+
+.slider__arrow {
+  position: absolute;
+  width: 40px;
+  border: 5px solid black;
+  height: 236px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.slider__arrow:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.slider__arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.slider__arrow--left {
+  left: 20px;
+  display: none;
+
+  @media (min-width: $--tablet-width) {
+    display: inline-block;
+  }
+}
+
+.slider__arrow--right {
+  right: 20px;
+  display: none;
+  transform: translateY(-100%);
+
+  @media (min-width: $--tablet-width) {
+    display: inline-block;
+  }
+}
+
+.slider__pagination {
+  top: 20px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.slider__bullet {
+  width: 24px;
+  height: 4px;
+  background-color: rgb(196, 196, 196);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 0;
+  border-radius: 2px;
+}
+
+.slider__bullet--active {
+  background-color: black;
+}
+
+/* Styling for the demo content */
+.slider__content-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  color: white;
+
+  @media (min-width: $--tablet-width) {
+    width: calc(490 / 640 * 100vw);
+    height: calc(490 / 640 / 2.5 * 100vw);
+  }
+}
+
+.slider__text-container {
+  flex: 1;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slider__heading {
+  font-size: 36px;
+  margin: 0 0 16px;
+  color: #a685ff;
+}
+
+.slider__subheading {
+  font-size: 18px;
+  margin: 0 0 32px;
+  color: #cccccc;
+}
+
+.slider__cta {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 12px 40px;
+  border-radius: 100px;
+  font-size: 16px;
+  cursor: pointer;
+  width: fit-content;
+  transition: background-color 0.3s;
+}
+
+.slider__cta:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.slider__image-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  &--1 {
+    background-image: url(../../../public/img/square_banner.png);
+    background-size: cover;
+  }
+
+  &--2 {
+    background-image: url(../../../public/img/banner__2.png);
+    background-size: cover;
+    background-position: center;
+  }
+
+  &--3 {
+    background-image: url(../../../public/img/banner__3.png);
+    background-size: cover;
+    background-position: center;
+  }
+
+  @media (min-width: $--tablet-width) {
+    width: calc(490 / 640 * 100vw);
+    height: calc(490 / 640 / 2.5 * 100vw);
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.slider__product-title {
+  font-size: 32px;
+  margin: 0;
+}
+
+.slider__product-tagline {
+  font-size: 16px;
+  margin: 8px 0 32px;
+  color: #cccccc;
+}
+
+.slider__product-image-placeholder {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.slider__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: white;
+  font-size: 24px;
+}
+
+.slider-demo {
+  margin: 0 auto;
+
+  @media (min-width: $--tablet-width) {
+    width: calc(490 / 640 * 100vw);
+    height: calc(490 / 640 / 2.5 * 100vw);
+  }
+}
