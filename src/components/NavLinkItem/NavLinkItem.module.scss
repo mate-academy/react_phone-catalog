@@ -1,5 +1,6 @@
 li {
   list-style-type: none;
+  height: 100%;
 }
 
 @mixin link-styles($bottom: -2px) {
