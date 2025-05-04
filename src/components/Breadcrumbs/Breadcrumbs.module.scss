@@ -1,0 +1,36 @@
+@import '../../styles/index';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+
+  &__link {
+    max-height: 16px;
+
+    @include hover((transform, scale(1.1)));
+  }
+
+  &__disabled {
+    pointer-events: none;
+  }
+
+  &__arrow {
+    max-height: 16px;
+    svg {
+      transform: rotate(180deg);
+      fill: $secondary-text-color;
+    }
+  }
+
+  &__text {
+    color: $secondary-text-color;
+    text-transform: capitalize;
+    margin-top: 2px;
+
+    &:not(:disabled) {
+      @include hover((color, $main-text-color));
+    }
+  }
+}

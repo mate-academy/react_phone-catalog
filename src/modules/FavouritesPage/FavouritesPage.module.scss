@@ -1,0 +1,15 @@
+@import '../../styles/index';
+
+.favourites {
+  &__quantity {
+    color: $secondary-text-color;
+    margin-top: 8px;
+  }
+
+  &__cards {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+}
