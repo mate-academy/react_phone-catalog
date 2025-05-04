@@ -1,7 +1,11 @@
 @import '../../../assets/styles/main';
 
 .menu {
-  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: calc(100vh - 48px);
 
   &__container {
     display: flex;
@@ -131,6 +135,7 @@
   }
 
   &__favorites {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,6 +150,7 @@
   }
 
   &__cart {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -158,5 +164,27 @@
   &__cartIcon {
     width: 16px;
     height: 16px;
+  }
+
+  &__cartBadge {
+    position: absolute;
+    top: 17px;
+    transform: translateX(50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 15px;
+    height: 15px;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+
+    font-size: 9px;
+    font-weight: 400;
+    color: $color-white;
+    text-align: center;
+
+    background-color: #eb5757;
   }
 }

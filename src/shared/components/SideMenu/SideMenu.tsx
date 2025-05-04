@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './SideMenu.module.scss';
+
+import { FavoritesStateContext } from '../../store/FavoritesProvider';
+import { CartStateContext } from '../../store/CartProvider';
 
 // eslint-disable-next-line
 import FavoritesIcon from '../../../assets/icons/aside-icons/favorites-icon.svg';
@@ -12,6 +15,14 @@ type Props = {
 };
 
 export const SideMenu: React.FC<Props> = ({ setIsOpenSide }) => {
+  const favoritesProduct = useContext(FavoritesStateContext);
+  const cartsProduct = useContext(CartStateContext);
+
+  const totalItems =
+    Array.isArray(cartsProduct) &&
+    cartsProduct.length > 0 &&
+    cartsProduct.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <aside className={styles.menu}>
       <nav className={styles.menu__nav}>
@@ -66,6 +77,9 @@ export const SideMenu: React.FC<Props> = ({ setIsOpenSide }) => {
             alt="Улюблені товари"
             className={styles.menu__favoritesIcon}
           />
+          <span className={styles.menu__cartBadge}>
+            {favoritesProduct.length}
+          </span>
         </Link>
         <Link
           to="/cart"
@@ -73,6 +87,7 @@ export const SideMenu: React.FC<Props> = ({ setIsOpenSide }) => {
           onClick={() => setIsOpenSide(false)}
         >
           <img src={CartIcon} alt="Кошик" className={styles.menu__cartIcon} />
+          <span className={styles.menu__cartBadge}>{totalItems}</span>
         </Link>
       </div>
     </aside>

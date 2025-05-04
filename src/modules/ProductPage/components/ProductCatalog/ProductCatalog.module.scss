@@ -17,19 +17,19 @@
   &__sortBy {
     display: flex;
     flex-direction: column;
-    width: 136px;
+    min-width: 136px;
     height: 59px;
 
     @include on-tablet {
-      width: 187px;
+      min-width: 187px;
     }
 
     @include on-desktop {
-      width: 176px;
+      min-width: 176px;
     }
 
     @include on-desktop-extra {
-      width: 176px;
+      min-width: 176px;
     }
   }
 
@@ -110,16 +110,16 @@
   }
 
   &__itemsPerPage {
-    width: 136px;
+    min-width: 136px;
     height: 59px;
     margin-left: 16px;
 
     @include on-desktop {
-      width: 128px;
+      min-width: 128px;
     }
 
     @include on-desktop-extra {
-      width: 128px;
+      min-width: 128px;
     }
   }
 
