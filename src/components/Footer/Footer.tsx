@@ -21,7 +21,8 @@ export const Footer: React.FC = () => {
           </NavLink>
 
           <NavLink
-            to="https://github.com/andriy-fesych/react_phone-catalog/tree/develop"
+            to={'https://github.com/andriy-fesych'
+              + '/react_phone-catalog/tree/develop'}
             target="_blank"
             rel="noopener noreferrer"
             className={({ isActive }) => classNames(
@@ -53,7 +54,7 @@ export const Footer: React.FC = () => {
           </NavLink>
 
           <div
-            className="totop"
+            className="totop Footer-item"
             onClick={() => window.scrollTo(0, 0)}
           >
             BACK_TO_TOP

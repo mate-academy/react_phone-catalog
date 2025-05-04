@@ -2,22 +2,25 @@ import { useState, useEffect, useRef, TouchEvent } from 'react';
 import './CustomSlider.scss';
 import '../../../public/img/square_banner.png';
 
-const ImageSlider = ({ slides = [], autoRotateTime = 600000 }) => {
+const ImageSlider = ({ slides = [], autoRotateTime = 60000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef(null);
-  const sliderRef = useRef(null);
+  // const sliderRef = useRef(null);
   const touchStartXRef = useRef(null);
   const touchEndXRef = useRef(null);
 
   const goToSlide = (index) => {
     setCurrentIndex(index);
+
     resetTimer();
   };
 
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+
     setCurrentIndex(newIndex);
+
     resetTimer();
   };
 
@@ -41,34 +44,30 @@ const ImageSlider = ({ slides = [], autoRotateTime = 600000 }) => {
   };
 
   const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
-    console.log('Touch start detected:', e.touches[0].clientX);
+    // console.log('Touch start detected:', e.touches[0].clientX);
     touchStartXRef.current = e.touches[0].clientX;
     resetTimer();
   };
 
   const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
-    console.log('Touch move detected:', e.touches[0].clientX);
+    // console.log('Touch move detected:', e.touches[0].clientX);
     touchEndXRef.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
-    console.log('Touch end detected');
+    // console.log('Touch end detected');
     if (!touchStartXRef.current || !touchEndXRef.current) {
-      console.log('Touch coordinates missing');
+      // console.log('Touch coordinates missing');
       return;
     }
 
     const difference = touchStartXRef.current - touchEndXRef.current;
-    console.log('Swipe distance:', difference);
-    const minSwipeDistance = 50; // Minimum distance required for a swipe
+    // console.log('Swipe distance:', difference);
+    const minSwipeDistance = 50; // Minimum distance required for a swipe confirmation
 
     if (difference > minSwipeDistance) {
-      // Swipe left, go to next slide
-      console.log('Swiping left - next slide');
       goToNext();
     } else if (difference < -minSwipeDistance) {
-      // Swipe right, go to previous slide
-      console.log('Swiping right - previous slide');
       goToPrevious();
     }
 
@@ -79,6 +78,7 @@ const ImageSlider = ({ slides = [], autoRotateTime = 600000 }) => {
 
   useEffect(() => {
     resetTimer();
+
     return () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
@@ -90,9 +90,9 @@ const ImageSlider = ({ slides = [], autoRotateTime = 600000 }) => {
   const slideContent = slides.length > 0
     ? slides
     : [
-      { content: "Slide 1" },
-      { content: "Slide 2" },
-      { content: "Slide 3" }
+      { content: 'Slide 1' },
+      { content: 'Slide 2' },
+      { content: 'Slide 3' },
     ];
 
   return (
@@ -102,7 +102,15 @@ const ImageSlider = ({ slides = [], autoRotateTime = 600000 }) => {
         onClick={goToPrevious}
         aria-label="Previous slide"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
@@ -121,9 +129,6 @@ const ImageSlider = ({ slides = [], autoRotateTime = 600000 }) => {
               {slide.content}
             </div>
           ))}
-
-
-
 
         </div>
       </div>
@@ -172,7 +177,7 @@ const SliderDemo = () => {
             <p className="slider__subheading">Be the first!</p>
             <button className="slider__cta">ORDER NOW</button>
           </div>
-          <div className="">
+          <div className="slider__text-container">
             <h2 className="slider__product-title">iPhone 14 Pro</h2>
             <p className="slider__product-tagline">Pro. Beyond.</p>
             <div className="slider__product-image-placeholder"></div>

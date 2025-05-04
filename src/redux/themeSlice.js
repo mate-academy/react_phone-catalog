@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const savedTheme = localStorage.getItem('theme');
 const initialState = {
-  currentTheme: ['theme0', 'theme1', 'theme2', 'theme3', 'theme4']
+  current: ['theme0', 'theme1', 'theme2', 'theme3', 'theme4']
     .includes(savedTheme)
     ? savedTheme
     : 'theme0',

@@ -141,6 +141,13 @@ $--tablet-width: 640px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  & * {
+    @media (max-width: $--tablet-width) {
+      display: none;
+    }
+  }
+
 }
 
 .slider__heading {
@@ -191,7 +198,7 @@ $--tablet-width: 640px;
   }
 
   &--3 {
-    background-image: url(../../../public/img/banner__3.png);
+    background-image: url(../../../public/img/banner_4.png);
     background-size: cover;
     background-position: center;
   }

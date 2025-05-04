@@ -6,17 +6,34 @@ import { useTranslation } from 'react-i18next';
 import { RootState, useAppSelector } from '../../redux/store';
 import { loadComponentStyles, setTheme } from '../../redux/themeSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Navbar.scss';
 
 type ThemeType = 'theme0' | 'theme1' | 'theme2' | 'theme3' | 'theme4';
 
-export const Navbar: React.FC = () => {
-  const { t } = useTranslation();
+const useWindowWidth = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return windowWidth;
+};
+
+const FullNavbar: React.FC = () => {
   const currentTheme = useAppSelector(
-    (state: { theme: { current: string; }; }) => state.theme.current);
+    (state: { theme: { current: string }; }) => state.theme.current);
+
+  const { t } = useTranslation();
 
   return (
     <nav
@@ -26,7 +43,6 @@ export const Navbar: React.FC = () => {
       className={`navbar-body ${currentTheme}`}
     >
       <div className={`navbar-container ${currentTheme}`}>
-        current theme {currentTheme}<br/>
         <NavLink
           to="/"
           className={() => classNames(
@@ -103,5 +119,20 @@ export const Navbar: React.FC = () => {
         <ThemeSwitcher />
       </div>
     </nav>
+  );
+};
+
+
+export const Navbar: React.FC = () => {
+  const dispatch = useDispatch();
+  const windowWidth = useWindowWidth();
+  const isMobile = windowWidth < 640;
+
+  return isMobile ? (
+    <div className="plug">
+      BURGERINO
+    </div>
+  ) : (
+    <FullNavbar />
   );
 };

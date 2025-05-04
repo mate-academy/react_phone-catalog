@@ -15,13 +15,14 @@ const ThemeSwitcher = () => {
 
   useEffect(() => {
     if (!currentTheme) {
+      console.log('cant see saved theme');
       changeTheme('theme0');
     }
   });
 
   return (
     <div className="theme-selector">
-      <label htmlFor="theme-select">Тема сайту: {currentTheme}</label>
+      <label htmlFor="theme-select">Тема:</label>
       <select
         id="theme-select"
         value={currentTheme}

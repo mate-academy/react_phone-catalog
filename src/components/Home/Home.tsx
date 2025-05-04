@@ -16,7 +16,7 @@ export const Home: React.FC = () => {
 
   return (
     <div className="home-main">
-      <h1>Home PAGE</h1>
+      <h1>Welcome to iSupply store 🌞</h1>
       <SliderDemo />
     </div>
   );
