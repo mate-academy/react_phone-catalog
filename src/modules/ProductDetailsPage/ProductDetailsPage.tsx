@@ -34,7 +34,7 @@ export const ProductDetailsPage: React.FC = () => {
 
         await new Promise(resolve => setTimeout(resolve, 300));
 
-        const res = await fetch(`/api/${category}.json`);
+        const res = await fetch(`./api/${category}.json`);
         const data: ProductType[] = await res.json();
 
         const foundProduct = data.find(p => p.id === id);
