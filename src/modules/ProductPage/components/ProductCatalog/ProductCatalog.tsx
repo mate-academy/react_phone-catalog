@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 import styles from './ProductCatalog.module.scss';
 
@@ -57,6 +57,26 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
     );
   };
 
+  const handleSort = (value: string) => {
+    const newSearch = getSearchWith(searchParams, {
+      perPage: itemsPerPage,
+      sort: value,
+      page: '1',
+    });
+
+    setSearchParams(newSearch);
+  };
+
+  const handleItems = (value: string) => {
+    const newSearch = getSearchWith(searchParams, {
+      perPage: value,
+      sort: sortBy,
+      page: '1',
+    });
+
+    setSearchParams(newSearch);
+  };
+
   useEffect(() => {
     const timer = new Promise(resolve => setTimeout(resolve, 600));
 
@@ -78,6 +98,7 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
               activeClass: styles.product__sortButtonActive,
             })}
             onClick={() => setIsSortOpen(prev => !prev)}
+            onBlur={() => setIsSortOpen(false)}
           >
             {sortBy}
             <span className={styles.product__arrowSort}></span>
@@ -89,19 +110,13 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
               onClick={() => setIsSortOpen(false)}
             >
               {Object.values(SortBy).map(sortDesc => (
-                <Link
-                  to={{
-                    search: getSearchWith(searchParams, {
-                      sort: sortDesc,
-                      perPage: itemsPerPage,
-                      page: '1',
-                    }),
-                  }}
+                <div
                   className={styles.product__dropdownItem}
                   key={sortDesc}
+                  onMouseDown={() => handleSort(sortDesc)}
                 >
                   {sortDesc}
-                </Link>
+                </div>
               ))}
             </div>
           )}
@@ -117,7 +132,7 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
               activeClass: styles.product__itemsButtonActive,
             })}
             onClick={() => setIsItemsOpen(prev => !prev)}
-            // onBlur={() => setIsOpen(false)}
+            onBlur={() => setIsItemsOpen(false)}
           >
             {itemsPerPage}
             <span className={styles.product__arrowItems}></span>
@@ -130,19 +145,13 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
               onClick={() => setIsItemsOpen(false)}
             >
               {Object.values(ItemsOnPage).map(itemOnPage => (
-                <Link
-                  to={{
-                    search: getSearchWith(searchParams, {
-                      perPage: itemOnPage,
-                      sort: sortBy,
-                      page: '1',
-                    }),
-                  }}
+                <div
                   className={styles.product__dropdownItem}
                   key={itemOnPage}
+                  onMouseDown={() => handleItems(itemOnPage)}
                 >
                   {itemOnPage}
-                </Link>
+                </div>
               ))}
             </div>
           )}
