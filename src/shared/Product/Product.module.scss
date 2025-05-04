@@ -5,14 +5,6 @@
   background-color: utils.$color-surface-1;
   transition: border utils.$animation-duration ease;
 
-  &:hover {
-    border: 1px solid utils.$color-icons;
-  }
-
-  &:hover .product__img img {
-    transform: scale(1.05);
-  }
-
   &__content {
     @extend %flex-column;
 
@@ -25,14 +17,6 @@
     text-decoration: none;
   }
 
-  &__imgWrapper {
-    @extend %flex-center;
-
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-
   &__img {
     display: block;
 
@@ -42,6 +26,22 @@
     object-fit: contain;
 
     transition: transform utils.$animation-duration ease;
+  }
+
+  &__imgWrapper {
+    @extend %flex-center;
+
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    border: 1px solid utils.$color-icons;
+  }
+
+  &:hover .product__img {
+    transform: scale(1.05);
   }
 
   &__title {
@@ -107,52 +107,6 @@
       line-height: 15px;
       color: utils.$color-white;
       text-align: right;
-    }
-  }
-
-  &__buttons {
-    @extend %flex-between-center;
-
-    gap: 8px;
-  }
-
-  &__addToCart {
-    cursor: pointer;
-
-    width: 100%;
-    padding: 10px;
-    border: none;
-
-    font-family: utils.$font-main;
-    font-size: 14px;
-    font-weight: 700;
-    font-style: normal;
-    line-height: 21px;
-    color: utils.$color-white;
-
-    appearance: none;
-    background-color: utils.$color-accent;
-
-    transition: background-color utils.$animation-duration;
-
-    &:hover {
-      background-color: utils.$color-accent-hover;
-    }
-  }
-
-  &__like {
-    cursor: pointer;
-
-    padding: 12px;
-    border: none;
-
-    appearance: none;
-    background-color: utils.$color-surface-2;
-
-    transition: background-color utils.$animation-duration;
-
-    &:hover {
-      background-color: utils.$color-icons;
     }
   }
 }

@@ -1,47 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Hero } from '../../components/Hero';
 import { NewModels } from '../../components/NewModels';
 import { Category } from '../../components/Category';
 import { HotPrices } from '../../components/HotPrices';
+import { useProducts } from '../../contexts/ProductsContext';
+import { Loading } from '../../shared/Loading';
 
 export const HomePage: React.FC = () => {
-  const [phonesTotal, setPhonesTotal] = useState(0);
-  const [tabletsTotal, setTabletsTotal] = useState(0);
-  const [accessoriesTotal, setAccessoriesTotal] = useState(0);
+  const { products, error, isLoading } = useProducts();
 
-  const fetchProducts = async () => {
-    try {
-      const phonesRes = await fetch('api/phones.json');
-      const phonesData = await phonesRes.json();
-
-      const tabletsRes = await fetch('api/tablets.json');
-      const tabletsData = await tabletsRes.json();
-
-      const accessoriesRes = await fetch('api/accessories.json');
-      const accessoriesData = await accessoriesRes.json();
-
-      setPhonesTotal(phonesData.length - 1);
-      setTabletsTotal(tabletsData.length - 1);
-      setAccessoriesTotal(accessoriesData.length - 1);
-    } catch (error) {
-      throw new Error('Error fetching products');
-    }
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const categoryTotals = products?.reduce(
+    (totals, product) => {
+      return {
+        phones: totals.phones + (product.category === 'phones' ? 1 : 0),
+        tablets: totals.tablets + (product.category === 'tablets' ? 1 : 0),
+        accessories:
+          totals.accessories + (product.category === 'accessories' ? 1 : 0),
+      };
+    },
+    { phones: 0, tablets: 0, accessories: 0 },
+  );
 
   return (
     <main>
       <Hero />
-      <NewModels />
-      <Category
-        phonesTotal={phonesTotal}
-        tabletsTotal={tabletsTotal}
-        accessoriesTotal={accessoriesTotal}
-      />
-      <HotPrices />
+      {error ? (
+        <h2>Something went wrong</h2>
+      ) : isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <NewModels products={products} />
+          <Category
+            phonesTotal={categoryTotals.phones}
+            tabletsTotal={categoryTotals.tablets}
+            accessoriesTotal={categoryTotals.accessories}
+          />
+          <HotPrices products={products} />
+        </>
+      )}
     </main>
   );
 };

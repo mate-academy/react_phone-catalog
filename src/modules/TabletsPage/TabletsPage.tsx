@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './TabletsPage.module.scss';
-import { ProductType } from '../../types/ProductType';
 import { useLocation } from 'react-router-dom';
 import { Breadcrumb } from '../../shared/Breadcrumb';
 import { Product } from '../../shared/Product';
+import { ProductType } from '../../types/ProductType';
+import { useProducts } from '../../contexts/ProductsContext';
+import { Loading } from '../../shared/Loading';
 
 export const TabletsPage: React.FC = () => {
-  const [products, setProducts] = useState<ProductType[]>([]);
-  const [productsCount, setProductsCount] = useState<number>(0);
-
+  const { products, error, isLoading } = useProducts();
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter(x => x);
 
-  const fetchProducts = async () => {
-    try {
-      const res = await fetch('api/products.json');
-      const data: ProductType[] = await res.json();
+  if (isLoading) {
+    return <Loading />;
+  }
 
-      const filteredProducts = data.filter(
-        product => product.category === 'tablets',
-      );
+  if (error) {
+    return (
+      <main className={styles.tablets}>
+        <div className={styles.container}>
+          <h2>Something went wrong</h2>
+          <pre style={{ color: 'red', whiteSpace: 'pre-wrap' }}>
+            {JSON.stringify(error, null, 2)}
+          </pre>
+        </div>
+      </main>
+    );
+  }
 
-      setProducts(filteredProducts);
-      setProductsCount(filteredProducts.length - 1);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const tablets = products.filter(
+    (product: ProductType) => product.category === 'tablets',
+  );
 
   return (
     <main>
@@ -40,11 +40,11 @@ export const TabletsPage: React.FC = () => {
           <Breadcrumb pathnames={pathnames} />
           <h1 className={styles.tablets__title}>Tablets</h1>
           <span className={styles.tablets__subtitle}>
-            {productsCount} models
+            {tablets.length} models
           </span>
 
           <div className={styles.tablets__content}>
-            {products.map(product => (
+            {tablets.map(product => (
               <Product
                 key={product.id}
                 product={product}

@@ -2,52 +2,84 @@ import React, { useEffect, useMemo, useState } from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { Breadcrumb } from '../../shared/Breadcrumb';
-import classNames from 'classnames';
+import { ProductGallery } from '../../components/ProductGallery';
+import { ProductOptions } from '../../components/ProductOptions';
+import { AboutProduct } from './About/AboutProduct';
+import ProductInfo from '../../shared/Product/ProductInfo';
+import { RecommendedProduct } from '../../components/RecomendetProduct';
+import { useProducts } from '../../contexts/ProductsContext';
 import { ProductType } from '../../types/ProductType';
+import { Loading } from '../../shared/Loading';
 
 export const ProductDetailsPage: React.FC = () => {
-  const [product, setProduct] = useState<ProductType | null>(null);
-  const [img, setImg] = useState('');
-  const [fade, setFade] = useState(false);
-
+  const { products: recommendedProducts, error, isLoading } = useProducts();
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const location = useLocation();
+
   const pathnames = useMemo(() => {
-    return location.pathname.split('/').filter(x => x);
+    return location.pathname.split('/').filter(Boolean);
   }, [location.pathname]);
 
-  const navigate = useNavigate();
+  const category = pathnames[0];
+  const [product, setProduct] = useState<ProductType | null>(null);
+  const [img, setImg] = useState('');
+  const [localLoading, setLocalLoading] = useState(true);
+  const [localError, setLocalError] = useState(false);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProduct = async () => {
       try {
-        const res = await fetch(`api/${pathnames[0]}.json`);
-        const data = await res.json();
+        setLocalLoading(true);
 
-        const findProduct = data.find((p: ProductType) => p.id === id);
+        await new Promise(resolve => setTimeout(resolve, 300));
 
-        setProduct(findProduct);
-        setImg(findProduct?.images[0]);
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error('Error fetching products', error);
+        const res = await fetch(`/api/${category}.json`);
+        const data: ProductType[] = await res.json();
+
+        const foundProduct = data.find(p => p.id === id);
+
+        if (foundProduct) {
+          setProduct(foundProduct);
+          setImg(foundProduct.images[0]);
+        } else {
+          setProduct(null);
+        }
+      } catch (err) {
+        setLocalError(true);
+      } finally {
+        setLocalLoading(false);
       }
     };
 
-    fetchProducts();
-  }, [id, pathnames]);
+    fetchProduct();
+  }, [category, id]);
 
-  const handleImageChange = (newImage: string) => {
-    if (img !== newImage) {
-      setFade(true);
+  const info = useMemo(
+    () => [
+      { title: 'Screen', value: product?.screen },
+      { title: 'Resolution', value: product?.resolution },
+      { title: 'Processor', value: product?.processor },
+      { title: 'RAM', value: product?.ram },
+      { title: 'Capacity', value: product?.capacity },
+      { title: 'Camera', value: product?.camera },
+      { title: 'Zoom', value: product?.zoom },
+      { title: 'Cell', value: product?.cell },
+    ],
+    [product],
+  );
 
-      setTimeout(() => {
-        setImg(newImage);
-        setFade(false);
-      }, 300);
-    }
-  };
+  if (localLoading) {
+    return <Loading />;
+  }
+
+  if (localError) {
+    return <h2>Something went wrong</h2>;
+  }
+
+  if (!product) {
+    return <h2>Product not found</h2>;
+  }
 
   return (
     <main>
@@ -60,42 +92,34 @@ export const ProductDetailsPage: React.FC = () => {
           >
             Back
           </button>
+
           <div className={styles.productDetails__content}>
             <article className={styles.productDetails__product}>
-              <h1 className={styles.productDetails__title}>{product?.name}</h1>
+              <h1 className={styles.productDetails__title}>{product.name}</h1>
 
-              <div className={styles.gallery}>
-                <div className={styles.gallery__large}>
-                  <img
-                    src={img}
-                    alt=""
-                    className={classNames(
-                      styles.gallery__img,
-                      fade && styles['fade-out'],
-                    )}
-                  />
+              <div className={styles.productDetails__wrapper}>
+                <ProductGallery img={img} setImg={setImg} product={product} />
+                <ProductOptions product={product} />
+              </div>
+
+              <div className={styles.productDetails__description}>
+                <AboutProduct product={product} />
+
+                <div className={styles.productDetails__tech}>
+                  <h3 className={styles.productDetails__subtitle}>
+                    Tech specs
+                  </h3>
+                  <ProductInfo info={info} />
                 </div>
-                <ul className={styles.gallery__list}>
-                  {product?.images &&
-                    product.images.map(image => (
-                      <li
-                        key={image}
-                        className={styles.gallery__item}
-                        onClick={() => handleImageChange(image)}
-                      >
-                        <img
-                          src={image}
-                          alt={image}
-                          className={styles.gallery__img}
-                        />
-                      </li>
-                    ))}
-                </ul>
               </div>
             </article>
           </div>
         </div>
       </section>
+
+      {!isLoading && !error && (
+        <RecommendedProduct products={recommendedProducts} />
+      )}
     </main>
   );
 };

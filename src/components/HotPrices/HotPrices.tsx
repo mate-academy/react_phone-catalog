@@ -9,9 +9,13 @@ import 'swiper/css/pagination';
 import { Product } from '../../shared/Product';
 import { ProductType } from '../../types/ProductType';
 
-export const HotPrices: React.FC = () => {
-  const [products, setProducts] = useState<ProductType[]>([]);
+type Props = {
+  products: ProductType[];
+};
+
+export const HotPrices: React.FC<Props> = ({ products }) => {
   const [isTablet, setIsTablet] = useState<boolean>(window.innerWidth >= 640);
+
   const [isDesktop, setIsDesktop] = useState<boolean>(
     window.innerWidth >= 1024,
   );
@@ -27,29 +31,13 @@ export const HotPrices: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const fetchProducts = async () => {
-    try {
-      const res = await fetch('api/products.json');
-      const data: ProductType[] = await res.json();
-
-      const filteredProducts = data
-        .map(product => ({
-          ...product,
-          discount: product.fullPrice - product.price,
-        }))
-        .sort((a, b) => b.discount - a.discount)
-        .slice(0, 20);
-
-      setProducts(filteredProducts);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Error fetching products', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const filteredProducts = products
+    .map(product => ({
+      ...product,
+      discount: product.fullPrice - product.price,
+    }))
+    .sort((a, b) => b.discount - a.discount)
+    .slice(0, 20);
 
   return (
     <section className={styles.new__models}>
@@ -80,7 +68,7 @@ export const HotPrices: React.FC = () => {
             }}
             spaceBetween={10}
           >
-            {products.map(product => (
+            {filteredProducts.map(product => (
               <SwiperSlide key={product.id} className={styles.slider__slide}>
                 <Product product={product} fullPriceActive={true} />
               </SwiperSlide>

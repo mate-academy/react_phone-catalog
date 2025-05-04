@@ -1,0 +1,47 @@
+@use '../../styles/utils' as utils;
+
+.actions {
+  @extend %flex-between-center;
+
+  gap: 8px;
+
+  &__addToCart {
+    cursor: pointer;
+
+    width: 100%;
+    padding: 10px;
+    border: none;
+
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 21px;
+    color: utils.$color-white;
+
+    appearance: none;
+    background-color: utils.$color-accent;
+
+    transition: background-color utils.$animation-duration;
+
+    &:hover {
+      background-color: utils.$color-accent-hover;
+    }
+  }
+
+  &__like {
+    cursor: pointer;
+
+    padding: 12px;
+    border: none;
+
+    appearance: none;
+    background-color: utils.$color-surface-2;
+
+    transition: background-color utils.$animation-duration;
+
+    &:hover {
+      background-color: utils.$color-icons;
+    }
+  }
+}

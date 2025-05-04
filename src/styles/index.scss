@@ -6,11 +6,19 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-color: $color-black;
 }
 
 main {
+  flex-grow: 1;
   padding-top: 47px;
 
   @include on-tablet {

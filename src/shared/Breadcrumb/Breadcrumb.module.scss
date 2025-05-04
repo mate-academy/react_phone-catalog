@@ -19,11 +19,9 @@
     display: flex;
     flex-shrink: 0;
     gap: 8px;
-    align-items: center;
+    align-items: end;
 
     list-style: none;
-
-    // Последний элемент может сжиматься
     &:last-child {
       flex-shrink: 1;
       min-width: 0;
