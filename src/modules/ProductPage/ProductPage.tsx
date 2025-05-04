@@ -14,7 +14,9 @@ export const ProductPage = () => {
   const { data } = useContext(ProductContext);
   const { pathname } = useLocation();
 
-  const products = productFilterByCategory(data, pathname);
+  const products = Array.isArray(data)
+    ? productFilterByCategory(data, pathname)
+    : [];
 
   return (
     <main className={styles.productPage}>

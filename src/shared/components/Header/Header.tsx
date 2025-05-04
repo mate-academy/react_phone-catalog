@@ -24,6 +24,11 @@ export const Header: React.FC<Props> = ({ isOpenSide, setIsOpenSide }) => {
   const favoritesProduct = useContext(FavoritesStateContext);
   const cartsProduct = useContext(CartStateContext);
 
+  const totalItems =
+    Array.isArray(cartsProduct) &&
+    cartsProduct.length > 0 &&
+    cartsProduct.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
@@ -129,10 +134,8 @@ export const Header: React.FC<Props> = ({ isOpenSide, setIsOpenSide }) => {
               alt="Відкрити корзину"
               className={styles.header__cartImg}
             />
-            {cartsProduct.length > 0 && (
-              <span className={styles.header__cartBadge}>
-                {cartsProduct.length}
-              </span>
+            {totalItems && (
+              <span className={styles.header__cartBadge}>{totalItems}</span>
             )}
           </NavLink>
           <button

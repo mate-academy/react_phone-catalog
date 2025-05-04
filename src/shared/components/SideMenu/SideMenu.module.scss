@@ -1,6 +1,8 @@
 @import '../../../assets/styles/main';
 
 .menu {
+  min-height: calc(100vh - 64px);
+
   &__container {
     display: flex;
     align-items: center;

@@ -29,7 +29,7 @@ const loadStateFromLocalStorage = () => {
 
 export const FavoritesStateContext = React.createContext<AllProducts[]>([]);
 export const FavoritesDispatchContext = React.createContext<
-  React.Dispatch<Action>
+  React.Dispatch<Action> //eslint-disable-line
 >(() => {});
 
 export type Props = {

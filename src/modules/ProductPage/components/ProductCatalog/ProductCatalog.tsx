@@ -78,7 +78,6 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
               activeClass: styles.product__sortButtonActive,
             })}
             onClick={() => setIsSortOpen(prev => !prev)}
-            // onBlur={() => setIsSortOpen(false)}
           >
             {sortBy}
             <span className={styles.product__arrowSort}></span>

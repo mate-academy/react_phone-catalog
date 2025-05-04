@@ -32,10 +32,10 @@
   }
 
   &__description {
+    height: 2.8em;
     margin-bottom: 8px;
     font-weight: 600;
     line-height: 1.4;
-    height: 2.8em;
   }
 
   &__priceContainer {
@@ -49,8 +49,8 @@
 
   &__fullPrice {
     font-weight: 400;
-    text-decoration: line-through;
     color: #89939a;
+    text-decoration: line-through;
   }
 
   &__line {
@@ -100,11 +100,11 @@
     flex-grow: 1;
 
     padding-block: 10px;
+    border: 1px solid $color-primary;
 
     color: $color-white;
 
     background-color: $color-primary;
-    border: 1px solid $color-primary;
 
     transition: box-shadow 0.3s ease-in-out;
 
@@ -113,8 +113,8 @@
     }
 
     &:disabled {
-      color: $color-green;
       border: 1px solid $color-elements;
+      color: $color-green;
       background-color: $color-white;
       box-shadow: 0 0 0 0;
     }

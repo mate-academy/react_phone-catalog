@@ -30,7 +30,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
         const response = await getAllProducts('/products.json');
 
         setData(response.data);
-      } catch (err) {
+      } catch {
         setError('Something went wrong');
       } finally {
         setIsLoading(false);

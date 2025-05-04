@@ -3,11 +3,10 @@
 .spinner {
   position: relative;
   left: 50%;
+  transform: translateY(50%);
 
   width: 60px;
   height: 60px;
-
-  transform: translateY(50%);
 
   &__spin {
     width: 60px;

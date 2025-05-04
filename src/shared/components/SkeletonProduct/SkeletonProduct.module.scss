@@ -14,9 +14,7 @@
 
   &__mainImage {
     display: block;
-    background-color: red;
     height: 202px;
-
     margin-bottom: 24px;
     object-fit: contain;
 
@@ -37,7 +35,6 @@
     width: 223px;
     height: 42px;
     margin-bottom: 8px;
-    background-color: red;
   }
 
   &__priceContainer {
@@ -49,13 +46,11 @@
     width: 51px;
     height: 31px;
     margin-bottom: 8px;
-    background-color: red;
   }
 
   &__fullPrice {
     width: 51px;
     height: 31px;
-    background-color: red;
   }
 
   &__line {
@@ -84,13 +79,11 @@
   &__featureTitle {
     width: 43px;
     height: 15px;
-    background-color: red;
   }
 
   &__featureValue {
     width: 54px;
     height: 15px;
-    background-color: red;
   }
 
   &__buttons {
@@ -104,7 +97,6 @@
     display: flex;
     flex-grow: 1;
     height: 40px;
-    background-color: red;
   }
 
   &__addToFavorites {
@@ -120,10 +112,12 @@
 .productCard__featureValue,
 .productCard__addToCart,
 .productCard__addToFavorites {
+  border-radius: 5px;
+
   background: #eee;
   background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
-  border-radius: 5px;
   background-size: 200% 100%;
+
   animation: 1.5s shine linear infinite;
 }
 

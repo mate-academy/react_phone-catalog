@@ -5,5 +5,9 @@ function wait(delay: number) {
 }
 
 export function getAllProducts(endpoint: string) {
-  return wait(600).then(() => axiosInstance.get(endpoint));
+  return wait(600)
+    .then(() => axiosInstance.get(endpoint))
+    .catch(err => {
+      throw new Error(err);
+    });
 }

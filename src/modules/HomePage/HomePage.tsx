@@ -15,6 +15,7 @@ import { getHotProductsWithDiscount } from './utils/getHotProductsWithDiscount';
 
 export const HomePage = () => {
   const { data } = useContext(ProductContext);
+
   const newProducts = productFilterByNew(data);
   const productsWithHotPrice = getHotProductsWithDiscount(data);
 

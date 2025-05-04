@@ -18,6 +18,7 @@ import { getRandomInteger } from './utils/randomInteger';
 import { getRandomProduct } from './utils/randomProduct';
 import { getAllProducts } from '../../shared/services/apiServices';
 import { getProduct } from './utils/currentProduct';
+import { ProductNotFound } from './components/ProductNotFound';
 
 export const ProductDetailsPage = () => {
   const { data } = useContext(ProductContext);
@@ -47,6 +48,10 @@ export const ProductDetailsPage = () => {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (!currentProduct) {
+    return <ProductNotFound />;
   }
 
   return (

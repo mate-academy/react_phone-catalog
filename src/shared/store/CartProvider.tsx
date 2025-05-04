@@ -11,9 +11,9 @@ export type Action =
   | { type: 'addCartProduct'; payload: Cart }
   | { type: 'deleteCartProduct'; payload: number }
   | {
-      type: 'updateCartProductQuantity';
-      payload: { id: number; amount: number };
-    }
+      type: 'updateCartProductQuantity'; //eslint-disable-line
+      payload: { id: number; amount: number }; //eslint-disable-line
+    } //eslint-disable-line
   | { type: 'clearCart'; payload?: never };
 
 const reducer = (state: Cart[], action: Action) => {
