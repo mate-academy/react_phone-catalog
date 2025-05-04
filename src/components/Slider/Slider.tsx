@@ -39,11 +39,21 @@ export const Slider: React.FC = () => {
         >
           {slides.map(num => (
             <SwiperSlide key={num} className={styles.slider__slide}>
-              <img
-                className={styles.slider__img}
-                src={`img/slider/slide-${num}-${isDesktop ? 'desktop' : 'mobile'}.png`}
-                alt={`Slide ${num}`}
-              />
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet={`img/slider/slide-${num}-${isDesktop ? 'desktop' : 'mobile'}.webp`}
+                />
+                <source
+                  type="image/avif"
+                  srcSet={`img/slider/slide-${num}-${isDesktop ? 'desktop' : 'mobile'}.avif`}
+                />
+                <img
+                  className={styles.slider__img}
+                  src={`img/slider/slide-${num}-${isDesktop ? 'desktop' : 'mobile'}.jpg`}
+                  alt={`Slide ${num}`}
+                />
+              </picture>
             </SwiperSlide>
           ))}
         </Swiper>

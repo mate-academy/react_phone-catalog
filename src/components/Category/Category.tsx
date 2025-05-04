@@ -11,6 +11,8 @@ type Props = {
 type CategoryItem = {
   title: string;
   img: string;
+  avif: string;
+  webp: string;
   alt: string;
   totalKey: keyof Props;
   link: string;
@@ -20,6 +22,8 @@ const categories: CategoryItem[] = [
   {
     title: 'Mobile phones',
     img: 'img/category/phones-category.png',
+    avif: 'img/category/phones-category.avif',
+    webp: 'img/category/phones-category.webp',
     alt: 'Phones',
     totalKey: 'phonesTotal',
     link: '/phones',
@@ -27,6 +31,8 @@ const categories: CategoryItem[] = [
   {
     title: 'Tablets',
     img: 'img/category/tablets-category.png',
+    avif: 'img/category/tablets-category.avif',
+    webp: 'img/category/tablets-category.webp',
     alt: 'Tablets',
     totalKey: 'tabletsTotal',
     link: '/tablets',
@@ -34,6 +40,8 @@ const categories: CategoryItem[] = [
   {
     title: 'Accessories',
     img: 'img/category/accessories-category.png',
+    avif: 'img/category/accessories-category.avif',
+    webp: 'img/category/accessories-category.webp',
     alt: 'Accessories',
     totalKey: 'accessoriesTotal',
     link: '/accessories',
@@ -57,10 +65,14 @@ export const Category: React.FC<Props> = ({
         <h2 className={styles.category__title}>Shop by category</h2>
 
         <div className={styles.category__content}>
-          {categories.map(({ title, img, alt, totalKey, link }) => (
+          {categories.map(({ title, img, avif, webp, alt, totalKey, link }) => (
             <NavLink to={link} key={title} className={styles.category__item}>
               <div className={styles.category__imgWrapper}>
-                <img className={styles.category__img} src={img} alt={alt} />
+                <picture>
+                  <source srcSet={avif} type="image/avif" />
+                  <source srcSet={webp} type="image/webp" />
+                  <img className={styles.category__img} src={img} alt={alt} />
+                </picture>
               </div>
               <div className={styles.category__info}>
                 <h3 className={styles.category__subtitle}>{title}</h3>
