@@ -29,4 +29,35 @@
   &.theme4 {
     background-color: rgb(180, 114, 255);
   }
+
+  &.navbar-container.navbar-container {
+    @media (max-width: 639px) {
+      background-color: rgb(2, 0, 146);
+    }
+  }
+
+  @media (max-width: 639px) {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    z-index: 1;
+    transform: translateX(-100%);
+  }
+
+  &.visible {
+    transform: translateX(0);
+  }
+}
+
+.navbar-burger {
+  display: block;
+  background-color: red;
+  text-align: end;
+  left: 0;
+  top: 0;
+  z-index: 2;
 }

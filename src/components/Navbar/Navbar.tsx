@@ -30,6 +30,7 @@ const useWindowWidth = () => {
 };
 
 const FullNavbar: React.FC = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const currentTheme = useAppSelector(
     (state: { theme: { current: string }; }) => state.theme.current);
 
@@ -42,7 +43,12 @@ const FullNavbar: React.FC = () => {
       aria-label="main navigation"
       className={`navbar-body ${currentTheme}`}
     >
-      <div className={`navbar-container ${currentTheme}`}>
+      <div className="navbar-burger"
+        onClick={() => setSidebarOpen(true)}
+      >🍔</div>
+      <div className={`navbar-container ${currentTheme} ${sidebarOpen ? 'visible' : ''}`}
+        onClick={() => setSidebarOpen(false)}
+      >
         <NavLink
           to="/"
           className={() => classNames(
@@ -92,7 +98,11 @@ const FullNavbar: React.FC = () => {
           {t('navigation.accessories')}
         </NavLink>
 
-        <input type="text" placeholder={t('navigation.search_placeholder')} />
+        <input
+          type="text"
+          placeholder={t('navigation.search_placeholder')}
+          onClick={(e) => e.stopPropagation()}
+        />
 
         <NavLink
           to="/favorites"
@@ -114,9 +124,13 @@ const FullNavbar: React.FC = () => {
           {t('navigation.cart')}
         </NavLink>
 
-        <LanguageSwitcher />
+        <div onClick={(e) => e.stopPropagation()}>
+          <LanguageSwitcher />
+        </div>
 
-        <ThemeSwitcher />
+        <div onClick={(e) => e.stopPropagation()}>
+          <ThemeSwitcher />
+        </div>
       </div>
     </nav>
   );
@@ -129,9 +143,7 @@ export const Navbar: React.FC = () => {
   const isMobile = windowWidth < 640;
 
   return isMobile ? (
-    <div className="plug">
-      BURGERINO
-    </div>
+    <FullNavbar />
   ) : (
     <FullNavbar />
   );
