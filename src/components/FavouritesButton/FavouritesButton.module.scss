@@ -1,0 +1,15 @@
+@import '../../styles/index';
+
+.favouriteButton {
+  @include button;
+
+  width: 40px;
+  height: 40px;
+  border: 1px solid $grey-color;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include hover((border-color, $main-text-color));
+}

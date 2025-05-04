@@ -1,0 +1,105 @@
+@import './variables';
+
+@mixin button {
+  border-radius: 48px;
+  cursor: pointer;
+  text-align: center;
+}
+
+@mixin button-main {
+  @include button;
+
+  padding: 9.5px 0;
+  background-color: $accent-color;
+  color: $white-color;
+  border: 1px solid $accent-color;
+
+  @include hover((box-shadow, 0 3px 13px 0 #17203166));
+}
+
+@mixin button-selected {
+  @include button;
+
+  padding: 9.5px 0;
+  background-color: $white-color;
+  color: $accent-color;
+  border: 1px solid $elements-color;
+}
+
+@mixin slider-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  border: 1px solid $grey-color;
+  background-color: transparent;
+}
+
+@mixin hover($properties...) {
+  @each $property, $toValue in $properties {
+    transition: all $transition-duration;
+  }
+
+  &:hover {
+    @each $property, $toValue in $properties {
+      #{$property}: $toValue;
+    }
+  }
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin container {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  @media (max-width: 1199px) {
+    max-width: 940px;
+  }
+
+  @media (max-width: 991px) {
+    max-width: 720px;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 540px;
+  }
+
+  @media (max-width: 575px) {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+}
+
+@mixin divider {
+  background-color: $elements-color;
+  width: 100%;
+  height: 1px;
+  margin: 8px 0;
+}
+
+@mixin swiper-buttons {
+  @include slider-button;
+  @include button;
+
+  margin: 0;
+
+  &:not(:disabled) {
+    @include hover((border-color, $main-text-color));
+  }
+
+  &::after {
+    content: '';
+  }
+
+  &:disabled {
+    cursor: auto;
+    svg {
+      fill: $grey-color;
+    }
+  }
+}
