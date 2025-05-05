@@ -1,22 +1,22 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Categories } from './components/Categories/Categories';
 import { Product } from '../../types/Product';
-import { getData } from '../../utils/fetchClient';
-import { Loader } from '../../components/Loader';
 import { Carousel } from '../../components/Carousel';
-import { SliderSection } from '../../components/SliderSection';
+import { SectionSlider } from '../../components/SectionSlider';
 import homePageStyles from './HomePage.module.scss';
+import { useLoading } from '../../context/LoadingContext';
+import { getAllProducts } from '../../services/products';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
 
   useEffect(() => {
-    setIsLoading(true);
-    getData<Product[]>('products.json')
+    startLoading();
+    getAllProducts()
       .then(setProducts)
-      .finally(() => setIsLoading(false));
-  }, []);
+      .finally(() => stopLoading());
+  }, [startLoading, stopLoading]);
 
   const sortByHotPrices = useCallback(
     (product1: Product, product2: Product) => {
@@ -33,10 +33,6 @@ export const HomePage = () => {
     [],
   );
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
     <section className={homePageStyles.homePage}>
       <div className={homePageStyles.homePage__sectionWrapper}>
@@ -45,13 +41,13 @@ export const HomePage = () => {
         </h1>
         <Carousel />
       </div>
-      <SliderSection
+      <SectionSlider
         products={products}
         title="Brand new models"
         sortFn={sortByYear}
       />
-      <Categories products={products} />
-      <SliderSection
+      <Categories />
+      <SectionSlider
         products={products}
         title="Brand new models"
         sortFn={sortByHotPrices}

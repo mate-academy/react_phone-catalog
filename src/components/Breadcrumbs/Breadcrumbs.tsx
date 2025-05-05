@@ -1,30 +1,29 @@
 // import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 import breadcrumbsStyles from './Breadcrumbs.module.scss';
 import { IconSvg } from '../IconSvg/IconSvg';
 import { ICON_DATA_PATHS } from '../../constants/iconDataPaths';
 import { getCapitalizationFirstLetter } from '../../helpers/stringHelper';
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
-import { getProductById } from '../../helpers/productHelper';
-import { ProductDetailed } from '../../types/ProductDetailed';
+import { useBreadcrumbs } from '../../context/BreadcrumbsContext';
+import { useCategories } from '../../context/CategoriesContext';
+import { useMemo } from 'react';
 
 export const Breadcrumbs = () => {
-  const location = useLocation();
-  const pathnames = location.pathname.split('/').filter(x => x);
-  const [category, productId] = pathnames;
-  const [product, setProduct] = useState<ProductDetailed>();
+  const { breadcrumbs } = useBreadcrumbs();
+  const { categories } = useCategories();
+  const categoriesNames = categories.map(category => category.name);
+  const validPages = useMemo(
+    () => [...categoriesNames, ROUTES.FAVORITES],
+    [categoriesNames],
+  );
 
-  console.log(location.pathname);
-
-  useEffect(() => {
-    if (productId) {
-      getProductById(category, productId).then(setProduct);
-    }
-  }, [category, productId]);
-
-  if (pathnames.length === 0 || pathnames[0] === ROUTES.CART) {
+  // console.log(breadcrumbs);
+  if (
+    breadcrumbs.length === 0 ||
+    !breadcrumbs.some(breadcrumb => validPages.includes(breadcrumb.name))
+  ) {
     return null;
   }
 
@@ -39,9 +38,15 @@ export const Breadcrumbs = () => {
             <IconSvg dataPath={ICON_DATA_PATHS.HOME} />
           </Link>
         </li>
-        {pathnames.map((name, index) => {
-          const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
-          const isLast = index === pathnames.length - 1;
+        {breadcrumbs.map(({ name, isProduct = false }, index) => {
+          const routeTo = `/${breadcrumbs
+            .map(breadcrumb => breadcrumb.name)
+            .slice(0, index + 1)
+            .join('/')}`;
+          const isLast = index === breadcrumbs.length - 1;
+          const formattedName = isProduct
+            ? name
+            : getCapitalizationFirstLetter(name);
 
           return (
             <li key={name} className={breadcrumbsStyles.breadcrumbs__item}>
@@ -56,16 +61,14 @@ export const Breadcrumbs = () => {
                     breadcrumbsStyles['breadcrumbs__link--is-last'],
                   )}
                 >
-                  {productId
-                    ? product?.name
-                    : getCapitalizationFirstLetter(name)}
+                  {formattedName}
                 </span>
               ) : (
                 <Link
                   to={routeTo}
                   className={breadcrumbsStyles.breadcrumbs__link}
                 >
-                  {getCapitalizationFirstLetter(name)}
+                  {formattedName}
                 </Link>
               )}
             </li>

@@ -1,4 +1,4 @@
-@import '/src/styles/main';
+@use '/src/styles';
 
 .productSpecs {
   display: flex;
@@ -8,22 +8,20 @@
   &__item {
     display: flex;
     justify-content: space-between;
+
+    @include styles.typography(body);
+
+    &--is-short {
+      @include styles.typography(small);
+    }
   }
 
+
   &__label {
-    color: $secondary-color;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0%;
+    color: styles.get-color(secondary);
   }
 
   &__value {
-    color: $primary-color;;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: right;
+    color: styles.get-color(primary);
   }
 }

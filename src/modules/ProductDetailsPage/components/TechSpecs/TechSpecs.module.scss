@@ -1,4 +1,4 @@
-@import '/src/styles/main';
+@use '/src/styles';
 
 .techSpecs {
   display: flex;
@@ -12,11 +12,8 @@
   }
 
   &__title {
-    font-family: Mont;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 140%;
-    letter-spacing: 0%;
-    color: $primary-color;
+    color: styles.get-color(primary);
+
+    @include styles.typography(h3);
   }
 }

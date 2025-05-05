@@ -1,0 +1,18 @@
+@use 'functions' as func;
+
+$sizes: (
+  container-max-width: 1200px,
+  header-height-base: 48px,
+  header-height-desktop: 64px,
+  spacing-unit: 8px,
+);
+
+@function get-size($name) {
+  @return func.get-map($sizes, $name);
+}
+
+@function scale-size($name, $unit: 1) {
+  $size: get-size($name);
+
+  @return $size * $unit;
+}

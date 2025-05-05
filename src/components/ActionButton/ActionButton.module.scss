@@ -1,0 +1,14 @@
+@use '/src/styles';
+
+.actionButton {
+  border: none;
+  color: styles.get-color(white);
+  background-color: styles.get-color(primary);
+
+  @include styles.typography(button);
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}

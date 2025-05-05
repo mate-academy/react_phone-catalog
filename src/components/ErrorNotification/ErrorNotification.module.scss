@@ -1,0 +1,38 @@
+@use '/src/styles';
+
+.errorNotification {
+  position: fixed;
+  z-index: 100;
+  top: 100px;
+  right: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+
+  max-width: 250px;
+  min-height: 50px;
+  padding: 20px;
+  border: 1px solid styles.get-color(error-border);
+
+  background-color: styles.get-color(error-bg);
+  box-shadow: 0 2px 15px 0 #0000000D;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: styles.get-color(primary);
+
+    @include styles.typography(h3);
+  }
+
+  &__message {
+    color: styles.get-color(primary);
+
+    @include styles.typography(body);
+  }
+}

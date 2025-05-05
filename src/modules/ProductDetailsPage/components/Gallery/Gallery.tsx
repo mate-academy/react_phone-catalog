@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import galleryStyles from './Gallery.module.scss';
 import classNames from 'classnames';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
@@ -6,9 +6,10 @@ import 'swiper/css';
 
 type Props = {
   images: string[];
+  mediaStyles: { [key: string]: string };
 };
 
-export const Gallery: React.FC<Props> = ({ images }) => {
+export const Gallery: React.FC<Props> = memo(({ images, mediaStyles }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const swiperRef = useRef<SwiperClass | null>(null);
 
@@ -18,7 +19,10 @@ export const Gallery: React.FC<Props> = ({ images }) => {
         slidesPerView={1}
         onSwiper={swiper => (swiperRef.current = swiper)}
         onSlideChange={swiper => setSelectedIndex(swiper.activeIndex)}
-        className={galleryStyles.gallery__swiper}
+        className={classNames(
+          mediaStyles.details__gallerySwiper,
+          galleryStyles.gallery__swiper,
+        )}
       >
         {images.map(image => (
           <SwiperSlide key={image} className={galleryStyles.gallery__slide}>
@@ -30,7 +34,12 @@ export const Gallery: React.FC<Props> = ({ images }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <ul className={galleryStyles.gallery__list}>
+      <ul
+        className={classNames(
+          mediaStyles.details__galleryList,
+          galleryStyles.gallery__list,
+        )}
+      >
         {images.map((image, index) => (
           <li
             key={image}
@@ -45,4 +54,6 @@ export const Gallery: React.FC<Props> = ({ images }) => {
       </ul>
     </>
   );
-};
+});
+
+Gallery.displayName = 'Gallery';

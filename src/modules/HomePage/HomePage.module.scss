@@ -1,15 +1,15 @@
-@import '/src/styles/main';
+@use '/src/styles';
 
 .homePage {
   display: flex;
   flex-direction: column;
   gap: 56px;
 
-  @include onTablet {
+  @include styles.media(tablet) {
     gap: 64px;
   }
 
-  @include onDesktop {
+  @include styles.media(desktop) {
     gap: 80px;
   }
 
@@ -18,12 +18,18 @@
     flex-direction: column;
     gap: 24px;
 
-    @include onTablet {
+    @include styles.media(tablet) {
       gap: 32px;
     }
 
-    @include onDesktop {
+    @include styles.media(desktop) {
       gap: 56px;
     }
+  }
+
+  &__title {
+    color: styles.get-color(primary);
+
+    @include styles.typography(h1);
   }
 }

@@ -1,19 +1,21 @@
-@import '/src/styles/main';
+@use '/src/styles';
 
 .goBack {
+  cursor: pointer;
+
   display: flex;
   flex-direction: row;
   gap: 4px;
   align-items: center;
+
+  padding: 0;
   border: none;
-  background-color: $white-color;
+
+  background-color: styles.get-color(white);
 
   &__text {
-    font-family: Mont;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 12px;
-    letter-spacing: 0%;
-    color: $secondary-color;
+    color: styles.get-color(secondary);
+
+    @include styles.typography(small);
   }
 }

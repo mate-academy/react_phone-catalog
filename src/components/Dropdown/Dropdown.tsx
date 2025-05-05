@@ -1,4 +1,5 @@
 import React, {
+  memo,
   useCallback,
   useEffect,
   useMemo,
@@ -18,7 +19,7 @@ type Props = {
   onSelect: (optionValue: OptionValue) => void;
 };
 
-export const Dropdown: React.FC<Props> = React.memo(
+export const Dropdown: React.FC<Props> = memo(
   ({ options, label, defaultValue, onSelect }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement | null>(null);

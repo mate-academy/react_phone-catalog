@@ -1,86 +1,122 @@
-@import '/src/styles/main';
+@use '/src/styles';
 
 .banner {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
+  align-items: center;
+
+  box-sizing: border-box;
   height: 100%;
-  background-color: black;
   padding: 10px;
 
-  @include onTablet {
+  background-color: black;
+
+  @include styles.media(tablet) {
     flex-direction: row;
   }
 
   &__content {
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    background-color: $primary-color;
-    border-radius: 15px;
-    padding: 30px;
+    justify-content: space-between;
 
-    @include onTablet {
-      height: 100%;
-      aspect-ratio: 1.1;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 15px;
+
+    background-color: styles.get-color(primary);
+
+    @include styles.media(tablet) {
       display: flex;
+      aspect-ratio: 1.1;
+      height: 100%;
       border-radius: 15px;
     }
 
-    @include onDesktop {
+    @include styles.media(desktop) {
+      padding: 50px;
       border-radius: 25px;
     }
   }
 
+  &__headings {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include styles.media(desktop) {
+      gap: 16px;
+    }
+  }
+
   &__title {
-    font-size: 24px;
-    font-weight: 700;
-    background: linear-gradient(90deg, $secondary-color, $white-color);
-      background-clip: text;
-      -webkit-background-clip: text;
       color: transparent;
+
+    background: linear-gradient(90deg, styles.get-color(secondary), styles.get-color(white));
+      -webkit-background-clip: text;
+      background-clip: text;
+
       -webkit-text-fill-color: transparent;
+
+    @include styles.typography(h2);
+
+    @include styles.media(tablet) {
+      font-size: 26px;
+      line-height: 28px;
+    }
+
+    @include styles.media(desktop) {
+      font-size: 48px;
+      line-height: 50px;
+    }
   }
 
   &__subtitle {
     display: none;
-    color: $secondary-color;
+    color: styles.get-color(icons);
 
-    @include onTablet {
+    @include styles.typography(body);
+
+    @include styles.media(tablet) {
       display: block;
     }
   }
 
   &__orderButton {
     display: none;
-    border-radius: 25px;
+
     padding: 15px 30px;
-    background-color: $primary-color;
-    border: 1px solid $secondary-color;
-    color: $white-color;
+    border: 1px solid styles.get-color(secondary);
+    border-radius: 25px;
+
+    color: styles.get-color(white);
+
+    background-color: styles.get-color(primary);
+
     transition: border-color 0.3s ease;
 
     &:hover {
-      border-color: $elements-color;
       cursor: pointer;
+      border-color: styles.get-color(elements);
     }
 
-    @include onTablet {
+    @include styles.typography(button);
+
+    @include styles.media(tablet) {
       display: block;
     }
   }
 
   &__imageWrapper {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
   }
 
   &__image {

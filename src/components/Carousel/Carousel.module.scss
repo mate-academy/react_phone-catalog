@@ -1,16 +1,16 @@
-@import '/src/styles/main';
+@use '/src/styles';
 
 .carousel {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 8px;
+  justify-content: center;
 
   &__sliderWrapper {
     display: flex;
     flex-direction: row;
 
-    @include pageGrid;
+    @include styles.page-grid;
   }
 
   &__prevButton,
@@ -22,9 +22,11 @@
   &__prevButton,
   &__nextButton {
     display: none;
+
+    width: 32px;
     height: 100%;
 
-    @include onTablet {
+    @include styles.media(tablet) {
       display: flex;
     }
   }
@@ -38,7 +40,7 @@
     grid-column: 12;
     justify-self: end;
 
-    @include onDesktop {
+    @include styles.media(desktop) {
       grid-column: 24;
     }
   }
@@ -46,27 +48,22 @@
   &__slider {
     grid-column: 1 / -1;
 
-    @include onTablet {
+    @include styles.media(tablet) {
       grid-column: 2 / -2;
     }
   }
 
   &__slide {
     box-sizing: border-box;
-    padding: 8px;
     height: 320px;
+    padding: 8px;
     padding: 0;
-    cursor: grab;
 
-    &--grabbing {
-      cursor: grabbing;
+    @include styles.media(tablet) {
+      height: 280px;
     }
 
-    @include onTablet {
-      height: 250px;
-    }
-
-    @include onDesktop {
+    @include styles.media(desktop) {
       height: 400px;
     }
   }

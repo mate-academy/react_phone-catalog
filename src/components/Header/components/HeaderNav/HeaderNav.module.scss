@@ -1,32 +1,33 @@
-@import '/src/styles/main';
+@use '/src/styles';
 
 .nav {
   font-weight: 800;
 
-  @include onTablet {
+  @include styles.media(tablet) {
     height: 100%;
   }
 
   &__menu {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 16px;
+    align-items: center;
+
     height: 100%;
 
-    @include onTablet {
+    @include styles.media(tablet) {
       flex-direction: row;
       gap: 64px;
     }
   }
 
   &__item {
-    display: flex;
     position: relative;
-    margin: auto 0;
+    display: flex;
     height: 27px;
+    margin: auto 0;
 
-    @include onTablet {
+    @include styles.media(tablet) {
       height: 100%;
     }
   }
@@ -34,15 +35,12 @@
   &__link {
     display: flex;
     align-items: center;
-    height: 100%;
-    font-size: 12px;
-    line-height: 11px;
-    color: $secondary-color;
-    text-decoration: none;
-    text-transform: uppercase;
+    color: styles.get-color(secondary);
+
+    @include styles.typography(uppercase);
 
     &:hover {
-      color: $primary-color;
+      color: styles.get-color(primary);
     }
   }
 }

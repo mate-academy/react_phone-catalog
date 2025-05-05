@@ -1,7 +1,12 @@
 import React, { useContext, useRef, useState } from 'react';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
-import { ProductsContext } from '../../context/ProductsContext';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { CategoriesContext } from '../../context/CategoriesContext';
+import {
+  Autoplay,
+  Navigation,
+  Pagination,
+  EffectCoverflow,
+} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -9,12 +14,11 @@ import carouselStyles from './Carousel.module.scss';
 import { ICON_DATA_PATHS } from '../../constants/iconDataPaths';
 import { Banner } from './components/Banner';
 // eslint-disable-next-line max-len
-import { NavigationButton } from './components/NavigationButton/NavigationButton';
-// eslint-disable-next-line max-len
 import { CarouselPagination } from './components/CarouselPagination/CarouselPagination';
+import { IconButton } from '../IconButton/IconButton';
 
-export const Carousel = React.memo(() => {
-  const { categories } = useContext(ProductsContext);
+export const Carousel = () => {
+  const { categories } = useContext(CategoriesContext);
   const prevButtonRef = useRef<HTMLButtonElement | null>(null);
   const nextButtonRef = useRef<HTMLButtonElement | null>(null);
   const swiperRef = useRef<SwiperRef | null>(null);
@@ -23,13 +27,13 @@ export const Carousel = React.memo(() => {
   return (
     <div className={carouselStyles.carousel}>
       <div className={carouselStyles.carousel__sliderWrapper}>
-        <NavigationButton
-          buttonRef={prevButtonRef}
+        <IconButton
+          ref={prevButtonRef}
           className={carouselStyles.carousel__prevButton}
           iconDataPath={ICON_DATA_PATHS.ARROW.LEFT}
         />
-        <NavigationButton
-          buttonRef={nextButtonRef}
+        <IconButton
+          ref={nextButtonRef}
           className={carouselStyles.carousel__nextButton}
           iconDataPath={ICON_DATA_PATHS.ARROW.RIGHT}
         />
@@ -37,7 +41,8 @@ export const Carousel = React.memo(() => {
         <div className={carouselStyles.carousel__slider}>
           <Swiper
             ref={swiperRef}
-            modules={[Navigation, Pagination, Autoplay]}
+            modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
+            effect="coverflow"
             slidesPerView={1}
             navigation={{
               prevEl: prevButtonRef.current,
@@ -63,7 +68,7 @@ export const Carousel = React.memo(() => {
           >
             {categories.map(category => (
               <SwiperSlide
-                key={category}
+                key={category.name}
                 className={carouselStyles.carousel__slide}
               >
                 <Banner category={category} />
@@ -79,6 +84,4 @@ export const Carousel = React.memo(() => {
       />
     </div>
   );
-});
-
-Carousel.displayName = 'Carousel';
+};

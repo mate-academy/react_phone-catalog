@@ -1,5 +1,4 @@
-@import '/src/styles/mixins';
-@import '/src/styles/variables';
+@use '/src/styles';
 
 .productPage {
   display: flex;
@@ -7,19 +6,15 @@
   gap: 40px;
 
   &__title {
-    font-weight: 800;
-    font-size: 48px;
-    line-height: 56px;
-    letter-spacing: -1%;
-    color: $primary-color;
+    color: styles.get-color(primary);
+
+    @include styles.typography(h1);
   }
 
   &__subtitle {
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: $secondary-color;
+    color: styles.get-color(secondary);
+
+    @include styles.typography(body);
   }
 
   &__dropdowns {

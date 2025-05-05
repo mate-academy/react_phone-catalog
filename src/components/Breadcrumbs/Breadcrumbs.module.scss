@@ -1,4 +1,4 @@
-@import '/src/styles/main';
+@use '/src/styles';
 
 .breadcrumbs {
   &__list {
@@ -14,15 +14,12 @@
   &__link {
     display: flex;
     align-items: center;
-    font-family: Mont;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: $primary-color;
+    color: styles.get-color(primary);
+
+    @include styles.typography(small);
 
     &--is-last {
-      color: $secondary-color;
+      color: styles.get-color(secondary);
     }
   }
 

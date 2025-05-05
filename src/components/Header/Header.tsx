@@ -3,6 +3,7 @@ import { HeaderNav } from './components/HeaderNav';
 import { UserMenu } from './components/UserMenu';
 import { SiteLogo } from '../SiteLogo/SiteLogo';
 import headerStyles from './Header.module.scss';
+import sharedStyles from '../../styles/shared/shared.module.scss';
 import { MobileMenu } from './components/MobileMenu';
 import { IconSvg } from '../IconSvg/IconSvg';
 import { ICON_DATA_PATHS } from '../../constants/iconDataPaths';
@@ -58,7 +59,10 @@ export const Header = () => {
       >
         <SiteLogo className={headerStyles.header__logo} />
         <button
-          className={classNames(headerStyles.header__menuBtn, 'headerButton')}
+          className={classNames(
+            headerStyles.header__menuBtn,
+            sharedStyles.headerButton,
+          )}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <IconSvg

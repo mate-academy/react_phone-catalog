@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../../../../constants/routes';
 import headerNavStyles from './HeaderNav.module.scss';
 import { getLinkActive } from '../../../../utils/getLinkActive';
-import { ProductsContext } from '../../../../context/ProductsContext';
+import { CategoriesContext } from '../../../../context/CategoriesContext';
 
 type Props = {
   onClose?: () => void;
 };
 
-export const HeaderNav: React.FC<Props> = ({ onClose = () => {} }) => {
-  const { categories } = useContext(ProductsContext);
+export const HeaderNav: React.FC<Props> = memo(({ onClose = () => {} }) => {
+  const { categories } = useContext(CategoriesContext);
 
   return (
     <nav className={headerNavStyles.nav}>
@@ -30,9 +30,9 @@ export const HeaderNav: React.FC<Props> = ({ onClose = () => {} }) => {
           </NavLink>
         </li>
         {categories.map(category => (
-          <li className={headerNavStyles.nav__item} key={category}>
+          <li className={headerNavStyles.nav__item} key={category.name}>
             <NavLink
-              to={`${category}`}
+              to={`${category.name}`}
               className={({ isActive }) =>
                 getLinkActive({
                   isActive,
@@ -41,11 +41,13 @@ export const HeaderNav: React.FC<Props> = ({ onClose = () => {} }) => {
               }
               onClick={() => onClose()}
             >
-              {category}
+              {category.name}
             </NavLink>
           </li>
         ))}
       </ul>
     </nav>
   );
-};
+});
+
+HeaderNav.displayName = 'HeaderNav';

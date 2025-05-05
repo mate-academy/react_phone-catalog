@@ -1,4 +1,4 @@
-@import '/src/styles/main';
+@use '/src/styles';
 
 .about {
   display: flex;
@@ -12,12 +12,9 @@
   }
 
   &__title {
-    font-family: Mont;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 140%;
-    letter-spacing: 0%;
-    color: $primary-color;
+    color: styles.get-color(primary);
+
+    @include styles.typography(h3);
   }
 
   &__item {
@@ -26,21 +23,15 @@
     gap: 16px;
 
     &Title {
-      font-family: Mont;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 100%;
-      letter-spacing: 0%;
-      color: $primary-color;
+      color: styles.get-color(primary);
+
+      @include styles.typography(h4);
     }
 
     &Paragraph {
-      font-family: Mont;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 21px;
-      letter-spacing: 0%;
-      color: $secondary-color;
+      color: styles.get-color(secondary);
+
+      @include styles.typography(body);
     }
   }
 }

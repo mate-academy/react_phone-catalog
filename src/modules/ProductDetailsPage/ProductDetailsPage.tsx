@@ -1,61 +1,94 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {
-  getProductById,
+  getDetailedProductById,
+  getDetailedProductsByCategory,
   getProductsByCategory,
-  getProductsByNamespaceId,
-} from '../../helpers/productHelper';
+  getDetailedProductsByNamespaceId,
+} from '../../services/products';
 import { ProductDetailed } from '../../types/ProductDetailed';
 import { Gallery } from './components/Gallery/Gallery';
 import productDetailsPageStyles from './ProductDetailsPage.module.scss';
-import { NotFoundProductPage } from '../NotFoundProductPage/NotFoundProductPage';
-import { Loader } from '../../components/Loader';
+import { NotFoundProductPage } from '../NotFoundProductPage/NotFoundProductPage'; // eslint-disable-line max-len
 import { Controls } from './components/Controls';
 import { About } from './components/About';
 import { TechSpecs } from './components/TechSpecs';
 import { GoBack } from '../../components/GoBack';
 import { Product } from '../../types/Product';
-import { SliderSection } from '../../components/SliderSection';
+import { SectionSlider } from '../../components/SectionSlider';
+import { useBreadcrumbs } from '../../context/BreadcrumbsContext';
+import { useError } from '../../context/ErrorContext';
+import { useLoading } from '../../context/LoadingContext';
+import { handleError } from '../../utils/handleError';
 
 export const ProductDetailsPage = () => {
   const { itemId, category } = useParams();
-  const [selectedProduct, setSelectedProduct] = useState<ProductDetailed>();
-  const [isLoading, setIsLoading] = useState(false);
+  const [selectedProduct, setSelectedProduct] =
+    useState<ProductDetailed | null>(null);
   const [isNotFoundProduct, setIsNotFoundProduct] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
   const [modelVariants, setModelVariants] = useState<ProductDetailed[]>([]);
-  const navigate = useNavigate();
   const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
+  const { setProductName } = useBreadcrumbs();
+  const { setError } = useError();
 
   useEffect(() => {
-    if (!category || !selectedProduct?.namespaceId) {
-      return;
-    }
+    const loadProductData = async () => {
+      if (!itemId || !category) {
+        return;
+      }
 
-    getProductsByNamespaceId(category, selectedProduct?.namespaceId)
-      .then(setModelVariants)
-      .catch(() => {
-        navigate('..');
-      });
-  }, [category, selectedProduct?.namespaceId, navigate]);
+      startLoading();
 
-  useEffect(() => {
-    if (!itemId || !category) {
-      return;
-    }
+      const suggestionPromise = getProductsByCategory(category)
+        .then(setCategoryProducts)
+        .catch(err => {
+          setError(handleError(err, 'Failed to load suggestion products'));
+        });
 
-    setIsLoading(true);
-    getProductById(category, itemId)
-      .then(product => {
-        if (!product) {
-          throw new Error('Product not found');
-        }
+      try {
+        const allProducts = await getDetailedProductsByCategory(category);
+        const product = await getDetailedProductById(
+          category,
+          itemId,
+          allProducts,
+        );
 
         setSelectedProduct(product);
+        setProductName(product.name);
         setIsNotFoundProduct(false);
-      })
-      .catch(() => setIsNotFoundProduct(true))
-      .finally(() => setIsLoading(false));
-  }, [category, itemId]);
+
+        const namespaceIdPromise = getDetailedProductsByNamespaceId(
+          category,
+          product.namespaceId,
+          allProducts,
+        )
+          .then(products => {
+            if (!products.length) {
+              throw new Error(
+                `Could not load model variants for namespaceId: ${product.namespaceId}. Please try again later.`,
+              );
+            }
+
+            setModelVariants(products);
+          })
+          .catch(err => {
+            setError(handleError(err, 'Failed to model variants'));
+            setModelVariants([product]);
+          });
+
+        await Promise.all([namespaceIdPromise, suggestionPromise]);
+      } catch (error) {
+        setIsNotFoundProduct(true);
+        setProductName(null);
+        setError(handleError(error, 'Failed to load products'));
+      } finally {
+        stopLoading();
+      }
+    };
+
+    loadProductData();
+  }, [category, itemId, setError, setProductName, startLoading, stopLoading]);
 
   useEffect(() => {
     if (!category) {
@@ -65,11 +98,7 @@ export const ProductDetailsPage = () => {
     getProductsByCategory(category).then(setCategoryProducts);
   }, [category]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (isNotFoundProduct || !selectedProduct) {
+  if (isNotFoundProduct || !selectedProduct || !category) {
     return <NotFoundProductPage />;
   }
 
@@ -80,11 +109,16 @@ export const ProductDetailsPage = () => {
         {selectedProduct.name}
       </h1>
       <div className={productDetailsPageStyles.details__container}>
-        <Gallery images={selectedProduct.images} />
+        <Gallery
+          images={selectedProduct.images}
+          mediaStyles={productDetailsPageStyles}
+        />
+
         <Controls
           className={productDetailsPageStyles.details__controls}
           modelVariants={modelVariants}
           selectedProduct={selectedProduct}
+          category={category}
         />
         <About
           className={productDetailsPageStyles.details__about}
@@ -94,11 +128,11 @@ export const ProductDetailsPage = () => {
           className={productDetailsPageStyles.details__techSpecs}
           selectedProduct={selectedProduct}
         />
-        {/* <YouMayAlsoLike
-          className={productDetailsPageStyles.details__youMayAlsoLike}
+        <SectionSlider
           products={categoryProducts}
-        /> */}
-        <SliderSection products={categoryProducts} title="You may also like" />
+          title="You may also like"
+          className={productDetailsPageStyles.details__youMayAlsoLike}
+        />
       </div>
     </div>
   );

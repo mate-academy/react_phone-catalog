@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ROUTES } from '../../constants/routes';
 import { NavLink } from 'react-router-dom';
 import logoStyles from './SiteLogo.module.scss';
@@ -8,7 +8,7 @@ type Props = {
   className?: string;
 };
 
-export const SiteLogo: React.FC<Props> = ({ className = '' }) => {
+export const SiteLogo: React.FC<Props> = memo(({ className }) => {
   return (
     <NavLink
       to={ROUTES.HOME}
@@ -21,4 +21,6 @@ export const SiteLogo: React.FC<Props> = ({ className = '' }) => {
       />
     </NavLink>
   );
-};
+});
+
+SiteLogo.displayName = 'SiteLogo';

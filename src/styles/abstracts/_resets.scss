@@ -1,0 +1,28 @@
+body,
+ul,
+p,
+h1,
+h2,
+h3,
+hr,
+figure {
+  margin: 0;
+}
+
+body,
+ul,
+fieldset {
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+fieldset {
+  border: none;
+}

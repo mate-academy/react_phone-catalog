@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import sharedStyles from '/src/styles/shared.module.scss';
+import sharedStyles from '../styles/shared/shared.module.scss';
 
 type GetLinkActiveParam = {
   isActive: boolean;

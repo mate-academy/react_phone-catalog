@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { HeaderNav } from '../HeaderNav';
 import { UserMenu } from '../UserMenu';
 import mobileMenuStyles from './MobileMenu.module.scss';
@@ -9,7 +9,7 @@ type Props = {
   onClose: () => void;
 };
 
-export const MobileMenu: React.FC<Props> = ({ isOpen, onClose }) => {
+export const MobileMenu: React.FC<Props> = memo(({ isOpen, onClose }) => {
   return (
     <aside
       className={classNames(mobileMenuStyles.mobileMenu, {
@@ -20,4 +20,6 @@ export const MobileMenu: React.FC<Props> = ({ isOpen, onClose }) => {
       <UserMenu onClose={onClose} />
     </aside>
   );
-};
+});
+
+MobileMenu.displayName = 'MobileMenu';

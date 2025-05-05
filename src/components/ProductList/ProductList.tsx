@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import productListStyles from './ProductList.module.scss';
@@ -7,7 +7,7 @@ type Props = {
   products: Product[];
 };
 
-export const ProductList: React.FC<Props> = ({ products }) => {
+export const ProductList: React.FC<Props> = memo(({ products }) => {
   return (
     <section className={productListStyles.products}>
       <ul className={productListStyles.products__list}>
@@ -19,4 +19,6 @@ export const ProductList: React.FC<Props> = ({ products }) => {
       </ul>
     </section>
   );
-};
+});
+
+ProductList.displayName = 'ProductList';

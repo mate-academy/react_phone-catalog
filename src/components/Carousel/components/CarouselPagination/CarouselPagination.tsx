@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { memo } from 'react';
 import paginationStyles from './CarouselPagination.module.scss';
 import classNames from 'classnames';
+import { Category } from '../../../../types/Category';
 
 type Props = {
-  categories: string[];
+  categories: Category[];
   onClick?: (index: number) => void;
   activeIndex: number;
 };
 
-export const CarouselPagination: React.FC<Props> = React.memo(
+export const CarouselPagination: React.FC<Props> = memo(
   ({ categories, onClick = () => {}, activeIndex }) => {
     return (
       <div className={classNames(paginationStyles.pagination)}>

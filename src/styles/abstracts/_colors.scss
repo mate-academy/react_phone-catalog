@@ -1,0 +1,18 @@
+@use 'functions' as func;
+
+$colors: (
+  primary: #313237,
+  secondary: #89939A,
+  icons: #B4BDC3,
+  elements: #E2E6E9,
+  hover-bg: #FAFBFC,
+  white: #FFF,
+  selected-favorite: #EB5757,
+  selected-cart: #27AE60,
+  error-bg: #FDECEA,
+  error-border: #D32F2F,
+);
+
+@function get-color($color) {
+  @return func.get-map($colors, $color);
+}

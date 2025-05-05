@@ -8,17 +8,19 @@ import React, {
 import productsPageStyles from './ProductsPage.module.scss';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
-import { getProductsByCategory } from '../../helpers/productHelper';
+import { getProductsByCategory } from '../../services/products';
 import { ProductList } from '../../components/ProductList';
 import { Dropdown } from '../../components/Dropdown/Dropdown';
 import { Pagination } from '../../components/Pagination';
 import { getSearchWith, SearchParams } from '../../helpers/searchHelper';
 import { Option } from '../../types/Option';
 import { getNormalizedTitle } from '../../helpers/stringHelper';
-import { Loader } from '../../components/Loader';
+import { LoaderOverlay } from '../../components/LoaderOverlay';
 import isEqual from 'lodash.isequal';
-import { ProductsContext } from '../../context/ProductsContext';
+import { CategoriesContext } from '../../context/CategoriesContext';
 import { NotFoundPage } from '../NotFoundPage';
+import { useLoading } from '../../context/LoadingContext';
+import { useError } from '../../context/ErrorContext';
 
 const SORT_OPTIONS: Option[] = [
   { label: 'Newest', value: null },
@@ -32,9 +34,10 @@ const PER_PAGE_OPTIONS: Option[] = [
   { label: '16', value: 16 },
 ];
 
-export const ProductPage = React.memo(() => {
+export const ProductPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { setError } = useError();
+  const { isLoading, startLoading, stopLoading } = useLoading();
   const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get('sort');
   const perPage = searchParams.get('perPage')
@@ -42,23 +45,28 @@ export const ProductPage = React.memo(() => {
     : null;
   const currentPage = +(searchParams.get('page') || 1);
   const { category } = useParams();
-  const { categories } = useContext(ProductsContext);
+  const { categories } = useContext(CategoriesContext);
+  const isIncludeCategory = categories.some(
+    categoryItem => categoryItem.name === category,
+  );
 
   useEffect(() => {
-    if (!category || !categories.includes(category)) {
+    if (!category || !isIncludeCategory) {
       return;
     }
 
-    setIsLoading(true);
+    startLoading();
     getProductsByCategory(category)
       .then(newProducts =>
         setProducts(prevProducts =>
           !isEqual(prevProducts, newProducts) ? newProducts : prevProducts,
         ),
       )
-      .catch(() => console.log('somethims wrong'))
-      .finally(() => setIsLoading(false));
-  }, [categories, category]);
+      .catch(() => {
+        setError('Failed to load products. Please try again later.');
+      })
+      .finally(stopLoading);
+  }, [isIncludeCategory, category, startLoading, stopLoading, setError]);
 
   const setSearchWith = useCallback(
     (params: SearchParams) => {
@@ -96,17 +104,17 @@ export const ProductPage = React.memo(() => {
     [products, sort, firstIndex, lastIndex],
   );
 
-  if (!category || !categories.includes(category)) {
+  if (!category || !isIncludeCategory) {
     return <NotFoundPage />;
   }
 
   if (isLoading) {
-    return <Loader />;
+    return <LoaderOverlay />;
   }
 
   return (
     <section className={productsPageStyles.productPage}>
-      <div className="">
+      <div className={productsPageStyles.productPage__header}>
         <h1 className={productsPageStyles.productPage__title}>
           {getNormalizedTitle(category)}
         </h1>
@@ -152,6 +160,4 @@ export const ProductPage = React.memo(() => {
       )}
     </section>
   );
-});
-
-ProductPage.displayName = 'ProductPage';
+};

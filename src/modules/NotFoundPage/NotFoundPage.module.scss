@@ -1,49 +1,43 @@
-@import '/src/styles/main.scss';
+@use '/src/styles';
 
 .notFound {
   display: flex;
   flex-direction: column;
+  gap: 16px;
   align-items: center;
   justify-content: center;
-  gap: 16px;
 
   &__title {
-    font-family: Mont;
-    font-weight: 800;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -1%;
-    color: $primary-color;
+    color: styles.get-color(primary);
 
-    @include onTablet {
+  @include styles.typography(h1);
+
+    @include styles.media(tablet) {
       font-size: 48px;
       line-height: 56px;
     }
   }
 
   &__text {
-    font-family: Mont;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: $secondary-color;
     display: flex;
     gap: 10px;
+    color: styles.get-color(secondary);
+
+  @include styles.typography(body);
   }
 
   &__linkHome {
-    font-weight: 500;
     font-size: 14px;
+    font-weight: 500;
     line-height: 21px;
-    letter-spacing: 0%;
-    color: $primary-color;
+    color: styles.get-color(primary);
     text-decoration: underline;
+    letter-spacing: 0%;
   }
 
   &__image {
-    max-width: 640px;
     width: 100%;
+    max-width: 640px;
     height: auto;
   }
 }

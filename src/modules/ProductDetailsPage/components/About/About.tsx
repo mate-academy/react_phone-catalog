@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { memo } from 'react';
 import aboutStyles from './About.module.scss';
 import classNames from 'classnames';
 import { Description } from '../../../../types/ProductDetailed';
+import { Divider } from '../../../../components/Divider/Divider';
 
 type Props = {
   className?: string;
   description: Description[];
 };
 
-export const About: React.FC<Props> = ({ description, className }) => {
+export const About: React.FC<Props> = memo(({ description, className }) => {
   return (
     <section className={classNames(className, aboutStyles.about)}>
       <div className={aboutStyles.about__container}>
         <h2 className={aboutStyles.about__title}>About</h2>
-        <hr className="horizontal-line" />
+        <Divider />
       </div>
       {description.map(({ title, text }, index) => (
         <article className={aboutStyles.about__item} key={index}>
@@ -27,4 +28,6 @@ export const About: React.FC<Props> = ({ description, className }) => {
       ))}
     </section>
   );
-};
+});
+
+About.displayName = 'About';

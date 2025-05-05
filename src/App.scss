@@ -1,80 +1,30 @@
 // not empty
-@import './styles/variables.scss';
-@import './styles/mixins.scss';
-@import './styles/reset.scss';
+@use 'styles';
 
 .App {
+  position: relative;
+
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+
   min-width: 320px;
+  min-height: 100vh;
 }
 
 .page {
   flex: 1;
   padding: 32px;
   padding-bottom: 80px;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
 
   &__content {
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    max-width: styles.get-size(container-max-width);
     height: 100%;
     margin-inline: auto;
-    max-width: $max-width;
   }
-}
-
-.headerButton {
-  height: $header-mobile-height;
-  aspect-ratio: 1 / 1;
-  background-color: $white-color;
-  border: none;
-  box-shadow: -1px 0px 0px 0px $elements-color;
-
-  @include onTablet {
-    height: $tablet-min-width;
-  }
-
-  @include onDesktop {
-    height: $desktop-min-width;
-  }
-}
-
-.button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  border: 1px solid $icons-color;
-  background-color: $white-color;
-  cursor: pointer;
-
-  &:hover {
-    border-color: $primary-color;
-  }
-
-  &--active {
-    background-color: $primary-color;
-    color: $white-color;
-  }
-
-  &--disabled {
-    border-color: $elements-color;
-    color: $elements-color;
-    pointer-events: none;
-
-    &:hover {
-      border-color: $elements-color;
-    }
-  }
-}
-
-.horizontal-line {
-  width: 100%;
-  border: 1px solid $elements-color;
-  margin: 0;
 }

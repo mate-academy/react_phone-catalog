@@ -1,0 +1,12 @@
+@use 'functions' as func;
+
+$breakpoints: (
+  tablet: 640px,
+  desktop: 1200px,
+);
+
+@mixin media($breakpoint) {
+  @media (min-width: func.get-map($breakpoints, $breakpoint)) {
+    @content;
+  }
+}

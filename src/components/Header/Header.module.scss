@@ -1,36 +1,37 @@
-@import '/src/styles/main';
+@use '/src/styles';
 
 .header {
-  background-color: $white-color;
-  padding: 0;
-  width: 100%;
-  height: $header-mobile-height;
   position: relative;
   z-index: 50;
 
-  @include onTablet {
-    height: $header-tablet-height;
-  }
+  width: 100%;
+  height: styles.get-size(header-height-base);
+  padding: 0;
 
-  @include onDesktop {
-    height: $header-desktop-height;
+  background-color: styles.get-color(white);
+
+  @include styles.media(desktop) {
+    height: styles.get-size(header-height-desktop);
   }
 
   &__topBar {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     position: relative;
-    height: 100%;
-    box-sizing: border-box;
-    box-shadow: 0px 1px 0px 0px $elements-color;
     z-index: 10;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100%;
+
+    box-shadow: 0 1px 0 0 styles.get-color(elements);
   }
 
   &__topBarContainer {
     display: none;
 
-    @include onTablet {
+    @include styles.media(tablet) {
       display: flex;
     }
   }
@@ -38,7 +39,7 @@
   &__mobileTopBarContainer {
     display: flex;
 
-    @include onTablet {
+    @include styles.media(tablet) {
       display: none;
     }
   }
@@ -58,14 +59,14 @@
 
   &__productNav {
     display: flex;
-    align-items: center;
     gap: 24px;
+    align-items: center;
     height: 100%;
   }
 
   &__userControls {
     display: flex;
-    align-items: center;
     gap: 24px;
+    align-items: center;
   }
 }
