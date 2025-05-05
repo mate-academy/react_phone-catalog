@@ -16,7 +16,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16px;
 }
 
 .burger {
@@ -24,10 +23,11 @@
   cursor: pointer;
   z-index: 1001;
   margin-left: auto;
+  border: 1px solid #E2E6E9;
 }
 
 .burger_img {
-  padding: 16px;
+  padding: 14px;
 }
 
 .logo {
@@ -116,18 +116,35 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.nav_bottom {
+.nav_right {
   width: 100%;
+  height: 64px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
+  margin: 0;
 }
 
-.nav_bottom a {
+.nav_right a {
   text-decoration: none;
   color: #333;
   transition: color 0.3s ease;
+}
+
+.nav_favorite {
+  border: 1px solid #E2E6E9;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_cart {
+  border: 1px solid #E2E6E9;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 640px) {

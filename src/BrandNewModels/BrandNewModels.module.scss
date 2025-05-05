@@ -1,9 +1,11 @@
 .product_list {
   width: 100%;
   max-height: 526px;
+  height: 100%;
   overflow: hidden;
   justify-content: space-between;
-  margin-top: 56px;
+  margin: 56px 16px 0 0;
+  gap: 16px;
 }
 
 .controls {
@@ -46,6 +48,7 @@
 .product_grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  margin: 32px 0 24px 0;
   gap: 16px;
 }
 
@@ -63,6 +66,7 @@
     max-height: 744px;
     height: 100%;
     margin-top: 96px;
+
   }
 
   .controls {
@@ -122,6 +126,7 @@
     padding: 20px;
     max-width: 1440px;
     height: 577px;
+    margin: auto;
   }
 
   .controls {
