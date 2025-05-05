@@ -1,3 +1,4 @@
+/* eslint-disable curly */
 import { useEffect, useState } from 'react';
 import './PhonePage.scss';
 import { SortForm } from '../../Functional/SortForm/SortForm';
@@ -23,6 +24,7 @@ export const PhonePage = () => {
   const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
     useCart();
   const [phones, setPhones] = useState<Phone[]>([]);
+  const [initialPhones, setInitialPhones] = useState<Phone[]>([]);
   const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -34,24 +36,36 @@ export const PhonePage = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredPhones.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(filteredPhones.length / itemsPerPage);
+  const currentItems =
+    itemsPerPage === 0
+      ? filteredPhones
+      : filteredPhones.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages =
+    itemsPerPage === 0 ? 1 : Math.ceil(filteredPhones.length / itemsPerPage);
 
   useEffect(() => {
     setLoading(true);
-    fetch('api/phones.json')
+
+    fetch('api/products.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(
-            `Failed to fetch phones.json: ${response.status} ${response.statusText}`,
+            `Failed to fetch products.json: ${response.status} ${response.statusText}`,
           );
         }
 
         return response.json();
       })
-      .then(data => {
-        setPhones(data);
-        setFilteredPhones(data);
+      .then((data: Phone[]) => {
+        const phonesOnly = data.filter(item => item.category === 'phones');
+
+        const sortedByName = [...phonesOnly].sort((a, b) =>
+          a.name.localeCompare(b.name),
+        );
+
+        setPhones(sortedByName);
+        setInitialPhones(sortedByName);
+        setFilteredPhones(sortedByName);
         setLoading(false);
       })
       .catch(err => {
@@ -61,49 +75,37 @@ export const PhonePage = () => {
   }, []);
 
   useEffect(() => {
-    const filtered = phones.filter(item =>
+    const baseList = sortBy === '' ? initialPhones : phones;
+
+    const filtered = baseList.filter(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
-    const sorted = filtered.sort((a, b) => {
-      if (sortBy === 'newest') {
-        return b.year - a.year;
-      }
-
-      if (sortBy === 'priceLow') {
-        return a.priceDiscount - b.priceDiscount;
-      }
-
-      if (sortBy === 'priceHigh') {
-        return b.priceDiscount - a.priceDiscount;
-      }
-
-      if (sortBy === 'alphabetically') {
-        return a.name.localeCompare(b.name);
-      }
+    const sorted = [...filtered].sort((a, b) => {
+      if (sortBy === 'newest') return b.year - a.year;
+      if (sortBy === 'priceLow') return a.priceDiscount - b.priceDiscount;
+      if (sortBy === 'priceHigh') return b.priceDiscount - a.priceDiscount;
+      if (sortBy === 'alphabetically') return a.name.localeCompare(b.name);
 
       return 0;
     });
 
     setFilteredPhones(sorted);
     setCurrentPage(1);
-  }, [phones, searchTerm, sortBy]);
+  }, [phones, initialPhones, searchTerm, sortBy]);
 
   const handleCartToggle = (phone: Phone) => {
-    const selectedColor = phone.color || 'default';
     const cartItem: CartItem = {
       id: phone.id,
       name: phone.name,
       price: phone.priceDiscount,
       image: `/${phone.images[0]}`,
-      color: selectedColor,
+      color: phone.color || 'default',
       capacity: phone.capacity,
       quantity: 1,
     };
 
-    const isInCart = cart.some(item => item.id === phone.id);
-
-    if (isInCart) {
+    if (cart.some(item => item.id === phone.id)) {
       removeFromCart(phone.id);
     } else {
       addToCart(cartItem);
@@ -115,15 +117,13 @@ export const PhonePage = () => {
   };
 
   const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
     const maxPagesToShow = 5;
-    const pages = [];
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
 
     pages.push(1);
-    if (startPage > 2) {
-      pages.push('...');
-    }
+    if (startPage > 2) pages.push('...');
 
     for (let i = startPage; i <= endPage; i++) {
       if (i !== 1 && i !== totalPages) {
@@ -131,13 +131,8 @@ export const PhonePage = () => {
       }
     }
 
-    if (endPage < totalPages - 1) {
-      pages.push('...');
-    }
-
-    if (totalPages !== 1) {
-      pages.push(totalPages);
-    }
+    if (endPage < totalPages - 1) pages.push('...');
+    if (totalPages !== 1) pages.push(totalPages);
 
     return pages;
   };
@@ -195,9 +190,7 @@ export const PhonePage = () => {
               <Link to={`/products/${phone.id}`}>
                 <img
                   src={
-                    imageError[phone.images[0]]
-                      ? pageNotFound
-                      : `${phone.images[0]}`
+                    imageError[phone.images[0]] ? pageNotFound : phone.images[0]
                   }
                   alt={phone.name}
                   className="phone__card-image"
@@ -228,6 +221,7 @@ export const PhonePage = () => {
                   </div>
                 </div>
               </Link>
+
               <div className="phone__card-actions">
                 <button
                   className={`phone__card-btn phone__card-btn--add ${cart.some(item => item.id === phone.id) ? 'added' : ''}`}
@@ -259,32 +253,36 @@ export const PhonePage = () => {
         )}
       </div>
 
-      <div className="pagination">
-        <button
-          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-          className="pagination__button"
-        >
-          {'<'}
-        </button>
-        {getPageNumbers().map((page, index) => (
+      {itemsPerPage !== 0 && (
+        <div className="pagination">
           <button
-            key={index}
-            className={`pagination__button ${currentPage === page ? 'active' : ''}`}
-            onClick={() => typeof page === 'number' && setCurrentPage(page)}
-            disabled={typeof page !== 'number'}
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="pagination__button"
           >
-            {page}
+            {'<'}
           </button>
-        ))}
-        <button
-          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-          className="pagination__button"
-        >
-          {'>'}
-        </button>
-      </div>
+          {getPageNumbers().map((page, index) => (
+            <button
+              key={index}
+              className={`pagination__button ${currentPage === page ? 'active' : ''}`}
+              onClick={() => typeof page === 'number' && setCurrentPage(page)}
+              disabled={typeof page !== 'number'}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            onClick={() =>
+              setCurrentPage(prev => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className="pagination__button"
+          >
+            {'>'}
+          </button>
+        </div>
+      )}
     </section>
   );
 };

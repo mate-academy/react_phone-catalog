@@ -11,7 +11,6 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    // align-items: center;
 
     @include on-phone {
       display: flex;
@@ -25,7 +24,6 @@
     color: white;
     font-size: 24px;
     flex-shrink: 0;
-    // text-align: center;
     display: block;
 
     @include on-phone {
@@ -63,9 +61,9 @@
     width: 288px;
     height: 288px;
 
-    @include on-tablet {
-      width: 187px;
-      height: 187px;
+    @media (min-width: 829px) and (max-width: 1375px) {
+      width: 240px;
+      height: 240px;
     }
 
     @include on-desktop {
@@ -86,7 +84,7 @@
         transform: scale(1.05);
       }
 
-      @include on-tablet {
+      @media (min-width: 829px) and (max-width: 1375px) {
         top: 45px;
         width: 210px;
         height: 200px;
@@ -107,9 +105,9 @@
     position: relative;
     overflow: hidden;
 
-    @include on-tablet {
-      width: 187px;
-      height: 187px;
+    @media (min-width: 829px) and (max-width: 1375px) {
+      width: 240px;
+      height: 240px;
     }
 
     @include on-desktop {
@@ -130,7 +128,7 @@
         transform: scale(1.05);
       }
 
-      @include on-tablet {
+      @media (min-width: 829px) and (max-width: 1375px) {
         top: 30px;
         width: 210px;
         height: 200px;
@@ -152,9 +150,9 @@
     position: relative;
     overflow: hidden;
 
-    @include on-tablet {
-      width: 187px;
-      height: 187px;
+    @media (min-width: 829px) and (max-width: 1375px) {
+      width: 240px;
+      height: 240px;
     }
 
     @include on-desktop {
@@ -175,7 +173,7 @@
         transform: scale(1.05);
       }
 
-      @include on-tablet {
+      @media (min-width: 829px) and (max-width: 1375px) {
         top: 40px;
         width: 550px;
         height: 150px;

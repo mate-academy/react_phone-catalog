@@ -47,6 +47,7 @@ export function SortForm({
             onChange={e => onSortChange(e.target.value)}
             className="sort-form__select"
           >
+            <option value="">Default</option>
             <option value="newest">Newest</option>
             <option value="alphabetically">Alphabetically</option>
             <option value="priceLow">Price: Low to High</option>
@@ -62,8 +63,10 @@ export function SortForm({
             id="perPage"
             value={itemsPerPage}
             onChange={e => {
-              setItemsPerPage(Number(e.target.value));
-              onItemsPerPageChange?.(Number(e.target.value));
+              const value = Number(e.target.value);
+
+              setItemsPerPage(value);
+              onItemsPerPageChange?.(value);
             }}
             className="sort-form__select"
           >
