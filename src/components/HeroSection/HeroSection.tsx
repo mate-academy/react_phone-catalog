@@ -40,14 +40,14 @@ export const HeroSection: React.FC = () => {
           </div>
           <div className="carousel-item">
             <img
-              src="/img/banner-accessories.png"
+              src="/img/carousel-mobile.png"
               className="d-block w-100"
               alt="..."
             />
           </div>
           <div className="carousel-item">
             <img
-              src="/img/banner-phones.png"
+              src="/img/carousel-mobile.png"
               className="d-block w-100"
               alt="..."
             />
