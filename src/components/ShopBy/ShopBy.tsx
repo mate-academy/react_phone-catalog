@@ -1,24 +1,27 @@
-import { Link } from 'react-router-dom';
 import s from './ShopBy.module.scss';
+import accessoriesImg from '../../img/shopBy/category-accessories.webp';
+import phonesImg from '../../img/shopBy/category-phones.webp';
+import tabletImg from '../../img/shopBy/category-tablets.webp';
+import { Link } from 'react-router-dom';
 
 const categories = [
   {
     to: '/phones',
-    imgSrc: 'img/category-phones.webp',
+    imgSrc: phonesImg,
     name: 'Mobile phones',
     count: '95 models',
     imgClass: s.ShopBy__blockImgOne,
   },
   {
     to: '/tablets',
-    imgSrc: 'img/category-tablets.png',
+    imgSrc: tabletImg,
     name: 'Tablets',
     count: '24 models',
     imgClass: s.ShopBy__blockImgTwo,
   },
   {
     to: '/accessories',
-    imgSrc: 'img/category-accessories.webp',
+    imgSrc: accessoriesImg,
     name: 'Accessories',
     count: '100 models',
     imgClass: s.ShopBy__blockImgThree,

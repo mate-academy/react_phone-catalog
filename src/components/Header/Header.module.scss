@@ -4,7 +4,7 @@
   position: sticky;
   width: 100%;
   top: 0;
-  background-color: #fff;
+  background-color: var(--bg-color);
   z-index: 999;
 
   &__content {
@@ -21,18 +21,9 @@
     box-sizing: border-box;
     align-self: center;
     height: 100%;
-    border-bottom: 1px solid $gray-border;
+    border-bottom: 1px solid var(--border-light-color);
     display: flex;
     align-items: center;
-
-    &Img {
-      padding-inline: 16px;
-      position: relative;
-      height: 50%;
-      object-fit: contain;
-
-      @include hover(transform, scale(1.05));
-    }
   }
 
   &__iconsRight {
@@ -40,6 +31,8 @@
   }
 
   &__right {
+    background-color: var(--bg-color);
+
     @include on-tablet {
       display: none;
     }

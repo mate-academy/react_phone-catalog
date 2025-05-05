@@ -9,7 +9,7 @@
     position: relative;
 
     flex-grow: 1;
-    background-color: $gray-primary;
+    background-color: var(--add-bg);
     color: white;
     border: 0;
     cursor: pointer;
@@ -19,9 +19,9 @@
   }
 
   &__selected {
-    color: $green;
-    background-color: #fff;
-    border: 1px solid $gray-border;
+    color: var(--card-add);
+    background-color: var(--button-bg);
+    border: 1px solid var(--card-border);
   }
 
   &__message {
@@ -36,5 +36,29 @@
     color: #fff;
     padding: 5px;
     pointer-events: none;
+    z-index: 999;
+  }
+
+  &__heartButton {
+    padding: 8px;
+    border: 1px solid var(--card-border);
+    display: flex;
+    background: var(--button-bg);
+
+    @include hover(border-color, var(--text-main));
+  }
+
+  &__heartIcon {
+    fill: white;
+    stroke: (var(--text-main));
+
+    transition:
+      fill var(--transition),
+      stroke var(--transition);
+
+    &Filled {
+      fill: $red;
+      stroke: $red;
+    }
   }
 }

@@ -31,22 +31,4 @@ $padding-inline: 10px;
       grid-column: span 6;
     }
   }
-
-  &__pagination {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    align-items: center;
-  }
-
-  &__button {
-    @extend %buttons-icon-style;
-
-    &Active {
-      color: #fff;
-      background-color: $gray-primary;
-      border: 0;
-    }
-  }
 }

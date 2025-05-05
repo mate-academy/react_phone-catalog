@@ -1,16 +1,3 @@
-@mixin hover-image() {
-  & {
-    transition:
-      transform var(--transition),
-      opacity var(--transition);
-  }
-
-  &:hover {
-    transform: scale(1.05);
-    opacity: var(--opacity-value);
-  }
-}
-
 @mixin hover($property, $to) {
   & {
     transition: all var(--transition);

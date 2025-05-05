@@ -1,1 +1,0 @@
-export { CurrentPage } from './CurrentPage';

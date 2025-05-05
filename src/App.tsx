@@ -2,27 +2,19 @@ import { Outlet } from 'react-router-dom';
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { useEffect, useState } from 'react';
-import { useSetProducts } from './context/ProductsContext';
-import { getProducts } from './httpClient';
+import { useEffect } from 'react';
 import { Loader } from './components/Loader';
 import { Menu } from './components/Menu';
 import { MenuProvider } from './context/MenuContext';
-import { useError, useSetError } from './context/ErrorContext';
+import { fetchProducts } from './store/products';
+import { useAppDispatch, useAppSelector } from './hooks';
 
 export const App = () => {
-  const setProducts = useSetProducts();
-  const [loading, setIsLoading] = useState(false);
-  const setError = useSetError();
-  const error = useError();
+  const dispatch = useAppDispatch();
+  const { error, loading } = useAppSelector(state => state.products);
 
   useEffect(() => {
-    setError('');
-    setIsLoading(true);
-    getProducts()
-      .then(setProducts)
-      .catch(() => setError('Something went wrong :('))
-      .finally(() => setIsLoading(false));
+    dispatch(fetchProducts());
   }, []);
 
   if (loading) {

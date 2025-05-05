@@ -1,7 +1,9 @@
 import s from './Modal.module.scss';
+import * as cartActions from '../../store/cart';
+import CloseIcon from '../../img/icons/icon-close.svg?react';
 import { Button } from '../Button';
-import { useSetShop } from '../../context/ShopContext';
 import { Loader } from '../Loader';
+import { useAppDispatch } from '../../hooks';
 
 type Props = {
   onModalOpen: (v: boolean) => void;
@@ -9,10 +11,10 @@ type Props = {
 };
 
 export const Modal: React.FC<Props> = ({ onModalOpen, isLoading }) => {
-  const setShop = useSetShop();
+  const dispatch = useAppDispatch();
 
   const handleClearShop = () => {
-    setShop([]);
+    dispatch(cartActions.clear());
     onModalOpen(false);
   };
 
@@ -23,7 +25,7 @@ export const Modal: React.FC<Props> = ({ onModalOpen, isLoading }) => {
       ) : (
         <div className={s.Modal__card}>
           <Button
-            direction="close"
+            IconProp={CloseIcon}
             onClick={() => onModalOpen(false)}
             className={s.Modal__close}
           />

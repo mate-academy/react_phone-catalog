@@ -1,11 +1,13 @@
+/* eslint-disable max-len */
 import cl from 'classnames';
-import { Button } from '../Button';
-import { useFavorite, useSetFavorite } from '../../context/FavoriteContext';
-import { useSetShop, useShop } from '../../context/ShopContext';
-import { Product } from '../../types/Product';
 import s from './AddTo.module.scss';
+import * as favoritesActions from '../../store/favorites';
+import * as cartActions from '../../store/cart';
+import HeartIcon from '../../img/icons/icon-heart.svg?react';
+import { Product } from '../../types/Product';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 type ToAdd = 'cart' | 'favorite';
 
@@ -14,23 +16,21 @@ type Props = {
 };
 
 export const AddTo: React.FC<Props> = ({ product }) => {
-  const { itemId } = product;
+  const { id } = product;
   const [alreadyExist, setAlreadyExist] = useState(false);
-
-  const shop = useShop();
-  const favorite = useFavorite();
-  const setShop = useSetShop();
-  const setFavorite = useSetFavorite();
+  const dispatch = useAppDispatch();
+  const favorites = useAppSelector(state => state.favorites);
+  const cart = useAppSelector(state => state.cart);
 
   const isItem = (toCheck: ToAdd) =>
     toCheck === 'cart'
-      ? shop.some(f => f.itemId === itemId)
-      : favorite.some(f => f.itemId === itemId);
+      ? cart.find(e => e.id === id)
+      : favorites.find(e => e.id === id);
 
   const handleAdd = async (toAdd: ToAdd) => {
     if (toAdd === 'cart') {
       if (!isItem('cart')) {
-        setShop([...shop, product]);
+        dispatch(cartActions.add(product));
 
         return;
       }
@@ -40,11 +40,13 @@ export const AddTo: React.FC<Props> = ({ product }) => {
         setAlreadyExist(false);
       }, 3000);
     } else {
-      setFavorite(
-        isItem('favorite')
-          ? favorite.filter(f => f.itemId !== itemId)
-          : [...favorite, product],
-      );
+      if (isItem('favorite')) {
+        dispatch(favoritesActions.remove(id));
+
+        return;
+      }
+
+      dispatch(favoritesActions.add(product));
     }
   };
 
@@ -73,19 +75,16 @@ export const AddTo: React.FC<Props> = ({ product }) => {
         </AnimatePresence>
       </button>
 
-      {isItem('favorite') ? (
-        <Button
-          direction="heartFilled"
-          isHeart
-          onClick={() => handleAdd('favorite')}
+      <button
+        className={s.AddTo__heartButton}
+        onClick={() => handleAdd('favorite')}
+      >
+        <HeartIcon
+          className={cl(s.AddTo__heartIcon, {
+            [s.AddTo__heartIconFilled]: isItem('favorite'),
+          })}
         />
-      ) : (
-        <Button
-          direction="heart"
-          isHeart
-          onClick={() => handleAdd('favorite')}
-        />
-      )}
+      </button>
     </div>
   );
 };

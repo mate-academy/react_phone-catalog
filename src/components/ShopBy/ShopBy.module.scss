@@ -6,6 +6,8 @@
   @include grid;
 
   &__title {
+    color: var(--text-main);
+
     grid-column: 1 / -1;
   }
 
@@ -34,8 +36,14 @@
   &__blockImg {
     aspect-ratio: 1;
     overflow: hidden;
+    transition:
+      transform var(--transition),
+      box-shadow var(--transition);
 
-    @include hover-image;
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 5px var(--text-main);
+    }
 
     &One {
       background-color: #3f4043;
@@ -66,5 +74,9 @@
     color: $gray-secondary;
 
     @extend %body-text;
+  }
+
+  &__name {
+    color: var(--text-main);
   }
 }

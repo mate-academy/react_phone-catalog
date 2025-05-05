@@ -64,6 +64,8 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
+
+
 }
 
 %buttons {
@@ -76,20 +78,20 @@
 
 %buttons-icon-style {
   box-sizing: border-box;
-  background-color: white;
+  background-color: var(--button-bg);
   border-radius: 0;
-  border: 1px solid $gray-icons-placeholders;
+  border: 1px solid var(--border-light-color);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 32px;
   aspect-ratio: 1 / 1;
 
-  @include hover(border-color, #000);
+  @include hover(border-color, var(--text-main));
 
   &:disabled {
+    background-color: var(--bg-color);
     cursor: default;
-    border-color: $gray-border;
   }
 }
 

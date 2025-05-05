@@ -1,0 +1,28 @@
+@use '/src/utils' as *;
+
+.ProductSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__infoItem {
+    @extend %small-text;
+
+    line-height: 21px;
+
+    display: flex;
+    justify-content: space-between;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    &Bigger {
+      font-size: 14px;
+    }
+  }
+
+  &__span {
+    color: var(--text-main);
+  }
+}

@@ -2,6 +2,7 @@
 
 .HomePage {
   &__title {
+    color: var(--text-main);
     padding-block: 24px;
 
     @include centered;

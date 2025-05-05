@@ -5,21 +5,16 @@
 
   padding: 8px;
 
-  &__photo {
-    @include hover-image;
+  &:disabled {
+    cursor: default;
+    border-color: var(--border-light-color);
+
+     path {
+      fill: var(--border-light-color);
+    }
   }
 
   &__heart {
     width: 40px;
-  }
-
-  &:disabled {
-    cursor: default;
-    border-color: $gray-border;
-
-    img {
-      filter: invert(86%) sepia(7%) saturate(226%) hue-rotate(162deg)
-        brightness(97%) contrast(87%);
-    }
   }
 }

@@ -21,5 +21,14 @@
     flex-grow: 1;
     justify-content: center;
     padding-block: 16px;
+    max-height: 60px;
+    background-color: var(--bg-color);
+  }
+
+  &__heartIcon {
+    path {
+      fill: var(--bg-color);
+      stroke: var(--text-main);
+    }
   }
 }

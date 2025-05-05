@@ -18,15 +18,15 @@ export const CATEGORIES = {
 
 export type CategoriesKeys = keyof typeof CATEGORIES;
 
-export const SORT_BY = {
-  newest: 'Newest',
-  name: 'Name: A to Z',
-  nameDesc: 'Name: Z to A',
-  price: 'Price: Low to High',
-  priceDesc: 'Price: High to Low',
-};
+export enum SortBy {
+  newest = 'Newest',
+  name = 'Name: A to Z',
+  nameDesc = 'Name: Z to A',
+  price = 'Price: Low to High',
+  priceDesc = 'Price: High to Low',
+}
 
-export type SortByKeys = keyof typeof SORT_BY;
+export type SortByKeys = keyof typeof SortBy;
 
 export const PER_PAGE = {
   16: '16',
@@ -57,3 +57,5 @@ export const COLORS = {
   rosegold: '#FCD6CF',
   midnightgreen: '#535E56',
 };
+
+export const defaultParams = '?page=1&perPage=16&sortBy=newest';

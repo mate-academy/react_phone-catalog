@@ -4,16 +4,16 @@ import { ShopBy } from '../../components/ShopBy';
 import { SliderPhones } from '../../components/SliderPhones';
 
 import s from './HomePage.module.scss';
-import { getBrandNew, getHotPrice } from '../../services/products';
-import { useProducts } from '../../context/ProductsContext';
+import { getBrandNew, getHotPrice } from '../../services/getProducts';
 import { wait } from '../../httpClient';
 import { Loader } from '../../components/Loader';
+import { useAppSelector } from '../../hooks';
 
 export const HomePage = () => {
-  const products = useProducts();
+  const { products } = useAppSelector(state => state.products);
   const productsBrand = useMemo(() => getBrandNew(products), [products.length]);
   const productsHot = useMemo(() => getHotPrice(products), [products.length]);
-  const [loading, setIsLoading] = useState(false);
+  const [loading, setIsLoading] = useState(true);
 
   useEffect(() => {
     document.title = `Nice Gadgets`;

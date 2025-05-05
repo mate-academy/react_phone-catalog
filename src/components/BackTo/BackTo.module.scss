@@ -6,12 +6,12 @@
   align-items: center;
   gap: 4px;
 
-  &__iconArrow {
+  &__iconBlock {
     display: flex;
     align-items: center;
   }
 
-  &__textBack {
+  &__text {
     @extend %small-text;
   }
 }

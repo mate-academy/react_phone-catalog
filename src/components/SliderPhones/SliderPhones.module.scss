@@ -7,6 +7,8 @@
   @include grid;
 
   &__title {
+    color: var(--text-main);
+
     grid-column: span 2;
 
     @include on-tablet {

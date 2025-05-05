@@ -1,6 +1,8 @@
+import s from './Footer.module.scss';
+import ArrowIcon from '../../img/icons/icon-arrow.svg?react';
+import HeaderLogo from '../../img/icons/icon-logo.svg?react';
 import { Link } from 'react-router-dom';
 import { Button } from '../Button';
-import s from './Footer.module.scss';
 
 export const Footer = () => {
   const handleScrollUp = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -9,7 +11,7 @@ export const Footer = () => {
     <footer className={s.Footer}>
       <div className={s.Footer__content}>
         <Link to="#" className={s.Footer__logo}>
-          <img src="img/icons/icon-logo.svg" className="logo" alt="logo" />
+          <HeaderLogo className="logo" />
         </Link>
 
         <div className={s.Footer__links}>
@@ -35,7 +37,7 @@ export const Footer = () => {
 
         <div className={s.Footer__bottom}>
           <p className={s.Footer__backTo}>Back to top</p>
-          <Button onClick={handleScrollUp} direction="arrowUp" />
+          <Button onClick={handleScrollUp} IconProp={ArrowIcon} />
         </div>
       </div>
     </footer>

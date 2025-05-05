@@ -44,6 +44,7 @@ $margin-padding-slide: 10px;
       background-color: $gray-bg;
       border-radius: 20px;
       display: flex;
+      gap: 20px;
       flex-direction: column;
       justify-content: space-between;
       width: 40%;
@@ -80,6 +81,7 @@ $margin-padding-slide: 10px;
       display: inline-block;
       vertical-align: middle;
       width: 24px;
+      padding-left: 10px;
     }
   }
 
@@ -151,6 +153,11 @@ $margin-padding-slide: 10px;
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
+    transition: box-shadow var(--transition);
+
+    &:hover {
+      box-shadow: 0 0 40px white;
+    }
 
     @include on-tablet {
       display: block;
@@ -159,21 +166,21 @@ $margin-padding-slide: 10px;
 
   &__arrow {
     display: none;
-    background-color: #fff;
-    border: 1px solid $gray-icons-placeholders;
+    background-color: var(--slider-button-bg);
+    border: 1px solid var(--border-light-color);
     cursor: pointer;
     transition: all var(--transition);
+
+    svg path {
+      fill: var(--text-main);
+    }
 
     @include on-tablet {
       display: block;
     }
 
     &:hover {
-      background-color: $gray-primary;
-
-      svg path {
-        fill: white;
-      }
+      border-color: var(--text-main);
     }
   }
 
@@ -199,6 +206,6 @@ $margin-padding-slide: 10px;
     width: 25px;
     height: 6px;
     border-radius: 0;
-    background-color: $gray-primary;
+    background-color: var(--slider-bullet);
   }
 }

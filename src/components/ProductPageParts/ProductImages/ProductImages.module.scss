@@ -1,0 +1,52 @@
+@use '/src/utils' as *;
+
+.ProductImages {
+  grid-column: 1 / -1;
+  height: 500px;
+
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  @include on-tablet {
+    grid-column: span 7;
+  }
+
+  @include on-desktop {
+    grid-column: span 12;
+  }
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+
+&__otherImages {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+
+  @include on-tablet {
+    flex-direction: column;
+  }
+}
+
+&__image {
+  width: 50px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border: 1px solid var(--border-light-color);
+
+  @include on-desktop {
+    width: 80px;
+  }
+
+  &Active {
+    border-color: var(--text-main);
+  }
+}
+
+&__mainImg {
+  object-fit: contain;
+}
+}

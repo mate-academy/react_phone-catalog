@@ -9,14 +9,14 @@
   background-color: rgba($color: #000, $alpha: 0.5);
   display: flex;
   justify-content: center;
-
+  backdrop-filter: blur(10px);
   align-items: center;
 
   &__card {
     width: 80%;
     max-width: 700px;
     height: 100px;
-    background-color: #fff;
+    background-color: var(--bg-color);
     border-radius: 10px;
 
     display: flex;
@@ -28,14 +28,15 @@
     @include on-tablet {
       height: 200px;
     }
-  }
 
-  &__close {
-    align-self: flex-end;
+    & > button:nth-child(1) {
+      align-self: flex-end;
+    }
   }
 
   &__title {
     text-align: center;
+    color: var(--text-main);
   }
 
   &__buttons {
@@ -47,16 +48,16 @@
 
   &__choose {
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: var(--card-bg);
     padding: 5px 40px;
-    color: #000;
-    border: 1px solid $gray-border;
+    color: var(--text-main);
+    border: 1px solid var(--border-light-color);
 
     transition: background-color, border, 0.3s;
 
     &:hover {
-      background-color: $gray-primary;
-      color: #fff;
+      background-color: var(--modal-button-bg);
+      color: var(--modal-button-text);
     }
   }
 }
