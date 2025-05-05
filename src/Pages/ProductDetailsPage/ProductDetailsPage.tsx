@@ -330,7 +330,7 @@ export const ProductDetailsPage = () => {
                 {product.capacityAvailable.map(option => (
                   <button
                     key={option}
-                    className={`capacity-option ${selectedCapacity?.trim() === option.trim() ? 'capacity-option--active' : ''}`}
+                    className={`capacity-option ${product.capacity === option.trim() ? 'capacity-option--active' : ''}`}
                     onClick={() => handleMemoryChange(option)}
                     aria-label={`Select ${option} capacity`}
                     aria-selected={selectedCapacity?.trim() === option.trim()}

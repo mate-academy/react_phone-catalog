@@ -61,10 +61,6 @@ export const PhonePage = () => {
   }, []);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [filteredPhones, sortBy]);
-
-  useEffect(() => {
     const filtered = phones.filter(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
@@ -82,11 +78,41 @@ export const PhonePage = () => {
         return b.priceDiscount - a.priceDiscount;
       }
 
+      if (sortBy === 'alphabetically') {
+        return a.name.localeCompare(b.name);
+      }
+
       return 0;
     });
 
     setFilteredPhones(sorted);
+    setCurrentPage(1);
   }, [phones, searchTerm, sortBy]);
+
+  const handleCartToggle = (phone: Phone) => {
+    const selectedColor = phone.color || 'default';
+    const cartItem: CartItem = {
+      id: phone.id,
+      name: phone.name,
+      price: phone.priceDiscount,
+      image: `/${phone.images[0]}`,
+      color: selectedColor,
+      capacity: phone.capacity,
+      quantity: 1,
+    };
+
+    const isInCart = cart.some(item => item.id === phone.id);
+
+    if (isInCart) {
+      removeFromCart(phone.id);
+    } else {
+      addToCart(cartItem);
+    }
+  };
+
+  const handleImageError = (imageSrc: string) => {
+    setImageError(prev => ({ ...prev, [imageSrc]: true }));
+  };
 
   const getPageNumbers = () => {
     const maxPagesToShow = 5;
@@ -114,31 +140,6 @@ export const PhonePage = () => {
     }
 
     return pages;
-  };
-
-  const handleCartToggle = (phone: Phone) => {
-    const selectedColor = phone.color || 'default';
-    const cartItem: CartItem = {
-      id: phone.id,
-      name: phone.name,
-      price: phone.priceDiscount,
-      image: `/${phone.images[0]}`,
-      color: selectedColor,
-      capacity: phone.capacity,
-      quantity: 1,
-    };
-
-    const isInCart = cart.some(item => item.id === phone.id);
-
-    if (isInCart) {
-      removeFromCart(phone.id);
-    } else {
-      addToCart(cartItem);
-    }
-  };
-
-  const handleImageError = (imageSrc: string) => {
-    setImageError(prev => ({ ...prev, [imageSrc]: true }));
   };
 
   if (loading) {
@@ -173,13 +174,11 @@ export const PhonePage = () => {
 
       <p className="section__text">Mobile phones</p>
       <div className="section__top-bar">
-        <SortForm<Phone>
-          items={phones}
+        <SortForm
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
           sortBy={sortBy}
           onSortChange={setSortBy}
-          onResultChange={setFilteredPhones}
           onItemsPerPageChange={value => {
             setItemsPerPage(value);
             setCurrentPage(1);
@@ -196,13 +195,13 @@ export const PhonePage = () => {
               <Link to={`/products/${phone.id}`}>
                 <img
                   src={
-                    imageError[`${phone.images[0]}`]
+                    imageError[phone.images[0]]
                       ? pageNotFound
                       : `${phone.images[0]}`
                   }
                   alt={phone.name}
                   className="phone__card-image"
-                  onError={() => handleImageError(`/${phone.images[0]}`)}
+                  onError={() => handleImageError(phone.images[0])}
                 />
                 <h3 className="phone__card-title">{phone.name}</h3>
                 <div className="phone__card-prices">
@@ -231,12 +230,9 @@ export const PhonePage = () => {
               </Link>
               <div className="phone__card-actions">
                 <button
-                  className={`phone__card-btn phone__card-btn--add ${
-                    cart.some(item => item.id === phone.id) ? 'added' : ''
-                  }`}
+                  className={`phone__card-btn phone__card-btn--add ${cart.some(item => item.id === phone.id) ? 'added' : ''}`}
                   onClick={e => {
                     e.preventDefault();
-                    e.stopPropagation();
                     handleCartToggle(phone);
                   }}
                 >
@@ -245,12 +241,9 @@ export const PhonePage = () => {
                     : 'Add to cart'}
                 </button>
                 <button
-                  className={`phone__card-btn phone__card-btn--favorite ${
-                    favorites.includes(phone.id) ? 'favorite--active' : ''
-                  }`}
+                  className={`phone__card-btn phone__card-btn--favorite ${favorites.includes(phone.id) ? 'favorite--active' : ''}`}
                   onClick={e => {
                     e.preventDefault();
-                    e.stopPropagation();
                     toggleFavorite(phone.id);
                   }}
                 >

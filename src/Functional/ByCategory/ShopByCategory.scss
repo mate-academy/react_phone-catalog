@@ -5,20 +5,55 @@
 
   @include padding-inline;
 
+  &__header {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+
+    @include on-phone {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
 
   &__title {
     margin: 10px 0;
     color: white;
+    font-size: 24px;
+    flex-shrink: 0;
+    // text-align: center;
+    display: block;
+
+    @include on-phone {
+      font-size: 20px;
+    }
   }
 
   &__main {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  }
+
+  &__container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 368px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include on-tablet {
+      max-width: 250px;
+    }
+
+    @include on-phone {
+      text-align: center;
+    }
   }
 
   &__phone {
@@ -117,12 +152,12 @@
     position: relative;
     overflow: hidden;
 
-      @include on-tablet {
+    @include on-tablet {
       width: 187px;
       height: 187px;
     }
 
-      @include on-desktop {
+    @include on-desktop {
       width: 368px;
       height: 368px;
     }

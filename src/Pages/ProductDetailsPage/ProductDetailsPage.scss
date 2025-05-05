@@ -220,14 +220,12 @@
     display: flex;
     flex-direction: column;
     max-height: 464px;
-    // overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) var(--card-bg);
     gap: 12px;
 
     @include on-phone {
       flex-direction: row;
-      // overflow-x: auto;
       max-height: none;
       gap: 8px;
     }

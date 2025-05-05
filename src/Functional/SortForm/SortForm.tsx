@@ -1,30 +1,21 @@
-// У компоненті SortForm
 import './SortForm.scss';
 import { useState } from 'react';
 
-type Props<T extends BaseItem> = {
-  items: T[];
+type Props = {
   searchTerm: string;
   onSearchChange: (value: string) => void;
   sortBy: string;
   onSortChange: (value: string) => void;
-  onResultChange: (items: T[]) => void;
   onItemsPerPageChange?: (value: number) => void;
 };
 
-interface BaseItem {
-  name: string;
-  priceDiscount: number;
-  year: number;
-}
-
-export function SortForm<T extends BaseItem>({
+export function SortForm({
   searchTerm,
   onSearchChange,
   sortBy,
   onSortChange,
   onItemsPerPageChange,
-}: Props<T>) {
+}: Props) {
   const [itemsPerPage, setItemsPerPage] = useState(8);
 
   return (
@@ -37,7 +28,7 @@ export function SortForm<T extends BaseItem>({
           <input
             id="search"
             type="text"
-            placeholder="Search a product..."
+            placeholder="Search for a product..."
             value={searchTerm}
             onChange={e => onSearchChange(e.target.value)}
             className="sort-form__input"
@@ -56,8 +47,8 @@ export function SortForm<T extends BaseItem>({
             onChange={e => onSortChange(e.target.value)}
             className="sort-form__select"
           >
-            <option value="">All</option>
             <option value="newest">Newest</option>
+            <option value="alphabetically">Alphabetically</option>
             <option value="priceLow">Price: Low to High</option>
             <option value="priceHigh">Price: High to Low</option>
           </select>
@@ -76,9 +67,10 @@ export function SortForm<T extends BaseItem>({
             }}
             className="sort-form__select"
           >
+            <option value={4}>4</option>
             <option value={8}>8</option>
             <option value={16}>16</option>
-            <option value={32}>32</option>
+            <option value={0}>All</option>
           </select>
         </div>
       </div>
