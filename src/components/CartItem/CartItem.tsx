@@ -8,6 +8,8 @@ import { UseHooks } from '../../AppHooks';
 import close from '../../assets/Icons/Close.svg';
 import minus from '../../assets/Icons/Minus.svg';
 import plus from '../../assets/Icons/Plus.svg';
+import { getData } from '../../services';
+import { DeviceFull } from '../../types/DeviceFull';
 
 type Props = {
   item: DeviceShort;
@@ -15,7 +17,7 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ item, quantity }) => {
-  const { setCartItems, hotProducts } = UseHooks();
+  const { setCartItems, hotProducts, setCurrentDevice } = UseHooks();
 
   const minusQuantity = (curItem: DeviceShort) => {
     if (quantity > 1) {
@@ -47,6 +49,16 @@ export const CartItem: React.FC<Props> = ({ item, quantity }) => {
     return product.fullPrice;
   };
 
+  const addParams = (device: DeviceShort) => {
+    getData<DeviceFull[]>(`${device.category}`).then(data => {
+      data.filter(element => {
+        if (element.name === device.name) {
+          setCurrentDevice(element);
+        }
+      });
+    });
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.card__part1}>
@@ -60,8 +72,14 @@ export const CartItem: React.FC<Props> = ({ item, quantity }) => {
           className={styles.card__image}
           src={item.image}
           alt="devicePhoto"
+          onClick={() => addParams(item)}
         />
-        <p className={(styles.card__text, 'body-text')}>{item.name}</p>
+        <p
+          className={classNames(styles.card__text, 'body-text')}
+          onClick={() => addParams(item)}
+        >
+          {item.name}
+        </p>
       </div>
       <div className={styles.card__part2}>
         <div className={styles.card__block}>
@@ -79,7 +97,7 @@ export const CartItem: React.FC<Props> = ({ item, quantity }) => {
             onClick={() => plusQuantity(item)}
           />
         </div>
-        <h3>${curPrice(item) * quantity}</h3>
+        <h3 className={styles.card__price}>${curPrice(item) * quantity}</h3>
       </div>
     </div>
   );

@@ -72,15 +72,6 @@ const DeviceDetails1 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId]);
 
-  useEffect(() => {
-    if (currentDevice) {
-      const newLink = currentDevice.id;
-
-      navigate(`/${category}/productId=${newLink}`);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentDevice]);
-
   return (
     <>
       <div className="inlineContainer">

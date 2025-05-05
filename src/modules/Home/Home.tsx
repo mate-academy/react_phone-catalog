@@ -8,7 +8,6 @@ import './Home.module.scss';
 import products from '../../../public/api/products.json';
 import styles from './Home.module.scss';
 import classNames from 'classnames';
-import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
   const {
@@ -18,22 +17,12 @@ export const Home = () => {
     newProducts,
     hotProducts,
     setHotProducts,
-    currentDevice,
   } = UseHooks();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     setAllProducts(products);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (currentDevice) {
-      navigate(`/${currentDevice.category}/productId=${currentDevice.id}`);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentDevice]);
 
   useEffect(() => {
     //Setting new products

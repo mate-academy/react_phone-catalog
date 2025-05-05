@@ -18,6 +18,9 @@ export const Header: React.FC = () => {
 
   const togleMenu = () => setOpenMenu(!openMenu);
   const clearCurDevice = () => setCurrentDevice(null);
+  const devicesInCart = () => {
+    return cartItems.reduce((quantity, [, count]) => count + quantity, 0);
+  };
 
   return (
     <header className={styles.header}>
@@ -119,7 +122,7 @@ export const Header: React.FC = () => {
             <img src={cart} alt="cart" />
             {cartItems.length > 0 && (
               <div className={styles.header__iconQuantity}>
-                {cartItems.length}
+                {devicesInCart()}
               </div>
             )}
           </Link>

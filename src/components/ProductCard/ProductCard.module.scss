@@ -68,6 +68,7 @@
     width: 148px;
     height: 129px;
     object-fit: contain;
+    cursor: pointer;
 
     @include on-tablet {
       width: 173px;

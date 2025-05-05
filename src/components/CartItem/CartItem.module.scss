@@ -17,6 +17,7 @@
     width: 80px;
     height: 80px;
     object-fit: contain;
+    cursor: pointer;
   }
 
   &__part1 {
@@ -49,8 +50,15 @@
     gap: 16px;
     margin-right: 24px;
   }
- }
 
- .card__text {
-  color: $primary-color;
-}
+  &__price {
+    width: 80px;
+    height: 31px;
+    text-align: end;
+  }
+
+  &__text {
+    color: $primary-color;
+    cursor: pointer;
+  }
+ }

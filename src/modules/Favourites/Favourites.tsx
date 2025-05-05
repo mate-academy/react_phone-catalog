@@ -11,7 +11,7 @@ export const Favourites = () => {
   return (
     <>
       <div className="inlineContainer">
-        <Tree currentCategory="Favourites" />
+        <Tree />
         <h1>Favourites</h1>
         <p className={classNames(styles.quantity, 'body-text')}>
           {`${favourites.length} models`}
