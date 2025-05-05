@@ -58,3 +58,17 @@ export interface Accessories {
   description?: { title: string; text: string[] }[];
   capacityAvailable?: string[];
 }
+
+export interface Product {
+  category: string;
+  itemId?: string;
+  name: string;
+  screen: string;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+  image: string;
+  fullPrice: number;
+  price: number;
+}

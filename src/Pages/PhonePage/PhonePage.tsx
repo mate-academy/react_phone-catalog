@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import './PhonePage.scss';
 import { SortForm } from '../../Functional/SortForm/SortForm';
-import { Phone } from '../../Interface';
+import { Product } from '../../Interface';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
 import homeSvg from '../../../public/figmaLogo/Home.svg';
@@ -23,9 +23,9 @@ interface CartItem {
 export const PhonePage = () => {
   const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
     useCart();
-  const [phones, setPhones] = useState<Phone[]>([]);
-  const [initialPhones, setInitialPhones] = useState<Phone[]>([]);
-  const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
+  const [initialPhones, setInitialPhones] = useState<Product[]>([]);
+  const [filteredPhones, setFilteredPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -56,7 +56,7 @@ export const PhonePage = () => {
 
         return response.json();
       })
-      .then((data: Phone[]) => {
+      .then((data: Product[]) => {
         const phonesOnly = data.filter(item => item.category === 'phones');
 
         const sortedByName = [...phonesOnly].sort((a, b) =>
@@ -83,8 +83,8 @@ export const PhonePage = () => {
 
     const sorted = [...filtered].sort((a, b) => {
       if (sortBy === 'newest') return b.year - a.year;
-      if (sortBy === 'priceLow') return a.priceDiscount - b.priceDiscount;
-      if (sortBy === 'priceHigh') return b.priceDiscount - a.priceDiscount;
+      if (sortBy === 'priceLow') return a.price - b.price;
+      if (sortBy === 'priceHigh') return b.price - a.price;
       if (sortBy === 'alphabetically') return a.name.localeCompare(b.name);
 
       return 0;
@@ -94,19 +94,23 @@ export const PhonePage = () => {
     setCurrentPage(1);
   }, [phones, initialPhones, searchTerm, sortBy]);
 
-  const handleCartToggle = (phone: Phone) => {
+  const handleCartToggle = (phone: Product) => {
+    if (!phone.itemId) {
+      return;
+    }
+
     const cartItem: CartItem = {
-      id: phone.id,
+      id: phone.itemId,
       name: phone.name,
-      price: phone.priceDiscount,
-      image: `/${phone.images[0]}`,
+      price: phone.price,
+      image: phone.image,
       color: phone.color || 'default',
       capacity: phone.capacity,
       quantity: 1,
     };
 
-    if (cart.some(item => item.id === phone.id)) {
-      removeFromCart(phone.id);
+    if (cart.some(item => item.id === phone.itemId)) {
+      removeFromCart(phone.itemId);
     } else {
       addToCart(cartItem);
     }
@@ -186,21 +190,17 @@ export const PhonePage = () => {
           <p className="phone__no-results">No phones found.</p>
         ) : (
           currentItems.map(phone => (
-            <div key={phone.id} className="phone__card">
-              <Link to={`/products/${phone.id}`}>
+            <div key={phone.itemId} className="phone__card">
+              <Link to={`/products/${phone.itemId}`}>
                 <img
-                  src={
-                    imageError[phone.images[0]] ? pageNotFound : phone.images[0]
-                  }
+                  src={imageError[phone.image] ? pageNotFound : phone.image}
                   alt={phone.name}
                   className="phone__card-image"
-                  onError={() => handleImageError(phone.images[0])}
+                  onError={() => handleImageError(phone.image)}
                 />
                 <h3 className="phone__card-title">{phone.name}</h3>
                 <div className="phone__card-prices">
-                  <span className="phone__card-price">
-                    ${phone.priceDiscount}
-                  </span>
+                  <span className="phone__card-price">${phone.price}</span>
                 </div>
                 <div className="phone__card-specs">
                   <div className="phone__card-spec">
@@ -224,25 +224,31 @@ export const PhonePage = () => {
 
               <div className="phone__card-actions">
                 <button
-                  className={`phone__card-btn phone__card-btn--add ${cart.some(item => item.id === phone.id) ? 'added' : ''}`}
+                  className={`phone__card-btn phone__card-btn--add ${cart.some(item => item.id === phone.itemId) ? 'added' : ''}`}
                   onClick={e => {
                     e.preventDefault();
                     handleCartToggle(phone);
                   }}
                 >
-                  {cart.some(item => item.id === phone.id)
+                  {cart.some(item => item.id === phone.itemId)
                     ? 'Added'
                     : 'Add to cart'}
                 </button>
                 <button
-                  className={`phone__card-btn phone__card-btn--favorite ${favorites.includes(phone.id) ? 'favorite--active' : ''}`}
+                  className={`phone__card-btn phone__card-btn--favorite ${favorites.includes(phone.itemId || '') ? 'favorite--active' : ''}`}
                   onClick={e => {
                     e.preventDefault();
-                    toggleFavorite(phone.id);
+                    if (phone.itemId) {
+                      toggleFavorite(phone.itemId);
+                    }
                   }}
                 >
                   <img
-                    src={favorites.includes(phone.id) ? activeSvg : heartLove}
+                    src={
+                      favorites.includes(phone.itemId || '')
+                        ? activeSvg
+                        : heartLove
+                    }
                     alt="Favorite"
                     className="phone__card-btn-icon"
                   />

@@ -1,8 +1,9 @@
+/* eslint-disable curly */
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import './Accessories.scss';
 import { SortForm } from '../../Functional/SortForm/SortForm';
-import { Accessories } from '../../Interface';
+import { Product } from '../../Interface';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
 import homeSvg from '../../../public/figmaLogo/Home.svg';
@@ -10,13 +11,22 @@ import heartLove from '../../../public/figmaLogo/HeartLove.svg';
 import activeSvg from '../../../public/figmaLogo/ActiveHeart.svg';
 import pageNotFound from '../../../public/img/page-not-found.png';
 
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  color: string;
+  capacity?: string;
+  quantity: number;
+}
+
 export const AccessoriesPage = () => {
   const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
     useCart();
-  const [accessories, setAccessories] = useState<Accessories[]>([]);
-  const [filteredAccessories, setFilteredAccessories] = useState<Accessories[]>(
-    [],
-  );
+  const [accessories, setAccessories] = useState<Product[]>([]);
+  const [initialAccessories, setInitialAccessories] = useState<Product[]>([]);
+  const [filteredAccessories, setFilteredAccessories] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,27 +37,40 @@ export const AccessoriesPage = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredAccessories.slice(
-    indexOfFirstItem,
-    indexOfLastItem,
-  );
-  const totalPages = Math.ceil(filteredAccessories.length / itemsPerPage);
+  const currentItems =
+    itemsPerPage === 0
+      ? filteredAccessories
+      : filteredAccessories.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages =
+    itemsPerPage === 0
+      ? 1
+      : Math.ceil(filteredAccessories.length / itemsPerPage);
 
   useEffect(() => {
     setLoading(true);
-    fetch('api/accessories.json')
+
+    fetch('api/products.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(
-            `Failed to fetch accessories.json: ${response.status}`,
+            `Failed to fetch products.json: ${response.status} ${response.statusText}`,
           );
         }
 
         return response.json();
       })
-      .then(data => {
-        setAccessories(data);
-        setFilteredAccessories(data);
+      .then((data: Product[]) => {
+        const accessoriesOnly = data.filter(
+          item => item.category === 'accessories',
+        );
+
+        const sortedByName = [...accessoriesOnly].sort((a, b) =>
+          a.name.localeCompare(b.name),
+        );
+
+        setAccessories(sortedByName);
+        setInitialAccessories(sortedByName);
+        setFilteredAccessories(sortedByName);
         setLoading(false);
       })
       .catch(err => {
@@ -57,36 +80,54 @@ export const AccessoriesPage = () => {
   }, []);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [filteredAccessories, sortBy]);
+    const baseList = sortBy === '' ? initialAccessories : accessories;
 
-  useEffect(() => {
-    const filtered = accessories.filter(item =>
+    const filtered = baseList.filter(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
-    const sorted = filtered.sort((a, b) => {
-      if (sortBy === 'newest') {
-        return b.year - a.year;
-      }
-
-      if (sortBy === 'priceLow') {
-        return a.priceDiscount - b.priceDiscount;
-      }
-
-      if (sortBy === 'priceHigh') {
-        return b.priceDiscount - a.priceDiscount;
-      }
+    const sorted = [...filtered].sort((a, b) => {
+      if (sortBy === 'newest') return b.year - a.year;
+      if (sortBy === 'priceLow') return a.price - b.price;
+      if (sortBy === 'priceHigh') return b.price - a.price;
+      if (sortBy === 'alphabetically') return a.name.localeCompare(b.name);
 
       return 0;
     });
 
     setFilteredAccessories(sorted);
-  }, [accessories, searchTerm, sortBy]);
+    setCurrentPage(1);
+  }, [accessories, initialAccessories, searchTerm, sortBy]);
+
+  const handleCartToggle = (accessory: Product) => {
+    if (!accessory.itemId) {
+      return;
+    }
+
+    const cartItem: CartItem = {
+      id: accessory.itemId,
+      name: accessory.name,
+      price: accessory.price,
+      image: accessory.image,
+      color: accessory.color || 'default',
+      capacity: accessory.capacity,
+      quantity: 1,
+    };
+
+    if (cart.some(item => item.id === accessory.itemId)) {
+      removeFromCart(accessory.itemId);
+    } else {
+      addToCart(cartItem);
+    }
+  };
+
+  const handleImageError = (imageSrc: string) => {
+    setImageError(prev => ({ ...prev, [imageSrc]: true }));
+  };
 
   const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
     const maxPagesToShow = 5;
-    const pages = [];
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
 
@@ -110,29 +151,6 @@ export const AccessoriesPage = () => {
     }
 
     return pages;
-  };
-
-  const handleCartToggle = (accessory: Accessories) => {
-    const cartItem = {
-      id: accessory.id,
-      name: accessory.name,
-      price: accessory.priceDiscount,
-      image: `/${accessory.images[0]}`,
-      color: accessory.color,
-      quantity: 1,
-    };
-
-    const isInCart = cart.some(item => item.id === accessory.id);
-
-    if (isInCart) {
-      removeFromCart(accessory.id);
-    } else {
-      addToCart(cartItem);
-    }
-  };
-
-  const handleImageError = (imageSrc: string) => {
-    setImageError(prev => ({ ...prev, [imageSrc]: true }));
   };
 
   if (loading) {
@@ -167,13 +185,11 @@ export const AccessoriesPage = () => {
 
       <p className="section__text">Accessories</p>
       <div className="section__top-bar">
-        <SortForm<Accessories>
-          items={accessories}
+        <SortForm
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
           sortBy={sortBy}
           onSortChange={setSortBy}
-          onResultChange={setFilteredAccessories}
           onItemsPerPageChange={value => {
             setItemsPerPage(value);
             setCurrentPage(1);
@@ -186,22 +202,20 @@ export const AccessoriesPage = () => {
           <p className="accessories__no-results">No accessories found.</p>
         ) : (
           currentItems.map(accessory => (
-            <div key={accessory.id} className="accessories__card">
-              <Link to={`/products/${accessory.id}`}>
+            <div key={accessory.itemId} className="accessories__card">
+              <Link to={`/products/${accessory.itemId}`}>
                 <img
                   src={
-                    imageError[`/${accessory.images[0]}`]
-                      ? pageNotFound
-                      : `${accessory.images[0]}`
+                    imageError[accessory.image] ? pageNotFound : accessory.image
                   }
                   alt={accessory.name}
                   className="accessories__card-image"
-                  onError={() => handleImageError(`/${accessory.images[0]}`)}
+                  onError={() => handleImageError(accessory.image)}
                 />
                 <h3 className="accessories__card-title">{accessory.name}</h3>
                 <div className="accessories__card-prices">
                   <span className="accessories__card-price">
-                    ${accessory.priceDiscount}
+                    ${accessory.price}
                   </span>
                 </div>
                 <div className="accessories__card-specs">
@@ -215,32 +229,30 @@ export const AccessoriesPage = () => {
               </Link>
               <div className="accessories__card-actions">
                 <button
-                  className={`accessories__card-btn accessories__card-btn--add ${
-                    cart.some(item => item.id === accessory.id) ? 'added' : ''
-                  }`}
+                  className={`accessories__card-btn accessories__card-btn--add ${cart.some(item => item.id === accessory.itemId) ? 'added' : ''}`}
                   onClick={e => {
                     e.preventDefault();
-                    e.stopPropagation();
                     handleCartToggle(accessory);
                   }}
                 >
-                  {cart.some(item => item.id === accessory.id)
+                  {cart.some(item => item.id === accessory.itemId)
                     ? 'Added'
                     : 'Add to cart'}
                 </button>
                 <button
-                  className={`accessories__card-btn accessories__card-btn--favorite ${
-                    favorites.includes(accessory.id) ? 'favorite--active' : ''
-                  }`}
+                  className={`accessories__card-btn accessories__card-btn--favorite ${favorites.includes(accessory.itemId || '') ? 'favorite--active' : ''}`}
                   onClick={e => {
                     e.preventDefault();
-                    e.stopPropagation();
-                    toggleFavorite(accessory.id);
+                    if (accessory.itemId) {
+                      toggleFavorite(accessory.itemId);
+                    }
                   }}
                 >
                   <img
                     src={
-                      favorites.includes(accessory.id) ? activeSvg : heartLove
+                      favorites.includes(accessory.itemId || '')
+                        ? activeSvg
+                        : heartLove
                     }
                     alt="Favorite"
                     className="accessories__card-btn-icon"
@@ -252,32 +264,36 @@ export const AccessoriesPage = () => {
         )}
       </div>
 
-      <div className="pagination">
-        <button
-          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-          className="pagination__button"
-        >
-          {'<'}
-        </button>
-        {getPageNumbers().map((page, index) => (
+      {itemsPerPage !== 0 && (
+        <div className="pagination">
           <button
-            key={index}
-            className={`pagination__button ${currentPage === page ? 'active' : ''}`}
-            onClick={() => typeof page === 'number' && setCurrentPage(page)}
-            disabled={typeof page !== 'number'}
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="pagination__button"
           >
-            {page}
+            {'<'}
           </button>
-        ))}
-        <button
-          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-          className="pagination__button"
-        >
-          {'>'}
-        </button>
-      </div>
+          {getPageNumbers().map((page, index) => (
+            <button
+              key={index}
+              className={`pagination__button ${currentPage === page ? 'active' : ''}`}
+              onClick={() => typeof page === 'number' && setCurrentPage(page)}
+              disabled={typeof page !== 'number'}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            onClick={() =>
+              setCurrentPage(prev => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className="pagination__button"
+          >
+            {'>'}
+          </button>
+        </div>
+      )}
     </section>
   );
 };

@@ -323,6 +323,21 @@
       background-color: #69abce;
     }
 
+    &--sky-blue {
+      background-color: #87ceeb;
+    }
+
+    &--rose-gold {
+      background-color: #B76E79;
+    }
+
+    &--pink {
+      background-color: #ffc0cb;
+    }
+    &--starlight {
+      background-color: #d7dfe1;
+    }
+
     &[aria-selected='true'] {
       border-color: #fff;
       transform: scale(1.1);
@@ -542,7 +557,7 @@
 
     &.added {
       background-color: #75767f;
-      cursor: not-allowed;
+      cursor: pointer;
     }
 
     &:hover:not(.added) {
