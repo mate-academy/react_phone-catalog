@@ -1,0 +1,285 @@
+@import '../../../assets/styles/main';
+
+.header {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  left: 0;
+
+  background-color: #fff;
+  box-shadow: 0 1px 0 0 $color-elements;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logoLink {
+    box-sizing: border-box;
+    width: 96px;
+    height: 48px;
+    padding: 13px 16px;
+
+    @include on-desktop {
+      width: 128px;
+      height: 64px;
+      padding: 18px 24px;
+    }
+
+    @include on-desktop-extra {
+      width: 128px;
+      height: 64px;
+      padding: 18px 24px;
+    }
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    transition: transform 0.3s linear;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+
+    @include on-desktop-extra {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      margin-left: 16px;
+    }
+
+    @include on-desktop {
+      margin-left: 24px;
+    }
+
+    @include on-desktop-extra {
+      margin-left: 24px;
+    }
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item:nth-child(n + 2) {
+    margin-left: 32px;
+
+    @include on-desktop {
+      margin-left: 64px;
+    }
+
+    @include on-desktop-extra {
+      margin-left: 64px;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    display: inline-block;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 48px;
+    color: $color-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.48px;
+
+    transition: color 0.3s linear;
+
+    @include on-desktop {
+      line-height: 64px;
+    }
+
+    @include on-desktop-extra {
+      line-height: 64px;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 0;
+      height: 2px;
+
+      line-height: 64px;
+
+      background-color: #000;
+
+      transition: width 0.3s ease;
+    }
+  }
+
+  &__linkActive {
+    color: $color-primary;
+
+    &::before {
+      width: 100%;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  &__favoritesLink {
+    position: relative;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 48px;
+      height: 48px;
+
+      box-shadow: -1px 0 0 0 $color-elements;
+
+      transition: box-shadow 0.2s ease-in-out;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    @include on-desktop-extra {
+      width: 64px;
+      height: 64px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 2px 1px $color-primary;
+    }
+  }
+
+  &__cartLink {
+    position: relative;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 48px;
+      height: 48px;
+
+      box-shadow: -1px 0 0 0 $color-elements;
+
+      transition: box-shadow 0.2s ease-in-out;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    @include on-desktop-extra {
+      width: 64px;
+      height: 64px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 2px 1px $color-primary;
+    }
+  }
+
+  &__cartBadge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 15px;
+    height: 15px;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+
+    font-size: 9px;
+    font-weight: 400;
+    color: $color-white;
+    text-align: center;
+
+    background-color: #eb5757;
+
+    @include on-desktop {
+      top: 17px;
+      right: 17px;
+    }
+
+    @include on-desktop-extra {
+      top: 17px;
+      right: 17px;
+    }
+  }
+
+  &__menuLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    background-color: $color-white;
+    box-shadow: -1px 0 0 0 $color-elements;
+
+    transition: box-shadow 0.2s ease-in-out;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &:hover {
+      box-shadow: 0 0 2px 1px $color-primary;
+    }
+  }
+
+  &__favoritesImg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__cartImg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__menuImg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__imageLinkActive {
+    background-color: $color-white;
+    box-shadow: 0 1px 2px 0 $color-primary;
+  }
+}
