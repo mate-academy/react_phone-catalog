@@ -1,0 +1,74 @@
+@import '../../../styles/main';
+
+.pagination {
+  transition: all $animation;
+  &_button {
+    width: 32px;
+    height: 32px;
+    display: block;
+    border-radius: 0;
+    background-color: #fff;
+    border: 1px solid #e2e6e9;
+    transition: all $animation;
+
+    &_arrow {
+      width: 32px;
+      height: 32px;
+      display: block;
+      border-radius: 0;
+      background-color: #fff;
+      border: 1px solid #b4bdc3;
+
+      transition: all $animation;
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+
+    &_iconR {
+      background-image: url(/public/img/littleImages/Arrow-right.svg);
+      display: block;
+      width: 16px;
+      height: 16px;
+      transition: all $animation;
+    }
+
+    &_iconL {
+      background-image: url(/public/img/littleImages/Arrow-left.svg);
+      display: block;
+      width: 16px;
+      height: 16px;
+      transition: all $animation;
+    }
+  }
+
+  &_list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 8px;
+  }
+
+  &_active {
+    background-color: #313237;
+    color: #fff;
+  }
+}
+
+.pagination_button_arrow:hover .pagination_button_iconL {
+  transform: translateX(-5px);
+}
+
+.pagination_button_arrow:disabled:hover .pagination_button_iconL {
+  transform: scale(1);
+}
+
+.pagination_button_arrow:hover .pagination_button_iconR {
+  transform: translateX(5px);
+}
+
+.pagination_button_arrow:disabled:hover .pagination_button_iconR {
+  transform: scale(1);
+}
