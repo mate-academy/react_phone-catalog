@@ -111,7 +111,7 @@ const ActionButtons = ({ product }: ActionButtonProps) => {
         className={`${styles.buttons__addToCart} ${isProductInCart ? styles.buttons__addToCart_active : ''}`}
         onClick={triggerAddToCart}
       >
-        Add to Cart
+        {isProductInCart ? 'Added' : 'Add to cart'}
       </button>
       <button
         onClick={triggerFavourites}

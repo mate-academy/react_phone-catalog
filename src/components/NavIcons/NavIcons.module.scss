@@ -9,6 +9,29 @@
     right: 0;
   }
 
+  &__countBadge {
+    position: absolute;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    background: red;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+
+    &--favourites {
+      left: 30px;
+      top: 10px;
+    }
+
+    &--cart {
+      right: 14px;
+      top: 10px;
+    }
+  }
+
   &__icon {
     border-left: 2px solid #e2e6e9;
     border-right: 2px solid #e2e6e9;
