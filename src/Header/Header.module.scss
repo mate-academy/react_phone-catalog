@@ -23,6 +23,8 @@
   cursor: pointer;
   z-index: 1001;
   margin-left: auto;
+  width: 47px;
+  height: 47px;
   border: 1px solid #E2E6E9;
 }
 
@@ -39,7 +41,7 @@
 }
 
 .logo_img {
-  padding: 0 13px
+  padding: 0 16px
 }
 
 .header__burger_open {
@@ -121,6 +123,8 @@
   height: 64px;
   display: flex;
   margin: 0;
+  position: fixed;
+  bottom: 0;
 }
 
 .nav_right a {

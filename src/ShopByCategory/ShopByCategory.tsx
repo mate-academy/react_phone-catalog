@@ -29,9 +29,11 @@ export const ShopByCategory: React.FC = () => {
                 />
               </Link>
             </div>
-            <div className={style.categoryInfo}>
-              <p>Mobile phones</p>
-              <p>{filteredPhones.length} models</p>
+            <div className={style.category_info}>
+              <p className={style.category_info__title}>Mobile phones</p>
+              <p className={style.category_info__models}>
+                {filteredPhones.length} models
+              </p>
             </div>
           </div>
 
@@ -45,9 +47,11 @@ export const ShopByCategory: React.FC = () => {
                 />
               </Link>
             </div>
-            <div className={style.categoryInfo}>
-              <p>Tablets</p>
-              <p>{filteredTablets.length} models</p>
+            <div className={style.category_info}>
+              <p className={style.category_info__title}>Tablets</p>
+              <p className={style.category_info__models}>
+                {filteredTablets.length} models
+              </p>
             </div>
           </div>
 
@@ -61,9 +65,11 @@ export const ShopByCategory: React.FC = () => {
                 />
               </Link>
             </div>
-            <div className={style.categoryInfo}>
-              <p>Accessories</p>
-              <p>{filteredAccessories.length} models</p>
+            <div className={style.category_info}>
+              <p className={style.category_info__title}>Accessories</p>
+              <p className={style.category_info__models}>
+                {filteredAccessories.length} models
+              </p>
             </div>
           </div>
         </div>
