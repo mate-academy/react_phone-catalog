@@ -23,9 +23,14 @@ export const Footer = () => {
         <nav className={styles.footer__nav}>
           <ul className={styles.footer__list}>
             <li className={styles.footer__item}>
-              <Link to="/github.com" className={styles.footer__link}>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://github.com/stanishevskyy"
+                className={styles.footer__link}
+              >
                 Github
-              </Link>
+              </a>
             </li>
             <li className={styles.footer__item}>
               <Link to="/contacts" className={styles.footer__link}>

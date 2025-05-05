@@ -88,15 +88,24 @@
 
   &__link {
     position: relative;
+    display: inline-block;
 
     font-size: 12px;
     font-weight: 700;
-    line-height: 11px;
+    line-height: 48px;
     color: $color-secondary;
     text-transform: uppercase;
     letter-spacing: 0.48px;
 
     transition: color 0.3s linear;
+
+    @include on-desktop {
+      line-height: 64px;
+    }
+
+    @include on-desktop-extra {
+      line-height: 64px;
+    }
 
     &:hover {
       color: $color-primary;
@@ -106,7 +115,7 @@
       content: '';
 
       position: absolute;
-      bottom: -15px;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
 
@@ -118,14 +127,6 @@
       background-color: #000;
 
       transition: width 0.3s ease;
-
-      @include on-desktop {
-        bottom: -24px;
-      }
-
-      @include on-desktop-extra {
-        bottom: -24px;
-      }
     }
   }
 

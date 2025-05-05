@@ -97,6 +97,7 @@
   }
 
   &__addToCart {
+    cursor: pointer;
     flex-grow: 1;
 
     padding-block: 10px;
@@ -121,6 +122,7 @@
   }
 
   &__addToFavorites {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

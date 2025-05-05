@@ -5,74 +5,23 @@
   flex-direction: column;
   justify-content: space-between;
 
-  min-height: calc(100vh - 48px);
+  position: fixed;
+  top: 48px;
+  left: 0;
+  right: 0;
+  z-index: 10001;
+  background-color: $color-white;
 
-  &__container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-in-out;
+
+  &__open {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
-    border-bottom: 1px solid #e2e6e9;
-  }
 
-  &__logoLink {
-    box-sizing: border-box;
-    width: 96px;
-    height: 48px;
-    padding: 13px 16px;
-
-    @include on-desktop {
-      width: 128px;
-      height: 64px;
-      padding: 18px 24px;
-    }
-
-    @include on-desktop-extra {
-      width: 128px;
-      height: 64px;
-      padding: 18px 24px;
-    }
-  }
-
-  &__logo {
-    width: 64px;
-    height: 22px;
-    transition: transform 0.3s linear;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-
-    @include on-desktop {
-      width: 80px;
-      height: 28px;
-    }
-
-    @include on-desktop-extra {
-      width: 80px;
-      height: 28px;
-    }
-  }
-
-  &__close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 48px;
-    height: 48px;
-
-    box-shadow: -1px 0 0 0 $color-elements;
-
-    transition: box-shadow 0.2s ease-in-out;
-
-    &:hover {
-      box-shadow: 0 0 2px 1px $color-primary;
-    }
-  }
-
-  &__closeMenu {
-    width: 16px;
-    height: 16px;
+    max-height: 100vh;
   }
 
   &__nav {
@@ -81,11 +30,17 @@
     padding-block: 24px 276px;
   }
 
+  &__list {
+    text-align: center;
+  }
+
   &__item:not(&__item:last-child) {
     margin-bottom: 16px;
   }
 
   &__link {
+    position: relative;
+
     font-size: 12px;
     font-weight: 700;
     line-height: 11px;
@@ -98,16 +53,12 @@
     &:hover {
       color: $color-primary;
     }
-  }
-
-  &__linkHover {
-    position: relative;
 
     &::before {
       content: '';
 
       position: absolute;
-      bottom: -8px;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
 
@@ -120,10 +71,13 @@
 
       transition: width 0.3s ease;
     }
+  }
 
-    &:active::before {
+  &__linkHover {
+    color: $color-primary;
+
+    &::before {
       width: 100%;
-      color: $color-primary;
     }
   }
 

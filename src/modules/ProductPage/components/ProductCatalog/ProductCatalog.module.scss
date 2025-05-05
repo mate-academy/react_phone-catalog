@@ -43,6 +43,7 @@
   }
 
   &__sortButton {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -140,6 +141,7 @@
   }
 
   &__dropdownItem {
+    cursor: pointer;
     padding-block: 6px;
     padding-inline: 12px;
 

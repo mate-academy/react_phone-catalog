@@ -20,14 +20,9 @@ export const App = () => {
   return (
     <>
       <Header isOpenSide={isOpenSide} setIsOpenSide={setIsOpenSide} />
-      {isOpenSide ? (
-        <SideMenu setIsOpenSide={setIsOpenSide} />
-      ) : (
-        <>
-          {isLoading ? <Loader /> : <Outlet key={pathname} />}
-          <Footer />
-        </>
-      )}
+      <SideMenu isOpenSide={isOpenSide} setIsOpenSide={setIsOpenSide} />
+      {isLoading ? <Loader /> : <Outlet key={pathname} />}
+      <Footer />
     </>
   );
 };

@@ -41,6 +41,7 @@
   }
 
   &__itemDeleteBtn {
+    cursor: pointer;
     width: 16px;
     height: 16px;
     background-color: $color-white;
@@ -89,6 +90,7 @@
   }
 
   &__minusBtn {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,6 +125,7 @@
   }
 
   &__plusBtn {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

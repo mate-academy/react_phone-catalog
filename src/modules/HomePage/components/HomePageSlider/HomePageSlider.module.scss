@@ -10,6 +10,7 @@
   }
 
   &__leftSliderBtn {
+    cursor: pointer;
     display: none;
 
     @include on-tablet {
@@ -69,6 +70,7 @@
   }
 
   &__rightSliderBtn {
+    cursor: pointer;
     display: none;
 
     @include on-tablet {
