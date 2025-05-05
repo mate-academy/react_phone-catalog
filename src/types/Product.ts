@@ -5,9 +5,17 @@ export interface Product {
   priceDiscount: number;
   images: string[];
   screen: string;
+  resolution: string;
+  processor: string;
   capacity: string;
   ram: string;
+  camera: string;
+  zoom: string;
+  cell: string[];
   namespaceId: string;
+  color: string;
+  colorsAvailable: string[];
+  capacityAvailable: string[];
 }
 
 export interface ProductsSliderProps {
@@ -57,4 +65,9 @@ export interface BreadcrumbsProps {
 
 export interface PhoneDetailsPageProps {
   product?: PhoneCardProps['product'];
+}
+
+export interface ButtonProps {
+  cartButtonClassName?: string;
+  favButtonClassName?: string;
 }

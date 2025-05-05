@@ -1,14 +1,11 @@
 import { PhoneCardProps } from '@/types/Product';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Buttons } from '@/components/Buttons';
 
 export const PhoneCard = ({
   product,
   showDiscount = false,
 }: PhoneCardProps) => {
-  const [isSelectedFav, setIsSelectedFav] = useState(false);
-  const [isSelectedBtn, setIsSelectedBtn] = useState(false);
-
   const formatScreen = (screen: string) => {
     const screenMatch = screen.match(/([\d.]+)[’']?\s+([A-Za-z\s]*)/i);
 
@@ -65,31 +62,7 @@ export const PhoneCard = ({
           <span className="text-text-color-base-white">{product.ram}</span>
         </li>
       </ul>
-
-      <div className="flex gap-2">
-        <button
-          onClick={() => setIsSelectedBtn(!isSelectedBtn)}
-          className={`flex-1 text-text-color-base-white 
-            py-[9.5px] px-[39.5px] text-sm font-bold ${isSelectedBtn ? 'bg-background-color-btn' : 'bg-color-btn-purple hover:bg-color-btn-purple-hover'}
-        `}
-        >
-          {isSelectedBtn ? 'Added' : 'Add to cart'}
-        </button>
-        <button
-          onClick={() => setIsSelectedFav(!isSelectedFav)}
-          className={`w-10 h-10 flex items-center justify-center ${isSelectedFav ? 'border border-color-border bg-transparent' : 'bg-background-color-btn hover:bg-background-color-btn-hover'}
-             `}
-        >
-          <img
-            src={
-              isSelectedFav
-                ? 'icons/favourites-liked.svg'
-                : 'icons/favourites.svg'
-            }
-            alt="like"
-          />
-        </button>
-      </div>
+      <Buttons />
     </div>
   );
 };

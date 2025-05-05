@@ -121,7 +121,6 @@ export default [
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-unused-vars': ['error'],
-      indent: ['error', 2],
     },
   },
   // Cypress

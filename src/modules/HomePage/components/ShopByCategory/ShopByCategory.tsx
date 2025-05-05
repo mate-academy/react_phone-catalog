@@ -8,7 +8,7 @@ export const ShopByCategory = () => {
       </h2>
       <div className="flex flex-col items-center sm:flex-row sm:gap-4">
         <div className="mt-6">
-          <Link to="">
+          <Link to="/phones">
             <img
               src="img/Phones-ct.png"
               alt="category"

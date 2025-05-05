@@ -5,12 +5,14 @@ import { HomePage } from '@/modules/HomePage';
 import { Phones } from '@/modules/Phones';
 import { PhoneDetailsWrapper } from '@/components/PhoneDetailsWrapper';
 import { NotFoundPage } from '@/components/NotFoundPage';
+import { ScrollToTop } from '@/utils/ScrollToTop';
 import { Provider } from 'react-redux';
 import { store } from '@/store';
 const App = () => {
   return (
     <Provider store={store}>
       <HashRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
