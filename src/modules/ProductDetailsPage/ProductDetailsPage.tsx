@@ -10,6 +10,7 @@ import { RecommendedProduct } from '../../components/RecomendetProduct';
 import { useProducts } from '../../contexts/ProductsContext';
 import { ProductType } from '../../types/ProductType';
 import { Loading } from '../../shared/Loading';
+import { NotFound } from '../../shared/NotFound';
 
 export const ProductDetailsPage: React.FC = () => {
   const { products: recommendedProducts, error, isLoading } = useProducts();
@@ -78,7 +79,7 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   if (!product) {
-    return <h2>Product not found</h2>;
+    return <NotFound title="Product not found" />;
   }
 
   return (

@@ -47,7 +47,7 @@
     transition: border utils.$animation-duration;
 
     &:not(.productOptions__color--active):hover {
-      border: utils.$default-border;
+      border: 1px solid utils.$color-secondary;
     }
   }
 

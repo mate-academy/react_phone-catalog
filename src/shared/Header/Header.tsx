@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
+import { useProducts } from '../../contexts/ProductsContext';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/type';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -13,7 +16,7 @@ const navLinks = [
 const actionLinks = [
   {
     to: '/favorites',
-    icon: 'img/icons/favorites.svg',
+    icon: 'img/icons/favorites-empty.svg',
     alt: 'favorites',
     className: 'header__favorites',
   },
@@ -31,6 +34,7 @@ const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
   });
 
 export const Header: React.FC = () => {
+  const { products } = useProducts();
   const [isBurgerActive, setIsBurgerActive] = useState(false);
 
   const bodyRef = React.useRef(document.body);
@@ -61,6 +65,17 @@ export const Header: React.FC = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const favoritesIds: string[] = useSelector(
+    (state: RootState) => state.favorites,
+  );
+
+  const favorites =
+    products && Array.isArray(products)
+      ? products.filter(product => favoritesIds.includes(product.itemId))
+      : [];
+
+  const favoritesCount = favorites.length;
 
   return (
     <header className={styles.header}>
@@ -109,6 +124,11 @@ export const Header: React.FC = () => {
                   onClick={() => setIsBurgerActive(false)}
                 >
                   <img src={icon} alt={alt} />
+                  {to === '/favorites' && favoritesCount > 0 && (
+                    <span className={styles.header__count}>
+                      {favoritesCount}
+                    </span>
+                  )}
                 </NavLink>
               </button>
             ))}

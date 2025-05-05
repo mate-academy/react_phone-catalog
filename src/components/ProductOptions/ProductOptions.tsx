@@ -11,6 +11,7 @@ type ProductOptionsProps = {
 
 export const ProductOptions: React.FC<ProductOptionsProps> = ({ product }) => {
   const {
+    id,
     colorsAvailable,
     namespaceId,
     capacityAvailable,
@@ -46,6 +47,7 @@ export const ProductOptions: React.FC<ProductOptionsProps> = ({ product }) => {
       />
 
       <PriceBlock
+        itemId={id}
         priceDiscount={priceDiscount}
         priceRegular={priceRegular}
         screen={screen}

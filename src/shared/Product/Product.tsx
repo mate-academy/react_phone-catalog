@@ -4,6 +4,9 @@ import { ProductType } from '../../types/ProductType';
 import { Link } from 'react-router-dom';
 import ProductInfo from './ProductInfo';
 import { Actions } from '../Actions/Actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { addFavorite, removeFavorite } from '../../services/favorites';
+import { RootState } from '../../store/type';
 
 type Props = {
   product: ProductType;
@@ -22,6 +25,21 @@ export const Product: React.FC<Props> = ({ product, fullPriceActive }) => {
     itemId,
     category,
   } = product;
+
+  const dispatch = useDispatch();
+  const favorites: string[] = useSelector(
+    (state: RootState) => state.favorites,
+  );
+
+  const isFavorite = favorites.includes(itemId);
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      dispatch(removeFavorite(itemId));
+    } else {
+      dispatch(addFavorite(itemId));
+    }
+  };
 
   return (
     <article className={styles.product}>
@@ -53,7 +71,7 @@ export const Product: React.FC<Props> = ({ product, fullPriceActive }) => {
             ]}
           />
 
-          <Actions />
+          <Actions isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
         </div>
       </Link>
     </article>

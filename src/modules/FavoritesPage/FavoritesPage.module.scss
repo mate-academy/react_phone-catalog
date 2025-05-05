@@ -1,0 +1,63 @@
+@use '../../styles/utils' as utils;
+
+.favorites {
+  padding: 24px 0 64px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__info {
+    margin-bottom: 24px;
+
+    span {
+      font-family: utils.$font-main;
+      font-size: 14px;
+      font-weight: 600;
+      font-style: normal;
+      line-height: 21px;
+      color: utils.$color-secondary;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    font-family: utils.$font-main;
+    font-size: 48px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 56px;
+    color: utils.$color-white;
+    letter-spacing: -0.01em;
+  }
+
+  &__empty {
+    font-family: utils.$font-main;
+    font-size: 32px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 24px;
+    color: utils.$color-secondary;
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    gap: 40px;
+
+    @include utils.on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 16px;
+    }
+
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include utils.on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

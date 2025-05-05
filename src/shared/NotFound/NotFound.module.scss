@@ -1,0 +1,49 @@
+@use '../../styles/utils' as utils;
+
+.notFound {
+  padding: 40px 0;
+
+  &__title {
+    margin-bottom: 24px;
+
+    font-family: utils.$font-main;
+    font-size: 44px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 140%;
+    color: utils.$color-white;
+    text-align: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn {
+    cursor: pointer;
+
+    width: 30%;
+    height: 40px;
+    border: none;
+    border-radius: 15px;
+
+    font-family: utils.$font-main;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 15px;
+    color: utils.$color-white;
+    text-transform: uppercase;
+
+    background-color: utils.$color-accent;
+    outline: none;
+  }
+
+  &__img {
+    width: 80%;
+  }
+}

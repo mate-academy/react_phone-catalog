@@ -251,12 +251,6 @@
           bottom: 0;
         }
 
-        img {
-          display: block;
-          width: 16px;
-          height: 16px;
-        }
-
         @include utils.on-desktop {
           padding: 24px;
         }
@@ -288,6 +282,8 @@
   }
 
   &__link {
+    position: relative;
+
     font-family: utils.$font-main;
     font-size: 12px;
     font-weight: 800;
@@ -300,7 +296,6 @@
     transition: color utils.$animation-duration;
 
     @include utils.on-tablet {
-      position: relative;
       padding: 18px 0;
 
       &::after {
@@ -332,6 +327,27 @@
     @include utils.on-desktop {
       padding: 26px 0;
     }
+  }
+
+  &__count {
+    @extend %flex-center;
+
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+
+    font-family: utils.$font-main;
+    font-size: 10px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 15px;
+    color: utils.$color-white;
+
+    background-color: #eb5757;
   }
 
   .active-link {
