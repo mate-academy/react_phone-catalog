@@ -1,0 +1,1 @@
+export { SliderPhones } from './SliderPhones';

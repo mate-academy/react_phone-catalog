@@ -1,0 +1,22 @@
+@use '/src/utils' as *;
+
+.ModelPagination {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+
+  &__button {
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+
+    @extend %buttons-icon-style;
+
+    &Active {
+      color: #fff;
+      background-color: var(--add-bg);
+      border: 0;
+    }
+  }
+}

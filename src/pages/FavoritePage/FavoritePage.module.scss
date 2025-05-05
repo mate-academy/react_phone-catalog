@@ -1,0 +1,25 @@
+@use '/src/utils' as *;
+
+.FavoritePage {
+  row-gap: 50px;
+
+  @include grid;
+
+  &__currentPage {
+    grid-column: 1 / -1;
+  }
+
+  &__noItems {
+    grid-column: 1 / -1;
+    object-fit: contain;
+    place-self: center;
+  }
+
+  &__card {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+}

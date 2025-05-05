@@ -1,0 +1,34 @@
+@use '/src/utils' as *;
+
+$padding-inline: 10px;
+
+.ModelsPage {
+  row-gap: 40px;
+
+  @include grid;
+
+  &__currentPage {
+    grid-column: 1 / -1;
+  }
+
+  &__filter {
+    grid-column: 1 / -1;
+
+    @include grid;
+  }
+
+  &__cards {
+    grid-column: 1 / -1;
+    row-gap: 40px;
+
+    @include grid;
+  }
+
+  &__card {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+}

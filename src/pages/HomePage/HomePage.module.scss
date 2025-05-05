@@ -1,0 +1,20 @@
+@use '/src/utils' as *;
+
+.HomePage {
+  &__title {
+    color: var(--text-main);
+    padding-block: 24px;
+
+    @include centered;
+
+    @include on-tablet {
+      padding-block: 32px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+
+      padding-block: 56px;
+    }
+  }
+}
