@@ -1,0 +1,29 @@
+@import '../../App';
+
+.logo {
+  background-image: $hover-gradient;
+  background-clip: text;
+  width: min-content;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: $primary-color;
+  font-family: Mont-Bold, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 100%;
+
+  @include on-desktop {
+    transition: color $default-trans-dur;
+  }
+
+
+  &:hover, &:active {
+    color: transparent;
+  }
+}
+
+.icon {
+  width: 11px;
+  margin-left: 2px;
+}

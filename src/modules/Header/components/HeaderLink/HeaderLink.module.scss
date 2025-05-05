@@ -1,0 +1,15 @@
+@import '../../../../App';
+
+.logo-wrapper {
+  text-decoration: none;
+  display: flex;
+  padding-inline: 16px;
+  align-items: center;
+  border-bottom: $light-border-value;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+}
+
+@include is-active;

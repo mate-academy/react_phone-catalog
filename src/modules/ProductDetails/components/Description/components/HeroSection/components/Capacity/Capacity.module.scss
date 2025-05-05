@@ -1,0 +1,40 @@
+@import '/src/App';
+
+.title {
+  font-size: 12px;
+  line-height: 15.34px;
+  color: $secondary-color;
+  font-family: Mont-SemiBold, sans-serif;
+}
+
+.wrapper {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.item {
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  padding-inline: 8px;
+  height: 32px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  border: $icons-border-value;
+  transition: all $default-trans-dur;
+}
+
+.item:hover,
+.is-active {
+  border-color: transparent;
+  background-color: $primary-color;
+  color: white;
+}
+
+.is-active {
+  @include is-active;
+}

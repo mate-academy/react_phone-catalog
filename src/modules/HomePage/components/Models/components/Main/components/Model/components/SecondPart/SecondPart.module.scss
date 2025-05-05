@@ -1,0 +1,9 @@
+@import '../../../../../../../../../../App';
+
+.second-part {
+  height: 77px;
+  justify-content: center;
+
+  @include product-flex-column;
+  @include spec;
+}

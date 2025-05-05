@@ -1,0 +1,19 @@
+@import '/src/App';
+
+.first-part {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-discount {
+  @include fz32px-lh41px;
+}
+
+.price-regular {
+  font-size: 22px;
+  line-height: 28.12px;
+  text-decoration: line-through;
+  font-family: Mont-Regular, sans-serif;
+  color: $secondary-color;
+}

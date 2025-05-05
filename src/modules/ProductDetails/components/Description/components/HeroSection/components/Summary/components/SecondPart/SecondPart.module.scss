@@ -1,0 +1,10 @@
+@import '/src/App';
+
+.second-part {
+  margin-top: 16px;
+  height: 48px;
+  display: flex;
+  gap: 8px;
+
+  @include shop-buttons;
+}

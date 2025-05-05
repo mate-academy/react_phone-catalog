@@ -1,0 +1,19 @@
+@import '../../App';
+
+.header {
+  position: sticky;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  height: var(--header-height);
+  justify-content: space-between;
+  z-index: 100;
+  background-color: #fff;
+
+  .container {
+    display: flex;
+    width: 100%;
+    border-bottom: $light-border-value;
+  }
+}

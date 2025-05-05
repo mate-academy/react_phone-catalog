@@ -1,0 +1,33 @@
+@import '/src/App';
+
+.about {
+  grid-column: span 12;
+
+  .title {
+    @include pd-title;
+  }
+
+  .block {
+    margin-top: 32px;
+
+    &-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 20.45px;
+      color: $primary-color;
+      font-family: Mont-SemiBold, sans-serif;
+      font-weight: inherit;
+
+      @include on-tablet {
+        font-size: 20px;
+        line-height: 25.56px;
+      }
+    }
+
+    &-text {
+      margin-top: 16px;
+
+      @include fz14px-lh21px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import '/src/App';
+
+.img {
+  position: absolute;
+  inset: 50% 0 0 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 288px;
+  overflow: hidden;
+  z-index: -1;
+
+  @include on-tablet {
+    width: 476px;
+  }
+
+  @include on-desktop {
+    margin-top: 50px;
+  }
+}

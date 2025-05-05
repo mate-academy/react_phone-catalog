@@ -1,0 +1,43 @@
+// #region colors
+
+$elements-color: #e2e6e9;
+$red-color: #eb5757;
+$green-color: #27ae60;
+$light-green-color: #79d5a0;
+$secondary-color: #89939a;
+$primary-color: #313237;
+$icons-color: #b4bdc3;
+$darkgrey-color: #222;
+$grey-color: #aeaeae;
+$border-grey-color: #444;
+$box-shadow-color: #17203166;
+$hover-gradient: linear-gradient(to right, #891ce8, #7561fa, #e963ff);
+
+// #endregion
+
+$light-border-value: 1px solid $elements-color;
+$icons-border-value: 1px solid $icons-color;
+$focus-border-value: 1px solid $green-color;
+$default-trans-dur: 300ms;
+$mobile-container-width: 288px;
+$tablet-container-width: 592px;
+$desktop-container-width: 1040px;
+$tg-column: 34.67px;
+$sdg-column: 45.25px;
+$dg-column: 28px;
+$g-gap: 16px;
+
+/* stylelint-disable */
+
+:export {
+  iconsBorderValue: $icons-border-value;
+  focusBorderValue: $focus-border-value;
+  greenColor: $green-color;
+  lightGreenColor: $light-green-color;
+  defaultTransDur: $default-trans-dur;
+  primaryColor: $primary-color;
+  elementsColor: $elements-color;
+  categoriesMt: var(--categories-mt);
+}
+
+/* stylelint-enable */

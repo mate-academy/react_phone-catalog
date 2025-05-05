@@ -1,0 +1,26 @@
+@import '../../../../../../App';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .title {
+    width: 136px;
+    margin: 0;
+
+    @include fz22px-lh30-8px;
+
+    @include on-tablet {
+      width: 100%;
+
+      @include fz32px-lh41px;
+    }
+  }
+
+  .nav {
+    min-width: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

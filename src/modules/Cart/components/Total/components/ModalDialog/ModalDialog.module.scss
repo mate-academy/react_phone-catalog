@@ -1,0 +1,82 @@
+@import '/src/App';
+
+.wrapper {
+  position: fixed;
+  background-color: rgba($color: #000, $alpha: 0.7);
+  z-index: 1000;
+  inset: 0;
+  height: 100%;
+
+  @include flex-center-center;
+
+  .modal {
+    box-sizing: border-box;
+    padding: 24px 16px;
+    text-align: center;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 5px;
+
+    @include on-tablet {
+      padding-inline: 50px;
+      width: 522px;
+    }
+  }
+
+  .content-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+
+    .title {
+      width: 288px;
+      margin: 0;
+      margin-inline: auto;
+
+      @include fz32px-lh41px;
+    }
+
+    .clear-wrapper {
+      .question {
+        @include fz14px-lh21px;
+      }
+
+      .buttons {
+        margin-top: 16px;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+
+        .button {
+          box-sizing: border-box;
+          padding: 0;
+          height: 40px;
+          border: 2px solid $icons-color;
+          border-radius: 5px;
+          background-color: #fff;
+          width: 136px;
+          transition: all $default-trans-dur;
+
+          @include fz14px-lh21px;
+
+          @include on-tablet {
+            width: 150px;
+          }
+
+          @include on-desktop {
+            &:hover {
+              border-color: $primary-color;
+              color: $primary-color;
+            }
+          }
+
+          &:active {
+            background-color: $elements-color;
+          }
+        }
+      }
+    }
+  }
+}

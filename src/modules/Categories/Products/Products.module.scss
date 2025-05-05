@@ -1,0 +1,25 @@
+@import '../../../App';
+
+.products {
+  width: var(--container-width);
+  margin-inline: auto;
+
+  .title {
+    @include products-title;
+  }
+
+  .subtitle {
+    @include products-subtitle;
+  }
+
+  .ds-wrapper {
+    display: flex;
+    gap: 16px;
+
+    :first-child button {
+      @include on-tablet {
+        width: 187px;
+      }
+    }
+  }
+}

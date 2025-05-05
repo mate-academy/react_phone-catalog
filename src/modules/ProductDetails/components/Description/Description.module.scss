@@ -1,0 +1,29 @@
+@import '/src/App';
+
+.title {
+  margin: 0;
+  margin-top: 16px;
+
+  @include fz22px-lh30-8px;
+
+  @include on-tablet {
+    @include fz32px-lh41px;
+  }
+}
+
+.wrapper {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    display: grid;
+    column-gap: $g-gap;
+    justify-content: center;
+
+    @include desktop-grid;
+  }
+}

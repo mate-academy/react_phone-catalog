@@ -1,0 +1,23 @@
+@import '/src/App';
+
+.background {
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  z-index: 1000;
+
+  .error {
+    width: 288px;
+
+    @include on-tablet {
+      width: 409.5px;
+    }
+  }
+}
+
+
