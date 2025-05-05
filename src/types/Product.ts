@@ -24,6 +24,7 @@ export interface ProductsSliderProps {
   sortFunction?: (a: Product, b: Product) => number;
   cardProps?: Partial<PhoneCardProps>;
   className: string;
+  className_2: string;
 }
 
 export type PhoneCardProps = {

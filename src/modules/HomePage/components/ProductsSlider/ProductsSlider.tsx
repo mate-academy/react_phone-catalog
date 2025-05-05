@@ -14,6 +14,7 @@ export const ProductsSlider = ({
   sortFunction,
   cardProps,
   className = 'mt-20',
+  className_2 = 'gap-4',
 }: ProductsSliderProps) => {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.products.items);
@@ -61,7 +62,7 @@ export const ProductsSlider = ({
             {subtitle}
           </span>
         </div>
-        <div className="flex gap-4">
+        <div className={`flex gap-4 ${className_2}`}>
           <button
             onClick={prevSlide}
             disabled={currentIndex === 0}

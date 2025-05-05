@@ -80,29 +80,31 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
           Back
         </Link>
 
-        <h1 className="pt-4 font-extrabold text-[32px] leading-[41px] tracking-negative-1">
+        <h1 className="pt-4 font-extrabold text-[22px] tracking-normal leading-[140%]
+          sm:text-[32px] sm:leading-[41px] sm:tracking-negative-1">
           {product.name}
         </h1>
 
-        <div className="pt-10 flex flex-wrap gap-16">
-          <div className="flex gap-4">
-            <div className="flex flex-col gap-4 w-20 h-20">
+        <div className="pt-10 flex flex-wrap lg:gap-16">
+
+          <div className="flex sm:flex-row flex-col-reverse gap-4">
+            <div className="flex flex-row justify-center gap-2 sm:flex-col sm:justify-stretch 
+              lg:gap-4 lg:w-20 lg:h-20">
               {product.images.map((img, i) => (
                 <img
                   key={i}
                   src={img}
                   alt={`Image ${i}`}
                   onClick={() => setSelectedImage(i)}
-                  className={`w-[66px] h-[66px] object-contain cursor-pointer transition-all hover:scale-105 ${
-                    selectedImage === i
-                      ? 'border-[1px] border-text-color-base-white'
-                      : 'border border-color-border'
-                  }`}
+                  className={`sm:w-[35px] sm:h-[35px] lg:w-[66px] lg:h-[66px] w-[48px] h-[48px] object-contain cursor-pointer transition-all hover:scale-105 ${selectedImage === i
+                    ? 'border-[1px] border-text-color-base-white'
+                    : 'border border-color-border'
+                    }`}
                 />
               ))}
             </div>
 
-            <div className="w-[464px] h-[464px]">
+            <div className="w-[288px] h-[288px] lg:w-[464px] lg:h-[464px]">
               <img
                 src={product.images[selectedImage]}
                 alt="Selected"
@@ -112,29 +114,33 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
           </div>
 
           <div className="flex flex-col w-[320px]">
-            <div className="flex flex-col gap-2">
-              <h5 className="text-text-color-base-grey text-xs font-bold">
-                Available colors
-              </h5>
-              <div className="flex gap-x-2">
-                {product.colorsAvailable.map(color => (
-                  <button
-                    key={color}
-                    onClick={() => handleColorChange(color)}
-                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200
-                      ${
-                        selectedColor === color
+            <div className="flex justify-between items-start pt-10 md:pt-0 lg:pt-10">
+              <div>
+                <h5 className="text-text-color-base-grey text-xs font-bold mb-2">
+                  Available colors
+                </h5>
+                <div className="flex gap-x-2 flex-wrap">
+                  {product.colorsAvailable.map(color => (
+                    <button
+                      key={color}
+                      onClick={() => handleColorChange(color)}
+                      className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200
+                      ${selectedColor === color
                           ? 'border-text-color-base-white border-2'
                           : 'border border-color-border hover:border-text-color-base-grey'
-                      }
+                        }
                     `}
-                    aria-label={`Color ${color}`}
-                  >
-                    <div
-                      className={`w-[32px] h-[32px] rounded-full ${colorClassMap[color] ?? 'bg-gray-500'}`}
-                    />
-                  </button>
-                ))}
+                      aria-label={`Color ${color}`}
+                    >
+                      <div
+                        className={`w-[32px] h-[32px] rounded-full ${colorClassMap[color] ?? 'bg-gray-500'}`}
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="font-bold text-xs leading-[100%] text-background-color-btn-hover pt-[2px]">
+                ID: 8023904
               </div>
             </div>
 
@@ -153,11 +159,10 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
                       onClick={() => handleCapacityChange(capacity)}
                       className={`px-2 pt-[7px] pb-1 h-8 leading-[21px] border flex items-center text-sm font-semibold 
                       transition-all duration-200
-                      ${
-                        selectedCapacity === capacity
+                      ${selectedCapacity === capacity
                           ? 'bg-text-color-base-white text-background-color-base'
                           : 'border-background-color-btn-hover text-text-color-base-white bg-transparent hover:bg-text-color-base-white hover:text-background-color-base'
-                      }
+                        }
                     `}
                     >
                       <div className="flex gap-[3px]">
@@ -204,11 +209,8 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
               ))}
             </div>
           </div>
-          <div className="font-bold text-xs leading-[100%] text-background-color-btn-hover">
-            ID: 8023904
-          </div>
 
-          <div className="flex flex-col lg:flex-row gap-16 pt-20 w-full">
+          <div className="flex flex-col lg:flex-row gap-16 pt-[56px] sm:pt-20 w-full">
             <div className="w-full lg:basis-[560px] lg:max-w-[560px]">
               <h3 className="text-text-color-base-white text-[22px] font-extrabold leading-[140%]">
                 About
@@ -274,9 +276,9 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
         <ProductsSlider
           title={'You may also like'}
           subtitle={''}
-          className={'xl:px-[0]'}
-          sortFunction={sortByModelNumber}
-        />
+          className={'xl:px-[0] px-[0]'}
+          className_2={'gap-[8px]'}
+          sortFunction={sortByModelNumber} />
       </div>
     </div>
   );

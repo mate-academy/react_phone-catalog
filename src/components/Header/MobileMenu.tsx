@@ -26,6 +26,7 @@ export const MobileMenu = ({ isMenuOpenNow, onClose }: MobileMenuProps) => {
           <Link
             to="/"
             className="relative hover:text-text-color-base-white group"
+            onClick={onClose}
           >
             Home
             <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full md:-bottom-7" />
@@ -33,6 +34,7 @@ export const MobileMenu = ({ isMenuOpenNow, onClose }: MobileMenuProps) => {
           <Link
             to="/phones"
             className="relative hover:text-text-color-base-white group"
+            onClick={onClose}
           >
             Phones
             <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full md:-bottom-7" />
@@ -40,6 +42,7 @@ export const MobileMenu = ({ isMenuOpenNow, onClose }: MobileMenuProps) => {
           <Link
             to="/tablets"
             className="relative hover:text-text-color-base-white group"
+            onClick={onClose}
           >
             Tablets
             <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full md:-bottom-7" />
@@ -47,6 +50,7 @@ export const MobileMenu = ({ isMenuOpenNow, onClose }: MobileMenuProps) => {
           <Link
             to="/accessories"
             className="relative hover:text-text-color-base-white group"
+            onClick={onClose}
           >
             Accessories
             <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full md:-bottom-7" />
