@@ -75,9 +75,18 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
       <Breadcrumbs currentName={product.name} />
 
       <div className="px-4 sm:px-6 md:px-8 xl:px-[152px]">
-        <Link to="/phones" className="flex items-center gap-x-1 pt-10 text-xs">
-          <img src="icons/arrow-left.svg" alt="back" />
-          Back
+        <Link to="/phones" className="flex items-center gap-x-1 pt-10 text-xs group hover:text-color-btn-purple ">
+          <img 
+            src="icons/arrow-left.svg" 
+            alt="back" 
+            className="block group-hover:hidden" 
+          />
+          <img 
+            src="icons/arrow-left-purple.svg" 
+            alt="back-hover" 
+            className="hidden group-hover:block"
+          />
+          <span>Back</span>
         </Link>
 
         <h1 className="pt-4 font-extrabold text-[22px] tracking-normal leading-[140%]
@@ -196,7 +205,8 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
             <div className="pt-4">
               <Buttons
                 cartButtonClassName="h-12"
-                favButtonClassName="w-12 h-12"
+                favButtonClassName="w-12 h-12" 
+                product={product}  
               />
             </div>
 
@@ -275,9 +285,9 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
         </div>
         <ProductsSlider
           title={'You may also like'}
-          subtitle={''}
-          className={'xl:px-[0] px-[0]'}
-          className_2={'gap-[8px]'}
+          cardProps={{ showDiscount: true }}
+          className={'px-[0px] sm:px-[0px] xl:px-[0px]'}
+          className_2={'gap-[8px] sm:gap-4'}
           sortFunction={sortByModelNumber} />
       </div>
     </div>

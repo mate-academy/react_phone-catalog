@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FavouriteIconWithCounter } from '../FavouriteIconWithCounter';
 
 type MobileMenuProps = {
   isMenuOpenNow: boolean;
@@ -60,11 +61,11 @@ export const MobileMenu = ({ isMenuOpenNow, onClose }: MobileMenuProps) => {
 
       <div className="flex border-t border-[#3B3E4A]">
         <Link
-          to="/favorites"
+          to="/favourites"
           className="flex-1 flex items-center justify-center h-12 border-r border-[#3B3E4A] text-text-color-base-white
                                                 hover:text-text-color-base-white relative group"
         >
-          <img src="icons/favourites.svg" alt="favorites" />
+          <FavouriteIconWithCounter />
           <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full" />
         </Link>
         <Link

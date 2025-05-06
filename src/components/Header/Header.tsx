@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MobileMenu } from './MobileMenu';
+import { FavouriteIconWithCounter } from '../FavouriteIconWithCounter';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,18 +50,14 @@ export const Header = () => {
         </div>
         <div className="hidden items-stretch h-full sm:flex">
           <Link
-            to="/favorites"
-            className="flex items-center justify-cente px-4 border-l md:px-6 border-[#3B3E4A] text-text-color-base-white group"
+            to="/favourites"
+            className="flex items-center justify-cente px-4 border-l md:px-6 border-color-border text-text-color-base-white group"
           >
-            <img
-              src="icons/favourites.svg"
-              alt="favorites"
-              className="group-hover:scale-125 transition-all"
-            />
+            <FavouriteIconWithCounter />
           </Link>
           <Link
             to="/cart"
-            className="flex items-center justify-center pl-4 border-l md:pl-6 border-[#3B3E4A] text-text-color-base-white group"
+            className="flex items-center justify-center pl-4 border-l md:pl-6 border-color-border text-text-color-base-white group"
           >
             <img
               src="icons/shopping_bag.svg"

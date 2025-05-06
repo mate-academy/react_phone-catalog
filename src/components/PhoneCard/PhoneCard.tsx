@@ -62,7 +62,7 @@ export const PhoneCard = ({
           <span className="text-text-color-base-white">{product.ram}</span>
         </li>
       </ul>
-      <Buttons />
+      <Buttons product={product} />
     </div>
   );
 };

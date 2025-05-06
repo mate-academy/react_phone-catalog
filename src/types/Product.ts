@@ -20,11 +20,11 @@ export interface Product {
 
 export interface ProductsSliderProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   sortFunction?: (a: Product, b: Product) => number;
   cardProps?: Partial<PhoneCardProps>;
-  className: string;
-  className_2: string;
+  className?: string;
+  className_2?: string;
 }
 
 export type PhoneCardProps = {
@@ -68,7 +68,3 @@ export interface PhoneDetailsPageProps {
   product?: PhoneCardProps['product'];
 }
 
-export interface ButtonProps {
-  cartButtonClassName?: string;
-  favButtonClassName?: string;
-}

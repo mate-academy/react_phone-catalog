@@ -1,6 +1,6 @@
 'use client';
 
-import { ProductsSlider } from '../ProductsSlider';
+import { ProductsSlider } from '@/modules/HomePage/components/ProductsSlider';
 import { Product } from '@/types/Product';
 
 export const HotSlider = () => {
@@ -14,9 +14,6 @@ export const HotSlider = () => {
     <ProductsSlider
       title="Hot prices"
       sortFunction={sortByBiggestDiscount}
-      cardProps={{ showDiscount: true }}
-      subtitle={''}
-      className={''}
-    />
+      cardProps={{ showDiscount: true }}   />
   );
 };

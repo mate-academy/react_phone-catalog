@@ -1,16 +1,34 @@
-import { useState } from 'react';
-import { ButtonProps } from '@/types/Product';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleFavourite } from '@/store/features/products/favouritesSlice';
+import { RootState } from '@/store';
+import { Product } from '@/types/Product';
+
+type ButtonProps = {
+  product: Product;
+  cartButtonClassName?: string;
+  favButtonClassName?: string;
+};
 
 export const Buttons = ({
-  cartButtonClassName = '',
+  product,
+  // cartButtonClassName = '',
   favButtonClassName = '',
 }: ButtonProps) => {
-  const [isSelectedFav, setIsSelectedFav] = useState(false);
-  const [isSelectedBtn, setIsSelectedBtn] = useState(false);
+
+  const dispatch = useDispatch();
+  const favourites = useSelector((state: RootState) => state.favourites.items);
+
+  if (!product || !product.id) return null; 
+
+  const isFavourites = favourites.some(item => item.id === product.id);
+
+  const handleToggleFavourites = () => {
+    dispatch(toggleFavourite(product));
+  };
 
   return (
     <div className="flex gap-2">
-      <button
+      {/* <button
         onClick={() => setIsSelectedBtn(!isSelectedBtn)}
         className={`flex-1 text-text-color-base-white 
                 py-[9.5px] px-[39.5px] text-sm leading-[21px] font-bold ${isSelectedBtn ? 'bg-background-color-btn' : 'bg-color-btn-purple hover:bg-color-btn-purple-hover'}
@@ -18,16 +36,16 @@ export const Buttons = ({
         `}
       >
         {isSelectedBtn ? 'Added' : 'Add to cart'}
-      </button>
+      </button> */}
       <button
-        onClick={() => setIsSelectedFav(!isSelectedFav)}
-        className={`w-10 h-10 flex items-center justify-center ${isSelectedFav ? 'border border-color-border bg-transparent' : 'bg-background-color-btn hover:bg-background-color-btn-hover'}
+        onClick={handleToggleFavourites}
+        className={`w-10 h-10 flex items-center justify-center ${isFavourites ? 'border border-color-border bg-transparent' : 'bg-background-color-btn hover:bg-background-color-btn-hover'}
                 ${favButtonClassName}
              `}
       >
         <img
           src={
-            isSelectedFav
+            isFavourites
               ? 'icons/favourites-liked.svg'
               : 'icons/favourites.svg'
           }
