@@ -1,0 +1,43 @@
+.news {
+  margin-bottom: 120px;
+
+  @include tablet-above {
+    margin-bottom: 160px;
+  }
+
+  @include desktop-above {
+    margin-bottom: 200px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__main {
+    @include grid-template;
+    row-gap: 50px;
+  }
+
+  &__card {
+    grid-column: 1/-1;
+
+    @include tablet-above {
+      grid-column: span 3;
+    }
+
+    @include desktop-above {
+      grid-column: span 6;
+    }
+
+    &-image {
+      object-fit: cover;
+    }
+
+    &-title {
+      &:not(:last-child) {
+        margin-bottom: 18px;
+      }
+    }
+  }
+}

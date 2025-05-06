@@ -1,0 +1,24 @@
+.popup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  position: fixed;
+  top: 30px;
+  right: -100%;
+  z-index: 10;
+
+  min-width: 100px;
+  padding: 20px;
+  background-color: rgb(193, 190, 190);
+  border: 2px solid rgb(0, 45, 0);
+  color: green;
+
+  opacity: 0.8;
+  pointer-events: none;
+  transition: all var(--transition-duration);
+
+  &-active {
+    right: 30px;
+  }
+}

@@ -1,0 +1,17 @@
+.top-bar {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+
+  &__button {
+    border: none;
+    background-color: transparent;
+    margin-left: auto;
+  }
+
+  &__lang {
+
+  }
+}

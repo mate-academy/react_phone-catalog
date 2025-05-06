@@ -1,0 +1,98 @@
+.program {
+  background-color: var(--color-background);
+  padding-block: 50px;
+  margin-bottom: 90px;
+
+  @include tablet-above {
+    grid-column: span 5;
+    padding-block: 80px;
+    margin-bottom: 120px;
+  }
+
+  @include desktop-above {
+    grid-column: span 7;
+    padding-block: 0;
+    margin-bottom: 110px;
+  }
+
+  &__container {
+    @include grid-template;
+    align-items: center;
+  }
+
+  &__picture {
+    display: none;
+
+    @include desktop-above {
+      display: flex;
+      grid-column: span 5;
+      margin-left: -55px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+
+  &__main {
+    grid-column: 1/-1;
+
+    @include tablet-above {
+      display: contents;
+      @include grid-template;
+    }
+
+    @include desktop-above {
+      grid-column: span 7;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      column-gap: 30px;
+    }
+  }
+
+  &__title {
+    grid-column: 1/-1;
+    margin-bottom: 20px;
+
+    @include tablet-above {
+      grid-column: span 5;
+    }
+
+    @include desktop-above {
+      grid-column: span 6;
+      font-size: rem(64);
+    }
+
+    @include desktop-large-above {
+      margin-bottom: 10px;
+      font-size: rem(80);
+    }
+  }
+
+  &__text {
+    grid-column: 1/-1;
+    margin-bottom: 40px;
+
+    @include tablet-above {
+      margin-bottom: 60px;
+      grid-column: span 4;
+    }
+
+    @include desktop-above {
+      grid-column: span 5;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__button {
+    grid-column: 1/-1;
+
+    @include tablet-above {
+      grid-column: span 3;
+    }
+
+    @include desktop-above {
+      grid-column: span 3;
+    }
+  }
+}
