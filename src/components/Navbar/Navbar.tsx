@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 import classNames from 'classnames';
@@ -31,10 +31,31 @@ const useWindowWidth = () => {
 
 const FullNavbar: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const [category, setCategory] = useState('all');
+  const navigate = useNavigate();
   const currentTheme = useAppSelector(
     (state: { theme: { current: string }; }) => state.theme.current);
 
   const { t } = useTranslation();
+
+  const handleSearch = () => {
+    if (query.trim()) {
+      const params = new URLSearchParams({
+        query: query.trim(),
+        category,
+        page: '1',
+      });
+
+      navigate(`/search?${params.toString()}`);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && query.length > 3) {
+      handleSearch();
+    }
+  };
 
   return (
     <nav
@@ -101,8 +122,18 @@ const FullNavbar: React.FC = () => {
         <input
           type="text"
           placeholder={t('navigation.search_placeholder')}
+          className='navigation-searchbar'
+          value={query}
           onClick={(e) => e.stopPropagation()}
+          onChange={e => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
+        <select value={category} onChange={e => setCategory(e.target.value)}>
+          <option value="all">All</option>
+          <option value="books">Books</option>
+          <option value="electronics">Electronics</option>
+        </select>
+        <button onClick={handleSearch}>🔍</button>
 
         <NavLink
           to="/favorites"
@@ -138,13 +169,12 @@ const FullNavbar: React.FC = () => {
 
 
 export const Navbar: React.FC = () => {
-  const dispatch = useDispatch();
   const windowWidth = useWindowWidth();
   const isMobile = windowWidth < 640;
 
   return isMobile ? (
     <FullNavbar />
   ) : (
-    <FullNavbar />
-  );
+    <FullNavbar /> // that is the trick to use completely
+  ); // different slider if you want, with dif layout
 };

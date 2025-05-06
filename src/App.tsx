@@ -11,6 +11,7 @@ import { Phones } from './components/Phones/Phones';
 import { Tablets } from './components/Tablets/Tablets';
 import { Accessories } from './components/Accessories/Accessories';
 import { ItemPage } from './components/ItemPage/ItemPage';
+import { SearchResults } from './components/SearchResults/SearchResults';
 
 export const App: React.FC = () => (
   <div data-cy="app">
@@ -44,6 +45,7 @@ export const App: React.FC = () => (
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/search*" element={<SearchResults />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
