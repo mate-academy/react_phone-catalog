@@ -1,29 +1,19 @@
 /* eslint-disable max-len */
-import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import './NewBrand.scss';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../Functional/CartContext/CartContext';
 import heartLove from '../../../public/figmaLogo/HeartLove.svg';
 import activeSvg from '../../../public/figmaLogo/ActiveHeart.svg';
 import pageNotFound from '../../../public/img/page-not-found.png';
-import { useCart } from '../../Functional/CartContext/CartContext';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import './NewBrand.scss';
+import { Phone } from '../../Interface';
 
-interface Phone {
-  id: string;
-  category: string;
-  itemId?: string;
-  name: string;
-  priceRegular: number;
-  priceDiscount: number;
-  screen: string;
-  capacity: string;
-  color: string;
-  ram: string;
-  year?: number;
-  images: string[];
+interface PhoneSliderProps {
+  title: string;
+  phones: Phone[];
 }
 
 interface CartItem {
@@ -36,37 +26,13 @@ interface CartItem {
   quantity: number;
 }
 
-export default function NewBrand() {
+export const PhoneSlider: React.FC<PhoneSliderProps> = ({ title, phones }) => {
   const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
     useCart();
-  const [phones, setPhones] = useState<Phone[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    setLoading(true);
-    fetch('api/phones.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(
-            `Failed to fetch phones.json: ${response.status} ${response.statusText}`,
-          );
-        }
-
-        return response.json();
-      })
-      .then(data => {
-        setPhones(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message || 'Failed to load phones');
-        setLoading(false);
-      });
-  }, []);
 
   const handleCartToggle = (phone: Phone) => {
     const selectedColor = phone.color || 'default';
+
     const cartItem: CartItem = {
       id: phone.id,
       name: phone.name,
@@ -91,31 +57,11 @@ export default function NewBrand() {
     }
   };
 
-  if (loading) {
-    return (
-      <section className="section">
-        <div className="brand">
-          <div>Loading phones...</div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section className="section">
-        <div className="brand">
-          <div className="error">Error: {error}</div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className="section">
       <div className="brand">
         <div className="brand__header">
-          <h2 className="brand__title">Brand new models</h2>
+          <h2 className="brand__title">{title}</h2>
           <div className="brand__nav">
             <button className="brand__nav-btn brand__nav-btn--prev swiper-button-p">
               {'<'}
@@ -129,21 +75,19 @@ export default function NewBrand() {
         <div className="brand__container">
           <Swiper
             modules={[Navigation]}
-            spaceBetween={20}
             navigation={{
               nextEl: '.swiper-button-n',
               prevEl: '.swiper-button-p',
             }}
             breakpoints={{
-              320: { slidesPerView: 1.2, spaceBetween: 8 },
-              480: { slidesPerView: 2.2, spaceBetween: 12 },
-              768: { slidesPerView: 3, spaceBetween: 16 },
+              320: { slidesPerView: 1, spaceBetween: 8 },
+              480: { slidesPerView: 2, spaceBetween: 12 },
+              768: { slidesPerView: 3, spaceBetween: 20 },
               1024: { slidesPerView: 4, spaceBetween: 20 },
-              1200: { slidesPerView: 4, spaceBetween: 20 },
             }}
             className="brand__swiper"
           >
-            {phones.slice(0, 12).map(phone => (
+            {phones.map(phone => (
               <SwiperSlide key={phone.id} className="brand__card">
                 <Link to={`/products/${phone.id}`}>
                   <img
@@ -159,6 +103,11 @@ export default function NewBrand() {
                     <span className="brand__card-price">
                       ${phone.priceDiscount}
                     </span>
+                    {phone.priceRegular > phone.priceDiscount && (
+                      <span className="brand__card-old-price">
+                        ${phone.priceRegular}
+                      </span>
+                    )}
                   </div>
                   <div className="brand__card-specs">
                     <div className="brand__card-spec">
@@ -208,6 +157,7 @@ export default function NewBrand() {
                       ? 'Added'
                       : 'Add to cart'}
                   </button>
+
                   <button
                     className={`brand__card-btn brand__card-btn--favorite ${
                       favorites.includes(phone.id) ? 'favorite--active' : ''
@@ -232,4 +182,4 @@ export default function NewBrand() {
       </div>
     </section>
   );
-}
+};

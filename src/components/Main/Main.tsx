@@ -1,6 +1,6 @@
-import NewBrand from '../../Functional/BrandNewModelPhone/NewBrand';
+import NewBrand from '../../Functional/HomeSwiperPhone/NewBrand';
 import ShopByCategory from '../../Functional/ByCategory/ShopByCategory';
-import HotPrices from '../../Functional/HotPrices/HotPrices';
+import HotPrices from '../../Functional/HomeSwiperPhone/HotPrices';
 import ImageSlider from '../../Functional/ImageSlider/ImageSlider';
 import './Main.scss';
 

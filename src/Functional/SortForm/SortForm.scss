@@ -41,11 +41,30 @@
     min-height: 20px;
   }
 
-  &__input,
-  &__select {
+    &__select {
+      color: white;
+      background-color: #323542;
+      padding: 16px 30px;
+      font-size: 16px;
+      border: 1px solid #b4bdc3;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23FFFFFF' stroke-width='2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 12px 8px;
+
+      &:focus {
+        border-color: #313237;
+      }
+    }
+
+  &__input {
     color: white;
     background-color: #323542;
-    padding: 12px 16px;
+    padding: 16px 20px;
     font-size: 10px;
     border: 1px solid #b4bdc3;
     border-radius: 8px;

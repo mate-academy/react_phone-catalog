@@ -85,6 +85,7 @@ height: 571px;
   border-radius: 10px;
   padding: 8px;
   width: 212px;
+  height: 460px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -150,6 +151,7 @@ height: 571px;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  padding: 5px;
 }
 
 &__card-actions {
