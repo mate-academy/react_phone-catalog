@@ -74,7 +74,12 @@ export const CartPage = () => {
 
         <div className="cart__summary">
           <h2 className="cart__total">${totalPrice}</h2>
-          <p className="cart__total-label">Total for {cart.length} items</p>
+          <p className="cart__total-label">
+            Total for {cart.reduce((sum, item) => sum + item.quantity, 0)} items
+          </p>
+
+          <hr className="cart__divider" />
+
           <button className="cart__checkout">Checkout</button>
         </div>
       </div>

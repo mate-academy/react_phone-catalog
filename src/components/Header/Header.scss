@@ -103,7 +103,6 @@
 
 
   &__head--logo {
-    // display: none;
 
     @include on-tablet {
       display: flex;
@@ -124,18 +123,34 @@
     border-left: 1px solid #3B3E4A;
     cursor: pointer;
     padding: 30px;
+    transition: color 0.3s ease;
 
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background-color: #fff;
+      transition: width 0.6s ease-in-out;
+    }
+
+    &:hover::after,
+    &.is-active::after {
+      width: 100%;
+    }
 
     @include on-phone {
       display: none;
     }
 
     @include on-tablet {
-    padding: 20px;
-
+      padding: 20px;
     }
-
   }
+
+
 
   &__heart {
     &__top {

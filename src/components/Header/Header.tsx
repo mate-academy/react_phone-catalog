@@ -8,10 +8,14 @@ import { useState } from 'react';
 import heartLove from '../../../public/figmaLogo/HeartLove.svg';
 import figmaLogo from '../../../public/figmaLogo/Logo.svg';
 import packetImg from '../../../public/figmaLogo/Packet.svg';
+import { useLocation } from 'react-router-dom';
 
 export const Header = () => {
   const { cart, favorites } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isFavoritesPage = location.pathname === '/favorites';
+  const isCartPage = location.pathname === '/cart';
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar-item', {
@@ -47,7 +51,12 @@ export const Header = () => {
         </nav>
 
         <div className="header__head--logo">
-          <Link to="/favorites" className="header__heart">
+          <Link
+            to="/favorites"
+            className={classNames('header__heart', {
+              'is-active': isFavoritesPage,
+            })}
+          >
             <img src={heartLove} alt="Favorites" className="header__icon" />
             {favorites.length > 0 && (
               <span className="cart-count cart-count--favorites">
@@ -56,7 +65,12 @@ export const Header = () => {
             )}
           </Link>
 
-          <Link to="/cart" className="header__packet">
+          <Link
+            to="/cart"
+            className={classNames('header__packet', {
+              'is-active': isCartPage,
+            })}
+          >
             <img src={packetImg} alt="Cart" className="header__icon" />
             {cart.length > 0 && (
               <span className="cart-count cart-count--cart">{cart.length}</span>
