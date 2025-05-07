@@ -1,0 +1,27 @@
+@use '../../../utils/mixins.scss' as *;
+@import '../../../fonts.scss';
+
+.header_bottom {
+  padding-top: 24px;
+
+  @include onTablet {
+    padding-top: 32px;
+  }
+
+  @include onDesktop {
+    padding-top: 56px;
+  }
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #fff;
+
+  @include onTablet {
+    font-size: 48px;
+  }
+}
