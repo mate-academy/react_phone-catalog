@@ -99,7 +99,7 @@
   &__quantity {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
 
     button {
       width: 32px;
@@ -122,6 +122,9 @@
     }
 
     span {
+      display: inline-block;
+      width: 24px;
+      text-align: center;
       font-size: 16px;
       color: white;
     }

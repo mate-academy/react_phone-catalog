@@ -123,7 +123,12 @@ export const ProductDetailsPage = () => {
       const urlCapacity =
         params.get('capacity') || product.capacityAvailable[0];
 
-      setSelectedCapacity(urlCapacity);
+      if (
+        !selectedCapacity ||
+        !product.capacityAvailable.includes(selectedCapacity)
+      ) {
+        setSelectedCapacity(urlCapacity);
+      }
     }
   }, [product, search]);
 
@@ -145,7 +150,30 @@ export const ProductDetailsPage = () => {
       setSelectedImage(
         newProduct.images?.[0] ? `${newProduct.images[0]}` : pageNotFound,
       );
-      navigate(`/products/${newProduct.id}`);
+
+      if (isPhoneOrTablet(newProduct)) {
+        if (
+          selectedCapacity &&
+          newProduct.capacityAvailable.includes(selectedCapacity)
+        ) {
+          setSelectedCapacity(selectedCapacity);
+        } else {
+          setSelectedCapacity(newProduct.capacityAvailable[0]);
+        }
+      }
+
+      const newParams = new URLSearchParams();
+
+      newParams.set('color', color.toLowerCase().replace(' ', '-'));
+      if (isPhoneOrTablet(newProduct) && selectedCapacity) {
+        newParams.set('capacity', selectedCapacity);
+      }
+
+      const newUrl = `${pathname.split('?')[0]}?${newParams.toString()}`;
+
+      if (newUrl !== `${pathname}${search}`) {
+        navigate(newUrl, { replace: true });
+      }
     }
   };
 
@@ -167,9 +195,20 @@ export const ProductDetailsPage = () => {
       setSelectedImage(
         newProduct.images?.[0] ? `${newProduct.images[0]}` : pageNotFound,
       );
-      setTimeout(() => {
-        navigate(`/products/${newProduct.id}`);
-      }, 0);
+
+      const newParams = new URLSearchParams();
+
+      newParams.set(
+        'color',
+        (selectedColor || product.color).toLowerCase().replace(' ', '-'),
+      );
+      if (isPhoneOrTablet(newProduct)) {
+        newParams.set('capacity', capacity);
+      }
+
+      const newUrl = `${pathname.split('?')[0]}?${newParams.toString()}`;
+
+      navigate(newUrl, { replace: true });
     }
   };
 

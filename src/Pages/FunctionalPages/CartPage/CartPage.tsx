@@ -80,7 +80,12 @@ export const CartPage = () => {
 
           <hr className="cart__divider" />
 
-          <button className="cart__checkout">Checkout</button>
+          <button
+            className="cart__checkout"
+            onClick={() => alert('Checkout successful!')}
+          >
+            Checkout
+          </button>
         </div>
       </div>
     </section>
