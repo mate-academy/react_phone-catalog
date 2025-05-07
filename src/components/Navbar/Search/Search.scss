@@ -1,0 +1,78 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+
+.search {
+  position: relative;
+  height: 100%;
+  transform: translateX(100%);
+
+  &__visible {
+    transform: translateX(0);
+  }
+
+  &__input {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 14px;
+    width: 160px;
+    height: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    padding-inline: 20px 45px;
+    box-shadow: 0 0 0 1px $shadow-color;
+
+    @include on-big-mobile {
+      width: 300px;
+      padding-inline: 25px 65px;
+    }
+
+    @include on-tablet {
+      width: 100px;
+      padding-inline: 10px 30px;
+    }
+
+    @include on-big-tablet {
+      width: 200px;
+      padding-inline: 25px 65px;
+    }
+
+    @include on-desktop {
+      width: 300px;
+    }
+  }
+
+  &__button-container {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    top: 0;
+    bottom: 0;
+    right: 15px;
+
+    @include on-big-mobile {
+      right: 25px;
+    }
+
+    @include on-tablet {
+      right: 10px;
+    }
+
+    @include on-big-tablet {
+      right: 25px;
+    }
+  }
+
+  &__button {
+    border: none;
+    background-color: inherit;
+
+    &--find,
+    &--clear {
+      display: block;
+    }
+
+    &--clear {
+      cursor: pointer;
+    }
+  }
+}
