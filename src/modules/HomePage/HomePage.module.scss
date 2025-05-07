@@ -1,0 +1,75 @@
+@import '../../styles/main';
+
+.title {
+  @include page-grid;
+
+  &_text {
+    grid-column: 1/-1;
+
+  }
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 24px 64px;
+
+  @include ontablet {
+    gap: 32px;
+  }
+
+  @include ondesktop {
+    gap: 56px;
+  }
+
+  & .title {
+    @include inline-padding;
+  }
+
+  &_homepage {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    row-gap: 56px;
+
+    width: 100%;
+
+    @include ontablet {
+      row-gap: 64px;
+    }
+
+    @include ondesktop {
+      row-gap: 80px;
+    }
+  }
+}
+
+.photoSlide_wraper {
+  box-sizing: border-box;
+
+
+  @include ontablet {
+    padding-inline: 24px;
+    min-height: 221px;
+    max-height: 432px;
+  }
+}
+
+.slider_container {
+  box-sizing: border-box;
+  width: 100%;
+
+  @include inline-padding;
+
+}
+
+.container_categories {
+  @include inline-padding;
+  @include page-grid;
+
+  &_body {
+    grid-column: 1/-1;
+  }
+}

@@ -1,0 +1,18 @@
+@import '../../../styles/main';
+
+.icon {
+  &_container {
+    @extend %icon-container;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  &_favorite {
+    @include icon-bg(var(--fls-favorite));
+  }
+}
+
+.selected {
+  @include icon-bg(var(--fls-favorite-selected));
+}

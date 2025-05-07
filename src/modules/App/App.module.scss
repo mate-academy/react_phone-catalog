@@ -1,0 +1,44 @@
+@import '../../styles/main';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+
+  &_header {
+    background-color: var(--c-background);
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+  }
+
+  &_mobile_menu {
+    position: relative;
+    background-color: var(--c-background);
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  &_body {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    flex-grow: 1;
+
+
+    @include ondesktop {
+      margin: 0 auto;
+    }
+  }
+
+  &_footer {
+    background-color: var(--c-background);
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 -1px 0 0 #E2E6E9;
+  }
+}

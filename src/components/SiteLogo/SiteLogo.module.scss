@@ -1,0 +1,17 @@
+@import '../../styles/main';
+
+.logo {
+
+  &_img {
+    display: flex;
+    box-sizing: border-box;
+    align-items: flex-start;
+    height: 32px;
+    width: 90px;
+    background: no-repeat center/contain;
+    background-image: var(--fls-logo);
+
+    @include hover;
+
+  }
+}

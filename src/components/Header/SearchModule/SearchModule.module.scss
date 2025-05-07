@@ -1,0 +1,51 @@
+@import '../../../styles/main';
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  transition: border-color 0.3s;
+  border: 1px solid var(--c-icons);
+
+  &:hover {
+    border-color: var(--c-primary);
+  }
+
+  & .icon {
+    &_container {
+      @extend %icon-container;
+
+      border: none;
+
+      @include ontablet {
+        width: 48px;
+        height: 48px;
+      }
+
+      @include ondesktop {
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    &_search {
+      @include icon-bg(var(--fls-search));
+    }
+  }
+
+  & .input {
+    background-color: red;
+    all: unset;
+    padding: 8px 0;
+    margin: 0 8px;
+    border: none;
+    line-height: 11px;
+    width: 100%;
+    color: var(--c-primary);
+
+    &::placeholder {
+      color: var(--c-secondary);
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@import '../../../styles/main';
+
+.pagination_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+
+  & .icon {
+    &_container {
+      box-sizing: border-box;
+
+      @extend %icon-container;
+
+      width: 32px;
+      height: 32px;
+      background-color: var(--c-buttons-nav);
+
+
+    }
+
+    &_Left {
+      @include icon-bg(var(--fls-left));
+
+      &_disabled {
+        @include icon-bg(var(--fls-left-disabled));
+      }
+    }
+
+    &_Right {
+      @include icon-bg(var(--fls-right));
+
+      &_disabled {
+        @include icon-bg(var(--fls-right-disabled));
+      }
+    }
+  }
+
+  .pages_container {
+    display: flex;
+    gap: 8px;
+    padding-inline: 8px;
+
+    & .page_txt {
+      line-height: 100%;
+      vertical-align: middle;
+
+    }
+
+    & .to_end {
+      display: flex;
+      gap: 4px;
+    }
+
+  }
+
+  & .selected_container {
+    background-color: var(--c-primary);
+    border-color: var(--c-primary);
+  }
+
+  & .selected_text {
+    color: var(--c-background);
+
+  }
+
+}
