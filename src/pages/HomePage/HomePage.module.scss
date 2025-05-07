@@ -1,0 +1,30 @@
+@use '../../styles/mixins.scss' as *;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  margin: 24px 0;
+  cursor: default;
+
+  @include on-tablet {
+    font-size: 48px;
+    margin: 32px 0;
+  }
+
+  @include on-desktop {
+    margin: 48px 0;
+  }
+}
