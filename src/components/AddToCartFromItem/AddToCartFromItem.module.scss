@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+
+.addToCartFavorite {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: $gap-card;
+  .buttonCart {
+    flex-grow: 1;
+    @include buttons-text;
+    height: $button-add-to-cart-height;
+    background-color: $primary-color;
+    color: $white-color;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: $shadow;
+    }
+  }
+
+  .buttonCartActive {
+    background-color: $white-color;
+    color: $green-color;
+    border: 1px solid $secondary-color;
+  }
+
+  .buttonFavorite {
+    width: $button-add-to-cart-height;
+    height: $button-add-to-cart-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $secondary-color;
+    background-color: $white-color;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
