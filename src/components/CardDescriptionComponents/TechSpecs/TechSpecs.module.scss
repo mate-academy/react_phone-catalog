@@ -1,0 +1,21 @@
+.tech-specs {
+  grid-row: 3;
+  grid-column: 1 /-1;
+
+  @include on-desktop {
+    grid-row: 2;
+    grid-column: 14 / -1;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+
+    padding-bottom: 16px;
+  }
+
+  &__characteristic {
+    margin-top: 30px;
+  }
+}
