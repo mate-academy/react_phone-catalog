@@ -1,0 +1,148 @@
+.dropdown {
+  &__dropdown {
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__dropdown-name {
+    margin-block: 0 4px;
+
+    @include textTypeFull(12px, 15.34px, 'Mont-semi-bold', $secondary-color);
+  }
+
+  &__select {
+    position: relative;
+    padding-left: 12px;
+
+    width: 136px;
+    height: 40px;
+
+    background-color: transparent;
+    border: 1px solid $icon-color;
+
+    @include textTypeFull(14px, 21px, 'Mont-regular', $primary-color);
+
+    text-align: left;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    z-index: 11; // I chose number 11 so that other elements wouldn't overlap it by mistake
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &--long {
+      @include on-tablet {
+        width: 187px;
+      }
+
+      @include on-desktop {
+        width: 176px;
+      }
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 12px;
+    top: calc(50% - 8px); // to position it in the center
+
+    height: 16px;
+    width: 16px;
+
+    &--up {
+      background-image: url(../../../icons/arrows/arrow-up.svg);
+    }
+
+    &--down {
+      background-image: url(../../../icons/arrows/arrow-down.svg);
+    }
+  }
+
+  &__options {
+    margin-top: 4px;
+
+    position: absolute;
+    padding-left: 12px;
+    padding-block: 8px;
+
+    width: 136px;
+
+    list-style: none;
+    border: 1px solid $element-color;
+    pointer-events: none;
+
+    background-color: $white;
+    box-shadow: 0px 2px 15px 0px #0000000D;
+    animation: slideUp .5s ease-in-out forwards;
+
+    &--long {
+      @include on-tablet {
+        width: 187px;
+      }
+
+      @include on-desktop {
+        width: 176px;
+      }
+    }
+
+  }
+
+  &__option {
+    display: block;
+    padding-block: 6px;
+
+    @include textTypeFull(14px, 21px, 'Mont-regular', $secondary-color);
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      color: inherit;
+      background-color: $bg-color;
+    }
+  }
+}
+
+.selected {
+  color: $primary-color;
+  background-color: $bg-color;
+}
+
+.dropdown-visible {
+  animation: slideDown .5s ease-in-out forwards;
+}
+
+.dropdown-on-focus {
+  border-color: $primary-color;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    display: block;
+    transform: translateY(-25%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 5;
+    pointer-events: all;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    display: block;
+    transform: translateY(-25%);
+  }
+}
