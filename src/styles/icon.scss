@@ -1,0 +1,105 @@
+@import './variables';
+
+.icon {
+  &-menu {
+    fill: $white;
+    width: 14px;
+    height: 14px;
+  }
+
+  &-user {
+    fill: $white;
+    width: 16px;
+    height: 15px;
+
+    @include on-desktop-small {
+      width: 20px;
+      height: 19px;
+    }
+  }
+
+  &-up {
+    fill: $white;
+    width: 10px;
+    height: 6px;
+  }
+
+  &-home {
+    fill: $white;
+    width: 16px;
+    height: 16px;
+
+    @include hover(fill, $purple-hover);
+  }
+
+  &-arrow-right {
+    fill: $icon-grey;
+    width: 6px;
+    height: 10px;
+  }
+
+  &-heart {
+    width: 16px;
+    height: 16px;
+    stroke: $white;
+    fill: transparent;
+    stroke-width: 2px;
+  }
+
+  &-heart-red {
+    stroke: $icon-red;
+    fill: $icon-red;
+  }
+
+  &-arrow-left {
+    fill: $icon-grey;
+    width: 6px;
+    height: 10px;
+  }
+  
+  &-nav {
+    width: 6px;
+    height: 10px;
+    fill: $white;
+  }
+
+  &-arrow-left-back {
+    fill: $white;
+    width: 6px;
+    height: 10px;
+
+    @include hover(fill, $purple-hover);
+  }
+
+  &-dropdown-up,
+  &-dropdown-down {
+    fill: $light-grey;
+    width: 10px;
+    height: 6px;
+  }
+
+  &-delete {
+    width: 10px;
+    height: 10px;
+    fill: $icon-grey;
+  }
+
+  &-minus,
+  &-plus {
+    width: 12px;
+    height: 12px;
+    fill: $white;
+  }
+
+  &-close {
+    width: 10px;
+    height: 10px;
+    fill: $white;
+  }
+
+  &-close-modal {
+    width: 12px;
+    height: 12px;
+    fill: $grey-2;
+  }
+}

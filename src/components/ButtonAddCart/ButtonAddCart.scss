@@ -1,0 +1,23 @@
+@import '../../styles/common';
+
+.add-to-cart {
+  width: 100%;
+  height: 40px;
+  border: none;
+  background-color: $button-purple;
+  color: $white;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+
+  @include hover(background-color, $purple-hover);
+
+  &:focus {
+    background-color: $button-grey;
+  }
+}
+
+.added-to-cart {
+  background-color: $button-grey;
+}
