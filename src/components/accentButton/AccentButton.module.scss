@@ -1,0 +1,32 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.accentButton {
+  @include buttons;
+  font-family: Mont, sans-serif;
+
+  border: 1px solid $accent-color;
+  box-sizing: border-box;
+
+  background-color: $accent-color;
+  color: $white;
+  text-align: center;
+
+  width: 100%;
+  padding-block: 10px;
+
+  cursor: pointer;
+
+  @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+
+  &_pressed {
+    box-sizing: border-box;
+    border: 1px solid $elements-border-color;
+
+    background-color: $white;
+    color: $accent-color;
+    box-shadow: none;
+  }
+}
