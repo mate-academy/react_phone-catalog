@@ -9,13 +9,11 @@
 }
 
 .container {
-  display: block;
-  width: 1136px;
+  width: 100%;
+  max-width: 1136px;
   margin: 0 auto;
-  padding: 0 32px;
 
   @media (max-width: $tablet-breakpoint) {
-    width: 100%;
     padding: 0 24px;
   }
 

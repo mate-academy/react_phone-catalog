@@ -11,17 +11,44 @@
   clip-path: inset(50%);
 }
 
-.section {
+.hero {
   width: 100%;
+}
+
+.categorySection {
+  width: 100%;
+  max-width: 1136px;
+  min-height: 320px;
   margin-bottom: 80px;
-  overflow: hidden;
 
   @media (max-width: $tablet-breakpoint) {
     margin-bottom: 64px;
+    padding: 0 24px;
   }
 
   @media (max-width: $mobile-breakpoint) {
     margin-bottom: 56px;
+    padding: 0 16px;
+  }
+}
+
+.productsSection {
+  @extend %flex-center;
+
+  flex-direction: column;
+  width: 100%;
+  max-width: 1136px;
+  min-height: 189px;
+  margin-bottom: 80px;
+
+  @media (max-width: $tablet-breakpoint) {
+    margin-bottom: 64px;
+    padding: 0 24px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    margin-bottom: 56px;
+    padding: 0 16px;
   }
 }
 

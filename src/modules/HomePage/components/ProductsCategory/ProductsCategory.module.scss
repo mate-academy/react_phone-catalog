@@ -1,27 +1,19 @@
 @use '/src/styles/globals.scss' as *;
 
 .container {
-  max-width: 1136px;
-  min-height: 320px;
-
-  @media (max-width: $tablet-breakpoint) {
-    padding: 0 24px;
-  }
-
-  @media (max-width: $mobile-breakpoint) {
-    padding: 0 16px;
-  }
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
   @include apply-typography(h2-desktop);
 
-  margin: 0 0 24px;
+  margin-bottom: 24px;
 
   @media (max-width: $mobile-breakpoint) {
     @include apply-typography(h2-mobile);
 
-    margin: 0 0 16px;
+    margin-bottom: 16px;
   }
 }
 

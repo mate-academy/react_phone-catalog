@@ -79,12 +79,14 @@ export const ProductDetailsPage: React.FC = () => {
 
         <p>{detailedProduct.name}</p>
 
-        <ProductsSlider
-          key={id}
-          products={suggestedProducts}
-          showDiscount={true}
-          title="You may also like"
-        />
+        <div className={styles.suggestedProducts}>
+          <ProductsSlider
+            key={id}
+            products={suggestedProducts}
+            showDiscount={true}
+            title="You may also like"
+          />
+        </div>
       </>
     );
   }

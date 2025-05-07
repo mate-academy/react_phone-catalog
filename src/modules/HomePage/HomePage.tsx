@@ -15,7 +15,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={styles.homepage}>
-      <div className={styles.section}>
+      <div className={styles.hero}>
         <h1 className={styles.visuallyHidden}>Product Catalog</h1>
         <h1 className={styles.mainTitle}>Welcome to Nice Gadgets store!</h1>
         <PicturesSlider />
@@ -26,7 +26,7 @@ export const HomePage: React.FC = () => {
 
       {!loading && !error && (
         <>
-          <div className={styles.section}>
+          <div className={styles.productsSection}>
             <ProductsSlider
               products={newModels}
               showDiscount={false}
@@ -34,11 +34,11 @@ export const HomePage: React.FC = () => {
             />
           </div>
 
-          <div className={styles.section}>
+          <div className={styles.categorySection}>
             <ProductsCategory />
           </div>
 
-          <div className={styles.section}>
+          <div className={styles.productsSection}>
             <ProductsSlider
               products={hotModels}
               showDiscount={true}

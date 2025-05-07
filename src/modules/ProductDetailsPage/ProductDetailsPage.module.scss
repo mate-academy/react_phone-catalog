@@ -3,14 +3,23 @@
 .productPage {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 1136px;
   height: 100%;
-  padding: 32px;
+  margin: 0 auto;
+  padding: 24px 0 80px;
 
   @media (max-width: $tablet-breakpoint) {
-    padding: 24px;
+    padding: 24px 24px 64px;
   }
 
   @media (max-width: $mobile-breakpoint) {
-    padding: 16px;
+    padding: 24px 16px 64px;
   }
+}
+
+.suggestedProducts {
+  @extend %flex-center;
+
+  flex-direction: column;
 }

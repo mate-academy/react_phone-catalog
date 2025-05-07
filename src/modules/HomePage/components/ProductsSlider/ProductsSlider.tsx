@@ -24,7 +24,7 @@ export const ProductsSlider: React.FC<Props> = ({
   const navigationNextId = `next-${title.replace(/\s+/g, '-')}`;
 
   return (
-    <div className={styles.container}>
+    <>
       <div className={styles.topWrapper}>
         <h2 className={styles.title}>{title}</h2>
 
@@ -51,6 +51,6 @@ export const ProductsSlider: React.FC<Props> = ({
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </>
   );
 };

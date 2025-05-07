@@ -1,20 +1,90 @@
 @use './variables' as *;
 
 $typography: (
-  h1-desktop: (48px, 800, 56px, -0.01em, $color-white),
-  h2-desktop: (32px, 800, 41px, -0.01em, $color-white),
-  h3-desktop: (22px, 800, 31px, 0, $color-white),
-  h4-desktop: (20px, 700, 26px, 0, $color-white),
-
-  uppercase-desktop: (12px, 800, 11px, 0.04em, $color-white),
-  buttons-desktop:   (14px, 700, 21px, 0, $color-white),
-  body-desktop:      (14px, 600, 21px, 0, $color-white),
-  small-desktop:     (12px, 700, 15px, 0, $color-secondary),
-
-  h1-mobile: (32px, 800, 41px, -0.01em, $color-white),
-  h2-mobile: (22px, 800, 31px, 0, $color-white),
-  h3-mobile: (20px, 700, 26px, 0, $color-white),
-  h4-mobile: (16px, 700, 20px, 0, $color-white)
+  h1-desktop: (
+    48px,
+    800,
+    56px,
+    -0.01em,
+    $color-white,
+  ),
+  h2-desktop: (
+    32px,
+    800,
+    41px,
+    -0.01em,
+    $color-white,
+  ),
+  h3-desktop: (
+    22px,
+    800,
+    31px,
+    0,
+    $color-white,
+  ),
+  h4-desktop: (
+    20px,
+    700,
+    26px,
+    0,
+    $color-white,
+  ),
+  uppercase-desktop: (
+    12px,
+    800,
+    11px,
+    0.04em,
+    $color-white,
+  ),
+  buttons-desktop: (
+    14px,
+    700,
+    21px,
+    0,
+    $color-white,
+  ),
+  body-desktop: (
+    14px,
+    600,
+    21px,
+    0,
+    $color-white,
+  ),
+  small-desktop: (
+    12px,
+    700,
+    15px,
+    0,
+    $color-secondary,
+  ),
+  h1-mobile: (
+    32px,
+    800,
+    41px,
+    -0.01em,
+    $color-white,
+  ),
+  h2-mobile: (
+    22px,
+    800,
+    31px,
+    0,
+    $color-white,
+  ),
+  h3-mobile: (
+    20px,
+    700,
+    26px,
+    0,
+    $color-white,
+  ),
+  h4-mobile: (
+    16px,
+    700,
+    20px,
+    0,
+    $color-white,
+  ),
 );
 
 @function get($key) {
