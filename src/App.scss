@@ -1,1 +1,29 @@
-// not empty
+@import './styles/index';
+@import './styles/index.utils';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  background-color: $light-grey-color;
+
+  &.menu-open {
+    overflow: hidden;
+  }
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.container {
+  @include container;
+}
