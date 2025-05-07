@@ -1,0 +1,102 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.header {
+  z-index: 1;
+  box-sizing: border-box;
+  position: sticky;
+  background-color: var(--c-page-bg);
+  top: 0;
+  width: 100%;
+  height: 48px;
+  overflow: hidden;
+  box-shadow: 0 1px 0 var(--c-elements);
+  transition: height vars.$transition-time ease;
+
+  &.full__height {
+    height: 100vh;
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include mix.on-800 {
+      flex-direction: row;
+    }
+  }
+
+  &__searchWithMenu {
+    position: relative;
+    display: block;
+
+    @include mix.on-800 {
+      display: none;
+    }
+  }
+
+  &__searchWithIcons {
+    display: none;
+
+    @include mix.on-800 {
+      display: block;
+    }
+  }
+
+  &__top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__logoWithMenu {
+      display: flex;
+      padding-left: 16px;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--c-elements);
+
+      @include mix.on-800 {
+        border-bottom: none;
+      }
+    }
+
+    &__search__menu {
+      display: flex;
+    }
+
+    @include mix.on-800 {
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @include mix.on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition:
+      opacity vars.$transition-time ease,
+      transform vars.$transition-time ease;
+
+    &.icons__visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @include mix.on-800 {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}

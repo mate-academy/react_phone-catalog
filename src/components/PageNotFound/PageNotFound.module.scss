@@ -1,0 +1,27 @@
+.notFound {
+  // margin-top: 40px;
+  padding: 20px;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+
+  &__img {
+    width: 90%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__button {
+    width: 200px;
+    line-height: 40px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: var(--c-primary);
+  }
+}

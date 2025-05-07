@@ -1,0 +1,245 @@
+@use '../styles/utils/mixins' as mix;
+@use '../styles/utils/vars' as vars;
+
+.icon {
+  display: block;
+  height: 16px;
+  width: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  margin: 0 auto;
+
+  &__nav {
+    width: 48px;
+    height: 48px;
+
+    @include mix.hover(scale, 1.1);
+  }
+
+  &__logo {
+    display: block;
+  }
+
+  &__burgerMenu {
+    background-image: url(/img/icons/burger-menu.svg);
+
+    &.menu__close {
+      background-image: url(/img/icons/icon-close.svg);
+    }
+
+    &__dark {
+      background-image: url(/img/icons/burger-menu-white.svg);
+
+      &.menu__close {
+        background-image: url(/img/icons/icon-close-white.svg);
+      }
+    }
+  }
+
+  &__theme {
+    background-image: url(/img/icons/icon-theme-dark.png);
+
+    &__dark {
+      background-image: url(/img/icons/icon-theme-light.png);
+    }
+  }
+
+  &__search {
+    background-image: url(/img/icons/search.svg);
+
+    @include mix.hover(transform, scale(1.1));
+
+    &__dark {
+      background-image: url(/img/icons/search-white.svg);
+    }
+  }
+
+  &__heart {
+    background-image: url(/img/icons/icon-heart.svg);
+
+    &.isFavorite {
+      background-image: url(/img/icons/icon-heart-red.svg);
+    }
+
+    &.hasItems {
+      position: relative;
+
+      &::after {
+        content: attr(data-count);
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 14px;
+        height: 14px;
+        background-color: var(--c-red);
+        color: #fff;
+        font-size: 9px;
+        line-height: 11.5px;
+        border: 1px solid var(--c-surface-1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__dark {
+      background-image: url(/img/icons/icon-heart-white.svg);
+
+      &.isFavorite {
+        background-image: url(/img/icons/icon-heart-red.svg);
+      }
+
+      &.hasItems {
+        position: relative;
+
+        &::after {
+          content: attr(data-count);
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          width: 14px;
+          height: 14px;
+          background-color: var(--c-red);
+          color: #fff;
+          font-size: 9px;
+          line-height: 11.5px;
+          border: 1px solid var(--c-surface-1);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  &__basket {
+    background-image: url(/img/icons/shopping-bag.svg);
+
+    &.hasItems {
+      position: relative;
+
+      &::after {
+        content: attr(data-count);
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 14px;
+        height: 14px;
+        background-color: var(--c-red);
+        color: #fff;
+        font-size: 9px;
+        line-height: 11.5px;
+        border: 1px solid var(--c-surface-1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__dark {
+      background-image: url(/img/icons/shopping-bag-white.svg);
+
+      &.hasItems {
+        position: relative;
+
+        &::after {
+          content: attr(data-count);
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          width: 14px;
+          height: 14px;
+          background-color: var(--c-red);
+          color: #fff;
+          font-size: 9px;
+          line-height: 11.5px;
+          border: 1px solid var(--c-surface-1);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  &__backTop {
+    width: 32px;
+    height: 32px;
+    background-image: url(/img/icons/arrow-up-black.svg);
+    background-color: var(--c-surface-2);
+
+    &__dark {
+      background-image: url(/img/icons/arrow-up.svg);
+    }
+  }
+
+  &__home {
+    background-image: url(/img/icons/home.svg);
+    margin: 0;
+
+    &__dark {
+      background-image: url(/img/icons/home-white.svg);
+    margin: 0;
+    }
+  }
+
+  &__arrowLeft {
+    background-image: url(/img/icons/arrow-left.svg);
+    transition: all vars.$transition-time;
+    margin: 0;
+
+    &__dark {
+      background-image: url(/img/icons/arrow-left-white.svg);
+      transition: all vars.$transition-time;
+      margin: 0;
+    }
+  }
+
+  &__arrowRight {
+    background-image: url(/img/icons/arrow-right.svg);
+    transition: all vars.$transition-time;
+    margin: 0;
+
+    &__dark {
+      background-image: url(/img/icons/arrow-right-white.svg);
+      transition: all vars.$transition-time;
+      margin: 0;
+    }
+  }
+
+  &__arrowBottom {
+    background-image: url(/img/icons/arrow-right-grey.svg);
+    transition: all vars.$transition-time;
+    transform: rotate(90deg);
+    margin: 0;
+  }
+
+  &__close__grey {
+    background-image: url(/img/icons/icon-close-grey.svg);
+    transition: all vars.$transition-time;
+    margin: 0;
+
+    @include mix.hover(scale, 1.2);
+  }
+
+  &__minus {
+    background-image: url(/img/icons/icon-minus.svg);
+
+    &__dark {
+      background-image: url(/img/icons/icon-minus-white.svg);
+    }
+  }
+
+  &__plus {
+    background-image: url(/img/icons/icon-plus.svg);
+
+    &__dark {
+      background-image: url(/img/icons/icon-plus-white.svg);
+    }
+  }
+}
