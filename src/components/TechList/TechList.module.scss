@@ -1,0 +1,23 @@
+@import '@styles/main';
+
+.tech-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__parameter {
+    @include small-text;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &--big &__parameter {
+    @include body-text;
+  }
+
+  &__parameter-name {
+    text-transform: capitalize;
+    color: $secondary-color;
+  }
+}
