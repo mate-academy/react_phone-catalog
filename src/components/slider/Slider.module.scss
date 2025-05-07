@@ -1,0 +1,65 @@
+@use './../../styles/variables' as v;
+@use './../../styles/mixins' as mix;
+
+.slider {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__photos {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+
+    @include mix.respond-to(tablet) {
+      height: 189px;
+    }
+
+    @include mix.respond-to(mobile) {
+      width: 100vw;
+      height: 352px;
+    }
+
+    & button {
+      flex: none;
+      height: auto;
+      align-self: stretch;
+
+      @include mix.respond-to(mobile) {
+        display: none;
+      }
+    }
+  }
+
+  &__photosContainer {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__lines {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__line {
+    width: 14px;
+    height: 4px;
+    cursor: pointer;
+    background-color: v.$colorElements;
+
+    &--active {
+      background-color: v.$colorWhite;
+    }
+  }
+}

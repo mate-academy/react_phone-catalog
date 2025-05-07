@@ -1,0 +1,96 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.itemPage {
+  padding-top: 24px;
+  padding-bottom: 80px;
+
+  &__navBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__skeletonImg {
+    width: 560px;
+    height: 464px;
+
+    @include mix.respond-to(tablet) {
+      width: 338px;
+      height: 287px;
+    }
+
+    @include mix.respond-to(mobile) {
+      width: 100%;
+    }
+  }
+
+  &__mainSection {
+    display: flex;
+    gap: 64px;
+
+    @include mix.respond-to(tablet) {
+      gap: 16px;
+    }
+
+    @include mix.respond-to(mobile) {
+      gap: 40px;
+      flex-direction: column;
+    }
+  }
+
+  &__moreSection {
+    display: flex;
+    gap: 64px;
+    margin: 80px 0;
+
+    @include mix.respond-to(tablet) {
+      flex-direction: column;
+    }
+  }
+
+  &__notFount {
+    flex-grow: 1;
+    background-color: v.$colorSurface2;
+    display: flex;
+    padding: 50px;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+  
+    @include mix.respond-to(mobile) {
+      flex-direction: column;
+    }
+
+  }
+  
+  &__notFountLink {
+    cursor: pointer;
+  }
+  
+  &__notFountText {
+    color: v.$colorAccent;
+  }
+  
+  &__notFountImg {
+    display: block;
+  
+    @include mix.square(400px);
+
+    object-fit: contain;
+
+    @include mix.respond-to(tablet) {
+      @include mix.square(250px);
+    }
+
+    @include mix.respond-to(mobile) {
+      @include mix.square(180px);
+    }
+
+  }
+}
