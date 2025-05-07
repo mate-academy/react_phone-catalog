@@ -1,0 +1,105 @@
+@use '/src/styles/utils/mixins' as mixins;
+@use '/src/styles/utils/vars' as vars;
+
+.checkout-popup {
+  background-color: #fff;
+  padding: 60px 50px;
+  border: 1px solid #e2e6e9;
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    visibility 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  @include mixins.on-tablet {
+    padding: 40px 30px;
+  }
+
+  &--open {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 600;
+    max-width: 600px;
+    margin-bottom: 80px;
+
+    @include mixins.on-tablet {
+      font-size: 22px;
+    }
+  }
+
+  &__back {
+    width: 100%;
+    background-color: vars.$main-color;
+    color: #fff;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgb(45, 45, 45);
+    }
+  }
+
+  &__clear {
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid vars.$minor-color;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgb(249, 249, 249);
+    }
+  }
+
+  &__back,
+  &__clear {
+    font-size: 14px;
+    height: 50px;
+
+    @include mixins.on-tablet {
+      height: 40px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0.5;
+
+    & > img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.overlay {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.502);
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0.3s ease,
+    opacity 0.3s ease;
+
+  &--open {
+    visibility: visible;
+    opacity: 1;
+  }
+}

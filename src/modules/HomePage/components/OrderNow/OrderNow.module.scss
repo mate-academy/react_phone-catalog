@@ -1,0 +1,104 @@
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+.order-now {
+  position: absolute;
+  top: 3%;
+  left: 1%;
+  z-index: 10;
+  height: 94%;
+  width: 45%;
+  background-color: #222222;
+  border-radius: 25px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width: 1100px) {
+    padding: 30px;
+  }
+
+  @media (max-width: 820px) {
+    padding: 25px;
+  }
+
+  @media (max-width: 680px) {
+    padding: 20px;
+  }
+
+  @include mixins.on-mobile {
+    display: none;
+  }
+
+  &__content {
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(45deg, #7f40f1 0%, #d562fe 100%);
+
+    @media (max-width: 990px) {
+      font-size: 34px;
+    }
+
+    @media (max-width: 820px) {
+      font-size: 24px;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 17px;
+    color: vars.$minor-color;
+
+    @media (max-width: 820px) {
+      font-size: 12px;
+    }
+  }
+
+  &__link {
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    height: 60px;
+    font-size: 16px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: vars.$minor-color;
+    font-weight: 400;
+    border: solid 1px vars.$minor-color;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #ffffff1a;
+    }
+
+    @media (max-width: 990px) {
+      letter-spacing: 0px;
+      font-size: 14px;
+      height: 50px;
+    }
+
+    @media (max-width: 820px) {
+      letter-spacing: 0px;
+      font-size: 14px;
+      height: 40px;
+    }
+
+    @media (max-width: 820px) {
+      font-size: 12px;
+      height: 30px;
+    }
+  }
+}
