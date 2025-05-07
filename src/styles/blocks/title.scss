@@ -1,0 +1,10 @@
+.title {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 130%;
+
+  @include on-tablet {
+    font-size: 32px;
+  }
+}

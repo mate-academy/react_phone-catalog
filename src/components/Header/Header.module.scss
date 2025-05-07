@@ -1,0 +1,47 @@
+.header {
+  @include on-tablet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $border-color;
+    z-index: 5;
+  }
+
+  @include on-desktop {
+    margin-bottom: 56px;
+  }
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: row;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
+  &__menu-item {
+    &:nth-child(2) {
+      flex-grow: 1;
+    }
+  }
+
+  &__top-action {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      height: 100%;
+    }
+  }
+}

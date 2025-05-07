@@ -1,0 +1,82 @@
+.page {
+
+  .App {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__body {
+    overflow-y: scroll;
+    & .container {
+      max-width: 1440px;
+      padding: 0 $container-padding--mobile;
+      margin: 0 auto;
+
+      @include on-tablet {
+        padding: 0 $container-padding--tablet;
+      }
+
+      @include on-desktop {
+        padding: 0 $container-padding--desktop;
+      }
+
+      @include on-design {
+        padding: 0;
+      }
+    }
+  }
+
+  &__main {
+    flex-grow: 1;
+  }
+
+  &__grid {
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 16px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__product-item.product-item {
+    height: 440px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    grid-template-rows: 1fr auto;
+
+    @include on-tablet {
+      height: 506px;
+      max-width: none;
+      margin: 0;
+      flex: 0 1 48%;
+    }
+
+    @include on-desktop {
+      flex: 0 1 auto;
+    }
+  }
+
+  &__number-info {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $secondary-gray;
+  }
+
+  .sub-info {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $secondary-gray;
+
+    margin-bottom: 40px;
+  }
+}

@@ -5,7 +5,7 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    "plugin:react-hooks/recommended",
+    'plugin:react-hooks/recommended',
     'airbnb-typescript',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
@@ -34,12 +34,14 @@ module.exports = {
     'import',
     'react-hooks',
     '@typescript-eslint',
-    'prettier'
+    'prettier',
+    '@typescript-eslint/eslint-plugin',
+    'eslint-plugin-prettier',
+    'stylelint-scss'
   ],
   rules: {
+    'stylelint/comment-no-empty': [0],
     // JS
-    'semi': 'off',
-    '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
     curly: [2, 'all'],
     'max-len': ['error', {
@@ -90,7 +92,9 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    'prettier/prettier': 'error',
     '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/semi': ['error', 'always'],
     '@typescript-eslint/ban-types': ['error', {
         extendDefaults: true,
         types: {

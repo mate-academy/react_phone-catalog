@@ -1,0 +1,27 @@
+.cart {
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__wrapper {
+    @include on-desktop {
+      display: flex;
+      column-gap: 16px;
+    }
+  }
+  &__main-item {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 0;
+      flex: 1;
+
+      &:last-child {
+        flex: 0 1 360px;
+      }
+    }
+  }
+}

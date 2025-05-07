@@ -1,0 +1,72 @@
+.filter-product {
+  width: 100%;
+  display: flex;
+  column-gap: 16px;
+  margin-bottom: 24px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 48%;
+    position: relative;
+
+    @include on-tablet {
+      &:first-child {
+        flex: 0 1 180px;
+      }
+      &:last-child {
+        flex: 0 1 130px;
+      }
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+
+      background-image: url('../../img/Buttons/Icons/Chevron-grey.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+
+
+    }
+
+    &:hover {
+      &::before {
+        transform: rotate(90deg);
+
+        background-image: url('../../img/Buttons/Icons/Arrow-Right.svg');
+      }
+    }
+  }
+
+  &__input {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.2;
+    color: $secondary-gray;
+    margin-bottom: 6px;
+
+  }
+
+  &__selector {
+    padding: 10px 12px;
+    color: $primary-gray;
+    border: 1px solid $border-color;
+
+    text-transform: capitalize;
+
+    transition-duration: 300ms;
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+
+
+  }
+}
