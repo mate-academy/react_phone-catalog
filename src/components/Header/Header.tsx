@@ -57,7 +57,10 @@ export const Header = () => {
           headerStyles.header__mobileTopBarContainer,
         )}
       >
-        <SiteLogo className={headerStyles.header__logo} />
+        <SiteLogo
+          className={headerStyles.header__logo}
+          onClose={() => setIsMenuOpen(false)}
+        />
         <button
           className={classNames(
             headerStyles.header__menuBtn,

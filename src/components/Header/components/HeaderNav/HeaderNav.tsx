@@ -24,7 +24,7 @@ export const HeaderNav: React.FC<Props> = memo(({ onClose = () => {} }) => {
                 baseClass: headerNavStyles.nav__link,
               })
             }
-            onClick={() => onClose()}
+            onClick={onClose}
           >
             home
           </NavLink>
@@ -39,7 +39,7 @@ export const HeaderNav: React.FC<Props> = memo(({ onClose = () => {} }) => {
                   baseClass: headerNavStyles.nav__link,
                 })
               }
-              onClick={() => onClose()}
+              onClick={onClose}
             >
               {category.name}
             </NavLink>

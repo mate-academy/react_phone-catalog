@@ -6,13 +6,13 @@ import { getProductsByIds } from '../../services/products';
 import { CartList } from './components/CartList';
 import { CartItemDetails } from '../../types/CartItemDetails';
 import { ActionButton } from '../../components/ActionButton';
-import { LoaderOverlay } from '../../components/LoaderOverlay';
 import lodash from 'lodash';
 import { Divider } from '../../components/Divider/Divider';
+import { useLoading } from '../../context/LoadingContext';
 
 export const ShoppingCartPage = () => {
   const { cart } = useCart();
-  const [isLoading, setIsLoading] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
   const [products, setProducts] = useState<CartItemDetails[]>([]);
   const totalPrice = lodash
     .chain(products)
@@ -26,7 +26,7 @@ export const ShoppingCartPage = () => {
     .value();
 
   useEffect(() => {
-    setIsLoading(true);
+    startLoading();
     getProductsByIds(cart.map(item => item.id))
       .then(productsFromServer =>
         setProducts(
@@ -51,12 +51,8 @@ export const ShoppingCartPage = () => {
             .filter((product): product is CartItemDetails => product !== null),
         ),
       )
-      .finally(() => setIsLoading(false));
-  }, [cart]);
-
-  if (isLoading) {
-    return <LoaderOverlay />;
-  }
+      .finally(() => stopLoading());
+  }, [cart, startLoading, stopLoading]);
 
   return (
     <section className={shoppingCartPageStyles.shoppingCart}>

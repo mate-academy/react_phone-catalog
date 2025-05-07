@@ -1,6 +1,7 @@
-import React, { useContext, useRef, useState } from 'react';
-import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
-import { CategoriesContext } from '../../context/CategoriesContext';
+import React, { useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper';
+import { useCategories } from '../../context/CategoriesContext';
 import {
   Autoplay,
   Navigation,
@@ -18,11 +19,15 @@ import { CarouselPagination } from './components/CarouselPagination/CarouselPagi
 import { IconButton } from '../IconButton/IconButton';
 
 export const Carousel = () => {
-  const { categories } = useContext(CategoriesContext);
-  const prevButtonRef = useRef<HTMLButtonElement | null>(null);
-  const nextButtonRef = useRef<HTMLButtonElement | null>(null);
-  const swiperRef = useRef<SwiperRef | null>(null);
+  const { categories } = useCategories();
+  const prevButtonRef = useRef<HTMLButtonElement>(null);
+  const nextButtonRef = useRef<HTMLButtonElement>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  if (!categories.length) {
+    return null;
+  }
 
   return (
     <div className={carouselStyles.carousel}>
@@ -40,31 +45,20 @@ export const Carousel = () => {
 
         <div className={carouselStyles.carousel__slider}>
           <Swiper
-            ref={swiperRef}
             modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
             effect="coverflow"
             slidesPerView={1}
+            loop
+            grabCursor
             navigation={{
               prevEl: prevButtonRef.current,
               nextEl: nextButtonRef.current,
             }}
-            loop={true}
             autoplay={{ delay: 3000 }}
             onSlideChange={swiper => {
               setActiveIndex(swiper.realIndex);
             }}
-            onSwiper={swiper => {
-              const navigationParams = swiper.params.navigation;
-
-              if (navigationParams && typeof navigationParams !== 'boolean') {
-                navigationParams.prevEl = prevButtonRef.current;
-                navigationParams.nextEl = nextButtonRef.current;
-
-                swiper.navigation.init();
-                swiper.navigation.update();
-              }
-            }}
-            grabCursor={true}
+            onSwiper={swiper => (swiperRef.current = swiper)}
           >
             {categories.map(category => (
               <SwiperSlide
@@ -80,7 +74,7 @@ export const Carousel = () => {
       <CarouselPagination
         categories={categories}
         activeIndex={activeIndex}
-        onClick={index => swiperRef.current?.swiper.slideToLoop(index)}
+        onClick={index => swiperRef.current?.slideToLoop(index)}
       />
     </div>
   );

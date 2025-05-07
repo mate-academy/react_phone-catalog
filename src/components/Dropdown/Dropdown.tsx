@@ -71,6 +71,7 @@ export const Dropdown: React.FC<Props> = memo(
             dataPath={
               isOpen ? ICON_DATA_PATHS.ARROW.UP : ICON_DATA_PATHS.ARROW.DOWN
             }
+            className={dropdownStyles.dropdown__icon}
           />
         </button>
         <ul

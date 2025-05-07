@@ -6,21 +6,25 @@ import classNames from 'classnames';
 
 type Props = {
   className?: string;
+  onClose?: () => void;
 };
 
-export const SiteLogo: React.FC<Props> = memo(({ className }) => {
-  return (
-    <NavLink
-      to={ROUTES.HOME}
-      className={classNames(className, logoStyles.logo)}
-    >
-      <img
-        src="img/logo.svg"
-        alt="Nice Gadgets"
-        className={logoStyles.logo__image}
-      />
-    </NavLink>
-  );
-});
+export const SiteLogo: React.FC<Props> = memo(
+  ({ className, onClose = () => {} }) => {
+    return (
+      <NavLink
+        to={ROUTES.HOME}
+        className={classNames(className, logoStyles.logo)}
+        onClick={onClose}
+      >
+        <img
+          src="img/logo.svg"
+          alt="Nice Gadgets"
+          className={logoStyles.logo__image}
+        />
+      </NavLink>
+    );
+  },
+);
 
 SiteLogo.displayName = 'SiteLogo';

@@ -11,6 +11,7 @@ import classNames from 'classnames';
 import { ICON_DATA_PATHS } from '../../constants/iconDataPaths';
 import { SectionTitle } from '../SectionTitle/SectionTitle';
 import { IconButton } from '../IconButton/IconButton';
+import { getNormalizedTitle } from '../../helpers/stringHelper';
 
 type Props = {
   products: Product[];
@@ -34,7 +35,7 @@ export const SectionSlider: React.FC<Props> = memo(
     return (
       <div className={classNames(className, sliderSectionStyles.sliderSection)}>
         <div className={sliderSectionStyles.sliderSection__header}>
-          <SectionTitle title={title} />
+          <SectionTitle title={getNormalizedTitle(title)} />
           <div className={sliderSectionStyles.sliderSection__navButtons}>
             <IconButton
               ref={prevButtonRef}
@@ -54,6 +55,7 @@ export const SectionSlider: React.FC<Props> = memo(
         <div className={sliderSectionStyles.sliderSection__sliderWrapper}>
           <Swiper
             modules={[Grid, Navigation]}
+            cssMode={true}
             className={sliderSectionStyles.sliderSection___slider}
             grid={{
               rows: 1,

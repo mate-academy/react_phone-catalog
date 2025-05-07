@@ -4,15 +4,15 @@ import { ProductList } from '../../components/ProductList';
 import { useFavorites } from '../../context/FavoriteContext';
 import { Product } from '../../types/Product';
 import { getProductsByIds } from '../../services/products';
-import { LoaderOverlay } from '../../components/LoaderOverlay';
+import { useLoading } from '../../context/LoadingContext';
 
 export const FavoritesPage = () => {
   const { favorites } = useFavorites();
   const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
 
   useEffect(() => {
-    setIsLoading(true);
+    startLoading();
     getProductsByIds(favorites)
       .then(productsFromServer =>
         setProducts(
@@ -23,12 +23,8 @@ export const FavoritesPage = () => {
             .filter((product): product is Product => product !== undefined),
         ),
       )
-      .finally(() => setIsLoading(false));
-  }, [favorites]);
-
-  if (isLoading) {
-    return <LoaderOverlay />;
-  }
+      .finally(() => stopLoading());
+  }, [favorites, startLoading, stopLoading]);
 
   return (
     <section className={favoritesPageStyles.favorites}>

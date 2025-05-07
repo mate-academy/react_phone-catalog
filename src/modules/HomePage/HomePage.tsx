@@ -6,17 +6,21 @@ import { SectionSlider } from '../../components/SectionSlider';
 import homePageStyles from './HomePage.module.scss';
 import { useLoading } from '../../context/LoadingContext';
 import { getAllProducts } from '../../services/products';
+import { useError } from '../../context/ErrorContext';
+import { handleError } from '../../utils/handleError';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const { startLoading, stopLoading } = useLoading();
+  const { setError } = useError();
 
   useEffect(() => {
     startLoading();
     getAllProducts()
       .then(setProducts)
+      .catch(error => setError(handleError(error, 'Failed to load products')))
       .finally(() => stopLoading());
-  }, [startLoading, stopLoading]);
+  }, [startLoading, stopLoading, setError]);
 
   const sortByHotPrices = useCallback(
     (product1: Product, product2: Product) => {
@@ -49,7 +53,7 @@ export const HomePage = () => {
       <Categories />
       <SectionSlider
         products={products}
-        title="Brand new models"
+        title="HOT PRices"
         sortFn={sortByHotPrices}
       />
     </section>
