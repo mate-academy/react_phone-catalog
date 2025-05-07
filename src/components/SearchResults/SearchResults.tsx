@@ -1,5 +1,11 @@
 import { useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
+import phonesJSON from '../../../public/api/phones.json';
+import tabletsJSON from '../../../public/api/tablets.json';
+import accessoriesJSON from '../../../public/api/accessories.json';
+import { Phone } from '../Phones/Phones';
+import { Accessory } from '../Accessories/Accessories';
+import { Tablet } from '../Tablets/Tablets';
 
 export const SearchResults: React.FC = () => {
   const navigate = useNavigate();
@@ -31,6 +37,68 @@ export const SearchResults: React.FC = () => {
     // Example: fetchResults({ query, page, category, sort });
   }, [query, page, category, sort]);
 
+  const phones = ((phonesJSON));
+  const tablets = ((tabletsJSON));
+  const accessories = ((accessoriesJSON));
+  const allProducts = phones.concat(tablets, accessories);
+
+  function containsSubstring(stringsArray, substring) {
+    return stringsArray.some(str =>
+      typeof str === 'string' && str.includes(String(substring)),
+    );
+  }
+
+  function getAllValuesExtended(obj, result = []) {
+    const ignoredKeys = ['colorsAvailable', 'capacityAvailable'];
+
+    if (obj === null || obj === undefined) {
+      return result;
+    }
+
+    if (typeof obj === 'object' && !Array.isArray(obj)) {
+      Object.entries(obj).forEach(([key, value]) => {
+        // Skip ignored keys
+        if (ignoredKeys.includes(key)) {
+          return;
+        }
+
+        if (value && typeof value === 'object') {
+          // Recursively process nested objects and arrays
+          getAllValuesExtended(value, result);
+        } else {
+          result.push(value);
+        }
+      });
+    }
+    // Process arrays
+    else if (Array.isArray(obj)) {
+      obj.forEach(item => {
+        if (item && typeof item === 'object') {
+          // Recursively process object or array items
+          getAllValuesExtended(item, result);
+        } else {
+          result.push(item);
+        }
+      });
+    }
+    // Add primitive values directly
+    else {
+      result.push(obj);
+    }
+
+    return result;
+  }
+
+  const filteredItems = () => {
+    if (query.length === 0) {
+      return allProducts;
+    }
+
+    return allProducts.filter((sub) => {
+      return containsSubstring(getAllValuesExtended(sub), query);
+    });
+  };
+
   return (
     <div className="search-page__wrapper">
       <h1>HERE PLACE YOUR SEARCH RES</h1>
@@ -47,6 +115,35 @@ export const SearchResults: React.FC = () => {
       </select>
 
       <button onClick={() => updateSearchParam('page', `${page + 1}`)}>Next Page</button>
+      <br/>
+      {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
+      {filteredItems().map((item: any) => (
+        <div className="card" key={`${item.id}+++${item.namespaceId}`}>
+          <img
+            src={`../../../public/${item?.images[0]}`}
+            alt="here should be an image"
+            height="300"
+          />
+          <br/>
+          <Link
+            to={`/${item.category}/${item.id}`}
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            {`${item.name}`}
+          </Link>
+          <br />
+          {`${item.priceDiscount} $`} &emsp;<s>{`${item.priceRegular} $`}</s>
+          <br />
+          Screen &emsp;{`${item.screen}`}
+          <br />
+          Capacity &emsp;{`${item.capacity}`}
+          <br />
+          RAM &emsp;{`${item.ram}`}
+          <br />
+          <br />
+          <br />
+        </div>
+      ))}
     </div>
   );
 };

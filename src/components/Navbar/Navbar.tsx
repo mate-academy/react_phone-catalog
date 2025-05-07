@@ -119,21 +119,23 @@ const FullNavbar: React.FC = () => {
           {t('navigation.accessories')}
         </NavLink>
 
-        <input
-          type="text"
-          placeholder={t('navigation.search_placeholder')}
-          className='navigation-searchbar'
-          value={query}
-          onClick={(e) => e.stopPropagation()}
-          onChange={e => setQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        <select value={category} onChange={e => setCategory(e.target.value)}>
-          <option value="all">All</option>
-          <option value="books">Books</option>
-          <option value="electronics">Electronics</option>
-        </select>
-        <button onClick={handleSearch}>🔍</button>
+        <div className="navbar-item navbar-search">
+          <input
+            type="text"
+            placeholder={t('navigation.search_placeholder')}
+            className='navigation-searchbar'
+            value={query}
+            onClick={(e) => e.stopPropagation()}
+            onChange={e => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+  {/*         <select value={category} onChange={e => setCategory(e.target.value)}>
+            <option value="all">All</option>
+            <option value="books">Books</option>
+            <option value="electronics">Electronics</option>
+          </select> */}
+          <button onClick={handleSearch}>🔍</button>
+        </div>
 
         <NavLink
           to="/favorites"

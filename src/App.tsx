@@ -45,7 +45,7 @@ export const App: React.FC = () => (
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="/search*" element={<SearchResults />} />
+          <Route path="/search" element={<SearchResults />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
