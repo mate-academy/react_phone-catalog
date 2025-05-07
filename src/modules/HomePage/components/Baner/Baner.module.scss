@@ -1,0 +1,149 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.baner{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #110424;
+  align-items: center;
+
+  @include on-tablet{
+    border-radius: 8px;
+    flex-direction: row;
+  }
+
+  &__left{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 30px;
+    margin: 8px;
+
+    @include on-tablet{
+      height: calc(100% - 16px);
+      flex: 1 1 50%;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @include on-desktop{
+      padding: 50px;
+    }
+  }
+
+  &__right{
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+
+    @include on-tablet{
+      flex: 0 1 50%;
+      padding-top: 30px;
+
+    }
+  }
+
+  &__title{
+    background: linear-gradient(to top right, #CF10B0 0%, #121FCF 8%, #B5258B 100%);
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+    font-size: 30px;
+    line-height: 36px;
+
+    @include on-tablet{
+      line-height: 18px;
+      font-size: 14px;
+    }
+
+    @include on-desktop{
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+  }
+
+  &__subtitle{
+    color: #fff;
+    font-size: 26px;
+
+    @include on-tablet{
+      font-size: 12px;
+      line-height: 12px;
+
+    }
+
+    @include on-desktop{
+      font-size: 26px;
+      line-height: 26px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__text{
+    display: none;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 10px;
+
+    @include on-tablet{
+      font-size: 6px;
+      display: block;
+      flex: 1 1 auto;
+    }
+
+    @include on-desktop{
+      font-size: 12px;
+    }
+  }
+
+  &__img{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+
+    img{
+      max-width: 100%;
+      height: 150%;
+      object-fit: top;
+      object-fit: cover;
+    }
+  }
+
+  &__btn{
+    width: 120px;
+    height: 30px;
+    border-radius: 26px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: transparent;
+    font-size: 6px;
+    border: 1px solid $icons-color;
+    box-sizing: border-box;
+    display: none;
+    transition: all 0.3s ease 0s;
+
+    &:hover{
+      background-color: $icons-color;
+      color: $primary-color
+    }
+
+    @include on-tablet{
+      @include center;
+    }
+
+    @include on-desktop{
+      width: 200px;
+      font-size: 14px;
+      height: 40px;
+    }
+  }
+}

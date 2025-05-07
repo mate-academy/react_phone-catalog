@@ -1,0 +1,24 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.button{
+  flex: 1 1 auto;
+  background-color: $main-blue;
+  color: #fff;
+  font-size: 14px;
+  line-height: 21px;
+  border-radius: 8px;
+  height: 40px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+
+  &_active,
+  &:hover{
+    border: 1px solid $elements-color;
+    color: $main-blue;
+    background-color: #fff;
+  }
+  &_big{
+    height: 48px;
+  }
+}
