@@ -1,0 +1,15 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.menu {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  &--visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
