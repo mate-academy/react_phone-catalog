@@ -55,7 +55,8 @@ export const Footer: React.FC = () => {
 
           <div
             className="totop Footer-item"
-            onClick={() => window.scrollTo(0, 0)}
+            onClick={() => window
+              .scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
           >
             BACK_TO_TOP
           </div>

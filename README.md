@@ -32,9 +32,9 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
    - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
    - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
 3. Add the sticky header with a logo, navigation, favorites, and cart.
-4. The footer with the link to the GitHub repo and `Back to top` button. ⭕
+4. The footer with the link to the GitHub repo and `Back to top` button. ✅
    - The content should be limited to the same width as the page content; ⭕
-   - `Back to top` button should scroll to the top smoothly; ⭕
+   - `Back to top` button should scroll to the top smoothly; ✅
 5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
 6. All changes the hover effects should be smooth.
 7. Scale all image links by 10% on hover. ⭕
@@ -46,10 +46,10 @@ Implement Home page at available at `/`.
 
 1. `<h1>Product Catalog</h1>` should be visually hidden.
 2. `PicturesSlider`:
-   - Find your own images to personalize the App; ⭕
-   - Change pictures automatically every 5 seconds; ⭕
-   - The next buttons should show the first image after the last one; ⭕
-   - Dashes at the bottom should allow choosing an exact picture. ⭕
+   - Find your own images to personalize the App; ✅
+   - Change pictures automatically every 5 seconds; ✅
+   - The next buttons should show the first image after the last one; ✅
+   - Dashes at the bottom should allow choosing an exact picture. ✅
 3. `ProductsSlider` for the `Hot prices` block:
    - The products with a discount starting from the biggest absolute value; ⭕
    - `<` and `>` buttons should scroll products. ⭕
@@ -78,16 +78,16 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 
 Create `ProductDetailsPage` available at `/product/:productId`.
 
-1. `ProductCard` image and title should be links to the product details page.
+1. `ProductCard` image and title should be links to the product details page.✅
 2. Use `Loader` when fetching the product details.
 3. Show the details on the page:
    - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;❌💀
-   - `About` section should contain a subheader with description;❓⁉️
+   - `About` section should contain a subheader with description;✅
    - Choose `Tech specs` you want to show.❓⁉️
 4. Add the ability to choose a picture. ⭕
 5. Implement `You may also like` block with products chosen randomly:
    - Create `getSuggestedProducts` method fetching the suggested products. ⭕
-6. Add `Back` button working the same way as a Browser `Back` button.
+6. Add `Back` button working the same way as a Browser `Back` button.✅
 7. Add `Breadcrumbs` at the top with:⁉️
    - A Home page link;
    - A category page link (`Phones`, `Tablets`, `Accessories`); ⭕

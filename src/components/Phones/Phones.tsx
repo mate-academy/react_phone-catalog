@@ -65,16 +65,16 @@ export const Phones: React.FC = () => {
           .sort((a:Phone, b:Phone) => b.price - a.price)
           .map((phone:Phone) => (
             <div className="card" key={phone.itemId}>
-              <img
-                src={`../../../public/${phone.image}`}
-                alt="here should be an image"
-                height="300"
-              />
-              <br/>
               <Link
                 to={`/phones/${phone.itemId}`}
                 onClick={() => window.scrollTo(0, 0)}
               >
+                <img
+                  src={`../../../public/${phone.image}`}
+                  alt="here should be an image"
+                  height="300"
+                />
+                <br/>
                 {`${phone.name}`}
               </Link>
               <br />

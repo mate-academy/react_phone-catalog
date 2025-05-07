@@ -119,16 +119,16 @@ export const SearchResults: React.FC = () => {
       {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
       {filteredItems().map((item: any) => (
         <div className="card" key={`${item.id}+++${item.namespaceId}`}>
-          <img
-            src={`../../../public/${item?.images[0]}`}
-            alt="here should be an image"
-            height="300"
-          />
-          <br/>
           <Link
             to={`/${item.category}/${item.id}`}
             onClick={() => window.scrollTo(0, 0)}
           >
+            <img
+              src={`../../../public/${item?.images[0]}`}
+              alt="here should be an image"
+              height="300"
+            />
+            <br/>
             {`${item.name}`}
           </Link>
           <br />

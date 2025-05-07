@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, TouchEvent } from 'react';
 import './CustomSlider.scss';
 import '../../../public/img/square_banner.png';
 
-const ImageSlider = ({ slides = [], autoRotateTime = 60000 }) => {
+const ImageSlider = ({ slides = [], autoRotateTime = 5000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef(null);
   // const sliderRef = useRef(null);

@@ -48,16 +48,16 @@ export const Tablets: React.FC = () => {
         .sort((a:Tablet, b:Tablet) => b.price - a.price)
         .map((tablet:Tablet) => (
           <div className="card" key={tablet.itemId}>
-            <img
-              src={`../../../public/${tablet.image}`}
-              alt="here should be an image"
-              height="300"
-            />
-            <br/>
             <Link
               to={`/tablets/${tablet.itemId}`}
               onClick={() => window.scrollTo(0, 0)}
             >
+              <img
+                src={`../../../public/${tablet.image}`}
+                alt="here should be an image"
+                height="300"
+              />
+              <br/>
               {`${tablet.name}`}
             </Link>
             <br />
