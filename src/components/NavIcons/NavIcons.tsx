@@ -26,10 +26,11 @@ const NavIcons = ({ isBurgerMenu = false }: NavIconsProps) => {
     const favourites = favouritesRaw ? JSON.parse(favouritesRaw) || [] : null;
     const cart = cartRaw ? JSON.parse(cartRaw) || [] : null;
 
-    if(cart){
+    if (cart) {
       setCartLength(cart.length);
     }
-    if(favourites){
+
+    if (favourites) {
       setFavouriteLength(favourites.length);
     }
   }, [cartStore, favouritesStore]);

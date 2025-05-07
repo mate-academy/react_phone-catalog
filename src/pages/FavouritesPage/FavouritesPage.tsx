@@ -8,6 +8,7 @@ import { setSelectedProduct } from '../../store/slices/selectedProductSlice';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../../types/product';
 import { RootState } from '../../store';
+import notFoundImage from '../../../public/img/product-not-found.png';
 
 const FavouritesPage = () => {
   const [favourites, setFavourites] = useState<Product[]>([]);
@@ -38,7 +39,11 @@ const FavouritesPage = () => {
       <div className={styles.favouritesPage}>
         <Breadcrumb type="favourites" />
         <h1 className={styles.favouritesPage__title}>Favourites</h1>
-        <p className={styles.favouritesPage__model}> 0 Models</p>
+        <img
+          className={styles.favouritesPage__notFoundImg}
+          src={notFoundImage}
+          alt=""
+        />
       </div>
     );
   } else {

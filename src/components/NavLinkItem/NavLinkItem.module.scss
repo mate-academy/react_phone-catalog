@@ -1,6 +1,9 @@
 li {
   list-style-type: none;
-  height: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin link-styles($bottom: -2px) {

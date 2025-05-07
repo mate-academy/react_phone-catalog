@@ -6,10 +6,12 @@ import { useSelector } from 'react-redux';
 import { Product } from '../../types/product';
 import { RootState } from '../../store';
 import CartItem from '../../components/CartItem/CartItem';
+import notFoundImage from '../../../public/img/product-not-found.png';
 
 const CartPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [cart, setCart] = useState<Product[]>([]);
+  const [totalQuantity, setTotalQuantity] = useState(0);
   const cartProducts = useSelector((state: RootState) => state.cartProducts);
 
   useEffect(() => {
@@ -27,10 +29,23 @@ const CartPage = () => {
 
   useEffect(() => {
     const storedCart = localStorage.getItem('cart') || '[]';
+    const parsedCart = JSON.parse(storedCart);
 
     if (storedCart) {
       try {
-        setCart(JSON.parse(storedCart));
+        const calculatedTotal = parsedCart.reduce(
+          (acc: number, item: Product) => {
+            if (item.quantity !== undefined) {
+              return acc + item.quantity;
+            } else {
+              return acc;
+            }
+          },
+          0,
+        );
+
+        setCart(parsedCart);
+        setTotalQuantity(calculatedTotal);
       } catch (e) {}
     }
   }, [cartProducts]);
@@ -40,6 +55,11 @@ const CartPage = () => {
       <div className={styles.cartPage}>
         <Breadcrumb type="cart" />
         <h1 className={styles.cartPage__title}>Cart</h1>
+        <img
+          className={styles.cartPage__notFoundImg}
+          src={notFoundImage}
+          alt=""
+        />
       </div>
     );
   } else {
@@ -59,7 +79,7 @@ const CartPage = () => {
             <h2 className={styles.cartPage__price}>${totalPrice}</h2>
             <p
               className={styles.cartPage__text}
-            >{`Total for ${cart.length} items`}</p>
+            >{`Total for ${totalQuantity} items`}</p>
             <div className={styles.cartPage__separator}></div>
             <button
               className={`${styles.cartPage__button} ${styles.cartPage__add}`}

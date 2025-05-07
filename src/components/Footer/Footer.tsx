@@ -17,9 +17,15 @@ const Footer = () => {
       </div>
       <nav className={styles.footer__navigation}>
         <ul className={styles.footer__navList}>
-          <li className={styles.footer__navItem}>GITHUB</li>
-          <li className={styles.footer__navItem}>CONTACTS</li>
-          <li className={styles.footer__navItem}>RIGHTS</li>
+          <a href="">
+            <li className={styles.footer__navItem}>GITHUB</li>
+          </a>
+          <a href="">
+            <li className={styles.footer__navItem}>CONTACTS</li>
+          </a>
+          <a href="">
+            <li className={styles.footer__navItem}>RIGHTS</li>
+          </a>
         </ul>
       </nav>
       <div className={styles.footer__backToTop}>
