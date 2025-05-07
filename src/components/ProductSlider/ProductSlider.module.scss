@@ -1,0 +1,29 @@
+@import '../../utils/mixins';
+
+.productSlider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 70px;
+    padding-bottom: 24px;
+
+    @include on-tablet {
+      gap: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__outerwrapper {
+    overflow: hidden;
+  }
+
+  &__innerwrapper {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s;
+  }
+}

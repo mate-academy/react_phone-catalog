@@ -1,0 +1,15 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.goBack {
+  @include small-text;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-grey);
+
+  &:hover {
+    color: var(--color-black);
+  }
+}
