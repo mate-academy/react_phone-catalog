@@ -22,7 +22,7 @@ Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blo
 
 Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
 
-## App
+<!-- ## App
 
 1. Put components into the `src/components` folder.
    - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
@@ -72,10 +72,9 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
    - It should limit the products you show to the user;
    - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
    - Hide pagination elements if they do not make sense;
-   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
+   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination). -->
 
 ## Product details page
-
 Create `ProductDetailsPage` available at `/product/:productId`.
 
 1. `ProductCard` image and title should be links to the product details page.
