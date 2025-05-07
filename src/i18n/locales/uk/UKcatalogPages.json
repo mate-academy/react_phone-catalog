@@ -1,0 +1,17 @@
+{
+    "ctl_phones": "Смартфони",
+    "ctl_tablets": "Планшети",
+    "ctl_accessories": "Аксесуари",
+
+    "ctl_sortBy": "Сортувати",
+    "ctl_itemsPage": "Продукти на сторінці",
+    "ctl_searchProduct": "Шукати продукт",
+
+    "ctl_nawest": "Новіші",
+    "ctl_alphabet": "За алфавітом",
+    "ctl_chap": "Дешевші",
+    "ctl_all": "Всі",
+    "ctl_enterName": "Введіть назву моделі",
+
+    "ctl_error": "Продукт за вашими критеріями не знайдено"
+}

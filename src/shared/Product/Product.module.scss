@@ -1,0 +1,177 @@
+@import '../styles/index';
+
+p {
+  margin: 0;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: $product-gap;
+  align-items: center;
+  justify-content: space-around;
+  max-width: $product-max-width;
+  max-height: $product-max-height;
+  padding: $product-padding;
+  box-sizing: border-box;
+  border: 1px solid #E2E6E9;
+  border-radius: 8px;
+  height: 100%;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px $color-element-black;
+  }
+
+  @include on-tablet{
+    @include set-limit(240px, 512px);
+  }
+
+  @include on-phone{
+    @include set-limit(212px, 540px);
+  }
+
+  &--catalog {
+    max-width: unset;
+    max-height: unset;
+    width: 100%;
+  
+    @include set-limit(1000px, 1000px);
+  }
+}
+
+.prices,
+.decription,
+.wrapper {
+  flex-shrink: 0;
+}
+
+.image {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  flex-grow: 1;
+}
+
+.title {
+  @include set-font($font-mont, 14px, 600);
+
+  min-height: 40px;
+  color: $color-element-black;
+  line-height: 21px;
+
+}
+
+.prices {
+  @include flex-center;
+
+  flex-direction: row;
+  margin-right: auto;
+  gap: 8px;
+}
+
+.fullPrice {
+  @include set-font($font-mont, 22px, 800);
+
+  margin: 0 auto 0 0;
+  letter-spacing: 0;
+  text-decoration: line-through;
+  color: $color-grey;
+}
+
+.price {
+  @include set-font($font-mont, 22px, 800);
+
+  color: $color-element-black;
+  margin: 0 auto 0 0;
+  letter-spacing: 0;
+}
+
+.decription {
+  display: flex;
+  flex-direction: column;
+  gap: $product-gap;
+  width: 100%;
+  margin-bottom: 16px;
+  max-height: 77px;
+  padding-top: 10px;
+  border-top: 1px solid $color-element-white;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__name {
+    @include set-font($font-mont, 12px, 700);
+  
+    letter-spacing: 0;
+    line-height: 15px;
+    color: $color-grey;
+    flex: 1;
+    text-align: left;
+  }
+
+  &__value {
+    @include set-font($font-mont, 12px, 700);
+  
+    letter-spacing: 0;
+    line-height: 15px;
+    color: $color-element-black;
+    flex: 1;
+    text-align: right;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: $product-gap;
+}
+
+.button {
+  @include flex-center;
+  @include set-size(160px, 40px);
+  @include set-font($font-mont, 700, 14px);
+
+  padding: 0;
+  background-color: $color-element-orange;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s;
+  line-height: 21px;
+  color: $color-element-white;
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+
+  &:active {
+    background-color: $color-white;
+  }
+}
+
+.buttonAdded {
+  background-color: $color-white;
+  border: 1px solid $color-element-white;
+  color: $color-element-orange;
+}
+
+.favourite {
+  @include flex-center;
+  @include set-size(40px, 40px);
+
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+
+  &:hover {
+    border: 1px solid $color-element-black;
+  }
+}

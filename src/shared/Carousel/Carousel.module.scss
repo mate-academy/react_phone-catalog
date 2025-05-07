@@ -1,0 +1,67 @@
+@import '../styles/index';
+
+.carousel {
+  box-sizing: border-box;
+  max-width: $carousel-max-width;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-inline: $content-padding-inline;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+  @include set-font($font-mont, 32px, 800);
+
+  color: $color-element-black;
+}
+
+.buttons {
+  @include flex-center;
+
+  gap: 16px;
+}
+
+.button {
+  @include set-size(32px, 32px);
+  @include set-font($font-mont, 15px, 700);
+
+  border-radius: 50%;
+  border: 1px solid $color-light-grey;
+  background-color: $color-white;
+  color: $color-element-black;
+
+  &:hover {
+    border-color: $color-element-black;
+  }
+
+  &:disabled {
+    border-color: $color-element-white;
+  }
+}
+
+.viewport {
+  width: 100%;
+  overflow-x: hidden;
+
+  @include on-tablet {
+    overflow-x: scroll;
+  }
+
+  // Видаляємо:
+  // @include flex-center;
+  // flex-direction: column;
+}
+
+.items {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 16px;
+  // Видаляємо: width: 100% та @include flex-center
+  // Додаємо:
+  justify-content: flex-start;
+}

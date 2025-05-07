@@ -1,0 +1,85 @@
+@import '../styles/index';
+@import 'src/App';
+
+select {
+  @include set-font($font-mont, 14px, 700);
+
+    box-sizing: border-box;
+  min-width: 128px;
+  min-height: 40px;
+  border: 1px solid $color-grey;
+  border-radius: 10px;
+  color: black;
+}
+
+.catalog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 30px;
+
+  &__parameters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: start;
+    align-items: end;
+    margin-right: auto;
+  }
+
+  &__sortName {
+    @include set-font($font-mont, 12px, 700);
+  
+    color: $color-grey;
+  }
+
+  &__select {
+    color: $color-modified-grey;
+    &--1 {
+        max-width: 170px;
+        width: 100%;
+        
+    }
+    &--2 {
+        max-width: 128px;
+        width: 100%;
+    }
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 40px 16px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+  }
+
+  &__pages {
+    @include flex-center;
+  
+    max-width: 250px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__button {
+    @include set-button(32px);
+
+    &__active {
+      background-color: $color-element-black;
+      color: $color-white;
+    }
+  }
+
+  &__queryInput {
+    height: 35px;
+    border: 1px solid $color-grey;
+    border-radius: 10px;
+  
+    @include set-font($font-mont, 13px, 700);
+  }
+}

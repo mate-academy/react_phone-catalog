@@ -1,0 +1,1 @@
+export { Tablets } from './Tablets';
