@@ -1,0 +1,110 @@
+@import "../../styles/main";
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: $white;
+  border: 1px solid $elements;
+  border-radius: 16px;
+  padding: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+
+    flex-direction: row;
+    gap: 24px;
+    justify-content: space-between;
+  }
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__close {
+    background-image: url(../../assets/img/icons/close-no-active.svg);
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    @include hover {
+      background-image: url(../../assets/img/icons/close-active.svg);
+      transform: scale(1.01);
+    }
+  }
+
+  &__imgLink {
+    display: flex;
+
+    @include hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__title {
+    @include hover {
+      color: #78787a;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100px;
+  text-align: center;
+
+  &__btn {
+    background: none;
+    border: 1px solid $icons;
+    border-radius: 48px;
+    cursor: pointer;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+
+    &:disabled {
+      cursor: not-allowed;
+      border-color: $elements;
+      opacity: 0.6;
+    }
+  }
+
+  &__text {
+    @include font-set($body-text);
+
+    width: 20px;
+  }
+}
+
+.price {
+  &__text{
+    @include font-set($tablet-h3);
+
+    width: 90px;
+    text-align: right;
+  }
+}

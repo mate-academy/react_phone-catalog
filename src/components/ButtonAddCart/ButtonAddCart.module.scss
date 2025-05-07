@@ -1,0 +1,24 @@
+@import "../../styles/main";
+
+.addToCart {
+  width: 100%;
+  height: 40px;
+  background-color: $accent;
+  color: $white;
+  border-radius: 48px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  cursor: pointer;
+
+  @include hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+}
+}
+
+.buttonActive {
+  background-color: transparent;
+  border: 1px solid $elements;
+  color: $accent;
+}
