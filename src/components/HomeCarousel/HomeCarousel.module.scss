@@ -1,0 +1,89 @@
+.carousel {
+  &--text {
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  &--slider {
+    max-width: 1200px;
+    width: 100vw;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 640px) {
+      column-gap: 16px;
+
+      width: 100%;
+      transform: translateX(0);
+
+      display: flex;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 80px;
+    }
+
+    &-banner {
+      display: none;
+
+      @media screen and (min-width: 640px) {
+        display: block;
+        max-height: 400px;
+        width: 100%;
+
+      }
+    }
+
+    &__first {
+      width: 100%;
+
+      @media screen and (min-width: 640px) {
+        display: none;
+      }
+    }
+
+    &__second {
+      width: 100%;
+
+      @media screen and (min-width: 640px) {
+        object-fit: cover;
+      }
+    }
+
+    &__third {
+      width: 100%;
+
+      @media screen and (min-width: 640px) {
+        object-fit: cover;
+      }
+    }
+
+    &--first-button {
+      width: 32px;
+
+      display: none;
+      cursor: pointer;
+
+      @media screen and (min-width: 640px) {
+        display: block;
+      }
+
+      @media screen and (min-width: 1200px) {
+        content: url('../img/Slider button - Default (right).svg');
+      }
+    }
+
+    &--second-button {
+      width: 32px;
+      display: none;
+      cursor: pointer;
+
+      @media screen and (min-width: 640px) {
+        display: block;
+      }
+
+      @media screen and (min-width: 1200px) {
+        content: url('../img/Slider button - Default (right).png');
+      }
+    }
+  }
+}

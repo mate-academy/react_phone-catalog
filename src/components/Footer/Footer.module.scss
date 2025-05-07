@@ -1,0 +1,99 @@
+@media screen and (min-width: 640px) {
+  .footer {
+    height: 96px;
+  }
+
+  .footer__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer__about-us {
+    flex-direction: row;
+    column-gap: 15px;
+  }
+
+  .footer__logo {
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .footer__about-us {
+    flex-direction: row;
+    column-gap: 105px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .footer__about-us {
+    display: flex;
+    flex-direction: column;
+    column-gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .footer__logo {
+    margin: 0;
+    margin-bottom: 32px;
+
+  }
+}
+.footer {
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 64px;
+  padding: 32px 16px;
+
+  &__line {
+    border-top: 1px solid rgb(226, 230, 233);
+    width:100%;
+
+    position: absolute;
+    top: 0;  // Позиционирование линии сверху
+    left: 0;  // Привязываем к левому краю
+
+    margin: 0 0 16px;
+  }
+
+  &__about-us {
+    color: #89939A;
+
+    display: flex;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__text {
+    margin: 0;
+    cursor: pointer;
+    color: #89939A;
+    transition: all 0.3s;
+
+
+    &:hover {
+      color: #2d2d2e;
+
+    }
+  }
+
+  &__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px;
+
+    &-text {
+      margin: 0;
+      cursor: pointer;
+    }
+
+    &-button {
+      cursor: pointer;
+    }
+  }
+}
