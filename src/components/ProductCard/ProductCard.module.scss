@@ -1,0 +1,214 @@
+@font-face {
+  font-family: Mont;
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+$color-primary: #78b829;
+$color-secondary: #89939A;
+$color-white: #FFF;
+$color-dark: #1e1c1c;
+$color-light-gray: #F1F2F9;
+$color-active: #f0f0f0;
+
+// Font families
+$font-primary: 'Mont', 'Montserrat', sans-serif;
+$font-weight-bold: 800;
+$font-weight-medium: 600;
+$font-weight-regular: 400;
+
+
+.productCard {
+  width: 237px;
+  height: 512px;
+  background: var(--card-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  color: var(--text-color);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-radius: 20px;
+
+  &:hover {
+    box-shadow: var(--card-box-shadow);
+    background: var(--card-background-hover);
+
+  }
+
+  &__image {
+    width: 100%;
+    margin-bottom: 16px;
+    height: 196px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__title {
+    color: rgb(222, 218, 218);
+    font-weight: 600;
+    font-size: 14px;
+    font-family: $font-primary;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    color: #F1F2F9;
+  }
+
+
+  &__specs {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+  }
+
+  &__property {
+    font-weight: 600;
+    color: var(--text-property);
+    flex: 1;
+    white-space: nowrap;
+
+  }
+
+  &__value {
+    font-weight: 600;
+    color: var(--text-value);
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 30px;
+    padding: 8px 16px;
+    cursor: pointer;
+    width: 160px;
+    height: 40px;
+    margin-right: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    transition: all 0.7s ease;
+    background-color: var(--button-background);
+
+  }
+
+  &__button:hover {
+    border: var(--border-button);
+    color: var(--text-button);
+    scale: 1.1;
+    background: var(--button-background-hover);
+  }
+
+  &__icon {
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.productCard:hover .productCard__image {
+  transform: scale(1.1);
+}
+
+.productPrice {
+  position: relative;
+  display: flex;
+  margin-bottom: 24px;
+  font-size: 22px;
+  font-weight: 800;
+
+    &__current {
+      font-weight: 800;
+      font-size: 22px;
+      margin-right: 7px;
+      color: #F1F2F9;
+    }
+
+    &__old {
+      font-weight: 600;
+      font-size: 22px;
+      color: #363837;
+      text-decoration: line-through;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      background-color: #ffff;
+      height: 0.8px;
+
+    }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .productCard {
+    display: flex;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .productCard__button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .productCard {
+    display: flex;
+    width: 100%;
+    max-width: 639px;
+  }
+
+  .homePageCard {
+    width: 100%;
+    width: 212px;
+  }
+
+  .productCard__button {
+    width: 100%;
+    margin-right: 4px;
+    padding: 4px 8px;
+  }
+}
