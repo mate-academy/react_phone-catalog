@@ -39,7 +39,7 @@
 
     @include styles.typography(uppercase);
 
-    &:hover {
+    @include styles.hover-styles {
       color: styles.get-color(primary);
     }
   }

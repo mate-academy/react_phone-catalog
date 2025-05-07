@@ -38,7 +38,7 @@
 
     background-color: styles.get-color(white);
 
-    &:hover {
+    @include styles.hover-styles {
       border-color: styles.get-color(primary);
     }
 

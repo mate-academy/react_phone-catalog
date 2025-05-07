@@ -36,7 +36,7 @@
     border: 1px solid styles.get-color(elements);
     border-radius: 36px;
 
-    &:hover {
+    @include styles.hover-styles {
       border-color: styles.get-color(icons);
     }
 
@@ -44,7 +44,7 @@
       pointer-events: none;
       border-color: styles.get-color(primary);
 
-      &:hover {
+      @include styles.hover-styles {
         border-color: styles.get-color(primary);
       }
     }

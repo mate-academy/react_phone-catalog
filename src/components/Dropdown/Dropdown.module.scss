@@ -29,7 +29,7 @@
 
     @include styles.typography(button);
 
-    &:hover {
+    @include styles.hover-styles {
       cursor: pointer;
       border: 1px solid styles.get-color(secondary);
     }
@@ -37,7 +37,7 @@
     &--active {
       border-color: styles.get-color(primary);
 
-      &:hover {
+      @include styles.hover-styles {
         border-color: styles.get-color(primary);
       }
     }
@@ -71,7 +71,7 @@
 
     @include styles.typography(body);
 
-    &:hover {
+    @include styles.hover-styles {
       cursor: pointer;
       color: styles.get-color(primary);
       background-color: styles.get-color(hover-bg);

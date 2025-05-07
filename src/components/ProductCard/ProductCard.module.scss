@@ -8,7 +8,7 @@
   padding: 32px;
   border: 1px solid styles.get-color(elements);
 
-  &:hover {
+  @include styles.hover-styles {
     box-shadow: 0 2px 16px 0 #0000001A;
   }
 

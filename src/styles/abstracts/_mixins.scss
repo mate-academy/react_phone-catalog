@@ -15,3 +15,11 @@
     --columns: 24;
   }
 }
+
+@mixin hover-styles {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}

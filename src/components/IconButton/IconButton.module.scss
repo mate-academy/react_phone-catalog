@@ -11,7 +11,7 @@
 
   background-color: styles.get-color(white);
 
-  &:hover {
+  @include styles.hover-styles {
     border-color: styles.get-color(primary);
   }
 
@@ -25,7 +25,7 @@
     border-color: styles.get-color(elements);
     color: styles.get-color(elements);
 
-    &:hover {
+    @include styles.hover-styles {
       border-color: styles.get-color(elements);
     }
   }

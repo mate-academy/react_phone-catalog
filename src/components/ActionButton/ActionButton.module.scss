@@ -7,7 +7,7 @@
 
   @include styles.typography(button);
 
-  &:hover {
+  @include styles.hover-styles {
     cursor: pointer;
     box-shadow: 0 3px 13px 0 #17203166;
   }
