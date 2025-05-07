@@ -1,0 +1,34 @@
+@import '/src/style/main';
+
+.ProductsPage {
+  @include inline-padding-content;
+
+  padding-block: 24px 64px;
+  width: 100%;
+  flex: 1 1 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @include on-desktop {
+    padding-block: 24px 80px;
+  }
+
+  &__title {
+    @include h1;
+
+    color: inherit;
+    margin-top: 24px;
+
+    @include on-tablet{
+      margin-top: 40px;
+    }
+  }
+
+  &__countModels {
+    @include body-text;
+
+    color: $c-secondary;
+    margin-top: 8px;
+  }
+}

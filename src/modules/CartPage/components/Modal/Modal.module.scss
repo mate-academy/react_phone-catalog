@@ -1,0 +1,53 @@
+@import '/src/style/main';
+
+.Modal {
+  position: absolute;
+  pointer-events: all;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  &__content{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+
+    background-color: #fff;
+    border: 1px solid $c-secondary;
+    border-radius: 10px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__text {
+    @include body-text;
+    
+    color: $c-primary;
+  }
+
+  &__clearBtn {
+    width: 100%;
+    padding: 13.5px;
+
+    @include buttons;
+
+    background-color: $c-primary;
+    color: $c-white;
+    transition: all $transition;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+}

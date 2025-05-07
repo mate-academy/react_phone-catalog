@@ -1,0 +1,43 @@
+@import '/src/style/main';
+
+.FavouritesPage {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__content {
+    @include inline-padding-content;
+
+    padding-top: 24px;
+  }
+
+  &__title {
+    @include h1;
+
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__countItems{
+    @include body-text;
+    
+    color: $c-secondary;
+
+    margin-top: 8px;
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}
