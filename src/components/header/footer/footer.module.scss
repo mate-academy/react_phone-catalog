@@ -1,0 +1,163 @@
+@import '../../../styles/main';
+
+.footer {
+  margin-top: 64px;
+  border-top: 1px solid $main-page-color;
+
+  &_container {
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1136px;
+    width: 100%;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+  }
+
+  &_img {
+    transition: all $animation;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 89px;
+    height: 32px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+      transform: translateY(40%);
+    }
+  }
+
+  &_contact {
+    transition: all $animation;
+
+    &:hover {
+      transition: all $animation;
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+
+    @include on-desktop {
+      margin-left: 106px;
+    }
+  }
+
+  &_rights {
+    transition: all $animation;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+
+    @include on-desktop {
+      margin-left: 106px;
+    }
+  }
+
+  &_github {
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+
+    transition: all $animation;
+
+    @include on-tablet {
+      margin-left: auto;
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: baseline;
+    }
+  }
+
+  &_link {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: $secondary-text-color;
+    transition: all $animation;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  &_span {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-size: cover;
+    background-image: url(/img/littleImages/arrow-up.svg);
+  }
+
+  &_text {
+    transition: all $animation;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: $secondary-text-color;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  &_backtop {
+    &:hover {
+      cursor: pointer;
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+      margin-left: auto;
+    }
+
+    &_link {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #b4bdc3;
+      display: block;
+      align-content: center;
+      margin-left: 16px;
+
+      &::after {
+        content: '';
+        background-size: cover;
+        display: block;
+        width: 16px;
+        height: 16px;
+        border: none;
+        padding: 0;
+        margin: 0;
+        background-image: url(../../../../public/img/littleImages/arrow-up.svg);
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
