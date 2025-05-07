@@ -13,6 +13,9 @@ export const CartPage = () => {
   if (cart.length === 0) {
     return (
       <section className="cart section">
+        <Link to="/" className="cart__back">
+          {'< Back'}
+        </Link>
         <h1 className="cart__title">Cart</h1>
         <p className="cart__empty">Your cart is empty.</p>
       </section>

@@ -259,7 +259,7 @@ export const PhonePage = () => {
         )}
       </div>
 
-      {itemsPerPage !== 0 && (
+      {itemsPerPage !== 0 && filteredPhones.length > 0 && (
         <div className="pagination">
           <button
             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}

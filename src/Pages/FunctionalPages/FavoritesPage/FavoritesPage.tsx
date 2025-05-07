@@ -113,6 +113,9 @@ export const FavoritesPage = () => {
   if (favoriteProducts.length === 0) {
     return (
       <section className="favorites section">
+        <Link to="/" className="favorites__back">
+          {'< Back'}
+        </Link>
         <h1 className="favorites__title">Your Favorites</h1>
         <p className="favorites__empty">Your favorites list is empty.</p>
       </section>
@@ -121,6 +124,9 @@ export const FavoritesPage = () => {
 
   return (
     <section className="favorites section">
+      <Link to="/" className="favorites__back">
+        {'< Back'}
+      </Link>
       <h1 className="favorites__title">Your Favorites</h1>
       <div className="favorites__items">
         {favoriteProducts.map(product => (
@@ -140,6 +146,29 @@ export const FavoritesPage = () => {
               />
               <h3 className="favorites__item-name">{product.name}</h3>
               <p className="favorites__item-price">${product.priceDiscount}</p>
+
+              {isPhoneOrTablet(product) && (
+                <div className="brand__card-specs">
+                  <div className="brand__card-spec">
+                    <span className="brand__card-spec-label">Screen</span>
+                    <span className="brand__card-spec-value">
+                      {product.screen}
+                    </span>
+                  </div>
+                  <div className="brand__card-spec">
+                    <span className="brand__card-spec-label">Capacity</span>
+                    <span className="brand__card-spec-value">
+                      {product.capacity}
+                    </span>
+                  </div>
+                  <div className="brand__card-spec">
+                    <span className="brand__card-spec-label">RAM</span>
+                    <span className="brand__card-spec-value">
+                      {product.ram}
+                    </span>
+                  </div>
+                </div>
+              )}
             </Link>
             <div className="favorites__item-actions">
               <button

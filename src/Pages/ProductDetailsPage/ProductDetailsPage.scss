@@ -133,7 +133,7 @@
 
     &.added {
       background-color: #75767f;
-      cursor: not-allowed;
+      cursor: pointer;
     }
 
     &:hover:not(.added) {
