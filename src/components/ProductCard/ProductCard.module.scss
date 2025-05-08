@@ -1,0 +1,68 @@
+.card {
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+h3 {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.fullPrice {
+  text-decoration: line-through;
+  color: #888;
+  margin-left: 0.5rem;
+}
+
+.addToCart {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #0070f3;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.addToCart:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.addToCart:hover:not(:disabled) {
+  background-color: #005bb5;
+}
+
+/* Favorite heart icon */
+.heartIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.heartIcon:hover {
+  transform: scale(1.2);
+}
