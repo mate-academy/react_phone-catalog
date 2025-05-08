@@ -10,6 +10,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { lchown } from 'fs/promises';
 
 type ProductsCategoryType = 'phones' | 'tablets' | 'accessories';
 
@@ -141,6 +142,18 @@ const ProductsCategory: React.FC<ProductsCategoryProps> = ({ type }) => {
     }
   };
 
+  const leftArr = () => {
+    if (page !== 1) {
+      setPage(page - 1);
+    }
+  };
+
+  const rightArr = () => {
+    if (page < totalPages) {
+      setPage(page + 1);
+    }
+  };
+
   return (
     <div className={styles.productsCategory}>
       <div className={styles.productsCategory__header}>
@@ -208,7 +221,7 @@ const ProductsCategory: React.FC<ProductsCategoryProps> = ({ type }) => {
           ))}
       </div>
       <div className={styles.productsCategory__pagination}>
-        <div className={styles.productsCategory__leftArrow}>
+        <div onClick={leftArr} className={styles.productsCategory__leftArrow}>
           <ArrowBackIosNewIcon />
         </div>
         <div className={styles.productsCategory__paginationButtons}>
@@ -227,7 +240,7 @@ const ProductsCategory: React.FC<ProductsCategoryProps> = ({ type }) => {
               </button>
             ))}
         </div>
-        <div className={styles.productsCategory__rightArrow}>
+        <div onClick={rightArr} className={styles.productsCategory__rightArrow}>
           <ArrowForwardIosIcon />
         </div>
       </div>

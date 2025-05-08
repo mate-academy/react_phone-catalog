@@ -42,8 +42,8 @@ p {
   }
 
   &__galleryItem img {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
   }
 
@@ -115,6 +115,7 @@ p {
     justify-content: center;
     align-items: center;
     padding: 5px;
+    height: 30px;
 
     &_active {
       background-color: #000;
