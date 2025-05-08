@@ -1,0 +1,120 @@
+// Define global variables for consistency
+$primary-color: #0070f3;
+$hover-color: #005bb5;
+$error-color: red;
+$disabled-color: #ccc;
+$border-radius: 8px;
+$spacing: 1rem;
+
+// Main container
+.tabletsPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing;
+
+  h1 {
+    text-align: center;
+    margin-bottom: $spacing;
+  }
+}
+
+// Controls section
+.controls {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: $spacing;
+
+  label {
+    font-weight: bold;
+
+    select {
+      margin-left: 0.5rem;
+      padding: 0.2rem;
+    }
+  }
+}
+
+// General button styles (Defined first to fix specificity issue)
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: $primary-color;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+// Disabled button styling (Correct order for linting)
+button:disabled {
+  background-color: $disabled-color;
+  cursor: not-allowed;
+}
+
+// Hover effect (Placed after general styles for cascading order)
+button:hover:not(:disabled) {
+  background-color: $hover-color;
+}
+
+// Error section
+.error {
+  text-align: center;
+  margin-top: $spacing;
+
+  p {
+    color: $error-color;
+    font-size: 1.2rem;
+  }
+
+  button:hover {
+    background-color: $hover-color;
+  }
+}
+
+// Product Grid
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: $spacing;
+}
+
+// Product Card (Added shadow for better UI)
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: $border-radius;
+  padding: $spacing;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  img {
+    max-width: 100%;
+    border-radius: 4px;
+  }
+}
+
+// Pagination section (Placed after general button styles)
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing;
+  margin-top: $spacing;
+}
+
+.pagination .button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: $primary-color;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  .pagination .button:disabled {
+    background-color: $disabled-color;
+    cursor: not-allowed;
+  }
+
+  .pagination .button:hover:not(:disabled) {
+    background-color: $hover-color;
+  }
+}
