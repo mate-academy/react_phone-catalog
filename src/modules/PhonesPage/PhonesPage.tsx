@@ -17,12 +17,12 @@ export const PhonesPage: React.FC = () => {
 
   if (error) {
     return (
-      <main className={styles.phones}>
-        <div className={styles.container}>
-          <h2>Something went wrong</h2>
-          <pre style={{ color: 'red', whiteSpace: 'pre-wrap' }}>
-            {JSON.stringify(error, null, 2)}
-          </pre>
+      <main>
+        <div className={'container'}>
+          <h1 style={{ color: 'red', textAlign: 'center', marginTop: '32px' }}>
+            Something went wrong
+          </h1>
+          <img src="img/error.png" alt="Error" />
         </div>
       </main>
     );

@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import styles from './NewModels.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Product } from '../../shared/Product';
+
+import { Product } from '../Product';
 import { ProductType } from '../../types/ProductType';
 
+import styles from './ProductsSlider.module.scss';
+
 type Props = {
+  title: string;
   products: ProductType[];
+  fullPriceActive?: boolean;
+  sectionClassName?: string;
 };
 
-export const NewModels: React.FC<Props> = ({ products }) => {
-  const [isTablet, setIsTablet] = useState<boolean>(window.innerWidth >= 640);
-  const [isDesktop, setIsDesktop] = useState<boolean>(
-    window.innerWidth >= 1024,
-  );
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  fullPriceActive = false,
+}) => {
+  const [isTablet, setIsTablet] = useState(window.innerWidth >= 640);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,16 +37,11 @@ export const NewModels: React.FC<Props> = ({ products }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const filteredProducts = products
-    .filter(product => product.category === 'phones')
-    .filter(product => product.capacity === '512GB')
-    .reverse();
-
   return (
-    <section className={styles.new__models}>
+    <section className={styles.productsSlider}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Brand new models</h2>
+          <h2 className={styles.title}>{title}</h2>
           <div className={styles.slider__controls}>
             <button className={styles.slider__controlsPrev}>
               <span />
@@ -63,9 +66,9 @@ export const NewModels: React.FC<Props> = ({ products }) => {
             }}
             spaceBetween={10}
           >
-            {filteredProducts.map(product => (
+            {products.map(product => (
               <SwiperSlide key={product.id} className={styles.slider__slide}>
-                <Product product={product} fullPriceActive={false} />
+                <Product product={product} fullPriceActive={fullPriceActive} />
               </SwiperSlide>
             ))}
           </Swiper>

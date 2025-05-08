@@ -41,6 +41,12 @@
 
     background-color: utils.$color-accent;
     outline: none;
+
+    transition: background-color utils.$animation-duration;
+
+    &:hover {
+      background-color: utils.$color-accent-hover;
+    }
   }
 
   &__img {

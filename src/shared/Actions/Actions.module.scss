@@ -44,4 +44,12 @@
       background-color: utils.$color-icons;
     }
   }
+
+  &__addToCartActive {
+    background-color: utils.$color-green;
+
+    &:hover {
+      background-color: utils.$color-green;
+    }
+  }
 }

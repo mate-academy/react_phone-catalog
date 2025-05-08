@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './Header.module.scss';
-import { Link, NavLink } from 'react-router-dom';
-import { useProducts } from '../../contexts/ProductsContext';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/type';
+import { HeaderBurger } from './HeaderBurger';
+import { HeaderActions } from './HeaderActions';
+import { HeaderList } from './HeaderList';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -34,7 +36,6 @@ const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
   });
 
 export const Header: React.FC = () => {
-  const { products } = useProducts();
   const [isBurgerActive, setIsBurgerActive] = useState(false);
 
   const bodyRef = React.useRef(document.body);
@@ -70,12 +71,10 @@ export const Header: React.FC = () => {
     (state: RootState) => state.favorites,
   );
 
-  const favorites =
-    products && Array.isArray(products)
-      ? products.filter(product => favoritesIds.includes(product.itemId))
-      : [];
+  const cart: string[] = useSelector((state: RootState) => state.cart);
 
-  const favoritesCount = favorites.length;
+  const cartCount = cart.length;
+  const favoritesCount = favoritesIds.length;
 
   return (
     <header className={styles.header}>
@@ -101,52 +100,25 @@ export const Header: React.FC = () => {
             </Link>
           </div>
 
-          <ul className={styles.header__list}>
-            {navLinks.map(({ to, label }) => (
-              <li key={to} className={styles.header__item}>
-                <NavLink
-                  to={to}
-                  className={getNavLinkClass}
-                  onClick={() => setIsBurgerActive(false)}
-                >
-                  {label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+          <HeaderList
+            navLinks={navLinks}
+            getNavLinkClass={getNavLinkClass}
+            setIsBurgerActive={setIsBurgerActive}
+          />
 
-          <div className={styles.header__actions}>
-            {actionLinks.map(({ to, icon, alt, className }) => (
-              <button key={to} className={styles[className]}>
-                <NavLink
-                  to={to}
-                  className={getNavLinkClass}
-                  onClick={() => setIsBurgerActive(false)}
-                >
-                  <img src={icon} alt={alt} />
-                  {to === '/favorites' && favoritesCount > 0 && (
-                    <span className={styles.header__count}>
-                      {favoritesCount}
-                    </span>
-                  )}
-                </NavLink>
-              </button>
-            ))}
-          </div>
+          <HeaderActions
+            getNavLinkClass={getNavLinkClass}
+            favoritesCount={favoritesCount}
+            cartCount={cartCount}
+            actionLinks={actionLinks}
+            setIsBurgerActive={setIsBurgerActive}
+          />
         </nav>
 
-        <div className={styles.header__burger} onClick={toggleBurger}>
-          <button
-            className={classNames(styles.header__button, {
-              [styles.active]: isBurgerActive,
-            })}
-            type="button"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+        <HeaderBurger
+          toggleBurger={toggleBurger}
+          isBurgerActive={isBurgerActive}
+        />
       </div>
     </header>
   );

@@ -11,6 +11,7 @@ import { useGetAllProductsQuery } from './services/products';
 import { ProductsProvider } from './contexts/ProductsContext';
 import { NotFound } from './shared/NotFound';
 import { FavoritesPage } from './modules/FavoritesPage';
+import { CartPage } from './modules/CartPage';
 
 export const App: React.FC = () => {
   const { data: products, error, isLoading } = useGetAllProductsQuery({});
@@ -33,6 +34,8 @@ export const App: React.FC = () => {
           <Route path="/accessories/:id" element={<ProductDetailsPage />} />
 
           <Route path="/favorites" element={<FavoritesPage />} />
+
+          <Route path="/cart" element={<CartPage />} />
 
           <Route path="*" element={<NotFound title="Page not found" />} />
         </Routes>

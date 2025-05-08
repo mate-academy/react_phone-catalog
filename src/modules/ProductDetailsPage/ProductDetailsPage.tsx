@@ -6,14 +6,14 @@ import { ProductGallery } from '../../components/ProductGallery';
 import { ProductOptions } from '../../components/ProductOptions';
 import { AboutProduct } from './About/AboutProduct';
 import ProductInfo from '../../shared/Product/ProductInfo';
-import { RecommendedProduct } from '../../components/RecomendetProduct';
 import { useProducts } from '../../contexts/ProductsContext';
 import { ProductType } from '../../types/ProductType';
 import { Loading } from '../../shared/Loading';
 import { NotFound } from '../../shared/NotFound';
+import { ProductsSlider } from '../../shared/ProductsSlider';
 
 export const ProductDetailsPage: React.FC = () => {
-  const { products: recommendedProducts, error, isLoading } = useProducts();
+  const { products, error, isLoading } = useProducts();
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,7 +26,6 @@ export const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<ProductType | null>(null);
   const [img, setImg] = useState('');
   const [localLoading, setLocalLoading] = useState(true);
-  const [localError, setLocalError] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -47,7 +46,8 @@ export const ProductDetailsPage: React.FC = () => {
           setProduct(null);
         }
       } catch (err) {
-        setLocalError(true);
+        // eslint-disable-next-line no-console
+        console.error(err);
       } finally {
         setLocalLoading(false);
       }
@@ -74,13 +74,26 @@ export const ProductDetailsPage: React.FC = () => {
     return <Loading />;
   }
 
-  if (localError) {
-    return <h2>Something went wrong</h2>;
+  if (error) {
+    return (
+      <main>
+        <div className={'container'}>
+          <h1 style={{ color: 'red', textAlign: 'center', marginTop: '32px' }}>
+            Something went wrong
+          </h1>
+          <img src="img/error.png" alt="Error" />
+        </div>
+      </main>
+    );
   }
 
   if (!product) {
     return <NotFound title="Product not found" />;
   }
+
+  const recommendedProducts = [...products]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 20);
 
   return (
     <main>
@@ -119,7 +132,11 @@ export const ProductDetailsPage: React.FC = () => {
       </section>
 
       {!isLoading && !error && (
-        <RecommendedProduct products={recommendedProducts} />
+        <ProductsSlider
+          products={recommendedProducts}
+          title="You may also like"
+          fullPriceActive
+        />
       )}
     </main>
   );

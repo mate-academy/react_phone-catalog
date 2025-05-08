@@ -1,13 +1,38 @@
 import React from 'react';
 import { Hero } from '../../components/Hero';
-import { NewModels } from '../../components/NewModels';
 import { Category } from '../../components/Category';
-import { HotPrices } from '../../components/HotPrices';
 import { useProducts } from '../../contexts/ProductsContext';
 import { Loading } from '../../shared/Loading';
+import { ProductsSlider } from '../../shared/ProductsSlider';
 
 export const HomePage: React.FC = () => {
   const { products, error, isLoading } = useProducts();
+
+  if (error) {
+    return (
+      <main>
+        <div className={'container'}>
+          <h1 style={{ color: 'red', textAlign: 'center', marginTop: '32px' }}>
+            Something went wrong
+          </h1>
+          <img src="img/error.png" alt="Error" />
+        </div>
+      </main>
+    );
+  }
+
+  const hotPrices = products
+    ?.map(product => ({
+      ...product,
+      discount: product.fullPrice - product.price,
+    }))
+    .sort((a, b) => b.discount - a.discount)
+    .slice(0, 20);
+
+  const newModels = products
+    ?.filter(product => product.category === 'phones')
+    .filter(product => product.capacity === '512GB')
+    .reverse();
 
   const categoryTotals = products?.reduce(
     (totals, product) => {
@@ -23,20 +48,26 @@ export const HomePage: React.FC = () => {
 
   return (
     <main>
-      <Hero />
-      {error ? (
-        <h2>Something went wrong</h2>
-      ) : isLoading ? (
+      {isLoading ? (
         <Loading />
       ) : (
         <>
-          <NewModels products={products} />
+          <Hero />
+          <ProductsSlider
+            products={newModels}
+            title="Brand new models"
+            fullPriceActive
+          />
           <Category
             phonesTotal={categoryTotals.phones}
             tabletsTotal={categoryTotals.tablets}
             accessoriesTotal={categoryTotals.accessories}
           />
-          <HotPrices products={products} />
+          <ProductsSlider
+            products={hotPrices}
+            title="Hot prices"
+            fullPriceActive
+          />
         </>
       )}
     </main>

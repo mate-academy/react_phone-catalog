@@ -1,0 +1,50 @@
+@use '../../styles/utils' as utils;
+
+.cart {
+  padding: 24px 0 64px;
+
+  &__title {
+    max-width: 200px;
+    margin-bottom: 32px;
+
+    font-family: utils.$font-main;
+    font-size: 48px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 56px;
+    color: utils.$color-white;
+    letter-spacing: -0.01em;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+
+    @include utils.on-desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+
+    @include utils.on-desktop {
+      width: 70%;
+    }
+  }
+
+  &__empty {
+    font-family: utils.$font-main;
+    font-size: 32px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 24px;
+    color: utils.$color-secondary;
+    text-align: left;
+  }
+}

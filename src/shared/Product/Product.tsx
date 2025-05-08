@@ -7,6 +7,7 @@ import { Actions } from '../Actions/Actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../services/favorites';
 import { RootState } from '../../store/type';
+import { addProduct } from '../../services/cart';
 
 type Props = {
   product: ProductType;
@@ -31,6 +32,10 @@ export const Product: React.FC<Props> = ({ product, fullPriceActive }) => {
     (state: RootState) => state.favorites,
   );
 
+  const cart: { id: string; quantity: number }[] = useSelector(
+    (state: RootState) => state.cart,
+  );
+
   const isFavorite = favorites.includes(itemId);
 
   const toggleFavorite = () => {
@@ -38,6 +43,14 @@ export const Product: React.FC<Props> = ({ product, fullPriceActive }) => {
       dispatch(removeFavorite(itemId));
     } else {
       dispatch(addFavorite(itemId));
+    }
+  };
+
+  const isInCart = cart.some(item => item.id === itemId);
+
+  const toggleCart = () => {
+    if (!isInCart) {
+      dispatch(addProduct(itemId));
     }
   };
 
@@ -71,7 +84,12 @@ export const Product: React.FC<Props> = ({ product, fullPriceActive }) => {
             ]}
           />
 
-          <Actions isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
+          <Actions
+            isFavorite={isFavorite}
+            toggleFavorite={toggleFavorite}
+            toggleCart={toggleCart}
+            isInCart={isInCart}
+          />
         </div>
       </Link>
     </article>

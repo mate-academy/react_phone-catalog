@@ -60,106 +60,6 @@
     }
   }
 
-  &__burger {
-    cursor: pointer;
-
-    z-index: 10;
-
-    display: flex;
-
-    padding: 15px;
-    border-left: utils.$default-border;
-
-    transition: background-color utils.$animation-duration;
-
-    @include utils.on-tablet {
-      display: none;
-    }
-
-    &:hover {
-      background-color: utils.$color-icons;
-    }
-  }
-
-  &__button {
-    cursor: pointer;
-
-    position: relative;
-
-    display: inline-block;
-
-    box-sizing: border-box;
-    width: 16px;
-    height: 16px;
-    border: none;
-
-    appearance: none;
-    background: none;
-
-    transition: all utils.$animation-duration;
-
-    span {
-      position: absolute;
-      left: 0;
-
-      display: inline-block;
-
-      width: 100%;
-      height: 2px;
-      border-radius: 4px;
-
-      background-color: #fff;
-
-      transition: all utils.$animation-duration;
-
-      &:nth-of-type(1) {
-        top: 0;
-      }
-
-      &:nth-of-type(2) {
-        top: 6px;
-
-        &::after {
-          content: '';
-
-          position: absolute;
-          top: 0;
-          left: 0;
-
-          width: 100%;
-          height: 2px;
-          border-radius: 4px;
-
-          background-color: #fff;
-
-          transition: all utils.$animation-duration;
-        }
-      }
-
-      &:nth-of-type(3) {
-        bottom: 2px;
-      }
-    }
-
-    &.active {
-      span:nth-of-type(1) {
-        transform: translate(50%) scale(0);
-      }
-
-      span:nth-of-type(2) {
-        transform: rotate(45deg);
-
-        &::after {
-          transform: rotate(90deg);
-        }
-      }
-
-      span:nth-of-type(3) {
-        transform: translate(-50%) scale(0);
-      }
-    }
-  }
-
   &__nav {
     @extend %flex-column;
 
@@ -209,54 +109,6 @@
       li {
         position: relative;
         list-style: none;
-      }
-    }
-
-    .header__actions {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      border-top: utils.$default-border;
-
-      @include utils.on-tablet {
-        width: auto;
-        border-top: none;
-      }
-    }
-
-    .header__cart,
-    .header__favorites {
-      cursor: pointer;
-
-      position: relative;
-
-      width: 100%;
-      border: none;
-      border-left: utils.$default-border;
-
-      appearance: none;
-      background-color: transparent;
-
-      transition: background-color utils.$animation-duration;
-
-      a {
-        @extend %flex-center;
-
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        padding: 16px;
-
-        &::after {
-          bottom: 0;
-        }
-
-        @include utils.on-desktop {
-          padding: 24px;
-        }
-      }
-      &:hover {
-        background-color: utils.$color-icons;
       }
     }
 
@@ -329,27 +181,6 @@
     }
   }
 
-  &__count {
-    @extend %flex-center;
-
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-
-    font-family: utils.$font-main;
-    font-size: 10px;
-    font-weight: 600;
-    font-style: normal;
-    line-height: 15px;
-    color: utils.$color-white;
-
-    background-color: #eb5757;
-  }
-
   .active-link {
     color: utils.$color-white;
 
@@ -369,22 +200,6 @@
       @include utils.on-tablet {
         bottom: 1px;
       }
-    }
-  }
-
-  @include utils.on-tablet {
-    &__list {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-
-      @include utils.on-desktop {
-        gap: 64px;
-      }
-    }
-
-    &__item {
-      position: relative;
     }
   }
 }

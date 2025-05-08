@@ -16,6 +16,8 @@
     "react-router-dom": "^6.25.1",
     "react-transition-group": "^4.4.5",
     "redux-persist": "^6.0.0",
+    "sweetalert2": "^11.21.0",
+    "sweetalert2-react-content": "^5.1.0",
     "swiper": "^11.2.6"
   },
   "devDependencies": {

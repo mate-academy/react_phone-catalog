@@ -5,6 +5,7 @@ import { Actions } from '../../shared/Actions/Actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../services/favorites';
 import { RootState } from '../../store/type';
+import { addProduct } from '../../services/cart';
 
 type PriceBlockProps = {
   itemId: string;
@@ -29,14 +30,24 @@ const PriceBlock: React.FC<PriceBlockProps> = ({
   const favorites: string[] = useSelector(
     (state: RootState) => state.favorites,
   );
+  const cart: { id: string; quantity: number }[] = useSelector(
+    (state: RootState) => state.cart,
+  );
 
   const isFavorite = favorites.includes(itemId);
+  const isInCart = cart.some(item => item.id === itemId);
 
   const toggleFavorite = () => {
     if (isFavorite) {
       dispatch(removeFavorite(itemId));
     } else {
       dispatch(addFavorite(itemId));
+    }
+  };
+
+  const toggleCart = () => {
+    if (!isInCart) {
+      dispatch(addProduct(itemId));
     }
   };
 
@@ -55,7 +66,12 @@ const PriceBlock: React.FC<PriceBlockProps> = ({
         )}
       </div>
 
-      <Actions isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
+      <Actions
+        isFavorite={isFavorite}
+        toggleFavorite={toggleFavorite}
+        toggleCart={toggleCart}
+        isInCart={isInCart}
+      />
 
       <ProductInfo
         screen={screen}

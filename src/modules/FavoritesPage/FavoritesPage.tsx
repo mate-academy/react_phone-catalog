@@ -23,35 +23,47 @@ export const FavoritesPage: React.FC = () => {
       ? products.filter(product => favoritesIds.includes(product.itemId))
       : [];
 
+  if (error) {
+    return (
+      <main>
+        <div className={'container'}>
+          <h1 style={{ color: 'red', textAlign: 'center', marginTop: '32px' }}>
+            Something went wrong
+          </h1>
+          <img src="img/error.png" alt="Error" />
+        </div>
+      </main>
+    );
+  }
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <main>
       <section className={styles.favorites}>
         <div className={styles.container}>
           <div className={styles.favorites__content}>
             <Breadcrumb pathnames={pathnames} />
+
             <div className={styles.favorites__info}>
               <h1 className={styles.favorites__title}>Favorites</h1>
               <span>{favorites.length} items</span>
             </div>
 
+            {favorites.length === 0 && (
+              <h2 className={styles.favorites__empty}>No favorites yet</h2>
+            )}
+
             <div className={styles.favorites__products}>
-              {(error as Error) && <h2>Something went wrong</h2>}
-
-              {isLoading && <Loading />}
-
-              {!error &&
-                !isLoading &&
-                (favorites.length === 0 ? (
-                  <h2 className={styles.favorites__empty}>No favorites yet</h2>
-                ) : (
-                  favorites.map(product => (
-                    <Product
-                      key={product.id}
-                      product={product}
-                      fullPriceActive={false}
-                    />
-                  ))
-                ))}
+              {favorites.map(product => (
+                <Product
+                  key={product.id}
+                  product={product}
+                  fullPriceActive={false}
+                />
+              ))}
             </div>
           </div>
         </div>
