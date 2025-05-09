@@ -31,3 +31,44 @@
   display: flex;
   gap: 8px;
 }
+
+// variant: 'cart'
+
+.product-card--cart {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: 9fr 4fr;
+  }
+}
+
+.product-card__image-wrapper--cart {
+  display: flex;
+  width: 66px;
+}
+
+.product-card__price-details-wrapper--cart {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+.product-card__price-details--cart {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-card__price-details-amount-wrapper--cart {
+  display: flex;
+  align-items: center;
+}
+
+.product-card__price-details-amount {
+  width: $button-size;
+  text-align: center;
+}

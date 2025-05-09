@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
 
 import { Product } from '../../types/Product';
-import { ButtonAddToCart } from '../UI/ButtonAddToCart';
+import { ButtonPrimary } from '../UI/ButtonPrimary';
 import { ButtonFavorite } from '../UI/ButtonFavorite';
+
+type Variant = 'default' | 'cart';
 
 type Props = {
   product?: Product;
+  variant?: Variant;
 };
 
-export const ProductCard: React.FC<Props> = ({}) => {
+export const ProductCard: React.FC<Props> = ({ variant = 'default' }) => {
   const [product] = useState<Product>({
     id: 1,
     category: 'phones',
@@ -24,6 +27,7 @@ export const ProductCard: React.FC<Props> = ({}) => {
     year: 2016,
     image: 'img/phones/apple-iphone-7/black/00.webp',
   });
+  const [amount, setAmount] = useState(1);
   const [inCart, setInCart] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -34,6 +38,62 @@ export const ProductCard: React.FC<Props> = ({}) => {
   const handleAddToFavorite = () => {
     setIsFavorite(state => !state);
   };
+
+  const handleChangeAmount = (type: 'increase' | 'decrease') => {
+    switch (type) {
+      case 'increase': {
+        setAmount(state => (state < 10 ? state + 1 : state));
+        break;
+      }
+
+      case 'decrease': {
+        setAmount(state => (state > 1 ? state - 1 : state));
+        break;
+      }
+    }
+  };
+
+  if (variant === 'cart') {
+    return (
+      <article
+        className={`${styles['product-card']} ${styles['product-card--cart']}`}
+      >
+        <div className={styles['product-card__price-details-wrapper--cart']}>
+          <button className="button-box button--arrow-top"></button>
+          <div className={styles['product-card__image-wrapper--cart']}>
+            <img
+              className={styles['product-card__image']}
+              src={product.image}
+              alt="Product Photo"
+            />
+          </div>
+          <p className="main-text">{product.name}</p>
+        </div>
+        <div className={styles['product-card__price-details--cart']}>
+          <div
+            className={
+              styles['product-card__price-details-amount-wrapper--cart']
+            }
+          >
+            <button
+              className="button-box button-box--sm button--arrow-left"
+              onClick={() => handleChangeAmount('decrease')}
+            ></button>
+            <p
+              className={`main-text ${styles['product-card__price-details-amount']}`}
+            >
+              {amount}
+            </p>
+            <button
+              className="button-box button-box--sm button--arrow-right"
+              onClick={() => handleChangeAmount('increase')}
+            ></button>
+          </div>
+          <h3>${product.price * amount}</h3>
+        </div>
+      </article>
+    );
+  }
 
   return (
     <article className={styles['product-card']}>
@@ -46,10 +106,10 @@ export const ProductCard: React.FC<Props> = ({}) => {
       </div>
       <p className="main-text">{product.name}</p>
       <h3>
-        ${product.fullPrice}{' '}
-        {product.price && (
+        ${product.price}{' '}
+        {product.fullPrice && (
           <span className="main-text--secondary price-discount">
-            ${product.price}
+            ${product.fullPrice}
           </span>
         )}
       </h3>
@@ -71,13 +131,11 @@ export const ProductCard: React.FC<Props> = ({}) => {
       </p>
       <div className={styles['product-card__buttons-wrapper']}>
         {inCart ? (
-          <ButtonAddToCart variant="selected" onClick={handleAddToCart}>
-            Added
-          </ButtonAddToCart>
+          <ButtonPrimary variant="selected" onClick={handleAddToCart}>
+            Remove from cart
+          </ButtonPrimary>
         ) : (
-          <ButtonAddToCart onClick={handleAddToCart}>
-            Add to cart
-          </ButtonAddToCart>
+          <ButtonPrimary onClick={handleAddToCart}>Add to cart</ButtonPrimary>
         )}
 
         <ButtonFavorite selected={isFavorite} onClick={handleAddToFavorite} />

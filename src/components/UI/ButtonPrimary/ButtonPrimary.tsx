@@ -9,7 +9,7 @@ type Props = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export const ButtonAddToCart: React.FC<Props> = ({
+export const ButtonPrimary: React.FC<Props> = ({
   children,
   variant = 'primary',
   onClick = () => {},
@@ -17,8 +17,8 @@ export const ButtonAddToCart: React.FC<Props> = ({
 }) => {
   return (
     <button
-      className={classNames('button-add-to-cart', {
-        'button-add-to-cart--selected': variant === 'selected',
+      className={classNames('button-primary', {
+        'button-primary--selected': variant === 'selected',
       })}
       onClick={onClick}
       {...rest}

@@ -5,6 +5,7 @@
   height: $button-size;
   border: 1px solid $gray;
   box-sizing: border-box;
+  flex-shrink: 0;
 
   position: relative;
   transition: $animation-duration;
@@ -73,7 +74,7 @@
   }
 }
 
-.button-add-to-cart {
+.button-primary {
   background-color: $primary;
   border: none;
   box-sizing: border-box;
@@ -81,7 +82,6 @@
 
   width: 100%;
   height: $button-size;
-  flex: 1;
 
   transition: $animation-duration;
 

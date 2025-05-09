@@ -1,3 +1,6 @@
+@use './utils/mixins.scss' as *;
+@import './variables/variables.scss';
+
 html {
   scroll-behavior: smooth;
 }
@@ -5,7 +8,6 @@ html {
 body {
   font-family: 'Mont', sans-serif;
   margin: 0;
-  // overflow-x: hidden;
 }
 
 h1,
@@ -46,6 +48,24 @@ li {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+
+  box-sizing: border-box;
+  padding-top: $header-height--mb;
+
+  @include on-tablet {
+    padding-top: $header-height;
+  }
+
+  & > .section {
+    flex: 1;
+  }
 }
 
 .container {

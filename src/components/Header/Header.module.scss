@@ -2,11 +2,21 @@
 @import '../../styles/variables/variables';
 
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background-color: #fffc;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   box-sizing: border-box;
   border-bottom: 1px solid $header-border-color;
 
-  height: 48px;
+  height: $header-height--mb;
   padding-left: 16px;
+  z-index: 10;
 }
 
 .header--show-on-mobile {
@@ -19,7 +29,7 @@
 
 @include on-tablet {
   .header {
-    height: 64px;
+    height: $header-height;
   }
 
   .header--show-on-mobile {
