@@ -6,7 +6,7 @@ import { BrandNewSlider } from './components/BrandNewSlider';
 export const HomePage = () => {
   return (
     <main className="bg-background-color-base">
-      <h1 className="hidden">Product Catalog</h1>
+      <h1 className="sr-only">Product Catalog</h1>
       <h1
         className="text-text-color-base-white text-[30px] leading-[41px] 
         sm:text-5xl sm:leading-[56px] sm:px-6

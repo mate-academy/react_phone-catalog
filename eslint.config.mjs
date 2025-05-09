@@ -43,6 +43,7 @@ export default [
     },
     rules: {
       'prettier/prettier': 'error',
+      'max-len': ['warn', { code: 100, ignoreStrings: true, ignoreTemplateLiterals: true }],
     },
   },
   // Accessibility (jsx-a11y)
@@ -100,7 +101,13 @@ export default [
       'brace-style': ['error', '1tbs'],
       'arrow-body-style': 'off',
       'arrow-parens': 'off',
-      'no-param-reassign': ['error', { props: true }],
+      'no-param-reassign': [
+        'error', 
+        { 
+          props: true,
+          ignorePropertyModificationsFor: ['state'],
+         },
+        ],
       'padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },

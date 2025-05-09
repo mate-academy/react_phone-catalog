@@ -15,12 +15,11 @@ export const Buttons = ({
   cartButtonClassName = '',
   favButtonClassName = '',
 }: ButtonProps) => {
-
   const dispatch = useDispatch();
   const favourites = useSelector((state: RootState) => state.favourites.items);
   const cart = useSelector((state: RootState) => state.cart.items);
 
-  if (!product || !product.id) return null; 
+  if (!product || !product.id) return null;
 
   const isFavourites = favourites.some(item => item.id === product.id);
   const isCart = cart.some(item => item.id === product.id);
@@ -52,9 +51,7 @@ export const Buttons = ({
       >
         <img
           src={
-            isFavourites
-              ? 'icons/favourites-liked.svg'
-              : 'icons/favourites.svg'
+            isFavourites ? 'icons/favourites-liked.svg' : 'icons/favourites.svg'
           }
           alt="like"
         />

@@ -73,8 +73,7 @@ export interface CartItemProps {
   product: Product;
 }
 
-export type CartProduct = Product & {quantity: number}
-
+export type CartProduct = Product & { quantity: number };
 
 export interface IconWithCounterProps {
   iconSrc: string;
@@ -84,7 +83,7 @@ export interface IconWithCounterProps {
 }
 
 export interface ConfirmModalProps {
-  isOpen: boolean,
+  isOpen: boolean;
   onConfirm: () => void;
   onCancel: () => void;
 }

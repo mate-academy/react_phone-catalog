@@ -1,1 +1,1 @@
-export * from './IconWithCounter'
+export * from './IconWithCounter';

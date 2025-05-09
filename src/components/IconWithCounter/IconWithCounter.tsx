@@ -1,6 +1,10 @@
 import { IconWithCounterProps } from '@/types/Product';
 
-export const IconWithCounter  = ({ iconSrc, count, alt }: IconWithCounterProps) => {
+export const IconWithCounter = ({
+  iconSrc,
+  count,
+  alt,
+}: IconWithCounterProps) => {
   return (
     <div className="relative group-hover:scale-125 transition-all">
       <img src={iconSrc} alt={alt} />

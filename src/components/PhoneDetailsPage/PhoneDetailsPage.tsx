@@ -75,40 +75,47 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
       <Breadcrumbs currentName={product.name} />
 
       <div className="px-4 sm:px-6 md:px-8 xl:px-[152px]">
-        <Link to="/phones" className="flex items-center gap-x-1 pt-10 text-xs group hover:text-color-btn-purple ">
-          <img 
-            src="icons/arrow-left.svg" 
-            alt="back" 
-            className="block group-hover:hidden" 
+        <Link
+          to="/phones"
+          className="flex items-center gap-x-1 pt-10 text-xs group hover:text-color-btn-purple "
+        >
+          <img
+            src="icons/arrow-left.svg"
+            alt="back"
+            className="block group-hover:hidden"
           />
-          <img 
-            src="icons/arrow-left-purple.svg" 
-            alt="back-hover" 
+          <img
+            src="icons/arrow-left-purple.svg"
+            alt="back-hover"
             className="hidden group-hover:block"
           />
           <span>Back</span>
         </Link>
 
-        <h1 className="pt-4 font-extrabold text-[22px] tracking-normal leading-[140%]
-          sm:text-[32px] sm:leading-[41px] sm:tracking-negative-1">
+        <h1
+          className="pt-4 font-extrabold text-[22px] tracking-normal leading-[140%]
+          sm:text-[32px] sm:leading-[41px] sm:tracking-negative-1"
+        >
           {product.name}
         </h1>
 
         <div className="pt-10 flex flex-wrap lg:gap-16">
-
           <div className="flex sm:flex-row flex-col-reverse gap-4">
-            <div className="flex flex-row justify-center gap-2 sm:flex-col sm:justify-stretch 
-              lg:gap-4 lg:w-20 lg:h-20">
+            <div
+              className="flex flex-row justify-center gap-2 sm:flex-col sm:justify-stretch 
+              lg:gap-4 lg:w-20 lg:h-20"
+            >
               {product.images.map((img, i) => (
                 <img
                   key={i}
                   src={img}
                   alt={`Image ${i}`}
                   onClick={() => setSelectedImage(i)}
-                  className={`sm:w-[35px] sm:h-[35px] lg:w-[66px] lg:h-[66px] w-[48px] h-[48px] object-contain cursor-pointer transition-all hover:scale-105 ${selectedImage === i
-                    ? 'border-[1px] border-text-color-base-white'
-                    : 'border border-color-border'
-                    }`}
+                  className={`sm:w-[35px] sm:h-[35px] lg:w-[66px] lg:h-[66px] w-[48px] h-[48px] object-contain cursor-pointer transition-all hover:scale-105 ${
+                    selectedImage === i
+                      ? 'border-[1px] border-text-color-base-white'
+                      : 'border border-color-border'
+                  }`}
                 />
               ))}
             </div>
@@ -134,10 +141,7 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
                       key={color}
                       onClick={() => handleColorChange(color)}
                       className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200
-                      ${selectedColor === color
-                          ? 'border-text-color-base-white border-2'
-                          : 'border border-color-border hover:border-text-color-base-grey'
-                        }
+                      ${selectedColor === color ? 'border-text-color-base-white border-2' : 'border border-color-border hover:border-text-color-base-grey'}
                     `}
                       aria-label={`Color ${color}`}
                     >
@@ -168,10 +172,11 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
                       onClick={() => handleCapacityChange(capacity)}
                       className={`px-2 pt-[7px] pb-1 h-8 leading-[21px] border flex items-center text-sm font-semibold 
                       transition-all duration-200
-                      ${selectedCapacity === capacity
+                      ${
+                        selectedCapacity === capacity
                           ? 'bg-text-color-base-white text-background-color-base'
                           : 'border-background-color-btn-hover text-text-color-base-white bg-transparent hover:bg-text-color-base-white hover:text-background-color-base'
-                        }
+                      }
                     `}
                     >
                       <div className="flex gap-[3px]">
@@ -205,8 +210,8 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
             <div className="pt-4">
               <Buttons
                 cartButtonClassName="h-12"
-                favButtonClassName="w-12 h-12" 
-                product={product}  
+                favButtonClassName="w-12 h-12"
+                product={product}
               />
             </div>
 
@@ -288,7 +293,8 @@ export const PhoneDetailsPage = ({ product }: PhoneDetailsPageProps) => {
           cardProps={{ showDiscount: true }}
           className={'px-[0px] sm:px-[0px] xl:px-[0px]'}
           className_2={'gap-[8px] sm:gap-4'}
-          sortFunction={sortByModelNumber} />
+          sortFunction={sortByModelNumber}
+        />
       </div>
     </div>
   );

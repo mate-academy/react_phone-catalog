@@ -85,11 +85,7 @@ export const PicturesSlider = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-[14px] h-1 transition-colors ${
-              currentSlide === index
-                ? 'bg-text-color-base-white'
-                : 'bg-background-color-btn'
-            }`}
+            className={`w-[14px] h-1 transition-colors ${currentSlide === index ? 'bg-text-color-base-white' : 'bg-background-color-btn'}`}
           />
         ))}
       </div>

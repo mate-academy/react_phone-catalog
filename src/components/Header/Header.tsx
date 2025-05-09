@@ -54,7 +54,7 @@ export const Header = () => {
             to="/favourites"
             className="flex items-center justify-cente px-4 border-l md:px-6 border-color-border text-text-color-base-white group"
           >
-            <FavouriteIcon  />
+            <FavouriteIcon />
           </Link>
           <Link
             to="/cart"
