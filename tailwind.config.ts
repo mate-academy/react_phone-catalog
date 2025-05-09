@@ -30,6 +30,9 @@ const config: Config = {
         'negative-1': '-0.01em',
         '4pct': '0.04em',
       },
+      screens: {
+        'lg-1.5': '1160px',
+      },
     },
   },
   plugins: [],

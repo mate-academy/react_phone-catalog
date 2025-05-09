@@ -4,7 +4,8 @@ import { useMemo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store';
 import { setProducts } from '@/store/features/products/productsSlice';
-import data from '@/api/phones.json';
+import rawData from '@/api/phones.json';
+import { Product } from '@/types/Product';
 import { PhoneCard } from '@/components/PhoneCard';
 import { PhonesGridWithPaginationProps } from '@/types/Product';
 import { SkeletonCard } from './SkeletonCard';
@@ -21,12 +22,19 @@ export const PhonesGridWithPagination = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  const data: Omit<Product, 'quantity'>[] = rawData;
+
+  const processedData = data.map(item => ({
+    ...item,
+    quantity: 0,
+  }));
+
   useEffect(() => {
     setLoading(true);
     setError(false);
     const timer = setTimeout(() => {
       try {
-        dispatch(setProducts(data));
+        dispatch(setProducts(processedData));
         setLoading(false);
       } catch (err) {
         setError(true);

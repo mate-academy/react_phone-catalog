@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MobileMenu } from './MobileMenu';
-import { FavouriteIconWithCounter } from '../FavouriteIconWithCounter';
+import { FavouriteIcon } from '@/components/Favourites/FavouriteIcon';
+import { CartIcon } from '@/components/Cart/CartIcon';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,17 +54,13 @@ export const Header = () => {
             to="/favourites"
             className="flex items-center justify-cente px-4 border-l md:px-6 border-color-border text-text-color-base-white group"
           >
-            <FavouriteIconWithCounter />
+            <FavouriteIcon  />
           </Link>
           <Link
             to="/cart"
-            className="flex items-center justify-center pl-4 border-l md:pl-6 border-color-border text-text-color-base-white group"
+            className="flex group items-center justify-center pl-4 border-l md:pl-6 border-color-border text-text-color-base-white group"
           >
-            <img
-              src="icons/shopping_bag.svg"
-              alt="shopping_bag"
-              className="group-hover:scale-125 transition-all"
-            />
+            <CartIcon />
           </Link>
         </div>
         <div className="items-stretch h-full flex sm:hidden">

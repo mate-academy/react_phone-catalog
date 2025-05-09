@@ -8,7 +8,7 @@ export const Footer = () => {
     });
   };
   return (
-    <footer className="mt-20 bg-background-color-base border-color-border border-t px-6 md:px-8 xl:px-[152px]">
+    <footer className="mt-20 h-24 bg-background-color-base border-color-border border-t px-6 md:px-8 xl:px-[152px]">
       <div className="py-8 flex flex-col sm:flex-row justify-between text-text-color-base-white font-mont text-xs max-w-[1136px]">
         <Link to="/">
           <img

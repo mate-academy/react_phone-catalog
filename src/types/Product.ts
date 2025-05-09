@@ -16,6 +16,7 @@ export interface Product {
   color: string;
   colorsAvailable: string[];
   capacityAvailable: string[];
+  quantity: number;
 }
 
 export interface ProductsSliderProps {
@@ -68,3 +69,22 @@ export interface PhoneDetailsPageProps {
   product?: PhoneCardProps['product'];
 }
 
+export interface CartItemProps {
+  product: Product;
+}
+
+export type CartProduct = Product & {quantity: number}
+
+
+export interface IconWithCounterProps {
+  iconSrc: string;
+  count: number;
+  alt: string;
+  onClick?: () => void;
+}
+
+export interface ConfirmModalProps {
+  isOpen: boolean,
+  onConfirm: () => void;
+  onCancel: () => void;
+}
