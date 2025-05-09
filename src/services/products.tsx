@@ -6,7 +6,7 @@ import { getData } from './fetchClient';
 
 export const getAllProducts = () =>
   getData<Product[]>('products.json').catch(() => {
-    throw new Error('Fail to load products');
+    throw new Error('Fail to load products.');
   });
 
 export const getProductsByCategory = (category: string) =>
@@ -19,11 +19,16 @@ export const getProductsByIds = (ids: string[]) =>
     products.filter(product => ids.includes(product.itemId)),
   );
 
+export const getProductById = (id: string) =>
+  getAllProducts().then(
+    products => products.find(product => product.itemId === id) || null,
+  );
+
 // Detailed products
 
 export const getDetailedProductsByCategory = (category: string) =>
   getData<ProductDetailed[]>(`${category}.json`).catch(() => {
-    throw new Error(`Fail to load ${category} category`);
+    throw new Error(`Fail to load ${category} category.`);
   });
 
 export const getDetailedProductById = async (
@@ -36,7 +41,7 @@ export const getDetailedProductById = async (
   const existingProduct = productList.find(product => product.id === productId);
 
   if (!existingProduct) {
-    throw new Error(`Product with id "${productId}" not found in ${category}`);
+    throw new Error(`Product with id "${productId}" not found in ${category}.`);
   }
 
   return existingProduct;

@@ -11,7 +11,7 @@
 
     @include styles.typography(body);
 
-    &--is-short {
+    &--short {
       @include styles.typography(small);
     }
   }

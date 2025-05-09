@@ -5,6 +5,7 @@ import {
   getDetailedProductsByCategory,
   getProductsByCategory,
   getDetailedProductsByNamespaceId,
+  getProductById,
 } from '../../services/products';
 import { ProductDetailed } from '../../types/ProductDetailed';
 import { Gallery } from './components/Gallery/Gallery';
@@ -31,6 +32,7 @@ export const ProductDetailsPage = () => {
   const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
   const { setProductName } = useBreadcrumbs();
   const { setError } = useError();
+  const [basicProduct, setBasicProduct] = useState<Product | null>(null);
 
   useEffect(() => {
     const loadProductData = async () => {
@@ -39,6 +41,8 @@ export const ProductDetailsPage = () => {
       }
 
       startLoading();
+
+      const productFromServer = getProductById(itemId).then(setBasicProduct);
 
       const suggestionPromise = getProductsByCategory(category)
         .then(setCategoryProducts)
@@ -77,7 +81,11 @@ export const ProductDetailsPage = () => {
             setModelVariants([product]);
           });
 
-        await Promise.all([namespaceIdPromise, suggestionPromise]);
+        await Promise.all([
+          namespaceIdPromise,
+          suggestionPromise,
+          productFromServer,
+        ]);
       } catch (error) {
         setIsNotFoundProduct(true);
         setProductName(null);
@@ -113,12 +121,12 @@ export const ProductDetailsPage = () => {
           images={selectedProduct.images}
           mediaStyles={productDetailsPageStyles}
         />
-
         <Controls
           className={productDetailsPageStyles.details__controls}
           modelVariants={modelVariants}
           selectedProduct={selectedProduct}
           category={category}
+          numericId={basicProduct?.id || null}
         />
         <About
           className={productDetailsPageStyles.details__about}

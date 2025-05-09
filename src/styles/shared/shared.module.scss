@@ -2,7 +2,7 @@
 @use '../abstracts/sizes';
 @use '../abstracts/breakpoints';
 
-.is-active {
+.active {
   color: colors.get-color(primary);
 
   &::after {

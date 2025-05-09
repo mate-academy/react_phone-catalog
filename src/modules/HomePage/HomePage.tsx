@@ -8,17 +8,18 @@ import { useLoading } from '../../context/LoadingContext';
 import { getAllProducts } from '../../services/products';
 import { useError } from '../../context/ErrorContext';
 import { handleError } from '../../utils/handleError';
+import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const { startLoading, stopLoading } = useLoading();
-  const { setError } = useError();
+  const { error, setError } = useError();
 
   useEffect(() => {
     startLoading();
     getAllProducts()
       .then(setProducts)
-      .catch(error => setError(handleError(error, 'Failed to load products')))
+      .catch(err => setError(handleError(err, 'Failed to load products.')))
       .finally(() => stopLoading());
   }, [startLoading, stopLoading, setError]);
 
@@ -45,17 +46,23 @@ export const HomePage = () => {
         </h1>
         <Carousel />
       </div>
-      <SectionSlider
-        products={products}
-        title="Brand new models"
-        sortFn={sortByYear}
-      />
-      <Categories />
-      <SectionSlider
-        products={products}
-        title="HOT PRices"
-        sortFn={sortByHotPrices}
-      />
+      {error.message ? (
+        <ErrorFallback />
+      ) : (
+        <>
+          <SectionSlider
+            products={products}
+            title="Brand new models"
+            sortFn={sortByYear}
+          />
+          <Categories />
+          <SectionSlider
+            products={products}
+            title="Hot prices"
+            sortFn={sortByHotPrices}
+          />
+        </>
+      )}
     </section>
   );
 };

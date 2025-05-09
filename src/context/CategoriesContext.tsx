@@ -12,6 +12,9 @@ import {
   categoryDescriptionMap,
   categoryImageMap,
 } from '../helpers/categoriesHelper';
+import { useError } from './ErrorContext';
+import { useLoading } from './LoadingContext';
+import { fallbackCategories } from '../constants/categories';
 
 type CategoriesContextType = {
   categories: Category[];
@@ -27,31 +30,40 @@ type Props = {
 
 export const CategoriesProvider: React.FC<Props> = ({ children }) => {
   const [categories, setCategories] = useState<Category[]>([]);
+  const { setError } = useError();
+  const { startLoading, stopLoading } = useLoading();
 
   useEffect(() => {
-    getAllProducts().then(productsFromServer =>
-      setCategories(
-        productsFromServer.reduce<Category[]>((acc, product) => {
-          const { category } = product;
-          const existingCategory = acc.find(item => item.name === category);
+    startLoading();
+    getAllProducts()
+      .then(productsFromServer =>
+        setCategories(
+          productsFromServer.reduce<Category[]>((acc, product) => {
+            const { category } = product;
+            const existingCategory = acc.find(item => item.name === category);
 
-          if (existingCategory) {
-            existingCategory.modelsCount += 1;
-          } else {
-            acc.push({
-              name: category,
-              banner: categoryBannerMap[category],
-              image: categoryImageMap[category],
-              modelsCount: 1,
-              description: categoryDescriptionMap[category],
-            });
-          }
+            if (existingCategory) {
+              existingCategory.modelsCount += 1;
+            } else {
+              acc.push({
+                name: category,
+                banner: categoryBannerMap[category],
+                image: categoryImageMap[category],
+                modelsCount: 1,
+                description: categoryDescriptionMap[category],
+              });
+            }
 
-          return acc;
-        }, []),
-      ),
-    );
-  }, []);
+            return acc;
+          }, []),
+        ),
+      )
+      .catch(() => {
+        setError('Failed to load categories. Using default categories.');
+        setCategories(fallbackCategories);
+      })
+      .finally(() => stopLoading());
+  }, [setError, startLoading, stopLoading]);
 
   return (
     <CategoriesContext.Provider value={{ categories }}>

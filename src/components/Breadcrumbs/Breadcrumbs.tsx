@@ -1,4 +1,3 @@
-// import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 import breadcrumbsStyles from './Breadcrumbs.module.scss';
@@ -19,7 +18,6 @@ export const Breadcrumbs = () => {
     [categoriesNames],
   );
 
-  // console.log(breadcrumbs);
   if (
     breadcrumbs.length === 0 ||
     !breadcrumbs.some(breadcrumb => validPages.includes(breadcrumb.name))
@@ -58,7 +56,7 @@ export const Breadcrumbs = () => {
                 <span
                   className={classNames(
                     breadcrumbsStyles.breadcrumbs__link,
-                    breadcrumbsStyles['breadcrumbs__link--is-last'],
+                    breadcrumbsStyles['breadcrumbs__link--last'],
                   )}
                 >
                   {formattedName}

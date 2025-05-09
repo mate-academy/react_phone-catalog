@@ -16,7 +16,7 @@ export const ProductSpecs: FC<Props> = ({ specs, short = false }) => {
         .map(spec => (
           <li
             className={classNames(productSpecsStyles.productSpecs__item, {
-              [productSpecsStyles['productSpecs__item--is-short']]: short,
+              [productSpecsStyles['productSpecs__item--short']]: short,
             })}
             key={spec.label}
           >

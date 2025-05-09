@@ -6,6 +6,10 @@ import { CloseButton } from '../CloseButton';
 export const ErrorNotification = () => {
   const { error, clearError } = useError();
 
+  if (!error.message) {
+    return null;
+  }
+
   return (
     <div className={errorNotificationStyles.errorNotification}>
       <div className={errorNotificationStyles.errorNotification__header}>

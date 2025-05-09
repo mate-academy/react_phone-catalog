@@ -1,9 +1,19 @@
 @use '/src/styles';
 
 .controls {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  &__productId {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: styles.get-color(secondary);
+
+    @include styles.typography(small);
+  }
 
   &__colors,
   &__capacity {
@@ -22,7 +32,7 @@
 
   &__colorList {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     gap: 8px;
   }
 
@@ -62,6 +72,7 @@
 
   &__capacityList {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
   }
 

@@ -12,13 +12,13 @@ type Props = {
 export const AppProviders: React.FC<Props> = ({ children }) => {
   return (
     <ErrorProvider>
-      <CategoriesProvider>
-        <FavoritesProvider>
-          <CartProvider>
-            <LoadingProvider>{children}</LoadingProvider>
-          </CartProvider>
-        </FavoritesProvider>
-      </CategoriesProvider>
+      <LoadingProvider>
+        <CategoriesProvider>
+          <FavoritesProvider>
+            <CartProvider>{children}</CartProvider>
+          </FavoritesProvider>
+        </CategoriesProvider>
+      </LoadingProvider>
     </ErrorProvider>
   );
 };

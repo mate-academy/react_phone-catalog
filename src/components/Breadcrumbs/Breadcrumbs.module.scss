@@ -1,6 +1,8 @@
 @use '/src/styles';
 
 .breadcrumbs {
+  overflow: hidden;
+
   &__list {
     display: flex;
     align-items: center;
@@ -12,18 +14,23 @@
   }
 
   &__link {
+    overflow: hidden;
     display: flex;
     align-items: center;
+
     color: styles.get-color(primary);
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     @include styles.typography(small);
 
-    &--is-last {
+    &--last {
       color: styles.get-color(secondary);
     }
   }
 
   &__separator {
+    flex-shrink: 0;
     margin-inline: 8px;
   }
 }

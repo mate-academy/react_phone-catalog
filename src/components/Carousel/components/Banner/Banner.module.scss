@@ -97,12 +97,12 @@
 
     transition: border-color 0.3s ease;
 
+    @include styles.typography(button);
+
     @include styles.hover-styles {
       cursor: pointer;
       border-color: styles.get-color(elements);
     }
-
-    @include styles.typography(button);
 
     @include styles.media(tablet) {
       display: block;
@@ -120,9 +120,6 @@
   }
 
   &__image {
-    // max-width: 100%;
-    // max-height: 100%;
-    // width: auto;
     width: 100%;
     object-fit: contain;
   }

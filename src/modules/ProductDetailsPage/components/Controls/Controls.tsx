@@ -16,10 +16,17 @@ type Props = {
   modelVariants: ProductDetailed[];
   selectedProduct: ProductDetailed;
   category: string;
+  numericId: number | null;
 };
 
 export const Controls: React.FC<Props> = memo(
-  ({ className, modelVariants, selectedProduct, category }) => {
+  ({
+    className,
+    modelVariants,
+    selectedProduct,
+    category,
+    numericId: productId,
+  }) => {
     const {
       id,
       screen,
@@ -40,6 +47,7 @@ export const Controls: React.FC<Props> = memo(
 
     return (
       <section className={classNames(className, controlsStyles.controls)}>
+        <p className={controlsStyles.controls__productId}>ID: {productId}</p>
         <fieldset className={controlsStyles.controls__colors}>
           <legend className={controlsStyles.controls__colorsTitle}>
             Available colors

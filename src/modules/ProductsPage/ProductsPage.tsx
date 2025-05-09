@@ -21,6 +21,7 @@ import { CategoriesContext } from '../../context/CategoriesContext';
 import { NotFoundPage } from '../NotFoundPage';
 import { useLoading } from '../../context/LoadingContext';
 import { useError } from '../../context/ErrorContext';
+import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
 
 const SORT_OPTIONS: Option[] = [
   { label: 'Newest', value: null },
@@ -36,7 +37,7 @@ const PER_PAGE_OPTIONS: Option[] = [
 
 export const ProductPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const { setError } = useError();
+  const { error, setError } = useError();
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get('sort');
@@ -122,41 +123,47 @@ export const ProductPage = () => {
           className={productsPageStyles.productPage__subtitle}
         >{`${products.length} models`}</p>
       </div>
-      <div className={productsPageStyles.productPage__products}>
-        <div className={productsPageStyles.productPage__dropdowns}>
-          <Dropdown
-            options={SORT_OPTIONS}
-            label="Sort by"
-            defaultValue={sort}
-            onSelect={option =>
-              setSearchWith(
-                perPage ? { sort: option, page: 1 } : { sort: option },
-              )
-            }
-          />
-          <Dropdown
-            options={PER_PAGE_OPTIONS}
-            label="Items on page"
-            defaultValue={perPage}
-            onSelect={option =>
-              setSearchWith(
-                !option
-                  ? { page: null, perPage: option }
-                  : { page: 1, perPage: option },
-              )
-            }
-          />
-        </div>
-        <ProductList products={visibleProducts} />
-      </div>
-      {perPage && (
-        <Pagination
-          totalProducts={products.length}
-          perPage={perPage}
-          currentPage={currentPage}
-          maxVisiblePages={4}
-          onPageChange={page => setSearchWith({ page: page.toString() })}
-        />
+      {error.message && products.length === 0 ? (
+        <ErrorFallback />
+      ) : (
+        <>
+          <div className={productsPageStyles.productPage__products}>
+            <div className={productsPageStyles.productPage__dropdowns}>
+              <Dropdown
+                options={SORT_OPTIONS}
+                label="Sort by"
+                defaultValue={sort}
+                onSelect={option =>
+                  setSearchWith(
+                    perPage ? { sort: option, page: 1 } : { sort: option },
+                  )
+                }
+              />
+              <Dropdown
+                options={PER_PAGE_OPTIONS}
+                label="Items on page"
+                defaultValue={perPage}
+                onSelect={option =>
+                  setSearchWith(
+                    !option
+                      ? { page: null, perPage: option }
+                      : { page: 1, perPage: option },
+                  )
+                }
+              />
+            </div>
+            <ProductList products={visibleProducts} />
+          </div>
+          {perPage && (
+            <Pagination
+              totalProducts={products.length}
+              perPage={perPage}
+              currentPage={currentPage}
+              maxVisiblePages={4}
+              onPageChange={page => setSearchWith({ page: page.toString() })}
+            />
+          )}
+        </>
       )}
     </section>
   );
