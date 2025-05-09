@@ -1,0 +1,114 @@
+.productCard {
+  margin-bottom: 10px;
+  transition: box-shadow $effect-duration ease;
+
+  &:hover {
+    box-shadow: 0 4px 10 rgba(0, 0, 0, 0.2);
+  }
+
+  &__box {
+    border: 1px solid $elements-color;
+    padding: 32px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    aspect-ratio: 6 / 5;
+
+    @include hover(scale, 1.1);
+  }
+
+  &__name {
+    @extend %body-text;
+
+    margin-top: 24px;
+    color: $primary-color;
+    min-height: 40px;
+
+    @include on-tablet {
+      height: 60px;
+    }
+  }
+
+  &__price-box {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    @extend %h3;
+
+    font-weight: 800;
+    margin-top: 8px;
+
+    &--discount {
+      color: $secondary-color;
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+  }
+
+  &__details {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid $elements-color;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__key {
+    @extend %small-text;
+
+    color: $secondary-color;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__value {
+    color: $primary-color;
+  }
+
+  &__buttons {
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__add {
+    @extend %buttons;
+
+    background-color: $primary-color;
+    color: $white-color;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1;
+    border: none;
+    transition: all $effect-duration ease;
+    cursor: pointer;
+
+    &--selected {
+      border: 1px solid $elements-color;
+      color: $green-color;
+      background-color: transparent;
+    }
+
+    &:hover {
+      box-shadow: 0 0 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+
+  &__favourite {
+    border: 1px solid $icons-color;
+    height: 40px;
+    width: 40px;
+  }
+}
