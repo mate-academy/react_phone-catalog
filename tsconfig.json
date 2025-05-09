@@ -1,9 +1,6 @@
 {
   "extends": "@mate-academy/students-ts-config",
-  "include": [
-    "src",
-    "tailwind.config.ts"
-  ],
+  "include": ["src", "tailwind.config.ts"],
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"],
