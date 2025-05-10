@@ -11,12 +11,12 @@ import Footer from './components/Footer/Footer';
 
 const App = () => {
   return (
-    <>
+    <div className="page-wrapper">
       <header>
         <NavBar />
       </header>
 
-      <div className="container">
+      <div className="container main-content">
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -39,12 +39,12 @@ const App = () => {
         </main>
       </div>
 
-      <div className="container footer-container">
-        <footer>
+      <footer className="footer-container">
+        <div className="container">
           <Footer />
-        </footer>
-      </div>
-    </>
+        </div>
+      </footer>
+    </div>
   );
 };
 

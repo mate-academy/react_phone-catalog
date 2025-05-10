@@ -10,7 +10,6 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { lchown } from 'fs/promises';
 
 type ProductsCategoryType = 'phones' | 'tablets' | 'accessories';
 

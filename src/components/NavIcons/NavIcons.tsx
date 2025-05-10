@@ -5,6 +5,7 @@ import styles from './NavIcons.module.scss';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import { Product } from '../../types/product';
 
 interface NavIconsProps {
   isBurgerMenu?: boolean;
@@ -14,26 +15,42 @@ const NavIcons = ({ isBurgerMenu = false }: NavIconsProps) => {
   const IconsClass = isBurgerMenu ? styles.burger__icons : styles.navbar__icons;
   const IconClass = isBurgerMenu ? styles.burger__icon : styles.navbar__icon;
   const [favouriteLength, setFavouriteLength] = useState(0);
-  const [cartLength, setCartLength] = useState(0);
   const favouritesStore = useSelector(
     (state: RootState) => state.favouriteProducts.length,
   );
-  const cartStore = useSelector((state: RootState) => state.cartProducts);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const cartProducts = useSelector((state: RootState) => state.cartProducts);
 
   useEffect(() => {
     const favouritesRaw = localStorage.getItem('favourites');
-    const cartRaw = localStorage.getItem('cart');
     const favourites = favouritesRaw ? JSON.parse(favouritesRaw) || [] : null;
-    const cart = cartRaw ? JSON.parse(cartRaw) || [] : null;
-
-    if (cart) {
-      setCartLength(cart.length);
-    }
 
     if (favourites) {
       setFavouriteLength(favourites.length);
     }
-  }, [cartStore, favouritesStore]);
+  }, [favouritesStore]);
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart') || '[]';
+    const parsedCart = JSON.parse(storedCart);
+
+    if (storedCart) {
+      try {
+        const calculatedTotal = parsedCart.reduce(
+          (acc: number, item: Product) => {
+            if (item.quantity !== undefined) {
+              return acc + item.quantity;
+            } else {
+              return acc;
+            }
+          },
+          0,
+        );
+
+        setTotalQuantity(calculatedTotal);
+      } catch (e) {}
+    }
+  }, [cartProducts]);
 
   return (
     <>
@@ -76,7 +93,7 @@ const NavIcons = ({ isBurgerMenu = false }: NavIconsProps) => {
             <div
               className={`${styles.navbar__countBadge} ${styles['navbar__countBadge--cart']}`}
             >
-              {cartLength}
+              {totalQuantity}
             </div>
           </NavLink>
         </div>

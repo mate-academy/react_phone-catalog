@@ -17,13 +17,13 @@ const Footer = () => {
       </div>
       <nav className={styles.footer__navigation}>
         <ul className={styles.footer__navList}>
-          <a href="">
+          <a href="https://github.com">
             <li className={styles.footer__navItem}>GITHUB</li>
           </a>
-          <a href="">
+          <a href="mailto: test@gmail.com">
             <li className={styles.footer__navItem}>CONTACTS</li>
           </a>
-          <a href="">
+          <a href="https://github.com">
             <li className={styles.footer__navItem}>RIGHTS</li>
           </a>
         </ul>

@@ -24,6 +24,7 @@ const CartPage = () => {
     }, 0);
 
     setTotalPrice(calculatedTotal);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartProducts.map(item => item.quantity).join(','), cartProducts]);
 

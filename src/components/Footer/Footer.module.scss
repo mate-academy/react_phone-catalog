@@ -1,8 +1,19 @@
+// html, body {
+//   height: 100%; /* Ensure body takes full height */
+//   margin: 0; /* Remove default margin */
+//   position: relative; /* Important for the footer to be positioned relative to the page */
+// }
+
+
+
 .footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 
+  // position: absolute;
+  // bottom: 0;
   &__navigation {
     display: flex;
     justify-content: center;
@@ -15,6 +26,10 @@
     align-items: center;
     gap: 20px;
     margin: 0;
+
+    & a{
+      color: black;
+    }
   }
 
   &__backToTop {
