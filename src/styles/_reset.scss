@@ -1,0 +1,28 @@
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+ol,
+ul,
+input,
+textarea,
+button,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+input,
+textarea,
+button {
+  outline: none;
+}
