@@ -1,0 +1,112 @@
+@use '../../styles/utils' as utils;
+
+.product {
+  border: 1px solid transparent;
+  background-color: utils.$color-surface-1;
+  transition: border utils.$animation-duration ease;
+
+  &__content {
+    @extend %flex-column;
+
+    gap: 8px;
+  }
+
+  &__link {
+    display: block;
+    padding: 32px;
+    text-decoration: none;
+  }
+
+  &__img {
+    display: block;
+
+    width: 100%;
+    height: 200px;
+
+    object-fit: contain;
+
+    transition: transform utils.$animation-duration ease;
+  }
+
+  &__imgWrapper {
+    @extend %flex-center;
+
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    border: 1px solid utils.$color-icons;
+  }
+
+  &:hover .product__img {
+    transform: scale(1.05);
+  }
+
+  &__title {
+    font-family: utils.$font-main;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 21px;
+    color: utils.$color-white;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__fullPrice {
+    font-family: utils.$font-main;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 100%;
+    color: utils.$color-secondary;
+    text-decoration-line: line-through;
+  }
+
+  &__price {
+    font-family: utils.$font-main;
+    font-size: 22px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 140%;
+    color: utils.$color-white;
+  }
+
+  &__line {
+    width: 100%;
+    border: utils.$default-border;
+  }
+
+  &__info {
+    &Row {
+      @extend %flex-between-center;
+
+      padding: 8px 0;
+    }
+
+    &Title {
+      font-family: utils.$font-main;
+      font-size: 12px;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 15px;
+      color: utils.$color-secondary;
+    }
+
+    &Value {
+      font-family: utils.$font-main;
+      font-size: 12px;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 15px;
+      color: utils.$color-white;
+      text-align: right;
+    }
+  }
+}

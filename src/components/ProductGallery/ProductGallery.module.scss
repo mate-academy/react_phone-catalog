@@ -1,0 +1,94 @@
+@use '../../styles/utils' as utils;
+
+.gallery {
+  @extend %flex-between-center;
+
+  flex-direction: column;
+  gap: 16px;
+
+  @include utils.on-tablet {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__large {
+    max-width: 300px;
+    height: 300px;
+
+    @include utils.on-tablet {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    @include utils.on-desktop {
+      max-width: 500px;
+      height: 450px;
+    }
+  }
+
+  &__img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 1;
+    object-fit: contain;
+    background-color: utils.$color-black;
+
+    transition: opacity utils.$animation-duration ease-in-out;
+  }
+
+  &__list {
+    @extend %flex-center;
+
+    gap: 8px;
+
+    @include utils.on-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    cursor: pointer;
+
+    max-width: 80px;
+    max-height: 80px;
+    padding: 5px;
+    border: utils.$default-border;
+
+    list-style: none;
+
+    transition: border utils.$animation-duration ease;
+
+    &:not(.gallery__item_active):hover {
+      border: 1px solid utils.$color-secondary;
+    }
+
+    @include utils.on-tablet {
+      width: 50px;
+      height: 50px;
+    }
+
+    @include utils.on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__item_active {
+    border: 1px solid utils.$color-white;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity utils.$animation-duration ease-in-out;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transition: opacity utils.$animation-duration ease-in-out;
+  }
+}

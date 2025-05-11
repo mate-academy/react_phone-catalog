@@ -1,0 +1,77 @@
+@use '../../../styles/utils' as utils;
+
+.total {
+
+  @extend %flex-column;
+
+  gap: 16px;
+  align-items: center;
+  padding: 24px;
+  border: utils.$default-border;
+
+  &__priceWrapper {
+    width: 100%;
+    padding-bottom: 16px;
+    border-bottom: utils.$default-border;
+    text-align: center;
+  }
+
+  &__price {
+    font-family: utils.$font-main;
+    font-size: 32px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 41px;
+    color: utils.$color-white;
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+
+  &__text {
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 21px;
+    color: utils.$color-secondary;
+    text-align: center;
+  }
+
+  &__checkout {
+    cursor: pointer;
+
+    width: 100%;
+    padding: 10px;
+    border: none;
+
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 21px;
+    color: utils.$color-white;
+
+    appearance: none;
+    background-color: utils.$color-accent;
+
+    transition: background-color utils.$animation-duration;
+
+    &:hover {
+      background-color: utils.$color-accent-hover;
+    }
+  }
+
+  @include utils.on-desktop {
+    width: 30%;
+    height: max-content;
+  }
+}
+
+.checkoutTitle {
+  font-family: utils.$font-main;
+  font-size: 24px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 32px;
+  color: utils.$color-white;
+}
