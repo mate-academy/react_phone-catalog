@@ -1,6 +1,11 @@
 @use '../../styles/utils' as utils;
 
-.notFound {
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   padding: 40px 0;
 
   &__title {
@@ -15,19 +20,17 @@
     text-align: center;
   }
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    align-items: center;
-    justify-content: center;
+  &__img {
+    width: 100%;
+    max-width: 500px;
   }
 
   &__btn {
     cursor: pointer;
 
-    width: 30%;
+    width: max-content;
     height: 40px;
+    padding: 0 24px;
     border: none;
     border-radius: 15px;
 
@@ -47,9 +50,5 @@
     &:hover {
       background-color: utils.$color-accent-hover;
     }
-  }
-
-  &__img {
-    width: 80%;
   }
 }

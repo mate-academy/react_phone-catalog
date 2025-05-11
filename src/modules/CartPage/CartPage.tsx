@@ -9,6 +9,7 @@ import { Loading } from '../../shared/Loading';
 import { removeProduct, increment, decrement } from '../../services/cart';
 import { CartItem } from './CartItem';
 import { CartTotal } from './CartTotal';
+import { ErrorPage } from '../ErrorPage';
 
 export const CartPage: React.FC = () => {
   const { products, error, isLoading } = useProducts();
@@ -20,6 +21,10 @@ export const CartPage: React.FC = () => {
   const cart: { id: string; quantity: number }[] = useSelector(
     (state: RootState) => state.cart,
   );
+
+  const totalQuantity = cart.reduce((acc, item) => {
+    return acc + item.quantity;
+  }, 0);
 
   const productsInCart = products
     ? products.filter(product => cart.some(item => item.id === product.itemId))
@@ -51,16 +56,7 @@ export const CartPage: React.FC = () => {
   }, 0);
 
   if (error) {
-    return (
-      <main>
-        <div className={'container'}>
-          <h1 style={{ color: 'red', textAlign: 'center', marginTop: '32px' }}>
-            Something went wrong
-          </h1>
-          <img src="img/error.png" alt="Error" />
-        </div>
-      </main>
-    );
+    return <ErrorPage />;
   }
 
   if (isLoading) {
@@ -75,7 +71,14 @@ export const CartPage: React.FC = () => {
           <h1 className={styles.cart__title}>Cart</h1>
 
           {productsInCart.length === 0 && (
-            <h2 className={styles.cart__empty}>Cart is empty</h2>
+            <div className={styles.cart__empty}>
+              <h2 className={styles.cart__emptyTitle}>Cart is empty</h2>
+              <img
+                className={styles.cart__emptyImg}
+                src="/img/cart-is-empty.png"
+                alt="Cart is empty"
+              />
+            </div>
           )}
           <div className={styles.cart__content}>
             <div className={styles.cart__products}>
@@ -98,7 +101,10 @@ export const CartPage: React.FC = () => {
               })}
             </div>
             {productsInCart.length > 0 && (
-              <CartTotal totalPrice={totalPrice} cart={cart} />
+              <CartTotal
+                totalPrice={totalPrice}
+                totalQuantity={totalQuantity}
+              />
             )}
           </div>
         </div>

@@ -1,6 +1,6 @@
 @use '../../styles/utils' as utils;
 
-.tablets {
+.products {
   padding: 24px 0 64px;
 
   @include utils.on-desktop {
@@ -19,7 +19,7 @@
     letter-spacing: -0.01em;
   }
 
-  &__subtitle {
+  &__count {
     display: block;
 
     margin-bottom: 32px;
@@ -36,7 +36,7 @@
     }
   }
 
-  &__content {
+  &__list {
     display: grid;
     grid-template-columns: repeat(1fr);
     gap: 40px;
@@ -54,4 +54,19 @@
       grid-template-columns: repeat(4, 1fr);
     }
   }
+}
+
+.phones__select {
+  max-width: 150px;
+  margin-bottom: 32px;
+
+  font-family: utils.$font-main;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 24px;
+}
+
+.custom-select__menu {
+  background: red;
 }

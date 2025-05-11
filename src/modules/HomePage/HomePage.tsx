@@ -4,21 +4,13 @@ import { Category } from '../../components/Category';
 import { useProducts } from '../../contexts/ProductsContext';
 import { Loading } from '../../shared/Loading';
 import { ProductsSlider } from '../../shared/ProductsSlider';
+import { ErrorPage } from '../ErrorPage';
 
 export const HomePage: React.FC = () => {
   const { products, error, isLoading } = useProducts();
 
   if (error) {
-    return (
-      <main>
-        <div className={'container'}>
-          <h1 style={{ color: 'red', textAlign: 'center', marginTop: '32px' }}>
-            Something went wrong
-          </h1>
-          <img src="img/error.png" alt="Error" />
-        </div>
-      </main>
-    );
+    return <ErrorPage />;
   }
 
   const hotPrices = products

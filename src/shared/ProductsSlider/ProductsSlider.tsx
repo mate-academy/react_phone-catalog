@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
@@ -15,7 +15,6 @@ type Props = {
   title: string;
   products: ProductType[];
   fullPriceActive?: boolean;
-  sectionClassName?: string;
 };
 
 export const ProductsSlider: React.FC<Props> = ({
@@ -25,6 +24,14 @@ export const ProductsSlider: React.FC<Props> = ({
 }) => {
   const [isTablet, setIsTablet] = useState(window.innerWidth >= 640);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+
+  const uniqueId = useMemo(
+    () => Math.random().toString(36).substring(2, 9),
+    [],
+  );
+
+  const prevBtnId = `prev-${uniqueId}`;
+  const nextBtnId = `next-${uniqueId}`;
 
   useEffect(() => {
     const handleResize = () => {
@@ -43,10 +50,10 @@ export const ProductsSlider: React.FC<Props> = ({
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
           <div className={styles.slider__controls}>
-            <button className={styles.slider__controlsPrev}>
+            <button id={prevBtnId} className={styles.slider__controlsPrev}>
               <span />
             </button>
-            <button className={styles.slider__controlsNext}>
+            <button id={nextBtnId} className={styles.slider__controlsNext}>
               <span />
             </button>
           </div>
@@ -56,15 +63,11 @@ export const ProductsSlider: React.FC<Props> = ({
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             slidesPerView={isDesktop ? 4 : isTablet ? 2 : 1}
-            navigation={{
-              nextEl: `.${styles.slider__controlsNext}`,
-              prevEl: `.${styles.slider__controlsPrev}`,
-            }}
-            pagination={{
-              clickable: true,
-              el: `.${styles.slider__pagination}`,
-            }}
             spaceBetween={10}
+            navigation={{
+              nextEl: `#${nextBtnId}`,
+              prevEl: `#${prevBtnId}`,
+            }}
           >
             {products.map(product => (
               <SwiperSlide key={product.id} className={styles.slider__slide}>

@@ -33,7 +33,7 @@ export const Slider: React.FC = () => {
             prevEl: `.${styles.slider__controlsPrev}`,
           }}
           pagination={{ clickable: true, el: `.${styles.slider__pagination}` }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          //autoplay={{ delay: 5000, disableOnInteraction: false }}
           spaceBetween={10}
           loop
         >
@@ -50,7 +50,7 @@ export const Slider: React.FC = () => {
                 />
                 <img
                   className={styles.slider__img}
-                  src={`img/slider/slide-${num}-${isDesktop ? 'desktop' : 'mobile'}.jpg`}
+                  src={`img/slider/slide-${num}-${isDesktop ? 'desktop' : 'mobile'}.png`}
                   alt={`Slide ${num}`}
                 />
               </picture>

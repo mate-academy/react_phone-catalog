@@ -3,13 +3,11 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Header } from './shared/Header';
 import { Footer } from './shared/Footer';
 import { HomePage } from './modules/HomePage';
-import { PhonesPage } from './modules/PhonesPage/PhonesPage';
-import { TabletsPage } from './modules/TabletsPage';
-import { AccessoriesPage } from './modules/AccessoriesPage';
+import { CategoryPage } from './modules/CategoryPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { useGetAllProductsQuery } from './services/products';
 import { ProductsProvider } from './contexts/ProductsContext';
-import { NotFound } from './shared/NotFound';
+import { NotFound } from './modules/NotFound';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
 
@@ -24,13 +22,24 @@ export const App: React.FC = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
 
-          <Route path="/phones" element={<PhonesPage />} />
+          <Route
+            path="/phones"
+            element={<CategoryPage category="phones" title="Mobile phones" />}
+          />
           <Route path="/phones/:id" element={<ProductDetailsPage />} />
 
-          <Route path="/tablets" element={<TabletsPage />} />
+          <Route
+            path="/tablets"
+            element={<CategoryPage category="tablets" title="Tablets" />}
+          />
           <Route path="/tablets/:id" element={<ProductDetailsPage />} />
 
-          <Route path="/accessories" element={<AccessoriesPage />} />
+          <Route
+            path="/accessories"
+            element={
+              <CategoryPage category="accessories" title="Accessories" />
+            }
+          />
           <Route path="/accessories/:id" element={<ProductDetailsPage />} />
 
           <Route path="/favorites" element={<FavoritesPage />} />

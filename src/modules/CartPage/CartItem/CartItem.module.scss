@@ -57,7 +57,7 @@
       width: 16px;
       height: 16px;
 
-      background-image: url('./img/icons/close.svg');
+      background-image: url('/img/icons/close.svg');
       background-size: cover;
     }
 
@@ -144,11 +144,11 @@
   }
 
   &__quantityIncrement::after {
-    background-image: url('./img/icons/plus.svg');
+    background-image: url('/img/icons/plus.svg');
   }
 
   &__quantityDecrement::after {
-    background-image: url('./img/icons/minus.svg');
+    background-image: url('/img/icons/minus.svg');
   }
 
   &__quantityValue {

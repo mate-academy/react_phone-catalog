@@ -10,10 +10,10 @@ const MySwal = withReactContent(Swal);
 
 interface Props {
   totalPrice: number;
-  cart: { id: string; quantity: number }[];
+  totalQuantity: number;
 }
 
-export const CartTotal: React.FC<Props> = ({ totalPrice, cart }) => {
+export const CartTotal: React.FC<Props> = ({ totalPrice, totalQuantity }) => {
   const dispatch = useDispatch();
   const handleCheckout = () => {
     MySwal.fire({
@@ -46,7 +46,7 @@ export const CartTotal: React.FC<Props> = ({ totalPrice, cart }) => {
       <div className={styles.total__priceWrapper}>
         <h2 className={styles.total__price}>${totalPrice}</h2>
         <span className={styles.total__text}>
-          Total for {cart.length} items
+          Total for {totalQuantity} items
         </span>
       </div>
       <button className={styles.total__checkout} onClick={handleCheckout}>

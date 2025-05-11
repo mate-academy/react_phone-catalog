@@ -17,8 +17,8 @@
   }
 
   &__content {
-    display: flex;
-    flex-direction: column;
+    @extend %flex-column;
+
     gap: 32px;
     width: 100%;
 
@@ -28,8 +28,8 @@
   }
 
   &__products {
-    display: flex;
-    flex-direction: column;
+    @extend %flex-column;
+
     gap: 32px;
     align-items: center;
 
@@ -39,6 +39,18 @@
   }
 
   &__empty {
+    @extend %flex-column;
+
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__emptyTitle {
     font-family: utils.$font-main;
     font-size: 32px;
     font-weight: 600;
@@ -46,5 +58,10 @@
     line-height: 24px;
     color: utils.$color-secondary;
     text-align: left;
+  }
+
+  &__emptyImg {
+    width: 100%;
+    max-width: 300px;
   }
 }

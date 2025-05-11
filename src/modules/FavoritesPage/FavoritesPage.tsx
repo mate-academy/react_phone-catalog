@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useProducts } from '../../contexts/ProductsContext';
 import { Loading } from '../../shared/Loading';
 import { RootState } from '../../store/type';
+import { ErrorPage } from '../ErrorPage';
 
 export const FavoritesPage: React.FC = () => {
   const { products, error, isLoading } = useProducts();
@@ -24,16 +25,7 @@ export const FavoritesPage: React.FC = () => {
       : [];
 
   if (error) {
-    return (
-      <main>
-        <div className={'container'}>
-          <h1 style={{ color: 'red', textAlign: 'center', marginTop: '32px' }}>
-            Something went wrong
-          </h1>
-          <img src="img/error.png" alt="Error" />
-        </div>
-      </main>
-    );
+    return <ErrorPage />;
   }
 
   if (isLoading) {

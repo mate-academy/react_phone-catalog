@@ -71,9 +71,11 @@ export const Header: React.FC = () => {
     (state: RootState) => state.favorites,
   );
 
-  const cart: string[] = useSelector((state: RootState) => state.cart);
+  const cart: { id: string; quantity: number }[] = useSelector(
+    (state: RootState) => state.cart,
+  );
 
-  const cartCount = cart.length;
+  const cartCount = cart.reduce((acc, item) => acc + item?.quantity, 0);
   const favoritesCount = favoritesIds.length;
 
   return (

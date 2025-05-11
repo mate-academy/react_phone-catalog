@@ -9,11 +9,13 @@ import ProductInfo from '../../shared/Product/ProductInfo';
 import { useProducts } from '../../contexts/ProductsContext';
 import { ProductType } from '../../types/ProductType';
 import { Loading } from '../../shared/Loading';
-import { NotFound } from '../../shared/NotFound';
+import { NotFound } from '../NotFound';
 import { ProductsSlider } from '../../shared/ProductsSlider';
+import { ErrorPage } from '../ErrorPage';
 
 export const ProductDetailsPage: React.FC = () => {
   const { products, error, isLoading } = useProducts();
+  const [localError, setLocalError] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -48,6 +50,7 @@ export const ProductDetailsPage: React.FC = () => {
       } catch (err) {
         // eslint-disable-next-line no-console
         console.error(err);
+        setLocalError(true);
       } finally {
         setLocalLoading(false);
       }
@@ -74,17 +77,8 @@ export const ProductDetailsPage: React.FC = () => {
     return <Loading />;
   }
 
-  if (error) {
-    return (
-      <main>
-        <div className={'container'}>
-          <h1 style={{ color: 'red', textAlign: 'center', marginTop: '32px' }}>
-            Something went wrong
-          </h1>
-          <img src="img/error.png" alt="Error" />
-        </div>
-      </main>
-    );
+  if (error || localError) {
+    return <ErrorPage />;
   }
 
   if (!product) {
