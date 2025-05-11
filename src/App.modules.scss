@@ -1,0 +1,22 @@
+@use '../node_modules/normalize.css/normalize.css';
+@use './modules/shared/utils/variables' as *;
+
+@font-face {
+  font-family: Mount;
+    src:  url('../public/fonts/Mont-Regular.otf'),
+          url('../public/fonts/Mont-SemiBold.otf'),
+          url('../public/fonts/Mont-Bold.otf');
+    font-display: swap;
+
+}
+
+
+html {
+  font-family: Mount, Arial, Helvetica, sans-serif;
+  font-size: $base-font-size;
+  align-items: center;
+}
+
+.main {
+  width: 100%;
+}

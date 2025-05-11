@@ -1,0 +1,92 @@
+@use '../../utils/variables' as *;
+
+.card {
+  border: 1px solid #E2E6E9;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  justify-content: center;
+
+  &__image {
+      object-fit: contain;
+      max-width: 100%;
+      height: auto;
+      display: block;
+
+    }
+
+  &__title {
+      padding-top: 1.5rem;
+      font-size: 0.88rem;
+      text-decoration: none;
+      color: $black-color;
+    }
+
+  &__price {
+    display: inline-flex;
+    width: 6.75rem;
+    height: 1.93rem;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+
+    &-current {
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      font-size: 1.37rem;
+      margin: 0;
+      color: $black-color;
+    }
+
+    &-before {
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-weight: 400;
+      font-size: 1.37rem;
+      text-decoration: line-through;
+      margin: 0;
+      color: $gray-color;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      justify-self: center;
+      background-color: $gray-light-color;
+      width: 80%;
+      height: 0.06rem;
+
+    }
+  }
+
+  &__specifications {
+
+    &-item {
+      padding: 0.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &-title {
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0%;
+      color: $gray-color;
+    }
+
+    &-params {
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0%;
+      color: $black-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+}

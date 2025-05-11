@@ -1,0 +1,9 @@
+@use '../../utils/variables' as *;
+
+button {
+  background-color: $black-color;
+  height: 2.5rem;
+  color: $white-color;
+  border: none;
+  width: 80%;
+}
