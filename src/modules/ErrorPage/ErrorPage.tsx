@@ -13,7 +13,11 @@ export const ErrorPage: React.FC = () => {
           <button className={styles.error__btn} onClick={() => navigate('/')}>
             Go Home
           </button>
-          <img className={styles.error__img} src="img/error.png" alt="Error" />
+          <img
+            className={styles.error__img}
+            src="./img/error.png"
+            alt="Error"
+          />
         </div>
       </div>
     </main>

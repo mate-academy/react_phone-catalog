@@ -23,9 +23,8 @@ export const NotFound: React.FC<Props> = ({ title }) => {
             </button>
             <img
               className={styles.notFound__img}
-              width={'100%'}
               src="./img/product-not-found.png"
-              alt=""
+              alt="Product not found"
             />
           </div>
         </div>
