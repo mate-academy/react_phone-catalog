@@ -26,7 +26,7 @@ export const Filter: React.FC = () => {
             >
               <option value="newest">Newest</option>
               <option value="alphabetically">Alphabetically</option>
-              <option value="cheapest">Cheapest</option>
+              <option value="price">Cheapest</option>
             </select>
           </span>
         </p>

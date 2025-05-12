@@ -1,0 +1,33 @@
+.banner {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 3 / 1;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.active {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-arrow {
+  box-sizing: border-box;
+  width: 30px;
+  border: 2px solid #ccc;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+}
+

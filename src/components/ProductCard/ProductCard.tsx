@@ -1,7 +1,10 @@
 import './ProductCard.scss';
 import React from 'react';
-import { IoHeartOutline } from 'react-icons/io5';
-
+import { LuHeart } from 'react-icons/lu';
+import { useDispatch } from 'react-redux';
+//import { useHistory } from 'react-router-dom';
+import { addToCart } from '../../features/cart';
+import { addToFavorites } from '../../features/favorites';
 interface ProductCardProps {
   image: string;
   name: string;
@@ -12,6 +15,8 @@ interface ProductCardProps {
   ram: string;
 }
 
+
+
 export const ProductCard: React.FC<ProductCardProps> = ({
   image,
   name,
@@ -20,17 +25,34 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   screen,
   capacity,
   ram,
-}) => (
-  <div className="card custom-padding" data-cy="Movie">
-    <div className="card-image">
-      <figure className="image is-4by3">
-        <img data-cy="MovieImage" src={image} alt="Product photo" />
-      </figure>
-    </div>
+}) => {
+  const dispatch = useDispatch();
+  //const history = useHistory();
+  const product = { image, name, price, fullPrice, screen, capacity, ram };
 
-    <div className="card-content">
-      <div className="media-content ">
-        <h2 className="title is-8">{name}</h2>
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+console.log('Added to cart:', product);
+  };
+
+  const handleAddToFavorites = () => {
+    dispatch(addToFavorites(product));
+    //history.push("/favorites");
+    console.log('Added to favorites:', product);
+  };
+
+  return (
+    
+    <div className="product__card">
+      <div className="card-image">
+        {/* <figure className="image"> */}
+        <img src={image} alt="Product photo" />
+        {/* </figure> */}
+      </div>
+
+      <div className="card-content">
+        {/* <div className="media-content "> */}
+        <h2 className="title ">{name}</h2>
         <p className="product__price">
           <span className="new__price">${price}</span>
           <span className="old__price">${fullPrice}</span>
@@ -48,15 +70,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <span className="feature">RAM:</span>
           <span className="feature__info">{ram}</span>
         </p>
-      </div>
+        {/* </div> */}
 
-      <div className="buttons">
-        <button className="addButton">Add to cart</button>
-        <button className="icon__heart">
-          {/* <div className="icon__heart"> */}
-          <IoHeartOutline />
-        </button>
+        <div className="buttons">
+          <button
+            className="addButton"
+            onClick={handleAddToCart}
+          >
+            Add to cart
+          </button>
+          <button className=" icon icon__heart" onClick={handleAddToFavorites}>
+            <LuHeart />
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+}

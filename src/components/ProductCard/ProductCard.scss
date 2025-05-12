@@ -4,37 +4,36 @@
 .card-image img {
   object-fit: contain;
   height: 196px;
-  width: 208px;
+  //width: 208px;
+  display: block;
+  margin: 0 auto;
 }
 
-.card {
+.product__card {
   box-sizing: border-box;
-  height: 506px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
   border: 1px solid #E2E6E9;
   font-family: Montserrat, sans-serif;
   color: #313237;
+  padding: 32px;
+  min-width: 288px;
 }
 
-.custom-padding {
-  padding: 0 !important;
-  padding-inline: 32px !important ;
-  padding-block: 32px !important;  
+.card-content {
+ display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px; 
 }
-
-hr {
-margin-bottom: 16px;
-margin-top: 8px;
-}
-
 .title {
   font-weight: 600;
   font-size: 14px;
-  line-height: 1.5em;       
-  height: 3em;              
+  line-height: 1.5em;
+  height: 3em;
   overflow: hidden;
-  margin-bottom: 8px !important;
 }
 
 .new__price {
@@ -48,12 +47,12 @@ color: #89939A;
 font-weight: 600;
 font-size: 22px;
 text-decoration: line-through;
-
 }
 
 .product__price {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 8px;
 }
 
@@ -65,15 +64,14 @@ text-align: center;
 font-weight: 700;
 font-size: 12px;
 line-height: 100%;
-padding-bottom: 8px;
-margin-bottom: 8px;
 }
 
 .buttons {
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-text-align: center;
+gap: 2px;
+//text-align: center;
 align-items: center;
 }
 
@@ -84,7 +82,7 @@ color: #89939A;
 .addButton {
   text-decoration: none;
   display: flex;
-  width: 150px;
+  width: 80%;
   height: 40px;
   padding: auto;
   justify-content: center;

@@ -4,14 +4,80 @@ iframe {
   display: none;
 }
 
-.page {
-  display: grid;
-  grid-template: auto / 1fr 400px;
-  column-gap: 20px;
-  min-height: 100vh;
+// .page {
+  // display: grid;
+  // grid-template: auto / 1fr 400px;
+  // column-gap: 20px;
+  // min-height: 100vh;
+  // background-color: red;
+
+// }
+
+// .page-content {
+  // padding: 20px;
+// }
+
+
+.page > *:not(.navbar, .navbar-footer, .menu) {
+
+padding-inline: 0px;
+
+@media (min-width: 320px) and (max-width: 639px) {
+    padding-inline: 16px;
 }
 
-.page-content {
-  padding: 20px;
+@media (min-width: 640px) and (max-width: 1199px) {
+    padding-inline: 32px;
 }
+
+@media (min-width: 1200px) {
+    padding-inline: 152px;
+}
+}
+
+.page {
+
+  scroll-behavior: smooth;
+  transition-duration: 300ms;
+  overflow-x: hidden;
+
+  &:has(.menu:target) {
+    overflow: hidden;
+    .slideshow-container {
+      display: none;
+    }
+  }
+}
+
+body {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+}
+
+.section {
+margin-top: 15vh;
+min-height: 70vh;
+margin-bottom: 56px;
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  margin-bottom: 64px;  
+}
+
+@media (min-width: 640px){
+  margin-bottom: 80px;
+}
+
+}
+#home, #cart {
+  margin-top: 80px;
+}
+
+
 

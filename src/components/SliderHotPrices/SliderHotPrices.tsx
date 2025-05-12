@@ -30,6 +30,7 @@ export const SliderHotPrices: React.FC = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
+    
   };
 
   // ✅ Sort and slice (e.g. top 10 with biggest discounts)
@@ -57,29 +58,31 @@ export const SliderHotPrices: React.FC = () => {
   };
 
   return (
-    <div className="slick-container">
-      <div className="slider__heading">
-        <h2>Hot prices</h2>
-        <div className="arrows">
-          <button
-            className="arrowPrev"
-            onClick={() => handleArrowClick('prev')}
-          >
-            <IoIosArrowBack />
-          </button>
-          <button
-            className="arrowNext"
-            onClick={() => handleArrowClick('next')}
-          >
-            <IoIosArrowForward />
-          </button>
+    <section>
+      <div className="slick-container">
+        <div className="slider__heading">
+          <h2 className="text_above_slider">Hot prices</h2>
+          <div className="arrows">
+            <button
+              className="arrow arrowPrev"
+              onClick={() => handleArrowClick('prev')}
+            >
+              <IoIosArrowBack />
+            </button>
+            <button
+              className="arrow arrowNext"
+              onClick={() => handleArrowClick('next')}
+            >
+              <IoIosArrowForward />
+            </button>
+          </div>
         </div>
-      </div>
 
-      <Slider ref={sliderRef} {...settings}>
-        {productSlides}
-      </Slider>
-    </div>
+        <Slider ref={sliderRef} {...settings}>
+          {productSlides}
+        </Slider>
+      </div>
+    </section>
   );
 };
 

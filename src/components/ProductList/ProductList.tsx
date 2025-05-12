@@ -37,10 +37,10 @@ export const ProductList: React.FC<{ category: string }> = ({ category }) => {
     });
 
   return (
-    <div className="columns is-multiline">
+    <div className="cards__container">
       {sortedProducts.length > 0 ? (
         sortedProducts.map(product => (
-          <div className="column is-one-quarter" key={product.id}>
+          <div className="one__card" key={product.id}>
             <ProductCard {...product} />
           </div>
         ))
