@@ -3,5 +3,13 @@
 .addToCart {
   @include primary-button;
 
-  flex-grow: 1;
+  &.size40 {
+    height: 40px;
+  }
+
+  &.size48 {
+    height: 48px;
+  }
 }
+
+

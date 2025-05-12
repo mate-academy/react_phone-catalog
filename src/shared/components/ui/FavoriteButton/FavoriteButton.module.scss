@@ -1,10 +1,8 @@
 @use '/src/styles/globals.scss' as *;
 
-.favorite {
+.favoriteButton {
   @extend %flex-center;
 
-  width: 40px;
-  height: 40px;
   background-color: $color-surface2;
   border: none;
   transition: background-color 0.3s ease;
@@ -12,4 +10,21 @@
   &:hover {
     background-color: $color-icons;
   }
+
+  img {
+    display: block;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+  }
+}
+
+.size40 {
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.size48 {
+  min-width: 48px;
+  min-height: 48px;
 }

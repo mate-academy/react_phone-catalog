@@ -16,7 +16,7 @@
 }
 
 @mixin hover-text($color) {
-  transition: color 0.5s ease;
+  transition: color 0.3s ease;
 
   &:hover {
     color: $color;
@@ -43,7 +43,7 @@
   @include apply-typography(buttons-desktop);
   @extend %flex-center;
 
-  height: 40px;
+  width: 100%;
   background-color: $color-accent;
   border: none;
 

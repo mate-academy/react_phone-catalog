@@ -7,7 +7,7 @@ body {
   padding: 0;
 }
 
-ul {
+ul, li {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -29,4 +29,18 @@ button {
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-inline-size: auto;
+}
+
+legend {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
 }

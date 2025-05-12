@@ -1,6 +1,5 @@
 @use './globals.scss' as *;
 @use './globals/reset' as *;
-@import 'normalize.css';
 
 body {
   position: relative;
@@ -10,8 +9,7 @@ body {
   font-family: Mont, sans-serif;
   color: $color-white;
 
-  // background-color: $color-black;
-  background-color:grey;
+  background-color: $color-black;
 }
 
 a {
@@ -44,10 +42,3 @@ a:focus {
     grid-template-rows: 48px 1fr auto;
   }
 }
-
-// .container {
-//   width: 100%;
-//   max-width: 1200px;
-//   margin: 0 auto;
-//   padding: 0 16px;
-// }
