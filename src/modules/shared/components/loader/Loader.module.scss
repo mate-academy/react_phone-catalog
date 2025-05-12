@@ -1,0 +1,37 @@
+@import '../../../../styles/styles';
+
+$loader-size: 50px;
+$loader-color: $accent;
+$loader-thickness: 5px;
+$animation-speed: 1s;
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.spinner {
+  width: $loader-size;
+  height: $loader-size;
+  border: $loader-thickness solid $loader-color;
+  border-color: $loader-color transparent transparent transparent;
+
+  border-style: solid;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+
+  animation: spin $animation-speed linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

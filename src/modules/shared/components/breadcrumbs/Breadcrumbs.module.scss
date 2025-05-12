@@ -1,0 +1,47 @@
+@import '../../../../styles/styles';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0;
+  height: 16px;
+
+  @include on-tablet {
+    margin: 24px 0 40px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    height: 100%;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    transition: color $effect-duration;
+  }
+
+  &__image {
+    @include on-image-hover;
+
+    display: block;
+    align-self: center;
+  }
+
+  &__link {
+    color: $white;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+
+    &--last {
+      color: $secondary;
+    }
+
+    &:hover {
+      color: $accent;
+    }
+  }
+}
