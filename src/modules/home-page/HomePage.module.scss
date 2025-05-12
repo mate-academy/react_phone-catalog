@@ -1,0 +1,13 @@
+@import '../../styles/styles';
+
+.title {
+  padding: 16px 0 40px;
+}
+
+.subtitle {
+  max-width: 136px;
+
+  @include on-tablet {
+    max-width: unset;
+  }
+}
