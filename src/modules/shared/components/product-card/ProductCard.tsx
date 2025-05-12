@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/Product';
 import classNames from 'classnames';
 import styles from './ProductCard.module.scss';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { cartSlice } from '../../../../store/slices/cart';
 
 interface Props {
   product: Product;
@@ -13,15 +15,20 @@ export const ProductCard: React.FC<Props> = ({
   product,
   withFullPrice = false,
 }) => {
-  const cart: Product[] = [];
+  const dispatch = useAppDispatch();
+  const cart: Product[] = useAppSelector(state => state.cart);
   const favourite: Product[] = [];
   const isInCart = cart.find((item: Product) => item.id === product.id);
   const isFavourite = favourite.find((item: Product) => item.id === product.id);
 
   const handleAddToCart = () => {
     if (isInCart) {
+      dispatch(cartSlice.actions.removeFromCart(product));
+
       return;
     }
+
+    dispatch(cartSlice.actions.addToCart(product));
   };
 
   const handleAddToFavourite = () => {
@@ -81,7 +88,7 @@ export const ProductCard: React.FC<Props> = ({
           })}
           onClick={handleAddToCart}
         >
-          {isInCart ? 'Remove from cart' : 'Add to cart'}
+          {isInCart ? 'Added' : 'Add to cart'}
         </button>
         <div
           className={classNames(styles.card__addFavourite, {

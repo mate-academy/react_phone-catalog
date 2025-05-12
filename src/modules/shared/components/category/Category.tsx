@@ -27,7 +27,7 @@ export const Category: React.FC<Props> = ({ products }) => {
             <div className={styles.categories__background}>
               <Link to="phones">
                 <img
-                  src={'./img/category-phones.png'}
+                  src={'./img/category-phones-new.png'}
                   alt="phones"
                   className={styles.categories__image}
                 />

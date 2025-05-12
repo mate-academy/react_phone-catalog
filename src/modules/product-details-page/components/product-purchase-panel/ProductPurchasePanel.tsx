@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './ProductPurchasePanel.module.scss';
 import { Product, ProductData } from '../../../../types/types';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { cartSlice } from '../../../../store/slices/cart';
 
 interface Props {
   product: ProductData;
@@ -15,6 +17,13 @@ export const ProductPurchasePanel: React.FC<Props> = ({
   allProducts,
   categoryProducts,
 }) => {
+  const dispatch = useAppDispatch();
+  const productItem = allProducts.find(item => item.itemId === product.id);
+  const cart: Product[] = useAppSelector(state => state.cart);
+  const isInCart = cart.find(
+    (item: Product) => item.id === (productItem ? productItem.id : 0),
+  );
+  const isFavorite = false;
   const getColorLink = (color: string) => {
     const productToLink: ProductData | undefined = categoryProducts.find(
       (item: ProductData) =>
@@ -39,11 +48,24 @@ export const ProductPurchasePanel: React.FC<Props> = ({
   };
 
   const getItemId = () => {
-    return allProducts.find(item => item.itemId === product.id)?.id ?? 0;
+    return productItem?.id ?? 0;
   };
 
-  const isInCart = false;
-  const isFavorite = false;
+  const handleAddToCart = () => {
+    if (isInCart) {
+      dispatch(cartSlice.actions.removeFromCart(productItem));
+
+      return;
+    }
+
+    dispatch(cartSlice.actions.addToCart(productItem));
+  };
+
+  // const handleAddToFavourite = () => {
+  //   if (isFavorite) {
+  //     return;
+  //   }
+  // };
 
   return (
     <div className={styles.panel}>
@@ -61,7 +83,6 @@ export const ProductPurchasePanel: React.FC<Props> = ({
                   product.color.replace(/ /g, '-') === color,
               })}
               style={{ background: color }}
-              aria-label={`Select color ${color}`}
             >
               <div className={styles['panel__color-option-inner']}></div>
             </Link>
@@ -69,7 +90,7 @@ export const ProductPurchasePanel: React.FC<Props> = ({
         </div>
       </div>
 
-      <div className="divider"></div>
+      <div className={classNames('divider', styles.panel__divider)}></div>
 
       <div className={styles.panel__section}>
         <h4 className={styles['panel__section-title']}>Select capacity</h4>
@@ -89,7 +110,7 @@ export const ProductPurchasePanel: React.FC<Props> = ({
         </div>
       </div>
 
-      <div className="divider"></div>
+      <div className={classNames('divider', styles.panel__divider)}></div>
 
       <div className={styles['panel__price-section']}>
         <span className={styles['panel__price--discounted']}>
@@ -109,8 +130,9 @@ export const ProductPurchasePanel: React.FC<Props> = ({
               [styles['panel__action-button--selected']]: isInCart,
             },
           )}
+          onClick={handleAddToCart}
         >
-          {isInCart ? 'Remove from cart' : 'Add to cart'}
+          {isInCart ? 'Added' : 'Add to cart'}
         </button>
         <button
           className={classNames(

@@ -17,6 +17,7 @@ import {
   ProductPurchasePanel,
 } from './components/components';
 import { Loader } from '../shared/components/loader';
+import { Back } from '../shared/components/back';
 
 export const ProductDetailsPage = () => {
   const [mainImageIndex, setMainImageIndex] = useState(0);
@@ -27,8 +28,6 @@ export const ProductDetailsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const category = location.pathname.slice(1).split('/')[0];
-
-  const goBack = () => navigate('..', { replace: true });
 
   useEffect(() => {
     getAllProducts().then(setAllProducts);
@@ -63,10 +62,11 @@ export const ProductDetailsPage = () => {
     });
   }, [category, productId, navigate]);
 
-  const mayLikeProducts = allProducts.filter(
-    (item: Product) =>
-      product && item.color === product.color && item.itemId !== product.id,
-  );
+  const mayLikeProducts = allProducts
+    .map(x => ({ x, r: Math.random() }))
+    .sort((a, b) => a.r - b.r)
+    .map(a => a.x)
+    .slice(0, 16);
 
   if (!product) {
     return <Loader />;
@@ -75,19 +75,8 @@ export const ProductDetailsPage = () => {
   return (
     <main className={styles.details}>
       <Breadcrumbs />
-      <button
-        type="button"
-        className={styles['details__back-button']}
-        onClick={goBack}
-      >
-        <div className={styles['details__back-button-arrow']}>
-          <img src="./icons/arr_left.svg" alt="Arrow left" />
-        </div>
-        <span className={styles['details__back-button-text']}>Back</span>
-      </button>
-
+      <Back />
       <h2 className={styles['details__product-title']}>{product.name}</h2>
-
       <div className={styles['details__overview-section']}>
         <ProductImageGallery
           images={product.images}
@@ -109,7 +98,7 @@ export const ProductDetailsPage = () => {
       <h2 className={styles['details__suggestions-title']}>
         You may also like
       </h2>
-      <ProductsSlider products={mayLikeProducts} sortBy="year" />
+      <ProductsSlider products={mayLikeProducts} />
     </main>
   );
 };

@@ -6,6 +6,7 @@ import { HomePage } from './modules/home-page';
 import { ProductPage } from './modules/product-page';
 import { ProductDetailsPage } from './modules/product-details-page';
 import { NotFoundPage } from './modules/not-found-page';
+import { CartPage } from './modules/cart-page';
 
 export const Root = () => {
   return (
@@ -29,6 +30,7 @@ export const Root = () => {
               path="/accessories/:productId"
               element={<ProductDetailsPage />}
             ></Route>
+            <Route path="/cart" element={<CartPage />}></Route>
             <Route path="*" element={<NotFoundPage />}></Route>
           </Route>
         </Routes>

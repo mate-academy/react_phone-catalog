@@ -61,6 +61,10 @@
     box-sizing: border-box;
   }
 
+  &__divider {
+    margin: 24px 0;
+  }
+
   &__capacity-options {
     display: flex;
     gap: 8px;
@@ -141,7 +145,7 @@
       &:hover {
         background: $accent-hover;
       }
-      &.product-purchase-panel__action-button--selected {
+      &.panel__action-button--selected {
         background: $surface-2;
       }
     }
@@ -161,7 +165,7 @@
       &:hover {
         border-color: $icons;
       }
-      &.product-purchase-panel__action-button--selected {
+      &.panel__action-button--selected {
         border-color: $accent;
       }
     }

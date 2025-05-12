@@ -12,10 +12,10 @@ interface Props {
   products: Product[];
   showFullPrice?: boolean;
   navigationOffset?: number;
-  sortBy: keyof Product;
+  sortBy?: keyof Product;
 }
 
-const sortProducts = (products: Product[], sortBy: keyof Product) => {
+const sortProducts = (products: Product[], sortBy?: keyof Product) => {
   switch (sortBy) {
     case 'fullPrice':
     case 'year':

@@ -28,6 +28,13 @@
     }
   }
 
+  &__image {
+    height: 100%;
+    transform: translate(30%, 30%) scale(1.5);
+
+    @include on-image-hover;
+  }
+
   &__item {
     width: 100%;
 
@@ -35,14 +42,15 @@
       width: calc((100% - 32px) / 3);
     }
 
-    .categories__image {
-      height: 100%;
-      transform: translate(30%, 30%) scale(1.5);
-    }
-
     &:nth-child(1) {
       .categories__background {
         background: #6d6474;
+      }
+
+      .categories__image {
+        transform: translate(10%, 5%) scale(0.9);
+
+        @include on-image-hover;
       }
     }
 
@@ -58,7 +66,9 @@
       }
 
       .categories__image {
-        transform: translate(5%, 10%);
+        transform: translate(10%, 10%);
+
+        @include on-image-hover;
       }
     }
   }

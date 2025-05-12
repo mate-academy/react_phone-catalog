@@ -1,5 +1,3 @@
-import { Description } from './Description';
-
 export interface ProductData {
   id: string;
   category: string;
@@ -12,7 +10,10 @@ export interface ProductData {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: Description[];
+  description: {
+    title: string;
+    text: string[];
+  }[];
   screen: string;
   resolution: string;
   processor: string;
