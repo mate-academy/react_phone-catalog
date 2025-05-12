@@ -1,6 +1,7 @@
 @use '../styles/variables.scss' as *;
 
-.container {
+// Base container with common behaviors for buttons and links
+.containerSVG, .button {
   height: 100%;
   aspect-ratio: 1 / 1;
   display: flex;
@@ -15,7 +16,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 50% ;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px $elements solid;
@@ -23,16 +24,8 @@
 
   &:hover {
     &::after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1; // to make after on top of all elements
       border: 1px $primary solid;
+      z-index: 1; // to make after on top of all elements
     }
   }
 
@@ -40,10 +33,32 @@
     fill: $primary;
     aspect-ratio: 1 / 1;
   }
+}
 
-  &:disabled {
-    &__icon {
-      fill: $elements;
+.button {
+  width: 100%;
+
+  &::after {
+    border: 1px $placeholders solid;
+  }
+}
+
+.containerSVG__disabled { // for buttons disabled
+  pointer-events: none;  
+  cursor: not-allowed; 
+
+  &::after {
+    border: 1px $elements solid;
+  }
+
+  // Remove hover effect on disabled state
+  &:hover {
+    &::after {
+      border: 1px $elements solid; 
     }
+  }
+
+  &__icon {
+    fill: $elements;
   }
 }

@@ -2,10 +2,11 @@ $primary: #313237;
 $secondary: #89939a;
 $elements: #e2e6e9;
 $back-ground: white;
+$placeholders: #b4bdc3;
 $gap: 32px;
 $border: 1px;
 
-// header 
+// header
 $header-height: calc($gap * 2);
 $header-height-tablet: calc($gap * 1.5);
 $header-logo-height: 28px;
@@ -25,7 +26,7 @@ $header-bottom-height: calc($gap * 2);
 $header-bottom-padding-bottom: 2px;
 $header-bottom-button-after-height-hover: calc($border * 2);
 
-// aside 
+// aside
 $aside-height: calc(100vh - calc($gap * 2.5));
 
 // footer
@@ -40,6 +41,17 @@ $footer-back-gap: calc($gap / 2);
 
 // Product card
 $product-card-padding: $gap;
+$product-font-size: 32px;
+$product-list-gap: 16px;
+$product-list-padding-block: 24px;
+
+$product-list-padding-block-mobile: 22px;
+
+$home-component-gap: 80px;
+$home-component-gap-tablet: 64px;
+$home-component-gap-moblie: 56px;
+
+$product-control-buttons-gap: calc($gap / 2);
 
 /* Where gap constant ratio & where it was used:
 

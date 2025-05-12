@@ -2,7 +2,7 @@ import s from './SVG.module.scss';
 
 /* eslint-disable max-len */
 export const MenuSVG = () => (
-  <div className={s.container}>
+  <div className={s.containerSVG}>
     <svg
       width="16"
       height="16"

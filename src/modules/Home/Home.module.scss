@@ -1,14 +1,25 @@
 @use '../../styles/mixin.scss' as *;
+@use '../../styles/variables.scss' as *;
 
 .container {
   @include container;
 }
 
 .home {
-  height: 100vh; // for tests
+  height: min-content; // for tests
+
 
   display: flex;
   flex-direction: column;
+  gap: $home-component-gap;
+
+  @include on-tablet {
+    gap: $home-component-gap-tablet;
+  }
+
+  @include on-mobile {
+    gap: $home-component-gap-moblie;
+  }
 
   &__title {
     @include use-font(800); // should be on top

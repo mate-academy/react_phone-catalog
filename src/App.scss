@@ -32,3 +32,9 @@ body {
 .grid-container {
   @include grid;
 }
+
+button {
+  background-color: white;
+  border: none;
+  padding: 0;
+}

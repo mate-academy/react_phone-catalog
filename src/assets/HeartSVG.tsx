@@ -6,7 +6,7 @@ type Props = {
 
 /* eslint-disable max-len */
 export const HeartSVG: React.FC<Props> = ({ containerClass = '' }) => (
-  <div className={`${s.container} ${containerClass}`}>
+  <div className={`${s.containerSVG} ${containerClass}`}>
     <svg
       width="16"
       height="16"

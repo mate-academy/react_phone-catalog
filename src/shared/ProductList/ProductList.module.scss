@@ -1,5 +1,39 @@
 @use '../../styles/mixin.scss' as *;
+@use '../../styles/variables.scss' as *;
 
 .list {
   @include grid;
+  gap: $product-list-gap;
+  padding-block: $product-list-padding-block;
+}
+
+.products {
+  &__title {
+    color: $primary;
+
+    @include use-font(800);
+
+    font-size: $product-font-size;
+
+    @include on-mobile {
+      @include use-font(800);
+      font-size: $product-list-padding-block-mobile;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+
+    &__button {
+      width: 32px;
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: $product-control-buttons-gap;
+      
+    }
+  }
 }
