@@ -1,37 +1,79 @@
 .tablet-list {
   display: flex;
-  gap: 10px;
+  gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
+
+  &__boxSort {
+    display: flex;
+    gap: 16px;
+    justify-content: start;
+    padding: 40px 0px 0px 32px;
+  }
 }
 
-.tablet-card{
+.tablet-list_sortBy {
+  display: flex;
+  flex-direction: column;
+  color: #89939A;
+
+  &__select {
+    display: flex;
+    height: 40px;
+    width: 176px;
+    border: 1px solid;
+    border-color: #B4BDC3;
+  }
+}
+
+.tablet-list_itemPerPage {
+  display: flex;
+  flex-direction: column;
+  color: #89939A;
+
+  &__select {
+    display: flex;
+    height: 40px;
+    width: 176px;
+    border: 1px solid;
+    border-color: #B4BDC3;
+  }
+}
+
+.tablets-header {
+  display: flex;
+  font-size: 48px;
+  justify-content: start;
+  padding: 0px 0 8px 32px;
+  margin: 0;
+  color: #313237;
+}
+
+.tablets-available__title {
+  font-size: 14px;
+  color: #89939A;
+  font-weight: 600;
+  padding: 0px 0 0px 32px;
+  margin: 0;
+}
+
+.tablet-card {
   background: #fff;
   border-radius: 8px;
-  padding: 10px;
+  padding: 32px;
   margin: 20px;
   width: 200px;
   height: 100%;
   text-align: center;
   border: 1px solid #ccc;
+
+  & a {
+    text-decoration: none;
+    color: #333;
+  }
 }
 
-.tablet-info{
-  text-align: start;
-  font-size: 15px;
-  justify-content: space-between;
-}
-
-.tablet-cardname {
-  font-size: 15px;
-}
-
-.tabletcardprice {
-  font-size: 20px;
-}
-
-
-.tablet-image{
+.tablet-image {
   width: 50%;
   height: 50%;
   border-radius: 8px 8px 0 0;
@@ -42,12 +84,7 @@
   }
 }
 
-.tablet-card a{
-  text-decoration: none;
-  color: #333;
-}
-
-.tablet-card__detail{
+.tablet-card__detail {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -60,8 +97,61 @@
 }
 
 .tablet-card__actions {
+  align-items: center;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
-  margin-top: 10px;
+  position: relative;
+
+  &__btn-primary {
+    color: #FFFFFF;
+    background-color: #313237;
+    border: none;
+    width: 176px;
+    height: 40px;
+  }
+
+  &__btn-favorite {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.tablets_pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0px 0 80px 0;
+}
+
+.tablets_pagination_button {
+  padding: 6px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: #f0f0f0;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &.active {
+    font-weight: bold;
+    background-color: #313237;
+    color:#FFFFFF;
+    border: none;
+
+    &:hover {
+      background-color: #313237;
+    }
+  }
 }

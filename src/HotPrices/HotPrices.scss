@@ -1,172 +1,163 @@
-.hot-prices {
+.hotPrices {
   text-align: center;
   margin-top: 20px;
+  padding-bottom: 64px;
 
   &__title {
+    display: flex;
     font-size: 24px;
-    margin-bottom: 20px;
+    justify-content: start;
+    padding: 80px 0 24px 32px;
+    margin: 0;
   }
 }
 
-.phone-list {
+.hotPricesPhoneList{
   display: flex;
+  gap: 18px;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+
+  @media (max-width: 480px) {
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+  }
 }
 
-.phone-card {
+.hotPricesPhoneCard {
   background: #fff;
   border-radius: 8px;
-  padding: 10px;.brand-new-models {
-    text-align: center;
-    margin-top: 20px;
+  padding: 32px;
+  margin: 0;
+  width: 200px;
+  height: 100%;
+  text-align: center;
+  border: 1px solid #2e2323;
+  transition: transform 0.3s ease-in-out;
 
-    &__title {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-  }
-
-  .phonelist {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .phonecard {
-    background: #fff;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 20px;
-    width: 200px;
-    height: 100%;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
-
-  .phone-info{
-    text-align: start;
-    font-size: 15px;
-    justify-content: space-between;
-  }
-
-  .phone-cardname {
-    font-size: 15px;
-  }
-
-  .phonecardprice {
-    font-size: 20px;
-  }
-
-
-  .phone-cardimage{
-    width: 50%;
-    height: 50%;
-    border-radius: 8px 8px 0 0;
-    transition: transform 0.3s ease-in-out;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
-
-  .phonecard a {
-    text-decoration: none;
-    color: #333;
-  }
-
-  .phone-card__detail {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  &__name {
     font-size: 14px;
+    font-weight: 600;
     color: #363535;
   }
 
-  .phone-card__detail span {
-    white-space: nowrap;
+  & a {
+    text-decoration: none;
   }
 
-
-
-  &__name {
-    font-size: 15px;
-    margin: 10px 0;
-  }
-
-  &__price {
-    display: flex;
-    gap: 130px;
-    font-size: 16px;
-    align-items: center;
-
-    &--old {
-      text-decoration: line-through;
-      color: gray;
-      margin-right: 5px;
-    }
-
-    &--new {
-      color: red;
-      font-weight: bold;
-      margin-right: 120px;
-    }
-  }
-
-  &__capacity,
-  &__color {
-    font-size: 14px;
-    color: #666;
-  }
-
-  &__actions {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 10px;
+  @media (max-width: 480px) {
+    transition: none;
   }
 }
 
-.btn {
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+.hotPricesPhoneCard:hover {
+  transform: translateY(-10px);
+}
+
+.hotPricesPhoneCard__image {
+  width: 50%;
+  height: 50%;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.3s ease-in-out;
+
+  @media (max-width: 480px) {
+    transition: none;
+  }
+}
+
+.hotPricesPhoneCard__image:hover {
+  transform: scale(1.1);
+}
+
+.hotPricesPhoneCard__price--new {
+  font-size: 22px;
   font-weight: bold;
-
-  &-primary {
-    background: #1a1c1f;
-    color: white;
-  }
-
-  &-favorite {
-    background: transparent;
-    border: 1px solid #405870;
-    color: #1c2024;
-  }
+  color: #313237;
+  margin-right: 8px;
 }
 
-.pagination {
-  margin-top: 20px;
+.hotPricesPhoneCard__price--old {
+  font-size: 22px;
+  text-decoration: line-through;
+  color: #89939A;
+}
+
+
+.hotPricesPhoneCard__detail {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #363535;
+}
+
+.hotPricesPhoneCard__detail span {
+  white-space: nowrap;
+}
+
+button {
+  border: none;
+}
+
+.hotPricesPhoneCard__actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
   justify-content: center;
-  gap: 10px;
+  position: relative;
 
-  &__button {
-    padding: 10px 15px;
+  &__btn-primary {
+    color: #FFFFFF;
+    background-color: #313237;
     border: none;
-    background: #202429;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
+    width: 176px;
+    height: 40px;
+  }
 
-    &:disabled {
-      background: gray;
-      cursor: not-allowed;
-    }
+  &__btn-favorite {
+    width: 40px;
+    height: 40px;
   }
 }
 
+.hotPricesPhoneCard:hover {
+  transform: translateY(-10px);
+}
+
+.hotPricesPhoneList {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+
+  &.slide-left {
+    animation: slideLeft 0.5s ease-in-out;
+  }
+
+  &.slide-right {
+    animation: slideRight 0.5s ease-in-out;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

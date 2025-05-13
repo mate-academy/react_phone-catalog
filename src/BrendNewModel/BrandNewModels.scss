@@ -1,63 +1,78 @@
 .brand-new-models {
   text-align: center;
   margin-top: 20px;
+  padding-bottom: 64px;
 
   &__title {
+    display: flex;
     font-size: 24px;
-    margin-bottom: 20px;
+    justify-content: start;
+    padding: 80px 0 24px 32px;
+    margin: 0;
   }
 }
 
-.phonelist {
+.brand-new-models_phonelist{
   display: flex;
-  gap: 10px;
+  gap: 18px;
   justify-content: center;
   flex-wrap: wrap;
+
+  @media (max-width: 480px) {
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+  }
 }
 
-.phonecard {
+.brand-new-models_phone-card {
   background: #fff;
   border-radius: 8px;
-  padding: 10px;
-  margin: 20px;
+  padding: 32px;
+  margin: 0;
   width: 200px;
   height: 100%;
   text-align: center;
-  border: 1px solid #ccc;
+  border: 1px solid #2e2323;
+  transition: transform 0.3s ease-in-out;
+
+
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #363535;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+
+  @media (max-width: 480px) {
+    transition: none;
+  }
 }
 
-.phone-info{
-  text-align: start;
-  font-size: 15px;
-  justify-content: space-between;
+.brand-new-models_phone-card:hover {
+  transform: translateY(-10px);
 }
 
-.phone-cardname {
-  font-size: 15px;
-}
-
-.phonecardprice {
-  font-size: 20px;
-}
-
-
-.phone-cardimage{
+.brand-new-models_phone-card__image {
   width: 50%;
   height: 50%;
   border-radius: 8px 8px 0 0;
   transition: transform 0.3s ease-in-out;
 
-  &:hover {
-    transform: scale(1.1);
+  @media (max-width: 480px) {
+    transition: none;
   }
 }
 
-.phonecard a {
-  text-decoration: none;
-  color: #333;
+.brand-new-models_phone-card__image:hover {
+  transform: scale(1.1);
 }
 
-.phone-card__detail {
+
+.brand-new-models_phone-card__detail {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -65,6 +80,88 @@
   color: #363535;
 }
 
-.phone-card__detail span {
+.brand-new-models_phonecard__price {
+  color: #363535;
+}
+
+.brand-new-models_phone-card__detail span {
   white-space: nowrap;
 }
+
+.brand-new-models_phone-card__actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+
+  &__btn-primary {
+    color: #FFFFFF;
+    background-color: #313237;
+    border: none;
+    width: 176px;
+    height: 40px;
+  }
+
+  &__btn-favorite {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+.hotPricesPhoneCard:hover {
+  transform: translateY(-10px); /* Підйом картки в секції hotPrices */
+}
+
+.pagination {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    background-color: #313237;
+    border: none;
+    width: 50px;
+    height: 40px;
+  }
+}
+
+.brand-new-models_phonelist {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+
+  &.slide-left {
+    animation: slideLeft 0.5s ease-in-out;
+  }
+
+  &.slide-right {
+    animation: slideRight 0.5s ease-in-out;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+

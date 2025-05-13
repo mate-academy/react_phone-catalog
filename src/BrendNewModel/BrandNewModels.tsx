@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import '../BrendNewModel/BrandNewModels.scss';
-import { Phone } from '../Types/Types';
+import { Phone } from '../Types/BaseItem';
 import { useCartContext } from '../CartContext/useCartContext';
 import { Link } from 'react-router-dom';
 
-export const BrandNewModels: React.FC = () => {
+type BrandNewModelsProps = {
+  hideTitle?: boolean;
+};
+
+export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
+  hideTitle,
+}) => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [startIndex, setStartIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { addToCart, addToFavorites } = useCartContext();
-  const phonesPerPage = 4;
+  const [phonesPerPage, setPhonesPerPage] = useState(4);
 
   useEffect(() => {
     const fetchPhones = async () => {
@@ -38,15 +44,45 @@ export const BrandNewModels: React.FC = () => {
     fetchPhones();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setPhonesPerPage(1);
+      } else {
+        setPhonesPerPage(4);
+      }
+    };
+
+    handleResize(); // Викликаємо одразу при першому рендері
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const [direction, setDirection] = useState<'left' | 'right'>('right');
+  const [isAnimating, setIsAnimating] = useState(false);
+
   const handleNext = () => {
-    if (startIndex + phonesPerPage < phones.length) {
-      setStartIndex(startIndex + phonesPerPage);
+    if (startIndex + phonesPerPage < phones.length && !isAnimating) {
+      setIsAnimating(true);
+      setDirection('left');
+
+      setTimeout(() => {
+        setStartIndex((prev) => prev + phonesPerPage);
+        setIsAnimating(false);
+      }, 500); // тривалість анімації у ms
     }
   };
 
   const handlePrev = () => {
-    if (startIndex - phonesPerPage >= 0) {
-      setStartIndex(startIndex - phonesPerPage);
+    if (startIndex - phonesPerPage >= 0 && !isAnimating) {
+      setIsAnimating(true);
+      setDirection('right');
+
+      setTimeout(() => {
+        setStartIndex((prev) => prev - phonesPerPage);
+        setIsAnimating(false);
+      }, 500);
     }
   };
 
@@ -62,46 +98,54 @@ export const BrandNewModels: React.FC = () => {
 
   return (
     <div className="brand-new-models">
-      <h2 className="brand-new-models__title">Brand new models</h2>
-      <div className="phonelist">
+      {!hideTitle && (
+        <h2 className="brand-new-models__title">Brand new models</h2>
+      )}
+      <div
+        className={`brand-new-models_phonelist ${isAnimating ? `slide-${direction}` : ''}`}
+      >
         {visiblePhones.map((phone: Phone) => (
           <div
             key={phone.id}
-            className="phonecard a"
+            className="brand-new-models_phone-card a"
           >
             <Link to={`/phones/${phone.id}`}>
               <img
                 src={phone.images[0]}
                 alt={phone.name}
-                className="phone-cardimage"
+                className="brand-new-models_phone-card__image"
               />
-              <div className="phone-info">
-                <h3 className="phone-cardname">{phone.name}</h3>
-                <p className="phonecardprice">${phone.priceDiscount}</p>
-                <p className="phone-card__detail">
+              <div className="brand-new-models_phone-info">
+                <h3 className="brand-new-models_phone-card__name">
+                  {phone.name}
+                </h3>
+                <p className="brand-new-models_phonecard__price">
+                  ${phone.priceDiscount}
+                </p>
+                <p className="brand-new-models_phone-card__detail">
                   <span>Screen</span> <span>{phone.screen}</span>
                 </p>
-                <p className="phone-card__detail">
+                <p className="brand-new-models_phone-card__detail">
                   <span>Capacity</span> <span>{phone.capacity}</span>
                 </p>
-                <p className="phone-card__detail">
+                <p className="brand-new-models_phone-card__detail">
                   <span>RAM</span> <span>{phone.ram}</span>
                 </p>
               </div>
             </Link>
-            <div className="phone-card__actions">
+            <div className="brand-new-models_phone-card__actions">
               <button
-                className="btn btn-primary"
+                className="brand-new-models_phone-card__actions__btn-primary"
                 onClick={() => addToCart(phone)}
               >
                 Add to cart
               </button>
-              <button
-                className="btn btn-favorite"
+              <img
                 onClick={() => addToFavorites(phone)}
-              >
-                ♥
-              </button>
+                className="brand-new-models_phone-card__actions__btn-favorite"
+                src="./img/AddFavor.png"
+                alt="AddFavor"
+              />
             </div>
           </div>
         ))}
@@ -112,14 +156,20 @@ export const BrandNewModels: React.FC = () => {
           onClick={handlePrev}
           disabled={startIndex === 0}
         >
-          Previous
+          <img
+            src="./img/ChevronL.png"
+            alt="Left"
+          />
         </button>
         <button
           className="pagination__button"
           onClick={handleNext}
           disabled={startIndex + phonesPerPage >= phones.length}
         >
-          Next
+          <img
+            src="./img/ChevronR.png"
+            alt="Right"
+          />
         </button>
       </div>
     </div>

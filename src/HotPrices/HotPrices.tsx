@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './HotPrices.scss';
-import { Phone } from '../Types/Types';
+import { Phone } from '../Types/BaseItem';
 import { useCartContext } from '../CartContext/useCartContext';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ export const HotPrices: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { addToCart, addToFavorites } = useCartContext();
-  const phonesPerPage = 4;
+  const [phonesPerPage, setPhonesPerPage] = useState(4);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -41,15 +41,45 @@ export const HotPrices: React.FC = () => {
     return () => controller.abort();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setPhonesPerPage(1);
+      } else {
+        setPhonesPerPage(4);
+      }
+    };
+
+    handleResize(); // Викликаємо одразу при першому рендері
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const [direction, setDirection] = useState<'left' | 'right'>('right');
+  const [isAnimating, setIsAnimating] = useState(false);
+
   const handleNext = () => {
-    if (startIndex + phonesPerPage < phones.length) {
-      setStartIndex(startIndex + phonesPerPage);
+    if (startIndex + phonesPerPage < phones.length && !isAnimating) {
+      setIsAnimating(true);
+      setDirection('left');
+
+      setTimeout(() => {
+        setStartIndex((prev) => prev + phonesPerPage);
+        setIsAnimating(false);
+      }, 500);
     }
   };
 
   const handlePrev = () => {
-    if (startIndex - phonesPerPage >= 0) {
-      setStartIndex(startIndex - phonesPerPage);
+    if (startIndex - phonesPerPage >= 0 && !isAnimating) {
+      setIsAnimating(true);
+      setDirection('right');
+
+      setTimeout(() => {
+        setStartIndex((prev) => prev - phonesPerPage);
+        setIsAnimating(false);
+      }, 500);
     }
   };
 
@@ -64,52 +94,54 @@ export const HotPrices: React.FC = () => {
   }
 
   return (
-    <div className="hot-prices">
-      <h2 className="hot-prices__title">Hot Prices</h2>
-      <div className="phonelist">
+    <div className="hotPrices">
+      <h2 className="hotPrices__title">Hot Prices</h2>
+      <div
+        className={`hotPricesPhoneList ${isAnimating ? `slide-${direction}` : ''}`}
+      >
         {visiblePhones.map((phone: Phone) => (
           <div
             key={phone.id}
-            className="phonecard a"
+            className="hotPricesPhoneCard a"
           >
             <Link to={`/phones/${phone.id}`}>
               <img
                 src={phone.images[0]}
                 alt={phone.name}
-                className="phone-cardimage"
+                className="hotPricesPhoneCard__image"
               />
-              <div className="phone-info">
-                <h3 className="phone-cardname">{phone.name}</h3>
-                <span className="phone-card__price--new">
+              <div className="hotPricesPhoneCard__info">
+                <h3 className="hotPricesPhoneCard__name">{phone.name}</h3>
+                <span className="hotPricesPhoneCard__price--new">
                   ${phone.priceDiscount}
                 </span>
-                <span className="phone-card__price--old">
+                <span className="hotPricesPhoneCard__price--old">
                   ${phone.priceRegular}
                 </span>
-                <p className="phone-card__detail">
+                <p className="hotPricesPhoneCard__detail">
                   <span>Screen</span> <span>{phone.screen}</span>
                 </p>
-                <p className="phone-card__detail">
+                <p className="hotPricesPhoneCard__detail">
                   <span>Capacity</span> <span>{phone.capacity}</span>
                 </p>
-                <p className="phone-card__detail">
+                <p className="hotPricesPhoneCard__detail">
                   <span>RAM</span> <span>{phone.ram}</span>
                 </p>
               </div>
             </Link>
-            <div className="phone-card__actions">
+            <div className="hotPricesPhoneCard__actions">
               <button
-                className="btn btn-primary"
+                className="hotPricesPhoneCard__actions__btn-primary"
                 onClick={() => addToCart(phone)}
               >
                 Add to cart
               </button>
-              <button
-                className="btn btn-favorite"
+              <img
                 onClick={() => addToFavorites(phone)}
-              >
-                ♥
-              </button>
+                className="hotPricesPhoneCard__actions__btn-favorite"
+                src="./img/AddFavor.png"
+                alt="AddFavor"
+              />
             </div>
           </div>
         ))}
@@ -120,14 +152,20 @@ export const HotPrices: React.FC = () => {
           onClick={handlePrev}
           disabled={startIndex === 0}
         >
-          Previous
+          <img
+            src="./img/ChevronL.png"
+            alt="Left"
+          />
         </button>
         <button
           className="pagination__button"
           onClick={handleNext}
           disabled={startIndex + phonesPerPage >= phones.length}
         >
-          Next
+          <img
+            src="./img/ChevronR.png"
+            alt="Right"
+          />
         </button>
       </div>
     </div>

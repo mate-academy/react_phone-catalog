@@ -44,6 +44,12 @@
   border-radius: 10px;
 }
 
+.color-picker__title {
+  font-weight: 600;
+  font-size: 12px;
+  color: #89939A;
+}
+
 
 .color-picker {
   display: flex;
@@ -61,9 +67,103 @@
   transition: all 0.3s ease;
 }
 
+
 .color-picker button.selected {
   border: 4px double rgb(182, 178, 178);
   transition: box-shadow 0.3s ease;
+}
+
+.info-phone__selectCapacity__title {
+  font-weight: 600;
+  font-size: 12px;
+  color: #89939A;
+
+}
+
+.info-phone__selectCapacity {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.info-phone__selectCapacity button {
+  border: 1px solid #B4BDC3;
+  width: 56px;
+  height: 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  color: #000000;
+  font-size: 14px;
+  margin: 0;
+  background-color: #fff;
+}
+
+.info-phone__selectCapacity button.selected {
+  width: 56px;
+  height: 32px;
+  margin: 0px;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-color: #313237;
+  color: #ffffff;
+  border: none;
+}
+
+.info-phone__price--new {
+  font-size: 22px;
+  font-weight: bold;
+  color: #313237;
+  margin-right: 8px;
+}
+
+.info-phone__price--old {
+  font-size: 22px;
+  text-decoration: line-through;
+  color: #89939A;
+}
+
+.info-phone__actions {
+  padding: 20px 0 0 0;
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: start;
+  position: relative;
+
+  &__btn-primary {
+    color: #FFFFFF;
+    background-color: #313237;
+    border: none;
+    width: 210px;
+    height: 40px;
+  }
+
+  &__btn-favorite {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.info-phone-box-detail {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 0 0;
+  gap: 8px;
+}
+
+.info-phone__detail {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #363535;
+}
+
+.info-phone__detail span{
+  white-space: nowrap;
 }
 
 .back-button {

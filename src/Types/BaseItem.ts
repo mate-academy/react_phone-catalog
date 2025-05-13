@@ -1,31 +1,42 @@
 export interface BaseItem {
   id: string;
   name: string;
-  priceDiscount?: number;
-  price: number;
+  quantity: number;
+  category: string;
+  namespaceId: string;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
   images: string[];
+  description: {
+    title: string;
+    text: string[];
+  }[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera: string;
+  zoom: string;
+  cell: string[];
+  model?: string;
+  price: number;
 }
 
 export interface Phone extends BaseItem {
-  id: string;
-  name: string;
-  priceDiscount?: number;
-  price: number;
-  images: string[];
+  // Specific properties for Phone
+  screenSize?: string;
 }
 
 export interface Tablet extends BaseItem {
-  id: string;
-  name: string;
-  priceDiscount?: number;
-  price: number;
-  images: string[];
+  // Specific properties for Tablet
+  stylusSupport?: boolean;
 }
 
 export interface Accessories extends BaseItem {
-  id: string;
-  name: string;
-  priceDiscount?: number;
-  price: number;
-  images: string[];
+  // Specific properties for Accessories
+  warranty?: string;
 }

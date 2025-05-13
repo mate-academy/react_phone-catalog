@@ -1,8 +1,5 @@
 import { createContext } from 'react';
-import { Phone } from '../Types/Types';
-import { Tablet } from '../Types/Tablet';
-import { Accessories } from '../Types/Accessories';
-import './CartContext';
+import { Phone, Tablet, Accessories } from '../Types/BaseItem';
 
 export interface CartItem {
   item: Phone | Tablet | Accessories;

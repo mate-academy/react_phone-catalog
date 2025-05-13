@@ -8,7 +8,11 @@ export const CartIcon: React.FC = () => {
   return (
     <Link
       to="/cart"
-      style={{ position: 'relative', display: 'inline-block' }}
+      style={{
+        position: 'relative',
+        display: 'inline-block',
+        padding: '24px 24px',
+      }}
     >
       <img
         src="./img/cart.png"
@@ -20,11 +24,11 @@ export const CartIcon: React.FC = () => {
         <span
           style={{
             position: 'absolute',
-            top: 2,
-            right: -7,
+            top: 20,
+            right: 15,
             background: 'red',
             color: 'white',
-            borderRadius: '50%',
+            borderRadius: '100%',
             padding: '5px',
             fontSize: '8px',
           }}

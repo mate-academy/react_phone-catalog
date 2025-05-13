@@ -32,8 +32,23 @@ export const Slideshow: React.FC = () => {
   //eslint-disable-next-line
   console.log('Current slide:', images[currentIndex]);
 
+  // Handle swipe gesture
+  const handleSwipe = (e: React.TouchEvent) => {
+    const touchStart = e.changedTouches[0].clientX;
+    const touchEnd = e.changedTouches[e.changedTouches.length - 1].clientX;
+
+    if (touchStart - touchEnd > 50) {
+      handleNext(); // Swipe Left (Next)
+    } else if (touchStart - touchEnd < -50) {
+      handlePrev(); // Swipe Right (Previous)
+    }
+  };
+
   return (
-    <div className="slideshow">
+    <div
+      className="slideshow"
+      onTouchStart={handleSwipe}
+    >
       <button onClick={handlePrev}>&#10094;</button>
       <img
         src={images[currentIndex]}

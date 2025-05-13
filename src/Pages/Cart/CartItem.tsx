@@ -33,6 +33,12 @@ export const CartItem: React.FC<CartItemProps> = ({
 
   return (
     <div className="cart-item">
+      <button
+        onClick={onRemove}
+        className="cart-item__remove"
+      >
+        ×
+      </button>
       <img
         src={item.images[0]}
         alt={item.name}
@@ -68,12 +74,6 @@ export const CartItem: React.FC<CartItemProps> = ({
           item.priceDiscount
         : item.price * itemQuantity}
       </p>
-      <button
-        onClick={onRemove} // Використовуємо onRemove переданий через пропси
-        className="cart-item__remove"
-      >
-        ×
-      </button>
     </div>
   );
 };

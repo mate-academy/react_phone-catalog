@@ -1,16 +1,16 @@
 .navbar {
-  background-color: #F2F2F2;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  // box-shadow: 0 -1px 0px rgba(0, 0, 0, 0.1);
+
 
   .logo {
-    font-size: 13px;
+    font-size: 14px;
+    padding: 18px 24px;
     font-weight: bold;
     color: #161616;
     text-decoration: none;
-    margin-top: -10px;
 
     transition: transform 0.3s ease-in-out;
-
 
     &:hover {
       transform: scale(1.1);
@@ -20,7 +20,7 @@
   .navbar-item {
     position: relative;
     color: #585858;
-
+    align-items: center;
     text-decoration: none;
     font-size: 13px;
     font-weight: bold;
@@ -35,34 +35,40 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 10px;
-
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-left {
   display: flex;
-  gap: 40px;
+  padding: 0 24px 0 24px;
+  gap: 64px;
+  align-items: center;
+  @media (max-width: 768px) {
+    display: none; /* Показуємо на мобільних пристроях */
+  }
 }
 
 .navbar-right {
   display: flex;
-  gap: 40px;
+  gap: 0px;
+
+  @media (max-width: 768px) {
+    display: none; /* Показуємо на мобільних пристроях */
+  }
 }
 
 .navbar-item.has-background-grey-lighter::after {
   content: "";
 
   position: absolute;
-  bottom: -12px;
+  bottom: -30px;
   left: 0;
   width: 100%;
   height: 2px;
   background-color: black;
 }
 
-.favourites
+.favourites,
 .cart {
   transition: transform 0.3s ease-in-out;
 
@@ -86,12 +92,101 @@
   }
 }
 
-// prettier-ignore
 .navbar-center {
-  margin: 1px 10px;
   flex-grow: 1;
   display: flex;
+  padding: 24px;
   align-items: center;
   justify-content: end;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.burger-menu-toggle {
+  display: none; /* За замовчуванням не показуємо на десктопах */
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  padding: 10px;
+
+  @media (max-width: 768px) {
+    display: block; /* Показуємо на мобільних пристроях */
+  }
+}
+
+.burger-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Трохи затемнити фон */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s 0.3s;
+}
+
+.burger-menu-overlay.active {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.burger-menu {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.burger-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.burger-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
   gap: 20px;
+
+  .burger-link {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #89939A;
+    font-weight: 600;
+    text-decoration: none;
+
+    &.active {
+      color: #313237;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #313237;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.burger-footer {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 20px;
 }

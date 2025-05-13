@@ -11,12 +11,13 @@ import { Phones } from './Pages/Cart/Phones/Phones';
 import { Tablets } from './Pages/Tablets/Tablets';
 import { Accessories } from './Pages/Accessories/Accessories';
 import { PageNotFound } from './Pages/PageNotFound';
-import { Favourites } from './Pages/Favourites';
+import { Favourites } from './Pages/Favourites/Favourites';
 import { Cart } from './Pages/Cart/Cart';
 import { CartProvider } from './CartContext/CartProvider';
 import { PhoneDetails } from './Pages/PhoneDetails/PhoneDetails';
 import { TabletDetails } from './Pages/Tablets/TabletsDetails';
 import { AccessoryDetails } from './Pages/Accessories/AccessoriesDetails';
+
 export const Root: React.FC = () => (
   <CartProvider>
     <Router>

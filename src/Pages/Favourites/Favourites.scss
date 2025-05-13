@@ -1,0 +1,126 @@
+.favourites-page__title {
+  display: flex;
+  font-size: 24px;
+  justify-content: start;
+  padding: 80px 0 24px 32px;
+  margin: 0;
+}
+
+.favourites-list {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.favourites-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 32px;
+  margin: 20px;
+  width: 200px;
+  height: 100%;
+  text-align: center;
+  border: 1px solid #ccc;
+
+  & a {
+    text-decoration: none;
+    color: #2e2e2e;
+  }
+
+
+  &__image {
+    width: 50%;
+    height: 50%;
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    font-size: 16px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  &__price-block {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.favourites-card__detail {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #363535;
+}
+
+.favourites-card__actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+}
+
+.favourites-card__btn-primary {
+  color: #FFFFFF;
+  background-color: #313237;
+  border: none;
+  width: 176px;
+  height: 40px;
+}
+
+.favourites-card__btn-favorite {
+  width: 40px;
+  height: 40px;
+}
+
+.favourites-card__price-wrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.favourites-card__price--old{
+  text-decoration: line-through;
+  color: #888;
+  font-size: 16px;
+}
+
+.favourites-card__price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.favourites-page__clear {
+  height: 40px;
+  width: 146px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  background: #313237;
+  color: #fff;
+}
+
+.buttonClear{
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 64px;
+}

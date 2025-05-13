@@ -20,12 +20,12 @@ export const Footer = () => {
         <div className="footer-left">
           <NavLink
             to="/"
-            className="footer-logo"
-            onClick={scrollToTop}
+            className="logo"
           >
-            Nice👌
-            <br />
-            Gadgets
+            <img
+              src="./img/Logo.png"
+              alt="Logo"
+            />
           </NavLink>
 
           <NavLink
@@ -55,8 +55,14 @@ export const Footer = () => {
             className="footer-button"
             onClick={scrollToTop}
           >
-            Back to top ^
+            Back to top
           </button>
+          <img
+            className="footer-button"
+            src="./img/backtotop.png"
+            alt="backtotop"
+            onClick={scrollToTop}
+          />
         </div>
       </div>
     </div>

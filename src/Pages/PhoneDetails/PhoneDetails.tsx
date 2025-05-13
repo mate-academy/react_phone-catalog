@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Phone } from '../../Types/Types';
+import { Phone } from './../../Types/BaseItem';
 import './PhoneDetails.scss';
+import { useCartContext } from '../../CartContext/useCartContext';
+import { BrandNewModels } from '../../BrendNewModel/BrandNewModels';
 
 export const PhoneDetails: React.FC = () => {
   const { id } = useParams();
@@ -11,6 +13,8 @@ export const PhoneDetails: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [currentImages, setCurrentImages] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
+  const { addToCart, addToFavorites } = useCartContext();
 
   useEffect(() => {
     const fetchPhoneDetails = async () => {
@@ -32,6 +36,7 @@ export const PhoneDetails: React.FC = () => {
         setSelectedColor(foundPhone.color); // Встановлюємо початковий колір
         setCurrentImages(foundPhone.images); // Встановлюємо початкові зображення
         setSelectedImage(foundPhone.images[0]); // Початкове велике зображення
+        setSelectedCapacity(foundPhone.capacity[0]);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
@@ -61,6 +66,14 @@ export const PhoneDetails: React.FC = () => {
 
     setCurrentImages(newImages);
     setSelectedImage(newImages[0]); // Оновлюємо велике зображення
+  };
+
+  const handleCapacityChange = (capacity: string) => {
+    if (!phone) {
+      return;
+    }
+
+    setSelectedCapacity(capacity);
   };
 
   if (loading) {
@@ -112,7 +125,7 @@ export const PhoneDetails: React.FC = () => {
         {/* Інформація про телефон */}
         <div>
           {/* Вибір кольору */}
-          <h3>Choose a color:</h3>
+          <h3 className="color-picker__title">Available color</h3>
           <div className="color-picker">
             {phone.colorsAvailable.map((color) => (
               <button
@@ -123,13 +136,57 @@ export const PhoneDetails: React.FC = () => {
               />
             ))}
           </div>
+          <hr />
           <div className="info-phone">
-            <p>Capacity: {phone.capacity}</p>
-            <p>Price: ${phone.priceDiscount}</p>
-            <p>Screen: {phone.screen}</p>
-            <p>Resolution: {phone.resolution}</p>
-            <p>Processor: {phone.processor}</p>
-            <p>RAM: {phone.ram}</p>
+            <h3 className="info-phone__selectCapacity__title">
+              Select Capacity
+            </h3>
+            <div className="info-phone__selectCapacity">
+              {phone.capacityAvailable.map((capacity) => (
+                <button
+                  key={capacity}
+                  onClick={() => handleCapacityChange(capacity)}
+                  className={selectedCapacity === capacity ? 'selected' : ''}
+                >
+                  {capacity}
+                </button>
+              ))}
+            </div>
+            <hr />
+            <span className="info-phone__price--new">
+              ${phone.priceDiscount}
+            </span>
+            <span className="info-phone__price--old">
+              ${phone.priceRegular}
+            </span>
+            <div className="info-phone__actions">
+              <button
+                className="info-phone__actions__btn-primary"
+                onClick={() => addToCart(phone)}
+              >
+                Add to cart
+              </button>
+              <img
+                onClick={() => addToFavorites(phone)}
+                className="info-phone__actions__btn-favorite"
+                src="./img/AddFavor.png"
+                alt="AddFavor"
+              />
+            </div>
+            <div className="info-phone-box-detail">
+              <div className="info-phone__detail">
+                <span>Screen:</span> <span>{phone.screen}</span>
+              </div>
+              <div className="info-phone__detail">
+                <span>Resolution:</span> <span>{phone.resolution}</span>
+              </div>
+              <div className="info-phone__detail">
+                <span>Processor:</span> <span>{phone.processor}</span>
+              </div>
+              <div className="info-phone__detail">
+                <span>RAM:</span> <span>{phone.ram}</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -144,7 +201,7 @@ export const PhoneDetails: React.FC = () => {
               <span>Price:</span> <span>${phone.priceDiscount}</span>
             </div>
             <div className="span">
-              <span>Capacity:</span> <span>{phone.capacity}</span>
+              <span>Capacity:</span> <span>{selectedCapacity}</span>
             </div>
             <div className="span">
               <span>Screen:</span> <span>{phone.screen}</span>
@@ -176,6 +233,10 @@ export const PhoneDetails: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+        <div className="box_three">
+          <h3>You may also like</h3>
+          <BrandNewModels hideTitle={true} />
         </div>
       </div>
     </div>

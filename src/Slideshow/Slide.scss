@@ -1,16 +1,38 @@
 .slideshow {
   height: 350px;
-  width: 90%;
   display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
+  justify-content:space-between;
+  margin: 0;
+  padding: 0 32px 0 32px;
   gap: 10px;
+
+  button {
+    background-color: #fff;
+    border: 1px solid;
+  }
+
+  @media (max-width: 438px) {
+    height: 100vw;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+
+    button {
+      background: transparent;
+      background-color: #fff;
+      border: none;
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 10;
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
 }
 
-.img {
-  width: 60%;
-  object-fit:contain;
-}
+
 

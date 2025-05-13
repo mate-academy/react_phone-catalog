@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { CartContext, CartItem } from './CartContext';
-import { Phone } from '../Types/Types';
-import { Tablet } from '../Types/Tablet';
-import { Accessories } from '../Types/Accessories';
+import { Phone, Tablet, Accessories } from '../Types/BaseItem';
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

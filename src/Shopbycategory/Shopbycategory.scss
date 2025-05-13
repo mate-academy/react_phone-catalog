@@ -1,17 +1,33 @@
 .shopby-category {
   text-align: center;
-  padding: 40px;
+  padding: 0px;
 
   &__title {
+    display: flex;
     font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    justify-content: start;
+    padding: 80px 0 24px 32px;
+    margin: 0;
   }
 
   &__grid {
     display: flex;
     justify-content: center;
     gap: 20px;
+
+    @media (max-width: 480px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
   }
 }
 
@@ -29,6 +45,12 @@
     transition: transform 0.3s ease-in-out;
     object-fit: cover;
 
+    @media (max-width: 480px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // padding: 10px;
+    }
 
     &:hover {
       transform: scale(1.1);
@@ -43,5 +65,12 @@
   &__models {
     font-size: 14px;
     color: #666;
+  }
+
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
   }
 }

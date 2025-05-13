@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCartContext } from '../CartContext/useCartContext';
+import { useCartContext } from '../../CartContext/useCartContext';
 import { Link } from 'react-router-dom';
 
 export const FavouritesIcon: React.FC = () => {
@@ -8,7 +8,11 @@ export const FavouritesIcon: React.FC = () => {
   return (
     <Link
       to="/favourites"
-      style={{ position: 'relative', display: 'inline-block' }}
+      style={{
+        position: 'relative',
+        display: 'inline-block',
+        padding: '24px 24px',
+      }}
     >
       <img
         src="./img/favourites.png"
@@ -20,8 +24,8 @@ export const FavouritesIcon: React.FC = () => {
         <span
           style={{
             position: 'absolute',
-            top: 2,
-            right: -7,
+            top: 20,
+            right: 11,
             background: 'red',
             color: 'white',
             borderRadius: '50%',

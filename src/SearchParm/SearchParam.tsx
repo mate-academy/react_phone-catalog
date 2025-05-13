@@ -9,14 +9,19 @@ export const SearchParameters = () => {
 
   const pathParts = pathname.split('/').filter(Boolean);
 
+  // Перевірка: якщо ми на головній сторінці
+  const isHomePage = pathname === '/' || pathname === '/react_phone-catalog/';
+
   return (
     <div className="section">
       <p className="title is-7">
-        {/* Додаємо onClick на іконку Home */}
-        <FaHome
-          style={{ marginRight: '4px', cursor: 'pointer' }}
-          onClick={() => navigate('/')} // Перехід на домашню сторінку
-        />
+        {/* Показуємо іконку тільки якщо ми НЕ на головній сторінці */}
+        {!isHomePage && (
+          <FaHome
+            style={{ marginRight: '4px', cursor: 'pointer' }}
+            onClick={() => navigate('/')}
+          />
+        )}
 
         {pathParts.length > 0 && (
           <>
