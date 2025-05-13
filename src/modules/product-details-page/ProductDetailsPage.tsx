@@ -24,6 +24,8 @@ export const ProductDetailsPage = () => {
   const [product, setProduct] = useState<ProductData | null>(null);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [categoryProducts, setCategoryProducts] = useState<ProductData[]>([]);
+  const [notFound, setNotFound] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { productId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
@@ -57,8 +59,10 @@ export const ProductDetailsPage = () => {
         setCategoryProducts(response);
         setMainImageIndex(0);
       } else {
-        navigate('/404', { replace: true });
+        setNotFound(true);
       }
+
+      setLoading(false);
     });
   }, [category, productId, navigate]);
 
@@ -68,7 +72,20 @@ export const ProductDetailsPage = () => {
     .map(a => a.x)
     .slice(0, 16);
 
-  if (!product) {
+  if (notFound) {
+    return (
+      <div className={styles.notFound}>
+        <h1>Product not found</h1>
+        <img
+          src="./img/page-not-found.png"
+          alt="Product not found"
+          className={styles.notFound__image}
+        />
+      </div>
+    );
+  }
+
+  if (loading || !product) {
     return <Loader />;
   }
 
