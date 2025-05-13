@@ -1,31 +1,29 @@
 @font-face {
-  font-family: Raleway;
-  src: url('../fonts/Raleway-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Raleway;
-  src: url('../fonts/Raleway-SemiBold.woff2') format('woff2');
+  font-family: 'Mont';
+  src: url('./fonts/Mont-SemiBold.woff2') format('woff2'),
+    url('./fonts/Mont-SemiBold.woff') format('woff'),
+    url('./fonts/Mont-SemiBold.otf') format('otf');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: Raleway;
-  src: url('../fonts/Raleway-Medium.woff2') format('woff2');
-  font-weight: 500;
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Bold.woff2') format('woff2'),
+    url('./fonts/Mont-Bold.woff') format('woff'),
+    url('./fonts/Mont-Bold.otf') format('otf');
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Playfair Display';
-  src: url('../fonts/PlayfairDisplay-Bold.woff2') format('woff2');
-  font-weight: 700;
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Regular.woff2') format('woff2'),
+    url('./fonts/Mont-Regular.woff') format('woff'),
+    url('./fonts/Mont-Regular.otf') format('otf');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }

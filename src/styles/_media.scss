@@ -1,25 +1,11 @@
-$desktop-large-above: 1280px;
-$desktop-large: 1279px;
-$desktop-above: 1024px;
-$desktop: 1023px;
+$desktop-above: 1200px;
+$desktop: 1199px;
 $tablet-above: 640px;
 $tablet: 639px;
 $mobile-above: 481px;
 $mobile: 480px;
 $mobile-s-above: 321px;
 $mobile-s: 320px;
-
-@mixin desktop-large-above {
-  @media (min-width: $desktop-large-above) {
-    @content;
-  }
-}
-
-@mixin desktop-large {
-  @media (min-width: $desktop-large) {
-    @content;
-  }
-}
 
 @mixin desktop-above {
   @media (min-width: $desktop-above) {

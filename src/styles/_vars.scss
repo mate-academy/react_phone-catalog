@@ -1,0 +1,22 @@
+:root {
+  /* colors */
+  --color-primary: #313237;
+  --color-secondary: #89939A;
+  --color-icons: #B4BDC3;
+  --color-elements: #E2E6E9;
+
+  --color-hoverbg: #FAFBFC;
+  --color-white: #FFFFFF;
+  --color-green: #27AE60;
+  --color-red: #EB5757;
+
+  /* globals */
+  --font-family-main: 'Mont', sans-serif;
+
+  --base-font-size: 14px; // если не равно 16 - изменить в миксине
+
+  --container-width: 1200px;
+  --container-padding-x: 16px;
+
+  --transition-duration: 0.3s;
+}

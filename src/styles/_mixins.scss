@@ -63,7 +63,9 @@ $base-font-size-for-mixin: 16;
 @mixin flex-center($isInLine: false) {
   @if $isInLine {
     display: inline-flex;
-  } @else {
+  }
+
+  @else {
     display: flex;
   }
 

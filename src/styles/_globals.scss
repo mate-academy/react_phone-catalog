@@ -1,7 +1,7 @@
 body {
   font-family: var(--font-family-main);
   font-size: var(--base-font-size);
-  font-weight: 400;
+  font-weight: 600;
   background-color: var(--color-white);
   color: var(--color-white);
   position: relative;
@@ -13,23 +13,12 @@ body {
   margin: 0 auto;
 
   @include tablet-above {
-    --container-padding-x: 39px;
+    --container-padding-x: 24px;
   }
 
   @include desktop-above {
-    --container-padding-x: 55px;
+    --container-padding-x: 32px;
   }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-family-second);
-  font-weight: 700;
-  letter-spacing: 0;
 }
 
 h1 {
