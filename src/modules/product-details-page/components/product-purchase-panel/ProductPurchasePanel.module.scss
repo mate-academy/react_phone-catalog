@@ -44,9 +44,11 @@
     align-items: center;
     box-sizing: border-box;
 
-    &:hover {
-      border-color: $secondary;
-    }
+    @include on-hover(
+      (
+        border-color: $secondary,
+      )
+    );
 
     &--active {
       border-color: $white !important;
@@ -79,13 +81,12 @@
     text-decoration: none;
     color: $white;
     background-color: transparent;
-    transition:
-      background-color $effect-duration ease,
-      color $effect-duration ease;
 
-    &:hover {
-      border-color: $secondary;
-    }
+    @include on-hover(
+      (
+        border-color: $secondary,
+      )
+    );
 
     &--active {
       background-color: $white;
@@ -133,7 +134,6 @@
     line-height: 21px;
     color: $white;
     cursor: pointer;
-    transition: background-color $effect-duration ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,15 +142,24 @@
       background: $accent;
       flex-grow: 1;
 
-      &:hover {
-        background: $accent-hover;
-      }
+      @include on-hover(
+        (
+          background-color: $accent-hover,
+        )
+      );
+
       &.panel__action-button--selected {
         background: $surface-2;
+
+        @include on-hover(
+          (
+            background-color: $icons,
+          )
+        );
       }
     }
 
-    &--favourite {
+    &--favorite {
       height: 40px;
       width: 40px;
       background: $surface-2;
@@ -162,12 +171,11 @@
         width: 16px;
       }
 
-      &:hover {
-        border-color: $icons;
-      }
-      &.panel__action-button--selected {
-        border-color: $accent;
-      }
+      @include on-hover(
+        (
+          background-color: $icons,
+        )
+      );
     }
   }
 

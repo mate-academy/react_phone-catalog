@@ -1,12 +1,31 @@
-@mixin on-hover($property, $to-value) {
-  transition: #{$property} $effect-duration;
+@mixin on-hover($properties-map, $duration: $effect-duration) {
+  $props-to-transition: ();
+
+  // stylelint-disable-next-line scss/no-global-function-names
+  @each $property, $value in $properties-map {
+    // stylelint-disable-next-line scss/no-global-function-names
+    $props-to-transition: append($props-to-transition, $property, comma);
+  }
+
+  // stylelint-disable-next-line scss/no-global-function-names
+  $transition-property-list: join(map-keys($properties-map), ', ');
+
+  transition-property: #{$transition-property-list};
+  transition-duration: $duration;
+
   &:hover {
-    #{$property}: $to-value;
+    @each $property, $value in $properties-map {
+      #{$property}: $value;
+    }
   }
 }
 
 @mixin on-image-hover {
-  @include on-hover(transform, scale(1.1));
+  @include on-hover(
+    (
+      transform: scale(1.1),
+    )
+  );
 }
 
 @mixin on-tablet {

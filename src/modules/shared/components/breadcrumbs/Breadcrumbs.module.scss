@@ -19,7 +19,6 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
-    transition: color $effect-duration;
   }
 
   &__image {
@@ -40,8 +39,10 @@
       color: $secondary;
     }
 
-    &:hover {
-      color: $accent;
-    }
+    @include on-hover(
+      (
+        color: $accent,
+      )
+    );
   }
 }

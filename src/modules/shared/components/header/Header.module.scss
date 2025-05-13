@@ -79,6 +79,7 @@
   position: absolute;
   top: 49px;
   left: 0;
+  background-color: $black;
 
   display: flex;
   flex-direction: column;
@@ -176,13 +177,11 @@
     line-height: 11px;
     color: $secondary;
 
-    transition: transform $effect-duration;
-
-    @include on-image-hover;
-
-    &:hover {
-      color: $white;
-    }
+    @include on-hover(
+      (
+        color: $white,
+      )
+    );
 
     &:has(:first-child.navigation__link--active) {
       &::after {

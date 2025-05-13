@@ -81,12 +81,20 @@
       height: 80px;
     }
 
-    @include on-hover(border-color, $white);
+    @include on-hover(
+      (
+        border-color: $white,
+      )
+    );
 
     &--selected {
       border: 1px solid $white;
 
-      @include on-hover(border-color, $white);
+      @include on-hover(
+        (
+          border-color: $white,
+        )
+      );
     }
   }
 }

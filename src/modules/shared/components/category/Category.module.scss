@@ -19,13 +19,14 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     position: relative;
-    transition: transform $effect-duration;
     z-index: 1;
 
-    &:hover {
-      transform: scale(0.95);
-      z-index: 2;
-    }
+    @include on-hover(
+      (
+        transform: scale(0.95),
+        z-index: 2,
+      )
+    );
   }
 
   &__image {

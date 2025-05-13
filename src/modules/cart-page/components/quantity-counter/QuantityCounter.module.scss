@@ -14,9 +14,11 @@
     cursor: pointer;
     background-color: $surface-1;
 
-    &:hover {
-      background: $surface-2;
-    }
+    @include on-hover(
+      (
+        background-color: $surface-2,
+      )
+    );
 
     img {
       display: block;

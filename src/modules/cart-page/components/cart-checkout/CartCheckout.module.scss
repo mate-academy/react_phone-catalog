@@ -48,11 +48,12 @@
     line-height: 21px;
     width: 100%;
     cursor: pointer;
-    transition: background-color $effect-duration;
 
-    &:hover {
-      background: $accent-hover;
-    }
+    @include on-hover(
+      (
+        background-color: $accent-hover,
+      )
+    );
 
     @include on-desktop {
       margin-top: 24px;

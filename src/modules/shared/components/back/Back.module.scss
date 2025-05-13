@@ -8,14 +8,15 @@
   align-items: center;
   gap: 4px;
   cursor: pointer;
-  transition: color $effect-duration ease;
   color: $white;
   font-family: inherit;
   padding: 0;
 
-  &:hover {
-    color: $accent;
-  }
+  @include on-hover(
+    (
+      color: $accent,
+    )
+  );
 
   &__arrow {
     height: 16px;

@@ -25,7 +25,6 @@
 
   &__logo {
     cursor: pointer;
-    transition: transform $effect-duration;
 
     @include on-image-hover;
   }
@@ -55,11 +54,12 @@
     color: $secondary;
 
     cursor: pointer;
-    transition: all $effect-duration;
 
-    &:hover {
-      color: $white;
-    }
+    @include on-hover(
+      (
+        color: $white,
+      )
+    );
   }
 }
 
@@ -71,11 +71,12 @@
 
   &__text {
     color: $secondary;
-    transition: all $effect-duration;
 
-    &:hover {
-      color: $white;
-    }
+    @include on-hover(
+      (
+        color: $white,
+      )
+    );
   }
 
   &__button {

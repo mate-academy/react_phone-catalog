@@ -21,9 +21,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 12px;
-  transition:
-    background-color $effect-duration ease,
-    border $effect-duration ease;
   border: 1px solid transparent;
   cursor: pointer;
   user-select: none;
@@ -32,9 +29,11 @@
     border: 1px solid $accent !important;
   }
 
-  &:hover {
-    border: 1px solid $icons;
-  }
+  @include on-hover(
+    (
+      border: 1px solid $icons,
+    )
+  );
 }
 
 .selectControl__input {
@@ -71,13 +70,12 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  transition:
-    background-color $effect-duration,
-    color $effect-duration;
   cursor: pointer;
 
-  &:hover {
-    background: $surface-2;
-    color: $white;
-  }
+  @include on-hover(
+    (
+      background-color: $surface-2,
+      color: $white,
+    )
+  );
 }

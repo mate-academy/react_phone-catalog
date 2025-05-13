@@ -69,9 +69,11 @@
     color: $white;
     pointer-events: none;
 
-    &:hover {
-      background: $accent-hover;
-      border-color: $accent-hover;
-    }
+    @include on-hover(
+      (
+        background-color: $accent-hover,
+        border-color: $accent-hover,
+      )
+    );
   }
 }

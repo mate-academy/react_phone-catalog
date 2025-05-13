@@ -115,14 +115,21 @@
     line-height: 21px;
     color: $white;
     cursor: pointer;
-    transition: background-color $effect-duration;
+
+    @include on-hover(
+      (
+        background-color: $accent-hover,
+      )
+    );
 
     &--active {
       background: $surface-2;
-    }
 
-    &:hover {
-      background: $accent-hover;
+      @include on-hover(
+        (
+          background-color: $icons,
+        )
+      );
     }
   }
 
@@ -135,14 +142,15 @@
     background: $surface-2;
     border: 1px solid $surface-2;
     cursor: pointer;
-    transition: background-color $effect-duration;
 
     &--active {
       background: transparent;
     }
 
-    &:hover {
-      background: $icons;
-    }
+    @include on-hover(
+      (
+        background-color: $icons,
+      )
+    );
   }
 }
