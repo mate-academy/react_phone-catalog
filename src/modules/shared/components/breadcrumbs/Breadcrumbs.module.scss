@@ -5,7 +5,6 @@
   align-items: center;
   gap: 8px;
   margin: 24px 0;
-  height: 16px;
 
   @include on-tablet {
     margin: 24px 0 40px;
@@ -13,19 +12,21 @@
 
   &__item {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     gap: 8px;
     height: 100%;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 12px;
     line-height: 16px;
   }
 
   &__image {
-    @include on-image-hover;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
 
-    display: block;
-    align-self: center;
+    @include on-image-hover;
   }
 
   &__link {

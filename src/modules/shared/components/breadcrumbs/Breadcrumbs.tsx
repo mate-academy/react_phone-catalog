@@ -67,14 +67,14 @@ export const Breadcrumbs = () => {
               {crumb.displayName}
             </Link>
           ) : (
-            <Link
-              to={crumb.route}
-              className={classNames(styles.breadcrumbs__link, {
-                [styles['breadcrumbs__link--last']]: crumb.isLast,
-              })}
+            <span
+              className={classNames(
+                styles.breadcrumbs__link,
+                styles['breadcrumbs__link--last'],
+              )}
             >
               {crumb.displayName}
-            </Link>
+            </span>
           )}
         </div>
       ))}

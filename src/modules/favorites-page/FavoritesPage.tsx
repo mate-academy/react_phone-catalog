@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Breadcrumbs } from '../shared/components/breadcrumbs';
 import { useAppSelector } from '../../hooks/hooks';
 import { ProductList } from '../shared/components/product-list';
-import classNames from 'classnames';
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage = () => {
@@ -12,7 +11,7 @@ export const FavoritesPage = () => {
   useEffect(() => {}, []);
 
   return (
-    <div className={classNames('container', styles.favorites)}>
+    <div className={styles.favorites}>
       <Breadcrumbs />
       <h1>Favourites</h1>
       <p className={styles.favorites__subtitle}>{productsCount} items</p>

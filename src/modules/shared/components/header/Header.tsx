@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { useState } from 'react';
+import { useAppSelector } from '../../../../hooks/hooks';
 
 const getLinkClasses = ({ isActive }: { isActive: boolean }) => {
   return classNames(styles.navigation__link, {
@@ -11,6 +12,8 @@ const getLinkClasses = ({ isActive }: { isActive: boolean }) => {
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const cart = useAppSelector(state => state.cart);
+  const favorites = useAppSelector(state => state.favorites);
 
   const handleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -67,23 +70,29 @@ export const Header = () => {
             <div className={styles.navigation__icon}>
               <NavLink
                 to="favorites"
-                className={({ isActive }) =>
-                  `${getLinkClasses({ isActive })} badgeItems`
-                }
+                className={({ isActive }) => getLinkClasses({ isActive })}
                 onClick={closeMenu}
               >
                 <img src={'./icons/favourites-heart.svg'} alt="Heart" />
+                {favorites.length > 0 && (
+                  <span className={styles.badge}>
+                    {favorites.length > 99 ? '99+' : favorites.length}
+                  </span>
+                )}
               </NavLink>
             </div>
             <div className={styles.navigation__icon}>
               <NavLink
                 to="cart"
-                className={({ isActive }) =>
-                  `${getLinkClasses({ isActive })} badgeItems`
-                }
+                className={({ isActive }) => getLinkClasses({ isActive })}
                 onClick={closeMenu}
               >
                 <img src={'./logo/Cart.svg'} alt="Cart" />
+                {cart.length > 0 && (
+                  <span className={styles.badge}>
+                    {cart.length > 99 ? '99+' : cart.length}
+                  </span>
+                )}
               </NavLink>
             </div>
           </div>

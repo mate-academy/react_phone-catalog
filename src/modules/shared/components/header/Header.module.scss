@@ -257,3 +257,38 @@
     }
   }
 }
+
+.badge {
+  position: absolute;
+  top: 25%;
+  right: 40%;
+
+  background-color: $red;
+  color: $white;
+  border-radius: 50%;
+
+  font-weight: 700;
+  font-size: 9px;
+
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  z-index: 1;
+  pointer-events: none;
+
+  @include on-tablet {
+    top: 15%;
+    right: 15%;
+  }
+
+  @include on-desktop {
+    top: 25%;
+    right: 25%;
+  }
+}

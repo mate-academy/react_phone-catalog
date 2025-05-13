@@ -28,13 +28,13 @@ export const PicturesSlider = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="./img/banner-phones.png" />
+          <img src="./img/banner-1.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./img/banner-accessories.png" />
+          <img src="./img/banner-2.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./img/banner-tablets.png" />
+          <img src="./img/banner-3.jpg" />
         </SwiperSlide>
       </Swiper>
     </div>
