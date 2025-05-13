@@ -14,6 +14,34 @@
     min-width: 600px;
   }
 
+  &__button {
+    flex-grow: 1;
+    border-style: none;
+    background: $accent;
+    font-size: 20px;
+    font-weight: 700;
+    color: $white;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 6px 10px;
+
+    @include on-hover(
+      (
+        background-color: $accent-hover,
+      )
+    );
+
+    &--active {
+      background: $surface-2;
+
+      @include on-hover(
+        (
+          background-color: $icons,
+        )
+      );
+    }
+  }
+
   &__image {
     aspect-ratio: 1;
     min-width: 300px;
