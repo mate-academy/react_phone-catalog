@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Tablet } from '../../Types/Tablet'; // Імпортуємо тип Tablet
+import { Tablet } from '../../Types/BaseItem'; // Імпортуємо тип Tablet
 import './TabletsDetails.scss';
 
 export const TabletDetails: React.FC = () => {

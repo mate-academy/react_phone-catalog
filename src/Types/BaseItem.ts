@@ -39,4 +39,8 @@ export interface Tablet extends BaseItem {
 export interface Accessories extends BaseItem {
   // Specific properties for Accessories
   warranty?: string;
+  id: string;
+  name: string;
+  images: string[];
+  price: number;
 }

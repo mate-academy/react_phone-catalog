@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Accessories } from '../../Types/Accessories';
+import { Accessories } from '../../Types/BaseItem';
 import './AccessoriesDetails.scss';
 
 export const AccessoryDetails: React.FC = () => {

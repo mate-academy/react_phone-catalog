@@ -6,6 +6,8 @@ import './Favourites.scss';
 
 interface FavouritesItemProps {
   item: BaseItem;
+  onRemove: (id: string) => void;
+  onAddToCart: (id: string) => void;
 }
 
 export const FavouritesItem: React.FC<FavouritesItemProps> = ({ item }) => {

@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Tablet, Accessories } from '../../../src/Types/BaseItem';
+import { Phone, Tablet } from '../../../src/Types/BaseItem';
 import { useCartContext } from '../../../src/CartContext/useCartContext';
 import './CartItem.scss';
 
+export interface Accessories {
+  id: string;
+  name: string;
+  images: string[];
+  price: number;
+}
 interface CartItemProps {
   item: Phone | Tablet | Accessories;
   quantity: number;
