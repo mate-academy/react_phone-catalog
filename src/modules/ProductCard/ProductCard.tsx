@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/product';
 import styles from './ProductCard.module.scss';
+import AddButtons from '../shared/components/AddButtons';
 
 type Props = {
   product: Product;
@@ -8,12 +10,19 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.card}>
-      <img
-        className={styles.card__img}
-        src={product.image}
-        alt={`${product.name} img`}
-      />
-      <p className={`body--text ${styles.card__title}`}>{product.name}</p>
+      <Link to={`/${product.category}/${product.itemId}`}>
+        <img
+          className={styles.card__img}
+          src={product.image}
+          alt={`${product.name} img`}
+        />
+      </Link>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className={`body--text ${styles.card__title}`}
+      >
+        {product.name}
+      </Link>
       <span className={styles.card__priceWrap}>
         <h3>{`$${product.price}`}</h3>
         <h3 className={styles.card__salePrice}>{`$${product.fullPrice}`}</h3>
@@ -54,12 +63,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </p>
         </div>
       </div>
-      <div className={styles.card__buttons}>
-        <button className={styles.card__add}>Add to cart</button>
-        <div className={styles.iconWrap}>
-          <img src="public/img/icons/heart.svg" alt="Heart Icon" />
-        </div>
-      </div>
+      <AddButtons />
     </div>
   );
 };

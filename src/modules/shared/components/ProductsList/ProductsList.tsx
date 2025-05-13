@@ -78,7 +78,6 @@ export const ProductsList: React.FC<Props> = ({ type }) => {
   function changeSorting(e: string) {
     const newParams = new URLSearchParams(searchParams);
 
-    setSelectOption(e);
     newParams.set('sort', e);
     setSearchParams(newParams);
   }

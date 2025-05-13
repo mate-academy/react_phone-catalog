@@ -6,10 +6,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './SwiperStyles.scss';
-import { useMediaQuery } from 'react-responsive';
 import classNames from 'classnames';
 import ArrowNav from '../shared/components/ArrowNav';
 import { Direction } from '../shared/components/ArrowNav/ArrowNav';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 export const BannerSlider = () => {
   const sliderImgs = [
@@ -17,7 +17,7 @@ export const BannerSlider = () => {
     '/img/phones/iphone16Pro(2).jpg',
     '/img/phones/iphone16Pro(3).jpg',
   ];
-  const isMobile = useMediaQuery({ maxWidth: 640 });
+  const isMobile = useIsMobile();
 
   return (
     <>

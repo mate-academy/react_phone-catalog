@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Accessorie } from '../types/accessorie';
 import { Phone } from '../types/phone';
 import { Product } from '../types/product';
@@ -29,4 +30,25 @@ export async function getAccessories(): Promise<Accessorie[]> {
   const response = await fetch(`${BASE_URL}/accessories.json`);
 
   return response.json();
+}
+
+export enum Type {
+  PHONES = 'phones',
+  TABLETS = 'tablets',
+  ACCESSORIES = 'accessories',
+}
+
+export async function loadProductsType(type: string): Promise<
+Accessorie[] | Tablet[] | Phone[]
+> {
+  switch(type) {
+    case (Type.PHONES):
+      return getPhones();
+    case (Type.TABLETS):
+      return getTablets();
+    case (Type.ACCESSORIES):
+      return getAccessories();
+    default:
+      return [];
+  }
 }

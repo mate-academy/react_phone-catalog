@@ -1,17 +1,6 @@
 @use '../../utils/mixins';
 
-.iconWrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  box-shadow: -1px 0 0 #E2E6E9;
-  border: 1px solid rgba(226, 230, 233, 1)
-}
-
 .card {
-  cursor: pointer;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -19,6 +8,9 @@
   gap: 8px;
   border: 1px solid #E2E6E9;
 
+  @include mixins.hover(border, 1px solid #89939A);
+  
+  box-shadow: #313237;
 
   &__priceWrap {
     display: flex;
@@ -33,18 +25,6 @@
     color: #89939A;
   }
 
-  &__add {
-    flex-grow: 1;
-    background-color: #313237;
-    border: 0;
-    color: #FFF;
-  }
-
-  &__buttons {
-    display: flex;
-    gap: 8px;
-  }
-
   &__title {
     margin-top: 16px;
     height: 40px;
@@ -53,6 +33,10 @@
     align-self: stretch;
     flex-grow: 0;
     overflow: hidden;
+    color: #313237;
+    text-decoration: none;
+
+    @include mixins.hover(text-decoration, underline)
   }
 
   &__img {
@@ -60,8 +44,7 @@
     width: 100%;
     object-fit: contain;
 
-    @include mixins.hover(transform, scale(1.1));
-
+    @include mixins.hover(transform, scale(1.05));
   }
 
   &__descriptionContainer {

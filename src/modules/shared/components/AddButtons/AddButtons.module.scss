@@ -1,0 +1,21 @@
+.buttons {
+  display: flex;
+  gap: 8px;
+
+  &__cart {
+    flex-grow: 1;
+    background-color: #313237;
+    border: 0;
+    color: #FFF;
+  }
+
+  &__fav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    box-shadow: -1px 0 0 #E2E6E9;
+    border: 1px solid rgba(226, 230, 233, 1);
+  }
+}

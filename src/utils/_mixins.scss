@@ -13,7 +13,7 @@
 }
 
 @mixin on-mobile {
-  @media (max-width: $desktop-min-width) {
+  @media (max-width: $tablet-min-width) {
     @content;
   }
 }

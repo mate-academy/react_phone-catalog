@@ -3,13 +3,14 @@
 .icons {
   display: flex;
   gap: 8px;
-  align-items: center;
+  align-items: flex-end;
   margin-top: 24px;
   margin-bottom: 24px;
 
   @include mixins.on-tablet {
     margin-bottom: 40px;
   }
+
 }
 
 a {

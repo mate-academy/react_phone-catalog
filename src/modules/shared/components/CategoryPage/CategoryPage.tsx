@@ -6,26 +6,27 @@ import { Loader } from '../Loader';
 import ProductsList from '../ProductsList';
 import { Tablet } from '../../../../types/tablet';
 import { Accessorie } from '../../../../types/accessorie';
+import { loadProductsType } from '../../../../utils/fetchClient';
 
 type Props = {
   type: string;
-  getProducts: () => Promise<Tablet[] | Accessorie[] | Phone[]>;
 };
 
-export const CategoryPage: React.FC<Props> = ({ type, getProducts }) => {
+export const capitalize = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1);
+
+export const CategoryPage: React.FC<Props> = ({ type }) => {
   const [loader, setLoader] = useState(false);
   const [products, setProducts] = useState<Tablet[] | Accessorie[] | Phone[]>(
     [],
   );
-  const capitalize = (str: string) =>
-    str.charAt(0).toUpperCase() + str.slice(1);
 
   useEffect(() => {
     async function loadProducts() {
       setLoader(true);
 
       try {
-        const result = await getProducts();
+        const result = await loadProductsType(type);
 
         setProducts(result);
       } catch (err) {

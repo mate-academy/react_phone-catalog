@@ -1,15 +1,6 @@
 @use './utils/mixins.scss';
 @import 'swiper/css';
 
-* {
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Mont, sans-serif;
-}
-
 @font-face {
   font-family: Mont;
   font-weight: 400;
@@ -28,6 +19,15 @@
   font-weight: 700;
   font-style: normal;
   src: url(public/fonts/Mont-Bold.otf) format('opentype');
+}
+
+* {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Mont, sans-serif;
 }
 
 .main {
@@ -78,7 +78,6 @@ h3 {
   font-weight: 800;
   font-size: 22px;
   line-height: 100%;
-  letter-spacing: 0%;
 
   @include mixins.on-tablet {
     font-weight: 800;
@@ -88,14 +87,13 @@ h3 {
 }
 
 h4 {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
   line-height: 100%;
-  letter-spacing: 0%;
+  color: #313237;
 
   @include mixins.on-tablet {
     font-size: 20px;
-    letter-spacing: 0%;
   }
 }
 
@@ -135,4 +133,10 @@ h4 {
 
 .container {
   @include mixins.content-padding-inline;
+}
+
+hr {
+  height: 1px;
+  background-color: #E2E6E9;
+  border: none;
 }
