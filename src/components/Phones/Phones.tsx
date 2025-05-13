@@ -60,7 +60,7 @@ export const Phones: React.FC = () => {
           to={'/phones'}
         >{t('navigation.phones')}
         </Link>
-        <h1>Phones PAGE with {currentTheme}</h1>
+        <h1>Phones PAGE with {currentTheme}, products q-ty - {products.length}</h1>
         {products.filter((phone: Phone) => phone.category === 'phones')
           .sort((a:Phone, b:Phone) => b.price - a.price)
           .map((phone:Phone) => (

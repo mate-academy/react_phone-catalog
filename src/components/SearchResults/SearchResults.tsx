@@ -33,7 +33,7 @@ export const SearchResults: React.FC = () => {
   };
 
   useEffect(() => {
-    // Here we sort and filter our data
+    // Here we sort and filter our data if it were from server
     // Example: fetchResults({ query, page, category, sort });
   }, [query, page, category, sort]);
 
@@ -106,6 +106,7 @@ export const SearchResults: React.FC = () => {
       <p>Page: {page}</p>
       <p>Category: {category}</p>
       <p>Sort: {sort}</p>
+      all items = {allProducts.length}
 
       {/* Render actual results here */}
 

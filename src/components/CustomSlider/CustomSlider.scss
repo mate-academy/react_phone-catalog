@@ -48,7 +48,7 @@ $--tablet-width: 640px;
   left: 0;
   width: 100%;
   height: 100%;
-  transition: transform 0.5s ease;
+
 
   @media (min-width: $--tablet-width) {
     width: calc(490 / 640 * 100vw);
@@ -65,7 +65,7 @@ $--tablet-width: 640px;
   color: rgb(0, 0, 0);
   cursor: pointer;
 
-  z-index: 10;
+  z-index: 5;
   transition: background-color 0.3s;
 }
 

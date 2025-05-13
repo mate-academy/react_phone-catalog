@@ -1,6 +1,76 @@
+@import '../../App.scss';
+
+.link, .link:visited, .link:hover, link:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 .home-main {
-  background-color: rgb(164, 255, 164);
+  background-color: rgb(255, 255, 255);
   height: 100%;
   padding-bottom: 1px;
 }
 
+.home__subtitle {
+  margin-bottom: 24px;
+  color: $color-primary-black;
+  @include font-h2-mob;
+}
+
+.home__shop-container {
+  margin: 56px 16px;
+}
+
+.home__shop-categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+}
+
+.home__card-desc {
+  margin-top: 24px;
+  margin-bottom: 32px;
+
+  &-title {
+    @include font-h3-mob;
+    color: $color-primary-black;
+  }
+
+  &-qty {
+    @include font-body;
+    color: $color-secondary-grey;
+  }
+}
+
+.home__shop_card {
+  flex: 1;
+
+
+  & img {
+      width: 155%;
+  }
+}
+
+.home__image-container {
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background-color: grey;
+
+  &.home__phones-banner {
+    & img {
+      transform: translateX(-6%);
+    } // to align left border
+  }
+}
+
+.home__accessories_banner {
+  & img {
+    width: 190%;
+    transform: translateX(4%) translateY(14%);
+  }
+}
