@@ -3,6 +3,7 @@ import styles from './CartItem.module.scss';
 import { cartSlice } from '../../../../store/slices/cart';
 import { CartProduct, Product } from '../../../../types/types';
 import { QuantityCounter } from '../quantity-counter/QuantityCounter';
+import { Link } from 'react-router-dom';
 
 interface CartItemProps {
   item: CartProduct;
@@ -26,12 +27,19 @@ export const CartItem: React.FC<CartItemProps> = ({
         className={styles['cart-item__remove']}
         onClick={() => onRemove(productBase)}
       />
-      <img
-        src={item.image}
-        alt={item.name}
-        className={styles['cart-item__image']}
-      />
-      <h3 className={styles['cart-item__title']}>{item.name}</h3>
+      <Link to={`/${item.category}/${item.itemId}`}>
+        <img
+          src={item.image}
+          alt={item.name}
+          className={styles['cart-item__image']}
+        />
+      </Link>
+      <Link
+        to={`/${item.category}/${item.itemId}`}
+        className={styles['cart-item__title']}
+      >
+        <h3>{item.name}</h3>
+      </Link>
       <div className={styles['cart-item__quantity-wrapper']}>
         <QuantityCounter
           count={item.amount}

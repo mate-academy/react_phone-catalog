@@ -26,6 +26,8 @@
     width: 80px;
     height: 80px;
     object-fit: contain;
+
+    @include on-image-hover;
   }
 
   &__title {
@@ -34,6 +36,14 @@
     line-height: 21px;
     width: 50%;
     flex-shrink: 2;
+    text-decoration: none;
+    color: $white;
+
+    @include on-hover(
+      (
+        color: $accent,
+      )
+    );
   }
 
   &__quantity-wrapper {
