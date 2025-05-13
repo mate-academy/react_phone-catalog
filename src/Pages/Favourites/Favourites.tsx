@@ -4,7 +4,8 @@ import { FavouritesItem } from '../Favourites/Favouritesitem';
 import './Favourites.scss';
 
 export const Favourites: React.FC = () => {
-  const { favorites, clearFavorites } = useCartContext();
+  const { favorites, clearFavorites, removeFromFavorites, addToCart } =
+    useCartContext();
 
   return (
     <div className="favourites-page">
@@ -17,6 +18,8 @@ export const Favourites: React.FC = () => {
             <FavouritesItem
               key={item.id}
               item={item}
+              onRemove={() => removeFromFavorites(item.id)}
+              onAddToCart={() => addToCart(item)}
             />
           ))}
         </div>
