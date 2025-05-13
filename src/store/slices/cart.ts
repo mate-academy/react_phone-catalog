@@ -1,21 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { CartProduct } from '../../types/types';
-
-const loadCartFromLocalStorage = (): CartProduct[] => {
-  const savedCart = localStorage.getItem('cart');
-
-  return savedCart ? (JSON.parse(savedCart) as CartProduct[]) : [];
-};
-
-const saveCartToLocalStorage = (cart: CartProduct[]) => {
-  localStorage.setItem('cart', JSON.stringify(cart));
-};
+import {
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from '../../utils/localStorage';
 
 export const cartSlice = createSlice({
   name: 'cart',
-  initialState: loadCartFromLocalStorage() as CartProduct[],
+  initialState: loadFromLocalStorage<CartProduct>('cart'),
   reducers: {
-    addToCart: (cart, action) => {
+    add: (cart, action) => {
       const index = cart.findIndex(product => product.id === action.payload.id);
 
       let updatedCart;
@@ -28,7 +22,7 @@ export const cartSlice = createSlice({
         updatedCart = [...cart, { ...action.payload, amount: 1 }];
       }
 
-      saveCartToLocalStorage(updatedCart);
+      saveToLocalStorage('cart', updatedCart);
 
       return updatedCart;
     },
@@ -48,24 +42,24 @@ export const cartSlice = createSlice({
           updatedCart = [...cart.slice(0, index), ...cart.slice(index + 1)];
         }
 
-        saveCartToLocalStorage(updatedCart);
+        saveToLocalStorage('cart', updatedCart);
       }
 
       return updatedCart;
     },
 
-    removeFromCart: (cart, action) => {
+    remove: (cart, action) => {
       const updatedCart = cart.filter(
         product => product.id !== action.payload.id,
       );
 
-      saveCartToLocalStorage(updatedCart);
+      saveToLocalStorage('cart', updatedCart);
 
       return updatedCart;
     },
 
     clearCart: () => {
-      saveCartToLocalStorage([]);
+      saveToLocalStorage('cart', []);
 
       return [];
     },

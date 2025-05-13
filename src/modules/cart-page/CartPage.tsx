@@ -15,7 +15,7 @@ export const CartPage = () => {
   }, 0);
 
   const handleIncreaseProduct = (product: Product) => {
-    dispatch(cartSlice.actions.addToCart(product));
+    dispatch(cartSlice.actions.add(product));
   };
 
   const handleDecreaseProduct = (product: Product) => {
@@ -23,7 +23,7 @@ export const CartPage = () => {
   };
 
   const handleRemove = (product: Product) => {
-    dispatch(cartSlice.actions.removeFromCart(product));
+    dispatch(cartSlice.actions.remove(product));
   };
 
   const handleCheckout = () => {

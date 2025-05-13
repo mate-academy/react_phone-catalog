@@ -5,6 +5,7 @@ import styles from './ProductPurchasePanel.module.scss';
 import { Product, ProductData } from '../../../../types/types';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { cartSlice } from '../../../../store/slices/cart';
+import { favoritesSlice } from '../../../../store/slices/favorites';
 
 interface Props {
   product: ProductData;
@@ -23,7 +24,10 @@ export const ProductPurchasePanel: React.FC<Props> = ({
   const isInCart = cart.find(
     (item: Product) => item.id === (productItem ? productItem.id : 0),
   );
-  const isFavorite = false;
+  const favorites: Product[] = useAppSelector(state => state.favorites);
+  const isFavorite = favorites.find(
+    (item: Product) => item.id === (productItem ? productItem.id : 0),
+  );
   const getColorLink = (color: string) => {
     const productToLink: ProductData | undefined = categoryProducts.find(
       (item: ProductData) =>
@@ -53,19 +57,23 @@ export const ProductPurchasePanel: React.FC<Props> = ({
 
   const handleAddToCart = () => {
     if (isInCart) {
-      dispatch(cartSlice.actions.removeFromCart(productItem));
+      dispatch(cartSlice.actions.remove(productItem));
 
       return;
     }
 
-    dispatch(cartSlice.actions.addToCart(productItem));
+    dispatch(cartSlice.actions.add(productItem));
   };
 
-  // const handleAddToFavourite = () => {
-  //   if (isFavorite) {
-  //     return;
-  //   }
-  // };
+  const handleAddToFavourite = () => {
+    if (isFavorite) {
+      dispatch(favoritesSlice.actions.remove(productItem));
+
+      return;
+    }
+
+    dispatch(favoritesSlice.actions.add(productItem));
+  };
 
   return (
     <div className={styles.panel}>
@@ -137,11 +145,9 @@ export const ProductPurchasePanel: React.FC<Props> = ({
         <button
           className={classNames(
             styles['panel__action-button'],
-            styles['panel__action-button--favourite'],
-            {
-              [styles['panel__action-button--selected']]: isFavorite,
-            },
+            styles['panel__action-button--favorite'],
           )}
+          onClick={handleAddToFavourite}
         >
           {isFavorite ? (
             <img src="./icons/heart-filled.svg" alt="Filled Heart" />

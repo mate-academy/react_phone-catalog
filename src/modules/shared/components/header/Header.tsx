@@ -66,7 +66,7 @@ export const Header = () => {
           <div className={styles.navigation__icons}>
             <div className={styles.navigation__icon}>
               <NavLink
-                to="favourites"
+                to="favorites"
                 className={({ isActive }) =>
                   `${getLinkClasses({ isActive })} badgeItems`
                 }

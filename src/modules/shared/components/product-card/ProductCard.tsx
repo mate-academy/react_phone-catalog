@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import styles from './ProductCard.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { cartSlice } from '../../../../store/slices/cart';
+import { favoritesSlice } from '../../../../store/slices/favorites';
 
 interface Props {
   product: Product;
@@ -17,24 +18,28 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   const dispatch = useAppDispatch();
   const cart: Product[] = useAppSelector(state => state.cart);
-  const favourite: Product[] = [];
+  const favorites: Product[] = useAppSelector(state => state.favorites);
   const isInCart = cart.find((item: Product) => item.id === product.id);
-  const isFavourite = favourite.find((item: Product) => item.id === product.id);
+  const isFavorite = favorites.find((item: Product) => item.id === product.id);
 
   const handleAddToCart = () => {
     if (isInCart) {
-      dispatch(cartSlice.actions.removeFromCart(product));
+      dispatch(cartSlice.actions.remove(product));
 
       return;
     }
 
-    dispatch(cartSlice.actions.addToCart(product));
+    dispatch(cartSlice.actions.add(product));
   };
 
   const handleAddToFavourite = () => {
-    if (isFavourite) {
+    if (isFavorite) {
+      dispatch(favoritesSlice.actions.remove(product));
+
       return;
     }
+
+    dispatch(favoritesSlice.actions.add(product));
   };
 
   return (
@@ -92,11 +97,11 @@ export const ProductCard: React.FC<Props> = ({
         </button>
         <div
           className={classNames(styles.card__addFavourite, {
-            [styles['card__addFavourite--active']]: isFavourite,
+            [styles['card__addFavourite--active']]: isFavorite,
           })}
           onClick={handleAddToFavourite}
         >
-          {isFavourite ? (
+          {isFavorite ? (
             <img src="./icons/heart-filled.svg" alt="Favourite" />
           ) : (
             <img src="./icons/Favourites.png" alt="Favourite" />

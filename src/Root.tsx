@@ -7,6 +7,7 @@ import { ProductPage } from './modules/product-page';
 import { ProductDetailsPage } from './modules/product-details-page';
 import { NotFoundPage } from './modules/not-found-page';
 import { CartPage } from './modules/cart-page';
+import { FavoritesPage } from './modules/favorites-page';
 
 export const Root = () => {
   return (
@@ -31,6 +32,7 @@ export const Root = () => {
               element={<ProductDetailsPage />}
             ></Route>
             <Route path="/cart" element={<CartPage />}></Route>
+            <Route path="/favorites" element={<FavoritesPage />}></Route>
             <Route path="*" element={<NotFoundPage />}></Route>
           </Route>
         </Routes>
