@@ -14,6 +14,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cart = useAppSelector(state => state.cart);
   const favorites = useAppSelector(state => state.favorites);
+  const totalItems = cart.reduce((sum, product) => sum + product.amount, 0);
 
   const handleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -88,9 +89,9 @@ export const Header = () => {
                 onClick={closeMenu}
               >
                 <img src={'./logo/Cart.svg'} alt="Cart" />
-                {cart.length > 0 && (
+                {totalItems > 0 && (
                   <span className={styles.badge}>
-                    {cart.length > 99 ? '99+' : cart.length}
+                    {totalItems > 99 ? '99+' : totalItems}
                   </span>
                 )}
               </NavLink>
