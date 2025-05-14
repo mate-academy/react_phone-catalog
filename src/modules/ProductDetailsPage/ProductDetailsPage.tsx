@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import notFoundImg from 'assets/img/ui/product-not-found.png';
 
@@ -24,7 +24,10 @@ import { ProductDetails } from 'shared/types/ProductDetails';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage: React.FC = () => {
-  const { category, id } = useParams();
+  const { category, id } = useParams<{
+    category: ProductCategory;
+    id: string;
+  }>();
   const { productsByCategory } = useProductsContext();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -34,6 +37,32 @@ export const ProductDetailsPage: React.FC = () => {
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
   const [activeCapacityIndex, setActiveCapacityIndex] = useState<number>(0);
+
+  const navigate = useNavigate();
+  const goToProduct = (newId: string) => {
+    navigate(`/${category}/${newId}`);
+  };
+
+  const handleProductChange = (capacityIdex: number, colorIndex: number) => {
+    if (!curProduct) return;
+
+    const parts = [
+      curProduct.namespaceId,
+      curProduct.capacityAvailable[capacityIdex].toLowerCase(),
+      curProduct.colorsAvailable[colorIndex],
+    ];
+
+    const newId = parts.join('-');
+
+    setActiveCapacityIndex(capacityIdex);
+    setActiveColorIndex(colorIndex);
+
+    goToProduct(newId);
+  };
+
+  const products = useMemo(() => {
+    return productsByCategory[category as ProductCategory] || [];
+  }, [productsByCategory, category]);
 
   useEffect(() => {
     if (!category || !id) return;
@@ -50,8 +79,18 @@ export const ProductDetailsPage: React.FC = () => {
         setCurProduct(detailedProduct);
 
         if (detailedProduct) {
+          setActiveCapacityIndex(
+            detailedProduct.capacityAvailable.indexOf(detailedProduct.capacity),
+          );
+
+          setActiveColorIndex(
+            detailedProduct.colorsAvailable.indexOf(detailedProduct.color),
+          );
+        }
+
+        if (detailedProduct) {
           const suggested = await getSuggestedProducts(
-            productsByCategory[category as ProductCategory],
+            products,
             detailedProduct.id,
           );
 
@@ -65,7 +104,7 @@ export const ProductDetailsPage: React.FC = () => {
     };
 
     loadProduct();
-  }, [productsByCategory, category, id]);
+  }, [products, category, id]);
 
   let content = null;
 
@@ -75,7 +114,11 @@ export const ProductDetailsPage: React.FC = () => {
     content = <Error message={error} />;
   } else if (!curProduct) {
     content = (
-      <NotFoundPage imageSrc={notFoundImg} message="Product not found" />
+      <NotFoundPage
+        aria-controls="product-not-found"
+        imageSrc={notFoundImg}
+        message="Product not found"
+      />
     );
   } else {
     content = (
@@ -128,10 +171,13 @@ export const ProductDetailsPage: React.FC = () => {
                       style={{ backgroundColor: color }}
                     >
                       <input
+                        checked={activeColorIndex === i}
                         name="color"
                         type="radio"
                         value={color}
-                        onClick={() => setActiveColorIndex(i)}
+                        onChange={() => {
+                          handleProductChange(activeCapacityIndex, i);
+                        }}
                       />
                       <span className={styles.visuallyHidden}>{color}</span>
                     </label>
@@ -151,10 +197,13 @@ export const ProductDetailsPage: React.FC = () => {
                       className={`${styles.capacityItem} ${activeCapacityIndex === i ? styles.activeCapacity : ''}`}
                     >
                       <input
+                        checked={activeCapacityIndex === i}
                         name="capacity"
                         type="radio"
                         value={capacity}
-                        onClick={() => setActiveCapacityIndex(i)}
+                        onChange={() =>
+                          handleProductChange(i, activeColorIndex)
+                        }
                       />
                       <span>{capacity}</span>
                     </label>
@@ -198,8 +247,8 @@ export const ProductDetailsPage: React.FC = () => {
             <hr aria-hidden="true" className={styles.divider} />
 
             <article className={styles.descriptionContent}>
-              {curProduct.description.map(desc => (
-                <section key={desc.title}>
+              {curProduct.description.map((desc, index) => (
+                <section key={`${desc.title}-${index}`}>
                   <h3 key={desc.title} className={styles.descriptionSubtitle}>
                     {desc.title}
                   </h3>
@@ -231,7 +280,7 @@ export const ProductDetailsPage: React.FC = () => {
               <dd className={styles.featureValue}>{curProduct.capacity}</dd>
 
               {curProduct.category === ProductCategory.PHONES ||
-              curProduct.category === ProductCategory.TABLETS ? (
+                curProduct.category === ProductCategory.TABLETS ? (
                 <>
                   <dt className={styles.featureName}>Camera</dt>
                   <dd className={styles.featureValue}>{curProduct.camera}</dd>
