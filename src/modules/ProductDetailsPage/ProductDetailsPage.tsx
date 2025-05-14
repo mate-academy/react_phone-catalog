@@ -19,7 +19,7 @@ import {
   getSuggestedProducts,
 } from 'shared/services/services';
 import { Product } from 'shared/types/Product';
-import { BaseProductDetails } from 'shared/types/ProductDetails';
+import { ProductDetails } from 'shared/types/ProductDetails';
 
 import styles from './ProductDetailsPage.module.scss';
 
@@ -29,7 +29,7 @@ export const ProductDetailsPage: React.FC = () => {
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [curProduct, setCurProduct] = useState<BaseProductDetails | null>(null);
+  const [curProduct, setCurProduct] = useState<ProductDetails | null>(null);
 
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
@@ -79,25 +79,27 @@ export const ProductDetailsPage: React.FC = () => {
     );
   } else {
     content = (
-      <div className={styles.productPage}>
+      <article className={styles.productPage}>
         <header className={styles.navigation}>
-          <Breadcrumbs />
+          <nav aria-label="Breadcrumbs and back">
+            <Breadcrumbs />
 
-          <GoBack />
+            <GoBack />
+          </nav>
+
           <h1 className={styles.title}>{curProduct.name}</h1>
         </header>
 
-        <article className={styles.product}>
+        <section className={styles.product}>
           <section className={styles.gallery}>
             <ul className={styles.thumbnails}>
               {curProduct.images.map((img, i) => (
                 <li
                   key={i}
                   className={`${styles.thumbnail} ${activeImageIndex === i ? styles.activeThumbnail : ''}`}
-                  onClick={() => setActiveImageIndex(i)}
                 >
-                  <button>
-                    <img alt={curProduct.name} src={img} />
+                  <button onClick={() => setActiveImageIndex(i)}>
+                    <img alt={`${curProduct.name}, image ${i + 1}`} src={img} />
                   </button>
                 </li>
               ))}
@@ -131,9 +133,12 @@ export const ProductDetailsPage: React.FC = () => {
                         value={color}
                         onClick={() => setActiveColorIndex(i)}
                       />
+                      <span className={styles.visuallyHidden}>{color}</span>
                     </label>
                   ))}
                 </div>
+
+                <hr aria-hidden="true" className={styles.divider} />
               </fieldset>
 
               <fieldset className={styles.capacity}>
@@ -155,14 +160,16 @@ export const ProductDetailsPage: React.FC = () => {
                     </label>
                   ))}
                 </div>
+
+                <hr aria-hidden="true" className={styles.divider} />
               </fieldset>
             </div>
 
             <div className={styles.priceWrapper}>
-              <p className={styles.productPrice}>${curProduct.priceRegular}</p>
+              <p className={styles.productPrice}>${curProduct.priceDiscount}</p>
               <p
                 className={styles.productDiscount}
-              >{`$${curProduct.priceDiscount}`}</p>
+              >{`$${curProduct.priceRegular}`}</p>
             </div>
 
             <div className={styles.actions}>
@@ -170,47 +177,77 @@ export const ProductDetailsPage: React.FC = () => {
               <FavoriteButton size={48} />
             </div>
 
-            <div className={styles.features}>
-              <div className={styles.feature}>
-                <span className={styles.featureName}>Screen</span>
-                <span className={styles.featureValue}>{curProduct.screen}</span>
-              </div>
-              <div className={styles.feature}>
-                <span className={styles.featureName}>Resolution</span>
-                <span className={styles.featureValue}>
-                  {curProduct.resolution}
-                </span>
-              </div>
-              <div className={styles.feature}>
-                <span className={styles.featureName}>Processor</span>
-                <span className={styles.featureValue}>
-                  {curProduct.processor}
-                </span>
-              </div>
-              <div className={styles.feature}>
-                <span className={styles.featureName}>RAM</span>
-                <span className={styles.featureValue}>{curProduct.ram}</span>
-              </div>
-            </div>
+            <dl className={styles.featuresList}>
+              <dt className={styles.featureName}>Screen</dt>
+              <dd className={styles.featureValue}>{curProduct.screen}</dd>
+
+              <dt className={styles.featureName}>Resolution</dt>
+              <dd className={styles.featureValue}>{curProduct.resolution}</dd>
+
+              <dt className={styles.featureName}>Processor</dt>
+              <dd className={styles.featureValue}>{curProduct.processor}</dd>
+
+              <dt className={styles.featureName}>RAM</dt>
+              <dd className={styles.featureValue}>{curProduct.ram}</dd>
+            </dl>
           </section>
 
           <section className={styles.description}>
-            <h2>About</h2>
-            <p>And then there was Pro…</p>
-            <h3>Camera</h3>
-            <p>Meet the first triple-camera system…</p>
+            <h2 className={styles.descriptionTitle}>About</h2>
+
+            <hr aria-hidden="true" className={styles.divider} />
+
+            <article className={styles.descriptionContent}>
+              {curProduct.description.map(desc => (
+                <section key={desc.title}>
+                  <h3 key={desc.title} className={styles.descriptionSubtitle}>
+                    {desc.title}
+                  </h3>
+                  <p className={styles.descriptionText}>{desc.text}</p>
+                </section>
+              ))}
+            </article>
           </section>
 
           <section className={styles.specs}>
-            <h2>Tech specs</h2>
-            <dl>
-              <dt>Screen</dt>
-              <dd>6.5″ OLED</dd>
-              <dt>Resolution</dt>
-              <dd>2688×1242</dd>
+            <h2 className={styles.specsTitle}>Tech specs</h2>
+
+            <hr aria-hidden="true" className={styles.divider} />
+
+            <dl className={styles.featuresList}>
+              <dt className={styles.featureName}>Screen</dt>
+              <dd className={styles.featureValue}>{curProduct.screen}</dd>
+
+              <dt className={styles.featureName}>Resolution</dt>
+              <dd className={styles.featureValue}>{curProduct.resolution}</dd>
+
+              <dt className={styles.featureName}>Processor</dt>
+              <dd className={styles.featureValue}>{curProduct.processor}</dd>
+
+              <dt className={styles.featureName}>RAM</dt>
+              <dd className={styles.featureValue}>{curProduct.ram}</dd>
+
+              <dt className={styles.featureName}>Capacity</dt>
+              <dd className={styles.featureValue}>{curProduct.capacity}</dd>
+
+              {curProduct.category === ProductCategory.PHONES ||
+              curProduct.category === ProductCategory.TABLETS ? (
+                <>
+                  <dt className={styles.featureName}>Camera</dt>
+                  <dd className={styles.featureValue}>{curProduct.camera}</dd>
+
+                  <dt className={styles.featureName}>Zoom</dt>
+                  <dd className={styles.featureValue}>{curProduct.zoom}</dd>
+                </>
+              ) : null}
+
+              <dt className={styles.featureName}>Cell</dt>
+              <dd className={styles.featureValue}>
+                {curProduct.cell.join(', ')}
+              </dd>
             </dl>
           </section>
-        </article>
+        </section>
 
         <section className={styles.suggestedProducts}>
           <ProductsSlider
@@ -220,7 +257,7 @@ export const ProductDetailsPage: React.FC = () => {
             title="You may also like"
           />
         </section>
-      </div>
+      </article>
     );
   }
 

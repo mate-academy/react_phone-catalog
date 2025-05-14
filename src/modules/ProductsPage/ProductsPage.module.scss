@@ -31,9 +31,8 @@
 .numOfProducts {
   @include apply-typography(body-desktop);
 
-  margin-bottom: 40px;
-
   color: $color-secondary;
+  margin-bottom: 40px;
 
   @media (max-width: $mobile-breakpoint) {
     margin-bottom: 32px;
@@ -43,9 +42,9 @@
 .productsControls {
   display: flex;
   justify-content: start;
-  gap: 16px;
   width: 100%;
   height: 59px;
+  gap: 16px;
   margin-bottom: 24px;
 }
 

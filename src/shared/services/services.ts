@@ -1,5 +1,5 @@
 import { Product } from 'shared/types/Product';
-import { BaseProductDetails } from 'shared/types/ProductDetails';
+import { ProductDetails } from 'shared/types/ProductDetails';
 
 import { client } from './httpClient';
 
@@ -9,8 +9,8 @@ export function getAllProducts() {
 
 export function getProductsByCategory(
   category: string,
-): Promise<BaseProductDetails[]> {
-  return client.get<BaseProductDetails[]>(`/${category}.json`);
+): Promise<ProductDetails[]> {
+  return client.get<ProductDetails[]>(`/${category}.json`);
 }
 
 export function getSuggestedProducts(

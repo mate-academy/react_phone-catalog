@@ -9,9 +9,8 @@
 .text {
   @include apply-typography(small-desktop);
 
-  padding-right: 16px;
-
   cursor: pointer;
+  padding-right: 16px;
 }
 
 .button {

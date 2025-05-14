@@ -1,6 +1,13 @@
 @use './globals.scss' as *;
 @use './globals/reset' as *;
 
+:focus { outline: none; }
+
+:focus-visible {
+  outline: 2px solid $color-accent;
+  outline-offset: 3px;
+}
+
 body {
   position: relative;
   margin: 0;
@@ -32,8 +39,8 @@ a:focus {
     'header'
     'main'
     'footer';
-  grid-template-rows: 64px 1fr auto;
   grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 64px 1fr auto;
   min-height: 100vh;
 }
 

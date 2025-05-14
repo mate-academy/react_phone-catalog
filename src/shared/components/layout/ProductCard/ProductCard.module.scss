@@ -26,16 +26,16 @@
 
   flex-grow: 1;
   min-height: 0;
-  margin-bottom: 16px;
   cursor: pointer;
+  margin-bottom: 16px;
 }
 
 .productInfo {
   display: flex;
   flex: 0 0 auto;
   flex-direction: column;
-  gap: 8px;
   cursor: default;
+  gap: 8px;
 }
 
 .image {
@@ -84,8 +84,8 @@
 
 .feature {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .featureName {

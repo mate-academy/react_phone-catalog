@@ -9,8 +9,8 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  padding-top: 100%;
   overflow: hidden;
+  padding-top: 100%;
 
   @include hover-scale(1.05);
 }

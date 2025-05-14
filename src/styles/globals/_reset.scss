@@ -44,3 +44,15 @@ legend {
   font-size: inherit;
   font-weight: inherit;
 }
+
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+dd {
+  margin-inline-start: 0;
+}
+

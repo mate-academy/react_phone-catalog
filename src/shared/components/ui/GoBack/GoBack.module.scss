@@ -8,9 +8,8 @@
 }
 
 .arrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-center;
+
   width: 16px;
   height: 16px;
 }
@@ -19,6 +18,6 @@
   @include apply-typography(small-desktop);
 
   color: $color-white;
-  
+
   @include hover-text($color-accent);
 }

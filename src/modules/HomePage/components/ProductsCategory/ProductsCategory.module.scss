@@ -20,8 +20,8 @@
 .productsContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
   width: 100%;
+  gap: 16px;
 
   @media (max-width: $mobile-breakpoint) {
     grid-template-columns: 1fr;

@@ -68,8 +68,8 @@
     @media (max-width: $mobile-breakpoint) {
       height: 0;
       margin: 0 0 8px;
-      padding-bottom: 100%;
       overflow: hidden;
+      padding-bottom: 100%;
     }
 
     .swiperSlide {
@@ -79,8 +79,8 @@
         position: relative;
         height: 0;
         margin: 0;
-        padding-bottom: 100%;
         overflow: hidden;
+        padding-bottom: 100%;
       }
 
       img {

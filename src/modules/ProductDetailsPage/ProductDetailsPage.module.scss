@@ -1,5 +1,18 @@
 @use '/src/styles/globals.scss' as *;
 
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+  clip-path: inset(100%);
+}
+
 .productPage {
   display: flex;
   flex-direction: column;
@@ -20,20 +33,20 @@
 .product {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
-  gap: 80px 16px;
   width: 100%;
+  gap: 80px 16px;
   margin-bottom: 80px;
 
   @media (max-width: $tablet-breakpoint) {
     grid-template-columns: repeat(12, 1fr);
-    row-gap: 64px;
     margin-bottom: 64px;
+    row-gap: 64px;
   }
 
   @media (max-width: $mobile-breakpoint) {
     grid-template-columns: repeat(4, 1fr);
-    row-gap: 56px;
     margin-bottom: 56px;
+    row-gap: 56px;
   }
 }
 
@@ -51,27 +64,27 @@
 
 .gallery {
   display: grid;
+  grid-column: 1 / 13;
   grid-template-columns: repeat(12, 1fr);
   gap: 16px;
-  grid-column: 1 / 13;
 
   @media (max-width: $tablet-breakpoint) {
-    grid-template-columns: repeat(7, 1fr);
     grid-column: 1 / 8;
+    grid-template-columns: repeat(7, 1fr);
   }
 
   @media (max-width: $mobile-breakpoint) {
-    grid-template-rows: auto auto;
-    grid-template-columns: repeat(4, 1fr);
     grid-column: 1 / -1;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
   }
 }
 
 .mainImage {
-  width: 100%;
-  aspect-ratio: 1 / 1;
   grid-column: 3 / 13;
   grid-row: 1;
+  width: 100%;
+  aspect-ratio: 1 / 1;
 
   @media (max-width: $tablet-breakpoint) {
     grid-column: 2 / 8;
@@ -92,10 +105,10 @@
 
 .thumbnails {
   display: grid;
-  gap: 16px;
   align-self: start;
   grid-column: 1 / 3;
   grid-row: 1;
+  gap: 16px;
 
   li {
     display: block;
@@ -103,15 +116,15 @@
   }
 
   @media (max-width: $tablet-breakpoint) {
-    gap: 8px;
     grid-column: 1 / 2;
+    gap: 8px;
   }
 
   @media (max-width: $mobile-breakpoint) {
+    justify-items: center;
     grid-auto-flow: column;
     grid-column: 1 / -1;
     grid-row: 2;
-    justify-items: center;
   }
 }
 
@@ -123,9 +136,9 @@
   img {
     display: block;
     width: 100%;
-    aspect-ratio: 1 / 1;
     object-fit: contain;
     object-position: center;
+    aspect-ratio: 1 / 1;
   }
 }
 
@@ -141,8 +154,8 @@
   }
 
   @media (max-width: $mobile-breakpoint) {
-    margin-top: -16px; // Adjusting vertical alignment due to grid gap inconsistency between sections
     grid-column: 1 / -1;
+    margin-top: -16px; // Adjusting vertical alignment due to grid gap inconsistency between sections
   }
 }
 
@@ -150,14 +163,13 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
-
-
 }
 
 .divider {
-  width: 100%;
   height: 1px;
   background-color: $color-elements;
+  border: none;
+  margin-bottom: var(--divider-mb, 0);
 }
 
 .optionsTitle {
@@ -167,14 +179,7 @@
 }
 
 .colors {
-  &::after {
-    display: block;
-    width: 100%;
-    height: 1px;
-    margin-bottom: 24px;
-    background-color: $color-elements;
-    content: '';
-  }
+  --divider-mb: 24px;
 }
 
 .colorsWrapper {
@@ -184,14 +189,12 @@
   margin-bottom: 24px;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   display: none;
 }
 
 .colorItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-center;
 
   width: 32px;
   height: 32px;
@@ -201,22 +204,9 @@ input[type="radio"] {
 
   cursor: pointer;
 
-  &::before {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border: inherit;
-    border: 2px solid $color-black;
-    border-radius: inherit;
-    box-sizing: border-box;
-    content: '';
-
-  }
-
   &:hover {
     border: 1px solid $color-secondary;
   }
-
 }
 
 .activeColor {
@@ -228,14 +218,7 @@ input[type="radio"] {
 }
 
 .capacity {
-  &::after {
-    display: block;
-    width: 100%;
-    height: 1px;
-    margin-bottom: 32px;
-    background-color: $color-elements;
-    content: '';
-  }
+  --divider-mb: 32px;
 }
 
 .capacityWrapper {
@@ -246,12 +229,14 @@ input[type="radio"] {
 }
 
 .capacityItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-center;
+
   height: 32px;
   border: 1px solid $color-icons;
-  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   cursor: pointer;
   padding-inline: 8px;
@@ -268,7 +253,6 @@ input[type="radio"] {
   background-color: $color-white;
 }
 
-
 .priceWrapper {
   display: flex;
   align-items: center;
@@ -277,14 +261,13 @@ input[type="radio"] {
 }
 
 .productPrice {
-  @include apply-typography(h3-desktop);
+  @include apply-typography(h2-desktop);
 }
 
 .productDiscount {
   @include apply-typography(h3-desktop);
 
   font-weight: 600;
-  line-height: 28px;
   text-decoration: line-through;
 
   color: $color-secondary;
@@ -297,16 +280,10 @@ input[type="radio"] {
   margin-bottom: 32px;
 }
 
-.features {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.feature {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.featuresList {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 16px;
 }
 
 .featureName {
@@ -315,24 +292,80 @@ input[type="radio"] {
 
 .featureValue {
   @include apply-typography(body-desktop);
+
+  justify-self: end;
 }
 
 .description {
   grid-column: 1 / 13;
-  outline: 2px dashed green;
+
+  --divider-mb: 32px;
 
   @media (max-width: $tablet-breakpoint) {
     grid-column: 1 / -1;
   }
 }
 
+.descriptionTitle {
+  @include apply-typography(h2-desktop);
+
+  margin-bottom: 16px;
+
+  @media (max-width: $mobile-breakpoint) {
+    @include apply-typography(h2-mobile);
+  }
+}
+
+.descriptionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.descriptionSubtitle {
+  @include apply-typography(h3-desktop);
+
+  margin-bottom: 16px;
+
+  @media (max-width: $mobile-breakpoint) {
+    @include apply-typography(h3-mobile);
+  }
+}
+
+.descriptionText {
+  @include apply-typography(body-desktop);
+
+  color: $color-secondary;
+}
+
 .specs {
   grid-column: 14 / -1;
-  outline: 2px dashed green;
 
   @media (max-width: $tablet-breakpoint) {
     grid-column: 1 / -1;
   }
+
+  --divider-mb: 25px;
+
+  @media (max-width: $mobile-breakpoint) {
+    --divider-mb: 30px;
+  }
+
+  .featureName {
+    @include apply-typography(body-desktop);
+
+    color: $color-secondary;
+  }
+
+  .featureValue {
+    @include apply-typography(body-desktop);
+  }
+}
+
+.specsTitle {
+  @include apply-typography(h2-desktop);
+
+  margin-bottom: 16px;
 }
 
 .suggestedProducts {

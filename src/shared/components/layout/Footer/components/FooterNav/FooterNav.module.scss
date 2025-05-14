@@ -20,7 +20,6 @@
   text-transform: uppercase;
 
   color: $color-white;
-  outline: none;
 
   @include hover-text($color-white);
 }
