@@ -370,8 +370,8 @@
 
     &__category {
       padding-top: 80px;
-      display: grid;
-      grid-template-columns: repeat(24, 1fr);
+      display: flex;
+      flex-direction: column;
       align-items: center;
       width: 100%;
       font-family: 'Mont-Bold';

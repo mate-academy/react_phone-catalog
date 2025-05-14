@@ -8,10 +8,20 @@ import { PhonePage } from './modules/ProductPages/PhonePage';
 import { TabletsPage } from './modules/ProductPages/TabletsPage';
 import { Accessories } from './modules/ProductPages/Accessuries';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { CartPage } from './modules/CartPage/CartPage';
+import { useCart } from './modules/CartContext/CartContext';
+import { FavoritesPages } from './modules/FavoritesPage/FavoritesPage';
 
 export const App = () => {
-  const [clickOnLogoBar, setClickOnLogoBar] = useState(false);
+  const [clickOnLogoBar, setClickOnLogoBar] = useState(() => {
+    const stored = localStorage.getItem('clickOnLogoBar');
+
+    return stored === 'true';
+  });
   const [isMobile, setIsMobile] = useState(window.innerWidth > 639);
+  const { cartItems, favoriteItems } = useCart();
+  const cartCount = cartItems.length;
+  const favoriteCount = favoriteItems.length;
 
   const links = ['home', 'phones', 'tablets', 'accessories'];
 
@@ -24,6 +34,10 @@ export const App = () => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('clickOnLogoBar', JSON.stringify(clickOnLogoBar));
+  }, [clickOnLogoBar]);
 
   const scrollTop = () => {
     window.scrollTo({
@@ -45,7 +59,9 @@ export const App = () => {
       <div className="App">
         <div className="section">
           <div className="container">
-            <h1 hidden>Product Catalog</h1>
+            <h1 className="product__catalog" hidden>
+              Product Catalog
+            </h1>
             <header className="nav">
               <nav
                 data-cy="nav"
@@ -85,67 +101,70 @@ export const App = () => {
                 </ul>
 
                 <div className="navbar__right">
-                  {['like', 'shopping-cart'].map(route => (
-                    <button
-                      key={route}
-                      className={classNames('navbar__button', {
-                        hidden: !isMobile || clickOnLogoBar,
-                      })}
-                    >
-                      <NavLink
-                        aria-current="page"
-                        className={`navbar__icon__${route === 'like' ? 'like' : 'cart'}`}
-                        to={`/${route}`}
-                      />
-                    </button>
-                  ))}
-                </div>
+                  {['favorites', 'cart'].map(route => {
+                    const isCart = route === 'cart';
+                    const isFavorite = route === 'favorites';
 
+                    return (
+                      <button
+                        key={route}
+                        className={classNames('navbar__button', {
+                          hidden: !isMobile || clickOnLogoBar,
+                        })}
+                      >
+                        <NavLink
+                          aria-current="page"
+                          className={`navbar__icon__${isCart ? 'cart' : 'like'}`}
+                          to={`/${route}`}
+                        >
+                          {isCart && cartItems.length > 0 && (
+                            <span className="navbar__badge">{cartCount}</span>
+                          )}
+                          {isFavorite && favoriteItems.length > 0 && (
+                            <span className="navbar__badge">
+                              {favoriteCount}
+                            </span>
+                          )}
+                        </NavLink>
+                      </button>
+                    );
+                  })}
+                </div>
                 <div className="navbar__burger">
                   <button
                     className="navbar__button-burger"
-                    onClick={() =>
-                      !isMobile && setClickOnLogoBar(prev => !prev)
-                    }
+                    onClick={() => setClickOnLogoBar(prev => !prev)}
                     hidden={!isMobile && clickOnLogoBar === true}
                   >
                     <NavLink
-                      aria-current="page"
                       className="navbar__icon__menu"
-                      to={'/Menu'}
+                      to="/Menu"
                     ></NavLink>
                   </button>
 
                   <button
                     className="navbar__button-burger"
-                    onClick={() =>
-                      !isMobile && setClickOnLogoBar(prev => !prev)
-                    }
+                    onClick={() => setClickOnLogoBar(prev => !prev)}
                     hidden={!isMobile && clickOnLogoBar === false}
                   >
-                    <NavLink
-                      aria-current="page"
-                      className={'navbar__icon__close'}
-                      to="/"
-                    ></NavLink>
+                    <NavLink className="navbar__icon__close" to="/"></NavLink>
                   </button>
                 </div>
               </nav>
             </header>
 
+            {/* Меню (буде відображатися, якщо clickOnLogoBar == true) */}
             {clickOnLogoBar && (
-              <aside className="menu">
+              <aside className={clickOnLogoBar ? 'menu menu--open' : 'menu'}>
                 <ul className="menu__brand">
                   {links.map((item, index) => (
                     <li className="menu__item" key={index}>
                       <NavLink
                         className={({ isActive }) =>
-                          classNames('menu__link', {
-                            'has-background-grey-lighter': isActive,
-                          })
+                          `menu__link ${isActive ? 'has-background-grey-lighter' : ''}`
                         }
                         to={item === 'home' ? '/' : `/${item}`}
-                        // onClick={() => setClickOnLogoBar(false)}
+                        onClick={() => setClickOnLogoBar(false)}
                       >
                         {item.charAt(0).toUpperCase() + item.slice(1)}
                       </NavLink>
@@ -162,7 +181,6 @@ export const App = () => {
                         aria-current="page"
                         className={className}
                         to={to}
-                        onClick={() => setClickOnLogoBar(false)}
                       />
                     </button>
                   ))}
@@ -179,6 +197,9 @@ export const App = () => {
                 path="/:category/:productId"
                 element={<ProductDetailsPage />}
               />
+              <Route path="/cart" element={<CartPage />}></Route>
+              <Route path="/favorites" element={<FavoritesPages />}></Route>
+              <Route path="/Menu" element={<aside></aside>} />
               <Route
                 path="*"
                 element={<h1 className="title">Page not found</h1>}
@@ -191,20 +212,23 @@ export const App = () => {
               role="footer"
               aria-label="main footer"
             >
-              <NavLink
-                className="footer__link__logo"
-                to="/"
-                onClick={() => {
-                  setClickOnLogoBar(true);
-                  checkClickOnLogoBar();
-                }}
-              >
-                <img
-                  src="../../public/img/navbar/Logo.png"
-                  alt="logo-gadgets"
-                />
-              </NavLink>
               <ul className="footer__brand">
+                <li className="footer__item">
+                  <NavLink
+                    className="footer__link__logo"
+                    to="/"
+                    onClick={() => {
+                      setClickOnLogoBar(true);
+                      checkClickOnLogoBar();
+                    }}
+                  >
+                    <img
+                      src="../../public/img/navbar/Logo.png"
+                      alt="logo-gadgets"
+                    />
+                  </NavLink>
+                </li>
+
                 <li className="footer__item">
                   <NavLink
                     className={({ isActive }) =>
@@ -212,14 +236,14 @@ export const App = () => {
                         'has-background-grey-lighter': isActive,
                       })
                     }
-                    to="/github"
+                    to="https://github.com/vikaruda?tab=repositories"
                   >
                     Github
                   </NavLink>
                 </li>
+
                 <li className="footer__item">
                   <NavLink
-                    aria-current="page"
                     className={({ isActive }) =>
                       classNames('footer__link', {
                         'has-background-grey-lighter': isActive,
@@ -230,9 +254,9 @@ export const App = () => {
                     Cotacts
                   </NavLink>
                 </li>
+
                 <li className="footer__item">
                   <NavLink
-                    aria-current="page"
                     className={({ isActive }) =>
                       classNames('footer__link', {
                         'has-background-grey-lighter': isActive,
@@ -244,6 +268,7 @@ export const App = () => {
                   </NavLink>
                 </li>
               </ul>
+
               <div className="footer__right">
                 <NavLink
                   aria-current="page"

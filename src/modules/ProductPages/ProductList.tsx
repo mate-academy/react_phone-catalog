@@ -1,13 +1,19 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Gargets } from '../../interface/Gargets';
 import React from 'react';
 import './ProductList.scss';
 
-interface ProductListInterface {
+interface ProductListProps {
   items: Gargets[];
+  onRemoveFromFavorites?: (item: Gargets) => void;
+  like?: boolean;
 }
 
-export const ProductList: React.FC<ProductListInterface> = ({ items }) => {
+export const ProductList: React.FC<ProductListProps> = ({
+  items,
+  onRemoveFromFavorites,
+  like,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -42,11 +48,23 @@ export const ProductList: React.FC<ProductListInterface> = ({ items }) => {
             <h5 className="product__list-ram-gb">{item.ram}</h5>
           </div>
           <div className="product__list-position">
-            <NavLink to="/" className="product__list-add-to-cart">
-              Add to cart
-            </NavLink>
-            <button className="product__list-button-like">
-              <NavLink to="/" className="swiper__like"></NavLink>
+            <span className="product__list-add-to-cart">Add to cart</span>
+            <button
+              className="product__list-button-like"
+              onClick={() => {
+                if (onRemoveFromFavorites) {
+                  onRemoveFromFavorites(item);
+                }
+              }}
+            >
+              <span
+                className="swiper__like"
+                style={{
+                  backgroundImage: like
+                    ? 'url(/public/img/favorites.png)'
+                    : 'url(/public/img/navbar/like.png)',
+                }}
+              ></span>
             </button>
           </div>
         </div>

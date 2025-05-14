@@ -4,15 +4,20 @@
   }
 }
 
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
 @mixin contentPaddingInline {
-  // padding-inline: 16px;
-
-  // @media (min-width: 640px) {
-  //   padding-inline: 24px;
-  // }
-
   @include onDesktop {
     padding-inline: 152px;
+    column-gap: 16px;
+  }
+
+  @include onTablet() {
+    padding-inline: 32px;
     column-gap: 16px;
   }
 }

@@ -1,4 +1,5 @@
 export interface Gargets {
+  namespaceId: unknown;
   id: string;
   category: string;
   name: string;
@@ -9,7 +10,7 @@ export interface Gargets {
   images: string[];
   screen: string;
   ram: string;
-  capacityAvailable: string;
+  capacityAvailable: string[];
   resolution: string;
   processor: string;
   description: {

@@ -7,4 +7,9 @@
     column-gap: 16px;
     padding-block: 24px;
   }
+
+  @include onTablet {
+      column-gap: 16px;
+      padding-block: 32px;
+  }
 }

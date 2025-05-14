@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Phone } from '../../interface/Phone';
 
 export const HomePage = () => {
@@ -14,6 +14,7 @@ export const HomePage = () => {
   const [clickOnButton, setClickOnButton] = useState(false);
   const [isImageVisible, setIsImageVisible] = useState(true);
   const [phones, setPhones] = useState<Phone[]>([]);
+  const navigate = useNavigate();
   const images = [
     '../../public/img/Banner.png',
     '../../public/img/banner2.jpg',
@@ -74,9 +75,9 @@ export const HomePage = () => {
     <>
       <div className="main">
         <div className="home">
-          <h1 className="home__gargets-store">
+          <h2 className="home__gargets-store">
             Welcome to Nice Gadgets store!
-          </h1>
+          </h2>
           <section className="home__turn-image">
             <button className="home__button-left" onClick={handlePrevClick}>
               {'<'}
@@ -160,6 +161,11 @@ export const HomePage = () => {
                       src={phone.images[0]}
                       alt={phone.name}
                       className="swiper__image-phone"
+                      onClick={() => {
+                        const productId = phone.id;
+
+                        navigate(`/phones/${productId}`, { state: phone });
+                      }}
                     />
                     <h4 className="swiper__name">{phone.name}</h4>
                     <h3 className="swiper__costs">${phone.priceRegular}</h3>
@@ -198,6 +204,9 @@ export const HomePage = () => {
                 src="../../public/img/phoneCategory.png"
                 alt="logo-gadgets"
                 className="home__category-img"
+                onClick={() => {
+                  navigate('/phones');
+                }}
               />
               <h3 className="home__category-h3">Mobile phones</h3>
               <h4 className="home__category-h4">95 models</h4>
@@ -208,6 +217,9 @@ export const HomePage = () => {
                 src="../../public/img/tabletsCategory.png"
                 alt="logo-gadgets"
                 className="home__category-img"
+                onClick={() => {
+                  navigate('/tablets');
+                }}
               />
               <h3 className="home__category-h3">Tablets</h3>
               <h4 className="home__category-h4">24 models</h4>
@@ -218,6 +230,9 @@ export const HomePage = () => {
                 src="../../public/img/accessuriesCategory.png"
                 alt="logo-gadgets"
                 className="home__category-img"
+                onClick={() => {
+                  navigate('/accessories');
+                }}
               />
               <h3 className="home__category-h3">Accessories</h3>
               <h4 className="home__category-h4">100 models</h4>
@@ -253,6 +268,11 @@ export const HomePage = () => {
                       src={phone.images[0]}
                       alt={phone.name}
                       className="swiper__image-phone"
+                      onClick={() => {
+                        const productId = phone.id;
+
+                        navigate(`/phones/${productId}`, { state: phone });
+                      }}
                     />
                     <h4 className="swiper__name">{phone.name}</h4>
                     <div className="swiper__position">

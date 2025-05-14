@@ -1,0 +1,235 @@
+@import '../mixins.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Mont-Bold', sans-serif;
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-style: normal;
+}
+
+.cart {
+  @include contentPaddingInline;
+  font-family: 'Mont-Bold', 'sans-serif';
+  display: grid;
+  grid-template-columns: repeat(24 / 1fr);
+
+  &__nav {
+    padding-top: 40px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__back {
+    font-weight: 700;
+    font-size: 12px;
+    color: #89939A;
+    text-decoration: none;
+  }
+
+  &__arrow {
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid #0F0F11;
+    border-bottom: 1.5px solid #0F0F11;
+    transform: rotate(-45deg);
+  }
+
+  &__h2 {
+    font-weight: 800;
+    font-size: 48px;
+    color: #0F0F11;
+    padding-top: 16px;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__position {
+    display: grid;
+    grid-column: 1 / span 16;
+    grid-template-columns: auto 1fr auto auto auto auto auto;
+    height: 128px;
+    gap: 24px;
+    border: 1px solid #E2E6E9;
+    border-radius: 16px;
+  }
+
+  &__empty {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  &__items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px; // відстань між картками
+  }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+    padding: 56px 24px;
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+    margin: 31px 24px;
+  }
+
+  &__name-garget {
+    font-weight: 600;
+    font-size: 14px;
+    color: #0F0F11;
+    padding: 53.5px 24px;
+  }
+
+  &__button-plus {
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
+    border: 1px solid #E2E6E9;
+    margin-top: 48px;
+  }
+
+  &__button-minus {
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
+    border: 1px solid #E2E6E9;
+    margin-top: 48px;
+  }
+
+  &__count-garget {
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+    padding: 55px 13px;
+  }
+
+  &__cost {
+    color: #0F0F11;
+    font-size: 22px;
+    font-weight: 800;
+    padding-top: 48.5px;
+    padding-right: 24px;
+  }
+
+  &__block-total {
+    border-radius: 48px;
+    border: 1px solid #E2E6E9;
+  }
+
+  &__total-amount {
+    color: #0F0F11;
+    font-size: 32px;
+    font-weight: 800;
+    padding-top: 23px;
+    padding-left: 140px;
+    padding-right: 140px;
+    padding-bottom: 0px;
+  }
+
+  &__count-item {
+    color: #89939A;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0px 128px;
+  }
+
+  &__small-line {
+    height: 1px;
+    grid-column: 14 / span 7;
+    background-color: #e2e6e9;
+    display: block;
+    margin-top: 25px;
+  }
+
+  &__button-checkout {
+
+    text-decoration: none;
+    color: white;
+    background-color: #4219d0;
+    border-radius: 48px;
+    width: 320px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700px;
+    line-height: 21px;
+    margin: 24px;
+
+    &:hover {
+      text-decoration: none;
+      color: #4219d0;
+      background-color: #ffffff;
+      border-radius: 48px;
+      width: 320px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700px;
+      line-height: 21px;
+      border: 1px solid #b4bdc3;
+      margin: 24px;
+    }
+  }
+
+  &__modal-widnow {
+    width: 200px;
+    height: 100px;
+    background-color: #E2E6E9;
+    border-radius: 16px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+
+  &__questions {
+    font-size: 12px;
+    padding-top: 38px;
+    padding-left: 10px;
+  }
+
+  &__position-button {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 10px;
+  }
+
+  &__button-yes,
+  &__button-no {
+    background-color: #89939A;
+    color: white;
+    width: 30px;
+    border-radius: 10px;
+    border:  1px solid #b4bdc3;
+  }
+
+  &__button-checkout:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

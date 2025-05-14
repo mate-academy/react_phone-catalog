@@ -73,18 +73,6 @@ export const TabletsPage = () => {
     );
   }
 
-  if (loadingDataOnServer) {
-    return <Loader loading={true} />;
-  }
-
-  if (!loadingDataOnServer && tablet.length === 0 && !reloadButton) {
-    return (
-      <div className="no-items-message">
-        <p>There are no phones</p>
-      </div>
-    );
-  }
-
   const totalPages = Math.ceil(tablet.length / itemsPerPage);
 
   // Розрахунок елементів для поточної сторінки
@@ -107,6 +95,36 @@ export const TabletsPage = () => {
 
     setCurrentPage(pageNumber);
   };
+
+  const getVisiblePages = () => {
+    const visiblePages = [];
+    const maxVisible = 4;
+
+    let startPage = Math.max(currentPage - 1, 1);
+    const endPage = Math.min(startPage + maxVisible - 1, totalPages);
+
+    if (endPage - startPage + 1 < maxVisible) {
+      startPage = Math.max(endPage - maxVisible + 1, 1);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      visiblePages.push(i);
+    }
+
+    return visiblePages;
+  };
+
+  if (loadingDataOnServer) {
+    return <Loader loading={true} />;
+  }
+
+  if (!loadingDataOnServer && tablet.length === 0 && !reloadButton) {
+    return (
+      <div className="no-items-message">
+        <p>There are no phones</p>
+      </div>
+    );
+  }
 
   return (
     <div className="gargets">
@@ -180,15 +198,19 @@ export const TabletsPage = () => {
         >
           {'<'}
         </button>
-        {[...Array(totalPages)].map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handlePageChange(index + 1)}
-            className={currentPage === index + 1 ? 'active' : ''}
-          >
-            {index + 1}
-          </button>
-        ))}
+
+        <div className="page-buttons">
+          {getVisiblePages().map(page => (
+            <button
+              key={page}
+              onClick={() => handlePageChange(page)}
+              className={`page-btn ${currentPage === page ? 'active' : ''}`}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
