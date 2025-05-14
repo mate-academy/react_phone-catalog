@@ -1,0 +1,49 @@
+body {
+  font-family: var(--font-family-main);
+  font-size: var(--base-font-size);
+  font-weight: 600;
+  background-color: var(--color-white);
+  color: var(--color-white);
+  position: relative;
+}
+
+.container {
+  max-width: var(--container-width);
+  padding-inline: var(--container-padding-x);
+  margin: 0 auto;
+
+  @include tablet-above {
+    --container-padding-x: 24px;
+  }
+
+  @include desktop-above {
+    --container-padding-x: 32px;
+  }
+}
+
+h1 {
+  font-size: rem(48);
+  line-height: 1;
+
+}
+
+h2 {
+  font-size: rem(38);
+  line-height: 1;
+  letter-spacing: -1px;
+
+}
+
+h3 {
+  font-size: rem(28);
+  line-height: 1.2;
+
+}
+
+h4 {
+  font-size: rem(24);
+  line-height: 1.25;
+}
+
+
+.button {}
