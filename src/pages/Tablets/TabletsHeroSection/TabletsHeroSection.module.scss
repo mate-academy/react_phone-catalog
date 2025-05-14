@@ -1,0 +1,11 @@
+@use 'styles/utils' as u;
+
+.customBreadcrumbs {
+  @include u.on-tablet {
+    margin-inline: 24px !important;
+  }
+
+  @include u.on-desktop {
+    margin-inline: auto !important;
+  }
+}

@@ -1,79 +1,233 @@
-import React, { useContext } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+
 import styles from './ProductDetailsHeroSection.module.scss';
-import { Breadcrumbs } from '@/components/UI/Breadcrumbs';
+
 import { ProductDetailsContext } from '@/context/ProductDetailsContext';
+import { ProductContext, ProductContextType } from '@/context/ProductContext';
+
+import { SwiperProductDetails } from '@/components/UI/SwiperProductDetails';
+import { ProductPrice } from '@/components/UI/ProductPrice';
+import { Loader } from '@/components/UI/Loader';
+import { ProductCardButtons } from '@/components/UI/ProductCardButtons';
+
+import { ProductDetails } from '@/types/productDetails';
+import { ProductCharacteristics } from '@/components/UI/ProductCharacteristics';
+
+const colorHexMap: { [key: string]: string } = {
+  spacegray: '#5f5f5f',
+  midnightgreen: '#004953',
+  rosegold: '#B76E79',
+  sierrablue: '#a4c4da',
+  spaceblack: '#4b4845',
+  midnight: '#343b43',
+  graphite: '#4C4A46',
+};
 
 export const ProductDetailsHeroSection: React.FC = () => {
   const { itemId } = useParams<{ itemId: string }>();
-  const category = useLocation().pathname.split('/')[1];
-  const context = useContext(ProductDetailsContext);
 
-  if (!context) {
+  const characteristics: { key: keyof ProductDetails; name: string }[] = [
+    { key: 'screen', name: 'Screen' },
+    { key: 'resolution', name: 'Resolution' },
+    { key: 'processor', name: 'Processor' },
+    { key: 'ram', name: 'RAM' },
+  ];
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pathSegments = location.pathname.split('/').filter(Boolean);
+
+  const category =
+    pathSegments.length >= 2
+      ? pathSegments[pathSegments.length - 2]
+      : undefined;
+
+  const detailsContext = useContext(ProductDetailsContext);
+  const productContext = useContext(ProductContext) as ProductContextType;
+
+  if (!detailsContext || !productContext) {
     throw new Error(
-      'ProductDetailsHeroSection must be used within a ProductDetailsProvider',
+      'ProductDetailsHeroSection must be used within necessary Providers',
     );
   }
 
-  const { getProduct } = context;
-  const product = getProduct(category, itemId!);
+  const { getProduct: getProductDetails } = detailsContext;
+  const { allProducts, isLoading: productsLoading } = productContext;
 
-  if (!product) {
-    return <div>Product not found</div>;
+  const productDetails = getProductDetails(category!, itemId!);
+
+  const productFromList = useMemo(() => {
+    if (!itemId || !allProducts) {
+      return undefined;
+    }
+    return allProducts.find(p => p.itemId === itemId);
+  }, [itemId, allProducts]);
+
+  // #region fakeItemId
+  const [displayId, setDisplayId] = useState<number | null>(null);
+
+  const getRandomSixDigitNumber = (): number => {
+    return Math.floor(Math.random() * 900000) + 100000;
+  };
+
+  useEffect(() => {
+    const randomId = getRandomSixDigitNumber();
+    setDisplayId(randomId);
+  }, [itemId]);
+  //#endregion
+
+  // #region product colors
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (productDetails) {
+      setSelectedColor(productDetails.color);
+    }
+  }, [productDetails]);
+
+  const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newColor = event.target.value;
+    const newItemId = `${productDetails?.namespaceId}-${productDetails?.capacity.toLowerCase()}-${newColor}`;
+    const newPath = `/${category}/${newItemId}`;
+    setSelectedColor(newColor);
+    navigate(newPath);
+  };
+  //#endregion
+
+  // #region product capacity
+  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (productDetails) {
+      setSelectedCapacity(productDetails.capacity);
+    }
+  }, [productDetails]);
+
+  const handleCapacityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newCapacity = event.target.value;
+    const newItemId = `${productDetails?.namespaceId}-${newCapacity.toLowerCase()}-${productDetails?.color}`;
+    const newPath = `/${category}/${newItemId}`;
+    setSelectedCapacity(newCapacity);
+    navigate(newPath);
+  };
+  //#endregion
+
+  if (!productDetails && !productsLoading) {
+    return (
+      <div className={styles.notFoundContainer}>
+        <img
+          src="img/product-not-found.png"
+          alt="Product not found illustration"
+          className={styles.notFoundImage}
+        />
+        <p className={styles.notFoundMessage}>Product not found</p>
+      </div>
+    );
+  }
+
+  if (!productDetails || productsLoading) {
+    return <div>Loading product details...</div>;
   }
 
   return (
     <div className={styles.page}>
-      {/* <Breadcrumbs /> */}
-      <h1>{product.name}</h1>
-      <img src={product.images[0]} alt={product.name} />
-      <p>Price: {product.priceDiscount} $</p>
-      <p>Full Price: {product.priceRegular} $</p>
-      <p>Color: {product.color}</p>
-      <p>Capacity: {product.capacity}</p>
+      <div className={styles.productWrapper}>
+        <h1 className={styles.productName}>{productDetails.name}</h1>
 
-      {/* Специфичные характеристики */}
-      {category === 'phones' && (
-        <div>
-          <p>Screen: {product.screen}</p>
-          <p>Resolution: {product.resolution}</p>
-          <p>Processor: {product.processor}</p>
-          <p>RAM: {product.ram}</p>
-          <p>Camera: {product.camera}</p>
-          <p>Zoom: {product.zoom}</p>
-          <p>Cell: {product.cell?.join(', ')}</p>
-        </div>
-      )}
-      {category === 'tablets' && (
-        <div>
-          <p>Screen: {product.screen}</p>
-          <p>Resolution: {product.resolution}</p>
-          <p>Processor: {product.processor}</p>
-          <p>RAM: {product.ram}</p>
-          <p>Camera: {product.camera}</p>
-          <p>Zoom: {product.zoom}</p>
-        </div>
-      )}
-      {category === 'accessories' && (
-        <div>
-          <p>Screen: {product.screen || 'N/A'}</p>
-          <p>Capacity: {product.capacity}</p>
-        </div>
-      )}
+        <SwiperProductDetails images={productDetails.images} />
 
-      <section>
-        <h2>About</h2>
-        {product.description.map(
-          (desc: { title: string; text: string[] }, index: number) => (
-            <div key={index}>
-              <h3>{desc.title}</h3>
-              {desc.text.map((text: string, i: number) => (
-                <p key={i}>{text}</p>
-              ))}
+        <div className={styles.productCharacteristicBlock}>
+          <div className={styles.productColors}>
+            <div className={styles.colorInfo}>
+              <p className={styles.titleColors}>Available colors</p>
+              <p className={styles.productId}>{`ID: ${displayId}`}</p>
             </div>
-          ),
-        )}
-      </section>
+            <div className={styles.colorSelector}>
+              {productDetails.colorsAvailable &&
+                productDetails.colorsAvailable.map(color => {
+                  const inputId = `color-${productDetails.id}-${color}`;
+                  const backgroundColor = colorHexMap[color] || color;
+
+                  return (
+                    <div key={color} className={styles.colorOption}>
+                      <input
+                        type="radio"
+                        name="productColor"
+                        id={inputId}
+                        value={color}
+                        checked={selectedColor === color}
+                        onChange={handleColorChange}
+                        className={styles.colorRadioInput}
+                      />
+                      <label
+                        htmlFor={inputId}
+                        className={styles.colorLabel}
+                        title={color.charAt(0).toUpperCase() + color.slice(1)}
+                      >
+                        <span
+                          className={styles.colorSwatch}
+                          style={{ backgroundColor: backgroundColor }}
+                        ></span>
+                      </label>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+
+          <div className={styles.productCapacity}>
+            <p className={styles.titleCapacity}>Select capacity</p>
+            <div className={styles.capacitySelector}>
+              {productDetails.capacityAvailable &&
+                productDetails.capacityAvailable.map(capacity => {
+                  const inputId = `capacity-${productDetails.id}-${capacity}`;
+
+                  return (
+                    <div key={capacity} className={styles.capacityOption}>
+                      <input
+                        type="radio"
+                        name="productCapacity"
+                        id={inputId}
+                        value={capacity}
+                        checked={selectedCapacity === capacity}
+                        onChange={handleCapacityChange}
+                        className={styles.capacityRadioInput}
+                      />
+                      <label htmlFor={inputId} className={styles.capacityLabel}>
+                        {capacity}
+                      </label>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+
+          <div className={styles.productPriceWrapper}>
+            {productFromList ? (
+              <ProductPrice
+                isShowFullPrice={true}
+                product={productFromList}
+                customClassName={styles.productPricesParentStyles}
+              />
+            ) : (
+              <Loader />
+            )}
+          </div>
+
+          <div className={styles.productCardButtonsWrapper}>
+            <ProductCardButtons />
+          </div>
+
+          <ProductCharacteristics
+            product={productDetails}
+            characteristics={characteristics}
+            customClassName={styles.productCharacteristicsParentCustom}
+          />
+
+          
+        </div>
+      </div>
     </div>
   );
 };

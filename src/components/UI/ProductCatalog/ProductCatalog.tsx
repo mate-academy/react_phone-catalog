@@ -70,6 +70,7 @@ export const ProductCatalog: React.FC<Props> = ({
         );
         break;
     }
+    
     setFilteredProducts(sorted);
     setCurrentPage(1);
     setIsLoading(false);

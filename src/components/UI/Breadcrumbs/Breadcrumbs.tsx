@@ -4,8 +4,13 @@ import styles from './Breadcrumbs.module.scss';
 import products from 'data/api/products.json';
 import HomeIcon from '@/assets/icons/Home.svg?react';
 import ArrowRight from '@/assets/icons/ArrowRight.svg?react';
+import cn from 'classnames';
 
-export const Breadcrumbs: React.FC = () => {
+type Props = {
+  classNameCustom?: string;
+};
+
+export const Breadcrumbs: React.FC<Props> = ({ classNameCustom }) => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter(x => x);
   const { itemId } = useParams<{ itemId?: string }>();
@@ -26,7 +31,7 @@ export const Breadcrumbs: React.FC = () => {
   };
 
   return (
-    <nav className={styles.breadcrumbs}>
+    <nav className={cn(styles.breadcrumbs, classNameCustom)}>
       <ul className={styles.list}>
         <li className={styles.item}>
           <Link to="/">

@@ -6,7 +6,7 @@ import { Footer } from './components/Layout/Footer';
 export const App = () => (
   <div className={styles.app}>
     <header className={styles.header}>
-      <Navbar favouritesCount={10} cartCount={10} />
+      <Navbar favouritesCount={0} cartCount={0} />
     </header>
 
     <main className={styles.mainContent}>

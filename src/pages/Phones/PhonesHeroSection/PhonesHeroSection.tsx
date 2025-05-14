@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
-// import styles from './PhonesHeroSection.module.scss';
+import styles from './PhonesHeroSection.module.scss';
 import { Breadcrumbs } from '@/components/UI/Breadcrumbs';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { ProductCatalog } from '@/components/UI/ProductCatalog';
 
 import { ProductContext, ProductContextType } from '@/context/ProductContext';
@@ -10,6 +10,8 @@ export const PhonesHeroSection: React.FC = () => {
   const { allProducts, isLoading, error } = useContext(
     ProductContext,
   ) as ProductContextType;
+
+  const { itemId } = useParams<{ itemId?: string }>();
 
   const phoneProducts = useMemo(() => {
     return allProducts.filter(product => product.category === 'phones');
@@ -21,15 +23,19 @@ export const PhonesHeroSection: React.FC = () => {
 
   return (
     <>
-      <Breadcrumbs />
-
-      <ProductCatalog
-        title="Mobile phones"
-        products={phoneProducts}
-        isLoading={isLoading}
+      <Breadcrumbs
+        classNameCustom={itemId ? styles.customBreadcrumbs : undefined}
       />
 
-      <Outlet />
+      {itemId ? (
+        <Outlet />
+      ) : (
+        <ProductCatalog
+          title="Mobile phones"
+          products={phoneProducts}
+          isLoading={isLoading}
+        />
+      )}
     </>
   );
 };

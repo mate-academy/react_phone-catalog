@@ -1,7 +1,8 @@
 @use 'styles/utils/' as u;
 
 .breadcrumbs {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   margin-inline: 16px;
   padding-top: 24px;
 
