@@ -1,5 +1,4 @@
 import React from 'react';
-// import styles from './ButtonFavorite.module.scss';
 
 import classNames from 'classnames';
 import { HeartIcon } from '../../../img/icons/heart-icon/HeartIcon';

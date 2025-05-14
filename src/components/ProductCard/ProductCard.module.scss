@@ -7,6 +7,8 @@
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
   padding: 32px;
   gap: 8px;
 }
@@ -20,6 +22,8 @@
 
 .product-card__image {
   width: 100%;
+  height: 196px;
+  object-fit: contain;
 }
 
 .product-card__description {
@@ -35,6 +39,9 @@
 // variant: 'cart'
 
 .product-card--cart {
+  width: 100%;
+  max-width: 100%;
+
   display: flex;
   align-items: center;
   gap: 16px;

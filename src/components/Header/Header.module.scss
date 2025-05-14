@@ -25,6 +25,7 @@
 
 .header--hide-on-mobile {
   display: none;
+  height: 100%;
 }
 
 @include on-tablet {
@@ -51,14 +52,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
 
   &--left {
     display: flex;
     align-items: center;
+    height: 100%;
   }
 
   &--right {
-    // height: 100%;
   }
 }
 
@@ -75,6 +77,7 @@
 }
 
 .header__btn {
+  box-sizing: border-box;
   border-left: 1px solid $header-border-color;
   width: 48px;
   height: 48px;
@@ -82,27 +85,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: $animation-duration;
+
+  &:hover {
+    box-shadow:
+      rgba(45, 35, 66, 0.4) 0 4px 8px,
+      rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
+      #d6d6e7 0 -3px 0 inset;
+  }
+
+  &:active {
+    box-shadow: #d6d6e7 0 3px 7px inset;
+  }
+
+  &--active {
+    box-shadow: #d6d6e7 0 3px 7px inset;
+    &:hover {
+      box-shadow: #d6d6e7 0 3px 7px inset;
+    }
+  }
 }
 
 @include on-tablet {
   .header__btn {
     width: 64px;
     height: 64px;
-  }
-}
-
-.header__nav-list {
-  display: flex;
-}
-
-@include on-tablet {
-  .header__nav-list {
-    gap: 32px;
-  }
-}
-
-@include on-desktop {
-  .header__nav-list {
-    gap: 64px;
   }
 }

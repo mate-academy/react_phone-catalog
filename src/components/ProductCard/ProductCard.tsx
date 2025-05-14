@@ -12,21 +12,25 @@ type Props = {
   variant?: Variant;
 };
 
-export const ProductCard: React.FC<Props> = ({ variant = 'default' }) => {
-  const [product] = useState<Product>({
-    id: 1,
-    category: 'phones',
-    itemId: 'apple-iphone-7-32gb-black',
-    name: 'Apple iPhone 7 32GB Black',
-    fullPrice: 400,
-    price: 375,
-    screen: "4.7' IPS",
-    capacity: '32GB',
-    color: 'black',
-    ram: '2GB',
-    year: 2016,
-    image: 'img/phones/apple-iphone-7/black/00.webp',
-  });
+const initialProduct = {
+  id: 1,
+  category: 'phones',
+  itemId: 'apple-iphone-7-32gb-black',
+  name: 'Apple iPhone 7 32GB Black',
+  fullPrice: 400,
+  price: 375,
+  screen: "4.7' IPS",
+  capacity: '32GB',
+  color: 'black',
+  ram: '2GB',
+  year: 2016,
+  image: 'img/phones/apple-iphone-7/black/00.webp',
+};
+
+export const ProductCard: React.FC<Props> = ({
+  product = initialProduct,
+  variant = 'default',
+}) => {
   const [amount, setAmount] = useState(1);
   const [inCart, setInCart] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);

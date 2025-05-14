@@ -1,6 +1,9 @@
 @import '../variables/variables.scss';
 
 .button-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: $button-size;
   height: $button-size;
   border: 1px solid $gray;
@@ -35,6 +38,7 @@
   }
 
   &--arrow-top::before,
+  &--arrow-bottom::before,
   &--arrow-left::before,
   &--arrow-right::before {
     content: '';
@@ -56,6 +60,12 @@
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 
+   &--arrow-bottom::before {
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
   &--arrow-left::before {
     left: 55%;
     transform: translate(-50%, -50%) rotate(225deg);
@@ -67,10 +77,30 @@
   }
 
   &--arrow-top:hover::before,
+  &--arrow-bottom:hover::before,
   &--arrow-left:hover::before,
   &--arrow-right:hover::before {
     border-top: 1px solid $primary;
     border-right: 1px solid $primary;
+  }
+
+  &--active {
+    background-color: $primary;
+    border: 1px solid $primary;
+    color: $white;
+  }
+
+  &--disabled {
+    border: 1px solid $light-gray;
+    color: $light-gray;
+
+    &:hover::before {
+      border-color: $light-gray;
+    }
+
+    &:hover {
+      border: 1px solid $light-gray;
+    }
   }
 }
 
