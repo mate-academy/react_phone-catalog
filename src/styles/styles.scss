@@ -64,3 +64,8 @@ h2 {
     padding-bottom: 80px;
   }
 }
+
+.no-scroll {
+  height: 100%;
+  overflow-y: hidden;
+}
