@@ -1,0 +1,23 @@
+.brand__top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigate{
+display: flex;
+justify-content: space-between;
+height: 62px;
+align-items: center;
+&__buttonR{
+  margin-right: 16px;
+    height: 32px;
+    width: 32px;
+    background-image: url('img/icons/buttonSliderDis(right).svg');
+  }
+&__buttonL{
+   height: 32px;
+    width: 32px;
+    background-image: url('img/icons/buttonSliderAct(right).svg');
+}
+}

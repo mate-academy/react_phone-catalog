@@ -1,0 +1,44 @@
+
+
+.top__bar{
+
+
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+margin-bottom: 24px;
+
+}
+.top-bar__logo{
+  display: flex
+}
+
+
+
+.icon {
+
+  width: 16px;
+  height: 16px;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  &--menu {
+    margin-left: auto;
+  }
+
+  &--cart{
+    background-image: url('img/icons/cart.svg');
+  }
+  &--favorite{
+
+    background-image: url('/img/icons/heart.svg');
+  }
+}
+
+
+
+.main{
+
+}

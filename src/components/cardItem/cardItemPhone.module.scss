@@ -1,0 +1,23 @@
+.cardList{
+  display: flex;
+  gap:16px;
+
+  overflow-x: auto;
+
+
+  max-width: 100vw;
+
+}
+.card{
+
+  width: 212px;
+  height: 439px;
+  padding: 32px;
+  &__image{
+
+    width: 148px;
+    height: 129px;
+object-fit: contain;
+  }
+}
+

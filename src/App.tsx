@@ -1,7 +1,15 @@
 import './App.scss';
+import { useEffect, useState } from 'react';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+import { HomePage } from './components/homePage/HomePage';
+
+export const App = () => {
+  const [phones, setPhones] = useState();
+  console.log(phones)
+  useEffect(() => {
+    fetch('/api/products.json').then(res=>res.json())
+    .then(data=>setPhones(data))
+  },[])
+  return <HomePage phones={phones} />;
+};
+
