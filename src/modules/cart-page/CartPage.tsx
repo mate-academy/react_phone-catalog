@@ -8,7 +8,10 @@ import { CartCheckout, CartItem } from './components/components';
 export const CartPage = () => {
   const dispatch = useAppDispatch();
   const cartProducts = useAppSelector(state => state.cart);
-  const itemsCount = cartProducts.length;
+  const itemsCount = cartProducts.reduce(
+    (sum, product) => sum + product.amount,
+    0,
+  );
 
   const totalPrice = cartProducts.reduce((acc, item: CartProduct) => {
     return acc + item.price * item.amount;
