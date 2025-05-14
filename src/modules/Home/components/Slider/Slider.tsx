@@ -1,3 +1,4 @@
+import { ArrowLeftSVG } from '../../../../assets/ArrowLeftSVG';
 import { ArrowRightSVG } from '../../../../assets/ArrowRightSVG';
 import s from './Slider.module.scss';
 
@@ -9,10 +10,12 @@ export const Slider = () => {
   return (
     <div className={`${s.banner} ${s.container}`}>
       <div className={s.slider}>
-        <button className={s.button}></button>
+        <button className={s.slider__button} disabled={isRightDisabled}>
+          <ArrowLeftSVG isDisabled={isRightDisabled} width={32} />
+        </button>
         <img src={FIRST_SLIDE_PATH} alt="" className={s.slider__content} />
         <button className={s.slider__button} disabled={isRightDisabled}>
-          <ArrowRightSVG isDisabled={isRightDisabled} />
+          <ArrowRightSVG isDisabled={isRightDisabled} width={32} />
         </button>
       </div>
       <div className={s.banner__indicator}></div>

@@ -44,13 +44,14 @@ $product-card-padding: $gap;
 $product-font-size: 32px;
 $product-list-gap: 16px;
 $product-list-padding-block: 24px;
-
 $product-list-padding-block-mobile: 22px;
 
+// Home
 $home-component-gap: 80px;
 $home-component-gap-tablet: 64px;
 $home-component-gap-moblie: 56px;
 
+// Product card
 $product-control-buttons-gap: calc($gap / 2);
 
 /* Where gap constant ratio & where it was used:

@@ -3,14 +3,16 @@ import s from './SVG.module.scss';
 
 type Props = {
   isDisabled: boolean;
+  width?: number;
 };
 
 /* eslint-disable max-len */
-export const ArrowLeftSVG: React.FC<Props> = ({ isDisabled }) => (
+export const ArrowLeftSVG: React.FC<Props> = ({ isDisabled, width }) => (
   <div
     className={classNames(s.containerSVG, s.button, {
       [s.containerSVG__disabled]: isDisabled,
     })}
+    style={width ? { width: `${width}px` } : {}}
   >
     <svg
       width="16"

@@ -3,6 +3,7 @@
 
 .list {
   @include grid;
+
   gap: $product-list-gap;
   padding-block: $product-list-padding-block;
 }
@@ -17,6 +18,7 @@
 
     @include on-mobile {
       @include use-font(800);
+
       font-size: $product-list-padding-block-mobile;
     }
   }
@@ -33,7 +35,6 @@
       display: flex;
       justify-content: space-between;
       gap: $product-control-buttons-gap;
-      
     }
   }
 }

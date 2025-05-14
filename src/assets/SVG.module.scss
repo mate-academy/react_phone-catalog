@@ -1,7 +1,7 @@
 @use '../styles/variables.scss' as *;
 
 // Base container with common behaviors for buttons and links
-.containerSVG, .button {
+.containerSVG {
   height: 100%;
   aspect-ratio: 1 / 1;
   display: flex;
@@ -43,9 +43,10 @@
   }
 }
 
-.containerSVG__disabled { // for buttons disabled
-  pointer-events: none;  
-  cursor: not-allowed; 
+.containerSVG__disabled {
+  // for buttons disabled
+  pointer-events: none;
+  cursor: not-allowed;
 
   &::after {
     border: 1px $elements solid;
@@ -54,7 +55,7 @@
   // Remove hover effect on disabled state
   &:hover {
     &::after {
-      border: 1px $elements solid; 
+      border: 1px $elements solid;
     }
   }
 
