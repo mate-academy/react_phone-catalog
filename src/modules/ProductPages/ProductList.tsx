@@ -61,8 +61,8 @@ export const ProductList: React.FC<ProductListProps> = ({
                 className="swiper__like"
                 style={{
                   backgroundImage: like
-                    ? 'url(/public/img/favorites.png)'
-                    : 'url(/public/img/navbar/like.png)',
+                    ? 'url(/img/favorites.png)'
+                    : 'url(/img/navbar/like.png)',
                 }}
               ></span>
             </button>

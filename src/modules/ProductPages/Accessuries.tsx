@@ -20,7 +20,7 @@ export const Accessories = () => {
     setReloadButton(false);
     setloadingDataOnServer(true);
     setTimeout(() => {
-      fetch('/public/api/accessories.json')
+      fetch('/api/accessories.json')
         .then(response => response.json())
         .then(data => setAccessuries(data))
         .catch(error => {
@@ -50,7 +50,7 @@ export const Accessories = () => {
     setAccessuries([]);
     setReloadButton(false);
     setTimeout(() => {
-      fetch('/public/api/accessories.json')
+      fetch('/api/accessories.json')
         .then(response => response.json())
         .then(data => setAccessuries(data))
         .catch(error => {

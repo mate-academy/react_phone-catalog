@@ -79,10 +79,7 @@ export const App = () => {
                       }
                     }}
                   >
-                    <img
-                      src="../../public/img/navbar/Logo.png"
-                      alt="logo-gadgets"
-                    />
+                    <img src="./img/navbar/Logo.png" alt="logo-gadgets" />
                   </NavLink>
                   {links.map((item, index) => (
                     <li className="navbar__item" key={index}>
@@ -222,10 +219,7 @@ export const App = () => {
                       checkClickOnLogoBar();
                     }}
                   >
-                    <img
-                      src="../../public/img/navbar/Logo.png"
-                      alt="logo-gadgets"
-                    />
+                    <img src="./img/navbar/Logo.png" alt="logo-gadgets" />
                   </NavLink>
                 </li>
 

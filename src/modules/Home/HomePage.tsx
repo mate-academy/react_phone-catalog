@@ -15,11 +15,7 @@ export const HomePage = () => {
   const [isImageVisible, setIsImageVisible] = useState(true);
   const [phones, setPhones] = useState<Phone[]>([]);
   const navigate = useNavigate();
-  const images = [
-    '../../public/img/Banner.png',
-    '../../public/img/banner2.jpg',
-    '../../public/img/banner3.jpg',
-  ];
+  const images = ['./img/Banner.png', './img/banner2.jpg', './img/banner3.jpg'];
 
   useEffect(() => {
     if (!clickOnButton) {
@@ -34,7 +30,7 @@ export const HomePage = () => {
   }, [clickOnButton]);
 
   useEffect(() => {
-    fetch('/public/api/phones.json')
+    fetch('/api/phones.json')
       .then(response => response.json())
       .then(data => {
         setPhones(data);
@@ -201,7 +197,7 @@ export const HomePage = () => {
 
             <div className="home__category-phone">
               <img
-                src="../../public/img/phoneCategory.png"
+                src="./img/phoneCategory.png"
                 alt="logo-gadgets"
                 className="home__category-img"
                 onClick={() => {
@@ -214,7 +210,7 @@ export const HomePage = () => {
 
             <div className="home__category-tablet">
               <img
-                src="../../public/img/tabletsCategory.png"
+                src="./img/tabletsCategory.png"
                 alt="logo-gadgets"
                 className="home__category-img"
                 onClick={() => {
@@ -227,7 +223,7 @@ export const HomePage = () => {
 
             <div className="home__category-accessuries">
               <img
-                src="../../public/img/accessuriesCategory.png"
+                src="./img/accessuriesCategory.png"
                 alt="logo-gadgets"
                 className="home__category-img"
                 onClick={() => {

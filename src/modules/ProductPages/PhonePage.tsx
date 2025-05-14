@@ -20,7 +20,7 @@ export const PhonePage = () => {
     setReloadButton(false);
     setLoadingDataOnServer(true);
     setTimeout(() => {
-      fetch('/public/api/phones.json')
+      fetch('/api/phones.json')
         .then(response => response.json())
         .then(data => setPhones(data))
         .catch(error => {
@@ -36,7 +36,7 @@ export const PhonePage = () => {
     setPhones([]);
     setReloadButton(false);
     setTimeout(() => {
-      fetch('/public/api/phones.json')
+      fetch('/api/phones.json')
         .then(response => response.json())
         .then(data => setPhones(data))
         .catch(error => {
