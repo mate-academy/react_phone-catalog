@@ -1,0 +1,45 @@
+@use '../../styles/mixins.scss' as *;
+
+.main {
+  padding-block: 24px 64px;
+
+  @include onTablet {
+    padding-block: 32px 64px;
+  }
+
+  @include onDesktop {
+    padding-block: 56px 80px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding-inline: 16px;
+
+    @include onTablet {
+      padding-inline: 24px;
+    }
+
+    @include onDesktop {
+      padding-inline: 32px;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+    padding-inline: 16px;
+
+    @include onTablet {
+      margin-bottom: 32px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 56px;
+    }
+  }
+}

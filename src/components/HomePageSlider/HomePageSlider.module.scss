@@ -1,0 +1,52 @@
+@use '../../styles/mixins.scss' as *;
+
+.slider {
+  margin-inline: -16px;
+  position: relative;
+
+  @include onTablet {
+    margin: 0;
+  }
+}
+
+.container {
+  display: flex;
+}
+
+:global(.prev),
+:global(.next) {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    border-radius: 10px;
+    border-color: #b4bdc3;
+  }
+}
+
+// :global(.prev) {
+//   margin-right: 16px;
+// }
+
+// :global(.next) {
+//   margin-left: 16px;
+// }
+
+:global(.swiper-pagination-bullet) {
+  width: 16px !important;
+  height: 4px !important;
+  background-color: #e2e6e9 !important;
+  border-radius: 0 !important;
+  margin: 0 4px !important;
+  opacity: 1 !important;
+}
+
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
