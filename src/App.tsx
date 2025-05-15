@@ -3,7 +3,7 @@ import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { Header } from './components/Header';
 import { store } from './store/store';
-import { HomePage } from './components/pages/HomePage/HomePage';
+import { HomePage } from './pages/HomePage/HomePage';
 
 export const App = () => {
   return (

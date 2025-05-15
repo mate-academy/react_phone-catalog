@@ -1,15 +1,24 @@
+@use '../../styles/mixins.scss' as *;
+
 .header {
   position: sticky;
   top: 0;
   box-shadow: 0 1px 0 0 #e2e6e9;
   background-color: #fff;
   z-index: 10;
+  height: 48px;
+
+  background-color: #fff;
+
+  @include onDesktop {
+    height: 64px;
+  }
 
   &__container {
     display: flex;
     align-items: center;
     margin: 0 auto;
-    padding: 12px 16px;
+    height: 100%;
   }
 
   &__nav {
@@ -17,19 +26,42 @@
 
     @media (min-width: 640px) {
       display: flex;
-      gap: 32px;
       padding-left: 16px;
       align-items: center;
+      height: 100%;
     }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 
   &__logo {
     height: 22px;
     padding-right: 16px;
+    display: block;
+    padding-left: 16px;
+
+    @include onDesktop {
+      padding-left: 24px;
+    }
   }
 
   &__link {
-    display: inline-block;
+    height: 48px;
+    display: flex;;
+    align-items: center;
     text-decoration: none;
     color: #89939A;
     font-size: 12px;
@@ -37,52 +69,61 @@
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 0.5px;
-    line-height: 1;
+    line-height: normal;
+    padding-top: 1px;
   }
 
   &__controls {
     margin-left: auto;
     display: flex;
     align-items: center;
-  }
-
-  &__menu {
-    width: 16px;
-    height: 16px;
-    border: none;
-    background: none;
-    display: flex;
-    align-items: center;
-
-    img {
-      height: 16px;
-      width: 16px;
-    }
-
-    @media (min-width: 640px) {
-      display: none;
-    }
+    height: 100%;
   }
 
   &__icons {
     display: none;
 
-    @media (min-width: 640px) {
+    @include onTablet {
       display: flex;
-      gap: 16px;
+      align-items: center;
 
       img {
+        display: block;
         height: 16px;
         width: 16px;
       }
     }
   }
 
-  &__favorites {
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-left: 1px solid #e2e6e9;
+    padding: 16px;
 
+    @include onDesktop {
+      padding: 24px;
+    }
   }
 
-  &__cart {
+  &__menu {
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-left: 1px solid #e2e6e9;
+    height: 100%;
 
+    img {
+      height: 16px;
+      width: 16px;
+    }
+
+    @include onTablet {
+      display: none;
+    }
   }
 }

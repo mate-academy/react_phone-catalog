@@ -1,0 +1,52 @@
+@use '../../styles/mixins.scss' as *;
+
+.productSlider {
+  margin-right: -16px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    margin: 0;
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  &__controls {
+    display: flex;
+    margin-block: 15px;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  &__button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &__arrowLeft {
+    width: 32px;
+    height: 32px;
+    transform: rotateY(180deg);
+  }
+
+  &__arrowRight {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__slider {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+}

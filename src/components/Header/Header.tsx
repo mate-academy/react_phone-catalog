@@ -15,26 +15,36 @@ export const Header: React.FC = () => {
         </NavLink>
 
         <nav className={styles.header__nav}>
-          <NavLink to={'/'} className={styles.header__link}>
-            Home
-          </NavLink>
-          <NavLink to={'/phones'} className={styles.header__link}>
-            Phones
-          </NavLink>
-          <NavLink to={'/tablets'} className={styles.header__link}>
-            Tablets
-          </NavLink>
-          <NavLink to={'/accessories'} className={styles.header__link}>
-            Accessories
-          </NavLink>
+          <ul className={styles.header__list}>
+            <li className={styles.header__item}>
+              <NavLink to={'/'} className={styles.header__link}>
+                Home
+              </NavLink>
+            </li>
+            <li className={styles.header__item}>
+              <NavLink to={'/phones'} className={styles.header__link}>
+                Phones
+              </NavLink>
+            </li>
+            <li className={styles.header__item}>
+              <NavLink to={'/tablets'} className={styles.header__link}>
+                Tablets
+              </NavLink>
+            </li>
+            <li className={styles.header__item}>
+              <NavLink to={'/accessories'} className={styles.header__link}>
+                Accessories
+              </NavLink>
+            </li>
+          </ul>
         </nav>
 
         <div className={styles.header__controls}>
           <div className={styles.header__icons}>
-            <NavLink to={'/favorites'}>
+            <NavLink to={'/favorites'} className={styles.header__icon}>
               <img src={heartIcon} alt="Favorites" />
             </NavLink>
-            <NavLink to={'/cart'}>
+            <NavLink to={'/cart'} className={styles.header__icon}>
               <img src={cartIcon} alt="Cart" />
             </NavLink>
           </div>

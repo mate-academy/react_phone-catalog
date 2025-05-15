@@ -1,0 +1,59 @@
+@use '../../styles/mixins.scss' as *;
+
+.slider {
+  margin-inline: -16px;
+  position: relative;
+}
+
+:global(.swiper) {
+  padding: 0 !important;
+}
+
+:global(.swiper-slide) {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+:global(.swiper-pagination-bullet) {
+  width: 16px !important;
+  height: 4px !important;
+  background-color: #e2e6e9 !important;
+  border-radius: 0 !important;
+  margin: 0 4px !important;
+  opacity: 1 !important;
+}
+
+:global(.swiper-button-prev),
+:global(.swiper-button-next) {
+  display: none !important;
+
+  @include onTablet {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    width: 32px !important;
+    height: 100% !important;
+    background-color: #fff !important;
+    border: 1px solid #b4bdc3 !important;
+    border-radius: 16px !important;
+    z-index: 5;
+  }
+}
+
+// :global(.swiper-button-prev) {
+//   left: 10 !important;
+// }
+
+// :global(.swiper-button-next) {
+//   right: 10 !important;
+// }
+
+.image {
+  display: block;
+  width: 100%;
+}
