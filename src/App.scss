@@ -3,10 +3,26 @@
 }
 
 @font-face {
-  font-family: Mont-Bold, sans-serif;
+  font-family: 'Mont';
   src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 
 .product__catalog[hidden] {
   display: none;
@@ -21,7 +37,7 @@
   align-items: center;
   justify-content: space-between;
   padding-left: 24px;
-  font-family: Mont-Bold, sans-serif;
+  font-family: Mont, sans-serif;
   position: sticky;
   z-index: 100;
   top: 0;
@@ -85,6 +101,7 @@
     color: #0f0f11;
   }
 
+
   .has-background-grey-lighter::after {
     content: '';
     display: block;
@@ -142,6 +159,7 @@
     height: 48px;
     display: flex;
     line-height: 11px;
+    font-weight: 800px;
     align-items: center;
     justify-content: space-between;
     padding-left: 16px;
@@ -247,7 +265,6 @@
     }
   }
 }
-
 @media screen and (max-width: 639px) {
   .navbar {
     height: 48px;
@@ -255,7 +272,7 @@
     align-items: center;
     justify-content: space-between;
     padding-left: 16px;
-    font-family: 'Mont-Bold';
+    font-family: 'Mont';
     position: sticky;
     z-index: 100;
     top: 0;
@@ -278,6 +295,7 @@
     &__button {
       display: none;
 
+      // Показуємо кнопки тільки коли меню відкрите
       .menu--open & {
         display: flex;
       }
@@ -304,6 +322,7 @@
       background-image: url(/public/img/navbar/like.png);
     }
 
+    // Іконки меню
     &__icon__menu,
     &__icon__close {
       display: block;
@@ -335,6 +354,7 @@
     }
   }
 
+  // Показуємо кнопки, коли меню відкрито
   .menu--open .navbar__button {
     display: flex;
   }
@@ -343,7 +363,7 @@
 .menu {
   font-size: 12px;
   font-weight: 800;
-  font-family: 'Mont-Bold', 'sans-serif';
+  font-family: 'Mont', 'sans-serif';
   line-height: 11px;
   letter-spacing: 4%;
   display: flex;
@@ -438,6 +458,7 @@
   }
 }
 
+
 .footer {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
@@ -446,7 +467,7 @@
   height: 64px;
   line-height: 11px;
   padding-left: 24px;
-  font-family: 'Mont-Bold';
+  font-family: 'Mont';
   z-index: 100;
   border-top: 1px solid #e2e6e9;
   background-color: white;
@@ -516,9 +537,9 @@
   }
 }
 
+// Mobile: min-width 320px
 @media screen and (min-width: 320px) {
   .footer {
-    margin-top: 0px;
     &__brand {
       display: flex;
       flex-direction: column;
@@ -531,6 +552,7 @@
       padding-top: 32px;
     }
     &__link__logo {
+
       padding-bottom: 32px;
     }
 
@@ -551,6 +573,7 @@
       padding-top: 32px;
     }
 
+
     &__item:last-child .menu__link {
       padding-bottom: 0px;
     }
@@ -562,12 +585,14 @@
       align-items: center;
       padding-top: 32px;
 
+      // Додаємо це:
       align-self: end;
       margin-top: auto;
     }
   }
 }
 
+// Tablet: min-width 639px
 @media screen and (min-width: 639px) {
   .footer {
     &__brand {
@@ -597,6 +622,7 @@
   }
 }
 
+// Desktop: min-width 1199px
 @media screen and (min-width: 1199px) {
   .footer {
     &__brand {

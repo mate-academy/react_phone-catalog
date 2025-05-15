@@ -243,9 +243,9 @@ export const App = () => {
                         'has-background-grey-lighter': isActive,
                       })
                     }
-                    to="/cotacts"
+                    to="/contacts"
                   >
-                    Cotacts
+                    Contacts
                   </NavLink>
                 </li>
 

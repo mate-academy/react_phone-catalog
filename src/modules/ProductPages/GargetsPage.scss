@@ -7,10 +7,26 @@
 }
 
 @font-face {
-  font-family: 'Mont-Bold';
-  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 
 .gargets {
   @include contentPaddingInline;
@@ -42,19 +58,19 @@
   }
 
   &__back-home-h2 {
-    font: 600 12px/12px 'Mont-Bold';
+    font: 600 12px/12px 'Mont';
     color: #89939A;
   }
 
   &__mobile-phones-h1 {
-    font: 800 48px/56px 'Mont-Bold';
+    font: 800 48px/56px 'Mont';
     letter-spacing: -1px;
     color: #0F0F11;
     padding-top: 40px;
   }
 
   &__count-models {
-    font: 600 14px/21px 'Mont-Bold';
+    font: 600 14px/21px 'Mont';
     color: #89939A;
     padding-top: 8px;
   }
@@ -67,7 +83,7 @@
 
   &__sort-by-h3,
   &__items-on-page-h3 {
-    font: 700 12px/100% 'Mont-Bold';
+    font: 700 12px/100% 'Mont';
     color: #89939A;
   }
 
@@ -133,3 +149,31 @@
     display: none;
   }
 }
+
+
+.error {
+  padding: 200px 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.reload-button {
+  width: 100px;
+  background-color: #89939A;
+  cursor: pointer;
+  padding: 10px 0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

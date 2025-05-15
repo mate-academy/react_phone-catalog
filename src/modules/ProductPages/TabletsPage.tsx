@@ -118,10 +118,13 @@ export const TabletsPage = () => {
     return <Loader loading={true} />;
   }
 
-  if (!loadingDataOnServer && tablet.length === 0 && !reloadButton) {
+  if (reloadButton) {
     return (
-      <div className="no-items-message">
-        <p>There are no phones</p>
+      <div className="error">
+        <p>Error loading data, please try again.</p>
+        <button onClick={handleReload} className="reload-button">
+          Reload
+        </button>
       </div>
     );
   }

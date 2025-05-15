@@ -135,7 +135,7 @@ export const PhonePage = () => {
 
   if (reloadButton) {
     return (
-      <div>
+      <div className="error">
         <p>Error loading data, please try again.</p>
         <button onClick={handleReload} className="reload-button">
           Reload

@@ -8,10 +8,26 @@
 }
 
 @font-face {
-  font-family: 'Mont-Bold';
-  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 
 .home {
   @include contentPaddingInline;
@@ -27,7 +43,7 @@
   }
 
   &__gargets-store {
-    font-family: 'Mont-Bold';
+    font-family: 'Mont';
     padding-top: 56px;
     font-weight: 800;
     font-size: 48px;
@@ -95,7 +111,7 @@
     grid-template-columns: repeat(24, 1fr);
     align-items: center;
     width: 100%;
-    font-family: 'Mont-Bold';
+    font-family: 'Mont';
     position: relative;
     overflow: hidden;
     gap: 16px;
@@ -111,16 +127,19 @@
     &-phone {
       padding-top: 24px;
       grid-column: 1 / span 8;
+      overflow: hidden;
     }
 
     &-tablet {
       padding-top: 24px;
       grid-column: 9 / span 8;
+      overflow: hidden;
     }
 
     &-accessuries {
       padding-top: 24px;
       grid-column: 17 / span 8;
+      overflow: hidden;
     }
 
     &-img {
@@ -170,7 +189,7 @@
     }
 
     &__gargets-store {
-      font-family: 'Mont-Bold';
+      font-family: 'Mont';
       grid-column: 1 / span 8;
       padding-top: 32px;
       font-weight: 800;
@@ -239,10 +258,10 @@
       grid-template-columns: repeat(24, 1fr);
       align-items: center;
       width: 100%;
-      font-family: 'Mont-Bold';
+      font-family: 'Mont';
       position: relative;
       overflow: hidden;
-      gap: 16px;
+      gap: 24px;
 
       &-h2 {
         font-size: 32px;
@@ -255,16 +274,19 @@
       &-phone {
         padding-top: 24px;
         grid-column: 1 / span 8;
+        overflow: hidden;
       }
 
       &-tablet {
         padding-top: 24px;
         grid-column: 9 / span 8;
+        overflow: hidden;
       }
 
       &-accessuries {
         padding-top: 24px;
         grid-column: 17 / span 8;
+        overflow: hidden;
       }
 
       &-img {
@@ -315,7 +337,7 @@
     }
 
     &__gargets-store {
-      font-family: 'Mont-Bold';
+      font-family: 'Mont';
       grid-column: 1 / span 8;
       padding-top: 24px;
       font-weight: 800;
@@ -374,7 +396,7 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
-      font-family: 'Mont-Bold';
+      font-family: 'Mont';
       position: relative;
       overflow: hidden;
       gap: 16px;
@@ -390,16 +412,19 @@
       &-phone {
         padding-top: 24px;
         grid-column: 1 / span 8;
+        overflow: hidden;
       }
 
       &-tablet {
         padding-top: 24px;
         grid-column: 9 / span 8;
+        overflow: hidden;
       }
 
       &-accessuries {
         padding-top: 24px;
         grid-column: 17 / span 8;
+        overflow: hidden;
       }
 
       &-img {
