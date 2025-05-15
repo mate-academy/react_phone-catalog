@@ -30,11 +30,12 @@ export const HomePageSlider: React.FC = () => {
   return (
     <section className={styles.slider}>
       <div className={styles.container}>
+        <button className="prev">-</button>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={15}
           slidesPerView={1}
-          navigation
+          navigation={{ nextEl: '.next', prevEl: '.prev' }}
           pagination={{ clickable: true }}
           className={styles.swiper}
         >
@@ -51,9 +52,10 @@ export const HomePageSlider: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        <button className="next">+</button>
       </div>
     </section>
-  // <section>
+    // <section>
     //   <div id="carouselHeroIndicators" className="carousel slide">
     //     <div className="carousel-indicators">
     //       <button
