@@ -1,6 +1,6 @@
 import './SliderNewBrands.scss';
-import React, { useState, useEffect, useMemo } from 'react';
-import Slider from 'react-slick';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
+//import Slider from 'react-slick';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,7 +11,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 export const SliderNewBrands: React.FC = () => {
-  //const sliderRef = useRef<Slider>(null);
+
   const dispatch = useDispatch<AppDispatch>();
 
   const products = useSelector(selectAllProducts);
@@ -23,72 +23,54 @@ export const SliderNewBrands: React.FC = () => {
     }
   }, [dispatch, status]);
 
-  // const settings = {
-  //   dots: false,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 4,
-  //   slidesToScroll: 1,
-  //   arrows: false,
-  // };
-
-  
   const sortedNewBrands = useMemo(() => {
-    return [...products].sort((a, b) => b.year - a.year).slice(0, 10); // optional: show only top 10
+    return [...products].sort((a, b) => b.year - a.year).slice(0, 10); 
   }, [products]);
+  const cardRef = useRef(null);
 
-  
-  const newBrandsSlides = sortedNewBrands.map(product => (
-    <div key={product.id}>
+  const newBrandsSlides = sortedNewBrands.map((product, index) => (
+    <div key={product.id} ref={index === 0 ? cardRef : null}>
       <ProductCard {...product} />
     </div>
   ));
 
-  // const handleArrowClick = (direction: 'next' | 'prev') => {
-  //   if (!sliderRef.current) {
-  //     return;
-  //   }
+ const [currentIndex, setCurrentIndex] = useState(0);
+ const visibleCount = 4;
 
-  //   direction === 'next'
-  //     ? sliderRef.current.slickNext()
-  //     : sliderRef.current.slickPrev();
-  // };
- const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+ const previousOne = () => {
+   if (currentIndex > 0) {
+     setCurrentIndex(currentIndex - 1);
+   }
+ };
 
-  const previousSlide = () => {
-    setActiveSlideIndex(prev => (prev === 0 ? images.length - 1 : prev - 1));
+  const nextOne = () => {
+    if (currentIndex + visibleCount < newBrandsSlides.length) {
+      setCurrentIndex(currentIndex + 1);
+   }
   };
-
-  const nextSlide = () => {
-    setActiveSlideIndex(prev => (prev === images.length - 1 ? 0 : prev + 1));
-  };
-
 
   return (
     <section>
-      <div className="slick-container"> 
+      <div className="carousel">
         <div className="slider__heading">
           <h2 className="text_above_slider">Brand new models</h2>
           <div className="arrows">
-            <button
-              className="arrow arrowPrev"
-              onClick={previousSlide}
-            >
+            <button className="arrow arrowPrev" onClick={previousOne}>
               <IoIosArrowBack />
             </button>
-            <button
-              className="arrow arrowNext"
-              onClick={nextSlide}
-            >
+            <button className="arrow arrowNext" onClick={nextOne}>
               <IoIosArrowForward />
             </button>
           </div>
         </div>
-          <div className="slides-row">
-        {/* <Slider ref={sliderRef} {...settings}> */}
+        <div
+          className="slides-row"
+          style={{
+            transform: `translateX(-${currentIndex * 322}px)`,
+          }}
+        >
           {newBrandsSlides}
-          </div>
-        {/* </Slider> */}
+        </div>
       </div>
     </section>
   );

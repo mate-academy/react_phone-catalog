@@ -4,7 +4,9 @@ import { LuHeart } from 'react-icons/lu';
 import { useDispatch } from 'react-redux';
 //import { useHistory } from 'react-router-dom';
 import { addToCart } from '../../features/cart';
-import { addToFavorites } from '../../features/favorites';
+import { addToFavorites, removeFromFavorites } from '../../features/favorites';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/store';
 interface ProductCardProps {
   image: string;
   name: string;
@@ -14,8 +16,6 @@ interface ProductCardProps {
   capacity: string;
   ram: string;
 }
-
-
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   image,
@@ -27,23 +27,34 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   ram,
 }) => {
   const dispatch = useDispatch();
-  //const history = useHistory();
-  const product = { image, name, price, fullPrice, screen, capacity, ram };
 
+  const product = { image, name, price, fullPrice, screen, capacity, ram };
+const isInFavorites = useSelector((state: RootState) =>
+  state.favorites.favoriteItems.some(item => item.name === product.name),
+);
+
+const isInCart = useSelector((state: RootState) =>
+  state.cart.cartItems.some(item => item.name === product.name),
+);
   const handleAddToCart = () => {
     dispatch(addToCart(product));
-console.log('Added to cart:', product);
+    //console.log('Added to cart:', product);
   };
 
   const handleAddToFavorites = () => {
     dispatch(addToFavorites(product));
     //history.push("/favorites");
-    console.log('Added to favorites:', product);
+    //console.log('Added to favorites:', product);
+  };
+
+  const handleRemoveFromFavorites = () => {
+    dispatch(removeFromFavorites(product));
+    //history.push("/favorites");
+    //console.log('Added to favorites:', product);
   };
 
   return (
-    
-    <div className="product__card">
+    <div className="product__card" >
       <div className="card-image">
         {/* <figure className="image"> */}
         <img src={image} alt="Product photo" />
@@ -73,17 +84,29 @@ console.log('Added to cart:', product);
         {/* </div> */}
 
         <div className="buttons">
-          <button
-            className="addButton"
-            onClick={handleAddToCart}
-          >
-            Add to cart
-          </button>
-          <button className=" icon icon__heart" onClick={handleAddToFavorites}>
-            <LuHeart />
-          </button>
+          {isInCart ? (
+            <button className="addButton" onClick={handleAddToCart}>
+              Added to cart
+            </button>
+          ) : (
+            <button className="addButton" onClick={handleAddToCart}>
+              Add to cart
+            </button>
+          )}
+          {isInFavorites ? (
+            <button
+              className="icon icon__heart"
+              onClick={handleRemoveFromFavorites}
+            >
+              <LuHeart style={{ fill: 'red', stroke: 'red' }} />
+            </button>
+          ) : (
+            <button className="icon icon__heart" onClick={handleAddToFavorites}>
+              <LuHeart />
+            </button>
+          )}
         </div>
       </div>
     </div>
   );
-}
+};

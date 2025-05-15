@@ -11,8 +11,8 @@ export const Footer = () => {
 
   return (
     <nav className="navbar__footer">
-      <div className="logo">
-        <NavLink to="/" >
+      <div className="footer__logo">
+        <NavLink to="/">
           <img src="/img/logo.png" alt="company_logo" />
         </NavLink>
       </div>
@@ -45,7 +45,7 @@ export const Footer = () => {
           offset={-80}
           className="icon__arrow__up"
         >
-          <IoIosArrowUp />
+          <IoIosArrowUp color="#313237" />
         </ScrollLink>
       </div>
     </nav>

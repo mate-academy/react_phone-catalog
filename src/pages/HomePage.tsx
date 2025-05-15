@@ -5,11 +5,10 @@ import SliderNewBrands from '../components/SliderNewBrands/SliderNewBrands';
 
 import SliderTop from '../components/SliderTop/SliderTop';
 
-
 export const HomePage: React.FC = () => (
   <div className="section" id="home">
     <div className="container">
-      <h1 id="heading1" className="title">
+      <h1 id="heading1" className="invisible">
         Home Page
       </h1>
 

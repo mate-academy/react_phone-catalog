@@ -5,6 +5,14 @@
   justify-content: center;
   width: 100%;
   aspect-ratio: 3 / 1;
+  @media (min-width: 320px) and (max-width: 639px) {
+  width: 100%;
+  aspect-ratio: 1 / 1;  
+  }
+
+  &__slider {
+  width: 100%;  
+  }
 }
 
 .slide {
@@ -13,7 +21,7 @@
   height: 100%;
 }
 
-.active {
+.active__slide {
   display: block;
   width: 100%;
   height: 100%;
@@ -29,5 +37,20 @@
   justify-content: center;
   cursor: pointer;
   height: 100%;
+  @media (min-width: 320px) and (max-width: 639px) {
+  display: none;  
+  }
 }
 
+#invitation {
+margin-bottom: 24px;
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  margin-bottom: 32px;  
+}
+
+@media (min-width: 1200px){
+  margin-bottom: 56px;
+}
+
+}

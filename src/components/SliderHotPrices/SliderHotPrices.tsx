@@ -1,5 +1,5 @@
 import './SliderHotPrices.scss';
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useRef, useEffect, useMemo, useState } from 'react';
 import Slider from 'react-slick';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -11,7 +11,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 export const SliderHotPrices: React.FC = () => {
-  const sliderRef = useRef<Slider>(null);
+  //const sliderRef = useRef<Slider>(null);
   const dispatch = useDispatch<AppDispatch>();
 
   const products = useSelector(selectAllProducts);
@@ -23,64 +23,74 @@ export const SliderHotPrices: React.FC = () => {
     }
   }, [dispatch, status]);
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    arrows: false,
-    
-  };
+  // const settings = {
+  //   dots: false,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 4,
+  //   slidesToScroll: 1,
+  //   arrows: false,
+  // };
 
-  // ✅ Sort and slice (e.g. top 10 with biggest discounts)
+  
   const sortedProducts = useMemo(() => {
     return [...products]
       .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-      .slice(0, 10); // optional: show only top 10
+      .slice(0, 10); 
   }, [products]);
 
-  // ✅ Prepare slides outside JSX
-  const productSlides = sortedProducts.map(product => (
+  
+  const hotPricesSlides = sortedProducts.map(product => (
     <div key={product.id}>
       <ProductCard {...product} />
     </div>
   ));
 
-  const handleArrowClick = (direction: 'next' | 'prev') => {
-    if (!sliderRef.current) {
-      return;
-    }
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const visibleCount = 4;
 
-    direction === 'next'
-      ? sliderRef.current.slickNext()
-      : sliderRef.current.slickPrev();
+  const previousOne = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const nextOne = () => {
+    if (currentIndex + visibleCount < hotPricesSlides.length) {
+      setCurrentIndex(currentIndex + 1);
+    }
   };
 
   return (
     <section>
-      <div className="slick-container">
+      <div className="carousel">
         <div className="slider__heading">
           <h2 className="text_above_slider">Hot prices</h2>
           <div className="arrows">
             <button
               className="arrow arrowPrev"
-              onClick={() => handleArrowClick('prev')}
+              onClick={previousOne}
             >
               <IoIosArrowBack />
             </button>
             <button
               className="arrow arrowNext"
-              onClick={() => handleArrowClick('next')}
+              onClick={nextOne}
             >
               <IoIosArrowForward />
             </button>
           </div>
         </div>
 
-        <Slider ref={sliderRef} {...settings}>
-          {productSlides}
-        </Slider>
+        <div
+          className="slides-row"
+          style={{
+            transform: `translateX(-${currentIndex * 322}px)`,
+          }}
+        >
+          
+          {hotPricesSlides}
+        </div>
       </div>
     </section>
   );

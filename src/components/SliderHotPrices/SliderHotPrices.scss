@@ -1,6 +1,5 @@
 .arrows {
   display: flex;
-  //justify-content: flex-end;
   text-align: center;
   gap: 10px;
   cursor: pointer;
@@ -10,21 +9,11 @@
   cursor: pointer;
 }
 
-.slick-container {
- gap:50px;
-  height: 571px;
-}
-
- .slick-container .card {
-  max-height: 506px;
-  
- }
-
 .slider__heading {
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
 }
 
 .text_above_slider{
@@ -43,4 +32,17 @@
   cursor: pointer;
   height: 24px;
   align-self: flex-end;
+}
+
+.slides-row{
+  display: flex;
+  gap:16px;
+  transition: transform 0.3s ease;
+  z-index: 1; 
+}
+
+.carousel {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }

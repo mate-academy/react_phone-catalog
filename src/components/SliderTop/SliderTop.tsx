@@ -6,26 +6,24 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-let images = [
-'/img/banner2.png',
-'/img/banner-phones.png',
-'/img/category-accessories.png'
+const images = [
+  '/img/banner2.png',
+  '/img/banner-phones.png',
+  '/img/category-accessories.png',
 ];
 
 export const SliderTop: React.FC = () => {
-
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   const displayImages = images.map((img, i) => (
     <img
-      className={`slide ${activeSlideIndex === i ? 'active' : ''}`}
+      className={`slide ${activeSlideIndex === i ? 'active__slide' : ''}`}
       src={img}
       alt="slider"
       height="400px"
       key={i}
     />
   ));
-
 
   const previousSlide = () => {
     setActiveSlideIndex(prev => (prev === 0 ? images.length - 1 : prev - 1));
@@ -35,13 +33,13 @@ export const SliderTop: React.FC = () => {
     setActiveSlideIndex(prev => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
-   useEffect(() => {
-     const interval = setInterval(() => {
-       nextSlide();
-     }, 5000); 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
 
-     return () => clearInterval(interval); // Cleanup on unmount
-   }, []);
+    return () => clearInterval(interval); 
+  }, []);
 
   return (
     // <div className="first_section">
@@ -52,7 +50,7 @@ export const SliderTop: React.FC = () => {
           <IoIosArrowBack />
         </button>
 
-        <div className="banner">{displayImages}</div>
+        <div className="banner__slider">{displayImages}</div>
 
         <button className="banner-arrow arrowNext " onClick={nextSlide}>
           <IoIosArrowForward />

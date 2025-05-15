@@ -5,9 +5,11 @@ import { Filter } from '../components/Filter/Filter';
 export const TabletsPage: React.FC = () => (
   <div className="section" id="tablets">
     <div className="container">
-      <h1 id="heading1" className="title">Tablets</h1>
+      <h1 id="heading1">
+        Tablets
+      </h1>
       <label htmlFor="filter-select">Sort by:</label>
-<Filter id="filter-select" />
+      <Filter id="filter-select" />
 
       <ProductList category="tablets" />
     </div>

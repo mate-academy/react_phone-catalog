@@ -1,10 +1,13 @@
  .categories__container {
-    @media (min-width: 1000px) {
-      display: grid;
-      grid-template-columns: auto auto auto;
-      gap: 50px;
-      padding-top: 0px;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 0px;
+    @media (min-width: 640px){
+    flex-direction: row;
+    justify-content: space-between;
+}
+    
   }
 .categories__card {
     border-radius: 30px;
@@ -12,9 +15,13 @@
     background-color: white;
    & img{
     width: 100%;
-
+    object-fit: contain;
    } 
     
 }
-
+.models__quantity{
+color: #89939A;
+font-weight: 600;
+font-size: 14px; 
+}
 

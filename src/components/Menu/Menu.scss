@@ -22,10 +22,10 @@
   font-weight: 800;
   line-height: 48px;
 
-  &:target {
-    opacity: 1;
-    pointer-events: all;
-  }
+  // &.is-open {
+  //   opacity: 1;
+  //   pointer-events: all;
+  // }
 
   &__top {
     box-sizing: border-box;
@@ -82,3 +82,8 @@ height: 64px;
 .menu__logo {
   padding: 9px 16px;
 }
+
+.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }

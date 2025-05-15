@@ -20,8 +20,6 @@ iframe {
 
 .page > *:not(.navbar, .navbar-footer, .menu) {
 
-padding-inline: 0px;
-
 @media (min-width: 320px) and (max-width: 639px) {
     padding-inline: 16px;
 }
@@ -41,12 +39,12 @@ padding-inline: 0px;
   transition-duration: 300ms;
   overflow-x: hidden;
 
-  &:has(.menu:target) {
-    overflow: hidden;
-    .slideshow-container {
-      display: none;
-    }
-  }
+  // &:has(.menu:target) {
+  //   overflow: hidden;
+  //   .slideshow-container {
+  //     display: none;
+  //   }
+  // }
 }
 
 body {
@@ -62,7 +60,7 @@ body {
 }
 
 .section {
-margin-top: 15vh;
+margin-top: 10vh;
 min-height: 70vh;
 margin-bottom: 56px;
 
@@ -70,14 +68,41 @@ margin-bottom: 56px;
   margin-bottom: 64px;  
 }
 
-@media (min-width: 640px){
+@media (min-width: 1200px){
   margin-bottom: 80px;
 }
 
 }
-#home, #cart {
-  margin-top: 80px;
+section {
+margin-bottom: 56px;
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  margin-bottom: 64px;  
 }
 
+@media (min-width: 1200px){
+  margin-bottom: 80px;
+}
+
+}
+
+h1 {
+color: #313237;
+font-weight: 800;
+font-size: 32px;
+@media (min-width: 640px){
+  font-size: 48px;
+}
+}
+
+h3 {
+color: #313237;
+font-weight: 700;
+font-size: 20px; 
+}
+
+.invisible{
+  visibility: hidden;
+}
 
 

@@ -39,7 +39,6 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
           <Route path="/accessories" element={<AccessoriesPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<CartPage />} />
-          
 
           {/* <Route index element={<PeoplePage />} /> */}
           {/* <Route path=":slug" element={<PeoplePage />} /> */}

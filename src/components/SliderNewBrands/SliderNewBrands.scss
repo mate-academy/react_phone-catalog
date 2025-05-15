@@ -1,6 +1,5 @@
 .arrows {
   display: flex;
-  //justify-content: flex-end;
   text-align: center;
   gap: 10px;
   cursor: pointer;
@@ -14,7 +13,7 @@
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
-  
+  align-items: center;
 }
 
 .text_above_slider{
@@ -38,5 +37,12 @@
 .slides-row{
   display: flex;
   gap:16px;
-  overflow:hidden;
+  transition: transform 0.3s ease;
+  z-index: 1; 
+}
+
+.carousel {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }

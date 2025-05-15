@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../app/store';
+import { IoIosArrowBack } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 import {
   removeFromCart,
   increaseQuantity,
@@ -36,8 +38,12 @@ export const CartPage: React.FC = () => {
 
   return (
     <div className="section" id="cart">
-      <div className="cart__page">
-        <h1 id="heading1">Cart</h1>
+      <div className="cart">
+        <Link to="/home" className="top__back__link">
+          <IoIosArrowBack color="#313237"/>
+          <p>Back</p>
+        </Link>
+        <h1 id="heading1" className="cart__h1">Cart</h1>
 
         {cartItems.length === 0 ? (
           <p>Your list is currently empty.</p>

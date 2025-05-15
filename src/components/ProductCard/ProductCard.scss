@@ -19,14 +19,15 @@
   font-family: Montserrat, sans-serif;
   color: #313237;
   padding: 32px;
-  min-width: 288px;
+  width: 306px;
+  
 }
 
 .card-content {
  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 8px; 
+  gap: 8px;
 }
 .title {
   font-weight: 600;
@@ -39,7 +40,7 @@
 .new__price {
 font-weight: 800;
 font-size: 22px;
-
+line-height: 140%; 
 }
 
 .old__price {
@@ -47,6 +48,7 @@ color: #89939A;
 font-weight: 600;
 font-size: 22px;
 text-decoration: line-through;
+line-height: 100%;
 }
 
 .product__price {

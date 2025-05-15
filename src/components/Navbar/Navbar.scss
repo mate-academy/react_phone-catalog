@@ -34,9 +34,7 @@ gap: 64px;
   @media (min-width: 1200px) {
   padding-inline: 24px;
 }
-// @media (min-width: 320px) and (max-width: 639px) {
-//   align-self: center;
-// }
+
 }
 .burger-menu{
 padding-inline: 16px;
@@ -48,6 +46,7 @@ align-self: center;
 }
 }
 .navbar {
+z-index: 1000;
 display: flex;
 justify-content: space-between;
 align-items: center;
