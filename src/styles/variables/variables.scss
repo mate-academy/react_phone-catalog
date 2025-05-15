@@ -24,9 +24,6 @@ $button-text-color: $primary;
 
 // utility
 $animation-duration: .2s;
-$button-size: 40px;
-$button-size--sm: 32px;
-
 $grid-column-desktop-size: 32px;
 // END utility
 
@@ -34,4 +31,11 @@ $grid-column-desktop-size: 32px;
 $header-height--mb: 48px;
 $header-height: 64px;
 $header-border-color: $light-gray;
+
+$ui-border-color: $gray;
+$ui-border-color--hover: $primary;
+
+$button-size: 40px;
+$button-size--sm: 32px;
+$select-size: $button-size;
 //END components

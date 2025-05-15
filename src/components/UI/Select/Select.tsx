@@ -1,61 +1,45 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styles from './CustomSelect';
+import classNames from 'classnames';
+import { useSearchParams } from 'react-router-dom';
+import { SearchLink } from '../../SearchLink';
 
-const items = ['Item 1', 'Hover Item', 'Item 3', 'Item 4'];
+import styles from './Select.module.scss';
 
-export const Select = () => {
+type Props = {
+  title?: string;
+  placeholder: string;
+  options: string[];
+  searchParamKey: string;
+};
+
+export const Select: React.FC<Props> = ({
+  title = '',
+  placeholder,
+  options,
+  searchParamKey,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(items[0]);
-  const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
+  const [selected, setSelected] = useState(placeholder);
+  const [searchParams] = useSearchParams();
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
 
-  const toggleDropdown = () => setIsOpen(prev => !prev);
+  const toggleDropdown = () => setIsOpen(state => !state);
 
   const handleSelect = (item: string) => {
     setSelected(item);
     setIsOpen(false);
-    setHighlightedIndex(null);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!isOpen) {
-      return;
-    }
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        setHighlightedIndex(prev =>
-          prev === null || prev === items.length - 1 ? 0 : prev + 1,
-        );
-
-        break;
-
-      case 'ArrowUp':
-        e.preventDefault();
-        setHighlightedIndex(prev =>
-          prev === null || prev === 0 ? items.length - 1 : prev - 1,
-        );
-
-        break;
-
-      case 'Enter':
-        if (highlightedIndex !== null) {
-          handleSelect(items[highlightedIndex]);
-        }
-
-        break;
-
-      case 'Escape':
-        setIsOpen(false);
-        setHighlightedIndex(null);
-
-        break;
-    }
   };
 
   useEffect(() => {
+    if (searchParams.has(searchParamKey) && searchParamKey !== null) {
+      const searchParamValue = searchParams.get(searchParamKey);
+
+      if (searchParamValue !== null) {
+        setSelected(searchParamValue);
+      }
+    }
+
     const handleClickOutside = (e: MouseEvent) => {
       if (
         dropdownRef.current &&
@@ -63,39 +47,61 @@ export const Select = () => {
         !buttonRef.current?.contains(e.target as Node)
       ) {
         setIsOpen(false);
-        setHighlightedIndex(null);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mouseup', handleClickOutside);
 
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mouseup', handleClickOutside);
   }, []);
 
   return (
-    <div className="custom-select">
-      <button
-        ref={buttonRef}
-        onClick={toggleDropdown}
-        onKeyDown={handleKeyDown}
-        className="select-button button--arrow-bottom"
+    <div className={styles.select__wrapper}>
+      <p className="main-text main-text--sm main-text--secondary">{title}</p>
+      <div
+        className={classNames(styles.select, {
+          [styles['select--focus']]: isOpen,
+        })}
       >
-        {selected}
-      </button>
+        <div
+          className={styles.select__button}
+          ref={buttonRef}
+          onClick={toggleDropdown}
+        >
+          <p className={`button-text ${styles['select__selected-option']}`}>
+            {selected}
+          </p>
+          <button
+            className={classNames(`${styles['select__button--arrow']}`, {
+              'button--arrow-bottom': !isOpen,
+              'button--arrow-top': isOpen,
+            })}
+          ></button>
+        </div>
 
-      <div ref={dropdownRef} className={`dropdown ${isOpen ? 'open' : ''}`}>
-        {items.map((item, index) => (
-          <div
-            key={item}
-            onClick={() => handleSelect(item)}
-            className={`dropdown-item
-              ${selected === item ? 'selected' : ''}
-              ${highlightedIndex === index ? 'highlighted' : ''}
-            `}
-          >
-            {item}
-          </div>
-        ))}
+        <div
+          ref={dropdownRef}
+          className={classNames(styles.select__dropdown, {
+            [styles['select__dropdown--open']]: isOpen,
+          })}
+        >
+          {options.map(option => (
+            <SearchLink
+              key={option}
+              params={{ [searchParamKey]: `${option}` }}
+              onClick={() => handleSelect(option)}
+              className={classNames(
+                `main-text ${styles['select__dropdown-option']}`,
+                {
+                  [styles['select__dropdown-option--selected']]:
+                    selected === option,
+                },
+              )}
+            >
+              {option}
+            </SearchLink>
+          ))}
+        </div>
       </div>
     </div>
   );

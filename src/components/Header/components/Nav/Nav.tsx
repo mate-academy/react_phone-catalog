@@ -1,15 +1,33 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 
 import styles from './Nav.module.scss';
 import { Category } from '../../../../types/Category';
 
 export const Nav = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams] = useSearchParams();
   const currentCategory = searchParams.get('category');
+
+  // Needed for saving all URLSearchParams when user switching
+  // switches between product categories (phones/tablets/...)
+  const getAllSearchParams = (path: string) => {
+    let finalPath = path + '&page=1';
+    const allSearchParams = searchParams
+      .keys()
+      .filter(param => param !== 'category' && param !== 'page');
+
+    allSearchParams.forEach(paramKey => {
+      const formattedParamValue = searchParams
+        .get(paramKey)
+        ?.replaceAll(' ', '+');
+
+      finalPath = `${finalPath}&${paramKey}=${formattedParamValue}`;
+    });
+
+    return finalPath;
+  };
 
   return (
     <nav className={styles.nav}>
@@ -26,7 +44,7 @@ export const Nav = () => {
       <NavLink
         to={{
           pathname: '/catalog',
-          search: `?category=${Category.Phone}&page=1`,
+          search: getAllSearchParams(`?category=${Category.Phone}`),
         }}
         className={({ isActive }) => {
           return classNames(`${styles.nav__link} uppercase-text`, {
@@ -40,7 +58,7 @@ export const Nav = () => {
       <NavLink
         to={{
           pathname: '/catalog',
-          search: `?category=${Category.Tablet}&page=1`,
+          search: getAllSearchParams(`?category=${Category.Tablet}`),
         }}
         className={({ isActive }) => {
           return classNames(`${styles.nav__link} uppercase-text`, {
@@ -54,7 +72,7 @@ export const Nav = () => {
       <NavLink
         to={{
           pathname: '/catalog',
-          search: `?category=${Category.Accessories}&page=1`,
+          search: getAllSearchParams(`?category=${Category.Accessories}`),
         }}
         className={({ isActive }) => {
           return classNames(`${styles.nav__link} uppercase-text`, {

@@ -6,7 +6,7 @@
   align-items: center;
   width: $button-size;
   height: $button-size;
-  border: 1px solid $gray;
+  border: 1px solid $ui-border-color;
   box-sizing: border-box;
   flex-shrink: 0;
 
@@ -26,7 +26,7 @@
 
   &:hover {
     cursor: pointer;
-    border: 1px solid $primary;
+    border: 1px solid $ui-border-color--hover;
   }
 }
 
@@ -62,8 +62,8 @@
 
    &--arrow-bottom::before {
     left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%) rotate(45deg);
+    top: 45%;
+    transform: translate(-50%, -50%) rotate(135deg);
   }
 
   &--arrow-left::before {
