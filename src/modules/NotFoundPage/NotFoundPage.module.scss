@@ -1,0 +1,33 @@
+@import '../../styles/utils';
+
+.not-found-page {
+  @include page-grid;
+  @include responsive-padding-inline;
+
+  &__content {
+    grid-column: 1 / -1;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__back-button {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__title {
+    color: var(--color-text-primary);
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      margin-bottom: 24px;
+    }
+  }
+
+}

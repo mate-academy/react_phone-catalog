@@ -1,0 +1,51 @@
+@import '../../../../styles/utils';
+
+.about {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  &__title {
+    color: var(--color-text-primary);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-element-secondary);
+  }
+
+  &__article {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  &__sub-title {
+    color: var(--color-text-primary);
+    font-size: 16px;
+    line-height: 20px;
+
+    @include on-tablet {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    &--loading {
+      height: 1lh;
+      width: 15ch;
+      max-width: 100%;
+
+      @include skeleton-loader;
+    }
+  }
+
+  &__text {
+    @extend %text-body;
+
+    color: var(--color-text-secondary);
+
+    &--loading {
+      height: 4lh;
+      width: 100%;
+
+      @include skeleton-loader;
+    }
+  }
+}

@@ -1,0 +1,140 @@
+@import '../../styles/utils';
+
+.cart-page {
+  @include page-grid;
+  @include responsive-padding-inline;
+
+  &__content {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  &__back-button {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__message {
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    color: var(--color-text-primary);
+
+    margin-bottom: 32px;
+  }
+
+  &__list {
+    grid-column: 1 / -1;
+    margin-bottom: 32px;
+
+    @include on-desktop {
+      grid-column: span 16;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__summary {
+    grid-column: 1 / -1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 16px;
+
+    padding: 24px;
+    height: fit-content;
+    border: 1px solid var(--color-element-secondary);
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+      grid-column: span 8;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &--loading {
+      row-gap: 4px;
+    }
+  }
+
+  &__total-price {
+    @extend %mont-bold;
+
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+    color: var(--color-text-primary);
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+
+    &--loading {
+      height: calc(1lh - 4px);
+      width: 10ch;
+
+      @include skeleton-loader;
+    }
+  }
+
+  &__total-quantity {
+    @extend %text-body;
+
+    color: var(--color-text-secondary);
+
+    &--loading {
+      height: 1lh;
+      width: 20ch;
+
+      @include skeleton-loader;
+    }
+  }
+
+  &__decor {
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-element-secondary);
+  }
+
+  &__checkout-btn {
+    @extend %text-body;
+
+    height: 48px;
+    width: 100%;
+    color: var(--color-button-text);
+    background-color: var(--color-button-bg);
+    transition: filter $transition-duration-base ease-in-out;
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+
+    &:disabled {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}

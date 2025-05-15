@@ -1,0 +1,126 @@
+@import '../../styles/utils';
+
+.products-slider {
+  row-gap: 24px;
+
+  @include page-grid;
+
+  &--loading {
+    pointer-events: none;
+  }
+
+  &__top {
+    grid-column: 1 / -1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: var(--color-text-primary);
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color-icon-primary);
+    background-color: var(--color-icon-bg);
+    border: 1px solid var(--color-icon-border);
+    box-sizing: border-box;
+
+    transition: all $transition-duration-base ease-in-out;
+
+    &:hover {
+      background-color: var(--color-icon-bg-hover);
+      border-color: var(--color-icon-border-hover);
+    }
+
+    &:disabled {
+      color: var(--color-icon-disabled);
+      background-color: transparent;
+      border-color: var(--color-icon-border-disabled);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &--loading {
+      color: var(--color-icon-disabled);
+      background-color: transparent;
+      border: 1px solid var(--color-icon-border-disabled);
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  &__viewport {
+    grid-column: 1 / -1;
+
+    overflow-x: hidden;
+    user-select: none;
+    cursor: grab;
+
+    margin-right: -16px;
+
+    @include on-tablet {
+      margin-right: -24px;
+    }
+
+    @include on-desktop {
+      margin-right: 0;
+    }
+
+    &--dragging {
+      cursor: grabbing;
+    }
+
+    &--loading {
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 16px;
+    will-change: transform;
+    transition: transform $transition-duration-base ease-in-out;
+
+    grid-auto-columns: calc(
+      (100% - (($mobile-grid-columns-amount - 1) * 16px)) / $mobile-grid-columns-amount);
+
+    @include on-tablet {
+      grid-auto-columns: calc(
+        (100% - (($tablet-grid-columns-amount - 1) * 16px)) / $tablet-grid-columns-amount);
+    }
+
+    @include on-desktop {
+      grid-auto-columns: calc(
+        (100% - (($desktop-grid-columns-amount - 1) * 16px)) / $desktop-grid-columns-amount);
+    }
+  }
+
+  &__item {
+    grid-column: span 3;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}
