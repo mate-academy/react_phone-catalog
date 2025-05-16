@@ -29,7 +29,6 @@ export const useSlideIndexDragSlider = <T>({
   const dragStartXRef = useRef(0);
   const dragStartYRef = useRef(0);
   const dragDeltaRef = useRef(0);
-  const animationFrameRef = useRef<number | null>(null);
   const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
   const isHoveredRef = useRef(false);
   const isHorizontalSwipeRef = useRef<boolean | null>(null);
@@ -151,18 +150,8 @@ export const useSlideIndexDragSlider = <T>({
     }
 
     if (isHorizontalSwipeRef.current) {
-      if ('touches' in e) {
-        e.preventDefault();
-      }
-
       dragDeltaRef.current = deltaX;
-
-      if (animationFrameRef.current === null) {
-        animationFrameRef.current = requestAnimationFrame(() => {
-          updateSliderPosition(false);
-          animationFrameRef.current = null;
-        });
-      }
+      updateSliderPosition(false);
     }
   };
 
@@ -182,11 +171,6 @@ export const useSlideIndexDragSlider = <T>({
 
     dragDeltaRef.current = 0;
     updateSliderPosition(true);
-
-    if (animationFrameRef.current !== null) {
-      cancelAnimationFrame(animationFrameRef.current);
-      animationFrameRef.current = null;
-    }
   };
 
   const handleMouseEnter = () => {
@@ -257,7 +241,7 @@ export const useSlideIndexDragSlider = <T>({
         return;
       }
 
-      if (isHorizontalSwipeRef.current) {
+      if (isHorizontalSwipeRef.current && e.cancelable) {
         e.preventDefault();
       }
     };

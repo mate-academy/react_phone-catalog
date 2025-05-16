@@ -4,19 +4,23 @@ import { getEventPageCoordinates } from '../utils';
 type UsePixelScrollDragSliderOptions = {
   transitionDuration?: number;
   threshold?: number;
+  inertiaMultiplier?: number;
+  minVelocity?: number;
 };
 
 export const usePixelScrollDragSlider = ({
   transitionDuration = 300,
   threshold = 10,
+  inertiaMultiplier = 200,
+  minVelocity = 0.5,
 }: UsePixelScrollDragSliderOptions) => {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
   const itemRef = useRef<HTMLLIElement | null>(null);
-  const animationFrameRef = useRef<number | null>(null);
   const dragStartXRef = useRef(0);
   const dragStartYRef = useRef(0);
   const dragDeltaRef = useRef(0);
+  const dragStartTimeRef = useRef(0);
   const isHorizontalSwipeRef = useRef<boolean | null>(null);
 
   const [cardWidth, setCardWidth] = useState(0);
@@ -44,14 +48,14 @@ export const usePixelScrollDragSlider = ({
   }, [cardWidth]);
 
   const updateSliderPosition = useCallback(
-    (scroll: number, withTransition: boolean) => {
+    (scroll: number, withTransition: boolean, easing: string = 'ease-out') => {
       if (!listRef.current) {
         return;
       }
 
       listRef.current.style.transform = `translate3d(${-scroll}px, 0, 0)`;
       listRef.current.style.transition = withTransition
-        ? `transform ${transitionDuration / 1000}s ease-in-out`
+        ? `transform ${transitionDuration / 1000}s ${easing}`
         : 'none';
     },
     [transitionDuration],
@@ -65,6 +69,7 @@ export const usePixelScrollDragSlider = ({
     dragStartYRef.current = y;
     dragDeltaRef.current = 0;
     isHorizontalSwipeRef.current = null;
+    dragStartTimeRef.current = Date.now();
   };
 
   const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
@@ -81,18 +86,8 @@ export const usePixelScrollDragSlider = ({
     }
 
     if (isHorizontalSwipeRef.current) {
-      if ('touches' in e) {
-        e.preventDefault();
-      }
-
       dragDeltaRef.current = deltaX;
-
-      if (animationFrameRef.current === null) {
-        animationFrameRef.current = requestAnimationFrame(() => {
-          updateSliderPosition(currentScroll - dragDeltaRef.current, false);
-          animationFrameRef.current = null;
-        });
-      }
+      updateSliderPosition(currentScroll - dragDeltaRef.current, false);
     }
   };
 
@@ -109,20 +104,20 @@ export const usePixelScrollDragSlider = ({
 
     setIsDragging(false);
 
+    const dragDistance = dragDeltaRef.current;
+    const dragDuration = Date.now() - dragStartTimeRef.current;
+    const velocity = dragDistance / dragDuration;
+    const useInertia = Math.abs(velocity) > minVelocity;
+    const inertiaOffset = useInertia ? velocity * inertiaMultiplier : 0;
+    const totalOffset = dragDistance + inertiaOffset;
     const newScroll = Math.max(
-      Math.min(currentScroll - dragDeltaRef.current, maxScroll),
+      Math.min(currentScroll - totalOffset, maxScroll),
       0,
     );
 
     setCurrentScroll(newScroll);
     updateSliderPosition(newScroll, true);
-
     dragDeltaRef.current = 0;
-    if (animationFrameRef.current !== null) {
-      cancelAnimationFrame(animationFrameRef.current);
-      animationFrameRef.current = null;
-    }
-
     setTimeout(() => setWasDragged(false), 100);
   };
 
@@ -138,7 +133,7 @@ export const usePixelScrollDragSlider = ({
         return;
       }
 
-      if (isHorizontalSwipeRef.current) {
+      if (isHorizontalSwipeRef.current && e.cancelable) {
         e.preventDefault();
       }
     };
