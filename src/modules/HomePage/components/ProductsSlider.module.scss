@@ -1,0 +1,37 @@
+.sliderContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  flex: 0 0 auto;
+  width: 250px; /* Adjust to match your ProductCard width */
+}
+
+.navButton {
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.navButton:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
