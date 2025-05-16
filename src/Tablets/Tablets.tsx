@@ -4,7 +4,7 @@ import tablets from '../../public/api/tablets.json';
 import products from '../../public/api/products.json';
 import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountProductCard';
 import styles from './Tablets.module.scss';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useCart } from '../UseCart/UseCart';
 
 export const Tablets: React.FC = () => {
@@ -77,72 +77,90 @@ export const Tablets: React.FC = () => {
 
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
+  const navigate = useNavigate();
+  const handleBackClick = () => {
+    navigate('/');
+  };
+
   return (
-    <div className={styles.productList}>
+    <div className={styles.product_list}>
+      <div className={styles.navigation}>
+        <button className={styles.button_home} onClick={handleBackClick}>
+          <img src="img/Home.svg" alt="" />
+        </button>
+        <img src="img/Arrow-right.svg" alt="arrow" />
+        <h2 className={styles.title}>Tablets</h2>
+      </div>
       <h1>Tablets</h1>
       <p>{filteredProducts.length} models</p>
-      <div className={styles.select}>
-        <p className={styles.select__title}>Sort by</p>
-        <select
-          className={styles.selection}
-          onChange={handleSortChange}
-          value={sortParam}
-        >
-          <option value="age">Newest</option>
-          <option value="title">Alphabetically</option>
-          <option value="price">Cheapest</option>
-        </select>
 
-        <p className={styles.select__title}>Items on page</p>
-        <select
-          value={itemsPerPage}
-          onChange={handleItemsPerPageChange}
-          className={styles.selection}
-        >
-          <option value="16">16</option>
-          <option value="32">32</option>
-          <option value="48">48</option>
-        </select>
+      <div className={styles.select}>
+        <div className={styles.select__group}>
+          <p className={styles.select__title}>Sort by</p>
+          <select
+            className={styles.selection}
+            onChange={handleSortChange}
+            value={sortParam}
+          >
+            <option value="age">Newest</option>
+            <option value="title">Alphabetically</option>
+            <option value="price">Cheapest</option>
+          </select>
+        </div>
+
+        <div className={styles.select__group}>
+          <p className={styles.select__title}>Items on page</p>
+          <select
+            value={itemsPerPage}
+            onChange={handleItemsPerPageChange}
+            className={styles.selection}
+          >
+            <option value="16">16</option>
+            <option value="32">32</option>
+            <option value="48">48</option>
+          </select>
+        </div>
       </div>
 
-      <div className={styles.productGrid}>
+      <div className={styles.product_grid}>
         {currentProducts.map(product => {
-          const tablet = tablets.find(
-            productTablet => productTablet.id === product.itemId,
+          const phone = tablets.find(
+            productTablets => productTablets.id === product.itemId,
           );
 
           return (
-            tablet && (
+            phone && (
               <Link
-                to={`/product/${tablet.id}`}
-                key={tablet.id}
+                to={`/product/${phone.id}`}
+                key={phone.id}
                 className={styles.linkProduct}
               >
                 <DiscountProductCard
-                  key={tablet.id}
-                  id={tablet.id}
-                  name={tablet.name}
-                  price={tablet.priceRegular}
-                  discountPrice={tablet.priceDiscount}
-                  imageUrl={tablet.images[0]}
+                  key={phone.id}
+                  id={phone.id}
+                  name={phone.name}
+                  price={phone.priceRegular}
+                  discountPrice={phone.priceDiscount}
+                  imageUrl={phone.images[0]}
                   isFavorite={false}
-                  screen={tablet.screen}
-                  capacity={tablet.capacity}
-                  ram={tablet.ram}
-                  onAddToCart={() => handleAddToCart(tablet.id)}
-                  onToggleFavorite={() => handleToggleFavorite(tablet.id)}
+                  screen={phone.screen}
+                  capacity={phone.capacity}
+                  ram={phone.ram}
+                  onAddToCart={() => handleAddToCart(phone.id)}
+                  onToggleFavorite={() => handleToggleFavorite(phone.id)}
                 />
               </Link>
             )
           );
         })}
       </div>
+
       <div className={styles.pagination}>
         {pages.map(page => (
           <button
             key={page}
             onClick={() => goToPage(page)}
-            className={currentPage === page ? styles.activePage : ''}
+            className={currentPage === page ? styles.active_page : ''}
           >
             {page}
           </button>

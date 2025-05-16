@@ -6,6 +6,7 @@ import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountPr
 import styles from './Phones.module.scss';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useCart } from '../UseCart/UseCart';
+import { useNavigate } from 'react-router-dom';
 
 export const Phones: React.FC = () => {
   const { dispatch } = useCart();
@@ -76,36 +77,52 @@ export const Phones: React.FC = () => {
     }
   };
 
+  const navigate = useNavigate();
+  const handleBackClick = () => {
+    navigate('/');
+  };
+
   return (
-    <div className={styles.productList}>
+    <div className={styles.product_list}>
+      <div className={styles.navigation}>
+        <button className={styles.button_home} onClick={handleBackClick}>
+          <img src="img/Home.svg" alt="" />
+        </button>
+        <img src="img/Arrow-right.svg" alt="arrow" />
+        <h2 className={styles.title}>Phones</h2>
+      </div>
       <h1>Mobile Phones</h1>
       <p>{filteredProducts.length} models</p>
 
       <div className={styles.select}>
-        <p className={styles.select__title}>Sort by</p>
-        <select
-          className={styles.selection}
-          onChange={handleSortChange}
-          value={sortParam}
-        >
-          <option value="age">Newest</option>
-          <option value="title">Alphabetically</option>
-          <option value="price">Cheapest</option>
-        </select>
+        <div className={styles.select__group}>
+          <p className={styles.select__title}>Sort by</p>
+          <select
+            className={styles.selection}
+            onChange={handleSortChange}
+            value={sortParam}
+          >
+            <option value="age">Newest</option>
+            <option value="title">Alphabetically</option>
+            <option value="price">Cheapest</option>
+          </select>
+        </div>
 
-        <p className={styles.select__title}>Items on page</p>
-        <select
-          value={itemsPerPage}
-          onChange={handleItemsPerPageChange}
-          className={styles.selection}
-        >
-          <option value="16">16</option>
-          <option value="32">32</option>
-          <option value="48">48</option>
-        </select>
+        <div className={styles.select__group}>
+          <p className={styles.select__title}>Items on page</p>
+          <select
+            value={itemsPerPage}
+            onChange={handleItemsPerPageChange}
+            className={styles.selection}
+          >
+            <option value="16">16</option>
+            <option value="32">32</option>
+            <option value="48">48</option>
+          </select>
+        </div>
       </div>
 
-      <div className={styles.productGrid}>
+      <div className={styles.product_grid}>
         {currentProducts.map(product => {
           const phone = phones.find(
             productPhone => productPhone.id === product.itemId,
@@ -139,15 +156,29 @@ export const Phones: React.FC = () => {
       </div>
 
       <div className={styles.pagination}>
+        <button
+          className={styles.next_page_button}
+          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          <img src="img/Arrow-left.svg" alt="prev" />
+        </button>
         {pages.map(page => (
           <button
             key={page}
             onClick={() => goToPage(page)}
-            className={currentPage === page ? styles.activePage : ''}
+            className={currentPage === page ? styles.active_page : ''}
           >
             {page}
           </button>
         ))}
+        <button
+          className={styles.prev_page_button}
+          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          <img src="img/Arrow-left.svg" alt="prev" />
+        </button>
       </div>
     </div>
   );

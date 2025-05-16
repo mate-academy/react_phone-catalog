@@ -19,6 +19,11 @@ body {
   overflow-x: hidden;
 }
 
+.body_no_scroll {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
 .content {
   display: flex;
   flex-direction: column;

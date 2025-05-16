@@ -154,7 +154,6 @@
 @media screen and (min-width: 640px) {
   .header {
     height: 48px;
-    padding: 0 0 0 16px;
   }
 
   .header__container {
@@ -169,12 +168,10 @@
 
   .nav {
     display: flex;
-    justify-content: flex-start;
     position: static;
     height: auto;
     flex-direction: row;
     padding-top: 0;
-    width: auto;
   }
 
   .nav_left {
@@ -184,16 +181,23 @@
     list-style: none;
     padding: 0;
     margin: 0;
+
   }
 
   .nav_left li {
-    margin: 0 32px;
+    font-family: Mont;
+    font-weight: 800;
     font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
   }
 
   .nav_right {
-    display: flex;
     margin-left: auto;
+    position: static;
+    width: auto;
+    height: 48px;
   }
 
   .nav_favorite,

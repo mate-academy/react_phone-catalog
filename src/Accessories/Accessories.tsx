@@ -4,7 +4,7 @@ import accessories from '../../public/api/accessories.json';
 import products from '../../public/api/products.json';
 import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountProductCard';
 import styles from './Accessories.module.scss';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useCart } from '../UseCart/UseCart';
 
 export const Accessories: React.FC = () => {
@@ -77,35 +77,52 @@ export const Accessories: React.FC = () => {
 
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
+  const navigate = useNavigate();
+  const handleBackClick = () => {
+    navigate('/');
+  };
+
   return (
-    <div className={styles.productList}>
+    <div className={styles.product_list}>
+      <div className={styles.navigation}>
+        <button className={styles.button_home} onClick={handleBackClick}>
+          <img src="img/Home.svg" alt="" />
+        </button>
+        <img src="img/Arrow-right.svg" alt="arrow" />
+        <h2 className={styles.title}>Accessories</h2>
+      </div>
       <h1>Accessories</h1>
       <p>{filteredProducts.length} models</p>
-      <div className={styles.select}>
-        <p className={styles.select__title}>Sort by</p>
-        <select
-          className={styles.selection}
-          onChange={handleSortChange}
-          value={sortParam}
-        >
-          <option value="age">Newest</option>
-          <option value="title">Alphabetically</option>
-          <option value="price">Cheapest</option>
-        </select>
 
-        <p className={styles.select__title}>Items on page</p>
-        <select
-          value={itemsPerPage}
-          onChange={handleItemsPerPageChange}
-          className={styles.selection}
-        >
-          <option value="16">16</option>
-          <option value="32">32</option>
-          <option value="48">48</option>
-        </select>
+      <div className={styles.select}>
+        <div className={styles.select__group}>
+          <p className={styles.select__title}>Sort by</p>
+          <select
+            className={styles.selection}
+            onChange={handleSortChange}
+            value={sortParam}
+          >
+            <option value="age">Newest</option>
+            <option value="title">Alphabetically</option>
+            <option value="price">Cheapest</option>
+          </select>
+        </div>
+
+        <div className={styles.select__group}>
+          <p className={styles.select__title}>Items on page</p>
+          <select
+            value={itemsPerPage}
+            onChange={handleItemsPerPageChange}
+            className={styles.selection}
+          >
+            <option value="16">16</option>
+            <option value="32">32</option>
+            <option value="48">48</option>
+          </select>
+        </div>
       </div>
 
-      <div className={styles.productGrid}>
+      <div className={styles.product_grid}>
         {currentProducts.map(product => {
           const accessory = accessories.find(
             productAccesory => productAccesory.id === product.itemId,

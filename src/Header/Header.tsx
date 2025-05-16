@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 
@@ -8,6 +8,14 @@ export const Header: React.FC = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add('body_no_scroll');
+    } else {
+      document.body.classList.remove('body_no_scroll');
+    }
+  });
 
   return (
     <header className={styles.header}>

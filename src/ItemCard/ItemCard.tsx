@@ -151,58 +151,60 @@ export const ItemCard: React.FC = () => {
       <h1 className={styles.title}>{product.name}</h1>
       <div className={styles.content}>
         <div className={styles.side_images}>
-          {product.images.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt="imagesForItem"
-              className={styles.side_img}
-              onClick={() => handleImagesChange(index)}
-            />
-          ))}
-        </div>
-        <div className={styles.main_content}>
           <img
             src={selectedImages[selectedImageIndex]}
             alt="main_img"
             className={styles.main_img}
           />
+        </div>
+        <div className={styles.main_content}>
+          <div className={styles.side_images}>
+            {product.images.map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt="imagesForItem"
+                className={styles.side_img}
+                onClick={() => handleImagesChange(index)}
+              />
+            ))}
+          </div>
           <div className={styles.product_details}>
             <div className={styles.colors}>
-              <p>Available colors</p>
-              {product.colorsAvailable.map(color => (
-                <button
-                  key={color}
-                  className={`${styles.color_circle} ${
-                    selectedColor === color ? styles.active_color : ''
-                  }`}
-                  style={{ backgroundColor: color }}
-                  onClick={() => handleColorChange(color)}
-                ></button>
-              ))}
+              <p className={styles.colors_title}>Available colors</p>
+              <div className={styles.colors_row}>
+                {product.colorsAvailable.map(color => (
+                  <button
+                    key={color}
+                    className={`${styles.color_circle} ${selectedColor === color ? styles.active_color : ''}`}
+                    style={{ backgroundColor: color }}
+                    onClick={() => handleColorChange(color)}
+                  />
+                ))}
+              </div>
             </div>
 
             <div className={styles.capacity}>
-              <p>Select capacity</p>
-              {product.capacityAvailable.map(capacity => (
-                <button
-                  key={capacity}
-                  className={`${styles.capacity_button} ${
-                    selectedCapacity == capacity ? styles.active_capacity : ''
-                  }`}
-                  onClick={() => handleCapacityChange(capacity)}
-                >
-                  {capacity}
-                </button>
-              ))}
+              <p className={styles.capacity_title}>Select capacity</p>
+              <div className={styles.capacity_row}>
+                {product.capacityAvailable.map(capacity => (
+                  <button
+                    key={capacity}
+                    className={`${styles.capacity_button} ${selectedCapacity == capacity ? styles.active_capacity : ''}`}
+                    onClick={() => handleCapacityChange(capacity)}
+                  >
+                    {capacity}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className={styles.priceSection}>
+            <div className={styles.price_section}>
               {product.priceDiscount ? (
                 <>
-                  <span className={styles.discountPrice}>
+                  <span className={styles.discount_price}>
                     ${product.priceDiscount}
                   </span>
-                  <span className={styles.originalPrice}>
+                  <span className={styles.original_price}>
                     ${product.priceRegular}
                   </span>
                 </>
@@ -210,15 +212,15 @@ export const ItemCard: React.FC = () => {
                 <span className={styles.price}>${product.priceRegular}</span>
               )}
             </div>
-            <div>
+            <div className={styles.checkout}>
               <button
-                className={`${styles.addToCartButton} ${isInCart ? styles.addedToCart : ''}`}
+                className={`${styles.add_to_cart_button} ${isInCart ? styles.added_to_cart : ''}`}
                 onClick={() => dispatch({ type: 'ADD_TO_CART', product })}
               >
                 {isInCart ? 'Added to Cart' : 'Add to Cart'}
               </button>
               <button
-                className={`${styles.favoriteButton} ${isFavorite ? styles.favoriteActive : ''}`}
+                className={`${styles.favorite_button} ${isFavorite ? styles.favorite_active : ''}`}
                 onClick={() => dispatch({ type: 'TOGGLE_FAVORITE', product })}
               >
                 <img
@@ -231,22 +233,22 @@ export const ItemCard: React.FC = () => {
                 />
               </button>
             </div>
-            <div className={styles.productInfo}>
-              <div className={styles.productFeature}>
-                <span className={styles.featureLabel}>Screen</span>
-                <span className={styles.featureValue}>{product.screen}</span>
+            <div className={styles.product_info}>
+              <div className={styles.product_feature}>
+                <span className={styles.feature_label}>Screen</span>
+                <span className={styles.feature_value}>{product.screen}</span>
               </div>
-              <div className={styles.productFeature}>
-                <span className={styles.featureLabel}>Capacity</span>
-                <span className={styles.featureValue}>{product.capacity}</span>
+              <div className={styles.product_feature}>
+                <span className={styles.feature_label}>Capacity</span>
+                <span className={styles.feature_value}>{product.capacity}</span>
               </div>
-              <div className={styles.productFeature}>
-                <span className={styles.featureLabel}>Processor</span>
-                <span className={styles.featureValue}>{product.processor}</span>
+              <div className={styles.product_feature}>
+                <span className={styles.feature_label}>Processor</span>
+                <span className={styles.feature_value}>{product.processor}</span>
               </div>
-              <div className={styles.productFeature}>
-                <span className={styles.featureLabel}>RAM</span>
-                <span className={styles.featureValue}>{product.ram}</span>
+              <div className={styles.product_feature}>
+                <span className={styles.feature_label}>RAM</span>
+                <span className={styles.feature_value}>{product.ram}</span>
               </div>
             </div>
           </div>
@@ -254,12 +256,12 @@ export const ItemCard: React.FC = () => {
       </div>
       <div className={styles.about}>
         <div className={styles.description}>
-          <h2 className={styles.descTitle}>About</h2>
+          <h2 className={styles.description_title}>About</h2>
           {product.description.map((desc, index) => (
-            <div key={index} className={styles.descBlock}>
-              <h3 className={styles.descTitle}>{desc.title}</h3>
+            <div key={index} className={styles.description_block}>
+              <h3 className={styles.description_title}>{desc.title}</h3>
               {desc.text.map((paragraph, pIndex) => (
-                <p key={pIndex} className={styles.descText}>
+                <p key={pIndex} className={styles.description_text}>
                   {paragraph}
                 </p>
               ))}
