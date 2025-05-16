@@ -1,46 +1,54 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ProductCard.module.scss';
 
 import { Product } from '../../types/Product';
 import { ButtonPrimary } from '../UI/ButtonPrimary';
 import { ButtonFavorite } from '../UI/ButtonFavorite';
+import { useLocalStorage } from '../../hooks/useLocaleStorage';
 
 type Variant = 'default' | 'cart';
 
 type Props = {
-  product?: Product;
+  product: Product;
   variant?: Variant;
 };
 
-const initialProduct = {
-  id: 1,
-  category: 'phones',
-  itemId: 'apple-iphone-7-32gb-black',
-  name: 'Apple iPhone 7 32GB Black',
-  fullPrice: 400,
-  price: 375,
-  screen: "4.7' IPS",
-  capacity: '32GB',
-  color: 'black',
-  ram: '2GB',
-  year: 2016,
-  image: 'img/phones/apple-iphone-7/black/00.webp',
-};
-
 export const ProductCard: React.FC<Props> = ({
-  product = initialProduct,
+  product,
   variant = 'default',
 }) => {
   const [amount, setAmount] = useState(1);
   const [inCart, setInCart] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const handleAddToCart = () => {
+  const [storedCart, setStoredCart] = useLocalStorage<Product[]>('cart', []);
+  const [storedFavorites, setStoredFavorites] = useLocalStorage<Product[]>(
+    'favorites',
+    [],
+  );
+
+  const toggleCart = () => {
     setInCart(state => !state);
+
+    setStoredCart(prev => {
+      const exists = prev.some(p => p.id === product.id);
+
+      return exists
+        ? prev.filter(p => p.id !== product.id)
+        : [...prev, product];
+    });
   };
 
-  const handleAddToFavorite = () => {
+  const toggleFavorite = () => {
     setIsFavorite(state => !state);
+
+    setStoredFavorites(prev => {
+      const exists = prev.some(p => p.id === product.id);
+
+      return exists
+        ? prev.filter(p => p.id !== product.id)
+        : [...prev, product];
+    });
   };
 
   const handleChangeAmount = (type: 'increase' | 'decrease') => {
@@ -57,6 +65,16 @@ export const ProductCard: React.FC<Props> = ({
     }
   };
 
+  useEffect(() => {
+    if (storedFavorites.find(p => p.id === product.id)) {
+      setIsFavorite(true);
+    }
+
+    if (storedCart.find(p => p.id === product.id)) {
+      setInCart(true);
+    }
+  }, [storedFavorites, storedCart, product.id]);
+
   if (variant === 'cart') {
     return (
       <article
@@ -66,7 +84,7 @@ export const ProductCard: React.FC<Props> = ({
           <button className="button-box button--arrow-top"></button>
           <div className={styles['product-card__image-wrapper--cart']}>
             <img
-              className={styles['product-card__image']}
+              className={`${styles['product-card__image']} ${styles['product-card__image--cart']}`}
               src={product.image}
               alt="Product Photo"
             />
@@ -135,14 +153,14 @@ export const ProductCard: React.FC<Props> = ({
       </p>
       <div className={styles['product-card__buttons-wrapper']}>
         {inCart ? (
-          <ButtonPrimary variant="selected" onClick={handleAddToCart}>
+          <ButtonPrimary variant="selected" onClick={toggleCart}>
             Remove from cart
           </ButtonPrimary>
         ) : (
-          <ButtonPrimary onClick={handleAddToCart}>Add to cart</ButtonPrimary>
+          <ButtonPrimary onClick={toggleCart}>Add to cart</ButtonPrimary>
         )}
 
-        <ButtonFavorite selected={isFavorite} onClick={handleAddToFavorite} />
+        <ButtonFavorite selected={isFavorite} onClick={toggleFavorite} />
       </div>
     </article>
   );

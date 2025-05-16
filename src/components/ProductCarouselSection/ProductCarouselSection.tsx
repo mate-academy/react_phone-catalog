@@ -10,12 +10,12 @@ import styles from './ProductCarouselSection.module.scss';
 
 type Props = {
   sectionTitle?: string;
-  products?: Product[];
+  products: Product[];
 };
 
 export const ProductCarouselSection: React.FC<Props> = ({
   sectionTitle,
-  products = [],
+  products,
 }) => {
   const prevBtnRef = useRef<HTMLButtonElement>(null);
   const nextBtnRef = useRef<HTMLButtonElement>(null);

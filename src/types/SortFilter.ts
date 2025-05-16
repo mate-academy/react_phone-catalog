@@ -1,4 +1,4 @@
-export enum ProductFilterType {
+export enum SortFilter {
   PriceAscending = 'price ascending',
   PriceDescending = 'price descending',
   Newest = 'newest',

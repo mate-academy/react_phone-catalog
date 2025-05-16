@@ -8,6 +8,8 @@ import { Swiper as SwiperType } from 'swiper/types';
 import { ProductCard } from '../../../ProductCard';
 import { Product } from '../../../../types/Product';
 
+import styles from './ProductCarousel.module.scss';
+
 type Props = {
   products: Product[];
   prevBtnRef: React.RefObject<HTMLButtonElement>;
@@ -56,29 +58,13 @@ export const ProductCarousel: React.FC<Props> = ({
       }}
     >
       {products.map(product => (
-        <SwiperSlide key={product.id}>
+        <SwiperSlide
+          key={product.id}
+          className={styles['product-carousel__swiper-slide']}
+        >
           <ProductCard product={product} />
         </SwiperSlide>
       ))}
-
-      <SwiperSlide>
-        <ProductCard />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard />
-      </SwiperSlide>
     </Swiper>
   );
 };

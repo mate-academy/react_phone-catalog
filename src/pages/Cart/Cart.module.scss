@@ -1,6 +1,32 @@
 @use '../../styles/utils/mixins.scss' as *;
 @import '../../styles/variables/variables.scss';
 
+.cart__content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  gap: 32px;
+
+  @include on-desktop {
+    display: grid;
+    align-items: flex-start;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.cart__order-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart__checkout-divider {
+  width: 100%;
+  height: 1px;
+  background-color: $light-gray;
+}
+
 .cart__checkout-wrapper {
   display: flex;
   flex-direction: column;
@@ -10,21 +36,4 @@
 
   border: 1px solid $light-gray;
   padding: 24px;
-}
-
-.cart__content {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-
-  @include on-desktop {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-  }
-}
-
-.cart__checkout-divider {
-  width: 100%;
-  height: 1px;
-  background-color: $light-gray;
 }

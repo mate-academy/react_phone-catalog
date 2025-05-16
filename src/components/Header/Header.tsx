@@ -5,8 +5,10 @@ import logo from '../../img/main-logo.svg';
 import favoriteIcon from '../../img/icons/heart-icon/heart-icon.svg';
 import shopingCartIcon from '../../img/icons/shoping-cart-icon.svg';
 import burgerMenuIcon from '../../img/icons/burger-menu-icon.svg';
+
 import { Nav } from './components/Nav';
 import { NavLink } from 'react-router-dom';
+
 import classNames from 'classnames';
 
 export const Header = () => {

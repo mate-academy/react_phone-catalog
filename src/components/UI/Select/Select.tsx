@@ -18,9 +18,11 @@ export const Select: React.FC<Props> = ({
   options,
   searchParamKey,
 }) => {
+  const [searchParams] = useSearchParams();
+
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(placeholder);
-  const [searchParams] = useSearchParams();
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
 

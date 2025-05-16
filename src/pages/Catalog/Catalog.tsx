@@ -2,8 +2,12 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getProducts } from '../../api/products';
 
+import { productsFilter } from '../../utils/productsFilter';
+import { getEnumValue } from '../../utils/getEnumValue';
+
 import { Product } from '../../types/Product';
-import { ProductFilterType } from '../../types/ProductFilterType';
+import { Category } from '../../types/Category';
+import { SortFilter } from '../../types/SortFilter';
 
 import { Select } from '../../components/UI/Select';
 import { ProductCard } from '../../components/ProductCard';
@@ -20,9 +24,7 @@ export const Catalog = () => {
   const totalPages = useRef(0);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentCategory = searchParams.get('category');
   const currentPage = searchParams.get('page');
-  const currentSortFilter = searchParams.get('sort');
   const itemsPerPage =
     searchParams.get('items-per-page') || ITEMS_PER_PAGE_INITIAL;
 
@@ -32,39 +34,22 @@ export const Catalog = () => {
     setIsLoading(true);
 
     if (searchParams.has('category')) {
-      filtered = filtered.filter(
-        product => product.category === currentCategory,
-      );
+      const filter = getEnumValue(Category, searchParams.get('category'));
+
+      if (filter) {
+        filtered = productsFilter.byCategory(filtered, filter);
+      }
     }
 
+    // this order is required
     filteredProductsAmount.current = filtered.length;
     totalPages.current = Math.ceil(filtered.length / +itemsPerPage);
 
     if (searchParams.has('sort')) {
-      switch (currentSortFilter) {
-        case ProductFilterType.Newest: {
-          filtered = filtered.sort((p1, p2) => p2.year - p1.year);
+      const filter = getEnumValue(SortFilter, searchParams.get('sort'));
 
-          break;
-        }
-
-        case ProductFilterType.Latest: {
-          filtered = filtered.sort((p1, p2) => p1.year - p2.year);
-
-          break;
-        }
-
-        case ProductFilterType.PriceAscending: {
-          filtered = filtered.sort((p1, p2) => p1.price - p2.price);
-
-          break;
-        }
-
-        case ProductFilterType.PriceDescending: {
-          filtered = filtered.sort((p1, p2) => p2.price - p1.price);
-
-          break;
-        }
+      if (filter) {
+        filtered = productsFilter.bySortFilter(filtered, filter);
       }
     }
 
@@ -79,14 +64,7 @@ export const Catalog = () => {
     setIsLoading(false);
 
     return filtered;
-  }, [
-    products,
-    searchParams,
-    currentCategory,
-    currentPage,
-    currentSortFilter,
-    itemsPerPage,
-  ]);
+  }, [products, searchParams, currentPage, itemsPerPage]);
 
   const handlerPageChange = (page: number) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -117,7 +95,7 @@ export const Catalog = () => {
           <Select
             title="Sort by"
             placeholder="Choose"
-            options={Object.values(ProductFilterType)}
+            options={Object.values(SortFilter)}
             searchParamKey="sort"
           />
           <Select
@@ -137,7 +115,7 @@ export const Catalog = () => {
         </div>
         <div className={styles['catalog__pagination-wrapper']}>
           <Pagination
-            currentPage={+(searchParams.get('page') ?? 1)}
+            currentPage={+(currentPage ?? 1)}
             totalPages={totalPages.current}
             visibleCount={5}
             onPageChange={page => handlerPageChange(page)}
