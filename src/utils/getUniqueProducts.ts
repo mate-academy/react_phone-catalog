@@ -1,7 +1,7 @@
-import { Products } from '../types/Products';
+import { Product } from '../types/Product';
 
-export function getUniqueProducts(products: Products[]): Products[] {
-  const uniqueProducts: { [key: string]: Products } = {};
+export function getUniqueProducts(products: Product[]): Product[] {
+  const uniqueProducts: { [key: string]: Product } = {};
 
   products.forEach(product => {
     const nameWithoutCapacity = product.name.replace(/\s\d+(GB|TB)/, '');

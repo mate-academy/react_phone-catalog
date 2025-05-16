@@ -1,10 +1,13 @@
 import { useProducts } from '../../hooks/useProducts';
 import styles from './ProductsPage.module.scss';
 import { ProductCard } from '../../components/ProductCard';
-import { Products } from '../../types/Products';
 import { Category } from '../../types/Category';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { DropDown } from './components/DropDown';
+import { getSortedProducts } from '../../utils/getSortedProducts';
+import { getPaginatedProducts } from '../../utils/getPaginatedProducts';
+import { Pagination } from './components/Pagination';
+import { Filtration } from './components/Filtration';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductsPage = () => {
   const { products } = useProducts();
@@ -15,48 +18,39 @@ export const ProductsPage = () => {
   const filteredByCategory = products.filter(
     product => product.category === itemCategory,
   );
-
   const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
-
   const defaultParams = {
     sortField: 'year',
     count: `${filteredByCategory.length}`,
     page: '1',
   };
 
-  const sortOptions = {
-    [defaultParams.sortField]: 'Newest',
-    name: 'Alphabetically',
-    price: 'Cheapest',
-  };
-
-  const getSortedProducts = (products: Products[], sortField: string) => {
-    switch (sortField) {
-      case 'year':
-        return [...products].sort((a, b) => b.year - a.year);
-
-      case 'price':
-        return [...products].sort((a, b) => a.price - b.price);
-
-      case 'name':
-        return [...products].sort((a, b) => a.name.localeCompare(b.name));
-
-      default:
-        return [...products];
-    }
-  };
-
   const sortField = searchParams.get('sortField') || defaultParams.sortField;
+  const count = searchParams.get('count') || defaultParams.count;
+  const page = Number(searchParams.get('page')) || Number(defaultParams.page);
+
+  const totalPages =
+    count === 'All' ? 1 : Math.ceil(filteredByCategory.length / Number(count));
 
   const sortedProducts = getSortedProducts(filteredByCategory, sortField);
 
+  const paginatedProducts =
+    count === 'All'
+      ? sortedProducts
+      : getPaginatedProducts(sortedProducts, page, Number(count));
+
   return (
     <div className={styles.products}>
+      <div className={styles.products__breadcrumbs}>
+        <Breadcrumbs />
+      </div>
+
       <h1 className={styles.products__title}>
         {capitalizeFirstLetter(itemCategory)}
       </h1>
+
       <p className={styles.products__count}>
         {`${filteredByCategory.length} models`}
       </p>
@@ -67,22 +61,26 @@ export const ProductsPage = () => {
         </h2>
       ) : (
         <>
-          <div className={styles.filters}>
-            <div className={styles.products__filters}>
-              <p className={styles.products__name}>Sort by</p>
-              <DropDown options={sortOptions} value={sortOptions[sortField]} />
-            </div>
-          </div>
+          <Filtration
+            defaultParams={defaultParams}
+            sortField={sortField}
+            count={count}
+          />
+
           <div className={styles.products__product}>
-            {sortedProducts.map(product => (
+            {paginatedProducts.map(product => (
               <ProductCard
                 key={product.id}
                 product={product}
-                path={`/product/${product.id}`}
+                path={`/${product.category}/${product.itemId}`}
                 checkPrice
               />
             ))}
           </div>
+
+          {count !== 'All' && totalPages > 1 && (
+            <Pagination page={page} totalPages={totalPages} />
+          )}
         </>
       )}
     </div>

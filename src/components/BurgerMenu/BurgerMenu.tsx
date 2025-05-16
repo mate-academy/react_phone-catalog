@@ -6,8 +6,10 @@ import { NavigationMenu } from '../NavigationMenu';
 import { NavIcon } from '../NavIcon';
 import classNames from 'classnames';
 
+
 export const BurgerMenu = () => {
   const { isOpen, closeMenu } = useMenu();
+
   const handleCloseMenu = (event: React.MouseEvent) => {
     const target = event.target as HTMLElement;
 
@@ -22,10 +24,8 @@ export const BurgerMenu = () => {
         closeMenu();
       }
     };
-
     window.addEventListener('resize', handleResize);
     handleResize();
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -40,18 +40,17 @@ export const BurgerMenu = () => {
               <Logo />
             </div>
           </div>
-
           <div data-nav-link className={slyles.menu_nav}>
             <NavigationMenu isMenu />
           </div>
 
           <div data-nav-link className={slyles.menu__icons}>
             <div className={slyles.menu__icon}>
-              <NavIcon type="favourite" path="/favourites" />
+              <NavIcon type="favourite" path="/favourites" isMenu />
             </div>
 
             <div className={slyles.menu__icon}>
-              <NavIcon type="cart" path="/cart" />
+              <NavIcon type="cart" path="/cart" isMenu />
             </div>
           </div>
         </aside>

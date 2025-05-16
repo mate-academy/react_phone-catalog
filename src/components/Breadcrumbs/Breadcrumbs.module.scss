@@ -1,0 +1,32 @@
+@import '../../styles/main.scss';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  height: 16px;
+
+  &__home {
+    height: 100%;
+    display: flex;
+  }
+
+  &__icon {
+    height: 100%;
+    display: flex;
+  }
+
+  &__link {
+    @include small-text;
+
+    color: var(--primary-color);
+    display: flex;
+    padding-top: 2px;
+  }
+
+  &__activeLink {
+    color: var(--secondary-color);
+    cursor: default;
+  }
+}

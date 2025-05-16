@@ -2,6 +2,7 @@ import styles from './FavouritePage.module.scss';
 import { useProductsContext } from '../../hooks/savedProducts';
 import { useProducts } from '../../hooks/useProducts';
 import { ProductCard } from '../../components/ProductCard';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const FavouritesPage = () => {
   const { likedProducts } = useProductsContext();
@@ -13,6 +14,11 @@ export const FavouritesPage = () => {
 
   return (
     <div className={styles.favourite}>
+
+      <div className={styles.favourite__breadcrumbs}>
+        <Breadcrumbs />
+      </div>
+
       <h1 className={styles.favourite__title}>Favourites</h1>
 
       <p className={styles.favourite__count}>{`${likedItems.length} items`}</p>

@@ -1,0 +1,94 @@
+@import '../../../../styles/main.scss';
+
+.about {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    row-gap: 64px;
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 56px;
+  }
+
+  &__contentAbout {
+    grid-column: span 12;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__contentTech {
+    grid-column: 14 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__title {
+    font-weight: $font-acc;
+    font-size: 22px;
+    line-height: 30.8px;
+    margin: 0;
+
+    @include on-mobile {
+      font-weight: $font-normal;
+      font-size: 20px;
+      line-height: 25.56px;
+    }
+  }
+
+  &__divider {
+    @include divider;
+
+    margin-top: 16px;
+  }
+
+  &__textWrapper {
+    display: grid;
+    gap: 16px;
+  }
+
+  &__secTitle {
+    margin: 0;
+    color: var(--primary-color);
+    margin-top: 32px;
+    @include product-info-title;
+  }
+
+  &__paragraph {
+    margin: 0;
+    color: var(--secondary-color);
+
+    @include product-info-text;
+  }
+
+  &__techWrapper {
+    display: grid;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__techItem {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__techLabel {
+    @include product-info-text;
+
+    color: var(--secondary-color);
+  }
+
+  &__techValue {
+    @include product-info-text;
+
+    color: var(--primary-color);
+  }
+}

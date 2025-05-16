@@ -3,18 +3,19 @@ import { NavLink } from 'react-router-dom';
 import { Icon } from '../Icon';
 import cn from 'classnames';
 import { useProductsContext } from '../../hooks/savedProducts';
+import classNames from 'classnames';
 
 type Props = {
   path: string;
   type: 'favourite' | 'cart';
+  isMenu?: boolean;
 };
 
-export const NavIcon = ({ path, type }: Props) => {
+export const NavIcon = ({ path, type, isMenu }: Props) => {
   const { likedProducts, cartProducts } = useProductsContext();
 
   const count =
     type === 'favourite' ? likedProducts.length : cartProducts.length;
-
   return (
     <NavLink
       to={path}
@@ -24,7 +25,9 @@ export const NavIcon = ({ path, type }: Props) => {
     >
       <Icon type={type} />
       {count > 0 && (
-        <div className={styles.count}>
+        <div
+          className={classNames(styles.count, { [styles.countMenu]: isMenu })}
+        >
           <span className={styles.count__number}>{count}</span>
         </div>
       )}

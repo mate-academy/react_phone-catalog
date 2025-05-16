@@ -15,3 +15,9 @@
     margin-top: 24px;
   }
 }
+
+.slider {
+  @include on-mobile {
+    margin-left: 16px;
+  }
+}

@@ -1,6 +1,6 @@
-import { Products } from '../types/Products';
+import { Product } from '../types/Product';
 
-export function getTheHotestPrices(products: Products[]): Products[] {
+export function getTheHotestPrices(products: Product[]): Product[] {
   const productsWithDiscount = products.map(product => ({
     ...product,
     discount: product.fullPrice - product.price,

@@ -17,13 +17,26 @@ import ArrowTopLight from '../../assets/images/Icons/light/arrowTopLight.png';
 import ArrowTopDark from '../../assets/images/Icons/dark/arrowTopDark.png';
 import ArrowDownLight from '../../assets/images/Icons/light/arrowDownLight.png';
 import ArrowDownDark from '../../assets/images/Icons/dark/arrowDownDark.png';
+import CloseCartDark from '../../assets/images/Icons/dark/CloseCartDark.png';
+import CloseCartLight from '../../assets/images/Icons/light/closeCartLight.png';
+import MinusDark from '../../assets/images/Icons/dark/minusActiveDark .png';
+import MinusLight from '../../assets/images/Icons/light/minusActiveLight.png';
+import PlusDark from '../../assets/images/Icons/dark/plusActiveDark.png';
+import PlusLight from '../../assets/images/Icons/light/plusActiveLight.png';
+import HomeDark from '../../assets/images/Icons/dark/homeDark.png';
+import HomeLight from '../../assets/images/Icons/light/homeLight.png';
 import { useTheme } from '../../hooks/useTheme';
+import classNames from 'classnames';
 
 type Props = {
   type: IconType;
+  isSmall?: boolean;
+  isCart?: boolean;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 };
 
-export const Icon = ({ type }: Props) => {
+export const Icon = ({ type, onMouseEnter, onMouseLeave }: Props) => {
   const { theme } = useTheme();
   const darkTheme = theme === 'dark';
 
@@ -37,11 +50,20 @@ export const Icon = ({ type }: Props) => {
     arrowNext: darkTheme ? ArrowNextDark : ArrowNextLight,
     arrowTop: darkTheme ? ArrowTopDark : ArrowTopLight,
     arrowDown: darkTheme ? ArrowDownDark : ArrowDownLight,
+    closeCart: darkTheme ? CloseCartDark : CloseCartLight,
+    plus: darkTheme ? PlusDark : PlusLight,
+    minus: darkTheme ? MinusDark : MinusLight,
+    home: darkTheme ? HomeDark : HomeLight,
   };
+
   const iconSrc = icons[type];
 
   return (
-    <div className={styles.icon}>
+    <div
+      className={styles.icon}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <img src={iconSrc} alt={type} className={styles.icon__img} />
     </div>
   );
