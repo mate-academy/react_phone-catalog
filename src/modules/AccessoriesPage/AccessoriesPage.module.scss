@@ -1,0 +1,72 @@
+/* AccessoriesPage.module.scss */
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #0070f3;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: #005bb5;
+  }
+}
+
+.accessoriesPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .controls {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    label {
+      font-weight: bold;
+      select {
+        margin-left: 0.5rem;
+        padding: 0.2rem;
+      }
+    }
+  }
+
+  .error {
+    text-align: center;
+    p {
+      color: red;
+      font-size: 1.2rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #0070f3;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: #005bb5;
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
