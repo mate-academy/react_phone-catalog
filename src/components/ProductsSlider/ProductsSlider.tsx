@@ -21,6 +21,7 @@ export const ProductsSlider: React.FC<Props> = ({
   className = '',
 }) => {
   const {
+    wrapperRef,
     listRef,
     itemRef,
 
@@ -79,6 +80,7 @@ export const ProductsSlider: React.FC<Props> = ({
         className={classNames(styles['products-slider__viewport'], {
           [styles['products-slider__viewport--dragging']]: isDragging,
         })}
+        ref={wrapperRef}
         {...dragHandlers}
       >
         <ul ref={listRef} className={styles['products-slider__list']}>

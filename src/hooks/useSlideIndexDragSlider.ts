@@ -216,7 +216,7 @@ export const useSlideIndexDragSlider = <T>({
   useEffect(() => {
     if (autoScrollInterval) {
       autoScrollRef.current = setInterval(() => {
-        if (!isHoveredRef.current) {
+        if (!isHoveredRef.current && !sliderState.isDragging) {
           goToIndex((currentIndex + 1) % (loop ? slidesCount : slides.length));
         }
       }, autoScrollInterval);
@@ -232,6 +232,7 @@ export const useSlideIndexDragSlider = <T>({
     currentIndex,
     goToIndex,
     loop,
+    sliderState.isDragging,
     slides.length,
     slidesCount,
   ]);

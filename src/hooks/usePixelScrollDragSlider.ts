@@ -10,6 +10,7 @@ export const usePixelScrollDragSlider = ({
   transitionDuration = 300,
   threshold = 10,
 }: UsePixelScrollDragSliderOptions) => {
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
   const itemRef = useRef<HTMLLIElement | null>(null);
   const animationFrameRef = useRef<number | null>(null);
@@ -126,9 +127,9 @@ export const usePixelScrollDragSlider = ({
   };
 
   useEffect(() => {
-    const el = listRef.current;
+    const wrapper = wrapperRef.current;
 
-    if (!el) {
+    if (!wrapper) {
       return;
     }
 
@@ -142,10 +143,10 @@ export const usePixelScrollDragSlider = ({
       }
     };
 
-    el.addEventListener('touchmove', handleTouchMove, { passive: false });
+    wrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
 
     return () => {
-      el.removeEventListener('touchmove', handleTouchMove);
+      wrapper.removeEventListener('touchmove', handleTouchMove);
     };
   }, [isDragging]);
 
@@ -172,6 +173,7 @@ export const usePixelScrollDragSlider = ({
   };
 
   return {
+    wrapperRef,
     listRef,
     itemRef,
     cardWidth,
