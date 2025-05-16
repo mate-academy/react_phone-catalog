@@ -1,1 +1,1 @@
-export * from './CartsPage'
+export * from './CartsPage';

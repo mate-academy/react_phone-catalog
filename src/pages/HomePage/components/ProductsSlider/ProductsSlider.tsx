@@ -11,11 +11,7 @@ type Props = {
   checkPrice?: boolean;
 };
 
-export const ProductsSlider = ({
-  products,
-  title,
-  checkPrice,
-}: Props) => {
+export const ProductsSlider = ({ products, title, checkPrice }: Props) => {
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
 
@@ -25,14 +21,17 @@ export const ProductsSlider = ({
     dragFree: true,
     slidesToScroll: 1,
   });
+
   useEffect(() => {
     if (emblaApi) {
       const updateButtonsState = () => {
         setCanScrollPrev(emblaApi.canScrollPrev());
         setCanScrollNext(emblaApi.canScrollNext());
       };
+
       emblaApi.on('select', updateButtonsState);
       updateButtonsState();
+
       return () => {
         emblaApi.off('select', updateButtonsState);
       };
@@ -51,7 +50,6 @@ export const ProductsSlider = ({
 
   return (
     <div className={styles.slider}>
-
       <div className={styles.slider__top}>
         <h2 className={styles.slider__title}>{title}</h2>
 
@@ -71,7 +69,6 @@ export const ProductsSlider = ({
             <Icon type="arrowNext" />
           </button>
         </div>
-
       </div>
       <div className={styles.slider__wrapper} ref={emblaRef}>
         <div className={styles.slider__products}>

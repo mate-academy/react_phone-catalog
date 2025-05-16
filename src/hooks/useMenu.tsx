@@ -12,8 +12,8 @@ type Props = {
 
 const MenuContext = React.createContext<MenuContextType>({
   isOpen: false,
-  closeMenu: () => { },
-  openMenu: () => { },
+  closeMenu: () => {},
+  openMenu: () => {},
 });
 
 export const MenuProvider = ({ children }: Props) => {

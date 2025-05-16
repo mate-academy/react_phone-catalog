@@ -8,7 +8,7 @@ type Props = {
   isFooter?: boolean;
 };
 
-export const Logo = ({ isFooter } : Props) => {
+export const Logo = ({ isFooter }: Props) => {
   const { theme } = useTheme();
 
   const logo = theme === 'dark' ? logoDark : logoLight;

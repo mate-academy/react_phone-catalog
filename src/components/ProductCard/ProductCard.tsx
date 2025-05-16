@@ -12,7 +12,7 @@ type Props = {
   checkPrice?: boolean;
 };
 
-export const ProductCard = ({ product, path, checkPrice } : Props) => {
+export const ProductCard = ({ product, path, checkPrice }: Props) => {
   const { likedProducts, cartProducts, toggleLike, toggleCart } =
     useProductsContext();
   const { theme } = useTheme();

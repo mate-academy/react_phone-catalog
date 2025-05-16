@@ -9,7 +9,7 @@ type Props = {
   type: 'favourite' | 'cart';
 };
 
-export const NavIcon = ({ path, type } : Props) => {
+export const NavIcon = ({ path, type }: Props) => {
   const { likedProducts, cartProducts } = useProductsContext();
 
   const count =

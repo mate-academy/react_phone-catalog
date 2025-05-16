@@ -5,6 +5,7 @@ export function getUniqueProducts(products: Products[]): Products[] {
 
   products.forEach(product => {
     const nameWithoutCapacity = product.name.replace(/\s\d+(GB|TB)/, '');
+
     uniqueProducts[nameWithoutCapacity] = product;
   });
 

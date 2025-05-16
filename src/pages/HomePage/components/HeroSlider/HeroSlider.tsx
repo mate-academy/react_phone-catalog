@@ -11,7 +11,7 @@ import { SliderButton } from '../HeroSliderButton';
 
 import image1 from '../../../../assets/images/banner-phones.png';
 import image2 from '../../../../assets/images/banner-tablets.png';
-import image3 from '../../../../assets/images/category-accessories.png';
+import image3 from '../../../../assets/images/Untitled.png';
 import mobImage1 from '../../../../assets/images/sliderPhoto1.png';
 import mobImage2 from '../../../../assets/images/sliderPhoto2png.png';
 import mobImage3 from '../../../../assets/images/sliderPhoto3.png';
@@ -65,6 +65,7 @@ export const HeroSlider = () => {
     if (emblaApi) {
       emblaApi.on('select', onSlideChange);
     }
+
     return () => {
       if (emblaApi) {
         emblaApi.off('select', onSlideChange);

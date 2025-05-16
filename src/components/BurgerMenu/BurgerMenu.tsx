@@ -10,18 +10,22 @@ export const BurgerMenu = () => {
   const { isOpen, closeMenu } = useMenu();
   const handleCloseMenu = (event: React.MouseEvent) => {
     const target = event.target as HTMLElement;
+
     if (target && target.closest('[data-nav-link]')) {
       closeMenu();
     }
   };
+
   useEffect(() => {
     const handleResize = () => {
       if (isOpen && window.innerWidth > 640) {
         closeMenu();
       }
     };
+
     window.addEventListener('resize', handleResize);
     handleResize();
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };

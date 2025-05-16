@@ -14,6 +14,7 @@ export const ThemeToggle = () => {
         onChange={toggleTheme}
         checked={isDarkTheme}
       />
+
       <label htmlFor="theme-toggle" className={styles.toggleLabel}>
         <span className={styles.toggleCircle}></span>
       </label>

@@ -8,7 +8,6 @@ import { Footer } from './components/Footer';
 export const App = () => {
   return (
     <div className="app">
-
       <MenuProvider>
         <div className="app__header">
           <Header />
@@ -22,7 +21,6 @@ export const App = () => {
       </div>
 
       <Footer />
-
     </div>
   );
 };

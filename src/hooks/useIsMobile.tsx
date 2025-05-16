@@ -6,6 +6,7 @@ export const useIsMobile = () => {
   useEffect(() => {
     const checkIsMobile = () => {
       const mediaQuery = window.matchMedia('(max-width: 639px)');
+
       setIsMobile(mediaQuery.matches);
     };
 

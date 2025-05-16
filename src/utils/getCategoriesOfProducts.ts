@@ -1,8 +1,9 @@
 import img1 from '../assets/images/CategoryPhone.png';
 import img2 from '../assets/images/CategoryTablets.png';
 import img3 from '../assets/images/CategoryAccessories.png';
+import { Products } from '../types/Products';
 
-export const getCategoriesOfProducts = (): Record<
+const getCategoriesOfProducts = (): Record<
   string,
   { image: string; path: string; title: string; count: number }
 > => {
@@ -16,4 +17,19 @@ export const getCategoriesOfProducts = (): Record<
       count: 0,
     },
   };
+};
+
+export const calculateCategoryCounts = (
+  products: Products[],
+  categories = getCategoriesOfProducts(),
+) => {
+  const updatedCategories = { ...categories };
+
+  products.forEach(product => {
+    if (updatedCategories[product.category]) {
+      updatedCategories[product.category].count++;
+    }
+  });
+
+  return updatedCategories;
 };

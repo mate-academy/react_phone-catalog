@@ -17,13 +17,9 @@ export const HomePage = () => {
 
   return (
     <main className={styles['home-page']}>
-
       <Hero />
 
-      <ProductsSlider
-        products={uniqueProducts}
-        title="Brand new models"
-      />
+      <ProductsSlider products={uniqueProducts} title="Brand new models" />
 
       <CategoryShop />
 
@@ -32,7 +28,6 @@ export const HomePage = () => {
         title="Hot prices"
         checkPrice
       />
-
     </main>
   );
 };
