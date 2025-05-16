@@ -1,0 +1,23 @@
+@import '../../styles/main.scss';
+
+.home-page {
+  margin-top: 56px;
+  margin-bottom: 80px;
+  padding-left: 24px;
+
+  @include on-tablet {
+    margin-top: 32px;
+    margin-bottom: 64px;
+  }
+
+  @include on-mobile {
+    padding-inline: 0;
+    margin-top: 24px;
+  }
+}
+
+.slider {
+  @include on-mobile {
+    margin-left: 16px;
+  }
+}

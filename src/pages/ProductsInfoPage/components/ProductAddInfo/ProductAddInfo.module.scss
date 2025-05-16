@@ -1,0 +1,229 @@
+@import '../../../../styles/main.scss';
+
+.addInfo {
+  @include on-tablet {}
+
+  @include on-mobile {}
+
+  &__content {
+    display: grid;
+    gap: 24px;
+  }
+
+  &__colorsInfo {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__title {
+    @include small-text;
+
+    color: var(--secondary-color);
+    margin: 0;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__colorWrapper {
+    width: 25px;
+    height: 25px;
+    padding-block: 2px;
+    padding-inline: 2px;
+    border: 1px solid var(--elements-color);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__color {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__activeColor {
+    border: 1px solid var(--primary-color);
+  }
+
+  &__divider {
+    @include divider;
+  }
+
+  &__capacitiesWrapper {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacityWrapper {
+    height: 32px;
+    border: 1px solid var(--capacity-border-color);
+  }
+
+  &__capacity {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding-inline: 8px;
+    background-color: transparent;
+    color: var(--primary-color);
+    font-family: Mont;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.99);
+      transition: transform $transition-time ease-in-out;
+    }
+
+    @include body-text;
+  }
+
+  &__activeCapacity {
+    background-color: var(--primary-color);
+    border: var(--primary-color);
+    height: 33.1px;
+  }
+
+  &__activeCapacityBtn {
+    color: var(--bg-color);
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__price,
+  &__full {
+    &::before {
+      content: '$';
+    }
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: $font-acc;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--primary-color);
+  }
+
+  &__full {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: var(--secondary-color);
+    font-weight: $font-thin;
+    font-size: 22px;
+    line-height: 28.12px;
+    margin: 0;
+    align-items: center;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      top: 42%;
+      left: 0;
+      height: 2px;
+      background-color: var(--secondary-color);
+      mix-blend-mode: var(--blend-mode-light);
+      z-index: 0;
+    }
+
+    &[data-theme='dark']::after {
+      mix-blend-mode: var(--blend-mode-dark);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__cart {
+    background-color: var(--card-button-color);
+    border: 1px solid var(--card-button-color);
+    color: #fff;
+    cursor: pointer;
+    height: 48px;
+    width: 100%;
+
+    @include button-text;
+
+    &:hover {
+      background-color: var(--card-button-hover-color);
+      border: 1px solid var(--card-button-hover-color);
+      transition: transform $transition-time ease-in-out;
+      transform: scale(1.01);
+    }
+  }
+
+  &__cartActive {
+    background-color: var(--button-bg-color);
+    border: 1px solid var(--button-border-color);
+    color: $green-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--button-bg-color);
+      border: 1px solid var(--button-border-color);
+    }
+  }
+
+  &__favourite {
+    padding-top: 3px;
+    width: 48px;
+    height: 48px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--button-border-color);
+    background-color: var(--button-bg-color);
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 2px 16px 0 #0000001a;
+      transition: transform $transition-time ease-in-out;
+      transform: scale(1.02);
+      border-color: var(--button-border-hover-color);
+      background-color: var(--button-hover-color);
+    }
+  }
+
+  &__favouriteActive {
+    background-color: var(--card-bg-color);
+  }
+
+  &__char {
+    margin-block: 8px;
+    display: grid;
+    gap: 8px;
+  }
+
+  &__charItem {
+    justify-content: space-between;
+    display: flex;
+  }
+
+  &__label,
+  &__value {
+    @include small-text;
+  }
+
+  &__label {
+    color: var(--secondary-color);
+  }
+}

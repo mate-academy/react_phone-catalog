@@ -1,0 +1,59 @@
+@import '../../../../styles/main.scss';
+
+.container {
+  display: grid;
+  place-items: start;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.nav {
+  position: absolute;
+  display: flex;
+  bottom: 15%;
+  left: 5%;
+  cursor: pointer;
+  aspect-ratio: 200 / 60;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+  min-height: 40px;
+  border-radius: 30px;
+  background-color: #222222;
+  border: none;
+  box-shadow: 0 0 0 0.6px #5a5b62;
+  z-index: 10;
+
+  @include hover-scale-btn;
+
+  &:hover {
+    background: linear-gradient(90deg, #6339f0, #b15beb);
+    border: none;
+    box-shadow: none;
+  }
+
+  &__button {
+    display: flex;
+    border: none;
+    height: 20px;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14.5px;
+    color: #fff;
+    letter-spacing: 0.07em;
+
+    @include on-tablet {
+      font-weight: 500;
+      font-size: 9.7px;
+      letter-spacing: 0.07em;
+    }
+  }
+}

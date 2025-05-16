@@ -1,0 +1,63 @@
+@import '../../styles/main.scss';
+
+.error {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+  @include on-mobile {
+    padding-block: 30px;
+    box-sizing: border-box;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  &__content {
+    display: grid;
+    margin: 0;
+    gap: 32px;
+    box-sizing: border-box;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    color: var(--primary-color);
+
+    @include on-mobile {
+      font-size: 24px;
+      text-align: center;
+    }
+  }
+
+  &__btn {
+    justify-self: center;
+    width: 100px;
+    height: 60px;
+    border: 1px solid #e2e6e9;
+    color: var(--primary-color);
+    cursor: pointer;
+    background-color: var(--bg-color);
+    box-shadow: 0 2px 16px 0 #d58f8fdc;
+
+    @include button-text;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 2px 16px 0 #8fd5a3dc;
+    }
+
+    @include on-mobile {
+      width: 80px;
+      height: 35px;
+
+      @include small-text;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import '../../../../styles/main.scss';
+
+.btns {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3px;
+  border: 1px solid var(--button-border-color);
+  background-color: var(--button-bg-color);
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--button-disabled-bg);
+    border-color: var(--button-disabled-border);
+    opacity: 0.5;
+    transform: none;
+  }
+
+  &:hover {
+    background-color: var(--button-hover-color);
+    border: 1px solid var(--button-border-hover-color);
+    transition: transform 0.2s ease-in-out;
+    transform: scale(0.95);
+  }
+}

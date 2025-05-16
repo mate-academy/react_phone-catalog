@@ -1,0 +1,198 @@
+@mixin description {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin button-text {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+}
+
+@mixin uppercase {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin body-text {
+  font-weight: $font-thin;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-weight: $font-normal;
+  font-size: 12px;
+  line-height: 15.34px;
+  font: Mont;
+}
+
+@mixin hover-scale {
+  transition: transform $transition-time ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@mixin hover-scale-btn {
+  transition: transform $transition-time ease-in-out;
+
+  &:hover {
+    transform: scale(0.99);
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0px 1px 0px 0px var(--shadow-color);
+    cursor: pointer;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (max-width: ($desktop-min-width - 1px)) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: ($tablet-min-width - 1)) {
+    @content;
+  }
+}
+
+@mixin center-desktop {
+  @media (min-width: 1200px) {
+    margin-inline: calc((100vw - 1200px) / 2);
+  }
+}
+
+@mixin h2 {
+  font-size: 32px;
+  font-weight: $font-acc;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: var(--primary-color);
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 30.8px;
+    letter-spacing: 0;
+  }
+}
+
+@mixin section {
+  margin-top: 80px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-mobile {
+    margin-top: 56px;
+  }
+}
+
+@mixin disabled-button {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@mixin button-text {
+  text-align: center;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: Mont, sans-serif;
+  font-weight: $font-normal;
+}
+
+@mixin h1 {
+  font-weight: $font-acc;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  margin: 0;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin base-spacing {
+  margin-top: 24px;
+  margin-bottom: 80px;
+  padding-inline: 32px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+    padding-inline: 24px;
+  }
+
+  @include on-mobile {
+    margin-bottom: 56px;
+    padding-inline: 16px;
+  }
+}
+
+@mixin base-spacing-breadcrumbs {
+  margin-bottom: 40px;
+
+  @include on-mobile {
+    margin-bottom: 24px;
+  }
+}
+
+@mixin btn {
+  height: 32px;
+  width: 32px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3px;
+  border: 1px solid var(--button-border-color);
+  background-color: var(--button-bg-color);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--button-border-hover-color);
+    transition: transform $transition-time ease-in-out;
+    transform: scale(0.97);
+    background-color: var(--button-hover-color);
+  }
+}
+
+@mixin product-info-title {
+  font-weight: $font-normal;
+  font-size: 20px;
+  line-height: 25.56px;
+
+  @include on-mobile {
+    font-size: 16px;
+    line-height: 20.45px;
+  }
+}
+
+@mixin product-info-text {
+  font-weight: $font-thin;
+  line-height: 21px;
+  font-size: 14px;
+}
+
+@mixin divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--elements-color);
+}
