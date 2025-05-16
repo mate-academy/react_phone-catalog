@@ -1,0 +1,31 @@
+@import '../../styles/main.scss';
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  &__img {
+    width: 80px;
+    height: 28px;
+    padding-inline: 24px;
+
+    @include hover-scale;
+
+    @include on-tablet {
+      width: 64px;
+      height: 20.8px;
+      padding-inline: 16px;
+      padding-block: 14.2px;
+    }
+
+    &__imgFooter {
+      width: 89px;
+      height: 32px;
+      padding: 0;
+
+      @include hover-scale;
+    }
+  }
+}

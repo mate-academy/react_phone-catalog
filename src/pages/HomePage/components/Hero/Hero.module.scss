@@ -1,0 +1,11 @@
+@import '../../../../styles/main.scss';
+
+.hero {
+  &__title {
+    @include h1;
+
+    @include on-mobile {
+      padding-inline: 16px;
+    }
+  }
+}
