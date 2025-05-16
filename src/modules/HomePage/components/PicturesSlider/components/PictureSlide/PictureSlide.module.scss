@@ -1,0 +1,112 @@
+@import '../../../../../../styles/utils';
+
+.picture-slide {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  background: var(--color-hero-gradient-start);
+  background: radial-gradient(circle, var(--color-hero-gradient-start) 0%, var(--color-hero-gradient-end) 100%);
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  &__content {
+    width: 100%;
+    height: 20%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 10px;
+    row-gap: 15px;
+
+    @include on-tablet {
+      width: 50%;
+      height: 100%;
+      row-gap: 20px;
+    }
+
+    @include on-desktop {
+      width: 40%;
+      row-gap: 80px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  &__title {
+    @extend %mont-bold;
+
+    font-size: 24px;
+    color: var(--color-text-primary);
+    text-align: center;
+    padding-inline: 10px;
+  }
+
+  &__description {
+    @extend %text-body;
+
+    display: none;
+
+    color: var(--color-text-secondary);
+    text-align: center;
+
+    @include on-desktop {
+      display: block;
+    }
+  }
+
+  &__button {
+    @extend %text-uppercase;
+
+    display: none;
+
+    color: var(--color-text-primary);
+    padding: 20px 30px;
+    width: max-content;
+    border-radius: 30px;
+    border: 1px solid var(--color-icon-border);
+    transition: border-color $transition-duration-base ease-in-out;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &:hover {
+      border-color: var(--color-element-border-hover);
+    }
+  }
+
+  &__img-container {
+    width: 100%;
+    height: 80%;
+
+    @include on-tablet {
+      width: 50%;
+      height: 100%;
+    }
+
+    @include on-desktop {
+      width: 60%;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    user-select: none;
+  }
+}

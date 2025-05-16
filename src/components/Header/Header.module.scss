@@ -1,0 +1,150 @@
+@import '../../styles/utils';
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $header-height-mobile;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-element-border);
+
+  @include on-desktop {
+    height: $header-height-desktop;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    height: 100%;
+
+    @include on-tablet {
+      column-gap: 24px;
+    }
+  }
+
+  &__logo {
+    padding: 13px 16px;
+
+    @include on-desktop {
+      padding: 18px 24px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      height: 100%;
+    }
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__links {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-left: 1px solid var(--color-element-border);
+    color: var(--color-element-primary);
+
+    width: 48px;
+    height: 48px;
+    position: relative;
+
+    @include underline-base;
+    @include underline-hover;
+    @include underline-active;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__menu-btn {
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
+
+.quantity {
+  position: absolute;
+  top: calc(50% - 14px);
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  color: var(--color-quantity-notification-text);
+  border: 1px solid var(--color-quantity-notification-border);
+  background-color: var(--color-quantity-notification-bg);
+  font-weight: 700;
+  font-size: 9px;
+  font-family: Mont, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: $header-height-mobile 0 0 0;
+  background-color: var(--color-bg);
+  z-index: 99;
+  transform: translateY(-200%);
+  transition: transform $transition-duration-base ease-in-out;
+  padding-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &--open {
+    transform: translateY(1px);
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    flex: 1;
+    height: 64px;
+    color: var(--color-element-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--color-element-border);
+    position: relative;
+
+    @include underline-base;
+    @include underline-hover;
+    @include underline-active;
+
+    &:not(:last-child) {
+      border-right: 1px solid var(--color-element-border);
+    }
+
+  }
+}

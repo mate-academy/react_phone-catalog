@@ -1,0 +1,36 @@
+@import '../../styles/utils';
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+  width: max-content;
+
+  &__text {
+    @extend %text-small;
+
+    color: var(--color-text-secondary);
+    transition: color $transition-duration-base ease-in-out;
+  }
+
+  &__icon {
+    padding: 8px;
+    border: 1px solid var(--color-icon-border);
+    color: var(--color-icon-primary);
+    background-color: var(--color-icon-bg);
+    transition:
+      border-color $transition-duration-base ease-in-out,
+      background-color $transition-duration-base ease-in-out;
+  }
+
+  &:hover {
+    .back-to-top__text {
+      color: var(--color-text-primary);
+    }
+
+    .back-to-top__icon {
+      border-color: var(--color-icon-border-hover);
+      background-color: var(--color-icon-bg-hover);
+    }
+  }
+}
