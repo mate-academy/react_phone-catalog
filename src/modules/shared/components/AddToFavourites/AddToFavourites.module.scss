@@ -1,13 +1,18 @@
 @use '../../utils/variables' as *;
 
 .favourites {
-  width: 2.5rem;
-  height: 2.5rem;
+  padding: 0;
+  width: 40px;
+  height: 40px;
   background-color: $white-color;
   border: 1px solid $gray-color;
+  justify-items: center;
 
   &__heart {
     color: $black-color;
-    object-fit: fill;
+    object-fit: contain;
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 }

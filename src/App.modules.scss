@@ -2,21 +2,40 @@
 @use './modules/shared/utils/variables' as *;
 
 @font-face {
-  font-family: Mount;
-    src:  url('../public/fonts/Mont-Regular.otf'),
-          url('../public/fonts/Mont-SemiBold.otf'),
-          url('../public/fonts/Mont-Bold.otf');
+  font-family: Mont;
+    src: url('../public/fonts/Mont-Regular.otf');
     font-display: swap;
+    font-weight: 300;
+
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../public/fonts/Mont-SemiBold.otf');
+  font-display: swap;
+  font-weight: 500;
+
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../public/fonts/Mont-Bold.otf');
+  font-display: swap;
+  font-weight: 700;
 
 }
 
 
 html {
-  font-family: Mount, Arial, Helvetica, sans-serif;
+  font-family: Mont, Arial, Helvetica, sans-serif;
   font-size: $base-font-size;
   align-items: center;
 }
 
 .main {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
 }

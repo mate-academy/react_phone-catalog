@@ -1,9 +1,16 @@
 @use '../../utils/variables' as *;
 
 button {
+  padding: 0;
   background-color: $black-color;
-  height: 2.5rem;
+  height: 40px;
   color: $white-color;
   border: none;
-  width: 80%;
+  width: 176px;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
 }
