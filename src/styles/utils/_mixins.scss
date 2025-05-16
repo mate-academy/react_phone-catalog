@@ -45,6 +45,15 @@
   }
 }
 
+@mixin on-hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+
 @mixin underline-base {
   position: relative;
 
@@ -61,7 +70,7 @@
 }
 
 @mixin underline-hover {
-  &:hover {
+  @include on-hover{
     &::after {
       transform: scaleX(1);
     }

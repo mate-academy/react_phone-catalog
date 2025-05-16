@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { getEventPageX } from '../utils';
+import { getEventPageCoordinates } from '../utils';
 
 type UsePixelScrollDragSliderOptions = {
   transitionDuration?: number;
@@ -14,7 +14,9 @@ export const usePixelScrollDragSlider = ({
   const itemRef = useRef<HTMLLIElement | null>(null);
   const animationFrameRef = useRef<number | null>(null);
   const dragStartXRef = useRef(0);
+  const dragStartYRef = useRef(0);
   const dragDeltaRef = useRef(0);
+  const isHorizontalSwipeRef = useRef<boolean | null>(null);
 
   const [cardWidth, setCardWidth] = useState(0);
   const [currentScroll, setCurrentScroll] = useState(0);
@@ -56,8 +58,12 @@ export const usePixelScrollDragSlider = ({
 
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     setIsDragging(true);
-    dragStartXRef.current = getEventPageX(e);
+    const { x, y } = getEventPageCoordinates(e);
+
+    dragStartXRef.current = x;
+    dragStartYRef.current = y;
     dragDeltaRef.current = 0;
+    isHorizontalSwipeRef.current = null;
   };
 
   const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
@@ -65,13 +71,27 @@ export const usePixelScrollDragSlider = ({
       return;
     }
 
-    dragDeltaRef.current = getEventPageX(e) - dragStartXRef.current;
+    const { x, y } = getEventPageCoordinates(e);
+    const deltaX = x - dragStartXRef.current;
+    const deltaY = y - dragStartYRef.current;
 
-    if (animationFrameRef.current === null) {
-      animationFrameRef.current = requestAnimationFrame(() => {
-        updateSliderPosition(currentScroll - dragDeltaRef.current, false);
-        animationFrameRef.current = null;
-      });
+    if (isHorizontalSwipeRef.current === null) {
+      isHorizontalSwipeRef.current = Math.abs(deltaX) > Math.abs(deltaY);
+    }
+
+    if (isHorizontalSwipeRef.current) {
+      if ('touches' in e) {
+        e.preventDefault();
+      }
+
+      dragDeltaRef.current = deltaX;
+
+      if (animationFrameRef.current === null) {
+        animationFrameRef.current = requestAnimationFrame(() => {
+          updateSliderPosition(currentScroll - dragDeltaRef.current, false);
+          animationFrameRef.current = null;
+        });
+      }
     }
   };
 
@@ -104,6 +124,30 @@ export const usePixelScrollDragSlider = ({
 
     setTimeout(() => setWasDragged(false), 100);
   };
+
+  useEffect(() => {
+    const el = listRef.current;
+
+    if (!el) {
+      return;
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isDragging) {
+        return;
+      }
+
+      if (isHorizontalSwipeRef.current) {
+        e.preventDefault();
+      }
+    };
+
+    el.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      el.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [isDragging]);
 
   useEffect(() => {
     updateSliderPosition(currentScroll, !isDragging);

@@ -1,4 +1,4 @@
-export * from './getEventPageX';
+export * from './getEventPageCoordinates';
 export * from './getPaginationItems';
 export * from './fetchJson';
 export * from './getSuggestedProducts';

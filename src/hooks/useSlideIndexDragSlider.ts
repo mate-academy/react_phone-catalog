@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback, useMemo } from 'react';
-import { getEventPageX } from '../utils';
+import { getEventPageCoordinates } from '../utils';
 
 type UseSlideIndexDragSliderOptions<T> = {
   slides: T[];
@@ -27,10 +27,12 @@ export const useSlideIndexDragSlider = <T>({
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
   const dragStartXRef = useRef(0);
+  const dragStartYRef = useRef(0);
   const dragDeltaRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
   const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
   const isHoveredRef = useRef(false);
+  const isHorizontalSwipeRef = useRef<boolean | null>(null);
 
   const slidesCount = preparedSlides.length;
   const initialIndex = loop ? 1 : 0;
@@ -126,8 +128,12 @@ export const useSlideIndexDragSlider = <T>({
   );
 
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
-    dragStartXRef.current = getEventPageX(e);
+    const { x, y } = getEventPageCoordinates(e);
+
+    dragStartXRef.current = x;
+    dragStartYRef.current = y;
     dragDeltaRef.current = 0;
+    isHorizontalSwipeRef.current = null;
     setSliderState(prev => ({ ...prev, isDragging: true }));
   };
 
@@ -136,13 +142,27 @@ export const useSlideIndexDragSlider = <T>({
       return;
     }
 
-    dragDeltaRef.current = getEventPageX(e) - dragStartXRef.current;
+    const { x, y } = getEventPageCoordinates(e);
+    const deltaX = x - dragStartXRef.current;
+    const deltaY = y - dragStartYRef.current;
 
-    if (animationFrameRef.current === null) {
-      animationFrameRef.current = requestAnimationFrame(() => {
-        updateSliderPosition(false);
-        animationFrameRef.current = null;
-      });
+    if (isHorizontalSwipeRef.current === null) {
+      isHorizontalSwipeRef.current = Math.abs(deltaX) > Math.abs(deltaY);
+    }
+
+    if (isHorizontalSwipeRef.current) {
+      if ('touches' in e) {
+        e.preventDefault();
+      }
+
+      dragDeltaRef.current = deltaX;
+
+      if (animationFrameRef.current === null) {
+        animationFrameRef.current = requestAnimationFrame(() => {
+          updateSliderPosition(false);
+          animationFrameRef.current = null;
+        });
+      }
     }
   };
 
@@ -223,6 +243,30 @@ export const useSlideIndexDragSlider = <T>({
       });
     }
   }, [sliderState.isTransitionEnabled]);
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+
+    if (!wrapper) {
+      return;
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!sliderState.isDragging) {
+        return;
+      }
+
+      if (isHorizontalSwipeRef.current) {
+        e.preventDefault();
+      }
+    };
+
+    wrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      wrapper.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [sliderState.isDragging]);
 
   const dragHandlers = {
     onMouseDown: handleDragStart,
