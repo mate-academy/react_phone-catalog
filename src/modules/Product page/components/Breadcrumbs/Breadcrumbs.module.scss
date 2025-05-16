@@ -1,0 +1,30 @@
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &__element {
+    display: flex;
+    gap: 8px;
+  }
+
+}
+
+.separator {
+display: flex;
+align-items: center;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+
+  font-size: 12px;
+  font-weight: 600;
+  color: #89939A;
+  text-decoration: none;
+
+  &:hover {
+    color: #0F0F11;
+  }
+}
