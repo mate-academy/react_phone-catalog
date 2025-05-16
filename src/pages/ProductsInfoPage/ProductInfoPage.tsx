@@ -9,17 +9,28 @@ import { ProductsSlider } from '../HomePage/components/ProductsSlider';
 import { useProducts } from '../../hooks/useProducts';
 import { getRandomProducts } from '../../utils/getRandomProducts';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { useErrorHandling } from '../../hooks/errorHandling';
+import { NotFoundPage } from '../NotFoundPage';
+import { Loader } from '../../components/Loader';
 
 export const ProductInfoPage = () => {
-  const { products } = useProducts();
-  const { allProducts } = useAllProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
+  const { allProducts } = useAllProducts(() => setIsError(true));
   const { productId } = useParams();
-  const selectedProduct = allProducts.find(
-    allProduct => allProduct.id === productId,
-  );
+
+  const selectedProduct = allProducts.find(product => product.id === productId);
 
   const randomProducts = getRandomProducts(products);
   const navigate = useNavigate();
+
+  if (products.length === 0 || allProducts.length === 0) {
+    return <Loader />;
+  }
+
+  if (!selectedProduct) {
+    return <NotFoundPage />;
+  }
 
   return (
     <div className={styles.product}>
@@ -31,32 +42,32 @@ export const ProductInfoPage = () => {
         <div className={styles.product__icon}>
           <Icon type="arrowPrev" />
         </div>
-
         <span className={styles.product__btnText}>Back</span>
       </button>
-      {selectedProduct && (
-        <>
-          <h2 className={styles.product__name}>{selectedProduct.name}</h2>
-          <div className={styles.product__details}>
-            <div className={styles.product__images}>
-              <Gallery selectedProduct={selectedProduct} />
-            </div>
-            <div className={styles.product__addInfo}>
-              <ProductAddInfo selectedProduct={selectedProduct} />
-            </div>
-            <div className={styles.product__aboutInfo}>
-              <AboutProduct selectedProduct={selectedProduct} />
-            </div>
+
+      <>
+        <h2 className={styles.product__name}>{selectedProduct.name}</h2>
+        <div className={styles.product__details}>
+          <div className={styles.product__images}>
+            <Gallery selectedProduct={selectedProduct} />
           </div>
-          <div className={styles.product__slider}>
-            <ProductsSlider
-              products={randomProducts}
-              title="You also may like"
-              checkPrice
-            />
+
+          <div className={styles.product__addInfo}>
+            <ProductAddInfo selectedProduct={selectedProduct} />
           </div>
-        </>
-      )}
+
+          <div className={styles.product__aboutInfo}>
+            <AboutProduct selectedProduct={selectedProduct} />
+          </div>
+        </div>
+        <div className={styles.product__slider}>
+          <ProductsSlider
+            products={randomProducts}
+            title="You also may like"
+            checkPrice
+          />
+        </div>
+      </>
     </div>
   );
 };

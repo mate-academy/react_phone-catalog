@@ -18,10 +18,17 @@ html {
   scroll-behavior: smooth;
 }
 
+html.modal-open,
+body.modal-open {
+  overflow: hidden;
+  height: 100%;
+}
+
 .is-active {
   color: var(--primary-color);
   position: relative;
   transition: color $transition-time;
+
   &::after {
     transition: background-color $transition-time;
     content: '';
@@ -32,6 +39,7 @@ html {
     background-color: var(--primary-color);
     bottom: -24px;
     position: absolute;
+
     @include on-tablet {
       bottom: -16px;
     }

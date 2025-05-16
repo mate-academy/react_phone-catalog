@@ -29,6 +29,7 @@ export const ProductCard = ({ product, path, checkPrice }: Props) => {
             alt={product.name}
           />
         </Link>
+
         <Link to={path}>
           <p className={styles.product__title}>{product.name}</p>
         </Link>
@@ -61,6 +62,7 @@ export const ProductCard = ({ product, path, checkPrice }: Props) => {
             </div>
           ))}
         </div>
+
         <div className={styles.product__buttons}>
           <button
             className={classNames(styles.product__cart, {

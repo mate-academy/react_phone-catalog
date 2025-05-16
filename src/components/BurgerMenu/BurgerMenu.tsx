@@ -6,15 +6,18 @@ import { NavigationMenu } from '../NavigationMenu';
 import { NavIcon } from '../NavIcon';
 import classNames from 'classnames';
 
-
 export const BurgerMenu = () => {
   const { isOpen, closeMenu } = useMenu();
-
   const handleCloseMenu = (event: React.MouseEvent) => {
     const target = event.target as HTMLElement;
 
     if (target && target.closest('[data-nav-link]')) {
-      closeMenu();
+      const menuElement = document.querySelector('.app__menu');
+
+      if (menuElement) {
+        menuElement.classList.add('app__menu--closing');
+        setTimeout(closeMenu, 50);
+      }
     }
   };
 
@@ -24,8 +27,10 @@ export const BurgerMenu = () => {
         closeMenu();
       }
     };
+
     window.addEventListener('resize', handleResize);
     handleResize();
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -40,6 +45,7 @@ export const BurgerMenu = () => {
               <Logo />
             </div>
           </div>
+
           <div data-nav-link className={slyles.menu_nav}>
             <NavigationMenu isMenu />
           </div>

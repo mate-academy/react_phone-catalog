@@ -6,15 +6,23 @@ import { CartItems } from './components/CartItems/CartItems';
 import { CartSummary } from './components/CartSummary';
 import { Icon } from '../../components/Icon';
 import { useNavigate } from 'react-router-dom';
+import { useErrorHandling } from '../../hooks/errorHandling';
+import { Loader } from '../../components/Loader';
 
 export const CartsPage = () => {
   const { cartProducts } = useProductsContext();
-  const { products } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
   const navigate = useNavigate();
 
   const cartItems = products.filter(product =>
     cartProducts.includes(product.id),
   );
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
+
   return (
     <div className={styles.carts}>
       <div className={styles.carts__content}>
@@ -25,7 +33,6 @@ export const CartsPage = () => {
 
           <span className={styles.carts__btnText}>Back</span>
         </button>
-
         <h1 className={styles.carts__title}>Cart</h1>
 
         <div className={styles.carts__products}>
@@ -39,6 +46,7 @@ export const CartsPage = () => {
           )}
         </div>
       </div>
+
       {!cartItems.length && (
         <>
           <div>

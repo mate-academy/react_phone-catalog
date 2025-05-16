@@ -44,6 +44,7 @@ export const Footer = () => {
 
         <div className={styles.footer__elevator} onClick={scrollTop}>
           <div className={styles.footer__elevatorText}>Back to top</div>
+
           <button className={styles.footer__btn}>
             <Icon type="arrowTop" />
           </button>

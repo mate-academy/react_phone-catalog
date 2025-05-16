@@ -12,9 +12,10 @@
   height: 100px;
   width: 300px;
 
+  // подобрать для телефона настройки
   @include on-mobile {
     width: 200px;
-    height: 100px;
+    height: 150px;
     padding: 10px;
   }
 

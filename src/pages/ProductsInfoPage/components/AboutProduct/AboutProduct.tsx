@@ -1,8 +1,10 @@
 import styles from './AboutProduct.module.scss';
 import { AllProduct } from '../../../../types/AllProduct';
+
 type Props = {
   selectedProduct: AllProduct;
 };
+
 export const AboutProduct = ({ selectedProduct }: Props) => {
   return (
     <div className={styles.about}>

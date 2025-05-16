@@ -37,10 +37,6 @@
     cursor: pointer;
   }
 
-  &:hover {
-    border: 1px solid var(--secondary-color);
-  }
-
   &__color {
     border-radius: 50%;
     width: 100%;

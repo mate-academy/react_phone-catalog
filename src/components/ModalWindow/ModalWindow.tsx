@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import styles from './ModalWindow.module.scss';
 import { useProductsContext } from '../../hooks/savedProducts';
 import { Icon } from '../Icon';
@@ -7,7 +7,7 @@ type Props = {
   setIsModalOpen: (isOpen: boolean) => void;
 };
 
-export const ModalWindow: React.FC<Props> = ({ setIsModalOpen }) => {
+export const ModalWindow = ({ setIsModalOpen }: Props) => {
   const { clearCart } = useProductsContext();
 
   useEffect(() => {
@@ -41,8 +41,9 @@ export const ModalWindow: React.FC<Props> = ({ setIsModalOpen }) => {
           </button>
 
           <div className={styles.modal__text}>
-            If you order correct, press 'YES' and wait for delivery. If you
-            want to change your order, press 'NO' and go back to the cart.
+            If you order correct, press &apos;YES&apos; and wait for delivery.
+            If you want to change your order, press &apos;NO&apos; and go back
+            to the cart.
           </div>
         </div>
 
@@ -50,6 +51,7 @@ export const ModalWindow: React.FC<Props> = ({ setIsModalOpen }) => {
           <button className={styles.modal__yes} onClick={handleYes}>
             Yes
           </button>
+
           <button className={styles.modal__no} onClick={handleNo}>
             No
           </button>

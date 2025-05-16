@@ -8,19 +8,25 @@ import { getPaginatedProducts } from '../../utils/getPaginatedProducts';
 import { Pagination } from './components/Pagination';
 import { Filtration } from './components/Filtration';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { useErrorHandling } from '../../hooks/errorHandling';
+import { Loader } from '../../components/Loader';
 
 export const ProductsPage = () => {
-  const { products } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
   const { category } = useParams();
   const [searchParams] = useSearchParams();
+
   const itemCategory = category as Category;
 
   const filteredByCategory = products.filter(
     product => product.category === itemCategory,
   );
+
   const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
+
   const defaultParams = {
     sortField: 'year',
     count: `${filteredByCategory.length}`,
@@ -29,17 +35,21 @@ export const ProductsPage = () => {
 
   const sortField = searchParams.get('sortField') || defaultParams.sortField;
   const count = searchParams.get('count') || defaultParams.count;
+
   const page = Number(searchParams.get('page')) || Number(defaultParams.page);
 
   const totalPages =
     count === 'All' ? 1 : Math.ceil(filteredByCategory.length / Number(count));
-
   const sortedProducts = getSortedProducts(filteredByCategory, sortField);
 
   const paginatedProducts =
     count === 'All'
       ? sortedProducts
       : getPaginatedProducts(sortedProducts, page, Number(count));
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.products}>
@@ -66,7 +76,6 @@ export const ProductsPage = () => {
             sortField={sortField}
             count={count}
           />
-
           <div className={styles.products__product}>
             {paginatedProducts.map(product => (
               <ProductCard
@@ -77,7 +86,6 @@ export const ProductsPage = () => {
               />
             ))}
           </div>
-
           {count !== 'All' && totalPages > 1 && (
             <Pagination page={page} totalPages={totalPages} />
           )}

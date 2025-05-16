@@ -1,14 +1,11 @@
 @import '../../../../styles/main.scss';
 
 .items {
-  display: grid;
-  height: 100%;
-  gap: 16px;
-  grid-column: span 2;
+  width: 100%;
 
-  @include on-tablet {
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .item {
@@ -98,6 +95,9 @@
 
   &__btn {
     @include btn;
+
+    display: flex;
+    justify-content: center;
 
     &:disabled {
       opacity: 0.4;

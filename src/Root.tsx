@@ -4,6 +4,7 @@ import {
   Route,
   useParams,
 } from 'react-router-dom';
+
 import { App } from './App';
 import { HomePage } from './pages/HomePage/HomePage';
 import { ProductsPage } from './pages/ProductsPage/ProductsPage';
@@ -18,9 +19,11 @@ import { ErrorHandlingProvider } from './hooks/errorHandling';
 
 const CategoryRoutes = () => {
   const { category } = useParams();
+
   if (!category || !availableCategories.includes(category)) {
     return <NotFoundPage />;
   }
+
   return (
     <Routes>
       <Route index element={<ProductsPage />} />
@@ -42,6 +45,7 @@ export const Root = () => {
                 <Route path=":category/*" element={<CategoryRoutes />} />
                 <Route path="favourites" element={<FavouritesPage />} />
                 <Route path="cart" element={<CartsPage />} />
+                <Route path="*" element={<NotFoundPage />} />
               </Route>
             </Routes>
           </Router>

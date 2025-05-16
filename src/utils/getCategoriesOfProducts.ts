@@ -19,7 +19,7 @@ const getCategoriesOfProducts = (): Record<
   };
 };
 
-export const calculateCategoryCounts = (
+export const calcCategoryCounts = (
   products: Product[],
   categories = getCategoriesOfProducts(),
 ) => {

@@ -7,6 +7,8 @@ import { useTheme } from '../../../../hooks/useTheme';
 import { useProductsContext } from '../../../../hooks/savedProducts';
 import { useProducts } from '../../../../hooks/useProducts';
 import { Icon } from '../../../../components/Icon';
+import { useErrorHandling } from '../../../../hooks/errorHandling';
+import { Loader } from '../../../../components/Loader';
 
 type Props = {
   selectedProduct: AllProduct;
@@ -15,26 +17,33 @@ type Props = {
 export const ProductAddInfo = ({ selectedProduct }: Props) => {
   const { likedProducts, cartProducts, toggleLike, toggleCart } =
     useProductsContext();
-  const { products } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
   const { theme } = useTheme();
 
-  const product = products.filter(
-    product => product.itemId === selectedProduct.id,
-  )[0];
-  const isLiked = product && likedProducts.includes(product.id);
-  const isAddedToCart = product && cartProducts.includes(product.id);
+  const currentProduct = products.find(p => p.itemId === selectedProduct.id);
+
+  const isLiked = currentProduct && likedProducts.includes(currentProduct.id);
+  const isAddedToCart =
+    currentProduct && cartProducts.includes(currentProduct.id);
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.addInfo}>
       <div className={styles.addInfo__content}>
         <div className={styles.addInfo__colorsInfo}>
           <p className={styles.addInfo__title}>Available colors</p>
+
           <div className={styles.addInfo__colors}>
             {selectedProduct.colorsAvailable.map(color => {
               const colorHex =
                 ProductsColors[color as keyof typeof ProductsColors] || '#FFF';
               const linkColor = color.replace(' ', '-');
               const linkTo = `../${selectedProduct.namespaceId}-${selectedProduct.capacity.toLowerCase()}-${linkColor}`;
+
               return (
                 <Link to={linkTo} key={linkColor}>
                   <div
@@ -56,10 +65,12 @@ export const ProductAddInfo = ({ selectedProduct }: Props) => {
         <div className={styles.addInfo__divider}></div>
         <div className={styles.addInfo__capacitiesWrapper}>
           <p className={styles.addInfo__title}>Select capacity</p>
+
           <div className={styles.addInfo__capacities}>
             {selectedProduct.capacityAvailable.map(capacity => {
               const linkColor = selectedProduct.color.replace(' ', '-');
               const linkTo = `../${selectedProduct.namespaceId}-${capacity.toLowerCase()}-${linkColor}`;
+
               return (
                 <Link to={linkTo} key={capacity}>
                   <div
@@ -98,24 +109,20 @@ export const ProductAddInfo = ({ selectedProduct }: Props) => {
           className={classNames(styles.addInfo__cart, {
             [styles.addInfo__cartActive]: isAddedToCart,
           })}
-          onClick={() =>
-            toggleCart(
-              products.filter(
-                product => product.itemId === selectedProduct.id,
-              )[0].id,
-            )
-          }
+          onClick={() => {
+            if (currentProduct) {
+              toggleCart(currentProduct.id);
+            }
+          }}
         >
           {isAddedToCart ? 'Added' : 'Add to cart'}
         </button>
         <button
-          onClick={() =>
-            toggleLike(
-              products.filter(
-                product => product.itemId === selectedProduct.id,
-              )[0].id,
-            )
-          }
+          onClick={() => {
+            if (currentProduct) {
+              toggleLike(currentProduct.id);
+            }
+          }}
           className={classNames(styles.addInfo__favourite, {
             [styles.addInfo__favouriteActive]: isLiked,
           })}

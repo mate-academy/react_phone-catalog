@@ -1,21 +1,19 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../../../../components/ProductCard';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Product } from '../../../../types/Product';
 import { Icon } from '../../../../components/Icon';
-
+import { Loader } from '../../../../components/Loader';
 
 type Props = {
   products: Product[];
   title: string;
   checkPrice?: boolean;
 };
-
 export const ProductsSlider = ({ products, title, checkPrice }: Props) => {
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
-
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     align: 'start',
@@ -38,22 +36,27 @@ export const ProductsSlider = ({ products, title, checkPrice }: Props) => {
       };
     }
   }, [emblaApi, products]);
+
   const goToPrev = useCallback(() => {
     if (emblaApi) {
       emblaApi.scrollPrev();
     }
   }, [emblaApi]);
+
   const goToNext = useCallback(() => {
     if (emblaApi) {
       emblaApi.scrollNext();
     }
   }, [emblaApi]);
 
+  if (products.length === 0) {
+    return <Loader />;
+  }
+
   return (
     <div className={styles.slider}>
       <div className={styles.slider__top}>
         <h2 className={styles.slider__title}>{title}</h2>
-
         <div className={styles.slider__btns}>
           <button
             className={styles.slider__btn}
@@ -62,6 +65,7 @@ export const ProductsSlider = ({ products, title, checkPrice }: Props) => {
           >
             <Icon type="arrowPrev" />
           </button>
+
           <button
             className={styles.slider__btn}
             onClick={goToNext}
