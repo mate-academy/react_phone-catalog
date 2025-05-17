@@ -38,7 +38,7 @@ const PER_PAGE_OPTIONS: Option[] = [
 
 export const ProductPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const { addError, clearErrors } = useError();
+  const { addError } = useError();
   const [isHasError, setIsHasError] = useState(false);
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -65,26 +65,13 @@ export const ProductPage = () => {
         setProducts(prevProducts =>
           !isEqual(prevProducts, newProducts) ? newProducts : prevProducts,
         );
-        clearErrors();
       })
       .catch(err => {
-        addError(
-          handleErrorMessage(
-            err,
-            'Failed to load products. Please try again later.',
-          ),
-        );
+        addError(handleErrorMessage(err, 'Failed to load products.'));
         setIsHasError(true);
       })
       .finally(stopLoading);
-  }, [
-    isIncludeCategory,
-    category,
-    startLoading,
-    stopLoading,
-    addError,
-    clearErrors,
-  ]);
+  }, [isIncludeCategory, category, startLoading, stopLoading, addError]);
 
   useEffect(() => loadProducts(), [loadProducts]);
 
@@ -138,9 +125,9 @@ export const ProductPage = () => {
         <h1 className={productsPageStyles.productPage__title}>
           {getNormalizedTitle(category)}
         </h1>
-        <p
-          className={productsPageStyles.productPage__subtitle}
-        >{`${products.length} models`}</p>
+        <p className={productsPageStyles.productPage__subtitle}>
+          {isHasError ? 'Failed to load products' : `${products.length} models`}
+        </p>
       </div>
       {isHasError ? (
         <ErrorFallback onRetry={loadProducts} />

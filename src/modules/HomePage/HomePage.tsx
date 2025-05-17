@@ -13,23 +13,20 @@ import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const { startLoading, stopLoading } = useLoading();
-  const { addError, clearErrors } = useError();
+  const { addError } = useError();
   const [isHasError, setIsHasError] = useState(false);
 
   const loadProducts = useCallback(() => {
     startLoading();
     setIsHasError(false);
     getAllProducts()
-      .then(productsFromServer => {
-        setProducts(productsFromServer);
-        clearErrors();
-      })
+      .then(setProducts)
       .catch(err => {
         addError(handleErrorMessage(err, 'Failed to load products.'));
         setIsHasError(true);
       })
       .finally(() => stopLoading());
-  }, [startLoading, stopLoading, addError, clearErrors]);
+  }, [startLoading, stopLoading, addError]);
 
   useEffect(() => loadProducts(), [loadProducts]);
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import shoppingCartPageStyles from './ShoppingCartPage.module.scss';
 import { useCart } from '../../context/CartContext';
 import { GoBack } from '../../components/GoBack';
@@ -9,11 +9,16 @@ import { TextButton } from '../../components/TextButton';
 import lodash from 'lodash';
 import { Divider } from '../../components/Divider/Divider';
 import { useLoading } from '../../context/LoadingContext';
+import { useError } from '../../context/ErrorContext';
+import { handleErrorMessage } from '../../utils/handleErrorMessage';
+import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
 
 export const ShoppingCartPage = () => {
   const { cart } = useCart();
   const { startLoading, stopLoading } = useLoading();
   const [products, setProducts] = useState<CartItemDetails[]>([]);
+  const { addError } = useError();
+  const [isHasError, setIsHasError] = useState(false);
   const totalPrice = lodash
     .chain(products)
     .map(product => product.totalPrice)
@@ -25,7 +30,7 @@ export const ShoppingCartPage = () => {
     .sum()
     .value();
 
-  useEffect(() => {
+  const loadProducts = useCallback(() => {
     startLoading();
     getProductsByIds(cart.map(item => item.id))
       .then(productsFromServer =>
@@ -51,14 +56,22 @@ export const ShoppingCartPage = () => {
             .filter((product): product is CartItemDetails => product !== null),
         ),
       )
+      .catch(err => {
+        addError(handleErrorMessage(err, 'Failed to load products.'));
+        setIsHasError(true);
+      })
       .finally(() => stopLoading());
-  }, [cart, startLoading, stopLoading]);
+  }, [cart, startLoading, stopLoading, addError]);
+
+  useEffect(() => loadProducts(), [loadProducts]);
 
   return (
     <section className={shoppingCartPageStyles.shoppingCart}>
       <GoBack />
       <h1 className={shoppingCartPageStyles.shoppingCart__title}>Cart</h1>
-      {cart.length === 0 ? (
+      {isHasError ? (
+        <ErrorFallback onRetry={loadProducts} />
+      ) : cart.length === 0 ? (
         <div className={shoppingCartPageStyles.shoppingCart__emptyCart}>
           <p className={shoppingCartPageStyles.shoppingCart__description}>
             Your cart is empty
