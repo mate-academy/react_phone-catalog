@@ -68,10 +68,10 @@ export const Dropdown: React.FC<Props> = memo(
         >
           {selectedOption.label}
           <IconSvg
-            dataPath={
-              isOpen ? ICON_DATA_PATHS.ARROW.UP : ICON_DATA_PATHS.ARROW.DOWN
-            }
-            className={dropdownStyles.dropdown__icon}
+            dataPath={ICON_DATA_PATHS.ARROW.DOWN}
+            className={classNames(dropdownStyles.dropdown__icon, {
+              [dropdownStyles['dropdown__icon--active']]: isOpen,
+            })}
           />
         </button>
         <ul

@@ -33,34 +33,6 @@
   &__separator {
     flex-shrink: 0;
     margin-inline: 8px;
+    color: styles.get-color(icons);
   }
 }
-
-// .nav {
-//   &__list {
-//     display: flex;
-//     overflow: hidden;
-//   }
-
-//   &__item {
-//     display: flex;
-//     align-items: center;
-//     flex-shrink: 0;
-//     overflow: hidden;
-
-//     &--last {
-//       flex-shrink: 1;
-//     }
-//   }
-
-//   &__label {
-//     white-space: nowrap;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//   }
-
-//   &__separator {
-//     flex-shrink: 0;
-//     margin-inline: 8px;
-//   }
-// }

@@ -14,7 +14,8 @@
   }
 
   &__info,
-  &__actions {
+  &__actions,
+  &__link {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,7 +25,8 @@
     }
   }
 
-  &__info {
+  &__info,
+  &__link {
     gap: 16px;
   }
 

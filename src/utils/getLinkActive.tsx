@@ -7,6 +7,6 @@ type GetLinkActiveParam = {
 };
 
 export const getLinkActive = ({ isActive, baseClass }: GetLinkActiveParam) =>
-  classNames(baseClass, {
-    [sharedStyles.active]: isActive,
+  classNames(baseClass, sharedStyles.link, {
+    [sharedStyles['link--active']]: isActive,
   });

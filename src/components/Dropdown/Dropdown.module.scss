@@ -43,11 +43,23 @@
     }
   }
 
+  &__icon {
+    color: styles.get-color(secondary);
+
+    @include styles.transition(transform);
+
+    &--active {
+      transform: rotate(180deg);
+      color: styles.get-color(primary);
+    }
+  }
+
   &__list {
     position: absolute;
     top: calc(100% + 4px);
     right: 0;
     left: 0;
+    transform: translateY(-15px);
 
     padding-block: 8px;
     border: 1px solid styles.get-color(elements);
@@ -57,9 +69,10 @@
     background-color: styles.get-color(white);
     box-shadow: 0 2px 15px 0 #0000000D;
 
-    // transition: all 0.3s ease;
+    @include styles.transition(transform, visibility, opacity);
 
     &--active {
+      transform: translateY(0);
       visibility: visible;
       opacity: 1;
     }
