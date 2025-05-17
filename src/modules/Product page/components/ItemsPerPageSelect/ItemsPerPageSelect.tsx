@@ -54,7 +54,7 @@ export const ItemsPerPageSelect: React.FC = () => {
       >
         {selectedOption.label}
         <img
-          src="/img/buttons/arrow-down.svg"
+          src="./img/buttons/arrow-down.svg"
           alt="Arrow Down"
           className={`${styles.ItemsPerPageSelect__arrow} ${isOpen ? styles.ItemsPerPageSelect__arrow_open : ''}`}
         />

@@ -6,7 +6,7 @@ export const EmptyCart = () => {
   return (
     <div className={styles.EmptyCart}>
       <img
-        src="/img/cart-is-empty.png" // або будь-яка іконка/ілюстрація
+        src="./img/cart-is-empty.png" // або будь-яка іконка/ілюстрація
         alt="Empty cart"
         className={styles.EmptyCart__image}
       />

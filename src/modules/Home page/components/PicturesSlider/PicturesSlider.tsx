@@ -108,7 +108,7 @@ export const PicturesSlider: React.FC<Props> = ({
           })}
         >
           <img
-            src="/img/buttons/left-arrow.svg"
+            src="./img/buttons/left-arrow.svg"
             alt="arrow-left"
             className={styles.Carousel__arrow}
           />
@@ -132,7 +132,7 @@ export const PicturesSlider: React.FC<Props> = ({
                 {index === 0 ? (
                   <picture>
                     <source
-                      srcSet="/img/banner-for-phones.svg"
+                      srcSet="./img/banner-for-phones.svg"
                       media="(max-width: 640px)"
                     />
                     <img
@@ -163,7 +163,7 @@ export const PicturesSlider: React.FC<Props> = ({
           })}
         >
           <img
-            src="/img/buttons/right-arrow.svg"
+            src="./img/buttons/right-arrow.svg"
             alt="right-arrow"
             className={styles.Carousel__arrow}
           />

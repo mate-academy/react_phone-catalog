@@ -39,7 +39,7 @@ export const Header = ({ onBurgerToggle }) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}>
-        <img src="/img/Logo.svg" alt="Nice Gadgets" />
+        <img src="./img/Logo.svg" alt="Nice Gadgets" />
       </div>
 
       <motion.button
@@ -55,8 +55,8 @@ export const Header = ({ onBurgerToggle }) => {
         <img
           src={
             isOpen
-              ? '/img/buttons/Icons/Icons/Icons/Close.svg'
-              : '/img/buttons/Icons/Icons/Menu.svg'
+              ? './img/buttons/Icons/Icons/Icons/Close.svg'
+              : './img/buttons/Icons/Icons/Menu.svg'
           }
           alt="burger-menu"
         />
@@ -111,7 +111,7 @@ export const Header = ({ onBurgerToggle }) => {
             className={styles.header__search}
             onClick={() => setIsActive(!Active)}
           >
-            <img src="/img/Icons/Search.svg" alt="search" />
+            <img src="./img/Icons/Search.svg" alt="search" />
           </button>
         )}
         <LanguageSwitcher />
@@ -125,7 +125,7 @@ export const Header = ({ onBurgerToggle }) => {
         >
           <div className={styles.header__favouritesWrapper}>
             <img
-              src="/img/Favourites (Heart Like).svg"
+              src="./img/Favourites (Heart Like).svg"
               alt="favourites"
               className={styles.header__favouritesIcon}
             />
@@ -147,7 +147,7 @@ export const Header = ({ onBurgerToggle }) => {
         >
           <div className={styles.header__cartWrapper}>
             <img
-              src="/img/Shopping bag (Cart).svg"
+              src="./img/Shopping bag (Cart).svg"
               alt="cart"
               className={styles.header__cartIcon}
             />
@@ -220,7 +220,7 @@ export const Header = ({ onBurgerToggle }) => {
               })
             }
           >
-            <img src="/img/Favourites (Heart Like).svg" alt="favourites" />
+            <img src="./img/Favourites (Heart Like).svg" alt="favourites" />
           </NavLink>
 
           <NavLink
@@ -231,7 +231,7 @@ export const Header = ({ onBurgerToggle }) => {
               })
             }
           >
-            <img src="/img/Shopping bag (Cart).svg" alt="cart" />
+            <img src="./img/Shopping bag (Cart).svg" alt="cart" />
           </NavLink>
         </div>
       </div>

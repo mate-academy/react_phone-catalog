@@ -85,7 +85,7 @@ export const ProductsSlider: React.FC<Props> = ({
             onClick={() => handlePrev()}
           >
             <img
-              src={`/img/buttons/left-arrow${currentSlide === 0 ? '-disabled' : ''}.svg`}
+              src={`./img/buttons/left-arrow${currentSlide === 0 ? '-disabled' : ''}.svg`}
               alt="arrow-left"
             />
           </button>
@@ -97,7 +97,7 @@ export const ProductsSlider: React.FC<Props> = ({
             onClick={() => handleNext()}
           >
             <img
-              src={`/img/buttons/right-arrow${currentSlide === totalSlides ? '-disabled' : ''}.svg`}
+              src={`./img/buttons/right-arrow${currentSlide === totalSlides ? '-disabled' : ''}.svg`}
               alt="arrow-right"
             />
           </button>

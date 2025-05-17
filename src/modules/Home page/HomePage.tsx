@@ -9,15 +9,15 @@ import { useTranslation } from 'react-i18next';
 export const HomePage = () => {
   const { t } = useTranslation();
   const sliderBanners = [
-    '/img/slider-banner.svg',
-    '/img/tablets-banner.png',
-    '/img/accessories-banner.png',
+    './img/slider-banner.svg',
+    './img/tablets-banner.png',
+    './img/accessories-banner.png',
   ];
 
   const [products, setProducts] = useState<[] | null>([]);
 
   const loadProducts = async () => {
-    const response = await fetch('../../../public/api/products.json');
+    const response = await fetch('/api/products.json');
     const data = await response.json();
 
     setProducts(data);

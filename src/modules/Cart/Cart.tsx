@@ -56,7 +56,7 @@ export const CartPage = () => {
               <li className={styles.CartPage__item} key={index}>
                 <div className={styles.CartPage__item__info}>
                   <img
-                    src="/img/buttons/Icons/Close.svg"
+                    src="./img/buttons/Icons/Close.svg"
                     alt="delete"
                     className={styles.CartPage__item__close}
                     onClick={() => handleDeleteItem(item.id)}
@@ -78,7 +78,7 @@ export const CartPage = () => {
                       onClick={() => handleChangeQuantity(item.id, -1)}
                     >
                       <img
-                        src="/img/buttons/Icons/Icons/Minus.svg"
+                        src="./img/buttons/Icons/Icons/Minus.svg"
                         alt=""
                         className={styles.CartPage__item__minus}
                       />
@@ -91,7 +91,7 @@ export const CartPage = () => {
                       onClick={() => handleChangeQuantity(item.id, 1)}
                     >
                       <img
-                        src="/img/buttons/Icons/Icons/Plus.svg"
+                        src="./img/buttons/Icons/Icons/Plus.svg"
                         alt=""
                         className={styles.CartPage__item__add}
                       />

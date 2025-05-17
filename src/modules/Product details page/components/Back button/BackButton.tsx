@@ -8,7 +8,7 @@ export const BackButton = () => {
 
   return (
     <div onClick={() => navigate(-1)} className={styles.Page__backButton}>
-      <img src="/img/buttons/left-arrow.svg" alt="arrow-left" />
+      <img src="./img/buttons/left-arrow.svg" alt="arrow-left" />
       <span className={styles['Page__header__backButton-text']}>
         {t('back.back')}
       </span>

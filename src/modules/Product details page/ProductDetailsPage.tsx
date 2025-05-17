@@ -127,7 +127,7 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     const imgs = product
       ? [...Array(product.images.length)].map((_, index) => {
-          return `/img/${category}/${product.namespaceId}/${product.color}/0${index}.webp`;
+          return `./img/${category}/${product.namespaceId}/${product.color}/0${index}.webp`;
         })
       : [];
 
@@ -320,8 +320,8 @@ export const ProductDetailsPage = () => {
                       <img
                         src={
                           isFavourite(product.id)
-                            ? '/img/buttons/Icons/Buttons/Icons/Favourites Filled (Heart Like).svg'
-                            : '/img/Favourites (Heart Like).svg'
+                            ? './img/buttons/Icons/Buttons/Icons/Favourites Filled (Heart Like).svg'
+                            : './img/Favourites (Heart Like).svg'
                         }
                         alt="like"
                         className={styles.ProductCard__imageLike}

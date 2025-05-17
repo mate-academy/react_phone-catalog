@@ -60,7 +60,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   };
 
   React.useEffect(() => {
-    loadData(`../../../public/api/products.json`);
+    loadData(`/api/products.json`);
   }, [category]);
 
   // Filter data by query

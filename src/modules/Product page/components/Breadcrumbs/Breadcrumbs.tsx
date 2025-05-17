@@ -19,7 +19,7 @@ export const Breadcrumbs: React.FC = () => {
           </Link>
           {index < array.length - 1 && (
             <span className={styles.separator}>
-              <img src="/img/buttons/gray-arrow-right.svg" alt="separator" />
+              <img src="./img/buttons/gray-arrow-right.svg" alt="separator" />
             </span>
           )}
         </span>
@@ -29,7 +29,7 @@ export const Breadcrumbs: React.FC = () => {
   return (
     <nav className={styles.breadcrumbs}>
       <Link to="/">
-        <img src="/img/buttons/home.svg" alt="home" className={styles.link} />
+        <img src="./img/buttons/home.svg" alt="home" className={styles.link} />
       </Link>
 
       {crumbs.length > 0 && (

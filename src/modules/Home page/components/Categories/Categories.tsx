@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 export const Categories = () => {
   const { t } = useTranslation();
   const loadProduct = async (category: string) => {
-    const response = await fetch(`../../../../../public/api/${category}.json`);
+    const response = await fetch(`/api/${category}.json`);
     const data = await response.json();
 
     return data;
@@ -40,7 +40,7 @@ export const Categories = () => {
         <div className={styles.Categories__item}>
           <Link to="/phones">
             <img
-              src="/img/category-phones.webp"
+              src=".category-phones.webp"
               alt="Mobile phones category"
               className={classNames(
                 styles.Categories__image,
@@ -58,7 +58,7 @@ export const Categories = () => {
         <div className={styles.Categories__item}>
           <Link to="/tablets">
             <img
-              src="/img/category-tablets.webp"
+              src=".category-tablets.webp"
               alt="Mobile phones category"
               className={classNames(
                 styles.Categories__image,
@@ -76,7 +76,7 @@ export const Categories = () => {
         <div className={styles.Categories__item}>
           <Link to="/accessories">
             <img
-              src="/img/category-accessories.webp"
+              src="./img/category-accessories.webp"
               alt="Mobile phones category"
               className={classNames(
                 styles.Categories__image,
