@@ -21,7 +21,7 @@ export const TabletsPage = () => {
     setReloadButton(false);
     setloadingDataOnServer(true);
     setTimeout(() => {
-      fetch(`${import.meta.env.BASE_URL}api/phones.json`)
+      fetch(`./api/phones.json`)
         .then(response => response.json())
         .then(data => setTablet(data))
         .catch(error => {
@@ -51,7 +51,7 @@ export const TabletsPage = () => {
     setTablet([]);
     setReloadButton(false);
     setTimeout(() => {
-      fetch('/public/api/tablets.json')
+      fetch('./api/tablets.json')
         .then(response => response.json())
         .then(data => setTablet(data))
         .catch(error => {
@@ -61,17 +61,6 @@ export const TabletsPage = () => {
         .finally(() => setloadingDataOnServer(false));
     }, 1000);
   };
-
-  if (reloadButton) {
-    return (
-      <div>
-        <p>Error loading data, please try again.</p>
-        <button onClick={handleReload} className="reload-button">
-          Reload
-        </button>
-      </div>
-    );
-  }
 
   const totalPages = Math.ceil(tablet.length / itemsPerPage);
 

@@ -34,7 +34,7 @@ export const FavoritesPages: React.FC = () => {
         </div>
       ) : (
         <img
-          src="/img/product-not-found.png"
+          src="./img/product-not-found.png"
           alt="product-empty"
           className="favorites__empty"
         />

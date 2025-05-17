@@ -32,7 +32,7 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     setLoadingDataOnServer(true);
-    fetch(`/public/api/${item.category}.json`)
+    fetch(`./api/${item.category}.json`)
       .then(response => response.json())
       .then(data => {
         setGarg(data);
@@ -240,8 +240,8 @@ export const ProductDetailsPage = () => {
                 className="swiper__like"
                 style={{
                   backgroundImage: like
-                    ? 'url(/public/img/favorites.png)'
-                    : 'url(/public/img/navbar/like.png)',
+                    ? 'url(./img/favorites.png)'
+                    : 'url(./img/navbar/like.png)',
                 }}
               ></span>
             </button>

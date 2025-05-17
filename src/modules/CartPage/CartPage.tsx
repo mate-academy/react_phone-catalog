@@ -55,7 +55,7 @@ export const CartPage = () => {
         <div className="cart__items">
           {cartWithCount.length === 0 && (
             <img
-              src="/img/cart-is-empty.png"
+              src="./img/cart-is-empty.png"
               alt="cart__empty"
               className="cart__empty"
             />
@@ -64,7 +64,7 @@ export const CartPage = () => {
             <div key={index} className="cart__position">
               <div className="cart__close">
                 <img
-                  src="/img/Close.png"
+                  src="./img/Close.png"
                   alt="close-button"
                   onClick={() => deletePhone(item)}
                 />

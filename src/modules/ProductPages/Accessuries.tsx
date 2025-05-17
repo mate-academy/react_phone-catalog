@@ -20,7 +20,7 @@ export const Accessories = () => {
     setReloadButton(false);
     setloadingDataOnServer(true);
     setTimeout(() => {
-      fetch(`${import.meta.env.BASE_URL}api/phones.json`)
+      fetch(`./api/phones.json`)
         .then(response => response.json())
         .then(data => setAccessuries(data))
         .catch(error => {
@@ -50,7 +50,7 @@ export const Accessories = () => {
     setAccessuries([]);
     setReloadButton(false);
     setTimeout(() => {
-      fetch('/api/accessories.json')
+      fetch('./api/accessories.json')
         .then(response => response.json())
         .then(data => setAccessuries(data))
         .catch(error => {

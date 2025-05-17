@@ -31,7 +31,7 @@ export const HomePage = () => {
   }, [clickOnButton]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
+    fetch(`./api/phones.json`)
       .then(response => response.json())
       .then(data => {
         setPhones(data);
