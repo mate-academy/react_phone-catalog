@@ -27,35 +27,27 @@ export const Pagination: React.FC<Props> = memo(
         return Array.from({ length: totalPages }, (_, i) => i + 1);
       }
 
-      const visiblePages: (number | string)[] = [];
+      const visiblePages: number[] = [];
       const pagesToDistribute = maxVisiblePages - 1;
-      const half = pagesToDistribute / 2;
-      const penultimatePage = totalPages - 1;
+      const pagesBefore = Math.floor(pagesToDistribute / 2);
+      const pagesAfter = pagesToDistribute - pagesBefore;
 
-      let startPage = Math.max(2, currentPage - Math.floor(half));
-      let endPage = Math.min(penultimatePage, currentPage + Math.ceil(half));
+      let startPage = currentPage - pagesBefore;
+      let endPage = currentPage + pagesAfter;
 
-      if (startPage >= penultimatePage - pagesToDistribute) {
-        startPage = penultimatePage - pagesToDistribute;
-      } else if (endPage <= maxVisiblePages) {
-        endPage = maxVisiblePages;
+      if (startPage < 1) {
+        endPage += 1 - startPage;
+        startPage = 1;
       }
 
-      visiblePages.push(1);
-
-      if (startPage > 2) {
-        visiblePages.push('dotted-prev');
+      if (endPage > totalPages) {
+        startPage -= endPage - totalPages;
+        endPage = totalPages;
       }
 
       for (let i = startPage; i <= endPage; i++) {
         visiblePages.push(i);
       }
-
-      if (endPage < penultimatePage) {
-        visiblePages.push('dotted-next');
-      }
-
-      visiblePages.push(totalPages);
 
       return visiblePages;
     };
@@ -82,34 +74,16 @@ export const Pagination: React.FC<Props> = memo(
           </li>
           {pages.map((page, index) => (
             <li key={index} className={paginationStyles.pagination__item}>
-              {page === 'dotted-prev' ? (
-                <button
-                  className={paginationStyles.pagination__button}
-                  aria-label="Previous page"
-                  onClick={() => onPageChange(+pages[index + 1] - 1)}
-                >
-                  ...
-                </button>
-              ) : page === 'dotted-next' ? (
-                <button
-                  className={paginationStyles.pagination__button}
-                  aria-label="Next page"
-                  onClick={() => onPageChange(+pages[index - 1] + 1)}
-                >
-                  ...
-                </button>
-              ) : (
-                <button
-                  className={classNames(paginationStyles.pagination__button, {
-                    [paginationStyles['pagination__button--active']]:
-                      page === currentPage,
-                  })}
-                  aria-label={`Page ${page}`}
-                  onClick={() => onPageChange(+page)}
-                >
-                  {page}
-                </button>
-              )}
+              <button
+                className={classNames(paginationStyles.pagination__button, {
+                  [paginationStyles['pagination__button--active']]:
+                    page === currentPage,
+                })}
+                aria-label={`Page ${page}`}
+                onClick={() => onPageChange(page)}
+              >
+                {page}
+              </button>
             </li>
           ))}
           <li

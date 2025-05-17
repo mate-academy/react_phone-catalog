@@ -5,13 +5,9 @@ import { getData } from './fetchClient';
 // base products
 
 export const getAllProducts = (): Promise<Product[]> =>
-  getData<Product[]>('products.json')
-    .then(() => {
-      throw new Error('Failed to load products.');
-    })
-    .catch(() => {
-      throw new Error('Failed to load products.');
-    });
+  getData<Product[]>('products.json').catch(() => {
+    throw new Error('Failed to load products.');
+  });
 
 export const getProductsByCategory = (category: string): Promise<Product[]> =>
   getAllProducts().then(products =>
