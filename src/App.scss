@@ -28,6 +28,7 @@
   display: none;
 }
 
+
 .navbar {
   font-weight: 800;
   font-size: 12px;
@@ -75,6 +76,10 @@
     &:hover {
       transform: scale(1.1);
     }
+  }
+
+  .navbar__burger {
+    width: 0;
   }
 
   &__link {
@@ -170,6 +175,8 @@
     box-sizing: border-box;
     background-color: white;
 
+
+
     &__brand {
       display: flex;
       align-items: center;
@@ -255,6 +262,10 @@
       border: 1px solid #e2e6e9;
       justify-content: right;
       height: 48px;
+    }
+
+    .navbar__burger {
+      width: 0;
     }
 
     &__right {
@@ -351,6 +362,7 @@
       border: 1px solid #e2e6e9;
       justify-content: right;
       height: 48px;
+      align-items: center;
     }
   }
 
