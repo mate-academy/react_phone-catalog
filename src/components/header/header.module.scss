@@ -1,0 +1,147 @@
+@use '../utils/mixin.module.scss' as mixin;
+body{margin: 0;
+box-sizing: border-box;}
+.header{
+  position: sticky;
+  top:0;
+}
+.header__bar{
+
+
+padding-left: 16px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+margin-bottom: 24px;
+border-bottom: 1px solid #E2E6E9;
+
+@include mixin.onTablet{
+margin-bottom: 32px;
+
+}
+@include mixin.onDesktop{
+
+padding-left: 24px;
+  height: 64px;
+  margin-bottom: 56px;
+
+}
+
+}
+.top-bar__logo{
+  display: flex;
+  @include mixin.onTablet {
+width: 80;
+height: 28;
+
+
+}
+
+}
+
+.navigation{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav{
+display: none;
+
+@include mixin.onTablet {
+  display: flex;
+
+
+}
+
+  &__list{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+gap :32px;
+
+@include mixin.onDesktop{
+  gap:64px
+}
+
+  }
+
+  &__link{
+font-family: Mont;
+font-weight: 800;
+font-size: 12px;
+color:#89939A;
+line-height: 11px;
+letter-spacing: 4%;
+text-transform: uppercase;
+text-decoration: none;
+
+
+}
+}
+
+.box{display: flex;
+
+align-items: center;
+
+width: 48px;
+height: 48px;
+border-left: 1px solid #E2E6E9;
+
+@include mixin.onTablet{
+width: 96px;
+
+}
+@include mixin.onDesktop{
+width: 128px;
+}
+}
+.icon {
+
+  width: 16px;
+  height: 16px;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+
+  &--menu {
+    background-image: url('img/icons/Menu.svg');
+    margin: auto;
+
+
+@include mixin.onTablet {
+  display: none;
+}
+
+  }
+
+  &--cart{
+
+    display: none;
+    background-image: url('img/icons/cart.svg');
+    @include mixin.onTablet {
+  display: block;
+  margin: auto;
+
+}
+  }
+  &--heart{
+    display: none;
+
+    background-image: url('img/icons/heart.svg');
+    @include mixin.onTablet {
+  display: block;
+  margin: auto;
+}
+  }
+}
+.divider {
+  width: 0.5px;
+  height: 48px;
+  background-color:  #E2E6E9;
+  @include mixin.onDesktop{
+    height: 64px;
+  }
+}

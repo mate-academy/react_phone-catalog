@@ -1,7 +1,10 @@
 import './App.scss';
 import { useEffect, useState } from 'react';
 
-import { HomePage } from './components/homePage/HomePage';
+
+import { Header } from './components/header/header';
+import { Footer } from './components/footer/footer';
+
 
 export const App = () => {
   const [phones, setPhones] = useState();
@@ -10,6 +13,32 @@ export const App = () => {
     fetch('/api/products.json').then(res=>res.json())
     .then(data=>setPhones(data))
   },[])
-  return <HomePage phones={phones} />;
+  return (<><Header />
+    <h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</h2>
+    <Footer />
+  </>)
 };
 

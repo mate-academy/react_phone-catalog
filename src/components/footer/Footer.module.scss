@@ -1,0 +1,104 @@
+@use '../utils/mixin.module.scss' as mixin;
+.footer{
+
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+height: 32px;
+  margin-top: 32px;
+
+  padding-left: 16px;
+  padding-right: 16px;
+@include mixin.onTablet{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 32px;
+  padding-right: 32px;
+height: 96px;
+}
+@include mixin.onDesktop{
+
+
+}
+
+
+   &__button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+  }
+  &__text{
+    font-family: Mont;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: right;
+text-decoration: none;
+color:#89939A;
+
+  }
+  &__icon{
+    width: 32px;
+    height: 32px;
+    rotate: -90deg;
+      background-image: url('./img/icons/buttonSliderAct(right).svg');
+      background-position: center;
+      background-size: contain;
+      margin-left: 16px;
+    }
+}
+.nav{
+  margin-top: 32px;
+
+  &__list{
+margin: 0;
+    padding: 0;
+    margin-bottom: 32px;
+list-style: none;
+display: flex;
+flex-direction: column;
+justify-content: right;
+
+@include mixin.onTablet{
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 378px;
+  gap:13px;
+
+}
+@include mixin.onDesktop{
+  gap:105px;
+}
+  }
+  &__item{
+
+
+&:nth-child(-n+2) {
+      margin-bottom: 16px;
+       @include mixin.onTablet{
+      margin: 0;
+    }
+    }
+
+  }
+
+  &__link{
+    font-family: Mont;
+font-weight: 800;
+font-size: 12px;
+line-height: 11px;
+letter-spacing: 4%;
+text-transform: uppercase;
+
+    text-decoration: none;
+    color:#89939A;
+  }
+}
+
+

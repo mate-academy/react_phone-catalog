@@ -1,13 +1,14 @@
-
+@use '../utils/mixin.module.scss' as mixin;
 
 .top__bar{
-
-
+padding-right: 16px;
+padding-left: 16px;
   height: 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 margin-bottom: 24px;
+border-bottom: 1px solid #E2E6E9;
 
 }
 .top-bar__logo{
@@ -15,6 +16,35 @@ margin-bottom: 24px;
 }
 
 
+.nav{
+display: none;
+
+@include mixin.onTablet {
+  display: block;
+}
+
+  &__list{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+gap :32px;
+
+
+  }
+
+  &__link{
+font-family: Mont;
+font-weight: 800;
+font-size: 12px;
+color:#89939A;
+line-height: 11px;
+letter-spacing: 4%;
+text-transform: uppercase;
+text-decoration: none;
+
+
+}
+}
 
 .icon {
 
@@ -39,6 +69,4 @@ margin-bottom: 24px;
 
 
 
-.main{
 
-}

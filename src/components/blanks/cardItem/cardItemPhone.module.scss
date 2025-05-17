@@ -1,0 +1,100 @@
+
+
+.card{
+
+  width: 212px;
+
+  padding: 32px 32px 0 32px;
+
+  border: 1px solid #E2E6E9;
+  border-radius: 8px;
+  &__image{
+
+    width: 148px;
+    height: 129px;
+object-fit: contain;
+margin-bottom: 24px;
+  }
+  &__name{
+    margin: 0;
+    font-family: Mont;
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+text-align: left;
+margin-bottom: 8px;
+  }
+  &__price{
+    font-family: Mont;
+font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+letter-spacing: 0%;
+margin-bottom: 8px;
+  }
+  &__border{
+
+  border: 0.5px solid #E2E6E9;
+  margin-bottom: 8px;
+}
+&__info{
+  margin-bottom: 8px;
+
+}
+  &__screen{
+    display: flex;
+justify-content: space-between;
+margin-bottom: 8px;
+margin-top: 8px;
+
+
+  }
+  &__characteristics{
+    color: #89939A;
+  font-family: Mont;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+
+}
+&__goods{
+  color: #0F0F11;
+  font-family: Mont;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: right;
+
+}
+&__buttons{
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+&__addCart{
+  width: 100px;
+height: 40px;
+border-radius: 48px;
+
+background-color: #4219D0;
+
+color: #E2E6E9;
+font-family: Mont;
+font-weight: 700;
+font-size: 14px;
+line-height: 40px;
+letter-spacing: 0%;
+text-align: center;
+
+
+}
+&__favorite{
+  background-image: url('/img/icons/addFavorite.svg');
+  width: 40px;
+  height: 40px;
+}
+}
+

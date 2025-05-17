@@ -15,8 +15,8 @@ export const BrandNewModel = ({phones}) => {
           </div>
         </div>
       </div>
-
+<div className={styles.cardList}>
       <CardPhone phones={ phones} />
-
+</div>
     </div>)
  }

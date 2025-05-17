@@ -1,4 +1,5 @@
 import styles from './asideMenuPhone.module.scss';
+
 export const AsideMenuPhone = () => {
   return (
     <aside className={styles.menu} id="menu">
