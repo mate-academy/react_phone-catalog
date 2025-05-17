@@ -1,0 +1,63 @@
+@import '../../styles/mixins';
+
+.ProductPage {
+  display: flex;
+  grid-column: span -1 / 1;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+margin: 0 auto;
+padding-top: 0;
+
+  font-family: Mont, sans-serif;
+
+
+@include respond-to('mobile') {
+  grid-column: span 4;
+}
+
+@include respond-to('tablet') {
+  grid-column: span 12;
+}
+
+@include respond-to('desktop') {
+  grid-column: span 24;
+}
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    width: 100%;
+    margin: 24px 0;
+
+
+
+  }
+
+
+
+ &__amount {
+margin-top: 8px;
+font-size: 14px;
+font-weight: 600;
+color: #89939A;
+ }
+  &__controls {
+    display: flex;
+    gap: 16px;
+
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   justify-content: center;
+
+   width: 100%;
+   margin: 0 auto;
+
+  }
+}

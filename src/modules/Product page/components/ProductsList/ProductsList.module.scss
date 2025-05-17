@@ -1,0 +1,29 @@
+@import '../../../../styles//mixins';
+
+.ProductsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+    gap: 40px 16px;
+    justify-content: center;
+
+width: 100%;
+    margin: 0 auto;
+   
+@include respond-to('mobile') {
+        grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+    
+    }
+
+    @include respond-to('tablet') {
+        grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+       
+    }
+
+    @include respond-to('desktop') {
+        grid-template-columns: repeat(4, minmax(212px, 272px));
+        justify-content: flex-start;
+      
+    }
+
+  }
+  

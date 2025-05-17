@@ -1,0 +1,92 @@
+@import '../../../../styles//mixins';
+
+.ProductsSlider {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  margin-bottom: 80px;
+
+  font-family: Mont, sans-serif;
+  font-size: 24px;
+
+  
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -1%;
+  
+    @include respond-to('mobile') {
+    font-size: 22px;
+    }
+
+    @include respond-to('tablet') {
+    font-size: 32px;
+    }
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__content_item {
+    box-sizing: border-box;
+    padding: 0 8px;
+   
+    
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid #B4BDC3;
+    border-radius: 50%;
+
+    background-color: transparent;
+
+
+    &:hover {
+      cursor: pointer;
+      border-color: #0F0F11;
+      transition: 0.3s;
+    }
+
+
+    &--disabled {
+      border-color: #E2E6E9;
+   
+
+      &:hover {
+        cursor: not-allowed;
+        border-color: #E2E6E9;
+      }
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
