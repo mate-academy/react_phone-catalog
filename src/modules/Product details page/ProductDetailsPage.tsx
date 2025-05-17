@@ -46,7 +46,7 @@ export const ProductDetailsPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location.pathname]);
   const loadProducts = async () => {
-    const response = await fetch('../../../public/api/products.json');
+    const response = await fetch('./api/products.json');
     const data1 = await response.json();
 
     setProducts(data1);
@@ -58,7 +58,7 @@ export const ProductDetailsPage = () => {
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`/api/${category}.json`);
+      const response = await fetch(`./api/${category}.json`);
       const fetchedData = await response.json();
 
       setData(fetchedData);

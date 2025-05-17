@@ -17,7 +17,7 @@ export const HomePage = () => {
   const [products, setProducts] = useState<[] | null>([]);
 
   const loadProducts = async () => {
-    const response = await fetch('/api/products.json');
+    const response = await fetch('./api/products.json');
     const data = await response.json();
 
     setProducts(data);
