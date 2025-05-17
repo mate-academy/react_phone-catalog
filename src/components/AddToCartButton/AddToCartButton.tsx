@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { ActionButton } from '../ActionButton';
+import { TextButton } from '../TextButton';
 import classNames from 'classnames';
 import addToCartButtonStyles from './AddToCartButton.module.scss';
 import { useCart } from '../../context/CartContext';
@@ -15,7 +15,7 @@ export const AddToCartButton: React.FC<Props> = memo(
     const isInCart = cart.map(item => item.id).includes(itemId);
 
     return (
-      <ActionButton
+      <TextButton
         className={classNames(
           className,
           addToCartButtonStyles.addToCartButton,
@@ -26,7 +26,7 @@ export const AddToCartButton: React.FC<Props> = memo(
         onClick={() => toggleProductInCart(itemId)}
       >
         {isInCart ? 'Added' : 'Add to cart'}
-      </ActionButton>
+      </TextButton>
     );
   },
 );

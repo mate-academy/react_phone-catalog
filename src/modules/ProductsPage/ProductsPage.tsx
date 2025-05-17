@@ -22,6 +22,7 @@ import { NotFoundPage } from '../NotFoundPage';
 import { useLoading } from '../../context/LoadingContext';
 import { useError } from '../../context/ErrorContext';
 import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
+import { handleErrorMessage } from '../../utils/handleErrorMessage';
 
 const SORT_OPTIONS: Option[] = [
   { label: 'Newest', value: null },
@@ -37,7 +38,8 @@ const PER_PAGE_OPTIONS: Option[] = [
 
 export const ProductPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const { error, setError } = useError();
+  const { addError, clearErrors } = useError();
+  const [isHasError, setIsHasError] = useState(false);
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get('sort');
@@ -51,23 +53,40 @@ export const ProductPage = () => {
     categoryItem => categoryItem.name === category,
   );
 
-  useEffect(() => {
+  const loadProducts = useCallback(() => {
     if (!category || !isIncludeCategory) {
       return;
     }
 
     startLoading();
+    setIsHasError(false);
     getProductsByCategory(category)
-      .then(newProducts =>
+      .then(newProducts => {
         setProducts(prevProducts =>
           !isEqual(prevProducts, newProducts) ? newProducts : prevProducts,
-        ),
-      )
-      .catch(() => {
-        setError('Failed to load products. Please try again later.');
+        );
+        clearErrors();
+      })
+      .catch(err => {
+        addError(
+          handleErrorMessage(
+            err,
+            'Failed to load products. Please try again later.',
+          ),
+        );
+        setIsHasError(true);
       })
       .finally(stopLoading);
-  }, [isIncludeCategory, category, startLoading, stopLoading, setError]);
+  }, [
+    isIncludeCategory,
+    category,
+    startLoading,
+    stopLoading,
+    addError,
+    clearErrors,
+  ]);
+
+  useEffect(() => loadProducts(), [loadProducts]);
 
   const setSearchWith = useCallback(
     (params: SearchParams) => {
@@ -123,8 +142,8 @@ export const ProductPage = () => {
           className={productsPageStyles.productPage__subtitle}
         >{`${products.length} models`}</p>
       </div>
-      {error.message && products.length === 0 ? (
-        <ErrorFallback />
+      {isHasError ? (
+        <ErrorFallback onRetry={loadProducts} />
       ) : (
         <>
           <div className={productsPageStyles.productPage__products}>

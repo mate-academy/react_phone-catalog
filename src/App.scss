@@ -2,18 +2,15 @@
 @use 'styles';
 
 .App {
-  position: relative;
-
   display: flex;
   flex-direction: column;
-
   min-width: 320px;
   min-height: 100vh;
 }
 
 .page {
   flex: 1;
-  padding: 32px;
+  padding: styles.get-size(page-padding-inline);
   padding-bottom: 80px;
 
   &__content {

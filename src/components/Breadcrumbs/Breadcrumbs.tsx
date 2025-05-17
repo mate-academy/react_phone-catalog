@@ -31,7 +31,7 @@ export const Breadcrumbs = () => {
         <li>
           <Link
             to={ROUTES.HOME}
-            className={breadcrumbsStyles.breadcrumbs__link}
+            className={breadcrumbsStyles.breadcrumbs__label}
           >
             <IconSvg dataPath={ICON_DATA_PATHS.HOME} />
           </Link>
@@ -47,7 +47,12 @@ export const Breadcrumbs = () => {
             : getCapitalizationFirstLetter(name);
 
           return (
-            <li key={name} className={breadcrumbsStyles.breadcrumbs__item}>
+            <li
+              key={name}
+              className={classNames(breadcrumbsStyles.breadcrumbs__item, {
+                [breadcrumbsStyles['breadcrumbs__item--last']]: isLast,
+              })}
+            >
               <IconSvg
                 dataPath={ICON_DATA_PATHS.ARROW.RIGHT}
                 className={breadcrumbsStyles.breadcrumbs__separator}
@@ -55,8 +60,8 @@ export const Breadcrumbs = () => {
               {isLast ? (
                 <span
                   className={classNames(
-                    breadcrumbsStyles.breadcrumbs__link,
-                    breadcrumbsStyles['breadcrumbs__link--last'],
+                    breadcrumbsStyles.breadcrumbs__label,
+                    breadcrumbsStyles['breadcrumbs__label--last'],
                   )}
                 >
                   {formattedName}
@@ -64,7 +69,7 @@ export const Breadcrumbs = () => {
               ) : (
                 <Link
                   to={routeTo}
-                  className={breadcrumbsStyles.breadcrumbs__link}
+                  className={breadcrumbsStyles.breadcrumbs__label}
                 >
                   {formattedName}
                 </Link>

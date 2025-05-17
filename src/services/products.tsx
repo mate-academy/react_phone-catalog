@@ -5,9 +5,13 @@ import { getData } from './fetchClient';
 // base products
 
 export const getAllProducts = () =>
-  getData<Product[]>('products.json').catch(() => {
-    throw new Error('Fail to load products.');
-  });
+  getData<Product[]>('products.json')
+    // .then(() => {
+    //   throw new Error('Failed to load products.');
+    // })
+    .catch(() => {
+      throw new Error('Failed to load products.');
+    });
 
 export const getProductsByCategory = (category: string) =>
   getAllProducts().then(products =>
@@ -28,7 +32,7 @@ export const getProductById = (id: string) =>
 
 export const getDetailedProductsByCategory = (category: string) =>
   getData<ProductDetailed[]>(`${category}.json`).catch(() => {
-    throw new Error(`Fail to load ${category} category.`);
+    throw new Error(`Failed to load ${category} category.`);
   });
 
 export const getDetailedProductById = async (

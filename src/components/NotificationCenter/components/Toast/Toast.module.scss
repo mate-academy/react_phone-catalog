@@ -1,11 +1,6 @@
 @use '/src/styles';
 
-.errorNotification {
-  position: fixed;
-  z-index: 100;
-  top: 100px;
-  right: 20px;
-
+.toast {
   display: flex;
   flex-direction: column;
   gap: 8px;

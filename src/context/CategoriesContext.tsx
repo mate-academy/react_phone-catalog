@@ -30,7 +30,7 @@ type Props = {
 
 export const CategoriesProvider: React.FC<Props> = ({ children }) => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const { setError } = useError();
+  const { addError: setError } = useError();
   const { startLoading, stopLoading } = useLoading();
 
   useEffect(() => {

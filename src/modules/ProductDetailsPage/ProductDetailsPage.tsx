@@ -20,7 +20,7 @@ import { SectionSlider } from '../../components/SectionSlider';
 import { useBreadcrumbs } from '../../context/BreadcrumbsContext';
 import { useError } from '../../context/ErrorContext';
 import { useLoading } from '../../context/LoadingContext';
-import { handleError } from '../../utils/handleError';
+import { handleErrorMessage } from '../../utils/handleErrorMessage';
 
 export const ProductDetailsPage = () => {
   const { itemId, category } = useParams();
@@ -31,7 +31,7 @@ export const ProductDetailsPage = () => {
   const [modelVariants, setModelVariants] = useState<ProductDetailed[]>([]);
   const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
   const { setProductName } = useBreadcrumbs();
-  const { setError } = useError();
+  const { addError: setError } = useError();
   const [basicProduct, setBasicProduct] = useState<Product | null>(null);
 
   useEffect(() => {
@@ -47,7 +47,9 @@ export const ProductDetailsPage = () => {
       const suggestionPromise = getProductsByCategory(category)
         .then(setCategoryProducts)
         .catch(err => {
-          setError(handleError(err, 'Failed to load suggestion products'));
+          setError(
+            handleErrorMessage(err, 'Failed to load suggestion products'),
+          );
         });
 
       try {
@@ -77,7 +79,7 @@ export const ProductDetailsPage = () => {
             setModelVariants(products);
           })
           .catch(err => {
-            setError(handleError(err, 'Failed to model variants'));
+            setError(handleErrorMessage(err, 'Failed to model variants'));
             setModelVariants([product]);
           });
 
@@ -89,7 +91,7 @@ export const ProductDetailsPage = () => {
       } catch (error) {
         setIsNotFoundProduct(true);
         setProductName(null);
-        setError(handleError(error, 'Failed to load products'));
+        setError(handleErrorMessage(error, 'Failed to load products'));
       } finally {
         stopLoading();
       }

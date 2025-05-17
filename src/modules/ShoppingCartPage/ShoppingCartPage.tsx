@@ -5,7 +5,7 @@ import { GoBack } from '../../components/GoBack';
 import { getProductsByIds } from '../../services/products';
 import { CartList } from './components/CartList';
 import { CartItemDetails } from '../../types/CartItemDetails';
-import { ActionButton } from '../../components/ActionButton';
+import { TextButton } from '../../components/TextButton';
 import lodash from 'lodash';
 import { Divider } from '../../components/Divider/Divider';
 import { useLoading } from '../../context/LoadingContext';
@@ -85,11 +85,11 @@ export const ShoppingCartPage = () => {
               </p>
             </div>
             <Divider />
-            <ActionButton
+            <TextButton
               className={shoppingCartPageStyles.shoppingCart__checkoutButton}
             >
               Checkout
-            </ActionButton>
+            </TextButton>
           </div>
         </div>
       )}

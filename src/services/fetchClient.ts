@@ -5,7 +5,7 @@ function wait(delay: number) {
 }
 
 export function getData<T>(url: string): Promise<T> {
-  return wait(1500)
+  return wait(100)
     .then(() => fetch(BASE_URL + url))
     .then(response => response.json());
 }

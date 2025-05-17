@@ -7,21 +7,31 @@ import homePageStyles from './HomePage.module.scss';
 import { useLoading } from '../../context/LoadingContext';
 import { getAllProducts } from '../../services/products';
 import { useError } from '../../context/ErrorContext';
-import { handleError } from '../../utils/handleError';
+import { handleErrorMessage } from '../../utils/handleErrorMessage';
 import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const { startLoading, stopLoading } = useLoading();
-  const { error, setError } = useError();
+  const { addError, clearErrors } = useError();
+  const [isHasError, setIsHasError] = useState(false);
 
-  useEffect(() => {
+  const loadProducts = useCallback(() => {
     startLoading();
+    setIsHasError(false);
     getAllProducts()
-      .then(setProducts)
-      .catch(err => setError(handleError(err, 'Failed to load products.')))
+      .then(productsFromServer => {
+        setProducts(productsFromServer);
+        clearErrors();
+      })
+      .catch(err => {
+        addError(handleErrorMessage(err, 'Failed to load products.'));
+        setIsHasError(true);
+      })
       .finally(() => stopLoading());
-  }, [startLoading, stopLoading, setError]);
+  }, [startLoading, stopLoading, addError, clearErrors]);
+
+  useEffect(() => loadProducts(), [loadProducts]);
 
   const sortByHotPrices = useCallback(
     (product1: Product, product2: Product) => {
@@ -46,8 +56,8 @@ export const HomePage = () => {
         </h1>
         <Carousel />
       </div>
-      {error.message ? (
-        <ErrorFallback />
+      {isHasError ? (
+        <ErrorFallback onRetry={loadProducts} />
       ) : (
         <>
           <SectionSlider

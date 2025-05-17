@@ -1,6 +1,6 @@
 @use '/src/styles';
 
-.actionButton {
+.textButton {
   border: none;
   color: styles.get-color(white);
   background-color: styles.get-color(primary);
@@ -10,5 +10,9 @@
   @include styles.hover-styles {
     cursor: pointer;
     box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &--disabled {
+    background-color: styles.get-color(secondary);
   }
 }

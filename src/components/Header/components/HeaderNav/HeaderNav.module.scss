@@ -17,6 +17,10 @@
 
     @include styles.media(tablet) {
       flex-direction: row;
+      gap: 32px;
+    }
+
+    @include styles.media(desktop) {
       gap: 64px;
     }
   }

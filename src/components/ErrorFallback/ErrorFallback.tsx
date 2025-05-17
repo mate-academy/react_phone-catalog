@@ -1,8 +1,15 @@
 import React from 'react';
 import errorFallbackStyles from './ErrorFallback.module.scss';
-import { ActionButton } from '../ActionButton';
+import { TextButton } from '../TextButton';
+import { useLoading } from '../../context/LoadingContext';
 
-export const ErrorFallback: React.FC = () => {
+type Props = {
+  onRetry: () => void;
+};
+
+export const ErrorFallback: React.FC<Props> = ({ onRetry }) => {
+  const { isLoading } = useLoading();
+
   return (
     <div className={errorFallbackStyles.errorFallback}>
       <h2 className={errorFallbackStyles.errorFallback__title}>
@@ -12,12 +19,13 @@ export const ErrorFallback: React.FC = () => {
         We couldn&apos;t load the products. Please try again or explore other
         options.
       </p>
-      <ActionButton
+      <TextButton
         className={errorFallbackStyles.errorFallback__reloadButton}
-        onClick={() => window.location.reload()}
+        onClick={onRetry}
+        disabled={isLoading}
       >
         Try again
-      </ActionButton>
+      </TextButton>
     </div>
   );
 };

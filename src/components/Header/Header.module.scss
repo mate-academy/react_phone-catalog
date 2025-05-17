@@ -50,19 +50,27 @@
   }
 
   &__logo {
-    padding-inline: 24px;
+    padding-inline: 16px;
+
+    @include styles.media(desktop) {
+      padding-inline: 24px;
+    }
 
     img {
-        width: 64px;
-        height: 22px;
-      }
+      width: 64px;
+      height: 22px;
+    }
   }
 
   &__productNav {
     display: flex;
-    gap: 24px;
+    gap: 16px;
     align-items: center;
     height: 100%;
+
+    @include styles.media(desktop) {
+      gap: 24px;
+    }
   }
 
   &__userControls {

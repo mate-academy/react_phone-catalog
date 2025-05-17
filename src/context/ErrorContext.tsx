@@ -2,19 +2,20 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useReducer,
+  useRef,
 } from 'react';
 import {
+  ErrorItem,
   errorReducer,
-  ErrorState,
   initialErrorState,
 } from '../reducers/errorReducer';
 
 type ErrorContextType = {
-  error: ErrorState;
-  setError: (message: string) => void;
-  clearError: () => void;
+  errors: ErrorItem[];
+  addError: (message: string) => void;
+  removeError: (id: string) => void;
+  clearErrors: () => void;
 };
 
 type Props = {
@@ -24,25 +25,42 @@ type Props = {
 const ErrorContext = createContext<ErrorContextType | undefined>(undefined);
 
 export const ErrorProvider: React.FC<Props> = ({ children }) => {
-  const [error, dispatch] = useReducer(errorReducer, initialErrorState);
+  const [state, dispatch] = useReducer(errorReducer, initialErrorState);
+  const timersRef = useRef<Record<string, NodeJS.Timeout>>({});
 
-  const setError = useCallback(
-    (message: string) => dispatch({ type: 'SET_ERROR', payload: message }),
-    [],
+  const removeError = useCallback((id: string) => {
+    dispatch({ type: 'REMOVE_ERROR', payload: id });
+
+    if (timersRef.current[id]) {
+      clearTimeout(timersRef.current[id]);
+      delete timersRef.current[id];
+    }
+  }, []);
+
+  const addError = useCallback(
+    (message: string) => {
+      const id = crypto.randomUUID();
+
+      dispatch({ type: 'ADD_ERROR', payload: { id, message } });
+
+      timersRef.current[id] = setTimeout(() => {
+        removeError(id);
+      }, 9000);
+    },
+    [removeError],
   );
 
-  const clearError = useCallback(() => dispatch({ type: 'CLEAR_ERROR' }), []);
-
-  useEffect(() => {
-    if (error.message) {
-      const timerId = setTimeout(clearError, 5000);
-
-      return () => clearTimeout(timerId);
-    }
-  }, [error.message, clearError]);
+  const clearErrors = useCallback(() => dispatch({ type: 'CLEAR_ERRORS' }), []);
 
   return (
-    <ErrorContext.Provider value={{ error, setError, clearError }}>
+    <ErrorContext.Provider
+      value={{
+        errors: state.errors,
+        addError,
+        removeError,
+        clearErrors,
+      }}
+    >
       {children}
     </ErrorContext.Provider>
   );

@@ -1,29 +1,39 @@
-export type ErrorMessage = string | null;
+export type ErrorItem = {
+  id: string;
+  message: string;
+};
 
 export type ErrorState = {
-  message: ErrorMessage;
+  errors: ErrorItem[];
 };
 
 type ErrorAction =
-  | { type: 'SET_ERROR'; payload: ErrorMessage }
-  | { type: 'CLEAR_ERROR' };
+  | { type: 'ADD_ERROR'; payload: ErrorItem }
+  | { type: 'REMOVE_ERROR'; payload: string }
+  | { type: 'CLEAR_ERRORS' };
 
 export const initialErrorState: ErrorState = {
-  message: null,
+  errors: [],
 };
 
 export const errorReducer = (state: ErrorState, action: ErrorAction) => {
   switch (action.type) {
-    case 'SET_ERROR':
+    case 'ADD_ERROR':
       return {
         ...state,
-        message: action.payload,
+        errors: [...state.errors, action.payload],
       };
 
-    case 'CLEAR_ERROR':
+    case 'REMOVE_ERROR':
       return {
         ...state,
-        message: null,
+        errors: state.errors.filter(error => error.id !== action.payload),
+      };
+
+    case 'CLEAR_ERRORS':
+      return {
+        ...state,
+        errors: [],
       };
 
     default:

@@ -5,7 +5,7 @@ export function useLocalStorage<T>(
   key: string,
   startValue: T,
 ): [T, (v: T) => void] {
-  const { setError } = useError();
+  const { addError: setError } = useError();
   const [value, setValue] = useState<T>(() => {
     try {
       const storedValue = localStorage.getItem(key);
