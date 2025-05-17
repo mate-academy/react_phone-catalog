@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import './HomePage.scss';
 import classNames from 'classnames';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Phone } from '../../interface/Phone';
 
@@ -30,7 +31,7 @@ export const HomePage = () => {
   }, [clickOnButton]);
 
   useEffect(() => {
-    fetch('/api/phones.json')
+    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
       .then(response => response.json())
       .then(data => {
         setPhones(data);
@@ -137,7 +138,7 @@ export const HomePage = () => {
             </div>
             <div className="swiper__phone">
               <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 spaceBetween={30}
                 navigation={{
                   prevEl: '.swiper-button-prev',
@@ -245,7 +246,7 @@ export const HomePage = () => {
             </div>
             <div className="swiper__phone">
               <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 spaceBetween={30}
                 navigation={{
                   prevEl: '.swiper-button-prev',

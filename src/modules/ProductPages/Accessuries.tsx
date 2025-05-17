@@ -20,7 +20,7 @@ export const Accessories = () => {
     setReloadButton(false);
     setloadingDataOnServer(true);
     setTimeout(() => {
-      fetch('/api/accessories.json')
+      fetch(`${import.meta.env.BASE_URL}api/phones.json`)
         .then(response => response.json())
         .then(data => setAccessuries(data))
         .catch(error => {
