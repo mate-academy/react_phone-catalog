@@ -13,7 +13,7 @@ export const Header = () => {
           <Link className={styles.header__button} to="/menu">
             <img
               className={styles['header__button-image']}
-              src="public/icons/Union.svg"
+              src="public/icons/Menu.svg"
               alt="menu button"
             />
           </Link>
