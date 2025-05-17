@@ -21,6 +21,7 @@ width: 100%;
 
     @include respond-to('desktop') {
         grid-template-columns: repeat(4, minmax(212px, 272px));
+        justify-content: flex-start;
       
     }
 

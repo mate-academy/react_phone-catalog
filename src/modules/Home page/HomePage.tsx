@@ -10,8 +10,8 @@ export const HomePage = () => {
   const { t } = useTranslation();
   const sliderBanners = [
     '/img/slider-banner.svg',
-    '../../../public/img/tablets-banner.png',
-    '../../../public/img/accessories-banner.png',
+    '/img/tablets-banner.png',
+    '/img/accessories-banner.png',
   ];
 
   const [products, setProducts] = useState<[] | null>([]);

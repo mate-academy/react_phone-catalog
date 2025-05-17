@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__logo}>
-        <img src="../../../public/img/Logo.svg" alt="Nice Gadgets" />
+        <img src="/img/Logo.svg" alt="Nice Gadgets" />
       </div>
       <nav className={styles.footer__nav}>
         <a href="https://github.com/yurzxw" className={styles.footer__link}>
@@ -28,7 +28,7 @@ export const Footer = () => {
           {t('footer.back_to_top')}
           <div className={styles.footer__arrowContainer}>
             <img
-              src="../../../public/img/buttons/right-arrow.svg"
+              src="/img/buttons/right-arrow.svg"
               alt="Back to top"
               style={{ transform: 'rotate(-90deg)' }}
             />

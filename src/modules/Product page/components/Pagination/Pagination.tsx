@@ -57,7 +57,7 @@ export const Pagination: React.FC<Props> = ({
         >
           {
             <img
-              src={`public/img/buttons/left-arrow${currentPage === 1 ? '-disabled' : ''}.svg`}
+              src={`/img/buttons/left-arrow${currentPage === 1 ? '-disabled' : ''}.svg`}
               alt=""
             />
           }
@@ -110,7 +110,7 @@ export const Pagination: React.FC<Props> = ({
         >
           {
             <img
-              src={`public/img/buttons/right-arrow${currentPage === totalPages ? '-disabled' : ''}.svg`}
+              src={`/img/buttons/right-arrow${currentPage === totalPages ? '-disabled' : ''}.svg`}
               alt=""
             />
           }

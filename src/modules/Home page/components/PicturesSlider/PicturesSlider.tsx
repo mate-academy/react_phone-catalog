@@ -132,7 +132,7 @@ export const PicturesSlider: React.FC<Props> = ({
                 {index === 0 ? (
                   <picture>
                     <source
-                      srcSet="../../../../../public/img/banner-for-phones.svg"
+                      srcSet="/img/banner-for-phones.svg"
                       media="(max-width: 640px)"
                     />
                     <img

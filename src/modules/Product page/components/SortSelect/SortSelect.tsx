@@ -51,7 +51,7 @@ export const SortSelect: React.FC = () => {
       >
         {selectedOption.label}
         <img
-          src="../../../../../public/img/buttons/arrow-down.svg"
+          src="/img/buttons/arrow-down.svg"
           alt="Arrow Down"
           className={`${styles.SortSelect__arrow} ${isOpen ? styles.SortSelect__arrow_open : ''}`}
         />

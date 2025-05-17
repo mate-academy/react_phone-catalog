@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
-
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { useFavourites } from '../../context/FavouritesContext';
@@ -18,6 +17,7 @@ export const Header = ({ onBurgerToggle }) => {
     location.pathname === '/phones' ||
     location.pathname === '/tablets' ||
     location.pathname === '/accessories';
+  const [Active, setIsActive] = useState<boolean>(false);
   const { items } = useContext(CartContext);
   const cartCount = items.reduce((sum, item) => sum + (item.quantity || 1), 0);
   const favourites = useFavourites();
@@ -39,7 +39,7 @@ export const Header = ({ onBurgerToggle }) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}>
-        <img src="../../../public/img/Logo.svg" alt="Nice Gadgets" />
+        <img src="/img/Logo.svg" alt="Nice Gadgets" />
       </div>
 
       <motion.button
@@ -55,8 +55,8 @@ export const Header = ({ onBurgerToggle }) => {
         <img
           src={
             isOpen
-              ? '../../../public/img/buttons/Icons/Icons/Icons/Close.svg'
-              : '../../../public/img/buttons/Icons/Icons/Menu.svg'
+              ? '/img/buttons/Icons/Icons/Icons/Close.svg'
+              : '/img/buttons/Icons/Icons/Menu.svg'
           }
           alt="burger-menu"
         />
@@ -105,7 +105,15 @@ export const Header = ({ onBurgerToggle }) => {
         </NavLink>
       </nav>
       <div className={styles.header__buttons}>
-        {showSearch && <SearchInput />}
+        {showSearch && <SearchInput active={Active} />}
+        {showSearch && (
+          <button
+            className={styles.header__search}
+            onClick={() => setIsActive(!Active)}
+          >
+            <img src="/img/Icons/Search.svg" alt="search" />
+          </button>
+        )}
         <LanguageSwitcher />
         <NavLink
           to="/favourites"
@@ -117,7 +125,7 @@ export const Header = ({ onBurgerToggle }) => {
         >
           <div className={styles.header__favouritesWrapper}>
             <img
-              src="../../../public/img/Favourites (Heart Like).svg"
+              src="/img/Favourites (Heart Like).svg"
               alt="favourites"
               className={styles.header__favouritesIcon}
             />
@@ -212,10 +220,7 @@ export const Header = ({ onBurgerToggle }) => {
               })
             }
           >
-            <img
-              src="../../../public/img/Favourites (Heart Like).svg"
-              alt="favourites"
-            />
+            <img src="/img/Favourites (Heart Like).svg" alt="favourites" />
           </NavLink>
 
           <NavLink
@@ -226,7 +231,7 @@ export const Header = ({ onBurgerToggle }) => {
               })
             }
           >
-            <img src="../../../public/img/Shopping bag (Cart).svg" alt="cart" />
+            <img src="/img/Shopping bag (Cart).svg" alt="cart" />
           </NavLink>
         </div>
       </div>

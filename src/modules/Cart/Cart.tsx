@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 export const CartPage = () => {
   const { t } = useTranslation();
   const { items, dispatch } = useContext(CartContext);
-
+  const count = items.reduce((acc, item) => acc + Number(item.quantity), 0);
   const handleDeleteItem = id => {
     dispatch({ type: 'REMOVE_ITEM', payload: id });
   };
@@ -56,7 +56,7 @@ export const CartPage = () => {
               <li className={styles.CartPage__item} key={index}>
                 <div className={styles.CartPage__item__info}>
                   <img
-                    src="../../../public/img/buttons/Icons/Close.svg"
+                    src="/img/buttons/Icons/Close.svg"
                     alt="delete"
                     className={styles.CartPage__item__close}
                     onClick={() => handleDeleteItem(item.id)}
@@ -78,7 +78,7 @@ export const CartPage = () => {
                       onClick={() => handleChangeQuantity(item.id, -1)}
                     >
                       <img
-                        src="../../../public/img/buttons/Icons/Icons/Minus.svg"
+                        src="/img/buttons/Icons/Icons/Minus.svg"
                         alt=""
                         className={styles.CartPage__item__minus}
                       />
@@ -91,7 +91,7 @@ export const CartPage = () => {
                       onClick={() => handleChangeQuantity(item.id, 1)}
                     >
                       <img
-                        src="../../../public/img/buttons/Icons/Icons/Plus.svg"
+                        src="/img/buttons/Icons/Icons/Plus.svg"
                         alt=""
                         className={styles.CartPage__item__add}
                       />
@@ -112,7 +112,7 @@ export const CartPage = () => {
               className={styles.CartPage__confirm__totalPrice}
             >{`$${sum}`}</div>
             <div className={styles.CartPage__confirm__totalPrice_sum}>
-              {t('cart.total', { count: items.length })}
+              {t('cart.total', { count: count })}
             </div>
           </div>
           <button

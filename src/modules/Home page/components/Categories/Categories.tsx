@@ -40,7 +40,7 @@ export const Categories = () => {
         <div className={styles.Categories__item}>
           <Link to="/phones">
             <img
-              src="../../../../../public/img/category-phones.webp"
+              src="/img/category-phones.webp"
               alt="Mobile phones category"
               className={classNames(
                 styles.Categories__image,
@@ -58,7 +58,7 @@ export const Categories = () => {
         <div className={styles.Categories__item}>
           <Link to="/tablets">
             <img
-              src="../../../../../public/img/category-tablets.webp"
+              src="/img/category-tablets.webp"
               alt="Mobile phones category"
               className={classNames(
                 styles.Categories__image,
@@ -76,7 +76,7 @@ export const Categories = () => {
         <div className={styles.Categories__item}>
           <Link to="/accessories">
             <img
-              src="../../../../../public/img/category-accessories.webp"
+              src="/img/category-accessories.webp"
               alt="Mobile phones category"
               className={classNames(
                 styles.Categories__image,

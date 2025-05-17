@@ -40,6 +40,17 @@ box-shadow: 0 1px 0 0 #E2E6E9;
   
   }
 
+  &__search {
+    border: none;
+  background: none;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+
+  }
+
   &__burger {
     cursor: pointer;
 
@@ -298,5 +309,13 @@ transition: transform 0.3s ease, opacity 0.3s ease;
       background-color: #0F0F11;
     }}
   }
+
 }
 
+.searchInput--is-active {
+  opacity: 1;
+}
+
+.searchInput--hidden {
+  opacity: 0;
+}
