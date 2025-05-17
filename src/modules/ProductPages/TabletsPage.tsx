@@ -21,7 +21,7 @@ export const TabletsPage = () => {
     setReloadButton(false);
     setloadingDataOnServer(true);
     setTimeout(() => {
-      fetch(`./api/phones.json`)
+      fetch(`./api/tablets.json`)
         .then(response => response.json())
         .then(data => setTablet(data))
         .catch(error => {

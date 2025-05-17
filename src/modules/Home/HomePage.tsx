@@ -8,13 +8,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useCart } from '../CartContext/CartContext';
+import { Gargets } from '../../interface/Gargets';
 import { Phone } from '../../interface/Phone';
 
 export const HomePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [clickOnButton, setClickOnButton] = useState(false);
   const [isImageVisible, setIsImageVisible] = useState(true);
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [phones, setPhones] = useState<Gargets[]>([]);
+  const { addToCart, addFavorite, removeFavorite } = useCart();
+  const [likedIds, setLikedIds] = useState<string[]>([]);
+  const [cartItems, setCartItems] = useState<Phone[]>([]);
+  const [likedIds2, setLikedIds2] = useState<string[]>([]);
+  const [cartItems2, setCartItems2] = useState<Phone[]>([]);
   const navigate = useNavigate();
   const images = ['./img/Banner.png', './img/banner2.jpg', './img/banner3.jpg'];
 
@@ -180,11 +187,54 @@ export const HomePage = () => {
                       <h5 className="swiper__ram-gb">{phone.ram}</h5>
                     </div>
                     <div className="swiper__position">
-                      <NavLink to="/" className="swiper__add-to-cart">
-                        Add to cart
+                      <NavLink
+                        to="/"
+                        className={classNames('swiper__add-to-cart', {
+                          added: cartItems.some(item => item.id === phone.id),
+                        })}
+                        onClick={e => {
+                          e.preventDefault();
+                          addToCart(phone);
+
+                          setCartItems(prev =>
+                            prev.some(item => item.id === phone.id)
+                              ? prev
+                              : [...prev, phone],
+                          );
+
+                          // alert('Added to cart!');
+                        }}
+                      >
+                        {cartItems.some(item => item.id === phone.id)
+                          ? 'Added to cart'
+                          : 'Add to cart'}
                       </NavLink>
-                      <button className="swiper__button-like">
-                        <NavLink to="/" className="swiper__like"></NavLink>
+
+                      <button
+                        className="swiper__button-like"
+                        onClick={() => {
+                          const isLiked = likedIds.includes(phone.id);
+
+                          setLikedIds(prev =>
+                            isLiked
+                              ? prev.filter(id => id !== phone.id)
+                              : [...prev, phone.id],
+                          );
+
+                          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                          isLiked
+                            ? removeFavorite(phone.id)
+                            : addFavorite(phone);
+                        }}
+                      >
+                        <span
+                          className="swiper__like"
+                          style={{
+                            backgroundImage: likedIds.includes(phone.id)
+                              ? 'url(./img/favorites.png)'
+                              : 'url(./img/navbar/like.png)',
+                          }}
+                        ></span>
                       </button>
                     </div>
                   </SwiperSlide>
@@ -291,11 +341,53 @@ export const HomePage = () => {
                       <h5 className="swiper__ram-gb">{phone.ram}</h5>
                     </div>
                     <div className="swiper__position">
-                      <NavLink to="/" className="swiper__add-to-cart">
-                        Add to cart
+                      <NavLink
+                        to="/"
+                        className={classNames('swiper__add-to-cart', {
+                          added: cartItems2.some(item => item.id === phone.id),
+                        })}
+                        onClick={e => {
+                          e.preventDefault();
+                          addToCart(phone);
+
+                          setCartItems2(prev =>
+                            prev.some(item => item.id === phone.id)
+                              ? prev
+                              : [...prev, phone],
+                          );
+
+                          // alert('Added to cart!');
+                        }}
+                      >
+                        {cartItems2.some(item => item.id === phone.id)
+                          ? 'Added to cart'
+                          : 'Add to cart'}
                       </NavLink>
-                      <button className="swiper__button-like">
-                        <NavLink to="/" className="swiper__like"></NavLink>
+                      <button
+                        className="swiper__button-like"
+                        onClick={() => {
+                          const isLiked = likedIds2.includes(phone.id);
+
+                          setLikedIds2(prev =>
+                            isLiked
+                              ? prev.filter(id => id !== phone.id)
+                              : [...prev, phone.id],
+                          );
+
+                          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                          isLiked
+                            ? removeFavorite(phone.id)
+                            : addFavorite(phone);
+                        }}
+                      >
+                        <span
+                          className="swiper__like"
+                          style={{
+                            backgroundImage: likedIds.includes(phone.id)
+                              ? 'url(./img/favorites.png)'
+                              : 'url(./img/navbar/like.png)',
+                          }}
+                        ></span>
                       </button>
                     </div>
                   </SwiperSlide>

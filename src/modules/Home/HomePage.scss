@@ -9,21 +9,21 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
@@ -666,6 +666,22 @@
     }
   }
 
+  .added {
+    text-decoration: none;
+  color: white;
+  background-color: green;
+  border-radius: 48px;
+  width: 160px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700px;
+  line-height: 21px;
+
+  }
+
   &__button-like {
     position: relative;
     border-radius: 50%;
@@ -684,7 +700,7 @@
   &__like {
     position: absolute;
     text-decoration: none;
-    background-image: url('../../public/img/navbar/like.png');
+    background-image: url('./img/navbar/like.png');
     width: 15.33px;
     height: 13.55px;
     background-size: cover;
