@@ -36,7 +36,7 @@ export const Breadcrumbs: React.FC = () => {
         <>
           {' '}
           <span className={styles.separator}>
-            <img src="/img/buttons/gray-arrow-right.svg" alt="separator" />
+            <img src="./img/buttons/gray-arrow-right.svg" alt="separator" />
           </span>
           {crumbs}
         </>
