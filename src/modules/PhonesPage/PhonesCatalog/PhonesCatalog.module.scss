@@ -1,3 +1,9 @@
 .catalog {
   display: grid;
+  grid-template-columns: repeat(auto-fit, min-max(60px, 1fr));
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
+  padding: 24px 16px;
 }
