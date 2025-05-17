@@ -1,0 +1,46 @@
+@use '../../utils/variables' as *;
+
+.header {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  display: flex;
+  width: 100vw;
+  height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 1px 0px 0px $gray-light-color;
+  position: sticky;
+  top: 0;
+  background-color: $white-color;
+
+
+  &__logo {
+    width: auto;
+    height: 20px;
+    display: block;
+    object-fit: contain;
+    padding: 16px;
+  }
+
+  &__links {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 32px;
+    justify-content: space-between;
+  }
+
+  &__button {
+    box-shadow: -1px 0px 0px 0px $gray-light-color;
+    height: 48px;
+    width: 48px;
+    justify-items: center;
+    align-content: center;
+
+    &-image {
+      width: 14px;
+      height: auto;
+      display: block;
+    }
+
+  }
+}

@@ -6,7 +6,7 @@ export const AddToFavourites = () => {
       <button className={styles.favourites}>
         <img
           className={styles.favourites__heart}
-          src="public/icons/Vector (Stroke).png"
+          src="public/icons/Favourite.svg"
           alt="heart-icon"
         />
       </button>

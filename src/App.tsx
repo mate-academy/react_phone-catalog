@@ -1,16 +1,13 @@
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { ProductCard } from './modules/shared/components/ProductCard';
 import './App.modules.scss';
+import { Header } from './modules/shared/components/Header';
+import { Footer } from './modules/shared/components/Footer';
 
 export const App = () => {
   return (
     <>
-      <div className="header">
-        <NavLink to={'/'}>Home</NavLink>
-        <NavLink to={'/phones'}>Phones</NavLink>
-        <NavLink to={'/tablets'}>Tablets</NavLink>
-        <NavLink to={'/accesories'}>Accesories</NavLink>
-      </div>
+      <Header />
       <div className="main">
         <Routes>
           <Route path="/" element={<ProductCard />} />
@@ -18,16 +15,8 @@ export const App = () => {
           <Route path="tablets" />
           <Route path="accesories" />
         </Routes>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
       </div>
-      <div className="footer"></div>
+      <Footer />
     </>
   );
 };

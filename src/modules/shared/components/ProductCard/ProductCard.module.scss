@@ -1,5 +1,7 @@
 @use '../../utils/variables' as *;
 
+
+
 .card {
   font-family: Mont, Arial, Helvetica, sans-serif;
   border: 1px solid $gray-light-color;
@@ -86,9 +88,20 @@
 
   &__buttons {
     display: flex;
-    justify-content: stretch;
+    justify-content: space-between;
     gap: 8px;
+    width: 223px;
   }
+}
 
+@media screen and (min-width: 640px) {
+ .card {
+  width: 224px;
+  height: 440px;
 
+  &__image {
+    max-width: auto;
+    height: 194px;
+  }
+}
 }
