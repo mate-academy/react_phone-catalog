@@ -6,6 +6,7 @@
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"],
-    "jsx": "react-jsx"
-  }
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+  },
 }
