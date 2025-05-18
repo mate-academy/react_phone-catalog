@@ -3,9 +3,10 @@ import { ProductCard } from '../../../shared/components/ProductCard';
 import { getProduct } from '../../../shared/utils/fetchClient';
 import { useCallback, useEffect, useState } from 'react';
 import { Product } from '../../../shared/utils/apiTypes';
+import { PhoneContext } from '../../../shared/utils/context';
 
 export const PhoneCatalog = () => {
-  const [phones, setPhones] = useState<Product[] | null>();
+  const [phones, setPhones] = useState<Product[] | undefined>();
 
   const loadPhones = useCallback(() => {
     return getProduct('/phones.json').then(data => setPhones(data));
@@ -23,9 +24,9 @@ export const PhoneCatalog = () => {
           <img src="public/icons/ArrowRight.svg" alt="arrow right icon" />
           <p className={styles['catalog__bread-crumbs--text']}>Phones</p>
         </div>
-        {phones?.map(phone => {
-          return <ProductCard key={phone.id} title={phone.name} />;
-        })}
+        <PhoneContext.Provider value={phones}>
+          <ProductCard />;
+        </PhoneContext.Provider>
       </div>
     </>
   );
