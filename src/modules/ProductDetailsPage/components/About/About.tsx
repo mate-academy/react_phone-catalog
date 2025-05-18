@@ -13,12 +13,12 @@ export const About: React.FC<Props> = memo(({ description, className }) => {
   return (
     <section className={classNames(className, aboutStyles.about)}>
       <div className={aboutStyles.about__container}>
-        <h2 className={aboutStyles.about__title}>About</h2>
+        <h3 className={aboutStyles.about__title}>About</h3>
         <Divider />
       </div>
       {description.map(({ title, text }, index) => (
         <article className={aboutStyles.about__item} key={index}>
-          <h3 className={aboutStyles.about__itemTitle}>{title}</h3>
+          <h4 className={aboutStyles.about__itemTitle}>{title}</h4>
           {text.map((paragraph, i) => (
             <p className={aboutStyles.about__itemParagraph} key={i}>
               {paragraph}

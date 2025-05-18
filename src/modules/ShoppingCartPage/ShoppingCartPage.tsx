@@ -78,7 +78,7 @@ export const ShoppingCartPage = () => {
   return (
     <section className={shoppingCartPageStyles.shoppingCart}>
       <GoBack />
-      <h1 className={shoppingCartPageStyles.shoppingCart__title}>Cart</h1>
+      <h2 className={shoppingCartPageStyles.shoppingCart__title}>Cart</h2>
       {isHasError ? (
         <ErrorFallback onRetry={loadProducts} />
       ) : cart.length === 0 ? (

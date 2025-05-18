@@ -40,7 +40,7 @@ export const FavoritesPage = () => {
   return (
     <section className={favoritesPageStyles.favorites}>
       <div className={favoritesPageStyles.favorites__header}>
-        <h1 className={favoritesPageStyles.favorites__title}>Favorites</h1>
+        <h2 className={favoritesPageStyles.favorites__title}>Favorites</h2>
         <p className={favoritesPageStyles.favorites__subtitle}>
           {isHasError
             ? `${favorites.length} saved items - failed to load`

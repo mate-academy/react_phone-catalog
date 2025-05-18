@@ -6,7 +6,7 @@ type Props = {
 };
 
 export const SectionTitle: React.FC<Props> = memo(({ title }) => {
-  return <h2 className={sectionTitleStyles.title}>{title}</h2>;
+  return <h3 className={sectionTitleStyles.title}>{title}</h3>;
 });
 
 SectionTitle.displayName = 'SectionTitle';

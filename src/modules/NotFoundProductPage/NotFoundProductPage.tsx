@@ -4,9 +4,9 @@ import notFoundProductStyles from './NotFoundProductPage.module.scss';
 export const NotFoundProductPage = () => {
   return (
     <div className={notFoundProductStyles.notFoundProduct}>
-      <h1 className={notFoundProductStyles.notFoundProduct__title}>
+      <h2 className={notFoundProductStyles.notFoundProduct__title}>
         Oops! Product not found
-      </h1>
+      </h2>
       <p className={notFoundProductStyles.notFoundProduct__text}>
         Sorry, we couldn&apos;t find the product you&apos;re looking for.
       </p>

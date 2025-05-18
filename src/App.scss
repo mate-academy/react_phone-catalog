@@ -23,6 +23,21 @@
     padding-bottom: 80px;
   }
 
+  &__title {
+    &--hide {
+      bottom: 0;
+
+      overflow: hidden;
+
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+
+      visibility: hidden;
+    }
+  }
+
   &__content {
     position: relative;
 

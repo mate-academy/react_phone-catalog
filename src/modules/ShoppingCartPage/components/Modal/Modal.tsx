@@ -22,9 +22,9 @@ export const Modal: React.FC<Props> = memo(({ onCancel, onConfirm }) => {
   return createPortal(
     <div className={modalStyles.backdrop}>
       <div className={modalStyles.modal} role="dialog" aria-modal>
-        <h2 className={modalStyles.modal__title}>
+        <h3 className={modalStyles.modal__title}>
           Checkout is not implemented yet
-        </h2>
+        </h3>
         <p className={modalStyles.modal__subtitle}>
           Are you sure you want to clear the cart?
         </p>

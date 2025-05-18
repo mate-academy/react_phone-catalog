@@ -14,6 +14,7 @@ export const App = () => {
         <Header />
         <main className="page">
           <div className="page__content">
+            <h1 className="page__title--hide">Product Catalog</h1>
             <NotificationCenter />
             <Breadcrumbs />
             <Outlet />

@@ -12,9 +12,9 @@ export const Banner: React.FC<Props> = memo(({ category }) => {
     <article className={bannerStyles.banner}>
       <div className={bannerStyles.banner__content}>
         <div className={bannerStyles.banner__headings}>
-          <h2 className={bannerStyles.banner__title}>
+          <h3 className={bannerStyles.banner__title}>
             {category.description.title}
-          </h2>
+          </h3>
           <p className={bannerStyles.banner__subtitle}>
             {category.description.subtitle}
           </p>

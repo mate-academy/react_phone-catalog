@@ -26,7 +26,7 @@ export const CartItem: React.FC<Props> = memo(({ product, className }) => {
           className={cartItemStyles.cartItem__link}
         >
           <img src={image} alt="" className={cartItemStyles.cartItem__image} />
-          <h2 className={cartItemStyles.cartItem__title}>{name}</h2>
+          <h3 className={cartItemStyles.cartItem__title}>{name}</h3>
         </Link>
       </div>
       <div className={cartItemStyles.cartItem__actions}>

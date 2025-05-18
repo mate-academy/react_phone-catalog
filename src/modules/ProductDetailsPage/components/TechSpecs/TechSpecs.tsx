@@ -26,7 +26,7 @@ export const TechSpecs: React.FC<Props> = memo(
     return (
       <section className={classNames(className, techSpecsStyles.techSpecs)}>
         <div className={techSpecsStyles.techSpecs__container}>
-          <h2 className={techSpecsStyles.techSpecs__title}>Tech specs</h2>
+          <h3 className={techSpecsStyles.techSpecs__title}>Tech specs</h3>
           <Divider />
         </div>
         <ProductSpecs specs={fullSpecs} />

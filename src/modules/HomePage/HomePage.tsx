@@ -48,9 +48,9 @@ export const HomePage = () => {
   return (
     <section className={homePageStyles.homePage}>
       <div className={homePageStyles.homePage__sectionWrapper}>
-        <h1 className={homePageStyles.homePage__title}>
+        <h2 className={homePageStyles.homePage__title}>
           Welcome to Nice Gadgets store!
-        </h1>
+        </h2>
         <Carousel className={homePageStyles.homePage__carousel} />
       </div>
       {isHasError ? (

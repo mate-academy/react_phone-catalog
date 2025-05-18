@@ -115,9 +115,9 @@ export const ProductDetailsPage = () => {
   return (
     <div className={productDetailsPageStyles.details}>
       <GoBack />
-      <h1 className={productDetailsPageStyles.details__title}>
+      <h2 className={productDetailsPageStyles.details__title}>
         {selectedProduct.name}
-      </h1>
+      </h2>
       <div className={productDetailsPageStyles.details__container}>
         <Gallery
           images={selectedProduct.images}

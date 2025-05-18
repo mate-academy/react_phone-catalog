@@ -122,9 +122,9 @@ export const ProductPage = () => {
   return (
     <section className={productsPageStyles.productPage}>
       <div className={productsPageStyles.productPage__header}>
-        <h1 className={productsPageStyles.productPage__title}>
+        <h2 className={productsPageStyles.productPage__title}>
           {getNormalizedTitle(category)}
-        </h1>
+        </h2>
         <p className={productsPageStyles.productPage__subtitle}>
           {isHasError ? 'Failed to load products' : `${products.length} models`}
         </p>
