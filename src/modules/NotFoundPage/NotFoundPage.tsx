@@ -19,8 +19,8 @@ export const NotFoundPage = () => {
         </Link>
       </p>
       <img
-        src="/public/img/page-not-found.png"
-        alt=""
+        src="img/page-not-found.png"
+        alt="Not found page image"
         className={notFoundPageStyles.notFound__image}
       />
     </div>

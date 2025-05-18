@@ -30,6 +30,10 @@
     gap: 16px;
   }
 
+  &__closeButton {
+    color: styles.get-color(icons);
+  }
+
   &__actions {
     justify-content: space-between;
   }

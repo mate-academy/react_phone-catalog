@@ -25,7 +25,10 @@ export const GoBack = () => {
 
   return (
     <button onClick={handleGoBack} className={goBackStyles.goBack}>
-      <IconSvg dataPath={ICON_DATA_PATHS.ARROW.LEFT} />
+      <IconSvg
+        dataPath={ICON_DATA_PATHS.ARROW.LEFT}
+        className={goBackStyles.goBack__icon}
+      />
       <span className={goBackStyles.goBack__text}>Back</span>
     </button>
   );

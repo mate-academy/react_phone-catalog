@@ -16,10 +16,7 @@ export const CloseButton: React.FC<Props> = memo(
         className={classNames(className, closeButtonStyles.closeButton)}
         onClick={onClose}
       >
-        <IconSvg
-          dataPath={ICON_DATA_PATHS.CLOSE}
-          className={closeButtonStyles.closeButton__closeIcon}
-        />
+        <IconSvg dataPath={ICON_DATA_PATHS.CLOSE} />
       </button>
     );
   },

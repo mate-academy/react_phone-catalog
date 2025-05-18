@@ -12,7 +12,10 @@ export const Toast: React.FC<Props> = memo(({ errorMessage, onClose }) => {
     <div className={toastStyles.toast}>
       <header className={toastStyles.toast__header}>
         <h3 className={toastStyles.toast__title}>Error!</h3>
-        <CloseButton onClose={onClose} />
+        <CloseButton
+          onClose={onClose}
+          className={toastStyles.toast__closeButton}
+        />
       </header>
       <p className={toastStyles.toast__message}>{errorMessage}</p>
     </div>

@@ -13,6 +13,10 @@
 
   background-color: styles.get-color(white);
 
+  &__icon {
+    color: styles.get-color(primary);
+  }
+
   &__text {
     color: styles.get-color(secondary);
 

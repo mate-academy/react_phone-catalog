@@ -87,7 +87,7 @@ export const ShoppingCartPage = () => {
             Your cart is empty
           </p>
           <img
-            src="/public/img/cart-is-empty.png"
+            src="img/cart-is-empty.png"
             alt="Empty cart image"
             className={shoppingCartPageStyles.shoppingCart__emptyCartImage}
           />

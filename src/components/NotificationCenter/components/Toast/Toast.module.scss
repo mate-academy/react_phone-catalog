@@ -25,6 +25,10 @@
     @include styles.typography(h3);
   }
 
+  &__closeButton {
+    color: styles.get-color(primary);
+  }
+
   &__message {
     color: styles.get-color(primary);
 

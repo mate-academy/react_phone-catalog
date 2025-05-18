@@ -20,7 +20,10 @@ export const CartItem: React.FC<Props> = memo(({ product, className }) => {
   return (
     <article className={classNames(className, cartItemStyles.cartItem)}>
       <div className={cartItemStyles.cartItem__info}>
-        <CloseButton onClose={() => removeFromCart(product.itemId)} />
+        <CloseButton
+          onClose={() => removeFromCart(product.itemId)}
+          className={cartItemStyles.cartItem__closeButton}
+        />
         <Link
           to={`/${category}/${itemId}`}
           className={cartItemStyles.cartItem__link}

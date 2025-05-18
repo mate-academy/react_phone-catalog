@@ -11,8 +11,8 @@ export const NotFoundProductPage = () => {
         Sorry, we couldn&apos;t find the product you&apos;re looking for.
       </p>
       <img
-        src="/public/img/product-not-found.png"
-        alt=""
+        src="img/product-not-found.png"
+        alt="Not found product image"
         className={notFoundProductStyles.notFoundProduct__image}
       />
     </div>
