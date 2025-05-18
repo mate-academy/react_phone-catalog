@@ -25,6 +25,49 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    background-color: $elements;
+  }
+
+  &__parametrs {
+    display: flex;
+    justify-content: space-between;
+
+    &__names {
+      color: $secondary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__button {
+    height: 40px;
+  }
+
+  &__button_buy {
+    background-color: $primary;
+    color: white;
+    width: 100%;
+
+    @include use-font(700);
+  }
 }
 
+.product {
+  &__parametr {
+    color: $primary;
+  }
 
+  &__name {
+    @include use-font(600);
+    font-size: 14px;
+    color: $primary;
+  }
+}

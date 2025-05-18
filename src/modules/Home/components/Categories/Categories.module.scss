@@ -1,0 +1,48 @@
+@use '../../../../styles/mixin.scss' as *;
+@use '../../../../styles/variables.scss' as *;
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    @include use-font(800);
+    font-size: 32px;
+  }
+
+  &__grid {
+    @include grid;
+  }
+}
+
+.category {
+  grid-column: span 8;
+
+  &__background {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    background-color: #6d6474;
+  }
+
+  &__img {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    z-index: 1;
+  }
+
+  &__name {
+    color: $primary;
+    @include use-font(600);
+  }
+
+  &__items_count{
+
+  }
+}

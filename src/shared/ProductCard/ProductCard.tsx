@@ -1,3 +1,4 @@
+import { HeartSVG } from '../../assets/HeartSVG';
 import { Product } from '../../types/product';
 import s from './ProductCard.module.scss';
 
@@ -9,28 +10,30 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className={s.card}>
       <img className={s.img} src={product.image} alt="Product image" />
-      <span className={s.name}>{product.name}</span>
+      <span className={s.product__name}>{product.name}</span>
 
       <span>{product.price}</span>
 
-      <div>__</div>
+      <div className={s.card__line}></div>
 
-      <div className={s.parametrs}>
-        <span>Screen</span>
-        <span>{product.screen}</span>
+      <div className={s.card__parametrs}>
+        <span className={s.card__parametrs__names}>Screen</span>
+        <span className={s.product__parametr}>{product.screen}</span>
       </div>
-      <div className={s.parametrs}>
-        <span>Capacity</span>
-        <span>{product.capacity}</span>
+      <div className={s.card__parametrs}>
+        <span className={s.card__parametrs__names}>Capacity</span>
+        <span className={s.product__parametr}>{product.capacity}</span>
       </div>
-      <div className={s.parametrs}>
-        <span>Ram</span>
-        <span>{product.ram}</span>
+      <div className={s.card__parametrs}>
+        <span className={s.card__parametrs__names}>Ram</span>
+        <span className={s.product__parametr}>{product.ram}</span>
       </div>
 
-      <div>
-        <button>buy</button>
-        <button>like</button>
+      <div className={s.card__buttons}>
+        <button className={s.card__button_buy}>Add to cart</button>
+        <button className={s.card__button}>
+          <HeartSVG />
+        </button>
       </div>
     </div>
   );
