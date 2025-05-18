@@ -80,7 +80,7 @@ export const SectionSlider: React.FC<Props> = memo(
             }}
             breakpoints={{
               320: {
-                slidesPerView: 4 / 3,
+                slidesPerView: 1.4,
               },
               640: {
                 slidesPerView: 2.4,

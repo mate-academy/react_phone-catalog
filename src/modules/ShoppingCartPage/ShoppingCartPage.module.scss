@@ -40,9 +40,7 @@
   }
 
   &__content {
-    @include styles.page-grid;
-
-    row-gap: 32px;
+    @include styles.page-grid(32px)
   }
 
   &__cartList {

@@ -10,6 +10,7 @@ type CartContextType = {
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
   removeFromCart: (id: string) => void;
+  clearCart: () => void;
 };
 
 type Props = {
@@ -67,6 +68,8 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     [cart, setCart],
   );
 
+  const clearCart = useCallback(() => setCart([]), [setCart]);
+
   return (
     <CartContext.Provider
       value={{
@@ -75,6 +78,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
         incrementQuantity,
         decrementQuantity,
         removeFromCart,
+        clearCart,
       }}
     >
       {children}

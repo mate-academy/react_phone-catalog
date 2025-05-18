@@ -1,15 +1,23 @@
 @use '/src/styles';
 
 .textButton {
-  border: none;
-  color: styles.get-color(white);
-  background-color: styles.get-color(primary);
-
   @include styles.typography(button);
 
   @include styles.hover-styles {
     cursor: pointer;
     box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &--dark {
+        border: 1px solid styles.get-color(primary);
+    color: styles.get-color(white);
+    background-color: styles.get-color(primary);
+  }
+
+  &--light {
+    border: 1px solid styles.get-color(elements);
+    color: styles.get-color(primary);
+    background-color: styles.get-color(white);
   }
 
   &--disabled {

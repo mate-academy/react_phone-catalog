@@ -2,12 +2,12 @@
 @use 'colors';
 @use 'sass:list';
 
-@mixin page-grid {
+@mixin page-grid($row-gap: 40px) {
   --columns: 4;
 
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
-  gap: 40px 16px;
+  gap: $row-gap 16px;
 
   @include breakpoints.media(tablet) {
     --columns: 12;

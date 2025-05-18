@@ -13,6 +13,14 @@
     gap: 80px;
   }
 
+  &__carousel {
+    margin-inline: styles.get-negative-size(page-padding-mobile);
+
+    @include styles.media(tablet) {
+      margin-inline: 0;
+    }
+  }
+
   &__sectionWrapper {
     display: flex;
     flex-direction: column;

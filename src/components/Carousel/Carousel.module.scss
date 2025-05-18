@@ -6,12 +6,6 @@
   gap: 8px;
   justify-content: center;
 
-  margin-inline: styles.get-negative-size(page-padding-inline);
-
-  @include styles.media(tablet) {
-    margin-inline: 0;
-  }
-
   &__sliderWrapper {
     display: flex;
     flex-direction: row;

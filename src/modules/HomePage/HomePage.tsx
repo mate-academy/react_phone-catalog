@@ -51,7 +51,7 @@ export const HomePage = () => {
         <h1 className={homePageStyles.homePage__title}>
           Welcome to Nice Gadgets store!
         </h1>
-        <Carousel />
+        <Carousel className={homePageStyles.homePage__carousel} />
       </div>
       {isHasError ? (
         <ErrorFallback onRetry={loadProducts} />

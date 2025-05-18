@@ -20,4 +20,16 @@
     width: 32px;
     height: 32px;
   }
+
+  &__sliderWrapper {
+    margin-right: styles.get-negative-size(page-padding-mobile);
+
+    @include styles.media(tablet) {
+      margin-right: styles.get-negative-size(page-padding-tablet);
+    }
+
+    @include styles.media(desktop) {
+      margin-inline: 0;
+    }
+  }
 }

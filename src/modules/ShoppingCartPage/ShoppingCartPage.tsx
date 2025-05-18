@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import shoppingCartPageStyles from './ShoppingCartPage.module.scss';
 import { useCart } from '../../context/CartContext';
 import { GoBack } from '../../components/GoBack';
@@ -12,23 +12,33 @@ import { useLoading } from '../../context/LoadingContext';
 import { useError } from '../../context/ErrorContext';
 import { handleErrorMessage } from '../../utils/handleErrorMessage';
 import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
+import { Modal } from './components/Modal';
 
 export const ShoppingCartPage = () => {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
   const { startLoading, stopLoading } = useLoading();
   const [products, setProducts] = useState<CartItemDetails[]>([]);
   const { addError } = useError();
   const [isHasError, setIsHasError] = useState(false);
-  const totalPrice = lodash
-    .chain(products)
-    .map(product => product.totalPrice)
-    .sum()
-    .value();
-  const totalQuantity = lodash
-    .chain(products)
-    .map(product => product.quantity)
-    .sum()
-    .value();
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const totalPrice = useMemo(
+    () =>
+      lodash
+        .chain(products)
+        .map(product => product.totalPrice)
+        .sum()
+        .value(),
+    [products],
+  );
+  const totalQuantity = useMemo(
+    () =>
+      lodash
+        .chain(products)
+        .map(product => product.quantity)
+        .sum()
+        .value(),
+    [products],
+  );
 
   const loadProducts = useCallback(() => {
     startLoading();
@@ -100,11 +110,22 @@ export const ShoppingCartPage = () => {
             <Divider />
             <TextButton
               className={shoppingCartPageStyles.shoppingCart__checkoutButton}
+              onClick={() => setIsOpenModal(true)}
             >
               Checkout
             </TextButton>
           </div>
         </div>
+      )}
+
+      {isOpenModal && (
+        <Modal
+          onConfirm={() => {
+            setIsOpenModal(false);
+            clearCart();
+          }}
+          onCancel={() => setIsOpenModal(false)}
+        />
       )}
     </section>
   );

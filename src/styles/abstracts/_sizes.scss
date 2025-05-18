@@ -2,9 +2,12 @@
 
 $sizes: (
   container-max-width: 1200px,
+  container-min-width: 320px,
   header-height-base: 48px,
   header-height-desktop: 64px,
-  page-padding-inline: 32px,
+  page-padding-mobile: 16px,
+  page-padding-tablet: 24px,
+  page-padding-desktop: 32px,
   spacing-unit: 8px,
 );
 

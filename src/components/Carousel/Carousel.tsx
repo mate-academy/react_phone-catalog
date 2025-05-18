@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper';
 import { useCategories } from '../../context/CategoriesContext';
@@ -17,8 +17,13 @@ import { Banner } from './components/Banner';
 // eslint-disable-next-line max-len
 import { CarouselPagination } from './components/CarouselPagination/CarouselPagination';
 import { IconButton } from '../IconButton/IconButton';
+import classNames from 'classnames';
 
-export const Carousel = () => {
+type Props = {
+  className?: string;
+};
+
+export const Carousel: React.FC<Props> = memo(({ className }) => {
   const { categories } = useCategories();
   const prevButtonRef = useRef<HTMLButtonElement>(null);
   const nextButtonRef = useRef<HTMLButtonElement>(null);
@@ -30,7 +35,7 @@ export const Carousel = () => {
   }
 
   return (
-    <div className={carouselStyles.carousel}>
+    <div className={classNames(className, carouselStyles.carousel)}>
       <div className={carouselStyles.carousel__sliderWrapper}>
         <IconButton
           ref={prevButtonRef}
@@ -78,4 +83,6 @@ export const Carousel = () => {
       />
     </div>
   );
-};
+});
+
+Carousel.displayName = 'Carousel';
