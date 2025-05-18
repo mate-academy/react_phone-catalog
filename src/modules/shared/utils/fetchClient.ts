@@ -1,4 +1,4 @@
-export const BASE_URL = 'public/api/';
+export const BASE_URL = 'public/api';
 
 function wait(delay: number) {
   return new Promise(resolve => {

@@ -3,7 +3,11 @@ import styles from './ProductCard.module.scss';
 import { Button } from '../Button';
 import { AddToFavourites } from '../AddToFavourites';
 
-export const ProductCard = () => {
+type Props = {
+  title: string;
+};
+
+export const ProductCard = ({ title }: Props) => {
   return (
     <div className={styles.card}>
       <Link to={'/'}>
@@ -14,7 +18,7 @@ export const ProductCard = () => {
         ></img>
       </Link>
       <Link className={styles.card__title} to={'/'}>
-        Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+        {title}
       </Link>
       <div className={styles.card__price}>
         <p className={styles['card__price-current']}>$799</p>
