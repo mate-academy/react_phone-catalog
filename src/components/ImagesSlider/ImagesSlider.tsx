@@ -36,8 +36,9 @@ export const ImagesSlider: React.FC<Props> = ({ images }) => {
         modules={[Thumbs]}
         watchSlidesProgress={true}
         onSwiper={setThumbsSwiper}
-        slidesPerView={images.length}
+        slidesPerView={6}
         spaceBetween={8}
+        autoHeight={true}
         breakpoints={{
           640: {
             direction: 'vertical',

@@ -38,12 +38,10 @@
 
   @include on-tablet {
     grid-column: 1/2;
-    height: 288px;
   }
 
   @include on-desktop {
     grid-column: 1/3;
-    height: 464px;
   }
 
   &__slide {
@@ -54,6 +52,8 @@
     border-radius: 4px;
     overflow: hidden;
     cursor: pointer;
+
+    @include hover(border, 1px solid $color-text);
   }
 
   .swiper-slide-thumb-active {
