@@ -108,7 +108,7 @@ export const Carousel: CarouselComponent = ({ children }) => {
       </div>
 
       <div className={styles.dots}>
-        {Children.map(children, (el, i) => (
+        {Children.map(children, (_el, i) => (
           <div className={styles.dotBox} onClick={() => setSlide(i)}>
             <svg
               width="24"
