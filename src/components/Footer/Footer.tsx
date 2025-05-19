@@ -6,8 +6,8 @@ import { IoIosArrowUp } from 'react-icons/io';
 import { Link as ScrollLink } from 'react-scroll';
 
 export const Footer = () => {
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames('navbar-item', { ' has-underline': isActive });
+  // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  //   classNames('navbar-item', { ' has-underline': isActive });
 
   return (
     <nav className="navbar__footer">
@@ -20,21 +20,23 @@ export const Footer = () => {
       <div className=" footer__links">
         <a
           href="https://github.com/hardaira/react_phone-catalog"
-          className="externalLink"
+          className="externalLink footer__link"
           target="_blank"
           rel="noopener noreferrer"
         >
           GITHUB
         </a>
 
-        <NavLink to="/" className={getLinkClass}>
+        <a
+          href="#contacts" className="footer__link">
           CONTACTS
-        </NavLink>
+        </a>
 
-        <NavLink to="/" className={getLinkClass}>
+        <a
+          href="#rights" className="footer__link">
           RIGHTS
-        </NavLink>
-        {/* </div> */}
+        </a>
+
       </div>
       <div className="footer__icon">
         <p className="arrow__up__text"> Back to top </p>

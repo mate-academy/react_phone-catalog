@@ -85,8 +85,8 @@ const isInCart = useSelector((state: RootState) =>
 
         <div className="buttons">
           {isInCart ? (
-            <button className="addButton" onClick={handleAddToCart}>
-              Added to cart
+            <button className="addButton selected" onClick={handleAddToCart}>
+              Selected
             </button>
           ) : (
             <button className="addButton" onClick={handleAddToCart}>

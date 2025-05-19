@@ -21,7 +21,8 @@
     "react-scroll": "^1.9.3",
     "react-slick": "^0.30.3",
     "react-transition-group": "^4.4.5",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.21.0"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",

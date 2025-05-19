@@ -7,7 +7,7 @@ import SliderTop from '../components/SliderTop/SliderTop';
 
 export const HomePage: React.FC = () => (
   <div className="section" id="home">
-    <div className="container">
+    <div className="home__page__container">
       <h1 id="heading1" className="invisible">
         Home Page
       </h1>

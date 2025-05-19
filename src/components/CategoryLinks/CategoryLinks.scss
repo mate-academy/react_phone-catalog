@@ -3,25 +3,26 @@
     flex-direction: column;
     justify-content: space-between;
     padding-top: 0px;
+    gap: 32px;
     @media (min-width: 640px){
     flex-direction: row;
     justify-content: space-between;
+    gap: 16px;
 }
-    
+
   }
 .categories__card {
-    border-radius: 30px;
-    border: 1px solid #f3f3f3;
+
     background-color: white;
    & img{
     width: 100%;
     object-fit: contain;
-   } 
-    
+   }
+
 }
 .models__quantity{
 color: #89939A;
 font-weight: 600;
-font-size: 14px; 
+font-size: 14px;
 }
 

@@ -1,0 +1,48 @@
+.arrows {
+  display: flex;
+  text-align: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.arrowPrev, .arrowNext {
+  cursor: pointer;
+}
+
+.slider__heading {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text_above_slider{
+  font-weight: 800;
+  font-size: 32px;
+  color: #313237;
+}
+
+.arrow {
+  width: 24px;
+  border: 2px solid #ccc;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 24px;
+  align-self: flex-end;
+}
+
+.slides-row{
+  display: flex;
+  gap:16px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.carousel {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

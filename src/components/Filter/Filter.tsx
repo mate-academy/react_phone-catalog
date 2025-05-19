@@ -20,6 +20,7 @@ export const Filter: React.FC = () => {
         <p className="control">
           <span className="select">
             <select
+              className="select__field "
               data-cy="statusSelect"
               value={filterStatus}
               onChange={handleStatusChange}

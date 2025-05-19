@@ -8,8 +8,11 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const images = [
   '/img/banner2.png',
-  '/img/banner-phones.png',
-  '/img/category-accessories.png',
+  '/img/banner3.jpg',
+  //'/img/banner-phones.png',
+  //'/img/category-accessories.png',
+  '/img/bg2.jpg',
+  //'/img/slider-xl.png',
 ];
 
 export const SliderTop: React.FC = () => {
@@ -38,13 +41,13 @@ export const SliderTop: React.FC = () => {
       nextSlide();
     }, 5000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
   return (
     // <div className="first_section">
     <>
-      <h1 id="invitation"> Welcome to Nice Gadgets store!</h1>
+      <p id="invitation"> Welcome to Nice Gadgets store!</p>
       <section className="banner">
         <button className="banner-arrow arrowPrev " onClick={previousSlide}>
           <IoIosArrowBack />

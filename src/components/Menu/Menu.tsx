@@ -2,7 +2,7 @@ import './Menu.scss';
 import React, { useState } from 'react';
 import { LuHeart } from 'react-icons/lu';
 import { LuShoppingBag } from 'react-icons/lu';
-
+import { NavLink } from 'react-router-dom';
 import { GrClose } from 'react-icons/gr';
 import classNames from 'classnames';
 
@@ -18,50 +18,95 @@ export const Menu = ({ isMenuOpen, setIsMenuOpen }: MenuProps) => {
     <aside className={classNames('menu', { 'is-open': isMenuOpen })} id="menu">
       <div className="menu__top">
         <div className="menu__logo">
-          <a href="#home">
+          <NavLink
+            to="/"
+            onClick={e => {
+              setIsMenuOpen(false);
+            }}
+          >
             <img src="/img/logo.png" alt="company_logo" />
-          </a>
+          </NavLink>
         </div>
         <div className="close">
-          <a
-            href="#"
+          <NavLink
+            to="/"
             onClick={e => {
-              e.preventDefault();
               setIsMenuOpen(false);
             }}
           >
             <GrClose />
-          </a>
+          </NavLink>
         </div>
       </div>
 
       <div className="menu__link__container">
-        <a href="#home" className="menu__link">
+        <NavLink
+          to="/"
+          className={getLinkClass}
+          onClick={e => {
+            setIsMenuOpen(false);
+          }}
+        >
           HOME
-        </a>
+        </NavLink>
 
-        <a href="#phones" className={getLinkClass}>
+        <NavLink
+          to="/phones"
+          className={getLinkClass}
+          onClick={e => {
+            setIsMenuOpen(false);
+          }}
+        >
           PHONES
-        </a>
+        </NavLink>
 
-        <a href="#tablets" className={getLinkClass}>
+        <NavLink
+          to="/tablets"
+          className={getLinkClass}
+          onClick={e => {
+            setIsMenuOpen(false);
+          }}
+        >
           TABLETS
-        </a>
+        </NavLink>
 
-        <a href="#accessories" className={getLinkClass}>
+        <NavLink
+          to="/accessories"
+          className={getLinkClass}
+          onClick={e => {
+            setIsMenuOpen(false);
+          }}
+        >
           ACCESSORIES
-        </a>
+        </NavLink>
       </div>
 
       <div className="menu__bottom">
-        <a href="#favorites" className="menu__heart">
-          <LuHeart />
-        </a>
-
+        <div className="menu__heart">
+          <NavLink
+            to="/favorites"
+            className={getLinkClass}
+            onClick={e => {
+              setIsMenuOpen(false);
+            }}
+          >
+            <span className="menu__bottom__icons">
+              <LuHeart />
+            </span>
+          </NavLink>
+        </div>
         <div className="menu__basket">
-          <a href="#cart">
-            <LuShoppingBag />
-          </a>
+          <NavLink
+            to="/cart"
+            className={getLinkClass}
+            onClick={e => {
+              setIsMenuOpen(false);
+            }}
+          >
+            <span className="menu__bottom__icons">
+              <LuShoppingBag />
+            </span>
+          </NavLink>
         </div>
       </div>
     </aside>

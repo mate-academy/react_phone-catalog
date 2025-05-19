@@ -30,15 +30,17 @@
   gap: 32px;
   font-weight: 800px;
 
-  @media (min-width: 1200px) { 
+  @media (min-width: 1200px) {
   gap: 32px;
   }
 
   @media (min-width: 320px) and (max-width: 639px) {
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
   align-self: flex-start;
   gap: 16px;
+  
 }
   }
 
@@ -77,7 +79,7 @@ font-weight: 800;
 font-size: 12px;
 }
 .footer__logo {
-
+  
   padding-inline: 16px;
   display:flex;
   align-self: center;
@@ -91,3 +93,10 @@ font-size: 12px;
 }
 
 }
+
+.footer__link:hover {
+ transform: scale(1.05);
+ transition-duration: 3ms;
+ color: #313237;
+}
+

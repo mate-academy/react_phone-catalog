@@ -5,6 +5,11 @@ font-size: 12px;
 font-weight: 800;
 display:flex;
 align-self: center;
+line-height: 46px;
+
+@media (min-width: 1200px){
+ line-height: 64px;
+}
 }
 
 .navbar__link__container{
@@ -97,6 +102,26 @@ justify-content: space-between;
     border-left: 1px solid #89939A;
   }
 
+  .has-underline {
+    position: relative;
+    color: #313237;
+  }
+
+  .has-underline::after {
+  content: "";
+  border-radius: 8px;
+  background: #313237;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.navbar-item:not(.has-underline):hover {
+  transform: scale(1.1);
+  transition-duration: 3ms;
+  color: #313237;
+}
 // .navbar {
 //   display: grid;
 

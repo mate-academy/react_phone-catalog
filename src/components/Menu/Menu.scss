@@ -21,6 +21,7 @@
   font-size: 12px;
   font-weight: 800;
   line-height: 48px;
+  z-index: 1000;
 
   // &.is-open {
   //   opacity: 1;
@@ -55,15 +56,16 @@ bottom: 0;
 left: 0;
 right: 0;
 height: 64px;
-  }
+}
 
   &__heart, &__basket {
     width:50%;
     display:flex;
     justify-content: center;
     align-items: center;
-  }
-
+       
+}
+  
   &__heart{
     border-right: 1px solid #89939A;
   }
@@ -86,4 +88,7 @@ height: 64px;
 .is-open {
     opacity: 1;
     pointer-events: all;
+    overflow: hidden;
   }
+
+ 

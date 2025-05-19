@@ -8,18 +8,18 @@ import {
   increaseQuantity,
   decreaseQuantity,
   getTotals,
+  clearCart,
 } from '../features/cart';
 import './CartPage.scss';
+import Swal from 'sweetalert2';
 
 export const CartPage: React.FC = () => {
   const dispatch = useDispatch();
 
-  // Destructure values from the cart slice
   const { cartItems, cartTotalAmount, cartTotalQuantity } = useSelector(
     (state: RootState) => state.cart,
   );
 
-  // Recalculate totals whenever cartItems change
   useEffect(() => {
     dispatch(getTotals());
   }, [cartItems, dispatch]);
@@ -36,17 +36,49 @@ export const CartPage: React.FC = () => {
     dispatch(decreaseQuantity(product));
   };
 
+  // const handleClearCart = () => {
+  //   const confirmed = window.confirm(
+  //     'Checkout is not implemented yet. Do you want to clear the Cart?',
+  //   );
+  //   if (confirmed) {
+  //     dispatch(clearCart());
+  //   }
+  // };
+
+  const handleCheckoutClick = () => {
+    Swal.fire({
+      title: 'Checkout is not implemented yet. Do you want to clear the Cart?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+      customClass: {
+        title: 'swal-title-custom',
+        confirmButton: 'swal-button-grey',
+        cancelButton: 'swal-button-grey',
+      },
+    }).then(result => {
+      if (result.isConfirmed) {
+        dispatch(clearCart());
+      } else {
+        return;
+      }
+    });
+  };
+
+
   return (
     <div className="section" id="cart">
       <div className="cart">
         <Link to="/home" className="top__back__link">
-          <IoIosArrowBack color="#313237"/>
+          <IoIosArrowBack color="#313237" />
           <p>Back</p>
         </Link>
-        <h1 id="heading1" className="cart__h1">Cart</h1>
+        <h1 id="heading1" className="cart__h1">
+          Cart
+        </h1>
 
         {cartItems.length === 0 ? (
-          <p>Your list is currently empty.</p>
+          <p>Your cart is empty</p>
         ) : (
           <div className="shopping__list">
             <div className="cart__items">
@@ -101,7 +133,12 @@ export const CartPage: React.FC = () => {
                 <hr />
               </div>
 
-              <button className="checkout__button">Checkout</button>
+              <button
+                className="checkout__button"
+                onClick={handleCheckoutClick}
+              >
+                Checkout
+              </button>
             </div>
           </div>
         )}

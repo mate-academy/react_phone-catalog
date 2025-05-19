@@ -115,13 +115,21 @@ useEffect(() => {
           </NavLink>
         </div>
         <div className="burger-menu">
-          <a href="#" onClick={(e) => { e.preventDefault(); setIsMenuOpen(true); }}>
+          <a
+            href="#"
+            onClick={e => {
+              e.preventDefault();
+              setIsMenuOpen(true);
+            }}
+          >
             <LuMenu />
           </a>
         </div>
       </nav>
 
-      {isMenuOpen && <Menu setIsMenuOpen={setIsMenuOpen} />}
+      {isMenuOpen && (
+        <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      )}
     </>
   );
 };

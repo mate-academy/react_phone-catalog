@@ -98,10 +98,17 @@ color: #89939A;
 }
 
 .icon__heart {
-  border: 1px solid #89939A;;
+  border: 1px solid #89939A;
   width: 40px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #313237;
+  background-color: white;
+}
+.selected {
+  color:#27AE60 ;
+  background-color: white;
+  border: 1px solid #89939A;
 }
