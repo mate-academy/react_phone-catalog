@@ -3,29 +3,31 @@
 
 .list {
   @include grid;
-
   gap: $product-list-gap;
   padding-block: $product-list-padding-block;
+
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .products {
   &__title {
     color: $primary;
-
     @include use-font(800);
-
-    font-size: $product-font-size;
+    font-size: 32px;
+    line-height: 41px;
 
     @include on-mobile {
-      @include use-font(800);
-
-      font-size: $product-list-padding-block-mobile;
+      font-size: 22px;
+      line-height: 140%;
     }
+
   }
 
   &__controls {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
 
     &__button {
       width: 32px;

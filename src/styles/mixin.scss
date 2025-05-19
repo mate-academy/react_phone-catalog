@@ -15,21 +15,17 @@ $mobile: 320px;
 @mixin grid {
   display: grid;
   column-gap: 16px;
-  
 
-  grid-template-columns: repeat(24, 1fr);	
-
+  grid-template-columns: repeat(24, 1fr);
 
   @media (max-width: $tablet) {
-    grid-template-columns:  repeat(12, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     column-gap: calc($gap / 3 * 2);
-
   }
 
   @media (max-width: $mobile) {
     grid-template-columns: repeat(4, 1fr);
     column-gap: calc($gap / 2);
-
   }
 }
 

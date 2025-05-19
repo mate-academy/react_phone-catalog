@@ -8,6 +8,7 @@
 
   &__title {
     @include use-font(800);
+
     font-size: 32px;
   }
 
@@ -39,10 +40,7 @@
 
   &__name {
     color: $primary;
+
     @include use-font(600);
-  }
-
-  &__items_count{
-
   }
 }
