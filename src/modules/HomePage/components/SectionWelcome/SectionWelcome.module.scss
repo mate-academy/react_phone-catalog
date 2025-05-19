@@ -1,4 +1,4 @@
-@import '../../../shared/styles/mixins.scss';
+@import '../../../shared/styles/mixins';
 
 .title {
   margin-block: 24px;
@@ -7,6 +7,7 @@
   @include onTablet {
     margin-block: 32px;
   }
+  
   @include onDesctop {
     margin-block: 56px;
   }

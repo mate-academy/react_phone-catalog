@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Children, useEffect, useRef, useState } from 'react';
 import styles from './Carousel.module.scss';
 import { Item } from './item';

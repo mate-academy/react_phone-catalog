@@ -25,6 +25,7 @@
 
 :root {
   --headerHeight: 48px;
+
   @include onDesctop {
     --headerHeight: 64px;
   }
