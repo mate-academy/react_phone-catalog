@@ -1,3 +1,15 @@
-.asddas {
-  color: aqua;
+@import '../shared/styles/mixins';
+
+.mainContent {
+  display: grid;
+  row-gap: 56px;
+  background-color: $main-background-color;
+
+  @include onTablet {
+    row-gap: 64px;
+  }
+
+  @include onDesctop {
+    row-gap: 80px;
+  }
 }

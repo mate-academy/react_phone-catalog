@@ -1,7 +1,7 @@
 @import '../../styles/mixins';
 @import '../../styles/variables';
 
-.textList {
+.headerList {
   display: none;
 
   @include onTablet {
@@ -14,13 +14,22 @@
   }
 }
 
-.navItem {
+.sidebarList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  align-items: center;
+}
+
+.listItem {
   display: flex;
 }
 
 .textLink {
+  display: flex;
   position: relative;
   align-items: center;
+  padding-block: 8px;
 
   &Active{
     color: $main-text-color;

@@ -1,11 +1,19 @@
+@import './variables';
+
 @mixin onTablet {
-  @media (min-width: $tabletSize) {
+  @media (min-width: $tablet-size) {
     @content
   }
 };
 
 @mixin onDesctop {
-  @media (min-width: $desctopSize) {
+  @media (min-width: $desctop-size) {
+    @content
+  }
+};
+
+@mixin onLiteDesctop {
+  @media (min-width: $lite-desctop-size) {
     @content
   }
 };

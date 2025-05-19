@@ -1,14 +1,24 @@
+@import '../../styles/variables';
+
 .button {
   box-sizing: border-box;
-  padding: 0;
+  width: 32px;
   height: 32px;
-  aspect-ratio: 1 / 1;
+  padding: 0;
   border-radius: 50%;
-  border: 1px solid #b4bdc3;
+  border: 1px solid $border-color-on-buttons;
   background-color: inherit;
   cursor: pointer;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    border-color: $border-color-on-buttons-hover;
+  }
+
+  &:disabled {
+    border-color: #E2E6E9;
+  }
 }

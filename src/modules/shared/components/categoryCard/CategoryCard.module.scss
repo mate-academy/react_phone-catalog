@@ -1,0 +1,52 @@
+@import '../../styles/mixins.scss';
+
+.card {
+  grid-column: span 4;
+  text-decoration: none;
+
+  @include onDesctop {
+    grid-column: span 8;
+  }
+}
+
+.img {
+  display: block;
+  object-fit: cover;
+  object-position: 3em 2em;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 300ms;
+
+  @include onDesctop {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.cardName {
+  margin: 24px 0 4px;
+  line-height: 26px;
+  font-size: 20px;
+  color: $main-text-color;
+}
+
+.p {
+  color: $secondary-text-color;
+  margin: 0;
+  line-height: 21px;
+  font-size: 14px;
+}
+
+.phones {
+  background-color: #6d6474;
+}
+
+.tablets {
+  background-color: #8d8d92;
+}
+
+.accessories {
+  background-color: #973d5f;
+}

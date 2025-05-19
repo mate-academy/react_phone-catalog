@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.pagesContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.buttonPage {
+  border-color: #E2E6E9;
+}
+
+.activePage {
+  color: #fff;
+  background-color:#0F0F11;
+  border: 1px #0F0F11 solid;
+}
+
+.dots {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 5px;
+}

@@ -1,0 +1,116 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.productCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: $element-background-color;
+  border: 1px solid #E2E6E9;
+  border-radius: 8px;
+  gap: 8px;
+  height: 100%;
+  width: 100%;
+
+  transition: all 300ms;
+
+ @include onDesctop {
+  &:hover {
+    box-shadow: 0px 2px 16px 0px #0000001A;
+    transform: scale(1.03);
+  }
+ }
+}
+
+.cardImg {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.productName {
+  padding: 0;
+  margin: 12px 0 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  min-height: 42px;
+}
+
+.priceContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.discountPrice {
+  padding: 0;
+  margin: 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  text-decoration: line-through;
+  color: $secondary-text-color;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 8px;
+  gap: 8px;
+  position: relative;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+
+  & :first-child {
+    color: $secondary-text-color;
+  }
+}
+
+.productData {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: 15px;
+}
+
+.buttons {
+  display: flex;
+  column-gap: 8px;
+  justify-content: space-between;
+}
+
+.addToCartButton {
+  flex-grow: 1;
+  font-size: 14px;
+  line-height: 21px;
+  color: $button-text-color;
+  background-color: $button-color;
+  border: none;
+  border-radius: 8px;
+}
+
+.favoriteButton {
+  height: 40px;
+  width: 40px;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: #E2E6E9;
+}
+

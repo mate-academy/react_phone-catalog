@@ -1,7 +1,7 @@
 @import '../../styles/mixins';
 @import '../../styles/variables';
 
-.iconList {
+.headerList {
   display: none;
 
   @include onTablet {
@@ -9,22 +9,31 @@
   }
 }
 
+.saidebarList {
+  display: flex;
+  height: 64px;
+  border: 1px solid #E2E6E9
+}
+
 .navItem {
   display: flex;
+  flex-grow: 1;
 }
 
 .iconLink {
   position: relative;
   display: flex;
-  width: 48px;
-  aspect-ratio: 1 / 1;
+  min-width: 48px;
+  min-height: 48px;
   box-shadow: -1px 0 0 0 #e2e6e9;
+  flex-grow: 1;
 
   justify-content: center;
   align-items: center;
 
   @include onDesctop {
-    width: 64px;
+    min-width: 64px;
+    min-height: 64px;
   }
 
   &Active::after {

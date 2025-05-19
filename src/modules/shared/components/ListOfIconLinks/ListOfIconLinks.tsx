@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import styles from './ListOfIconLinks.module.scss';
+import React from 'react';
 
 // type Icons = 'favourites' | 'cart' | 'burgerMenu';
 
@@ -11,9 +12,18 @@ function getLinkClass({ isActive }: { isActive: boolean }) {
   });
 }
 
-export const ListOfIconLinks = () => {
+type Props = {
+  parentComponent: 'header' | 'saidebar';
+};
+
+export const ListOfIconLinks: React.FC<Props> = ({ parentComponent }) => {
   return (
-    <ul className={styles.iconList}>
+    <ul
+      className={classNames({
+        [styles.headerList]: parentComponent === 'header',
+        [styles.saidebarList]: parentComponent === 'saidebar',
+      })}
+    >
       <li className={styles.navItem}>
         <NavLink to={'/favourites'} className={getLinkClass}>
           <img

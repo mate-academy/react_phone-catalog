@@ -1,0 +1,32 @@
+@import '../../../shared/styles/mixins.scss';
+
+.title {
+  margin-block: 24px;
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    margin-block: 32px;
+  }
+  @include onDesctop {
+    margin-block: 56px;
+  }
+}
+
+.welcome {
+  @include pageGrid;
+}
+
+.positionsCarousel {
+  grid-column: 1 / -1;
+  margin-inline: -16px;
+
+  @include onTablet {
+    margin: 0;
+  }
+}
+
+.carouselImg {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}

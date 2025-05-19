@@ -2,11 +2,15 @@ import React from 'react';
 
 import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
-import { ListOfTextLinks } from '../ListOfTextLinks';
-import { ListOfIconLinks } from '../ListOfIconLinks';
-import classNames from 'classnames';
+import { ListOfTextLinks } from '../listOfTextLinks';
+import { ListOfIconLinks } from '../listOfIconLinks';
 
-export const Header: React.FC = () => {
+type Props = {
+  onClickMenu: () => void;
+  menuIsOpen: boolean;
+};
+
+export const Header: React.FC<Props> = ({ onClickMenu, menuIsOpen }) => {
   return (
     <header className={styles.header}>
       <Link to={'/'} className={styles.headerLogoLink}>
@@ -18,17 +22,29 @@ export const Header: React.FC = () => {
       </Link>
 
       <nav className={styles.nav}>
-        <ListOfTextLinks />
-        <ListOfIconLinks />
-
-        <button className={classNames(styles.burgerMenuButton)}>
+        <ListOfTextLinks direction={'row'} />
+        <ListOfIconLinks parentComponent={'header'} />
+      </nav>
+      {menuIsOpen ? (
+        <button
+          className={`${styles.burgerMenuButton} ${styles.closeButton}`}
+          onClick={onClickMenu}
+        >
           <img
             className="icons "
-            src="img/icons/burger-menu.svg"
+            src={'img/icons/close.svg'}
+            alt="close menu"
+          />
+        </button>
+      ) : (
+        <button className={styles.burgerMenuButton} onClick={onClickMenu}>
+          <img
+            className="icons "
+            src={'img/icons/burger-menu.svg'}
             alt="menu icon"
           />
         </button>
-      </nav>
+      )}
     </header>
   );
 };

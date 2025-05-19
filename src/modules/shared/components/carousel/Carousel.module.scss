@@ -1,0 +1,66 @@
+@import '../../../shared/styles/mixins';
+
+.carouselContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+}
+
+.carousel {
+  display: flex;
+}
+
+.window {
+  overflow: hidden;
+  border-radius: 8px;
+
+  @include onTablet {
+    margin-inline: 19px;
+  }
+
+  @include onLiteDesctop {
+    margin-inline: 16px;
+  }
+}
+
+.carouselSlides {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.dots {
+  display: flex;
+  column-gap: 4px;
+}
+
+.dotBox {
+  display: flex;
+}
+
+.dot {
+  fill: #E2E6E9;
+  cursor: pointer;
+  transition: fill 500ms;
+}
+
+.activeDot {
+  fill: #0F0F11;
+}
+
+.button {
+  display: none;
+  padding: 0;
+  margin: 0;
+  background-color: inherit;
+  border: 1px solid #B4BDC3;
+  border-radius: 48px;
+  cursor: pointer;
+
+  @include onTablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+  }
+}

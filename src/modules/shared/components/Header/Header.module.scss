@@ -1,25 +1,19 @@
 @import '../../styles/mixins';
 @import '../../styles/variables';
 
-
 .header {
   display: flex;
   box-sizing: border-box;
   position: sticky;
   top: 0;
   min-width: 320px;
-  height: 48px;
+  height: var(--headerHeight);
+  z-index: 10;
   background-color: $header-background-color;
   box-shadow: 0 1px 0 0 #e2e6e9;
 
   justify-content: space-between;
   align-items: center;
-  gap: 0 16px;
-
-  @include onDesctop {
-    height: 64px;
-    gap: 0 24px;
-  }
 
   &Logo {
     width: 64px;
@@ -34,9 +28,11 @@
     &Link {
       display: flex;
       padding: 13px 16px;
+      margin-right: 16px;
 
       @include onDesctop {
         padding: 18px 24px;
+        margin-right: 24px;
       }
     }
   }
@@ -52,6 +48,9 @@
 }
 
 .burgerMenuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 48px;
   aspect-ratio: 1 / 1;
   box-shadow: -1px 0 0 0 #e2e6e9;
@@ -59,10 +58,19 @@
   background-color: inherit;
 
   &:active {
-    background-color: #FAFBFC;
+    background-color: #fafbfc;
   }
 
   @include onTablet {
     display: none;
+  }
+}
+
+.closeButton {
+  display: flex;
+  cursor: pointer;
+
+  @include onDesctop {
+    width: 64px;
   }
 }

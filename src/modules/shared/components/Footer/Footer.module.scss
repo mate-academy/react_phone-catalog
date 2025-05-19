@@ -4,7 +4,7 @@
 .footer {
   box-sizing: border-box;
   padding-block: 32px;
-  background-color: #fff;
+  background-color: $footer-background-color;
   box-shadow: 0 -1px 0 0 #e2e6e9;
 
   &Nav {
@@ -55,6 +55,10 @@
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+.link {
+  display: flex;
 }
 
 .footerLogo {

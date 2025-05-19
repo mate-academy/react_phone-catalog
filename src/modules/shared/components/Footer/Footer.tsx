@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './Footer.module.scss';
-import { Container } from '../Container';
+import { Container } from '../container';
 import { Link } from 'react-router-dom';
 import { AppButton } from '../appButton';
 
@@ -25,18 +25,18 @@ export const Footer: React.FC = () => {
           </Link>
 
           <ul className={styles.list}>
-            <li className={styles.navItem}>
-              <Link className="link" to={'/'}>
+            <li className={styles.listItem}>
+              <Link className={`link ${styles.link}`} to={'/'}>
                 Github
               </Link>
             </li>
-            <li className={styles.navItem}>
-              <Link className="link" to={'/'}>
+            <li className={styles.listItem}>
+              <Link className={`link ${styles.link}`} to={'/'}>
                 Contacts
               </Link>
             </li>
-            <li className={styles.navItem}>
-              <Link className="link" to={'/'}>
+            <li className={styles.listItem}>
+              <Link className={`link ${styles.link}`} to={'/'}>
                 Rights
               </Link>
             </li>
@@ -45,13 +45,11 @@ export const Footer: React.FC = () => {
           <div className={styles.goTopBox}>
             <div className={styles.goTopBoxContent} onClick={scrollToTop}>
               <span className={styles.goTopBoxText}>Back to top</span>
-              <AppButton>
-                <img
-                  className="icons"
-                  src="img/icons/arrow-up.svg"
-                  alt="arrow up"
-                />
-              </AppButton>
+              <AppButton
+                size={'s'}
+                src={'img/icons/arrow-up.svg'}
+                buttonName={'arrow up'}
+              />
             </div>
           </div>
         </nav>
