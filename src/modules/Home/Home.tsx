@@ -10,8 +10,12 @@ export const Home = () => {
     <section className={`${s.home} ${s.container}`}>
       <p className={s.home__title}>Welcome to Nice Gadgets store!</p>
       <Slider />
-      <ProductList products={productsFromServer} />
+      <ProductList
+        products={productsFromServer}
+        productsTitle="Brand new models"
+      />
       <Categories />
+      <ProductList products={productsFromServer} productsTitle="Hot Prices" />
     </section>
   );
 };

@@ -19,6 +19,9 @@
 
 .category {
   grid-column: span 8;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   
   @include on-tablet {
     grid-column: span 4;
@@ -40,6 +43,12 @@
     width: 100%;
     object-fit: contain;
     z-index: 1;
+  }
+
+  &__names {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
   &__name {

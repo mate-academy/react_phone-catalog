@@ -7,9 +7,10 @@ import { ArrowRightSVG } from '../../assets/ArrowRightSVG';
 
 type Props = {
   products: Product[];
+  productsTitle: string;
 };
 
-export const ProductList: React.FC<Props> = ({ products }) => {
+export const ProductList: React.FC<Props> = ({ products, productsTitle }) => {
   const [page, setPage] = useState(0);
   const isLeftDisabled = page - 4 < 0;
   const isRightDisabled = page + 4 > products.length;
@@ -17,7 +18,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
   return (
     <div className={s.products}>
       <div className={s.products__controls}>
-        <span className={s.products__title}>Brand new models</span>
+        <span className={s.products__title}>{productsTitle}</span>
         <div className={s.products__controls__buttons}>
           <button
             disabled={isLeftDisabled}

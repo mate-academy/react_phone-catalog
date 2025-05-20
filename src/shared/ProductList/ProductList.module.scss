@@ -3,6 +3,7 @@
 
 .list {
   @include grid;
+
   gap: $product-list-gap;
   padding-block: $product-list-padding-block;
 
@@ -14,11 +15,12 @@
 
 .products {
   &__title {
-    color: $primary;
+    @include use-font(800);
+
     font-size: 32px;
+    color: $primary;
     line-height: 41px;
 
-    @include use-font(800);
 
     @include on-mobile {
       font-size: 22px;

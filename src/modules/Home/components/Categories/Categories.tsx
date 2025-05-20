@@ -17,7 +17,7 @@ export const Categories = () => {
                   alt=""
                 />
               </div>
-
+              <div className={s.category__names}></div>
               <span className={s.category__name}>
                 {index === 1
                   ? 'Mobile phones'
