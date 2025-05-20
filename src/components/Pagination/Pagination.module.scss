@@ -42,9 +42,8 @@
     }
 
     &--active {
-      cursor: default;
       pointer-events: none;
-
+      cursor: default;
       color: styles.get-color(white);
       background-color: styles.get-color(primary);
     }

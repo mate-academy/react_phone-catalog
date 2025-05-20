@@ -9,10 +9,20 @@
   max-width: 250px;
   min-height: 50px;
   padding: 20px;
-  border: 1px solid styles.get-color(error-border);
 
-  background-color: styles.get-color(error-bg);
   box-shadow: 0 2px 15px 0 #0000000D;
+
+  &--error {
+    border: 1px solid styles.get-color(error-border);
+
+    background-color: styles.get-color(error-bg);
+  }
+
+  &--info {
+    border: 1px solid styles.get-color(info-border);
+
+    background-color: styles.get-color(info-bg);
+  }
 
   &__header {
     display: flex;

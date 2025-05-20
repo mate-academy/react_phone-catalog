@@ -6,14 +6,14 @@ import { SectionSlider } from '../../components/SectionSlider';
 import homePageStyles from './HomePage.module.scss';
 import { useLoading } from '../../context/LoadingContext';
 import { getAllProducts } from '../../services/products';
-import { useError } from '../../context/ErrorContext';
+import { useNotification } from '../../context/NotificationContext';
 import { handleErrorMessage } from '../../utils/handleErrorMessage';
 import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const { startLoading, stopLoading } = useLoading();
-  const { addError } = useError();
+  const { addNotification } = useNotification();
   const [isHasError, setIsHasError] = useState(false);
 
   const loadProducts = useCallback(() => {
@@ -22,11 +22,14 @@ export const HomePage = () => {
     getAllProducts()
       .then(setProducts)
       .catch(err => {
-        addError(handleErrorMessage(err, 'Failed to load products.'));
+        addNotification(
+          'error',
+          handleErrorMessage(err, 'Failed to load products.'),
+        );
         setIsHasError(true);
       })
       .finally(() => stopLoading());
-  }, [startLoading, stopLoading, addError]);
+  }, [startLoading, stopLoading, addNotification]);
 
   useEffect(() => loadProducts(), [loadProducts]);
 

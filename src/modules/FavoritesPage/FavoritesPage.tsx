@@ -5,7 +5,7 @@ import { useFavorites } from '../../context/FavoriteContext';
 import { Product } from '../../types/Product';
 import { getProductsByIds } from '../../services/products';
 import { useLoading } from '../../context/LoadingContext';
-import { useError } from '../../context/ErrorContext';
+import { useNotification } from '../../context/NotificationContext';
 import { handleErrorMessage } from '../../utils/handleErrorMessage';
 import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
 
@@ -13,7 +13,7 @@ export const FavoritesPage = () => {
   const { favorites } = useFavorites();
   const [products, setProducts] = useState<Product[]>([]);
   const { startLoading, stopLoading } = useLoading();
-  const { addError } = useError();
+  const { addNotification } = useNotification();
   const [isHasError, setIsHasError] = useState(false);
 
   const loadProducts = useCallback(() => {
@@ -29,11 +29,14 @@ export const FavoritesPage = () => {
         ),
       )
       .catch(err => {
-        addError(handleErrorMessage(err, 'Failed to load products.'));
+        addNotification(
+          'error',
+          handleErrorMessage(err, 'Failed to load products.'),
+        );
         setIsHasError(true);
       })
       .finally(() => stopLoading());
-  }, [favorites, startLoading, stopLoading, addError]);
+  }, [favorites, startLoading, stopLoading, addNotification]);
 
   useEffect(() => loadProducts(), [loadProducts]);
 

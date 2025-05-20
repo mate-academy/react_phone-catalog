@@ -2,7 +2,7 @@ import React from 'react';
 import { FavoritesProvider } from './context/FavoriteContext';
 import { CartProvider } from './context/CartContext';
 import { CategoriesProvider } from './context/CategoriesContext';
-import { ErrorProvider } from './context/ErrorContext';
+import { NotificationProvider } from './context/NotificationContext';
 import { LoadingProvider } from './context/LoadingContext';
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 
 export const AppProviders: React.FC<Props> = ({ children }) => {
   return (
-    <ErrorProvider>
+    <NotificationProvider>
       <LoadingProvider>
         <CategoriesProvider>
           <FavoritesProvider>
@@ -19,6 +19,6 @@ export const AppProviders: React.FC<Props> = ({ children }) => {
           </FavoritesProvider>
         </CategoriesProvider>
       </LoadingProvider>
-    </ErrorProvider>
+    </NotificationProvider>
   );
 };

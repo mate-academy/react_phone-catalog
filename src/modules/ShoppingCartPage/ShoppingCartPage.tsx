@@ -15,7 +15,7 @@ import { TextButton } from '../../components/TextButton';
 import lodash, { isEqual } from 'lodash';
 import { Divider } from '../../components/Divider/Divider';
 import { useLoading } from '../../context/LoadingContext';
-import { useError } from '../../context/ErrorContext';
+import { useNotification } from '../../context/NotificationContext';
 import { handleErrorMessage } from '../../utils/handleErrorMessage';
 import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
 import { Modal } from './components/Modal';
@@ -27,7 +27,7 @@ export const ShoppingCartPage = () => {
   const { startLoading, stopLoading } = useLoading();
   const [products, setProducts] = useState<CartItemDetails[]>([]);
   const productsCacheRef = useRef<Product[]>([]);
-  const { addError } = useError();
+  const { addNotification } = useNotification();
   const [isHasError, setIsHasError] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const totalPrice = useMemo(
@@ -67,11 +67,14 @@ export const ShoppingCartPage = () => {
         productsCacheRef.current = productsFromServer;
       })
       .catch(err => {
-        addError(handleErrorMessage(err, 'Failed to load products.'));
+        addNotification(
+          'error',
+          handleErrorMessage(err, 'Failed to load products.'),
+        );
         setIsHasError(true);
       })
       .finally(() => stopLoading());
-  }, [cart, startLoading, stopLoading, addError]);
+  }, [cart, startLoading, stopLoading, addNotification]);
 
   useEffect(loadProducts, [loadProducts]);
 

@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react';
-import { useError } from '../context/ErrorContext';
+import { useNotification } from '../context/NotificationContext';
 
 export function useLocalStorage<T>(
   key: string,
   startValue: T,
 ): [T, (v: T) => void] {
-  const { addError: setError } = useError();
+  const { addNotification } = useNotification();
   const [value, setValue] = useState<T>(() => {
     try {
       const storedValue = localStorage.getItem(key);
@@ -22,10 +22,10 @@ export function useLocalStorage<T>(
         localStorage.setItem(key, JSON.stringify(newValue));
         setValue(newValue);
       } catch {
-        setError(`Failed to save ${key} in localStorage`);
+        addNotification('error', `Failed to save ${key} in localStorage`);
       }
     },
-    [key, setValue, setError],
+    [key, setValue, addNotification],
   );
 
   return [value, save];

@@ -16,9 +16,8 @@
   }
 
   &__item {
-    flex: 1;
-
     transform: scale(1);
+    flex: 1;
 
     @include styles.transition(transform);
 

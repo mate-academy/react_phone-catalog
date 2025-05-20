@@ -20,7 +20,7 @@ import isEqual from 'lodash.isequal';
 import { CategoriesContext } from '../../context/CategoriesContext';
 import { NotFoundPage } from '../NotFoundPage';
 import { useLoading } from '../../context/LoadingContext';
-import { useError } from '../../context/ErrorContext';
+import { useNotification } from '../../context/NotificationContext';
 import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
 import { handleErrorMessage } from '../../utils/handleErrorMessage';
 
@@ -38,7 +38,7 @@ const PER_PAGE_OPTIONS: Option[] = [
 
 export const ProductPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const { addError } = useError();
+  const { addNotification } = useNotification();
   const [isHasError, setIsHasError] = useState(false);
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -67,11 +67,14 @@ export const ProductPage = () => {
         );
       })
       .catch(err => {
-        addError(handleErrorMessage(err, 'Failed to load products.'));
+        addNotification(
+          'error',
+          handleErrorMessage(err, 'Failed to load products.'),
+        );
         setIsHasError(true);
       })
       .finally(stopLoading);
-  }, [isIncludeCategory, category, startLoading, stopLoading, addError]);
+  }, [isIncludeCategory, category, startLoading, stopLoading, addNotification]);
 
   useEffect(() => loadProducts(), [loadProducts]);
 

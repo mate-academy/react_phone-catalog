@@ -12,7 +12,7 @@ import {
   categoryDescriptionMap,
   categoryImageMap,
 } from '../helpers/categoriesHelper';
-import { useError } from './ErrorContext';
+import { useNotification } from './NotificationContext';
 import { useLoading } from './LoadingContext';
 import { fallbackCategories } from '../constants/categories';
 
@@ -30,7 +30,7 @@ type Props = {
 
 export const CategoriesProvider: React.FC<Props> = ({ children }) => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const { addError: setError } = useError();
+  const { addNotification } = useNotification();
   const { startLoading, stopLoading } = useLoading();
 
   useEffect(() => {
@@ -59,11 +59,14 @@ export const CategoriesProvider: React.FC<Props> = ({ children }) => {
         ),
       )
       .catch(() => {
-        setError('Failed to load categories. Using default categories.');
+        addNotification(
+          'error',
+          'Failed to load categories. Using default categories.',
+        );
         setCategories(fallbackCategories);
       })
       .finally(() => stopLoading());
-  }, [setError, startLoading, stopLoading]);
+  }, [addNotification, startLoading, stopLoading]);
 
   return (
     <CategoriesContext.Provider value={{ categories }}>

@@ -18,7 +18,7 @@ import { GoBack } from '../../components/GoBack';
 import { Product } from '../../types/Product';
 import { SectionSlider } from '../../components/SectionSlider';
 import { useBreadcrumbs } from '../../context/BreadcrumbsContext';
-import { useError } from '../../context/ErrorContext';
+import { useNotification } from '../../context/NotificationContext';
 import { useLoading } from '../../context/LoadingContext';
 import { handleErrorMessage } from '../../utils/handleErrorMessage';
 
@@ -31,7 +31,7 @@ export const ProductDetailsPage = () => {
   const [modelVariants, setModelVariants] = useState<ProductDetailed[]>([]);
   const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
   const { setProductName } = useBreadcrumbs();
-  const { addError: setError } = useError();
+  const { addNotification } = useNotification();
   const [basicProduct, setBasicProduct] = useState<Product | null>(null);
 
   useEffect(() => {
@@ -47,7 +47,8 @@ export const ProductDetailsPage = () => {
       const suggestionPromise = getProductsByCategory(category)
         .then(setCategoryProducts)
         .catch(err => {
-          setError(
+          addNotification(
+            'error',
             handleErrorMessage(err, 'Failed to load suggestion products'),
           );
         });
@@ -79,7 +80,10 @@ export const ProductDetailsPage = () => {
             setModelVariants(products);
           })
           .catch(err => {
-            setError(handleErrorMessage(err, 'Failed to model variants'));
+            addNotification(
+              'error',
+              handleErrorMessage(err, 'Failed to model variants'),
+            );
             setModelVariants([product]);
           });
 
@@ -91,14 +95,24 @@ export const ProductDetailsPage = () => {
       } catch (error) {
         setIsNotFoundProduct(true);
         setProductName(null);
-        setError(handleErrorMessage(error, 'Failed to load products'));
+        addNotification(
+          'error',
+          handleErrorMessage(error, 'Failed to load products'),
+        );
       } finally {
         stopLoading();
       }
     };
 
     loadProductData();
-  }, [category, itemId, setError, setProductName, startLoading, stopLoading]);
+  }, [
+    category,
+    itemId,
+    addNotification,
+    setProductName,
+    startLoading,
+    stopLoading,
+  ]);
 
   useEffect(() => {
     if (!category) {

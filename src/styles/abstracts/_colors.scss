@@ -11,6 +11,8 @@ $colors: (
   selected-cart: #27AE60,
   error-bg: #FDECEA,
   error-border: #D32F2F,
+  info-border: #b3d4fc,
+  info-bg: #e6f2ff,
 );
 
 @function get-color($color) {
