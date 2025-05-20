@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+
 import styles from './Header.module.scss';
 
 import favoriteIcon from './../../images/icons/Favourites (Heart Like).svg';
 import cartIcon from './../../images/icons/Shopping bag (Cart).svg';
+import burgerIcon from './../../images/icons/burger.svg';
 import logoIcon from './../../images/header/Logo.png';
 
 const {
@@ -10,6 +13,12 @@ const {
   header__container,
   header__logo,
   header__menu,
+  header__buttons,
+  header__button,
+  header__icon,
+  header__counter,
+  header__burger,
+  header__logoo,
   menu,
   menu__item,
   active,
@@ -18,13 +27,13 @@ const {
 const getActiveClass = ({ isActive }: { isActive: boolean }): string =>
   `${menu__item} ${isActive ? active : ''}`;
 
-import { Link, NavLink } from 'react-router-dom';
-import classNames from 'classnames';
 export const Header = () => {
   return (
     <header className={header}>
       <div className={header__container}>
-        <img src={logoIcon} className={header__logo}></img>
+        <div className={header__logo}>
+          <img src={logoIcon}></img>
+        </div>
         <nav className={`${header__menu} ${menu}`}>
           <NavLink to="/" className={menu__item}>
             home
@@ -39,17 +48,23 @@ export const Header = () => {
             accessories
           </NavLink>
         </nav>
-        <div className="header__buttons">
-          <Link to="/favorite">
+        <div className={header__buttons}>
+          <Link to="/favorite" className={header__button}>
             <img
-              src={cartIcon}
+              src={favoriteIcon}
               alt="favorite-icon"
-              className="header__favorite"
+              className={header__icon}
             />
+            {/* <span className={header__counter}>{12}</span> */}
           </Link>
-          <Link to="/cart">
-            <img src={favoriteIcon} alt="cart-icon" className="header__cart" />
+          <Link to="/cart" className={header__button}>
+            <img src={cartIcon} alt="cart-icon" className={header__icon} />
+            {/* <span className={header__counter}>{12}</span> */}
           </Link>
+
+          <button className={header__burger}>
+            <img src={burgerIcon} alt="burger-menu" />
+          </button>
         </div>
       </div>
     </header>
