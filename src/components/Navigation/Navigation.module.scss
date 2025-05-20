@@ -1,0 +1,213 @@
+@import '../../shared/colors';
+
+.Navigation {
+  position: fixed;
+  height: calc(100vh - 50px);
+  top: 50px;
+  left: 0;
+  right: 0;
+  z-index: 998;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  background-color: #fff;
+  font-size: 12px;
+
+  @media screen and (min-width: 640px) {
+    position: static;
+  }
+}
+
+.navLink {
+  position: relative;
+
+  text-decoration: none;
+  color: $secondary;
+  text-transform: uppercase;
+  font-weight: 800;
+
+  &::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    width: 0;
+    height: 2px;
+
+    content: '';
+    background-color: $primary;
+    transition: width 300ms ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.navLinkActive {
+  color: $primary;
+  font-weight: 800;
+
+  &::after {
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 2px;
+
+    content: '';
+    background-color: $primary;
+    transition: width 300ms ease-in-out;
+  }
+}
+
+.navLinkTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 24px 0;
+}
+
+.navLinkBottom {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+
+  box-sizing: border-box;
+
+  &__Item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50%;
+    position: relative;
+
+    box-sizing: border-box;
+    border: 1px solid $elements;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 0;
+      height: 2px;
+      background-color: $primary;
+      transition: width 200ms ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+
+    width: 13px;
+    height: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    background-color: $accent;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 50%;
+
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 9px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+}
+
+.navLinkBottom__ItemActive {
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: $primary;
+    transition: width 200ms ease-in-out;
+  }
+}
+
+@media (min-width: 640px) {
+  .Navigation {
+    width: 100%;
+    height: auto;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .navLink {
+    &::after {
+      bottom: -16px;
+    }
+  }
+
+  .navLinkTop {
+    flex-direction: row;
+    padding: 0;
+    width: auto;
+  }
+
+  .navLinkBottom {
+    position: static;
+    margin-left: 16px;
+    width: auto;
+  }
+
+  .navLinkBottom__Item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+
+    box-sizing: border-box;
+    border: 1px solid $elements;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navLink {
+    &::after {
+      bottom: -24px;
+    }
+  }
+
+  .navLinkBottom__Item {
+    height: 64px;
+    width: 64px;
+  }
+
+  .navLinkTop {
+    gap: 64px;
+  }
+}

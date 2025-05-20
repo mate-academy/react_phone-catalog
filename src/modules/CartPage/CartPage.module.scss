@@ -1,0 +1,253 @@
+@import '../../shared/mixins';
+@import '../../shared/colors';
+
+.CartPage {
+  margin-bottom: 56px;
+
+  &__body {
+    @include responsive-grid;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    margin-bottom: 16px;
+  }
+
+  &__content {
+    margin-bottom: 16px;
+    grid-column: 1 / -1;
+
+    @media screen and (min-width: 1200px) {
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px;
+    margin-bottom: 16px;
+
+    box-sizing: border-box;
+    border: 1px solid $elements;
+    border-radius: 16px;
+    background-color: #fff;
+
+    @media screen and (min-width: 640px) {
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    &Top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 16px;
+
+      @media screen and (min-width: 640px) {
+        margin-bottom: 0;
+      }
+    }
+
+    &Close {
+      all: unset;
+
+      width: 16px;
+      height: 16px;
+      margin: 0 16px 0 0;
+      padding: 0;
+
+      cursor: pointer;
+      background-image: url('img/buttons/cart-close.svg');
+      background-image: center center;
+      background-repeat: no-repeat;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    &Img {
+      width: auto;
+      height: 80px;
+
+      margin-right: 16px;
+      flex-shrink: 0;
+    }
+
+    &Txt {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+    }
+
+    &Bottom {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @media screen and (min-width: 640px) {
+        gap: 50px;
+        width: fit-content;
+      }
+
+      &Wrapper {
+        min-width: 96px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      &Minus {
+        all: unset;
+
+        width: 32px;
+        height: 32px;
+        margin-right: 14px;
+
+        background-image: url('img/buttons/cart-minus-disabled.svg');
+        cursor: pointer;
+        background-size: 18px 18px;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 1px solid $elements;
+        border-radius: 50%;
+
+        &Enabled {
+          background-image: url('img/buttons/cart-minus-active.svg');
+          border-color: $icons;
+          background-size: 14px 14px;
+
+          &:hover {
+            border: 1px solid $secondary;
+          }
+        }
+      }
+
+      &Amount {
+        width: 10px;
+        margin-right: 14px;
+
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: center;
+      }
+
+      &Plus {
+        all: unset;
+
+        width: 32px;
+        height: 32px;
+
+        background-image: url('img/buttons/cart-plus.svg');
+        background-size: 14px 14px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        border: 1px solid $icons;
+        border-radius: 50%;
+
+        &:hover {
+          border: 1px solid $primary;
+        }
+      }
+
+      &Price {
+        min-width: 80px;
+
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 140%;
+        letter-spacing: 0%;
+      }
+    }
+  }
+
+  &__underline {
+    height: 1px;
+    width: 100%;
+
+    margin-bottom: 16px;
+
+    background-color: $elements;
+  }
+
+  &__bottom {
+    padding: 24px;
+    max-height: fit-content;
+
+    box-sizing: border-box;
+    border: 1px solid $elements;
+    border-radius: 16px;
+    grid-column: 1 / -1;
+
+    @media screen and (min-width: 640px) {
+      margin-bottom: 64px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 80px;
+
+      grid-column: 17 / -1;
+    }
+
+    &Wrapper {
+      display: flex;
+      flex-direction: column;
+
+      margin-bottom: 16px;
+    }
+
+    &Total {
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      text-align: center;
+    }
+
+    &Txt {
+      color: $secondary;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      text-align: center;
+    }
+  }
+
+  &__Checkout {
+    all: unset;
+
+    width: calc(100%);
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 48px;
+    background-color: $accent;
+    color: $white;
+    font-size: 14px;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &Selected {
+      border: 1px solid #e2e6e9;
+      background-color: #fff;
+      color: $accent;
+    }
+  }
+}
