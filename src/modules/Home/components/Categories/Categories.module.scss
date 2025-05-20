@@ -19,6 +19,10 @@
 
 .category {
   grid-column: span 8;
+  
+  @include on-tablet {
+    grid-column: span 4;
+  }
 
   &__background {
     width: 100%;
@@ -39,8 +43,9 @@
   }
 
   &__name {
-    color: $primary;
-
     @include use-font(600);
+
+    color: $primary;
+    font-size: 20px;
   }
 }

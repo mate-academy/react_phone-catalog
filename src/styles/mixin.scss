@@ -18,13 +18,18 @@ $mobile: 320px;
 
   grid-template-columns: repeat(24, 1fr);
 
-  @media (max-width: $tablet) {
+  @media (max-width: $desktop) {
     grid-template-columns: repeat(12, 1fr);
     column-gap: calc($gap / 3 * 2);
   }
 
-  @media (max-width: $mobile) {
+  @media (max-width: $tablet) {
     grid-template-columns: repeat(4, 1fr);
+    column-gap: calc($gap / 2);
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     column-gap: calc($gap / 2);
   }
 }

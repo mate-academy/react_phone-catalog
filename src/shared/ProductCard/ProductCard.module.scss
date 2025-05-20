@@ -8,9 +8,10 @@
   flex-direction: column;
   gap: 8px;
   padding: 32px;
-  min-width: 250px;  // to avoid wrap on small screens
-  
-  // to shrink the cards 
+
+  min-width: 130px; // This ensures the cards never get smaller than 130px
+
+  // to shrink the cards
   @include on-tablet {
     grid-column: span 5;
   }
