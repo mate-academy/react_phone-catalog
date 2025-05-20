@@ -1,4 +1,4 @@
-import { CardPhone } from '../cardItem/cardItemPhone'
+import { CardPhone } from '../../../../components/blanks/cardItem/cardItemPhone'
 import styles from './brandNewMode.module.scss'
 
 export const BrandNewModel = ({phones}) => {

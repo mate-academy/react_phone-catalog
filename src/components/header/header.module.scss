@@ -4,9 +4,6 @@ box-sizing: border-box;}
 .header{
   position: sticky;
   top:0;
-}
-.header__bar{
-
 
 padding-left: 16px;
   height: 48px;
@@ -27,37 +24,48 @@ padding-left: 24px;
   margin-bottom: 56px;
 
 }
+&__logo{
 
-}
-.top-bar__logo{
-  display: flex;
   @include mixin.onTablet {
-width: 80;
-height: 28;
-
-
+width: 80px;
+height: 28px;
 }
 
 }
+}
 
-.navigation{
+
+
+.header__content{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 }
+
+
 .nav{
 display: none;
-
+height: 100%;
 @include mixin.onTablet {
   display: flex;
 
 
 }
 
+&__item{
+   height: 100%;
+  display: flex;
+  align-items: center;
+}
   &__list{
+    height: 100%;
+    margin: 0;
+    height: 100%;
     list-style: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 gap :32px;
 
 @include mixin.onDesktop{
@@ -66,7 +74,12 @@ gap :32px;
 
   }
 
+
   &__link{
+height: 100%;
+  display: flex;
+  align-items: center;
+
 font-family: Mont;
 font-weight: 800;
 font-size: 12px;
@@ -75,17 +88,21 @@ line-height: 11px;
 letter-spacing: 4%;
 text-transform: uppercase;
 text-decoration: none;
-
+ &.is-active {
+    border-bottom: 3px solid #0F0F11;
+  }
 
 }
 }
 
-.box{display: flex;
+.box {
 
+  height: 100%;
+  display: flex;
 align-items: center;
+justify-content: space-evenly;
 
-width: 48px;
-height: 48px;
+
 border-left: 1px solid #E2E6E9;
 
 @include mixin.onTablet{
@@ -94,27 +111,40 @@ width: 96px;
 }
 @include mixin.onDesktop{
 width: 128px;
+height: 64px;
 }
 }
+
 .icon {
 
-  width: 16px;
-  height: 16px;
-  display: block;
+    width: 48px;
+  height: 100%;
+
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 16px 16px;
 
 
   &--menu {
+width: 48px;
+
     background-image: url('img/icons/Menu.svg');
-    margin: auto;
+
 
 
 @include mixin.onTablet {
   display: none;
 }
 
+  }
+  &--close{
+    width: 48px;
+
+    background-image: url('img/icons/close.svg');
+
+@include mixin.onTablet {
+  display: none;
+}
   }
 
   &--cart{
@@ -123,7 +153,7 @@ width: 128px;
     background-image: url('img/icons/cart.svg');
     @include mixin.onTablet {
   display: block;
-  margin: auto;
+
 
 }
   }
@@ -131,17 +161,17 @@ width: 128px;
     display: none;
 
     background-image: url('img/icons/heart.svg');
+
     @include mixin.onTablet {
   display: block;
-  margin: auto;
+
 }
   }
 }
 .divider {
+
   width: 0.5px;
-  height: 48px;
+  height: 100%;
   background-color:  #E2E6E9;
-  @include mixin.onDesktop{
-    height: 64px;
-  }
+
 }

@@ -1,54 +1,66 @@
+import classNames from 'classnames'
 import styles from './header.module.scss'
+import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
+import { AsideMenuPhone } from '../../modules/HomePage/components/asideMenuPhone'
 export const Header = () => {
+  const [activeAsside, setActiveAsside] = useState(false);
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames(styles.nav__link, { [styles['is-active']]: isActive });
+
   return (<><header className={styles.header}>
 
-    <div className={styles.header__bar}>
-      <div className={styles.navigation}>
-      <a href="#">
-        <img src="/img/niceLogo.svg" alt="NiceGadgetLogo"></img>
-      </a>
 
-       <nav className={styles.nav}>
+      <div className={styles.header__content}>
+      <NavLink to="/">
+        <img className={styles.header__logo} src="/img/niceLogo.svg" alt="NiceGadgetLogo"></img>
+      </NavLink>
+
+       <nav className={styles.nav} >
         <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
-            <a href="#" className={styles.nav__link}>
+            <NavLink to="/"
+
+              className={getLinkClass}>
               Home
-            </a>
+            </NavLink>
           </li>
           <li className={styles.nav__item}>
-            <a href="#phones" className={styles.nav__link}>
+            <NavLink to="/phones"
+
+              className={getLinkClass}>
               Phones
-            </a>
+            </NavLink>
           </li>
           <li className={styles.nav__item}>
-            <a href="#tablets" className={styles.nav__link}>
+            <NavLink to="/tablets" className={getLinkClass}>
               Tablets
-            </a>
+            </NavLink>
           </li>
           <li className={styles.nav__item}>
-            <a href="#acessories" className={styles.nav__link}>
+            <NavLink to="/accessories" className={getLinkClass}>
               Acessories
-            </a>
+            </NavLink>
           </li>
         </ul>
         </nav>
         </div>
 <div className={styles.box}>
-      <a href="#menu" className={`${styles.icon} ${styles['icon--menu']}`}>
+      {<NavLink onClick={() => setActiveAsside(prev => !prev)} className={classNames(styles.icon,  activeAsside? styles['icon--close']:styles['icon--menu'])}></NavLink>}
+        <NavLink to ="/favorite" className={`${styles.icon} ${styles['icon--heart']}`}>
 
-        </a>
-        <a href="#favorite" className={`${styles.icon} ${styles['icon--heart']}`}>
-
-        </a>
+        </NavLink>
         <div className={styles.divider}></div>
-        <a href="#cart" className={`${styles.icon} ${styles['icon--cart']}`}>
+        <NavLink to ="/cart" className={`${styles.icon} ${styles['icon--cart']}`}>
 
-        </a>
+        </NavLink>
         </div>
-        </div>
 
 
 
 
-      </header> </>)
+
+  </header>
+  {activeAsside && <AsideMenuPhone  setActiveAsside={ setActiveAsside}  />}</>
+  )
 }

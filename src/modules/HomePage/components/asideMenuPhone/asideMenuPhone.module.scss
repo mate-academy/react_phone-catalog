@@ -1,19 +1,4 @@
-@use '../utils/mixin.module.scss' as mixin;
-.top__bar{
- padding-right: 16px;
-padding-left: 16px;
-  height: 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-margin-bottom: 24px;
-border-bottom: 1px solid #E2E6E9;
-}
-.top-bar__logo{
-  display: flex
-}
-
-
+@use '/src/components/utils/mixin.module.scss' as mixin;
 
 .icon {
 
@@ -34,24 +19,27 @@ border-bottom: 1px solid #E2E6E9;
 
     background-image: url('/img/icons/heart.svg');
   }
+   &.is-active {
+    border-bottom: 3px solid #0F0F11;
+  }
 }
 .menu {
   text-transform: uppercase;
   font-weight: 800;
 
-  pointer-events: none;
-  opacity: 0;
+
+  opacity: 1;
   position: fixed;
-  top: 0;
+
   right: 0;
   left: 0;
  box-sizing: border-box;
   height: 100vh;
 
   background-color:white;
-
-&:target{opacity: 1;
-pointer-events: all;}
+@include mixin.onTablet{
+  display: none;
+}
 }
 
 
@@ -61,6 +49,9 @@ text-decoration: none;
   font-size: 12px;
   line-height: 11px0
   ; letter-spacing: 4%;
+  &.is-active {
+    border-bottom: 3px solid #0F0F11;
+  }
 }
 .menu__bottom{
 

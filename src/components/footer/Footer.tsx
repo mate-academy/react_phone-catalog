@@ -1,26 +1,27 @@
+import { Link } from 'react-router-dom'
 import styles from './footer.module.scss'
 export const Footer = () => {
   return (<div className={styles.footer}>
-   <a href="#">
-        <img src="/img/niceLogo.svg" alt="NiceGadgetLogo"></img>
+   <a href="/">
+      <img className={styles.footer__logo } src="/img/niceLogo.svg" alt="NiceGadgetLogo"></img>
     </a>
 
        <nav className={styles.nav}>
         <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
-            <a href="#" className={styles.nav__link}>
+            <Link to="/" className={styles.nav__link}>
               GitHub
-            </a>
+            </Link>
           </li>
           <li className={styles.nav__item}>
-            <a href="#contacts" className={styles.nav__link}>
+            <Link to="/contacts" className={styles.nav__link}>
               Contacts
-            </a>
+            </Link>
           </li>
           <li className={styles.nav__item}>
-            <a href="#rights" className={styles.nav__link}>
+            <Link to="/rights" className={styles.nav__link}>
               rights
-            </a>
+            </Link>
           </li>
 
         </ul>
