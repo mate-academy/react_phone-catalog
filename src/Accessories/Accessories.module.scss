@@ -24,7 +24,7 @@
   height: 16px;
 }
 
-.title {
+.category {
   font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 500;
@@ -54,7 +54,7 @@
   width: 100%;
 }
 
-.linkProduct {
+.link_product {
   text-decoration: none;
   color: inherit;
   display: block;
@@ -110,6 +110,14 @@
   color: #fff;
 }
 
+.next_page_button {
+
+}
+
+.prev_page_button {
+  transform: rotate(180deg);
+}
+
 button {
   width: 32px;
   height: 32px;
@@ -117,23 +125,29 @@ button {
   cursor: pointer;
 }
 
-
 @media screen and (min-width: 640px){
-  .productList {
+  .product_list {
     padding: 20px;
-    max-width: 640px;
-    max-height: 4900px;
     margin: 24px auto;
   }
 
-  .productGrid {
+  .title {
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    color: #313237;
+  }
+
+  .product_grid {
     display: grid;
     grid-template-columns: repeat(2, 4fr);
     gap: 16px;
     margin-top: 20px;
   }
 
-  .linkProduct {
+  .link_product {
     text-decoration: none;
     color: inherit;
     display: block;
@@ -159,21 +173,27 @@ button {
     color: #fff;
   }
 
-  .activePage {
+  .active_page {
     background-color: #ff6347;
     color: black;
     border-color: #ff6347;
   }
 
-  .select{
+  .select {
     display: flex;
     gap: 16px;
   }
 
+  .select__group {
+    display: flex;
+    flex-direction: column;
+}
+
+
   .selection {
     max-width: 176px;
     max-height: 40px;
-    border: 1px #B4BDC3;
+    border: 1px solid #B4BDC3;
     font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -193,21 +213,21 @@ button {
 
 
 @media screen and (min-width: 1200px){
-  .productList {
+  .product_list {
     padding: 20px;
     max-width: 1440px;
     max-height: 2744px;
     margin: 0 152px 80px;
   }
 
-  .productGrid {
+  .product_grid {
     display: grid;
     grid-template-columns: repeat(4, 4fr);
     gap: 16px;
     margin-top: 20px;
   }
 
-  .linkProduct {
+  .link_product {
     text-decoration: none;
     color: inherit;
     display: block;
@@ -264,3 +284,4 @@ button {
     text-align: left;
   }
 }
+

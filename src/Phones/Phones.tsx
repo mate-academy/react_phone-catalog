@@ -57,6 +57,7 @@ export const Phones: React.FC = () => {
 
   const goToPage = (page: number) => {
     setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
@@ -89,9 +90,9 @@ export const Phones: React.FC = () => {
           <img src="img/Home.svg" alt="" />
         </button>
         <img src="img/Arrow-right.svg" alt="arrow" />
-        <h2 className={styles.title}>Phones</h2>
+        <h2 className={styles.category}>Phones</h2>
       </div>
-      <h1>Mobile Phones</h1>
+      <h1 className={styles.title}>Mobile Phones</h1>
       <p>{filteredProducts.length} models</p>
 
       <div className={styles.select}>
@@ -133,7 +134,7 @@ export const Phones: React.FC = () => {
               <Link
                 to={`/product/${phone.id}`}
                 key={phone.id}
-                className={styles.linkProduct}
+                className={styles.link_product}
               >
                 <DiscountProductCard
                   key={phone.id}

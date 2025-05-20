@@ -150,24 +150,24 @@ export const ItemCard: React.FC = () => {
       </div>
       <h1 className={styles.title}>{product.name}</h1>
       <div className={styles.content}>
-        <div className={styles.side_images}>
-          <img
-            src={selectedImages[selectedImageIndex]}
-            alt="main_img"
-            className={styles.main_img}
-          />
-        </div>
         <div className={styles.main_content}>
-          <div className={styles.side_images}>
-            {product.images.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt="imagesForItem"
-                className={styles.side_img}
-                onClick={() => handleImagesChange(index)}
-              />
-            ))}
+          <div className={styles.images_block}>
+            <div className={styles.side_images}>
+              {product.images.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt="imagesForItem"
+                  className={styles.side_img}
+                  onClick={() => handleImagesChange(index)}
+                />
+              ))}
+            </div>
+            <img
+              src={selectedImages[selectedImageIndex]}
+              alt="main_img"
+              className={styles.main_img}
+            />
           </div>
           <div className={styles.product_details}>
             <div className={styles.colors}>
@@ -183,7 +183,6 @@ export const ItemCard: React.FC = () => {
                 ))}
               </div>
             </div>
-
             <div className={styles.capacity}>
               <p className={styles.capacity_title}>Select capacity</p>
               <div className={styles.capacity_row}>

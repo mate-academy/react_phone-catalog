@@ -57,6 +57,7 @@ export const Tablets: React.FC = () => {
 
   const goToPage = (page: number) => {
     setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleAddToCart = (id: string) => {
@@ -89,9 +90,9 @@ export const Tablets: React.FC = () => {
           <img src="img/Home.svg" alt="" />
         </button>
         <img src="img/Arrow-right.svg" alt="arrow" />
-        <h2 className={styles.title}>Tablets</h2>
+        <h2 className={styles.category}>Tablets</h2>
       </div>
-      <h1>Tablets</h1>
+      <h1 className={styles.title}>Tablets</h1>
       <p>{filteredProducts.length} models</p>
 
       <div className={styles.select}>
