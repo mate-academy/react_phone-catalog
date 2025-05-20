@@ -243,7 +243,9 @@ export const ItemCard: React.FC = () => {
               </div>
               <div className={styles.product_feature}>
                 <span className={styles.feature_label}>Processor</span>
-                <span className={styles.feature_value}>{product.processor}</span>
+                <span className={styles.feature_value}>
+                  {product.processor}
+                </span>
               </div>
               <div className={styles.product_feature}>
                 <span className={styles.feature_label}>RAM</span>

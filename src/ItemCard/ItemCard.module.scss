@@ -84,11 +84,12 @@
   gap: 8px;
   justify-content: center;
   margin-bottom: 12px;
+  order: 1;
 }
 
 .side_img {
   display: flex;
-  flex-direction: row; // миниатюры в строку под main_img
+  flex-direction: row;
   gap: 8px;
   justify-content: center;
   width: 40px;
