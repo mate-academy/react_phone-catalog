@@ -10,6 +10,7 @@ import 'swiper/css/scrollbar';
 
 import bannerMobile from '../../../public/img/banner-mobile.png';
 import bannerTablet from '../../../public/img/banner-tablet.png';
+import arrowNext from '../../../public/img/assets/icons/arrow-next.png';
 
 export const HomePageSlider: React.FC = () => {
   const slides = [
@@ -30,7 +31,9 @@ export const HomePageSlider: React.FC = () => {
   return (
     <section className={styles.slider}>
       <div className={styles.container}>
-        <button className="prev">-</button>
+        <button className="prev">
+          <img src={arrowNext} alt="arrow prev" className={styles.arrowPrev} />
+        </button>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={15}
@@ -52,7 +55,9 @@ export const HomePageSlider: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <button className="next">+</button>
+        <button className="next">
+          <img src={arrowNext} alt="arrow next" className={styles.arrowNext} />
+        </button>
       </div>
     </section>
     // <section>
@@ -148,6 +153,6 @@ export const HomePageSlider: React.FC = () => {
     //       </button>
     //     </div>
     //   </div>
-  // </section>
+    // </section>
   );
 };

@@ -1,7 +1,6 @@
 @use '../../styles/mixins.scss' as *;
 
 .productSlider {
-  margin-right: -16px;
 
   &__header {
     display: flex;
@@ -21,7 +20,6 @@
 
   &__controls {
     display: flex;
-    margin-block: 15px;
     gap: 16px;
     flex-shrink: 0;
   }
@@ -48,5 +46,6 @@
     gap: 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    margin-right: -16px;
   }
 }
