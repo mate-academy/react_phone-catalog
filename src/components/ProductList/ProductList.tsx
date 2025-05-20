@@ -44,7 +44,7 @@ export const ProductList: React.FC<{ category: string }> = ({ category }) => {
       }
     });
 
-  
+
   const paginatedProducts =
     paginationStatus === 'all'
       ? filteredSortedProducts
