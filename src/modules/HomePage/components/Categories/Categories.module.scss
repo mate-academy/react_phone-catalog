@@ -17,6 +17,14 @@
 
   &__item {
     flex: 1;
+
+    transform: scale(1);
+
+    @include styles.transition(transform);
+
+    @include styles.hover-styles {
+      transform: scale(1.05)
+    }
   }
 
   &__link {

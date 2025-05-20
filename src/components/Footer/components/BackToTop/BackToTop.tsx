@@ -1,7 +1,7 @@
 import React from 'react';
 import backToTopStyles from './BackToTop.module.scss';
-import { ICON_DATA_PATHS } from '../../../constants/iconDataPaths';
-import { IconButton } from '../../IconButton/IconButton';
+import { ICON_DATA_PATHS } from '../../../../constants/iconDataPaths';
+import { IconButton } from '../../../IconButton/IconButton';
 
 export const BackToTop = () => {
   return (

@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import shoppingCartPageStyles from './ShoppingCartPage.module.scss';
 import { useCart } from '../../context/CartContext';
 import { GoBack } from '../../components/GoBack';
@@ -6,18 +12,21 @@ import { getProductsByIds } from '../../services/products';
 import { CartList } from './components/CartList';
 import { CartItemDetails } from '../../types/CartItemDetails';
 import { TextButton } from '../../components/TextButton';
-import lodash from 'lodash';
+import lodash, { isEqual } from 'lodash';
 import { Divider } from '../../components/Divider/Divider';
 import { useLoading } from '../../context/LoadingContext';
 import { useError } from '../../context/ErrorContext';
 import { handleErrorMessage } from '../../utils/handleErrorMessage';
 import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback';
 import { Modal } from './components/Modal';
+import { Product } from '../../types/Product';
+import { mapCartToProducts } from '../../helpers/cartHelper';
 
 export const ShoppingCartPage = () => {
   const { cart, clearCart } = useCart();
   const { startLoading, stopLoading } = useLoading();
   const [products, setProducts] = useState<CartItemDetails[]>([]);
+  const productsCacheRef = useRef<Product[]>([]);
   const { addError } = useError();
   const [isHasError, setIsHasError] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -41,31 +50,22 @@ export const ShoppingCartPage = () => {
   );
 
   const loadProducts = useCallback(() => {
+    const cartIds = cart.map(item => item.id);
+    const cacheIds = productsCacheRef.current.map(item => item.itemId);
+
+    if (isEqual(cartIds, cacheIds)) {
+      setProducts(mapCartToProducts(cart, productsCacheRef.current));
+
+      return;
+    }
+
     startLoading();
-    getProductsByIds(cart.map(item => item.id))
-      .then(productsFromServer =>
-        setProducts(
-          cart
-            .map(item => {
-              const productFromServer = productsFromServer.find(
-                product => product.itemId === item.id,
-              );
+    getProductsByIds(cartIds)
+      .then(productsFromServer => {
+        setProducts(mapCartToProducts(cart, productsFromServer));
 
-              if (!productFromServer) {
-                return null;
-              }
-
-              const quantity = item.quantity;
-
-              return {
-                ...productFromServer,
-                quantity,
-                totalPrice: productFromServer.price * quantity,
-              };
-            })
-            .filter((product): product is CartItemDetails => product !== null),
-        ),
-      )
+        productsCacheRef.current = productsFromServer;
+      })
       .catch(err => {
         addError(handleErrorMessage(err, 'Failed to load products.'));
         setIsHasError(true);
@@ -73,7 +73,7 @@ export const ShoppingCartPage = () => {
       .finally(() => stopLoading());
   }, [cart, startLoading, stopLoading, addError]);
 
-  useEffect(() => loadProducts(), [loadProducts]);
+  useEffect(loadProducts, [loadProducts]);
 
   return (
     <section className={shoppingCartPageStyles.shoppingCart}>
