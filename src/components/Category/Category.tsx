@@ -3,6 +3,7 @@ import './Category.scss';
 import phones from '../../../public/api/phones.json';
 import tablets from '../../../public/api/tablets.json';
 import accessories from '../../../public/api/accessories.json';
+import { NavLink } from 'react-router-dom';
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 function productsCount(products: any) {
@@ -12,7 +13,7 @@ function productsCount(products: any) {
 const categories = [
   {
     name: 'Mobile phones',
-    categoryUrl: './mobile',
+    categoryUrl: '/phones',
     imgUrl: '../../../../img/category-phones.png',
     count: productsCount(phones),
   },
@@ -38,13 +39,13 @@ export const Category: React.FC = () => {
         {categories.map(category => {
           return (
             <div className="category" key={category.name}>
-              <a href={category.categoryUrl}>
+              <NavLink to={category.categoryUrl}>
                 <img
                   src={category.imgUrl}
                   alt={category.name}
                   className="category__img"
                 />
-              </a>
+              </NavLink>
               <div className="category__description">
                 <a href={category.categoryUrl} className="category__name">
                   {category.name}

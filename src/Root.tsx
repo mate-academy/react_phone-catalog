@@ -13,6 +13,7 @@ import { TabletsPage } from './components/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './components/AccessoriesPage/AccessoriesPage';
 import { FavouritesPage } from './components/FavouritesPage/FavouritesPage';
 import { CartPage } from './components/CartPage';
+import { NotFound } from './components/NotFound/NotFound';
 
 export const Root = () => (
   <Router>
@@ -40,7 +41,7 @@ export const Root = () => (
         <Route path="favourites" element={<FavouritesPage />} />
         <Route path="cart" element={<CartPage />} />
 
-        <Route path="*" element={<h1 className="title">Page not found</h1>} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   </Router>

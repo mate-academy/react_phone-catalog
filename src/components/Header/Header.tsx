@@ -36,7 +36,7 @@ export const Header = () => {
           isOpen={isMenuOpen}
         />
       </div>
-      {isMenuOpen && <MenuMobile />}
+      {isMenuOpen && <MenuMobile onClose={handleMenuClose} />}
     </header>
   );
 };

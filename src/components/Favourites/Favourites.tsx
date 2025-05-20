@@ -5,7 +5,10 @@ import { NavLink } from 'react-router-dom';
 import { ProductsContext } from '../context/ProductsContext';
 import { ItemsCount } from '../ItemsCount';
 
-export const Favourites: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
+export const Favourites: FC<{ isMobile?: boolean; onClose?: () => void }> = ({
+  isMobile,
+  onClose,
+}) => {
   const { favourites } = useContext(ProductsContext);
 
   return (
@@ -14,7 +17,7 @@ export const Favourites: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
         'favourites--mobile': isMobile,
       })}
     >
-      <NavLink to="favourites" className="favourites__link">
+      <NavLink to="favourites" className="favourites__link" onClick={onClose}>
         <img
           src="../../../img/favourites.svg"
           alt="Fvourites items"

@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './Banner.scss';
+import { NavLink } from 'react-router-dom';
 
 type SwRef = SwiperRef & {
   slidePrev: VoidFunction;
@@ -23,19 +24,19 @@ const slides: Slide[] = [
   {
     imgPathName: 'banner',
     mobilePath: 'mobile-banner',
-    link: '#',
+    link: '/phones/apple-iphone-14-pro-1tb-spaceblack',
   },
   {
     imgPathName: 'banner-phones',
-    link: '#',
+    link: '/phones',
   },
   {
     imgPathName: 'banner-tablets',
-    link: '#',
+    link: '/tablets',
   },
   {
     imgPathName: 'banner-watches',
-    link: '#',
+    link: '/accessories',
   },
 ];
 
@@ -80,9 +81,9 @@ export const Banner = () => {
                 />
               </picture>
 
-              <a href={link} className="banner__link">
+              <NavLink to={link} className="banner__link">
                 ORDER NOW
-              </a>
+              </NavLink>
             </div>
           </SwiperSlide>
         ))}

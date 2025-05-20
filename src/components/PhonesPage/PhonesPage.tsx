@@ -1,18 +1,14 @@
 import React from 'react';
 import { ProductCatalog } from '../ProductCatalog';
-import products from '../../../public/api/products.json';
-import { Product } from '../types/Product';
-
-function getPhones(p: Product[]) {
-  const phones = p.filter(product => {
-    return product.category === 'phones';
-  });
-
-  return phones;
-}
+import { useProducts } from '../../hooks/useProducts';
+import { Loader } from '../Loader';
 
 export const PhonesPage = () => {
-  return (
-    <ProductCatalog title={'Mobile phones'} products={getPhones(products)} />
-  );
+  const { data, isLoading } = useProducts('phones');
+
+  if (isLoading || !data) {
+    return <Loader />;
+  }
+
+  return <ProductCatalog title={'Mobile phones'} products={data} />;
 };

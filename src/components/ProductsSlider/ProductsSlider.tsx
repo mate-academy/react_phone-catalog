@@ -91,7 +91,11 @@ export const ProductsSlider: React.FC<Props> = ({ products, fullPrice }) => {
       >
         {products.map((product, index) => (
           <SwiperSlide key={index}>
-            <ProductCard product={product} fullPrice={fullPrice} />
+            <ProductCard
+              product={product}
+              fullPrice={fullPrice}
+              basePath={`../${product.category}/`}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -1,8 +1,10 @@
 import React from 'react';
 import './ItemInfo.scss';
+import { NavLink } from 'react-router-dom';
+import { Colors } from '../constants/Colors';
 
 type Props = {
-  availibleData: string[];
+  availibleData: { optionValue: string; url: string }[];
   type: 'color' | 'capacity';
 };
 
@@ -16,19 +18,21 @@ export const ItemInfo: React.FC<Props> = ({ availibleData, type }) => {
       )}
 
       <ul className="item-info__list">
-        {availibleData.map(data => {
+        {availibleData.map(({ optionValue, url }) => {
           return (
-            <li key={data} className="item-info__item">
+            <li key={optionValue} className="item-info__item">
               {type === 'color' ? (
-                <a href="#" className="item-info__link-color">
+                <NavLink to={url} className="item-info__link-color">
                   <div
                     className="item-info__link-color-form"
-                    style={{ background: `${data}` }}
+                    style={{ background: `${Colors[optionValue]}` }}
                   ></div>
-                </a>
+                </NavLink>
               ) : (
-                <a href="#" className="item-info__link-capacity">
-                  <div className="item-info__link-capacity-form">{data}</div>
+                <a href={url} className="item-info__link-capacity">
+                  <div className="item-info__link-capacity-form">
+                    {optionValue}
+                  </div>
                 </a>
               )}
             </li>

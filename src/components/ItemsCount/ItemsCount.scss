@@ -18,4 +18,8 @@
   font-weight: $font-weight-regular;
   font-size: 9px;
   color: $white;
+
+  @media (max-width: $mobile) {
+    right: 43%;
+  }
 }

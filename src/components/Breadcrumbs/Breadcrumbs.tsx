@@ -27,7 +27,7 @@ export const Breadcrumbs = () => {
           }
 
           return (
-            <div key={key}>
+            <div key={key} style={{ display: 'flex' }}>
               <NavLink to={key} className="breadcrumb">
                 {breadcrumb}
               </NavLink>

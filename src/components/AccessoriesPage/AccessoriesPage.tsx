@@ -1,18 +1,14 @@
 import React from 'react';
 import { ProductCatalog } from '../ProductCatalog';
-import products from '../../../public/api/products.json';
-import { Product } from '../types/Product';
-
-function getAccessories(p: Product[]) {
-  const accessories = p.filter(product => {
-    return product.category === 'accessories';
-  });
-
-  return accessories;
-}
+import { useProducts } from '../../hooks/useProducts';
+import { Loader } from '../Loader';
 
 export const AccessoriesPage = () => {
-  return (
-    <ProductCatalog title={'Accessories'} products={getAccessories(products)} />
-  );
+  const { data, isLoading } = useProducts('accessories');
+
+  if (isLoading || !data) {
+    return <Loader />;
+  }
+
+  return <ProductCatalog title={'Accessories'} products={data} />;
 };

@@ -9,9 +9,16 @@ import { ItemTech } from '../ItemTech';
 type Props = {
   product: Product;
   fullPrice?: boolean;
+  basePath?: string;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, fullPrice }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  fullPrice,
+  basePath = '',
+}) => {
+  const url = basePath.concat(product.itemId);
+
   const itemsTech = [
     {
       title: 'Screen',
@@ -30,14 +37,14 @@ export const ProductCard: React.FC<Props> = ({ product, fullPrice }) => {
   return (
     <div className="product-card">
       <div className="product-card__content">
-        <NavLink className="product-card__link" to={`${product.itemId}`}>
+        <NavLink className="product-card__link" to={url}>
           <img
             src={product.image}
             alt="Product logo"
             className="product-card__image"
           />
         </NavLink>
-        <NavLink to={`${product.itemId}`} className="product-card__title">
+        <NavLink to={url} className="product-card__title">
           {product.name}
         </NavLink>
         <div className="product-card__price">

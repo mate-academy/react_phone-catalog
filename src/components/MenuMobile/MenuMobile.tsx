@@ -5,19 +5,26 @@ import { ShoppingBag } from '../ShoppingBag';
 import { NavLink } from 'react-router-dom';
 
 const pagesOfMenu = [
-  { name: 'home' },
-  { name: 'phones' },
-  { name: 'tablets' },
-  { name: 'accessories' },
+  { name: 'home', path: '/home' },
+  { name: 'phones', path: '/phones' },
+  { name: 'tablets', path: '/tablets' },
+  { name: 'accessories', path: './accessories' },
 ];
 
-export const MenuMobile = () => {
+type Props = {
+  onClose: () => void;
+};
+export const MenuMobile: React.FC<Props> = ({ onClose }) => {
   return (
     <div className="menu-mobile">
       <ul className="menu-mobile__list">
         {pagesOfMenu.map(page => (
           <li className="menu-mobile__item" key={page.name}>
-            <NavLink to={page.name} className="menu-mobile__link">
+            <NavLink
+              to={page.path}
+              className="menu-mobile__link"
+              onClick={onClose}
+            >
               {page.name}
             </NavLink>
           </li>
@@ -25,9 +32,9 @@ export const MenuMobile = () => {
       </ul>
 
       <div className="menu-mobile__shopping">
-        <Favourites isMobile={true} />
+        <Favourites isMobile={true} onClose={onClose} />
 
-        <ShoppingBag isMobile={true} />
+        <ShoppingBag isMobile={true} onClose={onClose} />
       </div>
     </div>
   );

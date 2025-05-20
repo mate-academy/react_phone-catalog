@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ProductCatalog.scss';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Product } from '../types/Product';
@@ -8,6 +8,8 @@ import { Pagination } from '../Pagination';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { sortProducts } from '../../utils/productHelper';
 
+//TODO: instead of using products we could use category as a prop
+//      and use category for useProducts hook that return {data, isLoading}
 type Props = {
   title: string;
   products: Product[];
@@ -22,7 +24,7 @@ export const ProductCatalog: React.FC<Props> = ({
   showPagination = true,
 }) => {
   const [queryParams, setQueryParams] = useSearchParams();
-  const sortField = queryParams?.get('sort') || 'newest';
+  const sortField = queryParams?.get('sort') || 'age';
   const currentPage = Number(queryParams?.get('page')) || 1;
   const itemsPerPage = Number(queryParams?.get('perPage')) || products.length;
   const { search } = useLocation();
@@ -43,6 +45,10 @@ export const ProductCatalog: React.FC<Props> = ({
 
   const prdcts = sortProducts(products, sortField);
   const currentItems = prdcts.slice(indexOfFirstItem, indexOfLastItem);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   return (
     <div className="product-catalog">
@@ -68,6 +74,7 @@ export const ProductCatalog: React.FC<Props> = ({
                 key={product.id}
                 product={product}
                 fullPrice={true}
+                basePath={`../${product.category}/`}
               />
             );
           })}

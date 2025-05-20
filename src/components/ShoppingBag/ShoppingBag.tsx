@@ -5,7 +5,10 @@ import { NavLink } from 'react-router-dom';
 import { ItemsCount } from '../ItemsCount';
 import { ProductsContext } from '../context/ProductsContext';
 
-export const ShoppingBag: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
+export const ShoppingBag: FC<{ isMobile?: boolean; onClose?: () => void }> = ({
+  isMobile,
+  onClose,
+}) => {
   const { cartProducts } = useContext(ProductsContext);
 
   return (
@@ -14,7 +17,7 @@ export const ShoppingBag: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
         'shopping-bag--mobile': isMobile,
       })}
     >
-      <NavLink to="cart" className="shopping-bag__link">
+      <NavLink to="cart" className="shopping-bag__link" onClick={onClose}>
         <img
           src="../../../img/shopping-bag.svg"
           alt="Shopping bag"

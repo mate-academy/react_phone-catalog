@@ -59,12 +59,112 @@ function getProduct(type: ProductType, id?: string) {
   }
 }
 
+type FilteredProducts = {
+  namespaceId: string;
+  capacity: string;
+  color: string;
+  id: string;
+};
+
+function getFilteredProducts(
+  products: FilteredProducts[],
+  namespaceId: string,
+  capacity: string,
+) {
+  return products.filter(
+    product =>
+      product.namespaceId === namespaceId && product.capacity === capacity,
+  );
+}
+
+function getFilteredProductsByCopacity(
+  products: FilteredProducts[],
+  namespaceId: string,
+  color: string,
+) {
+  return products.filter(
+    product => product.namespaceId === namespaceId && product.color === color,
+  );
+}
+
+function parseAvailableItems(
+  products: FilteredProducts[],
+  category: Categories,
+  isCapacity?: boolean,
+) {
+  return products.map(({ color, capacity, id }) => ({
+    optionValue: isCapacity ? capacity : color,
+    url: `../${category}/${id}`,
+  }));
+}
+
+type Categories = 'phones' | 'tablets' | 'accessories';
+
+function getAvailableProducts(
+  category: Categories,
+  namespaceId: string,
+  capacity: string,
+) {
+  switch (category) {
+    case 'phones':
+      return getFilteredProducts(phones, namespaceId, capacity);
+    case 'tablets':
+      return getFilteredProducts(tablets, namespaceId, capacity);
+    case 'accessories':
+      return getFilteredProducts(accessories, namespaceId, capacity);
+  }
+}
+
+function getAvailableProductsByCapacity(
+  category: Categories,
+  namespaceId: string,
+  color: string,
+) {
+  switch (category) {
+    case 'phones':
+      return getFilteredProductsByCopacity(phones, namespaceId, color);
+    case 'tablets':
+      return getFilteredProductsByCopacity(tablets, namespaceId, color);
+    case 'accessories':
+      return getFilteredProductsByCopacity(accessories, namespaceId, color);
+  }
+}
+
+function availableItems(
+  category: Categories,
+  namespaceId: string,
+  capacity: string | undefined,
+  color: string | undefined,
+) {
+  const items = capacity
+    ? getAvailableProducts(category, namespaceId, capacity)
+    : color
+      ? getAvailableProductsByCapacity(category, namespaceId, color)
+      : [];
+
+  return parseAvailableItems(items, category, Boolean(color));
+}
+
 export const ItemCard: FC<{ type: ProductType }> = ({ type }) => {
   const { id } = useParams<{ id: string }>();
   const product = getProduct(type, id);
   const p = (productsFromServer as Product[]).find(
     item => item.itemId === product.id,
   ) as Product;
+
+  const availableColors = availableItems(
+    product.category as Categories,
+    product.namespaceId,
+    product.capacity,
+    undefined,
+  );
+
+  const availableCapacities = availableItems(
+    product.category as Categories,
+    product.namespaceId,
+    undefined,
+    product.color,
+  );
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -133,7 +233,7 @@ export const ItemCard: FC<{ type: ProductType }> = ({ type }) => {
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
-  }, []);
+  }, [product]);
 
   return (
     <>
@@ -158,14 +258,8 @@ export const ItemCard: FC<{ type: ProductType }> = ({ type }) => {
             />
 
             <div className="item__info">
-              <ItemInfo
-                availibleData={product.colorsAvailable}
-                type={'color'}
-              />
-              <ItemInfo
-                availibleData={product.capacityAvailable}
-                type={'capacity'}
-              />
+              <ItemInfo availibleData={availableColors} type={'color'} />
+              <ItemInfo availibleData={availableCapacities} type={'capacity'} />
 
               <div className="item__info-buy">
                 <div className="item__info-buy__wrapper">
