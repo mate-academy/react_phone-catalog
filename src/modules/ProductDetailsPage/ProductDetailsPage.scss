@@ -76,12 +76,25 @@
     line-height: 12px;
   }
 
-  &__phone-colums {
+  .details__phone-colums {
     grid-column: 1 / span 2;
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding-top: 40px;
+
+    > * {
+      border: 1px solid #E2E6E9;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+  }
+
+  .details__image--active {
+    border-color: #0F0F11;
+    box-shadow: 0 0 5px #0F0F11;
   }
 
   &__image {

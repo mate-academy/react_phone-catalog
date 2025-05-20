@@ -11,13 +11,14 @@
 }
 
 @mixin contentPaddingInline {
-  @include onDesktop {
-    padding-inline: 152px;
-    column-gap: 16px;
-  }
-
   @include onTablet() {
     padding-inline: 32px;
     column-gap: 16px;
   }
+
+  @include onDesktop {
+    padding-inline: 152px;
+    column-gap: 16px;
+  }
 }
+

@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 import { Loader } from '../ProductPages/Loader';
 import classNames from 'classnames';
 import { useCart } from '../CartContext/CartContext';
+import { Phone } from '../../interface/Phone';
 
 export const ProductDetailsPage = () => {
   const location = useLocation();
@@ -29,6 +30,8 @@ export const ProductDetailsPage = () => {
     useCart();
   const [like, setLike] = useState(false);
   const [addedCart, setAddedCart] = useState(false);
+    const [likedIds, setLikedIds] = useState<string[]>([]);
+    const [cartItems2, setCartItems] = useState<Phone[]>([]);
 
   useEffect(() => {
     setLoadingDataOnServer(true);
@@ -92,7 +95,7 @@ export const ProductDetailsPage = () => {
               key={index}
               src={img}
               alt={`image-phone-${index}`}
-              className="details__image"
+              className={`details__image ${clickImage === img ? 'details__image--active' : ''}`}
               onClick={() => setClickImage(img)}
             />
           ))}
@@ -401,11 +404,52 @@ export const ProductDetailsPage = () => {
                     <h5 className="swiper__ram-gb">{phone.ram}</h5>
                   </div>
                   <div className="swiper__position">
-                    <NavLink to="/" className="swiper__add-to-cart">
-                      Add to cart
+                    <NavLink
+                      to="/"
+                      className={classNames('swiper__add-to-cart', {
+                        added: cartItems2.some(items => items.id === phone.id),
+                      })}
+                      onClick={e => {
+                        e.preventDefault();
+                        addToCart(phone);
+
+                        setCartItems(prev =>
+                          prev.some(items => items.id === phone.id)
+                            ? prev
+                            : [...prev, phone],
+                        );
+
+                        // alert('Added to cart!');
+                      }}
+                    >
+                      {cartItems2.some(items => items.id === phone.id)
+                        ? 'Added to cart'
+                        : 'Add to cart'}
                     </NavLink>
-                    <button className="swiper__button-like">
-                      <NavLink to="/" className="swiper__like"></NavLink>
+
+                    <button
+                      className="swiper__button-like"
+                      onClick={() => {
+                        const isLiked = likedIds.includes(phone.id);
+
+                        setLikedIds(prev =>
+                          isLiked
+                            ? prev.filter(id => id !== phone.id)
+                            : [...prev, phone.id],
+                        );
+
+                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                        isLiked ? removeFavorite(phone.id) : addFavorite(phone);
+                      }}
+                    >
+                      <span
+                        className="swiper__like"
+                        style={{
+                          backgroundImage: likedIds.includes(phone.id)
+                            ? 'url(./img/favorites.png)'
+                            : 'url(./img/navbar/like.png)',
+                        }}
+                      ></span>
                     </button>
                   </div>
                 </SwiperSlide>
