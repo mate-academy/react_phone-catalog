@@ -3,19 +3,30 @@
   gap: 8px;
 
   &__cart {
+    cursor: pointer;
     flex-grow: 1;
     background-color: #313237;
     border: 0;
     color: #FFF;
+
+    &:disabled {
+      color: #27AE60;
+      background-color: white;
+      border: 1px solid #E2E6E9;
+    }
   }
 
   &__fav {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 48px;
     height: 48px;
-    box-shadow: -1px 0 0 #E2E6E9;
-    border: 1px solid rgba(226, 230, 233, 1);
+    border: 1px solid #B4BDC3;
+
+    &--active {
+      border: 1px solid #E2E6E9;
+    }
   }
 }

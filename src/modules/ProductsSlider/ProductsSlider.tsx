@@ -8,8 +8,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import ProductCard from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
-import ArrowNav from '../shared/components/ArrowNav';
-import { Direction } from '../shared/components/ArrowNav/ArrowNav';
+import ArrowNav from '../shared/icons/ArrowNav';
+import { Direction } from '../shared/icons/ArrowNav/ArrowNav';
 
 type Props = {
   items: Product[];

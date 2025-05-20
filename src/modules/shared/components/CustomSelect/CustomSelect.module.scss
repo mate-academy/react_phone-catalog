@@ -20,30 +20,34 @@
 }
 
 .select {
-  opacity: 0;
-  overflow: hidden;
-  transition: opacity 0.3s ease, max-height 0.3s ease;
-  width: 136px;
-  position: absolute;
-  font-size: 14px;
-  line-height: 21px;
-  list-style: none;
-  border: 1px solid #E2E6E9;
-  background-color: white;
-  padding-left: 12px;
-  margin-top: 4px;
-  color: #89939A;
+  margin-bottom: 32px;
 
-    &__option {
-      cursor: pointer;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      
-      @include mixins.hover(color, black);
-      @include mixins.hover(background-color, #FAFBFC)
-    }
+  &__options {
+    pointer-events: none;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    width: 136px;
+    position: absolute;
+    font-size: 14px;
+    line-height: 21px;
+    list-style: none;
+    border: 1px solid #E2E6E9;
+    background-color: white;
+    padding-left: 12px;
+    margin-top: 4px;
+    color: #89939A;
+  }
 
+  &__option {
+    cursor: pointer;
+    height: 32px;
+    display: flex;
+    align-items: center;
+
+    @include mixins.hover(color, black);
+    @include mixins.hover(background-color, #FAFBFC)
+  }
 }
 
 svg {
@@ -53,6 +57,7 @@ svg {
 
 .open {
   opacity: 1;
+  pointer-events: auto;
 
   svg {
     transform: rotate(180deg);

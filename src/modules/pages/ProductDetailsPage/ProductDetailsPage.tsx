@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import { getProducts, loadProductsType } from '../../../utils/fetchClient';
 import Breadcrumbs from '../../shared/components/Breadcrumbs';
-import { ArrowIconLeft } from '../../shared/components/ArrowIcon/ArrowIcon';
+import { ArrowIconLeft } from '../../shared/icons/ArrowIcon/ArrowIcon';
 import ImgSelector from './Components/ImgSelector/ImgSelector';
 import SpecsSelector from './Components/SpecsSelector';
 import { Item } from '../../../types/item';
@@ -20,6 +20,7 @@ export const ProductDetailsPage = () => {
   const [item, setItem] = useState<Item | null>(null);
   const [fetchResult, setFetchResult] = useState<Item[]>([]);
   const [randomProducts, setRandomProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loadingError, setLoadingError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ export const ProductDetailsPage = () => {
         setTimeout(() => {
           setRandomProducts(shuffleArray(products, 10));
           setFetchResult(result);
+          setAllProducts(products);
 
           setIsLoading(false);
         }, 2000);
@@ -102,7 +104,7 @@ export const ProductDetailsPage = () => {
       ) : (
         <>
           <div className="container">
-            <Breadcrumbs item={item} type={type} />
+            <Breadcrumbs />
             <div className={styles.return}>
               <ArrowIconLeft />
               <Link to="..">Back</Link>
@@ -116,6 +118,7 @@ export const ProductDetailsPage = () => {
                   <SpecsSelector
                     handleSpecChange={handleSpecChange}
                     item={item}
+                    products={allProducts}
                   />
                 </div>
               </>
@@ -153,7 +156,9 @@ export const ProductDetailsPage = () => {
               </div>
             </article>
           </div>
-          <ProductsSlider items={randomProducts} title="You may also like" />
+          <div className="container">
+            <ProductsSlider items={randomProducts} title="You may also like" />
+          </div>
         </>
       )}
     </>

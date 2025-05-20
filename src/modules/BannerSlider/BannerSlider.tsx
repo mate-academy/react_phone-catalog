@@ -7,9 +7,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './SwiperStyles.scss';
 import classNames from 'classnames';
-import ArrowNav from '../shared/components/ArrowNav';
-import { Direction } from '../shared/components/ArrowNav/ArrowNav';
 import { useIsMobile } from '../../hooks/useIsMobile';
+import ArrowNav from '../shared/icons/ArrowNav';
+import { Direction } from '../shared/icons/ArrowNav/ArrowNav';
 
 export const BannerSlider = () => {
   const sliderImgs = [

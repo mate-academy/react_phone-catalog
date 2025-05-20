@@ -1,0 +1,25 @@
+@use '../../../utils/mixins';
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #89939A;
+  margin-bottom: 32px;
+
+  @include mixins.on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__cat {
+    width: 100%;
+    max-width: 500px;
+  }
+}

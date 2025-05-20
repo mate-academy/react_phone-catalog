@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  
+
   @include mixins.hover(border, 1px solid #313237);
 
 
@@ -28,4 +28,10 @@
   display: flex;
   justify-content: center;
   gap: 16px;
+
+  margin-top: 24px;
+
+  @include mixins.on-tablet {
+    margin-top: 40px;
+  }
 }

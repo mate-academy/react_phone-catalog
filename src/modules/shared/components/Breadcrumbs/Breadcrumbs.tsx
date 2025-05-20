@@ -1,15 +1,13 @@
-import { Link } from 'react-router-dom';
-import { ArrowIconRight } from '../ArrowIcon/ArrowIcon';
+import { Link, useLocation } from 'react-router-dom';
+import { ArrowIconRight } from '../../icons/ArrowIcon/ArrowIcon';
 import { capitalize } from '../CategoryPage/CategoryPage';
 import styles from './Breadcrumbs.module.scss';
-import { Accessorie } from '../../../../types/accessorie';
 
-type Props = {
-  item: Accessorie | null;
-  type: string;
-};
+const Breadcrumbs: React.FC = () => {
+  const location = useLocation()
+    .pathname.split('/')
+    .filter(p => p !== '');
 
-const Breadcrumbs: React.FC<Props> = ({ item, type }) => {
   return (
     <div className={styles.breadcrumbs}>
       <Link to="/">
@@ -20,11 +18,17 @@ const Breadcrumbs: React.FC<Props> = ({ item, type }) => {
         />
       </Link>
       <ArrowIconRight />
-      <Link to={`/${type}`} className={styles.breadcrumbs__link}>
-        {capitalize(type)}
-      </Link>
-      <ArrowIconRight />
-      <p className={styles.breadcrumbs__title}>{item?.name}</p>
+      {location.length > 1 ? (
+        <>
+          <Link to={`/${location[0]}`} className={styles.breadcrumbs__link}>
+            {capitalize(location[0])}
+          </Link>
+          <ArrowIconRight />
+          <p className={styles.breadcrumbs__title}>{capitalize(location[1])}</p>
+        </>
+      ) : (
+        <p className={styles.breadcrumbs__title}>{capitalize(location[0])}</p>
+      )}
     </div>
   );
 };

@@ -63,7 +63,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </p>
         </div>
       </div>
-      <AddButtons />
+      <AddButtons product={product} />
     </div>
   );
 };

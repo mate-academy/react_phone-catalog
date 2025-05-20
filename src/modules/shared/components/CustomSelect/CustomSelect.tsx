@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './CustomSelect.module.scss';
-import { ArrowIconDown } from '../ArrowIcon/ArrowIcon';
+import { ArrowIconDown } from '../../icons/ArrowIcon/ArrowIcon';
 
 type Option = {
   label: string;
@@ -21,16 +21,15 @@ export const CustomSelect: React.FC<Props> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
+    <div className={styles.select}>
       <button
         className={`${styles.button} ${isOpen ? styles.open : ''}`}
-        onBlur={() => setIsOpen(false)}
         onClick={() => setIsOpen(!isOpen)}
       >
         {selected}
         <ArrowIconDown />
       </button>
-      <ul className={`${styles.select} ${isOpen ? styles.open : ''}`}>
+      <ul className={`${styles.select__options} ${isOpen ? styles.open : ''}`}>
         {options.map(option => (
           <li
             key={option.value}

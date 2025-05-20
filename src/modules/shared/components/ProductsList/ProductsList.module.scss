@@ -5,8 +5,6 @@
 
   &__item {
     grid-column: span 4;
-    margin-bottom: 40px;
-    margin-top: 24px;
 
     @media (min-width: 500px) {
       grid-column: span 2;

@@ -4,6 +4,7 @@ import styles from './SpecsSelector.module.scss';
 import AddButtons from '../../../../shared/components/AddButtons';
 // eslint-disable-next-line max-len
 import { capitalize } from '../../../../shared/components/CategoryPage/CategoryPage';
+import { Product } from '../../../../../types/product';
 
 type Props = {
   item: Item;
@@ -11,13 +12,18 @@ type Props = {
     item: Item,
     { color, storage }: { color?: string; storage?: string },
   ) => void;
+  products: Product[];
 };
 
 type ColorMap = {
   [key: string]: string;
 };
 
-export const SpecsSelector: React.FC<Props> = ({ item, handleSpecChange }) => {
+export const SpecsSelector: React.FC<Props> = ({
+  item,
+  handleSpecChange,
+  products,
+}) => {
   const colors: ColorMap = {
     black: '#000000',
     green: '#28a745',
@@ -42,6 +48,7 @@ export const SpecsSelector: React.FC<Props> = ({ item, handleSpecChange }) => {
     'processor',
     'ram',
   ];
+  const product = products.find(p => p.itemId === item.id);
 
   return (
     <div className={styles.selector}>
@@ -93,7 +100,7 @@ export const SpecsSelector: React.FC<Props> = ({ item, handleSpecChange }) => {
             className={styles['selector__price--discount']}
           >{`$${item.priceRegular}`}</h3>
         </div>
-        <AddButtons />
+        {product && <AddButtons product={product} />}
       </div>
       <div className={styles.selector__description}>
         {descriptionSpecs.map((spec, i) => (

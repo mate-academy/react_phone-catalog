@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Pagination.module.scss';
 import classNames from 'classnames';
-import ArrowNav from '../ArrowNav';
-import { Direction } from '../ArrowNav/ArrowNav';
+import ArrowNav from '../../icons/ArrowNav';
+import { Direction } from '../../icons/ArrowNav/ArrowNav';
 
 type Props = {
   perPage: number;
