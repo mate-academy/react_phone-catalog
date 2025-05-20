@@ -16,7 +16,7 @@ export const Modal: React.FC<Props> = ({ onClose, onClearCart }) => {
             <br /> Do you want to clear the Cart?
           </p>
           <button className="modal__close-button" onClick={onClose}>
-            <img src="../../../public/img/Delete.svg" alt="Close" />
+            <img src="./img/Delete.svg" alt="Close" />
           </button>
         </div>
 

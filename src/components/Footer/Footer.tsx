@@ -31,7 +31,7 @@ export const Footer = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img
-              src="../../../img/arrow-to-top.svg"
+              src="./img/arrow-to-top.svg"
               alt="Back to top"
               className="footer__button-back-img"
             />

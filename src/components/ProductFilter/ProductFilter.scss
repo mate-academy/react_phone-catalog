@@ -23,12 +23,11 @@
     font-weight: 700;
     padding-left: 10px;
     appearance: none;
-    background: url(../../../public/img/select-vector.svg) no-repeat right;
+    background: url(./img/select-vector.svg) no-repeat right;
     background-position-x: calc(100% - 12px);
 
     &:target {
-      background: url(../../../public/img/select-vector-reversed.svg) no-repeat
-        right;
+      background: url(./img/select-vector-reversed.svg) no-repeat right;
     }
 
     @media (max-width: $mobile) {

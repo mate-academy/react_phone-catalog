@@ -6,7 +6,7 @@ export const Logo = () => {
     <div className="logo">
       <a href="#home" className="logo__link">
         <img
-          src="../../../img/logo-nice-gadgets.svg"
+          src="./img/logo-nice-gadgets.svg"
           alt="Nice Gadgets Logo"
           className="logo__image"
         />

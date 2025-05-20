@@ -19,7 +19,7 @@ export const ShoppingBag: FC<{ isMobile?: boolean; onClose?: () => void }> = ({
     >
       <NavLink to="cart" className="shopping-bag__link" onClick={onClose}>
         <img
-          src="../../../img/shopping-bag.svg"
+          src="./img/shopping-bag.svg"
           alt="Shopping bag"
           className="shopping-bag__image"
         />

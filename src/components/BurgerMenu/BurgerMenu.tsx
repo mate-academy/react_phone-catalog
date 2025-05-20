@@ -18,11 +18,7 @@ export const BurgerMenu: React.FC<Props> = ({
       onClick={() => (isOpen ? handleClose() : handleOpen())}
     >
       <img
-        src={
-          isOpen
-            ? '../../../img/close-button.svg'
-            : '../../../img/burger-menu.svg '
-        }
+        src={isOpen ? './img/close-button.svg' : './img/burger-menu.svg '}
         alt="Burger menu"
         className="burger-menu__image"
       />

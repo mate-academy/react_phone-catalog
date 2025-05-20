@@ -20,7 +20,7 @@ export const CartItem: React.FC<Props> = ({ cartProduct, quantity }) => {
           className="cart-item__product-block__button"
           onClick={() => deleteFromCart(cartProduct.id)}
         >
-          <img src="../../../public/img/Delete.svg" alt="delete-button" />
+          <img src="./img/Delete.svg" alt="delete-button" />
         </button>
 
         <NavLink to={`../${cartProduct.category}/${cartProduct.itemId}`}>

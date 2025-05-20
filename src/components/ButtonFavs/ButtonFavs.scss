@@ -6,7 +6,7 @@
   background-color: $background;
   border: 1px solid $icons_and_placeholders;
   border-radius: 50%;
-  background-image: url(../../../../img/fovourites-default.svg);
+  background-image: url(/img/favourites-default.svg);
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -17,7 +17,7 @@
   }
 
   &--liked {
-    background-image: url(../../../../img/Add\ to\ fovourites\ -\ Added.svg);
+    background-image: url(/img/favourites-added.svg);
   }
 
   &__count {

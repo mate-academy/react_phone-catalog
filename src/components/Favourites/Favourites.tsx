@@ -19,7 +19,7 @@ export const Favourites: FC<{ isMobile?: boolean; onClose?: () => void }> = ({
     >
       <NavLink to="favourites" className="favourites__link" onClick={onClose}>
         <img
-          src="../../../img/favourites.svg"
+          src="./img/favourites.svg"
           alt="Fvourites items"
           className="favourites__image"
         />

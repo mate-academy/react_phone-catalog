@@ -70,12 +70,12 @@ export const Banner = () => {
                 {mobilePath && (
                   <source
                     media="(max-width: 640px)"
-                    srcSet={`../../../img/${mobilePath}.png`}
+                    srcSet={`./img/${mobilePath}.png`}
                   />
                 )}
 
                 <img
-                  src={`../../../img/${imgPathName}.png`}
+                  src={`./img/${imgPathName}.png`}
                   alt="banner"
                   className="banner__picture"
                 />
