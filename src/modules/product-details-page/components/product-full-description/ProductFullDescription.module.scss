@@ -1,0 +1,72 @@
+@import '../../../../styles/styles';
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  @include on-desktop {
+    flex-direction: row;
+  }
+
+  &__section {
+    flex-basis: 100%;
+
+    @include on-desktop {
+      flex-basis: 50%;
+    }
+  }
+
+  &__section-title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  &__section-subtitle {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    margin-top: 32px;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $secondary;
+    margin-bottom: 16px;
+  }
+
+  &__tech-specs-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 30px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__tech-spec-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__tech-spec-name {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $secondary;
+  }
+
+  &__tech-spec-value {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $white;
+    text-align: right;
+  }
+}

@@ -1,0 +1,294 @@
+@import '../../../../styles/styles';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: $black;
+
+  display: flex;
+  height: 48px;
+  box-shadow: 1px 1px 0 0 $surface-2;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 48px;
+    margin-right: 16px;
+
+    @include on-tablet {
+      width: unset;
+    }
+
+    @include on-desktop {
+      width: 128px;
+      margin-right: 24px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    width: 64px;
+    height: 22px;
+    margin: 0 16px;
+
+    cursor: pointer;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+      margin: 0 24px;
+    }
+
+    @include on-image-hover;
+  }
+
+  &__burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 48px;
+    height: 100%;
+    box-shadow: -1px 1px 0 0 $surface-2;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
+
+.navigation {
+  position: absolute;
+  top: 49px;
+  left: 0;
+  background-color: $black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  flex-basis: 100%;
+
+  min-height: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transition:
+    min-height $effect-duration,
+    opacity $effect-duration;
+
+  @include on-tablet {
+    position: static;
+    bottom: unset;
+    left: unset;
+
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    background: unset;
+
+    min-height: unset;
+    max-height: unset;
+    overflow: unset;
+    opacity: unset;
+  }
+
+  &--hamburger {
+    opacity: 1;
+    min-height: calc(100vh - 49px);
+    max-height: calc(100vh - 49px);
+
+    @include on-tablet {
+      min-height: unset;
+      max-height: unset;
+      opacity: unset;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    height: 100%;
+    margin-top: 24px;
+    list-style: none;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 32px;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    height: 27px;
+    text-transform: uppercase;
+
+    @include on-tablet {
+      height: 100%;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: $secondary;
+
+    @include on-hover(
+      (
+        color: $white,
+      )
+    );
+
+    &:has(:first-child.navigation__link--active) {
+      &::after {
+        color: $white;
+      }
+    }
+
+    &--active {
+      color: $white;
+
+      &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: $white;
+
+        @include on-tablet {
+          height: 2px;
+        }
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    width: 100%;
+
+    @include on-tablet {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  &__icon {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+    height: 64px;
+    overflow: hidden;
+    box-shadow: -1px -1px 0 0 $surface-2;
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &:has(:first-child.navigation__link--active) {
+      &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: $white;
+
+        @include on-tablet {
+          height: 2px;
+        }
+      }
+    }
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 25%;
+  right: 40%;
+
+  background-color: $red;
+  color: $white;
+  border-radius: 50%;
+
+  font-weight: 700;
+  font-size: 9px;
+
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  z-index: 1;
+  pointer-events: none;
+
+  @include on-tablet {
+    top: 15%;
+    right: 15%;
+  }
+
+  @include on-desktop {
+    top: 25%;
+    right: 25%;
+  }
+}
