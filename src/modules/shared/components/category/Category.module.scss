@@ -1,0 +1,88 @@
+@import '../../../../styles/styles';
+
+.categories {
+  margin-bottom: 56px;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__background {
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    z-index: 1;
+
+    @include on-hover(
+      (
+        transform: scale(0.95),
+        z-index: 2,
+      )
+    );
+  }
+
+  &__image {
+    height: 100%;
+    transform: translate(30%, 30%) scale(1.5);
+
+    @include on-image-hover;
+  }
+
+  &__item {
+    width: 100%;
+
+    @include on-tablet {
+      width: calc((100% - 32px) / 3);
+    }
+
+    &:nth-child(1) {
+      .categories__background {
+        background: #6d6474;
+      }
+
+      .categories__image {
+        transform: translate(10%, 5%) scale(0.9);
+
+        @include on-image-hover;
+      }
+    }
+
+    &:nth-child(2) {
+      .categories__background {
+        background: #8d8d92;
+      }
+    }
+
+    &:nth-child(3) {
+      .categories__background {
+        background: #973d5f;
+      }
+
+      .categories__image {
+        transform: translate(10%, 10%);
+
+        @include on-image-hover;
+      }
+    }
+  }
+
+  &__description {
+    color: $white;
+    margin-top: 20px;
+  }
+
+  &__count {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+  }
+}

@@ -1,0 +1,62 @@
+@import '../../../../styles/styles';
+
+.checkout-summary {
+  border: 1px solid $elements;
+  padding: 24px;
+  margin-bottom: auto;
+
+  @include on-desktop {
+    width: 368px;
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    text-align: center;
+  }
+
+  &__info {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: $elements;
+  }
+
+  &__button {
+    margin-top: 16px;
+    background: $accent;
+    padding: 13px 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: $white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    width: 100%;
+    cursor: pointer;
+
+    @include on-hover(
+      (
+        background-color: $accent-hover,
+      )
+    );
+
+    @include on-desktop {
+      margin-top: 24px;
+    }
+  }
+}

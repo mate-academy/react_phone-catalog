@@ -1,0 +1,119 @@
+@import '../../../../styles/styles';
+
+.products-slider {
+  position: relative;
+  width: 100%;
+  max-height: 439px;
+
+  @include on-tablet {
+    max-height: 512px;
+  }
+
+  @include on-desktop {
+    max-height: 506px;
+  }
+
+  .swiper {
+    width: 100%;
+    height: 439px;
+
+    @include on-tablet {
+      height: 512px;
+    }
+
+    @include on-desktop {
+      height: 506px;
+    }
+  }
+
+  .swiper-slide {
+    width: 212px !important;
+
+    @include on-tablet {
+      width: 237px !important;
+    }
+
+    @include on-desktop {
+      width: 272px !important;
+    }
+
+    .product-card {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__button-prev {
+    right: 48px;
+    left: unset;
+
+    &::before {
+      background-image: url('/icons/arrow-left-white.svg');
+    }
+    &.swiper-button-disabled {
+      &::before {
+        background-image: url('/icons/arrow-left.svg');
+      }
+    }
+  }
+
+  &__button-next {
+    right: 0;
+    left: unset;
+
+    &::before {
+      background-image: url('/icons/arrow-right-white.svg');
+    }
+    &.swiper-button-disabled {
+      &::before {
+        background-image: url('/icons/arrow-right.svg');
+      }
+    }
+  }
+
+  &__button-prev,
+  &__button-next {
+    position: absolute;
+    top: -35px;
+    z-index: 2;
+
+    outline: none;
+    border: 1px solid $elements;
+    background: $surface-2;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: background-color $effect-duration;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      top: -38px !important;
+    }
+
+    &.swiper-button-disabled {
+      background: transparent;
+      border-color: $elements;
+      opacity: 0.5;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &:hover:not(.swiper-button-disabled) {
+      background: $icons;
+    }
+
+    &::after {
+      content: none !important;
+    }
+
+    &::before {
+      content: '';
+      background-size: 12px 12px;
+      background-repeat: no-repeat;
+      width: 12px;
+      height: 12px;
+    }
+  }
+}

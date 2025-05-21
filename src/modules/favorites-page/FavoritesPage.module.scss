@@ -1,0 +1,18 @@
+@import '../../styles/styles';
+
+.favorites {
+  min-height: calc(100vh - 64px - 103px - 105px);
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

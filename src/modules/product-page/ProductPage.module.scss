@@ -1,0 +1,33 @@
+@import '../../styles/styles';
+
+.subtitle {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.filters {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.filterItem {
+  width: 50%;
+
+  @include on-tablet {
+    &:nth-child(1) {
+      width: 187px;
+    }
+
+    &:nth-child(2) {
+      width: 136px;
+    }
+  }
+}
