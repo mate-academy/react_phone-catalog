@@ -1,4 +1,4 @@
-@use '../../utils/mixins';
+@use '../../../../utils/mixins';
 
 .mainBanner {
   @include mixins.page-grid;

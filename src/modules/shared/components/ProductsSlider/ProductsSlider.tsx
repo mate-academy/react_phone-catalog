@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from '../../types/product';
+import { Product } from '../../../../types/product';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -8,8 +8,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import ProductCard from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
-import ArrowNav from '../shared/icons/ArrowNav';
-import { Direction } from '../shared/icons/ArrowNav/ArrowNav';
+import ArrowNav from '../../icons/ArrowNav';
+import { Direction } from '../../icons/ArrowNav/ArrowNav';
 
 type Props = {
   items: Product[];

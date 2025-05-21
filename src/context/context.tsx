@@ -8,16 +8,19 @@ export enum Do {
   DELETE_CART = 'Delet from the cart',
   CLEAR_CART = 'Clear the cart',
   DECREASE_Q = 'Decrease the quantity of a product in a cart',
+  SET_LOADING = 'Set loading',
 }
 
 export type CartProduct = Product & {
   quantity: number;
 };
 
-type Action = {
-  type: string;
-  payload: Product | CartProduct;
-};
+type Action =
+  | { type: Do.ADD_FAV; payload: Product }
+  | { type: Do.DELETE_FAV; payload: Product }
+  | { type: Do.ADD_CART; payload: CartProduct | Product }
+  | { type: Do.DELETE_CART; payload: Product }
+  | { type: Do.DECREASE_Q; payload: CartProduct };
 
 interface State {
   favorites: Product[] | [];

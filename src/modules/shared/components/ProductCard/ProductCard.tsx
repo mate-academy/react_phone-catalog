@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Product } from '../../types/product';
 import styles from './ProductCard.module.scss';
-import AddButtons from '../shared/components/AddButtons';
+import AddButtons from '../AddButtons';
+import { Product } from '../../../../types/product';
 
 type Props = {
   product: Product;

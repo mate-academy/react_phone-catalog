@@ -1,9 +1,9 @@
 import React from 'react';
-import BannerSlider from '../BannerSlider';
 import styles from './HomePage.module.scss';
-import ProductsSlider from '../ProductsSlider';
-import products from '../../../public/api/products.json';
-import Categories from '../Categories';
+import ProductsSlider from '../../shared/components/ProductsSlider';
+import products from '../../../../public/api/products.json';
+import Categories from './Categories';
+import BannerSlider from '../../shared/components/BannerSlider';
 
 export const HomePage: React.FC = () => {
   const discountedModels = [...products]

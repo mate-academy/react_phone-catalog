@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Categories.module.scss';
-import products from '../../../public/api/products.json';
+import products from '../../../../../public/api/products.json';
 
 export const Categories: React.FC = () => {
   const phonesNumber = products.filter(p => p.category === 'phones').length;

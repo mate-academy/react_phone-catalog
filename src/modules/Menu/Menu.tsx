@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Logo from '../Logo';
+import Logo from '../shared/components/Logo';
 import styles from './Menu.module.scss';
 import { Link } from 'react-router-dom';
 import IconNumber from '../shared/icons/IconNumber';

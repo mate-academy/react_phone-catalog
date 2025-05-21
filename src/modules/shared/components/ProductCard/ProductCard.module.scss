@@ -1,4 +1,4 @@
-@use '../../utils/mixins';
+@use '../../../../utils/mixins';
 
 .card {
   display: flex;
@@ -9,7 +9,7 @@
   border: 1px solid #E2E6E9;
 
   @include mixins.hover(border, 1px solid #89939A);
-  
+
   box-shadow: #313237;
 
   &__priceWrap {

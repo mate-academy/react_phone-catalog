@@ -9,7 +9,7 @@ import SpecsSelector from './Components/SpecsSelector';
 import { Item } from '../../../types/item';
 import { useNavigate } from 'react-router-dom';
 import { Phone } from '../../../types/phone';
-import ProductsSlider from '../../ProductsSlider';
+import ProductsSlider from '../../shared/components/ProductsSlider';
 import { Product } from '../../../types/product';
 import { shuffleArray } from '../../shared/functions';
 import { Loader } from '../../shared/components/Loader';
@@ -100,7 +100,7 @@ export const ProductDetailsPage = () => {
       {isLoading ? (
         <Loader />
       ) : loadingError ? (
-        <p>Product was not found</p>
+        <p style={{ marginBlockStart: '32px' }}>Product was not found</p>
       ) : (
         <>
           <div className="container">

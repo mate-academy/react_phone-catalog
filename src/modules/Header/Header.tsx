@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import styles from './Header.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import Logo from '../Logo';
+import Logo from '../shared/components/Logo';
 import Menu from '../Menu';
 import { StateContext } from '../../context/context';
 import IconNumber from '../shared/icons/IconNumber';

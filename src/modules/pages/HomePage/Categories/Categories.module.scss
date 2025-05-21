@@ -1,4 +1,4 @@
-@use '../../utils/mixins';
+@use '../../../../utils/mixins';
 
 .categories {
   @include mixins.page-grid;
@@ -6,6 +6,10 @@
 
   &__item {
     grid-column: 1 / -1;
+
+    @include mixins.on-mobile {
+      margin-bottom: 32px;
+    }
 
     @include mixins.on-tablet {
       grid-column: span 4;
