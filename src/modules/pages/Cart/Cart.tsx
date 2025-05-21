@@ -54,7 +54,7 @@ export const Cart = () => {
           <div className={styles.wrapper}>
             <img
               className={styles.wrapper__cart}
-              src="/img/cart-is-empty.png"
+              src="img/cart-is-empty.png"
               alt="Your cart is empty"
             />
           </div>
