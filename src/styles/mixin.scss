@@ -35,7 +35,13 @@ $mobile: 320px;
 }
 
 @mixin container {
-  padding-inline: 120px;
+  padding-inline: calc((100vw - $desktop) / 2);
+  min-width: $mobile;
+  
+  @media (max-width: $desktop) {
+    
+    padding-inline: 120px;
+  }
 
   @include grid;
 
@@ -48,6 +54,11 @@ $mobile: 320px;
   }
 }
 
+@mixin on-desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
 @mixin on-tablet {
   @media (max-width: $desktop) {
     @content;

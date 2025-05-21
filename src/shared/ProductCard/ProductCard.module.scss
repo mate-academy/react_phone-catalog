@@ -3,21 +3,27 @@
 
 .card {
   border: 1px $elements solid;
-  grid-column: span 6;
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 32px;
 
-  min-width: 130px; // This ensures the cards never get smaller than 130px
+  // мінімальний розмір: якщо не влазить — включається скролл
+  min-width: 220px;
+  width: 25%;
 
-  // to shrink the cards
+  scroll-snap-align: start;
+  grid-column: span 6;
+
+
+
   @include on-tablet {
     grid-column: span 5;
   }
 
   @include on-mobile {
-    grid-column: span 3;
+    grid-column: span 4;
+    width: min-content;
   }
 
   .img {

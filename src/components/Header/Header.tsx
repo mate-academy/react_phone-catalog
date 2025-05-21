@@ -21,10 +21,10 @@ export const Header = () => {
   return (
     <div className={s.aside_header}>
       <header className={s.header}>
+        <a href="#" className={s.logo}>
+          <LogoSVG />
+        </a>
         <nav className={`${s.nav} ${s.container}`}>
-          <a href="#" className={s.logo}>
-            <LogoSVG />
-          </a>
           <ul className={`${s.nav__list} ${s.controls__visible}`}>
             <li className={s.nav__item}>
               <NavLink

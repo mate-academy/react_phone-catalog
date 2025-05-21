@@ -20,6 +20,7 @@
 }
 
 .logo {
+  padding-inline: 24px;
   height: $header-logo-height;
   width: $header-logo-height;
   display: flex;
@@ -48,10 +49,11 @@
 }
 
 .nav {
-  @include flex-centered;
-
-  justify-content: center;
-
+  max-width: $desktop;
+  @include on-desktop {
+    padding-left: none;
+  }
+  
   &__list {
     display: flex;
     gap: $nav-list-gap;

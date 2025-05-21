@@ -6,8 +6,7 @@
 }
 
 .home {
-  height: min-content; // for tests
-
+  height: min-content; // for tests 
 
   display: flex;
   flex-direction: column;
@@ -24,7 +23,7 @@
   &__title {
     @include use-font(800); // should be on top
 
-    width: 100%;
+    width: 600px;
     line-height: 56px;
     font-size: 48px;
     padding-block: 56px;

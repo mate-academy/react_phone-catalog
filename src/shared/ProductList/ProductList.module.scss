@@ -3,17 +3,18 @@
 
 .list {
   @include grid;
-
-  gap: $product-list-gap;
-  padding-block: $product-list-padding-block;
-
-  @include on-tablet {
-    overflow-x: auto;
-    white-space: nowrap;
-  }
+  grid-auto-flow: column; // основне: робить grid горизонтальним
+  overflow-x: auto;
+  gap: 16px;
+    max-width: 100%;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
+
 .products {
+  overflow: visible;
   &__title {
     @include use-font(800);
 
