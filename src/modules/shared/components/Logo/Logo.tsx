@@ -7,7 +7,7 @@ export const Logo: React.FC = () => {
     <Link to="/" className={styles.logo}>
       <img
         className={styles.logo__img}
-        src="/img/Logogadgets.svg"
+        src="img/Logogadgets.svg"
         alt="Nice Gadgets company logo"
       />
     </Link>
