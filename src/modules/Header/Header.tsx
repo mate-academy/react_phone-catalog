@@ -58,7 +58,7 @@ const Header: React.FC = () => {
                 [styles['icons__icon--active']]: type === 'favorites',
               })}
             >
-              <img src="public/img/icons/heart.svg" alt="Heart Icon" />
+              <img src="/img/icons/heart.svg" alt="Heart Icon" />
               {favorites.length > 0 && <IconNumber items={favorites.length} />}
             </Link>
             <Link
@@ -67,7 +67,7 @@ const Header: React.FC = () => {
                 [styles['icons__icon--active']]: type === 'cart',
               })}
             >
-              <img src="public/img/icons/bag.svg" alt="Bag Icon" />
+              <img src="/img/icons/bag.svg" alt="Bag Icon" />
               {cart.length > 0 && <IconNumber items={numberOfCartProducts} />}
             </Link>
           </div>

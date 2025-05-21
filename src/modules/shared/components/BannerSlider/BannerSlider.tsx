@@ -13,9 +13,9 @@ import { Direction } from '../../icons/ArrowNav/ArrowNav';
 
 export const BannerSlider = () => {
   const sliderImgs = [
-    'public/img/phones/iphone16proIMG.jpg',
-    'public/img/phones/iphone16Pro(2).jpg',
-    'public/img/phones/iphone16Pro(3).jpg',
+    '/img/phones/iphone16proIMG.jpg',
+    '/img/phones/iphone16Pro(2).jpg',
+    '/img/phones/iphone16Pro(3).jpg',
   ];
   const isMobile = useIsMobile();
 
