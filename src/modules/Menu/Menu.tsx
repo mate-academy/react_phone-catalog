@@ -29,7 +29,7 @@ export const Menu: React.FC<Props> = ({ setMenuActive, type }) => {
         <Logo />
         <div className={styles['menu__top--close']}>
           <img
-            src="public/img/icons/Close.svg"
+            src="img/icons/Close.svg"
             alt="Close Icon"
             onClick={handleMenuClose}
           />
@@ -62,7 +62,7 @@ export const Menu: React.FC<Props> = ({ setMenuActive, type }) => {
           })}
           onClick={handleMenuClose}
         >
-          <img src="public/img/icons/heart.svg" alt="Heart Icon" />
+          <img src="img/icons/heart.svg" alt="Heart Icon" />
           {favorites.length > 0 && <IconNumber items={favorites.length} />}
         </Link>
         <Link
@@ -72,7 +72,7 @@ export const Menu: React.FC<Props> = ({ setMenuActive, type }) => {
           })}
           onClick={handleMenuClose}
         >
-          <img src="public/img/icons/bag.svg" alt="Bag Icon" />
+          <img src="img/icons/bag.svg" alt="Bag Icon" />
           {cart.length > 0 && <IconNumber items={numberOfCartProducts} />}
         </Link>
       </div>

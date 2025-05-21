@@ -13,7 +13,7 @@ const Breadcrumbs: React.FC = () => {
       <Link to="/">
         <img
           className={styles.breadcrumbs__icon}
-          src="public/img/icons/Home.svg"
+          src="img/icons/Home.svg"
           alt="Home Icon"
         />
       </Link>

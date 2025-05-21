@@ -14,19 +14,19 @@ export const Categories: React.FC = () => {
   const categories = [
     {
       title: 'Mobile Phones',
-      img: 'public/img/category-phones.webp',
+      img: 'img/category-phones.webp',
       link: '/phones',
       items: phonesNumber,
     },
     {
       title: 'Tablets',
-      img: 'public/img/category-tablets.png',
+      img: 'img/category-tablets.png',
       link: '/tablets',
       items: tabletsNumber,
     },
     {
       title: 'Accessories',
-      img: 'public/img/category-accessories.png',
+      img: 'img/category-accessories.png',
       link: '/accessories',
       items: accessoriesNumber,
     },

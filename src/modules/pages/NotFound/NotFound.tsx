@@ -8,7 +8,7 @@ export const NotFound = () => {
         <div className={styles.wrapper}>
           <img
             className={styles.wrapper__cat}
-            src="public/img/product-not-found.png"
+            src="img/product-not-found.png"
           />
         </div>
       </div>
