@@ -1,5 +1,7 @@
 .header {
   --height: 48px;
+  position: sticky;
+  top: 0;
 
   height: var(--height);
   background-color: var(--color-white);
@@ -21,153 +23,9 @@
     align-items: center;
     justify-content: space-between;
     column-gap: 24px;
-  }
-
-  &__logo {
-    padding: 14px 16px;
-    width: 86px;
-
-
-    @media (min-width: 1199px) {
-      padding: 16px 24px;
-      width: calc(80px + 24px * 2);
-    }
-  }
-
-
-  &__menu {
-    margin-right: auto;
-  }
-
-  &__buttons {
-    display: flex;
-    height: var(--height);
-  }
-
-  &__burger {
-    background-color: transparent;
-    border: none;
-
-    width: var(--height);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-left: 1px solid var(--color-icons);
-    cursor: pointer;
-
-    @media (min-width: 640px) {
-      display: none;
-
-    }
-  }
-
-  &__button {
     position: relative;
-    width: var(--height);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    border-left: 1px solid var(--color-icons);
-    cursor: pointer;
-
-    @media (min-width: 640px) {
-      display: flex;
-
-    }
   }
 
-
-
-  &__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  }
-
-  &__counter {
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 9px;
-    font-weight: 600;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    border: 1px solid var(--color-elements);
-    background-color: var(--color-red);
-
-  }
-}
-
-
-.menu {
-  display: none;
-
-  @media (min-width: 640px) {
-    display: flex;
-    align-items: center;
-    column-gap: 32px;
-
-  }
-
-  @media (min-width: 1199px) {
-    column-gap: 64px;
-
-  }
-
-
-
-
-
-  &__item {
-    position: relative;
-    padding-block: 18px;
-
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 0.91;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-secondary);
-    transition: all 0.4s;
-
-    @media (min-width: 1199px) {
-      padding-block: 26px;
-
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      display: flex;
-      width: 0;
-      height: 4px;
-      background-color: var(--color-primary);
-      transition: all 0.4s;
-
-    }
-
-    &:hover {
-      color: var(--color-primary);
-
-      &::after {
-        width: 100%;
-      }
-    }
-
-    &.active {
-      color: var(--color-primary);
-
-      &::after {
-        width: 100%;
-      }
-    }
-  }
 
 
 }
