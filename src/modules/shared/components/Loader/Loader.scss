@@ -1,13 +1,11 @@
 .Loader {
   display: flex;
-  width: 100vw;
   z-index: 1000;
   top: 0;
   left: 0;
-  height: 80vh;
+  height: 25vh;
   justify-content: center;
   align-items: center;
-  position: fixed;
 
   &__content {
     border-radius: 50%;
