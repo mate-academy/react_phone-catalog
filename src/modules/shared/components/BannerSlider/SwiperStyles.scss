@@ -1,0 +1,22 @@
+.custom-pagination {
+  display: flex;
+  gap: 9px;
+  margin-top: 18px;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 4px !important;
+  opacity: 0.5 !important;
+  border-radius: 0 !important;
+  transition: opacity 0.3s ease !important;
+  cursor: pointer !important;
+  background-color: rgba(226, 230, 233, 1);
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
+  background-color: rgba(49, 50, 55, 1) !important;
+}

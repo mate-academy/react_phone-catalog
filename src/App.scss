@@ -1,1 +1,177 @@
-// not empty
+@use './utils/mixins.scss';
+@import 'swiper/css';
+
+@font-face {
+  font-family: Mont;
+  font-weight: 400;
+  font-style: normal;
+  src: url(fonts/Mont-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  src: url(fonts/Mont-SemiBold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 700;
+  font-style: normal;
+  src: url(fonts/Mont-Bold.otf) format('opentype');
+}
+
+* {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Mont, sans-serif;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.main {
+  flex: 1;
+  max-width: 1200px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 56px;
+  margin-bottom: 56px;
+  height: 100%;
+  width: 100%;
+
+  @include mixins.on-tablet {
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+
+  @include mixins.on-desktop {
+    gap: 80px;
+    margin-bottom: 80px;
+  }
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  text-align: left;
+
+  @include mixins.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  @include mixins.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+h3 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 100%;
+
+  @include mixins.on-tablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  color: #313237;
+
+  @include mixins.on-tablet {
+    font-size: 20px;
+  }
+}
+
+.uppercase {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  color: rgba(137, 147, 154, 1);
+  text-decoration: none;
+
+  @include mixins.hover(color, black)
+}
+
+.button {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+
+      cursor: pointer;
+    flex-grow: 1;
+    background-color: #313237;
+    border: 0;
+    color: #FFF;
+
+    &:disabled {
+      color: #27AE60;
+      background-color: white;
+      border: 1px solid #E2E6E9;
+    }
+}
+
+.body--text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+.small--text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.container {
+  @include mixins.content-padding-inline;
+}
+
+hr {
+  height: 1px;
+  background-color: #E2E6E9;
+  border: none;
+}

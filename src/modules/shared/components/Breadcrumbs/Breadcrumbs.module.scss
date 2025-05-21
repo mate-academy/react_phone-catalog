@@ -1,0 +1,37 @@
+@use '../../../../utils/mixins';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  align-items: flex-end;
+
+  @include mixins.on-tablet {
+    margin-bottom: 40px;
+  }
+
+  svg {
+    fill: #B4BDC3;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__link {
+    font-weight: 600;
+    line-height: 1;
+    font-size: 12px;
+    text-decoration: none;
+    color: #313237;
+    align-items: flex-end;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-weight: 600;
+    line-height: 1;
+    font-size: 12px;
+    color: #89939A;
+    cursor: default;
+  }
+}

@@ -1,0 +1,110 @@
+@use '../../utils/mixins' as mixin;
+
+.header {
+  margin: auto;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: 0 1px 0 #E2E6E9;
+  background-color: rgba(255, 255, 255, 1);
+
+  @include mixin.on-desktop {
+    height: 64px;
+    gap: 24px;
+  }
+
+  @include mixin.on-tablet {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  gap: 64px;
+  height: auto;
+  list-style: none;
+
+  &__link {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 0;
+        background-color: #313237;
+        transition: width 0.3s ease;
+      }
+
+    &--active {
+      color: #313237;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.icons {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  width: fit-content;
+
+  &__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 100%;
+    box-shadow: -1px 0 0 #E2E6E9;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 0;
+        background-color: #313237;
+        transition: width 0.3s ease;
+      }
+
+    &--active {
+      &::after {
+        width: 100%;
+      }
+    }
+
+    @include mixin.on-tablet {
+      width: 64px;
+    }
+
+    img {
+      position: absolute;
+    }
+
+    svg {
+      position: relative;
+      left: 10%;
+      bottom: 10%;
+    }
+  }
+}
+
+

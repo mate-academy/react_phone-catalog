@@ -1,0 +1,37 @@
+@use '../../../../utils/mixins';
+
+.pageNumber {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #E2E6E9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @include mixins.hover(border, 1px solid #313237);
+
+
+  &--active {
+    background-color: black;
+    color: white;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  margin-top: 24px;
+
+  @include mixins.on-tablet {
+    margin-top: 40px;
+  }
+}

@@ -1,0 +1,28 @@
+.Loader {
+  display: flex;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 25vh;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    border-radius: 50%;
+    width: 7em;
+    height: 7em;
+    margin: 1em auto;
+    border: 0.5em solid #ddd;
+    border-left-color: #000;
+    animation: load8 0.5s infinite linear;
+  }
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
