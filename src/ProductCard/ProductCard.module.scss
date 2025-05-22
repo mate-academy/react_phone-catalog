@@ -38,17 +38,16 @@ a {
 
 .product_title {
   width: 148px;
-  height: 42px;
+  height: 50px;
   font-family: Mont;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
   color: #313237;
-  margin-bottom: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 8px;
+  margin: 8px 0;
 }
 
 .price_section {
@@ -88,6 +87,7 @@ a {
   justify-content: space-between;
   margin-bottom: 8px;
   width: 148px;
+  height: 100%;
 }
 
 .feature_label {

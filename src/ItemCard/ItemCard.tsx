@@ -118,8 +118,10 @@ export const ItemCard: React.FC = () => {
 
   useEffect(() => {
     if (product) {
-      setSelectedColor(product.colorsAvailable[0] || '');
-      setSelectedCapacity(product.capacityAvailable[0] || '');
+      setSelectedColor(product.color || product.colorsAvailable[0] || '');
+      setSelectedCapacity(
+        product.capacity || product.capacityAvailable[0] || '',
+      );
       setSelectedImages(product.images || []);
       setSelectedImageIndex(0);
     }
@@ -189,7 +191,7 @@ export const ItemCard: React.FC = () => {
                 {product.capacityAvailable.map(capacity => (
                   <button
                     key={capacity}
-                    className={`${styles.capacity_button} ${selectedCapacity == capacity ? styles.active_capacity : ''}`}
+                    className={`${styles.capacity_button} ${selectedCapacity.toLowerCase() === capacity.toLowerCase() ? styles.active_capacity : ''}`}
                     onClick={() => handleCapacityChange(capacity)}
                   >
                     {capacity}

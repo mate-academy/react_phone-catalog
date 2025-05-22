@@ -1,5 +1,8 @@
 .category {
-  max-width: 288px;
+  justify-self: center;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
@@ -7,14 +10,14 @@
   font-weight: 800;
   font-size: 22px;
   text-align: left;
-  align-self: flex-start;
+  padding: 0 16px;
 }
 
 .categorys {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  align-items: center;
+  align-self: center;
 }
 
 .category_item {
@@ -27,6 +30,12 @@
   display: flex;
   flex-direction: column;
   align-items: left;
+  transition: transform 0.3s ease;
+}
+
+.category_item:hover {
+  transform: scale(1.05);
+  z-index: 2;
 }
 
 .mobile {
