@@ -74,8 +74,9 @@ color:#89939A;
       background-size: 32px 32px;
       margin-left: 16px;
 @include mixin.onDesktop{
- &:hover{transform: scale(1.1);
-  background-image:  url('/img/icons/buttonSliderHover.svg');}
+ &:hover{
+  transform: scale(1.1);
+  background-image: url('/img/icons/buttonSliderHover.svg');}
 
 }
 
