@@ -3,7 +3,7 @@ import styles from './header.module.scss'
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import { AsideMenuPhone } from '../../modules/HomePage/components/asideMenuPhone'
-
+import logo from '/public/img/niceLogo.svg';
 export const Header = () => {
   const [activeAsside, setActiveAsside] = useState(false);
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -14,7 +14,7 @@ export const Header = () => {
 
       <div className={styles.header__content}>
       <NavLink to="/">
-        <img className={styles.header__logo} src="/img/niceLogo.svg" alt="NiceGadgetLogo"></img>
+        <img className={styles.header__logo} src={logo} alt="NiceGadgetLogo"></img>
       </NavLink>
 
        <nav className={styles.nav} >
