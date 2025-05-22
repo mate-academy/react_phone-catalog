@@ -83,6 +83,43 @@ export const Tablets: React.FC = () => {
     navigate('/');
   };
 
+  function getVisiblePages(
+    currentPage: number,
+    totalPages: number,
+    maxVisible: number = 4,
+  ) {
+    const pages = [];
+
+    if (totalPages <= maxVisible) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+
+      return pages;
+    }
+
+    if (currentPage <= 2) {
+      pages.push(1, 2, 3, '...');
+      pages.push(totalPages);
+    } else if (currentPage >= totalPages - 1) {
+      pages.push(1);
+      pages.push('...');
+      for (let i = totalPages - 2; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      pages.push('...');
+      pages.push(currentPage - 1, currentPage, currentPage + 1);
+      if (currentPage + 1 < totalPages) {
+        pages.push('...');
+        pages.push(totalPages);
+      }
+    }
+
+    return pages.filter(
+      (item, idx, arr) => !(item === '...' && arr[idx - 1] === '...'),
+    );
+  }
+
+  const visiblePages = getVisiblePages(currentPage, totalPages, 4);
+
   return (
     <div className={styles.product_list}>
       <div className={styles.navigation}>
@@ -157,15 +194,35 @@ export const Tablets: React.FC = () => {
       </div>
 
       <div className={styles.pagination}>
-        {pages.map(page => (
-          <button
-            key={page}
-            onClick={() => goToPage(page)}
-            className={currentPage === page ? styles.active_page : ''}
-          >
-            {page}
-          </button>
-        ))}
+        <button
+          className={styles.prev_page_button}
+          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          <img src="img/Arrow-left.svg" alt="prev" />
+        </button>
+        {visiblePages.map((page, idx) =>
+          page === '...' ? (
+            <span key={`ellipsis-${idx}`} className={styles.ellipsis}>
+              ...
+            </span>
+          ) : (
+            <button
+              key={page}
+              onClick={() => goToPage(Number(page))}
+              className={currentPage === page ? styles.active_page : ''}
+            >
+              {page}
+            </button>
+          ),
+        )}
+        <button
+          className={styles.next_page_button}
+          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          <img src="img/Arrow-left.svg" alt="next" />
+        </button>
       </div>
     </div>
   );

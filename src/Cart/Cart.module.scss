@@ -29,18 +29,9 @@
   object-fit: contain;
 }
 
-.title {
-  margin: 72px 152px 0;
-}
-
 .cart_container {
   display: flex;
 }
-
-.empty {
-  margin: 32px 152px 500px;
-}
-
 
 .cart_grid {
   display: grid;
@@ -52,8 +43,6 @@
 }
 
 .cart_item {
-  width: 247px;
-  height: 130px;
   border: 1px solid #ddd;
   padding: 16px;
 }

@@ -275,7 +275,6 @@
 
   .nav_right {
     display: flex;
-    margin-left: auto;
   }
 
   .nav li {
@@ -294,12 +293,8 @@
 
   .nav_favorite,
   .nav_cart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 62px;
-    height: 62px;
-    border-left: 1px solid #E2E6E9;
+    width: 58px;
+    height: 58px;
   }
 
   .nav_img {

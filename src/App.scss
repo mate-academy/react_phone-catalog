@@ -4,47 +4,50 @@
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: Mont;
   src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
 }
-
 body {
   font-family: Mont, sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
-
 .body_no_scroll {
   overflow-y: hidden;
   height: 100vh;
 }
-
 .content {
   display: flex;
   flex-direction: column;
   min-height: 100%;
 }
 
-
 @media screen and (min-width: 1200px) {
   .content {
     padding-top: 120px;
   }
 }
-
 @media screen and (max-width: 1199px) {
   .content {
     padding-top: 32px;
   }
 }
-
 @media screen and (max-width: 640px) {
   .content {
     padding-top: 24px;
   }
+}
+* {
+  box-sizing: border-box;
+}
+
+
+html, body {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
