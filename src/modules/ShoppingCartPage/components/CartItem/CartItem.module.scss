@@ -1,0 +1,79 @@
+@use '/src/styles';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-between;
+
+  padding: 16px;
+  border: 1px solid styles.get-color(elements);
+
+  @include styles.media(tablet) {
+    flex-direction: row;
+  }
+
+  &__info,
+  &__actions,
+  &__link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @include styles.media(tablet) {
+      gap: 24px;
+    }
+  }
+
+  &__info,
+  &__link {
+    gap: 16px;
+  }
+
+  &__closeButton {
+    color: styles.get-color(icons);
+  }
+
+  &__actions {
+    justify-content: space-between;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__title {
+    color: styles.get-color(primary);
+
+    @include styles.typography(body);
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__controlsButton,
+  &__itemQuantity {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__itemQuantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include styles.typography(body);
+  }
+
+  &__price {
+    min-width: 80px;
+    color: styles.get-color(primary);
+    text-align: right;
+
+    @include styles.typography(h3);
+  }
+}

@@ -1,0 +1,14 @@
+@use '/src/styles';
+
+.title {
+  color: styles.get-color(primary);
+
+  @include styles.typography(h2);
+
+  @include styles.media(tablet) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+

@@ -1,0 +1,38 @@
+@use '/src/styles';
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    overflow: hidden;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+
+    &--last {
+      flex-shrink: 1;
+    }
+  }
+
+  &__label {
+    overflow: hidden;
+    color: styles.get-color(primary);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include styles.typography(small);
+
+    &--last {
+      color: styles.get-color(secondary);
+    }
+  }
+
+  &__separator {
+    flex-shrink: 0;
+    margin-inline: 8px;
+    color: styles.get-color(icons);
+  }
+}

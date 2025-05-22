@@ -1,0 +1,21 @@
+@use '/src/styles';
+
+.footer {
+  box-shadow: 0 -1px 0 0 styles.get-color(elements);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 32px 16px;
+
+    @include styles.media(tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 32px;
+    }
+  }
+}

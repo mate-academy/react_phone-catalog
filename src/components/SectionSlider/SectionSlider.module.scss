@@ -1,0 +1,35 @@
+@use '/src/styles';
+
+.sliderSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__navButtons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__sliderWrapper {
+    margin-right: styles.get-negative-size(page-padding-mobile);
+
+    @include styles.media(tablet) {
+      margin-right: styles.get-negative-size(page-padding-tablet);
+    }
+
+    @include styles.media(desktop) {
+      margin-inline: 0;
+    }
+  }
+}

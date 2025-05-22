@@ -1,0 +1,37 @@
+@use 'breakpoints';
+@use 'colors';
+@use 'sass:list';
+
+@mixin page-grid($row-gap: 40px) {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: $row-gap 16px;
+
+  @include breakpoints.media(tablet) {
+    --columns: 12;
+  }
+
+  @include breakpoints.media(desktop) {
+    --columns: 24;
+  }
+}
+
+@mixin hover-styles {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin transition($properties...) {
+  $transitions: ();
+
+  @each $property in $properties {
+    $transitions: list.append($transitions, $property 0.3s ease, comma)
+  }
+
+  transition: $transitions;
+}

@@ -1,0 +1,34 @@
+@use '/src/styles';
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include styles.media(tablet) {
+    gap: 40px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    color: styles.get-color(primary);
+
+    @include styles.typography(h1);
+
+    @include styles.media(tablet) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__subtitle {
+    color: styles.get-color(secondary);
+
+    @include styles.typography(body);
+  }
+}

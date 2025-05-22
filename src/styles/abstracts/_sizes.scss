@@ -1,0 +1,26 @@
+@use 'functions' as func;
+
+$sizes: (
+  container-max-width: 1200px,
+  container-min-width: 320px,
+  header-height-base: 48px,
+  header-height-desktop: 64px,
+  page-padding-mobile: 16px,
+  page-padding-tablet: 24px,
+  page-padding-desktop: 32px,
+  spacing-unit: 8px,
+);
+
+@function get-size($name) {
+  @return func.get-map($sizes, $name);
+}
+
+@function get-negative-size($name) {
+  @return -1 * get-size($name);
+}
+
+@function scale-size($name, $unit: 1) {
+  $size: get-size($name);
+
+  @return $size * $unit;
+}

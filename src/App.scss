@@ -1,1 +1,52 @@
 // not empty
+@use 'styles';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-width: styles.get-size(container-min-width);
+  min-height: 100vh;
+}
+
+.page {
+  flex: 1;
+  padding: styles.get-size(page-padding-mobile);
+  padding-bottom: 64px;
+
+  @include styles.media(tablet) {
+    padding: styles.get-size(page-padding-tablet);
+    padding-bottom: 64px;
+  }
+
+  @include styles.media(desktop) {
+    padding: styles.get-size(page-padding-desktop);
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    &--hide {
+      bottom: 0;
+
+      overflow: hidden;
+
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+
+      visibility: hidden;
+    }
+  }
+
+  &__content {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    max-width: styles.get-size(container-max-width);
+    height: 100%;
+    margin-inline: auto;
+  }
+}

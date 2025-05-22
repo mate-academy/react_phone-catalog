@@ -1,0 +1,30 @@
+@use '/src/styles';
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  @include styles.typography(uppercase);
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include styles.media(tablet) {
+      flex-direction: row;
+      gap: 16.17px;
+    }
+
+    @include styles.media(desktop) {
+      gap: 106.83px;
+    }
+  }
+
+  &__link {
+    color: styles.get-color(secondary);
+
+    @include styles.hover-styles {
+      color: styles.get-color(primary);
+    }
+  }
+}

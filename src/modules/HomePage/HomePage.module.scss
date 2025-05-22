@@ -1,0 +1,43 @@
+@use '/src/styles';
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include styles.media(tablet) {
+    gap: 64px;
+  }
+
+  @include styles.media(desktop) {
+    gap: 80px;
+  }
+
+  &__carousel {
+    margin-inline: styles.get-negative-size(page-padding-mobile);
+
+    @include styles.media(tablet) {
+      margin-inline: 0;
+    }
+  }
+
+  &__sectionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include styles.media(tablet) {
+      gap: 32px;
+    }
+
+    @include styles.media(desktop) {
+      gap: 56px;
+    }
+  }
+
+  &__title {
+    color: styles.get-color(primary);
+
+    @include styles.typography(h1);
+  }
+}

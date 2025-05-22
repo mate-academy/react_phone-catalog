@@ -1,0 +1,51 @@
+@use '/src/styles';
+
+.pagination {
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  &__item {
+    &Prev {
+      margin-right: 8px;
+    }
+
+    &Next {
+      margin-left: 8px;
+    }
+  }
+
+  &__iconButton,
+  &__button {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid styles.get-color(elements);
+
+    color: styles.get-color(primary);
+
+    background-color: styles.get-color(white);
+
+    @include styles.hover-styles {
+      border-color: styles.get-color(primary);
+    }
+
+    &--active {
+      pointer-events: none;
+      cursor: default;
+      color: styles.get-color(white);
+      background-color: styles.get-color(primary);
+    }
+  }
+}

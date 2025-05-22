@@ -1,0 +1,72 @@
+@use '/src/styles';
+
+.userMenu {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid styles.get-color(elements);
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    position: relative;
+
+    display: block;
+
+    box-sizing: border-box;
+    width: 50%;
+    height: 64px;
+
+    @include styles.media(tablet) {
+      aspect-ratio: 1 / 1;
+      height: styles.get-size(header-height-base);
+    }
+
+    @include styles.media(desktop) {
+      aspect-ratio: 1 / 1;
+      height: styles.get-size(header-height-desktop);
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &__iconWrapper {
+    position: relative;
+  }
+
+  &__icon {
+    color: styles.get-color(primary);
+  }
+
+  &__quantity {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 14px;
+    height: 14px;
+    border: 1px solid styles.get-color(white);
+    border-radius: 50%;
+
+    font-family: styles.get-font-family-base();
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 100%;
+    color: styles.get-color(white);
+    letter-spacing: 0%;
+
+    background-color: styles.get-color(selected-favorite);
+  }
+}

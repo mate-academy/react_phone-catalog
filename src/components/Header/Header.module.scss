@@ -1,0 +1,81 @@
+@use '/src/styles';
+
+.header {
+  position: relative;
+  z-index: 50;
+
+  width: 100%;
+  height: styles.get-size(header-height-base);
+  padding: 0;
+
+  background-color: styles.get-color(white);
+
+  @include styles.media(desktop) {
+    height: styles.get-size(header-height-desktop);
+  }
+
+  &__topBar {
+    position: relative;
+    z-index: 10;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100%;
+
+    box-shadow: 0 1px 0 0 styles.get-color(elements);
+  }
+
+  &__topBarContainer {
+    display: none;
+
+    @include styles.media(tablet) {
+      display: flex;
+    }
+  }
+
+  &__mobileTopBarContainer {
+    display: flex;
+
+    @include styles.media(tablet) {
+      display: none;
+    }
+  }
+
+  &__menuBtn {
+    cursor: pointer;
+    color: styles.get-color(primary);
+  }
+
+  &__logo {
+    padding-inline: 16px;
+
+    @include styles.media(desktop) {
+      padding-inline: 24px;
+    }
+
+    img {
+      width: 64px;
+      height: 22px;
+    }
+  }
+
+  &__productNav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    height: 100%;
+
+    @include styles.media(desktop) {
+      gap: 24px;
+    }
+  }
+
+  &__userControls {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+}

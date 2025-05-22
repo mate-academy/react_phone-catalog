@@ -1,0 +1,19 @@
+@use '/src/styles';
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    color: styles.get-color(primary);
+
+    @include styles.typography(h3);
+  }
+}

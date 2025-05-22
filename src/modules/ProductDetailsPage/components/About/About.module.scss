@@ -1,0 +1,37 @@
+@use '/src/styles';
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    color: styles.get-color(primary);
+
+    @include styles.typography(h3);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &Title {
+      color: styles.get-color(primary);
+
+      @include styles.typography(h4);
+    }
+
+    &Paragraph {
+      color: styles.get-color(secondary);
+
+      @include styles.typography(body);
+    }
+  }
+}
