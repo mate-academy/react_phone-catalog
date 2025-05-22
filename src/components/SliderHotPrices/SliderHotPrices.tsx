@@ -1,12 +1,12 @@
 import './SliderHotPrices.scss';
 import React, { useRef, useEffect, useMemo, useState } from 'react';
-import Slider from 'react-slick';
+//import Slider from 'react-slick';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../app/store';
 import { selectAllProducts, fetchProducts } from '../../features/products';
-
+import { NavLink } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -32,18 +32,18 @@ export const SliderHotPrices: React.FC = () => {
   //   arrows: false,
   // };
 
-  
+
   const sortedProducts = useMemo(() => {
     return [...products]
       .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-      .slice(0, 10); 
+      .slice(0, 10);
   }, [products]);
 
-  
+
   const hotPricesSlides = sortedProducts.map(product => (
-    <div key={product.id}>
+    <NavLink to={product.itemId} key={product.id}>
       <ProductCard {...product} />
-    </div>
+    </NavLink>
   ));
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -88,7 +88,7 @@ export const SliderHotPrices: React.FC = () => {
             transform: `translateX(-${currentIndex * 322}px)`,
           }}
         >
-          
+
           {hotPricesSlides}
         </div>
       </div>

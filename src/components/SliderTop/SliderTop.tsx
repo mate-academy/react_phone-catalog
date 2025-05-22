@@ -16,6 +16,7 @@ const images = [
 ];
 
 export const SliderTop: React.FC = () => {
+  
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   const displayImages = images.map((img, i) => (
@@ -48,18 +49,31 @@ export const SliderTop: React.FC = () => {
     // <div className="first_section">
     <>
       <p id="invitation"> Welcome to Nice Gadgets store!</p>
-      <section className="banner">
-        <button className="banner-arrow arrowPrev " onClick={previousSlide}>
-          <IoIosArrowBack />
-        </button>
+      <section>
+        <div className="banner">
+          <button className="banner-arrow arrowPrev " onClick={previousSlide}>
+            <IoIosArrowBack />
+          </button>
 
-        <div className="banner__slider">{displayImages}</div>
+          <div className="banner__slider">{displayImages}</div>
 
-        <button className="banner-arrow arrowNext " onClick={nextSlide}>
-          <IoIosArrowForward />
-        </button>
+          <button className="banner-arrow arrowNext " onClick={nextSlide}>
+            <IoIosArrowForward />
+          </button>
+        </div>
+
+        <div className="dots">
+          {[0, 1, 2].map(index => (
+            <button
+              key={index}
+              className={`dot ${activeSlideIndex === index ? 'active__dot' : ''}`}
+              onClick={() => setActiveSlideIndex(index)}
+            ></button>
+          ))}
+        </div>
+
+        {/* </div> */}
       </section>
-      {/* </div> */}
     </>
   );
 };

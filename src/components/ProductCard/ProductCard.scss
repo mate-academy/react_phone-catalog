@@ -20,7 +20,7 @@
   color: #313237;
   padding: 32px;
   width: 306px;
-  
+
 }
 
 .card-content {
@@ -40,7 +40,7 @@
 .new__price {
 font-weight: 800;
 font-size: 22px;
-line-height: 140%; 
+line-height: 140%;
 }
 
 .old__price {
@@ -112,3 +112,12 @@ color: #89939A;
   background-color: white;
   border: 1px solid #89939A;
 }
+
+.card__tech__spec{
+  border-top: 1px solid #E2E6E9;
+  display: flex;
+  flex-direction:column;
+  gap: 8px;
+  padding-block: 16px;
+}
+

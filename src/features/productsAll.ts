@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store'; // Update this path to your actual store path
+import { RootState } from '../app/store'; // Update this path to your actual store path
 
 export type ProductCategory = 'phones' | 'tablets' | 'accessories';
 

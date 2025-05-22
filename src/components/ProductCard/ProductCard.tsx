@@ -54,7 +54,7 @@ const isInCart = useSelector((state: RootState) =>
   };
 
   return (
-    <div className="product__card" >
+    <div className="product__card">
       <div className="card-image">
         {/* <figure className="image"> */}
         <img src={image} alt="Product photo" />
@@ -68,20 +68,23 @@ const isInCart = useSelector((state: RootState) =>
           <span className="new__price">${price}</span>
           <span className="old__price">${fullPrice}</span>
         </p>
-        <hr />
-        <p className="product__info">
-          <span className="feature">Screen:</span>
-          <span className="feature__info">{screen}</span>
-        </p>
-        <p className="product__info">
-          <span className="feature">Capacity:</span>
-          <span className="feature__info">{capacity}</span>
-        </p>
-        <p className="product__info">
-          <span className="feature">RAM:</span>
-          <span className="feature__info">{ram}</span>
-        </p>
-        {/* </div> */}
+        {/* <hr /> */}
+        <div className="card__tech__spec">
+          {[
+            { label: 'Screen', key: 'screen' },
+            { label: 'Capacity', key: 'capacity' },
+            { label: 'RAM', key: 'ram' },
+
+          ].map(({ label, key }) => {
+            const value = product[key as keyof typeof product];
+            return value ? (
+              <div className="product__info" key={key}>
+                <span className="feature">{label}:</span>
+                <span className="feature__info">{value}</span>
+              </div>
+            ) : null;
+          })}
+        </div>
 
         <div className="buttons">
           {isInCart ? (

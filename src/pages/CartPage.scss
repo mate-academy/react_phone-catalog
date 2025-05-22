@@ -178,8 +178,8 @@ align-self: center;
 }
 
 .remove:hover,
-.checkout__button:hover,
-.top__back__link:hover {
+.checkout__button:hover {
+//.top__back__link:hover {
   cursor: pointer;
   transform: scale(1.1);
   transition-duration: 3ms;

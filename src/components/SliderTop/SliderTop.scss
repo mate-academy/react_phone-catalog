@@ -8,6 +8,7 @@
   @media (min-width: 320px) and (max-width: 639px) {
   width: 100%;
   aspect-ratio: 1 / 1;
+  
   }
 
   &__slider {
@@ -65,4 +66,23 @@ margin-top: 0px;
   margin-bottom: 56px;
 }
 
+}
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  
+}
+.dot {
+  border: none;
+  background-color: #E2E6E9;
+  width: 20px;
+  height: 4px;
+}
+.dot:hover {
+  cursor: pointer;
+}
+.active__dot {
+ background-color: #313237; 
 }
