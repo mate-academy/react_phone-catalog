@@ -6,12 +6,15 @@
   font-family: Mont;
   font-weight: 800;
   font-size: 22px;
+  text-align: left;
+  align-self: flex-start;
 }
 
 .categorys {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  align-items: center;
 }
 
 .category_item {
