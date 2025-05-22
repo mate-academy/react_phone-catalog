@@ -50,8 +50,8 @@ export const ShoppingCartPage = () => {
   );
 
   const loadProducts = useCallback(() => {
-    const cartIds = cart.map(item => item.id);
-    const cacheIds = productsCacheRef.current.map(item => item.itemId);
+    const cartIds = cart.map(item => item.id).sort();
+    const cacheIds = productsCacheRef.current.map(item => item.itemId).sort();
 
     if (isEqual(cartIds, cacheIds)) {
       setProducts(mapCartToProducts(cart, productsCacheRef.current));
