@@ -1,7 +1,8 @@
 @use '../utils/mixin.module.scss' as mixin;
 .footer{
 
-  
+  position: sticky;
+
   bottom: 0;
   left: 0;
 
@@ -28,12 +29,21 @@ padding-top: 32px;
 
 
    &__button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+ @include mixin.onDesktop{
+ &:hover{
+
+    transform: scale(1.1);
 
   }
+}
+
+  }
+
   &__logo{
 
   @include mixin.onTablet {
@@ -42,6 +52,7 @@ height: 28px;
 }
 
 }
+
   &__text{
     font-family: Mont;
 font-weight: 700;
@@ -62,7 +73,13 @@ color:#89939A;
       background-position: center;
       background-size: 32px 32px;
       margin-left: 16px;
-    }
+@include mixin.onDesktop{
+ &:hover{transform: scale(1.1);
+  background-image:  url('./img/icons/buttonSliderHover.svg');}
+
+}
+
+   }
 }
 
 .nav{
@@ -90,7 +107,15 @@ justify-content: right;
   gap:105px;
 }
   }
+
   &__item{
+    transition: transform 0.3s ease;
+
+  @include mixin.onDesktop{
+ &:hover{
+    transform: scale(1.1);
+  }
+}
 
 
 &:nth-child(-n+2) {
@@ -113,6 +138,7 @@ text-transform: uppercase;
 
     text-decoration: none;
     color:#89939A;
+
   }
 
 }

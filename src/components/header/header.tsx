@@ -3,12 +3,13 @@ import styles from './header.module.scss'
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import { AsideMenuPhone } from '../../modules/HomePage/components/asideMenuPhone'
+
 export const Header = () => {
   const [activeAsside, setActiveAsside] = useState(false);
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.nav__link, { [styles['is-active']]: isActive });
 
-  return (<><header className={styles.header}>
+  return (<><header className={styles.header} id = 'page-top'>
 
 
       <div className={styles.header__content}>

@@ -2,12 +2,12 @@
 
 .icon {
 
-  width: 16px;
-  height: 16px;
+  width: 320px;
+  height: 100%;
   display: block;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 16px 16px;
   &--menu {
     margin-left: auto;
   }
@@ -20,10 +20,11 @@
     background-image: url('/img/icons/heart.svg');
   }
    &.is-active {
-    border-bottom: 3px solid #0F0F11;
+    border-bottom: 2px solid #313237;
   }
 }
 .menu {
+z-index: 1000;
   text-transform: uppercase;
   font-weight: 800;
 
@@ -44,13 +45,14 @@
 
 
 .nav__link{
+  padding-bottom: 8px;
 text-decoration: none;
   color: #89939A;
   font-size: 12px;
   line-height: 11px0
   ; letter-spacing: 4%;
   &.is-active {
-    border-bottom: 3px solid #0F0F11;
+    border-bottom: 2px solid #313237;
   }
 }
 .menu__bottom{

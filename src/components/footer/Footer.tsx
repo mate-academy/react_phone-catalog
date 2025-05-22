@@ -26,11 +26,18 @@ export const Footer = () => {
 
         </ul>
         </nav>
-    <div className={styles.footer__button}>
-      <a href='#' className={styles.footer__text}> Back to Top
 
-      </a>
-      <div className={styles.footer__icon}></div>
-</div>
+    <a
+  href="#top"
+  onClick={(e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }}
+  className={styles.footer__button}
+>
+  <span className={styles.footer__text}>Back to Top</span>
+  <span className={styles.footer__icon}></span>
+</a>
+
 </div>)
 }
