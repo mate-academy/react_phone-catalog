@@ -14,7 +14,7 @@ export const Header = () => {
 
       <div className={styles.header__content}>
       <NavLink to="/">
-        <img className={styles.header__logo} src={`${process.env.PUBLIC_URL}/img/niceLogo.svg`} alt="NiceGadgetLogo"></img>
+        <img className={styles.header__logo} src="/img/niceLogo.svg" alt="NiceGadgetLogo"></img>
       </NavLink>
 
        <nav className={styles.nav} >
