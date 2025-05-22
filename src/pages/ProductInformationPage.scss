@@ -153,20 +153,21 @@ margin-bottom: 40px;
 
 .pi__main__image {
   display: none;
-  //width: 100%;
-  height: 464px;
-  aspect-ratio: 1/1;
-  object-fit: contain;
+  width: 100%;
+  height: 100%
+  // height: 464px;
+  // aspect-ratio: 1/1;
+  // object-fit: contain;
 }
 
 .active__pi__main__image {
   border: 2px solid red;
   display: block;
-  //width: 100%;
-  //height: 100%;
-  height: 464px;
-  aspect-ratio: 1/1;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  // height: 464px;
+  // aspect-ratio: 1/1;
+  // object-fit: contain;
   flex: 3;
 @media (min-width: 320px) and (max-width: 639px) {
   object-fit: cover;
