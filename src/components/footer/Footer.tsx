@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import styles from './footer.module.scss'
+import logo from '/public/img/niceLogo.svg';
 export const Footer = () => {
   return (<div className={styles.footer}>
    <a href="/">
-      <img className={styles.footer__logo } src="/img/niceLogo.svg" alt="NiceGadgetLogo"></img>
+      <img className={styles.footer__logo } src={logo} alt="NiceGadgetLogo"></img>
     </a>
 
        <nav className={styles.nav}>
