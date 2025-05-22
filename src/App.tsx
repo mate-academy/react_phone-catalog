@@ -9,7 +9,7 @@ import { Outlet } from 'react-router-dom';
 
 export const App = () => {
   const [phones, setPhones] = useState();
-  const [activeAsside, setActiveAsside] = useState(false);
+
   console.log(phones)
   useEffect(() => {
     fetch('/api/products.json').then(res=>res.json())
@@ -17,7 +17,7 @@ export const App = () => {
   },[])
 
   return (
-    <><Header setActiveAsside={setActiveAsside} />
+    <><Header />
       <Outlet />
    <Footer />
   </>)
