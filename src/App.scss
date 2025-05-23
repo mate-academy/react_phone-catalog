@@ -25,7 +25,6 @@ body::-webkit-scrollbar { width: 0 !important }
   font-style: normal;
 }
 
-
 .product__catalog[hidden] {
   display: none;
 }
@@ -500,6 +499,7 @@ body::-webkit-scrollbar { width: 0 !important }
   border-top: 1px solid #e2e6e9;
   background-color: white;
   margin-top: 80px;
+  position: static;
 
   &__link__logo {
     transition: transform 0.3s ease-in-out;

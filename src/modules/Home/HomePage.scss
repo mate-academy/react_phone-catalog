@@ -542,10 +542,19 @@
   }
 
   &__card {
+    display: block;
+    background-color: white;
     border: 1px solid #e2e6e9;
-    padding-top: 24px;
     padding: 32px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 0 transparent;
+
+    &:hover {
+      border-color: #0F0F11;
+      box-shadow: 0 0 5px #56565a;
+    }
   }
+
 
   &__image-phone {
     width: 100%;
@@ -647,22 +656,16 @@
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    font-weight: 700px;
+    font-weight: 700;
     line-height: 21px;
+    transition:
+      background-color 0.3s,
+      color 0.3s,
+      border 0.3s;
 
     &:hover {
-      text-decoration: none;
       color: #4219d0;
       background-color: #ffffff;
-      border-radius: 48px;
-      width: 160px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 14px;
-      font-weight: 700px;
-      line-height: 21px;
       border: 1px solid #b4bdc3;
     }
   }
