@@ -45,7 +45,7 @@ export const HomePage = () => {
 
       for (const category of categories) {
         try {
-          const response = await fetch(`/api/${category}.json`);
+          const response = await fetch(`${import.meta.env.BASE_URL}api/${category}.json`);
           if (!response.ok) throw new Error(`Failed to fetch ${category}`);
 
           const products: Product[] = await response.json();

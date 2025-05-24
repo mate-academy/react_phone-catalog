@@ -20,7 +20,7 @@ export const FavoritesPage: React.FC = () => {
 
     for (const category of categories) {
       try {
-        const response = await fetch(`/api/${category}.json`);
+        const response = await fetch(`/react_phone-catalog/api/${category}.json`);
 
         if (response.ok) {
           const products: Product[] = await response.json();

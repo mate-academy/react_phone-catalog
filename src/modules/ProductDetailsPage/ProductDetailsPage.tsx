@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { Spinner } from '../../components/Spinner';
 import { GoBack } from '../../components/GoBack';
-import ProductNotFound from '../../../public/img/product-not-found.png';
+import ProductNotFound from '../../assets/img/product-not-found.png';
 import { FavoritesButton } from '../../components/FavoritesButton';
 import { Slider } from '../../components/Slider';
 import { LinksRoad } from '../../components/LinksRoad';
@@ -12,25 +12,26 @@ import { CartButton } from '../../components/CartButton';
 
 export const ProductDetailsPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const { category, productId } = useParams<{
     category: 'phones' | 'accessories' | 'tablets';
     productId: string;
   }>();
+
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
   const [product, setProduct] = useState<Product | null>(null);
-  const [mainImgIndex, setMainImgIndex] = useState<number>(0);
-  const [selectedCapacity, setSelectedCapacity] = useState<string>('');
-  const [selectedColor, setSelectedColor] = useState<string>('');
+  const [mainImgIndex, setMainImgIndex] = useState(0);
+  const [selectedCapacity, setSelectedCapacity] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
   const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
+
+  const baseUrl = import.meta.env.BASE_URL;
 
   const updateParams = (capacity: string, color: string) => {
     setSearchParams({ capacity, color });
     handleChange(capacity, color);
   };
 
-  // colors
   const allStrangeColors: { [key: string]: string } = {
     spaceblack: '#403E3D',
     spaceblue: '#2D4E5C',
@@ -43,24 +44,19 @@ export const ProductDetailsPage: React.FC = () => {
     sierrablue: '#A7C1D9',
   };
 
-  // new product
   const handleChange = async (newCapacity: string, newColor: string) => {
     if (
       (newCapacity === selectedCapacity && newColor === selectedColor) ||
       !product
-    ) {
+    )
       return;
-    }
 
     setLoading(true);
     setErr(false);
 
     try {
-      const response = await fetch(`/api/${category}.json`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch products');
-      }
-
+      const response = await fetch(`/react_phone-catalog/api/${category}.json`);
+      if (!response.ok) throw new Error('Failed to fetch products');
       const products: Product[] = await response.json();
       const matchedProduct = products.find(
         p =>
@@ -68,17 +64,12 @@ export const ProductDetailsPage: React.FC = () => {
           p.capacity === newCapacity &&
           p.color === newColor,
       );
-
-      if (matchedProduct) {
-        setProduct(matchedProduct);
-        setSelectedCapacity(newCapacity);
-        setSelectedColor(newColor);
-        setMainImgIndex(0);
-      } else {
-        throw new Error('Matching product not found');
-      }
-    } catch (error) {
-      console.error(error);
+      if (!matchedProduct) throw new Error('Matching product not found');
+      setProduct(matchedProduct);
+      setSelectedCapacity(newCapacity);
+      setSelectedColor(newColor);
+      setMainImgIndex(0);
+    } catch {
       setErr(true);
     } finally {
       setLoading(false);
@@ -87,32 +78,21 @@ export const ProductDetailsPage: React.FC = () => {
 
   const loadData = async () => {
     if (!category || !productId) return;
-
     setLoading(true);
     setErr(false);
 
     try {
-      const response = await fetch(`/api/${category}.json`);
-
-      if (!response.ok) {
-        throw new Error('Product not found');
-      }
-
+      const response = await fetch(`/react_phone-catalog/api/${category}.json`);
+      if (!response.ok) throw new Error('Product not found');
       const data: Product[] = await response.json();
       const foundProduct = data.find(p => p.id === productId);
-
-      if (!foundProduct) {
-        throw new Error('Product not found');
-      }
-
+      if (!foundProduct) throw new Error('Product not found');
       setProduct(foundProduct);
-
       const filtered = data.filter(
         p =>
           p.namespaceId === foundProduct.namespaceId &&
           p.id !== foundProduct.id,
       );
-
       setSimilarProducts(filtered);
     } catch {
       setErr(true);
@@ -161,19 +141,16 @@ export const ProductDetailsPage: React.FC = () => {
     trackMouse: true,
   });
 
+  console.log("productId from useParams:", productId);
+
   return (
     <>
       {loading && <Spinner />}
-
       {err && (
         <div className="err">
           <div className="container">
             <div className="err_wrapper">
-              <img
-                src={ProductNotFound}
-                className="err_img"
-                alt="error image"
-              />
+              <img src={ProductNotFound} className="err_img" alt="error" />
               <button className="err_btn" onClick={loadData}>
                 Reload
               </button>
@@ -181,7 +158,6 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
         </div>
       )}
-
       {product && (
         <>
           <section className="product_details">
@@ -195,13 +171,12 @@ export const ProductDetailsPage: React.FC = () => {
                 <h1 className="product_details_title">{product.name}</h1>
               </div>
               <div className="product_details_wrapper">
-                {/* images */}
                 <div className="product_details_images">
                   <div className="product_details_images_main">
                     <img
                       className="product_details_images_main_image"
-                      src={`/${product.images[mainImgIndex]}`}
-                      alt="product image"
+                      src={`${baseUrl}${product.images[mainImgIndex]}`}
+                      alt="product"
                       {...handlers}
                     />
                   </div>
@@ -214,15 +189,14 @@ export const ProductDetailsPage: React.FC = () => {
                             ? 'product_details_secondary-img product_details_secondary-img--active'
                             : 'product_details_secondary-img'
                         }
-                        src={`/${image}`}
-                        alt="product image"
+                        src={`${baseUrl}${image}`}
+                        alt="thumbnail"
                         onClick={() => setMainImgIndex(index)}
                       />
                     ))}
                   </div>
                 </div>
                 <div className="product_details_other">
-                  {/* colors */}
                   <div className="product_details_colors">
                     <h5 className="product_details_colors_title">
                       Available colors
@@ -230,24 +204,26 @@ export const ProductDetailsPage: React.FC = () => {
                     <div className="product_details_colors_wrapper">
                       {product.colorsAvailable.map((color, index) => (
                         <div
+                          key={index}
                           className={
                             selectedColor === color
                               ? 'product_details_colors_color product_details_colors_color--active'
                               : 'product_details_colors_color'
                           }
-                          key={index}
                           onClick={() => updateParams(selectedCapacity, color)}
                         >
                           <div
                             className="product_details_colors_color_child"
-                            style={{ backgroundColor: allStrangeColors[color] || color }}
-                          ></div>
+                            style={{
+                              backgroundColor: allStrangeColors[color] || color,
+                            }}
+                          />
                         </div>
                       ))}
                     </div>
                     <div className="product_details_colors_line product_details_line"></div>
                   </div>
-                  {/* capacity */}
+
                   <div className="product_details_capacity">
                     <h5 className="product_details_capacity_title">
                       Select capacity
@@ -269,7 +245,7 @@ export const ProductDetailsPage: React.FC = () => {
                     </div>
                     <div className="product_details_capacity_line product_details_line"></div>
                   </div>
-                  {/* pricing */}
+
                   <div className="product_details_buy">
                     <div className="product_details_buy_pricing">
                       {product.priceDiscount ? (
@@ -287,16 +263,15 @@ export const ProductDetailsPage: React.FC = () => {
                         </p>
                       )}
                     </div>
-                    {/* buttons */}
                     <div className="product_details_buy_btns">
-                      <CartButton product={product}/>
+                      <CartButton product={product} />
                       <FavoritesButton
                         className="product_details_buy_btn product_details_buy_btn--favorite"
                         productId={product.id}
                       />
                     </div>
                   </div>
-                  {/* parameters */}
+
                   <div className="product_details_parameters">
                     <div className="product_details_parameters_wrapper">
                       <p className="product_details_parameters_key">Screen</p>
@@ -329,32 +304,30 @@ export const ProductDetailsPage: React.FC = () => {
                   </div>
                 </div>
               </div>
-              {/* about */}
+
               <div className="product_details_about">
                 <div className="product_details_about_description">
                   <h3 className="product_details_about_description_title">
                     About
                   </h3>
                   <div className="product_details_about_description_line product_details_line"></div>
-                  <>
-                    <div className="product_details_about_description_desc_container">
-                      {product.description.map((desc, index) => (
-                        <div
-                          className="product_details_about_description_desc"
-                          key={index}
-                        >
-                          <div className="product_details_about_description_desc_wrapper">
-                            <h4 className="product_details_about_description_desc_title">
-                              {desc.title}
-                            </h4>
-                            <p className="product_details_about_description_desc_text">
-                              {desc.text}
-                            </p>
-                          </div>
+                  <div className="product_details_about_description_desc_container">
+                    {product.description.map((desc, index) => (
+                      <div
+                        className="product_details_about_description_desc"
+                        key={index}
+                      >
+                        <div className="product_details_about_description_desc_wrapper">
+                          <h4 className="product_details_about_description_desc_title">
+                            {desc.title}
+                          </h4>
+                          <p className="product_details_about_description_desc_text">
+                            {desc.text}
+                          </p>
                         </div>
-                      ))}
-                    </div>
-                  </>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <div className="product_details_about_specs">
                   <h4 className="product_details_about_specs_title">
@@ -396,12 +369,6 @@ export const ProductDetailsPage: React.FC = () => {
                       </p>
                       <p className="product_details_about_specs_value">
                         {product.capacity}
-                      </p>
-                    </div>
-                    <div className="product_details_about_specs_wrapper">
-                      <p className="product_details_about_specs_key">Screen</p>
-                      <p className="product_details_about_specs_value">
-                        {product.screen}
                       </p>
                     </div>
                     {product.camera && (

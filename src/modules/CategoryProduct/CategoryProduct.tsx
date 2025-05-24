@@ -84,7 +84,7 @@ export const CategoryProduct: React.FC = () => {
     setError(false);
 
     try {
-      const response = await fetch(`/api/${category}.json`);
+      const response = await fetch(`/react_phone-catalog/api/${category}.json`);
       if (!response.ok) throw new Error('Failed to fetch');
 
       const data = await response.json();
@@ -161,13 +161,11 @@ export const CategoryProduct: React.FC = () => {
             <div className="container">
               <div className="product_top_wrapper">
                 <LinksRoad category={category} />
-
                 <h1 className="product_top_title">{title}</h1>
                 <p className="product_top_counter">{sorted.length} models</p>
 
                 {sorted.length > 0 && (
                   <div className="product_top_dropdowns">
-                    {/* Sort Dropdown */}
                     <div className="product_top_dropdown product_top_dropdown--sorted">
                       <span className="product_top_dropdown_title">
                         Sort by:
@@ -220,7 +218,6 @@ export const CategoryProduct: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Items per page */}
                     <div className="product_top_dropdown product_top_dropdown--items">
                       <span className="product_top_dropdown_title">
                         Items on page:

@@ -66,7 +66,7 @@ export const MainSlider = () => {
 
           <img
             className={`main-slider_slide ${images[currentImg] ? 'main-slider_slide' : ''}`}
-            src={images[currentImg]}
+            src={`/react_phone-catalog/${images[currentImg]}`}
             alt="slide"
           />
 

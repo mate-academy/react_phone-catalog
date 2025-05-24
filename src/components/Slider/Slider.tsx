@@ -88,7 +88,7 @@ export const Slider: React.FC<Props> = ({ title, products }) => {
                     }
                   >
                     <img
-                      src={`/${product.images[0]}`}
+                      src={`/react_phone-catalog/${product.images[0]}`}
                       className="product_img"
                       alt="product image"
                     />

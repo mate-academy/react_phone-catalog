@@ -13,7 +13,7 @@ import { CartProvider } from './contexts/CartContext/CartContext';
 export const App = () => {
   return (
     <>
-      <Router>
+      <Router basename="/react_phone-catalog">
         <CartProvider>
           <div className="App">
             <Header />
