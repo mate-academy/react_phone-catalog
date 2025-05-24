@@ -47,7 +47,7 @@
 
 body {
   background-color: $theme-background;
-  font-family: 'Mont', sans-serif;
+  font-family: 'Mont-Regular', sans-serif;
 }
 
 .App {
@@ -92,7 +92,7 @@ body {
   }
 
   &_text {
-    font-weight: 800;
+    font-family: 'Mont-Bold';
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -1%;
@@ -108,7 +108,7 @@ body {
   }
 
   &_btn {
-    font-weight: 700;
+    font-family: 'Mont-SemiBold';
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0%;
