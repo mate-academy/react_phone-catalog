@@ -1,0 +1,28 @@
+ .categories__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 0px;
+    gap: 32px;
+    @media (min-width: 640px){
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+  }
+.categories__card {
+
+    background-color: white;
+   & img{
+    width: 100%;
+    object-fit: contain;
+   }
+
+}
+.models__quantity{
+color: #89939A;
+font-weight: 600;
+font-size: 14px;
+}
+
