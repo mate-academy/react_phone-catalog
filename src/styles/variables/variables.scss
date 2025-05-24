@@ -28,9 +28,13 @@ $grid-column-desktop-size: 32px;
 // END utility
 
 // components
+$body-background-color: #fff;
+
 $header-height--mb: 48px;
 $header-height: 64px;
 $header-border-color: $light-gray;
+
+$divider-color: $light-gray;
 
 $ui-border-color: $gray;
 $ui-border-color--hover: $primary;

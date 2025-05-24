@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -9,18 +10,22 @@ import { ProductCard } from '../../../ProductCard';
 import { Product } from '../../../../types/Product';
 
 import styles from './ProductCarousel.module.scss';
+import { skeletonProduct } from '../../../../utils/Skeletons/skeletonProduct';
 
 type Props = {
   products: Product[];
   prevBtnRef: React.RefObject<HTMLButtonElement>;
   nextBtnRef: React.RefObject<HTMLButtonElement>;
+  isLoading?: boolean;
 };
 
 export const ProductCarousel: React.FC<Props> = ({
   products,
   prevBtnRef,
   nextBtnRef,
+  isLoading = false,
 }) => {
+  const location = useLocation();
   const swiperRef = useRef<SwiperType | null>(null);
 
   const onBeforeInit = (swiper: SwiperType) => {
@@ -57,12 +62,16 @@ export const ProductCarousel: React.FC<Props> = ({
         },
       }}
     >
-      {products.map(product => (
+      {products.map((product, index) => (
         <SwiperSlide
-          key={product.id}
+          key={`${location.pathname}-${product.id}-${index}`}
           className={styles['product-carousel__swiper-slide']}
         >
-          <ProductCard product={product} />
+          {isLoading ? (
+            <ProductCard product={skeletonProduct} variant="skeleton" />
+          ) : (
+            <ProductCard product={product} />
+          )}
         </SwiperSlide>
       ))}
     </Swiper>

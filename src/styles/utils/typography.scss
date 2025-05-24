@@ -74,11 +74,16 @@ h3 {
 h4 {
   @extend %heading-base;
 
-  font-size: 20px;
+  font-weight: 700;
+  font-size: 16px;
   font-style: bold;
 
-  line-height: 26px;
+  line-height: 20px;
   letter-spacing: 0;
+
+  @include on-tablet {
+    font-size: 20px;
+  }
 }
 
 .uppercase-text {
@@ -119,6 +124,10 @@ h4 {
     font-size: 12px;
 
     line-height: 15px;
+  }
+
+  &--capitalize {
+    text-transform: capitalize;
   }
 
   &--secondary {

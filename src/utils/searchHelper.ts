@@ -2,15 +2,10 @@ export type SearchParams = {
   [key: string]: string | string[] | null;
 };
 
-/**
- * This function prepares a correct search string
- * from a given currentParams and paramsToUpdate.
- */
 export function getSearchWith(
   currentParams: URLSearchParams,
   paramsToUpdate: SearchParams, // it's our custom type
 ): string {
-  // copy currentParams by creating new object from a string
   const newParams = new URLSearchParams(currentParams.toString());
 
   // Here is the example of paramsToUpdate

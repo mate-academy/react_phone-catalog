@@ -35,7 +35,7 @@ export const Cart: React.FC<Props> = ({}) => {
           <div className={styles['cart__checkout-wrapper']}>
             <h2>${'1000'}</h2>
             <p className="main-text">Total for {products.length} items</p>
-            <div className={styles['cart__checkout-divider']}></div>
+            <div className="divider"></div>
             <ButtonPrimary>Checkout</ButtonPrimary>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { getProducts } from '../../api/products';
 
 import { productsFilter } from '../../utils/productsFilter';
 import { getEnumValue } from '../../utils/getEnumValue';
+import { skeletonProduct } from '../../utils/Skeletons/skeletonProduct';
 
 import { Product } from '../../types/Product';
 import { Category } from '../../types/Category';
@@ -66,7 +67,7 @@ export const Catalog = () => {
     return filtered;
   }, [products, searchParams, currentPage, itemsPerPage]);
 
-  const handlerPageChange = (page: number) => {
+  const handlePageChange = (page: number) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     searchParams.set('page', `${page}`);
     setSearchParams(searchParams);
@@ -107,7 +108,14 @@ export const Catalog = () => {
         </div>
 
         <div className={styles['catalog__products-wrapper']}>
-          {isLoading && 'Loading'}
+          {isLoading &&
+            Array.from({ length: +itemsPerPage }).map((_, index) => (
+              <ProductCard
+                key={`skeleton-${index}`}
+                product={skeletonProduct}
+                variant="skeleton"
+              />
+            ))}
           {!isLoading &&
             filteredProducts.map(product => (
               <ProductCard key={product.id} product={product} />
@@ -118,7 +126,7 @@ export const Catalog = () => {
             currentPage={+(currentPage ?? 1)}
             totalPages={totalPages.current}
             visibleCount={5}
-            onPageChange={page => handlerPageChange(page)}
+            onPageChange={page => handlePageChange(page)}
           />
         </div>
       </div>

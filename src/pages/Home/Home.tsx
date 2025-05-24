@@ -6,6 +6,7 @@ import { Product } from '../../types/Product';
 import { Category } from '../../types/Category';
 import { SortFilter } from '../../types/SortFilter';
 
+import { skeletonProduct } from '../../utils/Skeletons/skeletonProduct';
 import { getSelectedProducts } from '../../utils/getSelectedProducts';
 
 import { ProductCarouselSection } from '../../components/ProductCarouselSection';
@@ -15,10 +16,15 @@ import { BannerCarouselSection } from '../../components/BannerCarouselSection';
 // import styles from './Home.module.scss';
 
 export const Home = () => {
-  const [newModels, setNewModels] = useState<Product[]>([]);
-  const [hotPrices, setHotPrices] = useState<Product[]>([]);
+  const skeletons: Product[] = Array.from({ length: 5 }, () => skeletonProduct);
+
+  const [newModels, setNewModels] = useState<Product[]>(skeletons);
+  const [hotPrices, setHotPrices] = useState<Product[]>(skeletons);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+
     getProducts()
       .then(products => {
         setNewModels(
@@ -36,7 +42,10 @@ export const Home = () => {
           }),
         );
       })
-      .catch();
+      .catch()
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   return (
@@ -49,6 +58,7 @@ export const Home = () => {
       <BannerCarouselSection />
       <ProductCarouselSection
         products={newModels}
+        isLoading={isLoading}
         sectionTitle={'Brand new models'}
       />
       <ProductCategorySection />

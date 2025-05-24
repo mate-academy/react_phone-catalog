@@ -11,6 +11,10 @@
   width: 100%;
   padding: 32px;
   gap: 8px;
+
+  & *:hover {
+    cursor: pointer;
+  }
 }
 
 .product-card__image-wrapper {

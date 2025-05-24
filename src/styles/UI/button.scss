@@ -24,6 +24,10 @@
     height: 100%;
   }
 
+  &--rounded {
+    border-radius: 100%;
+  }
+
   &:hover {
     cursor: pointer;
     border: 1px solid $ui-border-color--hover;

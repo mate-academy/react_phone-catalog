@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import styles from './ProductCard.module.scss';
+import Skeleton from 'react-loading-skeleton';
 
+import { useLocalStorage } from '../../hooks/useLocaleStorage';
 import { Product } from '../../types/Product';
+
+import { NavLink } from 'react-router-dom';
 import { ButtonPrimary } from '../UI/ButtonPrimary';
 import { ButtonFavorite } from '../UI/ButtonFavorite';
-import { useLocalStorage } from '../../hooks/useLocaleStorage';
 
-type Variant = 'default' | 'cart';
+import 'react-loading-skeleton/dist/skeleton.css';
+import styles from './ProductCard.module.scss';
+
+type Variant = 'default' | 'cart' | 'skeleton';
 
 type Props = {
   product: Product;
@@ -27,7 +32,9 @@ export const ProductCard: React.FC<Props> = ({
     [],
   );
 
-  const toggleCart = () => {
+  const toggleCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     setInCart(state => !state);
 
     setStoredCart(prev => {
@@ -39,7 +46,9 @@ export const ProductCard: React.FC<Props> = ({
     });
   };
 
-  const toggleFavorite = () => {
+  const toggleFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     setIsFavorite(state => !state);
 
     setStoredFavorites(prev => {
@@ -75,6 +84,20 @@ export const ProductCard: React.FC<Props> = ({
     }
   }, [storedFavorites, storedCart, product.id]);
 
+  if (variant === 'skeleton') {
+    return (
+      <div className={styles['product-card']}>
+        <Skeleton height={150} />
+        <Skeleton width="100%" className="mt-1" />
+        <Skeleton width="60%" className="mt-1" />
+        <Skeleton width="100%" className="mt-1" />
+        <Skeleton width="100%" className="mt-1" />
+        <Skeleton width="100%" className="mt-1" />
+        <Skeleton height={40} />
+      </div>
+    );
+  }
+
   if (variant === 'cart') {
     return (
       <article
@@ -85,7 +108,7 @@ export const ProductCard: React.FC<Props> = ({
           <div className={styles['product-card__image-wrapper--cart']}>
             <img
               className={`${styles['product-card__image']} ${styles['product-card__image--cart']}`}
-              src={product.image}
+              src={`/${product.image}`}
               alt="Product Photo"
             />
           </div>
@@ -118,11 +141,14 @@ export const ProductCard: React.FC<Props> = ({
   }
 
   return (
-    <article className={styles['product-card']}>
+    <NavLink
+      to={`/product/${product.itemId}`}
+      className={styles['product-card']}
+    >
       <div className={styles['product-card__image-wrapper']}>
         <img
           className={styles['product-card__image']}
-          src={product.image}
+          src={`/${product.image}`}
           alt="Product Photo"
         />
       </div>
@@ -162,6 +188,6 @@ export const ProductCard: React.FC<Props> = ({
 
         <ButtonFavorite selected={isFavorite} onClick={toggleFavorite} />
       </div>
-    </article>
+    </NavLink>
   );
 };

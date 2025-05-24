@@ -9,13 +9,15 @@ import 'swiper/css/navigation';
 import styles from './ProductCarouselSection.module.scss';
 
 type Props = {
-  sectionTitle?: string;
   products: Product[];
+  sectionTitle?: string;
+  isLoading?: boolean;
 };
 
 export const ProductCarouselSection: React.FC<Props> = ({
-  sectionTitle,
   products,
+  sectionTitle = '',
+  isLoading = false,
 }) => {
   const prevBtnRef = useRef<HTMLButtonElement>(null);
   const nextBtnRef = useRef<HTMLButtonElement>(null);
@@ -40,6 +42,7 @@ export const ProductCarouselSection: React.FC<Props> = ({
           products={products}
           prevBtnRef={prevBtnRef}
           nextBtnRef={nextBtnRef}
+          isLoading={isLoading}
         />
       </div>
     </section>

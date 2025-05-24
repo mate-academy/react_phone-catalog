@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Home as HomePage } from './pages/Home';
 import { Catalog as CatalogPage } from './pages/Catalog';
+import { ProductPage } from './pages/ProductPage';
 import { Favorites as FavoritesPage } from './pages/Favorites';
 import { Cart as CartPage } from './pages/Cart';
 import { NotFound404 as NotFound404Page } from './pages/NotFound404';
@@ -19,6 +20,7 @@ export const App = () => {
         <Route path="/">
           <Route index element={<HomePage />} />
           <Route path="catalog" element={<CatalogPage />} />
+          <Route path="product/:id" element={<ProductPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="home" element={<Navigate to=".." />} />
