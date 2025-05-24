@@ -4,6 +4,8 @@ import { getProduct } from '../../../shared/utils/fetchClient';
 import { useCallback, useEffect, useState } from 'react';
 import { Product } from '../../../shared/utils/apiTypes';
 import { SortDrowDown } from '../../../shared/components/SortDropDown';
+// eslint-disable-next-line max-len
+import { ItemsOnPageDropDown } from '../../../shared/components/ItemsOnPageDropDown';
 
 export const PhoneCatalog = () => {
   const [phones, setPhones] = useState<Product[] | undefined>();
@@ -31,7 +33,7 @@ export const PhoneCatalog = () => {
           <p className={styles.catalog__counter}>{phonesCounter} models</p>
           <div className={styles['catalog__drop-downs']}>
             <SortDrowDown />
-            <SortDrowDown />
+            <ItemsOnPageDropDown />
           </div>
         </div>
         <div className={styles.catalog__list}>

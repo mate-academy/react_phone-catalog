@@ -26,11 +26,14 @@
   &__drop-downs {
     display: flex;
     justify-content: left;
+    gap: 16px;
   }
 
-  // &__header {
-
-  // }
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
   &__title {
     margin: 0;

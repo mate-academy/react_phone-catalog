@@ -1,24 +1,28 @@
-import styles from './SortDropDown.module.scss';
+import styles from './ItemsOnPageDropDown.module.scss';
 
-export const SortDrowDown = () => {
+export const ItemsOnPageDropDown = () => {
   return (
     <>
       <div className={styles['drop-down']}>
         <label className={styles['drop-down__label']} htmlFor="sort">
-          Sort by
+          Items on page
         </label>
         <select className={styles['drop-down__select']} name="sort" id="sort">
           <button></button>
           <option className={styles['drop-down__option']} value="age">
-            Newest
+            4
           </option>
 
           <option className={styles['drop-down__option']} value="title">
-            Alphabetically
+            8
           </option>
 
           <option className={styles['drop-down__option']} value="price">
-            Cheapest
+            16
+          </option>
+
+          <option className={styles['drop-down__option']} value="price">
+            All
           </option>
         </select>
       </div>

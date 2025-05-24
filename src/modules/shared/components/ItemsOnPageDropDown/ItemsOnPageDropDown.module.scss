@@ -1,10 +1,10 @@
 @use '../../utils/variables' as *;
 
 .drop-down {
-display: flex;
-flex-direction: column;
-gap: 4px;
-width: 136px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 136px;
 
   &__label {
     font-weight: 400;
@@ -28,17 +28,17 @@ width: 136px;
     line-height: 21px;
     letter-spacing: 0%;
 
-  &__option {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    height: 40px;
-    padding: 12px 0;
-    color: $gray-color;
-    background-color: $white-color;
-    width: 136px;
-    transition: 0.4s;
+    &__option {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      height: 40px;
+      padding: 12px 0;
+      color: $gray-color;
+      background-color: $white-color;
+      width: 136px;
+      transition: 0.4s;
+    }
   }
-}
 }
