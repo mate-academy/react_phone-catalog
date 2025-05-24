@@ -10,9 +10,15 @@ const pagesOfMenu = [
   { name: 'Accessories', url: 'accessories' },
 ];
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  cn('menu__link', {
-    'menu__link--active': isActive,
+export const getLinkClass = ({
+  isActive,
+  className,
+}: {
+  isActive: boolean;
+  className: string;
+}) =>
+  cn(className, {
+    [`${className}--active`]: isActive,
   });
 
 export const Menu = () => {
@@ -21,7 +27,12 @@ export const Menu = () => {
       <ul className="menu__list">
         {pagesOfMenu.map(page => (
           <li className="menu__item" key={page.name}>
-            <NavLink to={page.url} className={getLinkClass}>
+            <NavLink
+              to={page.url}
+              className={({ isActive }) =>
+                getLinkClass({ isActive, className: 'menu__link' })
+              }
+            >
               {page.name}
             </NavLink>
           </li>

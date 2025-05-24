@@ -18,6 +18,7 @@
     display: flex;
     align-items: center;
     gap: 24px;
+    width: 100%;
 
     &__button {
       border: none;
@@ -43,20 +44,28 @@
     justify-content: space-between;
     align-items: center;
     gap: 24px;
+    flex-basis: calc(38% - 24px);
+    flex-shrink: 0;
+
+    @media (max-width: $tablet) {
+      flex-basis: 215px;
+    }
 
     @media (max-width: $mobile) {
-      width: 100%;
+      flex-basis: 100%;
     }
 
     &__buttons {
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
+      width: 96px;
     }
 
     &__button {
       width: 32px;
       height: 32px;
+      padding-bottom: 3px;
       border: 1px solid $elements;
       border-radius: 48px;
       background: $white;

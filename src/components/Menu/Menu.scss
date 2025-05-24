@@ -19,11 +19,13 @@
   &__link {
     @include menu-list;
 
-    transition: color 0.3s;
+    padding-bottom: 20px;
+    border-bottom: 3px solid transparent;
+
+    transition: all 0.3s;
 
     &:hover {
-      padding-bottom: 20px;
-      border-bottom: 3px solid $primary;
+      border-color: $primary;
       color: $primary;
     }
   }

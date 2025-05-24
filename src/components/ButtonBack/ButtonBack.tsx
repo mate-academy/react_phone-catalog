@@ -10,7 +10,7 @@ export const BackButton = () => {
     <button
       className="back-button"
       onClick={() => {
-        navigate(-1);
+        navigate('..', { relative: 'path' });
       }}
     >
       <ArrowIcon disabled={false} />

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { ItemsCount } from '../ItemsCount';
 import { ProductsContext } from '../context/ProductsContext';
+import { getLinkClass } from '../Menu';
 
 export const ShoppingBag: FC<{ isMobile?: boolean; onClose?: () => void }> = ({
   isMobile,
@@ -17,7 +18,13 @@ export const ShoppingBag: FC<{ isMobile?: boolean; onClose?: () => void }> = ({
         'shopping-bag--mobile': isMobile,
       })}
     >
-      <NavLink to="cart" className="shopping-bag__link" onClick={onClose}>
+      <NavLink
+        to="cart"
+        className={({ isActive }) =>
+          getLinkClass({ isActive, className: 'shopping-bag__link' })
+        }
+        onClick={onClose}
+      >
         <img
           src="./img/shopping-bag.svg"
           alt="Shopping bag"

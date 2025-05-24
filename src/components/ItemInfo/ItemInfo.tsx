@@ -29,11 +29,11 @@ export const ItemInfo: React.FC<Props> = ({ availibleData, type }) => {
                   ></div>
                 </NavLink>
               ) : (
-                <a href={url} className="item-info__link-capacity">
+                <NavLink to={url} className="item-info__link-capacity">
                   <div className="item-info__link-capacity-form">
                     {optionValue}
                   </div>
-                </a>
+                </NavLink>
               )}
             </li>
           );

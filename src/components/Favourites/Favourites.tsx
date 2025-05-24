@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { ProductsContext } from '../context/ProductsContext';
 import { ItemsCount } from '../ItemsCount';
+import { getLinkClass } from '../Menu';
 
 export const Favourites: FC<{ isMobile?: boolean; onClose?: () => void }> = ({
   isMobile,
@@ -17,7 +18,13 @@ export const Favourites: FC<{ isMobile?: boolean; onClose?: () => void }> = ({
         'favourites--mobile': isMobile,
       })}
     >
-      <NavLink to="favourites" className="favourites__link" onClick={onClose}>
+      <NavLink
+        to="favourites"
+        className={({ isActive }) =>
+          getLinkClass({ isActive, className: 'favourites__link' })
+        }
+        onClick={onClose}
+      >
         <img
           src="./img/favourites.svg"
           alt="Fvourites items"

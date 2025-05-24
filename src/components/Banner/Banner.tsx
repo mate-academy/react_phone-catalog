@@ -62,6 +62,7 @@ export const Banner = () => {
         autoplay={{
           delay: 5000,
         }}
+        loop={true}
       >
         {slides.map(({ imgPathName, mobilePath, link }, index) => (
           <SwiperSlide key={index}>
