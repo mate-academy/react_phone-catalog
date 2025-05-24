@@ -6,6 +6,7 @@ import { Product } from '../../../shared/utils/apiTypes';
 import { SortDrowDown } from '../../../shared/components/SortDropDown';
 // eslint-disable-next-line max-len
 import { ItemsOnPageDropDown } from '../../../shared/components/ItemsOnPageDropDown';
+import { Pagination } from '../../../shared/components/Pagination';
 
 export const PhoneCatalog = () => {
   const [phones, setPhones] = useState<Product[] | undefined>();
@@ -52,6 +53,7 @@ export const PhoneCatalog = () => {
             );
           })}
         </div>
+        <Pagination total={phonesCounter} perPage={16} />
       </div>
     </>
   );
