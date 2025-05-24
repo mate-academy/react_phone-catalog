@@ -118,7 +118,7 @@ export const ProductInformationPage: React.FC = () => {
             {currentItem.images.map((image, index) => (
               <img
                 key={index}
-                src={`/${image}`}
+                src={`./${image}`}
                 alt={`Product image ${index + 1}`}
                 className={`pi__main__image ${activeSlideIndex === index ? 'active__pi__main__image' : ''}`}
                 onClick={() => setActiveSlideIndex(index)}
@@ -129,7 +129,7 @@ export const ProductInformationPage: React.FC = () => {
             {currentItem.images.map((image, index) => (
               <img
                 key={index}
-                src={`/${image}`}
+                src={`./${image}`}
                 alt={`Product image ${index + 1}`}
                 className={`pi__option__image ${activeSlideIndex === index ? 'active__product__info__image' : ''}`}
                 onClick={() => setActiveSlideIndex(index)}
