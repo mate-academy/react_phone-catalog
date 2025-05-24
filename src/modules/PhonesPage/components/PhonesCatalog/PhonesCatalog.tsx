@@ -15,13 +15,19 @@ export const PhoneCatalog = () => {
     loadPhones();
   }, [loadPhones]);
 
+  const phonesCounter = phones?.length;
+
   return (
     <>
       <div className={styles.catalog}>
-        <div className={styles['catalog__bread-crumbs']}>
-          <img src="public/icons/Home.svg" alt="home icon" />
-          <img src="public/icons/ArrowRight.svg" alt="arrow right icon" />
-          <p className={styles['catalog__bread-crumbs--text']}>Phones</p>
+        <div>
+          <div className={styles['catalog__bread-crumbs']}>
+            <img src="public/icons/Home.svg" alt="home icon" />
+            <img src="public/icons/ArrowRight.svg" alt="arrow right icon" />
+            <p className={styles['catalog__bread-crumbs--text']}>Phones</p>
+          </div>
+          <h1 className={styles.catalog__header}>Mobile phones</h1>
+          <p className={styles.catalog__counter}>{phonesCounter} models</p>
         </div>
         {phones?.map(phone => {
           return (

@@ -2,12 +2,25 @@
 
 .catalog {
   display: grid;
-  grid-template-columns: repeat(auto-fit, min-max(60px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
   gap: 16px;
   justify-content: center;
   align-items: center;
   max-width: 100vw;
   padding: 24px 16px;
+
+  &__counter {
+    color: $gray-color;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    margin: 0;
+  }
+
+  &__header {
+    margin: 0;
+  }
 
   &__bread-crumbs {
     display: flex;
