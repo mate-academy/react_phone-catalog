@@ -62,6 +62,7 @@ height: 100%;
 
  @include mixin.onDesktop{
  &:hover{
+
     transform: scale(1.1);
   }
 }
@@ -98,6 +99,7 @@ letter-spacing: 4%;
 text-transform: uppercase;
 text-decoration: none;
  &.is-active {
+  color: #0F0F11;
     border-bottom: 3px solid #0F0F11;
   }
 
@@ -116,76 +118,25 @@ border-left: 1px solid #E2E6E9;
 
 @include mixin.onTablet{
 width: 96px;
-
+height: 48px;
+&__divider {
+   align-self: stretch;
+  border: 1px solid #E2E6E9;
+}
 }
 @include mixin.onDesktop{
 width: 128px;
 height: 64px;
 }
-}
-
-.icon {
-
-    width: 48px;
-  height: 100%;
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 16px 16px;
-
-@include mixin.onDesktop{
- &:hover{
-    transform: scale(1.1);
-  }
-}
-  &--menu {
-width: 48px;
-
-    background-image: url('/img/icons/Menu.svg');
-
-
-
-@include mixin.onTablet {
-  display: none;
-}
-
-  }
-  &--close{
-    width: 48px;
-
-    background-image: url('/img/icons/close.svg');
-
-@include mixin.onTablet {
-  display: none;
-}
-  }
-
-  &--cart{
-
-    display: none;
-    background-image: url('/img/icons/cart.svg');
-    @include mixin.onTablet {
-  display: block;
-
 
 }
-  }
-  &--heart{
-    display: none;
 
-    background-image: url('/img/icons/heart.svg');
 
-    @include mixin.onTablet {
-  display: block;
 
-}
-  }
-}
 
-.divider {
 
-  width: 0.5px;
-  height: 100%;
-  background-color:  #E2E6E9;
 
-}
+
+
+
+

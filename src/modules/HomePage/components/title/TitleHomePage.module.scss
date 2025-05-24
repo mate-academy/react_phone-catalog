@@ -1,0 +1,30 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.title{
+
+
+
+  &__text{
+
+    margin: 0;
+margin-left: 16px;
+margin-bottom: 24px;
+    font-family: Mont;
+font-weight: 800;
+font-size: 32px;
+line-height: 41px;
+letter-spacing: -1%;
+color: #0F0F11;
+
+@include mixin.onTablet{
+  margin-left: 24px;
+  margin-bottom: 32px;
+  font-size: 48px;
+}
+@include mixin.onDesktop{
+  margin-left: 32px;
+  margin-bottom: 56px;
+}}
+
+
+}

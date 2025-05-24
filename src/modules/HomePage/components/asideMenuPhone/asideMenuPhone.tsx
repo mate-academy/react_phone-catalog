@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './asideMenuPhone.module.scss';
 import classNames from 'classnames';
+import { IconsSvg } from '../../../../components/icons/icons';
 
 export const AsideMenuPhone = ({ setActiveAsside}) => {
    const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -37,23 +38,31 @@ export const AsideMenuPhone = ({ setActiveAsside}) => {
       </nav>
 
       <div className={styles.menu__bottom} onClick={() => setActiveAsside(false)}>
-      <NavLink
+ <NavLink
   to="/favorite"
   className={({ isActive }) =>
-    classNames(styles.icon, styles['icon--favorite'], {
+    classNames(styles.buttonWrapper, {
       [styles['is-active']]: isActive,
     })
   }
-></NavLink>
-        <div className={styles.divider}></div>
-       <NavLink
-  to="/cart"
-  className={({ isActive }) =>
-    classNames(styles.icon, styles['icon--cart'], {
-      [styles['is-active']]: isActive,
-    })
-  }
-></NavLink>
+>
+  <IconsSvg name="heart" className={styles['visible--mobile']} />
+</NavLink>
+
+<div className={styles.divider}></div>
+
+        <NavLink
+    to="/cart"
+    className={({ isActive }) =>
+      classNames(styles.buttonWrapper, {
+        [styles['is-active']]: isActive,
+      })
+    }
+  >
+  <IconsSvg name="cart" className={styles['visible--mobile']} />
+</NavLink>
+
+
       </div>
     </aside>
   );

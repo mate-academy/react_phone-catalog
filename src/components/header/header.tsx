@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import { AsideMenuPhone } from '../../modules/HomePage/components/asideMenuPhone'
 import logo from '/public/img/niceLogo.svg';
+import { IconsSvg } from '../icons/icons'
 export const Header = () => {
   const [activeAsside, setActiveAsside] = useState(false);
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -47,20 +48,18 @@ export const Header = () => {
         </nav>
         </div>
 <div className={styles.box}>
-      {<NavLink onClick={() => setActiveAsside(prev => !prev)} className={classNames(styles.icon,  activeAsside? styles['icon--close']:styles['icon--menu'])}></NavLink>}
-        <NavLink to ="/favorite" className={`${styles.icon} ${styles['icon--heart']}`}>
-
+     <IconsSvg
+    name={activeAsside ? 'close' : 'menu'}
+    onClick={() => setActiveAsside(prev => !prev)}
+  />
+        <NavLink to ="/favorite" >
+<IconsSvg name={'heart'}/>
         </NavLink>
-        <div className={styles.divider}></div>
-        <NavLink to ="/cart" className={`${styles.icon} ${styles['icon--cart']}`}>
-
+        <div className={styles.box__divider}></div>
+        <NavLink to ="/cart" >
+<IconsSvg name={'cart'}/>
         </NavLink>
         </div>
-
-
-
-
-
   </header>
   {activeAsside && <AsideMenuPhone  setActiveAsside={ setActiveAsside}  />}</>
   )

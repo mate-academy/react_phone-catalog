@@ -1,28 +1,6 @@
 @use '/src/components/utils/mixin.module.scss' as mixin;
 
-.icon {
 
-  width: 320px;
-  height: 100%;
-  display: block;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 16px 16px;
-  &--menu {
-    margin-left: auto;
-  }
-
-  &--cart{
-    background-image: url('/img/icons/cart.svg');
-  }
-  &--favorite{
-
-    background-image: url('/img/icons/heart.svg');
-  }
-   &.is-active {
-    border-bottom: 2px solid #313237;
-  }
-}
 .menu {
 z-index: 1000;
   text-transform: uppercase;
@@ -42,6 +20,17 @@ z-index: 1000;
   display: none;
 }
 }
+.buttonWrapper {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.is-active {
+    border-bottom: 2px solid #313237;
+  }
+}
 
 
 .nav__link{
@@ -52,6 +41,7 @@ text-decoration: none;
   line-height: 11px0
   ; letter-spacing: 4%;
   &.is-active {
+    color: #0F0F11;
     border-bottom: 2px solid #313237;
   }
 }
@@ -68,6 +58,14 @@ right: 0;
   align-items: center;
   height: 64px;
 
+  .visible--mobile {
+  display: block !important;
+
+  @include mixin.onTablet {
+    display: none !important;
+
+  }
+}
 
 }
 .divider {

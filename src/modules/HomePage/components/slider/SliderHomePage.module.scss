@@ -1,0 +1,91 @@
+
+
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.slider {
+
+display: flex;
+justify-content: flex-end;
+align-items: center;
+flex-direction: column;
+
+@include mixin.onTablet{
+  margin-left: 24px;
+margin-right: 24px;}
+
+&__box{
+
+  display: flex;
+gap:19px;
+
+  width: 100%;
+  height: 320px;
+
+  @include mixin.onTablet{
+  height: 189px;
+padding: 0 19px;
+}
+@include mixin.onDesktop{
+  height: 400px;
+}
+}
+
+}
+
+.slider__image{
+  margin: 0;
+  height: 100%;
+  width:100%;
+ 
+  background-size:cover;
+  background-position: center left;
+background-repeat: no-repeat;
+
+}
+
+.slider__button {
+  display: none;
+  width: 32px;
+  height: 100%;
+  background-image: url('/img/slider/buttonSlide.svg');
+  background-repeat: no-repeat;
+   background-size: contain;
+   background-position: center;
+  flex-shrink: 0;
+
+  @include mixin.onTablet {
+    display: block;
+  }
+
+  @include mixin.onDesktop {
+    background-image: url('/img/slider/sliderButtonDesktop.svg');
+  }
+
+  &--left {
+    display: none;
+
+    @include mixin.onTablet {
+      display: flex;
+    }
+
+    transform: scaleX(-1);
+  }
+}
+
+.slider__rectangle {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+
+
+  & span {
+    width: 24px;
+    height: 4px;
+    background-color: #ccc;
+    border-radius: 2px;
+  }
+
+  & .active {
+    background-color: #333;
+  }
+}

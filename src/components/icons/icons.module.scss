@@ -1,0 +1,46 @@
+@use '../utils/mixin.module.scss' as mixin;
+.icon {
+  width: 48px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+ 
+  @include mixin.onDesktop {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &--menu {
+    background-image: url('/img/icons/menu.svg');
+    @include mixin.onTablet {
+      display: none;
+    }
+  }
+
+  &--close {
+    background-image: url('/img/icons/close.svg');
+    @include mixin.onTablet {
+      display: none;
+    }
+  }
+
+  &--cart {
+    display: none;
+    background-image: url('/img/icons/cart.svg');
+
+    @include mixin.onTablet {
+      display: block;
+    }
+  }
+
+  &--heart {
+    display: none;
+    background-image: url('/img/icons/heart.svg');
+
+    @include mixin.onTablet {
+      display: block;
+    }
+  }
+}

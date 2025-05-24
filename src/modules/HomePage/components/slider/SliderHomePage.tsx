@@ -1,0 +1,44 @@
+import { useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
+import styles from './SliderHomePage.module.scss';
+export const SliderHomePage = () => {
+  const images = ['/img/slider/slider1.png','/img/slider/slider2.png','/img/slider/slider3.png']
+  const [activeIndex, setActiveIndex] = useState(0);
+  const goNext = () => {
+    setActiveIndex((index=>(index+1)% images.length))
+  }
+  const goPrev = () => {
+    setActiveIndex(index => (index - 1 + images.length) % images.length)
+
+
+  }
+  const handlers = useSwipeable({
+  onSwipedLeft: () => handleNext(),
+  onSwipedRight: () => handlePrev(),
+});
+  return (
+
+    <div className={styles.slider}>
+<div className={styles.slider__box}>
+        <div className={`${styles.slider__button}
+       ${styles['slider__button--left']}`}
+        onClick={goPrev}></div>
+        <div className={styles.slider__image}
+          style={{ backgroundImage: `url(${images[activeIndex]})` }}
+        {...handlers}></div>
+<div
+  className={`${styles.slider__button} ${styles['slider__button--right']}`}
+  onClick={goNext}
+/>
+</div>
+      <div className={styles.slider__rectangle}>
+        {images.map((image, index) => <span key={index}
+          className={index === activeIndex ? styles.active : ''}
+        onClick={()=>setActiveIndex(index)}></span>)}
+
+
+        </div>
+      </div>
+
+  );
+};
