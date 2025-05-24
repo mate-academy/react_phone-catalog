@@ -5,10 +5,11 @@
   justify-content: center;
   width: 100%;
   aspect-ratio: 3 / 1;
+
   @media (min-width: 320px) and (max-width: 639px) {
   width: 100%;
   aspect-ratio: 1 / 1;
-  
+
   }
 
   &__slider {
@@ -26,6 +27,7 @@
   display: block;
   width: 100%;
   height: 100%;
+
 @media (min-width: 320px) and (max-width: 639px) {
   object-fit: cover;
   object-position: 80% center;
@@ -43,20 +45,22 @@
   justify-content: center;
   cursor: pointer;
   height: 100%;
+
   @media (min-width: 320px) and (max-width: 639px) {
   display: none;
   }
 }
 
-#invitation {
+.invitation {
 color: #313237;
 font-weight: 800;
 font-size: 32px;
+margin-bottom: 24px;
+margin-top: 0;
+
 @media (min-width: 640px){
   font-size: 48px;
 }
-margin-bottom: 24px;
-margin-top: 0px;
 
 @media (min-width: 640px) and (max-width: 1199px) {
   margin-bottom: 32px;
@@ -67,22 +71,26 @@ margin-top: 0px;
 }
 
 }
+
 .dots {
   display: flex;
   justify-content: center;
   gap: 8px;
   margin-top: 20px;
-  
+
 }
+
 .dot {
   border: none;
   background-color: #E2E6E9;
   width: 20px;
   height: 4px;
 }
+
 .dot:hover {
   cursor: pointer;
 }
+
 .active__dot {
- background-color: #313237; 
+ background-color: #313237;
 }

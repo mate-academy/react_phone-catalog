@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import './Navbar.scss';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { LuHeart } from 'react-icons/lu';
 import { LuShoppingBag } from 'react-icons/lu';
 import { LuMenu } from 'react-icons/lu';
@@ -10,35 +10,33 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../app/store';
 import Badge from '@mui/material/Badge';
 import { getFavoritesQuantity } from '../../features/favorites';
-import { getTotals} from '../../features/cart';
-
-
+import { getTotals } from '../../features/cart';
 
 export const Navbar = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar-item', { 'has-underline': isActive });
-const favoriteTotalQuantity = useSelector(
-  (state: RootState) => state.favorites.favoriteTotalQuantity
-);
+  const favoriteTotalQuantity = useSelector(
+    (state: RootState) => state.favorites.favoriteTotalQuantity,
+  );
 
   const cartTotalQuantity = useSelector(
-  (state: RootState) => state.cart.cartTotalQuantity
-);
-const dispatch = useDispatch();
+    (state: RootState) => state.cart.cartTotalQuantity,
+  );
+  const dispatch = useDispatch();
 
-const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-const favoriteItems = useSelector(
-  (state: RootState) => state.favorites.favoriteItems,
-);
-const[isMenuOpen, setIsMenuOpen] = useState(false);
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+  const favoriteItems = useSelector(
+    (state: RootState) => state.favorites.favoriteItems,
+  );
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-useEffect(() => {
-  dispatch(getTotals());
-}, [dispatch, cartItems]);
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [dispatch, cartItems]);
 
-useEffect(() => {
-  dispatch(getFavoritesQuantity());
-}, [dispatch, favoriteItems]);
+  useEffect(() => {
+    dispatch(getFavoritesQuantity());
+  }, [dispatch, favoriteItems]);
 
   return (
     <>

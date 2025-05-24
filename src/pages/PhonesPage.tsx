@@ -7,8 +7,6 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { LuHouse } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 import { Pagination } from '../components/Pagination/Pagination';
-import { Outlet } from 'react-router-dom'; // Import Outlet
-
 export const PhonesPage: React.FC = () => {
   const products = useSelector((state: RootState) => state.products.items);
 
@@ -41,12 +39,10 @@ export const PhonesPage: React.FC = () => {
           </div>
         </div>
         <div className="container">
-          {/* Render the list of products for phones */}
           <ProductList category="phones" />
         </div>
 
-        {/* The nested route will be rendered here */}
-        <Outlet />
+        {/* <Outlet /> */}
       </div>
     </div>
   );

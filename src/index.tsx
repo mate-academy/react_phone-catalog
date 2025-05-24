@@ -19,9 +19,12 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
 import { ProductInformationPage } from './pages/ProductInformationPage';
+import ScrollToTop from './components/ScrollToTop';
+
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <Provider store={store}>
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />

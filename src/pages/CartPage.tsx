@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../app/store';
 import { IoIosArrowBack } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import {
   removeFromCart,
   increaseQuantity,
@@ -15,7 +16,7 @@ import Swal from 'sweetalert2';
 
 export const CartPage: React.FC = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { cartItems, cartTotalAmount, cartTotalQuantity } = useSelector(
     (state: RootState) => state.cart,
   );
@@ -24,15 +25,15 @@ export const CartPage: React.FC = () => {
     dispatch(getTotals());
   }, [cartItems, dispatch]);
 
-  const handleRemoveFromCart = (cartItem: any) => {
+  const handleRemoveFromCart = (cartItem: string) => {
     dispatch(removeFromCart(cartItem));
   };
 
-  const handleIncrease = (product: any) => {
+  const handleIncrease = (product: string) => {
     dispatch(increaseQuantity(product));
   };
 
-  const handleDecrease = (product: any) => {
+  const handleDecrease = (product: string) => {
     dispatch(decreaseQuantity(product));
   };
 
@@ -65,14 +66,17 @@ export const CartPage: React.FC = () => {
     });
   };
 
-
   return (
     <div className="section" id="cart">
       <div className="cart">
-        <Link to="/home" className="top__back__link">
+        <div
+          className="top__back__link"
+          onClick={() => navigate(-1)}
+          style={{ cursor: 'pointer' }}
+        >
           <IoIosArrowBack color="#313237" />
           <p>Back</p>
-        </Link>
+        </div>
         <h1 id="heading1" className="cart__h1">
           Cart
         </h1>

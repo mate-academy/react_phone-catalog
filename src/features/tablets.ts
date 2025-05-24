@@ -34,12 +34,16 @@ const initialState: TabletsState = {
   items: [],
   status: 'idle',
 };
-export const fetchTablets = createAsyncThunk('tablets/fetchTablets', async () => {
-  const response = await fetch('/api/tablets.json');
-  const data = await response.json();
 
-  return data;
-});
+export const fetchTablets = createAsyncThunk(
+  'tablets/fetchTablets',
+  async () => {
+    const response = await fetch('/api/tablets.json');
+    const data = await response.json();
+
+    return data;
+  },
+);
 export const tabletsSlice = createSlice({
   name: 'tablets',
   initialState: {

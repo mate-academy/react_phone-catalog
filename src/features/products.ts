@@ -36,7 +36,6 @@ export const fetchProducts = createAsyncThunk(
   },
 );
 
-
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -74,4 +73,3 @@ export const { addProduct, removeProduct, setProducts } = productsSlice.actions;
 
 export default productsSlice.reducer;
 export const selectAllProducts = (state: any) => state.products.items;
-

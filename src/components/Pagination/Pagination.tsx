@@ -15,6 +15,7 @@ export const Pagination: React.FC = () => {
     const value = event.target.value;
     const parsedValue =
       value === 'all' ? 'all' : (parseInt(value, 10) as 4 | 8 | 16);
+
     dispatch(setPaginationStatus(parsedValue));
   };
 

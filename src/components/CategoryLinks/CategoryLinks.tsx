@@ -34,7 +34,6 @@ export const CategoryLinks = () => {
       </div>
       <div className="categories__container">
         {categoryLinks.map(({ image, title, path, count }) => {
-
           const chosenProducts = products.filter(
             product => product.category === count,
           );

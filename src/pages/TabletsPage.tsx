@@ -15,34 +15,34 @@ export const TabletsPage: React.FC = () => {
 
   const tabletsModels = tablets.length;
 
-return (
-  <div className="section" id="tablets">
-    <div className="main__container">
-      <div className="top__back__link">
-        <Link to="/home" className="icon__house">
-          <LuHouse color="#313237" />
-        </Link>
-        <Link to="/home" className="top__back__link">
-          <IoIosArrowForward />
-          <p>Tablets</p>
-        </Link>
-      </div>
-      <h1 id="heading1">Tablets</h1>
-      <p className="under__heading1">{tabletsModels} models</p>
-      <div className="select__section">
-        <div className="sort__select">
-          <label htmlFor="filter-select">Sort by:</label>
-          <Filter />
+  return (
+    <div className="section" id="tablets">
+      <div className="main__container">
+        <div className="top__back__link">
+          <Link to="/home" className="icon__house">
+            <LuHouse color="#313237" />
+          </Link>
+          <Link to="/home" className="top__back__link">
+            <IoIosArrowForward />
+            <p>Tablets</p>
+          </Link>
         </div>
-        <div className="sort__select">
-          <label htmlFor="pagination-select">Items on page:</label>
-          <Pagination />
+        <h1 id="heading1">Tablets</h1>
+        <p className="under__heading1">{tabletsModels} models</p>
+        <div className="select__section">
+          <div className="sort__select">
+            <label htmlFor="filter-select">Sort by:</label>
+            <Filter />
+          </div>
+          <div className="sort__select">
+            <label htmlFor="pagination-select">Items on page:</label>
+            <Pagination />
+          </div>
         </div>
-      </div>
-      <div className="container">
-        <ProductList category="tablets" />
+        <div className="container">
+          <ProductList category="tablets" />
+        </div>
       </div>
     </div>
-  </div>
-);
-}
+  );
+};

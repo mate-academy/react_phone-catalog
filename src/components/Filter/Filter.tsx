@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import { searchedFilterStatus } from '../../features/filter';
+import './Filter.scss';
 
 export const Filter: React.FC = () => {
   const dispatch = useDispatch();

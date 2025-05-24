@@ -1,17 +1,13 @@
 import './SliderHotPrices.scss';
-import React, { useRef, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 //import Slider from 'react-slick';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../app/store';
 import { selectAllProducts, fetchProducts } from '../../features/products';
-import { NavLink } from 'react-router-dom';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 export const SliderHotPrices: React.FC = () => {
-  //const sliderRef = useRef<Slider>(null);
   const dispatch = useDispatch<AppDispatch>();
 
   const products = useSelector(selectAllProducts);
@@ -32,18 +28,16 @@ export const SliderHotPrices: React.FC = () => {
   //   arrows: false,
   // };
 
-
   const sortedProducts = useMemo(() => {
     return [...products]
       .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
       .slice(0, 10);
   }, [products]);
 
-
   const hotPricesSlides = sortedProducts.map(product => (
-    <NavLink to={product.itemId} key={product.id}>
+    <div key={product.id}>
       <ProductCard {...product} />
-    </NavLink>
+    </div>
   ));
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,16 +61,10 @@ export const SliderHotPrices: React.FC = () => {
         <div className="slider__heading">
           <h2 className="text_above_slider">Hot prices</h2>
           <div className="arrows">
-            <button
-              className="arrow arrowPrev"
-              onClick={previousOne}
-            >
+            <button className="arrow arrowPrev" onClick={previousOne}>
               <IoIosArrowBack />
             </button>
-            <button
-              className="arrow arrowNext"
-              onClick={nextOne}
-            >
+            <button className="arrow arrowNext" onClick={nextOne}>
               <IoIosArrowForward />
             </button>
           </div>
@@ -88,7 +76,6 @@ export const SliderHotPrices: React.FC = () => {
             transform: `translateX(-${currentIndex * 322}px)`,
           }}
         >
-
           {hotPricesSlides}
         </div>
       </div>

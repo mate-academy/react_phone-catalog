@@ -6,9 +6,7 @@ import { addToCart } from '../../features/cart';
 import { addToFavorites, removeFromFavorites } from '../../features/favorites';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
-import {
-  removeFromCart
-} from '../../features/cart';
+import { removeFromCart } from '../../features/cart';
 interface ButtonAndHeartProps {
   image: string;
   name: string;
@@ -17,6 +15,8 @@ interface ButtonAndHeartProps {
   screen: string;
   capacity: string;
   ram: string;
+  category: string;
+  itemId: string;
 }
 export const ButtonAndHeart: React.FC<ButtonAndHeartProps> = ({
   image,
@@ -38,30 +38,29 @@ export const ButtonAndHeart: React.FC<ButtonAndHeartProps> = ({
     state.cart.cartItems.some(item => item.name === product.name),
   );
 
-  const handleRemoveFromCart = (cartItem: any) => {
+  const handleRemoveFromCart = (cartItem: string) => {
     dispatch(removeFromCart(cartItem));
   };
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
-    //console.log('Added to cart:', product);
   };
 
   const handleAddToFavorites = () => {
     dispatch(addToFavorites(product));
-    //history.push("/favorites");
-    //console.log('Added to favorites:', product);
   };
 
   const handleRemoveFromFavorites = () => {
     dispatch(removeFromFavorites(product));
-    //history.push("/favorites");
-    //console.log('Added to favorites:', product);
   };
+
   return (
     <div className="buttons">
       {isInCart ? (
-        <button className="addButton selected" onClick={handleRemoveFromCart}>
+        <button
+          className="addButton selected"
+          onClick={() => handleRemoveFromCart(product)}
+        >
           Selected
         </button>
       ) : (

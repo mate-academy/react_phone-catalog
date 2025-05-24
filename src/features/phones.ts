@@ -34,6 +34,7 @@ const initialState: PhonesState = {
   items: [],
   status: 'idle',
 };
+
 export const fetchPhones = createAsyncThunk('phones/fetchPhones', async () => {
   const response = await fetch('/api/phones.json');
   const data = await response.json();

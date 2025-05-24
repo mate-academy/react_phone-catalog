@@ -6,7 +6,7 @@ export const App = () => (
   <div className="page">
     <Navbar />
     <div>
-      <Outlet /> {/* This is where HomePage, PhonesPage etc will render */}
+      <Outlet />
     </div>
     <Footer />
   </div>

@@ -6,12 +6,10 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../app/store';
 import { selectAllProducts, fetchProducts } from '../../features/products';
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 export const SliderNewBrands: React.FC = () => {
-
   const dispatch = useDispatch<AppDispatch>();
 
   const products = useSelector(selectAllProducts);
@@ -24,7 +22,7 @@ export const SliderNewBrands: React.FC = () => {
   }, [dispatch, status]);
 
   const sortedNewBrands = useMemo(() => {
-    return [...products].sort((a, b) => b.year - a.year).slice(0, 10); 
+    return [...products].sort((a, b) => b.year - a.year).slice(0, 10);
   }, [products]);
   const cardRef = useRef(null);
 
@@ -34,19 +32,19 @@ export const SliderNewBrands: React.FC = () => {
     </div>
   ));
 
- const [currentIndex, setCurrentIndex] = useState(0);
- const visibleCount = 4;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const visibleCount = 4;
 
- const previousOne = () => {
-   if (currentIndex > 0) {
-     setCurrentIndex(currentIndex - 1);
-   }
- };
+  const previousOne = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
 
   const nextOne = () => {
     if (currentIndex + visibleCount < newBrandsSlides.length) {
       setCurrentIndex(currentIndex + 1);
-   }
+    }
   };
 
   return (

@@ -7,13 +7,9 @@ import { FilterStatus } from '../../features/filter';
 import './ProductList.scss';
 import { PaginationControls } from '../PaginationControls/PaginationControls';
 import { setCurrentPage } from '../../features/pagination';
-import { NavLink } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-
 
 export const ProductList: React.FC<{ category: string }> = ({ category }) => {
   const dispatch = useDispatch<AppDispatch>();
-  //const { itemId } = useParams();
   const products = useSelector(selectAllProducts);
   const filterStatus = useSelector(
     (state: RootState) => state.filter.filterStatus as FilterStatus,
@@ -25,7 +21,6 @@ export const ProductList: React.FC<{ category: string }> = ({ category }) => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
-
 
   const filteredSortedProducts = products
     .filter(
@@ -44,7 +39,6 @@ export const ProductList: React.FC<{ category: string }> = ({ category }) => {
       }
     });
 
-
   const paginatedProducts =
     paginationStatus === 'all'
       ? filteredSortedProducts
@@ -52,19 +46,21 @@ export const ProductList: React.FC<{ category: string }> = ({ category }) => {
           (currentPage - 1) * paginationStatus,
           currentPage * paginationStatus,
         );
-const itemsPerPage =
-  paginationStatus === 'all' ? filteredSortedProducts.length : paginationStatus;
+  const itemsPerPage =
+    paginationStatus === 'all'
+      ? filteredSortedProducts.length
+      : paginationStatus;
 
-const totalPages = Math.ceil(filteredSortedProducts.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredSortedProducts.length / itemsPerPage);
 
   return (
     <>
       <div className="cards__container">
         {paginatedProducts.length > 0 ? (
           paginatedProducts.map(product => (
-            <NavLink to={product.itemId}  className="one__card" key={product.id}>
+            <div className="one__card" key={product.id}>
               <ProductCard {...product} />
-            </NavLink>
+            </div>
           ))
         ) : (
           <p>No products found in this category.</p>

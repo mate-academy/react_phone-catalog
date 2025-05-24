@@ -57,9 +57,9 @@ export const fetchAllProducts = createAsyncThunk<Product[]>(
     ]);
 
     return [
-      ...phones.map((p: any) => ({ ...p, category: 'phones' })),
-      ...tablets.map((t: any) => ({ ...t, category: 'tablets' })),
-      ...accessories.map((a: any) => ({ ...a, category: 'accessories' })),
+      ...phones.map((p: string) => ({ ...p, category: 'phones' })),
+      ...tablets.map((t: srting) => ({ ...t, category: 'tablets' })),
+      ...accessories.map((a: string) => ({ ...a, category: 'accessories' })),
     ];
   },
 );
@@ -90,10 +90,6 @@ const productsSlice = createSlice({
 export const { setCurrentItem } = productsSlice.actions;
 export default productsSlice.reducer;
 
-//
-// ✅ Typed selectors (assuming RootState is your Redux state)
-//
-
 export const selectAllProducts = (state: RootState): Product[] =>
   state.productsAll.items;
 
@@ -102,10 +98,10 @@ export const selectCurrentItem = (state: RootState): Product | null =>
 
 export const selectProductsByCategory =
   (category: ProductCategory) =>
-  (state: RootState): Product[] =>
-    state.productsAll.items.filter(item => item.category === category);
+    (state: RootState): Product[] =>
+      state.productsAll.items.filter(item => item.category === category);
 
 export const selectProductById =
   (itemId: string) =>
-  (state: RootState): Product | undefined =>
-    state.productsAll.items.find(product => product.id === itemId);
+    (state: RootState): Product | undefined =>
+      state.productsAll.items.find(product => product.id === itemId);

@@ -16,7 +16,6 @@ const images = [
 ];
 
 export const SliderTop: React.FC = () => {
-  
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   const displayImages = images.map((img, i) => (
@@ -48,7 +47,7 @@ export const SliderTop: React.FC = () => {
   return (
     // <div className="first_section">
     <>
-      <p id="invitation"> Welcome to Nice Gadgets store!</p>
+      <p className="invitation"> Welcome to Nice Gadgets store!</p>
       <section>
         <div className="banner">
           <button className="banner-arrow arrowPrev " onClick={previousSlide}>

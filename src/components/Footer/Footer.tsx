@@ -27,16 +27,13 @@ export const Footer = () => {
           GITHUB
         </a>
 
-        <a
-          href="#contacts" className="footer__link">
+        <a href="#contacts" className="footer__link">
           CONTACTS
         </a>
 
-        <a
-          href="#rights" className="footer__link">
+        <a href="#rights" className="footer__link">
           RIGHTS
         </a>
-
       </div>
       <div className="footer__icon">
         <p className="arrow__up__text"> Back to top </p>

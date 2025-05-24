@@ -6,7 +6,6 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../app/store';
 import { selectAllProducts, fetchProducts } from '../../features/products';
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 

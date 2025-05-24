@@ -1,25 +1,24 @@
 // not empty
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+}
 
 iframe {
   display: none;
 }
 
-// .page {
-  // display: grid;
-  // grid-template: auto / 1fr 400px;
-  // column-gap: 20px;
-  // min-height: 100vh;
-  // background-color: red;
-
-// }
-
-// .page-content {
-  // padding: 20px;
-// }
-
-
 .page > *:not(.navbar, .navbar-footer, .menu) {
-
 @media (min-width: 320px) and (max-width: 639px) {
     padding-inline: 16px;
 }
@@ -34,21 +33,12 @@ iframe {
 }
 
 .page {
-
   scroll-behavior: smooth;
   transition-duration: 300ms;
   overflow-x: hidden;
-
-  // &:has(.menu:target) {
-  //   overflow: hidden;
-  //   .slideshow-container {
-  //     display: none;
-  //   }
-  // }
 }
 
 body {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,11 +46,9 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-
 }
 
 .section {
-//box-sizing: border-box;
 margin-top: 10vh;
 min-height: 70vh;
 margin-bottom: 56px;
@@ -74,6 +62,7 @@ margin-bottom: 56px;
 }
 
 }
+
 section {
 margin-bottom: 56px;
 
@@ -91,6 +80,7 @@ h1 {
 color: #313237;
 font-weight: 800;
 font-size: 32px;
+
 @media (min-width: 640px){
   font-size: 48px;
 }
@@ -106,37 +96,31 @@ font-size: 20px;
   visibility: hidden;
 }
 
-
 .container {
   display:flex;
   flex-direction: column;
   justify-content: center;
+  align-self: center;
 
   @media (min-width: 320px) and (max-width: 639px) {
   align-items: center;
-}
- }
-.select__section {
-display:flex;
-gap: 16px;
+  }
 }
 
-.select__field {
-width: 160px;
-border: 2px solid #89939A;
-height: 40px;
-padding-left: 5px;
-padding-right: 5px;
-}
 .under__heading1 {
 font-size: 14px;
 font-weight: 600;
 color: #89939A;
 margin-bottom: 30px;
  }
+
  .sort__select {
 font-size: 12px;
 font-weight: 700;
 color: #89939A;
  }
 
+.select__section {
+display:flex;
+gap: 16px;
+}

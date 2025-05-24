@@ -11,7 +11,9 @@ import { Outlet } from 'react-router-dom';
 export const AccessoriesPage: React.FC = () => {
   const products = useSelector((state: RootState) => state.products.items);
 
-  const accessories = products.filter(product => product.category === 'accessories');
+  const accessories = products.filter(
+    product => product.category === 'accessories',
+  );
 
   const accessoriesModels = accessories.length;
 
@@ -46,4 +48,4 @@ export const AccessoriesPage: React.FC = () => {
       </div>
     </div>
   );
-}
+};
