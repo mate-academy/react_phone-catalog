@@ -45,9 +45,9 @@ export const fetchAllProducts = createAsyncThunk<Product[]>(
   'productsAll/fetchAll',
   async () => {
     const [phonesRes, tabletsRes, accessoriesRes] = await Promise.all([
-      fetch('/api/phones.json'),
-      fetch('/api/tablets.json'),
-      fetch('/api/accessories.json'),
+      fetch('./api/phones.json'),
+      fetch('./api/tablets.json'),
+      fetch('./api/accessories.json'),
     ]);
 
     const [phones, tablets, accessories] = await Promise.all([
