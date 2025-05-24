@@ -44,7 +44,7 @@ export const Navbar = () => {
         <div className="navbar__text">
           <div className="logo">
             <NavLink to="/">
-              <img src="/img/logo.png" alt="company_logo" />
+              <img src="./img/logo.png" alt="company_logo" />
             </NavLink>
           </div>
 

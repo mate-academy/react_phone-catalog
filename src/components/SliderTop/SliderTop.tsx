@@ -7,11 +7,11 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const images = [
-  '/img/banner2.png',
-  '/img/banner3.jpg',
+  './img/banner2.png',
+  './img/banner3.jpg',
   //'/img/banner-phones.png',
   //'/img/category-accessories.png',
-  '/img/bg2.jpg',
+  './img/bg2.jpg',
   //'/img/slider-xl.png',
 ];
 
@@ -45,7 +45,7 @@ export const SliderTop: React.FC = () => {
   }, []);
 
   return (
-    // <div className="first_section">
+    
     <>
       <p className="invitation"> Welcome to Nice Gadgets store!</p>
       <section>
@@ -70,8 +70,6 @@ export const SliderTop: React.FC = () => {
             ></button>
           ))}
         </div>
-
-        {/* </div> */}
       </section>
     </>
   );

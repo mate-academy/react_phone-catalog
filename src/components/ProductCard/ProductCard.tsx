@@ -73,7 +73,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         to={`/${product.category}/${product.itemId}`}
         className="card-image"
       >
-        <img src={image} alt="Product photo" />
+        <img src={`.${image}`} alt="Product photo" />
       </NavLink>
 
       <div className="card-content">

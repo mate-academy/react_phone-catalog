@@ -13,7 +13,7 @@ export const Footer = () => {
     <nav className="navbar__footer">
       <div className="footer__logo">
         <NavLink to="/">
-          <img src="/img/logo.png" alt="company_logo" />
+          <img src="./img/logo.png" alt="company_logo" />
         </NavLink>
       </div>
       {/* <div className="container"> */}
