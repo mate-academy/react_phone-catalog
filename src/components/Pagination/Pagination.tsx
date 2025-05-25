@@ -1,40 +1,91 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { RootState } from '../../app/store';
 import { setPaginationStatus } from '../../features/pagination';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import './Pagination.scss';
+
+const options: (4 | 8 | 16 | 'all')[] = [4, 8, 16, 'all'];
 
 export const Pagination: React.FC = () => {
   const dispatch = useDispatch();
   const paginationStatus = useSelector(
-    (state: RootState) => state.pagination.paginationStatus,
+    (state: RootState) => state.pagination.paginationStatus
   );
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handlePaginationStatusChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    const value = event.target.value;
-    const parsedValue =
-      value === 'all' ? 'all' : (parseInt(value, 10) as 4 | 8 | 16);
+  const [isOpen, setIsOpen] = useState(false);
 
-    dispatch(setPaginationStatus(parsedValue));
+  // Update Redux and URL when option clicked
+  const handleOptionClick = (value: 4 | 8 | 16 | 'all') => {
+    dispatch(setPaginationStatus(value));
+    setSearchParams({
+      ...Object.fromEntries(searchParams.entries()),
+      perPage: value.toString(),
+    });
+    setIsOpen(false);
   };
+
+  // Sync Redux with URL on mount or URL change
+  useEffect(() => {
+    const perPageParam = searchParams.get('perPage');
+
+    if (!perPageParam) {
+      setSearchParams({
+        ...Object.fromEntries(searchParams.entries()),
+        perPage: 'all',
+      });
+    } else {
+      const parsedValue =
+        perPageParam === 'all'
+          ? 'all'
+          : (parseInt(perPageParam, 10) as 4 | 8 | 16);
+      if (paginationStatus !== parsedValue) {
+        dispatch(setPaginationStatus(parsedValue));
+      }
+    }
+  }, [searchParams, setSearchParams, dispatch, paginationStatus]);
 
   return (
     <form className="field has-addons" onSubmit={e => e.preventDefault()}>
       <p className="control">
-        <span className="select">
-          <select
-            className="select__field "
+        <div
+          className="select"
+          style={{ position: 'relative', userSelect: 'none' }}
+        >
+          <div
+            className="select__field"
             data-cy="statusSelect"
-            value={paginationStatus}
-            onChange={handlePaginationStatusChange}
+            onClick={() => setIsOpen(open => !open)}
           >
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-            <option value="all">All</option>
-          </select>
-        </span>
+            <span className="select__input">{paginationStatus}</span>
+            {isOpen ? (
+              <IoIosArrowUp color="#89939A" />
+            ) : (
+              <IoIosArrowDown color="#89939A" />
+            )}
+          </div>
+
+          {isOpen && (
+            <div className="sort__per__page">
+              {options.map(option => (
+                <div
+                  key={option}
+                  onClick={() => handleOptionClick(option)}
+                  className="sort__per__page__option"
+                  style={{
+                    backgroundColor:
+                      paginationStatus === option ? '#E2E6E9' : 'white',
+                    color: paginationStatus === option ? '#313237' : '#89939A',
+                  }}
+                >
+                  {option}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </p>
     </form>
   );

@@ -24,7 +24,7 @@ export const Menu = ({ isMenuOpen, setIsMenuOpen }: MenuProps) => {
               setIsMenuOpen(false);
             }}
           >
-            <img src="/img/logo.png" alt="company_logo" />
+            <img src="./img/logo.png" alt="company_logo" />
           </NavLink>
         </div>
         <div className="close">

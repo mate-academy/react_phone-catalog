@@ -1,7 +1,9 @@
-// components/PaginationControls/PaginationControls.tsx
 import React from 'react';
 import './PaginationControls.scss';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react'; 
+
 
 interface PaginationControlsProps {
   currentPage: number;
@@ -14,11 +16,31 @@ export const PaginationControls: React.FC<PaginationControlsProps> = ({
   totalPages,
   onPageChange,
 }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       onPageChange(page);
+      // Preserve other search params, just update `page`
+      setSearchParams({
+        ...Object.fromEntries(searchParams.entries()),
+        page: page.toString(),
+      });
     }
   };
+
+  useEffect(() => {
+    const pageParam = searchParams.get('page');
+
+    if (!pageParam) {
+      // Set default page to 1
+      setSearchParams({
+        ...Object.fromEntries(searchParams.entries()),
+        page: '1',
+      });
+    }
+  }, [searchParams, setSearchParams]);
+
 
   return (
     <div className="pagination__controls">
@@ -30,15 +52,18 @@ export const PaginationControls: React.FC<PaginationControlsProps> = ({
         <IoIosArrowBack />
       </button>
 
-      {Array.from({ length: totalPages }, (_, i) => (
-        <button
-          key={i + 1}
-          className={`pagination-button ${currentPage === i + 1 ? 'active' : ''}`}
-          onClick={() => goToPage(i + 1)}
-        >
-          {i + 1}
-        </button>
-      ))}
+      {Array.from({ length: totalPages }, (_, i) => {
+        const pageNumber = i + 1;
+        return (
+          <button
+            key={pageNumber}
+            className={`pagination-button ${currentPage === pageNumber ? 'active' : ''}`}
+            onClick={() => goToPage(pageNumber)}
+          >
+            {pageNumber}
+          </button>
+        );
+      })}
 
       <button
         className="pagination-button"

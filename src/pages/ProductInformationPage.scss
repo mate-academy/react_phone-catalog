@@ -31,6 +31,7 @@ width: 80px;
 height: 80px;
 object-fit: contain;
 border: 1px solid #E2E6E9;
+cursor: pointer;
 
 @media (min-width: 320px) and (max-width: 1200px) {
   width: 64px;
@@ -245,3 +246,10 @@ margin-right: 10px;
 .color__option__active {
  border: 1px solid #313237;
 }
+
+// .pi__main__image:hover,
+// .pi__option__image:hover {
+// transform: scale(1.05);
+//   transition-duration: 3ms;
+//   cursor: pointer;
+// }

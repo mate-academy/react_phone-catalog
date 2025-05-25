@@ -20,7 +20,7 @@ export const SliderTop: React.FC = () => {
 
   const displayImages = images.map((img, i) => (
     <img
-      className={`slide ${activeSlideIndex === i ? 'active__slide' : ''}`}
+      className={`slide banner__slider ${activeSlideIndex === i ? 'active__slide' : ''}`}
       src={img}
       alt="slider"
       height="400px"
@@ -45,7 +45,7 @@ export const SliderTop: React.FC = () => {
   }, []);
 
   return (
-    
+
     <>
       <p className="invitation"> Welcome to Nice Gadgets store!</p>
       <section>

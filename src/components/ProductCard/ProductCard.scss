@@ -6,6 +6,10 @@
   display: block;
   margin: 0 auto;
 }
+// .product__card__img:hover {
+// transform: scale(1.025);
+//   transition-duration: 3ms;
+// }
 
 .product__card {
   box-sizing: border-box;
@@ -17,7 +21,13 @@
   color: #313237;
   padding: 32px;
   width: 306px;
+  margin-bottom: 8px;
 
+}
+
+.product__card:hover {
+  transform: scale(1.025);
+  transition-duration: 3ms;
 }
 
 .card-content {
