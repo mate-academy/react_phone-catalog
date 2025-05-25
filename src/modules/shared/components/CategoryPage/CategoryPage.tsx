@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CategoryPage.module.scss';
 import { useSearchParams } from 'react-router-dom';
-import { Loader } from '../Loader';
 import { getProducts } from '../../../../utils/fetchClient';
 import { Product } from '../../../../types/product';
 import CustomSelect from '../CustomSelect';
 import Pagination from '../Pagination';
 import ProductsList from '../ProductsList';
 import Breadcrumbs from '../Breadcrumbs';
+import ProductListSkeleton from '../../skeleton/ProductListSkeleton';
+import ProductPageSkeleton from '../../skeleton/ProductPageSkeleton';
 
 type Props = {
   type: string;
@@ -180,7 +181,7 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
                   )}
                 </>
               ) : (
-                <Loader />
+                <ProductListSkeleton />
               )}
             </>
           ) : (
@@ -188,7 +189,9 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
           )}
         </span>
       ) : (
-        <Loader />
+        <>
+          <ProductPageSkeleton />
+        </>
       )}
     </>
   );
