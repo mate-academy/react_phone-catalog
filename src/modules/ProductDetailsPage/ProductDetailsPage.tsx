@@ -175,7 +175,7 @@ export const ProductDetailsPage: React.FC = () => {
                   <div className="product_details_images_main">
                     <img
                       className="product_details_images_main_image"
-                      src={`/react_phone-catalog/${baseUrl}${product.images[mainImgIndex]}`}
+                      src={`${baseUrl}${product.images[mainImgIndex]}`}
                       alt="product"
                       {...handlers}
                     />
@@ -189,7 +189,7 @@ export const ProductDetailsPage: React.FC = () => {
                             ? 'product_details_secondary-img product_details_secondary-img--active'
                             : 'product_details_secondary-img'
                         }
-                        src={`/react_phone-catalog/${baseUrl}${image}`}
+                        src={`${baseUrl}${image}`}
                         alt="thumbnail"
                         onClick={() => setMainImgIndex(index)}
                       />
