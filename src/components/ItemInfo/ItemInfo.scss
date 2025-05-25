@@ -31,27 +31,30 @@
       border: 2px solid $white;
     }
 
+    &--active,
     &:hover {
       border: 1px solid $primary;
     }
   }
 
   &__link-capacity {
+    @include body-text;
+
     display: flex;
     justify-content: center;
     align-items: center;
     width: 53px;
     height: 32px;
+    font-weight: $font-weight-regular;
+    color: $primary;
     border: 1px solid #b4bdc3;
     background-color: $white;
     border-radius: 4px;
     transition: border 0.3s;
 
-    &-form {
-      @include body-text;
-
-      font-weight: $font-weight-regular;
-      color: $primary;
+    &--active {
+      background-color: $primary;
+      color: $white;
     }
 
     &:hover {

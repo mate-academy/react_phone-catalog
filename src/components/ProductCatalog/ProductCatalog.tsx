@@ -35,6 +35,7 @@ export const ProductCatalog: React.FC<Props> = ({
 
   const handlePerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     params.set('perPage', e.target.value);
+    params.set('page', '1');
     setQueryParams(params);
   };
 
