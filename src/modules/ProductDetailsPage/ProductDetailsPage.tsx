@@ -101,6 +101,9 @@ export const ProductDetailsPage: React.FC = () => {
     }
   };
 
+  const withBaseUrl = (path: string) =>
+  `${baseUrl}${path.startsWith('/') ? path.slice(1) : path}`;
+
   useEffect(() => {
     loadData();
   }, [productId, category]);
@@ -175,7 +178,7 @@ export const ProductDetailsPage: React.FC = () => {
                   <div className="product_details_images_main">
                     <img
                       className="product_details_images_main_image"
-                      src={`${baseUrl}${product.images[mainImgIndex]}`}
+                      src={withBaseUrl(product.images[mainImgIndex])}
                       alt="product"
                       {...handlers}
                     />
@@ -189,7 +192,7 @@ export const ProductDetailsPage: React.FC = () => {
                             ? 'product_details_secondary-img product_details_secondary-img--active'
                             : 'product_details_secondary-img'
                         }
-                        src={`${baseUrl}${image}`}
+                        src={withBaseUrl(image)}
                         alt="thumbnail"
                         onClick={() => setMainImgIndex(index)}
                       />
