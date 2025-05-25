@@ -1,17 +1,33 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import './CartPage.scss';
 import { BackButton } from '../ButtonBack';
 import { CartItem } from '../CartItem';
-import { ProductsContext } from '../context/ProductsContext';
+import { CartProduct, ProductsContext } from '../context/ProductsContext';
 import { Modal } from '../Modal/Modal';
+
+type Total = {
+  totalSum: number;
+  totalItems: number;
+};
+const totalCalc = (
+  prev: Total,
+  { quantity, product: { price } }: CartProduct,
+) => {
+  const acc = prev;
+
+  acc.totalSum += price * quantity;
+  acc.totalItems += quantity;
+
+  return acc;
+};
 
 export const CartPage = () => {
   const { cartProducts, clearCart } = useContext(ProductsContext);
   const [isModalOpened, setIsModalOpened] = useState(false);
 
-  const totalCartProducts = cartProducts.reduce(
-    (acc, { quantity, product: { price } }) => acc + price * quantity,
-    0,
+  const { totalSum, totalItems } = useMemo(
+    () => cartProducts.reduce(totalCalc, { totalSum: 0, totalItems: 0 }),
+    [cartProducts],
   );
 
   const handleClearCart = () => {
@@ -41,9 +57,9 @@ export const CartPage = () => {
           </ul>
           {Boolean(cartProducts.length) ? (
             <div className="cart__total">
-              <p className="cart__total__count">{`$ ${totalCartProducts}`}</p>
+              <p className="cart__total__count">{`$ ${totalSum}`}</p>
               <span className="cart__total__count-of-items">
-                {`Total for ${cartProducts.length} items`}
+                {`Total for ${totalItems} items`}
               </span>
               <button
                 className="cart__total__button"

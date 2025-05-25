@@ -47,7 +47,7 @@ export const ItemInfo: React.FC<Props> = ({ availibleData, type }) => {
                     })
                   }
                 >
-                    {optionValue}
+                  {optionValue}
                 </NavLink>
               )}
             </li>
