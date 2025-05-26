@@ -13,7 +13,10 @@ import { ProductCardButtons } from '@/components/UI/ProductCardButtons';
 
 import { ProductDetails } from '@/types/productDetails';
 import { ProductCharacteristics } from '@/components/UI/ProductCharacteristics';
+import { ProductDescription } from '@/components/UI/ProductDescription';
+import { ProductInfoAbout } from '@/components/UI/ProductInfoAbout';
 
+// #region available product colors
 const colorHexMap: { [key: string]: string } = {
   spacegray: '#5f5f5f',
   midnightgreen: '#004953',
@@ -23,16 +26,32 @@ const colorHexMap: { [key: string]: string } = {
   midnight: '#343b43',
   graphite: '#4C4A46',
 };
+//#endregion
 
 export const ProductDetailsHeroSection: React.FC = () => {
   const { itemId } = useParams<{ itemId: string }>();
 
+  // #region productCharacteristics
   const characteristics: { key: keyof ProductDetails; name: string }[] = [
     { key: 'screen', name: 'Screen' },
     { key: 'resolution', name: 'Resolution' },
     { key: 'processor', name: 'Processor' },
     { key: 'ram', name: 'RAM' },
   ];
+  //#endregion
+
+  // #region productTechSpec
+  const techSpec: { key: keyof ProductDetails; name: string }[] = [
+    { key: 'screen', name: 'Screen' },
+    { key: 'resolution', name: 'Resolution' },
+    { key: 'processor', name: 'Processor' },
+    { key: 'ram', name: 'RAM' },
+    { key: 'capacity', name: 'Built in memory' },
+    { key: 'camera', name: 'Camera' },
+    { key: 'zoom', name: 'Zoom' },
+    { key: 'cell', name: 'Cell' },
+  ];
+  //#endregion
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -133,9 +152,11 @@ export const ProductDetailsHeroSection: React.FC = () => {
   return (
     <div className={styles.page}>
       <div className={styles.productWrapper}>
-        <h1 className={styles.productName}>{productDetails.name}</h1>
+        <h2 className={styles.productName}>{productDetails.name}</h2>
 
-        <SwiperProductDetails images={productDetails.images} />
+        <div className={styles.swiperContainer}>
+          <SwiperProductDetails images={productDetails.images} />
+        </div>
 
         <div className={styles.productCharacteristicBlock}>
           <div className={styles.productColors}>
@@ -222,10 +243,32 @@ export const ProductDetailsHeroSection: React.FC = () => {
           <ProductCharacteristics
             product={productDetails}
             characteristics={characteristics}
-            customClassName={styles.productCharacteristicsParentCustom}
+            customClassNameContainer={
+              styles.productCharacteristicsParentContainerCustom
+            }
           />
+        </div>
 
-          
+        <div className={styles.descriptionAboutContainer}>
+          <ProductDescription articleName={'About'}>
+            <ProductInfoAbout product={productDetails} />
+          </ProductDescription>
+        </div>
+        <div className={styles.descriptionTechSpecsContainer}>
+          <ProductDescription
+            articleName={'Tech specs'}
+            customClassName={styles.productDescriptionParentCustomName}
+          >
+            <ProductCharacteristics
+              product={productDetails}
+              characteristics={techSpec}
+              customClassNameContainer={
+                styles.productCharacteristicsParentContainerCustom
+              }
+              customClassNameForName={styles.productCharacteristicsNameCustom}
+              customClassNameForValue={styles.productCharacteristicsValueCustom}
+            />
+          </ProductDescription>
         </div>
       </div>
     </div>

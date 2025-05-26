@@ -20,11 +20,17 @@
     height: 100%;
     object-fit: contain;
   }
-}
 
-// .swiper2Slide {
-//   border: 1px solid red;
-// }
+  @include u.on-tablet {
+    grid-row: 1;
+    grid-column: 2 / 7;
+  }
+
+  @include u.on-desktop {
+    grid-column: 5 / 25;
+    height: 464px;
+  }
+}
 
 .mySwiper {
   grid-column: 1 / -1;
@@ -45,6 +51,18 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  @include u.on-tablet {
+    grid-row: 1;
+    grid-column: 1 / 1;
+    height: 208px;
+  }
+
+  @include u.on-desktop {
+    grid-row: 1;
+    grid-column: 1 / 5;
+    height: 464px;
   }
 }
 

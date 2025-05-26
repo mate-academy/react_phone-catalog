@@ -3,7 +3,14 @@
 .heroContainer {
   @include u.on-desktop {
     padding-inline: 32px;
-    max-width: 1200px;
+    max-width: 1136px;
     margin-inline: auto;
   }
+}
+
+.firstContainer {
+  margin-bottom: 56px;
+
+  max-width: 1200px;
+  margin-inline: auto;
 }

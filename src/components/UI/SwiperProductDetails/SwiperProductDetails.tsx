@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import 'swiper/css';
@@ -15,6 +15,19 @@ export const SwiperProductDetails: React.FC<SwiperProductDetailsProps> = ({
   images,
 }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const checkIsTablet = () => {
+      setIsTablet(window.innerWidth >= 640);
+    };
+
+    checkIsTablet();
+    window.addEventListener('resize', checkIsTablet);
+
+    return () => window.removeEventListener('resize', checkIsTablet);
+  }, []);
 
   return (
     <div className={styles.swiperContainer}>
@@ -40,6 +53,7 @@ export const SwiperProductDetails: React.FC<SwiperProductDetailsProps> = ({
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
         className={styles.mySwiper}
+        direction={isTablet ? 'vertical' : 'horizontal'}
       >
         {images.map((image, index) => (
           <SwiperSlide key={index} className={styles.swiperSlide}>

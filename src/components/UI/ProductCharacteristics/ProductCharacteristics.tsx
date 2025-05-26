@@ -8,25 +8,48 @@ import cn from 'classnames';
 type Props = {
   product: Product | ProductDetails;
   characteristics: productCharacteristics[];
-  customClassName?: string;
+  customClassNameContainer?: string;
+  customClassNameForName?: string;
+  customClassNameForValue?: string;
 };
 
 export const ProductCharacteristics: React.FC<Props> = ({
   product,
   characteristics,
-  customClassName,
+  customClassNameContainer,
+  customClassNameForName,
+  customClassNameForValue,
 }) => {
-  const customClassNames = cn(styles.productCharacteristics, customClassName);
+  const customClassNames = cn(
+    styles.productCharacteristics,
+    customClassNameContainer,
+  );
 
   return (
     <div className={customClassNames}>
       {characteristics.map(({ key, name }) => {
         if (key in product) {
+          const value = product[key as keyof (Product | ProductDetails)];
+
           return (
             <div key={key} className={styles.productCharacteristicsItem}>
-              <p className={styles.productCharacteristicsName}>{name}</p>
-              <p className={styles.productCharacteristicsValue}>
-                {product[key as keyof (Product | ProductDetails)]}
+              <p
+                className={cn(
+                  styles.productCharacteristicsName,
+                  customClassNameForName,
+                )}
+              >
+                {name}
+              </p>
+              <p
+                className={cn(
+                  styles.productCharacteristicsValue,
+                  customClassNameForValue,
+                )}
+              >
+                {key === 'cell' && Array.isArray(value)
+                  ? value.join(', ')
+                  : value}
               </p>
             </div>
           );

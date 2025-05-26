@@ -1,0 +1,25 @@
+@use 'styles/utils' as u;
+
+.articleName {
+  padding-bottom: 15px;
+  border-bottom: 1px solid u.$elements;
+
+  color: u.$white;
+  font-weight: 700;
+  font-size: 20px;
+
+  margin-bottom: 32px;
+
+  @include u.on-tablet {
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+.childrenContainer {
+  margin-bottom: 56px;
+
+  @include u.on-desktop {
+    margin-bottom: 80px;
+  }
+}

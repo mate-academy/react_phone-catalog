@@ -6,14 +6,16 @@ import productsList from 'data/api/products.json';
 type ProductsSwiperContextType = {
   filteredProductsByNewModels: Product[];
   filteredProductsByHotPrice: Product[];
+  filteredProductsByRandom: Product[];
 };
 
 export const ProductsSwiperContext =
   React.createContext<ProductsSwiperContextType>({
     filteredProductsByNewModels: [],
     filteredProductsByHotPrice: [],
+    filteredProductsByRandom: [],
   });
-
+//#region new models filter
 const NEW_YEAR_MODELS = 2022;
 const filteredProductsByNewModels = productsList.filter((product: Product) => {
   return (
@@ -21,7 +23,9 @@ const filteredProductsByNewModels = productsList.filter((product: Product) => {
     (product.capacity === '128GB' || product.capacity === '256GB')
   );
 });
+//#endregion
 
+//#region hot price filter
 const filteredProductsByHotPrice = [...productsList]
   .filter((product: Product) => product.price < product.fullPrice)
   .sort((a: Product, b: Product) => {
@@ -30,6 +34,19 @@ const filteredProductsByHotPrice = [...productsList]
 
     return discountB - discountA;
   });
+//#endregion
+
+//#region random filter
+const filteredProductsRandomly = (productList: Product[], count: number) => {
+  count = Math.min(count, productList.length);
+
+  const shuffled = [...productList].sort(() => Math.random() - 0.5);
+
+  return shuffled.slice(0, count);
+};
+
+const filteredProductsByRandom = filteredProductsRandomly(productsList, 8);
+//#endregion
 
 type Props = {
   children: React.ReactNode;
@@ -38,7 +55,11 @@ type Props = {
 export const ProductsSwiperProvider: React.FC<Props> = ({ children }) => {
   return (
     <ProductsSwiperContext.Provider
-      value={{ filteredProductsByNewModels, filteredProductsByHotPrice }}
+      value={{
+        filteredProductsByNewModels,
+        filteredProductsByHotPrice,
+        filteredProductsByRandom,
+      }}
     >
       {children}
     </ProductsSwiperContext.Provider>

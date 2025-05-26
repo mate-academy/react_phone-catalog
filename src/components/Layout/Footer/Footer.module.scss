@@ -78,6 +78,16 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  &:hover {
+    .textBackToTop {
+      color: u.$icons;
+    }
+
+    .btnBackToTop {
+      background-color: u.$icons;
+    }
+  }
 }
 
 .textBackToTop {
@@ -85,7 +95,7 @@
   font-weight: 700;
   color: u.$secondary;
 
-  @include u.hover(color, u.$icons);
+  transition: color u.$effect-duration ease;
 }
 
 .btnBackToTop {
@@ -100,7 +110,7 @@
 
   background-color: u.$surface-2;
 
-  @include u.hover(background-color, u.$icons);
+  transition: background-color u.$effect-duration ease;
 }
 
 .btnBackToTopIcon {
