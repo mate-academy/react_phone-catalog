@@ -50,7 +50,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [favoriteItems]);
 
   const addToCart = (item: Gargets) => {
-    setCartItems(prev => [...prev, item]);
+    setCartItems(prev => {
+      if (prev.some(cartItem => cartItem.id === item.id)) {
+        return prev;
+      }
+
+      return [...prev, item];
+    });
   };
 
   const removeFromCart = (id: string) => {
@@ -58,11 +64,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const addFavorite = (item: Gargets) => {
-    setFavoriteItems(prev => [...prev, item]);
+    setFavoriteItems(prev => {
+      if (prev.some(fav => fav.id === item.id)) {
+        return prev;
+      }
+
+      return [...prev, item];
+    });
   };
 
   const removeFavorite = (id: string) => {
-    setFavoriteItems(prev => prev.filter(product => product.id !== id));
+    setFavoriteItems(prev => prev.filter(item => item.id !== id));
   };
 
   return (

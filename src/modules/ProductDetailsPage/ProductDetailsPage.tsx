@@ -30,8 +30,10 @@ export const ProductDetailsPage = () => {
     useCart();
   const [like, setLike] = useState(false);
   const [addedCart, setAddedCart] = useState(false);
-    const [likedIds, setLikedIds] = useState<string[]>([]);
-    const [cartItems2, setCartItems] = useState<Phone[]>([]);
+  const [likedIds, setLikedIds] = useState<string[]>([]);
+  const [cartItems2, setCartItems] = useState<Phone[]>([]);
+  const isInCart = cartItems.some(cartItem => cartItem.id === item.id);
+  const isLiked = favoriteItems.some(favItem => favItem.id === item.id);
 
   useEffect(() => {
     setLoadingDataOnServer(true);
@@ -184,65 +186,40 @@ export const ProductDetailsPage = () => {
           </div>
 
           <div className="details__position">
-            <button
-              className={classNames('details__add-to-cart', {
-                added: addedCart,
+            <NavLink
+              to="/"
+              className={classNames('swiper__add-to-cart', {
+                added: isInCart,
               })}
-              onClick={() => {
-                setAddedCart(true);
-                const selected = currentModel || item;
-
-                const alreadyInCart = cartItems.some(
-                  product => product.id === selected.id,
-                );
-
-                if (alreadyInCart) {
-                  alert('Added to cart!');
-
-                  return;
-                } else {
-                  addToCart(selected);
+              onClick={e => {
+                e.preventDefault();
+                if (!isInCart) {
+                  addToCart(item);
                 }
               }}
+              style={{ pointerEvents: isInCart ? 'none' : 'auto' }}
             >
-              Add to cart
-            </button>
+              {isInCart ? 'Added to cart' : 'Add to cart'}
+            </NavLink>
 
             <button
-              type="button"
-              className={'details__button-like'}
+              className="product__list-button-like"
               onClick={() => {
-                const selected = currentModel ?? item;
-
-                if (!selected) {
-                  alert('No product selected');
-
+                if (!item) {
                   return;
                 }
 
-                setLike(prevLike => {
-                  const newLike = !prevLike;
-
-                  const isAlreadyFavorite = favoriteItems.some(
-                    product => product.id === selected.id,
-                  );
-
-                  if (isAlreadyFavorite) {
-                    removeFavorite(item.id);
-                  }
-
-                  if (newLike) {
-                    addFavorite(selected);
-                  }
-
-                  return newLike;
-                });
+                if (isLiked) {
+                  removeFavorite(item.id);
+                } else {
+                  addFavorite(item);
+                }
               }}
             >
               <span
                 className="swiper__like"
                 style={{
-                  backgroundImage: like
+                  backgroundImage: isLiked
                     ? 'url(./img/favorites.png)'
                     : 'url(./img/navbar/like.png)',
                 }}
@@ -407,45 +384,37 @@ export const ProductDetailsPage = () => {
                     <NavLink
                       to="/"
                       className={classNames('swiper__add-to-cart', {
-                        added: cartItems2.some(items => items.id === phone.id),
+                        added: isInCart,
                       })}
                       onClick={e => {
                         e.preventDefault();
-                        addToCart(phone);
-
-                        setCartItems(prev =>
-                          prev.some(items => items.id === phone.id)
-                            ? prev
-                            : [...prev, phone],
-                        );
-
-                        // alert('Added to cart!');
+                        if (!isInCart) {
+                          addToCart(item);
+                        }
                       }}
+                      style={{ pointerEvents: isInCart ? 'none' : 'auto' }}
                     >
-                      {cartItems2.some(items => items.id === phone.id)
-                        ? 'Added to cart'
-                        : 'Add to cart'}
+                      {isInCart ? 'Added to cart' : 'Add to cart'}
                     </NavLink>
 
                     <button
-                      className="swiper__button-like"
+                      className="product__list-button-like"
                       onClick={() => {
-                        const isLiked = likedIds.includes(phone.id);
+                        if (!item) {
+                          return;
+                        }
 
-                        setLikedIds(prev =>
-                          isLiked
-                            ? prev.filter(id => id !== phone.id)
-                            : [...prev, phone.id],
-                        );
-
-                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-                        isLiked ? removeFavorite(phone.id) : addFavorite(phone);
+                        if (isLiked) {
+                          removeFavorite(item.id);
+                        } else {
+                          addFavorite(item);
+                        }
                       }}
                     >
                       <span
                         className="swiper__like"
                         style={{
-                          backgroundImage: likedIds.includes(phone.id)
+                          backgroundImage: isLiked
                             ? 'url(./img/favorites.png)'
                             : 'url(./img/navbar/like.png)',
                         }}

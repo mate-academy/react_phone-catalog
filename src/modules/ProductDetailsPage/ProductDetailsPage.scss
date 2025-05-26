@@ -332,6 +332,22 @@
     }
   }
 
+  .added {
+    text-decoration: none;
+    color: white;
+    background-color: green;
+    border-radius: 48px;
+    width: 160px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700px;
+    line-height: 21px;
+  }
+
+
   &__button-like {
     margin-top: 16px;
     position: relative;

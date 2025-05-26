@@ -18,7 +18,7 @@ export const App = () => {
 
     return stored === 'true';
   });
-  const [isMobile, setIsMobile] = useState(window.innerWidth > 639);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 639);
   const { cartItems, favoriteItems } = useCart();
   const cartCount = cartItems.length;
   const favoriteCount = favoriteItems.length;
@@ -27,7 +27,7 @@ export const App = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth > 639);
+      setIsMobile(window.innerWidth <= 639);
     };
 
     window.addEventListener('resize', handleResize);
@@ -128,24 +128,21 @@ export const App = () => {
                   })}
                 </div>
                 <div className="navbar__burger">
-                  <button
-                    className="navbar__button-burger"
-                    onClick={() => setClickOnLogoBar(prev => !prev)}
-                    hidden={!isMobile && clickOnLogoBar === true}
-                  >
-                    <NavLink
-                      className="navbar__icon__menu"
-                      to="/Menu"
-                    ></NavLink>
-                  </button>
-
-                  <button
-                    className="navbar__button-burger"
-                    onClick={() => setClickOnLogoBar(prev => !prev)}
-                    hidden={!isMobile && clickOnLogoBar === false}
-                  >
-                    <NavLink className="navbar__icon__close" to="/"></NavLink>
-                  </button>
+                  {isMobile && (
+                    <button
+                      className="navbar__button-burger"
+                      onClick={() => setClickOnLogoBar(prev => !prev)}
+                    >
+                      <NavLink
+                        className={
+                          clickOnLogoBar
+                            ? 'navbar__icon__close'
+                            : 'navbar__icon__menu'
+                        }
+                        to="/"
+                      />
+                    </button>
+                  )}
                 </div>
               </nav>
             </header>

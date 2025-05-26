@@ -82,9 +82,9 @@ body::-webkit-scrollbar { width: 0 !important }
     }
   }
 
-  .navbar__burger {
-   display: none;
-  }
+  // .navbar__burger {
+  //  display: none;
+  // }
 
   &__link {
     display: block;
@@ -268,9 +268,9 @@ body::-webkit-scrollbar { width: 0 !important }
       height: 48px;
     }
 
-    .navbar__burger {
-      display: none;
-    }
+    // .navbar__burger {
+    //   display: none;
+    // }
 
     &__right {
       margin-left: auto;
@@ -298,6 +298,12 @@ body::-webkit-scrollbar { width: 0 !important }
     &__brand {
       display: flex;
     }
+
+    &__burger {
+      display: block;
+      align-items: center;
+    }
+
 
     &__item,
     &__link,
@@ -353,7 +359,7 @@ body::-webkit-scrollbar { width: 0 !important }
     }
 
     &__icon__menu {
-      background-image: url(/public/img/navbar/Menu.png);
+      background-image: url('/img/navbar/Menu.png');
     }
 
     &__icon__close {
@@ -361,6 +367,7 @@ body::-webkit-scrollbar { width: 0 !important }
     }
 
     &__button-burger {
+      display: flex;
       padding: 16px;
       background-color: white;
       border: 1px solid #e2e6e9;
@@ -576,14 +583,6 @@ body::-webkit-scrollbar { width: 0 !important }
       list-style-type: none;
     }
 
-    img {
-      padding-top: 32px;
-    }
-    &__link__logo {
-
-      padding-bottom: 32px;
-    }
-
     &__link {
       display: block;
       text-decoration: none;
@@ -628,17 +627,22 @@ body::-webkit-scrollbar { width: 0 !important }
       align-items: center;
       justify-content: center;
       flex-direction: row;
-      grid-column: 4 / span 7;
+      grid-column: 1 / span 7;
       list-style-type: none;
       gap: 16.7px;
     }
 
     &__link__logo {
-      padding-right: 108.33px;
+      margin-left: 32px;
+
     }
 
     &__link {
       padding: 26.5px 0 ;
+    }
+
+    &__brand:nth-child(2) {
+      padding-left: 378px;
     }
 
     &__right {
@@ -669,9 +673,7 @@ body::-webkit-scrollbar { width: 0 !important }
     }
 
     &__link__logo {
-      padding-top: 33.75px;
-      padding-bottom: 32px;
-      padding-right: 290px;
+      padding-left: 195px;
     }
 
     &__item {
