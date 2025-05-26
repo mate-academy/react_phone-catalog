@@ -36,11 +36,13 @@ padding: 0 19px;
   margin: 0;
   height: 100%;
   width:100%;
- 
-  background-size:cover;
-  background-position: center left;
-background-repeat: no-repeat;
 
+  background-size:cover;
+  background-position: center;
+background-repeat: no-repeat;
+@include mixin.onTablet{
+   background-size:fill;
+}
 }
 
 .slider__button {
@@ -49,9 +51,14 @@ background-repeat: no-repeat;
   height: 100%;
   background-image: url('/img/slider/buttonSlide.svg');
   background-repeat: no-repeat;
-   background-size: contain;
+   background-size: cover;
    background-position: center;
   flex-shrink: 0;
+&:hover{
+    border:2px solid #333;
+    border-radius: 20px;
+    background-color: #E2E6E9;
+  }
 
   @include mixin.onTablet {
     display: block;
@@ -71,6 +78,7 @@ background-repeat: no-repeat;
     transform: scaleX(-1);
   }
 }
+
 
 .slider__rectangle {
   display: flex;

@@ -1,21 +1,43 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import styles from './SliderHomePage.module.scss';
 export const SliderHomePage = () => {
   const images = ['/img/slider/slider1.png','/img/slider/slider2.png','/img/slider/slider3.png']
   const [activeIndex, setActiveIndex] = useState(0);
   const goNext = () => {
-    setActiveIndex((index=>(index+1)% images.length))
+    setActiveIndex((index => (index + 1) % images.length));
+    startSlide();
   }
   const goPrev = () => {
     setActiveIndex(index => (index - 1 + images.length) % images.length)
-
-
-  }
+    startSlide();
+}
   const handlers = useSwipeable({
-  onSwipedLeft: () => handleNext(),
-  onSwipedRight: () => handlePrev(),
-});
+  onSwipedLeft: goPrev,
+    onSwipedRight: goNext,
+    trackTouch: true,
+  preventScrollOnSwipe:true,
+  });
+
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startSlide = () => {
+  if (intervalRef.current) {
+    clearInterval(intervalRef.current);
+  }
+
+  intervalRef.current = setInterval(goNext, 5000);
+};
+
+  useEffect(() => {
+    startSlide();
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  },[])
+
   return (
 
     <div className={styles.slider}>
@@ -34,7 +56,11 @@ export const SliderHomePage = () => {
       <div className={styles.slider__rectangle}>
         {images.map((image, index) => <span key={index}
           className={index === activeIndex ? styles.active : ''}
-        onClick={()=>setActiveIndex(index)}></span>)}
+          onClick={() => {
+            setActiveIndex(index)
+            startSlide()
+          }
+        }></span>)}
 
 
         </div>

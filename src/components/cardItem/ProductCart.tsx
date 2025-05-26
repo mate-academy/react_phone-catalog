@@ -1,13 +1,13 @@
 import styles from './cardItemPhone.module.scss';
 
 
-export const CardPhone = ({phones}) => {
+export const ProductCart = ({products}) => {
 
- if (!phones) {
+ if (!products) {
     return null;
   }
 
-  return (<>{phones.map(phone => (<div className={styles.card} key={phone.id}>
+  return (<>{products.map(phone => (<div className={styles.card} key={phone.id}>
     <img className={styles.card__image}
      src= {`/${phone.image}`}></img>
     <h4 className={styles.card__name}>{ phone.name}</h4>
