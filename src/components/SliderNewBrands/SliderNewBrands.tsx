@@ -27,7 +27,7 @@ export const SliderNewBrands: React.FC = () => {
   const cardRef = useRef(null);
 
   const newBrandsSlides = sortedNewBrands.map((product, index) => (
-    <div key={product.id} ref={index === 0 ? cardRef : null}>
+    <div key={product.id} className ="nnn" ref={index === 0 ? cardRef : null}>
       <ProductCard {...product} />
     </div>
   ));
@@ -64,7 +64,7 @@ export const SliderNewBrands: React.FC = () => {
         <div
           className="slides-row"
           style={{
-            transform: `translateX(-${currentIndex * 322}px)`,
+            transform: `translateX(-${currentIndex * 266}px)`,
           }}
         >
           {newBrandsSlides}

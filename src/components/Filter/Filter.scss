@@ -12,6 +12,13 @@ background-color: white;
 font-size: 14px;
 font-weight: 500;
 color: #313237;
+
+&:hover,
+&:focus {
+  outline: none;
+  border-color: #313237;
+
+  }
 }
 
 .sort__filter {
