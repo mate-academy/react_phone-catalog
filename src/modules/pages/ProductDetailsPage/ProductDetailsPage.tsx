@@ -12,7 +12,7 @@ import { Phone } from '../../../types/phone';
 import ProductsSlider from '../../shared/components/ProductsSlider';
 import { Product } from '../../../types/product';
 import { shuffleArray } from '../../shared/functions';
-import { Loader } from '../../shared/components/Loader';
+import DetailsPageSkeleton from '../../shared/skeleton/DetailsPageSkeleton';
 
 export const ProductDetailsPage = () => {
   const location = useLocation();
@@ -98,7 +98,7 @@ export const ProductDetailsPage = () => {
   return (
     <>
       {isLoading ? (
-        <Loader />
+        <DetailsPageSkeleton />
       ) : loadingError ? (
         <p style={{ marginBlockStart: '32px' }}>Product was not found</p>
       ) : (
