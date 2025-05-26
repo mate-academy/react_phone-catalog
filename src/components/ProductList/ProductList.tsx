@@ -35,6 +35,7 @@ export const ProductList = ({ title }: { title: string }) => {
     deviceList: devices,
     productsPerPage,
     sort,
+    fetchDevicesLoading,
     fetchDevicesError,
   } = useAppSelector(state => state.device);
 
@@ -144,7 +145,7 @@ export const ProductList = ({ title }: { title: string }) => {
           buttonLink={handleRetry}
           buttonText="Retry"
         />
-      ) : devices.length === 0 ? (
+      ) : devices.length === 0 && !fetchDevicesLoading ? (
         <EmptyState
           image={productNotFound}
           title={`There are no ${title} yet`}
