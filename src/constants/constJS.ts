@@ -71,16 +71,16 @@ export const BANNERS = [
   {
     title: 'iPhone 19 Pro MAX Turbo',
     description: 'Shoots so good, even your memories get jealous.',
-    model: '/models/iphone1.glb',
+    model: `${import.meta.env.BASE_URL}/models/iphone1.glb`,
   },
   {
     title: 'iPhone 19 Pro Power',
     description: 'So many features, even Siri asks for a break.',
-    model: '/models/iphone2.glb',
+    model: `${import.meta.env.BASE_URL}/models/iphone2.glb`,
   },
   {
     title: 'iPhone 19 Mega Super Power',
     description: 'Scans faces so deep it builds your family tree.',
-    model: '/models/iphone3.glb',
+    model: `${import.meta.env.BASE_URL}models/iphone3.glb`,
   },
 ];
