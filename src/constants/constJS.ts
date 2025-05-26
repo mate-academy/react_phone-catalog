@@ -81,6 +81,6 @@ export const BANNERS = [
   {
     title: 'iPhone 19 Mega Super Power',
     description: 'Scans faces so deep it builds your family tree.',
-    model: `${import.meta.env.BASE_URL}models/iphone3.glb`,
+    model: `${import.meta.env.BASE_URL}/models/iphone3.glb`,
   },
 ];
