@@ -1,0 +1,26 @@
+@use '../vars' as vars;
+@use 'sass:map';
+
+@function z($key) {
+  @return map.get(vars.$z-index, $key);
+}
+
+@function color($key) {
+  @return map.get(vars.$colors, $key);
+}
+
+@function bottom-margin($key) {
+  @return map.get(vars.$bottom-margin, $key);
+}
+
+@function page-padding($key) {
+  @return map.get(vars.$page-padding, $key);
+}
+
+@function hh($key) {
+  @return map.get(vars.$header-heights, $key);
+}
+
+@function fh($key) {
+  @return map.get(vars.$footer-heights, $key);
+}

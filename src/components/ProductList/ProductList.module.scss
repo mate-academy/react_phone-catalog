@@ -1,0 +1,50 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  justify-items: start;
+
+  width: 100%;
+
+  @media (min-width: 530px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.optionsContainer {
+  @include page-grid;
+
+  margin-top: 32px;
+
+  @include respond-to(tablet) {
+    margin-top: 40px;
+  }
+}
+
+.optionsContainer > *:nth-child(1) {
+  grid-column: span 2;
+
+  @include respond-to(tablet) {
+    grid-column: span 4;
+  }
+}
+
+.optionsContainer > *:nth-child(2) {
+  grid-column: span 2;
+
+  @include respond-to(tablet) {
+    grid-column: span 3;
+  }
+}

@@ -1,0 +1,21 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.notFoundPage {
+  display: grid;
+  grid-column: 1 / -1;
+  place-items: center;
+
+  width: 100%;
+  min-height: inherit;
+  padding-block: bottom-margin(mobile);
+
+  @include respond-to(tablet) {
+    padding-block: bottom-margin(tablet);
+  }
+
+  @include respond-to(desktop) {
+    padding-block: bottom-margin(desktop);
+  }
+}

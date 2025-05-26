@@ -1,0 +1,120 @@
+@use '../../../styles/vars' as *;
+@use '../../../styles/mixins' as *;
+@use '../../../styles/utils' as *;
+
+.container {
+  position: absolute;
+  top: 0;
+
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+  padding-inline: 0;
+
+  @include respond-to(tablet) {
+    padding-inline: 51px;
+  }
+
+  @include respond-to(desktop) {
+    padding-inline: 48px;
+  }
+}
+
+.info {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  border-radius: 0;
+
+  background: radial-gradient(#2f2e2e, #000);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+
+  @include respond-to(tablet) {
+    flex-direction: row;
+    border-radius: 20px;
+  }
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  order: 2;
+
+  width: 100%;
+  padding: 0 32px 32px;
+
+  color: color(elements);
+
+  @include respond-to(tablet) {
+    order: 1;
+    width: 50%;
+    padding: 40px;
+    padding-right: 0;
+  }
+}
+
+.title {
+  @include h2;
+}
+
+.description {
+  @include body-text;
+
+  margin-top: 2px;
+
+  @include respond-to(tablet) {
+    margin-top: 10px;
+  }
+}
+
+.button {
+  @include button;
+
+  z-index: z(banner-content);
+
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 5px;
+
+  color: color(primary);
+
+  background-color: color(elements);
+
+  transition: all $duration-default $easing-default;
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+
+  @include respond-to(tablet) {
+    margin-top: 40px;
+  }
+}
+
+.canvasContainer {
+  cursor: grab;
+
+  z-index: z(banner-content);
+
+  order: 1;
+
+  width: 100%;
+  height: 400px;
+  margin: auto;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  @include respond-to(tablet) {
+    order: 2;
+    width: 50%;
+    height: 100%;
+  }
+}

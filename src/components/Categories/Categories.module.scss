@@ -1,0 +1,79 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.titleContainer {
+  margin-bottom: 24px;
+}
+
+.title {
+  @include h2;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include respond-to(tablet) {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.categoryItem {
+  width: 100%;
+}
+
+.categoryImage {
+  position: absolute;
+
+  width: 100%;
+  height: auto;
+  margin-top: 20%;
+  margin-left: 20%;
+
+  object-fit: cover;
+  object-fit: contain;
+
+  transition: transform $duration-default $easing-default;
+}
+
+.imgContainer {
+  position: relative;
+
+  overflow: hidden;
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  margin-bottom: 24px;
+
+  &:hover .categoryImage {
+    transform: scale(1.05);
+  }
+}
+
+@for $i from 0 through 3 {
+  .img_position_#{$i} .categoryImage {
+    @if $i == 0 {
+      width: 90%;
+    } @else if $i == 1 {
+      width: 120%;
+    } @else if $i == 2 {
+      width: 190%;
+    }
+  }
+}
+
+.name {
+  @include h4;
+
+  margin-bottom: 4px;
+  line-height: 100%;
+}
+
+.amount {
+  @include body-text;
+
+  color: color(secondary);
+}
