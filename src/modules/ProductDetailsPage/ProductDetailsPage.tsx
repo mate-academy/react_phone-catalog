@@ -102,7 +102,7 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   const withBaseUrl = (path: string) =>
-  `${baseUrl}${path.startsWith('/') ? path.slice(1) : path}`;
+    `${baseUrl.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 
   useEffect(() => {
     loadData();
@@ -144,7 +144,7 @@ export const ProductDetailsPage: React.FC = () => {
     trackMouse: true,
   });
 
-  console.log("productId from useParams:", productId);
+  console.log('productId from useParams:', productId);
 
   return (
     <>
