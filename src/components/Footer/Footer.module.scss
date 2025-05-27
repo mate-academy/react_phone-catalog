@@ -48,7 +48,7 @@
     }
 
     &_item {
-      font-family: 'Mont-Bold';
+      font-family: 'Mont-Bold', serif;
       font-size: 12px;
       line-height: 11px;
       letter-spacing: 4%;
@@ -88,7 +88,7 @@
 
     &_text {
       color: $gray-secondary;
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 12px;
       line-height: 100%;
       letter-spacing: 0%;

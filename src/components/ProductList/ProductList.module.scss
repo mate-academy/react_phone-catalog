@@ -34,7 +34,7 @@
     }
 
     &--text {
-      font-family: 'Mont-Regular';
+      font-family: 'Mont-Regular', serif;
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
@@ -68,7 +68,7 @@
   }
 
   &_title {
-    font-family: 'Mont-Regular';
+    font-family: 'Mont-Regular', serif;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0%;
@@ -83,13 +83,13 @@
   }
 
   &_price {
-    font-family: 'Mont-Bold';
+    font-family: 'Mont-Bold', serif;
     font-size: 22px;
     line-height: 140%;
     letter-spacing: 0%;
 
     &--lined {
-      font-family: 'Mont-Regular';
+      font-family: 'Mont-Regular', serif;
       text-decoration: line-through;
       color: $gray-secondary;
       line-height: 100%;
@@ -117,7 +117,7 @@
     }
 
     &_key {
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 12px;
       line-height: 100%;
       letter-spacing: 0%;
@@ -125,7 +125,7 @@
     }
 
     &_value {
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 12px;
       line-height: 100%;
       letter-spacing: 0%;
@@ -146,7 +146,7 @@
     background-color: $btn-purple;
     text-decoration: none;
     color: $gray-white;
-    font-family: 'Mont-SemiBold';
+    font-family: 'Mont-SemiBold', serif;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0%;

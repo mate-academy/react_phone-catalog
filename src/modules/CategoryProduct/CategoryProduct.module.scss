@@ -17,7 +17,7 @@
   }
 
   &_title {
-    font-family: 'Mont-Bold';
+    font-family: 'Mont-Bold', serif;
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -1%;
@@ -32,7 +32,7 @@
   }
 
   &_counter {
-    font-family: 'Mont-Regular';
+    font-family: 'Mont-Regular', serif;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0%;
@@ -69,7 +69,7 @@
     }
 
     &_title {
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 12px;
       line-height: 100%;
       letter-spacing: 0%;
@@ -79,7 +79,7 @@
 
     &_select {
       background-color: $theme-background;
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
@@ -91,7 +91,7 @@
       padding-left: 16px;
 
       &:hover {
-        font-family: 'Mont-Regular';
+        font-family: 'Mont-Regular', serif;
         color: $gray-white;
         background-color: $gray-surface2;
         cursor: pointer;
@@ -112,7 +112,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 12px;
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;

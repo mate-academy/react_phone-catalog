@@ -11,7 +11,7 @@
   }
 
   &_title {
-    font-family: 'Mont-Bold';
+    font-family: 'Mont-Bold', serif;
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -1%;
@@ -82,7 +82,7 @@
 
       &_wrapper {
         display: flex;
-        font-family: 'Mont-Regular';
+        font-family: 'Mont-Regular', serif;
         font-size: 14px;
         line-height: 21px;
         letter-spacing: 0%;
@@ -159,7 +159,7 @@
     }
 
     &_name {
-      font-family: 'Mont-Regular';
+      font-family: 'Mont-Regular', serif;
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
@@ -171,7 +171,7 @@
     }
 
     &_price {
-      font-family: 'Mont-Bold';
+      font-family: 'Mont-Bold', serif;
       font-size: 22px;
       line-height: 140%;
       letter-spacing: 0%;
@@ -199,7 +199,7 @@
     }
 
     &_total {
-      font-family: 'Mont-Regular';
+      font-family: 'Mont-Regular', serif;
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
@@ -215,7 +215,7 @@
     }
 
     &_btn {
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;

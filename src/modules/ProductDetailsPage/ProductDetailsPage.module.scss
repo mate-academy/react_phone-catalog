@@ -45,7 +45,7 @@
   }
 
   &_title {
-    font-family: 'Mont-Bold';
+    font-family: 'Mont-Bold', serif;
     font-size: 22px;
     line-height: 140%;
     letter-spacing: 0%;
@@ -171,7 +171,7 @@
     flex-direction: column;
 
     &_title {
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 12px;
       line-height: 100%;
       letter-spacing: 0%;
@@ -220,7 +220,7 @@
     flex-direction: column;
 
     &_title {
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 12px;
       line-height: 100%;
       letter-spacing: 0%;
@@ -241,7 +241,7 @@
       align-items: center;
       border: 2px solid $gray-line;
       padding: 8px;
-      font-family: 'Mont-Regular';
+      font-family: 'Mont-Regular', serif;
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
@@ -271,7 +271,7 @@
       gap: 8px;
 
       &_price-discount {
-        font-family: 'Mont-Bold';
+        font-family: 'Mont-Bold', serif;
         font-size: 32px;
         line-height: 41px;
         letter-spacing: -1%;
@@ -279,7 +279,7 @@
       }
 
       &_price-regular {
-        font-family: 'Mont-Regular';
+        font-family: 'Mont-Regular', serif;
         font-size: 22px;
         line-height: 100%;
         letter-spacing: 0%;
@@ -302,7 +302,7 @@
 
       &--cart {
         flex: 1;
-        font-family: 'Mont-SemiBold';
+        font-family: 'Mont-SemiBold', serif;
         font-size: 14px;
         line-height: 21px;
         letter-spacing: 0%;
@@ -350,7 +350,7 @@
     }
 
     &_key {
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 12px;
       line-height: 100%;
       letter-spacing: 0%;
@@ -358,7 +358,7 @@
     }
 
     &_value {
-      font-family: 'Mont-SemiBold';
+      font-family: 'Mont-SemiBold', serif;
       font-size: 12px;
       line-height: 100%;
       letter-spacing: 0%;
@@ -386,7 +386,7 @@
 
     &_description {
       &_title {
-        font-family: 'Mont-SemiBold';
+        font-family: 'Mont-SemiBold', serif;
         font-size: 20px;
         line-height: 100%;
         letter-spacing: 0%;
@@ -425,7 +425,7 @@
         }
 
         &_title {
-          font-family: 'Mont-SemiBold';
+          font-family: 'Mont-SemiBold', serif;
           font-size: 16px;
           line-height: 100%;
           letter-spacing: 0%;
@@ -436,7 +436,7 @@
         }
 
         &_text {
-          font-family: 'Mont-Regular';
+          font-family: 'Mont-Regular', serif;
           font-size: 14px;
           line-height: 21px;
           letter-spacing: 0%;
@@ -448,7 +448,7 @@
     &_specs {
       &_title {
         margin-bottom: 16px;
-        font-family: 'Mont-SemiBold';
+        font-family: 'Mont-SemiBold', serif;
         font-size: 20px;
         line-height: 100%;
         letter-spacing: 0%;
@@ -482,7 +482,7 @@
       }
 
       &_key {
-        font-family: 'Mont-Regular';
+        font-family: 'Mont-Regular', serif;
         font-size: 14px;
         line-height: 21px;
         letter-spacing: 0%;
@@ -490,7 +490,7 @@
       }
 
       &_value {
-        font-family: 'Mont-Regular';
+        font-family: 'Mont-Regular', serif;
         font-size: 14px;
         line-height: 21px;
         letter-spacing: 0%;
