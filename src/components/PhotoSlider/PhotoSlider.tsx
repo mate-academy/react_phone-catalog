@@ -1,58 +1,54 @@
-import { useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, Navigation } from 'swiper/modules';
+import { useState } from 'react';
+import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './PhotoSliderStyles.scss';
-
 export function MySlider() {
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
-
+  const [swiper, setSwiper] = useState<SwiperClass | null>(null);
+  const handlePrevSlide = () => swiper?.slidePrev();
+  const handleNextSlide = () => swiper?.slideNext();
+  const onSwiperInit = (swiperInit: SwiperClass) => setSwiper(swiperInit);
   return (
-    <div className="outerSliderWrapper">
-      <button ref={prevRef} className="customPrev">
-        &lt;
-      </button>
-      <div className="sliderWrapper">
-        <div className="sliderContainer">
-          <Swiper
-            modules={[Pagination, Autoplay, Navigation]}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            loop={true}
-            navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onBeforeInit={swiper => {
-              // @ts-ignore
-              swiper.params.navigation.prevEl = prevRef.current;
-              // @ts-ignore
-              swiper.params.navigation.nextEl = nextRef.current;
-            }}
-            className="slider"
-          >
-            <SwiperSlide>
-              <img src="/img/BannerSlide2.svg" alt="1" className="slide_Image" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="/img/banner-tablets.png" alt="2" className="slide_Image firstSlide" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                src="/img/category-accessories.png"
-                alt="3"
-                className="slide_Image secondSlide"
-              />
-            </SwiperSlide>
-          </Swiper>
+    <>
+      <div className="outerSliderWrapper">
+        <button onClick={handlePrevSlide} className="customPrev">
+          &lt;
+        </button>
+        <div className="sliderWrapper">
+          <div className="sliderContainer">
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              pagination={{
+                clickable: true,
+                el: '.custom-pagination',
+                renderBullet: (index, className) => {
+                  return `<span class="${className} custom-bullet"></span>`;
+                },
+              }}
+              autoplay={{ delay: 5000, disableOnInteraction: false }}
+              loop={true}
+              onSwiper={onSwiperInit}
+              className="slider"
+            >
+              <SwiperSlide>
+                <img src="/img/banner-phones.png" alt="1" className="slide_Image zeroSlide" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="/img/banner-accessories.png" alt="2" className="slide_Image firstSlide" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="/img/banner-tablets.png" alt="3" className="slide_Image secondSlide" />
+              </SwiperSlide>
+            </Swiper>
+          </div>
         </div>
+        <button onClick={handleNextSlide} className="customNext">
+          &gt;
+        </button>
       </div>
-      <button ref={nextRef} className="customNext">
-        &gt;
-      </button>
-    </div>
+      <div className="custom-pagination" />
+    </>
   );
 }

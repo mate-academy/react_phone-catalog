@@ -9,15 +9,30 @@
   left: 0;
   z-index: 1000;
   align-items: center;
-  padding: 13px 16px; // проблема в лінії тут
-  box-shadow: 0px 1px 0px 0px rgba(226, 230, 233, 1);
-  height: 48px;
+
+  margin-bottom: 32px;
+}
+
+.headerLeftSide {
+      display: flex
+;
+    align-items: center;
+  @media (min-width: 1200px) {
+    height: 64px;
+  }
+}
+
+.headerRightSide {
+  @media (min-width: 1200px) {
+    height: 64px;
+  }
 }
 
 .burger {
   width: 16px;
   height: 16px;
   cursor: pointer;
+  margin-top: 16px;
 
   @media (min-width: 640px) {
     display: none;
@@ -30,12 +45,19 @@
   justify-content: space-between;
   width: 100%;
   transition: none;
+  height: 48px;
+  box-shadow: 0px 1px 0px 0px rgb(226, 230, 233);
+
+  @media (min-width: 1200px) {
+    height: 64px;
+  }
 }
 
 // лінія
 .burgerLine {
   border-left: 1px solid rgba(226, 230, 233, 1);
   padding-left: 17px;
+  height: 48px;
 
   @media (min-width: 640px) {
     border-left: none; // забираємо лінію теж
@@ -148,7 +170,6 @@
   display: none;
   @media (min-width: 640px) {
     display: flex;
-
   }
 }
 
@@ -157,7 +178,7 @@
 }
 
 .headerIcons {
-  display: none; // приховано на мобілці
+  display: none;
 
   @media (min-width: 640px) {
     display: flex;
@@ -169,7 +190,8 @@
   align-items: center;
 }
 
-.headerIconFav, .headerIconCart{
+.headerIconFav,
+.headerIconCart {
   width: 16px;
   height: 16px;
   cursor: pointer;
@@ -177,6 +199,10 @@
 
 .headerIconFav {
   margin-right: 16px;
+
+  @media (min-width: 1200px) {
+    margin-right: 25px;
+  }
 }
 
 .headerLinkText {
@@ -193,14 +219,57 @@
   text-transform: uppercase;
   margin-left: 16px;
   margin-right: 16px;
+  height: 50px;
+  padding-top: 12px;
 
   &:hover {
     border-bottom: 2px solid #333;
     color: rgba(49, 50, 55, 1);
   }
+
+  @media (min-width: 1200px) {
+    margin-left: 48px;
+    height: 65px;
+    padding-top: 20px;
+  }
 }
 
 .iconBorder {
   padding-left: 16px;
+  border-bottom: 2px solid transparent;
   border-left: 1px solid rgba(226, 230, 233, 1);
+  height: 48px;
+
+  &:hover {
+    border-bottom: 2px solid #333;
+    transition: border-bottom 0.3s ease;
+  }
+
+  @media (min-width: 1200px) {
+    padding-left: 24px;
+    height: 64px;
+  }
+}
+
+.activeLink p{
+  border-bottom: 2px solid #333;
+  color: rgba(49, 50, 55, 1);
+}
+
+
+.fav,
+.carti {
+  margin-top: 16px;
+
+  @media (min-width: 1200px) {
+    margin-top: 24px;
+  }
+}
+
+.carti {
+  margin-right: 16px;
+
+  @media (min-width: 1200px) {
+    margin-right: 24px;
+  }
 }

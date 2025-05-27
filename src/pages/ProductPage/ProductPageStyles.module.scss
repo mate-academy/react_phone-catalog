@@ -1,0 +1,133 @@
+@font-face {
+  font-family: SmallFont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+.back_forwButtnons {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(180, 189, 195, 1);
+  background-color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.pagination {
+  display: flex;
+  display: flex;
+  justify-content: center;
+}
+
+.notActivePage {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(226, 230, 233, 1);
+  background-color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.activePage {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(49, 50, 55, 1);
+  background-color: rgba(49, 50, 55, 1);
+  cursor: pointer;
+  color: rgba(255, 255, 255, 1);
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.productsList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+.whereIAm {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.phonesRight {
+  color: rgba(180, 189, 195, 1);
+}
+
+.phonesText {
+  color: rgba(180, 189, 195, 1);
+  font-size: 12px;
+  font-family: SmallFont;
+}
+
+.productText {
+  color: rgba(49, 50, 55, 1);
+  margin-top: 24px;
+
+  @media (min-width: 640px) {
+    font-size: 48px;
+  }
+}
+
+.howManyProducts {
+  font-size: 14px;
+  margin-top: 8px;
+  font-family: SmallFont;
+  color: rgba(137, 147, 154, 1);
+}
+
+.sortSection {
+  display: flex;
+  margin-top: 32px;
+}
+
+.sortText,
+.itemsOnPageText {
+  color: rgba(137, 147, 154, 1);
+  font-family: SmallFont;
+  font-size: 12px;
+}
+
+.itemsOnPageSelect,
+.sortPageSelect {
+  width: 136px;
+  height: 40px;
+  border: 1px solid rgba(180, 189, 195, 1);
+}
+
+.itemsOnPage {
+  margin-left: 16px;
+}
+
+.inSectionText {
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+select {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.errorWrapper {
+  text-align: center;
+  margin: 40px 0;
+  p {
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: red;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+}

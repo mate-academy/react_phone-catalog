@@ -1,7 +1,4 @@
-export interface AccessoryDescription {
-  title: string;
-  text: string[];
-}
+export interface AccessoryDescription {}
 
 export interface Accessory {
   id: string;
@@ -9,16 +6,22 @@ export interface Accessory {
   namespaceId: string;
   name: string;
   capacityAvailable?: string[];
-  capacity?: string;
+  capacity?: string | undefined;
+  itemId: string;
   priceRegular: number;
   priceDiscount: number;
   colorsAvailable: string[];
+  description: {
+    title: string[];
+    text: string[];
+  };
   color: string;
   images: string[];
-  description: AccessoryDescription[];
   screen?: string;
   resolution?: string;
   processor?: string;
+  camera?: string;
+  zoom?: string;
   ram?: string;
   cell?: string[];
 }

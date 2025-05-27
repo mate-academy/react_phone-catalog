@@ -1,21 +1,20 @@
-export interface TabletDescription {
-  title: string;
-  text: string[];
-}
-
 export interface Tablet {
   id: string;
   category: 'tablets';
+  itemId: string;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];
-  capacity: string;
+  capacity: string | undefined;
   priceRegular: number;
   priceDiscount: number;
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: TabletDescription[];
+  description: {
+    title: string[];
+    text: string[];
+  };
   screen: string;
   resolution: string;
   processor: string;

@@ -1,0 +1,108 @@
+@font-face {
+  font-family: SmallFont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: SemiFont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+.itemImage {
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+  margin-right: 24px;
+  margin-left: 24px;
+  margin-bottom: 16px;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  color: #b4bdc3;
+  cursor: 'pointer';
+}
+
+.itemName {
+  font-size: 14px;
+  color: #313237;
+  font-family: SmallFont;
+  width: 150px;
+  height: 63px;
+
+  @media (min-width: 640px) {
+    width: 176px;
+    height: 42px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 336px;
+    height: 21px;
+  }
+}
+
+.quantity {
+  font-family: SemiFont;
+  margin-left: 13px;
+  margin-right: 13px;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.quantityButton {
+  background: none;
+  border: 1px solid #b4bdc3;
+  color: #313237;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.quantityButton:disabled {
+  color: #b4bdc3;
+  opacity: 0.5;
+  border-color: #b4bdc3;
+  cursor: not-allowed;
+}
+
+.totalPrice {
+  color: #313237;
+  font-size: 22px;
+  margin-left: 53px;
+  margin-right: 8px;
+}
+
+.cartItem {
+  border: 1px solid #e2e6e9;
+  padding: 16px;
+  max-width: 752px;
+  height: 160px;
+  margin-bottom: 16px;
+
+  @media (min-width: 640px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 128px;
+  }
+}
+
+.conatinerUp {
+  display: flex;
+  align-items: center;
+}
+
+.itemInfo {
+  display: flex;
+  align-items: center;
+}
+
+.containerDown {
+  display: flex;
+  justify-content: space-between;
+}

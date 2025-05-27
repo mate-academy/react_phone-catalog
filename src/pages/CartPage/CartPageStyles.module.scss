@@ -1,0 +1,96 @@
+@font-face {
+  font-family: SmallFont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+.categoryRight {
+  margin-right: 8px;
+}
+
+.categoryBack {
+  color: rgba(137, 147, 154, 1);
+  font-size: 12px;
+  font-family: SmallFont;
+
+  &:hover {
+    color: rgba(49, 50, 55, 1);
+  }
+}
+
+.categoryRight {
+  color: rgba(49, 50, 55, 1);
+}
+.backToCat {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.cartSummary {
+  border: 1px solid #e2e6e9;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+
+  @media (min-width: 1200px) {
+    margin-top: 0px;
+    width: 368px;
+  }
+}
+
+.totalAmount {
+  font-size: 32px;
+}
+
+.summaryRow {
+  margin-top: 24px;
+}
+
+.itemCount {
+  color: #89939a;
+  font-size: 14px;
+  font-family: SmallFont;
+}
+
+.line {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 240px;
+  border: 1px solid #e2e6e9;
+
+  @media (min-width: 640px) {
+    width: 544px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 321px;
+  }
+}
+
+.checkoutButton {
+  height: 48px;
+  width: 240px;
+  border: none;
+  background-color: #313237;
+  color: #ffffff;
+  font-family: SmallFont;
+
+  @media (min-width: 640px) {
+    width: 544px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 321px;
+  }
+}
+
+.cartContent {
+  @media (min-width: 1200px) {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+}

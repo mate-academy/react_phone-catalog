@@ -5,14 +5,14 @@ import { ProductsSlider } from '../ProductSlider/ProductSlider';
 
 export const HotPricesProducts = () => {
   const [cheapestProducts, setCheapestProducts] = useState<Product[]>([]);
-  const [name, setName] = useState<string>('')
+  const [name, setName] = useState<string>('');
 
   useEffect(() => {
     getProducts().then(products => {
       const sorted = [...products].sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
       const cheapest = sorted.slice(0, 13);
       setCheapestProducts(cheapest);
-      setName('Hot prices')
+      setName('Hot prices');
     });
   }, []);
 

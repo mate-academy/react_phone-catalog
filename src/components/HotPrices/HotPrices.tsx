@@ -1,5 +1,4 @@
-import { HotPricesProducts } from "../HotPricesCard/HotPricesCards";
-
+import { HotPricesProducts } from '../HotPricesCard/HotPricesCards';
 
 export function HotPrices() {
   return (

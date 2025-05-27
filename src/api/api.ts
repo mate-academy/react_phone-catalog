@@ -10,7 +10,7 @@ export function getPhones(): Promise<Phone[]> {
 }
 
 export function getAccessories(): Promise<Accessory[]> {
-  return fetch(API_URL + 'accessorie.json').then(res => res.json());
+  return fetch(API_URL + 'accessories.json').then(res => res.json());
 }
 
 export function getTablets(): Promise<Tablet[]> {
@@ -21,9 +21,11 @@ export function getProducts(): Promise<Product[]> {
   return fetch(API_URL + 'products.json').then(res => res.json());
 }
 
-export function getProductById(id: string): Promise<Product | null> {
-  return getProducts().then(products => {
-    const foundProduct = products.find(product => product.itemId === id);
-    return foundProduct || null;
-  });
+export function getSuggestedProducts(count: number = 4): Promise<Product[]> {
+  return fetch(API_URL + 'products.json')
+    .then(res => res.json())
+    .then((products: Product[]) => {
+      const shuffled = [...products].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    });
 }

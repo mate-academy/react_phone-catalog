@@ -1,0 +1,11 @@
+.ProductMargin {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  width: 100%;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

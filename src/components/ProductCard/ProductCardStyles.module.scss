@@ -3,16 +3,7 @@
   src: url('/fonts/Mont-Regular.otf') format('opentype');
 }
 
-.characters {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 100%;
-  color: rgba(137, 147, 154, 1);
-  font-family: SmallFont;
-  margin-bottom: 8px;
-}
+
 
 .iphone14_card {
   width: 212px;
@@ -20,6 +11,22 @@
   padding: 32px;
   border: 1px solid rgba(226, 230, 233, 1);
   height: 439px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
+    transform: scale(1.001);
+  }
+
+  @media (min-width: 640px) {
+    width: 237px;
+    height: 512px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 272px;
+    height: 506px;
+  }
 }
 
 .products_photo {
@@ -27,6 +34,16 @@
   object-fit: contain;
   margin-bottom: 8px;
   height: 129px;
+
+  @media (min-width: 640px) {
+    width: 173px;
+    height: 202px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 208px;
+    height: 196px;
+  }
 }
 
 .center_for_card {
@@ -41,37 +58,7 @@
   margin-top: 16px;
 }
 
-.add_to_cart {
-  width: 100px;
-  height: 40px;
-  background-color: rgba(49, 50, 55, 1);
-  border: none;
-  color: rgba(255, 255, 255, 1);
-  margin-right: 8px;
-  font-family: SmallFont;
 
-  &:hover {
-    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
-  }
-}
-
-.love_butt {
-  height: 40px;
-  width: 40px;
-  background-color: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(180, 189, 195, 1);
-
-  &:hover {
-    border: 1px solid rgba(49, 50, 55, 1)
-  }
-}
-
-.old_price {
-  font-size: 22px;
-  line-height: 100%;
-  text-decoration: line-through;
-  color: rgba(137, 147, 154, 1);
-}
 
 .name_styles {
   font-weight: 600;
@@ -83,29 +70,36 @@
 
 .name_font_styles {
   font-family: SmallFont;
+  height: 42px;
 }
 
-.new_price {
-  margin: 8px 0;
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 140%;
-}
 
 .grey_line {
   width: 148px;
   border: 1px solid rgba(226, 230, 233, 1);
   margin-bottom: 16px;
+
+  @media (min-width: 640px) {
+    width: 173px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 208px;
+  }
 }
 
-.span_caracters {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 100%;
-  color: rgba(49, 50, 55, 1);
-  font-family: SmallFont;
+
+.extendedCardWrapper {
+  @extend .iphone14_card;
+  width: 287px;
+  height: 420px;
+
+  @media (min-width: 640px) {
+    height: 506px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 272px;
+  }
 }
 
-.favorite_product {
-  margin-top: 5px;
-}

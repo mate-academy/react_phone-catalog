@@ -15,6 +15,11 @@
   background-color: rgba(255, 255, 255, 1);
   margin-left: 16px;
   margin-top: 20px;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid rgba(49, 50, 55, 1)
+  }
 }
 
 .buttons {
@@ -26,9 +31,9 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 39px;
+
+  @media (min-width: 640px) {
+    font-size: 22px;
+  }
 }
 
-.customNext:hover,
-.customPrev:hover {
-  border: 1px solid rgba(49, 50, 55, 1)
-}

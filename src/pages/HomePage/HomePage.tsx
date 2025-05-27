@@ -23,7 +23,7 @@ export function HomePage() {
       </section>
 
       <section>
-          <HotPrices />
+        <HotPrices />
       </section>
     </>
   );

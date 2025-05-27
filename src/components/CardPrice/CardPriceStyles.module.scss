@@ -1,0 +1,30 @@
+@font-face {
+  font-family: SmallFont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+.old_price {
+  font-size: 22px;
+  line-height: 100%;
+  text-decoration: line-through;
+  color: rgba(137, 147, 154, 1);
+}
+
+.new_price {
+  margin: 8px 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: rgba(49, 50, 55, 1);
+}
+
+.extendedPriceWrapper {
+  @extend .new_price;
+  font-size: 32px;
+  margin-top: 32px
+}
+
+.extendedDiscountWrapper {
+  @extend .old_price;
+  font-family: SmallFont;
+}

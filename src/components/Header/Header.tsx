@@ -25,16 +25,36 @@ export const NavBar = () => {
           <div className={styles.headerLeftSide}>
             <Logo />
             <div className={styles.headerContent}>
-              <NavLink to="/" className={styles.headerLinkText}>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `${styles.headerLinkText} ${isActive ? styles.activeLink : ''}`
+                }
+              >
                 <p className={styles.headerText}>HOME</p>
               </NavLink>
-              <NavLink to="/phones" className={styles.headerLinkText}>
+              <NavLink
+                to="/phones"
+                className={({ isActive }) =>
+                  `${styles.headerLinkText} ${isActive ? styles.activeLink : ''}`
+                }
+              >
                 <p className={styles.headerText}>PHONES</p>
               </NavLink>
-              <NavLink to="/tablets" className={styles.headerLinkText}>
+              <NavLink
+                to="/tablets"
+                className={({ isActive }) =>
+                  `${styles.headerLinkText} ${isActive ? styles.activeLink : ''}`
+                }
+              >
                 <p className={styles.headerText}>TABLETS</p>
               </NavLink>
-              <NavLink to="/accessories" className={styles.headerLinkText}>
+              <NavLink
+                to="/accessories"
+                className={({ isActive }) =>
+                  `${styles.headerLinkText} ${isActive ? styles.activeLink : ''}`
+                }
+              >
                 <p className={styles.headerText}>ACCESSORIES</p>
               </NavLink>
             </div>
@@ -42,17 +62,23 @@ export const NavBar = () => {
           <div className={styles.headerRightSide}>
             <div className={styles.headerIcons}>
               <div className={styles.iconBorder}>
-                <NavLink to="/favorites">
-                  <img
-                    src="/img/icons/favorite.svg"
-                    alt="to favorites"
-                    className={styles.headerIconFav}
-                  />
+                <NavLink
+                  to="/favorites"
+                  className={({ isActive }) =>
+                    `${styles.headerIconFav} ${isActive ? styles.activeLink : ''}`
+                  }
+                >
+                  <img src="/img/icons/favorite.svg" alt="to favorites" className={styles.fav} />
                 </NavLink>
               </div>
               <div className={styles.iconBorder}>
-                <NavLink to="/cart">
-                  <img src="/img/icons/cart.svg" alt="to cart" className={styles.headerIconCart} />
+                <NavLink
+                  to="/cart"
+                  className={({ isActive }) =>
+                    `${styles.headerIconCart} ${isActive ? styles.activeLink : ''}`
+                  }
+                >
+                  <img src="/img/icons/cart.svg" alt="to cart" className={styles.carti} />
                 </NavLink>
               </div>
             </div>

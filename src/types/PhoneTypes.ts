@@ -1,21 +1,20 @@
-export interface PhoneDescription {
-  title: string;
-  text: string[];
-}
-
 export interface Phone {
   id: string;
   category: string;
   namespaceId: string;
+  itemId: string;
   name: string;
   capacityAvailable: string[];
-  capacity: string;
+  capacity: string | undefined;
   priceRegular: number;
   priceDiscount: number;
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: PhoneDescription[];
+  description: {
+    title: string[];
+    text: string[];
+  };
   screen: string;
   resolution: string;
   processor: string;

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { BigLogo } from '../BigLogo/BigLogo';
 import styles from '../Footer/FooterStyles.module.scss';
 
@@ -16,12 +15,18 @@ export function Footer() {
         <div className={styles.logotype}>
           <BigLogo />
         </div>
-        <p className={styles.footerWords}>GITHUB</p>
-        <p className={styles.footerWords}>CONTACTS</p>
-        <p className={styles.footerWords}>RIGHTS</p>
+        <div className={styles.footerLinks}>
+          <div className={styles.textToLeft}>
+            <p className={styles.footerWords}>GITHUB</p>
+          </div>
+          <p className={styles.footerWords}>CONTACTS</p>
+          <p className={styles.footerWords}>RIGHTS</p>
+        </div>
         <div className={styles.backToTop}>
           <p className={styles.backToTopWords}>Back to top</p>
-          <button className={styles.backToTopButton} onClick={handleClick}>&gt;</button>
+          <button className={styles.backToTopButton} onClick={handleClick}>
+            &gt;
+          </button>
         </div>
       </div>
     </>
