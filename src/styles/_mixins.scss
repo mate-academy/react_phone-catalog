@@ -31,7 +31,7 @@
 
 @mixin content-padding-inline {
   @include on-mobile {
-    // padding-inline: 16px;
+    padding-inline: 16px;
   }
 
   @include on-tablet {

@@ -1,32 +1,58 @@
-@import '../../../styles/main.scss';
+@import '../../../styles/main';
 
 .productCard {
-  // font-family: Mont, sans-serif;
   flex: 1 1 auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 32px;
   height: 506px;
-  min-width: 272px;
   background-color: #161827;
 
+  &__linkImage {
+    display: flex;
+    justify-content: center;
+  }
+
   &__image {
-    object-fit: contain;
-    height: 196px;
-    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    & img {
+      object-fit: contain;
+      height: 196px;
+  
+      @include hover(transform, scale(1.05));
+    }
+  }
+
+
+  &__title {
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 600;
   }
 
   &__info {
     display: flex;
     flex-direction: column;
-    row-gap: 8px;
+    justify-content: space-between;
+    height: 165px;
+  }
+
+  &__namePrice {
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &__price {
     font-size: 22px;
     font-weight: 800;
-    line-height: 200%;
+    line-height: 140%;
     border-bottom: 1px solid $textNotActiveColor;
 
   }
@@ -72,7 +98,7 @@
 
   &__buttons {
     display: flex;
-    justify-content: space-between;
+    column-gap: 8px;
     height: 40px;
   }
 
@@ -98,6 +124,11 @@
     width: 40px;
     background: $mainIconButtonColor;
     transition: all 0.3s;
+
+    & img {
+      width: 55%;
+      height: auto;
+    }
 
 
     &:hover {

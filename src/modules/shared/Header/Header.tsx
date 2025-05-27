@@ -1,13 +1,11 @@
 import styles from './Header.module.scss';
 import classNames from 'classnames';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useParams } from 'react-router-dom';
 import Logo from '../../../img/Logo.png';
-import IconHeart from '../../../img/icons/icon-heart.png';
-import IconCart from '../../../img/icons/icon-shopping-cart.png';
 import IconMenu from '../../../img/icons/icon-menu.png';
 import IconClose from '../../../img/icons/icon-close.png';
-import { GlobalContext } from '../../../store/GlobalContext';
+import { GlobalContext } from '../../../app/store/GlobalContext';
 import { BurgerMenu } from '../BurgerMenu';
 
 const navLink = [
@@ -25,13 +23,19 @@ export const Header = () => {
   };
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const { isMenuClose, setIsMenuClose, MOBILE_MAX_WIDTH } =
-    useContext(GlobalContext);
+  const {
+    isMenuClose,
+    setIsMenuClose,
+    MOBILE_MAX_WIDTH,
+    totalCartItems,
+    totalFavoritesItems,
+    setSelectedProduct,
+  } = useContext(GlobalContext);
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-      if (window.innerWidth > MOBILE_MAX_WIDTH) {
+      if (windowWidth > MOBILE_MAX_WIDTH) {
         setIsMenuClose(true);
       }
     };
@@ -39,7 +43,7 @@ export const Header = () => {
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [MOBILE_MAX_WIDTH, setIsMenuClose, windowWidth]);
 
   const params = useParams();
 
@@ -48,13 +52,17 @@ export const Header = () => {
       <header id="header" className={styles.header}>
         <div className={styles.header__container}>
           <nav className={styles.navbar}>
-            <Link to="/" className={styles.navbar__logo}>
+            <Link to="home" className={styles.navbar__logo}>
               <img src={Logo} alt="Logo" />
             </Link>
             <ul className={styles.navbar__list}>
               {navLink.map(({ to, tab }) => (
                 <li key={to} className={styles.navbar__item}>
-                  <NavLink to={to} className={getLinkActive}>
+                  <NavLink
+                    to={to}
+                    className={getLinkActive}
+                    onClick={() => setSelectedProduct(null)}
+                  >
                     {tab}
                   </NavLink>
                 </li>
@@ -64,15 +72,21 @@ export const Header = () => {
           <div className={styles.header__icons}>
             <Link
               className={`${styles.header__icon} ${styles.header__icon_heart}`}
-              to="/"
+              to="/favorites"
             >
-              <img src={IconHeart} alt="Icon-heart" />
+              {totalFavoritesItems > 0 ? (
+                <div className={styles.header__countIcon}>
+                  {totalFavoritesItems}
+                </div>
+              ) : null}
             </Link>
             <Link
               className={`${styles.header__icon} ${styles.header__icon_cart}`}
-              to="/"
+              to="/cart"
             >
-              <img src={IconCart} alt="Icon-cart" />
+              {totalCartItems > 0 ? (
+                <div className={styles.header__countIcon}>{totalCartItems}</div>
+              ) : null}
             </Link>
             <Link
               className={classNames(styles.header__icon, {
@@ -81,7 +95,7 @@ export const Header = () => {
               to={params}
               onClick={() => setIsMenuClose(!isMenuClose)}
             >
-              <img src={isMenuClose ? IconMenu : IconClose} alt="Icon-cart" />
+              <img src={isMenuClose ? IconMenu : IconClose} alt="Icon-close" />
             </Link>
           </div>
         </div>

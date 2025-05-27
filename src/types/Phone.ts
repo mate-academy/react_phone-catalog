@@ -1,6 +1,6 @@
 export interface Phone {
   itemId: string;
-  id: string | number;
+  id: string;
   category: string;
   namespaceId: string;
   name: string;
@@ -22,4 +22,5 @@ export interface Phone {
   camera?: string;
   zoom?: string;
   cell: string[];
-};
+  year: number;
+}

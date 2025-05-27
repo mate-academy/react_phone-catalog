@@ -2,7 +2,7 @@ import styles from './BurgerMenu.module.scss';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
-import { GlobalContext } from '../../../store/GlobalContext';
+import { GlobalContext } from '../../../app/store/GlobalContext';
 
 const navLink = [
   { to: '/', tab: 'Home' },
@@ -18,7 +18,7 @@ export const BurgerMenu = () => {
     });
   };
 
-  const { isMenuClose, setIsMenuClose } = useContext(GlobalContext);
+  const { setIsMenuClose } = useContext(GlobalContext);
 
   return (
     <div className={styles.burgerMenu}>

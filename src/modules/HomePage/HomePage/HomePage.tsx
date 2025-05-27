@@ -1,17 +1,15 @@
 import { Banner } from '../Banner/Banner';
-import styles from './HomePage.module.scss';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { useEffect } from 'react';
-import { fetchProducts } from '../../../app/reducers/product';
+import '../../../styles/_container.scss';
+import { useContext, useEffect } from 'react';
 import { NewModels } from '../NewModels/NewModels';
 import { Categories } from '../Categories';
+import { GlobalContext } from '../../../app/store/GlobalContext';
 
 export const HomePage = () => {
-  const dispatch = useAppDispatch();
-  const { products } = useAppSelector(state => state.products);
+  const { products } = useContext(GlobalContext);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    window.scrollTo(0, 0);
   }, []);
 
   const newProducts = products.filter(product =>

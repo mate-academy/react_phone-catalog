@@ -4,15 +4,13 @@ import { Header } from './modules/shared/Header';
 import { Outlet } from 'react-router-dom';
 import { Footer } from './modules/shared/Footer';
 import { useContext } from 'react';
-import { GlobalContext } from './store/GlobalContext';
+import { GlobalContext } from './app/store/GlobalContext';
 
 export const App = () => {
   const { isMenuClose } = useContext(GlobalContext);
 
   return (
     <div className="App">
-      <h1 hidden>Product Catalog</h1>
-      {/* <h1>{ window.innerWidth}</h1> */}
       <Header />
 
       <main className="main">{isMenuClose && <Outlet />}</main>

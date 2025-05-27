@@ -1,10 +1,9 @@
 import styles from './Categories.module.scss';
-import Phones from '../../../api/img/category-phones1.png';
-import Tablets from '../../../api/img/category-tablets1.png';
-import Accessories from '../../../api/img/category-accessories1.png';
+import Phones from '../../../img/categories/phones.png';
+import Tablets from '../../../img/categories/tablets.png';
+import Accessories from '../../../img/categories/accessories.png';
 import { Link } from 'react-router-dom';
 import React from 'react';
-1;
 import { Product } from '../../../types/Product';
 
 type Props = {
@@ -33,8 +32,10 @@ export const Categories: React.FC<Props> = ({ products }) => {
                 <img src={img} alt={name} className={styles.category__img} />
               </Link>
 
-              <p className={styles.category__name}>{label}</p>
-              <p className={styles.category__amount}>{amount} models</p>
+              <div className={styles.category__info}>
+                <p className={styles.category__name}>{label}</p>
+                <p className={styles.category__amount}>{amount} models</p>
+              </div>
             </li>
           );
         })}

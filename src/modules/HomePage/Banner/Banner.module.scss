@@ -1,11 +1,8 @@
 @import '../../../styles/main';
 
 .banner {
-  &__container {
-    
-  }
-
   &__title {
+    font-weight: 700;
     font-size: 32px;
 
     @include on-tablet {
@@ -21,8 +18,7 @@
   &__sliderImage {
     width: 100%;
     height: auto;
-    object-fit: cover;
-    // object-position: center;
+    object-fit: contain;
 
     @include on-tablet {
       max-width: calc(100% - 96px);
@@ -39,6 +35,14 @@
     text-transform: uppercase;
     font-size: 12px;
     border: 1px solid $textNotActiveColor;
+    background-color: transparent;
+    color: $textMainColor;
+    transition: all, 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hoverPurpleButtonColor;
+    }
 
     @include on-tablet {
       display: flex;
@@ -59,7 +63,6 @@
   height: 100%;
   border: none;
   cursor: pointer;
-  position: absolute;
   transition: all 0.3s;
 
   &:hover {
@@ -81,7 +84,6 @@
   height: 100%;
   border: none;
   cursor: pointer;
-  position: absolute;
   transition: all 0.3s;
 
   &:hover {

@@ -1,10 +1,6 @@
-@import '../../../styles/main.scss';
+@import '../../../styles/main';
 
 .newModels {
-  margin-top: 80px;
-  margin-bottom: 80px;
-
-
   &__container {
     display: flex;
     justify-content: space-between;
@@ -29,15 +25,15 @@
     justify-content: center;
     align-items: center;
     background-color: $pageBackground;
-    transition: all 0.3s;
+    border: 1px solid $hoverIconButtonColor;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
 
-    &:hover {
-      background-color: $hoverIconButtonColor;
+    @include hover(background-color, $hoverIconButtonColor);
+
+    &:disabled {
+      cursor: not-allowed;
     }
   }
-
-  &__button_prev {}
-
-  &__button_next {}
-
 }

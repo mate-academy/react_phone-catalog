@@ -1,7 +1,7 @@
 @import '../../../styles/main';
 
 .header {
-  width: 100vw;
+  width: 100%;
 
   &__container {
     display: flex;
@@ -9,7 +9,7 @@
     border-bottom: 1px solid $textNotActiveColor;
 
     @include on-mobile {
-      margin-inline: -16px;
+      // margin-inline: -16px;
     }
   }
 
@@ -18,6 +18,7 @@
   }
 
   &__icon {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,12 +27,26 @@
     border-left: 1px solid $textNotActiveColor;
 
     &_heart {
+      background-image: url('../../../img/icons/icon-heart.png');
+      background-repeat: no-repeat;
+      background-size: 28%;
+      background-position: center;
+
+      @include hover(background-size, 34%);
+
       @include on-mobile {
         display: none;
       }
     }
 
     &_cart {
+      background-image: url('../../../img/icons/icon-shopping-cart.png');
+      background-repeat: no-repeat;
+      background-size: 28%;
+      background-position: center;
+
+      @include hover(background-size, 34%);
+
       @include on-mobile {
         display: none;
       }
@@ -41,25 +56,43 @@
       @include on-tablet {
         display: none;
       }
+
+      & img {
+        height: 25%;
+        object-fit: contain;
+        object-position: center;
+  
+        @include hover(scale, 1.1);
+      }
     }
+  }
 
-    & img {
-      height: 25%;
-      object-fit: contain;
-      object-position: center;
-
-      @include hover(scale, 1.1);
-
-    }
+  &__countIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    position: absolute;
+    top: 20%;
+    right: 28%;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    color: $textMainColor;
+    background-color: #eb5757;
   }
 }
 
 .navbar {
   display: flex;
   height: 48px;
-  width: 70vw;
+  
+  @include on-tablet {
+    column-gap: 32px;
+  }
 
   @include on-desktop {
+    column-gap: 48px;
     height: 68px;
   }
 
@@ -67,23 +100,13 @@
     display: flex;
     align-items: center;
     width: 96px;
+    padding: 13px 16px;
 
     @include hover(scale, 1.1);
-
-
-    @include on-tablet {
-      margin-right: 16px;
-    }
-
-    @include on-desktop {
-      width: 128px;
-      margin-right: 24px;
-    }
   }
 
   &__list{
-    // width: inherit;
-    flex: 1 1 auto;
+    flex: 1 1 330px;
     display: flex;
     height: inherit;
     align-items: center;

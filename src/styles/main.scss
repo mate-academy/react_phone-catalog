@@ -23,17 +23,12 @@ body {
 
 .swiper {
   display: flex !important;
-
+  align-items: center !important;
 }
 
 .swiper-wrapper {
   display: flex !important;
-  column-gap: 16px !important;
   position: relative !important;
-}
-
-.swiper-slide {
-  // flex: 1 1 auto !important;
 }
 
 .swiper-pagination {
@@ -42,11 +37,11 @@ body {
 }
 
 .swiper-pagination-bullet {
+  overflow: visible !important;
   width: 14px !important;
   height: 4px !important;
   border-radius: 0 !important;
   background-color: $mainGreyColor !important;
-
 }
 
 .swiper-pagination-bullet-active {

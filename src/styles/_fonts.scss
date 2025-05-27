@@ -2,17 +2,22 @@
   font-family: Mont;
   src: url('../assets/fonts/Mont-Regular.woff2') format('woff2');
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Mont-SemiBold;
+  font-family: Mont;
   src: url('../assets/fonts/Mont-SemiBold.woff2') format('woff2');
   font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Mont-Bold;
+  font-family: Mont;
   src: url('../assets/fonts/Mont-Bold.woff2') format('woff2');
   font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
-

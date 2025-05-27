@@ -1,6 +1,6 @@
 export interface Accessories {
   itemID: string;
-  id: string | number;
+  id: string;
   category: string;
   namespaceId: string;
   name: string;
@@ -22,4 +22,5 @@ export interface Accessories {
   processor: string;
   ram: string;
   cell: string[];
+  year: number;
 }

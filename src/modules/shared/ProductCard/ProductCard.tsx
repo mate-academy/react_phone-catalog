@@ -1,86 +1,52 @@
-import {
-  useAppDispatch,
-  useAppSelector,
-  useCart,
-  useLocalStorage,
-} from '../../../app/hooks';
 import styles from './ProductCard.module.scss';
 import IconHeart from '../../../img/icons/icon-heart.png';
+import IconHeartRed from '../../../img/icons/icon-heart-red.png';
 import { Product } from '../../../types/Product';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import '../../../styles/_variables.scss';
-import { add } from 'cypress/types/lodash';
+import { useContext, useMemo } from 'react';
+import { GlobalContext } from '../../../app/store/GlobalContext';
+import { makeGapBetween } from '../../../utils/format';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
 };
 
-// function generateItemId({
-//   name,
-//   capacity,
-//   color,
-//   ram,
-// }: {
-//   name: string;
-//   capacity: string;
-//   color: string;
-//   ram: string;
-// }) {
-//   return (
-//     name.toLowerCase().replace(/\s+/g, '-') +
-//     '-' +
-//     capacity.toLowerCase() +
-//     '-' +
-//     color.toLowerCase() +
-//     '-' +
-//     ram.toLowerCase()
-//   );
-// }
-
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { itemId, name, capacity, price, image, screen, ram } = product;
+  const { itemId, name, capacity, price, image, screen, ram, category } =
+    product;
 
-  const { cart, toggleCartItem, clearCart } = useCart();
+  const {
+    cart,
+    toggleCartItem,
+    favorites,
+    toggleFavoritesItem,
+    setSelectedProduct,
+  } = useContext(GlobalContext);
 
-  // const [_, setState] = useState({});
-  // const forceRerender = () => setState({});
+  const isInCart = useMemo(() => {
+    return cart.some(p => p.itemId === itemId);
+  }, [cart, itemId]);
 
-  const isInCart = useMemo(
-    () => cart.some(p => p.itemId === itemId),
-    [cart, itemId],
-  );
-
-  const makeGapBetween = (value: string) => {
-    let numbers = '';
-    let letters = '';
-
-    for (const symbol of value) {
-      if (+symbol) {
-        numbers += symbol;
-      } else {
-        letters += symbol;
-      }
-    }
-
-    return numbers + ' ' + letters;
-  };
-
-  console.log(
-    'cart:',
-    cart.map(p => p.itemId),
-  );
-
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+  const isInFavorites = useMemo(() => {
+    return favorites.some(p => p.itemId === itemId);
+  }, [favorites, itemId]);
 
   return (
-    <div className={styles.productCard}>
-      <img src={image} alt={name} className={styles.productCard__image} />
-      <button className={styles.emptyCart} onClick={clearCart}></button>
+    <section className={styles.productCard}>
+      <Link
+        to={`/${category}/${product.itemId}`}
+        className={styles.productCard__image}
+        onClick={() => {
+          setSelectedProduct(product);
+        }}
+      >
+        <img src={`/${image}`} alt={name} />
+      </Link>
       <div className={styles.productCard__info}>
-        <h3 className={styles.productCard__title}>{name}</h3>
-        <p className={styles.productCard__price}>${price}</p>
+        <div className={styles.productCard__namePrice}>
+          <h3 className={styles.productCard__title}>{name}</h3>
+          <p className={styles.productCard__price}>${price}</p>
+        </div>
         <div className={styles.productCard__features}>
           <p className={styles.productCard__screen}>
             <span className={styles.productCard__property}>Screen:</span>
@@ -110,10 +76,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         >
           {isInCart ? 'Added' : 'Add to cart'}
         </button>
-        <button className={styles.productCard__button_favorites}>
-          <img src={IconHeart} alt="Icon-heart" />
+        <button
+          className={styles.productCard__button_favorites}
+          onClick={() => toggleFavoritesItem(product)}
+        >
+          {isInFavorites ? (
+            <img src={IconHeartRed} alt="Icon-heart" />
+          ) : (
+            <img src={IconHeart} alt="Icon-heart" />
+          )}
         </button>
       </div>
-    </div>
+    </section>
   );
 };

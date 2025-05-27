@@ -1,8 +1,8 @@
 export interface Product {
-  id: number | string;
-  category: string;
+  id: number;
   itemId: string;
   name: string;
+  category: 'phones' | 'tablets' | 'accessories';
   capacity: string;
   fullPrice: number;
   price: number;

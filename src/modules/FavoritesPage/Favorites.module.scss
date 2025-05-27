@@ -1,0 +1,85 @@
+@import '../../styles/main';
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+
+  &__navigation {
+    display: flex;
+    column-gap: 8px;
+    padding-block: 24px;
+
+  }
+
+  &__iconHome {
+    background-image: url('../../img/icons/icon-home.png');
+    background-size: contain;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+
+    @include hover(scale, 1.1);
+  }
+
+  &__iconArrowRight {
+    background-image: url('../../img/icons/icon-arrow-right-grey.png');
+    background-size: contain;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__address {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    color: $textNotActiveColor;
+    text-transform: capitalize;
+  }
+
+  &__pagePathName {
+    cursor: pointer;
+
+    @include hover(color, $textMainColor)
+  }
+
+  &__amountItems {
+    margin-bottom: 40px;
+  }
+
+  &__imageContainer {
+    height: 400px;
+  }
+
+  &__image {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+    
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      column-gap: 16px;
+      row-gap: 40px;
+    }
+  }
+
+  &__product {
+    width: 100%;
+
+    @include on-tablet {
+      width: calc(50% - 16px);
+    }
+
+    @include on-desktop {
+      width: calc(25% - 16px);
+    }
+  }
+
+
+}

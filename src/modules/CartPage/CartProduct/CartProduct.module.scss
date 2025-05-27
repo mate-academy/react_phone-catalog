@@ -1,0 +1,131 @@
+@import '../../../styles/main';
+
+.cart__product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 160px;
+  padding: 16px;
+  background-color: $mainNumberButtonColor;
+
+  @include on-tablet {
+    @include page-grid;
+
+    height: 128px;
+    flex-direction: row;
+    padding: 16px;
+    padding-inline: 24px;
+
+  }
+
+  @include on-desktop {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &_info {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    justify-content: space-between;
+    
+    @include on-mobile {
+      min-width: 100%;
+    }
+
+    @include on-tablet {
+      min-width: 50%;
+      grid-column: 1 / 8;
+      justify-content: space-around;
+    }
+
+    @include on-desktop {
+      justify-content: space-around;
+    }
+  }
+
+  &_image {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+
+    @include hover(scale, 1.1);
+
+    
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+  }
+
+  &_title {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  
+
+  &_iconClose {
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &_purchaseOptions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      justify-content: space-around;
+    }
+
+    @include on-desktop {
+      justify-content: space-around;
+    }
+  }
+
+  &_amountContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96px;
+    height: 32px;
+  }
+
+  &_amountButton {
+    height: inherit;
+    width: 32px;
+    background-color: $mainNumberButtonColor;
+    color: $hoverIconButtonColor;
+    font-size: 16px;
+
+    &_decrease {
+      &_active {
+        color: $textMainColor;
+        background-color: $mainIconButtonColor;
+      }
+    }
+
+    &_active {
+      color: $textMainColor;
+      background-color: $mainIconButtonColor;
+    }
+  }
+
+  &_price {
+    font-size: 22px;
+    font-weight: 700;
+  }
+}
