@@ -20,7 +20,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const favoritesCount = useAppSelector(state => state.favorites.items.length);
-  const cartItemCount = useAppSelector(state => state.cart.items.length);
+  const cartItemCount = useAppSelector(state => state.cart.itemsCount);
 
   useEffect(() => {
     dispatch(loadFavoritesFromStorage());
