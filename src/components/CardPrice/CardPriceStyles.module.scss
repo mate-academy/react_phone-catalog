@@ -3,14 +3,14 @@
   src: url('/fonts/Mont-Regular.otf') format('opentype');
 }
 
-%old-price {
+.old_price {
   font-size: 22px;
   line-height: 100%;
   color: rgba(137, 147, 154, 1);
   text-decoration: line-through;
 }
 
-%new-price {
+.new_price {
   margin: 8px 0;
   font-size: 22px;
   font-weight: 800;
@@ -19,14 +19,14 @@
 }
 
 .extendedPriceWrapper {
-  @extend %new-price;
+  @extend .new_price;
 
   margin-top: 32px;
   font-size: 32px;
 }
 
 .extendedDiscountWrapper {
-  @extend %old-price;
+  @extend .old_price;
 
   font-family: SmallFont, sans-serif;
 }
