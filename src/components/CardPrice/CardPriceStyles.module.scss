@@ -3,14 +3,14 @@
   src: url('/fonts/Mont-Regular.otf') format('opentype');
 }
 
-.old_price {
+%old_price {
   font-size: 22px;
   line-height: 100%;
   color: rgba(137, 147, 154, 1);
   text-decoration: line-through;
 }
 
-.new_price {
+%new_price {
   margin: 8px 0;
   font-size: 22px;
   font-weight: 800;
