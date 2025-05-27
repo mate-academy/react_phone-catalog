@@ -1,0 +1,189 @@
+@import '../../../../assets/styles/main';
+
+.product {
+  @include page-grid;
+
+  &__sortSelectors {
+    display: flex;
+    grid-column: span 4;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      grid-column: span 7;
+    }
+  }
+
+  &__sortBy {
+    display: flex;
+    flex-direction: column;
+    min-width: 136px;
+    height: 59px;
+
+    @include on-tablet {
+      min-width: 187px;
+    }
+
+    @include on-desktop {
+      min-width: 176px;
+    }
+
+    @include on-desktop-extra {
+      min-width: 176px;
+    }
+  }
+
+  &__sortByTitle {
+    margin-bottom: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    color: $color-secondary;
+  }
+
+  &__sortButton {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-bottom: 4px;
+    padding: 10px;
+    border: 1px solid $color-icons;
+
+    text-align: left;
+
+    background-color: $color-white;
+
+    transition: border 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid $color-secondary;
+    }
+  }
+
+  &__arrowSort {
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    background-image: url('../../../../assets/icons/productPage/dropdown-icon.svg');
+    background-repeat: no-repeat;
+
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__arrowItems {
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    background-image: url('../../../../assets/icons/productPage/dropdown-icon.svg');
+    background-repeat: no-repeat;
+
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__sortButtonActive .product__arrowSort {
+    transform: rotate(180deg);
+
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    background-repeat: no-repeat;
+  }
+
+  &__itemsButtonActive .product__arrowItems {
+    transform: rotate(180deg);
+
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    background-repeat: no-repeat;
+  }
+
+  &__itemsPerPage {
+    min-width: 136px;
+    height: 59px;
+    margin-left: 16px;
+
+    @include on-desktop {
+      min-width: 128px;
+    }
+
+    @include on-desktop-extra {
+      min-width: 128px;
+    }
+  }
+
+  &__dropdownMenu {
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: auto;
+    padding-block: 8px;
+    border: 1px solid $color-elements;
+
+    background-color: $color-white;
+    box-shadow: 0 2px 15px 0 #0000000d;
+  }
+
+  &__dropdownItem {
+    cursor: pointer;
+    
+    padding-block: 6px;
+    padding-inline: 12px;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+
+  &__dropdownItem:hover {
+    color: $color-primary;
+    background-color: $color-hoverBg;
+  }
+
+  &__cards {
+    @include page-grid;
+
+    grid-column: span 4;
+    row-gap: 40px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      grid-column: span 12;
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+
+    @include on-desktop-extra {
+      grid-column: span 24;
+    }
+  }
+
+  &__card {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+}

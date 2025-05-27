@@ -1,0 +1,16 @@
+@import '../../../../assets/styles/main';
+
+.productNotFound {
+  width: 100%;
+  min-height: calc(100vh - 64px - 96px);
+
+  background-image: url(/img/product-not-found.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.productNotFound__title {
+  place-self: center;
+  padding: 20px;
+}
