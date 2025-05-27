@@ -27,7 +27,11 @@ export const SliderRecommended: React.FC = () => {
   const cardRef = useRef(null);
 
   const newBrandsSlides = sortedNewBrands.map((product, index) => (
-    <div key={product.id} ref={index === 0 ? cardRef : null}>
+    <div
+      key={product.id}
+      className="carousel__slide"
+      ref={index === 0 ? cardRef : null}
+    >
       <ProductCard {...product} />
     </div>
   ));
@@ -64,7 +68,7 @@ export const SliderRecommended: React.FC = () => {
         <div
           className="slides-row"
           style={{
-            transform: `translateX(-${currentIndex * 322}px)`,
+            transform: `translateX(-${currentIndex * 300}px)`,
           }}
         >
           {newBrandsSlides}

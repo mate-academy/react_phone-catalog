@@ -3,6 +3,7 @@
   text-align: center;
   gap: 10px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .arrowPrev, .arrowNext {
@@ -36,13 +37,20 @@
 
 .slides-row{
   display: flex;
-  //gap:16px;
+  gap: 14px;
   transition: transform 0.3s ease;
   z-index: 1;
+  margin-left: 4px;
+}
+
+.carousel__slide {
+flex: 0 0 286px;
+box-sizing: border-box;
 }
 
 .carousel {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+
 }

@@ -35,7 +35,7 @@ export const SliderHotPrices: React.FC = () => {
   }, [products]);
 
   const hotPricesSlides = sortedProducts.map(product => (
-    <div key={product.id}>
+    <div key={product.id} className="carousel__slide">
       <ProductCard {...product} />
     </div>
   ));
@@ -73,7 +73,7 @@ export const SliderHotPrices: React.FC = () => {
         <div
           className="slides-row"
           style={{
-            transform: `translateX(-${currentIndex * 322}px)`,
+            transform: `translateX(-${currentIndex * 300}px)`,
           }}
         >
           {hotPricesSlides}
