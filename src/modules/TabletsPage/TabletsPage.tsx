@@ -25,7 +25,7 @@ export const TabletsPage = () => {
 
   const sortBy = ['Newest', 'Alphabetically', 'Cheapest'];
 
-  const getSortedTablets = () => {
+  const sortedTablets = useMemo(() => {
     switch (selectedSort) {
       case 'Newest':
         return [...tablets].sort((a, b) => b.year - a.year);
@@ -38,14 +38,14 @@ export const TabletsPage = () => {
       default:
         return tablets;
     }
-  };
+  }, [tablets, selectedSort]);
 
   const handleSortChange = (sortField: string | number) => {
     if (typeof sortField === 'string') {
       setSelectedSort(sortField);
+      setCurrentPage(1);
+      setPageWindowStart(1);
     }
-
-    return getSortedTablets();
   };
 
   const totalPages = useMemo(() => {
@@ -58,13 +58,13 @@ export const TabletsPage = () => {
 
   const currentItems = useMemo(() => {
     if (itemsPerPage === 'All') {
-      return getSortedTablets();
+      return sortedTablets;
     }
 
     const start = (currentPage - 1) * itemsPerPage;
 
-    return getSortedTablets().slice(start, start + itemsPerPage);
-  }, [selectedSort, currentPage, itemsPerPage]);
+    return sortedTablets.slice(start, start + itemsPerPage);
+  }, [sortedTablets, currentPage, itemsPerPage]);
 
   const handleSelectChange = (value: string | number) => {
     const parsedValue: number | 'All' = value === 'All' ? 'All' : Number(value);

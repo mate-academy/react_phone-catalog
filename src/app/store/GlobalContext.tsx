@@ -35,7 +35,7 @@ type GlobalContextType = {
   totalFavoritesPrice: number;
   getProductCode: () => string;
   // errorMessage: string;
-  // alert: (message: string) => void;
+  // setErrorMessage: (message: string) => void;
 };
 
 export const GlobalContext = React.createContext<GlobalContextType>({
@@ -66,7 +66,7 @@ export const GlobalContext = React.createContext<GlobalContextType>({
   totalFavoritesPrice: 0,
   getProductCode: () => '',
   // errorMessage: '',
-  // alert: message => {},
+  // setErrorMessage: () => {},
 });
 
 type Props = {
@@ -74,7 +74,7 @@ type Props = {
 };
 
 export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
-  // const [errorMessage, alert] = useState('');
+  // const [errorMessage, setErrorMessage] = useState('');
   const [isMenuClose, setIsMenuClose] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [phoneItems, setPhoneItems] = useState<Phone[]>([]);
@@ -106,7 +106,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
 
   // #region fetch data
   useEffect(() => {
-    request('../api/products.json')
+    request('src/api/products.json')
       .then(response => {
         setProducts(response as Product[]);
       })
@@ -116,7 +116,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    request('../api/phones.json')
+    request('src/api/phones.json')
       .then(response => {
         setPhoneItems(response as Phone[]);
       })
@@ -126,7 +126,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    request('../api/tablets.json')
+    request('src/api/tablets.json')
       .then(response => {
         setTabletItems(response as Tablet[]);
       })
@@ -136,7 +136,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    request('../api/accessories.json')
+    request('src/api/accessories.json')
       .then(response => {
         setAccessoriesItems(response as Accessories[]);
       })
@@ -196,7 +196,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
         accessoriesItems,
         getProductCode,
         // errorMessage,
-        // alert,
+        // setErrorMessage,
       }}
     >
       {children}

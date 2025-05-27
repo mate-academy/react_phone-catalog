@@ -27,7 +27,7 @@ export const AccessoriesPage = () => {
 
   const sortBy = ['Newest', 'Alphabetically', 'Cheapest'];
 
-  const getSortedAccessories = () => {
+  const sortedAccessories = useMemo(() => {
     switch (selectedSort) {
       case 'Newest':
         return [...accessories].sort((a, b) => b.year - a.year);
@@ -40,14 +40,14 @@ export const AccessoriesPage = () => {
       default:
         return accessories;
     }
-  };
+  }, [accessories, selectedSort]);
 
   const handleSortChange = (sortField: string | number) => {
     if (typeof sortField === 'string') {
       setSelectedSort(sortField);
+      setCurrentPage(1);
+      setPageWindowStart(1);
     }
-
-    return getSortedAccessories();
   };
 
   const totalPages = useMemo(() => {
@@ -60,13 +60,13 @@ export const AccessoriesPage = () => {
 
   const currentItems = useMemo(() => {
     if (itemsPerPage === 'All') {
-      return getSortedAccessories();
+      return sortedAccessories;
     }
 
     const start = (currentPage - 1) * itemsPerPage;
 
-    return getSortedAccessories().slice(start, start + itemsPerPage);
-  }, [selectedSort, currentPage, itemsPerPage]);
+    return sortedAccessories.slice(start, start + itemsPerPage);
+  }, [sortedAccessories, currentPage, itemsPerPage]);
 
   const handleSelectChange = (value: string | number) => {
     const parsedValue: number | 'All' = value === 'All' ? 'All' : Number(value);
