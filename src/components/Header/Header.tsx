@@ -61,11 +61,10 @@ export const Header = () => {
             <img src={cartIcon} alt="cart-icon" className={header__icon} />
             {/* <span className={header__counter}>{12}</span> */}
           </Link>
-
-          <button className={header__burger}>
-            <img src={burgerIcon} alt="burger-menu" />
-          </button>
         </div>
+        <button className={header__burger}>
+          <img src={burgerIcon} alt="burger-menu" />
+        </button>
       </div>
     </header>
   );
