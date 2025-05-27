@@ -9,6 +9,11 @@ export const App = () => (
 
     <Outlet />
 
+    <div style={{ color: 'black' }}> lorem1000</div>
+    <div style={{ color: 'black' }}> lorem1000</div>
+    <div style={{ color: 'black' }}> lorem1000</div>
+    <div style={{ color: 'black' }}> lorem1000</div>
+
     <Footer />
   </div>
 );
