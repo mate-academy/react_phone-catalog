@@ -1,16 +1,15 @@
 /* eslint-disable max-len */
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { TransitionLink } from '../TransitionLink';
 import styles from './GoBackButton.module.scss';
 
-export const GoBackButton = () => {
-  const navigate = useNavigate();
+type Props = {
+  linkTo: string;
+};
 
-  const goBack = () => {
-    navigate(-1);
-  };
-
+export const GoBackButton: React.FC<Props> = ({ linkTo }) => {
   return (
-    <button onClick={goBack} className={styles.goBack}>
+    <TransitionLink to={linkTo} className={styles.goBack}>
       <svg
         className={styles.goBackIcon}
         width="16"
@@ -27,6 +26,6 @@ export const GoBackButton = () => {
       </svg>
 
       <span className={styles.goBackLabel}>Back</span>
-    </button>
+    </TransitionLink>
   );
 };

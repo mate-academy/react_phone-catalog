@@ -1,27 +1,14 @@
-import 'react-loading-skeleton/dist/skeleton.css';
 import { useParams } from 'react-router-dom';
 import styles from './ProductPage.module.scss';
 import { Page } from '../../types/pages';
 import { NotFoundPage } from '../NotFoundPage';
 import { ProductList } from '../../components/ProductList';
-import { useAppDispatch, useAppSelector } from '../../hooks/helperToolkit';
+import { useAppSelector } from '../../hooks/helperToolkit';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { useEffect } from 'react';
-import { setGlobalLoading } from '../../slices/uiSlice';
 
 export const ProductPage = () => {
-  const dispatch = useAppDispatch();
-
   const { category } = useParams();
-  const { deviceList: devices, fetchDevicesLoading } = useAppSelector(
-    state => state.device,
-  );
-
-  useEffect(() => {
-    if (!fetchDevicesLoading) {
-      dispatch(setGlobalLoading(false));
-    }
-  }, [fetchDevicesLoading]);
+  const { deviceList: devices } = useAppSelector(state => state.device);
 
   const isValidPage = Object.values(Page).includes(category as Page);
 

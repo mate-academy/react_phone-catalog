@@ -11,7 +11,7 @@ import {
 } from '../../slices/favoritesSlice';
 
 interface Props {
-  currentDevice: MergedDevice;
+  currentDevice?: MergedDevice;
   deviceById: Devices;
   mainImage: string;
   selectedCapacity: string;

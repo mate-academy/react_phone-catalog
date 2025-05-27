@@ -5,20 +5,15 @@
 .goBack {
   @include small-text;
 
-  cursor: pointer;
-
   display: flex;
   grid-column: 1 / -1;
   align-items: center;
 
   width: 66px;
   height: 16px;
-  border: none;
 
   font-weight: 600;
   color: color(secondary);
-
-  background-color: inherit;
 
   transition: color $duration-default $easing-default;
 

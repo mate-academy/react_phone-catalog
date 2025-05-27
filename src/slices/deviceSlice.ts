@@ -97,6 +97,9 @@ const deviceSlice = createSlice({
       state.productsPerPage =
         action.payload === 'All' ? 'All' : (Number(action.payload) as PerPage);
     },
+    clearDeviceList: state => {
+      state.deviceList = [];
+    },
   },
   extraReducers: builder => {
     builder
@@ -131,5 +134,6 @@ const deviceSlice = createSlice({
   },
 });
 
-export const { setSortType, setProductsPerPage } = deviceSlice.actions;
+export const { setSortType, setProductsPerPage, clearDeviceList } =
+  deviceSlice.actions;
 export default deviceSlice.reducer;

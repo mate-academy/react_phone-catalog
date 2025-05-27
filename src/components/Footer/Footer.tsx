@@ -17,13 +17,13 @@ export const Footer = () => {
           </TransitionLink>
         </div>
         <nav className={styles.footerNav}>
-          <a className={styles.footerLink} href="#">
+          <a className={styles.footerLink} href="https://github.com/vlad14982">
             Github
           </a>
-          <a className={styles.footerLink} href="#">
+          <a className={styles.footerLink} href="https://github.com/vlad14982">
             Contacts
           </a>
-          <a className={styles.footerLink} href="#">
+          <a className={styles.footerLink} href="https://github.com/vlad14982">
             Rights
           </a>
         </nav>

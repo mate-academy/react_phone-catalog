@@ -9,6 +9,7 @@ import emptyCartImage from '../../../public/img/cart-is-empty.png';
 import { EmptyState } from '../../components/EmptyState';
 import { setGlobalLoading } from '../../slices/uiSlice';
 import { useCheckoutState } from '../../hooks/useCheckoutState';
+import { RoutesLink } from '../../types/routes';
 
 export const CartPage = () => {
   const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ export const CartPage = () => {
 
   return (
     <div className={styles.cart}>
-      <GoBackButton />
+      <GoBackButton linkTo={RoutesLink.HomePage} />
 
       <h1 className={styles.cartTitle}>Cart</h1>
       {itemsCount === 0 ? (

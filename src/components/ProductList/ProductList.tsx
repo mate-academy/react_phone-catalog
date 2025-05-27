@@ -7,6 +7,7 @@ import { Pagination } from '../Pagination';
 import { SortTypes } from '../../types/sort';
 import { Sort } from '../Sort';
 import {
+  clearDeviceList,
   fetchDevicesList,
   setProductsPerPage,
   setSortType,
@@ -18,15 +19,15 @@ import {
   DEFAULT_SORT,
   DEFAULT_PER_PAGE,
 } from '../../constants/constJS';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import {
   parsePerPage,
   updateSearchParamsWithDefaults,
 } from '../../utils/searchParamsUtils';
 import { useSortedProducts } from '../../hooks/useSortedProducts';
-import { useFetchDevices } from '../../hooks/useFetchDevices';
 import { EmptyState } from '../EmptyState';
+import { setGlobalLoading } from '../../slices/uiSlice';
 
 export const ProductList = ({ title }: { title: string }) => {
   const { category } = useParams();
@@ -38,6 +39,22 @@ export const ProductList = ({ title }: { title: string }) => {
     fetchDevicesLoading,
     fetchDevicesError,
   } = useAppSelector(state => state.device);
+  const [loader, setLoader] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (category) {
+      dispatch(clearDeviceList());
+      dispatch(fetchDevicesList(category));
+      setLoader(false);
+    }
+  }, [category]);
+
+  useEffect(() => {
+    if (!fetchDevicesLoading && !loader) {
+      dispatch(setGlobalLoading(false));
+      setLoader(true);
+    }
+  }, [fetchDevicesLoading]);
 
   const handleRetry = () => {
     if (category) {
@@ -106,8 +123,6 @@ export const ProductList = ({ title }: { title: string }) => {
       changeCurrentPage(+pageFromQuery);
     }
   }, [searchParams, dispatch, sort, productsPerPage]);
-
-  useFetchDevices(category);
 
   const handleSortType = (selectSort: SortTypes) => {
     dispatch(setSortType(selectSort));

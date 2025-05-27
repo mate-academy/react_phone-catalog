@@ -14,7 +14,7 @@ export const PageTransitionOverlay = () => {
           animate={{ y: 0 }}
           exit={{ y: '-100%' }}
           transition={{
-            duration: 0.6,
+            duration: 0.4,
           }}
         >
           <h1 className={styles.title}>{targetPageName}</h1>

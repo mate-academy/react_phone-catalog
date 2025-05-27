@@ -23,16 +23,11 @@ export const ProductDetails: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
   const [mainImage, setMainImage] = useState<string>('');
+  const [loader, setLoader] = useState<boolean>(true);
 
   const currentDevice = deviceList.find(
     device => device.itemId === selectedDevice?.id,
   );
-
-  useEffect(() => {
-    if (!fetchDeviceLoading) {
-      dispatch(setGlobalLoading(false));
-    }
-  }, [fetchDeviceLoading]);
 
   useEffect(() => {
     if (selectedDevice) {
@@ -47,6 +42,7 @@ export const ProductDetails: React.FC = () => {
       dispatch(fetchDevicesList(category)).catch(error => {
         console.error('Error fetching devices list:', error);
       });
+      setLoader(false);
     }
   }, [category, dispatch]);
 
@@ -55,8 +51,16 @@ export const ProductDetails: React.FC = () => {
       dispatch(fetchDeviceById({ id, category })).catch(error => {
         console.error('Error fetching device by ID:', error);
       });
+      setLoader(false);
     }
   }, [id, category, dispatch]);
+
+  useEffect(() => {
+    if (!fetchDeviceLoading && !loader) {
+      dispatch(setGlobalLoading(false));
+      setLoader(true);
+    }
+  }, [fetchDeviceLoading]);
 
   const handleProductChange = (newColor: string, newCapacity: string) => {
     if (newColor && newCapacity && selectedDevice?.namespaceId) {
@@ -84,7 +88,10 @@ export const ProductDetails: React.FC = () => {
     setMainImage(image);
   };
 
-  if (fetchDeviceError || !selectedDevice || !currentDevice) {
+  const isDeviceNotFound =
+    !loader && (fetchDeviceError || !selectedDevice || !currentDevice);
+
+  if (isDeviceNotFound) {
     return (
       <div className={styles.containerNotFound}>
         <EmptyState
@@ -101,21 +108,23 @@ export const ProductDetails: React.FC = () => {
     <>
       <Breadcrumbs name={selectedDevice?.name} />
 
-      <GoBackButton />
+      <GoBackButton linkTo={`/${category}`} />
 
       <div className={styles.block}>
         <h2 className={styles.title}>{selectedDevice?.name}</h2>
 
-        <VariantDetails
-          currentDevice={currentDevice}
-          deviceById={selectedDevice}
-          mainImage={mainImage}
-          selectedCapacity={selectedCapacity}
-          selectedColor={selectedColor}
-          handleColorChange={handleColorChange}
-          handleCapacityChange={handleCapacityChange}
-          handleImageClick={handleImageClick}
-        />
+        {selectedDevice && (
+          <VariantDetails
+            currentDevice={currentDevice}
+            deviceById={selectedDevice}
+            mainImage={mainImage}
+            selectedCapacity={selectedCapacity}
+            selectedColor={selectedColor}
+            handleColorChange={handleColorChange}
+            handleCapacityChange={handleCapacityChange}
+            handleImageClick={handleImageClick}
+          />
+        )}
 
         <DescriptionDetails />
 

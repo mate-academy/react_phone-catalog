@@ -64,14 +64,14 @@ export const PageTransitionProvider = ({
     setTimeout(() => {
       navigate(path);
       window.scrollTo(0, 0);
-    }, 600);
+    }, 400);
   };
 
   useEffect(() => {
     if (!isLoading && isTransitioning) {
       const timeout = setTimeout(() => {
         setIsTransitioning(false);
-      }, 600);
+      }, 100);
 
       return () => clearTimeout(timeout);
     }
