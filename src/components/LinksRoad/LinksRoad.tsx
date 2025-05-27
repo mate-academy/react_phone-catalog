@@ -8,7 +8,10 @@ interface LinksRoadProps {
   productTitle?: string;
 }
 
-export const LinksRoad: React.FC<LinksRoadProps> = ({ category, productTitle }) => {
+export const LinksRoad: React.FC<LinksRoadProps> = ({
+  category,
+  productTitle,
+}) => {
   const crumbs: { label: React.ReactNode; path: string }[] = [
     {
       label: <img src={HomeIcon} alt="home icon" className="breadcrumb_img" />,

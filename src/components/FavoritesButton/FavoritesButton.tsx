@@ -35,11 +35,12 @@ export const FavoritesButton: React.FC<Props> = ({
     }
 
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+    window.dispatchEvent(new Event('favoritesUpdated'));
   };
 
   return (
     <button
-      className={`${className} ${isFav ? "favorite-active" : ''}`}
+      className={`${className} ${isFav ? 'favorite-active' : ''}`}
       onClick={toggleFavorite}
     >
       <img

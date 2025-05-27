@@ -20,7 +20,9 @@ export const FavoritesPage: React.FC = () => {
 
     for (const category of categories) {
       try {
-        const response = await fetch(`/react_phone-catalog/api/${category}.json`);
+        const response = await fetch(
+          `/react_phone-catalog/api/${category}.json`,
+        );
 
         if (response.ok) {
           const products: Product[] = await response.json();
@@ -50,6 +52,16 @@ export const FavoritesPage: React.FC = () => {
 
   useEffect(() => {
     loadFavorites();
+
+    const handleFavoritesUpdated = () => {
+      loadFavorites();
+    };
+
+    window.addEventListener('favoritesUpdated', handleFavoritesUpdated);
+
+    return () => {
+      window.removeEventListener('favoritesUpdated', handleFavoritesUpdated);
+    };
   }, []);
 
   return (
@@ -63,8 +75,8 @@ export const FavoritesPage: React.FC = () => {
               <h1 className="favorites_title">Favourites</h1>
               <p className="favorites_count">
                 {favoriteProducts.length === 1
-                  ? favoriteProducts.length + ' item'
-                  : favoriteProducts.length + ' items'}
+                  ? `${favoriteProducts.length} item`
+                  : `${favoriteProducts.length} items`}
               </p>
             </div>
           </div>
@@ -73,9 +85,15 @@ export const FavoritesPage: React.FC = () => {
         </section>
       )}
 
-      {(favoriteProducts.length === 0 && !loading) && (
+      {favoriteProducts.length === 0 && !loading && !err && (
         <div className="err">
           <h1 className="err_text">No favorite products yet</h1>
+        </div>
+      )}
+
+      {err && !loading && (
+        <div className="err">
+          <h1 className="err_text">Failed to load favorites</h1>
         </div>
       )}
     </>

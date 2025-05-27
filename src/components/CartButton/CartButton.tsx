@@ -7,7 +7,7 @@ interface CartButton {
 }
 
 export const CartButton: React.FC<CartButton> = ({ product }) => {
-  const { cart, addToCart } = useCart();
+  const { cart, addToCart, removeFromCart } = useCart();
 
   const isInCart = cart.some(item => item.id === product.id);
 
@@ -19,11 +19,18 @@ export const CartButton: React.FC<CartButton> = ({ product }) => {
     }
   };
 
+  const handleremoveFromCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (isInCart) {
+      removeFromCart(product.id);
+    }
+  };
+
   return (
     <button
       className={`product_add-to-cart add-to-cart ${isInCart ? 'add-to-cart--disabled' : ''}`}
-      onClick={handleAddToCart}
-      disabled={isInCart}
+      onClick={isInCart ? handleremoveFromCart : handleAddToCart}
     >
       {isInCart ? 'Added' : 'Add to cart'}
     </button>

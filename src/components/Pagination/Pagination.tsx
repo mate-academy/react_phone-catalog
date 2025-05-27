@@ -14,10 +14,15 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
-  if (itemsOnPage === 'all') return null;
+  if (itemsOnPage === 'all') {
+    return null;
+  }
 
   const totalPages = Math.ceil(totalPosts / itemsOnPage);
-  if (totalPages <= 1) return null;
+
+  if (totalPages <= 1) {
+    return null;
+  }
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 

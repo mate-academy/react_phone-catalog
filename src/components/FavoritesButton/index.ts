@@ -1,1 +1,1 @@
-export { FavoritesButton } from "./FavoritesButton";
+export { FavoritesButton } from './FavoritesButton';

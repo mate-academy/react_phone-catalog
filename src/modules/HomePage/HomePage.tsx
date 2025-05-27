@@ -9,7 +9,6 @@ type CategoryCounts = {
   [key: string]: number;
 };
 
-
 export const HomePage = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [newModels, setNewModels] = useState<Product[]>([]);
@@ -21,19 +20,19 @@ export const HomePage = () => {
       name: 'phones',
       title: 'Mobile phones',
       image: 'img/Phones.svg',
-      count: categoryCounts['phones'] || 0,
+      count: categoryCounts.phones || 0,
     },
     {
       name: 'tablets',
       title: 'Tablets',
       image: 'img/Tablets.svg',
-      count: categoryCounts['tablets'] || 0,
+      count: categoryCounts.tablets || 0,
     },
     {
       name: 'accessories',
       title: 'Accessories',
       image: 'img/Accessories.svg',
-      count: categoryCounts['accessories'] || 0,
+      count: categoryCounts.accessories || 0,
     },
   ];
 
@@ -45,10 +44,16 @@ export const HomePage = () => {
 
       for (const category of categories) {
         try {
-          const response = await fetch(`/react_phone-catalog/api/${category}.json`);
-          if (!response.ok) throw new Error(`Failed to fetch ${category}`);
+          const response = await fetch(
+            `/react_phone-catalog/api/${category}.json`,
+          );
+
+          if (!response.ok) {
+            throw new Error(`Failed to fetch ${category}`);
+          }
 
           const products: Product[] = await response.json();
+
           counts[category] = products.length;
 
           const productsWithCategory = products.map(product => ({
@@ -76,8 +81,9 @@ export const HomePage = () => {
       .filter(p => p.priceDiscount && p.priceDiscount < p.priceRegular)
       .sort(
         (a, b) =>
-          (b.priceRegular - (b.priceDiscount || 0)) -
-          (a.priceRegular - (a.priceDiscount || 0))
+          b.priceRegular -
+          (b.priceDiscount || 0) -
+          (a.priceRegular - (a.priceDiscount || 0)),
       )
       .slice(0, 8);
 

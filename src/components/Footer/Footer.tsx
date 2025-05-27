@@ -21,7 +21,12 @@ export const Footer = () => {
             <div className="footer_menu">
               <ul className="footer_menu_list">
                 <li className="footer_menu_item">
-                  <a className="footer_menu_link" href="https://github.com/MOODDDII" target="_blank">
+                  <a
+                    className="footer_menu_link"
+                    href="https://github.com/MOODDDII"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     github
                   </a>
                 </li>

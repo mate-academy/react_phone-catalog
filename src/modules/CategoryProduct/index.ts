@@ -1,1 +1,1 @@
-export { CategoryProduct } from "./CategoryProduct";
+export { CategoryProduct } from './CategoryProduct';

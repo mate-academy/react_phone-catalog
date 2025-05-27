@@ -1,5 +1,3 @@
-import { CategoryProduct } from "../CategoryProduct";
+import { CategoryProduct } from '../CategoryProduct';
 
-export const TabletsPage = () => (
-  <CategoryProduct />
-);
+export const TabletsPage = () => <CategoryProduct />;

@@ -60,6 +60,7 @@ export const CategoryProduct: React.FC = () => {
       return [...products].sort((a, b) => {
         const pa = a.priceDiscount ?? a.priceRegular;
         const pb = b.priceDiscount ?? b.priceRegular;
+
         return pa - pb;
       });
     }
@@ -74,20 +75,27 @@ export const CategoryProduct: React.FC = () => {
 
     const lastIndex = itemsOnPage * currentPage;
     const firstIndex = lastIndex - itemsOnPage;
+
     return sorted.slice(firstIndex, lastIndex);
   }, [sorted, itemsOnPage, currentPage]);
 
   const loadData = async () => {
-    if (!category) return;
+    if (!category) {
+      return;
+    }
 
     setLoading(true);
     setError(false);
 
     try {
       const response = await fetch(`/react_phone-catalog/api/${category}.json`);
-      if (!response.ok) throw new Error('Failed to fetch');
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch');
+      }
 
       const data = await response.json();
+
       setProducts(data);
     } catch {
       setError(true);
@@ -105,8 +113,13 @@ export const CategoryProduct: React.FC = () => {
 
     const params: Record<string, string> = {};
 
-    if (value !== 'age') params.sort = value;
-    if (itemsOnPage !== 'all') params.perPage = String(itemsOnPage);
+    if (value !== 'age') {
+      params.sort = value;
+    }
+
+    if (itemsOnPage !== 'all') {
+      params.perPage = String(itemsOnPage);
+    }
 
     setSearchParams(params);
     setDropdownOpen(false);
@@ -118,8 +131,13 @@ export const CategoryProduct: React.FC = () => {
 
     const params: Record<string, string> = {};
 
-    if (sortBy !== 'age') params.sort = sortBy;
-    if (value !== 'all') params.perPage = String(value);
+    if (sortBy !== 'age') {
+      params.sort = sortBy;
+    }
+
+    if (value !== 'all') {
+      params.perPage = String(value);
+    }
 
     setSearchParams(params);
     setItemsDropdownOpen(false);
@@ -131,9 +149,17 @@ export const CategoryProduct: React.FC = () => {
 
     const params: Record<string, string> = {};
 
-    if (sortBy !== 'age') params.sort = sortBy;
-    if (itemsOnPage !== 'all') params.perPage = String(itemsOnPage);
-    if (newPage !== 1) params.page = String(newPage);
+    if (sortBy !== 'age') {
+      params.sort = sortBy;
+    }
+
+    if (itemsOnPage !== 'all') {
+      params.perPage = String(itemsOnPage);
+    }
+
+    if (newPage !== 1) {
+      params.page = String(newPage);
+    }
 
     setSearchParams(params);
   };

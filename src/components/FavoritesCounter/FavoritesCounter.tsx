@@ -8,18 +8,23 @@ export const FavoritesCounter: React.FC = () => {
   const updateCount = () => {
     const stored = localStorage.getItem(FAVORITES_KEY);
     const favorites: string[] = stored ? JSON.parse(stored) : [];
+
     setCount(favorites.length);
   };
 
   useEffect(() => {
     updateCount();
 
-    const handleStorageChange = () => updateCount();
-    window.addEventListener('storage', handleStorageChange);
+    const handleUpdate = () => updateCount();
+
+    window.addEventListener('favoritesUpdated', handleUpdate);
+    window.addEventListener('storage', handleUpdate);
 
     return () => {
-      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('favoritesUpdated', handleUpdate);
+      window.removeEventListener('storage', handleUpdate);
     };
   }, []);
+
   return <>{count > 0 && <div className="header-counter">{count}</div>}</>;
 };

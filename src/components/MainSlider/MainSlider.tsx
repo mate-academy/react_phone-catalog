@@ -36,8 +36,13 @@ export const MainSlider = () => {
   const handleTouchEnd = () => {
     const distance = endXPoint.current - startXPoint.current;
 
-    if (distance > 50) prevSlide();
-    if (distance < -50) nextSlide();
+    if (distance > 50) {
+      prevSlide();
+    }
+
+    if (distance < -50) {
+      nextSlide();
+    }
   };
 
   useEffect(() => {

@@ -11,4 +11,4 @@ export const GoBack = () => {
       <p className="go-back_text">Back</p>
     </div>
   );
-}
+};

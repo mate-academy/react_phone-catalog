@@ -20,7 +20,9 @@ export const Slider: React.FC<Props> = ({ title, products }) => {
   const handleScroll = () => {
     const container = scrollRef.current;
 
-    if (!container) return;
+    if (!container) {
+      return;
+    }
 
     const { scrollLeft, scrollWidth, clientWidth } = container;
 
@@ -31,7 +33,9 @@ export const Slider: React.FC<Props> = ({ title, products }) => {
   useEffect(() => {
     const container = scrollRef.current;
 
-    if (!container) return;
+    if (!container) {
+      return;
+    }
 
     container.addEventListener('scroll', handleScroll);
     handleScroll();

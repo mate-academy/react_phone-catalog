@@ -40,6 +40,7 @@
       outline: none;
       border: none;
       flex-shrink: 0;
+      cursor: pointer;
 
       & img {
         transition: $t-300ms;
