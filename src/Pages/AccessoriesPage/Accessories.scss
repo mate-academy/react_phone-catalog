@@ -1,0 +1,231 @@
+@use '../../mixins.scss' as *;
+
+.section {
+  position: relative;
+  
+  @include padding-inline-category;
+
+  &__text {
+    color: white;
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: 800;
+  }
+
+  &__texts {
+    color: white;
+  }
+
+  &__top-bar {
+    max-width: 400px;
+  }
+}
+
+.home--nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+
+  &-top {
+    color: #F1F2F9;
+  }
+}
+
+.accessories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 56px;
+
+  @include on-phone {
+    justify-items: center;
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+  }
+
+  &__card {
+    position: relative;
+    background-color: #2a2a3e;
+    border-radius: 10px;
+    padding: 16px;
+    max-width: 272px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    @include on-tablet {
+      padding: 16px;
+      max-width: 272px;
+    }
+
+    @include on-desktop {
+      max-width: 272px;
+    }
+  }
+
+  &__card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 12px;
+  }
+
+  &__card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: white;
+    line-height: 1.4;
+  }
+
+  &__card-prices {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  &__card-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+  }
+
+  &__card-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__card-spec {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+  &__card-spec-label {
+    color: #75767F;
+  }
+
+  &__card-spec-value {
+    color: white;
+  }
+
+  &__card-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  &__card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+  }
+
+  &__card-btn--add {
+    flex: 1;
+    background-color: #a855f7;
+    color: white;
+    padding: 0 16px;
+
+    &.added {
+      background-color: #75767F;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(.added) {
+      background-color: #905BFF;
+    }
+  }
+
+  &__card-btn--favorite {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+  }
+
+  &__card-btn-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__no-results {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    padding: 40px 0;
+  }
+}
+
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+
+    &.active {
+      background-color: #a855f7;
+      color: white;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: #75767F;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
