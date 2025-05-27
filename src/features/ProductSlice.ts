@@ -41,7 +41,7 @@ export const init = () => {
   return (dispach: Dispatch) => {
     dispach(setLoading(true));
 
-      fetch('/api/products.json').then(res=>res.json())
+      fetch('./api/products.json').then(res=>res.json())
         .then(data => dispach(setProducts(data)))
         .catch(()=>dispach(setError('something Wrong')))
     .finally(()=>dispach(setLoading(false)))

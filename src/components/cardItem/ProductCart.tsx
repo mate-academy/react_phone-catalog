@@ -1,32 +1,38 @@
 import styles from './cardItemPhone.module.scss';
+import { Product } from '../../types/products';
+type Props = {
+  products: Product[];
+  types?: 'hot' | 'new';
+}
 
-
-export const ProductCart = ({products}) => {
+export const ProductCart = ({products, type}:Props) => {
 
  if (!products) {
     return null;
   }
 
-  return (<>{products.map(phone => (<div className={styles.card} key={phone.id}>
+  return (<>{products.map(product => (<div className={styles.card} key={product.id}>
     <img className={styles.card__image}
-     src= {`/${phone.image}`}></img>
-    <h4 className={styles.card__name}>{ phone.name}</h4>
-        <h2 className={styles.card__price}>${phone.fullPrice}</h2>
-        <div className={styles.card__border}></div>
+     src= {`/${product.image}`}></img>
+    <h4 className={styles.card__name}>{ product.name}</h4>
+
+    <span className={styles.card__fullprice}>${product.fullPrice}</span>
+{type==='hot' && <span className={styles.card__price}>${product.price}</span>}
+    <div className={styles.card__border}></div>
 
         <div className={styles.card__info}>
           <div className={styles.card__screen}>
             <span className={styles.card__characteristics}>Screen</span>
-            <span className={styles.card__goods}>{phone.screen}</span>
+            <span className={styles.card__goods}>{product.screen}</span>
  </div>
             <div className={styles.card__screen}>
             <span className={styles.card__characteristics}>Capacity</span>
-            <span className={styles.card__goods}>{phone.capacity}</span>
+            <span className={styles.card__goods}>{product.capacity}</span>
 
           </div>
   <div className={styles.card__screen}>
             <span className={styles.card__characteristics}>RAM</span><span
-            className={styles.card__goods}>{phone.ram}</span>
+            className={styles.card__goods}>{product.ram}</span>
 
           </div>
 
