@@ -1,10 +1,12 @@
 %button-base {
   width: 100px;
   height: 40px;
-  border: none;
   margin-right: 8px;
-  font-family: SmallFont, sans-serif;
+  border: none;
+
   cursor: pointer;
+
+  font-family: SmallFont, sans-serif;
 
   @media (min-width: 640px) {
     width: 125px;
@@ -24,19 +26,20 @@
 .add_to_cart {
   @extend %button-base;
 
-  background-color: rgba(49, 50, 55, 1);
   color: rgba(255, 255, 255, 1);
+  background-color: rgba(49, 50, 55, 1);
 
   &:hover {
     box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
   }
 }
 
-%love_butt {
-  height: 40px;
+%love-butt {
   width: 40px;
+  height: 40px;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid rgba(180, 189, 195, 1);
+
   cursor: pointer;
 
   &:hover {
@@ -66,7 +69,7 @@
 }
 
 .extendedPageFavButton {
-  @extend %love_butt;
+  @extend %love-butt;
 
   height: 48px;
   width: 48px;
