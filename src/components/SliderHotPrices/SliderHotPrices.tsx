@@ -1,6 +1,5 @@
 import './SliderHotPrices.scss';
 import React, { useEffect, useMemo, useState } from 'react';
-//import Slider from 'react-slick';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,15 +17,6 @@ export const SliderHotPrices: React.FC = () => {
       dispatch(fetchProducts());
     }
   }, [dispatch, status]);
-
-  // const settings = {
-  //   dots: false,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 4,
-  //   slidesToScroll: 1,
-  //   arrows: false,
-  // };
 
   const sortedProducts = useMemo(() => {
     return [...products]

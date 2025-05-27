@@ -88,6 +88,7 @@ export const Filter: React.FC = () => {
                     backgroundColor:
                       filterStatus === value ? '#E2E6E9' : 'white',
                     color: filterStatus === value ? '#313237' : '#89939A',
+                    
                   }}
                 >
                   {label}

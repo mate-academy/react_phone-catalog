@@ -33,11 +33,11 @@ export const AccessoriesPage: React.FC = () => {
         <p className="under__heading1">{accessoriesModels} models</p>
         <div className="select__section">
           <div className="sort__select">
-            <label htmlFor="filter-select">Sort by:</label>
+            <label htmlFor="filter-select">Sort by</label>
             <Filter />
           </div>
           <div className="sort__select">
-            <label htmlFor="pagination-select">Items on page:</label>
+            <label htmlFor="pagination-select">Items on page</label>
             <Pagination />
           </div>
         </div>

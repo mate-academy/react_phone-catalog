@@ -13,11 +13,8 @@ font-size: 14px;
 font-weight: 500;
 color: #313237;
 
-&:hover,
-&:focus {
-  outline: none;
+&:hover {
   border-color: #313237;
-
   }
 }
 
@@ -29,6 +26,7 @@ border: 1px solid #89939A;
 background-color: white;
 z-index: 500;
 width: 100%;
+margin-top: 2px;
 
 &__option {
 font-size: 14px;

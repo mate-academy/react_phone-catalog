@@ -1,6 +1,5 @@
 import './SliderRecommended.scss';
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-//import Slider from 'react-slick';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';

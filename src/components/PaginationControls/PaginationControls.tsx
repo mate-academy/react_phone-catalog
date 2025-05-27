@@ -2,7 +2,7 @@ import React from 'react';
 import './PaginationControls.scss';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect } from 'react'; 
+import { useEffect } from 'react';
 
 
 interface PaginationControlsProps {
@@ -39,7 +39,8 @@ export const PaginationControls: React.FC<PaginationControlsProps> = ({
         page: '1',
       });
     }
-  }, [searchParams, setSearchParams]);
+
+  }, [searchParams, setSearchParams ]);
 
 
   return (

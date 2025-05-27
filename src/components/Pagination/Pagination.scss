@@ -5,7 +5,7 @@ border: 1px solid #89939A;
 display: flex;
 justify-content: space-between;
 align-items: center;
-width: 130px;
+width: 160px;
 height: 40px;
 background-color: white;
 font-size: 14px;
@@ -21,6 +21,7 @@ border: 1px solid #89939A;
 background-color: white;
 z-index: 500;
 width: 100%;
+margin-top: 2px;
 
 &__option {
 font-size: 14px;
