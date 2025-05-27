@@ -7,15 +7,14 @@
 
 .iphone14_card {
   width: 212px;
-  border-width: 1px;
   padding: 32px;
   border: 1px solid rgba(226, 230, 233, 1);
   height: 439px;
   transition: transform 0.3s ease;
 
   &:hover {
-    box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
-    transform: scale(1.001);
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
   }
 
   @media (min-width: 640px) {
@@ -69,7 +68,7 @@
 }
 
 .name_font_styles {
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
   height: 42px;
 }
 
@@ -90,7 +89,8 @@
 
 
 .extendedCardWrapper {
-  @extend .iphone14_card;
+  @extend %iphone14_card;
+
   width: 287px;
   height: 420px;
 

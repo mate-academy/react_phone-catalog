@@ -18,12 +18,12 @@
 .phonesText {
   color: rgba(180, 189, 195, 1);
   font-size: 12px;
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
 }
 
 .CategoryText {
   font-size: 12px;
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
   color: rgba(49, 50, 55, 1);
   text-decoration: none;
 }
@@ -37,12 +37,13 @@
 
 .categoryRight {
   margin-right: 8px;
+  color: rgba(49, 50, 55, 1);
 }
 
 .categoryBack {
   color: rgba(137, 147, 154, 1);
   font-size: 12px;
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
 
   &:hover {
     color: rgba(49, 50, 55, 1);
@@ -57,10 +58,6 @@
   @media (min-width: 640px) {
     font-size: 32px;
   }
-}
-
-.categoryRight {
-  color: rgba(49, 50, 55, 1);
 }
 
 .productContainer {

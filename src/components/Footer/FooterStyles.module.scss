@@ -10,7 +10,7 @@
 
 .footerSection {
   height: 257px;
-  box-shadow: 0px -1px 0px 0px rgba(226, 230, 233, 1);
+  box-shadow: 0 -1px 0 0 rgba(226, 230, 233, 1);
   margin-top: 64px;
   padding-left: 16px;
 
@@ -33,7 +33,7 @@
   font-weight: 800;
   font-size: 12px;
   line-height: 11px;
-  font-family: SemiFont;
+  font-family: SemiFont, sans-serif;
   color: rgba(137, 147, 154, 1);
 
   @media (min-width: 640px) {
@@ -49,7 +49,7 @@
 
 .backToTopWords {
   font-weight: 700;
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
   font-size: 12px;
   line-height: 100%;
   color: rgba(137, 147, 154, 1);

@@ -5,21 +5,19 @@
 
 .categoryRight {
   margin-right: 8px;
+  color: rgba(49, 50, 55, 1);
 }
 
 .categoryBack {
   color: rgba(137, 147, 154, 1);
   font-size: 12px;
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
 
   &:hover {
     color: rgba(49, 50, 55, 1);
   }
 }
 
-.categoryRight {
-  color: rgba(49, 50, 55, 1);
-}
 .backToCat {
   display: flex;
   text-decoration: none;
@@ -36,7 +34,7 @@
   margin-top: 16px;
 
   @media (min-width: 1200px) {
-    margin-top: 0px;
+    margin-top: 0;
     width: 368px;
   }
 }
@@ -52,7 +50,7 @@
 .itemCount {
   color: #89939a;
   font-size: 14px;
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
 }
 
 .line {
@@ -75,8 +73,8 @@
   width: 240px;
   border: none;
   background-color: #313237;
-  color: #ffffff;
-  font-family: SmallFont;
+  color: #fff;
+  font-family: SmallFont, sans-serif;
 
   @media (min-width: 640px) {
     width: 544px;

@@ -38,6 +38,10 @@
   margin-bottom: 24px;
   transition: transform 0.3s ease;
 
+  &:hover {
+    transform: scale(1.05);
+  }
+
   @media (min-width: 640px) {
     width: 187px;
     height: 187px;
@@ -55,8 +59,7 @@
   line-height: 100%;
   color: rgba(49, 50, 55, 1);
   margin-bottom: 4px;
-  font-family: SmallFont;
-
+  font-family: SmallFont, sans-serif;
 }
 
 .categoryNameLink {
@@ -64,17 +67,10 @@
 }
 
 .countCategory {
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   color: rgba(137, 147, 154, 1);
 }
 
-.categoryImage {
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-}

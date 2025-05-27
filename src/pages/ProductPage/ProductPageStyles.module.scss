@@ -15,7 +15,6 @@
 
 .pagination {
   display: flex;
-  display: flex;
   justify-content: center;
 }
 
@@ -63,7 +62,7 @@
 .phonesText {
   color: rgba(180, 189, 195, 1);
   font-size: 12px;
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
 }
 
 .productText {
@@ -78,7 +77,7 @@
 .howManyProducts {
   font-size: 14px;
   margin-top: 8px;
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
   color: rgba(137, 147, 154, 1);
 }
 
@@ -90,7 +89,7 @@
 .sortText,
 .itemsOnPageText {
   color: rgba(137, 147, 154, 1);
-  font-family: SmallFont;
+  font-family: SmallFont, sans-serif;
   font-size: 12px;
 }
 

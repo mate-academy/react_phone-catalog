@@ -6,25 +6,27 @@
 .old_price {
   font-size: 22px;
   line-height: 100%;
-  text-decoration: line-through;
   color: rgba(137, 147, 154, 1);
+  text-decoration: line-through;
 }
 
 .new_price {
   margin: 8px 0;
-  font-weight: 800;
   font-size: 22px;
+  font-weight: 800;
   line-height: 140%;
   color: rgba(49, 50, 55, 1);
 }
 
 .extendedPriceWrapper {
-  @extend .new_price;
+  @extend %new_price;
+
+  margin-top: 32px;
   font-size: 32px;
-  margin-top: 32px
 }
 
 .extendedDiscountWrapper {
-  @extend .old_price;
-  font-family: SmallFont;
+  @extend %old_price;
+
+  font-family: SmallFont, sans-serif;
 }
