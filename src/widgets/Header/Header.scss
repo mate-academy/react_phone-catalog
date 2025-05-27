@@ -1,0 +1,125 @@
+@use '../../global-styles/breakpoint-const.scss' as *;
+
+$logo-width-mob: 64px;
+$logo-padding-x-mob: 16px;
+$logo-width-wide: 80px;
+$logo-padding-x-wide: 16px;
+$nav-pos-tab: $logo-width-mob + ($logo-padding-x-mob * 2);
+$nav-pos-wide: $logo-width-wide + ($logo-padding-x-wide * 2);
+
+.header {
+  display: flex;
+  width: 100%;
+  height: 48px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+
+  &__logo-link {
+    display: block;
+    padding: 13px $logo-padding-x-mob;
+    box-sizing: border-box;
+  }
+
+  &__logo {
+    display: block;
+    height: 22px;
+    width: $logo-width-mob;
+  }
+
+  @media (min-width: $BREAKPOINT_WIDE) {
+    height: 64px;
+
+    &__logo-link {
+      padding: 19px $logo-padding-x-wide;
+    }
+
+    &__logo {
+      height: 28px;
+      width: $logo-width-wide;
+    }
+  }
+}
+
+.nav {
+  display: none;
+
+  @media(min-width: $BREAKPOINT_TAB) {
+    display: flex;
+    width: 329px;
+    height: 48px;
+    box-sizing: border-box;
+    margin-left: $nav-pos-tab;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 32px;
+
+      &__link {
+        font-size: 16px;
+        color: black;
+        display: inline-block;
+        height: 48px;
+        line-height: 48px;
+      }
+    }
+
+  @media(min-width: $BREAKPOINT_WIDE) {
+    margin-left: $nav-pos-wide;
+    gap: 64px;
+
+    &__link {
+      height: 64px;
+      line-height: 64px;
+    }
+  }
+}
+
+.header-ui {
+  display: flex;
+  position: absolute;
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  right: 0;
+  flex-direction: row;
+  align-items: center;
+
+  &__burger-menu {
+    display: block;
+    box-sizing: border-box;
+    width: 48px;
+    border: 0;
+    border-left: 1px solid black;
+    padding: 16px;
+  }
+
+  &__burger-menu-image {
+    display: block;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__fav {
+    display: none;
+  }
+
+  &__cart {
+    display: none;
+  }
+
+  @media(min-width: $BREAKPOINT_TAB) {
+    &__burger-menu {
+      display: none;
+    }
+
+    &__fav {
+      display: none;
+    }
+
+    &__cart {
+      display: none;
+    }
+  }
+}
+
