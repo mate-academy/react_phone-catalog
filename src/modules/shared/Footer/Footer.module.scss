@@ -12,7 +12,6 @@
     box-sizing: border-box;
     display: flex;
     border-top: 1px solid $textNotActiveColor;
-    height: 193px;
     padding: 32px 16px;
 
 
@@ -125,48 +124,5 @@
       width: 16px;
       height: 16px;
     }
-  }
-
-  &__icons {
-    display: flex;
-    width: 100vw;
-  }
-
-  &__icon {
-    // flex: 50% 50% auto;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50vw;
-    height: inherit;
-    border-left: 1px solid $textNotActiveColor;
-
-    &_heart {
-      background-image: url('../../../img/icons/icon-heart.png');
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    &_cart {
-      background-image: url('../../../img/icons/icon-shopping-cart.png');
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-  }
-
-  &__countIcon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 9px;
-    position: absolute;
-    top: 20%;
-    right: 45%;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    color: $textMainColor;
-    background-color: #eb5757;
   }
 }

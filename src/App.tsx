@@ -14,9 +14,15 @@ export const App = () => {
       <h1 hidden>Product Catalog</h1>
       <Header />
 
-      <main className="main">{isMenuClose && <Outlet />}</main>
+      {isMenuClose && (
+        <main className="main">
+          <Outlet />
+        </main>
+      )}
 
-      <Footer />
+      {isMenuClose && (
+        <Footer />
+      )}
     </div>
   );
 };

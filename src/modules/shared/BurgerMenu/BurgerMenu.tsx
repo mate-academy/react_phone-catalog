@@ -1,6 +1,6 @@
 import styles from './BurgerMenu.module.scss';
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { GlobalContext } from '../../../app/store/GlobalContext';
 
@@ -18,7 +18,7 @@ export const BurgerMenu = () => {
     });
   };
 
-  const { setIsMenuClose } = useContext(GlobalContext);
+  const { setIsMenuClose, totalCartItems, totalFavoritesItems } = useContext(GlobalContext);
 
   return (
     <div className={styles.burgerMenu}>
@@ -35,6 +35,32 @@ export const BurgerMenu = () => {
           </li>
         ))}
       </ul>
+      <div className={styles.burgerMenu__icons}>
+        <Link
+          className={classNames(styles.burgerMenu__icon, {
+            [styles.burgerMenu__icon_heart]: true,
+          })}
+          to="favorites"
+          onClick={() => setIsMenuClose(true)}
+        >
+          {totalFavoritesItems > 0 ? (
+            <div className={styles.burgerMenu__countIcon}>
+              {totalFavoritesItems}
+            </div>
+          ) : null}
+        </Link>
+        <Link
+          className={classNames(styles.burgerMenu__icon, {
+            [styles.burgerMenu__icon_cart]: true,
+          })}
+          to="cart"
+          onClick={() => setIsMenuClose(true)}
+        >
+          {totalCartItems > 0 ? (
+            <div className={styles.burgerMenu__countIcon}>{totalCartItems}</div>
+          ) : null}
+        </Link>
+      </div>
     </div>
   );
 };

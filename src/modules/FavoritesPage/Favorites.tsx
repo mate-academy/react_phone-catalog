@@ -4,12 +4,13 @@ import favoritesEmptyImage from '../../api/img/product-not-found.png';
 import { ProductCard } from '../shared/ProductCard';
 import { GlobalContext } from '../../app/store/GlobalContext';
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getFirstPartAddress } from '../../utils/format';
 
 export const Favorites = () => {
   const { favorites, totalFavoritesItems } = useContext(GlobalContext);
   const navigate = useNavigate();
+  const { itemId } = useParams();
 
   return (
     <div className="container">
@@ -22,7 +23,7 @@ export const Favorites = () => {
           <div className={styles.favorites__address}>
             <div className={styles.favorites__iconArrowRight}></div>
             <div className={styles.favorites__pagePathName}>
-              {getFirstPartAddress()}
+              Favorites
             </div>
           </div>
         </div>

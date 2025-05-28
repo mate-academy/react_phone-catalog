@@ -7,10 +7,6 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $textNotActiveColor;
-
-    @include on-mobile {
-      // margin-inline: -16px;
-    }
   }
 
   &__icons {
@@ -29,7 +25,7 @@
     &_heart {
       background-image: url('../../../img/icons/icon-heart.png');
       background-repeat: no-repeat;
-      background-size: 28%;
+      background-size: 20px;
       background-position: center;
 
       @include hover(background-size, 34%);
@@ -42,7 +38,7 @@
     &_cart {
       background-image: url('../../../img/icons/icon-shopping-cart.png');
       background-repeat: no-repeat;
-      background-size: 28%;
+      background-size: 20px;
       background-position: center;
 
       @include hover(background-size, 34%);

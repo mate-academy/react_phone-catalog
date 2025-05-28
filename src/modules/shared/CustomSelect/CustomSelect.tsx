@@ -36,7 +36,6 @@ export const CustomSelect: React.FC<Props> = ({ options, onChange }) => {
         className={`${styles.customSelect__button} ${isOpen ? styles.focus : ''}`}
       >
         <span className={styles.customSelect__selected}>{selected}</span>
-        {/* <ChevronDown className={`${styles.customSelect__icon} ${isOpen ? styles.rotated : ''}`} /> */}
         <img
           src={iconDropdown}
           className={`${styles.customSelect__icon} ${isOpen ? styles.rotated : ''}`}

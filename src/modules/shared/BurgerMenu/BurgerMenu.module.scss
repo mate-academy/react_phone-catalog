@@ -2,6 +2,11 @@
 @import '../../../styles/main';
 
 .burgerMenu  {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   @include on-tablet {
     display: none;
   }
@@ -15,11 +20,6 @@
     justify-content: space-around;
   }
 
-  &__item {
-    // display: flex;
-    // align-items: center;
-  }
-
   &__link {
     font-size: 12px;
     font-weight: bold;
@@ -28,6 +28,53 @@
     line-height: 24px;
 
     @include hover(color, $textMainColor);
+  }
+
+  &__icons {
+    display: flex;
+    width: 100vw;
+    height: 64px;
+    border-top: 1px solid $textNotActiveColor;
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: inherit;
+    
+
+    &_heart {
+      background-image: url('../../../img/icons/icon-heart.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
+    }
+
+    &_cart {
+      border-left: 1px solid $textNotActiveColor;
+      background-image: url('../../../img/icons/icon-shopping-cart.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
+    }
+  }
+
+  &__countIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    position: absolute;
+    top: 20%;
+    right: 45%;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    color: $textMainColor;
+    background-color: #eb5757;
   }
 }
 
