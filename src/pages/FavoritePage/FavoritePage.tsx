@@ -11,7 +11,7 @@ export function FavoritePage() {
     <>
       <div className={styles.whereIAm}>
         <Link to="/" className={styles.homeImg}>
-          <img src="/img/icons/Home.svg" alt="home" />
+          <img src="/react_phone-catalog/img/icons/Home.svg" alt="home" />
         </Link>
         <div className={styles.phonesRight}>
           <p>&gt;</p>

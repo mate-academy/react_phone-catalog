@@ -77,7 +77,7 @@ export const ButtonsCard: React.FC<Props> = ({ isExtended, isExtendedPage, produ
         onClick={handleFavoriteClick}
       >
         <img
-          src={isInFavorites ? '/img/icons/love-it-active.jpg' : '/img/icons/love-it.svg'}
+          src={isInFavorites ? '/react_phone-catalog/img/icons/love-it-active.jpg' : '/react_phone-catalog/img/icons/love-it.svg'}
           alt="to favorite"
           className={styles.favorite_product}
         />

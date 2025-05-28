@@ -103,7 +103,7 @@ export const NavBar = () => {
                 <Logo />
                 <div className={styles.burgerLine}>
                   <img
-                    src="/img/icons/close.svg"
+                    src="/react_phone-catalog/img/icons/close.svg"
                     onClick={() => setIsSidebarOpen(prev => !prev)}
                     className={styles.burgerClose}
                     alt="Close Menu"
@@ -137,7 +137,6 @@ export const NavBar = () => {
             <NavLink to="/favorites" onClick={() => setIsSidebarOpen(false)}>
               <button className={styles.menuButtonsFav}>
                 <img
-
                   src="/react_phone-catalog/img/icons/favorite.svg"
                   alt="to favorites"
                   className={styles.menuButtonsIcons}

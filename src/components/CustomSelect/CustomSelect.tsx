@@ -34,7 +34,7 @@ export const CustomSelect: React.FC<Props> = ({ options, value, onChange }) => {
       <div className={styles.selected} onClick={() => setIsOpen(prev => !prev)}>
         {selectedOption?.label}
         <span className={styles.arrow}>
-          <img src="\img\icons\Stroke.svg" />
+          <img src="/react_phone-catalog/img/icons/Stroke.svg" />
         </span>
       </div>
       {isOpen && (

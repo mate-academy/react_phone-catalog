@@ -33,13 +33,13 @@ export function MySlider() {
               className="slider"
             >
               <SwiperSlide>
-                <img src="/img/banner-phones.png" alt="1" className="slide_Image zeroSlide" />
+                <img src="/react_phone-catalog/img/banner-phones.png" alt="1" className="slide_Image zeroSlide" />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="/img/banner-accessories.png" alt="2" className="slide_Image firstSlide" />
+                <img src="/react_phone-catalog/img/banner-accessories.png" alt="2" className="slide_Image firstSlide" />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="/img/banner-tablets.png" alt="3" className="slide_Image secondSlide" />
+                <img src="/react_phone-catalog/img/banner-tablets.png" alt="3" className="slide_Image secondSlide" />
               </SwiperSlide>
             </Swiper>
           </div>
