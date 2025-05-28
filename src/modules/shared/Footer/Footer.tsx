@@ -47,13 +47,13 @@ export const Footer = () => {
 
             <label htmlFor="backToTop" className={styles.footer__arrow_content}>
               Back to top
-              <a href="#header" className={styles.footer__backToTop}>
+              <button onClick={() => window.scroll(0, 0)} className={styles.footer__backToTop}>
                 <img
                   id="backToTop"
                   src={IconArrowToTop}
                   alt="Icon-arrow-to-top"
                 />
-              </a>
+              </button>
             </label>
           </div>
         ) : (
