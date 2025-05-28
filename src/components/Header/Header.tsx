@@ -78,7 +78,7 @@ export const NavBar = () => {
                     `${styles.headerIconCart} ${isActive ? styles.activeLink : ''}`
                   }
                 >
-                  <img src="./icons/cart.svg" alt="to cart" className={styles.carti} />
+                  <img src="`${process.env.PUBLIC_URL}/img/icons/cart.svg`" alt="to cart" className={styles.carti} />
                 </NavLink>
               </div>
             </div>
@@ -131,7 +131,7 @@ export const NavBar = () => {
           <div className={styles.menuIcons}>
             <NavLink to="/cart" onClick={() => setIsSidebarOpen(false)}>
               <button className={styles.menuButtonsCart}>
-                <img src="./icons/cart.svg" alt="to cart" className={styles.menuButtonsIcons} />
+                <img src="`${process.env.PUBLIC_URL}/img/icons/cart.svg`" alt="to cart" className={styles.menuButtonsIcons} />
               </button>
             </NavLink>
             <NavLink to="/favorites" onClick={() => setIsSidebarOpen(false)}>
