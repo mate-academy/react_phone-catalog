@@ -109,14 +109,8 @@
     width: 32px;
     background-color: $mainNumberButtonColor;
     color: $hoverIconButtonColor;
-    font-size: 16px;
-
-    &_decrease {
-      &_active {
-        color: $textMainColor;
-        background-color: $mainIconButtonColor;
-      }
-    }
+    border: 1px solid $hoverIconButtonColor;
+    font-size: 20px;
 
     &_active {
       color: $textMainColor;

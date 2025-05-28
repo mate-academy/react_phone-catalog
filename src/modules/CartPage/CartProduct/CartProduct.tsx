@@ -64,7 +64,7 @@ export const CartProduct: React.FC<Props> = ({ product }) => {
               `${styles.cart__product_amountButton} ` +
               (amount > 1
                 ? styles.cart__product_amountButton_active
-                : styles.cart__product_amountButton_decrease)
+                :'')
             }
             disabled={amount <= 1}
             onClick={handleDecrease}
