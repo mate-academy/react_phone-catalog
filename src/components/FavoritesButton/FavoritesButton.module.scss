@@ -1,0 +1,22 @@
+@use '../../assets/styles/variables' as *;
+
+.favBtn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #E2E6E9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: white;
+
+  &:hover {
+    border-color: #0F0F11;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}

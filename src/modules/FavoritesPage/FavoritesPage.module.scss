@@ -1,0 +1,60 @@
+@use '../../assets/styles/variables' as *;
+
+.favoritesPage {
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+
+  @include tablet {
+    font-size: 48px;
+  }
+
+   @include desktop {
+    font-size: 48px;
+  }
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+  margin-bottom: 32px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    margin-bottom: 40px;
+  }
+}
+
+.empty {
+  font-size: 16px;
+  color: $color-secondary;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+}
+
+.item {
+  list-style: none;
+}

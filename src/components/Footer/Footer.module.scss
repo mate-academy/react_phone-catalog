@@ -1,0 +1,165 @@
+@use '../../assets/styles/variables' as *;
+
+.footer {
+  border-top: 1px solid $color-elements;
+  background-color: $color-white;
+  padding: 32px 16px;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 96px;
+  }
+
+  @include desktop {
+    padding: 0;
+  }
+}
+
+.inner {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 96px;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    height: 96px;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 24px;
+  }
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: 'Mont', sans-serif;
+
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+    align-items: center;
+  }
+
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+    align-items: center;
+  }
+}
+
+.link {
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  color: $color-secondary;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.rights {
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  color: $color-secondary;
+}
+
+.right {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: $color-secondary;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.top {
+  border: 1px solid $color-elements;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: none;
+  cursor: pointer;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.top:hover img {
+  transform: translateY(-2px);
+  transition: transform 0.3s;
+}

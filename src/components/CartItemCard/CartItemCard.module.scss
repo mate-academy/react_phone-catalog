@@ -1,0 +1,56 @@
+@use '../../assets/styles/variables' as *;
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid #e2e6e9;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.info {
+  flex-grow: 1;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.price {
+  font-weight: 700;
+  // color: $color-primary;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  button {
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    background: none;
+    cursor: pointer;
+  }
+}
+
+.remove {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+  }
+}

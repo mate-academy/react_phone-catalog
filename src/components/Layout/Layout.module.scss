@@ -1,0 +1,26 @@
+@use '../../assets/styles/variables' as *;
+
+.layout {
+  // display: grid;
+  // grid-template-rows: auto 1fr auto;
+  // flex-direction: column;
+  min-height: 100vh;
+  background-color: $color-background;
+
+}
+
+.main {
+  // flex-grow: 1;
+  padding: 32px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: $color-background;
+
+  @include tablet {
+    padding: 56px 32px;
+  }
+
+  @include desktop {
+    padding: 56px 32px;
+  }
+}

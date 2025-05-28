@@ -1,0 +1,220 @@
+@use '../../../../assets/styles/variables' as *;
+
+.slider {
+  width: 100%;
+  margin: 0 auto 56px;
+  max-width: 1136px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1%;
+  margin-bottom: 24px;
+  color: $color-primary;
+  align-self: flex-start;
+  padding: 0 16px;
+
+  &_hidden {
+    display: none;
+  }
+
+  @include tablet {
+    font-size: 48px;
+    margin-bottom: 32px;
+    padding: 0 24px;
+  }
+
+  @include desktop {
+    font-size: 48px;
+    margin-bottom: 56px;
+    padding: 0 24px;
+  }
+}
+
+.swiperWrapper {
+  align-items: center;
+  width: 100%;
+
+  margin: 0 auto;
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    max-width: 1136px;
+    column-gap: 19px;
+  }
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    max-width: 1136px;
+    column-gap: 16px;
+  }
+}
+
+.sliderSwiper {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+
+  aspect-ratio: 1 / 1;
+
+  @include tablet {
+    aspect-ratio: 490 / 189;
+    border-radius: 12px;
+  }
+
+  @include desktop {
+    aspect-ratio: 1040 / 400;
+    border-radius: 12px;
+
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.navBtn {
+  display: none;
+
+  @include tablet {
+    width: 32px;
+    height: 100%;
+    background-color: $color-background;
+    border: 1px solid $color-elements;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+   @include desktop {
+    width: 32px;
+    height: 100%;
+    background-color: $color-background;
+    border: 1px solid $color-elements;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+}
+
+:global(.custom-swiper-prev) {
+  @include tablet {
+    left: 19px;
+  }
+  @include desktop {
+    left: 48px;
+  }
+}
+
+:global(.custom-swiper-next) {
+  @include tablet {
+    right: 19px;
+  }
+  @include desktop {
+    right: 48px;
+  }
+}
+
+
+:global(.custom-pagination) {
+  width: 100%;
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  @include tablet {
+    margin-top: 18px;
+    gap: 12px;
+  }
+
+  @include desktop {
+    margin-top: 18px;
+    gap: 12px;
+  }
+}
+
+:global(.custom-pagination .swiper-pagination-bullet) {
+  width: 14px;
+  height: 4px;
+  background-color: $color-elements;
+  opacity: 1;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+:global(.custom-pagination .swiper-pagination-bullet-active) {
+  background-color: $color-primary;
+}
+
+.banner-1 {
+  background-image: url('./img/banner-1.png');
+
+  @media (max-width: $breakpoint-tablet) {
+    background-image: url('./img/banner-phones-mob.png');
+  }
+}
+
+.banner-phones {
+  background-image: url('./img/banner-phones.png');
+
+  @media (max-width: $breakpoint-tablet) {
+    background-image: url('./img/banner-phones-mob.png');
+  }
+}
+
+.banner-accessories {
+  background-image: url('./img/banner-accessories.png');
+
+  @media (max-width: $breakpoint-tablet) {
+    background-image: url('./img/banner-phones-mob.png');
+  }
+}
