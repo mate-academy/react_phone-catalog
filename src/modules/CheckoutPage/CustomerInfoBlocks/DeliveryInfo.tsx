@@ -17,7 +17,7 @@ import {
 import { fetchNovaPostData } from '../../../utils/fetchNovaPost';
 import { CheckoutContext } from '../../../Store/CheckoutStore';
 import { DeliveryMethod } from '../../shared/Types/types';
-import { ErrorMessage } from '../../shared/ErrorMassages/ErrorMessage';
+import { ErrorMessage } from '../../shared/ErrorMessages/ErrorMessage';
 import { CheckoutErrorsContext } from '../../../Store/CheckoutErrorStore';
 
 export const DeliveryInfo = () => {

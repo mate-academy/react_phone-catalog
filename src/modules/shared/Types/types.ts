@@ -13,11 +13,6 @@ export enum LocalStorageKeys {
   theme = 'savedThemeMode',
 }
 
-export enum ThemeModeKeys {
-  isDark = 'isDark',
-  isLight = 'isLight',
-}
-
 export enum CategoriesTypes {
   Phones = 'phones',
   Tablets = 'tablets',

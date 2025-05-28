@@ -60,25 +60,23 @@
     position: relative;
     transform: initial;
     transition: all $primary-transition-duration;
+    background-image: url(/icons/Chevron-Arrow-Right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
 
-    &--left {
-      &::before {
-        position: absolute;
-        content: url(/icons/chevron_arrow_right.svg);
-        transform: rotate(-90deg);
-        top: 45%;
-        left: 30%;
+    &--is-Dark {
+      border-color: transparent;
+      background-color: $gray-surface-secondary;
+      background-image: url(/icons/chevron_arrow_right_disabled.svg);
+
+      &:hover {
+        border-color: transparent;
+        background-color: $gray-elements-secondary;
       }
     }
 
     &--right {
-      &::before {
-        position: absolute;
-        content: url(/icons/chevron_arrow_right.svg);
-        transform: rotate(90deg);
-        top: 45%;
-        left: 20%;
-      }
+      transform: rotate(180deg);
     }
 
     @include on-tablet {
@@ -91,10 +89,6 @@
       &:hover {
         cursor: pointer;
         border-color: $primary-color;
-        transform: scale(105%);
-        -webkit-box-shadow: 2px 2px 5px 1px $elements-color;
-        -moz-box-shadow: 2px 2px 5px 1px $elements-color;
-        box-shadow: 2px 2px 5px 1px $elements-color;
       }
     }
   }
@@ -121,6 +115,14 @@
     width: 14px;
     height: 4px;
     background-color: $elements-color;
+
+    &--is-Dark-Active {
+      background-color: $elements-color;
+    }
+
+    &--is-Dark {
+      background-color: $primary-color;
+    }
 
     &--active {
       background-color: $primary-color;

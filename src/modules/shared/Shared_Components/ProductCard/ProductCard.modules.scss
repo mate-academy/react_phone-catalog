@@ -23,11 +23,25 @@
     }
   }
 
+  &--is-Dark {
+    background-color: $gray-surface;
+    border: 1px solid transparent;
+
+    &:hover {
+      border: 1px solid #3B3E4A;
+      box-shadow: none;
+    }
+  }
+
   &__top {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid $elements-color;
     margin-bottom: 25px;
+
+    &--is-Dark {
+      border-bottom-color: $gray-elements;
+    }
   }
 
   &__img {
@@ -71,6 +85,10 @@
         text-decoration: underline;
       }
     }
+
+    &--is-Dark {
+      color: $white-for-dark;
+    }
   }
 
   &__price-container {
@@ -98,6 +116,10 @@
       color: $secondary-color;
       font-family: $font-Mont_Regular;
       text-decoration: line-through;
+    }
+
+    &--is-Dark {
+      color: $white-for-dark;
     }
   }
 
@@ -127,6 +149,10 @@
 
     &--property {
       color: $primary-color;
+    }
+
+    &--is-Dark {
+      color: $white-for-dark;
     }
   }
 }

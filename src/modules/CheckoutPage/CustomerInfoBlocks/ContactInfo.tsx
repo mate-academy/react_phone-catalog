@@ -5,14 +5,15 @@ import { CheckoutErrorsContext } from '../../../Store/CheckoutErrorStore';
 import { CheckoutContext } from '../../../Store/CheckoutStore';
 import { CustomEvents } from '../../../utils/eventEmitters/emitterTypes';
 import { sessionStorageEventEmitter } from '../../../utils/eventEmitters/sessionStorageEmitter';
-import { ErrorMessage } from '../../shared/ErrorMassages/ErrorMessage';
+import { ErrorMessage } from '../../shared/ErrorMessages/ErrorMessage';
 import { AuthorizationForm } from '../../shared/Shared_Components/Forms/AuthorizationForm/AuthorizationForm';
 import { GoogleAuth } from '../../shared/Shared_Components/GoogleAuth/GoogleAuth';
 import { FormTypes, SessionStorageCredentials } from '../../shared/Types/types';
+import { PrimaryButton } from '../../shared/Shared_Components/ActionButtons/PrimaryButton';
 
 export const ContactInfo = () => {
   const { checkoutData, setCheckoutData } = useContext(CheckoutContext);
-  const { errors } = useContext(CheckoutErrorsContext);
+  const { errors, setErrors } = useContext(CheckoutErrorsContext);
 
   const signUp = {
     firstName: checkoutData.firstName,
@@ -33,7 +34,8 @@ export const ContactInfo = () => {
   const errorTitle = 'Please, fill in required blanks in the section below!';
 
   useEffect(() => {
-    const handler = event => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const handler = (event: any) => {
       if (event.detail.key === SessionStorageCredentials.CheckoutCredentials) {
         setCheckoutData(event.detail.value);
       }
@@ -44,13 +46,26 @@ export const ContactInfo = () => {
       handler,
     );
 
-    return () =>
+    const timer = setTimeout(() => {
+      const newErrors = {
+        contactInfo: false,
+        deliveryInfo: false,
+        paymentInfo: false,
+      };
+
+      setErrors(newErrors);
+    }, 7000);
+
+    return () => {
+      clearTimeout(timer);
+
       sessionStorageEventEmitter.removeEventListener(
         CustomEvents.sessionStorageChange,
         handler,
       );
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [errors]);
 
   return (
     <div className="checkout__customer-info">
@@ -110,9 +125,12 @@ export const ContactInfo = () => {
         {!checkoutData.isLoggedInByGoogle ? (
           <GoogleAuth />
         ) : (
-          <button className="checkout__button checkout__button--google">
-            Successful
-          </button>
+          <PrimaryButton
+            title="Successful !"
+            onClickHandler={() => {}}
+            isDisabled
+            width="40%"
+          />
         )}
       </div>
     </div>

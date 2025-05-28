@@ -4,12 +4,14 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { PaginationValues } from './types/types';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { UpdatedProduct } from '../../Types/types';
-import { useEffect, useMemo } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb';
 // eslint-disable-next-line max-len
 import { ProductCardSkeleton } from '../ProductCardSkeleton/ProductCardSkeleton';
 import { NoResultCat } from '../NoResultCat/NoResultCat';
 import { scrollToTop } from '../../../../utils/scrollToTop';
+import classNames from 'classnames';
+import { DarkModeContext } from '../../../../Store/StoreThemeMode';
 
 interface Props {
   pageTitle: string;
@@ -22,6 +24,7 @@ export const ProductPage: React.FC<Props> = ({
   listOfProducts,
   isLoading,
 }) => {
+  const { isDark } = useContext(DarkModeContext);
   const { pathname } = useLocation();
   const pageName = pathname.replace('/', '');
 
@@ -102,12 +105,20 @@ export const ProductPage: React.FC<Props> = ({
       <Breadcrumb pathname={pathname} pageName={pageName} />
 
       <div className="product-page__top">
-        <div className="product-page__navigation"></div>
-
         <div className="product-page__title">
-          <h1 className="title title--h1 product-page__h1">{pageTitle}</h1>
+          <h1
+            className={classNames('title title--h1 product-page__h1', {
+              'title--is-Dark': isDark,
+            })}
+          >
+            {pageTitle}
+          </h1>
 
-          <p className="product-page__text">{`${listOfProducts.length} models`}</p>
+          <p
+            className={classNames('product-page__text', {
+              'product-page__text--is-Dark': isDark,
+            })}
+          >{`${listOfProducts.length} models`}</p>
         </div>
 
         <ProductPageSort pageTitle={pageTitle} isLoading={isLoading} />

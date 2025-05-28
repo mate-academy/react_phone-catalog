@@ -1,16 +1,34 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatedLayout } from '../../shared/Shared_Components/AnimatedComponents/AnimatedLayout';
 import { scrollToTop } from '../../../utils/scrollToTop';
+import { SecondaryButton } from '../../shared/Shared_Components/ActionButtons/SecondaryButton/SecondaryButton';
+import { DarkModeContext } from '../../../Store/StoreThemeMode';
+import classNames from 'classnames';
 
 export const Footer: React.FC = () => {
+  const { isDark } = useContext(DarkModeContext);
+
   return (
     <AnimatedLayout>
-      <footer className="footer">
-        <Link className="footer__logo" to={'/'} />
+      <footer
+        className={classNames('footer', {
+          'footer--is-Dark': isDark,
+        })}
+      >
+        <Link
+          className={classNames('footer__logo', {
+            'footer__logo--is-Dark': isDark,
+          })}
+          to={'/'}
+        />
 
-        <div className="footer__links">
+        <div
+          className={classNames('footer__links', {
+            'footer__links--is-Dark': isDark,
+          })}
+        >
           <Link
             className="footer__link"
             target="_blank"
@@ -29,9 +47,9 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="footer__end">
-          <button className="footer__button" onClick={scrollToTop} />
-
           <p className="footer__text">Back to top</p>
+
+          <SecondaryButton isDark={isDark} isTop onClickHandler={scrollToTop} />
         </div>
       </footer>
     </AnimatedLayout>

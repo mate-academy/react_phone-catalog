@@ -1,25 +1,53 @@
 import { useContext, useState } from 'react';
 import { CartStoreContext } from '../../Store/CartStore';
 import { CartItem } from '../CartPage/components/CartItem';
-import { DeliveryMethod, UpdatedProduct } from '../shared/Types/types';
-import classNames from 'classnames';
+import {
+  CheckoutData,
+  DeliveryMethod,
+  UpdatedProduct,
+} from '../shared/Types/types';
 import { CheckoutContext } from '../../Store/CheckoutStore';
 import { CheckoutErrorsContext } from '../../Store/CheckoutErrorStore';
 import { Modal } from '../shared/Modal/Modal';
-import { ErrorMessage } from '../shared/ErrorMassages/ErrorMessage';
+import { ErrorMessage } from '../shared/ErrorMessages/ErrorMessage';
+import { generateRandom } from '../../utils/generateRandom';
+// eslint-disable-next-line max-len
+import { PrimaryButton } from '../shared/Shared_Components/ActionButtons/PrimaryButton';
+import { scrollToTop } from '../../utils/scrollToTop';
+import { useNavigate } from 'react-router-dom';
 
 export const CheckoutOrderInfo = () => {
-  const { cartList } = useContext(CartStoreContext);
+  const { cartList, setCartList } = useContext(CartStoreContext);
   const { checkoutData, setCheckoutData } = useContext(CheckoutContext);
   const { errors, setErrors } = useContext(CheckoutErrorsContext);
 
   const [isModalActive, setIsModalActive] = useState(false);
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleModalClose = () => {
-    //navigate('/');
+    const defaultCheckoutValue: CheckoutData = {
+      ...checkoutData,
+      deliveryMethod: DeliveryMethod.Unset,
+      paymentMethod: '',
+      password: '',
+      discountInfo: {
+        isActive: false,
+        code: '',
+      },
+      deliveryCity: '',
+      deliverTo: '',
+      buildingDetails: {
+        building: '',
+        entrance: '',
+        apartment: '',
+      },
+    };
 
     setIsModalActive(false);
+    setCartList([]);
+    setCheckoutData(defaultCheckoutValue);
+    navigate('/');
+    scrollToTop();
   };
 
   const handleModalOpen = () => {
@@ -43,10 +71,7 @@ export const CheckoutOrderInfo = () => {
   const checkForFilled = () => {
     const newError = { ...errors };
 
-    if (
-      (!checkoutData.firstName && !checkoutData.phone) ||
-      (!checkoutData.email && !checkoutData.password)
-    ) {
+    if (!checkoutData.firstName || !checkoutData.phone) {
       newError.contactInfo = true;
     }
 
@@ -58,7 +83,19 @@ export const CheckoutOrderInfo = () => {
       newError.paymentInfo = true;
     }
 
+    const isError = Object.values(newError).some(e => e);
+
     setErrors(newError);
+
+    return isError;
+  };
+
+  const onCheckoutHandler = () => {
+    if (checkForFilled()) {
+      return;
+    }
+
+    handleModalOpen();
   };
 
   const noticeMessage =
@@ -101,15 +138,9 @@ export const CheckoutOrderInfo = () => {
               disabled={checkoutData.discountInfo.isActive}
             />
 
-            <button
-              className={classNames(
-                'checkout__button checkout__button--promo',
-                {
-                  'checkout__button--is-applied':
-                    checkoutData.discountInfo.isActive,
-                },
-              )}
-              onClick={() => {
+            <PrimaryButton
+              title={checkoutData.discountInfo.isActive ? 'Applied' : 'Apply'}
+              onClickHandler={() => {
                 if (checkoutData.discountInfo.code.length > 0) {
                   setCheckoutData({
                     ...checkoutData,
@@ -120,10 +151,10 @@ export const CheckoutOrderInfo = () => {
                   });
                 }
               }}
-              disabled={checkoutData.discountInfo.isActive}
-            >
-              {checkoutData.discountInfo.isActive ? 'Applied' : 'Apply'}
-            </button>
+              isDisabled={checkoutData.discountInfo.isActive}
+              width={'30%'}
+              height={48}
+            />
           </div>
         </div>
 
@@ -165,19 +196,29 @@ export const CheckoutOrderInfo = () => {
           </div>
         </div>
 
-        <button
-          className="checkout__button"
-          onClick={() => {
-            checkForFilled();
-
-            handleModalOpen();
-          }}
-        >
-          Submit order
-        </button>
+        <PrimaryButton
+          title="Submit order"
+          isDisabled={false}
+          onClickHandler={onCheckoutHandler}
+          height={48}
+        />
 
         {isModalActive && (
-          <Modal title="Modal Title" onClose={handleModalClose}>
+          <Modal title="Thank you!" onClose={handleModalClose}>
+            <h3 className="title title--h3">
+              {`Order number 000${generateRandom(250)} has been received!`}
+            </h3>
+
+            <p className="body-text">
+              Your order may take up to 3 business days to be shipped. Our
+              manager may contact you in case any inconvenience.
+            </p>
+
+            <PrimaryButton
+              title="Go back to Home"
+              onClickHandler={handleModalClose}
+            />
+
             <ErrorMessage title={noticeMessage} />
           </Modal>
         )}

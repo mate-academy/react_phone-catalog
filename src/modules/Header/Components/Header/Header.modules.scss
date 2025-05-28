@@ -1,14 +1,20 @@
 .header {
+  transition: all $primary-transition-duration;
   display: flex;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 0 0 $elements-color;
+  border-bottom: 1px solid $elements-color;
   margin-bottom: 24px;
   background-color: $white;
   z-index: 2;
+
+  &--is-Dark {
+    background-color: $black-main;
+    border-color: $gray-elements;
+  }
 
   &__nav {
     display: none;
@@ -36,6 +42,10 @@
       &:hover {
         transform: scale(110%);
       }
+    }
+
+    &--is-Dark {
+      background-image: url(/logos/LogoDarkMode.svg);
     }
   }
 
@@ -70,8 +80,18 @@
       display: none;
     }
 
+    &--is-Dark {
+      background-color: $black-main;
+      background-image: url(/public/icons/MenuForDark.svg);
+      box-shadow: -1px 0 0 0 $gray-elements;
+    }
+
     &--active {
       background-image: url(/icons/close_menu_icon.svg);
+    }
+
+    &--is-Dark-Active {
+      background-image: url(/icons/CloseWhite.svg);
     }
   }
 }

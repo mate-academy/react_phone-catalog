@@ -49,6 +49,10 @@
       line-height: 26px;
     }
   }
+
+  &--is-Dark {
+    color: $white-for-dark;
+  }
 }
 
 .body-text {

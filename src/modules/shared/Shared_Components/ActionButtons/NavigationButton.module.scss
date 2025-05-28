@@ -32,6 +32,13 @@
       transform: rotateZ(-90deg);
       align-self: center;
     }
+
+    &--is-Dark {
+      &::after {
+        content: url(/icons/chevron_arrow_right_disabled.svg);
+        transform: none;
+      }
+    }
   }
 
   &__text {
@@ -39,5 +46,9 @@
     font-size: 14px;
     line-height: 21px;
     color: $secondary-color;
+
+    &--is-Dark {
+      color: $white-for-dark;
+    }
   }
 }

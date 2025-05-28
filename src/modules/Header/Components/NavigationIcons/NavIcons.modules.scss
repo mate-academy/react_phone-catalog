@@ -65,6 +65,23 @@
       width: 100%;
       background-color: $primary-color;
     }
+
+    &--is-Dark-Favorites {
+      background-image: url(/icons/Favourites-heart-like-white.svg);
+    }
+
+    &--is-Dark-Cart {
+      background-image: url(/icons/ShoppingCartWhite.svg);
+    }
+
+    &--is-Dark {
+      background-color: $black-main;
+      box-shadow: -1px -1px 0 0 $gray-elements;
+
+      &::before {
+        background-color: $white-for-dark;
+      }
+    }
   }
 
   &__quantity-icon {
@@ -92,6 +109,10 @@
     @include on-desktop {
       right: 20%;
       top: 25%;
+    }
+
+    &--is-Dark {
+      border-color: $black-main;
     }
   }
 

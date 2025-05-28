@@ -12,6 +12,7 @@
     line-height: 21px;
     text-align: center;
     border: none;
+    height: 40px;
     width: 100%;
     transition: all $primary-transition-duration ease-in-out;
 
@@ -37,10 +38,28 @@
         background-color: $white;
       }
     }
+
+    &--is-Dark {
+      border: none;
+      background-color: $primary-dark-purple;
+
+      @include on-desktop {
+        &:hover {
+          border: none;
+          background-color: $secondary-purple;
+          color: $white;
+        }
+      }
+    }
+
+    &--is-Dark-Added {
+      background-color: $gray-surface-secondary;
+      color: $white;
+    }
   }
 
   &__button-favorites {
-        width: 45px;
+    width: 45px;
     background-color: $white;
     background-image: url(/icons/favourites_heart_like.svg);
     background-repeat: no-repeat;
@@ -64,6 +83,23 @@
         cursor: pointer;
         border-color: $primary-color;
       }
+    }
+
+    &--is-Dark {
+      background-color: $gray-surface-secondary;
+      border: none;
+      background-image: url(/icons/Favourites-heart-like-white.svg);
+
+      @include on-desktop {
+        &:hover {
+          border: none;
+          background-color: $gray-elements-secondary;
+        }
+      }
+    }
+
+    &--is-Dark-Added {
+      background-image: url(/icons/favourites_filled_heart_like.svg);
     }
   }
 }

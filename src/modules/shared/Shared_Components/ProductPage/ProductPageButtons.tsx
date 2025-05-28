@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/indent */
 import classNames from 'classnames';
-import React from 'react';
+import React, { useContext } from 'react';
 import { SearchLink } from '../SearchLink/SearchLink';
 import { scrollToTop } from '../../../../utils/scrollToTop';
+// eslint-disable-next-line max-len
+import { SecondaryButton } from '../ActionButtons/SecondaryButton/SecondaryButton';
+import { DarkModeContext } from '../../../../Store/StoreThemeMode';
 
 interface Props {
   activePage: number;
@@ -12,6 +16,8 @@ export const ProductPageButtons: React.FC<Props> = ({
   activePage,
   numberOfPages,
 }) => {
+  const { isDark } = useContext(DarkModeContext);
+
   const copyList = [...numberOfPages];
 
   copyList.shift();
@@ -35,20 +41,24 @@ export const ProductPageButtons: React.FC<Props> = ({
   return (
     <div className="product-page__buttons">
       <SearchLink
-        className={classNames(
-          'product-page__button product-page__button--previous',
-          {
-            'product-page__button--disabled': activePage === 1,
-          },
-        )}
+        className={classNames({
+          'product-page__button--disabled': activePage === 1,
+        })}
         params={{ page: activePage === 2 ? null : activePage - 1 }}
-        onClick={scrollToTop}
-      />
+      >
+        <SecondaryButton
+          isDisabled={activePage === 1}
+          isDark={isDark}
+          onClickHandler={scrollToTop}
+        />
+      </SearchLink>
 
       <div className="product-page__page-buttons">
         <SearchLink
           params={{ page: null }}
           className={classNames('product-page__button', {
+            'product-page__button--is-Dark': isDark,
+            'product-page__button--is-Dark-Active': isDark && activePage === 1,
             'product-page__button--active': activePage === 1,
           })}
           onClick={scrollToTop}
@@ -56,13 +66,18 @@ export const ProductPageButtons: React.FC<Props> = ({
           1
         </SearchLink>
 
-        {numberOfPages.length > 5 && activePage >= 4 && <p>...</p>}
+        {numberOfPages.length > 5 && activePage >= 4 && (
+          <p style={{ color: isDark ? 'white' : 'black' }}>...</p>
+        )}
 
         {listToRender.map(item => (
           <SearchLink
             key={item}
             params={{ page: item === 1 ? null : item }}
             className={classNames('product-page__button', {
+              'product-page__button--is-Dark': isDark,
+              'product-page__button--is-Dark-Active':
+                isDark && activePage === item,
               'product-page__button--active': activePage === item,
             })}
             onClick={scrollToTop}
@@ -72,11 +87,16 @@ export const ProductPageButtons: React.FC<Props> = ({
         ))}
 
         {numberOfPages.length > 5 &&
-          activePage <= numberOfPages[numberOfPages.length - 4] && <p>...</p>}
+          activePage <= numberOfPages[numberOfPages.length - 4] && (
+            <p style={{ color: isDark ? 'white' : 'black' }}>...</p>
+          )}
 
         <SearchLink
           params={{ page: `${numberOfPages[numberOfPages.length - 1]}` }}
           className={classNames('product-page__button', {
+            'product-page__button--is-Dark': isDark,
+            'product-page__button--is-Dark-Active':
+              isDark && activePage === numberOfPages[numberOfPages.length - 1],
             'product-page__button--active':
               activePage === numberOfPages[numberOfPages.length - 1],
           })}
@@ -87,16 +107,19 @@ export const ProductPageButtons: React.FC<Props> = ({
       </div>
 
       <SearchLink
-        className={classNames(
-          'product-page__button product-page__button--next',
-          {
-            'product-page__button--disabled':
-              activePage === numberOfPages[numberOfPages.length - 1],
-          },
-        )}
+        className={classNames({
+          'product-page__button--disabled':
+            activePage === numberOfPages[numberOfPages.length - 1],
+        })}
         params={{ page: activePage + 1 }}
-        onClick={scrollToTop}
-      />
+      >
+        <SecondaryButton
+          isDark={isDark}
+          isDisabled={activePage === numberOfPages[numberOfPages.length - 1]}
+          isRight
+          onClickHandler={scrollToTop}
+        />
+      </SearchLink>
     </div>
   );
 };

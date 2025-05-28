@@ -4,7 +4,7 @@ import { RadioInput } from '../../shared/Shared_Components/InputFields/RadioInpu
 import { UserPaymentOptions } from '../../shared/Types/types';
 import { getPaymentOptions } from '../../../api/getPaymentOptions';
 import { CheckoutContext } from '../../../Store/CheckoutStore';
-import { ErrorMessage } from '../../shared/ErrorMassages/ErrorMessage';
+import { ErrorMessage } from '../../shared/ErrorMessages/ErrorMessage';
 import { CheckoutErrorsContext } from '../../../Store/CheckoutErrorStore';
 
 export const CheckoutInfo = () => {
@@ -12,13 +12,20 @@ export const CheckoutInfo = () => {
   const { checkoutData, setCheckoutData } = useContext(CheckoutContext);
   const { errors } = useContext(CheckoutErrorsContext);
 
-  const onCheckHandler = (
+  const onSelectHandler = (
     arr: UserPaymentOptions[],
     val: UserPaymentOptions,
   ) => {
-    setCheckoutData({ ...checkoutData, paymentMethod: val.paymentTitle });
+    const newList = arr.map(item => {
+      return item.paymentId === val.paymentId
+        ? { ...item, isChecked: true }
+        : { ...item, isChecked: false };
+    });
 
-    setOptions(arr);
+    return () => {
+      setCheckoutData({ ...checkoutData, paymentMethod: val.paymentTitle });
+      setOptions(newList);
+    };
   };
 
   const errorTitle = 'Please, select payment method!';
@@ -26,12 +33,16 @@ export const CheckoutInfo = () => {
   useEffect(() => {
     getPaymentOptions().then(data => {
       const newList: UserPaymentOptions[] = data.map(item => {
+        if (checkoutData.paymentMethod === item.paymentTitle) {
+          return { ...item, isChecked: true };
+        }
+
         return { ...item, isChecked: false };
       });
 
       setOptions(newList);
     });
-  }, []);
+  }, [checkoutData.paymentMethod]);
 
   return (
     <div className="checkout__customer-info">
@@ -44,8 +55,7 @@ export const CheckoutInfo = () => {
           <RadioInput
             key={item.paymentId}
             data={item}
-            listOfOptions={options}
-            onCheck={onCheckHandler}
+            onSelectHandler={onSelectHandler(options, item)}
           />
         ))}
       </div>

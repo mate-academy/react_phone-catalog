@@ -1,7 +1,11 @@
+import classNames from 'classnames';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { DarkModeContext } from '../../../../Store/StoreThemeMode';
 
 export const GoBackButton = () => {
   const navigate = useNavigate();
+  const { isDark } = useContext(DarkModeContext);
 
   return (
     <div className="nav-container">
@@ -11,9 +15,19 @@ export const GoBackButton = () => {
         }}
         className="nav-container__button"
       >
-        <div className="nav-container__arrow" />
+        <div
+          className={classNames('nav-container__arrow', {
+            'nav-container__arrow--is-Dark': isDark,
+          })}
+        />
 
-        <p className="nav-container__text">Back</p>
+        <p
+          className={classNames('nav-container__text', {
+            'nav-container__text--is-Dark': isDark,
+          })}
+        >
+          Back
+        </p>
       </button>
     </div>
   );

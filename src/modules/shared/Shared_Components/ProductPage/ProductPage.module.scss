@@ -34,6 +34,10 @@
     text-align: left;
     color: $secondary-color;
     margin-bottom: 0;
+
+    &--is-Dark {
+      color: $gray-secondary;
+    }
   }
 
   &__select-container {
@@ -82,6 +86,20 @@
     @include on-desktop {
       width: 15vw;
     }
+
+    &--is-Dark {
+      background-color: $gray-surface-secondary;
+      border-color: transparent;
+      color: $white-for-dark;
+
+      &::placeholder {
+        color: $white-for-dark;
+      }
+
+      &:focus {
+        border-color: $secondary-color;
+      }
+    }
   }
 
   &__options {
@@ -98,6 +116,13 @@
     padding-left: 15px;
     justify-content: space-between;
     transition: all $primary-transition-duration;
+
+    &--is-Dark {
+      border-color: transparent;
+      outline: none;
+      background-color: $gray-surface-secondary;
+      color: $white-for-dark;
+    }
 
     &--disabled {
       pointer-events: none;
@@ -151,10 +176,20 @@
     width: 99.5%;
     top: 105%;
     z-index: 1;
+
+    &--is-Dark {
+      background-color: $gray-surface-secondary;
+      color: $white-for-dark;
+      border-color: $gray-surface-secondary;
+    }
   }
 
   &__link {
     color: $secondary-color;
+
+    &--is-Dark-Active {
+      color: $white-for-dark;
+    }
 
     &--home {
       display: block;
@@ -179,6 +214,15 @@
       &:hover {
         background-color: $hover_and_BG;
         cursor: pointer;
+      }
+    }
+
+    &--is-Dark {
+      @include on-desktop {
+        &:hover {
+          background-color: $primary-dark-purple;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -249,38 +293,6 @@
       color: $white;
     }
 
-    &--previous {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-color: $icons-color;
-
-      &::before {
-        content: url(/icons/chevron_arrow_right.svg);
-        width: 16px;
-        height: 16px;
-        align-self: center;
-        display: block;
-        transform: rotateZ(-90deg);
-      }
-    }
-
-    &--next {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-color: $icons-color;
-
-      &::before {
-        content: url(/icons/chevron_arrow_right.svg);
-        display: block;
-        width: 16px;
-        height: 16px;
-        align-self: center;
-        transform: rotateZ(90deg);
-      }
-    }
-
     &--disabled {
       border-color: $elements-color;
       pointer-events: none;
@@ -291,6 +303,23 @@
       &:hover {
         border-color: $primary-color;
       }
+    }
+
+    &--is-Dark {
+      background-color: $gray-surface;
+      border-color: transparent;
+      color: $white-for-dark;
+
+      @include on-desktop {
+        &:hover {
+          background-color: $gray-elements;
+        }
+      }
+    }
+
+    &--is-Dark-Active {
+      background-color: $primary-dark-purple;
+      pointer-events: none;
     }
   }
 }

@@ -3,36 +3,22 @@ import classNames from 'classnames';
 
 interface Props {
   data: UserPaymentOptions;
-  listOfOptions: UserPaymentOptions[];
-  onCheck: (arr: UserPaymentOptions[], val: UserPaymentOptions) => void;
+  onSelectHandler: () => void;
 }
 
-export const RadioInput: React.FC<Props> = ({
-  data,
-  listOfOptions,
-  onCheck,
-}) => {
-  const setNewChecked = (optionId: string) => {
-    const newList = listOfOptions.map(item => {
-      return item.paymentId === optionId
-        ? { ...item, isChecked: true }
-        : { ...item, isChecked: false };
-    });
-
-    onCheck(newList, data);
-  };
-
+export const RadioInput: React.FC<Props> = ({ data, onSelectHandler }) => {
   return (
     <div
       className={classNames('radio-input', {
         'radio-input--is-Checked': data.isChecked,
       })}
-      onClick={() => setNewChecked(data.paymentId)}
+      onClick={() => onSelectHandler()}
     >
       <input
         type="radio"
         className="radio-input__radio"
         checked={data.isChecked}
+        readOnly
       />
 
       <div className="radio-input__text-container">

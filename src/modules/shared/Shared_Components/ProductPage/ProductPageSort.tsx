@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { PaginationValues, SortValues } from './types/types';
 import { SearchLink } from '../SearchLink/SearchLink';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from './utils/getSearchWith';
+import { DarkModeContext } from '../../../../Store/StoreThemeMode';
 
 interface Props {
   pageTitle: string;
@@ -11,6 +12,8 @@ interface Props {
 }
 
 export const ProductPageSort: React.FC<Props> = ({ pageTitle, isLoading }) => {
+  const { isDark } = useContext(DarkModeContext);
+
   const normalizedPageTitle = pageTitle.split(' ').join('-');
 
   const arrayOfSortOptions = Object.values(SortValues);
@@ -45,7 +48,9 @@ export const ProductPageSort: React.FC<Props> = ({ pageTitle, isLoading }) => {
         <div className="product-page__select">
           <label
             htmlFor={`product-sort__${normalizedPageTitle}`}
-            className="product-page__text"
+            className={classNames('product-page__text', {
+              'product-page__text--is-Dark': isDark,
+            })}
           >
             Sort by
           </label>
@@ -55,6 +60,7 @@ export const ProductPageSort: React.FC<Props> = ({ pageTitle, isLoading }) => {
             id={`product-sort__${normalizedPageTitle}`}
             className={classNames('product-page__options', {
               'product-page__options--disabled': isLoading,
+              'product-page__options--is-Dark': isDark,
             })}
             onClick={() =>
               isOpenedSelect.sort
@@ -71,7 +77,11 @@ export const ProductPageSort: React.FC<Props> = ({ pageTitle, isLoading }) => {
           </div>
 
           {isOpenedSelect.sort && (
-            <ul className="product-page__options-list">
+            <ul
+              className={classNames('product-page__options-list', {
+                'product-page__options-list--is-Dark': isDark,
+              })}
+            >
               {arrayOfSortOptions.map(item => (
                 <SearchLink
                   key={item}
@@ -89,10 +99,19 @@ export const ProductPageSort: React.FC<Props> = ({ pageTitle, isLoading }) => {
                     setIsOpenedSelect({ ...isOpenedSelect, sort: false });
                   }}
                   className={classNames('product-page__link', {
-                    'product-page__link--is-Active': item === sortInput,
+                    'product-page__link--is-Dark-Active':
+                      item === sortInput && isDark,
+                    'product-page__link--is-Active':
+                      item === sortInput && !isDark,
                   })}
                 >
-                  <li className="product-page__option">{item}</li>
+                  <li
+                    className={classNames('product-page__option', {
+                      'product-page__option--is-Dark': isDark,
+                    })}
+                  >
+                    {item}
+                  </li>
                 </SearchLink>
               ))}
             </ul>
@@ -102,7 +121,9 @@ export const ProductPageSort: React.FC<Props> = ({ pageTitle, isLoading }) => {
         <div className="product-page__select">
           <label
             htmlFor={`product-pagination__${normalizedPageTitle}`}
-            className="product-page__text"
+            className={classNames('product-page__text', {
+              'product-page__text--is-Dark': isDark,
+            })}
           >
             Items on page
           </label>
@@ -114,6 +135,7 @@ export const ProductPageSort: React.FC<Props> = ({ pageTitle, isLoading }) => {
               'product-page__options product-page__options--pagination',
               {
                 'product-page__options--disabled': isLoading,
+                'product-page__options--is-Dark': isDark,
               },
             )}
             onClick={() =>
@@ -132,19 +154,32 @@ export const ProductPageSort: React.FC<Props> = ({ pageTitle, isLoading }) => {
           </div>
 
           {isOpenedSelect.pagination && (
-            <ul className="product-page__options-list">
+            <ul
+              className={classNames('product-page__options-list', {
+                'product-page__options-list--is-Dark': isDark,
+              })}
+            >
               {arrayOfPaginationOptions.map(item => (
                 <SearchLink
                   key={item}
                   params={{ perPage: item === 'All' ? null : item, page: null }}
                   className={classNames('product-page__link', {
-                    'product-page__link--is-Active': item === perPage,
+                    'product-page__link--is-Dark-Active':
+                      item === perPage && isDark,
+                    'product-page__link--is-Active':
+                      item === perPage && !isDark,
                   })}
                   onClick={() => {
                     setIsOpenedSelect({ ...isOpenedSelect, pagination: false });
                   }}
                 >
-                  <li className="product-page__option">{item}</li>
+                  <li
+                    className={classNames('product-page__option', {
+                      'product-page__option--is-Dark': isDark,
+                    })}
+                  >
+                    {item}
+                  </li>
                 </SearchLink>
               ))}
             </ul>
@@ -155,7 +190,9 @@ export const ProductPageSort: React.FC<Props> = ({ pageTitle, isLoading }) => {
       <div className="product-page__select product-page__select--input">
         <label
           htmlFor={`product-query__${normalizedPageTitle}`}
-          className="product-page__text"
+          className={classNames('product-page__text', {
+            'product-page__text--is-Dark': isDark,
+          })}
         >
           Search for items
         </label>
@@ -164,7 +201,9 @@ export const ProductPageSort: React.FC<Props> = ({ pageTitle, isLoading }) => {
           id={`product-query__${normalizedPageTitle}`}
           type="text"
           placeholder={query}
-          className="product-page__input"
+          className={classNames('product-page__input', {
+            'product-page__input--is-Dark': isDark,
+          })}
           disabled={isLoading}
           onChange={event => {
             const input = !event.target.value ? null : event.target.value;

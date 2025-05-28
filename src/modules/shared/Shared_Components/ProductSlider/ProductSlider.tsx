@@ -3,10 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import classNames from 'classnames';
 import { UpdatedProduct } from '../../Types/types';
+// eslint-disable-next-line max-len
+import { SecondaryButton } from '../ActionButtons/SecondaryButton/SecondaryButton';
 
 interface Props {
   componentTitle: string;
   productList: UpdatedProduct[];
+  isDark: boolean;
   discount?: boolean;
 }
 
@@ -14,6 +17,7 @@ export const ProductSlider: React.FC<Props> = ({
   componentTitle,
   productList,
   discount,
+  isDark,
 }) => {
   const elementsId = componentTitle.replaceAll(' ', '_');
   const cardContainer = document.getElementById(`carousel__${elementsId}`);
@@ -130,23 +134,26 @@ export const ProductSlider: React.FC<Props> = ({
   return (
     <div className="carousel">
       <div className="carousel__top">
-        <h2 className="title title--h2">{componentTitle}</h2>
+        <h2
+          className={classNames('title title--h2', {
+            'title--is-Dark': isDark,
+          })}
+        >
+          {componentTitle}
+        </h2>
 
         <div className="carousel__buttons">
-          <button
-            className={classNames('carousel__button carousel__button--left', {
-              'carousel__button--active-left': scrolledTo.left,
-            })}
-            disabled={!scrolledTo.left}
-            onClick={() => moveLeft()}
+          <SecondaryButton
+            onClickHandler={moveLeft}
+            isDark={isDark}
+            isDisabled={!scrolledTo.left}
           />
 
-          <button
-            className={classNames('carousel__button carousel__button--right', {
-              'carousel__button--active-right': scrolledTo.right,
-            })}
-            disabled={!scrolledTo.right}
-            onClick={() => moveRight()}
+          <SecondaryButton
+            onClickHandler={moveRight}
+            isRight
+            isDark={isDark}
+            isDisabled={!scrolledTo.right}
           />
         </div>
       </div>

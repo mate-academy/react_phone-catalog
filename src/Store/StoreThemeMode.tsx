@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useMemo } from 'react';
-import { LocalStorageKeys, ThemeModeKeys } from '../modules/shared/Types/types';
+import { LocalStorageKeys } from '../modules/shared/Types/types';
 import { useLocalStorage } from '../hooks/UseLocalStorageHook';
 
 export const DarkModeContext = createContext({
-  isDark: '',
+  isDark: false,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  setIsDark: (_newMode: ThemeModeKeys) => {},
+  setIsDark: (_newMode: boolean) => {},
 });
 
 export const DarkModeProvider = ({
@@ -16,10 +16,9 @@ export const DarkModeProvider = ({
 }) => {
   const query = window?.matchMedia('(prefers-color-scheme: dark)');
 
-  const checkIfDark = () =>
-    query.matches ? ThemeModeKeys.isDark : ThemeModeKeys.isLight;
+  const checkIfDark = () => (query.matches ? true : false);
 
-  const [isDark, setIsDark] = useLocalStorage<ThemeModeKeys>(
+  const [isDark, setIsDark] = useLocalStorage<boolean>(
     LocalStorageKeys.theme,
     checkIfDark(),
   );
@@ -27,9 +26,7 @@ export const DarkModeProvider = ({
   const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
 
   const isDarkModeOn = (isDarkMode: boolean) => {
-    return isDarkMode
-      ? setIsDark(ThemeModeKeys.isDark)
-      : setIsDark(ThemeModeKeys.isLight);
+    return isDarkMode ? setIsDark(true) : setIsDark(false);
   };
 
   const runColorMode = () => {

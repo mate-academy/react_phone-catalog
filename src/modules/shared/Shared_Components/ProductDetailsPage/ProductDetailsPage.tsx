@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductDetails, UpdatedProduct } from '../../Types/types';
 import { getAllProducts } from '../../../../api/getProducts';
 import { AnimatedLayout } from '../AnimatedComponents/AnimatedLayout';
@@ -13,11 +13,13 @@ import { ProductSlider } from '../ProductSlider/ProductSlider';
 import { ProductDescriptionSkeleton } from './ProductDescriptionSkeleton';
 import { GoBackButton } from '../ActionButtons/GoBackButton';
 import { scrollToTop } from '../../../../utils/scrollToTop';
+import { DarkModeContext } from '../../../../Store/StoreThemeMode';
 
 export const ProductDetailsPage = () => {
   const title = 'You may also like';
   const [productList, setProductList] = useState<UpdatedProduct[]>([]);
   const [isLoadingList, setIsLoadingList] = useState(true);
+  const { isDark } = useContext(DarkModeContext);
 
   const { details, isLoading } = useAppSelector(
     state => state.productDetailsReducer,
@@ -96,6 +98,7 @@ export const ProductDetailsPage = () => {
           <ProductSlider
             componentTitle={title}
             productList={listOfRandomProducts}
+            isDark={isDark}
           />
         ) : (
           <ProductSliderSkeleton componentTitle={title} />

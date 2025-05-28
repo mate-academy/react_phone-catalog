@@ -1,10 +1,13 @@
 import { useContext } from 'react';
 import { CartStoreContext } from '../../../Store/CartStore';
 import { UpdatedProduct } from '../../shared/Types/types';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+// eslint-disable-next-line max-len
+import { PrimaryButton } from '../../shared/Shared_Components/ActionButtons/PrimaryButton';
 
 export const CartCheckout = () => {
   const { cartList } = useContext(CartStoreContext);
+  const navigate = useNavigate();
 
   const totalPrice = cartList.reduce((acc, cur: UpdatedProduct) => {
     return cur.discount
@@ -24,9 +27,13 @@ export const CartCheckout = () => {
         <p className="body-text">{`Total for ${totalItems} ${totalItems === 1 ? 'item' : 'items'}`}</p>
       </div>
 
-      <Link to={'/checkout'} className="cart__button">
-        Checkout
-      </Link>
+      <PrimaryButton
+        title="Checkout"
+        onClickHandler={() => {
+          navigate('/checkout');
+        }}
+        height={48}
+      />
     </div>
   );
 };

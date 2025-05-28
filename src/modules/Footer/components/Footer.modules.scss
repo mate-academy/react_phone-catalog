@@ -7,6 +7,10 @@
   box-shadow: 0 -1px 0 0 $elements-color;
   gap: 24px;
 
+  &--is-Dark {
+    box-shadow: 0 -1px 0 0 $gray-elements;;
+  }
+
   @include on-tablet {
     flex-direction: row;
     padding: 32px 24px;
@@ -27,6 +31,10 @@
     transition: transform, 0.3s;
     align-self: flex-start;
 
+    &--is-Dark {
+      background-image: url(/logos/LogoDarkMode.svg);
+    }
+
     @include on-desktop {
       &:hover {
         transform: scale(110%);
@@ -39,6 +47,12 @@
     gap: 16px;
     align-self: flex-start;
     flex-direction: column;
+
+    &--is-Dark > a {
+      &:hover {
+        color: $white-for-dark;
+      }
+    }
 
     @include on-tablet {
       flex-direction: row;
@@ -69,7 +83,7 @@
 
   &__end{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 16px;
@@ -82,29 +96,5 @@
     line-height: 15.34px;
     text-align: right;
     transition: color $primary-transition-duration;
-  }
-
-  &__button {
-    width: 32px;
-    height: 32px;
-    background-color: $white;
-    border: 1px solid $icons-color;
-    cursor: pointer;
-    background-image: url(/icons/chevron_arrow_right.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 16px;
-    transition: all, $primary-transition-duration;
-
-    @include on-desktop {
-      &:hover {
-        background-size: 24px;
-        border-color: $primary-color;
-      }
-
-      &:hover + .footer__text {
-          color: $primary-color;
-        }
-    }
   }
 }

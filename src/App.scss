@@ -14,6 +14,14 @@ body {
   text-decoration: none;
 }
 
+.App {
+  transition: all $primary-transition-duration ease-in-out;
+
+  &--is-Dark{
+    background-color: $black-main;
+  }
+}
+
 .slider-container {
   display: flex;
   align-items: center;

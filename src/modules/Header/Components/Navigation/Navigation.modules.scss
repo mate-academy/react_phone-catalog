@@ -69,5 +69,17 @@
       width: 100%;
       background-color: $primary-color;
     }
+
+    &--is-Dark {
+      color: $gray-secondary;
+
+      &::before {
+        background-color: $white-for-dark;
+      }
+    }
+
+    &--is-Dark-Active {
+      color: $white-for-dark;
+    }
   }
 }
