@@ -8,7 +8,7 @@ export function CartPage() {
   const { state, clearCart } = useCart();
 
   const handleCheckout = () => {
-    const confirmed = confirm('Checkout is not implemented yet. Do you want to clear the Cart?');
+    const confirmed = confirm('Checkout is not implemented yet. Do you want to clear the Cart?????');
     if (confirmed) {
       clearCart();
     }
