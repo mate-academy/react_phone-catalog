@@ -1,4 +1,3 @@
-
 import { FC, useContext, useMemo } from 'react';
 import './Pagination.scss';
 import { Icon } from '../Icon';
