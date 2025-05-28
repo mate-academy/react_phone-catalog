@@ -7,9 +7,3 @@ export const makeGapBetween = (value: string | undefined) => {
 
   return `${numbers} ${letters}`;
 };
-
-export const getFirstPartAddress = () => {
-  const arr = location.pathname.slice(1).split('/');
-
-  return arr[0];
-};

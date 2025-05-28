@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import styles from './AccessoriesPage.module.scss';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../app/store/GlobalContext';
 import { CustomSelect } from '../shared/CustomSelect';
 import { ProductCard } from '../shared/ProductCard';
@@ -16,6 +16,7 @@ export const AccessoriesPage = () => {
   const [itemsPerPage, setItemsPerPage] = useState<number | 'All'>(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageWindowStart, setPageWindowStart] = useState(1);
+  const navigate = useNavigate();
 
   const accessories = products.filter(
     product => product.category === 'accessories',
@@ -109,7 +110,7 @@ export const AccessoriesPage = () => {
     <div className="container">
       <section className={styles.accessoriesPage}>
         <div className={styles.accessoriesPage__navigation}>
-          <div className={styles.accessoriesPage__iconHome}></div>
+          <div className={styles.accessoriesPage__iconHome} onClick={() => navigate('/home')}></div>
           <div className={styles.accessoriesPage__address}>
             <div className={styles.accessoriesPage__iconArrowRight}></div>
             <div className={styles.accessoriesPage__pagePathName}>

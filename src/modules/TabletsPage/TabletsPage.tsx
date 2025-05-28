@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import styles from './TabletsPage.module.scss';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../app/store/GlobalContext';
 import { CustomSelect } from '../shared/CustomSelect';
 import { ProductCard } from '../shared/ProductCard';
@@ -16,6 +16,7 @@ export const TabletsPage = () => {
   const [itemsPerPage, setItemsPerPage] = useState<number | 'All'>(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageWindowStart, setPageWindowStart] = useState(1);
+  const navigate = useNavigate();
 
   const tablets = products.filter(product => product.category === 'tablets');
 
@@ -107,7 +108,7 @@ export const TabletsPage = () => {
     <div className="container">
       <section className={styles.tabletsPage}>
         <div className={styles.tabletsPage__navigation}>
-          <div className={styles.tabletsPage__iconHome}></div>
+          <div className={styles.tabletsPage__iconHome} onClick={() => navigate('/home')}></div>
           <div className={styles.tabletsPage__address}>
             <div className={styles.tabletsPage__iconArrowRight}></div>
             <div className={styles.tabletsPage__pagePathName}>

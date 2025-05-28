@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import styles from './PhonesPage.module.scss';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../app/store/GlobalContext';
 import { CustomSelect } from '../shared/CustomSelect';
 import { ProductCard } from '../shared/ProductCard';
@@ -16,6 +16,7 @@ export const PhonesPage = () => {
   const [itemsPerPage, setItemsPerPage] = useState<number | 'All'>(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageWindowStart, setPageWindowStart] = useState(1);
+  const navigate = useNavigate();
 
   const phones = products.filter(product => product.category === 'phones');
 
@@ -107,7 +108,7 @@ export const PhonesPage = () => {
     <div className="container">
       <section className={styles.phonesPage}>
         <div className={styles.phonesPage__navigation}>
-          <div className={styles.phonesPage__iconHome}></div>
+          <div className={styles.phonesPage__iconHome} onClick={() => navigate('/home')}></div>
           <div className={styles.phonesPage__address}>
             <div className={styles.phonesPage__iconArrowRight}></div>
             <div className={styles.phonesPage__pagePathName}>

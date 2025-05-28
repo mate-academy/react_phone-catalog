@@ -13,7 +13,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Phone } from '../../../types/Phone';
 import { Tablet } from '../../../types/Tablet';
 import { Accessories } from '../../../types/Accessories';
-import { getFirstPartAddress, makeGapBetween } from '../../../utils/format';
+import { makeGapBetween } from '../../../utils/format';
 import { SimilarProducts } from '../SimilarProducts';
 import { Loader } from '../Loader/Loader';
 
@@ -162,7 +162,7 @@ export const ItemCard: React.FC = () => {
         <div className={styles.itemCard__navigation}>
           <div
             className={styles.itemCard__iconHome}
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/home')}
           ></div>
           <div className={styles.itemCard__address}>
             <div className={styles.itemCard__iconArrowRight}></div>
@@ -170,7 +170,7 @@ export const ItemCard: React.FC = () => {
               className={styles.itemCard__pagePathName}
               onClick={() => navigate(-1)}
             >
-              {getFirstPartAddress()}
+              {selectedProduct?.category}
             </div>
             <div className={styles.itemCard__iconArrowRight}></div>
             <div className={styles.itemCard__pagePathNameProduct}>
