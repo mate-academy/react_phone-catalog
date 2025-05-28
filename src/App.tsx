@@ -6,14 +6,9 @@ import { Footer } from './components/Footer';
 export const App = () => (
   <div className="App">
     <Header />
-
-    <Outlet />
-
-    <div style={{ color: 'black' }}> lorem1000</div>
-    <div style={{ color: 'black' }}> lorem1000</div>
-    <div style={{ color: 'black' }}> lorem1000</div>
-    <div style={{ color: 'black' }}> lorem1000</div>
-
+    <main className="main">
+      <Outlet />
+    </main>
     <Footer />
   </div>
 );

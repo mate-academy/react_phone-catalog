@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
@@ -6,7 +6,6 @@ import styles from './Header.module.scss';
 import favoriteIcon from './../../images/icons/Favourites (Heart Like).svg';
 import cartIcon from './../../images/icons/Shopping bag (Cart).svg';
 import burgerIcon from './../../images/icons/burger.svg';
-import closeIcon from './../../images/icons/close.svg';
 import logoIcon from './../../images/header/Logo.png';
 
 const {
@@ -19,25 +18,24 @@ const {
   header__icon,
   header__counter,
   header__burger,
-  header__menu_item,
+  header__logoo,
+  menu,
+  menu__item,
   active,
-  header__active,
 } = styles;
 
 const getActiveClass = ({ isActive }: { isActive: boolean }): string =>
-  `${header__menu_item} ${isActive ? active : ''}`;
+  `${menu__item} ${isActive ? active : ''}`;
 
 export const Header = () => {
-  const [isActive, setIsActive] = useState(false);
-
   return (
-    <header className={`${header} ${isActive ? header__active : ''}`}>
+    <header className={header}>
       <div className={header__container}>
         <div className={header__logo}>
           <img src={logoIcon}></img>
         </div>
-        <nav className={header__menu}>
-          <NavLink to="/" className={getActiveClass}>
+        <nav className={`${header__menu} ${menu}`}>
+          <NavLink to="/" className={menu__item}>
             home
           </NavLink>
           <NavLink to="/phones" className={getActiveClass}>
@@ -64,15 +62,8 @@ export const Header = () => {
             {/* <span className={header__counter}>{12}</span> */}
           </Link>
         </div>
-        <button
-          className={header__burger}
-          onClick={() => setIsActive(!isActive)}
-        >
-          {isActive ? (
-            <img src={closeIcon} alt="burger-menu" />
-          ) : (
-            <img src={burgerIcon} alt="burger-menu" />
-          )}
+        <button className={header__burger}>
+          <img src={burgerIcon} alt="burger-menu" />
         </button>
       </div>
     </header>

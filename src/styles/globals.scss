@@ -14,12 +14,15 @@ body {
 
   @include tablet-above {
     --container-padding-x: 24px;
+
   }
 
   @include desktop-above {
     --container-padding-x: 32px;
+
   }
 }
+
 
 h1 {
   font-size: rem(48);
@@ -47,3 +50,19 @@ h4 {
 
 
 .button {}
+
+.App {
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  padding-top: var(--header-height);
+  flex: 1 1 auto
+}
+
+body .menu__active {
+  overflow: hidden;
+
+}

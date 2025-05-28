@@ -1,36 +1,36 @@
 .header {
-  --height: 48px;
-  position: sticky;
+  position: fixed;
   top: 0;
-
-  height: var(--height);
+  bottom: 0;
+  height: var(--header-height);
   background-color: var(--color-white);
   border-bottom: 1px solid var(--color-icons);
-
-  position: fixed;
   width: 100%;
-
+  z-index: 3;
+  transition: all 0.4s;
 
   &::before {
     content: '';
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100vh;
-    top: var(--height);
+    top: var(--header-height);
     bottom: 0;
-    left: 0;
+    left: -100%;
     right: 0;
     background-color: #fff;
+    transition: all 0.4s;
   }
 
-  @media (min-width: 1199px) {
-    --height: 64px;
+  &__active {
+    &::before {
+      left: 0
+    }
 
-
-
+    .header__menu {
+      left: 0;
+    }
   }
-
-
 
   &__container {
     max-width: 1440px;
@@ -44,7 +44,7 @@
   &__logo {
     padding: 14px 16px;
     width: 86px;
-
+    position: relative;
 
     @media (min-width: 1199px) {
       padding: 16px 24px;
@@ -54,19 +54,102 @@
 
 
   &__menu {
-    margin-right: auto;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 15px 30px 15px;
+    width: 100%;
+    top: var(--header-height);
+    bottom: 0;
+    left: -100%;
+    overflow: auto;
+    z-index: 2;
+    transition: all 0.4s;
+
+    @media (min-width: 640px) {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      column-gap: 32px;
+      flex: 1 1 auto;
+      padding: unset;
+    }
+
+    @media (min-width: 1199px) {
+      column-gap: 64px;
+
+    }
+
+    &_item {
+      position: relative;
+      padding-block: 18px;
+
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-secondary);
+      transition: all 0.4s;
+
+      @media (min-width: 1199px) {
+        padding-block: 26px;
+
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        width: 0;
+        height: 4px;
+        background-color: var(--color-primary);
+        transition: all 0.4s;
+
+      }
+
+      &.active {
+        color: var(--color-secondary);
+
+        &::after {
+          width: 0;
+        }
+
+        @media (min-width: 640px) {
+          color: var(--color-primary);
+
+          &::after {
+            width: 0;
+          }
+        }
+
+      }
+
+      &:hover {
+        color: var(--color-primary);
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
   }
 
   &__buttons {
     display: flex;
-    height: var(--height);
+    height: var(--header-height);
   }
 
   &__burger {
     background-color: transparent;
     border: none;
 
-    width: var(--height);
+    width: var(--header-height);
+    height: var(--header-height);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,12 +164,13 @@
 
   &__button {
     position: relative;
-    width: var(--height);
+    width: var(--header-height);
     display: none;
     align-items: center;
     justify-content: center;
     border-left: 1px solid var(--color-icons);
     cursor: pointer;
+    z-index: 100;
 
     @media (min-width: 640px) {
       display: flex;
@@ -119,73 +203,4 @@
     background-color: var(--color-red);
 
   }
-}
-
-
-.menu {
-  display: none;
-
-  @media (min-width: 640px) {
-    display: flex;
-    align-items: center;
-    column-gap: 32px;
-
-  }
-
-  @media (min-width: 1199px) {
-    column-gap: 64px;
-
-  }
-
-
-
-
-
-  &__item {
-    position: relative;
-    padding-block: 18px;
-
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 0.91;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-secondary);
-    transition: all 0.4s;
-
-    @media (min-width: 1199px) {
-      padding-block: 26px;
-
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      display: flex;
-      width: 0;
-      height: 4px;
-      background-color: var(--color-primary);
-      transition: all 0.4s;
-
-    }
-
-    &:hover {
-      color: var(--color-primary);
-
-      &::after {
-        width: 100%;
-      }
-    }
-
-    &.active {
-      color: var(--color-primary);
-
-      &::after {
-        width: 100%;
-      }
-    }
-  }
-
-
 }
