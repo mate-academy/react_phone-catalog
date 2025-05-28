@@ -36,6 +36,8 @@
       width: 16px;
       height: 16px;
       background-image: url('../../../public/img/delete.svg');
+      background-repeat: no-repeat;
+      background-position: center;
     }
 
     &--image {
@@ -89,6 +91,8 @@
   width: 32px;
   height: 32px;
   background-image: url('../../../public/img/IncreaseQuantity.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .card__decreaseQuantity {
@@ -96,6 +100,8 @@
   width: 32px;
   height: 32px;
   background-image: url('../../../public/img/decreaseQuantity.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 
   &--active {
     background-image: url('../../../public/img/decreaseQuantity_active.svg');

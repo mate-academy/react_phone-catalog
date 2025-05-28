@@ -214,9 +214,13 @@ export const ProductDescription: React.FC<Props> = ({
                     }
                   }}
                 >
-                  <svg className="icon icon-user">
-                    <use href="/img/favourite-icon.svg#icon-id"></use>
-                  </svg>
+                  <div className="icon-wrapper">
+                    <img
+                      src="../../../public/img/favourite-icon.svg"
+                      alt="favourite icon"
+                      className="icon icon-user"
+                    />
+                  </div>
                 </Link>
               ) : (
                 <Link
@@ -228,10 +232,13 @@ export const ProductDescription: React.FC<Props> = ({
                     }
                   }}
                 >
-                  <svg className="icon icon-user">
-                    <use href="/img/favourite-icon-selected.svg#icon-id"></use>
-                    <use href="" className="favourite__added"></use>
-                  </svg>
+                  <div className="icon-wrapper">
+                    <img
+                      src="../../../public/img/favourite-icon-selected.svg"
+                      alt="favourite icon"
+                      className="icon icon-user favourite__added"
+                    />
+                  </div>
                 </Link>
               )}
             </div>

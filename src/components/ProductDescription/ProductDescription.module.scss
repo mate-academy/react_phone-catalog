@@ -159,8 +159,13 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 2px solid $main-color;
-    outline: 1px solid $light-grey-color;
+    box-shadow: 0 0 10px $main-white-color;
+    transition: outline 0.3s ease-in-out;
+
+    &:hover {
+      //border: 2px solid $main-color;
+      outline: 1px solid $light-grey-color;
+    }
   }
 
   &__colorActive {
@@ -207,6 +212,11 @@
     line-height: 21px;
     letter-spacing: 0;
     border: 1px solid $light-grey-color;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $light-grey-color;
+    }
   }
 
   &__capacityActive {
@@ -407,4 +417,17 @@
     display: flex;
     gap: 64px;
   }
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.icon {
+  width: auto;
+  height: auto;
 }

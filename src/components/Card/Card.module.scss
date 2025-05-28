@@ -2,7 +2,7 @@
 
 .card {
   width: 212px;
-  height: 439px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -14,7 +14,6 @@
 
   @include on-desktop-small {
     width: 272px;
-    height: 506px;
   }
 
   &__title {

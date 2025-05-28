@@ -5,6 +5,7 @@ import { useCartValues } from '../../store/CartStore';
 import { useFavouriteValues } from '../../store/FavouriteContext';
 import { MobileMenu } from '../MobileMenu';
 import logo from '../../../public/img/Logo.svg';
+import React from 'react';
 
 export const Header: React.FC = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -73,9 +74,11 @@ export const Header: React.FC = () => {
         </div>
         <div className="header__menu">
           <button className="header__menu--icon" onClick={handleShowMenu}>
-            <svg className="icon icon-menu">
-              <use href="img/icons.svg#icon-menu"></use>
-            </svg>
+            <img
+              src="../../../public/img/Menu.svg"
+              alt="Menu icon"
+              className="icon icon-menu"
+            />
           </button>
         </div>
       </header>

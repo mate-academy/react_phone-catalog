@@ -16,7 +16,7 @@ export const FavouritePage: React.FC = () => {
 
       {favourites.length >= 0 ? (
         <>
-          {favouritesCount > 1 ? (
+          {favouritesCount >= 1 ? (
             <p className="favouritesPage__amount">{favouritesCount} items</p>
           ) : (
             <>

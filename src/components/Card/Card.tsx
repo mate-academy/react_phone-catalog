@@ -1,7 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { useCartValues } from '../../store/CartStore';
 import { useFavouriteValues } from '../../store/FavouriteContext';
+import React from 'react';
 
 type Props = {
   product: Product;
@@ -12,15 +13,11 @@ export const Card: React.FC<Props> = ({ product }) => {
   const { favourites, addToFavourite, removeFromFavourite } =
     useFavouriteValues();
 
-  const location = useLocation();
-  const root = location.pathname.split('/')[1];
+  // const location = useLocation();
+  // const root = location.pathname.split('/')[1];
 
   const createLink = () => {
-    if (!root) {
-      return `phones/${product.itemId}`;
-    }
-
-    return `/${root}/${product.itemId}`;
+    return `/${product.category}/${product.itemId}`;
   };
 
   const isAddedToCart = cart.some(item => item.product.id === product.id);
@@ -34,7 +31,7 @@ export const Card: React.FC<Props> = ({ product }) => {
       <Link to={createLink()}>
         <img src={product.image} alt={product.name} className="card__img" />
       </Link>
-      <Link to={`${product.itemId}`}>
+      <Link to={createLink()}>
         <h3 className="card__title">{product.name}</h3>
       </Link>
       <div className="card__prices">
@@ -86,12 +83,11 @@ export const Card: React.FC<Props> = ({ product }) => {
             className="card__actions--btn card__favourite"
             onClick={() => removeFromFavourite(product)}
           >
-            <svg className="icon icon-user">
-              <use
-                href="img/icons.svg#icon-favourites-filled"
-                className="favourite__added"
-              ></use>
-            </svg>
+            <img
+              src="../../../public/img/favourite-icon-selected.svg"
+              alt="favourite icon"
+              className="icon icon-user favourite__added"
+            />
           </Link>
         ) : (
           <Link
@@ -99,12 +95,11 @@ export const Card: React.FC<Props> = ({ product }) => {
             className="card__actions--btn card__favourite"
             onClick={() => addToFavourite(product)}
           >
-            <svg className="icon icon-user">
-              <use
-                href="img/icons.svg#icon-favourites"
-                className="favourite__added"
-              ></use>
-            </svg>
+            <img
+              src="../../../public/img/favourite-icon.svg"
+              alt="favourite icon"
+              className="icon icon-user favourite__added"
+            />
           </Link>
         )}
       </div>

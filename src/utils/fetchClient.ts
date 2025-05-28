@@ -10,7 +10,7 @@ function request<T>(url: string, method: string): Promise<T> {
   return wait(500)
     .then(() => fetch(url, options))
     .then(response => {
-      if (response.ok) {
+      if (!response.ok) {
         throw new Error('Something went wrong with API!');
       }
 

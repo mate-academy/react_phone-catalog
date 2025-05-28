@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { SearchLink } from '../../store/SearchLink';
+import React from 'react';
 
 type Props = {
   currentPage: number;

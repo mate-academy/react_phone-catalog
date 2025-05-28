@@ -48,9 +48,11 @@ export const MobileMenu: React.FC<Props> = ({
                 className="headerMenu__button--icon"
                 onClick={handleCloseMenu}
               >
-                <svg className="icon icon-menu">
-                  <use href="img/icons.sng#icon-close"></use>
-                </svg>
+                <img
+                  src="../../../public/img/delete.svg"
+                  alt="icon close"
+                  className="icon icon-menu"
+                />
               </button>
             </div>
           </header>
@@ -107,9 +109,11 @@ export const MobileMenu: React.FC<Props> = ({
               )}
               onClick={handleCloseMenu}
             >
-              <svg className="icon icon-user">
-                <use href="img/icons.svg#icon-favourites"></use>
-              </svg>
+              <img
+                src="../../../public/img/favourite-icon.svg"
+                alt="favourite icon"
+                className="icon icon-user"
+              />
             </NavLink>
             <NavLink
               data-count={cartCount !== 0 ? `${cartCount}` : ''}
@@ -119,9 +123,11 @@ export const MobileMenu: React.FC<Props> = ({
               })}
               onClick={handleCloseMenu}
             >
-              <svg className="icon icon-user">
-                <use href="img/icons.svg#icon-shopping-bag"></use>
-              </svg>
+              <img
+                src="../../../public/img/Shopping-cart.svg"
+                alt="favourite icon"
+                className="icon icon-user"
+              />
             </NavLink>
           </div>
         </div>

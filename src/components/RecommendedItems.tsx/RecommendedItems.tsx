@@ -19,10 +19,10 @@ export const RecommendedItems: React.FC<Props> = ({ recommendedItems }) => {
         <h2 className="recommendedItems__header--title">You may also like</h2>
         <div className="recommendedItems__header--buttons recommendedItems__slider--buttons">
           <button
-            className="recommendedItems__slider-_bttn recommendedItems__slider--btnn-prev"
+            className="recommendedItems__slider--btn recommendedItems__slider--btn-prev"
             disabled={isBeginning}
           ></button>
-          <button className="recommendedItems__slider-_bttn recommendedItems__slider--btnn-next"></button>
+          <button className="recommendedItems__slider--btn recommendedItems__slider--btn-next"></button>
         </div>
       </div>
       <div className="recommendedItems__swiper">

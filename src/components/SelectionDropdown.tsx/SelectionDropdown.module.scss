@@ -32,6 +32,8 @@
       width: 16px;
       height: 16px;
       background-image: url('../../../public/img/arrow-down.svg');
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     &:hover {
@@ -41,7 +43,7 @@
 
   &__list {
     position: absolute;
-    background-color: transparent;
+    background-color: $icon-grey-color;
     width: 136px;
     border: 1px solid $dark-grey-color;
     margin-top: 4px;
@@ -49,7 +51,7 @@
     z-index: 1;
 
     &--option {
-      color: $light-grey-color;
+      color: $main-white-color;
       font-weight: 400;
       padding: 10px;
     }

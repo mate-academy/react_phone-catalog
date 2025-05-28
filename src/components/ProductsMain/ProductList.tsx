@@ -106,8 +106,8 @@ export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
             />
             <SelectionDropdown
               title={'Items on page'}
-              options={Object.values(itemsOnPage)}
-              functional={sort}
+              options={Object.values(ItemsOnPageOptions)}
+              functional={itemsOnPage}
               onChange={handleChangeItemsOnPageOption}
             />
           </div>
