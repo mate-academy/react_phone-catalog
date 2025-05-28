@@ -9,21 +9,21 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
@@ -316,7 +316,9 @@
 
 @media screen and (min-width: 1199px) {
   .home {
-    @include contentPaddingInline;
+      max-width: 1136px;
+      margin-inline: auto;
+      padding-inline: 32px;
 
     &__turn-image {
       display: grid;

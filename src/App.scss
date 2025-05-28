@@ -1,3 +1,6 @@
+// @import '../src/modules/mixins.scss';
+@import '../src/modules/main.scss';
+
 * {
   box-sizing: border-box;
 }
@@ -6,21 +9,21 @@ body::-webkit-scrollbar { width: 0 !important }
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
@@ -31,6 +34,9 @@ body::-webkit-scrollbar { width: 0 !important }
 
 
 .navbar {
+  max-width: 1440px;
+  margin-inline: auto;
+    padding-inline: 0;
   font-weight: 800;
   font-size: 12px;
   height: 64px;
@@ -43,7 +49,7 @@ body::-webkit-scrollbar { width: 0 !important }
   position: sticky;
   z-index: 100;
   top: 0;
-  border: 1px solid #e2e6e9;
+  border-bottom: 1px solid #e2e6e9;
   box-sizing: border-box;
   background-color: white;
 
@@ -151,8 +157,14 @@ body::-webkit-scrollbar { width: 0 !important }
     padding: 24px;
     background-color: white;
     border: 1px solid #e2e6e9;
-    justify-content: right;
+
+    border-right: none;
+
+    &:first-child {
+      border-right: 1px solid #e2e6e9;
+    }
   }
+
 
   &__right {
     margin-left: auto;
@@ -175,7 +187,7 @@ body::-webkit-scrollbar { width: 0 !important }
     position: sticky;
     z-index: 100;
     top: 0;
-    border: 1px solid #e2e6e9;
+    border-bottom: 1px solid #e2e6e9;
     box-sizing: border-box;
     background-color: white;
 
@@ -261,16 +273,16 @@ body::-webkit-scrollbar { width: 0 !important }
     }
 
     &__button {
-      padding: 17.3px;
+      padding: 24px;
       background-color: white;
       border: 1px solid #e2e6e9;
-      justify-content: right;
-      height: 48px;
-    }
 
-    // .navbar__burger {
-    //   display: none;
-    // }
+      border-right: none;
+
+      &:first-child {
+        border-right: 1px solid #e2e6e9;
+      }
+    }
 
     &__right {
       margin-left: auto;
@@ -291,7 +303,7 @@ body::-webkit-scrollbar { width: 0 !important }
     position: sticky;
     z-index: 100;
     top: 0;
-    border: 1px solid #e2e6e9;
+    border-bottom: 1px solid #e2e6e9;
     box-sizing: border-box;
     background-color: white;
 
@@ -494,6 +506,9 @@ body::-webkit-scrollbar { width: 0 !important }
 }
 
 .footer {
+  max-width: 1440px;
+  margin-inline: auto;
+    padding-inline: 0;
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   font-size: 12px;

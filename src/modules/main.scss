@@ -1,6 +1,7 @@
 @import 'mixins';
 .main {
-  display: grid;
+  // display: grid;
+  padding: 0;
 
   @include onDesktop{
     row-gap: 80px;

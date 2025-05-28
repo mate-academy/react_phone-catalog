@@ -71,25 +71,28 @@ export const CartPage = () => {
               </div>
               <img src={item.images[0]} alt="" className="cart__image" />
               <h3 className="cart__name-garget">{item.name}</h3>
-              <button
-                className="cart__button-minus"
-                onClick={() => handleDecrement(item.id)}
-              >
-                -
-              </button>
-              <div className="cart__count-garget">{item.count}</div>
-              <button
-                className="cart__button-plus"
-                onClick={() => handleIncrement(item.id)}
-              >
-                +
-              </button>
+              <div className="cart__counter">
+                <button
+                  className="cart__button-minus"
+                  onClick={() => handleDecrement(item.id)}
+                >
+                  -
+                </button>
+                <div className="cart__count-garget">{item.count}</div>
+                <button
+                  className="cart__button-plus"
+                  onClick={() => handleIncrement(item.id)}
+                >
+                  +
+                </button>
+              </div>
               <div className="cart__cost">
                 ${item.priceRegular * item.count}
               </div>
             </div>
           ))}
         </div>
+
         {cartWithCount.length > 0 && (
           <div className="cart__block-total">
             <div className="cart__total-amount">${total}</div>
@@ -105,36 +108,35 @@ export const CartPage = () => {
             >
               {clickOnCheckout ? 'Processing...' : 'Checkout'}
             </button>
-
-            {clickOnCheckout && (
-              <div className="cart__modal-widnow">
-                <p className="cart__questions">
-                  Do you want to clear the Cart?
-                </p>
-                <div className="cart__position-button">
-                  <button
-                    className="cart__button-yes"
-                    onClick={() => {
-                      setClickOnCheckout(false);
-                      cartItems.forEach(item => {
-                        deletePhone(item);
-                      });
-                    }}
-                  >
-                    Yes
-                  </button>
-                  <button
-                    className="cart__button-no"
-                    onClick={() => setClickOnCheckout(false)}
-                  >
-                    No
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
         )}
       </div>
+
+      {/* === Модальне вікно винесене окремо — не змінює layout === */}
+      {clickOnCheckout && (
+        <div className="cart__modal-widnow">
+          <p className="cart__questions">Do you want to clear the Cart?</p>
+          <div className="cart__position-button">
+            <button
+              className="cart__button-yes"
+              onClick={() => {
+                setClickOnCheckout(false);
+                cartItems.forEach(item => {
+                  deletePhone(item);
+                });
+              }}
+            >
+              Yes
+            </button>
+            <button
+              className="cart__button-no"
+              onClick={() => setClickOnCheckout(false)}
+            >
+              No
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -47,6 +47,13 @@ export const ProductDetailsPage = () => {
       });
   }, []);
 
+  useEffect(() => {
+    if (item.images && item.images.length > 0) {
+      setClickImage(item.images[0]);
+    }
+  }, [item.images]);
+
+
   const currentModel = garg.find(
     phone =>
       phone.capacity.toLowerCase().trim() ===

@@ -8,21 +8,21 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
@@ -31,8 +31,6 @@
 .cart {
   @include contentPaddingInline;
   font-family: 'Mont', 'sans-serif';
-  display: grid;
-  grid-template-columns: repeat(24 / 1fr);
 
 
   &__nav {
@@ -72,9 +70,8 @@
   }
 
   &__position {
-    display: grid;
-    grid-column: 1 / span 16;
-    grid-template-columns: auto 1fr auto auto auto auto auto;
+    display: flex;
+    justify-content: space-between;
     height: 128px;
     gap: 24px;
     border: 1px solid #E2E6E9;
@@ -109,43 +106,71 @@
     margin: 31px 24px;
   }
 
-  &__name-garget {
+  .cart__name-garget {
     font-weight: 600;
     font-size: 14px;
     color: #0F0F11;
-    padding: 53.5px 24px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    height: 100%;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Mont', monospace;
   }
 
-  &__button-plus {
-    width: 32px;
-    height: 32px;
-    border-radius: 48px;
-    border: 1px solid #E2E6E9;
-    margin-top: 48px;
+
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 112px; // запас під кількість символів
   }
 
+  &__button-plus,
   &__button-minus {
     width: 32px;
     height: 32px;
-    border-radius: 48px;
+    min-width: 32px;
+    min-height: 32px;
+    border-radius: 50%;
     border: 1px solid #E2E6E9;
-    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: white; // запобігає зміні фону при наведенні
+    transition: none; // не буде анімацій, які змінюють розміри
   }
 
+
   &__count-garget {
+    width: 48px;
+    height: 32px;
     font-weight: 600;
     font-size: 14px;
     color: #000000;
-    padding: 55px 13px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
   }
+
 
   &__cost {
     color: #0F0F11;
     font-size: 22px;
     font-weight: 800;
-    padding-top: 48.5px;
     padding-right: 24px;
+    display: flex;
+    align-items: center;
+    height: 100%; // займе всю висоту батька
   }
+
 
   &__block-total {
     border-radius: 48px;
@@ -213,6 +238,7 @@
   }
 
   &__modal-widnow {
+    position: fixed;
     width: 200px;
     height: 100px;
     background-color: #E2E6E9;
@@ -236,6 +262,7 @@
     justify-content: center;
     gap: 8px;
     padding-top: 10px;
+    align-items: center;
   }
 
   &__button-yes,
