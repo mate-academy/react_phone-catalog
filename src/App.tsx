@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { HomePage } from './modules/HomePage';
 import { PageNotFound } from './modules/PageNotFound';
 import { Header } from './components/Header';
@@ -13,7 +13,7 @@ import { CartProvider } from './contexts/CartContext/CartContext';
 export const App = () => {
   return (
     <>
-      <Router basename="/react_phone-catalog">
+      <Router>
         <CartProvider>
           <div className="App">
             <Header />
