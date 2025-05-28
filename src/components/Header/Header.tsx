@@ -24,9 +24,6 @@ const {
   header__active,
 } = styles;
 
-const getActiveClass = ({ isActive }: { isActive: boolean }): string =>
-  `${header__menu_item} ${isActive ? active : ''}`;
-
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
 
@@ -37,32 +34,62 @@ export const Header = () => {
           <img src={logoIcon}></img>
         </div>
         <nav className={header__menu}>
-          <NavLink to="/" className={getActiveClass}>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `${header__menu_item} ${isActive ? active : ''}`
+            }
+          >
             home
           </NavLink>
-          <NavLink to="/phones" className={getActiveClass}>
+          <NavLink
+            to="/phones"
+            className={({ isActive }) =>
+              `${header__menu_item} ${isActive ? active : ''}`
+            }
+          >
             Phones
           </NavLink>
-          <NavLink to="/tables" className={getActiveClass}>
+          <NavLink
+            to="/tables"
+            className={({ isActive }) =>
+              `${header__menu_item} ${isActive ? active : ''}`
+            }
+          >
             tablets
           </NavLink>
-          <NavLink to="/accessories" className={getActiveClass}>
+          <NavLink
+            to="/accessories"
+            className={({ isActive }) =>
+              `${header__menu_item} ${isActive ? active : ''}`
+            }
+          >
             accessories
           </NavLink>
         </nav>
         <div className={header__buttons}>
-          <Link to="/favorite" className={header__button}>
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              `${header__button} ${isActive ? active : ''}`
+            }
+          >
             <img
               src={favoriteIcon}
               alt="favorite-icon"
               className={header__icon}
             />
             {/* <span className={header__counter}>{12}</span> */}
-          </Link>
-          <Link to="/cart" className={header__button}>
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              `${header__button} ${isActive ? active : ''}`
+            }
+          >
             <img src={cartIcon} alt="cart-icon" className={header__icon} />
             {/* <span className={header__counter}>{12}</span> */}
-          </Link>
+          </NavLink>
         </div>
         <button
           className={header__burger}

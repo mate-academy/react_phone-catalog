@@ -30,6 +30,10 @@
     .header__menu {
       left: 0;
     }
+
+    .header__buttons {
+      left: 0;
+    }
   }
 
   &__container {
@@ -61,7 +65,7 @@
     padding: 24px 15px 30px 15px;
     width: 100%;
     top: var(--header-height);
-    bottom: 0;
+    bottom: 64px;
     left: -100%;
     overflow: auto;
     z-index: 2;
@@ -112,19 +116,19 @@
       }
 
       &.active {
-        color: var(--color-secondary);
+        color: var(--color-primary);
 
         &::after {
-          width: 0;
+          width: 100%;
         }
 
-        @media (min-width: 640px) {
-          color: var(--color-primary);
+        // @media (min-width: 640px) {
+        //   color: var(--color-primary);
 
-          &::after {
-            width: 0;
-          }
-        }
+        //   &::after {
+        //     width: 0;
+        //   }
+        // }
 
       }
 
@@ -140,8 +144,53 @@
   }
 
   &__buttons {
+    position: fixed;
     display: flex;
+    align-items: center;
+    bottom: 8px;
+    left: -100%;
+    width: 100%;
     height: var(--header-height);
+    z-index: 10;
+    background-color: var(--color-white);
+    transition: all 0.4s;
+
+    @media (min-width: 640px) {
+      position: static;
+      width: auto;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 64px;
+    cursor: pointer;
+    border-top: 1px solid var(--color-icons);
+
+    &:first-child {
+      border-right: 1px solid var(--color-icons);
+    }
+
+    &.active {
+      border-bottom: 2px solid var(--color-primary);
+    }
+
+    @media (min-width: 640px) {
+      width: var(--header-height);
+      height: var(--header-height);
+
+      border-left: 1px solid var(--color-icons);
+      border-bottom: 1px solid var(--color-icons);
+      z-index: 100;
+      border-top: none;
+
+      &:first-child {
+        border-right: none;
+      }
+    }
   }
 
   &__burger {
@@ -161,24 +210,6 @@
 
     }
   }
-
-  &__button {
-    position: relative;
-    width: var(--header-height);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    border-left: 1px solid var(--color-icons);
-    cursor: pointer;
-    z-index: 100;
-
-    @media (min-width: 640px) {
-      display: flex;
-
-    }
-  }
-
-
 
   &__icon {
     display: flex;
@@ -203,4 +234,8 @@
     background-color: var(--color-red);
 
   }
+}
+
+body:has(.header__active) {
+  overflow: hidden;
 }

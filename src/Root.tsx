@@ -9,6 +9,7 @@ export const Root = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<MainPage />} />
+          <Route path="*" element={<MainPage />} />
         </Route>
       </Routes>
     </Router>
