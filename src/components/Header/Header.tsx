@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
             className={getLinkClassIcon}
           >
             <img
-              src="../../../public/img/favourite-icon.svg"
+              src="/img/favourite-icon.svg"
               alt="favourite"
               className="icon icon-user"
             />
@@ -66,7 +66,7 @@ export const Header: React.FC = () => {
             className={getLinkClassIcon}
           >
             <img
-              src="../../../public/img/Shopping-cart.svg"
+              src="/img/Shopping-cart.svg"
               alt="favourite"
               className="icon icon-user"
             />
@@ -75,7 +75,7 @@ export const Header: React.FC = () => {
         <div className="header__menu">
           <button className="header__menu--icon" onClick={handleShowMenu}>
             <img
-              src="../../../public/img/Menu.svg"
+              src="/img/Menu.svg"
               alt="Menu icon"
               className="icon icon-menu"
             />

@@ -35,7 +35,7 @@
       margin: auto 0;
       width: 16px;
       height: 16px;
-      background-image: url('../../../public/img/delete.svg');
+      background-image: url('/img/delete.svg');
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -90,7 +90,7 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('../../../public/img/IncreaseQuantity.svg');
+  background-image: url('/img/IncreaseQuantity.svg');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -99,12 +99,12 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('../../../public/img/decreaseQuantity.svg');
+  background-image: url('/img/decreaseQuantity.svg');
   background-repeat: no-repeat;
   background-position: center;
 
   &--active {
-    background-image: url('../../../public/img/decreaseQuantity_active.svg');
+    background-image: url('/img/decreaseQuantity_active.svg');
   }
 
   &--disabled {

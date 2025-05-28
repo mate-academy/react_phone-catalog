@@ -53,10 +53,21 @@ export const ProductDescription: React.FC<Props> = ({
     useFavouriteValues();
 
   const handleChangeProductsColor = (newColor: string) => {
-    const parts = productId?.split('-').slice(0, -1) || [];
-    const updatedId = [...parts, newColor].join('-');
+    if (!colors || !productId) {
+      return '';
+    }
 
-    return updatedId;
+    const formattedColor = newColor.replace(/\s+/g, '-').toLowerCase();
+    const knownColors = colors.map(c => c.replace(/\s+/g, '-').toLowerCase());
+    const parts = productId.split('-');
+
+    const colorIndex = parts.findIndex((_, i) =>
+      knownColors.includes(parts.slice(i).join('-')),
+    );
+
+    const baseParts = colorIndex !== -1 ? parts.slice(0, colorIndex) : parts;
+
+    return [...baseParts, formattedColor].join('-');
   };
 
   const handleChangeProductsCapacity = (newCapacity: string) => {
@@ -216,7 +227,7 @@ export const ProductDescription: React.FC<Props> = ({
                 >
                   <div className="icon-wrapper">
                     <img
-                      src="../../../public/img/favourite-icon.svg"
+                      src="/img/favourite-icon.svg"
                       alt="favourite icon"
                       className="icon icon-user"
                     />
@@ -234,7 +245,7 @@ export const ProductDescription: React.FC<Props> = ({
                 >
                   <div className="icon-wrapper">
                     <img
-                      src="../../../public/img/favourite-icon-selected.svg"
+                      src="/img/favourite-icon-selected.svg"
                       alt="favourite icon"
                       className="icon icon-user favourite__added"
                     />

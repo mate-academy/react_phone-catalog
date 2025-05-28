@@ -160,10 +160,11 @@
     height: 30px;
     border-radius: 50%;
     box-shadow: 0 0 10px $main-white-color;
-    transition: outline 0.3s ease-in-out;
+    transition: outline 0.3s;
+    transition: border 0.3s;
 
     &:hover {
-      //border: 2px solid $main-color;
+      border: 2px solid $main-color;
       outline: 1px solid $light-grey-color;
     }
   }

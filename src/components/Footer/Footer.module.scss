@@ -36,13 +36,12 @@
   &__logo {
     width: 96px;
     margin-left: 16px;
-    padding: 32px 0 0 0;
+    padding: 32px 0 0;
     grid-column: 1 / span 2;
     transition: transform 0.5s ease-in-out;
 
     @include on-tablet {
       width: 128px;
-      // padding: 32px;
     }
 
     &:hover {
@@ -100,7 +99,6 @@
 
     @include on-tablet {
       margin-bottom: 0;
-      // padding: 32px;
     }
 
     @include on-desktop {
@@ -121,11 +119,11 @@
       height: 32px;
       border: 0;
       transition: background-color 0.5s ease-in-out;
-      background-image: url('../../../public/img/arrowRightDefault.svg');
+      background-image: url('/img/arrowRightDefault.svg');
       transform: rotate(270deg);
 
       &:hover {
-        background-image: url('../../../public/img/arrowRightHover.svg');
+        background-image: url('/img/arrowRightHover.svg');
       }
     }
   }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import phones from '../../../public/api/phones.json';
 import tablets from '../../../public/api/tablets.json';
 import accessories from '../../../public/api/accessories.json';
+import React from 'react';
 
 export const ShopCategory: React.FC = () => {
   return (
