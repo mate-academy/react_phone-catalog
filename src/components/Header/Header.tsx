@@ -68,7 +68,7 @@ export const NavBar = () => {
                     `${styles.headerIconFav} ${isActive ? styles.activeLink : ''}`
                   }
                 >
-                  <img src="/icons/favorite.svg" alt="to favorites" className={styles.fav} />
+                  <img src="/img/icons/favorite.svg" alt="to favorites" className={styles.fav} />
                 </NavLink>
               </div>
               <div className={styles.iconBorder}>
@@ -78,14 +78,14 @@ export const NavBar = () => {
                     `${styles.headerIconCart} ${isActive ? styles.activeLink : ''}`
                   }
                 >
-                  <img src="/icons/cart.svg" alt="to cart" className={styles.carti} />
+                  <img src="/img/icons/cart.svg" alt="to cart" className={styles.carti} />
                 </NavLink>
               </div>
             </div>
 
             <div className={styles.burgerLine}>
               <img
-                src="/Union.svg"
+                src="/img/Union.svg"
                 onClick={() => setIsSidebarOpen(prev => !prev)}
                 className={styles.burger}
                 alt="Open Menu"
@@ -103,7 +103,7 @@ export const NavBar = () => {
                 <Logo />
                 <div className={styles.burgerLine}>
                   <img
-                    src="/icons/close.svg"
+                    src="/img/icons/close.svg"
                     onClick={() => setIsSidebarOpen(prev => !prev)}
                     className={styles.burgerClose}
                     alt="Close Menu"
@@ -131,13 +131,13 @@ export const NavBar = () => {
           <div className={styles.menuIcons}>
             <NavLink to="/cart" onClick={() => setIsSidebarOpen(false)}>
               <button className={styles.menuButtonsCart}>
-                <img src="/icons/cart.svg" alt="to cart" className={styles.menuButtonsIcons} />
+                <img src="/img/icons/cart.svg" alt="to cart" className={styles.menuButtonsIcons} />
               </button>
             </NavLink>
             <NavLink to="/favorites" onClick={() => setIsSidebarOpen(false)}>
               <button className={styles.menuButtonsFav}>
                 <img
-                  src="/icons/favorite.svg"
+                  src="/img/icons/favorite.svg"
                   alt="to favorites"
                   className={styles.menuButtonsIcons}
                 />
