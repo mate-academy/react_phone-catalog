@@ -106,7 +106,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
 
   // #region fetch data
   useEffect(() => {
-    request('public/api/products.json')
+    request('api/products.json')
       .then(response => {
         setProducts(response as Product[]);
       })
@@ -116,7 +116,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    request('public/api/phones.json')
+    request('api/phones.json')
       .then(response => {
         setPhoneItems(response as Phone[]);
       })
@@ -126,7 +126,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    request('public/api/tablets.json')
+    request('api/tablets.json')
       .then(response => {
         setTabletItems(response as Tablet[]);
       })
@@ -136,7 +136,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    request('public/api/accessories.json')
+    request('api/accessories.json')
       .then(response => {
         setAccessoriesItems(response as Accessories[]);
       })
