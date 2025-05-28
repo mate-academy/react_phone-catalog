@@ -43,7 +43,7 @@ export const ItemCard: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location.pathname]);
+  }, [itemId]);
 
   useEffect(() => {
     return () => {
@@ -190,7 +190,7 @@ export const ItemCard: React.FC = () => {
           <div className={styles.itemCard__images}>
             <div className={styles.itemCard__bigImage}>
               <img
-                src={`../${currentProduct?.images[selectedImageIndex]}`}
+                src={currentProduct?.images[selectedImageIndex]}
                 alt="Main image"
               />
             </div>
@@ -208,7 +208,7 @@ export const ItemCard: React.FC = () => {
                   }}
                 >
                   <img
-                    src={`../${img}`}
+                    src={img}
                     alt="image-1"
                     onClick={() => setSelectedImageIndex(index)}
                   />

@@ -29,9 +29,8 @@ export const Root = () => {
             <Route path="accessories/:itemId" element={<ItemCard />} />
             <Route path="tablets" element={<TabletsPage />} />
             <Route path="accessories" element={<AccessoriesPage />} />
-            <Route path="cart" element={<Cart />}>
-              <Route path=":itemId" element={<ItemCard />} />
-            </Route>
+            <Route path="cart" element={<Cart />}/>
+            <Route path="cart/:itemId" element={<ItemCard />} />
             <Route path="favorites" element={<Favorites />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />

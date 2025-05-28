@@ -48,7 +48,7 @@ export const CartProduct: React.FC<Props> = ({ product }) => {
           onClick={() => removeFromCart(product.itemId)}
         />
         <Link
-          to={`${location.pathname}/${product.itemId}`}
+          to={`./${product.itemId}`}
           className={styles.cart__product_image}
           onClick={() => setSelectedProduct(product)}
         >

@@ -40,7 +40,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           setSelectedProduct(product);
         }}
       >
-        <img src={`/${image}`} alt={name} />
+        <img src={image} alt={name} />
       </Link>
       <div className={styles.productCard__info}>
         <div className={styles.productCard__namePrice}>
