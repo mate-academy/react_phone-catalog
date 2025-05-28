@@ -134,7 +134,7 @@ export const NavBar = () => {
                 <img src="/img/icons/cart.svg" alt="to cart" className={styles.menuButtonsIcons} />
               </button>
             </NavLink>
-            <NavLink to="/favorites" onClick={() => setIsSidebarOpen(false)}>
+            <NavLink to="/img/favorites" onClick={() => setIsSidebarOpen(false)}>
               <button className={styles.menuButtonsFav}>
                 <img
                   src="/img/icons/favorite.svg"
