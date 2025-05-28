@@ -23,6 +23,11 @@
 
   @include on-tablet {
     grid-column: span 1;
+    max-width: 352.2px;
+  }
+
+  @include on-desktop {
+    max-width: 272px;
   }
 
   &_link {
