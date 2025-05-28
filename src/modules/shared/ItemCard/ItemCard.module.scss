@@ -345,13 +345,13 @@
     font-size: 14px;
     font-weight: 700;
     color: $textMainColor;
-    background-color: $mainPurpleButtonColor;
     width: 160px;
     transition: all 0.3s;
+    cursor: pointer;
+
 
     &:hover {
-      background-color: $hoverPurpleButtonColor;
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
   }
 
