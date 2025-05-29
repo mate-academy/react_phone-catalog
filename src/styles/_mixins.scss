@@ -1,0 +1,132 @@
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-full-screen {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin header-backgroung() {
+  background-image: url(../images/header-mb-bg.png);
+  background-size: cover;
+  background-position: right;
+
+  @include on-tablet {
+    background-image: url(../images/header-bg.png);
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@mixin header-padding() {
+  padding: 24px 20px 88px;
+
+  @include on-tablet {
+    padding: 36px 72px 130px;
+  }
+
+  @include on-full-screen {
+    padding: 36px 120px 203px;
+  }
+}
+
+@mixin main-titles() {
+  margin: 0;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  @include on-full-screen {
+    font-size: 64px;
+    line-height: 64px;
+  }
+}
+
+@mixin product-titles {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33.6px;
+}
+
+@mixin product-descriptions {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+@mixin header-animation {
+  animation: animate 3s linear 1;
+
+  @keyframes animate {
+    0% {
+      transform: rotateY(360deg) scale(0);
+    }
+    50% {
+      transform: rotateX(0deg) scale(1);
+    }
+    100% {
+      transform: rotate(0deg) scale(1);
+    }
+  }
+}
+
+@mixin grid() {
+  grid-template-columns: repeat(2, 130px);
+  column-gap: 20px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 80px);
+    column-gap: 24px;
+  }
+
+  @include on-full-screen {
+    grid-template-columns: repeat(12, 63px);
+  }
+}
+
+@mixin button-design {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1d1d1d;
+  width: 100%;
+  height: 56px;
+  background-color: #fff;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+  }
+}
+
+@mixin contact-inputs {
+  background-color: #f8f8fa;
+  width: 100%;
+  height: 48px;
+  padding: 0;
+  padding-inline: 16px;
+  border: 0;
+  border-radius: 40px;
+  margin-bottom: 16px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}

@@ -1,0 +1,95 @@
+@import '../../styles/mixins';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 16px;
+
+  @include on-tablet {
+    padding: 32px;
+    height: 96px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include on-full-screen {
+    padding: 32px 152px;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__logo__img {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__item {
+      height: 27px;
+      line-height: 27px;
+      width: fit-content;
+      color: #89939a;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 12px;
+
+      &:hover {
+        color: #313237;
+      }
+
+      @include on-tablet {
+        height: 32px;
+        line-height: 32px;
+        padding: 0 7px;
+      }
+
+      @include on-full-screen {
+        padding: 0 54px;
+      }
+    }
+  }
+
+  &__back_to_top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    gap: 16px;
+
+    &__text {
+      color: #89939a;
+      margin: 0;
+      height: 32px;
+      line-height: 32px;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    &__button {
+      border: 1px solid#B4BDC3;
+      background-image: url('../../../public/img/navigation/arrow-up.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 32px;
+      height: 32px;
+
+      &:hover {
+        border: 1px solid#313237;
+      }
+    }
+  }
+}

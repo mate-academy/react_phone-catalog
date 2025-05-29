@@ -1,0 +1,261 @@
+@import '../../styles/colors';
+@import './variables';
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-full-screen {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+.navbar {
+  height: $navbar-height;
+  position: sticky;
+  background-color: $white;
+  top: 0;
+
+  @include on-tablet {
+    height: $navbar-height;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid $elements;
+  }
+
+  @include on-full-screen {
+    height: $navbar-height-desktop;
+  }
+
+  &__opened {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    background-color: $white;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__phone_header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $elements;
+
+    @include on-tablet {
+      border: 0;
+    }
+  }
+
+  &__burger_menu {
+    width: $navbar-height;
+    height: $navbar-height;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid $elements;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &__open {
+      padding: 24px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url('../../../public/img/navigation/burger-menu-open.svg');
+      width: $burger-menu-icons-size;
+      height: $burger-menu-icons-size;
+    }
+
+    &__close {
+      padding: 24px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url('../../../public/img/navigation/burger-menu-close.svg');
+      width: $burger-menu-icons-size;
+      height: $burger-menu-icons-size;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $logo-width;
+
+    @include on-full-screen {
+      width: $logo-width-desktop;
+      height: $navbar-height-desktop;
+    }
+
+    &__img {
+      width: $logo-img-width;
+      height: $logo-img-height;
+
+      @include on-full-screen {
+        width: $logo-img-width-desktop;
+        height: $logo-img-height-desktop;
+      }
+    }
+  }
+
+  &__menu {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+    }
+
+    &_opened {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 24px 0;
+      gap: 16px;
+    }
+
+    &Item {
+      height: 27px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      text-transform: uppercase;
+      color: $secondary-color;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+
+      &:hover {
+        color: $primary-color;
+      }
+
+      @include on-tablet {
+        padding: 0 $padding-x-tablet;
+        font-size: 12px;
+        height: $navbar-height;
+      }
+
+      @include on-full-screen {
+        height: $navbar-height-desktop;
+        padding: 0 $padding-x-desktop;
+      }
+
+      &--active {
+        color: $primary-color;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          height: 2px;
+          width: 100%;
+          background-color: $primary-color;
+          left: 0;
+
+          @include on-tablet {
+            width: calc(100% - $padding-x-tablet - $padding-x-tablet);
+            left: $padding-x-tablet;
+          }
+
+          @include on-full-screen {
+            width: calc(100% - $padding-x-desktop - $padding-x-desktop);
+            left: $padding-x-desktop;
+          }
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    &_opened {
+      display: flex;
+      height: 64px;
+      border-top: 1px solid $elements;
+    }
+  }
+
+  &__heart_icon {
+    width: 50vw;
+    background-image: url('../../../public/img/navigation/nav-heart.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    @include on-tablet {
+      width: $icon-size-tablet;
+      height: $icon-size-tablet;
+      border-left: 1px solid $elements;
+    }
+
+    @include on-full-screen {
+      width: $icon-size-desktop;
+      height: $icon-size-desktop;
+    }
+
+    &--active {
+      border-bottom: 3px solid $primary-color;
+
+      &:hover {
+        border: 1px solid $primary-color;
+        border-bottom: 3px solid $primary-color;
+      }
+    }
+  }
+
+  &__shop_icon {
+    width: 50vw;
+    background-image: url('../../../public/img/navigation/shoping-bag.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border-left: 1px solid $elements;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    @include on-tablet {
+      width: $icon-size-tablet;
+      height: $icon-size-tablet;
+    }
+
+    @include on-full-screen {
+      width: $icon-size-desktop;
+      height: $icon-size-desktop;
+    }
+
+    &--active {
+      border-bottom: 3px solid $primary-color;
+
+      &:hover {
+        border: 1px solid $primary-color;
+        border-bottom: 3px solid $primary-color;
+      }
+    }
+  }
+}

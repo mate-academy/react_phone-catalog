@@ -1,0 +1,40 @@
+$slide-button-size: 24px;
+
+.sliderWrapper {
+  margin-top: 24px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.sliderInner {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  width: 100%;
+}
+
+.image {
+  flex-shrink: 0;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.lowerButtons {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+
+  &__button {
+    background-image: url('../../images/slide-under-button.svg');
+    height: $slide-button-size;
+    width: $slide-button-size;
+  }
+
+  &__button_active {
+    background-image: url('../../images/slide-under-button-active.svg');
+    height: $slide-button-size;
+    width: $slide-button-size;
+  }
+}
