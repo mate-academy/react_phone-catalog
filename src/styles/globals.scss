@@ -3,7 +3,7 @@ body {
   font-size: var(--base-font-size);
   font-weight: 600;
   background-color: var(--color-white);
-  color: var(--color-white);
+  color: var(--color-primary);
   position: relative;
 }
 
@@ -25,8 +25,21 @@ body {
 
 
 h1 {
-  font-size: rem(48);
-  line-height: 1;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-inline: var(--container-padding-x);
+  padding-block: 24px;
+  font-size: 32px;
+
+
+  @media (min-width: 640px) {
+    padding-block: 32px;
+    font-size: 48px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-block: 56px;
+  }
 
 }
 
@@ -55,14 +68,11 @@ h4 {
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
+  gap: 24px;
+  min-height: 100vh;
 }
 
 .main {
   padding-top: var(--header-height);
-  flex: 1 1 auto
-}
-
-body .menu__active {
-  overflow: hidden;
-
+  flex: 1 1 auto;
 }

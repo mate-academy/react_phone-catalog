@@ -39,22 +39,46 @@
   &__container {
     max-width: 1440px;
     margin: 0 auto;
+
+
+
+  }
+
+  &__wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    column-gap: 24px;
+    width: 100%;
+    height: var(--header-height);
+    column-gap: 16px;
+
+    @media (min-width: 640px) {
+      column-gap: 24px;
+
+    }
   }
 
   &__logo {
-    padding: 14px 16px;
-    width: 86px;
+    display: flex;
+    flex: 0 0 96px;
+    height: var(--header-height);
     position: relative;
+    padding: 14px 16px; // width: 64px;
 
-    @media (min-width: 1199px) {
-      padding: 16px 24px;
-      width: calc(80px + 24px * 2);
+    @media (min-width: 640px) {
+      flex: 0 0 128px;
+      padding: 17px 24px; // width: 64px;
+
+    }
+
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.05;
     }
   }
+
 
 
   &__menu {
@@ -70,6 +94,7 @@
     overflow: auto;
     z-index: 2;
     transition: all 0.4s;
+    gap: 16px;
 
     @media (min-width: 640px) {
       position: static;
@@ -88,8 +113,7 @@
 
     &_item {
       position: relative;
-      padding-block: 18px;
-
+      padding-block: 8px;
       font-size: 12px;
       font-weight: 800;
       line-height: 0.91;
@@ -98,8 +122,9 @@
       color: var(--color-secondary);
       transition: all 0.4s;
 
-      @media (min-width: 1199px) {
+      @media (min-width: 640px) {
         padding-block: 26px;
+
 
       }
 
@@ -121,14 +146,6 @@
         &::after {
           width: 100%;
         }
-
-        // @media (min-width: 640px) {
-        //   color: var(--color-primary);
-
-        //   &::after {
-        //     width: 0;
-        //   }
-        // }
 
       }
 
