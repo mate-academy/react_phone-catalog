@@ -20,10 +20,57 @@ body.sidebar-open {
 
 .navbar-item {
   margin: 0 32px;
+  height: 48px;
+
+  @media (min-width: $screen-tablet) {
+    margin: 0 auto;
+    color: $color-secondary-grey;
+    text-decoration: none;
+    @include font-uppercase;
+    line-height: 48px;
+  }
+
+    &:visited {
+      text-decoration: none;
+    }
+}
+
+.bottom-button.desktop {
+  @media (min-width: $screen-tablet) {
+    min-width: 0;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid $color-elements;
+    cursor: pointer;
+  }
+
+  &.settingsIcon {
+    padding: 15px;
+    height: 48px;
+  }
 }
 
 .has-background-grey-lighter {
-  background-color: cornflowerblue;
+  border-bottom: 4px solid $color-primary-black;
+}
+
+.navbar-sliding-settings {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  background-color: $color-white;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+
+  &.visible {
+    transform: translateY(0);
+  }
 }
 
 .navbar-container {
