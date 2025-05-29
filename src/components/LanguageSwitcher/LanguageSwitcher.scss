@@ -1,4 +1,19 @@
+@import '../../App.scss';
+
 .language-switcher {
-  background-color: lightpink;
   display: inline-block;
+  text-align: center;
+  height: fit-content;
+}
+
+.language-buttons {
+  margin-top: 8px;
+
+  & button {
+    @include font-small;
+    line-height: 18px;
+    color: $color-secondary-grey;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid $color-elements;
+  }
 }

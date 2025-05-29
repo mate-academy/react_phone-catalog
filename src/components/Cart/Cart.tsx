@@ -56,7 +56,7 @@ export const Cart: React.FC = () => {
               }
               disabled={item.quantity === 1}
             >➖</button>
-            &emsp;{`${item.quantity * item.price}`}&emsp;
+            &emsp;{`${item.quantity}`}&emsp;
             <button className={`cart-plus-button ${currentTheme}`}
               onClick={() => (
                 updateQuantityHelper(

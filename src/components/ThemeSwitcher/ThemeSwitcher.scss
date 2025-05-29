@@ -1,0 +1,18 @@
+@import '../../App.scss';
+
+.theme-selector {
+
+  @media (max-width: calc($screen-tablet - 1px)) {
+      display: block;
+      margin-top: 22px;
+  }
+}
+
+.theme-select {
+  color: $color-secondary-grey;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $color-secondary-grey;
+  }
+}

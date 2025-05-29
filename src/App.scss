@@ -107,6 +107,8 @@ $color-white: #FFFFFF;
 $color-green: #27AE60;
 $color-red: #EB5757;
 
+$screen-tablet: 640px;
+
 body {
   margin: 0;
   background-color: $color-hover-BG;
@@ -119,7 +121,7 @@ body {
 
 * {
   box-sizing: border-box;
-  
+
 }
 
 

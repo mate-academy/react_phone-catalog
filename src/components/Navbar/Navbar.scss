@@ -1,3 +1,10 @@
+@import '../../App.scss';
+
+body.sidebar-open {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
 .navbar-body {
   @media (min-width: 640px) {
     position: sticky;
@@ -5,6 +12,10 @@
   }
 
   z-index: 10;
+}
+
+.navbar-logo img {
+  height: 48px;
 }
 
 .navbar-item {
@@ -19,8 +30,12 @@
   display: flex;
   flex-wrap: wrap;
 
+  @media (min-width: $screen-tablet) {
+    border-bottom: 1px solid $color-elements;
+  }
+
   &.theme0 {
-    background-color: aqua;
+    background-color: $color-white;
   }
 
   &.theme1 {
@@ -41,9 +56,12 @@
 
   &.navbar-container.navbar-container {
     @media (max-width: 639px) {
-      background-color: rgb(2, 0, 146);
+      background-color: rgb(255, 255, 255);
+      z-index: 11;
     }
   }
+
+  transition: transform 0.3s ease-in-out;
 
   @media (max-width: 639px) {
     position: absolute;
@@ -54,23 +72,120 @@
     align-items: center;
     top: 0;
     z-index: 1;
-    transform: translateX(-100%);
+    transform: translateX(+100%) translateY(-100%);
   }
 
   &.visible {
-    transform: translateX(0);
+    transform: translateX(0) translateY(0);
   }
 }
 
 .navbar-burger {
   display: block;
-  background-color: red;
-  text-align: end;
+
   left: 0;
   top: 0;
   z-index: 2;
+  height: 48px;
+  border-bottom: 1px solid $color-elements;
+  display: flex;
 
   @media (min-width: 640px) {
     display: none;
   }
+
+  @media (max-width: 639px) {
+    position: sticky;
+  }
+
+  & img {
+    height: 47px;
+    margin-right: auto;
+    left: 0;
+    display: inline-block;
+  }
+
+  & svg {
+    height: 48px;
+    width: 48px;
+    padding: 16px;
+    border-left: 1px solid $color-elements;
+  }
+
+  &-icon {
+    height: 48px;
+    width: 48px;
+    margin-left: auto;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  &.navbar-burger-mobile {
+    width: 100%;
+  }
+}
+
+.navbar-item-mobile {
+    margin-top: 22px;
+    text-decoration: none;
+    color: $color-secondary-grey;
+    height: 18px;
+    line-height: 27px;
+    @include font-uppercase;
+
+    &:visited {
+      text-decoration: none;
+    }
+
+  &:first-of-type {
+    margin-top: 28px;
+  }
+
+  &.link-active {
+    color: $color-primary-black;
+    border-bottom: 2px solid $color-primary-black;
+  }
+}
+
+.navbar-footer {
+  display: flex;
+  height: 48px;
+  margin-top: auto;
+  z-index: 2;
+  border-top: 1px solid $color-elements;
+  width: 100vw;
+  gap: 1px;
+
+  & .bottom-button {
+    flex: 1;
+    min-width: 0;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.link-active {
+      border-bottom: 3px solid $color-primary-black;
+    }
+  }
+
+  & .bottom-button:first-child {
+    border-right: 1px solid $color-elements;
+  }
+}
+
+.red-counter {
+  position: absolute;
+  background-color: $color-red;
+  height: 14px;
+  transform: translateX(70%) translateY(-60%);
+  color: $color-white;
+  line-height: 14px;
+  border-radius: 14px;
+  border: 1px solid $color-white;
+  min-width: 14px;
+  text-align: center;
+  font-size: 9px;
+  font-family: "montRegular";
+  letter-spacing: 0;
 }

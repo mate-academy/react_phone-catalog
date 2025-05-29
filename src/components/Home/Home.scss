@@ -9,6 +9,10 @@
   background-color: rgb(255, 255, 255);
   height: 100%;
   padding-bottom: 1px;
+
+  & h1 {
+    margin: 16px 24px;
+  }
 }
 
 .home__subtitle {

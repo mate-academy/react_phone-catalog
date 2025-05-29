@@ -65,6 +65,17 @@ export const Recommended: React.FC<Props> = ({ title }) => {
 
       setItems(filteredItems);
     }
+
+    if (title === 'hot_prices') {
+      setMiniHeader('Hot prices');
+
+      // Create a new sorted array without mutating the original
+      const filteredItems = [...products]
+        .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price))
+        .slice(0, 9);
+
+      setItems(filteredItems);
+    }
   }, [title]);
 
 
@@ -137,7 +148,12 @@ export const Recommended: React.FC<Props> = ({ title }) => {
                 </div>
               </Link>
               <div className="rec__item-price">
-                {`$${item.price}`} <s>{title === 'discounts' && `${item.fullPrice} $`}</s>
+                {`$${item.price}  `}
+                {title === 'hot_prices' && (
+                  <div className="rec__full-price">
+                    ${item.fullPrice}
+                  </div>
+                )}
               </div>
               <div className="rec__specs">
                 <div className="rec__specs-spec">

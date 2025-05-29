@@ -25,7 +25,7 @@ export const Home: React.FC = () => {
 
   return (
     <div className="home-main">
-      <h1>Welcome to iSupply store 🌞</h1>
+      <h1>Welcome to iSupply store!</h1>
       <SliderDemo />
       <Recommended title='brand_new_models' />
       <div className="home__shop-container">
@@ -92,7 +92,7 @@ export const Home: React.FC = () => {
           </div>
         </div>
       </div>
-
+      <Recommended title='hot_prices' />
     </div>
   );
 };
