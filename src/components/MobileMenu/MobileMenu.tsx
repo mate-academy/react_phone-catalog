@@ -49,7 +49,7 @@ export const MobileMenu: React.FC<Props> = ({
                 onClick={handleCloseMenu}
               >
                 <img
-                  src="/img/delete.svg"
+                  src="/public/img/delete.svg"
                   alt="icon close"
                   className="icon icon-menu"
                 />
@@ -110,7 +110,7 @@ export const MobileMenu: React.FC<Props> = ({
               onClick={handleCloseMenu}
             >
               <img
-                src="/img/favourite-icon.svg"
+                src="/public/img/favourite-icon.svg"
                 alt="favourite icon"
                 className="icon icon-user"
               />
@@ -124,7 +124,7 @@ export const MobileMenu: React.FC<Props> = ({
               onClick={handleCloseMenu}
             >
               <img
-                src="/img/Shopping-cart.svg"
+                src="/public/img/Shopping-cart.svg"
                 alt="favourite icon"
                 className="icon icon-user"
               />

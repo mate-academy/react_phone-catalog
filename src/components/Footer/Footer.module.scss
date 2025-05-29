@@ -118,12 +118,12 @@
       width: 32px;
       height: 32px;
       border: 0;
-      transition: background-color 0.5s ease-in-out;
-      background-image: url('/img/arrowRightDefault.svg');
+      transition: background-image 0.5s ease-in-out;
+      background-image: url('/public/img/arrowRightDefault.svg');
       transform: rotate(270deg);
 
       &:hover {
-        background-image: url('/img/arrowRightHover.svg');
+        background-image: url('/public/img/arrowRightHover.svg');
       }
     }
   }

@@ -160,8 +160,9 @@
     height: 30px;
     border-radius: 50%;
     box-shadow: 0 0 10px $main-white-color;
-    transition: outline 0.3s;
-    transition: border 0.3s;
+    transition:
+      outline 0.5s,
+      border 0.5s;
 
     &:hover {
       border: 2px solid $main-color;
@@ -213,7 +214,7 @@
     line-height: 21px;
     letter-spacing: 0;
     border: 1px solid $light-grey-color;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
 
     &:hover {
       background-color: $light-grey-color;
@@ -281,9 +282,9 @@
     width: 100%;
     background-color: $main-purple-color;
     transition:
-      background-color 0.3s ease,
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+      background-color 0.5s ease,
+      transform 0.5s ease,
+      box-shadow 0.5s ease;
 
     &:hover {
       background-color: $main-purple-color-hover;
@@ -295,9 +296,9 @@
     background-color: $button-grey-color;
     color: #27ae60;
     transition:
-      background-color 0.3s ease,
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+      background-color 0.5s ease,
+      transform 0.5s ease,
+      box-shadow 0.5s ease;
   }
 
   &__favourite {

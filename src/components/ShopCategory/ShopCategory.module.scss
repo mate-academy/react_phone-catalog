@@ -50,7 +50,7 @@
 .shop_category__card {
   &--img {
     margin-bottom: 24px;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 
     &:hover {
       transform: scale(1.03);
@@ -64,7 +64,7 @@
     line-height: 11px;
     font-weight: 600;
     letter-spacing: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
 
     &:hover {
       opacity: 50%;

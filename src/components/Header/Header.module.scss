@@ -25,7 +25,7 @@
     }
 
     &:hover {
-        transform: scale(1.1);
+      transform: scale(1.1);
     }
 
     &--pict {
@@ -94,6 +94,11 @@
       width: 48px;
       height: 48px;
       border-left: 1px solid $dark-grey-color;
+      transition: box-shadow 0.5s ease;
+
+      &:hover {
+        box-shadow: 0 0 10px $main-purple-color;
+      }
 
       @include on-tablet {
         &::after {

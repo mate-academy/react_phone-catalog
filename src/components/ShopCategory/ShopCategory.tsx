@@ -15,7 +15,7 @@ export const ShopCategory: React.FC = () => {
             <Link to="/phones">
               <img
                 className="shop_category__card--img"
-                src="img/category_phone.png"
+                src="/public/img/category_phone.png"
                 alt=""
               />
               <h4 className="shop_category__card--title">Mobile phones</h4>
@@ -29,7 +29,7 @@ export const ShopCategory: React.FC = () => {
             <Link to="/tablets">
               <img
                 className="shop_category__card--img"
-                src="img/category_tablet.png"
+                src="/public/img/category_tablet.png"
                 alt=""
               />
               <h4 className="shop_category__card--title">Tablets</h4>
@@ -43,7 +43,7 @@ export const ShopCategory: React.FC = () => {
             <Link to="/accessories">
               <img
                 className="shop_category__card--img"
-                src="img/category_accessories.png"
+                src="/public/img/category_accessories.png"
                 alt=""
               />
               <h4 className="shop_category__card--title">Accessories</h4>

@@ -35,9 +35,17 @@
       margin: auto 0;
       width: 16px;
       height: 16px;
-      background-image: url('/img/delete.svg');
+      background-image: url('/public/img/delete.svg');
       background-repeat: no-repeat;
       background-position: center;
+      cursor: pointer;
+      transition: background-image 0.5s ease;
+
+      &:hover {
+        background-image: url('/public/img/delete-hover.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
     }
 
     &--image {
@@ -90,21 +98,37 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('/img/IncreaseQuantity.svg');
+  background-image: url('/public/img/IncreaseQuantity.svg');
   background-repeat: no-repeat;
   background-position: center;
+  transition:
+    box-shadow 0.5s ease,
+    border-radius 0.5s ease;
+
+  &:hover {
+    border-radius: 50%;
+    box-shadow: 0 0 10px $main-purple-color;
+  }
 }
 
 .card__decreaseQuantity {
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('/img/decreaseQuantity.svg');
+  background-image: url('/public/img/decreaseQuantity.svg');
   background-repeat: no-repeat;
   background-position: center;
+    transition:
+    box-shadow 0.5s ease,
+    border-radius 0.5s ease;
+
+  &:hover {
+    border-radius: 50%;
+    box-shadow: 0 0 10px $main-purple-color;
+  }
 
   &--active {
-    background-image: url('/img/decreaseQuantity_active.svg');
+    background-image: url('/public/img/decreaseQuantity_active.svg');
   }
 
   &--disabled {

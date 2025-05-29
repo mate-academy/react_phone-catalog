@@ -227,7 +227,7 @@ export const ProductDescription: React.FC<Props> = ({
                 >
                   <div className="icon-wrapper">
                     <img
-                      src="/img/favourite-icon.svg"
+                      src="/public/img/favourite-icon.svg"
                       alt="favourite icon"
                       className="icon icon-user"
                     />
@@ -245,7 +245,7 @@ export const ProductDescription: React.FC<Props> = ({
                 >
                   <div className="icon-wrapper">
                     <img
-                      src="/img/favourite-icon-selected.svg"
+                      src="/public/img/favourite-icon-selected.svg"
                       alt="favourite icon"
                       className="icon icon-user favourite__added"
                     />
