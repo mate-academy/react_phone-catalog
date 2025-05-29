@@ -1,0 +1,73 @@
+@import '../../styles/common';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: $button-grey-color;
+    border: none;
+    color: $main-white-color;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0;
+    transition: background-color 0.5s ease-in-out;
+
+    &--main {
+      background-color: $main-card-color;
+      margin-right: 8px;
+    }
+
+    &--prev {
+      margin-right: 16px;
+
+      background-image: url('/img/arrowRightDefault.svg');
+      transform: rotate(180deg);
+
+      &:hover {
+        background-image: url('/img/arrowRightHover.svg');
+      }
+    }
+
+    &--next {
+      margin-left: 16px;
+      background-image: url('/img/arrowRightDefault.svg');
+
+      &:hover {
+        background-image: url('/img/arrowRightHover.svg');
+      }
+    }
+  }
+
+  &__button:disabled {
+    background-color: transparent;
+    background-image: url('/img/arrowRightDisabled.svg');
+  }
+}
+
+.currentPage {
+  background-color: $main-purple-color;
+  transition: background-color 0.5s ease-in-out;
+
+  &:hover {
+    background-color: $main-purple-color-hover;
+  }
+}
+
+.last {
+  margin-right: 0;
+}
