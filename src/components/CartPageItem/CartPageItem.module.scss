@@ -35,14 +35,14 @@
       margin: auto 0;
       width: 16px;
       height: 16px;
-      background-image: url('./img/delete.svg');
+      background-image: url('/img/delete.svg');
       background-repeat: no-repeat;
       background-position: center;
       cursor: pointer;
       transition: background-image 0.5s ease;
 
       &:hover {
-        background-image: url('./img/delete-hover.svg');
+        background-image: url('/img/delete-hover.svg');
         background-repeat: no-repeat;
         background-position: center;
       }
@@ -98,7 +98,7 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('./img/IncreaseQuantity.svg');
+  background-image: url('/img/IncreaseQuantity.svg');
   background-repeat: no-repeat;
   background-position: center;
   transition:
@@ -115,7 +115,7 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('./img/decreaseQuantity.svg');
+  background-image: url('/img/decreaseQuantity.svg');
   background-repeat: no-repeat;
   background-position: center;
     transition:
@@ -128,7 +128,7 @@
   }
 
   &--active {
-    background-image: url('./img/decreaseQuantity_active.svg');
+    background-image: url('/img/decreaseQuantity_active.svg');
   }
 
   &--disabled {
