@@ -55,7 +55,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
         </div>
 
         <div className={styles.actions}>
-          <AddToCartButton />
+          <AddToCartButton product={product} />
 
           <FavoriteButton />
         </div>

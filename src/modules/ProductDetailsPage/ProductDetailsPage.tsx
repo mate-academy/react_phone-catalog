@@ -123,8 +123,8 @@ export const ProductDetailsPage: React.FC = () => {
   } else {
     content = (
       <article className={styles.productPage}>
-        <header className={styles.navigation}>
-          <nav aria-label="Breadcrumbs and back">
+        <header>
+          <nav aria-label="Breadcrumbs and back" className={styles.navigation}>
             <Breadcrumbs />
 
             <GoBack />
@@ -222,7 +222,7 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className={styles.actions}>
-              <AddToCartButton size={48} />
+              <AddToCartButton product={curProduct} size={48} />
               <FavoriteButton size={48} />
             </div>
 
@@ -280,7 +280,7 @@ export const ProductDetailsPage: React.FC = () => {
               <dd className={styles.featureValue}>{curProduct.capacity}</dd>
 
               {curProduct.category === ProductCategory.PHONES ||
-                curProduct.category === ProductCategory.TABLETS ? (
+              curProduct.category === ProductCategory.TABLETS ? (
                 <>
                   <dt className={styles.featureName}>Camera</dt>
                   <dd className={styles.featureValue}>{curProduct.camera}</dd>

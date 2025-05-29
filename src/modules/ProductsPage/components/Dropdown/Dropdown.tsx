@@ -58,7 +58,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       </button>
 
       {isOpen && (
-        <div
+        <ul
           className={`${styles.dropdownContent}
           ${isOpen ? styles.animate : ''}`}
         >
@@ -71,7 +71,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
               {option}
             </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );

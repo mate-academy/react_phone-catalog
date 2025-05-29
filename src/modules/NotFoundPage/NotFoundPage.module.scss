@@ -9,28 +9,6 @@
   gap: 20px;
 }
 
-.back {
-  @extend %flex-center;
-  @include apply-typography(small-desktop);
-
-  font-size: 14px;
-
-
-  color: $color-secondary;
-}
-
-.backContainer {
-  @extend %flex-center;
-
-  gap: 8px;
-}
-
-.arrowIcon {
-  width: 16px;
-  height: 16px;
-  transform: rotate(90deg);
-}
-
 .notFoundMessage {
   @include apply-typography(h1-desktop);
 
@@ -42,26 +20,4 @@
 .notFoundImg {
   width: 100%;
   max-width: 400px;
-}
-
-.goBack {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.arrow {
-  @extend %flex-center;
-
-  width: 16px;
-  height: 16px;
-}
-
-.text {
-  @include apply-typography(small-desktop);
-
-  color: $color-white;
-
-  @include hover-text($color-accent);
 }
