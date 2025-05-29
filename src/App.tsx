@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useScrollToTop } from './hooks/useScrollToTop';
 
 import { Header } from './components/Header';
 import { Home as HomePage } from './pages/Home';
@@ -13,6 +14,8 @@ import { Footer } from './components/Footer';
 import './App.scss';
 
 export const App = () => {
+  useScrollToTop(); // smooth scrolling up after all link clicks
+
   return (
     <div className="App">
       <Header />

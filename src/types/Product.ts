@@ -14,3 +14,9 @@ export interface Product {
   year: number;
   image: string;
 }
+
+// using for control product amount in cart
+// product has amount only when added in cart
+export type ExtendedProduct = Product & {
+  amount?: number;
+};

@@ -19,15 +19,20 @@ export const Favorites = () => {
         <div className="section-title-wrapper">
           <h1>Favorites</h1>
           <p className="main-text main-text--secondary">
-            {products.length} items
+            {products.length === 0 ? '' : ' items'}
           </p>
         </div>
-
-        <div className={styles['favorites__products-wrapper']}>
-          {products.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {products.length === 0 ? (
+          <p className="main-text main-text--centered">
+            You don&apos;t have Favorite products yet
+          </p>
+        ) : (
+          <div className={styles['favorites__products-wrapper']}>
+            {products.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

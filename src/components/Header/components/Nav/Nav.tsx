@@ -6,12 +6,16 @@ import { NavLink, useSearchParams } from 'react-router-dom';
 import styles from './Nav.module.scss';
 import { Category } from '../../../../types/Category';
 
-export const Nav = () => {
+type Props = {
+  variant?: 'mobile' | 'desktop';
+};
+
+export const Nav: React.FC<Props> = ({ variant = 'desktop' }) => {
   const [searchParams] = useSearchParams();
   const currentCategory = searchParams.get('category');
 
   // Needed for saving all URLSearchParams when user switching
-  // switches between product categories (phones/tablets/...)
+  // between product categories (phones/tablets/...)
   const getAllSearchParams = (path: string) => {
     let finalPath = path + '&page=1';
     const allSearchParams = searchParams
@@ -30,7 +34,11 @@ export const Nav = () => {
   };
 
   return (
-    <nav className={styles.nav}>
+    <nav
+      className={classNames(styles.nav, {
+        [styles['nav--mobile']]: variant === 'mobile',
+      })}
+    >
       <NavLink
         to="/"
         className={({ isActive }) => {

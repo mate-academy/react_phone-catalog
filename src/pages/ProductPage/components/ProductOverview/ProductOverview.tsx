@@ -41,6 +41,7 @@ export const ProductOverview: React.FC<Props> = ({
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const galleryPhotoRef = useRef<SwiperType | null>(null);
   const galleryPreviewRef = useRef<SwiperType | null>(null);
+
   const location = useLocation();
   const navigate = useNavigate();
 

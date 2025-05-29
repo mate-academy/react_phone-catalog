@@ -1,10 +1,22 @@
 @use '../../styles/utils/mixins' as *;
+@import '../../styles/variables/variables.scss';
 
 .product-category__card-banner {
   width: 100%;
+  // height: 100%;
+  // height: 350px;
   padding-top: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
+
+  transition: $animation-duration;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+    transform: scale(1.01);
+  }
 
   &--phone {
     background-image: url('../../img/category-phones.webp');

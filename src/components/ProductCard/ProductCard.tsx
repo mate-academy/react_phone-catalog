@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 import { useLocalStorage } from '../../hooks/useLocaleStorage';
-import { Product } from '../../types/Product';
+import { ExtendedProduct, Product } from '../../types/Product';
 
 import { NavLink } from 'react-router-dom';
 import { ButtonPrimary } from '../UI/ButtonPrimary';
@@ -11,7 +11,12 @@ import { ButtonFavorite } from '../UI/ButtonFavorite';
 import 'react-loading-skeleton/dist/skeleton.css';
 import styles from './ProductCard.module.scss';
 
-type Variant = 'default' | 'cart' | 'skeleton';
+type Variant = 'default' | 'skeleton';
+
+type ProductStatus = {
+  inCart: boolean;
+  isFavorite: boolean;
+};
 
 type Props = {
   product: Product;
@@ -22,11 +27,15 @@ export const ProductCard: React.FC<Props> = ({
   product,
   variant = 'default',
 }) => {
-  const [amount, setAmount] = useState(1);
-  const [inCart, setInCart] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [productStatus, setProductStatus] = useState<ProductStatus>({
+    inCart: false,
+    isFavorite: false,
+  });
 
-  const [storedCart, setStoredCart] = useLocalStorage<Product[]>('cart', []);
+  const [storedCart, setStoredCart] = useLocalStorage<ExtendedProduct[]>(
+    'cart',
+    [],
+  );
   const [storedFavorites, setStoredFavorites] = useLocalStorage<Product[]>(
     'favorites',
     [],
@@ -35,21 +44,21 @@ export const ProductCard: React.FC<Props> = ({
   const toggleCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    setInCart(state => !state);
+    setProductStatus(state => ({ ...state, inCart: !state.inCart }));
 
     setStoredCart(prev => {
       const exists = prev.some(p => p.id === product.id);
 
       return exists
         ? prev.filter(p => p.id !== product.id)
-        : [...prev, product];
+        : [...prev, { ...product, amount: 1 }];
     });
   };
 
   const toggleFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    setIsFavorite(state => !state);
+    setProductStatus(state => ({ ...state, isFavorite: !state.isFavorite }));
 
     setStoredFavorites(prev => {
       const exists = prev.some(p => p.id === product.id);
@@ -60,29 +69,18 @@ export const ProductCard: React.FC<Props> = ({
     });
   };
 
-  const handleChangeAmount = (type: 'increase' | 'decrease') => {
-    switch (type) {
-      case 'increase': {
-        setAmount(state => (state < 10 ? state + 1 : state));
-        break;
-      }
-
-      case 'decrease': {
-        setAmount(state => (state > 1 ? state - 1 : state));
-        break;
-      }
-    }
-  };
-
   useEffect(() => {
     if (storedFavorites.find(p => p.id === product.id)) {
-      setIsFavorite(true);
+      setProductStatus(state => ({ ...state, isFavorite: true }));
     }
 
     if (storedCart.find(p => p.id === product.id)) {
-      setInCart(true);
+      setProductStatus(state => ({ ...state, inCart: true }));
     }
-  }, [storedFavorites, storedCart, product.id]);
+    //'storedCart' and 'storedFavorites' not needed in this dependencies
+    // becouse this calling extra rerenders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product.id]);
 
   if (variant === 'skeleton') {
     return (
@@ -95,48 +93,6 @@ export const ProductCard: React.FC<Props> = ({
         <Skeleton width="100%" className="mt-1" />
         <Skeleton height={40} />
       </div>
-    );
-  }
-
-  if (variant === 'cart') {
-    return (
-      <article
-        className={`${styles['product-card']} ${styles['product-card--cart']}`}
-      >
-        <div className={styles['product-card__price-details-wrapper--cart']}>
-          <button className="button-box button--arrow-top"></button>
-          <div className={styles['product-card__image-wrapper--cart']}>
-            <img
-              className={`${styles['product-card__image']} ${styles['product-card__image--cart']}`}
-              src={`/${product.image}`}
-              alt="Product Photo"
-            />
-          </div>
-          <p className="main-text">{product.name}</p>
-        </div>
-        <div className={styles['product-card__price-details--cart']}>
-          <div
-            className={
-              styles['product-card__price-details-amount-wrapper--cart']
-            }
-          >
-            <button
-              className="button-box button-box--sm button--arrow-left"
-              onClick={() => handleChangeAmount('decrease')}
-            ></button>
-            <p
-              className={`main-text ${styles['product-card__price-details-amount']}`}
-            >
-              {amount}
-            </p>
-            <button
-              className="button-box button-box--sm button--arrow-right"
-              onClick={() => handleChangeAmount('increase')}
-            ></button>
-          </div>
-          <h3>${product.price * amount}</h3>
-        </div>
-      </article>
     );
   }
 
@@ -178,7 +134,7 @@ export const ProductCard: React.FC<Props> = ({
         RAM <span className="main-text--primary">{product.ram}</span>
       </p>
       <div className={styles['product-card__buttons-wrapper']}>
-        {inCart ? (
+        {productStatus.inCart ? (
           <ButtonPrimary variant="selected" onClick={toggleCart}>
             Remove from cart
           </ButtonPrimary>
@@ -186,7 +142,10 @@ export const ProductCard: React.FC<Props> = ({
           <ButtonPrimary onClick={toggleCart}>Add to cart</ButtonPrimary>
         )}
 
-        <ButtonFavorite selected={isFavorite} onClick={toggleFavorite} />
+        <ButtonFavorite
+          selected={productStatus.isFavorite}
+          onClick={toggleFavorite}
+        />
       </div>
     </NavLink>
   );

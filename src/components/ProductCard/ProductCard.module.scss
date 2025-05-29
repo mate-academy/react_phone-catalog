@@ -12,8 +12,18 @@
   padding: 32px;
   gap: 8px;
 
+  transition: $animation-duration;
+
+  &:hover {
+    box-shadow: -1px 1px 14px -3px rgba(0, 0, 0, 0.20);
+  }
+
   & *:hover {
     cursor: pointer;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
   }
 }
 
@@ -28,6 +38,8 @@
   width: 100%;
   height: 196px;
   object-fit: contain;
+
+  transition: $animation-duration;
 
   &--cart {
     height: auto;
@@ -58,6 +70,10 @@
     display: grid;
     grid-template-columns: 9fr 4fr;
   }
+}
+
+.product-card__delete-button--cart {
+  border: none !important;
 }
 
 .product-card__image-wrapper--cart {
