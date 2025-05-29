@@ -84,7 +84,7 @@ export const Card: React.FC<Props> = ({ product }) => {
             onClick={() => removeFromFavourite(product)}
           >
             <img
-              src="/public/img/favourite-icon-selected.svg"
+              src="./img/favourite-icon-selected.svg"
               alt="favourite icon"
               className="icon icon-user favourite__added"
             />
@@ -96,7 +96,7 @@ export const Card: React.FC<Props> = ({ product }) => {
             onClick={() => addToFavourite(product)}
           >
             <img
-              src="/public/img/favourite-icon.svg"
+              src="./img/favourite-icon.svg"
               alt="favourite icon"
               className="icon icon-user favourite__added"
             />
