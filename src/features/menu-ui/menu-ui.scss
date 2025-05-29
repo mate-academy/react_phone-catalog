@@ -1,0 +1,31 @@
+@use '../../global-styles/breakpoint-const.scss' as *;
+
+.menu {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+}
+
+.menu-button {
+  &__favorites {
+    display: none;
+  }
+
+  &__cart {
+    display: none;
+  }
+
+  @media(min-width: $BREAKPOINT_TAB) {
+    &__menu {
+      display: none;
+    }
+
+    &__favorites {
+      display: block;
+    }
+
+    &__cart {
+      display: block;
+    }
+  }
+}

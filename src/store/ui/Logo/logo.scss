@@ -1,0 +1,15 @@
+@use '../../../global-styles/breakpoint-const.scss' as *;
+@use '../../../global-styles/fonts.scss' as *;
+
+.logo-link {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  padding: auto;
+}
+
+.logo-img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}

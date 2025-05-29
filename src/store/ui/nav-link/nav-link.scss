@@ -1,0 +1,18 @@
+@use '../../../global-styles/fonts.scss' as fonts;
+
+.nav-item {
+
+  &__link {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 15px 0;
+    height: 100%;
+    line-height: 100%;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    
+    @include fonts.header-text;
+  }
+}
+

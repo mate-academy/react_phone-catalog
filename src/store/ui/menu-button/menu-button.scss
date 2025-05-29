@@ -1,0 +1,23 @@
+@use '../../../global-styles/breakpoint-const.scss' as *;
+@use '../../../global-styles/fonts.scss' as fonts;
+
+.menu-button {
+    display: block;
+    box-sizing: border-box;
+    height: 100%;
+    border: 0;
+    border-left: 1px solid fonts.$gray-secondary;
+
+    &__image {
+      display: block;
+      width: 16px;
+      height: 16px;
+      padding: 16px;
+    }
+
+    @media(min-width: $BREAKPOINT_WIDE) {
+      &__image {
+        padding: 24px;
+      }
+    }
+}

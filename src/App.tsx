@@ -1,10 +1,8 @@
 import './App.scss';
-import './global-styles/normalize.scss';
-import { Header } from './widgets/Header/Header';
+import { Header } from './widgets/Header';
 
 export const App = () => (
   <div className="App">
     <Header />
-    <h1>Product Catalog</h1>
   </div>
 );
