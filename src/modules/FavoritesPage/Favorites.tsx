@@ -4,13 +4,11 @@ import favoritesEmptyImage from '../../api/img/product-not-found.png';
 import { ProductCard } from '../shared/ProductCard';
 import { GlobalContext } from '../../app/store/GlobalContext';
 
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { getFirstPartAddress } from '../../utils/format';
+import { useNavigate } from 'react-router-dom';
 
 export const Favorites = () => {
   const { favorites, totalFavoritesItems } = useContext(GlobalContext);
   const navigate = useNavigate();
-  const { itemId } = useParams();
 
   return (
     <div className="container">
@@ -43,7 +41,7 @@ export const Favorites = () => {
           <ul className={styles.favorites__list}>
             {favorites.map(product => (
               <div key={product.itemId} className={styles.favorites__product}>
-                <ProductCard product={product} />
+                <ProductCard product={product} showFullPrice={true} />
               </div>
             ))}
           </ul>

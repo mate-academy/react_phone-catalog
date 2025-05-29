@@ -1,45 +1,38 @@
-import styles from './SimilarProducts.module.scss';
+import React, { useState } from 'react';
+import styles from './HotPrices.module.scss';
+import { Product } from '../../../types/Product';
+import { ProductCard } from '../../shared/ProductCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import 'swiper/swiper-bundle.css';
+import 'swiper/css';
 import iconArrowLeftActive from '../../../img/icons/icon-arrow-left.png';
 import iconArrowLeft from '../../../img/icons/icon-arrow-left-grey.png';
 import iconArrowRightActive from '../../../img/icons/icon-arrow-right.png';
 import iconArrowRight from '../../../img/icons/icon-arrow-right-grey.png';
 
-import 'swiper/css';
-import 'swiper/swiper-bundle.css';
-import { useContext, useState } from 'react';
-import { GlobalContext } from '../../../app/store/GlobalContext';
-import { ProductCard } from '../ProductCard';
+type Props = {
+  products: Product[];
+};
 
-export const SimilarProducts = () => {
-  const { products, selectedProduct } = useContext(GlobalContext);
+export const HotPrices: React.FC<Props> = ({ products }) => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
-  const similarProducts = products
-    .filter(
-      product =>
-        product.year === selectedProduct?.year &&
-        product.price <= selectedProduct?.price + 200 &&
-        product.itemId !== selectedProduct?.itemId,
-    )
-    .sort((a, b) => a.screen.localeCompare(b.screen));
-
   return (
-    <section className={styles.similarProducts}>
-      <div className={styles.similarProducts__wrapper}>
-        <h3 className={styles.similarProducts__title}>You may also like</h3>
-        <div className={styles.similarProducts__buttons}>
+    <section className={styles.hotPrices}>
+      <div className={styles.hotPrices__container}>
+        <h2 className={styles.hotPrices__title}>Hot prices</h2>
+        <div className={styles.hotPrices__buttons}>
           <button
-            className={`${styles.similarProducts__button} productsPrev`}
+            className={`${styles.hotPrices__button} ${styles.hotPrices__button_prev} hotPricesPrev`}
             disabled={isBeginning}
             style={{
               backgroundImage: `url(${isBeginning ? iconArrowLeft : iconArrowLeftActive})`,
             }}
           ></button>
           <button
-            className={`${styles.similarProducts__button} productsNext`}
+            className={`${styles.hotPrices__button} ${styles.hotPrices__button_next} hotPricesNext`}
             disabled={isEnd}
             style={{
               backgroundImage: `url(${isEnd ? iconArrowRight : iconArrowRightActive})`,
@@ -64,7 +57,7 @@ export const SimilarProducts = () => {
             slidesPerGroup: 4,
           },
         }}
-        navigation={{ nextEl: '.productsNext', prevEl: '.productsPrev' }}
+        navigation={{ nextEl: '.hotPricesNext', prevEl: '.hotPricesPrev' }}
         modules={[Navigation]}
         onSwiper={swiper => {
           setIsBeginning(swiper.isBeginning);
@@ -74,11 +67,11 @@ export const SimilarProducts = () => {
           setIsBeginning(swiper.isBeginning);
           setIsEnd(swiper.isEnd);
         }}
-        className={styles.similarProducts__swiper}
+        className={styles.hotPrices__swiper}
       >
-        {similarProducts.map(product => (
+        {products.map(product => (
           <SwiperSlide key={product.itemId}>
-            <ProductCard product={product} showFullPrice={true} />
+            <ProductCard product={product} showFullPrice={true}/>
           </SwiperSlide>
         ))}
       </Swiper>

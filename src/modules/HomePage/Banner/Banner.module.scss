@@ -13,6 +13,11 @@
   &__slider {
     display: flex;
     justify-content: center;
+    margin-inline: -24px;
+
+    @include on-tablet {
+      margin-inline: 0;
+    }
   }
 
   &__sliderImage {

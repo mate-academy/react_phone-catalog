@@ -9,10 +9,12 @@ import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
+  showFullPrice: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { itemId, name, capacity, price, image, screen, ram, category } =
+export const ProductCard: React.FC<Props> = ({ product, showFullPrice }) => {
+
+  const { itemId, name, capacity, price, fullPrice, image, screen, ram, category } =
     product;
 
   const {
@@ -40,13 +42,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           setSelectedProduct(product);
         }}
       >
-        <img src={image} alt={name} />
+        <img src={image} alt={name} />  
       </Link>
       <div className={styles.productCard__info}>
         <div className={styles.productCard__namePrice}>
           <h3 className={styles.productCard__title}>{name}</h3>
-          <p className={styles.productCard__price}>${price}</p>
-        </div>
+          <div className={styles.productCard__prices}>
+            <p className={styles.productCard__price}>${price}</p>
+            {showFullPrice && (
+              <p className={styles.productCard__fullPrice}> ${fullPrice}</p>
+            )}
+          </div>
+          </div>
         <div className={styles.productCard__features}>
           <p className={styles.productCard__screen}>
             <span className={styles.productCard__property}>Screen:</span>

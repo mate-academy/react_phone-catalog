@@ -6,6 +6,7 @@ export interface Product {
   capacity: string;
   fullPrice: number;
   price: number;
+  priceDiscount: number;
   color: string;
   image: string;
   screen: string;

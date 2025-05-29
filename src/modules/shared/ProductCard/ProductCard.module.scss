@@ -49,12 +49,36 @@
     justify-content: space-between;
   }
 
+  &__prices {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    border-bottom: 1px solid $textNotActiveColor;
+  }
+  
   &__price {
     font-size: 22px;
     font-weight: 800;
     line-height: 140%;
-    border-bottom: 1px solid $textNotActiveColor;
+  }
 
+  &__fullPrice {
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 140%;
+    color: $textNotActiveColor;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      content: '';
+      height: 2px;
+      width: 50px;
+      background-color: $textNotActiveColor;
+    }
   }
 
   &__features {

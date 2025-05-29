@@ -34,8 +34,8 @@ type GlobalContextType = {
   totalFavoritesItems: number;
   totalFavoritesPrice: number;
   getProductCode: () => string;
-  // errorMessage: string;
-  // setErrorMessage: (message: string) => void;
+  showFullPrice: boolean;
+  setShowFullPrice: (value: boolean) => void;
 };
 
 export const GlobalContext = React.createContext<GlobalContextType>({
@@ -65,8 +65,8 @@ export const GlobalContext = React.createContext<GlobalContextType>({
   totalFavoritesItems: 0,
   totalFavoritesPrice: 0,
   getProductCode: () => '',
-  // errorMessage: '',
-  // setErrorMessage: () => {},
+  showFullPrice: false,
+  setShowFullPrice: () => {},
 });
 
 type Props = {
@@ -74,13 +74,14 @@ type Props = {
 };
 
 export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
-  // const [errorMessage, setErrorMessage] = useState('');
   const [isMenuClose, setIsMenuClose] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [phoneItems, setPhoneItems] = useState<Phone[]>([]);
   const [tabletItems, setTabletItems] = useState<Tablet[]>([]);
   const [accessoriesItems, setAccessoriesItems] = useState<Accessories[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [showFullPrice, setShowFullPrice] = useState(false);
+
   const {
     cart,
     setCart,
@@ -195,8 +196,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }: Props) => {
         tabletItems,
         accessoriesItems,
         getProductCode,
-        // errorMessage,
-        // setErrorMessage,
+        showFullPrice,
+        setShowFullPrice,
       }}
     >
       {children}

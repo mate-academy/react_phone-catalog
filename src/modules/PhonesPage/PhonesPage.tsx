@@ -5,6 +5,7 @@ import { GlobalContext } from '../../app/store/GlobalContext';
 import { CustomSelect } from '../shared/CustomSelect';
 import { ProductCard } from '../shared/ProductCard';
 import classNames from 'classnames';
+import { useLocalStorage } from '../../app/hooks/useLocalStorage';
 
 const PRODUCTS_PER_PAGE_OPTIONS = [4, 8, 16, 'All'];
 const PAGE_WINDOW_SIZE = 4;
@@ -14,8 +15,8 @@ export const PhonesPage = () => {
   const { products } = useContext(GlobalContext);
   const [selectedSort, setSelectedSort] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState<number | 'All'>(4);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageWindowStart, setPageWindowStart] = useState(1);
+  const [currentPage, setCurrentPage] = useLocalStorage('currentPage', 1);
+  const [pageWindowStart, setPageWindowStart] = useLocalStorage('pageWindowStart', 1);
   const navigate = useNavigate();
 
   const phones = products.filter(product => product.category === 'phones');
@@ -137,7 +138,7 @@ export const PhonesPage = () => {
         <ul className={styles.phonesPage__phoneList}>
           {currentItems.map(phone => (
             <li className={styles.phonesPage__phoneItem} key={phone.id}>
-              <ProductCard product={phone} />
+              <ProductCard product={phone} showFullPrice={true} />
             </li>
           ))}
         </ul>
