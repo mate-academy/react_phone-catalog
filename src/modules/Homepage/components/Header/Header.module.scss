@@ -1,0 +1,108 @@
+$slide-button-size: 24px;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  margin-top: 24px;
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  column-gap: 16px;
+
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 34.67px);
+    margin-top: 32px;
+  }
+
+  @include on-full-screen {
+    grid-template-columns: repeat(24, 32px);
+    margin-top: 56px;
+  }
+}
+
+.slider_arrow {
+  &__left {
+    @include on-tablet {
+      grid-column: 1/2;
+      background-image: url('../../images/slider-button-left.svg');
+      background-repeat: no-repeat;
+      justify-content: center;
+    }
+    @include on-full-screen {
+      background-image: url('../../images/slider-button-left-big.svg');
+    }
+  }
+
+  &__right {
+    @include on-tablet {
+      grid-column: -1/-2;
+      background-image: url('../../images/slider-button-right.svg');
+      background-repeat: no-repeat;
+      justify-content: center;
+    }
+    @include on-full-screen {
+      background-image: url('../../images/slider-button-right-big.svg');
+    }
+  }
+}
+
+.sliderWrapper {
+  grid-column: 1/-1;
+  width: calc(100vw - 8px);
+  overflow: hidden;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  @include on-tablet {
+    grid-column: 2/-2;
+
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.sliderInner {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  width: 100%;
+}
+
+.image {
+  flex-shrink: 0;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+
+  @include on-tablet {
+    height: 189px;
+  }
+
+  @include on-full-screen {
+    height: 400px;
+  }
+}
+
+.lowerButtons {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+
+  &__button {
+    background-image: url('../../images/slide-under-button.svg');
+    height: $slide-button-size;
+    width: $slide-button-size;
+  }
+
+  &__button_active {
+    background-image: url('../../images/slide-under-button-active.svg');
+    height: $slide-button-size;
+    width: $slide-button-size;
+  }
+}

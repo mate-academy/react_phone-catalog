@@ -1,0 +1,36 @@
+@use '../../styles/colors.scss' as *;
+
+.button {
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid $icons;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &:disabled {
+    border-color: $elements;
+  }
+}
+
+.button__prev {
+  background-image: url('./images/arrow-left.svg');
+}
+
+.button__next {
+  background-image: url('./images/arrow-right.svg');
+}
+
+.button__up {
+  background-image: url('./images/arrow-up.svg');
+}

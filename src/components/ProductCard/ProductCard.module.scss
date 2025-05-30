@@ -1,0 +1,138 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/colors.scss' as *;
+
+.card {
+  width: 212px;
+  height: 439px;
+  padding: 32px;
+  border: 1px solid #e2e6e9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-full-screen {
+    width: 272px;
+    height: 506px;
+  }
+
+  &__image {
+    display: block;
+    align-self: center;
+    width: 148px;
+    height: 129px;
+    margin: 0 0 24px;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: 173px;
+      height: 181px;
+    }
+
+    @include on-full-screen {
+      width: 208px;
+      height: 196px;
+    }
+  }
+
+  &__product_name {
+    @include body-text;
+
+    margin-bottom: 8px;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px;
+    gap: 8px;
+    font-size: 22px;
+    border-bottom: 1px solid $elements;
+
+    &__regular {
+      font-weight: 800;
+      line-height: 140%;
+    }
+
+    &__discount {
+      color: $secondary-color;
+      font-weight: 500;
+      line-height: 100%;
+      text-decoration: line-through;
+    }
+  }
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0;
+    padding: 8px 0;
+    gap: 8px;
+
+    &__row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &__name {
+        color: $secondary-color;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+      }
+
+      &__param {
+        color: $primary-color;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    &__add {
+      width: 100px;
+      line-height: 40px;
+      background-color: $primary-color;
+      color: $background-color;
+      text-align: center;
+
+      font-weight: 700;
+      font-size: 14px;
+
+      @include on-tablet {
+        width: 125px;
+      }
+
+      @include on-full-screen {
+        width: 160px;
+      }
+    }
+
+    &__like {
+      width: 40px;
+      padding: 0;
+      margin: 0;
+      background: none;
+      color: inherit;
+      cursor: pointer;
+
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid $icons;
+      background-image: url('../../../public/img/navigation/nav-heart.svg');
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+}

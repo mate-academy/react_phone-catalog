@@ -9,9 +9,9 @@ export const App = () => (
     <NavBar />
 
     <div className="main">
-      <div className="container">
-        <Outlet />
-      </div>
+      {/* <div className="container"> */}
+      <Outlet />
+      {/* </div> */}
     </div>
 
     <Footer />
