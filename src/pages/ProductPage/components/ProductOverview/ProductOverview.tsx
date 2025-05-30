@@ -5,7 +5,7 @@ import type { Swiper as SwiperType } from 'swiper';
 
 import { useLocalStorage } from '../../../../hooks/useLocaleStorage';
 import { ProductDetails } from '../../../../types/ProductDetails';
-import { Product } from '../../../../types/Product';
+import { ExtendedProduct, Product } from '../../../../types/Product';
 
 import { ButtonPrimary } from '../../../../components/UI/ButtonPrimary';
 import { ButtonFavorite } from '../../../../components/UI/ButtonFavorite';
@@ -32,7 +32,10 @@ export const ProductOverview: React.FC<Props> = ({
   const [inCart, setInCart] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const [storedCart, setStoredCart] = useLocalStorage<Product[]>('cart', []);
+  const [storedCart, setStoredCart] = useLocalStorage<ExtendedProduct[]>(
+    'cart',
+    [],
+  );
   const [storedFavorites, setStoredFavorites] = useLocalStorage<Product[]>(
     'favorites',
     [],
@@ -55,7 +58,7 @@ export const ProductOverview: React.FC<Props> = ({
 
       return exists
         ? prev.filter(p => p.id !== product.id)
-        : [...prev, product];
+        : [...prev, { ...product, amount: 1 }];
     });
   };
 

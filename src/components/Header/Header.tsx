@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
-import logo from '../../img/main-logo.svg';
+import logo from '../../img/logo.png';
 import favoriteIcon from '../../img/icons/heart-icon/heart-icon.svg';
 import shopingCartIcon from '../../img/icons/shoping-cart-icon.svg';
 import burgerMenuIcon from '../../img/icons/burger-menu-icon.svg';
@@ -46,7 +46,9 @@ export const Header = () => {
     >
       <div className={styles.header__content}>
         <div className={styles['header__content--left']}>
-          <img src={logo} alt="Logo" />
+          <Link to={'/'}>
+            <img className="main-logo" src={logo} alt="Logo" />
+          </Link>
           <div className={styles['header--hide-on-mobile']}>
             <Nav />
           </div>

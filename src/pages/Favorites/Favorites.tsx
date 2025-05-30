@@ -3,6 +3,8 @@ import { Product } from '../../types/Product';
 import { ProductCard } from '../../components/ProductCard';
 import { useLocalStorage } from '../../hooks/useLocaleStorage';
 
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+
 import styles from './Favorites.module.scss';
 
 export const Favorites = () => {
@@ -16,10 +18,13 @@ export const Favorites = () => {
   return (
     <section className="section">
       <div className="container">
+        <Breadcrumbs />
         <div className="section-title-wrapper">
           <h1>Favorites</h1>
           <p className="main-text main-text--secondary">
-            {products.length === 0 ? '' : ' items'}
+            {storedFavorites.length === 1
+              ? `${storedFavorites.length} item`
+              : `${storedFavorites.length} items`}
           </p>
         </div>
         {products.length === 0 ? (

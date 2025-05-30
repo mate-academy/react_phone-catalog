@@ -13,7 +13,7 @@ import { ProductCarouselSection } from '../../components/ProductCarouselSection'
 import { ProductCategorySection } from '../../components/ProductCategorySection';
 import { BannerCarouselSection } from '../../components/BannerCarouselSection';
 
-// import styles from './Home.module.scss';
+import styles from './Home.module.scss';
 
 export const Home = () => {
   const skeletons: Product[] = Array.from({ length: 5 }, () => skeletonProduct);
@@ -50,9 +50,13 @@ export const Home = () => {
 
   return (
     <section className="section home-page">
+      <h1 className={styles['home-page__title-visualy-hidden']}>
+        Product Catalog
+      </h1>
+
       <div className="container">
         <div className="section-title-wrapper">
-          <h1>Welcome to Nice Gadgets store!</h1>
+          <h1>Welcome to Silverino!</h1>
         </div>
       </div>
       <BannerCarouselSection />

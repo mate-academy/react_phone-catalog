@@ -1,0 +1,17 @@
+@import '../../styles/variables/variables.scss';
+
+.breadcrumbs__link {
+  color: $secondary;
+  transition: $animation-duration;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.breadcrumb-home-img {
+  width: 18px;
+  height: 18px;
+  transform: translateY(3px);
+  margin-right: 5px;
+}

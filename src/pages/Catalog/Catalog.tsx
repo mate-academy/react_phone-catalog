@@ -10,6 +10,7 @@ import { Product } from '../../types/Product';
 import { Category } from '../../types/Category';
 import { SortFilter } from '../../types/SortFilter';
 
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Select } from '../../components/UI/Select';
 import { ProductCard } from '../../components/ProductCard';
 import { Pagination } from './components/Pagination';
@@ -85,6 +86,7 @@ export const Catalog = () => {
   return (
     <section className="section">
       <div className="container">
+        <Breadcrumbs />
         <div className="section-title-wrapper">
           <h1>Catalog</h1>
           <p className="main-text main-text--secondary">
@@ -92,20 +94,22 @@ export const Catalog = () => {
           </p>
         </div>
 
-        <div className={styles['catalog__filters-wrapper']}>
-          <Select
-            title="Sort by"
-            placeholder="Choose"
-            options={Object.values(SortFilter)}
-            searchParamKey="sort"
-          />
-          <Select
-            title="Items On Page"
-            placeholder={ITEMS_PER_PAGE_INITIAL}
-            options={['8', '12', '16']}
-            searchParamKey="items-per-page"
-          />
-        </div>
+        {filteredProducts.length !== 0 && (
+          <div className={styles['catalog__filters-wrapper']}>
+            <Select
+              title="Sort by"
+              placeholder="Choose"
+              options={Object.values(SortFilter)}
+              searchParamKey="sort"
+            />
+            <Select
+              title="Items On Page"
+              placeholder={ITEMS_PER_PAGE_INITIAL}
+              options={['8', '12', '16']}
+              searchParamKey="items-per-page"
+            />
+          </div>
+        )}
 
         <div className={styles['catalog__products-wrapper']}>
           {isLoading &&
@@ -121,14 +125,23 @@ export const Catalog = () => {
               <ProductCard key={product.id} product={product} />
             ))}
         </div>
-        <div className={styles['catalog__pagination-wrapper']}>
-          <Pagination
-            currentPage={+(currentPage ?? 1)}
-            totalPages={totalPages.current}
-            visibleCount={5}
-            onPageChange={page => handlePageChange(page)}
-          />
-        </div>
+
+        {!isLoading && filteredProducts.length !== 0 && (
+          <div className={styles['catalog__pagination-wrapper']}>
+            <Pagination
+              currentPage={+(currentPage ?? 1)}
+              totalPages={totalPages.current}
+              visibleCount={5}
+              onPageChange={page => handlePageChange(page)}
+            />
+          </div>
+        )}
+
+        {!isLoading && filteredProducts.length === 0 && (
+          <p className="main-text main-text--centered">
+            No products matching these criteria
+          </p>
+        )}
       </div>
     </section>
   );

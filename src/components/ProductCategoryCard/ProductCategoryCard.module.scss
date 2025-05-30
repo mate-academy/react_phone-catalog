@@ -2,9 +2,8 @@
 @import '../../styles/variables/variables.scss';
 
 .product-category__card-banner {
+  display: block;
   width: 100%;
-  // height: 100%;
-  // height: 350px;
   padding-top: 100%;
   background-repeat: no-repeat;
   background-size: cover;

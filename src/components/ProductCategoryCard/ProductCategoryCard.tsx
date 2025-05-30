@@ -3,6 +3,8 @@ import classNames from 'classnames';
 
 import { Category } from '../../types/Category';
 
+import { NavLink } from 'react-router-dom';
+
 import styles from './ProductCategoryCard.module.scss';
 
 type Props = {
@@ -18,7 +20,11 @@ export const ProductCategoryCard: React.FC<Props> = ({
 }) => {
   return (
     <div>
-      <div
+      <NavLink
+        to={{
+          pathname: '/catalog',
+          search: `?category=${category}&page=1`,
+        }}
         className={classNames(
           styles['product-category__card-banner'],
           category === Category.Phone &&
@@ -28,7 +34,7 @@ export const ProductCategoryCard: React.FC<Props> = ({
           category === Category.Accessories &&
             styles['product-category__card-banner--accessories'],
         )}
-      ></div>
+      ></NavLink>
 
       <div className={styles['product-category__card-title-wrapper']}>
         <h4>{title}</h4>

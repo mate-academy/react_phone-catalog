@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ExtendedProduct } from '../../types/Product';
 
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductCardInCart } from '../../components/ProductCardInCart';
 import { ButtonPrimary } from '../../components/UI/ButtonPrimary';
 
@@ -80,6 +81,7 @@ export const Cart = () => {
   return (
     <section className="section">
       <div className="container">
+        <Breadcrumbs />
         <div className="section-title-wrapper">
           <h1>Cart</h1>
         </div>

@@ -12,6 +12,7 @@ import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 import { Category } from '../../types/Category';
 
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductOverview } from './components/ProductOverview';
 import { ProductPageDescription } from './components/ProductPageDescription/ProductPageDescription';
 import { ProductCarouselSection } from '../../components/ProductCarouselSection';
@@ -59,6 +60,7 @@ export const ProductPage = () => {
   return (
     <section className="section">
       <div className="container">
+        <Breadcrumbs />
         <div className="section-title-wrapper">
           <h1>{productDetails?.name}</h1>
         </div>
