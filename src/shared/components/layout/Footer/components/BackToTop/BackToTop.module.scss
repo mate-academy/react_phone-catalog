@@ -15,13 +15,16 @@
 
 .button {
   @extend %flex-center;
+  @include hover-icons($color-icons);
 
   width: 32px;
 
   height: 32px;
   background-color: $color-surface2;
   border: none;
-  transform: rotate(90deg);
+}
 
-  @include hover-icons($color-icons);
+.arrowIcon {
+  color: $color-white;
+  transform: rotate(270deg);
 }

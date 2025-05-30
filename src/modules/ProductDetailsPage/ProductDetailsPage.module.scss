@@ -55,14 +55,14 @@
 }
 
 .title {
-  margin-bottom: 40px;
-
   @include apply-typography(h2-desktop);
 
-  @media (max-width: $mobile-breakpoint) {
-    margin-bottom: 32px;
+  margin-bottom: 40px;
 
+  @media (max-width: $mobile-breakpoint) {
     @include apply-typography(h2-mobile);
+
+    margin-bottom: 32px;
   }
 }
 
@@ -234,6 +234,7 @@ input[type='radio'] {
 
 .capacityItem {
   @extend %flex-center;
+  @include apply-typography(body-desktop);
 
   height: 32px;
   border: 1px solid $color-icons;
@@ -244,8 +245,6 @@ input[type='radio'] {
 
   cursor: pointer;
   padding-inline: 8px;
-
-  @include apply-typography(body-desktop);
 
   &:hover {
     border: 1px solid $color-white;
@@ -301,9 +300,9 @@ input[type='radio'] {
 }
 
 .description {
-  grid-column: 1 / 13;
-
   --divider-mb: 32px;
+
+  grid-column: 1 / 13;
 
   @media (max-width: $tablet-breakpoint) {
     grid-column: 1 / -1;
@@ -343,17 +342,9 @@ input[type='radio'] {
 }
 
 .specs {
-  grid-column: 14 / -1;
-
-  @media (max-width: $tablet-breakpoint) {
-    grid-column: 1 / -1;
-  }
-
   --divider-mb: 25px;
 
-  @media (max-width: $mobile-breakpoint) {
-    --divider-mb: 30px;
-  }
+  grid-column: 14 / -1;
 
   .featureName {
     @include apply-typography(body-desktop);
@@ -364,6 +355,14 @@ input[type='radio'] {
   .featureValue {
     @include apply-typography(body-desktop);
   }
+
+  @media (max-width: $tablet-breakpoint) {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    --divider-mb: 30px;
+  }
 }
 
 .specsTitle {
@@ -373,8 +372,8 @@ input[type='radio'] {
 }
 
 .suggestedProducts {
+  @extend %flex-center;
+
   flex-direction: column;
   grid-column: 1 / -1;
-
-  @extend %flex-center;
 }

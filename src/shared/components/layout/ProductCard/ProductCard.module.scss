@@ -39,11 +39,11 @@
 }
 
 .image {
+  @include hover-scale(1.1);
+
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-
-  @include hover-scale(1.1);
 }
 
 .title {

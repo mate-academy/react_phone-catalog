@@ -40,20 +40,18 @@
       display: none;
     }
 
-    img {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    &.swiperButtonNext img {
-      transform: translateY(-50%) rotate(180deg);
-    }
-
     &.swiperButtonPrev:hover,
     &.swiperButtonNext:hover {
       background-color: $color-icons;
     }
+  }
+
+  .arrowIcon {
+    color: $color-white;
+  }
+
+  .arrowPrev {
+    transform: rotate(180deg);
   }
 
   .swiper {
@@ -97,14 +95,14 @@
   }
 
   .swiperPagination {
+    @extend %flex-center;
+
     position: absolute;
     bottom: 0;
     z-index: 10;
 
     width: 100%;
     height: 24px;
-
-    @extend %flex-center;
   }
 
   .swiperPaginationBullet {

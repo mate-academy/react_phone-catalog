@@ -1,4 +1,5 @@
-import heartIcon from 'assets/img/icons/heart.svg';
+import { Icon } from '../Icon/Icon';
+import { IconNames } from '../Icon/IconNames';
 
 import styles from './FavoriteButton.module.scss';
 
@@ -11,7 +12,7 @@ export const FavoriteButton: React.FC<Props> = ({ size = 40 }) => {
 
   return (
     <button className={`${styles.favoriteButton} ${sizeClass}`}>
-      <img alt="favorite" src={heartIcon} />
+      <Icon name={IconNames.Heart} />
     </button>
   );
 };

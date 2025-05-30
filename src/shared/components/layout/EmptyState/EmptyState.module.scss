@@ -17,6 +17,11 @@
   }
 }
 
+.arrowIcon {
+  color: $color-white;
+  transform: rotate(180deg);
+}
+
 .notFoundProductsImage {
   width: 300px;
   height: 300px;

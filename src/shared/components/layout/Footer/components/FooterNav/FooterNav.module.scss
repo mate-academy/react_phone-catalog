@@ -2,10 +2,9 @@
 
 .navbar {
   @extend %flex-center;
+  @include apply-typography(uppercase-desktop);
 
   justify-content: space-between;
-
-  @include apply-typography(uppercase-desktop);
 
   @media (max-width: $mobile-breakpoint) {
     flex-direction: column;
@@ -16,10 +15,9 @@
 
 .navbarLink {
   @extend %flex-center;
+  @include hover-text($color-white);
 
   text-transform: uppercase;
 
   color: $color-white;
-
-  @include hover-text($color-white);
 }

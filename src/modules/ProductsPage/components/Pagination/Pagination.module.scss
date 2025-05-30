@@ -1,51 +1,46 @@
 @use '/src/styles/globals.scss' as *;
 
 .pagination {
-  .paginationList {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .button {
-    flex-direction: row;
-    width: 32px;
-    height: 32px;
-    background-color: $color-surface2;
-    border: none;
-    transition: background-color 0.5s ease-in-out;
-    cursor: pointer;
-
-    @extend %flex-center;
-    @include apply-typography(body-desktop);
-
-    &Page {
-      background-color: $color-surface1;
-    }
-
-    &Dots {
-      background-color: $color-surface1;
-      cursor: default;
-    }
-
-    &Active {
-      background-color: $color-accent;
-    }
-
-    &Next {
-      transform: rotate(180deg);
-    }
-
-    &Disabled {
-      background-color: $color-surface1;
-      border: 1px solid $color-elements;
-      cursor: default;
-    }
-
-    &:hover {
-      background-color: $color-icons;
-    }
-  }
+  @extend %flex-center;
 }
 
+.paginationList {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button {
+  @extend %pagination-button;
+}
+
+.buttonArrow {
+  @extend %pagination-button;
+
+  background-color: $color-surface2;
+}
+
+.buttonActive {
+  background-color: $color-accent;
+}
+
+.buttonDisabled {
+  color: $color-icons;
+  background-color: $color-black;
+  border: 1px solid $color-elements;
+  cursor: default;
+}
+
+.dots {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  cursor: default;
+}
+
+.arrowPrev {
+  transform: rotate(180deg);
+}

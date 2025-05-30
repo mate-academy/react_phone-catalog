@@ -30,28 +30,19 @@
 }
 
 .link {
-  color: $color-white;
-
   @include hover-text($color-accent);
+
+  color: $color-white;
 }
 
-.icon {
-  @extend %flex-center;
-
-  width: 16px;
-  height: 16px;
+.arrowIcon {
+  color: $color-icons;
 }
 
 .homeLink {
   @extend %flex-center;
+  @include hover-scale(1.15);
 
   width: 16px;
   height: 16px;
-
-  @include hover-scale(1.15);
-}
-
-.arrow {
-  transform: rotate(-90deg);
-  cursor: default;
 }

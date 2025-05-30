@@ -6,17 +6,14 @@
   gap: 8px;
 }
 
-.arrow {
-  @extend %flex-center;
-
-  width: 16px;
-  height: 16px;
+.arrowIcon {
+  color: $color-white;
+  transform: rotate(180deg);
 }
 
 .text {
   @include apply-typography(small-desktop);
+  @include hover-text($color-accent);
 
   color: $color-white;
-
-  @include hover-text($color-accent);
 }

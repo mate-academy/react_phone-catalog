@@ -2,6 +2,9 @@ import { useState } from 'react';
 
 import classNames from 'classnames';
 
+import { Icon } from 'shared/components/ui/Icon/Icon';
+import { IconNames } from 'shared/components/ui/Icon/IconNames';
+
 import styles from './Dropdown.module.scss';
 
 type DropdownProps = {
@@ -38,9 +41,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     }
   };
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleDropdown = () => setIsOpen(prev => !prev);
 
   return (
     <div
@@ -52,20 +53,39 @@ export const Dropdown: React.FC<DropdownProps> = ({
       <p className={styles.label}>{label}</p>
       <button
         className={classNames(styles.dropDownButton, { [styles.open]: isOpen })}
+        type="button"
         onClick={toggleDropdown}
       >
         {selectedOption}
+
+        {!isOpen ? (
+          <Icon
+            className={classNames(styles.arrowIcon, {
+              [styles.arrowDown]: !isOpen,
+            })}
+            name={IconNames.Arrow}
+          />
+        ) : (
+          <Icon
+            className={classNames(styles.arrowIcon, {
+              [styles.arrowUp]: isOpen,
+            })}
+            name={IconNames.Arrow}
+          />
+        )}
       </button>
 
       {isOpen && (
         <ul
-          className={`${styles.dropdownContent}
-          ${isOpen ? styles.animate : ''}`}
+          className={classNames(styles.dropdownContent, {
+            [styles.animate]: isOpen,
+          })}
         >
           {options.map(option => (
             <li
               key={option}
               className={styles.option}
+              tabIndex={0}
               onClick={handleSelect(option)}
             >
               {option}

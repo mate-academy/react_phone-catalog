@@ -14,9 +14,12 @@
 
 .sliderButtonPrev,
 .sliderButtonNext {
+  @extend %flex-center;
+
   flex-direction: row;
   width: 32px;
   height: 32px;
+  color: $color-white;
   background-color: $color-surface2;
   background-position: center;
   background-repeat: no-repeat;
@@ -24,20 +27,13 @@
   transition: background-color 0.5s ease-in-out;
   cursor: pointer;
 
-  @extend %flex-center;
-
-  &.sliderButtonPrev {
-    background-image: url('../../../../assets/img/icons/arrow-back-white.svg');
-  }
-
-  &.sliderButtonNext {
-    background-image: url('../../../../assets/img/icons/arrow-back-white.svg');
-    transform: rotate(180deg);
-  }
-
   &:hover {
     background-color: $color-icons;
   }
+}
+
+.prevArrow{
+  transform: rotate(180deg);
 }
 
 .lockedButton,
@@ -46,14 +42,9 @@
   border: 1px solid $color-elements;
   pointer-events: none;
 
-  &.sliderButtonPrev {
-    background-image: url('../../../../assets/img/icons/arrow-down-dark-gray.svg');
-    transform: rotate(90deg);
-  }
-
+  &.sliderButtonPrev,
   &.sliderButtonNext {
-    background-image: url('../../../../assets/img/icons/arrow-down-dark-gray.svg');
-    transform: rotate(-90deg);
+    color: $color-icons;
   }
 }
 

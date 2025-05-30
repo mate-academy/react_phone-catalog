@@ -1,8 +1,9 @@
 @use '/src/styles/globals.scss' as *;
 
-.burger {
+.menuControl {
   display: none;
   z-index: 1001;
+  all: unset;
 
   @media (max-width: $mobile-breakpoint) {
     display: flex;
@@ -15,8 +16,12 @@
     border: 1px solid transparent;
     border-left: 1px solid $color-elements;
   }
+
+  svg {
+    @include hover-scale(1.5);
+  }
 }
 
-.image {
-  @include hover-scale(1.5);
+.crossIcon {
+  color: $color-white;
 }

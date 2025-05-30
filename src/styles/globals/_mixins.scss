@@ -38,18 +38,3 @@
     transform: scale($scale);
   }
 }
-
-@mixin primary-button {
-  @include apply-typography(buttons-desktop);
-  @extend %flex-center;
-
-  width: 100%;
-  background-color: $color-accent;
-  border: none;
-
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: $color-accent-light;
-  }
-}

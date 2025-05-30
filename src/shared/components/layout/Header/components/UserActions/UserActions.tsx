@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
-import cartIcon from 'assets/img/icons/cart.svg';
-import heartIcon from 'assets/img/icons/heart.svg';
 import classNames from 'classnames';
 
 import { useMenuContext } from 'contexts/MenuContext';
+import { Icon } from 'shared/components/ui/Icon/Icon';
+import { IconNames } from 'shared/components/ui/Icon/IconNames';
 import { closeMenu } from 'shared/helpers/handlers';
 
 import styles from './UserActions.module.scss';
@@ -28,7 +28,7 @@ export const UserActions: React.FC = () => {
         to="/favorites"
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
-        <img alt="Favorites" className={styles.image} src={heartIcon} />
+        <Icon className={styles.iconImage} name={IconNames.Heart} />
       </NavLink>
 
       <NavLink
@@ -36,7 +36,7 @@ export const UserActions: React.FC = () => {
         to="/cart"
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
-        <img alt="Cart" className={styles.image} src={cartIcon} />
+        <Icon className={styles.iconImage} name={IconNames.Cart} />
       </NavLink>
     </div>
   );

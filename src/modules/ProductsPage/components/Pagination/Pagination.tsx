@@ -1,7 +1,7 @@
-import arrowGray from 'assets/img/icons/arrow-back-dark-gray.svg';
-import arrowWhite from 'assets/img/icons/arrow-back-white.svg';
 import classNames from 'classnames';
 
+import { Icon } from 'shared/components/ui/Icon/Icon';
+import { IconNames } from 'shared/components/ui/Icon/IconNames';
 import { getVisiblePages } from 'shared/helpers/getVisiblePages';
 
 import styles from './Pagination.module.scss';
@@ -33,25 +33,21 @@ export const Pagination: React.FC<Props> = ({
       <ul className={styles.paginationList}>
         <li>
           <button
-            className={classNames(styles.button, styles.buttonPrev, {
+            className={classNames(styles.buttonArrow, {
               [styles.buttonDisabled]: isFirstPageSelected,
             })}
             disabled={isFirstPageSelected}
+            type="button"
             onClick={() => handleChangePage(curPage - 1)}
           >
-            <img
-              alt="arrow-back"
-              src={isFirstPageSelected ? arrowGray : arrowWhite}
-            />
+            <Icon className={styles.arrowPrev} name={IconNames.Arrow} />
           </button>
         </li>
 
         {visiblePages.map((page, index) => (
           <li key={index}>
             {page === 'dots' ? (
-              <span className={classNames(styles.button, styles.buttonDots)}>
-                ...
-              </span>
+              <div className={styles.dots}>...</div>
             ) : (
               <button
                 className={classNames(styles.button, styles.buttonPage, {
@@ -67,16 +63,13 @@ export const Pagination: React.FC<Props> = ({
 
         <li>
           <button
-            className={classNames(styles.button, styles.buttonNext, {
+            className={classNames(styles.buttonArrow, {
               [styles.buttonDisabled]: isLastPageSelected,
             })}
             disabled={isLastPageSelected}
             onClick={() => handleChangePage(curPage + 1)}
           >
-            <img
-              alt="arrow-forward"
-              src={isLastPageSelected ? arrowGray : arrowWhite}
-            />
+            <Icon name={IconNames.Arrow} />
           </button>
         </li>
       </ul>

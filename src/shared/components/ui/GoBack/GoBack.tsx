@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import arrowBack from 'assets/img/icons/arrow-back-white.svg';
+import { Icon } from '../Icon/Icon';
+import { IconNames } from '../Icon/IconNames';
 
 import styles from './GoBack.module.scss';
 
@@ -22,9 +23,7 @@ export const GoBack: React.FC<Props> = ({ message = 'Back', path = -1 }) => {
 
   return (
     <button className={styles.goBack} type="button" onClick={handleGoBack}>
-      <div className={styles.arrow}>
-        <img alt="back" src={arrowBack} />
-      </div>
+      <Icon className={styles.arrowIcon} name={IconNames.Arrow} />
       <span className={styles.text}>{message}</span>
     </button>
   );

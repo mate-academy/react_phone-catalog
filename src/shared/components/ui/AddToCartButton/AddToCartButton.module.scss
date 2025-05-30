@@ -1,7 +1,7 @@
 @use '/src/styles/globals.scss' as *;
 
 .addToCart {
-  @include primary-button;
+  @extend %primary-button;
 
   &.size40 {
     height: 40px;
@@ -11,5 +11,3 @@
     height: 48px;
   }
 }
-
-

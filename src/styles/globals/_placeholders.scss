@@ -1,0 +1,39 @@
+@use './variables' as *;
+@use './typography';
+@use './mixins' as *;
+@use './layout' as *;
+@use 'sass:list';
+@use 'sass:map';
+
+%pagination-button {
+  @include apply-typography(body-desktop);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: $color-surface1;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background-color: $color-icons;
+  }
+}
+
+%primary-button {
+  @extend %flex-center;
+  @include apply-typography(buttons-desktop);
+
+  width: 100%;
+  background-color: $color-accent;
+  border: none;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $color-accent-light;
+  }
+}

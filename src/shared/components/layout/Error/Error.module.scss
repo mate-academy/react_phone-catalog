@@ -2,12 +2,11 @@
 
 .error {
   @extend %flex-center;
+  @include apply-typography(h1-desktop);
 
   flex-direction: column;
   height: 100%;
   gap: 20px;
-
-  @include apply-typography(h1-desktop);
 
   @media (max-width: $mobile-breakpoint) {
     @include apply-typography(h1-mobile);
@@ -15,7 +14,7 @@
 }
 
 .reloadButton {
-  @include primary-button;
+  @extend %primary-button;
 
   width: 200px;
   height: 50px;

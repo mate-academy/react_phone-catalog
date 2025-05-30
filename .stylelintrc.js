@@ -1,6 +1,7 @@
 module.exports = {
   extends: '@mate-academy/stylelint-config',
-  plugins: ['stylelint-order'],
+  plugins: ['stylelint-order', 'stylelint-scss'],
+  customSyntax: 'postcss-scss',
   rules: {
     'declaration-block-no-redundant-longhand-properties': [
       true,
@@ -8,29 +9,41 @@ module.exports = {
         ignoreShorthands: ['/grid-template/'],
       },
     ],
+    'order/order': [
+      'custom-properties',
+      'dollar-variables',
+      {
+        type: 'at-rule',
+        name: 'extend',
+      },
+      {
+        type: 'at-rule',
+        name: 'include',
+        hasBlock: false,
+      },
+      'declarations',
+      {
+        type: 'at-rule',
+        name: 'include',
+        hasBlock: true,
+      },
+      'rules',
+    ],
     'order/properties-order': [
       [
-        // 0. Генерация контента
         'content',
         'quotes',
         'counter-reset',
         'counter-increment',
-
-        // 1. Display & Box-sizing
         'display',
         'visibility',
         'box-sizing',
-
-        // 2. Positioning
         'position',
         'top',
         'right',
         'bottom',
         'left',
         'z-index',
-
-        // 3. Flexbox / Grid — по отдельности
-        // Flex
         'flex',
         'flex-basis',
         'flex-direction',
@@ -45,7 +58,6 @@ module.exports = {
         'justify-content',
         'justify-items',
         'justify-self',
-        // Grid
         'grid',
         'grid-area',
         'grid-auto-columns',
@@ -64,8 +76,6 @@ module.exports = {
         'grid-template-areas',
         'grid-template-columns',
         'grid-template-rows',
-
-        // 4. Box model
         'width',
         'min-width',
         'max-width',
@@ -89,8 +99,6 @@ module.exports = {
         'object-fit',
         'object-position',
         'aspect-ratio',
-
-        // 5. Typography
         'font-family',
         'font-size',
         'font-style',
@@ -127,8 +135,6 @@ module.exports = {
         'color',
         'fill',
         'stroke',
-
-        // 6. Background & Borders
         'background',
         'background-color',
         'background-image',
@@ -155,8 +161,6 @@ module.exports = {
         'outline-style',
         'outline-color',
         'outline-offset',
-
-        // 7. Effects & Transforms
         'opacity',
         'filter',
         'mix-blend-mode',
@@ -181,8 +185,6 @@ module.exports = {
         'animation-direction',
         'animation-fill-mode',
         'animation-play-state',
-
-        // 8. User interaction & Accessibility
         'cursor',
         'pointer-events',
         'touch-action',
@@ -191,12 +193,8 @@ module.exports = {
         'scroll-snap-type',
         'scroll-snap-align',
         'overscroll-behavior',
-
-        // 9. Miscellaneous
         'appearance',
         'clip-path',
-        'mixin', // если вы используете SCSS mixins в declaration
-        'transition-end', // псевдособы в PostCSS и т.п.
       ],
       {
         unspecified: 'bottomAlphabetical',

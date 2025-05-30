@@ -3,8 +3,8 @@ import { removeFromCart } from 'features/cart/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { GoBack } from 'shared/components/ui/GoBack';
-
-import remove from '../../assets/img/icons/cross.svg';
+import { Icon } from 'shared/components/ui/Icon/Icon';
+import { IconNames } from 'shared/components/ui/Icon/IconNames';
 
 import styles from './CartPage.module.scss';
 
@@ -35,9 +35,7 @@ export const CartPage: React.FC = () => {
                     type="button"
                     onClick={() => handleRemoveFromCart(item.product.id)}
                   >
-                    <div className={styles.remove}>
-                      <img alt="remove" src={remove} />
-                    </div>
+                    <Icon className={styles.crossIcon} name={IconNames.Cross} />
                   </button>
                   <div className={styles.imageWrapper}>
                     <img alt={item.product.name} src={item.product.image} />

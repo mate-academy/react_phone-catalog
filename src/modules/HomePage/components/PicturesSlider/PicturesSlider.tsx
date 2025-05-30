@@ -7,9 +7,12 @@ import { Link } from 'react-router-dom';
 import bannerAccessories from 'assets/img/banner/banner-accessories.jpg';
 import bannerPhones from 'assets/img/banner/banner-phones.jpg';
 import bannerTablets from 'assets/img/banner/banner-tablets.jpg';
-import arrowWhite from 'assets/img/icons/arrow-back-white.svg';
+import classNames from 'classnames';
 import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { Icon } from 'shared/components/ui/Icon/Icon';
+import { IconNames } from 'shared/components/ui/Icon/IconNames';
 
 import styles from './PicturesSlider.module.scss';
 
@@ -17,7 +20,10 @@ export const PicturesSlider: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.swiperButtonPrev}>
-        <img alt="arrow-back" src={arrowWhite} />
+        <Icon
+          className={classNames(styles.arrowIcon, styles.arrowPrev)}
+          name={IconNames.Arrow}
+        />
       </div>
 
       <Swiper
@@ -60,7 +66,7 @@ export const PicturesSlider: React.FC = () => {
       <div className={styles.swiperPagination}></div>
 
       <div className={styles.swiperButtonNext}>
-        <img alt="arrow-forward" src={arrowWhite} />
+        <Icon className={styles.arrowIcon} name={IconNames.Arrow} />
       </div>
     </div>
   );

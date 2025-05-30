@@ -5,6 +5,8 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { ProductCard } from 'shared/components/layout/ProductCard';
+import { Icon } from 'shared/components/ui/Icon/Icon';
+import { IconNames } from 'shared/components/ui/Icon/IconNames';
 import { Product } from 'shared/types/Product';
 
 import styles from './ProductsSlider.module.scss';
@@ -29,8 +31,12 @@ export const ProductsSlider: React.FC<Props> = ({
         <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.navButtons}>
-          <div className={styles.sliderButtonPrev} id={navigationPrevId}></div>
-          <div className={styles.sliderButtonNext} id={navigationNextId}></div>
+          <div className={styles.sliderButtonPrev} id={navigationPrevId}>
+            <Icon className={styles.prevArrow} name={IconNames.Arrow} />
+          </div>
+          <div className={styles.sliderButtonNext} id={navigationNextId}>
+            <Icon name={IconNames.Arrow} />
+          </div>
         </div>
       </div>
 

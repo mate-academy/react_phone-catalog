@@ -39,17 +39,16 @@
       height: 2px;
     }
   }
-}
 
-.linkActive {
-  &::after {
-    content: '';
+  &.linkActive::after {
     transform: scale(1);
   }
 }
 
-.image {
+.iconImage {
   @include hover-scale(1.15);
+
+  color: $color-white;
 }
 
 .menuOpen {

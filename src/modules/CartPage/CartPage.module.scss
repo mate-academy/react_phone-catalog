@@ -25,14 +25,14 @@
 }
 
 .title {
-  margin-bottom: 40px;
-
   @include apply-typography(h1-desktop);
 
-  @media (max-width: $mobile-breakpoint) {
-    margin-bottom: 32px;
+  margin-bottom: 40px;
 
+  @media (max-width: $mobile-breakpoint) {
     @include apply-typography(h1-mobile);
+
+    margin-bottom: 32px;
   }
 }
 
@@ -52,13 +52,6 @@
   justify-content: space-between;
 }
 
-.remove {
-  @extend %flex-center;
-
-  width: 16px;
-  height: 16px;
-
-  img {
-    color: $color-icons;
-  }
+.crossIcon {
+  color: $color-icons;
 }

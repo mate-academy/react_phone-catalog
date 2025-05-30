@@ -18,16 +18,12 @@
 
 .navbarLink {
   @extend %flex-center;
+  @include hover-text($color-white);
 
   position: relative;
   height: 64px;
   text-transform: uppercase;
   color: $color-secondary;
-
-  @media (max-width: $mobile-breakpoint) {
-    height: 27px;
-    padding: 8px 0;
-  }
 
   &::after {
     content: '';
@@ -45,7 +41,10 @@
     }
   }
 
-  @include hover-text($color-white);
+  @media (max-width: $mobile-breakpoint) {
+    height: 27px;
+    padding: 8px 0;
+  }
 }
 
 .linkActive {
