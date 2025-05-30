@@ -3,15 +3,18 @@
 .itemCard {
   &__navigation {
     display: flex;
+    align-items: center;
     column-gap: 8px;
     padding-block: 24px;
   }
 
   &__iconHome {
     background-image: url('../../../img/icons/icon-home.png');
+    background-repeat: no-repeat;
     background-size: contain;
-    height: 20px;
-    width: 20px;
+    background-position: center;
+    height: 16px;
+    width: 16px;
     cursor: pointer;
 
     @include hover(scale, 1.1);
@@ -22,8 +25,8 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
   }
 
   &__address {
@@ -36,8 +39,12 @@
 
   &__pagePathName {
     cursor: pointer;
-
+    font-size: 12px;
     @include hover(color, $textMainColor)
+  }
+
+  &__pagePathNameProduct {
+    font-size: 12px;
   }
   
   &__backButton {
@@ -78,12 +85,11 @@
   }
 
   &__mainContent {
+    @include page-grid;
     row-gap: 56px;
 
     @include on-tablet {
       row-gap: 64px;
-
-      @include page-grid;
     }
 
     @include on-desktop {
@@ -99,8 +105,8 @@
     justify-content: center;
     align-items: center;
     row-gap: 16px;
-    width: 288px;
-    margin-bottom: 80px;
+    // width: 288px;
+    grid-column: 1 / -1;
 
     @include on-tablet {
       grid-column: 1 / 7;
@@ -114,9 +120,8 @@
       column-gap: 60px;
     }
   }
-  
+
   &__bigImage {
-    flex: 1 1 auto;
     display: flex;
     justify-content: center;
     width: 288px;
@@ -137,19 +142,25 @@
 
     & img {
       object-fit: contain;
+      width: 100%;
+      height: 100%;
+
+      @include on-tablet {
+        width: inherit;
+      }
     }
   }
 
   &__smallImages {
     display: flex;
     justify-content: space-between;
-    align-self: self-start;
     row-gap: 8px;
-
+    
     height: 50px;
-    width: 272px;
-
+    width: calc(100vw - 48px);
+    
     @include on-tablet {
+      align-self: self-start;
       flex-direction: column;
     }
 
@@ -185,6 +196,8 @@
   }
 
   &__moreOptions {
+    grid-column: 1 / -1;
+
     @include on-tablet {
       grid-column: 8 /13;
     }
@@ -340,7 +353,7 @@
   }
 
   &__button_addToCart {
-    flex: 1 1 auto;
+    flex: 1 1 180px;
     display: block;
     font-size: 14px;
     font-weight: 700;
@@ -348,7 +361,11 @@
     width: 160px;
     transition: all 0.3s;
     cursor: pointer;
+    max-width: 263px;
 
+    @include on-tablet {
+      flex: 0 0 auto;
+    }
 
     &:hover {
       transform: scale(1.03);
@@ -438,6 +455,7 @@
   }
 
   &__moreInfo {
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
     row-gap: 32px;
@@ -485,6 +503,7 @@
   }
 
   &__techSpecs {
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -527,10 +546,6 @@
   }
 
   &__additionalContent {
-    width: 100%;
-
-    @include on-tablet {
-      grid-column: 1 / -1;
-    }
+    grid-column: 1 / -1;
   }
 }

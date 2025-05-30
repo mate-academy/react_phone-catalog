@@ -5,14 +5,15 @@
     display: flex;
     column-gap: 8px;
     padding-block: 24px;
-
+    align-items: center;
   }
 
   &__iconHome {
     background-image: url('../../img/icons/icon-home.png');
     background-size: contain;
-    height: 20px;
-    width: 20px;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
   }
 
   &__iconArrowRight {
@@ -20,8 +21,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
   }
 
   &__address {
@@ -30,6 +31,7 @@
     column-gap: 8px;
     color: $textNotActiveColor;
     text-transform: capitalize;
+    font-size: 12px;
   }
 
   &__title {
