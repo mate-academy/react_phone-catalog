@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { VITE_BASE_URL } from '../../utils/fetchClient';
 import { ExtendedProduct } from '../../types/Product';
 
 import { NavLink } from 'react-router-dom';
@@ -34,7 +35,7 @@ const ProductCardInCartComponent: React.FC<Props> = ({
         >
           <img
             className={`${styles['product-card__image']} ${styles['product-card__image--cart']}`}
-            src={`/${product.image}`}
+            src={`${VITE_BASE_URL}/${product.image}`}
             alt="Product Photo"
           />
         </NavLink>

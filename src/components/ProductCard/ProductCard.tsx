@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
+import { VITE_BASE_URL } from '../../utils/fetchClient';
 import { useLocalStorage } from '../../hooks/useLocaleStorage';
 import { ExtendedProduct, Product } from '../../types/Product';
 
@@ -104,7 +105,7 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles['product-card__image-wrapper']}>
         <img
           className={styles['product-card__image']}
-          src={`/${product.image}`}
+          src={`${VITE_BASE_URL}/${product.image}`}
           alt="Product Photo"
         />
       </div>

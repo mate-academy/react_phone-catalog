@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
+import { VITE_BASE_URL } from '../../../../utils/fetchClient';
 
 import { useLocalStorage } from '../../../../hooks/useLocaleStorage';
 import { ProductDetails } from '../../../../types/ProductDetails';
@@ -122,7 +123,7 @@ export const ProductOverview: React.FC<Props> = ({
               key={path}
               className={styles['overview__gallery-photo-slide']}
             >
-              <img src={`/${path}`} />
+              <img src={`${VITE_BASE_URL}/${path}`} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -144,7 +145,7 @@ export const ProductOverview: React.FC<Props> = ({
                 className={styles['overview__gallery-preview-slide']}
                 key={path}
               >
-                <img src={`/${path}`} />
+                <img src={`${VITE_BASE_URL}/${path}`} />
               </SwiperSlide>
             ))}
           </div>

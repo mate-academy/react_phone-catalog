@@ -1,12 +1,13 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { NavLink } from 'react-router-dom';
+import { VITE_BASE_URL } from '../../../../utils/fetchClient';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import styles from './BannerCarousel.module.scss';
-import { NavLink } from 'react-router-dom';
 
 export const BannerCarousel: React.FC = ({}) => {
   return (
@@ -36,8 +37,8 @@ export const BannerCarousel: React.FC = ({}) => {
               <img
                 src={
                   window.innerWidth <= 640
-                    ? '/img/banners/add-banner-mobile.jpg'
-                    : '/img/banners/add-banner.jpg'
+                    ? `${VITE_BASE_URL}/img/banners/add-banner-mobile.jpg`
+                    : `${VITE_BASE_URL}/img/banners/add-banner.jpg`
                 }
                 alt="Banner"
                 className={styles['banner-image']}
@@ -49,8 +50,8 @@ export const BannerCarousel: React.FC = ({}) => {
               <img
                 src={
                   window.innerWidth <= 640
-                    ? '/img/banners/add-banner-mobile.jpg'
-                    : '/img/banners/add-banner.jpg'
+                    ? `${VITE_BASE_URL}/img/banners/add-banner-mobile.jpg`
+                    : `${VITE_BASE_URL}/img/banners/add-banner.jpg`
                 }
                 alt="Banner"
                 className={styles['banner-image']}
@@ -62,8 +63,8 @@ export const BannerCarousel: React.FC = ({}) => {
               <img
                 src={
                   window.innerWidth <= 640
-                    ? '/img/banners/add-banner-mobile.jpg'
-                    : '/img/banners/add-banner.jpg'
+                    ? `${VITE_BASE_URL}/img/banners/add-banner-mobile.jpg`
+                    : `${VITE_BASE_URL}/img/banners/add-banner.jpg`
                 }
                 alt="Banner"
                 className={styles['banner-image']}
