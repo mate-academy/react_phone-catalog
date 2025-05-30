@@ -3,7 +3,8 @@
 
 .list {
   @include grid;
-  grid-auto-flow: column; // основне: робить grid горизонтальним
+
+  grid-auto-flow: column;
   overflow-x: auto;
   gap: 16px;
     max-width: 100%;

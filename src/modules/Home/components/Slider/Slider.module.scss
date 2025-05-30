@@ -8,15 +8,13 @@
 }
 
 .slider {
+  height: 400px;
   grid-column: 1 / -1;
   display: flex;
   gap: 20px;
 
-
   &__content {
-    height: 400px;
-    width: 100%;
-    object-fit:fill;
+    object-fit: fill;
     display: block;
 
     @include on-tablet {
@@ -33,5 +31,62 @@
     @include on-mobile {
       display: none;
     }
+  }
+}
+
+.slide {
+  display: grid; // 🔧 додай grid
+  grid-template-columns: 1fr 1fr;
+  background-size: cover;
+  width: 100%;
+  background-color: black;
+  gap: 32px;
+
+  &__descryption {
+    width: 100%; // 🔧 тепер 1fr займає повністю колонку
+    position: relative;
+    background-color: $primary;
+    margin: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 6px;
+
+    @include on-mobile {
+      display: none;
+    }
+
+    &__title {
+      color: white;
+      @include use-font(800);
+      font-size: 48px;
+      line-height: 48px;
+      letter-spacing: -1px;
+      margin: 32px;
+    }
+
+    &__button {
+      @include use-font(700);
+
+      background-color: $primary;
+      color: white;
+      margin: 32px;
+      aspect-ratio: 2/0.2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px white solid;
+          border-radius: 6px;
+
+
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 }

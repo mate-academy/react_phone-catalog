@@ -39,7 +39,6 @@ $mobile: 320px;
   min-width: $mobile;
   
   @media (max-width: $desktop) {
-    
     padding-inline: 120px;
   }
 
@@ -59,6 +58,7 @@ $mobile: 320px;
     @content;
   }
 }
+
 @mixin on-tablet {
   @media (max-width: $desktop) {
     @content;

@@ -48,8 +48,9 @@
   flex-direction: column;
 }
 
-.nav {
+.nav { // fix here 
   max-width: $desktop;
+
   @include on-desktop {
     padding-left: none;
   }
