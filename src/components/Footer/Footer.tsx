@@ -19,7 +19,7 @@ export const Footer = () => {
             <ul className={styles['footer__links-list']}>
               <li>
                 <a
-                  className="uppercase-text main-text--secondary"
+                  className={`uppercase-text main-text--secondary ${styles.footer__link}`}
                   rel="noreferrer"
                   href="https://github.com/VadimKudrenko"
                   target="_blank"
@@ -29,7 +29,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  className="uppercase-text main-text--secondary"
+                  className={`uppercase-text main-text--secondary ${styles.footer__link}`}
                   rel="noreferrer"
                   href="https://github.com/VadimKudrenko"
                   target="_blank"
@@ -39,7 +39,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  className="uppercase-text main-text--secondary"
+                  className={`uppercase-text main-text--secondary ${styles.footer__link}`}
                   rel="noreferrer"
                   href="https://github.com/VadimKudrenko"
                   target="_blank"

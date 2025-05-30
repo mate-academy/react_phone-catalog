@@ -30,3 +30,11 @@
     flex-direction: row;
   }
 }
+
+.footer__link {
+  transition: $animation-duration;
+
+  &:hover {
+    color: $primary;
+  }
+}
