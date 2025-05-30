@@ -22,7 +22,8 @@ const ThemeSwitcher = () => {
 
   return (
     <div className="theme-selector">
-      <label htmlFor="theme-select">Тема:</label>
+      <label htmlFor="theme-select">Оберіть тему:</label>
+      <br/>
       <select
         id="theme-select"
         value={currentTheme}

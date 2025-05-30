@@ -14,6 +14,18 @@ body.sidebar-open {
   z-index: 10;
 }
 
+.navbar-logo.navbar-logo {
+  @media (max-width: 720px) {
+    margin-left: 0px;
+  }
+
+  margin-left: 16px;
+
+  @media (min-width: 1200px) {
+    margin-left: 24px;
+  }
+}
+
 .navbar-logo img {
   height: 48px;
 }
@@ -60,6 +72,7 @@ body.sidebar-open {
 .navbar-sliding-settings {
   width: 100%;
   display: flex;
+  justify-content: space-around;
   flex-direction: row;
   position: absolute;
   top: 0;
@@ -73,12 +86,40 @@ body.sidebar-open {
   }
 }
 
+.navbar-searchbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  background-color: $color-white;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+
+  &.visible {
+    transform: translateY(0);
+  }
+}
+
+.navbar-links-block {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-left: 0;
+
+  @media (min-width: 1200px) {
+    max-width: 50vw;
+  }
+}
+
 .navbar-container {
   display: flex;
   flex-wrap: wrap;
 
   @media (min-width: $screen-tablet) {
     border-bottom: 1px solid $color-elements;
+
   }
 
   &.theme0 {

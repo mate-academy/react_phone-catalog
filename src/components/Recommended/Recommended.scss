@@ -1,5 +1,10 @@
 @import '../../App.scss';
 
+.rec__body {
+  margin: 0 auto;
+  max-width: 1152px;
+}
+
 .rec__card {
   width: 212px;
   height: 439px;
@@ -12,6 +17,11 @@
     @media (min-width: $screen-tablet) {
       width: 237px;
       height: 512px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 272px;
+      height: 506px;
     }
 }
 

@@ -2,6 +2,7 @@ $--tablet-width: 640px;
 
 .slider-demo {
   margin: 0 auto 60px;
+  max-width: 1200px;  // added
 
   @media (min-width: $--tablet-width) {
     width: calc(490 / 640 * 100vw);
@@ -12,6 +13,7 @@ $--tablet-width: 640px;
 .slider-wrapper {
   display: block;
   margin-bottom: 40px;
+  max-width: 1200px;  // added
 
   @media (min-width: $--tablet-width) {
     height: calc(490 / 640 / 2.5 * 100vw);
@@ -179,6 +181,7 @@ $--tablet-width: 640px;
 }
 
 .slider__image-container {
+  max-width: 1200px; // added
   flex: 1;
   display: flex;
   flex-direction: column;

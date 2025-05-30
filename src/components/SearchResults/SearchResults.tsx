@@ -35,6 +35,7 @@ export const SearchResults: React.FC = () => {
   useEffect(() => {
     // Here we sort and filter our data if it were from server
     // Example: fetchResults({ query, page, category, sort });
+    // in our demo there are no backend for this
   }, [query, page, category, sort]);
 
   const phones = ((phonesJSON));
@@ -44,7 +45,8 @@ export const SearchResults: React.FC = () => {
 
   function containsSubstring(stringsArray, substring) {
     return stringsArray.some(str =>
-      typeof str === 'string' && str.includes(String(substring)),
+      typeof str === 'string' && str.toLowerCase()
+        .includes(String(substring).toLowerCase()),
     );
   }
 
@@ -103,6 +105,7 @@ export const SearchResults: React.FC = () => {
     <div className="search-page__wrapper">
       <h1>HERE PLACE YOUR SEARCH RES</h1>
       <h2>Results for: &quot;{query}&quot;</h2>
+      <p>Search res quantity - {filteredItems().length}</p>
       <p>Page: {page}</p>
       <p>Category: {category}</p>
       <p>Sort: {sort}</p>

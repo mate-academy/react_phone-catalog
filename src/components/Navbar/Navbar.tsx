@@ -37,6 +37,7 @@ const useWindowWidth = () => {
 const FullNavbar: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [topbarOpen, setTopBarOpen] = useState(false);
+  const [searchbarOpen, setSearchbarOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('all');
   const navigate = useNavigate();
@@ -55,16 +56,39 @@ const FullNavbar: React.FC = () => {
   };
 
   const topbarRef = useRef<HTMLDivElement>(null);
+  const searchbarRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef(null);
+
+  const focusOnSearch = () => {
+    searchInputRef.current?.focus();
+  };
 
   const handleDocumentClick = (event: MouseEvent) => {
     const target = event.target as Node;
 
     const clickedInSidebar = topbarRef.current?.contains(target);
+    const clickOnSearchbar = searchbarRef.current?.contains(target);
 
     if (!clickedInSidebar) {
       setTopBarOpen(false);
     }
+
+    if (!clickOnSearchbar) {
+      setSearchbarOpen(false);
+    }
   };
+
+  useEffect(() => {
+    if (searchbarOpen) {
+      document.body.classList.add('searchbar-open');
+      document.addEventListener('mousedown', handleDocumentClick);
+    }
+
+    return () => {
+      document.body.classList.remove('searchbar-open');
+      document.removeEventListener('mousedown', handleDocumentClick);
+    };
+  }, [searchbarOpen]);
 
   useEffect(() => {
     if (topbarOpen) {
@@ -86,6 +110,7 @@ const FullNavbar: React.FC = () => {
         page: '1',
       });
 
+      setSearchbarOpen(false);
       navigate(`/search?${params.toString()}`);
     }
   };
@@ -119,54 +144,60 @@ const FullNavbar: React.FC = () => {
       <div className={`navbar-container ${currentTheme} ${sidebarOpen ? 'visible' : ''}`}
         onClick={() => setSidebarOpen(false)}
       >
-        <NavLink
-          to="/"
-          className={() => classNames(
-            'navbar-item', 'navbar-logo',
-          )}
-        >
-          <img src="../../../public/img/icons/iSupply_logo.png" alt="" />
-        </NavLink>
 
-        <NavLink
-          to="/"
-          className={({ isActive }) => classNames(
-            'navbar-item',
-            { 'has-background-grey-lighter': isActive },
-          )}
-        >
-          {t('navigation.home')}
-        </NavLink>
 
-        <NavLink
-          to="/phones"
-          className={({ isActive }) => classNames(
-            'navbar-item',
-            { 'has-background-grey-lighter': isActive },
-          )}
-        >
-          {t('navigation.phones')}
-        </NavLink>
+        <div className="navbar-item navbar-links-block">
+          <NavLink
+            to="/"
+            className={() => classNames(
+              'navbar-item', 'navbar-logo',
+            )}
+          >
+            <img src="../../../public/img/icons/iSupply_logo.png" alt="" />
+          </NavLink>
 
-        <NavLink
-          to="/tablets"
-          className={({ isActive }) => classNames(
-            'navbar-item navbar-tablets',
-            { 'has-background-grey-lighter': isActive },
-          )}
-        >
-          {t('navigation.tablets')}
-        </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) => classNames(
+              'navbar-item',
+              { 'has-background-grey-lighter': isActive },
+            )}
+          >
+            {t('navigation.home')}
+          </NavLink>
 
-        <NavLink
-          to="/accessories"
-          className={({ isActive }) => classNames(
-            'navbar-item',
-            { 'has-background-grey-lighter': isActive },
-          )}
-        >
-          {t('navigation.accessories')}
-        </NavLink>
+          <NavLink
+            to="/phones"
+            className={({ isActive }) => classNames(
+              'navbar-item',
+              { 'has-background-grey-lighter': isActive },
+            )}
+          >
+            {t('navigation.phones')}
+          </NavLink>
+
+          <NavLink
+            to="/tablets"
+            className={({ isActive }) => classNames(
+              'navbar-item navbar-tablets',
+              { 'has-background-grey-lighter': isActive },
+            )}
+          >
+            {t('navigation.tablets')}
+          </NavLink>
+
+          <NavLink
+            to="/accessories"
+            className={({ isActive }) => classNames(
+              'navbar-item',
+              { 'has-background-grey-lighter': isActive },
+            )}
+          >
+            {t('navigation.accessories')}
+          </NavLink>
+        </div>
+
+
 
   {/*         <select value={category} onChange={e => setCategory(e.target.value)}>
             <option value="all">All</option>
@@ -193,7 +224,12 @@ const FullNavbar: React.FC = () => {
           {t('navigation.cart')}
         </NavLink> */}
 
-        <div className="bottom-button desktop">
+        <div className="bottom-button desktop"
+          onClick={() => {
+            setSearchbarOpen(true);
+            focusOnSearch();
+          }}
+        >
           {searchGlass}
         </div>
 
@@ -201,7 +237,7 @@ const FullNavbar: React.FC = () => {
           to="/favorites"
           className={({ isActive }) => classNames(
             'bottom-button desktop',
-            { 'link-active': isActive },
+            { 'link-active has-background-grey-lighter': isActive },
           )}
         >
           {emptyHeart}
@@ -213,7 +249,7 @@ const FullNavbar: React.FC = () => {
           to="/cart"
           className={({ isActive }) => classNames(
             'bottom-button desktop',
-            { 'link-active': isActive },
+            { 'link-active has-background-grey-lighter': isActive },
           )}
         >
           {shoppingBagIcon}
@@ -239,9 +275,14 @@ const FullNavbar: React.FC = () => {
           <div onClick={(e) => e.stopPropagation()}>
             <ThemeSwitcher />
           </div>
+        </div>
 
+        <div className={`navbar-searchbar ${searchbarOpen ? 'visible' : ''}`}
+          ref={searchbarRef}
+        >
           <div className="navbar-item navbar-search">
             <input
+              ref={searchInputRef}
               type="text"
               placeholder={t('navigation.search_placeholder')}
               className='navigation-searchbar'
