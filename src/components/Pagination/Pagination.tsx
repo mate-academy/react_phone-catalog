@@ -15,6 +15,7 @@ export const Pagination: React.FC = () => {
   );
   const [searchParams, setSearchParams] = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
+  const [hasChanged, setHasChanged] = useState(false);
 
   const handleOptionClick = (value: 4 | 8 | 16 | 'all') => {
     dispatch(setPaginationStatus(value));
@@ -25,6 +26,7 @@ export const Pagination: React.FC = () => {
       page: '1',
     });
     setIsOpen(false);
+    setHasChanged(true);
   };
 
   useEffect(() => {
@@ -60,7 +62,7 @@ export const Pagination: React.FC = () => {
           style={{ position: 'relative', userSelect: 'none' }}
         >
           <div
-            className="select__field"
+            className={`select__field ${hasChanged ? 'changed' : ''}`}
             data-cy="statusSelect"
             onClick={() => setIsOpen(open => !open)}
           >

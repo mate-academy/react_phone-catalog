@@ -23,7 +23,8 @@ export const Filter: React.FC = () => {
   );
   const [searchParams, setSearchParams] = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
-
+  //const inputRef = useRef();
+  const [hasChanged, setHasChanged] = useState(false);
   const handleOptionClick = (value: SortValue) => {
     dispatch(searchedFilterStatus(value));
     setSearchParams({
@@ -31,6 +32,7 @@ export const Filter: React.FC = () => {
       sort: value,
     });
     setIsOpen(false);
+    setHasChanged(true);
   };
 
   const getLabelFromValue = (value: SortValue | null): SortLabel => {
@@ -61,7 +63,7 @@ export const Filter: React.FC = () => {
           style={{ position: 'relative', userSelect: 'none' }}
         >
           <div
-            className="select__field"
+            className={`select__field ${hasChanged ? 'changed' : ''}`}
             data-cy="statusSelect"
             onClick={() => setIsOpen(open => !open)}
           >
@@ -76,9 +78,7 @@ export const Filter: React.FC = () => {
           </div>
 
           {isOpen && (
-            <div
-              className="sort__filter"
-            >
+            <div className="sort__filter">
               {sortOptions.map(({ label, value }) => (
                 <div
                   key={value}
@@ -88,7 +88,6 @@ export const Filter: React.FC = () => {
                     backgroundColor:
                       filterStatus === value ? '#E2E6E9' : 'white',
                     color: filterStatus === value ? '#313237' : '#89939A',
-                    
                   }}
                 >
                   {label}

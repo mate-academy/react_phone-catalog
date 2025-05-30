@@ -40,7 +40,7 @@ export const Footer = () => {
         <ScrollLink
           to="heading1"
           smooth={true}
-          duration={200}
+          duration={300}
           offset={-80}
           className="icon__arrow__up"
         >
