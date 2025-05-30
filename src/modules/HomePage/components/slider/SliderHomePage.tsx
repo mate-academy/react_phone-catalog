@@ -39,7 +39,7 @@ export const SliderHomePage = () => {
   },[])
 
   return (
-
+<div className={styles.container}>
     <div className={styles.slider}>
 <div className={styles.slider__box}>
         <div className={`${styles.slider__button}
@@ -54,7 +54,7 @@ export const SliderHomePage = () => {
 />
 </div>
       <div className={styles.slider__rectangle}>
-        {images.map((image, index) => <span key={index}
+        {images.map((_, index) => <span key={index}
           className={index === activeIndex ? styles.active : ''}
           onClick={() => {
             setActiveIndex(index)
@@ -64,7 +64,7 @@ export const SliderHomePage = () => {
 
 
         </div>
-      </div>
+      </div> </div>
 
   );
 };

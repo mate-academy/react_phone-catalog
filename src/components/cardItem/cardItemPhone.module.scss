@@ -1,33 +1,39 @@
 @use '/src/components/utils/mixin.module.scss' as mixin;
 
 .card{
+border: 1px solid #E2E6E9;
+  box-sizing: border-box;
+  padding: 32px;
 
-  width: 212px;
+  @include mixin.onTablet {
+width:237px
+  }
 
-  padding: 32px 32px 0 32px;
+  @include mixin.onDesktop {
+width:272px
+  }
 
-  border: 1px solid #E2E6E9;
-  border-radius: 8px;
-  @include mixin.onTablet{
-    width: 237px;
-    height: 512px;
-  }
-  @include mixin.onDesktop{
-    width: 272px;
-    height: 506px;
-    &:hover{
-    transform: scale(1.1);
-  }
-  }
   &__image{
+width: 148px;
+height: 129px;
 
-    width: 148px;
-    height: 129px;
+
 object-fit: contain;
 margin-bottom: 24px;
+@include mixin.onTablet{
+  width: 173px;
+height: 181px;
+
+}
+@include mixin.onDesktop{
+  width: 208px;
+height: 196px;
+
+}
 
   }
   &__name{
+     min-height: 48px;
     margin: 0;
     font-family: Mont;
 font-weight: 600;
@@ -62,7 +68,7 @@ color:#89939A;
   margin-bottom: 8px;
 }
 &__info{
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 
 }
   &__screen{
@@ -93,15 +99,16 @@ text-align: right;
 
 }
 &__buttons{
-  margin: 0;
+
   display: flex;
   justify-content: space-between;
 }
 &__addCart{
   width: 100px;
-height: 40px;
-border-radius: 48px;
 
+  height: 40px;
+border-radius: 48px;
+margin-right: 8px;
 background-color: #4219D0;
 
 color: #E2E6E9;
@@ -111,9 +118,15 @@ font-size: 14px;
 line-height: 40px;
 letter-spacing: 0%;
 text-align: center;
-
+@include mixin.onTablet{
+    width: 125px;
+  }
+  @include mixin.onDesktop{
+    width: 160px;
+  }
 
 }
+
 &__favorite{
   background-image: url('/img/icons/addFavorite.svg');
   width: 40px;

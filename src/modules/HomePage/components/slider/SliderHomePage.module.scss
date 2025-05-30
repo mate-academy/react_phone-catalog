@@ -1,9 +1,14 @@
 
 
 @use '/src/components/utils/mixin.module.scss' as mixin;
-
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  
+}
 .slider {
-
+box-sizing: border-box;
 display: flex;
 justify-content: flex-end;
 align-items: center;
@@ -55,9 +60,9 @@ background-repeat: no-repeat;
    background-position: center;
   flex-shrink: 0;
 &:hover{
-    border:2px solid #333;
+    border:1px solid #333;
     border-radius: 20px;
-    background-color: #E2E6E9;
+
   }
 
   @include mixin.onTablet {

@@ -8,6 +8,7 @@ import { Outlet } from 'react-router-dom';
 import { init } from './features/ProductSlice';
 
 import { useAppDispatch} from './app/hooks'
+import { Container } from './components/container/Container';
 export const App = () => {
 
     const dispach = useAppDispatch();
@@ -20,7 +21,10 @@ export const App = () => {
 
   return (
     <><Header />
-      <Outlet />
+      
+        <Outlet />
+
+
    <Footer />
   </>)
 };

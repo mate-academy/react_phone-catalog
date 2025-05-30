@@ -1,5 +1,6 @@
-import { createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../types/products"
+import { fetchProducts } from "../api/fetchProducts";
 
 type ProductsState = {
   products: Product[];
@@ -14,38 +15,35 @@ const initialState: ProductsState = {
   loading: false,
   error:'',
 }
+
+export const init = createAsyncThunk('product/fetch', () => {
+  return fetchProducts();
+})
+
 /* eslint-disable no-param-reassign */
 const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
-    },
-    setProducts: (state, action: PayloadAction<Product[]>) => {
-      state.products = action.payload;
-    },
-    setError: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
 
-    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(init.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(init.fulfilled, (state, action) => {
+      state.products = action.payload;
+      state.loading = false;
+    })
+   builder.addCase(init.rejected, (state, action) => {
+  state.loading = false;
+  state.error = action.error.message || 'Failed to load products';
+});
   }
 })
+
 /* eslint-enable no-param-reassign */
 
-export const { setLoading, setProducts, setError } = productsSlice.actions;
+export const {  } = productsSlice.actions;
 
 export default productsSlice.reducer;
-
-export const init = () => {
-  return (dispach: Dispatch) => {
-    dispach(setLoading(true));
-
-      fetch('./api/products.json').then(res=>res.json())
-        .then(data => dispach(setProducts(data)))
-        .catch(()=>dispach(setError('something Wrong')))
-    .finally(()=>dispach(setLoading(false)))
-
-  }
-}
-

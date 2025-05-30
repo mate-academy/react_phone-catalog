@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../../app/hooks';
 import { ProductCart } from '../../../../components/cardItem/ProductCart';
 import styles from './ProductSlider.module.scss'
@@ -8,6 +9,9 @@ type Props = {
 };
 
 export const ProductSlider = (props: Props) => {
+  const [startIndex, setStartIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(4);
+
   const { type } = props;
 
   const products = useAppSelector(state => state.products.products);
@@ -19,7 +23,7 @@ export const ProductSlider = (props: Props) => {
   };
 
 
-  const visibleProducts = Array.from(
+  const allSortedProducts = Array.from(
     new Map(
       (
         type === 'new'
@@ -27,23 +31,61 @@ export const ProductSlider = (props: Props) => {
           :[...products].sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price))
       ).map(product => [getBaseModelId(product.itemId), product])
     ).values()
-  ).slice(0, 4);
+  ).slice(0,16);
 
 
+
+
+
+  const visibleProducts = allSortedProducts.slice(startIndex,startIndex + visibleCount)
+
+  useEffect(() => {
+    const calculateVisibleCount = () => {
+      const width = window.innerWidth;
+
+      if (width < 576) { return 2; }
+      if (width < 1024) {return 3;
+    }
+    return 4;
+  };
+
+  const handleResize = () => {
+    setVisibleCount(calculateVisibleCount());
+  };
+
+  handleResize();
+  window.addEventListener('resize', handleResize);
+
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
+  const handleNext = () => {
+    if (startIndex + visibleCount < allSortedProducts.length) {
+      setStartIndex(index => index + visibleCount)
+    }
+  };
+
+  const handlePrev = () => {
+    if (startIndex-visibleCount>=0)
+    setStartIndex(index=>index-visibleCount)
+  }
+  
   return (
-    <div className={styles.brand__content}>
-      <div className={styles.brand__top}>
+    <div className={styles.slider}>
+      <div className={styles.slider__title}>
         {type ==='new'? <h2>Brand new
           models</h2>:<h2>Hot prices</h2>}
 
-        <div className={styles.navigate}>
-          <div className={styles.navigate__buttonR}></div>
-          <div className={styles.navigate__buttonL}>
+        <div className={styles.slider__navigate}>
+          <div className={styles.slider__buttonL}
+          onClick={handlePrev}></div>
+          <div className={styles.slider__buttonR}
+          onClick={handleNext}>
           </div>
         </div>
       </div>
-      <div className={styles.cardList}>
-        <ProductCart products={visibleProducts} type={type} />
+      <div className={styles.slider__cardList}>
+        <ProductCart products={visibleProducts} types={type} />
       </div>
     </div>)
 }

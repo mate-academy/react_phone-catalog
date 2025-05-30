@@ -5,7 +5,7 @@ type Props = {
   types?: 'hot' | 'new';
 }
 
-export const ProductCart = ({products, type}:Props) => {
+export const ProductCart = ({products, types}:Props) => {
 
  if (!products) {
     return null;
@@ -16,8 +16,10 @@ export const ProductCart = ({products, type}:Props) => {
      src= {`/${product.image}`}></img>
     <h4 className={styles.card__name}>{ product.name}</h4>
 
-    <span className={styles.card__fullprice}>${product.fullPrice}</span>
-{type==='hot' && <span className={styles.card__price}>${product.price}</span>}
+   { types ==='new' && <span className={styles.card__fullprice}>${product.fullPrice}</span>}
+    {types === 'hot' &&
+    <><span className={styles.card__fullprice}>${product.price}</span>
+      <span className={styles.card__price}>${product.fullPrice}</span></>}
     <div className={styles.card__border}></div>
 
         <div className={styles.card__info}>
