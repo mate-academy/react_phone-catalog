@@ -1,3 +1,5 @@
+import styles from './Pagination.module.scss';
+
 type Props = {
   total: number | undefined;
   perPage: number;
@@ -22,10 +24,32 @@ export const Pagination = ({ total, perPage }: Props) => {
   return (
     <>
       <div>
-        <ul>
+        <ul className={styles.paggination}>
+          <li className={styles.paggination__item} key={'back'}>
+            <button className={styles.paggination__button}>
+              <img
+                className={styles.paggination__arrows}
+                src="public/icons/ArrowLeft.svg"
+                alt="arrow back"
+              />
+            </button>
+          </li>
           {pages.map(elem => {
-            return <li key={elem}>{elem}</li>;
+            return (
+              <li className={styles.paggination__item} key={elem}>
+                <button className={styles.paggination__button}>{elem}</button>
+              </li>
+            );
           })}
+          <li className={styles.paggination__item} key={'forward'}>
+            <button className={styles.paggination__button}>
+              <img
+                className={styles.paggination__arrows}
+                src="public/icons/ArrowRight.svg"
+                alt="arrow forward"
+              />
+            </button>
+          </li>
         </ul>
       </div>
     </>

@@ -1,3 +1,31 @@
-.asdds {
-  width: 100;
+@use '../../utils/variables' as *;
+
+.paggination {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  justify-content: center;
+
+
+  &__item {
+    text-align: center;
+    align-content: center;
+  }
+
+  &__button {
+    background-color: $white-color;
+    color: $black-color;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-light-color;
+  }
+
+  &__arrows {
+    display: block;
+    height: 16px;
+    width: 16px;
+    object-fit: fill;
+    justify-self: center;
+  }
 }
