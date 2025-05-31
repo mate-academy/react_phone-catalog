@@ -12,9 +12,6 @@ export const HomePage = () => {
       <Container>
         <ProductSlider type={'new'} />
          <ShopCategories/>
-
-
-     
         <ProductSlider type={'hot'} />
        </Container>
 
