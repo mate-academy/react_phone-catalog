@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import styles from './SliderHomePage.module.scss';
+const images = ['./img/slider/slider1.png',
+  './img/slider/slider2.png',
+  './img/slider/slider3.png']
+
 export const SliderHomePage = () => {
-  const images = ['./img/slider/slider1.png','./img/slider/slider2.png','./img/slider/slider3.png']
+
   const [activeIndex, setActiveIndex] = useState(0);
   const goNext = () => {
     setActiveIndex((index => (index + 1) % images.length));

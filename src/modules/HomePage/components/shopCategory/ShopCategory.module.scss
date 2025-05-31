@@ -4,7 +4,7 @@
   margin-top: 24px;
 
 &__category{
-
+margin-bottom: 32px;
 grid-column: span 4;
 
 @include mixin.onTablet{
@@ -19,7 +19,18 @@ grid-column: span 4;
 &__title{
   grid-column: 1/-1;
 }
+&__link{
+  list-style: none;
+  text-decoration: none;
+ display: block;
+  @include mixin.onDesktop{
+    &:hover{
+      transform: scale(1.09);
+    }
+  }
+}
  &__image {
+  margin-bottom: 24px;
     height: 288px;
     width: 100%;
     display: block;
@@ -47,4 +58,23 @@ height: 368px;
     }
 }
 
+&__text{
+  margin: 0;
+  margin-bottom: 4px;
+font-family: Mont;
+font-weight: 700;
+font-size: 20px;
+line-height: 100%;
+letter-spacing: 0%;
+color: #0F0F11;
+}
+&__count{
+  margin: 0;
+font-family: Mont;
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+color: #89939A;
+}
 }

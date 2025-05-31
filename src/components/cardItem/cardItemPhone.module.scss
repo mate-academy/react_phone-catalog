@@ -10,7 +10,12 @@ width:237px
   }
 
   @include mixin.onDesktop {
-width:272px
+width:272px;
+
+&:hover{
+      transform: scale(1.1);
+    }
+
   }
 
   &__image{

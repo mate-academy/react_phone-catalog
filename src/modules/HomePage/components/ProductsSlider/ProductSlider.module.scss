@@ -34,6 +34,8 @@ display: flex;
   display: flex;
   gap: 16px;
   overflow-x: auto;
-
+@include mixin.onDesktop{
+  overflow: hidden;
+}
 }
 }
