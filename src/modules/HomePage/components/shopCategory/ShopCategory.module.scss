@@ -1,0 +1,50 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+.shop{
+  @include mixin.pageGrid;
+  margin-top: 24px;
+
+&__category{
+
+grid-column: span 4;
+
+@include mixin.onTablet{
+
+  grid-column: span 4;
+}
+@include mixin.onDesktop{
+  grid-column: span 8;
+}
+}
+
+&__title{
+  grid-column: 1/-1;
+}
+ &__image {
+    height: 288px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+
+    position: relative;
+    background-color: #6D6474;
+@include mixin.onTablet{
+  height: 187px;
+  @include mixin.onDesktop{
+height: 368px;
+  }
+}
+    img {
+
+
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position:54px 54px;
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+}
+
+}
