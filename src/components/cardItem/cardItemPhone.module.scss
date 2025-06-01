@@ -107,6 +107,7 @@ text-align: right;
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 &__addCart{
   width: 100px;
@@ -128,14 +129,25 @@ text-align: center;
   }
   @include mixin.onDesktop{
     width: 160px;
+    &:hover{
+    box-shadow: 0px 3px 13px 0px #17203166;
+
+    }
   }
 
 }
 
 &__favorite{
-  background-image: url('/img/icons/addFavorite.svg');
-  width: 40px;
-  height: 40px;
+padding: 12px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #B4BDC3;
+  border-radius: 100%;
+  @include mixin.onDesktop{
+    &:hover{
+      border-color: #0F0F11;
+    }
+  }
 }
 }
 

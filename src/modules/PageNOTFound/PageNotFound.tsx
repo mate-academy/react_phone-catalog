@@ -1,6 +1,8 @@
+import { TitlePages } from '../HomePage/components/title/TitlePages'
 import styles from './PageNotFound.module.scss'
 export const PageNotFound = () => {
-  return (<div className={styles.notFoundImage}>
-Page Not Found
-  </div>)
+  return (<><TitlePages type={'notFound'}/>
+    <div className={styles.notFoundImage}>
+
+  </div></>)
 }

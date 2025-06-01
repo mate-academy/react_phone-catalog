@@ -66,6 +66,7 @@ color:#89939A;
   }
 
   &__icon{
+   
     width: 32px;
     height: 32px;
     rotate: -90deg;
@@ -75,6 +76,7 @@ color:#89939A;
       margin-left: 16px;
 @include mixin.onDesktop{
  &:hover{
+
   transform: scale(1.1);
   border: 2px solid black;
 border-radius: 100%;}

@@ -13,22 +13,33 @@
 display: flex;
   align-items: center;
   height: 64px;
-
+align-items: center;
 
   }
-   &__buttonR {
+   &__button {
+    cursor: pointer;
+      height: 16px;
+      width: 16px;
+      padding: 12px;
+      color: #0F0F11;
+border: 1px solid #B4BDC3;
+border-radius: 100%;
 
-      height: 32px;
-      width: 32px;
-      background-image: url('/img/icons/buttonSliderAct(right).svg');
-    }
-
-    &__buttonL {
+&--left{
       margin-right: 16px;
-      height: 32px;
-      width: 32px;
-      background-image: url('/img/icons/buttonSliderDis(right).svg');
     }
+    &--disabled{
+   opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+    }
+  @include mixin.onDesktop{
+    &:hover{
+    border-color: #0F0F11;
+  }
+  }}
+
+
 
 &__cardList {
   display: flex;

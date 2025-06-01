@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../../app/hooks';
 import { ProductCart } from '../../../../components/cardItem/ProductCart';
 import styles from './ProductSlider.module.scss'
-
-
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
+import classNames from 'classnames';
 type Props = {
-  type: 'new' | 'hot';
+  type: 'new' | 'hot'|'favourites';
 };
 
 export const ProductSlider = (props: Props) => {
@@ -69,7 +70,7 @@ export const ProductSlider = (props: Props) => {
     if (startIndex-visibleCount>=0)
     setStartIndex(index=>index-visibleCount)
   }
-  
+
   return (
     <div className={styles.slider}>
       <div className={styles.slider__title}>
@@ -77,11 +78,12 @@ export const ProductSlider = (props: Props) => {
           models</h2>:<h2>Hot prices</h2>}
 
         <div className={styles.slider__navigate}>
-          <div className={styles.slider__buttonL}
-          onClick={handlePrev}></div>
-          <div className={styles.slider__buttonR}
-          onClick={handleNext}>
-          </div>
+          <IoIosArrowBack className={classNames(styles.slider__button,
+          styles['slider__button--left']  ,{[styles['slider__button--disabled']]: startIndex===0,
+          })}
+          onClick={handlePrev}/>
+          <IoIosArrowForward className={classNames(styles.slider__button,{[styles['slider__button--disabled']]:startIndex+visibleCount>=allSortedProducts.length})}
+          onClick={handleNext}/>
         </div>
       </div>
       <div className={styles.slider__cardList}>

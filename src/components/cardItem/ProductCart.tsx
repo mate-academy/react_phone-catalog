@@ -1,4 +1,5 @@
 import styles from './cardItemPhone.module.scss';
+import { CiHeart } from "react-icons/ci";
 import { Product } from '../../types/products';
 type Props = {
   products: Product[];
@@ -41,7 +42,7 @@ export const ProductCart = ({products, types}:Props) => {
         </div>
         <div className={styles.card__buttons}>
           <div className={styles.card__addCart}>Add to cart</div>
-          <div className={styles.card__favorite}></div>
+          <CiHeart className={styles.card__favorite}/>
         </div>
       </div>))}</>)
 }

@@ -1,15 +1,13 @@
 import classNames from 'classnames';
 import styles from './icons.module.scss';
-type IconName = 'arrow_down' | 'arrow_left' | 'arrow_right' | 'arrow_up';
+type IconName =
 'cart' |
   'close' |
   'favorite' |
   'heart' |
   'home' |
-  'menu' |
-  'minus' |
-  'plus' |
-  'search';
+  'menu';
+
 type Props = {
   name: IconName;
   onClick?: () => void;

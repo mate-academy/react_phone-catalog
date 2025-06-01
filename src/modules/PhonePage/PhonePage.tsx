@@ -1,3 +1,5 @@
+import { TitlePages } from "../HomePage/components/title/TitlePages"
+
 export const PhonePage = () => {
-  return (<h1>dsfdsfasdfdsfsd</h1>)
+  return (<TitlePages type={'phones'}/>)
 }

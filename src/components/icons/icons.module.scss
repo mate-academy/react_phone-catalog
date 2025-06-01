@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px 16px;
- 
+
   @include mixin.onDesktop {
     &:hover {
       transform: scale(1.1);
@@ -43,4 +43,5 @@
       display: block;
     }
   }
+ 
 }
