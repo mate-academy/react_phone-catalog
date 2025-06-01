@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import styles from './SliderHomePage.module.scss';
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 const images = ['./img/slider/slider1.png',
   './img/slider/slider2.png',
   './img/slider/slider3.png']
@@ -46,13 +48,13 @@ export const SliderHomePage = () => {
 <div className={styles.container}>
     <div className={styles.slider}>
 <div className={styles.slider__box}>
-        <div className={`${styles.slider__button}
+        <IoIosArrowBack className={`${styles.slider__button}
        ${styles['slider__button--left']}`}
-        onClick={goPrev}></div>
+        onClick={goPrev}/>
         <div className={styles.slider__image}
           style={{ backgroundImage: `url(${images[activeIndex]})` }}
         {...handlers}></div>
-<div
+<IoIosArrowForward
   className={`${styles.slider__button} ${styles['slider__button--right']}`}
   onClick={goNext}
 />

@@ -66,20 +66,19 @@ color:#89939A;
   }
 
   &__icon{
-   
-    width: 32px;
-    height: 32px;
-    rotate: -90deg;
-      background-image: url('/img/icons/buttonSliderAct(right).svg');
+color:#0F0F11;
+padding: 12px;
+border: 1px solid #B4BDC3;
+border-radius: 100%;
       background-position: center;
-      background-size: 32px 32px;
+      background-size: 16px 16px;
       margin-left: 16px;
 @include mixin.onDesktop{
  &:hover{
+border-color: #0F0F11;
 
-  transform: scale(1.1);
-  border: 2px solid black;
-border-radius: 100%;}
+
+}
 
 }
 

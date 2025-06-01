@@ -3,6 +3,20 @@
   @include mixin.pageGrid;
   margin-top: 24px;
 
+  &__title{
+     display: flex;
+  justify-content: space-between;
+  align-items: center;
+font-family: Mont;
+font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+letter-spacing: 0%;
+
+@include mixin.onTablet{
+font-size: 32px;
+}}
+  
 &__category{
 margin-bottom: 32px;
 grid-column: span 4;

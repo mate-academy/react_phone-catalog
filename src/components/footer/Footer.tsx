@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './footer.module.scss'
 import logo from '/public/img/niceLogo.svg';
+import { IoIosArrowUp } from "react-icons/io";
 export const Footer = () => {
   return (<div className={styles.footer}>
    <a href="/">
@@ -37,7 +38,7 @@ export const Footer = () => {
   className={styles.footer__button}
 >
   <span className={styles.footer__text}>Back to Top</span>
-  <span className={styles.footer__icon}></span>
+  <IoIosArrowUp className={styles.footer__icon}/>
 </a>
 
 </div>)

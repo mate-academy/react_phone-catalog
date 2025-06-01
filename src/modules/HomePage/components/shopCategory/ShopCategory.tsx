@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './ShopCategory.module.scss';
-import { useSelector } from 'react-redux';
+
 import { useAppSelector } from '../../../../app/hooks';
 const categoryShop = [
   {

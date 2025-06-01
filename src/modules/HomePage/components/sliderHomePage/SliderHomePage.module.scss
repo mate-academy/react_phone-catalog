@@ -52,16 +52,16 @@ background-repeat: no-repeat;
 
 .slider__button {
   display: none;
-  width: 32px;
+padding: 0 6px;
   height: 100%;
-  background-image: url('/img/slider/buttonSlide.svg');
+border: 1px solid #B4BDC3;
+border-radius: 20px;
   background-repeat: no-repeat;
-   background-size: cover;
+   background-size: 16px 16px;
    background-position: center;
-  flex-shrink: 0;
+
 &:hover{
-    border:1px solid #333;
-    border-radius: 20px;
+    border-color: #333;
 
   }
 
@@ -70,18 +70,10 @@ background-repeat: no-repeat;
   }
 
   @include mixin.onDesktop {
-    background-image: url('/img/slider/sliderButtonDesktop.svg');
+
   }
 
-  &--left {
-    display: none;
 
-    @include mixin.onTablet {
-      display: flex;
-    }
-
-    transform: scaleX(-1);
-  }
 }
 
 
