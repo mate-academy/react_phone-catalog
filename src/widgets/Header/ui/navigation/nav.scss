@@ -1,0 +1,22 @@
+@use '../../../../app/styles/breakpoints/breakpoint-const' as *;
+
+.nav {
+  display: flex;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    gap: 32px;
+  }
+
+  @media(min-width: $BREAKPOINT_WIDE) {
+    &__list {
+      gap: 64px;
+    }
+  }
+
+}

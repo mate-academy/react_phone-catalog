@@ -1,0 +1,11 @@
+@use '../constants/font-sizes' as fs;
+@use '../constants/font-weights' as fw;
+@use '../constants/colors' as cl;
+
+@mixin header-text {
+  font-weight: fw.$bold;
+  color: cl.$gray-secondary;
+  font-size: fs.$xxsm;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+}
