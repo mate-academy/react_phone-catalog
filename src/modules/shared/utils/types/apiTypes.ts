@@ -1,4 +1,4 @@
-export type Product = {
+export type Phone = {
   id: string;
   category: string;
   namespaceId: string;
@@ -18,6 +18,21 @@ export type Product = {
   camera: string;
   zoom: string;
   cell: string[];
+};
+
+export type Product = {
+  id: number;
+  category: string;
+  itemId: string;
+  name: string;
+  fullPrice: number;
+  price: number;
+  screen: string;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+  image: string;
 };
 
 export type ProductDescription = {

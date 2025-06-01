@@ -1,0 +1,27 @@
+.slider {
+  padding: 16px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & h1 {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products {
+    display: flex;
+    gap: 12px;
+    overflow: hidden;
+  }
+}

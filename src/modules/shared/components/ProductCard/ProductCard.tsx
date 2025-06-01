@@ -5,7 +5,7 @@ import { AddToFavourites } from '../AddToFavourites';
 
 type Props = {
   name: string;
-  images: string[];
+  images: string;
   priceDiscount: number | undefined;
   priceRegular: number;
   screen: string;
@@ -25,11 +25,7 @@ export const ProductCard = ({
   return (
     <div className={styles.card}>
       <Link to={'/'}>
-        <img
-          className={styles.card__image}
-          src={images[0]}
-          loading="lazy"
-        ></img>
+        <img className={styles.card__image} src={images} loading="lazy"></img>
       </Link>
       <Link className={styles.card__title} to={'/'}>
         {name}

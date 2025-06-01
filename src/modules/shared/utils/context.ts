@@ -1,4 +1,4 @@
 import { createContext } from 'react';
-import { Product } from './apiTypes';
+import { Phone } from './types/apiTypes';
 
-export const PhoneContext = createContext<Product[] | undefined>(undefined);
+export const PhoneContext = createContext<Phone[] | undefined>(undefined);
