@@ -1,21 +1,27 @@
 @use '../../../shared/utils/variables' as *;
 
 .slider {
-  width: 100vw;
+  width: 100%;
   display: flex;
+  gap: 12px;
   justify-content: center;
   align-items: center;
 
   &__image {
-    background: linear-gradient(to right bottom, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    background: linear-gradient(to right bottom, rgba(2, 0, 36, 0.7) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
     display: block;
     object-fit: cover;
+    object-position: center;
     width: 100%;
-    background-color: gradient();
     aspect-ratio: 1 / 1;
   }
 
   &__buttons {
+    all: unset;
+    cursor: pointer;
+    background-color: black;
+    height: 350px;
+    width: 100%;
     display: none;
   }
 }
