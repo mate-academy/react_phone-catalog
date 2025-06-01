@@ -1,5 +1,5 @@
-import { TitlePages } from "../HomePage/components/title/TitlePages"
+import { TitlePages } from '../HomePage/components/title/TitlePages';
 
 export const PhonePage = () => {
-  return (<TitlePages type={'phones'}/>)
-}
+  return <TitlePages type={'phones'} />;
+};

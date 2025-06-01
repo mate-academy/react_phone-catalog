@@ -1,12 +1,6 @@
 import classNames from 'classnames';
 import styles from './icons.module.scss';
-type IconName =
-'cart' |
-  'close' |
-  'favorite' |
-  'heart' |
-  'home' |
-  'menu';
+type IconName = 'cart' | 'close' | 'favorite' | 'heart' | 'home' | 'menu';
 
 type Props = {
   name: IconName;
