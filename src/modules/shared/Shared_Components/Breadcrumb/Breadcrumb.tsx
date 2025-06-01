@@ -1,21 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { DarkModeContext } from '../../../../Store/StoreThemeMode';
+import classNames from 'classnames';
 
 interface Props {
-  pathname: string;
-  pageName: string;
+  arrayOfPages: string[];
 }
 
-export const Breadcrumb: React.FC<Props> = ({ pathname, pageName }) => {
+export const Breadcrumb: React.FC<Props> = ({ arrayOfPages }) => {
+  const { isDark } = useContext(DarkModeContext);
+
   return (
     <div className="breadcrumb">
-      <Link to="/" className="breadcrumb__link breadcrumb__link--home" />
+      <Link
+        to="/"
+        className={classNames('breadcrumb__link breadcrumb__link--home', {
+          'breadcrumb__link--home-is-Dark': isDark,
+        })}
+      />
 
-      <div className="breadcrumb__arrow" />
+      {arrayOfPages.map(page => (
+        <React.Fragment key={page}>
+          <div className="breadcrumb__arrow" />
 
-      <Link to={pathname} className="breadcrumb__link">
-        {pageName}
-      </Link>
+          <Link
+            to={`/${page}`}
+            className={classNames('breadcrumb__link', {
+              'breadcrumb__link--is-Dark': isDark,
+              'breadcrumb__link--is-Dark-Active':
+                isDark && page === arrayOfPages[arrayOfPages.length - 1],
+              'breadcrumb__link--active':
+                page === arrayOfPages[arrayOfPages.length - 1],
+            })}
+          >
+            {page}
+          </Link>
+        </React.Fragment>
+      ))}
     </div>
   );
 };

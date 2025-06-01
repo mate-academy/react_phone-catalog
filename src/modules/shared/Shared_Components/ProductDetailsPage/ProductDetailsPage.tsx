@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ProductDetails, UpdatedProduct } from '../../Types/types';
 import { getAllProducts } from '../../../../api/getProducts';
 import { AnimatedLayout } from '../AnimatedComponents/AnimatedLayout';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { getDetails } from '../../../../app/features/productDetailsSlice';
 import { ProductDescription } from './ProductDescription';
@@ -14,6 +14,7 @@ import { ProductDescriptionSkeleton } from './ProductDescriptionSkeleton';
 import { GoBackButton } from '../ActionButtons/GoBackButton';
 import { scrollToTop } from '../../../../utils/scrollToTop';
 import { DarkModeContext } from '../../../../Store/StoreThemeMode';
+import { Breadcrumb } from '../Breadcrumb/Breadcrumb';
 
 export const ProductDetailsPage = () => {
   const title = 'You may also like';
@@ -29,6 +30,7 @@ export const ProductDetailsPage = () => {
   const { pathname } = useLocation();
   const normalizedPathname = pathname.slice(1).split('/')[0];
   let normalizedName = '';
+  const pages = pathname.split('/').slice(1);
 
   if (pathname.slice(1).split('/').length > 1) {
     normalizedName = pathname.slice(1).split('/')[1].replaceAll('-', ' ');
@@ -61,22 +63,7 @@ export const ProductDetailsPage = () => {
     <AnimatedLayout>
       <div className="container details">
         <div className="details__top">
-          <div className="breadcrumb">
-            <Link to="/" className="breadcrumb__link breadcrumb__link--home" />
-
-            <div className="breadcrumb__arrow" />
-
-            <Link
-              to={'..'}
-              className="breadcrumb__link breadcrumb__link--active"
-            >
-              {normalizedPathname}
-            </Link>
-
-            <div className="breadcrumb__arrow" />
-
-            <p className="breadcrumb__link">{normalizedName}</p>
-          </div>
+          <Breadcrumb arrayOfPages={pages} />
 
           <GoBackButton />
 

@@ -7,11 +7,14 @@ import { NoResultCat } from '../../shared/Shared_Components/NoResultCat/NoResult
 import { FavouritesContext } from '../../../Store/FavouritesStore';
 import { FavouritesList } from './FavouritesList';
 import { scrollToTop } from '../../../utils/scrollToTop';
+import { DarkModeContext } from '../../../Store/StoreThemeMode';
+import classNames from 'classnames';
 
 export const FavouritesPage: React.FC = () => {
   const { pathname } = useLocation();
-  const pageName = pathname.replace('/', '');
+  const pages = pathname.split('/').slice(1);
   const { favourites } = useContext(FavouritesContext);
+  const { isDark } = useContext(DarkModeContext);
 
   useEffect(() => {
     scrollToTop();
@@ -20,9 +23,15 @@ export const FavouritesPage: React.FC = () => {
   return (
     <AnimatedLayout>
       <div className="container">
-        <Breadcrumb pathname={pathname} pageName={pageName} />
+        <Breadcrumb arrayOfPages={pages} />
 
-        <h1 className="title title--h1">Favourites</h1>
+        <h1
+          className={classNames('title title--h1', {
+            'title--is-Dark': isDark,
+          })}
+        >
+          Favourites
+        </h1>
 
         {favourites?.length ? (
           <FavouritesList favourites={favourites} />

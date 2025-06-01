@@ -4,7 +4,7 @@
   justify-content: flex-start;
 
     &__link {
-    color: $secondary-color;
+    color: $primary-color;
     text-transform: capitalize;
     font-family: $font-Mont_Regular;
     margin: 0 0 10px 0;
@@ -17,8 +17,21 @@
       background-repeat: no-repeat;
     }
 
+    &--home-is-Dark {
+      background-image: url(/icons/home-for-dark.svg);
+    }
+
     &--active {
-      color: $primary-color;
+      color: $secondary-color;
+      pointer-events: none;
+    }
+
+    &--is-Dark {
+      color: $white-for-dark;
+    }
+
+    &--is-Dark-Active {
+      color: $secondary-purple;
     }
   }
 

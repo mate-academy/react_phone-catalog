@@ -26,7 +26,7 @@ export const ProductPage: React.FC<Props> = ({
 }) => {
   const { isDark } = useContext(DarkModeContext);
   const { pathname } = useLocation();
-  const pageName = pathname.replace('/', '');
+  const pages = pathname.split('/').slice(1);
 
   const [searchParams] = useSearchParams();
   const objectOfParams = {
@@ -102,7 +102,7 @@ export const ProductPage: React.FC<Props> = ({
 
   return (
     <section className="product-page container">
-      <Breadcrumb pathname={pathname} pageName={pageName} />
+      <Breadcrumb arrayOfPages={pages} />
 
       <div className="product-page__top">
         <div className="product-page__title">
