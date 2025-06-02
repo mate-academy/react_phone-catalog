@@ -31,6 +31,7 @@ export interface ProductsSliderProps {
 export type PhoneCardProps = {
   product: Product;
   showDiscount?: boolean;
+  variant?: 'phone' | 'tablet';
 };
 
 export type Option = {
@@ -46,7 +47,7 @@ export type OptionProps = {
   className?: string;
 };
 
-export interface PhonesHeaderProps {
+export interface HeaderProps {
   sortBy: string;
   setSortBy: (value: string) => void;
   itemsOnPage: string;
@@ -86,4 +87,19 @@ export interface ConfirmModalProps {
   isOpen: boolean;
   onConfirm: () => void;
   onCancel: () => void;
+}
+
+export interface ProductsPageProps {
+  Header: React.ComponentType<{
+    sortBy: string;
+    setSortBy: (value: string) => void;
+    itemsOnPage: string;
+    setItemsOnPage: (value: string) => void;
+  }>;
+  Grid: React.ComponentType<{
+    sortBy: string;
+    itemsOnPage: string;
+    currentPage: number;
+    setCurrentPage: (page: number) => void;
+  }>;
 }

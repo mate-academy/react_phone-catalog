@@ -4,13 +4,13 @@ import { useMemo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store';
 import { setProducts } from '@/store/features/products/productsSlice';
-import rawData from '@/api/phones.json';
+import rawData from '@/api/tablets.json';
 import { Product } from '@/types/Product';
 import { PhoneCard } from '@/components/PhoneCard';
 import { PhonesGridWithPaginationProps } from '@/types/Product';
 import { SkeletonCard } from '@/components/Skeleton';
 
-export const PhonesGridWithPagination = ({
+export const TabletsGridWithPagination = ({
   sortFunction,
   itemsOnPage,
   currentPage,
@@ -134,7 +134,7 @@ export const PhonesGridWithPagination = ({
     <div className="px-4 mt-10 font-mont sm:px-6 md:px-8 xl:px-[152px]">
       <div className="flex flex-wrap justify-center md:justify-normal gap-4 mb-10">
         {paginatedProducts.map(product => (
-          <PhoneCard key={product.id} product={product} showDiscount variant='phone' />
+          <PhoneCard key={product.id} product={product} showDiscount variant='tablet' />
         ))}
       </div>
 

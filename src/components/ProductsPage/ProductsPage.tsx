@@ -1,0 +1,61 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { ProductsPageProps } from '@/types/Product';
+
+export const ProductsPage = ({ Header, Grid }: ProductsPageProps) => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const [sortBy, setSortBy] = useState('Newest');
+  const [itemsOnPage, setItemsOnPage] = useState('8');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const sort = searchParams.get('sort') || 'Newest';
+    const perPage = searchParams.get('perPage') || '8';
+    const page = parseInt(searchParams.get('page') || '1');
+
+    setSortBy(sort);
+    setItemsOnPage(perPage);
+    setCurrentPage(page);
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (sortBy !== 'Newest') params.set('sort', sortBy);
+    if (itemsOnPage !== 'All') params.set('perPage', itemsOnPage);
+    if (currentPage !== 1) params.set('page', String(currentPage));
+    navigate({ search: params.toString() }, { replace: true });
+  }, [sortBy, itemsOnPage, currentPage]);
+
+  const handleSortChange = (value: string) => {
+    setSortBy(value);
+    setCurrentPage(1);
+  };
+
+  const handlePerPageChange = (value: string) => {
+    setItemsOnPage(value);
+    setCurrentPage(1);
+  };
+
+  return (
+    <div>
+      <Breadcrumbs />
+      <Header
+        sortBy={sortBy}
+        setSortBy={handleSortChange}
+        itemsOnPage={itemsOnPage}
+        setItemsOnPage={handlePerPageChange}
+      />
+      <Grid
+        sortBy={sortBy}
+        itemsOnPage={itemsOnPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </div>
+  );
+};
