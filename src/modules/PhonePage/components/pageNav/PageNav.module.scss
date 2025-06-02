@@ -1,0 +1,42 @@
+.page{
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__link{
+
+
+}
+
+
+  &__icon{
+    display: block;
+    margin-right: 8px;
+    height: 16px;
+    width: 16px;
+ &--home{
+      color: black;
+    }
+  }
+
+
+  &__text{
+    text-decoration: none;
+color:black;
+margin: 0;
+font-family: Mont;
+font-weight: 600;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+
+&--disabled{
+  color: #89939A;
+ pointer-events: none;
+    cursor: default;
+}
+  }
+
+
+}

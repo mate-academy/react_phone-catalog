@@ -6,8 +6,8 @@ import { TitlePages } from './components/title/TitlePages';
 
 export const HomePage = () => {
   return (
-    <>
-      <TitlePages type={'home'} />
+    <><Container><TitlePages type={'home'} /></Container>
+
       <SliderHomePage />
       <Container>
         <ProductSlider type={'new'} />

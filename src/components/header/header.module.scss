@@ -16,14 +16,14 @@ padding-left: 16px;
 border-bottom: 1px solid #E2E6E9;
 
 @include mixin.onTablet{
-margin-bottom: 32px;
+
 
 }
 @include mixin.onDesktop{
 
 padding-left: 24px;
   height: 64px;
-  margin-bottom: 56px;
+ 
 
 }
 &__logo{

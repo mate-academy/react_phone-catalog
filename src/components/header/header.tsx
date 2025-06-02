@@ -41,7 +41,7 @@ export const Header = () => {
               </li>
               <li className={styles.nav__item}>
                 <NavLink to="/accessories" className={getLinkClass}>
-                  Acessories
+                  Accessories
                 </NavLink>
               </li>
             </ul>

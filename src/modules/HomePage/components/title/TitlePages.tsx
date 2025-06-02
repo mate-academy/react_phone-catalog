@@ -24,6 +24,9 @@ export const TitlePages = (props: Props) => {
       {type === 'notFound' && (
         <h1 className={style.title__text}>Page not found!</h1>
       )}
+       {type === 'accessories' && (
+        <h1 className={style.title__text}>Accessories</h1>
+      )}
     </div>
   );
 };
