@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { Menu } from './components/Menu/Menu';
 import { Home } from './modules/Home';
 import { Routes, Route, Outlet } from 'react-router-dom';
+import { Item } from './modules/Items';
 
 export const App = () => {
   const pageContainer = (
@@ -22,6 +23,7 @@ export const App = () => {
           <Route path="/menu" element={<Menu />} />
           <Route path="/phones" element={<p>phones page</p>} />
           <Route path="/*" element={<h1>Page not found</h1>} />
+          <Route path="/phones/" element={<Item />} />
         </Route>
       </Routes>
     </div>

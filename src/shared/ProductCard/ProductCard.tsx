@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { HeartSVG } from '../../assets/HeartSVG';
 import { Product } from '../../types/product';
 import s from './ProductCard.module.scss';
@@ -30,7 +31,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={s.card__buttons}>
-        <button className={s.card__button_buy}>Add to cart</button>
+        <Link
+          to={{
+            pathname: '/phones',
+            search: `?productId=${product.itemId}`,
+          }}
+        >
+          <button className={s.card__button_buy}>Add to cart</button>
+        </Link>
         <button className={s.card__button}>
           <HeartSVG />
         </button>
