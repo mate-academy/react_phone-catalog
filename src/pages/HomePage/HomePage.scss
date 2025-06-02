@@ -1,0 +1,99 @@
+@use '../utils/mixins.scss' as *;
+
+.homePage {
+    padding: 0 16px;
+    &_title {
+        font-size: 32px;
+        line-height: 41px;
+        font-weight: 800;
+        letter-spacing: -1%;
+        color:#313237;
+        margin-bottom: 24px;
+
+        @include on-tablet {
+            margin-bottom: 32px;
+        }
+        @include on-desktop {
+            margin-bottom: 56px;
+        }
+    }
+
+    &_pictureSlider {
+        &_container {
+            width: 100%;
+        }
+
+        &_image {
+            width: 100%;
+        }
+       width: 100%;
+
+       &_dots {
+        display: flex;
+        justify-content: center;
+        height: 24px;
+        margin: 0 auto;
+        margin-bottom: 56px;
+
+        @include on-tablet {
+            margin-bottom: 64px;
+        }
+
+        @include on-desktop {
+            margin-bottom: 80px;
+        }
+       }
+
+       &_dot {
+            cursor: pointer;
+            position: relative;
+            width: 24px;
+            height: 24px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 14px;
+                height: 4px;
+                background-color: #313237;
+            }
+       }
+    }
+
+    &_productsSlider{
+      
+        &_title {
+            font-weight: 800;
+            font-size: 22px;
+            line-height: 140%;
+            color:#313237;
+            letter-spacing: 0.1rem;
+        }
+        &_container-top {
+            display: flex;
+            width: 100%;
+            height: 62px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        &_buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 80px;
+            gap: 16px;
+
+            &_button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border: 1px solid #E2E6E9;
+            }
+        }
+    }
+}

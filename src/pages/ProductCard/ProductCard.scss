@@ -1,0 +1,50 @@
+.ProductCard {
+    &_container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 32px;
+        text-decoration: none;
+        color: #000000;
+        border: 1px solid #E2E6E9;
+        
+    }
+
+    &_devider {
+        width: 100%;
+        border: 1px solid #E2E6E9;
+    }
+    &_container-image {
+        width: 100%;
+       
+    }
+
+    &_container-title {
+        padding-top: 16px;
+        height: 58px;
+        justify-content: center;
+    }
+
+    &_container-price {
+        font-family: "Mont";
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 140%;
+        letter-spacing: 0%;
+        
+    }
+
+    &_title {
+        font-family: "Mont";
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0.1rem;
+
+    }
+
+    &_photo {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
