@@ -57,7 +57,7 @@ export const ProductCard = ({
         </div>
       </div>
       <div className={styles.card__buttons}>
-        <Button />
+        <Button text={'Add to cart'} />
         <AddToFavourites />
       </div>
     </div>

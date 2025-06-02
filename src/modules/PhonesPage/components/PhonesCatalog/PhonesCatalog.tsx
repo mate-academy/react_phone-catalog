@@ -9,25 +9,37 @@ import { ItemsOnPageDropDown } from '../../../shared/components/ItemsOnPageDropD
 import { Pagination } from '../../../shared/components/Pagination';
 import { STATUS, Status } from '../../../shared/utils/types/Status';
 import { Loader } from '../Loader/Loader';
+import { LOAD_ERROR, LoadError } from '../../../shared/utils/types/LoadError';
+import { Button } from '../../../shared/components/Button';
 
 export const PhoneCatalog = () => {
   const [phones, setPhones] = useState<Phone[] | undefined>();
   const [status, setStatus] = useState<Status>(STATUS.idle);
+  const [loadError, setLoadError] = useState<LoadError>(LOAD_ERROR.noError);
+
   const phonesCounter = phones?.length;
 
   const loadPhones = useCallback(() => {
     return getProduct('/phones.json')
       .then(data => {
         setPhones(data);
+        setLoadError(LOAD_ERROR.noError);
         setStatus(STATUS.resolved);
       })
-      .catch(() => 'Couldn`t load products');
+      .catch(() => {
+        setLoadError(LOAD_ERROR.couldntload);
+        setStatus(STATUS.rejected);
+      });
   }, []);
 
   useEffect(() => {
     setStatus(STATUS.pending);
     loadPhones();
   }, [loadPhones]);
+
+  if (status === STATUS.resolved && phones?.length === 0) {
+    setLoadError(LOAD_ERROR.noProducts);
+  }
 
   return (
     <>
@@ -45,6 +57,12 @@ export const PhoneCatalog = () => {
             <ItemsOnPageDropDown />
           </div>
         </div>
+        {loadError === LOAD_ERROR.couldntload && (
+          <div>
+            <h3>Somethin went wrong</h3>
+            <Button text={'Reload'} />
+          </div>
+        )}
         {status === STATUS.pending ? (
           <Loader />
         ) : (
