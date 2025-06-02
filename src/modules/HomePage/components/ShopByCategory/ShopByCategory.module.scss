@@ -1,3 +1,13 @@
-.list {
-  width: 100%;
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+
+  &__header {
+    margin: 0;
+    align-self: flex-start;
+  }
 }

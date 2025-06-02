@@ -2,6 +2,7 @@ import { CategoryItem } from '../CategoryItem';
 import phonesData from '../../../../../public/api/phones.json';
 import tabletsData from '../../../../../public/api/tablets.json';
 import accessoriesData from '../../../../../public/api/accessories.json';
+import styles from './ShopByCategory.module.scss';
 
 export const ShopByCategory = () => {
   const phonesCount = phonesData.length.toString();
@@ -9,7 +10,8 @@ export const ShopByCategory = () => {
   const accessoriesCount = accessoriesData.length.toString();
 
   return (
-    <div>
+    <div className={styles.catalog}>
+      <h2 className={styles.catalog__header}>Shop by category</h2>
       <CategoryItem
         header={'Mobile phones'}
         image={'public/img/category-phones.png'}

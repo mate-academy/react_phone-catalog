@@ -19,13 +19,15 @@ export const HomePage = () => {
   const biggestDiscount = products
     ?.sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
     .slice(0, 6);
+  const newestProducts = products?.sort((a, b) => b.year - a.year).slice(0, 6);
 
   return (
     <div>
       <h1>Welcome to Nice Gadgets store!</h1>
       <Slider />
-      <ProductSlider products={biggestDiscount} header={'Brand new models'} />
+      <ProductSlider products={biggestDiscount} header={'Hot prices'} />
       <ShopByCategory />
+      <ProductSlider products={newestProducts} header={'Brand new models'} />
     </div>
   );
 };
