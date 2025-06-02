@@ -7,6 +7,7 @@ import { HomePage } from './modules/HomePage/HomePage';
 import { PhonePage } from './modules/PhonePage/PhonePage';
 import { PageNotFound } from './modules/PageNOTFound/PageNotFound';
 import { AccessoriesPage } from './modules/AccessoriesPage/AccessoriesPage';
+import { TabletPage } from './modules/TabletPage/TabletPage';
 
 export const Root = () => {
   return (
@@ -19,8 +20,11 @@ export const Root = () => {
           <Route path="phones">
             <Route index element={<PhonePage/>}/>
           </Route>
-          <Route path='accessories'>
+          <Route path="accessories">
             <Route index element={<AccessoriesPage/>}/>
+          </Route>
+          <Route path="tablets">
+            <Route index element={<TabletPage/>}/>
           </Route>
           <Route path='*' element={<PageNotFound/>}/>
         </Route>

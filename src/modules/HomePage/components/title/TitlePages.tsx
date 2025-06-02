@@ -27,6 +27,9 @@ export const TitlePages = (props: Props) => {
        {type === 'accessories' && (
         <h1 className={style.title__text}>Accessories</h1>
       )}
+       {type === 'tablets' && (
+        <h1 className={style.title__text}>Tablets</h1>
+      )}
     </div>
   );
 };
