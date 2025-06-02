@@ -18,6 +18,7 @@ export const ProductSlider = (props: Props) => {
   const products = useAppSelector(state => state.products.products);
 
   const getBaseModelId = (itemId: string) => {
+    if (!itemId) { return ''; }
     const parts = itemId.split('-');
 
     return parts.slice(0, -2).join('-');

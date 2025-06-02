@@ -4,28 +4,28 @@ import { useEffect, useState } from 'react';
 
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { init } from './features/ProductSlice';
 
 import { useAppDispatch} from './app/hooks'
-import { Container } from './components/container/Container';
+
 export const App = () => {
+  const location = useLocation();
+  const category = location.pathname.split('/')[1];
 
     const dispach = useAppDispatch();
 
   useEffect(() => {
-    dispach(init())
-    }, [])
+    
+    dispach(init(category))
+    }, [category])
 
 
 
   return (
     <><Header />
-      
-        <Outlet />
-
-
-   <Footer />
+ <Outlet />
+ <Footer />
   </>)
 };
 

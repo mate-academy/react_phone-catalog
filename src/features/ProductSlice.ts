@@ -16,8 +16,8 @@ const initialState: ProductsState = {
   error:'',
 }
 
-export const init = createAsyncThunk('product/fetch', () => {
-  return fetchProducts();
+export const init = createAsyncThunk('product/fetch', (category) => {
+  return fetchProducts(category);
 })
 
 /* eslint-disable no-param-reassign */
