@@ -15,6 +15,7 @@
     @include on-tablet {
         margin-bottom: 32px;
     }
+
     @include on-desktop {
         gap: 24px;
         height: 64px;
@@ -65,7 +66,7 @@
     &_item {
         text-decoration: none;
         color: #89939A;
-        font-family: 'Mont-Bold', sans-serif;
+        font-family: Mont-Bold, sans-serif;
         font-weight: 700;
         font-size: 12px;
         line-height: 11px;

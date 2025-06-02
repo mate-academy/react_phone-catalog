@@ -4,9 +4,9 @@ import { DeviceProvider } from './context/DeviceContext';
 import React from 'react';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
-        <DeviceProvider>
-            <Root />
-        </DeviceProvider>
-    </React.StrictMode>
+  <React.StrictMode>
+    <DeviceProvider>
+      <Root />
+    </DeviceProvider>
+  </React.StrictMode>,
 );

@@ -15,21 +15,19 @@ export const App = () => {
     } else {
       document.body.style.overflow = 'auto';
     }
-  
 
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [menuBtn]);
 
-return (
-  <div className="App">
-     <h1 className="visually-hidden">Product Catalog</h1>
-    <Header />
-    {isMobile && menuBtn && <Menu />}
-    <Outlet />
-    <Footer />
-  </div>
-) 
-}
-
+  return (
+    <div className="App">
+      <h1 className="visually-hidden">Product Catalog</h1>
+      <Header />
+      {isMobile && menuBtn && <Menu />}
+      <Outlet />
+      <Footer />
+    </div>
+  );
+};

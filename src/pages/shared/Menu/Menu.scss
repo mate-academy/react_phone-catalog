@@ -9,7 +9,7 @@
     align-items: center;
     width: 100%;
     transform: translate(0);
-    background-color: #FFFFFF;
+    background-color: #FFF;
     transition: transform .3s ease, opacity .3s ease;
 
     &_buttons-wrapper {
@@ -19,7 +19,7 @@
         height: 64px;
         bottom: 0;
         left: 0;
-        background-color: #FFFFFF;
+        background-color: #FFF;
     }
 
     &_icon-wrapper {
@@ -47,7 +47,7 @@
     }
 
     &_link {
-        font-family: 'Mont-Bold', sans-serif;
+        font-family: Mont-Bold, sans-serif;
         text-decoration: none;
         color: #89939A;
         font-weight: 800;

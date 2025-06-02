@@ -13,6 +13,7 @@
         @include on-tablet {
             margin-bottom: 32px;
         }
+
         @include on-desktop {
             margin-bottom: 56px;
         }
@@ -26,7 +27,8 @@
         &_image {
             width: 100%;
         }
-       width: 100%;
+
+       
 
        &_dots {
         display: flex;
