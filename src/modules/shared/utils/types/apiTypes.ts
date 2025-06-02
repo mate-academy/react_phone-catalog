@@ -10,7 +10,49 @@ export type Phone = {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: ProductDescription[];
+  description: Description[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera: string;
+  zoom: string;
+  cell: string[];
+};
+
+export type Accessories = {
+  id: string;
+  category: string;
+  namespaceId: string;
+  name: string;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
+  images: string[];
+  description: Description[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  cell: string[];
+};
+
+export type Tablet = {
+  id: string;
+  category: string;
+  namespaceId: string;
+  name: string;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
+  images: string[];
+  description: Description[];
   screen: string;
   resolution: string;
   processor: string;
@@ -35,7 +77,7 @@ export type Product = {
   image: string;
 };
 
-export type ProductDescription = {
+export type Description = {
   title: string;
   text: string[];
 };

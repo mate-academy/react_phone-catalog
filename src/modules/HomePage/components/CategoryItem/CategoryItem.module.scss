@@ -1,0 +1,16 @@
+@use '../../../shared/utils/variables' as *;
+
+.card {
+  box-sizing: border-box;
+  width: 288px;
+  height: 363px;
+  padding: 16px;
+
+  &__image {
+    display: block;
+    object-fit: contain;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: $purple-descent;
+  }
+}
