@@ -5,12 +5,18 @@ type Props = {
   header: string;
   image: string;
   productsCount: string;
+  linkTo: string;
 };
 
-export const CategoryItem = ({ header, image, productsCount }: Props) => {
+export const CategoryItem = ({
+  header,
+  image,
+  productsCount,
+  linkTo,
+}: Props) => {
   return (
     <div className={styles.card}>
-      <Link className={styles.card__link} to={'/phones'}>
+      <Link className={styles.card__link} to={linkTo}>
         <img className={styles.card__image} src={image} alt="product image" />
       </Link>
 

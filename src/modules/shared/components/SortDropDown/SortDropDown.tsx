@@ -1,6 +1,6 @@
 import styles from './SortDropDown.module.scss';
 
-export const SortDrowDown = () => {
+export const SortDropDown = () => {
   return (
     <>
       <div className={styles['drop-down']}>

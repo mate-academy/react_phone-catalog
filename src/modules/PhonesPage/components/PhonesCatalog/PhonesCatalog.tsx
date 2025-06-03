@@ -3,7 +3,7 @@ import { ProductCard } from '../../../shared/components/ProductCard';
 import { getProduct } from '../../../shared/utils/fetchClient';
 import { useCallback, useEffect, useState } from 'react';
 import { Phone } from '../../../shared/utils/types/apiTypes';
-import { SortDrowDown } from '../../../shared/components/SortDropDown';
+import { SortDropDown } from '../../../shared/components/SortDropDown';
 // eslint-disable-next-line max-len
 import { ItemsOnPageDropDown } from '../../../shared/components/ItemsOnPageDropDown';
 import { Pagination } from '../../../shared/components/Pagination';
@@ -12,7 +12,7 @@ import { Loader } from '../Loader/Loader';
 import { LOAD_ERROR, LoadError } from '../../../shared/utils/types/LoadError';
 import { Button } from '../../../shared/components/Button';
 
-export const PhoneCatalog = () => {
+export const PhonesCatalog = () => {
   const [phones, setPhones] = useState<Phone[] | undefined>();
   const [status, setStatus] = useState<Status>(STATUS.idle);
   const [loadError, setLoadError] = useState<LoadError>(LOAD_ERROR.noError);
@@ -53,7 +53,7 @@ export const PhoneCatalog = () => {
           <h1 className={styles.catalog__title}>Mobile phones</h1>
           <p className={styles.catalog__counter}>{phonesCounter} models</p>
           <div className={styles['catalog__drop-downs']}>
-            <SortDrowDown />
+            <SortDropDown />
             <ItemsOnPageDropDown />
           </div>
         </div>
@@ -63,6 +63,7 @@ export const PhoneCatalog = () => {
             <Button text={'Reload'} />
           </div>
         )}
+        {loadError === LOAD_ERROR.noProducts && <h3>There are no phones</h3>}
         {status === STATUS.pending ? (
           <Loader />
         ) : (
