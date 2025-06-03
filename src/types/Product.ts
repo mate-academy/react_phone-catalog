@@ -9,8 +9,8 @@ export interface Product {
   processor: string;
   capacity: string;
   ram: string;
-  camera: string;
-  zoom: string;
+  camera?: string;
+  zoom?: string;
   cell: string[];
   namespaceId: string;
   color: string;

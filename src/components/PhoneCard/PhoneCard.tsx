@@ -21,16 +21,16 @@ export const PhoneCard = ({
   };
 
   const cardClasses = variant === 'tablet'
-    ? 'w-full h-full object-cover'
+    ? 'w-full h-[196px] object-cover'
     : 'w-full h-[196px] object-contain'
 
   return (
-    <div className="w-[272px] aspect-[3/4] bg-[#161827] flex p-8 flex-col font-mont">
+    <div className="w-[272px] h-[506px]  bg-[#161827] flex p-8 flex-col font-mont">
       <Link to={`/phones/${product.id}`}>
         <img
           src={product.images[0]}
           alt={product.name}
-          className={`${cardClasses}  mb-6 transition-transform duration-300 hover:scale-110`}
+          className={`${cardClasses} mb-6 transition-transform duration-300 hover:scale-110`}
         />
       </Link>
 
