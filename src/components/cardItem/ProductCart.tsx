@@ -1,9 +1,10 @@
 import styles from './cardItemPhone.module.scss';
 import { CiHeart } from 'react-icons/ci';
 import { Product } from '../../types/products';
+import classNames from 'classnames';
 type Props = {
   products: Product[];
-  types?: 'hot' | 'new'|'product';
+  types?: 'hot' | 'new'|'grid';
 };
 
 export const ProductCart = ({ products, types }: Props) => {
@@ -14,7 +15,9 @@ export const ProductCart = ({ products, types }: Props) => {
   return (
     <>
       {products.map(product => (
-        <div className={styles.card} key={product.id}>
+        <div className={classNames(styles.card, { [styles['card--grid']]: types === 'grid' })}
+          key={product.id}>
+
           <img className={styles.card__image} src={`./${product.image|| product.images?.[0]}`}/>
           <h4 className={styles.card__name}>{product.name}</h4>
 
