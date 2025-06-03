@@ -68,11 +68,19 @@
   border: 1px solid #ccc;
 }
 
+.phone-cardname {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 12px;
+  min-height: 48px; // фіксована висота на 2 рядки
+}
+
 .phone-cardimage{
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 200px;
   border-radius: 8px 8px 0 0;
   transition: transform 0.3s ease-in-out;
+  object-fit: contain;
 
   &:hover {
     transform: scale(1.1);
@@ -109,12 +117,31 @@
     border: none;
     width: 176px;
     height: 40px;
+
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__btn-favorite {
     width: 40px;
     height: 40px;
+
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
+}
+
+.phone-card__actions__btn-primary.added {
+  background-color: #fff ;
+  color: #4caf50;
+  cursor: default;
+  border: 1px solid #E2E6E9;
 }
 
 .phones_pagination {

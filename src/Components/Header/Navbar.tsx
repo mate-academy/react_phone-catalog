@@ -31,14 +31,23 @@ export const Navbar = () => {
   }, [searchQuery, navigate, location.pathname]);
 
   const toggleMenu = () => {
-    setIsMobileMenuOpen((prev) => !prev);
+    setIsMobileMenuOpen((prev) => {
+      const newState = !prev;
+      document.body.classList.toggle('no-scroll', newState); // Додаємо/видаляємо клас body
+      return newState;
+    });
   };
+
+  // Масив шляхів, на яких потрібно показувати пошук
+  const searchRoutes = ['/phones', '/tablets', '/accessories'];
+  // Перевіряємо, чи поточний шлях є в масиві дозволених шляхів
+  const shouldShowSearch = searchRoutes.includes(location.pathname);
 
   return (
     <div data-cy="app">
       <nav
         data-cy="nav"
-        className="navbar is-fixed-top has-shadow"
+        className="navbar"
         role="navigation"
         aria-label="main navigation"
       >
@@ -96,16 +105,18 @@ export const Navbar = () => {
           </div>
 
           {/* Поле пошуку */}
-          <div className="navbar-center">
-            <input
-              type="text"
-              name="search"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="search-input"
-            />
-          </div>
+          {shouldShowSearch && (
+            <div className="navbar-center">
+              <input
+                type="text"
+                name="search"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="search-input"
+              />
+            </div>
+          )}
 
           {/* Права сторона навбару */}
           <div className="navbar-right">

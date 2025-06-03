@@ -4,6 +4,8 @@ import { useCartContext } from '../../CartContext/useCartContext';
 import { Link, useLocation } from 'react-router-dom';
 import './Tablet.scss';
 import { SearchParameters } from '../../SearchParm/SearchParam';
+import HeartEmpty from '../../../public/img/AddFavor.png';
+import HeartFilled from '../../../public/img/AddFavorAct.png';
 
 export const Tablets: React.FC = () => {
   const [tablets, setTablets] = useState<Tablet[]>([]);
@@ -19,6 +21,41 @@ export const Tablets: React.FC = () => {
   const [sortOption, setSortOption] = useState('default');
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
+  const [addToCartIds, setAddToCartIds] = useState<Set<string>>(new Set());
+
+  const toggleFavorite = (tablet: Tablet) => {
+    setFavoriteIds((prev) => {
+      const newSet = new Set(prev);
+
+      if (newSet.has(tablet.id)) {
+        newSet.delete(tablet.id);
+      } else {
+        newSet.add(tablet.id);
+      }
+
+      addToFavorites(tablet); // якщо хочеш також зберігати глобально
+
+      return newSet;
+    });
+  };
+
+  const toggleToCart = (tablet: Tablet) => {
+    setAddToCartIds((prev) => {
+      const newSet = new Set(prev);
+
+      if (newSet.has(tablet.id)) {
+        newSet.delete(tablet.id);
+      } else {
+        newSet.add(tablet.id);
+      }
+
+      addToCart(tablet); // якщо хочеш також зберігати глобально
+
+      return newSet;
+    });
+  };
 
   const sortedProducts = useMemo(() => {
     const sorted = [...filteredTablets];
@@ -158,16 +195,19 @@ export const Tablets: React.FC = () => {
             </Link>
             <div className="tablet-card__actions">
               <button
-                className="tablet-card__actions__btn-primary"
-                onClick={() => addToCart(tablet)}
+                className={`tablet-card__actions__btn-primary ${
+                  addToCartIds.has(tablet.id) ? 'added' : ''
+                }`}
+                onClick={() => toggleToCart(tablet)}
+                disabled={addToCartIds.has(tablet.id)}
               >
-                Add to cart
+                {addToCartIds.has(tablet.id) ? 'Added' : 'Add to cart'}
               </button>
               <img
-                onClick={() => addToFavorites(tablet)}
+                onClick={() => toggleFavorite(tablet)}
                 className="tablet-card__actions__btn-favorite"
-                src="./img/AddFavor.png"
-                alt="AddFavor"
+                src={favoriteIds.has(tablet.id) ? HeartFilled : HeartEmpty}
+                alt="Favorite"
               />
             </div>
           </div>

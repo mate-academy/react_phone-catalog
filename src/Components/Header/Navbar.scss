@@ -1,6 +1,13 @@
 .navbar {
+  display: flex;
+  box-sizing: border-box;
+  height: 64px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  align-items: center;
   background-color: #fff;
-  // box-shadow: 0 -1px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
 
 
   .logo {
@@ -18,12 +25,14 @@
   }
 
   .navbar-item {
-    position: relative;
-    color: #585858;
+    display: flex;
+    box-sizing: border-box;
     align-items: center;
+    height: 100%;
     text-decoration: none;
     font-size: 13px;
     font-weight: bold;
+    color: #585858;
 
     &:hover {
       color: #000;
@@ -33,16 +42,23 @@
 
 .navbar-container {
   display: flex;
+  height: 100%;
+  width: 100%;
   align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
 }
 
 .navbar-left {
   display: flex;
-  padding: 0 24px 0 24px;
+  height: 100%;
   gap: 64px;
   align-items: center;
+  margin-right: auto;
+  padding-left: 24px;
+
   @media (max-width: 768px) {
     display: none; /* Показуємо на мобільних пристроях */
   }
@@ -50,6 +66,9 @@
 
 .navbar-right {
   display: flex;
+  height: 100%;
+  align-items: center;
+  margin-left: auto;
   gap: 0px;
 
   @media (max-width: 768px) {
@@ -57,15 +76,18 @@
   }
 }
 
-.navbar-item.has-background-grey-lighter::after {
-  content: "";
+.navbar-item.has-background-grey-lighter {
+  position: relative;
 
-  position: absolute;
-  bottom: -30px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: black;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+  }
 }
 
 .favourites,
@@ -112,81 +134,17 @@
   cursor: pointer;
   color: #000;
   padding: 10px;
+  transition: opacity 0.5s ease-in, visibility 0s 0.5s;
 
   @media (max-width: 768px) {
     display: block; /* Показуємо на мобільних пристроях */
   }
 }
 
-.burger-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Трохи затемнити фон */
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0s 0.3s;
-}
 
 .burger-menu-overlay.active {
+  opacity: 1; /* Кінцева прозорість - повністю видимий */
   visibility: visible;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.burger-menu {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.burger-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.burger-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
-  gap: 20px;
-
-  .burger-link {
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #89939A;
-    font-weight: 600;
-    text-decoration: none;
-
-    &.active {
-      color: #313237;
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -8px;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: #313237;
-        width: 100%;
-      }
-    }
-  }
-}
-
-.burger-footer {
-  display: flex;
-  justify-content: space-around;
-  padding-bottom: 20px;
+  overflow: hidden;
+  transition: opacity 1.0s ease-in-out;
 }

@@ -113,12 +113,31 @@ button {
     border: none;
     width: 176px;
     height: 40px;
+
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__btn-favorite {
     width: 40px;
     height: 40px;
+
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
+}
+
+.hotPricesPhoneCard__actions__btn-primary.added {
+  background-color: #fff ;
+  color: #4caf50;
+  cursor: default;
+  border: 1px solid #E2E6E9;
 }
 
 .hotPricesPhoneCard:hover {
@@ -130,6 +149,7 @@ button {
   gap: 20px;
   transition: transform 0.5s ease-in-out;
   will-change: transform;
+  transition: transform 0.3s ease-in-out;
 
   &.slide-left {
     animation: slideLeft 0.5s ease-in-out;

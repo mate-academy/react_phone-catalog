@@ -101,12 +101,31 @@
     border: none;
     width: 176px;
     height: 40px;
+
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__btn-favorite {
     width: 40px;
     height: 40px;
+
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
+}
+
+.brand-new-models_phone-card__actions__btn-primary.added {
+  background-color: #fff ;
+  color: #4caf50;
+  cursor: default;
+  border: 1px solid #E2E6E9;
 }
 
 
@@ -125,6 +144,12 @@
     border: none;
     width: 50px;
     height: 40px;
+
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 

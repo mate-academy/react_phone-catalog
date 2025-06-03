@@ -3,6 +3,8 @@ import '../BrendNewModel/BrandNewModels.scss';
 import { Phone } from '../Types/BaseItem';
 import { useCartContext } from '../CartContext/useCartContext';
 import { Link } from 'react-router-dom';
+import HeartEmpty from './../../public/img/AddFavor.png';
+import HeartFilled from './../../public/img/AddFavorAct.png';
 
 type BrandNewModelsProps = {
   hideTitle?: boolean;
@@ -17,6 +19,40 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
   const [error, setError] = useState<string | null>(null);
   const { addToCart, addToFavorites } = useCartContext();
   const [phonesPerPage, setPhonesPerPage] = useState(4);
+  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
+  const [addToCartIds, setAddToCartIds] = useState<Set<string>>(new Set());
+
+  const toggleFavorite = (phone: Phone) => {
+    setFavoriteIds((prev) => {
+      const newSet = new Set(prev);
+
+      if (newSet.has(phone.id)) {
+        newSet.delete(phone.id);
+      } else {
+        newSet.add(phone.id);
+      }
+
+      addToFavorites(phone); // якщо хочеш також зберігати глобально
+
+      return newSet;
+    });
+  };
+
+  const toggleToCart = (phone: Phone) => {
+    setAddToCartIds((prev) => {
+      const newSet = new Set(prev);
+
+      if (newSet.has(phone.id)) {
+        newSet.delete(phone.id);
+      } else {
+        newSet.add(phone.id);
+      }
+
+      addToCart(phone); // якщо хочеш також зберігати глобально
+
+      return newSet;
+    });
+  };
 
   useEffect(() => {
     const fetchPhones = async () => {
@@ -135,16 +171,19 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
             </Link>
             <div className="brand-new-models_phone-card__actions">
               <button
-                className="brand-new-models_phone-card__actions__btn-primary"
-                onClick={() => addToCart(phone)}
+                className={`brand-new-models_phone-card__actions__btn-primary ${
+                  addToCartIds.has(phone.id) ? 'added' : ''
+                }`}
+                onClick={() => toggleToCart(phone)}
+                disabled={addToCartIds.has(phone.id)}
               >
-                Add to cart
+                {addToCartIds.has(phone.id) ? 'Added' : 'Add to cart'}
               </button>
               <img
-                onClick={() => addToFavorites(phone)}
+                onClick={() => toggleFavorite(phone)}
                 className="brand-new-models_phone-card__actions__btn-favorite"
-                src="./img/AddFavor.png"
-                alt="AddFavor"
+                src={favoriteIds.has(phone.id) ? HeartFilled : HeartEmpty}
+                alt="Favorite"
               />
             </div>
           </div>

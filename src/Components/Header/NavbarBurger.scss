@@ -1,3 +1,11 @@
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh; /* Запобігає "стрибку" сторінки */
+  position: fixed; /* Фіксує положення, щоб уникнути прокручування */
+  width: 100%;
+  top: 0;
+  left: 0;
+}
 .burger-menu-overlay {
   position: fixed;
   top: 0;
@@ -9,11 +17,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  visibility: hidden;
+  // overflow: hidden;
+  // opacity: 0; /* Початкова прозорість - повністю прозорий */
+  // visibility: hidden;
+  transition: opacity 0.5s ease-in ;
+}
+
+.burger-menu-overlay .active {
+  opacity: 1; /* Кінцева прозорість - повністю видимий */
+  visibility: visible;
+  overflow: hidden;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .burger-menu {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -21,8 +38,14 @@
 
 .burger-header {
   display: flex;
-  justify-content: space-between;
+  box-sizing: border-box;
+  height: 64px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
   align-items: center;
+  background-color: #fff;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
 
   .logo-title {
     font-size: 18px;
@@ -32,17 +55,20 @@
     display: flex;
     align-items: center;
     gap: 4px;
-  }
 
-  .emoji {
-    font-size: 16px;
   }
 
   .close-button {
+    height: 100%;
+    width: 50px;
+    padding: 0px;
     background: none;
     border: none;
     font-size: 24px;
     cursor: pointer;
+    margin-left: auto;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.5s ease-in-out;
   }
 }
 
@@ -52,6 +78,7 @@
   align-items: center;
   margin-top: 40px;
   gap: 20px;
+  flex-grow: 1;
 
   .burger-link {
     text-transform: uppercase;
@@ -81,6 +108,6 @@
 .burger-footer {
   display: flex;
   justify-content: space-around;
-  padding-bottom: 20px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
 }
 
