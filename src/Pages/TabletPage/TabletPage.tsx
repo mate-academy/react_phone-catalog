@@ -35,7 +35,7 @@ export const TabletPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('/api/tablets.json')
+    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(
