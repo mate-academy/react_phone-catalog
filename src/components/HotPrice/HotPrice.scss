@@ -1,0 +1,33 @@
+@import '../../styles/utilsMV';
+
+.hotprice {
+  position: relative;
+  grid-column: 1 / 5;
+
+  @include on-tablet {
+    grid-column: 1 / 13;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 25;
+  }
+
+  &__top {
+    padding-inline: 16px;
+    align-items: center;
+
+    @include grid;
+
+    @include on-tablet {
+      padding-inline: 0;
+    }
+
+    &-title {
+      grid-column: 1 / 3;
+
+      @include on-tablet {
+        grid-column: 1 / 8;
+      }
+    }
+  }
+}
