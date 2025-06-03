@@ -1,8 +1,8 @@
 import styles from './PhonesCatalog.module.scss';
 import { ProductCard } from '../../../shared/components/ProductCard';
 import { getProduct } from '../../../shared/utils/fetchClient';
-import { useCallback, useEffect, useState } from 'react';
-import { Phone } from '../../../shared/utils/types/apiTypes';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Product } from '../../../shared/utils/types/apiTypes';
 import { SortDropDown } from '../../../shared/components/SortDropDown';
 // eslint-disable-next-line max-len
 import { ItemsOnPageDropDown } from '../../../shared/components/ItemsOnPageDropDown';
@@ -11,18 +11,21 @@ import { STATUS, Status } from '../../../shared/utils/types/Status';
 import { Loader } from '../Loader/Loader';
 import { LOAD_ERROR, LoadError } from '../../../shared/utils/types/LoadError';
 import { Button } from '../../../shared/components/Button';
+import { useSearchParams } from 'react-router-dom';
 
 export const PhonesCatalog = () => {
-  const [phones, setPhones] = useState<Phone[] | undefined>();
+  const [products, setProducts] = useState<Product[] | undefined>();
   const [status, setStatus] = useState<Status>(STATUS.idle);
   const [loadError, setLoadError] = useState<LoadError>(LOAD_ERROR.noError);
+  const [searechParams] = useSearchParams();
 
-  const phonesCounter = phones?.length;
+  const sortParam = searechParams.get('sort');
+  const phonesCounter = products?.length;
 
-  const loadPhones = useCallback(() => {
-    return getProduct('/phones.json')
+  const loadProducts = useCallback(() => {
+    return getProduct('/products.json')
       .then(data => {
-        setPhones(data);
+        setProducts(data);
         setLoadError(LOAD_ERROR.noError);
         setStatus(STATUS.resolved);
       })
@@ -34,12 +37,32 @@ export const PhonesCatalog = () => {
 
   useEffect(() => {
     setStatus(STATUS.pending);
-    loadPhones();
-  }, [loadPhones]);
+    loadProducts();
+  }, [loadProducts]);
 
-  if (status === STATUS.resolved && phones?.length === 0) {
+  if (status === STATUS.resolved && products?.length === 0) {
     setLoadError(LOAD_ERROR.noProducts);
   }
+
+  const phones = products?.filter(product => product.category === 'phones');
+
+  const sortedPhones = useMemo(() => {
+    let sorted = phones;
+
+    if (sortParam === 'age') {
+      sorted = sorted?.sort((a, b) => b.year - a.year);
+    }
+
+    if (sortParam === 'price') {
+      sorted = sorted?.sort((a, b) => a.price - b.price);
+    }
+
+    if (sortParam === 'title') {
+      sorted = sorted?.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    return sorted;
+  }, [phones, sortParam]);
 
   return (
     <>
@@ -68,14 +91,14 @@ export const PhonesCatalog = () => {
           <Loader />
         ) : (
           <div className={styles.catalog__list}>
-            {phones?.map(phone => {
+            {sortedPhones?.map(phone => {
               return (
                 <ProductCard
                   key={phone.id}
                   name={phone.name}
-                  images={phone.images[0]}
-                  priceDiscount={phone.priceDiscount}
-                  priceRegular={phone.priceRegular}
+                  images={phone.image}
+                  priceDiscount={phone.price}
+                  priceRegular={phone.fullPrice}
                   screen={phone.screen}
                   capacity={phone.capacity}
                   ram={phone.ram}

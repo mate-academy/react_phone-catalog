@@ -1,8 +1,8 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import styles from './SortDropDown.module.scss';
 
 export const SortDropDown = () => {
-  const [searechParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   return (
     <>
@@ -54,9 +54,8 @@ export const SortDropDown = () => {
           name="sort"
           id="sort"
         >
-          <button></button>
           <option className={styles['drop-down__option']} value="age">
-            <Link to={`/phones?${searechParams.toString()}`}>Newest</Link>
+            Newest
           </option>
 
           <option className={styles['drop-down__option']} value="title">
