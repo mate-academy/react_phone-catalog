@@ -5,9 +5,9 @@ import classNames from 'classnames';
 import { useCart } from '../../Functional/CartContext/CartContext';
 import { Aside } from '../Aside/Aside';
 import { useState } from 'react';
-import heartLove from '../../../public/figmaLogo/HeartLove.svg';
-import figmaLogo from '../../../public/figmaLogo/Logo.svg';
-import packetImg from '../../../public/figmaLogo/Packet.svg';
+import heartLove from '../../../figmaLogo/HeartLove.svg';
+import figmaLogo from '../../../figmaLogo/Logo.svg';
+import packetImg from '../../../figmaLogo/Packet.svg';
 
 export const Header = () => {
   const { cart, favorites } = useCart();

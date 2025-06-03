@@ -28,7 +28,7 @@ export default function NewBrand() {
 
   useEffect(() => {
     setLoading(true);
-    fetch (`${import.meta.env.BASE_URL}api/phones.json`)
+    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(
@@ -115,7 +115,7 @@ export default function NewBrand() {
                   onError={e =>
                     e.currentTarget.setAttribute(
                       'src',
-                      '/public/img/page-not-found.png',
+                      '/img/page-not-found.png',
                     )
                   }
                 />

@@ -115,7 +115,7 @@ export default function HotPrices() {
                   onError={e =>
                     e.currentTarget.setAttribute(
                       'src',
-                      '/public/img/page-not-found.png',
+                      '/img/page-not-found.png',
                     )
                   }
                 />

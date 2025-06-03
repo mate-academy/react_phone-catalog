@@ -1,9 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { MainSlider } from './MainSlider';
-import bannerAccessories from '../../../public/img/banner-accessories.png';
-import bannerPhones from '../../../public/img/banner-phones.png';
-import bannerTablets from '../../../public/img/banner-tablets.png';
+import bannerAccessories from '../../..//img/banner-accessories.png';
+import bannerPhones from '../../..//img/banner-phones.png';
+import bannerTablets from '../../..//img/banner-tablets.png';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

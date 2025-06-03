@@ -10,7 +10,7 @@ export default function ShopByCategory() {
           <Link to="/phones">
             <div className="shop__phone">
               <img
-                src="/public/img/category-phones.webp"
+                src="/img/category-phones.webp"
                 alt="phones-category"
                 className="shop__phone--img"
               />
@@ -23,7 +23,7 @@ export default function ShopByCategory() {
           <Link to="/tablets">
             <div className="shop__tablet">
               <img
-                src="/public/img/category-tablets.png"
+                src="/img/category-tablets.png"
                 alt="tablets-category"
                 className="shop__tablet--img"
               />
@@ -36,7 +36,7 @@ export default function ShopByCategory() {
           <Link to="/accessories">
             <div className="shop__accessories">
               <img
-                src="/public/img/category-accessories.png"
+                src="/img/category-accessories.png"
                 alt="accessories-category"
                 className="shop__accessories--img"
               />
