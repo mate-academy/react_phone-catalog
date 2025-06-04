@@ -6,9 +6,12 @@ import { CartList } from './CartList';
 import { CartCheckout } from './CartCheckout';
 import { GoBackButton } from '../../shared/Shared_Components/ActionButtons/GoBackButton';
 import { scrollToTop } from '../../../utils/scrollToTop';
+import classNames from 'classnames';
+import { DarkModeContext } from '../../../Store/StoreThemeMode';
 
 export const CartPage: React.FC = () => {
   const { cartList } = useContext(CartStoreContext);
+  const { isDark } = useContext(DarkModeContext);
 
   useEffect(() => {
     scrollToTop();
@@ -20,7 +23,13 @@ export const CartPage: React.FC = () => {
         <div className="cart__top">
           <GoBackButton />
 
-          <h1 className="title title--h1">Cart</h1>
+          <h1
+            className={classNames('title title--h1', {
+              'title--is-Dark': isDark,
+            })}
+          >
+            Cart
+          </h1>
         </div>
 
         {cartList.length ? (
@@ -31,7 +40,13 @@ export const CartPage: React.FC = () => {
           </div>
         ) : (
           <div className="cart__empty">
-            <h2 className="title title--h2">Your cart is empty</h2>
+            <h2
+              className={classNames('title title--h2', {
+                'title--is-Dark': isDark,
+              })}
+            >
+              Your cart is empty
+            </h2>
 
             <div className="cart__cat-image" />
           </div>

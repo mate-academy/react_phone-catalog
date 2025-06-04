@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ModifiedData } from '../../Types/novaPostTypes';
 // eslint-disable-next-line max-len
 import { SearchData } from '../ProductPage/types/types';
+import { DarkModeContext } from '../../../../Store/StoreThemeMode';
 
 interface Props {
   title: string;
@@ -20,6 +21,7 @@ export const InputField: React.FC<Props> = ({
   isLoading,
   listOfItems,
 }) => {
+  const { isDark } = useContext(DarkModeContext);
   const [isOpened, setIsOpened] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
@@ -53,6 +55,7 @@ export const InputField: React.FC<Props> = ({
         id={`input-list-${title}`}
         className={classNames('input-field__options', {
           'input-field__options--disabled': isLoading,
+          'input-field__options--dark': isDark,
         })}
         onFocus={() => setIsOpened(true)}
         title="Please, enter text only with ukrainian letters"
@@ -65,7 +68,11 @@ export const InputField: React.FC<Props> = ({
       />
 
       {isOpened && !isLoading && listOfItems?.length > 0 ? (
-        <ul className="input-field__options-list">
+        <ul
+          className={classNames('input-field__options-list', {
+            'input-field__options-list--dark': isDark,
+          })}
+        >
           {listOfItems.flatMap((item: ModifiedData, i) => (
             <li
               key={`${item.ref}-${i}`}
@@ -77,6 +84,9 @@ export const InputField: React.FC<Props> = ({
               className={classNames('input-field__option', {
                 'input-field__option--is-Active':
                   item.description === inputValue,
+                'input-field__option--dark': isDark,
+                'input-field__option--is-Active-dark':
+                  isDark && item.description === inputValue,
               })}
             >
               {item.description}

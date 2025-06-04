@@ -13,5 +13,19 @@
     @include on-tablet {
       width: 100%;
     }
+
+    &--dark {
+      background-color: $gray-surface-secondary;
+      border-color: $gray-elements-secondary;
+      color: $white-for-dark;
+
+      &::placeholder {
+        color: $white-for-dark;
+      }
+
+      &:focus {
+        outline: $gray-elements-secondary;
+      }
+    }
   }
 }

@@ -10,8 +10,10 @@ import { AuthorizationForm } from '../../shared/Shared_Components/Forms/Authoriz
 import { GoogleAuth } from '../../shared/Shared_Components/GoogleAuth/GoogleAuth';
 import { FormTypes, SessionStorageCredentials } from '../../shared/Types/types';
 import { PrimaryButton } from '../../shared/Shared_Components/ActionButtons/PrimaryButton';
+import { DarkModeContext } from '../../../Store/StoreThemeMode';
 
 export const ContactInfo = () => {
+  const { isDark } = useContext(DarkModeContext);
   const { checkoutData, setCheckoutData } = useContext(CheckoutContext);
   const { errors, setErrors } = useContext(CheckoutErrorsContext);
 
@@ -69,7 +71,13 @@ export const ContactInfo = () => {
 
   return (
     <div className="checkout__customer-info">
-      <h2 className="title title--h2 checkout__text">Contact information</h2>
+      <h2
+        className={classNames('title title--h2 checkout__text', {
+          'title--is-Dark': isDark,
+        })}
+      >
+        Contact information
+      </h2>
 
       {errors.contactInfo && <ErrorMessage title={errorTitle} />}
 
@@ -83,6 +91,9 @@ export const ContactInfo = () => {
                 {
                   'checkout__log-in-title--is-not-active':
                     active == FormTypes.LogIn,
+                  'title--is-Dark': isDark,
+                  'checkout__log-in-title--dark-not-active':
+                    isDark && active === FormTypes.LogIn,
                 },
               )}
             >
@@ -96,6 +107,9 @@ export const ContactInfo = () => {
                 {
                   'checkout__log-in-title--is-not-active':
                     active === FormTypes.SignUp,
+                  'title--is-Dark': isDark,
+                  'checkout__log-in-title--dark-not-active':
+                    isDark && active === FormTypes.SignUp,
                 },
               )}
             >
@@ -103,7 +117,11 @@ export const ContactInfo = () => {
             </h2>
           </div>
 
-          <div className="checkout__inputs-block">
+          <div
+            className={classNames('checkout__inputs-block', {
+              'checkout__inputs-block--dark': isDark,
+            })}
+          >
             {active === FormTypes.SignUp && (
               <AuthorizationForm
                 formType={FormTypes.SignUp}

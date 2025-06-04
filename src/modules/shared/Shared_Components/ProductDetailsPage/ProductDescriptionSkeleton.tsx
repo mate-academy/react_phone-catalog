@@ -1,5 +1,11 @@
+import { useContext } from 'react';
+import { DarkModeContext } from '../../../../Store/StoreThemeMode';
+import classNames from 'classnames';
+
 /* eslint-disable max-len */
 export const ProductDescriptionSkeleton = () => {
+  const { isDark } = useContext(DarkModeContext);
+
   return (
     <div className="details__main">
       <div className="details__features">
@@ -55,13 +61,29 @@ export const ProductDescriptionSkeleton = () => {
 
       <div className="details__description">
         <div className="details__about">
-          <h2 className="title title--h2 details__description-title">About</h2>
+          <h2
+            className={classNames(
+              'title title--h2 details__description-title',
+              {
+                'title--is-Dark': isDark,
+              },
+            )}
+          >
+            About
+          </h2>
 
           <div className="details__about-block--skeleton" />
         </div>
 
         <div className="details__tech-specs">
-          <h2 className="title title--h2 details__description-title">
+          <h2
+            className={classNames(
+              'title title--h2 details__description-title',
+              {
+                'title--is-Dark': isDark,
+              },
+            )}
+          >
             Tech Specs
           </h2>
 

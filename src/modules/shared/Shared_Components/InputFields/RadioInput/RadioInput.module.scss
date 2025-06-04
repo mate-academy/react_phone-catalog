@@ -16,6 +16,16 @@
     border-color: $primary-color;
   }
 
+  &--dark {
+    &:hover {
+      border-color: $primary-dark-purple;
+    }
+  }
+
+  &--dark-is-checked {
+    border-color: $primary-dark-purple;
+  }
+
   &__text-container {
     display: flex;
     flex-direction: column;

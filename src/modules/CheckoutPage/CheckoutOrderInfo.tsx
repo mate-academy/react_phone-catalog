@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useContext, useState } from 'react';
 import { CartStoreContext } from '../../Store/CartStore';
 import { CartItem } from '../CartPage/components/CartItem';
@@ -11,12 +12,14 @@ import { CheckoutErrorsContext } from '../../Store/CheckoutErrorStore';
 import { Modal } from '../shared/Modal/Modal';
 import { ErrorMessage } from '../shared/ErrorMessages/ErrorMessage';
 import { generateRandom } from '../../utils/generateRandom';
-// eslint-disable-next-line max-len
 import { PrimaryButton } from '../shared/Shared_Components/ActionButtons/PrimaryButton';
 import { scrollToTop } from '../../utils/scrollToTop';
 import { useNavigate } from 'react-router-dom';
+import { DarkModeContext } from '../../Store/StoreThemeMode';
+import classNames from 'classnames';
 
 export const CheckoutOrderInfo = () => {
+  const { isDark } = useContext(DarkModeContext);
   const { cartList, setCartList } = useContext(CartStoreContext);
   const { checkoutData, setCheckoutData } = useContext(CheckoutContext);
   const { errors, setErrors } = useContext(CheckoutErrorsContext);
@@ -98,19 +101,48 @@ export const CheckoutOrderInfo = () => {
     handleModalOpen();
   };
 
+  const totalBlockInfo = [
+    {
+      title: 'Order sum:',
+      value: `${orderSum} usd`,
+    },
+    {
+      title: 'Discount:',
+      value: checkoutData.discountInfo.isActive
+        ? `- ${orderSum * 0.1} usd`
+        : '---',
+    },
+    {
+      title: 'Delivery cost:',
+      value: 'Free',
+      isFree: true,
+    },
+    {
+      title: 'Total sum:',
+      value: `${totalSum} usd`,
+    },
+  ];
+
   const noticeMessage =
-    // eslint-disable-next-line max-len
     'Please, note that this is a mockup checkout. We do not collect any data. All information will be deleted after modal is closed.';
 
   return (
     <div className="checkout__info">
-      <div className="checkout__info-head">
+      <div
+        className={classNames('checkout__info-head', {
+          'checkout__info-head--dark': isDark,
+        })}
+      >
         <h2 className="title title--h2 checkout__text">Order information</h2>
 
         <p className="body-text">{`In your cart ${totalItems} ${totalItems > 1 ? 'items' : 'item'}:`}</p>
       </div>
 
-      <div className="checkout__item-list">
+      <div
+        className={classNames('checkout__item-list', {
+          'checkout__item-list--dark': isDark,
+        })}
+      >
         {cartList.map((item: UpdatedProduct) => (
           <CartItem key={item.itemId} cartItem={item} isCheckout={true} />
         ))}
@@ -118,12 +150,20 @@ export const CheckoutOrderInfo = () => {
 
       <div className="checkout__bottom">
         <div className="checkout__promo-code">
-          <p className="title title--h2">Promo Code</p>
+          <h2
+            className={classNames('title title--h2', {
+              'title--is-Dark': isDark,
+            })}
+          >
+            Promo Code
+          </h2>
 
           <div className="checkout__promo-block">
             <input
               type="text"
-              className="checkout__promo-input"
+              className={classNames('checkout__promo-input', {
+                'checkout__promo-input--dark': isDark,
+              })}
               placeholder="Type to receive 10% off"
               value={checkoutData.discountInfo.code}
               onChange={event =>
@@ -159,41 +199,26 @@ export const CheckoutOrderInfo = () => {
         </div>
 
         <div className="checkout__total-info">
-          <div className="checkout__total-block">
-            <p className="title title--h4 checkout__total-text">Order sum:</p>
-
-            <p className="title title--h4 checkout__total-text">{`${orderSum} usd`}</p>
-          </div>
-
-          <div className="checkout__total-block">
-            <p className="title title--h4 checkout__total-text">Discount:</p>
-
-            <p className="title title--h4 checkout__total-text">
-              {checkoutData.discountInfo.isActive
-                ? `- ${orderSum * 0.1} usd`
-                : '---'}
-            </p>
-          </div>
-
-          <div className="checkout__total-block">
-            <p className="title title--h4 checkout__total-text">
-              Delivery cost:
-            </p>
-
-            <p
-              className="
-                title title--h4 checkout__total-text checkout__total-text--free
-              "
+          {totalBlockInfo.map((block, index) => (
+            <div
+              key={index}
+              className={classNames('checkout__total-block', {
+                'checkout__total-block--dark': isDark,
+              })}
             >
-              Free
-            </p>
-          </div>
+              <p className="title title--h4 checkout__total-text">
+                {block.title}
+              </p>
 
-          <div className="checkout__total-block">
-            <p className="title title--h4 checkout__total-text">Total sum:</p>
-
-            <p className="title title--h4 checkout__total-text">{`${totalSum} usd`}</p>
-          </div>
+              <p
+                className={classNames('title title--h4 checkout__total-text', {
+                  'checkout__total-text--free': block.isFree,
+                })}
+              >
+                {block.value}
+              </p>
+            </div>
+          ))}
         </div>
 
         <PrimaryButton
@@ -211,7 +236,7 @@ export const CheckoutOrderInfo = () => {
 
             <p className="body-text">
               Your order may take up to 3 business days to be shipped. Our
-              manager may contact you in case any inconvenience.
+              manager may contact you in case of any inconvenience.
             </p>
 
             <PrimaryButton

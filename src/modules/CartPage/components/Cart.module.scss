@@ -30,6 +30,10 @@
     flex-direction: column;
     justify-content: center;
 
+    &--dark {
+      border-color: $gray-elements;
+    }
+
     @include on-tablet {
       flex-direction: row;
       justify-content: space-between;
@@ -111,6 +115,10 @@
     justify-content: center;
     flex-direction: column;
 
+    &--dark {
+      border-color: $gray-elements;
+    }
+
     @include on-desktop {
       width: 30%;
     }
@@ -120,29 +128,12 @@
     border-bottom: 1px solid $elements-color;
     margin-bottom: 20px;
     text-align: center;
-  }
 
-  &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    height: 48px;
-    background-color: $primary-color;
-    color: $white;
-    font-family: $font-Mont_SemiBold;
-    font-size: 14px;
-    line-height: 21px;
-    border: none;
-    width: 100%;
-    transition: all $primary-transition-duration ease-in-out;
+    &--dark {
+      border-bottom-color: $gray-elements;
 
-    @include on-desktop {
-      &:hover {
-        cursor: pointer;
-        border: 1px solid $primary-color;
-        color: $green-color;
-        background-color: $white;
+      & > h1 {
+        color: $white-for-dark;
       }
     }
   }
@@ -160,6 +151,10 @@
     font-size: 14px;
     line-height: 21px;
     color: $primary-color;
+
+  &--dark {
+    color: $white-for-dark;
+  }
 
   &--name {
     width: 200px;

@@ -21,11 +21,6 @@
     pointer-events: none;
   }
 
-  &--skeleton {
-    @include skeleton;
-    //background: none;
-  }
-
   &--active {
     background-image: url(/icons/Chevron-Arrow-Right.svg);
   }
@@ -54,5 +49,13 @@
     background-color: $black-main;
     border-color: $gray-elements;
     background-image: url(/icons/Chevron-Arrow-Right.svg);
+  }
+
+  &--closed {
+    background-image: url(/icons/close_menu_icon.svg);
+  }
+
+  &--closed-dark {
+    background-image: url(/icons/CloseWhite.svg);
   }
 }

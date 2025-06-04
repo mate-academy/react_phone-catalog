@@ -6,11 +6,14 @@ import { getPaymentOptions } from '../../../api/getPaymentOptions';
 import { CheckoutContext } from '../../../Store/CheckoutStore';
 import { ErrorMessage } from '../../shared/ErrorMessages/ErrorMessage';
 import { CheckoutErrorsContext } from '../../../Store/CheckoutErrorStore';
+import { DarkModeContext } from '../../../Store/StoreThemeMode';
+import classNames from 'classnames';
 
 export const CheckoutInfo = () => {
   const [options, setOptions] = useState<UserPaymentOptions[]>([]);
   const { checkoutData, setCheckoutData } = useContext(CheckoutContext);
   const { errors } = useContext(CheckoutErrorsContext);
+  const { isDark } = useContext(DarkModeContext);
 
   const onSelectHandler = (
     arr: UserPaymentOptions[],
@@ -46,7 +49,13 @@ export const CheckoutInfo = () => {
 
   return (
     <div className="checkout__customer-info">
-      <h2 className="title title--h2 checkout__text">Check Out</h2>
+      <h2
+        className={classNames('title title--h2 checkout__text', {
+          'title--is-Dark': isDark,
+        })}
+      >
+        Check Out
+      </h2>
 
       {errors.paymentInfo && <ErrorMessage title={errorTitle} />}
 

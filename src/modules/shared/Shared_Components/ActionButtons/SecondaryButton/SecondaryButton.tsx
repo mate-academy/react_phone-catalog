@@ -5,7 +5,9 @@ import React from 'react';
 // so there is no props for left direction
 
 interface Props {
-  onClickHandler: () => void;
+  onClickHandler: (
+    event?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void;
   isRight?: boolean;
   isTop?: boolean;
   isClose?: boolean;
@@ -21,16 +23,20 @@ export const SecondaryButton: React.FC<Props> = ({
   isDark,
   isLoading,
   isDisabled,
+  isClose,
 }) => {
   return (
     <button
       className={classNames('secondary', {
+        'secondary--loading': isLoading,
         'secondary--right': isRight,
         'secondary--top': isTop,
         'secondary--active': !isDisabled,
         'secondary--skeleton': isLoading,
         'secondary--is-Dark': isDark,
         'secondary--is-Dark-Disabled': isDark && isDisabled,
+        'secondary--closed': isClose,
+        'secondary--closed-dark': isClose && isDark,
       })}
       onClick={onClickHandler}
       disabled={isDisabled}

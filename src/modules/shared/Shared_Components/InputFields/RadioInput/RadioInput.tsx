@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { DarkModeContext } from '../../../../../Store/StoreThemeMode';
 import { UserPaymentOptions } from '../../../Types/types';
 import classNames from 'classnames';
 
@@ -7,10 +9,14 @@ interface Props {
 }
 
 export const RadioInput: React.FC<Props> = ({ data, onSelectHandler }) => {
+  const { isDark } = useContext(DarkModeContext);
+
   return (
     <div
       className={classNames('radio-input', {
         'radio-input--is-Checked': data.isChecked,
+        'radio-input--dark': isDark,
+        'radio-input--dark-is-checked': isDark && data.isChecked,
       })}
       onClick={() => onSelectHandler()}
     >
@@ -22,7 +28,11 @@ export const RadioInput: React.FC<Props> = ({ data, onSelectHandler }) => {
       />
 
       <div className="radio-input__text-container">
-        <h4 className="title title--h4 radio-input__text">
+        <h4
+          className={classNames('title title--h4 radio-input__title', {
+            'title--is-Dark': isDark,
+          })}
+        >
           {data.paymentTitle}
         </h4>
 

@@ -4,6 +4,10 @@
   margin-bottom: 30px;
   border-radius: 10px;
 
+  &--dark {
+    border-color: $gray-elements;
+  }
+
   @include on-desktop {
     display: flex;
   }
@@ -18,10 +22,22 @@
       border-right: 1px solid $elements-color;
       padding-right: 20px;
     }
+
+    &--dark {
+      border-color: $gray-elements;
+
+      & > div {
+        border-color: $gray-elements;
+      }
+    }
   }
 
   &__customer-info {
     border-bottom: 1px solid $elements-color;
+
+    &:last-child {
+      border-bottom: transparent;
+    }
   }
 
   &__log-in-block {
@@ -46,6 +62,10 @@
   &__log-in-title {
     &--is-not-active {
       color: $elements-color;
+    }
+
+    &--dark-not-active {
+      color: $gray-elements;
     }
 
     @include on-desktop {
@@ -73,6 +93,10 @@
       padding-right: 20px;
       border-right: 1px solid $elements-color;
     }
+
+    &--dark {
+      border-color: $gray-elements;
+    }
   }
 
   &__form-block {
@@ -90,6 +114,14 @@
 
   &__info-head {
     border-bottom: 1px solid $elements-color;
+
+    &--dark {
+      border-color: $gray-elements;
+
+      & > h2 {
+        color: $white-for-dark;
+      }
+    }
   }
 
   &__item-list {
@@ -98,6 +130,10 @@
     gap: 15px;
     padding-block: 20px;
     border-bottom: 1px solid $elements-color;
+
+    &--dark {
+      border-color: $gray-elements;
+    }
   }
 
   &__promo-block{
@@ -120,6 +156,20 @@
     &--is-log-in {
       width: 100%;
     }
+
+    &--dark {
+      background-color: $gray-surface-secondary;
+      color: $white-for-dark;
+      border-color: $gray-elements;
+
+      &::placeholder {
+        color: $white-for-dark;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
   }
 
   &__text {
@@ -138,6 +188,12 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+
+    &--dark {
+      & > p {
+        color: $white-for-dark;
+      }
+    }
   }
 
   &__total-text {
@@ -145,57 +201,6 @@
 
     &--free {
       color: $green-color;
-    }
-  }
-
-  &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    height: 48px;
-    background-color: $primary-color;
-    color: $white;
-    font-family: $font-Mont_SemiBold;
-    font-size: 14px;
-    line-height: 21px;
-    border: none;
-    width: 100%;
-    border: 1px solid transparent;
-    transition: all $primary-transition-duration ease-in-out;
-
-    &--google {
-      width: 70%;
-      align-self: center;
-      border: 1px solid $primary-color;
-      color: $green-color;
-      background-color: $white;
-      pointer-events: none;
-
-      @include on-tablet {
-        width: 40%;
-      }
-    }
-
-    &--promo {
-      width: 30%;
-    }
-
-    &--is-applied {
-      background-color: $white;
-      border: 1px solid $elements-color;
-      color: $green-color;
-      transition: border $primary-transition-duration ease-in-out;
-      pointer-events: none;
-    }
-
-    @include on-desktop {
-      &:hover {
-        cursor: pointer;
-        border: 1px solid $primary-color;
-        color: $green-color;
-        background-color: $white;
-      }
     }
   }
 
@@ -222,6 +227,18 @@
         border-color: $primary-color;
         cursor: pointer;
       }
+    }
+
+    &--dark {
+      border-color: $gray-elements;
+
+      &:hover {
+        border-color: $primary-dark-purple;
+      }
+    }
+
+    &--dark-is-active {
+      border-color: $primary-dark-purple;
     }
   }
 
@@ -261,14 +278,10 @@
   &__delivery-image {
     width: 35px;
     height: 35px;
-    background-image: url(/icons/delivery-truck.png);
+    background-image: url(/icons/delivery-truck-NP.png);
     background-position: center;
     background-size: contain;
     transition: $primary-transition-duration;
-
-    &--is-Active {
-      background-image: url(/icons/delivery-truck-NP.png);
-    }
   }
 
   &__delivery-by-service {

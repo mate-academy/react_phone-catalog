@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FormTypes } from '../../../Types/types';
 import { onlyNumbersRegEx } from '../../../../../utils/regEx';
 import { PrimaryButton } from '../../ActionButtons/PrimaryButton';
+import { DarkModeContext } from '../../../../../Store/StoreThemeMode';
+import classNames from 'classnames';
 
 interface Props {
   formType: FormTypes;
@@ -16,6 +18,8 @@ export const AuthorizationForm: React.FC<Props> = ({
   inputValue,
   setInputValue,
 }) => {
+  const { isDark } = useContext(DarkModeContext);
+
   const keyValues = Object.keys(inputValue);
   const propertyValues = Object.values(inputValue);
   const topInputValue = propertyValues[0];
@@ -85,10 +89,10 @@ export const AuthorizationForm: React.FC<Props> = ({
     >
       <input
         type={formType === FormTypes.SignUp ? 'text' : 'email'}
-        className="
-          checkout__promo-input
-          checkout__promo-input--is-log-in
-        "
+        className={classNames(
+          'checkout__promo-input checkout__promo-input--is-log-in',
+          { 'checkout__promo-input--dark': isDark },
+        )}
         placeholder={formType === FormTypes.SignUp ? 'Name' : 'Email'}
         value={topInputValue}
         onChange={event => setInputValue(keyValues[0], event.target.value)}
@@ -99,10 +103,10 @@ export const AuthorizationForm: React.FC<Props> = ({
         <input
           type="tel"
           id="phone-input"
-          className="
-            checkout__promo-input
-            checkout__promo-input--is-log-in
-          "
+          className={classNames(
+            'checkout__promo-input checkout__promo-input--is-log-in',
+            { 'checkout__promo-input--dark': isDark },
+          )}
           placeholder="+380 XX XXX XX XX"
           value={bottomInputValue}
           required
@@ -113,10 +117,10 @@ export const AuthorizationForm: React.FC<Props> = ({
       ) : (
         <input
           type="password"
-          className="
-            checkout__promo-input
-            checkout__promo-input--is-log-in
-          "
+          className={classNames(
+            'checkout__promo-input checkout__promo-input--is-log-in',
+            { 'checkout__promo-input--dark': isDark },
+          )}
           placeholder="Enter your password"
           value={bottomInputValue}
           required

@@ -75,6 +75,14 @@
       border-color: $primary-color;
     }
 
+    &--dark {
+      border-color: $primary-color
+    }
+
+    &--dark-active {
+      border-color: $elements-color;
+    }
+
     @include on-tablet {
       width: 40px;
       height: 40px;
@@ -142,6 +150,14 @@
       border-color: $primary-color;
     }
 
+    &--dark {
+      border-color: $primary-color;
+    }
+
+    &--dark-active {
+      border-color: $elements-color;
+    }
+
     @include on-desktop {
       &:hover {
         border-color: $primary-color;
@@ -168,13 +184,28 @@
     &--active {
       background-color: $primary-color;
       color: $white;
-      border: none;
+      border-color: transparent;
     }
 
     @include on-desktop {
       &:hover {
         border-color: $primary-color;
       }
+    }
+
+    &--dark {
+      color: $white-for-dark;
+      border-color: $primary-color;
+
+      &:hover {
+        border-color: $white-for-dark;
+      }
+    }
+
+    &--dark-active {
+      background-color: $white-for-dark;
+      color: $primary-color;
+      border-color: transparent;
     }
   }
 
@@ -185,6 +216,10 @@
     line-height: 41px;
     text-align: left;
     margin-block: 25px 15px;
+
+    &--dark {
+      color: $white-for-dark;
+    }
 
     &--skeleton {
       height: 50px;
@@ -206,6 +241,7 @@
       flex-direction: row;
       align-items: start;
       justify-content: space-between;
+      gap: 30px;
     }
   }
 
@@ -265,6 +301,10 @@
       font-size: 14px;
       line-height: 21px;
       color: $primary-color;
+    }
+
+    &--dark {
+      color: $white-for-dark;
     }
   }
 }

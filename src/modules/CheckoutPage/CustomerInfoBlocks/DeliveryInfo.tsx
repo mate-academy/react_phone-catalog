@@ -19,8 +19,10 @@ import { CheckoutContext } from '../../../Store/CheckoutStore';
 import { DeliveryMethod } from '../../shared/Types/types';
 import { ErrorMessage } from '../../shared/ErrorMessages/ErrorMessage';
 import { CheckoutErrorsContext } from '../../../Store/CheckoutErrorStore';
+import { DarkModeContext } from '../../../Store/StoreThemeMode';
 
 export const DeliveryInfo = () => {
+  const { isDark } = useContext(DarkModeContext);
   const { checkoutData, setCheckoutData } = useContext(CheckoutContext);
   const { errors } = useContext(CheckoutErrorsContext);
   const [searchData, setSearchData] = useState<SearchData>({
@@ -60,13 +62,23 @@ export const DeliveryInfo = () => {
 
   return (
     <div className="checkout__customer-info">
-      <h2 className="title title--h2 checkout__text">Delivery</h2>
+      <h2
+        className={classNames('title title--h2 checkout__text', {
+          'title--is-Dark': isDark,
+        })}
+      >
+        Delivery
+      </h2>
 
       {errors.deliveryInfo && <ErrorMessage title={errorTitle} />}
 
       <div className="checkout__delivery-info">
-        <h4 className="title title--h4">
-          Please, make sure you use ukrainian letters (ex. copy-paste:
+        <h4
+          className={classNames('title title--h4', {
+            'title--is-Dark': isDark,
+          })}
+        >
+          Please, make sure you use Ukrainian letters (ex. copy-paste:
           Хмельницький)
         </h4>
 
@@ -82,6 +94,9 @@ export const DeliveryInfo = () => {
           className={classNames('checkout__deliver-by-container', {
             'checkout__deliver-by-container--is-Active':
               checkoutData.deliveryMethod === DeliveryMethod.ByNP,
+            'checkout__deliver-by-container--dark': isDark,
+            'checkout__deliver-by-container--dark-is-active':
+              isDark && checkoutData.deliveryMethod === DeliveryMethod.ByNP,
           })}
           onClick={() =>
             setCheckoutData({
@@ -92,17 +107,18 @@ export const DeliveryInfo = () => {
         >
           <div className="checkout__delivery-banner">
             <div className="checkout__deliver-top">
-              <div
-                className={classNames('checkout__delivery-image', {
-                  'checkout__delivery-image--is-Active':
-                    checkoutData.deliveryMethod === DeliveryMethod.ByNP,
-                })}
-              />
+              <div className="checkout__delivery-image" />
             </div>
 
             <div className="checkout__deliver-bottom">
               <div className="checkout__delivery-titles">
-                <h3 className="title title--h3">To Nova Post Warehouse</h3>
+                <h3
+                  className={classNames('title title--h3', {
+                    'title--is-Dark': isDark,
+                  })}
+                >
+                  To Nova Post Warehouse
+                </h3>
 
                 <p className="body-text">
                   Estimated arrival: 1-3 business days
@@ -127,6 +143,10 @@ export const DeliveryInfo = () => {
           className={classNames('checkout__deliver-by-container', {
             'checkout__deliver-by-container--is-Active':
               checkoutData.deliveryMethod === DeliveryMethod.ToAddress,
+            'checkout__deliver-by-container--dark': isDark,
+            'checkout__deliver-by-container--dark-is-active':
+              isDark &&
+              checkoutData.deliveryMethod === DeliveryMethod.ToAddress,
           })}
           onClick={() =>
             setCheckoutData({
@@ -137,17 +157,18 @@ export const DeliveryInfo = () => {
         >
           <div className="checkout__delivery-banner">
             <div className="checkout__deliver-top">
-              <div
-                className={classNames('checkout__delivery-image', {
-                  'checkout__delivery-image--is-Active':
-                    checkoutData.deliveryMethod === DeliveryMethod.ToAddress,
-                })}
-              />
+              <div className="checkout__delivery-image" />
             </div>
 
             <div className="checkout__deliver-bottom">
               <div className="checkout__delivery-titles">
-                <h3 className="title title--h3">Delivery by Address</h3>
+                <h3
+                  className={classNames('title title--h3', {
+                    'title--is-Dark': isDark,
+                  })}
+                >
+                  Delivery by Address
+                </h3>
 
                 <p className="body-text">
                   Estimated arrival: 1-3 business days

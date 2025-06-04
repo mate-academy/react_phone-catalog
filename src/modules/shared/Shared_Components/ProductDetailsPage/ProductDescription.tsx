@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Description, ProductDetails, UpdatedProduct } from '../../Types/types';
 import classNames from 'classnames';
 import { ActionButtons } from '../ActionButtons/ActionButtons';
 import { NavLink } from 'react-router-dom';
+import { DarkModeContext } from '../../../../Store/StoreThemeMode';
 
 interface Props {
   details: ProductDetails | undefined;
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export const ProductDescription: React.FC<Props> = ({ details, item }) => {
+  const { isDark } = useContext(DarkModeContext);
   const descriptions = details ? details.description : ([] as Description[]);
   const arrayOfTechSpecs = [
     {
@@ -45,6 +47,26 @@ export const ProductDescription: React.FC<Props> = ({ details, item }) => {
       value: details?.cell.join(', '),
     },
   ];
+
+  const arrayOfBasicSpecs = [
+    {
+      property: 'Screen',
+      value: details?.screen,
+    },
+    {
+      property: 'Resolution',
+      value: details?.resolution,
+    },
+    {
+      property: 'Processor',
+      value: details?.processor,
+    },
+    {
+      property: 'RAM',
+      value: details?.ram,
+    },
+  ];
+
   const startImageUrl = `https://denlysiak.github.io/react_phone-catalog/${details?.images[0]}`;
   const [mainImage, setMainImage] = useState(startImageUrl);
 
@@ -87,6 +109,11 @@ export const ProductDescription: React.FC<Props> = ({ details, item }) => {
                   'details__secondary-image--active':
                     mainImage ===
                     `https://denlysiak.github.io/react_phone-catalog/${image}`,
+                  'details__secondary-image--dark': isDark,
+                  'details__secondary-image--dark-active':
+                    isDark &&
+                    mainImage ===
+                      `https://denlysiak.github.io/react_phone-catalog/${image}`,
                 })}
                 key={image}
                 onClick={() =>
@@ -114,6 +141,9 @@ export const ProductDescription: React.FC<Props> = ({ details, item }) => {
                   to={`/${details.category}/${getNewItemId(color)}`}
                   className={classNames('details__color-cover', {
                     'details__color-cover--active': details.color === color,
+                    'details__color-cover--dark': isDark,
+                    'details__color-cover--dark-active':
+                      isDark && details.color === color,
                   })}
                 >
                   <div
@@ -136,6 +166,9 @@ export const ProductDescription: React.FC<Props> = ({ details, item }) => {
                   key={cap}
                   to={`/${details.category}/${getNewItemId(cap)}`}
                   className={classNames('details__GB', {
+                    'details__GB--dark': isDark,
+                    'details__GB--dark-active':
+                      isDark && details.capacity === cap,
                     'details__GB--active': details.capacity === cap,
                   })}
                 >
@@ -145,53 +178,54 @@ export const ProductDescription: React.FC<Props> = ({ details, item }) => {
             </div>
           </div>
 
-          <div className="details__price">{`$ ${details?.priceRegular}`}</div>
+          <div
+            className={classNames('details__price', {
+              'details__price--dark': isDark,
+            })}
+          >{`$ ${details?.priceRegular}`}</div>
 
           <ActionButtons item={newItem} />
 
           <div className="details__specs">
-            <div className="details__tech-detail">
-              <p className="details__tech-detail-text">Screen</p>
+            {arrayOfBasicSpecs.map(items => (
+              <div key={items.property} className="details__tech-detail">
+                <p className="details__tech-detail-text">{items.property}</p>
 
-              <p className="details__tech-detail-text--params">
-                {details?.screen}
-              </p>
-            </div>
-
-            <div className="details__tech-detail">
-              <p className="details__tech-detail-text">Resolution</p>
-
-              <p className="details__tech-detail-text--params">
-                {details?.resolution}
-              </p>
-            </div>
-
-            <div className="details__tech-detail">
-              <p className="details__tech-detail-text">Processor</p>
-
-              <p className="details__tech-detail-text--params">
-                {details?.processor}
-              </p>
-            </div>
-
-            <div className="details__tech-detail">
-              <p className="details__tech-detail-text">RAM</p>
-
-              <p className="details__tech-detail-text--params">
-                {details?.ram}
-              </p>
-            </div>
+                <p
+                  className={classNames('details__tech-detail-text--params', {
+                    'details__tech-detail-text--dark': isDark,
+                  })}
+                >
+                  {items.value}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       <div className="details__description">
         <div className="details__about">
-          <h2 className="title title--h2 details__description-title">About</h2>
+          <h2
+            className={classNames(
+              'title title--h2 details__description-title',
+              {
+                'title--is-Dark': isDark,
+              },
+            )}
+          >
+            About
+          </h2>
 
           {descriptions.map((info: Description, i: number) => (
             <div key={i}>
-              <h3 className="title title--h4">{info.title}</h3>
+              <h3
+                className={classNames('title title--h4', {
+                  'title--is-Dark': isDark,
+                })}
+              >
+                {info.title}
+              </h3>
 
               <p className="body-text">{info.text}</p>
             </div>
@@ -199,7 +233,14 @@ export const ProductDescription: React.FC<Props> = ({ details, item }) => {
         </div>
 
         <div className="details__tech-specs">
-          <h2 className="title title--h2 details__description-title">
+          <h2
+            className={classNames(
+              'title title--h2 details__description-title',
+              {
+                'title--is-Dark': isDark,
+              },
+            )}
+          >
             Tech Specs
           </h2>
 
@@ -208,7 +249,11 @@ export const ProductDescription: React.FC<Props> = ({ details, item }) => {
               <div key={i} className="details__tech-detail">
                 <p className="details__tech-detail-text">{items.property}</p>
 
-                <p className="details__tech-detail-text--params">
+                <p
+                  className={classNames('details__tech-detail-text--params', {
+                    'details__tech-detail-text--dark': isDark,
+                  })}
+                >
                   {items.value}
                 </p>
               </div>

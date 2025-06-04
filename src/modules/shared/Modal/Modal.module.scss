@@ -11,6 +11,14 @@
   @include on-tablet {
     width: initial;
   }
+
+  &--dark {
+    background-color: $black-main;
+
+    & > h2, h3, p {
+      color: $white-for-dark;
+    }
+  }
 }
 
 .overlay {

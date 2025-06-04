@@ -1,5 +1,7 @@
 import React from 'react';
 import { InputType } from '../inputTypes';
+import classNames from 'classnames';
+import { DarkModeContext } from '../../../../../Store/StoreThemeMode';
 
 interface Props {
   title: string;
@@ -14,6 +16,7 @@ export const PlainInputField: React.FC<Props> = ({
   initialValue,
   onChangeHandler,
 }) => {
+  const { isDark } = React.useContext(DarkModeContext);
   const normalizedTitle = title.replaceAll(' ', '');
 
   return (
@@ -23,7 +26,9 @@ export const PlainInputField: React.FC<Props> = ({
       </label>
 
       <input
-        className="plain-input__field"
+        className={classNames('plain-input__field', {
+          'plain-input__field--dark': isDark,
+        })}
         id={`input-${normalizedTitle}`}
         value={initialValue}
         onChange={event => {

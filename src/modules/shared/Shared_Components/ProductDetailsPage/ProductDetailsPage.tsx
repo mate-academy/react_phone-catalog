@@ -15,6 +15,7 @@ import { GoBackButton } from '../ActionButtons/GoBackButton';
 import { scrollToTop } from '../../../../utils/scrollToTop';
 import { DarkModeContext } from '../../../../Store/StoreThemeMode';
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb';
+import classNames from 'classnames';
 
 export const ProductDetailsPage = () => {
   const title = 'You may also like';
@@ -67,7 +68,11 @@ export const ProductDetailsPage = () => {
 
           <GoBackButton />
 
-          <h1 className="title title--h1 title--capitalized">
+          <h1
+            className={classNames('title title--h1 title--capitalized', {
+              'title--is-Dark': isDark,
+            })}
+          >
             {normalizedName}
           </h1>
         </div>
