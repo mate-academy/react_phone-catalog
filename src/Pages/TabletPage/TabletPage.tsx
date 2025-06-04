@@ -35,7 +35,7 @@ export const TabletPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
+    fetch(`${import.meta.env.BASE_URL}api/tablets.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(
@@ -111,7 +111,7 @@ export const TabletPage = () => {
       id: tablet.id,
       name: tablet.name,
       price: tablet.priceDiscount,
-      image: `/${tablet.images[0]}`,
+      image: `${tablet.images[0]}`,
       color: selectedColor,
       capacity: tablet.capacity,
       quantity: 1,
@@ -148,7 +148,7 @@ export const TabletPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src="figmaLogo/Home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Tablets</p>
@@ -174,13 +174,13 @@ export const TabletPage = () => {
               <Link to={`/products/${tablet.id}`}>
                 <img
                   src={
-                    imageError[`/${tablet.images[0]}`]
-                      ? '/public/img/page-not-found.png'
-                      : `/${tablet.images[0]}`
+                    imageError[`${tablet.images[0]}`]
+                      ? 'img/page-not-found.png'
+                      : `${tablet.images[0]}`
                   }
                   alt={tablet.name}
                   className="tablets__card-image"
-                  onError={() => handleImageError(`/${tablet.images[0]}`)}
+                  onError={() => handleImageError(`${tablet.images[0]}`)}
                 />
                 <h3 className="tablets__card-title">{tablet.name}</h3>
                 <div className="tablets__card-prices">
@@ -253,8 +253,8 @@ export const TabletPage = () => {
                   <img
                     src={
                       favorites.includes(tablet.id)
-                        ? '/figmaLogo/ActiveHeart.svg'
-                        : '/figmaLogo/HeartLove.svg'
+                        ? 'figmaLogo/ActiveHeart.svg'
+                        : 'figmaLogo/HeartLove.svg'
                     }
                     alt="Favorite"
                     className="tablets__card-btn-icon"

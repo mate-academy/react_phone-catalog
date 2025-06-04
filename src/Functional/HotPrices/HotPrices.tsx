@@ -109,13 +109,13 @@ export default function HotPrices() {
             <SwiperSlide key={phone.id} className="brand__card">
               <Link to={`/products/${phone.id}`} key={phone.id}>
                 <img
-                  src={'/' + phone.images[0]}
+                  src={phone.images[0]}
                   alt={phone.name}
                   className="brand__card-image"
                   onError={e =>
                     e.currentTarget.setAttribute(
                       'src',
-                      '/public/img/page-not-found.png',
+                      'img/page-not-found.png',
                     )
                   }
                 />
@@ -154,7 +154,7 @@ export default function HotPrices() {
                   </button>
                   <button className="brand__card-btn brand__card-btn--favorite">
                     <img
-                      src="/figmaLogo/HeartLove.svg"
+                      src="figmaLogo/HeartLove.svg"
                       alt="Favorite"
                       className="brand__card-btn-icon"
                     />

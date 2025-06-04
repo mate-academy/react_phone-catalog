@@ -24,9 +24,9 @@ export const FavoritesPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const urls = [
-        '/api/phones.json',
-        '/api/tablets.json',
-        '/api/accessories.json',
+        'api/phones.json',
+        'api/tablets.json',
+        'api/accessories.json',
       ];
       const allData: (Phone | Tablet | Accessories)[] = [];
 
@@ -103,14 +103,14 @@ export const FavoritesPage = () => {
             <Link to={`/products/${product.id}`}>
               <img
                 src={
-                  imageError[`/${product.images[0]}`] || !product.images[0]
-                    ? '/public/img/page-not-found.png'
-                    : `/${product.images[0]}`
+                  imageError[`${product.images[0]}`] || !product.images[0]
+                    ? 'img/page-not-found.png'
+                    : `${product.images[0]}`
                 }
                 alt={product.name}
                 className="favorites__item-image"
                 onError={() =>
-                  product.images[0] && handleImageError(`/${product.images[0]}`)
+                  product.images[0] && handleImageError(`${product.images[0]}`)
                 }
               />
               <h3 className="favorites__item-name">{product.name}</h3>
@@ -132,8 +132,8 @@ export const FavoritesPage = () => {
                     name: product.name,
                     price: product.priceDiscount,
                     image: product.images[0]
-                      ? `/${product.images[0]}`
-                      : '/public/img/page-not-found.png',
+                      ? `${product.images[0]}`
+                      : 'img/page-not-found.png',
                     color: product.color,
                     quantity: 1,
                     ...(isPhoneOrTablet(product) && {

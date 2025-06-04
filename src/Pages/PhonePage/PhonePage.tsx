@@ -117,7 +117,7 @@ export const PhonePage = () => {
       id: phone.id,
       name: phone.name,
       price: phone.priceDiscount,
-      image: `/${phone.images[0]}`,
+      image: `${phone.images[0]}`,
       color: selectedColor,
       capacity: phone.capacity,
       quantity: 1,
@@ -154,7 +154,7 @@ export const PhonePage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src="figmaLogo/Home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Phones</p>
@@ -182,13 +182,13 @@ export const PhonePage = () => {
               <Link to={`/products/${phone.id}`}>
                 <img
                   src={
-                    imageError[`/${phone.images[0]}`]
-                      ? '/public/img/page-not-found.png'
-                      : `/${phone.images[0]}`
+                    imageError[`${phone.images[0]}`]
+                      ? 'img/page-not-found.png'
+                      : `${phone.images[0]}`
                   }
                   alt={phone.name}
                   className="phone__card-image"
-                  onError={() => handleImageError(`/${phone.images[0]}`)}
+                  onError={() => handleImageError(`${phone.images[0]}`)}
                 />
                 <h3 className="phone__card-title">{phone.name}</h3>
                 <div className="phone__card-prices">
@@ -259,8 +259,8 @@ export const PhonePage = () => {
                   <img
                     src={
                       favorites.includes(phone.id)
-                        ? '/figmaLogo/ActiveHeart.svg'
-                        : '/figmaLogo/HeartLove.svg'
+                        ? 'figmaLogo/ActiveHeart.svg'
+                        : 'figmaLogo/HeartLove.svg'
                     }
                     alt="Favorite"
                     className="phone__card-btn-icon"

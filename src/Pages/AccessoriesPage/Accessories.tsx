@@ -30,7 +30,7 @@ export const AccessoriesPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
+    fetch(`${import.meta.env.BASE_URL}api/accessories.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(
@@ -112,7 +112,7 @@ export const AccessoriesPage = () => {
       id: accessory.id,
       name: accessory.name,
       price: accessory.priceDiscount,
-      image: `/${accessory.images[0]}`,
+      image: `${accessory.images[0]}`,
       color: accessory.color,
       quantity: 1,
     });
@@ -146,7 +146,7 @@ export const AccessoriesPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src="figmaLogo/Home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Accessories</p>
@@ -174,13 +174,13 @@ export const AccessoriesPage = () => {
               <Link to={`/products/${accessory.id}`}>
                 <img
                   src={
-                    imageError[`/${accessory.images[0]}`]
-                      ? '/public/img/page-not-found.png'
-                      : `/${accessory.images[0]}`
+                    imageError[`${accessory.images[0]}`]
+                      ? 'img/page-not-found.png'
+                      : `${accessory.images[0]}`
                   }
                   alt={accessory.name}
                   className="accessories__card-image"
-                  onError={() => handleImageError(`/${accessory.images[0]}`)}
+                  onError={() => handleImageError(`${accessory.images[0]}`)}
                 />
                 <h3 className="accessories__card-title">{accessory.name}</h3>
                 <div className="accessories__card-prices">
@@ -238,8 +238,8 @@ export const AccessoriesPage = () => {
                   <img
                     src={
                       favorites.includes(accessory.id)
-                        ? '/figmaLogo/ActiveHeart.svg'
-                        : '/figmaLogo/HeartLove.svg'
+                        ? 'figmaLogo/ActiveHeart.svg'
+                        : 'figmaLogo/HeartLove.svg'
                     }
                     alt="Favorite"
                     className="accessories__card-btn-icon"

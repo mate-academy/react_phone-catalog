@@ -14,7 +14,7 @@ export const Footer = () => {
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__img">
-          <img src="public/figmaLogo/Logo.svg" alt="Nice-Gadgets-Logo" />
+          <img src="figmaLogo/Logo.svg" alt="Nice-Gadgets-Logo" />
         </div>
 
         <div className="footer__links">

@@ -43,9 +43,9 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const urls = [
-        '/api/phones.json',
-        '/api/tablets.json',
-        '/api/accessories.json',
+        'api/phones.json',
+        'api/tablets.json',
+        'api/accessories.json',
       ];
       const allData: (Phone | Tablet | Accessories)[] = [];
 
@@ -86,8 +86,8 @@ export const ProductDetailsPage = () => {
           setSelectedColor(urlColor);
           setSelectedImage(
             newProduct.images?.[0]
-              ? `/${newProduct.images[0]}`
-              : '/img/page-not-found.png',
+              ? `${newProduct.images[0]}`
+              : 'img/page-not-found.png',
           );
           setSelectedCapacity(urlCapacity);
 
@@ -131,8 +131,8 @@ export const ProductDetailsPage = () => {
       setSelectedColor(color);
       setSelectedImage(
         newProduct.images?.[0]
-          ? `/${newProduct.images[0]}`
-          : '/img/page-not-found.png',
+          ? `${newProduct.images[0]}`
+          : 'img/page-not-found.png',
       );
       navigate(`/products/${newProduct.id}`);
     }
@@ -155,8 +155,8 @@ export const ProductDetailsPage = () => {
       setProduct(newProduct);
       setSelectedImage(
         newProduct.images?.[0]
-          ? `/${newProduct.images[0]}`
-          : '/img/page-not-found.png',
+          ? `${newProduct.images[0]}`
+          : 'img/page-not-found.png',
       );
       navigate(`/products/${newProduct.id}`);
     }
@@ -171,7 +171,7 @@ export const ProductDetailsPage = () => {
       id: product.id,
       name: product.name,
       price: product.priceDiscount,
-      image: selectedImage || '/img/page-not-found.png',
+      image: selectedImage || 'img/page-not-found.png',
       color: selectedColor || product.color,
       capacity: selectedCapacity || undefined,
       quantity: 1,
@@ -225,7 +225,7 @@ export const ProductDetailsPage = () => {
     <section className="product-details section">
       <div className="home--nav">
         <a href="#">
-          <img src="/public/figmaLogo/Home.svg" alt="home_nav" />
+          <img src="figmaLogo/Home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <a href={getCategoryLink()}>
@@ -248,8 +248,8 @@ export const ProductDetailsPage = () => {
             <img
               src={
                 imageError[selectedImage || '']
-                  ? '/img/page-not-found.png'
-                  : selectedImage || '/img/page-not-found.png'
+                  ? 'img/page-not-found.png'
+                  : selectedImage || 'img/page-not-found.png'
               }
               alt={product.name || 'No image available'}
               loading="lazy"
@@ -261,15 +261,13 @@ export const ProductDetailsPage = () => {
               <img
                 key={index}
                 src={
-                  imageError[`/${image}`]
-                    ? '/img/page-not-found.png'
-                    : `/${image}`
+                  imageError[`${image}`] ? 'img/page-not-found.png' : `${image}`
                 }
                 alt={`${product.name} thumbnail ${index + 1}`}
-                className={`thumbnail ${selectedImage === `/${image}` ? 'thumbnail--active' : ''}`}
-                onClick={() => setSelectedImage(`/${image}`)}
+                className={`thumbnail ${selectedImage === `${image}` ? 'thumbnail--active' : ''}`}
+                onClick={() => setSelectedImage(`${image}`)}
                 loading="lazy"
-                onError={() => handleImageError(`/${image}`)}
+                onError={() => handleImageError(`${image}`)}
               />
             ))}
           </div>
@@ -339,8 +337,8 @@ export const ProductDetailsPage = () => {
               <img
                 src={
                   favorites.includes(product.id)
-                    ? '/figmaLogo/ActiveHeart.svg'
-                    : '/figmaLogo/HeartLove.svg'
+                    ? 'figmaLogo/ActiveHeart.svg'
+                    : 'figmaLogo/HeartLove.svg'
                 }
                 alt="Favorite"
                 className="product-details__favorite-icon"
@@ -437,14 +435,14 @@ export const ProductDetailsPage = () => {
                   <Link to={`/products/${relatedItem.id}`}>
                     <img
                       src={
-                        imageError[`/${relatedItem.images[0]}`]
-                          ? '/public/img/page-not-found.png'
-                          : `/${relatedItem.images[0]}`
+                        imageError[`${relatedItem.images[0]}`]
+                          ? 'img/page-not-found.png'
+                          : `${relatedItem.images[0]}`
                       }
                       alt={relatedItem.name}
                       className="related-products__card-image"
                       onError={() =>
-                        handleImageError(`/${relatedItem.images[0]}`)
+                        handleImageError(`${relatedItem.images[0]}`)
                       }
                     />
                     <h3 className="related-products__card-title">
@@ -511,7 +509,7 @@ export const ProductDetailsPage = () => {
                           id: relatedItem.id,
                           name: relatedItem.name,
                           price: relatedItem.priceDiscount,
-                          image: `/${relatedItem.images[0]}`,
+                          image: `${relatedItem.images[0]}`,
                           color: relatedItem.color,
                           capacity:
                             'capacity' in relatedItem
@@ -554,8 +552,8 @@ export const ProductDetailsPage = () => {
                       <img
                         src={
                           favorites.includes(relatedItem.id)
-                            ? '/figmaLogo/ActiveHeart.svg'
-                            : '/figmaLogo/HeartLove.svg'
+                            ? 'figmaLogo/ActiveHeart.svg'
+                            : 'figmaLogo/HeartLove.svg'
                         }
                         alt="Favorite"
                         className="related-products__card-btn-icon"
