@@ -97,68 +97,62 @@ const ImageSlider = ({ slides = [], autoRotateTime = 5000 }) => {
 
   return (
     <div className='slider-wrapper'>
-      <div className="slider-wrapper-row row1">
-        <button
-          className="slider__arrow slider__arrow--left"
-          onClick={goToPrevious}
-          aria-label="Previous slide"
+      <button
+        className="slider__arrow slider__arrow--left"
+        onClick={goToPrevious}
+        aria-label="Previous slide"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-
-        <div className="slider">
-          <div className="slider__container"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            {slideContent.map((slide, index) => (
-              <div
-                key={index}
-                className={`slider__slide ${index === currentIndex ? 'slider__slide--active' : ''}`}
-                style={{ transform: `translateX(${100 * (index - currentIndex)}%)` }}
-              >
-                {slide.content}
-              </div>
-            ))}
-
-          </div>
-        </div>
-
-        <button
-          className="slider__arrow slider__arrow--right"
-          onClick={goToNext}
-          aria-label="Next slide"
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <div className="slider">
+        <div className="slider__container"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-      </div>
-
-      <div className="slider-wrapper-row row2">
-        <div className="slider__pagination">
-          {slideContent.map((_, index) => (
-            <button
+          {slideContent.map((slide, index) => (
+            <div
               key={index}
-              className={`slider__bullet ${index === currentIndex ? 'slider__bullet--active' : ''}`}
-              onClick={() => goToSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
+              className={`slider__slide ${index === currentIndex ? 'slider__slide--active' : ''}`}
+              style={{ transform: `translateX(${100 * (index - currentIndex)}%)` }}
+            >
+              {slide.content}
+            </div>
           ))}
+
         </div>
+      </div>
+      <button
+        className="slider__arrow slider__arrow--right"
+        onClick={goToNext}
+        aria-label="Next slide"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+      <div className="slider__pagination">
+        {slideContent.map((_, index) => (
+          <button
+            key={index}
+            className={`slider__bullet ${index === currentIndex ? 'slider__bullet--active' : ''}`}
+            onClick={() => goToSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
+
   );
 };
 

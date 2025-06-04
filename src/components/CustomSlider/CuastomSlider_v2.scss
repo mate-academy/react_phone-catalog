@@ -1,41 +1,36 @@
 $--tablet-width: 640px;
 
+.slider-demo {
+  margin: 0 auto 60px;
+  max-width: 1200px;
+  width: 100%;
+}
+
 .slider-wrapper {
-  overflow: hidden;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  max-width: 1200px;  // added
-  margin-bottom: 56px;
+  align-items: center;
+  margin-bottom: 40px;
+  max-width: 1200px;
+  width: 100%;
+  gap: 10px; // Відстань між кнопками та слайдером
 
   @media (min-width: $--tablet-width) {
-    margin-bottom: 64px;
-  }
-
-  @media (min-width: 1200px) {
-    margin-bottom: 80px;
+    gap: 15px;
   }
 }
 
-.row1 {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  justify-content: center;
-}
-
+// Додаємо order для слайдера, щоб він був між кнопками
 .slider {
   width: 100%;
-  height: 100vw;
+  height: 300px;
   overflow: hidden;
   background-color: #1a1a1a33;
+  border-radius: 8px;
+  flex: 1; // Займає всю доступну ширину між кнопками
+  order: 2; // Друга позиція в flex контейнері
 
   @media (min-width: $--tablet-width) {
-    width: calc(490 / 640 * 100vw);
-    height: calc(490 / 640 / 2.5 * 100vw);
-  }
-
-  @media (min-width: 1200px) {
-    width: 1040px;
     height: 400px;
   }
 }
@@ -44,17 +39,6 @@ $--tablet-width: 640px;
   position: relative;
   width: 100%;
   height: 100%;
-
-  @media (min-width: $--tablet-width) {
-    width: calc(490 / 640 * 100vw);
-    height: calc(490 / 640 / 2.5 * 100vw);
-  }
-
-  @media (min-width: 1200px) {
-    position: relative;
-    width: 1040px;
-    height: 400px;
-  }
 }
 
 .slider__slide {
@@ -63,86 +47,60 @@ $--tablet-width: 640px;
   left: 0;
   width: 100%;
   height: 100%;
-
-
-  @media (min-width: $--tablet-width) {
-    width: calc(490 / 640 * 100vw);
-    height: calc(490 / 640 / 2.5 * 100vw);
-  }
-
-  @media (min-width: 1200px) {
-      width: 100%;
-      height: 100%;
-  }
+  transition: transform 0.3s ease;
 }
 
 .slider__arrow {
-  position: absolute;
+  position: static; // Змінено з absolute
   width: 4vw;
+  min-width: 40px; // Мінімальна ширина для мобільних
+  max-width: 60px;  // Максимальна ширина
+  height: 300px;
   border: 1px solid rgb(99, 99, 99);
-  height: calc(490 / 640 / 2.5 * 100vw);
   background-color: rgba(255, 255, 255, 0.5);
   color: rgb(0, 0, 0);
   cursor: pointer;
-
   z-index: 5;
   transition: background-color 0.3s;
+  display: none;
 
-  @media (min-width: 1200px) {
-    position: relative;
+  @media (min-width: $--tablet-width) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 400px;
-    width: 32px;
   }
 }
 
 .slider__arrow:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .slider__arrow svg {
-  width: 2vw;
-  height: 2vw;
+  width: 20px;
+  height: 20px;
 
-  @media (min-width: 1200px) {
-    width: 20px;
-    height: 20px;
+  @media (min-width: $--tablet-width) {
+    width: 24px;
+    height: 24px;
   }
 }
 
 .slider__arrow--left {
-  left: 5vw;
-  display: none;
-
-  @media (min-width: $--tablet-width) {
-    display: inline-block;
-  }
-
-  @media (min-width: 1200px) {
-    left: 0;
-  }
+  order: 1; // Перша позиція в flex контейнері
 }
 
 .slider__arrow--right {
-  right: 5vw;
-  display: none;
-
-  @media (min-width: $--tablet-width) {
-    display: inline-block;
-  }
-
-  @media (min-width: 1200px) {
-    display: block;
-    transform: translateY(0);
-    right: 0;
-  }
+  order: 3; // Третя позиція в flex контейнері
 }
 
 .slider__pagination {
-  margin-top: 8px;
-  height: 24px;
+  position: relative;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 8px;
 }
 
@@ -155,7 +113,6 @@ $--tablet-width: 640px;
   transition: background-color 0.3s;
   padding: 0;
   border-radius: 2px;
-  margin: 0 3px;
 }
 
 .slider__bullet--active {
@@ -168,47 +125,62 @@ $--tablet-width: 640px;
   width: 100%;
   height: 100%;
   color: white;
-
-
 }
 
 .slider__text-container {
   flex: 1;
-  padding: 64px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (min-width: $--tablet-width) {
+    padding: 64px;
+  }
 
   & * {
     @media (max-width: $--tablet-width) {
       display: none;
     }
   }
-
 }
 
 .slider__heading {
-  font-size: 36px;
+  font-size: 24px;
   margin: 0 0 16px;
   color: #a685ff;
+
+  @media (min-width: $--tablet-width) {
+    font-size: 36px;
+  }
 }
 
 .slider__subheading {
-  font-size: 18px;
-  margin: 0 0 32px;
+  font-size: 16px;
+  margin: 0 0 24px;
   color: #cccccc;
+
+  @media (min-width: $--tablet-width) {
+    font-size: 18px;
+    margin: 0 0 32px;
+  }
 }
 
 .slider__cta {
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  padding: 12px 40px;
+  padding: 10px 32px;
   border-radius: 100px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   width: fit-content;
   transition: background-color 0.3s;
+
+  @media (min-width: $--tablet-width) {
+    padding: 12px 40px;
+    font-size: 16px;
+  }
 }
 
 .slider__cta:hover {
@@ -216,60 +188,59 @@ $--tablet-width: 640px;
 }
 
 .slider__image-container {
-  max-width: 1200px; // added
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   &--1 {
     background-image: url(../../../public/img/square_banner.png);
-    background-size: cover;
   }
 
   &--2 {
     background-image: url(../../../public/img/banner__2.png);
-    background-size: cover;
-    background-position: center;
   }
 
   &--3 {
     background-image: url(../../../public/img/banner_4.png);
-    background-size: cover;
-    background-position: center;
-  }
-
-  @media (min-width: $--tablet-width) {
-    width: calc(490 / 640 * 100vw);
-    height: calc(490 / 640 / 2.5 * 100vw);
-    background-position: center;
-    background-size: cover;
-  }
-
-  @media (min-width: 1200px) {
-    width: 100%;
-    height: 100%;
   }
 }
 
 .slider__product-title {
-  font-size: 32px;
+  font-size: 24px;
   margin: 0;
+
+  @media (min-width: $--tablet-width) {
+    font-size: 32px;
+  }
 }
 
 .slider__product-tagline {
-  font-size: 16px;
-  margin: 8px 0 32px;
+  font-size: 14px;
+  margin: 8px 0 24px;
   color: #cccccc;
+
+  @media (min-width: $--tablet-width) {
+    font-size: 16px;
+    margin: 8px 0 32px;
+  }
 }
 
 .slider__product-image-placeholder {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
+
+  @media (min-width: $--tablet-width) {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 .slider__placeholder {
@@ -278,7 +249,9 @@ $--tablet-width: 640px;
   justify-content: center;
   height: 100%;
   color: white;
-  font-size: 24px;
+  font-size: 20px;
+
+  @media (min-width: $--tablet-width) {
+    font-size: 24px;
+  }
 }
-
-
