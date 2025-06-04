@@ -1,3 +1,86 @@
-.item{
+@use '../../styles/mixin.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.container {
+  @include container;
+}
+
+.item {
   display: flex;
+  flex-direction: column;
+
+  &__name {
+    @include use-font(800);
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    height: min-content;
+  }
+
+  &__container {
+    @include grid;
+  }
+}
+
+.pictures {
+  gap: 16px;
+  display: contents;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 1;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+      flex-direction: row;
+    }
+  }
+
+  &__thumbnail {
+    border: 1px $primary solid;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 80px; // it is not correct
+
+    @include on-tablet {
+      gap: 8px;
+    }
+
+    &_fill {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__main {
+    aspect-ratio: 1 / 1;
+    border: 1px $primary solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 11px;
+    grid-column: span 10;
+
+    @include on-tablet {
+      grid-column: span 6;
+      padding: 6px;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+    }
+
+    &_fill {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
