@@ -20,6 +20,7 @@ export const ProductCart = ({ products, types }: Props) => {
 
           <img className={styles.card__image} src={`./${product.image|| product.images?.[0]}`}/>
           <h4 className={styles.card__name}>{product.name}</h4>
+          
 
           {types === 'new' && (
             <span className={styles.card__fullprice}>${product.fullPrice}</span>

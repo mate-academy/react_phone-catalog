@@ -1,4 +1,5 @@
-import style from './TitlePages.module.scss';
+import styles from './TitlePages.module.scss';
+import { useAppSelector } from '../../../../app/hooks';
 type Props = {
   type:
   | 'notFound'
@@ -9,27 +10,34 @@ type Props = {
   | 'accessories'
   | 'tablets';
 };
+const titles: Record<Props['type'], string | null> = {
+  home: 'Welcome to Nice Gadgets store!',
+  phones:'Mobile phones',
+    tablets:'Tablets',
+  accessories: 'Accessories',
+    notFound:'Page not found!',
+  favourites: 'Favourites',
+    cart: 'Cart',
+}
 
-export const TitlePages = (props: Props) => {
-  const { type } = props;
+export const TitlePages = ({ type }: Props) => {
+  let count : number | null=null;
+  const products = useAppSelector(store => store.products.products)
+  const favourites =useAppSelector(store => store.products.products)
 
-  return (
-    <div className={style.title}>
-      {type === 'home' && (
-        <h1 className={style.title__text}>Welcome to Nice Gadgets store!</h1>
-      )}
-      {type === 'phones' && (
-        <h1 className={style.title__text}>Mobile phones</h1>
-      )}
-      {type === 'notFound' && (
-        <h1 className={style.title__text}>Page not found!</h1>
-      )}
-       {type === 'accessories' && (
-        <h1 className={style.title__text}>Accessories</h1>
-      )}
-       {type === 'tablets' && (
-        <h1 className={style.title__text}>Tablets</h1>
-      )}
-    </div>
-  );
-};
+  if (['phones', 'tablets', 'accessories', 'favourites'].includes(type)) {
+    count = products.filter(product => product.category === type).length;
+    if (type === 'favourites') {
+      count = favourites.length;
+}
+}
+  return titles? (
+    <div className={styles.title}>
+      <h1 className={styles.title__text}>{titles[type]}</h1>
+      {count !== null && <p className={styles.title__count}>{count} models</p>}
+       { type ==='favourites' && <p className={styles.title__count}>{count } items</p>}
+    </div >
+
+
+  ) : null;
+}
