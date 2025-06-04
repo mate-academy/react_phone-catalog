@@ -74,7 +74,7 @@ export const NavBar = () => {
                   }
                 >
                   <div className={styles.iconWrapper}>
-                    <img src="/react_phone-catalog/img/icons/favorite.svg" alt="to favorites" className={styles.fav} />
+                    <img src="/react_phone-catalog/src/img/icons/favorite.svg" alt="to favorites" className={styles.fav} />
                     {favorites.length > 0 && (
                       <span className={styles.badge}>{favorites.length}</span>
                     )}
