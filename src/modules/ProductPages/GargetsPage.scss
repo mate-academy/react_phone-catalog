@@ -27,7 +27,6 @@
   font-style: normal;
 }
 
-
 .gargets {
   @include contentPaddingInline;
 
@@ -51,27 +50,27 @@
   &__arrow {
     width: 6px;
     height: 6px;
-    border-right: 1.5px solid #B4BDC3;
-    border-bottom: 1.5px solid #B4BDC3;
+    border-right: 1.5px solid #b4bdc3;
+    border-bottom: 1.5px solid #b4bdc3;
     transform: rotate(-45deg);
     margin-top: 1px;
   }
 
   &__back-home-h2 {
     font: 600 12px/12px 'Mont';
-    color: #89939A;
+    color: #89939a;
   }
 
   &__mobile-phones-h1 {
     font: 800 48px/56px 'Mont';
     letter-spacing: -1px;
-    color: #0F0F11;
+    color: #0f0f11;
     padding-top: 40px;
   }
 
   &__count-models {
     font: 600 14px/21px 'Mont';
-    color: #89939A;
+    color: #89939a;
     padding-top: 8px;
   }
 
@@ -84,7 +83,7 @@
   &__sort-by-h3,
   &__items-on-page-h3 {
     font: 700 12px/100% 'Mont';
-    color: #89939A;
+    color: #89939a;
   }
 
   &__sort-by-choose-value,
@@ -94,7 +93,7 @@
     padding: 0 12px;
     border: 1px solid #e2e6e9;
     border-radius: 24px;
-    color: #89939A;
+    color: #89939a;
   }
 
   &__sort-by-choose-value {
@@ -110,7 +109,7 @@
   border-radius: 100%;
   width: 32px;
   height: 32px;
-  border: 1px solid #B4BDC3;
+  border: 1px solid #b4bdc3;
 }
 
 .pagination {
@@ -124,9 +123,9 @@
     border-radius: 100%;
     width: 32px;
     height: 32px;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
     background-color: transparent;
-    color: #0F0F11;
+    color: #0f0f11;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -138,18 +137,24 @@
   }
 
   .active {
-    background-color: #0F0F11;
+    background-color: #0f0f11;
     color: white;
   }
 }
 
-
 @media screen and (max-width: 1199px) {
-  .pagination .page-buttons .page-btn:nth-child(n+5) {
+  .pagination .page-buttons .page-btn:nth-child(n + 5) {
     display: none;
   }
 }
 
+@media screen and (min-width: 1199px) {
+  .gargets {
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+}
 
 .error {
   padding: 200px 500px;
@@ -164,7 +169,7 @@
 
 .reload-button {
   width: 100px;
-  background-color: #89939A;
+  background-color: #89939a;
   cursor: pointer;
   padding: 10px 0;
   border: none;
@@ -176,4 +181,3 @@
   justify-content: center;
   align-items: center;
 }
-

@@ -273,9 +273,10 @@ body::-webkit-scrollbar { width: 0 !important }
     }
 
     &__button {
-      padding: 24px;
+      padding: 16px;
       background-color: white;
       border: 1px solid #e2e6e9;
+      height: 48px;
 
       border-right: none;
 
@@ -598,6 +599,10 @@ body::-webkit-scrollbar { width: 0 !important }
       list-style-type: none;
     }
 
+    &__brand:first-child {
+      padding-top: 32px;
+    }
+
     &__link {
       display: block;
       text-decoration: none;
@@ -637,34 +642,42 @@ body::-webkit-scrollbar { width: 0 !important }
 // Tablet: min-width 639px
 @media screen and (min-width: 639px) {
   .footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    z-index: 1000;
+
     &__brand {
       display: flex;
       align-items: center;
-      justify-content: center;
       flex-direction: row;
-      grid-column: 1 / span 7;
-      list-style-type: none;
-      gap: 16.7px;
+      padding-left: 16px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
+    &__item {
+      display: flex;
+      align-items: center;
+      padding-left: 13.5px;
+    }
+
+    &__link,
     &__link__logo {
-      margin-left: 32px;
-
-    }
-
-    &__link {
-      padding: 26.5px 0 ;
-    }
-
-    &__brand:nth-child(2) {
-      padding-left: 378px;
+      display: block;
+      padding: 16px 0;
+      height: 100%;
     }
 
     &__right {
-      grid-column: 22 / span 1;
-      align-self: center;
-      margin-top: 0;
-      padding-top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 74px;
+      gap: 12px;
     }
   }
 }

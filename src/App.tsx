@@ -13,11 +13,7 @@ import { useCart } from './modules/CartContext/CartContext';
 import { FavoritesPages } from './modules/FavoritesPage/FavoritesPage';
 
 export const App = () => {
-  const [clickOnLogoBar, setClickOnLogoBar] = useState(() => {
-    const stored = localStorage.getItem('clickOnLogoBar');
-
-    return stored === 'true';
-  });
+  const [clickOnLogoBar, setClickOnLogoBar] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 639);
   const { cartItems, favoriteItems } = useCart();
   const cartCount = cartItems.length;
@@ -167,14 +163,17 @@ export const App = () => {
                 </ul>
                 <div className="menu__right">
                   {[
-                    { to: '/like', className: 'menu__icon__like' },
-                    { to: '/shopping-cart', className: 'menu__icon__cart' },
+                    { to: '/favorites', className: 'menu__icon__like' },
+                    { to: '/cart', className: 'menu__icon__cart' },
                   ].map(({ to, className }) => (
                     <button className="menu__button" key={to}>
                       <NavLink
                         aria-current="page"
                         className={className}
                         to={to}
+                        onClick={() => {
+                          setClickOnLogoBar(false);
+                        }}
                       />
                     </button>
                   ))}
@@ -207,57 +206,36 @@ export const App = () => {
               aria-label="main footer"
             >
               <ul className="footer__brand">
-                <li className="footer__item">
-                  <NavLink
-                    className="footer__link__logo"
-                    to="/"
-                    onClick={() => {
-                      setClickOnLogoBar(true);
-                      checkClickOnLogoBar();
-                    }}
-                  >
-                    <img src="./img/navbar/Logo.png" alt="logo-gadgets" />
-                  </NavLink>
-                </li>
+                <NavLink
+                  className="footer__link__logo"
+                  to="/"
+                  onClick={() => {
+                    setClickOnLogoBar(true);
+                    checkClickOnLogoBar();
+                  }}
+                >
+                  <img src="./img/navbar/Logo.png" alt="logo-gadgets" />
+                </NavLink>
 
-                <li className="footer__item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      classNames('footer__link', {
-                        'has-background-grey-lighter': isActive,
-                      })
-                    }
-                    to="https://github.com/vikaruda?tab=repositories"
-                  >
-                    Github
-                  </NavLink>
-                </li>
-
-                <li className="footer__item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      classNames('footer__link', {
-                        'has-background-grey-lighter': isActive,
-                      })
-                    }
-                    to="/contacts"
-                  >
-                    Contacts
-                  </NavLink>
-                </li>
-
-                <li className="footer__item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      classNames('footer__link', {
-                        'has-background-grey-lighter': isActive,
-                      })
-                    }
-                    to="/rights"
-                  >
-                    Rights
-                  </NavLink>
-                </li>
+                {['github', 'contacts', 'rights'].map((item, index) => (
+                  <li className="footer__item" key={index}>
+                    <NavLink
+                      className={({ isActive }) =>
+                        classNames('footer__link', {
+                          'has-background-grey-lighter': isActive,
+                        })
+                      }
+                      to={
+                        item === 'github'
+                          ? 'https://github.com/vikaruda?tab=repositories'
+                          : `/${item}`
+                      }
+                      target={item === 'github' ? '_blank' : undefined}
+                    >
+                      {item.charAt(0).toUpperCase() + item.slice(1)}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
 
               <div className="footer__right">
