@@ -1,9 +1,14 @@
+@use "/src/components/utils/mixin.module.scss";
 .page{
+
   margin-top: 24px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
+margin-bottom: 24px;
+@include mixin.onTablet{
+  margin-bottom: 40px;
+}
   &__link{
 
 

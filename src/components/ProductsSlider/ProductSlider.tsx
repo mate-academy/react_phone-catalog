@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../../../app/hooks';
-import { ProductCart } from '../../../../components/cardItem/ProductCart';
+
+
 import styles from './ProductSlider.module.scss'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import classNames from 'classnames';
+import { ProductCart } from '../cardItem/ProductCart';
+import { useAppSelector } from '../../app/hooks';
 type Props = {
   type: 'new' | 'hot'|'favourites';
 };

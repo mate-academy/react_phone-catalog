@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import styles from './header.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import { AsideMenuPhone } from '../../modules/HomePage/components/asideMenuPhone';
+import { AsideMenuPhone } from '../asideMenuPhone';
 import logo from '/public/img/niceLogo.svg';
 import { IconsSvg } from '../icons/icons';
 export const Header = () => {

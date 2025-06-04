@@ -1,13 +1,15 @@
 import { Container } from '../../components/container/Container';
-import { ProductSlider } from './components/ProductsSlider/ProductSlider';
+import { ProductSlider } from '../../components/ProductsSlider/ProductSlider';
 import { ShopCategories } from './components/shopCategory/ShopCategory';
 import { SliderHomePage } from './components/sliderHomePage';
-import { TitlePages } from './components/title/TitlePages';
+import { TitlePages } from '../../components/title/TitlePages';
 
 export const HomePage = () => {
   return (
-    <><Container>
-      <TitlePages type={'home'} /></Container>
+    <>
+      <Container>
+        <TitlePages type={'home'} />
+      </Container>
 
       <SliderHomePage />
       <Container>

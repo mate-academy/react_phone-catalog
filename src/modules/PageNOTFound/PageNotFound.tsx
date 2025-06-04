@@ -1,4 +1,4 @@
-import { TitlePages } from '../HomePage/components/title/TitlePages';
+import { TitlePages } from '../../components/title/TitlePages';
 import styles from './PageNotFound.module.scss';
 export const PageNotFound = () => {
   return (

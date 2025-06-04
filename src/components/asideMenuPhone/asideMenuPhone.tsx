@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './asideMenuPhone.module.scss';
 import classNames from 'classnames';
-import { IconsSvg } from '../../../../components/icons/icons';
+import { IconsSvg } from '../icons/icons';
 
 export const AsideMenuPhone = ({ setActiveAsside }) => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
