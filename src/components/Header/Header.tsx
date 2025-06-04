@@ -2,9 +2,14 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './HeaderStyles.module.scss';
 import { Logo } from '../Logo/Logo';
+import { useFavorites } from '../../utils/FavoritePageContext';
+import { useCart } from '../../utils/CartContext';
 
 export const NavBar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { favorites } = useFavorites();
+  const { state } = useCart();
+  const cartCount = state.totalQuantity;
 
   useEffect(() => {
     if (isSidebarOpen) {
@@ -68,7 +73,12 @@ export const NavBar = () => {
                     `${styles.headerIconFav} ${isActive ? styles.activeLink : ''}`
                   }
                 >
-                  <img src="/react_phone-catalog/img/icons/favorite.svg" alt="to favorites" className={styles.fav} />
+                  <div className={styles.iconWrapper}>
+                    <img src="/react_phone-catalog/img/icons/favorite.svg" alt="to favorites" className={styles.fav} />
+                    {favorites.length > 0 && (
+                      <span className={styles.badge}>{favorites.length}</span>
+                    )}
+                  </div>
                 </NavLink>
               </div>
               <div className={styles.iconBorder}>
@@ -78,14 +88,21 @@ export const NavBar = () => {
                     `${styles.headerIconCart} ${isActive ? styles.activeLink : ''}`
                   }
                 >
-                  <img src="/react_phone-catalog/img/icons/cart.svg" alt="to cart" className={styles.carti} />
+                  <div className={styles.iconWrapper}>
+                    <img
+                      src="/react_phone-catalog/img/icons/cart.svg"
+                      alt="to cart"
+                      className={styles.carti}
+                    />
+                    {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+                  </div>
                 </NavLink>
               </div>
             </div>
 
             <div className={styles.burgerLine}>
               <img
-                src="/img/Union.svg"
+                src="/react_phone-catalog/img/Union.svg"
                 onClick={() => setIsSidebarOpen(prev => !prev)}
                 className={styles.burger}
                 alt="Open Menu"
@@ -131,7 +148,11 @@ export const NavBar = () => {
           <div className={styles.menuIcons}>
             <NavLink to="/cart" onClick={() => setIsSidebarOpen(false)}>
               <button className={styles.menuButtonsCart}>
-                <img src="/react_phone-catalog/img/icons/cart.svg" alt="to cart" className={styles.menuButtonsIcons} />
+                <img
+                  src="/react_phone-catalog/img/icons/cart.svg"
+                  alt="to cart"
+                  className={styles.menuButtonsIcons}
+                />
               </button>
             </NavLink>
             <NavLink to="/favorites" onClick={() => setIsSidebarOpen(false)}>

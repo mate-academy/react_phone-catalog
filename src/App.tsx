@@ -14,32 +14,32 @@ export const App = () => {
   return (
     <CartProvider>
       <FavoritesProvider>
-        <header>
-          <NavBar />
-        </header>
-        <div className="container">
-          <main>
+        <div className="app-wrapper">
+          <header>
+            <NavBar />
+          </header>
+
+          <main className="main-content">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/phones" element={<ProductPage type={'phones'} title={'Phones'} />} />
               <Route path="/tablets" element={<ProductPage type={'tablets'} title={'Tablets'} />} />
-              <Route
-                path="/accessories"
-                element={<ProductPage type={'accessories'} title={'Accessories'} />}
-              />
+              <Route path="/accessories" element={<ProductPage type={'accessories'} title={'Accessories'} />} />
               <Route path="/:category/:productId" element={<ProductDetailPage />} />
               <Route path="/favorites" element={<FavoritePage />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="*" element={<p>Page not found</p>} />
             </Routes>
           </main>
+
+          <footer>
+            <Footer />
+          </footer>
         </div>
-        <footer>
-          <Footer />
-        </footer>
       </FavoritesProvider>
     </CartProvider>
   );
 };
+
 
 export default App;
