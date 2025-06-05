@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import { Logo } from '../Logo';
 
 import { BackToTop } from './components/BackToTop';

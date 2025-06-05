@@ -1,12 +1,15 @@
 // eslint-disable-next-line max-len
-import { useFiltersContext } from 'contexts/FiltersContext';
-import { useProductsContext } from 'contexts/ProductsContext';
-import { Error } from 'shared/components/layout/Error';
-import { Loader } from 'shared/components/layout/Loader';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
 
-import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
-import { ProductsCategory } from './components/ProductsCategory/ProductsCategory';
-import { ProductsSlider } from './components/ProductsSlider/ProductsSlider';
+import { useFiltersContext } from '../../contexts/FiltersContext';
+import { useProductsContext } from '../../contexts/ProductsContext';
+import { Error } from '../../shared/components/layout/Error';
+import { Loader } from '../../shared/components/layout/Loader';
+import { PicturesSlider } from '../HomePage/components/PicturesSlider/PicturesSlider';
+import { ProductsCategory } from '../HomePage/components/ProductsCategory/ProductsCategory';
+import { ProductsSlider } from '../HomePage/components/ProductsSlider/ProductsSlider';
+
 import styles from './HomePage.module.scss';
 
 export const HomePage: React.FC = () => {

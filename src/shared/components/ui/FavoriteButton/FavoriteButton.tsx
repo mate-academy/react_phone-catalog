@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import { Icon } from '../Icon/Icon';
 import { IconNames } from '../Icon/IconNames';
 

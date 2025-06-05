@@ -1,6 +1,9 @@
-import { useMenuContext } from 'contexts/MenuContext';
-import { Icon } from 'shared/components/ui/Icon/Icon';
-import { IconNames } from 'shared/components/ui/Icon/IconNames';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
+import { useMenuContext } from '../../../../../../contexts/MenuContext';
+import { Icon } from '../../../../../../shared/components/ui/Icon/Icon';
+import { IconNames } from '../../../../../../shared/components/ui/Icon/IconNames';
 
 import styles from './Menu.module.scss';
 

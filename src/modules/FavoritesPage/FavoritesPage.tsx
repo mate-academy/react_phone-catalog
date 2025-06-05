@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage: React.FC = () => {

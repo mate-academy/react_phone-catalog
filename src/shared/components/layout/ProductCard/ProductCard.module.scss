@@ -1,4 +1,4 @@
-@use '/src/styles/globals.scss' as *;
+@use '../../../../styles/globals.scss' as *;
 
 .productCard {
   display: flex;
@@ -6,18 +6,20 @@
   z-index: 1;
   flex-direction: column;
   justify-content: space-between;
+
   width: 100%;
   height: 506px;
   padding: 32px;
+
   background-color: $color-surface1;
   border: 1px solid transparent;
 
-  @media (max-width: $mobile-breakpoint) {
-    height: 440px;
-  }
-
   &:hover {
     border: 1px solid $color-surface2;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    height: 440px;
   }
 }
 
@@ -26,6 +28,7 @@
 
   flex-grow: 1;
   min-height: 0;
+
   cursor: pointer;
   margin-bottom: 16px;
 }
@@ -68,7 +71,6 @@
   font-weight: 600;
   line-height: 28px;
   text-decoration: line-through;
-
   color: $color-secondary;
 }
 

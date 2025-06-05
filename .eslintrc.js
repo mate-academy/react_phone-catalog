@@ -6,6 +6,12 @@ module.exports = {
   ],
   plugins: ['import'],
   rules: {
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-use-before-define': [
+      'error',
+      { functions: true, classes: true, variables: false },
+    ],
+    'react/react-in-jsx-scope': 'off',
     'import/order': [
       'warn',
       {

@@ -1,10 +1,9 @@
-@use '/src/styles/globals.scss' as *;
+@use '../../styles/globals.scss' as *;
 
 .notFoundPage {
   @extend %flex-center;
 
   flex-direction: column;
-
   height: 100%;
   gap: 20px;
 }

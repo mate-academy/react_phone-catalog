@@ -1,11 +1,13 @@
-@use '/src/styles/globals.scss' as *;
+@use '../../../../styles/globals.scss' as *;
 
 .header {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
+
   grid-area: header;
+
   width: 100%;
   height: 64px;
 
@@ -20,7 +22,9 @@
   z-index: 1002;
 
   justify-content: space-between;
+
   height: 100%;
+
   background-color: $color-black;
   border-bottom: 1px solid $color-elements;
 }
@@ -40,11 +44,6 @@
   width: 128px;
   height: 64px;
 
-  @media (max-width: $tablet-breakpoint) {
-    width: 96px;
-    height: 48px;
-  }
-
   img {
     width: 80px;
     height: 28px;
@@ -53,6 +52,11 @@
       width: 64px;
       height: 22px;
     }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    width: 96px;
+    height: 48px;
   }
 }
 
@@ -73,11 +77,13 @@
     z-index: -1;
     flex-direction: column;
     justify-content: space-between;
+
     width: 100%;
     height: calc(100vh - 48px);
-    background-color: $color-black;
 
+    background-color: $color-black;
     transform: translateY(-100%);
+
     transition: transform 0.3s ease-in-out;
   }
 }

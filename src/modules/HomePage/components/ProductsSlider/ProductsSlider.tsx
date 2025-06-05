@@ -1,13 +1,16 @@
-import 'swiper/scss';
-import 'swiper/scss/navigation';
+import 'swiper/css/navigation';
+import 'swiper/css';
 
-import { Navigation } from 'swiper/modules';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
+import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { ProductCard } from 'shared/components/layout/ProductCard';
-import { Icon } from 'shared/components/ui/Icon/Icon';
-import { IconNames } from 'shared/components/ui/Icon/IconNames';
-import { Product } from 'shared/types/Product';
+import { ProductCard } from '../../../../shared/components/layout/ProductCard';
+import { Icon } from '../../../../shared/components/ui/Icon/Icon';
+import { IconNames } from '../../../../shared/components/ui/Icon/IconNames';
+import { Product } from '../../../../shared/types/Product';
 
 import styles from './ProductsSlider.module.scss';
 

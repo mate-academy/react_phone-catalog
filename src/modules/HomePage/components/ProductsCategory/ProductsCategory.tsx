@@ -1,9 +1,11 @@
-import accessoriesImg from 'assets/img/ui/category-accessories.png';
-import phonesImg from 'assets/img/ui/category-phones.png';
-import tabletsImg from 'assets/img/ui/category-tablets.png';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
 
-import { useProductsContext } from 'contexts/ProductsContext';
-import { ProductCategory } from 'modules/HomePage/components/ProductCategory';
+import accessoriesImg from '../../../../assets/img/ui/category-accessories.png';
+import phonesImg from '../../../../assets/img/ui/category-phones.png';
+import tabletsImg from '../../../../assets/img/ui/category-tablets.png';
+import { useProductsContext } from '../../../../contexts/ProductsContext';
+import { ProductCategory } from '../../../../modules/HomePage/components/ProductCategory';
 
 import styles from './ProductsCategory.module.scss';
 

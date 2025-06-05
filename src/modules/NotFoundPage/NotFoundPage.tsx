@@ -1,6 +1,8 @@
-import notFoundImg from 'assets/img/ui/page-not-found.png';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
 
-import { GoBack } from 'shared/components/ui/GoBack';
+import notFoundImg from '../../assets/img/ui/page-not-found.png';
+import { GoBack } from '../../shared/components/ui/GoBack';
 
 import styles from './NotFoundPage.module.scss';
 

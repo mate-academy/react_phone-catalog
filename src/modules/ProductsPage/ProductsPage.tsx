@@ -1,23 +1,29 @@
-import { useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+
+import React, { useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import { useProductsContext } from 'contexts/ProductsContext';
-import { NotFoundPage } from 'modules/NotFoundPage';
-import { EmptyState } from 'shared/components/layout/EmptyState';
-import { Error } from 'shared/components/layout/Error';
-import { Loader } from 'shared/components/layout/Loader';
-import { ProductCard } from 'shared/components/layout/ProductCard';
-import { Breadcrumbs } from 'shared/components/ui/Breadcrumbs';
-import { ItemsPerPage, itemsPerPage } from 'shared/constants/paginationOptions';
-import { ProductCategory } from 'shared/constants/productCategory';
-import { SortOptions, sortOptions } from 'shared/constants/sortOptions';
-import { capitalize } from 'shared/helpers/capitalize';
-import { useItemsPerPage } from 'shared/hooks/useItemsPerPage';
-import { usePagedProducts } from 'shared/hooks/usePagedProducts';
 import { useProductQueryParams } from 'shared/hooks/useProductQueryParams';
-import { useSortProducts } from 'shared/hooks/useSortProducts';
-import { useUpdateSearchParams } from 'shared/hooks/useUpdateSearchParams';
+
+import { useProductsContext } from '../../contexts/ProductsContext';
+import { NotFoundPage } from '../../modules/NotFoundPage';
+import { EmptyState } from '../../shared/components/layout/EmptyState';
+import { Error } from '../../shared/components/layout/Error';
+import { Loader } from '../../shared/components/layout/Loader';
+import { ProductCard } from '../../shared/components/layout/ProductCard';
+import { Breadcrumbs } from '../../shared/components/ui/Breadcrumbs';
+import {
+  ItemsPerPage,
+  itemsPerPage,
+} from '../../shared/constants/paginationOptions';
+import { ProductCategory } from '../../shared/constants/productCategory';
+import { SortOptions, sortOptions } from '../../shared/constants/sortOptions';
+import { capitalize } from '../../shared/helpers/capitalize';
+import { useItemsPerPage } from '../../shared/hooks/useItemsPerPage';
+import { usePagedProducts } from '../../shared/hooks/usePagedProducts';
+import { useSortProducts } from '../../shared/hooks/useSortProducts';
+import { useUpdateSearchParams } from '../../shared/hooks/useUpdateSearchParams';
 
 import { Dropdown } from './components/Dropdown';
 import { Pagination } from './components/Pagination';

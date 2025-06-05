@@ -1,8 +1,9 @@
-import { createContext, useMemo, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React, { createContext, useMemo, useState } from 'react';
 
-import { useProductsContext } from 'contexts/ProductsContext';
-import { ProductCategory } from 'shared/constants/productCategory';
-import { FiltersContextType } from 'shared/types/Context';
+import { ProductCategory } from '../../shared/constants/productCategory';
+import { FiltersContextType } from '../../shared/types/Context';
+import { useProductsContext } from '../ProductsContext';
 
 type Props = {
   children: React.ReactNode;

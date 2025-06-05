@@ -1,8 +1,9 @@
-@use '/src/styles/globals.scss' as *;
+@use '../../styles/globals.scss' as *;
 
 .catalogPage {
   display: flex;
   flex-direction: column;
+
   width: 100%;
   max-width: 1136px;
   height: 100%;
@@ -41,7 +42,8 @@
 
 .productsControls {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
+
   width: 100%;
   height: 59px;
   gap: 16px;
@@ -54,8 +56,6 @@
   gap: 40px 16px;
   margin-bottom: 40px;
 }
-
-
 
 .sortContainer {
   width: 176px;

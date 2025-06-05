@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import { Link } from 'react-router-dom';
 
-import notFoundImg from 'assets/img/ui/product-not-found.png';
-
-import { Icon } from 'shared/components/ui/Icon/Icon';
-import { IconNames } from 'shared/components/ui/Icon/IconNames';
+import notFoundImg from '../../../../assets/img/ui/product-not-found.png';
+import { Icon } from '../../../../shared/components/ui/Icon/Icon';
+import { IconNames } from '../../../../shared/components/ui/Icon/IconNames';
 
 import styles from './EmptyState.module.scss';
 

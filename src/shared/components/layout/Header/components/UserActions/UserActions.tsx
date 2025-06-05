@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 
 import classNames from 'classnames';
 
-import { useMenuContext } from 'contexts/MenuContext';
-import { Icon } from 'shared/components/ui/Icon/Icon';
-import { IconNames } from 'shared/components/ui/Icon/IconNames';
-import { closeMenu } from 'shared/helpers/handlers';
+import { useMenuContext } from '../../../../../../contexts/MenuContext';
+import { Icon } from '../../../../../../shared/components/ui/Icon/Icon';
+import { IconNames } from '../../../../../../shared/components/ui/Icon/IconNames';
+import { closeMenu } from '../../../../../../shared/helpers/handlers';
 
 import styles from './UserActions.module.scss';
 

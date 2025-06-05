@@ -1,13 +1,16 @@
-@use '/src/styles/globals.scss' as *;
+@use '../../styles/globals.scss' as *;
 
 .visuallyHidden {
   position: absolute;
+
   width: 1px;
   height: 1px;
   margin: -1px;
   padding: 0;
+
   overflow: hidden;
   border: 0;
+
   clip-path: inset(50%);
 }
 
@@ -36,6 +39,7 @@
   @extend %flex-center;
 
   flex-direction: column;
+
   width: 100%;
   max-width: 1136px;
   min-height: 189px;

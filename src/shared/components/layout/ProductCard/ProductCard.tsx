@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import { Link } from 'react-router-dom';
 
-import { AddToCartButton } from 'shared/components/ui/AddToCartButton';
-import { FavoriteButton } from 'shared/components/ui/FavoriteButton';
-import { Product } from 'shared/types/Product';
+import { AddToCartButton } from '../../../../shared/components/ui/AddToCartButton';
+import { FavoriteButton } from '../../../../shared/components/ui/FavoriteButton';
+import { Product } from '../../../../shared/types/Product';
 
 import styles from './ProductCard.module.scss';
 

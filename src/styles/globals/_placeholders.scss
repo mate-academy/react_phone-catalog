@@ -11,11 +11,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 32px;
   height: 32px;
+
   background-color: $color-surface1;
   border: none;
+
   transition: background-color 0.3s ease-in-out;
+
   cursor: pointer;
 
   &:hover:not(:disabled) {
@@ -30,7 +34,6 @@
   width: 100%;
   background-color: $color-accent;
   border: none;
-
   transition: background-color 0.3s ease;
 
   &:hover {

@@ -5,4 +5,6 @@ export enum IconNames {
   Burger = 'burger',
   Cart = 'cart',
   Heart = 'heart',
+  Minus = 'minus',
+  Plus = 'plus',
 }

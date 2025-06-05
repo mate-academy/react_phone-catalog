@@ -1,9 +1,12 @@
-import { addToCart } from 'features/cart/cartSlice';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import { useDispatch } from 'react-redux';
 
-import { normalizeProductType } from 'shared/helpers/normalizeProductType';
-import { Product } from 'shared/types/Product';
-import { ProductDetails } from 'shared/types/ProductDetails';
+import { addToCart } from '../../../../features/cart/cartSlice';
+import { normalizeProductType } from '../../../../shared/helpers/normalizeProductType';
+import { Product } from '../../../../shared/types/Product';
+import { ProductDetails } from '../../../../shared/types/ProductDetails';
 
 import styles from './AddToCartButton.module.scss';
 

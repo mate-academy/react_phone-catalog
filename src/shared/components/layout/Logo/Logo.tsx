@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import { Link } from 'react-router-dom';
 
-import logoImg from 'assets/img/logo/logo.svg';
+import logoImg from '../../../../assets/img/logo/logo.svg';
 
 import style from './Logo.module.scss';
 

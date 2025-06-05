@@ -1,4 +1,4 @@
-@use '/src/styles/globals.scss' as *;
+@use '../../../../styles/globals.scss' as *;
 
 .loader {
   @extend %flex-center;
@@ -13,6 +13,7 @@
   margin: 1em auto;
   border: 0.3em solid #ddd;
   border-radius: 50%;
+
   animation: load8 1.2s infinite linear;
   border-left-color: #000;
 }

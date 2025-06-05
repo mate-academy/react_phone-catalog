@@ -1,18 +1,21 @@
-import 'swiper/scss';
-import 'swiper/scss/navigation';
-import 'swiper/scss/pagination';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import bannerAccessories from 'assets/img/banner/banner-accessories.jpg';
-import bannerPhones from 'assets/img/banner/banner-phones.jpg';
-import bannerTablets from 'assets/img/banner/banner-tablets.jpg';
 import classNames from 'classnames';
-import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { Icon } from 'shared/components/ui/Icon/Icon';
-import { IconNames } from 'shared/components/ui/Icon/IconNames';
+import bannerAccessories from '../../../../assets/img/banner/banner-accessories.jpg';
+import bannerPhones from '../../../../assets/img/banner/banner-phones.jpg';
+import bannerTablets from '../../../../assets/img/banner/banner-tablets.jpg';
+import { Icon } from '../../../../shared/components/ui/Icon/Icon';
+import { IconNames } from '../../../../shared/components/ui/Icon/IconNames';
 
 import styles from './PicturesSlider.module.scss';
 

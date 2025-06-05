@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
 
 import { Icon } from '../Icon/Icon';

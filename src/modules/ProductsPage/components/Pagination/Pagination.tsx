@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import classNames from 'classnames';
 
-import { Icon } from 'shared/components/ui/Icon/Icon';
-import { IconNames } from 'shared/components/ui/Icon/IconNames';
-import { getVisiblePages } from 'shared/helpers/getVisiblePages';
+import { Icon } from '../../../../shared/components/ui/Icon/Icon';
+import { IconNames } from '../../../../shared/components/ui/Icon/IconNames';
+import { getVisiblePages } from '../../../../shared/helpers/getVisiblePages';
 
 import styles from './Pagination.module.scss';
 

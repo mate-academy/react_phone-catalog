@@ -1,11 +1,11 @@
-@use '/src/styles/globals.scss' as *;
+@use '../../../../styles/globals.scss' as *;
 
 .favoriteButton {
   @extend %flex-center;
 
   color: $color-white;
-
   background-color: $color-surface2;
+
   border: none;
   transition: background-color 0.3s ease;
 

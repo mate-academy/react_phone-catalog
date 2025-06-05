@@ -10,6 +10,7 @@
 
 body {
   position: relative;
+
   margin: 0;
   padding: 0;
 
@@ -41,6 +42,7 @@ a:focus {
     'footer';
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 64px 1fr auto;
+
   min-height: 100vh;
 }
 

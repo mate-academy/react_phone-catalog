@@ -1,4 +1,4 @@
-@use '/src/styles/globals.scss' as *;
+@use '../../../../styles/globals.scss' as *;
 
 .pagination {
   @extend %flex-center;
@@ -34,8 +34,9 @@
 
 .dots {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: center;
+
   width: 32px;
   height: 32px;
   cursor: default;

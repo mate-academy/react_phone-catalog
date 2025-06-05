@@ -1,5 +1,5 @@
-import { SortOptions } from 'shared/constants/sortOptions';
-import { Product } from 'shared/types/Product';
+import { SortOptions } from '../../shared/constants/sortOptions';
+import { Product } from '../../shared/types/Product';
 
 export function getProductsBySort(items: Product[], sort: string) {
   const sortedItems = [...items];

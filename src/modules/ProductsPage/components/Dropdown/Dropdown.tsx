@@ -1,9 +1,10 @@
-import { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React, { useState } from 'react';
 
 import classNames from 'classnames';
 
-import { Icon } from 'shared/components/ui/Icon/Icon';
-import { IconNames } from 'shared/components/ui/Icon/IconNames';
+import { Icon } from '../../../../shared/components/ui/Icon/Icon';
+import { IconNames } from '../../../../shared/components/ui/Icon/IconNames';
 
 import styles from './Dropdown.module.scss';
 

@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import styles from './ContactsPage.module.scss';
 
 export const ContactsPage: React.FC = () => {

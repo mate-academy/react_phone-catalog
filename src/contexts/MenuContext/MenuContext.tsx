@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React, { createContext, useState } from 'react';
 
 type Props = {
   children: React.ReactNode;

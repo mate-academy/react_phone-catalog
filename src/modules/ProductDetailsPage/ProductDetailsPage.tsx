@@ -1,25 +1,26 @@
-import { useEffect, useMemo, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { useNavigate, useParams } from 'react-router-dom';
 
-import notFoundImg from 'assets/img/ui/product-not-found.png';
-
-import { useProductsContext } from 'contexts/ProductsContext';
-import { ProductsSlider } from 'modules/HomePage/components/ProductsSlider';
-import { NotFoundPage } from 'modules/NotFoundPage';
-import { Error } from 'shared/components/layout/Error';
-import { Loader } from 'shared/components/layout/Loader';
-import { AddToCartButton } from 'shared/components/ui/AddToCartButton';
-import { Breadcrumbs } from 'shared/components/ui/Breadcrumbs';
-import { FavoriteButton } from 'shared/components/ui/FavoriteButton';
-import { GoBack } from 'shared/components/ui/GoBack';
-import { ProductCategory } from 'shared/constants/productCategory';
+import notFoundImg from '../../assets/img/ui/page-not-found.png';
+import { useProductsContext } from '../../contexts/ProductsContext';
+import { ProductsSlider } from '../../modules/HomePage/components/ProductsSlider';
+import { NotFoundPage } from '../../modules/NotFoundPage';
+import { Error } from '../../shared/components/layout/Error';
+import { Loader } from '../../shared/components/layout/Loader';
+import { AddToCartButton } from '../../shared/components/ui/AddToCartButton';
+import { Breadcrumbs } from '../../shared/components/ui/Breadcrumbs';
+import { FavoriteButton } from '../../shared/components/ui/FavoriteButton';
+import { GoBack } from '../../shared/components/ui/GoBack';
+import { ProductCategory } from '../../shared/constants/productCategory';
 import {
   getProductsByCategory,
   getSuggestedProducts,
-} from 'shared/services/services';
-import { Product } from 'shared/types/Product';
-import { ProductDetails } from 'shared/types/ProductDetails';
+} from '../../shared/services/services';
+import { Product } from '../../shared/types/Product';
+import { ProductDetails } from '../../shared/types/ProductDetails';
 
 import styles from './ProductDetailsPage.module.scss';
 
@@ -142,7 +143,7 @@ export const ProductDetailsPage: React.FC = () => {
                   className={`${styles.thumbnail} ${activeImageIndex === i ? styles.activeThumbnail : ''}`}
                 >
                   <button onClick={() => setActiveImageIndex(i)}>
-                    <img alt={`${curProduct.name}, image ${i + 1}`} src={img} />
+                    <img alt={curProduct.name} src={img} />
                   </button>
                 </li>
               ))}

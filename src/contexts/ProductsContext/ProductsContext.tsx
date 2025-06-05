@@ -1,4 +1,5 @@
-import { createContext, useEffect, useMemo, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React, { createContext, useEffect, useMemo, useState } from 'react';
 
 import { ProductCategory } from 'shared/constants/productCategory';
 import { getAllProducts } from 'shared/services/services';

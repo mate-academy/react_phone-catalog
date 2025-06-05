@@ -1,4 +1,4 @@
-@use '/src/styles/globals.scss' as *;
+@use '../../../../styles/globals.scss' as *;
 
 .topWrapper {
   @extend %flex-center;
@@ -17,14 +17,19 @@
   @extend %flex-center;
 
   flex-direction: row;
+
   width: 32px;
   height: 32px;
+
   color: $color-white;
+
   background-color: $color-surface2;
   background-position: center;
   background-repeat: no-repeat;
   border: none;
+
   transition: background-color 0.5s ease-in-out;
+
   cursor: pointer;
 
   &:hover {
@@ -32,7 +37,7 @@
   }
 }
 
-.prevArrow{
+.prevArrow {
   transform: rotate(180deg);
 }
 
@@ -57,7 +62,6 @@
     @include apply-typography(h2-mobile);
 
     width: 136px;
-
     margin: 0 0 16px;
   }
 }

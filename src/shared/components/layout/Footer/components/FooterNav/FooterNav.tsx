@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 import styles from './FooterNav.module.scss';

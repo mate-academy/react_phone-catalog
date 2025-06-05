@@ -1,10 +1,15 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
+import { Link } from 'react-router-dom';
+
 import { RootState } from 'app/store';
-import { removeFromCart } from 'features/cart/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { GoBack } from 'shared/components/ui/GoBack';
-import { Icon } from 'shared/components/ui/Icon/Icon';
-import { IconNames } from 'shared/components/ui/Icon/IconNames';
+import { removeFromCart } from '../../features/cart/cartSlice';
+import { GoBack } from '../../shared/components/ui/GoBack';
+import { Icon } from '../../shared/components/ui/Icon/Icon';
+import { IconNames } from '../../shared/components/ui/Icon/IconNames';
 
 import styles from './CartPage.module.scss';
 
@@ -16,8 +21,16 @@ export const CartPage: React.FC = () => {
     dispatch(removeFromCart(id));
   };
 
+  // const handleIncrement = () => {
+  //   setQuantity(prev => prev + 1);
+  // };
+
+  // const handleDecrement = () => {
+  //   setQuantity(prev => Math.max(1, prev - 1));
+  // };
+
   return (
-    <article className={styles.cartPage}>
+    <article className={styles.cartWrapper}>
       <header>
         <nav aria-label="back" className={styles.navigation}>
           <GoBack />
@@ -37,17 +50,42 @@ export const CartPage: React.FC = () => {
                   >
                     <Icon className={styles.crossIcon} name={IconNames.Cross} />
                   </button>
-                  <div className={styles.imageWrapper}>
-                    <img alt={item.product.name} src={item.product.image} />
+
+                  <Link
+                    className={styles.imageWrapper}
+                    to={`/${item.product.category}/${item.product.id}`}
+                  >
+                    <img
+                      alt={item.product.name}
+                      className={styles.image}
+                      src={item.product.image}
+                    />
+                  </Link>
+
+                  <Link
+                    className={styles.itemName}
+                    to={`/${item.product.category}/${item.product.id}`}
+                  >
+                    {item.product.name}
+                  </Link>
+
+                  <div className={styles.counter} role="group">
+                    <button className={styles.counterButton}>
+                      <Icon name={IconNames.Minus} />
+                    </button>
+
+                    <output className={styles.counterValue}>1</output>
+
+                    <button className={styles.counterButton}>
+                      <Icon name={IconNames.Plus} />
+                    </button>
                   </div>
                 </article>
               </li>
             ))}
           </ul>
 
-          <div className={styles.totalItems}>
-            {/* Сумма, кнопка Checkout и т.д. */}
-          </div>
+          <div className={styles.totalItems}></div>
         </div>
       ) : (
         <section className={styles.empty}>

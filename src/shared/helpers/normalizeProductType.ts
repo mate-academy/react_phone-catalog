@@ -9,6 +9,7 @@ export function normalizeProductType(product: Product | ProductDetails) {
     name: product.name,
     price: isDetailedProduct ? product.priceDiscount : product.price,
     image: isDetailedProduct ? product.images[0] : product.image,
+    category: product.category,
   };
 }
 

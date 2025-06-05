@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React from 'react';
+
 import {
   Navigate,
   Route,
@@ -5,15 +8,14 @@ import {
   Routes,
 } from 'react-router-dom';
 
-import { FavoritesPage } from 'modules/FavoritesPage/FavoritesPage';
-import { ProductDetailsPage } from 'modules/ProductDetailsPage/ProductDetailsPage';
-import { ProductsPage } from 'modules/ProductsPage';
-
 import { App } from './App';
 import { CartPage } from './modules/CartPage/CartPage';
 import { ContactsPage } from './modules/ContactsPage/ContactsPage';
+import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 import { HomePage } from './modules/HomePage/HomePage';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
+import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { ProductsPage } from './modules/ProductsPage';
 
 export const Root: React.FC = () => (
   <Router>

@@ -1,6 +1,6 @@
-@use '/src/styles/globals.scss' as *;
+@use '../../styles/globals.scss' as *;
 
-.cartPage {
+.cartWrapper {
   padding-bottom: 80px;
   padding-top: 40px;
 
@@ -38,20 +38,78 @@
 
 .cartInfo {
   display: flex;
-  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: $tablet-breakpoint) {
+    flex-direction: column;
+    gap: 32px;
+  }
 }
 
 .cartList {
   display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  max-width: 752px;
   gap: 16px;
 }
 
 .cartItem {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+
+  padding: 24px;
 }
 
 .crossIcon {
   color: $color-icons;
+
+  &:hover {
+    color: $color-white;
+    transition: color 0.3s ease-in-out;
+  }
+}
+
+.imageWrapper {
+  @extend %flex-center;
+
+  width: 66px;
+  height: 66px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  img:hover {
+    @include hover-scale(1.5);
+
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.itemName {
+  color: $color-white;
+}
+
+.counter {
+  @extend %flex-center;
+}
+
+.counterButton {
+  @extend %pagination-button;
+
+  background-color: $color-surface2;
+}
+
+.counterValue {
+  @extend %flex-center;
+
+  width: 32px;
+  height: 32px;
 }

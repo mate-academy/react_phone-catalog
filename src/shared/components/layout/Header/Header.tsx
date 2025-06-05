@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React, { useEffect } from 'react';
 
 import { useMediaQuery } from '@mui/material';
 import classNames from 'classnames';
 
-import { useMenuContext } from 'contexts/MenuContext';
-import { Logo } from 'shared/components/layout/Logo';
-import { closeMenu } from 'shared/helpers/handlers';
+import { useMenuContext } from '../../../../contexts/MenuContext';
+import { closeMenu } from '../../../../shared/helpers/handlers';
+import { Logo } from '../../layout/Logo';
 
 import { HeaderNav } from './components/HeaderNav/HeaderNav';
 import { Menu } from './components/Menu';
