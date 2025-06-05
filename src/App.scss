@@ -128,7 +128,7 @@ body::-webkit-scrollbar { width: 0 !important }
     background-color: #0f0f11;
   }
 
-  &__icon__cart,
+    &__icon__cart,
   &__icon__like {
     display: block;
     width: 16px;
@@ -140,7 +140,16 @@ body::-webkit-scrollbar { width: 0 !important }
       transform 0.3s ease-in-out;
     position: relative;
 
-
+    &.active::after {
+    content: '';
+    position: absolute;
+    bottom: -24px; // регулюй по висоті
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border-radius: 2px;
+  }
   }
 
   &__icon__cart {
