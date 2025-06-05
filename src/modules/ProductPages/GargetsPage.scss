@@ -40,7 +40,9 @@
   }
 
   &__home-img {
-    background-image: url('/public/img/Home.png');
+    background-image: url(/public/img/Home.
+
+    );
     width: 13.33px;
     height: 14.67px;
     background-repeat: no-repeat;
@@ -50,7 +52,7 @@
   &__arrow {
       width: 16px;
       height: 16px;
-      background-image: url('./img/arrow.png');
+      background-image: url('/img/arrow.png');
     }
 
   &__back-home-h2 {

@@ -101,7 +101,7 @@ export const NavBar: React.FC<Props> = ({
         {isMobile && (
           <button
             className="navbar__button-burger"
-            onClick={() => setClickOnLogoBar()}
+            onClick={() => setClickOnLogoBar(prev => !prev)}
           >
             <NavLink
               className={

@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route, NavLink } from 'react-router-dom';
 import './App.scss';
 import { HomePage } from './modules/Home/HomePage';
 import { useEffect, useState } from 'react';
@@ -50,6 +50,43 @@ export const App = () => {
               cartItems={cartItems}
               favoriteItems={favoriteItems}
             />
+
+            {clickOnLogoBar && (
+              <aside className={clickOnLogoBar ? 'menu menu--open' : 'menu'}>
+                <ul className="menu__brand">
+                  {links.map((item, index) => (
+                    <li className="menu__item" key={index}>
+                      <NavLink
+                        className={({ isActive }) =>
+                          `menu__link ${isActive ? 'has-background-grey-lighter' : ''}`
+                        }
+                        to={item === 'home' ? '/' : `/${item}`}
+                        onClick={() => setClickOnLogoBar(false)}
+                      >
+                        {item.charAt(0).toUpperCase() + item.slice(1)}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+                <div className="menu__right">
+                  {[
+                    { to: '/favorites', className: 'menu__icon__like' },
+                    { to: '/cart', className: 'menu__icon__cart' },
+                  ].map(({ to, className }) => (
+                    <button className="menu__button" key={to}>
+                      <NavLink
+                        aria-current="page"
+                        className={className}
+                        to={to}
+                        onClick={() => {
+                          setClickOnLogoBar(false);
+                        }}
+                      />
+                    </button>
+                  ))}
+                </div>
+              </aside>
+            )}
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/phones" element={<PhonePage />} />
