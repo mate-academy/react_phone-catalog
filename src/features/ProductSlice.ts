@@ -1,6 +1,7 @@
-import { createAsyncThunk, createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import { Product } from "../types/products"
 import { fetchProducts } from "../api/fetchProducts";
+
 
 type ProductsState = {
   products: Product[];
@@ -16,8 +17,8 @@ const initialState: ProductsState = {
   error:'',
 }
 
-export const init = createAsyncThunk('product/fetch', (category) => {
-  return fetchProducts(category);
+export const init = createAsyncThunk('product/fetch', () => {
+  return fetchProducts();
 })
 
 /* eslint-disable no-param-reassign */
@@ -47,3 +48,6 @@ const productsSlice = createSlice({
 export const {  } = productsSlice.actions;
 
 export default productsSlice.reducer;
+
+
+

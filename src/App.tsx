@@ -10,15 +10,14 @@ import { init } from './features/ProductSlice';
 import { useAppDispatch} from './app/hooks'
 
 export const App = () => {
-  const location = useLocation();
-  const category = location.pathname.split('/')[1];
+ 
 
     const dispach = useAppDispatch();
 
   useEffect(() => {
-    
-    dispach(init(category))
-    }, [category])
+
+    dispach(init())
+    }, [dispach])
 
 
 

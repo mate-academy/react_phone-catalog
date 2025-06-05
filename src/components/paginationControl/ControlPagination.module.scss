@@ -1,0 +1,16 @@
+.pagination{
+list-style: none;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__icon{
+    border:1px solid black;
+    border-radius: 100%;
+    display: block;
+    width: 16px;
+    height: 16px;
+    padding: 10px;
+
+  }
+}
