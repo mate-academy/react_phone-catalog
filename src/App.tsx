@@ -97,7 +97,7 @@ export const App = () => {
                   {['favorites', 'cart'].map(route => {
                     const isCart = route === 'cart';
                     const isFavorite = route === 'favorites';
-                    const isActive = location.pathname === `/${route}`;
+                    const isActive = location.href.includes(`/${route}`);
 
                     return (
                       <button
