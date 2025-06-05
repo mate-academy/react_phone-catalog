@@ -9,12 +9,16 @@ import { Accessories } from './modules/ProductPages/Accessuries';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 import { CartPage } from './modules/CartPage/CartPage';
 import { FavoritesPages } from './modules/FavoritesPage/FavoritesPage';
-import { Header } from './modules/Header/Header';
+import { NavBar } from './modules/NavBar/NavBar';
 import { Footer } from './modules/Footer/Footer';
+import { useCart } from './modules/CartContext/CartContext';
 
 export const App = () => {
-  const [clickOnLogoBar] = useState(false);
-  const [, setIsMobile] = useState(window.innerWidth <= 639);
+  const [clickOnLogoBar, setClickOnLogoBar] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 639);
+  const { cartItems, favoriteItems } = useCart();
+
+  const links = ['home', 'phones', 'tablets', 'accessories'];
 
   useEffect(() => {
     const handleResize = () => {
@@ -38,7 +42,14 @@ export const App = () => {
             <h1 className="product__catalog" hidden>
               Product Catalog
             </h1>
-            <Header />
+            <NavBar
+              isMobile={isMobile}
+              links={links}
+              setClickOnLogoBar={setClickOnLogoBar}
+              clickOnLogoBar={clickOnLogoBar}
+              cartItems={cartItems}
+              favoriteItems={favoriteItems}
+            />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/phones" element={<PhonePage />} />
