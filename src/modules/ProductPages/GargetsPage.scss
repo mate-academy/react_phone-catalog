@@ -48,13 +48,10 @@
   }
 
   &__arrow {
-    width: 6px;
-    height: 6px;
-    border-right: 1.5px solid #b4bdc3;
-    border-bottom: 1.5px solid #b4bdc3;
-    transform: rotate(-45deg);
-    margin-top: 1px;
-  }
+      width: 16px;
+      height: 16px;
+      background-image: url('./img/arrow.png');
+    }
 
   &__back-home-h2 {
     font: 600 12px/12px 'Mont';

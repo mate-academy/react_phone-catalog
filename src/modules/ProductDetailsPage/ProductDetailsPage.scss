@@ -76,13 +76,10 @@
   }
 
   &__arrow {
-    width: 6px;
-    height: 6px;
-    border-right: 1.5px solid #b4bdc3;
-    border-bottom: 1.5px solid #b4bdc3;
-    transform: rotate(-45deg); /* Поворот на 45 градусів вліво */
-    // margin-top: 1px;
-  }
+      width: 16px;
+      height: 16px;
+      background-image: url('./img/arrow.png');
+    }
 
   &__phone-models {
     white-space: nowrap;
@@ -582,12 +579,9 @@
     }
 
     &__arrow {
-      width: 6px;
-      height: 6px;
-      border-right: 1.5px solid #b4bdc3;
-      border-bottom: 1.5px solid #b4bdc3;
-      transform: rotate(-45deg); /* Поворот на 45 градусів вліво */
-      // margin-top: 1px;
+      width: 16px;
+      height: 16px;
+      background-image: url('./img/arrow.png');
     }
 
     &__phone-models {
@@ -1061,11 +1055,9 @@
     }
 
     &__arrow {
-      width: 6px;
-      height: 6px;
-      border-right: 1.5px solid #b4bdc3;
-      border-bottom: 1.5px solid #b4bdc3;
-      transform: rotate(-45deg);
+      width: 16px;
+      height: 16px;
+      background-image: url('./img/arrow.png');
     }
 
     &__phone-colums {

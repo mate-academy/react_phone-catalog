@@ -139,6 +139,8 @@ body::-webkit-scrollbar { width: 0 !important }
       transform 0.3s ease-in-out,
       transform 0.3s ease-in-out;
     position: relative;
+
+
   }
 
   &__icon__cart {
@@ -160,9 +162,22 @@ body::-webkit-scrollbar { width: 0 !important }
 
     border-right: none;
 
-    &:first-child {
-      border-right: 1px solid #e2e6e9;
-    }
+    position: relative; // <-- Додано
+
+  &:first-child {
+    border-right: 1px solid #e2e6e9;
+  }
+
+ &.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border-radius: 2px;
+  }
   }
 
 
@@ -509,49 +524,52 @@ body::-webkit-scrollbar { width: 0 !important }
 .footer {
   max-width: 1440px;
   margin-inline: auto;
-    padding-inline: 0;
-  display: grid;
-  grid-template-columns: repeat(24, 1fr);
+  padding-inline: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
   font-size: 12px;
   font-weight: 800;
-  height: 64px;
   line-height: 11px;
   padding-left: 24px;
-  font-family: 'Mont';
+  font-family: "Mont";
   z-index: 100;
   border-top: 1px solid #e2e6e9;
   background-color: white;
   margin-top: 80px;
   position: static;
-
   &__link__logo {
     transition: transform 0.3s ease-in-out;
-
     &:hover {
       transform: scale(1.1);
     }
   }
-
   &__link {
     display: block;
     text-decoration: none;
     color: #828282;
     white-space: nowrap;
     transition: transform 0.3s ease-in-out;
-
     &:hover {
       transform: scale(1.1);
     }
   }
-
   &__item:first-child .menu__link {
     padding-top: 0;
   }
-
   &__item:last-child .menu__link {
     padding-bottom: 26.5px;
   }
-
+  &__left {
+    margin: 32px 0;
+  }
+  &__brand {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    list-style: none;
+    margin-bottom: 32px;
+  }
   &__button {
     width: 32px;
     height: 32px;
@@ -564,14 +582,11 @@ body::-webkit-scrollbar { width: 0 !important }
     position: relative;
     margin-left: 16px;
   }
-
   &__right {
-    margin-left: auto;
-    grid-column: 22 / span 1;
     display: flex;
     align-items: center;
+    align-self: center;
   }
-
   .footer__button::before {
     content: "";
     display: block;
@@ -581,61 +596,9 @@ body::-webkit-scrollbar { width: 0 !important }
     border-top: 1px solid black;
     transform: rotate(45deg);
   }
-
   .has-background-grey-lighter {
     position: relative;
     color: #0f0f11;
-  }
-}
-
-// Mobile: min-width 320px
-@media screen and (min-width: 320px) {
-  .footer {
-    &__brand {
-      display: flex;
-      flex-direction: column;
-      justify-content: right;
-      grid-column: 1 / span 16;
-      list-style-type: none;
-    }
-
-    &__brand:first-child {
-      padding-top: 32px;
-    }
-
-    &__link {
-      display: block;
-      text-decoration: none;
-      color: #828282;
-      white-space: nowrap;
-      transition: transform 0.3s ease-in-out;
-      padding-top: 16px;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-
-    &__item:first-child &__link {
-      padding-top: 32px;
-    }
-
-
-    &__item:last-child .menu__link {
-      padding-bottom: 0px;
-    }
-
-    &__right {
-      margin-left: auto;
-      grid-column: 10 / span 1;
-      display: flex;
-      align-items: center;
-      padding-top: 32px;
-
-      // Додаємо це:
-      align-self: end;
-      margin-top: auto;
-    }
   }
 }
 
@@ -643,71 +606,55 @@ body::-webkit-scrollbar { width: 0 !important }
 @media screen and (min-width: 639px) {
   .footer {
     width: 100%;
-    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
     z-index: 1000;
-
+    &__left {
+      margin: 0;
+    }
     &__brand {
       display: flex;
       align-items: center;
       flex-direction: row;
       padding-left: 16px;
-      list-style: none;
       margin: 0;
       padding: 0;
     }
-
     &__item {
       display: flex;
       align-items: center;
       padding-left: 13.5px;
     }
-
     &__link,
     &__link__logo {
       display: block;
-      padding: 16px 0;
+      padding: 16px 0 !important;
       height: 100%;
     }
-
     &__right {
-      display: flex;
       justify-content: space-between;
-      align-items: center;
       padding-right: 74px;
       gap: 12px;
     }
   }
 }
-
 // Desktop: min-width 1199px
-@media screen and (min-width: 1199px) {
+@media screen and (min-width: 1119px) {
   .footer {
     &__brand {
-      display: flex;
-      align-items: center;
-      grid-column: 1 / span 16;
-      gap: 106.82px;
       list-style-type: none;
     }
-
     &__right {
-      grid-column: 22 / span 1;
-      align-self: center;
       margin-top: 0;
       padding-top: 0;
     }
-
     &__link__logo {
       padding-left: 195px;
     }
-
     &__item {
       padding-left: 64px;
     }
-
     &__link {
       padding: 26.5px 0;
     }

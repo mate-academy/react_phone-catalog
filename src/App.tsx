@@ -97,12 +97,15 @@ export const App = () => {
                   {['favorites', 'cart'].map(route => {
                     const isCart = route === 'cart';
                     const isFavorite = route === 'favorites';
+                    const isActive = location.pathname === `/${route}`;
 
                     return (
                       <button
                         key={route}
                         className={classNames('navbar__button', {
                           hidden: !isMobile || clickOnLogoBar,
+
+                          active: isActive,
                         })}
                       >
                         <NavLink
