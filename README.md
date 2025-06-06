@@ -3,10 +3,15 @@
 
 ## ⚙️ Technologies Used
 **React** – *for building the component-based UI*
+
 **React Router Dom** – *for client-side routing*
+
 **React Transition Group** – *for page transition animations*
+
 **Redux & Redux Toolkit** – *for global state management*
+
 **TypeScript** – *for static typing and improved code reliability*
+
 **SCSS Modules** – *for modular and scoped component styling*
 
 ## 💡 Features
