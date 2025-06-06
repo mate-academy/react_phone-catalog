@@ -29,13 +29,10 @@
  }
 
  &__link {
-  font-family: Mont-Bold, sans-serif;
-  font-size: 12px;
-  line-height: 11px;
+  @include text-uppercase;
+
   color: $color-text-secondary;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 
   &:hover {
     color: $color-text-main;
