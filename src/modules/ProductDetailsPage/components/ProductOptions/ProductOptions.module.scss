@@ -251,7 +251,7 @@ hr:nth-of-type(2) {
 }
 
 @each $name, $value in $colors {
-  .productOverview__#{$name} {
+  .productOverview__#{'' + $name} {
     display: block;
 
     width: 100%;
