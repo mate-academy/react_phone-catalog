@@ -1,0 +1,36 @@
+@import '../../../assets/styles/main';
+
+.spinner {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: calc(100vh - 64px - 96px);
+
+  background-color: $color-white;
+
+  &__spin {
+    width: 120px;
+    height: 120px;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid $color-primary;
+    border-radius: 50%;
+
+    animation: spin 2s linear infinite;
+  }
+
+  &__logo {
+    position: absolute;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
