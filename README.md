@@ -1,5 +1,5 @@
 # 🛍️ Pet Project – Online Store
- This project was created as part of a training assignment during my studies. It’s a multi-page online store with essential e-commerce functionality, built entirely from scratch without templates or pre-made solutions. The design was implemented based on a Figma layout.
+ This project was created as part of a training assignment during my studies. It’s a ***multi-page online store*** with essential e-commerce functionality, built entirely from scratch without templates or pre-made solutions. The design was implemented based on a Figma layout.
 
 ## ⚙️ Technologies Used
 **React** – *for building the component-based UI*
