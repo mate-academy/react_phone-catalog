@@ -11,19 +11,19 @@ export const Banner: React.FC = () => {
       title: 'IPhone 14 Pro',
       text: 'And then was a Pro',
       path: 'phones/apple-iphone-14-pro-128gb-spaceblack',
-      image: '/img/phones/apple-iphone-14-pro/spaceblack/04.webp',
+      image: './img/phones/apple-iphone-14-pro/spaceblack/04.webp',
     },
     {
       title: 'IPad Pro 11',
       text: 'Powerful Performance',
       path: 'tablets/apple-ipad-pro-11-2021-2tb-silver',
-      image: '/img/tablets/apple-ipad-pro-11-2021/silver/00.webp',
+      image: './img/tablets/apple-ipad-pro-11-2021/silver/00.webp',
     },
     {
       title: 'Watch Series 6',
       text: 'Track your daily activity',
       path: 'apple-watch-series-3-38mm-gold',
-      image: 'img/accessories/apple-watch-series-3/gold/01.webp',
+      image: './img/accessories/apple-watch-series-3/gold/01.webp',
     },
   ];
 

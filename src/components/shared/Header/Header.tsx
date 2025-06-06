@@ -36,7 +36,7 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <Link to="/" className="header__logo-link">
-        <img className="header__logo" src="./public/img/logo.png" />
+        <img className="header__logo" src="./img/logo.png" />
       </Link>
 
       <nav className="header__nav">
