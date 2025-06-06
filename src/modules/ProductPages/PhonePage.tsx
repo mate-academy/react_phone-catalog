@@ -9,12 +9,13 @@ export const PhonePage = () => {
   const [phones, setPhones] = useState<Gargets[]>([]);
   const [loadingDataOnServer, setLoadingDataOnServer] = useState(false);
   const [reloadButton, setReloadButton] = useState(false);
-  const [sortBy, setSortBy] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortByy = searchParams.get('sort') ?? 'newest';
+  const [sortBy, setSortBy] = useState(sortByy);
+  const itemsParam = searchParams.get('items') ?? '4';
+  const [itemsPerPage, setItemsPerPage] = useState(Number(itemsParam));
 
   useEffect(() => {
     setReloadButton(false);
@@ -48,39 +49,64 @@ export const PhonePage = () => {
     }, 1000);
   };
 
-  const sortingPhoneOnPage = () => {
-    const newArr = [...phones];
+  const handleItemsPerPageChange = (count: number) => {
+    setItemsPerPage(count);
+    setSearchParams(params => {
+      params.set('items', count.toString());
+      params.set('sort', sortBy);
 
-    switch (sortBy) {
-      case 'alphabetically':
-        newArr.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case 'cheapest':
-        newArr.sort((a, b) => a.priceRegular - b.priceRegular);
-        break;
-      case 'newest':
-        newArr.sort((a, b) => b.priceRegular - a.priceRegular);
-        break;
-    }
-
-    setPhones(newArr);
+      return params;
+    });
   };
 
   useEffect(() => {
-    sortingPhoneOnPage();
-  }, [sortBy]);
+    if (phones.length === 0) return;
+
+    // сортуємо лише якщо sortBy визначено
+    const sortedPhones = [...phones];
+
+    switch (sortBy) {
+      case 'alphabetically':
+        sortedPhones.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'cheapest':
+        sortedPhones.sort((a, b) => a.priceRegular - b.priceRegular);
+        break;
+      case 'newest':
+        sortedPhones.sort((a, b) => b.priceRegular - a.priceRegular);
+        break;
+    }
+
+    setPhones(sortedPhones);
+  }, [phones.length && sortBy]); // 🔁 тільки коли з'являться телефони І встановлено sortBy
+
+  // useEffect(() => {
+  //   if (!phones.length || !sortBy) return;
+
+  //   sortingPhoneOnPage();
+  // }, [sortBy, phones]);
 
   useEffect(() => {
     setSortBy(sortByy);
   }, [sortByy]);
 
   useEffect(() => {
-    const limitParam = searchParams.get('perPage');
+    const pageParam = Number(searchParams.get('page'));
+    const perPageParam = searchParams.get('perPage');
+    const sortParam = searchParams.get('sort');
 
-    if (limitParam === 'all') {
+    if (pageParam && pageParam > 0) {
+      setCurrentPage(pageParam);
+    }
+
+    if (perPageParam === 'all') {
       setItemsPerPage(phones.length);
-    } else if (limitParam) {
-      setItemsPerPage(Number(limitParam));
+    } else if (perPageParam) {
+      setItemsPerPage(Number(perPageParam));
+    }
+
+    if (sortParam) {
+      setSortBy(sortParam);
     }
   }, [searchParams, phones.length]);
 
@@ -171,6 +197,8 @@ export const PhonePage = () => {
 
                 setSortBy(sortType);
 
+                handleItemsPerPageChange(Number(e.target.value));
+
                 const newParams = new URLSearchParams(searchParams.toString());
 
                 newParams.set('sort', sortType);
@@ -188,6 +216,9 @@ export const PhonePage = () => {
             <select
               name="choose"
               className="gargets__items-on-page-choose-item"
+              value={
+                itemsPerPage === phones.length ? 'all' : itemsPerPage.toString()
+              }
               onChange={e => {
                 const perPageValue = e.target.value;
 
@@ -195,11 +226,11 @@ export const PhonePage = () => {
                   const updated = new URLSearchParams(params);
 
                   updated.set('perPage', perPageValue);
-
                   updated.set('page', '1');
 
                   return updated;
                 });
+
                 setCurrentPage(1);
               }}
             >

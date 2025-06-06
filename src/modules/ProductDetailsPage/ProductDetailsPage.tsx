@@ -53,7 +53,6 @@ export const ProductDetailsPage = () => {
     }
   }, [item.images]);
 
-
   const currentModel = garg.find(
     phone =>
       phone.capacity.toLowerCase().trim() ===
@@ -356,80 +355,91 @@ export const ProductDetailsPage = () => {
               }}
               className="swiper__slide"
             >
-              {garg.map(phone => (
-                <SwiperSlide key={phone.id} className="swiper__card">
-                  <img
-                    src={phone.images[0]}
-                    alt={phone.name}
-                    className="swiper__image-phone"
-                    onClick={() => {
-                      const productId = phone.id;
+              {garg.map(phone => {
+                const phoneIsInCart = cartItems.some(
+                  cartItem => cartItem.id === phone.id,
+                );
+                const phoneIsLiked = favoriteItems.some(
+                  favItem => favItem.id === phone.id,
+                );
 
-                      navigate(`/phones/${productId}`, { state: phone });
-                    }}
-                  />
-                  <h4 className="swiper__name">{phone.name}</h4>
-                  <div className="swiper__position">
-                    <h3 className="swiper__costs">${phone.priceRegular}</h3>
-                    <h3 className="swiper__sale">${phone.priceDiscount}</h3>
-                    <div className="swiper__line"></div>
-                  </div>
-                  <div className="swiper__small-line" />
-                  <div className="swiper__position">
-                    <h5 className="swiper__screen">Screen</h5>
-                    <h5 className="swiper__oled">{phone.screen}</h5>
-                  </div>
-                  <div className="swiper__position">
-                    <h5 className="swiper__capacity">Capacity</h5>
-                    <h5 className="swiper_gb">{phone.capacity}</h5>
-                  </div>
-                  <div className="swiper__position">
-                    <h5 className="swiper__ram">RAM</h5>
-                    <h5 className="swiper__ram-gb">{phone.ram}</h5>
-                  </div>
-                  <div className="swiper__position">
-                    <NavLink
-                      to="/"
-                      className={classNames('swiper__add-to-cart', {
-                        added: isInCart,
-                      })}
-                      onClick={e => {
-                        e.preventDefault();
-                        if (!isInCart) {
-                          addToCart(item);
-                        }
-                      }}
-                      style={{ pointerEvents: isInCart ? 'none' : 'auto' }}
-                    >
-                      {isInCart ? 'Added to cart' : 'Add to cart'}
-                    </NavLink>
-
-                    <button
-                      className="product__list-button-like"
+                return (
+                  <SwiperSlide key={phone.id} className="swiper__card">
+                    <img
+                      src={phone.images[0]}
+                      alt={phone.name}
+                      className="swiper__image-phone"
                       onClick={() => {
-                        if (!item) {
-                          return;
-                        }
+                        const productId = phone.id;
 
-                        if (isLiked) {
-                          removeFavorite(item.id);
-                        } else {
-                          addFavorite(item);
-                        }
+                        navigate(`/phones/${productId}`, { state: phone });
                       }}
-                    >
-                      <span
-                        className="swiper__like"
-                        style={{
-                          backgroundImage: isLiked
-                            ? 'url(./img/favorites.png)'
-                            : 'url(./img/navbar/like.png)',
+                    />
+                    <h4 className="swiper__name">{phone.name}</h4>
+                    <div className="swiper__position">
+                      <h3 className="swiper__costs">${phone.priceRegular}</h3>
+                      <h3 className="swiper__sale">${phone.priceDiscount}</h3>
+                      <div className="swiper__line"></div>
+                    </div>
+                    <div className="swiper__small-line" />
+                    <div className="swiper__position">
+                      <h5 className="swiper__screen">Screen</h5>
+                      <h5 className="swiper__oled">{phone.screen}</h5>
+                    </div>
+                    <div className="swiper__position">
+                      <h5 className="swiper__capacity">Capacity</h5>
+                      <h5 className="swiper_gb">{phone.capacity}</h5>
+                    </div>
+                    <div className="swiper__position">
+                      <h5 className="swiper__ram">RAM</h5>
+                      <h5 className="swiper__ram-gb">{phone.ram}</h5>
+                    </div>
+                    <div className="swiper__position">
+                      <NavLink
+                        to="/"
+                        className={classNames('swiper__add-to-cart', {
+                          added: phoneIsInCart,
+                        })}
+                        onClick={e => {
+                          e.preventDefault();
+                          if (!phoneIsInCart) {
+                            addToCart(phone);
+                          }
                         }}
-                      ></span>
-                    </button>
-                  </div>
-                </SwiperSlide>
-              ))}
+                        style={{
+                          pointerEvents: phoneIsInCart ? 'none' : 'auto',
+                        }}
+                      >
+                        {phoneIsInCart ? 'Added to cart' : 'Add to cart'}
+                      </NavLink>
+
+                      <button
+                        className="product__list-button-like"
+                        onClick={() => {
+                          if (!item) {
+                            return;
+                          }
+
+                          if (isLiked) {
+                            removeFavorite(item.id);
+                          } else {
+                            addFavorite(item);
+                          }
+                        }}
+                      >
+                        <span
+                          className="swiper__like"
+                          style={{
+                            backgroundImage: phoneIsLiked
+                              ? 'url(./img/favorites.png)'
+                              : 'url(./img/navbar/like.png)',
+                          }}
+                        ></span>
+                      </button>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </div>
         </div>

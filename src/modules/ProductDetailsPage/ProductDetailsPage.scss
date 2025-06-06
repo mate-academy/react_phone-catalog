@@ -528,6 +528,14 @@
   }
 }
 
+@media screen and (min-width: 1199px) {
+  .details {
+    max-width: 1136px;
+      margin-inline: auto;
+      // padding-inline: 32px;
+  }
+}
+
 @media screen and (max-width: 1199px) {
   .details {
     @include contentPaddingInline;
