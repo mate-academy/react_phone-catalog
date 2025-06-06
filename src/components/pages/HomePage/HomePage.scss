@@ -1,0 +1,45 @@
+@import '../../../styles/main';
+
+.home {
+  --home-sections-gap: 56px;
+
+  padding-bottom: 64px;
+
+  @include on-tablet {
+      --home-sections-gap: 64px;
+    }
+
+    @include on-desktop {
+      --home-sections-gap: 80px;
+
+      padding-bottom: 80px;
+    }
+
+  &__title {
+    @include container;
+    @include title-1;
+
+    padding-block: 24px;
+    color: $color-text-main;
+
+    @include on-tablet {
+      padding-block: 32px;
+    }
+
+    @include on-desktop {
+      padding-block: 56px;
+    }
+  }
+
+  &__banner {
+    margin: 0 0 var(--home-sections-gap);
+  }
+
+  &__sections {
+    @include container;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--home-sections-gap);
+  }
+}

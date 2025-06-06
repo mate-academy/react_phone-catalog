@@ -1,0 +1,32 @@
+@import '../../../styles/main';
+
+.button-icon {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-icon;
+  border-radius: 50%;
+
+  background-color: none;
+
+  transition: border $animation-timing $animation-rule;
+
+  &:hover {
+    border-color: $color-text-main;
+  }
+
+  &--disabled {
+    cursor: default;
+    border-color: $color-element;
+
+    &:hover {
+      border-color: $color-element;
+    }
+  }
+}

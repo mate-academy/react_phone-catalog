@@ -1,0 +1,64 @@
+@import '../../../styles/main';
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.button {
+  &__cart {
+    @include text-buttons;
+
+    flex: 1;
+
+    box-sizing: border-box;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 48px;
+
+    color: $color-white;
+    text-align: center;
+
+    background-color: $color-accent;
+
+    &--active {
+      border: 1px solid $color-element;
+      color: $color-accent;
+      background-color: $color-white;
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &__favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $color-icon;
+    border-radius: 50%;
+
+    background-color: $color-background;
+
+    &--active {
+      border: 1px solid $color-element;
+    }
+
+    &:hover {
+      border: 1px solid $color-text-main;
+    }
+  }
+}
