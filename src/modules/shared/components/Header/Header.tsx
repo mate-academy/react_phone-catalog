@@ -4,6 +4,10 @@ import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
 import { ListOfTextLinks } from '../listOfTextLinks';
 import { ListOfIconLinks } from '../listOfIconLinks';
+import { getLogo } from '../../../../utils/getLogo';
+import { BurgerMenuSvg } from '../../svg/BurgerMenuSvg';
+import { CloseSvg } from '../../svg/CloseSvg';
+import { useAppSelector } from '../../../../app/hooks';
 
 type Props = {
   onClickMenu: () => void;
@@ -11,12 +15,14 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ onClickMenu, menuIsOpen }) => {
+  const theme = useAppSelector(s => s.theme);
+
   return (
     <header className={styles.header}>
       <Link to={'/'} className={styles.headerLogoLink}>
         <img
           className={styles.headerLogo}
-          src="img/header-logo.png"
+          src={getLogo(theme)}
           alt="Nice gadgets logo"
         />
       </Link>
@@ -30,19 +36,11 @@ export const Header: React.FC<Props> = ({ onClickMenu, menuIsOpen }) => {
           className={`${styles.burgerMenuButton} ${styles.closeButton}`}
           onClick={onClickMenu}
         >
-          <img
-            className="icons "
-            src={'img/icons/close.svg'}
-            alt="close menu"
-          />
+          <CloseSvg color="var(--active-arrow-svg)" />
         </button>
       ) : (
         <button className={styles.burgerMenuButton} onClick={onClickMenu}>
-          <img
-            className="icons "
-            src={'img/icons/burger-menu.svg'}
-            alt="menu icon"
-          />
+          <BurgerMenuSvg color="var(--active-arrow-svg)" />
         </button>
       )}
     </header>

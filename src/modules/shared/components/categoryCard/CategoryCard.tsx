@@ -25,7 +25,7 @@ export const CategoryCard: React.FC<Props> = ({
         alt="product image"
         className={`${styles.img} ${styles[color]}`}
       />
-      <h4 className={styles.cardName}>{cardName}</h4>
+      <h3 className={styles.cardName}>{cardName}</h3>
       <p className={styles.p}>{countModels} models</p>
     </Link>
   );

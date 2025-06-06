@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import { Header } from '../../modules/shared/components/header';
 import { Container } from '../../modules/shared/components/container';
 import { Footer } from '../../modules/shared/components/footer';
-import { Saidebar } from '../../modules/shared/components/sidebar';
+import { Sidebar } from '../../modules/shared/components/sidebar';
 
 import styles from './MainLayout.module.scss';
+import { SwitchThemeButton } from './components/switchThemeButton';
 
 type Props = {
   children: React.ReactNode;
@@ -24,6 +25,8 @@ export const MainLayout: React.FC<Props> = ({ children }) => {
 
   const clickOnMenu = () => setAsaideIsOpen(c => !c);
 
+  const nodeRef = useRef(null);
+
   return (
     <div className={styles.pageContent}>
       <Header onClickMenu={clickOnMenu} menuIsOpen={asaideIsOpen} />
@@ -33,13 +36,15 @@ export const MainLayout: React.FC<Props> = ({ children }) => {
         in={asaideIsOpen}
         timeout={300}
         classNames={classForAnimationMenu}
+        nodeRef={nodeRef}
         unmountOnExit
       >
-        <Saidebar />
+        <Sidebar ref={nodeRef} />
       </CSSTransition>
 
       <main className={styles.main}>
         <Container>{children}</Container>
+        <SwitchThemeButton />
       </main>
 
       <Footer />

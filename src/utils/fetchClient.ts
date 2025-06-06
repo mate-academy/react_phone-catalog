@@ -17,5 +17,12 @@ function fetchData<T>(
 }
 
 export const client = {
-  get: <T>(url: string) => fetchData<T>(url),
+  get: async <T>(url: string) => {
+    const data = fetchData<T>(url);
+    const delay = new Promise(resolve => setTimeout(resolve, 1200));
+
+    await Promise.allSettled([data, delay]);
+
+    return data;
+  },
 };

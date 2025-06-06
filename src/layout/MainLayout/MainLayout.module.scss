@@ -1,17 +1,21 @@
+@import '../../modules/shared/styles/variables';
 @import '../../modules/shared/styles/mixins';
 
 .pageContent {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--main-background-color);
+  transition: background-color 300ms;
 }
 
 .main {
+  display: flex;
   flex-grow: 1;
-  margin-bottom: 64px;
+  margin-bottom: $main-margin-bottom;
 
   @include onDesctop {
-    row-gap: 80px;
+    row-gap: $main-margin-bottom-desctop;
     margin-bottom: 80px;
   }
 }

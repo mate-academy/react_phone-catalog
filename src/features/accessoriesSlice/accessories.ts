@@ -6,13 +6,13 @@ import { getAccessories } from '../../api/accessories';
 type InitialState = {
   loading: boolean;
   hasError: boolean;
-  accessories: Accessories[];
+  products: Accessories[];
 };
 
 const initialState: InitialState = {
   loading: false,
   hasError: false,
-  accessories: [],
+  products: [],
 };
 
 export const fetchAccessories = createAsyncThunk(
@@ -30,7 +30,7 @@ const accessoriesSlice = createSlice({
     });
 
     builder.addCase(fetchAccessories.fulfilled, (s, a) => {
-      s.accessories = a.payload;
+      s.products = a.payload;
       s.loading = false;
     });
 

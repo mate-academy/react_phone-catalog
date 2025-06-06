@@ -1,0 +1,20 @@
+@import '../shared/styles/variables';
+@import '../shared/styles/mixins';
+
+.sections {
+  row-gap: 56px;
+  
+  @include pageGrid;
+
+  @include onTablet {
+    row-gap: 64px;
+  }
+
+  @include onDesctop {
+    row-gap: 80px;
+  }
+}
+
+.alsoLike {
+  grid-column: 1 / -1;
+}

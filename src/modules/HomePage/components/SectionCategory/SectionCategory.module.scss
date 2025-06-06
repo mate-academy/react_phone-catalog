@@ -1,9 +1,9 @@
 @import '../../../shared/styles/mixins';
 
 .section {
-  @include pageGrid;
-
   row-gap: 32px;
+  
+  @include pageGrid;
 }
 
 .title {

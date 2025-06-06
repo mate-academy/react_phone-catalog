@@ -4,6 +4,9 @@ import styles from './Footer.module.scss';
 import { Container } from '../container';
 import { Link } from 'react-router-dom';
 import { AppButton } from '../appButton';
+import { getLogo } from '../../../../utils/getLogo';
+import { ArrowUpSvg } from '../../svg/ArrowUpSvg';
+import { useAppSelector } from '../../../../app/hooks';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -12,6 +15,8 @@ const scrollToTop = () => {
 };
 
 export const Footer: React.FC = () => {
+  const theme = useAppSelector(s => s.theme);
+
   return (
     <footer className={styles.footer}>
       <Container>
@@ -19,7 +24,7 @@ export const Footer: React.FC = () => {
           <Link className={styles.footerLogoLink} to={'/'}>
             <img
               className={styles.footerLogo}
-              src="img/header-logo.png"
+              src={getLogo(theme)}
               alt="Nice gadgets logo"
             />
           </Link>
@@ -45,11 +50,9 @@ export const Footer: React.FC = () => {
           <div className={styles.goTopBox}>
             <div className={styles.goTopBoxContent} onClick={scrollToTop}>
               <span className={styles.goTopBoxText}>Back to top</span>
-              <AppButton
-                size={'s'}
-                src={'img/icons/arrow-up.svg'}
-                buttonName={'arrow up'}
-              />
+              <AppButton buttonName={'arrow up'}>
+                <ArrowUpSvg style={{ color: 'var(--active-arrow-svg)' }} />
+              </AppButton>
             </div>
           </div>
         </nav>

@@ -3,7 +3,8 @@
 .mainContent {
   display: grid;
   row-gap: 56px;
-  background-color: $main-background-color;
+  background-color: var(--main-background-color);
+  transition: background-color 300ms;
 
   @include onTablet {
     row-gap: 64px;

@@ -6,16 +6,24 @@ import { SectionWelcome } from './components/SectionWelcome';
 import { SectionNewModels } from './components/SectionNewModels';
 import { SectionCategory } from './components/SectionCategory';
 import { SectionHotPrices } from './components/SectionHotPrices';
+import { useAppSelector } from '../../app/hooks';
+import { Loader } from '../shared/components/loader';
 
 export const HomePage: React.FC = () => {
+  const { products, loading } = useAppSelector(s => s.products);
+
   return (
     <MainLayout>
-      <div className={styles.mainContent}>
-        <SectionWelcome />
-        <SectionNewModels />
-        <SectionCategory />
-        <SectionHotPrices />
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className={styles.mainContent}>
+          <SectionWelcome />
+          <SectionNewModels products={products} />
+          <SectionCategory products={products} />
+          <SectionHotPrices products={products} />
+        </div>
+      )}
     </MainLayout>
   );
 };

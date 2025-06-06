@@ -1,12 +1,29 @@
-import { useAppSelector } from '../../../../app/hooks';
+import { useMemo } from 'react';
 import { CategoryCard } from '../../../shared/components/categoryCard';
 
 import styles from './SectionCategory.module.scss';
+import { Products } from '../../../../types/Products';
 
-export const SectionCategory: React.FC = () => {
-  const { phones } = useAppSelector(s => s.phones);
-  const { tablets } = useAppSelector(s => s.tablets);
-  const { accessories } = useAppSelector(s => s.accessories);
+type Props = {
+  products: Products[];
+};
+
+export const SectionCategory: React.FC<Props> = ({ products }) => {
+  const productQuantity = useMemo(() => {
+    const result: { [key: string]: number } = {};
+
+    products.forEach(p => {
+      if (!Object.hasOwn(result, p.category)) {
+        result[p.category] = 1;
+
+        return;
+      }
+
+      result[p.category]++;
+    });
+
+    return result;
+  }, [products]);
 
   return (
     <section className={styles.section}>
@@ -16,21 +33,21 @@ export const SectionCategory: React.FC = () => {
         to={'/phones'}
         cardName={'Mobile phones'}
         imgSrc={'img/category-img/category-phones.webp'}
-        countModels={phones.length}
+        countModels={productQuantity.phones}
         color={'phones'}
       />
       <CategoryCard
         to={'/tablets'}
         cardName={'Tablets'}
         imgSrc={'img/category-img/category-tablets-new.png'}
-        countModels={tablets.length}
+        countModels={productQuantity.tablets}
         color={'tablets'}
       />
       <CategoryCard
         to={'/accessories'}
         cardName={'Accessories'}
         imgSrc={'img/category-img/category-accessories-new.png'}
-        countModels={accessories.length}
+        countModels={productQuantity.accessories}
         color={'accessories'}
       />
     </section>

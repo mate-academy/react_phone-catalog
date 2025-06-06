@@ -1,0 +1,106 @@
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/mixins';
+
+.productPresentation {
+  grid-column: 1 / -1;
+  
+  @include pageGrid;
+}
+
+.mainControls {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include onTablet {
+    grid-column: 8 / -1;
+  }
+
+  @include onDesctop {
+    grid-column: 14 / span 7;
+  }
+}
+
+.containerSelectors {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  position: relative;
+
+  &:last-child {
+    margin: 0;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color-default);
+    bottom: 0;
+  }
+
+  & > span {
+    display: flex;
+    align-items: center;
+    height: 15px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--secondary-text-color);
+  }
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+}
+
+.capacity {
+  display: flex;
+  gap: 8px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  &Discount {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.3px;
+  }
+
+  &Regular {
+    font-weight: 500;
+    font-size: 22px;
+    text-decoration: line-through;
+    color: var(--secondary-text-color);
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  height: 48px;
+}
+
+.category {
+  font-weight: 600;
+  color: var(--secondary-text-color);
+}
+
+.informationList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.listItem {
+  height: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

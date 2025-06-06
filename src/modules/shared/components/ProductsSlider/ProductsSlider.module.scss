@@ -29,6 +29,8 @@
 .slider {
   display: flex;
   column-gap: 16px;
+
+  transition: transform 300ms;
 }
 
 .sliderElement {

@@ -2,14 +2,12 @@
 
 .aside {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #fff;
+  padding-top: calc(var(--headerHeight));
+  inset: 0 0;
+  background-color: var(--sidebar-background-color);
   display: flex;
   flex-direction: column;
   z-index: 5;
-  height: calc(100vh - var(--headerHeight));
 }
 
 .nav {

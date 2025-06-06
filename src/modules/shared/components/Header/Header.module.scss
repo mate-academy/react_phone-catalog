@@ -9,8 +9,9 @@
   min-width: 320px;
   height: var(--headerHeight);
   z-index: 10;
-  background-color: $header-background-color;
-  box-shadow: 0 1px 0 0 #e2e6e9;
+  background-color: var(--header-background-color);
+  box-shadow: 0 1px 0 0 var(--border-color-default);
+  transition: all 300ms;
 
   justify-content: space-between;
   align-items: center;
@@ -53,7 +54,7 @@
   justify-content: center;
   width: 48px;
   aspect-ratio: 1 / 1;
-  box-shadow: -1px 0 0 0 #e2e6e9;
+  box-shadow: -1px 0 0 0 var(--border-color-default);
   border: none;
   background-color: inherit;
 

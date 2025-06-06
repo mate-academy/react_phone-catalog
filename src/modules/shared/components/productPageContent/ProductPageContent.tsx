@@ -11,6 +11,7 @@ import { Pagination } from '../pagination';
 import { sortProducts } from '../../../../utils/sortProducts';
 import { changeSearchParams } from '../../../../utils/changeSearchParams';
 import { ProductPageTop } from '../../../../types/ProductPageTop';
+import { Loader } from '../loader';
 
 type Props = {
   pageTop: ProductPageTop;
@@ -30,9 +31,9 @@ export const ProductPageContent: React.FC<Props> = ({
   const firstRender = useRef(true);
 
   const sortedProducts = useMemo(() => {
-    const accessories = products.filter(p => p.category === productsName);
+    const allProduct = products.filter(p => p.category === productsName);
 
-    return sortProducts(accessories, sortBy);
+    return sortProducts(allProduct, sortBy);
   }, [sortBy, products]);
 
   const visibleProducts = useMemo(() => {
@@ -59,7 +60,11 @@ export const ProductPageContent: React.FC<Props> = ({
   }, [sortBy, productsOnPage]);
 
   if (loading) {
-    return;
+    return (
+      <MainLayout>
+        <Loader />
+      </MainLayout>
+    );
   } else if (hasError) {
     return (
       <MainLayout>

@@ -3,6 +3,9 @@ import React, { Children, useEffect, useRef, useState } from 'react';
 import styles from './Carousel.module.scss';
 import { Item } from './item';
 import classNames from 'classnames';
+import { DotSvg } from '../../svg/DotSvg';
+import { ArrowRightSvg } from '../../svg/ArrowRightSvg';
+import { ArrowLeftSvg } from '../../svg/ArrowLeftSvg';
 
 type Props = {
   children: React.ReactNode;
@@ -90,7 +93,7 @@ export const Carousel: CarouselComponent = ({ children }) => {
     <div className={styles.carouselContainer}>
       <div className={styles.carousel}>
         <button onClick={showPevSlide} type="button" className={styles.button}>
-          <img src="img/icons/arrow-left.svg" alt="prev slide" />
+          <ArrowLeftSvg style={{ color: 'var(--active-arrow-svg)' }} />
         </button>
 
         <div ref={windowRef} className={styles.window}>
@@ -103,25 +106,18 @@ export const Carousel: CarouselComponent = ({ children }) => {
         </div>
 
         <button onClick={showNexSlide} type="button" className={styles.button}>
-          <img src="img/icons/arrow-right.svg" alt="next slide" />
+          <ArrowRightSvg style={{ color: 'var(--active-arrow-svg)' }} />
         </button>
       </div>
 
       <div className={styles.dots}>
         {Children.map(children, (_el, i) => (
           <div className={styles.dotBox} onClick={() => setSlide(i)}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <DotSvg
               className={classNames(styles.dot, {
                 [styles.activeDot]: i === slide,
               })}
-            >
-              <rect x="5" y="10" width="14" height="4" />
-            </svg>
+            />
           </div>
         ))}
       </div>

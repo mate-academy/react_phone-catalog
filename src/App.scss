@@ -5,43 +5,111 @@
 // #region font-face
 @font-face {
   font-family: Mont;
-  src: url(/fonts/Mont-Regular.otf);
+  src: url(/fonts/Mont-Regular.woff2) format('woff2');
   font-weight: 600;
+  font-display: swap;
 }
 
 @font-face {
   font-family: Mont;
-  src: url(/fonts/Mont-SemiBold.otf);
+  src: url(/fonts/Mont-SemiBold.woff2) format('woff2');
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
   font-family: Mont;
-  src: url(/fonts/Mont-Bold.otf);
+  src: url(/fonts/Mont-Bold.woff2) format('woff2');
   font-weight: 800;
+  font-display: swap;
 }
 
 // #endregion
 
 :root {
   --headerHeight: 48px;
-
-  @include onDesctop {
-    --headerHeight: 64px;
-  }
-
+  
   font-family: Mont, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
   scroll-behavior: smooth;
+
+  @include onDesctop {
+    --headerHeight: 64px;
+  }
+}
+
+.light-theme {
+  --main-background-color: #fafbfc;
+  --main-text-color: #0f0f11;
+  --secondary-text-color: #89939a;
+  --border-color-on-inputs: #b4bdc3;
+  --border-color-on-inputs-hover: #89939a;
+  --border-color-on-inputs-focus: #0f0f11;
+  --border-color-on-buttons: #b4bdc3;
+  --border-color-on-buttons-hover: #0f0f11;
+  --border-color-default: #e2e6e9;
+  --app-button-background-color: inherit;
+  --app-button-disabled: inherit;
+  --button-color: #f86800;
+  --button-text-color: #fff;
+  --header-background-color: #fff;
+  --sidebar-background-color: #fff;
+  --footer-background-color: #fff;
+  --element-background-color: #fff;
+  --pagination-element-background-color: #fafbfc;
+  --pagination-active-element-background-color: #0f0f11;
+  --carousel-button: #fafbfc;
+  --dot: #e2e6e9;
+  --dot-active: #0f0f11;
+  --active-arrow-svg: #0f0f11;
+  --disable-arrow-svg: #b4bdc3;
+  --nav-icons-color: #0f0f11;
+  --favorite-icon-color: #0f0f11;
+  --favorite-icon-active-color: #476df4;
+  --home-svg-color: #0f0f11;
+  --loader-color: #ff6539;
+}
+
+.dark-theme {
+  --main-background-color: #0f1121;
+  --main-text-color: #f1f2f9;
+  --secondary-text-color: #75767f;
+  --border-color-on-inputs: #323542;
+  --border-color-on-inputs-hover: #4a4d58;
+  --border-color-on-inputs-focus: #905bff;
+  --border-color-on-buttons: #323542;
+  --border-color-on-buttons-hover: #0f0f11;
+  --border-color-default: #3b3e4a;
+  --button-color: #905bff;
+  --app-button-background-color: #323542;
+  --app-button-disabled: #0f1121;
+  --button-text-color: #f1f2f9;
+  --header-background-color: #0f1121;
+  --sidebar-background-color: #0f1121;
+  --footer-background-color: #0f1121;
+  --element-background-color: #161827;
+  --pagination-element-background-color: #161827;
+  --pagination-active-element-background-color: #905bff;
+  --dot: #3b3e4a;
+  --carousel-button: #323542;
+  --dot-active: #f1f2f9;
+  --active-arrow-svg: #f1f2f9;
+  --disable-arrow-svg: #4a4d58;
+  --nav-icons-color: #f1f2f9;
+  --favorite-icon-color: #f1f2f9;
+  --favorite-icon-active-color: #eb5757;
+  --home-svg-color: #f1f2f9;
+  --loader-color: #a0a0e0;
 }
 
 body {
   height: 100vh;
   padding: 0;
   margin: 0;
-  background-color: $main-background-color;
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
 }
 
 ul {

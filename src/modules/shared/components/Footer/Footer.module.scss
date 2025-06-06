@@ -4,8 +4,9 @@
 .footer {
   box-sizing: border-box;
   padding-block: 32px;
-  background-color: $footer-background-color;
-  box-shadow: 0 -1px 0 0 #e2e6e9;
+  background-color: var(--footer-background-color);
+  box-shadow: 0 -1px 0 0 var(--border-color-default);
+  transition: all 300ms;
 
   &Nav {
     display: flex;
@@ -41,7 +42,7 @@
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0;
-    color: $secondary-text-color;
+    color: var(--secondary-text-color);
   }
 }
 

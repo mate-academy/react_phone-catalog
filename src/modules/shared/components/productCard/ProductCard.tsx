@@ -1,18 +1,36 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
-import { AppButton } from '../appButton';
 import { Products } from '../../../../types/Products';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ToCartButton } from '../toCartButton';
+import { ToFavouriteButton } from '../toFavoriteButton';
 
 type Props = {
   product: Products;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { pathname, search } = useLocation();
+  const navigate = useNavigate();
+
+  const onClickLink = () => {
+    navigate(`/${product.category}/${product.itemId}`, {
+      state: pathname + search,
+    });
+  };
+
   return (
     <div className={styles.productCard}>
-      <img src={product.image} alt={product.name} className={styles.cardImg} />
+      <img
+        src={product.image}
+        alt={product.name}
+        className={styles.cardImg}
+        onClick={onClickLink}
+      />
 
-      <p className={styles.productName}>{product.name}</p>
+      <p className={styles.productName} onClick={onClickLink}>
+        {product.name}
+      </p>
 
       <div className={styles.priceContainer}>
         <p className={styles.discountPrice}>{`$${product.price}`}</p>
@@ -40,12 +58,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </ul>
 
       <div className={styles.buttons}>
-        <button className={styles.addToCartButton}>Add to cart</button>
-        <AppButton
-          className={styles.favoriteButton}
-          src={'img/icons/favourites.svg'}
-          buttonName={'Add to fovourites'}
-        />
+        <ToCartButton product={product} />
+
+        <ToFavouriteButton product={product} />
       </div>
     </div>
   );

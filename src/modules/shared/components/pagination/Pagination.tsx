@@ -5,6 +5,8 @@ import { AppButton } from '../appButton';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { changeSearchParams } from '../../../../utils/changeSearchParams';
+import { ArrowLeftSvg } from '../../svg/ArrowLeftSvg';
+import { ArrowRightSvg } from '../../svg/ArrowRightSvg';
 
 type Props = {
   countPages: number;
@@ -50,7 +52,6 @@ export const Pagination: React.FC<Props> = ({ countPages }) => {
       result.push(
         1,
         '...',
-        activePage - 2,
         activePage - 1,
         activePage,
         activePage + 1,
@@ -75,17 +76,15 @@ export const Pagination: React.FC<Props> = ({ countPages }) => {
 
   return (
     <div className={styles.pagination}>
-      <AppButton
-        src="img/icons/arrow-left.svg"
-        buttonName="show prev page"
-        onClick={showPrevPage}
-      />
+      <AppButton buttonName="show prev page" onClick={showPrevPage}>
+        <ArrowLeftSvg color="var(--active-arrow-svg)" />
+      </AppButton>
 
       <div className={styles.pagesContainer}>
         {buttons.map((b, i) =>
           typeof b === 'string' ? (
             <span key={i + '...'} className={styles.dots}>
-              . . .
+              ...
             </span>
           ) : (
             <AppButton
@@ -100,11 +99,9 @@ export const Pagination: React.FC<Props> = ({ countPages }) => {
         )}
       </div>
 
-      <AppButton
-        src="img/icons/arrow-right.svg"
-        buttonName="show next page"
-        onClick={showNextPage}
-      />
+      <AppButton buttonName="show next page" onClick={showNextPage}>
+        <ArrowRightSvg color="var(--active-arrow-svg)" />
+      </AppButton>
     </div>
   );
 };

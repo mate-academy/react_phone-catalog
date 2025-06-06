@@ -10,7 +10,7 @@ type InitialState = {
 };
 
 const initialState: InitialState = {
-  loading: false,
+  loading: true,
   hasError: false,
   products: [],
 };

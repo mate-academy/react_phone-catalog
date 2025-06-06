@@ -6,19 +6,21 @@
   height: 32px;
   padding: 0;
   border-radius: 50%;
-  border: 1px solid $border-color-on-buttons;
-  background-color: inherit;
+  border: 1px solid var(--border-color-on-buttons);
+  background-color: var(--app-button-background-color);
   cursor: pointer;
+  transition: all 300ms;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   &:hover {
-    border-color: $border-color-on-buttons-hover;
+    border-color: var(--border-color-on-buttons-hover);
   }
 
   &:disabled {
-    border-color: #E2E6E9;
+    border-color: var(--border-color-default);
+    background-color: var(--app-button-disabled);
   }
 }

@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
 import { ProductsSlider } from '../../../shared/components/ProductsSlider';
-import { useAppSelector } from '../../../../app/hooks';
+import { Products } from '../../../../types/Products';
 
-export const SectionHotPrices: React.FC = () => {
-  const { products } = useAppSelector(s => s.products);
+type Props = {
+  products: Products[];
+};
 
+export const SectionHotPrices: React.FC<Props> = ({ products }) => {
   const visibleProducts = useMemo(() => {
     return [...products].sort((first, second) => {
       return second.fullPrice - first.fullPrice;

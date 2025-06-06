@@ -11,7 +11,7 @@
 
 .currentPage {
   font-weight: 600;
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
   cursor: default;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .counter {
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;

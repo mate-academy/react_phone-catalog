@@ -1,21 +1,31 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import './App.scss';
 import { useEffect } from 'react';
-import { useAppDispatch } from './app/hooks';
-import { fetchPhones } from './features/phoneSlice/phones';
-import { fetchAccessories } from './features/accessoriesSlice/accessories';
+import { useAppDispatch, useAppSelector } from './app/hooks';
 import { fetchProducts } from './features/productsSlice/products';
-import { fetchTablets } from './features/tabletsSlice/tablets';
+import { loadFavouritesItmes } from './features/favoritesSlice/favorites';
+import { loadCartItems } from './features/cartSlice/cart';
+import { ColorTheme } from './types/ColorTheme';
 
 export const App = () => {
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
+  const theme = useAppSelector(s => s.theme);
 
   useEffect(() => {
-    dispatch(fetchPhones());
-    dispatch(fetchAccessories());
+    const html = document.documentElement;
+    const className = `${theme}-theme`;
+
+    Object.values(ColorTheme).forEach(t => html.classList.remove(t + '-theme'));
+    html.classList.add(className);
+
+    return () => html.classList.remove(className);
+  }, [theme]);
+
+  useEffect(() => {
     dispatch(fetchProducts());
-    dispatch(fetchTablets());
+    dispatch(loadFavouritesItmes());
+    dispatch(loadCartItems());
   }, [dispatch]);
 
   useEffect(() => {

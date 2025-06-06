@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import styles from './ProductsPageTop.module.scss';
 import { Dropdown } from '../dropdown';
 import { SortOptions } from '../../../../types/SortOptions';
+import { ArrowRightSvg } from '../../svg/ArrowRightSvg';
+import { HomeSvg } from '../../svg/HomeSvg';
 
 type Props = {
   title: string;
@@ -23,14 +25,10 @@ export const ProductsPageTop: React.FC<Props> = ({
     <section className={styles.productPageTop}>
       <div className={styles.links}>
         <Link to={'/'} className={styles.link}>
-          <img src="img/icons/home.svg" alt="home" className="icons" />
+          <HomeSvg color="var(--home-svg-color)" />
         </Link>
 
-        <img
-          src="img/icons/arrow-right.svg"
-          alt="arrow right"
-          className="icons"
-        />
+        <ArrowRightSvg color="var(--disable-arrow-svg)" />
 
         <span className={styles.currentPage}>{page}</span>
       </div>

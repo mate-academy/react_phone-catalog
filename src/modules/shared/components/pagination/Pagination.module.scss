@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .pagination {
   display: flex;
   gap: 16px;
@@ -7,16 +9,19 @@
 .pagesContainer {
   display: flex;
   gap: 8px;
+  justify-content: center;
 }
 
 .buttonPage {
-  border-color: #E2E6E9;
+  background-color: var(--pagination-element-background-color);
+  border-color: var(--border-color-default);
+  color: var(--main-text-color);
 }
 
 .activePage {
   color: #fff;
-  background-color:#0F0F11;
-  border: 1px #0F0F11 solid;
+  background-color:var(--pagination-active-element-background-color);
+  border: 1px   var(--pagination-active-element-background-color) solid;
 }
 
 .dots {

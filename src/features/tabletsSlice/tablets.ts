@@ -6,13 +6,13 @@ import { getTablets } from '../../api/tablets';
 type InitialState = {
   loading: boolean;
   hasError: boolean;
-  tablets: Tablets[];
+  products: Tablets[];
 };
 
 const initialState: InitialState = {
   loading: false,
   hasError: false,
-  tablets: [],
+  products: [],
 };
 
 export const fetchTablets = createAsyncThunk('fetch/tablets', getTablets);
@@ -28,7 +28,7 @@ const tabletsSlice = createSlice({
 
     builder.addCase(fetchTablets.fulfilled, (s, a) => {
       s.loading = false;
-      s.tablets = a.payload;
+      s.products = a.payload;
     });
 
     builder.addCase(fetchTablets.rejected, s => {

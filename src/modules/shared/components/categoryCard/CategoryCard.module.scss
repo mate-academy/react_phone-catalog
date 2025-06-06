@@ -28,12 +28,13 @@
 .cardName {
   margin: 24px 0 4px;
   line-height: 26px;
+  font-weight: 700;
   font-size: 20px;
-  color: $main-text-color;
+  color: var(--main-text-color);
 }
 
 .p {
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
   margin: 0;
   line-height: 21px;
   font-size: 14px;

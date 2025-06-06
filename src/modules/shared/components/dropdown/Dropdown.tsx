@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Dropdown.module.scss';
 import { useSearchParams } from 'react-router-dom';
 import { changeSearchParams } from '../../../../utils/changeSearchParams';
+import { titleText } from '../../../../utils/titleText';
 
 type Props = {
   title?: string;
@@ -10,10 +11,6 @@ type Props = {
   propertyName: string;
   ignoreValue?: string;
 };
-
-function titleText(t: string) {
-  return t[0].toUpperCase() + t.slice(1).toLowerCase();
-}
 
 export const Dropdown: React.FC<Props> = ({
   options,

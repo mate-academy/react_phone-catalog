@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   padding: 32px;
-  background-color: $element-background-color;
-  border: 1px solid #E2E6E9;
+  background-color: var(--element-background-color);
+  border: 1px solid var(--border-color-default);
   border-radius: 8px;
   gap: 8px;
   height: 100%;
@@ -15,18 +15,19 @@
 
   transition: all 300ms;
 
- @include onDesctop {
-  &:hover {
-    box-shadow: 0 2px 16px 0 #0000001A;
-    transform: scale(1.03);
+  @include onDesctop {
+    &:hover {
+      box-shadow: 0 2px 16px 0 #0000001a;
+      transform: scale(1.03);
+    }
   }
- }
 }
 
 .cardImg {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .productName {
@@ -36,6 +37,8 @@
   font-size: 14px;
   line-height: 21px;
   min-height: 42px;
+  cursor: pointer;
+  color: var(--main-text-color)
 }
 
 .priceContainer {
@@ -49,6 +52,7 @@
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
+  color: var(--main-text-color)
 }
 
 .price {
@@ -60,7 +64,7 @@
   font-size: 22px;
   line-height: 100%;
   text-decoration: line-through;
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
 }
 
 .list {
@@ -76,7 +80,7 @@
   justify-content: space-between;
 
   & :first-child {
-    color: $secondary-text-color;
+    color: var(--secondary-text-color);
   }
 }
 
@@ -88,29 +92,14 @@
 }
 
 .buttons {
+  height: 40px;
   display: flex;
   column-gap: 8px;
   justify-content: space-between;
 }
 
-.addToCartButton {
-  flex-grow: 1;
-  font-size: 14px;
-  line-height: 21px;
-  color: $button-text-color;
-  background-color: $button-color;
-  border: none;
-  border-radius: 8px;
-}
-
-.favoriteButton {
-  height: 40px;
-  width: 40px;
-}
-
 .line {
   height: 1px;
   width: 100%;
-  background-color: #E2E6E9;
+  background-color: var(--border-color-default);
 }
-

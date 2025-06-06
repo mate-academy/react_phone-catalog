@@ -1,0 +1,25 @@
+@import '../../../shared/styles/variables';
+
+.wrap {
+  box-sizing: border-box;
+  height: 32px;
+  padding-inline: 8px;
+  display: flex;
+  border-radius: 4px;
+  border: 1px #b4bdc3 solid;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  & > span {
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+.isActive {
+  font-size: 500;
+  border: none;
+  background-color: var(--border-color-on-inputs-focus);
+  color: #fff;
+}
