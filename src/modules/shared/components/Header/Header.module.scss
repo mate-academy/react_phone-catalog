@@ -58,10 +58,6 @@
   border: none;
   background-color: inherit;
 
-  &:active {
-    background-color: #fafbfc;
-  }
-
   @include onTablet {
     display: none;
   }
