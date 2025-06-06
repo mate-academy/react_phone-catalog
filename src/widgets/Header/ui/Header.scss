@@ -9,10 +9,13 @@
   top: 0;
   width: 100%;
   height: hh.$header-hight-mob;
+  background-color: cl.$white;
   flex-direction: row;
   justify-content: space-between;
   box-sizing: border-box;
   box-shadow: 0 1px cl.$elements;
+
+  z-index: 1;
 
   &__nav-container {
     height: 100%;

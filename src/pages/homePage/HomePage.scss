@@ -2,15 +2,16 @@
 @use '../../app/styles/breakpoints/breakpoint-const' as *;
 
 .welcome {
-  margin: 24px 16px;
+  margin: 24px 0;
 
   @include h1-text;
 
   @media (min-width: $BREAKPOINT_TAB) {
-    margin: 32px 24px;
+    margin: 32px 0;
   }
 
   @media (min-width: $BREAKPOINT_WIDE) {
-    margin: 56px 32px;
+    margin: 56px 0;
   }
 }
+

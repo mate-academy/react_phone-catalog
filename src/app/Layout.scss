@@ -1,0 +1,27 @@
+@use './styles/normalize';
+@use './styles/fonts/fonts';
+@use './styles/breakpoints/breakpoint-const' as *;
+@use './styles/constants/header-size' as hh;
+@use './styles/constants/colors' as cl;
+
+* {
+  font-family: Montserrat, sans-serif;
+}
+
+main {
+  position: relative;
+  top: hh.$header-hight-mob;
+  margin: 0 16px;
+  background-color: cl.$white;
+  overflow-x: hidden;
+
+  @media(min-width: $BREAKPOINT_TAB) {
+    margin: 0 24px;
+  }
+
+  @media(min-width: $BREAKPOINT_WIDE) {
+    top: hh.$header-hight-wide;
+    margin: auto;
+    max-width: 1136px;
+  }
+}
