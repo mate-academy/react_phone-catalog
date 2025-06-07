@@ -4,26 +4,47 @@ import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {setCurrentPage} from '../../features/PaginationSlice'
-export const ControlPagination = ({allGoods,perPages}) => {
+import classNames from 'classnames';
+
+
+
+export const ControlPagination = ({ allGoods, perPages }) => {
+
   const dispatch = useAppDispatch();
 const totalPages = Math.ceil(allGoods.length / perPages);
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
 const currentPage= useAppSelector(state=>state.pagination.currentPage)
 
-  return (<>
-    <ul className={styles.pagination}>
-      <li className={styles.pagination__list} >
-         <button
+const getVisiblePages = (totalPages: number, currentPage: number): number[] => {
+  if (totalPages <= 4) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  if (currentPage <= 2) {
+    return [1, 2, 3, 4];
+  }
+
+  if (currentPage >= totalPages - 1) {
+    return [totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+  }
+
+  return [currentPage - 1, currentPage, currentPage + 1, currentPage + 2];
+};
+
+  return (<><div className={styles.pagination}>
+    <ul className={styles.pagination__flex}>
+        <li className={classNames(styles.pagination__list,[styles['pagination__list--left']])} >
+         <button className={classNames(styles.pagination__link,{[styles['pagination__link--disabled']]:currentPage === 1})}
   onClick={() => dispatch(setCurrentPage(currentPage - 1))}
-  disabled={currentPage === 1}
+
 >
   <IoIosArrowBack />
 </button>
       </li>
-      {pages.map(page => {
-        return<li className={styles.pagination__list} ><button
+      {getVisiblePages(totalPages,currentPage).map(page => {
+        return<li className={styles.pagination__list}  key = {page}><button
   onClick={() => dispatch(setCurrentPage(page))}
-  className={page === currentPage ? styles.active : styles.pagination__link}
+  className={classNames(styles.pagination__link,{[styles['pagination__link--active']]:page === currentPage})  }
 >
   {page}
         </button>
@@ -32,14 +53,14 @@ const currentPage= useAppSelector(state=>state.pagination.currentPage)
  }
 
 
-       <li className={styles.pagination__list} >
-          <button
+     <li className={classNames(styles.pagination__list,[styles['pagination__list--right']])} >
+           <button className={classNames(styles.pagination__link,{[styles['pagination__link--disabled']]:currentPage === totalPages})}
  onClick={() => dispatch(setCurrentPage(currentPage + 1))}
   disabled={currentPage === totalPages}
 >
   <IoIosArrowForward />
 </button>
         </li>
-      </ul>
+      </ul></div>
       </>)
 }

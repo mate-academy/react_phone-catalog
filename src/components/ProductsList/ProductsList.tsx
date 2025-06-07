@@ -41,9 +41,12 @@ visibleGoods.slice((currentPage - 1) * perPages, currentPage * perPages)
 
     <div className={styles.product__list}>
       {<ProductCart products={ paginationGoods} types={'grid'} />}
+
+
     </div>
-   {perPages!=='all'&& <ControlPagination
-      allGoods={visibleGoods}
-      perPages={perPages}
-    />}</>)
+     {perPages !== 'all' && <ControlPagination
+        allGoods={visibleGoods}
+        perPages={perPages}
+      />}
+   </>)
 }

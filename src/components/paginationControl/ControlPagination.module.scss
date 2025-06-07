@@ -1,14 +1,41 @@
 @use '../utils/mixin.module.scss' as mixin;
-.pagination{
-list-style: none;
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
+.pagination {
 
-  &__link{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+
+  &__flex {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
+    padding: 0;
+  }
+
+
+&__list{
+  display: flex;
+align-items: center;
+justify-content: center;
+gap:8px;
+&--left{
+  margin-right: 8px;
+}
+&--right{
+  margin-left: 8px;
+}
+}
+
+
+  &__link{
+display: flex;
+align-items: center;
+justify-content: center;
+
+
 color:#0F0F11;
     border:1px solid #B4BDC3;
     border-radius: 100%;
@@ -19,6 +46,17 @@ color:#0F0F11;
   &:hover{
     border-color: #0F0F11;
   }
+    &--active{
+  background-color: #0F0F11;
+  color: #B4BDC3;
+  border-radius: 100%;
+}
+ &--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 
   }
 
@@ -27,4 +65,6 @@ color:#0F0F11;
 
     color:#0F0F11;
   }
+
 }
+
