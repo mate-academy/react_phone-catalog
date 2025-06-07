@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import './Header.scss';
@@ -32,6 +32,16 @@ export const Header: React.FC = () => {
       'header__icon--active': isActive,
     });
   };
+
+  const cartCount = useMemo(() => {
+    let count = 0;
+
+    for (const { quantity } of cart) {
+      count += quantity;
+    }
+
+    return count;
+  }, [cart]);
 
   return (
     <header className="header">
@@ -70,7 +80,7 @@ export const Header: React.FC = () => {
 
         <NavLink to="/cart" className={handleIconLinkClass}>
           {cart.length > 0 && (
-            <span className="header__icon-number">{cart.length}</span>
+            <span className="header__icon-number">{cartCount}</span>
           )}
           <Icon icon={icons.cart} />
         </NavLink>

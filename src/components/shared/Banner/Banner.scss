@@ -199,19 +199,23 @@
     }
 
     &-image {
-      flex: 1;
-      width: 100vw;
-      height: 100vw;
+      position: absolute;
+
+      width: 100%;
+
+      opacity: 0;
       object-fit: contain;
 
-      @include on-tablet {
-        width: 45vw;
-        height: 45vw;
+      transition: opacity 0.5s ease-in-out;
+
+      &--active {
+        opacity: 1;
       }
 
-      @include on-desktop {
-        width: auto;
-        height: auto;
+      &-box {
+        position: relative;
+        flex: 1;
+        width: 100%;
       }
     }
   }

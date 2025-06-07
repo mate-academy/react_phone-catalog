@@ -128,11 +128,20 @@ export const Banner: React.FC = () => {
             <div className="banner__main-text">
               {bannerContent[currentBanner].text}
             </div>
-            <img
-              className="banner__main-image"
-              src={bannerContent[currentBanner].image}
-              alt={bannerContent[currentBanner].title}
-            />
+            <div className="banner__main-image-box">
+              {bannerContent.map((banContent, index) => {
+                return (
+                  <img
+                    className={classNames('banner__main-image', {
+                      'banner__main-image--active': currentBanner === index,
+                    })}
+                    src={banContent.image}
+                    alt={banContent.title}
+                    key={banContent.title}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
         <button className="banner__button" onClick={handleNextButton}>

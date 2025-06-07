@@ -18,7 +18,9 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   useEffect(() => {
     const screenWidth = window.innerWidth;
 
-    if (screenWidth < 800) {
+    if (screenWidth < 450) {
+      setMaxCards(1.5);
+    } else if (screenWidth < 800) {
       setMaxCards(2);
     } else if (screenWidth < 1200) {
       setMaxCards(3);

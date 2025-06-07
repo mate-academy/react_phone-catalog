@@ -33,7 +33,11 @@
   }
 
   &__item {
-    flex: 0 0 calc(50% - 16px / 2);
+    flex: 0 0 calc(66% - 16px / 1.5);
+
+    @media (min-width: 450px) {
+      flex: 0 0 calc(50% - 16px / 2);
+    }
 
     @media (min-width: 800px) {
       flex: 0 0 calc(33.3% - (16px * 2) / 3);
