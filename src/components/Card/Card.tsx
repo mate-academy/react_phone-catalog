@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { ButtonCard } from '../ButtonCard';
 import { ProductSpec } from '../ProductSpec';
 import { ProductType } from '../../types/ProductType';
-import { DeviceType } from '../../types/DeviseType';
+import { DeviseType } from '../../types/DeviseType';
 
 type Props = {
   id: string | number;
@@ -30,7 +30,7 @@ export const Card: React.FC<Props> = ({
   capacity,
   ram,
 }) => {
-  const product: ProductType | DeviceType = {
+  const product: ProductType | DeviseType = {
     id,
     category,
     name,

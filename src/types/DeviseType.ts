@@ -1,4 +1,4 @@
-export type DevicsType = {
+export type DeviseType = {
   id: number | string;
   category: string;
   namespaceId: string;

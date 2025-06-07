@@ -11,7 +11,7 @@ import {
   fetchProducts,
   fetchTablets,
 } from '../../api';
-import { DeviceType } from '../../types/DeviseType';
+import { DeviseType } from '../../types/DeviseType';
 import { ButtonCard } from '../ButtonCard/ButtonCard';
 import { ProductSpec } from '../ProductSpec';
 import classNames from 'classnames';
@@ -26,12 +26,12 @@ export const ProductDetails = () => {
     productId?: string;
   }>();
 
-  const [device, setDevice] = useState<ProductType | DeviceType | null>(null);
+  const [device, setDevice] = useState<ProductType | DeviseType | null>(null);
   const [productIdFromJson, setProductIdFromJson] = useState<
     string | number | null
   >(null);
 
-  const [relatedProducts, setRelatedProducts] = useState<DeviceType[]>([]);
+  const [relatedProducts, setRelatedProducts] = useState<DeviseType[]>([]);
 
   const [selectImage, setSelectImage] = useState(0);
   const [selectColor, setSelectColor] = useState('');
@@ -76,7 +76,7 @@ export const ProductDetails = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        let foundProduct: DeviceType | ProductType | null = null;
+        let foundProduct: DeviseType | ProductType | null = null;
 
         const [phones, tablets, accessories, products] = await Promise.all([
           fetchPhones(),
@@ -85,7 +85,7 @@ export const ProductDetails = () => {
           fetchProducts(),
         ]);
 
-        let categoryProducts: DeviceType[] = [];
+        let categoryProducts: DeviseType[] = [];
 
         switch (category) {
           case 'phones':

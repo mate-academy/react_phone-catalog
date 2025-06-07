@@ -3,12 +3,12 @@ import React from 'react';
 import classNames from 'classnames';
 import { useFavorites } from '../Favorites/FavoritesContext';
 import { ProductType } from '../../types/ProductType';
-import { DeviceType } from '../../types/DeviseType';
+import { DeviseType } from '../../types/DeviseType';
 import { useCart } from '../CarT/CartContext';
 
 type Props = {
   details: boolean;
-  product: ProductType | DeviceType;
+  product: ProductType | DeviseType;
 };
 
 export const ButtonCard: React.FC<Props> = ({ details, product }) => {

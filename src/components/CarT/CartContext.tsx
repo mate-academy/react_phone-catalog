@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
-import { DeviceType } from '../../types/DeviseType';
+import { DeviseType } from '../../types/DeviseType';
 
 type CartItem = {
   id: string | number;
@@ -12,7 +12,7 @@ type CartItem = {
 
 type CartContextType = {
   cart: CartItem[];
-  addToCart: (product: ProductType | DeviceType) => void;
+  addToCart: (product: ProductType | DeviseType) => void;
   removeFromCart: (id: string | number) => void;
   increaseQuantity: (id: string | number) => void;
   decreaseQuantity: (id: string | number) => void;
@@ -37,7 +37,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product: ProductType | DeviceType) => {
+  const addToCart = (product: ProductType | DeviseType) => {
     const cartItem: CartItem = {
       id: product.id,
       name: product.name,

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
-import { DeviceType } from '../../types/DeviseType';
-type FavoritesItem = ProductType | DeviceType;
+import { DeviseType } from '../../types/DeviseType';
+type FavoritesItem = ProductType | DeviseType;
 
 type FavoritesContextType = {
   favorites: FavoritesItem[];
