@@ -1,16 +1,30 @@
+@use '../utils/mixin.module.scss' as mixin;
 .pagination{
 list-style: none;
   display:flex;
   justify-content: space-between;
   align-items: center;
 
-  &__icon{
-    border:1px solid black;
+  &__link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+color:#0F0F11;
+    border:1px solid #B4BDC3;
     border-radius: 100%;
-    display: block;
-    width: 16px;
-    height: 16px;
-    padding: 10px;
+    width: 32px;
+    height: 32px;
 
+  text-decoration: none;
+  &:hover{
+    border-color: #0F0F11;
+  }
+
+  }
+
+
+  &__text{
+
+    color:#0F0F11;
   }
 }

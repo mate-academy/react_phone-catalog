@@ -2,21 +2,24 @@ import { createSlice , PayloadAction} from "@reduxjs/toolkit";
 
 interface PaginationState {
 
-  status: 4 | 8 | 16 | 'all';
-  page: number;
+  status: number | 4 | 8 | 16 | 'all';
+  currentPage: number;
+
 }
 
 const initialState: PaginationState = {
   status: 'all',
-  page: 1,
+  currentPage: 1,
+
 }
 export const paginationSlice = createSlice({
   name: 'pagination',
   initialState,
   reducers: {
-    setStatus: (state,action:PayloadAction<string>) => { state.status = action.payload; },
-    setPage:(state,action)=>(state.page=action.payload)
+    setStatus: (state,action:PayloadAction<number|'all'>) => { state.status = action.payload; },
+    setCurrentPage: (state, action) => { state.currentPage = action.payload },
+
   }
 })
-export const { setStatus, setPage } = paginationSlice.actions;
+export const { setStatus, setCurrentPage } = paginationSlice.actions;
 export default paginationSlice.reducer

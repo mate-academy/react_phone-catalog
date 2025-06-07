@@ -4,27 +4,33 @@ import { useAppSelector } from "../../app/hooks"
 import { ProductCart } from "../cardItem/ProductCart";
 import { Loader } from "../Loader";
 import styles from './ProductList.module.scss';
+import { ControlPagination } from "../paginationControl/ControlPagination";
 
 
 export const ProductList = () => {
   const AllProducts = useAppSelector(store => store.products.products)
   const loading = useAppSelector(store => store.products.loading)
-  const status = useAppSelector(state => state.filter.status);
+  const filterStatus = useAppSelector(state => state.filter.status);
   const location = useLocation();
    const category = location.pathname.split('/')[1];
+const CategoryProducts = AllProducts.filter(product => product.category === category)
 
-const CategoryProducts = AllProducts.filter(product=>product.category===category)
+
+  const perPages = useAppSelector(state => state.pagination.status);
+const currentPage = useAppSelector(state=>state.pagination.currentPage)
 
   const visibleGoods = [...CategoryProducts].sort((a, b) => {
-    if (status === 'newest') { return b.year - a.year }
-    if (status === 'alphabetically') {
+    if (filterStatus === 'newest') { return b.year - a.year }
+    if (filterStatus === 'alphabetically') {
       return a.name.localeCompare(b.name)
     }
-    if(status ==='cheapest'){return b.price-a.price}
+    if(filterStatus ==='cheapest'){return b.price-a.price}
     return 0;
   })
 
-
+  const paginationGoods = perPages === 'all' ?
+    visibleGoods:
+visibleGoods.slice((currentPage - 1) * perPages, currentPage * perPages)
 
   return (<> {loading && <Loader />}
   {visibleGoods.length === 0 && (
@@ -34,6 +40,10 @@ const CategoryProducts = AllProducts.filter(product=>product.category===category
       )}
 
     <div className={styles.product__list}>
-     {<ProductCart products={visibleGoods} types={'grid'}  />}
-</div></>)
+      {<ProductCart products={ paginationGoods} types={'grid'} />}
+    </div>
+   {perPages!=='all'&& <ControlPagination
+      allGoods={visibleGoods}
+      perPages={perPages}
+    />}</>)
 }

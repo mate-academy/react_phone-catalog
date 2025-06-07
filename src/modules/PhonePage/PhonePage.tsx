@@ -17,7 +17,7 @@ export const PhonePage = () => {
         <Filter />
         <Pagination/>
         <ProductList />
-        <ControlPagination/>
+        
       </Container>
     </>
   );
