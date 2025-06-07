@@ -1,7 +1,7 @@
-import { DeviceType } from './types/DeviseType';
+import { DevicsType } from './types/DeviseType';
 import { ProductType } from './types/ProductType';
 
-const BASE_URL = `../api`;
+const BASE_URL = `/api`;
 
 export const fetchData = async <T>(endpoint: string): Promise<T> => {
   const response = await fetch(`${BASE_URL}/${endpoint}.json`);
@@ -24,6 +24,6 @@ export const fetchData = async <T>(endpoint: string): Promise<T> => {
 // };
 
 export const fetchProducts = () => fetchData<ProductType[]>('products');
-export const fetchPhones = () => fetchData<DeviceType[]>('phones');
-export const fetchTablets = () => fetchData<DeviceType[]>('tablets');
-export const fetchAccessories = () => fetchData<DeviceType[]>('accessories');
+export const fetchPhones = () => fetchData<DevicsType[]>('phones');
+export const fetchTablets = () => fetchData<DevicsType[]>('tablets');
+export const fetchAccessories = () => fetchData<DevicsType[]>('accessories');

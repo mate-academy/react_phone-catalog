@@ -1,4 +1,4 @@
-export type DeviceType = {
+export type DevicsType = {
   id: number | string;
   category: string;
   namespaceId: string;
