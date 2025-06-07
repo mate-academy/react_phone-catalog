@@ -6,9 +6,9 @@ import { useSwiperCore } from './model/hooks/useSwiperCore';
 import './Swiper.scss';
 
 export const SwiperI: React.FC = () => {
-  const { VPRef, trackRef } = useSwiperContext();
+  const { VPRef, trackRef, renderList } = useSwiperContext();
 
-  const { handlers, toRender, handleByIndex } = useSwiperCore();
+  const { handlers, handleByIndex } = useSwiperCore();
 
   useResize();
 
@@ -16,7 +16,7 @@ export const SwiperI: React.FC = () => {
     <div className="swiper">
       <div className="swiper__viewport" ref={VPRef} {...handlers}>
         <ul className="swiper__track" ref={trackRef}>
-          {toRender.map(el => (
+          {renderList.map(el => (
             <SwiperSlide key={el.id} item={el} />
           ))}
         </ul>

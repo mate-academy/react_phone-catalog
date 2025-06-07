@@ -8,7 +8,10 @@ export const HomePage = () => {
     <>
       <h1 className="welcome">Welcome to Nice Gadgets store!</h1>
 
-      <SwiperProvider dataset={bannerList}>
+      <SwiperProvider dataset={bannerList} infinite={true} clamp={false}>
+        <SwiperI />
+      </SwiperProvider>
+      <SwiperProvider dataset={bannerList} infinite={false} clamp={true}>
         <SwiperI />
       </SwiperProvider>
     </>

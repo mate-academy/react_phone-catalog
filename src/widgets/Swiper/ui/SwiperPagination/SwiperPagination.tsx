@@ -8,11 +8,10 @@ type Props = {
 };
 
 export const SwiperPagination: React.FC<Props> = ({ className, swapper }) => {
-  const { indexRef, dataset } = useSwiperContext();
+  const { listLength, activeIndexRef } = useSwiperContext();
   const array = [];
-  const amount = dataset.length;
 
-  for (let i = 0; i < amount; i++) {
+  for (let i = 0; i < listLength; i++) {
     array.push(i);
   }
 
@@ -26,7 +25,7 @@ export const SwiperPagination: React.FC<Props> = ({ className, swapper }) => {
         >
           <div
             className={classNames(styles['line-element'], {
-              [styles['line-element__active']]: indexRef.current === li,
+              [styles['line-element__active']]: li === activeIndexRef.current,
             })}
           />
         </div>
