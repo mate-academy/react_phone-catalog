@@ -1,18 +1,121 @@
-.Footer-item {
-  margin: 32px;
-}
-
-.totop {
-  display: inline-block;
-  cursor: pointer;
-}
+@import '../../App.scss';
 
 .nav-footer-container {
+  margin: 64px auto 0;
+  width: 100%;
+  border-top: 1px solid $color-elements;
+  display: flex;
+  justify-content: center;
+  background-color: $color-white;
+
+  @media (min-width: 1200px) {
+    margin-top: 80px;
+  }
+}
+
+.footer-container {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  height: 96px;
+  padding: 0 32px;
+
+  max-width: 1136px;
+
+  @media (max-width: 639px) {
+    height: auto;
+  }
 }
 
 .footer-brand {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 32px;
+    padding: 32px 0;
+
+
+  }
+
+  & * {
+    @include font-uppercase;
+    text-decoration: none;
+    color: $color-secondary-grey;
+
+    &:visited {
+      color: $color-secondary-grey;
+    }
+  }
+}
+
+.footer-logo {
+  @media (max-width: 639px) {
+    margin: 0 auto 0 0;
+  }
+}
+
+.footer-links-wrapper {
+  display: flex;
+  gap: 13.5px;
+
+  @media (min-width: 1200px) {
+    gap: 106px;
+  }
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 auto 0 0;
+  }
+
+  & * {
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $color-primary-black;
+    }
+  }
+}
+
+.totop {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+  text-transform: initial;
+  @include font-small;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: $color-primary-black;
+  }
+}
+
+.rec__arrow__footer {
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff00;
+  border: 1px solid $color-icons;
+  transition: border-color 0.3s ease-in-out;
+
+  margin-left: 16px;
+
+  &:hover {
+    border-color: $color-primary-black;
+  }
+}
+
+.footer-svg {
+    display: flex;
+    justify-self: center;
+    height: 60%;
+    stroke: black;
+    transform: rotate(-90deg);
+    cursor: pointer;
 }

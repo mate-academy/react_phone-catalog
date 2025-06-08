@@ -9,6 +9,7 @@ import { addToFavorites, removeFromFavorites }
 import { useProductState } from '../Phones/Phones';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useWindowWidth } from '../Navbar/Navbar';
 
 type Props = {
   title: string,
@@ -35,6 +36,19 @@ export const Recommended: React.FC<Props> = ({ title }) => {
   const { isInCart, isInFavorites } = useProductState();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const windowWidth = useWindowWidth();
+
+  const cardSize = () => {
+    if (windowWidth < 640) {
+      return 212;
+    }
+
+    if (windowWidth < 1200) {
+      return 237;
+    }
+
+    return 272;
+  };
 
   const goToSlide = (index) => {
     setCurrentIndex(index);
@@ -126,7 +140,7 @@ export const Recommended: React.FC<Props> = ({ title }) => {
       <div className="rec__container-wrapper"> {/*this is to hide overflowing strip*/}
         <div
           className="rec__container"
-          style={{ transform: `translateX(calc(${212 * (-currentIndex)}px - (${currentIndex} * 16px)))` }}
+          style={{ transform: `translateX(calc(${cardSize() * -currentIndex}px - (${currentIndex} * 16px)))` }}
         >
           {items.map((item, index) => (
             <div

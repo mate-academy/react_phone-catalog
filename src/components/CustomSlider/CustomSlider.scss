@@ -14,6 +14,11 @@ $--tablet-width: 640px;
   @media (min-width: 1200px) {
     margin-bottom: 80px;
   }
+
+  @media (max-width: 639px) {
+    width: 100vw;
+    margin-left: -24px;
+  }
 }
 
 .row1 {

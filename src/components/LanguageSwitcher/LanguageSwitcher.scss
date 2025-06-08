@@ -4,6 +4,8 @@
   display: inline-block;
   text-align: center;
   height: fit-content;
+
+  color: $color-secondary-grey;
 }
 
 .language-buttons {
@@ -15,5 +17,10 @@
     color: $color-secondary-grey;
     background-color: rgba(255, 255, 255, 0);
     border: 1px solid $color-elements;
+
+    &:hover {
+      color: $color-primary-black;
+      transition: color 0.3s ease-in-out;
+    }
   }
 }

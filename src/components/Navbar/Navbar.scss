@@ -39,6 +39,11 @@ body.sidebar-open {
 .navbar-item {
   margin: 0 32px;
   height: 48px;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: $color-primary-black;
+  }
 
   @media (min-width: $screen-tablet) {
     margin: 0 auto;

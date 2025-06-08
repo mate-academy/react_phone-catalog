@@ -1,6 +1,7 @@
 @import '../../App.scss';
 
 .theme-selector {
+  color: $color-secondary-grey;
 
   @media (max-width: calc($screen-tablet - 1px)) {
       display: block;

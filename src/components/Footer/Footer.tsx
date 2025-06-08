@@ -14,51 +14,73 @@ export const Footer: React.FC = () => {
           <NavLink
             to="/"
             className={() => classNames(
-              'Footer-item',
+              'Footer-item', 'navbar-logo', 'footer-logo',
             )}
           >
-            LOGO
+            <img src="../../../public/img/icons/iSupply_logo.png" alt="" />
           </NavLink>
 
-          <NavLink
-            to={'https://github.com/andriy-fesych'
-              + '/react_phone-catalog/tree/develop'}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={({ isActive }) => classNames(
-              'Footer-item',
-              { 'has-background-grey-lighter': isActive },
-            )}
-          >
-            GITHUB
-          </NavLink>
+          <div className="footer-links-wrapper">
+            <NavLink
+              to={'https://github.com/andriy-fesych'
+                + '/react_phone-catalog/tree/develop'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={({ isActive }) => classNames(
+                'Footer-item',
+                { 'has-background-grey-lighter': isActive },
+              )}
+            >
+              GITHUB
+            </NavLink>
 
-          <NavLink
-            to="/phones"
-            className={({ isActive }) => classNames(
-              'Footer-item',
-              { 'has-background-grey-lighter': isActive },
-            )}
-          >
-            CONTACTS
-          </NavLink>
+            <NavLink
+              to="/phones"
+              className={({ isActive }) => classNames(
+                'Footer-item',
+                { 'has-background-grey-lighter': isActive },
+              )}
+            >
+              CONTACTS
+            </NavLink>
 
-          <NavLink
-            to="/tablets"
-            className={({ isActive }) => classNames(
-              'Footer-item',
-              { 'has-background-grey-lighter': isActive },
-            )}
-          >
-            RIGHTS
-          </NavLink>
+            <NavLink
+              to="/tablets"
+              className={({ isActive }) => classNames(
+                'Footer-item',
+                { 'has-background-grey-lighter': isActive },
+              )}
+            >
+              RIGHTS
+            </NavLink>
+          </div>
+
+
 
           <div
             className="totop Footer-item"
             onClick={() => window
               .scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
           >
-            BACK_TO_TOP
+            Back to top
+            <button
+              className="rec__arrow rec__arrow__footer"
+              onClick={() => window
+                .scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+              aria-label="Next slide"
+            >
+              <svg
+                className='footer-svg'
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
       </div>

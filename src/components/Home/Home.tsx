@@ -62,34 +62,71 @@ export const Home: React.FC = () => {
               </div>
             </div>
           </div>
+
           <div className="home__shop_card">
-            <div className="home__image-container">
-              <img src="../../../public/img/category-tablets.png"
-                alt="tablets shop banner" />
-            </div>
+            <Link
+              to={'/tablets'}
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <div className="home__image-container home__tablets-banner">
+                <img src="../../../public/img/category-tablets.png"
+                  alt="tablets shop banner" />
+              </div>
+            </Link>
             <div className="home__card-desc">
               <div className="home__card-desc-title">
-                Tablets
+                <Link
+                  className='link'
+                  to={'/tablets'}
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                Tablets{/*{t('navigation.tablets')}*/}
+                </Link>
               </div>
               <div className="home__card-desc-qty">
-                {`${tabletsQty} models`}
+                <Link
+                  className='link'
+                  to={'/tablets'}
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  {`${tabletsQty} models`}
+                </Link>
               </div>
             </div>
           </div>
+
           <div className="home__shop_card">
-            <div className="home__image-container home__accessories_banner">
-              <img src="../../../public/img/category-accessories.png"
-                alt="accessories shop banner" />
-            </div>
+            <Link
+              to={'/accessories'}
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <div className="home__image-container home__accessories_banner">
+                <img src="../../../public/img/category-accessories.png"
+                  alt="accessories shop banner" />
+              </div>
+            </Link>
             <div className="home__card-desc">
               <div className="home__card-desc-title">
-                Accessories
+                <Link
+                  className='link'
+                  to={'/accessories'}
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                Accessories{/*{t('navigation.accessories')}*/}
+                </Link>
               </div>
               <div className="home__card-desc-qty">
-                {`${acsQty} models`}
+                <Link
+                  className='link'
+                  to={'/accessories'}
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  {`${acsQty} models`}
+                </Link>
               </div>
             </div>
           </div>
+
         </div>
       </div>
       <Recommended title='hot_prices' />

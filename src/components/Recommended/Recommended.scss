@@ -2,7 +2,7 @@
 
 .rec__body {
   margin: 0 auto;
-  max-width: 1152px;
+  max-width: 1136px;
 }
 
 .rec__card {
@@ -42,6 +42,7 @@
   @include font-body;
   color: $color-primary-black;
   margin-top: 24px;
+  min-height: 42px;
   }
 
   &-price {
@@ -122,6 +123,14 @@
 
 .rec__container-wrapper {
   overflow-x: hidden;
+
+  @media (max-width: 1199px) {
+    overflow-x: visible;
+  }
+
+  @media (min-width: 1200px) {
+    margin: 0 auto;
+  }
 }
 
 .rec__container {
@@ -158,13 +167,7 @@
 
   &--right {
     margin-left: 16px;
-    margin-right: 16px;
   }
-}
-
-.rec__body {
-  background-color: white;
-  padding-left: 16px;
 }
 
 .rec__title-and-nav {
@@ -172,11 +175,11 @@
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
+  max-width: 1136px;
 }
 
 .rec__mini-title {
   display: inline-block;
-  width: 50vw;
 
   @include font-h2-mob;
   color: $color-primary-black;

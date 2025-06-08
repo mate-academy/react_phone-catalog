@@ -16,7 +16,7 @@ import { shoppingBagIcon, crossIcon, burgerIcon, settingsIcon, searchGlass }
 
 type ThemeType = 'theme0' | 'theme1' | 'theme2' | 'theme3' | 'theme4';
 
-const useWindowWidth = () => {
+export const useWindowWidth = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
