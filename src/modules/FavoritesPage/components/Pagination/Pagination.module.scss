@@ -1,0 +1,36 @@
+@use '../../../../styles/utils/breakpoints' as *;
+@use '../../../../styles/utils/colors' as *;
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 24px;
+
+  &__pages{
+    display: flex;
+    gap: 8px;  
+  }
+
+  &__page {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $color-header-border;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $color-hover-nav;
+    }
+
+    &:active {
+      background-color: $color-hover-nav;
+      color: $color-white;
+    }
+  }
+
+  @include for-tablet {
+    padding-top: 40px;
+  }
+}

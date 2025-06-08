@@ -1,0 +1,1 @@
+export { ProductsFooterDetails } from './ProductsFooterDetails';
