@@ -1,4 +1,4 @@
-import { useSwiperContext } from '../../model/SwiperContext';
+import { useSwiperCore } from '../../model/hooks/useSwiperCore';
 import { ArrDir } from '../../model/types';
 import styles from './SwiperButton.module.scss';
 
@@ -8,13 +8,12 @@ type Props = {
 };
 
 export const SwiperButton: React.FC<Props> = ({ dir, className }) => {
-  const { offset, setOffset, width } = useSwiperContext();
-
+  const { snapHandler } = useSwiperCore();
   const onDown = () => {
-    if (dir === ArrDir.Previous) {
-      setOffset(Math.floor(offset / width) * width - width);
+    if (dir === ArrDir.Next) {
+      snapHandler(true, ArrDir.Next);
     } else {
-      setOffset(Math.ceil(offset / width) * width + width);
+      snapHandler(true);
     }
   };
 
