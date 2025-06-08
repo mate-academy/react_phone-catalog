@@ -18,7 +18,7 @@ export const CartPage = () => {
 
   return (
     <section className={styles['cart-page']}>
-      <BackLink />
+      <BackLink fromCategory="/" />
       <h1 className={styles['cart-page__title']}>Cart</h1>
 
       {cart.length ? (

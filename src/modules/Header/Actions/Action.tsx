@@ -19,12 +19,12 @@ export const Action = () => {
   };
 
   const actions: Props[] = [
-    { name: 'favourites', count: favourites.length, icon: 'heart' },
     {
       name: 'cart',
       count: cart.reduce((count, a) => count + a.quantity, 0),
       icon: 'cart',
     },
+    { name: 'favourites', count: favourites.length, icon: 'heart' },
   ];
 
   return (

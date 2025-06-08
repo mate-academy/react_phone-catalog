@@ -29,7 +29,9 @@ export const AddSelection: React.FC<Props> = ({ product, className }) => {
   };
 
   const addToCart = () => {
-    if (!isInCart) {
+    if (isInCart) {
+      dispatch({ type: 'removeCart', payload: itemId });
+    } else {
       dispatch({
         type: 'addCart',
         payload: { product: product, quantity: 1, id: product.itemId },
