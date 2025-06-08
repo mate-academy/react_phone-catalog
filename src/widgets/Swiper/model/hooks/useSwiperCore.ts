@@ -18,6 +18,8 @@ export const useSwiperCore = () => {
     clamp,
   } = useSwiperContext();
 
+  //                      TODO: autoplay, animationSpeed, autoscroll
+
   // #region RAF Loop
   const rafIdRef = useRef<number | null>(null);
 
