@@ -128,13 +128,12 @@ export const useSwiperCore = () => {
       const futureOffset = offsetRef.current - rawDrag * SWIPE_COEFF;
       const maxOffset = (infinite ? listLength + 1 : listLength - 1) * width;
 
-      if (futureOffset < 0) {
-        dragRef.current = offsetRef.current / SWIPE_COEFF;
-      } else if (futureOffset > maxOffset) {
-        dragRef.current = (offsetRef.current - maxOffset) / SWIPE_COEFF;
-      } else {
-        dragRef.current = rawDrag;
-      }
+      dragRef.current =
+        futureOffset < 0
+          ? offsetRef.current / SWIPE_COEFF
+          : futureOffset > maxOffset
+            ? (offsetRef.current - maxOffset) / SWIPE_COEFF
+            : rawDrag;
     } else {
       dragRef.current = rawDrag;
     }
@@ -217,6 +216,7 @@ export const useSwiperCore = () => {
 
     dragRef.current = 0;
     startXRef.current = null;
+    startIndex.current = null;
     isDraggingRef.current = false;
     rerender();
   };
@@ -229,12 +229,12 @@ export const useSwiperCore = () => {
   };
   // #endregion
 
-  // #region ResizePositionHandler
+  // switch to 1 slide on resize
   useEffect(() => {
     handleByIndex(0);
   }, [width]);
-  // #endregion
 
+  // clear timeout on timeout end
   useEffect(() => {
     return () => {
       if (snapTimerRef.current) {
