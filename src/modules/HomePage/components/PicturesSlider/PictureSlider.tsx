@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './PictureSlider.module.scss';
 import classNames from 'classnames';
 import { arrayOfImage } from './constants/imagesSlider';
@@ -9,27 +9,30 @@ export const PictureSlider = () => {
 
   const timeOutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const clearCurrentTimeout = () => {
+  const clearCurrentTimeout = useCallback(() => {
     if (timeOutRef.current) {
       clearTimeout(timeOutRef.current);
     }
-  };
+  }, []);
 
-  const changeImageWithFade = (newIndex: number) => {
-    setFade(true);
-    clearCurrentTimeout();
+  const changeImageWithFade = useCallback(
+    (newIndex: number) => {
+      setFade(true);
+      clearCurrentTimeout();
 
-    timeOutRef.current = setTimeout(() => {
-      setActiveImg(newIndex);
-      setFade(false);
-    }, 500);
-  };
+      timeOutRef.current = setTimeout(() => {
+        setActiveImg(newIndex);
+        setFade(false);
+      }, 500);
+    },
+    [clearCurrentTimeout],
+  );
 
-  const nextImg = () => {
+  const nextImg = useCallback(() => {
     const newIndex = activeImg >= arrayOfImage.length - 1 ? 0 : activeImg + 1;
 
     changeImageWithFade(newIndex);
-  };
+  }, [activeImg, changeImageWithFade]);
 
   useEffect(() => {
     clearCurrentTimeout();
@@ -39,7 +42,7 @@ export const PictureSlider = () => {
     }, 5000);
 
     return () => clearCurrentTimeout();
-  }, [activeImg]);
+  }, [activeImg, nextImg, clearCurrentTimeout]);
 
   const handleImg = (index: number) => {
     if (index !== activeImg) {
