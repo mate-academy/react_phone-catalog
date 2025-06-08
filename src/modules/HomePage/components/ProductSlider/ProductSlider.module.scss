@@ -70,14 +70,8 @@
   &__item {
     display: flex;
     transition: transform 0.3s ease-in-out;
-    height: 439px;
-
-    @include tablet {
-      height: 512px;
-    }
 
     @include desktop {
-      height: 506px;
       flex: 0 0 calc((100% - 4 * 15px) / 4);
     }
   }
