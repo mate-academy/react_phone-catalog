@@ -1,4 +1,4 @@
-import { SwiperData } from '../model/types';
+import { SwiperData } from '../types/MSPtypes';
 import slide1 from './swiperbanner_1.webp';
 import slide2 from './swiperbanner_2.webp';
 import slide3 from './swiperbanner_3.webp';

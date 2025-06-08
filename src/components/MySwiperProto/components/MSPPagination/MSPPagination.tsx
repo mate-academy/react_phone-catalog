@@ -1,13 +1,13 @@
 import classNames from 'classnames';
-import styles from './SwiperPagination.module.scss';
-import { useSwiperContext } from '../../model/SwiperContext';
+import styles from './MSPPagination.module.scss';
+import { useSwiperContext } from '../../context/MSPContext';
 
 type Props = {
   className: string;
   swapper: (idx: number) => void;
 };
 
-export const SwiperPagination: React.FC<Props> = ({ className, swapper }) => {
+export const MSPPagination: React.FC<Props> = ({ className, swapper }) => {
   const { listLength, activeIndexRef } = useSwiperContext();
   const array = [];
 

@@ -1,5 +1,5 @@
-@use '../../app/styles/breakpoints/breakpoint-const' as *;
-@use '../../app/styles/constants/colors' as cl;
+@use '../../../app/styles/breakpoints/breakpoint-const.scss' as *;
+@use '../../../app/styles/constants/colors' as cl;
 
 .swiper {
   display: grid;
@@ -31,13 +31,15 @@
     height: 100%;
     z-index: 10;
     overflow: visible;
+    gap: var(--gap, 0px);
+    transition: none;
 
     &--animated {
-      transition: transform .15s ease-in-out;
+      transition: transform var(--transition-duration, 150ms) ease-in-out;
     }
 
     &--dragging {
-      transition: none !important;
+      transition: none;
     }
 
     &--frameChange {

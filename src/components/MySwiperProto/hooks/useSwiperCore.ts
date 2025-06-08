@@ -1,14 +1,23 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { useSwiperContext } from '../SwiperContext';
-import { ArrDir } from '../types';
-//                      TODO: autoplay, animationSpeed, autoscroll
-export const useSwiperCore = () => {
+import { useSwiperContext } from '../context/MSPContext';
+import { Autoplay, Direction } from '../types/MSPtypes';
+
+type Props = {
+  clamp: boolean;
+  autoplay: Autoplay | false;
+  animationSpeed: number;
+};
+
+//                      TODO: add snap mode, correct positioning if gap
+export const useSwiperCore = ({ clamp, autoplay, animationSpeed }: Props) => {
   const startXRef = useRef<number | null>(null);
   const startIndex = useRef<number | null>(null);
   const dragRef = useRef<number>(0);
   const isDraggingRef = useRef(false);
   const rafIdRef = useRef<number | null>(null);
-  const snapTimerRef = useRef<NodeJS.Timeout | number | null>(null);
+  const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const autoPlayCountRef = useRef<number>(0);
+  const snapTimerRef = useRef<NodeJS.Timeout | null>(null);
   const {
     trackRef,
     offsetRef,
@@ -17,10 +26,9 @@ export const useSwiperCore = () => {
     activeIndexRef,
     infinite,
     listLength,
-    clamp,
   } = useSwiperContext();
 
-  // #region helpers and const
+  // #region helpers and const, raf loop
   const SWIPE_COEFF = 1.2;
 
   const toggleTrackClass = () => {
@@ -33,21 +41,6 @@ export const useSwiperCore = () => {
     track.classList.toggle('swiper__track--dragging', isDraggingRef.current);
     track.classList.toggle('swiper__track--animated', !isDraggingRef.current);
   };
-
-  const snapTransition = (
-    newIndex: number,
-    newOffset: number,
-    delay: number,
-  ) => {
-    snapTimerRef.current = setTimeout(() => {
-      activeIndexRef.current = newIndex;
-      offsetRef.current = newOffset;
-      rerender();
-      snapTimerRef.current = null;
-    }, delay);
-  };
-
-  //#endregion
 
   // #region RAF Loop
   const startRafLoop = useCallback(() => {
@@ -77,44 +70,66 @@ export const useSwiperCore = () => {
       cancelAnimationFrame(rafIdRef.current);
       rafIdRef.current = null;
     }
+
+    rerender();
   }, []);
   // #endregion
+
+  const firstStageTransition = useCallback(
+    (newIndex: number, newOffset: number) => {
+      activeIndexRef.current = newIndex;
+      offsetRef.current = newOffset;
+      startRafLoop();
+      endRafLoop();
+    },
+    [],
+  );
+
+  const secondStageTransition = useCallback(
+    (newIndex: number, newOffset: number) => {
+      snapTimerRef.current = setTimeout(() => {
+        isDraggingRef.current = true;
+        activeIndexRef.current = newIndex;
+        offsetRef.current = newOffset;
+        startRafLoop();
+        endRafLoop();
+        isDraggingRef.current = false;
+        snapTimerRef.current = null;
+      }, animationSpeed);
+    },
+    [],
+  );
+
+  //#endregion
 
   // #region Handlers
   const start = (e: React.PointerEvent<HTMLDivElement>) => {
     e.preventDefault();
 
-    // block start if infinite && end of track
     if (snapTimerRef.current !== null) {
       return;
     }
 
-    // setting up event capture and start point & index, providing dragRef
     e.currentTarget.setPointerCapture(e.pointerId);
     startXRef.current = e.clientX;
     startIndex.current = activeIndexRef.current;
     dragRef.current = 0;
     isDraggingRef.current = true;
-
-    //start animation
     startRafLoop();
   };
 
   const handleByIndex = (idx: number) => {
     offsetRef.current = infinite ? (idx + 1) * width : idx * width;
     startRafLoop();
-
     endRafLoop();
-    rerender();
   };
 
   const move = (event: React.PointerEvent<HTMLDivElement>) => {
     event.preventDefault();
-    // protection agains accidental event
+
     if (!isDraggingRef.current || startXRef.current === null) {
       return;
     }
-    //protection against abusing drag before infinite transition
 
     if (snapTimerRef.current !== null) {
       dragRef.current = 0;
@@ -139,55 +154,51 @@ export const useSwiperCore = () => {
     }
   };
 
-  const snapHandler = (param = false, dir = ArrDir.Previous) => {
-    if (param === true) {
-      startIndex.current = activeIndexRef.current;
-    }
+  const buttonHandler = useCallback(
+    (dir: Direction) => {
+      const mod = dir === Direction.LEFT ? -1 : 1;
+      const newIndex = activeIndexRef.current + mod;
 
-    if (
-      startIndex.current === null ||
-      (dragRef.current === null && param === false)
-    ) {
+      if (infinite) {
+        if (newIndex < 0) {
+          handleByIndex(newIndex);
+          secondStageTransition(listLength - 1, listLength * width);
+        } else if (newIndex > listLength - 1) {
+          handleByIndex(newIndex);
+          secondStageTransition(0, width);
+        } else {
+          handleByIndex(newIndex);
+        }
+      }
+
+      if (newIndex < 0 || newIndex > listLength - 1) {
+        return;
+      }
+
+      handleByIndex(newIndex);
+    },
+    [width],
+  );
+
+  const snapHandler = () => {
+    if (startIndex.current === null || dragRef.current === null) {
       return;
     }
 
     const treshold = width / 10;
-    let step;
-    let isFirst;
-    let isLast;
+    const step = dragRef.current < 0 ? 1 : -1;
+    const isFirst = activeIndexRef.current <= 0 && step === -1;
+    const isLast = activeIndexRef.current >= listLength - 1 && step === 1;
 
-    if (param) {
-      step = dir === ArrDir.Previous ? -1 : 1;
-      isFirst = activeIndexRef.current <= 0 && step === -1;
-      isLast = activeIndexRef.current >= listLength - 1 && step === 1;
-    } else {
-      step = dragRef.current < 0 ? 1 : -1;
-      isFirst = activeIndexRef.current <= 0 && step === -1;
-      isLast = activeIndexRef.current >= listLength - 1 && step === 1;
-    }
-
-    if (snapTimerRef.current) {
-      clearTimeout(snapTimerRef.current);
-      snapTimerRef.current = null;
-    }
-
-    if (Math.abs(dragRef.current) > treshold || param === true) {
+    if (Math.abs(dragRef.current) > treshold) {
       dragRef.current = 0;
       isDraggingRef.current = false;
       if (isFirst && step === -1) {
-        activeIndexRef.current = -1;
-        offsetRef.current = 0;
-        startRafLoop();
-        endRafLoop();
-
-        snapTransition(listLength - 1, listLength * width, 150);
+        firstStageTransition(-1, 0);
+        secondStageTransition(listLength - 1, listLength * width);
       } else if (isLast && step === 1) {
-        activeIndexRef.current = listLength;
-        offsetRef.current = (listLength + 1) * width;
-        startRafLoop();
-        endRafLoop();
-
-        snapTransition(0, width, 150);
+        firstStageTransition(listLength, (listLength + 1) * width);
+        secondStageTransition(0, width);
       } else {
         handleByIndex(startIndex.current + step);
       }
@@ -218,7 +229,6 @@ export const useSwiperCore = () => {
     startXRef.current = null;
     startIndex.current = null;
     isDraggingRef.current = false;
-    rerender();
   };
 
   const handlers = {
@@ -243,5 +253,35 @@ export const useSwiperCore = () => {
     };
   }, []);
 
-  return { handlers, handleByIndex, snapHandler };
+  //autoplay
+  useEffect(() => {
+    const cleanup = () => {
+      if (autoPlayTimerRef.current !== null) {
+        clearInterval(autoPlayTimerRef.current);
+        autoPlayTimerRef.current = null;
+      }
+    };
+
+    cleanup();
+
+    if (!autoplay) {
+      return;
+    }
+
+    const { direction, delay, times } = autoplay;
+
+    autoPlayTimerRef.current = setInterval(() => {
+      if (!isDraggingRef.current) {
+        buttonHandler(direction);
+        autoPlayCountRef.current += 1;
+        if (autoPlayCountRef.current >= times) {
+          cleanup();
+        }
+      }
+    }, delay);
+
+    return cleanup;
+  }, [autoplay, buttonHandler]);
+
+  return { handlers, handleByIndex, buttonHandler };
 };

@@ -1,6 +1,6 @@
-import { bannerList } from '../../widgets/Swiper/assets/bannerList';
-import { SwiperProvider } from '../../widgets/Swiper/model/SwiperContext';
-import { SwiperI } from '../../widgets/Swiper/swiper';
+import { bannerList } from '../../components/MySwiperProto/Temp/bannerList';
+import { MeinSwiper } from '../../components/MySwiperProto';
+import { Direction } from '../../components/MySwiperProto/types/MSPtypes';
 import './HomePage.scss';
 
 export const HomePage = () => {
@@ -8,12 +8,17 @@ export const HomePage = () => {
     <>
       <h1 className="welcome">Welcome to Nice Gadgets store!</h1>
 
-      <SwiperProvider dataset={bannerList} infinite={true} clamp={true}>
-        <SwiperI />
-      </SwiperProvider>
-      <SwiperProvider dataset={bannerList} infinite={false} clamp={true}>
-        <SwiperI />
-      </SwiperProvider>
+      <MeinSwiper
+        dataset={bannerList}
+        infinite
+        buttons
+        pagination
+        autoplay
+        direction={Direction.RIGHT}
+        delay={5000}
+        times={3}
+      />
+      <MeinSwiper dataset={bannerList} clamp pagination gap={20} />
     </>
   );
 };

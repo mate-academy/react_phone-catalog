@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { SwiperData } from '../../model/types';
-import styles from './SwiperSlide.module.scss';
+import { SwiperData } from '../../../model/types';
+import styles from './MSPSlide.module.scss';
 
 type Props = {
   item: SwiperData;
 };
 
-export const SwiperSlide: React.FC<Props> = ({ item }) => {
+export const MSPSlide: React.FC<Props> = ({ item }) => {
   const { href, src, alt } = item;
 
   return (

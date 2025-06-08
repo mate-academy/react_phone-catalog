@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSwiperContext } from '../SwiperContext';
+import { useSwiperContext } from '../context/MSPContext';
 
 export const useResize = () => {
   const { VPRef, setWidth, rerender } = useSwiperContext();

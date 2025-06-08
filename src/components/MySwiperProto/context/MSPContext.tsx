@@ -8,7 +8,7 @@ import {
   useCallback,
   useEffect,
 } from 'react';
-import { SwiperData } from './types';
+import { SwiperData } from '../types/MSPtypes';
 
 type SwiperContextType = {
   width: number;
@@ -21,7 +21,6 @@ type SwiperContextType = {
   listLength: number;
   activeIndexRef: React.MutableRefObject<number>;
   infinite: boolean;
-  clamp: boolean;
 };
 
 const SwiperContext = createContext<SwiperContextType | null>(null);
@@ -40,14 +39,12 @@ type SwiperProviderProps = {
   children: ReactNode;
   dataset: SwiperData[];
   infinite: boolean;
-  clamp: boolean;
 };
 
 export const SwiperProvider: React.FC<SwiperProviderProps> = ({
   children,
   dataset,
   infinite,
-  clamp,
 }) => {
   const trackRef = useRef<HTMLUListElement>(null);
   const VPRef = useRef<HTMLDivElement>(null);
@@ -91,6 +88,7 @@ export const SwiperProvider: React.FC<SwiperProviderProps> = ({
   useEffect(() => {
     if (VPRef.current) {
       offsetRef.current = infinite ? VPRef.current.offsetWidth : 0;
+      rerender();
     }
   }, []);
 
@@ -119,7 +117,6 @@ export const SwiperProvider: React.FC<SwiperProviderProps> = ({
     listLength,
     activeIndexRef,
     infinite,
-    clamp,
   };
 
   return (
