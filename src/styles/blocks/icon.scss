@@ -52,7 +52,8 @@
     background-position: center;
 
     &-up {
-      background-image: url('img/logo/ArrowUp.svg');
+
+      background-image: url('/img/logo/ArrowUp.svg');
 
       &--rotate {
         transform: rotate(270deg);
