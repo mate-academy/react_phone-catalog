@@ -52,12 +52,22 @@
     background-position: center;
 
     &-up {
-
       background-image: url('/img/logo/ArrowUp.svg');
 
       &--rotate {
         transform: rotate(270deg);
       }
+    }
+  }
+
+  &--arrowright {
+    background-size: auto;
+    background-position: center;
+
+    &-up {
+      width: 16px;
+      height: 16px;
+      background-image: url('/img/logo/Arrow\ Right.svg');
     }
   }
 

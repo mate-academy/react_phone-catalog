@@ -28,7 +28,7 @@ export const Cart = () => {
         <>
           <div className="cart__top">
             <div className="cart__top-button">
-              <span className="icon icon--arrow-up icon--arrow-up--rotate"></span>
+              <span className="icon icon--arrowright-up"></span>
 
               <button
                 type="button"
