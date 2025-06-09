@@ -1,7 +1,6 @@
 import { DeviseType } from './types/DeviseType';
 import { ProductType } from './types/ProductType';
 
-// const BASE_URL = `/api/`;
 const BASE_URL = `${import.meta.env.BASE_URL}/api/`;
 
 export const fetchData = async <T>(endpoint: string): Promise<T> => {

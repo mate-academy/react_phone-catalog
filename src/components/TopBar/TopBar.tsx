@@ -1,6 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
 import './TopBar.scss';
-// import '../../styles/blocks/icon.scss';
 import { getActiveClass } from '../../utils2/getActiveClass';
 import { NavBar } from '../NavBar';
 import { useCart } from '../CarT/CartContext';
@@ -10,7 +9,7 @@ const heartClass = getActiveClass('icon--heart top-bar__shopping-heart');
 const bagClass = getActiveClass('icon--bag top-bar__shopping-bag');
 
 export const TopBar = () => {
-  const { cart } = useCart();
+  const { totalCount } = useCart();
   const { favorites } = useFavorites();
 
   return (
@@ -28,7 +27,7 @@ export const TopBar = () => {
           <span className="top-bar__shopping-badge">{favorites.length}</span>
         </NavLink>
         <NavLink to="/cart" className={bagClass}>
-          <span className="top-bar__shopping-badge">{cart.length}</span>
+          <span className="top-bar__shopping-badge">{totalCount}</span>
         </NavLink>
       </div>
     </div>

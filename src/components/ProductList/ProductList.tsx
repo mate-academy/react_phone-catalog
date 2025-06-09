@@ -20,7 +20,7 @@ export const ProductList: React.FC<Props> = ({ category, title }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const rawPage = searchParams.get('page');
   const pageFromUrl = rawPage && !isNaN(Number(rawPage)) ? Number(rawPage) : 1;
@@ -57,6 +57,20 @@ export const ProductList: React.FC<Props> = ({ category, title }) => {
   } = useFilteredProducts(products);
 
   useEffect(() => {
+    const sort = searchParams.get('sort');
+    const perPage = searchParams.get('perPage');
+
+    if (sort) {
+      setSortBy(sort);
+    }
+
+    if (perPage && !isNaN(Number(perPage))) {
+      setItemPerPage(Number(perPage));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     if (isLoading) {
       return;
     }
@@ -84,6 +98,19 @@ export const ProductList: React.FC<Props> = ({ category, title }) => {
       navigate(`?page=${currentPage}`, { replace: true });
     }
   }, [currentPage, navigate, searchParams]);
+
+  useEffect(() => {
+    if (isLoading || !initialSyncDone.current) {
+      return;
+    }
+
+    const params = new URLSearchParams(searchParams);
+
+    params.set('sort', sortBy);
+    params.set('perPage', String(itemPerPage));
+
+    setSearchParams(params, { replace: true });
+  }, [sortBy, itemPerPage, isLoading, searchParams, setSearchParams]);
 
   if (isLoading) {
     return <div>Loading...</div>;

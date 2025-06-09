@@ -16,6 +16,7 @@ type CartContextType = {
   removeFromCart: (id: string | number) => void;
   increaseQuantity: (id: string | number) => void;
   decreaseQuantity: (id: string | number) => void;
+  totalCount: number;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -23,19 +24,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    try {
-      const storedCart = localStorage.getItem('cart');
-
-      return storedCart ? JSON.parse(storedCart) : [];
-    } catch (error) {
-      return [];
-    }
-  });
-
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   const addToCart = (product: ProductType | DeviseType) => {
     const cartItem: CartItem = {
@@ -74,14 +63,34 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const decreaseQuantity = (id: string | number) => {
-    setCart(prevCart =>
-      prevCart
-        .map(item =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
-        )
-        .filter(item => item.quantity > 0),
+    if (cart.length === 0) {
+      return;
+    }
+
+    let cartItems = cart?.map(item =>
+      item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
     );
+
+    cartItems = cartItems.filter(item => item.quantity > 0);
+    setCart(cartItems);
   };
+
+  useEffect(() => {
+    try {
+      const storedCart = localStorage.getItem('cart');
+      const nextCart = storedCart ? JSON.parse(storedCart) : [];
+
+      setCart(nextCart);
+    } catch (error) {
+      setCart([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <CartContext.Provider
@@ -91,6 +100,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         removeFromCart,
         increaseQuantity,
         decreaseQuantity,
+        totalCount,
       }}
     >
       {children}
