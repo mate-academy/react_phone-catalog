@@ -1,0 +1,24 @@
+@use '../utils/mixin.module.scss' as mixin;
+.filter{
+
+@include mixin.pageGrid;
+align-items: center;
+
+
+  &__drop{
+    grid-column: 1/2;
+
+
+@include mixin.onTablet{
+  grid-column: span 4;
+}
+  }
+&__pagination{
+  grid-column: 2/4;
+  @include mixin.onTablet{
+  grid-column: 5/8;
+}
+}
+
+
+}

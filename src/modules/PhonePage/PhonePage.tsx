@@ -14,11 +14,11 @@ export const PhonePage = () => {
       <Container>
         <PageNav />
         <TitlePages type={'phones'} />
-        <Filter />
-        <Pagination/>
+
+
         <ProductList />
-        
-      </Container>
+</Container>
+
     </>
   );
 };

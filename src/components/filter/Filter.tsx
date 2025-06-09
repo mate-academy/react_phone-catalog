@@ -1,34 +1,37 @@
-
+import styles from './Filter.module.scss'
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 
 import { setStatus } from "../../features/FilterSlice";
+import { setStatusPagin } from '../../features/PaginationSlice';
+
+import { DropDownMenu } from '../dropDownMenu/DropDownMenu';
 
 
 export const Filter = () => {
   const dispatch = useAppDispatch();
-  const { status } = useAppSelector(state => state.filter.status);
-  const handleStatusChange = (event) => {
-    dispatch(setStatus(event.target.value as 'newest' | 'alphabetically' | 'cheapest'));
-}
+  const  status  = useAppSelector(state => state.filter.status);
+const paginationStatus = useAppSelector(state=>state.pagination.status)
+  const handleStatusChange = (value) => {
+    dispatch(setStatus(value));
+  };
+  const handleStatusPagination = (value) => {
+    dispatch(setStatusPagin(value));
+  }
+
   return (<>
   <form
-      className="field has-addons"
-      onSubmit={event => event.preventDefault()}
-    >Sort by
-    <p className="control">
-        <span className="select">
-          <select
-            data-cy="statusSelect"
+      className={styles.filter}
+      onSubmit={event => event.preventDefault()}>
 
-            value={status}
-onChange={handleStatusChange}
-          >
-            <option value={'newest'}>Newest</option>
-            <option value={'alphabetically'}>Alphabetically</option>
-            <option value={'cheapest'}>Cheapest</option>
-          </select>
-        </span>
-      </p>
+
+ <div  className={styles.filter__drop}>
+
+          <DropDownMenu value={status} onChange={handleStatusChange} type={'filter'} />
+        </div>
+      <div className={styles.filter__pagination}>
+        <DropDownMenu value={paginationStatus} onChange={handleStatusPagination } type={'pagination'} /></div>
+
+
 
     </form>
    </>)

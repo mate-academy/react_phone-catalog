@@ -5,6 +5,7 @@ import { ProductCart } from "../cardItem/ProductCart";
 import { Loader } from "../Loader";
 import styles from './ProductList.module.scss';
 import { ControlPagination } from "../paginationControl/ControlPagination";
+import { Filter } from "../filter/Filter";
 
 
 export const ProductList = () => {
@@ -33,13 +34,15 @@ const currentPage = useAppSelector(state=>state.pagination.currentPage)
 visibleGoods.slice((currentPage - 1) * perPages, currentPage * perPages)
 
   return (<> {loading && <Loader />}
+
   {visibleGoods.length === 0 && (
         <p className="notification is-warning">
           There are no products matching current filter criteria
         </p>
       )}
-
+<Filter />
     <div className={styles.product__list}>
+
       {<ProductCart products={ paginationGoods} types={'grid'} />}
 
 

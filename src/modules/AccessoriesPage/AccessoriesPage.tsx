@@ -1,5 +1,6 @@
 import { Container } from '../../components/container/Container';
 import { Filter } from '../../components/filter/Filter';
+import { Pagination } from '../../components/pagination/Pagination';
 import { ProductList } from '../../components/ProductsList/ProductsList';
 import { TitlePages } from '../../components/title/TitlePages';
 import { PageNav } from '../PhonePage/components/pageNav/PageNav';
@@ -10,7 +11,6 @@ export const AccessoriesPage = () => {
       <Container>
         <PageNav />
         <TitlePages type={'accessories'} />
-           <Filter/>
         <ProductList />
       </Container>
     </>

@@ -2,7 +2,7 @@ import { createSlice , PayloadAction} from "@reduxjs/toolkit";
 
 interface PaginationState {
 
-  status: number | 4 | 8 | 16 | 'all';
+  status: string | '4' | '8' | '16' | 'all';
   currentPage: number;
 
 }
@@ -16,10 +16,10 @@ export const paginationSlice = createSlice({
   name: 'pagination',
   initialState,
   reducers: {
-    setStatus: (state,action:PayloadAction<number|'all'>) => { state.status = action.payload; },
+    setStatusPagin: (state,action:PayloadAction<number|'all'>) => { state.status = action.payload; },
     setCurrentPage: (state, action) => { state.currentPage = action.payload },
 
   }
 })
-export const { setStatus, setCurrentPage } = paginationSlice.actions;
+export const { setStatusPagin, setCurrentPage } = paginationSlice.actions;
 export default paginationSlice.reducer
