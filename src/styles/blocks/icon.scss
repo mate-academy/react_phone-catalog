@@ -20,6 +20,7 @@
   }
 
   &--menu {
+    background-size: auto;
     background-image: url('/img/icons/Cart-=.svg');
 
     @include on-tablet {
@@ -28,6 +29,7 @@
   }
 
   &--close {
+    background-size: auto;
     background-image: url('/img/icons/cart-X.svg');
   }
 
