@@ -16,12 +16,12 @@ export const Menu = () => {
       <div className="menu__bottom-bar">
         <Link
           to="/favorites"
-          className="icon icon--heart menu__bottom-bar--heart"
+          className="icon icon--heartMenu menu__bottom-bar--heart"
         ></Link>
 
         <Link
           to="/cart"
-          className="icon icon--bag menu__bottom-bar--bag"
+          className="icon icon--bagMenu menu__bottom-bar--bag"
         ></Link>
       </div>
     </aside>

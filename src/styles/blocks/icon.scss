@@ -43,8 +43,19 @@
     }
   }
 
+  &--heartMenu {
+    background-image: url('/img/logo/Favourites16.svg');
+    background-size: auto;
+    background-position: center;
+  }
+
   &--bag {
     background-image: url('/img/logo/Bag48.svg');
+    background-size: auto;
+    background-position: center;
+  }
+  &--bagMenu {
+    background-image: url('/img/logo/Bag.svg');
     background-size: auto;
     background-position: center;
   }

@@ -24,10 +24,14 @@ export const TopBar = () => {
 
       <div className="top-bar__shopping">
         <NavLink to="/favorites" className={heartClass}>
-          <span className="top-bar__shopping-badge">{favorites.length}</span>
+          {favorites.length > 0 && (
+            <span className="top-bar__shopping-badge">{favorites.length}</span>
+          )}
         </NavLink>
         <NavLink to="/cart" className={bagClass}>
-          <span className="top-bar__shopping-badge">{totalCount}</span>
+          {totalCount > 0 && (
+            <span className="top-bar__shopping-badge">{totalCount}</span>
+          )}
         </NavLink>
       </div>
     </div>
