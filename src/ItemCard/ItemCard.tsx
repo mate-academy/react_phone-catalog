@@ -112,6 +112,33 @@ export const ItemCard: React.FC = () => {
     }
   };
 
+  const sortedProducts = [...allProducts].sort((a, b) => {
+    if (!a.year) {
+      return 1;
+    }
+
+    if (!b.year) {
+      return -1;
+    }
+
+    return b.year - a.year;
+  });
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const productsPerPage = 4;
+
+  const handleNext = () => {
+    if (currentIndex + productsPerPage < sortedProducts.length) {
+      setCurrentIndex(currentIndex + productsPerPage);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - productsPerPage);
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [productId]);
@@ -259,7 +286,7 @@ export const ItemCard: React.FC = () => {
       </div>
       <div className={styles.about}>
         <div className={styles.description}>
-          <h2 className={styles.description_title}>About</h2>
+          <h2 className={styles.description_title_paragraph}>About</h2>
           {product.description.map((desc, index) => (
             <div key={index} className={styles.description_block}>
               <h3 className={styles.description_title}>{desc.title}</h3>
@@ -304,13 +331,31 @@ export const ItemCard: React.FC = () => {
         </div>
       </div>
       <div>
-        <h1>You may also like</h1>
+        <div className={styles.controls}>
+          <h1>You may also like</h1>
+          <div className={styles.buttons_group}>
+            <button
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+              className={styles.buttons_controls}
+            >
+              <img src="img/Arrow-left.png" alt="Previous" />
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={currentIndex + productsPerPage >= sortedProducts.length}
+              className={styles.buttons_controls}
+            >
+              <img src="img/Arrow-right.png" alt="Next" />
+            </button>
+          </div>
+        </div>
         <div className={styles.container_also_like}>
           {randomDiscountProduct.map(randomProduct => (
             <Link
               to={`/product/${randomProduct.id}`}
               key={randomProduct.id}
-              className={styles.linkProduct}
+              className={styles.link_product}
             >
               <DiscountProductCard
                 key={randomProduct.id}

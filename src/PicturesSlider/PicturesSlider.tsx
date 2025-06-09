@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -7,7 +7,7 @@ import 'swiper/css/autoplay';
 import styles from './PicturesSlider.module.scss';
 
 export const PicturesSlider = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+  const [isMobile] = useState(window.innerWidth < 640);
 
   const images = [
     {
@@ -15,14 +15,14 @@ export const PicturesSlider = () => {
       alt: 'Banner 1',
     },
     { image: 'img/banner-phones.png', alt: 'Phones' },
-    { image: 'img/banner-tablets.png', alt: 'Tablets' },
-    { image: 'img/banner-accessories.png', alt: 'Accessories' },
+    { image: 'img/banner-tablets.jpeg', alt: 'Tablets' },
+    { image: 'img/banner-watches.png', alt: 'Accessories' },
   ];
 
   return (
     <div className={styles.pictures_slider}>
-      <button className={styles.button_left}>
-        <img src="../../public/img/Arrow-right.png" alt="" />
+      <button className={`pictures-slider_prev ${styles.button_left}`}>
+        <img src="img/Arrow-right.png" alt="Prev" />
       </button>
       <Swiper
         style={{
@@ -35,6 +35,10 @@ export const PicturesSlider = () => {
           '--swiper-pagination-bullet-horizontal-gap': '6px',
         }}
         pagination={{ clickable: true }}
+        navigation={{
+          nextEl: '.pictures-slider_next',
+          prevEl: '.pictures-slider_prev',
+        }}
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={50}
         autoplay={{ delay: 5000 }}
@@ -44,14 +48,14 @@ export const PicturesSlider = () => {
           <SwiperSlide key={index}>
             <img
               src={image.image}
-              alt={`Slide ${index + 1}`}
+              alt={image.alt}
               className={styles.picture_img}
             />
           </SwiperSlide>
         ))}
       </Swiper>
-      <button className={styles.button_right}>
-        <img src="../../public/img/Arrow-right.png" alt="" />
+      <button className={`pictures-slider_next ${styles.button_right}`}>
+        <img src="img/Arrow-right.png" alt="Next" />
       </button>
     </div>
   );

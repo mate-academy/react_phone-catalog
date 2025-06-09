@@ -38,16 +38,16 @@ a {
 
 .product_title {
   width: 148px;
-  height: 50px;
-  font-family: Mont;
+  height: 42px;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
   color: #313237;
+  margin-bottom: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin: 8px 0;
+  margin-top: 8px;
 }
 
 .price_section {
@@ -55,6 +55,7 @@ a {
   padding-bottom: 8px;
   border-bottom: 1px solid #e2e6e9;
   display: flex;
+  gap: 8px;
 }
 
 .original_price {
@@ -62,16 +63,19 @@ a {
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
-  color: #313237;
+  color: #89939a;
+  text-decoration: line-through;
+  margin: 0;
 }
 
 .discount_price {
   font-family: 'Mont', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 22px;
+  font-weight: 800;
   line-height: 1.5;
-  color: #89939a;
-  text-decoration: line-through;
+  color: #313237;
+  text-decoration: none;
+  margin: 0;
 }
 
 .product_info {
@@ -87,7 +91,6 @@ a {
   justify-content: space-between;
   margin-bottom: 8px;
   width: 148px;
-  height: 100%;
 }
 
 .feature_label {
@@ -178,7 +181,7 @@ a {
     flex-direction: column;
     align-items: center;
     padding: 0;
-    margin: 0 32px;
+    // margin: 0 32px;
   }
 
   .product_card:hover {
@@ -384,6 +387,24 @@ a {
     padding-bottom: 8px;
   }
 
+  .original_price {
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+  }
+
+  .discount_price {
+    font-family: 'Mont', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #89939a;
+    text-decoration: line-through;
+  }
+
+
   .product_info {
     margin: 0 32px 8px;
   }
@@ -458,3 +479,5 @@ a {
     margin: 0;
   }
 }
+
+

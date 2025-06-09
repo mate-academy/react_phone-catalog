@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import phones from '../../public/api/phones.json';
 import products from '../../public/api/products.json';
 import { ProductCard } from '../ProductCard/ProductCard';
 import styles from './BrandNewModels.module.scss';
 import { Link } from 'react-router-dom';
 import { useCart } from '../UseCart/UseCart';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import SwiperCore from 'swiper';
+import { Navigation } from 'swiper/modules';
+
+SwiperCore.use([Navigation]);
 
 const mergeData = () => {
   const formattedPhones = phones.map(phone => ({
@@ -53,21 +61,6 @@ export const BrandNewModels: React.FC = () => {
 
   const { dispatch } = useCart();
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const productsPerPage = 4;
-
-  const handleNext = () => {
-    if (currentIndex + productsPerPage < sortedProducts.length) {
-      setCurrentIndex(currentIndex + productsPerPage);
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - productsPerPage);
-    }
-  };
-
   const handleAddToCart = (id: string) => {
     const product = allProducts.find(p => p.id === id);
 
@@ -90,31 +83,35 @@ export const BrandNewModels: React.FC = () => {
         <h1 className={styles.title}>Brand new models</h1>
         <div className={styles.buttons_group}>
           <button
-            onClick={handlePrev}
-            disabled={currentIndex === 0}
-            className={styles.buttons_controls}
+            className={`brand-new-slider_prev ${styles.buttons_controls}`}
           >
-            <img src="img/Arrow-left.png" alt="Previous" />
+            <img src="img/Arrow-left.png" alt="Next" />
           </button>
           <button
-            onClick={handleNext}
-            disabled={currentIndex + productsPerPage >= sortedProducts.length}
-            className={styles.buttons_controls}
+            className={`brand-new-slider_next  ${styles.buttons_controls}`}
           >
             <img src="img/Arrow-right.png" alt="Next" />
           </button>
         </div>
       </div>
 
-      <div className={styles.product_grid}>
-        {sortedProducts
-          .slice(currentIndex, currentIndex + productsPerPage)
-          .map(product => (
-            <Link
-              to={`/product/${product.id}`}
-              key={product.id}
-              className={styles.link_product}
-            >
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={16}
+        navigation={{
+          nextEl: '.brand-new-slider_next',
+          prevEl: '.brand-new-slider_prev',
+        }}
+        breakpoints={{
+          320: { slidesPerView: 1.5, spaceBetween: 16 },
+          640: { slidesPerView: 3, spaceBetween: 16 },
+          1200: { slidesPerView: 4, spaceBetween: 16 },
+        }}
+        className={styles.product_grid}
+      >
+        {sortedProducts.map(product => (
+          <SwiperSlide key={product.id}>
+            <Link to={`/product/${product.id}`} className={styles.link_product}>
               <ProductCard
                 key={product.id}
                 id={product.id}
@@ -130,8 +127,9 @@ export const BrandNewModels: React.FC = () => {
                 onToggleFavorite={() => handleToggleFavorite(product.id)}
               />
             </Link>
-          ))}
-      </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };

@@ -54,6 +54,7 @@
   .container {
     max-width: 1200px;
     margin: 24px 32px;
+    padding: 0;
   }
 
   .navigation {
@@ -94,11 +95,15 @@
   .favourites_grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    max-width: 640px;
+    gap: 16px;
+    width: 592px;
     cursor: pointer;
     margin: auto;
     align-items: center;
+  }
+
+  .link_product {
+    height: 508px;
   }
 }
 

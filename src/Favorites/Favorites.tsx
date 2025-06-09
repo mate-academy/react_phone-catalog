@@ -2,7 +2,7 @@
 import React from 'react';
 import { useCart } from '../UseCart/UseCart';
 import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountProductCard';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Favourites.module.scss';
 import phones from '../../public/api/phones.json';
 import tablets from '../../public/api/tablets.json';
@@ -57,26 +57,32 @@ export const Favorites: React.FC = () => {
             const fullProduct = findSameProduct(product.id) || product;
 
             return (
-              <DiscountProductCard
+              <Link
+                to={`/product/${product.id}`}
                 key={product.id}
-                id={product.id}
-                name={product.name}
-                price={product.priceRegular}
-                discountPrice={
-                  typeof product.priceDiscount === 'number'
-                    ? product.priceDiscount
-                    : undefined
-                }
-                imageUrl={fullProduct.images?.[0] ?? 'img/default-image.png'}
-                isFavorite={true}
-                screen={product.screen}
-                capacity={product.capacity}
-                ram={product.ram}
-                onAddToCart={() => dispatch({ type: 'ADD_TO_CART', product })}
-                onToggleFavorite={() =>
-                  dispatch({ type: 'TOGGLE_FAVORITE', product })
-                }
-              />
+                className={styles.link_product}
+              >
+                <DiscountProductCard
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  price={product.priceRegular}
+                  discountPrice={
+                    typeof product.priceDiscount === 'number'
+                      ? product.priceDiscount
+                      : undefined
+                  }
+                  imageUrl={fullProduct.images?.[0] ?? 'img/default-image.png'}
+                  isFavorite={true}
+                  screen={product.screen}
+                  capacity={product.capacity}
+                  ram={product.ram}
+                  onAddToCart={() => dispatch({ type: 'ADD_TO_CART', product })}
+                  onToggleFavorite={() =>
+                    dispatch({ type: 'TOGGLE_FAVORITE', product })
+                  }
+                />
+              </Link>
             );
           })}
         </div>

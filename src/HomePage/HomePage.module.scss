@@ -42,10 +42,9 @@
 .header__paragraph {
   font-family: Mont;
   font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
+  font-size: 48px;
+  line-height: 56px;
   letter-spacing: -1%;
-
 }
 
 
@@ -111,9 +110,12 @@
 
 @media screen and (min-width: 1200px){
   .container {
-    max-width: 100%;
-    width: 100%;
-    margin: 0 152px 0 152px;
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    margin: 0 auto;
   }
 
   .slider {
@@ -154,11 +156,11 @@
 
   .header__paragraph {
     font-family: Mont;
-    font-weight: 800;
     font-size: 48px;
-    line-height: 56px;
-    letter-spacing: -1%;
-    text-align: left;
+    font-weight: 800;
+    color: #0f0f11;
+    margin-top: 56px;
+    margin-bottom: 56px;
     white-space: nowrap;
   }
 }

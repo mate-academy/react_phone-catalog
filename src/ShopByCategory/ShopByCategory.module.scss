@@ -86,9 +86,8 @@
 
 @media screen and (min-width: 640px){
   .category {
-    margin: 64px 0 0 24px;
+    margin: 0 24px 0 24px;
     width: 100%;
-    max-width: 1136px;
     max-height: 327px;
   }
 
@@ -98,6 +97,7 @@
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -1%;
+    padding: 0;
   }
 
   .categorys {
@@ -109,9 +109,8 @@
   }
 
   .category_item {
-    width: 182px;
-    height: 262px;
-    margin: 0 10px;
+    height: 327px;
+    gap: 16px;
   }
 
   .mobile {
@@ -130,8 +129,8 @@
   }
 
   .image {
-    width: 187px;
-    height: 187px;
+    width: 100%;
+    height: auto;
     margin-bottom: -20px;
 
   }

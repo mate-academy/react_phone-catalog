@@ -2,7 +2,6 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  justify-content: space-between;
   gap: 16px;
 }
 
@@ -31,11 +30,13 @@
 .buttons_controls {
   width: 32px;
   height: 32px;
-  gap: 16px;
   background-color: #fff;
   border: 1px solid gray;
   transition: background-color 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .buttons_controls:disabled {
@@ -44,39 +45,30 @@
 }
 
 .product_grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
   margin: 32px 0 24px 0;
-  gap: 16px;
+  width: 100%;
 }
 
 .link_product {
   text-decoration: none;
   color: inherit;
   display: block;
+  height: 506px;
 }
 
-
-@media screen and (min-width: 640px){
+/* Tablet */
+@media screen and (min-width: 640px) {
   .product_list {
-    max-width: 1199px;
     width: 100%;
-    max-height: 744px;
-    height: 100%;
-    margin-top: 96px;
-
+    margin-top: 64px;
+    margin: auto;
   }
 
   .controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 592px;
+    max-width: 1136px;
   }
 
   .title {
-    font-family: Mont;
-    font-weight: 800;
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -1%;
@@ -84,67 +76,46 @@
   }
 
   .buttons_group {
-    display: flex;
+    position: relative;
     margin-left: auto;
     gap: 16px;
   }
 
-  .buttons_controls {
-    width: 32px;
-    height: 32px;
-    gap: 16px;
-    background-color: #fff;
-    border: 1px solid gray;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-    cursor: pointer;
-  }
-
-  .buttons_controls:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
   .product_grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    max-width: 100%;
+    width: 100%;
   }
 
   .link_product {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+    height: 512px;
+    object-fit: none;
   }
 }
 
-
-@media screen and (min-width: 1200px){
+/* Desktop */
+@media screen and (min-width: 1200px) {
   .product_list {
-    padding: 20px;
-    max-width: 1440px;
-    height: 577px;
-    margin: auto;
+    width: 1136px;
   }
 
   .controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 100%;
+    width: 1136px;
   }
 
+
   .title {
-    font-family: Mont;
-    font-weight: 800;
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -1%;
   }
 
   .buttons_group {
+
     display: flex;
     gap: 16px;
+    margin-left: auto;
   }
 
   .buttons_controls {
@@ -154,26 +125,17 @@
     border: 1px solid gray;
     transition: background-color 0.3s ease, opacity 0.3s ease;
     cursor: pointer;
-  }
-
-  .buttons_controls:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .product_grid {
-    display: flex;
-    justify-content: flex-start;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
     margin-top: 20px;
+    width: 100%;
   }
 
   .link_product {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+    height: 506px;
   }
 }
-
-
