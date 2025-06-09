@@ -11,11 +11,13 @@ import { FavoritesProvider } from './components/Favorites/FavoritesContext';
 import { Cart } from './components/CarT';
 import { CartProvider } from './components/CarT/CartContext';
 import { NotFoundPage } from './components/NotFoundPage';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export const Root = () => (
   <Router>
     <FavoritesProvider>
       <CartProvider>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="/" element={<HomePage />}>
