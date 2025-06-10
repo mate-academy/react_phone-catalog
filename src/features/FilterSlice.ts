@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface FilterState {
   query: string;
-  status: 'newest' | 'alphabetically' | 'cheapest';
+  status: 'age' | 'name' | 'price';
   loading: boolean;
 }
 const initialState: FilterState = {
   query: '',
-  status: 'newest',
+  status: 'age',
   loading: false,
 }
 
@@ -21,7 +21,7 @@ export const filterSlice = createSlice({
     },
     setStatus: (
       state,
-      action: PayloadAction<'newest' | 'alphabetically' | 'cheapest'>,
+      action: PayloadAction<'age' | 'name' | 'price'>,
     ) => {
       state.status = action.payload;
     },

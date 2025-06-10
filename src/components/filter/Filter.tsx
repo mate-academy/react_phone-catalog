@@ -5,17 +5,27 @@ import { setStatus } from "../../features/FilterSlice";
 import { setStatusPagin } from '../../features/PaginationSlice';
 
 import { DropDownMenu } from '../dropDownMenu/DropDownMenu';
-
+import { useSearchParams } from 'react-router-dom';
 
 export const Filter = () => {
+  const [filterParams, setFilterParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const  status  = useAppSelector(state => state.filter.status);
 const paginationStatus = useAppSelector(state=>state.pagination.status)
   const handleStatusChange = (value) => {
     dispatch(setStatus(value));
+
+    const params = new URLSearchParams(filterParams);
+
+    params.set('sort', value)
+     setFilterParams(params)
+
   };
   const handleStatusPagination = (value) => {
     dispatch(setStatusPagin(value));
+      const params = new URLSearchParams(filterParams);
+    params.set('perPage', value)
+     setFilterParams(params)
   }
 
   return (<>

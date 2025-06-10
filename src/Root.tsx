@@ -18,7 +18,8 @@ export const Root = () => {
           <Route index element={<HomePage />} />
 
           <Route path="phones">
-            <Route index element={<PhonePage/>}/>
+            <Route index element={<PhonePage />} />
+            
           </Route>
           <Route path="accessories">
             <Route index element={<AccessoriesPage/>}/>

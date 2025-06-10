@@ -22,11 +22,11 @@ const categoryProducts = AllProducts.filter(product => product.category === cate
 const currentPage = useAppSelector(state=>state.pagination.currentPage)
 
   const visibleGoods = [...categoryProducts].sort((a, b) => {
-    if (filterStatus === 'newest') { return b.year - a.year }
-    if (filterStatus === 'alphabetically') {
+    if (filterStatus === 'age') { return b.year - a.year }
+    if (filterStatus === 'name') {
       return a.name.localeCompare(b.name)
     }
-    if(filterStatus ==='cheapest'){return b.price-a.price}
+    if(filterStatus ==='price'){return b.price-a.price}
     return 0;
   })
 

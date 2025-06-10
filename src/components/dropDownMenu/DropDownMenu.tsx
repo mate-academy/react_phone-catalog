@@ -12,9 +12,9 @@ const optionsPagination = [
 ] as const;
 
 const optionsFilter = [
-  { value: "newest", label: "Newest" },
-  { value: "alphabetically", label: "Alphabetically" },
-  { value: 'cheapest', label: "Cheapest" },
+  { value: "age", label: "Newest" },
+  { value: "name", label: "Alphabetically" },
+  { value: 'price', label: "Cheapest" },
 
 ] as const;
 

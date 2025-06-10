@@ -1,15 +1,16 @@
 import styles from './ControlPagination.module.scss';
-import { NavLink } from "react-router-dom"
+
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {setCurrentPage} from '../../features/PaginationSlice'
 import classNames from 'classnames';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 
 
 export const ControlPagination = ({ allGoods, perPages }) => {
-
+  const [searchParams, setSearhParams] = useSearchParams();
   const dispatch = useAppDispatch();
 const totalPages = Math.ceil(allGoods.length / perPages);
 
@@ -34,8 +35,14 @@ const getVisiblePages = (totalPages: number, currentPage: number): number[] => {
   return (<><div className={styles.pagination}>
     <ul className={styles.pagination__flex}>
         <li className={classNames(styles.pagination__list,[styles['pagination__list--left']])} >
-         <button className={classNames(styles.pagination__link,{[styles['pagination__link--disabled']]:currentPage === 1})}
-  onClick={() => dispatch(setCurrentPage(currentPage - 1))}
+        <button className={classNames(styles.pagination__link, { [styles['pagination__link--disabled']]: currentPage === 1 })}
+          onClick={() => {
+            dispatch(setCurrentPage(currentPage - 1));
+              const params = new URLSearchParams(searchParams)
+            params.set('page', currentPage - 1)
+            setSearhParams(params)
+
+          }}
 
 >
   <IoIosArrowBack />
@@ -43,7 +50,12 @@ const getVisiblePages = (totalPages: number, currentPage: number): number[] => {
       </li>
       {getVisiblePages(totalPages,currentPage).map(page => {
         return<li className={styles.pagination__list}  key = {page}><button
-  onClick={() => dispatch(setCurrentPage(page))}
+          onClick={() => {
+            dispatch(setCurrentPage(page))
+            const params = new URLSearchParams(searchParams)
+            params.set('page', page)
+            setSearhParams(params)
+           }}
   className={classNames(styles.pagination__link,{[styles['pagination__link--active']]:page === currentPage})  }
 >
   {page}
@@ -55,7 +67,12 @@ const getVisiblePages = (totalPages: number, currentPage: number): number[] => {
 
      <li className={classNames(styles.pagination__list,[styles['pagination__list--right']])} >
            <button className={classNames(styles.pagination__link,{[styles['pagination__link--disabled']]:currentPage === totalPages})}
- onClick={() => dispatch(setCurrentPage(currentPage + 1))}
+          onClick={() => {
+            dispatch(setCurrentPage(currentPage + 1))
+              const params = new URLSearchParams(searchParams)
+            params.set('page', currentPage + 1)
+            setSearhParams(params)
+          }}
   disabled={currentPage === totalPages}
 >
   <IoIosArrowForward />
