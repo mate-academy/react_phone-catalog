@@ -1,0 +1,20 @@
+@use '../../styles/vars.scss';
+
+.back-button {
+  display: flex;
+  gap: 4px;
+  align-items: start;
+
+  cursor: pointer;
+    &__text {
+    margin-top: 1px;
+    color: vars.$color-secondary;
+
+    transition: color vars.$transition-time;
+
+  }
+
+  &:hover &__text {
+    color: vars.$color-primary;
+  }
+}
