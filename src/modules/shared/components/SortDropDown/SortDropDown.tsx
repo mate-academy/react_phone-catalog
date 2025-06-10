@@ -11,6 +11,7 @@ export const SortDropDown = () => {
           Sort by
         </label>
         <select
+          defaultValue={'age'}
           onChange={event => {
             if (event.target.value === 'age') {
               setSearchParams(prev => {

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import styles from './PhonesCatalog.module.scss';
 import { ProductCard } from '../../../shared/components/ProductCard';
 import { getProduct } from '../../../shared/utils/fetchClient';
@@ -20,7 +21,8 @@ export const PhonesCatalog = () => {
   const [searechParams] = useSearchParams();
 
   const sortParam = searechParams.get('sort');
-  const phonesCounter = products?.length;
+  const itemsPerPage = searechParams.get('perPage');
+  const currentPage = searechParams.get('page') ?? '1';
 
   const loadProducts = useCallback(() => {
     return getProduct('/products.json')
@@ -45,6 +47,50 @@ export const PhonesCatalog = () => {
   }
 
   const phones = products?.filter(product => product.category === 'phones');
+  const phonesCounter = phones?.length;
+
+  const getPages = (totalPages: number | undefined) => {
+    return [...Array(totalPages)].map((_, i) => i + 1);
+  };
+
+  const totalPages = getPages(phonesCounter);
+
+  const filterItemsOnPage = (
+    pages: number[],
+    product: Product[] | undefined,
+    actualPage: number,
+    phonesPerPage: number,
+  ) => {
+    const items = pages;
+    let elements = product;
+
+    items.forEach((_, i) => {
+      let startPosition = 0;
+      let endPosition = 0;
+
+      if (i === 0) {
+        startPosition = 0;
+        endPosition = phonesPerPage;
+      } else {
+        startPosition = i * phonesPerPage - 1;
+        endPosition = startPosition + phonesPerPage;
+      }
+
+      if (i === actualPage) {
+        elements = elements?.slice(startPosition, endPosition);
+      }
+
+      startPosition += phonesPerPage;
+      endPosition += phonesPerPage;
+
+      return elements;
+
+      console.log(startPosition, endPosition);
+      console.log(elements);
+    });
+
+    return elements;
+  };
 
   const sortedPhones = useMemo(() => {
     let sorted = phones;
@@ -61,8 +107,38 @@ export const PhonesCatalog = () => {
       sorted = sorted?.sort((a, b) => a.name.localeCompare(b.name));
     }
 
+    switch (itemsPerPage) {
+      case '4':
+        sorted = filterItemsOnPage(
+          totalPages,
+          sorted,
+          +currentPage,
+          +itemsPerPage,
+        );
+        break;
+      case '8':
+        sorted = filterItemsOnPage(
+          totalPages,
+          sorted,
+          +currentPage,
+          +itemsPerPage,
+        );
+        break;
+      case '16':
+        sorted = filterItemsOnPage(
+          totalPages,
+          sorted,
+          +currentPage,
+          +itemsPerPage,
+        );
+        break;
+
+      default:
+        return sorted;
+    }
+
     return sorted;
-  }, [phones, sortParam]);
+  }, [currentPage, itemsPerPage, phones, sortParam, totalPages]);
 
   return (
     <>
@@ -107,7 +183,7 @@ export const PhonesCatalog = () => {
             })}
           </div>
         )}
-        <Pagination total={phonesCounter} perPage={16} />
+        <Pagination getPages={getPages} total={phonesCounter} />
       </div>
     </>
   );
