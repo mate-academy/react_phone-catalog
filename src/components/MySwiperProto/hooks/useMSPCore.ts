@@ -22,7 +22,6 @@ export const useMSPCore = () => {
     widthRef,
     infinite,
     listLength,
-    activeIndexRef,
     isDraggingRef,
     snapTimerRef,
     dragRef,
@@ -43,6 +42,18 @@ export const useMSPCore = () => {
     animationSpeed,
   });
 
+  const getIndex = () => {
+    let index;
+
+    if (!infinite) {
+      index = Math.round(offsetRef.current / widthRef.current);
+    } else {
+      index = Math.round(offsetRef.current / widthRef.current) - 1;
+    }
+
+    return index;
+  };
+
   // #region Handlers
   const handleByIndex = useCallback((idx: number) => {
     offsetRef.current = infinite
@@ -54,15 +65,15 @@ export const useMSPCore = () => {
 
   const buttonHandler = useCallback((dir: Direction) => {
     const mod = dir === Direction.LEFT ? -1 : 1;
-    const newIndex = activeIndexRef.current + mod;
+    const newIndex = getIndex() + mod;
 
     if (infinite) {
       if (newIndex < 0) {
         handleByIndex(newIndex);
-        secondStageTransition(listLength - 1, listLength * widthRef.current);
+        secondStageTransition(listLength * widthRef.current);
       } else if (newIndex > listLength - 1) {
         handleByIndex(newIndex);
-        secondStageTransition(0, widthRef.current);
+        secondStageTransition(widthRef.current);
       } else {
         handleByIndex(newIndex);
       }
@@ -82,18 +93,18 @@ export const useMSPCore = () => {
 
     const treshold = widthRef.current / 10;
     const step = dragRef.current < 0 ? 1 : -1;
-    const isFirst = activeIndexRef.current <= 0 && step === -1;
-    const isLast = activeIndexRef.current >= listLength - 1 && step === 1;
+    const isFirst = getIndex() <= 0 && step === -1;
+    const isLast = getIndex() >= listLength - 1 && step === 1;
 
     if (Math.abs(dragRef.current) > treshold) {
       dragRef.current = 0;
       isDraggingRef.current = false;
       if (isFirst && step === -1) {
-        firstStageTransition(-1, 0);
-        secondStageTransition(listLength - 1, listLength * widthRef.current);
+        firstStageTransition(0);
+        secondStageTransition(listLength * widthRef.current);
       } else if (isLast && step === 1) {
-        firstStageTransition(listLength, (listLength + 1) * widthRef.current);
-        secondStageTransition(0, widthRef.current);
+        firstStageTransition((listLength + 1) * widthRef.current);
+        secondStageTransition(widthRef.current);
       } else {
         handleByIndex(startIndex.current + step);
       }
@@ -114,7 +125,7 @@ export const useMSPCore = () => {
 
     e.currentTarget.setPointerCapture(e.pointerId);
     startXRef.current = e.clientX;
-    startIndex.current = activeIndexRef.current;
+    startIndex.current = getIndex();
     dragRef.current = 0;
     isDraggingRef.current = true;
     startRafLoop();
@@ -182,9 +193,9 @@ export const useMSPCore = () => {
   // #endregion
   //autoplay
 
-  useResize({ handleByIndex });
+  useResize({ handleByIndex, getIndex });
 
   useAutoplay({ autoplay, buttonHandler });
 
-  return { handlers, handleByIndex, buttonHandler };
+  return { handlers, handleByIndex, buttonHandler, getIndex };
 };

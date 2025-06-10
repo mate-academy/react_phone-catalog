@@ -9,35 +9,27 @@ type Props = {
 };
 
 export const useMSPTransition = ({ animationSpeed }: Props) => {
-  const { activeIndexRef, offsetRef, isDraggingRef, snapTimerRef } =
-    useMSPContext();
+  const { offsetRef, isDraggingRef, snapTimerRef, rerender } = useMSPContext();
   const { startRafLoop, endRafLoop } = useRafLoop();
 
-  const firstStageTransition = useCallback(
-    (newIndex: number, newOffset: number) => {
-      activeIndexRef.current = newIndex;
+  const firstStageTransition = useCallback((newOffset: number) => {
+    offsetRef.current = newOffset;
+    startRafLoop();
+    endRafLoop();
+    rerender();
+  }, []);
+
+  const secondStageTransition = useCallback((newOffset: number) => {
+    snapTimerRef.current = setTimeout(() => {
+      isDraggingRef.current = true;
       offsetRef.current = newOffset;
       startRafLoop();
       endRafLoop();
-    },
-    [],
-  );
-
-  const secondStageTransition = useCallback(
-    (newIndex: number, newOffset: number) => {
-      snapTimerRef.current = setTimeout(() => {
-        isDraggingRef.current = true;
-        activeIndexRef.current = newIndex;
-        offsetRef.current = newOffset;
-        startRafLoop();
-        endRafLoop();
-        isDraggingRef.current = false;
-        clearTimeout(snapTimerRef.current as NodeJS.Timeout);
-        snapTimerRef.current = null;
-      }, animationSpeed);
-    },
-    [],
-  );
+      isDraggingRef.current = false;
+      clearTimeout(snapTimerRef.current as NodeJS.Timeout);
+      snapTimerRef.current = null;
+    }, animationSpeed);
+  }, []);
 
   return { firstStageTransition, secondStageTransition };
 };

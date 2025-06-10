@@ -5,27 +5,32 @@ import { useMSPContext } from '../../context/useMSPContext';
 type Props = {
   className: string;
   swapper: (idx: number) => void;
+  getIndex: () => number;
 };
 
-export const MSPPagination: React.FC<Props> = ({ className, swapper }) => {
-  const { listLength, offsetRef, infinite, widthRef } = useMSPContext();
+export const MSPPagination: React.FC<Props> = ({
+  className,
+  swapper,
+  getIndex,
+}) => {
+  const { listLength } = useMSPContext();
   const array = [];
-
-  const getIndex = () => {
-    let index;
-
-    if (!infinite) {
-      index = Math.round(offsetRef.current / widthRef.current);
-    } else {
-      index = Math.round(offsetRef.current / widthRef.current) - 1;
-    }
-
-    return index;
-  };
 
   for (let i = 0; i < listLength; i++) {
     array.push(i);
   }
+
+  const helper = () => {
+    if (getIndex() <= 0) {
+      return 0;
+    }
+
+    if (getIndex() >= listLength) {
+      return listLength;
+    }
+
+    return getIndex();
+  };
 
   return (
     <div className={`${styles['line-pagination']} ${className}`}>
@@ -37,7 +42,7 @@ export const MSPPagination: React.FC<Props> = ({ className, swapper }) => {
         >
           <div
             className={classNames(styles['line-element'], {
-              [styles['line-element__active']]: li === getIndex(),
+              [styles['line-element__active']]: li === helper(),
             })}
           />
         </div>

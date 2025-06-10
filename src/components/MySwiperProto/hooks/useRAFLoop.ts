@@ -3,17 +3,8 @@ import { useMSPContext } from '../context/useMSPContext';
 
 export const useRafLoop = () => {
   const rafIdRef = useRef<number | null>(null);
-  const {
-    trackRef,
-    offsetRef,
-    isDraggingRef,
-    dragRef,
-    rerender,
-    swipeCoeff,
-    activeIndexRef,
-    infinite,
-    widthRef,
-  } = useMSPContext();
+  const { trackRef, offsetRef, isDraggingRef, dragRef, rerender, swipeCoeff } =
+    useMSPContext();
 
   const toggleTrackClass = useCallback((prop: HTMLUListElement) => {
     prop.classList.toggle('swiper__track--dragging', isDraggingRef.current);
@@ -28,20 +19,12 @@ export const useRafLoop = () => {
     return transformValue;
   }, []);
 
-  const indexSetter = useCallback(() => {
-    activeIndexRef.current = infinite
-      ? Math.round(offsetRef.current / widthRef.current) - 1
-      : Math.round(offsetRef.current / widthRef.current);
-  }, []);
-
   const loop = useCallback(() => {
     const track = trackRef.current as HTMLUListElement;
 
     toggleTrackClass(track);
 
     track.style.transform = positionSetter();
-
-    indexSetter();
     rafIdRef.current = requestAnimationFrame(loop);
   }, []);
 

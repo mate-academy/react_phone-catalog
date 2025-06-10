@@ -15,7 +15,6 @@ type MSPContextType = {
   offsetRef: React.MutableRefObject<number>;
   rerender: () => void;
   listLength: number;
-  activeIndexRef: React.MutableRefObject<number>;
   infinite: boolean;
   isDraggingRef: React.MutableRefObject<boolean>;
   snapTimerRef: React.MutableRefObject<NodeJS.Timeout | null>;
@@ -64,12 +63,11 @@ export const MSPProvider: React.FC<MSPProviderProps> = ({
   const trackRef = useRef<HTMLUListElement>(null);
   const VPRef = useRef<HTMLDivElement>(null);
   const offsetRef = useRef(0);
-  const activeIndexRef = useRef<number>(0);
   const isDraggingRef = useRef(false);
   const dragRef = useRef<number>(0);
   const snapTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const [, forceRerender] = useState({});
   const widthRef = useRef<number>(0);
+  const [, forceRerender] = useState({});
   const renderList = useMemo(() => {
     let list;
 
@@ -100,7 +98,6 @@ export const MSPProvider: React.FC<MSPProviderProps> = ({
     offsetRef,
     rerender,
     listLength,
-    activeIndexRef,
     infinite,
     isDraggingRef,
     snapTimerRef,

@@ -18,6 +18,7 @@ export const HomePage = () => {
         delay={2000}
         times={3}
       />
+      <MeinSwiper dataset={bannerList} buttons pagination />
     </>
   );
 };

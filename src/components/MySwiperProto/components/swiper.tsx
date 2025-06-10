@@ -13,7 +13,7 @@ type Props = {
 export const MSPSwiper: React.FC<Props> = ({ buttons, pagination }) => {
   const { VPRef, trackRef, renderList, animationSpeed, gap } = useMSPContext();
 
-  const { handlers, handleByIndex, buttonHandler } = useMSPCore();
+  const { handlers, handleByIndex, buttonHandler, getIndex } = useMSPCore();
 
   return (
     <div className="swiper">
@@ -51,6 +51,7 @@ export const MSPSwiper: React.FC<Props> = ({ buttons, pagination }) => {
         <MSPPagination
           className={'swiper__pagination'}
           swapper={handleByIndex}
+          getIndex={getIndex}
         />
       )}
     </div>

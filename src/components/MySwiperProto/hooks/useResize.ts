@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { useMSPContext } from '../context/useMSPContext';
 type Props = {
   handleByIndex: (idx: number) => void;
+  getIndex: () => number;
 };
-export const useResize = ({ handleByIndex }: Props) => {
-  const { VPRef, isDraggingRef, activeIndexRef, widthRef } = useMSPContext();
+export const useResize = ({ handleByIndex, getIndex }: Props) => {
+  const { VPRef, isDraggingRef, widthRef } = useMSPContext();
 
   useEffect(() => {
     if (!VPRef.current) {
@@ -15,7 +16,7 @@ export const useResize = ({ handleByIndex }: Props) => {
     const resizeObs = new ResizeObserver(() => {
       widthRef.current = node.offsetWidth;
       isDraggingRef.current = true;
-      handleByIndex(activeIndexRef.current);
+      handleByIndex(getIndex());
       isDraggingRef.current = false;
     });
 
