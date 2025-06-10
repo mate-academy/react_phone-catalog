@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Autoplay, Direction } from '../types/MSPtypes';
-import { useMSPContext } from './useMSPContext';
+import { useMSPContext } from '../context/useMSPContext';
 
 type Props = {
   autoplay: Autoplay | false;

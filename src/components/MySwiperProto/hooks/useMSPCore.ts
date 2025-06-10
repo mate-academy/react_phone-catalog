@@ -1,18 +1,12 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { useSwiperContext } from '../context/MSPContext';
-import { Autoplay, Direction } from '../types/MSPtypes';
+import { useMSPContext } from '../context/useMSPContext';
+import { Direction } from '../types/MSPtypes';
 import { useAutoplay } from './useAutoplay';
 import { useRafLoop } from './useRAFLoop';
 import { useMSPTransition } from './useMSPTransition';
 
-type Props = {
-  clamp: boolean;
-  autoplay: Autoplay | false;
-  animationSpeed: number;
-};
-
 //                      TODO: add snap mode, correct positioning if gap
-export const useMSPCore = ({ clamp, autoplay, animationSpeed }: Props) => {
+export const useMSPCore = () => {
   const {
     offsetRef,
     width,
@@ -22,11 +16,13 @@ export const useMSPCore = ({ clamp, autoplay, animationSpeed }: Props) => {
     isDraggingRef,
     snapTimerRef,
     dragRef,
-  } = useSwiperContext();
+    autoplay,
+    animationSpeed,
+    clamp,
+    swipeCoeff,
+  } = useMSPContext();
   const startXRef = useRef<number | null>(null);
   const startIndex = useRef<number | null>(null);
-
-  const SWIPE_COEFF = 1.2;
 
   const { startRafLoop, endRafLoop } = useRafLoop();
   const { firstStageTransition, secondStageTransition } = useMSPTransition({
@@ -129,14 +125,14 @@ export const useMSPCore = ({ clamp, autoplay, animationSpeed }: Props) => {
     const rawDrag = event.clientX - startXRef.current;
 
     if (clamp) {
-      const futureOffset = offsetRef.current - rawDrag * SWIPE_COEFF;
+      const futureOffset = offsetRef.current - rawDrag * swipeCoeff;
       const maxOffset = (infinite ? listLength + 1 : listLength - 1) * width;
 
       dragRef.current =
         futureOffset < 0
-          ? offsetRef.current / SWIPE_COEFF
+          ? offsetRef.current / swipeCoeff
           : futureOffset > maxOffset
-            ? (offsetRef.current - maxOffset) / SWIPE_COEFF
+            ? (offsetRef.current - maxOffset) / swipeCoeff
             : rawDrag;
     } else {
       dragRef.current = rawDrag;
@@ -153,7 +149,7 @@ export const useMSPCore = ({ clamp, autoplay, animationSpeed }: Props) => {
     }
 
     if (!infinite) {
-      offsetRef.current -= dragRef.current * SWIPE_COEFF;
+      offsetRef.current -= dragRef.current * swipeCoeff;
     } else {
       snapHandler();
     }

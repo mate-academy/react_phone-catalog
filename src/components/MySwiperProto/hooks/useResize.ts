@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useSwiperContext } from '../context/MSPContext';
+import { useMSPContext } from '../context/useMSPContext';
 
 export const useResize = () => {
-  const { VPRef, setWidth, rerender } = useSwiperContext();
+  const { VPRef, setWidth, rerender } = useMSPContext();
 
   useEffect(() => {
     if (VPRef.current) {

@@ -1,5 +1,5 @@
 import { MSPSwiper } from './components/swiper';
-import { SwiperProvider } from './context/MSPContext';
+import { MSPProvider } from './context/useMSPContext';
 import { Autoplay, Direction, SwiperData } from './types/MSPtypes';
 
 type Props = {
@@ -14,6 +14,7 @@ type Props = {
   times?: number;
   animationSpeed?: number;
   gap?: number;
+  swipeCoeff?: number;
 };
 
 export const MeinSwiper: React.FC<Props> = ({
@@ -28,6 +29,7 @@ export const MeinSwiper: React.FC<Props> = ({
   delay = 5000,
   times = Infinity,
   gap = 0,
+  swipeCoeff = 1.2,
 }) => {
   const autoplayObj: Autoplay = {
     direction: direction,
@@ -36,15 +38,16 @@ export const MeinSwiper: React.FC<Props> = ({
   };
 
   return (
-    <SwiperProvider dataset={dataset} infinite={infinite}>
-      <MSPSwiper
-        clamp={clamp}
-        buttons={buttons}
-        pagination={pagination}
-        autoplay={autoplay ? autoplayObj : false}
-        animationSpeed={animationSpeed}
-        gap={gap}
-      />
-    </SwiperProvider>
+    <MSPProvider
+      dataset={dataset}
+      infinite={infinite}
+      clamp={clamp}
+      autoplay={autoplay ? autoplayObj : false}
+      animationSpeed={animationSpeed}
+      gap={gap}
+      swipeCoeff={swipeCoeff}
+    >
+      <MSPSwiper buttons={buttons} pagination={pagination} />
+    </MSPProvider>
   );
 };

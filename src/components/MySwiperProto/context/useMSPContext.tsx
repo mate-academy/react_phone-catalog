@@ -8,9 +8,9 @@ import {
   useCallback,
   useEffect,
 } from 'react';
-import { SwiperData } from '../types/MSPtypes';
+import { Autoplay, SwiperData } from '../types/MSPtypes';
 
-type SwiperContextType = {
+type MSPContextType = {
   width: number;
   setWidth: React.Dispatch<React.SetStateAction<number>>;
   trackRef: React.RefObject<HTMLUListElement>;
@@ -24,13 +24,17 @@ type SwiperContextType = {
   isDraggingRef: React.MutableRefObject<boolean>;
   snapTimerRef: React.MutableRefObject<NodeJS.Timeout | null>;
   dragRef: React.MutableRefObject<number>;
-  SWIPE_COEFF: number;
+  autoplay: Autoplay | false;
+  animationSpeed: number;
+  gap: number;
+  clamp: boolean;
+  swipeCoeff: number;
 };
 
-const SwiperContext = createContext<SwiperContextType | null>(null);
+const MSPContext = createContext<MSPContextType | null>(null);
 
-export const useSwiperContext = () => {
-  const context = useContext(SwiperContext);
+export const useMSPContext = () => {
+  const context = useContext(MSPContext);
 
   if (!context) {
     throw new Error('Must be used within SwiperProvider');
@@ -39,16 +43,26 @@ export const useSwiperContext = () => {
   return context;
 };
 
-type SwiperProviderProps = {
+type MSPProviderProps = {
   children: ReactNode;
   dataset: SwiperData[];
   infinite: boolean;
+  autoplay: Autoplay | false;
+  animationSpeed: number;
+  gap: number;
+  clamp: boolean;
+  swipeCoeff: number;
 };
 
-export const SwiperProvider: React.FC<SwiperProviderProps> = ({
+export const MSPProvider: React.FC<MSPProviderProps> = ({
   children,
   dataset,
   infinite,
+  autoplay,
+  animationSpeed,
+  gap,
+  clamp,
+  swipeCoeff,
 }) => {
   const trackRef = useRef<HTMLUListElement>(null);
   const VPRef = useRef<HTMLDivElement>(null);
@@ -59,7 +73,6 @@ export const SwiperProvider: React.FC<SwiperProviderProps> = ({
   const snapTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [, forceRerender] = useState({});
   const dragRef = useRef<number>(0);
-  const SWIPE_COEFF = 1.2;
 
   // #region DataHandler
   let renderList;
@@ -128,10 +141,12 @@ export const SwiperProvider: React.FC<SwiperProviderProps> = ({
     isDraggingRef,
     snapTimerRef,
     dragRef,
-    SWIPE_COEFF,
+    swipeCoeff,
+    autoplay,
+    animationSpeed,
+    gap,
+    clamp,
   };
 
-  return (
-    <SwiperContext.Provider value={value}>{children}</SwiperContext.Provider>
-  );
+  return <MSPContext.Provider value={value}>{children}</MSPContext.Provider>;
 };

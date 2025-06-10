@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import { useSwiperContext } from '../context/MSPContext';
+import { useMSPContext } from '../context/useMSPContext';
 import { useRafLoop } from './useRAFLoop';
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 
 export const useMSPTransition = ({ animationSpeed }: Props) => {
   const { activeIndexRef, offsetRef, isDraggingRef, snapTimerRef } =
-    useSwiperContext();
+    useMSPContext();
   const { startRafLoop, endRafLoop } = useRafLoop();
 
   const firstStageTransition = useCallback(

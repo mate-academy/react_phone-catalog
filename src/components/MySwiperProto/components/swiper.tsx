@@ -1,35 +1,20 @@
 import { useResize } from '../hooks/useResize';
-import { useSwiperContext } from '../context/MSPContext';
+import { useMSPContext } from '../context/useMSPContext';
 import { MSPPagination } from './MSPPagination/MSPPagination';
 import { MSPSlide } from './MSPSlide/MSPSlide';
 import './Swiper.scss';
 import { MSPButton } from './MSPButton/MSPButton';
-import { Autoplay, Direction } from '../types/MSPtypes';
+import { Direction } from '../types/MSPtypes';
 import { useMSPCore } from '../hooks/useMSPCore';
 
 type Props = {
-  clamp: boolean;
   buttons: boolean;
   pagination: boolean;
-  autoplay: Autoplay | false;
-  animationSpeed: number;
-  gap: number;
 };
-export const MSPSwiper: React.FC<Props> = ({
-  clamp,
-  buttons,
-  pagination,
-  autoplay,
-  animationSpeed,
-  gap,
-}) => {
-  const { VPRef, trackRef, renderList } = useSwiperContext();
+export const MSPSwiper: React.FC<Props> = ({ buttons, pagination }) => {
+  const { VPRef, trackRef, renderList, animationSpeed, gap } = useMSPContext();
 
-  const { handlers, handleByIndex, buttonHandler } = useMSPCore({
-    clamp,
-    autoplay,
-    animationSpeed,
-  });
+  const { handlers, handleByIndex, buttonHandler } = useMSPCore();
 
   useResize();
 

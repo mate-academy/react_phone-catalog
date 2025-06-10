@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './MSPPagination.module.scss';
-import { useSwiperContext } from '../../context/MSPContext';
+import { useMSPContext } from '../../context/useMSPContext';
 
 type Props = {
   className: string;
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const MSPPagination: React.FC<Props> = ({ className, swapper }) => {
-  const { listLength, activeIndexRef } = useSwiperContext();
+  const { listLength, activeIndexRef } = useMSPContext();
   const array = [];
 
   for (let i = 0; i < listLength; i++) {

@@ -1,10 +1,10 @@
 import { useCallback, useRef } from 'react';
-import { useSwiperContext } from '../context/MSPContext';
+import { useMSPContext } from '../context/useMSPContext';
 
 export const useRafLoop = () => {
   const rafIdRef = useRef<number | null>(null);
-  const { trackRef, offsetRef, isDraggingRef, dragRef, rerender, SWIPE_COEFF } =
-    useSwiperContext();
+  const { trackRef, offsetRef, isDraggingRef, dragRef, rerender, swipeCoeff } =
+    useMSPContext();
 
   const toggleTrackClass = () => {
     const track = trackRef.current;
@@ -25,7 +25,7 @@ export const useRafLoop = () => {
     const loop = () => {
       if (trackRef.current) {
         const transformValue = isDraggingRef.current
-          ? `translateX(${-offsetRef.current + dragRef.current * SWIPE_COEFF}px)`
+          ? `translateX(${-offsetRef.current + dragRef.current * swipeCoeff}px)`
           : `translateX(${-offsetRef.current}px)`;
 
         toggleTrackClass();
