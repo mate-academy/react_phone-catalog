@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { useMSPContext } from '../context/useMSPContext';
 import { Direction } from '../types/MSPtypes';
 import { useAutoplay } from './useAutoplay';
@@ -170,15 +170,10 @@ export const useMSPCore = () => {
 
   // #endregion
   //autoplay
-  const { swAutoplay } = useAutoplay({ autoplay, buttonHandler });
 
   useResize({ handleByIndex });
 
-  useEffect(() => {
-    if (autoplay) {
-      swAutoplay();
-    }
-  }, [autoplay, buttonHandler]);
+  useAutoplay({ autoplay, buttonHandler });
 
   return { handlers, handleByIndex, buttonHandler };
 };

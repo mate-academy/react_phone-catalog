@@ -15,7 +15,7 @@ export const HomePage = () => {
         pagination
         autoplay
         direction={Direction.RIGHT}
-        delay={5000}
+        delay={2000}
         times={3}
       />
       <MeinSwiper dataset={bannerList} clamp pagination gap={20} />

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { Autoplay, Direction } from '../types/MSPtypes';
 import { useMSPContext } from '../context/useMSPContext';
 
@@ -9,41 +9,50 @@ type Props = {
 
 export const useAutoplay = ({ autoplay, buttonHandler }: Props) => {
   const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const autoPlayCountRef = useRef<number>(0);
+  const autoPlayCountRef = useRef<number>(1);
   const { isDraggingRef } = useMSPContext();
 
-  const swAutoplay = () => {
+  const cleanup = useCallback(() => {
+    if (autoPlayTimerRef.current !== null) {
+      clearInterval(autoPlayTimerRef.current);
+      autoPlayTimerRef.current = null;
+    }
+  }, []);
+
+  const startAutoplay = useCallback(() => {
     if (!autoplay) {
       return;
     }
 
     const { direction, delay, times } = autoplay;
 
-    const cleanup = () => {
-      if (autoPlayTimerRef.current !== null) {
-        clearInterval(autoPlayTimerRef.current);
-        autoPlayTimerRef.current = null;
-      }
-    };
-
     cleanup();
 
+    autoPlayTimerRef.current = setInterval(() => {
+      if (autoPlayCountRef.current >= times) {
+        cleanup();
+      }
+
+      if (isDraggingRef.current) {
+        cleanup();
+
+        return startAutoplay();
+      }
+
+      buttonHandler(direction);
+      autoPlayCountRef.current += 1;
+    }, delay);
+  }, []);
+
+  useEffect(() => {
     if (!autoplay) {
+      cleanup();
+
       return;
     }
 
-    autoPlayTimerRef.current = setInterval(() => {
-      if (!isDraggingRef.current) {
-        buttonHandler(direction);
-        autoPlayCountRef.current += 1;
-        if (autoPlayCountRef.current >= times) {
-          cleanup();
-        }
-      }
-    }, delay);
+    startAutoplay();
 
     return cleanup;
-  };
-
-  return { swAutoplay };
+  }, []);
 };

@@ -3,8 +3,17 @@ import { useMSPContext } from '../context/useMSPContext';
 
 export const useRafLoop = () => {
   const rafIdRef = useRef<number | null>(null);
-  const { trackRef, offsetRef, isDraggingRef, dragRef, rerender, swipeCoeff } =
-    useMSPContext();
+  const {
+    trackRef,
+    offsetRef,
+    isDraggingRef,
+    dragRef,
+    rerender,
+    swipeCoeff,
+    activeIndexRef,
+    infinite,
+    widthRef,
+  } = useMSPContext();
 
   const toggleTrackClass = () => {
     const track = trackRef.current;
@@ -34,6 +43,9 @@ export const useRafLoop = () => {
       }
 
       rafIdRef.current = requestAnimationFrame(loop);
+      activeIndexRef.current = infinite
+        ? Math.round(offsetRef.current / widthRef.current) - 1
+        : Math.round(offsetRef.current / widthRef.current);
     };
 
     loop();

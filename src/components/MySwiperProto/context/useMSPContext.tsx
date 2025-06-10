@@ -108,10 +108,6 @@ export const MSPProvider: React.FC<MSPProviderProps> = ({
     offsetRef.current = infinite ? widthRef.current : 0;
   }, [width]);
 
-  activeIndexRef.current = infinite
-    ? Math.round(offsetRef.current / widthRef.current) - 1
-    : Math.round(offsetRef.current / widthRef.current);
-
   const value = {
     renderList,
     width,
