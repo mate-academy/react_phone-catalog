@@ -10,7 +10,7 @@ type Props = {
 export const useAutoplay = ({ autoplay, buttonHandler }: Props) => {
   const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null);
   const autoPlayCountRef = useRef<number>(1);
-  const { isDraggingRef } = useMSPContext();
+  const { isDraggingRef, snapTimerRef } = useMSPContext();
 
   const cleanup = useCallback(() => {
     if (autoPlayTimerRef.current !== null) {
@@ -33,7 +33,7 @@ export const useAutoplay = ({ autoplay, buttonHandler }: Props) => {
         cleanup();
       }
 
-      if (isDraggingRef.current) {
+      if (isDraggingRef.current || snapTimerRef.current) {
         cleanup();
 
         return startAutoplay();

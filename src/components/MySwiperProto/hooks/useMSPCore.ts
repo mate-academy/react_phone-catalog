@@ -7,6 +7,15 @@ import { useMSPTransition } from './useMSPTransition';
 import { useResize } from './useResize';
 import { useInitialRerender } from './useInitialRerender';
 
+//todo:
+// change handlebyIndex offset change if gap;
+// make helper function (debounce);
+// switch RAF on css translateX if not dragging change;
+// change CSS to include/exclude GRID zones on props;
+// try to separate contexts
+// make prop for snaps
+// watch dragRef params; merge dragRef && isDragging
+
 export const useMSPCore = () => {
   const {
     offsetRef,
@@ -147,7 +156,7 @@ export const useMSPCore = () => {
     e.currentTarget.releasePointerCapture(e.pointerId);
     endRafLoop();
 
-    if (snapTimerRef.current !== null || dragRef.current === null) {
+    if (snapTimerRef.current !== null) {
       return;
     }
 

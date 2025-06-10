@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useMSPContext } from '../context/useMSPContext';
 import { useRafLoop } from './useRAFLoop';
 
@@ -32,19 +32,12 @@ export const useMSPTransition = ({ animationSpeed }: Props) => {
         startRafLoop();
         endRafLoop();
         isDraggingRef.current = false;
+        clearTimeout(snapTimerRef.current as NodeJS.Timeout);
         snapTimerRef.current = null;
       }, animationSpeed);
     },
     [],
   );
-
-  useEffect(() => {
-    return () => {
-      if (snapTimerRef.current) {
-        clearTimeout(snapTimerRef.current);
-      }
-    };
-  }, []);
 
   return { firstStageTransition, secondStageTransition };
 };

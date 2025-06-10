@@ -8,8 +8,20 @@ type Props = {
 };
 
 export const MSPPagination: React.FC<Props> = ({ className, swapper }) => {
-  const { listLength, activeIndexRef } = useMSPContext();
+  const { listLength, offsetRef, infinite, widthRef } = useMSPContext();
   const array = [];
+
+  const getIndex = () => {
+    let index;
+
+    if (!infinite) {
+      index = Math.round(offsetRef.current / widthRef.current);
+    } else {
+      index = Math.round(offsetRef.current / widthRef.current) - 1;
+    }
+
+    return index;
+  };
 
   for (let i = 0; i < listLength; i++) {
     array.push(i);
@@ -25,7 +37,7 @@ export const MSPPagination: React.FC<Props> = ({ className, swapper }) => {
         >
           <div
             className={classNames(styles['line-element'], {
-              [styles['line-element__active']]: li === activeIndexRef.current,
+              [styles['line-element__active']]: li === getIndex(),
             })}
           />
         </div>

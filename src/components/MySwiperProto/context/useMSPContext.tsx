@@ -9,8 +9,6 @@ import {
 import { Autoplay, SwiperData } from '../types/MSPtypes';
 
 type MSPContextType = {
-  width: number;
-  setWidth: React.Dispatch<React.SetStateAction<number>>;
   trackRef: React.RefObject<HTMLUListElement>;
   VPRef: React.RefObject<HTMLDivElement>;
   renderList: (SwiperData & { id: number })[];
@@ -65,7 +63,6 @@ export const MSPProvider: React.FC<MSPProviderProps> = ({
 }) => {
   const trackRef = useRef<HTMLUListElement>(null);
   const VPRef = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(0);
   const offsetRef = useRef(0);
   const activeIndexRef = useRef<number>(0);
   const isDraggingRef = useRef(false);
@@ -77,7 +74,7 @@ export const MSPProvider: React.FC<MSPProviderProps> = ({
     let list;
 
     if (!infinite) {
-      list = dataset;
+      list = [...dataset];
     } else {
       list = [
         { ...dataset[dataset.length - 1] },
@@ -98,8 +95,6 @@ export const MSPProvider: React.FC<MSPProviderProps> = ({
 
   const value = {
     renderList,
-    width,
-    setWidth,
     trackRef,
     VPRef,
     offsetRef,
