@@ -4,8 +4,7 @@ import {
   ReactNode,
   useState,
   useRef,
-  useLayoutEffect,
-  useCallback,
+  useMemo,
 } from 'react';
 import { Autoplay, SwiperData } from '../types/MSPtypes';
 
@@ -74,39 +73,28 @@ export const MSPProvider: React.FC<MSPProviderProps> = ({
   const snapTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [, forceRerender] = useState({});
   const widthRef = useRef<number>(0);
+  const renderList = useMemo(() => {
+    let list;
 
-  // #region DataHandler
-  let renderList;
-  let listLength;
+    if (!infinite) {
+      list = dataset;
+    } else {
+      list = [
+        { ...dataset[dataset.length - 1] },
+        ...dataset.map(item => ({ ...item })),
+        { ...dataset[0] },
+      ];
+    }
 
-  if (!infinite) {
-    renderList = dataset.map((item, idx) => ({ id: idx, ...item }));
-    listLength = renderList.length;
-  } else {
-    const extended = [
-      { ...dataset[dataset.length - 1] },
-      ...dataset.map(item => ({ ...item })),
-      { ...dataset[0] },
-    ];
-
-    renderList = extended.map((item, idx) => ({ id: idx, ...item }));
-    listLength = renderList.length - 2;
-  }
+    return list.map((item, idx) => ({ id: idx, ...item }));
+  }, []);
+  const listLength = dataset.length;
 
   // #endregion
 
-  const rerender = useCallback(() => {
+  const rerender = () => {
     forceRerender({});
-  }, []);
-
-  useLayoutEffect(() => {
-    if (VPRef.current) {
-      widthRef.current = VPRef.current.offsetWidth;
-      setWidth(VPRef.current.offsetWidth);
-    }
-
-    offsetRef.current = infinite ? widthRef.current : 0;
-  }, [width]);
+  };
 
   const value = {
     renderList,

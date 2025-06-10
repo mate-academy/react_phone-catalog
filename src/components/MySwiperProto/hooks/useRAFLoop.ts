@@ -15,38 +15,40 @@ export const useRafLoop = () => {
     widthRef,
   } = useMSPContext();
 
-  const toggleTrackClass = () => {
-    const track = trackRef.current;
+  const toggleTrackClass = useCallback((prop: HTMLUListElement) => {
+    prop.classList.toggle('swiper__track--dragging', isDraggingRef.current);
+    prop.classList.toggle('swiper__track--animated', !isDraggingRef.current);
+  }, []);
 
-    if (!track) {
-      return;
-    }
+  const positionSetter = useCallback(() => {
+    const transformValue = isDraggingRef.current
+      ? `translateX(${-offsetRef.current + dragRef.current * swipeCoeff}px)`
+      : `translateX(${-offsetRef.current}px)`;
 
-    track.classList.toggle('swiper__track--dragging', isDraggingRef.current);
-    track.classList.toggle('swiper__track--animated', !isDraggingRef.current);
-  };
+    return transformValue;
+  }, []);
+
+  const indexSetter = useCallback(() => {
+    activeIndexRef.current = infinite
+      ? Math.round(offsetRef.current / widthRef.current) - 1
+      : Math.round(offsetRef.current / widthRef.current);
+  }, []);
+
+  const loop = useCallback(() => {
+    const track = trackRef.current as HTMLUListElement;
+
+    toggleTrackClass(track);
+
+    track.style.transform = positionSetter();
+
+    indexSetter();
+    rafIdRef.current = requestAnimationFrame(loop);
+  }, []);
 
   const startRafLoop = useCallback(() => {
     if (rafIdRef.current !== null) {
       cancelAnimationFrame(rafIdRef.current);
     }
-
-    const loop = () => {
-      if (trackRef.current) {
-        const transformValue = isDraggingRef.current
-          ? `translateX(${-offsetRef.current + dragRef.current * swipeCoeff}px)`
-          : `translateX(${-offsetRef.current}px)`;
-
-        toggleTrackClass();
-
-        trackRef.current.style.transform = transformValue;
-      }
-
-      rafIdRef.current = requestAnimationFrame(loop);
-      activeIndexRef.current = infinite
-        ? Math.round(offsetRef.current / widthRef.current) - 1
-        : Math.round(offsetRef.current / widthRef.current);
-    };
 
     loop();
   }, []);

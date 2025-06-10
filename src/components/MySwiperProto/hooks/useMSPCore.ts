@@ -5,8 +5,8 @@ import { useAutoplay } from './useAutoplay';
 import { useRafLoop } from './useRAFLoop';
 import { useMSPTransition } from './useMSPTransition';
 import { useResize } from './useResize';
+import { useInitialRerender } from './useInitialRerender';
 
-//                      TODO: add snap mode, correct positioning if gap
 export const useMSPCore = () => {
   const {
     offsetRef,
@@ -24,6 +24,8 @@ export const useMSPCore = () => {
   } = useMSPContext();
   const startXRef = useRef<number | null>(null);
   const startIndex = useRef<number | null>(null);
+
+  useInitialRerender();
 
   const { startRafLoop, endRafLoop } = useRafLoop();
   const { firstStageTransition, secondStageTransition } = useMSPTransition({

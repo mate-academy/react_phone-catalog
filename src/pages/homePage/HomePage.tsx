@@ -18,8 +18,6 @@ export const HomePage = () => {
         delay={2000}
         times={3}
       />
-      <MeinSwiper dataset={bannerList} clamp pagination gap={20} />
-      <MeinSwiper dataset={bannerList} />
     </>
   );
 };

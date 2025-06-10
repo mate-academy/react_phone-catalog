@@ -4,28 +4,25 @@ type Props = {
   handleByIndex: (idx: number) => void;
 };
 export const useResize = ({ handleByIndex }: Props) => {
-  const { VPRef, setWidth, rerender, width, isDraggingRef, activeIndexRef } =
-    useMSPContext();
+  const { VPRef, isDraggingRef, activeIndexRef, widthRef } = useMSPContext();
 
   useEffect(() => {
-    const node = VPRef.current;
-
-    if (node === null) {
+    if (!VPRef.current) {
       return;
     }
 
+    const node = VPRef.current;
     const resizeObs = new ResizeObserver(() => {
-      setWidth(node.offsetWidth);
+      widthRef.current = node.offsetWidth;
       isDraggingRef.current = true;
       handleByIndex(activeIndexRef.current);
       isDraggingRef.current = false;
     });
 
     resizeObs.observe(node);
-    rerender();
 
     return () => {
       resizeObs.disconnect();
     };
-  }, [width, activeIndexRef]);
+  }, []);
 };
