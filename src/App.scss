@@ -548,6 +548,7 @@ body::-webkit-scrollbar { width: 0 !important }
   margin-top: 80px;
   position: static;
   &__link__logo {
+    padding-top: 32px;
     transition: transform 0.3s ease-in-out;
     &:hover {
       transform: scale(1.1);

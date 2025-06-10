@@ -121,7 +121,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    // padding-top: 40px;
+    padding-top: 40px;
   }
 
   &__image-main {
@@ -284,7 +284,7 @@
 
   &__discount {
     font-size: 32px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1;
     color: #89939a;
     position: relative;
@@ -528,6 +528,8 @@
   }
 }
 
+
+
 @media screen and (min-width: 1199px) {
   .details {
     max-width: 1136px;
@@ -538,7 +540,8 @@
 
 @media screen and (max-width: 1199px) {
   .details {
-    @include contentPaddingInline;
+    // @include contentPaddingInline;
+    padding-inline: 24px;
     font-family: 'Mont-Bold', 'sans-serif';
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -615,24 +618,19 @@
     }
 
     &__image-block {
-      grid-column: 3 / span 4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      object-fit: contain;
-      // padding-top: 40px;
-      top: 0;
-    }
+    grid-column: 3 / span 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+  }
 
-    &__image-main {
-      max-width: 464px;
-      height: 287px;
-      object-fit: contain;
-      grid-column: 3 / span 4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  &__image-main {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    grid-column: 3 / span 4;
+  }
 
     &__phone-colums {
       width: 80px;
@@ -786,7 +784,7 @@
 
     &__discount {
       font-size: 32px;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1;
       color: #89939a;
       position: relative;
@@ -1074,8 +1072,8 @@
 
     &__phone-colums {
       width: 100%;
-      display: flex;
-      flex-direction: row;
+      display: flex !important;
+      flex-direction: row !important;
       gap: 16px;
       padding-top: 16px;
       order: 2;
@@ -1258,7 +1256,7 @@
 
     &__discount {
       font-size: 32px;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1;
       color: #89939a;
       position: relative;
@@ -1489,6 +1487,8 @@
     }
   }
 }
+
+
 
 .swiper {
   max-width: 1136px;

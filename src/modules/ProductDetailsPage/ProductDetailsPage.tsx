@@ -113,12 +113,14 @@ export const ProductDetailsPage = () => {
 
         <div className="details__phone-colums">
           {item.images?.map((img, index) => (
+
             <img
               key={index}
               src={img}
               alt={`image-phone-${index}`}
               className={`details__image ${clickImage === img ? 'details__image--active' : ''}`}
               onClick={() => setClickImage(img)}
+
             />
           ))}
         </div>
