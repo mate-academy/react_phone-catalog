@@ -3,6 +3,7 @@ import styles from "./DropDownMenu.module.scss";
 
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
+import classNames from "classnames";
 const optionsPagination = [
   { value: "all", label: "All" },
   { value: '4', label: "4" },
@@ -27,7 +28,7 @@ type Props = {
 export const DropDownMenu: React.FC<Props> = ({ value, onChange , type}) => {
   const [isActive, setIsActive] = useState(false);
     const options = type === 'filter' ? optionsFilter : optionsPagination;
-  const selectedOption = options.find((opt) => opt.value === value);
+  const selectedOption = options.find(opt => opt.value === value);
 
  const handleChange = (selected: { value: string; label: string }) => {
     if (selected) {
@@ -36,14 +37,14 @@ export const DropDownMenu: React.FC<Props> = ({ value, onChange , type}) => {
   };
 
   return (<><div className={styles.dropDown}>
-    <label className={styles.dropDown__label} htmlFor="selectedLabel"> {type === 'filter' ? 'Sort by' : 'Items per page'}
+   <p className={styles.dropDown__label}>{type === 'filter' ? 'Sort by' : 'Items per page'}</p>
     <div  id='selectedLabel' className={styles.dropDown__title}
-    onClick={()=>{setIsActive((prev)=>!prev)}}>{selectedOption?.label || 'Select'}
+    onClick={()=>{setIsActive((prev)=>!prev)}}>{selectedOption?.label || 'none'}
         {!isActive ? <IoIosArrowDown className={styles.dropDown__arrow}/>:
 <IoIosArrowUp className={styles.dropDown__arrow}/>}
-    </div></label>
+    </div>
    {isActive && <ul className={styles.dropDown__list}>
-      {options.map(opt => <li key={opt.value} className={styles.dropDown__item}
+      {options.map(opt => <li key={opt.value} className={classNames(styles.dropDown__item,{[styles['dropDown__item--focused']]: opt.value === value})}
         onClick={() => {
           handleChange(opt)
           setIsActive(false)

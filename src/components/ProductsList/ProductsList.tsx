@@ -6,6 +6,7 @@ import { Loader } from "../Loader";
 import styles from './ProductList.module.scss';
 import { ControlPagination } from "../paginationControl/ControlPagination";
 import { Filter } from "../filter/Filter";
+import { ProductNotFound } from "../productNotFound/ProductNotFound";
 
 
 export const ProductList = () => {
@@ -14,13 +15,13 @@ export const ProductList = () => {
   const filterStatus = useAppSelector(state => state.filter.status);
   const location = useLocation();
    const category = location.pathname.split('/')[1];
-const CategoryProducts = AllProducts.filter(product => product.category === category)
+const categoryProducts = AllProducts.filter(product => product.category === category)
 
 
   const perPages = useAppSelector(state => state.pagination.status);
 const currentPage = useAppSelector(state=>state.pagination.currentPage)
 
-  const visibleGoods = [...CategoryProducts].sort((a, b) => {
+  const visibleGoods = [...categoryProducts].sort((a, b) => {
     if (filterStatus === 'newest') { return b.year - a.year }
     if (filterStatus === 'alphabetically') {
       return a.name.localeCompare(b.name)
@@ -35,14 +36,15 @@ visibleGoods.slice((currentPage - 1) * perPages, currentPage * perPages)
 
   return (<> {loading && <Loader />}
 
-  {visibleGoods.length === 0 && (
+  {visibleGoods.length === 0 && categoryProducts.length>0 &&(
         <p className="notification is-warning">
           There are no products matching current filter criteria
         </p>
       )}
-<Filter />
-    <div className={styles.product__list}>
+{visibleGoods.length >0 &&<Filter />}
 
+    <div className={styles.product__list}>
+      {categoryProducts.length === 0 && <ProductNotFound type={ category} />}
       {<ProductCart products={ paginationGoods} types={'grid'} />}
 
 

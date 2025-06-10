@@ -2,7 +2,7 @@ import styles from './TitlePages.module.scss';
 import { useAppSelector } from '../../app/hooks';
 type Props = {
   type:
-    | 'notFound'
+  | 'notFound'
     | 'home'
     | 'favourites'
     | 'cart'

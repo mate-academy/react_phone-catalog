@@ -12,6 +12,7 @@ const initialState: PaginationState = {
   currentPage: 1,
 
 }
+
 export const paginationSlice = createSlice({
   name: 'pagination',
   initialState,

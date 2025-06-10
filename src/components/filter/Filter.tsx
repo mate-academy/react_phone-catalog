@@ -1,5 +1,5 @@
-import styles from './Filter.module.scss'
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import styles from './Filter.module.scss';
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 import { setStatus } from "../../features/FilterSlice";
 import { setStatusPagin } from '../../features/PaginationSlice';
