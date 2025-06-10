@@ -2,10 +2,10 @@ import { useResize } from '../hooks/useResize';
 import { useSwiperContext } from '../context/MSPContext';
 import { MSPPagination } from './MSPPagination/MSPPagination';
 import { MSPSlide } from './MSPSlide/MSPSlide';
-import { useSwiperCore } from '../hooks/useSwiperCore';
 import './Swiper.scss';
 import { MSPButton } from './MSPButton/MSPButton';
 import { Autoplay, Direction } from '../types/MSPtypes';
+import { useMSPCore } from '../hooks/useMSPCore';
 
 type Props = {
   clamp: boolean;
@@ -25,7 +25,7 @@ export const MSPSwiper: React.FC<Props> = ({
 }) => {
   const { VPRef, trackRef, renderList } = useSwiperContext();
 
-  const { handlers, handleByIndex, buttonHandler } = useSwiperCore({
+  const { handlers, handleByIndex, buttonHandler } = useMSPCore({
     clamp,
     autoplay,
     animationSpeed,

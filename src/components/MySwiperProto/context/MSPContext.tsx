@@ -21,6 +21,10 @@ type SwiperContextType = {
   listLength: number;
   activeIndexRef: React.MutableRefObject<number>;
   infinite: boolean;
+  isDraggingRef: React.MutableRefObject<boolean>;
+  snapTimerRef: React.MutableRefObject<NodeJS.Timeout | null>;
+  dragRef: React.MutableRefObject<number>;
+  SWIPE_COEFF: number;
 };
 
 const SwiperContext = createContext<SwiperContextType | null>(null);
@@ -51,7 +55,11 @@ export const SwiperProvider: React.FC<SwiperProviderProps> = ({
   const [width, setWidth] = useState(0);
   const offsetRef = useRef(0);
   const activeIndexRef = useRef<number>(0);
+  const isDraggingRef = useRef(false);
+  const snapTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [, forceRerender] = useState({});
+  const dragRef = useRef<number>(0);
+  const SWIPE_COEFF = 1.2;
 
   // #region DataHandler
   let renderList;
@@ -117,6 +125,10 @@ export const SwiperProvider: React.FC<SwiperProviderProps> = ({
     listLength,
     activeIndexRef,
     infinite,
+    isDraggingRef,
+    snapTimerRef,
+    dragRef,
+    SWIPE_COEFF,
   };
 
   return (
