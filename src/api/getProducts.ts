@@ -1,9 +1,12 @@
 /* eslint-disable no-console */
 import { DetailsProduct, Product } from '../types/productTypes';
+const basePath = window.location.pathname.includes('react_phone-catalog')
+  ? '/react_phone-catalog/'
+  : '/';
 
 export const getProductsItem = async (): Promise<Product[]> => {
   try {
-    const resp = await fetch('/api/products.json');
+    const resp = await fetch(`${basePath}api/products.json`);
 
     if (!resp.ok) {
       throw new Error(`HTTP error! status: ${resp.status}`);
