@@ -50,18 +50,28 @@ export const PhonesCatalog = () => {
   const phonesCounter = phones?.length;
 
   const getPages = (totalPages: number | undefined) => {
-    return [...Array(totalPages)].map((_, i) => i + 1);
+    return [...Array(totalPages)].map((_, i) => i);
   };
 
-  const totalPages = getPages(phonesCounter);
+  let totalPages: number;
+
+  if (phonesCounter === undefined || itemsPerPage === 'all' || !itemsPerPage) {
+    totalPages = 0;
+  } else {
+    totalPages = Math.ceil(phonesCounter / +itemsPerPage);
+  }
+
+  const pages = getPages(totalPages);
+
+  console.log(`totalPages: ${totalPages}`, pages);
 
   const filterItemsOnPage = (
-    pages: number[],
+    page: number[],
     product: Product[] | undefined,
     actualPage: number,
     phonesPerPage: number,
   ) => {
-    const items = pages;
+    const items = page;
     let elements = product;
 
     items.forEach((_, i) => {
@@ -84,9 +94,6 @@ export const PhonesCatalog = () => {
       endPosition += phonesPerPage;
 
       return elements;
-
-      console.log(startPosition, endPosition);
-      console.log(elements);
     });
 
     return elements;
@@ -109,36 +116,20 @@ export const PhonesCatalog = () => {
 
     switch (itemsPerPage) {
       case '4':
-        sorted = filterItemsOnPage(
-          totalPages,
-          sorted,
-          +currentPage,
-          +itemsPerPage,
-        );
+        sorted = filterItemsOnPage(pages, sorted, +currentPage, +itemsPerPage);
         break;
       case '8':
-        sorted = filterItemsOnPage(
-          totalPages,
-          sorted,
-          +currentPage,
-          +itemsPerPage,
-        );
+        sorted = filterItemsOnPage(pages, sorted, +currentPage, +itemsPerPage);
         break;
       case '16':
-        sorted = filterItemsOnPage(
-          totalPages,
-          sorted,
-          +currentPage,
-          +itemsPerPage,
-        );
+        sorted = filterItemsOnPage(pages, sorted, +currentPage, +itemsPerPage);
         break;
-
       default:
         return sorted;
     }
 
     return sorted;
-  }, [currentPage, itemsPerPage, phones, sortParam, totalPages]);
+  }, [currentPage, itemsPerPage, pages, phones, sortParam]);
 
   return (
     <>

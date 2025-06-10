@@ -23,7 +23,6 @@ export const Pagination = ({ total, getPages }: Props) => {
   const pages = getPages(totalPages);
 
   // eslint-disable-next-line no-console
-  console.log(pages);
 
   return (
     <>
@@ -53,7 +52,11 @@ export const Pagination = ({ total, getPages }: Props) => {
             />
           </button>
         </li>
-        {pages.map(elem => {
+        {pages.map((elem, i) => {
+          if (i === pages.length - 1) {
+            return false;
+          }
+
           return (
             <li className={styles.paggination__item} key={elem}>
               <button
@@ -61,14 +64,14 @@ export const Pagination = ({ total, getPages }: Props) => {
                   setSearchParams(prev => {
                     // const page = prev.get('page');
 
-                    prev.set('page', elem.toString());
+                    prev.set('page', (elem + 1).toString());
 
                     return prev;
                   });
                 }}
                 className={styles.paggination__button}
               >
-                {elem}
+                {elem + 1}
               </button>
             </li>
           );
