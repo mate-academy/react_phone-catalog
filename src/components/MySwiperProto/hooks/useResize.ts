@@ -1,17 +1,30 @@
 import { useEffect } from 'react';
 import { useMSPContext } from '../context/useMSPContext';
-
-export const useResize = () => {
-  const { VPRef, setWidth, rerender } = useMSPContext();
+type Props = {
+  handleByIndex: (idx: number) => void;
+};
+export const useResize = ({ handleByIndex }: Props) => {
+  const { VPRef, setWidth, rerender, width, isDraggingRef } = useMSPContext();
 
   useEffect(() => {
-    if (VPRef.current) {
-      const node = VPRef.current;
+    const node = VPRef.current;
 
-      const resizeObs = new ResizeObserver(() => setWidth(node.offsetWidth));
-
-      resizeObs.observe(node);
-      rerender();
+    if (node === null) {
+      return;
     }
-  }, []);
+
+    const resizeObs = new ResizeObserver(() => {
+      setWidth(node.offsetWidth);
+      isDraggingRef.current = true;
+      handleByIndex(0);
+      isDraggingRef.current = false;
+    });
+
+    resizeObs.observe(node);
+    rerender();
+
+    return () => {
+      resizeObs.disconnect();
+    };
+  }, [width]);
 };

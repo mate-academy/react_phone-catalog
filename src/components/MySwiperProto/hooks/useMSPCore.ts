@@ -4,12 +4,13 @@ import { Direction } from '../types/MSPtypes';
 import { useAutoplay } from './useAutoplay';
 import { useRafLoop } from './useRAFLoop';
 import { useMSPTransition } from './useMSPTransition';
+import { useResize } from './useResize';
 
 //                      TODO: add snap mode, correct positioning if gap
 export const useMSPCore = () => {
   const {
     offsetRef,
-    width,
+    widthRef,
     infinite,
     listLength,
     activeIndexRef,
@@ -32,44 +33,43 @@ export const useMSPCore = () => {
   });
 
   // #region Handlers
-  const handleByIndex = (idx: number) => {
-    offsetRef.current = infinite ? (idx + 1) * width : idx * width;
+  const handleByIndex = useCallback((idx: number) => {
+    offsetRef.current = infinite
+      ? (idx + 1) * widthRef.current
+      : idx * widthRef.current;
     startRafLoop();
     endRafLoop();
-  };
+  }, []);
 
-  const buttonHandler = useCallback(
-    (dir: Direction) => {
-      const mod = dir === Direction.LEFT ? -1 : 1;
-      const newIndex = activeIndexRef.current + mod;
+  const buttonHandler = useCallback((dir: Direction) => {
+    const mod = dir === Direction.LEFT ? -1 : 1;
+    const newIndex = activeIndexRef.current + mod;
 
-      if (infinite) {
-        if (newIndex < 0) {
-          handleByIndex(newIndex);
-          secondStageTransition(listLength - 1, listLength * width);
-        } else if (newIndex > listLength - 1) {
-          handleByIndex(newIndex);
-          secondStageTransition(0, width);
-        } else {
-          handleByIndex(newIndex);
-        }
+    if (infinite) {
+      if (newIndex < 0) {
+        handleByIndex(newIndex);
+        secondStageTransition(listLength - 1, listLength * widthRef.current);
+      } else if (newIndex > listLength - 1) {
+        handleByIndex(newIndex);
+        secondStageTransition(0, widthRef.current);
+      } else {
+        handleByIndex(newIndex);
       }
+    }
 
-      if (newIndex < 0 || newIndex > listLength - 1) {
-        return;
-      }
+    if (newIndex < 0 || newIndex > listLength - 1) {
+      return;
+    }
 
-      handleByIndex(newIndex);
-    },
-    [width],
-  );
+    handleByIndex(newIndex);
+  }, []);
 
-  const snapHandler = () => {
+  const snapHandler = useCallback(() => {
     if (startIndex.current === null || dragRef.current === null) {
       return;
     }
 
-    const treshold = width / 10;
+    const treshold = widthRef.current / 10;
     const step = dragRef.current < 0 ? 1 : -1;
     const isFirst = activeIndexRef.current <= 0 && step === -1;
     const isLast = activeIndexRef.current >= listLength - 1 && step === 1;
@@ -79,10 +79,10 @@ export const useMSPCore = () => {
       isDraggingRef.current = false;
       if (isFirst && step === -1) {
         firstStageTransition(-1, 0);
-        secondStageTransition(listLength - 1, listLength * width);
+        secondStageTransition(listLength - 1, listLength * widthRef.current);
       } else if (isLast && step === 1) {
-        firstStageTransition(listLength, (listLength + 1) * width);
-        secondStageTransition(0, width);
+        firstStageTransition(listLength, (listLength + 1) * widthRef.current);
+        secondStageTransition(0, widthRef.current);
       } else {
         handleByIndex(startIndex.current + step);
       }
@@ -92,9 +92,9 @@ export const useMSPCore = () => {
     }
 
     startIndex.current = null;
-  };
+  }, []);
 
-  const start = (e: React.PointerEvent<HTMLDivElement>) => {
+  const start = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     e.preventDefault();
 
     if (snapTimerRef.current !== null) {
@@ -107,9 +107,9 @@ export const useMSPCore = () => {
     dragRef.current = 0;
     isDraggingRef.current = true;
     startRafLoop();
-  };
+  }, []);
 
-  const move = (event: React.PointerEvent<HTMLDivElement>) => {
+  const move = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
     event.preventDefault();
 
     if (!isDraggingRef.current || startXRef.current === null) {
@@ -126,7 +126,8 @@ export const useMSPCore = () => {
 
     if (clamp) {
       const futureOffset = offsetRef.current - rawDrag * swipeCoeff;
-      const maxOffset = (infinite ? listLength + 1 : listLength - 1) * width;
+      const maxOffset =
+        (infinite ? listLength + 1 : listLength - 1) * widthRef.current;
 
       dragRef.current =
         futureOffset < 0
@@ -137,9 +138,9 @@ export const useMSPCore = () => {
     } else {
       dragRef.current = rawDrag;
     }
-  };
+  }, []);
 
-  const end = (e: React.PointerEvent<HTMLDivElement>) => {
+  const end = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.currentTarget.releasePointerCapture(e.pointerId);
     endRafLoop();
@@ -158,7 +159,7 @@ export const useMSPCore = () => {
     startXRef.current = null;
     startIndex.current = null;
     isDraggingRef.current = false;
-  };
+  }, []);
 
   const handlers = {
     onPointerDown: start,
@@ -168,14 +169,10 @@ export const useMSPCore = () => {
   };
 
   // #endregion
-
-  // switch to 1 slide on resize
-  useEffect(() => {
-    handleByIndex(0);
-  }, [width]);
-
   //autoplay
   const { swAutoplay } = useAutoplay({ autoplay, buttonHandler });
+
+  useResize({ handleByIndex });
 
   useEffect(() => {
     if (autoplay) {

@@ -6,7 +6,6 @@ import {
   useRef,
   useLayoutEffect,
   useCallback,
-  useEffect,
 } from 'react';
 import { Autoplay, SwiperData } from '../types/MSPtypes';
 
@@ -29,6 +28,7 @@ type MSPContextType = {
   gap: number;
   clamp: boolean;
   swipeCoeff: number;
+  widthRef: React.MutableRefObject<number>;
 };
 
 const MSPContext = createContext<MSPContextType | null>(null);
@@ -70,9 +70,10 @@ export const MSPProvider: React.FC<MSPProviderProps> = ({
   const offsetRef = useRef(0);
   const activeIndexRef = useRef<number>(0);
   const isDraggingRef = useRef(false);
+  const dragRef = useRef<number>(0);
   const snapTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [, forceRerender] = useState({});
-  const dragRef = useRef<number>(0);
+  const widthRef = useRef<number>(0);
 
   // #region DataHandler
   let renderList;
@@ -100,32 +101,16 @@ export const MSPProvider: React.FC<MSPProviderProps> = ({
 
   useLayoutEffect(() => {
     if (VPRef.current) {
+      widthRef.current = VPRef.current.offsetWidth;
       setWidth(VPRef.current.offsetWidth);
-      offsetRef.current = infinite ? VPRef.current.offsetWidth : 0;
-      rerender();
     }
-  }, []);
 
-  useEffect(() => {
-    if (VPRef.current) {
-      offsetRef.current = infinite ? VPRef.current.offsetWidth : 0;
-      rerender();
-    }
-  }, []);
+    offsetRef.current = infinite ? widthRef.current : 0;
+  }, [width]);
 
-  if (VPRef.current) {
-    activeIndexRef.current = infinite
-      ? Math.round(offsetRef.current / VPRef.current.offsetWidth) - 1
-      : Math.round(offsetRef.current / VPRef.current.offsetWidth);
-  }
-
-  // #region InitialOffsetCalc
-  useEffect(() => {
-    if (width > 0 && VPRef.current) {
-      offsetRef.current = infinite ? VPRef.current.offsetWidth : 0;
-    }
-  }, []);
-  // #endregion
+  activeIndexRef.current = infinite
+    ? Math.round(offsetRef.current / widthRef.current) - 1
+    : Math.round(offsetRef.current / widthRef.current);
 
   const value = {
     renderList,
@@ -146,6 +131,7 @@ export const MSPProvider: React.FC<MSPProviderProps> = ({
     animationSpeed,
     gap,
     clamp,
+    widthRef,
   };
 
   return <MSPContext.Provider value={value}>{children}</MSPContext.Provider>;

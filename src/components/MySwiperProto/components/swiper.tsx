@@ -1,4 +1,3 @@
-import { useResize } from '../hooks/useResize';
 import { useMSPContext } from '../context/useMSPContext';
 import { MSPPagination } from './MSPPagination/MSPPagination';
 import { MSPSlide } from './MSPSlide/MSPSlide';
@@ -15,8 +14,6 @@ export const MSPSwiper: React.FC<Props> = ({ buttons, pagination }) => {
   const { VPRef, trackRef, renderList, animationSpeed, gap } = useMSPContext();
 
   const { handlers, handleByIndex, buttonHandler } = useMSPCore();
-
-  useResize();
 
   return (
     <div className="swiper">
