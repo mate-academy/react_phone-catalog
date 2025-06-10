@@ -1,0 +1,29 @@
+@use '../../scss/mixins' as *;
+
+.header {
+  display: flex;
+  gap: 24px;
+  height: 64px;
+
+  &__logo {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: 96px;
+    height: 100%;
+  }
+
+  &__image {
+    width: 64px;
+    height: 22px;
+    object-fit: cover;
+  }
+
+  &__buttons {
+    width: 183px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    border: 1px solid red;
+  }
+}
