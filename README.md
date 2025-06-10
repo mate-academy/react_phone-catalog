@@ -116,5 +116,3 @@ npm install
 
 # 3. Run the app
 npm start
-
-
