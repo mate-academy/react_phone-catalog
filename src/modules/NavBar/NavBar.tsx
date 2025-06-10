@@ -40,7 +40,7 @@ export const NavBar: React.FC<Props> = ({
       <ul className="navbar__brand">
         <NavLink
           className="navbar__link__logo"
-          to={isMobile ? '/' : '/Menu'}
+          to={isMobile ? '/Menu' : '/'}
           onClick={e => {
             if (isMobile) {
               e.preventDefault();

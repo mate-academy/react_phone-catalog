@@ -8,19 +8,26 @@ export const Accessories = () => {
   const [accessories, setAccessuries] = useState<Gargets[]>([]);
   const [loadingDataOnServer, setloadingDataOnServer] = useState(false);
   const [reloadButton, setReloadButton] = useState(false);
-  const [, setSortBy] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const sortByy = searchParams.get('sort') ?? 'newest';
+  // Ініціалізуємо стани зі значень URL або дефолтні
+  const sortFromUrl = searchParams.get('sort') ?? 'newest';
+  const pageFromUrl = Number(searchParams.get('page')) || 1;
+  const perPageFromUrl = searchParams.get('perPage') ?? '4';
+
+  const [sortBy, setSortBy] = useState(sortFromUrl);
+  const [currentPage, setCurrentPage] = useState(pageFromUrl);
+  const [itemsPerPage, setItemsPerPage] = useState(
+    perPageFromUrl === 'all' ? accessories.length || 4 : Number(perPageFromUrl),
+  );
 
   useEffect(() => {
     setReloadButton(false);
     setloadingDataOnServer(true);
+
     setTimeout(() => {
-      fetch(`./api/phones.json`)
+      fetch('./api/accessories.json')
         .then(response => response.json())
         .then(data => setAccessuries(data))
         .catch(error => {
@@ -31,13 +38,15 @@ export const Accessories = () => {
     }, 1000);
   }, []);
 
+  // Синхронізуємо стан sortBy зі значенням у URL
   useEffect(() => {
-    setSortBy(sortByy);
-  }, [sortByy]);
+    const sortParam = searchParams.get('sort') ?? 'newest';
+    setSortBy(sortParam);
+  }, [searchParams]);
 
+  // Синхронізуємо itemsPerPage зі значенням у URL і довжиною accessories
   useEffect(() => {
     const limitParam = searchParams.get('perPage');
-
     if (limitParam === 'all') {
       setItemsPerPage(accessories.length);
     } else if (limitParam) {
@@ -45,10 +54,17 @@ export const Accessories = () => {
     }
   }, [searchParams, accessories.length]);
 
+  // Синхронізуємо currentPage зі значенням у URL
+  useEffect(() => {
+    const pageParam = Number(searchParams.get('page')) || 1;
+    setCurrentPage(pageParam);
+  }, [searchParams]);
+
   const handleReload = () => {
     setloadingDataOnServer(true);
     setAccessuries([]);
     setReloadButton(false);
+
     setTimeout(() => {
       fetch('./api/accessories.json')
         .then(response => response.json())
@@ -80,7 +96,7 @@ export const Accessories = () => {
   if (!loadingDataOnServer && accessories.length === 0 && !reloadButton) {
     return (
       <div className="no-items-message">
-        <p>There are no phones</p>
+        <p>There are no accessories</p>
       </div>
     );
   }
@@ -90,10 +106,7 @@ export const Accessories = () => {
   // Розрахунок елементів для поточної сторінки
   const indexOfLastPhone = currentPage * itemsPerPage;
   const indexOfFirstPhone = indexOfLastPhone - itemsPerPage;
-  const currentAccesssuries = accessories.slice(
-    indexOfFirstPhone,
-    indexOfLastPhone,
-  );
+  const currentAccesssuries = accessories.slice(indexOfFirstPhone, indexOfLastPhone);
 
   const handlePageChange = (pageNumber: number) => {
     if (pageNumber < 1 || pageNumber > totalPages) {
@@ -102,9 +115,7 @@ export const Accessories = () => {
 
     setSearchParams(params => {
       const updated = new URLSearchParams(params);
-
       updated.set('page', String(pageNumber));
-
       return updated;
     });
 
@@ -146,14 +157,14 @@ export const Accessories = () => {
             name="choose"
             id=""
             className="gargets__sort-by-choose-value"
+            value={sortBy}
             onChange={e => {
               const sortType = e.target.value;
-
               setSortBy(sortType);
 
               const newParams = new URLSearchParams(searchParams.toString());
-
               newParams.set('sort', sortType);
+              newParams.set('page', '1'); // при зміні сортування скидаємо сторінку
               setSearchParams(newParams);
             }}
           >
@@ -169,19 +180,17 @@ export const Accessories = () => {
             name="choose"
             id=""
             className="gargets__items-on-page-choose-item"
+            value={itemsPerPage === accessories.length ? 'all' : String(itemsPerPage)}
             onChange={e => {
               const perPageValue = e.target.value;
+              setCurrentPage(1);
 
               setSearchParams(params => {
                 const updated = new URLSearchParams(params);
-
                 updated.set('perPage', perPageValue);
-
-                updated.set('page', '1');
-
+                updated.set('page', '1'); // скидаємо сторінку при зміні кількості
                 return updated;
               });
-              setCurrentPage(1);
             }}
           >
             <option value="4">4</option>

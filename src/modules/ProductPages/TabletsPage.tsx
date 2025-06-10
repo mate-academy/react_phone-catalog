@@ -6,108 +6,142 @@ import { Gargets } from '../../interface/Gargets';
 import { Loader } from './Loader';
 
 export const TabletsPage = () => {
-  const [tablet, setTablet] = useState<Gargets[]>([]);
-  const [loadingDataOnServer, setloadingDataOnServer] = useState(false);
-  const [reloadButton, setReloadButton] = useState(false);
-  const [, setSortBy] = useState('');
+  const [tablets, setTablets] = useState<Gargets[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [errorReload, setErrorReload] = useState(false);
+  const [sortBy, setSortBy] = useState('newest');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const sortByy = searchParams.get('sort') ?? 'newest';
-
+  // Ініціалізація з URL
   useEffect(() => {
-    setReloadButton(false);
-    setloadingDataOnServer(true);
+    const sortParam = searchParams.get('sort') ?? 'newest';
+    setSortBy(sortParam);
+
+    const perPageParam = searchParams.get('perPage') ?? '4';
+    if (perPageParam === 'all') {
+      setItemsPerPage(Infinity); // показуємо всі
+    } else {
+      setItemsPerPage(Number(perPageParam));
+    }
+
+    const pageParam = Number(searchParams.get('page')) || 1;
+    setCurrentPage(pageParam);
+  }, [searchParams]);
+
+  // Завантаження даних
+  useEffect(() => {
+    setLoading(true);
+    setErrorReload(false);
+
     setTimeout(() => {
-      fetch(`./api/tablets.json`)
-        .then(response => response.json())
-        .then(data => setTablet(data))
-        .catch(error => {
-          setReloadButton(true);
-          throw Error(`${error} 'Wrong! Please reload page'`);
+      fetch('./api/tablets.json')
+        .then(res => {
+          if (!res.ok) throw new Error('Network response was not ok');
+          return res.json();
         })
-        .finally(() => setloadingDataOnServer(false));
+        .then(data => setTablets(data))
+        .catch(err => {
+          console.error(err);
+          setErrorReload(true);
+        })
+        .finally(() => setLoading(false));
     }, 1000);
   }, []);
 
-  useEffect(() => {
-    setSortBy(sortByy);
-  }, [sortByy]);
-
-  useEffect(() => {
-    const limitParam = searchParams.get('perPage');
-
-    if (limitParam === 'all') {
-      setItemsPerPage(tablet.length);
-    } else if (limitParam) {
-      setItemsPerPage(Number(limitParam));
+  // Сортування таблеток залежно від sortBy
+  const sortedTablets = [...tablets].sort((a, b) => {
+    if (sortBy === 'newest') {
+      return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
     }
-  }, [searchParams, tablet.length]);
+    if (sortBy === 'alphabetically') {
+      return a.name.localeCompare(b.name);
+    }
+    if (sortBy === 'cheapest') {
+      return a.price - b.price;
+    }
+    return 0;
+  });
+
+  // Пагінація
+  const totalPages = itemsPerPage === Infinity ? 1 : Math.ceil(sortedTablets.length / itemsPerPage);
+  const indexLast = currentPage * itemsPerPage;
+  const indexFirst = indexLast - itemsPerPage;
+  const currentTablets = itemsPerPage === Infinity ? sortedTablets : sortedTablets.slice(indexFirst, indexLast);
+
+  const handlePageChange = (page: number) => {
+    if (page < 1 || page > totalPages) return;
+
+    setSearchParams(params => {
+      const newParams = new URLSearchParams(params);
+      newParams.set('page', String(page));
+      return newParams;
+    });
+  };
+
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newSort = e.target.value;
+    setSortBy(newSort);
+
+    setSearchParams(params => {
+      const newParams = new URLSearchParams(params);
+      newParams.set('sort', newSort);
+      newParams.set('page', '1'); // при зміні сортування скидаємо сторінку
+      return newParams;
+    });
+  };
+
+  const handleItemsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const perPage = e.target.value;
+
+    setSearchParams(params => {
+      const newParams = new URLSearchParams(params);
+      newParams.set('perPage', perPage);
+      newParams.set('page', '1'); // при зміні кількості елементів скидаємо сторінку
+      return newParams;
+    });
+  };
 
   const handleReload = () => {
-    setloadingDataOnServer(true);
-    setTablet([]);
-    setReloadButton(false);
+    setLoading(true);
+    setErrorReload(false);
+    setTablets([]);
+
     setTimeout(() => {
       fetch('./api/tablets.json')
-        .then(response => response.json())
-        .then(data => setTablet(data))
-        .catch(error => {
-          setReloadButton(true);
-          console.error(error);
+        .then(res => res.json())
+        .then(data => setTablets(data))
+        .catch(err => {
+          console.error(err);
+          setErrorReload(true);
         })
-        .finally(() => setloadingDataOnServer(false));
+        .finally(() => setLoading(false));
     }, 1000);
   };
 
-  const totalPages = Math.ceil(tablet.length / itemsPerPage);
-
-  // Розрахунок елементів для поточної сторінки
-  const indexOfLastPhone = currentPage * itemsPerPage;
-  const indexOfFirstPhone = indexOfLastPhone - itemsPerPage;
-  const currentTablet = tablet.slice(indexOfFirstPhone, indexOfLastPhone);
-
-  const handlePageChange = (pageNumber: number) => {
-    if (pageNumber < 1 || pageNumber > totalPages) {
-      return;
-    }
-
-    setSearchParams(params => {
-      const updated = new URLSearchParams(params);
-
-      updated.set('page', String(pageNumber));
-
-      return updated;
-    });
-
-    setCurrentPage(pageNumber);
-  };
-
   const getVisiblePages = () => {
-    const visiblePages = [];
+    const pages: number[] = [];
     const maxVisible = 4;
 
-    let startPage = Math.max(currentPage - 1, 1);
-    const endPage = Math.min(startPage + maxVisible - 1, totalPages);
+    let start = Math.max(currentPage - 1, 1);
+    let end = Math.min(start + maxVisible - 1, totalPages);
 
-    if (endPage - startPage + 1 < maxVisible) {
-      startPage = Math.max(endPage - maxVisible + 1, 1);
+    if (end - start + 1 < maxVisible) {
+      start = Math.max(end - maxVisible + 1, 1);
     }
 
-    for (let i = startPage; i <= endPage; i++) {
-      visiblePages.push(i);
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
     }
 
-    return visiblePages;
+    return pages;
   };
 
-  if (loadingDataOnServer) {
-    return <Loader loading={true} />;
-  }
+  if (loading) return <Loader loading={true} />;
 
-  if (reloadButton) {
+  if (errorReload)
     return (
       <div className="error">
         <p>Error loading data, please try again.</p>
@@ -116,7 +150,6 @@ export const TabletsPage = () => {
         </button>
       </div>
     );
-  }
 
   return (
     <div className="gargets">
@@ -126,26 +159,12 @@ export const TabletsPage = () => {
         <span className="gargets__back-home-h2">Tablets</span>
       </div>
       <h1 className="gargets__mobile-phones-h1">Tablets</h1>
-      <h3 className="gargets__count-models">95 models</h3>
+      <h3 className="gargets__count-models">{tablets.length} models</h3>
 
       <div className="gargets__position-sorting">
         <div className="gargets__sort-by">
           <h3 className="gargets__sort-by-h3">Sort by</h3>
-          <select
-            name="choose"
-            id=""
-            className="gargets__sort-by-choose-value"
-            onChange={e => {
-              const sortType = e.target.value;
-
-              setSortBy(sortType);
-
-              const newParams = new URLSearchParams(searchParams.toString());
-
-              newParams.set('sort', sortType);
-              setSearchParams(newParams);
-            }}
-          >
+          <select className="gargets__sort-by-choose-value" value={sortBy} onChange={handleSortChange}>
             <option value="newest">Newest</option>
             <option value="alphabetically">Alphabetically</option>
             <option value="cheapest">Cheapest</option>
@@ -154,25 +173,7 @@ export const TabletsPage = () => {
 
         <div className="gargets__items-on-page">
           <h3 className="gargets__items-on-page-h3">Items on page</h3>
-          <select
-            name="choose"
-            id=""
-            className="gargets__items-on-page-choose-item"
-            onChange={e => {
-              const perPageValue = e.target.value;
-
-              setSearchParams(params => {
-                const updated = new URLSearchParams(params);
-
-                updated.set('perPage', perPageValue);
-
-                updated.set('page', '1');
-
-                return updated;
-              });
-              setCurrentPage(1);
-            }}
-          >
+          <select className="gargets__items-on-page-choose-item" onChange={handleItemsPerPageChange} value={itemsPerPage === Infinity ? 'all' : String(itemsPerPage)}>
             <option value="4">4</option>
             <option value="8">8</option>
             <option value="16">16</option>
@@ -181,35 +182,27 @@ export const TabletsPage = () => {
         </div>
       </div>
 
-      <ProductList items={currentTablet} />
+      <ProductList items={currentTablets} />
 
-      <div className="pagination">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          {'<'}
-        </button>
+      {itemsPerPage !== Infinity && (
+        <div className="pagination">
+          <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+            {'<'}
+          </button>
 
-        <div className="page-buttons">
-          {getVisiblePages().map(page => (
-            <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={`page-btn ${currentPage === page ? 'active' : ''}`}
-            >
-              {page}
-            </button>
-          ))}
+          <div className="page-buttons">
+            {getVisiblePages().map(page => (
+              <button key={page} onClick={() => handlePageChange(page)} className={`page-btn ${currentPage === page ? 'active' : ''}`}>
+                {page}
+              </button>
+            ))}
+          </div>
+
+          <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+            {'>'}
+          </button>
         </div>
-
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          {'>'}
-        </button>
-      </div>
+      )}
     </div>
   );
 };

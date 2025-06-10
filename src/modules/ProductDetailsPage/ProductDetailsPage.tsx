@@ -17,6 +17,20 @@ import classNames from 'classnames';
 import { useCart } from '../CartContext/CartContext';
 import { Phone } from '../../interface/Phone';
 
+export const colorMap: Record<string, string> = {
+  spacegray: '#535150',
+  midnightgreen: '#4E5851',
+  midnight: '#232A31',
+  gold: '#F6E0C9',
+  silver: '#EBEBE3',
+  graphite: '#54524F',
+  sierrablue: '#A7C1D9',
+  white: '#FAF6F2',
+  blue: '#276787',
+  spaceblack: '#403E3D',
+  rosegold: '#FFD3E0',
+};
+
 export const ProductDetailsPage = () => {
   const location = useLocation();
   const item = location.state as Gargets;
@@ -120,28 +134,33 @@ export const ProductDetailsPage = () => {
         <div className="details__information">
           <h3 className="details__information-h3">Available colors</h3>
           <div className="details__colors-wrapper">
-            {item.colorsAvailable.map((color, index) => (
-              <button
-                key={index}
-                className="details__color-button"
-                style={{ color: color }}
-                onClick={() => {
-                  setChooseColor(color);
-                  setClickImage(null);
+            {item.colorsAvailable.map((color, index) => {
+              const hexColor =
+                colorMap[color.toLowerCase() as keyof typeof colorMap] || color;
 
-                  const baseId = item.id.replace(/-\w+$/, '');
-                  const newId = `${baseId}-${color.toLowerCase()}`;
+              return (
+                <button
+                  key={index}
+                  className="details__color-button"
+                  style={{ color: hexColor }}
+                  onClick={() => {
+                    setChooseColor(color);
+                    setClickImage(null);
 
-                  const targetPhone = garg.find(g => g.id === newId);
+                    const baseId = item.id.replace(/-\w+$/, '');
+                    const newId = `${baseId}-${color.toLowerCase()}`;
 
-                  if (targetPhone) {
-                    navigate(`/phones/${targetPhone.id}`, {
-                      state: targetPhone,
-                    });
-                  }
-                }}
-              />
-            ))}
+                    const targetPhone = garg.find(g => g.id === newId);
+
+                    if (targetPhone) {
+                      navigate(`/phones/${targetPhone.id}`, {
+                        state: targetPhone,
+                      });
+                    }
+                  }}
+                />
+              );
+            })}
           </div>
 
           {/* <div className="details__id">

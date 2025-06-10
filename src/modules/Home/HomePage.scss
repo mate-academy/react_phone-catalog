@@ -28,6 +28,12 @@
   font-style: normal;
 }
 
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+
 @media screen and (max-width: 639px) {
   .home {
     &__turn-image {
@@ -168,7 +174,9 @@
 
 @media screen and (min-width: 640px) {
   .home {
-    @include contentPaddingInline;
+    // @include contentPaddingInline;
+    width: 100%;
+    padding-inline: 24px;
 
     &__turn-image {
       display: grid;
@@ -317,8 +325,8 @@
 @media screen and (min-width: 1199px) {
   .home {
       max-width: 1136px;
-      margin-inline: auto;
-      padding-inline: 32px;
+      // margin: 0  auto;
+      // padding-inline: 32px;
 
     &__turn-image {
       display: grid;
@@ -464,7 +472,6 @@
 }
 
 .swiper {
-  // margin-top: 80px;
 
   &__top-bar {
     display: flex;
@@ -514,6 +521,7 @@
     white-space: nowrap;
     margin: 0;
   }
+
 
   .swiper-button-next,
   .swiper-button-prev {
@@ -713,3 +721,16 @@
     z-index: 1;
   }
 }
+
+@media screen and (max-width: 1199px) {
+  .swiper {
+    width: 100%;
+    // @include contentPaddingInline;
+    &__top-bar {
+      // padding-left: 24px;
+      padding-bottom: 24px;
+    }
+
+  }
+}
+
