@@ -36,6 +36,7 @@
 
 @media screen and (max-width: 639px) {
   .home {
+    width: 100%;
     &__turn-image {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -472,7 +473,6 @@
 }
 
 .swiper {
-
   &__top-bar {
     display: flex;
     justify-content: space-between;
@@ -724,7 +724,7 @@
 
 @media screen and (max-width: 1199px) {
   .swiper {
-    width: 100%;
+    // width: 100vw;
     // @include contentPaddingInline;
     &__top-bar {
       // padding-left: 24px;

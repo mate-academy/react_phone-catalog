@@ -27,7 +27,7 @@
 }
 
 .details {
-  @include contentPaddingInline;
+  // @include contentPaddingInline;
   font-family: 'Mont-Bold', 'sans-serif';
   display: grid;
   grid-template-columns: repeat(24, 1fr);
@@ -121,7 +121,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 40px;
+    // padding-top: 40px;
   }
 
   &__image-main {
@@ -524,6 +524,7 @@
 
   &__roundabout {
     grid-column: 1 / span 24;
+    padding-inline: 32px;
   }
 }
 
@@ -614,19 +615,23 @@
     }
 
     &__image-block {
-      grid-column: 2 / span 4;
+      grid-column: 3 / span 4;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: 40px;
+      object-fit: contain;
+      // padding-top: 40px;
+      top: 0;
     }
 
     &__image-main {
-      width: 100%;
       max-width: 464px;
-      height: 464px;
+      height: 287px;
       object-fit: contain;
-      grid-column: 2 / span 4;
+      grid-column: 3 / span 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     &__phone-colums {
@@ -1006,6 +1011,7 @@
 
     &__roundabout {
       grid-column: 1 / span 24;
+      padding-inline: 24px;
     }
   }
 }
@@ -1069,7 +1075,6 @@
     &__phone-colums {
       width: 100%;
       display: flex;
-      justify-content: space-between;
       flex-direction: row;
       gap: 16px;
       padding-top: 16px;
@@ -1106,9 +1111,10 @@
     &__phone-name {
       font-size: 32px;
       line-height: 41px;
-      white-space: nowrap;
       grid-column: 1 / -1;
       padding-top: 16px;
+      white-space: normal;
+      word-break: break-word;
     }
 
     &__information {
@@ -1485,19 +1491,30 @@
 }
 
 .swiper {
-  width: 1136px;
+  max-width: 1136px;
 
   &__top-bar {
     padding-bottom: 24px;
   }
 }
 
-@media screen and (max-width: 1199px) {
-  .swiper {
-    // @include contentPaddingInline;
-    &__top-bar {
-      // padding-left: 24px;
-      padding-bottom: 24px;
-    }
-  }
-}
+// @media screen and (max-width: 1199px) {
+//   .swiper {
+//     // @include contentPaddingInline;
+//     &__top-bar {
+//       // padding-left: 24px;
+//       padding-bottom: 32px;
+
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 640px) {
+//   .swiper {
+//     // @include contentPaddingInline;
+//     &__top-bar {
+//       // padding-left: 24px;
+//       padding-bottom: 24px;
+//     }
+//   }
+// }
