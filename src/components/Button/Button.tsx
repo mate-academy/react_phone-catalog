@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import styles from './Button.module.scss';
-
-interface IconsSrcObj {
-  default: string;
-  hover: string;
-  disabled?: string;
-  active?: string;
-}
+import { imgSrcArrow } from '../../utils/imgSrcArrow';
 
 type Buttonprops = {
   rotation?: number;
-  iconsSrc: IconsSrcObj;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   isActive?: boolean;
@@ -19,7 +12,6 @@ type Buttonprops = {
 
 export const Button = ({
   rotation = 0,
-  iconsSrc,
   onClick,
   disabled = false,
   isActive = false,
@@ -38,16 +30,16 @@ export const Button = ({
 
   switch (true) {
     case disabled:
-      imgSrc = iconsSrc.disabled;
+      imgSrc = imgSrcArrow.disabled;
       break;
     case isHover:
-      imgSrc = iconsSrc.hover;
+      imgSrc = imgSrcArrow.hover;
       break;
     case isActive:
-      imgSrc = iconsSrc.active;
+      imgSrc = imgSrcArrow.active;
       break;
     default:
-      imgSrc = iconsSrc.default;
+      imgSrc = imgSrcArrow.default;
       break;
   }
 

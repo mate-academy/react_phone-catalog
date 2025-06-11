@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { navigationItems, navigationPaths } from '../../constants/category';
 import { createPortal } from 'react-dom';
 import { useAppContext } from '../../../../hooks/useAppContext';
+import { getAssetUrl } from '../../../../api/utilis';
 
 type Props = {
   setIsOpen: (value: boolean) => void;
@@ -41,12 +42,12 @@ export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
             >
               <img
                 className={styles.logo__img}
-                src="/icons/logo_black.svg"
+                src={getAssetUrl('/icons/logo_black.svg')}
                 alt="phone shop logo"
               />
               <img
                 className={styles.logo__hand}
-                src="/icons/logo_ok_hand.svg"
+                src={getAssetUrl('/icons/logo_ok_hand.svg')}
                 alt=""
                 aria-hidden="true"
               />
@@ -61,7 +62,7 @@ export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
             >
               <img
                 className={styles.navigation__img}
-                src="/icons/close.svg"
+                src={getAssetUrl('icons/close.svg')}
                 alt=""
                 aria-hidden="true"
               />
@@ -93,7 +94,7 @@ export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
           <div className={styles.navigationMenu__wrapper}>
             <img
               className={styles.navigationMenu__img}
-              src="/icons/favourite_heart.svg"
+              src={getAssetUrl('icons/favourite_heart.svg')}
               alt=""
               aria-hidden="true"
             />
@@ -112,7 +113,7 @@ export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
           >
             <img
               className={styles.navigationMenu__img}
-              src="/icons/theme.svg"
+              src={getAssetUrl('icons/theme.svg')}
               alt=""
               aria-hidden="true"
             />
@@ -127,7 +128,7 @@ export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
           <div className={styles.navigationMenu__wrapper}>
             <img
               className={styles.navigationMenu__img}
-              src="/icons/basket.svg"
+              src={getAssetUrl('icons/basket.svg')}
               alt=""
               aria-hidden="true"
             />

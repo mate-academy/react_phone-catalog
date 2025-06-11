@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './SearchInput.module.scss';
 import { useSearchParams } from 'react-router-dom';
 import { useDebounce } from '../../../../../hooks/useDebounce';
+import { getAssetUrl } from '../../../../../api/utilis';
 
 export const SearchInput = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -40,7 +41,7 @@ export const SearchInput = () => {
       >
         <img
           className={styles.navigationMenu__img}
-          src="/icons/magnifying-glass.png"
+          src={getAssetUrl('icons/magnifying-glass.png')}
           alt=""
           aria-hidden="true"
         />

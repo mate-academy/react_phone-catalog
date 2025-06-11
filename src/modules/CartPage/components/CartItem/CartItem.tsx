@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './CartItem.module.scss';
 import { CartProduct } from '../../../../types/cartProduct';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../../../../api/utilis';
 
 type CartItemProps = {
   product: CartProduct;
@@ -26,7 +27,7 @@ export const CartItem = ({
         >
           <img
             className={styles.buttonRemove__item}
-            src="/icons/close.svg"
+            src={getAssetUrl('icons/close.svg')}
             alt=""
             aria-hidden={true}
           />
@@ -61,8 +62,8 @@ export const CartItem = ({
             <img
               src={
                 product.quantity === 1
-                  ? '/icons/minus_disabled.svg'
-                  : '/icons/minus.svg'
+                  ? getAssetUrl('icons/minus_disabled.svg')
+                  : getAssetUrl('icons/minus.svg')
               }
               alt=""
               aria-hidden={true}
@@ -74,7 +75,11 @@ export const CartItem = ({
             className={styles.productQuantity__button}
             aria-label="increase quantity"
           >
-            <img src="/icons/plus.svg" alt="" aria-hidden={true} />
+            <img
+              src={getAssetUrl('icons/plus.svg')}
+              alt=""
+              aria-hidden={true}
+            />
           </button>
         </div>
         <p className={styles.price}>{`$${product.product.price}`}</p>

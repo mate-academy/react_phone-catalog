@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Breadcrumbs.module.scss';
 import { Link, NavLink } from 'react-router-dom';
+import { getAssetUrl } from '../../../api/utilis';
 
 type BreadcrumbsProps = {
   category: string;
@@ -13,7 +14,7 @@ export const Breadcrumbs = ({ category, name }: BreadcrumbsProps) => {
       <Link className={styles.breadcrumbs__link} to="/">
         <img
           className={styles.breadcrumbs__img}
-          src="/icons/home.svg"
+          src={getAssetUrl('icons/home.svg')}
           alt="return to home"
         />
       </Link>
@@ -22,7 +23,7 @@ export const Breadcrumbs = ({ category, name }: BreadcrumbsProps) => {
           <span className={styles.breadcrumbs__arrow}>
             <img
               className={styles.breadcrumbs__img}
-              src="/icons/arrow_right.svg"
+              src={getAssetUrl('icons/arrow_right.svg')}
               alt=""
             />
           </span>
@@ -36,7 +37,7 @@ export const Breadcrumbs = ({ category, name }: BreadcrumbsProps) => {
           <span className={styles.breadcrumbs__arrow}>
             <img
               className={styles.breadcrumbs__img}
-              src="/icons/arrow_right.svg"
+              src={getAssetUrl('icons/arrow_right.svg')}
               alt=""
             />
           </span>

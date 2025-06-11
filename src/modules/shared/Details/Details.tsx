@@ -1,22 +1,7 @@
 import React from 'react';
 import styles from './Details.module.scss';
 import classNames from 'classnames';
-import { DetailsProduct } from '../../../types/productTypes';
-
-export type Product = {
-  id: number;
-  category: string;
-  itemId: string;
-  name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
-  capacity: string;
-  color: string;
-  ram: string;
-  year: number;
-  image: string;
-};
+import { DetailsProduct, Product } from '../../../types/productTypes';
 
 type DetailsProps = {
   isDetail?: boolean;

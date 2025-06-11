@@ -58,7 +58,7 @@ export const Pagination = ({
       <Button
         rotation={180}
         disabled={currentPage === 1}
-        iconsSrc={imgSrcArrow}
+        // iconsSrc={imgSrcArrow}
         onClick={handlePrev}
       />
 
@@ -79,7 +79,7 @@ export const Pagination = ({
       </div>
 
       <Button
-        iconsSrc={imgSrcArrow}
+        // iconsSrc={imgSrcArrow}
         onClick={handleNext}
         disabled={currentPage === totalPages}
       />

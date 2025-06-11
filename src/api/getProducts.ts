@@ -1,12 +1,10 @@
 /* eslint-disable no-console */
 import { DetailsProduct, Product } from '../types/productTypes';
-const basePath = window.location.pathname.includes('react_phone-catalog')
-  ? '/react_phone-catalog/'
-  : '/';
+import { getAssetUrl } from './utilis';
 
 export const getProductsItem = async (): Promise<Product[]> => {
   try {
-    const resp = await fetch(`${basePath}api/products.json`);
+    const resp = await fetch(getAssetUrl('api/products.json'));
 
     if (!resp.ok) {
       throw new Error(`HTTP error! status: ${resp.status}`);
@@ -26,7 +24,7 @@ export const getProductsFromCategory = async (
   signal: AbortSignal,
 ): Promise<DetailsProduct[]> => {
   try {
-    const resp = await fetch(`api/${category}.json`, { signal });
+    const resp = await fetch(getAssetUrl(`api/${category}.json`), { signal });
 
     if (!resp.ok) {
       throw new Error(`HTTP error! status: ${resp.status}`);

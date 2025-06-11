@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './PictureSlider.module.scss';
 import classNames from 'classnames';
 import { arrayOfImage } from './constants/imagesSlider';
+import { getAssetUrl } from '../../../../api/utilis';
 
 export const PictureSlider = () => {
   const [activeImg, setActiveImg] = useState<number>(0);
@@ -63,7 +64,7 @@ export const PictureSlider = () => {
           <button onClick={previousImg} className={styles.slider__arrow}>
             <img
               className={styles.arrow}
-              src="/icons/arrow_black_right.svg"
+              src={getAssetUrl('icons/arrow_black_right.svg')}
               alt=""
             />
           </button>
@@ -73,7 +74,7 @@ export const PictureSlider = () => {
               <h2 className={styles.sliderLeft__title}>
                 Now available in our store!
                 <img
-                  src="/icons/logo_ok_hand.svg"
+                  src={getAssetUrl('icons/logo_ok_hand.svg')}
                   className={styles.sliderLeft__emoji}
                 />
               </h2>
@@ -91,7 +92,7 @@ export const PictureSlider = () => {
             </div>
           </div>
           <button onClick={nextImg} className={styles.slider__arrow}>
-            <img src="/icons/arrow_black_right.svg" alt="" />
+            <img src={getAssetUrl('icons/arrow_black_right.svg')} alt="" />
           </button>
         </div>
         <div className={styles.dashes}>

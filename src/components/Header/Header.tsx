@@ -8,6 +8,7 @@ import { useFavourites } from '../../hooks/useFavourites';
 import classNames from 'classnames';
 import { SearchInput } from './components/MenuMobile/SearchInput';
 import { useAppContext } from '../../hooks/useAppContext';
+import { getAssetUrl } from '../../api/utilis';
 
 type HeaderProps = {
   showSearch: boolean;
@@ -48,12 +49,12 @@ export const Header = ({ showSearch }: HeaderProps) => {
             <Link to="/" aria-label="main page">
               <img
                 className={styles.logo__img}
-                src="/icons/logo.svg"
+                src={getAssetUrl('icons/logo.svg')}
                 alt="phone shop logo"
               />
               <img
                 className={styles.logo__hand}
-                src="/icons/logo_ok_hand.svg"
+                src={getAssetUrl('icons/logo_ok_hand.svg')}
                 alt=""
                 aria-hidden="true"
               />
@@ -79,7 +80,7 @@ export const Header = ({ showSearch }: HeaderProps) => {
           >
             <img
               className={styles.navigation__img}
-              src="/icons/burger.svg"
+              src={getAssetUrl('/icons/burger.svg')}
               alt=""
               aria-hidden="true"
             />
@@ -96,7 +97,7 @@ export const Header = ({ showSearch }: HeaderProps) => {
             <div className={styles.navigationMenu__wrapper}>
               <img
                 className={styles.navigationMenu__img}
-                src="/icons/favourite_heart.svg"
+                src={getAssetUrl('icons/favourite_heart.svg')}
                 alt=""
                 aria-hidden="true"
               />
@@ -117,7 +118,7 @@ export const Header = ({ showSearch }: HeaderProps) => {
             <div className={styles.navigationMenu__wrapper}>
               <img
                 className={styles.navigationMenu__img}
-                src="/icons/basket.svg"
+                src={getAssetUrl('icons/basket.svg')}
                 alt=""
                 aria-hidden="true"
               />
@@ -136,7 +137,7 @@ export const Header = ({ showSearch }: HeaderProps) => {
             >
               <img
                 className={styles.navigationMenu__img}
-                src="/icons/theme.svg"
+                src={getAssetUrl('icons/theme.svg')}
                 alt=""
                 aria-hidden="true"
               />

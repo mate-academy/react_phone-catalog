@@ -5,12 +5,6 @@ import { ProductItem } from '../../../shared/ProductItem/ProductItem';
 import classNames from 'classnames';
 import { Product } from '../../../../types/productTypes';
 
-const imgSrcArrow = {
-  default: '/icons/arrow_circle_default.svg',
-  hover: '/icons/arrow_circle_hover.svg',
-  disabled: '/icons/arrow_circle_disabled.svg',
-};
-
 type TitleProps = {
   title: string;
   isHot: boolean;
@@ -66,11 +60,9 @@ export const ProductsSlider = ({
               onClick={previousImg}
               rotation={180}
               disabled={startIndex === 0}
-              iconsSrc={imgSrcArrow}
             />
             <Button
               onClick={nextImg}
-              iconsSrc={imgSrcArrow}
               disabled={products ? startIndex >= products?.length - 1 : true}
             />
           </div>
