@@ -9,7 +9,6 @@
 
   &__container {
     width: 100%;
-
     display: grid;
     grid-template-columns: 32px 1fr 32px;
     gap: 16px;
@@ -17,6 +16,9 @@
     @include mixins.media-phone {
       display: flex;
       justify-content: center;
+      padding: 0;
+      margin: 0;
+      width: 100vw;
     }
   }
 
@@ -28,31 +30,35 @@
 
   &__banner {
     display: flex;
+    width: 100%;
+  }
+
+  &__image-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+
+    @include mixins.media-phone {
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   &__image {
     position: absolute;
     inset: 0;
-
     width: 100%;
-
     user-select: none;
 
     --direction: 5px;
 
     animation-duration: 0;
 
-    @include mixins.media-phone{
-      height: 320;
-      width: 100%;
-      max-height: 320px;
-    }
-
-
-    &-container {
-      position: relative;
-
-      display: flex;
+    @include mixins.media-phone {
+      width: 100vw;
+      height: 100vw;
+      object-fit: cover;
     }
 
     &--main {
@@ -81,7 +87,6 @@
 
     &--hidden {
       pointer-events: none;
-
       animation: banner-disappear ease forwards;
 
       @keyframes banner-disappear {
@@ -112,6 +117,7 @@
 
       @include mixins.media-phone {
         display: block;
+        width: 100vw;
       }
     }
   }
@@ -126,11 +132,9 @@
     height: 24px;
     width: 24px;
     padding: 10px 5px;
-
     box-sizing: border-box;
 
     transition: background-color vars.$transition-time;
-
     background-color: vars.$color-elements;
     background-clip: content-box;
 

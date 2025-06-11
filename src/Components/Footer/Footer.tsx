@@ -1,5 +1,7 @@
+import { NavLink } from 'react-router-dom';
 import { scrollToTop } from '../../utils/scrollToTop';
 import './Footer.scss';
+import classNames from 'classnames';
 
 const LINKS = [
   {
@@ -20,7 +22,16 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__container">
-        <img src="logo.svg" alt="Logo" className="footer__logo" />
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            classNames('header__logo-link', {
+              'header__logo-link--active': isActive,
+            })
+          }
+        >
+          <img src="logo.svg" alt="Logo" className="header__logo" />
+        </NavLink>
 
         <div className="footer__links">
           {LINKS.map(link => (
@@ -42,7 +53,7 @@ export const Footer = () => {
           <p className="small-text footer__back-to-top-text">Back to top</p>
           <img
             className="button--arrow"
-            src="icons/arrow_up.svg"
+            src="./public/icons/arrow_up.svg"
             alt="Arrow up"
           />
         </button>

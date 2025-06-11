@@ -16,7 +16,7 @@ export const Breadcrumbs: React.FC<Props> = ({ paths }) => {
   return (
     <div className="breadcrumbs">
       <Link to="/" className="breadcrumbs__home">
-        <img src="icons/home.svg" alt="" />
+        <img src="/icons/home.svg" alt="" />
       </Link>
 
       {paths.map((path, index) => {
