@@ -197,6 +197,17 @@
       position: relative;
       cursor: pointer;
     }
+
+    &--active {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: 1px solid #0f0f11;
+      border-radius: 50%;
+      background-color: white;
+      position: relative;
+      cursor: pointer;
+    }
   }
 
   &__small-line {

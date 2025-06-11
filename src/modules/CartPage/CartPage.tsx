@@ -12,8 +12,19 @@ export const CartPage = () => {
   );
 
   useEffect(() => {
-    setCartWithCount(cartItems.map(item => ({ ...item, count: 1 })));
+    const storedCart = localStorage.getItem('cartWithCount');
+
+    if (storedCart) {
+      setCartWithCount(JSON.parse(storedCart));
+    } else {
+      setCartWithCount(cartItems.map(item => ({ ...item, count: 1 })));
+    }
   }, [cartItems]);
+
+  // збереження в localStorage при кожній зміні
+  useEffect(() => {
+    localStorage.setItem('cartWithCount', JSON.stringify(cartWithCount));
+  }, [cartWithCount]);
 
   const deletePhone = (itemToDelete: Gargets) => {
     removeFromCart(itemToDelete.id);
@@ -97,7 +108,8 @@ export const CartPage = () => {
           <div className="cart__block-total">
             <div className="cart__total-amount">${total}</div>
             <div className="cart__count-item">
-              Total for {cartWithCount.length} items
+              Total for{' '}
+              {cartWithCount.reduce((sum, item) => sum + item.count, 0)} items
             </div>
             <div className="cart__small-line"></div>
 

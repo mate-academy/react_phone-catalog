@@ -113,14 +113,12 @@ export const ProductDetailsPage = () => {
 
         <div className="details__phone-colums">
           {item.images?.map((img, index) => (
-
             <img
               key={index}
               src={img}
               alt={`image-phone-${index}`}
               className={`details__image ${clickImage === img ? 'details__image--active' : ''}`}
               onClick={() => setClickImage(img)}
-
             />
           ))}
         </div>
@@ -140,10 +138,13 @@ export const ProductDetailsPage = () => {
               const hexColor =
                 colorMap[color.toLowerCase() as keyof typeof colorMap] || color;
 
+              const isActive =
+                chooseColor?.toLowerCase() === color.toLowerCase();
+
               return (
                 <button
                   key={index}
-                  className="details__color-button"
+                  className={`details__color-button ${isActive ? 'details__color-button--active' : ''}`}
                   style={{ color: hexColor }}
                   onClick={() => {
                     setChooseColor(color);
