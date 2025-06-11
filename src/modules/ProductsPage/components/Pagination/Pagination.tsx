@@ -2,12 +2,6 @@ import React from 'react';
 import styles from './Pagination.module.scss';
 import { Button } from '../../../../components/Button';
 
-const imgSrcArrow = {
-  default: '/icons/arrow_circle_default.svg',
-  hover: '/icons/arrow_circle_hover.svg',
-  disabled: '/icons/arrow_circle_disabled.svg',
-};
-
 type PaginationProps = {
   total: number;
   perPage: 'all' | string;
@@ -58,7 +52,6 @@ export const Pagination = ({
       <Button
         rotation={180}
         disabled={currentPage === 1}
-        // iconsSrc={imgSrcArrow}
         onClick={handlePrev}
       />
 
@@ -78,11 +71,7 @@ export const Pagination = ({
         </div>
       </div>
 
-      <Button
-        // iconsSrc={imgSrcArrow}
-        onClick={handleNext}
-        disabled={currentPage === totalPages}
-      />
+      <Button onClick={handleNext} disabled={currentPage === totalPages} />
     </div>
   );
 };
