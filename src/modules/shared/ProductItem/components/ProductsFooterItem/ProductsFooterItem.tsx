@@ -3,6 +3,7 @@ import { Product } from '../../../../../types/productTypes';
 import { FooterSlider } from '../../../FooterSlider';
 import { useCart } from '../../../../../hooks/useCart';
 import { useFavourites } from '../../../../../hooks/useFavourites';
+import { getAssetUrl } from '../../../../../api/utilis';
 
 type FooterProps = {
   item: Product;
@@ -46,8 +47,8 @@ export const ProductsFooterItem = ({ item }: FooterProps) => {
 
   const buttonText = isInCart ? 'Added to cart' : 'Add to cart';
   const activeImg = isInFavourites
-    ? '/icons/Favourites_check.svg'
-    : '/icons/Favourites.svg';
+    ? getAssetUrl('/icons/Favourites_check.svg')
+    : getAssetUrl('/icons/Favourites.svg');
 
   return (
     <FooterSlider

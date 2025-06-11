@@ -4,6 +4,7 @@ import { DetailsProduct } from '../../../../types/productTypes';
 import { useCart } from '../../../../hooks/useCart';
 import { useFavourites } from '../../../../hooks/useFavourites';
 import { useAppContext } from '../../../../hooks/useAppContext';
+import { getAssetUrl } from '../../../../api/utilis';
 
 type DetailsProps = {
   item: DetailsProduct;
@@ -55,8 +56,8 @@ export const ProductsFooterDetails = ({ item }: DetailsProps) => {
 
   const buttonText = isInCart ? 'Added to cart' : 'Add to cart';
   const activeImg = isInFavourites
-    ? '/icons/Favourites_check.svg'
-    : '/icons/Favourites.svg';
+    ? getAssetUrl('icons/Favourites_check.svg')
+    : getAssetUrl('icons/Favourites.svg');
 
   return (
     <FooterSlider
