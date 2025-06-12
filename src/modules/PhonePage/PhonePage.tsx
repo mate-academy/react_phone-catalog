@@ -6,7 +6,7 @@ import { Pagination } from '../../components/pagination/Pagination';
 import { ControlPagination } from '../../components/paginationControl/ControlPagination';
 import { ProductList } from '../../components/ProductsList/ProductsList';
 import { TitlePages } from '../../components/title/TitlePages';
-import { PageNav } from './components/pageNav/PageNav';
+import { PageNav } from '../../components/pageNav/PageNav';
 
 export const PhonePage = () => {
   return (
@@ -15,10 +15,8 @@ export const PhonePage = () => {
         <PageNav />
         <TitlePages type={'phones'} />
 
-
         <ProductList />
-</Container>
-
+      </Container>
     </>
   );
 };

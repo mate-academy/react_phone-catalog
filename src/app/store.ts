@@ -2,11 +2,13 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import productsReducer from '../features/ProductSlice';
 import filterReducer from '../features/FilterSlice';
 import paginationReducer from '../features/PaginationSlice';
+import productDetailsReducer from '../features/ProductDetailsSlice';
 const store = configureStore({
   reducer: {
     products: productsReducer,
     filter: filterReducer,
     pagination: paginationReducer,
+    productDetail: productDetailsReducer,
   },
 });
 

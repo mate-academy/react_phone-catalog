@@ -14,7 +14,7 @@ const initialState: ProductsState = {
   products: [],
   selectedProduct: null,
   loading: false,
-  error:'',
+  error: '',
 }
 
 export const init = createAsyncThunk('product/fetch', () => {
