@@ -1,50 +1,57 @@
 import styles from './Filter.module.scss';
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-import { setStatus } from "../../features/FilterSlice";
-import { setStatusPagin } from '../../features/PaginationSlice';
+import { setStatus } from '../../features/FilterSlice';
+import { setStatusPagin, setCurrentPage } from '../../features/PaginationSlice';
 
 import { DropDownMenu } from '../dropDownMenu/DropDownMenu';
 import { useSearchParams } from 'react-router-dom';
+import { PaginationStatus } from '../../types/pagination';
 
 export const Filter = () => {
   const [filterParams, setFilterParams] = useSearchParams();
   const dispatch = useAppDispatch();
-  const  status  = useAppSelector(state => state.filter.status);
-const paginationStatus = useAppSelector(state=>state.pagination.status)
-  const handleStatusChange = (value) => {
+  const status = useAppSelector(state => state.filter.status);
+  const paginationStatus = useAppSelector(state => state.pagination.status);
+
+  const handleStatusChange = value => {
     dispatch(setStatus(value));
+    dispatch(setCurrentPage(1));
+    const params = new URLSearchParams(filterParams);
+    value === 'age' ? params.delete('sort') : params.set('sort', value);
+    setFilterParams(params);
+  };
+
+  const handleStatusPagination = (value: PaginationStatus) => {
+    dispatch(setStatusPagin(value));
+    dispatch(setCurrentPage(1));
 
     const params = new URLSearchParams(filterParams);
-
-    params.set('sort', value)
-     setFilterParams(params)
-
+    value === 'all' ? params.delete('perPage') : params.set('perPage', value);
+    setFilterParams(params);
   };
-  const handleStatusPagination = (value) => {
-    dispatch(setStatusPagin(value));
-      const params = new URLSearchParams(filterParams);
-    params.set('perPage', value)
-     setFilterParams(params)
-  }
 
-  return (<>
-  <form
-      className={styles.filter}
-      onSubmit={event => event.preventDefault()}>
-
-
- <div  className={styles.filter__drop}>
-
-          <DropDownMenu value={status} onChange={handleStatusChange} type={'filter'} />
+  return (
+    <>
+      <form
+        className={styles.filter}
+        onSubmit={event => event.preventDefault()}
+      >
+        <div className={styles.filter__drop}>
+          <DropDownMenu
+            value={status}
+            onChange={handleStatusChange}
+            type={'filter'}
+          />
         </div>
-      <div className={styles.filter__pagination}>
-        <DropDownMenu value={paginationStatus} onChange={handleStatusPagination } type={'pagination'} /></div>
-
-
-
-    </form>
-   </>)
-}
-
-
+        <div className={styles.filter__pagination}>
+          <DropDownMenu
+            value={paginationStatus}
+            onChange={handleStatusPagination}
+            type={'pagination'}
+          />
+        </div>
+      </form>
+    </>
+  );
+};
