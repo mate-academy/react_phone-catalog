@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../Components/Breadcrumbs';
 import { Dropdown } from '../../Components/Dropdown';
 import { ProductCard } from '../../Components/ProductCart/ProductCart';
@@ -12,34 +11,60 @@ import { PaginationButtons } from '../../Components/Pagination';
 
 const DEFAULT_SORT_BY = 'Newest';
 const DEFAULT_PER_PAGE = 16;
+const DEFAULT_PAGE = 1;
 
 type Props = {
   category: Category;
 };
 
 export const Catalog: React.FC<Props> = ({ category }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const getInitialSortBy = (): keyof typeof SortType => {
+    return (
+      (localStorage.getItem('catalog_sortBy') as keyof typeof SortType) ||
+      DEFAULT_SORT_BY
+    );
+  };
+
+  const getInitialPerPage = (): number => {
+    const stored = localStorage.getItem('catalog_perPage');
+
+    return stored ? parseInt(stored, 10) : DEFAULT_PER_PAGE;
+  };
+
+  const getInitialPage = (): number => {
+    const stored = localStorage.getItem('catalog_page');
+
+    return stored ? parseInt(stored, 10) : DEFAULT_PAGE;
+  };
 
   const [products, setProducts] = useState<ProductType[]>([]);
   const [pageCount, setPageCount] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(getInitialPage());
   const [totalProducts, setTotalProducts] = useState(0);
+  const [sortBy, setSortBy] =
+    useState<keyof typeof SortType>(getInitialSortBy());
+  const [perPage, setPerPage] = useState<number>(getInitialPerPage());
 
-  const initialSortBy =
-    (searchParams.get('sortBy') as keyof typeof SortType) || DEFAULT_SORT_BY;
-  const initialPerPage =
-    parseInt(searchParams.get('perPage') || '') || DEFAULT_PER_PAGE;
+  useEffect(() => {
+    localStorage.setItem('catalog_sortBy', sortBy);
+    localStorage.setItem('catalog_perPage', perPage.toString());
+    localStorage.setItem('catalog_page', currentPage.toString());
+  }, [sortBy, perPage, currentPage]);
 
-  const [sortBy, setSortBy] = useState(initialSortBy);
-  const [perPage, setPerPage] = useState(initialPerPage);
+  useEffect(() => {
+    const storedCategory = localStorage.getItem('catalog_category');
 
-  const handleSortBy = useCallback((value: string) => {
-    setSortBy(value as keyof typeof SortType);
-  }, []);
+    if (storedCategory !== category) {
+      setSortBy(DEFAULT_SORT_BY);
+      setPerPage(DEFAULT_PER_PAGE);
+      setCurrentPage(DEFAULT_PAGE);
 
-  const handlePerPage = useCallback((value: string) => {
-    setPerPage(parseInt(value));
-  }, []);
+      localStorage.setItem('catalog_category', category);
+      localStorage.removeItem('catalog_sortBy');
+      localStorage.removeItem('catalog_perPage');
+      localStorage.removeItem('catalog_page');
+    }
+  }, [category]);
 
   const fetchProducts = async () => {
     const response = await getProducts(
@@ -61,34 +86,26 @@ export const Catalog: React.FC<Props> = ({ category }) => {
   };
 
   useEffect(() => {
-    setCurrentPage(1);
-    setSortBy('Newest');
-    setPerPage(16);
-  }, [category]);
-
-  useEffect(() => {
     fetchProducts();
-
-    const newParams: { [key: string]: string } = {};
-
-    if (perPage !== DEFAULT_PER_PAGE) {
-      newParams.perPage = perPage.toString();
-    }
-
-    if (sortBy !== DEFAULT_SORT_BY) {
-      newParams.sortBy = sortBy;
-    }
-
-    setSearchParams(newParams);
-  }, [category, currentPage, perPage, sortBy]);
+  }, [category, sortBy, perPage, currentPage]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
   const title = useMemo(() => {
-    return category[0].toUpperCase().concat(category.slice(1));
+    return category[0].toUpperCase() + category.slice(1);
   }, [category]);
+
+  const handleSortBy = useCallback((value: string) => {
+    setSortBy(value as keyof typeof SortType);
+    setCurrentPage(1);
+  }, []);
+
+  const handlePerPage = useCallback((value: string) => {
+    setPerPage(parseInt(value));
+    setCurrentPage(1);
+  }, []);
 
   return (
     <div className="catalog">
@@ -113,7 +130,7 @@ export const Catalog: React.FC<Props> = ({ category }) => {
           </p>
           <Dropdown
             options={['16', '32', '64']}
-            value={perPage}
+            value={perPage.toString()}
             onChange={handlePerPage}
           />
         </div>
@@ -121,7 +138,7 @@ export const Catalog: React.FC<Props> = ({ category }) => {
 
       <div className="catalog__container">
         {products.map(product => (
-          <ProductCard key={product.id} product={product} wide={true} />
+          <ProductCard key={product.id} product={product} wide />
         ))}
       </div>
 
