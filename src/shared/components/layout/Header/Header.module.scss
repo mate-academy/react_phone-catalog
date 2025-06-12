@@ -6,10 +6,9 @@
   left: 0;
   z-index: 1000;
 
-  grid-area: header;
-
   width: 100%;
   height: 64px;
+  grid-area: header;
 
   @media (max-width: $mobile-breakpoint) {
     height: 48px;
@@ -82,9 +81,9 @@
     height: calc(100vh - 48px);
 
     background-color: $color-black;
-    transform: translateY(-100%);
 
     transition: transform 0.3s ease-in-out;
+    transform: translateY(-100%);
   }
 }
 

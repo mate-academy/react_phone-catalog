@@ -7,10 +7,9 @@
   height: 1px;
   margin: -1px;
   padding: 0;
-
-  overflow: hidden;
   border: 0;
 
+  overflow: hidden;
   clip-path: inset(50%);
 }
 
@@ -25,13 +24,13 @@
   margin-bottom: 80px;
 
   @media (max-width: $tablet-breakpoint) {
-    padding: 0 24px;
     margin-bottom: 64px;
+    padding: 0 24px;
   }
 
   @media (max-width: $mobile-breakpoint) {
-    padding: 0 16px;
     margin-bottom: 56px;
+    padding: 0 16px;
   }
 }
 
@@ -46,13 +45,13 @@
   margin-bottom: 80px;
 
   @media (max-width: $tablet-breakpoint) {
-    padding: 0 24px;
     margin-bottom: 64px;
+    padding: 0 24px;
   }
 
   @media (max-width: $mobile-breakpoint) {
-    padding: 0 16px;
     margin-bottom: 56px;
+    padding: 0 16px;
   }
 }
 

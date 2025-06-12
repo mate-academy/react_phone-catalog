@@ -1,8 +1,8 @@
 @use '../../styles/globals.scss' as *;
 
 .cartWrapper {
-  padding-bottom: 80px;
   padding-top: 40px;
+  padding-bottom: 80px;
 
   @media (max-width: $tablet-breakpoint) {
     padding-bottom: 64px;
@@ -10,9 +10,9 @@
   }
 
   @media (max-width: $mobile-breakpoint) {
+    padding-top: 24px;
     padding-bottom: 56px;
     padding-inline: 16px;
-    padding-top: 24px;
   }
 }
 
@@ -48,8 +48,8 @@
 
 .cartList {
   display: flex;
-  flex-direction: column;
   flex-grow: 1;
+  flex-direction: column;
 
   max-width: 752px;
   gap: 16px;
@@ -57,11 +57,17 @@
 
 .cartItem {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
 
   padding: 24px;
+  background-color: $color-surface1;
+  gap: 24px;
+
+  @media (max-width: $mobile-breakpoint) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
 }
 
 .crossIcon {
@@ -73,8 +79,31 @@
   }
 }
 
+.topRow {
+  display: flex;
+  flex: 1 1 40%;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 100%;
+  }
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 100%;
+  }
+}
+
 .imageWrapper {
   @extend %flex-center;
+
+  flex-shrink: 0;
 
   width: 66px;
   height: 66px;
@@ -84,16 +113,16 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-  }
-
-  img:hover {
-    @include hover-scale(1.5);
-
     transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      @include hover-scale(1.1);
+    }
   }
 }
 
 .itemName {
+  flex: 1;
   color: $color-white;
 }
 
@@ -112,4 +141,20 @@
 
   width: 32px;
   height: 32px;
+  line-height: 1;
+}
+
+.price {
+  @include apply-typography(h3-desktop);
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  width: 80px;
+  white-space: nowrap;
+}
+
+.totalItems {
+  padding: 24px;
 }

@@ -1,0 +1,33 @@
+@use '../../../../styles/globals.scss' as *;
+
+.divider {
+  display: block;
+  height: 1px;
+  margin-bottom: var(--divider-mb, 0);
+  background-color: $color-elements;
+}
+
+.marginNone {
+  margin-bottom: 0;
+}
+
+.marginSm {
+  margin-bottom: 16px;
+}
+
+.marginMd {
+  margin-bottom: 24px;
+}
+
+.marginLg {
+  margin-bottom: 32px;
+}
+
+
+.marginResponsive {
+  margin-bottom: 24px;
+
+  @media (max-width: $mobile-breakpoint) {
+    margin-bottom: 30px;
+  }
+}

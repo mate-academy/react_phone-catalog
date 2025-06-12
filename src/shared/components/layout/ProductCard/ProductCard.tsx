@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { AddToCartButton } from '../../../../shared/components/ui/AddToCartButton';
 import { FavoriteButton } from '../../../../shared/components/ui/FavoriteButton';
 import { Product } from '../../../../shared/types/Product';
+import { Divider } from '../../ui/Divider';
 
 import styles from './ProductCard.module.scss';
 
@@ -40,7 +41,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
           )}
         </div>
 
-        <div className={styles.divider}></div>
+        <Divider />
 
         <div className={styles.features}>
           <div className={styles.feature}>

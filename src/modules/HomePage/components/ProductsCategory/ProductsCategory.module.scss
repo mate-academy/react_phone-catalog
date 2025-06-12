@@ -19,12 +19,12 @@
 
 .productsContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   width: 100%;
   gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
 
   @media (max-width: $mobile-breakpoint) {
-    grid-template-columns: 1fr;
     gap: 32px;
+    grid-template-columns: 1fr;
   }
 }

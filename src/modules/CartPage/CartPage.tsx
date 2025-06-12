@@ -7,6 +7,7 @@ import { RootState } from 'app/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { removeFromCart } from '../../features/cart/cartSlice';
+import { Divider } from '../../shared/components/ui/Divider';
 import { GoBack } from '../../shared/components/ui/GoBack';
 import { Icon } from '../../shared/components/ui/Icon/Icon';
 import { IconNames } from '../../shared/components/ui/Icon/IconNames';
@@ -44,48 +45,56 @@ export const CartPage: React.FC = () => {
             {cartItems.map(item => (
               <li key={item.product.id}>
                 <article className={styles.cartItem}>
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveFromCart(item.product.id)}
-                  >
-                    <Icon className={styles.crossIcon} name={IconNames.Cross} />
-                  </button>
-
-                  <Link
-                    className={styles.imageWrapper}
-                    to={`/${item.product.category}/${item.product.id}`}
-                  >
-                    <img
-                      alt={item.product.name}
-                      className={styles.image}
-                      src={item.product.image}
-                    />
-                  </Link>
-
-                  <Link
-                    className={styles.itemName}
-                    to={`/${item.product.category}/${item.product.id}`}
-                  >
-                    {item.product.name}
-                  </Link>
-
-                  <div className={styles.counter} role="group">
-                    <button className={styles.counterButton}>
-                      <Icon name={IconNames.Minus} />
+                  <div className={styles.topRow}>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveFromCart(item.product.id)}
+                    >
+                      <Icon
+                        className={styles.crossIcon}
+                        name={IconNames.Cross}
+                      />
                     </button>
+                    <Link
+                      className={styles.imageWrapper}
+                      to={`/${item.product.category}/${item.product.id}`}
+                    >
+                      <img alt={item.product.name} src={item.product.image} />
+                    </Link>
 
-                    <output className={styles.counterValue}>1</output>
+                    <Link
+                      className={styles.itemName}
+                      to={`/${item.product.category}/${item.product.id}`}
+                    >
+                      {item.product.name}
+                    </Link>
+                  </div>
 
-                    <button className={styles.counterButton}>
-                      <Icon name={IconNames.Plus} />
-                    </button>
+                  <div className={styles.bottomRow}>
+                    <div className={styles.counter} role="group">
+                      <button className={styles.counterButton}>
+                        <Icon name={IconNames.Minus} />
+                      </button>
+
+                      <output className={styles.counterValue}>1</output>
+
+                      <button className={styles.counterButton}>
+                        <Icon name={IconNames.Plus} />
+                      </button>
+                    </div>
+
+                    <div
+                      className={styles.price}
+                    >{`$${item.product.price}`}</div>
                   </div>
                 </article>
               </li>
             ))}
           </ul>
 
-          <div className={styles.totalItems}></div>
+          <div className={styles.totalItems}>
+            <Divider />
+          </div>
         </div>
       ) : (
         <section className={styles.empty}>

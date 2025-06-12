@@ -3,10 +3,10 @@
 .favoriteButton {
   @extend %flex-center;
 
+  border: none;
+
   color: $color-white;
   background-color: $color-surface2;
-
-  border: none;
   transition: background-color 0.3s ease;
 
   &:hover {

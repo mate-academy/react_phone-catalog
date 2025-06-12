@@ -26,16 +26,16 @@
 }
 
 .buttonDisabled {
+  border: 1px solid $color-elements;
   color: $color-icons;
   background-color: $color-black;
-  border: 1px solid $color-elements;
   cursor: default;
 }
 
 .dots {
   display: flex;
-  align-items: flex-end;
   justify-content: center;
+  align-items: flex-end;
 
   width: 32px;
   height: 32px;

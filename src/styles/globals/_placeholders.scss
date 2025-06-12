@@ -9,14 +9,14 @@
   @include apply-typography(body-desktop);
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
   width: 32px;
   height: 32px;
+  border: none;
 
   background-color: $color-surface1;
-  border: none;
 
   transition: background-color 0.3s ease-in-out;
 
@@ -32,8 +32,8 @@
   @include apply-typography(buttons-desktop);
 
   width: 100%;
-  background-color: $color-accent;
   border: none;
+  background-color: $color-accent;
   transition: background-color 0.3s ease;
 
   &:hover {

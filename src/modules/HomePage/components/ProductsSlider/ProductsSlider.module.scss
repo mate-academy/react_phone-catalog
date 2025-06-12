@@ -20,13 +20,13 @@
 
   width: 32px;
   height: 32px;
+  border: none;
 
   color: $color-white;
 
   background-color: $color-surface2;
   background-position: center;
   background-repeat: no-repeat;
-  border: none;
 
   transition: background-color 0.5s ease-in-out;
 
@@ -43,8 +43,8 @@
 
 .lockedButton,
 .lockedButton:hover {
-  background-color: $color-surface1;
   border: 1px solid $color-elements;
+  background-color: $color-surface1;
   pointer-events: none;
 
   &.sliderButtonPrev,

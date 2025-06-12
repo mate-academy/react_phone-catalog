@@ -12,8 +12,11 @@ import { Error } from '../../shared/components/layout/Error';
 import { Loader } from '../../shared/components/layout/Loader';
 import { AddToCartButton } from '../../shared/components/ui/AddToCartButton';
 import { Breadcrumbs } from '../../shared/components/ui/Breadcrumbs';
+import { Divider } from '../../shared/components/ui/Divider';
+import dividerStyles from '../../shared/components/ui/Divider/Divider.module.scss';
 import { FavoriteButton } from '../../shared/components/ui/FavoriteButton';
 import { GoBack } from '../../shared/components/ui/GoBack';
+import { DividerMargin } from '../../shared/constants/dividerMargin';
 import { ProductCategory } from '../../shared/constants/productCategory';
 import {
   getProductsByCategory,
@@ -185,7 +188,7 @@ export const ProductDetailsPage: React.FC = () => {
                   ))}
                 </div>
 
-                <hr aria-hidden="true" className={styles.divider} />
+                <Divider margin={DividerMargin.MD} />
               </fieldset>
 
               <fieldset className={styles.capacity}>
@@ -211,7 +214,7 @@ export const ProductDetailsPage: React.FC = () => {
                   ))}
                 </div>
 
-                <hr aria-hidden="true" className={styles.divider} />
+                <Divider margin={DividerMargin.LG} />
               </fieldset>
             </div>
 
@@ -245,7 +248,7 @@ export const ProductDetailsPage: React.FC = () => {
           <section className={styles.description}>
             <h2 className={styles.descriptionTitle}>About</h2>
 
-            <hr aria-hidden="true" className={styles.divider} />
+            <Divider margin={DividerMargin.LG} />
 
             <article className={styles.descriptionContent}>
               {curProduct.description.map((desc, index) => (
@@ -262,7 +265,7 @@ export const ProductDetailsPage: React.FC = () => {
           <section className={styles.specs}>
             <h2 className={styles.specsTitle}>Tech specs</h2>
 
-            <hr aria-hidden="true" className={styles.divider} />
+            <Divider className={dividerStyles.marginResponsive} />
 
             <dl className={styles.featuresList}>
               <dt className={styles.featureName}>Screen</dt>

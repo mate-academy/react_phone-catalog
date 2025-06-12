@@ -14,14 +14,14 @@
   @include apply-typography(buttons-desktop);
 
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 
   width: 100%;
   height: 40px;
+  border: 1px solid $color-surface2;
 
   background-color: $color-surface2;
-  border: 1px solid $color-surface2;
 
   transition: border 0.3s ease;
 
@@ -64,15 +64,15 @@
 
   width: 100%;
   padding: 8px 0;
-  background-color: $color-black;
   border: 1px solid $color-elements;
+  background-color: $color-black;
 
   opacity: 0;
-  transform: translateY(-10px);
 
   transition:
     opacity 0.3s ease-in-out,
     transform 0.3s ease-in-out;
+  transform: translateY(-10px);
 
   &.animate {
     opacity: 1;

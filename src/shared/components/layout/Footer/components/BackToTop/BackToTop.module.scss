@@ -9,8 +9,9 @@
 .text {
   @include apply-typography(small-desktop);
 
-  cursor: pointer;
   padding-right: 16px;
+
+  cursor: pointer;
 }
 
 .button {
@@ -19,8 +20,8 @@
 
   width: 32px;
   height: 32px;
-  background-color: $color-surface2;
   border: none;
+  background-color: $color-surface2;
 }
 
 .arrowIcon {

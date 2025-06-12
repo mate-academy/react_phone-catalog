@@ -36,14 +36,14 @@ a:focus {
 
 .App {
   display: grid;
+
+  min-height: 100vh;
   grid-template-areas:
     'header'
     'main'
     'footer';
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 64px 1fr auto;
-
-  min-height: 100vh;
 }
 
 @media (max-width: $mobile-breakpoint) {
