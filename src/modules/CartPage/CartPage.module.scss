@@ -50,8 +50,6 @@
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-
-  max-width: 752px;
   gap: 16px;
 }
 
@@ -156,5 +154,33 @@
 }
 
 .totalItems {
+  display: flex;
+  flex-direction: column;
+
+  width: 368px;
+  height: fit-content;
   padding: 24px;
+  border: solid 1px $color-elements;
+  gap: 24px;
+
+  @media (max-width: $tablet-breakpoint) {
+    width: 100%;
+    gap: 16px;
+  }
+}
+
+.totalInfo {
+  @extend %flex-center;
+
+  flex-direction: column;
+}
+
+.totalPrice {
+  @include apply-typography(h2-desktop);
+}
+
+.totalQuantity {
+  @include apply-typography(body-desktop);
+
+  color: $color-secondary;
 }

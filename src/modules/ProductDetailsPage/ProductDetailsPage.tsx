@@ -10,12 +10,12 @@ import { ProductsSlider } from '../../modules/HomePage/components/ProductsSlider
 import { NotFoundPage } from '../../modules/NotFoundPage';
 import { Error } from '../../shared/components/layout/Error';
 import { Loader } from '../../shared/components/layout/Loader';
-import { AddToCartButton } from '../../shared/components/ui/AddToCartButton';
 import { Breadcrumbs } from '../../shared/components/ui/Breadcrumbs';
 import { Divider } from '../../shared/components/ui/Divider';
 import dividerStyles from '../../shared/components/ui/Divider/Divider.module.scss';
 import { FavoriteButton } from '../../shared/components/ui/FavoriteButton';
 import { GoBack } from '../../shared/components/ui/GoBack';
+import { PrimaryButton } from '../../shared/components/ui/PrimaryButton';
 import { DividerMargin } from '../../shared/constants/dividerMargin';
 import { ProductCategory } from '../../shared/constants/productCategory';
 import {
@@ -226,7 +226,7 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className={styles.actions}>
-              <AddToCartButton product={curProduct} size={48} />
+              <PrimaryButton product={curProduct} size={48} variant="add" />
               <FavoriteButton size={48} />
             </div>
 

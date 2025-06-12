@@ -11,6 +11,7 @@ import { Divider } from '../../shared/components/ui/Divider';
 import { GoBack } from '../../shared/components/ui/GoBack';
 import { Icon } from '../../shared/components/ui/Icon/Icon';
 import { IconNames } from '../../shared/components/ui/Icon/IconNames';
+import { PrimaryButton } from '../../shared/components/ui/PrimaryButton';
 
 import styles from './CartPage.module.scss';
 
@@ -93,7 +94,13 @@ export const CartPage: React.FC = () => {
           </ul>
 
           <div className={styles.totalItems}>
+            <div className={styles.totalInfo}>
+              <p className={styles.totalPrice}>Total</p>
+              <p className={styles.totalQuantity}>кол-во</p>
+            </div>
             <Divider />
+
+            <PrimaryButton variant="checkout" />
           </div>
         </div>
       ) : (

@@ -1,6 +1,6 @@
 @use '../../../../styles/globals.scss' as *;
 
-.addToCart {
+.primaryButton {
   @extend %primary-button;
 
   &.size40 {
