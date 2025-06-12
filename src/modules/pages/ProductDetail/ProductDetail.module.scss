@@ -9,14 +9,17 @@
   padding-top: 24px;
   padding-inline: 16px;
   width: 100%;
+  min-height: calc(100vh - 298px);
 
   @include on-tablet {
     padding-inline: 24px;
+    min-height: calc(100vh - 145px);
   }
 
   @include on-desktop {
     max-width: 1200px;
     padding-inline: 32px;
+    min-height: calc(100vh - 161px);
   }
 }
 
