@@ -27,7 +27,7 @@
   font-style: normal;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 640px) {
   .cart {
     @include contentPaddingInline;
     font-family: 'Mont', 'sans-serif';
@@ -70,13 +70,13 @@
 
     &__position {
       display: grid;
-      grid-template-columns: repeat(4fr / 1);
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 8px;
       padding: 16px;
       border: 1px solid #e2e6e9;
       border-radius: 16px;
       align-items: center;
-      margin: 0 16px 0 16px;
+      // margin: 0 16px 0 16px;
     }
 
     &__close {
@@ -302,7 +302,7 @@
   }
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (max-width: 1199px) {
   .cart__block {
     display: flex;
     flex-direction: column;
@@ -314,7 +314,8 @@
   }
 
   .cart__count-item {
-    padding-left: 235px;
+     grid-column: 1 / -1; // займає всю ширину сітки
+  text-align: center;
   }
 
   .cart__button-checkout {
@@ -412,13 +413,16 @@
   }
 
   &__position {
-    display: flex;
-    justify-content: space-between;
-    height: 128px;
-    gap: 24px;
-    border: 1px solid #e2e6e9;
-    border-radius: 16px;
-  }
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  align-items: center;
+  height: 128px;
+  gap: 16px;
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+  padding: 0 16px;
+}
+
 
   &__empty {
     width: 400px;
@@ -439,6 +443,7 @@
     height: 16px;
     padding: 56px 24px;
     cursor: pointer;
+    grid-column: 1 /  span 1;
   }
 
   &__image {
@@ -446,6 +451,7 @@
     height: 66px;
     object-fit: contain;
     margin: 31px 24px;
+    grid-column: 2 / span 2;
   }
 
   .cart__name-garget {
@@ -459,6 +465,7 @@
     height: 100%;
     font-variant-numeric: tabular-nums;
     font-family: 'Mont', monospace;
+    grid-column: 4 / span 7;
   }
 
   &__counter {
@@ -485,6 +492,7 @@
     cursor: pointer;
     background-color: white; // запобігає зміні фону при наведенні
     transition: none; // не буде анімацій, які змінюють розміри
+    grid-column: 12 / span 2;
   }
 
   &__count-garget {
@@ -509,6 +517,7 @@
     align-items: center;
     height: 100%;
     width: 80px;
+    grid-column: 16 / span 2;
   }
 
   &__block-total {
