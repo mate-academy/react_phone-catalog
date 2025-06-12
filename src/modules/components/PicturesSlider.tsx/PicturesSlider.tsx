@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/no-extraneous-dependencies */
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,12 +8,11 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './PicturesSlider.scss';
+import banerPhones from '../../../img/picture_sliders/banner-phones.png';
+import banerTablets from '../../../img/picture_sliders/banner-tablets.png';
+import banerAccessories from '../../../img/picture_sliders/banner-accessories.png';
 
-const images = [
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
-  '/img/banner-accessories.png',
-];
+const images = [banerPhones, banerTablets, banerAccessories];
 
 export const PicturesSlider = () => {
   const paginationRef = useRef<HTMLDivElement>(null);
