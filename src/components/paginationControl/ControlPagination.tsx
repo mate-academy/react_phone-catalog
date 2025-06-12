@@ -3,34 +3,41 @@ import styles from './ControlPagination.module.scss';
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import {setCurrentPage} from '../../features/PaginationSlice'
+import {setCurrentPage, setTotalPage} from '../../features/PaginationSlice'
 import classNames from 'classnames';
 import {  useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
 export const ControlPagination = ({ allGoods, perPages }) => {
   const [searchParams, setSearhParams] = useSearchParams();
   const dispatch = useAppDispatch();
+
 const totalPages = Math.ceil(allGoods.length / perPages);
 
 const currentPage= useAppSelector(state=>state.pagination.currentPage)
 
-  
+  useEffect(() => {
+    dispatch(setTotalPage(totalPages));
+  }, [totalPages, dispatch]);
+
 const getVisiblePages = (totalPages: number, currentPage: number): number[] => {
-  if (totalPages <= 4) {
-    return Array.from({ length: totalPages }, (_, i) => i + 1);
-  }
 
-  if (currentPage <= 2) {
-    return [1, 2, 3, 4];
-  }
+    if (totalPages <= 4) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
 
-  if (currentPage >= totalPages - 1) {
-    return [totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
-  }
+    if (currentPage <= 2) {
+      return [1, 2, 3, 4];
+    }
 
-  return [currentPage - 1, currentPage, currentPage + 1, currentPage + 2];
+    if (currentPage >= totalPages - 1) {
+      return [totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+    }
+
+    return [currentPage - 1, currentPage, currentPage + 1, currentPage + 2];
+
 };
 
   return (<> <div className={styles.pagination}>

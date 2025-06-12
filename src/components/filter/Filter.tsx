@@ -2,7 +2,7 @@ import styles from './Filter.module.scss';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { setStatus } from '../../features/FilterSlice';
-import { setStatusPagin, setCurrentPage } from '../../features/PaginationSlice';
+import { setStatusPagin, setCurrentPage, setTotalPage } from '../../features/PaginationSlice';
 
 import { DropDownMenu } from '../dropDownMenu/DropDownMenu';
 import { useSearchParams } from 'react-router-dom';
@@ -25,6 +25,7 @@ export const Filter = () => {
   const handleStatusPagination = (value: PaginationStatus) => {
     dispatch(setStatusPagin(value));
     dispatch(setCurrentPage(1));
+    
 
     const params = new URLSearchParams(filterParams);
     value === 'all' ? params.delete('perPage') : params.set('perPage', value);

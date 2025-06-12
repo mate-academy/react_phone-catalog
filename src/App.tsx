@@ -7,18 +7,18 @@ import { Footer } from './components/footer/footer';
 import { Outlet, useLocation } from 'react-router-dom';
 import { init } from './features/ProductSlice';
 import { setStatusPagin, setCurrentPage } from './features/PaginationSlice';
-import { useAppDispatch } from './app/hooks';
+import { useAppDispatch, useAppSelector } from './app/hooks';
 import { setStatus } from './features/FilterSlice';
 import { PaginationStatus } from './types/pagination';
 import { FilteredStatus } from './types/filters';
 export const App = () => {
   const [searchParams] = useSearchParams();
-
+const totalPage = useAppSelector(state=>state.pagination.totalPage)
   const dispach = useAppDispatch();
 
   useEffect(() => {
     const sortParam = searchParams.get('sort')
-    const sort: FilteredStatus = ['age' , 'name' , 'price'].includes(sortParam as FilteredStatus) ?
+    const sort: FilteredStatus = ['age', 'name', 'price'].includes(sortParam as FilteredStatus) ?
       sortParam as FilteredStatus : 'name';
 
     const paginationParam = (searchParams.get('perPage')) as PaginationStatus;
@@ -26,13 +26,21 @@ export const App = () => {
       paginationParam as PaginationStatus : 'all';
 
 
-
     dispach(setStatus(sort));
     dispach(setStatusPagin(pagination));
-    
+
     dispach(init());
   }, [dispach, searchParams]);
 
+  useEffect(() => {
+  const pageParam = searchParams.get('page') ?? 1;
+  const page = Number(pageParam);
+
+  if (totalPage !== null) {
+    const validatedPage = page > totalPage ? totalPage : page;
+    dispach(setCurrentPage(validatedPage));
+  }
+}, [searchParams, totalPage, dispach]);
   return (
     <>
       <Header />

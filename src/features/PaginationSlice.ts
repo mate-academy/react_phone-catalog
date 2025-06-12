@@ -4,11 +4,13 @@ import { PaginationStatus } from '../types/pagination';
 interface PaginationState {
   status: 'all' | '4' | '8' | '16';
   currentPage: number;
+  totalPage: number | null;
 }
 
 const initialState: PaginationState = {
   status: 'all',
   currentPage: 1,
+  totalPage: null,
 };
 
 export const paginationSlice = createSlice({
@@ -21,7 +23,10 @@ export const paginationSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
+    setTotalPage: (state, action: PayloadAction<PaginationStatus>) => {
+      state.totalPage = action.payload;
+    },
   },
 });
-export const { setStatusPagin, setCurrentPage } = paginationSlice.actions;
+export const { setStatusPagin, setCurrentPage,setTotalPage } = paginationSlice.actions;
 export default paginationSlice.reducer;
