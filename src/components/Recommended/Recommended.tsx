@@ -156,6 +156,7 @@ export const Recommended: React.FC<Props> = ({ title }) => {
                 <img
                   src={`../../../public/${item.image}`}
                   alt="here should be an image"
+                  className='fav__item-image'
                 />
                 <div className="rec__item-name">
                   {item.name}

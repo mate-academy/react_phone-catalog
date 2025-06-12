@@ -1,9 +1,20 @@
+@import '../../App.scss';
+
 .fav-container {
+  padding: 24px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  & h1 {
+    @include font-h1-mob;
+    color: $color-primary-black;
+  }
+
   &.theme0 {
-    background-color: #f0debd;
+    background-color: #ffffff;
 
     & .fav-itemCart {
-      background-color: rgb(238, 255, 0);
+      background-color: rgba(238, 255, 0, 0);
     }
   }
 
@@ -38,4 +49,71 @@
       background-color: rgb(255, 0, 212);
     }
   }
+}
+
+.fav--nav-legend, .fav-homeIcon {
+  display: flex;
+  align-items: center;
+}
+
+.arrow-right {
+  width: 16px;
+  color: $color-secondary-grey;
+  margin: 0 8px;
+}
+
+.fav-homeIcon svg {
+  color: $color-primary-black;
+}
+
+.fav--link-legend {
+  display: inline;
+  @include font-small;
+  color: $color-secondary-grey;
+  line-height: 16px;
+}
+
+.fav--items-counter {
+  @include font-body;
+  color: $color-secondary-grey;
+  margin-bottom: 32px;
+}
+
+.fav-itemCard {
+  border: 1px solid $color-elements;
+  margin-bottom: 40px;
+}
+
+.fav_card {
+  width: 100%;
+  margin-bottom: 40px;
+
+  @media (max-width: 639px) {
+    height: max-content;
+  }
+}
+
+.fav__itemImage img {
+    height: 200px;
+    display: flex;
+    justify-self: center;
+}
+
+.fav__items-wrapper {
+  display: grid;
+  gap: 16px;
+  grid-auto-rows: 1fr;
+  margin: 0 auto;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.fav__buttons {
+  position: inherit;
 }

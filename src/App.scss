@@ -98,6 +98,10 @@
   letter-spacing: 0;
 }
 
+@mixin hover-shadow {
+  box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+}
+
 $color-primary-black: #313237;
 $color-secondary-grey: #89939a;
 $color-icons: #B4BDC3;
