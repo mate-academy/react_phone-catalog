@@ -27,7 +27,7 @@ export const Favourites = () => {
       })
       .catch(() => setErrorMessage(ErrorMessage.Other_problems))
       .finally(() => stopLoading());
-  });
+  }, []);
 
   const favouriteProducts = allProducts.filter(product =>
     favourites.includes(product.id.toString()),

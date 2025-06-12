@@ -5,6 +5,7 @@ import { HomePage } from './modules/pages/Home/HomePage';
 import { Footer } from './modules/components/Footer';
 import { ProductPage } from './modules/pages/ProductPage';
 import { ProductDetail } from './modules/pages/ProductDetail';
+import { NotFoundPage } from './modules/pages/NotFoundPage';
 import { Favourites } from './modules/pages/Favourites';
 import { Cart } from './modules/pages/Cart';
 
@@ -26,6 +27,7 @@ export const App = () => (
 
       <Route path="/favourites" element={<Favourites />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
     <Footer />
   </div>

@@ -1,0 +1,54 @@
+@import '../../../styles/mixins';
+
+.error__page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  max-width: 80%;
+  min-width: 300px;
+  margin: 64px auto;
+  min-height: calc(100vh - 500px);
+
+  @include on-tablet {
+    padding-inline: 24px;
+    min-height: calc(100vh - 273px);
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    min-height: calc(68vh);
+  }
+}
+
+.error__page__title {
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  line-height: 41px;
+  font-size: 32px;
+  margin-bottom: 24px;
+  color: #f1f2f9;
+}
+
+.error__page__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 6px 10px;
+  background-color: #905bff;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #f1f2f9;
+  text-decoration: none;
+}
+
+.error__page__image {
+  aspect-ratio: 1;
+  min-width: 300px;
+  width: 60%;
+}
+
+
