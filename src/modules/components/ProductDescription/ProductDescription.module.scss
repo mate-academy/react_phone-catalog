@@ -1,0 +1,66 @@
+@import '../../../styles/mixins';
+
+.product__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 56px;
+  width: 100%;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 0;
+  }
+}
+
+.product__description__title {
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 16px;
+  text-align: left;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  color: #F1F2F9;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #3B3E4A;
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+.product__description__title--second {
+  font-size: 16px;
+  border: none;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    font-size: 20px;
+  }
+}
+
+.product__description__box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.product__description__box--text {
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939A;
+  text-align: left;
+  margin-bottom: 32px;
+}

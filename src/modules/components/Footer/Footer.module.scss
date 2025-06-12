@@ -1,0 +1,113 @@
+@import '../../../styles/mixins';
+
+.footer {
+  width: 100%;
+  border-top: 1px solid #3B3E4A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding: 32px 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 32px;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+  }
+}
+
+.footer__img {
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 0;
+  }
+}
+
+.footer__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+
+  @include on-desktop {
+    gap: 107px;
+  }
+}
+
+.footer__link {
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #75767F;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #F1F2F9;
+  }
+}
+
+.footer__bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  align-self: center;
+
+  .footer__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: #323542;
+    padding: 7px;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  &:hover {
+    .footer__button {
+      background-color: #75767F;
+    }
+  }
+}
+
+.footer__button-image {
+  width: 100%;
+  height: 100%;
+}
+
+.footer__button-info {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #75767F;
+}

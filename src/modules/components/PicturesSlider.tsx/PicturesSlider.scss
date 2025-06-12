@@ -1,0 +1,125 @@
+@import '../../../styles/mixins';
+
+.swiper {
+  background-color: #0F1121;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+.swiper__item {
+  box-sizing: border-box;
+  padding-inline: 16px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 8px;
+
+  @include on-tablet {
+    max-height: 189px;
+    max-width: 480px;
+  }
+
+  @include on-desktop {
+    max-height: 400px;
+    max-width: 1040px;
+  }
+}
+
+.swiper__slide {
+  height: 100%;
+}
+
+.swiper__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.swiper__bars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  gap: 14px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.swiper__bars__item {
+  width: 14px;
+  height: 4px;
+  background-color: #3B3E4A;
+}
+
+.swiper__bars__item--is-active {
+  background-color: #F1F2F9;
+}
+
+.swiper__prev {
+  left: 16px;
+  background-image: url('../../../img/icons/arrow-left-white.svg');
+
+  @include on-tablet {
+    left: 24px;
+  }
+
+  @include on-desktop {
+    left: 32px;
+  }
+}
+
+.swiper__next {
+  right: 16px;
+  background-image: url('../../../img/icons/arrow-right-white.svg');
+
+  @include on-tablet {
+    right: 24px;
+  }
+
+  @include on-desktop {
+    right: 32px;
+  }
+}
+
+.swiper__prev,
+.swiper__next {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 32px;
+  height: 189px;
+  background-color: #323542;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #4A4D58;
+  }
+
+  @include on-tablet {
+    display: block;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}

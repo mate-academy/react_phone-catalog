@@ -1,0 +1,117 @@
+@import '../../../styles/mixins';
+
+.products-slider {
+  position: relative;
+  max-height: 439px;
+  width: 100%;
+  padding-left: 16px;
+
+  @include on-tablet {
+    max-height: 512px;
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    max-height: 506px;
+    padding-inline: 32px;
+  }
+}
+
+.swiper-button-prev {
+  right: 64px;
+  left: unset;
+
+  &::before {
+    background-image: url('../../../img/icons/arrow-left-white.svg');
+  }
+
+  @include on-tablet {
+    right: 72px;
+  }
+
+  @include on-desktop {
+    right: 80px;
+  }
+}
+
+.swiper-button-next {
+  right: 16px;
+  left: unset;
+
+  &::before {
+    background-image: url('../../../img/icons/arrow-right-white.svg');
+  }
+
+  @include on-tablet {
+    right: 24px;
+  }
+
+  @include on-desktop {
+    right: 32px;
+  }
+}
+
+.products-slider__button-prev,
+.products-slider__button-next {
+  position: absolute;
+  top: -50px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  background-color: #323542;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #4A4D58;
+  }
+
+  &::after {
+    content: none;
+  }
+
+  &::before {
+    content: '';
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+  }
+
+  &.swiper-button-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @include on-tablet {
+    top: -10%;
+  }
+}
+
+.products__arrow--prev::before {
+  background-image: url('../../../img/icons/arrow-left-white.svg');
+}
+
+.products__arrow--next {
+  background-image: url('../../../img/icons/arrow-right-white.svg');
+}
+
+.products__swiper {
+  overflow: hidden;
+}
+
+.products__slide {
+ width: 212px;
+
+   @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+}

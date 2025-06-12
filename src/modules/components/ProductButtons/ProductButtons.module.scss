@@ -1,0 +1,63 @@
+.product__buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.product__button__add {
+  width: 100px;
+  height: 40px;
+  background-color: #905BFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  flex-grow: 1;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #A378FF;
+  }
+}
+
+.product__button__add--active {
+  background-color: #323542;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #4A4D58;
+  }
+}
+
+.product__button__favourite {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #323542;
+  box-sizing: border-box;
+  padding: 12px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #4A4D58;
+  }
+}
+
+.product__buttons__title {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21%;
+  color: #F1F2F9;
+}
+
+.product__button__icon {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,70 @@
+import { Link, useLocation } from 'react-router-dom';
+import homePage from '../../../img/icons/home-page.svg';
+import arrow from '../../../img/icons/breadcrumbs-arrow.svg';
+import styles from './Breadcrumbs.module.scss';
+import { ProductData } from '../../../types/ProductData';
+
+type Props = {
+  product: ProductData | null;
+};
+
+const searchLocation = (pathname: string) => {
+  if (pathname.includes('/phones')) {
+    return 'Phones';
+  } else if (pathname.includes('/tablets')) {
+    return 'Tablets';
+  } else if (pathname.includes('/accessories')) {
+    return 'Accessories';
+  } else if (pathname.includes('/Favourite')) {
+    return 'Accessories';
+  } else if (pathname.includes('/cart')) {
+    return 'Cart';
+  } else if (pathname.includes('/favourite')) {
+    return 'Favourite';
+  } else {
+    return '';
+  }
+};
+
+export const Breadcrumbs: React.FC<Props> = ({ product }) => {
+  const location = useLocation();
+  const pathname = location.pathname;
+  const category = searchLocation(pathname);
+
+  return (
+    <div className={styles.breadcrumbs}>
+      <Link to="/home" className={styles.breadcrumbs__icon}>
+        <img className={styles.breadcrumbs__image} src={homePage} alt="Home" />
+      </Link>
+      <div className={styles.breadcrumbs__icon}>
+        <img
+          className={styles.breadcrumbs__image}
+          src={arrow}
+          alt="Breadcrumbs-arrow"
+        />
+      </div>
+      <div>
+        <Link
+          to={`/${category.toLowerCase()}`}
+          className={`${styles.breadcrumbs__title} ${product ? styles['breadcrumbs__title--white'] : ''}`}
+        >
+          {category}
+        </Link>
+      </div>
+      {product && (
+        <>
+          <div className={styles.breadcrumbs__icon}>
+            <img
+              className={styles.breadcrumbs__image}
+              src={arrow}
+              alt="Breadcrumbs-arrow"
+            />
+          </div>
+          <div>
+            <span className={styles.breadcrumbs__title}>{product.name}</span>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};

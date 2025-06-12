@@ -1,0 +1,141 @@
+@import '../../../styles/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: #0F1121;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.header__top {
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  border-bottom: 1px solid #3B3E4A;
+  padding-left: 16px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.header__menu__mobile {
+  display: block;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.header__menu__tablet {
+  display: none;
+
+  @include on-tablet {
+    box-sizing: border-box;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+    height: 100%;
+  }
+}
+
+.header__icons {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.header__icon__item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 100%;
+
+  @include on-desktop {
+    width: 64px;
+  }
+}
+
+.header__icon__item--is-active {
+  border-bottom: 2px solid #F1F2F9;
+}
+
+.header__icon__item--storage {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  box-sizing: border-box;
+  width: 14px;
+  height: 14px;
+  background-color: #EB5757;
+  border-radius: 50%;
+  border: 1px solid #0F1121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include on-desktop {
+    right: 18px;
+    top: 18px;
+  }
+}
+
+.header__icon__item--text {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 100%;
+  text-align: center;
+  color: #F1F2F9;
+}
+
+.header__icon__item:first-child {
+  border-left: 1px solid #323542;
+  border-right: 1px solid #323542;
+}
+
+.header__burger {
+  display: flex;
+  height: 100%;
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+
+.header__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  @include on-tablet {
+    margin-right: 32px;
+  }
+
+  @include on-desktop {
+    margin-right: 48px;
+  }
+}
+
+.header__item--menu-border {
+  border-left: 1px solid #3B3E4A;
+  width: 48px;
+}
+
+.header__item--menu-close {
+  width: 48px;
+  box-sizing: border-box;
+  border-left: 1px solid #3B3E4A;
+}
