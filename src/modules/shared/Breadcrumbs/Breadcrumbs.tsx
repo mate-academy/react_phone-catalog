@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './Breadcrumbs.module.scss';
 import { Link, NavLink } from 'react-router-dom';
-import { getAssetUrl } from '../../../api/utilis';
+import { Arrow } from './components/Arrow';
+import { themeIconHome } from '../../../utils/iconsTheme';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 type BreadcrumbsProps = {
   category: string;
@@ -9,38 +11,30 @@ type BreadcrumbsProps = {
 };
 
 export const Breadcrumbs = ({ category, name }: BreadcrumbsProps) => {
+  const { state } = useAppContext();
+
   return (
     <div className={styles.breadcrumbs}>
-      <Link className={styles.breadcrumbs__link} to="/">
+      <Link to="/">
         <img
           className={styles.breadcrumbs__img}
-          src={getAssetUrl('icons/home.svg')}
+          src={themeIconHome(state.theme)}
           alt="return to home"
         />
       </Link>
-      {category && (
+      {category && !name && (
         <>
-          <span className={styles.breadcrumbs__arrow}>
-            <img
-              className={styles.breadcrumbs__img}
-              src={getAssetUrl('icons/arrow_right.svg')}
-              alt=""
-            />
-          </span>
+          <Arrow />
+          <span className={styles.breadcrumbs__inactive}>{category}</span>
+        </>
+      )}
+      {category && name && (
+        <>
+          <Arrow />
           <NavLink to={`/${category}`} className={styles.breadcrumbs__active}>
             {category}
           </NavLink>
-        </>
-      )}
-      {name && (
-        <>
-          <span className={styles.breadcrumbs__arrow}>
-            <img
-              className={styles.breadcrumbs__img}
-              src={getAssetUrl('icons/arrow_right.svg')}
-              alt=""
-            />
-          </span>
+          <Arrow />
           <span className={styles.breadcrumbs__text}>{name}</span>
         </>
       )}

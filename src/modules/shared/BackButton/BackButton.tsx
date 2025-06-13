@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './BackButton.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { getAssetUrl } from '../../../api/utilis';
+import { useAppContext } from '../../../hooks/useAppContext';
+import { themeIconBack } from '../../../utils/iconsTheme';
 
 export const BackButton = () => {
+  const { state } = useAppContext();
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -16,7 +18,7 @@ export const BackButton = () => {
 
   return (
     <div className={styles.back}>
-      <img src={getAssetUrl('icons/arrow_left_back.svg')} alt="" />
+      <img src={themeIconBack(state.theme)} alt="" />
       <button onClick={handleBack} className={styles.back__button}>
         Back
       </button>

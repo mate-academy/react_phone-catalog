@@ -9,13 +9,19 @@ import classNames from 'classnames';
 import { SearchInput } from './components/MenuMobile/SearchInput';
 import { useAppContext } from '../../hooks/useAppContext';
 import { getAssetUrl } from '../../api/utilis';
+import {
+  themeIconBasket,
+  themeIconBurger,
+  themeIconFavourite,
+  themeIconLogo,
+} from '../../utils/iconsTheme';
 
 type HeaderProps = {
   showSearch: boolean;
 };
 
 export const Header = ({ showSearch }: HeaderProps) => {
-  const { dispatch } = useAppContext();
+  const { state, dispatch } = useAppContext();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { cart } = useCart();
@@ -49,7 +55,7 @@ export const Header = ({ showSearch }: HeaderProps) => {
             <Link to="/" aria-label="main page">
               <img
                 className={styles.logo__img}
-                src={getAssetUrl('icons/logo.svg')}
+                src={themeIconLogo(state.theme)}
                 alt="phone shop logo"
               />
               <img
@@ -80,7 +86,7 @@ export const Header = ({ showSearch }: HeaderProps) => {
           >
             <img
               className={styles.navigation__img}
-              src={getAssetUrl('/icons/burger.svg')}
+              src={themeIconBurger(state.theme)}
               alt=""
               aria-hidden="true"
             />
@@ -97,7 +103,7 @@ export const Header = ({ showSearch }: HeaderProps) => {
             <div className={styles.navigationMenu__wrapper}>
               <img
                 className={styles.navigationMenu__img}
-                src={getAssetUrl('icons/favourite_heart.svg')}
+                src={themeIconFavourite(state.theme)}
                 alt=""
                 aria-hidden="true"
               />
@@ -118,7 +124,7 @@ export const Header = ({ showSearch }: HeaderProps) => {
             <div className={styles.navigationMenu__wrapper}>
               <img
                 className={styles.navigationMenu__img}
-                src={getAssetUrl('icons/basket.svg')}
+                src={themeIconBasket(state.theme)}
                 alt=""
                 aria-hidden="true"
               />
@@ -129,14 +135,17 @@ export const Header = ({ showSearch }: HeaderProps) => {
               )}
             </div>
           </NavLink>
-          <div className={styles.navigationMenu__wrapper}>
+          <div className={styles.navigationMenu__theme}>
             <button
               className={styles.navigationMenu__button}
-              aria-label="find products"
+              aria-label="change theme"
               onClick={handleChangeTheme}
             >
               <img
-                className={styles.navigationMenu__img}
+                className={classNames(
+                  styles.navigationMenu__img,
+                  styles['navigationMenu__img--theme'],
+                )}
                 src={getAssetUrl('icons/theme.svg')}
                 alt=""
                 aria-hidden="true"

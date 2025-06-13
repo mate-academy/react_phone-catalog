@@ -8,5 +8,6 @@
   @include for-tablet {
     flex-flow: row wrap;
     gap: 40px 16px;
+    justify-content: center;
   }
 }

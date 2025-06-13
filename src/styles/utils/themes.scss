@@ -16,12 +16,13 @@ $dark-theme: (
   text: $color-white,
   background: $color-dark-background,
   border: $color-hover-menu,
-  button: $color-hover-menu,
+  button: $color-grey-white-button,
   dashes: $color-dark-button,
   dashes_active: $color-white,
   capacity_bg: $color-white,
   capacity_color: $color-hover-nav,
   message: $color-black,
+  product: $color-dark-item,
 );
 
 @mixin theme {
@@ -34,6 +35,7 @@ $dark-theme: (
     --color-capacity-bg: #{map.get($light-theme, capacity_bg)};
     --color-capacity: #{map.get($light-theme, capacity_color)};
     --color-message: #{map.get($light-theme, message)};
+    --color-product: #{map.get($light-theme, product)};
   }
 
   body.dark {
@@ -45,5 +47,6 @@ $dark-theme: (
     --color-capacity-bg: #{map.get($dark-theme, capacity_bg)};
     --color-capacity: #{map.get($dark-theme, capacity_color)};
     --color-message: #{map.get($dark-theme, message)};
+    --color-product: #{map.get($dark-theme, product)};
   }
 }

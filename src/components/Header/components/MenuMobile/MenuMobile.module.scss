@@ -14,7 +14,7 @@
   flex-direction: column;
   justify-content: space-between;
   z-index: $z-index-menuMobile;
-  background-color: #fff;
+  background-color: var(--color-bg);
   opacity: 0;
   animation: fade-in 0.3s forwards;
 
@@ -74,18 +74,18 @@
     @include uppercase;
 
     &:hover {
-      color: $color-hover-nav;
+      color: var(--color-text);
     }
 
     &--active {
-      color: $color-hover-nav;
+      color: var(--color-text);
       &::after {
         content: '';
         display: block;
         position: absolute;
         left: 0;
         top: 27px;
-        background-color: $color-hover-nav;
+        background-color: var(--color-text);
         width: 100%;
         height: 3px;
 
@@ -103,7 +103,7 @@
     padding: 16px;
     border: 0;
     border-left: 1px solid $color-header-border;
-    background-color: $color-white;
+    background-color: var(--color-bg);
   }
 
   &__img {
@@ -125,21 +125,23 @@
   &__button {
     padding: 24px;
     display: flex;
-    justify-content: center;      
+    justify-content: center;
     align-items: center;
     border: 0;
-    border-left: 1px solid $color-header-border;
-    border-right: 1px solid $color-header-border;
     text-decoration: none;
     background-color: transparent;
     cursor: pointer;
+
+    &--theme {
+      border-left: 1px solid $color-header-border;
+      border-right: 1px solid $color-header-border;
+    }
   }
 
   &__item {
     padding: 24px 0;
     width: 50%;
     border-bottom: 2px solid transparent;
-    border-right: 1px solid $color-header-border;
     transition: border-bottom 0.3s ease;
     position: relative;
 
@@ -162,6 +164,11 @@
     width: 16px;
     height: 16px;
     margin: 0 auto;
+
+    &--theme {
+      background-color: var(--color-button);
+      border-radius: 50%;
+    }
   }
 }
 
@@ -180,7 +187,7 @@
 
   &__value {
     @include quantity;
-    
+
     color: $color-white;
   }
 }

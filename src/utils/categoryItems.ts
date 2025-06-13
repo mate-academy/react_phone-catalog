@@ -1,4 +1,4 @@
-import { getAssetUrl } from "../api/utilis";
+import { getAssetUrl } from '../api/utilis';
 
 export const categoryItems = [
   {

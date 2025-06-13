@@ -10,7 +10,7 @@ export const FavouritesPage = () => {
 
   return (
     <main className={styles.main}>
-      <Breadcrumbs category="Favourites" />
+      <Breadcrumbs category="favourites" />
       <h2 className={styles.main__title}>Favourites</h2>
       <p className={styles.main__text}>{`${favouritesQuantities} models`}</p>
       <div className={styles.wrapper}>

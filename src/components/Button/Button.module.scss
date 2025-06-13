@@ -5,4 +5,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &__img {
+      background-color: var(--color-button);
+      display: block;
+      border-radius: 50%;
+    }
 }

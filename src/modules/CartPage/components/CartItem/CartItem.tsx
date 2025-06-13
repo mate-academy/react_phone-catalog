@@ -3,6 +3,8 @@ import styles from './CartItem.module.scss';
 import { CartProduct } from '../../../../types/cartProduct';
 import { Link } from 'react-router-dom';
 import { getAssetUrl } from '../../../../api/utilis';
+import { useAppContext } from '../../../../hooks/useAppContext';
+import { themeIconRemoveProduct } from '../../../../utils/iconsTheme';
 
 type CartItemProps = {
   product: CartProduct;
@@ -17,6 +19,8 @@ export const CartItem = ({
   handleRemoveProduct,
   handleQuantity,
 }: CartItemProps) => {
+  const { state } = useAppContext();
+
   return (
     <div key={product.id} className={styles.product}>
       <div className={styles.product__item}>
@@ -27,7 +31,7 @@ export const CartItem = ({
         >
           <img
             className={styles.buttonRemove__item}
-            src={getAssetUrl('icons/close.svg')}
+            src={themeIconRemoveProduct(state.theme)}
             alt=""
             aria-hidden={true}
           />

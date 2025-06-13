@@ -6,6 +6,12 @@ import { navigationItems, navigationPaths } from '../../constants/category';
 import { createPortal } from 'react-dom';
 import { useAppContext } from '../../../../hooks/useAppContext';
 import { getAssetUrl } from '../../../../api/utilis';
+import {
+  themeIconBasket,
+  themeIconClose,
+  themeIconFavourite,
+  themeIconLogo,
+} from '../../../../utils/iconsTheme';
 
 type Props = {
   setIsOpen: (value: boolean) => void;
@@ -14,7 +20,7 @@ type Props = {
 };
 
 export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
-  const { dispatch } = useAppContext();
+  const { state, dispatch } = useAppContext();
 
   const getNavLinkClassMobile = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.navigationMenu__item, {
@@ -42,12 +48,12 @@ export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
             >
               <img
                 className={styles.logo__img}
-                src={getAssetUrl('/icons/logo_black.svg')}
+                src={themeIconLogo(state.theme)}
                 alt="phone shop logo"
               />
               <img
                 className={styles.logo__hand}
-                src={getAssetUrl('/icons/logo_ok_hand.svg')}
+                src={getAssetUrl('icons/logo_ok_hand.svg')}
                 alt=""
                 aria-hidden="true"
               />
@@ -62,7 +68,7 @@ export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
             >
               <img
                 className={styles.navigation__img}
-                src={getAssetUrl('icons/close.svg')}
+                src={themeIconClose(state.theme)}
                 alt=""
                 aria-hidden="true"
               />
@@ -94,7 +100,7 @@ export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
           <div className={styles.navigationMenu__wrapper}>
             <img
               className={styles.navigationMenu__img}
-              src={getAssetUrl('icons/favourite_heart.svg')}
+              src={themeIconFavourite(state.theme)}
               alt=""
               aria-hidden="true"
             />
@@ -107,12 +113,18 @@ export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
         </NavLink>
         <div className={styles.navigationMenu__wrapper}>
           <button
-            className={styles.navigationMenu__button}
-            aria-label="find products"
+            className={classNames(
+              styles.navigationMenu__button,
+              styles[`navigationMenu__button--theme`],
+            )}
+            aria-label="change theme"
             onClick={handleChangeTheme}
           >
             <img
-              className={styles.navigationMenu__img}
+              className={classNames(
+                styles.navigationMenu__img,
+                styles['navigationMenu__img--theme'],
+              )}
               src={getAssetUrl('icons/theme.svg')}
               alt=""
               aria-hidden="true"
@@ -128,7 +140,7 @@ export const MenuMobile = ({ setIsOpen, basket, favourites }: Props) => {
           <div className={styles.navigationMenu__wrapper}>
             <img
               className={styles.navigationMenu__img}
-              src={getAssetUrl('icons/basket.svg')}
+              src={themeIconBasket(state.theme)}
               alt=""
               aria-hidden="true"
             />

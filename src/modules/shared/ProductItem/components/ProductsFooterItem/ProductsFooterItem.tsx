@@ -47,8 +47,8 @@ export const ProductsFooterItem = ({ item }: FooterProps) => {
 
   const buttonText = isInCart ? 'Added to cart' : 'Add to cart';
   const activeImg = isInFavourites
-    ? getAssetUrl('/icons/Favourites_check.svg')
-    : getAssetUrl('/icons/Favourites.svg');
+    ? getAssetUrl('icons/Favourites_check.svg')
+    : getAssetUrl('icons/Favourites.svg');
 
   return (
     <FooterSlider

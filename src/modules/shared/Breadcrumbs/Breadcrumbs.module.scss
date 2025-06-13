@@ -21,14 +21,18 @@
     text-decoration: none;
   }
 
-  &__text {
+  &__inactive {
     @include breadcrumbs-details;
-    
+
+    text-transform: capitalize;
     color: $color-link-navigation;
+    text-decoration: none;
   }
 
-  &__link {
-    display: flex;
+  &__text {
+    @include breadcrumbs-details;
+
+    color: $color-link-navigation;
   }
 
   &__img {

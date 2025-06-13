@@ -56,6 +56,7 @@ export const Button = ({
       <img
         src={imgSrc}
         alt="scroll to top"
+        className={styles.button__img}
         style={{ transform: `rotate(${rotation}deg)` }}
       />
     </button>
