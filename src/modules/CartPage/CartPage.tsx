@@ -6,12 +6,17 @@ import { Link } from 'react-router-dom';
 import { RootState } from 'app/store';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { removeFromCart } from '../../features/cart/cartSlice';
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from '../../features/cart/cartSlice';
 import { Divider } from '../../shared/components/ui/Divider';
 import { GoBack } from '../../shared/components/ui/GoBack';
 import { Icon } from '../../shared/components/ui/Icon/Icon';
 import { IconNames } from '../../shared/components/ui/Icon/IconNames';
 import { PrimaryButton } from '../../shared/components/ui/PrimaryButton';
+import { NormalizedProduct } from '../../shared/helpers/normalizeProductType';
 
 import styles from './CartPage.module.scss';
 
@@ -19,17 +24,17 @@ export const CartPage: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const dispatch = useDispatch();
 
-  const handleRemoveFromCart = (id: string) => {
-    dispatch(removeFromCart(id));
+  const handleRemoveFromCart = (product: NormalizedProduct) => {
+    dispatch(removeFromCart(product.id));
   };
 
-  // const handleIncrement = () => {
-  //   setQuantity(prev => prev + 1);
-  // };
+  const handleIncrement = (product: NormalizedProduct) => {
+    dispatch(increaseQuantity(product.id));
+  };
 
-  // const handleDecrement = () => {
-  //   setQuantity(prev => Math.max(1, prev - 1));
-  // };
+  const handleDecrement = (product: NormalizedProduct) => {
+    dispatch(decreaseQuantity(product.id));
+  };
 
   return (
     <article className={styles.cartWrapper}>
@@ -49,7 +54,7 @@ export const CartPage: React.FC = () => {
                   <div className={styles.topRow}>
                     <button
                       type="button"
-                      onClick={() => handleRemoveFromCart(item.product.id)}
+                      onClick={() => handleRemoveFromCart(item.product)}
                     >
                       <Icon
                         className={styles.crossIcon}
@@ -73,13 +78,21 @@ export const CartPage: React.FC = () => {
 
                   <div className={styles.bottomRow}>
                     <div className={styles.counter} role="group">
-                      <button className={styles.counterButton}>
+                      <button
+                        className={styles.counterButton}
+                        onClick={() => handleDecrement(item.product)}
+                      >
                         <Icon name={IconNames.Minus} />
                       </button>
 
-                      <output className={styles.counterValue}>1</output>
+                      <output className={styles.counterValue}>
+                        {item.quantity}
+                      </output>
 
-                      <button className={styles.counterButton}>
+                      <button
+                        className={styles.counterButton}
+                        onClick={() => handleIncrement(item.product)}
+                      >
                         <Icon name={IconNames.Plus} />
                       </button>
                     </div>
@@ -95,12 +108,14 @@ export const CartPage: React.FC = () => {
 
           <div className={styles.totalItems}>
             <div className={styles.totalInfo}>
-              <p className={styles.totalPrice}>Total</p>
-              <p className={styles.totalQuantity}>кол-во</p>
+              <p className={styles.totalPrice}>{`$Total`}</p>
+              <p
+                className={styles.totalQuantity}
+              >{`Total for QUANTITY items`}</p>
             </div>
             <Divider />
 
-            <PrimaryButton variant="checkout" />
+            <PrimaryButton />
           </div>
         </div>
       ) : (

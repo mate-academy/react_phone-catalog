@@ -11,3 +11,11 @@
     height: 48px;
   }
 }
+
+.addedToCart {
+  background-color: $color-surface2;
+
+  &:hover {
+    background-color: $color-elements;
+  }
+}

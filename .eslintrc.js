@@ -56,6 +56,13 @@ module.exports = {
         reservedFirst: true,
       },
     ],
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: ['state'],
+      },
+    ],
   },
   settings: {
     react: {

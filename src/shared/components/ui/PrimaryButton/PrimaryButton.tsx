@@ -1,17 +1,22 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import classNames from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { RootState } from '../../../../app/store';
 import { addToCart } from '../../../../features/cart/cartSlice';
-import { normalizeProductType } from '../../../helpers/normalizeProductType';
+import {
+  NormalizedProduct,
+  normalizeProductType,
+} from '../../../helpers/normalizeProductType';
 import { Product } from '../../../types/Product';
 import { ProductDetails } from '../../../types/ProductDetails';
 
 import styles from './PrimaryButton.module.scss';
 
 type Props = {
-  variant: 'add' | 'checkout';
+  variant?: 'add';
   product?: Product | ProductDetails;
   size?: 40 | 48;
 };
@@ -23,6 +28,7 @@ export const PrimaryButton: React.FC<Props> = ({
 }) => {
   const sizeClass = size === 40 ? styles.size40 : styles.size48;
   const dispatch = useDispatch();
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
 
   const handleAddToCart = () => {
     if (product) {
@@ -34,13 +40,27 @@ export const PrimaryButton: React.FC<Props> = ({
     // Модальное окно
   };
 
+  const isProductInCart = (prod: NormalizedProduct): boolean => {
+    return cartItems.some(item => item.product.id === prod?.id);
+  };
+
   const isAddToCart = variant === 'add';
   const handleClick = isAddToCart ? handleAddToCart : handleCheckout;
-  const buttonLabel = isAddToCart ? 'Add to cart' : 'Checkout';
+  let buttonLabel = '';
+
+  if (variant === 'add' && product) {
+    buttonLabel = isProductInCart(normalizeProductType(product))
+      ? 'Added'
+      : 'Add to cart';
+  } else {
+    buttonLabel = 'Checkout';
+  }
 
   return (
     <button
-      className={`${styles.primaryButton} ${sizeClass}`}
+      className={classNames(styles.primaryButton, sizeClass, {
+        [styles.addedToCart]: buttonLabel === 'Added',
+      })}
       onClick={handleClick}
     >
       {buttonLabel}
