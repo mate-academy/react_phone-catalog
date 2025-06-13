@@ -13,9 +13,12 @@ const initialState: ProductDetailState = {
   loading: false,
   error: '',
 }
-export const detailsProduct = createAsyncThunk('product/fetch', ({category, id}) => {
-  return fetchOneProducts(category, id);
-})
+export const detailsProduct = createAsyncThunk(
+  'products/fetch',
+  ({ category, id }: { category: string; id: string }) => {
+    return fetchOneProducts(category, id);
+  }
+);
 export const productDetailsSlice = createSlice({
   name: 'productDetails',
   initialState,

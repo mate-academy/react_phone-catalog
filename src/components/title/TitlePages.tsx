@@ -23,13 +23,11 @@ const titles: Record<Props['type'], string | null> = {
 export const TitlePages = ({ type }: Props) => {
   let count: number | null = null;
   const products = useAppSelector(store => store.products.products);
-  const favourites = useAppSelector(store => store.products.products);
+
 
   if (['phones', 'tablets', 'accessories', 'favourites'].includes(type)) {
     count = products.filter(product => product.category === type).length;
-    if (type === 'favourites') {
-      count = favourites.length;
-    }
+   
   }
   return titles ? (
     <div className={styles.title}>

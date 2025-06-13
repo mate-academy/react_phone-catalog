@@ -28,7 +28,7 @@ margin-bottom: 24px;
 
   &__text{
     text-decoration: none;
-color:black;
+color: #89939A;
 margin: 0;
 font-family: Mont;
 font-weight: 600;
@@ -37,11 +37,20 @@ line-height: 100%;
 letter-spacing: 0%;
 
 &--disabled{
-  color: #89939A;
+
  pointer-events: none;
     cursor: default;
 }
+
   }
+  &__productName{
+ font-family: Mont;
+font-weight: 600;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+
+}
 
 
 }

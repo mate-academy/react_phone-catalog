@@ -15,7 +15,7 @@ export const App = () => {
   const [searchParams] = useSearchParams();
 const totalPage = useAppSelector(state=>state.pagination.totalPage)
   const dispach = useAppDispatch();
-
+const isLoaded = useAppSelector(state => state.products.isLoaded);
   useEffect(() => {
     const sortParam = searchParams.get('sort')
     const sort: FilteredStatus = ['age', 'name', 'price'].includes(sortParam as FilteredStatus) ?
@@ -28,9 +28,9 @@ const totalPage = useAppSelector(state=>state.pagination.totalPage)
 
     dispach(setStatus(sort));
     dispach(setStatusPagin(pagination));
-
-    dispach(init());
-  }, [dispach, searchParams]);
+if(!isLoaded)
+  {  dispach(init());}
+  }, [dispach, searchParams,isLoaded]);
 
   useEffect(() => {
   const pageParam = searchParams.get('page') ?? 1;

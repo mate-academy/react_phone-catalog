@@ -4,10 +4,11 @@ import { fetchProducts } from "../api/fetchProducts";
 
 
 type ProductsState = {
-  products: Product[];
+  products: Product[] | [];
   selectedProduct: Product | null;
   loading: boolean;
   error: string;
+  isLoaded: boolean;
 }
 
 const initialState: ProductsState = {
@@ -15,6 +16,7 @@ const initialState: ProductsState = {
   selectedProduct: null,
   loading: false,
   error: '',
+  isLoaded:false,
 }
 
 export const init = createAsyncThunk('product/fetch', () => {
@@ -31,10 +33,12 @@ const productsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(init.pending, (state) => {
       state.loading = true;
+
     });
     builder.addCase(init.fulfilled, (state, action) => {
       state.products = action.payload;
       state.loading = false;
+      state.isLoaded = true;
     })
    builder.addCase(init.rejected, (state, action) => {
   state.loading = false;
