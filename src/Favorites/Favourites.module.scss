@@ -1,11 +1,11 @@
 .container {
-  max-width: 100%;
-  margin: 24px 16px;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .navigation {
   display: flex;
-  justify-content: left;
 }
 
 .button_home {
@@ -25,7 +25,6 @@
   font-size: 12px;
   font-weight: 700;
   line-height: 15.34px;
-  text-align: left;
   color: #89939A;
 }
 
@@ -39,26 +38,19 @@
   margin: 0 0 32px;
 }
 
-
-
 .favourites_grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(287px, 1fr));
   gap: 40px;
   cursor: pointer;
-  max-width: 100%;
-  justify-items: center;
+  width: 100%;
+  margin: 0 auto 64px;
 }
 
 @media screen and (min-width: 640px) {
   .container {
-    max-width: 1200px;
-    margin: 24px 32px;
-    padding: 0;
-  }
-
-  .navigation {
-    display: flex;
+    margin: 24px auto;
+    padding: 0 24px;
   }
 
   .navigation_text {
@@ -66,7 +58,6 @@
     font-size: 12px;
     font-weight: 600;
     line-height: 15.34px;
-    text-align: left;
     color: #89939A;
   }
 
@@ -75,7 +66,6 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 15.34px;
-    text-align: left;
     color: #89939A;
     margin: 0 0 32px;
   }
@@ -85,7 +75,6 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 15.34px;
-    text-align: left;
     text-decoration: none;
     border: 0;
     cursor: pointer;
@@ -96,10 +85,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    width: 592px;
+    width: 100%;
     cursor: pointer;
-    margin: auto;
-    align-items: center;
   }
 
   .link_product {
@@ -108,12 +95,10 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .container {
-    margin: 32px 152px;
-  }
+
 
   .navigation {
-    display: flex;
+    align-items: center;
   }
 
   .navigation_text {
@@ -147,12 +132,20 @@
     background-color: #fff;
   }
 
+  .product_title {
+    font-size: 48px;
+    font-weight: 800;
+    text-align: left;
+  }
+
   .favourites_grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    grid-template-columns: repeat(4, minmax(272px, 1fr));
     gap: 16px;
-    max-width: 1200px;
     cursor: pointer;
+    max-width: 1136px;
+    justify-content: center;
+    width: 100%;
   }
 }
 

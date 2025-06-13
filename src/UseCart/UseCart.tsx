@@ -140,6 +140,7 @@ export const CartProvider: React.FC<React.PropsWithChildren> = ({
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(state.cart));
     localStorage.setItem('favorites', JSON.stringify(state.favorites));
+    window.dispatchEvent(new Event('cartOrFavoritesChanged'));
   }, [state.cart, state.favorites]);
 
   return (

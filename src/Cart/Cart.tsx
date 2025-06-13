@@ -23,7 +23,6 @@ export const Cart: React.FC = () => {
 
   const findSameProduct = (productId: string): AllProduct | undefined => {
     const allProducts = [...phones, ...tablets, ...accessories];
-
     const foundProduct = allProducts.find(product => product.id === productId);
 
     return foundProduct ? { ...foundProduct, quantity: 1 } : undefined;
@@ -63,79 +62,81 @@ export const Cart: React.FC = () => {
         {state.cart.length === 0 ? (
           <p className={styles.empty}>Your cart is empty</p>
         ) : (
-          <div className={styles.cart_grid}>
-            {state.cart.map(product => {
-              const fullProduct = findSameProduct(product.id) || product;
+          <>
+            <div className={styles.cart_grid}>
+              {state.cart.map(product => {
+                const fullProduct = findSameProduct(product.id) || product;
 
-              return (
-                <div key={product.id} className={styles.cart_item}>
-                  <div className={styles.cart_item__top}>
-                    <button
-                      className={styles.remove_button}
-                      onClick={() =>
-                        dispatch({
-                          type: 'REMOVE_FROM_CART',
-                          productId: product.id,
-                        })
-                      }
-                    >
-                      ✕
-                    </button>
-
-                    <img
-                      src={fullProduct.images?.[0] ?? 'img/default-image.png'}
-                      alt={fullProduct.name}
-                      className={styles.product_image}
-                    />
-                    <h2 className={styles.product_name}>{fullProduct.name}</h2>
-                  </div>
-                  <div className={styles.cart_bottom}>
-                    <div className={styles.quantity_control}>
+                return (
+                  <div key={product.id} className={styles.cart_item}>
+                    <div className={styles.cart_item__top}>
                       <button
-                        className={styles.quantity_button}
+                        className={styles.remove_button}
                         onClick={() =>
                           dispatch({
-                            type: 'DECREASE_QUANTITY',
+                            type: 'REMOVE_FROM_CART',
                             productId: product.id,
                           })
                         }
                       >
-                        -
+                        ✕
                       </button>
-                      <span>{product.quantity}</span>
-                      <button
-                        className={styles.quantity_button}
-                        onClick={() =>
-                          dispatch({
-                            type: 'INCREASE_QUANTITY',
-                            productId: product.id,
-                          })
-                        }
-                      >
-                        +
-                      </button>
+                      <img
+                        src={fullProduct.images?.[0] ?? 'img/default-image.png'}
+                        alt={fullProduct.name}
+                        className={styles.product_image}
+                      />
+                      <h2 className={styles.product_name}>
+                        {fullProduct.name}
+                      </h2>
                     </div>
-
-                    <div className={styles.price}>
-                      {fullProduct.priceDiscount ? (
-                        <>
-                          <span className={styles.discount_price}>
-                            ${fullProduct.priceDiscount}
-                          </span>
-                          <span className={styles.original_price}>
+                    <div className={styles.cart_bottom}>
+                      <div className={styles.quantity_control}>
+                        <button
+                          className={styles.quantity_button}
+                          onClick={() =>
+                            dispatch({
+                              type: 'DECREASE_QUANTITY',
+                              productId: product.id,
+                            })
+                          }
+                        >
+                          -
+                        </button>
+                        <span>{product.quantity}</span>
+                        <button
+                          className={styles.quantity_button}
+                          onClick={() =>
+                            dispatch({
+                              type: 'INCREASE_QUANTITY',
+                              productId: product.id,
+                            })
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
+                      <div className={styles.price}>
+                        {fullProduct.priceDiscount ? (
+                          <>
+                            <span className={styles.discount_price}>
+                              ${fullProduct.priceDiscount}
+                            </span>
+                            <span className={styles.original_price}>
+                              ${fullProduct.priceRegular}
+                            </span>
+                          </>
+                        ) : (
+                          <span className={styles.price}>
                             ${fullProduct.priceRegular}
                           </span>
-                        </>
-                      ) : (
-                        <span className={styles.price}>
-                          ${fullProduct.priceRegular}
-                        </span>
-                      )}
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
             <div className={styles.checkout}>
               <div className={styles.total_price}>
                 <span className={styles.total_price_span}>${totalPrice}</span>
@@ -147,12 +148,12 @@ export const Cart: React.FC = () => {
               </div>
               <button
                 className={styles.checkout_button}
-                onClick={() => handleCheckOut()}
+                onClick={handleCheckOut}
               >
                 Checkout
               </button>
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>

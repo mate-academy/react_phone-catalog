@@ -40,6 +40,7 @@
 }
 
 .header__paragraph {
+  text-align: left;
   font-family: Mont;
   font-weight: 800;
   font-size: 48px;
@@ -62,11 +63,6 @@
     line-height: 56px;
     letter-spacing: -1%;
     text-align: center;
-  }
-
-  .logo {
-    width: 592px;
-    height: 112px;
   }
 
   .slider {

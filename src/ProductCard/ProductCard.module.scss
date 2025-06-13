@@ -333,7 +333,8 @@ a {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    max-width: 272px;
     width: 272px;
     height: 506px;
     margin: 0;
@@ -366,16 +367,17 @@ a {
   }
 
   .product_title {
+    width: 208px;
     font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
     text-align: left;
     color: #313237;
-    margin: 0 32px 8px;
   }
 
   .price_section {
+    width: 208px;
     display: flex;
     margin: 0 32px 16px;
     font-family: Mont, sans-serif;
@@ -406,12 +408,16 @@ a {
 
 
   .product_info {
-    margin: 0 32px 8px;
+    max-width: 208px;
+    width: 208px;
+    justify-content: space-between;
+    margin: 0 32px;
   }
 
-  .productFeature {
+  .product_feature {
     display: flex;
     justify-content: space-between;
+    width: 208px;
     margin-bottom: 5px;
     color: #555;
     font-family: Mont, sans-serif;
@@ -441,9 +447,14 @@ a {
 
   .bottom_buttons {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 208px;
+    margin: 0 auto;
   }
 
   .add_to_cart_button {
+    max-width: 160px;
     width: 160px;
     height: 40px;
     background-color: #313237;
@@ -456,7 +467,6 @@ a {
     font-weight: 700;
     line-height: 21px;
     text-align: center;
-    margin: 0 8px 32px 32px;
   }
 
   .add_to_cart_button.added_to_cart {
@@ -473,6 +483,7 @@ a {
     cursor: pointer;
     transition: color 0.3s ease;
     border: 1px solid;
+    padding: 0;
   }
 
   .favoriteImage {

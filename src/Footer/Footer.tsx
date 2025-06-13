@@ -13,23 +13,40 @@ export const Footer: React.FC = () => {
   return (
     <>
       <footer className={style.footer}>
-        <Link to="/">
-          <img src="img/Logo.png" alt="Logo" className={style.logo} />
-        </Link>
-        <Link to="https://github.com/ogchy">
-          <p className={style.links}>GitHub</p>
-        </Link>
-        <Link to="/">
-          <p className={style.links}>Contacts</p>
-        </Link>
-        <Link to="/">
-          <p className={style.links}>Rights</p>
-        </Link>
-        <div className={style.top}>
-          <p className={style.back_to_top}>Back to top</p>
-          <button className={style.button}>
-            <img src="img/Arrow-left.png" alt="arrow-up" onClick={backToTop} />
-          </button>
+        <div className={style.footer__container}>
+          <Link to="/">
+            <img src="img/Logo.png" alt="Logo" className={style.logo} />
+          </Link>
+          <div className={style.footer__menu}>
+            <ul className={style.footer__menu__list}>
+              <li className={style.footer__menu__item}>
+                <Link to="https://github.com/ogchy">
+                  <p className={style.links}>GitHub</p>
+                </Link>
+              </li>
+              <li className={style.footer__menu__item}>
+                <Link to="/">
+                  <p className={style.links}>Contacts</p>
+                </Link>
+              </li>
+              <li className={style.footer__menu__item}>
+                <Link to="/">
+                  <p className={style.links}>Rights</p>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className={style.footer__button}>
+            <p className={style.footer__button__text}>Back to top</p>
+            <button className={style.footer__button__back}>
+              <img
+                src="img/Arrow-left.png"
+                alt="Back to top"
+                className={style.footer__button__back__img}
+              />
+            </button>
+          </div>
         </div>
       </footer>
     </>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 
 export const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const [favoritesCount, setFavoritesCount] = useState(0);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -16,6 +18,26 @@ export const Header: React.FC = () => {
       document.body.classList.remove('body_no_scroll');
     }
   });
+
+  useEffect(() => {
+    const updateCounts = () => {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+      setCartCount(cart.length);
+      setFavoritesCount(favorites.length);
+    };
+
+    updateCounts();
+    window.addEventListener('storage', updateCounts);
+
+    window.addEventListener('cartOrFavoritesChanged', updateCounts);
+
+    return () => {
+      window.removeEventListener('storage', updateCounts);
+      window.removeEventListener('cartOrFavoritesChanged', updateCounts);
+    };
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -45,46 +67,84 @@ export const Header: React.FC = () => {
         <nav className={`${styles.nav} ${menuOpen ? styles.nav_open : ''}`}>
           <ul className={styles.nav_left}>
             <li>
-              <Link to="/" onClick={toggleMenu}>
+              <NavLink
+                to="/"
+                onClick={toggleMenu}
+                className={({ isActive }) =>
+                  `${styles.nav_link} ${isActive ? styles.active_link : ''}`
+                }
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/phones" onClick={toggleMenu}>
+              <NavLink
+                to="/phones"
+                onClick={toggleMenu}
+                className={({ isActive }) =>
+                  `${styles.nav_link} ${isActive ? styles.active_link : ''}`
+                }
+              >
                 Phones
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/tablets" onClick={toggleMenu}>
+              <NavLink
+                to="/tablets"
+                onClick={toggleMenu}
+                className={({ isActive }) =>
+                  `${styles.nav_link} ${isActive ? styles.active_link : ''}`
+                }
+              >
                 Tablets
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/accessories" onClick={toggleMenu}>
+              <NavLink
+                to="/accessories"
+                onClick={toggleMenu}
+                className={({ isActive }) =>
+                  `${styles.nav_link} ${isActive ? styles.active_link : ''}`
+                }
+              >
                 Accessories
-              </Link>
+              </NavLink>
             </li>
           </ul>
 
           <div className={styles.nav_right}>
-            <Link
+            <NavLink
               to="/Favorites"
               onClick={toggleMenu}
-              className={styles.nav_favorite}
+              className={({ isActive }) =>
+                `${styles.nav_favorite} ${isActive ? styles.active_link : ''}`
+              }
             >
               <img
                 src="img/Favourites.svg"
                 alt="Favorites"
                 className={styles.nav_img}
               />
-            </Link>
-            <Link to="/Cart" onClick={toggleMenu} className={styles.nav_cart}>
+              {favoritesCount > 0 && (
+                <div className={styles.items_count}>{favoritesCount}</div>
+              )}
+            </NavLink>
+            <NavLink
+              to="/Cart"
+              onClick={toggleMenu}
+              className={({ isActive }) =>
+                `${styles.nav_cart} ${isActive ? styles.active_link : ''}`
+              }
+            >
               <img
                 src="img/shopping-bag.svg"
                 alt="Cart"
                 className={styles.nav_img}
               />
-            </Link>
+              {cartCount > 0 && (
+                <div className={styles.items_count}>{cartCount}</div>
+              )}
+            </NavLink>
           </div>
         </nav>
       </div>

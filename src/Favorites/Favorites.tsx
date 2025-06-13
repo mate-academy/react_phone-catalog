@@ -45,7 +45,7 @@ export const Favorites: React.FC = () => {
         <img src="img/Arrow-right.svg" alt="arrow" />
         <h2 className={styles.title}>Favourites</h2>
       </div>
-      <h1>Favourites</h1>
+      <h1 className={styles.product_title}>Favourites</h1>
       <h2 className={styles.navigation_items_left}>
         {state.favorites.length} items
       </h2>

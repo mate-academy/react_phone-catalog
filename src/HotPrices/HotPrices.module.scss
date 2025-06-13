@@ -57,6 +57,10 @@
   height: 506px;
 }
 
+:global(.swiper-slide) {
+  max-width: fit-content;
+}
+
 /* Tablet */
 @media screen and (min-width: 640px) {
   .product_list {
@@ -167,5 +171,9 @@
 
   .link_product {
     height: 506px;
+  }
+
+  :global(.swiper-slide) {
+    max-width: none;
   }
 }
