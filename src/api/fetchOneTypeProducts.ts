@@ -1,9 +1,13 @@
-import { error } from "console";
+
+import { modes } from "react-transition-group/SwitchTransition";
 import { Product } from "../types/product";
+type ProductDetails = {
+  product: Product;
+  models: Product[];
+};
 
-
-export const fetchOneProducts = async (category: string, id:string): Promise<Product> => {
-let response: Response;
+export const fetchOneProducts = async (category: string, id: string): Promise<ProductDetails> => {
+  let response: Response;
   switch (category) {
 
     case 'phones': response = await fetch('./api/phones.json');
@@ -16,12 +20,14 @@ let response: Response;
 
 
     default:
-     throw new Error ('undefined category');
+      throw new Error('undefined category');
   }
   const products: Product[] = await response.json();
   const product = products.find(item => item.id === id)
+  const models = products.filter(item => item.namespaceId === product?.namespaceId)
   if (!product) {
     throw new Error('Product not Found');
   }
-  return product;
+  return {product, models}
 }
+

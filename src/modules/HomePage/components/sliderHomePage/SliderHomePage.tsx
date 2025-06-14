@@ -10,6 +10,15 @@ const images = ['./img/slider/slider1.png',
 export const SliderHomePage = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startSlide = () => {
+  if (intervalRef.current) {
+    clearInterval(intervalRef.current);
+  }
+
+  intervalRef.current = setInterval(goNext, 5000);
+};
   const goNext = () => {
     setActiveIndex((index => (index + 1) % images.length));
     startSlide();
@@ -25,15 +34,7 @@ export const SliderHomePage = () => {
   preventScrollOnSwipe:true,
   });
 
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const startSlide = () => {
-  if (intervalRef.current) {
-    clearInterval(intervalRef.current);
-  }
-
-  intervalRef.current = setInterval(goNext, 5000);
-};
 
   useEffect(() => {
     startSlide();
