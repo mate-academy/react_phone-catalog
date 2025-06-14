@@ -20,19 +20,70 @@
     justify-content: space-around;
     align-items: center;
     border-top: 1px solid $color-elements;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background-color: $color-elements;
+      transform: translateX(-50%);
+    }
 
     &--heart {
       padding: 24px 72px;
       background-size: auto;
       background-position: center;
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 3px;
+        width: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $color-primary;
+
+        transition: all 0.3s ease-in-out;
+
+        @include on-tablet {
+          height: 3px;
+        }
+      }
+
+      &:hover::after {
+        width: 50%;
+      }
     }
 
     &--bag {
-      position: relative;
       padding: 24px 72px;
       background-size: auto;
       background-position: center;
-      border-left: 1px solid $color-elements;
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 3px;
+        width: 0;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+        background-color: $color-primary;
+
+        transition: all 0.3s ease-in-out;
+
+        @include on-tablet {
+          height: 3px;
+        }
+      }
+
+      &:hover::after {
+        width: 50%;
+      }
     }
   }
 }
