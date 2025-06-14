@@ -1,9 +1,6 @@
 import React from 'react';
+import { Banner } from '../components/Banner';
 
 export const MainPage = () => {
-  return (
-    <>
-      <h1>Welcome to the Main Page</h1>
-    </>
-  );
+  return <Banner />;
 };
