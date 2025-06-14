@@ -7,6 +7,7 @@ import { detailsProduct } from '../../features/ProductDetailsSlice';
 import { useLocation, useParams } from 'react-router-dom';
 import { TitlePages } from '../../components/title/TitlePages';
 import { Carousel } from './component/carosel/Carousel';
+import { DetailsChange } from './component/detailsChange/DetailsChange';
 
 export const DetailsProduct = () => {
   const product = useAppSelector(state => state.productDetail.product);
@@ -30,14 +31,16 @@ console.log(models,product)
   }, [category, productId, dispach]);
 
 
-  return (
+  return (product?
     <>
       <Container>
         <PageNav />
         <TitlePages type={'details'} />
-       { product && <Carousel
-          images={ product?.images} models={models} />}
+        <Carousel
+          images={product?.images} />
+
+ <DetailsChange colors={product?.colorsAvailable } />
       </Container>{' '}
     </>
-  );
+  :"null");
 };
