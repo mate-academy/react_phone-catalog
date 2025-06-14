@@ -10,8 +10,8 @@ import { Carousel } from './component/carosel/Carousel';
 
 export const DetailsProduct = () => {
   const product = useAppSelector(state => state.productDetail.product);
-
-
+const models = useAppSelector(state=>state.productDetail.models)
+console.log(models,product)
   const dispach = useAppDispatch();
   const location = useLocation();
   const category = location.pathname.split('/')[1];
@@ -29,12 +29,14 @@ export const DetailsProduct = () => {
     dispach(detailsProduct({ category, id: productId }));
   }, [category, productId, dispach]);
 
+
   return (
     <>
       <Container>
         <PageNav />
         <TitlePages type={'details'} />
-          <Carousel/>
+       { product && <Carousel
+          images={ product?.images} models={models} />}
       </Container>{' '}
     </>
   );

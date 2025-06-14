@@ -1,0 +1,43 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+.container{
+
+
+display: flex;
+flex-direction: column;}
+.image{
+  margin-bottom: 16px;
+height: 288px;
+
+   background-size:contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+.carousel{
+
+  &__list{
+    margin: 0;
+    padding: 0;
+list-style: none;
+     display: flex;
+    height: 49px;
+    justify-content: center;
+    gap: 8px;
+  }
+  &__items{
+
+    border: 1px solid #C4C4C4;
+    border-radius: 4px;
+    cursor: pointer;
+    &--active{
+      border-color: #0F0F11;
+    }
+  }
+
+
+ &__image{
+   width: 100%;
+      height: 100%;
+      object-fit: contain;
+ }
+}
