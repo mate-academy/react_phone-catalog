@@ -44,6 +44,7 @@ const DeviceDetails1 = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     getData<DeviceShort[]>('products')
       .then(data => setAllProducts(data))
       .catch(() => setError(true))
@@ -76,8 +77,14 @@ const DeviceDetails1 = () => {
     <>
       <div className="inlineContainer">
         <Tree />
+
         {loading && <Loader />}
-        {currentDevice && !loading && !error ? (
+
+        {!loading && error && (
+          <div className={styles.error}>Something went wrong</div>
+        )}
+
+        {!loading && !error && currentDevice && (
           <>
             <div
               className={classNames(styles.back, 'small-text')}
@@ -99,11 +106,11 @@ const DeviceDetails1 = () => {
             </div>
             <Description />
           </>
-        ) : (
-          <p>Something went wrong</p>
         )}
       </div>
-      <CardScroller items={recommendedProducts()} name={'recommend'} />
+      {!loading && (
+        <CardScroller items={recommendedProducts()} name="recommend" />
+      )}
     </>
   );
 };

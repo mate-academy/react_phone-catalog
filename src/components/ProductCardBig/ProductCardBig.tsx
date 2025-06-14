@@ -39,17 +39,33 @@ export const ProductCardBig: React.FC<Props> = ({ item }) => {
   };
 
   const handleFavourite = () => {
-    if (favourites.some(device => device.id === item.id)) {
-      setFavourites(prev => prev.filter(device => device.name !== item.name));
-    } else {
-      setFavourites(prev => [...prev, item]);
-    }
+    setFavourites(prev => {
+      let updated;
+
+      if (prev.some(device => device.id === item.id)) {
+        updated = prev.filter(device => device.name !== item.name);
+      } else {
+        updated = [...prev, item];
+      }
+
+      localStorage.setItem('favourites', JSON.stringify(updated));
+
+      return updated;
+    });
   };
 
   const handleCart = () => {
-    if (!cartItems.some(([device]) => device.id === item.id)) {
-      setCartItems(prev => [...prev, [item, 1]]);
-    }
+    setCartItems((prevItems): [DeviceShort, number][] => {
+      if (prevItems.some(([device]) => device.id === item.id)) {
+        return prevItems;
+      }
+
+      const updated: [DeviceShort, number][] = [...prevItems, [item, 1]];
+
+      localStorage.setItem('cartItems', JSON.stringify(updated));
+
+      return updated;
+    });
   };
 
   const itemAddedToCart = cartItems.some(([device]) => device.id === item.id);

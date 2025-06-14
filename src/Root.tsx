@@ -13,6 +13,7 @@ import { Accessories } from './modules/Accessories';
 import { Favourites } from './modules/Favourites';
 import { Cart } from './modules/Cart';
 import { DeviceDetails } from './modules/DeviceDetails';
+import { ErrorPage } from './modules/PageNotFound';
 
 export const Root = () => {
   return (
@@ -31,7 +32,7 @@ export const Root = () => {
             <Route path="tablets/:productId" element={<DeviceDetails />} />
             <Route path="accessories/:productId" element={<DeviceDetails />} />
 
-            <Route path="*" element={<Home />} />
+            <Route path="*" element={<ErrorPage />} />
           </Route>
           <Route path="home" element={<Navigate to="/" replace />} />
         </Routes>

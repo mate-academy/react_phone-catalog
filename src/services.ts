@@ -1,7 +1,10 @@
 import { DeviceShort } from './types/DeviceShort';
 
 export const getData = async <T>(name: string): Promise<T> => {
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
   try {
+    await delay(300);
     const response = await fetch(`./api/${name}.json`);
 
     if (!response.ok) {

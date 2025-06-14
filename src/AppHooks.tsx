@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { DeviceShort } from './types/DeviceShort';
 import { DeviceFull } from './types/DeviceFull';
-// import { Accessorie } from './types/Accessorie';
 
 type Props = {
   children: React.ReactNode;
@@ -42,14 +41,21 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   const [newProducts, setNewProducts] = useState<DeviceShort[]>([]);
   const [hotProducts, setHotProducts] = useState<DeviceShort[]>([]);
   const [devicesOnPage, setDevicesOnPage] = useState<DeviceShort[]>([]);
-  const [favourites, setFavourites] = useState<DeviceShort[]>([]);
-  const [cartItems, setCartItems] = useState<Array<[DeviceShort, number]>>([]);
+  const [favourites, setFavourites] = useState(() => {
+    const data = localStorage.getItem('favourites');
+
+    return data ? JSON.parse(data) : [];
+  });
+  const [cartItems, setCartItems] = useState(() => {
+    const data = localStorage.getItem('cartItems');
+
+    return data ? JSON.parse(data) : [];
+  });
   const [page, setPage] = useState(0);
   const [items, setItems] = useState('');
   const [sort, setSort] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [currentDevice, setCurrentDevice] = useState<DeviceFull | null>(null);
-  // const [categoryDevices, setCategoryDevices] = useState<DeviceFull[]>([]);
 
   return (
     <HooksContext.Provider

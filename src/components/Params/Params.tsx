@@ -7,6 +7,7 @@ import favFilled from '../../assets/Icons/Favourites-filled.svg';
 import { getData } from '../../services';
 import { DeviceFull } from '../../types/DeviceFull';
 import { ParamsContextProvider, ParamsHooks } from './ParamsHooks';
+import { DeviceShort } from '../../types/DeviceShort';
 
 const Params1 = () => {
   const {
@@ -110,25 +111,34 @@ const Params1 = () => {
     return fav;
   };
 
-  const handleFavourite = () => {
-    if (favourites.some(device => device.id === shortCurentDevice?.id)) {
-      setFavourites(prev =>
-        prev.filter(device => device.name !== shortCurentDevice?.name),
-      );
-    } else {
-      if (shortCurentDevice) {
-        setFavourites(prev => [...prev, shortCurentDevice]);
+  const handleFavourite = (item: DeviceShort) => {
+    setFavourites(prev => {
+      let updated;
+
+      if (prev.some(device => device.id === item.id)) {
+        updated = prev.filter(device => device.name !== item.name);
+      } else {
+        updated = [...prev, item];
       }
-    }
+
+      localStorage.setItem('favourites', JSON.stringify(updated));
+
+      return updated;
+    });
   };
 
-  const handleCart = () => {
-    if (
-      !cartItems.some(([device]) => device.id === shortCurentDevice?.id) &&
-      shortCurentDevice
-    ) {
-      setCartItems(prev => [...prev, [shortCurentDevice, 1]]);
-    }
+  const handleCart = (item: DeviceShort) => {
+    setCartItems((prevItems): [DeviceShort, number][] => {
+      if (prevItems.some(([device]) => device.id === item.id)) {
+        return prevItems;
+      }
+
+      const updated: [DeviceShort, number][] = [...prevItems, [item, 1]];
+
+      localStorage.setItem('cartItems', JSON.stringify(updated));
+
+      return updated;
+    });
   };
 
   const itemAddedToCart = cartItems.some(
@@ -206,13 +216,13 @@ const Params1 = () => {
             className={classNames(styles.buttons__add, 'button--black', {
               'button--active': itemAddedToCart,
             })}
-            onClick={handleCart}
+            onClick={() => handleCart(shortCurentDevice!)}
           >
             {itemAddedToCart ? 'Added to cart' : 'Add to cart'}
           </button>
           <button
             className={classNames(styles.buttons__fav, 'button')}
-            onClick={handleFavourite}
+            onClick={() => handleFavourite(shortCurentDevice!)}
           >
             <img src={chooseHeart()} alt="fav" />
           </button>

@@ -20,25 +20,44 @@ export const CartItem: React.FC<Props> = ({ item, quantity }) => {
   const { setCartItems, hotProducts, setCurrentDevice } = UseHooks();
 
   const minusQuantity = (curItem: DeviceShort) => {
-    if (quantity > 1) {
-      setCartItems(prevItems =>
-        prevItems.map(([device, count]) =>
-          device.id === curItem.id ? [device, count - 1] : [device, count],
-        ),
+    setCartItems(prevItems => {
+      const updated: [DeviceShort, number][] = prevItems.map(
+        ([device, count]) => {
+          if (device.id === curItem.id && count > 1) {
+            return [device, count - 1];
+          }
+
+          return [device, count];
+        },
       );
-    }
+
+      localStorage.setItem('cartItems', JSON.stringify(updated));
+
+      return updated;
+    });
   };
 
   const plusQuantity = (curItem: DeviceShort) => {
-    setCartItems(prevItems =>
-      prevItems.map(([device, count]) =>
-        device.id === curItem.id ? [device, count + 1] : [device, count],
-      ),
-    );
+    setCartItems(prevItems => {
+      const updated: [DeviceShort, number][] = prevItems.map(
+        ([device, count]) =>
+          device.id === curItem.id ? [device, count + 1] : [device, count],
+      );
+
+      localStorage.setItem('cartItems', JSON.stringify(updated));
+
+      return updated;
+    });
   };
 
   const deleteCartItem = () => {
-    setCartItems(prev => prev.filter(prod => prod[0].name !== item.name));
+    setCartItems(prev => {
+      const updated = prev.filter(prod => prod[0].name !== item.name);
+
+      localStorage.setItem('cartItems', JSON.stringify(updated));
+
+      return updated;
+    });
   };
 
   const curPrice = (product: DeviceShort) => {
