@@ -17,6 +17,15 @@ const {
   banner__button,
 } = styles;
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
 export const Banner = () => {
   return (
     <section className={banner}>
@@ -53,6 +62,20 @@ export const Banner = () => {
             </div>
           </div>
         </div>
+
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          onSwiper={swiper => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+        >
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+        </Swiper>
       </div>
     </section>
   );
