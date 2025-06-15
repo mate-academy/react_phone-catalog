@@ -1,0 +1,34 @@
+@use '../../../styles/utils' as utils;
+
+.filters {
+  display: flex;
+  gap: 32px;
+  align-items: end;
+  justify-content: space-between;
+
+  width: 100%;
+
+  @include utils.on-tablet {
+    justify-content: flex-start;
+  }
+
+  &__sort,
+  &__items {
+    width: 100%;
+
+    @include utils.on-tablet {
+      max-width: 170px;
+    }
+  }
+
+  &__text {
+    margin-bottom: 4px;
+
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 21px;
+    color: utils.$color-secondary;
+  }
+}

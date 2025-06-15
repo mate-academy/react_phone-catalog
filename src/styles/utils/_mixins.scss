@@ -1,0 +1,37 @@
+@use './variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 32px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin background-cover {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
