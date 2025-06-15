@@ -1,0 +1,18 @@
+@import '../../main';
+
+.empty-cart {
+  grid-column: 1 / -1;
+
+  &__img {
+    width: 100%;
+  }
+
+  &__text {
+    text-align: center;
+    font-size: 16px;
+
+    @include on-tablet {
+      font-size: 21px;
+    }
+  }
+}
