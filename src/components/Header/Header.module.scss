@@ -1,3 +1,28 @@
-.title {
-  color: black;
+@import '../../main';
+
+.header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+
+  background-color: #fff;
+
+  @include on-desktop {
+    gap: 24px;
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }

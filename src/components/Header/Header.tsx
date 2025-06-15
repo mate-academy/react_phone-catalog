@@ -4,9 +4,10 @@ import styles from './Header.module.scss';
 export const Header = () => {
   return (
     <header className={styles.header}>
-      <h1>Header</h1>
-      <Topbar />
-      <Navigation />
+      <Topbar icon="menu" />
+      <Navigation
+        classNamesProps={[styles.header__nav, styles.header__favorites]}
+      />
     </header>
   );
 };
