@@ -97,6 +97,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
 
     @include utils.on-tablet {
       gap: 24px;
