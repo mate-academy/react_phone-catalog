@@ -1,0 +1,19 @@
+@use '../../utils/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+
+
+  &__text {
+    color: $gray-color;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  &__link {
+    align-content: center;
+  }
+}

@@ -4,6 +4,8 @@ import { Footer } from './modules/shared/components/Footer';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './modules/HomePage/components/HomePage';
 import { PhonesPage } from './modules/PhonesPage/components/PhonesPage';
+// eslint-disable-next-line max-len
+import { ProductDetailsPage } from './modules/ProductDetailsPage/components/ProductDetailsPage/ProductDetailsPage';
 
 export const App = () => {
   return (
@@ -11,7 +13,9 @@ export const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<PhonesPage />} />
+        <Route path="/phones" element={<PhonesPage />}>
+          <Route path=":productId" element={<ProductDetailsPage />} />
+        </Route>
         <Route path="*" />
       </Routes>
       <Footer />

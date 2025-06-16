@@ -13,6 +13,8 @@ import { Loader } from '../Loader/Loader';
 import { LOAD_ERROR, LoadError } from '../../../shared/utils/types/LoadError';
 import { Button } from '../../../shared/components/Button';
 import { useSearchParams } from 'react-router-dom';
+// eslint-disable-next-line max-len
+import { Breadcrumbs } from '../../../shared/components/Breadcrumbs/Breadcrumbs';
 
 export const PhonesCatalog = () => {
   const [products, setProducts] = useState<Product[] | undefined>();
@@ -135,11 +137,7 @@ export const PhonesCatalog = () => {
     <>
       <div className={styles.catalog}>
         <div className={styles.catalog__header}>
-          <div className={styles['catalog__bread-crumbs']}>
-            <img src="public/icons/Home.svg" alt="home icon" />
-            <img src="public/icons/ArrowRight.svg" alt="arrow right icon" />
-            <p className={styles['catalog__bread-crumbs--text']}>Phones</p>
-          </div>
+          <Breadcrumbs firstPath={'Phones'} secondPath={''} />
           <h1 className={styles.catalog__title}>Mobile phones</h1>
           <p className={styles.catalog__counter}>{phonesCounter} models</p>
           <div className={styles['catalog__drop-downs']}>
