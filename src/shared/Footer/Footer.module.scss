@@ -54,15 +54,8 @@
 
   &__item {
     list-style: none;
-    padding: 10px 14px;
-    border-radius: 6px;
-    transition: box-shadow 0.3s ease;
-
-    &:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      cursor: pointer;
-    }
   }
+
   &__link {
     font-family: utils.$font-main;
     font-size: 12px;
@@ -74,9 +67,13 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
 
+    transition:
+      color utils.$animation-duration,
+      text-decoration 0.2s;
+
     &:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      cursor: pointer;
+      color: utils.$color-primary;
+      text-decoration: underline;
     }
   }
 
