@@ -40,18 +40,24 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000);
+    let timer: NodeJS.Timeout;
 
     fetch('/api/products.json')
       .then(res => res.json())
       .then(data => {
         setProducts(data);
+        timer = setTimeout(() => setIsLoading(false), 1000);
       })
       .catch(() => {
-        throw new Error('Fetch data error');
+        throw new Error('Look context, something wrong with fetch');
+        setIsLoading(false);
       });
 
-    return () => clearTimeout(timer);
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
   }, []);
 
   useEffect(() => {
