@@ -21,6 +21,7 @@
 
     gap: 32px;
     width: 100%;
+    position: fixed;
 
     @include utils.on-desktop {
       flex-direction: row;
