@@ -1,0 +1,131 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables.scss' as *;
+
+.cart {
+  grid-column: 1/-1;
+
+  @include grid-layout;
+
+  &__list {
+    grid-column: 1/-1;
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-full-screen {
+      grid-column: 1/17;
+    }
+  }
+
+  &__checkout {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid var(--elements);
+
+    @include on-full-screen {
+      margin-top: 32px;
+      grid-column: 17/-1;
+      align-self: start;
+    }
+
+    &__total {
+      color: var(--primary-color);
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      text-align: center;
+    }
+
+    &__items_amount {
+      color: var(--secondary-color);
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--elements);
+    }
+
+    &__btn {
+      font-weight: 700;
+      font-size: 14px;
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+      color: var(--add-button-color);
+      background-color: var(--add-button-back-color);
+
+      &:hover {
+        box-shadow: var(--add-button-hover-shadow);
+        background-color: var(--add-button-hover-back-color);
+      }
+    }
+  }
+}
+
+.checkbox_notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 16px;
+    background-color: var(--background-color);
+    width: 80%;
+    height: 40%;
+    border-radius: 10px;
+
+    @include on-full-screen {
+      width: 50%;
+      height: 50%;
+      padding: 32px;
+      justify-content: space-around;
+    }
+
+    &__title {
+      @include heading-h2;
+      text-align: center;
+    }
+
+    &__btns {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 16px;
+
+      &__btn {
+        background-color: var(--add-button-back-color);
+        color: var(--add-button-color);
+        height: 48px;
+        width: 100%;
+        max-width: 280px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 48px;
+        padding: 0 12px;
+
+        &:hover {
+          box-shadow: var(--add-button-hover-shadow);
+          background-color: var(--add-button-hover-back-color);
+        }
+      }
+    }
+  }
+}

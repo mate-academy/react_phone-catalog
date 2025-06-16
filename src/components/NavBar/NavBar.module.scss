@@ -1,32 +1,21 @@
-@import '../../styles/colors';
+@use '../../styles/mixins' as *;
+@use '../../styles/variables.scss' as *;
+
 @import './variables';
-
-@mixin on-tablet {
-  @media (min-width: 640px) {
-    @content;
-  }
-}
-
-@mixin on-full-screen {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
 
 .navbar {
   height: $navbar-height;
   position: sticky;
-  background-color: $background-color;
+  background-color: var(--background-color);
   top: 0;
   z-index: 2;
-  width: calc(100vw - 16px);// при появі вертикального скролу з'являється горизонтальний так як вертикальний скрол забирає 16px!!!
 
   @include on-tablet {
     height: $navbar-height;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px solid $elements;
+    border-bottom: 1px solid var(--elements);
   }
 
   @include on-full-screen {
@@ -34,13 +23,14 @@
   }
 
   &__opened {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
     position: sticky;
     top: 0;
-    background-color: $background-color;
+    background-color: var(--background-color);
   }
 
   &__container {
@@ -56,7 +46,7 @@
   &__phone_header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid $elements;
+    border-bottom: 1px solid var(--elements);
 
     @include on-tablet {
       border: 0;
@@ -64,34 +54,22 @@
   }
 
   &__burger_menu {
-    width: $navbar-height;
-    height: $navbar-height;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-left: 1px solid $elements;
+    width: 48px;
+    height: 48px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-left: 1px solid var(--elements);
 
     @include on-tablet {
       display: none;
     }
 
-    &__open {
-      padding: 24px;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-image: url('../../../public/img/navigation/burger-menu-open.svg');
-      width: $burger-menu-icons-size;
-      height: $burger-menu-icons-size;
+    &__closed {
+      background-image: var(--burger-menu-open);
     }
 
-    &__close {
-      padding: 24px;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-image: url('../../../public/img/navigation/burger-menu-close.svg');
-      width: $burger-menu-icons-size;
-      height: $burger-menu-icons-size;
+    &__opened {
+      background-image: var(--burger-menu-close);
     }
   }
 
@@ -107,6 +85,8 @@
     }
 
     &__img {
+      background-image: var(--logo);
+      background-size: contain;
       width: $logo-img-width;
       height: $logo-img-height;
 
@@ -139,13 +119,13 @@
       align-items: center;
       position: relative;
       text-transform: uppercase;
-      color: $secondary-color;
+      color: var(--secondary-color);
       text-decoration: none;
       font-weight: 800;
       letter-spacing: 0.5px;
 
       &:hover {
-        color: $primary-color;
+        color: var(--primary-color);
       }
 
       @include on-tablet {
@@ -160,7 +140,7 @@
       }
 
       &--active {
-        color: $primary-color;
+        color: var(--primary-color);
 
         &::after {
           content: '';
@@ -168,7 +148,7 @@
           bottom: 0;
           height: 2px;
           width: 100%;
-          background-color: $primary-color;
+          background-color: var(--primary-color);
           left: 0;
 
           @include on-tablet {
@@ -195,24 +175,30 @@
     &_opened {
       display: flex;
       height: 64px;
-      border-top: 1px solid $elements;
+      border-top: 1px solid var(--elements);
     }
   }
 
   &__heart_icon {
     width: 50vw;
-    background-image: url('../../../public/img/navigation/nav-heart.svg');
+    background-image: var(--heart-icon);
     background-position: center;
     background-repeat: no-repeat;
+    border: 1px solid var(--elements);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    outline: none;
 
     &:hover {
-      border: 1px solid $primary-color;
+      border: 1px solid var(--primary-color);
     }
 
     @include on-tablet {
       width: $icon-size-tablet;
       height: $icon-size-tablet;
-      border-left: 1px solid $elements;
+      border-left: 1px solid var(--elements);
     }
 
     @include on-full-screen {
@@ -221,24 +207,29 @@
     }
 
     &--active {
-      border-bottom: 3px solid $primary-color;
+      border-bottom: 3px solid var(--primary-color);
 
       &:hover {
-        border: 1px solid $primary-color;
-        border-bottom: 3px solid $primary-color;
+        border: 1px solid var(--primary-color);
+        border-bottom: 3px solid var(--primary-color);
       }
     }
   }
 
   &__shop_icon {
     width: 50vw;
-    background-image: url('../../../public/img/navigation/shoping-bag.svg');
+    background-image: var(--cart);
     background-position: center;
     background-repeat: no-repeat;
-    border-left: 1px solid $elements;
+    border: 1px solid var(--elements);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    outline: none;
 
     &:hover {
-      border: 1px solid $primary-color;
+      border: 1px solid var(--primary-color);
     }
 
     @include on-tablet {
@@ -252,12 +243,29 @@
     }
 
     &--active {
-      border-bottom: 3px solid $primary-color;
+      border-bottom: 3px solid var(--primary-color);
 
       &:hover {
-        border: 1px solid $primary-color;
-        border-bottom: 3px solid $primary-color;
+        border: 1px solid var(--primary-color);
+        border-bottom: 3px solid var(--primary-color);
       }
     }
   }
+}
+
+.notification {
+  box-sizing: content-box;
+  color: white;
+  background-color: var(--red);
+  height: 12px;
+  line-height: 12px;
+  width: 14px;
+  font-weight: 700;
+  font-size: 9px;
+  text-align: center;
+  border-radius: 50%;
+  position: relative;
+  left: 9px;
+  bottom: 6px;
+  border: 2px solid var(--background-color);
 }

@@ -1,31 +1,21 @@
 @use '../../styles/mixins' as *;
 
-.container {
+.home_page {
   @include grid-layout;
-  margin: 0 auto;
+
+  padding: 24px 16px 64px 16px;
   justify-content: center;
+  row-gap: 56px;
 
-  &__title {
-    @include heading-h1;
+  @include on-tablet {
+    padding: 32px 24px 64px 24px;
 
-    grid-column: 1/-1;
-    margin: 0;
-    margin-top: 24px;
-
-    @include on-tablet {
-      grid-column: 1/10;
-    }
-
-    @include on-full-screen {
-      grid-column: 1/18;
-    }
+    row-gap: 64px;
   }
-}
 
-.hidden_title {
-  margin: 0;
-  padding: 0;
-  width: 0;
-  height: 0;
-  visibility: hidden;
+  @include on-full-screen {
+    padding: 54px 0 80px 0;
+
+    row-gap: 80px;
+  }
 }

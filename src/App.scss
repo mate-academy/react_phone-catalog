@@ -1,16 +1,54 @@
 @import './styles/mixins';
+@import './styles/variables.scss';
 
 * {
   box-sizing: border-box;
   font-family: Mont, sans-serif;
 }
 
-body {
-  margin: 0;
-  padding: 0;
+html {
+  overflow-y: scroll;
 }
 
-// .container {
-//   display: flex;
-//   justify-content: center;
-// }
+body {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  height: 100%;
+  margin: 0;
+  user-select: none;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}
+
+.change-theme {
+  z-index: 10000;
+  height: 46px;
+  width: 48px;
+  background-image: var(--change-theme);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  position: absolute;
+  top: 0;
+  right: 48px;
+
+  @include on-tablet {
+    right: 96px;
+    background-size: 24px;
+  }
+
+  @include on-full-screen {
+    height: 64px;
+    width: 64px;
+    right: 128px;
+    background-size: 32px;
+  }
+}

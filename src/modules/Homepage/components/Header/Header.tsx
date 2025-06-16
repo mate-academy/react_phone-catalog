@@ -3,25 +3,19 @@ import styles from './Header.module.scss';
 const images = [
   {
     id: 1,
-    url:
-      'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/1068/cached.' +
-      'offlinehbpl.hbpl.co.uk/news/OMC/iPhoneX-20170913095319465.jpg',
+    url: '/img/banner-phones.png',
   },
   {
     id: 2,
-    url:
-      'https://www.patentlyapple.com/.a/' +
-      '6a0120a5580826970c0240a4fda20c200d-800wi',
+    url: '/img/banner-tablets.png',
   },
   {
     id: 3,
-    url:
-      'https://www.esourceparts.ca/blog/wp-content/uploads/' +
-      '2020/12/Top-5-Cheapestand-Amazing-Apple-Accessories.jpg',
+    url: '/img/banner-accessories.png',
   },
 ];
 
-export const PicturesSlider = () => {
+export const Header = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -78,7 +72,15 @@ export const PicturesSlider = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.slider_arrow__left} onClick={handleIndexDec}></div>
+      <h1 className={styles.hidden_title}>Product Catalog</h1>
+
+      <h1 className={styles.container__title}>
+        Welcome to Nice Gadgets store!
+      </h1>
+      <div
+        className={`${styles.slider_arrow} ${styles.slider_arrow__left}`}
+        onClick={handleIndexDec}
+      ></div>
       <div
         className={styles.sliderWrapper}
         onTouchStart={handleTouchStart}
@@ -89,14 +91,17 @@ export const PicturesSlider = () => {
           className={styles.sliderInner}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {images.map(slide => (
-            <img
-              key={slide.id}
-              src={slide.url}
-              alt={`Slide ${slide.id}`}
-              className={styles.image}
-            />
-          ))}
+          {images.map(image => {
+            return (
+              <img
+                key={image.id}
+                src={image.url}
+                alt={image.url}
+                className={styles.image}
+                style={{ backgroundColor: '#E3F2FD' }}
+              />
+            );
+          })}
         </div>
 
         <div className={styles.lowerButtons}>
@@ -116,7 +121,7 @@ export const PicturesSlider = () => {
         </div>
       </div>
       <div
-        className={styles.slider_arrow__right}
+        className={`${styles.slider_arrow} ${styles.slider_arrow__right}`}
         onClick={handleIndexInc}
       ></div>
     </div>

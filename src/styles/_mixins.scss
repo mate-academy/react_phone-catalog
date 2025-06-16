@@ -1,18 +1,19 @@
-@use './colors.scss' as *;
+@use './variables.scss' as *;
 
 @mixin on-tablet {
-  @media (min-width: 640px) {
+  @media (min-width: $breakpoint-tablet) {
     @content;
   }
 }
 
 @mixin on-full-screen {
-  @media (min-width: 1200px) {
+  @media (min-width: $breakpoint-desktop) {
     @content;
   }
 }
 
 @mixin heading-h1 {
+  margin: 0;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
@@ -37,7 +38,7 @@
 }
 
 @mixin body-text {
-  color: $primary-color;
+  color: var(--primary-color);
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
@@ -45,11 +46,12 @@
 
 @mixin grid-layout {
   display: grid;
-  grid-template-columns: repeat(4, 60px);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 16px;
+  grid-auto-rows: min-content;
 
   @include on-tablet {
-    grid-template-columns: repeat(12, 34.67px);
+    grid-template-columns: repeat(12, 1fr);
   }
 
   @include on-full-screen {
@@ -57,18 +59,11 @@
   }
 }
 
-// @mixin header-animation {
-//   animation: animate 3s linear 1;
+@mixin scale-images-on-hover($scale: 1.1) {
+  transition: transform 0.3s ease;
+  transform-origin: center;
 
-//   @keyframes animate {
-//     0% {
-//       transform: rotateY(360deg) scale(0);
-//     }
-//     50% {
-//       transform: rotateX(0deg) scale(1);
-//     }
-//     100% {
-//       transform: rotate(0deg) scale(1);
-//     }
-//   }
-// }
+  &:hover {
+    transform: scale(1.1);
+  }
+}

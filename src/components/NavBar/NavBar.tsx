@@ -1,24 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.scss';
 import { useEffect, useState } from 'react';
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return width;
-}
+import { useProducts } from '../../context/ProductsContext';
+import { useWindowWidth } from '../../utils/helpers';
 
 export const NavBar = () => {
+  const { cart, favorites } = useProducts();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const width = useWindowWidth();
+  const cartItemsCount = cart.reduce((acc, item) => acc + item.amount, 0);
 
   useEffect(() => {
     if (width >= 640) {
@@ -48,22 +38,12 @@ export const NavBar = () => {
             className={styles.navbar__logo}
             onClick={handleNavigate}
           >
-            <img
-              className={styles.navbar__logo__img}
-              src="../public/img/navigation/logo.svg"
-              alt="logo"
-            />
+            <div className={styles.navbar__logo__img}></div>
           </NavLink>
-          <div className={styles.navbar__burger_menu}>
-            <div
-              onClick={openMenu}
-              className={
-                isOpenMenu
-                  ? styles.navbar__burger_menu__close
-                  : styles.navbar__burger_menu__open
-              }
-            ></div>
-          </div>
+          <div
+            className={`${styles.navbar__burger_menu} ${isOpenMenu ? styles.navbar__burger_menu__opened : styles.navbar__burger_menu__closed}`}
+            onClick={openMenu}
+          ></div>
         </div>
         <div
           className={
@@ -130,16 +110,24 @@ export const NavBar = () => {
               : styles.navbar__heart_icon
           }
           onClick={handleNavigate}
-        ></NavLink>
+        >
+          {favorites.length > 0 && (
+            <div className={styles.notification}>{favorites.length}</div>
+          )}
+        </NavLink>
         <NavLink
-          to={'wishlist'}
+          to={'cart'}
           className={({ isActive }) =>
             isActive
               ? `${styles.navbar__shop_icon} ${styles['navbar__shop_icon--active']}`
               : styles.navbar__shop_icon
           }
           onClick={handleNavigate}
-        ></NavLink>
+        >
+          {cart.length > 0 && (
+            <div className={styles.notification}>{cartItemsCount}</div>
+          )}
+        </NavLink>
       </div>
     </nav>
   );

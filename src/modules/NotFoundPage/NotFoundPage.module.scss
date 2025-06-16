@@ -1,3 +1,26 @@
-.title {
-  font-size: 32px;
+@use '../../styles/mixins' as *;
+
+.not_found {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    @include heading-h1;
+    text-align: center;
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__image {
+    height: 300px;
+    width: 300px;
+    background-image: url('../../../public/img/page-not-found.png');
+    background-position: center;
+    background-size: cover;
+    align-self: center;
+  }
 }

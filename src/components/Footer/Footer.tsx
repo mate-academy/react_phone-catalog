@@ -6,11 +6,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <NavLink to={'/'} className={styles.footer__logo}>
-        <img
-          className={styles.footer__logo__img}
-          src="../public/img/navigation/logo.svg"
-          alt="logo"
-        />
+        <div className={styles.footer__logo__img} />
       </NavLink>
       <div className={styles.footer__contacts}>
         <a

@@ -1,26 +1,34 @@
 @use '../../styles/mixins' as *;
-@use '../../styles/colors.scss' as *;
+@use '../../styles/variables.scss';
 
 .card {
-  width: 212px;
-  height: 439px;
-  padding: 32px;
-  border: 1px solid #e2e6e9;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-width: 212px;
+  height: 439px;
+  padding: 32px;
+  background-color: var(--card-back-color);
+  border: 1px solid var(--card-border);
 
   @include on-tablet {
-    width: 237px;
-    height: 512px;
+    height: 506px;
   }
 
   @include on-full-screen {
     width: 272px;
-    height: 506px;
+  }
+
+  &__link_wrap {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
   }
 
   &__image {
+    @include scale-images-on-hover;
+
     display: block;
     align-self: center;
     width: 148px;
@@ -51,7 +59,7 @@
     padding-bottom: 8px;
     gap: 8px;
     font-size: 22px;
-    border-bottom: 1px solid $elements;
+    border-bottom: 1px solid var(--elements);
 
     &__regular {
       font-weight: 800;
@@ -59,7 +67,7 @@
     }
 
     &__discount {
-      color: $secondary-color;
+      color: var(--secondary-color);
       font-weight: 500;
       line-height: 100%;
       text-decoration: line-through;
@@ -79,14 +87,14 @@
       justify-content: space-between;
 
       &__name {
-        color: $secondary-color;
+        color: var(--secondary-color);
         font-weight: 700;
         font-size: 12px;
         line-height: 100%;
       }
 
       &__param {
-        color: $primary-color;
+        color: var(--primary-color);
         font-weight: 700;
         font-size: 12px;
         line-height: 100%;
@@ -99,14 +107,15 @@
     gap: 8px;
 
     &__add {
-      width: 100px;
+      flex-grow: 2;
+      height: 40px;
       line-height: 40px;
-      background-color: $primary-color;
-      color: $background-color;
+      background-color: var(--add-button-back-color);
+      color: var(--add-button-color);
       text-align: center;
-
       font-weight: 700;
       font-size: 14px;
+      white-space: nowrap;
 
       @include on-tablet {
         width: 125px;
@@ -114,6 +123,30 @@
 
       @include on-full-screen {
         width: 160px;
+      }
+
+      &::before {
+        content: 'Add to cart';
+      }
+
+      &:hover {
+        box-shadow: var(--add-button-hover-shadow);
+        background-color: var(--add-button-hover-back-color);
+      }
+
+      &__selected {
+        color: var(--add-button-selected-color);
+        background-color: var(--add-button-selected-back-color);
+        border: 1px solid var(--elements);
+
+        &::before {
+          content: 'Added to cart';
+        }
+
+        &:hover {
+          box-shadow: none;
+          background-color: var(--add-button-selected-back-color);
+        }
       }
     }
 
@@ -127,11 +160,19 @@
 
       background-position: center;
       background-repeat: no-repeat;
-      border: 1px solid $icons;
-      background-image: url('../../../public/img/navigation/nav-heart.svg');
+      background-image: var(--heart-icon);
+      border: 1px solid var(--arrow-button-border-color);
+      background-color: var(--arrow-button-back-color);
 
       &:hover {
-        border-color: $primary-color;
+        background-color: var(--arrow-button-back-hover-color);
+        border-color: var(--arrow-button-border-hover-color);
+      }
+
+      &__active {
+        background-color: var(--background-color);
+        border: 1px solid var(--elements);
+        background-image: var(--heart-icon-red);
       }
     }
   }

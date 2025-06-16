@@ -1,26 +1,15 @@
 export interface Card {
-  id: string;
+  id: number;
   category: string;
-  namespaceId: string;
+  itemId: string;
   name: string;
-  capacityAvailable: string[];
-  capacity: string;
-  priceRegular: number;
-  priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
-  images: string[];
-  description: Description[];
+  fullPrice: number;
+  price: number;
   screen: string;
-  resolution: string;
-  processor: string;
+  capacity: string;
+  color: string;
   ram: string;
-  camera: string;
-  zoom: string;
-  cell: string[];
+  year: number;
+  image: string;
+  amount: number;
 }
-
-export type Description = {
-  title: string;
-  text: string[];
-};

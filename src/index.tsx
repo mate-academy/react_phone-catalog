@@ -8,11 +8,12 @@ import {
 } from 'react-router-dom';
 import { HomePage } from './modules/Homepage';
 import { NotFoundPage } from './modules/NotFoundPage';
-import { Phones } from './modules/Phones';
-import { Tablets } from './modules/Tablets';
-import { Accessories } from './modules/Accessories';
 import { Favourites } from './modules/Favourites';
-import { Wishlist } from './modules/Wishlist';
+import { Cart } from './modules/Cart';
+import { Model } from './components/Model';
+import { ProductNotFound } from './modules/ProductNotFound';
+import { Catalog } from './components/Catalog/Catalog';
+import { Category } from './components/Category/Category';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Router>
@@ -21,13 +22,44 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Route index element={<HomePage />} />
 
         <Route path="home" element={<Navigate to="/" replace />} />
-        <Route path="phones" element={<Phones />} />
-        <Route path="tablets" element={<Tablets />} />
-        <Route path="accessories" element={<Accessories />} />
+        <Route
+          path="phones"
+          element={<Category category="phones" title="Phones" />}
+        >
+          <Route
+            index
+            element={<Catalog category="phones" title="Mobile phones" />}
+          />
+          <Route path=":productId" element={<Model />} />
+        </Route>
+
+        <Route
+          path="tablets"
+          element={<Category category="tablets" title="Tablets" />}
+        >
+          <Route
+            index
+            element={<Catalog category="tablets" title="Tablets" />}
+          />
+          <Route path=":productId" element={<Model />} />
+        </Route>
+
+        <Route
+          path="accessories"
+          element={<Category category="accessories" title="Accessories" />}
+        >
+          <Route
+            index
+            element={<Catalog category="accessories" title="Accessories" />}
+          />
+          <Route path=":productId" element={<Model />} />
+        </Route>
+
         <Route path="favourites" element={<Favourites />} />
-        <Route path="wishlist" element={<Wishlist />} />
+        <Route path="cart" element={<Cart />} />
 
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="not_found_product" element={<ProductNotFound />} />
       </Route>
     </Routes>
   </Router>,

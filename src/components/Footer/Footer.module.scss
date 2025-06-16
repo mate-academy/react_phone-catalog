@@ -1,54 +1,72 @@
+@use '../../styles/variables.scss' as *;
+
 @import '../../styles/mixins';
 
 .footer {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  @include grid-layout;
   padding: 32px 16px;
+  row-gap: 32px;
+  border-top: 1px solid var(--elements);
 
   @include on-tablet {
     padding: 32px;
     height: 96px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
   }
 
   @include on-full-screen {
-    padding: 32px 152px;
+    justify-content: center;
   }
 
   &__logo {
+    grid-column: 1/-1;
     width: 89px;
     height: 32px;
+
+    @include on-tablet {
+      grid-column: 1/5;
+    }
+
+    @include on-full-screen {
+      grid-column: 1/9;
+    }
   }
 
   &__logo__img {
+    background-image: var(--logo);
+    background-size: contain;
+    background-repeat: no-repeat;
+
     width: 89px;
     height: 32px;
   }
 
   &__contacts {
+    grid-column: 1/-1;
     display: flex;
     flex-direction: column;
 
     @include on-tablet {
+      grid-column: 5/9;
       flex-direction: row;
       justify-content: space-between;
+    }
+
+    @include on-full-screen {
+      grid-column: 9/17;
     }
 
     &__item {
       height: 27px;
       line-height: 27px;
       width: fit-content;
-      color: #89939a;
+      color: var(--secondary-color);
       text-decoration: none;
       text-transform: uppercase;
       font-weight: 700;
       font-size: 12px;
 
       &:hover {
-        color: #313237;
+        color: var(--primary-color);
       }
 
       @include on-tablet {
@@ -64,14 +82,24 @@
   }
 
   &__back_to_top {
+    grid-column: 1/-1;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 32px;
     gap: 16px;
 
+    @include on-tablet {
+      grid-column: 9/-1;
+      justify-content: end;
+    }
+
+    @include on-full-screen {
+      grid-column: 17/-1;
+    }
+
     &__text {
-      color: #89939a;
+      color: var(--secondary-color);
       margin: 0;
       height: 32px;
       line-height: 32px;
@@ -80,7 +108,7 @@
     }
 
     &__button {
-      border: 1px solid#B4BDC3;
+      border: 1px solid var(--icons);
       background-image: url('../../../public/img/navigation/arrow-up.svg');
       background-position: center;
       background-repeat: no-repeat;
@@ -88,7 +116,7 @@
       height: 32px;
 
       &:hover {
-        border: 1px solid#313237;
+        border: 1px solid var(--primary-color);
       }
     }
   }

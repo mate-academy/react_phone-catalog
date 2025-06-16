@@ -1,0 +1,128 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.card {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-back-color);
+
+  @include on-tablet {
+    padding: 24px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &__remove_button {
+      height: 16px;
+      width: 16px;
+      background-image: var(--burger-menu-close);
+    }
+
+    &__image {
+      object-fit: contain;
+      height: 80px;
+      width: 80px;
+    }
+
+    &__name {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      max-width: 128px;
+
+      @include on-tablet {
+        max-width: 176px;
+      }
+
+      @include on-full-screen {
+        max-width: 336px;
+      }
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &__quantity_control {
+      display: flex;
+      flex-direction: row;
+
+      &__btns {
+        background-color: var(--arrow-button-back-color);
+        border: 1px solid var(--arrow-button-border-color);
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 32px;
+        height: 32px;
+
+        &_dec {
+          background-image: var(--minus);
+
+          &:hover {
+            border: 1px solid var(--arrow-button-border-hover-color);
+            background-color: var(--arrow-button-back-hover-color);
+          }
+
+          &__disabled {
+            background-color: var(--background-color);
+            border: 1px solid var(--elements);
+            background-image: var(--minus-disabled);
+
+            &:hover {
+              background-color: var(--background-color);
+              border: 1px solid var(--elements);
+            }
+          }
+        }
+
+        &_inc {
+          background-image: var(--plus);
+
+          &:hover {
+            border: 1px solid var(--arrow-button-border-hover-color);
+            background-color: var(--arrow-button-back-hover-color);
+          }
+        }
+      }
+
+      &__quantity {
+        font-weight: 600;
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        color: var(--primary-color);
+      }
+    }
+
+    &__product_price {
+      color: var(--primary-color);
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+}
