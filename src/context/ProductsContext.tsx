@@ -42,7 +42,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     let timer: NodeJS.Timeout;
 
-    fetch('../pulic/api/products.json')
+    fetch('/api/products.json')
       .then(res => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
