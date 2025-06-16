@@ -1,7 +1,21 @@
-import React from 'react';
+// Import Swiper
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import './Swiper.scss';
+
 import styles from './Banner.module.scss';
-import bannerImg from './../../images/img/main-banner.jpg';
+import bannerMain from './../../images/img/banner.jpg';
+import bannerAccess from './../../images/img/banner-accessories.png';
+import bannerPhones from './../../images/img/banner-phones.png';
+import bannerTablets from './../../images/img/banner-tablets.png';
 import arrowIcon from './../../images/icons/arrow-up.svg';
+import { useMemo } from 'react';
+
+const images = [bannerMain, bannerAccess, bannerPhones, bannerTablets];
 
 const {
   banner,
@@ -17,20 +31,11 @@ const {
   banner__button,
 } = styles;
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-
 export const Banner = () => {
   return (
     <section className={banner}>
       <div className="container">
-        <div className={banner__slider}>
+        {/* <div className={banner__slider}>
           <div className={banner__body}>
             <button className={banner__button}>
               <img
@@ -39,7 +44,7 @@ export const Banner = () => {
                 className={`${banner__icon} ${banner__icon_left} `}
               />
             </button>
-            <img src={bannerImg} alt="" className={banner__image} />
+            <img src={bannerMain} alt="" className={banner__image} />
             <button className={banner__button}>
               <img
                 src={arrowIcon}
@@ -61,20 +66,23 @@ export const Banner = () => {
               <span></span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={50}
           slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
-          onSwiper={swiper => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
+          className=""
         >
-          <SwiperSlide>Slide 1</SwiperSlide>
+          {images.map((img, i) => (
+            <SwiperSlide key={i}>
+              <img src={img} alt="slider" />
+            </SwiperSlide>
+          ))}
+          {/*
           <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide> */}
         </Swiper>
       </div>
     </section>
