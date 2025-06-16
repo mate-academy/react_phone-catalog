@@ -49,8 +49,8 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
         timer = setTimeout(() => setIsLoading(false), 1000);
       })
       .catch(() => {
-        throw new Error('Look context, something wrong with fetch');
         setIsLoading(false);
+        throw new Error('Look context, something wrong with fetch');
       });
 
     return () => {
