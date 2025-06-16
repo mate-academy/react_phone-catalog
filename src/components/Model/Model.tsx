@@ -41,7 +41,7 @@ export const Model = () => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch(`/api/${modelShortData.category}.json`);
+        const response = await fetch(`api/${modelShortData.category}.json`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -56,7 +56,11 @@ export const Model = () => {
 
         setModel(curModel);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch product details');
+        setError(
+          err instanceof Error
+            ? err.message
+            : 'Failed to fetch product details',
+        );
         navigate('/not_found_product');
       } finally {
         setIsLoading(false);
@@ -286,9 +290,7 @@ export const Model = () => {
                     {
                       // eslint-disable-next-line max-len
                       [styles.model__purchase_panel__card__buttons__like__active]:
-                        favorites.some(
-                          item => item.id === modelShortData?.id,
-                        ),
+                        favorites.some(item => item.id === modelShortData?.id),
                     },
                   )}
                   onClick={handleLike}
@@ -414,9 +416,7 @@ export const Model = () => {
             </span>
           </div>
           <div className={styles.model__tech_specs__params}>
-            <span className={styles.model__tech_specs__params__name}>
-              RAM
-            </span>
+            <span className={styles.model__tech_specs__params__name}>RAM</span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.ram}
             </span>
@@ -438,17 +438,13 @@ export const Model = () => {
             </span>
           </div>
           <div className={styles.model__tech_specs__params}>
-            <span className={styles.model__tech_specs__params__name}>
-              Zoom
-            </span>
+            <span className={styles.model__tech_specs__params__name}>Zoom</span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.zoom}
             </span>
           </div>
           <div className={styles.model__tech_specs__params}>
-            <span className={styles.model__tech_specs__params__name}>
-              Cell
-            </span>
+            <span className={styles.model__tech_specs__params__name}>Cell</span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.cell.join(', ')}
             </span>

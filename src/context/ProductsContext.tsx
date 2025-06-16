@@ -47,7 +47,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch('/api/products.json');
+        const response = await fetch('api/products.json');
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
