@@ -1,1 +1,54 @@
-// not empty
+@import './styles/mixins';
+@import './styles/variables.scss';
+
+* {
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}
+
+.change-theme {
+  position: absolute;
+  top: 0;
+  right: 48px;
+  z-index: 10000;
+  width: 48px;
+  height: 46px;
+  background-image: var(--change-theme);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px;
+
+  @include on-tablet {
+    right: 96px;
+    background-size: 24px;
+  }
+
+  @include on-full-screen {
+    right: 128px;
+    width: 64px;
+    height: 64px;
+    background-size: 32px;
+  }
+}

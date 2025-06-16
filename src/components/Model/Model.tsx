@@ -1,0 +1,452 @@
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import cn from 'classnames';
+
+import styles from './Model.module.scss';
+
+import { FullCard } from '../../types/fullInfoCard';
+import { useProducts } from '../../context/ProductsContext';
+// eslint-disable-next-line max-len
+import { ModelsListSlider } from '../ModelsListSlider';
+import {
+  getCorrectUrl,
+  getCssColor,
+  useWindowWidth,
+} from '../../utils/helpers';
+import { Loader } from '../Loader';
+
+export const Model = () => {
+  const { productId } = useParams();
+  const { products, favorites, cart, setFavorites, setCart } = useProducts();
+  const navigate = useNavigate();
+  const isValidUrl = products.some(item => item.itemId === productId);
+  const [model, setModel] = useState<FullCard | null>(null);
+  const [mainImage, setMainImage] = useState(0);
+  const curWindowWidth = useWindowWidth();
+  const modelShortData = products.find(product => product.itemId === productId);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const similarProducts = products.filter(
+    item => item.category === modelShortData?.category,
+  );
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+
+    const fetchModel = async () => {
+      if (!modelShortData || !productId) {
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/${modelShortData.category}.json`);
+        const data = await res.json();
+
+        const curModel = data.find((item: FullCard) => item.id === productId);
+
+        setModel(curModel);
+      } catch (err) {
+        throw new Error('Something went wrong with load data');
+      }
+
+      return () => clearTimeout(timer);
+    };
+
+    fetchModel();
+  }, [productId, modelShortData]);
+
+  if (!isValidUrl) {
+    return <Navigate to="/not_found_product" replace />;
+  }
+
+  const chooseMainImage = (index: number) => {
+    if (curWindowWidth < 1200) {
+      return index * 288;
+    } else {
+      return index * 464;
+    }
+  };
+
+  const handleLike = () => {
+    if (modelShortData) {
+      const isAlreadyFavorite = favorites.some(
+        item => item.id === modelShortData.id,
+      );
+
+      let updatedFavorites;
+
+      if (isAlreadyFavorite) {
+        updatedFavorites = favorites.filter(
+          item => item.id !== modelShortData.id,
+        );
+      } else {
+        updatedFavorites = [...favorites, modelShortData];
+      }
+
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      setFavorites(updatedFavorites);
+    }
+  };
+
+  const addToCart = () => {
+    if (modelShortData) {
+      const isInCart = cart.some(item => item.id === modelShortData.id);
+
+      if (isInCart) {
+        return;
+      }
+
+      const updatedCart = [...cart, { ...modelShortData, amount: 1 }];
+
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      setCart(updatedCart);
+    }
+  };
+
+  return (
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className={styles.model}>
+          <div className={styles.model__back} onClick={() => navigate(-1)}>
+            <div className={styles.model__back__arrow}></div>
+            <div className={styles.model__back__text}>Back</div>
+          </div>
+          <h1 className={styles.model__name}>{model?.name}</h1>
+          <div className={styles.model__container}>
+            <div className={styles.model__images}>
+              <div className={styles.model__images__main_image__wrap}>
+                <div
+                  className={styles.model__images__main_image__list}
+                  style={{
+                    transform: `translateX(-${chooseMainImage(mainImage)}px)`,
+                  }}
+                >
+                  {model?.images.map(image => {
+                    return (
+                      <img
+                        key={image}
+                        className={styles.model__images__main_image}
+                        src={image}
+                        alt={image}
+                      ></img>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className={styles.model__images__additional_images}>
+                {model?.images.map((image, index) => {
+                  return (
+                    <img
+                      onClick={() => setMainImage(index)}
+                      src={image}
+                      key={image}
+                      className={cn(
+                        styles.model__images__additional_images__image,
+                        {
+                          // eslint-disable-next-line max-len
+                          [styles.model__images__additional_images__image__active]:
+                            index === mainImage,
+                        },
+                      )}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+            <div className={styles.model__purchase_panel}>
+              <div className={styles.model__purchase_panel__header}>
+                <div
+                  className={styles.model__purchase_panel__header__colors_title}
+                >
+                  Available colors
+                </div>
+                <div className={styles.model__purchase_panel__header__model_id}>
+                  ID: {modelShortData?.id}
+                </div>
+              </div>
+              <div className={styles.model__purchase_panel__card}>
+                <div className={styles.model__purchase_panel__card__colors}>
+                  {model?.colorsAvailable.map(color => {
+                    return (
+                      <Link
+                        to={`/${model.category}/${model.namespaceId}-${model.capacity.toLocaleLowerCase()}-${getCorrectUrl(color)}`}
+                        key={color}
+                        className={cn(
+                          // eslint-disable-next-line max-len
+                          styles.model__purchase_panel__card__colors__color_option,
+                          {
+                            // eslint-disable-next-line max-len
+                            [styles.model__purchase_panel__card__colors__color_option__selected]:
+                              color === model.color,
+                          },
+                        )}
+                      >
+                        <div
+                          className={
+                            // eslint-disable-next-line max-len
+                            styles.model__purchase_panel__card__colors__color_option__fill
+                          }
+                          style={{
+                            backgroundColor: getCssColor(color),
+                          }}
+                        ></div>
+                      </Link>
+                    );
+                  })}
+                </div>
+                <div className={styles.model__purchase_panel__card__capacities}>
+                  <div
+                    className={
+                      styles.model__purchase_panel__card__capacities__title
+                    }
+                  >
+                    Select capacity
+                  </div>
+                  <div
+                    className={
+                      styles.model__purchase_panel__card__capacities__list
+                    }
+                  >
+                    {model?.capacityAvailable.map(capacity => {
+                      return (
+                        <Link
+                          to={`/${model.category}/${model.namespaceId}-${capacity.toLocaleLowerCase()}-${getCorrectUrl(model.color)}`}
+                          key={capacity}
+                          style={{
+                            textDecoration: 'none',
+                          }}
+                        >
+                          <div
+                            className={cn(
+                              // eslint-disable-next-line max-len
+                              styles.model__purchase_panel__card__capacities__option,
+                              {
+                                // eslint-disable-next-line max-len
+                                [styles.model__purchase_panel__card__capacities__option_selected]:
+                                  capacity === model.capacity,
+                              },
+                            )}
+                          >
+                            {capacity}
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div className={styles.model__purchase_panel__card__prices}>
+                  <div
+                    className={
+                      styles.model__purchase_panel__card__prices__regular
+                    }
+                  >
+                    ${model?.priceDiscount}
+                  </div>
+                  <div
+                    className={
+                      styles.model__purchase_panel__card__prices__discount
+                    }
+                  >
+                    ${model?.priceRegular}
+                  </div>
+                </div>
+                <div className={styles.model__purchase_panel__card__buttons}>
+                  <div
+                    className={cn(
+                      styles.model__purchase_panel__card__buttons__add,
+                      {
+                        // eslint-disable-next-line max-len
+                        [styles.model__purchase_panel__card__buttons__add_added]:
+                          cart.some(item => item.id === modelShortData?.id),
+                      },
+                    )}
+                    onClick={addToCart}
+                  ></div>
+                  <button
+                    className={cn(
+                      styles.model__purchase_panel__card__buttons__like,
+                      {
+                        // eslint-disable-next-line max-len
+                        [styles.model__purchase_panel__card__buttons__like__active]:
+                          favorites.some(
+                            item => item.id === modelShortData?.id,
+                          ),
+                      },
+                    )}
+                    onClick={handleLike}
+                  ></button>
+                </div>
+
+                <div className={styles.model__purchase_panel__card__detail}>
+                  <div
+                    className={styles.model__purchase_panel__card__detail__row}
+                  >
+                    <div
+                      className={
+                        styles.model__purchase_panel__card__detail__row__name
+                      }
+                    >
+                      Screen
+                    </div>
+                    <div
+                      className={
+                        styles.model__purchase_panel__card__detail__row__param
+                      }
+                    >
+                      {model?.screen}
+                    </div>
+                  </div>
+                  <div
+                    className={styles.model__purchase_panel__card__detail__row}
+                  >
+                    <div
+                      className={
+                        styles.model__purchase_panel__card__detail__row__name
+                      }
+                    >
+                      Resolution
+                    </div>
+                    <div
+                      className={
+                        styles.model__purchase_panel__card__detail__row__param
+                      }
+                    >
+                      {model?.resolution}
+                    </div>
+                  </div>
+                  <div
+                    className={styles.model__purchase_panel__card__detail__row}
+                  >
+                    <div
+                      className={
+                        styles.model__purchase_panel__card__detail__row__name
+                      }
+                    >
+                      Processor
+                    </div>
+                    <div
+                      className={
+                        styles.model__purchase_panel__card__detail__row__param
+                      }
+                    >
+                      {model?.processor}
+                    </div>
+                  </div>
+                  <div
+                    className={styles.model__purchase_panel__card__detail__row}
+                  >
+                    <div
+                      className={
+                        styles.model__purchase_panel__card__detail__row__name
+                      }
+                    >
+                      RAM
+                    </div>
+                    <div
+                      className={
+                        styles.model__purchase_panel__card__detail__row__param
+                      }
+                    >
+                      {model?.ram}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.model__about}>
+            <h3 className={styles.model__about__title}>About</h3>
+            {model?.description.map(item => {
+              return (
+                <div key={item.title} className={styles.model__about__part}>
+                  <h4 className={styles.model__about__part__title}>
+                    {item.title}
+                  </h4>
+                  <p className={styles.model__about__part__paragraph}>
+                    {item.text}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+          <div className={styles.model__tech_specs}>
+            <h4 className={styles.model__tech_specs__title}>Tech specs</h4>
+            <div className={styles.model__tech_specs__params}>
+              <span className={styles.model__tech_specs__params__name}>
+                Screen
+              </span>
+              <span className={styles.model__tech_specs__params__data}>
+                {model?.screen}
+              </span>
+            </div>
+            <div className={styles.model__tech_specs__params}>
+              <span className={styles.model__tech_specs__params__name}>
+                Resolution
+              </span>
+              <span className={styles.model__tech_specs__params__data}>
+                {model?.resolution}
+              </span>
+            </div>
+            <div className={styles.model__tech_specs__params}>
+              <span className={styles.model__tech_specs__params__name}>
+                Processor
+              </span>
+              <span className={styles.model__tech_specs__params__data}>
+                {model?.processor}
+              </span>
+            </div>
+            <div className={styles.model__tech_specs__params}>
+              <span className={styles.model__tech_specs__params__name}>
+                RAM
+              </span>
+              <span className={styles.model__tech_specs__params__data}>
+                {model?.ram}
+              </span>
+            </div>
+            <div className={styles.model__tech_specs__params}>
+              <span className={styles.model__tech_specs__params__name}>
+                Built in memory
+              </span>
+              <span className={styles.model__tech_specs__params__data}>
+                {model?.capacity}
+              </span>
+            </div>
+            <div className={styles.model__tech_specs__params}>
+              <span className={styles.model__tech_specs__params__name}>
+                Camera
+              </span>
+              <span className={styles.model__tech_specs__params__data}>
+                {model?.camera}
+              </span>
+            </div>
+            <div className={styles.model__tech_specs__params}>
+              <span className={styles.model__tech_specs__params__name}>
+                Zoom
+              </span>
+              <span className={styles.model__tech_specs__params__data}>
+                {model?.zoom}
+              </span>
+            </div>
+            <div className={styles.model__tech_specs__params}>
+              <span className={styles.model__tech_specs__params__name}>
+                Cell
+              </span>
+              <span className={styles.model__tech_specs__params__data}>
+                {model?.cell.join(', ')}
+              </span>
+            </div>
+          </div>
+
+          <ModelsListSlider
+            title="You may also like"
+            products={similarProducts.slice(0, 30)}
+            discount={false}
+          />
+        </div>
+      )}
+    </>
+  );
+};

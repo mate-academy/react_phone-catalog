@@ -1,0 +1,56 @@
+import { useSearchParams } from 'react-router-dom';
+import { useProducts } from '../../context/ProductsContext';
+import { Card } from '../../types/card';
+import { ListControlPanel } from '../ListControlPanel';
+import { ProductList } from '../ProductList';
+import { Pages } from '../Pages/Pages';
+import styles from './Catalog.module.scss';
+
+type Props = {
+  category: string;
+  title: string;
+};
+
+export const Catalog: React.FC<Props> = ({ category, title }) => {
+  const { products } = useProducts();
+  const [searchParams] = useSearchParams();
+  const sort = searchParams.get('sort') || '';
+  const itemsPerPage = Number(searchParams.get('itemsPerPage') || '');
+  const page = Number(searchParams.get('page') || '');
+
+  const devices = products
+    .filter((item: Card) => item.category === category)
+    .sort((item1, item2) => {
+      if (sort === 'alph') {
+        return item1.name.localeCompare(item2.name);
+      }
+
+      if (sort === 'cheap') {
+        return item1.price - item2.price;
+      }
+
+      return 0;
+    });
+
+  const pageAmount =
+    itemsPerPage === 0 ? 0 : Math.ceil(devices.length / itemsPerPage);
+
+  const visibleProducts = itemsPerPage
+    ? devices.slice(page * itemsPerPage - itemsPerPage, page * itemsPerPage)
+    : devices;
+
+  return (
+    <div className={styles.cataloge}>
+      <h1 className={styles.cataloge__title}>{title}</h1>
+      <div className={styles.cataloge__items_amount}>
+        {devices.length} models
+      </div>
+
+      <ListControlPanel />
+
+      <ProductList products={visibleProducts} category={category} />
+
+      {pageAmount > 1 && <Pages pageAmount={pageAmount} />}
+    </div>
+  );
+};
