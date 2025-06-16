@@ -73,6 +73,11 @@
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
   }
 
   &__top {
