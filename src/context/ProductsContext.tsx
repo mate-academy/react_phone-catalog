@@ -9,6 +9,7 @@ interface ProductsContextType {
   cart: Card[];
   setCart: React.Dispatch<React.SetStateAction<Card[]>>;
   isLoading: boolean;
+  error: string | null;
 }
 
 const ProductsContext = createContext<ProductsContextType | undefined>(
@@ -20,6 +21,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<Card[]>(() => {
     try {
       const stored = localStorage.getItem('favorites');
@@ -40,29 +42,28 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    const fetchProducts = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
 
-    fetch('/api/products.json')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
+        const response = await fetch('/api/products.json');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        return res.json();
-      })
-      .then(data => {
-        setProducts(data);
-        timer = setTimeout(() => setIsLoading(false), 1000);
-      })
-      .catch(() => {
-        setIsLoading(false);
-      });
+        const data = await response.json();
 
-    return () => {
-      if (timer) {
-        clearTimeout(timer);
+        setProducts(data);
+      } catch (err) {
+        setError('Failed to fetch products');
+      } finally {
+        setIsLoading(false);
       }
     };
+
+    fetchProducts();
   }, []);
 
   useEffect(() => {
@@ -79,6 +80,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
         cart,
         setCart,
         isLoading,
+        error,
       }}
     >
       {children}

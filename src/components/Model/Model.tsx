@@ -25,38 +25,56 @@ export const Model = () => {
   const curWindowWidth = useWindowWidth();
   const modelShortData = products.find(product => product.itemId === productId);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const similarProducts = products.filter(
     item => item.category === modelShortData?.category,
   );
 
   useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => setIsLoading(false), 1000);
-
     const fetchModel = async () => {
       if (!modelShortData || !productId) {
         return;
       }
 
       try {
-        const res = await fetch(`/api/${modelShortData.category}.json`);
-        const data = await res.json();
+        setIsLoading(true);
+        setError(null);
 
+        const response = await fetch(`/api/${modelShortData.category}.json`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
         const curModel = data.find((item: FullCard) => item.id === productId);
+
+        if (!curModel) {
+          throw new Error('Product not found');
+        }
 
         setModel(curModel);
       } catch (err) {
-        throw new Error('Something went wrong with load data');
+        setError(err instanceof Error ? err.message : 'Failed to fetch product details');
+        navigate('/not_found_product');
+      } finally {
+        setIsLoading(false);
       }
-
-      return () => clearTimeout(timer);
     };
 
     fetchModel();
-  }, [productId, modelShortData]);
+  }, [productId, modelShortData, navigate]);
 
   if (!isValidUrl) {
+    return <Navigate to="/not_found_product" replace />;
+  }
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (error) {
     return <Navigate to="/not_found_product" replace />;
   }
 
@@ -106,347 +124,343 @@ export const Model = () => {
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div className={styles.model}>
-          <div className={styles.model__back} onClick={() => navigate(-1)}>
-            <div className={styles.model__back__arrow}></div>
-            <div className={styles.model__back__text}>Back</div>
-          </div>
-          <h1 className={styles.model__name}>{model?.name}</h1>
-          <div className={styles.model__container}>
-            <div className={styles.model__images}>
-              <div className={styles.model__images__main_image__wrap}>
-                <div
-                  className={styles.model__images__main_image__list}
-                  style={{
-                    transform: `translateX(-${chooseMainImage(mainImage)}px)`,
-                  }}
-                >
-                  {model?.images.map(image => {
-                    return (
-                      <img
-                        key={image}
-                        className={styles.model__images__main_image}
-                        src={image}
-                        alt={image}
-                      ></img>
-                    );
-                  })}
-                </div>
-              </div>
-              <div className={styles.model__images__additional_images}>
-                {model?.images.map((image, index) => {
+      <div className={styles.model}>
+        <div className={styles.model__back} onClick={() => navigate(-1)}>
+          <div className={styles.model__back__arrow}></div>
+          <div className={styles.model__back__text}>Back</div>
+        </div>
+        <h1 className={styles.model__name}>{model?.name}</h1>
+        <div className={styles.model__container}>
+          <div className={styles.model__images}>
+            <div className={styles.model__images__main_image__wrap}>
+              <div
+                className={styles.model__images__main_image__list}
+                style={{
+                  transform: `translateX(-${chooseMainImage(mainImage)}px)`,
+                }}
+              >
+                {model?.images.map(image => {
                   return (
                     <img
-                      onClick={() => setMainImage(index)}
-                      src={image}
                       key={image}
-                      className={cn(
-                        styles.model__images__additional_images__image,
-                        {
-                          // eslint-disable-next-line max-len
-                          [styles.model__images__additional_images__image__active]:
-                            index === mainImage,
-                        },
-                      )}
-                    />
+                      className={styles.model__images__main_image}
+                      src={image}
+                      alt={image}
+                    ></img>
                   );
                 })}
               </div>
             </div>
-            <div className={styles.model__purchase_panel}>
-              <div className={styles.model__purchase_panel__header}>
-                <div
-                  className={styles.model__purchase_panel__header__colors_title}
-                >
-                  Available colors
-                </div>
-                <div className={styles.model__purchase_panel__header__model_id}>
-                  ID: {modelShortData?.id}
-                </div>
+            <div className={styles.model__images__additional_images}>
+              {model?.images.map((image, index) => {
+                return (
+                  <img
+                    onClick={() => setMainImage(index)}
+                    src={image}
+                    key={image}
+                    className={cn(
+                      styles.model__images__additional_images__image,
+                      {
+                        // eslint-disable-next-line max-len
+                        [styles.model__images__additional_images__image__active]:
+                          index === mainImage,
+                      },
+                    )}
+                  />
+                );
+              })}
+            </div>
+          </div>
+          <div className={styles.model__purchase_panel}>
+            <div className={styles.model__purchase_panel__header}>
+              <div
+                className={styles.model__purchase_panel__header__colors_title}
+              >
+                Available colors
               </div>
-              <div className={styles.model__purchase_panel__card}>
-                <div className={styles.model__purchase_panel__card__colors}>
-                  {model?.colorsAvailable.map(color => {
+              <div className={styles.model__purchase_panel__header__model_id}>
+                ID: {modelShortData?.id}
+              </div>
+            </div>
+            <div className={styles.model__purchase_panel__card}>
+              <div className={styles.model__purchase_panel__card__colors}>
+                {model?.colorsAvailable.map(color => {
+                  return (
+                    <Link
+                      to={`/${model.category}/${model.namespaceId}-${model.capacity.toLocaleLowerCase()}-${getCorrectUrl(color)}`}
+                      key={color}
+                      className={cn(
+                        // eslint-disable-next-line max-len
+                        styles.model__purchase_panel__card__colors__color_option,
+                        {
+                          // eslint-disable-next-line max-len
+                          [styles.model__purchase_panel__card__colors__color_option__selected]:
+                            color === model.color,
+                        },
+                      )}
+                    >
+                      <div
+                        className={
+                          // eslint-disable-next-line max-len
+                          styles.model__purchase_panel__card__colors__color_option__fill
+                        }
+                        style={{
+                          backgroundColor: getCssColor(color),
+                        }}
+                      ></div>
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className={styles.model__purchase_panel__card__capacities}>
+                <div
+                  className={
+                    styles.model__purchase_panel__card__capacities__title
+                  }
+                >
+                  Select capacity
+                </div>
+                <div
+                  className={
+                    styles.model__purchase_panel__card__capacities__list
+                  }
+                >
+                  {model?.capacityAvailable.map(capacity => {
                     return (
                       <Link
-                        to={`/${model.category}/${model.namespaceId}-${model.capacity.toLocaleLowerCase()}-${getCorrectUrl(color)}`}
-                        key={color}
-                        className={cn(
-                          // eslint-disable-next-line max-len
-                          styles.model__purchase_panel__card__colors__color_option,
-                          {
-                            // eslint-disable-next-line max-len
-                            [styles.model__purchase_panel__card__colors__color_option__selected]:
-                              color === model.color,
-                          },
-                        )}
+                        to={`/${model.category}/${model.namespaceId}-${capacity.toLocaleLowerCase()}-${getCorrectUrl(model.color)}`}
+                        key={capacity}
+                        style={{
+                          textDecoration: 'none',
+                        }}
                       >
                         <div
-                          className={
+                          className={cn(
                             // eslint-disable-next-line max-len
-                            styles.model__purchase_panel__card__colors__color_option__fill
-                          }
-                          style={{
-                            backgroundColor: getCssColor(color),
-                          }}
-                        ></div>
+                            styles.model__purchase_panel__card__capacities__option,
+                            {
+                              // eslint-disable-next-line max-len
+                              [styles.model__purchase_panel__card__capacities__option_selected]:
+                                capacity === model.capacity,
+                            },
+                          )}
+                        >
+                          {capacity}
+                        </div>
                       </Link>
                     );
                   })}
                 </div>
-                <div className={styles.model__purchase_panel__card__capacities}>
-                  <div
-                    className={
-                      styles.model__purchase_panel__card__capacities__title
-                    }
-                  >
-                    Select capacity
-                  </div>
-                  <div
-                    className={
-                      styles.model__purchase_panel__card__capacities__list
-                    }
-                  >
-                    {model?.capacityAvailable.map(capacity => {
-                      return (
-                        <Link
-                          to={`/${model.category}/${model.namespaceId}-${capacity.toLocaleLowerCase()}-${getCorrectUrl(model.color)}`}
-                          key={capacity}
-                          style={{
-                            textDecoration: 'none',
-                          }}
-                        >
-                          <div
-                            className={cn(
-                              // eslint-disable-next-line max-len
-                              styles.model__purchase_panel__card__capacities__option,
-                              {
-                                // eslint-disable-next-line max-len
-                                [styles.model__purchase_panel__card__capacities__option_selected]:
-                                  capacity === model.capacity,
-                              },
-                            )}
-                          >
-                            {capacity}
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
+              </div>
+              <div className={styles.model__purchase_panel__card__prices}>
+                <div
+                  className={
+                    styles.model__purchase_panel__card__prices__regular
+                  }
+                >
+                  ${model?.priceDiscount}
                 </div>
-                <div className={styles.model__purchase_panel__card__prices}>
-                  <div
-                    className={
-                      styles.model__purchase_panel__card__prices__regular
-                    }
-                  >
-                    ${model?.priceDiscount}
-                  </div>
-                  <div
-                    className={
-                      styles.model__purchase_panel__card__prices__discount
-                    }
-                  >
-                    ${model?.priceRegular}
-                  </div>
+                <div
+                  className={
+                    styles.model__purchase_panel__card__prices__discount
+                  }
+                >
+                  ${model?.priceRegular}
                 </div>
-                <div className={styles.model__purchase_panel__card__buttons}>
-                  <div
-                    className={cn(
-                      styles.model__purchase_panel__card__buttons__add,
-                      {
-                        // eslint-disable-next-line max-len
-                        [styles.model__purchase_panel__card__buttons__add_added]:
-                          cart.some(item => item.id === modelShortData?.id),
-                      },
-                    )}
-                    onClick={addToCart}
-                  ></div>
-                  <button
-                    className={cn(
-                      styles.model__purchase_panel__card__buttons__like,
-                      {
-                        // eslint-disable-next-line max-len
-                        [styles.model__purchase_panel__card__buttons__like__active]:
-                          favorites.some(
-                            item => item.id === modelShortData?.id,
-                          ),
-                      },
-                    )}
-                    onClick={handleLike}
-                  ></button>
-                </div>
+              </div>
+              <div className={styles.model__purchase_panel__card__buttons}>
+                <div
+                  className={cn(
+                    styles.model__purchase_panel__card__buttons__add,
+                    {
+                      // eslint-disable-next-line max-len
+                      [styles.model__purchase_panel__card__buttons__add_added]:
+                        cart.some(item => item.id === modelShortData?.id),
+                    },
+                  )}
+                  onClick={addToCart}
+                ></div>
+                <button
+                  className={cn(
+                    styles.model__purchase_panel__card__buttons__like,
+                    {
+                      // eslint-disable-next-line max-len
+                      [styles.model__purchase_panel__card__buttons__like__active]:
+                        favorites.some(
+                          item => item.id === modelShortData?.id,
+                        ),
+                    },
+                  )}
+                  onClick={handleLike}
+                ></button>
+              </div>
 
-                <div className={styles.model__purchase_panel__card__detail}>
+              <div className={styles.model__purchase_panel__card__detail}>
+                <div
+                  className={styles.model__purchase_panel__card__detail__row}
+                >
                   <div
-                    className={styles.model__purchase_panel__card__detail__row}
+                    className={
+                      styles.model__purchase_panel__card__detail__row__name
+                    }
                   >
-                    <div
-                      className={
-                        styles.model__purchase_panel__card__detail__row__name
-                      }
-                    >
-                      Screen
-                    </div>
-                    <div
-                      className={
-                        styles.model__purchase_panel__card__detail__row__param
-                      }
-                    >
-                      {model?.screen}
-                    </div>
+                    Screen
                   </div>
                   <div
-                    className={styles.model__purchase_panel__card__detail__row}
+                    className={
+                      styles.model__purchase_panel__card__detail__row__param
+                    }
                   >
-                    <div
-                      className={
-                        styles.model__purchase_panel__card__detail__row__name
-                      }
-                    >
-                      Resolution
-                    </div>
-                    <div
-                      className={
-                        styles.model__purchase_panel__card__detail__row__param
-                      }
-                    >
-                      {model?.resolution}
-                    </div>
+                    {model?.screen}
+                  </div>
+                </div>
+                <div
+                  className={styles.model__purchase_panel__card__detail__row}
+                >
+                  <div
+                    className={
+                      styles.model__purchase_panel__card__detail__row__name
+                    }
+                  >
+                    Resolution
                   </div>
                   <div
-                    className={styles.model__purchase_panel__card__detail__row}
+                    className={
+                      styles.model__purchase_panel__card__detail__row__param
+                    }
                   >
-                    <div
-                      className={
-                        styles.model__purchase_panel__card__detail__row__name
-                      }
-                    >
-                      Processor
-                    </div>
-                    <div
-                      className={
-                        styles.model__purchase_panel__card__detail__row__param
-                      }
-                    >
-                      {model?.processor}
-                    </div>
+                    {model?.resolution}
+                  </div>
+                </div>
+                <div
+                  className={styles.model__purchase_panel__card__detail__row}
+                >
+                  <div
+                    className={
+                      styles.model__purchase_panel__card__detail__row__name
+                    }
+                  >
+                    Processor
                   </div>
                   <div
-                    className={styles.model__purchase_panel__card__detail__row}
+                    className={
+                      styles.model__purchase_panel__card__detail__row__param
+                    }
                   >
-                    <div
-                      className={
-                        styles.model__purchase_panel__card__detail__row__name
-                      }
-                    >
-                      RAM
-                    </div>
-                    <div
-                      className={
-                        styles.model__purchase_panel__card__detail__row__param
-                      }
-                    >
-                      {model?.ram}
-                    </div>
+                    {model?.processor}
+                  </div>
+                </div>
+                <div
+                  className={styles.model__purchase_panel__card__detail__row}
+                >
+                  <div
+                    className={
+                      styles.model__purchase_panel__card__detail__row__name
+                    }
+                  >
+                    RAM
+                  </div>
+                  <div
+                    className={
+                      styles.model__purchase_panel__card__detail__row__param
+                    }
+                  >
+                    {model?.ram}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className={styles.model__about}>
-            <h3 className={styles.model__about__title}>About</h3>
-            {model?.description.map(item => {
-              return (
-                <div key={item.title} className={styles.model__about__part}>
-                  <h4 className={styles.model__about__part__title}>
-                    {item.title}
-                  </h4>
-                  <p className={styles.model__about__part__paragraph}>
-                    {item.text}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.model__tech_specs}>
-            <h4 className={styles.model__tech_specs__title}>Tech specs</h4>
-            <div className={styles.model__tech_specs__params}>
-              <span className={styles.model__tech_specs__params__name}>
-                Screen
-              </span>
-              <span className={styles.model__tech_specs__params__data}>
-                {model?.screen}
-              </span>
-            </div>
-            <div className={styles.model__tech_specs__params}>
-              <span className={styles.model__tech_specs__params__name}>
-                Resolution
-              </span>
-              <span className={styles.model__tech_specs__params__data}>
-                {model?.resolution}
-              </span>
-            </div>
-            <div className={styles.model__tech_specs__params}>
-              <span className={styles.model__tech_specs__params__name}>
-                Processor
-              </span>
-              <span className={styles.model__tech_specs__params__data}>
-                {model?.processor}
-              </span>
-            </div>
-            <div className={styles.model__tech_specs__params}>
-              <span className={styles.model__tech_specs__params__name}>
-                RAM
-              </span>
-              <span className={styles.model__tech_specs__params__data}>
-                {model?.ram}
-              </span>
-            </div>
-            <div className={styles.model__tech_specs__params}>
-              <span className={styles.model__tech_specs__params__name}>
-                Built in memory
-              </span>
-              <span className={styles.model__tech_specs__params__data}>
-                {model?.capacity}
-              </span>
-            </div>
-            <div className={styles.model__tech_specs__params}>
-              <span className={styles.model__tech_specs__params__name}>
-                Camera
-              </span>
-              <span className={styles.model__tech_specs__params__data}>
-                {model?.camera}
-              </span>
-            </div>
-            <div className={styles.model__tech_specs__params}>
-              <span className={styles.model__tech_specs__params__name}>
-                Zoom
-              </span>
-              <span className={styles.model__tech_specs__params__data}>
-                {model?.zoom}
-              </span>
-            </div>
-            <div className={styles.model__tech_specs__params}>
-              <span className={styles.model__tech_specs__params__name}>
-                Cell
-              </span>
-              <span className={styles.model__tech_specs__params__data}>
-                {model?.cell.join(', ')}
-              </span>
-            </div>
-          </div>
-
-          <ModelsListSlider
-            title="You may also like"
-            products={similarProducts.slice(0, 30)}
-            discount={false}
-          />
         </div>
-      )}
+        <div className={styles.model__about}>
+          <h3 className={styles.model__about__title}>About</h3>
+          {model?.description.map(item => {
+            return (
+              <div key={item.title} className={styles.model__about__part}>
+                <h4 className={styles.model__about__part__title}>
+                  {item.title}
+                </h4>
+                <p className={styles.model__about__part__paragraph}>
+                  {item.text}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+        <div className={styles.model__tech_specs}>
+          <h4 className={styles.model__tech_specs__title}>Tech specs</h4>
+          <div className={styles.model__tech_specs__params}>
+            <span className={styles.model__tech_specs__params__name}>
+              Screen
+            </span>
+            <span className={styles.model__tech_specs__params__data}>
+              {model?.screen}
+            </span>
+          </div>
+          <div className={styles.model__tech_specs__params}>
+            <span className={styles.model__tech_specs__params__name}>
+              Resolution
+            </span>
+            <span className={styles.model__tech_specs__params__data}>
+              {model?.resolution}
+            </span>
+          </div>
+          <div className={styles.model__tech_specs__params}>
+            <span className={styles.model__tech_specs__params__name}>
+              Processor
+            </span>
+            <span className={styles.model__tech_specs__params__data}>
+              {model?.processor}
+            </span>
+          </div>
+          <div className={styles.model__tech_specs__params}>
+            <span className={styles.model__tech_specs__params__name}>
+              RAM
+            </span>
+            <span className={styles.model__tech_specs__params__data}>
+              {model?.ram}
+            </span>
+          </div>
+          <div className={styles.model__tech_specs__params}>
+            <span className={styles.model__tech_specs__params__name}>
+              Built in memory
+            </span>
+            <span className={styles.model__tech_specs__params__data}>
+              {model?.capacity}
+            </span>
+          </div>
+          <div className={styles.model__tech_specs__params}>
+            <span className={styles.model__tech_specs__params__name}>
+              Camera
+            </span>
+            <span className={styles.model__tech_specs__params__data}>
+              {model?.camera}
+            </span>
+          </div>
+          <div className={styles.model__tech_specs__params}>
+            <span className={styles.model__tech_specs__params__name}>
+              Zoom
+            </span>
+            <span className={styles.model__tech_specs__params__data}>
+              {model?.zoom}
+            </span>
+          </div>
+          <div className={styles.model__tech_specs__params}>
+            <span className={styles.model__tech_specs__params__name}>
+              Cell
+            </span>
+            <span className={styles.model__tech_specs__params__data}>
+              {model?.cell.join(', ')}
+            </span>
+          </div>
+        </div>
+
+        <ModelsListSlider
+          title="You may also like"
+          products={similarProducts.slice(0, 30)}
+          discount={false}
+        />
+      </div>
     </>
   );
 };
