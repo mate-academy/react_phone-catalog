@@ -1,0 +1,48 @@
+@use '../../styles/variables.scss' as *;
+
+.button {
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--arrow-button-border-color);
+  background: none;
+  background-color: var(--arrow-button-back-color);
+  background-repeat: no-repeat;
+
+  background-position: center;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid var(--arrow-button-border-hover-color);
+    background-color: var(--arrow-button-back-hover-color);
+  }
+
+  &:disabled {
+    border: 1px solid var(--elements);
+    background-color: var(--background-color);
+    cursor: default;
+  }
+}
+
+.button__prev {
+  background-image: var(--arrow-left);
+
+  &:disabled {
+    background-image: var(--arrow-left-disabled);
+  }
+}
+
+.button__next {
+  background-image: var(--arrow-right);
+
+  &:disabled {
+    background-image: var(--arrow-right-disabled);
+  }
+}
+
+.button__up {
+  background-image: var(--arrow-up);
+}
