@@ -3,15 +3,15 @@ import styles from './Header.module.scss';
 const images = [
   {
     id: 1,
-    url: '/img/banner-phones.png',
+    url: 'img/banner-phones.png',
   },
   {
     id: 2,
-    url: '/img/banner-tablets.png',
+    url: 'img/banner-tablets.png',
   },
   {
     id: 3,
-    url: '/img/banner-accessories.png',
+    url: 'img/banner-accessories.png',
   },
 ];
 
