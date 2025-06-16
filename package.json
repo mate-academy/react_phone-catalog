@@ -35,15 +35,13 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.34.4",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "gh-pages": "^6.3.0",
+    "gh-pages": "^6.1.1",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^4.3.0",
     "mochawesome-report-generator": "^6.2.0",
     "prettier": "^3.3.2",
     "sass": "^1.77.8",
-    "stylelint": "^16.20.0",
-    "stylelint-config-standard-scss": "^15.0.1",
-    "stylelint-order": "^6.0.4",
+    "stylelint": "^16.7.0",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
   },
@@ -51,10 +49,10 @@
     "start": "mate-scripts start -l",
     "build": "mate-scripts build",
     "test": "mate-scripts test -l",
-    "style-format": "npx stylelint 'src/**/*.scss' --fix --allow-empty-input",
+    "style-format": "npx stylelint 'src//*.scss' --fix --allow-empty-input",
     "lint-js": "mate-scripts lint -j",
     "lint-css": "mate-scripts lint -s",
-    "format": "prettier --write './src/**/*.{ts,tsx}'",
+    "format": "prettier --write './src//*.{ts,tsx}'",
     "lint": "npm run style-format && npm run format && npm run lint-js && npm run lint-css",
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
@@ -78,7 +76,7 @@
     "projectType": "reactTypescript",
     "nodejsMajorVersion": "20",
     "tests": {
-      "_comment": "Add `cypressComponents: true` to enable component tests",
+      "_comment": "Add cypressComponents: true to enable component tests",
       "cypress": true
     }
   }
