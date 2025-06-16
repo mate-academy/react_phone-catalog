@@ -9,8 +9,8 @@
   border-top: 1px solid var(--elements);
 
   @include on-tablet {
-    padding: 32px;
     height: 96px;
+    padding: 32px;
   }
 
   @include on-full-screen {
@@ -32,23 +32,23 @@
   }
 
   &__logo__img {
-    background-image: var(--logo);
-    background-size: contain;
-    background-repeat: no-repeat;
 
     width: 89px;
     height: 32px;
+    background-image: var(--logo);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 
   &__contacts {
-    grid-column: 1/-1;
     display: flex;
     flex-direction: column;
+    grid-column: 1/-1;
 
     @include on-tablet {
-      grid-column: 5/9;
       flex-direction: row;
       justify-content: space-between;
+      grid-column: 5/9;
     }
 
     @include on-full-screen {
@@ -56,14 +56,14 @@
     }
 
     &__item {
-      height: 27px;
-      line-height: 27px;
       width: fit-content;
+      height: 27px;
       color: var(--secondary-color);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 27px;
       text-decoration: none;
       text-transform: uppercase;
-      font-weight: 700;
-      font-size: 12px;
 
       &:hover {
         color: var(--primary-color);
@@ -71,8 +71,8 @@
 
       @include on-tablet {
         height: 32px;
-        line-height: 32px;
         padding: 0 7px;
+        line-height: 32px;
       }
 
       @include on-full-screen {
@@ -82,16 +82,16 @@
   }
 
   &__back_to_top {
-    grid-column: 1/-1;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 32px;
+    justify-content: center;
     gap: 16px;
+    grid-column: 1/-1;
+    height: 32px;
 
     @include on-tablet {
-      grid-column: 9/-1;
       justify-content: end;
+      grid-column: 9/-1;
     }
 
     @include on-full-screen {
@@ -99,21 +99,21 @@
     }
 
     &__text {
-      color: var(--secondary-color);
-      margin: 0;
       height: 32px;
-      line-height: 32px;
-      font-weight: 600;
+      margin: 0;
+      color: var(--secondary-color);
       font-size: 12px;
+      font-weight: 600;
+      line-height: 32px;
     }
 
     &__button {
-      border: 1px solid var(--icons);
-      background-image: url('../../../public/img/navigation/arrow-up.svg');
-      background-position: center;
-      background-repeat: no-repeat;
       width: 32px;
       height: 32px;
+      border: 1px solid var(--icons);
+      background-image: url('../../../public/img/navigation/arrow-up.svg');
+      background-repeat: no-repeat;
+      background-position: center;
 
       &:hover {
         border: 1px solid var(--primary-color);

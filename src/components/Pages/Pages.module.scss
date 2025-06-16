@@ -1,15 +1,15 @@
 .pages {
-  grid-column: 1/-1;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 16px;
+  grid-column: 1/-1;
 
   &__wrap {
     position: relative;
-    overflow: hidden;
     width: 152px;
+    overflow: hidden;
   }
 
   &__list {
@@ -21,17 +21,16 @@
   }
 
   &__page {
-    flex-shrink: 0;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    color: var(--primary-color);
-    border: 1px solid var(--page-button-border-color);
-    background-color: var(--page-button-back-color);
     width: 32px;
     height: 32px;
+    border: 1px solid var(--page-button-border-color);
+    background-color: var(--page-button-back-color);
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 600;
     line-height: 32px;
     text-align: center;
+    flex-shrink: 0;
 
     &:hover {
       border-color: var(--page-button-border-hover-color);
@@ -39,8 +38,8 @@
     }
 
     &_selected {
-      color: var(--page-button-selected-color);
       background-color: var(--page-button-selected-back-color);
+      color: var(--page-button-selected-color);
 
       &:hover {
         background-color: var(--page-button-selected-back-color);

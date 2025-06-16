@@ -2,17 +2,16 @@
 @use '../../styles/variables.scss' as *;
 
 .product_list {
-  grid-column: 1/-1;
-  row-gap: 40px;
-  column-gap: 16px;
-  margin-bottom: 24px;
 
   display: grid;
+  gap: 40px 16px;
   grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  grid-column: 1/-1;
+  margin-bottom: 24px;
 
   @include on-tablet {
-    margin-bottom: 40px;
     grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    margin-bottom: 40px;
   }
 
   @include on-full-screen {

@@ -2,6 +2,7 @@
 @use '../../styles/variables.scss';
 
 @mixin skeleton {
+  border-radius: 4px;
   background: linear-gradient(
     90deg,
     var(--skeleton-back-color) 25%,
@@ -10,26 +11,26 @@
   );
   background-size: 400% 100%;
   animation: shimmer 1.4s ease infinite;
-  border-radius: 4px;
 }
 
 @keyframes shimmer {
   0% {
     background-position: -400px 0;
   }
+
   100% {
     background-position: 400px 0;
   }
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-width: 212px;
   height: 439px;
   padding: 32px;
   border: 1px solid var(--skeleton-border-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
   @include on-tablet {
     height: 506px;
@@ -41,15 +42,15 @@
 }
 
 .image {
+  align-self: center;
   width: 208px;
   height: 196px;
-  align-self: center;
   @include skeleton;
 }
 
 .name {
-  height: 16px;
   width: 80%;
+  height: 16px;
   margin-top: 24px;
   @include skeleton;
 }
@@ -58,8 +59,8 @@
   display: flex;
   gap: 8px;
   margin-top: 8px;
-  border-bottom: 1px solid var(--elements);
   padding-bottom: 8px;
+  border-bottom: 1px solid var(--elements);
 
   .price {
     width: 50px;

@@ -5,12 +5,12 @@
   bottom: 20%;
   left: 0;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgb(255 255 255 / 0%);
 
   @include on-tablet {
     top: 0;

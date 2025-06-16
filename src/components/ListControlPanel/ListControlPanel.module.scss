@@ -2,8 +2,8 @@
 
 .list_settings {
   @include grid-layout;
-  grid-column: 1 / -1;
   gap: 16px;
+  grid-column: 1 / -1;
   margin-bottom: 24px;
 
   &__sort {

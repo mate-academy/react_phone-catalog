@@ -23,11 +23,11 @@
   }
 
   &__buttons {
-    grid-column: 4;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: flex-end;
     gap: 16px;
+    grid-column: 4;
 
     @include on-tablet {
       grid-column: -3/-1;
@@ -38,12 +38,12 @@
 .wrap {
   grid-column: 1/-1;
   height: 439px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
   margin-right: -16px;
+  overflow: auto hidden;
+  scroll-behavior: smooth;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+
   &::-webkit-scrollbar {
     display: none;
   }

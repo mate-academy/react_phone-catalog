@@ -6,6 +6,7 @@
 
   &__title {
     @include heading-h2;
+
     margin-bottom: 24px;
   }
 
@@ -21,43 +22,43 @@
     }
 
     &__title {
-      font-weight: 700;
-      font-size: 20px;
       color: var(--primary-color);
+      font-size: 20px;
+      font-weight: 700;
     }
 
     &__body {
       color: var(--secondary-color);
-      font-weight: 600;
       font-size: 14px;
+      font-weight: 600;
       line-height: 21px;
     }
   }
 
   &__images {
-    height: 288px;
     width: 288px;
+    height: 288px;
     margin-bottom: 24px;
     background-repeat: no-repeat;
-    background-size: contain;
     background-position: center;
+    background-size: contain;
     transition:
       transform 0.3s ease,
       box-shadow 0.3s ease;
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(23, 32, 49, 0.25);
+      box-shadow: 0 8px 20px rgb(23 32 49 / 25%);
     }
 
     @include on-tablet {
-      height: 187px;
       width: 187px;
+      height: 187px;
     }
 
     @include on-full-screen {
-      height: 368px;
       width: 368px;
+      height: 368px;
     }
 
     &__image1 {
@@ -69,14 +70,14 @@
     }
 
     &__image3 {
-      background-image: url('../../../../../public/img/category-accessories.webp');
       background-color: #8b3b5a;
+      background-image: url('../../../../../public/img/category-accessories.webp');
     }
   }
 
   &__category {
-    text-decoration: none;
     margin: 0 auto;
+    text-decoration: none;
 
     &__phones {
       grid-column: 1/-1;

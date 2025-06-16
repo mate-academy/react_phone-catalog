@@ -26,12 +26,12 @@ $slide-button-size: 24px;
 
 .slider_arrow {
   @include on-tablet {
-    height: 189px;
     width: 32px;
+    height: 189px;
+    border: 1px solid var(--slider-button-border-color);
+    background-color: var(--slider-button-back-color);
     background-repeat: no-repeat;
     background-position: center;
-    background-color: var(--slider-button-back-color);
-    border: 1px solid var(--slider-button-border-color);
   }
 
   @include on-full-screen {
@@ -40,25 +40,25 @@ $slide-button-size: 24px;
 
   &__left {
     @include on-tablet {
-      grid-column: 1/2;
       justify-self: end;
+      grid-column: 1/2;
       background-image: var(--arrow-left);
     }
   }
 
   &__right {
     @include on-tablet {
+      justify-self: start;
       grid-column: -2/-1;
       background-image: var(--arrow-right);
-      justify-self: start;
     }
   }
 }
 
 .sliderWrapper {
   grid-column: 1/-1;
-  overflow: hidden;
   margin: 0 -16px;
+  overflow: hidden;
 
   @include on-tablet {
     grid-column: 2/-2;
@@ -93,22 +93,22 @@ $slide-button-size: 24px;
   margin-top: 8px;
 
   &__button {
-    background-image: var(--button-under-slider);
-    height: $slide-button-size;
     width: $slide-button-size;
+    height: $slide-button-size;
+    background-image: var(--button-under-slider);
   }
 
   &__button_active {
-    background-image: var(--button-under-slider-active);
-    height: $slide-button-size;
     width: $slide-button-size;
+    height: $slide-button-size;
+    background-image: var(--button-under-slider-active);
   }
 }
 
 .hidden_title {
-  margin: 0;
-  padding: 0;
   width: 0;
   height: 0;
+  margin: 0;
+  padding: 0;
   visibility: hidden;
 }

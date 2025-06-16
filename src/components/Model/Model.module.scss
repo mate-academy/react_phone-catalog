@@ -6,10 +6,10 @@
   @include grid-layout;
 
   &__back {
-    grid-column: 1/-1;
     display: flex;
     flex-direction: row;
     gap: 4px;
+    grid-column: 1/-1;
     margin-bottom: 16px;
     cursor: pointer;
 
@@ -27,8 +27,8 @@
       align-items: center;
       justify-content: center;
       color: var(--back-button-text-color);
-      font-weight: 600;
       font-size: 12px;
+      font-weight: 600;
     }
   }
 
@@ -59,10 +59,10 @@
   }
 
   &__images {
-    grid-column: 1/-1;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    grid-column: 1/-1;
     margin-bottom: 40px;
 
     @include on-tablet {
@@ -77,11 +77,11 @@
     }
 
     &__main_image__wrap {
-      align-self: center;
       position: relative;
-      overflow: hidden;
+      align-self: center;
       width: 288px;
       height: 288px;
+      overflow: hidden;
 
       @include on-full-screen {
         width: 464px;
@@ -90,9 +90,9 @@
     }
 
     &__main_image__list {
+      position: absolute;
       display: flex;
       flex-direction: row;
-      position: absolute;
       transition: transform 0.5s ease-in-out;
     }
 
@@ -108,8 +108,8 @@
     }
 
     &__additional_images {
-      align-self: center;
       display: flex;
+      align-self: center;
       justify-content: space-between;
 
       @include on-tablet {
@@ -150,9 +150,9 @@
   }
 
   &__purchase_panel {
-    grid-column: 1/-1;
     display: flex;
     flex-direction: column;
+    grid-column: 1/-1;
 
     @include on-tablet {
       grid-column: 8/-1;
@@ -164,23 +164,23 @@
 
     &__header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
 
       &__colors_title {
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 100%;
         margin-bottom: 8px;
         color: var(--secondary-color);
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 100%;
       }
 
       &__model_id {
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 100%;
-        color: var(--icons);
         margin-bottom: 8px;
+        color: var(--icons);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 100%;
       }
     }
 
@@ -193,27 +193,27 @@
       }
 
       &__colors {
-        grid-column: 1/-1;
-        box-sizing: content-box;
         display: flex;
-        height: 32px;
         gap: 8px;
-        padding-bottom: 24px;
+        grid-column: 1/-1;
+        height: 32px;
         margin-bottom: 24px;
+        padding-bottom: 24px;
         border-bottom: 1px solid var(--elements);
+        box-sizing: content-box;
 
         @include on-tablet {
           grid-column: 1/7;
         }
 
         &__color_option {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 32px;
           height: 32px;
           border: 1px solid var(--elements);
           border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
 
           &:hover {
             border: 1px solid var(--primary-color);
@@ -234,44 +234,43 @@
       }
 
       &__capacities {
-        grid-column: 1/-1;
-        border-bottom: 1px solid var(--elements);
 
         display: flex;
         flex-direction: column;
         gap: 8px;
-        padding-bottom: 24px;
+        grid-column: 1/-1;
         margin-bottom: 32px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--elements);
 
         &__title {
-          font-weight: 600;
-          font-size: 12px;
-          line-height: 100%;
           margin-bottom: 8px;
           color: var(--secondary-color);
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 100%;
         }
 
         &__list {
           display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
+          flex-flow: row wrap;
 
           gap: 8px;
         }
 
         &__option {
-          font-weight: 500;
-          font-size: 14px;
-          color: var(--primary-color);
           height: 32px;
-          line-height: 32px;
           padding: 0 8px;
           border: 1px solid var(--icons);
+          color: var(--primary-color);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 32px;
         }
 
         &__option_selected {
-          color: var(--background-color);
           background-color: var(--primary-color);
+          color: var(--background-color);
         }
       }
 
@@ -283,16 +282,16 @@
 
         &__regular {
           color: var(--primary-color);
-          font-weight: 800;
           font-size: 32px;
+          font-weight: 800;
           line-height: 41px;
           letter-spacing: -1%;
         }
 
         &__discount {
           color: var(--secondary-color);
-          font-weight: 500;
           font-size: 22px;
+          font-weight: 500;
           line-height: 100%;
           text-decoration: line-through;
         }
@@ -304,14 +303,14 @@
         margin-bottom: 32px;
 
         &__add {
-          flex-grow: 2;
           height: 48px;
-          line-height: 48px;
           background-color: var(--add-button-back-color);
           color: var(--add-button-color);
-          text-align: center;
-          font-weight: 700;
           font-size: 14px;
+          font-weight: 700;
+          line-height: 48px;
+          text-align: center;
+          flex-grow: 2;
 
           &::before {
             content: 'Add to cart';
@@ -331,9 +330,9 @@
           }
 
           &_added {
-            color: var(--add-button-selected-color);
-            background-color: var(--add-button-selected-back-color);
             border: 1px solid var(--elements);
+            background-color: var(--add-button-selected-back-color);
+            color: var(--add-button-selected-color);
 
             &::before {
               content: 'Added to cart';
@@ -348,17 +347,17 @@
 
         &__like {
           width: 48px;
-          padding: 0;
           margin: 0;
+          padding: 0;
+          border: 1px solid var(--arrow-button-border-color);
           background: none;
-          color: inherit;
-          cursor: pointer;
+          background-color: var(--arrow-button-back-color);
+          background-image: var(--heart-icon);
+          background-repeat: no-repeat;
 
           background-position: center;
-          background-repeat: no-repeat;
-          background-image: var(--heart-icon);
-          border: 1px solid var(--arrow-button-border-color);
-          background-color: var(--arrow-button-back-color);
+          color: inherit;
+          cursor: pointer;
 
           &:hover {
             background-color: var(--arrow-button-back-hover-color);
@@ -366,8 +365,8 @@
           }
 
           &__active {
-            background-color: var(--background-color);
             border: 1px solid var(--elements);
+            background-color: var(--background-color);
             background-image: var(--heart-icon-red);
           }
         }
@@ -386,15 +385,15 @@
 
           &__name {
             color: var(--secondary-color);
-            font-weight: 600;
             font-size: 12px;
+            font-weight: 600;
             line-height: 100%;
           }
 
           &__param {
             color: var(--primary-color);
-            font-weight: 600;
             font-size: 12px;
+            font-weight: 600;
             line-height: 100%;
           }
         }
@@ -403,10 +402,10 @@
   }
 
   &__about {
-    grid-column: 1/-1;
     display: flex;
     flex-direction: column;
     gap: 32px;
+    grid-column: 1/-1;
     margin-bottom: 56px;
 
     @include on-tablet {
@@ -419,12 +418,12 @@
     }
 
     &__title {
-      color: var(--primary-color);
-      margin: 0;
       height: 42px;
+      margin: 0;
       border-bottom: 1px solid var(--elements);
-      font-weight: 800;
+      color: var(--primary-color);
       font-size: 22px;
+      font-weight: 800;
       line-height: 140%;
     }
 
@@ -433,16 +432,16 @@
         margin: 0;
         margin-bottom: 16px;
         color: var(--primary-color);
-        font-weight: 700;
         font-size: 16px;
+        font-weight: 700;
         line-height: 100%;
       }
 
       &__paragraph {
         margin: 0;
         color: var(--secondary-color);
-        font-weight: 600;
         font-size: 14px;
+        font-weight: 600;
         line-height: 21px;
       }
     }
@@ -463,14 +462,14 @@
     }
 
     &__title {
-      color: var(--primary-color);
-      margin: 0;
       height: 42px;
-      border-bottom: 1px solid var(--elements);
-      font-weight: 800;
-      font-size: 22px;
-      line-height: 140%;
+      margin: 0;
       margin-bottom: 30px;
+      border-bottom: 1px solid var(--elements);
+      color: var(--primary-color);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
 
       @include on-tablet {
         margin-bottom: 25px;
@@ -480,20 +479,20 @@
     &__params {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 8px;
       gap: 8px;
+      margin-bottom: 8px;
 
       &__name {
         color: var(--secondary-color);
-        font-weight: 500;
         font-size: 14px;
+        font-weight: 500;
         line-height: 21px;
       }
 
       &__data {
         color: var(--primary-color);
-        font-weight: 500;
         font-size: 14px;
+        font-weight: 500;
         line-height: 21px;
         text-align: right;
       }

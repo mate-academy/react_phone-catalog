@@ -4,21 +4,21 @@
   @include grid-layout;
 
   justify-content: center;
-  padding: 24px 16px 64px 16px;
+  padding: 24px 16px 64px;
 
   @include on-tablet {
-    padding: 24px 24px 64px 24px;
+    padding: 24px 24px 64px;
   }
 
   @include on-full-screen {
-    padding: 24px 0 80px 0;
+    padding: 24px 0 80px;
   }
 
   &__back {
-    grid-column: 1/-1;
     display: flex;
     flex-direction: row;
     gap: 4px;
+    grid-column: 1/-1;
     margin-bottom: 16px;
     cursor: pointer;
 
@@ -36,16 +36,16 @@
       align-items: center;
       justify-content: center;
       color: var(--back-button-text-color);
-      font-weight: 600;
       font-size: 12px;
+      font-weight: 600;
     }
   }
 
   &__title {
     @include heading-h1;
-    margin-bottom: 32px;
 
     grid-column: 1 / -1;
+    margin-bottom: 32px;
     color: var(--primary-color);
   }
 
@@ -53,12 +53,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 45vh;
-    text-align: center;
     grid-column: 1 / -1;
+    height: 45vh;
     background-image: url('../../../../../public/img/cart-is-empty.png');
-    background-position: center;
     background-repeat: no-repeat;
+    background-position: center;
     background-size: contain;
+    text-align: center;
   }
 }

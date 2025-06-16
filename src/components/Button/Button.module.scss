@@ -1,19 +1,19 @@
 @use '../../styles/variables.scss' as *;
 
 .button {
-  background: none;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
   width: 32px;
   height: 32px;
-  background-color: var(--arrow-button-back-color);
+  margin: 0;
+  padding: 0;
   border: 1px solid var(--arrow-button-border-color);
+  background: none;
+  background-color: var(--arrow-button-back-color);
+  background-repeat: no-repeat;
 
   background-position: center;
-  background-repeat: no-repeat;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
 
   &:hover {
     border: 1px solid var(--arrow-button-border-hover-color);
@@ -21,8 +21,8 @@
   }
 
   &:disabled {
-    background-color: var(--background-color);
     border: 1px solid var(--elements);
+    background-color: var(--background-color);
     cursor: default;
   }
 }

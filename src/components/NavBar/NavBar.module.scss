@@ -4,17 +4,17 @@
 @import './variables';
 
 .navbar {
-  height: $navbar-height;
   position: sticky;
-  background-color: var(--background-color);
   top: 0;
   z-index: 2;
+  height: $navbar-height;
+  background-color: var(--background-color);
 
   @include on-tablet {
-    height: $navbar-height;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: $navbar-height;
     border-bottom: 1px solid var(--elements);
   }
 
@@ -23,13 +23,13 @@
   }
 
   &__opened {
+    position: sticky;
+    top: 0;
     z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    position: sticky;
-    top: 0;
     background-color: var(--background-color);
   }
 
@@ -56,9 +56,9 @@
   &__burger_menu {
     width: 48px;
     height: 48px;
+    border-left: 1px solid var(--elements);
     background-repeat: no-repeat;
     background-position: center;
-    border-left: 1px solid var(--elements);
 
     @include on-tablet {
       display: none;
@@ -75,8 +75,8 @@
 
   &__logo {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: $logo-width;
 
     @include on-full-screen {
@@ -85,10 +85,10 @@
     }
 
     &__img {
-      background-image: var(--logo);
-      background-size: contain;
       width: $logo-img-width;
       height: $logo-img-height;
+      background-image: var(--logo);
+      background-size: contain;
 
       @include on-full-screen {
         width: $logo-img-width-desktop;
@@ -109,19 +109,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 24px 0;
       gap: 16px;
+      margin: 24px 0;
     }
 
     &Item {
-      height: 27px;
+      position: relative;
       display: flex;
       align-items: center;
-      position: relative;
-      text-transform: uppercase;
+      height: 27px;
       color: var(--secondary-color);
-      text-decoration: none;
       font-weight: 800;
+      text-decoration: none;
+      text-transform: uppercase;
       letter-spacing: 0.5px;
 
       &:hover {
@@ -129,9 +129,9 @@
       }
 
       @include on-tablet {
+        height: $navbar-height;
         padding: 0 $padding-x-tablet;
         font-size: 12px;
-        height: $navbar-height;
       }
 
       @include on-full-screen {
@@ -143,22 +143,22 @@
         color: var(--primary-color);
 
         &::after {
-          content: '';
           position: absolute;
           bottom: 0;
-          height: 2px;
-          width: 100%;
-          background-color: var(--primary-color);
           left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: var(--primary-color);
+          content: '';
 
           @include on-tablet {
-            width: calc(100% - $padding-x-tablet - $padding-x-tablet);
             left: $padding-x-tablet;
+            width: calc(100% - $padding-x-tablet - $padding-x-tablet);
           }
 
           @include on-full-screen {
-            width: calc(100% - $padding-x-desktop - $padding-x-desktop);
             left: $padding-x-desktop;
+            width: calc(100% - $padding-x-desktop - $padding-x-desktop);
           }
         }
       }
@@ -180,14 +180,14 @@
   }
 
   &__heart_icon {
-    width: 50vw;
-    background-image: var(--heart-icon);
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 1px solid var(--elements);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 50vw;
+    border: 1px solid var(--elements);
+    background-image: var(--heart-icon);
+    background-repeat: no-repeat;
+    background-position: center;
     text-decoration: none;
     outline: none;
 
@@ -217,14 +217,14 @@
   }
 
   &__shop_icon {
-    width: 50vw;
-    background-image: var(--cart);
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 1px solid var(--elements);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 50vw;
+    border: 1px solid var(--elements);
+    background-image: var(--cart);
+    background-repeat: no-repeat;
+    background-position: center;
     text-decoration: none;
     outline: none;
 
@@ -254,18 +254,18 @@
 }
 
 .notification {
-  box-sizing: content-box;
-  color: white;
-  background-color: var(--red);
-  height: 12px;
-  line-height: 12px;
-  width: 14px;
-  font-weight: 700;
-  font-size: 9px;
-  text-align: center;
-  border-radius: 50%;
   position: relative;
-  left: 9px;
   bottom: 6px;
+  left: 9px;
+  width: 14px;
+  height: 12px;
   border: 2px solid var(--background-color);
+  border-radius: 50%;
+  background-color: var(--red);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 12px;
+  text-align: center;
+  box-sizing: content-box;
 }

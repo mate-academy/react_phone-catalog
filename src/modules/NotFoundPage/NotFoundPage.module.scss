@@ -7,8 +7,8 @@
 
   &__title {
     @include heading-h1;
-    text-align: center;
     margin-top: 24px;
+    text-align: center;
 
     @include on-tablet {
       margin-top: 40px;
@@ -16,11 +16,11 @@
   }
 
   &__image {
-    height: 300px;
+    align-self: center;
     width: 300px;
+    height: 300px;
     background-image: url('../../../public/img/page-not-found.png');
     background-position: center;
     background-size: cover;
-    align-self: center;
   }
 }
