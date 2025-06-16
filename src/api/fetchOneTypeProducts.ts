@@ -25,8 +25,10 @@ export const fetchOneProducts = async (category: string, id: string): Promise<Pr
   const products: Product[] = await response.json();
   const product = products.find(item => item.id === id)
   const models = products.filter(item => item.namespaceId === product?.namespaceId)
+
   if (!product) {
     throw new Error('Product not Found');
   }
   return {product, models}
 }
+

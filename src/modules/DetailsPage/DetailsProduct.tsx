@@ -39,7 +39,11 @@ console.log(models,product)
         <Carousel
           images={product?.images} />
 
- <DetailsChange colors={product?.colorsAvailable } models={models} />
+        <DetailsChange colors={product?.colorsAvailable}
+          models={models}
+          capacity={product.capacityAvailable}
+          productColor={product.color}
+          productCapacity={product.capacity } />
       </Container>{' '}
     </>
   :"null");
