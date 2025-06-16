@@ -42,15 +42,20 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     let timer: NodeJS.Timeout;
 
-    fetch('/api/products.json')
-      .then(res => res.json())
+    fetch('../pulic/api/products.json')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        return res.json();
+      })
       .then(data => {
         setProducts(data);
         timer = setTimeout(() => setIsLoading(false), 1000);
       })
       .catch(() => {
         setIsLoading(false);
-        throw new Error('Look context, something wrong with fetch');
       });
 
     return () => {
