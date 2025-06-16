@@ -30,4 +30,3 @@ export const fetchOneProducts = async (category: string, id: string): Promise<Pr
   }
   return {product, models}
 }
-

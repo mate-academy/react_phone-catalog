@@ -1,7 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from './DetailsChange.module.scss';
-import { BiCircle } from "react-icons/bi";
-export const DetailsChange = ({colors}) => {
+
+export const DetailsChange = ({ colors, models }) => {
+  const navigate = useNavigate()
+  const {category}=useParams()
+  const handleChangeColor = (color) => {
+  const model = models.find(model => model.color === color);
+  if (model) {
+    navigate(`/${category}/${model.id}`);
+  }
+};
   return (<>
     <div className={styles.container}>
       <div className={styles.colors}>
@@ -11,8 +19,8 @@ export const DetailsChange = ({colors}) => {
         </div>
        <ul className={styles.colors__list}>
   {colors.map(color => (
-    <li key={color} className={styles.colors__link}  style={{ backgroundColor: color }}>
-      <Link ></Link>
+    <li key={color} onClick={()=>handleChangeColor(color)} className={styles.colors__link}  style={{ backgroundColor: color }}>
+
     </li>
   ))}
 </ul>

@@ -16,7 +16,7 @@ export const PageNav = () => {
   const locationName =
     currentLocation.slice(0, 1).toUpperCase() + currentLocation.slice(1);
 
-  console.log(locationName);
+ 
 
   return (
     <div className={styles.page}>

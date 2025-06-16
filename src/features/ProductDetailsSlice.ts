@@ -7,12 +7,14 @@ type ProductDetailState = {
   models: Product[] | [];
   loading: boolean;
   error: string;
+  allAvailableColor: string[];
 };
 const initialState: ProductDetailState = {
   product: null,
   models: [],
   loading: false,
   error: '',
+  allAvailableColor:[],
 };
 
 export const detailsProduct = createAsyncThunk(
@@ -33,6 +35,7 @@ export const productDetailsSlice = createSlice({
       state.product = action.payload.product;
 
       state.models = action.payload.models;
+      state.allAvailableColor = action.payload.allAvailableColor;
        state.loading = false;
     });
     builder.addCase(detailsProduct.rejected, (state, action) => {

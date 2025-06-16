@@ -14,26 +14,20 @@ export const Root = () => {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="home" element={<Navigate to="/" replace />} />
-          <Route index element={<HomePage />} />
-            <Route path=':productId' element={<DetailsProduct/>} />
+     <Route path="/" element={<App />}>
+    <Route path="home" element={<Navigate to="/" replace />} />
+    <Route index element={<HomePage />} />
 
-          <Route path="phones">
-            <Route index element={<PhonePage />} />
-             <Route path=':productId' element={<DetailsProduct/>} />
 
-          </Route>
-          <Route path="accessories">
-            <Route index element={<AccessoriesPage />} />
-             <Route path=':productId' element={<DetailsProduct/>} />
-          </Route>
-          <Route path="tablets">
-            <Route index element={<TabletPage />} />
-             <Route path=':productId' element={<DetailsProduct/>} />
-          </Route>
-          <Route path='*' element={<PageNotFound/>}/>
-        </Route>
+    <Route path=":category/:productId" element={<DetailsProduct />} />
+
+    
+    <Route path="phones" element={<PhonePage />} />
+    <Route path="tablets" element={<TabletPage />} />
+    <Route path="accessories" element={<AccessoriesPage />} />
+
+    <Route path="*" element={<PageNotFound />} />
+  </Route>
       </Routes>
 
     </HashRouter>
