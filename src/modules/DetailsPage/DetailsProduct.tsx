@@ -4,19 +4,23 @@ import { PageNav } from '../../components/pageNav/PageNav';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchOneProducts } from '../../api/fetchOneTypeProducts';
 import { detailsProduct } from '../../features/ProductDetailsSlice';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { TitlePages } from '../../components/title/TitlePages';
 import { Carousel } from './component/carosel/Carousel';
 import { DetailsChange } from './component/detailsChange/DetailsChange';
+import { Price } from '../../components/price/price';
+import { Buttons } from '../../components/buttons/Buttons';
+import { TechDetails } from './component/techDetails/techDetails';
 
 export const DetailsProduct = () => {
   const product = useAppSelector(state => state.productDetail.product);
-const models = useAppSelector(state=>state.productDetail.models)
-console.log(models,product)
+  const models = useAppSelector(state => state.productDetail.models);
+
   const dispach = useAppDispatch();
   const location = useLocation();
   const category = location.pathname.split('/')[1];
   const { productId } = useParams<{ productId: string; category: string }>();
+ const navigate = useNavigate();
 
   useEffect(() => {
     if (!productId) {
@@ -30,6 +34,18 @@ console.log(models,product)
     dispach(detailsProduct({ category, id: productId }));
   }, [category, productId, dispach]);
 
+const findModel = (color, capacity) =>
+  models.find(model => model.color === color
+    && model.capacity === capacity);
+
+const handleChangeColor = (color,) => {
+  const model = findModel(color,product?.capacity);
+  if (model) navigate(`/${category}/${model.id}`);
+}
+  const handleChangeCapacity = (capasity  ) => {
+  const model = findModel( product?.color,capasity);
+  if (model) navigate(`/${category}/${model.id}`);
+  }
 
   return (product?
     <>
@@ -39,11 +55,32 @@ console.log(models,product)
         <Carousel
           images={product?.images} />
 
-        <DetailsChange colors={product?.colorsAvailable}
-          models={models}
-          capacity={product.capacityAvailable}
-          productColor={product.color}
-          productCapacity={product.capacity } />
+        <DetailsChange
+          type={'color'}
+          title={'Available color'}
+          option={product?.colorsAvailable}
+          selected={product.color}
+          onSelect={handleChangeColor}
+         />
+        <DetailsChange
+          type={'capacity'}
+          title={'Select capacity'}
+          option={product.capacityAvailable}
+          selected={product.capacity}
+        onSelect={handleChangeCapacity}/>
+        <Price
+          fullPrice={product.priceRegular}
+          discount={product.priceDiscount} />
+        <Buttons />
+
+        <TechDetails
+          screen={product.screen}
+          resolution={product.resolution}
+          procesor={product.processor}
+          ram={product.ram}
+        />
+
+
       </Container>{' '}
     </>
   :"null");

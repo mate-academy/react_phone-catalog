@@ -1,0 +1,28 @@
+.tech{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+&___box{
+  margin-bottom: 8px;
+  display: flex;
+justify-content: space-between;
+}
+&__name{
+  font-family: Mont;
+font-weight: 600;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+color: #89939A;
+}
+&__description{
+  font-family: Mont;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: right;
+color: #0F0F11;
+
+}
+}
