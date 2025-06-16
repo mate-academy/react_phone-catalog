@@ -44,6 +44,7 @@ export const CartItem: React.FC<Props> = props => {
         </div>
       </Link>
       <div className={styles.product__info}>
+        <span className={styles.product__price}>${productPrice}</span>
         <div className={styles.product__quantity}>
           <button
             className={styles.product__quantityDecrement}
@@ -56,7 +57,6 @@ export const CartItem: React.FC<Props> = props => {
             onClick={handleIncrement(product.itemId)}
           />
         </div>
-        <span className={styles.product__price}>${productPrice}</span>
       </div>
     </div>
   );
