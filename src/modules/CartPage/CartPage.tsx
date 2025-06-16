@@ -1,11 +1,14 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { RootState } from 'app/store';
 import { useDispatch, useSelector } from 'react-redux';
 
+import {
+  selectCartItems,
+  selectTotalPrice,
+  selectCartQuantity,
+} from '../../features/cart/cart.selectors';
 import {
   decreaseQuantity,
   increaseQuantity,
@@ -21,8 +24,10 @@ import { NormalizedProduct } from '../../shared/helpers/normalizeProductType';
 import styles from './CartPage.module.scss';
 
 export const CartPage: React.FC = () => {
-  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const cartQuantity = useSelector(selectCartQuantity);
+  const totalPrice = useSelector(selectTotalPrice);
 
   const handleRemoveFromCart = (product: NormalizedProduct) => {
     dispatch(removeFromCart(product.id));
@@ -77,9 +82,10 @@ export const CartPage: React.FC = () => {
                   </div>
 
                   <div className={styles.bottomRow}>
-                    <div className={styles.counter} role="group">
+                    <div className={styles.counter}>
                       <button
                         className={styles.counterButton}
+                        disabled={item.quantity === 1}
                         onClick={() => handleDecrement(item.product)}
                       >
                         <Icon name={IconNames.Minus} />
@@ -99,7 +105,7 @@ export const CartPage: React.FC = () => {
 
                     <div
                       className={styles.price}
-                    >{`$${item.product.price}`}</div>
+                    >{`$${item.product.price * item.quantity}`}</div>
                   </div>
                 </article>
               </li>
@@ -108,10 +114,10 @@ export const CartPage: React.FC = () => {
 
           <div className={styles.totalItems}>
             <div className={styles.totalInfo}>
-              <p className={styles.totalPrice}>{`$Total`}</p>
+              <p className={styles.totalPrice}>{`$${totalPrice}`}</p>
               <p
-                className={styles.totalQuantity}
-              >{`Total for QUANTITY items`}</p>
+                className={styles.cartQuantity}
+              >{`Total for ${cartQuantity} items`}</p>
             </div>
             <Divider />
 

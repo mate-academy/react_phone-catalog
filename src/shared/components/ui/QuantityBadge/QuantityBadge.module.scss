@@ -1,0 +1,18 @@
+@use '../../../../styles/globals.scss' as *;
+
+.quantityBadge {
+  @extend %flex-center;
+
+  position: absolute;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border: solid 1px $color-black;
+  border-radius: 50%;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 100%;
+  color: $color-white;
+  background-color: $color-red;
+  transform: translate(50%, -50%);
+}

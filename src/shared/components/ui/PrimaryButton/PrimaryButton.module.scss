@@ -10,12 +10,14 @@
   &.size48 {
     height: 48px;
   }
-}
 
-.addedToCart {
-  background-color: $color-surface2;
+  &:disabled {
+    background-color: $color-surface2;
+    cursor: default;
+    pointer-events: none;
 
-  &:hover {
-    background-color: $color-elements;
+    &:hover {
+      background-color: $color-surface2;
+    }
   }
 }

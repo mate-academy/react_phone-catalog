@@ -4,11 +4,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 
 import { useMenuContext } from '../../../../../../contexts/MenuContext';
+import { selectCartQuantity } from '../../../../../../features/cart/cart.selectors';
 import { Icon } from '../../../../../../shared/components/ui/Icon/Icon';
 import { IconNames } from '../../../../../../shared/components/ui/Icon/IconNames';
 import { closeMenu } from '../../../../../../shared/helpers/handlers';
+import { QuantityBadge } from '../../../../ui/QuantityBadge';
 
 import styles from './UserActions.module.scss';
 
@@ -19,6 +22,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
 
 export const UserActions: React.FC = () => {
   const { isMenuOpen, toggleMenu } = useMenuContext();
+  const cartQuantity = useSelector(selectCartQuantity);
 
   return (
     <div
@@ -39,7 +43,10 @@ export const UserActions: React.FC = () => {
         to="/cart"
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
-        <Icon className={styles.iconImage} name={IconNames.Cart} />
+        <div className={styles.iconWithBadge}>
+          <Icon className={styles.iconImage} name={IconNames.Cart} />
+          <QuantityBadge count={cartQuantity} />
+        </div>
       </NavLink>
     </div>
   );

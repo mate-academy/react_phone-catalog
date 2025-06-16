@@ -50,7 +50,7 @@ export const PrimaryButton: React.FC<Props> = ({
 
   if (variant === 'add' && product) {
     buttonLabel = isProductInCart(normalizeProductType(product))
-      ? 'Added'
+      ? 'Added to cart'
       : 'Add to cart';
   } else {
     buttonLabel = 'Checkout';
@@ -58,10 +58,9 @@ export const PrimaryButton: React.FC<Props> = ({
 
   return (
     <button
-      className={classNames(styles.primaryButton, sizeClass, {
-        [styles.addedToCart]: buttonLabel === 'Added',
-      })}
-      onClick={handleClick}
+      className={classNames(styles.primaryButton, sizeClass)}
+      disabled={buttonLabel === 'Added to cart'}
+      onClick={buttonLabel === 'Added to cart' ? undefined : handleClick}
     >
       {buttonLabel}
     </button>

@@ -13,26 +13,20 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action: PayloadAction<NormalizedProduct>) {
-      const newItem = state.cartItems.find(
-        item => item.product.id === action.payload.id,
-      );
-
-      if (!newItem) {
-        state.cartItems.push({
-          product: action.payload,
-          quantity: 1,
-        });
-      } else {
-        state.cartItems = state.cartItems.filter(
-          item => item.product.id !== action.payload.id,
-        );
-      }
+      state.cartItems.push({
+        product: action.payload,
+        quantity: 1,
+      });
     },
 
     removeFromCart(state, action: PayloadAction<string>) {
-      state.cartItems = state.cartItems.filter(
-        item => item.product.id !== action.payload,
+      const index = state.cartItems.findIndex(
+        item => item.product.id === action.payload,
       );
+
+      if (index !== -1) {
+        state.cartItems.splice(index, 1);
+      }
     },
 
     increaseQuantity(state, action: PayloadAction<string>) {
@@ -50,13 +44,7 @@ const cartSlice = createSlice({
         item => item.product.id === action.payload,
       );
 
-      if (!curItem) return;
-
-      if (curItem.quantity === 1) {
-        state.cartItems = state.cartItems.filter(
-          item => item.product.id !== action.payload,
-        );
-      } else {
+      if (curItem) {
         curItem.quantity -= 1;
       }
     },

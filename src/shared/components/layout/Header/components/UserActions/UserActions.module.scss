@@ -55,6 +55,12 @@
   color: $color-white;
 }
 
+.iconWithBadge {
+  @extend %flex-center;
+
+  position: relative;
+}
+
 .menuOpen {
   display: flex;
   flex-direction: row;

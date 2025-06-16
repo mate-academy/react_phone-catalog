@@ -179,7 +179,7 @@
   @include apply-typography(h2-desktop);
 }
 
-.totalQuantity {
+.cartQuantity {
   @include apply-typography(body-desktop);
 
   color: $color-secondary;
