@@ -96,11 +96,8 @@
   &__info {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
-    > * {
-      flex-shrink: 0;
-    }
+    justify-content: space-between;
 
     @include utils.on-tablet {
       gap: 24px;
@@ -123,12 +120,6 @@
     background-color: transparent;
 
     transition: background-color utils.$animation-duration;
-
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &::after {
       content: '';
@@ -169,7 +160,6 @@
     line-height: 21px;
     color: utils.$color-white;
     text-align: center;
-    min-width: 28px;
   }
 
   &__price {
@@ -178,9 +168,8 @@
     font-weight: 800;
     font-style: normal;
     line-height: 140%;
+
     color: utils.$color-white;
-    text-align: right;
-    min-width: 70px;
   }
 
   @include utils.on-tablet {

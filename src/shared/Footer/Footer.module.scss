@@ -54,8 +54,15 @@
 
   &__item {
     list-style: none;
-  }
+    padding: 10px 14px;
+    border-radius: 6px;
+    transition: box-shadow 0.3s ease;
 
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
+  }
   &__link {
     font-family: utils.$font-main;
     font-size: 12px;

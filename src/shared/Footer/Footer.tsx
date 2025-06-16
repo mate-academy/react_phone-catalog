@@ -28,6 +28,8 @@ export const Footer: React.FC = () => {
                 <a
                   href="https://github.com/DmutroSheva"
                   className={styles.footer__link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   GitHub
                 </a>
