@@ -1,0 +1,62 @@
+@use '../../../../styles/globals.scss' as *;
+
+.modalOverlay {
+  @extend %flex-center;
+
+  position: fixed;
+  z-index: 1000;
+  background-color: rgba(15, 17, 33, 0.6);
+  inset: 0;
+}
+
+.modal {
+  @extend %flex-center;
+  @include apply-typography(body-desktop);
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  flex-direction: column;
+  height: auto;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  background-color: $color-surface1;
+  transform: translate(-50%, -50%);
+  gap: 16px;
+}
+
+.content {
+  @extend %flex-center;
+
+  flex-direction: column;
+  gap: 8px;
+}
+
+.textAccent {
+  font-weight: 600;
+}
+
+.actions {
+  @extend %flex-center;
+
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.button {
+  @extend %flex-center;
+  @include apply-typography(buttons-desktop);
+
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.confirmButton {
+  background-color: $color-green;
+}
+
+.cancelButton {
+  background-color: $color-red;
+}

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import cartEmptyImg from '../../assets/img/ui/cart-is-empty.png';
 import {
   selectCartItems,
   selectTotalPrice,
@@ -18,12 +19,14 @@ import { Divider } from '../../shared/components/ui/Divider';
 import { GoBack } from '../../shared/components/ui/GoBack';
 import { Icon } from '../../shared/components/ui/Icon/Icon';
 import { IconNames } from '../../shared/components/ui/Icon/IconNames';
+import { Modal } from '../../shared/components/ui/Modal';
 import { PrimaryButton } from '../../shared/components/ui/PrimaryButton';
 import { NormalizedProduct } from '../../shared/helpers/normalizeProductType';
 
 import styles from './CartPage.module.scss';
 
 export const CartPage: React.FC = () => {
+  const [modalActive, setModalActive] = useState(false);
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const cartQuantity = useSelector(selectCartQuantity);
@@ -121,17 +124,19 @@ export const CartPage: React.FC = () => {
             </div>
             <Divider />
 
-            <PrimaryButton />
+            <PrimaryButton onOpenModal={() => setModalActive(true)} />
+
+            {modalActive && <Modal onOpenModal={() => setModalActive(false)} />}
           </div>
         </div>
       ) : (
         <section className={styles.empty}>
+          <p>Your cart is empty</p>
           <img
             alt="Illustration of an empty cart"
             className={styles.emptyImage}
-            src="/images/empty-cart.png"
+            src={cartEmptyImg}
           />
-          <p>Your cart is empty</p>
         </section>
       )}
     </article>

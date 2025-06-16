@@ -184,3 +184,21 @@
 
   color: $color-secondary;
 }
+
+.empty {
+  @include apply-typography(h2-desktop);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyImage {
+  height: auto;
+  max-height: 50vh;
+
+  @media (max-width: $mobile-breakpoint){
+    max-height: 30vh;
+  }
+}

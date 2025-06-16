@@ -19,12 +19,14 @@ type Props = {
   variant?: 'add';
   product?: Product | ProductDetails;
   size?: 40 | 48;
+  onOpenModal?: () => void;
 };
 
 export const PrimaryButton: React.FC<Props> = ({
   variant,
   product,
   size = 40,
+  onOpenModal,
 }) => {
   const sizeClass = size === 40 ? styles.size40 : styles.size48;
   const dispatch = useDispatch();
@@ -37,7 +39,9 @@ export const PrimaryButton: React.FC<Props> = ({
   };
 
   const handleCheckout = () => {
-    // Модальное окно
+    if (onOpenModal) {
+      onOpenModal();
+    }
   };
 
   const isProductInCart = (prod: NormalizedProduct): boolean => {
