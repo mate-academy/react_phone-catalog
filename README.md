@@ -1,5 +1,7 @@
 # 📱 React Phone Catalog
 
+[Demo link](https://MateuszCieplak.github.io/react_phone-catalog/)
+
 A modern, fully responsive phone catalog built with React, TypeScript, SCSS Modules, and React Router.
 This project demonstrates advanced features like sorting, pagination, filtering, favorites, cart management with localStorage, and clean modular architecture.
 
