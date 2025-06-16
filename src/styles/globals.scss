@@ -25,20 +25,18 @@ body {
 
 
 h1 {
-  max-width: 1136px;
-  margin: 0 auto;
-  padding-inline: var(--container-padding-x);
-  padding-block: 24px;
   font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 24px;
 
 
   @media (min-width: 640px) {
-    padding-block: 32px;
+    margin-bottom: 32px;
     font-size: 48px;
   }
 
   @media (min-width: 1200px) {
-    padding-block: 56px;
+    margin-bottom: 56px;
   }
 
 }
