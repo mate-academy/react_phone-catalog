@@ -1,10 +1,12 @@
 import favourite from '../../../img/icons/favourite-button.svg';
 import favouriteAdd from '../../../img/icons/favourite-button-add.svg';
+import favouriteAddBlack from '../../../img/icons/favourite-button-black.svg';
 import styles from './ProductButtons.module.scss';
 
 type Props = {
   isFavourite: boolean;
   isInCart: boolean;
+  isLightMode: boolean;
   handleCartClick: () => void;
   handleFavouriteClick: () => void;
 };
@@ -12,6 +14,7 @@ type Props = {
 export const ProductButtons: React.FC<Props> = ({
   isFavourite,
   isInCart,
+  isLightMode,
   handleCartClick,
   handleFavouriteClick,
 }) => {
@@ -31,7 +34,15 @@ export const ProductButtons: React.FC<Props> = ({
       >
         <img
           className={styles.product__button__icon}
-          src={isFavourite ? favouriteAdd : favourite}
+          src={
+            !isLightMode
+              ? isFavourite
+                ? favouriteAdd
+                : favourite
+              : isFavourite
+                ? favouriteAdd
+                : favouriteAddBlack
+          }
           alt="favourite"
         />
       </button>

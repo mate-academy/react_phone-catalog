@@ -8,27 +8,61 @@ import { ProductDetail } from './modules/pages/ProductDetail';
 import { NotFoundPage } from './modules/pages/NotFoundPage';
 import { Favourites } from './modules/pages/Favourites';
 import { Cart } from './modules/pages/Cart';
+import { useEffect, useState } from 'react';
 
-export const App = () => (
-  <div className="app">
-    <Header />
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/home" element={<HomePage />} />
+export const App = () => {
+  const [isLightMode, setIsLightMode] = useState(false);
 
-      <Route path="/phones" element={<ProductPage />} />
-      <Route path="/phones/:itemId" element={<ProductDetail />} />
+  useEffect(() => {
+    document.body.classList.toggle('light', isLightMode);
+  }, [isLightMode]);
 
-      <Route path="/tablets" element={<ProductPage />} />
-      <Route path="/tablets/:itemId" element={<ProductDetail />} />
+  const handleSetMode = () => {
+    setIsLightMode(prev => !prev);
+  };
 
-      <Route path="/accessories" element={<ProductPage />} />
-      <Route path="/accessories/:itemId" element={<ProductDetail />} />
+  return (
+    <div className="app">
+      <Header isLightMode={isLightMode} handleSetMode={handleSetMode} />
+      <Routes>
+        <Route path="/" element={<HomePage isLightMode={isLightMode} />} />
+        <Route path="/home" element={<HomePage isLightMode={isLightMode} />} />
 
-      <Route path="/favourites" element={<Favourites />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-    <Footer />
-  </div>
-);
+        <Route
+          path="/phones"
+          element={<ProductPage isLightMode={isLightMode} />}
+        />
+        <Route
+          path="/phones/:itemId"
+          element={<ProductDetail isLightMode={isLightMode} />}
+        />
+
+        <Route
+          path="/tablets"
+          element={<ProductPage isLightMode={isLightMode} />}
+        />
+        <Route
+          path="/tablets/:itemId"
+          element={<ProductDetail isLightMode={isLightMode} />}
+        />
+
+        <Route
+          path="/accessories"
+          element={<ProductPage isLightMode={isLightMode} />}
+        />
+        <Route
+          path="/accessories/:itemId"
+          element={<ProductDetail isLightMode={isLightMode} />}
+        />
+
+        <Route
+          path="/favourites"
+          element={<Favourites isLightMode={isLightMode} />}
+        />
+        <Route path="/cart" element={<Cart isLightMode={isLightMode} />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <Footer isLightMode={isLightMode} />
+    </div>
+  );
+};

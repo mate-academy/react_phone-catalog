@@ -27,20 +27,18 @@
 }
 
 .favourite__title {
-  font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
-  color: #F1F2F9;
+  color: var(--text-color);
   margin-bottom: 12px;
 }
 
 .favourite__count {
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #75767F;
+  color: var(--second-text-color);
   margin-bottom: 32px;
 
   @include on-tablet {
@@ -57,11 +55,10 @@
 }
 
 .favourite__not-found {
-  font-family: Montserrat, sans-serif;
   font-size: 12px;
   font-weight: 600;
   line-height: 100%;
-  color: #F1F2F9;
+  color: var(--text-color);;
 
   @include on-tablet {
     font-size: 20px;

@@ -9,12 +9,22 @@
   padding: 32px;
   min-width: 212px;
   height: 439px;
-  background-color: #161827;
+  background-color: var(--product-card-background-color);
+  border: var(--product-card-border);
   flex-grow: 1;
+
+  transition:
+    border 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
 
   @include on-tablet {
     min-width: 237px;
     height: 506px;
+  }
+
+  &:hover {
+    border: var(--product-card-border-hover);
+    box-shadow: var(--product-card-box-shadow-hover);
   }
 }
 
@@ -43,12 +53,11 @@
   display: flex;
   align-items: flex-end;
   height: 58px;
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   text-align: left;
-  color: #F1F2F9;
+  color: var( --text-color);
   text-decoration: none;
   margin-bottom: 8px;
 }
@@ -60,27 +69,25 @@
   align-items: center;
   gap: 12px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #3B3E4A;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 16px;
 }
 
 .product__card__price {
-  font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
   text-align: left;
-  color: #F1F2F9;
+  color: var( --text-color);
 }
 
 .product__card__fullPrice {
-  font-family: Montserrat, sans-serif;
   font-weight: 500;
   font-size: 22px;
   line-height: 100%;
   letter-spacing: 0%;
   text-decoration: line-through;
-  color: #75767F;
+  color: var(--second-text-color);
 }
 
 .product__card__details {
@@ -98,11 +105,10 @@
 }
 
 .product__card__field {
-  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
-  color: #75767F;
+  color: var(--second-text-color);
 }
 
 .product__card__value {
@@ -110,7 +116,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
-  color: #F1F2F9;
+  color: var(--text-color);
 }
 
 .product__card__actions {
@@ -124,7 +130,7 @@
 .product__card__button--add {
   width: 100px;
   height: 40px;
-  background-color: #905BFF;
+  background-color: var(--button-add-cart-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,24 +149,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #323542;
+  background-color: var(--button-background-color);
   box-sizing: border-box;
   padding: 12px;
   cursor: pointer;
-  border: none;
+  border: var(--button-border);
   transition: background-color 0.3s ease-in-out;
 
   &:hover {
-    background-color: #4A4D58;
+    background-color: var(--button-background-color-hover);
+    border: var(--button-border-hover);
   }
 }
 
 .button__title {
-  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 21%;
-  color: #F1F2F9;
+  color: var(--text-color);
 }
 
 .button__favourite {

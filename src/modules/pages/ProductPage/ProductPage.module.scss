@@ -32,20 +32,18 @@
 }
 
 .products__title {
-  font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
-  color: #F1F2F9;
+  color: var(--text-color);
   margin-bottom: 8px;
 }
 
 .products__models-count {
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #75767F;
+  color: var(--second-text-color);
   margin-bottom: 32px;
 }
 

@@ -1,11 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 import homePage from '../../../img/icons/home-page.svg';
+import homePageBlack from '../../../img/icons/home-page-black.svg';
 import arrow from '../../../img/icons/breadcrumbs-arrow.svg';
 import styles from './Breadcrumbs.module.scss';
 import { ProductData } from '../../../types/ProductData';
 
 type Props = {
   product: ProductData | null;
+  isLightMode: boolean;
 };
 
 const searchLocation = (pathname: string) => {
@@ -19,14 +21,14 @@ const searchLocation = (pathname: string) => {
     return 'Accessories';
   } else if (pathname.includes('/cart')) {
     return 'Cart';
-  } else if (pathname.includes('/favourite')) {
-    return 'Favourite';
+  } else if (pathname.includes('/favourites')) {
+    return 'Favourites';
   } else {
     return '';
   }
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ product }) => {
+export const Breadcrumbs: React.FC<Props> = ({ product, isLightMode }) => {
   const location = useLocation();
   const pathname = location.pathname;
   const category = searchLocation(pathname);
@@ -34,7 +36,11 @@ export const Breadcrumbs: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.breadcrumbs}>
       <Link to="/home" className={styles.breadcrumbs__icon}>
-        <img className={styles.breadcrumbs__image} src={homePage} alt="Home" />
+        <img
+          className={styles.breadcrumbs__image}
+          src={!isLightMode ? homePage : homePageBlack}
+          alt="Home"
+        />
       </Link>
       <div className={styles.breadcrumbs__icon}>
         <img

@@ -1,19 +1,23 @@
 import arrowNext from '../../../img/icons/arrow-right.svg';
 import arrowNextWhite from '../../../img/icons/arrow-right-white.svg';
+import arrowNextBlack from '../../../img/icons/arrow-right-black.svg';
 import arrowBack from '../../../img/icons/arrow-left.svg';
 import arrowBackWhite from '../../../img/icons/arrow-left-white.svg';
+import arrowBackBlack from '../../../img/icons/arrow-left-black.svg';
 import styles from './Pagination.module.scss';
 import { SearchLink } from '../SearchLink';
 
 type Props = {
   totalPages: number;
   currentPage: number;
+  isLightMode: boolean;
   handlerPageSelector: (page: number) => void;
 };
 
 export const Pagination: React.FC<Props> = ({
   totalPages,
   currentPage,
+  isLightMode,
   handlerPageSelector,
 }) => {
   const getPageNumbers = () => {
@@ -49,7 +53,15 @@ export const Pagination: React.FC<Props> = ({
       >
         <img
           className={styles.pagination__image}
-          src={currentPage === 1 ? arrowBack : arrowBackWhite}
+          src={
+            !isLightMode
+              ? currentPage === 1
+                ? arrowBack
+                : arrowBackWhite
+              : currentPage === 1
+                ? arrowBackWhite
+                : arrowBackBlack
+          }
           alt="Pagination-arrow-back"
         />
       </button>
@@ -74,7 +86,15 @@ export const Pagination: React.FC<Props> = ({
       >
         <img
           className={styles.pagination__image}
-          src={currentPage === totalPages ? arrowNext : arrowNextWhite}
+          src={
+            !isLightMode
+              ? currentPage === totalPages
+                ? arrowNext
+                : arrowNextWhite
+              : currentPage === totalPages
+                ? arrowNextWhite
+                : arrowNextBlack
+          }
           alt="Pagination-arrow-next"
         />
       </button>

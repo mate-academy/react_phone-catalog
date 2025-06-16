@@ -8,7 +8,8 @@
   padding: 16px;
   width: 100%;
   gap: 16px;
-  background-color: #161827;
+  background-color: var(--pagination-item-background-color);
+  border: var(--button-border);
 
   @include on-tablet {
     flex-direction: row;
@@ -33,7 +34,8 @@
   width: 16px;
   height: 16px;
   border: none;
-  background-color: #161827;
+  background-color: var(--product-card-background-color);
+  cursor: pointer;
 }
 
 .cart__item__button--image {
@@ -61,11 +63,11 @@
 }
 
 .cart__item__text {
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #F1F2F9;
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 .cart__item__bootom {
@@ -93,31 +95,33 @@
   width: 32px;
   height: 32px;
   box-sizing: border-box;
-  border: 1px solid #3B3E4A;
-  background-color: #323542;
+  border: var(--header-border);
+  background-color: var(--button-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    border-color: var(--cart-button-border-color-hover);
+  }
 }
 
 .cart__item__button--disabled {
-  background-color: #161827;
+  background-color: var(--pagination-item-background-color);
 }
 
 .cart__item__actions--text {
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   text-align: center;
-  color: #F1F2F9;
+  color: var(--text-color);
   width: 32px;
 }
 
 .cart__item__price {
-  font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
-  color: #F1F2F9;
+  color: var(--text-color);
 }

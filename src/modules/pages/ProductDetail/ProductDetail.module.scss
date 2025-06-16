@@ -39,12 +39,11 @@
 }
 
 .product__details__title {
-  font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
   text-align: left;
-  color: #F1F2F9;
+  color: var(--text-color);
   margin-bottom: 32px;
 
   @include on-tablet {

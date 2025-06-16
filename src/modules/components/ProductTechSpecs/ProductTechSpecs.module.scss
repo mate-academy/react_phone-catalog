@@ -17,14 +17,13 @@
 }
 
 .tech__specs__title {
-  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 100%;
-  color: #F1F2F9;
+  color: var(--text-color);
   width: 100%;
   padding-bottom: 16px;
-  border-bottom: 1px solid #3B3E4A;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 30px;
 
   @include on-tablet {
@@ -51,22 +50,20 @@
 }
 
 .tech__specs__item--title {
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #75767F;
+  color: var(--second-text-color);
   flex-grow: 1;
   width: 100%;
 }
 
 .tech__specs__item--text {
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   text-align: right;
-  color: #F1F2F9;
+  color: var(--text-color);
   flex-grow: 1;
   width: 100%;
 }

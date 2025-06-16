@@ -19,8 +19,14 @@
   align-items: center;
   width: 32px;
   height: 32px;
-  background-color: #323542;
-  border: none;
+  background-color: var(--button-background-color);
+  border: var(--button-border);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--button-background-color-hover);
+    border: var(--button-border-hover);
+  }
 }
 
 .pagination__image {
@@ -41,21 +47,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #161827;
-  font-family: Montserrat, sans-serif;
+  background-color: var(--pagination-item-background-color);
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #F1F2F9;
-  border: none;
-  transition: background-color 0.3s ease-in-out;
+  color: var(--text-color);
+  border: var(--button-border);
+  transition:
+    background-color 0.3s ease-in-out,
+    border 0.3S ease-in-out;
   text-decoration: none;
 
   &:hover {
-    background-color: #3B3E4A;
+    background-color: var(--pagination-item-background-color-hover);
+    border: var(--button-border-hover);
   }
 }
 
 .pagination__page--active {
-  background-color: #905BFF;
+  background-color: var(--pagination-item-background-color-active);
+  color: var(--pagination-text-color);
+
+  &:hover {
+    color: var(--pagination-text-color-active-hover);
+  }
 }

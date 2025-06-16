@@ -12,6 +12,7 @@ type Props = {
   products: Product[];
   sortBy?: keyof Product;
   showFullPrice?: boolean;
+  isLightMode: boolean;
 };
 
 const sortProducts = (products: Product[], sortBy?: keyof Product) => {
@@ -28,6 +29,7 @@ export const ProductsSlider: React.FC<Props> = ({
   products,
   sortBy,
   showFullPrice = false,
+  isLightMode,
 }) => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
@@ -80,7 +82,11 @@ export const ProductsSlider: React.FC<Props> = ({
       >
         {sortedProducts.map(product => (
           <SwiperSlide key={product.id} className="products__slide">
-            <ProductCard product={product} withFullPrice={showFullPrice} />
+            <ProductCard
+              product={product}
+              withFullPrice={showFullPrice}
+              isLightMode={isLightMode}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

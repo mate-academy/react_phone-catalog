@@ -9,25 +9,44 @@
 .product__button__add {
   width: 100px;
   height: 40px;
-  background-color: #905BFF;
+  background-color: var(--button-add-cart-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
   flex-grow: 1;
-  transition: background-color 0.3s ease-in-out;
+  transition:
+    background-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  cursor: pointer;
 
   &:hover {
-    background-color: #A378FF;
+    background-color: var(--button-add-cart-background-color-hover);
+    box-shadow: var(--button-add-shadow);
   }
 }
 
+.product__buttons__title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21%;
+  color: var(--button-add-border-text);
+}
+
 .product__button__add--active {
-  background-color: #323542;
-  transition: background-color 0.3s ease-in-out;
+  background-color: var(--button-background-color);
+  transition:
+    background-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  border: var(--button-add-border);
+  color: var(--button-add-cart-text);
 
   &:hover {
-    background-color: #4A4D58;
+    background-color: var(--button-background-color-hover);
+  }
+
+  .product__buttons__title {
+    color: var(--button-add-cart-text);
   }
 }
 
@@ -37,27 +56,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #323542;
+  background-color: var(--button-background-color);
   box-sizing: border-box;
   padding: 12px;
   cursor: pointer;
-  border: none;
-  transition: background-color 0.3s ease-in-out;
+  border: var(--button-border);
+  transition:
+    background-color 0.3s ease-in-out,
+    border 0.3s ease-in-out;
 
   &:hover {
-    background-color: #4A4D58;
+    background-color: var(--button-background-color-hover);
+    border: var(--button-border-hover);
   }
-}
-
-.product__buttons__title {
-  font-family: Montserrat, sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 21%;
-  color: #F1F2F9;
 }
 
 .product__button__icon {
   width: 100%;
   height: 100%;
 }
+

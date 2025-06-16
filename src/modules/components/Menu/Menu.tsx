@@ -1,7 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Menu.module.scss';
 import favourite from '../../../img/icons/favourite-button.svg';
+import favouriteBlack from '../../../img/icons/favourite-button-black.svg';
 import shoppingBag from '../../../img/icons/shopping-bag.svg';
+import shoppingBagBlack from '../../../img/icons/shopping-bag-black.svg';
 import { useEffect } from 'react';
 import { useFavourites } from '../../../Context/FavoriteContext';
 import { useCart } from '../../../Context/CartContext';
@@ -9,9 +11,10 @@ import { useCart } from '../../../Context/CartContext';
 type Props = {
   isOpen: boolean;
   closeMenu: () => void;
+  isLightMode: boolean;
 };
 
-export const Menu: React.FC<Props> = ({ isOpen, closeMenu }) => {
+export const Menu: React.FC<Props> = ({ isOpen, closeMenu, isLightMode }) => {
   const location = useLocation();
   const pathname = location.pathname.replace(/^\//, '');
   const { favourites } = useFavourites();
@@ -73,7 +76,7 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu }) => {
         >
           <img
             className={styles.menu__bottom__img}
-            src={favourite}
+            src={!isLightMode ? favourite : favouriteBlack}
             alt="Favourite-icon"
           />
           {favourites.length > 0 && (
@@ -91,7 +94,7 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu }) => {
         >
           <img
             className={styles.menu__bottom__img}
-            src={shoppingBag}
+            src={!isLightMode ? shoppingBag : shoppingBagBlack}
             alt="Shopping-bag-icon"
           />
           {cartProducts.length > 0 && (

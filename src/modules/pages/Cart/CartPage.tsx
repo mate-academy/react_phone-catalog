@@ -10,7 +10,11 @@ import styles from './CartPage.module.scss';
 import { useLoading } from '../../../Context/LoadingContext';
 import { Loader } from '../../components/Loader';
 
-export const Cart = () => {
+type Props = {
+  isLightMode: boolean;
+};
+
+export const Cart: React.FC<Props> = ({ isLightMode }) => {
   const { isLoading, startLoading, stopLoading } = useLoading();
   const navigate = useNavigate();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
@@ -74,6 +78,7 @@ export const Cart = () => {
                   <CartItem
                     key={product.id}
                     product={product}
+                    isLightMode={isLightMode}
                     removeFromCart={removeFromCart}
                     increaseCount={increaseCount}
                     decreaseCount={decreaseCount}

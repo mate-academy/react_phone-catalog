@@ -28,24 +28,23 @@
 }
 
 .breadcrumbs__title {
-  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
   text-decoration: none;
-  color: #89939A;
+  color: var(--second-text-color);
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #905BFF;
+    color: var(--bread-text-hover);
   }
 }
 
 .breadcrumbs__title--white {
-  color: #F1F2F9;
+  color: var(--text-color);
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #905BFF;
+    color: var(--bread-text-hover);
   }
 }

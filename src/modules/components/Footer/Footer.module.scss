@@ -2,7 +2,7 @@
 
 .footer {
   width: 100%;
-  border-top: 1px solid #3B3E4A;
+  border-top: var(--header-border);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,18 +54,17 @@
 }
 
 .footer__link {
-  font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 4%;
   text-transform: uppercase;
   text-decoration: none;
-  color: #75767F;
+  color: var(--second-text-color);
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #F1F2F9;
+    color: var(--text-color);
   }
 }
 
@@ -84,15 +83,18 @@
     display: flex;
     justify-content: center;
     align-items:center;
-    background-color: #323542;
+    background-color: var(--button-background-color);
     padding: 7px;
-    border: none;
-    transition: background-color 0.3s ease-in-out;
+    border: var(--button-border);
+    transition:
+      background-color 0.3s ease-in-out,
+      border 0.3s ease-in-out;
   }
 
   &:hover {
     .footer__button {
-      background-color: #75767F;
+      background-color: var(--button-background-color-hover);
+      border: var(--button-border-hover);
     }
   }
 }
@@ -103,11 +105,10 @@
 }
 
 .footer__button-info {
-  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
   letter-spacing: 0%;
   text-align: center;
-  color: #75767F;
+  color: var(--second-text-color);
 }

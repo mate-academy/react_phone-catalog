@@ -9,7 +9,11 @@ import styles from './Favourites.module.scss';
 import { useLoading } from '../../../Context/LoadingContext';
 import { Loader } from '../../components/Loader';
 
-export const Favourites = () => {
+type Props = {
+  isLightMode: boolean;
+};
+
+export const Favourites: React.FC<Props> = ({ isLightMode }) => {
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const { favourites } = useFavourites();
@@ -38,7 +42,7 @@ export const Favourites = () => {
       {isLoading && <Loader />}
       {!isLoading && !errorMessage && (
         <>
-          <Breadcrumbs product={null} />
+          <Breadcrumbs product={null} isLightMode={isLightMode} />
           <h1 className={styles.favourite__title}>Favourites</h1>
           {favouriteProducts.length === 0 ? (
             <p className={styles['favourite__not-found']}>

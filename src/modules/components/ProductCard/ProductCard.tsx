@@ -8,9 +8,14 @@ import { useCart } from '../../../Context/CartContext';
 type Props = {
   product: Product;
   withFullPrice: boolean;
+  isLightMode: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, withFullPrice }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  withFullPrice,
+  isLightMode,
+}) => {
   const { favourites, addToFavourites, removeFromFavourites, isFavourite } =
     useFavourites();
   const { cartProducts, addToCart, removeFromCart, isInCart } = useCart();
@@ -79,6 +84,7 @@ export const ProductCard: React.FC<Props> = ({ product, withFullPrice }) => {
         handleCartClick={handleCartClick}
         isFavourite={isFavourite(product.id.toString())}
         handleFavouriteClick={handleFavouriteClick}
+        isLightMode={isLightMode}
       />
     </div>
   );

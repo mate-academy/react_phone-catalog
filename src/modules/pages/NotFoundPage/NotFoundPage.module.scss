@@ -8,27 +8,25 @@
   align-self: center;
   max-width: 80%;
   min-width: 300px;
-  margin: 64px auto;
+  margin: 64px 0;
   min-height: calc(100vh - 500px);
+  background-color: var(--error-background-color);
 
   @include on-tablet {
-    padding-inline: 24px;
     min-height: calc(100vh - 273px);
   }
 
   @include on-desktop {
-    padding-inline: 32px;
     min-height: calc(68vh);
   }
 }
 
 .error__page__title {
-  font-family: Montserrat, sans-serif;
   font-weight: 800;
   line-height: 41px;
   font-size: 32px;
   margin-bottom: 24px;
-  color: #f1f2f9;
+  color: var(--text-color);
 }
 
 .error__page__link {
@@ -37,11 +35,10 @@
   align-items: center;
   box-sizing: border-box;
   padding: 6px 10px;
-  background-color: #905bff;
-  font-family: Montserrat, sans-serif;
+  background-color: var(--button-add-cart-background-color);
   font-weight: 700;
   font-size: 20px;
-  color: #f1f2f9;
+  color: var(--button-add-border-text);
   text-decoration: none;
 }
 

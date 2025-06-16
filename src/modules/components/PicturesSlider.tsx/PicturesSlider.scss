@@ -1,7 +1,6 @@
 @import '../../../styles/mixins';
 
 .swiper {
-  background-color: #0F1121;
   display: flex;
   flex-direction: column;
 
@@ -63,16 +62,17 @@
 .swiper__bars__item {
   width: 14px;
   height: 4px;
-  background-color: #3B3E4A;
+  background-color: var(--swiper-bars-color);
+  cursor: pointer;
 }
 
 .swiper__bars__item--is-active {
-  background-color: #F1F2F9;
+  background-color: var(--swiper-bars-color-active);
 }
 
 .swiper__prev {
   left: 16px;
-  background-image: url('../../../img/icons/arrow-left-white.svg');
+  background-image: var(--button-background-image-arrow-left);
 
   @include on-tablet {
     left: 24px;
@@ -85,7 +85,7 @@
 
 .swiper__next {
   right: 16px;
-  background-image: url('../../../img/icons/arrow-right-white.svg');
+  background-image: var(--button-background-image-arrow-right);
 
   @include on-tablet {
     right: 24px;
@@ -103,16 +103,19 @@
   z-index: 1;
   width: 32px;
   height: 189px;
-  background-color: #323542;
-  border: none;
+  background-color: var(--button-background-color);
+  border: var( --button-border);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  transition:
+    background-color 0.3s ease-in-out,
+    border 0.3s ease-in-out;
 
   &:hover {
-    background-color: #4A4D58;
+    background-color: var(--button-background-color-hover);
+    border: var(--button-border-hover);
   }
 
   @include on-tablet {
@@ -122,4 +125,20 @@
   @include on-desktop {
     height: 400px;
   }
+}
+
+body:not(.light) .swiper__prev {
+  background-image: url('../../../img/icons/arrow-left-white.svg');
+}
+
+body.light .swiper__prev {
+  background-image: url('../../../img/icons/arrow-left-black.svg');
+}
+
+body:not(.light) .swiper__next {
+  background-image: url('../../../img/icons/arrow-right-white.svg');
+}
+
+body.light .swiper__next {
+  background-image: url('../../../img/icons/arrow-right-black.svg');
 }

@@ -70,19 +70,17 @@
 }
 
 .category__title {
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 20px;
   line-height: 100%;
-  color: #F1F2F9;
+  color: var(--text-color);
   margin-bottom: 4px;
 }
 
 .category__info {
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #75767F;
+  color: var(--second-text-color);
   margin-bottom: 32px;
 }

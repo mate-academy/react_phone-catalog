@@ -62,11 +62,11 @@
   align-items: center;
   max-width: 49px;
   max-height: 49px;
+  border: var(--picture-galery-item-border);
 
   @include on-tablet {
     width: 35px;
     height: 35px;
-    border: none;
   }
 
   @include on-desktop {
@@ -76,7 +76,7 @@
 }
 
 .picture__gallery__pagination--item--active {
-  border: 1px solid #C4C4C4;
+  border: var(--picture-galery-item-border-active);
 }
 
 .picture__gallery__pagination--image {

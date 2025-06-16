@@ -10,7 +10,11 @@ import { Category } from '../../components/Category/Category.js';
 import { useLoading } from '../../../Context/LoadingContext.js';
 import { Loader } from '../../components/Loader/Loader.js';
 
-export const HomePage = () => {
+type Props = {
+  isLightMode: boolean;
+};
+
+export const HomePage: React.FC<Props> = ({ isLightMode }) => {
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [allProducts, setProducts] = useState<Product[]>([]);
   const [errorMessage, setErrorMessage] = useState<ErrorMessage | null>(null);
@@ -56,7 +60,11 @@ export const HomePage = () => {
             <h2 className={`${styles.section__title} ${styles.brand__title}`}>
               Brand new models
             </h2>
-            <ProductsSlider products={newModels} sortBy="year" />
+            <ProductsSlider
+              products={newModels}
+              sortBy="year"
+              isLightMode={isLightMode}
+            />
           </section>
           <section className={styles.home__page__category}>
             <h2 className={styles.section__title}>Shop by category</h2>
@@ -71,6 +79,7 @@ export const HomePage = () => {
             <ProductsSlider
               products={hotPricesProducts}
               sortBy="fullPrice"
+              isLightMode={isLightMode}
               showFullPrice={true}
             />
           </section>

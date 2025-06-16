@@ -25,7 +25,11 @@ import { BackButton } from '../../components/BackButton';
 import { useLoading } from '../../../Context/LoadingContext';
 import { Loader } from '../../components/Loader';
 
-export const ProductDetail = () => {
+type Props = {
+  isLightMode: boolean;
+};
+
+export const ProductDetail: React.FC<Props> = ({ isLightMode }) => {
   const { isLoading, startLoading, stopLoading } = useLoading();
   const { itemId } = useParams();
   const [products, setProducts] = useState<Product[]>([]);
@@ -120,7 +124,7 @@ export const ProductDetail = () => {
       {isLoading && <Loader />}
       {!isLoading && !errorMessage && (
         <>
-          <Breadcrumbs product={product} />
+          <Breadcrumbs product={product} isLightMode={isLightMode} />
           <BackButton product={product} navigate={navigate} />
           <h1 className={styles.product__details__title}>{product?.name}</h1>
           <div className={styles.product__details}>
@@ -136,6 +140,7 @@ export const ProductDetail = () => {
                 product={product}
                 allProducts={products}
                 categoryProducts={categoryProducts}
+                isLightMode={isLightMode}
               />
             )}
           </div>
@@ -147,7 +152,10 @@ export const ProductDetail = () => {
             <h1 className={styles.product__details__title}>
               You may also like
             </h1>
-            <ProductsSlider products={getSuggestedProducts(products)} />
+            <ProductsSlider
+              products={getSuggestedProducts(products)}
+              isLightMode={isLightMode}
+            />
           </div>
         </>
       )}

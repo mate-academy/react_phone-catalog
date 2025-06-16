@@ -10,12 +10,14 @@ type Props = {
   product: ProductData;
   allProducts: Product[];
   categoryProducts: ProductData[];
+  isLightMode: boolean;
 };
 
 export const ProductPurchasePanel: React.FC<Props> = ({
   product,
   allProducts,
   categoryProducts,
+  isLightMode,
 }) => {
   const productId: Product = allProducts.find(p => p.itemId === product.id);
   const { favourites, addToFavourites, removeFromFavourites, isFavourite } =
@@ -109,6 +111,7 @@ export const ProductPurchasePanel: React.FC<Props> = ({
           handleCartClick={handleCartClick}
           isFavourite={isFavourite(productId.id.toString())}
           handleFavouriteClick={handleFavouriteClick}
+          isLightMode={isLightMode}
         />
         <div className={styles.panel__details}>
           <div className={styles.panel__detail}>

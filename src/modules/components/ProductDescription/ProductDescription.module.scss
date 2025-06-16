@@ -22,13 +22,12 @@
   box-sizing: border-box;
   padding-bottom: 16px;
   text-align: left;
-  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 100%;
-  color: #F1F2F9;
+  color: var(--text-color);
   margin-bottom: 32px;
-  border-bottom: 1px solid #3B3E4A;
+  border-bottom: var(--header-border);
 
   @include on-tablet {
     font-weight: 800;
@@ -56,11 +55,10 @@
 }
 
 .product__description__box--text {
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #89939A;
+  color: var(--second-text-color);
   text-align: left;
   margin-bottom: 32px;
 }

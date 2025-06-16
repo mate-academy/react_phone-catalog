@@ -10,12 +10,15 @@
 }
 
 .back__button__text {
-  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
-  color: #F1F2F9;
+  color: var(--text-color);
   transition: color 0.3s ease-in-out;
+}
+
+body:not(.light) .back__button__image {
+  background-image: url('../../../img/icons/arrow-back-button-black.svg');
 }
 
 .back__button {
@@ -24,15 +27,16 @@
   align-items: center;
   gap: 4px;
   border: none;
-  background-color: #0F1121;
+  background-color: var(--background-color);
   margin-bottom: 16px;
+  cursor: pointer;
 
   &:hover {
     .back__button__image {
       background-image: url('../../../img/icons/arrow-back-button-purple.svg');
     }
     .back__button__text {
-      color: #905BFF;
+      color: var(--bread-text-hover);
     }
   }
 }

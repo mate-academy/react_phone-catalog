@@ -1,6 +1,6 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Selector } from '../../components/Selector';
 import { getAllProducts } from '../../../api/products';
 import { ErrorMessage } from '../../../types/ErrorMessage';
@@ -10,6 +10,10 @@ import { ProductList } from '../../components/ProductList';
 import { Pagination } from '../../components/Pagination';
 import { useLoading } from '../../../Context/LoadingContext.js';
 import { Loader } from '../../components/Loader/Loader.js';
+
+type Props = {
+  isLightMode: boolean;
+};
 
 const sortOptions = [
   {
@@ -32,7 +36,7 @@ const perPageOptions = perPageValues.map(option => ({
   label: option,
 }));
 
-export const ProductPage = () => {
+export const ProductPage: React.FC<Props> = ({ isLightMode }) => {
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const location = useLocation();
@@ -51,12 +55,6 @@ export const ProductPage = () => {
   }, [allProducts, category]);
 
   const totalPages = Math.ceil(filterProducts.length / pageSelector);
-
-  const startIndex = (currentPage - 1) * pageSelector;
-  const visibleProducts = filterProducts.slice(
-    startIndex,
-    startIndex + pageSelector,
-  );
 
   useEffect(() => {
     startLoading();
@@ -123,7 +121,7 @@ export const ProductPage = () => {
   const pageCategoryTitle = searchLocation(category);
 
   const sortedProducts = useMemo(() => {
-    const sorted = [...visibleProducts];
+    const sorted = [...filterProducts];
 
     switch (sortType) {
       case 'alphabetically':
@@ -139,7 +137,13 @@ export const ProductPage = () => {
     }
 
     return sorted;
-  }, [visibleProducts, sortType]);
+  }, [filterProducts, sortType]);
+
+  const startIndex = (currentPage - 1) * pageSelector;
+  const visibleProducts = sortedProducts.slice(
+    startIndex,
+    startIndex + pageSelector,
+  );
 
   return (
     <main className={styles.products}>
@@ -147,7 +151,7 @@ export const ProductPage = () => {
       {!isLoading && !errorMessage && (
         <>
           <div className={styles.products__container}>
-            <Breadcrumbs product={null} />
+            <Breadcrumbs product={null} isLightMode={isLightMode} />
             <h1 className={styles.products__title}>{pageCategoryTitle}</h1>
             <span className={styles['products__models-count']}>
               {filterProducts.length} models
@@ -179,10 +183,11 @@ export const ProductPage = () => {
                 setCurrentSelector={handleSetCurrentSelector}
               />
             </div>
-            <ProductList products={sortedProducts} />
+            <ProductList products={visibleProducts} isLightMode={isLightMode} />
             <Pagination
               totalPages={totalPages}
               currentPage={currentPage}
+              isLightMode={isLightMode}
               handlerPageSelector={handlerPageSelector}
             />
           </div>

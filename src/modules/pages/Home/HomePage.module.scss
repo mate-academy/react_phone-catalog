@@ -1,10 +1,11 @@
 @import '../../../styles/mixins';
+@import '../../../styles/variables';
+
 
 .home__page {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #0F1121;
   box-sizing: border-box;
   padding-top: 24px;
   min-height: calc(100vh - 298px);
@@ -24,12 +25,10 @@
 
 .home__page__title {
   box-sizing: border-box;
-  font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
   text-align: left;
-  color: #F1F2F9;
   margin-bottom: 24px;
   padding-inline: 16px;
 
@@ -47,11 +46,9 @@
 }
 
 .section__title {
-  font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
-  color: #F1F2F9;
   margin-bottom: 24px;
 
   @include on-tablet {
