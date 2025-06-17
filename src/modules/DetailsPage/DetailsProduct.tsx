@@ -81,10 +81,11 @@ if(!product){return}
       <Container>
         <PageNav />
         <TitlePages type={'details'} />
-<div className={styles.wrappe}>
-        <Carousel
-          images={product?.images} />
+<div className={styles.wrapper}>
+      <div className={styles.wrapper__carousel}> <Carousel
+          images={product?.images} /></div>
 
+          <div className={styles.wrapper__info}>
         <DetailsChange
           type={'color'}
           title={'Available color'}
@@ -101,21 +102,27 @@ if(!product){return}
         <Price
           fullPrice={product.priceRegular}
           discount={product.priceDiscount} />
-        <Buttons />
+            <Buttons />
 
         <TechDetails
           screen={product.screen}
           resolution={product.resolution}
           procesor={product.processor}
           ram={product.ram}
-        />
-        <About
-          description={product.description } />
-        <TechSpecs
-            objectTech={objectTech} />
-          </div>
+            /></div>
 
-        <ProductSlider type={'favourites'} />
+</div>
+
+<div className={styles.aboutwrapper}>
+        <div className={styles.aboutwrapper__about} ><About
+          description={product.description } />
+</div>
+          <div className={styles.aboutwrapper__tech}> <TechSpecs
+            objectTech={objectTech} /></div>
+
+</div>
+          <ProductSlider type={'favourites'} />
+
       </Container>{' '}
     </>
   :"null");

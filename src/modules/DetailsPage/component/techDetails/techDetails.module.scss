@@ -1,12 +1,20 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
 .tech{
   margin-bottom: 52px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @include mixin.onTablet{
+    max-width: 237px;
+  }
+@include mixin.onDesktop{
+  max-width: 320px;
+}
 &__box{
   margin-bottom: 8px;
   display: flex;
 justify-content: space-between;
+
 }
 &__name{
   color: #89939A;

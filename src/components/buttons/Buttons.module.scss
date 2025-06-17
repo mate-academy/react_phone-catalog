@@ -4,7 +4,12 @@ margin-bottom: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  @include mixin.onTablet{
+    justify-content: left;
+  }
+@include mixin.onDesktop{
+  justify-content: left;
+}
 &__addCart{
   width: 100%;
 
@@ -21,10 +26,10 @@ line-height: 48px;
 letter-spacing: 0%;
 text-align: center;
 @include mixin.onTablet{
-
+width: 180px;
   }
   @include mixin.onDesktop{
-
+width: 263px;
     &:hover{
     box-shadow: 0px 3px 13px 0px #17203166;
 

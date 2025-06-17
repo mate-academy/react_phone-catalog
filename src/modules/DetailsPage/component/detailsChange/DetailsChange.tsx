@@ -19,7 +19,7 @@ export const DetailsChange = ({ title, option,selected,onSelect ,type}:Props) =>
       <div className={styles.colors}>
         <div className={styles.colors__title}>
           <span className={styles.colors__text}>{title }</span>
-          <span className={styles.colors__text}>{`ID:` }</span>
+         { type==='color' && <span className={styles.colors__text}>{`ID:` }</span>}
         </div>
        <ul className={styles.colors__list}>
   {option.map(opt => (

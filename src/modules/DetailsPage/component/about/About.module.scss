@@ -1,4 +1,7 @@
 .about{
+  display: flex;
+  flex-direction: column;
+  
   margin-bottom: 56px;
   &__title{
     margin: 0;
