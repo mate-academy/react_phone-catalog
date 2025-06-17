@@ -94,9 +94,7 @@ export const AccessoryDetails: React.FC = () => {
         <h2>{accessory.name}</h2>
       </div>
       <div className="accessory-start">
-        {/* Image Gallery */}
         <div className="accessory-gallery">
-          {/* Thumbnails */}
           <div className="accessory-gallery__thumbnails">
             {currentImages.map((image, index) => (
               <img
@@ -108,7 +106,6 @@ export const AccessoryDetails: React.FC = () => {
               />
             ))}
           </div>
-          {/* Large Image */}
           <img
             src={selectedImage || currentImages[0]}
             alt={accessory.name}
@@ -116,21 +113,19 @@ export const AccessoryDetails: React.FC = () => {
           />
         </div>
 
-        {/* Accessory Information */}
         <div>
-          {/* Capacity Selection */}
           <h3>Choose a Capacity:</h3>
           <div className="capacity-picker">
             {accessory.capacityAvailable.map((capacity) => (
               <button
                 key={capacity}
                 onClick={() => handleCapacityChange(capacity)}
+                className={selectedCapacity === capacity ? 'selected' : ''}
               >
                 {capacity}
               </button>
             ))}
           </div>
-          {/* Choose a color */}
           <h3>Choose a color:</h3>
           <div className="color-picker">
             {accessory.colorsAvailable.map((color) => (

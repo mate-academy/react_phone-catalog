@@ -45,17 +45,41 @@ export const Slideshow: React.FC = () => {
   };
 
   return (
-    <div
-      className="slideshow"
-      onTouchStart={handleSwipe}
-    >
-      <button onClick={handlePrev}>&#10094;</button>
-      <img
-        src={images[currentIndex]}
-        alt={`Slide ${currentIndex + 1}`}
-        className="img"
-      />
-      <button onClick={handleNext}>&#10095;</button>
+    <div className="slider-wrapper">
+      <div
+        className="slideshow"
+        onTouchStart={handleSwipe}
+      >
+        <button
+          onClick={handlePrev}
+          className="arrow left"
+        >
+          &#10094;
+        </button>
+
+        <img
+          src={images[currentIndex]}
+          alt={`Slide ${currentIndex + 1}`}
+          className="img"
+        />
+
+        <button
+          onClick={handleNext}
+          className="arrow right"
+        >
+          &#10095;
+        </button>
+      </div>
+
+      <div className="dots">
+        {images.map((_, index) => (
+          <span
+            key={index}
+            className={`dot ${currentIndex === index ? 'active' : ''}`}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

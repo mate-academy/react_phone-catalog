@@ -18,12 +18,56 @@ export const Phones: React.FC = () => {
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('query')?.toLowerCase() || '';
 
-  const [sortOption, setSortOption] = useState('default');
-  const [itemsPerPage, setItemsPerPage] = useState(4);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [sortOption, setSortOption] = useState(() => {
+    return localStorage.getItem('sortOption') || 'default';
+  });
 
-  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
-  const [addToCartIds, setAddToCartIds] = useState<Set<string>>(new Set());
+  const [itemsPerPage, setItemsPerPage] = useState(() => {
+    const stored = localStorage.getItem('itemsPerPage');
+    return stored ? +stored : 4;
+  });
+
+  const [currentPage, setCurrentPage] = useState(() => {
+    const stored = localStorage.getItem('currentPage');
+    return stored ? +stored : 1;
+  });
+
+  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(() => {
+    const stored = localStorage.getItem('favoriteIds');
+    return stored ? new Set(JSON.parse(stored)) : new Set();
+  });
+
+  const [addToCartIds, setAddToCartIds] = useState<Set<string>>(() => {
+    const stored = localStorage.getItem('addToCartIds');
+    return stored ? new Set(JSON.parse(stored)) : new Set();
+  });
+
+  useEffect(() => {
+    const storedCartIds = localStorage.getItem('addToCartIds');
+    const storedFavIds = localStorage.getItem('favoriteIds');
+
+    if (storedCartIds) {
+      setAddToCartIds(new Set(JSON.parse(storedCartIds)));
+    }
+
+    if (storedFavIds) {
+      setFavoriteIds(new Set(JSON.parse(storedFavIds)));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'addToCartIds',
+      JSON.stringify(Array.from(addToCartIds)),
+    );
+  }, [addToCartIds]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'favoriteIds',
+      JSON.stringify(Array.from(favoriteIds)),
+    );
+  }, [favoriteIds]);
 
   const toggleFavorite = (phone: Phone) => {
     setFavoriteIds((prev) => {
@@ -35,11 +79,23 @@ export const Phones: React.FC = () => {
         newSet.add(phone.id);
       }
 
-      addToFavorites(phone); // якщо хочеш також зберігати глобально
+      addToFavorites(phone);
 
       return newSet;
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem('sortOption', sortOption);
+  }, [sortOption]);
+
+  useEffect(() => {
+    localStorage.setItem('itemsPerPage', itemsPerPage.toString());
+  }, [itemsPerPage]);
+
+  useEffect(() => {
+    localStorage.setItem('currentPage', currentPage.toString());
+  }, [currentPage]);
 
   const toggleToCart = (phone: Phone) => {
     setAddToCartIds((prev) => {
@@ -51,7 +107,7 @@ export const Phones: React.FC = () => {
         newSet.add(phone.id);
       }
 
-      addToCart(phone); // якщо хочеш також зберігати глобально
+      addToCart(phone);
 
       return newSet;
     });
@@ -202,7 +258,6 @@ export const Phones: React.FC = () => {
                   addToCartIds.has(phone.id) ? 'added' : ''
                 }`}
                 onClick={() => toggleToCart(phone)}
-                disabled={addToCartIds.has(phone.id)}
               >
                 {addToCartIds.has(phone.id) ? 'Added' : 'Add to cart'}
               </button>

@@ -19,8 +19,43 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
   const [error, setError] = useState<string | null>(null);
   const { addToCart, addToFavorites } = useCartContext();
   const [phonesPerPage, setPhonesPerPage] = useState(4);
-  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
-  const [addToCartIds, setAddToCartIds] = useState<Set<string>>(new Set());
+
+  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(() => {
+    const stored = localStorage.getItem('favoriteIds');
+    return stored ? new Set(JSON.parse(stored)) : new Set();
+  });
+
+  const [addToCartIds, setAddToCartIds] = useState<Set<string>>(() => {
+    const stored = localStorage.getItem('addToCartIds');
+    return stored ? new Set(JSON.parse(stored)) : new Set();
+  });
+
+  useEffect(() => {
+    const storedCartIds = localStorage.getItem('addToCartIds');
+    const storedFavIds = localStorage.getItem('favoriteIds');
+
+    if (storedCartIds) {
+      setAddToCartIds(new Set(JSON.parse(storedCartIds)));
+    }
+
+    if (storedFavIds) {
+      setFavoriteIds(new Set(JSON.parse(storedFavIds)));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'addToCartIds',
+      JSON.stringify(Array.from(addToCartIds)),
+    );
+  }, [addToCartIds]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'favoriteIds',
+      JSON.stringify(Array.from(favoriteIds)),
+    );
+  }, [favoriteIds]);
 
   const toggleFavorite = (phone: Phone) => {
     setFavoriteIds((prev) => {
@@ -32,7 +67,7 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
         newSet.add(phone.id);
       }
 
-      addToFavorites(phone); // якщо хочеш також зберігати глобально
+      addToFavorites(phone);
 
       return newSet;
     });
@@ -48,7 +83,7 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
         newSet.add(phone.id);
       }
 
-      addToCart(phone); // якщо хочеш також зберігати глобально
+      addToCart(phone);
 
       return newSet;
     });
@@ -89,7 +124,7 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
       }
     };
 
-    handleResize(); // Викликаємо одразу при першому рендері
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
@@ -106,7 +141,7 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
       setTimeout(() => {
         setStartIndex((prev) => prev + phonesPerPage);
         setIsAnimating(false);
-      }, 500); // тривалість анімації у ms
+      }, 500);
     }
   };
 
@@ -175,7 +210,6 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
                   addToCartIds.has(phone.id) ? 'added' : ''
                 }`}
                 onClick={() => toggleToCart(phone)}
-                disabled={addToCartIds.has(phone.id)}
               >
                 {addToCartIds.has(phone.id) ? 'Added' : 'Add to cart'}
               </button>

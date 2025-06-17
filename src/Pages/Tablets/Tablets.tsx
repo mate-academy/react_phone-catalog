@@ -18,12 +18,56 @@ export const Tablets: React.FC = () => {
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('query')?.toLowerCase() || '';
 
-  const [sortOption, setSortOption] = useState('default');
-  const [itemsPerPage, setItemsPerPage] = useState(4);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [sortOption, setSortOption] = useState(() => {
+    return localStorage.getItem('sortOption') || 'default';
+  });
 
-  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
-  const [addToCartIds, setAddToCartIds] = useState<Set<string>>(new Set());
+  const [itemsPerPage, setItemsPerPage] = useState(() => {
+    const stored = localStorage.getItem('itemsPerPage');
+    return stored ? +stored : 4;
+  });
+
+  const [currentPage, setCurrentPage] = useState(() => {
+    const stored = localStorage.getItem('currentPage');
+    return stored ? +stored : 1;
+  });
+
+  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(() => {
+    const stored = localStorage.getItem('favoriteIds');
+    return stored ? new Set(JSON.parse(stored)) : new Set();
+  });
+
+  const [addToCartIds, setAddToCartIds] = useState<Set<string>>(() => {
+    const stored = localStorage.getItem('addToCartIds');
+    return stored ? new Set(JSON.parse(stored)) : new Set();
+  });
+
+  useEffect(() => {
+    const storedCartIds = localStorage.getItem('addToCartIds');
+    const storedFavIds = localStorage.getItem('favoriteIds');
+
+    if (storedCartIds) {
+      setAddToCartIds(new Set(JSON.parse(storedCartIds)));
+    }
+
+    if (storedFavIds) {
+      setFavoriteIds(new Set(JSON.parse(storedFavIds)));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'addToCartIds',
+      JSON.stringify(Array.from(addToCartIds)),
+    );
+  }, [addToCartIds]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'favoriteIds',
+      JSON.stringify(Array.from(favoriteIds)),
+    );
+  }, [favoriteIds]);
 
   const toggleFavorite = (tablet: Tablet) => {
     setFavoriteIds((prev) => {
@@ -56,6 +100,18 @@ export const Tablets: React.FC = () => {
       return newSet;
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem('sortOption', sortOption);
+  }, [sortOption]);
+
+  useEffect(() => {
+    localStorage.setItem('itemsPerPage', itemsPerPage.toString());
+  }, [itemsPerPage]);
+
+  useEffect(() => {
+    localStorage.setItem('currentPage', currentPage.toString());
+  }, [currentPage]);
 
   const sortedProducts = useMemo(() => {
     const sorted = [...filteredTablets];
@@ -199,7 +255,6 @@ export const Tablets: React.FC = () => {
                   addToCartIds.has(tablet.id) ? 'added' : ''
                 }`}
                 onClick={() => toggleToCart(tablet)}
-                disabled={addToCartIds.has(tablet.id)}
               >
                 {addToCartIds.has(tablet.id) ? 'Added' : 'Add to cart'}
               </button>

@@ -15,6 +15,9 @@ export const PhoneDetails: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const { addToCart, addToFavorites } = useCartContext();
+  const [currentPrice, setCurrentPrice] = useState<number | null>(null);
+  const [allPhones, setAllPhones] = useState<Phone[]>([]);
+  const [selectedPhone, setSelectedPhone] = useState<Phone | null>(null);
 
   useEffect(() => {
     const fetchPhoneDetails = async () => {
@@ -33,10 +36,16 @@ export const PhoneDetails: React.FC = () => {
         }
 
         setPhone(foundPhone);
-        setSelectedColor(foundPhone.color); // Встановлюємо початковий колір
-        setCurrentImages(foundPhone.images); // Встановлюємо початкові зображення
-        setSelectedImage(foundPhone.images[0]); // Початкове велике зображення
-        setSelectedCapacity(foundPhone.capacity[0]);
+        setSelectedColor(foundPhone.color);
+        setCurrentImages(foundPhone.images);
+        setSelectedImage(foundPhone.images[0]);
+        const initialCapacity = foundPhone.capacity;
+        setSelectedCapacity(initialCapacity);
+        setAllPhones(data);
+        setSelectedPhone(foundPhone);
+
+        const initialPrice = foundPhone.capacityPrice?.[initialCapacity];
+        setCurrentPrice(initialPrice || foundPhone.priceRegular);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
@@ -51,7 +60,10 @@ export const PhoneDetails: React.FC = () => {
     fetchPhoneDetails();
   }, [id]);
 
-  // Функція для зміни кольору
+  const generateId = (namespaceId: string, capacity: string, color: string) => {
+    return `${namespaceId}-${capacity.toLowerCase()}-${color}`;
+  };
+
   const handleColorChange = (color: string) => {
     if (!phone) {
       return;
@@ -59,21 +71,33 @@ export const PhoneDetails: React.FC = () => {
 
     setSelectedColor(color);
 
-    // Створюємо новий шлях до зображень для обраного кольору
     const newImages = phone.images.map((image) =>
       image.replace(phone.color, color),
     );
 
     setCurrentImages(newImages);
-    setSelectedImage(newImages[0]); // Оновлюємо велике зображення
+    setSelectedImage(newImages[0]);
   };
 
   const handleCapacityChange = (capacity: string) => {
-    if (!phone) {
-      return;
-    }
+    if (!phone) return;
 
     setSelectedCapacity(capacity);
+
+    const newId = generateId(
+      phone.namespaceId,
+      capacity,
+      selectedColor || phone.color,
+    );
+    const matchedPhone = allPhones.find((p) => p.id === newId);
+
+    if (matchedPhone) {
+      setSelectedPhone(matchedPhone);
+      setCurrentPrice(matchedPhone.priceDiscount ?? matchedPhone.priceRegular);
+    } else {
+      setSelectedPhone(phone);
+      setCurrentPrice(phone.priceRegular);
+    }
   };
 
   if (loading) {
@@ -100,9 +124,7 @@ export const PhoneDetails: React.FC = () => {
         <h2>{phone.name}</h2>
       </div>
       <div className="phone-start">
-        {/* Галерея зображень */}
         <div className="phone-gallery">
-          {/* Мініатюри */}
           <div className="phone-gallery__thumbnails">
             {currentImages.map((image, index) => (
               <img
@@ -114,7 +136,6 @@ export const PhoneDetails: React.FC = () => {
               />
             ))}
           </div>
-          {/* Велике зображення */}
           <img
             src={selectedImage || currentImages[0]}
             alt={phone.name}
@@ -122,9 +143,7 @@ export const PhoneDetails: React.FC = () => {
           />
         </div>
 
-        {/* Інформація про телефон */}
         <div>
-          {/* Вибір кольору */}
           <h3 className="color-picker__title">Available color</h3>
           <div className="color-picker">
             {phone.colorsAvailable.map((color) => (
@@ -153,11 +172,9 @@ export const PhoneDetails: React.FC = () => {
               ))}
             </div>
             <hr />
-            <span className="info-phone__price--new">
-              ${phone.priceDiscount}
-            </span>
+            <span className="info-phone__price--new">${currentPrice}</span>
             <span className="info-phone__price--old">
-              ${phone.priceRegular}
+              ${selectedPhone?.priceRegular}
             </span>
             <div className="info-phone__actions">
               <button
@@ -191,14 +208,13 @@ export const PhoneDetails: React.FC = () => {
         </div>
 
         <div className="Description">
-          {/* Опис телефону */}
           <div className="box_one">
             <h3>Description</h3>
             <div className="span">
               <span>Color:</span> <span>{selectedColor}</span>
             </div>
             <div className="span">
-              <span>Price:</span> <span>${phone.priceDiscount}</span>
+              <span>Price:</span> <span>${currentPrice}</span>
             </div>
             <div className="span">
               <span>Capacity:</span> <span>{selectedCapacity}</span>

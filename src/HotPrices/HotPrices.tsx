@@ -13,8 +13,43 @@ export const HotPrices: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const { addToCart, addToFavorites } = useCartContext();
   const [phonesPerPage, setPhonesPerPage] = useState(4);
-  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
-  const [addToCartIds, setAddToCartIds] = useState<Set<string>>(new Set());
+
+  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(() => {
+    const stored = localStorage.getItem('favoriteIds');
+    return stored ? new Set(JSON.parse(stored)) : new Set();
+  });
+
+  const [addToCartIds, setAddToCartIds] = useState<Set<string>>(() => {
+    const stored = localStorage.getItem('addToCartIds');
+    return stored ? new Set(JSON.parse(stored)) : new Set();
+  });
+
+  useEffect(() => {
+    const storedCartIds = localStorage.getItem('addToCartIds');
+    const storedFavIds = localStorage.getItem('favoriteIds');
+
+    if (storedCartIds) {
+      setAddToCartIds(new Set(JSON.parse(storedCartIds)));
+    }
+
+    if (storedFavIds) {
+      setFavoriteIds(new Set(JSON.parse(storedFavIds)));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'addToCartIds',
+      JSON.stringify(Array.from(addToCartIds)),
+    );
+  }, [addToCartIds]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'favoriteIds',
+      JSON.stringify(Array.from(favoriteIds)),
+    );
+  }, [favoriteIds]);
 
   const toggleFavorite = (phone: Phone) => {
     setFavoriteIds((prev) => {
@@ -171,7 +206,6 @@ export const HotPrices: React.FC = () => {
                   addToCartIds.has(phone.id) ? 'added' : ''
                 }`}
                 onClick={() => toggleToCart(phone)}
-                disabled={addToCartIds.has(phone.id)}
               >
                 {addToCartIds.has(phone.id) ? 'Added' : 'Add to cart'}
               </button>

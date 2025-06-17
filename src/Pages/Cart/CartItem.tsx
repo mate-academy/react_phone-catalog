@@ -53,7 +53,6 @@ export const CartItem: React.FC<CartItemProps> = ({
       <div className="cart-item__info">
         <h3 className="cart-item__name">
           <Link to={itemLink}>{item.name}</Link>{' '}
-          {/* Відображення імені товару */}
         </h3>
         <p className="cart-item__price">
           ${'priceDiscount' in item ? item.priceDiscount : item.price}

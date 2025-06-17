@@ -18,6 +18,10 @@ export interface CartContextProps {
   favouritesCount: number;
   clearCart: () => void;
   clearFavorites: () => void;
+  capacityAvailable: string[];
+  capacityPrice: {
+    [key: string]: number;
+  };
 }
 
 export const CartContext = createContext<CartContextProps | undefined>(

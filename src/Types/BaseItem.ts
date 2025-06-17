@@ -24,6 +24,9 @@ export interface BaseItem {
   cell: string[];
   model?: string;
   price: number;
+  capacityPrice: {
+    [key: string]: number;
+  };
 }
 
 export interface Phone extends BaseItem {

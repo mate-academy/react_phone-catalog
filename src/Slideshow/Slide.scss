@@ -1,38 +1,73 @@
-.slideshow {
-  height: 350px;
+.slider-wrapper {
   display: flex;
-  justify-content:space-between;
-  margin: 0;
-  padding: 0 32px 0 32px;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 32px;
 
-  button {
-    background-color: #fff;
-    border: 1px solid;
+  .slideshow {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .img {
+      width: 100%;
+      height: 100%;
+      object-fit:cover;
+      padding: 16px;
+
+    }
+
+    button {
+      background-color: #fff;
+      border: 1px solid #B4BDC3;
+      cursor: pointer;
+      z-index: 1;
+      width: 30px;
+    }
+
+    @media (max-width: 438px) {
+      height: 100vw;
+      width: 100%;
+      justify-content: center;
+      padding: 0;
+
+      button {
+        background-color: #fff;
+        border: none;
+        font-size: 24px;
+        padding: 10px;
+      }
+    }
   }
 
   @media (max-width: 438px) {
-    height: 100vw;
-    width: 100%;
+      height: 100vw;
+      padding: 0;
+
+      button {
+        display: none;
+      }
+    }
+
+  .dots {
+    display: flex;
     justify-content: center;
-    padding: 0;
+    margin-top: 16px;
+    gap: 8px;
 
-    button {
-      background: transparent;
-      background-color: #fff;
-      border: none;
-      font-size: 24px;
-      color: #fff;
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #ccc;
       cursor: pointer;
-      padding: 10px;
-      z-index: 10;
+      transition: background-color 0.3s;
 
-      &:hover {
-        color: #000;
+      &.active {
+        background-color: #333;
       }
     }
   }
 }
-
-
-

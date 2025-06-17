@@ -63,15 +63,41 @@
 }
 /* stylelint-disable-next-line no-descending-specificity */
 .capacity-picker button {
-  border-radius: 50%;
+  border: 1px solid #B4BDC3;
+  width: 56px;
+  height: 32px;
   cursor: pointer;
-  border: 3px solid gray;
+  transition: all 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  color: #000000;
+  font-size: 14px;
+  margin: 0;
+  background-color: #fff;
   transition: all 0.3s ease;
 
   &:hover {
     transform: scale(1.05);
   }
 }
+.capacity-picker button.selected {
+  width: 56px;
+  height: 32px;
+  margin: 0px;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-color: #313237;
+  color: #ffffff;
+  border: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+
 /* stylelint-disable-next-line no-descending-specificity */
 .color-picker button {
   width: 35px;

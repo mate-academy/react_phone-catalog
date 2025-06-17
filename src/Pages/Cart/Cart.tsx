@@ -26,11 +26,10 @@ export const Cart: React.FC = () => {
           ))}
         </div>
         <div className="cart-total">
-          <h3 className="total_title">
-            Total:
-            <br />
-            {total.toFixed(2)}
-          </h3>
+          <h3 className="total_title">${total}</h3>
+          <h4 className="cart-total__total_items">
+            Total for {cart.reduce((acc, curr) => acc + curr.quantity, 0)} items
+          </h4>
           <div className="cart-total__clear">
             <button
               onClick={clearCart}

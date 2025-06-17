@@ -115,11 +115,16 @@
   align-items: center;
   flex-direction: column;
   padding: 32px 0 64px;
-  gap: 50px;
+  gap: 40px;
 
   & h3 {
     font-size: 32px;
     margin: 0;
+  }
+
+  &__total_items{
+    font-size: 14px;
+    color: #89939A;
   }
 
   @media (min-width: 1024px) {
@@ -139,3 +144,4 @@
     border-top: 1px solid gray;
   }
 }
+
