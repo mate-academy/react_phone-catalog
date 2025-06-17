@@ -1,28 +1,43 @@
 @use '/src/components/utils/mixin.module.scss' as mixin;
-.container{
-margin-bottom: 40px;
 
-display: flex;
-flex-direction: column;}
+
+.container{
+  @include mixin.pageGrid;
+  margin-bottom: 40px;
+
+}
 .image{
+grid-column: span 4;
   margin-bottom: 16px;
 height: 288px;
 
    background-size:contain;
   background-position: center;
   background-repeat: no-repeat;
-
+@include mixin.onTablet{
+grid-column: 3/7;
+}
 }
 .carousel{
 
   &__list{
+display: flex;
+
+@include mixin.onTablet{
+display: grid;
+grid-row: 1/-1;
+
+}
     margin: 0;
     padding: 0;
 list-style: none;
-     display: flex;
+
     height: 49px;
-    justify-content: center;
+
     gap: 8px;
+    @include mixin.onTablet{
+
+    }
   }
   &__items{
 

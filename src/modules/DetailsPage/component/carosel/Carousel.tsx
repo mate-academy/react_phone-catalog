@@ -24,7 +24,7 @@ export const Carousel = ({ images }) => {
       <div
         style={{ backgroundImage: `url(./${images[activeIndex]})` }}
         className={styles.image} {...handlers }></div>
-    <div className={styles.carousel}>
+
         <ul className={styles.carousel__list}>
           {images.map((image, index) => <li key={index}
             className={classNames(styles.carousel__items,{[styles['carousel__items--active']]:index===activeIndex})}
@@ -33,6 +33,6 @@ export const Carousel = ({ images }) => {
       </li>)}
 
     </ul>
-    </div></div>
+    </div>
   </>)
 }

@@ -1,3 +1,4 @@
+import styles from './DetailsProduct.modiule.scss';
 import { useEffect } from 'react';
 import { Container } from '../../components/container/Container';
 import { PageNav } from '../../components/pageNav/PageNav';
@@ -62,16 +63,18 @@ if(!product){return}
     cell,
   } = product;
 
-  const objectTech = {
-    'Screen': screen,
-    'Resolution': resolution,
-    'Processor': processor,
-    'RAM': ram,
-    'Built in memory': capacity,
-    'Camera': camera,
-    'Zoom': zoom,
-    'Cell':cell.slice(0,3).join(','),
-  }
+ const objectTech = Object.fromEntries(
+  [
+    ['Screen', screen],
+    ['Resolution', resolution],
+    ['Processor', processor],
+    ['RAM', ram],
+    ['Built in memory', capacity],
+    ['Camera', camera],
+    ['Zoom', zoom],
+    ['Cell', cell?.slice(0, 3).join(', ')],
+  ].filter(([_, value]) => Boolean(value))
+);
 
   return (product?
     <>
@@ -108,8 +111,9 @@ if(!product){return}
         <About
           description={product.description } />
         <TechSpecs
-          objectTech={objectTech} />
-        <ProductSlider type={'favourites' } />
+            objectTech={objectTech} />
+          
+        <ProductSlider type={'favourites'} />
       </Container>{' '}
     </>
   :"null");
