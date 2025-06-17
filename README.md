@@ -9,10 +9,12 @@ Implement the catalog with a shopping cart and favorites page according to one o
 - [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
 
 You may also implement color theme switching!
+https://MariaKolisnyk.github.io/react_phone-catalog/
+
 
  [DEMO LINK](https://MariaKolisnyk.github.io/react_phone-catalog/)
 ## If you work in a team
- [DEMO LINK](https://MariaKolisnyk.github.io/react_phone-catalog/)
+
 
 Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
 
