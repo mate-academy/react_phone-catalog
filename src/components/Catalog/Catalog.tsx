@@ -50,7 +50,9 @@ export const Catalog: React.FC<Props> = ({ category, title }) => {
 
       <ProductList products={visibleProducts} category={category} />
 
-      {pageAmount > 1 && <Pages pageAmount={pageAmount} />}
+      {pageAmount > 1 && (
+        <Pages pageAmount={pageAmount} products={visibleProducts} />
+      )}
     </div>
   );
 };

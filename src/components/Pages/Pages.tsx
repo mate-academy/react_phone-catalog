@@ -2,12 +2,14 @@ import { useSearchParams } from 'react-router-dom';
 import { Button } from '../Button';
 import styles from './Pages.module.scss';
 import { useEffect } from 'react';
+import { Card } from '../../types/card';
 
 type Props = {
   pageAmount: number;
+  products: Card[];
 };
 
-export const Pages: React.FC<Props> = ({ pageAmount }) => {
+export const Pages: React.FC<Props> = ({ pageAmount, products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get('page') || '');
 
@@ -17,7 +19,7 @@ export const Pages: React.FC<Props> = ({ pageAmount }) => {
         top: document.body.scrollHeight,
       });
     }
-  }, [page]);
+  }, [products.length]);
 
   const nextPage = () => {
     const params = new URLSearchParams(searchParams);
