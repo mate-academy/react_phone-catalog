@@ -1,3 +1,6 @@
 @use "../../components/utils/mixin.module.scss" as mixin;
 
 
+.wrapper{
+  @include mixin.pageGrid;
+}

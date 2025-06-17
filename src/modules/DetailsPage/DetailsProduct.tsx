@@ -1,4 +1,4 @@
-import styles from './DetailsProduct.modiule.scss';
+import styles from './DetailsProduct.module.scss';
 import { useEffect } from 'react';
 import { Container } from '../../components/container/Container';
 import { PageNav } from '../../components/pageNav/PageNav';
@@ -81,6 +81,7 @@ if(!product){return}
       <Container>
         <PageNav />
         <TitlePages type={'details'} />
+<div className={styles.wrappe}>
         <Carousel
           images={product?.images} />
 
@@ -112,7 +113,8 @@ if(!product){return}
           description={product.description } />
         <TechSpecs
             objectTech={objectTech} />
-          
+          </div>
+
         <ProductSlider type={'favourites'} />
       </Container>{' '}
     </>
