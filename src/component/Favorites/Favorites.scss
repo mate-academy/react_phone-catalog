@@ -11,5 +11,5 @@
 
 .catalog__favorites {
   margin-bottom: 41px;
-  @include grid-container;
+  @include mixin.grid-container;
 }

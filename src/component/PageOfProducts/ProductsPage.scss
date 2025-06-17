@@ -13,7 +13,7 @@
 
 .main__text {
   margin: 40px 0 8px;
-  @include on-phone {
+  @include mixin.on-phone {
     margin: 24px 0 8px;
   }
 }
@@ -21,7 +21,7 @@
 .count {
   grid-column: 1/-1;
   margin-bottom: 40px;
-  @include on-phone {
+  @include mixin.on-phone {
     margin-bottom: 32px;
   }
 }

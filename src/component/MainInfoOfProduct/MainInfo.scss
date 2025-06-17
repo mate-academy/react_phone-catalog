@@ -13,7 +13,7 @@
 }
 
 .allInPage {
-  @include grid-container;
+  @include mixin.grid-container;
 
   grid-column: 1/-1;
 }
@@ -21,7 +21,7 @@
 .main {
   overflow-x: hidden;
   width: fit-content;
-  @include grid-container;
+  @include mixin.grid-container;
 
   grid-column: 1/-1;
 }
@@ -29,7 +29,7 @@
 .name-of-product {
   margin: 16px 0 40px;
   grid-column: 1/-1;
-  color: $color-text-main;
+  color: vars.$color-text-main;
 }
 
 .block-of__images {
@@ -37,10 +37,10 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     grid-column: 1/2;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     order: 2;
     flex-direction: row;
     margin-bottom: 40px;
@@ -55,8 +55,8 @@
   box-sizing: border-box;
   height: 80px;
   width: 80px;
-  border: 1px solid $shadow;
-  @include on-tablet {
+  border: 1px solid vars.$shadow;
+  @include mixin.on-tablet {
     height: 35px;
     width: 35px;
   }
@@ -67,10 +67,10 @@
   flex-direction: row;
   grid-column: 1/13;
   gap: 16px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     grid-column: 1/8;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     flex-direction: column;
   }
 }
@@ -78,24 +78,24 @@
 .second__section {
   grid-column: 14/-1;
 
-  @include on-tablet {
+  @include mixin.on-tablet {
     grid-column: 8/-1;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     grid-column: 1/-1;
   }
 }
 
 .thead__section {
   grid-column: 1/13;
-  @include on-tablet {
+  @include mixin.on-tablet {
     grid-column: 1/-1;
   }
 }
 
 .fourth__section {
   grid-column: 14/-1;
-  @include on-tablet {
+  @include mixin.on-tablet {
     grid-column: 1/-1;
     margin-top: 64px;
   }
@@ -108,13 +108,13 @@
   width: 464px;
   height: 464px;
   margin-bottom: 80px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     width: 287px;
     height: 287px;
     grid-column: 2/8;
     margin-bottom: 212px;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     order: 1;
     margin-bottom: 16px;
   }
@@ -123,13 +123,13 @@
 .block__about {
   grid-column: 1/13;
   border-bottom: 1px #3B3E4A solid;
-  @include on-tablet {
+  @include mixin.on-tablet {
     grid-column: 1/-1;
   }
 }
 
 .about__text {
-  @include text-default(22px, $color-text-main, 800, 100%);
+  @include mixin.text-default(22px, vars.$color-text-main, 800, 100%);
 
   padding-bottom: 16px;
   margin: 0;
@@ -141,17 +141,17 @@
 }
 
 .description__title {
-  @include text-default(20px, $color-text-main, 700, 100%);
+  @include mixin.text-default(20px, vars.$color-text-main, 700, 100%);
 }
 
 .description__text {
   grid-column: 1/13;
   margin: 16px 0 0;
-  @include text-default(14px, $color-text-secondary, 600, 21px);
+  @include mixin.text-default(14px, vars.$color-text-secondary, 600, 21px);
 }
 
 .available-color__text {
-  @include text-default(12px, $color-text-secondary, 700, 100%);
+  @include mixin.text-default(12px, vars.$color-text-secondary, 700, 100%);
 }
 
 .available-color {
@@ -162,7 +162,7 @@
 .colors {
   display: inline-block;
   box-sizing: border-box;
-  border: 2px solid $main-background-color;
+  border: 2px solid vars.$main-background-color;
   padding: 0;
   height: 30px;
   width: 30px;
@@ -174,7 +174,7 @@
   gap: 8px;
   margin-top: 8px;
   padding-bottom: 24px;
-  border-bottom: 1px solid $color-background-dark;
+  border-bottom: 1px solid vars.$color-background-dark;
 }
 
 .box-select-capacity {
@@ -182,7 +182,7 @@
 }
 
 .select-capacity__text {
-  @include text-default(12px, $color-text-secondary, 700, 100%);
+  @include mixin.text-default(12px, vars.$color-text-secondary, 700, 100%);
 }
 
 .block-of-capacity {
@@ -192,7 +192,7 @@
   padding-bottom: 24px;
   border-bottom: 1px solid #3B3E4A;
   width: 320px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     width: 224px;
   }
 }
@@ -202,7 +202,7 @@
 
   border: 1px solid #4A4D58;
 
-  @include text-default(14px, #F1F2F9, 600, 21px);
+  @include mixin.text-default(14px, #F1F2F9, 600, 21px);
 
   padding: 0;
   margin: 0;
@@ -230,11 +230,11 @@
 }
 
 .current__price {
-  @include text-default(32px, #F1F2F9, 800, 41px);
+  @include mixin.text-default(32px, #F1F2F9, 800, 41px);
 }
 
 .regular__price {
-  @include text-default(22px, #75767F, 600, 100%);
+  @include mixin.text-default(22px, #75767F, 600, 100%);
 
   text-decoration: line-through;
 }
@@ -248,7 +248,7 @@
 .page__product-add {
   width: 263px;
   height: 48px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     width: 176px;
   }
 }
@@ -261,7 +261,7 @@
 .tech-specs {
   padding-bottom: 16px;
   border-bottom: 1px solid #3B3E4A;
-  @include on-tablet {
+  @include mixin.on-tablet {
     grid-column: 1/-1;
   }
 }
@@ -278,10 +278,10 @@
   margin-top: 16px;
   width: 320px;
   height: 94px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     width: 224px;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     margin-bottom: 48px;
   }
 }

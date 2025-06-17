@@ -25,7 +25,7 @@
 
 .link_on__page {
   text-decoration: none;
-  @include text-default(12px, #75767F, 700, 100%);
+  @include mixin.text-default(12px, #75767F, 700, 100%);
 }
 
 .step__of_nav {

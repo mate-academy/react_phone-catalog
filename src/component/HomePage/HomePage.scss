@@ -7,7 +7,7 @@
 
 .home__title {
   margin: 56px 0;
-  @include on-tablet {
+  @include mixin.on-tablet {
     margin: 32px 0;
   }
 }
@@ -17,10 +17,10 @@
   height: 400px;
   display: flex;
   gap: 16px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     height: 189px;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     height: 320px;
   }
 }
@@ -29,11 +29,11 @@
   width: 1040px;
   height: 400px;
   overflow: hidden;
-  @include on-tablet {
+  @include mixin.on-tablet {
     width: 490px;
     height: 189px;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     overflow-x: auto;
     width: 320px;
     height: 320px;
@@ -49,11 +49,11 @@
   height: 400px;
 
   transition: transform 0.6s ease-in-out;
-  @include on-tablet {
+  @include mixin.on-tablet {
     width: 1470px;
     height: 189px;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     width: 960px;
     height: 320px;
   }
@@ -65,11 +65,11 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  @include on-tablet {
+  @include mixin.on-tablet {
     width: 480px;
     height: 189px;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     width: 320px;
     height: 320px;
   }
@@ -78,18 +78,18 @@
 .slider__button {
   width: 32px;
   height: 400px;
-  background-color: $color-background-dark;
+  background-color: vars.$color-background-dark;
   border: none;
   padding: 0;
   margin: 0;
   background-repeat: no-repeat;
   background-position: center;
-  @include on-tablet {
+  @include mixin.on-tablet {
     height: 189px;
   }
 
   &:hover {
-    background-color: $color-background-dark-hover;
+    background-color: vars.$color-background-dark-hover;
   }
 }
 
@@ -125,10 +125,10 @@
 
 .main__title {
   margin: 56px 0;
-  @include on-tablet {
+  @include mixin.on-tablet {
     margin: 32px 0;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     margin: 24px 0;
   }
 }
@@ -143,11 +143,11 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  @include on-tablet {
+  @include mixin.on-tablet {
     width: 176px;
     height: 176px;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     width: 288px;
     height: 288px;
   }
@@ -160,7 +160,7 @@
 .box-category__images {
   display: flex;
   gap: 16px;
-  @include on-phone {
+  @include mixin.on-phone {
     flex-direction: column;
     gap: 32px;
   }
@@ -168,6 +168,6 @@
 
 .category-text__main {
   margin: 24px 0 4px;
-  @include text-default(20px, #F1F2F9, 700, 100%);
+  @include mixin.text-default(20px, #F1F2F9, 700, 100%);
 }
 

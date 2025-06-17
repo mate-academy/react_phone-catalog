@@ -2,9 +2,9 @@
 @use '../Main-css/variables' as vars;
 
 .navigation {
-  background-color: $main-background-color;
+  background-color: vars.$main-background-color;
   display: flex;
-  box-shadow: $shadow 0 1px 0 0;
+  box-shadow: vars.$shadow 0 1px 0 0;
   width: 100%;
   justify-content: space-between;
 }
@@ -18,9 +18,9 @@
   align-items: center;
   height: 64px;
   width: 100%;
-  box-shadow: $shadow 0 1px 0 0;
+  box-shadow: vars.$shadow 0 1px 0 0;
 
-  @include on-tablet {
+  @include mixin.on-tablet {
     height: 48px;
   }
 }
@@ -30,7 +30,7 @@
   width: 80px;
   height: 28px;
 
-  @include on-tablet {
+  @include mixin.on-tablet {
     width: 64px;
     height: 20.8px;
     margin: auto 32px auto 16px;
@@ -42,28 +42,28 @@
   gap: 64px;
   flex-grow: 1;
 
-  @include on-tablet {
+  @include mixin.on-tablet {
     gap: 32px;
   }
 }
 
 .navigation__link {
-  color: $color-text-secondary;
+  color: vars.$color-text-secondary;
   text-decoration: none;
   padding: 20px 0;
   font-size: 16px;
   transition: all 0.3s ease;
-  @include on-tablet {
+  @include mixin.on-tablet {
     padding: 12px 0;
   }
 
   &.is-active {
-    color: $color-text-main;
-    border-bottom: 3px solid $color-text-main;
+    color: vars.$color-text-main;
+    border-bottom: 3px solid vars.$color-text-main;
   }
 
   &:hover {
-    color: $color-text-main;
+    color: vars.$color-text-main;
   }
 }
 
@@ -74,17 +74,17 @@
   width: 16px;
   height: 16px;
   padding: 24px;
-  border-left: 1px solid $shadow;
+  border-left: 1px solid vars.$shadow;
 
-  @include on-tablet {
+  @include mixin.on-tablet {
     padding: 16px;
   }
 
   &.is-active {
     box-sizing: content-box;
-    border-bottom: 3px solid $color-text-main;
+    border-bottom: 3px solid vars.$color-text-main;
     padding-bottom: 21.5px;
-    @include on-tablet {
+    @include mixin.on-tablet {
       padding-bottom: 14px;
     }
   }
@@ -101,11 +101,11 @@
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  @include text-default(9px, $color-text-main, 700, 100%);
+  @include mixin.text-default(9px, vars.$color-text-main, 700, 100%);
 
-  border: $main-background-color 1px solid;
+  border: vars.$main-background-color 1px solid;
   box-sizing: border-box;
-  @include on-tablet {
+  @include mixin.on-tablet {
     top: 10px;
   }
 
@@ -113,14 +113,14 @@
 
 .added__count {
   right: 18px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     right: 10px;
   }
 }
 
 .favorites__count {
   right: 82px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     right: 58px;
   }
 }
@@ -129,7 +129,7 @@
   padding: 16px;
   width: 16px;
   height: 16px;
-  border-left: 1px solid $shadow;
+  border-left: 1px solid vars.$shadow;
 }
 
 .icon-phones__menu {
@@ -157,7 +157,7 @@
   width: 100%;
 
   z-index: 1000;
-  background-color: $main-background-color;
+  background-color: vars.$main-background-color;
   transform: translateX(100%);
   transition: transform 0.5s ease;
 

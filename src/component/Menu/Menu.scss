@@ -21,8 +21,8 @@
 }
 
 .is-active__phone {
-  color: $color-text-main;
-  border-bottom: 2px $color-text-main solid;
+  color: vars.$color-text-main;
+  border-bottom: 2px vars.$color-text-main solid;
 }
 
 .icon-navigation {
@@ -36,7 +36,7 @@
   justify-content: center;
   align-items: center;
   padding: 24px;
-  border-top: 2px solid $shadow;
+  border-top: 2px solid vars.$shadow;
 }
 
 .favorites__count-phone {

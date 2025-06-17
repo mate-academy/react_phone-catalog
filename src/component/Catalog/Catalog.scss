@@ -1,8 +1,8 @@
-@use '../Main-css/Variables' as mixin;
+@use '../Main-css/Variables' as vars;
 @use '../Main-css/Mixins' as mixin;
 
 .catalog-container {
-  @include grid-container;
+  @include mixin.grid-container;
 
   width: fit-content;
   grid-column: 1 / -1;
@@ -10,7 +10,7 @@
 }
 
 .catalog-grid {
-  @include grid-container;
+  @include mixin.grid-container;
 
   width: fit-content;
   grid-column: 1 / -1;

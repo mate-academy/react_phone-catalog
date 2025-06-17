@@ -43,7 +43,7 @@
   height: 32px;
   cursor: pointer;
   transition: background-color 0.5s ease;
-  @include text-default(14px, #F1F2F9, 600,);
+  @include mixin.text-default(14px, #F1F2F9, 600,);
 
   &:hover {
     background-color: #3B3E4A;

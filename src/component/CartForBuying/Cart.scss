@@ -5,7 +5,7 @@
 }
 
 .main__carts {
-  @include grid-container;
+  @include mixin.grid-container;
 
   grid-column: 1/-1;
   margin-bottom: 80px;
@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     grid-column: 1/-1;
   }
 }
@@ -28,10 +28,10 @@
   align-items: center;
   justify-content: center;
   gap: 24px;
-  @include on-tablet {
+  @include mixin.on-tablet {
     gap: 20px;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     flex-wrap: wrap;
     height: 160px;
     gap: 16px;
@@ -46,7 +46,7 @@
   background-position: center;
   border: none;
   background-color: transparent;
-  @include on-phone {
+  @include mixin.on-phone {
     margin-left: 16px;
   }
 }
@@ -61,11 +61,11 @@
 
 .item__name {
   width: 336px;
-  @include text-default(14px, #F1F2F9, 600, 21px);
-  @include on-tablet {
+  @include mixin.text-default(14px, #F1F2F9, 600, 21px);
+  @include mixin.on-tablet {
     width: 176px;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     width: 128px;
     margin-right: 16px;
   }
@@ -92,7 +92,7 @@
   background-image: url(public/imgForProject/icon/Minus.svg);
   background-color: transparent;
   border: 1px solid #3B3E4A;
-  @include on-phone {
+  @include mixin.on-phone {
     margin-left: 16px;
   }
 }
@@ -107,15 +107,15 @@
 }
 
 .count-for-buying {
-  @include text-default(14px, #F1F2F9, 600, 21px);
+  @include mixin.text-default(14px, #F1F2F9, 600, 21px);
 }
 
 .cart__price {
   width: 80px;
   display: flex;
   justify-content: end;
-  @include text-default(22px, #F1F2F9, 800, 140%);
-  @include on-phone {
+  @include mixin.text-default(22px, #F1F2F9, 800, 140%);
+  @include mixin.on-phone {
     margin-right: 16px;
   }
 }
@@ -130,7 +130,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @include on-tablet {
+  @include mixin.on-tablet {
     grid-column: 1/-1;
     width: 100%;
     margin-top: 32px;
@@ -149,7 +149,7 @@
   justify-content: center;
   width: 321px;
 
-  @include text-default(14px, #89939A, 600, 21px);
+  @include mixin.text-default(14px, #89939A, 600, 21px);
 
   padding-bottom: 25px;
   border-bottom: 1px solid #3B3E4A;

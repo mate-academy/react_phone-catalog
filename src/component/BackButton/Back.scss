@@ -8,7 +8,7 @@
 }
 
 .text__back {
-  @include text-default(12px, #F1F2F9, 700, 100%);
+  @include mixin.text-default(12px, #F1F2F9, 700, 100%);
 }
 
 .back__navigation {

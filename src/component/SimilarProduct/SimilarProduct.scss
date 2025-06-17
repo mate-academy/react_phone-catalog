@@ -4,10 +4,10 @@
 .similar-products-wrapper {
   margin: 80px 0 40px;
   grid-column: 1/-1;
-  @include on-tablet {
+  @include mixin.on-tablet {
     margin: 64px 0 24px;
   }
-  @include on-phone {
+  @include mixin.on-phone {
     margin: 56px 0 16px;
   }
 }
@@ -35,28 +35,28 @@
 .card {
   text-decoration: none;
   box-sizing: border-box;
-  @include flex-center;
+  @include mixin.flex-center;
 
   color: #161827;
-  box-shadow: 0 2px 16px 0 $color-box-shadow;
-  width: $card-width;
-  min-width: $card-width;
-  height: $card-height;
+  box-shadow: 0 2px 16px 0 vars.$color-box-shadow;
+  width: vars.$card-width;
+  min-width: vars.$card-width;
+  height: vars.$card-height;
   margin-bottom: 40px;
   grid-column: span 6;
-  @include on-phone {
+  @include mixin.on-phone {
     height: 440px;
     width: 287px;
   }
 
   &:hover {
-    border: 1px solid $color-background-dark;
+    border: 1px solid vars.$color-background-dark;
   }
 }
 
 .card_in_similar-page {
-  width: $card-width;
-  @include on-tablet {
+  width: vars.$card-width;
+  @include mixin.on-tablet {
     min-width: 237px;
     .content {
       scale: 0.8;
@@ -64,7 +64,7 @@
       gap: 25px;
       flex-direction: column;
     }
-    @include on-phone {
+    @include mixin.on-phone {
       min-width: 212px;
     }
   }
