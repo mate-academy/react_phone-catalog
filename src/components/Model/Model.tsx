@@ -74,12 +74,12 @@ export const Model = () => {
     return <Navigate to="/not_found_product" replace />;
   }
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
   if (error) {
     return <Navigate to="/not_found_product" replace />;
+  }
+
+  if (isLoading) {
+    return <Loader />;
   }
 
   const chooseMainImage = (index: number) => {
