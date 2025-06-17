@@ -38,20 +38,12 @@ body.sidebar-open {
 
 .navbar-logo img {
   height: 48px;
-
-  @media (min-width: 1200px) {
-    height: 64px;
-  }
 }
 
 .navbar-item {
   margin: 0 32px;
   height: 48px;
   transition: color 0.3s ease-in-out;
-
-  @media (min-width: 1200px) {
-    height: 64px;
-  }
 
   &:hover {
     color: $color-primary-black;
@@ -68,10 +60,6 @@ body.sidebar-open {
     &:visited {
       text-decoration: none;
     }
-
-  @media (min-width: 1200px) {
-    line-height: 64px;
-  }
 }
 
 .bottom-button.desktop {
@@ -84,20 +72,11 @@ body.sidebar-open {
     align-items: center;
     border-left: 1px solid $color-elements;
     cursor: pointer;
-
-    @media (min-width: 1200px) {
-      height: 64px;
-      width: 64px;
-    }
   }
 
   &.settingsIcon {
     padding: 15px;
     height: 48px;
-
-    @media (min-width: 1200px) {
-      height: 64px;
-    }
   }
 }
 
@@ -119,10 +98,6 @@ body.sidebar-open {
 
   &.visible {
     transform: translateY(0);
-  }
-
-  @media (min-width: 1200px) {
-    height: 64px;
   }
 }
 

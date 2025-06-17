@@ -1,5 +1,21 @@
+@import '../../App.scss';
+
 .itemBody {
-  background-color: rgba(255, 255, 255, 0);
+  color: $color-primary-black;
+  padding: 24px 16px 56px;
+  @include font-small;
+
+  & a {
+    text-decoration: none;
+
+    &:visited {
+      color: $color-primary-black;
+    }
+
+    & svg {
+      color: $color-primary-black;
+    }
+  }
 }
 
 .stupid_info {
@@ -9,4 +25,206 @@
 .non-linkable-color {
   color: white;
   background-color: black;
+}
+
+.ipage__back-link {
+  color: $color-secondary-grey;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media (min-width: 640px) {
+    margin-top: 16px;
+  }
+
+  & svg {
+    transform:  translateY(-0.5px) rotate(180deg);
+    color: $color-primary-black;
+    margin-right: 4px;
+    flex-shrink: 0;
+  }
+}
+
+.ipage__nin {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $color-secondary-grey;
+}
+
+.ipage__mnav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  & svg {
+    color: $color-icons;
+    flex-shrink: 0;
+  }
+}
+
+.ipage__mtitle {
+  @include font-h2-mob;
+
+  @media (min-width: $screen-tablet) {
+    @include font-h2;
+  }
+}
+
+.ipage__imcon {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  @media (min-width: $screen-tablet) {
+    order: 2;
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.ipage__miniGal {
+  margin-top: 16px;
+  display: grid;
+  width: calc(100%);  // to Have Fun => calc(100% - 22px);
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+
+  @media (min-width: $screen-tablet) {
+    order: 1;
+  }
+
+  & .ipage__mnGC {
+    width: 100%; // to Have Fun => remove this
+    height: 100%; // to Have Fun => remove this
+    aspect-ratio: 1 / 1;
+    border: 1px solid $color-elements;
+
+    &.currentImg {
+      border: 1px solid $color-primary-black;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.ipage__avcolttl {
+  @include font-small;
+  color: $color-secondary-grey;
+}
+
+.ipage__color1 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: 1px solid $color-elements;
+  outline-offset: 2px;
+
+  &.non-linkable {
+    outline: 1px solid $color-primary-black;
+  }
+}
+
+.ipage__avcolglry {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+
+  &.avcapglry {
+    gap: 8px;
+    height: 32px;
+    margin-top: 8px;
+
+    & .ipage__icap {
+      @include font-body;
+      height: 100%;
+      line-height: 32px;
+      padding: 0 8px;
+      border: 1px solid $color-icons;
+      color: $color-primary-black;
+
+      &.non-linkable-color {
+        background-color: $color-primary-black;
+        border-color: $color-primary-black;
+        color: $color-white;
+      }
+    }
+  }
+}
+
+.ipage__dvdr {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: $color-elements;
+  margin: 27px auto 24px;
+
+  &.dvdr2 {
+    margin: 24px auto 32px;
+  }
+}
+
+.ipage__pr-cont {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.ipage__cur-pr {
+  @include font-h2;
+}
+
+.ipage__old-pr {
+  text-decoration: line-through;
+  color: $color-secondary-grey;
+  @include font-h3;
+  font-family: 'montRegular';
+}
+
+.ipage__specs {
+  margin-bottom: 56px;
+  border: none;
+}
+
+.ipage__mntitle {
+  @include font-h3-mob;
+  margin-bottom: 16px;
+}
+
+.ipage__spcs-spc {
+  @include font-body;
+}
+
+.ipage__cells {
+  max-width: 70%;
+  text-align: end;
+}
+
+.ipage__techspec {
+  margin-bottom: 56px;
+}
+
+.ipage__abt {
+  border-bottom: 1px solid $color-elements;
+  padding-bottom: 16px;
+}
+
+.ipage__mcrttl {
+  @include font-h4-mob;
+  margin-bottom: 16px;
+  margin-top: 32px;
+}
+
+.ipage__mcrtxt {
+  @include font-body;
+  color: $color-secondary-grey;
 }

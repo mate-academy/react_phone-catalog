@@ -90,6 +90,22 @@ export const Recommended: React.FC<Props> = ({ title }) => {
 
       setItems(filteredItems);
     }
+
+    if (title.includes('may_like')) {
+      const itemRelation = title.slice(9); // reference product to finetune recomnedations for
+
+      setMiniHeader('You may also like');
+
+      const filteredItems = [];
+
+      for (let i = 0; i < 10; i++) {
+        const random = Math.floor(Math.random() * products.length);
+
+        filteredItems.push(products[random]);
+      }
+
+      setItems(filteredItems);
+    }
   }, [title]);
 
 

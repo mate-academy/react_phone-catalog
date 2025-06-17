@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
             </NavLink>
 
             <NavLink
-              to="/phones"
+              to="/contacts"
               className={({ isActive }) => classNames(
                 'Footer-item',
                 { 'has-background-grey-lighter': isActive },
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
             </NavLink>
 
             <NavLink
-              to="/tablets"
+              to="/rights"
               className={({ isActive }) => classNames(
                 'Footer-item',
                 { 'has-background-grey-lighter': isActive },
