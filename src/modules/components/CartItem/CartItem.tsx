@@ -1,13 +1,14 @@
-import { Product } from '../../../types/Product';
-import remove from '../../../img/icons/cart-button-remove.svg';
-import minus from '../../../img/icons/cart-button-minus.svg';
-import minusWhite from '../../../img/icons/cart-button-minus-white.svg';
-import minusLight from '../../../img/icons/cart-button-minus-light.svg';
-import minusBlack from '../../../img/icons/cart-button-minus-black-light.svg';
-import plus from '../../../img/icons/cart-button-plus.svg';
-import plusBlack from '../../../img/icons/cart-button-plus-black.svg';
-import styles from './CartItem.module.scss';
 import { Link } from 'react-router-dom';
+import { Product } from '@models/Product';
+import remove from '@img/icons/cart-button-remove.svg';
+import minus from '@img/icons/cart-button-minus.svg';
+import minusWhite from '@img/icons/cart-button-minus-white.svg';
+import minusLight from '@img/icons/cart-button-minus-light.svg';
+import minusBlack from '@img/icons/cart-button-minus-black-light.svg';
+import plus from '@img/icons/cart-button-plus.svg';
+import plusBlack from '@img/icons/cart-button-plus-black.svg';
+import classNames from 'classnames';
+import styles from './CartItem.module.scss';
 
 type CartElement = {
   id: string;
@@ -64,7 +65,14 @@ export const CartItem: React.FC<Props> = ({
       <div className={styles.cart__item__bootom}>
         <div className={styles.cart__item__actions}>
           <button
-            className={`${styles.cart__item__button} ${styles['cart__item__actions--button']} ${cartItem?.quantity === 1 ? styles['cart__item__button--disabled'] : ''}`}
+            className={classNames(
+              styles.cart__item__button,
+              styles['cart__item__actions--button'],
+              {
+                [styles['cart__item__button--disabled']]:
+                  cartItem?.quantity === 1,
+              },
+            )}
             onClick={() => decreaseCount(product.id.toString())}
             disabled={cartItem?.quantity === 1}
           >
@@ -86,7 +94,10 @@ export const CartItem: React.FC<Props> = ({
             {cartItem?.quantity}
           </span>
           <button
-            className={`${styles.cart__item__button} ${styles['cart__item__actions--button']}`}
+            className={classNames(
+              styles.cart__item__button,
+              styles['cart__item__actions--button'],
+            )}
             onClick={() => increaseCount(product.id.toString())}
           >
             <img

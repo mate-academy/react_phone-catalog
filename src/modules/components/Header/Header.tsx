@@ -1,20 +1,21 @@
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../../../img/navigation/logo.svg';
-import logoBlack from '../../../img/navigation/logo-black.svg';
-import menu from '../../../img/navigation/menu.svg';
-import menuBlack from '../../../img/navigation/menu-black.svg';
-import close from '../../../img/navigation/close.svg';
-import closeBlack from '../../../img/navigation/close-black.svg';
-import favourite from '../../../img/icons/favourite-button.svg';
-import favouriteBlack from '../../../img/icons/favourite-button-black.svg';
-import shoppingBag from '../../../img/icons/shopping-bag.svg';
-import shoppingBagBlack from '../../../img/icons/shopping-bag-black.svg';
 import { useState } from 'react';
-import { Menu } from '../Menu';
-import { useFavourites } from '../../../Context/FavoriteContext';
+import classNames from 'classnames';
+import { Menu } from '@components/Menu';
+import { ModeSwitcher } from '@components/ModeSwitcher';
+import { useFavourites } from '@context/FavoriteContext';
+import { useCart } from '@context/CartContext';
+import logo from '@img/navigation/logo.svg';
+import logoBlack from '@img/navigation/logo-black.svg';
+import menu from '@img/navigation/menu.svg';
+import menuBlack from '@img/navigation/menu-black.svg';
+import close from '@img/navigation/close.svg';
+import closeBlack from '@img/navigation/close-black.svg';
+import favourite from '@img/icons/favourite-button.svg';
+import favouriteBlack from '@img/icons/favourite-button-black.svg';
+import shoppingBag from '@img/icons/shopping-bag.svg';
+import shoppingBagBlack from '@img/icons/shopping-bag-black.svg';
 import styles from './Header.module.scss';
-import { useCart } from '../../../Context/CartContext';
-import { ModeSwitcher } from '../ModeSwitcher';
 
 type Props = {
   isLightMode: boolean;
@@ -54,7 +55,10 @@ export const Header: React.FC<Props> = ({ isLightMode, handleSetMode }) => {
         <div className={styles.header__icons}>
           <Link
             to="/favourites"
-            className={`${styles.header__icon__item} ${pathname.includes('favourites') ? styles['header__icon__item--is-active'] : ''}`}
+            className={classNames(styles.header__icon__item, {
+              [styles['header__icon__item--is-active']]:
+                pathname.includes('favourites'),
+            })}
           >
             <img
               className={styles.header__icon__img}
@@ -71,7 +75,10 @@ export const Header: React.FC<Props> = ({ isLightMode, handleSetMode }) => {
           </Link>
           <Link
             to="/cart"
-            className={`${styles.header__icon__item} ${pathname.includes('cart') ? styles['header__icon__item--is-active'] : ''}`}
+            className={classNames(styles.header__icon__item, {
+              [styles['header__icon__item--is-active']]:
+                pathname.includes('cart'),
+            })}
           >
             <img
               className={styles.header__icon__img}
@@ -87,7 +94,11 @@ export const Header: React.FC<Props> = ({ isLightMode, handleSetMode }) => {
             )}
           </Link>
           <div
-            className={`${styles.header__mode} ${styles['header__item--menu-border']} ${styles['header__mode--tablet']}`}
+            className={classNames(
+              styles.header__mode,
+              styles['header__item--menu-border'],
+              styles['header__mode--tablet'],
+            )}
           >
             <ModeSwitcher
               isLightMode={isLightMode}
@@ -98,7 +109,10 @@ export const Header: React.FC<Props> = ({ isLightMode, handleSetMode }) => {
 
         <div className={styles.header__mobile__icons}>
           <div
-            className={`${styles.header__mode} ${styles['header__item--menu-border']}`}
+            className={classNames(
+              styles.header__mode,
+              styles['header__item--menu-border'],
+            )}
           >
             <ModeSwitcher
               isLightMode={isLightMode}
@@ -109,7 +123,10 @@ export const Header: React.FC<Props> = ({ isLightMode, handleSetMode }) => {
           <div className={styles.header__burger}>
             {openMenu ? (
               <div
-                className={`${styles.header__item} ${styles['header__item--menu-close']}`}
+                className={classNames(
+                  styles.header__item,
+                  styles['header__item--menu-close'],
+                )}
                 onClick={() => closeMenu()}
               >
                 <img
@@ -120,7 +137,10 @@ export const Header: React.FC<Props> = ({ isLightMode, handleSetMode }) => {
               </div>
             ) : (
               <div
-                className={`${styles.header__item} ${styles['header__item--menu-border']}`}
+                className={classNames(
+                  styles.header__item,
+                  styles['header__item--menu-border'],
+                )}
                 onClick={() => handleOpenMenu()}
               >
                 <img

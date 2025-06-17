@@ -16,9 +16,7 @@
     min-height: calc(100vh - 273px);
   }
 
-  @include on-desktop {
-    min-height: calc(68vh);
-  }
+
 }
 
 .error__page__title {

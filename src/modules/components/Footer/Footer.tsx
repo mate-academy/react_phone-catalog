@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import logo from '../../../img/navigation/logo.svg';
-import logoBlack from '../../../img/navigation/logo-black.svg';
-import buttonFooter from '../../../img/icons/arrow-top-footer.svg';
-import buttonFooterBlack from '../../../img/icons/arrow-top-footer-black.svg';
+import logo from '@img/navigation/logo.svg';
+import logoBlack from '@img/navigation/logo-black.svg';
+import buttonFooter from '@img/icons/arrow-top-footer.svg';
+import buttonFooterBlack from '@img/icons/arrow-top-footer-black.svg';
 import styles from './Footer.module.scss';
 
 type Props = {

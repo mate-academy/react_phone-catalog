@@ -1,14 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import { BackButton } from '../../components/BackButton';
-import { CartItem } from '../../components/CartItem';
 import { useEffect, useState } from 'react';
-import { getAllProducts } from '../../../api/products';
-import { Product } from '../../../types/Product';
-import { ErrorMessage } from '../../../types/ErrorMessage';
-import { useCart } from '../../../Context/CartContext';
+import { useNavigate } from 'react-router-dom';
+import { BackButton } from '@components/BackButton';
+import { CartItem } from '@components/CartItem';
+import { Loader } from '@components/Loader';
+import { Product } from '@models/Product';
+import { ErrorMessage } from '@models/ErrorMessage';
+import { useCart } from '@context/CartContext';
+import { useLoading } from '@context/LoadingContext';
+import { getAllProducts } from '@api/products';
 import styles from './CartPage.module.scss';
-import { useLoading } from '../../../Context/LoadingContext';
-import { Loader } from '../../components/Loader';
 
 type Props = {
   isLightMode: boolean;

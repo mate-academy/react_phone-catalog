@@ -1,11 +1,12 @@
-import arrowNext from '../../../img/icons/arrow-right.svg';
-import arrowNextWhite from '../../../img/icons/arrow-right-white.svg';
-import arrowNextBlack from '../../../img/icons/arrow-right-black.svg';
-import arrowBack from '../../../img/icons/arrow-left.svg';
-import arrowBackWhite from '../../../img/icons/arrow-left-white.svg';
-import arrowBackBlack from '../../../img/icons/arrow-left-black.svg';
+import classNames from 'classnames';
+import { SearchLink } from '@components/SearchLink';
+import arrowNext from '@img/icons/arrow-right.svg';
+import arrowNextWhite from '@img/icons/arrow-right-white.svg';
+import arrowNextBlack from '@img/icons/arrow-right-black.svg';
+import arrowBack from '@img/icons/arrow-left.svg';
+import arrowBackWhite from '@img/icons/arrow-left-white.svg';
+import arrowBackBlack from '@img/icons/arrow-left-black.svg';
 import styles from './Pagination.module.scss';
-import { SearchLink } from '../SearchLink';
 
 type Props = {
   totalPages: number;
@@ -71,9 +72,9 @@ export const Pagination: React.FC<Props> = ({
             params={searchPage(page.toString())}
             key={page}
             onClick={() => handlerPageSelector(page)}
-            className={`${styles.pagination__page} ${
-              page === currentPage ? styles['pagination__page--active'] : ''
-            }`}
+            className={classNames(styles.pagination__page, {
+              [styles['pagination__page--active']]: page === currentPage,
+            })}
           >
             {page}
           </SearchLink>

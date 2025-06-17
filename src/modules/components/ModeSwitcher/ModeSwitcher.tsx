@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import styles from './ModeSwitcher.module.scss';
 
 type Props = {
@@ -12,7 +13,10 @@ export const ModeSwitcher: React.FC<Props> = ({
   return (
     <div className={styles.mode} onClick={handleSetMode}>
       <div
-        className={`${styles.mode__switcher} ${isLightMode ? styles['mode__switcher--light'] : styles['mode__switcher--dark']}`}
+        className={classNames(styles.mode__switcher, {
+          [styles['mode__switcher--light']]: isLightMode,
+          [styles['mode__switcher--dark']]: !isLightMode,
+        })}
       ></div>
     </div>
   );

@@ -1,14 +1,14 @@
-import './App.scss';
 import { Routes, Route } from 'react-router-dom';
-import { Header } from './modules/components/Header';
-import { HomePage } from './modules/pages/Home/HomePage';
-import { Footer } from './modules/components/Footer';
-import { ProductPage } from './modules/pages/ProductPage';
-import { ProductDetail } from './modules/pages/ProductDetail';
-import { NotFoundPage } from './modules/pages/NotFoundPage';
-import { Favourites } from './modules/pages/Favourites';
-import { Cart } from './modules/pages/Cart';
 import { useEffect, useState } from 'react';
+import { Header } from '@components/Header';
+import { HomePage } from '@pages/Home/HomePage';
+import { Footer } from '@components/Footer';
+import { ProductPage } from '@pages/ProductPage';
+import { ProductDetail } from '@pages/ProductDetail';
+import { NotFoundPage } from '@pages/NotFoundPage';
+import { Favourites } from '@pages/Favourites';
+import { Cart } from '@pages/Cart';
+import './App.scss';
 
 export const App = () => {
   const [isLightMode, setIsLightMode] = useState(false);

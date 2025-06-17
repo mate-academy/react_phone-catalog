@@ -1,6 +1,7 @@
-import favourite from '../../../img/icons/favourite-button.svg';
-import favouriteAdd from '../../../img/icons/favourite-button-add.svg';
-import favouriteAddBlack from '../../../img/icons/favourite-button-black.svg';
+import classNames from 'classnames';
+import favourite from '@img/icons/favourite-button.svg';
+import favouriteAdd from '@img/icons/favourite-button-add.svg';
+import favouriteAddBlack from '@img/icons/favourite-button-black.svg';
 import styles from './ProductButtons.module.scss';
 
 type Props = {
@@ -21,7 +22,9 @@ export const ProductButtons: React.FC<Props> = ({
   return (
     <div className={styles.product__buttons}>
       <button
-        className={`${styles.product__button__add} ${isInCart ? styles['product__button__add--active'] : ''}`}
+        className={classNames(styles.product__button__add, {
+          [styles['product__button__add--active']]: isInCart,
+        })}
         onClick={handleCartClick}
       >
         <span className={styles.product__buttons__title}>

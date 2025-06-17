@@ -1,4 +1,4 @@
-import { ProductData } from '../../../types/ProductData';
+import { ProductData } from '@models/ProductData';
 import styles from './ProductTechSpecs.module.scss';
 
 type Props = {

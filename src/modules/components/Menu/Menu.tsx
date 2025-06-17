@@ -1,12 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
-import styles from './Menu.module.scss';
-import favourite from '../../../img/icons/favourite-button.svg';
-import favouriteBlack from '../../../img/icons/favourite-button-black.svg';
-import shoppingBag from '../../../img/icons/shopping-bag.svg';
-import shoppingBagBlack from '../../../img/icons/shopping-bag-black.svg';
 import { useEffect } from 'react';
-import { useFavourites } from '../../../Context/FavoriteContext';
-import { useCart } from '../../../Context/CartContext';
+import classNames from 'classnames';
+import { useFavourites } from '@context/FavoriteContext';
+import { useCart } from '@context/CartContext';
+import favourite from '@img/icons/favourite-button.svg';
+import favouriteBlack from '@img/icons/favourite-button-black.svg';
+import shoppingBag from '@img/icons/shopping-bag.svg';
+import shoppingBagBlack from '@img/icons/shopping-bag-black.svg';
+import styles from './Menu.module.scss';
 
 type Props = {
   isOpen: boolean;
@@ -29,12 +30,19 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu, isLightMode }) => {
   }, [isOpen]);
 
   return (
-    <div className={`${styles.menu} ${isOpen ? styles['menu--open'] : ''}`}>
+    <div
+      className={classNames(styles.menu, {
+        [styles['menu--open']]: isOpen,
+      })}
+    >
       <ul className={styles.menu__navigation}>
         <li className={styles.menu__navigation__item}>
           <Link
             to="/home"
-            className={`${styles.menu__navigation__link} ${pathname === 'home' || pathname === '' ? styles['menu__navigation__link--active'] : ''}`}
+            className={classNames(styles.menu__navigation__link, {
+              [styles['menu__navigation__link--active']]:
+                pathname === 'home' || pathname === '',
+            })}
             onClick={() => closeMenu()}
           >
             home
@@ -43,7 +51,10 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu, isLightMode }) => {
         <li className={styles.menu__navigation__item}>
           <Link
             to="/phones"
-            className={`${styles.menu__navigation__link} ${pathname.includes('phones') ? styles['menu__navigation__link--active'] : ''}`}
+            className={classNames(styles.menu__navigation__link, {
+              [styles['menu__navigation__link--active']]:
+                pathname.includes('phones'),
+            })}
             onClick={() => closeMenu()}
           >
             Phones
@@ -52,7 +63,10 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu, isLightMode }) => {
         <li className={styles.menu__navigation__item}>
           <Link
             to="/tablets"
-            className={`${styles.menu__navigation__link} ${pathname.includes('tablets') ? styles['menu__navigation__link--active'] : ''}`}
+            className={classNames(styles.menu__navigation__link, {
+              [styles['menu__navigation__link--active']]:
+                pathname.includes('tablets'),
+            })}
             onClick={() => closeMenu()}
           >
             tablets
@@ -61,7 +75,10 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu, isLightMode }) => {
         <li className={styles.menu__navigation__item}>
           <Link
             to="accessories"
-            className={`${styles.menu__navigation__link} ${pathname.includes('accessories') ? styles['menu__navigation__link--active'] : ''}`}
+            className={classNames(styles.menu__navigation__link, {
+              [styles['menu__navigation__link--active']]:
+                pathname === 'accessories',
+            })}
             onClick={() => closeMenu()}
           >
             accessories
@@ -71,7 +88,10 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu, isLightMode }) => {
       <div className={styles.menu__bottom}>
         <Link
           to="/favourites"
-          className={`${styles.menu__bottom__item} ${pathname.includes('favourites') ? styles['menu__bottom__item--active'] : ''}`}
+          className={classNames(styles.menu__bottom__item, {
+            [styles['menu__bottom__item--active']]:
+              pathname.includes('favourites'),
+          })}
           onClick={() => closeMenu()}
         >
           <img
@@ -89,7 +109,9 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu, isLightMode }) => {
         </Link>
         <Link
           to="/cart"
-          className={`${styles.menu__bottom__item} ${pathname.includes('cart') ? styles['menu__bottom__item--active'] : ''}`}
+          className={classNames(styles.menu__bottom__item, {
+            [styles['menu__bottom__item--active']]: pathname.includes('cart'),
+          })}
           onClick={() => closeMenu()}
         >
           <img

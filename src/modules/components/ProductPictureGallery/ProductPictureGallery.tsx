@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import styles from './ProductPictureGallery.module.scss';
 
 type Prosp = {
@@ -24,7 +25,13 @@ export const ProductPictureGallery: React.FC<Prosp> = ({
         {images.map((src, index) => (
           <div
             key={index}
-            className={`${styles['picture__gallery__pagination--item']} ${mainImageIndex === index ? styles['picture__gallery__pagination--item--active'] : ''}`}
+            className={classNames(
+              styles['picture__gallery__pagination--item'],
+              {
+                [styles['picture__gallery__pagination--item--active']]:
+                  mainImageIndex === index,
+              },
+            )}
             onClick={() => setMainImage(index)}
           >
             <img

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Product } from '../../../types/Product';
-import { ProductData } from '../../../types/ProductData';
-import { ProductButtons } from '../ProductButtons';
+import { ProductButtons } from '@components/ProductButtons';
+import { Product } from '@models/Product';
+import { ProductData } from '@models/ProductData';
+import { useCart } from '@context/CartContext';
+import { useFavourites } from '@context/FavoriteContext';
 import styles from './ProductPurchasePanel.module.scss';
-import { useCart } from '../../../Context/CartContext';
-import { useFavourites } from '../../../Context/FavoriteContext';
 
 type Props = {
   product: ProductData;

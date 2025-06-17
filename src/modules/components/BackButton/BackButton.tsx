@@ -1,5 +1,5 @@
 import { NavigateFunction } from 'react-router-dom';
-import { ProductData } from '../../../types/ProductData';
+import { ProductData } from '@models/ProductData';
 import styles from './BackButton.module.scss';
 
 type Props = {

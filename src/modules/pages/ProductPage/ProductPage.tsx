@@ -1,15 +1,15 @@
-import { useLocation, useSearchParams } from 'react-router-dom';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
 import React, { useEffect, useMemo, useState } from 'react';
-import { Selector } from '../../components/Selector';
-import { getAllProducts } from '../../../api/products';
-import { ErrorMessage } from '../../../types/ErrorMessage';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { Breadcrumbs } from '@components/Breadcrumbs';
+import { Selector } from '@components/Selector';
+import { Loader } from '@components/Loader';
+import { ProductList } from '@components/ProductList';
+import { Pagination } from '@components/Pagination';
+import { ErrorMessage } from '@models/ErrorMessage';
+import { Product } from '@models/Product';
+import { useLoading } from '@context/LoadingContext';
+import { getAllProducts } from '@api/products';
 import styles from './ProductPage.module.scss';
-import { Product } from '../../../types/Product';
-import { ProductList } from '../../components/ProductList';
-import { Pagination } from '../../components/Pagination';
-import { useLoading } from '../../../Context/LoadingContext.js';
-import { Loader } from '../../components/Loader/Loader.js';
 
 type Props = {
   isLightMode: boolean;

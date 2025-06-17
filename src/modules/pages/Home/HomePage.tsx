@@ -1,14 +1,14 @@
-import { PicturesSlider } from '../../components/PicturesSlider.tsx/index.js';
-// eslint-disable-next-line max-len
-import { ProductsSlider } from '../../components/ProductsSlider/index.js';
-import styles from './HomePage.module.scss';
 import { useEffect, useState } from 'react';
-import { Product } from '../../../types/Product.js';
-import { getAllProducts } from '../../../api/products.js';
-import { ErrorMessage } from '../../../types/ErrorMessage.js';
-import { Category } from '../../components/Category/Category.js';
-import { useLoading } from '../../../Context/LoadingContext.js';
-import { Loader } from '../../components/Loader/Loader.js';
+import classNames from 'classnames';
+import { PicturesSlider } from '@components/PicturesSlider';
+import { ProductsSlider } from '@components/ProductsSlider';
+import { Category } from '@components/Category';
+import { Loader } from '@components/Loader';
+import { Product } from '@models/Product';
+import { ErrorMessage } from '@models/ErrorMessage';
+import { useLoading } from '@context/LoadingContext';
+import { getAllProducts } from '@api/products';
+import styles from './HomePage.module.scss';
 
 type Props = {
   isLightMode: boolean;
@@ -57,7 +57,9 @@ export const HomePage: React.FC<Props> = ({ isLightMode }) => {
             <PicturesSlider />
           </section>
           <section className={styles.home__page__brand}>
-            <h2 className={`${styles.section__title} ${styles.brand__title}`}>
+            <h2
+              className={classNames(styles.section__title, styles.brand__title)}
+            >
               Brand new models
             </h2>
             <ProductsSlider
@@ -72,7 +74,10 @@ export const HomePage: React.FC<Props> = ({ isLightMode }) => {
           </section>
           <section className={styles.home__page__hot}>
             <h2
-              className={`${styles.section__title} ${styles.hot__price__title}`}
+              className={classNames(
+                styles.section__title,
+                styles.hot__price__title,
+              )}
             >
               Hot prices
             </h2>

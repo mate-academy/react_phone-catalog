@@ -1,29 +1,26 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Product } from '../../../types/Product';
-import { ProductData } from '../../../types/ProductData';
+import { ProductPictureGallery } from '@components/ProductPictureGallery';
+import { ProductPurchasePanel } from '@components/ProductPurchasePanel';
+import { ProductDescription } from '@components/ProductDescription';
+import { ProductTechSpecs } from '@components/ProductTechSpecs';
+import { ProductsSlider } from '@components/ProductsSlider';
+import { BackButton } from '@components/BackButton';
+import { Breadcrumbs } from '@components/Breadcrumbs';
+import { Loader } from '@components/Loader';
+import { Product } from '@models/Product';
+import { ProductData } from '@models/ProductData';
+import { ErrorMessage } from '@models/ErrorMessage';
+import { useLoading } from '@context/LoadingContext';
 import {
   getAccessories,
   getAllProducts,
   getPhones,
   getTablets,
-} from '../../../api/products';
-import { ErrorMessage } from '../../../types/ErrorMessage';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
+} from '@api/products';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import styles from './ProductDetail.module.scss';
-// eslint-disable-next-line max-len
-import { ProductPictureGallery } from '../../components/ProductPictureGallery/ProductPictureGallery';
-// eslint-disable-next-line max-len
-import { ProductPurchasePanel } from '../../components/ProductPurchasePanel/ProductPurchasePanel';
-import { ProductDescription } from '../../components/ProductDescription';
-import { ProductTechSpecs } from '../../components/ProductTechSpecs';
-import { ProductsSlider } from '../../components/ProductsSlider';
-import { BackButton } from '../../components/BackButton';
-import { useLoading } from '../../../Context/LoadingContext';
-import { Loader } from '../../components/Loader';
 
 type Props = {
   isLightMode: boolean;

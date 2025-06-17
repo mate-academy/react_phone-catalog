@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../../types/Product';
 import styles from './Category.module.scss';
+import classNames from 'classnames';
 
 type Props = {
   products: Product[];
@@ -51,9 +52,12 @@ export const Category: React.FC<Props> = ({ products }) => {
     <div className={styles.category}>
       {categorys.map((category, index) => (
         <div key={index} className={styles.category__card}>
-          <Link className={styles.category__item} to={category.pathname}>
+          <Link to={category.pathname} className={styles.category__item}>
             <img
-              className={`${styles.category__img} ${styles[categoryClass(category.category)]}`}
+              className={classNames(
+                styles.category__img,
+                styles[categoryClass(category.category)],
+              )}
               src={category.imgSrc}
               alt={category.category}
             />

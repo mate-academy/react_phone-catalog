@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useEffect, useState } from 'react';
+import classNames from 'classnames';
+import { SearchLink } from '@components/SearchLink';
+import arrowDown from '@img/icons/arrow-down.svg';
+import arrowUp from '@img/icons/arrow-up.svg';
 import styles from './Selector.module.scss';
-import { SearchLink } from '../SearchLink';
-import arrowDown from '../../../img/icons/arrow-down.svg';
-import arrowUp from '../../../img/icons/arrow-up.svg';
 
 export interface SelectOption<T extends string | number> {
   value: T;
@@ -63,9 +64,11 @@ export const Selector: React.FC<Props> = ({
         {label}
       </label>
       <div
-        className={`${styles.selector__button} ${isOpen && styles['selector__button--border']}
-          ${id === 'sortBy' ? styles.sortBy : ''}
-          ${id === 'pageSelector' ? styles.pageSelector : ''}`}
+        className={classNames(styles.selector__button, {
+          [styles['selector__button--border']]: isOpen,
+          [styles.sortBy]: id === 'sortBy',
+          [styles.pageSelector]: id === 'pageSelector',
+        })}
         id={id.toString()}
         onClick={() => {
           if (selector === id && isOpen) {

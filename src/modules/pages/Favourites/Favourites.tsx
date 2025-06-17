@@ -1,13 +1,13 @@
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { useFavourites } from '../../../Context/FavoriteContext';
-import { ProductList } from '../../components/ProductList';
 import { useEffect, useState } from 'react';
-import { getAllProducts } from '../../../api/products';
-import { Product } from '../../../types/Product';
-import { ErrorMessage } from '../../../types/ErrorMessage';
+import { Breadcrumbs } from '@components/Breadcrumbs';
+import { ProductList } from '@components/ProductList';
+import { Loader } from '@components/Loader';
+import { Product } from '@models/Product';
+import { ErrorMessage } from '@models/ErrorMessage';
+import { useFavourites } from '@context/FavoriteContext';
+import { useLoading } from '@context/LoadingContext';
+import { getAllProducts } from '@api/products';
 import styles from './Favourites.module.scss';
-import { useLoading } from '../../../Context/LoadingContext';
-import { Loader } from '../../components/Loader';
 
 type Props = {
   isLightMode: boolean;
@@ -54,7 +54,10 @@ export const Favourites: React.FC<Props> = ({ isLightMode }) => {
                 {favourites.length} items
               </span>
               <div className={styles.favourite__product__list}>
-                <ProductList products={favouriteProducts} />
+                <ProductList
+                  products={favouriteProducts}
+                  isLightMode={isLightMode}
+                />
               </div>
             </>
           )}

@@ -1,4 +1,5 @@
-import { ProductData } from '../../../types/ProductData';
+import classNames from 'classnames';
+import { ProductData } from '@models/ProductData';
 import styles from './ProductDescription.module.scss';
 
 type Props = {
@@ -12,7 +13,10 @@ export const ProductDescription: React.FC<Props> = ({ product }) => {
       {product?.description.map((description, index) => (
         <div key={index} className={styles.product__description__box}>
           <h2
-            className={`${styles.product__description__title} ${styles['product__description__title--second']}`}
+            className={classNames(
+              styles.product__description__title,
+              styles['product__description__title--second'],
+            )}
           >
             {description.title}
           </h2>

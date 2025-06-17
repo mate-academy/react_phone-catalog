@@ -1,9 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
-import homePage from '../../../img/icons/home-page.svg';
-import homePageBlack from '../../../img/icons/home-page-black.svg';
-import arrow from '../../../img/icons/breadcrumbs-arrow.svg';
+import classNames from 'classnames';
+import { ProductData } from '@models/ProductData';
+import homePage from '@img/icons/home-page.svg';
+import homePageBlack from '@img/icons/home-page-black.svg';
+import arrow from '@img/icons/breadcrumbs-arrow.svg';
 import styles from './Breadcrumbs.module.scss';
-import { ProductData } from '../../../types/ProductData';
 
 type Props = {
   product: ProductData | null;
@@ -52,7 +53,9 @@ export const Breadcrumbs: React.FC<Props> = ({ product, isLightMode }) => {
       <div>
         <Link
           to={`/${category.toLowerCase()}`}
-          className={`${styles.breadcrumbs__title} ${product ? styles['breadcrumbs__title--white'] : ''}`}
+          className={classNames(styles.breadcrumbs__title, {
+            [styles['breadcrumbs__title--white']]: product,
+          })}
         >
           {category}
         </Link>
