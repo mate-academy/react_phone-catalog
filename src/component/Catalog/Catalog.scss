@@ -1,5 +1,5 @@
-@import '../Main-css/Variables';
-@import '../Main-css/Mixins';
+@use '../Main-css/Variables' as mixin;
+@use '../Main-css/Mixins' as mixin;
 
 .catalog-container {
   @include grid-container;

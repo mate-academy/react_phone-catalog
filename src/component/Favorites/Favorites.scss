@@ -1,4 +1,4 @@
-@import "../Main-css/Mixins";
+@use "../Main-css/Mixins" as mixin;
 
 .main__favorites {
   grid-column: 1/-1;

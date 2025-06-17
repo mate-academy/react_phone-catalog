@@ -1,4 +1,4 @@
-@import "../Main-css/Mixins";
+@use "../Main-css/Mixins" as mixin;
 
 .cart__title {
   margin: 16px 0 32px;

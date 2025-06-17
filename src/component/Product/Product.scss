@@ -1,5 +1,5 @@
-@import '../Main-css/Variables';
-@import '../Main-css/Mixins';
+@use '../Main-css/Variables' as vars;
+@use '../Main-css/Mixins' as mixin;
 
 .content {
   width: 208px;

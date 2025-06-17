@@ -1,4 +1,4 @@
-@import "./component/Main-css/Mixins";
+@use "./component/Main-css/Mixins" as mixin;
 
 @font-face {
   font-family: Mont, sans-serif;

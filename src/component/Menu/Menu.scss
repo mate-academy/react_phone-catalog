@@ -1,5 +1,5 @@
-@import "../Main-css/Mixins";
-@import "../Main-css/Variables";
+@use "../Main-css/Mixins" as mixin;
+@use "../Main-css/Variables" as vars;
 
 .content-phone__menu {
   display: flex;

@@ -1,4 +1,4 @@
-@import '../Main-css/Mixins';
+@use '../Main-css/Mixins' as mixin;
 
 .footer {
   border-top: 1px solid #3B3E4A;

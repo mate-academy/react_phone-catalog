@@ -1,4 +1,4 @@
-@import "../Main-css/Mixins";
+@use "../Main-css/Mixins" as mixin;
 
 .items__count {
   @include text-default(14px, #75767F, 600);

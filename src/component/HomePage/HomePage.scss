@@ -1,5 +1,5 @@
-@import "../Main-css/Mixins";
-@import "../Main-css/variables";
+@use "../Main-css/Mixins" as mixin;
+@use "../Main-css/variables" as vars;
 
 .home__page {
   grid-column: 1/-1;

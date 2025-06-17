@@ -1,4 +1,4 @@
-@import "../Main-css/Mixins";
+@use "../Main-css/Mixins" as mixin;
 
 .phones-page {
   display: grid;

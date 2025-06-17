@@ -1,5 +1,5 @@
-@import "../Main-css/Mixins";
-@import '../Main-css/variables';
+@use "../Main-css/Mixins" as mixin;
+@use '../Main-css/variables' as vars;
 
 .navigation {
   background-color: $main-background-color;
