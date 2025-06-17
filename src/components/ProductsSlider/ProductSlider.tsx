@@ -77,8 +77,10 @@ export const ProductSlider = (props: Props) => {
   return (
     <div className={styles.slider}>
       <div className={styles.slider__title}>
-        {type ==='new'? <h2>Brand new
-          models</h2>:<h2>Hot prices</h2>}
+        {type === 'new' && <h2 className={styles.slider__text}>Brand new
+          models</h2>}
+        {type === 'hot' && <h2 className={styles.slider__text}>Hot prices</h2>}
+        {type==='favourites'&& <h2 className={styles.slider__text}>You may also like</h2>}
 
         <div className={styles.slider__navigate}>
           <IoIosArrowBack className={classNames(styles.slider__button,

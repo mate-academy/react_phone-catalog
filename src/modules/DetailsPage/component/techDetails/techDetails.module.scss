@@ -1,19 +1,21 @@
 .tech{
+  margin-bottom: 52px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-&___box{
+&__box{
   margin-bottom: 8px;
   display: flex;
 justify-content: space-between;
 }
 &__name{
+  color: #89939A;
   font-family: Mont;
 font-weight: 600;
 font-size: 12px;
 line-height: 100%;
 letter-spacing: 0%;
-color: #89939A;
+
 }
 &__description{
   font-family: Mont;

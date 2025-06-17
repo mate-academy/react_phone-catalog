@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Container } from '../../components/container/Container';
 import { PageNav } from '../../components/pageNav/PageNav';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { fetchOneProducts } from '../../api/fetchOneTypeProducts';
+
 import { detailsProduct } from '../../features/ProductDetailsSlice';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { TitlePages } from '../../components/title/TitlePages';
@@ -11,6 +11,9 @@ import { DetailsChange } from './component/detailsChange/DetailsChange';
 import { Price } from '../../components/price/price';
 import { Buttons } from '../../components/buttons/Buttons';
 import { TechDetails } from './component/techDetails/techDetails';
+import { About } from './component/about/About';
+import { TechSpecs } from './component/techSpecs/techSpecs';
+import { ProductSlider } from '../../components/ProductsSlider/ProductSlider';
 
 export const DetailsProduct = () => {
   const product = useAppSelector(state => state.productDetail.product);
@@ -47,6 +50,29 @@ const handleChangeColor = (color,) => {
   if (model) navigate(`/${category}/${model.id}`);
   }
 
+if(!product){return}
+  const {
+    screen,
+    resolution,
+    processor,
+    ram,
+    capacity,
+    camera,
+    zoom,
+    cell,
+  } = product;
+
+  const objectTech = {
+    'Screen': screen,
+    'Resolution': resolution,
+    'Processor': processor,
+    'RAM': ram,
+    'Built in memory': capacity,
+    'Camera': camera,
+    'Zoom': zoom,
+    'Cell':cell.slice(0,3).join(','),
+  }
+
   return (product?
     <>
       <Container>
@@ -79,8 +105,11 @@ const handleChangeColor = (color,) => {
           procesor={product.processor}
           ram={product.ram}
         />
-
-
+        <About
+          description={product.description } />
+        <TechSpecs
+          objectTech={objectTech} />
+        <ProductSlider type={'favourites' } />
       </Container>{' '}
     </>
   :"null");

@@ -17,10 +17,18 @@ letter-spacing: 0%;
 @include mixin.onTablet{
 font-size: 32px;
 }}
+&__text{
+  font-family: Mont;
+font-weight: 800;
+font-size: 32px;
+line-height: 41px;
+letter-spacing: -1%;
+color:#0F0F11;
+}
   &__navigate {
 display: flex;
   align-items: center;
-  height: 64px;
+  height: 32px;
 align-items: center;
 
   }
@@ -28,7 +36,7 @@ align-items: center;
     cursor: pointer;
       height: 16px;
       width: 16px;
-      padding: 12px;
+      padding: 16px;
       color: #0F0F11;
 border: 1px solid #B4BDC3;
 border-radius: 100%;
