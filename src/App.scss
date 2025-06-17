@@ -1,1 +1,51 @@
-// not empty
+@import './styles/_variables';
+@import './pages/AccessoriesPage/Accessories.module.scss';
+@import './pages/CartPage/CartPage.module.scss';
+@import './pages/FavouritePage/FavouritePage.module.scss';
+@import './pages/NotFoundPage/NotFoundPage.module.scss';
+@import './pages/PhonesPage/PhonesPage.module.scss';
+@import './pages/TabletsPage/TabletsPage.module.scss';
+@import './styles/common';
+@import './components/Banner/Banner.module.scss';
+@import './components/Card/Card.module.scss';
+@import './components/CartPageItem/CartPageItem.module.scss';
+@import './components/Footer/Footer.module.scss';
+@import './components/GoBackBttn/GoBackBttn.module.scss';
+@import './components/Header/Header.module.scss';
+@import './components/HotPrices/HotPrices.module.scss';
+@import './components/Loader/Loader.module.scss';
+@import './components/MobileMenu/MobileMenu.module.scss';
+@import './components/NewModels/NewModels.module.scss';
+@import './components/Pagination/Pagination.module.scss';
+@import './components/ProductDescription/ProductDescription.module.scss';
+@import './components/RecommendedItems/RecommendedItems.module.scss';
+@import './components/SelectionDropdown/SelectionDropdown.module.scss';
+@import './components/ShopCategory/ShopCategory.module.scss';
+
+iframe {
+  display: none;
+}
+
+body {
+  background-color: $main-color;
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

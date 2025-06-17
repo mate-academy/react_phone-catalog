@@ -1,0 +1,86 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 0;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__button {
+    padding: 8px 16px;
+    border: 1px solid #E2E6E9;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #0F0F11;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 40px;
+    justify-content: center;
+
+    &:hover:not(:disabled) {
+      border-color: #0F0F11;
+      background-color: #F5F5F6;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #0F0F11;
+      box-shadow: 0 0 0 2px rgba(15, 15, 17, 0.1);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: #F5F5F6;
+    }
+
+    &_active {
+      background-color: #0F0F11;
+      color: #fff;
+      border-color: #0F0F11;
+
+      &:hover {
+        background-color: #313237;
+        border-color: #313237;
+      }
+    }
+
+    &_prev,
+    &_next {
+      padding: 8px 12px;
+      min-width: auto;
+    }
+  }
+
+  &__button_text {
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+
+  &__button_arrow {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__ellipsis {
+    padding: 8px 4px;
+    color: #89939A;
+    font-size: 14px;
+    font-weight: 600;
+    user-select: none;
+    pointer-events: none;
+  }
+} 

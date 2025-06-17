@@ -1,0 +1,228 @@
+.products__container {
+  max-width: 1136px;
+  margin: 0 auto;
+  
+
+ 
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  padding-left: 0;
+  height: 16px;
+  padding: 0;
+  min-height: 0;
+  box-sizing: content-box;
+
+  &__home img,
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__route {
+    font-weight: 600;
+    line-height: 16px;
+    font-size: 12px;
+    color: #89939a;
+    cursor: default;
+    padding: 0;
+    margin: 0;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    @media (max-width: 639px) {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+      color: #89939A;
+    }
+  }
+}
+
+.category_info {
+  margin-bottom: 8px;
+  &__title {
+    color: #313237;
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    margin-bottom: 8px;
+    margin-top: 0;
+  }
+  &__description {
+    color: #89939A;
+    font-family: 'Mont', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    margin-bottom: 40px;
+    margin-top: 0;
+  }
+}
+
+.products__options {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 40px;
+
+  .dropdownBlock {
+    display: flex;
+    flex-direction: column;
+    min-width: 128px;
+    max-width: 220px;
+  }
+
+  .dropdownLabel {
+    font-family: 'Mont', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: #89939A;
+    margin-bottom: 8px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border: 1px solid #B4BDC3;
+    border-radius: 0;
+    background: #fff;
+    font-family: 'Mont', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    color: #313237;
+    padding: 0 12px;
+    box-sizing: border-box;
+    cursor: pointer;
+    min-width: 128px;
+    width: 128px;
+    max-width: 220px;
+    transition: border 0.2s;
+    &:hover, &:focus {
+      border: 1px solid #313237;
+    }
+
+    @media (min-width: 640px) {
+      min-width: 187px;
+      width: 187px;
+    }
+    @media (min-width: 1200px) {
+      min-width: 176px;
+      width: 176px;
+    }
+  }
+
+  .dropdownValue {
+    flex: 1;
+    font-family: 'Mont', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    color: #313237;
+  }
+
+  .dropdownIcon {
+    width: 16px;
+    height: 16px;
+    margin-left: 12px;
+    pointer-events: none;
+  }
+
+  .dropdownList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #B4BDC3;
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    font-family: 'Mont', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    color: #313237;
+    margin-top: 4px;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .dropdownOption {
+    font-family: 'Mont', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0;
+    color: #89939A;
+    background: #fff;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    &:hover,
+    &.active {
+      background: #f3f3f3;
+      color: #313237;
+    }
+  }
+
+  .dropdownBlock:last-child .dropdown {
+    min-width: 128px;
+    width: 128px;
+    @media (min-width: 640px) {
+      min-width: 136px;
+      width: 136px;
+    }
+    @media (min-width: 1200px) {
+      min-width: 128px;
+      width: 128px;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .dropdown, .dropdownBlock:last-child .dropdown {
+      min-width: 136px;
+      width: 136px;
+    }
+  }
+}
+
+.products__list {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 24;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.products__list__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  gap: 16px;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.products__list__card {
+  background-color: #fff;
+  justify-self: stretch;
+}
+
+.noPagination {
+  margin-bottom: 80px;
+} 

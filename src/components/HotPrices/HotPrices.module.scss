@@ -1,0 +1,117 @@
+@import '../../styles/common';
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.hot-prices {
+  @include page-grid;
+
+  padding-left: $padding-phone;
+  margin-bottom: 57px;
+
+  @include on-tablet {
+    padding-left: $padding-tablet;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop-small {
+    padding: 0 $padding-desktop-small;
+    margin-bottom: 80px;
+  }
+
+  @include on-desktop {
+    padding: 0 $padding-desktop;
+  }
+
+  &__header {
+    @include page-grid;
+
+    grid-column: -1 / 1;
+
+    display: flex;
+    justify-content: space-between;
+
+    &--buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-right: 16px;
+
+      @include on-desktop-small {
+        margin-right: 0;
+      }
+    }
+
+    &--title {
+      font-size: 22px;
+      line-height: 31px;
+      letter-spacing: 0;
+      font-weight: 700;
+      color: $main-white-color;
+      margin-bottom: 24px;
+      box-sizing: border-box;
+      text-align: left;
+
+      @include on-tablet {
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+      }
+    }
+  }
+
+  &__slider--btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid #E2E6E9;
+    box-sizing: border-box;
+    padding: 0;
+    transition: border 0.2s, background 0.2s;
+
+    img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    &:hover:not(:disabled) {
+      border: 1px solid #313237;
+      background: #fff;
+    }
+
+    &:disabled,
+    &.swiper-button-disabled {
+      border: 1px solid #E2E6E9;
+      background: #fff;
+      cursor: default;
+      opacity: 0.5;
+    }
+  }
+
+  &__list {
+    &--card {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      background-color: $main-card-color;
+    }
+  }
+
+  &__swiper {
+    grid-column: -1 / 1;
+  }
+}
+
+.hotPrices {
+  padding: 24px 0;
+}
