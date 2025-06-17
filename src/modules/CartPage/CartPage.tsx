@@ -3,15 +3,14 @@ import styles from './CartPage.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../../store/cartSlice';
 import { RootState } from '../../store';
-import { useNavigate } from 'react-router-dom';
+import { BackButton } from '../../components/BackButton';
 
 export const CartPage: React.FC = () => {
-  const cartItems = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const cartItems = useSelector((state: RootState) => state.cart);
 
   const totalPrice = cartItems.reduce(
-    (acc, item) => acc + item.product.price * item.quantity,
+    (acc, item) => acc + item.product.priceDiscount * item.quantity,
     0,
   );
 
@@ -19,14 +18,7 @@ export const CartPage: React.FC = () => {
 
   return (
     <div className={styles.cartPage}>
-      <button className={styles.backButton} onClick={() => navigate(-1)}>
-        <img
-          src="./img/icons/arrow-left.svg"
-          alt="Back"
-          className={styles.icon}
-        />
-        Back
-      </button>
+      <BackButton />
       <h1 className={styles.title}>Cart</h1>
 
       {cartItems.length === 0 ? (
@@ -82,7 +74,9 @@ export const CartPage: React.FC = () => {
                         +
                       </button>
                     </div>
-                    <p className={styles.price}>${product.price * quantity}</p>
+                    <p className={styles.price}>
+                      ${product.priceDiscount * quantity}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -100,7 +94,7 @@ export const CartPage: React.FC = () => {
                   );
 
                   if (confirmed) {
-                    // dispatch(clearCart()) — якщо додаш такий action
+                    // dispatch(clearCart())
                     alert('Cart cleared!');
                   }
                 }}

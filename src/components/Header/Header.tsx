@@ -29,7 +29,10 @@ export const Header: React.FC = () => {
       <div className={styles.inner}>
         <div className={styles.left}>
           <Link to="/" className={styles.logo}>
-            <img src="./img/logo.png" alt="Phone Catalog Logo" />
+            <img
+              src="/react_phone-catalog/img/logo.png"
+              alt="Phone Catalog Logo"
+            />
           </Link>
 
           <nav className={styles.nav}>
@@ -78,7 +81,7 @@ export const Header: React.FC = () => {
             onClick={toggleMenu}
             aria-label="Menu"
           >
-            <img src="./img/icons/burger.svg" alt="Menu" />
+            <img src="/react_phone-catalog/img/icons/burger.svg" alt="Menu" />
           </button>
           <NavLink
             to="/favorites"
@@ -87,7 +90,7 @@ export const Header: React.FC = () => {
             }
           >
             <img
-              src="./img/icons/favorites-icon.svg"
+              src="/react_phone-catalog/img/icons/favorites-icon.svg"
               alt="Favorites"
               className={styles.icon}
             />
@@ -103,7 +106,7 @@ export const Header: React.FC = () => {
             }
           >
             <img
-              src="./img/icons/cart-icon.svg"
+              src="/react_phone-catalog/img/icons/cart-icon.svg"
               alt="Cart"
               className={styles.icon}
             />
@@ -173,7 +176,10 @@ export const Header: React.FC = () => {
               })
             }
           >
-            <img src="./img/icons/favorites-icon.svg" alt="Favorites" />
+            <img
+              src="/react_phone-catalog/img/icons/favorites-icon.svg"
+              alt="Favorites"
+            />
             {favoritesCount > 0 && (
               <span className={styles.counter}>{favoritesCount}</span>
             )}
@@ -188,7 +194,10 @@ export const Header: React.FC = () => {
               })
             }
           >
-            <img src="./img/icons/cart-icon.svg" alt="Cart" />
+            <img
+              src="/react_phone-catalog/img/icons/cart-icon.svg"
+              alt="Cart"
+            />
             {cartCount > 0 && (
               <span className={styles.counter}>{cartCount}</span>
             )}

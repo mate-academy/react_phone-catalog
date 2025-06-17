@@ -1,8 +1,16 @@
 @use '../../assets/styles/variables' as *;
 
 .favoritesPage {
-  max-width: 1136px;
-  margin: 0 auto;
+  // max-width: 1136px;
+  // margin: 0 auto;
+
+   @include tablet {
+  }
+
+  @include desktop {
+    // max-width: 1136px;
+    // margin: 0 auto;
+  }
 }
 
 .title {

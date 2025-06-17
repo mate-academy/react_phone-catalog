@@ -1,0 +1,23 @@
+@use '../../assets/styles/variables' as *;
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 16px;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}

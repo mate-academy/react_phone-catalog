@@ -5,19 +5,19 @@ import { useCategories } from '../../../../hooks/useCategories';
 const categories = [
   {
     name: 'Phones',
-    image: './img/category-phones-1.png',
+    image: '/react_phone-catalog/img/category-phones-1.png',
     path: '/phones',
     type: 'phone',
   },
   {
     name: 'Tablets',
-    image: './img/category-tablets-1.png',
+    image: '/react_phone-catalog/img/category-tablets-1.png',
     path: '/tablets',
     type: 'tablet',
   },
   {
     name: 'Accessories',
-    image: './img/category-accessories-1.png',
+    image: '/react_phone-catalog/img/category-accessories-1.png',
     path: '/accessories',
     type: 'accessory',
   },

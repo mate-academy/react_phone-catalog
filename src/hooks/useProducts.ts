@@ -1,27 +1,33 @@
-import { useEffect, useState } from 'react';
-import { getProducts } from '../api/products';
-import { Product } from '../types/Product';
+// import { useEffect, useState } from 'react';
+// import { Products } from '../types/Products';
 
-export const useProducts = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+// export const useProducts = (errorCallback: () => void) => {
+//   const [products, setProducts] = useState<Products[]>([]);
 
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const data = await getProducts();
+//   useEffect(() => {
+//     const fetchProducts = async () => {
+//       try {
+//         const categories = ['phones', 'tablets', 'accessories'];
+//         const promises = categories.map(async category => {
+//           const response = await fetch(
+//             `/react_phone-catalog/api/${category}.json`,
+//           );
 
-        setProducts(data);
-      } catch (err) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
+//           return response.json();
+//         });
 
-    loadProducts();
-  }, []);
+//         const data = await Promise.all(promises);
 
-  return { products, loading, error };
-};
+//         await new Promise(resolve => setTimeout(resolve, 300));
+
+//         setProducts(data.flat());
+//       } catch {
+//         errorCallback();
+//       }
+//     };
+
+//     fetchProducts();
+//   }, []);
+
+//   return { products };
+// };

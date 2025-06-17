@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
 import { FavoritesButton } from '../FavoritesButton/FavoritesButton';
@@ -14,30 +15,32 @@ export const ProductCard: React.FC<Props> = ({
   // showFullPrice = false,
   showFullPrice,
 }) => {
+  const imagePath = product.image || product.images?.[0] || '';
+console.log('✅ product.itemId in ProductCard:', product.itemId);
   return (
     <div className={styles.card}>
-      <img src={product.image} alt={product.name} className={styles.image} />
-      <h3 className={styles.name}>{product.name}</h3>
-      <div className={styles.prices}>
-        {/* <span className={styles.price}>${product.price}</span> */}
-        {/* {showFullPrice && product.fullPrice > product.price && (
-          <span className={styles.fullPrice}>${product.fullPrice}</span>
-        )} */}
+      <img src={imagePath} alt={product.name} className={styles.image} />
 
-        {!showFullPrice ? (
-          <p className={styles.price}>${product.price}</p>
-        ) : (
-          <div className={styles.prices}>
-            <p className={styles.price}>${product.price}</p>
-            <p className={styles.fullPrice}>${product.fullPrice}</p>
-          </div>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className={styles.name}
+      >
+        {product.name}
+      </Link>
+
+      <div className={styles.prices}>
+        <p className={styles.price}>${product.priceDiscount}</p>
+        {showFullPrice && product.priceRegular > product.priceDiscount && (
+          <p className={styles.fullPrice}>${product.priceRegular}</p>
         )}
       </div>
+
       <div className={styles.divider} />
+
       <div className={styles.specs}>
         <div className={styles.row}>
           <span className={styles.key}>Screen</span>
-          <span className={styles.value}>{product.screen}</span>
+          <span className={styles.value}>{product.screen || '—'}</span>
         </div>
         <div className={styles.row}>
           <span className={styles.key}>Capacity</span>
@@ -48,9 +51,10 @@ export const ProductCard: React.FC<Props> = ({
           <span className={styles.value}>{product.ram || '—'}</span>
         </div>
       </div>
+
       <div className={styles.actions}>
         <AddToCartButton product={product} />
-        <FavoritesButton productId={product.id} />
+        <FavoritesButton productId={product.itemId} />
       </div>
     </div>
   );

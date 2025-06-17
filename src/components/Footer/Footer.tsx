@@ -7,7 +7,10 @@ export const Footer: React.FC = () => {
       <div className={styles.inner}>
         <div className={styles.left}>
           <Link to="/" className={styles.logo}>
-            <img src="./img/logo.png" alt="Phone Catalog Logo" />
+            <img
+              src="/react_phone-catalog/img/logo.png"
+              alt="Phone Catalog Logo"
+            />
           </Link>
         </div>
 
@@ -41,7 +44,10 @@ export const Footer: React.FC = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className={styles.top}
           >
-            <img src="./img/icons/arrow-up.svg" alt="Back to top" />
+            <img
+              src="/react_phone-catalog/img/icons/arrow-up.svg"
+              alt="Back to top"
+            />
           </button>
         </div>
       </div>

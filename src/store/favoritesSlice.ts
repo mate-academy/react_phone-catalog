@@ -7,6 +7,14 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     toggleFavorite(state, action: PayloadAction<string>) {
+      const productId = action.payload;
+
+      if (!productId || typeof productId !== 'string') {
+        console.warn('⚠️ Некоректний productId:', productId);
+
+        return;
+      }
+
       const index = state.indexOf(action.payload);
 
       if (index !== -1) {
@@ -14,6 +22,10 @@ const favoritesSlice = createSlice({
       } else {
         state.push(action.payload);
       }
+
+      return state.includes(productId)
+        ? state.filter(id => id !== productId)
+        : [...state, productId];
     },
   },
 });

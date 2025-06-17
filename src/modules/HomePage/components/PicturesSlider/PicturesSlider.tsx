@@ -18,7 +18,10 @@ export const PicturesSlider: React.FC = () => {
 
       <div className={styles.swiperWrapper}>
         <div className={`custom-swiper-prev ${styles.navBtn}`}>
-          <img src="./img/icons/arrow-left.svg" alt="Previous" />
+          <img
+            src="/react_phone-catalog/img/icons/arrow-left.svg"
+            alt="Previous"
+          />
         </div>
 
         <Swiper
@@ -41,7 +44,10 @@ export const PicturesSlider: React.FC = () => {
         </Swiper>
 
         <div className={`custom-swiper-next ${styles.navBtn}`}>
-          <img src="./img/icons/arrow-right.svg" alt="Next" />
+          <img
+            src="/react_phone-catalog/img/icons/arrow-right.svg"
+            alt="Next"
+          />
         </div>
       </div>
       <div className="custom-pagination" />

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Breadcrumb.module.scss';
+import { Link } from 'react-router-dom';
 
 interface Props {
   current: string;
@@ -8,9 +9,15 @@ interface Props {
 export const Breadcrumb: React.FC<Props> = ({ current }) => {
   return (
     <div className={styles.breadcrumb}>
-      <img src="./img/icons/home.svg" alt="Home" className={styles.homeIcon} />
+      <Link to="/" className={styles.homeLink}>
+        <img
+          src="/react_phone-catalog/img/icons/home.svg"
+          alt="Home"
+          className={styles.homeIcon}
+        />
+      </Link>
       <img
-        src="./img/icons/arrow-right.svg"
+        src="/react_phone-catalog/img/icons/arrow-right.svg"
         alt="Arrow"
         className={styles.arrowIcon}
       />

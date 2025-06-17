@@ -1,5 +1,5 @@
 export const getPhones = async () => {
-  const response = await fetch('./api/phones.json');
+  const response = await fetch('/react_phone-catalog/api/phones.json');
 
   if (!response.ok) {
     throw new Error('Failed to fetch phones');
@@ -9,7 +9,7 @@ export const getPhones = async () => {
 };
 
 export const getTablets = async () => {
-  const response = await fetch('./api/tablets.json');
+  const response = await fetch('/react_phone-catalog/api/tablets.json');
 
   if (!response.ok) {
     throw new Error('Failed to fetch tablets');
@@ -19,7 +19,7 @@ export const getTablets = async () => {
 };
 
 export const getAccessories = async () => {
-  const response = await fetch('./api/accessories.json');
+  const response = await fetch('/react_phone-catalog/api/accessories.json');
 
   if (!response.ok) {
     throw new Error('Failed to fetch accessories');

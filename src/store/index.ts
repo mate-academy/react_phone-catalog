@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from './cartSlice';
 import favoritesReducer from './favoritesSlice';
+import productsReducer from './productsSlice';
 
 const loadState = () => {
   try {
@@ -25,6 +26,7 @@ export const store = configureStore({
   reducer: {
     cart: cartReducer,
     favorites: favoritesReducer,
+    products: productsReducer,
   },
   preloadedState,
 });
@@ -32,9 +34,11 @@ export const store = configureStore({
 store.subscribe(() => {
   try {
     const { cart, favorites } = store.getState();
+    const validFavorites = favorites.filter(id => id && typeof id === 'string');
 
     localStorage.setItem('cart', JSON.stringify(cart));
     localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem('favorites', JSON.stringify(validFavorites));
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error('Storage save error', e);

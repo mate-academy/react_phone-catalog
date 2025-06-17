@@ -29,10 +29,16 @@ export const ProductsSlider: React.FC<Props> = ({
 
         <div className={styles.controls}>
           <button className={`${styles.arrow} ${navigationPrevClass}`}>
-            <img src="./img/icons/arrow-left.svg" alt="Previous" />
+            <img
+              src="/react_phone-catalog/img/icons/arrow-left.svg"
+              alt="Previous"
+            />
           </button>
           <button className={`${styles.arrow} ${navigationNextClass}`}>
-            <img src="./img/icons/arrow-right.svg" alt="Next" />
+            <img
+              src="/react_phone-catalog/img/icons/arrow-right.svg"
+              alt="Next"
+            />
           </button>
         </div>
       </div>

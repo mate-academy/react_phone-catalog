@@ -2,27 +2,24 @@ import React from 'react';
 import { PicturesSlider } from './components/PicturesSlider';
 import { ShopByCategory } from './components/ShopByCategory';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import { useProducts } from '../../hooks/useProducts';
+import { useProduct } from '../../hooks/useProduct';
+import { useErrorHandling } from '../../hooks/errorHandling';
 
 export const HomePage: React.FC = () => {
-  const { products, loading, error } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { product } = useProduct(() => setIsError(true));
 
-  const discountedProducts = [...products]
-    .filter(product => product.fullPrice && product.price)
-    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-    .slice(0, 8);
-
-  const brandNewProducts = [...products]
+  const brandNewProducts = [...product]
     .sort((a, b) => (b.year ?? 0) - (a.year ?? 0))
     .slice(0, 8);
 
-  if (loading) {
-    return <div>Loading hot prices...</div>;
-  }
-
-  if (error) {
-    return <div>Failed to load products.</div>;
-  }
+  const discountedProducts = [...product]
+    .filter(prod => prod.priceRegular && prod.priceDiscount)
+    .sort(
+      (a, b) =>
+        b.priceRegular - b.priceDiscount - (a.priceRegular - a.priceDiscount),
+    )
+    .slice(0, 8);
 
   return (
     <div>

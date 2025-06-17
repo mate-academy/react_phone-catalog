@@ -1,1 +1,242 @@
 @use '../../assets/styles/variables' as *;
+
+.detailsPage {
+  // padding: 24px 16px;
+
+  @include tablet {
+    // padding: 40px 24px;
+  }
+
+  @include desktop {
+    // padding: 40px 0;
+    // max-width: 1136px;
+    // margin: 0 auto;
+  }
+}
+
+.breadcrumbRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+ .breadcrumbLink {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0F0F11;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.breadcrumbArrow {
+  width: 16px;
+  height: 16px;
+  color: #B4BDC3;
+}
+
+.breadcrumbCurrent {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-primary;
+}
+
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: $color-primary;
+  margin-bottom: 24px;
+
+  @include tablet {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include tablet {
+    flex-direction: row;
+    gap: 17px;
+  }
+
+  @include desktop {
+    max-width: 1136px;
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include tablet {
+    flex-direction: row-reverse;
+    // gap: 24px;
+  }
+
+  @include desktop {
+    flex-direction: row-reverse;
+    // gap: 24px;
+  }
+
+  .previewList {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    @include tablet {
+      flex-direction: column;
+    }
+
+    @include desktop {
+      flex-direction: column;
+    }
+  }
+
+  .previewButton {
+    border: 1px solid #e2e6e9;
+    border-radius: 4px;
+    padding: 4px;
+    width: 100%;
+    background-color: transparent;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    &--active {
+      border-color:#B4BDC3;
+    }
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  .previewImage {
+    height: 49px;
+    object-fit: contain;
+  }
+
+  .imageWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .mainImage {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+    }
+  }
+}
+
+.colorsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.optionLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #89939a;
+}
+
+.colorOptions {
+  display: flex;
+  gap: 8px;
+}
+
+.colorDot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #e2e6e9;
+  cursor: pointer;
+  outline: 1px dashed $color-primary;
+
+  &.active {
+    border: 2px solid $color-primary;
+    border-color: $color-primary;
+  }
+}
+
+.infoBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.priceBlock {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+
+  .price {
+    font-size: 32px;
+    font-weight: 800;
+    color: $color-primary;
+  }
+
+  .fullPrice {
+    font-size: 22px;
+    font-weight: 600;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-secondary;
+  }
+
+  .value {
+    color: $color-primary;
+  }
+}
+
+.descriptionTabs {
+  margin-top: 48px;
+
+  .tabTitle {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 14px;
+    color: $color-secondary;
+    line-height: 1.5;
+  }
+}
