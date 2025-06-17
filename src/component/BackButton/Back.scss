@@ -1,0 +1,34 @@
+@import "../Main-css/Mixins";
+
+.icon__back {
+  width: 16px;
+  height: 16px;
+  background-image: url("public/imgForProject/icon/Catalog_Right-button.png");
+  rotate: 180deg;
+}
+
+.text__back {
+  @include text-default(12px, #F1F2F9, 700, 100%);
+}
+
+.back__navigation {
+  margin-top: 40px;
+  gap: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  grid-column: 1/-1;
+  width: 66px;
+
+  &:hover {
+    .text__back {
+      color: #905BFF;
+    }
+
+    .icon__back {
+      background-image: url("public/imgForProject/icon/hover_left_chevron.svg");
+      rotate: 0deg;
+    }
+  }
+}
+

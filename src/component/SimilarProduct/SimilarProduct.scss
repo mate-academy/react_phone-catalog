@@ -1,0 +1,76 @@
+@import '../Main-css/Mixins';
+@import "../Main-css/variables";
+
+.similar-products-wrapper {
+  margin: 80px 0 40px;
+  grid-column: 1/-1;
+  @include on-tablet {
+    margin: 64px 0 24px;
+  }
+  @include on-phone {
+    margin: 56px 0 16px;
+  }
+}
+
+.title-with-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-title {
+  color: #F1F2F9;
+  margin: 0 0 24px;
+}
+
+.similar-products {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.card {
+  text-decoration: none;
+  box-sizing: border-box;
+  @include flex-center;
+
+  color: #161827;
+  box-shadow: 0 2px 16px 0 $color-box-shadow;
+  width: $card-width;
+  min-width: $card-width;
+  height: $card-height;
+  margin-bottom: 40px;
+  grid-column: span 6;
+  @include on-phone {
+    height: 440px;
+    width: 287px;
+  }
+
+  &:hover {
+    border: 1px solid $color-background-dark;
+  }
+}
+
+.card_in_similar-page {
+  width: $card-width;
+  @include on-tablet {
+    min-width: 237px;
+    .content {
+      scale: 0.8;
+      display: flex;
+      gap: 25px;
+      flex-direction: column;
+    }
+    @include on-phone {
+      min-width: 212px;
+    }
+  }
+}
+
+.buttons__slider {
+  display: flex;
+  gap: 16px;
+}

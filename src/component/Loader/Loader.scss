@@ -1,0 +1,83 @@
+.custom-loader {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.skeleton__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-card {
+  width: 272px;
+  height: 506px;
+  background-color: #1e1e2f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.skeleton {
+  background: linear-gradient(
+      90deg,
+      #2a2a3b 25%,
+      #3e3e50 50%,
+      #2a2a3b 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 5px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-image {
+  height: 196px;
+  width: 208px;
+}
+
+.skeleton-title {
+  height: 25px;
+  width: 208px;
+}
+
+.skeleton-value {
+  width: 100px;
+  height: 28px;
+  border-bottom: 1px #3B3E4A solid;
+  padding-bottom: 5px;
+}
+
+.skeleton-text {
+  height: 77px;
+  width: 100%;
+}
+
+.skeleton__button-add {
+  height: 40px;
+  width: 160px;
+}
+
+.skeleton__buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+}
+
+.skeleton__button-favorite {
+  width: 40px;
+  height: 40px;
+
+}

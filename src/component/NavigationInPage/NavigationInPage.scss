@@ -1,0 +1,35 @@
+@import "../Main-css/Mixins";
+
+.location {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.home-link {
+  height: 16px;
+  width: 16px;
+}
+
+.icon__next-location {
+  width: 16px;
+  height: 16px;
+}
+
+.name-of__location {
+  padding: 0;
+  margin: 0;
+}
+
+.link_on__page {
+  text-decoration: none;
+  @include text-default(12px, #75767F, 700, 100%);
+}
+
+.step__of_nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

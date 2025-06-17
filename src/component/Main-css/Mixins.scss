@@ -1,0 +1,39 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin text-default($size: 14px, $color: $color-text-main, $weight: 400, $line-height: 21px) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+  line-height: $line-height;
+  font-family: Mont, sans-serif;
+}
+
+@mixin grid-container() {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+  @media screen and (max-width: 1199px) {
+    grid-template-columns: repeat(12, 32px);
+  }
+
+  @media screen and (max-width: 639px) {
+    grid-template-columns: repeat(4, 60px);
+  }
+
+}
+
+@mixin on-tablet() {
+  @media screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin on-phone() {
+  @media screen and (max-width: 639px) {
+    @content;
+  }
+}

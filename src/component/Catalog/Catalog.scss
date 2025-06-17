@@ -1,0 +1,18 @@
+@import '../Main-css/Variables';
+@import '../Main-css/Mixins';
+
+.catalog-container {
+  @include grid-container;
+
+  width: fit-content;
+  grid-column: 1 / -1;
+  display: grid;
+}
+
+.catalog-grid {
+  @include grid-container;
+
+  width: fit-content;
+  grid-column: 1 / -1;
+  display: grid;
+}

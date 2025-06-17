@@ -1,1 +1,40 @@
-// not empty
+@import "./component/Main-css/Mixins";
+
+@font-face {
+  font-family: Mont, sans-serif;
+  src: url('../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont, sans-serif;
+  src: url('../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont, sans-serif;
+  src: url('../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Mont, sans-serif;
+  background-color: #0F1121;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  margin: 0 auto;
+  flex-grow: 1;
+}

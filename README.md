@@ -1,4 +1,4 @@
-# React Product Catalog
+# React MainInfo Catalog
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
@@ -12,11 +12,13 @@ You may also implement color theme switching!
 
 ## If you work in a team
 
-Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
+Follow
+the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
 
 ## Project Setup from scratch
 
-Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
+Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your
+project, add Eslint, Prettier, Husky and enable auto deploy.
 
 ## Data
 
@@ -25,16 +27,18 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 ## App
 
 1. Put components into the `src/components` folder.
-   - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
-   - Use CSS modules.
-   - Keep `.module.scss` files together with their components.
+  - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
+  - Use CSS modules.
+  - Keep `.module.scss` files together with their components.
 2. Advanced project structure:
-   - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
-   - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
+  - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content
+    between modules.
+  - Inside each module its own `components` folder with the structure described above. And optionally other
+    files/folders: `hooks`, `constants`, and so on.
 3. Add the sticky header with a logo, navigation, favorites, and cart.
 4. The footer with the link to the GitHub repo and `Back to top` button.
-   - The content should be limited to the same width as the page content;
-   - `Back to top` button should scroll to the top smoothly;
+  - The content should be limited to the same width as the page content;
+  - `Back to top` button should scroll to the top smoothly;
 5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
 6. All changes the hover effects should be smooth.
 7. Scale all image links by 10% on hover.
@@ -44,19 +48,19 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 
 Implement Home page at available at `/`.
 
-1. `<h1>Product Catalog</h1>` should be visually hidden.
+1. `<h1>MainInfo Catalog</h1>` should be visually hidden.
 2. `PicturesSlider`:
-   - Find your own images to personalize the App;
-   - Change pictures automatically every 5 seconds;
-   - The next buttons should show the first image after the last one;
-   - Dashes at the bottom should allow choosing an exact picture.
+  - Find your own images to personalize the App;
+  - Change pictures automatically every 5 seconds;
+  - The next buttons should show the first image after the last one;
+  - Dashes at the bottom should allow choosing an exact picture.
 3. `ProductsSlider` for the `Hot prices` block:
-   - The products with a discount starting from the biggest absolute value;
-   - `<` and `>` buttons should scroll products.
+  - The products with a discount starting from the biggest absolute value;
+  - `<` and `>` buttons should scroll products.
 4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
 5. Add Brand new block using ProductsSlider with products that are the newest according to the year field.
 
-## Product pages
+## MainInfo pages
 
 There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 
@@ -66,33 +70,37 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 4. Implement a `Loader` to show it while waiting for the data from the server.
 5. In case of a loading error show the something went wrong message with a reload button.
 6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required).
-7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or `price` (after discount).
-   - Save the sort value in the URL `?sort=age` and apply it after the page reload.
+7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or
+   `price` (after discount).
+  - Save the sort value in the URL `?sort=age` and apply it after the page reload.
 8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
-   - It should limit the products you show to the user;
-   - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
-   - Hide pagination elements if they do not make sense;
-   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
+  - It should limit the products you show to the user;
+  - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should
+    not be added to the URL;
+  - Hide pagination elements if they do not make sense;
+  - You can use the logic explained
+    in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
 
-## Product details page
+## MainInfo details page
 
 Create `ProductDetailsPage` available at `/product/:productId`.
 
 1. `ProductCard` image and title should be links to the product details page.
 2. Use `Loader` when fetching the product details.
 3. Show the details on the page:
-   - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
-   - `About` section should contain a subheader with description;
-   - Choose `Tech specs` you want to show.
+  - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs,
+    allowing the selection of one value from the offered options;
+  - `About` section should contain a subheader with description;
+  - Choose `Tech specs` you want to show.
 4. Add the ability to choose a picture.
 5. Implement `You may also like` block with products chosen randomly:
-   - Create `getSuggestedProducts` method fetching the suggested products.
+  - Create `getSuggestedProducts` method fetching the suggested products.
 6. Add `Back` button working the same way as a Browser `Back` button.
 7. Add `Breadcrumbs` at the top with:
-   - A Home page link;
-   - A category page link (`Phones`, `Tablets`, `Accessories`);
-   - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+  - A Home page link;
+  - A category page link (`Phones`, `Tablets`, `Accessories`);
+  - The name of the product (just a text).
+8. Show `MainInfo was not found` if there is no product with a given id on the server.
 
 ## Shopping Cart page
 
@@ -108,10 +116,11 @@ Use React Context or Redux to store Items.
 6. Total amount and quantity should be calculated automatically.
 7. Show the quantity at the `Cart` icon in the header.
 8. Save the `Cart` to `localStorage` on each change and read it on page load.
-9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
-   - Clear the Cart if the user confirms the order;
-   - Keep the Cart items and close the confirmation on cancel;
-   - Use the `confirm` function if you don't have a better solution.
+9. `Checkout` button should show a modal dialog with the text
+   `Checkout is not implemented yet. Do you want to clear the Cart?`:
+  - Clear the Cart if the user confirms the order;
+  - Keep the Cart items and close the confirmation on cancel;
+  - Use the `confirm` function if you don't have a better solution.
 
 ## Favorites page
 
@@ -126,7 +135,7 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 ## Other tasks
 
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
-2. Implement the `Product was not found` state for the `ProductDetailsPage`.
+2. Implement the `MainInfo was not found` state for the `ProductDetailsPage`.
 
 ## (*) Advanced tasks
 
