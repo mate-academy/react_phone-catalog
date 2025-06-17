@@ -81,6 +81,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     setFavorites([]);
   };
 
+  const capacityAvailable: string[] = [];
+  const capacityPrice = {};
+
   return (
     <CartContext.Provider
       value={{
@@ -95,6 +98,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         favouritesCount: favorites.length,
         clearCart,
         clearFavorites,
+        capacityAvailable,
+        capacityPrice,
       }}
     >
       {children}
