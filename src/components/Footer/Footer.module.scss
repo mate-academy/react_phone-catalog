@@ -23,11 +23,11 @@
     height: 32px;
 
     @include on-tablet {
-      grid-column: 1/5;
+      grid-column: 1/4;
     }
 
     @include on-full-screen {
-      grid-column: 1/9;
+      grid-column: 1/7;
     }
   }
 
@@ -43,15 +43,16 @@
     display: flex;
     flex-direction: column;
     grid-column: 1/-1;
+    white-space: nowrap;
 
     @include on-tablet {
       flex-direction: row;
       justify-content: space-between;
-      grid-column: 5/9;
+      grid-column: 4/9;
     }
 
     @include on-full-screen {
-      grid-column: 9/17;
+      grid-column: 7/17;
     }
 
     &__item {

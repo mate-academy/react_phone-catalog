@@ -42,7 +42,7 @@
   right: 12px;
   width: 12px;
   height: 12px;
-  background-image: url('./images/arrow-up.svg');
+  background-image: var(--arrow-up);
   background-repeat: no-repeat;
 
   background-size: contain;

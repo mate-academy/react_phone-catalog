@@ -19,7 +19,7 @@ $slide-button-size: 24px;
     }
 
     @include on-full-screen {
-      grid-column: 1/18;
+      grid-column: 1/-1;
       margin-bottom: 56px;
     }
   }

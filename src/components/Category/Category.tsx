@@ -2,6 +2,7 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FullCard } from '../../types/fullInfoCard';
 import styles from './Category.module.scss';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   category: string;
@@ -11,6 +12,7 @@ type Props = {
 export const Category: React.FC<Props> = ({ category, title }) => {
   const { productId } = useParams();
   const [curModel, setCurModel] = useState<FullCard | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetch(`/api/${category}.json`)
@@ -29,13 +31,15 @@ export const Category: React.FC<Props> = ({ category, title }) => {
         <NavLink to={'/'} className={styles.category__navigation__home} />
         <div className={styles.category__navigation__arrow}></div>
         {!curModel ? (
-          <p className={styles.category__navigation__text__active}>{title}</p>
+          <p className={styles.category__navigation__text__active}>
+            {t(title)}
+          </p>
         ) : (
           <NavLink
             to={`/${category}`}
             className={styles.category__navigation__text}
           >
-            {title}
+            {t(title)}
           </NavLink>
         )}
 

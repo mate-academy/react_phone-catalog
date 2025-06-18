@@ -5,6 +5,7 @@ import { ListControlPanel } from '../ListControlPanel';
 import { ProductList } from '../ProductList';
 import { Pages } from '../Pages/Pages';
 import styles from './Catalog.module.scss';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   category: string;
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export const Catalog: React.FC<Props> = ({ category, title }) => {
+  const { t } = useTranslation();
   const { products } = useProducts();
   const [searchParams] = useSearchParams();
   const sort = searchParams.get('sort') || '';
@@ -41,9 +43,9 @@ export const Catalog: React.FC<Props> = ({ category, title }) => {
 
   return (
     <div className={styles.cataloge}>
-      <h1 className={styles.cataloge__title}>{title}</h1>
+      <h1 className={styles.cataloge__title}>{t(title)}</h1>
       <div className={styles.cataloge__items_amount}>
-        {devices.length} models
+        {devices.length} {t('models')}
       </div>
 
       <ListControlPanel />

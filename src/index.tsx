@@ -24,33 +24,33 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="home" element={<Navigate to="/" replace />} />
         <Route
           path="phones"
-          element={<Category category="phones" title="Phones" />}
+          element={<Category category="phones" title="phones" />}
         >
           <Route
             index
-            element={<Catalog category="phones" title="Mobile phones" />}
+            element={<Catalog category="phones" title="mobilePhones" />}
           />
           <Route path=":productId" element={<Model />} />
         </Route>
 
         <Route
           path="tablets"
-          element={<Category category="tablets" title="Tablets" />}
+          element={<Category category="tablets" title="tablets" />}
         >
           <Route
             index
-            element={<Catalog category="tablets" title="Tablets" />}
+            element={<Catalog category="tablets" title="tablets" />}
           />
           <Route path=":productId" element={<Model />} />
         </Route>
 
         <Route
           path="accessories"
-          element={<Category category="accessories" title="Accessories" />}
+          element={<Category category="accessories" title="accessories" />}
         >
           <Route
             index
-            element={<Catalog category="accessories" title="Accessories" />}
+            element={<Catalog category="accessories" title="accessories" />}
           />
           <Route path=":productId" element={<Model />} />
         </Route>

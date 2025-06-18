@@ -3,8 +3,10 @@ import styles from './NavBar.module.scss';
 import { useEffect, useState } from 'react';
 import { useProducts } from '../../context/ProductsContext';
 import { useWindowWidth } from '../../utils/helpers';
+import { useTranslation } from 'react-i18next';
 
 export const NavBar = () => {
+  const { t } = useTranslation();
   const { cart, favorites } = useProducts();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const width = useWindowWidth();
@@ -59,7 +61,7 @@ export const NavBar = () => {
                 : styles.navbar__menuItem
             }
           >
-            Home
+            {t('home')}
           </NavLink>
           <NavLink
             onClick={handleNavigate}
@@ -70,7 +72,7 @@ export const NavBar = () => {
                 : styles.navbar__menuItem
             }
           >
-            Phones
+            {t('phones')}
           </NavLink>
           <NavLink
             onClick={handleNavigate}
@@ -81,7 +83,7 @@ export const NavBar = () => {
                 : styles.navbar__menuItem
             }
           >
-            Tablets
+            {t('tablets')}
           </NavLink>
           <NavLink
             onClick={handleNavigate}
@@ -92,7 +94,7 @@ export const NavBar = () => {
                 : styles.navbar__menuItem
             }
           >
-            Accessories
+            {t('accessories')}
           </NavLink>
         </div>
       </div>

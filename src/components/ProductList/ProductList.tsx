@@ -7,7 +7,7 @@ import styles from './ProductList.module.scss';
 
 type Props = {
   products: Card[];
-  category: string;
+  category?: string;
 };
 
 export const ProductList: React.FC<Props> = ({ products, category }) => {

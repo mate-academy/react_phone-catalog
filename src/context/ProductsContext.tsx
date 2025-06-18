@@ -42,9 +42,12 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
     const fetchProducts = async () => {
       try {
-        setIsLoading(true);
         setError(null);
 
         const response = await fetch('api/products.json');
@@ -58,12 +61,12 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
         setProducts(data);
       } catch (err) {
         setError('Failed to fetch products');
-      } finally {
-        setIsLoading(false);
       }
     };
 
     fetchProducts();
+
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {

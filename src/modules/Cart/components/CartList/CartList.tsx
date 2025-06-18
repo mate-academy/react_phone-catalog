@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { CartCard } from '../../../../components/CartCard';
 import { useProducts } from '../../../../context/ProductsContext';
 import styles from './CartList.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export const CartList = () => {
+  const { t } = useTranslation();
   const { cart, setCart } = useProducts();
   const [itemsAmount, setItemsAmount] = useState(() => {
     return cart.reduce((sum, item) => {
@@ -46,21 +48,20 @@ export const CartList = () => {
       <div className={styles.cart__checkout}>
         <div className={styles.cart__checkout__total}>${totalPrice}</div>
         <div className={styles.cart__checkout__items_amount}>
-          Total for {itemsAmount} items
+          {t('total')} {itemsAmount} {t('items')}
         </div>
         <div
           className={styles.cart__checkout__btn}
           onClick={handleCheckoutClick}
         >
-          Checkout
+          {t('checkout')}
         </div>
         <>
           {showModal && (
             <div className={styles.checkbox_notification}>
               <div className={styles.checkbox_notification__container}>
                 <p className={styles.checkbox_notification__container__title}>
-                  Checkout is not implemented yet. Do you want to clear the
-                  Cart?
+                  {t('clearCheckout')}
                 </p>
                 <div className={styles.checkbox_notification__container__btns}>
                   <div
@@ -69,7 +70,7 @@ export const CartList = () => {
                       styles.checkbox_notification__container__btns__btn
                     }
                   >
-                    Clear
+                    {t('clear')}
                   </div>
                   <div
                     onClick={() => setShowModal(false)}
@@ -77,7 +78,7 @@ export const CartList = () => {
                       styles.checkbox_notification__container__btns__btn
                     }
                   >
-                    Cancel
+                    {t('cancel')}
                   </div>
                 </div>
               </div>

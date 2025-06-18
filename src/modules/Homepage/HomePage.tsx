@@ -4,9 +4,11 @@ import styles from './HomePage.module.scss';
 import { Categories } from './components/Categories';
 import { useProducts } from '../../context/ProductsContext';
 import { Loader } from '../../components/Loader';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage = () => {
   const { products, isLoading } = useProducts();
+  const { t } = useTranslation();
 
   const newModels = [...products]
     .sort((item1, item2) => item2.year - item1.year)
@@ -30,13 +32,13 @@ export const HomePage = () => {
         <>
           <Header />
           <ModelsListSlider
-            title={'Brand new models'}
+            title={t('newModels')}
             products={newModels}
             discount={false}
           />
           <Categories />
           <ModelsListSlider
-            title={'Hot prices'}
+            title={t('hotPrices')}
             products={hotPrices}
             discount={true}
           />

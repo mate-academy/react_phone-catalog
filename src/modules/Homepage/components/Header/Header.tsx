@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Header.module.scss';
 const images = [
@@ -16,6 +17,8 @@ const images = [
 ];
 
 export const Header = () => {
+  const { t } = useTranslation();
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -74,9 +77,7 @@ export const Header = () => {
     <div className={styles.container}>
       <h1 className={styles.hidden_title}>Product Catalog</h1>
 
-      <h1 className={styles.container__title}>
-        Welcome to Nice Gadgets store!
-      </h1>
+      <h1 className={styles.container__title}>{t('welcome')}</h1>
       <div
         className={`${styles.slider_arrow} ${styles.slider_arrow__left}`}
         onClick={handleIndexDec}

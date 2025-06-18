@@ -13,7 +13,7 @@ const parPageOptions = [
   { label: '16', value: '16' },
 ];
 
-export const ListControlPanel = ({}) => {
+export const ListControlPanel = () => {
   return (
     <div className={styles.list_settings}>
       <div className={styles.list_settings__sort}>

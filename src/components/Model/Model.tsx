@@ -14,8 +14,10 @@ import {
   useWindowWidth,
 } from '../../utils/helpers';
 import { Loader } from '../Loader';
+import { useTranslation } from 'react-i18next';
 
 export const Model = () => {
+  const { t } = useTranslation();
   const { productId } = useParams();
   const { products, favorites, cart, setFavorites, setCart } = useProducts();
   const navigate = useNavigate();
@@ -32,13 +34,18 @@ export const Model = () => {
   );
 
   useEffect(() => {
+    setIsLoading(true);
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
     const fetchModel = async () => {
       if (!modelShortData || !productId) {
         return;
       }
 
       try {
-        setIsLoading(true);
         setError(null);
 
         const response = await fetch(`api/${modelShortData.category}.json`);
@@ -62,12 +69,12 @@ export const Model = () => {
             : 'Failed to fetch product details',
         );
         navigate('/not_found_product');
-      } finally {
-        setIsLoading(false);
       }
     };
 
     fetchModel();
+
+    return () => clearTimeout(timer);
   }, [productId, modelShortData, navigate]);
 
   if (!isValidUrl) {
@@ -131,7 +138,7 @@ export const Model = () => {
       <div className={styles.model}>
         <div className={styles.model__back} onClick={() => navigate(-1)}>
           <div className={styles.model__back__arrow}></div>
-          <div className={styles.model__back__text}>Back</div>
+          <div className={styles.model__back__text}>{t('back')}</div>
         </div>
         <h1 className={styles.model__name}>{model?.name}</h1>
         <div className={styles.model__container}>
@@ -180,7 +187,7 @@ export const Model = () => {
               <div
                 className={styles.model__purchase_panel__header__colors_title}
               >
-                Available colors
+                {t('availableColors')}
               </div>
               <div className={styles.model__purchase_panel__header__model_id}>
                 ID: {modelShortData?.id}
@@ -222,7 +229,7 @@ export const Model = () => {
                     styles.model__purchase_panel__card__capacities__title
                   }
                 >
-                  Select capacity
+                  {t('selectCapacity')}
                 </div>
                 <div
                   className={
@@ -283,7 +290,11 @@ export const Model = () => {
                     },
                   )}
                   onClick={addToCart}
-                ></div>
+                >
+                  {cart.some(item => item.itemId === modelShortData?.itemId)
+                    ? t('addedToCart')
+                    : t('addToCart')}
+                </div>
                 <button
                   className={cn(
                     styles.model__purchase_panel__card__buttons__like,
@@ -306,7 +317,7 @@ export const Model = () => {
                       styles.model__purchase_panel__card__detail__row__name
                     }
                   >
-                    Screen
+                    {t('screen')}
                   </div>
                   <div
                     className={
@@ -324,7 +335,7 @@ export const Model = () => {
                       styles.model__purchase_panel__card__detail__row__name
                     }
                   >
-                    Resolution
+                    {t('resolution')}
                   </div>
                   <div
                     className={
@@ -342,7 +353,7 @@ export const Model = () => {
                       styles.model__purchase_panel__card__detail__row__name
                     }
                   >
-                    Processor
+                    {t('processor')}
                   </div>
                   <div
                     className={
@@ -360,7 +371,7 @@ export const Model = () => {
                       styles.model__purchase_panel__card__detail__row__name
                     }
                   >
-                    RAM
+                    {t('ram')}
                   </div>
                   <div
                     className={
@@ -375,7 +386,7 @@ export const Model = () => {
           </div>
         </div>
         <div className={styles.model__about}>
-          <h3 className={styles.model__about__title}>About</h3>
+          <h3 className={styles.model__about__title}>{t('about')}</h3>
           {model?.description.map(item => {
             return (
               <div key={item.title} className={styles.model__about__part}>
@@ -390,10 +401,10 @@ export const Model = () => {
           })}
         </div>
         <div className={styles.model__tech_specs}>
-          <h4 className={styles.model__tech_specs__title}>Tech specs</h4>
+          <h4 className={styles.model__tech_specs__title}>{t('techSpecs')}</h4>
           <div className={styles.model__tech_specs__params}>
             <span className={styles.model__tech_specs__params__name}>
-              Screen
+              {t('screen')}
             </span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.screen}
@@ -401,7 +412,7 @@ export const Model = () => {
           </div>
           <div className={styles.model__tech_specs__params}>
             <span className={styles.model__tech_specs__params__name}>
-              Resolution
+              {t('resolution')}
             </span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.resolution}
@@ -409,21 +420,23 @@ export const Model = () => {
           </div>
           <div className={styles.model__tech_specs__params}>
             <span className={styles.model__tech_specs__params__name}>
-              Processor
+              {t('processor')}
             </span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.processor}
             </span>
           </div>
           <div className={styles.model__tech_specs__params}>
-            <span className={styles.model__tech_specs__params__name}>RAM</span>
+            <span className={styles.model__tech_specs__params__name}>
+              {t('ram')}
+            </span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.ram}
             </span>
           </div>
           <div className={styles.model__tech_specs__params}>
             <span className={styles.model__tech_specs__params__name}>
-              Built in memory
+              {t('builtInMemory')}
             </span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.capacity}
@@ -431,20 +444,24 @@ export const Model = () => {
           </div>
           <div className={styles.model__tech_specs__params}>
             <span className={styles.model__tech_specs__params__name}>
-              Camera
+              {t('camera')}
             </span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.camera}
             </span>
           </div>
           <div className={styles.model__tech_specs__params}>
-            <span className={styles.model__tech_specs__params__name}>Zoom</span>
+            <span className={styles.model__tech_specs__params__name}>
+              {t('zoom')}
+            </span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.zoom}
             </span>
           </div>
           <div className={styles.model__tech_specs__params}>
-            <span className={styles.model__tech_specs__params__name}>Cell</span>
+            <span className={styles.model__tech_specs__params__name}>
+              {t('cell')}
+            </span>
             <span className={styles.model__tech_specs__params__data}>
               {model?.cell.join(', ')}
             </span>
@@ -452,7 +469,7 @@ export const Model = () => {
         </div>
 
         <ModelsListSlider
-          title="You may also like"
+          title={t('alsoLike')}
           products={similarProducts.slice(0, 30)}
           discount={false}
         />

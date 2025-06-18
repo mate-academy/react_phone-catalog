@@ -5,6 +5,7 @@ import styles from './ProductCard.module.scss';
 
 import { useProducts } from '../../context/ProductsContext';
 import { Card } from '../../types/card';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   card: Card;
@@ -13,6 +14,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ card, discount }) => {
   const { favorites, cart, setFavorites, setCart } = useProducts();
+  const { t } = useTranslation();
 
   const handleLike = () => {
     const isAlreadyFavorite = favorites.some(item => item.id === card.id);
@@ -70,15 +72,15 @@ export const ProductCard: React.FC<Props> = ({ card, discount }) => {
       </Link>
       <div className={styles.card__detail}>
         <div className={styles.card__detail__row}>
-          <div className={styles.card__detail__row__name}>Screen</div>
+          <div className={styles.card__detail__row__name}>{t('screen')}</div>
           <div className={styles.card__detail__row__param}>{card.screen}</div>
         </div>
         <div className={styles.card__detail__row}>
-          <div className={styles.card__detail__row__name}>Capacity</div>
+          <div className={styles.card__detail__row__name}>{t('capacity')}</div>
           <div className={styles.card__detail__row__param}>{card.capacity}</div>
         </div>
         <div className={styles.card__detail__row}>
-          <div className={styles.card__detail__row__name}>RAM</div>
+          <div className={styles.card__detail__row__name}>{t('ram')}</div>
           <div className={styles.card__detail__row__param}>{card.ram}</div>
         </div>
       </div>
@@ -91,7 +93,11 @@ export const ProductCard: React.FC<Props> = ({ card, discount }) => {
               item => item.id === card.id,
             ),
           })}
-        ></div>
+        >
+          {cart.some(item => item.id === card.id)
+            ? t('addedToCart')
+            : t('addToCart')}
+        </div>
         <button
           className={cn(styles.card__buttons__like, {
             [styles.card__buttons__like__active]: favorites.some(

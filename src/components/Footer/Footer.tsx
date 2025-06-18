@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { Button } from '../Button';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className={styles.footer}>
       <NavLink to={'/'} className={styles.footer__logo}>
@@ -15,7 +18,7 @@ export const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Github
+          {t('github')}
         </a>
         <a
           className={styles.footer__contacts__item}
@@ -23,7 +26,7 @@ export const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Contacts
+          {t('contacts')}
         </a>
         <a
           className={styles.footer__contacts__item}
@@ -31,11 +34,11 @@ export const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          rights
+          {t('rights')}
         </a>
       </div>
       <div className={styles.footer__back_to_top}>
-        <p className={styles.footer__back_to_top__text}>Back to top</p>
+        <p className={styles.footer__back_to_top__text}>{t('backToTop')}</p>
         <Button
           direction="up"
           onClick={() => {

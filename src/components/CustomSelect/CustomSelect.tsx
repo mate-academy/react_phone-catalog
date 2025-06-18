@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './CustomSelect.module.scss';
 import { useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface Option {
   label: string;
@@ -19,8 +20,9 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation();
 
-  const itemsPerPage = searchParams.get('itemsPerPage') || 'All';
+  const itemsPerPage = searchParams.get('itemsPerPage') || t('All');
   const sort = searchParams.get('sort') || 'new';
 
   useEffect(() => {
@@ -74,14 +76,13 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
-      <label className={styles.label}>{label}</label>
+      <label className={styles.label}>{t(label)}</label>
       <button
         type="button"
         className={styles.control}
         onClick={() => setIsOpen(prev => !prev)}
       >
-        {label === 'Sort by' &&
-          options.find(item => item.value === sort)?.label}
+        {label === 'Sort by' && t(sort)}
         {label === 'Items on page' && itemsPerPage}
         <span className={`${styles.arrow} ${isOpen ? styles.open : ''}`} />
       </button>
@@ -97,7 +98,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
                 setIsOpen(false);
               }}
             >
-              {option.label}
+              {t(option.label)}
             </li>
           ))}
         </ul>

@@ -125,9 +125,9 @@
         width: 160px;
       }
 
-      &::before {
-        content: 'Add to cart';
-      }
+      // &::before {
+      //   content: 'Add to cart';
+      // }
 
       &:hover {
         box-shadow: var(--add-button-hover-shadow);
@@ -139,9 +139,9 @@
         background-color: var(--add-button-selected-back-color);
         color: var(--add-button-selected-color);
 
-        &::before {
-          content: 'Added to cart';
-        }
+        // &::before {
+        //   content: 'Added to cart';
+        // }
 
         &:hover {
           box-shadow: none;

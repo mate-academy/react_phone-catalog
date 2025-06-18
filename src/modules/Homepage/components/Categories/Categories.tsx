@@ -1,16 +1,18 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Categories.module.scss';
 import { useProducts } from '../../../../context/ProductsContext';
+import { useTranslation } from 'react-i18next';
 
 export const Categories = () => {
   const { products } = useProducts();
   const phones = products.filter(item => item.category === 'phones');
   const tablets = products.filter(item => item.category === 'tablets');
   const accessories = products.filter(item => item.category === 'accessories');
+  const { t } = useTranslation();
 
   return (
     <div className={styles.shop}>
-      <h2 className={styles.shop__title}>Shop by category</h2>
+      <h2 className={styles.shop__title}>{t('categories')}</h2>
       <div className={styles.shop__categories}>
         <NavLink
           onClick={() => {
@@ -24,9 +26,9 @@ export const Categories = () => {
           <div
             className={`${styles.shop__images} ${styles.shop__images__image1}`}
           ></div>
-          <div className={styles.shop__categories__title}>Moblie phones</div>
+          <div className={styles.shop__categories__title}>{t('mobilePhones')}</div>
           <div className={styles.shop__categories__body}>
-            {phones.length} models
+            {phones.length} {t('models')}
           </div>
         </NavLink>
         <NavLink
@@ -41,9 +43,9 @@ export const Categories = () => {
           <div
             className={`${styles.shop__images} ${styles.shop__images__image2}`}
           ></div>
-          <div className={styles.shop__categories__title}>Tablets</div>
+          <div className={styles.shop__categories__title}>{t('tablets')}</div>
           <div className={styles.shop__categories__body}>
-            {tablets.length} models
+            {tablets.length} {t('models')}
           </div>
         </NavLink>
         <NavLink
@@ -58,9 +60,9 @@ export const Categories = () => {
           <div
             className={`${styles.shop__images} ${styles.shop__images__image3}`}
           ></div>
-          <div className={styles.shop__categories__title}>Accessories</div>
+          <div className={styles.shop__categories__title}>{t('accessories')}</div>
           <div className={styles.shop__categories__body}>
-            {accessories.length} models
+            {accessories.length} {t('models')}
           </div>
         </NavLink>
       </div>
