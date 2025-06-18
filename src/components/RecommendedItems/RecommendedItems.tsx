@@ -21,8 +21,13 @@ export const RecommendedItems: React.FC<Props> = ({ recommendedItems }) => {
           <button
             className="recommendedItems__slider--btn recommendedItems__slider--btn-prev"
             disabled={isBeginning}
-          ></button>
-          <button className="recommendedItems__slider--btn recommendedItems__slider--btn-next"></button>
+            type="button"
+          >
+            <img src="/img/btn-prev.png" alt="prev" width={20} height={20} />
+          </button>
+          <button className="recommendedItems__slider--btn recommendedItems__slider--btn-next" type="button">
+            <img src="/img/arrowRightDefault.png" alt="next" width={20} height={20} />
+          </button>
         </div>
       </div>
       <div className="recommendedItems__swiper">
@@ -36,6 +41,7 @@ export const RecommendedItems: React.FC<Props> = ({ recommendedItems }) => {
             nextEl: '.recommendedItems__slider--btn-next',
           }}
           modules={[Navigation]}
+          loop={true}
           onSwiper={swiper => setIsBeginning(swiper.isBeginning)}
           onSlideChange={swiper => setIsBeginning(swiper.isBeginning)}
           breakpoints={{

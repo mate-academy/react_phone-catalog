@@ -14,7 +14,9 @@ export const HotPrices: React.FC = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const sortedProducts = await fetchProducts();
+        const sortedProducts = (await fetchProducts())
+          .filter(p => p.fullPrice && p.price)
+          .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
 
         setProducts(sortedProducts);
       } catch {
@@ -61,6 +63,7 @@ export const HotPrices: React.FC = () => {
                 nextEl: '.hot-prices__slider--btn-next',
               }}
               modules={[Navigation]}
+              loop={true}
               breakpoints={{
                 320: {
                   spaceBetween: 16,

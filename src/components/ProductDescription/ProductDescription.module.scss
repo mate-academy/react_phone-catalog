@@ -1,20 +1,18 @@
 @import '../../styles/common';
 
 .product-description {
-  @include page-grid;
+  
 
-  display: flex;
-  flex-direction: column;
   max-width: 1136px;
   padding-top: 16px;
-  margin: 0 16px;
+  
 
   @include on-tablet {
-    margin: 0 24px;
+    margin: 0 auto;
   }
 
   @include on-desktop-small {
-    margin: 0 32px;
+    margin: 0 auto;
   }
 
   @include on-desktop {
@@ -87,7 +85,7 @@
     align-items: center;
     width: 49px;
     height: 49px;
-    border: 1px solid $light-grey-color;
+    border: 1px solid #C4C4C4;
 
     @include on-tablet {
       width: 35px;
@@ -118,6 +116,10 @@
   }
 
   &__order {
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+
     @include on-tablet {
       width: 237px;
     }
@@ -125,19 +127,37 @@
     @include on-desktop-small {
       width: 320px;
     }
+
+    @media (max-width: 639px) {
+      display: block;
+    }
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      width: 320px;
+      min-width: 0;
+    }
   }
 
   &__top-text {
-    padding-top: 40px;
+    margin-top: 40px;
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 15px;
-    letter-spacing: 0;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+   
 
-    @include on-desktop-small {
-      width: 512px;
+    @media (min-width: 640px) and (max-width: 1199px) {
+      margin-top: 40px !important;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    @media (min-width: 1200px) {
+      padding-right: 32px;
+      max-width: 100%;
     }
 
     &--text {
@@ -145,7 +165,10 @@
     }
 
     &--textId {
-      color: $icon-grey-color;
+      color: #4a4d58;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
     }
   }
 
@@ -176,7 +199,7 @@
 
   &__divider {
     border: 0;
-    border-bottom: 1px solid $dark-grey-color;
+    border-bottom: 1px solid#E2E6E9;
     padding-top: 24px;
   }
 
@@ -194,37 +217,40 @@
 
   &__capacityList {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 8px;
+    width: 100%;
     padding-top: 8px;
   }
 
-  &__capacity {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-right: 8px;
-    padding-left: 8px;
-    width: auto;
-    height: 32px;
-    background-color: transparent;
-    text-decoration: none;
-    color: $main-white-color;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 21px;
-    letter-spacing: 0;
-    border: 1px solid $light-grey-color;
-    transition: background-color 0.5s ease-in-out;
-
-    &:hover {
-      background-color: $light-grey-color;
+  @media (min-width: 1024px) {
+    .product-description__capacityList {
+      flex-wrap: nowrap;
     }
   }
 
+  &__capacity {
+    width: 63px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid #B4BDC3;
+    background: #fff;
+    color: #313237;
+    transition: border 0.2s, background 0.2s, color 0.2s;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0;
+  }
+
   &__capacityActive {
-    background-color: $main-white-color;
-    color: $main-color;
-    border: 0;
+    background: #313237;
+    color: #fff;
+    border: 1.5px solid #313237;
   }
 
   &__prices {
@@ -255,79 +281,118 @@
   }
 
   &__actions {
-    position: relative;
+    margin-top: 16px;
     display: flex;
-    justify-content: space-between;
     gap: 8px;
-    padding-top: 24px;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 0;
 
-    &--btn {
-      height: 48px;
-      width: 48px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: $main-white-color;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 21px;
-      letter-spacing: 0;
-      border: 0;
-      padding: 0;
-      margin: 0;
-    }
+   
   }
 
   &__add {
     width: 100%;
-    background-color: $main-purple-color;
-    transition:
-      background-color 0.5s ease,
-      transform 0.5s ease,
-      box-shadow 0.5s ease;
+    min-width: 0;
+    flex: 1 1 auto;
+    height: 48px;
+    background: #313237;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: center;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 1200px) {
+      width: 263px;
+    }
 
     &:hover {
-      background-color: $main-purple-color-hover;
+      background: #4a4d58;
+    }
+
+    &:active {
+      background: #fff;
+      color: #313237;
+      border: 1px solid #313237;
     }
   }
 
   &__added {
-    width: 100%;
-    background-color: $button-grey-color;
+    @extend .product-description__add;
+    background: #fff;
     color: #27ae60;
-    transition:
-      background-color 0.5s ease,
-      transform 0.5s ease,
-      box-shadow 0.5s ease;
+    border: 1.5px solid #E2E6E9;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+
+    &:hover {
+      background: #eafaf1;
+      
+      border-color: #E2E6E9;
+    }
   }
 
   &__favourite {
-    flex-shrink: 0;
     width: 48px;
-    background-color: $button-grey-color;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid #b4bdc3;
+    background: #fff;
+    cursor: pointer;
+    transition: border 0.2s;
+    flex-shrink: 0;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+    }
   }
 
   &__description {
     padding-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 8px 32px;
+    width: 100%;
+    margin: 0 0 24px 0;
 
     &__item {
-      display: flex;
-      font-size: 12px;
+      display: contents;
+    }
+
+    &__item--name {
+      color: #89939A;
+      font-size: 14px;
       font-weight: 600;
-      line-height: 15px;
-      letter-spacing: 0;
-      justify-content: space-between;
+      line-height: 21px;
+      text-align: left;
+      grid-column: 1;
+    }
 
-      &--name {
-        color: $light-grey-color;
-      }
-
-      &--value {
-        color: $main-white-color;
-      }
+    &__item--value {
+      color: #313237;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      text-align: right;
+      grid-column: 2;
     }
   }
 
@@ -362,8 +427,8 @@
     }
 
     &--text {
-      color: $light-grey-color;
-      font-weight: 400;
+      color: #89939A;
+      font-weight: 500;
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0;
@@ -395,6 +460,37 @@
         line-height: 31px;
       }
     }
+
+    .product-description__description {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 8px 32px;
+
+      &__item {
+        display: contents;
+      }
+
+      &__item--name {
+        color: #89939A;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        text-align: left;
+        grid-column: 1;
+      }
+
+      &__item--value {
+        color: #313237;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 21px;
+        text-align: right;
+        grid-column: 2;
+      }
+    }
   }
 }
 
@@ -406,10 +502,11 @@
   @include on-tablet {
     gap: 17px;
     flex-direction: row;
+    align-items: flex-start;
   }
 
   @include on-desktop-small {
-    justify-content: left;
+    
     gap: 64px;
   }
 }
@@ -432,4 +529,20 @@
 .icon {
   width: auto;
   height: auto;
+}
+
+.product-description__images {
+  @include on-desktop-small {
+    width: 464px;
+  }
+}
+
+.product-description__order {
+  display: block;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (max-width: 639px) {
+    display: block;
+  }
 }

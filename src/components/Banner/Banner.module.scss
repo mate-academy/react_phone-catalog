@@ -73,13 +73,8 @@
       z-index: 1;
       align-items: center;
       justify-content: center;
-
-      border: 1px solid #23242b;
-      transition: background-color 2s ease;
-
-      &:hover {
-        background: #1f2024;
-      }
+      border: 1px solid #B4BDC3;
+      transition: background-color 0.2s, border 0.2s;
 
       @include on-tablet {
         display: flex;
@@ -88,6 +83,16 @@
       &--img {
         min-width: 16px;
         height: 16px;
+      }
+
+      &:hover {
+        border: 1px solid #313237;
+        background: #fff;
+      }
+
+      &:active {
+        border: 1px solid #313237;
+        background: #fff;
       }
     }
 

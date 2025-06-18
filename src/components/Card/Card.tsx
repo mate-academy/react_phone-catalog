@@ -17,7 +17,7 @@ export const Card: React.FC<Props> = ({ product }) => {
   // const root = location.pathname.split('/')[1];
 
   const createLink = () => {
-    return `/${product.category}/${product.itemId}`;
+    return `/product/${product.itemId}`;
   };
 
   const isAddedToCart = cart.some(item => item.product.id === product.id);
@@ -26,10 +26,12 @@ export const Card: React.FC<Props> = ({ product }) => {
     item => item.product.id === product.id,
   );
 
+  const imageSrc = product.image ? `/${product.image.replace(/^\/?/, '')}` : '/img/notFoundPage.png';
+
   return (
     <div className="card">
       <Link to={createLink()}>
-        <img src={product.image} alt={product.name} className="card__img" />
+        <img src={imageSrc} alt={product.name} className="card__img" />
       </Link>
       <Link to={createLink()}>
         <h3 className="card__title">{product.name}</h3>
@@ -80,11 +82,11 @@ export const Card: React.FC<Props> = ({ product }) => {
         {isAddedToFavourites ? (
           <Link
             to=""
-            className="card__actions--btn card__favourite"
+            className="card__actions--btn card__favourite selected"
             onClick={() => removeFromFavourite(product)}
           >
             <img
-              src="./img/favourite-icon-selected.png"
+              src="/img/favourite-icon-selected.png"
               alt="favourite icon"
               className="icon icon-user favourite__added"
             />
@@ -96,9 +98,9 @@ export const Card: React.FC<Props> = ({ product }) => {
             onClick={() => addToFavourite(product)}
           >
             <img
-              src="./img/favourite-icon.png"
+              src="/img/favourite-icon.png"
               alt="favourite icon"
-              className="icon icon-user favourite__added"
+              className="icon icon-user"
             />
           </Link>
         )}

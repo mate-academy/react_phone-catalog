@@ -4,153 +4,162 @@
   overflow: hidden;
 }
 
-.MobileMenu {
-  
-  display: flex;
-  flex-direction: column;
+.mobileMenu {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
   top: 0;
   left: 0;
-  background-color: $main-color;
-  transform: translateX(-110%);
-  transition: transform 0.2s ease-in-out;
-  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
 
-  &.open {
-    transform: translateX(0);
+.MobileMenu__header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  box-shadow: 0px 1px 0px 0px #E2E6E9;
+}
+
+.headerMenu__logo {
+  width: 96px;
+  padding: 13px 16px;
+
+  @include on-desktop-small {
+    width: 128px;
+    padding: 18px 24px;
+  }
+}
+
+.headerMenu__logo_pict {
+  width: 80px;
+}
+
+.headerMenu__button {
+  display: flex;
+  justify-self: end;
+  border-left: 1px solid #E2E6E9;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.headerMenu__button_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.MobileMenu__body {
+  margin-top: 32px;
+}
+
+.bodyMenu__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.bodyMenu__nav_link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $light-grey-color;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+  padding-bottom: 8px;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    color: $main-white-color;
   }
 
-  &__header {
+  &.is_active {
+    color: $main-white-color;
+    border-bottom: 2px solid $main-white-color;
+  }
+}
+
+.MobileMenu__user {
+  display: flex;
+  margin-top: auto;
+  width: 100%;
+}
+
+.icon_favourites {
+  border-right: 1px solid #E2E6E9;
+}
+
+.MobileMenu__user_icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 64px;
+  border-top: 1px solid #E2E6E9;
+  transition: all 0.3s;
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    background-color: #fafafa;
+  }
+
+  &.is_active {
+    background-color: #f5f5f5;
+    border-bottom: 2px solid $main-white-color;
+  }
+
+  &::after {
+    content: attr(data-count);
+    position: absolute;
+    background-color: #EB5757;
+    border: 1px solid $main-color;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.28;
+    text-align: center;
     display: flex;
-    width: 100vw;
-    justify-content: space-between;
-    box-shadow: 0px 1px 0px 0px #E2E6E9;
-
-    .headerMenu {
-      &__logo {
-        width: 96px;
-        padding: 13px 16px;
-        grid-column: 1 / span 2;
-
-        @include on-desktop-small {
-          width: 128px;
-          padding: 18px 24px;
-        }
-
-        &--pict {
-          width: 80px;
-        }
-      }
-
-      &__button {
-        display: flex;
-        justify-self: end;
-        border-left: 1px solid #E2E6E9;
-        grid-column: 4 / span 1;
-
-        @include on-tablet {
-          display: none;
-        }
-
-        &--icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 48px;
-          height: 48px;
-          background-color: transparent;
-          border: none;
-
-          img {
-            width: 16px;
-            height: 16px;
-            object-fit: contain;
-          }
-        }
-      }
-    }
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    visibility: hidden;
+    top: 20%;
+    right: 35%;
   }
 
-  &__body {
-    margin-top: 32px;
-
-    .bodyMenu {
-      &__nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-
-        &--link {
-          text-decoration: none;
-          text-transform: uppercase;
-          color: $light-grey-color;
-          font-size: 12px;
-          font-weight: 800;
-          line-height: 11px;
-          letter-spacing: 0.04em;
-        }
-      }
-    }
-  }
-
-  &__user {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-
-    .icon--favourites {
-      border-right: 1px solid #E2E6E9;
-    }
-
-    &--icon {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(100vw / 2);
-      height: 64px;
-      border-top: 1px solid #E2E6E9;
-
-    
-
-      &::after {
-        content: attr(data-count);
-        position: absolute;
-        background-color: #EB5757;
-        border: 1px solid $main-color;
-        color: $main-white-color;
-        font-size: 10px;
-        font-weight: 700;
-        line-height: 1.28;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        visibility: hidden;
-      }
-
-      &[data-count]:not([data-count=''])::after {
-        top: 20%;
-        right: 35%;
-        visibility: visible;
-      }
-    }
+  &[data-count]:not([data-count=''])::after {
+    visibility: visible;
   }
 }
 
 .icon {
-  &-user, &-menu {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-  }
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.icon_user,
+.icon_menu {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
 .delete-icon {
@@ -162,15 +171,5 @@
   background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.mobileMenu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  z-index: 1000;
 }
 

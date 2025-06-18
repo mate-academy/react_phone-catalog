@@ -18,12 +18,12 @@
   }
 
   @include on-desktop-small {
-    padding: 0 $padding-desktop-small;
+    padding: 0 32px;
     margin-bottom: 80px;
   }
 
   @include on-desktop {
-    padding: 0 $padding-desktop;
+    padding: 0 32px;
   }
 
   &__header {
@@ -112,4 +112,29 @@
 
 .newModels {
   padding: 24px 0;
+}
+
+.slider-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  height: 100%;
+}
+
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+  height: 100%;
+}
+
+.new-models__list--card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }

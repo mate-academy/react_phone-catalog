@@ -1,42 +1,56 @@
 @import '../../styles/common';
 
 .goBackButton__cartPage {
-  padding-top: 48px;
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop-small {
+    padding: 0 32px;
+  }
+
+  @include on-desktop {
+    padding: 0;
+    max-width: 1136px;
+    margin: 0 auto;
+  }
 }
 
 .cartPage {
   @include page-grid;
 
-  padding: 32px $padding-phone 0;
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 16px;
 
   @include on-tablet {
-    padding: 0 $padding-tablet;
-    padding-top: 32px;
+    padding: 0 24px;
   }
 
   @include on-desktop-small {
-    padding: 32px $padding-desktop-small 80px;
+    padding: 0 32px 80px;
     flex-direction: row;
     column-gap: 16px;
   }
 
   @include on-desktop {
-    padding: 32px 0;
-    margin: 0 auto;
+    padding: 0;
   }
 
   &__title {
-    max-width: 1136px;
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    color: #313237;
+    margin: 0 0 24px 0;
+    
     padding-top: 24px;
-    color:#FFFFFF;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    letter-spacing: -0.01em;
-    margin: 0 16px;
 
     @include on-tablet {
       margin: 0 $padding-tablet;

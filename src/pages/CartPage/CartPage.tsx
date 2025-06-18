@@ -14,7 +14,7 @@ export const CartPage: React.FC = () => {
   const totalItems = cart.reduce((acc, num) => acc + num.quantity, 0);
 
   return (
-    <>
+    <div className="page-container">
       <div className="goBackButton__cartPage">
         <GoBackBttn />
       </div>
@@ -58,6 +58,6 @@ export const CartPage: React.FC = () => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };

@@ -5,12 +5,13 @@ import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
-import { FavouritePage } from './pages/FavouritePage';
-import { CartPage } from './pages/CartPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+import { FavouritePage } from './pages/FavouritePage/FavouritePage';
+import { CartPage } from './pages/CartPage/CartPage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ProductsProvider } from './store/ProductContext';
 import { CartProvider } from './store/CartStore';
 import { FavouriteProvider } from './store/FavouriteContext';
+import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 
 export const Root: React.FC = () => (
   <CartProvider>
@@ -70,6 +71,15 @@ export const Root: React.FC = () => (
             element={
               <ProductsProvider>
                 <AccessoriesPage />
+              </ProductsProvider>
+            }
+          />
+
+          <Route
+            path="product/:productId"
+            element={
+              <ProductsProvider>
+                <ProductDetailsPage />
               </ProductsProvider>
             }
           />

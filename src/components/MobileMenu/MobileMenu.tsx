@@ -33,53 +33,64 @@ export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => 
     return null;
   }
 
+  const handleNavClick = () => {
+    handleCloseMenu();
+  };
+
   return (
     <div className={styles.mobileMenu}>
-      <header className="MobileMenu__header headerMenu">
-        <div className="headerMenu__logo">
-          <img src={logo} alt="Logo" className="headerMenu__logo--pict" />
+      <header className={styles.MobileMenu__header}>
+        <div className={styles.headerMenu__logo}>
+          <img src={logo} alt="Logo" className={styles.headerMenu__logo_pict} />
         </div>
-        <div className="headerMenu__button">
-          <button className="headerMenu__button--icon" onClick={handleCloseMenu}>
+        <div className={styles.headerMenu__button}>
+          <button 
+            className={styles.headerMenu__button_icon} 
+            onClick={handleCloseMenu}
+          >
             <img
               src={deleteIcon}
               alt="icon close"
-              className="icon icon-menu"
+              className={classNames(styles.icon, styles.icon_menu)}
             />
           </button>
         </div>
       </header>
 
-      <div className="MobileMenu__body bodyMenu">
-        <nav className="bodyMenu__nav">
+      <div className={styles.MobileMenu__body}>
+        <nav className={styles.bodyMenu__nav}>
           <NavLink
             to="/"
-            className={classNames('bodyMenu__nav--link', {
-              'is-active': location.pathname === '/',
+            onClick={handleNavClick}
+            className={({ isActive }) => classNames(styles.bodyMenu__nav_link, {
+              [styles.is_active]: isActive,
             })}
           >
             Home
           </NavLink>
           <NavLink
             to="/phones"
-            className={classNames('bodyMenu__nav--link', {
-              'is-active': location.pathname.includes('phones'),
+            onClick={handleNavClick}
+            className={({ isActive }) => classNames(styles.bodyMenu__nav_link, {
+              [styles.is_active]: isActive,
             })}
           >
             Phones
           </NavLink>
           <NavLink
             to="/tablets"
-            className={classNames('bodyMenu__nav--link', {
-              'is-active': location.pathname.includes('tablets'),
+            onClick={handleNavClick}
+            className={({ isActive }) => classNames(styles.bodyMenu__nav_link, {
+              [styles.is_active]: isActive,
             })}
           >
             Tablets
           </NavLink>
           <NavLink
             to="/accessories"
-            className={classNames('bodyMenu__nav--link', {
-              'is-active': location.pathname.includes('accessories'),
+            onClick={handleNavClick}
+            className={({ isActive }) => classNames(styles.bodyMenu__nav_link, {
+              [styles.is_active]: isActive,
             })}
           >
             Accessories
@@ -87,33 +98,36 @@ export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => 
         </nav>
       </div>
 
-      <div className="MobileMenu__user">
+      <div className={styles.MobileMenu__user}>
         <NavLink
           data-count={favouritesCount !== 0 ? `${favouritesCount}` : ''}
           to="/favourites"
-          className={classNames(
-            'MobileMenu__user--icon',
-            'icon--favourites',
-            { 'is-active': location.pathname === '/favourites' },
+          onClick={handleNavClick}
+          className={({ isActive }) => classNames(
+            styles.MobileMenu__user_icon,
+            styles.icon_favourites,
+            { [styles.is_active]: isActive },
           )}
         >
           <img
             src={favouriteIcon}
             alt="favourite icon"
-            className="icon icon-user"
+            className={classNames(styles.icon, styles.icon_user)}
           />
         </NavLink>
         <NavLink
           data-count={cartCount !== 0 ? `${cartCount}` : ''}
           to="/cart"
-          className={classNames('MobileMenu__user--icon', {
-            'is-active': location.pathname === '/cart',
-          })}
+          onClick={handleNavClick}
+          className={({ isActive }) => classNames(
+            styles.MobileMenu__user_icon,
+            { [styles.is_active]: isActive },
+          )}
         >
           <img
             src={cartIcon}
             alt="cart icon"
-            className="icon icon-user"
+            className={classNames(styles.icon, styles.icon_user)}
           />
         </NavLink>
       </div>

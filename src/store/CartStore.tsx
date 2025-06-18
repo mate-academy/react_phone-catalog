@@ -20,12 +20,12 @@ function reducer(state: CartState, action: Action): CartState {
   switch (action.type) {
     case 'addToCart': {
       const existingProduct = state.find(
-        item => String(item.product.itemId) === String(action.payload.itemId)
+        item => String(item.product.id) === String(action.payload.id)
       );
 
       if (existingProduct) {
         return state.map(item =>
-          String(item.product.itemId) === String(action.payload.itemId)
+          String(item.product.id) === String(action.payload.id)
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
@@ -34,25 +34,25 @@ function reducer(state: CartState, action: Action): CartState {
       }
     }
     case 'removeFromCart':
-      return state.filter(product => String(product.product.itemId) !== String(action.payload));
+      return state.filter(product => String(product.product.id) !== String(action.payload));
 
     case 'increaseQuantity':
       return state.map(product =>
-        String(product.product.itemId) === String(action.payload)
+        String(product.product.id) === String(action.payload)
           ? { ...product, quantity: product.quantity + 1 }
           : product,
       );
 
     case 'decreaseQuantity':
       return state.map(product =>
-        String(product.product.itemId) === String(action.payload)
+        String(product.product.id) === String(action.payload)
           ? { ...product, quantity: product.quantity - 1 }
           : product,
       );
 
     case 'updateQuantity':
       return state.map(product =>
-        String(product.product.itemId) === String(action.payload.id)
+        String(product.product.id) === String(action.payload.id)
           ? { ...product, quantity: action.payload.quantity }
           : product,
       );
@@ -99,15 +99,15 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   const removeFromCart = useCallback((product: Product) => {
-    dispatch({ type: 'removeFromCart', payload: String(product.itemId) });
+    dispatch({ type: 'removeFromCart', payload: String(product.id) });
   }, []);
 
   const increaseQuantity = useCallback((product: Product) => {
-    dispatch({ type: 'increaseQuantity', payload: String(product.itemId) });
+    dispatch({ type: 'increaseQuantity', payload: String(product.id) });
   }, []);
 
   const decreaseQuantity = useCallback((product: Product) => {
-    dispatch({ type: 'decreaseQuantity', payload: String(product.itemId) });
+    dispatch({ type: 'decreaseQuantity', payload: String(product.id) });
   }, []);
 
   const updateQuantity = useCallback((id: string | number, quantity: number) => {

@@ -22,7 +22,7 @@ export const ProductDescription: React.FC<Props> = ({
   productId,
 }) => {
   const name = selectedProduct?.name;
-  const mainImage = selectedProduct?.images[0];
+  const mainImage = selectedProduct?.images?.[0];
   const mainColor = selectedProduct?.color;
   const mainCapacity = selectedProduct?.capacity;
   const colors = selectedProduct?.colorsAvailable;
@@ -92,6 +92,13 @@ export const ProductDescription: React.FC<Props> = ({
     setSelectedCapacity(mainCapacity);
   }, [mainImage, mainColor, mainCapacity]);
 
+  // Додаємо універсальний шлях до зображення
+  const imageSrc = selectedProduct?.image
+    ? `/${selectedProduct.image.replace(/^\/?/, '')}`
+    : selectedImage
+      ? `/${selectedImage.replace(/^\/?/, '')}`
+      : '/img/notFoundPage.png';
+
   return (
     <>
       <GoBackBttn />
@@ -100,12 +107,12 @@ export const ProductDescription: React.FC<Props> = ({
         <div className="container_first">
           <div className="product-description__images">
             <img
-              src={selectedImage}
+              src={imageSrc}
               alt=""
               className="product-description__main-image"
             />
             <div className="product-description__miniatures">
-              {selectedProduct?.images.map(image => (
+              {Array.isArray(selectedProduct?.images) && selectedProduct.images.map(image => (
                 <div
                   key={image}
                   onClick={() => setSelectedImage(image)}
@@ -118,7 +125,7 @@ export const ProductDescription: React.FC<Props> = ({
                   )}
                 >
                   <img
-                    src={image}
+                    src={`/${image.replace(/^\/?/, '')}`}
                     alt={selectedProduct.id}
                     className="product-description__miniature-image"
                   />
@@ -224,7 +231,7 @@ export const ProductDescription: React.FC<Props> = ({
                 >
                   <div className="icon-wrapper">
                     <img
-                      src="./img/favourite-icon.svg"
+                      src="/img/favourite-icon.png"
                       alt="favourite icon"
                       className="icon icon-user"
                     />
@@ -242,7 +249,7 @@ export const ProductDescription: React.FC<Props> = ({
                 >
                   <div className="icon-wrapper">
                     <img
-                      src="./img/favourite-icon-selected.svg"
+                      src="/img/favourite-icon-selected.png"
                       alt="favourite icon"
                       className="icon icon-user favourite__added"
                     />

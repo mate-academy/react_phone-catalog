@@ -17,7 +17,7 @@ function reducer(state: FavouriteState, action: Action): FavouriteState {
   switch (action.type) {
     case 'addToFavourite':
       const existingProduct = state.find(
-        product => product.product.itemId === action.payload.itemId,
+        product => String(product.product.id) === String(action.payload.id),
       );
 
       return !existingProduct

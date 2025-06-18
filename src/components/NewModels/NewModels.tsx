@@ -16,7 +16,11 @@ export const NewModels: React.FC = () => {
       try {
         const loadedProducts = await getProducts();
 
-        setProducts(loadedProducts.filter(product => product.year >= 2022));
+        setProducts(
+          loadedProducts
+            .filter(product => product.year >= 2022)
+            .sort((a, b) => b.year - a.year)
+        );
       } catch {
         throw new Error('Something went wrong, while loading products');
       } finally {
@@ -62,6 +66,7 @@ export const NewModels: React.FC = () => {
                 nextEl: '.new-models__slider--btn-next',
               }}
               modules={[Navigation]}
+              loop={true}
               breakpoints={{
                 320: {
                   spaceBetween: 16,

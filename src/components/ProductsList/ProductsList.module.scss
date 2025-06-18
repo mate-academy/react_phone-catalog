@@ -1,9 +1,11 @@
 .products__container {
-  max-width: 1136px;
   margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
   
-
- 
+  @media (min-width: 640px) {
+    max-width: 1136px;
+  }
 }
 
 .breadcrumbs {
@@ -205,22 +207,49 @@
 .products__list {
   display: flex;
   flex-direction: column;
-  grid-column: span 24;
   box-sizing: border-box;
   width: 100%;
+  padding: 0 16px;
 }
 
 .products__list__cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
   gap: 16px;
-  margin-top: 0;
-  margin-bottom: 40px;
+  row-gap: 40px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  justify-content: center;
+
+  @media (max-width: 639px) {
+    grid-template-columns: 1fr;
+    max-width: 288px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) and (max-width: 899px) {
+    grid-template-columns: repeat(2, minmax(272px, 1fr));
+    max-width: 592px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 900px) and (max-width: 1199px) {
+    grid-template-columns: repeat(3, minmax(272px, 1fr));
+    max-width: 888px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, minmax(272px, 1fr));
+    max-width: 1136px;
+  }
 }
 
 .products__list__card {
   background-color: #fff;
-  justify-self: stretch;
+  width: 100%;
+  margin: 0;
 }
 
 .noPagination {
