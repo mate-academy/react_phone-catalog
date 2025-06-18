@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 
 import { useMenuContext } from '../../../../../../contexts/MenuContext';
 import { selectCartQuantity } from '../../../../../../features/cart/cart.selectors';
+import { selectFavoritesQuantity } from '../../../../../../features/favorites/favorites.selectors';
 import { Icon } from '../../../../../../shared/components/ui/Icon/Icon';
 import { IconNames } from '../../../../../../shared/components/ui/Icon/IconNames';
 import { closeMenu } from '../../../../../../shared/helpers/handlers';
@@ -23,6 +24,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
 export const UserActions: React.FC = () => {
   const { isMenuOpen, toggleMenu } = useMenuContext();
   const cartQuantity = useSelector(selectCartQuantity);
+  const favoritesQuantity = useSelector(selectFavoritesQuantity);
 
   return (
     <div
@@ -35,7 +37,10 @@ export const UserActions: React.FC = () => {
         to="/favorites"
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
-        <Icon className={styles.iconImage} name={IconNames.Heart} />
+        <div className={styles.iconWithBadge}>
+          <Icon className={styles.iconImage} name={IconNames.Heart} />
+          <QuantityBadge count={favoritesQuantity} />
+        </div>
       </NavLink>
 
       <NavLink

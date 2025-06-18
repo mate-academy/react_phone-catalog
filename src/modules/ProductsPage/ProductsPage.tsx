@@ -128,7 +128,7 @@ export const ProductsPage: React.FC = () => {
 
         <div className={styles.productsList}>
           {pagedProducts.map(product => (
-            <div key={product.id} className={styles.productContainer}>
+            <div key={product.id}>
               <ProductCard product={product} showDiscount={false} />
             </div>
           ))}

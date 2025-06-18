@@ -227,7 +227,7 @@ export const ProductDetailsPage: React.FC = () => {
 
             <div className={styles.actions}>
               <PrimaryButton product={curProduct} size={48} variant="add" />
-              <FavoriteButton size={48} />
+              <FavoriteButton product={curProduct} size={48} />
             </div>
 
             <dl className={styles.featuresList}>

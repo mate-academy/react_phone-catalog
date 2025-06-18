@@ -61,7 +61,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
         <div className={styles.actions}>
           <PrimaryButton product={product} variant="add" />
 
-          <FavoriteButton />
+          <FavoriteButton product={product} />
         </div>
       </div>
     </div>
