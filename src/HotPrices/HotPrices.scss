@@ -113,6 +113,7 @@ button {
     border: none;
     width: 176px;
     height: 40px;
+    cursor: pointer;
 
     transition: transform 0.3s ease-in-out;
 
@@ -124,6 +125,7 @@ button {
   &__btn-favorite {
     width: 40px;
     height: 40px;
+    cursor: pointer;
 
     transition: transform 0.3s ease-in-out;
 
@@ -138,6 +140,7 @@ button {
   color: #4caf50;
   cursor: default;
   border: 1px solid #E2E6E9;
+
 }
 
 .hotPricesPhoneCard:hover {
@@ -149,7 +152,6 @@ button {
   gap: 20px;
   transition: transform 0.5s ease-in-out;
   will-change: transform;
-  transition: transform 0.3s ease-in-out;
 
   &.slide-left {
     animation: slideLeft 0.5s ease-in-out;
@@ -180,4 +182,8 @@ button {
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+.pagination__button {
+  cursor: pointer;
 }

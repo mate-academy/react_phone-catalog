@@ -43,7 +43,7 @@
     height: 300px;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
-    object-fit: cover;
+    object-fit:contain;
 
     @media (max-width: 480px) {
       display: flex;

@@ -17,17 +17,16 @@ export const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-container ">
+        <NavLink
+          to="/"
+          className="logo"
+        >
+          <img
+            src="./img/Logo.png"
+            alt="Logo"
+          />
+        </NavLink>
         <div className="footer-left">
-          <NavLink
-            to="/"
-            className="logo"
-          >
-            <img
-              src="./img/Logo.png"
-              alt="Logo"
-            />
-          </NavLink>
-
           <NavLink
             to="https://github.com/Stepan31"
             className={getLinkClass}
