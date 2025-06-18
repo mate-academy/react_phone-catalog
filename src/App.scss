@@ -352,6 +352,11 @@ body::-webkit-scrollbar { width: 0 !important }
 
     &__button {
       display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 150;
 
       // Показуємо кнопки тільки коли меню відкрите
       .menu--open & {
