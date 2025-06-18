@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 16px;
-  width: 40px;
+  width: 36px;
   background-color: var(--background-color);
   border-radius: 20px;
   border: var(--mode-border);
@@ -20,11 +20,11 @@
 }
 
 .mode__switcher--dark {
-  transform: translateX(14px);
+  transform: translateX(10px);
 }
 
 .mode__switcher--light {
-  transform: translateX(-14px);
+  transform: translateX(-12px);
 }
 
 .mode--tablet {
