@@ -1,3 +1,5 @@
+@use './utils' as utils;
+
 html {
   font-family: Mont, sans-serif;
   font-size: 14px;
@@ -73,7 +75,7 @@ html {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid $-elements;
+  border: 1px solid utils.$elements;
   padding: 2px;
   box-sizing: border-box;
   background-color: white;
@@ -82,7 +84,7 @@ html {
   cursor: pointer;
 
   &:hover {
-    border-color: $-icons;
+    border-color: utils.$icons;
   }
 
   &::before {
@@ -99,16 +101,16 @@ html {
   }
 
   &--active {
-    border-color: $-primary;
+    border-color: utils.$primary;
     pointer-events: none;
   }
 
   &--black {
-    background-color: $-primary;
+    background-color: utils.$primary;
   }
 
   &--green {
-    background-color: $-green;
+    background-color: utils.$green;
   }
 
   &--yellow {
@@ -120,31 +122,31 @@ html {
   }
 
   &--rosegold {
-    background-color: $-rosegold;
+    background-color: utils.$rosegold;
   }
 
   &--red {
-    background-color: $-red;
+    background-color: utils.$red;
   }
 
   &--silver {
-    background-color: $-elements;
+    background-color: utils.$elements;
   }
 
   &--spacegray {
-    background-color: $-secondary;
+    background-color: utils.$secondary;
   }
 
   &--gold {
-    background-color: $-gold;
+    background-color: utils.$gold;
   }
 
   &--midnightgreen {
-    background-color: $-midnightgreen;
+    background-color: utils.$midnightgreen;
   }
 
   &--skyblue {
-    background-color: $-blue;
+    background-color: utils.$blue;
   }
 }
 
@@ -153,21 +155,21 @@ html {
   box-sizing: border-box;
   flex: 1;
 
-  @include on-desktop {
+  @include utils.on-desktop {
     padding-top: 64px;
   }
 }
 
 .container {
-  max-width: $-desktop-min-width;
+  max-width: utils.$desktop-min-width;
   padding-inline: 16px;
   margin: 0 auto;
 
-  @include on-tablet {
+  @include utils.on-tablet {
     padding-inline: 24px;
   }
 
-  @include on-desktop {
+  @include utils.on-desktop {
     padding-inline: 32px;
   }
 }
@@ -175,13 +177,13 @@ html {
 .section {
   margin-bottom: 56px;
 
-  @include page-grid;
+  @include utils.page-grid;
 
-  @media (min-width: $-tablet-min-width) {
+  @media (min-width: utils.$tablet-min-width) {
     margin-bottom: 64px;
   }
 
-  @media (min-width: $-desktop-min-width) {
+  @media (min-width: utils.$desktop-min-width) {
     margin-bottom: 86px;
   }
 }
@@ -192,7 +194,7 @@ html {
   line-height: 41px;
   margin-block: 24px;
 
-  @include on-tablet {
+  @include utils.on-tablet {
     font-size: 48px;
     line-height: 56px;
   }
@@ -203,7 +205,7 @@ html {
   font-weight: 800;
   line-height: 31px;
 
-  @include on-tablet {
+  @include utils.on-tablet {
     font-size: 32px;
     line-height: 41px;
   }
@@ -211,7 +213,7 @@ html {
 
 .divider {
   border: none;
-  border-top: 1px solid $-elements;
+  border-top: 1px solid utils.$elements;
   width: 100%;
 }
 
@@ -223,7 +225,7 @@ html {
   text-align: center;
   flex-grow: 1;
   height: 40px;
-  background-color: $-primary;
+  background-color: utils.$primary;
   color: #fff;
   cursor: pointer;
   box-sizing: border-box;
@@ -234,8 +236,8 @@ html {
   }
 
   &--selected {
-    border: 1px solid $-elements;
+    border: 1px solid utils.$elements;
     background-color: #fff;
-    color: $-green;
+    color: utils.$green;
   }
 }

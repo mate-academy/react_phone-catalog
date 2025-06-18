@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .favorites {
   &__breadcrumbs {
@@ -29,7 +29,7 @@
   grid-column: 1 / -1;
   font-size: 14px;
   line-height: 21px;
-  color: $-secondary;
+  color: $secondary;
   margin-bottom: 32px;
 
   @include on-tablet {

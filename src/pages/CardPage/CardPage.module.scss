@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .card-page {
   &__breadcrumbs {
@@ -89,7 +89,7 @@
 .title-info {
   font-size: 12px;
   line-height: 15px;
-  color: $-secondary;
+  color: $secondary;
   margin-bottom: 8px;
 }
 
@@ -97,7 +97,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid $-icons;
+  border: 1px solid $icons;
   padding-inline: 8px;
   height: 32px;
   box-sizing: border-box;
@@ -105,14 +105,14 @@
   transition: all .3s;
 
   &--active {
-    background-color: $-primary;
-    border-color: $-primary;
+    background-color: $primary;
+    border-color: $primary;
     color: #fff;
     pointer-events: none;
   }
 
   &:hover {
-    border-color: $-primary;
+    border-color: $primary;
   }
 }
 
@@ -137,12 +137,12 @@
   }
 
   &__name {
-    color: $-secondary;
+    color: $secondary;
   }
 }
 
 .content-block {
-  color: $-primary;
+  color: $primary;
   margin-bottom: 56px;
 
   &__title {

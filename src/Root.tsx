@@ -5,7 +5,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import './main.scss';
+import './styles/index.scss';
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
 import { CatalogPage } from './pages/CatalogPage';

@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .menu {
   position: fixed;
@@ -34,7 +34,7 @@
     left: 0;
 
     height: 68px;
-    border-top: 1px solid $-elements;
+    border-top: 1px solid $elements;
   }
 
   @include on-tablet {

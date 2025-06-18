@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .dropdown {
   grid-column: span 2;
@@ -20,17 +20,17 @@
 
   &__title {
     font-size: 12px;
-    color: $-secondary;
+    color: $secondary;
     line-height: 15px;
   }
 
   &__field {
-    border: 1px solid $-icons;
+    border: 1px solid $icons;
     background-color: #fff;
     width: 100%;
     box-sizing: border-box;
     padding: 12px;
-    color: $-primary;
+    color: $primary;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,18 +42,18 @@
     z-index: 5;
 
     &:hover {
-      border-color: $-secondary;
+      border-color: $secondary;
       cursor: pointer;
     }
 
     &--focus {
-      border: 1px solid $-primary;
+      border: 1px solid $primary;
     }
   }
 
   &__list {
     background-color: #fff;
-    border: 1px solid $-icons;
+    border: 1px solid $icons;
     box-sizing: border-box;
     overflow: hidden;
     position: absolute;
@@ -76,18 +76,18 @@
     padding: 6px 12px;
     font-size: 14px;
     line-height: 21px;
-    color: $-secondary;
+    color: $secondary;
     cursor: pointer;
     transition: all .3s;
 
     &:hover {
-      color: $-primary;
-      background-color: $-hover;
+      color: $primary;
+      background-color: $hover;
     }
 
     &--active {
-      color: $-primary;
-      background-color: $-hover;
+      color: $primary;
+      background-color: $hover;
     }
   }
 }

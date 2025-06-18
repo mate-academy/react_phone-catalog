@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .pageNotFound {
   grid-column: 1 / -1;

@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .empty-cart {
   grid-column: 1 / -1;

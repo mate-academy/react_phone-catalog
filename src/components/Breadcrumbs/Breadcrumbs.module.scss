@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .breadcrumbs {
   display: flex;
@@ -18,8 +18,9 @@
         transform: scale(1.2);
       }
     }
+
     &--last {
-      color: $-secondary;
+      color: $secondary;
     }
   }
 }

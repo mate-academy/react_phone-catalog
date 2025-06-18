@@ -1,12 +1,12 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .cart-item {
   grid-column: 1 / -1;
   position: relative;
 
   padding: 16px;
-  border: 1px solid $-elements;
-  color: $-primary;
+  border: 1px solid $elements;
+  color: $primary;
 
   grid-template-rows: 1fr 1fr;
   row-gap: 16px;
@@ -95,7 +95,7 @@
 
   &:hover {
     // box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
-    border-color: $-secondary;
+    border-color: $secondary;
   }
 }
 
@@ -115,18 +115,17 @@
     font-family: Mont, sans-serif;
     width: 32px;
     height: 32px;
-    border: 1px solid $-icons;
+    border: 1px solid $icons;
     cursor: pointer;
     transition: all .3s;
 
     &:hover {
-      border-color: $-primary;
+      border-color: $primary;
     }
 
     &--disabled {
       pointer-events: none;
-      color: $-icons;
+      color: $icons;
     }
   }
 }
-

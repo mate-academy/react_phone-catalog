@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .category {
   width: 100%;
@@ -13,11 +13,11 @@
     transition: all .3s;
 
     &--phones {
-      background-color: $-secondary;
+      background-color: $secondary;
     }
 
     &--tablets {
-      background-color: $-icons;
+      background-color: $icons;
     }
 
     &--accessories {
@@ -60,14 +60,14 @@
   &__title {
     font-size: 20px;
     line-height: 26px;
-    color: $-primary;
+    color: $primary;
     margin-top: 24px;
   }
 
   &__text {
     font-size: 14px;
     line-height: 21px;
-    color: $-secondary;
+    color: $secondary;
     margin-top: 4px;
   }
 }

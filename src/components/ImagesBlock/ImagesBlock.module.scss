@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .images-block {
   row-gap: 8px;
@@ -54,12 +54,12 @@
     overflow: hidden;
     padding: 5px;
     box-sizing: border-box;
-    border: 1px solid $-elements;
+    border: 1px solid $elements;
     cursor: pointer;
     transition: all .3s;
 
     &:hover {
-      border-color: $-icons;
+      border-color: $icons;
 
       img {
         transform: scale(1.1);
@@ -68,7 +68,7 @@
     }
 
     &--active {
-      border-color: $-primary;
+      border-color: $primary;
       pointer-events: none;
     }
   }

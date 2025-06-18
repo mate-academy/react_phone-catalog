@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .pagination {
   grid-column: 1 / -1;
@@ -10,7 +10,7 @@
   &__button {
     width: 32px;
     height: 32px;
-    border: 1px solid $-elements;
+    border: 1px solid $elements;
     font-family: Mont, sans-serif;
 
     font-size: 14px;
@@ -24,20 +24,20 @@
     cursor: pointer;
 
     &--arrow {
-      border-color: $-icons;
+      border-color: $icons;
     }
 
     &--active {
       color: #fff;
-      background-color: $-primary;
+      background-color: $primary;
     }
 
     &:hover {
-      border-color: $-primary;
+      border-color: $primary;
     }
 
     &:disabled {
-      border-color: $-elements;
+      border-color: $elements;
     }
   }
 }

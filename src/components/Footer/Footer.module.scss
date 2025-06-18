@@ -1,9 +1,9 @@
-@import '../../main';
+@use '../../styles/utils' as utils;
 
 .footer {
   padding-block: 32px;
-  border-top: 1px solid $-elements;
-  color: $-secondary;
+  border-top: 1px solid utils.$elements;
+  color: utils.$secondary;
 
   &__content {
     display: flex;
@@ -11,7 +11,7 @@
     justify-content: space-between;
     gap: 32px;
 
-    @include on-tablet {
+    @include utils.on-tablet {
       flex-direction: row;
     }
   }
@@ -25,7 +25,7 @@
     flex-direction: column;
     gap: 16px;
 
-    @include on-tablet {
+    @include utils.on-tablet {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
@@ -43,7 +43,7 @@
     transition: all .3s;
 
     &:hover {
-      color: $-primary;
+      color: utils.$primary;
     }
   }
 
@@ -64,7 +64,7 @@
   gap: 16px;
   width: fit-content;
   transition: all .3s;
-  color: $-secondary;
+  color: utils.$secondary;
   font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 700;
@@ -74,15 +74,15 @@
   &__icon {
     width: 24px;
     height: 24px;
-    border: 1px solid $-icons;
+    border: 1px solid utils.$icons;
     transition: all .3s;
   }
 
   &:hover {
-    color: $-primary;
+    color: utils.$primary;
 
     & span {
-      background-color: $-elements;
+      background-color: utils.$elements;
     }
   }
 }

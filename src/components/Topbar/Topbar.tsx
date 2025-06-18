@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-import '../../main.scss';
 import styles from './Topbar.module.scss';
 import { Logo } from '../Logo';
 import { MenuContext } from '../../context/MenuProvider';

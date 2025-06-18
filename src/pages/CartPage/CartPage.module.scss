@@ -1,4 +1,4 @@
-@import '../../main';
+@use '../../styles/utils' as *;
 
 .cart {
   &__breadcrumbs {
@@ -39,7 +39,7 @@
   grid-column: 1 / -1;
   font-size: 14px;
   line-height: 21px;
-  color: $-secondary;
+  color: $secondary;
   margin-bottom: 32px;
 
   @include on-tablet {
@@ -62,7 +62,7 @@
 }
 
 .summary {
-  border: 1px solid $-elements;
+  border: 1px solid $elements;
   padding: 24px;
   height: max-content;
 
@@ -83,7 +83,7 @@
   }
 
   &__item-count {
-    color: $-secondary;
+    color: $secondary;
   }
 
   &__checkout-button {

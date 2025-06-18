@@ -1,3 +1,5 @@
+@use './variables' as *;
+
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
 
@@ -45,20 +47,20 @@
 }
 
 @mixin page-grid {
-  --columns: 2;
+  --columns: 4;
 
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   column-gap: 20px;
 
   @include on-tablet {
-    --columns: 6;
+    --columns: 12;
 
     column-gap: 24px;
   }
 
   @include on-desktop {
-    --columns: 12;
+    --columns: 24;
   }
 }
 
