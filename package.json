@@ -47,7 +47,7 @@
     "sass": "^1.77.8",
     "stylelint": "^16.7.0",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1",
+    "vite": "^5.3.1"
   },
   "scripts": {
     "start": "mate-scripts start -l",
