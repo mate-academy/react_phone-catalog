@@ -27,6 +27,258 @@
   font-style: normal;
 }
 
+.cart {
+  @include contentPaddingInline;
+  font-family: 'Mont', 'sans-serif';
+
+  &__nav {
+    padding-top: 40px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__back {
+    font-weight: 700;
+    font-size: 12px;
+    color: #89939a;
+    text-decoration: none;
+  }
+
+  &__arrow {
+    width: 16px;
+      height: 16px;
+      background-image: url('/img/arrow.png');
+  }
+
+  &__h2 {
+    font-weight: 800;
+    font-size: 48px;
+    color: #0f0f11;
+    padding-top: 16px;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__position {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  align-items: center;
+  height: 128px;
+  gap: 16px;
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+  padding: 0 16px;
+}
+
+
+  &__empty {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  &__items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px; // відстань між картками
+    // min-height: 100vh;
+  }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+    padding: 56px 24px;
+    cursor: pointer;
+    grid-column: 1 /  span 1;
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+    margin: 31px 24px;
+    grid-column: 2 / span 2;
+  }
+
+  .cart__name-garget {
+    width: 336px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #0f0f11;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    height: 100%;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Mont', monospace;
+    grid-column: 4 / span 7;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 112px;
+  }
+
+  &__button-plus,
+  &__button-minus {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    border-radius: 50%;
+    border: 1px solid #e2e6e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: white; // запобігає зміні фону при наведенні
+    transition: none; // не буде анімацій, які змінюють розміри
+    grid-column: 12 / span 2;
+  }
+
+  &__count-garget {
+    width: 48px;
+    height: 32px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  &__cost {
+    color: #0f0f11;
+    font-size: 22px;
+    font-weight: 800;
+    padding-right: 24px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 80px;
+    grid-column: 16 / span 2;
+  }
+
+  &__block-total {
+    border-radius: 48px;
+    border: 1px solid #e2e6e9;
+    height: 206px;
+  }
+
+  &__total-amount {
+    color: #0f0f11;
+    font-size: 32px;
+    font-weight: 800;
+
+    display: flex;
+    justify-content: center; // центр по горизонталі
+    align-items: flex-start; // якщо треба зверху
+    padding-top: 23px;
+    padding-bottom: 0;
+    text-align: center; // для внутрішнього тексту
+  }
+
+  &__count-item {
+    color: #89939a;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0px 128px;
+  }
+
+  &__small-line {
+    height: 1px;
+    grid-column: 14 / span 7;
+    background-color: #e2e6e9;
+    display: block;
+    margin-top: 25px;
+  }
+
+  .cart__button-checkout {
+    text-decoration: none;
+    color: white;
+    background-color: #4219d0;
+    border-radius: 48px;
+    width: 320px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    margin: 24px;
+    border: none;
+    transition: all 0.2s;
+
+    &:hover {
+      color: #4219d0;
+      background-color: #ffffff;
+      border: 1px solid #b4bdc3;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__modal-widnow {
+    position: fixed;
+    width: 200px;
+    height: 100px;
+    background-color: #e2e6e9;
+    border-radius: 16px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+
+  &__questions {
+    font-size: 12px;
+    padding-top: 38px;
+    padding-left: 10px;
+  }
+
+  &__position-button {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 10px;
+    align-items: center;
+  }
+
+  &__button-yes,
+  &__button-no {
+    background-color: #89939a;
+    color: white;
+    width: 30px;
+    border-radius: 10px;
+    border: 1px solid #b4bdc3;
+  }
+
+  &__button-checkout:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .cart {
     @include contentPaddingInline;
@@ -303,41 +555,74 @@
 }
 
 @media screen and (max-width: 1199px) {
-  .cart__block {
+.cart {
+  // @include contentPaddingInline;
+
+  &__position {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+   grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  height: 128px;
+  gap: 16px;
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+  }
+
+  &__block {
     display: flex;
     flex-direction: column;
     gap: 24px;
   }
 
-  .cart__items {
+  &__items {
     width: 100%;
   }
 
-  .cart__count-item {
-     grid-column: 1 / -1; // займає всю ширину сітки
-  text-align: center;
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    padding-top: 24px;
   }
 
-  .cart__button-checkout {
+  &__close {
     justify-self: center;
   }
 
-  .cart__h2 {
+  &__counter {
+    grid-column: 9 / span 3;
+  }
+
+  &__count-item {
+  grid-column: 1 / -1;
+  text-align: center;
+  }
+
+  &__button-checkout {
+    justify-self: center;
+  }
+
+  &__h2 {
     padding-bottom: 32px;
   }
 
-  .gargets__item,
-  .gargets__total {
+  &__item,
+  &__total {
     width: 100%;
   }
 
-  .cart__block-total {
+  &__block-total {
 
     margin-top: 24px;
   }
 }
+}
 
-@media screen and (min-width: 1199px) {
+@media screen and (max-width: 2500px) {
   .cart {
     max-width: 1440px;
     margin-inline: auto;
@@ -374,254 +659,4 @@
   }
 }
 
-.cart {
-  @include contentPaddingInline;
-  font-family: 'Mont', 'sans-serif';
 
-  &__nav {
-    padding-top: 40px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    gap: 4px;
-  }
-
-  &__back {
-    font-weight: 700;
-    font-size: 12px;
-    color: #89939a;
-    text-decoration: none;
-  }
-
-  &__arrow {
-    width: 16px;
-      height: 16px;
-      background-image: url('/img/arrow.png');
-  }
-
-  &__h2 {
-    font-weight: 800;
-    font-size: 48px;
-    color: #0f0f11;
-    padding-top: 16px;
-  }
-
-  &__block {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  &__position {
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  align-items: center;
-  height: 128px;
-  gap: 16px;
-  border: 1px solid #e2e6e9;
-  border-radius: 16px;
-  padding: 0 16px;
-}
-
-
-  &__empty {
-    width: 400px;
-    height: 400px;
-    object-fit: contain;
-  }
-
-  &__items {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 24px; // відстань між картками
-    // min-height: 100vh;
-  }
-
-  &__close {
-    width: 16px;
-    height: 16px;
-    padding: 56px 24px;
-    cursor: pointer;
-    grid-column: 1 /  span 1;
-  }
-
-  &__image {
-    width: 66px;
-    height: 66px;
-    object-fit: contain;
-    margin: 31px 24px;
-    grid-column: 2 / span 2;
-  }
-
-  .cart__name-garget {
-    width: 336px;
-    font-weight: 600;
-    font-size: 14px;
-    color: #0f0f11;
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    height: 100%;
-    font-variant-numeric: tabular-nums;
-    font-family: 'Mont', monospace;
-    grid-column: 4 / span 7;
-  }
-
-  &__counter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 112px;
-  }
-
-  &__button-plus,
-  &__button-minus {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    min-height: 32px;
-    border-radius: 50%;
-    border: 1px solid #e2e6e9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: white; // запобігає зміні фону при наведенні
-    transition: none; // не буде анімацій, які змінюють розміри
-    grid-column: 12 / span 2;
-  }
-
-  &__count-garget {
-    width: 48px;
-    height: 32px;
-    font-weight: 600;
-    font-size: 14px;
-    color: #000000;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap;
-  }
-
-  &__cost {
-    color: #0f0f11;
-    font-size: 22px;
-    font-weight: 800;
-    padding-right: 24px;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 80px;
-    grid-column: 16 / span 2;
-  }
-
-  &__block-total {
-    border-radius: 48px;
-    border: 1px solid #e2e6e9;
-    height: 206px;
-  }
-
-  &__total-amount {
-    color: #0f0f11;
-    font-size: 32px;
-    font-weight: 800;
-
-    display: flex;
-    justify-content: center; // центр по горизонталі
-    align-items: flex-start; // якщо треба зверху
-    padding-top: 23px;
-    padding-bottom: 0;
-    text-align: center; // для внутрішнього тексту
-  }
-
-  &__count-item {
-    color: #89939a;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 0px 128px;
-  }
-
-  &__small-line {
-    height: 1px;
-    grid-column: 14 / span 7;
-    background-color: #e2e6e9;
-    display: block;
-    margin-top: 25px;
-  }
-
-  .cart__button-checkout {
-    text-decoration: none;
-    color: white;
-    background-color: #4219d0;
-    border-radius: 48px;
-    width: 320px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    margin: 24px;
-    border: none;
-    transition: all 0.2s;
-
-    &:hover {
-      color: #4219d0;
-      background-color: #ffffff;
-      border: 1px solid #b4bdc3;
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
-
-  &__modal-widnow {
-    position: fixed;
-    width: 200px;
-    height: 100px;
-    background-color: #e2e6e9;
-    border-radius: 16px;
-
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-  }
-
-  &__questions {
-    font-size: 12px;
-    padding-top: 38px;
-    padding-left: 10px;
-  }
-
-  &__position-button {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    padding-top: 10px;
-    align-items: center;
-  }
-
-  &__button-yes,
-  &__button-no {
-    background-color: #89939a;
-    color: white;
-    width: 30px;
-    border-radius: 10px;
-    border: 1px solid #b4bdc3;
-  }
-
-  &__button-checkout:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-}
