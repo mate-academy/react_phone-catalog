@@ -16,6 +16,12 @@
       color: $color-primary-black;
     }
   }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    padding: 24px 0 56px;
+    margin: 0 auto;
+  }
 }
 
 .stupid_info {
@@ -72,6 +78,44 @@
   }
 }
 
+.ipage__rearrange-container {
+  @media (min-width: $screen-tablet) {
+    display: grid;
+    grid-template-columns: 35px auto 237px;
+    gap: 16px;
+  }
+
+    @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 80px 464px calc(320px + 64px - 16px);
+    gap: 16px;
+  }
+}
+
+.ipage__block1 {
+  @media (min-width: $screen-tablet) {
+    order: 2;
+  }
+}
+
+.ipage__block2 {
+  @media (min-width: $screen-tablet) {
+    order: 1;
+  }
+}
+
+.ipage__block3 {
+  @media (min-width: $screen-tablet) {
+    order: 3;
+  }
+
+  @media (min-width: 1200px) {
+    margin-left: calc(64px - 16px);
+  }
+}
+
+
+
 .ipage__imcon {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -95,7 +139,14 @@
   gap: 8px;
 
   @media (min-width: $screen-tablet) {
-    order: 1;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 16px;
   }
 
   & .ipage__mnGC {
@@ -119,6 +170,10 @@
 .ipage__avcolttl {
   @include font-small;
   color: $color-secondary-grey;
+
+  &.avColors {
+    margin-top: 16px;
+  }
 }
 
 .ipage__color1 {
@@ -213,6 +268,16 @@
   margin-bottom: 56px;
 }
 
+.ipage_tecspecttl {
+  @media (min-width: $screen-tablet) {
+    margin-top: 64px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 0;
+  }
+}
+
 .ipage__abt {
   border-bottom: 1px solid $color-elements;
   padding-bottom: 16px;
@@ -227,4 +292,13 @@
 .ipage__mcrtxt {
   @include font-body;
   color: $color-secondary-grey;
+}
+
+.ipage__btmcnt {
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 560px 1fr;
+    gap: 64px;
+    margin-top: 80px;
+  }
 }
