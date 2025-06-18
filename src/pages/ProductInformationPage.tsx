@@ -246,7 +246,7 @@ export const ProductInformationPage: React.FC = () => {
                   <span className="feature">
                     {key.charAt(0).toUpperCase() + key.slice(1)}:
                   </span>
-                  <span className="feature__info">{value}</span>
+                  {Array.isArray(value) ? value.join(', ') : value}
                 </div>
               ) : null;
             })}

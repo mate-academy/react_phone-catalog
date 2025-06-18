@@ -83,7 +83,7 @@ export const Pagination: React.FC = () => {
                   className="sort__per__page__option"
                   style={{
                     backgroundColor:
-                      paginationStatus === option ? '#E2E6E9' : 'white',
+                    paginationStatus === option ? '#E2E6E9' : 'white',
                     color: paginationStatus === option ? '#313237' : '#89939A',
                   }}
                 >
