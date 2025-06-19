@@ -37,6 +37,8 @@ export const ModelsListSlider: React.FC<Props> = ({
       const cardWidth = cardEl ? cardEl.getBoundingClientRect().width + 16 : 0;
       const maxScroll = scrollRef.current?.scrollWidth;
 
+      updateButtons();
+
       if (direction === 'prev') {
         if (scrollRef.current.scrollLeft - cardWidth <= 0) {
           scrollRef.current.scrollBy({
