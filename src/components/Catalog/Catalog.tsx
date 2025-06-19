@@ -24,6 +24,10 @@ export const Catalog: React.FC<Props> = ({ category, title }) => {
   const devices = products
     .filter((item: Card) => item.category === category)
     .sort((item1, item2) => {
+      if (!sort) {
+        return item2.year - item1.year;
+      }
+
       if (sort === 'alph') {
         return item1.name.localeCompare(item2.name);
       }
