@@ -1,0 +1,109 @@
+@use '../../../../assets/styles/variables.scss' as *;
+
+.descriptionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-top: 56px;
+  margin-bottom: 56px;
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 32px;
+     margin-bottom: 64px;
+  }
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 32px;
+     margin-bottom: 80px;
+  }
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include tablet {
+    grid-column: 1 / span 6;
+  }
+
+  @include desktop {
+    grid-column: 1 / span 6;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-primary;
+
+  @include tablet {
+    font-size: 22px;
+  }
+
+   @include desktop {
+    font-size: 22px;
+  }
+}
+
+  .specs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include tablet {
+      grid-column: 8 / span 5;
+    }
+
+     @include desktop {
+      grid-column: 8 / span 5;
+    }
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #E2E6E9;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: $color-primary;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+.text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: $color-secondary;
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-secondary;
+
+    span:last-child {
+      color: $color-primary;
+      font-weight: 500;
+    }
+  }
+}

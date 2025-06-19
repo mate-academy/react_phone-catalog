@@ -1,13 +1,15 @@
 import React, { useMemo, useState } from 'react';
-import styles from './PhonesPage.module.scss';
-import { ProductCard } from '../../components/ProductCard';
-import { Product } from '../../types/Product';
+import { useParams, Link } from 'react-router-dom';
+import styles from './CategoryPage.module.scss';
 import { Breadcrumb } from '../../components/Breadcrumb';
+import { BackButton } from '../../components/BackButton';
+import { ProductCard } from '../../components/ProductCard';
 import { CustomDropdown } from '../../components/CustomDropdown';
-import { useProduct } from '../../hooks/useProduct';
+import { useProducts } from '../../hooks/useProducts';
 import { useErrorHandling } from '../../hooks/errorHandling';
+import classNames from 'classnames';
 
-const sortProducts = (products: Product[], sortBy: string): Product[] => {
+const sortProducts = (products, sortBy) => {
   switch (sortBy) {
     case 'alphabetically':
       return [...products].sort((a, b) => a.name.localeCompare(b.name));
@@ -21,35 +23,53 @@ const sortProducts = (products: Product[], sortBy: string): Product[] => {
   }
 };
 
-export const PhonesPage: React.FC = () => {
+export const CategoryPage: React.FC = () => {
+  const { category } = useParams();
+  const capitalizedCategory =
+    category?.charAt(0).toUpperCase() + category?.slice(1);
+
   const { setIsError } = useErrorHandling();
-  const { product } = useProduct(() => setIsError(true));
+  const { products } = useProducts(() => setIsError(true));
+
   const [sortBy, setSortBy] = useState('newest');
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const phones = useMemo(() => {
-    return product.filter(producPhone => producPhone.category === 'phones');
-  }, [product]);
+  const categoryProducts = useMemo(() => {
+    return products.filter(p => p.category === category);
+  }, [products, category]);
 
-  const sortedPhones = useMemo(() => {
-    return sortProducts(phones, sortBy);
-  }, [phones, sortBy]);
+  const sortedProducts = useMemo(() => {
+    return sortProducts(categoryProducts, sortBy);
+  }, [categoryProducts, sortBy]);
 
-  const paginatedPhones = useMemo(() => {
+  const paginatedProducts = useMemo(() => {
     const start = (currentPage - 1) * itemsPerPage;
 
-    return sortedPhones.slice(start, start + itemsPerPage);
-  }, [sortedPhones, itemsPerPage, currentPage]);
+    return sortedProducts.slice(start, start + itemsPerPage);
+  }, [sortedProducts, itemsPerPage, currentPage]);
 
-  const totalPages = Math.ceil(phones.length / itemsPerPage);
+  const totalPages = Math.ceil(categoryProducts.length / itemsPerPage);
 
   return (
-    <div className={styles.phonesPage}>
-      <Breadcrumb current="Phones" />
+    <div className={styles.categoryPage}>
+      <div className={styles.breadcrumbRow}>
+        <Breadcrumb current="" />
+        <Link to={`/${category}`} className={styles.breadcrumbLink}>
+          {capitalizedCategory}
+        </Link>
+        <img
+          src="/react_phone-catalog/img/icons/arrow-right.svg"
+          alt="Arrow"
+          className={styles.breadcrumbArrow}
+        />
+      </div>
+
+      <BackButton />
+
       <div className={styles.titleBlock}>
-        <h1 className={styles.title}>Mobile Phones</h1>
-        <span className={styles.count}>{phones.length} models</span>
+        <h1 className={styles.title}>{capitalizedCategory}</h1>
+        <span className={styles.count}>{categoryProducts.length} models</span>
       </div>
 
       <div className={styles.controls}>
@@ -59,7 +79,7 @@ export const PhonesPage: React.FC = () => {
             value={sortBy}
             onChange={setSortBy}
             options={[
-              { value: 'name', label: 'Name' },
+              { value: 'newest', label: 'Newest' },
               { value: 'alphabetically', label: 'Alphabetically' },
               { value: 'priceLow', label: 'Price low to high' },
               { value: 'priceHigh', label: 'Price high to low' },
@@ -84,19 +104,18 @@ export const PhonesPage: React.FC = () => {
         </div>
       </div>
 
-      {paginatedPhones.length === 0 ? (
-        <p className={styles.empty}>No phones available.</p>
+      {paginatedProducts.length === 0 ? (
+        <p className={styles.empty}>No products available.</p>
       ) : (
         <ul className={styles.list}>
-          {paginatedPhones.map(productPhone => (
-            <li key={productPhone.id} className={styles.item}>
-              <ProductCard product={productPhone} showFullPrice />
+          {paginatedProducts.map(product => (
+            <li key={product.itemId} className={styles.item}>
+              <ProductCard product={product} showFullPrice />
             </li>
           ))}
         </ul>
       )}
 
-      {/* Pagination controls (optional) */}
       {totalPages > 1 && (
         <div className={styles.pagination}>
           <button
@@ -121,11 +140,10 @@ export const PhonesPage: React.FC = () => {
               <button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={
-                  page === currentPage
-                    ? styles.pageButtonActive
-                    : styles.pageButton
-                }
+                className={classNames({
+                  [styles.pageButtonActive]: page === currentPage,
+                  [styles.pageButton]: page !== currentPage,
+                })}
               >
                 {page}
               </button>

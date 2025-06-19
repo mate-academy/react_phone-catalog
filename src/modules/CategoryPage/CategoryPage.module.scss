@@ -1,18 +1,43 @@
 @use '../../assets/styles/variables' as *;
 
-.phonesPage {
+.categoryPage {
   max-width: 1136px;
   margin: 0 auto;
 
-  @include tablet {
-    // padding: 40px 24px;
-  }
-
   @include desktop {
-    // padding: 40px 0;
     max-width: 1136px;
     margin: 0 auto;
   }
+}
+
+.breadcrumbRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+ .breadcrumbLink {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0F0F11;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.breadcrumbArrow {
+  width: 16px;
+  height: 16px;
+  color: #B4BDC3;
+}
+
+.breadcrumbCurrent {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-primary;
 }
 
 .titleBlock {
@@ -44,8 +69,6 @@
 }
 
 .controls {
-  // width:  100%;
-  // max-width: 1136px;
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -62,12 +85,10 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  // padding-right: 16px; ;
   font-size: 12px;
   font-weight: 700;
   color: #89939A;
   width: fit-content;
-  // width: 100%;
 
   select {
     width: 136px;

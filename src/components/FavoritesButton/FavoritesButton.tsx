@@ -13,22 +13,6 @@ export const FavoritesButton: React.FC<Props> = ({ productId }) => {
   const favorites = useSelector((state: RootState) => state.favorites);
   const isFavorite = favorites.includes(productId);
 
-  // if (!productId || typeof productId !== 'string') {
-  //   console.warn('⚠️ productId is missing in FavoritesButton!');
-
-  //   return null;
-  // }
-
-  console.log('❤️ Render FavoritesButton for:', productId);
-  console.log('❤️ Is favorite?', isFavorite);
-
-  console.log('📌 Переданий productId:', productId);
-
-  if (!productId || typeof productId !== 'string') {
-    console.warn('⚠️ Невалідний productId:', productId);
-    return;
-  }
-
   return (
     <button
       className={styles.favBtn}

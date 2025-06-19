@@ -7,13 +7,3 @@ export const getProducts = async () => {
 
   return response.json();
 };
-
-export const getPhoneDetails = async () => {
-  const response = await fetch('/react_phone-catalog/api/phones.json');
-
-  if (!response.ok) {
-    throw new Error('Failed to fetch phone details');
-  }
-
-  return response.json();
-};

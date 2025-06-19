@@ -1,28 +1,31 @@
 import React from 'react';
+import styles from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider';
 import { ShopByCategory } from './components/ShopByCategory';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import { useProduct } from '../../hooks/useProduct';
+import { useProducts } from '../../hooks/useProducts';
 import { useErrorHandling } from '../../hooks/errorHandling';
 
 export const HomePage: React.FC = () => {
   const { setIsError } = useErrorHandling();
-  const { product } = useProduct(() => setIsError(true));
+  const { products } = useProducts(() => setIsError(true));
 
-  const brandNewProducts = [...product]
+  const brandNewProducts = [...products]
     .sort((a, b) => (b.year ?? 0) - (a.year ?? 0))
     .slice(0, 8);
 
-  const discountedProducts = [...product]
-    .filter(prod => prod.priceRegular && prod.priceDiscount)
-    .sort(
-      (a, b) =>
-        b.priceRegular - b.priceDiscount - (a.priceRegular - a.priceDiscount),
-    )
+  const discountedProducts = [...products]
+    .filter(prod => prod.fullPrice && prod.price)
+    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
     .slice(0, 8);
 
   return (
-    <div>
+    <>
+      <div>
+        <h1 className={styles.title_hidden}>Product Catalog</h1>
+        <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
+      </div>
+      {/* <div> */}
       <PicturesSlider />
       <ProductsSlider
         products={brandNewProducts}
@@ -39,6 +42,7 @@ export const HomePage: React.FC = () => {
         navigationNextClass="hot-prices-next"
         showFullPrice={true}
       />
-    </div>
+      {/* </div> */}
+    </>
   );
 };

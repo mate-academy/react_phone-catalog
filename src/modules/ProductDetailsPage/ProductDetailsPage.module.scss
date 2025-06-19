@@ -1,19 +1,5 @@
 @use '../../assets/styles/variables' as *;
 
-.detailsPage {
-  // padding: 24px 16px;
-
-  @include tablet {
-    // padding: 40px 24px;
-  }
-
-  @include desktop {
-    // padding: 40px 0;
-    // max-width: 1136px;
-    // margin: 0 auto;
-  }
-}
-
 .breadcrumbRow {
   display: flex;
   align-items: center;
@@ -68,14 +54,19 @@
   gap: 24px;
 
   @include tablet {
-    flex-direction: row;
-    gap: 17px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    row-gap: 40px;
+    align-items: start;
+
   }
 
   @include desktop {
-    max-width: 1136px;
-    flex-direction: row;
-    gap: 64px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 32px;
+    margin: 0 auto
   }
 }
 
@@ -85,30 +76,47 @@
   gap: 16px;
 
   @include tablet {
-    flex-direction: row-reverse;
-    // gap: 24px;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-column: 1 / span 7;
+    column-gap: 16px;
+    align-items: start;
+    grid-template-areas:
+      "preview image";
   }
 
   @include desktop {
-    flex-direction: row-reverse;
-    // gap: 24px;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    grid-column: 1 / span 7;
+    column-gap: 24px;
+    grid-template-areas:
+      "preview image";
+  }
   }
 
-  .previewList {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
+.previewList {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 
-    @include tablet {
-      flex-direction: column;
-    }
-
-    @include desktop {
-      flex-direction: column;
-    }
+  @include tablet {
+    grid-area: preview;
+    flex-direction: column;
+    align-items: start;
   }
+
+  @include desktop {
+    grid-area: preview;
+    flex-direction: column;
+    align-items: start;
+  }
+}
 
   .previewButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid #e2e6e9;
     border-radius: 4px;
     padding: 4px;
@@ -127,60 +135,44 @@
   }
 
   .previewImage {
-    height: 49px;
+    max-height: 49px;
+    max-width: 100%;
     object-fit: contain;
   }
 
   .imageWrapper {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include tablet {
+      grid-area: image;
+    }
+
+    @include desktop {
+      grid-area: image;
+    }
 
     .mainImage {
       width: 100%;
       max-height: 400px;
       object-fit: contain;
     }
-  }
 }
 
-.colorsBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.optionLabel {
-  font-size: 14px;
-  font-weight: 600;
-  color: #89939a;
-}
-
-.colorOptions {
-  display: flex;
-  gap: 8px;
-}
-
-.colorDot {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1px solid #e2e6e9;
-  cursor: pointer;
-  outline: 1px dashed $color-primary;
-
-  &.active {
-    border: 2px solid $color-primary;
-    border-color: $color-primary;
-  }
-}
 
 .infoBlock {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @include tablet {
+    grid-column: 8 / span 5;
+  }
+
+  @include desktop {
+    grid-column: 8 / span 5;
+  }
 }
 
 .priceBlock {
@@ -238,5 +230,29 @@
     font-size: 14px;
     color: $color-secondary;
     line-height: 1.5;
+  }
+}
+
+.descriptionSection {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  margin-top: 56px;
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 32px;
+  }
+
+  .about {
+    @include tablet {
+      grid-column: 1 / span 6;
+    }
+  }
+
+  .specs {
+    @include tablet {
+      grid-column: 8 / span 5;
+    }
   }
 }

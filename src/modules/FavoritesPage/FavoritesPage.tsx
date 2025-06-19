@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styles from './FavoritesPage.module.scss';
 import { ProductCard } from '../../components/ProductCard';
 import { Breadcrumb } from '../../components/Breadcrumb';
-// import { useProductsContext } from '../../hooks/savedProducts';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { setProducts } from '../../store/productsSlice';
@@ -36,15 +35,9 @@ export const FavoritesPage: React.FC = () => {
   );
 
   const validFavoriteProducts = favoriteProducts.filter(
-    product => typeof product.itemId === 'string' && product.itemId.trim() !== '',
-);
-
-//   console.log('favoriteIds from Redux:', favoriteIds);
-//   console.log('products from Redux:', products);
-//   console.log('favoriteProducts:', favoriteProducts);
-
-//   console.log('🔍 Product отриманий у ProductCard:', product);
-// console.log('✅ product.itemId у ProductCard:', product?.itemId);
+    product =>
+      typeof product.itemId === 'string' && product.itemId.trim() !== '',
+  );
 
   return (
     <div className={styles.favoritesPage}>

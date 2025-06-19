@@ -10,7 +10,7 @@ export const CartPage: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart);
 
   const totalPrice = cartItems.reduce(
-    (acc, item) => acc + item.product.priceDiscount * item.quantity,
+    (acc, item) => acc + item.product.price * item.quantity,
     0,
   );
 
@@ -74,9 +74,7 @@ export const CartPage: React.FC = () => {
                         +
                       </button>
                     </div>
-                    <p className={styles.price}>
-                      ${product.priceDiscount * quantity}
-                    </p>
+                    <p className={styles.price}>${product.price * quantity}</p>
                   </div>
                 </li>
               ))}

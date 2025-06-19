@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getPhoneDetails } from '../api/products';
 import { PhoneDetails } from '../types/PhoneDetails';
+import { getPhones } from '../api/categories';
 
 export const useVariantsByNamespace = (namespaceId?: string) => {
   const [variants, setVariants] = useState<PhoneDetails[]>([]);
@@ -14,7 +14,7 @@ export const useVariantsByNamespace = (namespaceId?: string) => {
       }
 
       try {
-        const data: PhoneDetails[] = await getPhoneDetails();
+        const data: PhoneDetails[] = await getPhones();
         const filtered = data.filter(p => p.namespaceId === namespaceId);
 
         setVariants(filtered);

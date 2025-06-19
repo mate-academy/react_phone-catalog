@@ -16,7 +16,7 @@ export const ProductCard: React.FC<Props> = ({
   showFullPrice,
 }) => {
   const imagePath = product.image || product.images?.[0] || '';
-console.log('✅ product.itemId in ProductCard:', product.itemId);
+
   return (
     <div className={styles.card}>
       <img src={imagePath} alt={product.name} className={styles.image} />
@@ -29,9 +29,9 @@ console.log('✅ product.itemId in ProductCard:', product.itemId);
       </Link>
 
       <div className={styles.prices}>
-        <p className={styles.price}>${product.priceDiscount}</p>
-        {showFullPrice && product.priceRegular > product.priceDiscount && (
-          <p className={styles.fullPrice}>${product.priceRegular}</p>
+        <p className={styles.price}>${product.price}</p>
+        {showFullPrice && product.fullPrice > product.price && (
+          <p className={styles.fullPrice}>${product.fullPrice}</p>
         )}
       </div>
 

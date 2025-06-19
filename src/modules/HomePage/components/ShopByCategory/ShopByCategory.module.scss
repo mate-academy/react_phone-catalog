@@ -3,7 +3,6 @@
 .shopByCategory {
   display: flex;
   flex-direction: column;
-  // flex-direction: row;
   margin: 0 auto 80px;
   max-width: 1136px;
 }
@@ -22,15 +21,12 @@
   gap: 32px;
 
   @include tablet {
-     flex-direction: row;
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
+    flex-direction: row;
     gap: 16px;
   }
+
   @include desktop {
      flex-direction: row;
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
 }
@@ -38,7 +34,6 @@
 .category {
   display: flex;
   flex-direction: column;
-  // width: 368px;
   border-radius: 8px;
   overflow: hidden;
   text-decoration: none;

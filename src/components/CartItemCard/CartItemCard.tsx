@@ -30,7 +30,7 @@ export const CartItemCard: React.FC<Props> = ({ product, quantity }) => {
 
       <div className={styles.info}>
         <p className={styles.name}>{product.name}</p>
-        <p className={styles.price}>${product.priceDiscount * quantity}</p>
+        <p className={styles.price}>${product.price * quantity}</p>
 
         <div className={styles.controls}>
           <button onClick={() => changeQuantity(quantity - 1)}>-</button>

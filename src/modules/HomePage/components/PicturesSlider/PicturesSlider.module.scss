@@ -17,31 +17,31 @@
   }
 }
 
-.title {
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -1%;
-  margin-bottom: 24px;
-  color: $color-primary;
-  align-self: flex-start;
-  padding: 0 16px;
+// .title {
+//   font-size: 32px;
+//   font-weight: 800;
+//   letter-spacing: -1%;
+//   margin-bottom: 24px;
+//   color: $color-primary;
+//   align-self: flex-start;
+//   padding: 0 16px;
 
-  &_hidden {
-    display: none;
-  }
+//   &_hidden {
+//     display: none;
+//   }
 
-  @include tablet {
-    font-size: 48px;
-    margin-bottom: 32px;
-    padding: 0 24px;
-  }
+//   @include tablet {
+//     font-size: 48px;
+//     margin-bottom: 32px;
+//     padding: 0 24px;
+//   }
 
-  @include desktop {
-    font-size: 48px;
-    margin-bottom: 56px;
-    padding: 0 24px;
-  }
-}
+//   @include desktop {
+//     font-size: 48px;
+//     margin-bottom: 56px;
+//     padding: 0 24px;
+//   }
+// }
 
 .swiperWrapper {
   align-items: center;

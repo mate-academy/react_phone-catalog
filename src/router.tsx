@@ -1,13 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { HomePage } from './modules/HomePage';
-import { PhonesPage } from './modules/PhonesPage';
-import { TabletsPage } from './modules/TabletsPage';
-import { AccessoriesPage } from './modules/AccessoriesPage';
 import { CartPage } from './modules/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { CategoryPage } from './modules/CategoryPage';
 
 export const router = createBrowserRouter(
   [
@@ -16,9 +14,7 @@ export const router = createBrowserRouter(
       element: <Layout />,
       children: [
         { index: true, element: <HomePage /> },
-        { path: 'phones', element: <PhonesPage /> },
-        { path: 'tablets', element: <TabletsPage /> },
-        { path: 'accessories', element: <AccessoriesPage /> },
+        { path: ':category', element: <CategoryPage /> },
         { path: 'cart', element: <CartPage /> },
         { path: 'favorites', element: <FavoritesPage /> },
         { path: ':category/:productId', element: <ProductDetailsPage /> },

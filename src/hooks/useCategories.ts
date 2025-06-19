@@ -9,7 +9,7 @@ export const useCategories = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const loadCounts = async () => {
       try {
         const [phones, tablets, accessories] = await Promise.all([
           getPhones(),
@@ -20,14 +20,14 @@ export const useCategories = () => {
         setPhonesCount(phones.length);
         setTabletsCount(tablets.length);
         setAccessoriesCount(accessories.length);
-      } catch (err) {
+      } catch {
         setError(true);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchData();
+    loadCounts();
   }, []);
 
   return { phonesCount, tabletsCount, accessoriesCount, loading, error };

@@ -1,22 +1,32 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setProducts } from '../store/productsSlice';
-import { getProducts } from '../api/products';
+import { useEffect, useState } from 'react';
+import { Product } from '../types/Product';
 
 export const useFetchProducts = () => {
-  const dispatch = useDispatch();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<null | string>(null);
 
   useEffect(() => {
-    const loadProducts = async () => {
+    const fetchProducts = async () => {
       try {
-        const data = await getProducts();
+        const response = await fetch('/react_phone-catalog/api/products.json');
 
-        dispatch(setProducts(data));
-      } catch (error) {
-        console.error('Failed to load products:', error);
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+
+        const data = await response.json();
+
+        setProducts(data);
+      } catch (err) {
+        setError((err as Error).message);
+      } finally {
+        setLoading(false);
       }
     };
 
-    loadProducts();
-  }, [dispatch]);
+    fetchProducts();
+  }, []);
+
+  return { products, loading, error };
 };

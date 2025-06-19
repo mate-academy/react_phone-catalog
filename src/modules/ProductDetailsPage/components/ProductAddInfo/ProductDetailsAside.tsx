@@ -1,12 +1,11 @@
 import React from 'react';
-import styles from './ProductDetailsAside.module.scss';
+import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import styles from './ProductDetailsAside.module.scss';
 import { AddToCartButton } from '../../../../components/AddToCartButton';
 import { FavoritesButton } from '../../../../components/FavoritesButton';
-import { Product } from '../../../../types/Product';
-import { PhoneDetails } from '../../../../types/PhoneDetails';
 import { ProductsColors } from '../../../../constants/productsColors';
+import { PhoneDetails } from '../../../../types/PhoneDetails';
 
 type Props = {
   product: PhoneDetails;
@@ -14,10 +13,7 @@ type Props = {
 };
 
 export const ProductDetailsAside: React.FC<Props> = ({ product, variants }) => {
-  // const filteredVariants = variants.filter(variant =>
-  //   product.colorsAvailable.includes(variant.colorsAvailable[0]),
-  // );
-
+  const { category } = useParams();
   const sameModelVariants = variants.filter(
     variant => variant.namespaceId === product.namespaceId,
   );
@@ -26,20 +22,23 @@ export const ProductDetailsAside: React.FC<Props> = ({ product, variants }) => {
     variant => variant.capacity === product.capacity,
   );
 
+  const hasColorVariants = colorVariants.length > 0 ? colorVariants : [product];
+
   const capacityVariants = sameModelVariants.filter(
     variant => variant.color === product.color,
   );
+  const hasCapacityVariants =
+    capacityVariants.length > 0 ? capacityVariants : [product];
 
   return (
     <div className={styles.container}>
-      {/* <div className={styles.params}> */}
       <div className={styles.colorsBlock}>
         <h4 className={styles.optionLabel}>Available colors</h4>
         <div className={styles.colorOptions}>
-          {colorVariants.map(variant => (
+          {hasColorVariants.map(variant => (
             <Link
-              key={String(variant.id)}
-              to={`/phones/${variant.id}`}
+              key={variant.id}
+              to={`/${category}/${variant.id}`}
               className={classNames(styles.colorDot, {
                 [styles.active]: variant.color === product.color,
               })}
@@ -52,21 +51,15 @@ export const ProductDetailsAside: React.FC<Props> = ({ product, variants }) => {
         </div>
       </div>
 
-      {/* <div className={styles.idBlock}>
-          <span className={styles.idLabel}>ID:</span>
-          <span className={styles.idValue}>{product.id}</span>
-        </div> */}
-      {/* </div> */}
-
       <div className={styles.divider} />
 
       <div className={styles.capacityBlock}>
         <h4 className={styles.optionLabel}>Select capacity</h4>
         <div className={styles.capacityOptions}>
-          {capacityVariants.map(variant => (
+          {hasCapacityVariants.map(variant => (
             <Link
               key={variant.id}
-              to={`/phones/${variant.id}`}
+              to={`/${category}/${variant.id}`}
               className={classNames(styles.capacityButton, {
                 [styles.active]: variant.capacity === product.capacity,
               })}
@@ -88,26 +81,37 @@ export const ProductDetailsAside: React.FC<Props> = ({ product, variants }) => {
 
       <div className={styles.buttons}>
         <AddToCartButton product={product} />
-        <FavoritesButton productId={String(product.id)} />
+        <FavoritesButton productId={product.id} />
       </div>
 
       <div className={styles.specs}>
-        <div className={styles.specRow}>
-          <span className={styles.key}>Screen</span>
-          <span className={styles.value}>{product.screen}</span>
-        </div>
-        <div className={styles.specRow}>
-          <span className={styles.key}>Resolution</span>
-          <span className={styles.value}>{product.resolution}</span>
-        </div>
-        <div className={styles.specRow}>
-          <span className={styles.key}>Processor</span>
-          <span className={styles.value}>{product.processor}</span>
-        </div>
-        <div className={styles.specRow}>
-          <span className={styles.key}>RAM</span>
-          <span className={styles.value}>{product.ram}</span>
-        </div>
+        {product.screen && (
+          <div className={styles.specRow}>
+            <span className={styles.key}>Screen</span>
+            <span className={styles.value}>{product.screen}</span>
+          </div>
+        )}
+
+        {product.resolution && (
+          <div className={styles.specRow}>
+            <span className={styles.key}>Resolution</span>
+            <span className={styles.value}>{product.resolution}</span>
+          </div>
+        )}
+
+        {product.processor && (
+          <div className={styles.specRow}>
+            <span className={styles.key}>Processor</span>
+            <span className={styles.value}>{product.processor}</span>
+          </div>
+        )}
+
+        {product.ram && (
+          <div className={styles.specRow}>
+            <span className={styles.key}>RAM</span>
+            <span className={styles.value}>{product.ram}</span>
+          </div>
+        )}
       </div>
     </div>
   );

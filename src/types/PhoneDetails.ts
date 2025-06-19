@@ -1,4 +1,3 @@
-// Тип для детального перегляду з phones.json, tablets.json, accessories.json
 export type PhoneDetails = {
   id: string;
   namespaceId: string;

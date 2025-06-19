@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getPhoneDetails } from '../api/products';
 import { PhoneDetails } from '../types/PhoneDetails';
+import { getPhones } from '../api/categories';
 
 export const usePhoneDetails = (itemId: string | undefined) => {
   const [phoneDetails, setPhoneDetails] = useState<PhoneDetails | null>(null);
@@ -16,7 +16,7 @@ export const usePhoneDetails = (itemId: string | undefined) => {
 
     const loadDetails = async () => {
       try {
-        const data: PhoneDetails[] = await getPhoneDetails();
+        const data: PhoneDetails[] = await getPhones();
         const found = data.find(phone => phone.id === itemId);
 
         setPhoneDetails(found || null);
