@@ -50,32 +50,6 @@ export const Favorites: React.FC = () => {
 
       <div className="fav__items-wrapper">
         {favItems.map(item => (
-  /*         <div key={`key-${item.id}`}>
-            <div className={`fav-itemCard ${currentTheme}`}>
-              <img
-                src={`../../../public/${item.image}`}
-                alt="here should be an image"
-                height="200"
-              /><br/>
-              {item.name}
-              &emsp;{` ${item.price} $`}&emsp;<s>{`${item.fullPrice} $`}</s>
-              <br/>
-              Screen &emsp;{`${item.screen}`}
-              <br />
-              Capacity &emsp;{`${item.capacity}`}
-              <br />
-              RAM &emsp;{`${item.ram}`}
-              <br />
-              <button className={`add-to-cart-button ${currentTheme}`}
-                onClick={() => dispatch(addToCart(item))
-                }>add_to_cart</button>
-              <button className={`favorite-button ${currentTheme}`}
-                onClick={() => dispatch(removeFromFavorites(item?.id))
-                }>♥️</button>
-            </div>
-          </div> */
-
-
           <div
             key={`${item.itemId}+`}
             className={'rec__card fav_card'}

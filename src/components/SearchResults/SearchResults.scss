@@ -1,0 +1,38 @@
+@import '../../App.scss';
+
+.search-page__wrapper {
+  padding: 0 16px;
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    padding: 24px 0 56px;
+    margin: 0 auto;
+  }
+}
+
+.price-regular {
+  color: $color-secondary-grey;
+  text-decoration: line-through;
+  font-family: "montRegular";
+}
+
+.sr__prcnt {
+  display: flex;
+  gap: 8px;
+}
+
+.sr__icrd {
+  max-width: 229px;
+  margin-bottom: 0;
+
+  @media (min-width: 1200px) {
+    max-width: 272px;
+  }
+}
+
+.sr__crdcnt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}

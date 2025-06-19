@@ -165,7 +165,7 @@ export const Recommended: React.FC<Props> = ({ title }) => {
 
             >
               <Link
-                to={`/phones/${item.itemId}`}
+                to={`/${item.category}/${item.itemId}`}
                 onClick={() => window.scrollTo(0, 0)}
                 className='rec__link'
               >

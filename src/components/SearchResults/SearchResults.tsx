@@ -1,11 +1,19 @@
+import './SearchResults.scss';
 import { useEffect } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
+import { addToCart, removeFromCart } from '../../redux/cartSlice';
+import { addToFavorites, removeFromFavorites }
+  from '../../redux/favoritesSlice';
 import phonesJSON from '../../../public/api/phones.json';
 import tabletsJSON from '../../../public/api/tablets.json';
 import accessoriesJSON from '../../../public/api/accessories.json';
-import { Phone } from '../Phones/Phones';
+import { useProductState } from '../Phones/Phones';
 import { Accessory } from '../Accessories/Accessories';
 import { Tablet } from '../Tablets/Tablets';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { useWindowWidth } from '../Navbar/Navbar';
+import { emptyHeart, filledHeart } from '../../../public/img/icons/svg_icons';
 
 export const SearchResults: React.FC = () => {
   const navigate = useNavigate();
@@ -14,6 +22,12 @@ export const SearchResults: React.FC = () => {
   const page = parseInt(searchParams.get('page') || '1', 10);
   const category = searchParams.get('category') || 'all';
   const sort = searchParams.get('sort') || 'relevance';
+  const { isInCart, isInFavorites } = useProductState();
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const windowWidth = useWindowWidth();
+
+
   const goToPage = (newPage: number) => {
     const params = new URLSearchParams(searchParams);
 
@@ -121,7 +135,7 @@ export const SearchResults: React.FC = () => {
       <button onClick={() => updateSearchParam('page', `${page + 1}`)}>Next Page</button>
       <br/>
       {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
-      {filteredItems().map((item: any) => (
+{/*       {filteredItems().map((item: any) => (
         <div className="card" key={`${item.id}+++${item.namespaceId}`}>
           <Link
             to={`/${item.category}/${item.id}`}
@@ -147,7 +161,124 @@ export const SearchResults: React.FC = () => {
           <br />
           <br />
         </div>
-      ))}
+      ))} */}
+
+{/*                 {filteredItems().map((item, index) => (
+                  <div
+                    key={`${item.id}+recommended+${index}`}
+                    className={`rec__card`}
+
+                  >
+                    <Link
+                      to={`/${item.category}/${item.id}`}
+                      onClick={() => window.scrollTo(0, 0)}
+                      className='rec__link'
+                    >
+                      <img
+                        src={`../../../public/${item.images[0]}`}
+                        alt="here should be an image"
+                        className='fav__item-image'
+                      />
+                      <div className="rec__item-name">
+                        {item.name}
+                      </div>
+                    </Link>
+                    <div className="rec__item-price">
+                      {`$${item.priceDiscount}  `}
+
+                    </div>
+                    <div className="rec__specs">
+                      <div className="rec__specs-spec">
+                        Screen<div className="rec__specs-value">{item.screen}</div>
+                      </div>
+                      <div className="rec__specs-spec">
+                        Capacity<div className="rec__specs-value">{item.capacity.replace('GB', ' GB')}</div>
+                      </div>
+                      <div className="rec__specs-spec">
+                        RAM<div className="rec__specs-value">{item.ram.replace('GB', ' GB')}</div>
+                      </div>
+                    </div>
+                    <div className="rec__item-buttons">
+                      <button className={`rec__item-to-cart ${isInCart(item?.id) ? 'in-cart' : ''}`}
+                        onClick={() => isInCart(item?.id)
+                          ? dispatch(removeFromCart(item?.id))
+                          : dispatch(addToCart(item))
+                        }>{`${isInCart(item?.id) ? 'In cart' : 'Add to cart'}`}</button>
+                      <button className={`rec__item-to-fav ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
+                        onClick={() => isInFavorites(item?.id)
+                          ? dispatch(removeFromFavorites(item?.id))
+                          : dispatch(addToFavorites(item))
+                        }>{isInFavorites(item?.id)
+                          ? filledHeart
+                          : emptyHeart
+                        }
+                      </button>
+                    </div>
+                  </div>
+                ))} */}
+
+      <div className="sr__crdcnt">
+        {filteredItems().map(item => (
+          <div
+            key={`${item.id}+`}
+            className={'rec__card fav_card sr__icrd'}
+
+          >
+            <Link
+              to={`/phones/${item.id}`}
+              onClick={() => window.scrollTo(0, 0)}
+              className='rec__link fav__itemImage'
+            >
+              <img
+                src={`../../../public/${item.images[0]}`}
+                alt="here should be an image"
+              />
+              <div className="rec__item-name">
+                {item.name}
+              </div>
+            </Link>
+            <div className="sr__prcnt">
+              <div className="rec__item-price">
+                {`$${item.priceDiscount}  `}
+              </div>
+              <div className="rec__item-price price-regular">
+                {`$${item.priceRegular}  `}
+              </div>
+            </div>
+
+            <div className="rec__specs">
+              <div className="rec__specs-spec">
+                Screen<div className="rec__specs-value">{item.screen}</div>
+              </div>
+              <div className="rec__specs-spec">
+                Capacity<div className="rec__specs-value">
+                  {item.capacity.replace('GB', ' GB')}</div>
+              </div>
+              <div className="rec__specs-spec">
+                RAM<div className="rec__specs-value">
+                  {item.ram.replace('GB', ' GB')}</div>
+              </div>
+            </div>
+            <div className="rec__item-buttons fav__buttons">
+              <button className={`rec__item-to-cart ${isInCart(item?.id) ? 'in-cart' : ''}`}
+                onClick={() => isInCart(item?.id)
+                  ? dispatch(removeFromCart(item?.id))
+                  : dispatch(addToCart(item))
+                }>{`${isInCart(item?.id) ? 'In cart' : 'Add to cart'}`}</button>
+              <button className={`rec__item-to-fav ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
+                onClick={() => isInFavorites(item?.id)
+                  ? dispatch(removeFromFavorites(item?.id))
+                  : dispatch(addToFavorites(item))
+                }>{isInFavorites(item?.id)
+                  ? filledHeart
+                  : emptyHeart
+                }
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 };

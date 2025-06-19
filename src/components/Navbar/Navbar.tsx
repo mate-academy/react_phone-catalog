@@ -334,12 +334,13 @@ const MobileNavbar: React.FC = () => {
         page: '1',
       });
 
+      setSidebarOpen(false);
       navigate(`/search?${params.toString()}`);
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && query.length > 3) {
+    if (e.key === 'Enter' && query.trim().length >= 3) {
       handleSearch();
     }
   };
