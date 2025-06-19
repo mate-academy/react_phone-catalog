@@ -53,7 +53,7 @@ export const ProductDetailsPage: React.FC = () => {
     const parts = [
       curProduct.namespaceId,
       curProduct.capacityAvailable[capacityIdex].toLowerCase(),
-      curProduct.colorsAvailable[colorIndex],
+      curProduct.colorsAvailable[colorIndex].split(' ').join('-'),
     ];
 
     const newId = parts.join('-');
@@ -100,9 +100,12 @@ export const ProductDetailsPage: React.FC = () => {
 
           setSuggestedProducts(suggested);
         }
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 400);
       } catch (err) {
         setError('Something went wrong');
-      } finally {
         setLoading(false);
       }
     };

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 
@@ -85,9 +85,25 @@ export const ProductsPage: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
+  const [delayedLoading, setDelayedLoading] = useState(true);
+
+  useEffect(() => {
+    if (loading) {
+      setDelayedLoading(true);
+
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setDelayedLoading(false);
+    }, 400);
+
+    return () => clearTimeout(timeout);
+  }, [loading]);
+
   let content = null;
 
-  if (loading) {
+  if (delayedLoading) {
     content = <Loader />;
   } else if (error) {
     content = <Error message={error} />;
