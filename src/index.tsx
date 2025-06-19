@@ -58,8 +58,8 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="favourites" element={<Favourites />} />
         <Route path="cart" element={<Cart />} />
 
-        <Route path="*" element={<NotFoundPage />} />
         <Route path="not_found_product" element={<ProductNotFound />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   </Router>,
