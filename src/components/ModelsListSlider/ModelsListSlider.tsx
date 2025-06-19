@@ -32,27 +32,30 @@ export const ModelsListSlider: React.FC<Props> = ({
   };
 
   const handleMoveList = (direction: string) => {
-    const cardEl = document.querySelector('.js-card');
-    const cardWidth = cardEl ? cardEl.getBoundingClientRect().width + 16 : 0;
+    if (scrollRef.current) {
+      const cardEl = document.querySelector('.js-card');
+      const cardWidth = cardEl ? cardEl.getBoundingClientRect().width + 16 : 0;
+      const maxScroll = scrollRef.current?.scrollWidth;
 
-    if (direction === 'prev') {
-      if (scrollRef.current && scrollRef.current?.scrollLeft - cardWidth < 0) {
-        scrollRef.current.scrollBy({
-          left: -scrollRef.current?.scrollLeft,
-          behavior: 'smooth',
-        });
-
-        return;
+      if (direction === 'prev') {
+        if (scrollRef.current.scrollLeft - cardWidth <= 0) {
+          scrollRef.current.scrollBy({
+            left: -scrollRef.current?.scrollLeft,
+            behavior: 'smooth',
+          });
+        } else {
+          scrollRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        }
       }
 
-      if (scrollRef.current) {
-        scrollRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-      }
-    }
+      if (direction === 'next') {
+        if (scrollRef.current.scrollLeft + cardWidth > maxScroll) {
+          const scrollRight = maxScroll - scrollRef.current.scrollLeft;
 
-    if (direction === 'next') {
-      if (scrollRef.current) {
-        scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+          scrollRef.current.scrollBy({ left: scrollRight, behavior: 'smooth' });
+        } else {
+          scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
       }
     }
   };
