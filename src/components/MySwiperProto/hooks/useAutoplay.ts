@@ -33,7 +33,7 @@ export const useAutoplay = ({ autoplay, buttonHandler }: Props) => {
         cleanup();
       }
 
-      if (isDraggingRef.current === true || snapTimerRef.current !== null) {
+      if (isDraggingRef.current === true || snapTimerRef.current) {
         cleanup();
 
         return startAutoplay();

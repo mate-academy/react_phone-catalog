@@ -5,7 +5,7 @@ import { useAutoplay } from './useAutoplay';
 import { useRafLoop } from './useRAFLoop';
 import { useMSPTransition } from './useMSPTransition';
 import { useResize } from './useResize';
-import { useInitialRerender } from './useInitialRerender';
+import { useInitialSetter } from './useInitialSetter';
 
 //todo:
 // change handlebyIndex offset change if gap;
@@ -15,6 +15,7 @@ import { useInitialRerender } from './useInitialRerender';
 // try to separate contexts
 // make prop for snaps
 // watch dragRef params; merge dragRef && isDragging
+// switch rerender on state
 
 export const useMSPCore = () => {
   const {
@@ -33,7 +34,7 @@ export const useMSPCore = () => {
   const startXRef = useRef<number | null>(null);
   const startIndex = useRef<number | null>(null);
 
-  useInitialRerender();
+  useInitialSetter();
 
   const { startRafLoop, endRafLoop } = useRafLoop();
   const { firstStageTransition, secondStageTransition } = useMSPTransition({
@@ -104,6 +105,7 @@ export const useMSPCore = () => {
         secondStageTransition(listLength * widthRef.current);
       } else if (isLast && step === 1) {
         firstStageTransition((listLength + 1) * widthRef.current);
+
         secondStageTransition(widthRef.current);
       } else {
         handleByIndex(startIndex.current + step);

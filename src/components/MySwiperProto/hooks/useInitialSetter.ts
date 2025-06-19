@@ -1,7 +1,7 @@
 import { useLayoutEffect } from 'react';
 import { useMSPContext } from '../context/useMSPContext';
 
-export const useInitialRerender = () => {
+export const useInitialSetter = () => {
   const { VPRef, widthRef, offsetRef, infinite } = useMSPContext();
 
   useLayoutEffect(() => {
