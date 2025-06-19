@@ -56,3 +56,22 @@ export function useWindowWidth() {
 
   return width;
 }
+
+export function getCorrectCase(
+  count: string,
+  possibleOptions: [string, string, string],
+): string {
+  const last = count.at(-1);
+  const prev = count.at(-2) || '';
+  const regex = /[2-4]/;
+
+  if (last === '1' && prev !== '1') {
+    return possibleOptions[0];
+  }
+
+  if (regex.test(last!) && prev !== '1') {
+    return possibleOptions[1];
+  }
+
+  return possibleOptions[2];
+}

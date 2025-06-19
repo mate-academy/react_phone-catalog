@@ -3,6 +3,7 @@ import { CartCard } from '../../../../components/CartCard';
 import { useProducts } from '../../../../context/ProductsContext';
 import styles from './CartList.module.scss';
 import { useTranslation } from 'react-i18next';
+import { getCorrectCase } from '../../../../utils/helpers';
 
 export const CartList = () => {
   const { t } = useTranslation();
@@ -48,7 +49,14 @@ export const CartList = () => {
       <div className={styles.cart__checkout}>
         <div className={styles.cart__checkout__total}>${totalPrice}</div>
         <div className={styles.cart__checkout__items_amount}>
-          {t('total')} {itemsAmount} {t('items')}
+          {t('total')} {itemsAmount}{' '}
+          {t(
+            getCorrectCase(String(itemsAmount), [
+              'item',
+              'items2-4',
+              'items5-0',
+            ]),
+          )}
         </div>
         <div
           className={styles.cart__checkout__btn}

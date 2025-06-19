@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './Categories.module.scss';
 import { useProducts } from '../../../../context/ProductsContext';
 import { useTranslation } from 'react-i18next';
+import { getCorrectCase } from '../../../../utils/helpers';
 
 export const Categories = () => {
   const { products } = useProducts();
@@ -26,9 +27,18 @@ export const Categories = () => {
           <div
             className={`${styles.shop__images} ${styles.shop__images__image1}`}
           ></div>
-          <div className={styles.shop__categories__title}>{t('mobilePhones')}</div>
+          <div className={styles.shop__categories__title}>
+            {t('mobilePhones')}
+          </div>
           <div className={styles.shop__categories__body}>
-            {phones.length} {t('models')}
+            {phones.length}{' '}
+            {t(
+              getCorrectCase(String(phones.length), [
+                'model',
+                'models2-4',
+                'models5-0',
+              ]),
+            )}
           </div>
         </NavLink>
         <NavLink
@@ -45,7 +55,14 @@ export const Categories = () => {
           ></div>
           <div className={styles.shop__categories__title}>{t('tablets')}</div>
           <div className={styles.shop__categories__body}>
-            {tablets.length} {t('models')}
+            {tablets.length}{' '}
+            {t(
+              getCorrectCase(String(tablets.length), [
+                'model',
+                'models2-4',
+                'models5-0',
+              ]),
+            )}
           </div>
         </NavLink>
         <NavLink
@@ -60,9 +77,18 @@ export const Categories = () => {
           <div
             className={`${styles.shop__images} ${styles.shop__images__image3}`}
           ></div>
-          <div className={styles.shop__categories__title}>{t('accessories')}</div>
+          <div className={styles.shop__categories__title}>
+            {t('accessories')}
+          </div>
           <div className={styles.shop__categories__body}>
-            {accessories.length} {t('models')}
+            {accessories.length}{' '}
+            {t(
+              getCorrectCase(String(accessories.length), [
+                'model',
+                'models2-4',
+                'models5-0',
+              ]),
+            )}
           </div>
         </NavLink>
       </div>

@@ -6,6 +6,7 @@ import { ProductList } from '../ProductList';
 import { Pages } from '../Pages/Pages';
 import styles from './Catalog.module.scss';
 import { useTranslation } from 'react-i18next';
+import { getCorrectCase } from '../../utils/helpers';
 
 type Props = {
   category: string;
@@ -45,7 +46,14 @@ export const Catalog: React.FC<Props> = ({ category, title }) => {
     <div className={styles.cataloge}>
       <h1 className={styles.cataloge__title}>{t(title)}</h1>
       <div className={styles.cataloge__items_amount}>
-        {devices.length} {t('models')}
+        {devices.length}{' '}
+        {t(
+          getCorrectCase(String(devices.length), [
+            'model',
+            'models2-4',
+            'models5-0',
+          ]),
+        )}
       </div>
 
       <ListControlPanel />
