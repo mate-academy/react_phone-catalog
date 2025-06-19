@@ -10,7 +10,7 @@ export interface FullCard {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: DescriptionPart[];
+  description: Description;
   screen: string;
   resolution: string;
   processor: string;
