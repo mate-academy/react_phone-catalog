@@ -25,7 +25,7 @@
 
 .home__page__title {
   box-sizing: border-box;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 32px;
   line-height: 41px;
   text-align: left;
@@ -43,10 +43,21 @@
 .home__page__brand {
   box-sizing: border-box;
   margin-bottom: 56px;
+  padding-left: 16px;
+
+  @include on-tablet {
+    padding-left: 24px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    margin-bottom: 80px;
+  }
 }
 
 .section__title {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 22px;
   line-height: 140%;
   margin-bottom: 24px;
@@ -58,13 +69,10 @@
 }
 
 .brand__title {
-  box-sizing: border-box;
   max-width: 180px;
-  padding-inline: 16px;
 
   @include on-tablet {
     max-width: 490px;
-    padding-inline: 24px;
   }
 }
 
@@ -73,16 +81,29 @@
   flex-direction: column;
   box-sizing: border-box;
   padding-inline: 16px;
+  margin-bottom: 56px;
 
   @include on-tablet {
     padding-inline: 24px;
+    margin-bottom: 64px;
+  }
+
+    @include on-desktop {
+    padding-inline: 32px;
+    margin-bottom: 80px;
   }
 }
 
 .home__page__hot {
   margin-bottom: 64px;
-}
+  padding-left: 16px;
 
-.hot__price__title {
-  padding-inline: 24px;
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    margin-bottom: 80px;
+  }
 }

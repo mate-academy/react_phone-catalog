@@ -1,5 +1,5 @@
 :root {
-  --font-family: Montserrat, sans-serif;
+  --font-family: Roboto, sans-serif;
   --text-color: #F1F2F9;
   --second-text-color: #75767F;
   --mode-border: 1px solid #4A4D58;
@@ -25,7 +25,7 @@
   --swiper-bars-color: #3B3E4A;
   --swiper-bars-color-active: #F1F2F9;
   --product-card-background-color: #161827;
-  --product-card-border: none;
+  --product-card-border: 1px solid transparent;
   --product-card-border-hover: 1px solid #323542;
   --product-card-box-shadow-hover: none;
   --selector-background-color: #323542;
@@ -48,6 +48,12 @@
   --cart-button-text-color: #F1F2F9;
   --cart-button-border-color-hover:#323542;
   --error-background-color: #89939A;
+  --skeleton-gradient: linear-gradient(
+    90deg,
+    #4A4D58 25%,
+    #323542 37%,
+    #4A4D58 63%
+  );
 }
 
 body.light {
@@ -99,4 +105,10 @@ body.light {
   --cart-button-text-color: #F1F2F9;
   --cart-button-border-color-hover:#313237;
   --error-background-color: #FFF;
+  --skeleton-gradient: linear-gradient(
+    90deg,
+    #e0e0e0 25%,
+    #f0f0f0 37%,
+    #e0e0e0 63%
+  );
 }

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useState } from 'react';
 
 type LoadingContextType = {
   isLoading: boolean;
@@ -15,8 +15,8 @@ type Props = {
 export const LoadingProvider: React.FC<Props> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const startLoading = () => setIsLoading(true);
-  const stopLoading = () => setIsLoading(false);
+  const startLoading = useCallback(() => setIsLoading(true), []);
+  const stopLoading = useCallback(() => setIsLoading(false), []);
 
   return (
     <LoadingContext.Provider value={{ isLoading, startLoading, stopLoading }}>

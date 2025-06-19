@@ -20,6 +20,10 @@ export const HomePage: React.FC<Props> = ({ isLightMode }) => {
   const [errorMessage, setErrorMessage] = useState<ErrorMessage | null>(null);
   const years = allProducts.map((product: Product) => product.year);
 
+  if (allProducts.length === 0) {
+    startLoading();
+  }
+
   const lastYear = Math.max(...years);
   const newModels = allProducts.filter(
     (product: Product) => product.year === lastYear,
@@ -73,14 +77,7 @@ export const HomePage: React.FC<Props> = ({ isLightMode }) => {
             <Category products={allProducts} />
           </section>
           <section className={styles.home__page__hot}>
-            <h2
-              className={classNames(
-                styles.section__title,
-                styles.hot__price__title,
-              )}
-            >
-              Hot prices
-            </h2>
+            <h2 className={styles.section__title}>Hot prices</h2>
             <ProductsSlider
               products={hotPricesProducts}
               sortBy="fullPrice"

@@ -1,0 +1,120 @@
+@import '../../../styles/mixins';
+
+.skeleton__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding: 32px;
+  min-width: 212px;
+  height: 439px;
+  background-color: var(--product-card-background-color);
+  border: var(--product-card-border);
+  flex-grow: 1;
+
+  @include on-tablet {
+    min-width: 237px;
+    height: 506px;
+  }
+}
+
+.skeleton__image {
+  width: 148px;
+  height: 129px;
+  margin: 0 auto 24px;
+  background: var(--skeleton-gradient);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 4px;
+}
+
+.skeleton__title {
+  width: 80%;
+  height: 20px;
+  margin-bottom: 8px;
+  background: var(--skeleton-gradient);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 4px;
+}
+
+.skeleton__priceBox {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 16px;
+}
+
+.skeleton__price,
+.skeleton__fullPrice {
+  height: 22px;
+  background: var(--skeleton-gradient);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 4px;
+}
+
+.skeleton__price {
+  width: 40%;
+}
+
+.skeleton__fullPrice {
+  width: 30%;
+}
+
+.skeleton__details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  margin-bottom: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.skeleton__detail {
+  width: 100%;
+  height: 16px;
+  background: var(--skeleton-gradient);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 4px;
+}
+
+.skeleton__buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.skeleton__button {
+  width: 100px;
+  height: 40px;
+  background: var(--skeleton-gradient);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 4px;
+}
+
+.skeleton__buttonSmall {
+  width: 40px;
+  height: 40px;
+  background: var(--skeleton-gradient);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 4px;
+}
+
+/* Animacja shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

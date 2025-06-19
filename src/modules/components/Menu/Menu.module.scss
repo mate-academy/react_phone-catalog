@@ -69,13 +69,17 @@
   height: 100%;
   box-sizing: border-box;
 
-  font-weight: 800;
+  font-weight: 700;
   font-size: 12px;
   line-height: 11px;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--second-text-color);
   transition: color 0.3s ease-in-out;
+
+  @include on-desktop {
+    font-size: 14px;
+  }
 
   &:hover {
     color: var(--text-color);

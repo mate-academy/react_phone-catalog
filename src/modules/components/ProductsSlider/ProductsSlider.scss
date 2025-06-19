@@ -4,17 +4,19 @@
   position: relative;
   max-height: 439px;
   width: 100%;
-  padding-left: 16px;
 
   @include on-tablet {
     max-height: 512px;
-    padding-left: 24px;
   }
 
   @include on-desktop {
     max-height: 506px;
-    padding-inline: 32px;
   }
+}
+
+.swiper {
+  padding-inline: 0;
+  box-sizing: border-box;
 }
 
 .swiper-button-prev {
@@ -105,6 +107,16 @@
 
 .products__swiper {
   overflow: hidden;
+  padding-inline: 0;
+  padding-right: 16px;
+
+  @include on-tablet {
+    padding-right: 24px;
+  }
+
+  @include on-desktop {
+    padding-right: 0;
+  }
 }
 
 .products__slide {

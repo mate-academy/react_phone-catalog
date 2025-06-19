@@ -42,6 +42,10 @@
   margin-bottom: 24px;
   align-self: center;
 
+  @include on-tablet {
+    height: 196px;
+  }
+
   &:hover {
     .product__card__img {
       transform: scale(1.2);
@@ -56,6 +60,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
+  letter-spacing: 0.5px;
   text-align: left;
   color: var( --text-color);
   text-decoration: none;
@@ -112,8 +117,7 @@
 }
 
 .product__card__value {
-  font-family: Montserrat, sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 12px;
   line-height: 100%;
   color: var(--text-color);

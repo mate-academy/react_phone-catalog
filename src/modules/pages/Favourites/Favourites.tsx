@@ -19,8 +19,11 @@ export const Favourites: React.FC<Props> = ({ isLightMode }) => {
   const { favourites } = useFavourites();
   const [errorMessage, setErrorMessage] = useState<ErrorMessage | null>(null);
 
-  useEffect(() => {
+  if (allProducts.length === 0) {
     startLoading();
+  }
+
+  useEffect(() => {
     getAllProducts()
       .then(products => {
         if (!products && products.length === 0) {

@@ -43,8 +43,9 @@ export const ProductDetail: React.FC<Props> = ({ isLightMode }) => {
       return;
     }
 
+    setProduct(null);
+    startLoading();
     const fetchProductDetails = async () => {
-      startLoading();
       try {
         const allProducts: Product[] = await getAllProducts();
 
@@ -116,9 +117,16 @@ export const ProductDetail: React.FC<Props> = ({ isLightMode }) => {
     return suggestProduct;
   };
 
+  if (isLoading || (!product && !errorMessage)) {
+    return (
+      <div className={styles.product}>
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <div className={styles.product}>
-      {isLoading && <Loader />}
       {!isLoading && !errorMessage && (
         <>
           <Breadcrumbs product={product} isLightMode={isLightMode} />

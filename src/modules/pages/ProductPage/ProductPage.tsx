@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '@components/Breadcrumbs';
 import { Selector } from '@components/Selector';
-import { Loader } from '@components/Loader';
 import { ProductList } from '@components/ProductList';
 import { Pagination } from '@components/Pagination';
 import { ErrorMessage } from '@models/ErrorMessage';
@@ -147,52 +146,53 @@ export const ProductPage: React.FC<Props> = ({ isLightMode }) => {
 
   return (
     <main className={styles.products}>
-      {isLoading && allProducts.length === 0 && <Loader />}
-      {!isLoading && !errorMessage && (
-        <>
-          <div className={styles.products__container}>
-            <Breadcrumbs product={null} isLightMode={isLightMode} />
-            <h1 className={styles.products__title}>{pageCategoryTitle}</h1>
-            <span className={styles['products__models-count']}>
-              {filterProducts.length} models
-            </span>
-            <div className={styles.products__selector}>
-              <Selector
-                id={'sortBy'}
-                label={'Sort by'}
-                initialSelectorType={
-                  sortOptions.find(option => option.value === sortType)
-                    ?.label || 'Newset'
-                }
-                options={sortOptions}
-                selector={currentSelector}
-                onChange={handlerSortBySelectorChange}
-                setCurrentSelector={handleSetCurrentSelector}
-              />
+      <div className={styles.products__container}>
+        <Breadcrumbs product={null} isLightMode={isLightMode} />
+        <h1 className={styles.products__title}>{pageCategoryTitle}</h1>
+        <span className={styles['products__models-count']}>
+          {filterProducts.length} models
+        </span>
+        <div className={styles.products__selector}>
+          <Selector
+            id={'sortBy'}
+            label={'Sort by'}
+            initialSelectorType={
+              sortOptions.find(option => option.value === sortType)?.label ||
+              'Newset'
+            }
+            options={sortOptions}
+            selector={currentSelector}
+            onChange={handlerSortBySelectorChange}
+            setCurrentSelector={handleSetCurrentSelector}
+          />
 
-              <Selector
-                id={'pageSelector'}
-                label={'Items on page'}
-                initialSelectorType={
-                  perPageOptions.find(option => option.value === itemsPerPage)
-                    ?.label || '16'
-                }
-                options={perPageOptions}
-                selector={currentSelector}
-                onChange={handlerPageSelectorChange}
-                setCurrentSelector={handleSetCurrentSelector}
-              />
-            </div>
-            <ProductList products={visibleProducts} isLightMode={isLightMode} />
-            <Pagination
-              totalPages={totalPages}
-              currentPage={currentPage}
-              isLightMode={isLightMode}
-              handlerPageSelector={handlerPageSelector}
-            />
-          </div>
-        </>
-      )}
+          <Selector
+            id={'pageSelector'}
+            label={'Items on page'}
+            initialSelectorType={
+              perPageOptions.find(option => option.value === itemsPerPage)
+                ?.label || '16'
+            }
+            options={perPageOptions}
+            selector={currentSelector}
+            onChange={handlerPageSelectorChange}
+            setCurrentSelector={handleSetCurrentSelector}
+          />
+        </div>
+        <ProductList
+          products={visibleProducts}
+          isLightMode={isLightMode}
+          isLoading={isLoading && allProducts.length === 0}
+          pageSelector={pageSelector}
+          errorMessage={errorMessage}
+        />
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          isLightMode={isLightMode}
+          handlerPageSelector={handlerPageSelector}
+        />
+      </div>
     </main>
   );
 };

@@ -1,17 +1,22 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Header } from '@components/Header';
 import { HomePage } from '@pages/Home/HomePage';
-import { Footer } from '@components/Footer';
 import { ProductPage } from '@pages/ProductPage';
 import { ProductDetail } from '@pages/ProductDetail';
 import { NotFoundPage } from '@pages/NotFoundPage';
 import { Favourites } from '@pages/Favourites';
 import { Cart } from '@pages/Cart';
+import { Header } from '@components/Header';
+import { Footer } from '@components/Footer';
 import './App.scss';
 
 export const App = () => {
   const [isLightMode, setIsLightMode] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // opcjonalnie: scroll na górę przy zmianie strony
+  }, [location]);
 
   useEffect(() => {
     document.body.classList.toggle('light', isLightMode);

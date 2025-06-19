@@ -77,7 +77,7 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu, isLightMode }) => {
             to="accessories"
             className={classNames(styles.menu__navigation__link, {
               [styles['menu__navigation__link--active']]:
-                pathname === 'accessories',
+                pathname.includes('accessories'),
             })}
             onClick={() => closeMenu()}
           >
