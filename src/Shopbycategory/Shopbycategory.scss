@@ -2,18 +2,32 @@
   text-align: center;
   padding: 0px;
 
+  @media(min-width: 1200px) {
+
+    }
+
   &__title {
     display: flex;
     font-size: 32px;
     justify-content: start;
     padding: 80px 0 24px 32px;
     margin: 0;
+
+    @media(min-width: 1200px) {
+      padding: 16px 0 24px 0;
+    }
   }
 
   &__grid {
     display: flex;
     justify-content: center;
     gap: 20px;
+
+    @media(min-width: 1200px) {
+      display: flex;
+      justify-content: space-around;
+      gap:110px;
+    }
 
     @media (max-width: 480px) {
       display: flex;
@@ -35,21 +49,26 @@
   background: #fff;
   text-align: center;
   padding: 15px;
-  border-radius: 10px;
+  // border-radius: 10px;
   width: 300px;
+
+  @media(min-width: 1200px) {
+      text-align: center;
+      // width: 355px;
+      padding: 0;
+    }
 
   &__image {
     width: 100%;
     height: 300px;
-    border-radius: 10px;
     transition: transform 0.3s ease-in-out;
     object-fit:contain;
+
 
     @media (max-width: 480px) {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      // padding: 10px;
     }
 
     &:hover {

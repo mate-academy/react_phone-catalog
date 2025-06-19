@@ -6,9 +6,16 @@
   &__title {
     display: flex;
     font-size: 32px;
-    justify-content: start;
-    padding: 80px 0 24px 32px;
+    justify-content:space-between;
+    padding: 80px 0px 24px 32px;
     margin: 0;
+
+    @media(min-width: 1200px) {
+      padding: 80px 0 24px 0;
+    }
+    @media(max-width: 1200px) {
+      padding: 80px 0 24px 0;
+    }
   }
 }
 
@@ -34,12 +41,14 @@
   text-align: center;
   border: 1px solid #E2E6E9;
   transition: transform 0.3s ease-in-out;
+  min-height: 405px;
 
 
   &__name {
     font-size: 14px;
     font-weight: 600;
     color: #363535;
+    min-height: 35px;
   }
 
   & a {
@@ -57,9 +66,11 @@
 
 .brand-new-models_phone-card__image {
   width: 50%;
-  height: 50%;
+  // height: 50%;
   border-radius: 8px 8px 0 0;
   transition: transform 0.3s ease-in-out;
+  min-height: 134px;
+  max-height: 134px;
 
   @media (max-width: 480px) {
     transition: none;
@@ -77,6 +88,7 @@
   width: 100%;
   font-size: 14px;
   color: #363535;
+  
 }
 
 .brand-new-models_phonecard__price {

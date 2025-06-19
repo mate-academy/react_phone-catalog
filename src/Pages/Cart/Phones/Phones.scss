@@ -59,7 +59,6 @@
 
 .phone-card {
   background: #fff;
-  border-radius: 8px;
   padding: 32px;
   margin: 20px;
   width: 200px;
@@ -98,6 +97,7 @@
   width: 100%;
   font-size: 14px;
   color: #363535;
+  overflow: hidden;
 }
 
 .phone-card__detail span {
