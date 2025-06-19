@@ -59,7 +59,8 @@ export const ModelsListSlider: React.FC<Props> = ({
             scrollRef.current.scrollLeft + cardWidth >
             maxScroll - containerWidth
           ) {
-            const scrollRight = maxScroll - containerWidth;
+            const scrollRight =
+              maxScroll - containerWidth - scrollRef.current.scrollLeft;
 
             scrollRef.current.scrollBy({
               left: scrollRight,
