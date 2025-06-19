@@ -19,6 +19,8 @@ export const HomePage: React.FC<Props> = ({ isLightMode }) => {
   const [allProducts, setProducts] = useState<Product[]>([]);
   const [errorMessage, setErrorMessage] = useState<ErrorMessage | null>(null);
   const years = allProducts.map((product: Product) => product.year);
+  const uniqueModels = [];
+  const seen = new Set();
 
   if (allProducts.length === 0) {
     startLoading();
@@ -28,6 +30,16 @@ export const HomePage: React.FC<Props> = ({ isLightMode }) => {
   const newModels = allProducts.filter(
     (product: Product) => product.year === lastYear,
   );
+
+  for (const product of newModels) {
+    const modelKey =
+      product.name.replace(/\s\d+(GB|TB).*/, '').trim() + '-' + product.color;
+
+    if (!seen.has(modelKey)) {
+      seen.add(modelKey);
+      uniqueModels.push(product);
+    }
+  }
 
   const hotPricesProducts = allProducts.filter(
     product => product.fullPrice - product.price > 120,
@@ -67,7 +79,7 @@ export const HomePage: React.FC<Props> = ({ isLightMode }) => {
               Brand new models
             </h2>
             <ProductsSlider
-              products={newModels}
+              products={uniqueModels}
               sortBy="year"
               isLightMode={isLightMode}
             />

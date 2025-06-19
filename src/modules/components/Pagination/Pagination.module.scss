@@ -29,6 +29,16 @@
   }
 }
 
+.pagination__arrow:disabled {
+  cursor: default;
+  opacity: 0.5;
+
+  &:hover {
+    background-color: var(--button-background-color);
+    border: var(--button-border);
+  }
+}
+
 .pagination__image {
   object-fit: contain;
 }

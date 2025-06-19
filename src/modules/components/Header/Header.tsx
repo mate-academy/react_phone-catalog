@@ -29,6 +29,11 @@ export const Header: React.FC<Props> = ({ isLightMode, handleSetMode }) => {
   const { favourites } = useFavourites();
   const { cartProducts } = useCart();
 
+  const totalProductsInCart = cartProducts.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+
   const handleOpenMenu = () => {
     setOpenMenu(true);
   };
@@ -88,7 +93,7 @@ export const Header: React.FC<Props> = ({ isLightMode, handleSetMode }) => {
             {cartProducts.length > 0 && (
               <div className={styles['header__icon__item--storage']}>
                 <span className={styles['header__icon__item--text']}>
-                  {cartProducts.length}
+                  {totalProductsInCart}
                 </span>
               </div>
             )}
