@@ -22,13 +22,13 @@
   }
 
   &__opened {
-    position: fixed; //перевіри чи відображається нижня частина коли меню відкрито в браузері
+    position: fixed;
     top: 0;
     z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh; // спробувати як праює 100dvh і перевірити які браузери підтримують
+    height: 100dvh;
     background-color: var(--background-color);
   }
 

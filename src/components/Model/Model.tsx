@@ -17,7 +17,7 @@ import { Loader } from '../Loader';
 import { useTranslation } from 'react-i18next';
 
 export const Model = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { productId } = useParams();
   const { products, favorites, cart, setFavorites, setCart } = useProducts();
   const navigate = useNavigate();
