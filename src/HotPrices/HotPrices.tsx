@@ -3,8 +3,8 @@ import './HotPrices.scss';
 import { Phone } from '../Types/BaseItem';
 import { useCartContext } from '../CartContext/useCartContext';
 import { Link } from 'react-router-dom';
-import HeartEmpty from './../../public/img/AddFavor.png';
-import HeartFilled from './../../public/img/AddFavorAct.png';
+const HeartEmpty = './img/AddFavor.png';
+const HeartFilled = './img/AddFavorAct.png';
 
 export const HotPrices: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);

@@ -6,8 +6,8 @@ import { Link, useLocation } from 'react-router-dom';
 import './Accessories.scss';
 import { SearchParameters } from '../../SearchParm/SearchParam';
 
-import HeartEmpty from '../../../public/img/AddFavor.png';
-import HeartFilled from '../../../public/img/AddFavorAct.png';
+const HeartEmpty = './img/AddFavor.png';
+const HeartFilled = './img/AddFavorAct.png';
 
 export const Accessories: React.FC = () => {
   const [accessories, setAccessories] = useState<AccessoriesType[]>([]);
