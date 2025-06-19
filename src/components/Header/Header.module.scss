@@ -63,16 +63,14 @@
     flex: 0 0 96px;
     height: var(--header-height);
     position: relative;
-    padding: 14px 16px; // width: 64px;
+    padding: 14px 16px;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
 
     @media (min-width: 640px) {
       flex: 0 0 128px;
-      padding: 17px 24px; // width: 64px;
-
+      padding: 17px 24px;
     }
-
-    transition: all 0.4s ease-in-out;
-    cursor: pointer;
 
     &:hover {
       scale: 1.05;
