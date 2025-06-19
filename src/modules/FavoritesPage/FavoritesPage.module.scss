@@ -61,11 +61,8 @@
 }
 
 .button {
-  @extend %flex-center;
-  @include apply-typography(buttons-desktop);
+  @extend %primary-button;
 
-  padding: 5px 10px;
-  border-radius: 6px;
-
-  background-color: $color-accent;
+  width: 200px;
+  height: 50px;
 }
