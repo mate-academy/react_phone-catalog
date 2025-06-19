@@ -1,0 +1,88 @@
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.header {
+  background-color: #0f1121;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 64px;
+  box-sizing: border-box;
+  border-bottom: 2px solid #3b3e4a;
+}
+
+.logo-and-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header__logo {
+  padding: 18px 24px;
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 64px;
+}
+
+.nav__list-link {
+  text-transform: uppercase;
+  color: #3b3e4a;
+  text-decoration: none;
+  line-height: 11px;
+  display: block;
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+
+  &:hover {
+    color: #f1f2f9;
+  }
+}
+
+.is-active {
+  color: #f1f2f9;
+  position: relative;
+}
+
+.is-active::after {
+  content: ' ';
+  display: block;
+  background-color: #f1f2f9;
+  border-radius: 8px;
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  bottom: 0;
+}
+
+.icon-links {
+  display: flex;
+  align-items: center;
+}
+
+.icon-link {
+  width: 64px;
+  height: 64px;
+  border-left: 2px solid #3b3e4a;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
