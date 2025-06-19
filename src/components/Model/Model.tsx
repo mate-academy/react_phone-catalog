@@ -34,47 +34,60 @@ export const Model = () => {
   );
 
   useEffect(() => {
-    setIsLoading(true);
+    const stored = sessionStorage.getItem('modelVersions');
+    const models: FullCard[] = stored ? JSON.parse(stored) : [];
+    const cachedModel = models.find(m => String(m.id) === String(productId));
 
-    const timer = setTimeout(() => {
+    if (cachedModel) {
+      setModel(cachedModel);
       setIsLoading(false);
-    }, 800);
 
-    const fetchModel = async () => {
-      if (!modelShortData || !productId) {
-        return;
-      }
+      return;
+    } else {
+      setIsLoading(true);
 
-      try {
-        setError(null);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 800);
 
-        const response = await fetch(`api/${modelShortData.category}.json`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+      const fetchModel = async () => {
+        if (!modelShortData || !productId) {
+          return;
         }
 
-        const data = await response.json();
-        const curModel = data.find((item: FullCard) => item.id === productId);
+        try {
+          setError(null);
 
-        if (!curModel) {
-          throw new Error('Product not found');
+          const response = await fetch(`api/${modelShortData.category}.json`);
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          const curModel = data.find((item: FullCard) => item.id === productId);
+
+          if (!curModel) {
+            throw new Error('Product not found');
+          }
+
+          models.push(curModel);
+          sessionStorage.setItem('modelVersions', JSON.stringify(models));
+          setModel(curModel);
+        } catch (err) {
+          setError(
+            err instanceof Error
+              ? err.message
+              : 'Failed to fetch product details',
+          );
+          navigate('/not_found_product');
         }
+      };
 
-        setModel(curModel);
-      } catch (err) {
-        setError(
-          err instanceof Error
-            ? err.message
-            : 'Failed to fetch product details',
-        );
-        navigate('/not_found_product');
-      }
-    };
+      fetchModel();
 
-    fetchModel();
-
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    }
   }, [productId, modelShortData, navigate]);
 
   if (!isValidUrl) {

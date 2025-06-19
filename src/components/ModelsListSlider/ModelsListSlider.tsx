@@ -36,6 +36,15 @@ export const ModelsListSlider: React.FC<Props> = ({
     const cardWidth = cardEl ? cardEl.getBoundingClientRect().width + 16 : 0;
 
     if (direction === 'prev') {
+      if (scrollRef.current && scrollRef.current?.scrollLeft - cardWidth < 0) {
+        scrollRef.current.scrollBy({
+          left: -scrollRef.current?.scrollLeft,
+          behavior: 'smooth',
+        });
+
+        return;
+      }
+
       if (scrollRef.current) {
         scrollRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
       }

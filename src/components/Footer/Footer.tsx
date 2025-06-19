@@ -14,7 +14,7 @@ export const Footer = () => {
       <div className={styles.footer__contacts}>
         <a
           className={styles.footer__contacts__item}
-          href="https://example.com"
+          href="https://github.com/SaXoNG"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -22,7 +22,7 @@ export const Footer = () => {
         </a>
         <a
           className={styles.footer__contacts__item}
-          href="https://example.com"
+          href="https://www.instagram.com/vasyl_pryimakk"
           target="_blank"
           rel="noopener noreferrer"
         >

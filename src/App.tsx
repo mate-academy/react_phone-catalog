@@ -18,7 +18,7 @@ export const App = () => {
     (localStorage.getItem('theme') as 'dark' | 'light') || 'light',
   );
 
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     document.body.classList.remove('dark', 'light');
@@ -32,9 +32,9 @@ export const App = () => {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  const handleLangChange = (lang: string) => {
+  const handleLangChange = () => {
     if (i18n.language === 'en') {
-      i18n.changeLanguage('ua');
+      i18n.changeLanguage('uk');
     } else {
       i18n.changeLanguage('en');
     }
@@ -45,10 +45,9 @@ export const App = () => {
       <ProductsProvider>
         <NavBar />
         <div className="change-theme" onClick={toggleTheme}></div>
-        <div
-          className="change-lang"
-          onClick={() => handleLangChange('en')}
-        >{i18n.language === 'en' ? 'EN' : 'UK'}</div>
+        <div className="change-lang" onClick={() => handleLangChange()}>
+          {i18n.language === 'en' ? 'EN' : 'UK'}
+        </div>
         <div className="main">
           <Outlet />
         </div>
