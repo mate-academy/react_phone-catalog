@@ -6,7 +6,7 @@ import { useWindowWidth } from '../../utils/helpers';
 import { useTranslation } from 'react-i18next';
 
 export const NavBar = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { cart, favorites } = useProducts();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const width = useWindowWidth();
@@ -14,8 +14,6 @@ export const NavBar = () => {
   const [theme, setTheme] = useState<'dark' | 'light'>(
     (localStorage.getItem('theme') as 'dark' | 'light') || 'light',
   );
-
-  const { i18n } = useTranslation();
 
   useEffect(() => {
     document.body.classList.remove('dark', 'light');

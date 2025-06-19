@@ -17,7 +17,7 @@ import { Loader } from '../Loader';
 import { useTranslation } from 'react-i18next';
 
 export const Model = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { productId } = useParams();
   const { products, favorites, cart, setFavorites, setCart } = useProducts();
   const navigate = useNavigate();
@@ -58,7 +58,9 @@ export const Model = () => {
         try {
           setError(null);
 
-          const response = await fetch(`api/${modelShortData.category}.json`);
+          const response = await fetch(
+            `api/${modelShortData.category}-lang.json`,
+          );
 
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -400,18 +402,37 @@ export const Model = () => {
         </div>
         <div className={styles.model__about}>
           <h3 className={styles.model__about__title}>{t('about')}</h3>
-          {model?.description.map(item => {
-            return (
-              <div key={item.title} className={styles.model__about__part}>
-                <h4 className={styles.model__about__part__title}>
-                  {item.title}
-                </h4>
-                <p className={styles.model__about__part__paragraph}>
-                  {item.text}
-                </p>
-              </div>
-            );
-          })}
+          {i18n.language === 'en' ? (
+            <>
+              {model?.description.en.map(item => {
+                return (
+                  <div key={item.title} className={styles.model__about__part}>
+                    <h4 className={styles.model__about__part__title}>
+                      {item.title}
+                    </h4>
+                    <p className={styles.model__about__part__paragraph}>
+                      {item.text}
+                    </p>
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <>
+              {model?.description.uk.map(item => {
+                return (
+                  <div key={item.title} className={styles.model__about__part}>
+                    <h4 className={styles.model__about__part__title}>
+                      {item.title}
+                    </h4>
+                    <p className={styles.model__about__part__paragraph}>
+                      {item.text}
+                    </p>
+                  </div>
+                );
+              })}
+            </>
+          )}
         </div>
         <div className={styles.model__tech_specs}>
           <h4 className={styles.model__tech_specs__title}>{t('techSpecs')}</h4>
