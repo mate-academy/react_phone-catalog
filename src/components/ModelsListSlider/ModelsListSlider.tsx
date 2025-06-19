@@ -36,6 +36,9 @@ export const ModelsListSlider: React.FC<Props> = ({
       const cardEl = document.querySelector('.js-card');
       const cardWidth = cardEl ? cardEl.getBoundingClientRect().width + 16 : 0;
       const maxScroll = scrollRef.current?.scrollWidth;
+      const continerWidth = document.querySelector(
+        `.${styles.product_list}`,
+      )?.clientWidth;
 
       updateButtons();
 
@@ -51,13 +54,24 @@ export const ModelsListSlider: React.FC<Props> = ({
       }
 
       if (direction === 'next') {
-        if (scrollRef.current.scrollLeft + cardWidth > maxScroll) {
-          const scrollRight =
-            scrollRef.current.scrollLeft + cardWidth - maxScroll;
+        if (continerWidth) {
+          if (
+            scrollRef.current.scrollLeft + cardWidth + continerWidth >
+            maxScroll
+          ) {
+            const scrollRight =
+              scrollRef.current.scrollLeft +
+              cardWidth +
+              continerWidth -
+              maxScroll;
 
-          scrollRef.current.scrollBy({ left: scrollRight, behavior: 'smooth' });
-        } else {
-          scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            scrollRef.current.scrollBy({
+              left: scrollRight,
+              behavior: 'smooth',
+            });
+          } else {
+            scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+          }
         }
       }
     }
