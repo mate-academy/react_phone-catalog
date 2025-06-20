@@ -1,14 +1,14 @@
 import { useLayoutEffect } from 'react';
 import { useMSContext } from '../context/MSContext';
 export const useInit = () => {
-  const { VPRef, widthRef, infinite, offsetRef } = useMSContext();
+  const { VP, width, infinite, offset } = useMSContext();
 
   useLayoutEffect(() => {
-    if (VPRef.current) {
-      widthRef.current = VPRef.current.offsetWidth;
+    if (VP.current) {
+      width.current = VP.current.offsetWidth;
 
       if (infinite) {
-        offsetRef.current = widthRef.current * 2;
+        offset.current = width.current * 2;
       }
     }
   }, []);

@@ -7,17 +7,17 @@ type Params = {
 };
 
 export const useResize = ({ setByIndex, getIndex }: Params) => {
-  const { VPRef, widthRef, offsetRef } = useMSContext();
+  const { VP, width, offset } = useMSContext();
 
   useEffect(() => {
-    if (!VPRef.current) {
+    if (!VP.current) {
       return;
     }
 
-    const node = VPRef.current;
+    const node = VP.current;
     const resizeObs = new ResizeObserver(() => {
-      widthRef.current = node.offsetWidth;
-      const index = getIndex(offsetRef.current, widthRef.current);
+      width.current = node.offsetWidth;
+      const index = getIndex(offset.current, width.current);
 
       setByIndex(index);
     });

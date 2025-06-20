@@ -7,7 +7,6 @@ import { SwiperSlide } from './SwiperSlide/SwiperSlide';
 
 type Props = {
   btn: boolean;
-  clmp: boolean;
   swCoeff: number;
   gap: number;
   anSpeed: number;
@@ -15,15 +14,13 @@ type Props = {
 };
 export const Swiper: React.FC<Props> = ({
   btn,
-  clmp,
   swCoeff,
   gap,
   anSpeed,
   snap,
 }) => {
-  const { VPRef, trackRef, renderList } = useMSContext();
+  const { VP, track, renderList } = useMSContext();
   const { handlers, setByIndex } = useMSCore({
-    clmp,
     swCoeff,
     gap,
     anSpeed,
@@ -37,13 +34,12 @@ export const Swiper: React.FC<Props> = ({
           dir={Direction.LEFT}
           className={'&__button-prev'}
           setByIndex={setByIndex}
-          clmp={clmp}
         />
       )}
-      <div className="swiper__viewport" ref={VPRef} {...handlers}>
+      <div className="swiper__viewport" ref={VP} {...handlers}>
         <ul
           className="swiper__track"
-          ref={trackRef}
+          ref={track}
           style={
             {
               '--gap': `${gap}px`,
@@ -65,7 +61,6 @@ export const Swiper: React.FC<Props> = ({
           dir={Direction.RIGHT}
           className={'&__button-next'}
           setByIndex={setByIndex}
-          clmp={clmp}
         />
       )}
     </div>

@@ -12,12 +12,12 @@ export function getIndex(offset: number, width: number) {
 }
 
 export function clamps(
-  clmp: boolean,
+  clamp: boolean,
   max: number,
   rawDrag: number,
   offset: number,
 ) {
-  if (clmp) {
+  if (clamp) {
     if (rawDrag - offset <= -max) {
       return -max + offset;
     } else if (-rawDrag + offset <= 0) {

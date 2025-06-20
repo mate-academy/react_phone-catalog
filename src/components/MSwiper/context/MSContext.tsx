@@ -3,15 +3,15 @@ import { SwiperData } from '../../MySwiperProto/types/MSPtypes';
 import { renderListCreate } from '../helpers/swiperHelpers';
 
 type MSContextType = {
-  trackRef: React.RefObject<HTMLUListElement>;
-  VPRef: React.RefObject<HTMLDivElement>;
+  track: React.RefObject<HTMLUListElement>;
+  VP: React.RefObject<HTMLDivElement>;
   renderList: (SwiperData & { id: number })[];
-  offsetRef: React.MutableRefObject<number>;
+  offset: React.MutableRefObject<number>;
   listLength: number;
-  dragRef: React.MutableRefObject<number | null>;
-  widthRef: React.MutableRefObject<number>;
+  drag: React.MutableRefObject<number | null>;
+  width: React.MutableRefObject<number>;
   infinite: boolean;
-  timeoutRef: React.MutableRefObject<NodeJS.Timeout | null>;
+  clamp: boolean;
 };
 
 const MSContext = createContext<MSContextType | null>(null);
@@ -30,34 +30,35 @@ type MSProviderProps = {
   children: ReactNode;
   dataset: SwiperData[];
   infinite: boolean;
+  clamp: boolean;
 };
 
 export const MSProvider: React.FC<MSProviderProps> = ({
   children,
   dataset,
   infinite,
+  clamp,
 }) => {
-  const trackRef = useRef<HTMLUListElement>(null);
-  const VPRef = useRef<HTMLDivElement>(null);
-  const widthRef = useRef<number>(0);
-  const dragRef = useRef<number | null>(null);
-  const offsetRef = useRef(0);
+  const track = useRef<HTMLUListElement>(null);
+  const VP = useRef<HTMLDivElement>(null);
+  const width = useRef<number>(0);
+  const drag = useRef<number | null>(null);
+  const offset = useRef(0);
   const renderList = renderListCreate(dataset, infinite);
   const listLength = renderList.length - (infinite ? 4 : 0);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // #endregion
 
   const value = {
     renderList,
-    trackRef,
-    VPRef,
-    offsetRef,
+    track,
+    VP,
+    offset,
     listLength,
-    dragRef,
-    widthRef,
+    drag,
+    width,
     infinite,
-    timeoutRef,
+    clamp,
   };
 
   return <MSContext.Provider value={value}>{children}</MSContext.Provider>;

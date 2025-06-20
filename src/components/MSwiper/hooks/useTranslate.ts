@@ -8,27 +8,26 @@ type Params = {
 };
 
 export const useRafLoop = ({ swCoeff, toggleTrackClass, rerender }: Params) => {
-  const rafIdRef = useRef<number | null>(null);
-  const { trackRef, offsetRef, dragRef, widthRef } = useMSContext();
+  const rafId = useRef<number | null>(null);
+  const { track, offset, drag, width } = useMSContext();
 
   const translate = (val: number) => {
-    const track = trackRef.current as HTMLUListElement;
+    const trackLi = track.current as HTMLUListElement;
 
-    track.style.transform = `translateX(${val}px`;
+    trackLi.style.transform = `translateX(${val}px`;
   };
 
   const loop = useCallback(() => {
-    const transformValue =
-      -offsetRef.current + (dragRef.current as number) * swCoeff;
+    const transformValue = -offset.current + (drag.current as number) * swCoeff;
 
     translate(transformValue);
-    rafIdRef.current = requestAnimationFrame(loop);
+    rafId.current = requestAnimationFrame(loop);
   }, []);
 
   const endRafLoop = useCallback(() => {
-    if (rafIdRef.current !== null) {
-      cancelAnimationFrame(rafIdRef.current);
-      rafIdRef.current = null;
+    if (rafId.current !== null) {
+      cancelAnimationFrame(rafId.current);
+      rafId.current = null;
     }
   }, []);
 
@@ -40,27 +39,27 @@ export const useRafLoop = ({ swCoeff, toggleTrackClass, rerender }: Params) => {
 
   const setByIndex = useCallback(
     (index: number, animation: boolean = false) => {
-      const shift = -index * widthRef.current;
+      const shift = -index * width.current;
 
-      offsetRef.current = -shift;
+      offset.current = -shift;
       if (animation) {
-        dragRef.current = null;
+        drag.current = null;
       } else {
-        dragRef.current = 0;
+        drag.current = 0;
       }
 
-      toggleTrackClass(trackRef.current as HTMLUListElement, dragRef.current);
-      translate(-offsetRef.current);
+      toggleTrackClass(track.current as HTMLUListElement, drag.current);
+      translate(-offset.current);
       rerender();
     },
     [],
   );
 
   const snapHandle = useCallback((startIndex: number) => {
-    const treshold = 0.1 * widthRef.current;
-    const step = (dragRef.current as number) < 0 ? 1 : -1;
+    const treshold = 0.1 * width.current;
+    const step = (drag.current as number) < 0 ? 1 : -1;
 
-    if (Math.abs(dragRef.current as number) > treshold) {
+    if (Math.abs(drag.current as number) > treshold) {
       setByIndex(startIndex + step, true);
     } else {
       setByIndex(startIndex, true);
