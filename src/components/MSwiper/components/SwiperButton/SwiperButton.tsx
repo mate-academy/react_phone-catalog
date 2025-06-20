@@ -1,6 +1,7 @@
 import { Direction } from '../../../MySwiperProto/types/MSPtypes';
 import { useMSContext } from '../../context/MSContext';
 import { getIndex } from '../../helpers/swiperHelpers';
+import { useSafeCheck } from '../../hooks/useSafeCheck';
 import styles from './SwiperButton.module.scss';
 
 type Props = {
@@ -15,6 +16,7 @@ export const SwiperButton: React.FC<Props> = ({
   setByIndex,
 }) => {
   const { offset, width, listLength, infinite, clamp, gap } = useMSContext();
+  const { checker } = useSafeCheck();
   const length = listLength;
 
   const checked = () => {
@@ -37,12 +39,7 @@ export const SwiperButton: React.FC<Props> = ({
   };
 
   const handleClick = () => {
-    if (
-      infinite &&
-      (offset.current < width.current * 2 + gap ||
-        offset.current >
-          width.current * (listLength + 1) + gap * (listLength + 2))
-    ) {
+    if (!checker()) {
       return;
     }
 

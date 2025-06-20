@@ -6,6 +6,8 @@ import { toggleTrackClass, getIndex, clamps } from '../helpers/swiperHelpers';
 import { useResize } from './useResize';
 
 // change CSS to include/exclude GRID zones on props;
+// move checks on infinite and index to helper;
+
 type Params = {
   swCoeff: number;
   anSpeed: number;
