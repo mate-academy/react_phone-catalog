@@ -19,7 +19,7 @@ grid-column: 1/7;
     grid-column: 7/-1;
   }
    @include mixin.onDesktop{
-    grid-column: 12/-1;
+    grid-column: 13/-1;
   }
 }
 

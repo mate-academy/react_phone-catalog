@@ -24,7 +24,7 @@ export const DetailsProduct = () => {
   const location = useLocation();
   const category = location.pathname.split('/')[1];
   const { productId } = useParams<{ productId: string; category: string }>();
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!productId) {
@@ -76,7 +76,9 @@ if(!product){return}
   ].filter(([_, value]) => Boolean(value))
 );
 
-  return (product?
+
+
+  return (product ?
     <>
       <Container>
         <PageNav />
@@ -117,13 +119,14 @@ if(!product){return}
         <div className={styles.aboutwrapper__about} ><About
           description={product.description } />
 </div>
-          <div className={styles.aboutwrapper__tech}> <TechSpecs
+          <div className={styles.aboutwrapper__tech}>
+            <TechSpecs
             objectTech={objectTech} /></div>
 
 </div>
-          <ProductSlider type={'favourites'} />
+          <ProductSlider sortedProducts={models} title={'You may also like'} />
 
       </Container>{' '}
     </>
-  :"null");
+  :"Product was not found");
 };

@@ -1,5 +1,5 @@
 import styles from './cardItemPhone.module.scss';
-import { CiHeart } from 'react-icons/ci';
+import { FaRegHeart } from "react-icons/fa";
 import { Product } from '../../types/products';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
@@ -51,7 +51,7 @@ export const ProductCart = ({ products, types }: Props) => {
           </div>
           <div className={styles.card__buttons}>
             <div className={styles.card__addCart}>Add to cart</div>
-            <CiHeart className={styles.card__favorite} />
+            <FaRegHeart className={styles.card__favorite} />
           </div>
         </div>
       ))}

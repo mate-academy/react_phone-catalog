@@ -3,8 +3,17 @@ import { ProductSlider } from '../../components/ProductsSlider/ProductSlider';
 import { ShopCategories } from './components/shopCategory/ShopCategory';
 import { SliderHomePage } from './components/sliderHomePage';
 import { TitlePages } from '../../components/title/TitlePages';
+import { getNewModels } from '../../components/utils/getNewModels';
+import { useEffect } from 'react';
+import { useAppSelector } from '../../app/hooks';
+import { getHotPrices } from '../../components/utils/getHotPrices';
 
 export const HomePage = () => {
+  const products = useAppSelector(state => state.products.products);
+
+  const newModels = getNewModels(products);
+  const hotPrices = getHotPrices(products);
+
   return (
     <>
       <Container>
@@ -13,9 +22,9 @@ export const HomePage = () => {
 
       <SliderHomePage />
       <Container>
-        <ProductSlider type={'new'} />
+        <ProductSlider sortedProducts={newModels} title={'Brand new models' } />
         <ShopCategories />
-        <ProductSlider type={'hot'} />
+        <ProductSlider title={'Hot prices'} sortedProducts={hotPrices} />
       </Container>
     </>
   );
