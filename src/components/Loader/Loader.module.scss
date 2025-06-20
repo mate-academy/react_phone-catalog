@@ -43,19 +43,20 @@
       height: 64px;
       border-width: 6px;
     }
+  }
 
-    &__inner {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60%;
-      height: 60%;
-      border: 2px solid transparent;
-      border-top-color: #0F0F11;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite reverse;
-    }
+  &__spinner::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    border: 2px solid transparent;
+    border-top-color: #0F0F11;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite reverse;
   }
 
   &__text {

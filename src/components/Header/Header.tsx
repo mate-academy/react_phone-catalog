@@ -42,8 +42,7 @@ export const Header: React.FC = () => {
             src={logo} 
             alt="Logo" 
             className="header__logo--pict"
-            width={80}
-            height={32}
+            
             loading="eager"
           />
         </Link>
@@ -63,34 +62,32 @@ export const Header: React.FC = () => {
         </nav>
         <div className="header__user">
           <NavLink
-            data-count={favouritesCount !== 0 ? `${favouritesCount}` : ''}
             to="/favourites"
             className={getLinkClassIcon}
             aria-label="Favourites"
           >
-            <img
-              src={favouriteIcon}
-              alt="favourite"
-              className="icon icon-user"
-              width={16}
-              height={16}
-              loading="eager"
-            />
+            <span className="icon-badge-wrapper" data-count={favouritesCount !== 0 ? `${favouritesCount}` : ''}>
+              <img
+                src={favouriteIcon}
+                alt="favourite"
+                className="icon icon-user"
+                loading="eager"
+              />
+            </span>
           </NavLink>
           <NavLink
-            data-count={cartCount !== 0 ? `${cartCount}` : ''}
             to="/cart"
             className={getLinkClassIcon}
             aria-label="Cart"
           >
-            <img
-              src={cartIcon}
-              alt="cart"
-              className="icon icon-user"
-              width={16}
-              height={16}
-              loading="eager"
-            />
+            <span className="icon-badge-wrapper" data-count={cartCount !== 0 ? `${cartCount}` : ''}>
+              <img
+                src={cartIcon}
+                alt="cart"
+                className="icon icon-user"
+                loading="eager"
+              />
+            </span>
           </NavLink>
         </div>
         <div className="header__menu">
@@ -99,8 +96,7 @@ export const Header: React.FC = () => {
               src={menuIcon}
               alt="Menu icon"
               className="icon icon-menu"
-              width={16}
-              height={16}
+             
               loading="eager"
             />
           </button>

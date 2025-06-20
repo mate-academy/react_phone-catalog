@@ -69,27 +69,21 @@ export const NewModels: React.FC = () => {
               loop={true}
               breakpoints={{
                 320: {
-                  spaceBetween: 16,
                   slidesPerView: 1.5,
                 },
                 450: {
-                  spaceBetween: 16,
                   slidesPerView: 2,
                 },
                 640: {
-                  spaceBetween: 16,
                   slidesPerView: 2.5,
                 },
                 800: {
-                  spaceBetween: 16,
                   slidesPerView: 3,
                 },
                 1000: {
-                  spaceBetween: 16,
                   slidesPerView: 3.5,
                 },
                 1200: {
-                  spaceBetween: 16,
                   slidesPerView: 4,
                   loop: false,
                 },

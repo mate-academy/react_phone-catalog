@@ -78,6 +78,10 @@
   transition: transform 0.3s;
 }
 
+.shop_category__card--img-link:hover .shop_category__card--img {
+  transform: scale(1.1);
+}
+
 .shop_category__card--info {
   margin-top: 0;
   width: 100%;

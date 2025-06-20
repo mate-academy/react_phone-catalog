@@ -14,6 +14,13 @@ type Props = {
   handleCloseMenu: () => void;
 };
 
+const navLinks = [
+  { to: '/', text: 'Home' },
+  { to: '/phones', text: 'Phones' },
+  { to: '/tablets', text: 'Tablets' },
+  { to: '/accessories', text: 'Accessories' },
+];
+
 export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => {
   const location = useLocation();
   const { cartCount } = useCartValues();
@@ -51,7 +58,7 @@ export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => 
             <img
               src={deleteIcon}
               alt="icon close"
-              className={classNames(styles.icon, styles.icon_menu)}
+              className={styles.icon}
             />
           </button>
         </div>
@@ -59,48 +66,23 @@ export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => 
 
       <div className={styles.MobileMenu__body}>
         <nav className={styles.bodyMenu__nav}>
-          <NavLink
-            to="/"
-            onClick={handleNavClick}
-            className={({ isActive }) => classNames(styles.bodyMenu__nav_link, {
-              [styles.is_active]: isActive,
-            })}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/phones"
-            onClick={handleNavClick}
-            className={({ isActive }) => classNames(styles.bodyMenu__nav_link, {
-              [styles.is_active]: isActive,
-            })}
-          >
-            Phones
-          </NavLink>
-          <NavLink
-            to="/tablets"
-            onClick={handleNavClick}
-            className={({ isActive }) => classNames(styles.bodyMenu__nav_link, {
-              [styles.is_active]: isActive,
-            })}
-          >
-            Tablets
-          </NavLink>
-          <NavLink
-            to="/accessories"
-            onClick={handleNavClick}
-            className={({ isActive }) => classNames(styles.bodyMenu__nav_link, {
-              [styles.is_active]: isActive,
-            })}
-          >
-            Accessories
-          </NavLink>
+          {navLinks.map(link => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              onClick={handleNavClick}
+              className={({ isActive }) => classNames(styles.bodyMenu__nav_link, {
+                [styles.is_active]: isActive,
+              })}
+            >
+              {link.text}
+            </NavLink>
+          ))}
         </nav>
       </div>
 
       <div className={styles.MobileMenu__user}>
         <NavLink
-          data-count={favouritesCount !== 0 ? `${favouritesCount}` : ''}
           to="/favourites"
           onClick={handleNavClick}
           className={({ isActive }) => classNames(
@@ -109,14 +91,15 @@ export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => 
             { [styles.is_active]: isActive },
           )}
         >
-          <img
-            src={favouriteIcon}
-            alt="favourite icon"
-            className={classNames(styles.icon, styles.icon_user)}
-          />
+          <span className="icon-badge-wrapper" data-count={favouritesCount !== 0 ? `${favouritesCount}` : ''}>
+            <img
+              src={favouriteIcon}
+              alt="favourite icon"
+              className={styles.icon}
+            />
+          </span>
         </NavLink>
         <NavLink
-          data-count={cartCount !== 0 ? `${cartCount}` : ''}
           to="/cart"
           onClick={handleNavClick}
           className={({ isActive }) => classNames(
@@ -124,11 +107,13 @@ export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => 
             { [styles.is_active]: isActive },
           )}
         >
-          <img
-            src={cartIcon}
-            alt="cart icon"
-            className={classNames(styles.icon, styles.icon_user)}
-          />
+          <span className="icon-badge-wrapper" data-count={cartCount !== 0 ? `${cartCount}` : ''}>
+            <img
+              src={cartIcon}
+              alt="cart icon"
+              className={styles.icon}
+            />
+          </span>
         </NavLink>
       </div>
     </div>

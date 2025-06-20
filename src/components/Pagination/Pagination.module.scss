@@ -4,67 +4,71 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
   margin-top: 24px;
-  margin-bottom: 64px;
 
   @include on-tablet {
     margin-top: 40px;
   }
 
   &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
     width: 32px;
     height: 32px;
-    background-color: $button-grey-color;
-    border: none;
-    color: $main-white-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid #B4BDC3;
+    color: #313237;
     font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    letter-spacing: 0;
-    transition: background-color 0.5s ease-in-out;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s, color 0.2s;
+    margin: 0;
 
     &--main {
-      background-color: $main-card-color;
-      margin-right: 8px;
+      background: #fff;
+      border: 1px solid #E2E6E9;
+      color: #313237;
+    }
+
+    &.currentPage {
+      background: #313237;
+      color: #fff;
+      border: none;
+    }
+
+    &--prev,
+    &--next {
+      background: #fff no-repeat center/16px;
+      border: 1px solid #B4BDC3;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      cursor: pointer;
+      transition: border 0.2s;
     }
 
     &--prev {
-      margin-right: 16px;
-
-      background-image: url('/img/arrowRightDefault.png');
-      transform: rotate(180deg);
-
-      &:hover {
-        background-image: url('/img/arrowRightHover.png');
-      }
+      background-image: url('/img/btn-prev.png');
     }
 
     &--next {
-      margin-left: 16px;
-      background-image: url('/img/arrowRightDefault.png');
-
-      &:hover {
-        background-image: url('/img/arrowRightHover.png');
-      }
+      background-image: url('/img/btn-next.png');
     }
-  }
 
-  &__button:disabled {
-    background-color: transparent;
-    background-image: url('/img/arrowRightDisabled.png');
-  }
-}
+    &--prev:hover,
+    &--next:hover {
+      border: 1px solid #313237;
+    }
 
-.currentPage {
-  background-color: $main-purple-color;
-  transition: background-color 0.5s ease-in-out;
-
-  &:hover {
-    background-color: $main-purple-color-hover;
+    &--prev:disabled,
+    &--next:disabled {
+      border: 1px solid #E2E6E9;
+      background-color: #fff;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 }
 

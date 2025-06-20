@@ -17,6 +17,11 @@ type Props = {
   productId: string | undefined;
 };
 
+type SpecItem = {
+  name: string;
+  value: string | number | string[] | undefined;
+};
+
 export const ProductDescription: React.FC<Props> = ({
   selectedProduct,
   productId,
@@ -92,12 +97,48 @@ export const ProductDescription: React.FC<Props> = ({
     setSelectedCapacity(mainCapacity);
   }, [mainImage, mainColor, mainCapacity]);
 
+  // Функція для рендерингу технічних характеристик
+  const renderSpecs = (specs: SpecItem[]) => (
+    <ul className="product-description__description">
+      {specs.map((spec, index) => (
+        <li key={`${spec.name}-${index}`} className="product-description__description__item">
+          <span className="product-description__description__item--name">
+            {spec.name}
+          </span>
+          <span className="product-description__description__item--value">
+            {Array.isArray(spec.value) ? spec.value.join(', ') : spec.value}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+
   // Додаємо універсальний шлях до зображення
   const imageSrc = selectedProduct?.image
     ? `/${selectedProduct.image.replace(/^\/?/, '')}`
     : selectedImage
       ? `/${selectedImage.replace(/^\/?/, '')}`
       : '/img/notFoundPage.png';
+
+  // Короткий список характеристик для першого блоку
+  const shortSpecs: SpecItem[] = [
+    { name: 'Screen', value: screen },
+    { name: 'Resolution', value: resolution },
+    { name: 'Processor', value: processor },
+    { name: 'RAM', value: ram },
+  ];
+
+  // Повний список технічних характеристик
+  const fullSpecs: SpecItem[] = [
+    { name: 'Screen', value: screen },
+    { name: 'Resolution', value: resolution },
+    { name: 'Processor', value: processor },
+    { name: 'RAM', value: ram },
+    { name: 'Built in memory', value: mainCapacity },
+    ...(camera ? [{ name: 'Camera', value: camera }] : []),
+    ...(zoom ? [{ name: 'Zoom', value: zoom }] : []),
+    { name: 'Cell', value: cell },
+  ];
 
   return (
     <>
@@ -257,40 +298,7 @@ export const ProductDescription: React.FC<Props> = ({
                 </Link>
               )}
             </div>
-            <ul className="product-description__description">
-              <li className="product-description__description__item">
-                <span className="product-description__description__item--name">
-                  Screen
-                </span>
-                <span className="product-description__description__item--value">
-                  {screen}
-                </span>
-              </li>
-              <li className="product-description__description__item">
-                <span className="product-description__description__item--name">
-                  Resolution
-                </span>
-                <span className="product-description__description__item--value">
-                  {resolution}
-                </span>
-              </li>
-              <li className="product-description__description__item">
-                <span className="product-description__description__item--name">
-                  Processor
-                </span>
-                <span className="product-description__description__item--value">
-                  {processor}
-                </span>
-              </li>
-              <li className="product-description__description__item">
-                <span className="product-description__description__item--name">
-                  RAM
-                </span>
-                <span className="product-description__description__item--value">
-                  {ram}
-                </span>
-              </li>
-            </ul>
+            {renderSpecs(shortSpecs)}
           </div>
         </div>
         <div className="container_second">
@@ -315,76 +323,7 @@ export const ProductDescription: React.FC<Props> = ({
 
             <hr className="product-description__divider" />
 
-            <ul className="product-description__description">
-              <li className="product-description__description__item">
-                <span className="product-description__description__item--name">
-                  Screen
-                </span>
-                <span className="product-description__description__item--value">
-                  {screen}
-                </span>
-              </li>
-              <li className="product-description__description__item">
-                <span className="product-description__description__item--name">
-                  Resolution
-                </span>
-                <span className="product-description__description__item--value">
-                  {resolution}
-                </span>
-              </li>
-              <li className="product-description__description__item">
-                <span className="product-description__description__item--name">
-                  Processor
-                </span>
-                <span className="product-description__description__item--value">
-                  {processor}
-                </span>
-              </li>
-              <li className="product-description__description__item">
-                <span className="product-description__description__item--name">
-                  RAM
-                </span>
-                <span className="product-description__description__item--value">
-                  {ram}
-                </span>
-              </li>
-              <li className="product-description__description__item">
-                <span className="product-description__description__item--name">
-                  Built in memory
-                </span>
-                <span className="product-description__description__item--value">
-                  {mainCapacity}
-                </span>
-              </li>
-              {camera && (
-                <li className="product-description__description__item">
-                  <span className="product-description__description__item--name">
-                    Camera
-                  </span>
-                  <span className="product-description__description__item--value">
-                    {camera}
-                  </span>
-                </li>
-              )}
-              {zoom && (
-                <li className="product-description__description__item">
-                  <span className="product-description__description__item--name">
-                    Zoom
-                  </span>
-                  <span className="product-description__description__item--value">
-                    {zoom}
-                  </span>
-                </li>
-              )}
-              <li className="product-description__description__item">
-                <span className="product-description__description__item--name">
-                  Cell
-                </span>
-                <span className="product-description__description__item--value">
-                  {cell?.join(', ')}
-                </span>
-              </li>
-            </ul>
+            {renderSpecs(fullSpecs)}
           </div>
         </div>
       </div>

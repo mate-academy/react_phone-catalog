@@ -1,3 +1,38 @@
+@import '../../styles/common';
+
+// Змінні для спільних стилів
+$dropdown-font-family: $main-font-family;
+$dropdown-font-weight: 700;
+$dropdown-font-size: 14px;
+$dropdown-line-height: 21px;
+$dropdown-letter-spacing: 0;
+$dropdown-color: #313237;
+$dropdown-secondary-color: #89939A;
+
+// Міксин для базових стилів dropdown'а
+@mixin dropdown-base {
+  font-family: $dropdown-font-family;
+  font-weight: $dropdown-font-weight;
+  font-size: $dropdown-font-size;
+  line-height: $dropdown-line-height;
+  letter-spacing: $dropdown-letter-spacing;
+  color: $dropdown-color;
+}
+
+// Міксин для стилів опцій dropdown'а
+@mixin dropdown-option-base {
+  font-family: $dropdown-font-family;
+  font-size: 12px;
+  font-weight: $dropdown-font-weight;
+  line-height: 15px;
+  letter-spacing: $dropdown-letter-spacing;
+  color: $dropdown-secondary-color;
+  background: #fff;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
 .products__container {
   margin: 0 auto;
   box-sizing: border-box;
@@ -52,7 +87,7 @@
   margin-bottom: 8px;
   &__title {
     color: #313237;
-    font-family: 'Mont', sans-serif;
+    font-family: $dropdown-font-family;
     font-weight: 800;
     font-size: 48px;
     line-height: 56px;
@@ -61,8 +96,8 @@
     margin-top: 0;
   }
   &__description {
-    color: #89939A;
-    font-family: 'Mont', sans-serif;
+    color: $dropdown-secondary-color;
+    font-family: $dropdown-font-family;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
@@ -85,11 +120,10 @@
   }
 
   .dropdownLabel {
-    font-family: 'Mont', sans-serif;
+    @include dropdown-base;
     font-size: 12px;
-    font-weight: 700;
     line-height: 15px;
-    color: #89939A;
+    color: $dropdown-secondary-color;
     margin-bottom: 8px;
   }
 
@@ -101,12 +135,7 @@
     border: 1px solid #B4BDC3;
     border-radius: 0;
     background: #fff;
-    font-family: 'Mont', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0;
-    color: #313237;
+    @include dropdown-base;
     padding: 0 12px;
     box-sizing: border-box;
     cursor: pointer;
@@ -130,12 +159,7 @@
 
   .dropdownValue {
     flex: 1;
-    font-family: 'Mont', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0;
-    color: #313237;
+    @include dropdown-base;
   }
 
   .dropdownIcon {
@@ -154,32 +178,18 @@
     border: 1px solid #B4BDC3;
     z-index: 10;
     box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-    font-family: 'Mont', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0;
-    color: #313237;
+    @include dropdown-base;
     margin-top: 4px;
     border-radius: 0;
     overflow: hidden;
   }
 
   .dropdownOption {
-    font-family: 'Mont', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 15px;
-    letter-spacing: 0;
-    color: #89939A;
-    background: #fff;
-    padding: 12px 16px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    @include dropdown-option-base;
     &:hover,
     &.active {
       background: #f3f3f3;
-      color: #313237;
+      color: $dropdown-color;
     }
   }
 

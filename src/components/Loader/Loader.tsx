@@ -14,9 +14,7 @@ export const Loader: React.FC<Props> = ({
 }) => {
   return (
     <div className={`${styles.loader} ${fullScreen ? styles.loader_fullscreen : ''}`}>
-      <div className={`${styles.loader__spinner} ${styles[`loader__spinner_${size}`]}`}>
-        <div className={styles.loader__spinner__inner}></div>
-      </div>
+      <div className={`${styles.loader__spinner} ${styles[`loader__spinner_${size}`]}`}></div>
       {text && (
         <p className={styles.loader__text}>{text}</p>
       )}

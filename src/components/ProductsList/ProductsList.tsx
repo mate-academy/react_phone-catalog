@@ -12,7 +12,6 @@ import arrowUp from '/img/arrow-up.png';
 
 import { Card } from '../Card';
 import { Pagination } from '../Pagination/Pagination';
-import { SelectionDropdown } from '../SelectionDropdown/SelectionDropdown';
 import styles from './ProductsList.module.scss';
 
 const getPreparedProducts = (
@@ -39,10 +38,68 @@ type Props = {
   productsCategory: ProductsCategory;
 };
 
+type DropdownOption = {
+  value: string;
+  label: string;
+};
+
+type DropdownProps = {
+  label: string;
+  options: DropdownOption[];
+  currentValue: string;
+  isOpen: boolean;
+  onToggle: () => void;
+  onSelect: (value: string) => void;
+  onBlur: () => void;
+};
+
 const CATEGORY_TITLES: Record<string, string> = {
   phones: 'Phones',
   tablets: 'Tablets',
   accessories: 'Accessories',
+};
+
+// Універсальний компонент для dropdown'а
+const Dropdown: React.FC<DropdownProps> = ({
+  label,
+  options,
+  currentValue,
+  isOpen,
+  onToggle,
+  onSelect,
+  onBlur,
+}) => {
+  const currentOption = options.find(opt => opt.value === currentValue)?.label || options[0].label;
+
+  return (
+    <div className={styles.dropdownBlock}>
+      <span className={styles.dropdownLabel}>{label}</span>
+      <div
+        className={styles.dropdown}
+        tabIndex={0}
+        onClick={onToggle}
+        onBlur={onBlur}
+      >
+        <span className={styles.dropdownValue}>{currentOption}</span>
+        <img src={isOpen ? arrowUp : arrowDown} alt="arrow" className={styles.dropdownIcon} />
+        {isOpen && (
+          <div className={styles.dropdownList}>
+            {options.map(opt => (
+              <div
+                key={opt.value}
+                className={classNames(styles.dropdownOption, {
+                  active: currentValue === opt.value,
+                })}
+                onMouseDown={() => onSelect(opt.value)}
+              >
+                {opt.label}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
@@ -69,20 +126,18 @@ export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
   const [sortOpen, setSortOpen] = React.useState(false);
   const [itemsOpen, setItemsOpen] = React.useState(false);
 
-  const sortOptions = [
+  const sortOptions: DropdownOption[] = [
     { value: SortOptions.NEWEST, label: 'Newest' },
     { value: SortOptions.ALPABETICALLY, label: 'Alphabetically' },
     { value: SortOptions.CHEAPEST, label: 'Cheapest' },
   ];
-  const itemsOptions = [
+  
+  const itemsOptions: DropdownOption[] = [
     { value: '4', label: '4' },
     { value: '8', label: '8' },
     { value: '16', label: '16' },
     { value: ItemsOnPageOptions.ALL, label: 'All' },
   ];
-
-  const currentSort = sortOptions.find(opt => opt.value === sort)?.label || sortOptions[0].label;
-  const currentItems = itemsOptions.find(opt => opt.value === itemsOnPage)?.label || itemsOptions[3].label;
 
   const handleChangeSortOption = (sortField: string) => {
     if (sortField === SortOptions.NEWEST) {
@@ -106,6 +161,16 @@ export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
     return { page: newPage };
   };
 
+  const handleSortSelect = (value: string) => {
+    setSearchParams({ sort: value });
+    setSortOpen(false);
+  };
+
+  const handleItemsSelect = (value: string) => {
+    setSearchParams({ sort, itemsOnPage: value });
+    setItemsOpen(false);
+  };
+
   useEffect(() => {
     loadProducts(productsCategory);
   }, [loadProducts, productsCategory]);
@@ -124,62 +189,24 @@ export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
             </p>
           </div>
           <div className={styles.products__options}>
-            <div className={styles.dropdownBlock}>
-              <span className={styles.dropdownLabel}>Sort by</span>
-              <div
-                className={styles.dropdown}
-                tabIndex={0}
-                onClick={() => setSortOpen(o => !o)}
-                onBlur={() => setSortOpen(false)}
-              >
-                <span className={styles.dropdownValue}>{currentSort}</span>
-                <img src={sortOpen ? arrowUp : arrowDown} alt="arrow" className={styles.dropdownIcon} />
-                {sortOpen && (
-                  <div className={styles.dropdownList}>
-                    {sortOptions.map(opt => (
-                      <div
-                        key={opt.value}
-                        className={styles.dropdownOption + (sort === opt.value ? ' active' : '')}
-                        onMouseDown={() => {
-                          setSearchParams({ sort: opt.value });
-                          setSortOpen(false);
-                        }}
-                      >
-                        {opt.label}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className={styles.dropdownBlock}>
-              <span className={styles.dropdownLabel}>Items on page</span>
-              <div
-                className={styles.dropdown}
-                tabIndex={0}
-                onClick={() => setItemsOpen(o => !o)}
-                onBlur={() => setItemsOpen(false)}
-              >
-                <span className={styles.dropdownValue}>{currentItems}</span>
-                <img src={itemsOpen ? arrowUp : arrowDown} alt="arrow" className={styles.dropdownIcon} />
-                {itemsOpen && (
-                  <div className={styles.dropdownList}>
-                    {itemsOptions.map(opt => (
-                      <div
-                        key={opt.value}
-                        className={styles.dropdownOption + (itemsOnPage === opt.value ? ' active' : '')}
-                        onMouseDown={() => {
-                          setSearchParams({ sort, itemsOnPage: opt.value });
-                          setItemsOpen(false);
-                        }}
-                      >
-                        {opt.label}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
+            <Dropdown
+              label="Sort by"
+              options={sortOptions}
+              currentValue={sort}
+              isOpen={sortOpen}
+              onToggle={() => setSortOpen(o => !o)}
+              onSelect={handleSortSelect}
+              onBlur={() => setSortOpen(false)}
+            />
+            <Dropdown
+              label="Items on page"
+              options={itemsOptions}
+              currentValue={itemsOnPage}
+              isOpen={itemsOpen}
+              onToggle={() => setItemsOpen(o => !o)}
+              onSelect={handleItemsSelect}
+              onBlur={() => setItemsOpen(false)}
+            />
           </div>
           <div className={styles.products__list__cards}>
             {preparedProducts.map(product => (

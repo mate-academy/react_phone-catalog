@@ -67,7 +67,7 @@
       display: none;
       min-width: 32px;
       height: 100%;
-      background: $button-grey-color;
+      background: #ffffff;
       color: white;
       cursor: pointer;
       z-index: 1;
@@ -85,11 +85,7 @@
         height: 16px;
       }
 
-      &:hover {
-        border: 1px solid #313237;
-        background: #fff;
-      }
-
+      &:hover,
       &:active {
         border: 1px solid #313237;
         background: #fff;
@@ -125,14 +121,12 @@
     width: 14px;
     height: 4px;
     margin: 10px 9px;
-    background-color: $dark-grey-color;
+    background-color:#E2E6E9;
     cursor: pointer;
-    transition:
-      background-color 0.3s ease,
-      transform 0.2s;
+    transition: background-color 0.3s ease;
 
     &.active {
-      background-color: $main-white-color;
+      background-color: #313237;
     }
   }
 }

@@ -50,7 +50,7 @@
       line-height: 31px;
       letter-spacing: 0;
       font-weight: 700;
-      color: $main-white-color;
+      color: #313237;
       margin-bottom: 24px;
       box-sizing: border-box;
       text-align: left;
@@ -103,15 +103,11 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-      background-color: $main-card-color;
+      background-color:#FFF;
     }
   }
 
   &__swiper {
     grid-column: -1 / 1;
   }
-}
-
-.hotPrices {
-  padding: 24px 0;
 }
