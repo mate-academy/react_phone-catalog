@@ -1,0 +1,39 @@
+@import '../../../styles/mixins';
+
+.phones {
+  display: flex;
+  flex-direction: column;
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 24px;
+    margin-bottom: 64px;
+
+    &-nav {
+      display: flex;
+
+      &-item {
+        width: 32px;
+        height: 32px;
+
+        display: grid;
+        place-content: center; // замість  justify-content / align-content
+
+        color: black;
+        cursor: pointer;
+        border: 1px #b4bdc3 solid;
+        transition: 500ms background-color;
+
+        &:hover {
+          background-color: #b5b7b9;
+        }
+
+        &:active {
+          background-color: #737576;
+        }
+      }
+    }
+  }
+}

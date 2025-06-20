@@ -1,0 +1,365 @@
+@import '../../../../styles/mixins';
+
+.product-details {
+  padding-inline: 17px;
+
+  display: grid;
+  justify-content: center;
+
+  @include on-tablet {
+    padding-inline: 24px;
+    grid-auto-flow: column;
+  }
+
+  @include on-desck-top {
+    padding-inline: 32px;
+    justify-content: start;
+  }
+
+  &__images {
+    display: grid;
+    justify-content: center;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row-reverse;
+      margin-right: 16px;
+    }
+
+    @include on-desck-top {
+      margin-right: 64px;
+    }
+
+    &-primary {
+      margin-bottom: 16px;
+
+      width: 288px;
+      height: 288px;
+      cursor: pointer;
+      object-fit: contain;
+
+      @include on-desck-top {
+        width: 464px;
+        height: 464px;
+      }
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 50px);
+      justify-content: center;
+
+      gap: 8px;
+      width: 288px;
+
+      @include on-tablet {
+        grid-template-columns: auto;
+        margin-right: 16px;
+
+        gap: 16px;
+        width: auto;
+        grid-template-rows: repeat(auto-fit, 35px);
+      }
+
+      @include on-desck-top {
+        grid-template-rows: repeat(auto-fit, 80px);
+      }
+
+      &-item {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        border: 1px #c4c4c4 solid;
+
+        display: grid;
+        place-content: center center;
+        padding-top: 5px;
+
+        &-img {
+          object-fit: contain;
+          width: 50px;
+          height: 50px;
+
+          @include on-tablet {
+            width: 35px;
+            height: 35px;
+          }
+
+          @include on-desck-top {
+            width: 80px;
+            height: 80px;
+          }
+        }
+      }
+    }
+  }
+
+  &__blocks {
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-desck-top {
+      width: 320px;
+    }
+  }
+}
+
+.product-colors {
+  position: relative;
+  margin-bottom: 48px;
+
+  &::after {
+    content: '';
+    height: 1px;
+    width: 100%;
+    bottom: -24px;
+    display: block;
+    position: absolute;
+    background-color: #e2e6e9;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+
+    @include on-desck-top {
+      width: 500px;
+    }
+
+    &-p {
+      font-weight: 600;
+      font-size: 12px;
+      font-family: Montserrat, sans-serif;
+      color: #89939a;
+    }
+
+    &-id {
+      font-weight: 700;
+      font-size: 12px;
+      font-family: Montserrat, sans-serif;
+      color: #b4bdc3;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-auto-flow: column;
+
+    grid-template-columns: repeat(auto-fit, 32px);
+
+    height: 32px;
+    gap: 9px;
+
+    &-item {
+      display: grid;
+      box-sizing: border-box;
+      cursor: pointer;
+
+      place-content: center center;
+
+      width: 32px;
+      height: 32px;
+      border-radius: 100%;
+      background-color: rgb(255, 255, 255);
+      border: 2px #e2e6e9 solid;
+    }
+  }
+}
+
+.product-capacity {
+  margin-bottom: 56px;
+
+  &__p {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: Montserrat, sans-serif;
+    color: #89939a;
+  }
+
+  &__list {
+    display: flex;
+    position: relative;
+    gap: 8px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -24px;
+      width: 100%;
+      height: 1px;
+      background-color: #e2e6e9;
+    }
+
+    &-item {
+      display: grid;
+      place-content: center center;
+
+      font-family: Montserrat, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+
+      transition: background-color 400ms;
+
+      color: black;
+      cursor: pointer;
+      height: 32px;
+      width: 56px;
+      border: 1px #b4bdc3 solid;
+    }
+  }
+}
+
+.product-price {
+  margin-bottom: 22px;
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    gap: 8px;
+
+    &-regular {
+      font-weight: 700;
+      font-size: 32px;
+      color: #313237;
+      font-family: Montserrat, sans-serif;
+    }
+
+    &-discount {
+      text-decoration: line-through;
+      font-family: Montserrat, sans-serif;
+      font-weight: 500;
+
+      color: #89939a;
+      font-size: 22px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    &-cart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #313237;
+      border: none;
+      font-weight: 700;
+
+      width: 231px;
+      height: 48px;
+      cursor: pointer;
+
+      color: white;
+      font-size: 14px;
+      font-family: Montserrat, sans-serif;
+
+      @include on-tablet {
+        width: 180px;
+      }
+
+      @include on-desck-top {
+        width: 263px;
+      }
+    }
+
+    &-favourites {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      width: 48px;
+      height: 48px;
+
+      border: 1px #b4bdc3 solid;
+
+      &-icon {
+        width: 14px;
+        height: 14px;
+        background-repeat: no-repeat;
+        background-image: url('../../../../public/icons/favourites-icon.svg');
+        background-size: contain;
+      }
+    }
+  }
+}
+
+.characteristics {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  &__item {
+    display: flex;
+    margin-bottom: 8px;
+    justify-content: space-between;
+
+    & :first-child {
+      font-family: Montserrat, sans-serif;
+      font-weight: 600;
+      color: #89939a;
+      font-size: 12px;
+    }
+
+    & :last-child {
+      font-family: Montserrat, sans-serif;
+      font-weight: 600;
+      color: #313237;
+      font-size: 12px;
+    }
+  }
+}
+
+.list-item__content {
+  width: 26px;
+  height: 26px;
+  border-radius: 100%;
+}
+
+.colors-top {
+  display: flex;
+  margin-bottom: 8px;
+  justify-content: space-between;
+}
+
+.set-active-color {
+  border-color: black;
+}
+
+.set-active-capacity {
+  background-color: #313237;
+  color: white;
+}
+
+.primary-img {
+  border-color: black;
+}
+
+.is-phone-favourites {
+  background-repeat: no-repeat;
+  background-image: url('../../../../public/icons/favourites-icon-red.svg');
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.is-element-in-cart {
+  transition: background-color 300ms;
+
+  color: black;
+  background-color: white;
+  border: 2px #313237 solid;
+}

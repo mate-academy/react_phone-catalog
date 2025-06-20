@@ -1,0 +1,289 @@
+@import '../../../../styles/mixins';
+
+.brend {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  padding-inline: 16px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desck-top {
+    padding-inline: 32px;
+  }
+
+  .brend-content {
+    width: 100%;
+
+    @include on-tablet {
+      width: 600px;
+    }
+
+    @include on-desck-top {
+      width: 1136px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-self: start;
+    justify-content: space-between;
+    width: 100%;
+
+    @include on-desck-top {
+      width: 1136px;
+      align-self: center;
+    }
+
+    &-h2 {
+      width: 136px;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+      font-family: Montserrat, sans-serif;
+
+      display: inline;
+      cursor: pointer;
+
+      @include on-tablet {
+        width: max-content;
+        font-size: 42px;
+      }
+    }
+
+    &-buttons {
+      gap: 16px;
+      display: flex;
+      align-items: center;
+
+      &-button {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        border: 1px #e2e6e9 solid;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 500ms background-color;
+
+        @include on-desck-top {
+          display: none;
+        }
+
+        &-left {
+          width: 6px;
+          height: 6px;
+          border-radius: 4%;
+          transform: rotate(45deg);
+          border-bottom: 3px solid #b4bdc3;
+          border-left: 3px solid #b4bdc3;
+        }
+
+        &-right {
+          width: 6px;
+          height: 6px;
+          border-radius: 4%;
+          transform: rotate(-45deg);
+          border-bottom: 3px solid #b4bdc3;
+          border-right: 3px solid #b4bdc3;
+        }
+
+        &:hover {
+          background-color: #f5f6f7;
+        }
+
+        &:active {
+          background-color: #b5b7b9;
+
+          .left {
+            border-bottom: 3px solid #000;
+            border-left: 3px solid #000;
+          }
+
+          .right {
+            border-bottom: 3px solid #000;
+            border-right: 3px solid #000;
+          }
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    width: 100%;
+    margin-top: 24px;
+
+    gap: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    overflow-x: auto;
+    scrollbar-width: none; /* для Firefox - приховує скролбар (Сучасні, браузери) */
+    -ms-overflow-style: none; /* для IE і Edge - приховує скролбар  (Старі Браузери) */
+    scroll-behavior: smooth;
+
+    &-phone {
+      &-card {
+        width: 212px;
+        padding-block: 32px;
+        padding-inline: 32px;
+
+        display: flex;
+        border: 1px #e2e6e9 solid;
+
+        &-content {
+          width: 200px;
+          display: flex;
+          flex-direction: column;
+        }
+
+        &-name {
+          font-size: 14px;
+          width: 100%;
+          line-height: 21px;
+
+          margin-bottom: 8px;
+          font-family: Montserrat, sans-serif;
+          text-decoration: none;
+          color: #313237;
+          height: 40px;
+          transition: color 300ms;
+
+          &:hover {
+            color: #bd0432;
+          }
+        }
+
+        &-img {
+          height: 129px;
+          margin-bottom: 24px;
+          align-self: center;
+          cursor: pointer;
+
+          will-change: transform;
+          transition: transform 300ms;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        &-price {
+          margin-bottom: 16px;
+          font-weight: 800;
+          cursor: pointer;
+          width: max-content;
+          line-height: 140%;
+          font-family: Montserrat, sans-serif;
+        }
+
+        &-characteristics {
+          display: grid;
+          gap: 8px;
+          position: relative;
+
+          &-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &::after {
+              content: '';
+              height: 1px;
+              width: 100%;
+              top: -8px;
+              background-color: #E2E6E9;
+              position: absolute;
+            }
+          }
+        }
+
+        &-down {
+          margin-top: 16px;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          &-button {
+            width: 100px;
+            height: 40px;
+            color: white;
+            display: flex;
+            border: none;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            background-color: #313237;
+          }
+
+          &-button-save {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            justify-content: center;
+            border: 2px #b4bdc3 solid;
+
+            transition: 500ms background-color;
+
+            &:hover {
+              background-color: #f5f6f7;
+            }
+
+            &:active {
+              background-color: #b5b7b9;
+            }
+
+            &-img {
+              width: 16px;
+              height: 16px;
+              background-repeat: no-repeat;
+              background-image: url('../../../../public/icons/favourites-icon.svg');
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.characteristics-text {
+  font-weight: 700;
+  font-family: Montserrat, sans-serif;
+  cursor: pointer;
+  width: max-content;
+}
+
+.first {
+  cursor: pointer;
+  color: #89939a;
+}
+
+.is-phone-favourites {
+  background-repeat: no-repeat;
+  background-image: url('../../../../public/icons/favourites-icon-red.svg');
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.link-img {
+  text-align: center;
+}
+
+.in-cart {
+  transition: background-color 300ms;
+
+  color: black;
+  background-color: white;
+  border: 2px #313237 solid;
+}
