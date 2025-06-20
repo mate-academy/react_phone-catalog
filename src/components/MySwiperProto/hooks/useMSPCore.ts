@@ -6,6 +6,7 @@ import { useRafLoop } from './useRAFLoop';
 import { useMSPTransition } from './useMSPTransition';
 import { useResize } from './useResize';
 import { useInitialSetter } from './useInitialSetter';
+import { dragOffsetCalc } from '../helpers/dragOffsetCalc';
 
 //todo:
 // change handlebyIndex offset change if gap;
@@ -146,22 +147,16 @@ export const useMSPCore = () => {
       return;
     }
 
-    const rawDrag = event.clientX - startXRef.current;
-
-    if (clamp) {
-      const futureOffset = offsetRef.current - rawDrag * swipeCoeff;
-      const maxOffset =
-        (infinite ? listLength + 1 : listLength - 1) * widthRef.current;
-
-      dragRef.current =
-        futureOffset < 0
-          ? offsetRef.current / swipeCoeff
-          : futureOffset > maxOffset
-            ? (offsetRef.current - maxOffset) / swipeCoeff
-            : rawDrag;
-    } else {
-      dragRef.current = rawDrag;
-    }
+    dragRef.current = dragOffsetCalc(
+      event.clientX,
+      startXRef.current,
+      offsetRef.current,
+      clamp,
+      swipeCoeff,
+      infinite,
+      widthRef.current,
+      listLength,
+    );
   }, []);
 
   const end = useCallback((e: React.PointerEvent<HTMLDivElement>) => {

@@ -1,0 +1,27 @@
+@use '../../../../app//styles/breakpoints/breakpoint-const.scss' as *;
+@use '../../../../app/styles/constants/colors' as cl;
+
+.sw-button {
+  display: none;
+
+  @media (min-width: $BREAKPOINT_TAB) {
+    display: flex;
+    background-color: cl.$white;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid cl.$icons;
+    justify-content: center;
+    align-items: center;
+
+    &:disabled {
+      background-color: cl.$red;
+    }
+  }
+}
+
+.sw-arrow {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
