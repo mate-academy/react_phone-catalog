@@ -14,7 +14,7 @@ export const HomePage = () => {
         clamp
         buttons
         swipeCoeff={1.2}
-        gap={0}
+        gap={15}
         animationSpeed={300}
         snap
         infinite

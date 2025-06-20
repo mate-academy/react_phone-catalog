@@ -5,9 +5,17 @@ type Params = {
   swCoeff: number;
   toggleTrackClass: (track: HTMLUListElement, drag: null | number) => void;
   rerender: () => void;
+  treshold: number;
+  gap: number;
 };
 
-export const useRafLoop = ({ swCoeff, toggleTrackClass, rerender }: Params) => {
+export const useRafLoop = ({
+  swCoeff,
+  toggleTrackClass,
+  rerender,
+  treshold,
+  gap,
+}: Params) => {
   const rafId = useRef<number | null>(null);
   const { track, offset, drag, width } = useMSContext();
 
@@ -39,7 +47,7 @@ export const useRafLoop = ({ swCoeff, toggleTrackClass, rerender }: Params) => {
 
   const setByIndex = useCallback(
     (index: number, animation: boolean = false) => {
-      const shift = -index * width.current;
+      const shift = -index * width.current - gap * Math.abs(index);
 
       offset.current = -shift;
       if (animation) {
@@ -56,10 +64,10 @@ export const useRafLoop = ({ swCoeff, toggleTrackClass, rerender }: Params) => {
   );
 
   const snapHandle = useCallback((startIndex: number) => {
-    const treshold = 0.1 * width.current;
+    const trh = treshold * width.current;
     const step = (drag.current as number) < 0 ? 1 : -1;
 
-    if (Math.abs(drag.current as number) > treshold) {
+    if (Math.abs(drag.current as number) > trh) {
       setByIndex(startIndex + step, true);
     } else {
       setByIndex(startIndex, true);

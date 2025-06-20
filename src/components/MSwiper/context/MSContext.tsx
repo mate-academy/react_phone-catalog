@@ -12,6 +12,7 @@ type MSContextType = {
   width: React.MutableRefObject<number>;
   infinite: boolean;
   clamp: boolean;
+  gap: number;
 };
 
 const MSContext = createContext<MSContextType | null>(null);
@@ -31,6 +32,7 @@ type MSProviderProps = {
   dataset: SwiperData[];
   infinite: boolean;
   clamp: boolean;
+  gap: number;
 };
 
 export const MSProvider: React.FC<MSProviderProps> = ({
@@ -38,6 +40,7 @@ export const MSProvider: React.FC<MSProviderProps> = ({
   dataset,
   infinite,
   clamp,
+  gap,
 }) => {
   const track = useRef<HTMLUListElement>(null);
   const VP = useRef<HTMLDivElement>(null);
@@ -59,6 +62,7 @@ export const MSProvider: React.FC<MSProviderProps> = ({
     width,
     infinite,
     clamp,
+    gap,
   };
 
   return <MSContext.Provider value={value}>{children}</MSContext.Provider>;

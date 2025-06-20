@@ -12,10 +12,10 @@ export const SwiperPagination: React.FC<Props> = ({
   className,
   setByIndex,
 }) => {
-  const { listLength, offset, width, infinite } = useMSContext();
+  const { listLength, offset, width, infinite, gap } = useMSContext();
   const arr = [];
   const length = listLength;
-  const index = getIndex(offset.current, width.current);
+  const index = getIndex(offset.current, width.current, gap);
 
   for (let i = 0; i < length; i++) {
     arr.push(i);

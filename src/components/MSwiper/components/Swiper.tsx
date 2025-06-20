@@ -8,23 +8,23 @@ import { SwiperSlide } from './SwiperSlide/SwiperSlide';
 type Props = {
   btn: boolean;
   swCoeff: number;
-  gap: number;
   anSpeed: number;
   snap: boolean;
+  treshold: number;
 };
 export const Swiper: React.FC<Props> = ({
   btn,
   swCoeff,
-  gap,
   anSpeed,
   snap,
+  treshold,
 }) => {
-  const { VP, track, renderList } = useMSContext();
+  const { VP, track, renderList, gap } = useMSContext();
   const { handlers, setByIndex } = useMSCore({
     swCoeff,
-    gap,
     anSpeed,
     snap,
+    treshold,
   });
 
   return (

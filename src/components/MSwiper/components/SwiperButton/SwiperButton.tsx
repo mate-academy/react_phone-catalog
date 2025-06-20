@@ -14,7 +14,7 @@ export const SwiperButton: React.FC<Props> = ({
   className,
   setByIndex,
 }) => {
-  const { offset, width, listLength, infinite, clamp } = useMSContext();
+  const { offset, width, listLength, infinite, clamp, gap } = useMSContext();
   const length = listLength;
 
   const checked = () => {
@@ -39,15 +39,16 @@ export const SwiperButton: React.FC<Props> = ({
   const handleClick = () => {
     if (
       infinite &&
-      (offset.current < width.current * 2 ||
-        offset.current > width.current * (listLength + 1))
+      (offset.current < width.current * 2 + gap ||
+        offset.current >
+          width.current * (listLength + 1) + gap * (listLength + 2))
     ) {
       return;
     }
 
     const mod = dir === Direction.RIGHT ? 1 : -1;
 
-    const index = getIndex(offset.current, width.current);
+    const index = getIndex(offset.current, width.current, gap);
 
     if (clamp && !checked()) {
       return;

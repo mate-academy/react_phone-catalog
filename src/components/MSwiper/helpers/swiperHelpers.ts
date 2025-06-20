@@ -5,8 +5,8 @@ export function toggleTrackClass(track: HTMLUListElement, drag: null | number) {
   track.classList.toggle('swiper__track--animated', drag === null);
 }
 
-export function getIndex(offset: number, width: number) {
-  const index = Math.round(offset / width);
+export function getIndex(offset: number, width: number, gap: number) {
+  const index = Math.round(offset / (width + gap));
 
   return index;
 }

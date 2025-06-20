@@ -5,19 +5,16 @@ import { useRafLoop } from './useTranslate';
 import { toggleTrackClass, getIndex, clamps } from '../helpers/swiperHelpers';
 import { useResize } from './useResize';
 
-//todo:
-// change handlebyIndex offset change if gap;
 // change CSS to include/exclude GRID zones on props;
-// stadtartize naming
 type Params = {
   swCoeff: number;
-  gap: number;
   anSpeed: number;
   snap: boolean;
+  treshold: number;
 };
 
-export const useMSCore = ({ swCoeff, snap, anSpeed }: Params) => {
-  const { offset, drag, track, width, listLength, infinite, clamp } =
+export const useMSCore = ({ swCoeff, snap, anSpeed, treshold }: Params) => {
+  const { offset, drag, track, width, listLength, infinite, clamp, gap } =
     useMSContext();
   const startXRef = useRef<number | null>(null);
   const startIndex = useRef<number | null>(null);
@@ -32,6 +29,8 @@ export const useMSCore = ({ swCoeff, snap, anSpeed }: Params) => {
     swCoeff,
     toggleTrackClass,
     rerender,
+    treshold,
+    gap,
   });
 
   useInit();
@@ -41,8 +40,9 @@ export const useMSCore = ({ swCoeff, snap, anSpeed }: Params) => {
     e.preventDefault();
     if (
       infinite &&
-      (offset.current < width.current * 2 ||
-        offset.current > width.current * (listLength + 1))
+      (offset.current < width.current * 2 + gap ||
+        offset.current >
+          width.current * (listLength + 1) + gap * (listLength + 2))
     ) {
       return;
     }
@@ -90,9 +90,12 @@ export const useMSCore = ({ swCoeff, snap, anSpeed }: Params) => {
 
   useEffect(() => {
     if (infinite) {
-      if (getIndex(offset.current, width.current) > listLength + 1) {
+      if (getIndex(offset.current, width.current, gap) > listLength + 1) {
         timeoutRef.current = setTimeout(() => setByIndex(2, false), anSpeed);
-      } else if (getIndex(offset.current, width.current) < listLength - 2) {
+      } else if (
+        getIndex(offset.current, width.current, gap) <
+        listLength - 2
+      ) {
         timeoutRef.current = setTimeout(() => setByIndex(5, false), anSpeed);
       } else {
       }
