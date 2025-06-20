@@ -58,6 +58,11 @@ export const Cart: React.FC<Props> = ({ isLightMode }) => {
     return acc + product.price * cartItem.quantity;
   }, 0);
 
+  const totalProductsInCart = cartProducts.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+
   return (
     <div className={styles.cart}>
       {isLoading && <Loader />}
@@ -97,7 +102,7 @@ export const Cart: React.FC<Props> = ({ isLightMode }) => {
                     ${totalSum}
                   </span>
                   <span className={styles['cart__info--total']}>
-                    Total for {allCartProducts.length} items
+                    Total for {totalProductsInCart} items
                   </span>
                 </div>
                 <button

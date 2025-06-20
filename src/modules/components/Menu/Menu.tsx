@@ -21,6 +21,11 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu, isLightMode }) => {
   const { favourites } = useFavourites();
   const { cartProducts } = useCart();
 
+  const totalProductsInCart = cartProducts.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
 
@@ -122,7 +127,7 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu, isLightMode }) => {
           {cartProducts.length > 0 && (
             <div className={styles['menu__bottom__item--storage']}>
               <span className={styles['menu__bottom__item--text']}>
-                {cartProducts.length}
+                {totalProductsInCart}
               </span>
             </div>
           )}
