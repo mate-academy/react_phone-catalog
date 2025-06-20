@@ -12,9 +12,9 @@ export const BackToTop: React.FC = () => {
   }
 
   return (
-    <div className={styles.backToTopBlock}>
+    <div className={styles.backToTopBlock} onClick={goToTop}>
       <span className={styles.text}>Back to top</span>
-      <button className={styles.button} type="button" onClick={goToTop}>
+      <button className={styles.button}>
         <Icon className={styles.arrowIcon} name={IconNames.Arrow} />
       </button>
     </div>

@@ -10,7 +10,6 @@ import {
 
 import { App } from './App';
 import { CartPage } from './modules/CartPage/CartPage';
-import { ContactsPage } from './modules/ContactsPage/ContactsPage';
 import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 import { HomePage } from './modules/HomePage/HomePage';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
@@ -29,8 +28,6 @@ export const Root: React.FC = () => (
 
         <Route element={<FavoritesPage />} path="favorites" />
         <Route element={<CartPage />} path="cart" />
-
-        <Route element={<ContactsPage />} path="contacts" />
 
         <Route element={<NotFoundPage />} path="*" />
       </Route>

@@ -55,8 +55,19 @@
 
 .confirmButton {
   background-color: $color-green;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #219653;
+  }
 }
 
 .cancelButton {
   background-color: $color-red;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #d94343;
+  }
 }

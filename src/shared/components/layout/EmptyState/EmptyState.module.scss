@@ -28,6 +28,7 @@
 
 .back {
   @extend %flex-center;
+  @include hover-text($color-accent);
 
   gap: 8px;
 }

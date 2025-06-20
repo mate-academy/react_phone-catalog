@@ -138,9 +138,10 @@
 }
 
 .thumbnail {
+  @include hover-scale(1.01);
+
   display: block;
   border: 1px solid $color-elements;
-  transition: border-color 0.3s ease-in-out;
 
   img {
     display: block;
@@ -180,8 +181,6 @@
 
   margin-bottom: 8px;
 }
-
-
 
 .colorsWrapper {
   display: flex;

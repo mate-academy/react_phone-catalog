@@ -15,7 +15,11 @@ export const FooterNav: React.FC = () => {
       >
         GitHub
       </Link>
-      <Link className={styles.navbarLink} to="/contacts">
+      <Link
+        className={styles.navbarLink}
+        target="_blank"
+        to="https://github.com/JaneShavrukova"
+      >
         Contacts
       </Link>
       <Link

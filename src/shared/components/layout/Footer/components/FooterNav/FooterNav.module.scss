@@ -15,9 +15,11 @@
 
 .navbarLink {
   @extend %flex-center;
-  @include hover-text($color-white);
+  @include hover-text($color-accent);
 
   text-transform: uppercase;
 
   color: $color-white;
+
+  transition: color 0.3s ease;
 }

@@ -4,14 +4,14 @@
   @extend %flex-center;
 
   justify-content: flex-end;
+  cursor: pointer;
 }
 
 .text {
   @include apply-typography(small-desktop);
+  @include hover-text($color-white);
 
   padding-right: 16px;
-
-  cursor: pointer;
 }
 
 .button {

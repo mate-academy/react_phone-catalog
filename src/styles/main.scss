@@ -1,7 +1,9 @@
 @use './globals.scss' as *;
 @use './globals/reset' as *;
 
-:focus { outline: none; }
+:focus {
+  outline: none;
+}
 
 :focus-visible {
   outline: 2px solid $color-accent;
@@ -20,12 +22,18 @@ body {
   background-color: $color-black;
 }
 
+.scroll-lock {
+  height: 100vh;
+  overflow: hidden;
+}
+
 a {
   color: $color-icons;
   transition: color 0.3s ease;
 }
 
-a, button {
+a,
+button {
   cursor: pointer;
 }
 
