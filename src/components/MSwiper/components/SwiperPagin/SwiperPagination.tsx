@@ -12,11 +12,12 @@ export const SwiperPagination: React.FC<Props> = ({
   className,
   setByIndex,
 }) => {
-  const { listLength, offsetRef, widthRef } = useMSContext();
+  const { listLength, offsetRef, widthRef, infinite } = useMSContext();
   const arr = [];
+  const length = listLength;
   const index = getIndex(offsetRef.current, widthRef.current);
 
-  for (let i = 0; i < listLength; i++) {
+  for (let i = 0; i < length; i++) {
     arr.push(i);
   }
 
@@ -26,11 +27,13 @@ export const SwiperPagination: React.FC<Props> = ({
         <div
           key={li}
           className={`${styles['line-container']}`}
-          onClick={() => setByIndex(li, true)}
+          onClick={() => setByIndex(infinite ? li + 2 : li, true)}
         >
           <div
             className={classNames(styles['line-element'], {
-              [styles['line-element__active']]: li === index,
+              [styles['line-element__active']]: infinite
+                ? li === index - 2
+                : li === index,
             })}
           />
         </div>

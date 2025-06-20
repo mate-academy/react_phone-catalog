@@ -10,6 +10,7 @@ type Props = {
   gap: number;
   animationSpeed: number;
   snap: boolean;
+  infinite: boolean;
 };
 
 export const MSwiper: React.FC<Props> = ({
@@ -20,9 +21,10 @@ export const MSwiper: React.FC<Props> = ({
   gap = 0,
   animationSpeed = 150,
   snap,
+  infinite,
 }) => {
   return (
-    <MSProvider dataset={dataset}>
+    <MSProvider dataset={dataset} infinite={infinite}>
       <Swiper
         btn={buttons}
         clmp={clamp}

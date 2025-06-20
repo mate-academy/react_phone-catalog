@@ -17,6 +17,7 @@ export const HomePage = () => {
         gap={0}
         animationSpeed={300}
         snap
+        infinite
       />
 
       <MeinSwiper

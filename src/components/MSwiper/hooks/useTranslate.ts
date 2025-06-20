@@ -67,5 +67,10 @@ export const useRafLoop = ({ swCoeff, toggleTrackClass, rerender }: Params) => {
     }
   }, []);
 
-  return { startRafLoop, endRafLoop, snapHandle, setByIndex };
+  return {
+    startRafLoop,
+    endRafLoop,
+    snapHandle,
+    setByIndex,
+  };
 };
