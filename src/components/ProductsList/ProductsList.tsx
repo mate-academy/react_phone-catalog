@@ -112,7 +112,7 @@ export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
   const sort = searchParams.get('sort' as SortOptions) || SortOptions.NEWEST;
   const itemsOnPage =
     searchParams.get('itemsOnPage' as ItemsOnPageOptions) ||
-    ItemsOnPageOptions.ALL;
+    '16';
   const currentPage = searchParams.get('page') || DEFAULT_PAGE;
 
   const { preparedProducts } = getPreparedProducts(

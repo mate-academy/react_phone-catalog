@@ -1,15 +1,20 @@
 /* eslint-disable max-len */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Product } from '../../types/Product';
 import { fetchProducts } from '../../utils/fetchProducts';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore from 'swiper';
 import { Navigation } from 'swiper/modules';
 import { Card } from '../Card/Card';
 import { Loader } from '../Loader';
+import { SliderButton } from '../SliderButton';
 
 export const HotPrices: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const swiperRef = useRef<SwiperCore | null>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -35,18 +40,18 @@ export const HotPrices: React.FC = () => {
         <div className="hot-prices__header">
           <h2 className="hot-prices__header--title">Hot Prices</h2>
           <div className="hot-prices__header--buttons hot-prices__slider--buttons">
-            <button
-              className="hot-prices__slider--btn hot-prices__slider--btn-prev"
-              type="button"
-            >
-              <img src="/img/btn-prev.png" alt="prev" width={20} height={20} />
-            </button>
-            <button
-              className="hot-prices__slider--btn hot-prices__slider--btn-next"
-              type="button"
-            >
-              <img src="/img/arrowRightDefault.png" alt="next" width={20} height={20} />
-            </button>
+            <SliderButton
+              direction="prev"
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="hot-prices__slider--btn-prev"
+              disabled={isBeginning}
+            />
+            <SliderButton
+              direction="next"
+              onClick={() => swiperRef.current?.slideNext()}
+              className="hot-prices__slider--btn-next"
+              disabled={isEnd}
+            />
           </div>
         </div>
         <div className="hot-prices__swiper">
@@ -58,9 +63,14 @@ export const HotPrices: React.FC = () => {
               spaceBetween={16}
               slidesPerView={1.5}
               speed={1000}
-              navigation={{
-                prevEl: '.hot-prices__slider--btn-prev',
-                nextEl: '.hot-prices__slider--btn-next',
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+                setIsBeginning(swiper.isBeginning);
+                setIsEnd(swiper.isEnd);
+              }}
+              onSlideChange={(swiper) => {
+                setIsBeginning(swiper.isBeginning);
+                setIsEnd(swiper.isEnd);
               }}
               modules={[Navigation]}
               loop={true}

@@ -6,12 +6,18 @@ import { CartPageItem } from '../../components/CartPageItem';
 export const CartPage: React.FC = () => {
   const { cart, clearCart } = useCartValues();
 
-  const totalPrice = cart.reduce(
+  const uniqueCartItems = cart.filter(
+    (item, index, self) =>
+      item && item.product && item.product.id &&
+      self.findIndex(i => i.product.id === item.product.id) === index
+  );
+
+  const totalPrice = uniqueCartItems.reduce(
     (acc, num) => acc + num.product.price * num.quantity,
     0,
   );
 
-  const totalItems = cart.reduce((acc, num) => acc + num.quantity, 0);
+  const totalItems = uniqueCartItems.reduce((acc, num) => acc + num.quantity, 0);
 
   return (
     <div className="page-container">
@@ -21,11 +27,11 @@ export const CartPage: React.FC = () => {
 
       <h1 className="cartPage__title">Cart</h1>
 
-      {cart.length > 0 ? (
+      {uniqueCartItems.length > 0 ? (
         <div className="cartPage">
           <div className="cartPage__first-container">
             <div className="cartPage__list">
-              {cart.map(item => (
+              {uniqueCartItems.map(item => (
                 <CartPageItem item={item} key={item.product.id} />
               ))}
             </div>
@@ -34,7 +40,7 @@ export const CartPage: React.FC = () => {
           <div className="cartPage__second--container">
             <div className="cartPage__priceBlock">
               <h2 className="cartPage__total-price">
-                ${cart.length === 0 ? 0 : totalPrice}
+                ${uniqueCartItems.length === 0 ? 0 : totalPrice}
               </h2>
               <p className="cartPage__items-count">
                 Total for {totalItems} items

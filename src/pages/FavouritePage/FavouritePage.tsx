@@ -3,10 +3,16 @@ import { useFavouriteValues } from '../../store/FavouriteContext';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Card } from '../../components/Card';
 import styles from '../../components/ProductsList/ProductsList.module.scss';
+import { Product } from '../../types/Product';
 
 export const FavouritePage: React.FC = () => {
   const { favourites } = useFavouriteValues();
   const favouriteProducts = favourites.map(item => item.product);
+
+  const uniqueProducts = favouriteProducts.filter(
+    (product, index, self) =>
+      product && product.id && self.findIndex(p => p.id === product.id) === index
+  );
 
   return (
     <div className="page-container">
@@ -15,11 +21,11 @@ export const FavouritePage: React.FC = () => {
         <div className={styles.category_info}>
           <h1 className={styles.category_info__title}>Favourites</h1>
           <p className={styles.category_info__description}>
-            {favouriteProducts.length} models
+            {uniqueProducts.length} models
           </p>
         </div>
         <div className={styles.products__list__cards}>
-          {favouriteProducts.map(product => (
+          {uniqueProducts.map((product: Product) => (
             <div className={styles.products__list__card} key={product.id}>
               <Card product={product} />
             </div>

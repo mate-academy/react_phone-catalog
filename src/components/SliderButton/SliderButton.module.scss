@@ -1,0 +1,36 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.sliderButton {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border: 1px solid #B4BDC3;
+  box-sizing: border-box;
+  padding: 0;
+  transition: border-color 0.2s, opacity 0.2s;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+
+  &[data-direction="prev"] {
+    background-image: url('/img/btn-prev.png');
+  }
+
+  &[data-direction="next"] {
+    background-image: url('/img/btn-next.png');
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #313237;
+  }
+
+  &:disabled {
+    border-color: #E2E6E9;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+} 

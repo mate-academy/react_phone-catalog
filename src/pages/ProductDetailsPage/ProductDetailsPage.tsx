@@ -43,7 +43,16 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   if (!selectedProduct) {
-    return <div style={{padding: '40px', textAlign: 'center'}}>Product was not found</div>;
+    return (
+      <div style={{ padding: '40px', textAlign: 'center' }}>
+        <h1 style={{ marginBottom: '20px' }}>Product was not found</h1>
+        <img 
+          src="/img/product-not-found.png" 
+          alt="Product not found"
+          style={{ maxWidth: '400px', margin: '0 auto' }}
+        />
+      </div>
+    );
   }
 
   // Формуємо items для Breadcrumbs
@@ -55,12 +64,14 @@ export const ProductDetailsPage: React.FC = () => {
     { label: selectedProduct.name },
   ];
 
+  const filteredRecommended = recommendedProducts.filter(p => p.image);
+
   return (
     <div className="page-container">
       <Breadcrumbs items={items} />
       <ProductDescription selectedProduct={selectedProduct} productId={productId} />
       <RecommendedItems recommendedItems={
-        getSuggestedProducts(recommendedProducts, selectedProduct.id)
+        getSuggestedProducts(filteredRecommended, selectedProduct.id)
       } />
     </div>
   );

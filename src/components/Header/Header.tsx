@@ -4,10 +4,6 @@ import { useCartValues } from '../../store/CartStore';
 import { useFavouriteValues } from '../../store/FavouriteContext';
 import { MobileMenu } from '../MobileMenu';
 import classNames from 'classnames';
-import logo from '/img/Logo.png';
-import menuIcon from '/img/Menu.png';
-import favouriteIcon from '/img/favourite-icon.png';
-import cartIcon from '/img/Shopping-cart.png';
 
 export const Header: React.FC = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -39,7 +35,7 @@ export const Header: React.FC = () => {
       <header className="header">
         <Link to="/" className="header__logo">
           <img 
-            src={logo} 
+            src="/img/Logo.png" 
             alt="Logo" 
             className="header__logo--pict"
             
@@ -68,7 +64,7 @@ export const Header: React.FC = () => {
           >
             <span className="icon-badge-wrapper" data-count={favouritesCount !== 0 ? `${favouritesCount}` : ''}>
               <img
-                src={favouriteIcon}
+                src="/img/favourite-icon.png"
                 alt="favourite"
                 className="icon icon-user"
                 loading="eager"
@@ -82,7 +78,7 @@ export const Header: React.FC = () => {
           >
             <span className="icon-badge-wrapper" data-count={cartCount !== 0 ? `${cartCount}` : ''}>
               <img
-                src={cartIcon}
+                src="/img/Shopping-cart.png"
                 alt="cart"
                 className="icon icon-user"
                 loading="eager"
@@ -93,7 +89,7 @@ export const Header: React.FC = () => {
         <div className="header__menu">
           <button className="header__menu--icon" onClick={handleShowMenu}>
             <img
-              src={menuIcon}
+              src="/img/Menu.png"
               alt="Menu icon"
               className="icon icon-menu"
              

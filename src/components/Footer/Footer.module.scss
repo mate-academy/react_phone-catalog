@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .footer__line {
-  border-top: 1px solid $dark-grey-color;
+  border-top: 1px solid  #E2E6E9;
   border-width: 100%;
   transform: translateZ(0);
 }
@@ -12,7 +12,7 @@
   height: 257px;
   width: 100%;
   display: flex;
-  background-color: $main-color;
+  background-color: #FFFFFF;
   justify-content: space-between;
   opacity: 0.9;
   flex-direction: column;
@@ -82,7 +82,7 @@
     }
 
     &--link {
-      color: $main-white-color;
+      color:  #313237;
       font-size: 12px;
       line-height: 11px;
       font-weight: 700;
@@ -90,7 +90,7 @@
       transition: color 0.5s ease-in-out;
 
       &:hover {
-        color: $light-grey-color;
+        color:#89939A;
       }
     }
   }
@@ -109,7 +109,7 @@
     &--title {
       font-size: 12px;
       font-weight: 600;
-      color: $light-grey-color;
+      color: #89939A;
       line-height: 15px;
       letter-spacing: 0;
     }
@@ -142,7 +142,7 @@
       }
 
       &:active {
-        border: 1px solid #A378FF;
+        border: 1px solid  #313237;
       }
 
       &:disabled,

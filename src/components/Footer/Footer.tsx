@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '/img/Logo.png';
-import arrowUp from '/img/arrowRight-Default.png';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -16,7 +14,7 @@ export const Footer: React.FC = () => {
       <div className="container">
         <footer className="footer">
           <Link to="/" className="footer__logo">
-            <img src={logo} alt="Logo" className="footer__logo--pict" />
+            <img src="/img/Logo.png" alt="Logo" className="footer__logo--pict" />
           </Link>
           <div className="footer__items">
             <Link
@@ -42,7 +40,7 @@ export const Footer: React.FC = () => {
           <div className="footer__nav">
             <div className="footer__nav--title">Back to top</div>
             <button className="footer__nav--btn" onClick={scrollToTop} aria-label="Back to top">
-              <img src={arrowUp} alt="Back to top" />
+              <img src="/img/arrowRight-Default.png" alt="Back to top" />
             </button>
           </div>
         </footer>

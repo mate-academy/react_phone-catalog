@@ -8,9 +8,6 @@ import 'swiper/css/navigation';
 // import prev from '../../../public/img/btn-prev.png';
 // import next from '../../../public/img/btn-next.png';
 
-const prev = '/img/btn-prev.png';
-const next = '/img/btn-next.png';
-
 const images = [
   
   '/img/hero_iphone16pro_small.jpg',
@@ -36,12 +33,9 @@ export const Banner: React.FC = () => {
           <button
             className="banner__slider__btn banner__slider__btn--prev"
             onClick={() => swiperRef.current?.slidePrev()}
+            type="button"
           >
-            <img
-              className="banner__slider__btn--img"
-              src={prev}
-              alt="Previous"
-            />
+            <img src="/img/btn-prev.png" alt="prev" className="banner__slider__btn-img" />
           </button>
           <Swiper
             className="banner__slider__list"
@@ -52,7 +46,7 @@ export const Banner: React.FC = () => {
               nextEl: '.banner__slider__btn--next',
             }}
             modules={[Navigation, Autoplay]}
-            loop={true}
+            loop={false}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,
@@ -82,8 +76,9 @@ export const Banner: React.FC = () => {
           <button
             className="banner__slider__btn banner__slider__btn--next"
             onClick={() => swiperRef.current?.slideNext()}
+            type="button"
           >
-            <img className="banner__slider__btn--img" src={next} alt="Next" />
+            <img src="/img/btn-next.png" alt="next" className="banner__slider__btn-img" />
           </button>
         </div>
         <div className="banner__dashes">
@@ -91,7 +86,15 @@ export const Banner: React.FC = () => {
             <span
               key={index}
               className={`banner__dash ${index === currentIndex ? 'active' : ''}`}
-              onClick={() => swiperRef.current?.slideTo(index)}
+              onClick={() => swiperRef.current?.slideToLoop(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  swiperRef.current?.slideToLoop(index);
+                }
+              }}
             ></span>
           ))}
         </div>

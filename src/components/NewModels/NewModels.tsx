@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/scss';
 import { Product } from '../../types/Product';
-import { getProducts } from '../../utils/getData';
 import { Card } from '../Card';
 import { Loader } from '../Loader';
+import { SliderButton } from '../SliderButton';
+import { fetchProducts } from '../../utils/fetchProducts';
 
 export const NewModels: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const swiperRef = useRef<SwiperCore | null>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const loadProducts = async () => {
       try {
-        const loadedProducts = await getProducts();
+        const loadedProducts = await fetchProducts();
 
         setProducts(
           loadedProducts
             .filter(product => product.year >= 2022)
-            .sort((a, b) => b.year - a.year)
+            .sort((a, b) => b.year - a.year),
         );
       } catch {
         throw new Error('Something went wrong, while loading products');
@@ -28,7 +33,7 @@ export const NewModels: React.FC = () => {
       }
     };
 
-    fetchProducts();
+    loadProducts();
   }, []);
 
   return (
@@ -38,18 +43,18 @@ export const NewModels: React.FC = () => {
           <h2 className="new-models__header--title">Brand new models</h2>
           {/* eslint-disable max-len */}
           <div className="new-models__header--buttons new-models__slider--buttons">
-            <button
-              className="new-models__slider--btn new-models__slider--btn-prev"
-              type="button"
-            >
-              <img src="/img/btn-prev.png" alt="prev" width={20} height={20} />
-            </button>
-            <button
-              className="new-models__slider--btn new-models__slider--btn-next"
-              type="button"
-            >
-              <img src="/img/arrowRightDefault.png" alt="next" width={20} height={20} />
-            </button>
+            <SliderButton
+              direction="prev"
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="new-models__slider--btn-prev"
+              disabled={isBeginning}
+            />
+            <SliderButton
+              direction="next"
+              onClick={() => swiperRef.current?.slideNext()}
+              className="new-models__slider--btn-next"
+              disabled={isEnd}
+            />
           </div>
         </div>
         <div className="new-models__swiper">
@@ -61,9 +66,14 @@ export const NewModels: React.FC = () => {
               spaceBetween={16}
               slidesPerView={1.5}
               speed={1000}
-              navigation={{
-                prevEl: '.new-models__slider--btn-prev',
-                nextEl: '.new-models__slider--btn-next',
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+                setIsBeginning(swiper.isBeginning);
+                setIsEnd(swiper.isEnd);
+              }}
+              onSlideChange={(swiper) => {
+                setIsBeginning(swiper.isBeginning);
+                setIsEnd(swiper.isEnd);
               }}
               modules={[Navigation]}
               loop={true}

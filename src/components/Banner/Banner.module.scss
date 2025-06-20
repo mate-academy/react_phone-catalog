@@ -29,7 +29,7 @@
   }
 
   &__title {
-    color: $main-white-color;
+    color:  #313237;
     font-size: 32px;
     font-weight: 800;
     padding: 0 $padding-phone;
@@ -61,35 +61,6 @@
     @include on-desktop-small {
       height: 400px;
       gap: 16px;
-    }
-
-    &__btn {
-      display: none;
-      min-width: 32px;
-      height: 100%;
-      background: #ffffff;
-      color: white;
-      cursor: pointer;
-      z-index: 1;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #B4BDC3;
-      transition: background-color 0.2s, border 0.2s;
-
-      @include on-tablet {
-        display: flex;
-      }
-
-      &--img {
-        min-width: 16px;
-        height: 16px;
-      }
-
-      &:hover,
-      &:active {
-        border: 1px solid #313237;
-        background: #fff;
-      }
     }
 
     &__img {

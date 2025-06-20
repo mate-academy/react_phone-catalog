@@ -4,10 +4,12 @@ import { useCartValues } from '../../store/CartStore';
 import { useFavouriteValues } from '../../store/FavouriteContext';
 import styles from './MobileMenu.module.scss';
 import classNames from 'classnames';
-import logo from '../../../public/img/Logo.png';
-import deleteIcon from '../../../public/img/delete.png';
-import favouriteIcon from '../../../public/img/favourite-icon.png';
-import cartIcon from '../../../public/img/Shopping-cart.png';
+
+// Правильні шляхи до зображень для Vite
+const logo = '/img/Logo.png';
+const deleteIcon = '/img/delete.png';
+const favouriteIcon = '/img/favourite-icon.png';
+const cartIcon = '/img/Shopping-cart.png';
 
 type Props = {
   isOpenMenu: boolean;
