@@ -8,6 +8,7 @@ import { addToFavorites, removeFromFavorites }
   from '../../redux/favoritesSlice';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../redux/store';
+import { SearchResults } from '../SearchResults/SearchResults';
 
 export type Tablet = {
   id: string;
@@ -44,6 +45,7 @@ export const Tablets: React.FC = () => {
       >{t('navigation.tablets')}
       </Link>
       <h1>Tablets PAGE</h1>
+      <SearchResults itemsCategory="tablets" />{/*
       {products.filter((tablet: Tablet) => tablet.category === 'tablets')
         .sort((a:Tablet, b:Tablet) => b.price - a.price)
         .map((tablet:Tablet) => (
@@ -82,7 +84,7 @@ export const Tablets: React.FC = () => {
             <br />
             <br />
           </div>
-        ))}
+        ))} */}
     </div>
   );
 };

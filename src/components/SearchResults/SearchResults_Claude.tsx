@@ -191,7 +191,6 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     if (page >= 4 && windowWidth >= 360) {
       buttonList.push(
         <button
-          onClick={page == 4 ? () => updateSearchParam('page', '2') : () => {}}
           key='sr__pgnntbtnprev3dot'
           className='sr__pbtn rec__item-to-fav'
         >{page == 4 ? '2' : '...'}</button>,
@@ -231,8 +230,6 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     if (lastPI - 3 != 1 && page < lastPI - 2 && windowWidth >= 360) {
       buttonList.push(
         <button
-          onClick={lastPI - page <= 3 ? () =>
-            updateSearchParam('page', `${lastPI - 1}`) : () => {}}
           key='sr__pgnntbtnlast3dot'
           className='sr__pbtn rec__item-to-fav'
         >{lastPI - page > 3 ? '...' : lastPI - 1}</button>,

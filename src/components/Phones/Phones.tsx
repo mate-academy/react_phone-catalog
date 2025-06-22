@@ -10,6 +10,7 @@ import { Accessory } from '../Accessories/Accessories';
 import { Tablet } from '../Tablets/Tablets';
 import { useAppSelector } from '../../redux/store';
 import { useTranslation } from 'react-i18next';
+import { SearchResults } from '../SearchResults/SearchResults';
 
 export type Phone = {
   id: string;
@@ -60,7 +61,10 @@ export const Phones: React.FC = () => {
           to={'/phones'}
         >{t('navigation.phones')}
         </Link>
-        <h1>Phones PAGE with {currentTheme}, products q-ty - {products.length}</h1>
+
+        <SearchResults itemsCategory="phones" />
+
+        {/* <h1>Phones PAGE with {currentTheme}, products q-ty - {products.length}</h1>
         {products.filter((phone: Phone) => phone.category === 'phones')
           .sort((a:Phone, b:Phone) => b.price - a.price)
           .map((phone:Phone) => (
@@ -100,7 +104,7 @@ export const Phones: React.FC = () => {
               <br />
               <br />
             </div>
-          ))}
+          ))} */}
       </div>
     </>
   );

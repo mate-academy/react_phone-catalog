@@ -33,7 +33,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
    - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
 3. Add the sticky header with a logo, navigation, favorites, and cart.
 4. The footer with the link to the GitHub repo and `Back to top` button. ✅
-   - The content should be limited to the same width as the page content; ⭕
+   - The content should be limited to the same width as the page content; ✅
    - `Back to top` button should scroll to the top smoothly; ✅
 5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
 6. All changes the hover effects should be smooth.
@@ -52,8 +52,8 @@ Implement Home page at available at `/`.
    - Dashes at the bottom should allow choosing an exact picture. ✅
 3. `ProductsSlider` for the `Hot prices` block:
    - The products with a discount starting from the biggest absolute value; ⭕
-   - `<` and `>` buttons should scroll products. ⭕
-4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`. ⭕
+   - `<` and `>` buttons should scroll products. ✅
+4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`. ✅
 5. Add Brand new block using ProductsSlider with products that are the newest according to the year field. ⭕
 
 ## Product pages

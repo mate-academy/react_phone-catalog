@@ -91,3 +91,11 @@
     transform: translateX(4%) translateY(14%);
   }
 }
+
+.home__bottom-margin {
+  margin-bottom: 64px;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 80px;
+  }
+}

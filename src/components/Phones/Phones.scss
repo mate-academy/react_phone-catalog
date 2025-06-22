@@ -1,6 +1,8 @@
+@import '../../App.scss';
+
 .phones_page {
   &.theme0 {
-    background-color: #f0debd;
+    background-color: $color-white;
   }
 
   &.theme1 {

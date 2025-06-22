@@ -130,6 +130,7 @@ export const Home: React.FC = () => {
         </div>
       </div>
       <Recommended title='hot_prices' />
+      <div className="home__bottom-margin" />
     </div>
   );
 };

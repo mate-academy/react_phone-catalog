@@ -8,6 +8,7 @@ import { addToFavorites, removeFromFavorites }
   from '../../redux/favoritesSlice';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../redux/store';
+import { SearchResults } from '../SearchResults/SearchResults';
 
 export type Accessory = {
   id: string;
@@ -43,8 +44,12 @@ export const Accessories: React.FC = () => {
         to={'/accessories'}
       >{t('navigation.accessories')}
       </Link>
-      <h1>Accessories PAGE</h1>
-      {products.filter((access: Accessory) => access.category === 'accessories')
+      {/* <h1>Accessories PAGE</h1> */}
+      <h1>Dobry den, Radka 😊</h1>
+
+      <SearchResults itemsCategory="accessories" />
+
+{/*       {products.filter((access: Accessory) => access.category === 'accessories')
         .sort((a:Accessory, b:Accessory) => b.price - a.price)
         .map((access:Accessory) => (
           <div className="card" key={access.itemId}>
@@ -82,7 +87,7 @@ export const Accessories: React.FC = () => {
             <br />
             <br />
           </div>
-        ))}
+        ))} */}
     </div>
   );
 };

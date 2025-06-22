@@ -1,6 +1,6 @@
 import './SearchResults.scss';
 import { useEffect, useState } from 'react';
-import { useSearchParams, useNavigate, Link, useLocation } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../../redux/cartSlice';
 import { addToFavorites, removeFromFavorites }
   from '../../redux/favoritesSlice';
@@ -15,15 +15,8 @@ import { useTranslation } from 'react-i18next';
 import { useWindowWidth } from '../Navbar/Navbar';
 import { emptyHeart, filledHeart, arrowLeft, arrowRight } from '../../../public/img/icons/svg_icons';
 
-interface SearchResultsProps {
-  itemsCategory?: 'phones' | 'tablets' | 'accessories';
-}
-
-export const SearchResults: React.FC<SearchResultsProps> = ({
-  itemsCategory
-}) => {
+export const SearchResults: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [serResQty, setSerResQty] = useState(0);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
@@ -36,24 +29,12 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   const { t } = useTranslation();
   const windowWidth = useWindowWidth();
 
-  // Визначаємо тип сторінки
-  const isSearchPage = !itemsCategory;
-
-  // Визначаємо базовий URL динамічно
-  const getBaseUrl = () => {
-    if (isSearchPage) {
-      return '/search';
-    }
-    // Для вбудованого компонента використовуємо поточний шлях
-    return location.pathname;
-  };
 
   const goToPage = (newPage: number) => {
     const params = new URLSearchParams(searchParams);
-    params.set('page', newPage.toString());
 
-    const baseUrl = getBaseUrl();
-    navigate(`${baseUrl}?${params.toString()}`);
+    params.set('page', newPage.toString());
+    navigate(`/search?${params.toString()}`);
   };
 
   const updateSearchParam = (key: string, value: string) => {
@@ -64,39 +45,19 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       newParams.set('page', '1');
     }  // Reset page when changing filters/sort
 
-    const baseUrl = getBaseUrl();
-    navigate(`${baseUrl}?${newParams.toString()}`);
+    navigate(`/search?${newParams.toString()}`);
   };
 
   useEffect(() => {
     // Here we sort and filter our data if it were from server
-    // Example: fetchResults({ query, page, category: itemsCategory, sort });
+    // Example: fetchResults({ query, page, category, sort });
     // in our demo there are no backend for this
-  }, [query, page, itemsCategory, sort]);
+  }, [query, page, category, sort]);
 
   const phones = ((phonesJSON));
   const tablets = ((tabletsJSON));
   const accessories = ((accessoriesJSON));
-
-  // Отримуємо дані відповідно до категорії
-  const allProducts = (() => {
-    if (isSearchPage) {
-      // Для search page - всі товари
-      return phones.concat(tablets, accessories);
-    }
-
-    // Для вбудованого компонента - тільки товари конкретної категорії
-    switch (itemsCategory) {
-      case 'phones':
-        return phones;
-      case 'tablets':
-        return tablets;
-      case 'accessories':
-        return accessories;
-      default:
-        return phones.concat(tablets, accessories);
-    }
-  })();
+  const allProducts = phones.concat(tablets, accessories);
 
   function containsSubstring(stringsArray, substring) {
     return stringsArray.some(str =>
@@ -191,7 +152,6 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     if (page >= 4 && windowWidth >= 360) {
       buttonList.push(
         <button
-          onClick={page == 4 ? () => updateSearchParam('page', '2') : () => {}}
           key='sr__pgnntbtnprev3dot'
           className='sr__pbtn rec__item-to-fav'
         >{page == 4 ? '2' : '...'}</button>,
@@ -231,8 +191,6 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     if (lastPI - 3 != 1 && page < lastPI - 2 && windowWidth >= 360) {
       buttonList.push(
         <button
-          onClick={lastPI - page <= 3 ? () =>
-            updateSearchParam('page', `${lastPI - 1}`) : () => {}}
           key='sr__pgnntbtnlast3dot'
           className='sr__pbtn rec__item-to-fav'
         >{lastPI - page > 3 ? '...' : lastPI - 1}</button>,
@@ -277,23 +235,10 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
 
   return (
     <div className="search-page__wrapper">
-      {/* Елементи тільки для сторінки пошуку */}
-      {isSearchPage && (
-        <div className="search-page-header">
-          <h2>Search results for: &quot;{query}&quot;</h2>
-          <p>Search res quantity - {serResQty}</p>
-        </div>
-      )}
-
-      {/* Для категорійних сторінок показуємо інформацію про кількість товарів */}
-      {!isSearchPage && (
-        <div className="category-info">
-          <p>Items in {itemsCategory}: {serResQty}</p>
-        </div>
-      )}
-
+      <h2>Search results for: &quot;{query}&quot;</h2>
+      <p>Search res quantity - {serResQty}</p>
       <p>Current Page: {page} of {Math.ceil(serResQty / perPage)}</p>
-      {isSearchPage && <p>Category: {category}</p>}
+      <p>Category: {category}</p>
       <p>Sort: {sort}</p>
       all items = {allProducts.length}
 
@@ -318,6 +263,89 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       {GeneratePaginationButtons()}
 
       <br/>
+      <div className="asdasdasdsad">
+        {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
+        {/*       {filteredItems().map((item: any) => (
+                <div className="card" key={`${item.id}+++${item.namespaceId}`}>
+                  <Link
+                    to={`/${item.category}/${item.id}`}
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
+                    <img
+                      src={`../../../public/${item?.images[0]}`}
+                      alt="here should be an image"
+                      height="300"
+                    />
+                    <br/>
+                    {`${item.name}`}
+                  </Link>
+                  <br />
+                  {`${item.priceDiscount} $`} &emsp;<s>{`${item.priceRegular} $`}</s>
+                  <br />
+                  Screen &emsp;{`${item.screen}`}
+                  <br />
+                  Capacity &emsp;{`${item.capacity}`}
+                  <br />
+                  RAM &emsp;{`${item.ram}`}
+                  <br />
+                  <br />
+                  <br />
+                </div>
+              ))} */}
+        {/*                 {filteredItems().map((item, index) => (
+                  <div
+                    key={`${item.id}+recommended+${index}`}
+                    className={`rec__card`}
+
+                  >
+                    <Link
+                      to={`/${item.category}/${item.id}`}
+                      onClick={() => window.scrollTo(0, 0)}
+                      className='rec__link'
+                    >
+                      <img
+                        src={`../../../public/${item.images[0]}`}
+                        alt="here should be an image"
+                        className='fav__item-image'
+                      />
+                      <div className="rec__item-name">
+                        {item.name}
+                      </div>
+                    </Link>
+                    <div className="rec__item-price">
+                      {`$${item.priceDiscount}  `}
+
+                    </div>
+                    <div className="rec__specs">
+                      <div className="rec__specs-spec">
+                        Screen<div className="rec__specs-value">{item.screen}</div>
+                      </div>
+                      <div className="rec__specs-spec">
+                        Capacity<div className="rec__specs-value">{item.capacity.replace('GB', ' GB')}</div>
+                      </div>
+                      <div className="rec__specs-spec">
+                        RAM<div className="rec__specs-value">{item.ram.replace('GB', ' GB')}</div>
+                      </div>
+                    </div>
+                    <div className="rec__item-buttons">
+                      <button className={`rec__item-to-cart ${isInCart(item?.id) ? 'in-cart' : ''}`}
+                        onClick={() => isInCart(item?.id)
+                          ? dispatch(removeFromCart(item?.id))
+                          : dispatch(addToCart(item))
+                        }>{`${isInCart(item?.id) ? 'In cart' : 'Add to cart'}`}</button>
+                      <button className={`rec__item-to-fav ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
+                        onClick={() => isInFavorites(item?.id)
+                          ? dispatch(removeFromFavorites(item?.id))
+                          : dispatch(addToFavorites(item))
+                        }>{isInFavorites(item?.id)
+                          ? filledHeart
+                          : emptyHeart
+                        }
+                      </button>
+                    </div>
+                  </div>
+                ))} */}
+      </div>
 
       <div className="sr__crdcnt">
         {filteredItems().map(item => (
@@ -327,7 +355,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
 
           >
             <Link
-              to={`/${item.category}/${item.id}`}
+              to={`/phones/${item.id}`}
               onClick={() => window.scrollTo(0, 0)}
               className='rec__link fav__itemImage'
             >
