@@ -1,5 +1,6 @@
 import React from 'react';
 import vaforiteImg from './../../images/icons/Favourites (Heart Like).svg';
+import vaforiteImgSelected from './../../images/icons/Favourites (Heart Like)_2.svg';
 import fakeImg from './../../images/img/phones//apple-iphone-11/black/00.webp';
 
 import './Card.scss';
@@ -31,9 +32,12 @@ export const NewModels = () => {
               </div>
             </div>
             <div className="card__buttons">
-              <button className="card__add">Add to cart</button>
-              <a className="card__favorite">
+              <button className="card__add card__add_selected">
+                Add to cart
+              </button>
+              <a className="card__favorite card__favorite_selected">
                 <img src={vaforiteImg} alt="" />
+                <img src={vaforiteImgSelected} alt="" />
               </a>
             </div>
           </div>
@@ -91,6 +95,7 @@ export const NewModels = () => {
               </a>
             </div>
           </div>
+
           <div className="card">
             <img src={fakeImg} alt="" className="card__image" />
             <div className="card__title">

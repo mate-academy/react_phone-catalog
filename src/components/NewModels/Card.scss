@@ -1,10 +1,11 @@
 .slider__wrapper {
   display: flex;
   gap: 16px;
+  overflow: hidden;
 }
 
 .card {
-  flex: 0 1 24%;
+  flex: 0 0 272px;
   display: flex;
   flex-direction: column;
   row-gap: 8px;
@@ -44,21 +45,60 @@
     &_value {}
   }
 
-  &__desc {}
+  &__buttons {
+    display: flex;
+    column-gap: 10px;
+    justify-content: space-between;
+  }
 
-  &__favorite {}
+  &__add {
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    transition: all 0.4s;
+    cursor: pointer;
 
-  &__image {}
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, .4);
+    }
 
+    &_selected {
+      color: var(--color-green);
+      background-color: transparent;
+      border: 1px solid var(--color-elements);
 
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
 
+  &__favorite {
+    flex: 0 0 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-icons);
+    transition: all 0.4s;
+    cursor: pointer;
 
+    &:hover {
+      border: 1px solid var(--color-primary);
+    }
 
+    &_selected {
+      border: 1px solid var(--color-icons);
 
-
-  &__add {}
-
-  &__buttons {}
-
+      &:hover {
+        border: 1px solid var(--color-icons);
+      }
+    }
+  }
 
 }
