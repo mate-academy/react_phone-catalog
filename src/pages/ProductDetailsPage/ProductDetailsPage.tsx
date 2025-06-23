@@ -21,19 +21,27 @@ export const ProductDetailsPage: React.FC = () => {
       getTablets(),
       getAccessories(),
     ]).then(([products, phones, tablets, accessories]) => {
-      const allProducts = [
-        ...products,
+      // Спочатку шукаємо в phones, tablets, accessories (які мають повну інформацію)
+      const detailedProducts = [
         ...phones,
         ...tablets,
         ...accessories,
       ];
-      setSelectedProduct(
-        allProducts.find(
-          (p: any) => p.id === productId
-        )
+      
+      let foundProduct: any = detailedProducts.find(
+        (p: any) => p.id === productId
       );
+      
+      // Якщо не знайшли в детальних товарах, шукаємо в загальних products
+      if (!foundProduct) {
+        foundProduct = products.find(
+          (p: any) => p.itemId === productId
+        );
+      }
+      
+      setSelectedProduct(foundProduct);
       // Зберігаємо всі товари для рекомендацій
-      setRecommendedProducts(allProducts);
+      setRecommendedProducts([...products, ...phones, ...tablets, ...accessories]);
       setIsLoading(false);
     });
   }, [productId]);

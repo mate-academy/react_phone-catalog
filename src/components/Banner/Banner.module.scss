@@ -101,3 +101,9 @@
     }
   }
 }
+
+@media (max-width: 639px) {
+  .banner__slider__btn {
+    display: none !important;
+  }
+}

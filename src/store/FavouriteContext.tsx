@@ -16,8 +16,12 @@ type Action =
 function reducer(state: FavouriteState, action: Action): FavouriteState {
   switch (action.type) {
     case 'addToFavourite':
+      const productId = action.payload.itemId || action.payload.id;
       const existingProduct = state.find(
-        product => String(product.product.id) === String(action.payload.id),
+        product => {
+          const itemId = product.product.itemId || product.product.id;
+          return String(itemId) === String(productId);
+        }
       );
 
       return !existingProduct
@@ -25,7 +29,10 @@ function reducer(state: FavouriteState, action: Action): FavouriteState {
         : [...state];
 
     case 'removeFromFavourite':
-      return state.filter(item => String(item.product.id) !== String(action.payload));
+      return state.filter(item => {
+        const itemId = item.product.itemId || item.product.id;
+        return String(itemId) !== String(action.payload);
+      });
     default:
       return state;
   }
@@ -63,7 +70,8 @@ export const FavouriteProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   const removeFromFavourite = useCallback((product: Product) => {
-    dispatch({ type: 'removeFromFavourite', payload: product.id.toString() });
+    const productId = product.itemId || product.id;
+    dispatch({ type: 'removeFromFavourite', payload: String(productId) });
   }, []);
 
   const favouritesCount = favourites.length;

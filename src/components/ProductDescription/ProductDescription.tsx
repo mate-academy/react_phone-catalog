@@ -2,10 +2,10 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Accessory } from '../../types/Accessory';
 import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Product';
 
 import { Tablet } from '../../types/Tablet';
 import { Link, useLocation } from 'react-router-dom';
-import { useValues } from '../../store/ProductContext';
 import { useCartValues } from '../../store/CartStore';
 import { useFavouriteValues } from '../../store/FavouriteContext';
 import { GoBackBttn } from '../GoBackBttn';
@@ -49,7 +49,6 @@ export const ProductDescription: React.FC<Props> = ({
   const [selectedColor, setSelectedColor] = useState(mainColor);
   const [selectedCapacity, setSelectedCapacity] = useState(mainCapacity);
 
-  const { products } = useValues();
   const { addToCart, removeFromCart, cart } = useCartValues();
   const { addToFavourite, removeFromFavourite, favourites } =
     useFavouriteValues();
@@ -79,16 +78,14 @@ export const ProductDescription: React.FC<Props> = ({
     return updatedCapacity;
   };
 
-  const productToAddOrRemove = products.find(
-    product => product.itemId === selectedProduct?.id,
-  );
+  const selectedItemId = selectedProduct?.itemId || selectedProduct?.id;
 
   const isAddedToCart = cart.some(
-    item => item.product.itemId === selectedProduct?.id,
+    item => String(item.product.itemId || item.product.id) === String(selectedItemId)
   );
 
   const isAddedToFavourites = favourites.some(
-    item => item.product.itemId === selectedProduct?.id,
+    item => String(item.product.itemId || item.product.id) === String(selectedItemId)
   );
 
   useEffect(() => {
@@ -139,6 +136,14 @@ export const ProductDescription: React.FC<Props> = ({
     ...(zoom ? [{ name: 'Zoom', value: zoom }] : []),
     { name: 'Cell', value: cell },
   ];
+
+  // Додатковий лог для відстеження зміни selectedProduct
+  React.useEffect(() => {
+    // Лог видалено - функціональність працює
+  }, [selectedProduct]);
+
+  // Діагностика перед кнопками
+  // Логи видалено - функціональність працює
 
   return (
     <>
@@ -235,56 +240,39 @@ export const ProductDescription: React.FC<Props> = ({
             </div>
             <div className="product-description__actions">
               {!isAddedToCart ? (
-                <Link
-                  to=""
+                <button
+                  type="button"
                   className="product-description__actions--btn product-description__add"
                   onClick={() => {
-                    if (productToAddOrRemove) {
-                      addToCart(productToAddOrRemove);
+                    if (selectedProduct) {
+                      addToCart(selectedProduct as unknown as Product);
                     }
                   }}
+                  disabled={!selectedProduct}
                 >
-                  Add to card
-                </Link>
+                  Add to cart
+                </button>
               ) : (
-                <Link
-                  to=""
+                <button
+                  type="button"
                   className="product-description__actions--btn product-description__added"
                   onClick={() => {
-                    if (productToAddOrRemove) {
-                      removeFromCart(productToAddOrRemove);
+                    if (selectedProduct) {
+                      removeFromCart(selectedProduct as unknown as Product);
                     }
                   }}
                 >
                   Added
-                </Link>
+                </button>
               )}
 
-              {!isAddedToFavourites ? (
-                <Link
-                  to=""
+              {isAddedToFavourites ? (
+                <button
+                  type="button"
                   className="product-description__action-btn product-description__favourite"
                   onClick={() => {
-                    if (productToAddOrRemove) {
-                      addToFavourite(productToAddOrRemove);
-                    }
-                  }}
-                >
-                  <div className="icon-wrapper">
-                    <img
-                      src="/img/favourite-icon.png"
-                      alt="favourite icon"
-                      className="icon icon-user"
-                    />
-                  </div>
-                </Link>
-              ) : (
-                <Link
-                  to=""
-                  className="product-description__action-btn product-description__favourite"
-                  onClick={() => {
-                    if (productToAddOrRemove) {
-                      removeFromFavourite(productToAddOrRemove);
+                    if (selectedProduct) {
+                      removeFromFavourite(selectedProduct as unknown as Product);
                     }
                   }}
                 >
@@ -295,7 +283,25 @@ export const ProductDescription: React.FC<Props> = ({
                       className="icon icon-user favourite__added"
                     />
                   </div>
-                </Link>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="product-description__action-btn product-description__favourite"
+                  onClick={() => {
+                    if (selectedProduct) {
+                      addToFavourite(selectedProduct as unknown as Product);
+                    }
+                  }}
+                >
+                  <div className="icon-wrapper">
+                    <img
+                      src="/img/favourite-icon.png"
+                      alt="favourite icon"
+                      className="icon icon-user"
+                    />
+                  </div>
+                </button>
               )}
             </div>
             {renderSpecs(shortSpecs)}

@@ -20,7 +20,7 @@
   }
 
   &__title {
-    color: $main-white-color;
+    color: #313237;
     font-size: 22px;
     font-weight: 700;
     line-height: 31px;
@@ -99,7 +99,7 @@
   }
 
   &__miniatures-containerActive {
-    border: 1px solid $main-white-color;
+    border: 1px solid #313237;
   }
 
   &__miniature-image {
@@ -161,7 +161,7 @@
     }
 
     &--text {
-      color: $light-grey-color;
+      color:  #89939A;
     }
 
     &--textId {
@@ -182,19 +182,19 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    box-shadow: 0 0 10px $main-white-color;
+    box-shadow: 0 0 10px  #313237;
     transition:
       outline 0.5s,
       border 0.5s;
 
     &:hover {
-      border: 2px solid $main-color;
-      outline: 1px solid $light-grey-color;
+      border: 2px solid #FFFFFF;
+      outline: 1px solid  #89939A;
     }
   }
 
   &__colorActive {
-    outline: 1px solid $main-white-color;
+    outline: 1px solid  #313237;
   }
 
   &__divider {
@@ -207,7 +207,7 @@
     padding-top: 24px;
 
     &--text {
-      color: $light-grey-color;
+      color: #89939A;
       font-size: 12px;
       font-weight: 600;
       line-height: 15px;
@@ -265,7 +265,7 @@
       height: 31px;
       gap: 8px;
       font-weight: 700;
-      color: $main-white-color;
+      color:  #313237;
     }
 
     &--fullprice {
@@ -275,7 +275,7 @@
       height: 31px;
       gap: 8px;
       font-weight: 400;
-      color: $light-grey-color;
+      color: #89939A;
       text-decoration: line-through;
     }
   }
@@ -328,15 +328,32 @@
   }
 
   &__added {
-    @extend .product-description__add;
-    background: #fff;
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+    height: 48px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: center;
+    
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
     color: #27ae60;
     border: 1.5px solid #E2E6E9;
-    transition: background 0.2s, color 0.2s, border 0.2s;
+
+    @media (min-width: 1200px) {
+      width: 263px;
+    }
 
     &:hover {
       background: #eafaf1;
-      
       border-color: #E2E6E9;
     }
   }
@@ -408,7 +425,7 @@
     }
 
     &--title {
-      color: $main-white-color;
+      color:  #313237;
       font-weight: 600;
       font-size: 20px;
       line-height: 26px;
@@ -421,7 +438,7 @@
       }
 
       &-mini {
-        color: $main-white-color;
+        color: #313237;
         padding-top: 32px;
       }
     }
@@ -448,7 +465,7 @@
     }
 
     &--title {
-      color: $main-white-color;
+      color:  #313237;
       font-weight: 600;
       font-size: 20px;
       line-height: 26px;

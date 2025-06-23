@@ -18,12 +18,12 @@
   }
 
   @include on-desktop-small {
-    padding: 0 $padding-desktop-small;
+    padding: 0 32px;
     margin-bottom: 80px;
   }
 
   @include on-desktop {
-    padding: 0 $padding-desktop;
+    padding: 0 32px;
   }
 
   &__header {

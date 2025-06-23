@@ -34,7 +34,7 @@ export const CartPageItem: React.FC<Props> = ({ item }) => {
       if (newQuantity === 0) {
         removeFromCart(product);
       } else {
-        updateQuantity(product.id, newQuantity);
+        updateQuantity(product.itemId, newQuantity);
       }
       setIsOpenQuantity(false);
     }
@@ -67,7 +67,7 @@ export const CartPageItem: React.FC<Props> = ({ item }) => {
           onClick={() => removeFromCart(product)}
         ></div>
         <img
-          src={product.image}
+          src={product.image || ((product as any).images && (product as any).images[0]) || '/img/notFoundPage.png'}
           alt="card image"
           className="cartPageItem__top--image"
         />
@@ -111,7 +111,10 @@ export const CartPageItem: React.FC<Props> = ({ item }) => {
             onClick={() => increaseQuantity(product)}
           ></div>
         </div>
-        <h3 className="cartPageItem__price">${product.price * quantity}</h3>
+        {(() => {
+          const price = Number((product as any).priceDiscount ?? product.price ?? (product as any).priceRegular ?? 0);
+          return <h3 className="cartPageItem__price">${price * quantity}</h3>;
+        })()}
       </div>
     </div>
   );

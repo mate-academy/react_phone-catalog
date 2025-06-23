@@ -102,7 +102,7 @@ export const NewModels: React.FC = () => {
               {products.map(product => (
                 <SwiperSlide
                   className="new-models__list--card new-models__card"
-                  key={product.id}
+                  key={product.itemId}
                 >
                   <Card product={product} />
                 </SwiperSlide>

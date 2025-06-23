@@ -99,7 +99,7 @@ export const HotPrices: React.FC = () => {
               {products.map(product => (
                 <SwiperSlide
                   className="hot-prices__list--card hot-prices__card"
-                  key={product.id}
+                  key={product.itemId}
                 >
                   <Card product={product} />
                 </SwiperSlide>

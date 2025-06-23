@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useCartValues } from '../../store/CartStore';
 import { useFavouriteValues } from '../../store/FavouriteContext';
 import styles from './MobileMenu.module.scss';
@@ -24,7 +24,6 @@ const navLinks = [
 ];
 
 export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => {
-  const location = useLocation();
   const { cartCount } = useCartValues();
   const { favouritesCount } = useFavouriteValues();
 

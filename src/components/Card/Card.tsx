@@ -20,11 +20,9 @@ export const Card: React.FC<Props> = ({ product }) => {
     return `/product/${product.itemId}`;
   };
 
-  const isAddedToCart = cart.some(item => item.product.id === product.id);
-
-  const isAddedToFavourites = favourites.some(
-    item => item.product.id === product.id,
-  );
+  const productItemId = product.itemId || product.id;
+  const isAddedToCart = cart.some(item => (item.product.itemId || item.product.id) === productItemId);
+  const isAddedToFavourites = favourites.some(item => (item.product.itemId || item.product.id) === productItemId);
 
   const imageSrc = product.image ? `/${product.image.replace(/^\/?/, '')}` : '/img/notFoundPage.png';
 
@@ -62,26 +60,26 @@ export const Card: React.FC<Props> = ({ product }) => {
 
       <div className="card__actions">
         {!isAddedToCart ? (
-          <Link
-            to=""
+          <button
+            type="button"
             className="card__actions--btn card__add"
             onClick={() => addToCart(product)}
           >
-            Add to card
-          </Link>
+            Add to cart
+          </button>
         ) : (
-          <Link
-            to=""
+          <button
+            type="button"
             className="card__actions--btn card__added"
             onClick={() => removeFromCart(product)}
           >
             Added
-          </Link>
+          </button>
         )}
 
         {isAddedToFavourites ? (
-          <Link
-            to=""
+          <button
+            type="button"
             className="card__actions--btn card__favourite selected"
             onClick={() => removeFromFavourite(product)}
           >
@@ -90,10 +88,10 @@ export const Card: React.FC<Props> = ({ product }) => {
               alt="favourite icon"
               className="icon icon-user favourite__added"
             />
-          </Link>
+          </button>
         ) : (
-          <Link
-            to=""
+          <button
+            type="button"
             className="card__actions--btn card__favourite"
             onClick={() => addToFavourite(product)}
           >
@@ -102,7 +100,7 @@ export const Card: React.FC<Props> = ({ product }) => {
               alt="favourite icon"
               className="icon icon-user"
             />
-          </Link>
+          </button>
         )}
       </div>
     </div>

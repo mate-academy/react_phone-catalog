@@ -13,7 +13,10 @@ export const CartPage: React.FC = () => {
   );
 
   const totalPrice = uniqueCartItems.reduce(
-    (acc, num) => acc + num.product.price * num.quantity,
+    (acc, num) => {
+      const price = Number((num.product as any).priceDiscount ?? num.product.price ?? (num.product as any).priceRegular ?? 0);
+      return acc + price * num.quantity;
+    },
     0,
   );
 
@@ -31,8 +34,8 @@ export const CartPage: React.FC = () => {
         <div className="cartPage">
           <div className="cartPage__first-container">
             <div className="cartPage__list">
-              {uniqueCartItems.map(item => (
-                <CartPageItem item={item} key={item.product.id} />
+              {cart.map(item => (
+                <CartPageItem item={item} key={item.product.itemId} />
               ))}
             </div>
           </div>

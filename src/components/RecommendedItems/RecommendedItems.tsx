@@ -59,7 +59,7 @@ export const RecommendedItems: React.FC<Props> = ({ recommendedItems }) => {
           {recommendedItems.map(product => (
             <SwiperSlide
               className="recommendedItems__list--card"
-              key={product.id}
+              key={product.itemId}
             >
               <Card product={product} />
             </SwiperSlide>

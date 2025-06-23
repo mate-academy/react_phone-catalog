@@ -139,24 +139,6 @@ export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
     { value: ItemsOnPageOptions.ALL, label: 'All' },
   ];
 
-  const handleChangeSortOption = (sortField: string) => {
-    if (sortField === SortOptions.NEWEST) {
-      return { sort: null };
-    } else if (sort !== sortField) {
-      return { sort: sortField };
-    }
-
-    return { sort: null };
-  };
-
-  const handleChangeItemsOnPageOption = (field: string) => {
-    if (field === ItemsOnPageOptions.ALL) {
-      return { page: null, itemsOnPage: null };
-    }
-
-    return { page: DEFAULT_PAGE, itemsOnPage: field };
-  };
-
   const handleChangePage = (newPage: number) => {
     return { page: newPage };
   };
@@ -174,8 +156,6 @@ export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
   useEffect(() => {
     loadProducts(productsCategory);
   }, [loadProducts, productsCategory]);
-
-  const isMobile = window.innerWidth < 640;
 
   return (
     <>
