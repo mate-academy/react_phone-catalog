@@ -1,57 +1,61 @@
-.swiper {
+.my-swiper {
   --swiper-navigation-size: 12px;
   height: 236px;
   align-items: center;
   padding-bottom: 36px;
 
-  &-slide {
-
-    position: relative;
-    display: flex;
-    height: auto;
-
-    & img {
-      top: 0;
-      left: 0;
-      position: absolute;
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-      display: block;
-
-
-
-      @media screen and (min-width: 640px) {
-        padding-inline: 48px;
-      }
-    }
-
-
-  }
-
-  &-button-prev,
-  &-button-next {
-    display: none;
-    height: 400px;
-    width: 32px;
-    border: 1px solid var(--color-icons);
-    color: var(--color-primary);
-    cursor: pointer;
-    top: 6px;
-  }
-}
-
-
-@media screen and (min-width: 640px) {
 
   .swiper {
-    height: 436px;
+    &-slide {
 
+      position: relative;
+      display: flex;
+      height: auto;
+
+      & img {
+        top: 0;
+        left: 0;
+        position: absolute;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        display: block;
+
+
+
+        @media screen and (min-width: 640px) {
+          padding-inline: 48px;
+        }
+      }
+
+
+    }
 
     &-button-prev,
     &-button-next {
-      display: flex;
-      align-items: center;
+      display: none;
+      height: 400px;
+      width: 32px;
+      border: 1px solid var(--color-icons);
+      color: var(--color-primary);
+      cursor: pointer;
+      top: 6px;
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+
+  .my-swiper {
+    height: 436px;
+
+    .swiper {
+
+      &-button-prev,
+      &-button-next {
+        display: flex;
+        align-items: center;
+      }
     }
   }
 }

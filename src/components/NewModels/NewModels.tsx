@@ -2,16 +2,50 @@ import React from 'react';
 import vaforiteImg from './../../images/icons/Favourites (Heart Like).svg';
 import vaforiteImgSelected from './../../images/icons/Favourites (Heart Like)_2.svg';
 import fakeImg from './../../images/img/phones//apple-iphone-11/black/00.webp';
+import { ProductCard } from '../ProductCard';
+import './NewModels.scss';
 
-import './Card.scss';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 export const NewModels = () => {
   return (
     <section className="new-models slider">
       <div className="container slider__container">
         <h2 className="slider__title">Brand new models</h2>
-        <div className="slider__wrapper">
-          <div className="card">
+
+        <Swiper
+          className="swiper-slider"
+          modules={[Navigation, A11y]}
+          slidesPerView={4}
+          navigation
+          pagination={{ clickable: true }}
+        >
+          <SwiperSlide>
+            <ProductCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductCard />
+          </SwiperSlide>
+        </Swiper>
+
+        {/* <div className="slider__wrapper"> */}
+        {/* <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard /> */}
+        {/* <div className="card">
             <img src={fakeImg} alt="" className="card__image" />
             <div className="card__title">
               Apple iPhone 14 Pro 128GB Silver (MQ023)
@@ -122,8 +156,8 @@ export const NewModels = () => {
                 <img src={vaforiteImg} alt="" />
               </a>
             </div>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
     </section>
   );

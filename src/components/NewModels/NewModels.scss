@@ -1,0 +1,52 @@
+// .slider__wrapper {
+//   display: flex;
+//   gap: 16px;
+//   overflow: hidden;
+// }
+
+// .swiper-slider {
+
+//   .swiper {
+
+//     &-button-prev {
+//       width: 32px;
+//       height: 32px;
+//       border: 1px solid var(--color-icons);
+//       background-color: green;
+
+//       &:after {
+//         content: '<';
+//         width: 5px;
+//         height: 9px;
+//       }
+//     }
+
+
+//     // &-button-prev,
+//     // &-button-next {
+//     //   display: none;
+//     //   height: 400px;
+//     //   width: 32px;
+//     //   border: 1px solid var(--color-icons);
+//     //   color: var(--color-primary);
+//     //   cursor: pointer;
+//     //   top: 6px;
+//     // }
+//   }
+// }
+
+// @media screen and (min-width: 640px) {
+
+//   .my-swiper {
+//     height: 436px;
+
+//     .swiper {
+
+//       // &-button-prev,
+//       // &-button-next {
+//       //   display: flex;
+//       //   align-items: center;
+//       // }
+//     }
+//   }
+// }

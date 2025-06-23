@@ -25,6 +25,7 @@ export const Banner = () => {
       <div className="container">
         <h1 className={banner__title}>Welcome to Nice Gadgets store!</h1>
         <Swiper
+          className="my-swiper"
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           slidesPerView={1}
           navigation
