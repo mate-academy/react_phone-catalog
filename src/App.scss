@@ -1,16 +1,16 @@
 @font-face {
   font-family: "montBold";
-  src: url("../public/fonts/Mont-Bold.otf");
+  src: url("/fonts/Mont-Bold.otf");
 }
 
 @font-face {
   font-family: "montRegular";
-  src: url("../public/fonts/Mont-Regular.otf");
+  src: url("/fonts/Mont-Regular.otf");
 }
 
 @font-face {
   font-family: "montSemibold";
-  src: url("../public/fonts/Mont-SemiBold.otf");
+  src: url("/fonts/Mont-SemiBold.otf");
 }
 
 @mixin font-h1-mob {

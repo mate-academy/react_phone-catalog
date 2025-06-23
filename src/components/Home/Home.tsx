@@ -37,7 +37,7 @@ export const Home: React.FC = () => {
               onClick={() => window.scrollTo(0, 0)}
             >
               <div className="home__image-container home__phones-banner">
-                <img src="../../../public/img/phones_banner.png"
+                <img src="/img/phones_banner.png"
                   alt="tablets shop banner" />
               </div>
             </Link>
@@ -69,7 +69,7 @@ export const Home: React.FC = () => {
               onClick={() => window.scrollTo(0, 0)}
             >
               <div className="home__image-container home__tablets-banner">
-                <img src="../../../public/img/category-tablets.png"
+                <img src="/img/category-tablets.png"
                   alt="tablets shop banner" />
               </div>
             </Link>
@@ -101,7 +101,7 @@ export const Home: React.FC = () => {
               onClick={() => window.scrollTo(0, 0)}
             >
               <div className="home__image-container home__accessories_banner">
-                <img src="../../../public/img/category-accessories.png"
+                <img src="/img/category-accessories.png"
                   alt="accessories shop banner" />
               </div>
             </Link>
