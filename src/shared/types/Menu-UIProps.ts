@@ -1,10 +1,21 @@
-export enum MenuPath {
-  burger = '/burger-menu-16px.svg',
-  fav = '/fav-16px.svg',
-  cart = '/cart-16px.svg',
+export enum Path {
+  Burger = '/burger-menu-16px.svg',
+  Fav = '/fav-16px.svg',
+  Cart = '/cart-16px.svg',
+  Up = '/arrow-up.svg',
 }
 
-export type MenuButtonsProps = {
-  name: string;
-  path: MenuPath;
+export enum HeaderButtonNames {
+  Burger = 'Open burger-menu',
+  Fav = 'Open favorites',
+  Cart = 'Open cart',
+}
+
+export enum FooterButtonName {
+  Top = 'Go to top',
+}
+
+export type ButtonsProps = {
+  name: HeaderButtonNames | FooterButtonName;
+  path: Path;
 };

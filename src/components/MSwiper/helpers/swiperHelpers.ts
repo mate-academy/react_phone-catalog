@@ -1,4 +1,4 @@
-import { SwiperData } from '../../MySwiperProto/types/MSPtypes';
+import { SwiperData } from '../types/slider-types';
 
 export function toggleTrackClass(track: HTMLUListElement, drag: null | number) {
   track.classList.toggle('swiper__track--dragging', drag !== null);

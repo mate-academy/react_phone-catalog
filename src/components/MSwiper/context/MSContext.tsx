@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode, useRef } from 'react';
-import { SwiperData } from '../../MySwiperProto/types/MSPtypes';
+import { SwiperData } from '../types/slider-types';
 import { renderListCreate } from '../helpers/swiperHelpers';
 
 type MSContextType = {

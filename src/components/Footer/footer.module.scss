@@ -1,0 +1,52 @@
+@use '../../shared/constants/colors.scss' as cl;
+
+.footer {
+  display: grid;
+  padding: 32px 16px;
+  height: 257px;
+  width: 100%;
+  box-sizing: border-box;
+  grid-template-rows: 32px auto 32px;
+  row-gap: 32px;
+
+  &__logo {
+    grid-row: 1;
+    justify-self: start;
+    box-sizing: border-box;
+    display: flex;
+    width: 89px;
+    justify-items: flex-start;
+  }
+
+  &__nav {
+    grid-row: 2;
+    justify-self: start;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 65px;
+    justify-content: space-between;
+  }
+
+  .footer-btn-container {
+    grid-row: 3;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .footer-text {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+  }
+
+  .footer-button {
+    width: 32px;
+    height: 32px;
+    box-shadow: 0 0 0 1px cl.$elements;
+    color: #000;
+  }
+}

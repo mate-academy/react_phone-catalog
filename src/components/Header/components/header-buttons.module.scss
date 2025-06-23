@@ -1,0 +1,36 @@
+@use '../../../shared/constants/header-button-size.scss' as *;
+@use '../../../shared/constants/colors.scss' as cl;
+@use '../../../shared/constants/breakpoint' as bp;
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  height: $button-width;
+  box-sizing: border-box;
+
+  .header-button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-shadow: -1px 0 0 cl.$elements;
+  }
+
+  > :not(:first-child) {
+    display: none;
+  }
+
+  @media(min-width: bp.$BREAKPOINT_TAB) {
+    > :first-child {
+      display: none;
+    }
+
+    > :not(:first-child) {
+      display: flex;
+    }
+  }
+
+  @media(min-width: bp.$BREAKPOINT_WIDE) {
+    height: $button-width-wide;
+  }
+}

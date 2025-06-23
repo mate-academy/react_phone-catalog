@@ -1,0 +1,33 @@
+@use '../../../shared/styles/mixins/header-text.scss' as fnt;
+@use '../../../shared/constants/colors.scss' as cl;
+
+.nav-item {
+  display: flex;
+  height: 100%;
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+    text-decoration: none;
+
+    @include fnt.header-text;
+
+    &:active {
+      color: cl.$gray-primary;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 100%;
+        background-color: cl.$gray-primary;
+      }
+    }
+  }
+}
+

@@ -1,27 +1,60 @@
-@use './styles/normalize';
-@use './styles/fonts/fonts';
-@use './styles/breakpoints/breakpoint-const' as *;
-@use './styles/constants/header-size' as hh;
-@use './styles/constants/colors' as cl;
+@use './normalize';
+@use './fonts/fonts';
+@use '../shared/constants/breakpoint' as *;
+@use '../shared/constants/colors.scss' as cl;
 
 * {
   font-family: Montserrat, sans-serif;
 }
 
-main {
-  position: relative;
-  top: hh.$header-hight-mob;
-  margin: 0 16px;
+$header-hight-mob: 48px;
+$header-hight-wide: 64px;
+$footer-hight-mob: 257px;
+$footer-hight-wide: 96px;
+
+
+.App {
+  display: grid;
+  grid-template-rows: $header-hight-mob 1fr $footer-hight-mob;
+  width: 100%;
+  min-height: 100vh;
   background-color: cl.$white;
-  overflow-x: hidden;
+
+  &__header {
+    grid-row: 1;
+    position: sticky;
+    background-color: cl.$white;
+    top: 0;
+    z-index: 100;
+    height: 100%;
+  }
+
+  main {
+    grid-row: 2;
+    position: relative;
+    margin: 0 16px;
+    z-index: 0;
+  }
+
+  &__footer {
+    grid-row: 3;
+  }
 
   @media(min-width: $BREAKPOINT_TAB) {
-    margin: 0 24px;
+    grid-template-rows: $header-hight-mob 1fr $footer-hight-wide;
+
+    main {
+      margin: 0 24px;
+    }
   }
 
   @media(min-width: $BREAKPOINT_WIDE) {
-    top: hh.$header-hight-wide;
-    margin: auto;
-    max-width: 1136px;
+    grid-template-rows: $header-hight-wide 1fr $footer-hight-wide;
+
+    main {
+      margin: auto;
+      max-width: 1136px;
+    }
   }
 }
+

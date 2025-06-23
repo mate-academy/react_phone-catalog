@@ -1,12 +1,16 @@
-export enum RoutePath {
-  Home = '/',
-  Phones = '/phones',
-  Tablets = '/tablets',
-  Accessories = '/accessories',
-}
+import {
+  FooterLabelProp,
+  FooterNavName,
+  FooterRoutePath,
+} from '../../components/Footer/types/footerLinks';
+import {
+  HeaderLabelProp,
+  HeaderNavName,
+  HeaderRoutePath,
+} from '../../components/Header/types/headerLinks';
 
 export type NavigationItem = {
-  name: string;
-  path: RoutePath;
-  labelProp: string;
+  name: HeaderNavName | FooterNavName;
+  path: HeaderRoutePath | FooterRoutePath;
+  labelProp: HeaderLabelProp | FooterLabelProp;
 };

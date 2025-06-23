@@ -1,5 +1,5 @@
-@use '../../app/styles/mixins/h1.scss' as *;
-@use '../../app/styles/breakpoints/breakpoint-const' as *;
+@use '../../shared/constants/breakpoint' as *;
+@use '../../shared/styles/mixins/h1.scss' as *;
 
 .welcome {
   margin: 24px 0;

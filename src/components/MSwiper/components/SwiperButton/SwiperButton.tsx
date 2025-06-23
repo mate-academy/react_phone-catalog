@@ -1,4 +1,4 @@
-import { Direction } from '../../../MySwiperProto/types/MSPtypes';
+import { Direction } from '../../../../shared/types/direction';
 import { useMSContext } from '../../context/MSContext';
 import { getIndex } from '../../helpers/swiperHelpers';
 import { useSafeCheck } from '../../hooks/useSafeCheck';

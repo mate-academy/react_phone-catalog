@@ -1,4 +1,4 @@
-import { SwiperData } from '../MySwiperProto/types/MSPtypes';
+import { SwiperData } from './types/slider-types';
 import { MSProvider } from './context/MSContext';
 import { Swiper } from './components/Swiper';
 

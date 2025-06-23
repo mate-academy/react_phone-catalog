@@ -4,10 +4,10 @@ import { useInit } from './useInit';
 import { useRafLoop } from './useTranslate';
 import { toggleTrackClass, getIndex, clamps } from '../helpers/swiperHelpers';
 import { useResize } from './useResize';
+import { useSafeCheck } from './useSafeCheck';
 
 // change CSS to include/exclude GRID zones on props;
-// move checks on infinite and index to helper;
-
+// add autoplay
 type Params = {
   swCoeff: number;
   anSpeed: number;
@@ -34,18 +34,14 @@ export const useMSCore = ({ swCoeff, snap, anSpeed, treshold }: Params) => {
     treshold,
     gap,
   });
+  const { checker } = useSafeCheck();
 
   useInit();
   useResize({ setByIndex, getIndex });
 
   const start = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     e.preventDefault();
-    if (
-      infinite &&
-      (offset.current < width.current * 2 + gap ||
-        offset.current >
-          width.current * (listLength + 1) + gap * (listLength + 2))
-    ) {
+    if (!checker()) {
       return;
     }
 
@@ -117,9 +113,6 @@ export const useMSCore = ({ swCoeff, snap, anSpeed, treshold }: Params) => {
     onPointerUp: end,
     onPointerCancel: end,
   };
-
-  // #endregion
-  //autoplay
 
   return { handlers, setByIndex };
 };

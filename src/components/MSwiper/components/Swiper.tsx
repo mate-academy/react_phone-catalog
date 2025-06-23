@@ -1,4 +1,4 @@
-import { Direction } from '../../MySwiperProto/types/MSPtypes';
+import { Direction } from '../../../shared/types/direction';
 import { useMSContext } from '../context/MSContext';
 import { useMSCore } from '../hooks/useMSCore';
 import { SwiperButton } from './SwiperButton/SwiperButton';

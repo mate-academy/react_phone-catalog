@@ -1,5 +1,5 @@
-@use '../../../app/styles/breakpoints/breakpoint-const.scss' as *;
-@use '../../../app/styles/constants/colors' as cl;
+@use '../../../shared/constants/breakpoint' as *;
+@use '../../../shared/constants/colors' as cl;
 
 .swiper {
   display: grid;

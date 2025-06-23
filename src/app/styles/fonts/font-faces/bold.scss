@@ -1,8 +1,0 @@
-@use '../../constants/font-weights' as *;
-
-@font-face {
-  font-family: Montserrat;
-  src: url('../../../../../public/fonts/Mont-Bold.otf') format('opentype');
-  font-weight: $bold;
-  font-style: normal;
-}

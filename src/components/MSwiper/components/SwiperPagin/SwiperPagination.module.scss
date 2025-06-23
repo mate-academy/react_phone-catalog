@@ -1,5 +1,5 @@
-@use '../../../../app/styles/breakpoints/breakpoint-const' as *;
-@use '../../../../app/styles/constants/colors' as cl;
+@use '../../../../shared/constants/breakpoint' as *;
+@use '../../../../shared/constants/colors' as cl;
 
 .line-pagination {
   display: flex;

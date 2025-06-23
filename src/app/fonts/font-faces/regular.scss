@@ -1,0 +1,8 @@
+@use '../../../shared/constants/fw_fs.scss' as *;
+
+@font-face {
+  font-family: Montserrat;
+  src: url('../../../../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: $reg;
+  font-style: normal;
+}

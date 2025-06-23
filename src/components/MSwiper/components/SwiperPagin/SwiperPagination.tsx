@@ -17,6 +17,20 @@ export const SwiperPagination: React.FC<Props> = ({
   const length = listLength;
   const index = getIndex(offset.current, width.current, gap);
 
+  const activeClass = () => {
+    if (!infinite) {
+      return index;
+    } else {
+      if (index < 2) {
+        return listLength - 1;
+      } else if (index > listLength + 1) {
+        return 0;
+      } else {
+        return index - 2;
+      }
+    }
+  };
+
   for (let i = 0; i < length; i++) {
     arr.push(i);
   }
@@ -31,9 +45,7 @@ export const SwiperPagination: React.FC<Props> = ({
         >
           <div
             className={classNames(styles['line-element'], {
-              [styles['line-element__active']]: infinite
-                ? li === index - 2
-                : li === index,
+              [styles['line-element__active']]: li === activeClass(),
             })}
           />
         </div>

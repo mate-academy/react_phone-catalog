@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './SwiperSlide.module.scss';
-import { SwiperData } from '../../../MySwiperProto/types/MSPtypes';
+import { SwiperData } from '../../types/slider-types';
 
 type Props = {
   item: SwiperData;
