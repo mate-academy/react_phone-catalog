@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Tablet } from '../../Types/BaseItem';
 import { useCartContext } from '../../CartContext/useCartContext';
 import { Link, useLocation } from 'react-router-dom';
@@ -10,13 +10,22 @@ const HeartFilled = './img/AddFavorAct.png';
 export const Tablets: React.FC = () => {
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [filteredTablets, setFilteredTablets] = useState<Tablet[]>([]);
-  const { addToCart, addToFavorites } = useCartContext();
+  // const { addToCart, addToFavorites } = useCartContext();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('query')?.toLowerCase() || '';
+
+  const {
+    cart,
+    favorites,
+    addToCart,
+    removeFromCart,
+    addToFavorites,
+    removeFromFavorites,
+  } = useCartContext();
 
   const [sortOption, setSortOption] = useState(() => {
     return localStorage.getItem('sortOption') || 'default';
@@ -69,37 +78,43 @@ export const Tablets: React.FC = () => {
     );
   }, [favoriteIds]);
 
-  const toggleFavorite = (tablet: Tablet) => {
-    setFavoriteIds((prev) => {
-      const newSet = new Set(prev);
+  const toggleFavorite = useCallback(
+    (tablet: Tablet) => {
+      const isInFavorites = favorites.some((fav) => fav.id === tablet.id);
 
-      if (newSet.has(tablet.id)) {
-        newSet.delete(tablet.id);
+      if (isInFavorites) {
+        removeFromFavorites(tablet.id);
+        setFavoriteIds((prev) => {
+          const updated = new Set(prev);
+          updated.delete(tablet.id);
+          return updated;
+        });
       } else {
-        newSet.add(tablet.id);
+        addToFavorites(tablet);
+        setFavoriteIds((prev) => new Set(prev).add(tablet.id));
       }
+    },
+    [favorites, addToFavorites, removeFromFavorites],
+  );
 
-      addToFavorites(tablet); // якщо хочеш також зберігати глобально
+  const toggleToCart = useCallback(
+    (tablet: Tablet) => {
+      const isInCart = cart.some((cartItem) => cartItem.item.id === tablet.id);
 
-      return newSet;
-    });
-  };
-
-  const toggleToCart = (tablet: Tablet) => {
-    setAddToCartIds((prev) => {
-      const newSet = new Set(prev);
-
-      if (newSet.has(tablet.id)) {
-        newSet.delete(tablet.id);
+      if (isInCart) {
+        removeFromCart(tablet.id);
+        setAddToCartIds((prev) => {
+          const updated = new Set(prev);
+          updated.delete(tablet.id);
+          return updated;
+        });
       } else {
-        newSet.add(tablet.id);
+        addToCart(tablet);
+        setAddToCartIds((prev) => new Set(prev).add(tablet.id));
       }
-
-      addToCart(tablet); // якщо хочеш також зберігати глобально
-
-      return newSet;
-    });
-  };
+    },
+    [cart, addToCart, removeFromCart],
+  );
 
   useEffect(() => {
     localStorage.setItem('sortOption', sortOption);

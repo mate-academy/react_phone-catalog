@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CartContext, CartItem } from './CartContext';
 import { Phone, Tablet, Accessories } from '../Types/BaseItem';
-// import { CartItem } from '../Pages/Cart/CartItem';
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -34,17 +33,32 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         (cartItem) => cartItem.item.id === item.id,
       );
       if (existingItem) {
-        // Збільшуємо quantity на 1, якщо товар уже є
         return prev.map((cartItem) =>
           cartItem.item.id === item.id ?
             { ...cartItem, quantity: cartItem.quantity + 1 }
           : cartItem,
         );
       } else {
-        // Додаємо новий товар з quantity = 1
         return [...prev, { item, quantity: 1 }];
       }
     });
+  };
+
+  const toggleCart = (item: Phone | Tablet | Accessories) => {
+    setCart((prev) => {
+      const exists = prev.some((cartItem) => cartItem.item.id === item.id);
+      if (exists) {
+        return prev.filter((cartItem) => cartItem.item.id !== item.id);
+      } else {
+        return [...prev, { item, quantity: 1 }];
+      }
+    });
+  };
+
+  const removeFromCart = (itemId: string) => {
+    setCart((prevCart) =>
+      prevCart.filter((cartItem) => cartItem.item.id !== itemId),
+    );
   };
 
   const addToFavorites = (item: Phone | Tablet | Accessories) => {
@@ -57,12 +71,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
-  const removeFromCart = (itemId: string) => {
-    setCart(cart.filter((cartItem) => cartItem.item.id !== itemId));
-  };
-
   const removeFromFavorites = (itemId: string) => {
-    setFavorites(favorites.filter((item) => item.id !== itemId));
+    setFavorites((prev) => prev.filter((item) => item.id !== itemId));
   };
 
   const updateQuantity = (id: string, quantity: number) => {
@@ -90,6 +100,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         cart,
         favorites,
         addToCart,
+        toggleCart, // ✅ доступний у контексті
         addToFavorites,
         removeFromCart,
         removeFromFavorites,

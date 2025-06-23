@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './HotPrices.scss';
 import { Phone } from '../Types/BaseItem';
 import { useCartContext } from '../CartContext/useCartContext';
@@ -11,8 +11,17 @@ export const HotPrices: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const { addToCart, addToFavorites } = useCartContext();
+  // const { addToCart, addToFavorites } = useCartContext();
   const [phonesPerPage, setPhonesPerPage] = useState(4);
+
+  const {
+    cart,
+    favorites,
+    addToCart,
+    removeFromCart,
+    addToFavorites,
+    removeFromFavorites,
+  } = useCartContext();
 
   const [favoriteIds, setFavoriteIds] = useState<Set<string>>(() => {
     const stored = localStorage.getItem('favoriteIds');
@@ -51,37 +60,43 @@ export const HotPrices: React.FC = () => {
     );
   }, [favoriteIds]);
 
-  const toggleFavorite = (phone: Phone) => {
-    setFavoriteIds((prev) => {
-      const newSet = new Set(prev);
+  const toggleFavorite = useCallback(
+    (phone: Phone) => {
+      const isInFavorites = favorites.some((fav) => fav.id === phone.id);
 
-      if (newSet.has(phone.id)) {
-        newSet.delete(phone.id);
+      if (isInFavorites) {
+        removeFromFavorites(phone.id);
+        setFavoriteIds((prev) => {
+          const updated = new Set(prev);
+          updated.delete(phone.id);
+          return updated;
+        });
       } else {
-        newSet.add(phone.id);
+        addToFavorites(phone);
+        setFavoriteIds((prev) => new Set(prev).add(phone.id));
       }
+    },
+    [favorites, addToFavorites, removeFromFavorites],
+  );
 
-      addToFavorites(phone); // якщо хочеш також зберігати глобально
+  const toggleToCart = useCallback(
+    (phone: Phone) => {
+      const isInCart = cart.some((cartItem) => cartItem.item.id === phone.id);
 
-      return newSet;
-    });
-  };
-
-  const toggleToCart = (phone: Phone) => {
-    setAddToCartIds((prev) => {
-      const newSet = new Set(prev);
-
-      if (newSet.has(phone.id)) {
-        newSet.delete(phone.id);
+      if (isInCart) {
+        removeFromCart(phone.id);
+        setAddToCartIds((prev) => {
+          const updated = new Set(prev);
+          updated.delete(phone.id);
+          return updated;
+        });
       } else {
-        newSet.add(phone.id);
+        addToCart(phone);
+        setAddToCartIds((prev) => new Set(prev).add(phone.id));
       }
-
-      addToCart(phone); // якщо хочеш також зберігати глобально
-
-      return newSet;
-    });
-  };
+    },
+    [cart, addToCart, removeFromCart],
+  );
 
   useEffect(() => {
     const controller = new AbortController();

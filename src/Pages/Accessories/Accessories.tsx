@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Accessories as AccessoriesType } from '../../Types/BaseItem';
 
 import { useCartContext } from '../../CartContext/useCartContext';
@@ -15,13 +15,21 @@ export const Accessories: React.FC = () => {
   const [filteredAccessories, setFilteredAccessories] = useState<
   AccessoriesType[]
   >([]);
-  const { addToCart, addToFavorites } = useCartContext();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('query')?.toLowerCase() || '';
+
+  const {
+    cart,
+    favorites,
+    addToCart,
+    removeFromCart,
+    addToFavorites,
+    removeFromFavorites,
+  } = useCartContext();
 
   const [sortOption, setSortOption] = useState(() => {
     return localStorage.getItem('sortOption') || 'default';
@@ -74,37 +82,45 @@ export const Accessories: React.FC = () => {
     );
   }, [favoriteIds]);
 
-  const toggleFavorite = (accessory: AccessoriesType) => {
-    setFavoriteIds((prev) => {
-      const newSet = new Set(prev);
+  const toggleFavorite = useCallback(
+    (accessories: AccessoriesType) => {
+      const isInFavorites = favorites.some((fav) => fav.id === accessories.id);
 
-      if (newSet.has(accessory.id)) {
-        newSet.delete(accessory.id);
+      if (isInFavorites) {
+        removeFromFavorites(accessories.id);
+        setFavoriteIds((prev) => {
+          const updated = new Set(prev);
+          updated.delete(accessories.id);
+          return updated;
+        });
       } else {
-        newSet.add(accessory.id);
+        addToFavorites(accessories);
+        setFavoriteIds((prev) => new Set(prev).add(accessories.id));
       }
+    },
+    [favorites, addToFavorites, removeFromFavorites],
+  );
 
-      addToFavorites(accessory); // якщо хочеш також зберігати глобально
+  const toggleToCart = useCallback(
+    (accessories: AccessoriesType) => {
+      const isInCart = cart.some(
+        (cartItem) => cartItem.item.id === accessories.id,
+      );
 
-      return newSet;
-    });
-  };
-
-  const toggleToCart = (accessory: AccessoriesType) => {
-    setAddToCartIds((prev) => {
-      const newSet = new Set(prev);
-
-      if (newSet.has(accessory.id)) {
-        newSet.delete(accessory.id);
+      if (isInCart) {
+        removeFromCart(accessories.id);
+        setAddToCartIds((prev) => {
+          const updated = new Set(prev);
+          updated.delete(accessories.id);
+          return updated;
+        });
       } else {
-        newSet.add(accessory.id);
+        addToCart(accessories);
+        setAddToCartIds((prev) => new Set(prev).add(accessories.id));
       }
-
-      addToCart(accessory); // якщо хочеш також зберігати глобально
-
-      return newSet;
-    });
-  };
+    },
+    [cart, addToCart, removeFromCart],
+  );
 
   useEffect(() => {
     localStorage.setItem('sortOption', sortOption);

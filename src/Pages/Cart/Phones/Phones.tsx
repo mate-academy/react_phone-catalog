@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Phone } from '../../../Types/BaseItem';
 import './Phones.scss';
 import { useCartContext } from '../../../CartContext/useCartContext';
@@ -10,13 +10,21 @@ const HeartFilled = './img/AddFavorAct.png';
 export const Phones: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
-  const { addToCart, addToFavorites } = useCartContext();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('query')?.toLowerCase() || '';
+
+  const {
+    cart,
+    favorites,
+    addToCart,
+    removeFromCart,
+    addToFavorites,
+    removeFromFavorites,
+  } = useCartContext();
 
   const [sortOption, setSortOption] = useState(() => {
     return localStorage.getItem('sortOption') || 'default';
@@ -69,21 +77,43 @@ export const Phones: React.FC = () => {
     );
   }, [favoriteIds]);
 
-  const toggleFavorite = (phone: Phone) => {
-    setFavoriteIds((prev) => {
-      const newSet = new Set(prev);
+  const toggleFavorite = useCallback(
+    (phone: Phone) => {
+      const isInFavorites = favorites.some((fav) => fav.id === phone.id);
 
-      if (newSet.has(phone.id)) {
-        newSet.delete(phone.id);
+      if (isInFavorites) {
+        removeFromFavorites(phone.id);
+        setFavoriteIds((prev) => {
+          const updated = new Set(prev);
+          updated.delete(phone.id);
+          return updated;
+        });
       } else {
-        newSet.add(phone.id);
+        addToFavorites(phone);
+        setFavoriteIds((prev) => new Set(prev).add(phone.id));
       }
+    },
+    [favorites, addToFavorites, removeFromFavorites],
+  );
 
-      addToFavorites(phone);
+  const toggleToCart = useCallback(
+    (phone: Phone) => {
+      const isInCart = cart.some((cartItem) => cartItem.item.id === phone.id);
 
-      return newSet;
-    });
-  };
+      if (isInCart) {
+        removeFromCart(phone.id);
+        setAddToCartIds((prev) => {
+          const updated = new Set(prev);
+          updated.delete(phone.id);
+          return updated;
+        });
+      } else {
+        addToCart(phone);
+        setAddToCartIds((prev) => new Set(prev).add(phone.id));
+      }
+    },
+    [cart, addToCart, removeFromCart],
+  );
 
   useEffect(() => {
     localStorage.setItem('sortOption', sortOption);
@@ -96,22 +126,6 @@ export const Phones: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('currentPage', currentPage.toString());
   }, [currentPage]);
-
-  const toggleToCart = (phone: Phone) => {
-    setAddToCartIds((prev) => {
-      const newSet = new Set(prev);
-
-      if (newSet.has(phone.id)) {
-        newSet.delete(phone.id);
-      } else {
-        newSet.add(phone.id);
-      }
-
-      addToCart(phone);
-
-      return newSet;
-    });
-  };
 
   const sortedProducts = useMemo(() => {
     const sorted = [...filteredPhones];
@@ -147,8 +161,6 @@ export const Phones: React.FC = () => {
   useEffect(() => {
     const fetchPhones = async () => {
       try {
-        // eslint-disable-next-line no-console
-        console.log('Fetching phones...');
         const response = await fetch('./api/phones.json');
 
         if (!response.ok) {
@@ -156,10 +168,7 @@ export const Phones: React.FC = () => {
         }
 
         const data: Phone[] = await response.json();
-
         setPhones(data);
-        // eslint-disable-next-line no-console
-        console.log('Phones loaded:', data);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
@@ -195,6 +204,7 @@ export const Phones: React.FC = () => {
       <h2 className="phones-available__title">
         {phones.length} Phones Available
       </h2>
+
       <div className="phone-list__boxSort">
         <div>
           <label className="phone-list_sortBy">Sort by:</label>
@@ -227,49 +237,53 @@ export const Phones: React.FC = () => {
       </div>
 
       <div className="phone-list">
-        {paginatedProducts.map((phone: Phone) => (
-          <div
-            key={phone.id}
-            className="phone-card a"
-          >
-            <Link to={`/phones/${phone.id}`}>
-              <img
-                src={phone.images?.[0] || '/img/product-not-found.png'}
-                alt={phone.name}
-                className="phone-cardimage"
-              />
-              <div className="phone-info">
-                <h3 className="phone-cardname">{phone.name}</h3>
-                <p className="phonecardprice">${phone.priceDiscount}</p>
-                <p className="phone-card__detail">
-                  <span>Screen</span> <span>{phone.screen}</span>
-                </p>
-                <p className="phone-card__detail">
-                  <span>Capacity</span> <span>{phone.capacity}</span>
-                </p>
-                <p className="phone-card__detail">
-                  <span>RAM</span> <span>{phone.ram}</span>
-                </p>
+        {paginatedProducts.map((phone: Phone) => {
+          const isInCart = cart.some((c) => c.item.id === phone.id);
+          const isInFavorites = favorites.some((f) => f.id === phone.id);
+
+          return (
+            <div
+              key={phone.id}
+              className="phone-card a"
+            >
+              <Link to={`/phones/${phone.id}`}>
+                <img
+                  src={phone.images?.[0] || '/img/product-not-found.png'}
+                  alt={phone.name}
+                  className="phone-cardimage"
+                />
+                <div className="phone-info">
+                  <h3 className="phone-cardname">{phone.name}</h3>
+                  <p className="phonecardprice">${phone.priceDiscount}</p>
+                  <p className="phone-card__detail">
+                    <span>Screen</span> <span>{phone.screen}</span>
+                  </p>
+                  <p className="phone-card__detail">
+                    <span>Capacity</span> <span>{phone.capacity}</span>
+                  </p>
+                  <p className="phone-card__detail">
+                    <span>RAM</span> <span>{phone.ram}</span>
+                  </p>
+                </div>
+              </Link>
+
+              <div className="phone-card__actions">
+                <button
+                  className={`phone-card__actions__btn-primary ${isInCart ? 'added' : ''}`}
+                  onClick={() => toggleToCart(phone)}
+                >
+                  {isInCart ? 'Added' : 'Add to cart'}
+                </button>
+                <img
+                  onClick={() => toggleFavorite(phone)}
+                  className="phone-card__actions__btn-favorite"
+                  src={isInFavorites ? HeartFilled : HeartEmpty}
+                  alt="Favorite"
+                />
               </div>
-            </Link>
-            <div className="phone-card__actions">
-              <button
-                className={`phone-card__actions__btn-primary ${
-                  addToCartIds.has(phone.id) ? 'added' : ''
-                }`}
-                onClick={() => toggleToCart(phone)}
-              >
-                {addToCartIds.has(phone.id) ? 'Added' : 'Add to cart'}
-              </button>
-              <img
-                onClick={() => toggleFavorite(phone)}
-                className="phone-card__actions__btn-favorite"
-                src={favoriteIds.has(phone.id) ? HeartFilled : HeartEmpty}
-                alt="Favorite"
-              />
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="phones_pagination">

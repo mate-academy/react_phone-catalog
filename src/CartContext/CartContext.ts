@@ -9,6 +9,7 @@ export interface CartItem {
 export interface CartContextProps {
   cart: CartItem[];
   favorites: (Phone | Tablet | Accessories)[];
+  toggleCart: (item: Phone | Tablet | Accessories) => void;
   addToCart: (item: Phone | Tablet | Accessories) => void;
   addToFavorites: (item: Phone | Tablet | Accessories) => void;
   removeFromCart: (itemId: string) => void;

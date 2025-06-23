@@ -35,7 +35,7 @@ export const Cart: React.FC = () => {
               onClick={clearCart}
               className="checkout-button"
             >
-              Clear
+              Checkout
             </button>
           </div>
         </div>

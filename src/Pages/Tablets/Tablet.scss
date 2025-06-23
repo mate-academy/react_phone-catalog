@@ -66,6 +66,7 @@
   height: 100%;
   text-align: center;
   border: 1px solid #ccc;
+  min-height: 405px;
 
   & a {
     text-decoration: none;
@@ -73,11 +74,21 @@
   }
 }
 
+.tablet-cardname {
+  font-size: 14px;
+  font-weight: 600;
+  color: #363535;
+  min-height: 35px;
+}
+
 .tablet-image {
   width: 50%;
   height: 50%;
   border-radius: 8px 8px 0 0;
   transition: transform 0.3s ease-in-out;
+  min-height: 134px;
+  max-height: 134px;
+
 
   &:hover {
     transform: scale(1.1);
