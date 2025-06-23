@@ -29,23 +29,12 @@ z-index: 1000;
   justify-content: center;
 
   &.is-active {
-    border-bottom: 2px solid #313237;
+    color:#313237;
+    border-bottom: 3px solid #313237;
   }
 }
 
 
-.nav__link{
-  padding-bottom: 8px;
-text-decoration: none;
-  color: #89939A;
-  font-size: 12px;
-  line-height: 11px0
-  ; letter-spacing: 4%;
-  &.is-active {
-    color: #0F0F11;
-    border-bottom: 2px solid #313237;
-  }
-}
 .menu__bottom{
 
 position: fixed;
@@ -61,7 +50,9 @@ right: 0;
 
   .visible--mobile {
   display: block !important;
-
+height: 16px;
+width: 16px;
+color:#313237;
   @include mixin.onTablet {
     display: none !important;
 
@@ -76,12 +67,4 @@ right: 0;
 }
 
 
-.nav__list{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap:16px;
-  align-items: center;
-}
+

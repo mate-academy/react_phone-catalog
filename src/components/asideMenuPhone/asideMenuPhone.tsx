@@ -2,37 +2,15 @@ import { NavLink } from 'react-router-dom';
 import styles from './asideMenuPhone.module.scss';
 import classNames from 'classnames';
 import { IconsSvg } from '../icons/icons';
-
-export const AsideMenuPhone = ({ setActiveAsside }) => {
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames(styles.nav__link, { [styles['is-active']]: isActive });
+import { NavBar } from '../navBar';
+import { FaRegHeart } from "react-icons/fa6";
+import { FiShoppingBag } from "react-icons/fi";
+export const AsideMenuPhone = ({ setActiveAsside,getLinkClass }) => {
 
   return (
-    <aside className={styles.menu} id="menu">
-      <nav className={styles.nav} onClick={() => setActiveAsside(false)}>
-        <ul className={styles.nav__list}>
-          <li className={styles.nav__item}>
-            <NavLink to="/" className={getLinkClass}>
-              Home
-            </NavLink>
-          </li>
-          <li className={styles.nav__item}>
-            <NavLink to="/phones" className={getLinkClass}>
-              Phones
-            </NavLink>
-          </li>
-          <li className={styles.nav__item}>
-            <NavLink to="/tablets" className={getLinkClass}>
-              Tablets
-            </NavLink>
-          </li>
-          <li className={styles.nav__item}>
-            <NavLink to="/accessories" className={getLinkClass}>
-              Acessories
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+    <aside className={styles.menu} id="menu" onClick={() => setActiveAsside(false)}>
+
+      <NavBar getLinkClass={getLinkClass} types={ 'asideMenu'} />
 
       <div
         className={styles.menu__bottom}
@@ -46,7 +24,7 @@ export const AsideMenuPhone = ({ setActiveAsside }) => {
             })
           }
         >
-          <IconsSvg name="heart" className={styles['visible--mobile']} />
+          <FaRegHeart className={styles['visible--mobile']} />
         </NavLink>
 
         <div className={styles.divider}></div>
@@ -59,7 +37,7 @@ export const AsideMenuPhone = ({ setActiveAsside }) => {
             })
           }
         >
-          <IconsSvg name="cart" className={styles['visible--mobile']} />
+          <FiShoppingBag className={styles['visible--mobile']} />
         </NavLink>
       </div>
     </aside>

@@ -8,11 +8,11 @@ import { FiShoppingBag } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
+import { NavBar } from '../navBar';
 export const Header = () => {
   const [activeAsside, setActiveAsside] = useState(false);
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.nav__link, { [styles['is-active']]: isActive });
-
   return (
     <>
       <header className={styles.header} id="page-top">
@@ -23,37 +23,14 @@ export const Header = () => {
               src={logo}
               alt="NiceGadgetLogo"
             ></img>
-          </NavLink>
+          </NavLink >
 
-          <nav className={styles.nav}>
-            <ul className={styles.nav__list}>
-              <li className={styles.nav__item}>
-                <NavLink to="/" className={getLinkClass}>
-                  Home
-                </NavLink>
-              </li>
-              <li className={styles.nav__item}>
-                <NavLink to="/phones" className={getLinkClass}>
-                  Phones
-                </NavLink>
-              </li>
-              <li className={styles.nav__item}>
-                <NavLink to="/tablets" className={getLinkClass}>
-                  Tablets
-                </NavLink>
-              </li>
-              <li className={styles.nav__item}>
-                <NavLink to="/accessories" className={getLinkClass}>
-                  Accessories
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
+          <NavBar getLinkClass={getLinkClass } types={'header'} />
         </div>
         <div className={styles.box}>
           {!activeAsside ? <GiHamburgerMenu className={classNames(styles.box__icon,[styles['box__icon--burger']])}
             onClick={() => setActiveAsside(prev => !prev)} /> :
-            <IoMdClose className={classNames(styles.box__icon,[styles['--close']])}
+            <IoMdClose className={classNames(styles.box__icon,[styles['box__icon--close']])}
            onClick={() => setActiveAsside(prev => !prev)}/>}
 
 
@@ -67,7 +44,8 @@ export const Header = () => {
           </NavLink>
         </div>
       </header>
-      {activeAsside && <AsideMenuPhone setActiveAsside={setActiveAsside} />}
+      {activeAsside && <AsideMenuPhone setActiveAsside={setActiveAsside}
+     getLinkClass={getLinkClass} />}
     </>
   );
 };
