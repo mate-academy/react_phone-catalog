@@ -52,7 +52,7 @@ export const Header = () => {
             name={activeAsside ? 'close' : 'menu'}
             onClick={() => setActiveAsside(prev => !prev)}
           />
-          <NavLink to="/favorite">
+          <NavLink to="/favourites">
             <IconsSvg name={'heart'} />
           </NavLink>
           <div className={styles.box__divider}></div>

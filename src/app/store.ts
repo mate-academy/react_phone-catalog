@@ -3,12 +3,15 @@ import productsReducer from '../features/ProductSlice';
 import filterReducer from '../features/FilterSlice';
 import paginationReducer from '../features/PaginationSlice';
 import productDetailsReducer from '../features/ProductDetailsSlice';
+import cartItemsReducer from '../features/CartSlice';
+
 const store = configureStore({
   reducer: {
     products: productsReducer,
     filter: filterReducer,
     pagination: paginationReducer,
     productDetail: productDetailsReducer,
+    cartItem: cartItemsReducer,
   },
 });
 

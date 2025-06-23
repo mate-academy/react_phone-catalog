@@ -9,6 +9,8 @@ import { PageNotFound } from './modules/PageNOTFound/PageNotFound';
 import { AccessoriesPage } from './modules/AccessoriesPage/AccessoriesPage';
 import { TabletPage } from './modules/TabletPage/TabletPage';
 import { DetailsProduct } from './modules/DetailsPage/DetailsProduct';
+import { Cart } from './modules/CartPage/Cart';
+import { FavouritePage } from './modules/FavoritePage/FavouritePage';
 
 export const Root = () => {
   return (
@@ -21,11 +23,12 @@ export const Root = () => {
 
     <Route path=":category/:productId" element={<DetailsProduct />} />
 
-    
+
     <Route path="phones" element={<PhonePage />} />
     <Route path="tablets" element={<TabletPage />} />
     <Route path="accessories" element={<AccessoriesPage />} />
-
+          <Route path="cart" element={<Cart />} />
+          <Route path='favourites' element={<FavouritePage/>}/>
     <Route path="*" element={<PageNotFound />} />
   </Route>
       </Routes>

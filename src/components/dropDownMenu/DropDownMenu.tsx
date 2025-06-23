@@ -25,7 +25,7 @@ type Props = {
   type: 'filter' | 'pagination';
 };
 
-export const DropDownMenu: React.FC<Props> = ({ value, onChange , type}) => {
+export const DropDownMenu: React.FC<Props> = ({ value, onChange, type}) => {
   const [isActive, setIsActive] = useState(false);
     const options = type === 'filter' ? optionsFilter : optionsPagination;
   const selectedOption = options.find(opt => opt.value === value);
@@ -40,7 +40,7 @@ export const DropDownMenu: React.FC<Props> = ({ value, onChange , type}) => {
    <p className={styles.dropDown__label}>{type === 'filter' ? 'Sort by' : 'Items per page'}</p>
     <div  id='selectedLabel' className={styles.dropDown__title}
     onClick={()=>{setIsActive((prev)=>!prev)}}>{selectedOption?.label || 'none'}
-        {!isActive ? <IoIosArrowDown className={styles.dropDown__arrow}/>:
+       {!isActive ? <IoIosArrowDown className={styles.dropDown__arrow}/>:
 <IoIosArrowUp className={styles.dropDown__arrow}/>}
     </div>
    {isActive && <ul className={styles.dropDown__list}>

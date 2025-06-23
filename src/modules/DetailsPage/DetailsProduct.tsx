@@ -104,7 +104,7 @@ if(!product){return}
         <Price
           fullPrice={product.priceRegular}
           discount={product.priceDiscount} />
-            <Buttons />
+            <Buttons product={product } />
 
         <TechDetails
           screen={product.screen}
@@ -124,7 +124,7 @@ if(!product){return}
             objectTech={objectTech} /></div>
 
 </div>
-          <ProductSlider sortedProducts={models} title={'You may also like'} />
+          <ProductSlider sortedProducts={models.slice(0,8)} title={'You may also like'} />
 
       </Container>{' '}
     </>

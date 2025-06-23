@@ -16,8 +16,6 @@ export const ProductList = () => {
   const location = useLocation();
    const category = location.pathname.split('/')[1];
 const categoryProducts = AllProducts.filter(product => product.category === category)
-
-
   const perPages = useAppSelector(state => state.pagination.status);
 const currentPage = useAppSelector(state=>state.pagination.currentPage)
 

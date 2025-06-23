@@ -4,7 +4,7 @@ import { ShopCategories } from './components/shopCategory/ShopCategory';
 import { SliderHomePage } from './components/sliderHomePage';
 import { TitlePages } from '../../components/title/TitlePages';
 import { getNewModels } from '../../components/utils/getNewModels';
-import { useEffect } from 'react';
+
 import { useAppSelector } from '../../app/hooks';
 import { getHotPrices } from '../../components/utils/getHotPrices';
 

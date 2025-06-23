@@ -1,5 +1,6 @@
 @use '../utils/mixin.module.scss' as mixin;
 .buttons{
+  cursor: pointer;
 margin-bottom: 32px;
   display: flex;
   justify-content: space-between;

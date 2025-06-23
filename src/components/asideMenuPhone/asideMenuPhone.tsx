@@ -39,7 +39,7 @@ export const AsideMenuPhone = ({ setActiveAsside }) => {
         onClick={() => setActiveAsside(false)}
       >
         <NavLink
-          to="/favorite"
+          to="/favourites"
           className={({ isActive }) =>
             classNames(styles.buttonWrapper, {
               [styles['is-active']]: isActive,
