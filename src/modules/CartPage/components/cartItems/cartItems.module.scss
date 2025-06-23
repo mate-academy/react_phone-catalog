@@ -1,18 +1,27 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
 .cartItem{
   border:1px solid #E2E6E9;
   border-radius: 16px;
   padding: 16px;
   margin-bottom: 16px;
+@include mixin.onTablet{
+  display: flex;
+align-items: center;
+justify-content: space-between;
 
+}
   &__info{
     height: 80px;
     display: flex;
 align-items: center;
 gap:16px;
 margin-bottom: 16px;
+
   }
   &__link{
     display: flex;
+    justify-content: space-between;
     height: 100%;
     align-items: center;
     gap: 16px;
@@ -32,12 +41,18 @@ line-height: 21px;
 letter-spacing: 0%;
 color: #0F0F11;
 cursor: pointer;
+
 }
 &__quantity{
   display: flex;
   align-items: center;
   height: 32px;
 justify-content: space-between;
+@include mixin.onTablet{
+  display: contents;
+}
+
+
 }
 &__box{
   display: flex;
@@ -64,9 +79,11 @@ justify-content: space-between;
   }
 }
 &__count{
+  color: #4219D0;
   margin-right: 13px;
 }
 &__price{
+  margin: 0;
   font-family: Mont;
 font-weight: 800;
 font-size: 22px;

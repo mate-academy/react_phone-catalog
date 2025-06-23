@@ -5,9 +5,10 @@ import styles from './cartItems.module.scss';
 import { clearOneItem , clearAllCartItem,decrementQuantity,incrementQuantity} from '../../../../features/CartSlice';
 import { IoCloseSharp } from "react-icons/io5";
 import { Product } from '../../../../types/product';
-import { use } from 'chai';
+
 import { useAppDispatch } from '../../../../app/hooks';
 import { Link } from 'react-router-dom';
+
 export const CartItems = ({ products }: Product) => {
   const dispach = useAppDispatch();
 
@@ -21,7 +22,8 @@ export const CartItems = ({ products }: Product) => {
 
    const handleDecrement = (id) => {
     dispach(decrementQuantity(id))
-  }
+   }
+
 console.log(products)
   return (<>
     {products.map(product =>
@@ -40,7 +42,11 @@ console.log(products)
           <p className={styles.cartItem__count}>{product.quantity }</p>
             <FiPlus className={classNames(styles.cartItem__icon, { [styles['cartItem__icon--disabled']]: product.quantity === 5 })}
              onClick={()=>handleIncrement(product.id)}/>
-          </div> <p className={styles.cartItem__price}>${product.priceDiscount * product.quantity }</p>
+          </div>
+ <p className={styles.cartItem__price}>${product.priceDiscount * product.quantity}</p>
         </div>
-    </div>)}</>)
+
+      </div>)}
+
+  </>)
 }

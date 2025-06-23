@@ -1,0 +1,16 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+.cart{
+@include mixin.pageGrid;
+&__wrapper{
+  grid-column: 1/-1;
+  @include mixin.onDesktop{
+grid-column: 1/16;
+  }
+}
+&__checkout{
+  grid-column: 1/-1;
+  @include mixin.onDesktop{
+grid-column: 16/-1;
+  }
+}
+}
