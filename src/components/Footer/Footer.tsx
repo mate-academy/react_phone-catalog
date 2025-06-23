@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
               'Footer-item', 'navbar-logo', 'footer-logo',
             )}
           >
-            <img src="../../../public/img/icons/iSupply_logo.png" alt="" />
+            <img src="img/icons/iSupply_logo.png" alt="" />
           </NavLink>
 
           <div className="footer-links-wrapper">
