@@ -13,18 +13,21 @@ export const Card: React.FC<Props> = ({ product }) => {
   const { favourites, addToFavourite, removeFromFavourite } =
     useFavouriteValues();
 
-  // const location = useLocation();
-  // const root = location.pathname.split('/')[1];
-
   const createLink = () => {
     return `/product/${product.itemId}`;
   };
 
   const productItemId = product.itemId || product.id;
-  const isAddedToCart = cart.some(item => (item.product.itemId || item.product.id) === productItemId);
-  const isAddedToFavourites = favourites.some(item => (item.product.itemId || item.product.id) === productItemId);
+  const isAddedToCart = cart.some(
+    item => (item.product.itemId || item.product.id) === productItemId,
+  );
+  const isAddedToFavourites = favourites.some(
+    item => (item.product.itemId || item.product.id) === productItemId,
+  );
 
-  const imageSrc = product.image ? `/${product.image.replace(/^\/?/, '')}` : '/img/notFoundPage.png';
+  const imageSrc = product.image
+    ? `/${product.image.replace(/^\/?/, '')}`
+    : '/img/notFoundPage.png';
 
   return (
     <div className="card">

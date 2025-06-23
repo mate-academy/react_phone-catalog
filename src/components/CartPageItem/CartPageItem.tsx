@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { CartItem } from '../../types/ContextValues';
 import { useCartValues } from '../../store/CartStore';
 import classNames from 'classnames';
-
-// Якщо у вас інший шлях до стилів, змініть відповідно
 import './CartPageItem.module.scss';
 
 type Props = {
@@ -26,6 +24,7 @@ export const CartPageItem: React.FC<Props> = ({ item }) => {
 
   const handleChangeQuantity = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = +event.target.value;
+
     setNewQuantity(value);
   };
 
@@ -36,6 +35,7 @@ export const CartPageItem: React.FC<Props> = ({ item }) => {
       } else {
         updateQuantity(product.itemId, newQuantity);
       }
+
       setIsOpenQuantity(false);
     }
   };
@@ -67,7 +67,11 @@ export const CartPageItem: React.FC<Props> = ({ item }) => {
           onClick={() => removeFromCart(product)}
         ></div>
         <img
-          src={product.image || ((product as any).images && (product as any).images[0]) || '/img/notFoundPage.png'}
+          src={
+            product.image ||
+            ((product as any).images && (product as any).images[0]) ||
+            '/img/notFoundPage.png'
+          }
           alt="card image"
           className="cartPageItem__top--image"
         />
@@ -112,10 +116,16 @@ export const CartPageItem: React.FC<Props> = ({ item }) => {
           ></div>
         </div>
         {(() => {
-          const price = Number((product as any).priceDiscount ?? product.price ?? (product as any).priceRegular ?? 0);
+          const price = Number(
+            (product as any).priceDiscount ??
+              product.price ??
+              (product as any).priceRegular ??
+              0,
+          );
+
           return <h3 className="cartPageItem__price">${price * quantity}</h3>;
         })()}
       </div>
     </div>
   );
-}; 
+};

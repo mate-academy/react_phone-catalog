@@ -5,11 +5,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-// import prev from '../../../public/img/btn-prev.png';
-// import next from '../../../public/img/btn-next.png';
 
 const images = [
-  
   '/img/hero_iphone16pro_small.jpg',
   '/img/iphone16Pro(3).jpg',
   '/img/iphone16proIMG.jpg',
@@ -35,7 +32,11 @@ export const Banner: React.FC = () => {
             onClick={() => swiperRef.current?.slidePrev()}
             type="button"
           >
-            <img src="/img/btn-prev.png" alt="prev" className="banner__slider__btn-img" />
+            <img
+              src="/img/btn-prev.png"
+              alt="prev"
+              className="banner__slider__btn-img"
+            />
           </button>
           <Swiper
             className="banner__slider__list"
@@ -78,7 +79,11 @@ export const Banner: React.FC = () => {
             onClick={() => swiperRef.current?.slideNext()}
             type="button"
           >
-            <img src="/img/btn-next.png" alt="next" className="banner__slider__btn-img" />
+            <img
+              src="/img/btn-next.png"
+              alt="next"
+              className="banner__slider__btn-img"
+            />
           </button>
         </div>
         <div className="banner__dashes">
@@ -90,7 +95,7 @@ export const Banner: React.FC = () => {
               aria-label={`Go to slide ${index + 1}`}
               role="button"
               tabIndex={0}
-              onKeyDown={(e) => {
+              onKeyDown={e => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   swiperRef.current?.slideToLoop(index);
                 }

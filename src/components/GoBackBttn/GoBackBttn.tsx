@@ -19,11 +19,11 @@ export const GoBackBttn: React.FC<Props> = ({
   const location = useLocation();
 
   const handleGoBack = () => {
-    // Check if there's history to go back to
+  
     if (window.history.length > 1 && location.key !== 'default') {
       navigate(-1);
     } else {
-      // Fallback to specified path or home
+ 
       navigate(fallbackPath);
     }
   };
