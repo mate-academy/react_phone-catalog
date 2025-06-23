@@ -38,8 +38,8 @@ export const cartSlice = createSlice({
       const findItem = state.cartItems.find(item => item.id === action.payload)
       if(findItem && findItem.quantity>1){findItem.quantity-=1}
     },
-    clearALLCartItem: (state) => {
-      state.cartItems = []
+    clearAllCartItem: (state) => {
+      state.cartItems = [];
     }
   }
 })

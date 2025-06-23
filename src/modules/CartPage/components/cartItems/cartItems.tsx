@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { FiMinus } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 import styles from './cartItems.module.scss';
-import { clearOneItem , clearAllCartItem,decrementQuantity,incrementQuantity} from '../../../../features/CartSlice';
+import { clearOneItem ,decrementQuantity,incrementQuantity} from '../../../../features/CartSlice';
 import { IoCloseSharp } from "react-icons/io5";
 import { Product } from '../../../../types/product';
 

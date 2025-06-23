@@ -4,7 +4,10 @@ import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import { AsideMenuPhone } from '../asideMenuPhone';
 import logo from '/public/img/niceLogo.svg';
-import { IconsSvg } from '../icons/icons';
+import { FiShoppingBag } from "react-icons/fi";
+import { FaRegHeart } from "react-icons/fa6";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoMdClose } from "react-icons/io";
 export const Header = () => {
   const [activeAsside, setActiveAsside] = useState(false);
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -48,16 +51,19 @@ export const Header = () => {
           </nav>
         </div>
         <div className={styles.box}>
-          <IconsSvg
-            name={activeAsside ? 'close' : 'menu'}
-            onClick={() => setActiveAsside(prev => !prev)}
-          />
-          <NavLink to="/favourites">
-            <IconsSvg name={'heart'} />
+          {!activeAsside ? <GiHamburgerMenu className={classNames(styles.box__icon,[styles['box__icon--burger']])}
+            onClick={() => setActiveAsside(prev => !prev)} /> :
+            <IoMdClose className={classNames(styles.box__icon,[styles['--close']])}
+           onClick={() => setActiveAsside(prev => !prev)}/>}
+
+
+
+          <NavLink to="/favourites" className={getLinkClass}>
+            <FaRegHeart  className={classNames(styles.box__icon,[styles['box__icon--visible']])} />
           </NavLink>
           <div className={styles.box__divider}></div>
-          <NavLink to="/cart">
-            <IconsSvg name={'cart'} />
+          <NavLink to="/cart" className={getLinkClass}>
+            <FiShoppingBag className={classNames(styles.box__icon,[styles['box__icon--visible']])} />
           </NavLink>
         </div>
       </header>

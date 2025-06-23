@@ -23,7 +23,7 @@ border-bottom: 1px solid #E2E6E9;
 
 padding-left: 24px;
   height: 64px;
- 
+
 
 }
 &__logo{
@@ -117,17 +117,30 @@ justify-content: space-evenly;
 
 border-left: 1px solid #E2E6E9;
 
-@include mixin.onTablet{
-width: 96px;
-height: 48px;
+
 &__divider {
    align-self: stretch;
   border: 1px solid #E2E6E9;
 }
-}
-@include mixin.onDesktop{
-width: 128px;
-height: 64px;
+
+
+&__icon{
+  width: 16px;
+  height: 16px;
+  padding: 16px;
+ &--burger{
+  @include mixin.onTablet{
+    display: none;
+  }
+ }
+
+  &--visible{
+    display: none;
+    @include mixin.onTablet{
+      display: block;
+    }
+
+  }
 }
 
 }

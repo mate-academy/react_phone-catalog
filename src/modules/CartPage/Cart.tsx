@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../app/hooks';
 import { Container } from '../../components/container/Container';
-import { PageNav } from '../../components/pageNav/PageNav';
+
 import { TitlePages } from '../../components/title/TitlePages';
 import styles from './Cart.module.scss';
 import { CartItems } from './components/cartItems/cartItems';
@@ -12,12 +12,15 @@ export const Cart = () => {
     <Container>
       <TitlePages type={'cart'} />
       <div className={styles.cart}>
-        <div className={styles.cart__wrapper}>{products.length > 0 ?
-          <CartItems products={products} /> :
-        <img src={'./img/cart-is-empty.png'} />}</div>
+        <div className={styles.cart__wrapper}>
+          {products.length > 0 &&
+          <CartItems products={products} />}</div>
 
-        <div className={styles.cart__checkout}>
+        {products.length > 0 &&
+          <div className={styles.cart__checkout}>
           <Checkout products={products} />
-        </div></div>
+          </div>}
+        { products.length===0 && <div  className={styles.cart__empty }></div>}
+      </div>
     </Container></>)
 }
