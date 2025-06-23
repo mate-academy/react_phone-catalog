@@ -133,7 +133,7 @@ const FullNavbar: React.FC = () => {
         <NavLink
           to='/'
         >
-          <img src="../../../public/img/icons/iSupply_logo.png" alt="" />
+          <img src="img/icons/iSupply_logo.png" alt="" />
         </NavLink>
         <div className="navbar-burger-icon"
           onClick={() => setSidebarOpen(true)}
@@ -153,7 +153,7 @@ const FullNavbar: React.FC = () => {
               'navbar-item', 'navbar-logo',
             )}
           >
-            <img src="../../../public/img/icons/iSupply_logo.png" alt="" />
+            <img src="img/icons/iSupply_logo.png" alt="" />
           </NavLink>
 
           <NavLink
@@ -357,7 +357,7 @@ const MobileNavbar: React.FC = () => {
         <NavLink
           to='/'
         >
-          <img src="/img/icons/iSupply_logo.png" alt="" />
+          <img src="img/icons/iSupply_logo.png" alt="" />
         </NavLink>
         <div className="navbar-burger-icon"
           onClick={() => setSidebarOpen(true)}
@@ -374,7 +374,7 @@ const MobileNavbar: React.FC = () => {
           <NavLink
             to='/'
           >
-            <img src="/img/icons/iSupply_logo.png" alt="" />
+            <img src="img/icons/iSupply_logo.png" alt="" />
           </NavLink>
           <div className="navbar-burger-icon"
             onClick={() => setSidebarOpen(true)}
