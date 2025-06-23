@@ -180,7 +180,7 @@ export const ItemPage: React.FC = () => {
         <div className="ipage__block1">
           <div className="ipage__imcon">
             <img
-              src={`../../../public/${mainImg}`} //{imgPath}
+              src={`${mainImg}`} //{imgPath}
               alt="here should be an image"
             />
           </div>
@@ -196,7 +196,7 @@ export const ItemPage: React.FC = () => {
               >
                 <img
                   key={`${pic}${item.id}`}
-                  src={`../../../public/${pic}`}
+                  src={`${pic}`}
                   alt="here should be an image"
                 />
               </div>

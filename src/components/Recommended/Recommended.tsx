@@ -170,7 +170,7 @@ export const Recommended: React.FC<Props> = ({ title }) => {
                 className='rec__link'
               >
                 <img
-                  src={`/${item.image}`}
+                  src={`${item.image}`}
                   alt="here should be an image"
                   className='fav__item-image'
                 />

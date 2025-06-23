@@ -230,18 +230,18 @@ $--tablet-width: 640px;
   padding: 0;
 
   &--1 {
-    background-image: url(img/square_banner.png);
+    background-image: url(../../../public/img/square_banner.png);
     background-size: cover;
   }
 
   &--2 {
-    background-image: url(img/banner__2.png);
+    background-image: url(../../../public/img/banner__2.png);
     background-size: cover;
     background-position: center;
   }
 
   &--3 {
-    background-image: url(img/banner_4.png);
+    background-image: url(../../../public/img/banner_4.png);
     background-size: cover;
     background-position: center;
   }
