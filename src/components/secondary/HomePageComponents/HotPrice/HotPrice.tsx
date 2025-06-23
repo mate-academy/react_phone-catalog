@@ -1,23 +1,23 @@
 import { togglePhoneInStorage } from '../../../../utils/togglePhone';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { phonesContext } from '../../../primary/HomePage';
+import { addInCart } from '../../../../utils/addInCart';
+import { Product } from '../../../../types/Product';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './HotPrice.scss';
-import { addInCart } from '../../../../utils/addInCart';
-import { Product } from '../../../../types/Product';
 
-export const HotPrice = () => {
-  const phones = useContext(phonesContext);
+interface Props {
+  phones: Product[];
+}
+
+export const HotPrice: React.FC<Props> = ({ phones }) => {
   const brendContainer = useRef<HTMLDivElement | null>(null);
   const [phonesStorge, setPhonesStorge] = useState<Product[]>([]);
   const [phonesShow, setPhonesShow] = useState<Product[]>([]);
   const [elementsCart, setElementsCart] = useState<Product[]>([]);
 
   useEffect(() => {
-    if (!phones) {
-      return;
-    }
+    if (!phones) return;
 
     const indexToShow = new Set<number>();
     const phonesList: Product[] = [];
@@ -37,10 +37,6 @@ export const HotPrice = () => {
     setPhonesStorge(JSON.parse(localStorage.getItem('phones') || '[]'));
     setElementsCart(JSON.parse(localStorage.getItem('cart') || '[]'));
   }, [phones]);
-
-  if (!phones) {
-    return null;
-  }
 
   const scrollLeft = () => {
     if (brendContainer.current) {
@@ -92,7 +88,11 @@ export const HotPrice = () => {
             return (
               <article key={p.id} className="hot-price__bottom-card">
                 <div className="hot-price__bottom-card-content">
-                  <Link className="link-img" to={`product/${p.name}`}>
+                  <Link
+                    state={{ from: 'Home' }}
+                    className="link-img"
+                    to={`product/${p.name}`}
+                  >
                     <img
                       className="hot-price__bottom-card-img"
                       src={p.images[0]}
@@ -103,8 +103,11 @@ export const HotPrice = () => {
                   <Link
                     className="hot-price__bottom-card-name"
                     to={`product/${p.name}`}
+                    state={{ from: 'Home' }}
                   >
-                    {p.name}
+                    <span className="hot-price__bottom-card-name-text">
+                      {p.name}
+                    </span>
                   </Link>
 
                   <div className="hot-price__bottom-card-prices">
@@ -145,7 +148,9 @@ export const HotPrice = () => {
                         setElementsCart(elements);
                       }}
                     >
-                      Add to cart
+                      {elementsCart.some(obj => obj.id === p.id)
+                        ? 'Added to cart'
+                        : 'Add to card'}
                     </button>
 
                     <div

@@ -14,10 +14,6 @@ export const PhonesList: React.FC<Props> = ({ phonesList }) => {
   const [favourites, setFavourites] = useState<Product[] | []>([]);
   const [elementsCart, setElementsCart] = useState<Product[]>([]);
 
-  if (!phonesList) {
-    return null;
-  }
-
   useEffect(() => {
     setFavourites(JSON.parse(localStorage.getItem('phones') || '[]'));
     setElementsCart(JSON.parse(localStorage.getItem('cart') || '[]'));
@@ -29,11 +25,19 @@ export const PhonesList: React.FC<Props> = ({ phonesList }) => {
         return (
           <article key={phone.id} className="phone-card">
             <div className="phone-card__content">
-              <Link className="phone-card__img" to={`/product/${phone.name}`}>
+              <Link
+                state={{ from: 'Phones' }}
+                className="phone-card__img"
+                to={`/product/${phone.name}`}
+              >
                 <img src={phone.images[0]} alt="Phone-img" />
               </Link>
 
-              <Link to={`/product/${phone.name}`} className="phone-card__box">
+              <Link
+                state={{ from: 'Phones' }}
+                to={`/product/${phone.name}`}
+                className="phone-card__box"
+              >
                 <p className="phone-card__box-p">{phone.name}</p>
               </Link>
 
@@ -69,7 +73,9 @@ export const PhonesList: React.FC<Props> = ({ phonesList }) => {
                     setElementsCart(elements);
                   }}
                 >
-                  Add to cart
+                  {elementsCart.some(obj => obj.id === phone.id)
+                    ? 'Added to cart'
+                    : 'Add to card'}
                 </button>
 
                 <div

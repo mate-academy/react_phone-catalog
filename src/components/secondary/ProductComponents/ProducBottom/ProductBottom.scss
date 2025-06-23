@@ -196,6 +196,8 @@
       &-add {
         width: 100px;
         height: 40px;
+        font-size: 11px;
+        font-weight: 700;
         color: white;
         display: flex;
         border: none;
@@ -285,7 +287,7 @@
 .is-element-in-cart {
   transition: background-color 300ms;
 
-  color: black;
+  color: green;
   background-color: white;
   border: 2px #313237 solid;
 }

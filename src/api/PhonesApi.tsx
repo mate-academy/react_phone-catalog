@@ -1,15 +1,20 @@
 const BASE_URL_API = '../../../../public/api/';
 
-export const getPhonesData = () => {
-  return fetch(`${BASE_URL_API}phones.json`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Cant get data');
-      }
+const delay = (time: number) =>
+  new Promise(resolve => setTimeout(resolve, time));
 
-      return response.json();
-    })
-    .catch(error => {
-      console.error(error);
-    });
+export const getPhonesData = async (url: string) => {
+  try {
+    await delay(500);
+
+    const response = await fetch(`${BASE_URL_API}${url}`);
+
+    if (!response.ok) {
+      throw new Error('Cant get data');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
 };

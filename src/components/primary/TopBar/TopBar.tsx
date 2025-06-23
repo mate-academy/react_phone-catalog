@@ -5,9 +5,9 @@ import classNames from 'classnames';
 import './Topbar.scss';
 
 export const TopBar = () => {
+  const [changesInFavorites, setChangesInFavorites] = useState<boolean>(false);
   const [favourites, setFavourites] = useState<Product[]>([]);
   const [cartContent, setCartContent] = useState<Product[]>([]);
-  const [changesInFavorites, setChangesInFavorites] = useState<boolean>(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 

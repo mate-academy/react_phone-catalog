@@ -1,12 +1,10 @@
-import { getCardsToShow } from './getCardsToShow';
-import { useMemo, useState } from 'react';
+import { useMemo} from 'react';
 import { Product } from '../types/Product';
 
-export const usePagedList = (initialList: Product[]) => {
-  const [cardsToShow] = useState(getCardsToShow());
+export const usePagedList = (initialList: Product[], pages: number) => {
 
   const howButtonsRender = useMemo(() => {
-    const quantity = Math.ceil(initialList?.length / cardsToShow);
+    const quantity = Math.ceil(initialList?.length / pages);
     const result = [];
 
     for (let y = 1; y <= quantity; y++) {
@@ -14,12 +12,12 @@ export const usePagedList = (initialList: Product[]) => {
     }
 
     return result;
-  }, [initialList, cardsToShow]);
+  }, [initialList, pages]);
 
   const filterListPhone = (
     actualButton: number, // active-button-id
     list: Product[],
-    howSplitCards: number,
+    cards: number,
     sortFor: string,
   ) => {
     let NewList = list;
@@ -36,12 +34,6 @@ export const usePagedList = (initialList: Product[]) => {
       case 'Newest':
         NewList = [...list].sort((a, b) => b.priceRegular - a.priceRegular);
         break;
-    }
-
-    let cards = cardsToShow;
-
-    if (howSplitCards) {
-      cards = howSplitCards;
     }
 
     const start = (actualButton - 1) * cards;
@@ -70,5 +62,3 @@ export const usePagedList = (initialList: Product[]) => {
 
   return { ditermineDirection, filterListPhone, howButtonsRender };
 };
-
-export { getCardsToShow };

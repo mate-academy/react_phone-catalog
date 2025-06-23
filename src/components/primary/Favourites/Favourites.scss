@@ -94,7 +94,7 @@
     width: 100%;
 
     &-down-add {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
     }
 
@@ -126,4 +126,19 @@
   color:  green;
   background-color: white;
   border: 2px #313237 solid;
+}
+
+
+.favourites-empty {
+  height: calc(100vh - 150px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__img {
+    width: 300px;
+    height: 100%;
+    object-fit: contain;
+  }
 }

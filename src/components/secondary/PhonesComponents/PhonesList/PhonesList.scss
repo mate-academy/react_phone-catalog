@@ -125,10 +125,14 @@
       width: 170px;
       height: 40px;
       color: white;
+      font-size: 13px;
       display: flex;
       border: none;
       cursor: pointer;
       align-items: center;
+      font-weight: 700;
+      font-family: Montserrat, sans-serif;
+
       justify-content: center;
       background-color: #313237;
 
@@ -182,7 +186,7 @@
 .in-cart {
   transition: background-color 300ms;
 
-  color: black;
+  color: green;
   background-color: white;
   border: 2px #313237 solid;
 }

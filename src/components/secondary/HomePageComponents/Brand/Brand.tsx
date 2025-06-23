@@ -1,18 +1,20 @@
 import { togglePhoneInStorage } from '../../../../utils/togglePhone';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { phonesContext } from '../../../primary/HomePage';
+import { addInCart } from '../../../../utils/addInCart';
+import { Product } from '../../../../types/Product';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './Brand.scss';
-import { addInCart } from '../../../../utils/addInCart';
-import { Product } from '../../../../types/Product';
 
-export const Brand = () => {
+interface Props {
+  phones: Product[];
+}
+
+export const Brand: React.FC<Props> = ({ phones }) => {
   const [phonesShow, setPhonesShow] = useState<Product[]>([]);
   const brendContainer = useRef<HTMLDivElement | null>(null);
   const [phonesStorge, setPhonesStorge] = useState<Product[]>([]);
   const [elementsCart, setElementsCart] = useState<Product[]>([]);
-  const phones = useContext(phonesContext);
 
   useEffect(() => {
     if (!phones) {
@@ -92,7 +94,11 @@ export const Brand = () => {
             return (
               <article key={p.id} className="brend__bottom-phone-card">
                 <div className="brend__bottom-phone-card-content">
-                  <Link className="link-img" to={`product/${p.name}`}>
+                  <Link
+                    state={{ from: 'Home' }}
+                    className="link-img"
+                    to={`product/${p.name}`}
+                  >
                     <img
                       className="brend__bottom-phone-card-img"
                       src={p.images[0]}
@@ -102,9 +108,12 @@ export const Brand = () => {
 
                   <Link
                     to={`product/${p.name}`}
+                    state={{ from: 'Home' }}
                     className="brend__bottom-phone-card-name"
                   >
-                    {p.name}
+                    <span className="hot-price__bottom-card-name-text">
+                      {p.name}
+                    </span>
                   </Link>
 
                   <div className="brend__bottom-phone-card-price">{`$${p.priceRegular}`}</div>
@@ -142,7 +151,9 @@ export const Brand = () => {
                         setElementsCart(elements);
                       }}
                     >
-                      Add to cart
+                      {elementsCart.some(obj => obj.id === p.id)
+                        ? 'Added to cart'
+                        : 'Add to card'}
                     </button>
 
                     <div

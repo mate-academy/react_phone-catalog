@@ -1,44 +1,71 @@
 import { togglePhoneInStorage } from '../../../../utils/togglePhone';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { phonesContext } from '../../../primary/HomePage';
+import { addInCart } from '../../../../utils/addInCart';
+import { useEffect, useRef, useState } from 'react';
+import { Product } from '../../../../types/Product';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './ProductBottom.scss';
-import { addInCart } from '../../../../utils/addInCart';
-import { Product } from '../../../../types/Product';
 
-export const ProductBottom = () => {
-  const phones = useContext(phonesContext);
+interface Props {
+  product: Product | null;
+  allStore: Product[][];
+}
+
+export const ProductBottom: React.FC<Props> = ({ product, allStore }) => {
   const container = useRef<HTMLDivElement | null>(null);
-  const [showPhones, setShowPhones] = useState<Product[]>([]);
-  const [phonesStorge, setPhonesStorge] = useState<Product[]>([]);
+  const [showProducts, setShowProducts] = useState<Product[]>([]);
+  const [productStorge, setProductStorge] = useState<Product[]>([]);
   const [elementsCart, setElementsCart] = useState<Product[]>([]);
+  const [store, setStore] = useState<string>('');
 
   useEffect(() => {
-    if (!phones) {
+    if (!product) {
       return;
     }
 
-    const phonesLength = phones.length;
-    const phonesList: Product[] = [];
+    const currentStoreIndex = allStore.findIndex(store =>
+      store?.some(item => item.name === product.name),
+    );
+
+    if (currentStoreIndex === -1) return;
+
+    const currentStore =
+      allStore.find(store => store?.some(item => item.name === product.name)) ||
+      [];
+
+    const currentStoreLength = currentStore.length;
+    const currentStoreList: Product[] = [];
     const index = new Set<number>();
 
-    while (phonesList.length < 5) {
-      const number = Math.floor(Math.random() * phonesLength);
+    while (currentStoreList.length < 5) {
+      const number = Math.floor(Math.random() * currentStoreLength);
 
       if (!index.has(number)) {
         index.add(number);
-        phonesList.push(phones[number]);
+        currentStoreList.push(currentStore[number]);
       }
     }
 
-    setShowPhones(phonesList);
+    switch (currentStoreIndex) {
+      case 0:
+        setStore('phones');
+        break;
 
-    setPhonesStorge(JSON.parse(localStorage.getItem('phones') || '[]'));
-  }, [phones]);
+      case 1:
+        setStore('accessories');
+        break;
 
-  if (!phones) {
-    return null;
-  }
+      case 2:
+        setStore('tablets');
+        break;
+    }
+
+    const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    setProductStorge(JSON.parse(localStorage.getItem(store) || '[]'));
+
+    setShowProducts(currentStoreList);
+    setElementsCart(storedCart);
+  }, [product]);
 
   const scrollLeft = () => {
     if (container.current) {
@@ -84,17 +111,20 @@ export const ProductBottom = () => {
         </div>
 
         <div ref={container} className="scroll-container-content">
-          {showPhones.map(p => {
+          {showProducts.map(p => {
             return (
               <article key={p.id} className="card">
                 <div className="card__content">
-                  <a href={`/product/${p.name}`}>
+                  <Link state={{ from: 'Product' }} to={`/product/${p.name}`}>
                     <img
+                      onClick={() => {
+                         window.scrollTo({top: 0, behavior: 'smooth'})
+                      }}
                       className="card__content-img"
                       src={`../../../../../public/${p.images[0]}`}
                       alt="Phone-img"
                     />
-                  </a>
+                  </Link>
 
                   <a className="card__content-name" href={`/product/${p.name}`}>
                     {p.name}
@@ -142,14 +172,14 @@ export const ProductBottom = () => {
                     <div
                       className="card__content-down-save"
                       onClick={() => {
-                        const updated = togglePhoneInStorage(p, 'phones');
+                        const updated = togglePhoneInStorage(p, store);
 
-                        setPhonesStorge(updated);
+                        setProductStorge(updated);
                       }}
                     >
                       <div
                         className={classNames('card__content-down-save-img', {
-                          'is-phone-favourites': phonesStorge?.some(
+                          'is-phone-favourites': productStorge?.some(
                             item => item.id === p.id,
                           ),
                         })}

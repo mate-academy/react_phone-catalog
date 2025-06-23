@@ -1,31 +1,31 @@
 import { togglePhoneInStorage } from '../../../../utils/togglePhone';
 import { addInCart } from '../../../../utils/addInCart';
-import { Phone } from '../../../../types/Phone';
+import { Product } from '../../../../types/Product';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './ProductDetails.scss';
 
 interface Props {
-  phone: Phone | null;
+  product: Product | null;
 }
 
-export const ProductDetails: React.FC<Props> = ({ phone }) => {
+export const ProductDetails: React.FC<Props> = ({ product }) => {
   const [activeColor, setActiveColor] = useState<string>('');
   const [activeCapacity, setActiveCapacity] = useState<string>('');
   const [primaryImg, setPrimaryImg] = useState<string | null>(null);
-  const [phonesStorge, setPhonesStorge] = useState<Phone[]>([]);
-  const [elementsCart, setElementsCart] = useState<Phone[]>([]);
+  const [phonesStorge, setPhonesStorge] = useState<Product[]>([]);
+  const [elementsCart, setElementsCart] = useState<Product[]>([]);
 
   useEffect(() => {
-    if (phone !== null) {
-      setPrimaryImg(phone.images[0]);
+    if (product !== null) {
+      setPrimaryImg(product.images[0]);
     }
 
     setPhonesStorge(JSON.parse(localStorage.getItem('phones') || '[]'));
     setElementsCart(JSON.parse(localStorage.getItem('cart') || '[]'));
-  }, [phone]);
+  }, [product]);
 
-  if (phone === null) {
+  if (product === null) {
     return null;
   }
 
@@ -39,7 +39,7 @@ export const ProductDetails: React.FC<Props> = ({ phone }) => {
         />
 
         <ul className="product-details__images-list">
-          {phone.images.map(el => {
+          {product.images.map(el => {
             return (
               <li
                 key={el}
@@ -67,7 +67,7 @@ export const ProductDetails: React.FC<Props> = ({ phone }) => {
           </div>
 
           <ul className="product-colors__list">
-            {phone.colorsAvailable.map(color => {
+            {product.colorsAvailable.map(color => {
               return (
                 <li
                   key={color}
@@ -94,7 +94,7 @@ export const ProductDetails: React.FC<Props> = ({ phone }) => {
           <p className="product-capacity__p">Select capacity</p>
 
           <ul className="product-capacity__list">
-            {phone.capacityAvailable.map(capacity => {
+            {product.capacityAvailable.map(capacity => {
               return (
                 <li
                   key={capacity}
@@ -115,11 +115,11 @@ export const ProductDetails: React.FC<Props> = ({ phone }) => {
         <div className="product-price">
           <div className="product-price__prices">
             <p className="product-price__prices-regular">
-              ${phone.priceRegular}
+              ${product.priceRegular}
             </p>
 
             <p className="product-price__prices-discount">
-              ${phone.priceDiscount}
+              ${product.priceDiscount}
             </p>
           </div>
 
@@ -127,11 +127,11 @@ export const ProductDetails: React.FC<Props> = ({ phone }) => {
             <button
               className={classNames('product-price__buttons-cart', {
                 'is-element-in-cart': elementsCart.some(
-                  el => el.id === phone.id,
+                  el => el.id === product.id,
                 ),
               })}
               onClick={() => {
-                const elements = addInCart(phone);
+                const elements = addInCart(product);
 
                 setElementsCart(elements);
               }}
@@ -142,7 +142,7 @@ export const ProductDetails: React.FC<Props> = ({ phone }) => {
             <button
               className="product-price__buttons-favourites"
               onClick={() => {
-                const updated = togglePhoneInStorage(phone, 'phones');
+                const updated = togglePhoneInStorage(product, 'phones');
 
                 setPhonesStorge(updated);
               }}
@@ -152,7 +152,7 @@ export const ProductDetails: React.FC<Props> = ({ phone }) => {
                   'product-price__buttons-favourites-icon',
                   {
                     'is-phone-favourites': phonesStorge?.some(
-                      item => item.id === phone.id,
+                      item => item.id === product.id,
                     ),
                   },
                 )}
@@ -164,19 +164,19 @@ export const ProductDetails: React.FC<Props> = ({ phone }) => {
         <ul className="characteristics">
           <li className="characteristics__item">
             <div>Screen</div>
-            <div>{phone.screen}</div>
+            <div>{product.screen}</div>
           </li>
           <li className="characteristics__item">
             <div>Resolution</div>
-            <div>{phone.resolution}</div>
+            <div>{product.resolution}</div>
           </li>
           <li className="characteristics__item">
             <div>processor</div>
-            <div>{phone.processor}</div>
+            <div>{product.processor}</div>
           </li>
           <li className="characteristics__item">
             <div>RAM</div>
-            <div>{phone.ram}</div>
+            <div>{product.ram}</div>
           </li>
         </ul>
       </div>

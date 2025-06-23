@@ -1,15 +1,17 @@
-import { Phone } from '../../../../types/Phone';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { Product } from '../../../../types/Product';
 import './ProductTop.scss';
 
 interface Props {
-  phone: Phone | null;
+  product: Product | null;
 }
 
-export const ProductTop: React.FC<Props> = ({ phone }) => {
-  if (phone === null) {
+export const ProductTop: React.FC<Props> = ({ product }) => {
+  if (product === null) {
     return null;
   }
+
+  const {state} = useLocation();
 
   return (
     <section className="product-top">
@@ -27,11 +29,11 @@ export const ProductTop: React.FC<Props> = ({ phone }) => {
 
             <div className="product-top__breadcrumb-arrow-right"></div>
 
-            <p className="product-top__breadcrumb-path-0">Phones</p>
+            <p className="product-top__breadcrumb-path-0">{state.from}</p>
 
             <div className="product-top__breadcrumb-arrow-right"></div>
 
-            <p className="product-top__breadcrumb-path-1">{phone.name}</p>
+            <p className="product-top__breadcrumb-path-1">{product.name}</p>
           </ul>
         </nav>
 
@@ -43,7 +45,7 @@ export const ProductTop: React.FC<Props> = ({ phone }) => {
           </Link>
         </div>
 
-        <h1 className="product-top__h1">{phone.name}</h1>
+        <h1 className="product-top__h1">{product.name}</h1>
       </div>
     </section>
   );

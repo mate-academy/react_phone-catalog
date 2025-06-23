@@ -1,25 +1,25 @@
-import { Phone } from '../../../../types/Phone';
+import { Product } from '../../../../types/Product';
 import './AboutUs.scss';
 
 type Props = {
-  phone: Phone | null;
+  product: Product | null;
 };
 
-export const AboutUs: React.FC<Props> = ({ phone }) => {
-  if (phone === null) {
+export const AboutUs: React.FC<Props> = ({ product }) => {
+  if (product === null) {
     return null;
   }
 
-  const splitCell = phone.cell.slice(0, 4).join(', ');
+  const splitCell = product.cell.slice(0, 4).join(', ');
 
   const characteristics = [
-    ['Screen', phone.screen],
-    ['Resolution', phone.resolution],
-    ['Processor', phone.processor],
-    ['RAM', phone.ram],
-    ['Built in memory', phone.capacity],
-    ['Camera', phone.camera],
-    ['Zoom', phone.zoom],
+    ['Screen', product.screen],
+    ['Resolution', product.resolution],
+    ['Processor', product.processor],
+    ['RAM', product.ram],
+    ['Built in memory', product.capacity],
+    ['Camera', product.camera],
+    ['Zoom', product.zoom],
     ['Cell', splitCell],
   ];
 
@@ -28,7 +28,7 @@ export const AboutUs: React.FC<Props> = ({ phone }) => {
       <div className="AboutUs-content">
         <h2 className="AboutUs-h2">About</h2>
 
-        {phone.description.map(item => {
+        {product.description.map(item => {
           return (
             <div key={item.title} className="AboutUs-container">
               <h3 className="AboutUs-content__title">{item.title}</h3>

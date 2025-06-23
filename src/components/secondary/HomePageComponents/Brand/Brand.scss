@@ -143,21 +143,26 @@
         }
 
         &-name {
-          font-size: 14px;
-          width: 100%;
-          line-height: 21px;
+        width: 100%;
 
-          margin-bottom: 8px;
+        height: 40px;
+        text-decoration: none;
+        margin-bottom: 8px;
+        cursor: default;
+
+        &-text {
           font-family: Montserrat, sans-serif;
-          text-decoration: none;
-          color: #313237;
-          height: 40px;
           transition: color 300ms;
+          color: #313237;
+          line-height: 21px;
+          font-size: 14px;
+          cursor: pointer;
 
           &:hover {
             color: #bd0432;
           }
         }
+      }
 
         &-img {
           height: 129px;
@@ -197,7 +202,7 @@
               height: 1px;
               width: 100%;
               top: -8px;
-              background-color: #E2E6E9;
+              background-color: #e2e6e9;
               position: absolute;
             }
           }
@@ -215,8 +220,11 @@
             height: 40px;
             color: white;
             display: flex;
+            font-size: 11px;
+
             border: none;
             cursor: pointer;
+            font-weight: 700;
             align-items: center;
             justify-content: center;
             background-color: #313237;

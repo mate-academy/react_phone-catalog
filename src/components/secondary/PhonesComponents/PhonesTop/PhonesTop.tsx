@@ -1,8 +1,9 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSaveFilterInParams } from '../../../../utils/saveFilterInParams';
+import { Product } from '../../../../types/Product';
+import { Link} from 'react-router-dom';
 import classNames from 'classnames';
 import { useState } from 'react';
 import './PhonesTop.scss';
-import { Product } from '../../../../types/Product';
 
 type Props = {
   itemsPerPage: number | null;
@@ -19,16 +20,7 @@ export const PhonesTop: React.FC<Props> = ({
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
   const doActivQuantitySelect = () => setIsQuantityOpen(prev => !prev);
   const doActivSortSelect = () => setIsSortOpen(prev => !prev);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const saveFilterParams = (key: string, value: string | number) => {
-    const newSearchParams = new URLSearchParams(searchParams);
-
-    newSearchParams.set(key, String(value));
-
-    setSearchParams(newSearchParams);
-  };
+  const {saveFilterInParams} = useSaveFilterInParams()
 
   return (
     <section className="phones-top">
@@ -80,7 +72,7 @@ export const PhonesTop: React.FC<Props> = ({
                       'dropdown-activ-item': sortSelect === item,
                     })}
                     onClick={() => {
-                      saveFilterParams('filter01', item);
+                      saveFilterInParams('filter01', item);
                     }}
                   >
                     {item}
@@ -120,7 +112,7 @@ export const PhonesTop: React.FC<Props> = ({
                       'dropdown-activ-item': itemsPerPage === y,
                     })}
                     onClick={() => {
-                      saveFilterParams('filter02', y);
+                      saveFilterInParams('filter02', y);
                     }}
                   >
                     {y}
