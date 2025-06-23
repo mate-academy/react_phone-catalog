@@ -20,7 +20,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  box-shadow: 0px 1px 0px 0px #E2E6E9;
+  box-shadow: 0 1px 0 0 #e2e6e9;
 }
 
 .headerMenu__logo {
@@ -40,7 +40,7 @@
 .headerMenu__button {
   display: flex;
   justify-self: end;
-  border-left: 1px solid #E2E6E9;
+  border-left: 1px solid #e2e6e9;
 
   @include on-tablet {
     display: none;
@@ -72,7 +72,7 @@
 .bodyMenu__nav_link {
   text-decoration: none;
   text-transform: uppercase;
-  color: #89939A;
+  color: #89939a;
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
@@ -82,7 +82,7 @@
   border-bottom: 2px solid transparent;
 
   &:hover {
-    color:#313237;
+    color: #313237;
   }
 
   &.is_active {
@@ -98,7 +98,7 @@
 }
 
 .icon_favourites {
-  border-right: 1px solid #E2E6E9;
+  border-right: 1px solid #e2e6e9;
 }
 
 .MobileMenu__user_icon {
@@ -108,7 +108,7 @@
   justify-content: center;
   width: 50%;
   height: 64px;
-  border-top: 1px solid #E2E6E9;
+  border-top: 1px solid #e2e6e9;
   transition: all 0.3s;
   text-decoration: none;
   padding-bottom: 4px;
@@ -126,8 +126,8 @@
   &::after {
     content: attr(data-count);
     position: absolute;
-    background-color: #EB5757;
-    border: 1px solid  #FFFFFF;
+    background-color: #eb5757;
+    border: 1px solid #fff;
     color: #fff;
     font-size: 10px;
     font-weight: 700;
@@ -156,7 +156,6 @@
 }
 
 .delete-icon {
-  @extend .icon;
   width: 48px;
   height: 48px;
   display: flex;
@@ -193,7 +192,7 @@
     right: 7px;
     width: 14px;
     height: 14px;
-    background: #EB5757;
+    background: #eb5757;
     color: #fff;
     border: 1px solid #fff;
     border-radius: 50%;
@@ -224,4 +223,3 @@
     }
   }
 }
-

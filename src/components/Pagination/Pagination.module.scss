@@ -18,17 +18,20 @@
     align-items: center;
     justify-content: center;
     background: #fff;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
     color: #313237;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s, border 0.2s, color 0.2s;
+    transition:
+      background 0.2s,
+      border 0.2s,
+      color 0.2s;
     margin: 0;
 
     &--main {
       background: #fff;
-      border: 1px solid #E2E6E9;
+      border: 1px solid #e2e6e9;
       color: #313237;
     }
 
@@ -41,7 +44,7 @@
     &--prev,
     &--next {
       background: #fff no-repeat center/16px;
-      border: 1px solid #B4BDC3;
+      border: 1px solid #b4bdc3;
       width: 32px;
       height: 32px;
       padding: 0;
@@ -64,7 +67,7 @@
 
     &--prev:disabled,
     &--next:disabled {
-      border: 1px solid #E2E6E9;
+      border: 1px solid #e2e6e9;
       background-color: #fff;
       opacity: 0.5;
       cursor: not-allowed;

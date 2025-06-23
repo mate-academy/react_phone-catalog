@@ -1,7 +1,5 @@
 @import '../../styles/common';
 
-// ... залишаю тільки специфічні стилі tabletsPage, видаляю все, що стосується .breadcrumbs ...
-
 .tabletsPage {
   &__title {
     font-size: 32px;
@@ -16,7 +14,7 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
-    color: #89939A;
+    color: #89939a;
     margin: 0 0 32px;
   }
 

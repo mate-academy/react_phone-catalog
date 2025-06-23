@@ -58,7 +58,9 @@
     line-height: 24px;
     color: #89939A;
     margin: 16px;
+
     @media (min-width: 640px) { margin: 24px; }
+
     @media (min-width: 1200px) { margin: 32px; }
   }
 }

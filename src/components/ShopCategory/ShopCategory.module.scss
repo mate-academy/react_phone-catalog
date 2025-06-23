@@ -6,17 +6,16 @@
 }
 
 .shop_category {
-  @include page-grid;
-
   margin-bottom: 56px;
   padding: 0 $padding-phone;
+  @include page-grid;
 
   @include on-tablet {
     padding: 0 $padding-tablet;
   }
 
   &__title {
-    color: $main-white-color;
+    color: #313237;
     font-size: 22px;
     font-weight: 700;
     line-height: 1.4;
@@ -33,12 +32,15 @@
   }
 
   &__box {
-    @include page-grid;
-
     grid-column: 1 / -1;
+    @include page-grid;
 
     &--card {
       grid-column: span 4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
 
       @include on-desktop-small {
         grid-column: span 8;
@@ -47,24 +49,22 @@
   }
 }
 
-.shop_category__box--card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-}
-
 .shop_category__card--img-link {
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   margin-bottom: 24px;
-  background-color: #6d6474; // default for phones
+  background-color: #6d6474;
 }
 
-.shop_category__box--card.tablets-bg .shop_category__card--img-link { background-color: #89939A; }
-.shop_category__box--card.accessories-bg .shop_category__card--img-link { background-color: #963455; }
+.shop_category__box--card.tablets-bg .shop_category__card--img-link {
+  background-color: #89939a;
+}
+
+.shop_category__box--card.accessories-bg .shop_category__card--img-link {
+  background-color: #963455;
+}
 
 .shop_category__card--img {
   position: relative;
@@ -91,7 +91,7 @@
 
 .shop_category__card {
   &--title {
-    color: $main-white-color;
+    color: #313237;
     margin-bottom: 4px;
     font-size: 20px;
     line-height: 11px;
@@ -105,7 +105,7 @@
   }
 
   &--description {
-    color: $light-grey-color;
+    color: #89939a;
     font-size: 14px;
     line-height: 21px;
     font-weight: 400;

@@ -1,19 +1,17 @@
 @import '../../styles/common';
 
 .header {
-  @include page-grid;
-
- 
   width: 100%;
-  background-color:  #FFFFFF;
+  background-color: #fff;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #E2E6E9;
+  border-bottom: 1px solid #e2e6e9;
   z-index: 5;
   opacity: 0.9;
   box-sizing: border-box;
   transform: translateZ(0);
   will-change: transform;
+  @include page-grid;
 
   &__logo {
     width: 96px;
@@ -57,7 +55,7 @@
       position: relative;
       text-decoration: none;
       text-transform: uppercase;
-      color: #89939A;
+      color: #89939a;
       font-size: 12px;
       font-weight: 800;
       line-height: 0.92;
@@ -96,7 +94,7 @@
       justify-content: center;
       width: 48px;
       height: 48px;
-      border-left: 1px solid #E2E6E9;
+      border-left: 1px solid #e2e6e9;
       transition: box-shadow 0.5s ease;
 
       // Мобільна версія (до 640px)
@@ -105,7 +103,7 @@
         position: absolute;
         top: 6px;
         right: 14px;
-        background-color: #EB5757;
+        background-color: #eb5757;
         border: 1px solid #fff;
         color: #fff;
         font-size: 10px;
@@ -144,7 +142,7 @@
   &__menu {
     display: flex;
     justify-self: end;
-    border-left: 1px solid #E2E6E9;
+    border-left: 1px solid #e2e6e9;
     grid-column: 4 / span 1;
     min-width: max-content;
 
@@ -205,7 +203,7 @@
     right: 6px;
     width: 14px;
     height: 14px;
-    background: #EB5757;
+    background: #eb5757;
     color: #fff;
     border: 1px solid #fff;
     border-radius: 50%;
@@ -236,5 +234,3 @@
     }
   }
 }
-
- 

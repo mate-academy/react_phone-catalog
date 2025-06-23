@@ -1,11 +1,8 @@
 @import '../../styles/common';
 
 .product-description {
-  
-
   max-width: 1136px;
   padding-top: 16px;
-  
 
   @include on-tablet {
     margin: 0 auto;
@@ -85,7 +82,7 @@
     align-items: center;
     width: 49px;
     height: 49px;
-    border: 1px solid #C4C4C4;
+    border: 1px solid #c4c4c4;
 
     @include on-tablet {
       width: 35px;
@@ -133,8 +130,10 @@
     }
 
     @media (min-width: 640px) and (max-width: 1199px) {
-      width: 320px;
-      min-width: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-right: 0;
+      padding-left: 0;
     }
   }
 
@@ -145,15 +144,6 @@
     align-items: center;
     width: 100%;
     max-width: 100%;
-   
-
-    @media (min-width: 640px) and (max-width: 1199px) {
-      margin-top: 40px !important;
-      max-width: 600px;
-      margin: 0 auto;
-      padding-right: 0;
-      padding-left: 0;
-    }
 
     @media (min-width: 1200px) {
       padding-right: 32px;
@@ -161,7 +151,7 @@
     }
 
     &--text {
-      color:  #89939A;
+      color: #89939a;
     }
 
     &--textId {
@@ -182,19 +172,19 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    box-shadow: 0 0 10px  #313237;
+    box-shadow: 0 0 10px #313237;
     transition:
       outline 0.5s,
       border 0.5s;
 
     &:hover {
-      border: 2px solid #FFFFFF;
-      outline: 1px solid  #89939A;
+      border: 2px solid #fff;
+      outline: 1px solid #89939a;
     }
   }
 
   &__colorActive {
-    outline: 1px solid  #313237;
+    outline: 1px solid #313237;
   }
 
   &__divider {
@@ -207,7 +197,7 @@
     padding-top: 24px;
 
     &--text {
-      color: #89939A;
+      color: #89939a;
       font-size: 12px;
       font-weight: 600;
       line-height: 15px;
@@ -217,8 +207,7 @@
 
   &__capacityList {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: 8px;
     width: 100%;
     padding-top: 8px;
@@ -238,10 +227,13 @@
     justify-content: center;
     font-size: 14px;
     font-weight: 700;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
     background: #fff;
     color: #313237;
-    transition: border 0.2s, background 0.2s, color 0.2s;
+    transition:
+      border 0.2s,
+      background 0.2s,
+      color 0.2s;
     cursor: pointer;
     box-sizing: border-box;
     padding: 0;
@@ -265,7 +257,7 @@
       height: 31px;
       gap: 8px;
       font-weight: 700;
-      color:  #313237;
+      color: #313237;
     }
 
     &--fullprice {
@@ -275,7 +267,7 @@
       height: 31px;
       gap: 8px;
       font-weight: 400;
-      color: #89939A;
+      color: #89939a;
       text-decoration: line-through;
     }
   }
@@ -287,8 +279,6 @@
     align-items: center;
     justify-content: flex-start;
     padding-top: 0;
-
-   
   }
 
   &__add {
@@ -336,17 +326,20 @@
     font-weight: 700;
     line-height: 21px;
     text-align: center;
-    
+
     margin: 0;
     padding: 0;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s, border 0.2s;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent !important;
     color: #27ae60;
-    border: 1.5px solid #E2E6E9;
+    border: 1.5px solid #e2e6e9;
 
     @media (min-width: 1200px) {
       width: 263px;
@@ -354,7 +347,7 @@
 
     &:hover {
       background: #eafaf1;
-      border-color: #E2E6E9;
+      border-color: #e2e6e9;
     }
   }
 
@@ -388,14 +381,14 @@
     grid-template-columns: 120px 1fr;
     gap: 8px 32px;
     width: 100%;
-    margin: 0 0 24px 0;
+    margin: 0 0 24px;
 
     &__item {
       display: contents;
     }
 
     &__item--name {
-      color: #89939A;
+      color: #89939a;
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;
@@ -425,7 +418,7 @@
     }
 
     &--title {
-      color:  #313237;
+      color: #313237;
       font-weight: 600;
       font-size: 20px;
       line-height: 26px;
@@ -444,7 +437,7 @@
     }
 
     &--text {
-      color: #89939A;
+      color: #89939a;
       font-weight: 500;
       font-size: 14px;
       line-height: 21px;
@@ -465,7 +458,7 @@
     }
 
     &--title {
-      color:  #313237;
+      color: #313237;
       font-weight: 600;
       font-size: 20px;
       line-height: 26px;
@@ -491,7 +484,7 @@
       }
 
       &__item--name {
-        color: #89939A;
+        color: #89939a;
         font-size: 14px;
         font-weight: 600;
         line-height: 21px;
@@ -523,7 +516,6 @@
   }
 
   @include on-desktop-small {
-    
     gap: 64px;
   }
 }
@@ -546,20 +538,4 @@
 .icon {
   width: auto;
   height: auto;
-}
-
-.product-description__images {
-  @include on-desktop-small {
-    width: 464px;
-  }
-}
-
-.product-description__order {
-  display: block;
-  flex-direction: column;
-  align-items: flex-start;
-
-  @media (max-width: 639px) {
-    display: block;
-  }
 }

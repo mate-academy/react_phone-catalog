@@ -7,8 +7,6 @@ import { useValues } from '../../store/ProductContext';
 import { SortOptions } from '../../types/SortOptions';
 import { Loader } from '../Loader';
 import classNames from 'classnames';
-import arrowDown from '/img/arrow-down.png';
-import arrowUp from '/img/arrow-up.png';
 
 import { Card } from '../Card';
 import { Pagination } from '../Pagination/Pagination';
@@ -69,7 +67,8 @@ const Dropdown: React.FC<DropdownProps> = ({
   onSelect,
   onBlur,
 }) => {
-  const currentOption = options.find(opt => opt.value === currentValue)?.label || options[0].label;
+  const currentOption =
+    options.find(opt => opt.value === currentValue)?.label || options[0].label;
 
   return (
     <div className={styles.dropdownBlock}>
@@ -81,7 +80,11 @@ const Dropdown: React.FC<DropdownProps> = ({
         onBlur={onBlur}
       >
         <span className={styles.dropdownValue}>{currentOption}</span>
-        <img src={isOpen ? arrowUp : arrowDown} alt="arrow" className={styles.dropdownIcon} />
+        <img
+          src={isOpen ? '/img/arrow-up.png' : '/img/arrow-down.png'}
+          alt="arrow"
+          className={styles.dropdownIcon}
+        />
         {isOpen && (
           <div className={styles.dropdownList}>
             {options.map(opt => (
@@ -111,8 +114,7 @@ export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
     useValues();
   const sort = searchParams.get('sort' as SortOptions) || SortOptions.NEWEST;
   const itemsOnPage =
-    searchParams.get('itemsOnPage' as ItemsOnPageOptions) ||
-    '16';
+    searchParams.get('itemsOnPage' as ItemsOnPageOptions) || '16';
   const currentPage = searchParams.get('page') || DEFAULT_PAGE;
 
   const { preparedProducts } = getPreparedProducts(
@@ -131,7 +133,7 @@ export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
     { value: SortOptions.ALPABETICALLY, label: 'Alphabetically' },
     { value: SortOptions.CHEAPEST, label: 'Cheapest' },
   ];
-  
+
   const itemsOptions: DropdownOption[] = [
     { value: '4', label: '4' },
     { value: '8', label: '8' },
@@ -208,4 +210,4 @@ export const ProductsList: React.FC<Props> = ({ productsCategory }) => {
       )}
     </>
   );
-}; 
+};

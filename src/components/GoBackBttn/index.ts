@@ -1,1 +1,1 @@
-export { GoBackBttn } from './GoBackBttn';
+export * from './GoBackBttn';

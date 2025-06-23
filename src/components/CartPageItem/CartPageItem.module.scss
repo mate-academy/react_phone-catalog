@@ -1,15 +1,13 @@
 @import '../../styles/common';
 
 .cartPageItem {
-  @include page-grid;
-
   display: flex;
   flex-direction: column;
   background-color: #fff;
   min-width: 288px;
   min-height: 120px;
   padding: 0;
-  border: 1px solid #E2E6E9;
+  border: 1px solid #e2e6e9;
 
   @include on-tablet {
     min-width: 592px;
@@ -39,11 +37,12 @@
       margin: auto 0;
       width: 32px;
       height: 32px;
-      
       background-image: url('/img/close_def.png');
       background-repeat: no-repeat;
       background-position: center;
       background-size: 16px 16px;
+      border: none;
+      background-color: transparent;
       cursor: pointer;
       transition: background-image 0.2s;
 
@@ -91,7 +90,7 @@
   }
 
   &__price {
-    color:  #313237;
+    color: #313237;
     font-size: 22px;
     font-weight: 700;
     line-height: 31px;
@@ -103,7 +102,7 @@
 .card__decreaseQuantity {
   width: 32px;
   height: 32px;
-  border: 1px solid #E2E6E9;
+  border: 1px solid #e2e6e9;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px 16px;
@@ -140,7 +139,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color:  #313237;
+  color: #313237;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -152,14 +151,14 @@
     width: 32px;
     height: 32px;
     outline: none;
-    color:  #313237;
+    color: #313237;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
     letter-spacing: 0;
     text-align: center;
-    background-color: #FFF;
-    border: 1px solid  #313237;
+    background-color: #fff;
+    border: 1px solid #313237;
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
@@ -169,7 +168,6 @@
   }
 }
 
-// Responsive design
 @media (max-width: 768px) {
   .cartPageItem {
     grid-template-columns: 60px 1fr;
@@ -235,4 +233,4 @@
       text-align: center;
     }
   }
-} 
+}

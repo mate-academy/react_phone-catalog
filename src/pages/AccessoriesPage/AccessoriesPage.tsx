@@ -7,7 +7,9 @@ import styles from './Accessories.module.scss';
 export const AccessoriesPage: React.FC = () => {
   return (
     <div className="page-container">
-      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Accessories' }]} />
+      <Breadcrumbs
+        items={[{ label: 'Home', href: '/' }, { label: 'Accessories' }]}
+      />
       <div className={styles.accessoriesPage}>
         <div className={styles.accessoriesPage__list}>
           <ProductsList productsCategory={ProductsCategory.ACCESSORIES} />
@@ -15,4 +17,4 @@ export const AccessoriesPage: React.FC = () => {
       </div>
     </div>
   );
-}; 
+};

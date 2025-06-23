@@ -5,10 +5,12 @@
   width: 32px;
   height: 32px;
   background-color: #fff;
-  border: 1px solid #B4BDC3;
+  border: 1px solid #b4bdc3;
   box-sizing: border-box;
   padding: 0;
-  transition: border-color 0.2s, opacity 0.2s;
+  transition:
+    border-color 0.2s,
+    opacity 0.2s;
   cursor: pointer;
   flex-shrink: 0;
 
@@ -16,21 +18,21 @@
   background-position: center;
   background-size: 16px 16px;
 
-  &[data-direction="prev"] {
+  &[data-direction='prev'] {
     background-image: url('/img/btn-prev.png');
   }
 
-  &[data-direction="next"] {
+  &[data-direction='next'] {
     background-image: url('/img/btn-next.png');
+  }
+
+  &:disabled {
+    border-color: #e2e6e9;
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   &:hover:not(:disabled) {
     border-color: #313237;
   }
-
-  &:disabled {
-    border-color: #E2E6E9;
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-} 
+}

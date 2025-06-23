@@ -14,32 +14,34 @@ export const Footer: React.FC = () => {
       <div className="container">
         <footer className="footer">
           <Link to="/" className="footer__logo">
-            <img src="/img/Logo.png" alt="Logo" className="footer__logo--pict" />
+            <img
+              src="/img/Logo.png"
+              alt="Logo"
+              className="footer__logo--pict"
+            />
           </Link>
           <div className="footer__items">
             <Link
-              to="https://github.com"
+              to="https://github.com/Andriana1112/react_phone-catalog.git"
               target="_blank"
               className="footer__items--link"
             >
               Github
             </Link>
-            <Link
-              to="/"
-              className="footer__items--link"
-            >
+            <Link to="/" className="footer__items--link">
               Contacts
             </Link>
-            <Link
-              to="/"
-              className="footer__items--link"
-            >
+            <Link to="/" className="footer__items--link">
               Rights
             </Link>
           </div>
           <div className="footer__nav">
             <div className="footer__nav--title">Back to top</div>
-            <button className="footer__nav--btn" onClick={scrollToTop} aria-label="Back to top">
+            <button
+              className="footer__nav--btn"
+              onClick={scrollToTop}
+              aria-label="Back to top"
+            >
               <img src="/img/arrowRight-Default.png" alt="Back to top" />
             </button>
           </div>
@@ -47,4 +49,4 @@ export const Footer: React.FC = () => {
       </div>
     </div>
   );
-}; 
+};

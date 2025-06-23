@@ -23,7 +23,10 @@ const navLinks = [
   { to: '/accessories', text: 'Accessories' },
 ];
 
-export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => {
+export const MobileMenu: React.FC<Props> = ({
+  isOpenMenu,
+  handleCloseMenu,
+}) => {
   const { cartCount } = useCartValues();
   const { favouritesCount } = useFavouriteValues();
 
@@ -52,15 +55,11 @@ export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => 
           <img src={logo} alt="Logo" className={styles.headerMenu__logo_pict} />
         </div>
         <div className={styles.headerMenu__button}>
-          <button 
-            className={styles.headerMenu__button_icon} 
+          <button
+            className={styles.headerMenu__button_icon}
             onClick={handleCloseMenu}
           >
-            <img
-              src={deleteIcon}
-              alt="icon close"
-              className={styles.icon}
-            />
+            <img src={deleteIcon} alt="icon close" className={styles.icon} />
           </button>
         </div>
       </header>
@@ -72,9 +71,11 @@ export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => 
               key={link.to}
               to={link.to}
               onClick={handleNavClick}
-              className={({ isActive }) => classNames(styles.bodyMenu__nav_link, {
-                [styles.is_active]: isActive,
-              })}
+              className={({ isActive }) =>
+                classNames(styles.bodyMenu__nav_link, {
+                  [styles.is_active]: isActive,
+                })
+              }
             >
               {link.text}
             </NavLink>
@@ -86,13 +87,16 @@ export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => 
         <NavLink
           to="/favourites"
           onClick={handleNavClick}
-          className={({ isActive }) => classNames(
-            styles.MobileMenu__user_icon,
-            styles.icon_favourites,
-            { [styles.is_active]: isActive },
-          )}
+          className={({ isActive }) =>
+            classNames(styles.MobileMenu__user_icon, styles.icon_favourites, {
+              [styles.is_active]: isActive,
+            })
+          }
         >
-          <span className="icon-badge-wrapper" data-count={favouritesCount !== 0 ? `${favouritesCount}` : ''}>
+          <span
+            className="icon-badge-wrapper"
+            data-count={favouritesCount !== 0 ? `${favouritesCount}` : ''}
+          >
             <img
               src={favouriteIcon}
               alt="favourite icon"
@@ -103,17 +107,17 @@ export const MobileMenu: React.FC<Props> = ({ isOpenMenu, handleCloseMenu }) => 
         <NavLink
           to="/cart"
           onClick={handleNavClick}
-          className={({ isActive }) => classNames(
-            styles.MobileMenu__user_icon,
-            { [styles.is_active]: isActive },
-          )}
+          className={({ isActive }) =>
+            classNames(styles.MobileMenu__user_icon, {
+              [styles.is_active]: isActive,
+            })
+          }
         >
-          <span className="icon-badge-wrapper" data-count={cartCount !== 0 ? `${cartCount}` : ''}>
-            <img
-              src={cartIcon}
-              alt="cart icon"
-              className={styles.icon}
-            />
+          <span
+            className="icon-badge-wrapper"
+            data-count={cartCount !== 0 ? `${cartCount}` : ''}
+          >
+            <img src={cartIcon} alt="cart icon" className={styles.icon} />
           </span>
         </NavLink>
       </div>

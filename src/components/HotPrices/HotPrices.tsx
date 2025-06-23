@@ -21,7 +21,7 @@ export const HotPrices: React.FC = () => {
       try {
         const sortedProducts = (await fetchProducts())
           .filter(p => p.fullPrice && p.price)
-          .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
+          .sort((a, b) => b.fullPrice! - b.price! - (a.fullPrice! - a.price!));
 
         setProducts(sortedProducts);
       } catch {
@@ -63,12 +63,12 @@ export const HotPrices: React.FC = () => {
               spaceBetween={16}
               slidesPerView={1.5}
               speed={1000}
-              onSwiper={(swiper) => {
+              onSwiper={swiper => {
                 swiperRef.current = swiper;
                 setIsBeginning(swiper.isBeginning);
                 setIsEnd(swiper.isEnd);
               }}
-              onSlideChange={(swiper) => {
+              onSlideChange={swiper => {
                 setIsBeginning(swiper.isBeginning);
                 setIsEnd(swiper.isEnd);
               }}

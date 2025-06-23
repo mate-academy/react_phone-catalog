@@ -9,21 +9,19 @@ interface Props {
   className?: string;
 }
 
-export const GoBackBttn: React.FC<Props> = ({ 
+export const GoBackBttn: React.FC<Props> = ({
   fallbackPath = '/',
   text = 'Back',
   showIcon = true,
-  className = ''
+  className = '',
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleGoBack = () => {
-  
     if (window.history.length > 1 && location.key !== 'default') {
       navigate(-1);
     } else {
- 
       navigate(fallbackPath);
     }
   };
@@ -36,7 +34,7 @@ export const GoBackBttn: React.FC<Props> = ({
   };
 
   return (
-    <button 
+    <button
       className={`${styles.goBackBtn} ${className}`}
       onClick={handleGoBack}
       onKeyDown={handleKeyDown}
@@ -44,19 +42,19 @@ export const GoBackBttn: React.FC<Props> = ({
       type="button"
     >
       {showIcon && (
-        <svg 
-          width="16" 
-          height="16" 
-          viewBox="0 0 16 16" 
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
           fill="none"
           className={styles.goBackBtn__icon}
           aria-hidden="true"
         >
-          <path 
-            d="M10 12L6 8L10 4" 
-            stroke="currentColor" 
-            strokeWidth="1.5" 
-            strokeLinecap="round" 
+          <path
+            d="M10 12L6 8L10 4"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
             strokeLinejoin="round"
           />
         </svg>

@@ -11,12 +11,16 @@ export const FavouritePage: React.FC = () => {
 
   const uniqueProducts = favouriteProducts.filter(
     (product, index, self) =>
-      product && product.id && self.findIndex(p => p.id === product.id) === index
+      product &&
+      product.id &&
+      self.findIndex(p => p.id === product.id) === index,
   );
 
   return (
     <div className="page-container">
-      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Favourites' }]} />
+      <Breadcrumbs
+        items={[{ label: 'Home', href: '/' }, { label: 'Favourites' }]}
+      />
       <div className={styles.products__container}>
         <div className={styles.category_info}>
           <h1 className={styles.category_info__title}>Favourites</h1>
@@ -25,13 +29,19 @@ export const FavouritePage: React.FC = () => {
           </p>
         </div>
         {uniqueProducts.length === 0 ? (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '40px' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              marginTop: '40px',
+            }}
+          >
             <img
               src="/img/product-not-found.png"
               alt="No favorites"
               style={{ maxWidth: '320px', marginBottom: '24px' }}
             />
-         
           </div>
         ) : (
           <div className={styles.products__list__cards}>

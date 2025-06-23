@@ -1,1 +1,1 @@
-export { RecommendedItems } from './RecommendedItems'; 
+export { RecommendedItems } from './RecommendedItems';

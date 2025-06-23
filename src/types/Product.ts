@@ -5,10 +5,13 @@ export type Product = {
   name: string;
   fullPrice: number;
   price: number;
+  priceDiscount: number;
+  priceRegular: number;
   screen: string;
   capacity: string;
   color: string;
   ram: string;
   year: number;
-  image: string;
+  image?: string;
+  images?: string[];
 };

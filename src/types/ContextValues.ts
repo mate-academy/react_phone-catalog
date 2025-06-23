@@ -30,6 +30,7 @@ export type CartContextValue = {
 
 export interface FavouriteItem {
   product: Product;
+  quantity: number;
 }
 
 export type FavouriteState = FavouriteItem[];

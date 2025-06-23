@@ -81,11 +81,15 @@ export const ProductDescription: React.FC<Props> = ({
   const selectedItemId = selectedProduct?.itemId || selectedProduct?.id;
 
   const isAddedToCart = cart.some(
-    item => String(item.product.itemId || item.product.id) === String(selectedItemId)
+    item =>
+      item.product &&
+      String(item.product.itemId || item.product.id) === String(selectedItemId),
   );
 
   const isAddedToFavourites = favourites.some(
-    item => String(item.product.itemId || item.product.id) === String(selectedItemId)
+    item =>
+      item.product &&
+      String(item.product.itemId || item.product.id) === String(selectedItemId),
   );
 
   useEffect(() => {
@@ -94,11 +98,13 @@ export const ProductDescription: React.FC<Props> = ({
     setSelectedCapacity(mainCapacity);
   }, [mainImage, mainColor, mainCapacity]);
 
-  // Функція для рендерингу технічних характеристик
   const renderSpecs = (specs: SpecItem[]) => (
     <ul className="product-description__description">
       {specs.map((spec, index) => (
-        <li key={`${spec.name}-${index}`} className="product-description__description__item">
+        <li
+          key={`${spec.name}-${index}`}
+          className="product-description__description__item"
+        >
           <span className="product-description__description__item--name">
             {spec.name}
           </span>
@@ -110,14 +116,12 @@ export const ProductDescription: React.FC<Props> = ({
     </ul>
   );
 
-  // Додаємо універсальний шлях до зображення
   const imageSrc = selectedProduct?.image
     ? `/${selectedProduct.image.replace(/^\/?/, '')}`
     : selectedImage
       ? `/${selectedImage.replace(/^\/?/, '')}`
       : '/img/notFoundPage.png';
 
-  // Короткий список характеристик для першого блоку
   const shortSpecs: SpecItem[] = [
     { name: 'Screen', value: screen },
     { name: 'Resolution', value: resolution },
@@ -125,7 +129,6 @@ export const ProductDescription: React.FC<Props> = ({
     { name: 'RAM', value: ram },
   ];
 
-  // Повний список технічних характеристик
   const fullSpecs: SpecItem[] = [
     { name: 'Screen', value: screen },
     { name: 'Resolution', value: resolution },
@@ -137,13 +140,7 @@ export const ProductDescription: React.FC<Props> = ({
     { name: 'Cell', value: cell },
   ];
 
-  // Додатковий лог для відстеження зміни selectedProduct
-  React.useEffect(() => {
-    // Лог видалено - функціональність працює
-  }, [selectedProduct]);
-
-  // Діагностика перед кнопками
-  // Логи видалено - функціональність працює
+  React.useEffect(() => {}, [selectedProduct]);
 
   return (
     <>
@@ -158,25 +155,26 @@ export const ProductDescription: React.FC<Props> = ({
               className="product-description__main-image"
             />
             <div className="product-description__miniatures">
-              {Array.isArray(selectedProduct?.images) && selectedProduct.images.map(image => (
-                <div
-                  key={image}
-                  onClick={() => setSelectedImage(image)}
-                  className={classNames(
-                    'product-description__miniatures-container',
-                    {
-                      'product-description__miniatures-containerActive':
-                        selectedImage === image,
-                    },
-                  )}
-                >
-                  <img
-                    src={`/${image.replace(/^\/?/, '')}`}
-                    alt={selectedProduct.id}
-                    className="product-description__miniature-image"
-                  />
-                </div>
-              ))}
+              {Array.isArray(selectedProduct?.images) &&
+                selectedProduct.images.map(image => (
+                  <div
+                    key={image}
+                    onClick={() => setSelectedImage(image)}
+                    className={classNames(
+                      'product-description__miniatures-container',
+                      {
+                        'product-description__miniatures-containerActive':
+                          selectedImage === image,
+                      },
+                    )}
+                  >
+                    <img
+                      src={`/${image.replace(/^\/?/, '')}`}
+                      alt={selectedProduct.id}
+                      className="product-description__miniature-image"
+                    />
+                  </div>
+                ))}
             </div>
           </div>
           <div className="product-description__order">
@@ -272,7 +270,9 @@ export const ProductDescription: React.FC<Props> = ({
                   className="product-description__action-btn product-description__favourite"
                   onClick={() => {
                     if (selectedProduct) {
-                      removeFromFavourite(selectedProduct as unknown as Product);
+                      removeFromFavourite(
+                        selectedProduct as unknown as Product,
+                      );
                     }
                   }}
                 >

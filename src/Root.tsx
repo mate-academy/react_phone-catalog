@@ -11,7 +11,7 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ProductsProvider } from './store/ProductContext';
 import { CartProvider } from './store/CartStore';
 import { FavouriteProvider } from './store/FavouriteContext';
-import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root: React.FC = () => (
   <CartProvider>

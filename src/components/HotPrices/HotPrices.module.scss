@@ -9,8 +9,10 @@
 .hot-prices {
   @include page-grid;
 
-  padding-left: $padding-phone;
-  margin-bottom: 57px;
+  & {
+    padding-left: $padding-phone;
+    margin-bottom: 57px;
+  }
 
   @include on-tablet {
     padding-left: $padding-tablet;
@@ -29,10 +31,11 @@
   &__header {
     @include page-grid;
 
-    grid-column: -1 / 1;
-
-    display: flex;
-    justify-content: space-between;
+    & {
+      grid-column: -1 / 1;
+      display: flex;
+      justify-content: space-between;
+    }
 
     &--buttons {
       display: flex;
@@ -68,7 +71,7 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-      background-color:#FFF;
+      background-color: #fff;
     }
   }
 

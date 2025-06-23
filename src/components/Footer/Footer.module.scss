@@ -1,18 +1,16 @@
 @import '../../styles/common';
 
 .footer__line {
-  border-top: 1px solid  #E2E6E9;
+  border-top: 1px solid #e2e6e9;
   border-width: 100%;
   transform: translateZ(0);
 }
 
 .footer {
-  @include page-grid;
-
   height: 257px;
   width: 100%;
   display: flex;
-  background-color: #FFFFFF;
+  background-color: #fff;
   justify-content: space-between;
   opacity: 0.9;
   flex-direction: column;
@@ -20,6 +18,7 @@
   padding: 0 16px;
   will-change: transform;
   transform: translateZ(0);
+
 
   @include on-tablet {
     height: 96px;
@@ -82,7 +81,7 @@
     }
 
     &--link {
-      color:  #313237;
+      color: #313237;
       font-size: 12px;
       line-height: 11px;
       font-weight: 700;
@@ -90,7 +89,7 @@
       transition: color 0.5s ease-in-out;
 
       &:hover {
-        color:#89939A;
+        color: #89939a;
       }
     }
   }
@@ -109,7 +108,7 @@
     &--title {
       font-size: 12px;
       font-weight: 600;
-      color: #89939A;
+      color: #89939a;
       line-height: 15px;
       letter-spacing: 0;
     }
@@ -121,11 +120,13 @@
       width: 32px;
       height: 32px;
       background: #fff;
-      border: 1px solid #B4BDC3;
-     
+      border: 1px solid #b4bdc3;
+
       padding: 0;
       cursor: pointer;
-      transition: border 0.2s, background 0.2s;
+      transition:
+        border 0.2s,
+        background 0.2s;
 
       img {
         width: 16px;
@@ -136,31 +137,28 @@
         user-select: none;
       }
 
-      &:hover:not(:disabled) {
-        border: 1px solid #313237;
-        background: #fff;
-      }
-
       &:active {
-        border: 1px solid  #313237;
+        border: 1px solid #313237;
       }
 
       &:disabled,
       &.swiper-button-disabled {
-        border: 1px solid #E2E6E9;
+        border: 1px solid #e2e6e9;
         background: #fff;
         cursor: default;
         opacity: 0.5;
+      }
+
+      &:hover:not(:disabled) {
+        border: 1px solid #313237;
+        background: #fff;
       }
     }
   }
 }
 
-// Responsive design
 @media (max-width: 1024px) {
   .footer {
-    
-
     &__container {
       padding: 0 16px;
     }
@@ -180,8 +178,6 @@
 
 @media (max-width: 768px) {
   .footer {
-   
-
     &__container {
       padding: 0 12px;
     }
@@ -224,4 +220,4 @@
       justify-content: center;
     }
   }
-} 
+}

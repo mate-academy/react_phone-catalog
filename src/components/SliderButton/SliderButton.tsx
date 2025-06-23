@@ -24,4 +24,4 @@ export const SliderButton: React.FC<Props> = ({
       data-direction={direction}
     />
   );
-}; 
+};

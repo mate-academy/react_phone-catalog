@@ -9,8 +9,10 @@
 .new-models {
   @include page-grid;
 
-  padding-left: $padding-phone;
-  margin-bottom: 57px;
+  & {
+    padding-left: $padding-phone;
+    margin-bottom: 57px;
+  }
 
   @include on-tablet {
     padding-left: $padding-tablet;
@@ -29,14 +31,14 @@
   &__header {
     @include page-grid;
 
-    grid-column: -1 / 1;
-
-    display: flex;
-    justify-content: space-between;
+    & {
+      grid-column: -1 / 1;
+      display: flex;
+      justify-content: space-between;
+    }
 
     &--buttons {
       display: flex;
-      
       justify-content: space-between;
       gap: 16px;
       margin-right: 16px;
@@ -67,7 +69,8 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-      background-color: #FFF;
+      background-color: #fff;
+      height: 100%;
     }
   }
 
@@ -87,12 +90,6 @@
 .swiper-wrapper,
 .swiper-slide {
   height: 100%;
-}
-
-.new-models__list--card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .card {

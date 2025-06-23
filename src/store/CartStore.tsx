@@ -20,22 +20,29 @@ function reducer(state: CartState, action: Action): CartState {
   switch (action.type) {
     case 'addToCart': {
       const productId = action.payload.itemId || action.payload.id;
-      
+
       if (!productId) {
-        console.warn('Attempting to add product without itemId or id:', action.payload);
         return state;
       }
-      
-      const existingProduct = state.find(
-        item => {
-          const itemId = item.product.itemId || item.product.id;
-          return String(itemId) === String(productId);
+
+      const existingProduct = state.find(item => {
+        if (!item.product) {
+          return false;
         }
-      );
+
+        const itemId = item.product.itemId || item.product.id;
+
+        return String(itemId) === String(productId);
+      });
 
       if (existingProduct) {
         return state.map(item => {
+          if (!item.product) {
+            return item;
+          }
+
           const itemId = item.product.itemId || item.product.id;
+
           return String(itemId) === String(productId)
             ? { ...item, quantity: item.quantity + 1 }
             : item;
@@ -44,15 +51,26 @@ function reducer(state: CartState, action: Action): CartState {
         return [...state, { product: action.payload, quantity: 1 }];
       }
     }
+
     case 'removeFromCart':
       return state.filter(product => {
+        if (!product.product) {
+          return false;
+        }
+
         const itemId = product.product.itemId || product.product.id;
+
         return String(itemId) !== String(action.payload);
       });
 
     case 'increaseQuantity':
       return state.map(product => {
+        if (!product.product) {
+          return product;
+        }
+
         const itemId = product.product.itemId || product.product.id;
+
         return String(itemId) === String(action.payload)
           ? { ...product, quantity: product.quantity + 1 }
           : product;
@@ -60,7 +78,12 @@ function reducer(state: CartState, action: Action): CartState {
 
     case 'decreaseQuantity':
       return state.map(product => {
+        if (!product.product) {
+          return product;
+        }
+
         const itemId = product.product.itemId || product.product.id;
+
         return String(itemId) === String(action.payload)
           ? { ...product, quantity: product.quantity - 1 }
           : product;
@@ -68,7 +91,12 @@ function reducer(state: CartState, action: Action): CartState {
 
     case 'updateQuantity':
       return state.map(product => {
+        if (!product.product) {
+          return product;
+        }
+
         const itemId = product.product.itemId || product.product.id;
+
         return String(itemId) === String(action.payload.itemId)
           ? { ...product, quantity: action.payload.quantity }
           : product;
@@ -102,7 +130,8 @@ const initialContextValue: CartContextValue = {
   clearCart: () => {},
 };
 
-export const CartContext = React.createContext<CartContextValue>(initialContextValue);
+export const CartContext =
+  React.createContext<CartContextValue>(initialContextValue);
 
 type Props = {
   children: React.ReactNode;
@@ -113,26 +142,35 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
 
   const addToCart = useCallback((product: Product) => {
     dispatch({ type: 'addToCart', payload: product });
-  }, [cart]);
+  }, []);
 
   const removeFromCart = useCallback((product: Product) => {
     const productId = product.itemId || product.id;
+
     dispatch({ type: 'removeFromCart', payload: String(productId) });
   }, []);
 
   const increaseQuantity = useCallback((product: Product) => {
     const productId = product.itemId || product.id;
+
     dispatch({ type: 'increaseQuantity', payload: String(productId) });
   }, []);
 
   const decreaseQuantity = useCallback((product: Product) => {
     const productId = product.itemId || product.id;
+
     dispatch({ type: 'decreaseQuantity', payload: String(productId) });
   }, []);
 
-  const updateQuantity = useCallback((itemId: string | number, quantity: number) => {
-    dispatch({ type: 'updateQuantity', payload: { itemId: String(itemId), quantity } });
-  }, []);
+  const updateQuantity = useCallback(
+    (itemId: string | number, quantity: number) => {
+      dispatch({
+        type: 'updateQuantity',
+        payload: { itemId: String(itemId), quantity },
+      });
+    },
+    [],
+  );
 
   const clearCart = useCallback(() => {
     dispatch({ type: 'clearCart' });
@@ -141,7 +179,6 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   const cartCount = cart.reduce((acc, current) => acc + current.quantity, 0);
 
   useEffect(() => {
-    console.log('CART UPDATED:', cart);
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 

@@ -7,7 +7,9 @@ import styles from './TabletsPage.module.scss';
 export const TabletsPage: React.FC = () => {
   return (
     <div className="page-container">
-      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Tablets' }]} />
+      <Breadcrumbs
+        items={[{ label: 'Home', href: '/' }, { label: 'Tablets' }]}
+      />
       <div className={styles.tabletsPage}>
         <div className={styles.tabletsPage__list}>
           <ProductsList productsCategory={ProductsCategory.TABLETS} />

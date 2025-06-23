@@ -8,14 +8,14 @@
   font-weight: 500;
   line-height: 21px;
   letter-spacing: 0;
-  color: $main-white-color;
+  color: #313237;
 
   &__title {
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
     letter-spacing: 0;
-    color: $light-grey-color;
+    color: #89939a;
   }
 
   &__main {
@@ -24,9 +24,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $button-grey-color;
+    background-color: #fff;
     padding: 10px 12px;
-    
 
     &--icon {
       width: 16px;
@@ -36,29 +35,34 @@
       background-repeat: no-repeat;
     }
 
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px #4a4d58;
+    }
+
     &:hover {
-      box-shadow: 0 0 0 1px $icon-grey-color;
+      background-color: #4a4d58;
     }
   }
 
   &__list {
     position: absolute;
-    background-color: $icon-grey-color;
-    
-    border: 1px solid $dark-grey-color;
+    background-color: #4a4d58;
+
+    border: 1px solid #e2e6e9;
     margin-top: 4px;
     list-style-type: none;
     z-index: 1;
 
     &--option {
-      color: $main-white-color;
+      color: #313237;
       font-weight: 400;
       padding: 10px;
     }
 
     &--option:hover {
-      color: $main-white-color;
-      background-color: $button-grey-color;
+      color: #313237;
+      background-color: #fff;
     }
   }
 }

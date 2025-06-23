@@ -12,19 +12,6 @@ html {
   font-family: $main-font-family;
   scroll-behavior: smooth;
 
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus {
-    -webkit-text-fill-color: $main-white-color;
-    -webkit-box-shadow: 0 0 0 1000px $main-color inset;
-    transition: background-color 5000s ease-in-out 0s;
-  }
 }
 
 body,
@@ -35,7 +22,7 @@ html {
 
 body {
   min-width: 320px;
-  background-color: $main-color;
+  background-color: #fdfdfd;
 }
 
 main {
@@ -96,21 +83,21 @@ img {
 }
 
 .is-active {
-  color: $main-white-color !important;
-  border-bottom: 2px solid $main-white-color;
+  color: #313237 !important;
+  border-bottom: 2px solid #313237;
 }
 
 .page-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px 56px 16px;
+  padding: 0 16px 56px;
 
   @media (min-width: 640px) and (max-width: 1199px) {
-    padding: 0 24px 64px 24px;
+    padding: 0 24px 64px;
   }
 
   @media (min-width: 1200px) {
-    padding: 0 32px 80px 32px;
+    padding: 0 32px 80px;
   }
 }
 

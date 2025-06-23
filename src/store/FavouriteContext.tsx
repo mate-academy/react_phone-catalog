@@ -17,20 +17,20 @@ function reducer(state: FavouriteState, action: Action): FavouriteState {
   switch (action.type) {
     case 'addToFavourite':
       const productId = action.payload.itemId || action.payload.id;
-      const existingProduct = state.find(
-        product => {
-          const itemId = product.product.itemId || product.product.id;
-          return String(itemId) === String(productId);
-        }
-      );
+      const existingProduct = state.find(product => {
+        const itemId = product.product.itemId || product.product.id;
+
+        return String(itemId) === String(productId);
+      });
 
       return !existingProduct
-        ? [...state, { product: action.payload }]
+        ? [...state, { product: action.payload, quantity: 1 }]
         : [...state];
 
     case 'removeFromFavourite':
       return state.filter(item => {
         const itemId = item.product.itemId || item.product.id;
+
         return String(itemId) !== String(action.payload);
       });
     default:
@@ -56,7 +56,8 @@ const initialContextValue: FavouriteContextValue = {
   removeFromFavourite: () => {},
 };
 
-export const FavouriteContext = createContext<FavouriteContextValue>(initialContextValue);
+export const FavouriteContext =
+  createContext<FavouriteContextValue>(initialContextValue);
 
 type Props = {
   children: React.ReactNode;
@@ -71,6 +72,7 @@ export const FavouriteProvider: React.FC<Props> = ({ children }) => {
 
   const removeFromFavourite = useCallback((product: Product) => {
     const productId = product.itemId || product.id;
+
     dispatch({ type: 'removeFromFavourite', payload: String(productId) });
   }, []);
 

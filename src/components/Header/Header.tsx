@@ -16,11 +16,14 @@ export const Header: React.FC = () => {
     });
   }, []);
 
-  const getLinkClassIcon = useCallback(({ isActive }: { isActive: boolean }) => {
-    return classNames('header__user--icon', {
-      'is-active': isActive,
-    });
-  }, []);
+  const getLinkClassIcon = useCallback(
+    ({ isActive }: { isActive: boolean }) => {
+      return classNames('header__user--icon', {
+        'is-active': isActive,
+      });
+    },
+    [],
+  );
 
   const handleShowMenu = useCallback(() => {
     setIsOpenMenu(current => !current);
@@ -34,11 +37,10 @@ export const Header: React.FC = () => {
     <>
       <header className="header">
         <Link to="/" className="header__logo">
-          <img 
-            src="/img/Logo.png" 
-            alt="Logo" 
+          <img
+            src="/img/Logo.png"
+            alt="Logo"
             className="header__logo--pict"
-            
             loading="eager"
           />
         </Link>
@@ -62,7 +64,10 @@ export const Header: React.FC = () => {
             className={getLinkClassIcon}
             aria-label="Favourites"
           >
-            <span className="icon-badge-wrapper" data-count={favouritesCount !== 0 ? `${favouritesCount}` : ''}>
+            <span
+              className="icon-badge-wrapper"
+              data-count={favouritesCount !== 0 ? `${favouritesCount}` : ''}
+            >
               <img
                 src="/img/favourite-icon.png"
                 alt="favourite"
@@ -71,12 +76,11 @@ export const Header: React.FC = () => {
               />
             </span>
           </NavLink>
-          <NavLink
-            to="/cart"
-            className={getLinkClassIcon}
-            aria-label="Cart"
-          >
-            <span className="icon-badge-wrapper" data-count={cartCount !== 0 ? `${cartCount}` : ''}>
+          <NavLink to="/cart" className={getLinkClassIcon} aria-label="Cart">
+            <span
+              className="icon-badge-wrapper"
+              data-count={cartCount !== 0 ? `${cartCount}` : ''}
+            >
               <img
                 src="/img/Shopping-cart.png"
                 alt="cart"
@@ -92,16 +96,12 @@ export const Header: React.FC = () => {
               src="/img/Menu.png"
               alt="Menu icon"
               className="icon icon-menu"
-             
               loading="eager"
             />
           </button>
         </div>
       </header>
-      <MobileMenu
-        isOpenMenu={isOpenMenu}
-        handleCloseMenu={handleCloseMenu}
-      />
+      <MobileMenu isOpenMenu={isOpenMenu} handleCloseMenu={handleCloseMenu} />
     </>
   );
 };

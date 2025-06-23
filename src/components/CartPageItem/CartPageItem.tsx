@@ -1,8 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CartItem } from '../../types/ContextValues';
 import { useCartValues } from '../../store/CartStore';
+import { Product } from '../../types/Product';
+import { Phone } from '../../types/Phone';
+import { Tablet } from '../../types/Tablet';
+import { Accessory } from '../../types/Accessory';
 import classNames from 'classnames';
 import './CartPageItem.module.scss';
+
+type DetailedProduct = Phone | Tablet | Accessory;
+type AnyProduct = Product | DetailedProduct;
 
 type Props = {
   item: CartItem;
@@ -59,19 +66,42 @@ export const CartPageItem: React.FC<Props> = ({ item }) => {
     };
   }, [isOpenQuantity]);
 
+  const getProductImage = (productItem: AnyProduct): string => {
+    if (productItem.image) {
+      return productItem.image;
+    }
+
+    const detailedProduct = productItem as DetailedProduct;
+
+    if (detailedProduct.images && detailedProduct.images[0]) {
+      return detailedProduct.images[0];
+    }
+
+    return '/img/notFoundPage.png';
+  };
+
+  const getProductPrice = (productItem: AnyProduct): number => {
+    const detailedProduct = productItem as DetailedProduct;
+
+    return Number(
+      detailedProduct.priceDiscount ??
+        productItem.price ??
+        detailedProduct.priceRegular ??
+        0,
+    );
+  };
+
   return (
     <div className="cartPageItem">
       <div className="cartPageItem__top">
-        <div
+        <button
           className="cartPageItem__top--delete"
           onClick={() => removeFromCart(product)}
-        ></div>
+          aria-label="Remove from cart"
+          type="button"
+        />
         <img
-          src={
-            product.image ||
-            ((product as any).images && (product as any).images[0]) ||
-            '/img/notFoundPage.png'
-          }
+          src={getProductImage(product)}
           alt="card image"
           className="cartPageItem__top--image"
         />
@@ -79,14 +109,16 @@ export const CartPageItem: React.FC<Props> = ({ item }) => {
       </div>
       <div className="cartPageItem__bottom">
         <div className="cartPageItem__bottom--changeQuantity">
-          <div
+          <button
             aria-disabled={quantity === 1}
             className={classNames('card__decreaseQuantity', {
               'card__decreaseQuantity--active': quantity > 1,
               'card__decreaseQuantity--disabled': quantity === 1,
             })}
             onClick={() => decreaseQuantity(product)}
-          ></div>
+            aria-label="Decrease quantity"
+            type="button"
+          />
 
           {isOpenQuantity ? (
             <div className="card__changeCurrentQuantity">
@@ -110,18 +142,15 @@ export const CartPageItem: React.FC<Props> = ({ item }) => {
             </div>
           )}
 
-          <div
+          <button
             className="card__increaseQuantity"
             onClick={() => increaseQuantity(product)}
-          ></div>
+            aria-label="Increase quantity"
+            type="button"
+          />
         </div>
         {(() => {
-          const price = Number(
-            (product as any).priceDiscount ??
-              product.price ??
-              (product as any).priceRegular ??
-              0,
-          );
+          const price = getProductPrice(product);
 
           return <h3 className="cartPageItem__price">${price * quantity}</h3>;
         })()}

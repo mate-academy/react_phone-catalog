@@ -19,15 +19,24 @@ export const Card: React.FC<Props> = ({ product }) => {
 
   const productItemId = product.itemId || product.id;
   const isAddedToCart = cart.some(
-    item => (item.product.itemId || item.product.id) === productItemId,
+    item =>
+      item.product &&
+      (item.product.itemId || item.product.id) === productItemId,
   );
   const isAddedToFavourites = favourites.some(
-    item => (item.product.itemId || item.product.id) === productItemId,
+    item =>
+      item.product &&
+      (item.product.itemId || item.product.id) === productItemId,
   );
 
   const imageSrc = product.image
     ? `/${product.image.replace(/^\/?/, '')}`
-    : '/img/notFoundPage.png';
+    : product.images && product.images.length > 0
+      ? `/${product.images[0].replace(/^\/?/, '')}`
+      : '/img/notFoundPage.png';
+
+  const price = product.price ?? product.priceDiscount ?? '';
+  const fullPrice = product.fullPrice ?? product.priceRegular ?? '';
 
   return (
     <div className="card">
@@ -38,8 +47,10 @@ export const Card: React.FC<Props> = ({ product }) => {
         <h3 className="card__title">{product.name}</h3>
       </Link>
       <div className="card__prices">
-        <p className="card__prices--price">${product.price}</p>
-        <p className="card__prices--fullprice">${product.fullPrice}</p>
+        <p className="card__prices--price">{price ? `$${price}` : '$$'}</p>
+        <p className="card__prices--fullprice">
+          {fullPrice ? `$${fullPrice}` : ''}
+        </p>
       </div>
 
       <hr className="divider"></hr>

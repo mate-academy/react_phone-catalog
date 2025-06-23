@@ -66,12 +66,12 @@ export const NewModels: React.FC = () => {
               spaceBetween={16}
               slidesPerView={1.5}
               speed={1000}
-              onSwiper={(swiper) => {
+              onSwiper={swiper => {
                 swiperRef.current = swiper;
                 setIsBeginning(swiper.isBeginning);
                 setIsEnd(swiper.isEnd);
               }}
-              onSlideChange={(swiper) => {
+              onSlideChange={swiper => {
                 setIsBeginning(swiper.isBeginning);
                 setIsEnd(swiper.isEnd);
               }}

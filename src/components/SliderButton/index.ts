@@ -1,1 +1,1 @@
-export * from './SliderButton'; 
+export * from './SliderButton';

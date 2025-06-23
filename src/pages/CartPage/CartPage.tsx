@@ -2,25 +2,48 @@ import React from 'react';
 import { useCartValues } from '../../store/CartStore';
 import { GoBackBttn } from '../../components/GoBackBttn';
 import { CartPageItem } from '../../components/CartPageItem';
+import { Product } from '../../types/Product';
+import { Phone } from '../../types/Phone';
+import { Tablet } from '../../types/Tablet';
+import { Accessory } from '../../types/Accessory';
+
+type DetailedProduct = Phone | Tablet | Accessory;
+type AnyProduct = Product | DetailedProduct;
 
 export const CartPage: React.FC = () => {
   const { cart, clearCart } = useCartValues();
 
   const uniqueCartItems = cart.filter(
     (item, index, self) =>
-      item && item.product && item.product.id &&
-      self.findIndex(i => i.product.id === item.product.id) === index
+      item &&
+      item.product &&
+      item.product.id &&
+      self.findIndex(
+        i => i && i.product && i.product.id === item.product.id,
+      ) === index,
   );
 
-  const totalPrice = uniqueCartItems.reduce(
-    (acc, num) => {
-      const price = Number((num.product as any).priceDiscount ?? num.product.price ?? (num.product as any).priceRegular ?? 0);
-      return acc + price * num.quantity;
-    },
+  const getProductPrice = (product: AnyProduct): number => {
+    const detailedProduct = product as DetailedProduct;
+
+    return Number(
+      detailedProduct.priceDiscount ??
+        product.price ??
+        detailedProduct.priceRegular ??
+        0,
+    );
+  };
+
+  const totalPrice = uniqueCartItems.reduce((acc, num) => {
+    const price = getProductPrice(num.product);
+
+    return acc + price * num.quantity;
+  }, 0);
+
+  const totalItems = uniqueCartItems.reduce(
+    (acc, num) => acc + num.quantity,
     0,
   );
-
-  const totalItems = uniqueCartItems.reduce((acc, num) => acc + num.quantity, 0);
 
   return (
     <div className="page-container">
@@ -34,9 +57,11 @@ export const CartPage: React.FC = () => {
         <div className="cartPage">
           <div className="cartPage__first-container">
             <div className="cartPage__list">
-              {cart.map(item => (
-                <CartPageItem item={item} key={item.product.itemId} />
-              ))}
+              {cart.map(item =>
+                item && item.product ? (
+                  <CartPageItem item={item} key={item.product.itemId} />
+                ) : null,
+              )}
             </div>
           </div>
 

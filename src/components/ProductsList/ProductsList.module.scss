@@ -7,7 +7,7 @@ $dropdown-font-size: 14px;
 $dropdown-line-height: 21px;
 $dropdown-letter-spacing: 0;
 $dropdown-color: #313237;
-$dropdown-secondary-color: #89939A;
+$dropdown-secondary-color: #89939a;
 
 // Міксин для базових стилів dropdown'а
 @mixin dropdown-base {
@@ -30,14 +30,16 @@ $dropdown-secondary-color: #89939A;
   background: #fff;
   padding: 12px 16px;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .products__container {
   margin: 0 auto;
   box-sizing: border-box;
   width: 100%;
-  
+
   @media (min-width: 640px) {
     max-width: 1136px;
   }
@@ -49,7 +51,6 @@ $dropdown-secondary-color: #89939A;
   gap: 8px;
   margin-top: 24px;
   margin-bottom: 40px;
-  padding-left: 0;
   height: 16px;
   padding: 0;
   min-height: 0;
@@ -74,11 +75,12 @@ $dropdown-secondary-color: #89939A;
     height: 16px;
     display: flex;
     align-items: center;
+
     @media (max-width: 639px) {
       font-size: 12px;
       font-weight: 600;
       line-height: 16px;
-      color: #89939A;
+      color: #89939a;
     }
   }
 }
@@ -121,6 +123,7 @@ $dropdown-secondary-color: #89939A;
 
   .dropdownLabel {
     @include dropdown-base;
+
     font-size: 12px;
     line-height: 15px;
     color: $dropdown-secondary-color;
@@ -132,10 +135,12 @@ $dropdown-secondary-color: #89939A;
     display: flex;
     align-items: center;
     height: 40px;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
     border-radius: 0;
     background: #fff;
+
     @include dropdown-base;
+
     padding: 0 12px;
     box-sizing: border-box;
     cursor: pointer;
@@ -143,7 +148,8 @@ $dropdown-secondary-color: #89939A;
     width: 128px;
     max-width: 220px;
     transition: border 0.2s;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       border: 1px solid #313237;
     }
 
@@ -151,6 +157,7 @@ $dropdown-secondary-color: #89939A;
       min-width: 187px;
       width: 187px;
     }
+
     @media (min-width: 1200px) {
       min-width: 176px;
       width: 176px;
@@ -159,6 +166,7 @@ $dropdown-secondary-color: #89939A;
 
   .dropdownValue {
     flex: 1;
+
     @include dropdown-base;
   }
 
@@ -175,10 +183,12 @@ $dropdown-secondary-color: #89939A;
     left: 0;
     right: 0;
     background: #fff;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
     z-index: 10;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+
     @include dropdown-base;
+
     margin-top: 4px;
     border-radius: 0;
     overflow: hidden;
@@ -196,10 +206,12 @@ $dropdown-secondary-color: #89939A;
   .dropdownBlock:last-child .dropdown {
     min-width: 128px;
     width: 128px;
+
     @media (min-width: 640px) {
       min-width: 136px;
       width: 136px;
     }
+
     @media (min-width: 1200px) {
       min-width: 128px;
       width: 128px;
@@ -207,7 +219,8 @@ $dropdown-secondary-color: #89939A;
   }
 
   @media (max-width: 639px) {
-    .dropdown, .dropdownBlock:last-child .dropdown {
+    .dropdown,
+    .dropdownBlock:last-child .dropdown {
       min-width: 136px;
       width: 136px;
     }
@@ -264,4 +277,4 @@ $dropdown-secondary-color: #89939A;
 
 .noPagination {
   margin-bottom: 80px;
-} 
+}

@@ -40,7 +40,7 @@ export const RecommendedItems: React.FC<Props> = ({ recommendedItems }) => {
       </div>
       <div className="recommendedItems__swiper">
         <Swiper
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSwiper={swiper => (swiperRef.current = swiper)}
           onSlideChange={handleSlideChange}
           className="recommendedItems__list"
           spaceBetween={16}
