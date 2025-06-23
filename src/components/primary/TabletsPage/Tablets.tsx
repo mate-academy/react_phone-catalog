@@ -18,26 +18,25 @@ export const Tablets = () => {
   const sortSelect = searchParams.get('filter01') || 'Newest';
   const itemsPerPage = +(searchParams.get('filter02') || 16);
   const { filterListPhone } = usePagedList(initialList, itemsPerPage);
-  const [hasError, SetHasError] = useState<boolean>(false)
-
+  const [hasError, SetHasError] = useState<boolean>(false);
 
   const tabletsList = useMemo(() => {
     return filterListPhone(actualButton, initialList, itemsPerPage, sortSelect);
   }, [itemsPerPage, actualButton, sortSelect, initialList]);
 
-    useEffect(() => {
-      getPhonesData('tablets.json')
-        .then((response) => {
-          setInitialList(response)
-        })
-        .catch(() => {
-          SetHasError(true)
-        })
-    }, [])
+  useEffect(() => {
+    getPhonesData('tablets.json')
+      .then(response => {
+        setInitialList(response);
+      })
+      .catch(() => {
+        SetHasError(true);
+      });
+  }, []);
 
-    if (initialList.length === 0) {
-      return <Spiner />;
-    }
+  if (initialList.length === 0) {
+    return <Spiner />;
+  }
 
   return (
     <>
@@ -53,7 +52,11 @@ export const Tablets = () => {
 
           <TabletsList tabletsList={tabletsList} />
 
-          <TabletsBottom itemsPerPage={itemsPerPage} initialList={initialList} actualButton={actualButton} />
+          <TabletsBottom
+            itemsPerPage={itemsPerPage}
+            initialList={initialList}
+            actualButton={actualButton}
+          />
         </section>
       )}
     </>

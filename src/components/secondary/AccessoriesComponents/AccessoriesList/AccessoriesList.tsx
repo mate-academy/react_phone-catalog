@@ -57,7 +57,9 @@ export const AccessoriesList: React.FC<Props> = ({ accessoriesList }) => {
 
                 <div className="accessories-card__characteristics-item">
                   <div className="characteristics-text">Capacity</div>
-                  <div className="characteristics-text">{accessories.capacity}</div>
+                  <div className="characteristics-text">
+                    {accessories.capacity}
+                  </div>
                 </div>
 
                 <div className="accessories-card__characteristics-item">
@@ -69,7 +71,9 @@ export const AccessoriesList: React.FC<Props> = ({ accessoriesList }) => {
               <div className="accessories-card__down">
                 <button
                   className={classNames('accessories-card__down-button', {
-                    'in-cart': elementsCart.some(obj => obj.id === accessories.id),
+                    'in-cart': elementsCart.some(
+                      obj => obj.id === accessories.id,
+                    ),
                   })}
                   onClick={() => {
                     const elements = addInCart(accessories);
@@ -94,11 +98,14 @@ export const AccessoriesList: React.FC<Props> = ({ accessoriesList }) => {
                   }}
                 >
                   <div
-                    className={classNames('accessories-card__down-button-save-img', {
-                      'is-favourites': favourites.some(
-                        item => item.id === accessories.id,
-                      ),
-                    })}
+                    className={classNames(
+                      'accessories-card__down-button-save-img',
+                      {
+                        'is-favourites': favourites.some(
+                          item => item.id === accessories.id,
+                        ),
+                      },
+                    )}
                   ></div>
                 </div>
               </div>

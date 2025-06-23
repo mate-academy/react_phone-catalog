@@ -35,6 +35,5 @@ export const useMoveButtons = () => {
     }
   };
 
-
-  return { moveButtons }
+  return { moveButtons };
 };

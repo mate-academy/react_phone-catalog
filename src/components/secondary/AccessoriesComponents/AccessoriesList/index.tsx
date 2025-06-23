@@ -1,1 +1,1 @@
-export * from './AccessoriesList'
+export * from './AccessoriesList';

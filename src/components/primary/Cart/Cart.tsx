@@ -43,7 +43,11 @@ export const Cart = () => {
     <>
       {showProducts.length === 0 ? (
         <div className="cart-empty">
-          <img className='cart-empty__img' src="../../../../public/img/empty-cart.png" alt="Cart is empty" />
+          <img
+            className="cart-empty__img"
+            src="../../../../public/img/empty-cart.png"
+            alt="Cart is empty"
+          />
         </div>
       ) : (
         <section className="cart">

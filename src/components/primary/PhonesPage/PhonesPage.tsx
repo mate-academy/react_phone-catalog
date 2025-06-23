@@ -4,7 +4,7 @@ import { PhonesTop } from '../../secondary/PhonesComponents/PhonesTop/index.js';
 import { ErrorBlock } from '../../../messageError/MessageError.js';
 import { usePagedList } from '../../../utils/usePagedList';
 import { getPhonesData } from '../../../api/PhonesApi.js';
-import {  useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Spiner } from '../../../spiner/spiner.js';
 import { Product } from '../../../types/Product';
@@ -18,45 +18,47 @@ export const PhonesPage = () => {
 
   const sortSelect = searchParams.get('filter01') || 'Newest';
   const actualButton = Number(searchParams.get('actual-list') || 1);
-  const [hasError, SetHasError] = useState<boolean>(false)
-
+  const [hasError, SetHasError] = useState<boolean>(false);
 
   const phonesList = useMemo(() => {
     return filterListPhone(actualButton, initialList, itemsPerPage, sortSelect);
   }, [itemsPerPage, actualButton, sortSelect, initialList]);
 
-
   useEffect(() => {
     getPhonesData('phones.json')
-      .then((response) => {
-        setInitialList(response)
+      .then(response => {
+        setInitialList(response);
       })
       .catch(() => {
-        SetHasError(true)
-      })
-  }, [])
+        SetHasError(true);
+      });
+  }, []);
 
   if (initialList.length === 0) {
     return <Spiner />;
   }
 
-return (
-  <>
-    {hasError ? (
-      <ErrorBlock />
-    ) : (
-      <section className="phones">
-        <PhonesTop
-          phonesList={phonesList}
-          itemsPerPage={itemsPerPage}
-          sortSelect={sortSelect}
-        />
+  return (
+    <>
+      {hasError ? (
+        <ErrorBlock />
+      ) : (
+        <section className="phones">
+          <PhonesTop
+            phonesList={phonesList}
+            itemsPerPage={itemsPerPage}
+            sortSelect={sortSelect}
+          />
 
-        <PhonesList phonesList={phonesList} />
+          <PhonesList phonesList={phonesList} />
 
-        <PhonesBottom itemsPerPage={itemsPerPage} initialList={initialList} actualButton={actualButton} />
-      </section>
-    )}
-  </>
-);
+          <PhonesBottom
+            itemsPerPage={itemsPerPage}
+            initialList={initialList}
+            actualButton={actualButton}
+          />
+        </section>
+      )}
+    </>
+  );
 };

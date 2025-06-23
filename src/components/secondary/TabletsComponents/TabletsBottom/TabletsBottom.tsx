@@ -31,7 +31,9 @@ export const TabletsBottom: React.FC<Props> = ({
   );
 
   useEffect(() => {
-    if (!navigationContainer.current) return;
+    if (!navigationContainer.current) {
+      return;
+    }
 
     setTimeout(() => {
       const container = navigationContainer.current!;

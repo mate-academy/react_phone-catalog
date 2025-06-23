@@ -17,7 +17,6 @@ export const AccessoriesBottom: React.FC<Props> = ({
   initialList,
   itemsPerPage,
 }) => {
-
   if (!initialList) {
     return null;
   }
@@ -32,7 +31,9 @@ export const AccessoriesBottom: React.FC<Props> = ({
   );
 
   useEffect(() => {
-    if (!navigationContainer.current) return;
+    if (!navigationContainer.current) {
+      return;
+    }
 
     setTimeout(() => {
       const container = navigationContainer.current!;
@@ -50,7 +51,6 @@ export const AccessoriesBottom: React.FC<Props> = ({
     }, 50);
   }, [actualButton]);
 
-
   return (
     <div className="accessories-bottom">
       <nav>
@@ -62,19 +62,30 @@ export const AccessoriesBottom: React.FC<Props> = ({
                 'actual-list',
                 ditermineDirection('left', actualButton),
               );
-              moveButtons('left', ditermineDirection, actualButton, navigationContainer);
+              moveButtons(
+                'left',
+                ditermineDirection,
+                actualButton,
+                navigationContainer,
+              );
             }}
           ></li>
 
-          <ul ref={navigationContainer} className="accessories-bottom__navigation">
+          <ul
+            ref={navigationContainer}
+            className="accessories-bottom__navigation"
+          >
             {howButtonsRender.map(buttonNumber => {
               return (
                 <li
                   key={buttonNumber}
                   data-actual-button={buttonNumber}
-                  className={classNames('accessories-bottom__navigation-button', {
-                    'active-list': buttonNumber === actualButton,
-                  })}
+                  className={classNames(
+                    'accessories-bottom__navigation-button',
+                    {
+                      'active-list': buttonNumber === actualButton,
+                    },
+                  )}
                   onClick={() => {
                     saveFilterInParams('actual-list', buttonNumber);
                   }}
@@ -92,7 +103,12 @@ export const AccessoriesBottom: React.FC<Props> = ({
                 'actual-list',
                 ditermineDirection('right', actualButton),
               );
-              moveButtons('right', ditermineDirection, actualButton, navigationContainer);
+              moveButtons(
+                'right',
+                ditermineDirection,
+                actualButton,
+                navigationContainer,
+              );
             }}
           ></li>
         </ul>

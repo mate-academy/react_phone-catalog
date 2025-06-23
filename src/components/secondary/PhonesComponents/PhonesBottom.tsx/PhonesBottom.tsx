@@ -31,7 +31,9 @@ export const PhonesBottom: React.FC<Props> = ({
   );
 
   useEffect(() => {
-    if (!navigationContainer.current) return;
+    if (!navigationContainer.current) {
+      return;
+    }
 
     setTimeout(() => {
       const container = navigationContainer.current!;
@@ -69,22 +71,22 @@ export const PhonesBottom: React.FC<Props> = ({
 
           <li>
             <ul ref={navigationContainer} className="phones-bottom__navigation">
-            {howButtonsRender.map(buttonNumber => {
-              return (
-                <li
-                  key={buttonNumber}
-                  data-actual-button={buttonNumber}
-                  className={classNames('phones-bottom__navigation-button', {
-                    'active-list': buttonNumber === actualButton,
-                  })}
-                  onClick={() => {
-                    saveFilterInParams('actual-list', buttonNumber);
-                  }}
-                >
-                  {buttonNumber}
-                </li>
-              );
-            })}
+              {howButtonsRender.map(buttonNumber => {
+                return (
+                  <li
+                    key={buttonNumber}
+                    data-actual-button={buttonNumber}
+                    className={classNames('phones-bottom__navigation-button', {
+                      'active-list': buttonNumber === actualButton,
+                    })}
+                    onClick={() => {
+                      saveFilterInParams('actual-list', buttonNumber);
+                    }}
+                  >
+                    {buttonNumber}
+                  </li>
+                );
+              })}
             </ul>
           </li>
 

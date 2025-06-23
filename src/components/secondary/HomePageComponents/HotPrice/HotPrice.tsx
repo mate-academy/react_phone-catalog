@@ -17,7 +17,9 @@ export const HotPrice: React.FC<Props> = ({ phones }) => {
   const [elementsCart, setElementsCart] = useState<Product[]>([]);
 
   useEffect(() => {
-    if (!phones) return;
+    if (!phones) {
+      return;
+    }
 
     const indexToShow = new Set<number>();
     const phonesList: Product[] = [];

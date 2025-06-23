@@ -1,8 +1,7 @@
-import { useMemo} from 'react';
+import { useMemo } from 'react';
 import { Product } from '../types/Product';
 
 export const usePagedList = (initialList: Product[], pages: number) => {
-
   const howButtonsRender = useMemo(() => {
     const quantity = Math.ceil(initialList?.length / pages);
     const result = [];

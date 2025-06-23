@@ -1,1 +1,1 @@
-export * from './Accessories.scss'
+export * from './Accessories.scss';

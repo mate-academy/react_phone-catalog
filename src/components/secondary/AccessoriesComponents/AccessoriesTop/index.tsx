@@ -1,1 +1,1 @@
-export * from './AccessoriesTop'
+export * from './AccessoriesTop';

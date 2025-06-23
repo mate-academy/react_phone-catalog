@@ -11,7 +11,7 @@ export const ProductTop: React.FC<Props> = ({ product }) => {
     return null;
   }
 
-  const {state} = useLocation();
+  const { state } = useLocation();
 
   return (
     <section className="product-top">

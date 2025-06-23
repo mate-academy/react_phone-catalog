@@ -20,7 +20,11 @@ export const Favourites = () => {
     <>
       {showElements.length === 0 ? (
         <div className="favourites-empty">
-          <img className='favourites-empty__img' src="../../../../public/img/favorites-image.avif" alt="Favourites is empty" />
+          <img
+            className="favourites-empty__img"
+            src="../../../../public/img/favorites-image.avif"
+            alt="Favourites is empty"
+          />
         </div>
       ) : (
         <section className="favourites">

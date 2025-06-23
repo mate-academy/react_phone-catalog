@@ -1,1 +1,1 @@
-export * from './AccessoriesBottom'
+export * from './AccessoriesBottom';

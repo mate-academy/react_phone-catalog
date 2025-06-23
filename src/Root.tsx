@@ -9,7 +9,6 @@ import { HomePage } from './components/primary/HomePage';
 import { Menu } from './components/secondary/Menu';
 import { Cart } from './components/primary/Cart';
 
-
 export const Root = () => (
   <BrowserRouter>
     <Routes>
@@ -21,7 +20,7 @@ export const Root = () => (
         <Route path="cart" element={<Cart />} />
         <Route path="profile" element={<Menu />} />
         <Route path="tablets" element={<Tablets />} />
-        <Route path='accessories' element={<AccessoriesPage/>} />
+        <Route path="accessories" element={<AccessoriesPage />} />
       </Route>
 
       <Route path="*" element={<p>Page is not found</p>} />

@@ -1,1 +1,1 @@
-export * from './TabletsBottom'
+export * from './TabletsBottom';

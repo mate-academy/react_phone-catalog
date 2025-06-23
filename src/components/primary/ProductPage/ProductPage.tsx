@@ -41,7 +41,6 @@ export const ProductPage = () => {
     });
   }, [productId, allStore]);
 
-
   if (!product) {
     return <Spiner />;
   }
@@ -58,7 +57,7 @@ export const ProductPage = () => {
 
           <AboutUs product={product} />
 
-          <ProductBottom  allStore={allStore}  product={product} />
+          <ProductBottom allStore={allStore} product={product} />
         </div>
       )}
     </>

@@ -4,7 +4,7 @@ import { Product } from '../../../../types/Product';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import './TabletsList.scss'
+import './TabletsList.scss';
 
 type Props = {
   tabletsList: Product[];
@@ -85,7 +85,10 @@ export const TabletsList: React.FC<Props> = ({ tabletsList }) => {
                 <div
                   className="tablet-card__down-button-save"
                   onClick={() => {
-                    const newFavourites = togglePhoneInStorage(tablet, 'tablets');
+                    const newFavourites = togglePhoneInStorage(
+                      tablet,
+                      'tablets',
+                    );
 
                     setFavourites(newFavourites);
                   }}

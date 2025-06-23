@@ -1,3 +1,5 @@
+// eslint-disable-next-line max-len
+
 import { AccessoriesBottom } from '../../secondary/AccessoriesComponents/AccessoriesBottom/AccessoriesBottom.js';
 import { AccessoriesList } from '../../secondary/AccessoriesComponents/AccessoriesList/AccessoriesList.js';
 import { AccessoriesTop } from '../../secondary/AccessoriesComponents/AccessoriesTop/AccessoriesTop.js';
@@ -17,24 +19,21 @@ export const AccessoriesPage = () => {
   const sortSelect = searchParams.get('filter01') || 'Newest';
   const itemsPerPage = +(searchParams.get('filter02') || 16);
   const { filterListPhone } = usePagedList(initialList, itemsPerPage);
-  const [hasError, SetHasError] = useState<boolean>(false)
-
+  const [hasError, SetHasError] = useState<boolean>(false);
 
   useEffect(() => {
     getPhonesData('accessories.json')
-      .then((response) => {
-        setInitialList(response)
+      .then(response => {
+        setInitialList(response);
       })
       .catch(() => {
-        SetHasError(true)
-      })
-  }, [])
-
+        SetHasError(true);
+      });
+  }, []);
 
   const accessoriesList = useMemo(() => {
     return filterListPhone(actualButton, initialList, itemsPerPage, sortSelect);
-  }, [itemsPerPage, actualButton, sortSelect, initialList]);
-
+  }, [filterListPhone, itemsPerPage, actualButton, sortSelect, initialList]);
 
   if (initialList.length === 0) {
     return <Spiner />;
@@ -54,7 +53,11 @@ export const AccessoriesPage = () => {
 
           <AccessoriesList accessoriesList={accessoriesList} />
 
-          <AccessoriesBottom itemsPerPage={itemsPerPage} initialList={initialList} actualButton={actualButton} />
+          <AccessoriesBottom
+            itemsPerPage={itemsPerPage}
+            initialList={initialList}
+            actualButton={actualButton}
+          />
         </section>
       )}
     </>

@@ -15,6 +15,6 @@ export const getPhonesData = async (url: string) => {
 
     return await response.json();
   } catch (error) {
-    console.error(error);
+    throw new Error(`${error}`);
   }
 };

@@ -27,7 +27,9 @@ export const ProductBottom: React.FC<Props> = ({ product, allStore }) => {
       store?.some(item => item.name === product.name),
     );
 
-    if (currentStoreIndex === -1) return;
+    if (currentStoreIndex === -1) {
+      return;
+    }
 
     const currentStore =
       allStore.find(store => store?.some(item => item.name === product.name)) ||
@@ -61,6 +63,7 @@ export const ProductBottom: React.FC<Props> = ({ product, allStore }) => {
     }
 
     const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+
     setProductStorge(JSON.parse(localStorage.getItem(store) || '[]'));
 
     setShowProducts(currentStoreList);
@@ -118,7 +121,7 @@ export const ProductBottom: React.FC<Props> = ({ product, allStore }) => {
                   <Link state={{ from: 'Product' }} to={`/product/${p.name}`}>
                     <img
                       onClick={() => {
-                         window.scrollTo({top: 0, behavior: 'smooth'})
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
                       className="card__content-img"
                       src={`../../../../../public/${p.images[0]}`}
