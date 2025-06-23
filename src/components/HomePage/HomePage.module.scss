@@ -1,0 +1,78 @@
+.page {
+  display: grid;
+  row-gap: 80px;
+  background-color: #0f1121;
+  padding: 56px 152px;
+  color: #f1f2f9;
+  font-family: Mont-Bold, sans-serif;
+  justify-items: center;
+}
+
+.pageContent {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  gap: 16px;
+}
+
+.pageTitle {
+  line-height: 56px;
+  font-weight: 800;
+  font-size: 48px;
+}
+
+.sectionTitle {
+  grid-column: 1/-1;
+  line-height: 41px;
+  font-weight: 800;
+  font-size: 32px;
+}
+
+.sliderWrapper {
+  grid-column: 1 / -1;
+  height: 400px;
+}
+
+:global(.slick-slider),
+:global(.slick-list),
+:global(.slick-track),
+:global(.slick-slide > div) {
+  width: 100%;
+  height: 100%;
+}
+
+:global(.slick-slide img) {
+  width: 100%;
+  height: 400px;
+  display: block;
+}
+
+.categoryCards {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.categoryImg {
+  width: 100%;
+  object-fit: cover;
+}
+
+.categoryLink {
+  text-decoration: none;
+}
+
+.categoryTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f1f2f9;
+  font-family: Mont-Bold, sans-serif;
+}
+
+.categoryCounter {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #75767f;
+  font-family: Mont-Bold, sans-serif;
+}
