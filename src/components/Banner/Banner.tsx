@@ -28,6 +28,7 @@ export const Banner = () => {
           className="my-swiper"
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           slidesPerView={1}
+           spaceBetween= {20}
           navigation
           pagination={{ clickable: true }}
         >

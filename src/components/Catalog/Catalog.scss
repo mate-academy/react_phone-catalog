@@ -1,0 +1,26 @@
+.catalog {
+
+  padding-top: 40px;
+  padding-bottom: 80px;
+
+  &__container {}
+
+  &__title {}
+
+  &__counter {}
+
+  &__dropdown {}
+
+  &__sortby {}
+
+  &__pages {}
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 40px;
+  }
+
+  &__pagination {}
+}
