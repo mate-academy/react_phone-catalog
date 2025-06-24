@@ -18,7 +18,7 @@ export const ProductCart = ({ products, types }: Props) => {
       {products.map(product => (
         <div className={classNames(styles.card, { [styles['card--grid']]: types === 'grid' })}
           key={product.id}>
-          <Link to={`/${product.category}/${product.itemId}`}>
+          <Link to={`/${product.category}/${product.itemId || product.id }`}>
 
           <img className={styles.card__image} src={`./${product.image|| product.images?.[0]}`}/>
           <h4 className={styles.card__name}>{product.name}</h4>

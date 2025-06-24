@@ -1,10 +1,8 @@
 export type Description = {
   title: string;
   text: string[];
-}
-export type Product = {
-
-
+};
+export type FullProduct = {
   id: string;
   category: string;
   namespaceId: string;
@@ -16,7 +14,7 @@ export type Product = {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: Description[]
+  description: Description[];
 
   screen: string;
   resolution: string;
@@ -25,5 +23,4 @@ export type Product = {
   camera: string;
   zoom: string;
   cell: string[];
-
-}
+};

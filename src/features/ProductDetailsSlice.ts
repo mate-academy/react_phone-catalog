@@ -1,20 +1,22 @@
 import { fetchOneProducts } from '../api/fetchOneTypeProducts';
-import { Product } from '../types/product';
+import { FullProduct } from '../types/product';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 type ProductDetailState = {
-  product: Product | null;
-  models: Product[] | [];
+  product: FullProduct | null;
+  models: FullProduct[] | [];
+
   loading: boolean;
   error: string;
   allAvailableColor: string[];
 };
 const initialState: ProductDetailState = {
   product: null,
+
   models: [],
   loading: false,
   error: '',
-  allAvailableColor:[],
+  allAvailableColor: [],
 };
 
 export const detailsProduct = createAsyncThunk(
@@ -36,7 +38,7 @@ export const productDetailsSlice = createSlice({
 
       state.models = action.payload.models;
       state.allAvailableColor = action.payload.allAvailableColor;
-       state.loading = false;
+      state.loading = false;
     });
     builder.addCase(detailsProduct.rejected, (state, action) => {
       state.loading = false;

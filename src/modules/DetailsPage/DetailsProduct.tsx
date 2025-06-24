@@ -20,6 +20,8 @@ export const DetailsProduct = () => {
   const product = useAppSelector(state => state.productDetail.product);
   const models = useAppSelector(state => state.productDetail.models);
 
+
+
   const dispach = useAppDispatch();
   const location = useLocation();
   const category = location.pathname.split('/')[1];
@@ -37,6 +39,12 @@ export const DetailsProduct = () => {
 
     dispach(detailsProduct({ category, id: productId }));
   }, [category, productId, dispach]);
+
+  const AllProducts = useAppSelector(state => state.products.products)
+
+  const findProducts = product
+  ? AllProducts.find(item => item.itemId === product.id)
+  : null;
 
 const findModel = (color, capacity) =>
   models.find(model => model.color === color
@@ -104,7 +112,7 @@ if(!product){return}
         <Price
           fullPrice={product.priceRegular}
           discount={product.priceDiscount} />
-            <Buttons product={product } />
+            <Buttons product={findProducts} />
 
         <TechDetails
           screen={product.screen}

@@ -6,7 +6,7 @@ export const Checkout = ({ products }) => {
   const dispach = useAppDispatch();
   const totalItems = getTotalItemsCart(products);
 
-const totalPrice = products.reduce((sum,item)=>sum+(item.priceDiscount * item.quantity),0)
+const totalPrice = products.reduce((sum,item)=>sum+(item.price* item.quantity),0)
   return (<>
   <div className={styles.checkout}>
       <div className={styles.checkout__total}>

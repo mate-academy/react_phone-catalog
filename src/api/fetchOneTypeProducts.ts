@@ -1,34 +1,41 @@
-
-import { modes } from "react-transition-group/SwitchTransition";
-import { Product } from "../types/product";
+import { modes } from 'react-transition-group/SwitchTransition';
+import { FullProduct } from '../types/product';
 type ProductDetails = {
-  product: Product;
-  models: Product[];
+  product: FullProduct;
+  models: FullProduct[];
 };
 
-export const fetchOneProducts = async (category: string, id: string): Promise<ProductDetails> => {
+export const fetchOneProducts = async (
+  category: string,
+  id: string,
+): Promise<ProductDetails> => {
   let response: Response;
+
   switch (category) {
-
-    case 'phones': response = await fetch('./api/phones.json');
+    case 'phones':
+      response = await fetch('./api/phones.json');
       break;
 
-    case 'tablets': response = await fetch('./api/tablets.json');
+    case 'tablets':
+      response = await fetch('./api/tablets.json');
       break;
-    case 'accessories': response = await fetch('./api/accessories.json');
+    case 'accessories':
+      response = await fetch('./api/accessories.json');
       break;
-
 
     default:
       throw new Error('undefined category');
   }
-  const products: Product[] = await response.json();
-  const product = products.find(item => item.id === id)
-  const models = products.filter(item => item.namespaceId === product?.namespaceId)
+
+  const products: FullProduct[] = await response.json();
+  const product = products.find(item => item.id === id);
+  const models = products.filter(
+    item => item.namespaceId === product?.namespaceId,
+  );
 
   if (!product) {
     throw new Error('Product not Found');
   }
-  return {product, models}
-}
 
+  return { product, models };
+};
