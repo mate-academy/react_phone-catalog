@@ -1,0 +1,116 @@
+@import '../../styles/variables';
+
+.card {
+  background-color: $color-surface1;
+  color: $color-white;
+  width: 272px;
+  height: 506px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 32px;
+  border: 1px solid $color-surface2;
+}
+
+.cardImage {
+  width: 208px;
+  height: 196px;
+  object-fit: contain;
+}
+
+.cardTitle {
+  font-family: $font-regular;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  padding-top: 16px;
+  margin: 0;
+}
+
+.cardPrice {
+  font-family: $font-bold;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 208px;
+    margin-top: 8px;
+    background-color: $color-elements;
+  }
+}
+
+.cardProperties {
+  padding-block: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardProperty {
+  font-family: $font-semibold;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.cardPropertyName {
+  color: $color-secondary;
+}
+
+.cardPropertyValue {
+  color: $color-white;
+}
+
+.cardButtons {
+  display: flex;
+  gap: 8px;
+  color: $color-white;
+  width: 100%;
+}
+
+.cardAddButton {
+  background-color: $color-accent;
+  height: 40px;
+  flex: 1;
+  box-sizing: border-box;
+  color: $color-white;
+  font-family: $font-semibold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #a378ff;
+  }
+}
+
+.cardFavButton {
+  background-color: $color-surface2;
+  height: 40px;
+  width: 40px;
+  border: 1px solid $color-surface2;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+}

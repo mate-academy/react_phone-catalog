@@ -4,38 +4,22 @@ import 'slick-carousel/slick/slick-theme.css';
 import { CustomArrowProps } from 'react-slick';
 import { FC } from 'react';
 import classNames from 'classnames';
-import styles from './ProductsSlider.module.scss';
+import styles from './NewModelsSlider.module.scss';
+import { ProductCard } from '../ProductCard';
 
-const images = [
-  {
-    id: 1,
-    img: '/img/slider-1.png',
-  },
-  {
-    id: 2,
-    img: '/img/slider-2.png',
-  },
-  {
-    id: 3,
-    img: '/img/slider-3.png',
-  },
-];
-
-type ImageData = {
-  id: number;
-  img: string;
-};
-
-type Props = {
-  image: ImageData;
-};
-
-const CustomSlide = ({ image }: Props) => {
-  const { id, img } = image;
-
-  return (
-    <img className={styles.customSlide} src={img} alt={`slider-img-${id}`} />
-  );
+const product = {
+  id: 1,
+  category: 'phones',
+  itemId: 'apple-iphone-7-32gb-black',
+  name: 'Apple iPhone 7 32GB Black',
+  fullPrice: 400,
+  price: 375,
+  screen: "4.7' IPS",
+  capacity: '32GB',
+  color: 'black',
+  ram: '2GB',
+  year: 2016,
+  image: 'img/phones/apple-iphone-7/black/00.webp',
 };
 
 const SampleNextArrow: FC<CustomArrowProps> = props => {
@@ -43,7 +27,7 @@ const SampleNextArrow: FC<CustomArrowProps> = props => {
 
   return (
     <img
-      src="img/slider-button-next.png"
+      src="img/slider-button-next-small.png"
       className={classNames(styles.customArrow, styles.next)}
       onClick={onClick}
     />
@@ -62,26 +46,21 @@ const SamplePrevArrow: FC<CustomArrowProps> = props => {
   );
 };
 
-export const ProductSlider = () => {
+export const NewModelsSlider = () => {
   const settings = {
-    dots: true,
-    infinite: true,
     speed: 500,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    slidesToShow: 1,
+    slidesToShow: 4,
     slidesToScroll: 1,
-    pauseOnDotsHover: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    customPaging: () => <div className={styles.customDot}></div>,
   };
 
   return (
     <div className={styles.sliderContainer}>
       <Slider {...settings}>
-        {images.map(image => (
-          <CustomSlide key={image.id} image={image} />
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((i, index) => (
+          // <CustomSlide key={image.id} image={image} />
+          <ProductCard key={index} product={product} />
         ))}
       </Slider>
     </div>
