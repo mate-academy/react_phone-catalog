@@ -5,7 +5,9 @@ import { getAccessories, getPhones, getTablets } from '../api/categories';
 
 export const useProductDetails = (productId?: string) => {
   const { category } = useParams();
-  const [productDetails, setProductDetails] = useState<PhoneDetails | null>(null);
+  const [productDetails, setProductDetails] = useState<PhoneDetails | null>(
+    null,
+  );
 
   useEffect(() => {
     const load = async () => {

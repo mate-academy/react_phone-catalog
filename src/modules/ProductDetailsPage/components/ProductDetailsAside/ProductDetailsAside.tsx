@@ -30,6 +30,10 @@ export const ProductDetailsAside: React.FC<Props> = ({ product, variants }) => {
   const hasCapacityVariants =
     capacityVariants.length > 0 ? capacityVariants : [product];
 
+  const price = product.priceDiscount ?? product.price ?? 0;
+  const fullPrice = product.priceRegular ?? product.fullPrice ?? 0;
+  // const imagePath = `/react_phone-catalog/${product.images?.[0] ?? ''}`;
+
   return (
     <div className={styles.container}>
       <div className={styles.colorsBlock}>
@@ -73,15 +77,15 @@ export const ProductDetailsAside: React.FC<Props> = ({ product, variants }) => {
       <div className={styles.divider} />
 
       <div className={styles.priceBlock}>
-        <span className={styles.price}>${product.priceDiscount}</span>
-        {product.priceRegular > product.priceDiscount && (
-          <span className={styles.fullPrice}>${product.priceRegular}</span>
+        <span className={styles.price}>${price}</span>
+        {fullPrice > price && (
+          <span className={styles.fullPrice}>${fullPrice}</span>
         )}
       </div>
 
       <div className={styles.buttons}>
         <AddToCartButton product={product} />
-        <FavoritesButton productId={product.id} />
+        <FavoritesButton productId={product.itemId} />
       </div>
 
       <div className={styles.specs}>

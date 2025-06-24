@@ -4,15 +4,18 @@ import classNames from 'classnames';
 import styles from './ProductDetailsPage.module.scss';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import { BackButton } from '../../components/BackButton';
-import { useVariantsByNamespace } from '../../hooks/useVariantsByNamespace';
-import { ProductDetailsAside } from './components/ProductAddInfo/ProductDetailsAside';
-import { useProductDetails } from '../../hooks/useProductDetails';
+import { ProductDetailsAside } from './components/ProductDetailsAside/ProductDetailsAside';
 import { ProductDescription } from './components/ProductDescription/ProductDescription';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import { useVariantsByNamespace } from '../../hooks/useVariantsByNamespace';
+import { useProductDetails } from '../../hooks/useProductDetails';
 import { useErrorHandling } from '../../hooks/errorHandling';
 import { useProducts } from '../../hooks/useProducts';
+import { Loader } from '../../components/Loader/Loader';
+import { useTheme } from '../../hooks/useTheme';
 
 export const ProductDetailsPage: React.FC = () => {
+  const { theme } = useTheme();
   const { productId, category } = useParams();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const { productDetails } = useProductDetails(productId);
@@ -21,7 +24,7 @@ export const ProductDetailsPage: React.FC = () => {
   const { products } = useProducts(() => setIsError(true));
 
   if (!productDetails) {
-    return null;
+    return <Loader />;
   }
 
   const images = Array.isArray(productDetails.images)
@@ -45,9 +48,8 @@ export const ProductDetailsPage: React.FC = () => {
           {capCategory}
         </Link>
         <img
-          src="/react_phone-catalog/img/icons/arrow-right.svg"
+          src={`/react_phone-catalog/img/icons/arrow-right-${theme}.svg`}
           alt="Arrow"
-          className={styles.breadcrumbArrow}
         />
         <span className={styles.breadcrumbCurrent}>{productDetails.name}</span>
       </div>

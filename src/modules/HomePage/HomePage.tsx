@@ -5,10 +5,15 @@ import { ShopByCategory } from './components/ShopByCategory';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { useProducts } from '../../hooks/useProducts';
 import { useErrorHandling } from '../../hooks/errorHandling';
+import { Loader } from '../../components/Loader/Loader';
 
 export const HomePage: React.FC = () => {
   const { setIsError } = useErrorHandling();
   const { products } = useProducts(() => setIsError(true));
+
+  if (!products) {
+    return <Loader />;
+  }
 
   const brandNewProducts = [...products]
     .sort((a, b) => (b.year ?? 0) - (a.year ?? 0))
@@ -25,7 +30,7 @@ export const HomePage: React.FC = () => {
         <h1 className={styles.title_hidden}>Product Catalog</h1>
         <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
       </div>
-      {/* <div> */}
+
       <PicturesSlider />
       <ProductsSlider
         products={brandNewProducts}
@@ -42,7 +47,6 @@ export const HomePage: React.FC = () => {
         navigationNextClass="hot-prices-next"
         showFullPrice={true}
       />
-      {/* </div> */}
     </>
   );
 };

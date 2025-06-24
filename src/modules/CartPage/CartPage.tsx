@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../../store/cartSlice';
 import { RootState } from '../../store';
 import { BackButton } from '../../components/BackButton';
+import { useTheme } from '../../hooks/useTheme';
 
 export const CartPage: React.FC = () => {
+  const { theme } = useTheme();
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart);
 
@@ -57,7 +59,10 @@ export const CartPage: React.FC = () => {
                         }
                         disabled={quantity <= 1}
                       >
-                        -
+                        <img
+                          src={`/react_phone-catalog/img/icons/minus-${theme}.svg`}
+                          alt="Next"
+                        />
                       </button>
                       <span className={styles.quantity}>{quantity}</span>
                       <button
@@ -71,7 +76,10 @@ export const CartPage: React.FC = () => {
                           )
                         }
                       >
-                        +
+                        <img
+                          src={`/react_phone-catalog/img/icons/plus-${theme}.svg`}
+                          alt="Next"
+                        />
                       </button>
                     </div>
                     <p className={styles.price}>${product.price * quantity}</p>

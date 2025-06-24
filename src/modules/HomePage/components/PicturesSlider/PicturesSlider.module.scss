@@ -17,32 +17,6 @@
   }
 }
 
-// .title {
-//   font-size: 32px;
-//   font-weight: 800;
-//   letter-spacing: -1%;
-//   margin-bottom: 24px;
-//   color: $color-primary;
-//   align-self: flex-start;
-//   padding: 0 16px;
-
-//   &_hidden {
-//     display: none;
-//   }
-
-//   @include tablet {
-//     font-size: 48px;
-//     margin-bottom: 32px;
-//     padding: 0 24px;
-//   }
-
-//   @include desktop {
-//     font-size: 48px;
-//     margin-bottom: 56px;
-//     padding: 0 24px;
-//   }
-// }
-
 .swiperWrapper {
   align-items: center;
   width: 100%;
@@ -101,8 +75,8 @@
   @include tablet {
     width: 32px;
     height: 100%;
-    background-color: $color-background;
-    border: 1px solid $color-elements;
+    background-color: var(--color-button);
+    border: 1px solid var(--color-elements);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,15 +90,15 @@
     }
 
     &:hover {
-      border-color: $color-primary;
+      border-color: var(--color-text);
     }
   }
 
    @include desktop {
     width: 32px;
     height: 100%;
-    background-color: $color-background;
-    border: 1px solid $color-elements;
+    background-color: var(--color-button);
+    border: 1px solid var(--color-elements);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,7 +112,7 @@
     }
 
     &:hover {
-      border-color: $color-primary;
+      border-color: var(--color-text);
     }
   }
 }
@@ -192,29 +166,29 @@
 }
 
 :global(.custom-pagination .swiper-pagination-bullet-active) {
-  background-color: $color-primary;
+  background-color: var(--color-text);
 }
 
 .banner-1 {
-  background-image: url('./img/banner-1.png');
+  background-image: url('/react_phone-catalog/img/banner-1.png');
 
   @media (max-width: $breakpoint-tablet) {
-    background-image: url('./img/banner-phones-mob.png');
+    background-image: url('/react_phone-catalog/img/banner-phones-mob.png');
   }
 }
 
 .banner-phones {
-  background-image: url('./img/banner-phones.png');
+  background-image: url('/react_phone-catalog/img/banner-phones.png');
 
   @media (max-width: $breakpoint-tablet) {
-    background-image: url('./img/banner-phones-mob.png');
+    background-image: url('/react_phone-catalog/img/banner-phones-mob.png');
   }
 }
 
 .banner-accessories {
-  background-image: url('./img/banner-accessories.png');
+  background-image: url('/react_phone-catalog/img/banner-accessories.png');
 
   @media (max-width: $breakpoint-tablet) {
-    background-image: url('./img/banner-phones-mob.png');
+    background-image: url('/react_phone-catalog/img/banner-phones-mob.png');
   }
 }

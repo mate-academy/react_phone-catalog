@@ -3,16 +3,16 @@
 .favBtn {
   width: 40px;
   height: 40px;
-  border: 1px solid #E2E6E9;
+  border: 1px solid var(--color-elements);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background-color: white;
+  background-color: var(--color-button);
 
   &:hover {
-    border-color: #0F0F11;
+    border-color: var(--color-text);
   }
 
   img {

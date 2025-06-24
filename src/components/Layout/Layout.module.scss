@@ -2,7 +2,7 @@
 
 .layout {
   min-height: 100vh;
-  background-color: $color-background;
+  background-color:var(--color-background);
 
 }
 
@@ -10,7 +10,7 @@
   padding: 32px 24px;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: $color-background;
+  background-color:var(--color-background);
 
   @include tablet {
     padding: 32px 24px;

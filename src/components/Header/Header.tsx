@@ -4,8 +4,11 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import { ThemeSwitcher } from '../ThemeSwitcher';
+import { useTheme } from '../../hooks/useTheme';
 
 export const Header: React.FC = () => {
+  const { theme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cartCount = useSelector((state: RootState) =>
     state.cart.reduce((sum, item) => sum + item.quantity, 0),
@@ -30,7 +33,7 @@ export const Header: React.FC = () => {
         <div className={styles.left}>
           <Link to="/" className={styles.logo}>
             <img
-              src="/react_phone-catalog/img/logo.png"
+              src={`/react_phone-catalog/img/logo-${theme}.png`}
               alt="Phone Catalog Logo"
             />
           </Link>
@@ -75,13 +78,15 @@ export const Header: React.FC = () => {
           </nav>
         </div>
 
+        <ThemeSwitcher />
+
         <div className={styles.right}>
           <button
             className={styles.burger}
             onClick={toggleMenu}
             aria-label="Menu"
           >
-            <img src="/react_phone-catalog/img/icons/burger.svg" alt="Menu" />
+            <img src={`/react_phone-catalog/img/icons/burger-${theme}.svg`} />
           </button>
           <NavLink
             to="/favorites"
@@ -90,7 +95,7 @@ export const Header: React.FC = () => {
             }
           >
             <img
-              src="/react_phone-catalog/img/icons/favorites-icon.svg"
+              src={`/react_phone-catalog/img/icons/favorites-icon-${theme}.svg`}
               alt="Favorites"
               className={styles.icon}
             />
@@ -106,7 +111,7 @@ export const Header: React.FC = () => {
             }
           >
             <img
-              src="/react_phone-catalog/img/icons/cart-icon.svg"
+              src={`/react_phone-catalog/img/icons/cart-icon-${theme}.svg`}
               alt="Cart"
               className={styles.icon}
             />
@@ -121,14 +126,20 @@ export const Header: React.FC = () => {
         <div className={styles.mobileMenu}>
           <div className={styles.mobileMenuHeader}>
             <Link to="/" className={styles.logo}>
-              <img src="./img/logo.png" alt="Phone Catalog Logo" />
+              <img
+                src={`/react_phone-catalog/img/logo-${theme}.png`}
+                alt="Phone Catalog Logo"
+              />
             </Link>
             <button
               className={styles.close}
               onClick={toggleMenu}
               aria-label="Close menu"
             >
-              <img src="./img/icons/close.svg" alt="Close" />
+              <img
+                src={`/react_phone-catalog/img/icons/close-${theme}.svg`}
+                alt="Close"
+              />
             </button>
           </div>
 
@@ -177,7 +188,7 @@ export const Header: React.FC = () => {
             }
           >
             <img
-              src="/react_phone-catalog/img/icons/favorites-icon.svg"
+              src={`/react_phone-catalog/img/icons/favorites-icon-${theme}.svg`}
               alt="Favorites"
             />
             {favoritesCount > 0 && (
@@ -195,7 +206,7 @@ export const Header: React.FC = () => {
             }
           >
             <img
-              src="/react_phone-catalog/img/icons/cart-icon.svg"
+              src={`/react_phone-catalog/img/icons/cart-icon-${theme}.svg`}
               alt="Cart"
             />
             {cartCount > 0 && (

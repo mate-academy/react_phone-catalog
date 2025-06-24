@@ -20,24 +20,18 @@
  .breadcrumbLink {
   font-size: 12px;
   font-weight: 700;
-  color: #0F0F11;
+  color:  var(--color-text);
   text-decoration: none;
 
   &:hover {
-    color: $color-primary;
+    color: var(--color-text);
   }
-}
-
-.breadcrumbArrow {
-  width: 16px;
-  height: 16px;
-  color: #B4BDC3;
 }
 
 .breadcrumbCurrent {
   font-size: 12px;
   font-weight: 700;
-  color: $color-primary;
+  color: #89939A;
 }
 
 .titleBlock {
@@ -51,7 +45,7 @@
   font-size: 32px;
   font-weight: 800;
   letter-spacing: -1%;
-  color: $color-primary;
+  color: var(--color-text);
 
   @include tablet {
     font-size: 48px;
@@ -94,16 +88,16 @@
     width: 136px;
     height: 40px;
     padding: 8px 12px;
-    border: 1px solid $color-elements;
+    border: 1px solid var(--color-elements);
     border-radius: 8px;
-    background-color: $color-white;
+    background-color: var(--color-button);
     font-size: 14px;
     font-family: inherit;
     color: #89939A;
     cursor: pointer;
 
     &:focus {
-      outline: 1px solid $color-primary;
+      outline: 1px solid var(--color-text);
     }
   }
 }
@@ -145,9 +139,9 @@
 
 .pageButton {
   padding: 7px 12px 4px 12px;
-  border: 1px solid $color-elements;
-  background-color: transparent;
-  color: $color-primary;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-button);
+  color: var(--color-text);
   border-radius: 48px;
   cursor: pointer;
   font-weight: 600;
@@ -157,16 +151,19 @@
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 
   &:hover {
-    border-color:  #0F0F11;
+    border-color: var(--color-text);
   }
 }
 
 .pageButtonActive {
   @extend .pageButton;
-  background-color: $color-primary;
+  background-color: var(--color-pagination);
   color: $color-white;
-  border-color: $color-primary;
   pointer-events: none;
+
+  &:hover {
+    border-color: var(--color-text);
+  }
 }
 
 .arrowButton {

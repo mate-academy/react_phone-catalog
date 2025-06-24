@@ -8,6 +8,7 @@ import { CustomDropdown } from '../../components/CustomDropdown';
 import { useProducts } from '../../hooks/useProducts';
 import { useErrorHandling } from '../../hooks/errorHandling';
 import classNames from 'classnames';
+import { useTheme } from '../../hooks/useTheme';
 
 const sortProducts = (products, sortBy) => {
   switch (sortBy) {
@@ -24,6 +25,7 @@ const sortProducts = (products, sortBy) => {
 };
 
 export const CategoryPage: React.FC = () => {
+  const { theme } = useTheme();
   const { category } = useParams();
   const capitalizedCategory =
     category?.charAt(0).toUpperCase() + category?.slice(1);
@@ -59,9 +61,8 @@ export const CategoryPage: React.FC = () => {
           {capitalizedCategory}
         </Link>
         <img
-          src="/react_phone-catalog/img/icons/arrow-right.svg"
+          src={`/react_phone-catalog/img/icons/arrow-right-${theme}.svg`}
           alt="Arrow"
-          className={styles.breadcrumbArrow}
         />
       </div>
 
@@ -124,7 +125,7 @@ export const CategoryPage: React.FC = () => {
             disabled={currentPage === 1}
           >
             <img
-              src="/react_phone-catalog/img/icons/arrow-left.svg"
+              src={`/react_phone-catalog/img/icons/arrow-left-${theme}.svg`}
               alt="Prev"
             />
           </button>
@@ -157,7 +158,7 @@ export const CategoryPage: React.FC = () => {
             disabled={currentPage === totalPages}
           >
             <img
-              src="/react_phone-catalog/img/icons/arrow-right.svg"
+              src={`/react_phone-catalog/img/icons/arrow-right-${theme}.svg`}
               alt="Next"
             />
           </button>

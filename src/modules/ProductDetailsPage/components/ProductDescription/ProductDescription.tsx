@@ -55,18 +55,18 @@ export const ProductDescription: React.FC<Props> = ({ description, specs }) => {
             <span>RAM</span>
             <span>{specs.ram}</span>
           </li>
-          {specs.camera &&
+          {specs.camera && (
             <li>
               <span>Camera</span>
               <span>{specs.camera}</span>
             </li>
-          }
-          {specs.zoom &&
+          )}
+          {specs.zoom && (
             <li>
               <span>Zoom</span>
               <span>{specs.zoom}</span>
             </li>
-          }
+          )}
           <li>
             <span>Cell</span>
             <span>{specs.cell.join(', ')}</span>

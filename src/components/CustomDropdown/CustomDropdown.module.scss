@@ -16,9 +16,9 @@
 
 .selector {
   height: 40px;
-  border: 1px solid $color-elements;
+  border: 1px solid var(--color-elements);
   border-radius: 8px;
-  background-color: $color-white;
+  background-color: var(--color-button);
   padding: 0 12px;
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@
 
   &:hover,
   &.open {
-    border-color: $color-primary;
+    border-color: var(--color-text);
   }
 
   .icon {
@@ -44,8 +44,8 @@
   left: 0;
   width: 100%;
   margin-top: 4px;
-  background-color: $color-white;
-  border: 1px solid $color-elements;
+  background-color: var(--color-button);
+  border: 1px solid var(--color-elements);
   border-radius: 8px;
   z-index: 5;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -60,13 +60,13 @@
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #f9f9f9;
-    color: $color-primary;
+    border-color: var(--color-text);
+    color: var(--color-text);
     font-weight: 700;
   }
 
   &.active {
     font-weight: 700;
-    color: $color-primary;
+    border-color:#B4BDC3;
   }
 }

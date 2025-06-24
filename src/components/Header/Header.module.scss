@@ -3,11 +3,11 @@
 .header {
   display: flex;
   width: 100%;
-  border-bottom: 1px solid $color-elements;
+  border-bottom: 1px solid var(--color-elements);
   height: 48px;
   position: sticky;
   top: 0;
-  background-color: #fff;
+  background-color: var(--color-background);
   z-index: 3;
 
   @include tablet {
@@ -90,12 +90,12 @@
   line-height: 11px;
   letter-spacing: 4%;
   text-transform: uppercase;
-  color: $color-secondary;
+  color: var(--color-secondary);
   text-decoration: none;
   transition: color 0.3s;
 
   &:hover {
-    color: $color-primary;
+    color: var(--color-text);
   }
 
   @include tablet {
@@ -112,7 +112,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 1px solid $color-elements;
+    border-left: 1px solid var(--color-elements);
     width: 56px;
     height: 56px;
   }
@@ -122,15 +122,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 1px solid $color-elements;
+    border-left: 1px solid var(--color-elements);
     width: 64px;
     height: 64px;
   }
 }
 
-
 .active {
-  color: $color-primary;
+  color: var(--color-text);
 
   &::after {
     content: '';
@@ -139,7 +138,7 @@
     bottom: 0;
     width: 100%;
     height: 3px;
-    background-color: $color-primary;
+    background-color: var(--color-text);
   }
 }
 
@@ -171,7 +170,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: -1px 0px 0px 0px $color-elements;
+  box-shadow: -1px 0px 0px 0px var(--color-elements);
 
 
   @include desktop {
@@ -194,7 +193,7 @@
   left: 0;
   width: 100%;
   height: calc(100% - 64px);
-  background: #fff;
+  background-color: var(--color-background);
   display: flex;
   flex-direction: column;
 
@@ -208,13 +207,13 @@
 }
 
 .mobileMenuHeader {
-  border-bottom: 1px solid $color-elements;
+  border-bottom: 1px solid var(--color-elements);
   height: 48px;
   width: 100%;
   position: sticky;
   padding-left: 16px;
   top: 0;
-  background-color: #fff;
+  background-color: var(--color-background);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -226,7 +225,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 1px solid $color-elements;
+  border-left: 1px solid var(--color-elements);
 }
 
 .mobileNav {
@@ -241,7 +240,7 @@
   position: relative;
   font-size: 12px;
   text-transform: uppercase;
-  color: $color-secondary;
+  color: var(--color-secondary);
   text-decoration: none;
   font-weight: 800;
   letter-spacing: 4%;
@@ -255,7 +254,7 @@
     left: 50%;
     width: 100%;
     height: 2px;
-    background-color: $color-primary;
+    background-color: var(--color-text);
     transform: scaleX(0);
     transform-origin: center;
     transition: transform 0.3s ease;
@@ -263,7 +262,7 @@
   }
 
   &:hover {
-    color: $color-primary;
+    color: var(--color-text);
   }
 
   &:hover::after {
@@ -271,7 +270,7 @@
   }
 
   &.active {
-    color: $color-primary;
+    color: var(--color-text);
 
     &::after {
       transform: scaleX(1);
@@ -290,8 +289,8 @@
   left: 0;
   width: 100%;
   height: 64px;
-  border-top: 1px solid $color-elements;
-  background-color: #fff;
+  border-top: 1px solid var(--color-elements);
+   background-color: var(--color-background);
   z-index: 5;
 
   @include tablet {
@@ -310,7 +309,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  border-left: 1px solid $color-elements;
+  border-left: 1px solid var(--color-elements);
   z-index: 6;
 
   img {
@@ -333,6 +332,6 @@
     bottom: 0;
     width: 100%;
     height: 2px;
-    background-color: $color-primary;
+    background-color: var(--color-text);
   }
 }

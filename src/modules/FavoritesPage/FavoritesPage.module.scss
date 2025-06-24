@@ -1,21 +1,9 @@
 @use '../../assets/styles/variables' as *;
 
-.favoritesPage {
-  // max-width: 1136px;
-  // margin: 0 auto;
-
-   @include tablet {
-  }
-
-  @include desktop {
-    // max-width: 1136px;
-    // margin: 0 auto;
-  }
-}
-
 .title {
   font-size: 32px;
   font-weight: 800;
+  color: var(--color-text);
 
   @include tablet {
     font-size: 48px;

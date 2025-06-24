@@ -10,31 +10,24 @@
  .breadcrumbLink {
   font-size: 12px;
   font-weight: 700;
-  color: #0F0F11;
+  color: var(--color-text);
   text-decoration: none;
 
   &:hover {
-    color: $color-primary;
+    color: var(--color-text);
   }
-}
-
-.breadcrumbArrow {
-  width: 16px;
-  height: 16px;
-  color: #B4BDC3;
 }
 
 .breadcrumbCurrent {
   font-size: 12px;
   font-weight: 700;
-  color: $color-primary;
+  color: #89939A;
 }
-
 
 .title {
   font-size: 22px;
   font-weight: 800;
-  color: $color-primary;
+  color: var(--color-text);
   margin-bottom: 24px;
 
   @include tablet {
@@ -117,7 +110,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #e2e6e9;
+    border: 1px solid var(--color-elements);
     border-radius: 4px;
     padding: 4px;
     width: 100%;
@@ -130,7 +123,7 @@
     }
 
     &:hover {
-      border-color: $color-primary;
+      border-color: var(--color-text);
     }
   }
 
@@ -160,7 +153,6 @@
     }
 }
 
-
 .infoBlock {
   display: flex;
   flex-direction: column;
@@ -172,87 +164,5 @@
 
   @include desktop {
     grid-column: 8 / span 5;
-  }
-}
-
-.priceBlock {
-  display: flex;
-  gap: 16px;
-  align-items: baseline;
-
-  .price {
-    font-size: 32px;
-    font-weight: 800;
-    color: $color-primary;
-  }
-
-  .fullPrice {
-    font-size: 22px;
-    font-weight: 600;
-    color: $color-secondary;
-    text-decoration: line-through;
-  }
-}
-
-.buttons {
-  display: flex;
-  gap: 16px;
-}
-
-.specs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  .row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    font-weight: 600;
-    color: $color-secondary;
-  }
-
-  .value {
-    color: $color-primary;
-  }
-}
-
-.descriptionTabs {
-  margin-top: 48px;
-
-  .tabTitle {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
-
-  .description {
-    font-size: 14px;
-    color: $color-secondary;
-    line-height: 1.5;
-  }
-}
-
-.descriptionSection {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 56px;
-  margin-top: 56px;
-
-  @include tablet {
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 32px;
-  }
-
-  .about {
-    @include tablet {
-      grid-column: 1 / span 6;
-    }
-  }
-
-  .specs {
-    @include tablet {
-      grid-column: 8 / span 5;
-    }
   }
 }

@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
+import { useTheme } from '../../hooks/useTheme';
 
 export const Footer: React.FC = () => {
+  const { theme } = useTheme();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.left}>
           <Link to="/" className={styles.logo}>
             <img
-              src="/react_phone-catalog/img/logo.png"
+              src={`/react_phone-catalog/img/logo-${theme}.png`}
               alt="Phone Catalog Logo"
             />
           </Link>
@@ -45,7 +48,7 @@ export const Footer: React.FC = () => {
             className={styles.top}
           >
             <img
-              src="/react_phone-catalog/img/icons/arrow-up.svg"
+              src={`/react_phone-catalog/img/icons/arrow-up-${theme}.svg`}
               alt="Back to top"
             />
           </button>

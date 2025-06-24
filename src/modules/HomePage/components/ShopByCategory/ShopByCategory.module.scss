@@ -11,7 +11,7 @@
   font-size: 32px;
   font-weight: 800;
   font-family: $font-family-main;
-  color: #0F0F11;
+  color: var(--color-text);
   margin-bottom: 24px;
 }
 
@@ -53,13 +53,13 @@
 .name {
   font-size: 20px;
   font-weight: 700;
-  color: #0F0F11;
+  color: var(--color-text);
   margin: 24px 0 4px 0;
   font-family: 'Mont', sans-serif;
 }
 
 .count {
   font-size: 14px;
-  color: #89939A;
+  color: $color-secondary;
   font-family: 'Mont', sans-serif;
 }

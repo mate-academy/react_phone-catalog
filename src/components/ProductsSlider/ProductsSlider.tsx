@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
+import { useTheme } from '../../hooks/useTheme';
 
 type Props = {
   products: Product[];
@@ -22,6 +23,8 @@ export const ProductsSlider: React.FC<Props> = ({
   navigationNextClass,
   showFullPrice,
 }) => {
+  const { theme } = useTheme();
+
   return (
     <section className={styles.slider}>
       <div className={styles.header}>
@@ -30,13 +33,13 @@ export const ProductsSlider: React.FC<Props> = ({
         <div className={styles.controls}>
           <button className={`${styles.arrow} ${navigationPrevClass}`}>
             <img
-              src="/react_phone-catalog/img/icons/arrow-left.svg"
+              src={`/react_phone-catalog/img/icons/arrow-left-${theme}.svg`}
               alt="Previous"
             />
           </button>
           <button className={`${styles.arrow} ${navigationNextClass}`}>
             <img
-              src="/react_phone-catalog/img/icons/arrow-right.svg"
+              src={`/react_phone-catalog/img/icons/arrow-right-${theme}.svg`}
               alt="Next"
             />
           </button>
