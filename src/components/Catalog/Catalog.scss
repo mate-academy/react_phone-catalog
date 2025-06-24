@@ -5,13 +5,38 @@
 
   &__container {}
 
-  &__title {}
+  &__title {
+    margin-bottom: 8px;
+  }
 
-  &__counter {}
+  &__counter {
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--color-secondary);
+    margin-bottom: 40px;
+  }
 
-  &__dropdown {}
+  &__dropdowns {
+    display: flex;
+    column-gap: 16px;
+    margin-bottom: 24px;
+  }
 
-  &__sortby {}
+  &__dropdown {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+
+  }
+
+  &__sortby {
+
+    max-width: 178px;
+  }
+
+  &__items {
+    max-width: 138px;
+  }
 
   &__pages {}
 
@@ -23,4 +48,41 @@
   }
 
   &__pagination {}
+}
+
+.select {
+  appearance: none;
+  padding: 10px 12px;
+  width: 176px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-primary);
+  border: 1px solid var(--color-icons);
+  outline: none;
+  transition: 0.5s;
+  cursor: pointer;
+  // position: relative;
+  background-image: url(./../../images/icons/arrow-up.svg);
+  background-repeat: no-repeat;
+  background-position: right 10px bottom 50%;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 5px;
+    height: 5px;
+    background-image: url(./../../images/icons/arrow-up.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+  }
+
+  &:hover {}
+}
+
+.label {
+  font-size: 12px;
+  color: var(--color-secondary)
 }

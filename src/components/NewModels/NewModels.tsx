@@ -20,6 +20,7 @@ export const NewModels = () => {
           className="swiper-slider"
           modules={[Navigation, A11y]}
           slidesPerView={4}
+          spaceBetween={16}
           navigation
           pagination={{ clickable: true }}
         >

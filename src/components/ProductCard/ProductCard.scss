@@ -1,5 +1,5 @@
  .card {
-   flex: 0 0 272px;
+   flex: 1 1 272px;
    padding: 32px;
    border: 1px solid var(--color-elements);
    transition: all 0.4s;
@@ -16,6 +16,12 @@
 
    &__image {
      transition: all 0.4s;
+     max-height: 130px;
+     object-fit: contain;
+
+     @media (min-width:640px) {
+       max-height: 196px;
+     }
    }
 
    &__title {
