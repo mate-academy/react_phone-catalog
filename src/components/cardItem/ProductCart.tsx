@@ -3,6 +3,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { Product } from '../../types/products';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { Buttons } from '../buttons/Buttons';
 type Props = {
   products: Product[];
   types?: 'hot' | 'new' | 'grid';
@@ -49,10 +50,7 @@ export const ProductCart = ({ products, types }: Props) => {
               <span className={styles.card__goods}>{product.ram}</span>
             </div>
           </div>
-          <div className={styles.card__buttons}>
-            <div className={styles.card__addCart}>Add to cart</div>
-            <FaRegHeart className={styles.card__favorite} />
-          </div>
+         <Buttons product={product}/>
         </div>
       ))}
     </>

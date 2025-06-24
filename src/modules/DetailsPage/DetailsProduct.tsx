@@ -124,7 +124,8 @@ if(!product){return}
 </div>
 
 <div className={styles.aboutwrapper}>
-        <div className={styles.aboutwrapper__about} ><About
+          <div className={styles.aboutwrapper__about} >
+            <About
           description={product.description } />
 </div>
           <div className={styles.aboutwrapper__tech}>
