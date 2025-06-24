@@ -1,0 +1,59 @@
+@import '../../styles/main';
+@import '../../utils/variables';
+
+.header {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+  box-shadow: 0 1px 0 0 var(--color-gray-elements);
+  background-color: var(--color-bg);
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+.header__search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.header__search-input {
+  height: 48px;
+  box-shadow: -1px 0 0 0 var(--color-gray-elements);
+  width: 100%;
+  padding-inline: 8px;
+  background-color: var(--color-bg);
+  font-family: Mont-Regular, sans-serif;
+  color: var(--color-gray-primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  outline: none;
+  border: none;
+
+  @include on-tablet {
+    flex-grow: 1;
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  .header__search-input::placeholder {
+    font-family: Mont-Regular, sans-serif;
+    color: var(--color-gray-secondary);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 21px;
+    transition: opacity 0.3s ease;
+  }
+
+  .header__search-input:focus::placeholder {
+    opacity: 0;
+  }
+}
