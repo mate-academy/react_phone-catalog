@@ -3,6 +3,7 @@
 .recommendedItems {
   max-width: 1136px;
   padding: 56px 0 56px $padding-phone;
+
   @include page-grid;
 
   @include on-tablet {
@@ -22,7 +23,8 @@
     grid-column: -1 / 1;
     display: flex;
     justify-content: space-between;
-   
+
+    @include page-grid;
 
     &--buttons {
       display: flex;

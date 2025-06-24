@@ -7,12 +7,10 @@
 }
 
 .new-models {
-  @include page-grid;
+  padding-left: $padding-phone;
+  margin-bottom: 57px;
 
-  & {
-    padding-left: $padding-phone;
-    margin-bottom: 57px;
-  }
+  @include page-grid;
 
   @include on-tablet {
     padding-left: $padding-tablet;
@@ -29,13 +27,11 @@
   }
 
   &__header {
-    @include page-grid;
+    grid-column: -1 / 1;
+    display: flex;
+    justify-content: space-between;
 
-    & {
-      grid-column: -1 / 1;
-      display: flex;
-      justify-content: space-between;
-    }
+    @include page-grid;
 
     &--buttons {
       display: flex;

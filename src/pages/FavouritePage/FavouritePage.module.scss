@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   max-width: 1136px;
+
   @include page-grid;
 
   @include on-tablet {

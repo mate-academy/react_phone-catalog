@@ -8,6 +8,7 @@
 .shop_category {
   margin-bottom: 56px;
   padding: 0 $padding-phone;
+
   @include page-grid;
 
   @include on-tablet {
@@ -33,6 +34,7 @@
 
   &__box {
     grid-column: 1 / -1;
+
     @include page-grid;
 
     &--card {

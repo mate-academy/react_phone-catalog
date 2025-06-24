@@ -11,6 +11,7 @@
   box-sizing: border-box;
   transform: translateZ(0);
   will-change: transform;
+
   @include page-grid;
 
   &__logo {
