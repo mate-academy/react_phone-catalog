@@ -28,10 +28,7 @@ export const AccessoriesTop: React.FC<Props> = ({
         <ul className="accessories-top__breadcrumb">
           <li>
             <Link className="accessories-top__breadcrumb-icon" to="/">
-              <img
-                src="../../../../public/icons/icon-house.svg"
-                alt="Icon House"
-              />
+              <img src="/icons/icon-house.svg" alt="Icon House" />
             </Link>
           </li>
 

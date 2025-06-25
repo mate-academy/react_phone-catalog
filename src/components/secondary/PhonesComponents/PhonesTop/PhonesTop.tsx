@@ -28,10 +28,7 @@ export const PhonesTop: React.FC<Props> = ({
         <ul className="phones-top__breadcrumb">
           <li>
             <Link className="phones-top__breadcrumb-icon" to="/">
-              <img
-                src="../../../../public/icons/icon-house.svg"
-                alt="Icon House"
-              />
+              <img src="/icons/icon-house.svg" alt="Icon House" />
             </Link>
           </li>
 

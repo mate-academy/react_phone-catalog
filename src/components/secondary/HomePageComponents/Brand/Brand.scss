@@ -156,6 +156,7 @@
           color: #313237;
           line-height: 21px;
           font-size: 14px;
+          font-weight: 700;
           cursor: pointer;
 
           &:hover {
@@ -254,7 +255,7 @@
               width: 16px;
               height: 16px;
               background-repeat: no-repeat;
-              background-image: url('../../../../public/icons/favourites-icon.svg');
+              background-image: url('/icons/favourites-icon.svg');
             }
           }
         }

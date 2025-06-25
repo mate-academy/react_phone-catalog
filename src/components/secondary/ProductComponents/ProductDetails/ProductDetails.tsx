@@ -123,7 +123,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     <article className="product-details">
       <div className="product-details__images">
         <img
-          src={`../../../../../public/${primaryImg}`}
+          src={`/${primaryImg}`}
           alt="Primary-img"
           className="product-details__images-primary"
         />
@@ -145,7 +145,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 onClick={() => setPrimaryImg(imgSrc)}
               >
                 <img
-                  src={`../../../../../public/${imgSrc}`}
+                  src={`/${imgSrc}`}
                   alt="list-img"
                   className="product-details__images-list-item-img"
                 />

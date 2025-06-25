@@ -22,7 +22,7 @@ export const Favourites = () => {
         <div className="favourites-empty">
           <img
             className="favourites-empty__img"
-            src="../../../../public/img/favorites-image.avif"
+            src="/img/favorites-image.avif"
             alt="Favourites is empty"
           />
         </div>
@@ -31,10 +31,7 @@ export const Favourites = () => {
           <div className="favourites__top">
             <div className="favourites__top-breadcrumb">
               <Link to="/">
-                <img
-                  src="../../../../public/icons/icon-house.svg"
-                  alt="Icon House"
-                />
+                <img src="/icons/icon-house.svg" alt="Icon House" />
               </Link>
 
               <div className="favourites__top-breadcrumb-arrow"></div>
@@ -59,7 +56,7 @@ export const Favourites = () => {
                       >
                         <img
                           className="card__content-img"
-                          src={`../../../../../public/${el.images[0]}`}
+                          src={`/${el.images[0]}`}
                           alt="Phone-img"
                         />
                       </Link>

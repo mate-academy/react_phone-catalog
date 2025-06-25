@@ -111,7 +111,7 @@ export const Brand: React.FC<Props> = ({ phones }) => {
                     state={{ from: 'Home' }}
                     className="brend__bottom-phone-card-name"
                   >
-                    <span className="hot-price__bottom-card-name-text">
+                    <span className="brend__bottom-phone-card-name-text">
                       {p.name}
                     </span>
                   </Link>

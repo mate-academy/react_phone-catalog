@@ -11,7 +11,7 @@ import classNames from 'classnames';
 import { images } from './HeaderUtils';
 import { useEffect, useRef } from 'react';
 
-const BASE_URL = '../../../../public/header-images/';
+const BASE_URL = '/header-images/';
 
 export const Header = () => {
   const activeImageId = useHeaderObserver();

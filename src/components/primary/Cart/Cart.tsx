@@ -4,8 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Product } from '../../../types/Product';
 import './Cart.scss';
 
-const BASE_URL = '../../../../public/';
-
 const getKey = (p: Product) => `${p.id}_${p.color}_${p.capacity}`;
 
 export const Cart = () => {
@@ -100,7 +98,7 @@ export const Cart = () => {
 
                       <Link state={{ from: 'Cart' }} to={`/product/${el.name}`}>
                         <img
-                          src={`${BASE_URL}${el.images[0]}`}
+                          src={`/${el.images[0]}`}
                           className="list__element-top-img"
                         />
                       </Link>

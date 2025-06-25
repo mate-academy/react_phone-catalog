@@ -22,10 +22,7 @@ export const ProductTop: React.FC<Props> = ({ product }) => {
           <ul className="product-top__breadcrumb">
             <li>
               <Link className="product-top__breadcrumb-icon" to="/">
-                <img
-                  src="../../../../public/icons/icon-house.svg"
-                  alt="Icon House"
-                />
+                <img src="/icons/icon-house.svg" alt="Icon House" />
               </Link>
             </li>
 
