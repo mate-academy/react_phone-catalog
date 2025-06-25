@@ -1,6 +1,6 @@
 import './Category.scss';
 
-const BASE_URL = '../../../../public/category-images/';
+const BASE_URL = '/category-images/';
 
 const categoryBlock = [
   {
