@@ -73,7 +73,6 @@
   background-color: var(--color-background-card);
   border-radius: 16px;
 
-
   @include tablet {
     padding: 24px;
     flex-direction: row;
@@ -180,6 +179,7 @@
   font-size: 22px;
   font-weight: 800;
   margin-top: 4px;
+  width: 80px;
 }
 
 .summary {
@@ -191,7 +191,6 @@
   border: 1px solid var(--color-elements);
   border-radius: 16px;
   color: var(--color-text);
-
 
   @include desktop {
     min-width: 368px;

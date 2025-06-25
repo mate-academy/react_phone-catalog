@@ -1,50 +1,50 @@
-import React from 'react';
-import styles from './CartItemCard.module.scss';
-import { useDispatch } from 'react-redux';
-import { removeFromCart, updateQuantity } from '../../store/cartSlice';
-import { Product } from '../../types/Product';
+// import React from 'react';
+// import styles from './CartItemCard.module.scss';
+// import { useDispatch } from 'react-redux';
+// import { removeFromCart, updateQuantity } from '../../store/cartSlice';
+// import { Product } from '../../types/Product';
 
-type Props = {
-  product: Product;
-  quantity: number;
-};
+// type Props = {
+//   product: Product;
+//   quantity: number;
+// };
 
-export const CartItemCard: React.FC<Props> = ({ product, quantity }) => {
-  const dispatch = useDispatch();
+// export const CartItemCard: React.FC<Props> = ({ product, quantity }) => {
+//   const dispatch = useDispatch();
 
-  const handleRemove = () => {
-    dispatch(removeFromCart(product.id));
-  };
+//   const handleRemove = () => {
+//     dispatch(removeFromCart(product.id));
+//   };
 
-  const changeQuantity = (value: number) => {
-    if (value < 1) {
-      return;
-    }
+//   const changeQuantity = (value: number) => {
+//     if (value < 1) {
+//       return;
+//     }
 
-    dispatch(updateQuantity({ id: product.id, quantity: value }));
-  };
+//     dispatch(updateQuantity({ id: product.id, quantity: value }));
+//   };
 
-  return (
-    <div className={styles.card}>
-      <img src={product.image} alt={product.name} className={styles.image} />
+//   return (
+//     <div className={styles.card}>
+//       <img src={product.image} alt={product.name} className={styles.image} />
 
-      <div className={styles.info}>
-        <p className={styles.name}>{product.name}</p>
-      </div>
+//       <div className={styles.content}>
+//         <p className={styles.name}>{product.name}</p>
+//       </div>
 
-      <div className={styles.actionBlock}>
-        <div className={styles.controls}>
-          <button onClick={() => changeQuantity(quantity - 1)}>-</button>
-          <span>{quantity}</span>
-          <button onClick={() => changeQuantity(quantity + 1)}>+</button>
-        </div>
+//       <div className={styles.controlsWrapper}>
+//         <div className={styles.controls}>
+//           <button onClick={() => changeQuantity(quantity - 1)}>-</button>
+//           <span>{quantity}</span>
+//           <button onClick={() => changeQuantity(quantity + 1)}>+</button>
+//         </div>
 
-        <p className={styles.price}>${product.price * quantity}</p>
-      </div>
+//         <p className={styles.price}>${product.price * quantity}</p>
+//       </div>
 
-      <button onClick={handleRemove} className={styles.remove}>
-        ✕
-      </button>
-    </div>
-  );
-};
+//       <button onClick={handleRemove} className={styles.remove}>
+//         ✕
+//       </button>
+//     </div>
+//   );
+// };
