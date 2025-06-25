@@ -228,7 +228,7 @@
           width: 16px;
           height: 16px;
           background-repeat: no-repeat;
-          background-image: url('../../../../public/icons/favourites-icon.svg');
+          background-image: url('/icons/favourites-icon.svg');
         }
       }
     }
@@ -274,7 +274,7 @@
 
 .is-phone-favourites {
   background-repeat: no-repeat;
-  background-image: url('../../../../public/icons/favourites-icon-red.svg');
+  background-image: url('/icons/favourites-icon-red.svg');
 
   &:hover {
     transform: scale(1.2);
