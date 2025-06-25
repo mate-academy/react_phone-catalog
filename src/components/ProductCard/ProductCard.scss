@@ -16,15 +16,15 @@
 
    &__image {
      transition: all 0.4s;
-     max-height: 130px;
+     max-height: 196px;
      object-fit: contain;
+     margin-bottom: 8px;
 
-     @media (min-width:640px) {
-       max-height: 196px;
-     }
+
    }
 
    &__title {
+     padding-top: 16px;
      font-weight: 600;
      line-height: 1.5;
      color: var(--color-primary);
@@ -34,6 +34,7 @@
      font-size: 22px;
      line-height: 1.4;
      font-weight: 800;
+     margin-bottom: 16px;
    }
 
    &__info {
@@ -42,6 +43,7 @@
      flex-direction: column;
      border-top: 1px solid var(--color-elements);
      row-gap: 8px;
+     margin-bottom: 8px;
    }
 
    &__param {
