@@ -1,19 +1,34 @@
 import { Product } from '../types/Product';
 
 export const addInCart = (object: Product) => {
-  const valueCart: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
+  const cart: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
 
-  if (valueCart.some(el => el.id === object.id)) {
-    const newValue = valueCart.filter(obj => obj.id !== object.id);
+  const isInCart = cart.some(
+    el =>
+      el.id === object.id &&
+      el.capacity === object.capacity &&
+      el.color === object.color,
+  );
 
-    localStorage.setItem('cart', JSON.stringify(newValue));
-    window.dispatchEvent(new CustomEvent('cartChanged'));
+  let updatedCart: Product[];
 
-    return newValue;
+  if (isInCart) {
+    // Видалити об'єкт
+    updatedCart = cart.filter(
+      el =>
+        !(
+          el.id === object.id &&
+          el.capacity === object.capacity &&
+          el.color === object.color
+        ),
+    );
+  } else {
+    // Додати об'єкт
+    updatedCart = [...cart, object];
   }
 
+  localStorage.setItem('cart', JSON.stringify(updatedCart));
   window.dispatchEvent(new CustomEvent('cartChanged'));
-  localStorage.setItem('cart', JSON.stringify([...valueCart, object]));
 
-  return [...valueCart, object];
+  return updatedCart;
 };

@@ -7,8 +7,22 @@ export const togglePhoneInStorage = (object: Product, key: string) => {
 
   let storge: Product[] = JSON.parse(localStorage.getItem(key) || '[]');
 
-  if (storge.some(item => item.id === object.id)) {
-    storge = storge.filter(item => item.id !== object.id);
+  const product = storge.some(
+    item =>
+      item.id === object.id &&
+      item.capacity === object.capacity &&
+      item.color === object.color,
+  );
+
+  if (product) {
+    storge = storge.filter(
+      item =>
+        !(
+          item.id === object.id &&
+          item.capacity === object.capacity &&
+          item.color === object.color
+        ),
+    );
 
     window.dispatchEvent(new CustomEvent('favouritesChanged'));
 

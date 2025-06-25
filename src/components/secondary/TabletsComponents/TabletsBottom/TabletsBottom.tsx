@@ -17,10 +17,6 @@ export const TabletsBottom: React.FC<Props> = ({
   initialList,
   itemsPerPage,
 }) => {
-  if (!initialList) {
-    return null;
-  }
-
   const navigationContainer = useRef<HTMLUListElement>(null);
   const { saveFilterInParams } = useSaveFilterInParams();
   const { moveButtons } = useMoveButtons();
@@ -31,25 +27,12 @@ export const TabletsBottom: React.FC<Props> = ({
   );
 
   useEffect(() => {
-    if (!navigationContainer.current) {
-      return;
-    }
-
-    setTimeout(() => {
-      const container = navigationContainer.current!;
-      const activeButton = container.querySelector(
-        '.active-list',
-      ) as HTMLElement | null;
-
-      if (activeButton) {
-        activeButton.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest', // вертикальне вирівнювання
-          inline: 'nearest',
-        });
-      }
-    }, 50);
+    window.scrollTo({ top: 0 });
   }, [actualButton]);
+
+  if (!initialList) {
+    return null;
+  }
 
   return (
     <div className="tablets-bottom">

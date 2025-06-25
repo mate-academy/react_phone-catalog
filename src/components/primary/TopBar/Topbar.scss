@@ -34,6 +34,12 @@
         gap: 64px;
       }
 
+      & :nth-child(n) {
+        height: 48px;
+        display: flex;
+        align-items: center;
+      }
+
       &-item {
         display: none;
         font-weight: 800;
@@ -43,6 +49,7 @@
         letter-spacing: 4%;
         text-decoration: none;
         color: #89939a;
+        height: $manageHeight;
 
         font-family: Montserrat, sans-serif;
 
@@ -52,7 +59,7 @@
         &::after {
           content: '';
           position: absolute;
-          bottom: -105%;
+          bottom: 0;
           left: 0;
           width: 100%;
           height: 3px;

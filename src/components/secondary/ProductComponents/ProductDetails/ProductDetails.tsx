@@ -1,9 +1,8 @@
-import { togglePhoneInStorage } from '../../../../utils/togglePhone';
-import { addInCart } from '../../../../utils/addInCart';
 import { Product } from '../../../../types/Product';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './ProductDetails.scss';
+import { DeatailsIamges } from './DetailsComponents/DatailsImages';
 
 interface Props {
   product: Product | null;
@@ -15,19 +14,110 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
   const [primaryImg, setPrimaryImg] = useState<string | null>(null);
   const [phonesStorge, setPhonesStorge] = useState<Product[]>([]);
   const [elementsCart, setElementsCart] = useState<Product[]>([]);
+  const [newProduct, setNewProduct] = useState<Product | null>(null);
 
   useEffect(() => {
-    if (product !== null) {
+    if (product) {
       setPrimaryImg(product.images[0]);
+      setActiveCapacity(product.capacity || '');
+      setNewProduct(product);
+      setActiveColor(product.colorsAvailable[0] || '');
     }
 
     setPhonesStorge(JSON.parse(localStorage.getItem('phones') || '[]'));
     setElementsCart(JSON.parse(localStorage.getItem('cart') || '[]'));
   }, [product]);
 
+  useEffect(() => {
+    if (!product || !activeColor) {
+      return;
+    }
+
+    const color = activeColor.replace(' ', '-');
+
+    const parts = product.images[0].split('/');
+
+    parts[3] = color;
+    const updatedPrimaryImg = parts.join('/');
+
+    setPrimaryImg(updatedPrimaryImg);
+  }, [activeColor, product]);
+
   if (product === null) {
     return null;
   }
+
+  const updateImagesWithColor = (color: string) => {
+    if (!product) {
+      return;
+    }
+
+    const dashColor = color.replace(' ', '-');
+
+    const updatedImages = product.images.map(image => {
+      const parts = image.split('/');
+
+      parts[3] = dashColor; // 3-й сегмент — це колір у URL
+
+      return parts.join('/');
+    });
+
+    setNewProduct(prev => {
+      if (!prev) {
+        return null;
+      }
+
+      return {
+        ...prev,
+        images: updatedImages,
+      };
+    });
+
+    setPrimaryImg(updatedImages[0]); // щоб оновити активне велике зображення
+  };
+
+  const changeColor = (newColor: string) => {
+    const oldColorInName = product.colorsAvailable.find(colorOption =>
+      product.name.toLowerCase().includes(colorOption.toLowerCase()),
+    );
+
+    const updatedName = oldColorInName
+      ? product.name.replace(new RegExp(oldColorInName, 'i'), newColor)
+      : product.name;
+
+    setNewProduct(prev => {
+      if (!prev) {
+        return null;
+      }
+
+      return {
+        ...prev,
+        color: newColor,
+        name: updatedName,
+      };
+    });
+
+    updateImagesWithColor(newColor);
+    setActiveColor(newColor);
+  };
+
+  const setCapacity = (ram: string) => {
+    const updatedName = product.name.replace(activeCapacity, ram);
+
+    setNewProduct(prev => {
+      if (!prev) {
+        return null;
+      }
+
+      return {
+        ...prev,
+        capacity: ram,
+        name: updatedName,
+      };
+    });
+
+    setActiveCapacity(ram);
+  };
 
   return (
     <article className="product-details">
@@ -40,16 +130,22 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
         <ul className="product-details__images-list">
           {product.images.map(el => {
+            const color = activeColor.replace(' ', '-');
+            const parts = el.split('/');
+
+            parts[3] = color;
+            const imgSrc = parts.join('/');
+
             return (
               <li
                 key={el}
                 className={classNames('product-details__images-list-item', {
-                  'primary-img': el === primaryImg,
+                  'primary-img': imgSrc === primaryImg,
                 })}
-                onClick={() => setPrimaryImg(el)}
+                onClick={() => setPrimaryImg(imgSrc)}
               >
                 <img
-                  src={`../../../../public/${el}`}
+                  src={`../../../../../public/${imgSrc}`}
                   alt="list-img"
                   className="product-details__images-list-item-img"
                 />
@@ -59,127 +155,18 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
         </ul>
       </div>
 
-      <div className="product-details__blocks">
-        <div className="product-colors">
-          <div className="product-colors__top">
-            <p className="product-colors__top-p">Available colors</p>
-            <p className="product-colors__top-id">ID: 802390</p>
-          </div>
-
-          <ul className="product-colors__list">
-            {product.colorsAvailable.map(color => {
-              return (
-                <li
-                  key={color}
-                  className={classNames('product-colors__list-item', {
-                    'set-active-color': activeColor === color,
-                  })}
-                  onClick={() => {
-                    setActiveColor(color);
-                  }}
-                >
-                  <div
-                    className="list-item__content"
-                    style={{
-                      backgroundColor: color,
-                    }}
-                  ></div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        <div className="product-capacity">
-          <p className="product-capacity__p">Select capacity</p>
-
-          <ul className="product-capacity__list">
-            {product.capacityAvailable.map(capacity => {
-              return (
-                <li
-                  key={capacity}
-                  className={classNames('product-capacity__list-item', {
-                    'set-active-capacity': activeCapacity === capacity,
-                  })}
-                  onClick={() => {
-                    setActiveCapacity(capacity);
-                  }}
-                >
-                  {capacity}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        <div className="product-price">
-          <div className="product-price__prices">
-            <p className="product-price__prices-regular">
-              ${product.priceRegular}
-            </p>
-
-            <p className="product-price__prices-discount">
-              ${product.priceDiscount}
-            </p>
-          </div>
-
-          <div className="product-price__buttons ">
-            <button
-              className={classNames('product-price__buttons-cart', {
-                'is-element-in-cart': elementsCart.some(
-                  el => el.id === product.id,
-                ),
-              })}
-              onClick={() => {
-                const elements = addInCart(product);
-
-                setElementsCart(elements);
-              }}
-            >
-              Add to cart
-            </button>
-
-            <button
-              className="product-price__buttons-favourites"
-              onClick={() => {
-                const updated = togglePhoneInStorage(product, 'phones');
-
-                setPhonesStorge(updated);
-              }}
-            >
-              <div
-                className={classNames(
-                  'product-price__buttons-favourites-icon',
-                  {
-                    'is-phone-favourites': phonesStorge?.some(
-                      item => item.id === product.id,
-                    ),
-                  },
-                )}
-              ></div>
-            </button>
-          </div>
-        </div>
-
-        <ul className="characteristics">
-          <li className="characteristics__item">
-            <div>Screen</div>
-            <div>{product.screen}</div>
-          </li>
-          <li className="characteristics__item">
-            <div>Resolution</div>
-            <div>{product.resolution}</div>
-          </li>
-          <li className="characteristics__item">
-            <div>processor</div>
-            <div>{product.processor}</div>
-          </li>
-          <li className="characteristics__item">
-            <div>RAM</div>
-            <div>{product.ram}</div>
-          </li>
-        </ul>
-      </div>
+      <DeatailsIamges
+        product={product}
+        phonesStorge={phonesStorge}
+        setCapacity={setCapacity}
+        changeColor={changeColor}
+        activeColor={activeColor}
+        elementsCart={elementsCart}
+        newProduct={newProduct}
+        activeCapacity={activeCapacity}
+        setPhonesStorge={setPhonesStorge}
+        setElementsCart={setElementsCart}
+      />
     </article>
   );
 };

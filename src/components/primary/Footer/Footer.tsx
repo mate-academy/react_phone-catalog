@@ -25,13 +25,21 @@ export const Footer = () => {
           </li>
 
           <li>
-            <a className="footer__nav-item" href="#">
+            <a
+              target="__blanck"
+              className="footer__nav-item"
+              href="https://goo.gl/maps/1xUeZtXrT9oYcW1N6"
+            >
               CONTACTS
             </a>
           </li>
 
           <li>
-            <a className="footer__nav-item" href="#">
+            <a
+              target="__blanck"
+              className="footer__nav-item"
+              href="https://www.google.com/maps?q=49.8419,24.0315"
+            >
               RIGHTS
             </a>
           </li>
@@ -41,7 +49,12 @@ export const Footer = () => {
       <div className="footer__back-to-top">
         <p className="footer__back-to-top-p">Back to top</p>
 
-        <a className="footer__back-to-top-button" href="#topBar"></a>
+        <a
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+          }}
+          className="footer__back-to-top-button"
+        ></a>
       </div>
     </footer>
   );

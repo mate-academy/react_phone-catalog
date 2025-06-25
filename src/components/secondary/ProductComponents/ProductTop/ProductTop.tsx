@@ -7,11 +7,13 @@ interface Props {
 }
 
 export const ProductTop: React.FC<Props> = ({ product }) => {
+  const { state } = useLocation();
+
   if (product === null) {
     return null;
   }
 
-  const { state } = useLocation();
+  const from = state?.from ?? 'Home';
 
   return (
     <section className="product-top">
@@ -29,7 +31,7 @@ export const ProductTop: React.FC<Props> = ({ product }) => {
 
             <div className="product-top__breadcrumb-arrow-right"></div>
 
-            <p className="product-top__breadcrumb-path-0">{state.from}</p>
+            <p className="product-top__breadcrumb-path-0">{from}</p>
 
             <div className="product-top__breadcrumb-arrow-right"></div>
 

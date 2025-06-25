@@ -1,15 +1,17 @@
+import { togglePhoneInStorage } from '../../../utils/togglePhone';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Product } from '../../../types/Product';
 import './Cart.scss';
-import { togglePhoneInStorage } from '../../../utils/togglePhone';
 
 const BASE_URL = '../../../../public/';
+
+const getKey = (p: Product) => `${p.id}_${p.color}_${p.capacity}`;
 
 export const Cart = () => {
   const navigate = useNavigate();
   const [showProducts, setShowProducts] = useState<Product[]>([]);
-  const [cartInfo, setCartInfo] = useState<Record<string, number[]>>({}); // { [productId]: [quantity, price] }
+  const [cartInfo, setCartInfo] = useState<Record<string, number[]>>({});
 
   const totalPriceQuantity = useMemo(() => {
     let totalQuantity = 0;
@@ -33,7 +35,9 @@ export const Cart = () => {
     const initialQuantities: Record<string, number[]> = {};
 
     stored.forEach((p: Product) => {
-      initialQuantities[p.id] = [1, p.priceRegular];
+      const key = getKey(p);
+
+      initialQuantities[key] = [1, p.priceRegular];
     });
 
     setCartInfo(initialQuantities);
@@ -55,26 +59,27 @@ export const Cart = () => {
             <div className="cart-top">
               <div className="cart-top__back">
                 <div className="cart-top__back-arrow"></div>
-
                 <button
-                  onClick={() => {
-                    navigate(-1);
-                  }}
+                  onClick={() => navigate(-1)}
                   className="cart-top__back-button"
                 >
                   Back
                 </button>
               </div>
-
               <h1 className="cart-top__h1">Cart</h1>
             </div>
 
             <ul className="list">
               {showProducts.map(el => {
-                const quantityProducts = cartInfo[el.id];
+                const key = getKey(el);
+                const quantityProducts = cartInfo[key];
+
+                if (!quantityProducts) {
+                  return null;
+                }
 
                 return (
-                  <li key={el.id} className="list__element">
+                  <li key={key} className="list__element">
                     <div className="list__element-top">
                       <div
                         className="list__element-top-cross"
@@ -84,16 +89,16 @@ export const Cart = () => {
                           setShowProducts(updated);
 
                           setCartInfo(prev => {
-                            const cartBox = { ...prev };
+                            const newState = { ...prev };
 
-                            delete cartBox[el.id];
+                            delete newState[key];
 
-                            return cartBox;
+                            return newState;
                           });
                         }}
                       ></div>
 
-                      <Link to={`/product/${el.name}`}>
+                      <Link state={{ from: 'Cart' }} to={`/product/${el.name}`}>
                         <img
                           src={`${BASE_URL}${el.images[0]}`}
                           className="list__element-top-img"
@@ -109,14 +114,11 @@ export const Cart = () => {
                           className="list__element-down-remove"
                           onClick={() => {
                             setCartInfo(prev => {
-                              const [quantity, price] = prev[el.id];
+                              const [quantity, price] = prev[key];
 
                               return {
                                 ...prev,
-                                [el.id]: [
-                                  Math.max(1, (quantity || 1) - 1),
-                                  price,
-                                ],
+                                [key]: [Math.max(1, quantity - 1), price],
                               };
                             });
                           }}
@@ -132,11 +134,11 @@ export const Cart = () => {
                           className="list__element-down-add"
                           onClick={() => {
                             setCartInfo(prev => {
-                              const [quantity, price] = prev[el.id];
+                              const [quantity, price] = prev[key];
 
                               return {
                                 ...prev,
-                                [el.id]: [Math.min(100, quantity + 1), price],
+                                [key]: [Math.min(100, quantity + 1), price],
                               };
                             });
                           }}
@@ -146,7 +148,7 @@ export const Cart = () => {
                       </div>
 
                       <div className="list__element-down-price">
-                        ${quantityProducts[1]}
+                        ${quantityProducts[1] * quantityProducts[0]}
                       </div>
                     </div>
                   </li>

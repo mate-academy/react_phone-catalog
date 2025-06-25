@@ -72,7 +72,10 @@ export const AccessoriesList: React.FC<Props> = ({ accessoriesList }) => {
                 <button
                   className={classNames('accessories-card__down-button', {
                     'in-cart': elementsCart.some(
-                      obj => obj.id === accessories.id,
+                      obj =>
+                        obj.id === accessories.id &&
+                        obj.capacity === accessories.capacity &&
+                        obj.color === accessories.color,
                     ),
                   })}
                   onClick={() => {

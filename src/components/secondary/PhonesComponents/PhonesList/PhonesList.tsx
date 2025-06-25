@@ -65,7 +65,12 @@ export const PhonesList: React.FC<Props> = ({ phonesList }) => {
               <div className="phone-card__down">
                 <button
                   className={classNames('phone-card__down-button', {
-                    'in-cart': elementsCart.some(obj => obj.id === phone.id),
+                    'in-cart': elementsCart.some(
+                      obj =>
+                        obj.id === phone.id &&
+                        obj.capacity === phone.capacity &&
+                        obj.color === phone.color,
+                    ),
                   })}
                   onClick={() => {
                     const elements = addInCart(phone);
