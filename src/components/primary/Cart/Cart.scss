@@ -46,7 +46,7 @@
       &-arrow {
         width: 16px;
         height: 16px;
-        background-image: url('../../../../public/icons/arrows/arrow-left-black.svg');
+        background-image: url('/icons/arrows/arrow-left-black.svg');
       }
 
       &-button {
@@ -184,7 +184,7 @@
         cursor: pointer;
         background-size: cover;
         background-repeat: no-repeat;
-        background-image: url('../../../../public/icons/cross-icon.svg');
+        background-image: url('/icons/cross-icon.svg');
       }
 
       &-img {

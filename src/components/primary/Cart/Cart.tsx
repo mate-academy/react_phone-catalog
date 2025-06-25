@@ -47,7 +47,7 @@ export const Cart = () => {
         <div className="cart-empty">
           <img
             className="cart-empty__img"
-            src="../../../../public/img/empty-cart.png"
+            src="/img/empty-cart.png"
             alt="Cart is empty"
           />
         </div>

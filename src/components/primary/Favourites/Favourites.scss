@@ -33,7 +33,7 @@
         height: 16px;
         width: 16px;
 
-        background-image: url('../../../../public/icons/arrows/arrow-right.svg');
+        background-image: url('/icons/arrows/arrow-right.svg');
       }
 
       &-p {
@@ -106,7 +106,7 @@
 
 .is-favourites {
   background-repeat: no-repeat;
-  background-image: url('../../../../public/icons/favourites-icon-red.svg');
+  background-image: url('/icons/favourites-icon-red.svg');
 
   &:hover {
     transform: scale(1.2);
