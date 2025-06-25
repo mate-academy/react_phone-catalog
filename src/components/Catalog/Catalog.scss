@@ -1,9 +1,15 @@
 .catalog {
 
-  padding-top: 40px;
+  padding-top: 24px;
   padding-bottom: 80px;
 
   &__container {}
+
+  &__bradcrumbs {
+    margin-bottom: 40px;
+    display: flex;
+    column-gap: 8px;
+  }
 
   &__title {
     margin-bottom: 8px;
@@ -43,10 +49,14 @@
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+    column-gap: 16px;
+    row-gap: 40px;
+    padding-bottom: 24px;
+
 
     @media (min-width:468px) {
       grid-template-columns: repeat(2, 1fr);
-
+      padding-bottom: 40px;
     }
 
     @media (min-width:768px) {
@@ -57,18 +67,58 @@
       grid-template-columns: repeat(4, 1fr);
     }
 
-    column-gap: 16px;
-    row-gap: 40px;
-
-
-    // display: flex;
-    // flex-wrap: wrap;
-    // column-gap: 16px;
-    // row-gap: 40px;
   }
 
   &__pagination {}
 }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-elements);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-primary);
+    transition: all 0.4s;
+    cursor: pointer;
+
+    &_active {
+      background-color: var(--color-primary);
+      color: var(--color-white)
+    }
+
+    &:hover {
+      border: 1px solid var(--color-primary)
+    }
+
+    &:disabled {
+      border: 1px solid var(--color-elements);
+      color: var(--color-elements);
+    }
+  }
+
+  &__left {
+    margin-right: 8px;
+    border: 1px solid var(--color-icons);
+
+  }
+
+  &__rigth {
+    margin-left: 8px;
+    border: 1px solid var(--color-icons)
+  }
+}
+
 
 .select {
   appearance: none;
