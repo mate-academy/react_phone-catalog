@@ -57,7 +57,6 @@
     "format": "prettier --write './src/**/*.{ts,tsx}'",
     "lint": "npm run style-format && npm run format && npm run lint-js && npm run lint-css",
     "update": "mate-scripts update",
-    "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
     "deploy": "mate-scripts deploy"
   },
