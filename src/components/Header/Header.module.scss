@@ -1,12 +1,12 @@
-@font-face {
-  font-family: Mont;
-  src: url('/fonts/Mont.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
+@import '../../styles/variables';
 
 .header {
-  background-color: #0f1121;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 0 0 $color-surface2;
+
+  background-color: $color-black;
   width: 100%;
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@
   overflow: hidden;
   height: 64px;
   box-sizing: border-box;
-  border-bottom: 2px solid #3b3e4a;
+  border-bottom: 2px solid $color-elements;
 }
 
 .logo-and-nav {
@@ -37,28 +37,27 @@
 
 .nav__list-link {
   text-transform: uppercase;
-  color: #3b3e4a;
+  color: $color-elements;
   text-decoration: none;
   line-height: 11px;
   display: block;
-  font-family: Mont-Bold, sans-serif;
-  font-weight: 800;
+  font-family: $font-bold;
   font-size: 12px;
 
   &:hover {
-    color: #f1f2f9;
+    color: $color-white;
   }
 }
 
 .is-active {
-  color: #f1f2f9;
+  color: $color-white;
   position: relative;
 }
 
 .is-active::after {
   content: ' ';
   display: block;
-  background-color: #f1f2f9;
+  background-color: $color-white;
   border-radius: 8px;
   width: 100%;
   height: 4px;
@@ -74,7 +73,7 @@
 .icon-link {
   width: 64px;
   height: 64px;
-  border-left: 2px solid #3b3e4a;
+  border-left: 2px solid $color-elements;
 
   display: flex;
   align-items: center;

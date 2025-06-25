@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './HomePage.module.scss';
 import { ProductSlider } from '../ProductsSlider';
-import { NewModelsSlider } from '../NewModelsSlider';
+import { ModelsSlider } from '../ModelsSlider';
 
 const categories = [
   {
@@ -25,13 +25,13 @@ const categories = [
 
 export const HomePage = () => (
   <main className={styles.page}>
-    <h1 className={styles.pageTitle}> Welcome to Nice Gadgets store!</h1>
-    <section>
+    <section className={styles.pageContent}>
+      <h1 className={styles.pageTitle}> Welcome to Nice Gadgets store!</h1>
       <ProductSlider />
     </section>
     <section className={styles.pageContent}>
       <h2 className={styles.sectionTitle}>Brand new models</h2>
-      <NewModelsSlider />
+      <ModelsSlider />
     </section>
     <section className={styles.pageContent}>
       <h2 className={styles.sectionTitle}>Shop by category</h2>
@@ -57,7 +57,7 @@ export const HomePage = () => (
     </section>
     <section className={styles.pageContent}>
       <h2 className={styles.sectionTitle}>Hot prices</h2>
-      <ProductSlider />
+      <ModelsSlider />
     </section>
   </main>
 );

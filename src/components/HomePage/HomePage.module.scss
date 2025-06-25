@@ -1,10 +1,11 @@
+@import '../../styles/variables';
+
 .page {
   display: grid;
   row-gap: 80px;
-  background-color: #0f1121;
+  background-color: $color-black;
   padding: 56px 152px;
-  color: #f1f2f9;
-  font-family: Mont, sans-serif;
+  color: $color-white;
   justify-items: center;
 }
 
@@ -12,19 +13,27 @@
   display: grid;
   grid-template-columns: repeat(24, 32px);
   gap: 16px;
+  background-color: $color-black;
 }
 
 .pageTitle {
+  grid-column: 1/-1;
+  font-family: $font-bold;
   line-height: 56px;
-  font-weight: 800;
   font-size: 48px;
+  letter-spacing: -1%;
+  margin: 0;
+  margin-bottom: 40px;
 }
 
 .sectionTitle {
   grid-column: 1/-1;
+  font-family: $font-bold;
   line-height: 41px;
-  font-weight: 800;
   font-size: 32px;
+  letter-spacing: -1%;
+  margin: 0;
+  padding-bottom: 8px;
 }
 
 .categoryCards {
@@ -44,16 +53,17 @@
 }
 
 .categoryTitle {
+  font-family: $font-semibold;
   font-size: 20px;
-  font-weight: 700;
-  color: #f1f2f9;
-  font-family: Mont-Bold, sans-serif;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: $color-white;
 }
 
 .categoryCounter {
+  font-family: $font-regular;
   font-size: 14px;
-  font-weight: 600;
   line-height: 21px;
-  color: #75767f;
-  font-family: Mont-Bold, sans-serif;
+  letter-spacing: 0%;
+  color: $color-secondary;
 }

@@ -1,6 +1,7 @@
+@import '../../styles/variables';
+
 .sliderContainer {
-  width: 1040px;
-  height: 400px;
+  grid-column: 2/-2;
 }
 
 .customSlide {
@@ -9,27 +10,10 @@
   object-fit: contain;
 }
 
-.customArrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  height: 100%;
-  width: 32px;
-}
-
-.next {
-  right: -48px;
-}
-
-.prev {
-  left: -48px;
-}
-
 .customDot {
   width: 14px;
   height: 4px;
-  background-color: #3b3e4a;
+  background-color: $color-elements;
 }
 
 :global {
@@ -38,6 +22,6 @@
   }
 
   .slick-active > div {
-    background-color: #f1f2f9 !important;
+    background-color: $color-white !important;
   }
 }

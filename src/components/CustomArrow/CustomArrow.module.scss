@@ -1,0 +1,44 @@
+@import '../../styles/variables';
+
+.customArrow {
+  background-color: $color-surface2;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:hover {
+    background-color: $color-icons;
+  }
+}
+
+.welcomeSliderArrow {
+  height: 100%;
+  width: 32px;
+
+  &_right {
+    right: -48px;
+  }
+
+  &_left {
+    left: -48px;
+  }
+}
+
+.modelsSliderArrow {
+  height: 32px;
+  width: 32px;
+
+  &_right {
+    top: -48px;
+    right: 0;
+  }
+
+  &_left {
+    top: -48px;
+    right: 48px;
+  }
+}
