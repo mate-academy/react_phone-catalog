@@ -7,22 +7,17 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { CategoryPage } from './modules/CategoryPage';
 
-export const router = createHashRouter(
-  [
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        { index: true, element: <HomePage /> },
-        { path: ':category', element: <CategoryPage /> },
-        { path: 'cart', element: <CartPage /> },
-        { path: 'favorites', element: <FavoritesPage /> },
-        { path: ':category/:productId', element: <ProductDetailsPage /> },
-        { path: '*', element: <NotFoundPage /> },
-      ],
-    },
-  ],
+export const router = createHashRouter([
   {
-    basename: '/react_phone-catalog/',
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: ':category', element: <CategoryPage /> },
+      { path: 'cart', element: <CartPage /> },
+      { path: 'favorites', element: <FavoritesPage /> },
+      { path: ':category/:productId', element: <ProductDetailsPage /> },
+      { path: '*', element: <NotFoundPage /> },
+    ],
   },
-);
+]);
