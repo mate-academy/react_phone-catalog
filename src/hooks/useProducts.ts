@@ -3,6 +3,7 @@ import { Product } from '../types/Product';
 
 export const useProducts = (errorCallback: () => void) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -14,11 +15,13 @@ export const useProducts = (errorCallback: () => void) => {
         setProducts(data);
       } catch {
         errorCallback();
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchProduct();
   }, []);
 
-  return { products };
+  return { products, isLoading };
 };

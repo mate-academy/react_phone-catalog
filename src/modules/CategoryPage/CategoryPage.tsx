@@ -9,15 +9,19 @@ import { useProducts } from '../../hooks/useProducts';
 import { useErrorHandling } from '../../hooks/errorHandling';
 import classNames from 'classnames';
 import { useTheme } from '../../hooks/useTheme';
+import { Loader } from '../../components/Loader/Loader';
+import { Product } from '../../types/Product';
 
-const sortProducts = (products, sortBy) => {
+type SortOption = 'alphabetically' | 'priceLow' | 'priceHigh' | 'newest';
+
+const sortProducts = (products: Product[], sortBy: SortOption): Product[] => {
   switch (sortBy) {
     case 'alphabetically':
       return [...products].sort((a, b) => a.name.localeCompare(b.name));
     case 'priceLow':
-      return [...products].sort((a, b) => a.priceDiscount - b.priceDiscount);
+      return [...products].sort((a, b) => a.price - b.price);
     case 'priceHigh':
-      return [...products].sort((a, b) => b.priceDiscount - a.priceDiscount);
+      return [...products].sort((a, b) => a.price - b.price);
     case 'newest':
     default:
       return [...products].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
@@ -26,14 +30,14 @@ const sortProducts = (products, sortBy) => {
 
 export const CategoryPage: React.FC = () => {
   const { theme } = useTheme();
-  const { category } = useParams();
+  const { category = '' } = useParams();
   const capitalizedCategory =
     category?.charAt(0).toUpperCase() + category?.slice(1);
 
   const { setIsError } = useErrorHandling();
   const { products } = useProducts(() => setIsError(true));
 
-  const [sortBy, setSortBy] = useState('newest');
+  const [sortBy, setSortBy] = useState<SortOption>('newest');
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -52,6 +56,14 @@ export const CategoryPage: React.FC = () => {
   }, [sortedProducts, itemsPerPage, currentPage]);
 
   const totalPages = Math.ceil(categoryProducts.length / itemsPerPage);
+
+  const handleSortChange = (value: string) => {
+    setSortBy(value as SortOption);
+  };
+
+  if (!products) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.categoryPage}>
@@ -78,7 +90,7 @@ export const CategoryPage: React.FC = () => {
           <CustomDropdown
             label="Sort by"
             value={sortBy}
-            onChange={setSortBy}
+            onChange={handleSortChange}
             options={[
               { value: 'newest', label: 'Newest' },
               { value: 'alphabetically', label: 'Alphabetically' },
