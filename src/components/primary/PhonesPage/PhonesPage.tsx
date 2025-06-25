@@ -3,7 +3,7 @@ import { PhonesList } from '../../secondary/PhonesComponents/PhonesList/index.js
 import { PhonesTop } from '../../secondary/PhonesComponents/PhonesTop/index.js';
 import { ErrorBlock } from '../../../messageError/MessageError.js';
 import { usePagedList } from '../../../utils/usePagedList';
-import { getPhonesData } from '../../../api/PhonesApi.js';
+import { getPhonesData } from '../../../api/ProductApi.js';
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Spiner } from '../../../spiner/spiner.js';
@@ -22,7 +22,7 @@ export const PhonesPage = () => {
 
   const phonesList = useMemo(() => {
     return filterListPhone(actualButton, initialList, itemsPerPage, sortSelect);
-  }, [itemsPerPage, actualButton, sortSelect, initialList]);
+  }, [itemsPerPage, actualButton, sortSelect, initialList, filterListPhone]);
 
   useEffect(() => {
     getPhonesData('phones.json')

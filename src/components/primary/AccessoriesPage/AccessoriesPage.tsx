@@ -5,7 +5,7 @@ import { AccessoriesList } from '../../secondary/AccessoriesComponents/Accessori
 import { AccessoriesTop } from '../../secondary/AccessoriesComponents/AccessoriesTop/AccessoriesTop.js';
 import { ErrorBlock } from '../../../messageError/MessageError.js';
 import { usePagedList } from '../../../utils/usePagedList.js';
-import { getPhonesData } from '../../../api/PhonesApi.js';
+import { getPhonesData } from '../../../api/ProductApi.js';
 import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../../types/Product.js';
 import { useSearchParams } from 'react-router-dom';

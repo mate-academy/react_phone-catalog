@@ -1,4 +1,4 @@
-const BASE_URL_API = '../../../../public/api/';
+const BASE_URL_API = '/api/';
 
 const delay = (time: number) =>
   new Promise(resolve => setTimeout(resolve, time));

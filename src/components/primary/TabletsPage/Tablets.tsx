@@ -3,7 +3,7 @@ import { TabletsList } from '../../secondary/TabletsComponents/TabletsList/Table
 import { TabletsTop } from '../../secondary/TabletsComponents/TabletsTop/TabletsTop.js';
 import { ErrorBlock } from '../../../messageError/MessageError.js';
 import { usePagedList } from '../../../utils/usePagedList.js';
-import { getPhonesData } from '../../../api/PhonesApi.js';
+import { getPhonesData } from '../../../api/ProductApi.js';
 import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../../types/Product.js';
 import { useSearchParams } from 'react-router-dom';
@@ -22,7 +22,7 @@ export const Tablets = () => {
 
   const tabletsList = useMemo(() => {
     return filterListPhone(actualButton, initialList, itemsPerPage, sortSelect);
-  }, [itemsPerPage, actualButton, sortSelect, initialList]);
+  }, [itemsPerPage, actualButton, sortSelect, initialList, filterListPhone]);
 
   useEffect(() => {
     getPhonesData('tablets.json')

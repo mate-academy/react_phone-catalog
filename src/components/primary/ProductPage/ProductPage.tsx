@@ -2,7 +2,7 @@ import { ProductTop } from '../../secondary/ProductComponents/ProductTop/Product
 import { ProductDetails } from '../../secondary/ProductComponents/ProductDetails';
 import { ProductBottom } from '../../secondary/ProductComponents/ProducBottom';
 import { AboutUs } from '../../secondary/ProductComponents/AboutUs/AboutUs';
-import { getPhonesData } from '../../../api/PhonesApi';
+import { getPhonesData } from '../../../api/ProductApi';
 import { ErrorBlock } from '../../../messageError';
 import { Product } from '../../../types/Product';
 import { useParams } from 'react-router-dom';

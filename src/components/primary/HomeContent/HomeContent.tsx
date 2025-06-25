@@ -2,7 +2,7 @@ import { Category } from '../../secondary/HomePageComponents/category';
 import { HotPrice } from '../../secondary/HomePageComponents/HotPrice';
 import { Header } from '../../secondary/HomePageComponents/Header';
 import { Brand } from '../../secondary/HomePageComponents/Brand';
-import { getPhonesData } from '../../../api/PhonesApi';
+import { getPhonesData } from '../../../api/ProductApi';
 import { ErrorBlock } from '../../../messageError';
 import { Product } from '../../../types/Product';
 import { useEffect, useState } from 'react';
