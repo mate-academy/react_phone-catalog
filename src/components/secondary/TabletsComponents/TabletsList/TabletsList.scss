@@ -12,6 +12,10 @@
   box-sizing: border-box;
   grid-template-columns: repeat(auto-fit, 287px);
 
+
+
+
+
   @include on-tablet {
     justify-content: start;
     grid-template-columns: repeat(auto-fit, 229px);
@@ -19,6 +23,8 @@
 
   @include on-desck-top {
     justify-content: start;
+    padding-inline: 152px;
+
     grid-template-columns: repeat(auto-fit, 288px);
   }
 }

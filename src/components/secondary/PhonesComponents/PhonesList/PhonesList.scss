@@ -10,7 +10,7 @@
 
   padding-inline: 16px;
   box-sizing: border-box;
-   grid-template-columns: repeat(auto-fit, 287px);
+  grid-template-columns: repeat(auto-fit, 287px);
 
   @include on-tablet {
     justify-content: start;
@@ -19,6 +19,7 @@
 
   @include on-desck-top {
     justify-content: start;
+    padding-inline: 152px;
     grid-template-columns: repeat(auto-fit, 288px);
   }
 }
@@ -35,7 +36,7 @@
   padding-inline: 32px;
   border: 1px #e2e6e9 solid;
 
-   &__content {
+  &__content {
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
@@ -46,7 +47,7 @@
       width: 165px;
     }
 
-     @include on-desck-top {
+    @include on-desck-top {
       width: 208px;
     }
   }
@@ -154,7 +155,7 @@
         width: 117px;
       }
 
-        @include on-desck-top {
+      @include on-desck-top {
         width: 160px;
       }
     }
@@ -188,8 +189,8 @@
   }
 }
 
-.scrin {
-  font-size: 10px;
+.screen {
+  font-size: 9px;
 }
 
 .is-favourites {
@@ -206,5 +207,5 @@
 
   color: green;
   background-color: white;
-  border: 2px #E2E6E9 solid;
+  border: 2px #e2e6e9 solid;
 }

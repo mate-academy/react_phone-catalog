@@ -46,7 +46,7 @@ export const PhonesList: React.FC<Props> = ({ phonesList }) => {
               <div className="phone-card__characteristics">
                 <div className="phone-card__characteristics-item">
                   <div className="characteristics-text">Scrin</div>
-                  <div className="characteristics-text scrin">
+                  <div className="characteristics-text screen">
                     {phone.screen}
                   </div>
                 </div>

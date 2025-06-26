@@ -12,6 +12,10 @@
     align-self: start;
   }
 
+  @include on-desck-top {
+    padding-inline: 152px;
+  }
+
   &__breadcrumb {
     display: flex;
     gap: 8px;
@@ -139,8 +143,6 @@
     transition: max-height 300ms;
     border: 2px transparent solid;
 
-
-
     &-item {
       color: rgb(0, 0, 0);
       font-size: 14px;
@@ -205,7 +207,6 @@
     box-sizing: border-box;
     z-index: 1;
 
-
     border-radius: 2px;
     position: absolute;
     margin-top: 45px;
@@ -245,7 +246,6 @@
 .dropdown--activ .quantity-dropdown__content {
   max-height: 69px;
   border-color: #b4bdc3;
-
 }
 
 .sort-dropdown__button--active::after {
