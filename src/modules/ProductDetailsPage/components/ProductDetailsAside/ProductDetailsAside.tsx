@@ -6,32 +6,44 @@ import { AddToCartButton } from '../../../../components/AddToCartButton';
 import { FavoritesButton } from '../../../../components/FavoritesButton';
 import { ProductsColors } from '../../../../constants/productsColors';
 import { PhoneDetails } from '../../../../types/PhoneDetails';
+import { Product } from '../../../../types/Product';
 
 type Props = {
-  product: PhoneDetails;
+  productDetails: PhoneDetails;
+  productForCart: Product;
   variants: PhoneDetails[];
 };
 
-export const ProductDetailsAside: React.FC<Props> = ({ product, variants }) => {
+export const ProductDetailsAside: React.FC<Props> = ({
+  productDetails,
+  productForCart,
+  variants,
+}) => {
   const { category } = useParams();
   const sameModelVariants = variants.filter(
-    variant => variant.namespaceId === product.namespaceId,
+    variant => variant.namespaceId === productDetails.namespaceId,
   );
 
   const colorVariants = sameModelVariants.filter(
-    variant => variant.capacity === product.capacity,
+    variant => variant.capacity === productDetails.capacity,
   );
 
-  const hasColorVariants = colorVariants.length > 0 ? colorVariants : [product];
+  const hasColorVariants =
+    colorVariants.length > 0 ? colorVariants : [productDetails];
 
   const capacityVariants = sameModelVariants.filter(
-    variant => variant.color === product.color,
+    variant => variant.color === productDetails.color,
   );
   const hasCapacityVariants =
-    capacityVariants.length > 0 ? capacityVariants : [product];
+    capacityVariants.length > 0 ? capacityVariants : [productDetails];
 
-  const price = product.priceDiscount ?? product.price ?? 0;
-  const fullPrice = product.priceRegular ?? product.fullPrice ?? 0;
+  const price =
+    productDetails.priceDiscount ?? productDetails.price ?? productForCart.price;
+
+  const fullPrice =
+    productDetails.priceRegular ??
+    productDetails.fullPrice ??
+    productForCart.fullPrice;
   // const imagePath = `/react_phone-catalog/${product.images?.[0] ?? ''}`;
 
   return (
@@ -44,7 +56,7 @@ export const ProductDetailsAside: React.FC<Props> = ({ product, variants }) => {
               key={variant.id}
               to={`/${category}/${variant.id}`}
               className={classNames(styles.colorDot, {
-                [styles.active]: variant.color === product.color,
+                [styles.active]: variant.color === productDetails.color,
               })}
               style={{
                 backgroundColor: ProductsColors[variant.color] || '#ccc',
@@ -65,7 +77,7 @@ export const ProductDetailsAside: React.FC<Props> = ({ product, variants }) => {
               key={variant.id}
               to={`/${category}/${variant.id}`}
               className={classNames(styles.capacityButton, {
-                [styles.active]: variant.capacity === product.capacity,
+                [styles.active]: variant.capacity === productDetails.capacity,
               })}
             >
               {variant.capacity}
@@ -84,36 +96,36 @@ export const ProductDetailsAside: React.FC<Props> = ({ product, variants }) => {
       </div>
 
       <div className={styles.buttons}>
-        <AddToCartButton product={product} />
-        <FavoritesButton productId={product.itemId} />
+        <AddToCartButton product={productForCart} />
+        <FavoritesButton productId={productForCart.itemId} />
       </div>
 
       <div className={styles.specs}>
-        {product.screen && (
+        {productDetails.screen && (
           <div className={styles.specRow}>
             <span className={styles.key}>Screen</span>
-            <span className={styles.value}>{product.screen}</span>
+            <span className={styles.value}>{productDetails.screen}</span>
           </div>
         )}
 
-        {product.resolution && (
+        {productDetails.resolution && (
           <div className={styles.specRow}>
             <span className={styles.key}>Resolution</span>
-            <span className={styles.value}>{product.resolution}</span>
+            <span className={styles.value}>{productDetails.resolution}</span>
           </div>
         )}
 
-        {product.processor && (
+        {productDetails.processor && (
           <div className={styles.specRow}>
             <span className={styles.key}>Processor</span>
-            <span className={styles.value}>{product.processor}</span>
+            <span className={styles.value}>{productDetails.processor}</span>
           </div>
         )}
 
-        {product.ram && (
+        {productDetails.ram && (
           <div className={styles.specRow}>
             <span className={styles.key}>RAM</span>
-            <span className={styles.value}>{product.ram}</span>
+            <span className={styles.value}>{productDetails.ram}</span>
           </div>
         )}
       </div>

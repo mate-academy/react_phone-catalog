@@ -24,13 +24,25 @@ export const CartPage: React.FC = () => {
       <h1 className={styles.title}>Cart</h1>
 
       {cartItems.length === 0 ? (
-        <p className={styles.empty}>Your cart is empty</p>
+        <div className={styles.emptyWrapper}>
+          <img
+            src="/react_phone-catalog/img/cart-is-empty.png"
+            alt="Cart is empty"
+            className={styles.emptyImage}
+          />
+          <p className={styles.empty}>Your cart is empty</p>
+        </div>
       ) : (
-        <>
-          <div className={styles.contentCart}>
-            <ul className={styles.list}>
-              {cartItems.map(({ product, quantity }) => (
-                <li key={product.id} className={styles.item}>
+        <div className={styles.contentCart}>
+          <ul className={styles.list}>
+            {cartItems.map(({ product, quantity }, index) => {
+              const key =
+                typeof product.id === 'number' && !isNaN(product.id)
+                  ? product.id
+                  : `fallback-${index}`;
+
+              return (
+                <li key={key} className={styles.item}>
                   <div className={styles.protuct}>
                     <button
                       className={styles.remove}
@@ -61,7 +73,7 @@ export const CartPage: React.FC = () => {
                       >
                         <img
                           src={`/react_phone-catalog/img/icons/minus-${theme}.svg`}
-                          alt="Next"
+                          alt="Minus"
                         />
                       </button>
                       <span className={styles.quantity}>{quantity}</span>
@@ -78,38 +90,40 @@ export const CartPage: React.FC = () => {
                       >
                         <img
                           src={`/react_phone-catalog/img/icons/plus-${theme}.svg`}
-                          alt="Next"
+                          alt="Plus"
                         />
                       </button>
                     </div>
-                    <p className={styles.price}>${product.price * quantity}</p>
+                    <p className={styles.price}>
+                      ${product.price * quantity}
+                    </p>
                   </div>
                 </li>
-              ))}
-            </ul>
+              );
+            })}
+          </ul>
 
-            <div className={styles.summary}>
-              <p className={styles.totalPrice}>${totalPrice}</p>
-              <p className={styles.total}>Total for {totalQuantity} items</p>
-              <div className={styles.divider} />
-              <button
-                className={styles.clearButton}
-                onClick={() => {
-                  const confirmed = window.confirm(
-                    'Checkout is not implemented yet. Clear cart?',
-                  );
+          <div className={styles.summary}>
+            <p className={styles.totalPrice}>${totalPrice}</p>
+            <p className={styles.total}>Total for {totalQuantity} items</p>
+            <div className={styles.divider} />
+            <button
+              className={styles.clearButton}
+              onClick={() => {
+                const confirmed = window.confirm(
+                  'Checkout is not implemented yet. Clear cart?',
+                );
 
-                  if (confirmed) {
-                    // dispatch(clearCart())
-                    alert('Cart cleared!');
-                  }
-                }}
-              >
-                Checkout
-              </button>
-            </div>
+                if (confirmed) {
+                  // dispatch(clearCart())
+                  alert('Cart cleared!');
+                }
+              }}
+            >
+              Checkout
+            </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

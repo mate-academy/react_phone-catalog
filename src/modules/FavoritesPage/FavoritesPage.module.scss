@@ -1,16 +1,58 @@
 @use '../../assets/styles/variables' as *;
 
+.favoritesPage {
+  // display: flex;
+  // flex-direction: column;
+  // width: 100%;
+  // // flex-grow: 1;
+  // // align-items: stretch !important;
+  // max-width: 1136px;
+  // margin: 0 auto
+}
+
+.pageContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   font-size: 32px;
   font-weight: 800;
   color: var(--color-text);
+  margin-top: 24px;
 
   @include tablet {
     font-size: 48px;
+    margin-top: 40px;
   }
 
    @include desktop {
     font-size: 48px;
+    margin-top: 40px;
+  }
+}
+
+.emptyWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+  align-self: center;
+}
+
+.emptyImage {
+  width: 120px;
+
+  @include tablet {
+    width: 160px;
+  }
+
+  @include desktop {
+    width: 200px;
   }
 }
 
@@ -32,8 +74,11 @@
 .empty {
   font-size: 16px;
   color: $color-secondary;
-  text-align: center;
-  margin-top: 40px;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 40px;
+  align-self: flex-start;
+  width: 100%;
 }
 
 .list {

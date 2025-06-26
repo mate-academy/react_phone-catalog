@@ -11,7 +11,7 @@ export const HomePage: React.FC = () => {
   const { setIsError } = useErrorHandling();
   const { products } = useProducts(() => setIsError(true));
 
-  if (!products) {
+  if (!products || products.length === 0) {
     return <Loader />;
   }
 
@@ -25,28 +25,28 @@ export const HomePage: React.FC = () => {
     .slice(0, 8);
 
   return (
-    <>
-      <div>
+    <div className={styles.homePage}>
+      <div className={styles.pageContent}>
         <h1 className={styles.title_hidden}>Product Catalog</h1>
         <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
-      </div>
 
-      <PicturesSlider />
-      <ProductsSlider
-        products={brandNewProducts}
-        title="Brand new models"
-        navigationPrevClass="brand-new-prev"
-        navigationNextClass="brand-new-next"
-        showFullPrice={false}
-      />
-      <ShopByCategory />
-      <ProductsSlider
-        products={discountedProducts}
-        title="Hot prices"
-        navigationPrevClass="hot-prices-prev"
-        navigationNextClass="hot-prices-next"
-        showFullPrice={true}
-      />
-    </>
+        <PicturesSlider />
+        <ProductsSlider
+          products={brandNewProducts}
+          title="Brand new models"
+          navigationPrevClass="brand-new-prev"
+          navigationNextClass="brand-new-next"
+          showFullPrice={false}
+        />
+        <ShopByCategory />
+        <ProductsSlider
+          products={discountedProducts}
+          title="Hot prices"
+          navigationPrevClass="hot-prices-prev"
+          navigationNextClass="hot-prices-next"
+          showFullPrice={true}
+        />
+      </div>
+    </div>
   );
 };

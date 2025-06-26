@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { setProducts } from '../../store/productsSlice';
 import { getProducts } from '../../api/products';
+import { Loader } from '../../components/Loader/Loader';
 
 export const FavoritesPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -41,28 +42,37 @@ export const FavoritesPage: React.FC = () => {
 
   return (
     <div className={styles.favoritesPage}>
-      <Breadcrumb current="Favorites" />
-      <h1 className={styles.title}>Favorites</h1>
+      <div className={styles.pageContent}>
+        <Breadcrumb current="Favorites" />
+        <h1 className={styles.title}>Favorites</h1>
 
-      {loading ? (
-        <p className={styles.empty}>Loading favorite products...</p>
-      ) : favoriteProducts.length === 0 ? (
-        <p className={styles.empty}>No favorite products yet</p>
-      ) : (
-        <>
-          <p className={styles.count}>{favoriteProducts.length} items</p>
-          <ul className={styles.list}>
-            {validFavoriteProducts.map(product => (
-              <li key={product.itemId} className={styles.item}>
-                <ProductCard
-                  product={product}
-                  showFullPrice={product.priceRegular > product.priceDiscount}
-                />
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
+        {loading ? (
+          <Loader />
+        ) : favoriteProducts.length === 0 ? (
+          <div className={styles.emptyWrapper}>
+            <img
+              src="/react_phone-catalog/img/cart-is-empty.png"
+              alt="No favorites"
+              className={styles.emptyImage}
+            />
+            <p className={styles.empty}>No favorite products yet</p>
+          </div>
+        ) : (
+          <>
+            <p className={styles.count}>{favoriteProducts.length} items</p>
+            <ul className={styles.list}>
+              {validFavoriteProducts.map(product => (
+                <li key={product.itemId} className={styles.item}>
+                  <ProductCard
+                    product={product}
+                    showFullPrice={product.fullPrice > product.price}
+                  />
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
     </div>
   );
 };

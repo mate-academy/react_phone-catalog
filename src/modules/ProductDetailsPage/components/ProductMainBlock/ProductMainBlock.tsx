@@ -8,20 +8,25 @@ import styles from './ProductMainBlock.module.scss';
 import { ProductDetailsAside } from '../ProductDetailsAside';
 import { PhoneDetails } from '../../../../types/PhoneDetails';
 import { useVariantsByNamespace } from '../../../../hooks/useVariantsByNamespace';
+import { Product } from '../../../../types/Product';
 
 type Props = {
-  product: PhoneDetails;
+  productDetails: PhoneDetails;
+  productForCart: Product;
 };
 
-export const ProductMainBlock: React.FC<Props> = ({ product }) => {
+export const ProductMainBlock: React.FC<Props> = ({
+  productDetails,
+  productForCart,
+}) => {
   // const { setIsError } = useErrorHandling();
   // const { products } = useProducts(() => setIsError(true));
   // const { productDetails } = useProductDetails(productId);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const { variants } = useVariantsByNamespace(product.namespaceId);
+  const { variants } = useVariantsByNamespace(productDetails.namespaceId);
 
-  const images = Array.isArray(product.images)
-    ? product.images.map((img: string) => `/react_phone-catalog/${img}`)
+  const images = Array.isArray(productDetails.images)
+    ? productDetails.images.map((img: string) => `/react_phone-catalog/${img}`)
     : [];
 
   return (
@@ -30,7 +35,7 @@ export const ProductMainBlock: React.FC<Props> = ({ product }) => {
         <div className={styles.imageWrapper}>
           <img
             src={images[selectedImageIndex]}
-            alt={product.namespaceId}
+            alt={productDetails.namespaceId}
             className={styles.mainImage}
           />
         </div>
@@ -54,7 +59,11 @@ export const ProductMainBlock: React.FC<Props> = ({ product }) => {
         </div>
       </div>
       <div className={styles.infoBlock}>
-        <ProductDetailsAside product={product} variants={variants} />
+        <ProductDetailsAside
+          productDetails={productDetails}
+          productForCart={productForCart}
+          variants={variants}
+        />
       </div>
     </div>
   );

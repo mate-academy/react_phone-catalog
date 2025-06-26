@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useMemo } from 'react';
+import { useSearchParams, useParams, Link } from 'react-router-dom';
 import styles from './CategoryPage.module.scss';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import { BackButton } from '../../components/BackButton';
@@ -21,7 +21,7 @@ const sortProducts = (products: Product[], sortBy: SortOption): Product[] => {
     case 'priceLow':
       return [...products].sort((a, b) => a.price - b.price);
     case 'priceHigh':
-      return [...products].sort((a, b) => a.price - b.price);
+      return [...products].sort((a, b) => b.price - a.price);
     case 'newest':
     default:
       return [...products].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
@@ -32,14 +32,26 @@ export const CategoryPage: React.FC = () => {
   const { theme } = useTheme();
   const { category = '' } = useParams();
   const capitalizedCategory =
-    category?.charAt(0).toUpperCase() + category?.slice(1);
+    category.charAt(0).toUpperCase() + category.slice(1);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const currentPage = Number(searchParams.get('page')) || 1;
+  const itemsPerPage = Number(searchParams.get('perPage')) || 8;
+  const sortBy = (searchParams.get('sort') as SortOption) || 'newest';
 
   const { setIsError } = useErrorHandling();
   const { products } = useProducts(() => setIsError(true));
 
-  const [sortBy, setSortBy] = useState<SortOption>('newest');
-  const [itemsPerPage, setItemsPerPage] = useState(8);
-  const [currentPage, setCurrentPage] = useState(1);
+  const updateParams = (params: Record<string, string | number>) => {
+    const newParams = new URLSearchParams(searchParams.toString());
+
+    for (const key in params) {
+      newParams.set(key, String(params[key]));
+    }
+
+    setSearchParams(newParams);
+  };
 
   const categoryProducts = useMemo(() => {
     return products.filter(p => p.category === category);
@@ -53,15 +65,11 @@ export const CategoryPage: React.FC = () => {
     const start = (currentPage - 1) * itemsPerPage;
 
     return sortedProducts.slice(start, start + itemsPerPage);
-  }, [sortedProducts, itemsPerPage, currentPage]);
+  }, [sortedProducts, currentPage, itemsPerPage]);
 
   const totalPages = Math.ceil(categoryProducts.length / itemsPerPage);
 
-  const handleSortChange = (value: string) => {
-    setSortBy(value as SortOption);
-  };
-
-  if (!products) {
+  if (!products || products.length === 0) {
     return <Loader />;
   }
 
@@ -90,7 +98,7 @@ export const CategoryPage: React.FC = () => {
           <CustomDropdown
             label="Sort by"
             value={sortBy}
-            onChange={handleSortChange}
+            onChange={value => updateParams({ sort: value, page: 1 })}
             options={[
               { value: 'newest', label: 'Newest' },
               { value: 'alphabetically', label: 'Alphabetically' },
@@ -104,10 +112,7 @@ export const CategoryPage: React.FC = () => {
           <CustomDropdown
             label="Items on page"
             value={String(itemsPerPage)}
-            onChange={value => {
-              setItemsPerPage(Number(value));
-              setCurrentPage(1);
-            }}
+            onChange={value => updateParams({ perPage: value, page: 1 })}
             options={[
               { value: '4', label: '4' },
               { value: '8', label: '8' },
@@ -132,7 +137,7 @@ export const CategoryPage: React.FC = () => {
       {totalPages > 1 && (
         <div className={styles.pagination}>
           <button
-            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            onClick={() => updateParams({ page: currentPage - 1 })}
             className={styles.arrowButton}
             disabled={currentPage === 1}
           >
@@ -152,7 +157,7 @@ export const CategoryPage: React.FC = () => {
             .map(page => (
               <button
                 key={page}
-                onClick={() => setCurrentPage(page)}
+                onClick={() => updateParams({ page })}
                 className={classNames({
                   [styles.pageButtonActive]: page === currentPage,
                   [styles.pageButton]: page !== currentPage,
@@ -163,9 +168,7 @@ export const CategoryPage: React.FC = () => {
             ))}
 
           <button
-            onClick={() =>
-              setCurrentPage(prev => Math.min(prev + 1, totalPages))
-            }
+            onClick={() => updateParams({ page: currentPage + 1 })}
             className={styles.arrowButton}
             disabled={currentPage === totalPages}
           >

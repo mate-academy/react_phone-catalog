@@ -1,19 +1,22 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { PhoneDetails } from '../types/PhoneDetails';
 import { getAccessories, getPhones, getTablets } from '../api/categories';
 
-export const useProductDetails = (productId?: string) => {
-  const { category } = useParams();
+export const useProductDetails = (productId?: string, category?: string) => {
+  // const { category } = useParams();
   const [productDetails, setProductDetails] = useState<PhoneDetails | null>(
     null,
   );
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const load = async () => {
       if (!productId || !category) {
         return;
       }
+
+      setIsLoading(true);
 
       let data: PhoneDetails[] = [];
 
@@ -28,17 +31,18 @@ export const useProductDetails = (productId?: string) => {
 
         const found = data.find(item => item.id === productId);
 
-        if (found) {
-          setProductDetails(found);
-        }
+        setProductDetails(found ?? null);
       } catch (error) {
         /* eslint-disable no-console */
         console.error('❌ Failed to fetch product details:', error);
+        setProductDetails(null);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     load();
   }, [productId, category]);
 
-  return { productDetails };
+  return { productDetails, isLoading };
 };
