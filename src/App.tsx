@@ -1,7 +1,10 @@
 import './App.scss';
+import WelcomeSlider from './components/WelcomeSlider';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return (
+    <div className="App">
+      <WelcomeSlider />
+    </div>
+  );
+};
