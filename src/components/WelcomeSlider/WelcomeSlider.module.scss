@@ -5,6 +5,20 @@
     line-height: 41px;
     letter-spacing: -1%;
     padding-inline: 16px;
-    padding-block: 24px; // src="public\img\burger-menu.svg"
+    padding-block: 24px;
+  }
+
+  &__swiper {
+    width: 100%;
+  }
+
+  &__pagination {
+    height: 4px;
+    width: 40px;
+  }
+
+  &__image {
+    width: 14px;
+    height: 4px;
   }
 }

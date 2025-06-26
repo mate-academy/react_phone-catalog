@@ -1,0 +1,21 @@
+.swiper-custom-pagination-bullet {
+  height: 4px;
+  width: 14px;
+}
+
+.swiper-custom-pagination-bullet--active {
+  height: 4px;
+  width: 14px;
+}
+
+// :global(.swiper-pagination-bullets) {
+//   display: none !important;
+// }
+// :global(.swiper-pagination-horizontal) {
+//   // Зазвичай це контейнер для стандартних булетів, його також можна приховати
+//   display: none !important;
+// }
+// :global(.swiper-button-prev),
+// :global(.swiper-button-next) {
+//   display: none !important;
+// }
