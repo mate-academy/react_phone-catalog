@@ -94,9 +94,7 @@ export const CartPage: React.FC = () => {
                         />
                       </button>
                     </div>
-                    <p className={styles.price}>
-                      ${product.price * quantity}
-                    </p>
+                    <p className={styles.price}>${product.price * quantity}</p>
                   </div>
                 </li>
               );

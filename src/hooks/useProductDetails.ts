@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
 import { PhoneDetails } from '../types/PhoneDetails';
 import { getAccessories, getPhones, getTablets } from '../api/categories';
 
 export const useProductDetails = (productId?: string, category?: string) => {
-  // const { category } = useParams();
   const [productDetails, setProductDetails] = useState<PhoneDetails | null>(
     null,
   );

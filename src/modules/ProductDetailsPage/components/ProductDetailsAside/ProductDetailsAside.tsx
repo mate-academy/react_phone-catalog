@@ -38,7 +38,9 @@ export const ProductDetailsAside: React.FC<Props> = ({
     capacityVariants.length > 0 ? capacityVariants : [productDetails];
 
   const price =
-    productDetails.priceDiscount ?? productDetails.price ?? productForCart.price;
+    productDetails.priceDiscount ??
+    productDetails.price ??
+    productForCart.price;
 
   const fullPrice =
     productDetails.priceRegular ??

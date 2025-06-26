@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import styles from './ProductMainBlock.module.scss';
-// import { useProducts } from '../../../../hooks/useProducts';
-// import { useVariantsByNamespace } from '../../../../hooks/useVariantsByNamespace';
-// import { useProductDetails } from '../../../../hooks/useProductDetails';
-// import { useErrorHandling } from '../../../../hooks/errorHandling';
 import { ProductDetailsAside } from '../ProductDetailsAside';
 import { PhoneDetails } from '../../../../types/PhoneDetails';
 import { useVariantsByNamespace } from '../../../../hooks/useVariantsByNamespace';
@@ -19,9 +15,6 @@ export const ProductMainBlock: React.FC<Props> = ({
   productDetails,
   productForCart,
 }) => {
-  // const { setIsError } = useErrorHandling();
-  // const { products } = useProducts(() => setIsError(true));
-  // const { productDetails } = useProductDetails(productId);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const { variants } = useVariantsByNamespace(productDetails.namespaceId);
 
