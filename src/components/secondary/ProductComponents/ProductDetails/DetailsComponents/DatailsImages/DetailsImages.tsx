@@ -117,7 +117,7 @@ export const DeatailsIamges: React.FC<Props> = ({
         <div className="product-price__buttons ">
           <button
             className={classNames('product-price__buttons-cart', {
-              'is-element-in-cart': isInCart,
+              'element-in-cart': isInCart,
             })}
             onClick={() => {
               if (newProduct) {

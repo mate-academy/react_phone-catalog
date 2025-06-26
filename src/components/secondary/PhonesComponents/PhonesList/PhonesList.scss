@@ -10,11 +10,16 @@
 
   padding-inline: 16px;
   box-sizing: border-box;
-  grid-template-columns: repeat(auto-fit, minmax(287px, 300px));
+   grid-template-columns: repeat(auto-fit, 287px);
 
   @include on-tablet {
     justify-content: start;
-    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    grid-template-columns: repeat(auto-fit, 229px);
+  }
+
+  @include on-desck-top {
+    justify-content: start;
+    grid-template-columns: repeat(auto-fit, 288px);
   }
 }
 
@@ -30,14 +35,20 @@
   padding-inline: 32px;
   border: 1px #e2e6e9 solid;
 
-
-
-  &__content {
+   &__content {
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
 
-    width: 219px;
+    width: 223px;
+
+    @include on-tablet {
+      width: 165px;
+    }
+
+     @include on-desck-top {
+      width: 208px;
+    }
   }
 
   &__box {
@@ -54,6 +65,7 @@
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;
+      height: 80px;
       font-family: Montserrat, sans-serif;
 
       transition: color 300ms;
@@ -141,6 +153,10 @@
       @include on-tablet {
         width: 117px;
       }
+
+        @include on-desck-top {
+        width: 160px;
+      }
     }
 
     &-button-save {
@@ -190,5 +206,5 @@
 
   color: green;
   background-color: white;
-  border: 2px #313237 solid;
+  border: 2px #E2E6E9 solid;
 }

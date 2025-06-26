@@ -1,13 +1,19 @@
 import { Outlet } from 'react-router-dom';
 import { Footer } from '../Footer';
 import { TopBar } from '../TopBar';
+import './MainLayout.scss'
 
-export const HomePage = () => {
+
+export const MainLayout = () => {
   return (
-    <>
+    <div className="page">
       <TopBar />
-      <Outlet />
+
+      <main className="main">
+        <Outlet />
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 };

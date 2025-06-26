@@ -1,5 +1,13 @@
 @import '../../../../styles/mixins';
 
+$product-width: 212px;
+$product-width-tablet: 237px;
+$product-width-desktop: 272px;
+
+$content-width: 148px;
+$content-width-tablet: 173px;
+$content-width-desktop: 208px;
+
 .product-bottom {
   width: 100%;
   padding-inline: 17px;
@@ -25,7 +33,6 @@
     &__h2 {
       font-weight: 800;
       font-size: 22px;
-
       line-height: 140%;
       font-family: Montserrat, sans-serif;
 
@@ -61,23 +68,20 @@
         }
       }
 
-      &-left {
-        width: 6px;
-        height: 6px;
-        border-radius: 4%;
-        transform: rotate(45deg);
-        border-bottom: 3px solid #b4bdc3;
-        border-left: 3px solid #b4bdc3;
-
-        &:hover {
-          background-color: #f5f6f7;
-        }
-      }
-
+      &-left,
       &-right {
         width: 6px;
         height: 6px;
         border-radius: 4%;
+      }
+
+      &-left {
+        transform: rotate(45deg);
+        border-bottom: 3px solid #b4bdc3;
+        border-left: 3px solid #b4bdc3;
+      }
+
+      &-right {
         transform: rotate(-45deg);
         border-bottom: 3px solid #b4bdc3;
         border-right: 3px solid #b4bdc3;
@@ -91,7 +95,6 @@
     grid-auto-flow: column;
     grid-template-columns: repeat(5, 1fr);
     gap: 4px;
-
     width: 100%;
     margin-bottom: 56px;
 
@@ -111,30 +114,44 @@
 }
 
 .card {
-  padding-block: 32px;
-  padding-inline: 32px;
+  flex-shrink: 0;
   box-sizing: border-box;
+
+  width: $product-width;
+  padding: 32px;
+
+  @include on-tablet {
+    width: $product-width-tablet;
+  }
+
+  @include on-desck-top {
+    width: $product-width-desktop;
+  }
 
   display: flex;
   justify-content: center;
-  flex-shrink: 0;
-
   border: 1px #e2e6e9 solid;
 
   &__content {
-    width: 210px;
+    width: $content-width;
     display: flex;
     flex-direction: column;
+
+    @include on-tablet {
+      width: $content-width-tablet;
+    }
+
+    @include on-desck-top {
+      width: $content-width-desktop;
+    }
 
     &-img {
       margin-bottom: 24px;
       text-decoration: none;
-
       object-fit: contain;
       text-align: center;
       width: 100%;
       height: 150px;
-
       cursor: pointer;
       align-self: center;
       will-change: transform;
@@ -151,7 +168,6 @@
       margin-bottom: 8px;
       font-family: Montserrat, sans-serif;
       height: 38px;
-
       color: #000;
       text-decoration: none;
 
@@ -165,7 +181,6 @@
       align-items: center;
       margin-bottom: 16px;
       font-family: Montserrat, sans-serif;
-
       gap: 8px;
 
       &-regular {
@@ -178,20 +193,18 @@
         line-height: 140%;
         color: #89939a;
         position: relative;
-        font-family: Montserrat, sans-serif;
         text-decoration: line-through;
       }
     }
 
     &-down {
       margin-top: 16px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
 
       &-add {
-        width: 100px;
+         width: 160px;
         height: 40px;
         font-size: 11px;
         font-weight: 700;
@@ -200,9 +213,10 @@
         border: none;
         cursor: pointer;
         align-items: center;
-        font-family: Montserrat, sans-serif;
         justify-content: center;
         background-color: #313237;
+        font-family: Montserrat, sans-serif;
+
       }
 
       &-save {
@@ -211,9 +225,9 @@
         cursor: pointer;
         display: flex;
         align-items: center;
-        box-sizing: border-box;
         justify-content: center;
         border: 2px #b4bdc3 solid;
+        box-sizing: border-box;
         transition: 500ms background-color;
 
         &:hover {
@@ -236,7 +250,6 @@
     &-characteristics {
       display: grid;
       gap: 8px;
-
       position: relative;
 
       &::after {
@@ -283,8 +296,7 @@
 
 .is-element-in-cart {
   transition: background-color 300ms;
-
   color: green;
   background-color: white;
-  border: 2px #313237 solid;
+  border: 2px #e2e6e9 solid;
 }

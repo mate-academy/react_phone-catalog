@@ -5,14 +5,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { HomeContent } from './components/primary/HomeContent';
 import { Favourites } from './components/primary/Favourites';
 import { PhonesPage } from './components/primary/PhonesPage';
-import { HomePage } from './components/primary/HomePage';
 import { Menu } from './components/secondary/Menu';
 import { Cart } from './components/primary/Cart';
+import { MainLayout } from './components/primary/MainLayout';
 
 export const Root = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<HomePage />}>
+      <Route path="/" element={<MainLayout />}>
         <Route index element={<HomeContent />} />
         <Route path="phones" element={<PhonesPage />} />
         <Route path="product/:productId" element={<ProductPage />} />

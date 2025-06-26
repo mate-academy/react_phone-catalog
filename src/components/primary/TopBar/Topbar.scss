@@ -28,6 +28,11 @@
       margin-left: 32px;
       align-items: center;
       height: $manageHeight;
+      display: none;
+
+       @include on-tablet {
+          display: flex;
+        }
 
       @include on-desck-top {
         margin-left: 48px;

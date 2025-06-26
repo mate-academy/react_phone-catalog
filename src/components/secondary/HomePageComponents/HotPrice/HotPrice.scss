@@ -37,6 +37,7 @@
       font-size: 22px;
       font-weight: 800;
       line-height: 140%;
+      color: #313237;
       width: max-content;
 
       @include on-tablet {
@@ -120,7 +121,7 @@
     scroll-behavior: smooth;
 
     &-card-content {
-      width: 200px;
+      width: 208px;
       display: flex;
       flex-direction: column;
     }
@@ -149,7 +150,7 @@
           color: #313237;
           line-height: 21px;
           font-size: 14px;
-          font-weight: 700;
+          font-weight: 600;
           cursor: pointer;
 
           &:hover {
@@ -225,7 +226,6 @@
         justify-content: space-between;
 
         &-button {
-          width: 100px;
           height: 40px;
           color: white;
           display: flex;
@@ -237,6 +237,10 @@
           font-family: Montserrat, sans-serif;
           justify-content: center;
           background-color: #313237;
+
+
+            width: 160px;
+
         }
 
         &-button-save {
