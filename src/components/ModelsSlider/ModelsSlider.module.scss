@@ -2,16 +2,24 @@
 
 .sliderContainer {
   grid-column: 1/-1;
+
+  & :global {
+    .slick-slide {
+      box-sizing: border-box;
+    }
+
+    .slick-list {
+      margin: 0;
+      margin-right: -16px;
+      background-color: $color-black;
+    }
+  }
 }
 
-:global {
-  .slick-slide {
-    padding: 0 8px;
-    box-sizing: border-box;
-  }
+.slideContainer {
+  background-color: $color-black;
+}
 
-  .slick-list {
-    margin: 0 -8px;
-    background-color: $color-black;
-  }
+.slideContainerMargin {
+  margin-bottom: 40px;
 }

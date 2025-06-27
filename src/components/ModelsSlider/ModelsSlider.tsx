@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import styles from './ModelsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 import { CustomArrow } from '../CustomArrow';
+import classNames from 'classnames';
 
 const product = {
   id: 1,
@@ -20,15 +21,19 @@ const product = {
   image: 'img/phones/apple-iphone-7/black/00.webp',
 };
 
-const CustomSlide = () => {
-  return <ProductCard product={product} />;
+type Props = {
+  rows: number;
+  itemsPerRow: number;
 };
 
-export const ModelsSlider = () => {
+export const ModelsSlider = ({ rows, itemsPerRow }: Props) => {
   const settings = {
     speed: 500,
-    slidesToShow: 4,
+    infinite: false,
+    slidesToShow: 1,
     slidesToScroll: 1,
+    rows: rows,
+    slidesPerRow: itemsPerRow,
     nextArrow: (
       <CustomArrow direction="right" additionalClassName="modelsSliderArrow" />
     ),
@@ -40,8 +45,17 @@ export const ModelsSlider = () => {
   return (
     <div className={styles.sliderContainer}>
       <Slider {...settings}>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
-          <CustomSlide key={i} />
+        {[
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+        ].map(i => (
+          <div
+            className={classNames(styles.slideContainer, {
+              [styles.slideContainerMargin]: rows > 1,
+            })}
+            key={i}
+          >
+            <ProductCard product={product} />
+          </div>
         ))}
       </Slider>
     </div>

@@ -2,6 +2,16 @@
 
 .sliderContainer {
   grid-column: 2/-2;
+
+  & :global {
+    .slick-dots {
+      bottom: -48px !important;
+    }
+
+    .slick-active > div {
+      background-color: $color-white !important;
+    }
+  }
 }
 
 .customSlide {
@@ -14,14 +24,4 @@
   width: 14px;
   height: 4px;
   background-color: $color-elements;
-}
-
-:global {
-  .slick-dots {
-    bottom: -48px !important;
-  }
-
-  .slick-active > div {
-    background-color: $color-white !important;
-  }
 }
