@@ -16,14 +16,8 @@
   cursor: pointer;
 
 }
-:global(.swiper-pagination-bullets) {
-  display: none !important;
-}
-:global(.swiper-pagination-horizontal) {
-  // Зазвичай це контейнер для стандартних булетів, його також можна приховати
-  display: none !important;
-}
-:global(.swiper-button-prev),
-:global(.swiper-button-next) {
-  display: none !important;
+
+.pagination {
+  width: 60px;
+  height: 4px;
 }

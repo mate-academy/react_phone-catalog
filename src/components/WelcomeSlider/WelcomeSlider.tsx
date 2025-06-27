@@ -12,13 +12,6 @@ import 'swiper/css/pagination';
 
 const WelcomeSlider: React.FC = () => {
   const paginationRef = useRef<unknown>(null);
-  const [swiperInitialized, setSwiperInitialized] = useState(false);
-
-  useEffect(() => {
-    if (paginationRef.current) {
-      setSwiperInitialized(true); // Встановлюємо, що реф готовий, можна рендерити Swiper
-    }
-  }, [paginationRef.current]); // Залежність від ref.current
 
   return (
     <>
@@ -43,14 +36,14 @@ const WelcomeSlider: React.FC = () => {
         slidesPerView={1}
         pagination={{
           clickable: true,
-          type: 'bullets',
-          el: '.pagination',
+          type: 'custom',
+          el: paginationStyle.pagination,
           bulletClass: paginationStyle['swiper-custom-pagination-bullet'],
           bulletActiveClass:
             paginationStyle['swiper-custom-pagination-bullet--active'],
 
-          renderBullet: function (index, className) {
-            return '<span class="' + className + '">' + (index + 1) + '</span>';
+          renderCustom: function (swiper, current, total) {
+            return current + ' of ' + total;
           },
         }}
         scrollbar={{ draggable: true }}
@@ -58,17 +51,6 @@ const WelcomeSlider: React.FC = () => {
         onSwiper={swiper => {
           paginationRef.current = swiper;
         }}
-        // onInit={swiper => {
-        //   if (
-        //     swiper.params.pagination &&
-        //     typeof swiper.params.pagination !== 'boolean'
-        //   ) {
-        //     // eslint-disable-next-line no-param-reassign
-        //     swiper.params.pagination.el = paginationRef.current;
-        //   }
-
-        //   swiper.pagination.update();
-        // }}
       >
         <SwiperSlide>
           <img
@@ -94,7 +76,7 @@ const WelcomeSlider: React.FC = () => {
         {/* <SwiperSlide>Slide 4</SwiperSlide> */}
       </Swiper>
 
-      <div className="pagination"></div>
+      <div className={paginationStyle.pagination}></div>
 
       <div className={welcomeStyles.header__title}>
         Welcome to Nice Gadgets store!
