@@ -9,31 +9,35 @@
 }
 
 .not-found {
-  max-width: 1200px;
-  margin: 0 auto;
-  background-color: var(--background);
-  color: var(--text-color);
-  font-family: Inter, sans-serif;
-  padding: 16px;
-  text-align: center;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 16px;
+
+  font-family: Inter, sans-serif;
+  color: var(--text-color);
+  text-align: center;
+
+  background-color: var(--background);
 
   &__title {
     margin: 0;
+    margin-bottom: 16px;
+
     font-size: 48px;
     font-weight: 700;
     color: var(--text-color);
-    margin-bottom: 16px;
   }
 
   &__message {
+    margin-bottom: 24px;
     font-size: 18px;
     color: var(--text-muted);
-    margin-bottom: 24px;
   }
 }
 

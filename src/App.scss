@@ -1,20 +1,6 @@
-
 body {
-  background-color: #0F1121;
-  margin: 0;
   box-sizing: border-box;
+  margin: 0;
   font-family: Montserrat, sans-serif;
-}
-
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-  white-space: nowrap;
+  background-color: #0F1121;
 }

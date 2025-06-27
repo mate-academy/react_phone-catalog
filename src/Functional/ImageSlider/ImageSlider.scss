@@ -4,10 +4,10 @@
   @include padding-inline;
 
   &__conteiner {
-    gap: 15px;
-
     position: relative;
+
     display: flex;
+    gap: 15px;
     align-items: stretch;
     justify-content: center;
   }
@@ -27,9 +27,11 @@
   &__banner {
     width: 100%;
     height: 320px;
+
     object-fit: cover;
-    transition: transform 0.5s ease;
     background-color: #FDF5E6;
+
+    transition: transform 0.5s ease;
 
     &:hover {
       transform: scale(1.02);
@@ -49,14 +51,19 @@
     display: none;
 
     @media (min-width: 500px) {
-      width: 40px;
-      border: none;
+      cursor: pointer;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
+
+      width: 40px;
+      border: none;
+
       color: white;
+
       background-color: #323542;
+
       transition: background-color 0.3s ease;
     }
   }
@@ -66,8 +73,10 @@
     width: 14px;
     height: 4px;
     border-radius: 0;
-    background: #323542;
+
     opacity: 1;
+    background: #323542;
+
     transition: background-color 0.3s ease;
   }
 

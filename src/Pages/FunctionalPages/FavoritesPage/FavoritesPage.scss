@@ -2,20 +2,22 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 24px;
-  background-color: #161827;
-  color: var(--text-color);
+
   font-family: Inter, sans-serif;
+  color: var(--text-color);
+
+  background-color: #161827;
 
   &__title {
+    margin-bottom: 32px;
     font-size: 36px;
     font-weight: 700;
-    margin-bottom: 32px;
   }
 
   &__empty {
     font-size: 24px;
-    text-align: center;
     color: var(--text-muted);
+    text-align: center;
   }
 
   &__items {
@@ -28,10 +30,13 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background-color: #2a2a3e;
+
     padding: 16px;
     border-radius: 12px;
+
+    background-color: #2a2a3e;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
@@ -43,46 +48,50 @@
   &__item-image {
     width: 100%;
     height: 200px;
-    object-fit: contain;
     border-radius: 8px;
+    object-fit: contain;
   }
 
   &__item-name {
     font-size: 16px;
     font-weight: 600;
+    line-height: 1.4;
     color: var(--text-color);
     text-align: center;
-    line-height: 1.4;
   }
 
   &__item-price {
     font-size: 16px;
     font-weight: 600;
-    text-align: center;
     color: white;
+    text-align: center;
   }
 
   &__item-actions {
     display: flex;
-    justify-content: center;
     gap: 12px;
+    justify-content: center;
     margin-top: 12px;
   }
 
   &__item-btn {
+    cursor: pointer;
+
     padding: 8px 16px;
-    background-color: #905BFF;
-    color: white;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
+
     font-size: 14px;
+    font-weight: 600;
+    color: white;
+
+    background-color: #905BFF;
+
     transition: background-color 0.3s ease;
 
     &.added {
-      background-color: var(--text-muted);
       cursor: not-allowed;
+      background-color: var(--text-muted);
     }
 
     &:hover {
@@ -91,8 +100,8 @@
 
     &--favorite {
       padding: 8px;
-      background-color: transparent;
       border: none;
+      background-color: transparent;
     }
   }
 

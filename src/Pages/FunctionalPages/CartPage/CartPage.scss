@@ -4,27 +4,30 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 24px;
-  background-color: var(--background);
-  color: var(--text-color);
+
   font-family: Inter, sans-serif;
+  color: var(--text-color);
+
+  background-color: var(--background);
 
   &__title {
+    margin-bottom: 32px;
     font-size: 36px;
     font-weight: 700;
-    margin-bottom: 32px;
   }
 
   &__empty {
     font-size: 24px;
-    text-align: center;
     color: var(--text-muted);
+    text-align: center;
   }
 
   &__items {
-    flex: 2;
     display: flex;
+    flex: 2;
     flex-direction: column;
     gap: 24px;
+
     margin-bottom: 32px;
   }
 
@@ -40,13 +43,13 @@
   &__item-image {
     width: 100px;
     height: 100px;
-    object-fit: contain;
     border-radius: 8px;
+    object-fit: contain;
   }
 
   &__item-details {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: 8px;
   }
@@ -68,15 +71,17 @@
 
   &__item-quantity {
     display: flex;
-    align-items: center;
     gap: 12px;
+    align-items: center;
 
     & button {
       width: 32px;
       height: 32px;
-      background-color: var(--primary-color);
-      color: var(--text-color);
+
       font-size: 16px;
+      color: var(--text-color);
+
+      background-color: var(--primary-color);
 
       @include button-base;
 
@@ -99,45 +104,48 @@
   }
 
   &__summary {
-    flex: 1;
-
-    @include card-box;
-
-    padding: 24px;
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
+
+    padding: 24px;
+
     text-align: right;
 
-    @media (min-width: 1200px) {
-      max-width: 300px;
-      align-self: flex-start;
-    }
-
     & h2 {
+      margin-bottom: 16px;
       font-size: 24px;
       font-weight: 700;
-      margin-bottom: 16px;
       text-align: center;
     }
+
+    @media (min-width: 1200px) {
+      align-self: flex-start;
+      max-width: 300px;
+    }
+
+    @include card-box;
   }
 
   &__checkout {
     width: 100%;
     padding: 12px 24px;
-    background-color: var(--primary-color);
-    color: var(--text-color);
+
     font-size: 16px;
+    color: var(--text-color);
+
+    background-color: var(--primary-color);
 
     @include button-base;
 
   }
 
   &__item-remove {
-    background-color: #ff4d4f;
-    color: var(--text-color);
-    padding: 8px 16px;
     align-self: flex-start;
+    padding: 8px 16px;
+    color: var(--text-color);
+    background-color: #ff4d4f;
 
     @include button-base;
   }
@@ -158,15 +166,15 @@
 
   &__header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 24px;
   }
 
   &__title {
-    color: white;
     width: 150px;
     height: 62px;
+    color: white;
   }
 
   &__nav {
@@ -175,14 +183,17 @@
   }
 
   &__nav-btn {
-    width: 32px;
-    height: 32px;
-    background-color: #323542;
-    color: white;
-    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 18px;
+    color: white;
+
+    background-color: #323542;
 
     @include button-base;
 
@@ -192,23 +203,27 @@
   }
 
   &__card {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    position: relative;
+
+    width: 212px;
+    min-height: 443px;
+    padding: 8px;
+
+    text-align: center;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     @include card-box;
 
-    padding: 8px;
-    width: 212px;
-    min-height: 443px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
     @include on-tablet {
-      padding: 20px;
       max-width: 272px;
+      padding: 20px;
     }
 
     @include on-desktop {
@@ -232,21 +247,21 @@
   &__card-image {
     width: 100%;
     height: 180px;
-    object-fit: contain;
     margin-bottom: 15px;
+    object-fit: contain;
   }
 
   &__card-title {
+    margin-bottom: 10px;
     font-size: 16px;
     font-weight: 500;
-    margin-bottom: 10px;
     color: white;
   }
 
   &__card-prices {
     display: flex;
-    justify-content: left;
     gap: 10px;
+    justify-content: left;
     margin-bottom: 15px;
   }
 
@@ -264,23 +279,25 @@
 
   &__card-spec {
     display: flex;
+    gap: 8px;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
   }
 
   &__card-actions {
-    margin-top: auto;
     display: flex;
-    justify-content: space-between;
     gap: 10px;
+    justify-content: space-between;
+    margin-top: auto;
   }
 
   &__card-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+
     height: 40px;
+
     font-size: 14px;
     text-align: center;
 
@@ -289,11 +306,14 @@
 
   &__card-btn--add {
     flex: 1;
-    background-color: #a855f7;
-    border: 1px solid #905BFF;
-    color: white;
+
     padding: 0 16px;
+    border: 1px solid #905BFF;
+
+    color: white;
     text-decoration: none;
+
+    background-color: #a855f7;
 
     &:hover {
       background-color: #9333ea;
@@ -307,14 +327,17 @@
   }
 
   &__card-btn--favorite {
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    background-color: #323542;
-    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+
+    color: white;
+
+    background-color: #323542;
 
     &:hover {
       color: #a855f7;
@@ -332,6 +355,6 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-  height: 32px;
   width: 32px;
+  height: 32px;
 }
