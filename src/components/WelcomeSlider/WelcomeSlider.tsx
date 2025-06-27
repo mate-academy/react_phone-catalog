@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import welcomeStyles from './WelcomeSlider.module.scss';
 import topBatStyles from './TopBar.module.scss';
 import iconStyles from './icon.module.scss';
@@ -11,7 +11,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const WelcomeSlider: React.FC = () => {
-  const paginationRef = useRef<HTMLDivElement>(null);
+  const paginationRef = useRef<unknown>(null);
+  const [swiperInitialized, setSwiperInitialized] = useState(false);
+
+  useEffect(() => {
+    if (paginationRef.current) {
+      setSwiperInitialized(true); // Встановлюємо, що реф готовий, можна рендерити Swiper
+    }
+  }, [paginationRef.current]); // Залежність від ref.current
 
   return (
     <>
@@ -28,34 +35,40 @@ const WelcomeSlider: React.FC = () => {
         </div>
       </div>
 
+      <div className={welcomeStyles.pagination}></div>
+
       <Swiper
-        modules={[Pagination, Scrollbar]}
+        modules={[Scrollbar, Pagination]}
         spaceBetween={0}
         slidesPerView={1}
         pagination={{
           clickable: true,
           type: 'bullets',
-          el: paginationRef.current,
+          el: '.pagination',
           bulletClass: paginationStyle['swiper-custom-pagination-bullet'],
           bulletActiveClass:
             paginationStyle['swiper-custom-pagination-bullet--active'],
-          renderBullet: function (className) {
-            return `<div class="${className}"></div>`;
+
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + '</span>';
           },
         }}
         scrollbar={{ draggable: true }}
         loop={true}
-        onInit={swiper => {
-          if (
-            swiper.params.pagination &&
-            typeof swiper.params.pagination !== 'boolean'
-          ) {
-            // eslint-disable-next-line no-param-reassign
-            swiper.params.pagination.el = paginationRef.current;
-          }
-
-          swiper.pagination.update();
+        onSwiper={swiper => {
+          paginationRef.current = swiper;
         }}
+        // onInit={swiper => {
+        //   if (
+        //     swiper.params.pagination &&
+        //     typeof swiper.params.pagination !== 'boolean'
+        //   ) {
+        //     // eslint-disable-next-line no-param-reassign
+        //     swiper.params.pagination.el = paginationRef.current;
+        //   }
+
+        //   swiper.pagination.update();
+        // }}
       >
         <SwiperSlide>
           <img
@@ -81,7 +94,7 @@ const WelcomeSlider: React.FC = () => {
         {/* <SwiperSlide>Slide 4</SwiperSlide> */}
       </Swiper>
 
-      <div className={welcomeStyles.pagination} ref={paginationRef}></div>
+      <div className="pagination"></div>
 
       <div className={welcomeStyles.header__title}>
         Welcome to Nice Gadgets store!

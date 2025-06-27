@@ -1,21 +1,29 @@
 .swiper-custom-pagination-bullet {
   height: 4px;
   width: 14px;
+  background-color: #c4c4c4;
+  border-radius: 2px;
+  margin: 0 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-
 .swiper-custom-pagination-bullet--active {
   height: 4px;
   width: 14px;
-}
+  background-color: #000;
+  border-radius: 2px;
+  margin-bottom: -65px;
+  cursor: pointer;
 
-// :global(.swiper-pagination-bullets) {
-//   display: none !important;
-// }
-// :global(.swiper-pagination-horizontal) {
-//   // Зазвичай це контейнер для стандартних булетів, його також можна приховати
-//   display: none !important;
-// }
-// :global(.swiper-button-prev),
-// :global(.swiper-button-next) {
-//   display: none !important;
-// }
+}
+:global(.swiper-pagination-bullets) {
+  display: none !important;
+}
+:global(.swiper-pagination-horizontal) {
+  // Зазвичай це контейнер для стандартних булетів, його також можна приховати
+  display: none !important;
+}
+:global(.swiper-button-prev),
+:global(.swiper-button-next) {
+  display: none !important;
+}
