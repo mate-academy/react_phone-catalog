@@ -2,22 +2,23 @@ import { CustomArrowProps } from 'react-slick';
 import classNames from 'classnames';
 import styles from './CustomArrow.module.scss';
 
+export type ArrowClassType =
+  | 'welcomeSliderArrow'
+  | 'modelsSliderArrow_up'
+  | 'modelsSliderArrow_down';
+
 type Props = {
   direction: 'right' | 'left';
-  additionalClassName: string;
+  arrowClassName: ArrowClassType;
 } & CustomArrowProps;
 
-export const CustomArrow = ({
-  onClick,
-  direction,
-  additionalClassName,
-}: Props) => {
+export const CustomArrow = ({ onClick, direction, arrowClassName }: Props) => {
   return (
     <button
       className={classNames(
         styles.customArrow,
-        styles[additionalClassName],
-        styles[`${additionalClassName}_${direction}`],
+        styles[arrowClassName],
+        styles[`${arrowClassName}_${direction}`],
       )}
       onClick={onClick}
     >

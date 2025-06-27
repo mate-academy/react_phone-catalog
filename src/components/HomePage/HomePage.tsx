@@ -31,7 +31,12 @@ export const HomePage = () => (
     </section>
     <section className={styles.pageContent}>
       <h2 className={styles.sectionTitle}>Brand new models</h2>
-      <ModelsSlider rows={1} itemsPerRow={4} />
+      <ModelsSlider
+        dots={false}
+        rows={1}
+        itemsPerRow={4}
+        arrowClassName="modelsSliderArrow_up"
+      />
     </section>
     <section className={styles.pageContent}>
       <h2 className={styles.sectionTitle}>Shop by category</h2>
@@ -57,7 +62,12 @@ export const HomePage = () => (
     </section>
     <section className={styles.pageContent}>
       <h2 className={styles.sectionTitle}>Hot prices</h2>
-      <ModelsSlider rows={1} itemsPerRow={4} />
+      <ModelsSlider
+        dots={false}
+        rows={1}
+        itemsPerRow={4}
+        arrowClassName="modelsSliderArrow_up"
+      />
     </section>
   </main>
 );

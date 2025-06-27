@@ -4,16 +4,38 @@
   grid-column: 1/-1;
 
   & :global {
-    .slick-slide {
-      box-sizing: border-box;
-    }
-
     .slick-list {
       margin: 0;
       margin-right: -16px;
       background-color: $color-black;
     }
+
+    // div.slick-slide.slick-active.slick-current > div {
+    //   margin-bottom: 40px;
+    // }
+
+    .slick-dots {
+      display: flex !important;
+      justify-content: center;
+      gap: 8px;
+      top: 100%;
+    }
+
+    li.slick-active > div {
+      background-color: $color-accent;
+    }
   }
+}
+
+.customDot {
+  width: 32px;
+  height: 32px;
+  background-color: $color-surface1;
+  color: $color-white;
+  font-family: $font-regular;
+  font-size: 14px;
+  line-height: 32px;
+  text-align: center;
 }
 
 .slideContainer {

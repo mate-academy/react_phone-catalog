@@ -2,14 +2,15 @@
 
 .sliderContainer {
   grid-column: 2/-2;
+  margin-bottom: 48px;
 
   & :global {
     .slick-dots {
       bottom: -48px !important;
     }
 
-    .slick-active > div {
-      background-color: $color-white !important;
+    li.slick-active > div {
+      background-color: $color-white;
     }
   }
 }

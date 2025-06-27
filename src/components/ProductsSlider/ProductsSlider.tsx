@@ -47,10 +47,10 @@ export const ProductSlider = () => {
     slidesToScroll: 1,
     pauseOnDotsHover: true,
     nextArrow: (
-      <CustomArrow direction="right" additionalClassName="welcomeSliderArrow" />
+      <CustomArrow direction="right" arrowClassName="welcomeSliderArrow" />
     ),
     prevArrow: (
-      <CustomArrow direction="left" additionalClassName="welcomeSliderArrow" />
+      <CustomArrow direction="left" arrowClassName="welcomeSliderArrow" />
     ),
 
     customPaging: () => <div className={styles.customDot}></div>,

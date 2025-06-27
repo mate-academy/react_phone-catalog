@@ -46,7 +46,12 @@ export const ProductPage = () => {
               <CustomDropdown options={countOptions} width="128px" />
             </div>
           </div>
-          <ModelsSlider rows={4} itemsPerRow={4} />
+          <ModelsSlider
+            rows={4}
+            itemsPerRow={4}
+            dots={true}
+            arrowClassName="modelsSliderArrow_down"
+          />
         </div>
       </div>
     </main>

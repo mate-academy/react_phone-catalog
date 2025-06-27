@@ -3,7 +3,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './ModelsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-import { CustomArrow } from '../CustomArrow';
+import { ArrowClassType, CustomArrow } from '../CustomArrow';
 import classNames from 'classnames';
 
 const product = {
@@ -24,9 +24,16 @@ const product = {
 type Props = {
   rows: number;
   itemsPerRow: number;
+  dots: boolean;
+  arrowClassName: ArrowClassType;
 };
 
-export const ModelsSlider = ({ rows, itemsPerRow }: Props) => {
+export const ModelsSlider = ({
+  rows,
+  itemsPerRow,
+  dots,
+  arrowClassName,
+}: Props) => {
   const settings = {
     speed: 500,
     infinite: false,
@@ -34,11 +41,14 @@ export const ModelsSlider = ({ rows, itemsPerRow }: Props) => {
     slidesToScroll: 1,
     rows: rows,
     slidesPerRow: itemsPerRow,
+    dots: dots,
+    adaptiveHeight: true,
     nextArrow: (
-      <CustomArrow direction="right" additionalClassName="modelsSliderArrow" />
+      <CustomArrow direction="right" arrowClassName={arrowClassName} />
     ),
-    prevArrow: (
-      <CustomArrow direction="left" additionalClassName="modelsSliderArrow" />
+    prevArrow: <CustomArrow direction="left" arrowClassName={arrowClassName} />,
+    customPaging: (i: number) => (
+      <div className={styles.customDot}>{i + 1}</div>
     ),
   };
 

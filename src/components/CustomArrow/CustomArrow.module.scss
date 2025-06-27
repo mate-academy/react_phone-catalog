@@ -1,6 +1,9 @@
 @import '../../styles/variables';
 
 .customArrow {
+  height: 32px;
+  width: 32px;
+
   background-color: $color-surface2;
   box-sizing: border-box;
   border: none;
@@ -10,6 +13,8 @@
   top: 50%;
   transform: translateY(-50%);
 
+  z-index: 2;
+
   &:hover {
     background-color: $color-icons;
   }
@@ -17,7 +22,6 @@
 
 .welcomeSliderArrow {
   height: 100%;
-  width: 32px;
 
   &_right {
     right: -48px;
@@ -28,17 +32,26 @@
   }
 }
 
-.modelsSliderArrow {
-  height: 32px;
-  width: 32px;
+.modelsSliderArrow_up {
+  top: -48px;
 
   &_right {
-    top: -48px;
     right: 0;
   }
 
   &_left {
-    top: -48px;
     right: 48px;
+  }
+}
+
+.modelsSliderArrow_down {
+  top: calc(100% + 16px);
+
+  &_right {
+    right: calc(50% - 85px);
+  }
+
+  &_left {
+    right: calc(50% + 40px);
   }
 }
