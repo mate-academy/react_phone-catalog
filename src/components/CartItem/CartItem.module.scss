@@ -1,0 +1,76 @@
+@import '../../styles/variables';
+
+.card {
+  background-color: $color-surface1;
+  color: $color-white;
+  box-sizing: border-box;
+
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.deleteButton {
+  background-color: $color-surface1;
+  display: flex;
+  width: 16px;
+  height: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.productPhoto {
+  padding: 7px;
+  height: 80px;
+  box-sizing: border-box;
+
+  &_img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+}
+
+.productTitle {
+  font-family: $font-regular;
+  font-size: 14px;
+  line-height: 21px;
+  width: 336px;
+}
+
+.productPrice {
+  font-family: $font-bold;
+  font-size: 22px;
+  line-height: 140%;
+  margin-left: 30px;
+}
+
+.countButtons {
+  display: flex;
+  color: $color-white;
+}
+
+.countButton {
+  background-color: $color-surface2;
+  height: 32px;
+  width: 32px;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+}
+
+.productCounter {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-regular;
+  font-size: 14px;
+  line-height: 21px;
+}

@@ -1,0 +1,118 @@
+@import '../../styles/variables';
+
+.page {
+  background-color: $color-black;
+  padding-top: 40px;
+  padding-bottom: 80px;
+  justify-items: center;
+  color: $color-white;
+  min-height: calc(100vh - 253px);
+}
+
+.pageContent {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  gap: 24px 16px;
+  background-color: $color-black;
+}
+
+.pathHome {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  text-decoration: none;
+  color: $color-white;
+
+  &_title {
+    font-family: $font-semibold;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+}
+
+.pageInfo {
+  grid-column: 1/-1;
+
+  &_title {
+    grid-column: 1/-1;
+    font-family: $font-bold;
+    line-height: 56px;
+    font-size: 48px;
+    letter-spacing: -1%;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &_counter {
+    font-family: $font-regular;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $color-secondary;
+  }
+}
+
+.pageItems {
+  display: flex;
+  gap: 16px;
+
+  &_list {
+    display: grid;
+    gap: 16px;
+  }
+
+  &_checkout {
+    height: fit-content;
+    background-color: $color-black;
+    border: 1px solid $color-elements;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    gap: 24px;
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &_price {
+        font-family: $font-bold;
+        font-size: 32px;
+        line-height: 41px;
+        margin-bottom: 8px;
+      }
+
+      &_text {
+        color: $color-secondary;
+        font-family: $font-regular;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+
+    &_line {
+      width: 100%;
+      height: 1px;
+      background-color: $color-elements;
+    }
+
+    &_button {
+      height: 48px;
+      color: $color-white;
+      font-family: $font-semibold;
+      font-size: 14px;
+      line-height: 21px;
+      background-color: $color-accent;
+      border: none;
+      padding: 14px 126px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #a378ff;
+      }
+    }
+  }
+}
