@@ -1,1 +1,1 @@
-export * from './ButtonBack'
+export * from './ButtonBack';

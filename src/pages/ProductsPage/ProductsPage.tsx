@@ -1,4 +1,4 @@
-import './ProductPage.scss';
+import './ProductsPage.scss';
 import {
   FC,
   useCallback,
@@ -11,7 +11,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { Dropdown } from '../../shared/Dropdown';
 import { Pagination } from '../../shared/Pagination';
 import { GlobalContext } from '../../context/GlobalContext';
-import { Breadcrumbs } from '../../shared/Breadcrumbs';
+import { Linkline } from '../../shared/Linkline';
 import { ProductsList } from '../../shared/ProductsList';
 import { Loader } from '../../shared/Loader';
 
@@ -137,46 +137,46 @@ export const ProductPage: FC<Props> = ({ category }) => {
       } finally {
         setIsLoading(false);
       }
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [category, allProducts]);
 
   return (
-    <div className="productPage">
+    <div className="productsPage">
       {isLoading && <Loader />}
 
       {!isLoading && error && (
-        <div className="productPage__error">
+        <div className="productsPage__error">
           <p>Something went wrong. Please try again.</p>
           <button onClick={() => window.location.reload()}>Reload</button>
         </div>
       )}
 
       {!isLoading && !error && !visibleProducts.length && !queryParam ? (
-        <div className="productPage__no-products">
+        <div className="productsPage__no-products">
           <p>There are no {category} yet.</p>
         </div>
       ) : null}
 
       {!isLoading && !error && !visibleProducts.length && queryParam ? (
-        <p className="productPage__no-products">{`There are no ${typeProduct} matching the query`}</p>
+        <p className="productsPage__no-products">{`There are no ${typeProduct} matching the query`}</p>
       ) : null}
 
       {!isLoading && !error && visibleProducts.length ? (
         <>
-          <Breadcrumbs productType={category!} />
+          <Linkline productType={category!} />
 
-          <h1 className="productPage__title">
+          <h1 className="productsPage__title">
             {category && `${capitalize(category)} page`}
           </h1>
 
-          <span className="productPage__description">
+          <span className="productsPage__description">
             {`${countVisibleProducts} model${countVisibleProducts !== 1 ? 's' : ''}`}
           </span>
 
-          <div className="productPage__dropdown">
-            <div className="productPage__dropdown--sortBy">
+          <div className="productsPage__dropdown">
+            <div className="productsPage__dropdown--sortBy">
               <Dropdown
                 label="Sort by"
                 selected={sortBy}
@@ -184,7 +184,7 @@ export const ProductPage: FC<Props> = ({ category }) => {
                 onChange={handleSortChange}
               />
             </div>
-            <div className="productPage__dropdown--itemsPerPage">
+            <div className="productsPage__dropdown--itemsPerPage">
               <Dropdown
                 label="Items on page"
                 selected={itemsPerPage}

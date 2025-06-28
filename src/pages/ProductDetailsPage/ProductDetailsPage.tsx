@@ -1,7 +1,7 @@
 import './ProductDetailsPage.scss';
 import { useContext, useState, useEffect, FC } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { Breadcrumbs } from '../../shared/Breadcrumbs';
+import { Linkline } from '../../shared/Linkline';
 import { ProductDetails } from '../../types/ProductDetails';
 import { ProductContentTop } from '../../components/ProductContentTop';
 import { ProductContentBottom } from '../../components/ProductContentBottom';
@@ -127,7 +127,7 @@ export const ProductDetailsPage: FC = () => {
         </div>
       )}*/}
 
-      <Breadcrumbs productType={currentCategory} productName={product.name} />
+      <Linkline productType={currentCategory} productName={product.name} />
 
       <ButtonBack />
 

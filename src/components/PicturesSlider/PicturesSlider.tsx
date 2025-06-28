@@ -7,32 +7,23 @@ import {
   useCallback,
 } from 'react';
 import './PicturesSlider.scss';
+import '../../../src/shared/Icon/Icon.scss';
 import { Icon } from '../../shared/Icon';
 import { icons } from '../../constants/icons';
 import { GlobalContext } from '../../context/GlobalContext';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
+
 type Props = {
   allNewestProducts: Product[];
 };
 export const PicturesSlider: FC<Props> = ({ allNewestProducts }) => {
   const images = allNewestProducts.map(el => el.image);
-  /*const images = [
-    'img/phones/apple-iphone-14/midnight/00.webp',
-    'img/phones/apple-iphone-14-pro/gold/00.webp',
-    'img/phones/apple-iphone-xr/coral/00.webp',
-  ];*/
+
   const names = allNewestProducts.map(el => el.name);
   const imagesUrl: Record<number, string> = allNewestProducts.map(
     el => el.category + '/' + el.itemId,
   );
-
-  /*const imagesUrl: Record<number, string> = {
-    //0: images[0].split('/', 4).join('/').slice(4),
-    0: 'phones/apple-iphone-14-128gb-midnight',
-    1: 'phones/apple-iphone-14-pro-128gb-gold',
-    2: 'phones/apple-iphone-xr-128gb-coral',
-  };*/
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const { theme } = useContext(GlobalContext);
@@ -109,7 +100,9 @@ export const PicturesSlider: FC<Props> = ({ allNewestProducts }) => {
             <div>
               <div>
                 <div className="picturesSlider__aside-title">Now available</div>
-                <div className="picturesSlider__aside-title">in our store!</div>
+                <div className="picturesSlider__aside-title">
+                  in our store! <Icon icon={icons.ok[theme]} />
+                </div>
               </div>
 
               <div className="picturesSlider__aside-description">
@@ -159,8 +152,6 @@ export const PicturesSlider: FC<Props> = ({ allNewestProducts }) => {
             onClick={() => handleDotClick(index)}
           ></div>
         ))}
-
-        {/*split('/', 4).join('/').slice(4)*/}
       </div>
     </div>
   );

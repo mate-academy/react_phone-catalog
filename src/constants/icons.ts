@@ -171,4 +171,14 @@ export const icons: Record<string, Icon> = {
       path: '../../src/icons/MinusDarkDisabled.svg',
     },
   },
+  ok: {
+    light: {
+      title: 'ok',
+      path: '../../src/icons/image 15.svg',
+    },
+    dark: {
+      title: 'ok',
+      path: '../../src/icons/image 15.svg',
+    },
+  },
 };

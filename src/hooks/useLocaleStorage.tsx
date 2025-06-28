@@ -10,8 +10,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       return item ? (JSON.parse(item) as T) : initialValue;
     } catch (error) {
       localStorage.removeItem(key);
-      // eslint-disable-next-line no-console
-      console.warn(`Error reading localStorage key "${key}": ${error}`);
+      alert(`Error reading localStorage key "${key}": ${error}`);
 
       return initialValue;
     }
@@ -21,7 +20,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
-      throw new Error(`Error saving to localStorage key "${key}": ${error}`);
+      throw new Error(`Error saving localStorage key "${key}": ${error}`);
     }
   }, [key, value]);
 

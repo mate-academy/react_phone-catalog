@@ -4,7 +4,7 @@ import { FC, useContext, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../context/GlobalContext';
 import { ProductsList } from '../../shared/ProductsList';
-import { Breadcrumbs } from '../../shared/Breadcrumbs';
+import { Linkline } from '../../shared/Linkline';
 
 export const FavoritesPage: FC = () => {
   const { favorites } = useContext(GlobalContext);
@@ -31,7 +31,7 @@ export const FavoritesPage: FC = () => {
 
   return (
     <div className="favoritesPage">
-      <Breadcrumbs productType="Favorites" />
+      <Linkline productType="Favorites" />
       <h1 className="favoritesPage__title">Favorites</h1>
 
       <span className="favoritesPage__description">

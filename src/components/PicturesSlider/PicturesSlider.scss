@@ -1,8 +1,11 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
+
 p {
   font-family: Mont-Bold, sans-serif;
   color: #fff;
 }
+
+
 
 .picturesSlider {
   margin-bottom: 56px;
@@ -60,11 +63,22 @@ p {
     &-title {
       font-family: Mont-Bold, sans-serif;
       color: #fff;
-      background-image: linear-gradient(90deg, #7c4af4, #d862ff);
+      background-image: linear-gradient(90deg, #7c4af4 30%, #d862ff 50%,#7c4af4 70%);
+      background-size: 400%;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       font-size: 32px;
       line-height: 1;
+      animation: shimmer 1.5s infinite linear;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 100% 100%;
+      }
+      100% {
+        background-position: 0 0;
+      }
     }
 
     &-description {

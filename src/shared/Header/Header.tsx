@@ -1,20 +1,21 @@
 import './Header.scss';
 
 import classNames from 'classnames';
-import { useContext, useEffect, useMemo, FC, useCallback } from 'react';
-import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { useContext, useMemo, FC } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { GlobalContext } from '../../context/GlobalContext';
 import { icons } from '../../constants/icons';
 import { Icon } from '../Icon';
 import { navLinks } from '../../constants/navLinks';
 // import debounce from 'lodash.debounce';
-import { getSearchWith } from '../../utils/getSearchWith';
+// import { getSearchWith } from '../../utils/getSearchWith';
 import { Filter } from '../Filter';
 
-type Param = string | number;
+/* type Param = string | number;
 type Params = {
   [key: string]: Param[] | Param | null;
 };
+*/
 
 const getActiveItem = ({ isActive }: { isActive: boolean }) =>
   classNames('header__item', { 'header__item--active': isActive });
@@ -26,26 +27,26 @@ export const Header: FC = () => {
   const { cart, favorites, toggleMenu, isMenuOpen, theme, toggleTheme } =
     useContext(GlobalContext);
 
-  const location = useLocation();
+  // const location = useLocation();
   //const [query, setQuery] = useState('');
   //const [appliedQuery, setAppliedQuery] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
   //const [query, setQuery] = useState('');
-  const query = searchParams.get('query') || '';
+  // const query = searchParams.get('query') || '';
   const totalQuantity = useMemo(
     () => cart.reduce((sum, item) => sum + item.quantity, 0),
     [cart],
   );
 
-  const isShowSearch = useMemo(
+  /* const isShowSearch = useMemo(
     () =>
       ['/phones', '/tablets', '/accessories', '/favorites'].includes(
         location.pathname,
       ),
     [location.pathname],
-  );
+  ); */
 
-  const clearInput = useCallback(() => {
+  /* const clearInput = useCallback(() => {
     //setQuery('');
     setSearchParams(prevParams => {
       const newParams = new URLSearchParams(prevParams);
@@ -55,8 +56,8 @@ export const Header: FC = () => {
       return newParams;
     });
   }, [setSearchParams]);
-
-  const setSearchWith = useCallback(
+*/
+  /* const setSearchWith = useCallback(
     (params: Params) => {
       //const newParams = new URLSearchParams(searchParams);
       const search = getSearchWith(params, searchParams);
@@ -66,7 +67,7 @@ export const Header: FC = () => {
     },
     [searchParams, setSearchParams],
   );
-
+*/
   /*
   const handleInputChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -107,11 +108,11 @@ export const Header: FC = () => {
     [setSearchWith],
   );*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     clearInput();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
-
+*/
   return (
     <div className="header">
       <Link to="/" className="header__logo-container">
@@ -130,25 +131,7 @@ export const Header: FC = () => {
 
       <div className="header__buttons-right">
         <Filter />
-        {/* {isShowSearch && (
-          <div className="header__search-wrapper">
-            <input
-              type="text"
-              placeholder="Search product..."
-              className="header__search-input"
-              value={query}
-              onChange={handleInputChange}
-            />
-            {query ? (
-              <div className="header__clear-button" onClick={clearInput}>
-                <Icon icon={icons.close[theme]} />
-              </div>
-            ) : (
-              <Icon icon={icons.search[theme]} />
-            )}
-          </div>
-        )}
-        */}
+
         <div onClick={toggleMenu} className="header__icon header__icon--menu">
           <Icon icon={isMenuOpen ? icons.close[theme] : icons.menu[theme]} />
         </div>

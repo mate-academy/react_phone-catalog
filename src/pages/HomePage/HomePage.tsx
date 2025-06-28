@@ -37,9 +37,9 @@ export const HomePage: FC = () => {
   );
 
   newestProducts = [
-    ...newestPhones.slice(0, 3),
-    ...newestTablets.slice(0, 3),
-    ...newestAccessories.slice(0, 3),
+    ...newestPhones.slice(0, 5),
+    ...newestTablets.slice(0, 5),
+    ...newestAccessories.slice(0, 5),
   ];
 
   const hotPricesProducts = useMemo(

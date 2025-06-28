@@ -5,7 +5,7 @@ export const LazyHomePage = lazy(() =>
 );
 
 export const LazyProductPage = lazy(() =>
-  import('../pages/ProductPage').then(({ ProductPage }) => ({
+  import('../pages/ProductsPage').then(({ ProductPage }) => ({
     default: ProductPage,
   })),
 );

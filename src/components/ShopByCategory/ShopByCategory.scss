@@ -51,10 +51,12 @@
   &__block {
     display: flex;
     flex-direction: column;
-    //justify-content: space-between;
-    //justify-items: end;
+
+    // justify-content: space-between;
+    // justify-items: end;
     align-items:center;
-    //align-content: end;
+
+    // align-content: end;
 
     &-image {
       display: block;
@@ -62,6 +64,7 @@
       height:400px;
       border: 0;
       transform: translate(10px, 5px);
+
       @include hover(transform, scale(1.05));
 
       @include on-tablet {
@@ -80,7 +83,6 @@
     }
 
     &-description {
-
       font-family: Mont-Regular, sans-serif;
       color: var(--color-gray-secondary);
       font-size: 14px;
