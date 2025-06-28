@@ -1,7 +1,35 @@
+.header {
+  position: fixed;
+  opacity: 1;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  // z-index: 1;
+}
+
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 16px;
-  padding-block: 13px;
+  padding-left: 16px;
+  // margin-block: 13px;
+  border-bottom: 1px solid #e2e6e9;
+
+  &__icon-1 {
+    padding: 16px;
+    border-left: 1px solid #e2e6e9;
+  }
+
+  &__logo {
+    height: 22px;
+  }
+
+  &__logo-img {
+    // padding-top: 9px;
+    // padding-bottom: 11px;
+    width: 64px;
+    height: 22px;
+
+  }
 }

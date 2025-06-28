@@ -1,0 +1,56 @@
+body:has(.sideMenu :target) {
+  overflow: hidden;
+}
+
+.sideMenu {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  overflow: hidden;
+
+  opacity: 0;
+  // z-index: 1;
+  pointer-events: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &:target {
+    pointer-events: all;
+    overflow: hidden;
+    opacity: 1;
+    z-index: 5;
+  }
+
+  &__nav {
+    margin-top: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__nav-item {
+    list-style: none;
+    margin-top: 16px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__nav-link {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 19.5px;
+    letter-spacing: 3px;
+    text-transform: capitalize;
+
+    text-decoration: none;
+    color: #89939a;
+
+    position: relative;
+  }
+}

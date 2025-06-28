@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
   &__title {
     font-weight: 800;
@@ -5,20 +10,17 @@
     line-height: 41px;
     letter-spacing: -1%;
     padding-inline: 16px;
-    padding-block: 24px;
+    padding-bottom: 24px;
+    padding-top: 124px;
+  }
+
+  &__swiper {
+    // opacity: 0;
+    z-index: 0;
   }
 
   &__swiper {
     width: 100%;
-  }
-
-  &__pagination {
-    height: 64px; // Можливо, зменшіть, якщо булети лише 4px висотою
-    width: auto; // <--- Змініть на auto або достатньо велике значення (наприклад, 100px), щоб вмістити всі булети
-    display: flex; // <--- ДОДАЙТЕ ЦЕЙ РЯДОК!
-    justify-content: center; // Центрувати булети по горизонталі
-    align-items: center; // Центрувати булети по вертикалі
-    gap: 8px; // Відстань між булетами
   }
 
   &__image {
