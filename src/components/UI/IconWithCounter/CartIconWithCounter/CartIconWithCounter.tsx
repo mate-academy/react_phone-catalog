@@ -7,6 +7,7 @@ import cn from 'classnames';
 type Props = {
   cartCount?: number;
   isMobile?: boolean;
+  onClick?: () => void;
 };
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -17,10 +18,12 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
 export const CartIconWithCounter: React.FC<Props> = ({
   cartCount,
   isMobile = false,
+  onClick,
 }) => {
   return (
     <NavLink
       to="/cart"
+      onClick={onClick}
       className={({ isActive }) =>
         cn(getLinkClass({ isActive }), {
           [styles.mobile]: isMobile,

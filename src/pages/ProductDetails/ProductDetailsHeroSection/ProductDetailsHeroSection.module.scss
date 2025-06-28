@@ -51,17 +51,10 @@
 // #endregion
 
 .productWrapper {
-  margin-inline: 16px;
   margin-top: 16px;
 
   @include u.on-tablet {
-    margin-inline: 24px;
-
     @include u.page-grid;
-  }
-
-  @include u.on-desktop {
-    margin-inline: 0;
   }
 }
 

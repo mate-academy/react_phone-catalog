@@ -3,7 +3,7 @@
 .wrapperBackButton {
   display: inline-flex;
   align-items: center;
-  margin-inline: 16px;
+  // margin-inline: 16px;
   margin-top: 24px;
   gap: 4px;
   padding: 0;
@@ -13,7 +13,7 @@
   appearance: none;
 
   @include u.on-tablet {
-    margin-inline: 24px;
+    // margin-inline: 24px;
     margin-top: 40px;
   }
 

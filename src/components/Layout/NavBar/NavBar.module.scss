@@ -1,9 +1,5 @@
 @use 'styles/utils' as u;
 
-body.no-scroll {
-  overflow: hidden;
-}
-
 .navbar {
   display: flex;
   align-items: center;

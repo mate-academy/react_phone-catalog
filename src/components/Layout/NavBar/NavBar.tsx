@@ -10,11 +10,8 @@ import styles from './NavBar.module.scss';
 import { FavouritesIconWithCounter } from '@/components/UI/IconWithCounter/FavouritesIconWithCounter';
 import { CartIconWithCounter } from '@/components/UI/IconWithCounter/CartIconWithCounter';
 import cn from 'classnames';
-
-type Props = {
-  favouritesCount?: number;
-  cartCount?: number;
-};
+import { useCart } from '@/context/CartContext';
+import { useFavorites } from '@/context/FavoritesContext';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -28,12 +25,11 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     [styles.navbar__link_active]: isActive,
   });
 
-export const NavBar: React.FC<Props> = ({
-  favouritesCount = 0,
-  cartCount = 0,
-}) => {
+export const NavBar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pageRef = useRef<HTMLDivElement>(null);
+  const { favorites } = useFavorites();
+  const { cart } = useCart();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -74,10 +70,10 @@ export const NavBar: React.FC<Props> = ({
 
         <div className={styles.navbar__actions}>
           <FavouritesIconWithCounter
-            favouritesCount={favouritesCount}
+            favouritesCount={favorites.length}
             isMobile={false}
           />
-          <CartIconWithCounter cartCount={cartCount} isMobile={false} />
+          <CartIconWithCounter cartCount={cart.length} isMobile={false} />
         </div>
 
         <button
@@ -125,10 +121,15 @@ export const NavBar: React.FC<Props> = ({
 
         <div className={styles.navbar__mobileActions}>
           <FavouritesIconWithCounter
-            favouritesCount={favouritesCount}
+            favouritesCount={favorites.length}
             isMobile={true}
+            onClick={() => setIsMenuOpen(false)}
           />
-          <CartIconWithCounter cartCount={cartCount} isMobile={true} />
+          <CartIconWithCounter
+            cartCount={cart.length}
+            isMobile={true}
+            onClick={() => setIsMenuOpen(false)}
+          />
         </div>
       </aside>
     </div>

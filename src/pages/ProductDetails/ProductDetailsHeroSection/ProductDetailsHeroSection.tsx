@@ -77,11 +77,12 @@ export const ProductDetailsHeroSection: React.FC = () => {
   const productDetails = getProductDetails(category!, itemId!);
 
   const productFromList = useMemo(() => {
-    if (!itemId || !allProducts) {
+    if (!productDetails) {
       return undefined;
     }
-    return allProducts.find(p => p.itemId === itemId);
-  }, [itemId, allProducts]);
+
+    return allProducts.find(p => p.itemId === productDetails.id);
+  }, [productDetails, allProducts]);
 
   // #region fakeItemId
   const [displayId, setDisplayId] = useState<number | null>(null);
@@ -132,21 +133,12 @@ export const ProductDetailsHeroSection: React.FC = () => {
   };
   //#endregion
 
-  if (!productDetails && !productsLoading) {
+  if (productsLoading || !productDetails || !productFromList) {
     return (
-      <div className={styles.notFoundContainer}>
-        <img
-          src="img/product-not-found.png"
-          alt="Product not found illustration"
-          className={styles.notFoundImage}
-        />
-        <p className={styles.notFoundMessage}>Product not found</p>
+      <div className={styles.centeredLoader}>
+        <Loader />
       </div>
     );
-  }
-
-  if (!productDetails || productsLoading) {
-    return <div>Loading product details...</div>;
   }
 
   return (
@@ -237,7 +229,7 @@ export const ProductDetailsHeroSection: React.FC = () => {
           </div>
 
           <div className={styles.productCardButtonsWrapper}>
-            <ProductCardButtons />
+            <ProductCardButtons product={productFromList} />
           </div>
 
           <ProductCharacteristics

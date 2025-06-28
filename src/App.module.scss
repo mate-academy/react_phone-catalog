@@ -1,10 +1,15 @@
 @use "styles/utils" as u;
 
 .app {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background-color: u.$black;
 }
 
+.mainContent {
+  flex-grow: 1;
+}
 // .mainContent {
 //   padding-top: 48px;
 

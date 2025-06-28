@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
             Github
           </a>
           <a
-            href="https://t.me/mos9uito"
+            href="https://t.me/nineuito"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.footerLink}

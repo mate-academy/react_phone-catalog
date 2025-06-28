@@ -36,6 +36,12 @@
   @include u.hover(background-color, u.$accent-light);
 }
 
+.productCartBtnActive {
+  background-color: u.$surface-2;
+
+  @include u.hover(background-color, u.$icons);
+}
+
 .productCartSpan {
   font-family: Mont, sans-serif;
   font-size: 14px;
@@ -49,6 +55,19 @@
   background-color: u.$surface-2;
 
   @include u.hover(background-color, u.$icons);
+}
+
+.productFavoriteBtnActive {
+  background-color: transparent;
+  border: 1px solid u.$elements;
+
+
+  .productFavoriteIcon path {
+    fill: u.$red;
+  // color: u.$red;
+
+
+  }
 }
 
 .productFavoriteIcon {

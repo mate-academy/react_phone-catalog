@@ -4,3 +4,7 @@
 body {
   background-color: vars.$black;
 }
+
+body.no-scroll {
+  overflow: hidden;
+}

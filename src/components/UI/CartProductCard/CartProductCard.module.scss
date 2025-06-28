@@ -1,0 +1,148 @@
+@use 'styles/utils' as u;
+
+.card {
+  background-color: u.$surface-1;
+  border-radius: 1px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px;
+
+  @include u.on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px;
+
+    gap: 24px;
+  }
+}
+
+.productInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  @include u.on-tablet {
+    gap: 24px;
+  }
+}
+
+.btnRemoveProduct {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  height: 16px;
+
+  border: none;
+
+  background-color: u.$surface-1;
+
+  transition: background-color u.$effect-duration ease;
+}
+
+.btnRemoveProductIcon {
+  path {
+    fill: u.$icons;
+  }
+}
+
+.productImage {
+  width: 80px;
+  height: 80px;
+}
+
+.productName {
+  color: u.$white;
+  font-size: 14px;
+  line-height: 21px;
+
+  width: 128px;
+
+  @include u.on-tablet {
+    flex-grow: 1;
+    width: auto;
+  }
+
+  @include u.on-desktop {
+    width: 336px;
+  }
+}
+
+.quantityPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include u.on-tablet {
+    gap: 24px;
+  }
+}
+
+.counterProduct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnDecrementCounter,
+.btnIncrementCounter {
+  height: 32px;
+  width: 32px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  background-color: u.$surface-2;
+}
+
+.btnDecrementCounter {
+  path {
+    fill: u.$white;
+  }
+}
+
+.productQuantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+
+  color: u.$white;
+}
+
+.btnDecrementCounter:disabled,
+.btnIncrementCounter:disabled {
+  background-color: transparent;
+  border: 1px solid u.$elements;
+
+  path {
+    fill: u.$icons;
+  }
+}
+
+.productPrice {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: u.$white;
+  text-align: right;
+
+  @include u.on-tablet {
+    width: 80px;
+  }
+}

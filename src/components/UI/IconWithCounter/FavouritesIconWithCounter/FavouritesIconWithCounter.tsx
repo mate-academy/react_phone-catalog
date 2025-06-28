@@ -7,6 +7,7 @@ import cn from 'classnames';
 type Props = {
   favouritesCount?: number;
   isMobile?: boolean;
+  onClick?: () => void;
 };
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -17,10 +18,12 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
 export const FavouritesIconWithCounter: React.FC<Props> = ({
   favouritesCount,
   isMobile = false,
+  onClick,
 }) => {
   return (
     <NavLink
       to="/favourites"
+      onClick={onClick}
       className={({ isActive }) =>
         cn(getLinkClass({ isActive }), {
           [styles.mobile]: isMobile,

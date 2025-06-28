@@ -35,9 +35,12 @@ export const ProductCard: React.FC<Props> = ({ product, isShowFullPrice }) => {
 
       <ProductPrice isShowFullPrice={isShowFullPrice} product={product} />
 
-      <ProductCharacteristics product={product} characteristics={characteristics} />
+      <ProductCharacteristics
+        product={product}
+        characteristics={characteristics}
+      />
 
-      <ProductCardButtons />
+      <ProductCardButtons product={product} />
     </div>
   );
 };
