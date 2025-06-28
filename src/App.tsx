@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { HomePage } from './components/HomePage';
 import { ProductPage } from './components/ProductPage';
+import { ProductDetailsPage } from './components/ProductDetailsPage';
 
 export const App = () => (
   <div className="App">
@@ -38,6 +39,7 @@ export const App = () => (
       <Route path="favourites" element={<Favourites />} />
       <Route path="cart" element={<Cart />} />
     </Routes>
+    <ProductDetailsPage />
     <Footer />
   </div>
 );
