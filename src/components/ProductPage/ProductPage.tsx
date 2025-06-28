@@ -16,7 +16,16 @@ const countOptions = [
   { value: 'all', label: 'All' },
 ];
 
-export const ProductPage = () => {
+type CategoryType = {
+  name: 'Mobile phones' | 'Tablets' | 'Accessories';
+  pathTitle: 'Phones' | 'Tablets' | 'Accessories';
+};
+
+type Props = {
+  category: CategoryType;
+};
+
+export const ProductPage = ({ category }: Props) => {
   return (
     <main className={styles.page}>
       <div className={styles.pageContent}>
@@ -25,10 +34,10 @@ export const ProductPage = () => {
             <img src="/img/icons/home.svg" alt="home" />
           </NavLink>
           <span className={styles.pathHome_title}>&gt;</span>
-          <span className={styles.pathHome_title}>Phones</span>
+          <span className={styles.pathHome_title}>{category.pathTitle}</span>
         </div>
         <div className={styles.pageInfo}>
-          <h1 className={styles.pageInfo_title}> Mobile Phones</h1>
+          <h1 className={styles.pageInfo_title}> {category.name}</h1>
           <span className={styles.pageInfo_counter}>xxx models</span>
         </div>
         <div className={styles.pageItems}>

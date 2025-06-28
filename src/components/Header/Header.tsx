@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 
 const navLinks = [
-  { id: 1, title: 'Home', to: '/home' },
+  { id: 1, title: 'Home', to: '/' },
   { id: 2, title: 'Phones', to: '/phones' },
   { id: 3, title: 'Tablets', to: '/tablets' },
   { id: 4, title: 'Accessories', to: '/accessories' },
@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles['logo-and-nav']}>
-        <NavLink to="/home">
+        <NavLink to="/">
           <img
             src="/img/Logo.svg"
             alt="Nice_Gadgets_logo"

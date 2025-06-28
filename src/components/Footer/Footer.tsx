@@ -18,7 +18,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <NavLink to="/home">
+        <NavLink to="/">
           <img src="/img/Logo.svg" alt="Nice_Gadgets_logo" />
         </NavLink>
         <nav>
