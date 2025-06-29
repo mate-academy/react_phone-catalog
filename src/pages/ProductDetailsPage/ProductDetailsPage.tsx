@@ -22,7 +22,7 @@ const getProductDetails = async (
   category: string,
   productId: string,
 ): Promise<ProductDetails> => {
-  const response = await fetch(`/api/${category}.json`);
+  const response = await fetch(`./api/${category}.json`);
 
   if (!response.ok) {
     throw new Error('Network response was not ok');
