@@ -1,0 +1,192 @@
+@import '/src/styles/styles';
+
+.productDetailsPage {
+  padding-top: 24px;
+  padding-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__container {
+    @include container;
+    @include grid-markup;
+  }
+
+  &__breadcrumbs {
+    grid-column: 1/-1;
+    margin-bottom: 24px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__backButton {
+    margin-bottom: 16px;
+  }
+
+  &__heading {
+    @include headline-2;
+
+    grid-column: 1/-1;
+    margin-bottom: 32px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__galery {
+    margin-bottom: 40px;
+    grid-column: 1/-1;
+
+    @include tablet {
+      grid-area: span 5 / span 7;
+      margin-bottom: 0;
+    }
+
+    @include desktop {
+      grid-area: span 5 / span 12;
+    }
+  }
+
+  &__colorSelector {
+    margin-bottom: 24px;
+    position: relative;
+    grid-column: 1/-1;
+
+    @include tablet {
+      grid-column: span 5;
+    }
+
+    @include desktop {
+      grid-column: 14/21;
+    }
+  }
+
+  &__id {
+    @include text-body;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $icons-color;
+  }
+
+  &__capacitySelector {
+    margin-bottom: 32px;
+    grid-column: 1/-1;
+
+    @include tablet {
+      grid-column: span 5;
+    }
+
+      @include desktop {
+      grid-column: 14/21;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    grid-column: 1/-1;
+    margin-bottom: 16px;
+
+    @include tablet {
+      grid-column: span 5;
+    }
+
+    @include desktop {
+      grid-column: 14/21;
+    }
+  }
+
+  &__priceDiscount {
+    @include headline-2;
+  }
+
+  &__priceRegular {
+    @include text-full-price;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    grid-column: 1/-1;
+    margin-bottom: 32px;
+
+    @include tablet {
+      grid-column: span 5;
+    }
+
+    @include desktop {
+      grid-column: 14/21;
+    }
+  }
+
+  &__productInfo {
+    grid-column: 1/-1;
+    margin-bottom: 56px;
+
+    @include tablet {
+      grid-column: span 5;
+    }
+
+    @include desktop {
+      grid-column: 14/21;
+    }
+  }
+
+  &__description {
+    grid-column: 1/-1;
+    margin-bottom: 56px;
+
+    @include desktop {
+      grid-column: span 12;
+      margin-bottom: 0;
+      margin-top: 80px;
+    }
+  }
+
+  &__descriptionHeading {
+    @include headline-3;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements-color;
+
+    margin-bottom: 32px;
+  }
+
+  &__descriptionItemTitle {
+    @include headline-4;
+
+    margin-bottom: 16px;
+  }
+
+  &__descriptionItemText {
+    @include text-body;
+
+    color: $secondary-color;
+    margin-bottom: 32px;
+  }
+
+  &__productSpecs {
+    grid-column: 1/-1;
+  }
+
+  &__productTech {
+    grid-column: 1/-1;
+
+    @include desktop {
+      grid-column: 14/-1;
+      margin-top: 80px;
+    }
+  }
+
+  &__productsSlider {
+    grid-column: 1/-1;
+  }
+}

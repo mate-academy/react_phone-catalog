@@ -1,0 +1,28 @@
+@import '/src/styles/styles';
+
+.techSpecs {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    @include text-body;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+  }
+
+  &__label {
+    color: $secondary-color;
+  }
+
+  &__value {
+    text-align: end;
+    max-height: 21px;
+    overflow: hidden;
+  }
+}

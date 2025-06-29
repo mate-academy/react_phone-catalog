@@ -1,0 +1,63 @@
+@import '/src/styles/styles';
+
+.shopByCategory {
+  padding-top: 56px;
+
+  @include container;
+
+  &__heading {
+    @include headline-2;
+
+    margin-bottom: 24px;
+  }
+
+  &__container{
+    @include grid-markup;
+
+    row-gap: 32px;
+  }
+
+  &__banner {
+    grid-column: 1/-1;
+
+    @include tablet {
+      grid-column: span 4;
+    }
+
+    @include desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__bannerImageWrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 24px;
+    overflow: hidden;
+    display: block;
+    border-radius: 8px;
+
+    @include hover(transform, translate(0,0) scale(0.9), '.shopByCategory__bannerImage');
+  }
+
+  &__bannerImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: translate(15%, 20%) scale(1.23);
+    transition: all $effectDuration;
+  }
+
+  &__bannerTitle {
+    @include headline-4;
+
+    margin-bottom: 4px;
+    text-decoration: none;
+  }
+
+  &__bannerCount {
+    @include text-body;
+
+    color: $secondary-color;
+  }
+}

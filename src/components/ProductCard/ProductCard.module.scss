@@ -1,0 +1,101 @@
+@import '/src/styles/styles';
+
+.productCard {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid $elements-color;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  box-sizing: border-box;
+
+  @include small-desktop {
+    min-width: 229px;
+  }
+
+  &__imageNameLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    @include hover(transform, scale(1.1), '.productCard__image');
+  }
+
+  &__imageWrapper {
+    width: 148px;
+    height: 129px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+    user-select: none;
+
+    @include tablet {
+      width: 173px;
+      height: 202px;
+    }
+
+     @include desktop {
+      width: 208px;
+      height: 196px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform $effectDuration;
+  }
+
+  &__name {
+    @include text-body;
+
+    margin-bottom: 10px;
+    max-height: 42px;
+    overflow: hidden;
+
+    @include tablet {
+      min-height: 42px;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 10px;
+    position: relative;
+
+    &::after {
+      content: '';
+      background-color: $elements-color;
+      width: 100%;
+      height: 1px;
+      display: block;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  &__price {
+    @include headline-3;
+  }
+
+  &__fullPrice {
+    @include text-full-price
+  }
+
+  &__techInfo {
+    margin-block: 18px;
+  }
+
+  &__buttonsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+}
+

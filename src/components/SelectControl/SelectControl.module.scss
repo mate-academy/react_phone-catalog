@@ -1,0 +1,104 @@
+@import '/src/styles/styles';
+
+.selectControl {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+
+  &__label {
+    @include text-small;
+
+    display: block;
+    color: $secondary-color;
+  }
+
+  &__selectBox {
+    @include text-buttons;
+
+    position: relative;
+    border: 1px solid $icons-color;
+    border-radius: 8px;
+    padding: 10px 30px 10px 12px;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    background-color: $hover-bg-color;
+
+    @include hover (border, 1px solid $secondary-color);
+
+    &--open{
+      border: 1px solid $primary-color;
+
+      @include hover (border, 1px solid $primary-color);
+    }
+  }
+
+  &__selectedLabel {
+    overflow: hidden;
+    display: flex;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    background-image: url("../src/images/icons/arrow-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform $effectDuration;
+    pointer-events: none;
+    transform: translateY(-50%) rotate(0deg);
+
+    &--open {
+      transform: translateY(-50%) rotate(-180deg);
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: #fff;
+    border: 1px solid $elements-color;
+    border-radius: 8px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all $effectDuration ease;
+    pointer-events: none;
+
+    &--open {
+      max-height: 200px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &--closed {
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__option {
+    padding: 10px 12px;
+    color: $secondary-color;
+    cursor: pointer;
+
+    @include hover (background-color, $hover-bg-color);
+    @include hover (color, $primary-color);
+  }
+
+  &__selected {
+    color: $primary-color;
+  }
+}
+
+
+
+

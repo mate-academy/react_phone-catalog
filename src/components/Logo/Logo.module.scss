@@ -1,0 +1,23 @@
+@import '/src/styles/styles';
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  &__img {
+    height: 22px;
+    width: 64px;
+
+    @include desktop {
+      height: 28px;
+      width: 80px;
+    }
+
+    &--footer {
+      height: 32px;
+      width: 89px;
+    }
+  }
+}
+
