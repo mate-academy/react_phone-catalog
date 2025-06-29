@@ -15,16 +15,39 @@
   height: 64px;
   box-sizing: border-box;
   border-bottom: 2px solid $color-elements;
+
+  @media (max-width: $size-tablet) {
+    height: 48px;
+  }
 }
 
 .logo-and-nav {
   display: flex;
   align-items: center;
   gap: 24px;
+
+  @media (max-width: $size-tablet) {
+    gap: 16px;
+  }
 }
 
 .header__logo {
-  padding: 18px 24px;
+  padding-inline: 24px;
+  box-sizing: border-box;
+
+  img {
+    height: 28px;
+    width: 80px;
+  }
+
+  @media (max-width: $size-tablet) {
+    padding-inline: 16px;
+
+    img {
+      height: 22px;
+      width: 64px;
+    }
+  }
 }
 
 .nav__list {
@@ -33,6 +56,10 @@
   list-style: none;
   display: flex;
   gap: 64px;
+
+  @media (max-width: $size-tablet) {
+    gap: 32px;
+  }
 }
 
 .nav__list-link {
@@ -67,7 +94,6 @@
 
 .icon-links {
   display: flex;
-  align-items: center;
 }
 
 .icon-link {
@@ -79,6 +105,11 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+
+  @media (max-width: $size-tablet) {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 .icon {

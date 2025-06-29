@@ -12,12 +12,8 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles['logo-and-nav']}>
-        <NavLink to="/">
-          <img
-            src="/img/Logo.svg"
-            alt="Nice_Gadgets_logo"
-            className={styles.header__logo}
-          />
+        <NavLink className={styles.header__logo} to="/">
+          <img src="/img/Logo.svg" alt="Nice_Gadgets_logo" />
         </NavLink>
         <nav className={styles.nav}>
           <ul className={styles.nav__list}>

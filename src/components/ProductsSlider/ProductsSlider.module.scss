@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 
 .sliderContainer {
-  grid-column: 2/-2;
+  grid-column: 1/-1;
   margin-bottom: 48px;
 
   & :global {
@@ -12,12 +12,17 @@
     li.slick-active > div {
       background-color: $color-white;
     }
+
+    div.slick-slide.slick-active.slick-current > div {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 
 .customSlide {
-  width: 1040px;
-  height: 400px;
+  width: calc(100% - 96px);
+  aspect-ratio: 2.56 / 1;
   object-fit: contain;
 }
 

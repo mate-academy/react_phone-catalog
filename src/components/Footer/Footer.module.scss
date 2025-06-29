@@ -4,24 +4,26 @@
   background-color: $color-black;
   box-sizing: border-box;
   border-top: 1px solid $color-elements;
-  padding: 16px 152px;
+  padding: 32px;
   display: flex;
   justify-content: center;
 }
 
 .footerContent {
-  background-color: $color-black;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 1136px;
+
+  @media (max-width: $size-tablet) {
+    width: 100%;
+  }
 }
 
 .navList {
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 378px;
   display: flex;
   justify-content: space-between;
 }
@@ -46,6 +48,8 @@
   display: flex;
   gap: 16px;
   align-items: center;
+  width: 33%;
+  justify-content: flex-end;
 }
 
 .toTopTitle {

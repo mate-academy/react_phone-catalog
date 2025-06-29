@@ -18,10 +18,10 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <NavLink to="/">
+        <NavLink style={{ width: '33%' }} to="/">
           <img src="/img/Logo.svg" alt="Nice_Gadgets_logo" />
         </NavLink>
-        <nav>
+        <nav style={{ width: '33%' }}>
           <ul className={styles.navList}>
             {navLinks.map(link => (
               <li key={link.id}>

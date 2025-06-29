@@ -4,10 +4,14 @@
   display: grid;
   row-gap: 80px;
   background-color: $color-black;
-  padding-top: 56px;
-  padding-bottom: 80px;
+  padding-block: 56px 80px;
   color: $color-white;
   justify-items: center;
+
+  @media (max-width: $size-tablet) {
+    padding: 32px 24px 64px;
+    row-gap: 64px;
+  }
 }
 
 .pageContent {
@@ -15,6 +19,10 @@
   grid-template-columns: repeat(24, 32px);
   gap: 16px;
   background-color: $color-black;
+
+  @media (max-width: $size-tablet) {
+    grid-template-columns: repeat(12, 1fr);
+  }
 }
 
 .pageTitle {
@@ -25,6 +33,10 @@
   letter-spacing: -1%;
   margin: 0;
   margin-bottom: 40px;
+
+  @media (max-width: $size-tablet) {
+    margin-bottom: 16px;
+  }
 }
 
 .sectionTitle {
