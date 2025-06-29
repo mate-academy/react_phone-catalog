@@ -3,11 +3,11 @@ export const icons: Record<string, Icon> = {
   logo: {
     light: {
       title: 'Logo icon',
-      path: '../../src/images/logo.svg',
+      path: '/icons/logo.svg',
     },
     dark: {
       title: 'Logo dark icon',
-      path: '../../src/images/logo_dark.svg',
+      path: '/icons/logo_dark.svg',
     },
   },
   close: {
