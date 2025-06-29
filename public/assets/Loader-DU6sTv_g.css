@@ -1,0 +1,1 @@
+.loader{position:absolute;top:50%;left:50%;transform:translate(-75px,-75px)}.loader__content{border-radius:50%;width:2em;height:2em;margin:1em auto;border:.3em solid #ddd;border-left-color:#000;animation:load8 1.2s infinite linear}.loader__image{width:150px;height:150px}@keyframes load8{0%{transform:rotate(0)}to{transform:rotate(360deg)}}

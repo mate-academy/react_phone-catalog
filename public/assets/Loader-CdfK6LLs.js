@@ -1,0 +1,1 @@
+import{r as e,G as t,j as s,I as a,i as r}from"./index-DZu0jUOh.js";const c=()=>{const{theme:o}=e.useContext(t);return s.jsx(s.Fragment,{children:s.jsxs("div",{className:"loader",children:[s.jsx(a,{icon:r.logo[o]}),s.jsx("div",{className:"loader__content"})]})})};export{c as L};
