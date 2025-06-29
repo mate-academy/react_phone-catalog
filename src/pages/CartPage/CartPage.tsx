@@ -48,7 +48,7 @@ export const CartPage: React.FC = () => {
             <h2 className={styles.cartPage__messageText}>Your cart is empty</h2>
             <img
               className={styles.cartPage__messageImage}
-              src="../src/images/cart-is-empty.png"
+              src="../../images/cart-is-empty.png"
               alt="Your cart is empty"
             />
           </div>
