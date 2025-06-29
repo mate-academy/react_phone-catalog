@@ -44,7 +44,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     dispatch({ type: 'SET_PRODUCTS_LOADING' });
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to fetch');
