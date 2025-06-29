@@ -1,7 +1,7 @@
 @import '/src/styles/styles';
 
 .productsSlider {
-  padding-top: 56px;
+  padding-block: 56px;
 
   @include tablet {
     padding-top: 64px;

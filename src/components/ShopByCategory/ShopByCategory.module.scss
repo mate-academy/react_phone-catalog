@@ -1,8 +1,6 @@
 @import '/src/styles/styles';
 
 .shopByCategory {
-  padding-top: 56px;
-
   @include container;
 
   &__heading {

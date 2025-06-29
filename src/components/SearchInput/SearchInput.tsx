@@ -88,7 +88,6 @@ export const SearchInput = forwardRef<SearchInputRef, Props>(
       setLocalQuery('');
       const newSearch = getSearchWith(searchParams, {
         query: null,
-        page: null,
       });
 
       setSearchParams(newSearch, { replace: true });

@@ -52,7 +52,7 @@ export const CategoryPage = () => {
     perPage: perPageParam === 'all' ? 'all' : Number(perPageParam),
   });
 
-  const showLoader = isGlobalLoading || isPageLoading;
+  const showLoader = isGlobalLoading || isPageLoading || !products.length;
 
   const isCategoryValid = category
     ? VALID_CATEGORIES.includes(category)
