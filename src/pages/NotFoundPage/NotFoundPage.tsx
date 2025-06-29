@@ -3,6 +3,8 @@ import styles from './NotFoundPage.module.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import notFoundPage from '../../images/page-not-found.png';
+
 export const NotFoundPage: React.FC = () => {
   return (
     <div className={styles.notFoundPage}>
@@ -12,7 +14,7 @@ export const NotFoundPage: React.FC = () => {
       </Link>
       <img
         className={styles.notFoundPage__image}
-        src="../../images/page-not-found.png"
+        src={notFoundPage}
         alt="page-not-found"
       />
     </div>

@@ -8,6 +8,7 @@ import {
   useUserActions,
   useUserActionsDispatch,
 } from '../../context/useUserActions';
+import cartIsEmpty from '../../images/cart-is-empty.png';
 
 export const CartPage: React.FC = () => {
   const { cart } = useUserActions();
@@ -48,7 +49,7 @@ export const CartPage: React.FC = () => {
             <h2 className={styles.cartPage__messageText}>Your cart is empty</h2>
             <img
               className={styles.cartPage__messageImage}
-              src="../../images/cart-is-empty.png"
+              src={cartIsEmpty}
               alt="Your cart is empty"
             />
           </div>
