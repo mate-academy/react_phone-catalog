@@ -1,1 +1,0 @@
-import{r as a,G as n,d as c,j as t,I as i,i as r}from"./index-DZu0jUOh.js";const x=()=>{const{theme:e}=a.useContext(n),s=c(),o=a.useCallback(()=>{s(-1)},[s]);return t.jsxs("div",{className:"button",onClick:o,children:[t.jsx(i,{icon:r.arrow_left[e]}),t.jsx("div",{className:"button-title",children:"Back"})]})};export{x as B};

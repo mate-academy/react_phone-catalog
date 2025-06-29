@@ -41,7 +41,7 @@ export const ShopByCategory: React.FC = () => {
           <Link to="/phones" className="shopByCategory__link">
             <section className="shopByCategory__block">
               <img
-                src="../../../public/img/category-phones.webp"
+                src="./img/category-phones.webp"
                 alt="Category Phones"
                 className="shopByCategory__block-image"
               />
@@ -55,7 +55,7 @@ export const ShopByCategory: React.FC = () => {
           <Link to="/tablets" className="shopByCategory__link">
             <section className="shopByCategory__block">
               <img
-                src="../../../public/img/category-tablets.webp"
+                src="./img/category-tablets.webp"
                 alt="Category Tablets"
                 className="shopByCategory__block-image"
               />
@@ -69,7 +69,7 @@ export const ShopByCategory: React.FC = () => {
           <Link to="/accessories" className="shopByCategory__link">
             <section className="shopByCategory__block">
               <img
-                src="../../../public/img/category-accessories.webp"
+                src="./img/category-accessories.webp"
                 alt="Category Accessories"
                 className="shopByCategory__block-image"
               />

@@ -4,182 +4,182 @@ export const icons: Record<string, Icon> = {
   logo: {
     light: {
       title: 'Logo icon',
-      path: '/icons/logo.svg',
+      path: './icons/logo.svg',
     },
     dark: {
       title: 'Logo dark icon',
-      path: '/icons/logo_dark.svg',
+      path: './icons/logo_dark.svg',
     },
   },
   close: {
     light: {
       title: 'Close icon',
-      path: '/icons/Close.svg',
+      path: './icons/Close.svg',
     },
     dark: {
       title: 'Close dark icon',
-      path: '/icons/close_dark.svg',
+      path: './icons/close_dark.svg',
     },
   },
   close__disabled: {
     light: {
       title: 'Close icon',
-      path: '/icons/close__disabled.svg',
+      path: './icons/close__disabled.svg',
     },
     dark: {
       title: 'Close dark icon',
-      path: '/icons/close__disabled.svg',
+      path: './icons/close__disabled.svg',
     },
   },
   menu: {
     light: {
       title: 'Menu icon',
-      path: '/icons/Menu.svg',
+      path: './icons/Menu.svg',
     },
     dark: {
       title: 'Menu dark icon',
-      path: '/icons/menu_dark.svg',
+      path: './icons/menu_dark.svg',
     },
   },
   search: {
     light: {
       title: 'Search icon',
-      path: '/icons/search.svg',
+      path: './icons/search.svg',
     },
     dark: {
       title: 'Search dark icon',
-      path: '/icons/search_dark.svg',
+      path: './icons/search_dark.svg',
     },
   },
   favorites: {
     light: {
       title: 'Favorites icon',
-      path: '/icons/favorites.svg',
+      path: './icons/favorites.svg',
     },
     dark: {
       title: 'Favorites dark icon',
-      path: '/icons/favorites_dark.svg',
+      path: './icons/favorites_dark.svg',
     },
   },
   favorites__filled: {
     light: {
       title: 'Favorites filled icon',
-      path: '/icons/favorites__filled.svg',
+      path: './icons/favorites__filled.svg',
     },
     dark: {
       title: 'Favorites filled dark icon',
-      path: '/icons/favorites__filled.svg',
+      path: './icons/favorites__filled.svg',
     },
   },
   shopping_cart: {
     light: {
       title: 'Shopping cart icon',
-      path: '/icons/shopping_cart.svg',
+      path: './icons/shopping_cart.svg',
     },
     dark: {
       title: 'Shopping cart dark icon',
-      path: '/icons/shopping_cart_dark.svg',
+      path: './icons/shopping_cart_dark.svg',
     },
   },
   arrow_left: {
     light: {
       title: 'Arrow left icon',
-      path: '/icons/arrow_left.svg',
+      path: './icons/arrow_left.svg',
     },
     dark: {
       title: 'Arrow left dark icon',
-      path: '/icons/arrow_left_dark.svg',
+      path: './icons/arrow_left_dark.svg',
     },
   },
   arrow_left__disabled: {
     light: {
       title: 'Arrow left disabled icon',
-      path: '/icons/arrow_left__disabled.svg',
+      path: './icons/arrow_left__disabled.svg',
     },
     dark: {
       title: 'Arrow left disabled dark icon',
-      path: '/icons/arrow_left_dark__disabled.svg',
+      path: './icons/arrow_left_dark__disabled.svg',
     },
   },
   arrow_right: {
     light: {
       title: 'Arrow right icon',
-      path: '/icons/arrow_right.svg',
+      path: './icons/arrow_right.svg',
     },
     dark: {
       title: 'Arrow right dark icon',
-      path: '/icons/arrow_right_dark.svg',
+      path: './icons/arrow_right_dark.svg',
     },
   },
   arrow_right__disabled: {
     light: {
       title: 'Arrow right disabled icon',
-      path: '/icons/arrow_right__disabled.svg',
+      path: './icons/arrow_right__disabled.svg',
     },
     dark: {
       title: 'Arrow right disabled dark icon',
-      path: '/icons/arrow_right_dark__disabled.svg',
+      path: './icons/arrow_right_dark__disabled.svg',
     },
   },
   arrow_down: {
     light: {
       title: 'Arrow down icon',
-      path: '/icons/arrow_down_dark.svg',
+      path: './icons/arrow_down_dark.svg',
     },
     dark: {
       title: 'Arrow down dark icon',
-      path: '/icons/arrow_down_dark.svg',
+      path: './icons/arrow_down_dark.svg',
     },
   },
   home: {
     light: {
       title: 'Home icon',
-      path: '/icons/Home.svg',
+      path: './icons/Home.svg',
     },
     dark: {
       title: 'Home dark icon',
-      path: '/icons/home_dark.svg',
+      path: './icons/home_dark.svg',
     },
   },
 
   plus: {
     light: {
       title: 'Plus icon',
-      path: '/icons/Plus.svg',
+      path: './icons/Plus.svg',
     },
     dark: {
       title: 'Plus dark icon',
-      path: '/icons/Union.svg',
+      path: './icons/Union.svg',
     },
   },
   minus: {
     light: {
       title: 'Minus icon',
-      path: '/icons/Minus.svg',
+      path: './icons/Minus.svg',
     },
     dark: {
       title: 'Minus dark icon',
-      path: '/icons/minus_dark.svg',
+      path: './icons/minus_dark.svg',
     },
   },
   minus__disabled: {
     light: {
       title: 'Minus icon',
-      path: '/icons/minus__disabled.svg',
+      path: './icons/minus__disabled.svg',
     },
     dark: {
       title: 'Minus dark icon',
-      path: '/icons/MinusDarkDisabled.svg',
+      path: './icons/MinusDarkDisabled.svg',
     },
   },
   ok: {
     light: {
       title: 'ok',
-      path: '/icons/image 15.svg',
+      path: './icons/image 15.svg',
     },
     dark: {
       title: 'ok',
-      path: '/icons/image 15.svg',
+      path: './icons/image 15.svg',
     },
   },
 };

@@ -1,1 +1,0 @@
-import{j as o,L as e}from"./index-DZu0jUOh.js";const s=()=>o.jsxs("div",{className:"container",children:[o.jsx("p",{children:"Page not found"}),o.jsx(e,{to:"/",children:"Go to HomePage"})]});export{s as NotFoundPage};
