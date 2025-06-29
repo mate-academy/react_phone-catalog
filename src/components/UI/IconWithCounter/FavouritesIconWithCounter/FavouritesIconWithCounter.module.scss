@@ -12,7 +12,7 @@
 
       width: 48px;
       height: 48px;
-      border-left: 1px solid u.$elements;
+      border-left: 1px solid var(--elements);
     }
 
     @include u.on-desktop {
@@ -20,9 +20,13 @@
       height: 64px;
     }
 
-    @include u.hover(background-color, color.mix(u.$icons, u.$black, 20%));
+    @include u.hover(
+      background-color,
+      var(--elements)
+    );
 
-    @include u.hover-path-fill(u.$white);
+
+    // @include u.hover-path-fill(var(--text-primary));
 
     &_active {
       position: relative;
@@ -37,7 +41,7 @@
 
         width: 100%;
         height: 100%;
-        border-bottom: 3px solid u.$white;
+        border-bottom: 3px solid var(--text-primary);
 
         transition: transform 0.25s ease-out;
       }
@@ -53,7 +57,7 @@
       width: 100%;
       height: 100%;
 
-      @include u.hover(color, u.$white);
+      @include u.hover(color, var(--text-primary));
 
       &::after {
         content: '';
@@ -66,7 +70,7 @@
 
         width: 100%;
         height: 100%;
-        border-bottom: 3px solid u.$white;
+        border-bottom: 3px solid var(--text-primary);
 
         transition: transform 0.25s ease-out;
       }

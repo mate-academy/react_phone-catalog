@@ -18,7 +18,7 @@
 
   font-size: 32px;
   line-height: 41px;
-  color: u.$white;
+  color: var(--text-primary);
   letter-spacing: -1%;
 }
 
@@ -27,7 +27,7 @@
 
   font-size: 14px;
   line-height: 21px;
-  color: u.$secondary;
+  color: var(--text-secondary);
   letter-spacing: 0%;
 }
 
@@ -48,7 +48,7 @@
   font-size: 12px;
   font-weight: 700;
   line-height: 100%;
-  color: u.$secondary;
+  color: var(--text-secondary);
 }
 
 .selectWrapper {
@@ -74,9 +74,9 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
-  color: u.$white;
+  color: var(--text-primary);
 
-  background-color: u.$surface-2;
+  background-color: var(--surface-2);
 
   transition:
     border-color 0.3s ease,
@@ -84,11 +84,11 @@
     box-shadow 0.3s ease;
 
   &:hover {
-    background-color: u.$surface-2;
+    background-color: var(--surface-2);
   }
 
   &:focus-within {
-    border: 1px solid u.$accent;
+    border: 1px solid var(--accent);
   }
 }
 
@@ -99,7 +99,7 @@
   transition: transform 0.3s ease;
 
   path {
-    fill: u.$secondary;
+    fill: var(--text-secondary);
   }
 }
 
@@ -119,12 +119,12 @@
   max-height: 144px;
   margin-top: 4px;
   padding: 8px 0;
-  border: 1px solid u.$elements;
+  border: 1px solid var(--elements);
   border-radius: 4px;
 
   list-style: none;
 
-  background-color: u.$black;
+  background-color: var(--background);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -137,19 +137,19 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  color: u.$secondary;
+  color: var(--text-secondary);
 
   transition: background-color 0.2s ease;
 
   &:hover {
-    color: u.$white;
-    background-color: u.$surface-2;
+    color: var(--text-primary);
+    background-color: var(--surface-2);
   }
 }
 
 .dropdownItemSelected {
   font-weight: 700;
-  background-color: u.$surface-1;
+  background-color: var(--surface-1);
 }
 
 .productGridContainer {

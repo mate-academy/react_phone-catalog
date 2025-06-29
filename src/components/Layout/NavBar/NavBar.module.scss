@@ -7,14 +7,9 @@
 
   box-sizing: border-box;
 
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // z-index: 1000;
-
   width: 100%;
   height: 48px;
-  border-bottom: 1px solid u.$elements;
+  border-bottom: 1px solid var(--elements);
 
   @include u.on-desktop {
     height: 64px;
@@ -94,12 +89,12 @@
     height: 48px;
 
     font-size: 12px;
-    color: u.$secondary;
+    color: var(--text-secondary);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 4%;
 
-    @include u.hover(color, u.$secondary);
+    @include u.hover(color, var(--text-secondary));
 
     &::after {
       content: '';
@@ -112,7 +107,7 @@
 
       width: 100%;
       height: 100%;
-      border-bottom: 3px solid u.$secondary;
+      border-bottom: 3px solid var(--text-secondary);
 
       transition: transform 0.25s ease-out;
     }
@@ -123,12 +118,12 @@
     }
 
     &_active {
-      color: u.$white;
+      color: var(--text-primary);
 
       &::after {
         transform-origin: bottom left;
         transform: scaleX(1);
-        border-bottom: 3px solid u.$white;
+        border-bottom: 3px solid var(--text-primary);
       }
     }
 
@@ -138,9 +133,25 @@
   }
 
   &__actions {
+    display: none;
+    // gap намеренно не задан, т.к. SearchComponent имеет свои отступы
+
+    @include u.on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__wrapperMobileActions,
+  &__wrapperMobileActionsAside {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
+    @include u.on-tablet {
+      display: none;
+    }
   }
 
   &__icon {
@@ -158,7 +169,7 @@
     width: 48px;
     height: 48px;
     border: none;
-    border-left: 1px solid u.$elements;
+    border-left: 1px solid var(--elements);
 
     background: none;
 
@@ -181,7 +192,7 @@
     height: 100vh;
 
     opacity: 0;
-    background: u.$black;
+    background: var(--background);
 
     transition: all 0.3s ease-in-out;
 
@@ -202,7 +213,7 @@
     justify-content: space-between;
 
     padding-left: 16px;
-    border-bottom: 1px solid u.$elements;
+    border-bottom: 1px solid var(--elements);
 
     @include u.on-tablet {
       padding-left: 24px;
@@ -219,7 +230,7 @@
     width: 48px;
     height: 48px;
     border: none;
-    border-left: 1px solid u.$elements;
+    border-left: 1px solid var(--elements);
 
     background: none;
   }
@@ -249,12 +260,12 @@
     height: 48px;
 
     font-size: 12px;
-    color: u.$secondary;
+    color: var(--text-secondary);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 4%;
 
-    @include u.hover(color, u.$white);
+    @include u.hover(color, var(--text-primary));
 
     &::after {
       content: '';
@@ -267,7 +278,7 @@
 
       width: 100%;
       height: 100%;
-      border-bottom: 3px solid u.$white;
+      border-bottom: 3px solid var(--text-primary);
 
       transition: transform 0.25s ease-out;
     }
@@ -290,10 +301,34 @@
 
     width: 100%;
     height: 64px;
-    border-top: 1px solid u.$elements;
+    border-top: 1px solid var(--elements);
 
     @include u.on-tablet {
       display: none;
+    }
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  transition: width 0.3s ease, opacity 0.3s ease, margin-left 0.3s ease;
+}
+
+.navbar__actions.searchActive {
+  @include u.on-tablet {
+    .iconWrapper {
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+  }
+
+  @media (min-width: 850px) {
+    .iconWrapper {
+      width:100%;
+      opacity: 1;
+      overflow: visible;
     }
   }
 }

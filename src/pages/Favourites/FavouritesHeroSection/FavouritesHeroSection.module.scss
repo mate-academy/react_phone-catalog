@@ -25,7 +25,7 @@
 
   font-size: 32px;
   line-height: 41px;
-  color: u.$white;
+  color: var(--text-primary);
   letter-spacing: -1%;
 
   @include u.on-tablet {
@@ -40,7 +40,7 @@
 
   font-size: 14px;
   line-height: 21px;
-  color: u.$secondary;
+  color: var(--text-secondary);
   letter-spacing: 0%;
 
   @include u.on-tablet {
@@ -88,7 +88,7 @@
 }
 
 .noItemsMessage {
-  color: u.$white;
+  color: var(--text-primary);
 }
 
 .favouritesNotFoundImg {

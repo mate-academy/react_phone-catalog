@@ -22,7 +22,6 @@
   gap: 8px;
   align-items: center;
   list-style: none;
-
 }
 
 .breadcrumbStep {
@@ -34,7 +33,7 @@
 
 .arrowIcon {
   path {
-    fill: u.$icons;
+    fill: var(--icons);
   }
 }
 
@@ -47,7 +46,7 @@
   font-size: 12px;
   font-weight: 700;
   line-height: 100%;
-  color: u.$secondary;
+  color: var(--text-secondary);
 }
 
 .prev {
@@ -59,8 +58,8 @@
   font-size: 12px;
   font-weight: 700;
   line-height: 100%;
-  color: u.$white;
+  color: var(--text-primary);
   text-decoration: none;
 
-  @include u.hover(color, u.$accent);
+  @include u.hover(color, var(--accent));
 }

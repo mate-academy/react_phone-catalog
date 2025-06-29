@@ -17,7 +17,7 @@
 
   font-size: 22px;
   line-height: 140%;
-  color: u.$white;
+  color: var(--text-primary);
   letter-spacing: 0%;
 
   @include u.on-tablet {
@@ -127,11 +127,11 @@
 .itemDescription {
   font-size: 20px;
   font-weight: 700;
-  color: u.$white;
+  color: var(--text-primary);
 }
 
 .itemCounterModels {
   font-size: 14px;
   line-height: 21px;
-  color: u.$secondary;
+  color: var(--text-secondary);
 }

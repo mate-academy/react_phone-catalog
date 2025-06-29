@@ -2,9 +2,9 @@
 
 .articleName {
   padding-bottom: 15px;
-  border-bottom: 1px solid u.$elements;
+  border-bottom: 1px solid var(--elements);
 
-  color: u.$white;
+  color: var(--text-primary);
   font-weight: 700;
   font-size: 20px;
 

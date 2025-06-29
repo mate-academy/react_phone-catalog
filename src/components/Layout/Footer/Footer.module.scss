@@ -1,7 +1,7 @@
 @use 'styles/utils' as u;
 
 .footerContainer {
-  border-top: 1px solid u.$elements;
+  border-top: 1px solid var(--elements);
 }
 
 .footer {
@@ -64,12 +64,12 @@
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
-  color: u.$white;
+  color: var(--text-primary);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 4%;
 
-  @include u.hover(color, u.$secondary);
+  @include u.hover(color, var(--text-secondary));
 }
 
 .backToTop {
@@ -81,11 +81,11 @@
 
   &:hover {
     .textBackToTop {
-      color: u.$icons;
+      color: var(--icons);
     }
 
     .btnBackToTop {
-      background-color: u.$icons;
+      background-color: var(--icons);
     }
   }
 }
@@ -93,7 +93,7 @@
 .textBackToTop {
   font-size: 12px;
   font-weight: 700;
-  color: u.$secondary;
+  color: var(--text-secondary);
 
   transition: color u.$effect-duration ease;
 }
@@ -108,7 +108,7 @@
   padding: 8px;
   border: none;
 
-  background-color: u.$surface-2;
+  background-color: var(--surface-2);
 
   transition: background-color u.$effect-duration ease;
 }

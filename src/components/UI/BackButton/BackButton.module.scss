@@ -28,12 +28,12 @@
   &:hover {
     .arrowBackButton {
       path {
-        fill: u.$accent;
+        fill: var(--accent);
       }
     }
 
     .textBackButton {
-      color: u.$accent;
+      color: var(--accent);
     }
   }
 
@@ -55,7 +55,7 @@
 .textBackButton {
   display: flex;
   align-items: center;
-  color: u.$white;
+  color: var(--text-primary);
   font-weight: 700;
   font-size: 12px;
 }

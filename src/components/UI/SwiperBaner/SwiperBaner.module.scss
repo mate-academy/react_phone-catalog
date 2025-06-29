@@ -55,7 +55,7 @@
 
   object-fit: cover;
   object-position: center;
-  background-color: u.$black;
+  background-color: var(--background);
 
   @include u.on-tablet {
     width: 490px;
@@ -80,7 +80,7 @@
   border: none;
   border-radius: 3px;
 
-  background: u.$surface-2;
+  background: var(--surface-2);
 
   @include u.on-tablet {
     top: 50%;
@@ -107,13 +107,13 @@
 
 .customNavPrev:hover,
 .customNavNext:hover {
-  background: u.$icons;
+  background: var(--icons);
 }
 
 .arrowLeft,
 .arrowRight {
   path {
-    fill: u.$white;
+    fill: var(--text-primary);
   }
 }
 
@@ -127,10 +127,10 @@
   margin: 0 7px;
 
   opacity: 1;
-  background-color: u.$elements;
+  background-color: var(--elements);
 }
 
 .customBulletActive {
   transform: scale(1.2);
-  background-color: u.$white;
+  background-color: var(--text-primary);
 }

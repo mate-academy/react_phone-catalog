@@ -15,12 +15,18 @@
     height: 2em;
     margin: 1em auto;
     border: 0.35em solid transparent;
-    border-top-color: u.$accent;
-    border-right-color: rgba(u.$accent, 0.7);
+    border-top-color: var(--accent);
+    border-right-color: rgba(var(--accent), 0.7);
     border-radius: 50%;
 
-    background: linear-gradient(45deg, rgba(u.$white, 0.1), rgba(u.$accent, 0.2));
-    box-shadow: 0 0 15px rgba(u.$accent, 0.3), inset 0 0 10px rgba(u.$white, 0.15);
+    background: linear-gradient(
+      45deg,
+      rgba(var(--text-primary), 0.1),
+      rgba(var(--accent), 0.2)
+    );
+    box-shadow:
+      0 0 15px rgba(var(--accent), 0.3),
+      inset 0 0 10px rgba(var(--text-primary), 0.15);
 
     animation: spin-pulse 1.4s infinite ease-in-out;
 
@@ -32,7 +38,11 @@
 
       border-radius: 50%;
 
-      background: radial-gradient(circle, rgba(u.$accent, 0.4), transparent);
+      background: radial-gradient(
+        circle,
+        rgba(var(--accent), 0.4),
+        transparent
+      );
 
       animation: pulse 1.4s infinite ease-in-out;
     }
@@ -49,7 +59,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(0.8);
     opacity: 0.6;
   }

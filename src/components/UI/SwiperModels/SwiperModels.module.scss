@@ -20,7 +20,7 @@
 
   font-size: 22px;
   line-height: 140%;
-  color: u.$white;
+  color: var(--text-primary);
   letter-spacing: 0%;
 
   @media (min-width: 400px) {
@@ -85,7 +85,7 @@
 .arrowLeft,
 .arrowRight {
   path {
-    fill: u.$white;
+    fill: var(--text-primary);
   }
 }
 
@@ -101,16 +101,16 @@
   border: none;
   border-radius: 2px;
 
-  background: u.$surface-2;
+  background: var(--surface-2);
 
   &:disabled {
     cursor: not-allowed;
-    border: 1px solid u.$elements;
+    border: 1px solid var(--elements);
     opacity: 0.5;
     background-color: transparent;
 
     path {
-      fill: u.$icons;
+      fill: var(--icons);
     }
   }
 }
@@ -118,11 +118,11 @@
 .customNavPrev,
 .customNavNext {
   &:hover:not(:disabled) {
-    @include u.hover(background-color, u.$icons);
+    @include u.hover(background-color, var(--icons));
 
-    .arrowLeft,
-    .arrowRight {
-      @include u.hover-path-fill(u.$white);
-    }
+    // .arrowLeft,
+    // .arrowRight {
+    //   @include u.hover-path-fill(var(--text-primary));
+    // }
   }
 }

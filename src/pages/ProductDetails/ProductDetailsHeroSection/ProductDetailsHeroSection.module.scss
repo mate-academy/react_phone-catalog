@@ -8,8 +8,8 @@
   align-items: center;
   min-height: 50vh;
   padding: 2rem;
-  color: u.$icons;
-  background-color: color.mix(u.$icons, u.$black, 10%);
+  color: var(--icons);
+  background-color: var(--icons);
   border-radius: 5px;
   text-align: center;
   font-weight: 500;
@@ -41,7 +41,7 @@
 
 .notFoundMessage {
   font-size: 1.25rem;
-  color: u.$elements;
+  color: var(--elements);
   font-weight: 800;
 
   @media (min-width: 768px) {
@@ -61,7 +61,7 @@
 .productName {
   font-size: 22px;
   line-height: 140%;
-  color: u.$white;
+  color: var(--text-primary);
 
   margin-bottom: 32px;
 
@@ -109,7 +109,7 @@
 
 .productColors {
   padding-bottom: 24px;
-  border-bottom: 1px solid u.$elements;
+  border-bottom: 1px solid var(--elements);
 }
 
 .colorInfo {
@@ -124,13 +124,13 @@
 }
 
 .titleColors {
-  color: u.$secondary;
+  color: var(--text-secondary);
   font-weight: 700;
   font-size: 12px;
 }
 
 .productId {
-  color: u.$icons;
+  color: var(--icons);
   font-weight: 700;
   font-size: 12px;
 
@@ -178,12 +178,12 @@
   height: 100%;
   cursor: pointer;
   border-radius: 50%;
-  border: 1px solid u.$elements;
+  border: 1px solid var(--elements);
   box-sizing: border-box;
   transition: border-color 0.2s ease;
 
   .colorRadioInput:checked + & {
-    border-color: u.$white;
+    border-color: var(--text-primary);
   }
 }
 
@@ -199,11 +199,11 @@
   margin-top: 24px;
   padding-bottom: 24px;
   margin-bottom: 32px;
-  border-bottom: 1px solid u.$elements;
+  border-bottom: 1px solid var(--elements);
 }
 
 .titleCapacity {
-  color: u.$secondary;
+  color: var(--text-secondary);
   font-weight: 700;
   font-size: 12px;
   margin-bottom: 8px;
@@ -237,7 +237,7 @@
   height: 32px;
   box-sizing: border-box;
 
-  border: 1px solid u.$icons;
+  border: 1px solid var(--icons);
   border-radius: 2px;
   background-color: transparent;
 
@@ -245,7 +245,7 @@
   user-select: none;
 
   font-family: Mont, sans-serif;
-  color: u.$white;
+  color: var(--text-primary);
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
@@ -256,14 +256,14 @@
     border-color 0.2s ease;
 
   .capacityRadioInput:checked + & {
-    background-color: u.$white;
-    color: u.$black;
-    border-color: u.$white;
+    background-color: var(--text-primary);
+    color: var(--background);
+    border-color: var(--text-primary);
   }
 
   &:hover {
     .capacityRadioInput:not(:checked) + & {
-      border-color: u.$secondary;
+      border-color: var(--text-secondary);
     }
   }
 }

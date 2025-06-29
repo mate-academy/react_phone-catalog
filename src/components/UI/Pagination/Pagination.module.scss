@@ -25,37 +25,36 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  color: u.$white;
+  color: var(--text-primary);
   text-decoration: none;
   letter-spacing: 0%;
 
-  background-color: u.$surface-1;
+  background-color: var(--surface-1);
 
   &:hover:not(.disabled) {
-    background-color: u.$elements;
+    background-color: var(--elements);
   }
 }
 
 .pageItem {
   &.disabled {
     pointer-events: none;
-    border: 1px solid u.$elements;
+    border: 1px solid var(--elements);
     background-color: transparent;
 
     path {
-      fill: u.$icons;
+      fill: var(--icons);
     }
   }
 
   &.active {
     .pageLink {
-      color: u.$white;
-      background-color: u.$accent;
+      color: var(--text-primary);
+      background-color: var(--accent);
     }
   }
 }
 
 .pageLinkNavBtn {
-  background-color: u.$surface-2;
+  background-color: var(--surface-2);
 }
-

@@ -6,7 +6,7 @@
 
   font-size: 32px;
   line-height: 41px;
-  color: u.$white;
+  color: var(--text-primary);
   letter-spacing: -1%;
 
   @include u.on-tablet {

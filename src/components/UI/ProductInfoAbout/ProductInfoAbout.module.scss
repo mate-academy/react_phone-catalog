@@ -13,7 +13,7 @@
 }
 
 .descriptionTitle {
-  color: u.$white;
+  color: var(--text-primary);
   font-weight: 700;
   font-size: 16px;
 
@@ -23,7 +23,7 @@
 }
 
 .descriptionText {
-  color: u.$secondary;
+  color: var(--text-secondary);
   font-size: 14px;
   line-height: 21px;
 }

@@ -10,7 +10,9 @@
   height: 439px;
   padding: 32px;
 
-  background-color: u.$surface-1;
+  background-color: var(--surface-1);
+
+  border-radius: var(--card-border-radius);
 
   @include u.on-tablet {
     height: 512px;
@@ -20,7 +22,7 @@
     height: 506px;
   }
 
-  @include u.hover(box-shadow, 0 4px 8px u.$accent);
+  @include u.hover(box-shadow, 0 4px 8px var(--accent));
 }
 
 .productImage {
@@ -48,5 +50,5 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  color: u.$white;
+  color: var(--text-primary);
 }

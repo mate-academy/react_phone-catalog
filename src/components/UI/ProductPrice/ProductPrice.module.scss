@@ -18,7 +18,7 @@
     bottom: 0;
     left: 0;
 
-    border-bottom: 1px solid u.$elements;
+    border-bottom: 1px solid var(--elements);
   }
 }
 
@@ -26,14 +26,14 @@
   font-size: 22px;
   font-weight: 800;
   line-height: 140%;
-  color: u.$white;
+  color: var(--text-primary);
 }
 
 .productFullPrice {
   position: relative;
   font-size: 22px;
   line-height: 100%;
-  color: u.$secondary;
+  color: var(--text-secondary);
 
   &::after {
     content: '';
@@ -46,7 +46,7 @@
 
     height: 1px;
 
-    background: u.$secondary;
+    background: var(--text-secondary);
     mix-blend-mode: difference;
   }
 }

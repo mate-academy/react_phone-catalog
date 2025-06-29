@@ -8,6 +8,7 @@
   }
 }
 
+// for statis scss variables colors
 @mixin hover-path-fill($_toValue, $_timing-function: ease) {
   path {
     transition: fill vars.$effect-duration $_timing-function;

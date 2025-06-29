@@ -1,8 +1,8 @@
 @use 'styles/utils' as u;
 
 .card {
-  background-color: u.$surface-1;
-  border-radius: 1px;
+  background-color: var(--surface-1);
+  border-radius: var(--card-border-radius);
 }
 
 .cardWrapper {
@@ -44,14 +44,14 @@
 
   border: none;
 
-  background-color: u.$surface-1;
+  background-color: var(--surface-1);
 
   transition: background-color u.$effect-duration ease;
 }
 
 .btnRemoveProductIcon {
   path {
-    fill: u.$icons;
+    fill: var(--icons);
   }
 }
 
@@ -61,7 +61,7 @@
 }
 
 .productName {
-  color: u.$white;
+  color: var(--text-primary);
   font-size: 14px;
   line-height: 21px;
 
@@ -106,12 +106,14 @@
 
   border: none;
 
-  background-color: u.$surface-2;
+  border-radius: var(--btn-border-radius);
+
+  background-color: var(--surface-2);
 }
 
 .btnDecrementCounter {
   path {
-    fill: u.$white;
+    fill: var(--text-primary);
   }
 }
 
@@ -122,16 +124,16 @@
   height: 32px;
   width: 32px;
 
-  color: u.$white;
+  color: var(--text-primary);
 }
 
 .btnDecrementCounter:disabled,
 .btnIncrementCounter:disabled {
   background-color: transparent;
-  border: 1px solid u.$elements;
+  border: 1px solid var(--elements);
 
   path {
-    fill: u.$icons;
+    fill: var(--icons);
   }
 }
 
@@ -139,7 +141,7 @@
   font-size: 22px;
   font-weight: 800;
   line-height: 140%;
-  color: u.$white;
+  color: var(--text-primary);
   text-align: right;
 
   @include u.on-tablet {

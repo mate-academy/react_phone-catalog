@@ -1,11 +1,13 @@
 import { BackButton } from '@/components/UI/BackButton';
 import styles from './CartHeroSection.module.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import { CartProductCard } from '@/components/UI/CartProductCard';
 import { useCart } from '@/context/CartContext';
+import { Modal } from '@/components/UI/Modal';
 
 export const CartHeroSection: React.FC = () => {
   const { cart, getTotalPrice, getTotalItems } = useCart();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -25,7 +27,9 @@ export const CartHeroSection: React.FC = () => {
                 <p
                   className={styles.cartTotalItems}
                 >{`Total for ${getTotalItems()} items`}</p>
-                <button className={styles.cartTotalBtn}>
+                <button className={styles.cartTotalBtn}
+                onClick={() => setIsModalOpen(true)}
+                >
                   <p className={styles.cartTotalBtnText}>Checkout</p>
                 </button>
               </div>
@@ -42,6 +46,21 @@ export const CartHeroSection: React.FC = () => {
           </div>
         )}
       </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <div className={styles.checkoutModalContent}>
+          <h2 className={styles.modalTitle}>Feature in Development</h2>
+          <p className={styles.modalText}>
+            We're sorry, but the checkout feature is not yet implemented.
+          </p>
+          <p className={styles.modalText}>
+            Thank you for checking out this demo project!
+          </p>
+          <button className={styles.modalCloseButton}
+            onClick={() => setIsModalOpen(false)}>
+            OK
+          </button>
+        </div>
+      </Modal>
     </>
   );
 };

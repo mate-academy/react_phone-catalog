@@ -31,15 +31,17 @@
 
 .productCartBtn {
   width: 100%;
-  background-color: u.$accent;
+  background-color: var(--accent);
 
-  @include u.hover(background-color, u.$accent-light);
+  border-radius: var(--card-btn-border-radius);
+
+  @include u.hover(background-color, var(--accent-light));
 }
 
 .productCartBtnActive {
-  background-color: u.$surface-2;
+  background-color: var(--surface-2);
 
-  @include u.hover(background-color, u.$icons);
+  @include u.hover(background-color, var(--icons));
 }
 
 .productCartSpan {
@@ -47,37 +49,36 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
-  color: u.$white;
+  color: var(--text-primary);
   letter-spacing: 0%;
 }
 
 .productFavoriteBtn {
-  background-color: u.$surface-2;
+  background-color: var(--surface-2);
 
-  @include u.hover(background-color, u.$icons);
+  border-radius: var(--card-btn-border-radius);
+
+  border: 1px solid transparent;
+
+  @include u.hover(background-color, var(--icons));
 }
 
 .productFavoriteBtnActive {
   background-color: transparent;
-  border: 1px solid u.$elements;
 
+  border: 1px solid var(--elements);
 
   .productFavoriteIcon path {
-    fill: u.$red;
-  // color: u.$red;
-
-
+    fill: var(--red);
   }
 }
 
 .productFavoriteIcon {
   padding: 12px;
-
-  @include u.hover-path-fill(u.$white);
 }
 
 .productCartBtn:focus,
 .productFavoriteBtn:focus {
-  outline: 2px solid u.$accent;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }

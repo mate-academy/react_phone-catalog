@@ -37,7 +37,7 @@
       height: auto;
       margin-bottom: u.$spacing-unit * 2;
 
-      filter: drop-shadow(0 4px 15px rgba(u.$accent, 0.3));
+      filter: drop-shadow(0 4px 15px rgba(var(--accent), 0.3));
 
       animation: float 3s infinite ease-in-out;
 
@@ -52,8 +52,8 @@
       font-size: 6rem;
       font-weight: 900;
       line-height: 1;
-      color: u.$accent;
-      text-shadow: 0 4px 15px rgba(u.$accent, 0.4);
+      color: var(--accent);
+      text-shadow: 0 4px 15px rgba(var(--accent), 0.4);
 
       @include u.on-tablet {
         font-size: 8rem;
@@ -102,15 +102,15 @@
 
       font-size: 1.1rem;
       font-weight: 500;
-      color: u.$white;
+      color: var(--text-primary);
       text-decoration: none;
 
       background: linear-gradient(
         90deg,
-        u.$accent,
-        color.adjust(u.$accent, $lightness: -10%)
+        var(--accent),
+        var(--accent-light)
       );
-      box-shadow: 0 5px 15px rgba(u.$accent, 0.2);
+      box-shadow: 0 5px 15px rgba(var(--accent), 0.2);
 
       @include u.hover(transform, translateY(-2px));
 
@@ -139,7 +139,7 @@
 
       background: radial-gradient(
         circle,
-        rgba(u.$accent, 0.2) 10%,
+        rgba(var(--accent), 0.2) 10%,
         transparent 50%
       );
 

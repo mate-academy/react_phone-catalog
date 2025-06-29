@@ -1,3 +1,5 @@
+// NavBar.tsx (полный файл для замены)
+
 import { Link, NavLink } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 
@@ -13,6 +15,12 @@ import cn from 'classnames';
 import { useCart } from '@/context/CartContext';
 import { useFavorites } from '@/context/FavoritesContext';
 
+import { ThemeSwitcher } from '@/components/UI/ThemeSwitcher';
+import { SearchComponent } from '@/components/UI/SearchComponent';
+
+import productsList from 'data/api/products.json';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/phones', label: 'Phones' },
@@ -27,6 +35,8 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
 
 export const NavBar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const isTablet = useMediaQuery('(min-width: 640px)');
   const pageRef = useRef<HTMLDivElement>(null);
   const { favorites } = useFavorites();
   const { cart } = useCart();
@@ -43,9 +53,21 @@ export const NavBar: React.FC = () => {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    setIsSearchExpanded(false);
+  }, [isTablet]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const handleSelect = (itemId: string) => {
+    console.log('Selected itemId:', itemId);
+  };
+
+  const actionsClasses = cn(styles.navbar__actions, {
+    [styles.searchActive]: isSearchExpanded,
+  });
 
   return (
     <div className={styles.navbar} ref={pageRef}>
@@ -68,21 +90,42 @@ export const NavBar: React.FC = () => {
           </nav>
         </div>
 
-        <div className={styles.navbar__actions}>
-          <FavouritesIconWithCounter
-            favouritesCount={favorites.length}
-            isMobile={false}
-          />
-          <CartIconWithCounter cartCount={cart.length} isMobile={false} />
-        </div>
-
-        <button
-          onClick={toggleMenu}
-          className={styles.navbar__burgerIcon}
-          aria-label="Open menu"
-        >
-          <BurgerMenuIcon className={styles.navbar__icon} />
-        </button>
+        {isTablet ? (
+          <div className={actionsClasses}>
+            <SearchComponent
+              products={productsList}
+              onSelect={handleSelect}
+              onToggleExpand={setIsSearchExpanded}
+            />
+            <div className={styles.iconWrapper}>
+              <ThemeSwitcher />
+            </div>
+            <div className={styles.iconWrapper}>
+              <FavouritesIconWithCounter
+                favouritesCount={favorites.length}
+                isMobile={false}
+              />
+            </div>
+            <div className={styles.iconWrapper}>
+              <CartIconWithCounter cartCount={cart.length} isMobile={false} />
+            </div>
+          </div>
+        ) : (
+          <div className={styles.navbar__wrapperMobileActions}>
+            <SearchComponent
+              products={productsList}
+              onSelect={handleSelect}
+              onToggleExpand={setIsSearchExpanded}
+            />
+            <button
+              onClick={toggleMenu}
+              className={styles.navbar__burgerIcon}
+              aria-label="Open menu"
+            >
+              <BurgerMenuIcon className={styles.navbar__icon} />
+            </button>
+          </div>
+        )}
       </div>
 
       <aside
@@ -94,13 +137,16 @@ export const NavBar: React.FC = () => {
             <Logo className={styles.navbar__logoIcon} />
           </Link>
 
-          <button
-            onClick={toggleMenu}
-            className={styles.navbar__closeIcon}
-            aria-label="Close menu"
-          >
-            <CloseIcon className={styles.navbar__icon} />
-          </button>
+          <div className={styles.navbar__wrapperMobileActionsAside}>
+            <ThemeSwitcher />
+            <button
+              onClick={toggleMenu}
+              className={styles.navbar__closeIcon}
+              aria-label="Close menu"
+            >
+              <CloseIcon className={styles.navbar__icon} />
+            </button>
+          </div>
         </div>
 
         <nav className={styles.navbar__menuNavigation}>
@@ -135,3 +181,4 @@ export const NavBar: React.FC = () => {
     </div>
   );
 };
+
