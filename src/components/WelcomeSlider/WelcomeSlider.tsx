@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Sidebar from '../Sidebar';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 
-import { Pagination, Scrollbar, Navigation } from 'swiper/modules';
+import { Pagination, Scrollbar, Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -26,13 +26,23 @@ const WelcomeSlider: React.FC = () => {
       </div>
 
       <div className={welcomeStyles.header}>
-        <div className={navigationStyle['navigation-button-prev']}>
+        {/* <div
+          className={`${navigationStyle['swiper-button-prev']} ${navigationStyle['swiper-button']}`}
+        >
           <img src="public\img\chevron-arrow_left.svg" alt="" />
+        </div> */}
+
+        <div className="navigation-button-prev">
+          <div
+            className={`${navigationStyle['navigation-button']} ${navigationStyle['navigation-button--left']}`}
+          >
+            <img src="public\img\chevron-arrow_left.svg" alt="img" />
+          </div>
         </div>
 
         <Swiper
           className={paginationStyle.swiper}
-          modules={[Scrollbar, Pagination, Navigation]}
+          modules={[Scrollbar, Pagination, Navigation, Autoplay]}
           spaceBetween={0}
           slidesPerView={1}
           enabled={true}
@@ -44,16 +54,13 @@ const WelcomeSlider: React.FC = () => {
             bulletActiveClass:
               paginationStyle['swiper-custom-pagination-bullet--active'],
           }}
-          // hashNavigation={{
-          //   replaceState: true,
-          // }}
-          // nextEl=".button-next"
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
           navigation={{
             nextEl: '.navigation-button-next',
             prevEl: '.navigation-button-prev',
-          }}
-          autoplay={{
-            delay: 5000,
           }}
           scrollbar={{ draggable: true }}
           loop={true}
@@ -83,8 +90,12 @@ const WelcomeSlider: React.FC = () => {
           </SwiperSlide>
         </Swiper>
 
-        <div className={navigationStyle['navigation-button-next']}>
-          <img src="public\img\chevron-arrow-right.svg" alt="" />
+        <div className="navigation-button-next">
+          <div
+            className={`${navigationStyle['navigation-button']} ${navigationStyle['navigation-button--right']}`}
+          >
+            <img src="public\img\chevron-arrow-right.svg" alt="arrow rigth" />
+          </div>
         </div>
       </div>
 

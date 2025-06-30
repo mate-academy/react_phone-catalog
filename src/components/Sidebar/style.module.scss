@@ -12,7 +12,7 @@ body:has(.sideMenu :target) {
   // overflow: hidden;
 
   opacity: 0;
-  // z-index: 1;
+  z-index: 100;
   pointer-events: none;
   -ms-overflow-style: none;
   scrollbar-width: none;

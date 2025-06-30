@@ -1,11 +1,32 @@
+@import '../../styles/mixins.module';
+
 .navigation-button {
+  height: 100%;
   width: 32px;
   border: 1px solid #000;
   border-radius: 16px;
+
+  display: none;
+
+  @include onTablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--right {
+    margin-left: 16px;
+    margin-right: 32px;
+  }
+
+  &--left {
+    margin-left: 32px;
+    margin-right: 16px;
+  }
 }
 
 .navigation-button-prev {
-  
+
 }
 
 .navigation-button-next {
