@@ -18,15 +18,15 @@ type Props = {
 
 export const FiltersProvider: React.FC<Props> = ({ children }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { products } = useContext(ProductContext);
+  const location = useLocation();
+
   const value = useMemo(() => {
     const sortParam = searchParams.get('sort');
 
     return sortBy.find(option => option.value === sortParam) || sortBy[0];
   }, [searchParams]);
-  const sort = searchParams.get('sort') as SortField | null;
-
-  const { products } = useContext(ProductContext);
-  const location = useLocation();
+  const sort = (searchParams.get('sort') as SortField) ?? 'newest';
 
   const setSearchWith = (params: SearchParams) => {
     const search = getSearchWith(searchParams, params);

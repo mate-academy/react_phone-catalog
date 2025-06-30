@@ -8,6 +8,8 @@ export enum IconId {
   Minus = 'minus',
   Plus = 'plus',
   Menu = 'menu',
+  Sun = 'sun',
+  Moon = 'moon',
 }
 
 export enum Directions {

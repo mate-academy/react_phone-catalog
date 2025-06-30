@@ -1,4 +1,6 @@
 import { useTheme } from '../../../store/ThemeContext';
+import { IconId } from '../../../types/icons';
+import { Icons } from '../Icons';
 import style from './Toggle.module.scss';
 
 export const Toggle = () => {
@@ -13,6 +15,12 @@ export const Toggle = () => {
         onChange={toggleTheme}
         checked={isChecked}
       />
+      <label htmlFor="check" className={style.slider}>
+        <span className={style.iconWrapper}>
+          <Icons id={IconId.Sun} className={style.sun} />
+          <Icons id={IconId.Moon} className={style.moon} />
+        </span>
+      </label>
     </div>
   );
 };
