@@ -1,17 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './SearchComponent.module.scss';
-
-interface Product {
-  id: number;
-  itemId: string;
-  name: string;
-  price: number;
-  image: string;
-}
+import { Product } from '@/types/product';
 
 interface SearchProps {
   products: Product[];
-  onSelect: (itemId: string) => void;
+  onSelect: (product: Product) => void;
   onToggleExpand: (isExpanded: boolean) => void;
 }
 
@@ -49,10 +42,20 @@ export const SearchComponent: React.FC<SearchProps> = ({
       return true;
     }
 
-    return (
-      product.name.toLowerCase().includes(lowerCaseQuery)
-    );
+    return product.name.toLowerCase().includes(lowerCaseQuery);
   });
+
+  const handleClose = () => {
+    setQuery('');
+    setIsExpanded(false);
+    setIsDropdownOpen(false);
+    onToggleExpand(false);
+  };
+
+  const handleSelect = (product: Product) => {
+    onSelect(product);
+    handleClose();
+  };
 
   const handleIconClick = () => {
     setIsExpanded(true);
@@ -74,19 +77,6 @@ export const SearchComponent: React.FC<SearchProps> = ({
         onToggleExpand(false);
       }
     }, 200);
-  };
-
-  const handleSelect = (itemId: string) => {
-    setQuery(itemId);
-    setIsDropdownOpen(false);
-    onSelect(itemId);
-  };
-
-  const handleClose = () => {
-    setQuery('');
-    setIsExpanded(false);
-    setIsDropdownOpen(false);
-    onToggleExpand(false);
   };
 
   useEffect(() => {
@@ -158,7 +148,7 @@ export const SearchComponent: React.FC<SearchProps> = ({
             <div
               key={product.id}
               className={styles.option}
-              onClick={() => handleSelect(product.itemId)}
+              onClick={() => handleSelect(product)}
             >
               <img
                 src={product.image}

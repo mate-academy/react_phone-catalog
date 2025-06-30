@@ -1,6 +1,9 @@
 @use 'styles/utils/' as u;
 
 .container {
+  margin-top: 24px;
+  margin-bottom: 64px;
+
   @include u.padding-inline;
 
   @include u.on-desktop {
@@ -8,9 +11,6 @@
 
     max-width: 1136px;
   }
-
-  margin-top: 24px;
-  margin-bottom: 64px;
 }
 
 .title {
@@ -153,10 +153,10 @@
 }
 
 .productGridContainer {
-  @include u.page-grid;
-
   gap: 40px;
   margin-bottom: 24px;
+  
+  @include u.page-grid;
 
   @include u.on-tablet {
     gap: 16px;

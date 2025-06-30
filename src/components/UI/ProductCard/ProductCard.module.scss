@@ -14,6 +14,8 @@
 
   border-radius: var(--card-border-radius);
 
+  @include u.hover(box-shadow, 0 4px 8px var(--accent));
+
   @include u.on-tablet {
     height: 512px;
   }
@@ -21,8 +23,6 @@
   @include u.on-desktop {
     height: 506px;
   }
-
-  @include u.hover(box-shadow, 0 4px 8px var(--accent));
 }
 
 .productImage {
@@ -34,11 +34,11 @@
   object-fit: contain;
   object-position: center;
 
+  @include u.hover(transform, scale(1.1));
+
   @include u.on-tablet {
     height: 202px;
   }
-
-  @include u.hover(transform, scale(1.1));
 }
 
 .productName {

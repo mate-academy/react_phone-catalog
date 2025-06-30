@@ -5,6 +5,8 @@
   &__favourites {
     display: none;
 
+    @include u.hover(background-color, var(--elements));
+
     @include u.on-tablet {
       display: flex;
       align-items: center;
@@ -19,14 +21,6 @@
       width: 64px;
       height: 64px;
     }
-
-    @include u.hover(
-      background-color,
-      var(--elements)
-    );
-
-
-    // @include u.hover-path-fill(var(--text-primary));
 
     &_active {
       position: relative;

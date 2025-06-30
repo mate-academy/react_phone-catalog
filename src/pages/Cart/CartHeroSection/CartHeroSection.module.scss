@@ -48,7 +48,7 @@
 
 .cartTotal {
   border: 1px solid var(--elements);
-  border-radius: 1px;
+  border-radius: var(--card-border-radius);
 
   @include u.on-desktop {
     width: 368px;
@@ -179,5 +179,5 @@
   font-weight: 700;
   line-height: 21px;
 
-  @include u.hover(background-color, var(--accent)-light);
+  @include u.hover(background-color, var(--accent-light));
 }

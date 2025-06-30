@@ -49,9 +49,8 @@
 }
 
 .productGridContainer {
-  @include u.page-grid;
-
   gap: 40px;
+  @include u.page-grid;
 
   @include u.on-tablet {
     gap: 16px;

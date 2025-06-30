@@ -1,6 +1,4 @@
-// NavBar.tsx (полный файл для замены)
-
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 
 import Logo from 'assets/icons/Logo.svg?react';
@@ -20,6 +18,7 @@ import { SearchComponent } from '@/components/UI/SearchComponent';
 
 import productsList from 'data/api/products.json';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { Product } from '@/types/product';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -40,6 +39,7 @@ export const NavBar: React.FC = () => {
   const pageRef = useRef<HTMLDivElement>(null);
   const { favorites } = useFavorites();
   const { cart } = useCart();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -61,8 +61,8 @@ export const NavBar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleSelect = (itemId: string) => {
-    console.log('Selected itemId:', itemId);
+  const handleSelect = (product: Product) => {
+    navigate(`/${product.category}/${product.itemId}`);
   };
 
   const actionsClasses = cn(styles.navbar__actions, {
@@ -181,4 +181,3 @@ export const NavBar: React.FC = () => {
     </div>
   );
 };
-
