@@ -1,36 +1,29 @@
 @import '../../../../styles/mixins';
 
 .phones-list {
-  width: 100%;
-  margin-top: 24px;
-
   display: grid;
-  gap: 40px 16px;
-  justify-content: center;
+  row-gap: 30px;
+  margin-top: 24px;
+  column-gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 
-  padding-inline: 16px;
-  box-sizing: border-box;
-  grid-template-columns: repeat(auto-fit, 287px);
+  width: 100%;
 
   @include on-tablet {
-    justify-content: start;
-    grid-template-columns: repeat(auto-fit, 229px);
+    min-width: 600px;
   }
 
   @include on-desck-top {
-    justify-content: start;
-    padding-inline: 152px;
-    grid-template-columns: repeat(auto-fit, 288px);
+    min-width: 1136px;
   }
 }
 
 .phone-card {
   display: flex;
-  box-sizing: border-box;
   justify-content: center;
-
   width: 100%;
-  height: 100%;
+
+  box-sizing: border-box;
 
   padding-block: 32px;
   padding-inline: 32px;
@@ -38,37 +31,28 @@
 
   &__content {
     display: flex;
-    box-sizing: border-box;
     flex-direction: column;
 
-    width: 223px;
-
-    @include on-tablet {
-      width: 165px;
-    }
-
-    @include on-desck-top {
-      width: 208px;
-    }
+    width: 100%;
   }
 
   &__box {
     text-decoration: none;
     pointer-events: none;
-    height: 50px;
+    height: 40px;
+      margin-bottom: 8px;
+
 
     &-p {
       pointer-events: auto;
       cursor: pointer;
 
-      display: inline;
       color: #313237;
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;
-      height: 80px;
-      font-family: Montserrat, sans-serif;
 
+      font-family: Montserrat, sans-serif;
       transition: color 300ms;
 
       &:hover {
@@ -150,10 +134,6 @@
 
       justify-content: center;
       background-color: #313237;
-
-      @include on-tablet {
-        width: 117px;
-      }
 
       @include on-desck-top {
         width: 160px;

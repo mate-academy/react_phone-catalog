@@ -7,18 +7,32 @@
   gap: 56px;
   justify-content: center;
 
+
+
   @include on-tablet {
     padding-inline: 24px;
     gap: 64px;
   }
 
   @include on-desck-top {
-    padding-inline: 32px;
+    padding-inline: 152px;
     grid-auto-flow: column;
-    justify-content: start;
     gap: 64px;
   }
 
+  &-width {
+    gap: 64px;
+
+    @include on-tablet {
+      width: 600px;
+    }
+
+    @include on-desck-top {
+      width: 1136px;
+      margin-bottom: 80px;
+      display: flex;
+    }
+  }
 
   &-h2 {
     font-size: 20px;
@@ -26,6 +40,7 @@
     font-weight: 700;
     font-family: Montserrat, sans-serif;
     position: relative;
+    margin-bottom: 32px;
 
     &::after {
       content: '';
@@ -39,10 +54,11 @@
 
     @include on-tablet {
       font-weight: 800;
+      margin-bottom: 48px;
     }
   }
 
-  &-content {
+  &-about {
     width: 288px;
     display: grid;
     gap: 32px;
@@ -52,31 +68,58 @@
     }
 
     @include on-desck-top {
-      width: 560px;
-      margin-bottom: 56px;
+      width: 660px;
     }
 
+    &__h2 {
+      font-size: 20px;
 
-    &__title {
-      margin-bottom: 16px;
-
-      font-size: 16px;
       font-weight: 700;
-
-      color: #313237;
       font-family: Montserrat, sans-serif;
+      position: relative;
+      margin-bottom: 32px;
+
+      &::after {
+        content: '';
+        height: 1px;
+        width: 100%;
+        display: block;
+        position: absolute;
+        bottom: -24px;
+        background-color: #e2e6e9;
+      }
 
       @include on-tablet {
-        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 48px;
       }
     }
 
-    &__p {
-      color: #89939a;
-      line-height: 21px;
-      font-size: 14px;
-      font-weight: 600;
-      font-family: Montserrat, sans-serif;
+    &__container {
+      width: 100%;
+
+      &-title {
+        margin-bottom: 16px;
+
+        font-size: 16px;
+        font-weight: 700;
+
+        color: #313237;
+        font-family: Montserrat, sans-serif;
+
+        @include on-tablet {
+          font-size: 20px;
+        }
+      }
+
+      &-p {
+        color: #89939a;
+        line-height: 21px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 32px;
+        font-family: Montserrat, sans-serif;
+      }
     }
   }
 }
@@ -84,15 +127,15 @@
 .tech-specs {
   width: 288px;
   margin-bottom: 56px;
+  box-sizing: border-box;
 
   @include on-tablet {
     width: 100%;
   }
 
   @include on-desck-top {
-    width: 500px;
+    width: 600px;
   }
-
 
   &__h2 {
     font-weight: 800;

@@ -11,6 +11,7 @@
     &-item {
       width: 32px;
       height: 32px;
+      box-sizing: border-box;
 
       display: grid;
       place-content: center center;
@@ -65,11 +66,12 @@
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
-  max-width: 135px;
+  max-width: 128px;
 
   &-button {
     width: 32px;
     height: 32px;
+    box-sizing: border-box;
 
     flex-shrink: 0;
 

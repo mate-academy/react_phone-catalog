@@ -1,19 +1,22 @@
 @import '../../../../../../styles/mixins';
 
-
 .product-details__blocks {
   @include on-tablet {
     width: 237px;
   }
 
   @include on-desck-top {
-    width: 320px;
+    width: 600px;
   }
 }
 
 .product-colors {
   position: relative;
   margin-bottom: 48px;
+
+  @include on-desck-top {
+    width: 320px;
+  }
 
   &::after {
     content: '';
@@ -32,7 +35,7 @@
     margin-bottom: 8px;
 
     @include on-desck-top {
-      width: 500px;
+      width: 510px;
     }
 
     &-p {
@@ -78,6 +81,10 @@
 .product-capacity {
   margin-bottom: 56px;
 
+  @include on-desck-top {
+    width: 320px;
+  }
+
   &__p {
     margin-bottom: 8px;
     font-size: 12px;
@@ -122,6 +129,10 @@
 
 .product-price {
   margin-bottom: 22px;
+
+  @include on-desck-top {
+    width: 320px;
+  }
 
   &__prices {
     display: flex;
@@ -206,6 +217,10 @@
     margin-bottom: 64px;
   }
 
+  @include on-desck-top {
+    width: 320px;
+  }
+
   &__item {
     display: flex;
     margin-bottom: 8px;
@@ -256,5 +271,5 @@
 
   color: green;
   background-color: white;
-  border: 2px #E2E6E9 solid;
+  border: 2px #e2e6e9 solid;
 }

@@ -41,10 +41,6 @@ export const TabletsBottom: React.FC<Props> = ({
           <li
             className="tablets-bottom__nav-item button-left"
             onClick={() => {
-              saveFilterInParams(
-                'actual-list',
-                ditermineDirection('left', actualButton),
-              );
               moveButtons(
                 'left',
                 ditermineDirection,
@@ -54,32 +50,33 @@ export const TabletsBottom: React.FC<Props> = ({
             }}
           ></li>
 
-          <ul ref={navigationContainer} className="tablets-bottom__navigation">
-            {howButtonsRender.map(buttonNumber => {
-              return (
-                <li
-                  key={buttonNumber}
-                  data-actual-button={buttonNumber}
-                  className={classNames('tablets-bottom__navigation-button', {
-                    'active-list': buttonNumber === actualButton,
-                  })}
-                  onClick={() => {
-                    saveFilterInParams('actual-list', buttonNumber);
-                  }}
-                >
-                  {buttonNumber}
-                </li>
-              );
-            })}
-          </ul>
+          <div>
+            <ul
+              ref={navigationContainer}
+              className="tablets-bottom__navigation"
+            >
+              {howButtonsRender.map(buttonNumber => {
+                return (
+                  <li
+                    key={buttonNumber}
+                    data-actual-button={buttonNumber}
+                    className={classNames('tablets-bottom__navigation-button', {
+                      'active-list': buttonNumber === actualButton,
+                    })}
+                    onClick={() => {
+                      saveFilterInParams('actual-list', buttonNumber);
+                    }}
+                  >
+                    {buttonNumber}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
           <li
             className="tablets-bottom__nav-item button-right"
             onClick={() => {
-              saveFilterInParams(
-                'actual-list',
-                ditermineDirection('right', actualButton),
-              );
               moveButtons(
                 'right',
                 ditermineDirection,

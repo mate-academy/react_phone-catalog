@@ -14,6 +14,7 @@
 
       display: grid;
       place-content: center center;
+      box-sizing: border-box;
 
       color: black;
       cursor: pointer;
@@ -65,16 +66,19 @@
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
-  max-width: 135px;
+  max-width: 128px;
 
   &-button {
     width: 32px;
     height: 32px;
+    box-sizing: border-box;
+
 
     flex-shrink: 0;
 
     display: grid;
     place-content: center center;
+
 
     color: black;
     cursor: pointer;

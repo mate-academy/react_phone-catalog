@@ -2,8 +2,10 @@ import { togglePhoneInStorage } from '../../../../../../utils/togglePhone';
 import { addInCart } from '../../../../../../utils/addInCart';
 import { Product } from '../../../../../../types/Product';
 import classNames from 'classnames';
-import './DetailsImages..scss';
+import './DetailsBlocks.scss';
 import { useMemo } from 'react';
+import { normalizeColor } from '../../../../../../utils/normalizeColors';
+import { COLOR_MAP } from '../../../../../../utils/colorMap';
 
 interface Props {
   product: Product;
@@ -59,20 +61,24 @@ export const DeatailsIamges: React.FC<Props> = ({
 
         <ul className="product-colors__list">
           {product.colorsAvailable.map(color => {
+            const updatedColor = normalizeColor(color);
+
+           const hexValue = COLOR_MAP[color] || '';
+
             return (
               <li
-                key={color}
+                key={updatedColor}
                 className={classNames('product-colors__list-item', {
-                  'set-active-color': activeColor === color,
+                  'set-active-color': activeColor === updatedColor,
                 })}
                 onClick={() => {
-                  changeColor(color);
+                  changeColor(updatedColor);
                 }}
               >
                 <div
                   className="list-item__content"
                   style={{
-                    backgroundColor: color,
+                    backgroundColor: hexValue,
                   }}
                 ></div>
               </li>

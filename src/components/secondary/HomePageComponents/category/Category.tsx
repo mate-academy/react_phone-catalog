@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Category.scss';
 
 const BASE_URL = '/category-images/';
@@ -30,15 +31,35 @@ export const Category = () => {
 
         <div className="category__blocks">
           {categoryBlock.map(block => {
+            let goTo = '';
+
+            switch (block.h3) {
+              case 'Tablets':
+                goTo = '/tablets';
+                break;
+
+              case 'Mobile phones':
+                goTo = '/phones';
+                break;
+
+              case 'Accessories':
+                goTo = '/accessories';
+                break;
+            }
+
             return (
               <div key={block.h3} className="category__block">
-                <img
-                  className="category__block-image"
-                  src={`${BASE_URL}${block.img}`}
-                  alt="Tablet Image"
-                />
+                <Link to={goTo}>
+                  <img
+                    className="category__block-image"
+                    src={`${BASE_URL}${block.img}`}
+                    alt="Tablet Image"
+                  />
+                </Link>
 
-                <h3 className="category__block-h3">{block.h3}</h3>
+                <Link to={goTo} className="category__block-h3">
+                  {block.h3}
+                </Link>
 
                 <p className="category__block-p">{block.p}</p>
               </div>

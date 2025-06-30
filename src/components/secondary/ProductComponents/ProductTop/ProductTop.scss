@@ -12,8 +12,6 @@
 
   @include on-desck-top {
     padding-inline: 32px;
-    justify-content: start;
-
   }
 
   &__content {
@@ -22,7 +20,7 @@
     }
 
     @include on-desck-top {
-      width: 100%;
+      width: 1136px;
     }
   }
 

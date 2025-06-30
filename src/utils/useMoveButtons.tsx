@@ -9,30 +9,24 @@ export const useMoveButtons = () => {
     actualButton: number,
     navigationContainer: React.RefObject<HTMLUListElement>,
   ) => {
-    if (navigationContainer.current) {
-      const scrollAmount = 35;
+    const container = navigationContainer.current;
 
-      if (direction === 'right') {
-        navigationContainer.current.scrollBy({
-          left: scrollAmount,
-          behavior: 'smooth',
-        });
-
-        saveFilterInParams(
-          'actual-list',
-          ditermineDirection('right', actualButton),
-        );
-      } else if (direction === 'left') {
-        saveFilterInParams(
-          'actual-list',
-          ditermineDirection('left', actualButton),
-        );
-        navigationContainer.current.scrollBy({
-          left: -scrollAmount,
-          behavior: 'smooth',
-        });
-      }
+    if (!container) {
+      return;
     }
+
+    const scrollAmount = 32;
+    const offset = direction === 'right' ? scrollAmount : -scrollAmount;
+
+    container.scrollBy({
+      left: offset,
+      behavior: 'smooth',
+    });
+
+    saveFilterInParams(
+      'actual-list',
+      ditermineDirection(direction, actualButton),
+    );
   };
 
   return { moveButtons };

@@ -8,11 +8,19 @@
   padding-inline: 16px;
   margin-bottom: 56px;
 
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desck-top {
+    padding-inline: 152px;
+  }
+
   .content-hot-price {
     width: 100%;
 
     @include on-tablet {
-      width: 592px;
+      width: 600px;
     }
 
     @include on-desck-top {
@@ -53,8 +61,8 @@
       align-items: center;
 
       &-button {
-        width: 32px;
-        height: 32px;
+        width: 31px;
+        height: 31px;
         cursor: pointer;
         border: 1px #e2e6e9 solid;
 
@@ -63,10 +71,6 @@
         justify-content: center;
 
         transition: 500ms background-color;
-
-        @include on-desck-top {
-          display: none;
-        }
 
         &-left {
           width: 6px;
@@ -112,7 +116,6 @@
     margin-top: 24px;
 
     display: flex;
-    gap: 16px;
     justify-content: space-between;
 
     overflow-x: auto;
@@ -121,19 +124,26 @@
     scroll-behavior: smooth;
 
     &-card-content {
-      width: 208px;
       display: flex;
       flex-direction: column;
+
+      width: 148px;
+
+      @include on-tablet {
+        width: 174px;
+      }
+
+      @include on-desck-top {
+        width: 208px;
+      }
     }
 
     &-card {
-      width: 210px;
-      padding-block: 32px;
-      padding-inline: 32px;
+      padding-block: 31px;
+      padding-inline: 31px;
 
       display: flex;
       justify-content: center;
-
       border: 1px #e2e6e9 solid;
 
       &-name {
@@ -238,9 +248,7 @@
           justify-content: center;
           background-color: #313237;
 
-
-            width: 160px;
-
+          width: 160px;
         }
 
         &-button-save {

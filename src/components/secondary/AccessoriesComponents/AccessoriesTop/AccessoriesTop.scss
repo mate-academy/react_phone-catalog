@@ -2,18 +2,10 @@
 
 .accessories-top {
   margin-top: 24px;
-  padding-inline: 16px;
-
-  display: grid;
-  align-self: center;
-  justify-content: center;
+  width: 288px;
 
   @include on-tablet {
-    align-self: start;
-  }
-
-  @include on-desck-top {
-    padding-inline: 152px;
+    width: 100%;
   }
 
   &__breadcrumb {

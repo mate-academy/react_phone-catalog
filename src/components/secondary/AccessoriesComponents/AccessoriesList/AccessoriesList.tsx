@@ -64,7 +64,9 @@ export const AccessoriesList: React.FC<Props> = ({ accessoriesList }) => {
 
                 <div className="accessories-card__characteristics-item">
                   <div className="characteristics-text">RAM</div>
-                  <div className="characteristics-text">{accessories.ram}</div>
+                  <div className="characteristics-text">
+                    {accessories.ram}
+                  </div>
                 </div>
               </div>
 
@@ -113,6 +115,7 @@ export const AccessoriesList: React.FC<Props> = ({ accessoriesList }) => {
                 </div>
               </div>
             </div>
+          </div>
           </article>
         );
       })}

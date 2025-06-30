@@ -35,18 +35,7 @@ export const ProductBottom: React.FC<Props> = ({ product, allStore }) => {
       allStore.find(store => store?.some(item => item.name === product.name)) ||
       [];
 
-    const currentStoreLength = currentStore.length;
-    const currentStoreList: Product[] = [];
-    const index = new Set<number>();
-
-    while (currentStoreList.length < 5) {
-      const number = Math.floor(Math.random() * currentStoreLength);
-
-      if (!index.has(number)) {
-        index.add(number);
-        currentStoreList.push(currentStore[number]);
-      }
-    }
+    console.log(currentStore);
 
     switch (currentStoreIndex) {
       case 0:
@@ -66,7 +55,7 @@ export const ProductBottom: React.FC<Props> = ({ product, allStore }) => {
 
     setProductStorge(JSON.parse(localStorage.getItem(store) || '[]'));
 
-    setShowProducts(currentStoreList);
+    setShowProducts(currentStore);
     setElementsCart(storedCart);
   }, [product, allStore]);
 

@@ -4,8 +4,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-
   padding-inline: 16px;
+
   margin-bottom: 56px;
 
   @include on-tablet {
@@ -13,11 +13,13 @@
   }
 
   @include on-desck-top {
-    padding-inline: 32px;
+    padding-inline: 152px;
   }
 
   .brend-content {
     width: 100%;
+    box-sizing: border-box;
+
 
     @include on-tablet {
       width: 600px;
@@ -32,9 +34,16 @@
     display: flex;
     align-self: start;
     justify-content: space-between;
+    box-sizing: border-box;
     width: 100%;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 0;
+    }
 
     @include on-desck-top {
+
       width: 1136px;
       align-self: center;
     }
@@ -71,10 +80,6 @@
         align-items: center;
         justify-content: center;
         transition: 500ms background-color;
-
-        @include on-desck-top {
-          display: none;
-        }
 
         &-left {
           width: 6px;
@@ -118,10 +123,9 @@
   &__bottom {
     width: 100%;
     margin-top: 24px;
+    box-sizing: border-box;
 
-    gap: 16px;
     display: flex;
-    justify-content: space-between;
 
     overflow-x: auto;
     scrollbar-width: none; /* для Firefox - приховує скролбар (Сучасні, браузери) */
@@ -130,9 +134,9 @@
 
     &-phone {
       &-card {
-        width: 212px;
-        padding-block: 32px;
-        padding-inline: 32px;
+        padding-block: 31px;
+        padding-inline: 31px;
+        box-sizing: border-box;
 
         display: flex;
         border: 1px #e2e6e9 solid;
@@ -140,7 +144,15 @@
         &-content {
           display: flex;
           flex-direction: column;
-          width: 208px;
+          width: 148px;
+
+          @include on-tablet {
+            width: 174px;
+          }
+
+          @include on-desck-top {
+            width: 208px;
+          }
         }
 
         &-name {
@@ -229,7 +241,15 @@
             align-items: center;
             justify-content: center;
             background-color: #313237;
+            width: 100px;
+
+            @include on-tablet {
+              width: 125px;
+            }
+
+            @include on-desck-top {
               width: 160px;
+            }
           }
 
           &-button-save {
@@ -296,4 +316,8 @@
   color: black;
   background-color: white;
   border: 2px #313237 solid;
+}
+
+.swiper-slide {
+  width: auto !important;
 }

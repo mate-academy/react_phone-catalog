@@ -1,73 +1,53 @@
 @import '../../../../styles/mixins';
 
 .tablets-list {
-  width: 100%;
-  margin-top: 24px;
-
   display: grid;
-  gap: 40px 16px;
-  justify-content: center;
 
-  padding-inline: 16px;
-  box-sizing: border-box;
-  grid-template-columns: repeat(auto-fit, 287px);
+  row-gap: 30px;
+  margin-top: 24px;
+  column-gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 
-
-
-
+  width: 100%;
 
   @include on-tablet {
-    justify-content: start;
-    grid-template-columns: repeat(auto-fit, 229px);
+    min-width: 600px;
   }
 
   @include on-desck-top {
-    justify-content: start;
-    padding-inline: 152px;
-
-    grid-template-columns: repeat(auto-fit, 288px);
+    min-width: 1136px;
   }
 }
 
 .tablet-card {
   display: flex;
-  box-sizing: border-box;
   justify-content: center;
-
   width: 100%;
-  height: 100%;
+
+  box-sizing: border-box;
 
   padding-block: 32px;
   padding-inline: 32px;
   border: 1px #e2e6e9 solid;
 
-
-    &__content {
+  &__content {
     display: flex;
-    box-sizing: border-box;
     flex-direction: column;
 
-    width: 223px;
-
-    @include on-tablet {
-      width: 165px;
-    }
-
-    @include on-desck-top {
-      width: 208px;
-    }
+    width: 100%;
   }
+
 
   &__box {
     text-decoration: none;
     pointer-events: none;
-    height: 50px;
+      margin-bottom: 8px;
+      height: 40px;
+
 
     &-p {
       pointer-events: auto;
       cursor: pointer;
-
-      height: 80px;
 
       display: inline;
       color: #313237;
@@ -157,10 +137,6 @@
 
       justify-content: center;
       background-color: #313237;
-
-      @include on-tablet {
-        width: 117px;
-      }
 
         @include on-desck-top {
         width: 160px;

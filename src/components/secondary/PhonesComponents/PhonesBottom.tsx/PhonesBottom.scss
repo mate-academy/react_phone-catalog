@@ -11,6 +11,7 @@
     &-item {
       width: 32px;
       height: 32px;
+      box-sizing: border-box;
 
       display: grid;
       place-content: center center;
@@ -56,20 +57,19 @@
     transform: rotate(45deg);
     border-right: 2px rgb(0, 0, 0) solid;
     border-top: 2px rgb(0, 0, 0) solid;
-
   }
 }
-
 
 .phones-bottom__navigation {
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
-  width: 135px;
+  width: 128px;
 
   &-button {
     width: 32px;
     height: 32px;
+    box-sizing: border-box;
 
     flex-shrink: 0;
 

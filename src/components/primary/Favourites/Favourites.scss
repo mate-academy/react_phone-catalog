@@ -1,22 +1,35 @@
 @import '../../../styles/mixins';
 
 .favourites {
-  display: grid;
   gap: 32px;
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
 
+  display: grid;
+  box-sizing: border-box;
   justify-content: center;
+
   margin-top: 24px;
+  padding-inline: 16px;
 
   @include on-tablet {
     padding-inline: 24px;
   }
 
   @include on-desck-top {
-    padding-inline: 33px;
-    justify-content: stretch;
+    padding-inline: 152px;
+  }
+
+  &-content {
+    display: grid;
+
+    @include on-tablet {
+      min-width: 600px;
+    }
+
+    @include on-desck-top {
+      min-width: 1136px;
+    }
   }
 
   &__top {
@@ -25,7 +38,6 @@
       align-items: center;
       gap: 8px;
 
-      width: 290px;
       margin-bottom: 24px;
 
       &-arrow {
@@ -66,29 +78,22 @@
 
   &__bottom {
     margin-bottom: 56px;
-
-    @include on-tablet {
-      width: 600px;
-    }
-
-    @include on-desck-top {
-      width: 100%;
-    }
+    width: 100%;
 
     &-list {
-      display: grid;
-
       gap: 40px;
+      margin-top: 32px;
       column-gap: 5px;
 
-      grid-template-columns: repeat(auto-fit, minmax(288px,288px));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 272px);
     }
   }
 }
 
 .card {
-  width: 288px;
-  box-sizing: border-box;
+  display: grid;
+  min-width: 272px;
 
   &__content {
     width: 100%;
@@ -118,16 +123,13 @@
   font-size: 10px;
 }
 
-
-
 .in-cart {
   transition: background-color 300ms;
 
-  color:  green;
+  color: green;
   background-color: white;
   border: 2px #313237 solid;
 }
-
 
 .favourites-empty {
   height: calc(100vh - 150px);

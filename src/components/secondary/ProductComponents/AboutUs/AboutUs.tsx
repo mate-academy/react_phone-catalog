@@ -25,33 +25,35 @@ export const AboutUs: React.FC<Props> = ({ product }) => {
 
   return (
     <section className="AboutUs">
-      <div className="AboutUs-content">
-        <h2 className="AboutUs-h2">About</h2>
+      <div className="AboutUs-width">
+        <div className="AboutUs-about">
+          <h2 className="AboutUs-about__h2">About</h2>
 
-        {product.description.map(item => {
-          return (
-            <div key={item.title} className="AboutUs-container">
-              <h3 className="AboutUs-content__title">{item.title}</h3>
-
-              <p className="AboutUs-content__p">{item.text}</p>
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="tech-specs">
-        <h2 className="tech-specs__h2">Tech specs</h2>
-
-        <ul className="tech-specs__list">
-          {characteristics.map(item => {
+          {product.description.map(item => {
             return (
-              <li key={item[0]} className="tech-specs__list-item">
-                <div>{item[0]}</div>
-                <div>{item[1]}</div>
-              </li>
+              <div key={item.title} className="AboutUs-about__container">
+                <h3 className="AboutUs-about__container-title">{item.title}</h3>
+
+                <p className="AboutUs-about__container-p">{item.text}</p>
+              </div>
             );
           })}
-        </ul>
+        </div>
+
+        <div className="tech-specs">
+          <h2 className="tech-specs__h2">Tech specs</h2>
+
+          <ul className="tech-specs__list">
+            {characteristics.map(item => {
+              return (
+                <li key={item[0]} className="tech-specs__list-item">
+                  <div>{item[0]}</div>
+                  <div>{item[1]}</div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </section>
   );

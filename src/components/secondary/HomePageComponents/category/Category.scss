@@ -14,9 +14,18 @@
 
   @include on-desck-top {
     justify-content: center;
+    padding-inline: 152px;
+
   }
 
   &__content {
+    width: 288px;
+
+
+    @include on-tablet {
+      width: 600px;
+    }
+
     @include on-desck-top {
       width: 1136px;
     }
@@ -47,13 +56,21 @@
   }
 
   &__block {
-
     &-h3 {
       margin-bottom: 4px;
       color: #313237;
       font-weight: 700;
       font-size: 20px;
+      text-decoration: none;
       font-family: Montserrat, sans-serif;
+
+      will-change: transform;
+      display: inline-block;
+      transition: transform 300ms;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
 
     &-p {

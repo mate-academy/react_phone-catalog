@@ -12,6 +12,8 @@ $content-width-desktop: 208px;
   width: 100%;
   padding-inline: 17px;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 
   @include on-tablet {
     padding-inline: 24px;
@@ -25,6 +27,14 @@ $content-width-desktop: 208px;
 .scroll-container {
   width: 100%;
   display: grid;
+
+  @include on-tablet {
+    width: 600px;
+  }
+
+  @include on-desck-top {
+    width: 1136px;
+  }
 
   &-top {
     display: flex;
@@ -91,9 +101,7 @@ $content-width-desktop: 208px;
 
   &-content {
     margin-top: 24px;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
     gap: 4px;
     width: 100%;
     margin-bottom: 56px;
@@ -204,7 +212,7 @@ $content-width-desktop: 208px;
       justify-content: space-between;
 
       &-add {
-         width: 160px;
+        width: 160px;
         height: 40px;
         font-size: 11px;
         font-weight: 700;
@@ -216,7 +224,6 @@ $content-width-desktop: 208px;
         justify-content: center;
         background-color: #313237;
         font-family: Montserrat, sans-serif;
-
       }
 
       &-save {

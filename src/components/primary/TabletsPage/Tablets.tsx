@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { TabletsBottom } from '../../secondary/TabletsComponents/TabletsBottom/TabletsBottom.js';
 import { TabletsList } from '../../secondary/TabletsComponents/TabletsList/TabletsList.js';
 import { TabletsTop } from '../../secondary/TabletsComponents/TabletsTop/TabletsTop.js';
@@ -13,7 +14,7 @@ import './Tablets.scss';
 export const Tablets = () => {
   const [initialList, setInitialList] = useState<Product[] | []>([]);
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const actualButton = Number(searchParams.get('actual-list') || 1);
   const sortSelect = searchParams.get('filter01') || 'Newest';
   const itemsPerPage = +(searchParams.get('filter02') || 16);
@@ -23,6 +24,23 @@ export const Tablets = () => {
   const tabletsList = useMemo(() => {
     return filterListPhone(actualButton, initialList, itemsPerPage, sortSelect);
   }, [itemsPerPage, actualButton, sortSelect, initialList, filterListPhone]);
+
+  useEffect(() => {
+    const totalPages = Math.ceil(initialList.length / itemsPerPage);
+
+    if (actualButton > totalPages) {
+      const newParams = new URLSearchParams(searchParams);
+
+      newParams.set('actual-list', '1');
+      setSearchParams(newParams);
+    }
+  }, [
+    itemsPerPage,
+    initialList.length,
+    actualButton,
+    searchParams,
+    setSearchParams,
+  ]);
 
   useEffect(() => {
     getPhonesData('tablets.json')
@@ -44,19 +62,21 @@ export const Tablets = () => {
         <ErrorBlock />
       ) : (
         <section className="tablets">
-          <TabletsTop
-            tabletsList={tabletsList}
-            itemsPerPage={itemsPerPage}
-            sortSelect={sortSelect}
-          />
+          <div className="tablets-content">
+            <TabletsTop
+              tabletsList={tabletsList}
+              itemsPerPage={itemsPerPage}
+              sortSelect={sortSelect}
+            />
 
-          <TabletsList tabletsList={tabletsList} />
+            <TabletsList tabletsList={tabletsList} />
 
-          <TabletsBottom
-            itemsPerPage={itemsPerPage}
-            initialList={initialList}
-            actualButton={actualButton}
-          />
+            <TabletsBottom
+              itemsPerPage={itemsPerPage}
+              initialList={initialList}
+              actualButton={actualButton}
+            />
+          </div>
         </section>
       )}
     </>

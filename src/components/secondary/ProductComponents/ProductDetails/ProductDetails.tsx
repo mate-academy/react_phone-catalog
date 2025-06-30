@@ -2,7 +2,8 @@ import { Product } from '../../../../types/Product';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './ProductDetails.scss';
-import { DeatailsIamges } from './DetailsComponents/DatailsImages';
+import { DeatailsIamges } from './DetailsComponents/DetailsBlocks';
+import { normalizeColor } from '../../../../utils/normalizeColors';
 
 interface Props {
   product: Product | null;
@@ -21,7 +22,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
       setPrimaryImg(product.images[0]);
       setActiveCapacity(product.capacity || '');
       setNewProduct(product);
-      setActiveColor(product.colorsAvailable[0] || '');
+      setActiveColor(product.color || '');
     }
 
     setPhonesStorge(JSON.parse(localStorage.getItem('phones') || '[]'));
@@ -121,52 +122,54 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
   return (
     <article className="product-details">
-      <div className="product-details__images">
-        <img
-          src={`/${primaryImg}`}
-          alt="Primary-img"
-          className="product-details__images-primary"
+      <div className="product-details-content">
+        <div className="product-details__images">
+          <img
+            src={`/${primaryImg}`}
+            alt="Primary-img"
+            className="product-details__images-primary"
+          />
+
+          <ul className="product-details__images-list">
+            {product.images.map(el => {
+              const color = normalizeColor(activeColor);
+              const parts = el.split('/');
+
+              parts[3] = color;
+              const imgSrc = parts.join('/');
+
+              return (
+                <li
+                  key={el}
+                  className={classNames('product-details__images-list-item', {
+                    'primary-img': imgSrc === primaryImg,
+                  })}
+                  onClick={() => setPrimaryImg(imgSrc)}
+                >
+                  <img
+                    src={`/${imgSrc}`}
+                    alt="list-img"
+                    className="product-details__images-list-item-img"
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        <DeatailsIamges
+          product={product}
+          phonesStorge={phonesStorge}
+          setCapacity={setCapacity}
+          changeColor={changeColor}
+          activeColor={activeColor}
+          elementsCart={elementsCart}
+          newProduct={newProduct}
+          activeCapacity={activeCapacity}
+          setPhonesStorge={setPhonesStorge}
+          setElementsCart={setElementsCart}
         />
-
-        <ul className="product-details__images-list">
-          {product.images.map(el => {
-            const color = activeColor.replace(' ', '-');
-            const parts = el.split('/');
-
-            parts[3] = color;
-            const imgSrc = parts.join('/');
-
-            return (
-              <li
-                key={el}
-                className={classNames('product-details__images-list-item', {
-                  'primary-img': imgSrc === primaryImg,
-                })}
-                onClick={() => setPrimaryImg(imgSrc)}
-              >
-                <img
-                  src={`/${imgSrc}`}
-                  alt="list-img"
-                  className="product-details__images-list-item-img"
-                />
-              </li>
-            );
-          })}
-        </ul>
       </div>
-
-      <DeatailsIamges
-        product={product}
-        phonesStorge={phonesStorge}
-        setCapacity={setCapacity}
-        changeColor={changeColor}
-        activeColor={activeColor}
-        elementsCart={elementsCart}
-        newProduct={newProduct}
-        activeCapacity={activeCapacity}
-        setPhonesStorge={setPhonesStorge}
-        setElementsCart={setElementsCart}
-      />
     </article>
   );
 };

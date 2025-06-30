@@ -14,7 +14,8 @@
     "react-router-dom": "^6.25.1",
     "react-select": "^5.10.1",
     "react-transition-group": "^4.4.5",
-    "reset-css": "^5.0.2"
+    "reset-css": "^5.0.2",
+    "swiper": "^11.2.8"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",

@@ -1,4 +1,4 @@
-// eslint-disable-next-line max-len
+/* eslint-disable max-len */
 
 import { AccessoriesBottom } from '../../secondary/AccessoriesComponents/AccessoriesBottom/AccessoriesBottom.js';
 import { AccessoriesList } from '../../secondary/AccessoriesComponents/AccessoriesList/AccessoriesList.js';
@@ -8,18 +8,35 @@ import { usePagedList } from '../../../utils/usePagedList.js';
 import { getPhonesData } from '../../../api/ProductApi.js';
 import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../../types/Product.js';
-import { useSearchParams } from 'react-router-dom';
 import { Spiner } from '../../../spiner/spiner.js';
+import { useSearchParams } from 'react-router-dom';
 import './Accessories.scss';
 
 export const AccessoriesPage = () => {
   const [initialList, setInitialList] = useState<Product[] | []>([]);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const actualButton = Number(searchParams.get('actual-list') || 1);
   const sortSelect = searchParams.get('filter01') || 'Newest';
   const itemsPerPage = +(searchParams.get('filter02') || 16);
   const { filterListPhone } = usePagedList(initialList, itemsPerPage);
   const [hasError, SetHasError] = useState<boolean>(false);
+
+  useEffect(() => {
+    const totalPages = Math.ceil(initialList.length / itemsPerPage);
+
+    if (actualButton > totalPages) {
+      const newParams = new URLSearchParams(searchParams);
+
+      newParams.set('actual-list', '1');
+      setSearchParams(newParams);
+    }
+  }, [
+    itemsPerPage,
+    initialList.length,
+    actualButton,
+    searchParams,
+    setSearchParams,
+  ]);
 
   useEffect(() => {
     getPhonesData('accessories.json')
@@ -30,7 +47,6 @@ export const AccessoriesPage = () => {
         SetHasError(true);
       });
   }, []);
-
   const accessoriesList = useMemo(() => {
     return filterListPhone(actualButton, initialList, itemsPerPage, sortSelect);
   }, [filterListPhone, itemsPerPage, actualButton, sortSelect, initialList]);
@@ -45,19 +61,21 @@ export const AccessoriesPage = () => {
         <ErrorBlock />
       ) : (
         <section className="accessories">
-          <AccessoriesTop
-            accessoriesList={accessoriesList}
-            itemsPerPage={itemsPerPage}
-            sortSelect={sortSelect}
-          />
+          <div className="accessories-content">
+            <AccessoriesTop
+              accessoriesList={accessoriesList}
+              itemsPerPage={itemsPerPage}
+              sortSelect={sortSelect}
+            />
 
-          <AccessoriesList accessoriesList={accessoriesList} />
+            <AccessoriesList accessoriesList={accessoriesList} />
 
-          <AccessoriesBottom
-            itemsPerPage={itemsPerPage}
-            initialList={initialList}
-            actualButton={actualButton}
-          />
+            <AccessoriesBottom
+              itemsPerPage={itemsPerPage}
+              initialList={initialList}
+              actualButton={actualButton}
+            />
+          </div>
         </section>
       )}
     </>

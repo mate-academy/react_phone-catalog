@@ -1,66 +1,34 @@
 import { togglePhoneInStorage } from '../../../../utils/togglePhone';
 import { addInCart } from '../../../../utils/addInCart';
 import { Product } from '../../../../types/Product';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css/navigation';
 import './Brand.scss';
+import 'swiper/css';
 
 interface Props {
   phones: Product[];
 }
 
 export const Brand: React.FC<Props> = ({ phones }) => {
-  const [phonesShow, setPhonesShow] = useState<Product[]>([]);
-  const brendContainer = useRef<HTMLDivElement | null>(null);
-  const [phonesStorge, setPhonesStorge] = useState<Product[]>([]);
+  const [phonesStorage, setPhonesStorage] = useState<Product[]>([]);
   const [elementsCart, setElementsCart] = useState<Product[]>([]);
+
+  const [prevEl, setPrevEl] = useState<HTMLDivElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!phones) {
       return;
     }
 
-    const indexToShow = new Set<number>();
-    const phonesList: Product[] = [];
-
-    const maxCount = Math.min(4, phones?.length || 0);
-
-    while (phonesList.length < maxCount) {
-      const number = Math.floor(Math.random() * phones?.length);
-
-      if (!indexToShow.has(number)) {
-        indexToShow.add(number);
-        phonesList.push(phones[number]);
-      }
-    }
-
-    setPhonesShow(phonesList);
     setElementsCart(JSON.parse(localStorage.getItem('cart') || '[]'));
-    setPhonesStorge(JSON.parse(localStorage.getItem('phones') || '[]'));
+    setPhonesStorage(JSON.parse(localStorage.getItem('phones') || '[]'));
   }, [phones]);
-
-  const scrollLeft = () => {
-    if (brendContainer.current) {
-      const cardWidth =
-        document.querySelector('.brend__bottom-phone-card')?.clientWidth || 0;
-
-      brendContainer.current.scrollBy({
-        left: -cardWidth,
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (brendContainer.current) {
-      const cardWidth =
-        document.querySelector('.brend__bottom-phone-card')?.clientWidth || 0;
-
-      brendContainer.current.scrollBy({
-        left: cardWidth,
-      });
-    }
-  };
 
   return (
     <section className="brend">
@@ -71,28 +39,39 @@ export const Brand: React.FC<Props> = ({ phones }) => {
           <div className="brend__top-buttons">
             <div
               className="brend__top-buttons-button button-01"
-              onClick={() => {
-                scrollLeft();
-              }}
+              ref={node => setPrevEl(node)}
             >
               <div className="brend__top-buttons-button-left left"></div>
             </div>
 
             <div
               className="brend__top-buttons-button button-02"
-              onClick={() => {
-                scrollRight();
-              }}
+              ref={node => setNextEl(node)}
             >
               <div className="brend__top-buttons-button-right right"></div>
             </div>
           </div>
         </div>
 
-        <div className="brend__bottom" ref={brendContainer}>
-          {phonesShow.map(p => {
-            return (
-              <article key={p.id} className="brend__bottom-phone-card">
+        <Swiper
+          className="brend__bottom"
+          modules={[Navigation]}
+          slidesPerView="auto"
+          spaceBetween={16}
+          navigation={{ prevEl, nextEl }}
+          onSwiper={swiper => {
+            setTimeout(() => {
+              if (swiper.navigation) {
+                swiper.navigation.destroy();
+                swiper.navigation.init();
+                swiper.navigation.update();
+              }
+            });
+          }}
+        >
+          {phones.map(p => (
+            <SwiperSlide key={p.id}>
+              <article className="brend__bottom-phone-card">
                 <div className="brend__bottom-phone-card-content">
                   <Link
                     state={{ from: 'Home' }}
@@ -153,7 +132,7 @@ export const Brand: React.FC<Props> = ({ phones }) => {
                     >
                       {elementsCart.some(obj => obj.id === p.id)
                         ? 'Added to cart'
-                        : 'Add to card'}
+                        : 'Add to cart'}
                     </button>
 
                     <div
@@ -161,26 +140,26 @@ export const Brand: React.FC<Props> = ({ phones }) => {
                       onClick={() => {
                         const updated = togglePhoneInStorage(p, 'phones');
 
-                        setPhonesStorge(updated);
+                        setPhonesStorage(updated);
                       }}
                     >
                       <div
                         className={classNames(
                           'brend__bottom-phone-card-down-button-save-img',
                           {
-                            'is-phone-favourites': phonesStorge?.some(
+                            'is-phone-favourites': phonesStorage?.some(
                               item => item.id === p.id,
                             ),
                           },
                         )}
-                      ></div>
+                      />
                     </div>
                   </div>
                 </div>
               </article>
-            );
-          })}
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );
