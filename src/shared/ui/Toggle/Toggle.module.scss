@@ -7,14 +7,15 @@
 }
 
 .toggle {
+  position: relative;
   display: flex;
   cursor: pointer;
-  position: relative;
   align-items: center;
 }
 
 .toggle::before {
   content: '';
+  min-height: 20px;
   height: 20px;
   width: 40px;
   border-radius: 10px;
