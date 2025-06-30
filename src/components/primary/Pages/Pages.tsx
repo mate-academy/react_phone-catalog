@@ -1,18 +1,18 @@
 /* eslint-disable max-len */
 
-import { AccessoriesBottom } from '../../secondary/AccessoriesComponents/AccessoriesBottom/AccessoriesBottom.js';
-import { AccessoriesList } from '../../secondary/AccessoriesComponents/AccessoriesList/AccessoriesList.js';
-import { AccessoriesTop } from '../../secondary/AccessoriesComponents/AccessoriesTop/AccessoriesTop.js';
-import { ErrorBlock } from '../../../messageError/MessageError.js';
+import { PagesBottom } from '../../secondary/PagesComponents/PagesBottom/PagesBottom.js';
+import { PagesList } from '../../secondary/PagesComponents/PagesList/PagesList.js';
+import { PagesTop } from '../../secondary/PagesComponents/PagesTop/PagesTop.js';
+import { ErrorBlock } from '../../secondary/messageError/MessageError.js';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { usePagedList } from '../../../utils/usePagedList.js';
 import { getPhonesData } from '../../../api/ProductApi.js';
+import { Spiner } from '../../secondary/spiner/spiner.js';
 import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../../types/Product.js';
-import { Spiner } from '../../../spiner/spiner.js';
-import { useSearchParams } from 'react-router-dom';
-import './Accessories.scss';
+import './Pages.scss';
 
-export const AccessoriesPage = () => {
+export const Pages = () => {
   const [initialList, setInitialList] = useState<Product[] | []>([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const actualButton = Number(searchParams.get('actual-list') || 1);
@@ -20,6 +20,8 @@ export const AccessoriesPage = () => {
   const itemsPerPage = +(searchParams.get('filter02') || 16);
   const { filterListPhone } = usePagedList(initialList, itemsPerPage);
   const [hasError, SetHasError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     const totalPages = Math.ceil(initialList.length / itemsPerPage);
@@ -39,19 +41,38 @@ export const AccessoriesPage = () => {
   ]);
 
   useEffect(() => {
-    getPhonesData('accessories.json')
+    setIsLoading(true);
+
+    let doFetch = '';
+
+    switch (location.pathname) {
+      case '/phones':
+        doFetch = 'phones.json';
+        break;
+      case '/accessories':
+        doFetch = 'accessories.json';
+        break;
+      case '/tablets':
+        doFetch = 'tablets.json';
+        break;
+    }
+
+    getPhonesData(doFetch)
       .then(response => {
         setInitialList(response);
+        setIsLoading(false);
       })
       .catch(() => {
         SetHasError(true);
+        setIsLoading(false);
       });
-  }, []);
-  const accessoriesList = useMemo(() => {
+  }, [location.pathname]);
+
+  const renderList = useMemo(() => {
     return filterListPhone(actualButton, initialList, itemsPerPage, sortSelect);
   }, [filterListPhone, itemsPerPage, actualButton, sortSelect, initialList]);
 
-  if (initialList.length === 0) {
+  if (isLoading) {
     return <Spiner />;
   }
 
@@ -60,17 +81,17 @@ export const AccessoriesPage = () => {
       {hasError ? (
         <ErrorBlock />
       ) : (
-        <section className="accessories">
-          <div className="accessories-content">
-            <AccessoriesTop
-              accessoriesList={accessoriesList}
+        <section className="pages">
+          <div className="pages-content">
+            <PagesTop
+              renderList={renderList}
               itemsPerPage={itemsPerPage}
               sortSelect={sortSelect}
             />
 
-            <AccessoriesList accessoriesList={accessoriesList} />
+            <PagesList renderList={renderList} />
 
-            <AccessoriesBottom
+            <PagesBottom
               itemsPerPage={itemsPerPage}
               initialList={initialList}
               actualButton={actualButton}

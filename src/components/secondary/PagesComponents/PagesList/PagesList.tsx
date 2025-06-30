@@ -2,17 +2,31 @@ import { togglePhoneInStorage } from '../../../../utils/togglePhone';
 import { addInCart } from '../../../../utils/addInCart';
 import { Product } from '../../../../types/Product';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import './PhonesList.scss';
+import './PagesList.scss';
 
 type Props = {
-  phonesList: Product[];
+  renderList: Product[];
 };
 
-export const PhonesList: React.FC<Props> = ({ phonesList }) => {
+export const PagesList: React.FC<Props> = ({ renderList }) => {
   const [favourites, setFavourites] = useState<Product[] | []>([]);
   const [elementsCart, setElementsCart] = useState<Product[]>([]);
+  const { pathname } = useLocation();
+  let isFrom = '';
+
+  switch (pathname) {
+    case 'phones':
+      isFrom = 'Phones';
+      break;
+    case 'accessories':
+      isFrom = 'Accessories';
+      break;
+    case 'tablets':
+      isFrom = 'Tablets';
+      break;
+  }
 
   useEffect(() => {
     setFavourites(JSON.parse(localStorage.getItem('phones') || '[]'));
@@ -20,51 +34,51 @@ export const PhonesList: React.FC<Props> = ({ phonesList }) => {
   }, []);
 
   return (
-    <div className="phones-list">
-      {phonesList.map(phone => {
+    <div className="pages-list">
+      {renderList.map(phone => {
         return (
-          <article key={phone.id} className="phone-card">
-            <div className="phone-card__content">
+          <article key={phone.id} className="pages-card">
+            <div className="pages-card__content">
               <Link
-                state={{ from: 'Phones' }}
-                className="phone-card__img"
+                state={{ from: isFrom }}
+                className="pages-card__img"
                 to={`/product/${phone.name}`}
               >
-                <img src={phone.images[0]} alt="Phone-img" />
+                <img src={phone.images[0]} alt="pages-img" />
               </Link>
 
               <Link
                 state={{ from: 'Phones' }}
                 to={`/product/${phone.name}`}
-                className="phone-card__box"
+                className="pages-card__box"
               >
-                <p className="phone-card__box-p">{phone.name}</p>
+                <p className="pages-card__box-p">{phone.name}</p>
               </Link>
 
-              <div className="phone-card__price">{`$${phone.priceRegular}`}</div>
+              <div className="pages-card__price">{`$${phone.priceRegular}`}</div>
 
-              <div className="phone-card__characteristics">
-                <div className="phone-card__characteristics-item">
+              <div className="pages-card__characteristics">
+                <div className="pages-card__characteristics-item">
                   <div className="characteristics-text">Scrin</div>
                   <div className="characteristics-text screen">
                     {phone.screen}
                   </div>
                 </div>
 
-                <div className="phone-card__characteristics-item">
+                <div className="pages-card__characteristics-item">
                   <div className="characteristics-text">Capacity</div>
                   <div className="characteristics-text">{phone.capacity}</div>
                 </div>
 
-                <div className="phone-card__characteristics-item">
+                <div className="pages-card__characteristics-item">
                   <div className="characteristics-text">RAM</div>
                   <div className="characteristics-text">{phone.ram}</div>
                 </div>
               </div>
 
-              <div className="phone-card__down">
+              <div className="pages-card__down">
                 <button
-                  className={classNames('phone-card__down-button', {
+                  className={classNames('pages-card__down-button', {
                     'in-cart': elementsCart.some(
                       obj =>
                         obj.id === phone.id &&
@@ -84,7 +98,7 @@ export const PhonesList: React.FC<Props> = ({ phonesList }) => {
                 </button>
 
                 <div
-                  className="phone-card__down-button-save"
+                  className="pages-card__down-button-save"
                   onClick={() => {
                     const newFavourites = togglePhoneInStorage(phone, 'phones');
 
@@ -92,7 +106,7 @@ export const PhonesList: React.FC<Props> = ({ phonesList }) => {
                   }}
                 >
                   <div
-                    className={classNames('phone-card__down-button-save-img', {
+                    className={classNames('pages-card__down-button-save-img', {
                       'is-favourites': favourites.some(
                         item => item.id === phone.id,
                       ),

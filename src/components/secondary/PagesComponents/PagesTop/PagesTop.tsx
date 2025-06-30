@@ -3,16 +3,16 @@ import { Product } from '../../../../types/Product';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useState } from 'react';
-import './TabletsTop.scss';
+import './PagesTop.scss';
 
 type Props = {
   itemsPerPage: number | null;
-  tabletsList: Product[];
+  renderList: Product[];
   sortSelect: string;
 };
 
-export const TabletsTop: React.FC<Props> = ({
-  tabletsList,
+export const PagesTop: React.FC<Props> = ({
+  renderList,
   itemsPerPage,
   sortSelect,
 }) => {
@@ -23,28 +23,28 @@ export const TabletsTop: React.FC<Props> = ({
   const { saveFilterInParams } = useSaveFilterInParams();
 
   return (
-    <section className="tablets-top">
+    <section className="PagesTop">
       <nav>
-        <ul className="tablets-top__breadcrumb">
+        <ul className="PagesTop__breadcrumb">
           <li>
-            <Link className="tablets-top__breadcrumb-icon" to="/">
+            <Link className="PagesTop__breadcrumb-icon" to="/">
               <img src="/icons/icon-house.svg" alt="Icon House" />
             </Link>
           </li>
 
-          <Link to="/tablets" className="tablets-top__breadcrumb-path">
-            Tablets
+          <Link to="/phones" className="PagesTop__breadcrumb-path">
+            Phones
           </Link>
         </ul>
       </nav>
 
-      <h1 className="tablets-top__h1">Tablets</h1>
+      <h1 className="PagesTop__h1">Mobile phones</h1>
 
-      <p className="tablets-top__p">{tabletsList?.length} models</p>
+      <p className="PagesTop__p">{renderList?.length} models</p>
 
-      <div className="tablets-top__selects">
-        <div className="tablets-top__selects-sort">
-          <p className="tablets-top__selects-sort-p">Sort by</p>
+      <div className="PagesTop__selects">
+        <div className="PagesTop__selects-sort">
+          <p className="PagesTop__selects-sort-p">Sort by</p>
 
           <div
             className={classNames('sort-dropdown', {
@@ -79,8 +79,8 @@ export const TabletsTop: React.FC<Props> = ({
             </ul>
           </div>
         </div>
-        <div className="tablets-top__selects-quantity ">
-          <p className="tablets-top__selects-quantity-p">Items on page</p>
+        <div className="PagesTop__selects-quantity ">
+          <p className="PagesTop__selects-quantity-p">Items on page</p>
 
           <div
             className={classNames('quantity-dropdown', {

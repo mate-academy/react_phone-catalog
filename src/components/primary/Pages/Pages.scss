@@ -1,6 +1,6 @@
 @import '../../../styles/mixins';
 
-.tablets {
+.pages {
   display: grid;
   padding-inline: 16px;
   justify-content: center;
@@ -13,7 +13,6 @@
     padding-inline: 152px;
   }
 
-
   &-content {
     width: 288px;
 
@@ -23,7 +22,6 @@
 
     @include on-desck-top {
       min-width: 1136px;
-
     }
   }
 }

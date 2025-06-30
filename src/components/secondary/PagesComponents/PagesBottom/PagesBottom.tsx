@@ -4,7 +4,7 @@ import { usePagedList } from '../../../../utils/usePagedList';
 import { Product } from '../../../../types/Product';
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import './PhonesBottom.scss';
+import './PagesBottom.scss';
 
 interface Props {
   actualButton: number;
@@ -12,7 +12,7 @@ interface Props {
   itemsPerPage: number;
 }
 
-export const PhonesBottom: React.FC<Props> = ({
+export const PagesBottom: React.FC<Props> = ({
   actualButton,
   initialList,
   itemsPerPage,
@@ -34,12 +34,14 @@ export const PhonesBottom: React.FC<Props> = ({
     return null;
   }
 
+
+
   return (
-    <div className="phones-bottom">
+    <div className="Pages-bottom">
       <nav>
-        <ul className="phones-bottom__nav">
+        <ul className="Pages-bottom__nav">
           <li
-            className="phones-bottom__nav-item button-left"
+            className="Pages-bottom__nav-item button-left"
             onClick={() => {
               saveFilterInParams(
                 'actual-list',
@@ -55,13 +57,13 @@ export const PhonesBottom: React.FC<Props> = ({
           ></li>
 
           <li>
-            <ul ref={navigationContainer} className="phones-bottom__navigation">
+            <ul ref={navigationContainer} className="Pages-bottom__navigation">
               {howButtonsRender.map(buttonNumber => {
                 return (
                   <li
                     key={buttonNumber}
                     data-actual-button={buttonNumber}
-                    className={classNames('phones-bottom__navigation-button', {
+                    className={classNames('Pages-bottom__navigation-button', {
                       'active-list': buttonNumber === actualButton,
                     })}
                     onClick={() => {
@@ -76,7 +78,7 @@ export const PhonesBottom: React.FC<Props> = ({
           </li>
 
           <li
-            className="phones-bottom__nav-item button-right"
+            className="Pages-bottom__nav-item button-right"
             onClick={() => {
               saveFilterInParams(
                 'actual-list',

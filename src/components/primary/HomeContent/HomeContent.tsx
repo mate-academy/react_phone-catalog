@@ -3,10 +3,10 @@ import { HotPrice } from '../../secondary/HomePageComponents/HotPrice';
 import { Header } from '../../secondary/HomePageComponents/Header';
 import { Brand } from '../../secondary/HomePageComponents/Brand';
 import { getPhonesData } from '../../../api/ProductApi';
-import { ErrorBlock } from '../../../messageError';
+import { ErrorBlock } from '../../secondary/messageError';
 import { Product } from '../../../types/Product';
 import { useEffect, useState } from 'react';
-import { Spiner } from '../../../spiner';
+import { Spiner } from '../../secondary/spiner';
 
 export const HomeContent = () => {
   const [initialList, setInitialList] = useState<Product[]>([]);

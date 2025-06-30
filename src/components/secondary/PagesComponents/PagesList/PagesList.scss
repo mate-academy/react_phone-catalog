@@ -1,14 +1,12 @@
 @import '../../../../styles/mixins';
 
-.accessories-list {
+.pages-list {
+  width: 100%;
   display: grid;
-
   row-gap: 30px;
   margin-top: 24px;
   column-gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(272px, max-content));
-
-  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(230px, max-content));
 
   @include on-tablet {
     min-width: 600px;
@@ -19,46 +17,45 @@
   }
 }
 
-.accessories-card {
+.pages-card {
   display: flex;
   justify-content: center;
   width: 100%;
 
-  box-sizing: border-box;
 
   padding-block: 32px;
   padding-inline: 32px;
+  box-sizing: border-box;
   border: 1px #e2e6e9 solid;
-
-  max-width: 288px;
+  width: 288px;
 
   @include on-desck-top {
-    max-width: 272px;
+    width: 272px;
   }
 
   &__content {
     display: flex;
     flex-direction: column;
+
+    width: 100%;
   }
 
   &__box {
-    text-decoration: none;
-    pointer-events: none;
     height: 40px;
     margin-bottom: 8px;
+    pointer-events: none;
+    text-decoration: none;
 
     &-p {
       pointer-events: auto;
       cursor: pointer;
-      display: inline;
+
       color: #313237;
       font-size: 14px;
       font-weight: 600;
-
-      height: 80px;
       line-height: 21px;
-      font-family: Montserrat, sans-serif;
 
+      font-family: Montserrat, sans-serif;
       transition: color 300ms;
 
       &:hover {
@@ -175,6 +172,10 @@
   }
 }
 
+.screen {
+  font-size: 9px;
+}
+
 .is-favourites {
   background-repeat: no-repeat;
   background-image: url('/icons/favourites-icon-red.svg');
@@ -187,6 +188,7 @@
 .in-cart {
   transition: background-color 300ms;
 
+  color: green;
   background-color: white;
   border: 2px #e2e6e9 solid;
 }

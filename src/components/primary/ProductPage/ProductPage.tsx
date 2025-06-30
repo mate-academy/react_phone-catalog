@@ -1,13 +1,15 @@
+/* eslint-disable max-len */
+
 import { ProductTop } from '../../secondary/ProductComponents/ProductTop/ProductTop';
 import { ProductDetails } from '../../secondary/ProductComponents/ProductDetails';
 import { ProductBottom } from '../../secondary/ProductComponents/ProducBottom';
 import { AboutUs } from '../../secondary/ProductComponents/AboutUs/AboutUs';
 import { getPhonesData } from '../../../api/ProductApi';
-import { ErrorBlock } from '../../../messageError';
+import { ErrorBlock } from '../../secondary/messageError';
 import { Product } from '../../../types/Product';
+import { Spiner } from '../../secondary/spiner';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Spiner } from '../../../spiner';
 import './Product.scss';
 
 export const ProductPage = () => {
@@ -27,16 +29,15 @@ export const ProductPage = () => {
       })
       .catch(() => {
         SetHasError(true);
-        true;
       });
   }, []);
 
   useEffect(() => {
     allStore.forEach(store => {
-      const product = store?.find(product => product.name === productId);
+      const foundProduct = store?.find(product => product.name === productId);
 
-      if (product) {
-        setProduct(product);
+      if (foundProduct) {
+        setProduct(foundProduct);
       }
     });
   }, [productId, allStore]);

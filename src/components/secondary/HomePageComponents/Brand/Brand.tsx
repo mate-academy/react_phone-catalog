@@ -1,11 +1,13 @@
+/* eslint-disable max-len */
+
 import { togglePhoneInStorage } from '../../../../utils/togglePhone';
 import { addInCart } from '../../../../utils/addInCart';
 import { Product } from '../../../../types/Product';
-import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 import './Brand.scss';
 import 'swiper/css';
