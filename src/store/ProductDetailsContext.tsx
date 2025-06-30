@@ -45,7 +45,7 @@ export const ProductDetailsProvider: React.FC<Props> = ({ children }) => {
 
     const category = product.category;
 
-    fetch(`/api/${category}.json`)
+    fetch(`api/${category}.json`)
       .then(result => result.json())
       .then((data: ProductDetails[]) => {
         const detailedProduct = data.find(p => p.id === validId);

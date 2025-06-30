@@ -1,7 +1,7 @@
 import { Product } from './types/Product';
 
 // eslint-disable-next-line operator-linebreak
-const API_URL = '/api/products.json';
+const API_URL = 'api/products.json';
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
