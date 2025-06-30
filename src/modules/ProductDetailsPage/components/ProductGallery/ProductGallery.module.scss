@@ -58,7 +58,7 @@
   margin-bottom: 40px;
 }
 
-.gallaryImg {
+%gallary-img {
   @include on-tablet {
     width: 35px;
     height: 35px;
@@ -67,6 +67,10 @@
   @include on-desktop {
     width: 80px;
     height: 80px;
+
+    &:hover {
+      border-color: var(--text-color);
+    }
   }
 
   width: 51px;
@@ -75,4 +79,15 @@
   object-fit: contain;
   border: 1px solid var(--border-color);
   border-radius: 4px;
+  transition: all $transition-duration ease-in-out;
+}
+
+.gallaryImg {
+  @extend %gallary-img;
+}
+
+.activeImg {
+  @extend %gallary-img;
+
+  border-color: var(--text-color);
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo, useRef } from 'react';
 import { getSearchWith } from '../utils/helpers/searchHelper';
 import { SelectOptions } from '../types/selectType';
 import { paginationOptions } from '../shared/ui/Select/data/selectData';
@@ -73,6 +73,16 @@ export const PaginationProvider: React.FC<Props> = ({ children }) => {
 
     return filters.productCard.slice(startIndex, endIndex);
   }, [currentPage, itemsPerPage, filters.productCard]);
+
+  const prevItemsPerPage = useRef(itemsPerPage);
+
+  useEffect(() => {
+    if (itemsPerPage?.value !== prevItemsPerPage.current?.value) {
+      filters.setSearchWith({ page: '1' });
+    }
+
+    prevItemsPerPage.current = itemsPerPage;
+  }, [itemsPerPage, filters]);
 
   const visiblePages = useMemo(() => {
     const pages: (string | number)[] = [];

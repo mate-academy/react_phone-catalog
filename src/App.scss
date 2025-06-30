@@ -29,6 +29,7 @@ h1 {
 
 .App {
   min-height: 100vh;
+  height: max-content;
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;
@@ -39,6 +40,7 @@ h1 {
 
 :root {
   min-height: 100vh;
+  height: max-content;
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;

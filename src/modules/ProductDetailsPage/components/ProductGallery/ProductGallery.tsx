@@ -47,7 +47,11 @@ export const ProductGallery: React.FC<Props> = ({ productDetails }) => {
                 }
               }}
             >
-              <img src={i} className={style.gallaryImg} alt={i} />
+              <img
+                src={i}
+                className={img === i ? style.activeImg : style.gallaryImg}
+                alt={i}
+              />
             </span>
           </li>
         ))}

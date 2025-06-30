@@ -30,7 +30,7 @@ export const HomePage = React.memo(() => {
 
   return (
     <div className={style.main}>
-      <h1 className={style.main__title}>Product Catalog</h1>
+      <h1 className={style.main__title}>Welcome to Nice Gadgets store!</h1>
 
       <div className={style.mainWrapper}>
         <HeroModule />

@@ -7,20 +7,20 @@ export const Toggle = () => {
   const { toggleTheme, isChecked } = useTheme();
 
   return (
-    <div className={style.toggleContainer}>
+    <label className={style.toggleContainer}>
       <input
         type="checkbox"
-        id="check"
         className={style.toggle}
         onChange={toggleTheme}
         checked={isChecked}
+        aria-label="Toggle dark mode"
       />
-      <label htmlFor="check" className={style.slider}>
+      <div className={style.slider}>
         <span className={style.iconWrapper}>
           <Icons id={IconId.Sun} className={style.sun} />
           <Icons id={IconId.Moon} className={style.moon} />
         </span>
-      </label>
-    </div>
+      </div>
+    </label>
   );
 };
