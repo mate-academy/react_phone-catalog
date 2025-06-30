@@ -22,13 +22,13 @@ export const Linkline: FC<Props> = ({ productType, productName }) => {
   return (
     <div className="linkline">
       <div className="linkline__container">
-        <a
-          href="/"
+        <Link
+          to={'/'}
           className="linkline__link-home"
           aria-label="Go to home page"
         >
           <Icon icon={icons.home[theme]} />
-        </a>
+        </Link>
 
         <span className="linkline__arrow">
           <Icon icon={icons.arrow_right__disabled[theme]} />
