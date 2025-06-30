@@ -1,7 +1,4 @@
+import { Root } from './Root';
 import './App.scss';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => <Root />;

@@ -1,0 +1,14 @@
+$OnTablet: 640px;
+$OnDesckTop: 1200px;
+
+@mixin on-tablet {
+  @media (min-width: $OnTablet) {
+    @content;
+  }
+}
+
+@mixin on-desck-top {
+  @media (min-width: $OnDesckTop) {
+    @content;
+  }
+}

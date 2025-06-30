@@ -1,0 +1,92 @@
+.Pages-bottom {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  &__nav {
+    display: flex;
+
+    &-item {
+      width: 32px;
+      height: 32px;
+      box-sizing: border-box;
+
+      display: grid;
+      place-content: center center;
+
+      color: black;
+      cursor: pointer;
+      border: 1px #b4bdc3 solid;
+      transition: 500ms background-color;
+
+      &:hover {
+        background-color: #b5b7b9;
+      }
+
+      &:active {
+        background-color: #737576;
+      }
+    }
+  }
+}
+
+.button-left {
+  margin-right: 16px;
+
+  &::after {
+    content: '';
+    height: 8px;
+    width: 8px;
+    display: block;
+    transform: rotate(45deg);
+    border-bottom: 2px rgb(0, 0, 0) solid;
+    border-left: 2px rgb(0, 0, 0) solid;
+  }
+}
+
+.button-right {
+  margin-left: 16px;
+
+  &::after {
+    content: '';
+    height: 8px;
+    width: 8px;
+    display: block;
+    transform: rotate(45deg);
+    border-right: 2px rgb(0, 0, 0) solid;
+    border-top: 2px rgb(0, 0, 0) solid;
+  }
+}
+
+.Pages-bottom__navigation {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  width: 128px;
+
+  &-button {
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-content: center center;
+
+    color: black;
+    cursor: pointer;
+    border: 1px #b4bdc3 solid;
+    transition: 500ms background-color;
+
+    &:hover {
+      background-color: #b5b7b9;
+    }
+
+    &:active {
+      background-color: #737576;
+    }
+  }
+}

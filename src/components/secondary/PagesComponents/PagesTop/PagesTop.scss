@@ -1,0 +1,254 @@
+@import '../../../../styles/mixins';
+
+.PagesTop {
+  margin-top: 24px;
+  width: 288px;
+
+  @include on-tablet {
+    width: 100%;
+  }
+  &__breadcrumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &-path {
+      font-size: 12px;
+      font-weight: 600;
+      color: #89939a;
+      text-decoration: none;
+      cursor: pointer;
+
+      font-family: Montserrat, sans-serif;
+    }
+  }
+
+  &__h1 {
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+    letter-spacing: -1%;
+
+    font-family: Montserrat, sans-serif;
+  }
+
+  &__p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #89939a;
+    font-family: Montserrat, sans-serif;
+  }
+
+  &__selects {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+
+    &-quantity {
+      &-p {
+        font-size: 12px;
+        font-weight: 700;
+        color: #89939a;
+        margin-bottom: 4px;
+
+        font-family: Montserrat, sans-serif;
+      }
+    }
+
+    &-sort {
+      &-p {
+        font-size: 12px;
+        font-weight: 700;
+        color: #89939a;
+        margin-bottom: 4px;
+
+        font-family: Montserrat, sans-serif;
+      }
+    }
+  }
+}
+
+.active-list {
+  background-color: #313237;
+  color: white;
+
+  &:hover {
+    background-color: #313237;
+  }
+
+  transition: 500ms background-color;
+
+  &:active {
+    background-color: #313237;
+  }
+}
+
+.quantity-dropdown {
+  display: grid;
+  gap: 6px;
+
+  &__button {
+    height: 40px;
+    position: relative;
+    border: 2px #b4bdc3 solid;
+
+    width: 136px;
+    cursor: pointer;
+    padding-inline: 12px;
+    background-color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+    font-family: Montserrat, sans-serif;
+
+    text-align: start;
+
+    &::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      transform: rotate(45deg);
+      position: absolute;
+      border-right: 2px #b4bdc3 solid;
+      border-bottom: 2px #b4bdc3 solid;
+      top: 12px;
+      right: 12px;
+    }
+  }
+
+  &__content {
+    background-color: white;
+    z-index: 1;
+
+    border-radius: 2px;
+    position: absolute;
+    margin-top: 45px;
+
+    width: 136px;
+
+    max-height: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    transition: max-height 300ms;
+    border: 2px transparent solid;
+
+    &-item {
+      color: rgb(0, 0, 0);
+      font-size: 14px;
+      font-weight: 700;
+      padding-inline: 5px;
+      padding-block: 5px;
+      box-sizing: border-box;
+
+      width: 100%;
+      cursor: pointer;
+      font-family: Montserrat, sans-serif;
+
+      &:hover {
+        background-color: #b4bdc3;
+      }
+    }
+  }
+}
+
+.dropdown-activ-item {
+  background-color: #d2d7db;
+}
+
+.sort-dropdown {
+  display: grid;
+  gap: 6px;
+
+  position: relative;
+
+  &__button {
+    height: 40px;
+    border: 2px #b4bdc3 solid;
+
+    width: 136px;
+    cursor: pointer;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-align: start;
+
+    font-size: 12px;
+    font-weight: 700;
+    font-family: Montserrat, sans-serif;
+
+    &::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      transform: rotate(45deg);
+      position: absolute;
+      border-right: 2px #b4bdc3 solid;
+      border-bottom: 2px #b4bdc3 solid;
+      top: 12px;
+      right: 12px;
+    }
+  }
+
+  &__content {
+    background-color: white;
+    box-sizing: border-box;
+    z-index: 1;
+
+    border-radius: 2px;
+    position: absolute;
+    margin-top: 45px;
+    width: 136px;
+
+    max-height: 0;
+    overflow: hidden;
+    border: 2px transparent solid;
+
+    transition: max-height 300ms;
+
+    &-item {
+      color: rgb(0, 0, 0);
+      font-size: 12px;
+      font-weight: 700;
+      padding-inline: 5px;
+      padding-block: 5px;
+      box-sizing: border-box;
+
+      cursor: pointer;
+      font-family: Montserrat, sans-serif;
+
+      width: 100%;
+
+      &:hover {
+        background-color: #b4bdc3;
+      }
+    }
+  }
+}
+
+.dropdown--activ .sort-dropdown__content {
+  max-height: 69px;
+  border-color: #b4bdc3;
+}
+
+.dropdown--activ .quantity-dropdown__content {
+  max-height: 69px;
+  border-color: #b4bdc3;
+}
+
+.sort-dropdown__button--active::after {
+  transition: border-right-color 200ms;
+
+  border-right-color: black;
+  border-bottom-color: black;
+}
+
+.quantity-dropdown__button--active::after {
+  transition: border-right-color 200ms;
+
+  border-right-color: black;
+  border-bottom-color: black;
+}

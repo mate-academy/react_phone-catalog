@@ -1,0 +1,109 @@
+@import '../../../../styles/mixins';
+
+.category {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  margin-bottom: 56px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desck-top {
+    justify-content: center;
+    padding-inline: 152px;
+
+  }
+
+  &__content {
+    width: 288px;
+
+
+    @include on-tablet {
+      width: 600px;
+    }
+
+    @include on-desck-top {
+      width: 1136px;
+    }
+  }
+
+  &__h2 {
+    align-self: start;
+    cursor: pointer;
+    width: max-content;
+
+    font-size: 22px;
+    font-weight: 800;
+    color: #313237;
+    line-height: 140%;
+    margin-bottom: 24px;
+    font-family: Montserrat, sans-serif;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__blocks {
+    @include on-tablet {
+      display: flex;
+      gap: 15px;
+    }
+  }
+
+  &__block {
+    &-h3 {
+      margin-bottom: 4px;
+      color: #313237;
+      font-weight: 700;
+      font-size: 20px;
+      text-decoration: none;
+      font-family: Montserrat, sans-serif;
+
+      will-change: transform;
+      display: inline-block;
+      transition: transform 300ms;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    &-p {
+      margin-bottom: 32px;
+      color: #89939a;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      font-family: Montserrat, sans-serif;
+    }
+
+    &-image {
+      margin-bottom: 24px;
+      width: 288px;
+      height: 288px;
+      cursor: pointer;
+
+      will-change: transform;
+      transition: transform 300ms;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      @include on-tablet {
+        width: 187px;
+        height: 187px;
+      }
+
+      @include on-desck-top {
+        width: 368px;
+        height: 368px;
+      }
+    }
+  }
+}

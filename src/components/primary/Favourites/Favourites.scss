@@ -1,0 +1,146 @@
+@import '../../../styles/mixins';
+
+.favourites {
+  gap: 32px;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  box-sizing: border-box;
+  justify-content: center;
+
+  margin-top: 24px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desck-top {
+    padding-inline: 152px;
+  }
+
+  &-content {
+    display: grid;
+
+    @include on-tablet {
+      min-width: 600px;
+    }
+
+    @include on-desck-top {
+      min-width: 1136px;
+    }
+  }
+
+  &__top {
+    &-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 24px;
+
+      &-arrow {
+        background-size: contain;
+        height: 16px;
+        width: 16px;
+
+        background-image: url('/icons/arrows/arrow-right.svg');
+      }
+
+      &-p {
+        color: #89939a;
+        font-weight: 600;
+        font-size: 12px;
+        font-family: Montserrat, sans-serif;
+      }
+    }
+
+    &-h1 {
+      color: #313237;
+      font-weight: 800;
+
+      font-size: 32px;
+      line-height: 41px;
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 8px;
+    }
+
+    &-items {
+      color: #89939a;
+      font-size: 14px;
+
+      flex-wrap: 600;
+      font-family: Montserrat, sans-serif;
+      line-height: 21px;
+    }
+  }
+
+  &__bottom {
+    margin-bottom: 56px;
+    width: 100%;
+
+    &-list {
+      gap: 40px;
+      margin-top: 32px;
+      column-gap: 5px;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 272px);
+    }
+  }
+}
+
+.card {
+  display: grid;
+  min-width: 272px;
+
+  &__content {
+    width: 100%;
+
+    &-down-add {
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    &-name {
+      height: 40px;
+    }
+  }
+}
+
+.is-favourites {
+  background-repeat: no-repeat;
+  background-image: url('/icons/favourites-icon-red.svg');
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.second {
+  text-align: end;
+  font-size: 10px;
+}
+
+.in-cart {
+  transition: background-color 300ms;
+
+  color: green;
+  background-color: white;
+  border: 2px #313237 solid;
+}
+
+.favourites-empty {
+  height: calc(100vh - 150px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__img {
+    width: 300px;
+    height: 100%;
+    object-fit: contain;
+  }
+}

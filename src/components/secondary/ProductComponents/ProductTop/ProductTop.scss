@@ -1,0 +1,107 @@
+@import '../../../../styles/mixins';
+
+.product-top {
+  padding-inline: 17px;
+
+  display: grid;
+  justify-content: center;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desck-top {
+    padding-inline: 32px;
+  }
+
+  &__content {
+    @include on-tablet {
+      width: 600px;
+    }
+
+    @include on-desck-top {
+      width: 1136px;
+    }
+  }
+
+  &__breadcrumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-bottom: 24px;
+    margin-top: 24px;
+
+    &-arrow-right {
+      background-image: url('/icons/arrows/arrow-right.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      width: 16px;
+      height: 16px;
+    }
+
+    &-path-0 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #89939a;
+
+      font-family: Montserrat, sans-serif;
+    }
+
+    &-path-1 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #89939a;
+
+      font-family: Montserrat, sans-serif;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    margin-bottom: 16px;
+
+    &-arrow-left {
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 16px;
+      width: 16px;
+      background-image: url('/icons/arrows/arrow-left-black.svg');
+    }
+
+    &-button {
+      border: none;
+      color: #89939a;
+      background-color: white;
+
+      cursor: pointer;
+      transition: color 300ms;
+
+      font-size: 12px;
+      font-weight: 700;
+      font-family: Montserrat, sans-serif;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  &__h1 {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    font-family: Montserrat, sans-serif;
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+}

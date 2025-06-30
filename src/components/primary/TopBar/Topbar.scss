@@ -1,0 +1,205 @@
+@import '../../../styles/mixins';
+
+  $manageHeight: 48px;
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #b4bdc3;
+
+  &__logo {
+    padding-left: 16px;
+  }
+
+  &__nav {
+    gap: 32px;
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &-primary {
+      gap: 32px;
+      display: flex;
+      margin-left: 32px;
+      align-items: center;
+      height: $manageHeight;
+      display: none;
+
+       @include on-tablet {
+          display: flex;
+        }
+
+      @include on-desck-top {
+        margin-left: 48px;
+        gap: 64px;
+      }
+
+      & :nth-child(n) {
+        height: 48px;
+        display: flex;
+        align-items: center;
+      }
+
+      &-item {
+        display: none;
+        font-weight: 800;
+        font-size: 12px;
+
+        line-height: 11px;
+        letter-spacing: 4%;
+        text-decoration: none;
+        color: #89939a;
+        height: $manageHeight;
+
+        font-family: Montserrat, sans-serif;
+
+        transition: 500ms color;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: black;
+          transform: scaleX(0);
+          transform-origin: bottom;
+          transition: transform 0.2s ease;
+        }
+
+        &.active-button {
+          &::after {
+            transform: scaleX(1);
+          }
+        }
+
+        &:hover {
+          color: #000;
+        }
+
+        @include on-tablet {
+          display: inline;
+        }
+      }
+    }
+
+    &-secondary {
+      border-left: 1px #e3e8eb solid;
+      display: flex;
+
+      .favourites-button {
+        display: none;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: black;
+          transform: scaleX(0);
+          transform-origin: bottom;
+          transition: transform 0.2s ease;
+        }
+
+        &.active-button {
+          &::after {
+            transform: scaleX(1);
+          }
+        }
+
+        @include on-tablet {
+          display: flex;
+        }
+      }
+
+      .cart-button {
+        display: none;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: black;
+          transform: scaleX(0);
+          transform-origin: bottom;
+          transition: transform 0.2s ease;
+        }
+
+        &.active-button {
+          &::after {
+            transform: scaleX(1);
+          }
+        }
+
+        @include on-tablet {
+          display: flex;
+        }
+      }
+
+      .profile-button {
+        @include on-tablet {
+          display: none;
+        }
+      }
+
+      &-item {
+        width: 48px;
+        height: $manageHeight;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        transition: 500ms background-color;
+        border: none;
+        border-left: 1px #b4bdc3 solid;
+
+        &:hover {
+          background-color: #f5f6f7;
+        }
+      }
+
+      &-img {
+        width: 20px;
+        height: 20px;
+        display: block;
+      }
+    }
+  }
+}
+
+.el {
+  width: 13px;
+  position: absolute;
+  top: 25%;
+  right: 20%;
+
+  height: 13px;
+  background-color: #eb5757;
+  border-radius: 50%;
+  border: 2px rgb(255, 255, 255) solid;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Montserrat, sans-serif;
+  color: white;
+  font-size: 8px;
+  font-weight: 700;
+}

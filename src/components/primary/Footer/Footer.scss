@@ -1,0 +1,112 @@
+@import '../../../styles/mixins';
+
+.footer {
+  padding-block: 32px;
+  padding-inline: 16px;
+
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  border-top: 1px #e2e6e9 solid;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  &__logo {
+    height: 30px;
+    width: 90px;
+    cursor: pointer;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/icons/logo.svg');
+  }
+
+  &__nav {
+    display: grid;
+    align-content: center;
+
+    & :nth-child(n) {
+      display: inline;
+      font-family: Montserrat, sans-serif;
+    }
+
+    & :first-child {
+      display: grid;
+      gap: 16px;
+
+      @include on-tablet {
+        grid-auto-flow: column;
+      }
+    }
+
+    &-item {
+      font-size: 12px;
+      font-weight: 800;
+      color: #89939a;
+      line-height: 11px;
+      text-decoration: none;
+
+      transition: 500ms color;
+
+      &:hover {
+        color: #000;
+      }
+
+      &:active {
+        color: rgb(68, 97, 199);
+      }
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    gap: 16px;
+    align-self: center;
+    align-items: center;
+
+    &-p {
+      color: #89939a;
+      font-weight: 800;
+      font-family: Montserrat, sans-serif;
+    }
+
+    &-button {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      background-color: white;
+      border: 1px #89939a solid;
+
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      transition: 500ms background-color;
+
+      &:hover {
+        background-color: #f5f6f7;
+      }
+
+      &:active {
+        background-color: #b5b7b9;
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        width: 6px;
+        height: 6px;
+        position: relative;
+        border-radius: 1px;
+
+        top: 1px;
+        transform: rotate(45deg); // <- ось тут ключ
+        border-top: 2px solid black;
+        border-left: 2px solid black;
+      }
+    }
+  }
+}

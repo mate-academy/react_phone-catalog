@@ -1,0 +1,112 @@
+@import '../../../../styles/mixins';
+
+.product-details {
+  padding-inline: 17px;
+  display: grid;
+  justify-content: center;
+
+  &-content {
+
+    @include on-tablet {
+      width: 600px;
+      display: flex;
+    }
+
+    @include on-desck-top {
+      width: 1136px;
+      gap: 64px;
+    }
+  }
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desck-top {
+    padding-inline: 152px;
+  }
+
+  &__images {
+    display: grid;
+    justify-content: center;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
+    @include on-desck-top {
+      width: 600px;
+    }
+
+    &-primary {
+      margin-bottom: 16px;
+      width: 288px;
+      height: 288px;
+      cursor: pointer;
+      object-fit: contain;
+      box-sizing: border-box;
+
+      @include on-desck-top {
+        width: 464px;
+        height: 464px;
+      }
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 50px);
+      justify-content: center;
+
+      gap: 8px;
+      width: 288px;
+
+      @include on-tablet {
+        grid-template-columns: auto;
+        margin-right: 16px;
+
+        gap: 16px;
+        width: auto;
+        grid-template-rows: repeat(auto-fit, 35px);
+      }
+
+      @include on-desck-top {
+        grid-template-rows: repeat(auto-fit, 80px);
+      }
+
+      &-item {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        border: 1px #c4c4c4 solid;
+
+        display: grid;
+        place-content: center center;
+        padding-top: 5px;
+
+        &-img {
+          object-fit: contain;
+          width: 50px;
+          height: 50px;
+
+          @include on-tablet {
+            width: 35px;
+            height: 35px;
+          }
+
+          @include on-desck-top {
+            width: 80px;
+            height: 80px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.primary-img {
+  transition: box-shadow 300ms;
+  border: 1px rgb(0, 0, 0) solid;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}

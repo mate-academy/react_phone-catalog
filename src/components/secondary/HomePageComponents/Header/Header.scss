@@ -1,0 +1,167 @@
+@import '../../../../styles/mixins';
+
+.header {
+  height: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  margin-bottom: 56px;
+  flex-direction: column;
+
+  &-content {
+    @include on-tablet {
+      width: 600px;
+    }
+
+    @include on-desck-top {
+      width: 1136px;
+    }
+  }
+
+  @include on-desck-top {
+    padding-inline: 152px;
+  }
+
+  &__h1 {
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+    color: #313237;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+
+    font-family: Montserrat, sans-serif;
+    padding-inline: 16px;
+
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      padding-inline: 0;
+    }
+  }
+
+  &__bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-slider {
+      width: 100%;
+
+      @include on-tablet {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+      }
+
+      @include on-desck-top {
+        width: 100%;
+        height: 400px;
+      }
+
+      &-content {
+        width: 100%;
+        height: 320px;
+        display: flex;
+        overflow-x: auto;
+        background-color: black;
+        scrollbar-width: none; /* для Firefox - приховує скролбар (Сучасні, браузери) */
+        -ms-overflow-style: none; /* для IE і Edge - приховує скролбар  (Старі Браузери) */
+
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory; /* це CSS-властивість, що включає режим "прилипання" (snap) при прокручуванні.  */
+
+        &-item {
+          flex: 0 0 100%;
+          cursor: pointer;
+          scroll-snap-align: start;
+        }
+
+        &-img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: contain;
+          object-position: top bottom;
+        }
+
+        @include on-tablet {
+          height: 190px;
+        }
+
+        @include on-desck-top {
+          height: 100%;
+        }
+      }
+
+      &-buttons {
+        width: 32px;
+        height: 190px;
+        display: none;
+        position: relative;
+
+        transition: 500ms background-color;
+        border: 1px #b4bdc3 solid;
+        cursor: pointer;
+
+        @include on-desck-top {
+          height: 100%;
+        }
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          border-top: 2px solid black;
+          border-right: 2px solid black;
+
+          width: 6px;
+          height: 6px;
+        }
+
+        &.left::after {
+          transform: rotate(-135deg); // ← стрілка
+        }
+
+        &.right::after {
+          transform: rotate(45deg); // → стрілка
+        }
+
+        &:hover {
+          background-color: #f5f6f7;
+        }
+
+        &:active {
+          background-color: #b5b7b9;
+        }
+
+        @include on-tablet {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    &-dots {
+      display: flex;
+      gap: 10px;
+
+      &-dot {
+        width: 14px;
+        height: 4px;
+        cursor: pointer;
+        margin-top: 18px;
+        background-color: #e2e6e9;
+      }
+    }
+
+    .activeDots {
+      transition: 600ms background-color;
+      background-color: #313237;
+    }
+  }
+}
