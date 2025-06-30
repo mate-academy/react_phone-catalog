@@ -9,7 +9,7 @@ body:has(.sideMenu :target) {
   left: 0;
   right: 0;
   background-color: #fff;
-  overflow: hidden;
+  // overflow: hidden;
 
   opacity: 0;
   // z-index: 1;
@@ -53,4 +53,35 @@ body:has(.sideMenu :target) {
 
     position: relative;
   }
+}
+
+.actionsContainer {
+  height: 64px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  border-top: 1px solid #e2e6e9;
+
+  display: flex;
+  // flex-direction: column;
+}
+
+.heartWrapper {
+  box-sizing: border-box;
+  width: 50%;
+  height: 64px;
+  border-right: 1px solid #e2e6e9;
+  border-bottom: 2px solid #313237;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bagWrapper {
+  width: 50%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,4 +1,17 @@
-const HeaderLogoMenu = () => {
+import topBatStyles from './TopBar.module.scss';
+import iconStyles from './icon.module.scss';
+
+interface SidebarProps {
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  iconClass: string;
+}
+
+const HeaderLogoMenu: React.FC<SidebarProps> = ({
+  setIsMenuOpen,
+  iconClass,
+}) => {
+  const iconReference = iconClass === 'icon--menu' ? '#burger-menu' : '#';
+
   return (
     <div className={topBatStyles.header}>
       <div className={topBatStyles['top-bar']}>
@@ -12,8 +25,8 @@ const HeaderLogoMenu = () => {
 
         <div className={topBatStyles['top-bar__icon-1']}>
           <a
-            href="#burger-menu"
-            className={`${iconStyles.icon} ${iconStyles['icon--menu']} ${topBatStyles['top-bar__icon--menu']}`}
+            href={iconReference}
+            className={`${iconStyles.icon} ${iconStyles[`${iconClass}`]} ${topBatStyles['top-bar__icon--menu']}`}
             onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
           ></a>
         </div>
@@ -21,3 +34,5 @@ const HeaderLogoMenu = () => {
     </div>
   );
 };
+
+export default HeaderLogoMenu;

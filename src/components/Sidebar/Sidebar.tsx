@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import styles from './style.module.scss';
+import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 
 interface SidebarProps {
   isOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsMenuOpen }) => {
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
 
@@ -17,6 +19,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   return (
     <>
       <aside className={styles.sideMenu} id="burger-menu">
+        <HeaderLogoMenu
+          setIsMenuOpen={setIsMenuOpen}
+          iconClass={'icon--close'}
+        />
+
         <nav className={styles.sideMenu__nav}>
           <ul className={styles['sideMenu__nav-list']}>
             <li className={styles['sideMenu__nav-item']}>
@@ -44,6 +51,20 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
             </li>
           </ul>
         </nav>
+
+        <div className={styles.actionsContainer}>
+          <div className={styles.heartWrapper}>
+            <a href="#">
+              <img src="public\img\favourites-(heart-like).svg" alt="heart" />
+            </a>
+          </div>
+
+          <div className={styles.bagWrapper}>
+            <a href="#">
+              <img src="public\img\shopping-bag-cart.svg" alt="bag" />
+            </a>
+          </div>
+        </div>
       </aside>
     </>
   );

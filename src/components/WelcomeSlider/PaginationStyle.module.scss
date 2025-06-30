@@ -1,3 +1,11 @@
+@import '../../styles/mixins.module';
+
+.swiper {
+  @include onTablet {
+    width: 490px;
+  }
+}
+
 .swiper-custom-pagination-bullet {
   height: 4px;
   width: 14px;
