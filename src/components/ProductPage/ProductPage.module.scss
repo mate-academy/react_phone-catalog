@@ -2,9 +2,16 @@
 
 .page {
   background-color: $color-black;
-  padding-top: 24px;
-  padding-bottom: 112px;
+  padding: 24px 32px 112px;
   justify-items: center;
+
+  @media (max-width: $size-tablet) {
+    padding: 24px 24px 96px;
+  }
+
+  @media (max-width: $size-mobile) {
+    padding: 24px 16px 96px;
+  }
 }
 
 .pageContent {
@@ -12,6 +19,14 @@
   grid-template-columns: repeat(24, 32px);
   gap: 40px 16px;
   background-color: $color-black;
+
+  @media (max-width: $size-tablet) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media (max-width: $size-mobile) {
+    gap: 24px 16px;
+  }
 }
 
 .pathHome {
@@ -41,6 +56,11 @@
     letter-spacing: -1%;
     margin: 0;
     margin-bottom: 8px;
+
+    @media (max-width: $size-mobile) {
+      line-height: 41px;
+      font-size: 32px;
+    }
   }
 
   &_counter {
@@ -64,6 +84,17 @@
 
 .dropdown {
   margin: 0;
+  width: 187px;
+
+  @media (max-width: $size-mobile) {
+    flex: 1;
+    max-width: 187px;
+  }
+
+  &:last-child {
+    width: 136px;
+  }
+
   &_label {
     display: block;
     font-family: $font-semibold;

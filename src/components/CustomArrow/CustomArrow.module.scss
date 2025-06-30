@@ -30,6 +30,10 @@
   &_left {
     left: 0;
   }
+
+  @media (max-width: $size-mobile) {
+    display: none;
+  }
 }
 
 .modelsSliderArrow_up {

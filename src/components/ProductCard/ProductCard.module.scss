@@ -4,13 +4,16 @@
   background-color: $color-surface1;
   color: $color-white;
   width: 272px;
-  height: 506px;
   box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 32px;
+
+  @media (max-width: $size-tablet) {
+    width: 237px;
+  }
 }
 
 .cardImage {

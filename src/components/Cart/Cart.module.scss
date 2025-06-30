@@ -2,22 +2,30 @@
 
 .page {
   background-color: $color-black;
-  padding-top: 40px;
-  padding-bottom: 80px;
-  justify-items: center;
+  padding: 40px 32px 80px;
   color: $color-white;
+  display: flex;
+  justify-content: center;
   min-height: calc(100vh - 253px);
+
+  @media (max-width: $size-tablet) {
+    padding: 40px 24px 64px;
+  }
+
+  @media (max-width: $size-mobile) {
+    padding: 24px 16px 56px;
+  }
 }
 
 .pageContent {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(24, 32px);
-  gap: 24px 16px;
+  gap: 24px;
   background-color: $color-black;
+  max-width: 1136px;
 }
 
 .pathHome {
-  grid-column: 1/-1;
   display: flex;
   gap: 4px;
   align-items: center;
@@ -32,25 +40,17 @@
   }
 }
 
-.pageInfo {
-  grid-column: 1/-1;
+.pageInfo_title {
+  font-family: $font-bold;
+  line-height: 56px;
+  font-size: 48px;
+  letter-spacing: -1%;
+  margin: 0;
+  margin-bottom: 8px;
 
-  &_title {
-    grid-column: 1/-1;
-    font-family: $font-bold;
-    line-height: 56px;
-    font-size: 48px;
-    letter-spacing: -1%;
-    margin: 0;
-    margin-bottom: 8px;
-  }
-
-  &_counter {
-    font-family: $font-regular;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0%;
-    color: $color-secondary;
+  @media (max-width: $size-mobile) {
+    line-height: 41px;
+    font-size: 32px;
   }
 }
 
@@ -58,9 +58,15 @@
   display: flex;
   gap: 16px;
 
+  @media (max-width: $size-tablet) {
+    flex-direction: column;
+    gap: 32px;
+  }
+
   &_list {
     display: grid;
     gap: 16px;
+    flex-grow: 1;
   }
 
   &_checkout {

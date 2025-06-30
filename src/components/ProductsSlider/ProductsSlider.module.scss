@@ -18,12 +18,23 @@
       justify-content: center;
     }
   }
+
+  @media (max-width: $size-mobile) {
+    margin-inline: -16px;
+  }
 }
 
 .customSlide {
   width: calc(100% - 96px);
   aspect-ratio: 2.56 / 1;
   object-fit: contain;
+
+  @media (max-width: $size-mobile) {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: right center;
+  }
 }
 
 .customDot {

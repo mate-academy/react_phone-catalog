@@ -42,6 +42,13 @@ export const Header = () => {
             className={styles.icon}
           />
         </NavLink>
+        <button className={styles['icon-link']}>
+          <img
+            src="/img/icons/burger-menu.svg"
+            alt="burger-menu"
+            className={styles.icon}
+          />
+        </button>
       </div>
     </header>
   );

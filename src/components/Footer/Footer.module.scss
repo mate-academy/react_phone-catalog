@@ -7,6 +7,11 @@
   padding: 32px;
   display: flex;
   justify-content: center;
+
+  @media (max-width: $size-mobile) {
+    padding: 32px 16px;
+    justify-content: flex-start;
+  }
 }
 
 .footerContent {
@@ -18,6 +23,12 @@
   @media (max-width: $size-tablet) {
     width: 100%;
   }
+
+  @media (max-width: $size-mobile) {
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+  }
 }
 
 .navList {
@@ -26,6 +37,11 @@
   list-style: none;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: $size-mobile) {
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 
 .navLink {
@@ -50,6 +66,11 @@
   align-items: center;
   width: 33%;
   justify-content: flex-end;
+
+  @media (max-width: $size-mobile) {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .toTopTitle {

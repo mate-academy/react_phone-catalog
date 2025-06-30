@@ -46,13 +46,13 @@ export const ProductPage = ({ category }: Props) => {
               <label className={styles.dropdown_label} htmlFor="sortSelect">
                 Sort by
               </label>
-              <CustomDropdown options={sortOptions} width="176px" />
+              <CustomDropdown options={sortOptions} />
             </div>
             <div className={styles.dropdown}>
               <label className={styles.dropdown_label} htmlFor="countSelect">
                 Items on page
               </label>
-              <CustomDropdown options={countOptions} width="128px" />
+              <CustomDropdown options={countOptions} />
             </div>
           </div>
           <ModelsSlider

@@ -2,20 +2,29 @@
 
 .page {
   background-color: $color-black;
-  padding-top: 24px;
-  padding-bottom: 80px;
+  padding: 24px 32px 80px;
   justify-items: center;
+
+  @media (max-width: $size-tablet) {
+    padding-bottom: 64px;
+  }
+
+  @media (max-width: $size-mobile) {
+    padding: 24px 16px 56px;
+  }
 }
 
 .pageContent {
   display: grid;
-  grid-template-columns: repeat(24, 32px);
-  gap: 40px 16px;
+  gap: 40px;
   background-color: $color-black;
+
+  @media (max-width: $size-mobile) {
+    gap: 24px;
+  }
 }
 
 .pathHome {
-  grid-column: 1/-1;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -30,10 +39,7 @@
 }
 
 .pageInfo {
-  grid-column: 1/-1;
-
   &_title {
-    grid-column: 1/-1;
     color: $color-white;
     font-family: $font-bold;
     line-height: 56px;
@@ -41,6 +47,11 @@
     letter-spacing: -1%;
     margin: 0;
     margin-bottom: 8px;
+
+    @media (max-width: $size-mobile) {
+      line-height: 41px;
+      font-size: 32px;
+    }
   }
 
   &_counter {
@@ -53,7 +64,6 @@
 }
 
 .pageItems {
-  grid-column: 1/-1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px 16px;

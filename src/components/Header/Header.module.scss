@@ -60,6 +60,10 @@
   @media (max-width: $size-tablet) {
     gap: 32px;
   }
+
+  @media (max-width: $size-mobile) {
+    display: none;
+  }
 }
 
 .nav__list-link {
@@ -100,15 +104,30 @@
   width: 64px;
   height: 64px;
   border-left: 2px solid $color-elements;
+  background-color: $color-black;
 
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
 
+  &:last-child {
+    display: none;
+  }
+
   @media (max-width: $size-tablet) {
     width: 48px;
     height: 48px;
+  }
+
+  @media (max-width: $size-mobile) {
+    &:last-child {
+      display: flex;
+    }
+
+    &:nth-child(-n + 2) {
+      display: none;
+    }
   }
 }
 

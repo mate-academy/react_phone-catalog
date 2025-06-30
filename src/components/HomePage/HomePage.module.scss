@@ -4,13 +4,18 @@
   display: grid;
   row-gap: 80px;
   background-color: $color-black;
-  padding-block: 56px 80px;
+  padding: 56px 32px 80px;
   color: $color-white;
   justify-items: center;
 
   @media (max-width: $size-tablet) {
     padding: 32px 24px 64px;
     row-gap: 64px;
+  }
+
+  @media (max-width: $size-mobile) {
+    padding: 24px 16px 64px;
+    row-gap: 56px;
   }
 }
 
@@ -37,6 +42,12 @@
   @media (max-width: $size-tablet) {
     margin-bottom: 16px;
   }
+
+  @media (max-width: $size-mobile) {
+    margin-bottom: 8px;
+    line-height: 41px;
+    font-size: 32px;
+  }
 }
 
 .sectionTitle {
@@ -47,6 +58,11 @@
   letter-spacing: -1%;
   margin: 0;
   padding-bottom: 8px;
+
+  @media (max-width: $size-mobile) {
+    line-height: 140%;
+    font-size: 22px;
+  }
 }
 
 .categoryCards {
@@ -54,6 +70,12 @@
   grid-column: 1 / -1;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+
+  @media (max-width: $size-mobile) {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
 }
 
 .categoryImg {

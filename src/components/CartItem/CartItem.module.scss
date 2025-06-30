@@ -4,12 +4,32 @@
   background-color: $color-surface1;
   color: $color-white;
   box-sizing: border-box;
+  justify-content: space-between;
 
   display: flex;
   gap: 24px;
   padding: 24px;
-  justify-content: center;
+
+  @media (max-width: $size-mobile) {
+    padding: 16px;
+    gap: 16px;
+    flex-direction: column;
+  }
+}
+
+.row {
+  display: flex;
   align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+
+  @media (max-width: $size-mobile) {
+    gap: 16px;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+  }
 }
 
 .deleteButton {
@@ -37,7 +57,6 @@
   font-family: $font-regular;
   font-size: 14px;
   line-height: 21px;
-  width: 336px;
 }
 
 .productPrice {

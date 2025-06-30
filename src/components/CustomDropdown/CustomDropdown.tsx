@@ -15,10 +15,9 @@ type Option = {
 
 type Props = {
   options: Option[];
-  width: string;
 };
 
-export const CustomDropdown = ({ options, width }: Props) => (
+export const CustomDropdown = ({ options }: Props) => (
   <Select
     classNamePrefix="sortSelect"
     id="sortSelect"
@@ -31,7 +30,6 @@ export const CustomDropdown = ({ options, width }: Props) => (
         backgroundColor: 'var(--color-surface2)',
 
         borderRadius: '0',
-        width: width,
         padding: '0',
         boxSizing: 'border-box',
         paddingInline: '12px',
