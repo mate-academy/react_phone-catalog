@@ -1,0 +1,99 @@
+.cardContainer {
+  @include on-desktop {
+    flex: 0 0 25%;
+    max-width: 272px;
+  }
+
+  flex-direction: column;
+  justify-content: flex-end;
+  row-gap: 8px;
+  flex: 1 1 25%;
+  flex-shrink: 0;
+  display: flex;
+  border: 1px solid;
+  border-color: var(--card-border);
+  border-radius: 8px;
+  min-width: 212px;
+  padding: 32px;
+  background-color: var(--card-bg);
+}
+
+.imgLink {
+  justify-content: center;
+  display: flex;
+  max-width: 100%;
+  max-height: 196px;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  transition: all $transition-duration ease-in-out;
+  align-self: center;
+  object-fit: contain;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.titleLink {
+  text-decoration: none;
+  color: var(--card-text);
+}
+
+.cardTitle {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.priceWrapper {
+  gap: 8px;
+  display: flex;
+}
+
+%price-discount {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 41px;
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: 0;
+}
+
+.priceDiscount {
+  @extend %price-discount;
+}
+
+.priceRegular {
+  @extend %price-discount;
+
+  font-weight: 500;
+  font-family: Mont-Regular, sans-serif;
+}
+
+.priceRegularSmall {
+  @extend %price-discount;
+
+  font-weight: 500;
+  font-family: Mont-Regular, sans-serif;
+
+  text-decoration: line-through;
+  color: var(--card-specs-text);
+}
+
+.productSpecs::before {
+  content: '';
+  display: flex;
+  border: 1px solid;
+  border-color: var(--card-before);
+  margin-bottom: 8px;
+}
+
+.cardButtons {
+  flex-direction: row;
+  gap: 8px;
+  display: flex;
+}

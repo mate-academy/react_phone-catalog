@@ -1,1 +1,127 @@
-// not empty
+@font-face {
+  font-family: Mont-Regular;
+  src:
+    local('Mont-Regular'),
+    url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src:
+    local('Mont-Bold'),
+    url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src:
+    local('Mont-SemiBold'),
+    url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+}
+
+h1 {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 700;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  background-color: var(--background-color);
+  color: var(--color);
+  transition: all $transition-duration ease;
+}
+
+:root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+
+  --background-color: #fff;
+  --color: $primary-text-color;
+  --text-color: #0f0f11;
+  --second-text-color: #89939A;
+  --border-color: #E2E6E9;
+  --card-bg: #fff;
+  --card-border: #E2E6E9;
+  --card-text: #0F0F11;
+  --card-specs-text: #89939A;
+  --card-before: #E2E6E9;
+  --button-active-bg: transparent;
+  --button-text: #216CFF;
+  --button-border: #e2e6e9;
+  --button-hover: #216CFF;
+  --button-bg: #216CFF;
+  --btn-bg-active: #0f0f11;
+  --toggle-bg: #0F1121;
+  --toggle-btn: #E2E6E9;
+  --navbar-text-active: #0f0f11;
+  --hero-dots-color: #E2E6E9;
+  --hero-dots-active: #0f0f11;
+  --icon-color: #0f0f11;
+  --icon-color-filled: #F447AF;
+  --icon-close-cart: #B4BDC3;
+  --icon-close-hover: #0f0f11;
+  --breadcrumbs-chevron: #B4BDC4;
+  --breadcrumbs-hover: #0f0f11;
+  --slider-btn-bg: transparent;
+  --btn-border: #B4BDC3;
+  --btn-border-hover: #0f0f11;
+  --btn-text-color: #89939A;
+  --btn-text-hover: #0f0f11;
+  --dropdown-border: #B4BDC3;
+  --option-hover: #FAFBFC;
+}
+
+.dark-theme {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+
+  --background-color: #0F1121;
+  --color: #fff;
+  --text-color: #F1F2F9;
+  --second-text-color: #F1F2F9;
+  --border-color: #3B3E4A;
+  --card-bg: #161827;
+  --card-border: #161827;
+  --card-text: #F1F2F9;
+  --card-specs-text: #75767F;
+  --card-before: #3B3E4A;
+  --button-active-bg: #323542;
+  --button-text: #F1F2F9;
+  --button-border: #323542;
+  --button-hover: #A378FF;
+  --button-bg: #905BFF;
+  --btn-bg-active: transparent;
+  --toggle-bg: #E2E6E9;
+  --toggle-btn: #0F1121;
+  --navbar-text-active: #F1F2F9;
+  --hero-dots-color: #3B3E4A;
+  --hero-dots-active: #F1F2F9;
+  --icon-color: #F1F2F9;
+  --icon-color-filled: #EB5757;
+  --icon-close-cart: #4A4D58;
+  --icon-close-hover: #F1F2F9;
+  --breadcrumbs-chevron: #4A4D58;
+  --breadcrumbs-hover: #905BFF;
+  --slider-btn-bg: #323542;
+  --btn-border: #323542;
+  --btn-border-hover: #4A4D58;
+  --btn-bg-hover: #4A4D58;
+  --btn-text-color: #75767F;
+  --btn-text-hover: #F1F2F9;
+  --dropdown-border: #323542;
+  --option-hover: #323542;
+}
+
+
+@import '../src/styles/blocks/container';
+@import '../src/styles/blocks/reset-all-margins';

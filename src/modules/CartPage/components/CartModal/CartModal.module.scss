@@ -1,0 +1,61 @@
+.modalWrapper {
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -25%);
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.5);
+  margin: 20px;
+  padding: 50px;
+  animation: show-modal 300ms ease-in forwards;
+}
+
+@keyframes show-modal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalText {
+  flex-direction: column;
+  display: flex;
+  text-align: center;
+  font-size: 22px;
+}
+
+.buttonClose {
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+.modalText::after {
+  display: flex;
+  content: '';
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+  animation: line-animation 4000ms ease infinite alternate;
+}
+
+@keyframes line-animation {
+  0% {
+    box-shadow: 0;
+  }
+  100% {
+    box-shadow: 0 0 20px 4px #51cbee;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  border-radius: 8px;
+  animation: lineAnimation 4000ms ease-in-out infinite alternate;
+}

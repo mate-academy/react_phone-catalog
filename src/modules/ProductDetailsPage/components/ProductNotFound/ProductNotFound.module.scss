@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.text {
+  font-size: 22px;
+  text-align: center;
+  color: var(--card-specs-text);
+}

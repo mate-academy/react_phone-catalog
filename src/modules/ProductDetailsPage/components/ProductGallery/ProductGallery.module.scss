@@ -1,0 +1,78 @@
+.imgWrapper {
+  @include on-tablet {
+    align-self: start;
+    grid-column: 2 / 8;
+    order: 2;
+  }
+
+  @include on-desktop {
+    grid-column: 3 / 13;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: span 4;
+}
+
+.listItem {
+  cursor: pointer;
+}
+
+.mainImg {
+  @include on-tablet {
+    max-height: 288px;
+  }
+
+  @include on-desktop {
+    max-height: 464px;
+  }
+
+  max-width: 100%;
+  max-height: 100%;
+  align-self: center;
+  object-fit: contain;
+}
+
+.gallerySlider {
+  @include on-tablet {
+    margin: 0;
+    order: 1;
+    grid-column: 1 / span 1;
+    height: auto;
+    align-self: flex-start;
+    flex-direction: column;
+  }
+
+  @include on-desktop {
+    grid-column: span 2;
+  }
+
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  height: 49px;
+  grid-column: span 4;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+.gallaryImg {
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
+
+  width: 51px;
+  height: 100%;
+  align-self: center;
+  object-fit: contain;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}

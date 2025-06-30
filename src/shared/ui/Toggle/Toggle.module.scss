@@ -1,0 +1,38 @@
+.toggleContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 40px;
+  height: 20px;
+}
+
+.toggle {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  align-items: center;
+}
+
+.toggle::before {
+  content: '';
+  height: 20px;
+  width: 40px;
+  border-radius: 10px;
+  background-color: var(--toggle-bg);
+}
+
+.toggle::after {
+  position: absolute;
+  content: '';
+  height: 15px;
+  width: 15px;
+  margin: 2px;
+  border-radius: 1em;
+  background-color: var(--toggle-btn);
+  transform: translate(0%);
+  transition: all $transition-duration ease;
+}
+
+.toggle:checked::after {
+  transform: translate(140%);
+}

@@ -1,0 +1,69 @@
+.iconWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  gap: 2px;
+  width: 16px;
+  height: 16px;
+}
+
+%line-top {
+  display: block;
+  width: 14px;
+  height: 1.5px;
+  border-radius: 8px;
+  background-color: var(--icon-color);
+  opacity: 1;
+
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: $transition-duration ease-in-out;
+  -moz-transition: $transition-duration ease-in-out;
+  -o-transition: $transition-duration ease-in-out;
+  transition: $transition-duration ease-in-out;
+}
+
+.lineTop {
+  @extend %line-top;
+}
+
+.lineMidle {
+  @extend %line-top;
+}
+
+.lineBottom {
+  @extend %line-top;
+}
+
+.line1 {
+  @extend %line-top;
+
+  position: absolute;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.line2 {
+  @extend %line-top;
+
+  position: absolute;
+  width: 0%;
+  opacity: 0;
+}
+
+.line3 {
+  @extend %line-top;
+
+  position: absolute;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
