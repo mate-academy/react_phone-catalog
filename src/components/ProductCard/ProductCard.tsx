@@ -8,7 +8,6 @@ import { ProductContext } from '../../store/ProductContext';
 import { useCart } from '../../store/CartContext';
 import { ProdCard } from '../../types/Product';
 import { useFavourites } from '../../store/FavouritesContext';
-import { ButtonAdd } from '../../shared/ui/ButtonAdd';
 
 type ProductCardProps = {
   product?: ProdCard;
@@ -28,6 +27,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const liked = fav.state.favourite.some(prod => prod.id === id);
   const icon = liked ? IconId.HeartFilled : IconId.Heart;
+  const added = cart.state.cart.some(item => item.id === id);
+
   const prod = products.find(p => p.itemId === id);
   const isYear = year ? year : prod?.year;
   const category = prod?.category;
@@ -78,9 +79,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <div className={style.cardButtons}>
-        <ButtonAdd
-          title="Add to cart"
+        <Button
           onClick={() => cart.addToCard(product)}
+          type='large'
+          title={added ? 'Added' : 'Add to cart'}
+          disabled={added}
         />
 
         <Button

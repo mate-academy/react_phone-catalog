@@ -86,3 +86,17 @@
   font-weight: 800;
   color: var(--card-specs-text);
 }
+
+.background {
+  @include on-tablet {
+    width: 550px;
+    height: 500px;
+  }
+
+  height: 300px;
+  width: 350px;
+}
+
+.buttonContainer {
+  display: inline-block;
+}

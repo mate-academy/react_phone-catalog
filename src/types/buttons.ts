@@ -12,4 +12,5 @@ export type ButtonProps = {
   to?: string;
   children?: React.ReactNode;
   disabled?: boolean;
+  title?: string;
 };

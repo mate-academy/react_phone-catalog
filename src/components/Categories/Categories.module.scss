@@ -35,6 +35,13 @@
   border-radius: 8px;
   width: 100%;
   height: 100%;
+  transform: scale(1);
+  transition: all $transition-duration ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+    z-index: 1000;
+  }
 }
 
 .categoryImg {

@@ -10,7 +10,6 @@ import {
   adaptedProductCard,
   adaptedProductConfig,
 } from '../../../../utils/adapters';
-import { ButtonAdd } from '../../../../shared/ui/ButtonAdd';
 import { getNavLinkClass } from '../../../../utils/helpers/getNavLinkClass';
 
 type Props = {
@@ -29,6 +28,7 @@ export const ProductConfigurator: React.FC<Props> = ({
 
   const liked = fav.state.favourite.some(prod => prod.id === adaptedFav.id);
   const icon = liked ? IconId.HeartFilled : IconId.Heart;
+  const added = cart.state.cart.some(item => item.id === adaptedFav.id);
 
   const colorMap: Record<string, string> = {
     black: '#000000',
@@ -130,10 +130,13 @@ export const ProductConfigurator: React.FC<Props> = ({
           <p className={style.priceRegular}>${productDetails.priceRegular}</p>
         )}
         <div className={style.buttonsWrapper}>
-          <ButtonAdd
-            title="Add to cart"
+          <Button
             onClick={() => cart.addToCard(adaptedProduct)}
+            type="large"
+            title={added ? 'Added' : 'Add to cart'}
+            disabled={added}
           />
+
           <Button
             onClick={() => fav.toggleFav(adaptedFav)}
             iconId={icon}

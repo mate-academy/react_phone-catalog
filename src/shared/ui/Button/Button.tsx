@@ -11,6 +11,7 @@ export const Button: React.FC<ButtonProps> = ({
   type,
   className,
   disabled,
+  title,
 }) => {
   return (
     <button
@@ -22,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
       )}
       disabled={disabled}
     >
+      {title}
       <Icons id={iconId} directions={directions} filled={filled} />
     </button>
   );

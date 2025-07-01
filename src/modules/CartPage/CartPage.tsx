@@ -2,9 +2,9 @@ import style from './CartPage.module.scss';
 import { CartItem } from './components/CartItem';
 import { ButtonBack } from '../../shared/ui/ButtonBack';
 import { useCart } from '../../store/CartContext';
-import { ButtonAdd } from '../../shared/ui/ButtonAdd';
 import { useEffect, useState } from 'react';
 import { CartModal } from './components/CartModal';
+import { Button } from '../../shared/ui/Button';
 
 export const CartPage = () => {
   const {
@@ -53,7 +53,9 @@ export const CartPage = () => {
                   Total for {func.getTotalItems(cart)} items
                 </p>
               </div>
-              <ButtonAdd title="Checkout" onClick={checkoutCart} />
+              <div className={style.buttonContainer}>
+                <Button type="large" title="Checkout" onClick={checkoutCart} />
+              </div>
             </article>
 
             {isCheck && <CartModal closeModal={closeModal} />}
