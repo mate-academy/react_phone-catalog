@@ -4,7 +4,10 @@ import styles from './SwiperBaner.module.scss';
 import ArrowLeft from '@/assets/icons/ArrowLeft.svg?react';
 import ArrowRight from '@/assets/icons/ArrowRight.svg?react';
 
-// ИСПРАВЛЕНИЕ: Импортируем тип SwiperCore
+import bannerPhones from '/img/banner-phones.png';
+import bannerAccessories from '/img/banner-accessories.png';
+import bannerTablets from '/img/banner-tablets.png';
+
 import { Swiper as SwiperCore } from 'swiper/types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -54,21 +57,21 @@ export const SwiperBaner: React.FC = () => {
       >
         <SwiperSlide className={styles.swiperSlide}>
           <img
-            src="/img/banner-phones.png"
+            src={bannerPhones}
             alt="Phones banner"
             className={styles.swiperImage}
           />
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
           <img
-            src="/img/banner-accessories.png"
+            src={bannerAccessories}
             alt="Accessories banner"
             className={styles.swiperImage}
           />
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
           <img
-            src="/img/banner-tablets.png"
+            src={bannerTablets}
             alt="Tablets banner"
             className={styles.swiperImage}
           />
