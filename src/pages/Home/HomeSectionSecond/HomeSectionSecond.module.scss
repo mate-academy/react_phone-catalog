@@ -29,6 +29,7 @@
 
 .sectionContent {
   gap: 32px;
+
   @include u.page-grid;
 
   @include u.on-tablet {

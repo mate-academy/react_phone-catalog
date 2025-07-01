@@ -4,6 +4,7 @@ import { Product } from '@/types/product';
 import { ProductDetails } from '@/types/productDetails';
 import { productCharacteristics } from '@/types/productCharacteristics';
 import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product | ProductDetails;
@@ -20,6 +21,8 @@ export const ProductCharacteristics: React.FC<Props> = ({
   customClassNameForName,
   customClassNameForValue,
 }) => {
+  const { t } = useTranslation();
+
   const customClassNames = cn(
     styles.productCharacteristics,
     customClassNameContainer,
@@ -30,6 +33,7 @@ export const ProductCharacteristics: React.FC<Props> = ({
       {characteristics.map(({ key, name }) => {
         if (key in product) {
           const value = product[key as keyof (Product | ProductDetails)];
+          const translatedName = t(`characteristics.${name}`);
 
           return (
             <div key={key} className={styles.productCharacteristicsItem}>
@@ -39,7 +43,7 @@ export const ProductCharacteristics: React.FC<Props> = ({
                   customClassNameForName,
                 )}
               >
-                {name}
+                {translatedName}
               </p>
               <p
                 className={cn(

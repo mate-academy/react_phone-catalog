@@ -5,13 +5,23 @@
   background-color: var(--background);
 }
 
+.header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  border-bottom: 1px solid var(--elements);
+
+  background-color: var(--background);
+}
+
 .mainContent {
   flex-grow: 1;
-}
-// .mainContent {
-//   padding-top: 48px;
+  padding-top: 48px;
 
-//   @include u.on-desktop {
-//     padding-top: 64px;
-//   }
-// }
+  @media (min-width: 1200px) {
+    padding-top: 64px;
+  }
+}

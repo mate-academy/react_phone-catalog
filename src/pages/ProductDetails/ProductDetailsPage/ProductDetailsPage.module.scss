@@ -8,15 +8,14 @@
   }
 
   @include u.on-desktop {
-    padding-inline: 32px;
     max-width: 1136px;
     margin-inline: auto;
+    padding-inline: 32px;
   }
 }
 
 .firstContainer {
-  margin-bottom: 56px;
-
   max-width: 1200px;
+  margin-bottom: 56px;
   margin-inline: auto;
 }

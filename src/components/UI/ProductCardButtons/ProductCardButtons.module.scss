@@ -31,9 +31,8 @@
 
 .productCartBtn {
   width: 100%;
-  background-color: var(--accent);
-
   border-radius: var(--card-btn-border-radius);
+  background-color: var(--accent);
 
   @include u.hover(background-color, var(--accent-light));
 }
@@ -54,19 +53,16 @@
 }
 
 .productFavoriteBtn {
-  background-color: var(--surface-2);
-
-  border-radius: var(--card-btn-border-radius);
-
   border: 1px solid transparent;
+  border-radius: var(--card-btn-border-radius);
+  background-color: var(--surface-2);
 
   @include u.hover(background-color, var(--icons));
 }
 
 .productFavoriteBtnActive {
-  background-color: transparent;
-
   border: 1px solid var(--elements);
+  background-color: transparent;
 
   .productFavoriteIcon path {
     fill: var(--red);

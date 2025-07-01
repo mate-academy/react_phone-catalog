@@ -5,6 +5,7 @@ import Minus from 'assets/icons/Minus.svg?react';
 import Plus from 'assets/icons/Plus.svg?react';
 import { CartItem, useCart } from '@/context/CartContext';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: CartItem;
@@ -12,11 +13,14 @@ type Props = {
 
 export const CartProductCard: React.FC<Props> = ({ product }) => {
   const { incrementQuantity, decrementQuantity, removeFromCart } = useCart();
+  const { t } = useTranslation();
 
   const handleRemoveFromCart = () => {
     removeFromCart(product.itemId);
     toast.warn(`${product.name} removed from cart.`);
   };
+
+  const translatedName = t(`products.${product.itemId}.name`, product.name);
 
   return (
     <div className={styles.card}>
@@ -33,7 +37,7 @@ export const CartProductCard: React.FC<Props> = ({ product }) => {
             className={styles.productImage}
             alt="Product image in cart"
           />
-          <p className={styles.productName}>{product.name}</p>
+          <p className={styles.productName}>{translatedName}</p>
         </div>
         <div className={styles.quantityPrice}>
           <div className={styles.counterProduct}>

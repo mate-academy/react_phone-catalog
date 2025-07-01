@@ -1,7 +1,7 @@
-import { Product } from "./product";
-import { ProductDetails } from "./productDetails";
+import { Product } from './product';
+import { ProductDetails } from './productDetails';
 
-export interface productCharacteristics {
+export interface ProductCharacteristics {
   key: keyof Product | keyof ProductDetails;
   name: string;
 }

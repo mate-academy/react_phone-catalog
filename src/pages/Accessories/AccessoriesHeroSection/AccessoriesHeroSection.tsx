@@ -1,11 +1,13 @@
 import React, { useContext, useMemo } from 'react';
 import styles from './AccessoriesHeroSection.module.scss';
-import { Breadcrumbs } from '@/components/UI/Breadcrumbs';
+import { Breadcrumbs } from '@/components/UI/Breadcrumbs/Breadcrumbs';
 import { Outlet, useParams } from 'react-router-dom';
 import { ProductCatalog } from '@/components/UI/ProductCatalog';
 import { ProductContext, ProductContextType } from '@/context/ProductContext';
+import { useTranslation } from 'react-i18next';
 
 export const AccessoriesHeroSection: React.FC = () => {
+  const { t } = useTranslation();
   const { allProducts, isLoading, error } = useContext(
     ProductContext,
   ) as ProductContextType;
@@ -29,7 +31,7 @@ export const AccessoriesHeroSection: React.FC = () => {
         <Outlet />
       ) : (
         <ProductCatalog
-          title="Accessories"
+          title={t(`productCatalog.titleAccessories`)}
           products={accessoriesProducts}
           isLoading={isLoading}
         />

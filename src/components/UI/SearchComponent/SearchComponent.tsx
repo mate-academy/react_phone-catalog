@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import styles from './SearchComponent.module.scss';
 import { Product } from '@/types/product';
+import cn from 'classnames';
 
 interface SearchProps {
   products: Product[];
@@ -32,7 +33,7 @@ export const SearchComponent: React.FC<SearchProps> = ({
   const [query, setQuery] = useState('');
   const [isExpanded, setIsExpanded] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const filteredProducts = products.filter(product => {
@@ -45,12 +46,12 @@ export const SearchComponent: React.FC<SearchProps> = ({
     return product.name.toLowerCase().includes(lowerCaseQuery);
   });
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setQuery('');
     setIsExpanded(false);
     setIsDropdownOpen(false);
     onToggleExpand(false);
-  };
+  }, [onToggleExpand]);
 
   const handleSelect = (product: Product) => {
     onSelect(product);
@@ -62,34 +63,20 @@ export const SearchComponent: React.FC<SearchProps> = ({
     onToggleExpand(true);
     setTimeout(() => {
       inputRef.current?.focus();
-    }, 300);
+    }, 10);
   };
 
   const handleInputFocus = () => {
     setIsDropdownOpen(true);
   };
 
-  const handleInputBlur = () => {
-    setTimeout(() => {
-      setIsDropdownOpen(false);
-      if (!query.trim()) {
-        setIsExpanded(false);
-        onToggleExpand(false);
-      }
-    }, 200);
-  };
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
       ) {
-        setIsDropdownOpen(false);
-        if (!query.trim()) {
-          setIsExpanded(false);
-          onToggleExpand(false);
-        }
+        handleClose();
       }
     };
 
@@ -106,63 +93,64 @@ export const SearchComponent: React.FC<SearchProps> = ({
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleEscape);
     };
-  }, [query, onToggleExpand]);
+  }, [handleClose]);
 
   return (
-    <div className={styles.container} ref={dropdownRef}>
-      {!isExpanded ? (
-        <button
-          className={styles.searchIcon}
-          onClick={handleIconClick}
-          type="button"
-          aria-label="Open search"
-        >
-          <SearchIcon />
-        </button>
-      ) : (
-        <div className={styles.searchExpanded}>
-          <input
-            ref={inputRef}
-            type="text"
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            onFocus={handleInputFocus}
-            onBlur={handleInputBlur}
-            placeholder="Search..."
-            className={styles.input}
-          />
-          <button
-            className={styles.closeButton}
-            onClick={handleClose}
-            type="button"
-            aria-label="Close search"
-          >
-            ×
-          </button>
-        </div>
-      )}
+    <div className={styles.container} ref={containerRef}>
+      <button
+        className={styles.searchIcon}
+        onClick={handleIconClick}
+        type="button"
+        aria-label="Open search"
+      >
+        <SearchIcon />
+      </button>
 
-      {isExpanded && isDropdownOpen && filteredProducts.length > 0 && (
-        <div className={styles.dropdown}>
-          {filteredProducts.map(product => (
-            <div
-              key={product.id}
-              className={styles.option}
-              onClick={() => handleSelect(product)}
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className={styles.productImage}
-              />
-              <div className={styles.productInfo}>
-                <div className={styles.productId}>{product.name}</div>
-                <div className={styles.productPrice}>${product.price}</div>
+      <div
+        className={cn(styles.searchWrapper, {
+          [styles.searchWrapperActive]: isExpanded,
+        })}
+      >
+        <input
+          ref={inputRef}
+          type="text"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          onFocus={handleInputFocus}
+          placeholder="Search..."
+          className={styles.input}
+        />
+        <button
+          className={styles.closeButton}
+          onClick={handleClose}
+          type="button"
+          aria-label="Close search"
+        >
+          ×
+        </button>
+
+        {isExpanded && isDropdownOpen && filteredProducts.length > 0 && (
+          <div className={styles.dropdown}>
+            {filteredProducts.map(product => (
+              <div
+                key={product.id}
+                className={styles.option}
+                onClick={() => handleSelect(product)}
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.productImage}
+                />
+                <div className={styles.productInfo}>
+                  <div className={styles.productId}>{product.name}</div>
+                  <div className={styles.productPrice}>${product.price}</div>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { ProductSkeleton } from '../ProductSkeleton/ProductSkeleton';
 import ArrowRight from 'assets/icons/ArrowRight.svg?react';
 import { Product } from '@/types/product';
 import { sortOptionType } from '@/types/sortOptionType';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   title: string;
@@ -29,6 +30,7 @@ export const ProductCatalog: React.FC<Props> = ({
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
   const perPageRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsLoading(true);
@@ -70,7 +72,7 @@ export const ProductCatalog: React.FC<Props> = ({
         );
         break;
     }
-    
+
     setFilteredProducts(sorted);
     setCurrentPage(1);
     setIsLoading(false);
@@ -81,6 +83,7 @@ export const ProductCatalog: React.FC<Props> = ({
       if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
         setIsSortOpen(false);
       }
+
       if (
         perPageRef.current &&
         !perPageRef.current.contains(event.target as Node)
@@ -88,7 +91,9 @@ export const ProductCatalog: React.FC<Props> = ({
         setIsPerPageOpen(false);
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -97,6 +102,7 @@ export const ProductCatalog: React.FC<Props> = ({
   const currentItems = useMemo(() => {
     const startIndex = (currentPage - 1) * perPage;
     const endIndex = startIndex + perPage;
+
     return filteredProducts.slice(startIndex, endIndex);
   }, [currentPage, perPage, filteredProducts]);
 
@@ -105,6 +111,7 @@ export const ProductCatalog: React.FC<Props> = ({
     setSearchParams(
       prev => {
         prev.set('sort', value);
+
         return prev;
       },
       { replace: true },
@@ -118,6 +125,7 @@ export const ProductCatalog: React.FC<Props> = ({
     setSearchParams(
       prev => {
         prev.set('perPage', value.toString());
+
         return prev;
       },
       { replace: true },
@@ -132,9 +140,9 @@ export const ProductCatalog: React.FC<Props> = ({
   };
 
   const sortOptions = [
-    { value: 'newest', label: 'Newest' },
-    { value: 'alphabetically', label: 'Alphabetically' },
-    { value: 'cheapest', label: 'Cheapest' },
+    { value: 'newest', key: 'newest' },
+    { value: 'alphabetically', key: 'alphabetically' },
+    { value: 'cheapest', key: 'cheapest' },
   ];
 
   const perPageOptions = [
@@ -146,17 +154,19 @@ export const ProductCatalog: React.FC<Props> = ({
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{title}</h1>
-      <p className={styles.counterModels}>{filteredProducts.length} models</p>
+      <p className={styles.counterModels}>
+        {t('categories.models', { count: filteredProducts.length })}
+      </p>
 
       <div className={styles.controlsWrapper}>
         <div className={styles.sortContainer}>
-          <p className={styles.sortDescription}>Sort by</p>
+          <p className={styles.sortDescription}>{t('controls.sortBy')}</p>
           <div className={styles.selectWrapper} ref={sortRef}>
             <div
               className={styles.controlSelect}
               onClick={() => setIsSortOpen(!isSortOpen)}
             >
-              {sortOptions.find(opt => opt.value === sortOption)?.label}
+              {t(`controls.sortOptions.${sortOption}`)}
               <ArrowRight
                 className={`${styles.selectArrow} ${isSortOpen ? styles.selectArrowOpen : ''}`}
               />
@@ -171,7 +181,7 @@ export const ProductCatalog: React.FC<Props> = ({
                       handleSortChange(option.value as sortOptionType)
                     }
                   >
-                    {option.label}
+                    {t(`controls.sortOptions.${option.key}`)}
                   </li>
                 ))}
               </ul>
@@ -179,7 +189,9 @@ export const ProductCatalog: React.FC<Props> = ({
           </div>
         </div>
         <div className={styles.filterContainer}>
-          <p className={styles.filterDescription}>Items on page</p>
+          <p className={styles.filterDescription}>
+            {t('controls.itemsOnPage')}
+          </p>
           <div className={styles.selectWrapper} ref={perPageRef}>
             <div
               className={styles.controlSelect}
@@ -221,7 +233,7 @@ export const ProductCatalog: React.FC<Props> = ({
             </div>
           ))
         ) : (
-          <p>No products found for this category</p>
+          <p>{t('controls.noProducts')}</p>
         )}
       </div>
 

@@ -1,61 +1,54 @@
 @use 'styles/utils' as u;
 
-.wrapperBackButton {
-  display: inline-flex;
+.arrowBackButton {
+  rotate: -180deg;
+
+  path {
+    transition: fill u.$effect-duration ease;
+  }
+}
+
+.textBackButton {
+  display: flex;
   align-items: center;
-  // margin-inline: 16px;
-  margin-top: 24px;
-  gap: 4px;
-  padding: 0;
-  background-color: transparent;
-  border: none;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+
+  transition: color u.$effect-duration ease;
+}
+
+.wrapperBackButton {
   cursor: pointer;
+
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+
+  margin-top: 24px;
+  padding: 0;
+  border: none;
+
   appearance: none;
+  background-color: transparent;
 
   @include u.on-tablet {
-    // margin-inline: 24px;
     margin-top: 40px;
   }
 
   @include u.on-desktop {
-    // box-sizing: content-box;
-    // padding-inline: 32px;
-    // margin-left: 0;
-    margin-inline: auto;
     max-width: 1200px;
+    margin-inline: auto;
   }
 
   &:hover {
-    .arrowBackButton {
-      path {
-        fill: var(--accent);
-      }
+    .arrowBackButton path {
+      fill: var(--accent);
     }
 
     .textBackButton {
       color: var(--accent);
     }
   }
-
-  .arrowBackButton {
-    path {
-      transition: fill u.$effect-duration ease;
-    }
-  }
-
-  .textBackButton {
-    transition: color u.$effect-duration ease;
-  }
-}
-
-.arrowBackButton {
-  rotate: -180deg;
-}
-
-.textBackButton {
-  display: flex;
-  align-items: center;
-  color: var(--text-primary);
-  font-weight: 700;
-  font-size: 12px;
 }

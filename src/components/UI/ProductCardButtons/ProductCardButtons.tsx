@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import styles from './ProductCardButtons.module.scss';
 import FavouritesIcon from '@/assets/icons/FavouritesIcon.svg?react';
@@ -7,6 +8,7 @@ import { Product } from '@/types/product';
 import cn from 'classnames';
 import { useCart } from '@/context/CartContext';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product;
@@ -15,6 +17,7 @@ type Props = {
 export const ProductCardButtons: React.FC<Props> = ({ product }) => {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
   const { addToCart, removeFromCart, isCart } = useCart();
+  const { t } = useTranslation();
 
   //#region for favotite
   const isProductFavorite = isFavorite(product.itemId);
@@ -52,10 +55,10 @@ export const ProductCardButtons: React.FC<Props> = ({ product }) => {
           [styles.productCartBtnActive]: isProductCart,
         })}
         onClick={handleCartToggle}
-        aria-label="Add to cart"
+        aria-label={t(`buttons.addToCart`)}
       >
         <span className={styles.productCartSpan}>
-          {!isProductCart ? 'Add to cart' : 'Added to cart'}
+          {!isProductCart ? t(`buttons.addToCart`) : t(`buttons.addedToCart`)}
         </span>
       </button>
       <button
@@ -63,7 +66,7 @@ export const ProductCardButtons: React.FC<Props> = ({ product }) => {
           [styles.productFavoriteBtnActive]: isProductFavorite,
         })}
         onClick={handleFavoriteToggle}
-        aria-label="Add to favorites"
+        aria-label={t(`buttons.addToFavorites`)}
       >
         {isProductFavorite ? (
           <FavouritesIconFilled className={styles.productFavoriteIcon} />

@@ -15,6 +15,7 @@ import { ProductDetails } from '@/types/productDetails';
 import { ProductCharacteristics } from '@/components/UI/ProductCharacteristics';
 import { ProductDescription } from '@/components/UI/ProductDescription';
 import { ProductInfoAbout } from '@/components/UI/ProductInfoAbout';
+import { useTranslation } from 'react-i18next';
 
 // #region available product colors
 const colorHexMap: { [key: string]: string } = {
@@ -30,26 +31,27 @@ const colorHexMap: { [key: string]: string } = {
 
 export const ProductDetailsHeroSection: React.FC = () => {
   const { itemId } = useParams<{ itemId: string }>();
+  const { t } = useTranslation();
 
   // #region productCharacteristics
   const characteristics: { key: keyof ProductDetails; name: string }[] = [
-    { key: 'screen', name: 'Screen' },
-    { key: 'resolution', name: 'Resolution' },
-    { key: 'processor', name: 'Processor' },
-    { key: 'ram', name: 'RAM' },
+    { key: 'screen', name: 'screen' },
+    { key: 'resolution', name: 'resolution' },
+    { key: 'processor', name: 'processor' },
+    { key: 'ram', name: 'ram' },
   ];
   //#endregion
 
   // #region productTechSpec
   const techSpec: { key: keyof ProductDetails; name: string }[] = [
-    { key: 'screen', name: 'Screen' },
-    { key: 'resolution', name: 'Resolution' },
-    { key: 'processor', name: 'Processor' },
-    { key: 'ram', name: 'RAM' },
-    { key: 'capacity', name: 'Built in memory' },
-    { key: 'camera', name: 'Camera' },
-    { key: 'zoom', name: 'Zoom' },
-    { key: 'cell', name: 'Cell' },
+    { key: 'screen', name: 'screen' },
+    { key: 'resolution', name: 'resolution' },
+    { key: 'processor', name: 'processor' },
+    { key: 'ram', name: 'ram' },
+    { key: 'capacity', name: 'builtInMemory' },
+    { key: 'camera', name: 'camera' },
+    { key: 'zoom', name: 'zoom' },
+    { key: 'cell', name: 'cell' },
   ];
   //#endregion
 
@@ -93,6 +95,7 @@ export const ProductDetailsHeroSection: React.FC = () => {
 
   useEffect(() => {
     const randomId = getRandomSixDigitNumber();
+
     setDisplayId(randomId);
   }, [itemId]);
   //#endregion
@@ -110,6 +113,7 @@ export const ProductDetailsHeroSection: React.FC = () => {
     const newColor = event.target.value;
     const newItemId = `${productDetails?.namespaceId}-${productDetails?.capacity.toLowerCase()}-${newColor}`;
     const newPath = `/${category}/${newItemId}`;
+
     setSelectedColor(newColor);
     navigate(newPath);
   };
@@ -128,6 +132,7 @@ export const ProductDetailsHeroSection: React.FC = () => {
     const newCapacity = event.target.value;
     const newItemId = `${productDetails?.namespaceId}-${newCapacity.toLowerCase()}-${productDetails?.color}`;
     const newPath = `/${category}/${newItemId}`;
+
     setSelectedCapacity(newCapacity);
     navigate(newPath);
   };
@@ -141,10 +146,17 @@ export const ProductDetailsHeroSection: React.FC = () => {
     );
   }
 
+  //#region translation
+  const translatedName = t(
+    `products.${productDetails.id}.name`,
+    productDetails.name,
+  );
+  //#endregion
+
   return (
     <div className={styles.page}>
       <div className={styles.productWrapper}>
-        <h2 className={styles.productName}>{productDetails.name}</h2>
+        <h2 className={styles.productName}>{translatedName}</h2>
 
         <div className={styles.swiperContainer}>
           <SwiperProductDetails images={productDetails.images} />
@@ -182,6 +194,7 @@ export const ProductDetailsHeroSection: React.FC = () => {
                           className={styles.colorSwatch}
                           style={{ backgroundColor: backgroundColor }}
                         ></span>
+                        <span className="visually-hidden">{color}</span>
                       </label>
                     </div>
                   );
@@ -242,13 +255,13 @@ export const ProductDetailsHeroSection: React.FC = () => {
         </div>
 
         <div className={styles.descriptionAboutContainer}>
-          <ProductDescription articleName={'About'}>
+          <ProductDescription articleName={t('description.about')}>
             <ProductInfoAbout product={productDetails} />
           </ProductDescription>
         </div>
         <div className={styles.descriptionTechSpecsContainer}>
           <ProductDescription
-            articleName={'Tech specs'}
+            articleName={t('description.techSpecs')}
             customClassName={styles.productDescriptionParentCustomName}
           >
             <ProductCharacteristics

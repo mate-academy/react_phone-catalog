@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 
@@ -20,11 +21,14 @@ import productsList from 'data/api/products.json';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Product } from '@/types/product';
 
-const navLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/phones', label: 'Phones' },
-  { to: '/tablets', label: 'Tablets' },
-  { to: '/accessories', label: 'Accessories' },
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from '@/components/UI/LanguageSwitcher';
+
+const navLinksConfig = [
+  { to: '/', key: 'home' },
+  { to: '/phones', key: 'phones' },
+  { to: '/tablets', key: 'tablets' },
+  { to: '/accessories', key: 'accessories' },
 ];
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -40,6 +44,16 @@ export const NavBar: React.FC = () => {
   const { favorites } = useFavorites();
   const { cart } = useCart();
   const navigate = useNavigate();
+
+  //#region for transl
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.resolvedLanguage;
+
+  const navbarClasses = cn(
+    styles.navbar,
+    styles[`navbar--lang-${currentLanguage}`],
+  );
+  //#endregion
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -70,7 +84,7 @@ export const NavBar: React.FC = () => {
   });
 
   return (
-    <div className={styles.navbar} ref={pageRef}>
+    <div className={navbarClasses} ref={pageRef}>
       <div className={styles.navbar__topBar}>
         <div className={styles.navbar__left}>
           <Link to="/home" className={styles.navbar__logo}>
@@ -79,10 +93,10 @@ export const NavBar: React.FC = () => {
 
           <nav className={styles.navbar__navigation}>
             <ul className={styles.navbar__list}>
-              {navLinks.map(link => (
+              {navLinksConfig.map(link => (
                 <li key={link.to} className={styles.navbar__item}>
                   <NavLink to={link.to} className={getLinkClass}>
-                    <h3>{link.label}</h3>
+                    <h3>{t(`nav.${link.key}`)}</h3>
                   </NavLink>
                 </li>
               ))}
@@ -92,6 +106,9 @@ export const NavBar: React.FC = () => {
 
         {isTablet ? (
           <div className={actionsClasses}>
+            <div className={styles.iconWrapper}>
+              <LanguageSwitcher />
+            </div>
             <SearchComponent
               products={productsList}
               onSelect={handleSelect}
@@ -138,6 +155,7 @@ export const NavBar: React.FC = () => {
           </Link>
 
           <div className={styles.navbar__wrapperMobileActionsAside}>
+            <LanguageSwitcher />
             <ThemeSwitcher />
             <button
               onClick={toggleMenu}
@@ -151,14 +169,14 @@ export const NavBar: React.FC = () => {
 
         <nav className={styles.navbar__menuNavigation}>
           <ul className={styles.navbar__menuList}>
-            {navLinks.map(link => (
+            {navLinksConfig.map(link => (
               <li key={link.to} className={styles.navbar__menuItem}>
                 <NavLink
                   to={link.to}
                   className={styles.navbar__menuLink}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <h3>{link.label}</h3>
+                  <h3>{t(`nav.${link.key}`)}</h3>
                 </NavLink>
               </li>
             ))}

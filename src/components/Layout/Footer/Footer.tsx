@@ -4,8 +4,11 @@ import styles from './Footer.module.scss';
 import Logo from 'assets/icons/Logo.svg?react';
 import ArrowRight from 'assets/icons/ArrowRight.svg?react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -26,7 +29,7 @@ export const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className={styles.footerLink}
           >
-            Github
+            {t(`footer.github`)}
           </a>
           <a
             href="https://t.me/nineuito"
@@ -34,7 +37,7 @@ export const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className={styles.footerLink}
           >
-            Contacts
+            {t(`footer.contacts`)}
           </a>
           <a
             href="https://github.com/nineuito"
@@ -42,11 +45,11 @@ export const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className={styles.footerLink}
           >
-            rights
+            {t(`footer.rights`)}
           </a>
         </div>
         <div className={styles.backToTop} onClick={scrollToTop}>
-          <p className={styles.textBackToTop}>Back to top</p>
+          <p className={styles.textBackToTop}>{t(`footer.backToTop`)}</p>
 
           <button className={styles.btnBackToTop}>
             <ArrowRight className={styles.btnBackToTopIcon} />

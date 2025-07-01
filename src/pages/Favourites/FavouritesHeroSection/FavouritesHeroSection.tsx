@@ -1,21 +1,23 @@
+import React, { useContext, useEffect, useState } from 'react';
 import { Breadcrumbs } from '@/components/UI/Breadcrumbs';
 import styles from './FavouritesHeroSection.module.scss';
-import React, { useContext, useEffect, useState } from 'react';
 import {
   FavoritesContext,
   FavoritesContextType,
 } from '@/context/FavoritesContext';
 import { ProductCard } from '@/components/UI/ProductCard';
 import { ProductSkeleton } from '@/components/UI/ProductSkeleton';
+import { useTranslation } from 'react-i18next';
 
 export const FavouritesHeroSection: React.FC = () => {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { favorites } = useContext(FavoritesContext) as FavoritesContextType;
 
   useEffect(() => {
     const times = setTimeout(() => {
       setIsLoading(false);
-    }, 100)
+    }, 100);
 
     return () => clearTimeout(times);
   }, [favorites]);
@@ -24,8 +26,10 @@ export const FavouritesHeroSection: React.FC = () => {
     <>
       <Breadcrumbs />
       <div className={styles.container}>
-        <h1 className={styles.title}>Favourites</h1>
-        <p className={styles.counterModels}>{favorites.length} items</p>
+        <h1 className={styles.title}>{t(`productCatalog.titleFavourites`)}</h1>
+        <p className={styles.counterModels}>
+          {t('common.items', { count: favorites.length })}
+        </p>
 
         <div className={styles.productGridContainer}>
           {isLoading ? (
@@ -43,7 +47,7 @@ export const FavouritesHeroSection: React.FC = () => {
           ) : (
             <div className={styles.emptyStateContainer}>
               <p className={styles.noItemsMessage}>
-                Your favorites list is empty.
+                {t(`common.emptyFavourites`)}
               </p>
               <img
                 src="img/cart-is-empty.png"

@@ -72,29 +72,10 @@
   @include u.hover(color, var(--text-secondary));
 }
 
-.backToTop {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:hover {
-    .textBackToTop {
-      color: var(--icons);
-    }
-
-    .btnBackToTop {
-      background-color: var(--icons);
-    }
-  }
-}
-
 .textBackToTop {
   font-size: 12px;
   font-weight: 700;
   color: var(--text-secondary);
-
   transition: color u.$effect-duration ease;
 }
 
@@ -115,4 +96,23 @@
 
 .btnBackToTopIcon {
   rotate: -90deg;
+}
+
+.backToTop {
+  cursor: pointer;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    .textBackToTop {
+      color: var(--icons);
+    }
+
+    .btnBackToTop {
+      background-color: var(--icons);
+    }
+  }
 }

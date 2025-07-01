@@ -5,36 +5,45 @@
   z-index: 1000;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(var(--background), 0.7);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(var(--background), 0.7);
   backdrop-filter: blur(5px);
 }
 
 .modalContent {
   position: relative;
-  background: var(--surface-1);
-  padding: 40px 24px 24px;
-  border-radius: 8px;
-  border: 1px solid var(--elements);
+
   width: 90%;
   max-width: 500px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 40px 24px 24px;
+  border: 1px solid var(--elements);
+  border-radius: 8px;
+
   color: var(--text-primary);
   text-align: center;
+
+  background: var(--surface-1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .closeButton {
+  cursor: pointer;
+
   position: absolute;
   top: 16px;
   right: 16px;
-  background: none;
-  border: none;
-  cursor: pointer;
+
   padding: 0;
+  border: none;
+
+  background: none;
 
   svg path {
     fill: var(--text-secondary);
@@ -49,26 +58,26 @@
 }
 
 .modalEnter {
-  opacity: 0;
   transform: scale(0.9) translateY(20px);
+  opacity: 0;
 }
 
 .modalEnterActive {
-  opacity: 1;
   transform: scale(1) translateY(0);
+  opacity: 1;
   transition:
     opacity 300ms,
     transform 300ms;
 }
 
 .modalExit {
-  opacity: 1;
   transform: scale(1) translateY(0);
+  opacity: 1;
 }
 
 .modalExitActive {
-  opacity: 0;
   transform: scale(0.9) translateY(20px);
+  opacity: 0;
   transition:
     opacity 300ms,
     transform 300ms;

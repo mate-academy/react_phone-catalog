@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import styles from './ProductPrice.module.scss';
-import { Product } from "@/types/product";
-import cn from "classnames";
+import { Product } from '@/types/product';
+import cn from 'classnames';
 
 type Props = {
   isShowFullPrice: boolean;

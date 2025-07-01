@@ -1,8 +1,8 @@
 @use 'styles/utils' as u;
 
 .card {
-  background-color: var(--surface-1);
   border-radius: var(--card-border-radius);
+  background-color: var(--surface-1);
 }
 
 .cardWrapper {
@@ -13,19 +13,19 @@
 
   @include u.on-tablet {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 24px;
-
     gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 24px;
   }
 }
 
 .productInfo {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 16px;
+  align-items: center;
+  justify-content: center;
 
   @include u.on-tablet {
     gap: 24px;
@@ -39,9 +39,8 @@
   align-items: center;
   justify-content: center;
 
-  padding: 0;
   height: 16px;
-
+  padding: 0;
   border: none;
 
   background-color: var(--surface-1);
@@ -61,11 +60,10 @@
 }
 
 .productName {
-  color: var(--text-primary);
+  width: 128px;
   font-size: 14px;
   line-height: 21px;
-
-  width: 128px;
+  color: var(--text-primary);
 
   @include u.on-tablet {
     flex-grow: 1;
@@ -79,8 +77,8 @@
 
 .quantityPrice {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   @include u.on-tablet {
     gap: 24px;
@@ -89,23 +87,21 @@
 
 .counterProduct {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .btnDecrementCounter,
 .btnIncrementCounter {
-  height: 32px;
-  width: 32px;
-
   cursor: pointer;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  width: 32px;
+  height: 32px;
   border: none;
-
   border-radius: var(--btn-border-radius);
 
   background-color: var(--surface-2);
@@ -119,18 +115,19 @@
 
 .productQuantity {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 32px;
+  justify-content: center;
+
   width: 32px;
+  height: 32px;
 
   color: var(--text-primary);
 }
 
 .btnDecrementCounter:disabled,
 .btnIncrementCounter:disabled {
-  background-color: transparent;
   border: 1px solid var(--elements);
+  background-color: transparent;
 
   path {
     fill: var(--icons);

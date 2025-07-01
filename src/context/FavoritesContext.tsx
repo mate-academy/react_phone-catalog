@@ -9,13 +9,13 @@ export type FavoritesContextType = {
   isFavorite: (productId: string) => boolean;
 };
 
-export const FavoritesContext = createContext<
-  FavoritesContextType | undefined
-  >(undefined);
+export const FavoritesContext = createContext<FavoritesContextType | undefined>(
+  undefined,
+);
 
-  type Props = {
-    children: ReactNode;
-  };
+type Props = {
+  children: ReactNode;
+};
 
 export const FavoritesProvider: React.FC<Props> = ({ children }) => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
@@ -46,7 +46,7 @@ export const FavoritesProvider: React.FC<Props> = ({ children }) => {
       {children}
     </FavoritesContext.Provider>
   );
-}
+};
 
 export const useFavorites = (): FavoritesContextType => {
   const context = useContext(FavoritesContext);

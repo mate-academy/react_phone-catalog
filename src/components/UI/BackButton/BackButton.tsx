@@ -3,6 +3,7 @@ import styles from './BackButton.module.scss';
 import ArrowLeft from 'assets/icons/ArrowRight.svg?react';
 import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   textButton?: string;
@@ -15,6 +16,7 @@ export const BackButton: React.FC<Props> = ({
   className,
   fallBackPath = '/',
 }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleGoBack = () => {
@@ -36,7 +38,7 @@ export const BackButton: React.FC<Props> = ({
       aria-label={typeof textButton === 'string' ? textButton : 'Go back'}
     >
       <ArrowLeft className={styles.arrowBackButton} />
-      <p className={styles.textBackButton}>{textButton}</p>
+      <p className={styles.textBackButton}>{t(`buttons.back`)}</p>
     </button>
   );
 };

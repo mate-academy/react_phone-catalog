@@ -18,4 +18,4 @@ export const ProductInfoAbout: React.FC<Props> = ({ product }) => {
       ))}
     </div>
   );
-}
+};

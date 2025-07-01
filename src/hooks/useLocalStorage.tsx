@@ -15,6 +15,7 @@ export function useLocalStorage<T>(
       return JSON.parse(data);
     } catch (e) {
       localStorage.removeItem(key);
+
       return startValue;
     }
   });

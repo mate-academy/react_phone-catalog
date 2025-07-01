@@ -17,29 +17,16 @@ export type CartContextType = {
   getTotalItems: () => number;
 };
 
-export const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextType | undefined>(
+  undefined,
+);
 
-  type Props = {
-    children: ReactNode;
-  };
+type Props = {
+  children: ReactNode;
+};
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
   const [cart, setCart] = useLocalStorage<CartItem[]>('cart', []);
-
-  const addToCart = (product: Product) => {
-    const existingItem = cart.find(item => item.itemId === product.itemId);
-
-    if (existingItem) {
-      incrementQuantity(product.itemId);
-    } else {
-      const cartItem: CartItem = { ...product, quantity: 1 };
-      setCart([...cart, cartItem]);
-    }
-  };
-
-  const removeFromCart = (productId: string) => {
-    setCart(cart.filter(item => item.itemId !== productId));
-  };
 
   const incrementQuantity = (productId: string) => {
     setCart(
@@ -49,6 +36,22 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
           : item,
       ),
     );
+  };
+
+  const addToCart = (product: Product) => {
+    const existingItem = cart.find(item => item.itemId === product.itemId);
+
+    if (existingItem) {
+      incrementQuantity(product.itemId);
+    } else {
+      const cartItem: CartItem = { ...product, quantity: 1 };
+
+      setCart([...cart, cartItem]);
+    }
+  };
+
+  const removeFromCart = (productId: string) => {
+    setCart(cart.filter(item => item.itemId !== productId));
   };
 
   const decrementQuantity = (productId: string) => {
@@ -90,12 +93,8 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     getTotalItems,
   };
 
-  return (
-    <CartContext.Provider value={value}>
-      {children}
-    </CartContext.Provider>
-  );
-}
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+};
 
 export const useCart = (): CartContextType => {
   const context = useContext(CartContext);

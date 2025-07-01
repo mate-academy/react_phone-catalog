@@ -2,11 +2,13 @@ import React, { useContext, useMemo } from 'react';
 import styles from './PhonesHeroSection.module.scss';
 import { Breadcrumbs } from '@/components/UI/Breadcrumbs';
 import { Outlet, useParams } from 'react-router-dom';
-import { ProductCatalog } from '@/components/UI/ProductCatalog';
+import { ProductCatalog } from '@/components/UI/ProductCatalog/ProductCatalog';
 
 import { ProductContext, ProductContextType } from '@/context/ProductContext';
+import { useTranslation } from 'react-i18next';
 
 export const PhonesHeroSection: React.FC = () => {
+  const { t } = useTranslation();
   const { allProducts, isLoading, error } = useContext(
     ProductContext,
   ) as ProductContextType;
@@ -31,7 +33,7 @@ export const PhonesHeroSection: React.FC = () => {
         <Outlet />
       ) : (
         <ProductCatalog
-          title="Mobile phones"
+          title={t(`productCatalog.titlePhones`)}
           products={phoneProducts}
           isLoading={isLoading}
         />

@@ -1,14 +1,13 @@
 @use 'styles/utils' as u;
 
 .articleName {
+  margin-bottom: 32px;
   padding-bottom: 15px;
   border-bottom: 1px solid var(--elements);
 
-  color: var(--text-primary);
-  font-weight: 700;
   font-size: 20px;
-
-  margin-bottom: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
 
   @include u.on-tablet {
     font-size: 22px;

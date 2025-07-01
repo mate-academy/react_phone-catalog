@@ -4,16 +4,21 @@ import React, { useState } from 'react';
 import { CartProductCard } from '@/components/UI/CartProductCard';
 import { useCart } from '@/context/CartContext';
 import { Modal } from '@/components/UI/Modal';
+import { useTranslation } from 'react-i18next';
 
 export const CartHeroSection: React.FC = () => {
   const { cart, getTotalPrice, getTotalItems } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const { t } = useTranslation();
+
   return (
     <>
       <BackButton />
       <div className={styles.cartHeroContainer}>
-        <h1 className={styles.cartHeroTitle}>Cart</h1>
+        <h1 className={styles.cartHeroTitle}>
+          {t('productCatalog.titleCart')}
+        </h1>
         {cart.length > 0 ? (
           <div className={styles.cartContentWrapper}>
             <div className={styles.cartItems}>
@@ -24,20 +29,23 @@ export const CartHeroSection: React.FC = () => {
             <div className={styles.cartTotal}>
               <div className={styles.wrapperCartTotal}>
                 <h2 className={styles.cartTotalPrice}>${getTotalPrice()}</h2>
-                <p
-                  className={styles.cartTotalItems}
-                >{`Total for ${getTotalItems()} items`}</p>
-                <button className={styles.cartTotalBtn}
-                onClick={() => setIsModalOpen(true)}
+                <p className={styles.cartTotalItems}>
+                  {t('common.items', { count: getTotalItems() })}
+                </p>
+                <button
+                  className={styles.cartTotalBtn}
+                  onClick={() => setIsModalOpen(true)}
                 >
-                  <p className={styles.cartTotalBtnText}>Checkout</p>
+                  <p className={styles.cartTotalBtnText}>
+                    {t('buttons.checkout')}
+                  </p>
                 </button>
               </div>
             </div>
           </div>
         ) : (
           <div className={styles.emptyStateContainer}>
-            <p className={styles.noItemsMessage}>Your cart list is empty.</p>
+            <p className={styles.noItemsMessage}>{t('common.emptyCart')}</p>
             <img
               src="img/cart-is-empty.png"
               alt="Cart is empty"
@@ -48,16 +56,14 @@ export const CartHeroSection: React.FC = () => {
       </div>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <div className={styles.checkoutModalContent}>
-          <h2 className={styles.modalTitle}>Feature in Development</h2>
-          <p className={styles.modalText}>
-            We're sorry, but the checkout feature is not yet implemented.
-          </p>
-          <p className={styles.modalText}>
-            Thank you for checking out this demo project!
-          </p>
-          <button className={styles.modalCloseButton}
-            onClick={() => setIsModalOpen(false)}>
-            OK
+          <h2 className={styles.modalTitle}>{t('modal.inDevTitle')}</h2>
+          <p className={styles.modalText}>{t('modal.inDevText1')}</p>
+          <p className={styles.modalText}>{t('modal.inDevText2')}</p>
+          <button
+            className={styles.modalCloseButton}
+            onClick={() => setIsModalOpen(false)}
+          >
+            {t('modal.ok')}
           </button>
         </div>
       </Modal>

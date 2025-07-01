@@ -4,34 +4,39 @@
 // #region errorBlock
 .errorContainer {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   min-height: 50vh;
   padding: 2rem;
-  color: var(--icons);
-  background-color: var(--icons);
   border-radius: 5px;
-  text-align: center;
+
   font-weight: 500;
+  color: var(--icons);
+  text-align: center;
+
+  background-color: var(--icons);
 }
 
 .notFoundContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
   min-height: 60vh;
   padding: 2rem;
+
   text-align: center;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .notFoundImage {
   max-width: 80%;
   height: auto;
-  margin-bottom: 1.5rem;
   max-height: 250px;
+  margin-bottom: 1.5rem;
 
   @media (min-width: 768px) {
     max-width: 300px;
@@ -41,13 +46,14 @@
 
 .notFoundMessage {
   font-size: 1.25rem;
-  color: var(--elements);
   font-weight: 800;
+  color: var(--elements);
 
   @media (min-width: 768px) {
     font-size: 1.5rem;
   }
 }
+
 // #endregion
 
 .productWrapper {
@@ -59,28 +65,27 @@
 }
 
 .productName {
+  margin-bottom: 32px;
   font-size: 22px;
   line-height: 140%;
   color: var(--text-primary);
 
-  margin-bottom: 32px;
-
   @include u.on-tablet {
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -1%;
+    grid-column: 1 / -1;
+    grid-row: 1;
 
     margin-bottom: 40px;
 
-    grid-row: 1;
-    grid-column: 1 / -1;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
   }
 }
 
 .swiperContainer {
   @include u.on-tablet {
-    grid-row: 2;
     grid-column: 1 / -1;
+    grid-row: 2;
   }
 
   @include u.on-desktop {
@@ -93,16 +98,15 @@
   margin-bottom: 56px;
 
   @include u.on-tablet {
-    grid-row: 2;
     grid-column: 8 / 13;
+    grid-row: 2;
     margin-top: 0;
     margin-bottom: 64px;
   }
 
   @include u.on-desktop {
-    grid-row: 2;
     grid-column: 14 / 21;
-
+    grid-row: 2;
     margin-bottom: 110px;
   }
 }
@@ -114,8 +118,8 @@
 
 .colorInfo {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 8px;
 
   @include u.on-desktop {
@@ -124,62 +128,70 @@
 }
 
 .titleColors {
-  color: var(--text-secondary);
-  font-weight: 700;
   font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
 }
 
 .productId {
-  color: var(--icons);
-  font-weight: 700;
   font-size: 12px;
+  font-weight: 700;
+  color: var(--icons);
 
   @include u.on-desktop {
     position: absolute;
     top: 0;
     right: 0;
     transform: translateX(310%);
+
     white-space: nowrap;
   }
 }
 
 .colorSelector {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
   overflow-x: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
   white-space: nowrap;
 }
 
 .colorOption {
   position: relative;
+
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   width: 32px;
   height: 32px;
 }
 
 .colorRadioInput {
+  pointer-events: none;
+
   position: absolute;
-  opacity: 0;
+
   width: 0;
   height: 0;
-  pointer-events: none;
+
+  opacity: 0;
 }
 
 .colorLabel {
+  cursor: pointer;
+
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  cursor: pointer;
-  border-radius: 50%;
   border: 1px solid var(--elements);
-  box-sizing: border-box;
+  border-radius: 50%;
+
   transition: border-color 0.2s ease;
 
   .colorRadioInput:checked + & {
@@ -189,32 +201,32 @@
 
 .colorSwatch {
   display: block;
+
+  box-sizing: border-box;
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  box-sizing: border-box;
 }
 
 .productCapacity {
   margin-top: 24px;
-  padding-bottom: 24px;
   margin-bottom: 32px;
+  padding-bottom: 24px;
   border-bottom: 1px solid var(--elements);
 }
 
 .titleCapacity {
-  color: var(--text-secondary);
-  font-weight: 700;
-  font-size: 12px;
   margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
 }
 
 .capacitySelector {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
   overflow-x: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .capacityOption {
@@ -222,33 +234,37 @@
 }
 
 .capacityRadioInput {
+  pointer-events: none;
+
   position: absolute;
-  opacity: 0;
+
   width: 0;
   height: 0;
-  pointer-events: none;
+
+  opacity: 0;
 }
 
 .capacityLabel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 56px;
-  height: 32px;
-  box-sizing: border-box;
-
-  border: 1px solid var(--icons);
-  border-radius: 2px;
-  background-color: transparent;
-
   cursor: pointer;
   user-select: none;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 56px;
+  height: 32px;
+  border: 1px solid var(--icons);
+  border-radius: 2px;
+
   font-family: Mont, sans-serif;
-  color: var(--text-primary);
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
+  color: var(--text-primary);
+
+  background-color: transparent;
 
   transition:
     background-color 0.2s ease,
@@ -256,9 +272,9 @@
     border-color 0.2s ease;
 
   .capacityRadioInput:checked + & {
-    background-color: var(--text-primary);
-    color: var(--background);
     border-color: var(--text-primary);
+    color: var(--background);
+    background-color: var(--text-primary);
   }
 
   &:hover {
@@ -290,31 +306,31 @@
 
 .descriptionAboutContainer {
   @include u.on-tablet {
-    grid-row: 3;
     grid-column: 1 / -1;
+    grid-row: 3;
   }
 
   @include u.on-desktop {
-    grid-row: 3;
     grid-column: span 12;
+    grid-row: 3;
   }
 }
 
 .descriptionTechSpecsContainer {
   @include u.on-tablet {
-    grid-row: 4;
     grid-column: 1 / -1;
+    grid-row: 4;
   }
 
   @include u.on-desktop {
-    grid-row: 3;
     grid-column: 14 / 25;
+    grid-row: 3;
   }
 }
 
 .productCharacteristicsParentContainerCustom {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 h2.productDescriptionParentCustomName {

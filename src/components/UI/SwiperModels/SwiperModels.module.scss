@@ -119,10 +119,5 @@
 .customNavNext {
   &:hover:not(:disabled) {
     @include u.hover(background-color, var(--icons));
-
-    // .arrowLeft,
-    // .arrowRight {
-    //   @include u.hover-path-fill(var(--text-primary));
-    // }
   }
 }

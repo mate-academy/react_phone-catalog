@@ -12,11 +12,9 @@
   }
 
   @include u.on-desktop {
-    padding-inline: 32px;
-
     max-width: 1136px;
-
     margin-bottom: 80px;
+    padding-inline: 32px;
   }
 }
 
@@ -50,6 +48,7 @@
 
 .productGridContainer {
   gap: 40px;
+
   @include u.page-grid;
 
   @include u.on-tablet {
@@ -79,10 +78,10 @@
 
 .emptyStateContainer {
   grid-column: 1 / -1;
-
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
 }
 

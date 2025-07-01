@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useMemo } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+} from 'react';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 type Theme = 'light' | 'dark';
@@ -43,10 +49,11 @@ export const ThemeProvider: React.FC<Props> = ({ children }) => {
     );
   }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
+
     setTheme(newTheme);
-  };
+  }, [setTheme, theme]);
 
   const value = useMemo(
     () => ({

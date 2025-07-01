@@ -1,61 +1,45 @@
 import React, { useMemo } from 'react';
 import styles from './HomeSectionSecond.module.scss';
-import products from 'data/api/products.json';
+import productsData from 'data/api/products.json';
 import { Product } from '@/types/product';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-type typeCounter = 'phones' | 'tablets' | 'accessories';
+type CategoryType = 'phones' | 'tablets' | 'accessories';
 
-const counterProducts = (products: Product[], type: typeCounter): number => {
-  const copyProdutsList = [...products];
+const counterProducts = (
+  productList: Product[],
+  type: CategoryType,
+): number => {
+  return productList.reduce((accumulator, product) => {
+    if (product.category === type) {
+      return accumulator + 1;
+    }
 
-  switch (type) {
-    case 'phones':
-      return copyProdutsList.reduce((acc, item) => {
-        if (item.category === 'phones') {
-          acc++;
-        }
-
-        return acc;
-      }, 0);
-
-    case 'tablets':
-      return copyProdutsList.reduce((acc, item) => {
-        if (item.category === 'tablets') {
-          acc++;
-        }
-
-        return acc;
-      }, 0);
-
-    case 'accessories':
-      return copyProdutsList.reduce((acc, item) => {
-        if (item.category === 'accessories') {
-          acc++;
-        }
-
-        return acc;
-      }, 0);
-
-    default:
-      return 0;
-  }
+    return accumulator;
+  }, 0);
 };
 
 export const HomeSectionSecond: React.FC = () => {
-  const phoneCounter = useMemo(() => counterProducts(products, 'phones'), []);
+  const { t } = useTranslation();
+  const allProducts: Product[] = productsData;
+
+  const phoneCounter = useMemo(
+    () => counterProducts(allProducts, 'phones'),
+    [allProducts],
+  );
   const tabletsCounter = useMemo(
-    () => counterProducts(products, 'tablets'),
-    [],
+    () => counterProducts(allProducts, 'tablets'),
+    [allProducts],
   );
   const accessoriesCounter = useMemo(
-    () => counterProducts(products, 'accessories'),
-    [],
+    () => counterProducts(allProducts, 'accessories'),
+    [allProducts],
   );
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.sectionTitle}>Shop by category</h2>
+      <h2 className={styles.sectionTitle}>{t('categories.title')}</h2>
 
       <div className={styles.sectionContent}>
         <Link to="/phones" className={styles.sectionItem}>
@@ -63,11 +47,13 @@ export const HomeSectionSecond: React.FC = () => {
             className={`${styles.pictureContainer} ${styles.pictureContainerFirst}`}
           >
             <source srcSet="img/category-phones.webp" type="image/webp" />
-            <img src="img/category-phones.png" alt="Mobile phones" />
+            <img src="img/category-phones.png" alt={t('categories.phones')} />
           </picture>
           <div className={styles.itemDetails}>
-            <h3 className={styles.itemDescription}>Mobile phones</h3>
-            <p className={styles.itemCounterModels}>{phoneCounter} models</p>
+            <h3 className={styles.itemDescription}>{t('categories.phones')}</h3>
+            <p className={styles.itemCounterModels}>
+              {t('categories.models', { count: phoneCounter })}
+            </p>
           </div>
         </Link>
         <Link to="/tablets" className={styles.sectionItem}>
@@ -75,11 +61,15 @@ export const HomeSectionSecond: React.FC = () => {
             className={`${styles.pictureContainer} ${styles.pictureContainerSecond}`}
           >
             <source srcSet="img/category-tablets.webp" type="image/webp" />
-            <img src="img/category-tablets.png" alt="Tablets" />
+            <img src="img/category-tablets.png" alt={t('categories.tablets')} />
           </picture>
           <div className={styles.itemDetails}>
-            <h3 className={styles.itemDescription}>Tablets</h3>
-            <p className={styles.itemCounterModels}>{tabletsCounter} models</p>
+            <h3 className={styles.itemDescription}>
+              {t('categories.tablets')}
+            </h3>
+            <p className={styles.itemCounterModels}>
+              {t('categories.models', { count: tabletsCounter })}
+            </p>
           </div>
         </Link>
         <Link to="/accessories" className={styles.sectionItem}>
@@ -87,12 +77,17 @@ export const HomeSectionSecond: React.FC = () => {
             className={`${styles.pictureContainer} ${styles.pictureContainerThird}`}
           >
             <source srcSet="img/category-accessories.webp" type="image/webp" />
-            <img src="img/category-accessories.png" alt="Accessories" />
+            <img
+              src="img/category-accessories.png"
+              alt={t('categories.accessories')}
+            />
           </picture>
           <div className={styles.itemDetails}>
-            <h3 className={styles.itemDescription}>Accessories</h3>
+            <h3 className={styles.itemDescription}>
+              {t('categories.accessories')}
+            </h3>
             <p className={styles.itemCounterModels}>
-              {accessoriesCounter} models
+              {t('categories.models', { count: accessoriesCounter })}
             </p>
           </div>
         </Link>

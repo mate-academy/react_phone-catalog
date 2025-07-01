@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { ProductPrice } from '@/components/UI/ProductPrice';
 import { ProductCardButtons } from '../ProductCardButtons';
 import { ProductCharacteristics } from '../ProductCharacteristics';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product;
@@ -13,10 +14,13 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, isShowFullPrice }) => {
+  const { t } = useTranslation();
+  const translatedName = t(`products.${product.itemId}.name`, product.name);
+
   const characteristics: { key: keyof Product; name: string }[] = [
-    { key: 'screen', name: 'Screen' },
-    { key: 'capacity', name: 'Capacity' },
-    { key: 'ram', name: 'RAM' },
+    { key: 'screen', name: 'screen' },
+    { key: 'capacity', name: 'capacity' },
+    { key: 'ram', name: 'ram' },
   ];
 
   return (
@@ -27,10 +31,10 @@ export const ProductCard: React.FC<Props> = ({ product, isShowFullPrice }) => {
       >
         <img
           src={product.image}
-          alt={product.name}
+          alt={translatedName}
           className={styles.productImage}
         />
-        <p className={styles.productName}>{product.name}</p>
+        <p className={styles.productName}>{translatedName}</p>
       </Link>
 
       <ProductPrice isShowFullPrice={isShowFullPrice} product={product} />

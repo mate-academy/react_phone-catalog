@@ -4,8 +4,10 @@ import { Breadcrumbs } from '@/components/UI/Breadcrumbs';
 import { Outlet, useParams } from 'react-router-dom';
 import { ProductCatalog } from '@/components/UI/ProductCatalog';
 import { ProductContext, ProductContextType } from '@/context/ProductContext';
+import { useTranslation } from 'react-i18next';
 
 export const TabletsHeroSection: React.FC = () => {
+  const { t } = useTranslation();
   const { allProducts, isLoading, error } = useContext(
     ProductContext,
   ) as ProductContextType;
@@ -30,7 +32,7 @@ export const TabletsHeroSection: React.FC = () => {
         <Outlet />
       ) : (
         <ProductCatalog
-          title="Tablets"
+          title={t(`productCatalog.titleTablets`)}
           products={tabletsProducts}
           isLoading={isLoading}
         />

@@ -5,6 +5,7 @@ import products from 'data/api/products.json';
 import HomeIcon from '@/assets/icons/Home.svg?react';
 import ArrowRight from '@/assets/icons/ArrowRight.svg?react';
 import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   classNameCustom?: string;
@@ -12,14 +13,15 @@ type Props = {
 
 export const Breadcrumbs: React.FC<Props> = ({ classNameCustom }) => {
   const location = useLocation();
+  const { t } = useTranslation();
   const pathnames = location.pathname.split('/').filter(x => x);
-  const { itemId } = useParams<{ itemId?: string }>();
+  const { itemId: routeItemId } = useParams<{ itemId?: string }>();
 
-  const categoryNames: { [key: string]: string } = {
-    phones: 'Phones',
-    tablets: 'Tablets',
-    accessories: 'Accessories',
-    favourites: 'Favourites',
+  const i18nCategoryKeys: { [key: string]: string } = {
+    phones: 'productCatalog.titlePhones',
+    tablets: 'productCatalog.titleTablets',
+    accessories: 'productCatalog.titleAccessories',
+    favourites: 'productCatalog.titleFavourites',
   };
 
   const getProductName = (category: string, itemId: string) => {
@@ -41,12 +43,19 @@ export const Breadcrumbs: React.FC<Props> = ({ classNameCustom }) => {
         {pathnames.map((value, index) => {
           const to = `/${pathnames.slice(0, index + 1).join('/')}`;
           const isLast = index === pathnames.length - 1;
-          let displayName = categoryNames[value] || value;
+          let displayName = value;
 
-          if (isLast && pathnames.length === 2 && itemId) {
-            const category = pathnames[0];
+          if (isLast && routeItemId && pathnames.length > 1) {
+            const category = pathnames[pathnames.length - 2];
+            const fallbackName = getProductName(category, routeItemId);
 
-            displayName = getProductName(category, itemId);
+            displayName = t(`products.${routeItemId}.name`, fallbackName);
+          } else {
+            const i18nKey = i18nCategoryKeys[value];
+
+            if (i18nKey) {
+              displayName = t(i18nKey);
+            }
           }
 
           return (
