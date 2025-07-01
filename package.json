@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "react_phone-catalog",
+  "homepage": "./",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -65,7 +65,8 @@
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
-    "deploy": "mate-scripts deploy"
+    "deploy": "mate-scripts deploy",
+    "deploy:direct": "gh-pages -d dist"
   },
   "browserslist": {
     "production": [
