@@ -1,0 +1,64 @@
+@use 'styles/utils/' as u;
+
+.breadcrumbs {
+  overflow: auto hidden;
+  margin-inline: 16px;
+  padding-top: 24px;
+
+  @include u.on-tablet {
+    margin-inline: 32px;
+  }
+
+  @include u.on-desktop {
+    max-width: 1136px;
+    margin-inline: auto;
+    padding-inline: 32px;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  list-style: none;
+}
+
+.breadcrumbStep {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowIcon {
+  path {
+    fill: var(--icons);
+  }
+}
+
+.current {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: var(--text-secondary);
+}
+
+.prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: var(--text-primary);
+  text-decoration: none;
+
+  @include u.hover(color, var(--accent));
+}

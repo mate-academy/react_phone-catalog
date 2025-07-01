@@ -1,0 +1,348 @@
+@use 'styles/utils' as u;
+@use 'sass:color' as color;
+
+// #region errorBlock
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 50vh;
+  padding: 2rem;
+  border-radius: 5px;
+
+  font-weight: 500;
+  color: var(--icons);
+  text-align: center;
+
+  background-color: var(--icons);
+}
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 60vh;
+  padding: 2rem;
+
+  text-align: center;
+}
+
+.notFoundImage {
+  max-width: 80%;
+  height: auto;
+  max-height: 250px;
+  margin-bottom: 1.5rem;
+
+  @media (min-width: 768px) {
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+
+.notFoundMessage {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--elements);
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+}
+
+// #endregion
+
+.productWrapper {
+  margin-top: 16px;
+
+  @include u.on-tablet {
+    @include u.page-grid;
+  }
+}
+
+.productName {
+  margin-bottom: 32px;
+  font-size: 22px;
+  line-height: 140%;
+  color: var(--text-primary);
+
+  @include u.on-tablet {
+    grid-column: 1 / -1;
+    grid-row: 1;
+
+    margin-bottom: 40px;
+
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+.swiperContainer {
+  @include u.on-tablet {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  @include u.on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.productCharacteristicBlock {
+  margin-top: 40px;
+  margin-bottom: 56px;
+
+  @include u.on-tablet {
+    grid-column: 8 / 13;
+    grid-row: 2;
+    margin-top: 0;
+    margin-bottom: 64px;
+  }
+
+  @include u.on-desktop {
+    grid-column: 14 / 21;
+    grid-row: 2;
+    margin-bottom: 110px;
+  }
+}
+
+.productColors {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--elements);
+}
+
+.colorInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  @include u.on-desktop {
+    position: relative;
+  }
+}
+
+.titleColors {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.productId {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--icons);
+
+  @include u.on-desktop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(310%);
+
+    white-space: nowrap;
+  }
+}
+
+.colorSelector {
+  overflow-x: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  white-space: nowrap;
+}
+
+.colorOption {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+}
+
+.colorRadioInput {
+  pointer-events: none;
+
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  opacity: 0;
+}
+
+.colorLabel {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--elements);
+  border-radius: 50%;
+
+  transition: border-color 0.2s ease;
+
+  .colorRadioInput:checked + & {
+    border-color: var(--text-primary);
+  }
+}
+
+.colorSwatch {
+  display: block;
+
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.productCapacity {
+  margin-top: 24px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--elements);
+}
+
+.titleCapacity {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.capacitySelector {
+  overflow-x: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.capacityOption {
+  position: relative;
+}
+
+.capacityRadioInput {
+  pointer-events: none;
+
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  opacity: 0;
+}
+
+.capacityLabel {
+  cursor: pointer;
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 56px;
+  height: 32px;
+  border: 1px solid var(--icons);
+  border-radius: 2px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: var(--text-primary);
+
+  background-color: transparent;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+  .capacityRadioInput:checked + & {
+    border-color: var(--text-primary);
+    color: var(--background);
+    background-color: var(--text-primary);
+  }
+
+  &:hover {
+    .capacityRadioInput:not(:checked) + & {
+      border-color: var(--text-secondary);
+    }
+  }
+}
+
+.productPriceWrapper {
+  ::after {
+    border-bottom: 0;
+  }
+}
+
+.productPricesParentStyles {
+  :nth-child(1) {
+    font-size: 32px;
+  }
+
+  :nth-child(2) {
+    font-size: 22px;
+  }
+}
+
+.productCardButtonsWrapper {
+  margin-bottom: 32px;
+}
+
+.descriptionAboutContainer {
+  @include u.on-tablet {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  @include u.on-desktop {
+    grid-column: span 12;
+    grid-row: 3;
+  }
+}
+
+.descriptionTechSpecsContainer {
+  @include u.on-tablet {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
+
+  @include u.on-desktop {
+    grid-column: 14 / 25;
+    grid-row: 3;
+  }
+}
+
+.productCharacteristicsParentContainerCustom {
+  margin: 0;
+  padding: 0;
+}
+
+h2.productDescriptionParentCustomName {
+  margin-bottom: 30px;
+}
+
+.productCharacteristicsNameCustom {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.productCharacteristicsValueCustom {
+  font-size: 14px;
+  line-height: 21px;
+}
