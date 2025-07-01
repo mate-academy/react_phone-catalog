@@ -16,6 +16,7 @@ interface Product {
   color: string;
   colorsAvailable: string[];
   description: string[];
+  id: string;
   images: string[];
   name: string;
   namespaceId: string;
@@ -44,35 +45,52 @@ const NewBrand = () => {
   }
 
   const brandNewModels = phones.filter(product => {
-    product.name.includes('iPhone 14');
+    return product.name.includes('iPhone 14');
   });
 
-  console.log(phones);
+  const allColors = new Set(brandNewModels.map(product => product.color));
+
+  console.log(brandNewModels);
+  console.log(allColors);
+
+  const arrayColors = Array.from(allColors);
 
   return (
     <>
       <h1>Brand new models</h1>
 
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem illum nisi a dolorum doloremque ad delectus eum perspiciatis quis, quos est explicabo perferendis reprehenderit, enim rerum facere obcaecati? Consequatur cum alias laudantium quos sapiente eos molestias ipsa animi, ratione architecto expedita dolores rem qui esse.
+      {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem illum nisi a dolorum doloremque ad delectus eum perspiciatis quis, quos est explicabo perferendis reprehenderit, enim rerum facere obcaecati? Consequatur cum alias laudantium quos sapiente eos molestias ipsa animi, ratione architecto expedita dolores rem qui esse. */}
+      <Swiper spaceBetween={16} slidesPerView={2.5}>
+        {brandNewModels.map(phone => {
+          const singleIphoneColor = arrayColors.find(
+            color => color === phone.color,
+          );
 
+          if (singleIphoneColor) {
+            arrayColors.forEach((color, i) => {
+              const isColor = color === singleIphoneColor ? '' : color;
 
+              arrayColors[i] = isColor;
+            });
 
+            console.log(arrayColors);
 
+            return (
+              <SwiperSlide className={brandStyles.brand} key={phone.id}>
+                <div className={brandStyles.brand__imageWrapper}>
+                  <img
+                    src={phone.images[0]}
+                    className={brandStyles.brand__image}
+                  />
+                </div>
+                <div>{phone.images[0]}</div>
+              </SwiperSlide>
+            );
+          }
 
-
-
-
-
-
-
-
-
-    
-      {brandNewModels.map(phone => {
-        <div className="brand">
-          <img src={phone.images[0]} className={brandStyles.brand__card} />
-        </div>;
-      })}
+          return;
+        })}
+      </Swiper>
     </>
   );
 };
