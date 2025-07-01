@@ -63,6 +63,7 @@ export const SwiperModels: React.FC<Props> = ({
         }
       };
     }
+
     return undefined;
   }, [swiper]);
 

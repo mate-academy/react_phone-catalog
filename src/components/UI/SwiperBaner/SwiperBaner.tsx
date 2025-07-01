@@ -30,6 +30,7 @@ export const SwiperBaner: React.FC = () => {
         swiper.params.navigation.prevEl = prevRef.current;
         swiper.params.navigation.nextEl = nextRef.current;
       }
+
       swiper.navigation.init();
       swiper.navigation.update();
     }

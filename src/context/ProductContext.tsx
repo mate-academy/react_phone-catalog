@@ -36,6 +36,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     if (!isOnline) {
       setError('No internet connection. Please check your network.');
       setIsLoading(false);
+
       return;
     }
 
