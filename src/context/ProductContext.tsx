@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { Product } from '@/types/product';
 import productsList from 'data/api/products.json';
+import { useOnlineStatus } from '@/hooks/useOnlineStatus';
 
 export type ProductContextType = {
   allProducts: Product[];
@@ -26,16 +27,30 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const isOnline = useOnlineStatus();
 
   useEffect(() => {
-    try {
-      setAllProducts(productsList as Product[]);
+    setIsLoading(true);
+    setError(null);
+
+    if (!isOnline) {
+      setError('No internet connection. Please check your network.');
       setIsLoading(false);
-    } catch (err) {
-      setError('Failed to load products');
-      setIsLoading(false);
+      return;
     }
-  }, []);
+
+    const timer = setTimeout(() => {
+      try {
+        setAllProducts(productsList as Product[]);
+      } catch (err) {
+        setError('Failed to load products');
+      } finally {
+        setIsLoading(false);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [isOnline]);
 
   const value = useMemo(
     () => ({

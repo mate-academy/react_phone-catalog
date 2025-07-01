@@ -40,10 +40,14 @@
   }
 }
 
+.productLink {
+  text-decoration: none;
+}
+
 .productName {
   overflow: auto;
 
-  height: 42px;
+  min-height: 42px;
   margin-bottom: 8px;
 
   font-size: 14px;

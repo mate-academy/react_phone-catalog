@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styles from './SwiperBaner.module.scss';
 
 import ArrowLeft from '@/assets/icons/ArrowLeft.svg?react';
@@ -19,27 +19,26 @@ import 'swiper/css/navigation';
 export const SwiperBaner: React.FC = () => {
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
-  const swiperRef = useRef<SwiperCore | null>(null);
+  const [swiper, setSwiper] = useState<SwiperCore | null>(null);
 
   useEffect(() => {
-    if (swiperRef.current && prevRef.current && nextRef.current) {
-      const navigation = swiperRef.current.navigation;
-
-      if (navigation) {
-        navigation.prevEl = prevRef.current;
-        navigation.nextEl = nextRef.current;
-        navigation.init();
-        navigation.update();
+    if (swiper && !swiper.destroyed) {
+      if (
+        swiper.params.navigation &&
+        typeof swiper.params.navigation !== 'boolean'
+      ) {
+        swiper.params.navigation.prevEl = prevRef.current;
+        swiper.params.navigation.nextEl = nextRef.current;
       }
+      swiper.navigation.init();
+      swiper.navigation.update();
     }
-  }, []);
+  }, [swiper]);
 
   return (
     <div className={styles.container}>
       <Swiper
-        onSwiper={swiper => {
-          swiperRef.current = swiper;
-        }}
+        onSwiper={setSwiper}
         slidesPerView={1}
         spaceBetween={30}
         loop={true}

@@ -6,23 +6,26 @@ import { ProductCard } from '../ProductCard';
 import { ProductSkeleton } from '../ProductSkeleton/ProductSkeleton';
 import ArrowRight from 'assets/icons/ArrowRight.svg?react';
 import { Product } from '@/types/product';
-import { sortOptionType } from '@/types/sortOptionType';
+import { SortOptionType } from '@/types/sortOptionType';
 import { useTranslation } from 'react-i18next';
+import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 
 type Props = {
   title: string;
   products: Product[];
   isLoading?: boolean;
+  error?: string | null;
 };
 
 export const ProductCatalog: React.FC<Props> = ({
   title,
   products,
   isLoading: parentIsLoading = false,
+  error,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [sortOption, setSortOption] = useState<sortOptionType>('newest');
+  const [sortOption, setSortOption] = useState<SortOptionType>('newest');
   const [perPage, setPerPage] = useState<number>(16);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -43,7 +46,7 @@ export const ProductCatalog: React.FC<Props> = ({
     const per = searchParams.get('perPage');
 
     if (sort && ['newest', 'alphabetically', 'cheapest'].includes(sort)) {
-      setSortOption(sort as sortOptionType);
+      setSortOption(sort as SortOptionType);
     } else {
       setSortOption('newest');
     }
@@ -106,7 +109,7 @@ export const ProductCatalog: React.FC<Props> = ({
     return filteredProducts.slice(startIndex, endIndex);
   }, [currentPage, perPage, filteredProducts]);
 
-  const handleSortChange = (value: sortOptionType) => {
+  const handleSortChange = (value: SortOptionType) => {
     setSortOption(value);
     setSearchParams(
       prev => {
@@ -178,7 +181,7 @@ export const ProductCatalog: React.FC<Props> = ({
                     key={option.value}
                     className={`${styles.dropdownItem} ${sortOption === option.value ? styles.dropdownItemSelected : ''}`}
                     onClick={() =>
-                      handleSortChange(option.value as sortOptionType)
+                      handleSortChange(option.value as SortOptionType)
                     }
                   >
                     {t(`controls.sortOptions.${option.key}`)}
@@ -220,7 +223,9 @@ export const ProductCatalog: React.FC<Props> = ({
       </div>
 
       <div className={styles.productGridContainer}>
-        {isLoading ? (
+        {error ? (
+          <ErrorComponent message={error} />
+        ) : isLoading ? (
           Array.from({ length: perPage }).map((_, index) => (
             <div key={index} className={styles.productItem}>
               <ProductSkeleton />
@@ -237,7 +242,7 @@ export const ProductCatalog: React.FC<Props> = ({
         )}
       </div>
 
-      {!isLoading && filteredProducts.length > perPage && (
+      {!isLoading && !error && filteredProducts.length > perPage && (
         <Pagination
           total={filteredProducts.length}
           perPage={perPage}

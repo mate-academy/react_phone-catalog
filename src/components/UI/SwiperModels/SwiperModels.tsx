@@ -29,43 +29,42 @@ export const SwiperModels: React.FC<Props> = ({
 }) => {
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
-  const swiperRef = useRef<SwiperCore | null>(null);
+  const [swiper, setSwiper] = useState<SwiperCore | null>(null);
 
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
 
-  const updateButtonStates = () => {
-    if (swiperRef.current) {
-      const isBeginning = swiperRef.current.isBeginning;
-      const isEnd = swiperRef.current.isEnd;
-
-      setIsPrevDisabled(isBeginning);
-      setIsNextDisabled(isEnd);
-    }
-  };
-
   useEffect(() => {
-    if (swiperRef.current && prevRef.current && nextRef.current) {
-      const navigation = swiperRef.current.navigation;
-
-      if (navigation) {
-        navigation.prevEl = prevRef.current;
-        navigation.nextEl = nextRef.current;
-        navigation.init();
-        navigation.update();
+    if (swiper && !swiper.destroyed) {
+      if (
+        swiper.params.navigation &&
+        typeof swiper.params.navigation !== 'boolean'
+      ) {
+        swiper.params.navigation.prevEl = prevRef.current;
+        swiper.params.navigation.nextEl = nextRef.current;
       }
 
-      updateButtonStates();
+      const updateButtons = () => {
+        if (swiper && !swiper.destroyed) {
+          setIsPrevDisabled(swiper.isBeginning);
+          setIsNextDisabled(swiper.isEnd);
+        }
+      };
 
-      swiperRef.current.on('slideChange', updateButtonStates);
+      swiper.navigation.init();
+      swiper.navigation.update();
+      updateButtons();
+
+      swiper.on('slideChange', updateButtons);
+
+      return () => {
+        if (swiper && !swiper.destroyed) {
+          swiper.off('slideChange', updateButtons);
+        }
+      };
     }
-
-    return () => {
-      if (swiperRef.current) {
-        swiperRef.current.off('slideChange', updateButtonStates);
-      }
-    };
-  }, []);
+    return undefined;
+  }, [swiper]);
 
   return (
     <div className={styles.container}>
@@ -90,9 +89,7 @@ export const SwiperModels: React.FC<Props> = ({
       </div>
 
       <Swiper
-        onSwiper={swiper => {
-          swiperRef.current = swiper;
-        }}
+        onSwiper={setSwiper}
         slidesPerView={'auto'}
         spaceBetween={16}
         initialSlide={0}

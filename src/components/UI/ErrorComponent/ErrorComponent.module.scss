@@ -1,0 +1,16 @@
+.errorContainer {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 50vh;
+  padding: 2rem;
+  border-radius: 5px;
+
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+}

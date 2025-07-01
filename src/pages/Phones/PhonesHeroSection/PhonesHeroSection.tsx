@@ -19,10 +19,6 @@ export const PhonesHeroSection: React.FC = () => {
     return allProducts.filter(product => product.category === 'phones');
   }, [allProducts]);
 
-  if (error) {
-    return <div>Error loading products: {error}</div>;
-  }
-
   return (
     <>
       <Breadcrumbs
@@ -36,6 +32,7 @@ export const PhonesHeroSection: React.FC = () => {
           title={t(`productCatalog.titlePhones`)}
           products={phoneProducts}
           isLoading={isLoading}
+          error={error}
         />
       )}
     </>
