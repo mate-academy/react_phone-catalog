@@ -1,0 +1,103 @@
+@import '../../shared/index';
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__wrapper {
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      gap: 19px;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    height: 320px;
+    max-height: 400px;
+
+    @include on-tablet {
+      height: 190px;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      width: 32px;
+      border: 1px solid $icons-color;
+      border-radius: 48px;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &.banner__button--prev {
+        background-image: url('/img/icons/arrow-left-black.svg');
+      }
+
+      &.banner__button--next {
+        background-image: url('/img/icons/arrow-right-black.svg');
+      }
+
+      @include hover('border-color', $primary-color);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    height: 24px;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+
+    .swiper-pagination-bullet {
+      cursor: pointer;
+      width: 14px;
+      height: 4px;
+      border-radius: 2px;
+      opacity: 0.5;
+      background-color: $primary-color;
+
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  &__slider {
+    background-color: black;
+
+    @include on-desktop {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include on-tablet {
+      object-fit: contain;
+    }
+  }
+}

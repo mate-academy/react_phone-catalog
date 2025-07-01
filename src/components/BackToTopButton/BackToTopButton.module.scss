@@ -1,0 +1,29 @@
+@import '../../shared/index';
+
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  &__text {
+    font-size: 12px;
+    font-weight: 600;
+    color: $secondary-color;
+    transition: color 0.3s ease;
+
+    @include hover(color, $primary-color);
+  }
+
+  &__imgIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $icons-color;
+    padding: 8px;
+    transition: border-color 0.3s ease;
+
+    @include hover(border-color, $primary-color);
+  }
+}

@@ -1,0 +1,20 @@
+@import '../../shared/index';
+
+.backButton {
+  display: flex;
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondary-color;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    padding-bottom: 3px;
+    background-image: url('/img/icons/arrow-left-black.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

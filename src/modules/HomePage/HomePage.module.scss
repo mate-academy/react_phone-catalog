@@ -1,0 +1,79 @@
+@import '../../shared/index';
+
+.homeContainer {
+  margin: 24px auto 64px;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 56px auto 80px;
+  }
+
+  .homeTitle {
+    font-size: 32px;
+    line-height: 41px;
+    padding: 0 16px;
+    margin-bottom: 24px;
+    letter-spacing: -1%;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      padding: 0 24px;
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin: 0 auto 56px;
+      padding: 0 32px;
+    }
+  }
+
+  .sliderContainer {
+    margin-bottom: $margin-bottom-mobile;
+
+    @include on-tablet {
+      padding-inline: $padding-tablet;
+      margin-bottom: $margin-bottom-tablet;
+    }
+    
+    @include on-desktop {
+      padding-inline: 0;
+      margin-bottom: $margin-bottom-desktop;
+    }
+  }
+
+  .brandModelsContainer,
+  .hotPricesContainer {
+    overflow: hidden;
+  }
+
+  .brandModelsContainer {
+    margin-bottom: $margin-bottom-mobile;
+
+    @include on-tablet {
+      margin-bottom: $margin-bottom-tablet;
+    }
+
+    @include on-desktop {
+      margin-bottom: $margin-bottom-desktop;
+    }
+  }
+
+  .hotPricesContainer {
+    margin-bottom: $margin-bottom-tablet;
+
+    @include on-desktop {
+      margin-bottom: $margin-bottom-desktop;
+    }
+  }
+}
+
+
+
+
+
+

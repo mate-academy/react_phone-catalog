@@ -1,0 +1,39 @@
+@import '../../shared/index';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 0 $padding-mobile;
+  margin-top: -25px;
+  height: 100vh;
+
+  @include on-tablet {
+    gap: 32px;
+    padding: 0 $padding-tablet;
+  }
+
+  @include on-desktop {
+    padding: 0 $padding-desktop;
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.message {
+  margin-bottom: 20px;
+}
+
+.button {
+  width: 100%;
+  max-width: 200px;
+  font-size: 14px;
+  color: $white-color;
+  background-color: $accent;
+  border-radius: 50px;
+  padding: 10px;
+}

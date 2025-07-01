@@ -1,0 +1,12 @@
+@import './variables';
+@import './mixins';
+@import './fonts';
+
+
+.main-container {
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+}
