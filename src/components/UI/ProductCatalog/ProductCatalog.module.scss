@@ -154,7 +154,7 @@
 .productGridContainer {
   gap: 40px;
   margin-bottom: 24px;
-  
+
   @include u.page-grid;
 
   @include u.on-tablet {
@@ -182,3 +182,26 @@
     grid-column: span 6;
   }
 }
+
+.productsNotFoundWrapper {
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.productsNotFoundText {
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+  border-radius: 5px;
+
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+

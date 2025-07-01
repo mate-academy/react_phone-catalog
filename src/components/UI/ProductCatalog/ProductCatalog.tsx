@@ -9,6 +9,7 @@ import { Product } from '@/types/product';
 import { SortOptionType } from '@/types/sortOptionType';
 import { useTranslation } from 'react-i18next';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
+import { Loader } from '../Loader';
 
 type Props = {
   title: string;
@@ -44,6 +45,7 @@ export const ProductCatalog: React.FC<Props> = ({
   useEffect(() => {
     const sort = searchParams.get('sort');
     const per = searchParams.get('perPage');
+    const page = searchParams.get('page');
 
     if (sort && ['newest', 'alphabetically', 'cheapest'].includes(sort)) {
       setSortOption(sort as SortOptionType);
@@ -55,6 +57,12 @@ export const ProductCatalog: React.FC<Props> = ({
       setPerPage(parseInt(per, 10));
     } else {
       setPerPage(16);
+    }
+
+    if (page && !isNaN(parseInt(page, 10))) {
+      setCurrentPage(parseInt(page, 10));
+    } else {
+      setCurrentPage(1);
     }
   }, [searchParams]);
 
@@ -77,7 +85,6 @@ export const ProductCatalog: React.FC<Props> = ({
     }
 
     setFilteredProducts(sorted);
-    setCurrentPage(1);
     setIsLoading(false);
   }, [sortOption, products]);
 
@@ -110,35 +117,39 @@ export const ProductCatalog: React.FC<Props> = ({
   }, [currentPage, perPage, filteredProducts]);
 
   const handleSortChange = (value: SortOptionType) => {
-    setSortOption(value);
     setSearchParams(
       prev => {
         prev.set('sort', value);
-
+        prev.delete('page');
         return prev;
       },
       { replace: true },
     );
-    setCurrentPage(1);
     setIsSortOpen(false);
   };
 
   const handlePerPageChange = (value: number) => {
-    setPerPage(value);
     setSearchParams(
       prev => {
         prev.set('perPage', value.toString());
-
+        prev.delete('page');
         return prev;
       },
       { replace: true },
     );
-    setCurrentPage(1);
     setIsPerPageOpen(false);
   };
 
   const onPageChange = (page: number) => {
-    setCurrentPage(page);
+    const newParams = new URLSearchParams(searchParams);
+
+    if (page === 1) {
+      newParams.delete('page');
+    } else {
+      newParams.set('page', page.toString());
+    }
+
+    setSearchParams(newParams);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -238,7 +249,12 @@ export const ProductCatalog: React.FC<Props> = ({
             </div>
           ))
         ) : (
-          <p>{t('controls.noProducts')}</p>
+          <div className={styles.productsNotFoundWrapper}>
+            <Loader />
+            <p className={styles.productsNotFoundText}>
+              {t('controls.noProducts')}
+            </p>
+          </div>
         )}
       </div>
 

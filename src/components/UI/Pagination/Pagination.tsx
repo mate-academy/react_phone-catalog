@@ -4,12 +4,14 @@ import styles from './Pagination.module.scss';
 
 import ArrowRight from 'assets/icons/ArrowRight.svg?react';
 import ArrowLeft from 'assets/icons/ArrowLeft.svg?react';
+import { usePagination, DOTS } from '@/hooks/usePagination';
 
 type Props = {
   total: number;
   perPage: number;
   currentPage: number;
   onPageChange: (page: number) => void;
+  siblingCount?: number;
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -17,9 +19,20 @@ export const Pagination: React.FC<Props> = ({
   perPage,
   currentPage,
   onPageChange,
+  siblingCount = 1,
 }) => {
+  const paginationRange = usePagination({
+    currentPage,
+    totalCount: total,
+    itemsPerPage: perPage,
+    siblingCount,
+  });
+
   const totalPages = Math.ceil(total / perPage);
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  if (currentPage === 0 || (paginationRange && paginationRange.length < 2)) {
+    return null;
+  }
 
   const handlePageClick = (page: number) => {
     if (page !== currentPage) {
@@ -55,21 +68,32 @@ export const Pagination: React.FC<Props> = ({
         </button>
       </li>
 
-      {pages.map(page => (
-        <li
-          key={page}
-          className={cn(styles.pageItem, {
-            [styles.active]: currentPage === page,
-          })}
-        >
-          <button
-            className={styles.pageLink}
-            onClick={() => handlePageClick(page)}
+      {paginationRange?.map((page, index) => {
+        if (page === DOTS) {
+          // eslint-disable-next-line react/no-array-index-key
+          return (
+            <li key={`dots-${index}`} className={styles.dots}>
+              …
+            </li>
+          );
+        }
+
+        return (
+          <li
+            key={page}
+            className={cn(styles.pageItem, {
+              [styles.active]: currentPage === (page as number),
+            })}
           >
-            {page}
-          </button>
-        </li>
-      ))}
+            <button
+              className={styles.pageLink}
+              onClick={() => handlePageClick(page as number)}
+            >
+              {page}
+            </button>
+          </li>
+        );
+      })}
 
       <li
         className={cn(styles.pageItem, {
