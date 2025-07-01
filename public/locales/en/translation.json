@@ -72,6 +72,7 @@
     "cell": "Cell",
     "builtInMemory": "Built in memory"
   },
+  "products": {},
   "controls": {
     "sortBy": "Sort by",
     "itemsOnPage": "Items on page",
