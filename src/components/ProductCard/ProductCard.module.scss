@@ -3,7 +3,6 @@
 .card {
   background-color: $color-surface1;
   color: $color-white;
-  width: 272px;
   box-sizing: border-box;
 
   display: flex;
@@ -11,15 +10,16 @@
   gap: 8px;
   padding: 32px;
 
-  @media (max-width: $size-tablet) {
-    width: 237px;
-  }
+  min-width: 229px;
 }
 
 .cardImage {
-  width: 208px;
   height: 196px;
   object-fit: contain;
+
+  @media (max-width: $size-mobile) {
+    height: 130px;
+  }
 }
 
 .cardTitle {

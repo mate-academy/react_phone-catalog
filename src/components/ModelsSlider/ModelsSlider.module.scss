@@ -4,10 +4,9 @@
   grid-column: 1/-1;
 
   & :global {
-    .slick-list {
-      margin: 0;
-      margin-right: -16px;
-      background-color: $color-black;
+    .slick-slide > div {
+      display: flex;
+      gap: 16px;
     }
 
     .slick-dots {
@@ -20,6 +19,10 @@
     li.slick-active > div {
       background-color: $color-accent;
     }
+  }
+
+  @media (max-width: $size-tablet) {
+    // margin-right: -24px;
   }
 }
 
