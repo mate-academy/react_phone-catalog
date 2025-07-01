@@ -75,8 +75,16 @@ export const NavBar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const handleSelect = (product: Product) => {
     navigate(`/${product.category}/${product.itemId}`);
+    scrollToTop();
   };
 
   const actionsClasses = cn(styles.navbar__actions, {
