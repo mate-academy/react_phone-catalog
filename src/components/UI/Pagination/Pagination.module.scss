@@ -57,13 +57,16 @@
 }
 
 .dots {
+  pointer-events: none;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  
   width: 32px;
   height: 32px;
+
   color: var(--text-primary);
-  pointer-events: none;
 }
 
 .pageLinkNavBtn {

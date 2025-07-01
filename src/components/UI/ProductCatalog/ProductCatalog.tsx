@@ -121,6 +121,7 @@ export const ProductCatalog: React.FC<Props> = ({
       prev => {
         prev.set('sort', value);
         prev.delete('page');
+
         return prev;
       },
       { replace: true },
@@ -133,6 +134,7 @@ export const ProductCatalog: React.FC<Props> = ({
       prev => {
         prev.set('perPage', value.toString());
         prev.delete('page');
+
         return prev;
       },
       { replace: true },
