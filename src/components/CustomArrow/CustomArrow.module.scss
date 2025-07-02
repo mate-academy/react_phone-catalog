@@ -36,7 +36,7 @@
   }
 }
 
-.modelsSliderArrow_up {
+.modelsSliderArrow {
   top: -48px;
 
   &_right {
@@ -45,17 +45,5 @@
 
   &_left {
     right: 48px;
-  }
-}
-
-.modelsSliderArrow_down {
-  top: calc(100% + 16px);
-
-  &_right {
-    right: calc(50% - 85px);
-  }
-
-  &_left {
-    right: calc(50% + 40px);
   }
 }

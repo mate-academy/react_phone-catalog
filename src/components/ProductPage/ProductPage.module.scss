@@ -2,35 +2,29 @@
 
 .page {
   background-color: $color-black;
-  padding: 24px 32px 112px;
+  padding: 24px 32px 80px;
   justify-items: center;
 
   @media (max-width: $size-tablet) {
-    padding: 24px 24px 96px;
+    padding: 24px 24px 64px;
   }
 
   @media (max-width: $size-mobile) {
-    padding: 24px 16px 96px;
+    padding: 24px 16px 64px;
   }
 }
 
 .pageContent {
-  display: grid;
-  grid-template-columns: repeat(24, 32px);
-  gap: 40px 16px;
-  background-color: $color-black;
-
-  @media (max-width: $size-tablet) {
-    grid-template-columns: repeat(12, 1fr);
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 
   @media (max-width: $size-mobile) {
-    gap: 24px 16px;
+    gap: 24px;
   }
 }
 
 .pathHome {
-  grid-column: 1/-1;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -45,10 +39,7 @@
 }
 
 .pageInfo {
-  grid-column: 1/-1;
-
   &_title {
-    grid-column: 1/-1;
     color: $color-white;
     font-family: $font-bold;
     line-height: 56px;
@@ -70,10 +61,6 @@
     letter-spacing: 0%;
     color: $color-secondary;
   }
-}
-
-.pageItems {
-  grid-column: 1/-1;
 }
 
 .dropdowns {

@@ -23,41 +23,43 @@ const categories = [
   },
 ];
 
-export const HomePage = () => (
-  <main className={styles.page}>
-    <section className={styles.pageContent}>
-      <h1 className={styles.pageTitle}> Welcome to Nice Gadgets store!</h1>
-      <ProductSlider />
-    </section>
-    <section className={styles.pageContent}>
-      <h2 className={styles.sectionTitle}>Brand new models</h2>
-      <ModelsSlider arrowClassName="modelsSliderArrow_up" />
-    </section>
-    <section className={styles.pageContent}>
-      <h2 className={styles.sectionTitle}>Shop by category</h2>
-      <div className={styles.categoryCards}>
-        {categories.map(category => (
-          <NavLink
-            className={styles.categoryLink}
-            to={category.path}
-            key={category.name}
-          >
-            <img
-              src={category.img}
-              alt={category.name}
-              className={styles.categoryImg}
-            />
-            <div className={styles.categoryInfo}>
-              <h3 className={styles.categoryTitle}>{category.name}</h3>
-              <span className={styles.categoryCounter}>xxx models</span>
-            </div>
-          </NavLink>
-        ))}
-      </div>
-    </section>
-    <section className={styles.pageContent}>
-      <h2 className={styles.sectionTitle}>Hot prices</h2>
-      <ModelsSlider arrowClassName="modelsSliderArrow_up" />
-    </section>
-  </main>
-);
+export const HomePage = () => {
+  return (
+    <main className={styles.page}>
+      <section className={styles.pageContent}>
+        <h1 className={styles.pageTitle}> Welcome to Nice Gadgets store!</h1>
+        <ProductSlider />
+      </section>
+      <section className={styles.pageContent}>
+        <h2 className={styles.sectionTitle}>Brand new models</h2>
+        <ModelsSlider arrowClassName="modelsSliderArrow" />
+      </section>
+      <section className={styles.pageContent}>
+        <h2 className={styles.sectionTitle}>Shop by category</h2>
+        <div className={styles.categoryCards}>
+          {categories.map(category => (
+            <NavLink
+              className={styles.categoryLink}
+              to={category.path}
+              key={category.name}
+            >
+              <img
+                src={category.img}
+                alt={category.name}
+                className={styles.categoryImg}
+              />
+              <div className={styles.categoryInfo}>
+                <h3 className={styles.categoryTitle}>{category.name}</h3>
+                <span className={styles.categoryCounter}>xxx models</span>
+              </div>
+            </NavLink>
+          ))}
+        </div>
+      </section>
+      <section className={styles.pageContent}>
+        <h2 className={styles.sectionTitle}>Hot prices</h2>
+        <ModelsSlider arrowClassName="modelsSliderArrow" />
+      </section>
+    </main>
+  );
+};

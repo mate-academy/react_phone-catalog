@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import styles from './ProductPage.module.scss';
-import { ModelsSlider } from '../ModelsSlider';
 import { CustomDropdown } from '../CustomDropdown/CustomDropdown';
 
 const sortOptions = [
@@ -55,12 +54,7 @@ export const ProductPage = ({ category }: Props) => {
               <CustomDropdown options={countOptions} />
             </div>
           </div>
-          <ModelsSlider
-            rows={4}
-            itemsPerRow={4}
-            dots={true}
-            arrowClassName="modelsSliderArrow_down"
-          />
+          {/* <ModelsSlider arrowClassName="modelsSliderArrow" /> */}
         </div>
       </div>
     </main>

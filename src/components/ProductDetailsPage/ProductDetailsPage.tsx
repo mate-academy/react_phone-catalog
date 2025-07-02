@@ -217,12 +217,7 @@ export const ProductDetailsPage = () => {
         </div>
         <div className={styles.pageSlider}>
           <h2 className={styles.pageSlider_title}>You may also like</h2>
-          <ModelsSlider
-            rows={1}
-            itemsPerRow={4}
-            dots={false}
-            arrowClassName="modelsSliderArrow_up"
-          />
+          <ModelsSlider arrowClassName="modelsSliderArrow" />
         </div>
       </div>
     </main>

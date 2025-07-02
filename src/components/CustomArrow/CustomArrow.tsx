@@ -2,10 +2,7 @@ import { CustomArrowProps } from 'react-slick';
 import classNames from 'classnames';
 import styles from './CustomArrow.module.scss';
 
-export type ArrowClassType =
-  | 'welcomeSliderArrow'
-  | 'modelsSliderArrow_up'
-  | 'modelsSliderArrow_down';
+export type ArrowClassType = 'welcomeSliderArrow' | 'modelsSliderArrow';
 
 type Props = {
   direction: 'right' | 'left';

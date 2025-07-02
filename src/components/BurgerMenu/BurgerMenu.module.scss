@@ -1,0 +1,87 @@
+@import '../../styles/variables';
+
+.page {
+  position: fixed;
+  top: 48px;
+  left: 0;
+
+  transform: translateX(-100%); /* спрятано слева */
+  transition: transform 0.3s ease; /* анимация */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: calc(100vh - 48px);
+  background-color: $color-black;
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+.navList {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  &_link {
+    padding-block: 8px;
+    text-transform: uppercase;
+    color: $color-secondary;
+    text-decoration: none;
+    line-height: 11px;
+    display: block;
+    font-family: $font-bold;
+    font-size: 12px;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+}
+
+// .is-active {
+//   color: $color-white;
+//   position: relative;
+// }
+
+// .is-active::after {
+//   content: ' ';
+//   display: block;
+//   background-color: $color-white;
+//   border-radius: 8px;
+//   width: 100%;
+//   height: 4px;
+//   position: absolute;
+//   bottom: 0;
+// }
+
+.iconLinks {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  border-top: 1px solid $color-elements;
+
+  &_link {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+      border-left: 1px solid $color-elements;
+    }
+
+    &_icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
