@@ -21,7 +21,7 @@ export const CartModal: React.FC<Props> = ({ closeModal }) => {
         Checkout is not implemented yet. <br /> Do you want to clear the Cart?
       </span>
       <div className={style.buttonContainer}>
-        <Button type='large' title="Submit" onClick={cart.submitCart} />
+        <Button type="large" title="Submit" onClick={cart.submitCart} />
       </div>
     </div>
   );

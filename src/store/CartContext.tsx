@@ -111,6 +111,11 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     [],
   );
 
+  const getTotalItemPrice = useCallback(
+    (item: CartIt) => item.price * item.qty,
+    [],
+  );
+
   const getTotalItems = useCallback(
     (items: CartIt[]) => items.reduce((acc, item) => acc + item.qty, 0),
     [],
@@ -128,11 +133,12 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     () => ({
       getTotalPrice,
       getTotalItems,
+      getTotalItemPrice,
       addToCard,
       submitCart,
       state,
     }),
-    [getTotalPrice, getTotalItems, addToCard, state],
+    [getTotalPrice, getTotalItems, getTotalItemPrice, addToCard, state],
   );
 
   return (

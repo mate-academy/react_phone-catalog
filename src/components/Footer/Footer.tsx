@@ -19,6 +19,7 @@ export const Footer = () => {
           <NavLink
             className={style.link__item}
             to="https://github.com/Yaroslav65"
+            target="_blank"
           >
             Github
           </NavLink>

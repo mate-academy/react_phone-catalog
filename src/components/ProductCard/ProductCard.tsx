@@ -81,7 +81,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className={style.cardButtons}>
         <Button
           onClick={() => cart.addToCard(product)}
-          type='large'
+          type="large"
           title={added ? 'Added' : 'Add to cart'}
           disabled={added}
         />

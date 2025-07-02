@@ -4,7 +4,11 @@ import { Icons } from '../../../../shared/ui/Icons/Icons';
 import { IconId, IconStyles } from '../../../../types/icons';
 import { Button } from '../../../../shared/ui/Button';
 import React, { useContext } from 'react';
-import { CartIt, DispatchContext } from '../../../../store/CartContext';
+import {
+  CartIt,
+  DispatchContext,
+  useCart,
+} from '../../../../store/CartContext';
 
 type CartItemProps = {
   item: CartIt;
@@ -12,6 +16,7 @@ type CartItemProps = {
 
 export const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const dispatch = useContext(DispatchContext);
+  const func = useCart();
 
   const handleDelete = () => {
     dispatch({ type: 'remove', payload: item });
@@ -50,7 +55,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
           <Button iconId={IconId.Plus} onClick={() => increaseItem()} />
         </div>
 
-        <h3 className={style.itemPrice}>${item.price}</h3>
+        <h3 className={style.itemPrice}>${func.getTotalItemPrice(item)}</h3>
       </div>
     </div>
   );
