@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
 
           <div className={style.footer__button}>
             <p className={style.footer__button__text}>Back to top</p>
-            <button className={style.footer__button__back}>
+            <button className={style.footer__button__back} onClick={backToTop}>
               <img
                 src="img/Arrow-left.png"
                 alt="Back to top"

@@ -39,6 +39,7 @@ export const PicturesSlider = () => {
           nextEl: '.pictures-slider_next',
           prevEl: '.pictures-slider_prev',
         }}
+        slidesPerView={1}
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={50}
         autoplay={{ delay: 5000 }}
