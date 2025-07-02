@@ -14,39 +14,38 @@
   font-style: normal;
 }
 
+.swiper-wrapper {
+  width: 100%;
+  margin-right: 16px
+}
 
 .brand {
-  width: 212px !important;
-  margin-inline: 16px;
-
-  @include onTablet {
-    margin-inline: 24px;
-    width: 237px !important;
-  }
-
-  height: 512px;
-  border: 1px solid #e2e6e9;
-  border-radius: 8px;
-
-  display: flex;
-  /* Центрування елементів по горизонталі (за основною віссю) */
-  // justify-content: center;
-
-  flex-direction: column;
-
-  /* Центрування елементів по вертикалі (за поперечною віссю) */
-  // align-items: center;
-
-  /* Якщо контенту багато і він переноситься на новий рядок,
-     вирівнювання рядків: */
-  align-content: center;
-
+  width: min-content;
+  max-width: 1200px;
+  margin: 0 auto ;
 
   &__card{
-    // margin: auto;
-    // width: 237px;
-    // height: 512px;
-    // border: 1px solid #e2e6e9;
+    width: 212px !important;
+    margin-inline: 16px;
+
+    @include onTablet {
+      margin-inline: 24px;
+      width: 237px !important;
+    }
+
+    @include onBigScren {
+      width: 272px;
+    }
+
+    height: 512px;
+    border: 1px solid #e2e6e9;
+    border-radius: 8px;
+
+    display: flex;
+    // justify-content: center;
+
+    flex-direction: column;
+    align-content: center;
   }
 
   &__imageWrapper {

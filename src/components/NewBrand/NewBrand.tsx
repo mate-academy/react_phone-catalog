@@ -62,7 +62,11 @@ const NewBrand = () => {
       <h1>Brand new models</h1>
 
       {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem illum nisi a dolorum doloremque ad delectus eum perspiciatis quis, quos est explicabo perferendis reprehenderit, enim rerum facere obcaecati? Consequatur cum alias laudantium quos sapiente eos molestias ipsa animi, ratione architecto expedita dolores rem qui esse. */}
-      <Swiper spaceBetween={16} slidesPerView={2.5}>
+      <Swiper
+        spaceBetween={16}
+        slidesPerView={2.5}
+        className={brandStyles.brand}
+      >
         {brandNewModels.map(phone => {
           const singleIphoneColor = arrayColors.find(
             color => color === phone.color,
@@ -86,7 +90,7 @@ const NewBrand = () => {
             indexIm++;
 
             return (
-              <SwiperSlide className={brandStyles.brand} key={phone.id}>
+              <SwiperSlide className={brandStyles.brand__card} key={phone.id}>
                 <div className={brandStyles.brand__imageWrapper}>
                   <a
                     href="#"
