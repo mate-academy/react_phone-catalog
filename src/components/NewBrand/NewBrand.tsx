@@ -55,6 +55,8 @@ const NewBrand = () => {
 
   const arrayColors = Array.from(allColors);
 
+  let indexIm = 0;
+
   return (
     <>
       <h1>Brand new models</h1>
@@ -73,17 +75,47 @@ const NewBrand = () => {
               arrayColors[i] = isColor;
             });
 
-            console.log(arrayColors);
+            const screenValue = phone.screen.split(' ');
+
+            const validScreenValue = screenValue[0] + ' ' + screenValue[1];
+
+            // console.log(arrayColors);
+            // console.log(indexIm);
+            console.log(validScreenValue);
+
+            indexIm++;
 
             return (
               <SwiperSlide className={brandStyles.brand} key={phone.id}>
                 <div className={brandStyles.brand__imageWrapper}>
-                  <img
-                    src={phone.images[0]}
+                  <a
+                    href="#"
+                    style={{ backgroundImage: `url('${phone.images[0]}')` }}
                     className={brandStyles.brand__image}
-                  />
+                  ></a>
                 </div>
-                <div>{phone.images[0]}</div>
+
+                <div className={brandStyles.brand__data}>
+                  <div className={brandStyles.brand__name}>{phone.name}</div>
+                  <div className={brandStyles.brand__price}>
+                    ${phone.priceRegular}
+                  </div>
+                </div>
+
+                <div className={brandStyles.brand__deteils}>
+                  <div className={brandStyles.brand__info}>
+                    <div>Screen</div>
+                    <div>{validScreenValue}</div>
+                  </div>
+                  <div className={brandStyles.brand__info}>
+                    <div>Capacity</div>
+                    <div className={brandStyles.brand__gb}>128 GB</div>
+                  </div>
+                  <div className={brandStyles.brand__info}>
+                    <div>RAM</div>
+                    <div>6 GB</div>
+                  </div>
+                </div>
               </SwiperSlide>
             );
           }
