@@ -18,10 +18,8 @@ import { ProductSlider } from '../../components/ProductsSlider/ProductSlider';
 
 export const DetailsProduct = () => {
   const product = useAppSelector(state => state.productDetail.product);
+
   const models = useAppSelector(state => state.productDetail.models);
-
-
-
   const dispach = useAppDispatch();
   const location = useLocation();
   const category = location.pathname.split('/')[1];
@@ -59,7 +57,10 @@ const handleChangeColor = (color,) => {
   if (model) navigate(`/${category}/${model.id}`);
   }
 
-if(!product){return}
+  if (!product) {
+    return;
+  }
+
   const {
     screen,
     resolution,
@@ -133,7 +134,7 @@ if(!product){return}
             objectTech={objectTech} /></div>
 
 </div>
-          <ProductSlider sortedProducts={models.slice(0,8)} title={'You may also like'} />
+          <ProductSlider  title={'You may also like'} />
 
       </Container>{' '}
     </>

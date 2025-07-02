@@ -35,7 +35,7 @@ export const ShopCategories = () => {
     {categoryShop.map((category) => {
  const choseProduct = products.filter(product => product.category === category.value).length
 
-  return( < article className = { styles.shop__category } >
+      return (< article key={category.title } className = { styles.shop__category } >
         <NavLink className={styles.shop__link} to={`${category.to}`}>
 
           <div className={styles.shop__image}>

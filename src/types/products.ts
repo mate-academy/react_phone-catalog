@@ -1,6 +1,7 @@
 export interface Product {
   id: string | number;
   category: string;
+  itemId: string;
   name: string;
   fullPrice: number;
   price: number;
@@ -10,5 +11,5 @@ export interface Product {
   year?: number;
   color?: string;
   image?: string;
-  images?: string[];
+ 
 }

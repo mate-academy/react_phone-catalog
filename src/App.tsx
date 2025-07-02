@@ -14,8 +14,9 @@ import { FilteredStatus } from './types/filters';
 export const App = () => {
   const [searchParams] = useSearchParams();
   const totalPage = useAppSelector(state => state.pagination.totalPage);
-  const dispach = useAppDispatch();
+  const dispatch = useAppDispatch();
   const isLoaded = useAppSelector(state => state.products.isLoaded);
+
 
   useEffect(() => {
     const sortParam = searchParams.get('sort');
@@ -32,12 +33,13 @@ export const App = () => {
       ? (paginationParam as PaginationStatus)
       : 'all';
 
-    dispach(setStatus(sort));
-    dispach(setStatusPagin(pagination));
-    if (!isLoaded) {
-      dispach(init());
+    dispatch(setStatus(sort));
+    dispatch(setStatusPagin(pagination));
+    if (!isLoaded ) {
+      dispatch(init());
+
     }
-  }, [dispach, searchParams, isLoaded]);
+  }, [dispatch, searchParams, isLoaded]);
 
   useEffect(() => {
     const pageParam = searchParams.get('page') ?? 1;
@@ -46,10 +48,10 @@ export const App = () => {
     if (totalPage !== null) {
       const validatedPage = page > totalPage ? totalPage : page;
 
-      dispach(setCurrentPage(validatedPage));
+      dispatch(setCurrentPage(validatedPage));
     }
-  }, [searchParams, totalPage, dispach]);
-
+  }, [searchParams, totalPage, dispatch]);
+ 
   return (
     <>
       <Header />

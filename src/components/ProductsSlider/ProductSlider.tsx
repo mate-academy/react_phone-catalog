@@ -6,15 +6,13 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import classNames from 'classnames';
 import { ProductCart } from '../cardItem/ProductCart';
-import { useAppSelector } from '../../app/hooks';
-type Props = {
 
-};
+
 
 export const ProductSlider = ({sortedProducts, title}) => {
   const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
-
+console.log(sortedProducts)
 
   if (!sortedProducts) { return }
 

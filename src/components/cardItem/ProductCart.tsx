@@ -19,7 +19,7 @@ export const ProductCart = ({ products, types }: Props) => {
       {products.map(product => (
         <div className={classNames(styles.card, { [styles['card--grid']]: types === 'grid' })}
           key={product.id}>
-          <Link to={`/${product.category}/${product.itemId || product.id }`}>
+          <Link className={styles.card__link} to={`/${product.category}/${product.itemId || product.id }`}>
 
           <img className={styles.card__image} src={`./${product.image|| product.images?.[0]}`}/>
           <h4 className={styles.card__name}>{product.name}</h4>
@@ -50,7 +50,7 @@ export const ProductCart = ({ products, types }: Props) => {
               <span className={styles.card__goods}>{product.ram}</span>
             </div>
           </div>
-         <Buttons product={product}/>
+         <Buttons type={'small'} product={product}/>
         </div>
       ))}
     </>

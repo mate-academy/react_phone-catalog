@@ -2,6 +2,7 @@ import { getTotalItemsCart } from '../../../../components/utils/getTotalItemsCar
 import styles from './Checkout.module.scss'
 import { clearAllCartItem } from '../../../../features/CartSlice';
 import { useAppDispatch } from '../../../../app/hooks';
+
 export const Checkout = ({ products }) => {
   const dispach = useAppDispatch();
   const totalItems = getTotalItemsCart(products);

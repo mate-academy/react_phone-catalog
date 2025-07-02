@@ -8,12 +8,13 @@ import {
   incrementQuantity,
 } from '../../../../features/CartSlice';
 import { IoCloseSharp } from 'react-icons/io5';
-import { FullProduct } from '../../../../types/product';
+
 
 import { useAppDispatch } from '../../../../app/hooks';
 import { Link } from 'react-router-dom';
+import { Product } from '../../../../types/products';
 
-export const CartItems = ({ products }: FullProduct) => {
+export const CartItems = ({ products }: Product) => {
   const dispach = useAppDispatch();
 
   const handleItemClear = id => {
@@ -28,7 +29,7 @@ export const CartItems = ({ products }: FullProduct) => {
     dispach(decrementQuantity(id));
   };
 
-  console.log(products);
+  console.log('proprpr',products);
 
   return (
     <>

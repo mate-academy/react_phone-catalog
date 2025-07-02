@@ -11,6 +11,7 @@ import { ProductNotFound } from "../productNotFound/ProductNotFound";
 
 export const ProductList = () => {
   const AllProducts = useAppSelector(store => store.products.products)
+  
   const loading = useAppSelector(store => store.products.loading)
   const filterStatus = useAppSelector(state => state.filter.status);
   const location = useLocation();

@@ -11,6 +11,7 @@ margin-bottom: 32px;
 @include mixin.onDesktop{
   justify-content: left;
 }
+
 &__addCart{
   width: 100%;
 
@@ -27,7 +28,7 @@ line-height: 48px;
 letter-spacing: 0%;
 text-align: center;
 @include mixin.onTablet{
-width: 180px;
+min-width: 118px;
   }
   @include mixin.onDesktop{
 width: 263px;
@@ -36,25 +37,45 @@ width: 263px;
 
     }
   }
-
+&--small{
+  height: 40px;
+  line-height: 40px;
+}
+&--disabled{
+  background-color: #FFF;
+border: 1px solid #E2E6E9;
+  color: #4219D0;
+   pointer-events: none;
+    cursor: default;
+}
 }
 
 &__heart{
+   &--small{
+    height: 40px;
+    width: 40px;
+
+  }
   width: 48px;
   height: 48px;
   border:1px solid #B4BDC3;
-  border-radius: 50%;
+  border-radius: 48px;
+
    @include mixin.onDesktop{
     &:hover{
       border-color: #0F0F11;
     }
   }
+
 }
-&__favorite{
+&__favourite{
+
 color:#0F0F11;
   width: 16px;
   height: 16px;
 
  padding: 16px;
-
+&--small{
+  padding: 12px;
+}
 }}

@@ -7,9 +7,18 @@ import { getNewModels } from '../../components/utils/getNewModels';
 
 import { useAppSelector } from '../../app/hooks';
 import { getHotPrices } from '../../components/utils/getHotPrices';
+import { useEffect } from 'react';
+import { Loader } from '../../components/Loader';
 
 export const HomePage = () => {
+
   const products = useAppSelector(state => state.products.products);
+
+  const isLoaded = useAppSelector(state => state.products.isLoaded);
+
+  if (!isLoaded) {
+    return <Loader/>
+  }
 
   const newModels = getNewModels(products);
   const hotPrices = getHotPrices(products);

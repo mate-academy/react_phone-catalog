@@ -9,6 +9,7 @@ import { TitlePages } from '../../components/title/TitlePages';
 import { PageNav } from '../../components/pageNav/PageNav';
 
 export const PhonePage = () => {
+  
   return (
     <>
       <Container>
