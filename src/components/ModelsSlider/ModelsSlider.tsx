@@ -4,7 +4,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import styles from './ModelsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 import { ArrowClassType, CustomArrow } from '../CustomArrow';
-import classNames from 'classnames';
 
 const product = {
   id: 1,
@@ -22,34 +21,34 @@ const product = {
 };
 
 type Props = {
-  rows: number;
-  itemsPerRow: number;
-  dots: boolean;
   arrowClassName: ArrowClassType;
 };
 
-export const ModelsSlider = ({
-  rows,
-  itemsPerRow,
-  dots,
-  arrowClassName,
-}: Props) => {
+export const ModelsSlider = ({ arrowClassName }: Props) => {
   const settings: Settings = {
     speed: 500,
     infinite: false,
-    slidesToShow: 1,
+    slidesToShow: 4,
     slidesToScroll: 1,
-    rows: rows,
-    slidesPerRow: itemsPerRow,
-    dots: dots,
     adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 1199,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 639,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
     nextArrow: (
       <CustomArrow direction="right" arrowClassName={arrowClassName} />
     ),
     prevArrow: <CustomArrow direction="left" arrowClassName={arrowClassName} />,
-    customPaging: (i: number) => (
-      <div className={styles.customDot}>{i + 1}</div>
-    ),
   };
 
   return (
@@ -58,12 +57,7 @@ export const ModelsSlider = ({
         {[
           1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         ].map(i => (
-          <div
-            className={classNames(styles.slideContainer, {
-              [styles.slideContainerMargin]: rows > 1,
-            })}
-            key={i}
-          >
+          <div className={styles.slideContainer} key={i}>
             <ProductCard product={product} />
           </div>
         ))}
