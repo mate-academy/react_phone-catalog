@@ -1,27 +1,19 @@
-@use '../../../../shared/constants/breakpoint' as *;
-@use '../../../../shared/constants/colors' as cl;
+@use '@constants/colors' as cl;
+@use '@mixins/hoverDefault' as *;
 
 .sw-button {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  @media (min-width: $BREAKPOINT_TAB) {
-    display: flex;
-    background-color: cl.$white;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    border: 1px solid cl.$icons;
-    justify-content: center;
-    align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 1px solid cl.$icons;
 
-    &:disabled {
-      background-color: cl.$red;
-    }
+  background-color: cl.$white;
+
+  &:hover {
+    @include hover-default;
   }
-}
-
-.sw-arrow {
-  display: block;
-  width: 16px;
-  height: 16px;
 }

@@ -7,7 +7,7 @@ export enum FooterRoutePath {
 export enum FooterNavName {
   Github = 'github',
   Contacts = 'contacts',
-  Rights = 'rights and policies',
+  Rights = 'rights & policies',
 }
 
 export enum FooterLabelProp {

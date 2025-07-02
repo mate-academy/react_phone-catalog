@@ -1,0 +1,103 @@
+@use '@mixins/typography/smallText' as *;
+@use '@mixins/typography/bodyText' as *;
+@use '@constants/fonts' as *;
+@use '@constants/colors' as cl;
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  width: 212px;
+  height: 439px;
+  padding: 32px;
+
+  color: cl.$gray-primary;
+
+  &__img-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 129px;
+  }
+
+  &__img {
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+    object-fit: fill;
+  }
+}
+
+.name {
+  display: inline-block;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  margin: auto;
+
+  @include body-text;
+}
+
+.price {
+  width: 100%;
+  padding-bottom: 8px;
+  border-bottom: 1px solid cl.$elements;
+
+  font-size: $lg;
+  font-weight: $s-u;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+.descr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 15px);
+  row-gap: 8px;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 77px;
+  padding: 8px 0;
+
+  @include small-text;
+
+  &__type {
+    grid-column: 1;
+    color: cl.$gray-secondary;
+  }
+
+  &__val {
+    grid-column: 2;
+    justify-self: end;
+  }
+}
+
+.btns {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  height: 40px;
+
+  &__cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    height: 100%;
+  }
+
+  &__fav {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+

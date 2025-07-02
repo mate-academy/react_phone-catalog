@@ -1,8 +1,8 @@
 import { SwiperData } from '../types/slider-types';
 
 export function toggleTrackClass(track: HTMLUListElement, drag: null | number) {
-  track.classList.toggle('swiper__track--dragging', drag !== null);
-  track.classList.toggle('swiper__track--animated', drag === null);
+  track.classList.toggle('swiper-track--dragging', drag !== null);
+  track.classList.toggle('swiper-track--animated', drag === null);
 }
 
 export function getIndex(offset: number, width: number, gap: number) {

@@ -1,0 +1,18 @@
+@use '@constants/breakpoint' as *;
+@use '@constants/colors.scss' as cl;
+@use '@constants/defaultMargins' as *;
+
+@mixin page-layout {
+  z-index: 0;
+  margin: $MARGIN_TOP $MARGIN_SIDE_MOB $MARGIN_BOT_MOB;
+
+  @media(min-width: $BREAKPOINT_TAB) {
+    margin: $MARGIN_TOP $MARGIN_SIDE_TAB $MARGIN_BOT_TAB;
+  }
+
+  @media(min-width: $BREAKPOINT_WIDE) {
+    max-width: $MAX_WIDTH;
+    margin: $MARGIN_TOP $MARGIN_SIDE_WIDE $MARGIN_BOT_WIDE;
+  }
+}
+

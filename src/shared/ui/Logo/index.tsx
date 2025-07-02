@@ -10,7 +10,7 @@ export const Logo = ({ className }: Props) => {
     <NavLink to="/" className={`${className}`}>
       <img
         className={`${styles['logo-img']}`}
-        src="/src/shared/ui/icons/logo.svg"
+        src="/src/shared/icons/logo.svg"
         alt=""
         aria-hidden="true"
       />

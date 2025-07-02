@@ -1,5 +1,5 @@
-@use '../../../shared/styles/mixins/header-text.scss' as fnt;
-@use '../../../shared/constants/colors.scss' as cl;
+@use '@mixins/typography/uppercase' as *;
+@use '@constants/colors' as cl;
 
 .nav-item {
   display: flex;
@@ -12,10 +12,11 @@
     box-sizing: border-box;
     height: 100%;
     text-decoration: none;
+    color: cl.$gray-secondary;
 
-    @include fnt.header-text;
+    @include uppercase;
 
-    &:active {
+    &--active {
       color: cl.$gray-primary;
 
       &::after {
@@ -30,4 +31,5 @@
     }
   }
 }
+
 

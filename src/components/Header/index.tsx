@@ -1,11 +1,7 @@
-import {
-  HeaderButtonNames,
-  ButtonsProps,
-  Path,
-} from '../../shared/types/Menu-UIProps';
-import { NavigationItem } from '../../shared/types/NavLinkProps';
-import { Logo } from '../../shared/ui/Logo';
-import { NavList } from '../../shared/ui/nav__list';
+import { ButtonNames, ButtonsProps, Path } from '@shtypes/ButtonProps';
+import { NavigationItem } from '@shtypes/NavLinkProps';
+import { Logo } from '@shared/ui/Logo';
+import { NavList } from '@shared/ui/nav__list';
 import { HeaderButtons } from './components/header-buttons';
 import styles from './header.module.scss';
 import {
@@ -44,15 +40,15 @@ export const Header = ({ className }: Props) => {
 
   const buttons: ButtonsProps[] = [
     {
-      name: HeaderButtonNames.Burger,
+      name: ButtonNames.Burger,
       path: Path.Burger,
     },
     {
-      name: HeaderButtonNames.Fav,
+      name: ButtonNames.Fav,
       path: Path.Fav,
     },
     {
-      name: HeaderButtonNames.Cart,
+      name: ButtonNames.Cart,
       path: Path.Cart,
     },
   ];
@@ -60,9 +56,8 @@ export const Header = ({ className }: Props) => {
   return (
     <header className={`${styles.header} ${className}`}>
       <Logo className={`${styles.header__logo} header__logo`} />
-      <div className="left-spacer" aria-hidden="true"></div>
       <NavList key={'header'} list={linksList} cN={`${styles.header__nav}`} />
-      <div className="right-spacer" aria-hidden="true"></div>
+      <div className="spacer" aria-hidden="true"></div>
       <HeaderButtons buttons={buttons} className={'menu-container'} />
     </header>
   );

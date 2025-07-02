@@ -1,62 +1,69 @@
-@use '../../shared/constants/breakpoint' as *;
-@use '../../shared/constants/colors' as cl;
-@use '../../shared/constants/header-button-size.scss' as bs;
+@use '@constants/breakpoint' as *;
+@use '@constants/colors' as cl;
+@use '@constants/header-button-size.scss' as bs;
 
 $logo-width-mob: 96px;
 $logo-width-wide: 128px;
 $gap-tab: 16px;
 $gap-wide: 24px;
+$header-hight-mob: 48px;
+$header-hight-wide: 64px;
 
 .header {
   display: grid;
-  grid-template-columns: $logo-width-mob 0 1fr 0 bs.$button-width;
+  grid-template-columns: $logo-width-mob 1fr 0 bs.$button-width;
+  column-gap: 16px;
+
   width: 100%;
-  height: 100%;
-  box-shadow: 0 1px cl.$elements;
+  height: $header-hight-mob;
+  border-bottom: 1px solid cl.$elements;
+
+  background-color: cl.$white;
 
   &__logo {
-    grid-column: 1;
-    display: flex;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 13px 16px;
     left: 0;
-  }
+    
+    display: flex;
+    grid-column: 1;
 
-  .left-spacer {
-    grid-column: 2;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 13px 16px;
   }
 
   &__nav {
     display: none;
+    grid-column: 2;
+  }
+
+  .spacer {
     grid-column: 3;
   }
 
-  .right-spacer {
+  .menu-container {
     grid-column: 4;
   }
 
-  .menu-container {
-    grid-column: 5;
-  }
-
   @media(min-width: $BREAKPOINT_TAB) {
-    grid-template-columns: $logo-width-mob $gap-tab 329px 1fr calc(bs.$button-width * 2);
+    grid-template-columns: $logo-width-mob 329px 1fr calc(bs.$button-width * 2);
 
     &__nav {
-      grid-column: 3;
       display: flex;
-      height: 100%;
-      flex-direction: row;
+      grid-column: 2;
       gap: 32px;
-      justify-content: flex-start;
       align-items: center;
+      justify-content: flex-start;
+
+      height: 100%;
     }
   }
 
   @media(min-width: $BREAKPOINT_WIDE) {
-    grid-template-columns: $logo-width-wide $gap-wide 425px 1fr calc(bs.$button-width-wide * 2);
+    grid-template-columns: $logo-width-wide 425px 1fr calc(bs.$button-width-wide * 2);
+    column-gap: 24px;
+    height: $header-hight-wide;
 
     &__logo {
       padding: 18px 24px;

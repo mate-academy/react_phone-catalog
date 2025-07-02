@@ -1,5 +1,5 @@
-import { ButtonsProps } from '../../../shared/types/Menu-UIProps';
-import { MenuButton } from '../../../shared/ui/menu-button';
+import { ButtonsProps } from '@shtypes/ButtonProps';
+import { Button } from '@ui/button';
 import styles from './header-buttons.module.scss';
 
 type Props = {
@@ -11,7 +11,7 @@ export const HeaderButtons = ({ buttons, className }: Props) => {
   return (
     <div className={`${styles['buttons-container']} ${className} `}>
       {buttons.map(btn => (
-        <MenuButton key={btn.name} data={btn} className={'header-button'} />
+        <Button key={btn.name} data={btn} className={'header-button'} />
       ))}
     </div>
   );

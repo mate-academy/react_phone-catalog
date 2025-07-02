@@ -1,52 +1,83 @@
-@use '../../shared/constants/colors.scss' as cl;
+@use '@constants/breakpoint' as *;
+@use '@constants/colors' as cl;
 
 .footer {
   display: grid;
-  padding: 32px 16px;
-  height: 257px;
-  width: 100%;
-  box-sizing: border-box;
   grid-template-rows: 32px auto 32px;
   row-gap: 32px;
+  align-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 257px;
+  padding: 32px 16px;
+
+  box-shadow: inset 0 0 0 1px cl.$elements;
 
   &__logo {
-    grid-row: 1;
-    justify-self: start;
-    box-sizing: border-box;
     display: flex;
-    width: 89px;
+    grid-row: 1;
     justify-items: flex-start;
+    justify-self: start;
+
+    box-sizing: border-box;
+    width: 89px;
   }
 
   &__nav {
+    display: flex;
     grid-row: 2;
-    justify-self: start;
-    box-sizing: border-box;
-    display: flex;
     flex-direction: column;
-    height: 65px;
     justify-content: space-between;
-  }
+    justify-self: start;
 
-  .footer-btn-container {
-    grid-row: 3;
-    display: flex;
-    flex-direction: row;
     box-sizing: border-box;
-    justify-content: center;
+    height: 65px;
+  }
+
+  &__btn-container {
+    display: flex;
+    grid-row: 3;
     gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
   }
 
-  .footer-text {
-    display: inline-block;
-    height: 32px;
-    line-height: 32px;
+  @media(min-width: $BREAKPOINT_TAB) {
+    grid-template-columns: 0.8fr 1fr 0.8fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    
+    height: 96px;
+    padding: 32px;
+
+    &__logo {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    &__nav {
+      grid-column: 2;
+      grid-row: 1;
+      flex-direction: row;
+      gap: 13px;
+    }
+
+    &__btn-container {
+      grid-column: 3;
+      grid-row: 1;
+      align-items: center;
+      justify-content: flex-end;
+    }
   }
 
-  .footer-button {
-    width: 32px;
-    height: 32px;
-    box-shadow: 0 0 0 1px cl.$elements;
-    color: #000;
+  @media(min-width: $BREAKPOINT_WIDE) {
+    grid-template-columns: 360px 420px 360px;
+
+    &__nav {
+      gap: 106px;
+    }
   }
 }

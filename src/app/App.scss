@@ -1,0 +1,30 @@
+@use '@shared/styles/normalize';
+@use '@constants/colors' as cl;
+
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap';
+
+* {
+  font-family: Montserrat, sans-serif;
+  color: cl.$gray-primary;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background-color: cl.$white;
+
+  &__header {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+  }
+
+  &__footer {
+    margin-top: auto
+  }
+}
+

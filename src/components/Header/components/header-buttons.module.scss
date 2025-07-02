@@ -1,19 +1,17 @@
-@use '../../../shared/constants/header-button-size.scss' as *;
-@use '../../../shared/constants/colors.scss' as cl;
-@use '../../../shared/constants/breakpoint' as bp;
+@use '@constants/header-button-size.scss' as *;
+@use '@constants/breakpoint' as bp;
+@use '@mixins/hoverDefault' as *;
 
 .buttons-container {
   display: flex;
   flex-direction: row;
   gap: 0;
-  height: $button-width;
+  
   box-sizing: border-box;
+  height: $button-width;
 
-  .header-button {
-    display: block;
-    width: 100%;
-    height: 100%;
-    box-shadow: -1px 0 0 cl.$elements;
+  > *:hover {
+    @include hover-default;
   }
 
   > :not(:first-child) {

@@ -1,4 +1,6 @@
 const { defineConfig } = require('cypress');
+const { mergeConfig } = require('vite');
+const baseViteConfig = require('./vite.config');
 
 module.exports = defineConfig({
   e2e: {
@@ -21,6 +23,8 @@ module.exports = defineConfig({
     devServer: {
       framework: 'react',
       bundler: 'vite',
+      viteConfig: (config) =>
+        mergeConfig(config, baseViteConfig),
     },
   },
 });

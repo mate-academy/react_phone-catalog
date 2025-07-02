@@ -12,6 +12,13 @@ type Props = {
   snap?: boolean;
   infinite?: boolean;
   treshold?: number;
+  classNames: {
+    main: string;
+    viewport: string;
+    pagination: string;
+    buttonPrev: string;
+    buttonNext: string;
+  };
 };
 
 export const MSwiper: React.FC<Props> = ({
@@ -24,10 +31,12 @@ export const MSwiper: React.FC<Props> = ({
   snap = true,
   infinite = false,
   treshold = 0.1,
+  classNames,
 }) => {
   return (
     <MSProvider dataset={dataset} infinite={infinite} clamp={clamp} gap={gap}>
       <Swiper
+        classNames={classNames}
         btn={buttons}
         swCoeff={swipeCoeff}
         anSpeed={animationSpeed}

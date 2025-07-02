@@ -1,0 +1,22 @@
+@use '@constants/colors.scss' as cl;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 0 1px cl.$elements;
+  color: cl.$gray-primary;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon {
+  display: block;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  background-color: cl.$gray-primary;
+}

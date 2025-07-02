@@ -1,0 +1,14 @@
+@use '@constants/breakpoint' as *;
+@use '@constants/fonts' as f;
+
+@mixin h4 {
+  font-size: f.$sm;
+  font-weight: f.$s-u;
+  line-height: f.$lh-s;
+  letter-spacing: f.$null;
+
+  @media (min-width: $BREAKPOINT_TAB) {
+    font-size: f.$mid;
+    line-height: f.$lh-l;
+  }
+}

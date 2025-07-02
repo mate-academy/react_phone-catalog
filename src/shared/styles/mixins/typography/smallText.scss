@@ -1,0 +1,8 @@
+@use '@constants/fonts' as f;
+
+@mixin small-text {
+  font-size: f.$xxsm;
+  font-weight: f.$s;
+  line-height: f.$lh-xs;
+  letter-spacing: f.$null;
+}

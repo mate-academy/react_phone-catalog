@@ -1,0 +1,19 @@
+@use '@mixins/typography/uppercase' as *;
+@use '@mixins/hoverDefault' as *;
+
+.text {
+  @include uppercase;
+  
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    @include hover-default;
+  }
+}

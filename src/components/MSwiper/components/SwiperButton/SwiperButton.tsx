@@ -1,8 +1,10 @@
+import { Button } from '@ui/button';
 import { Direction } from '../../../../shared/types/direction';
 import { useMSContext } from '../../context/MSContext';
 import { getIndex } from '../../helpers/swiperHelpers';
 import { useSafeCheck } from '../../hooks/useSafeCheck';
 import styles from './SwiperButton.module.scss';
+import { ButtonNames, ButtonsProps, Path } from '@shared/types/ButtonProps';
 
 type Props = {
   dir: Direction;
@@ -54,18 +56,18 @@ export const SwiperButton: React.FC<Props> = ({
     }
   };
 
+  const button: ButtonsProps =
+    dir === Direction.RIGHT
+      ? { name: ButtonNames.Next, path: Path.Next }
+      : { name: ButtonNames.Prev, path: Path.Prev };
+
   return (
-    <button
-      key={dir}
+    <Button
+      key={button.name}
+      data={button}
       className={`${styles['sw-button']} ${className}-${dir}`}
-      onClick={() => handleClick()}
+      fn={() => handleClick()}
       disabled={!checked()}
-    >
-      <img
-        src={`/src/assets/icons/arrow-${dir}.svg`}
-        className={styles['sw-arrow']}
-        alt=""
-      />
-    </button>
+    />
   );
 };

@@ -1,21 +1,20 @@
-import { NavigationItem } from '../../shared/types/NavLinkProps';
-import { Logo } from '../../shared/ui/Logo';
-import { NavList } from '../../shared/ui/nav__list';
+import { NavigationItem } from '@shtypes/NavLinkProps';
+import { Logo } from '@ui/Logo';
+import { NavList } from '@ui/nav__list';
 import {
   FooterLabelProp,
   FooterNavName,
   FooterRoutePath,
 } from './types/footerLinks';
 import styles from './footer.module.scss';
-import { MenuButton } from '../../shared/ui/menu-button';
-import {
-  ButtonsProps,
-  FooterButtonName,
-  Path,
-} from '../../shared/types/Menu-UIProps';
-import { Link } from 'react-router-dom';
+import { ButtonsProps, ButtonNames, Path } from '@shtypes/ButtonProps';
+import { FooterButtons } from './components/footer-buttons';
 
-export const Footer = () => {
+type Props = {
+  className: string;
+};
+
+export const Footer: React.FC<Props> = ({ className }) => {
   const linksList: NavigationItem[] = [
     {
       name: FooterNavName.Github,
@@ -34,21 +33,16 @@ export const Footer = () => {
     },
   ];
 
-  const button: ButtonsProps = {
-    name: FooterButtonName.Top,
+  const data: ButtonsProps = {
+    name: ButtonNames.Top,
     path: Path.Up,
   };
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${className}`}>
       <Logo className={`${styles.footer__logo} footer__logo`} />
       <NavList key={'footer'} list={linksList} cN={`${styles.footer__nav}`} />
-      <div className={styles['footer-btn-container']}>
-        <Link to={'/'} className={styles['footer-text']}>
-          Back to top
-        </Link>
-        <MenuButton data={button} className={styles['footer-button']} />
-      </div>
+      <FooterButtons data={data} className={styles['footer__btn-container']} />
     </footer>
   );
 };

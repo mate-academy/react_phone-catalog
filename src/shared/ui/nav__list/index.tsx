@@ -1,4 +1,4 @@
-import { NavigationItem } from '../../types/NavLinkProps';
+import { NavigationItem } from '@shtypes/NavLinkProps';
 import { NavigationLink } from '../nav-link';
 import styles from './navList.module.scss';
 
