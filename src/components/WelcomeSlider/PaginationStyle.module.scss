@@ -4,6 +4,10 @@
   @include onTablet {
     width: 490px;
   }
+
+  @include onBigScren {
+    width: 1040px;
+  }
 }
 
 .swiper-custom-pagination-bullet {

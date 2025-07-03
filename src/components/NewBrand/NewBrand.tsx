@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import brandStyles from './NewBrand.module.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { useEffect, useState } from 'react';
 
-interface Product {
+interface Iphones {
   camera: string;
   capacity: string;
   capacityAvailable: number;
@@ -29,8 +30,31 @@ interface Product {
   zoom: string;
 }
 
+interface Tablets {
+  id: string;
+  category: string;
+  namespaceId: string;
+  name: string;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
+  images: string[];
+  description: string[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera: string;
+  zoom: string;
+  cell: string[];
+}
+
 const NewBrand = () => {
-  const [phones, setPhones] = useState<Product[] | []>([]);
+  const [phones, setPhones] = useState<Iphones[] | []>([]);
+  const [tablets, setTablets] = useState<Tablets[] | []>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,6 +64,15 @@ const NewBrand = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  console.log(tablets);
+
+  useEffect(() => {
+    fetch('/api/tablets.json')
+      .then(res => res.json())
+      .then(data => setTablets(data))
+      .finally(() => setLoading(false));
+  }, [setTablets]);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -48,43 +81,54 @@ const NewBrand = () => {
     return product.name.includes('iPhone 14');
   });
 
+  const newTablets = tablets.filter(product => {
+    return product.id.includes('apple-ipad-mini-6th-gen');
+  });
+
   const allColors = new Set(brandNewModels.map(product => product.color));
+
+  const allColorsTblets = new Set(newTablets.map(product => product.color));
 
   console.log(brandNewModels);
   console.log(allColors);
 
-  const arrayColors = Array.from(allColors);
+  const arrayColorsIphones = Array.from(allColors);
+  const arrayColorsTablets = Array.from(allColorsTblets);
 
   let indexIm = 0;
 
+  const allGadgetsColor = [...arrayColorsIphones, ...arrayColorsTablets];
+  const allAsortiment = [...brandNewModels, ...newTablets];
+
+  console.log(allGadgetsColor);
+
   return (
     <>
-      <h1>Brand new models</h1>
+      <h1 className={brandStyles.brand__title}>Brand new models</h1>
 
       {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem illum nisi a dolorum doloremque ad delectus eum perspiciatis quis, quos est explicabo perferendis reprehenderit, enim rerum facere obcaecati? Consequatur cum alias laudantium quos sapiente eos molestias ipsa animi, ratione architecto expedita dolores rem qui esse. */}
       <Swiper
         spaceBetween={16}
-        slidesPerView={2.5}
+        slidesPerView={'auto'}
         className={brandStyles.brand}
       >
-        {brandNewModels.map(phone => {
-          const singleIphoneColor = arrayColors.find(
+        {allAsortiment.map(phone => {
+          const singleIphoneColor = allGadgetsColor.find(
             color => color === phone.color,
           );
 
           if (singleIphoneColor) {
-            arrayColors.forEach((color, i) => {
+            allGadgetsColor.forEach((color, i) => {
               const isColor = color === singleIphoneColor ? '' : color;
 
-              arrayColors[i] = isColor;
+              allGadgetsColor[i] = isColor;
             });
 
             const screenValue = phone.screen.split(' ');
 
             const validScreenValue = screenValue[0] + ' ' + screenValue[1];
 
-            // console.log(arrayColors);
-            // console.log(indexIm);
+            // console.log(arrayColorsIphones);
             console.log(validScreenValue);
 
             indexIm++;

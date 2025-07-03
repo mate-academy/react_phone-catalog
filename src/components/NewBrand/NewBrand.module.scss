@@ -15,26 +15,47 @@
 }
 
 .swiper-wrapper {
-  width: 100%;
-  margin-right: 16px
+  width: 10%;
+  margin-right: 16px;
+  position: fixed;
+  // margin-inline: 16px;
 }
 
 .brand {
-  width: min-content;
-  max-width: 1200px;
-  margin: 0 auto ;
+  margin-inline: 16px;
+
+  @include onTablet {
+    margin-inline: 24px;
+  }
+
+  @include onBigScren {
+    margin-inline: 32px;
+  }
+
+  &__title {
+    margin: 80px 10px 24px 16px;
+
+    @include onTablet {
+      margin: 80px 10px 24px 24px;
+    }
+
+    @include onBigScren {
+      margin: 80px 10px 24px 32px;
+    }
+  }
 
   &__card{
     width: 212px !important;
-    margin-inline: 16px;
+    // margin-inline: 16px;
 
     @include onTablet {
-      margin-inline: 24px;
+      // margin-inline: 24px;
       width: 237px !important;
     }
 
     @include onBigScren {
       width: 272px;
+      // margin-inline: 32px;
     }
 
     height: 512px;

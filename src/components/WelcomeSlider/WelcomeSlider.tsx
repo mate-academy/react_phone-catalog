@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import welcomeStyles from './WelcomeSlider.module.scss';
 import paginationStyle from './PaginationStyle.module.scss';
 import navigationStyle from './Navigation.module.scss';
@@ -14,8 +14,54 @@ import 'swiper/css/pagination';
 
 const WelcomeSlider: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentImagePath, setCurrentImagePath] = useState<string[]>([
+    'public/img/Banner-mobile.5ab4e0f94787219dc791.png',
+    '/img/banner-mobil-3.88470ad4d90a78897a60.png',
+    '/img/banner-mobile-2.00d157dda3b7eb6a4ac1.png',
+  ]);
 
-  console.log(isMenuOpen);
+  const updateImageBasedOnWidth = () => {
+    let newPathFirstImage = 'img/mobile-banner.svg'; // Дефолтне значення
+    let newPathSecondImage = 'public/img/banner-3.0faf6182921a87c68d96.png';
+    let newPathThirdImage = 'public/img/banner-2.9b3f155545f266760333.png'; //
+
+    if (window.innerWidth >= 640) {
+      newPathFirstImage = 'public/img/face-banner.svg';
+      setCurrentImagePath([
+        newPathFirstImage,
+        newPathSecondImage,
+        newPathThirdImage,
+      ]);
+    }
+
+    if (window.innerWidth <= 640) {
+      newPathFirstImage = 'public/img/Banner-mobile.5ab4e0f94787219dc791.png';
+      newPathSecondImage = '/img/banner-mobil-3.88470ad4d90a78897a60.png';
+      newPathThirdImage = '/img/banner-mobile-2.00d157dda3b7eb6a4ac1.png';
+      setCurrentImagePath([
+        newPathFirstImage,
+        newPathSecondImage,
+        newPathThirdImage,
+      ]);
+    }
+
+    if (window.innerWidth <= 1200) {
+
+    }
+
+  };
+
+  useEffect(() => {
+    updateImageBasedOnWidth();
+
+    window.addEventListener('resize', updateImageBasedOnWidth);
+
+    return () => {
+      window.removeEventListener('resize', updateImageBasedOnWidth);
+    };
+  }, []);
+
+  console.log(currentImagePath);
 
   return (
     <div id="#">
@@ -54,10 +100,10 @@ const WelcomeSlider: React.FC = () => {
             bulletActiveClass:
               paginationStyle['swiper-custom-pagination-bullet--active'],
           }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 5000,
+          //   disableOnInteraction: false,
+          // }}
           navigation={{
             nextEl: '.navigation-button-next',
             prevEl: '.navigation-button-prev',
@@ -66,27 +112,34 @@ const WelcomeSlider: React.FC = () => {
           loop={true}
         >
           <SwiperSlide>
-            <img
-              src="public\img\Banner-mobile.5ab4e0f94787219dc791.png"
-              alt="f"
-              className={`${welcomeStyles['header__swiper-2']} ${welcomeStyles.header__swiper}`}
-            />
+            <a href="#">
+              <img
+                src={`${currentImagePath[0]}`}
+                className={`${welcomeStyles['header__swiper-2']} ${welcomeStyles.header__swiper}`}
+              />
+            </a>
           </SwiperSlide>
 
           <SwiperSlide>
-            <img
-              src="public\img\banner-mobil-3.88470ad4d90a78897a60.png"
-              alt="f"
-              className={`${welcomeStyles['header__swiper-0']} ${welcomeStyles.header__swiper}`}
-            />
+            <a href="#">
+              <img
+                // src="public\img\banner-mobil-3.88470ad4d90a78897a60.png"
+                src={`${currentImagePath[1]}`}
+                // style={{
+                //   backgroundImage: `url('public/img/banner-mobil-3.88470ad4d90a78897a60.png')`,
+                // }}
+                className={`${welcomeStyles['header__swiper-0']} ${welcomeStyles.header__swiper}`}
+              />
+            </a>
           </SwiperSlide>
 
           <SwiperSlide>
-            <img
-              src="public\img\banner-mobile-2.00d157dda3b7eb6a4ac1.png"
-              alt="f"
-              className={`${welcomeStyles['header__swiper-1']} ${welcomeStyles.header__swiper}`}
-            />
+            <a href="#">
+              <img
+                src={`${currentImagePath[2]}`}
+                className={`${welcomeStyles['header__swiper-1']} ${welcomeStyles.header__swiper}`}
+              />
+            </a>
           </SwiperSlide>
         </Swiper>
 

@@ -1,6 +1,18 @@
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: 'Mont';
+}
+
+@import '../../styles/mixins.module';
+
 body {
   margin: 0;
   padding: 0;
+}
+
+.header__swiper-2 {
+  // margin: auto;
+  // height: 200px;
 }
 
 .header {
@@ -8,13 +20,24 @@ body {
   flex-direction: row;
 
   &__title {
+    font-family: 'Mont';
     font-weight: 800;
     font-size: 32px;
+    height: 82px;
     line-height: 41px;
-    letter-spacing: -1%;
+    letter-spacing: -0.32px;
     padding-inline: 16px;
     padding-bottom: 24px;
     padding-top: 72px;
+    margin: auto;
+
+    @include onTablet {
+      margin: 24px 32px 24px 32px;
+    }
+
+    @include onBigScren {
+      margin: 32px 56px 32px 56px;
+    }
   }
 
   // &__swiper {
@@ -23,6 +46,19 @@ body {
 
   &__swiper {
     width: 100%;
+
+    @include onTablet {
+      border-radius: 8px;
+    }
+
+    @include onBigScren {
+      width: 1040px;
+      height: 400px;
+    }
+    // height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   &__image {

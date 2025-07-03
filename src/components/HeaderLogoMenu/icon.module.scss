@@ -1,17 +1,87 @@
+@import '../../styles/mixins.module';
+
 .icon {
   width: 16px;
   height: 16px;
   display: block;
+
+  // @include onTablet {
+  //   padding: 16px;
+  // }
 }
 
 .icon--menu {
   background-image: url("/img/burger-menu.svg");
   // background-repeat: no-repeat;
   background-size: cover;
-  // padding: 16px;
+  margin: 16px;
+
+  @include onTablet {
+    display: none;
+  }
 }
 
 .icon--close {
   background-image: url("public/img/icon-close.png");
   background-size: cover;
+}
+
+.icon--heart {
+  // display: none;
+  width: 0;
+  height: 0;
+
+  @include onTablet {
+    background-image: url("public/img/favourites-(heart-like).svg");
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+
+    &__wrapper {
+      padding: 16px;
+      border-right: 1px solid #e2e6e9;
+    }
+  }
+}
+
+.icon--bag {
+  // display: none;
+  width: 0;
+  height: 0;
+
+  @include onTablet {
+    background-image: url("public/img/shopping-bag-cart.svg"); //public\img\shopping-bag-cart.svg
+    width: 16px;
+    height: 16px;
+    // display: inline-block;
+    background-size: cover;
+    // margin: 16px;
+
+    &__wrapper {
+      padding: 16px;
+    }
+  }
+}
+
+.badge {
+  display: none;
+
+  @include onTablet {
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    background: #3b6ef6; // або ваш колір
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 9px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+
+  }
 }
