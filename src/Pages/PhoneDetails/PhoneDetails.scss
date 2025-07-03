@@ -1,7 +1,8 @@
+/* Основний контейнер для деталей продукту */
 .phone-card_detail {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центрує контент по горизонталі */
+  align-items: center;
   justify-content: space-between;
   padding-top: 50px;
   gap: 50px;
@@ -10,80 +11,106 @@
   color: rgb(63, 61, 61);
 }
 
+/* Контейнер для галереї зображень */
 .phone-gallery {
   display: flex;
   justify-content: start;
   gap: 50px;
   align-items: center;
   flex: 1;
-  max-width: 45%;
+  /* Змінимо max-width на гнучкіший підхід або видалимо його для менших екранів */
+  /* max-width: 45%; */ /* Це може бути проблемою на малих екранах */
+  width: 100%; /* Забезпечити, що він займає доступну ширину */
+  flex-wrap: wrap; /* Дозволити елементам всередині галереї обгортатися */
+  justify-content: center; /* Центрувати зображення при обгортанні */
 }
 
 .phone-gallery__thumbnails {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  /* Додамо адаптивність для маленьких екранів, щоб вони могли переходити в рядок */
+  flex-wrap: wrap;
+  align-items: center; /* Центрувати мініатюри */
 }
 
 .phone-gallery__thumbnails img {
-  width: 50px;
-  height: 80px;
+  width: 50px; /* Зробити трохи гнучкішим, якщо потрібно */
+  height: 80px; /* Зробити трохи гнучкішим, якщо потрібно */
   cursor: pointer;
   transition: border 0.3s ease;
   padding: 5px;
+  max-width: 100%; /* Забезпечити, що зображення не виходять за межі контейнера */
+  height: auto; /* Зберегти пропорції */
 }
 
+.mainControls{
+  @media (max-width:768px) {
+    display: flex;
+    justify-content:start;
+    align-items: start;
+    flex-direction: column;
+  }
+}
 .phone-gallery__thumbnails img.selected {
   border: 1px solid rgb(80, 80, 80);
 }
 
-/* Велике зображення */
 .phone-gallery__main-image {
   width: 300px;
   height: 400px;
   border-radius: 10px;
+  max-width: 100%; /* Дуже важливо! Щоб головне зображення зменшувалось */
+  height: auto; /* Зберегти пропорції */
 }
 
+/* Вибір кольору */
 .color-picker__title {
   font-weight: 600;
   font-size: 12px;
   color: #89939A;
 }
 
-
 .color-picker {
   display: flex;
   gap: 10px;
   margin-top: 10px;
   cursor: pointer;
+  flex-wrap: wrap; /* Дозволити кнопкам переноситись на новий рядок */
+  justify-content: center; /* Центрувати кнопки, якщо вони обгортаються */
 }
 
 .color-picker button {
+  display: flex;
   width: 35px;
   height: 35px;
   border-radius: 50%;
   cursor: pointer;
-  border: 3px solid transparent;
   transition: all 0.3s ease;
+  border: 1px solid #a8a5a5 !important;
+  outline: 1px solid #a8a5a5;
+  outline-offset: 2px;
+  flex-shrink: 0; /* Запобігти зменшенню кнопок менше їхнього розміру */
 }
-
 
 .color-picker button.selected {
-  border: 4px double rgb(182, 178, 178);
-  transition: box-shadow 0.3s ease;
+  border: 2px double black !important;
+  transform: scale(1.2);
 }
 
+/* Вибір ємності */
 .info-phone__selectCapacity__title {
   font-weight: 600;
   font-size: 12px;
   color: #89939A;
-
 }
 
 .info-phone__selectCapacity {
   display: flex;
   gap: 8px;
   cursor: pointer;
+  flex-wrap: wrap; /* Дозволити кнопкам переноситись на новий рядок */
+  justify-content: center; /* Центрувати кнопки, якщо вони обгортаються */
 }
 
 .info-phone__selectCapacity button {
@@ -98,6 +125,7 @@
   font-size: 14px;
   margin: 0;
   background-color: #fff;
+  flex-shrink: 0; /* Запобігти зменшенню кнопок менше їхнього розміру */
 }
 
 .info-phone__selectCapacity button.selected {
@@ -112,6 +140,7 @@
   border: none;
 }
 
+/* Ціна та кнопки */
 .info-phone__price--new {
   font-size: 22px;
   font-weight: bold;
@@ -130,21 +159,32 @@
   align-items: center;
   display: flex;
   gap: 8px;
-  justify-content: start;
   position: relative;
+  flex-wrap: wrap;
+  justify-content: center;
 
-  &__btn-primary {
-    color: #FFFFFF;
-    background-color: #313237;
-    border: none;
-    width: 210px;
-    height: 40px;
+  @media(max-width:768px) {
+    display: flex;
+    height: 100px;
+    width: 100px;
+    align-items: center;
+    justify-content: space-between;
   }
+}
 
-  &__btn-favorite {
-    width: 40px;
-    height: 40px;
-  }
+.info-phone__actions__btn-primary {
+  color: #FFFFFF;
+  background-color: #313237;
+  border: none;
+  width: 210px;
+  height: 40px;
+  max-width: 100%;
+}
+
+.info-phone__actions__btn-favorite {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
 }
 
 .info-phone-box-detail {
@@ -152,6 +192,10 @@
   flex-direction: column;
   padding: 20px 0 0 0;
   gap: 8px;
+
+  @media(max-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .info-phone__detail {
@@ -160,10 +204,12 @@
   width: 100%;
   font-size: 14px;
   color: #363535;
+  flex-wrap: wrap;
 }
 
-.info-phone__detail span{
+.info-phone__detail span {
   white-space: nowrap;
+  flex-basis: 48%;
 }
 
 .back-button {
@@ -180,34 +226,24 @@
   align-items: flex-start;
   margin-bottom: 20px;
   width: 100%;
-
 }
 
 .top h2 {
   font-size: 24px;
   font-weight: bold;
   margin: 0;
-}
-
-@media (max-width: 768px) {
-  .phone-card_detail {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .phone-header {
-    align-items: center;
-  }
+  text-align: start;
+  width: 100%;
 }
 
 .phone-start {
   display: flex;
-  justify-content: start; /* Розташовує елементи рівномірно */
+  justify-content: start;
   align-items: flex-start;
-  width: 100%; /* Забезпечує розтягнення на всю ширину */
-  gap: 50px; /* Відступ між галереєю та інформацією */
+  width: 100%;
+  gap: 50px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .Description {
@@ -216,6 +252,8 @@
   justify-content: space-between;
   flex-direction: row;
   color: #363535;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .box_one {
@@ -226,6 +264,8 @@
   flex-direction: column;
   padding: 10px;
   gap: 5px;
+  flex-grow: 1;
+  min-width: 280px;
 }
 
 .span {
@@ -246,5 +286,88 @@
   color: #363535;
   flex-direction: column;
   padding: 10px;
+  flex-grow: 1; /* Дозволити зростати */
+  min-width: 300px; /* Мінімальна ширина */
 }
 
+/* Медіа-запити для адаптації */
+@media (max-width: 768px) {
+  .phone-card_detail {
+    padding-top: 20px;
+    gap: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .phone-gallery {
+    flex-direction: column; /* Галерея стає вертикальною */
+    gap: 20px;
+    max-width: 100%; /* Повна ширина на малих екранах */
+  }
+
+  .phone-gallery__thumbnails {
+    flex-direction: row; /* Мініатюри стають горизонтальними */
+    justify-content: center; /* Центрувати мініатюри */
+    width: 100%;
+  }
+
+  .phone-gallery__main-image {
+    width: 250px; /* Можливо, трохи зменшити основне зображення */
+    height: auto; /* Забезпечити збереження пропорцій */
+  }
+
+  .phone-start {
+    flex-direction: column; /* Основні секції (галерея та інфо) стають вертикальними */
+    align-items: center; /* Вирівняти по центру */
+    gap: 30px; /* Зменшити відступи */
+  }
+
+  .info-phone__actions {
+    flex-direction: column; /* Кнопки "Додати в кошик" та "Улюблений" стають вертикальними */
+    align-items: start; /* Вирівняти по центру */
+    width: 100%; /* Зайняти всю ширину */
+  }
+
+  .info-phone__actions__btn-primary {
+    width: 100%; /* Кнопка "Додати в кошик" займає всю ширину */
+    max-width: 300px; /* Обмежити максимальну ширину для кращого вигляду */
+  }
+
+  .info-phone__actions__btn-favorite {
+    margin-top: 10px; /* Додати відступ, якщо кнопки вертикальні */
+  }
+
+  .Description {
+    flex-direction: column; /* Секції опису стають вертикальними */
+    align-items: center; /* Вирівняти по центру */
+  }
+
+  .box_one,
+  .box_two {
+    width: 100%; /* Зайняти повну ширину */
+    align-items: center; /* Вирівняти вміст по центру */
+    text-align: center; /* Вирівняти текст по центру */
+  }
+
+  .info-phone__detail span {
+    flex-basis: 100%; /* Кожен елемент займає повну ширину на мобільних */
+    text-align: center; /* Вирівняти текст по центру */
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-card_detail {
+    gap: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .phone-gallery__main-image {
+    width: 200px; /* Ще більше зменшити основне зображення для дуже малих екранів */
+  }
+
+  .info-phone__price--new,
+  .info-phone__price--old {
+    font-size: 18px; /* Зменшити розмір шрифту ціни */
+  }
+}

@@ -15,7 +15,7 @@ export const Slideshow: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3500);
+    }, 3200);
 
     return () => clearInterval(interval);
   }, []);
@@ -29,18 +29,15 @@ export const Slideshow: React.FC = () => {
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
-  //eslint-disable-next-line
-  console.log('Current slide:', images[currentIndex]);
 
-  // Handle swipe gesture
   const handleSwipe = (e: React.TouchEvent) => {
     const touchStart = e.changedTouches[0].clientX;
     const touchEnd = e.changedTouches[e.changedTouches.length - 1].clientX;
 
     if (touchStart - touchEnd > 50) {
-      handleNext(); // Swipe Left (Next)
+      handleNext();
     } else if (touchStart - touchEnd < -50) {
-      handlePrev(); // Swipe Right (Previous)
+      handlePrev();
     }
   };
 
@@ -57,11 +54,14 @@ export const Slideshow: React.FC = () => {
           &#10094;
         </button>
 
-        <img
-          src={images[currentIndex]}
-          alt={`Slide ${currentIndex + 1}`}
-          className="img"
-        />
+        {images.map((src, index) => (
+          <img
+            key={index}
+            src={src}
+            alt={`Slide ${index + 1}`}
+            className={`img ${index === currentIndex ? 'active' : ''}`}
+          />
+        ))}
 
         <button
           onClick={handleNext}

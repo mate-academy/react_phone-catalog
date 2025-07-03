@@ -2,8 +2,15 @@
   text-align: center;
   margin-top: 20px;
   padding-bottom: 64px;
+}
 
-  &__title {
+.hotPrices__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hotPrices__title{
     display: flex;
     font-size: 32px;
     justify-content: start;
@@ -13,7 +20,6 @@
     @media(min-width: 1200px) {
       padding: 80px 0 24px 0;
     }
-  }
 }
 
 .hotPricesPhoneList{
@@ -195,4 +201,25 @@ button {
 
 .pagination__button {
   cursor: pointer;
+}
+
+.pagination {
+  padding-top: 80px;
+  padding-bottom: 28px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    background-color: #313237;
+    border: none;
+    width: 50px;
+    height: 40px;
+
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }

@@ -18,6 +18,11 @@
     }
   }
 }
+.brand-new-models-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .brand-new-models_phonelist{
   display: flex;
@@ -148,11 +153,12 @@
 
 
 .hotPricesPhoneCard:hover {
-  transform: translateY(-10px); /* Підйом картки в секції hotPrices */
+  transform: translateY(-10px);
 }
 
 .pagination {
-  padding-top: 20px;
+  padding-top: 80px;
+  padding-bottom: 28px;
   display: flex;
   justify-content: center;
   gap: 16px;

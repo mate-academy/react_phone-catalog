@@ -184,9 +184,33 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
 
   return (
     <div className="brand-new-models">
-      {!hideTitle && (
-        <h2 className="brand-new-models__title">Brand new models</h2>
-      )}
+      <div className="brand-new-models-header">
+        {!hideTitle && (
+          <h2 className="brand-new-models__title">Brand new models</h2>
+        )}
+        <div className="pagination">
+          <button
+            className="pagination__button"
+            onClick={handlePrev}
+            disabled={startIndex === 0}
+          >
+            <img
+              src="./img/ChevronL.png"
+              alt="Left"
+            />
+          </button>
+          <button
+            className="pagination__button"
+            onClick={handleNext}
+            disabled={startIndex + phonesPerPage >= phones.length}
+          >
+            <img
+              src="./img/ChevronR.png"
+              alt="Right"
+            />
+          </button>
+        </div>
+      </div>
       <div
         className={`brand-new-models_phonelist ${isAnimating ? `slide-${direction}` : ''}`}
       >
@@ -237,28 +261,6 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
             </div>
           </div>
         ))}
-      </div>
-      <div className="pagination">
-        <button
-          className="pagination__button"
-          onClick={handlePrev}
-          disabled={startIndex === 0}
-        >
-          <img
-            src="./img/ChevronL.png"
-            alt="Left"
-          />
-        </button>
-        <button
-          className="pagination__button"
-          onClick={handleNext}
-          disabled={startIndex + phonesPerPage >= phones.length}
-        >
-          <img
-            src="./img/ChevronR.png"
-            alt="Right"
-          />
-        </button>
       </div>
     </div>
   );

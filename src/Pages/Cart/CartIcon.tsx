@@ -23,14 +23,16 @@ export const CartIcon: React.FC = () => {
       {cartCount > 0 && (
         <span
           style={{
+            height: 10,
+            width: 10,
             position: 'absolute',
-            top: 20,
+            top: 15,
             right: 15,
             background: 'red',
             color: 'white',
-            borderRadius: '100%',
+            borderRadius: '50%',
             padding: '5px',
-            fontSize: '8px',
+            fontSize: '10px',
           }}
         >
           {cartCount}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { Phone } from './../../Types/BaseItem';
 import './PhoneDetails.scss';
 import { useCartContext } from '../../CartContext/useCartContext';
@@ -91,6 +91,9 @@ export const PhoneDetails: React.FC = () => {
   const generateId = (namespaceId: string, capacity: string, color: string) =>
     `${namespaceId}-${capacity.toLowerCase()}-${color}`;
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const handleColorChange = useCallback(
     (color: string) => {
       if (!phone) return;
@@ -100,8 +103,18 @@ export const PhoneDetails: React.FC = () => {
       );
       setCurrentImages(newImages);
       setSelectedImage(newImages[0]);
+
+      const oldSlug = location.pathname.split('/').pop();
+      if (!oldSlug) return;
+
+      const parts = oldSlug.split('-');
+      parts[parts.length - 1] = color;
+      const newSlug = parts.join('-');
+
+      const newPath = location.pathname.replace(oldSlug, newSlug);
+      navigate(newPath, { replace: true });
     },
-    [phone],
+    [phone, location, navigate],
   );
 
   const handleCapacityChange = useCallback(
@@ -122,8 +135,22 @@ export const PhoneDetails: React.FC = () => {
       } else {
         setCurrentPrice(phone.priceRegular);
       }
+      const oldSlug = location.pathname.split('/').pop();
+      if (!oldSlug) return;
+
+      const parts = oldSlug.split('-');
+
+      const capacityIndex = parts.findIndex((part) => part.includes('gb'));
+      if (capacityIndex === -1) return;
+
+      parts[capacityIndex] = capacity.toLowerCase();
+
+      const newSlug = parts.join('-');
+      const newPath = location.pathname.replace(oldSlug, newSlug);
+
+      navigate(newPath, { replace: true });
     },
-    [allPhones, phone, selectedColor],
+    [allPhones, phone, selectedColor, location, navigate],
   );
 
   const isInCart = phone ? cart.some((c) => c.item.id === phone.id) : false;
@@ -168,18 +195,19 @@ export const PhoneDetails: React.FC = () => {
           )}
         </div>
 
-        <div>
+        <div className="mainControls">
           <h3 className="color-picker__title">Available color</h3>
           <div className="color-picker">
-            {phone.colorsAvailable.map((color) => (
-              <button
-                key={color}
-                onClick={() => handleColorChange(color)}
-                style={{ backgroundColor: color }}
-                className={selectedColor === color ? 'selected' : ''}
-                aria-label={`Select color ${color}`}
-              />
-            ))}
+            {phone.colorsAvailable.map((color) => {
+              return (
+                <button
+                  key={color}
+                  onClick={() => handleColorChange(color)}
+                  style={{ backgroundColor: color }}
+                  className={selectedColor === color ? 'selected active' : ''}
+                />
+              );
+            })}
           </div>
           <hr />
 

@@ -23,14 +23,16 @@ export const FavouritesIcon: React.FC = () => {
       {favouritesCount > 0 && (
         <span
           style={{
+            height: 10,
+            width: 10,
             position: 'absolute',
-            top: 20,
-            right: 11,
+            top: 15,
+            right: 15,
             background: 'red',
             color: 'white',
             borderRadius: '50%',
             padding: '5px',
-            fontSize: '8px',
+            fontSize: '10px',
           }}
         >
           {favouritesCount}

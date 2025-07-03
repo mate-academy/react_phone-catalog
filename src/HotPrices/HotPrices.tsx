@@ -136,7 +136,7 @@ export const HotPrices: React.FC = () => {
       }
     };
 
-    handleResize(); // Викликаємо одразу при першому рендері
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
@@ -181,7 +181,31 @@ export const HotPrices: React.FC = () => {
 
   return (
     <div className="hotPrices">
-      <h2 className="hotPrices__title">Hot Prices</h2>
+      <div className="hotPrices__header">
+        <h2 className="hotPrices__title">Hot Prices</h2>
+        <div className="pagination">
+          <button
+            className="pagination__button"
+            onClick={handlePrev}
+            disabled={startIndex === 0}
+          >
+            <img
+              src="./img/ChevronL.png"
+              alt="Left"
+            />
+          </button>
+          <button
+            className="pagination__button"
+            onClick={handleNext}
+            disabled={startIndex + phonesPerPage >= phones.length}
+          >
+            <img
+              src="./img/ChevronR.png"
+              alt="Right"
+            />
+          </button>
+        </div>
+      </div>
       <div
         className={`hotPricesPhoneList ${isAnimating ? `slide-${direction}` : ''}`}
       >
@@ -233,28 +257,6 @@ export const HotPrices: React.FC = () => {
             </div>
           </div>
         ))}
-      </div>
-      <div className="pagination">
-        <button
-          className="pagination__button"
-          onClick={handlePrev}
-          disabled={startIndex === 0}
-        >
-          <img
-            src="./img/ChevronL.png"
-            alt="Left"
-          />
-        </button>
-        <button
-          className="pagination__button"
-          onClick={handleNext}
-          disabled={startIndex + phonesPerPage >= phones.length}
-        >
-          <img
-            src="./img/ChevronR.png"
-            alt="Right"
-          />
-        </button>
       </div>
     </div>
   );

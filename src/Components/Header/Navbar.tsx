@@ -19,7 +19,6 @@ export const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Оновлюємо URL при зміні пошуку
   useEffect(() => {
     const params = new URLSearchParams();
 
@@ -33,14 +32,13 @@ export const Navbar = () => {
   const toggleMenu = () => {
     setIsMobileMenuOpen((prev) => {
       const newState = !prev;
-      document.body.classList.toggle('no-scroll', newState); // Додаємо/видаляємо клас body
+      document.body.classList.toggle('no-scroll', newState);
       return newState;
     });
   };
 
-  // Масив шляхів, на яких потрібно показувати пошук
   const searchRoutes = ['/phones', '/tablets', '/accessories'];
-  // Перевіряємо, чи поточний шлях є в масиві дозволених шляхів
+
   const shouldShowSearch = searchRoutes.includes(location.pathname);
 
   return (
@@ -52,10 +50,8 @@ export const Navbar = () => {
         aria-label="main navigation"
       >
         <div className="container navbar-container">
-          {/* Мобільне меню */}
           {isMobileMenuOpen && <BurgerMenu onClose={toggleMenu} />}
 
-          {/* Логотип */}
           <NavLink
             to="/"
             className="logo"
@@ -65,7 +61,6 @@ export const Navbar = () => {
               alt="Logo"
             />
           </NavLink>
-          {/* Кнопка для відкриття мобільного меню */}
           <button
             className="burger-menu-toggle"
             onClick={toggleMenu}
@@ -73,7 +68,6 @@ export const Navbar = () => {
             ☰
           </button>
 
-          {/* Ліва сторона навбару */}
           <div className="navbar-left">
             <NavLink
               to="/"
@@ -104,7 +98,6 @@ export const Navbar = () => {
             </NavLink>
           </div>
 
-          {/* Поле пошуку */}
           {shouldShowSearch && (
             <div className="navbar-center">
               <input
@@ -118,7 +111,6 @@ export const Navbar = () => {
             </div>
           )}
 
-          {/* Права сторона навбару */}
           <div className="navbar-right">
             <FavouritesIcon />
             <CartIcon />

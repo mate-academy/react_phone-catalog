@@ -60,7 +60,7 @@
   padding-left: 24px;
 
   @media (max-width: 768px) {
-    display: none; /* Показуємо на мобільних пристроях */
+    display: none;
   }
 }
 
@@ -72,7 +72,7 @@
   gap: 0px;
 
   @media (max-width: 768px) {
-    display: none; /* Показуємо на мобільних пристроях */
+    display: none;
   }
 }
 
@@ -127,7 +127,7 @@
 }
 
 .burger-menu-toggle {
-  display: none; /* За замовчуванням не показуємо на десктопах */
+  display: none;
   font-size: 30px;
   background: none;
   border: none;
@@ -137,13 +137,13 @@
   transition: opacity 0.5s ease-in, visibility 0s 0.5s;
 
   @media (max-width: 768px) {
-    display: block; /* Показуємо на мобільних пристроях */
+    display: block;
   }
 }
 
 
 .burger-menu-overlay.active {
-  opacity: 1; /* Кінцева прозорість - повністю видимий */
+  opacity: 1;
   visibility: visible;
   overflow: hidden;
   transition: opacity 1.0s ease-in-out;
