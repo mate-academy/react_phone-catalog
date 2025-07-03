@@ -5,17 +5,21 @@ import iconStyles from './icon.module.scss';
 interface SidebarProps {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   iconClass: string;
+  isOpen: boolean;
 }
 
 const HeaderLogoMenu: React.FC<SidebarProps> = ({
   setIsMenuOpen,
   iconClass,
+  isOpen,
 }) => {
   const iconReference = iconClass === 'icon--menu' ? '#burger-menu' : '#';
-  const [iconWindow, setIconWindow] = useState<string>(iconClass);
+  // const [iconWindow, setIconWindow] = useState<string>(iconClass);
 
-  console.log(iconClass);
-  console.log(iconWindow);
+  console.log(isOpen);
+
+  // console.log(`iconClass -- ${iconClass}`);
+  // console.log(`iconWindow -- ${iconWindow}`);
 
   return (
     <div className={topBatStyles.header}>
@@ -60,11 +64,19 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({
         </div>
 
         <div className={topBatStyles['top-bar__icon-1']}>
-          <a
-            href={iconReference}
-            className={`${iconStyles.icon} ${iconStyles[`${iconClass}`]}`} // ${topBatStyles['top-bar__icon--menu']}
-            onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
-          ></a>
+          {isOpen === true ? (
+            <a
+              href={iconReference}
+              className={`${iconStyles.icon} ${iconStyles['icon--close']}`} // ${topBatStyles['top-bar__icon--menu']}
+              onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
+            ></a>
+          ) : (
+            <a
+              href={iconReference}
+              className={`${iconStyles.icon} ${iconStyles['icon--menu']}`} // ${topBatStyles['top-bar__icon--menu']}
+              onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
+            ></a>
+          )}
 
           <div className={iconStyles['icon--heart__wrapper']}>
             <a

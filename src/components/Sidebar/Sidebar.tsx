@@ -16,12 +16,18 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsMenuOpen }) => {
     };
   }, [isOpen]);
 
+  const validIcon = isOpen ? 'icon--close' : 'icon--menu';
+
+  console.log(validIcon);
+  console.log(isOpen);
+
   return (
     <>
       <aside className={styles.sideMenu} id="burger-menu">
         <HeaderLogoMenu
           setIsMenuOpen={setIsMenuOpen}
-          iconClass={'icon--close'}
+          iconClass={validIcon}
+          isOpen={isOpen}
         />
 
         <nav className={styles.sideMenu__nav}>

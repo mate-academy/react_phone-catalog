@@ -63,6 +63,8 @@ const WelcomeSlider: React.FC = () => {
 
   console.log(currentImagePath);
 
+  console.log(isMenuOpen);
+
   return (
     <div id="#">
       <HeaderLogoMenu setIsMenuOpen={setIsMenuOpen} iconClass={'icon--menu'} />
