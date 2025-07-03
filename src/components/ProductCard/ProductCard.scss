@@ -140,10 +140,10 @@
 
     &_favorites {
       flex-shrink: 0;
+      border: 1px solid $surface2Color;
       border-style: none;
       width: 40px;
       height: 40px;
-      border: 1px solid $surface2Color;
       background-color: $surface2Color;
       cursor: pointer;
 
