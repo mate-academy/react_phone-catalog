@@ -1,1 +1,43 @@
-// not empty
+@import './styles/main.scss';
+
+  iframe {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: Mont, sans-serif;
+}
+
+html {
+  background-color: $backgroundColor;
+}
+
+li {
+    list-style: none;
+  }
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  padding-inline: 16px;
+  margin-block: 64px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      margin-inline: auto;
+      padding-inline: 32px;
+      max-width: 1200px;
+    }
+}
+

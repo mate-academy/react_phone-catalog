@@ -1,0 +1,44 @@
+@import '../../styles/main';
+
+.breadCrumbs {
+  height: 16px;
+  gap: 8px;
+  margin-top: 24px;
+  box-sizing: border-box;
+
+  &__logo_img {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 16px;
+    gap: 8px;
+  }
+
+  &__category {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    color: $surface2Color;
+    text-decoration: none;;
+
+    &-active {
+      color: $whiteColor;
+    }
+  }
+
+  &__arrow {
+    opacity: 0.5;
+
+    &_img {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
