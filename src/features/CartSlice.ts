@@ -4,7 +4,7 @@ import { Product } from '../types/products';
 import { saveToLocalStorage } from '../components/utils/saveToLocalStorege';
 import { loadItemsLocalStorage } from '../components/utils/loadItemsLocalStorage';
 
-type CartItem = Product & { quantity: number };
+export type CartItem = Product & { quantity: number };
 
 interface CartState {
   cartItems: CartItem[];
@@ -27,7 +27,7 @@ export const cartSlice = createSlice({
 
       if (!findItem) {
         state.cartItems.push({ ...action.payload, quantity: 1 });
-        saveToLocalStorage(state.cartItems);
+        saveToLocalStorage('cart', state.cartItems);
       } else {
         findItem.quantity += 1;
       }
@@ -36,7 +36,7 @@ export const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter(
         item => item.id !== action.payload,
       );
-      saveToLocalStorage(state.cartItems);
+       saveToLocalStorage('cart', state.cartItems);
     },
     incrementQuantity: (state, action: PayloadAction<string>) => {
       const findItem = state.cartItems.find(item => item.id === action.payload);
@@ -45,7 +45,7 @@ export const cartSlice = createSlice({
         findItem.quantity += 1;
       }
 
-      saveToLocalStorage(state.cartItems);
+       saveToLocalStorage('cart', state.cartItems);
     },
     decrementQuantity: (state, action: PayloadAction<string>) => {
       const findItem = state.cartItems.find(item => item.id === action.payload);
@@ -54,11 +54,11 @@ export const cartSlice = createSlice({
         findItem.quantity -= 1;
       }
 
-      saveToLocalStorage(state.cartItems);
+      saveToLocalStorage('cart', state.cartItems);
     },
     clearAllCartItem: state => {
       state.cartItems = [];
-      saveToLocalStorage(state.cartItems);
+      saveToLocalStorage('cart', state.cartItems);
     },
   },
 });

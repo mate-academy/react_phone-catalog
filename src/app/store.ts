@@ -4,6 +4,7 @@ import filterReducer from '../features/FilterSlice';
 import paginationReducer from '../features/PaginationSlice';
 import productDetailsReducer from '../features/ProductDetailsSlice';
 import cartItemsReducer from '../features/CartSlice';
+import favouriteReducer from '../features/FavouriteSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     pagination: paginationReducer,
     productDetail: productDetailsReducer,
     cartItem: cartItemsReducer,
+    favourite: favouriteReducer,
   },
 });
 

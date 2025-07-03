@@ -11,7 +11,7 @@ import { ProductNotFound } from "../productNotFound/ProductNotFound";
 
 export const ProductList = () => {
   const AllProducts = useAppSelector(store => store.products.products)
-  
+
   const loading = useAppSelector(store => store.products.loading)
   const filterStatus = useAppSelector(state => state.filter.status);
   const location = useLocation();
@@ -45,8 +45,6 @@ visibleGoods.slice((currentPage - 1) * perPages, currentPage * perPages)
     <div className={styles.product__list}>
       {categoryProducts.length === 0 && <ProductNotFound type={ category} />}
       {<ProductCart products={ paginationGoods} types={'grid'} />}
-
-
     </div>
      {perPages !== 'all' && <ControlPagination
         allGoods={visibleGoods}

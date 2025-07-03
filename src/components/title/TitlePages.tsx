@@ -25,6 +25,7 @@ const titles: Record<Props['type'], string | null> = {
 
 
 export const TitlePages = ({ type }: Props) => {
+  const favourite = useAppSelector(state=>state.favourite.favouriteItems)
   const navigate = useNavigate();
 
  const productName = useAppSelector(state=>state.productDetail.product?.name)
@@ -52,7 +53,7 @@ export const TitlePages = ({ type }: Props) => {
       {<h1 className={styles.title__text}>{
         type ==='details'?productName:titles[type]}</h1>}
       {count !== null && <p className={styles.title__count}>{count} models</p>}
-      {type === 'favourites' && (
+      {type === 'favourites' && favourite.length > 0 && (
         <p className={styles.title__count}>{count} items</p>
       )}
     </div>

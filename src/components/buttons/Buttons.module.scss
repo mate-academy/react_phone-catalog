@@ -5,6 +5,7 @@ margin-bottom: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   @include mixin.onTablet{
     justify-content: left;
   }
@@ -40,6 +41,7 @@ width: 263px;
 &--small{
   height: 40px;
   line-height: 40px;
+  width: 80%;
 }
 &--disabled{
   background-color: #FFF;
@@ -54,12 +56,16 @@ border: 1px solid #E2E6E9;
    &--small{
     height: 40px;
     width: 40px;
+    line-height: 40px;
 
   }
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 48px;
   height: 48px;
   border:1px solid #B4BDC3;
-  border-radius: 48px;
+  border-radius: 100%;
 
    @include mixin.onDesktop{
     &:hover{
@@ -74,8 +80,9 @@ color:#0F0F11;
   width: 16px;
   height: 16px;
 
- padding: 16px;
-&--small{
-  padding: 12px;
-}
+
+ &--active{
+  color:#F4BA47;
+ }
+
 }}
