@@ -1,1 +1,1 @@
-import { ProductsSlider } from './ProductsSlider';
+export { ProductsSlider } from './ProductsSlider';

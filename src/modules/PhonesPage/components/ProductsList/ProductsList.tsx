@@ -1,4 +1,3 @@
-import './ProductsList.scss';
 import { Product } from '../../../../types/Product';
 import { ProductCard } from '../ProductCard';
 

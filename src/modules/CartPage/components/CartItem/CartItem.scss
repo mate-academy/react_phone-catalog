@@ -1,4 +1,4 @@
-@import './../../../../mixins.scss';
+@import './../../../../mixins';
 
 .cart {
 
@@ -15,8 +15,7 @@
       padding: 24px;
       height: 128px;
       box-sizing: border-box;
-      flex-direction: row;
-      flex-wrap: nowrap;
+      flex-flow: row nowrap;
     }
   }
 

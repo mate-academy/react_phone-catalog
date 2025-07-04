@@ -22,7 +22,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, sortBy }) => {
   );
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => res.json())
       .then(data => {
         setOriginalProducts(data);

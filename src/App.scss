@@ -1,9 +1,8 @@
 // not empty
 @import './fonts';
-@import './mixins.scss';
+@import './mixins';
 
-html,
-body,
+/* stylelint-disable-next-line selector-max-id */
 #root {
   height: 100%;
   margin: 0;

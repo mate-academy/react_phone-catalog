@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import './ProductsPage.scss';
 import { Products } from './components/Products/Products';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';

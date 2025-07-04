@@ -1,7 +1,6 @@
 import { BannerSlider } from './components/BannerSlider/BannerSlider';
 import { Categories } from './components/Categories/Categories';
 import { ProductsSlider } from './components/ProductsSlider/ProductsSlider';
-import './HomePage.scss';
 
 export const HomePage = () => {
   return (

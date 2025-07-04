@@ -1,1 +1,1 @@
-import { BannerSlider } from './BannerSlider';
+export { BannerSlider } from './BannerSlider';

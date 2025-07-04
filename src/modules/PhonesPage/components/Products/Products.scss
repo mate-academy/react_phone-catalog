@@ -1,4 +1,4 @@
-@import './../../../../mixins.scss';
+@import './../../../../mixins';
 
 .products {
   margin-top: 40px;
@@ -20,6 +20,31 @@
   &__row {
     display: flex;
     gap: 16px;
+  }
+
+  &__select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    height: 40px;
+    width: 100%;
+    padding: 10px 12px;
+    color: #F1F2F9;
+    background-color: #323542;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include on-tablet {
+      width: 176px;
+    }
   }
 
   &__select-container {
@@ -49,31 +74,6 @@
           width: 128px;
         }
       }
-    }
-  }
-
-  &__select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    height: 40px;
-    width: 100%;
-    padding: 10px 12px;
-    color: #F1F2F9;
-    background-color: #323542;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.5;
-    border: none;
-    cursor: pointer;
-
-    &:focus {
-      outline: none;
-    }
-
-    @include on-tablet {
-      width: 176px;
     }
   }
 

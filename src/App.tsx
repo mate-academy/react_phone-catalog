@@ -29,7 +29,7 @@ export const App = () => {
     setProductsIsLoading(true);
     setProductsIsError(false);
 
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => res.json())
       .then(data => {
         setProducts(data);
@@ -50,6 +50,7 @@ export const App = () => {
         <div className="app__content">
           <main className="main">
             <Routes>
+              <Route index element={<HomePage />} />
               <Route path="/" element={<HomePage />} />
               <Route
                 path="/phones"

@@ -1,15 +1,9 @@
-@import './../../../../mixins.scss';
+@import './../../../../mixins';
 
 .products-slider {
   position: relative;
   margin-top: 80px;
-}
 
-.products-slider-container {
-  margin-top: 24px;
-}
-
-.products-slider {
   .swiper-slide {
     width: auto;
 
@@ -17,6 +11,10 @@
       width: 100%;
     }
   }
+}
+
+.products-slider-container {
+  margin-top: 24px;
 }
 
 .slider-nav {

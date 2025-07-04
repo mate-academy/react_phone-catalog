@@ -28,7 +28,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
     setIsLoading(true);
     setIsError(false);
 
-    fetch(`/api/${category}.json`)
+    fetch(`./api/${category}.json`)
       .then(res => res.json())
       .then((data: ProductDetails[]) => {
         const foundProduct = data.find(item => String(item.id) === productId);
