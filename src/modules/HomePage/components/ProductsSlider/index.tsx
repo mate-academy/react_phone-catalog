@@ -1,0 +1,1 @@
+import { ProductsSlider } from './ProductsSlider';

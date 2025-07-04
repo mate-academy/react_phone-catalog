@@ -1,1 +1,75 @@
 // not empty
+@import './fonts';
+@import './mixins.scss';
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0F1121;
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__body {
+    flex: 1;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.page-title {
+  color: #F1F2F9;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  margin: 0;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 1.16;
+  }
+}
+
+.page-subtitle {
+  color: #75767F;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+.section-title {
+  color: #F1F2F9;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  margin: 0;
+
+  @include on-tablet {
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: 1.28;
+  }
+}
+
+.is-disabled {
+  background-color: transparent !important;
+  outline: 1px solid #3B3E4A !important;
+}

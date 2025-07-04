@@ -1,0 +1,55 @@
+@import './../../../../mixins.scss';
+
+.products-slider {
+  position: relative;
+  margin-top: 80px;
+}
+
+.products-slider-container {
+  margin-top: 24px;
+}
+
+.products-slider {
+  .swiper-slide {
+    width: auto;
+
+    @include on-dekstop {
+      width: 100%;
+    }
+  }
+}
+
+.slider-nav {
+  width: 16px;
+  height: 16px;
+  padding: 8px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #4A4D58;
+  }
+
+  &--prev {
+    background: url('./../../../../img/left-arrow.png');
+    background-color: #323542;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 48px;
+  }
+
+  &--next {
+    background: url('./../../../../img/right-arrow.png');
+    background-color: #323542;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 0;
+  }
+}
+
+.swiper-button-disabled {
+  background-color: transparent;
+  outline: 1px solid #3B3E4A;
+}
