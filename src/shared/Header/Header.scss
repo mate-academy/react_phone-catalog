@@ -1,5 +1,5 @@
-@import '../../styles/main';
-@import '../../utils/variables';
+@import '../../styles/main.scss';
+@import '../../utils/variables.scss';
 
 .header {
   height: 48px;
@@ -50,12 +50,11 @@
 .header__list {
   list-style: none;
   display: flex;
-  align-items: center;
   gap: 24px;
   text-decoration: none;
 
   @include on-desktop {
-    gap: 64px;
+     gap: 64px;
   }
 }
 
@@ -89,7 +88,9 @@
   height: 0;
   width: 100%;
   background-color: var(--color-gray-primary);
-  transition: height 0.3s ease, transform 0.3s ease;
+  transition:
+    height 0.3s ease,
+    transform 0.3s ease;
   transform-origin: left;
   bottom: 0;
   box-sizing: border-box;
@@ -223,7 +224,6 @@
   justify-content: center;
   position: relative;
 
-
   @include on-tablet {
     display: flex;
   }
@@ -247,7 +247,7 @@
 }
 
 body.theme_dark .header__icon:hover {
-  @include hover(background-color, var(--color-gray-icons-placeholders))
+  @include hover(background-color, var(--color-gray-icons-placeholders));
 }
 
 .header__icon--active::after {

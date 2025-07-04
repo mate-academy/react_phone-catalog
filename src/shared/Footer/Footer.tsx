@@ -18,7 +18,9 @@ export const Footer: FC = () => {
   return (
     <div className="footer">
       <div className="footer__container">
-        <Icon icon={icons.logo[theme]} />
+        <div className="footer__logo-container">
+          <Icon icon={icons.logo[theme]} />
+        </div>
         {/*
         <a href="#" className="footer__logo-container">
           <img

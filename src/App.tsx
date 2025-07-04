@@ -8,3 +8,9 @@ export const App = () => {
     </GlobalProvider>
   );
 };
+
+/* app.get('/script.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.sendFile(__dirname + '/script.js');
+});
+*/

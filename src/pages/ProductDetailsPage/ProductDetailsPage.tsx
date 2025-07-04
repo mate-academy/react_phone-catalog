@@ -17,12 +17,10 @@ const getSuggestedProducts = (
   currentCategory: string,
   productItemId: string,
 ) => {
-  return allProducts
-    .filter(
-      prod =>
-        prod.category === currentCategory && prod.itemId !== productItemId,
-    )
-    .sort(() => 0.5 - Math.random());
+  return allProducts.filter(
+    prod => prod.category === currentCategory && prod.itemId !== productItemId,
+  );
+  //.sort(() => 0.5 - Math.random());
 };
 
 export const ProductDetailsPage: FC = () => {

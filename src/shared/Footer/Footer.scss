@@ -19,7 +19,11 @@
     }
 
     @include on-desktop {
+      display: flex;
+      justify-content: center;
+
       margin-top: 80px;
+
     }
   }
 
@@ -45,7 +49,10 @@
     }
 
     @include on-desktop {
-      align-items: center;
+
+
+     gap: 107px;
+
     }
   }
 
