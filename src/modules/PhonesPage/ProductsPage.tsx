@@ -6,7 +6,6 @@ import { Product } from '../../types/Product';
 
 type Props = {
   title: string;
-  subtitle: string;
   sortBy: string;
   products: Product[];
   isLoading: boolean;
@@ -16,7 +15,6 @@ type Props = {
 
 export const ProductsPage: React.FC<Props> = ({
   title,
-  subtitle,
   sortBy,
   products,
   isLoading,
@@ -27,12 +25,16 @@ export const ProductsPage: React.FC<Props> = ({
     fetchData();
   }, [fetchData]);
 
+  const filteredProducts = products.filter(
+    product => product.category === sortBy,
+  );
+
   return (
     <>
       <div className="container">
         <Breadcrumbs />
         <h1 className="page-title">{title}</h1>
-        <div className="page-subtitle">{subtitle}</div>
+        <div className="page-subtitle">{filteredProducts.length} models</div>
         {isLoading && <Loader />}
         {isError && (
           <>

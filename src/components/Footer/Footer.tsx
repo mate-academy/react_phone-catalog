@@ -1,6 +1,7 @@
 import './Footer.scss';
 import FooterLogo from './../../img/footer-logo.png';
 import TopArrow from './../../img/top-arrow.png';
+import { NavLink } from 'react-router-dom';
 
 export const Footer = () => {
   const handleScrollToTop = () => {
@@ -15,9 +16,9 @@ export const Footer = () => {
       <div className="container">
         <div className="footer__row">
           <div className="footer__col">
-            <div className="footer__logo">
+            <NavLink to="/" className="footer__logo">
               <img src={FooterLogo} alt="footer-logo" />
-            </div>
+            </NavLink>
           </div>
           <div className="footer__col">
             <nav className="footer__navbar">

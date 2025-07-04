@@ -69,7 +69,7 @@ export const ProductDetailsCard: React.FC<Props> = ({
               {product.images.map((img, i) => (
                 <img
                   key={i}
-                  src={`/${img}`}
+                  src={img}
                   className={mainImage === img ? 'active-thumbnail' : ''}
                   alt="phone-thumbnails"
                   onClick={() => setMainImage(img)}
@@ -78,7 +78,7 @@ export const ProductDetailsCard: React.FC<Props> = ({
             </div>
             {mainImage && (
               <div className="product-details__img">
-                <img src={`/${mainImage}`} alt="phone-image" />
+                <img src={mainImage} alt="phone-image" />
               </div>
             )}
           </div>

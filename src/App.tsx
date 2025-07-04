@@ -57,7 +57,6 @@ export const App = () => {
                 element={
                   <ProductsPage
                     title="Mobile phones"
-                    subtitle="124 models"
                     sortBy="phones"
                     products={products}
                     isLoading={productsIsLoading}
@@ -71,7 +70,6 @@ export const App = () => {
                 element={
                   <ProductsPage
                     title="Tablets"
-                    subtitle="36 models"
                     sortBy="tablets"
                     products={products}
                     isLoading={productsIsLoading}
@@ -85,7 +83,6 @@ export const App = () => {
                 element={
                   <ProductsPage
                     title="Accessories"
-                    subtitle="34 models"
                     sortBy="accessories"
                     products={products}
                     isLoading={productsIsLoading}
