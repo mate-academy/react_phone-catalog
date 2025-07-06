@@ -7,23 +7,23 @@ box-sizing: border-box;
 
   padding: 32px;
 padding-bottom: 0;
-width: 212px;
+
 
 
 
 @include mixin.onTablet{
-width: 237px;
+
 }
 
   @include mixin.onDesktop {
-width: 272px;
+
 &:hover{
       transform: scale(1.1);
     }
 
   }
   &--grid{
-
+margin: 0 auto;
     grid-column: 1/-1;
     @include mixin.onTablet{ grid-column: span 4;}
  @include mixin.onDesktop{grid-column: span 6;} }

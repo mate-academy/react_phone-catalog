@@ -1,4 +1,4 @@
-import styles from './cardItemPhone.module.scss';
+import styles from './ProductCart.module.scss';
 import { FaRegHeart } from "react-icons/fa";
 import { Product } from '../../types/products';
 import classNames from 'classnames';

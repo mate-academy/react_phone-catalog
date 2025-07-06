@@ -9,10 +9,18 @@ import { FaRegHeart } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { NavBar } from '../navBar';
+import { Count } from '../countFavorite/cart/count';
+import { useAppSelector } from '../../app/hooks';
+import { getTotalItemsCart } from '../utils/getTotalItemsCart';
+
 export const Header = () => {
+  const cartItems = useAppSelector(state=>state.cartItem.cartItems)
+  const favouriteItems = useAppSelector(state => state.favourite.favouriteItems)
+  const cartItemsCount = getTotalItemsCart(cartItems);
   const [activeAsside, setActiveAsside] = useState(false);
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.nav__link, { [styles['is-active']]: isActive });
+
   return (
     <>
       <header className={styles.header} id="page-top">
@@ -23,12 +31,15 @@ export const Header = () => {
               src={logo}
               alt="NiceGadgetLogo"
             ></img>
-          </NavLink >
+          </NavLink>
 
-          <NavBar getLinkClass={getLinkClass } types={'header'} />
+          <NavBar getLinkClass={getLinkClass} types={'header'} />
         </div>
         <div className={styles.box}>
-          {!activeAsside ? <GiHamburgerMenu className={classNames(styles.box__icon,[styles['box__icon--burger']])}
+          {!activeAsside ?
+            <GiHamburgerMenu
+          className={classNames(styles.box__icon,[styles['box__icon--burger']]
+              )}
             onClick={() => setActiveAsside(prev => !prev)} /> :
             <IoMdClose className={classNames(styles.box__icon,[styles['box__icon--close']])}
            onClick={() => setActiveAsside(prev => !prev)}/>}
@@ -37,10 +48,15 @@ export const Header = () => {
 
           <NavLink to="/favourites" className={getLinkClass}>
             <FaRegHeart  className={classNames(styles.box__icon,[styles['box__icon--visible']])} />
+            {favouriteItems.length > 0 && <Count count={favouriteItems.length } />}
           </NavLink>
           <div className={styles.box__divider}></div>
+
           <NavLink to="/cart" className={getLinkClass}>
-            <FiShoppingBag className={classNames(styles.box__icon,[styles['box__icon--visible']])} />
+            <FiShoppingBag
+              className={classNames(
+                styles.box__icon, [styles['box__icon--visible']])} />
+            {cartItemsCount > 0 && <Count count={ cartItemsCount} />}
           </NavLink>
         </div>
       </header>

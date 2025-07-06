@@ -1,10 +1,13 @@
 import { getTotalItemsCart } from '../../../../components/utils/getTotalItemsCart';
 import styles from './Checkout.module.scss'
-import { clearAllCartItem } from '../../../../features/CartSlice';
+import { CartItem, clearAllCartItem } from '../../../../features/CartSlice';
 import { useAppDispatch } from '../../../../app/hooks';
+type Props = {
+  products: CartItem[];
+  setModal: () => void;
+};
+export const Checkout = ({ products, setModal }: Props) => {
 
-export const Checkout = ({ products ,setModal}) => {
-  const dispach = useAppDispatch();
   const totalItems = getTotalItemsCart(products);
 
 const totalPrice = products.reduce((sum,item)=>sum+(item.price* item.quantity),0)

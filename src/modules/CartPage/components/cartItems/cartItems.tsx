@@ -3,18 +3,18 @@ import { FiMinus } from 'react-icons/fi';
 import { FiPlus } from 'react-icons/fi';
 import styles from './cartItems.module.scss';
 import {
+  CartItem,
   clearOneItem,
   decrementQuantity,
   incrementQuantity,
 } from '../../../../features/CartSlice';
 import { IoCloseSharp } from 'react-icons/io5';
-
-
 import { useAppDispatch } from '../../../../app/hooks';
 import { Link } from 'react-router-dom';
-import { Product } from '../../../../types/products';
-
-export const CartItems = ({ products }: Product) => {
+type Props = {
+  products: CartItem[];
+};
+export const CartItems = ({ products }: Props) => {
   const dispach = useAppDispatch();
 
   const handleItemClear = id => {
@@ -29,7 +29,7 @@ export const CartItems = ({ products }: Product) => {
     dispach(decrementQuantity(id));
   };
 
-  console.log('proprpr',products);
+
 
   return (
     <>

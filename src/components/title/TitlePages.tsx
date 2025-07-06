@@ -25,16 +25,17 @@ const titles: Record<Props['type'], string | null> = {
 
 
 export const TitlePages = ({ type }: Props) => {
-  const favourite = useAppSelector(state=>state.favourite.favouriteItems)
+  const favourite = useAppSelector(state => state.favourite.favouriteItems)
   const navigate = useNavigate();
 
- const productName = useAppSelector(state=>state.productDetail.product?.name)
+ const productName = useAppSelector(state => state.productDetail.product?.name)
   let count: number | null = null;
   const products = useAppSelector(store => store.products.products);
 
   if (['phones', 'tablets', 'accessories'].includes(type)) {
     count = products.filter(product => product.category === type).length;
   }
+
   const goBack = () => {
     if (window.history.length > 2) {
       navigate(-1);
@@ -54,7 +55,7 @@ export const TitlePages = ({ type }: Props) => {
         type ==='details'?productName:titles[type]}</h1>}
       {count !== null && <p className={styles.title__count}>{count} models</p>}
       {type === 'favourites' && favourite.length > 0 && (
-        <p className={styles.title__count}>{count} items</p>
+        <p className={styles.title__count}>{favourite.length} items</p>
       )}
     </div>
   )

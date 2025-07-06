@@ -3,10 +3,10 @@ import styles from './NavBar.module.scss';
 import classNames from 'classnames';
 
 type Nav = {
-  getLinkClass: () => string;
-  types?:'asideMenu' | 'header';
+  getLinkClass: (args: { isActive: boolean }) => string;
+  types?: 'asideMenu' | 'header';
 }
-export const NavBar = ({getLinkClass, types}:Nav) => {
+export const NavBar = ({ getLinkClass, types }: Nav) => {
 
 
   return (<>

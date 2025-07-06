@@ -9,14 +9,10 @@ import { useAppSelector } from '../../app/hooks';
 export const PageNav = () => {
   const productName = useAppSelector(state => state.productDetail.product);
   const { productId } = useParams();
-
-  console.log(productId);
   const location = useLocation();
   const currentLocation = location.pathname.split('/')[1];
   const locationName =
     currentLocation.slice(0, 1).toUpperCase() + currentLocation.slice(1);
-
- 
 
   return (
     <div className={styles.page}>

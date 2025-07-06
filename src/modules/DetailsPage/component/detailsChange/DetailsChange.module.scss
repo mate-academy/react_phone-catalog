@@ -31,6 +31,7 @@ margin-bottom: 8px;
     justify-content: left;
   }
   &__link{
+    cursor: pointer;
     box-sizing: border-box;
      border-radius: 50%;
 margin-right: 8px;
@@ -56,6 +57,7 @@ margin-right: 8px;
 .storage{
   margin-bottom: 24px;
   &__link{
+    cursor: pointer;
     font-family: Mont;
 font-weight: 600;
 font-size: 14px;
