@@ -1,6 +1,11 @@
+import classNames from 'classnames';
 import styles from './count.module.scss';
-export const Count = ({count}) => {
+type T = {
+  count:number
+  type:'aside'
+}
+export const Count = ({count,type}:T) => {
   return (
-    <span className={styles.count}>{ count}</span>
+    <span className={classNames(styles.count, { [styles['count--visible']]: type === 'aside' })}>{ count}</span>
 )
 }

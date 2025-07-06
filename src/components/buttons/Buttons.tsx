@@ -13,10 +13,18 @@ type ButtonsProps = {
 };
 export const Buttons = ({ product, type }: ButtonsProps) => {
   const dispach = useAppDispatch();
+
+
   const cartItems = useAppSelector(state => state.cartItem.cartItems);
   const favouriteItems = useAppSelector(state =>state.favourite.favouriteItems)
-  const isInFavourite = favouriteItems.some(item=>item.id===product.itemId || item.id===product.id)
-const isInCart = cartItems.some(  item => item.id === product.itemId || item.id === product.id)
+ if (!product) {
+    return null
+  }
+    const isInFavourite = favouriteItems.some(item => item.id === product.itemId ||(item.id === product.id))
+
+  const isInCart = cartItems.some(item => item.id === product.itemId || item.id === product.id)
+
+
   const handleAddToCart = (p: Product) => dispach(addToCart(p));
   const handleAddToFavourite = (p: Product) => dispach(addToFavourite(p));
 

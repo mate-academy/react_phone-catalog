@@ -60,7 +60,10 @@ export const Header = () => {
           </NavLink>
         </div>
       </header>
-      {activeAsside && <AsideMenuPhone setActiveAsside={setActiveAsside}
+      {activeAsside && <AsideMenuPhone
+        setActiveAsside={setActiveAsside}
+        cartItemsCount={cartItemsCount}
+        favouriteItems={favouriteItems.length}
      getLinkClass={getLinkClass} />}
     </>
   );

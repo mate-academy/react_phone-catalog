@@ -12,7 +12,7 @@ import { ProductCart } from '../cardItem/ProductCart';
 export const ProductSlider = ({sortedProducts, title}) => {
   const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
-console.log(sortedProducts)
+
 
   if (!sortedProducts) { return }
 

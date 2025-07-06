@@ -5,7 +5,8 @@ import { IconsSvg } from '../icons/icons';
 import { NavBar } from '../navBar';
 import { FaRegHeart } from "react-icons/fa6";
 import { FiShoppingBag } from "react-icons/fi";
-export const AsideMenuPhone = ({ setActiveAsside,getLinkClass }) => {
+import { Count } from '../countFavorite/cart/count';
+export const AsideMenuPhone = ({ favouriteItems,cartItemsCount,setActiveAsside,getLinkClass }) => {
 
   return (
     <aside className={styles.menu} id="menu" onClick={() => setActiveAsside(false)}>
@@ -23,8 +24,9 @@ export const AsideMenuPhone = ({ setActiveAsside,getLinkClass }) => {
               [styles['is-active']]: isActive,
             })
           }
-        >
+        ><div className={styles.wrapper}>
           <FaRegHeart className={styles['visible--mobile']} />
+          <Count count={favouriteItems} type={ 'aside'} /></div>
         </NavLink>
 
         <div className={styles.divider}></div>
@@ -37,7 +39,11 @@ export const AsideMenuPhone = ({ setActiveAsside,getLinkClass }) => {
             })
           }
         >
+          <div className={styles.wrapper}>
           <FiShoppingBag className={styles['visible--mobile']} />
+          {cartItemsCount > 0 &&
+              <Count count={cartItemsCount} type={'aside'} />}
+            </div>
         </NavLink>
       </div>
     </aside>
