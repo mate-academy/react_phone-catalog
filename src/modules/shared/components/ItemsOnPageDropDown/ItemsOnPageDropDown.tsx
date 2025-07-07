@@ -19,8 +19,10 @@ export const ItemsOnPageDropDown = () => {
 
               if (!perPage) {
                 prev.append('perPage', event.target.value);
+                prev.append('page', '1');
               } else {
                 prev.set('perPage', event.target.value);
+                prev.set('page', '1');
               }
 
               return prev;

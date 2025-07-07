@@ -21,8 +21,8 @@ export const Pagination = ({ total, getPages }: Props) => {
   }
 
   const pages = getPages(totalPages);
-
-  // eslint-disable-next-line no-console
+  const currentPage = searchParams.get('page');
+  const currentPageNumber = currentPage ? +currentPage : null;
 
   return (
     <>
@@ -31,8 +31,8 @@ export const Pagination = ({ total, getPages }: Props) => {
           <button
             onClick={() => {
               setSearchParams(prev => {
-                const currentPage = prev.get('page') ?? '1';
-                let updatedPage = (+currentPage - 1).toString();
+                const usedPage = currentPage ?? '1';
+                let updatedPage = (+usedPage - 1).toString();
 
                 if (updatedPage <= '0') {
                   updatedPage = '1';
@@ -57,35 +57,45 @@ export const Pagination = ({ total, getPages }: Props) => {
             return false;
           }
 
-          return (
-            <li className={styles.paggination__item} key={elem}>
-              <button
-                onClick={() => {
-                  setSearchParams(prev => {
-                    // const page = prev.get('page');
+          //render only currently used page, one index higher and one index lower
+          if (
+            currentPageNumber &&
+            i + 2 >= currentPageNumber &&
+            i <= currentPageNumber
+          ) {
+            return (
+              <li className={styles.paggination__item} key={elem}>
+                <button
+                  onClick={() => {
+                    setSearchParams(prev => {
+                      // const page = prev.get('page');
 
-                    prev.set('page', (elem + 1).toString());
+                      prev.set('page', (elem + 1).toString());
 
-                    return prev;
-                  });
-                }}
-                className={styles.paggination__button}
-              >
-                {elem + 1}
-              </button>
-            </li>
-          );
+                      return prev;
+                    });
+                  }}
+                  className={styles.paggination__button}
+                >
+                  {elem + 1}
+                </button>
+              </li>
+            );
+          }
+
+          return;
         })}
+
         <li className={styles.paggination__item} key={'forward'}>
           <button
             // pageNumber > totalPages && pageNumber === totalPages
             onClick={() => {
               setSearchParams(prev => {
-                const currentPage = prev.get('page');
-                let updatedPage = currentPage && (+currentPage + 1).toString();
+                const usedPage = prev.get('page');
+                let updatedPage = usedPage && (+usedPage + 1).toString();
 
-                if (updatedPage && +updatedPage > pages.length) {
-                  updatedPage = pages.length.toString();
+                if (updatedPage && +updatedPage > pages.length - 1) {
+                  updatedPage = usedPage;
                 }
 
                 prev.set('page', updatedPage ?? '1');
