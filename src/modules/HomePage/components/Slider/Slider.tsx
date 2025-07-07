@@ -55,7 +55,6 @@ export const Slider = () => {
                   onTouchStart={e => {
                     swipeStartPosition = e.changedTouches[0].pageX;
                   }}
-                  onTouchMove={e => e.preventDefault()}
                   onTouchEnd={e => {
                     swipeDistance =
                       e.changedTouches[0].pageX - swipeStartPosition;

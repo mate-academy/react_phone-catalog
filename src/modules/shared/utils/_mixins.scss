@@ -1,0 +1,17 @@
+@mixin high-resolution-grid {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(24, 32px);
+}
+
+@mixin low-resolution-grid {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(4, 60px);
+}
+
+@mixin medium-resolution-grid {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(12, 32px);
+}
