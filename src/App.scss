@@ -1,1 +1,18 @@
-// not empty
+@import './utils/index';
+
+// @import './layout/container.scss';
+
+
+.App {
+  padding-top: 64px; // todo should be variable related to header
+  // height: inherit;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-background;
+  scroll-behavior: smooth;
+}
+
+.main-content {
+  flex-grow: 1;
+}

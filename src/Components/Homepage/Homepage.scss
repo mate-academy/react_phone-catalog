@@ -1,0 +1,11 @@
+@import '../../utils/';
+@import '../../layout/container';
+
+.home-page{
+  &__title{
+    @include title-main;
+  }
+
+  margin-top: 56px;
+  margin-bottom: 56px;
+}
