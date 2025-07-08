@@ -82,7 +82,7 @@
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 12px;
-  min-height: 48px; // фіксована висота
+  min-height: 48px;
 }
 
 .phone-cardimage{
@@ -192,4 +192,22 @@
       background-color: #313237;
     }
   }
+}
+
+.phone__price {
+  display: flex;
+  gap:8px;
+}
+
+.phone__price--old{
+  font-weight: 600;
+  font-size: 22px;
+  text-decoration: line-through;
+  color: #89939A;
+}
+
+.phone__price--new {
+  font-weight: 600;
+  font-size: 22px;
+  color:#313237;
 }

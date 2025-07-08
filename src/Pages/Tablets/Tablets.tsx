@@ -229,7 +229,10 @@ export const Tablets: React.FC = () => {
           <select
             className="tablet-list_itemPerPage__select"
             value={itemsPerPage}
-            onChange={(e) => setItemsPerPage(+e.target.value)}
+            onChange={(e) => {
+              setItemsPerPage(+e.target.value);
+              setCurrentPage(1);
+            }}
           >
             <option value={4}>4</option>
             <option value={8}>8</option>

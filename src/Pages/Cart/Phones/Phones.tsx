@@ -226,7 +226,10 @@ export const Phones: React.FC = () => {
           <select
             className="phone-list_itemPerPage__select"
             value={itemsPerPage}
-            onChange={(e) => setItemsPerPage(+e.target.value)}
+            onChange={(e) => {
+              setItemsPerPage(+e.target.value);
+              setCurrentPage(1);
+            }}
           >
             <option value={4}>4</option>
             <option value={8}>8</option>
@@ -254,7 +257,14 @@ export const Phones: React.FC = () => {
                 />
                 <div className="phone-info">
                   <h3 className="phone-cardname">{phone.name}</h3>
-                  <p className="phonecardprice">${phone.priceDiscount}</p>
+                  <div className="phone__price">
+                    <span className="phone__price--new">
+                      ${phone.priceDiscount}
+                    </span>
+                    <span className="phone__price--old">
+                      ${phone.priceRegular}
+                    </span>
+                  </div>
                   <p className="phone-card__detail">
                     <span>Screen</span> <span>{phone.screen}</span>
                   </p>

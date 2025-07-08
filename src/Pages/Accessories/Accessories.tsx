@@ -237,7 +237,10 @@ export const Accessories: React.FC = () => {
           <select
             className="accessories-list_itemPerPage__select"
             value={itemsPerPage}
-            onChange={(e) => setItemsPerPage(+e.target.value)}
+            onChange={(e) => {
+              setItemsPerPage(+e.target.value);
+              setCurrentPage(1);
+            }}
           >
             <option value={4}>4</option>
             <option value={8}>8</option>
