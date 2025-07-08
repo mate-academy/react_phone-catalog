@@ -9,15 +9,11 @@ import { ProductCart } from '../cardItem/ProductCart';
 
 
 
-export const ProductSlider = ({sortedProducts, title}) => {
+export const ProductSlider = ({ sortedProducts, title }) => {
+
+
   const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
-
-
-  if (!sortedProducts) { return }
-
-    const visibleProducts = sortedProducts.slice(startIndex, startIndex + visibleCount)
-
 
 
   useEffect(() => {
@@ -26,10 +22,9 @@ export const ProductSlider = ({sortedProducts, title}) => {
 
       if (width < 576) { return 2; }
       if (width < 1024) {return 3;
-    }
+}
     return 4;
-  };
-
+    };
   const handleResize = () => {
     setVisibleCount(calculateVisibleCount());
   };
@@ -38,7 +33,10 @@ export const ProductSlider = ({sortedProducts, title}) => {
   window.addEventListener('resize', handleResize);
 
   return () => window.removeEventListener('resize', handleResize);
-}, []);
+  }, []);
+  
+  if (!sortedProducts) { return null }
+const visibleProducts = sortedProducts.slice(startIndex, startIndex + visibleCount)
 
   const handleNext = () => {
     if (startIndex + visibleCount < sortedProducts.length) {

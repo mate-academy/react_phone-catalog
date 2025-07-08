@@ -1,4 +1,6 @@
+import './styles/fonts.scss';
 import './App.scss';
+
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -51,7 +53,7 @@ export const App = () => {
       dispatch(setCurrentPage(validatedPage));
     }
   }, [searchParams, totalPage, dispatch]);
- 
+
   return (
     <>
       <Header />

@@ -48,7 +48,8 @@ export const TitlePages = ({ type }: Props) => {
 
   return  (
     <div className={styles.title}>
-     {  (type === 'details' || type === 'cart') && <div className={styles.title__back}> <IoIosArrowBack className={styles.title__icon } />
+      {(type === 'details' || type === 'cart') && <div className={styles.title__back}>
+        <IoIosArrowBack className={styles.title__icon} />
         <span  onClick={goBack} className={styles.title__button}>Back</span></div>}
 
       {<h1 className={styles.title__text}>{

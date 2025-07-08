@@ -61,6 +61,7 @@ border-radius: 100%;
   display: flex;
   gap: 16px;
   overflow-x: auto;
+  overflow-y: hidden;
 @include mixin.onDesktop{
   overflow-x: hidden;
 }
