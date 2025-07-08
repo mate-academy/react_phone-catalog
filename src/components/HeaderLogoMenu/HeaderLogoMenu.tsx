@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import topBatStyles from './TopBar.module.scss';
 import iconStyles from './icon.module.scss';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import MobilePhones from '../MobilePhones/MobilePhones';
 
 interface SidebarProps {
@@ -15,9 +15,14 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({
   iconClass,
   isOpen,
 }) => {
-  const iconReference = isOpen ? 'burger-menu' : '';
+  const iconReference = isOpen ? '' : 'burger-menu';
 
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  console.log(currentPath);
   console.log(isOpen);
+  console.log(iconReference);
 
   return (
     <div className={topBatStyles.header}>
@@ -33,13 +38,27 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({
 
           <ul className={topBatStyles['top-bar__list']}>
             <li className={topBatStyles['top-bar__item']}>
-              <Link
-                className={topBatStyles['top-bar__link']}
-                to="/"
-                onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
-              >
-                home
-              </Link>
+              {isOpen === true ? (
+                <Link
+                  className={topBatStyles['top-bar__link']}
+                  to={`/${iconReference}`}
+                  onClick={() =>
+                    setIsMenuOpen(currentBoolean => !currentBoolean)
+                  }
+                >
+                  home
+                </Link>
+              ) : (
+                <Link
+                  className={topBatStyles['top-bar__link']}
+                  to={`/${iconReference}`}
+                  onClick={() => {
+                    setIsMenuOpen(currentBoolean => !currentBoolean);
+                  }}
+                >
+                  home
+                </Link>
+              )}
             </li>
             <li className={topBatStyles['top-bar__item']}>
               <Link className={topBatStyles['top-bar__link']} to="/phones">
@@ -94,6 +113,7 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({
 
       <Routes>
         <Route path="/phones" element={<MobilePhones />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );

@@ -8,6 +8,8 @@ import Sidebar from '../Sidebar';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 
 import { Pagination, Scrollbar, Navigation, Autoplay } from 'swiper/modules';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -160,7 +162,17 @@ const WelcomeSlider: React.FC = () => {
 
       <div className={paginationStyle.pagination}></div>
 
-      <Sidebar isOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <Routes>
+        <Route
+          path="/burger-menu"
+          element={
+            <Sidebar isOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+          }
+        />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+      </Routes>
+
+      {/* <Sidebar isOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} /> */}
     </div>
   );
 };

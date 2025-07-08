@@ -24,7 +24,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsMenuOpen }) => {
 
   return (
     <>
-      <aside className={styles.sideMenu} id="burger-menu">
+      <aside className={styles.sideMenu}>
         <HeaderLogoMenu
           setIsMenuOpen={setIsMenuOpen}
           iconClass={validIcon}
