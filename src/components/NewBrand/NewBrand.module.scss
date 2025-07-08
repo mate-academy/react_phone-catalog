@@ -22,7 +22,7 @@
 }
 
 .brand {
-  margin-inline: 16px;
+  margin: 0 auto;
 
   @include onTablet {
     margin-inline: 24px;
@@ -45,6 +45,9 @@
   }
 
   &__card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 212px !important;
     // margin-inline: 16px;
 
@@ -58,7 +61,7 @@
       // margin-inline: 32px;
     }
 
-    height: 512px;
+    height: 579px;
     border: 1px solid #e2e6e9;
     border-radius: 8px;
 
@@ -73,19 +76,19 @@
     width: 200px;
     height: 255px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    // align-items: center;
+    // justify-content: center;
     background: #fff;
   }
 
   &__image {
     box-sizing: border-box;
-    width: 90%;
-    height: 90%;
+    width: 85%;
+    height: 85%;
     background-size: cover;
     background-position: center;
     // background-position: unset;
-    margin-inline: 8px;
+    // margin-inline: 8px;
     background-color: transparent;
     margin-top: 20px;
     border: none;
@@ -117,7 +120,9 @@
 
   &__deteils {
     // margin-top: 20px;
-    margin-inline: 32px;
+    // margin-inline: 32px;
+    width: 173px;
+    margin-bottom: 16px;
   }
 
   &__info {
@@ -125,9 +130,46 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 8px;
+    width: 100%;
   }
 
   &__gb {
     font-size: 12px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    width: 173px;
+  }
+
+  &__add {
+    background-color: #f86800;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 40px;
+  }
+
+  &__lovely-choice {
+    background-image: url('/public/img/add-to-fovourites-default.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-left: 8px;
+    border: 1px solid transparent;
+    padding-left: 8px;
+    padding-right: 2px;
+
+    &:hover {
+      background-image: url('/public/img/add-to-fovourites-hover.png');
+    }
   }
 }

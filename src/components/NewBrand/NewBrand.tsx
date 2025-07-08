@@ -135,13 +135,14 @@ const NewBrand = () => {
 
             return (
               <SwiperSlide className={brandStyles.brand__card} key={phone.id}>
-                <div className={brandStyles.brand__imageWrapper}>
-                  <a
-                    href="#"
-                    style={{ backgroundImage: `url('${phone.images[0]}')` }}
-                    className={brandStyles.brand__image}
-                  ></a>
-                </div>
+                <a
+                  href="#"
+                  style={{ backgroundImage: `url('${phone.images[0]}')` }}
+                  className={brandStyles.brand__image}
+                ></a>
+
+                {/* <div className={brandStyles.brand__imageWrapper}>
+                </div> */}
 
                 <div className={brandStyles.brand__data}>
                   <div className={brandStyles.brand__name}>{phone.name}</div>
@@ -163,6 +164,17 @@ const NewBrand = () => {
                     <div>RAM</div>
                     <div>6 GB</div>
                   </div>
+                </div>
+
+                <div className={brandStyles.brand__buttons}>
+                  <button className={brandStyles.brand__add}>
+                    Add to cart
+                  </button>
+
+                  <a
+                    href="#"
+                    className={brandStyles['brand__lovely-choice']}
+                  ></a>
                 </div>
               </SwiperSlide>
             );

@@ -1,0 +1,198 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: 'Mont';
+  font-weight: 600;
+  font-style: normal;
+}
+
+.categories {
+  font-family: 'Mont';
+  &__title {
+    margin-inline: 16px;
+
+    @include onTablet {
+      margin-inline: 24px;
+    }
+
+    @include onBigScren {
+      margin-inline: 32px;
+    }
+  }
+
+  margin: 0 auto;
+
+  &__options-wrapper {
+    width: fit-content;
+    margin: 0 auto;
+
+    @include onTablet {
+      // display: flex;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      // width: 100%;
+    }
+
+    @include onBigScren {
+      grid-template-columns: repeat(24, 1fr);
+      gap: 16px;
+    }
+    // flex-direction: column;
+    // align-items: center;
+
+
+    // @include onTablet {
+    //   flex-direction: row;
+    // }
+  }
+
+  &__content {
+    font-family: 'Mont';
+
+    &--1 {
+      @include onTablet {
+        grid-column: 1 / 5;
+      }
+
+      @include onBigScren {
+        grid-column: 1 / 9;
+      }
+    }
+
+    &--2 {
+      @include onTablet {
+        grid-column: 5 / 9;
+      }
+
+      @include onBigScren {
+        grid-column: 9 / 17;
+      }
+    }
+
+      &--3 {
+        @include onTablet {
+          grid-column: 9 / 13;
+        }
+
+        @include onBigScren {
+          grid-column: 17 / 25;
+        }
+      }
+    }
+
+
+  &__image-wrapper {
+    width: 288px;
+    height: 288px;
+
+    &--1 {
+      background-color: #6d6474;
+    }
+
+    &--2 {
+      background-color: #8d8d92;
+    }
+
+    &--3 {
+      background-color: #973d5f;
+    }
+
+    @include onTablet {
+      width: 187px;
+      height: 187px
+    }
+
+    @include onBigScren {
+      width: 368px;
+      height: 368px
+    }
+
+    overflow: hidden;
+    position: relative;
+    // margin: auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+
+  &__image {
+    background-size: cover;
+    position: absolute;
+
+    &--1 {
+      top: 65px;
+      left: 65px;
+      width: 85%;
+      // height: auto;
+
+      @include onTablet {
+        top: 35px;
+        left: 18px;
+        width: 110%;
+        height: 110%;
+      }
+
+      @include onBigScren {
+        width: 115%;
+        height: 115%;
+        top: 60px;
+      }
+    }
+
+    &--2 {
+      top: 30px;
+      left: 30px;
+      width: 140%;
+
+      @include onTablet {
+        top: 14px;
+        left: 14px;
+        width: 143%;
+        height: 143%;
+      }
+
+      @include onBigScren {
+        width: 150%;
+        height: 150%;
+      }
+    }
+
+    &--3 {
+      top: 50px;
+      left: 23px;
+      width: 185%;
+
+      @include onTablet {
+        width: 189%;
+        height: 189%;
+        top: -63px;
+      }
+
+      @include onBigScren {
+        top: -140px;
+      }
+    }
+
+    object-fit: contain;
+    z-index: 1;
+  }
+
+  &__name {
+    color: #0f0f11;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0;
+  }
+
+  &__gadgets__info {
+    color: #89939a;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
+}

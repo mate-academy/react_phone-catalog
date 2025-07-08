@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import styles from './style.module.scss';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 
@@ -38,9 +39,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsMenuOpen }) => {
               </a>
             </li>
             <li className={styles['sideMenu__nav-item']}>
-              <a className={styles['sideMenu__nav-link']} href="#who-we-are">
+              <Link className={styles['sideMenu__nav-link']} to="/phones">
                 phones
-              </a>
+              </Link>
             </li>
             <li className={styles['sideMenu__nav-item']}>
               <a

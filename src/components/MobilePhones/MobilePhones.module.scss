@@ -1,0 +1,49 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: 'Mont';
+}
+
+.mobile-page {
+  margin-inline: 16px;
+  font-family: "Mont";
+
+  @include onTablet {
+    margin-inline: 24px;
+  }
+
+  @include onBigScren {
+    margin-inline: 32px;
+  }
+
+  &__current-page {
+    background-image: url('./public/img/chevron-arrow-right.svg');
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  &__go-home {
+    background-image: url('./public/img/home.svg');
+    display: block;
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__path-of-user {
+    display: flex;
+    flex-direction: row;
+    margin-block: 24px;
+  }
+
+  &__quantity-mobils {
+    font-size: 14px;
+    font-weight: 600;
+    color: #89939a;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
+}

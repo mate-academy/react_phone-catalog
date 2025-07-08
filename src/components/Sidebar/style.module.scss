@@ -12,16 +12,15 @@ body:has(.sideMenu :target) {
   // overflow: hidden;
 
   opacity: 0;
-  z-index: 100;
   pointer-events: none;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  // -ms-overflow-style: none;
+  // scrollbar-width: none;
 
   &:target {
     pointer-events: all;
     overflow: hidden;
     opacity: 1;
-    z-index: 5;
+    z-index: 15;
   }
 
   &__nav {

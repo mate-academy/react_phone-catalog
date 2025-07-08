@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import topBatStyles from './TopBar.module.scss';
 import iconStyles from './icon.module.scss';
+import { Routes, Route, Link } from 'react-router-dom';
+import MobilePhones from '../MobilePhones/MobilePhones';
 
 interface SidebarProps {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,88 +15,86 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({
   iconClass,
   isOpen,
 }) => {
-  const iconReference = iconClass === 'icon--menu' ? '#burger-menu' : '#';
-  // const [iconWindow, setIconWindow] = useState<string>(iconClass);
+  const iconReference = isOpen ? 'burger-menu' : '';
 
   console.log(isOpen);
-
-  // console.log(`iconClass -- ${iconClass}`);
-  // console.log(`iconWindow -- ${iconWindow}`);
 
   return (
     <div className={topBatStyles.header}>
       <div className={topBatStyles['top-bar']}>
         <div className={topBatStyles['top-bar__navigation__wrapper']}>
-          <a href="#" className={topBatStyles['top-bar__logo']}>
+          <Link to="/" className={topBatStyles['top-bar__logo']}>
             <img
               src="public\img\gadgets-logo.png"
               alt="img-logo"
               className={topBatStyles['top-bar__logo-img']}
             />
-          </a>
+          </Link>
 
           <ul className={topBatStyles['top-bar__list']}>
             <li className={topBatStyles['top-bar__item']}>
-              <a className={topBatStyles['top-bar__link']} href="#who-we-are">
+              <Link
+                className={topBatStyles['top-bar__link']}
+                to="/"
+                onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
+              >
                 home
-              </a>
+              </Link>
             </li>
             <li className={topBatStyles['top-bar__item']}>
-              <a
-                className={topBatStyles['top-bar__link']}
-                href="#service-agency"
-              >
+              <Link className={topBatStyles['top-bar__link']} to="/phones">
                 Phones
-              </a>
+              </Link>
             </li>
             <li className={topBatStyles['top-bar__item']}>
-              <a
-                className={topBatStyles['top-bar__link']}
-                href="#service-agency"
-              >
+              <Link className={topBatStyles['top-bar__link']} to="/tablets">
                 tablets
-              </a>
+              </Link>
             </li>
             <li className={topBatStyles['top-bar__item']}>
-              <a className={topBatStyles['top-bar__link']} href="#experience">
+              <Link className={topBatStyles['top-bar__link']} to="/accessories">
                 accessories
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
         <div className={topBatStyles['top-bar__icon-1']}>
           {isOpen === true ? (
-            <a
-              href={iconReference}
+            <Link
+              to={`/${iconReference}`}
               className={`${iconStyles.icon} ${iconStyles['icon--close']}`} // ${topBatStyles['top-bar__icon--menu']}
               onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
-            ></a>
+            ></Link>
           ) : (
-            <a
-              href={iconReference}
+            <Link
+              to={`/${iconReference}`}
               className={`${iconStyles.icon} ${iconStyles['icon--menu']}`} // ${topBatStyles['top-bar__icon--menu']}
               onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
-            ></a>
+            ></Link>
           )}
 
           <div className={iconStyles['icon--heart__wrapper']}>
-            <a
-              href="#"
+            <Link
+              to="/"
               className={`${iconStyles['icon--heart']} ${iconStyles.icon}`}
-            ></a>
+            ></Link>
           </div>
 
           <div className={iconStyles['icon--bag__wrapper']}>
-            <a
-              href="#"
+            <Link
+              to="/"
               className={`${iconStyles['icon--bag']} ${iconStyles.icon}`}
-            ></a>
+            ></Link>
 
             <span className={iconStyles.badge}>12</span>
           </div>
         </div>
       </div>
+
+      <Routes>
+        <Route path="/phones" element={<MobilePhones />} />
+      </Routes>
     </div>
   );
 };

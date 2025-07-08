@@ -67,7 +67,11 @@ const WelcomeSlider: React.FC = () => {
 
   return (
     <div id="#">
-      <HeaderLogoMenu setIsMenuOpen={setIsMenuOpen} iconClass={'icon--menu'} />
+      <HeaderLogoMenu
+        setIsMenuOpen={setIsMenuOpen}
+        iconClass={'icon--menu'}
+        isOpen={isMenuOpen}
+      />
 
       <div className={welcomeStyles.header__title}>
         Welcome to Nice Gadgets store!
