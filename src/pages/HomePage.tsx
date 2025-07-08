@@ -10,8 +10,14 @@ import { Product } from '../types/Product';
 import { Loader } from '../services/helpers/Loader/Loader';
 import { useLoader } from '../hooks/Hooks';
 
-const newproducts: Product[] = newProductsData; // brand-new models
-const products: Product[] = productsData; // brand-new models
+const newproducts: Product[] = newProductsData.map(product => ({
+  ...product,
+  id: String(product.id),
+})); // brand-new models
+const products: Product[] = productsData.map(product => ({
+  ...product,
+  id: String(product.id),
+})); // brand-new models
 
 export const HomePage: React.FC = () => {
   const isLoading = useLoader();

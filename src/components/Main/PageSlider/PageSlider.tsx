@@ -37,8 +37,6 @@ const PrevArrow: React.FC<CustomArrowProps> = ({ className, onClick }) => {
   );
 };
 
-const num = 95; // amount of phones. search how to connect it!
-
 export const PageSlider: React.FC<ProductSliderProps> = ({
   products,
   sliderTitle,
@@ -121,7 +119,7 @@ export const PageSlider: React.FC<ProductSliderProps> = ({
   return (
     <div className="page-slider__container">
       <h1 className="page-slider__title">{sliderTitle}</h1>
-      <div className="page-slider__subtitle">{num} models</div>
+      <div className="page-slider__subtitle">{products.length} models</div>
       <section className="page-slider__sort">
         <article className="page-slider__sort-type">
           <p className="page-slider__sort-subtitle">Sort by</p>

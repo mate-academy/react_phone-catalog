@@ -1,5 +1,5 @@
 interface BaseProduct {
-  id: number;
+  id: string;
   category: string;
   name: string;
   itemId: string;
@@ -23,6 +23,8 @@ export interface ProductMainInfo extends BaseProduct {
   priceDiscount: number;
   colorsAvailable: string[];
   images?: string[];
+  screen: string;
+  ram: string;
   description: ProductDescription[];
   resolution: string;
   processor: string;

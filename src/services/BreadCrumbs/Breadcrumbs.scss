@@ -5,11 +5,9 @@
   flex-direction: row;
   justify-content: start;
   align-items: center;
-  margin: 0 auto 24px;
 
   @include on-tablet {
     max-width: 595px;
-    margin: 24px auto 40px;
   }
 
   @media (min-width: 950px) {
@@ -17,6 +15,7 @@
   }
 
   @include on-laptop {
+    margin-top: 16px;
     max-width: 1200px;
   }
 

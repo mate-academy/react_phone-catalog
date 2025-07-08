@@ -16,7 +16,6 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // Імпортуйте дані безпосередньо
         setProducts([...phones, ...tablets, ...accessories] as unknown as ProductMainInfo[]);
       } catch (error) {
         // eslint-disable-next-line no-console
