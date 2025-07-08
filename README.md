@@ -1,4 +1,4 @@
-- **<a href="https://mykhailoloniak.github.io/todo/" style="margin-right: 10px;">
+- **<a href="https://mykhailoloniak.github.io/react_phone-catalog" style="margin-right: 10px;">
    DEMO LINK
 </a>**
 
