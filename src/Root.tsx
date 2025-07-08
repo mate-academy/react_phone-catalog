@@ -11,10 +11,12 @@ import { TabletPage } from './modules/TabletPage/TabletPage';
 import { DetailsProduct } from './modules/DetailsPage/DetailsProduct';
 import { Cart } from './modules/CartPage/Cart';
 import { FavouritePage } from './modules/FavoritePage/FavouritePage';
+import { ScrollToTop } from './components/scrollToTop/scrollToTop';
 
 export const Root = () => {
   return (
     <HashRouter>
+      <ScrollToTop/>
       <Routes>
      <Route path="/" element={<App />}>
     <Route path="home" element={<Navigate to="/" replace />} />

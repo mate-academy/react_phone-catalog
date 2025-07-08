@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./DropDownMenu.module.scss";
 
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import classNames from "classnames";
+import { event } from "cypress/types/jquery";
 const optionsPagination = [
   { value: "all", label: "All" },
   { value: '4', label: "4" },
@@ -25,18 +26,36 @@ type Props = {
   type: 'filter' | 'pagination';
 };
 
-export const DropDownMenu: React.FC<Props> = ({ value, onChange, type}) => {
+export const DropDownMenu: React.FC<Props> = ({ value, onChange, type }) => {
   const [isActive, setIsActive] = useState(false);
-    const options = type === 'filter' ? optionsFilter : optionsPagination;
+  const options = type === 'filter' ? optionsFilter : optionsPagination;
   const selectedOption = options.find(opt => opt.value === value);
+  const dropDown = useRef<HTMLDivElement>(null);
 
- const handleChange = (selected: { value: string; label: string }) => {
+  useEffect(() => {
+    const handleClose = (event: MouseEvent) => {
+      if (
+        dropDown.current &&
+        !dropDown.current.contains(event.target as Node)
+      ) {
+        setIsActive(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClose);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClose);
+    };
+  }, []);
+
+  const handleChange = (selected: { value: string; label: string }) => {
     if (selected) {
       onChange(selected.value);
     }
   };
 
-  return (<><div className={styles.dropDown}>
+  return (<><div className={styles.dropDown} ref={dropDown}>
    <p className={styles.dropDown__label}>{type === 'filter' ? 'Sort by' : 'Items per page'}</p>
     <div  id='selectedLabel' className={styles.dropDown__title}
     onClick={()=>{setIsActive((prev)=>!prev)}}>{selectedOption?.label || 'none'}

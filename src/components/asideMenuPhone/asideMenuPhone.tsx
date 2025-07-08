@@ -41,8 +41,7 @@ export const AsideMenuPhone = ({ favouriteItems,cartItemsCount,setActiveAsside,g
         >
           <div className={styles.wrapper}>
           <FiShoppingBag className={styles['visible--mobile']} />
-          {cartItemsCount > 0 &&
-              <Count count={cartItemsCount} type={'aside'} />}
+        {cartItemsCount > 0 && <Count count={cartItemsCount} type={'aside'} />}
             </div>
         </NavLink>
       </div>
