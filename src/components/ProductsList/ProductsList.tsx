@@ -15,10 +15,10 @@ export const ProductList = () => {
   const loading = useAppSelector(store => store.products.loading)
   const filterStatus = useAppSelector(state => state.filter.status);
   const location = useLocation();
-   const category = location.pathname.split('/')[1];
-const categoryProducts = AllProducts.filter(product => product.category === category)
+  const category = location.pathname.split('/')[1];
+  const categoryProducts = AllProducts.filter(product => product.category === category)
   const perPages = useAppSelector(state => state.pagination.status);
-const currentPage = useAppSelector(state=>state.pagination.currentPage)
+  const currentPage = useAppSelector(state=>state.pagination.currentPage)
 
   const visibleGoods = [...categoryProducts].sort((a, b) => {
     if (filterStatus === 'age') { return b.year - a.year }
@@ -43,7 +43,7 @@ visibleGoods.slice((currentPage - 1) * perPages, currentPage * perPages)
 {visibleGoods.length >0 &&<Filter />}
 
     <div className={styles.product__list}>
-      {categoryProducts.length === 0 && <ProductNotFound type={ category} />}
+      {categoryProducts.length === 0 && !loading && <ProductNotFound type={ category} />}
       {<ProductCart products={ paginationGoods} types={'grid'} />}
     </div>
      {perPages !== 'all' && <ControlPagination

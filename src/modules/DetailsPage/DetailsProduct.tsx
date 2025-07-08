@@ -15,6 +15,7 @@ import { TechDetails } from './component/techDetails/techDetails';
 import { About } from './component/about/About';
 import { TechSpecs } from './component/techSpecs/techSpecs';
 import { ProductSlider } from '../../components/ProductsSlider/ProductSlider';
+import { getRecommendsProducts } from '../../components/utils/getRecommendetProducts';
 
 export const DetailsProduct = () => {
   const product = useAppSelector(state => state.productDetail.product);
@@ -40,9 +41,12 @@ export const DetailsProduct = () => {
 
   const AllProducts = useAppSelector(state => state.products.products)
 
+
   const findProducts = product
   ? AllProducts.find(item => item.itemId === product.id)
   : null;
+
+  const recommend = getRecommendsProducts(findProducts, AllProducts)
 
 const findModel = (color, capacity) =>
   models.find(model => model.color === color
@@ -134,7 +138,8 @@ const handleChangeColor = (color,) => {
             objectTech={objectTech} /></div>
 
 </div>
-          <ProductSlider  title={'You may also like'} />
+        <ProductSlider title={'You may also like'}
+        sortedProducts={recommend}/>
 
       </Container>{' '}
     </>

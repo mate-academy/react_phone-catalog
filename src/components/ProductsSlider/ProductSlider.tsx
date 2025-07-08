@@ -47,8 +47,10 @@ export const ProductSlider = ({sortedProducts, title}) => {
   };
 
   const handlePrev = () => {
-    if (startIndex-visibleCount>=0)
-    setStartIndex(index=>index-visibleCount)
+
+    if (startIndex - visibleCount >= 0) {
+      setStartIndex(index => index - visibleCount)
+    }
   }
 
   return (
