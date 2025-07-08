@@ -332,7 +332,7 @@ export const ItemCard: React.FC = () => {
       </div>
       <div>
         <div className={styles.controls}>
-          <h1>You may also like</h1>
+          <h1 className={styles.controls_title}>You may also like</h1>
           <div className={styles.buttons_group}>
             <button
               onClick={handlePrev}

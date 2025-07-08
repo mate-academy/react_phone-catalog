@@ -282,6 +282,7 @@
   flex-direction: column;
   gap: 24px;
   margin-top: 16px;
+  margin-bottom: 56px;
 }
 
 .description {
@@ -340,6 +341,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.controls {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.controls_title {
+  font-family: Mont;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+}
+
+.buttons_group {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.buttons_controls {
+  width: 32px;
+  height: 32px;
+  gap: 16px;
+  background-color: #fff;
+  border: 1px solid gray;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 640px) {
@@ -666,10 +700,10 @@
   }
 
   .buttons_group {
-  display: flex;
-  gap: 16px;
-  margin-left: auto;
-}
+    display: flex;
+    gap: 16px;
+    margin-left: auto;
+  }
 
 .buttons_controls {
   width: 32px;
@@ -703,6 +737,7 @@
 
   .content {
     display: flex;
+    margin-bottom: 80px;
   }
 
   .navigation {
@@ -916,6 +951,7 @@
     display: flex;
     flex-direction: row;
     gap: 64px;
+    width: 1136px;
   }
 
   .description {
@@ -940,8 +976,7 @@
   }
 
   .tech_specs {
-    max-width: 531px;
-    width: 100%;
+    width: 531px;
   }
 
   .tech__title {
