@@ -3,7 +3,6 @@ import { ProductCart } from '../../components/cardItem/ProductCart';
 import { Container } from '../../components/container/Container';
 import { PageNav } from '../../components/pageNav/PageNav';
 import { ProductNotFound } from '../../components/productNotFound/ProductNotFound';
-import { ProductList } from '../../components/ProductsList/ProductsList';
 import { TitlePages } from '../../components/title/TitlePages';
 import styles from './FavouritePage.module.scss';
 

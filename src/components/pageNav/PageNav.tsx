@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import styles from './PageNav.module.scss';
 import { FiHome } from 'react-icons/fi';
 import { IoIosArrowForward } from 'react-icons/io';
-import { NavLink, useParams, useSearchParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
 
@@ -25,12 +25,10 @@ export const PageNav = () => {
       <IoIosArrowForward className={styles.page__icon} />
       <NavLink
         to={`/${currentLocation}`}
-        className={({ isActive }) =>
-          classNames(styles.page__text, {
-            [styles['page__text--disabled']]: !productId,
-            [styles['page__text--active']]: productId,
-          })
-        }
+        className={classNames(styles.page__text, {
+          [styles['page__text--disabled']]: !productId,
+          [styles['page__text--active']]: productId,
+        })}
       >
         {locationName}
       </NavLink>

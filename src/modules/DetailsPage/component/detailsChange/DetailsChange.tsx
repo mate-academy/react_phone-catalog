@@ -1,10 +1,10 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from './DetailsChange.module.scss';
 import classNames from 'classnames';
 import { FaRegCircle } from 'react-icons/fa';
+
 type Props = {
   title: string;
-  options: string[];
+  option: string[];
   selected: string;
   onSelect: (value: string) => void;
   type: 'color' | 'capacity';

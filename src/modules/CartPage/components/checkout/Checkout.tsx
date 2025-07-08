@@ -1,10 +1,10 @@
+// eslint-disable-next-line max-len
 import { getTotalItemsCart } from '../../../../components/utils/getTotalItemsCart';
 import styles from './Checkout.module.scss';
-import { CartItem, clearAllCartItem } from '../../../../features/CartSlice';
-import { useAppDispatch } from '../../../../app/hooks';
+import { CartItem } from '../../../../features/CartSlice';
 type Props = {
   products: CartItem[];
-  setModal: () => void;
+  setModal: (arg: boolean) => void;
 };
 export const Checkout = ({ products, setModal }: Props) => {
   const totalItems = getTotalItemsCart(products);

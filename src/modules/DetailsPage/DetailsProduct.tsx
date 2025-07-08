@@ -50,7 +50,7 @@ export const DetailsProduct = () => {
 
   const recommend = getRecommendsProducts(findProducts, AllProducts);
 
-  const findModel = (color, capacity) =>
+  const findModel = (color: string, capacity: string) =>
     models.find(model => model.color === color && model.capacity === capacity);
 
   const handleChangeColor = color => {
@@ -69,12 +69,12 @@ export const DetailsProduct = () => {
     }
   };
 
-  if (loading) {
-    return <Loader />;
-  }
-
   if (downloadError) {
     return <ReloadButton category={category} id={productId} />;
+  }
+
+  if (loading && !product) {
+    return <Loader />;
   }
 
   if (!product) {
@@ -94,7 +94,7 @@ export const DetailsProduct = () => {
       ['Camera', camera],
       ['Zoom', zoom],
       ['Cell', cell?.slice(0, 3).join(', ')],
-    ].filter(([_, value]) => Boolean(value)),
+    ].filter(([value]) => Boolean(value)),
   );
 
   return (
@@ -128,7 +128,7 @@ export const DetailsProduct = () => {
               fullPrice={product.priceRegular}
               discount={product.priceDiscount}
             />
-            <Buttons product={findProducts} />
+            <Buttons product={findProducts} type={'big'} />
 
             <TechDetails
               screen={product.screen}

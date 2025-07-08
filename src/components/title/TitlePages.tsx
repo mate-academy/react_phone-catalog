@@ -1,6 +1,6 @@
 import styles from './TitlePages.module.scss';
 import { useAppSelector } from '../../app/hooks';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 type Props = {
   type:
@@ -13,6 +13,7 @@ type Props = {
     | 'tablets'
     | 'details';
 };
+
 const titles: Record<Props['type'], string | null> = {
   home: 'Welcome to Nice Gadgets store!',
   phones: 'Mobile phones',

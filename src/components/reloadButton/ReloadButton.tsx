@@ -1,10 +1,14 @@
 import { useAppDispatch } from '../../app/hooks';
 import styles from './ReloadButton.module.scss';
-import { fetchProducts } from '../../api/fetchProducts';
-import { fetchOneProducts } from '../../api/fetchOneTypeProducts';
+
 import { detailsProduct } from '../../features/ProductDetailsSlice';
 import { init } from '../../features/ProductSlice';
-export const ReloadButton = ({ id, category }) => {
+type Props = {
+  id?: string;
+  category?: string;
+};
+
+export const ReloadButton = ({ id, category }: Props) => {
   const dispatch = useAppDispatch();
   const handleReload = () => {
     if (category && id) {

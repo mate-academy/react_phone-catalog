@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 type Nav = {
   getLinkClass: (args: { isActive: boolean }) => string;
-  types?: 'asideMenu' | 'header';
+  types: 'asideMenu' | 'header';
 };
 export const NavBar = ({ getLinkClass, types }: Nav) => {
   return (
@@ -26,7 +26,7 @@ export const NavBar = ({ getLinkClass, types }: Nav) => {
           </li>
           <li
             className={classNames(styles.nav__item, {
-              [styles['nav__item--aside']]: (types = 'asideMenu'),
+              [styles['nav__item--aside']]: types === 'asideMenu',
             })}
           >
             <NavLink to="/phones" className={getLinkClass}>
@@ -35,7 +35,7 @@ export const NavBar = ({ getLinkClass, types }: Nav) => {
           </li>
           <li
             className={classNames(styles.nav__item, {
-              [styles['nav__item--aside']]: (types = 'asideMenu'),
+              [styles['nav__item--aside']]: types === 'asideMenu',
             })}
           >
             <NavLink to="/tablets" className={getLinkClass}>
@@ -44,7 +44,7 @@ export const NavBar = ({ getLinkClass, types }: Nav) => {
           </li>
           <li
             className={classNames(styles.nav__item, {
-              [styles['nav__item--aside']]: (types = 'asideMenu'),
+              [styles['nav__item--aside']]: types === 'asideMenu',
             })}
           >
             <NavLink to="/accessories" className={getLinkClass}>

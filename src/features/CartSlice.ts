@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FullProduct } from '../types/product';
 import { Product } from '../types/products';
 import { saveToLocalStorage } from '../components/utils/saveToLocalStorege';
 import { loadItemsLocalStorage } from '../components/utils/loadItemsLocalStorage';
@@ -20,7 +19,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<FullProduct>) => {
+    addToCart: (state, action: PayloadAction<Product>) => {
       const findItem = state.cartItems.find(
         item => item.id === action.payload.id,
       );

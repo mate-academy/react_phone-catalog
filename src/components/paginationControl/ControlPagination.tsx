@@ -7,18 +7,23 @@ import { setCurrentPage, setTotalPage } from '../../features/PaginationSlice';
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Product } from '../../types/products';
+type Props = {
+  allGoods: Product[];
+  perPages: number;
+};
 
-export const ControlPagination = ({ allGoods, perPages }) => {
+export const ControlPagination = ({ allGoods, perPages }: Props) => {
   const [searchParams, setSearhParams] = useSearchParams();
   const dispatch = useAppDispatch();
 
-  const totalPages = Math.ceil(allGoods.length / perPages);
+  const sumPages = Math.ceil(allGoods.length / perPages);
 
-  const currentPage = useAppSelector(state => state.pagination.currentPage);
+  const activePage = useAppSelector(state => state.pagination.currentPage);
 
   useEffect(() => {
-    dispatch(setTotalPage(totalPages));
-  }, [totalPages, dispatch]);
+    dispatch(setTotalPage(sumPages));
+  }, [sumPages, dispatch]);
 
   const getVisiblePages = (
     totalPages: number,
@@ -51,16 +56,16 @@ export const ControlPagination = ({ allGoods, perPages }) => {
           >
             <button
               className={classNames(styles.pagination__link, {
-                [styles['pagination__link--disabled']]: currentPage === 1,
+                [styles['pagination__link--disabled']]: activePage === 1,
               })}
               onClick={() => {
-                dispatch(setCurrentPage(currentPage - 1));
+                dispatch(setCurrentPage(activePage - 1));
                 const params = new URLSearchParams(searchParams);
 
-                if (+currentPage === 2) {
+                if (+activePage === 2) {
                   params.delete('page');
                 } else {
-                  params.set('page', currentPage - 1);
+                  params.set('page', activePage - 1);
                 }
 
                 setSearhParams(params);
@@ -69,7 +74,7 @@ export const ControlPagination = ({ allGoods, perPages }) => {
               <IoIosArrowBack />
             </button>
           </li>
-          {getVisiblePages(totalPages, currentPage).map(page => {
+          {getVisiblePages(sumPages, activePage).map(page => {
             return (
               <li className={styles.pagination__list} key={page}>
                 <button
@@ -83,7 +88,7 @@ export const ControlPagination = ({ allGoods, perPages }) => {
                     setSearhParams(params);
                   }}
                   className={classNames(styles.pagination__link, {
-                    [styles['pagination__link--active']]: page === currentPage,
+                    [styles['pagination__link--active']]: page === activePage,
                   })}
                 >
                   {page}
@@ -99,17 +104,16 @@ export const ControlPagination = ({ allGoods, perPages }) => {
           >
             <button
               className={classNames(styles.pagination__link, {
-                [styles['pagination__link--disabled']]:
-                  currentPage === totalPages,
+                [styles['pagination__link--disabled']]: activePage === sumPages,
               })}
               onClick={() => {
-                dispatch(setCurrentPage(currentPage + 1));
+                dispatch(setCurrentPage(activePage + 1));
                 const params = new URLSearchParams(searchParams);
 
-                params.set('page', currentPage + 1);
+                params.set('page', activePage + 1);
                 setSearhParams(params);
               }}
-              disabled={currentPage === totalPages}
+              disabled={activePage === sumPages}
             >
               <IoIosArrowForward />
             </button>

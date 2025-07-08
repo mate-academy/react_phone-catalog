@@ -10,11 +10,8 @@ import { useAppSelector } from '../../app/hooks';
 import { getHotPrices } from '../../components/utils/getHotPrices';
 
 import { Loader } from '../../components/Loader';
-import { ReloadButton } from '../../components/reloadButton/ReloadButton';
-
 export const HomePage = () => {
   const products = useAppSelector(state => state.products.products);
-  const downloadError = useAppSelector(state => state.products.error);
   const isLoaded = useAppSelector(state => state.products.loading);
 
   if (isLoaded) {

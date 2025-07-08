@@ -1,5 +1,3 @@
-import { useAppSelector } from '../../app/hooks';
-import { FullProduct } from '../../types/product';
 import { Product } from '../../types/products';
 import { getBaseModelId } from './getBaseModels';
 

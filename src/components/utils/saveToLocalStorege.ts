@@ -1,5 +1,5 @@
-import { CartItems } from '../../modules/CartPage/components/cartItems/cartItems';
+import { Product } from '../../types/products';
 
-export const saveToLocalStorage = (key, items) => {
+export const saveToLocalStorage = (key: string, items: Product[]) => {
   localStorage.setItem(key, JSON.stringify(items));
 };

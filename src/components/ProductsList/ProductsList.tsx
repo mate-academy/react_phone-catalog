@@ -10,9 +10,9 @@ import { ProductNotFound } from '../productNotFound/ProductNotFound';
 import { ReloadButton } from '../reloadButton/ReloadButton';
 
 export const ProductList = () => {
-  const AllProducts = useAppSelector(store => store.products.products);
-  const downloadError = useAppSelector(store => store.products.error);
-  const loading = useAppSelector(store => store.products.loading);
+  const AllProducts = useAppSelector(state => state.products.products);
+  const downloadError = useAppSelector(state => state.products.error);
+  const loading = useAppSelector(state => state.products.loading);
   const filterStatus = useAppSelector(state => state.filter.status);
   const location = useLocation();
   const category = location.pathname.split('/')[1];

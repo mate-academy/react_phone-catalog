@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import styles from './SliderHomePage.module.scss';
 import { IoIosArrowBack } from 'react-icons/io';
@@ -12,31 +12,19 @@ const images = [
 export const SliderHomePage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const goNext = () => {
+    setActiveIndex(index => (index + 1) % images.length);
+  };
 
-  const startSlide = () => {
+  const startSlide = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
 
-    intervalRef.current = setInterval(goNext, 5000);
-  };
-
-  const goNext = () => {
-    setActiveIndex(index => (index + 1) % images.length);
-    startSlide();
-  };
-
-  const goPrev = () => {
-    setActiveIndex(index => (index - 1 + images.length) % images.length);
-    startSlide();
-  };
-
-  const handlers = useSwipeable({
-    onSwipedLeft: goPrev,
-    onSwipedRight: goNext,
-    trackTouch: true,
-    preventScrollOnSwipe: true,
-  });
+    intervalRef.current = setInterval(() => {
+      setActiveIndex(index => (index + 1) % images.length);
+    }, 5000);
+  }, []);
 
   useEffect(() => {
     startSlide();
@@ -46,7 +34,18 @@ export const SliderHomePage = () => {
         clearInterval(intervalRef.current);
       }
     };
-  }, []);
+  }, [startSlide]);
+
+  const goPrev = () => {
+    setActiveIndex(index => (index - 1 + images.length) % images.length);
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: goPrev,
+    onSwipedRight: goNext,
+    trackTouch: true,
+    preventScrollOnSwipe: true,
+  });
 
   return (
     <div className={styles.container}>

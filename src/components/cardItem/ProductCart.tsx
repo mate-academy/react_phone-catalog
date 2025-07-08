@@ -1,5 +1,4 @@
 import styles from './ProductCart.module.scss';
-import { FaRegHeart } from 'react-icons/fa';
 import { Product } from '../../types/products';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
@@ -27,10 +26,7 @@ export const ProductCart = ({ products, types }: Props) => {
             className={styles.card__link}
             to={`/${product.category}/${product.itemId || product.id}`}
           >
-            <img
-              className={styles.card__image}
-              src={`./${product.image || product.images?.[0]}`}
-            />
+            <img className={styles.card__image} src={`./${product.image}`} />
             <h4 className={styles.card__name}>{product.name}</h4>
           </Link>
 
@@ -39,12 +35,8 @@ export const ProductCart = ({ products, types }: Props) => {
           )}
           {types !== 'new' && (
             <>
-              <span className={styles.card__fullprice}>
-                ${product.price | product.priceDiscount}
-              </span>
-              <span className={styles.card__price}>
-                ${product.fullPrice | product.priceRegular}
-              </span>
+              <span className={styles.card__fullprice}>${product.price}</span>
+              <span className={styles.card__price}>${product.fullPrice}</span>
             </>
           )}
           <div className={styles.card__border}></div>
