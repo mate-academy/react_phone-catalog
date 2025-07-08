@@ -9,7 +9,7 @@ import { CartModal } from './components/cartModal/CartModal';
 
 export const Cart = () => {
   const [modal, setModal] = useState(false);
-  const products = useAppSelector(state => state.cartItem.cartItems)
+  const products = useAppSelector(state => state.cartItem.cartItems);
 
   return (
     <>
@@ -22,15 +22,15 @@ export const Cart = () => {
             {products.length > 0 && <CartItems products={products} />}
           </div>
 
-        {products.length > 0 && <div className={styles.cart__checkout}>
-            <Checkout products={products}
-              setModal={setModal} />
+          {products.length > 0 && (
+            <div className={styles.cart__checkout}>
+              <Checkout products={products} setModal={setModal} />
+            </div>
+          )}
 
-          </div>}
-
-          {products.length === 0 && <div className={styles.cart__empty}>
-          </div>}
-      </div>
+          {products.length === 0 && <div className={styles.cart__empty}></div>}
+        </div>
       </Container>
-    </>)
-}
+    </>
+  );
+};

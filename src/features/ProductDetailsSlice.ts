@@ -40,7 +40,7 @@ export const productDetailsSlice = createSlice({
       state.allAvailableColor = action.payload.allAvailableColor;
       state.loading = false;
     });
-    builder.addCase(detailsProduct.rejected, (state) => {
+    builder.addCase(detailsProduct.rejected, state => {
       state.loading = false;
       state.error = 'Failed to load product';
     });

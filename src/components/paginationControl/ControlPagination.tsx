@@ -1,29 +1,29 @@
 import styles from './ControlPagination.module.scss';
 
-import { IoIosArrowForward } from "react-icons/io";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from 'react-icons/io';
+import { IoIosArrowBack } from 'react-icons/io';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import {setCurrentPage, setTotalPage} from '../../features/PaginationSlice'
+import { setCurrentPage, setTotalPage } from '../../features/PaginationSlice';
 import classNames from 'classnames';
-import {  useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
-
-
 
 export const ControlPagination = ({ allGoods, perPages }) => {
   const [searchParams, setSearhParams] = useSearchParams();
   const dispatch = useAppDispatch();
 
-const totalPages = Math.ceil(allGoods.length / perPages);
+  const totalPages = Math.ceil(allGoods.length / perPages);
 
-const currentPage= useAppSelector(state=>state.pagination.currentPage)
+  const currentPage = useAppSelector(state => state.pagination.currentPage);
 
   useEffect(() => {
     dispatch(setTotalPage(totalPages));
   }, [totalPages, dispatch]);
 
-const getVisiblePages = (totalPages: number, currentPage: number): number[] => {
-
+  const getVisiblePages = (
+    totalPages: number,
+    currentPage: number,
+  ): number[] => {
     if (totalPages <= 4) {
       return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
@@ -37,59 +37,85 @@ const getVisiblePages = (totalPages: number, currentPage: number): number[] => {
     }
 
     return [currentPage - 1, currentPage, currentPage + 1, currentPage + 2];
+  };
 
-};
+  return (
+    <>
+      {' '}
+      <div className={styles.pagination}>
+        <ul className={styles.pagination__flex}>
+          <li
+            className={classNames(styles.pagination__list, [
+              styles['pagination__list--left'],
+            ])}
+          >
+            <button
+              className={classNames(styles.pagination__link, {
+                [styles['pagination__link--disabled']]: currentPage === 1,
+              })}
+              onClick={() => {
+                dispatch(setCurrentPage(currentPage - 1));
+                const params = new URLSearchParams(searchParams);
 
-  return (<> <div className={styles.pagination}>
-    <ul className={styles.pagination__flex}>
-        <li className={classNames(styles.pagination__list,[styles['pagination__list--left']])} >
-        <button className={classNames(styles.pagination__link, { [styles['pagination__link--disabled']]: currentPage === 1 })}
-          onClick={() => {
-            dispatch(setCurrentPage(currentPage - 1));
-            const params = new URLSearchParams(searchParams)
+                if (+currentPage === 2) {
+                  params.delete('page');
+                } else {
+                  params.set('page', currentPage - 1);
+                }
 
-if(+currentPage===2){params.delete('page')} else
-
-             params.set('page', currentPage - 1);
-            setSearhParams(params)
-
-          }}
-
->
-  <IoIosArrowBack />
-</button>
-      </li>
-      {getVisiblePages(totalPages,currentPage).map(page => {
-        return<li className={styles.pagination__list}  key = {page}><button
-          onClick={() => {
-            dispatch(setCurrentPage(page))
-            const params = new URLSearchParams(searchParams)
-            page===1?params.delete('page'):
-            params.set('page', page)
-            setSearhParams(params)
-           }}
-  className={classNames(styles.pagination__link,{[styles['pagination__link--active']]:page === currentPage})  }
->
-  {page}
-        </button>
+                setSearhParams(params);
+              }}
+            >
+              <IoIosArrowBack />
+            </button>
           </li>
-      })
- }
+          {getVisiblePages(totalPages, currentPage).map(page => {
+            return (
+              <li className={styles.pagination__list} key={page}>
+                <button
+                  onClick={() => {
+                    dispatch(setCurrentPage(page));
+                    const params = new URLSearchParams(searchParams);
 
+                    page === 1
+                      ? params.delete('page')
+                      : params.set('page', page);
+                    setSearhParams(params);
+                  }}
+                  className={classNames(styles.pagination__link, {
+                    [styles['pagination__link--active']]: page === currentPage,
+                  })}
+                >
+                  {page}
+                </button>
+              </li>
+            );
+          })}
 
-     <li className={classNames(styles.pagination__list,[styles['pagination__list--right']])} >
-           <button className={classNames(styles.pagination__link,{[styles['pagination__link--disabled']]:currentPage === totalPages})}
-          onClick={() => {
-            dispatch(setCurrentPage(currentPage + 1))
-              const params = new URLSearchParams(searchParams)
-            params.set('page', currentPage + 1)
-            setSearhParams(params)
-          }}
-  disabled={currentPage === totalPages}
->
-  <IoIosArrowForward />
-</button>
-        </li>
-      </ul></div>
-      </>)
-}
+          <li
+            className={classNames(styles.pagination__list, [
+              styles['pagination__list--right'],
+            ])}
+          >
+            <button
+              className={classNames(styles.pagination__link, {
+                [styles['pagination__link--disabled']]:
+                  currentPage === totalPages,
+              })}
+              onClick={() => {
+                dispatch(setCurrentPage(currentPage + 1));
+                const params = new URLSearchParams(searchParams);
+
+                params.set('page', currentPage + 1);
+                setSearhParams(params);
+              }}
+              disabled={currentPage === totalPages}
+            >
+              <IoIosArrowForward />
+            </button>
+          </li>
+        </ul>
+      </div>
+    </>
+  );
+};

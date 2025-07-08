@@ -8,15 +8,18 @@ import { TitlePages } from '../../components/title/TitlePages';
 import styles from './FavouritePage.module.scss';
 
 export const FavouritePage = () => {
-  const favouriteItems = useAppSelector(state=>state.favourite.favouriteItems)
+  const favouriteItems = useAppSelector(
+    state => state.favourite.favouriteItems,
+  );
+
   return (
     <Container>
       <PageNav />
       <TitlePages type={'favourites'} />
-      {favouriteItems.length === 0 && <ProductNotFound type={ 'favourites'} />}
+      {favouriteItems.length === 0 && <ProductNotFound type={'favourites'} />}
       <div className={styles.favourite__list}>
-        <ProductCart types={'grid'}
-        products={favouriteItems}/>
+        <ProductCart types={'grid'} products={favouriteItems} />
       </div>
-      </Container >)
-}
+    </Container>
+  );
+};

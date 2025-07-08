@@ -13,13 +13,12 @@ import { Loader } from '../../components/Loader';
 import { ReloadButton } from '../../components/reloadButton/ReloadButton';
 
 export const HomePage = () => {
-
   const products = useAppSelector(state => state.products.products);
-const downloadError = useAppSelector(state=>state.products.error)
+  const downloadError = useAppSelector(state => state.products.error);
   const isLoaded = useAppSelector(state => state.products.loading);
 
   if (isLoaded) {
-    return <Loader/>
+    return <Loader />;
   }
 
   const newModels = getNewModels(products);
@@ -27,7 +26,6 @@ const downloadError = useAppSelector(state=>state.products.error)
 
   return (
     <>
-      
       <h1 className={styles.hidden}>Product Catalog</h1>
       <Container>
         <TitlePages type={'home'} />
@@ -35,7 +33,7 @@ const downloadError = useAppSelector(state=>state.products.error)
 
       <SliderHomePage />
       <Container>
-        <ProductSlider sortedProducts={newModels} title={'Brand new models' } />
+        <ProductSlider sortedProducts={newModels} title={'Brand new models'} />
         <ShopCategories />
         <ProductSlider title={'Hot prices'} sortedProducts={hotPrices} />
       </Container>

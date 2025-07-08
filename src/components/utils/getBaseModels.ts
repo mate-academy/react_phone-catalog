@@ -1,7 +1,9 @@
-export const  getBaseModelId = (id: string) => {
-    if (!id) { return ''; }
+export const getBaseModelId = (id: string) => {
+  if (!id) {
+    return '';
+  }
 
-    const parts = id.split('-');
+  const parts = id.split('-');
 
-    return parts.slice(0, -2).join('-');
-  };
+  return parts.slice(0, -2).join('-');
+};

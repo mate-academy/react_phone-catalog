@@ -28,5 +28,6 @@ export const paginationSlice = createSlice({
     },
   },
 });
-export const { setStatusPagin, setCurrentPage,setTotalPage } = paginationSlice.actions;
+export const { setStatusPagin, setCurrentPage, setTotalPage } =
+  paginationSlice.actions;
 export default paginationSlice.reducer;

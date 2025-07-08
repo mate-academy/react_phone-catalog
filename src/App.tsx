@@ -1,7 +1,7 @@
 import './styles/fonts.scss';
 import './App.scss';
 
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { Header } from './components/header/header';
@@ -36,9 +36,8 @@ export const App = () => {
 
     dispatch(setStatus(sort));
     dispatch(setStatusPagin(pagination));
-    if (!isLoaded ) {
+    if (!isLoaded) {
       dispatch(init());
-
     }
   }, [dispatch, searchParams, isLoaded]);
 

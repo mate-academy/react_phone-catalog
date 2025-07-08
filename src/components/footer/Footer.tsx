@@ -1,14 +1,19 @@
-import { Link } from 'react-router-dom'
-import styles from './footer.module.scss'
+import { Link } from 'react-router-dom';
+import styles from './footer.module.scss';
 import logo from '/public/img/niceLogo.png';
-import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowUp } from 'react-icons/io';
 export const Footer = () => {
-  return (<div className={styles.footer}>
-   <a href="/">
-      <img className={styles.footer__logo } src={logo} alt="NiceGadgetLogo"></img>
-    </a>
+  return (
+    <div className={styles.footer}>
+      <a href="/">
+        <img
+          className={styles.footer__logo}
+          src={logo}
+          alt="NiceGadgetLogo"
+        ></img>
+      </a>
 
-       <nav className={styles.nav}>
+      <nav className={styles.nav}>
         <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
             <Link to="/" className={styles.nav__link}>
@@ -25,21 +30,20 @@ export const Footer = () => {
               rights
             </Link>
           </li>
-
         </ul>
-        </nav>
+      </nav>
 
-    <a
-  href="#top"
-  onClick={(e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }}
-  className={styles.footer__button}
->
-  <span className={styles.footer__text}>Back to Top</span>
-  <IoIosArrowUp className={styles.footer__icon}/>
-</a>
-
-</div>)
-}
+      <a
+        href="#top"
+        onClick={e => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        className={styles.footer__button}
+      >
+        <span className={styles.footer__text}>Back to Top</span>
+        <IoIosArrowUp className={styles.footer__icon} />
+      </a>
+    </div>
+  );
+};

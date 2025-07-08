@@ -11,5 +11,4 @@ export interface Product {
   year?: number;
   color?: string;
   image?: string;
- 
 }

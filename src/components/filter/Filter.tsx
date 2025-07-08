@@ -2,7 +2,7 @@ import styles from './Filter.module.scss';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { setStatus } from '../../features/FilterSlice';
-import { setStatusPagin, setCurrentPage, setTotalPage } from '../../features/PaginationSlice';
+import { setStatusPagin, setCurrentPage } from '../../features/PaginationSlice';
 
 import { DropDownMenu } from '../dropDownMenu/DropDownMenu';
 import { useSearchParams } from 'react-router-dom';
@@ -18,17 +18,28 @@ export const Filter = () => {
     dispatch(setStatus(value));
     dispatch(setCurrentPage(1));
     const params = new URLSearchParams(filterParams);
-    value === 'age' ? params.delete('sort') : params.set('sort', value);
+
+    if (value === 'age') {
+      params.delete('sort');
+    } else {
+      params.set('sort', value);
+    }
+
     setFilterParams(params);
   };
 
   const handleStatusPagination = (value: PaginationStatus) => {
     dispatch(setStatusPagin(value));
     dispatch(setCurrentPage(1));
-    
 
     const params = new URLSearchParams(filterParams);
-    value === 'all' ? params.delete('perPage') : params.set('perPage', value);
+
+    if (value === 'all') {
+      params.delete('perPage');
+    } else {
+      params.set('perPage', value);
+    }
+
     setFilterParams(params);
   };
 

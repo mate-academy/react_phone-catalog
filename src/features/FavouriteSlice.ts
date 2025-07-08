@@ -1,18 +1,17 @@
-import { loadItemsLocalStorage } from "../components/utils/loadItemsLocalStorage";
-import { saveToLocalStorage } from "../components/utils/saveToLocalStorege";
-import { Product } from "../types/products";
+import { loadItemsLocalStorage } from '../components/utils/loadItemsLocalStorage';
+import { saveToLocalStorage } from '../components/utils/saveToLocalStorege';
+import { Product } from '../types/products';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface FavouriteState {
   favouriteItems: Product[];
   loading: boolean;
-
 }
 
 const initialState: FavouriteState = {
   favouriteItems: loadItemsLocalStorage('favourite'),
   loading: false,
-}
+};
 
 export const favouriteSlice = createSlice({
   name: 'favourite',
@@ -25,16 +24,16 @@ export const favouriteSlice = createSlice({
 
       if (!findItem) {
         state.favouriteItems.push({ ...action.payload });
-        saveToLocalStorage(
-          'favourite',state.favouriteItems);
+        saveToLocalStorage('favourite', state.favouriteItems);
       } else {
-       state.favouriteItems = state.favouriteItems.filter(item => item.id !== action.payload.id);
-           saveToLocalStorage(
-          'favourite',state.favouriteItems);
+        state.favouriteItems = state.favouriteItems.filter(
+          item => item.id !== action.payload.id,
+        );
+        saveToLocalStorage('favourite', state.favouriteItems);
       }
-    }
-  }
-})
+    },
+  },
+});
 
 export const { addToFavourite } = favouriteSlice.actions;
 export default favouriteSlice.reducer;

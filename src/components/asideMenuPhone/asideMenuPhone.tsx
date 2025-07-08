@@ -1,17 +1,23 @@
 import { NavLink } from 'react-router-dom';
 import styles from './asideMenuPhone.module.scss';
 import classNames from 'classnames';
-import { IconsSvg } from '../icons/icons';
 import { NavBar } from '../navBar';
-import { FaRegHeart } from "react-icons/fa6";
-import { FiShoppingBag } from "react-icons/fi";
+import { FaRegHeart } from 'react-icons/fa6';
+import { FiShoppingBag } from 'react-icons/fi';
 import { Count } from '../countFavorite/cart/count';
-export const AsideMenuPhone = ({ favouriteItems,cartItemsCount,setActiveAsside,getLinkClass }) => {
-
+export const AsideMenuPhone = ({
+  favouriteItems,
+  cartItemsCount,
+  setActiveAsside,
+  getLinkClass,
+}) => {
   return (
-    <aside className={styles.menu} id="menu" onClick={() => setActiveAsside(false)}>
-
-      <NavBar getLinkClass={getLinkClass} types={ 'asideMenu'} />
+    <aside
+      className={styles.menu}
+      id="menu"
+      onClick={() => setActiveAsside(false)}
+    >
+      <NavBar getLinkClass={getLinkClass} types={'asideMenu'} />
 
       <div
         className={styles.menu__bottom}
@@ -24,9 +30,11 @@ export const AsideMenuPhone = ({ favouriteItems,cartItemsCount,setActiveAsside,g
               [styles['is-active']]: isActive,
             })
           }
-        ><div className={styles.wrapper}>
-          <FaRegHeart className={styles['visible--mobile']} />
-          <Count count={favouriteItems} type={ 'aside'} /></div>
+        >
+          <div className={styles.wrapper}>
+            <FaRegHeart className={styles['visible--mobile']} />
+            <Count count={favouriteItems} type={'aside'} />
+          </div>
         </NavLink>
 
         <div className={styles.divider}></div>
@@ -40,9 +48,11 @@ export const AsideMenuPhone = ({ favouriteItems,cartItemsCount,setActiveAsside,g
           }
         >
           <div className={styles.wrapper}>
-          <FiShoppingBag className={styles['visible--mobile']} />
-        {cartItemsCount > 0 && <Count count={cartItemsCount} type={'aside'} />}
-            </div>
+            <FiShoppingBag className={styles['visible--mobile']} />
+            {cartItemsCount > 0 && (
+              <Count count={cartItemsCount} type={'aside'} />
+            )}
+          </div>
         </NavLink>
       </div>
     </aside>

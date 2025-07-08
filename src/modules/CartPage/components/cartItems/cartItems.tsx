@@ -29,8 +29,6 @@ export const CartItems = ({ products }: Props) => {
     dispach(decrementQuantity(id));
   };
 
-
-
   return (
     <>
       {products.map(product => (

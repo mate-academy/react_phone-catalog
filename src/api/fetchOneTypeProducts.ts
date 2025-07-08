@@ -1,4 +1,3 @@
-
 import { FullProduct } from '../types/product';
 type ProductDetails = {
   product: FullProduct;

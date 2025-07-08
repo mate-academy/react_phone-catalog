@@ -21,8 +21,8 @@ import { ReloadButton } from '../../components/reloadButton/ReloadButton';
 
 export const DetailsProduct = () => {
   const product = useAppSelector(state => state.productDetail.product);
-  const loading = useAppSelector(state => state.productDetail.loading)
-  const downloadError = useAppSelector(state => state.productDetail.error)
+  const loading = useAppSelector(state => state.productDetail.loading);
+  const downloadError = useAppSelector(state => state.productDetail.error);
   const models = useAppSelector(state => state.productDetail.models);
   const dispach = useAppDispatch();
   const location = useLocation();
@@ -42,50 +42,47 @@ export const DetailsProduct = () => {
     dispach(detailsProduct({ category, id: productId }));
   }, [category, productId, dispach]);
 
-  const AllProducts = useAppSelector(state => state.products.products)
-
+  const AllProducts = useAppSelector(state => state.products.products);
 
   const findProducts = product
     ? AllProducts.find(item => item.itemId === product.id)
     : null;
 
-  const recommend = getRecommendsProducts(findProducts, AllProducts)
+  const recommend = getRecommendsProducts(findProducts, AllProducts);
 
   const findModel = (color, capacity) =>
-    models.find(model => model.color === color
-      && model.capacity === capacity);
+    models.find(model => model.color === color && model.capacity === capacity);
 
-  const handleChangeColor = (color,) => {
+  const handleChangeColor = color => {
     const model = findModel(color, product?.capacity);
-    if (model) navigate(`/${category}/${model.id}`);
-  }
-  const handleChangeCapacity = (capasity) => {
-    const model = findModel(product?.color, capasity);
-    if (model) navigate(`/${category}/${model.id}`);
-  }
 
-  if (loading) return <Loader />;
+    if (model) {
+      navigate(`/${category}/${model.id}`);
+    }
+  };
+
+  const handleChangeCapacity = capasity => {
+    const model = findModel(product?.color, capasity);
+
+    if (model) {
+      navigate(`/${category}/${model.id}`);
+    }
+  };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   if (downloadError) {
-    return <ReloadButton
-      category={category}
-      id={productId } />
+    return <ReloadButton category={category} id={productId} />;
   }
+
   if (!product) {
     return null;
   }
 
-
-  const {
-    screen,
-    resolution,
-    processor,
-    ram,
-    capacity,
-    camera,
-    zoom,
-    cell,
-  } = product;
+  const { screen, resolution, processor, ram, capacity, camera, zoom, cell } =
+    product;
 
   const objectTech = Object.fromEntries(
     [
@@ -97,20 +94,20 @@ export const DetailsProduct = () => {
       ['Camera', camera],
       ['Zoom', zoom],
       ['Cell', cell?.slice(0, 3).join(', ')],
-    ].filter(([_, value]) => Boolean(value))
+    ].filter(([_, value]) => Boolean(value)),
   );
-
-
 
   return (
     <>
-      < Container >
+      <Container>
         <PageNav />
         <TitlePages type={'details'} />
 
         <div className={styles.wrapper}>
-          <div className={styles.wrapper__carousel}> <Carousel
-            images={product?.images} /></div>
+          <div className={styles.wrapper__carousel}>
+            {' '}
+            <Carousel images={product?.images} />
+          </div>
 
           <div className={styles.wrapper__info}>
             <DetailsChange
@@ -125,10 +122,12 @@ export const DetailsProduct = () => {
               title={'Select capacity'}
               option={product.capacityAvailable}
               selected={product.capacity}
-              onSelect={handleChangeCapacity} />
+              onSelect={handleChangeCapacity}
+            />
             <Price
               fullPrice={product.priceRegular}
-              discount={product.priceDiscount} />
+              discount={product.priceDiscount}
+            />
             <Buttons product={findProducts} />
 
             <TechDetails
@@ -136,24 +135,20 @@ export const DetailsProduct = () => {
               resolution={product.resolution}
               procesor={product.processor}
               ram={product.ram}
-            /></div>
-
+            />
+          </div>
         </div>
 
         <div className={styles.aboutwrapper}>
-          <div className={styles.aboutwrapper__about} >
-            <About
-              description={product.description} />
+          <div className={styles.aboutwrapper__about}>
+            <About description={product.description} />
           </div>
           <div className={styles.aboutwrapper__tech}>
-            <TechSpecs
-              objectTech={objectTech} /></div>
-
+            <TechSpecs objectTech={objectTech} />
+          </div>
         </div>
-        <ProductSlider title={'You may also like'}
-          sortedProducts={recommend} />
-
-      </Container >
-</>
+        <ProductSlider title={'You may also like'} sortedProducts={recommend} />
+      </Container>
+    </>
   );
 };

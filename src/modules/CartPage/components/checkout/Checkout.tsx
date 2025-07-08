@@ -1,5 +1,5 @@
 import { getTotalItemsCart } from '../../../../components/utils/getTotalItemsCart';
-import styles from './Checkout.module.scss'
+import styles from './Checkout.module.scss';
 import { CartItem, clearAllCartItem } from '../../../../features/CartSlice';
 import { useAppDispatch } from '../../../../app/hooks';
 type Props = {
@@ -7,17 +7,31 @@ type Props = {
   setModal: () => void;
 };
 export const Checkout = ({ products, setModal }: Props) => {
-
   const totalItems = getTotalItemsCart(products);
 
-const totalPrice = products.reduce((sum,item)=>sum+(item.price* item.quantity),0)
-  return (<>
-  <div className={styles.checkout}>
-      <div className={styles.checkout__total}>
-        <h2 className={styles.checkout__price}>${totalPrice }</h2>
-        <p className={styles.checkout__totalCount}>{`Total for ${totalItems } items` }</p>
+  const totalPrice = products.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+
+  return (
+    <>
+      <div className={styles.checkout}>
+        <div className={styles.checkout__total}>
+          <h2 className={styles.checkout__price}>${totalPrice}</h2>
+          <p
+            className={styles.checkout__totalCount}
+          >{`Total for ${totalItems} items`}</p>
+        </div>
+        <div className={styles.checkout__border}>
+          <div
+            className={styles.checkout__button}
+            onClick={() => setModal(true)}
+          >
+            Checkout
+          </div>
+        </div>
       </div>
-      <div className={styles.checkout__border}>
-      <div className={styles.checkout__button} onClick={()=>setModal(true)}>Checkout</div></div>
-    </div></>)
-}
+    </>
+  );
+};

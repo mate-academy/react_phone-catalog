@@ -27,7 +27,8 @@ export const PageNav = () => {
         to={`/${currentLocation}`}
         className={({ isActive }) =>
           classNames(styles.page__text, {
-            [styles['page__text--disabled']]: !productId, [styles['page__text--active']]: productId,
+            [styles['page__text--disabled']]: !productId,
+            [styles['page__text--active']]: productId,
           })
         }
       >
