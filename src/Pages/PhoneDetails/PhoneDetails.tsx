@@ -173,7 +173,7 @@ export const PhoneDetails: React.FC = () => {
         <h2>{phone.name}</h2>
       </div>
 
-      <div className="phone-start">
+      <div className="phone_midle">
         <div className="phone-gallery">
           <div className="phone-gallery__thumbnails">
             {currentImages.map((img, i) => (
@@ -259,8 +259,21 @@ export const PhoneDetails: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
 
+      <div className="phone-start">
         <div className="Description">
+          <div className="box_two">
+            <h3>About</h3>
+            {phone.description.map((section, index) => (
+              <div key={index}>
+                <h4>{section.title}</h4>
+                {section.text.map((paragraph, pIndex) => (
+                  <p key={pIndex}>{paragraph}</p>
+                ))}
+              </div>
+            ))}
+          </div>
           <div className="box_one">
             <h3>Description</h3>
             <div className="span">
@@ -290,18 +303,6 @@ export const PhoneDetails: React.FC = () => {
             <div className="span">
               <span>Zoom:</span> <span>{phone.zoom}</span>
             </div>
-          </div>
-
-          <div className="box_two">
-            <h3>About</h3>
-            {phone.description.map((section, index) => (
-              <div key={index}>
-                <h4>{section.title}</h4>
-                {section.text.map((paragraph, pIndex) => (
-                  <p key={pIndex}>{paragraph}</p>
-                ))}
-              </div>
-            ))}
           </div>
         </div>
 

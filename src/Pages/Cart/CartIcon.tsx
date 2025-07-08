@@ -33,6 +33,7 @@ export const CartIcon: React.FC = () => {
             borderRadius: '50%',
             padding: '5px',
             fontSize: '10px',
+            textAlign: 'center',
           }}
         >
           {cartCount}

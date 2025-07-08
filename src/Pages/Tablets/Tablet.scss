@@ -3,6 +3,7 @@
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
+  padding-top: 24px;
 
   &__boxSort {
     display: flex;
@@ -59,9 +60,7 @@
 
 .tablet-card {
   background: #fff;
-  border-radius: 8px;
   padding: 32px;
-  margin: 20px;
   width: 200px;
   height: 100%;
   text-align: center;

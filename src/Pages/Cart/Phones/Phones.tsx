@@ -198,7 +198,7 @@ export const Phones: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="phone_page">
       <SearchParameters />
       <h1 className="phones-header__title">Mobile phones</h1>
       <h2 className="phones-available__title">
