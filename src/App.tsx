@@ -1,12 +1,12 @@
 import './styles/fonts.scss';
 import './App.scss';
 
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { init } from './features/ProductSlice';
 import { setStatusPagin, setCurrentPage } from './features/PaginationSlice';
 import { useAppDispatch, useAppSelector } from './app/hooks';
@@ -18,7 +18,6 @@ export const App = () => {
   const totalPage = useAppSelector(state => state.pagination.totalPage);
   const dispatch = useAppDispatch();
   const isLoaded = useAppSelector(state => state.products.isLoaded);
-
 
   useEffect(() => {
     const sortParam = searchParams.get('sort');

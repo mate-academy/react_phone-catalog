@@ -51,6 +51,7 @@ background-repeat: no-repeat;
 }
 
 .slider__button {
+  cursor: pointer;
   display: none;
 padding: 0 6px;
   height: 100%;
@@ -81,7 +82,7 @@ border-radius: 20px;
   display: flex;
   gap: 8px;
   margin-top: 18px;
-
+cursor: pointer;
 
   & span {
     width: 24px;

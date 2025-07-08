@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './footer.module.scss'
-import logo from '/public/img/niceLogo.svg';
+import logo from '/public/img/niceLogo.png';
 import { IoIosArrowUp } from "react-icons/io";
 export const Footer = () => {
   return (<div className={styles.footer}>

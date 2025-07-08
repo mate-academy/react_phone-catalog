@@ -1,4 +1,4 @@
-import { modes } from 'react-transition-group/SwitchTransition';
+
 import { FullProduct } from '../types/product';
 type ProductDetails = {
   product: FullProduct;

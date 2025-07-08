@@ -1,3 +1,4 @@
+import styles from './HomePage.module.scss';
 import { Container } from '../../components/container/Container';
 import { ProductSlider } from '../../components/ProductsSlider/ProductSlider';
 import { ShopCategories } from './components/shopCategory/ShopCategory';
@@ -7,16 +8,17 @@ import { getNewModels } from '../../components/utils/getNewModels';
 
 import { useAppSelector } from '../../app/hooks';
 import { getHotPrices } from '../../components/utils/getHotPrices';
-import { useEffect } from 'react';
+
 import { Loader } from '../../components/Loader';
+import { ReloadButton } from '../../components/reloadButton/ReloadButton';
 
 export const HomePage = () => {
 
   const products = useAppSelector(state => state.products.products);
+const downloadError = useAppSelector(state=>state.products.error)
+  const isLoaded = useAppSelector(state => state.products.loading);
 
-  const isLoaded = useAppSelector(state => state.products.isLoaded);
-
-  if (!isLoaded) {
+  if (isLoaded) {
     return <Loader/>
   }
 
@@ -25,6 +27,8 @@ export const HomePage = () => {
 
   return (
     <>
+      
+      <h1 className={styles.hidden}>Product Catalog</h1>
       <Container>
         <TitlePages type={'home'} />
       </Container>

@@ -7,7 +7,7 @@ type ProductDetailState = {
   models: FullProduct[] | [];
 
   loading: boolean;
-  error: string;
+  error: string | null;
   allAvailableColor: string[];
 };
 const initialState: ProductDetailState = {
@@ -15,7 +15,7 @@ const initialState: ProductDetailState = {
 
   models: [],
   loading: false,
-  error: '',
+  error: null,
   allAvailableColor: [],
 };
 
@@ -32,17 +32,17 @@ export const productDetailsSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(detailsProduct.pending, state => {
       state.loading = true;
+      state.error = null;
     });
     builder.addCase(detailsProduct.fulfilled, (state, action) => {
       state.product = action.payload.product;
-
       state.models = action.payload.models;
       state.allAvailableColor = action.payload.allAvailableColor;
       state.loading = false;
     });
-    builder.addCase(detailsProduct.rejected, (state, action) => {
+    builder.addCase(detailsProduct.rejected, (state) => {
       state.loading = false;
-      state.error = action.error.message || 'Failed to load product';
+      state.error = 'Failed to load product';
     });
   },
 });

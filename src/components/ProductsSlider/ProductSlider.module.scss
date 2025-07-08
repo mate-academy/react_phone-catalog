@@ -26,6 +26,7 @@ letter-spacing: -1%;
 color:#0F0F11;
 }
   &__navigate {
+
 display: flex;
   align-items: center;
   height: 32px;
@@ -33,13 +34,14 @@ align-items: center;
 
   }
    &__button {
-    cursor: pointer;
+
       height: 16px;
       width: 16px;
       padding: 16px;
       color: #0F0F11;
 border: 1px solid #B4BDC3;
 border-radius: 100%;
+cursor: pointer;
 
 &--left{
       margin-right: 16px;

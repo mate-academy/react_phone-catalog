@@ -4,7 +4,7 @@ import styles from "./DropDownMenu.module.scss";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import classNames from "classnames";
-import { event } from "cypress/types/jquery";
+
 const optionsPagination = [
   { value: "all", label: "All" },
   { value: '4', label: "4" },

@@ -3,7 +3,7 @@ import styles from './header.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import { AsideMenuPhone } from '../asideMenuPhone';
-import logo from '/public/img/niceLogo.svg';
+import logo from '/public/img/niceLogo.png';
 import { FiShoppingBag } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";

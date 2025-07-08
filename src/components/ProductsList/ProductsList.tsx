@@ -7,11 +7,12 @@ import styles from './ProductList.module.scss';
 import { ControlPagination } from "../paginationControl/ControlPagination";
 import { Filter } from "../filter/Filter";
 import { ProductNotFound } from "../productNotFound/ProductNotFound";
+import { ReloadButton } from "../reloadButton/ReloadButton";
 
 
 export const ProductList = () => {
   const AllProducts = useAppSelector(store => store.products.products)
-
+const downloadError = useAppSelector(store=>store.products.error)
   const loading = useAppSelector(store => store.products.loading)
   const filterStatus = useAppSelector(state => state.filter.status);
   const location = useLocation();
@@ -40,13 +41,16 @@ visibleGoods.slice((currentPage - 1) * perPages, currentPage * perPages)
           There are no products matching current filter criteria
         </p>
       )}
-{visibleGoods.length >0 &&<Filter />}
+
+    {visibleGoods.length > 0 && <Filter />}
 
     <div className={styles.product__list}>
-      {categoryProducts.length === 0 && !loading && <ProductNotFound type={ category} />}
+      {!categoryProducts && !downloadError && <ProductNotFound type={category} />}
+      {downloadError && <ReloadButton/>}
       {<ProductCart products={ paginationGoods} types={'grid'} />}
     </div>
-     {perPages !== 'all' && <ControlPagination
+
+    {perPages !== 'all' && <ControlPagination
         allGoods={visibleGoods}
         perPages={perPages}
       />}

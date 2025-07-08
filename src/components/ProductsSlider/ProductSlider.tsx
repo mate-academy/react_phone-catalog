@@ -6,13 +6,15 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import classNames from 'classnames';
 import { ProductCart } from '../cardItem/ProductCart';
+import { ReloadButton } from '../reloadButton/ReloadButton';
+import { useAppSelector } from '../../app/hooks';
 
 
 
 export const ProductSlider = ({ sortedProducts, title }) => {
 
-
-  const [startIndex, setStartIndex] = useState(0);
+  const downloadError = useAppSelector(state => state.products.error)
+      const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
 
 
@@ -34,7 +36,7 @@ export const ProductSlider = ({ sortedProducts, title }) => {
 
   return () => window.removeEventListener('resize', handleResize);
   }, []);
-  
+
   if (!sortedProducts) { return null }
 const visibleProducts = sortedProducts.slice(startIndex, startIndex + visibleCount)
 
@@ -67,7 +69,8 @@ const visibleProducts = sortedProducts.slice(startIndex, startIndex + visibleCou
         </div>
       </div>
       <div className={styles.slider__cardList}>
-        <ProductCart products={visibleProducts}  />
+        <ProductCart products={visibleProducts} />
+        {downloadError && <ReloadButton/>}
       </div>
     </div>)
 }
