@@ -7,11 +7,11 @@ margin-bottom: 32px;
   justify-content: space-between;
   align-items: center;
 
-  @include mixin.onTablet{
+  @include mixin.on-tablet{
     justify-content: left;
   }
 
-  @include mixin.onDesktop{
+  @include mixin.on-desktop{
   justify-content: left;
 }
 
@@ -30,11 +30,11 @@ margin-bottom: 32px;
   letter-spacing: 0%;
   text-align: center;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
   min-width: 118px;
   }
 
-  @include mixin.onDesktop{
+  @include mixin.on-desktop{
 width: 263px;
 &:hover{
     box-shadow: 0 3px 13px 0 #17203166;
@@ -74,7 +74,7 @@ border: 1px solid #E2E6E9;
   }
 
 
-   @include mixin.onDesktop{
+   @include mixin.on-desktop{
     &:hover{
       border-color: #0F0F11;
     }

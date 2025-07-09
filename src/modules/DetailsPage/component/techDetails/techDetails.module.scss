@@ -6,11 +6,11 @@
   flex-direction: column;
   justify-content: space-between;
 
-  @include mixin.onTablet{
+  @include mixin.on-tablet{
     max-width: 320px;
   }
 
-@include mixin.onDesktop{
+@include mixin.on-desktop{
   max-width: 320px;
 }
 &__box{

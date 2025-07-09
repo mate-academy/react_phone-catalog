@@ -3,7 +3,7 @@
 .shop{
   margin-top: 24px;
 
-@include mixin.pageGrid;
+@include mixin.page-grid;
 
   &__title{
      display: flex;
@@ -16,7 +16,7 @@ line-height: 140%;
 letter-spacing: 0%;
 grid-column: 1/-1;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
 font-size: 32px;
 }}
 
@@ -24,11 +24,11 @@ font-size: 32px;
 margin-bottom: 32px;
 grid-column: span 4;
 
- @include mixin.onTablet{
+ @include mixin.on-tablet{
   grid-column: span 4;
 }
 
-@include mixin.onDesktop{
+@include mixin.on-desktop{
   grid-column: span 8;
 }
 }
@@ -39,7 +39,7 @@ grid-column: span 4;
   text-decoration: none;
  display: block;
 
-  @include mixin.onDesktop{
+  @include mixin.on-desktop{
     &:hover{
       transform: scale(1.09);
     }
@@ -55,11 +55,11 @@ grid-column: span 4;
     position: relative;
     background-color: #6D6474;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
   height: 187px;
 }
 
-@include mixin.onDesktop{
+@include mixin.on-desktop{
 height: 368px;
   }
 

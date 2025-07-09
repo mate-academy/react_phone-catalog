@@ -10,7 +10,7 @@ padding-top: 32px;
 padding-left: 16px;
 padding-right: 16px;
 
-  @include mixin.onTablet{
+  @include mixin.on-tablet{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,7 +26,7 @@ padding-right: 16px;
   justify-content: center;
   text-decoration: none;
 
- @include mixin.onDesktop{
+ @include mixin.on-desktop{
   &:hover{
     transform: scale(1.1);
 
@@ -36,7 +36,7 @@ padding-right: 16px;
   }
 
   &__logo{
- @include mixin.onTablet {
+ @include mixin.on-tablet {
   width: 80px;
   height: 28px;
 }
@@ -64,7 +64,7 @@ border-radius: 100%;
       background-size: 16px 16px;
       margin-left: 16px;
 
-@include mixin.onDesktop{
+@include mixin.on-desktop{
  &:hover{
 border-color: #0F0F11;
 
@@ -89,7 +89,7 @@ display: flex;
 flex-direction: column;
 justify-content: right;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -98,7 +98,7 @@ justify-content: right;
 
 }
 
-@include mixin.onDesktop{
+@include mixin.on-desktop{
   gap:105px;
 }
   }
@@ -106,7 +106,7 @@ justify-content: right;
   &__item{
     transition: transform 0.3s ease;
 
-  @include mixin.onDesktop{
+  @include mixin.on-desktop{
  &:hover{
     transform: scale(1.1);
   }
@@ -116,7 +116,7 @@ justify-content: right;
 &:nth-child(-n+2) {
       margin-bottom: 16px;
 
-      @include mixin.onTablet{
+      @include mixin.on-tablet{
       margin: 0;
     }
     }

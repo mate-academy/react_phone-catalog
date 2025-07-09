@@ -17,7 +17,7 @@ z-index: 1000;
 
   background-color:white;
 
-  @include mixin.onTablet{
+  @include mixin.on-tablet{
   display: none;
 }
 }
@@ -54,7 +54,7 @@ height: 16px;
 width: 16px;
 color:#313237;
 
-@include mixin.onTablet {
+@include mixin.on-tablet {
   display: none !important;
   }
 }

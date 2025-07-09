@@ -16,7 +16,7 @@ box-sizing: border-box;}
   align-items: center;
   border-bottom: 1px solid #E2E6E9;
 
- @include mixin.onDesktop{
+ @include mixin.on-desktop{
 padding-left: 24px;
  height: 64px;
 
@@ -24,7 +24,7 @@ padding-left: 24px;
 }
 
  &__logo{
-@include mixin.onTablet {
+@include mixin.on-tablet {
  width: 80px;
  height: 28px;
  }
@@ -85,14 +85,14 @@ border-left: 1px solid #E2E6E9;
   padding: 16px;
 
  &--burger{
-@include mixin.onTablet{
+@include mixin.on-tablet{
 display: none;
 
   }
  }
 
  &--close{
-@include mixin.onTablet{
+@include mixin.on-tablet{
     display: none;
   }
  }
@@ -100,7 +100,7 @@ display: none;
   &--visible{
     display: none;
 
-    @include mixin.onTablet{
+    @include mixin.on-tablet{
       display: block;
 
     }

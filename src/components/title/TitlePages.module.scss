@@ -3,13 +3,13 @@
 .title{
 margin-bottom: 24px;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
   margin-top: 32px;
   margin-bottom: 32px;
   font-size: 48px;
 }
 
-@include mixin.onDesktop{
+@include mixin.on-desktop{
   margin-top: 40px;
 
 

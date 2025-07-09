@@ -12,7 +12,7 @@ justify-content: center;
 }
 
 
-@include mixin.onTablet {
+@include mixin.on-tablet {
   display: flex;
 
 
@@ -29,7 +29,7 @@ justify-content: center;
 
   }
 
- @include mixin.onDesktop{
+ @include mixin.on-desktop{
  &:hover{
 transform: scale(1.1);
   }
@@ -45,7 +45,7 @@ transform: scale(1.1);
     align-items: center;
    gap :32px;
 
-@include mixin.onDesktop{
+@include mixin.on-desktop{
   gap:64px;
 }
 

@@ -7,7 +7,7 @@
   padding: 16px;
   margin-bottom: 16px;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
   display: flex;
 align-items: center;
 justify-content: space-around;
@@ -48,11 +48,11 @@ letter-spacing: 0%;
 color: #0F0F11;
 cursor: pointer;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
   min-width:176px;
 }
 
-@include mixin.onDesktop{
+@include mixin.on-desktop{
   min-width :260px;
 }
 
@@ -64,7 +64,7 @@ cursor: pointer;
   height: 32px;
 justify-content: space-between;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
   display: contents;
 }
 
@@ -112,7 +112,7 @@ line-height: 140%;
 letter-spacing: 0%;
 color:#0F0F11;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
   min-width: 70px;
   align-items: right;
 }

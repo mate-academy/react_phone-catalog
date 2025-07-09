@@ -5,13 +5,13 @@
  width: 100%;
 align-items: center;
 
-@include mixin.pageGrid;
+@include mixin.page-grid;
 
 
   &__drop{
  grid-column: span 2;
 
- @include mixin.onTablet{
+ @include mixin.on-tablet{
   grid-column: span 4;
 }
   }
@@ -19,7 +19,7 @@ align-items: center;
 &__pagination{
 grid-column:3/5;
 
-  @include mixin.onTablet{
+  @include mixin.on-tablet{
   grid-column: 5/8;
 }
 }

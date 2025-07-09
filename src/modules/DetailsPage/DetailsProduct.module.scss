@@ -4,16 +4,16 @@
   margin-bottom: 56px;
 
 
-  @include mixin.pageGrid;
+  @include mixin.page-grid;
 
   &__carousel{
   grid-column: 1/-1;
 
-  @include mixin.onTablet{
+  @include mixin.on-tablet{
 grid-column: 1/7;
   }
 
-  @include mixin.onDesktop{
+  @include mixin.on-desktop{
     grid-column: 1/12;
   }
 }
@@ -21,11 +21,11 @@ grid-column: 1/7;
 &__info{
   grid-column: 1/-1;
 
-  @include mixin.onTablet{
+  @include mixin.on-tablet{
     grid-column: 7/-1;
   }
 
-  @include mixin.onDesktop{
+  @include mixin.on-desktop{
     grid-column: 13/-1;
   }
 }
@@ -34,12 +34,12 @@ grid-column: 1/7;
 }
 
 .aboutwrapper{
-  @include mixin.pageGrid;
+  @include mixin.page-grid;
 
   &__about{
     grid-column: 1/-1;
 
-    @include mixin.onDesktop{
+    @include mixin.on-desktop{
       grid-column: 1/12;
 
     }
@@ -48,7 +48,7 @@ grid-column: 1/7;
   &__tech{
     grid-column: 1/-1;
 
-    @include mixin.onDesktop{
+    @include mixin.on-desktop{
       grid-column: 13/-1;
 
     }

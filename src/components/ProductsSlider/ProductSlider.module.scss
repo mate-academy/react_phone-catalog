@@ -13,7 +13,7 @@ font-size: 22px;
 line-height: 140%;
 letter-spacing: 0%;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
 font-size: 32px;
 }}
 &__text{
@@ -50,7 +50,7 @@ cursor: pointer;
     cursor: default;
     }
 
-    @include mixin.onDesktop{
+    @include mixin.on-desktop{
     &:hover{
     border-color: #0F0F11;
   }
@@ -63,7 +63,7 @@ cursor: pointer;
   gap: 16px;
   overflow-x: auto hidden;
 
-@include mixin.onDesktop{
+@include mixin.on-desktop{
   overflow-x: hidden;
 }
 }

@@ -40,7 +40,7 @@ font-size: 14px;
 line-height: 21px;
 letter-spacing: 0%;
 
-@include mixin.onTablet{
+@include mixin.on-tablet{
 font-size: 25px;
 }
 
@@ -66,7 +66,7 @@ margin-right: 20px;
       background-color:#4219D0;
     }
 
-    @include mixin.onDesktop{
+    @include mixin.on-desktop{
 
       &:hover{
         background-color: red;

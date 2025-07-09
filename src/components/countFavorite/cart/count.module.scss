@@ -12,7 +12,7 @@ display: none;
  border:1px solid #FFF;
  border-radius: 100%;
 
- @include mixin.onTablet{
+ @include mixin.on-tablet{
   display: flex;
 right: 12px;
  top: 8px;
@@ -20,7 +20,7 @@ right: 12px;
 
 }
 
- @include mixin.onDesktop{
+ @include mixin.on-desktop{
  right: 12px;
  top: 16px;
  }
