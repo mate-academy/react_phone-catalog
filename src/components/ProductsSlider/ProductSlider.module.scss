@@ -61,6 +61,7 @@ cursor: pointer;
 &__cardList {
   display: flex;
   gap: 16px;
+  /* stylelint-disable-next-line declaration-block-no-shorthand-property-overrides */
   overflow-x: auto;
   overflow-y:hidden;
 
