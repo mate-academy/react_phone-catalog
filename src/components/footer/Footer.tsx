@@ -16,9 +16,12 @@ export const Footer = () => {
       <nav className={styles.nav}>
         <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
-            <Link to="/" className={styles.nav__link}>
+            <a href="https://github.com/OlegMysko/react_phone-catalog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.nav__link}>
               GitHub
-            </Link>
+            </a>
           </li>
           <li className={styles.nav__item}>
             <Link to="/contacts" className={styles.nav__link}>

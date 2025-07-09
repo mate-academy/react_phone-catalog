@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import styles from './count.module.scss';
-type T = {
+type Props = {
   count: number;
-  type: 'aside';
+  type?: 'aside';
 };
-export const Count = ({ count, type }: T) => {
+export const Count = ({ count, type }: Props) => {
   return (
     <span
       className={classNames(styles.count, {

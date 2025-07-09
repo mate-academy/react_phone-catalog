@@ -64,7 +64,7 @@ cursor: pointer;
   overflow-x: auto hidden;
 
 @include mixin.on-desktop{
-  overflow-x: hidden;
+  overflow-x: auto hidden;
 }
 }
 }
