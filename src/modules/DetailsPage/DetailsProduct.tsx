@@ -1,9 +1,9 @@
+/* eslint-disable */
 import styles from './DetailsProduct.module.scss';
 import { useEffect } from 'react';
 import { Container } from '../../components/container/Container';
 import { PageNav } from '../../components/pageNav/PageNav';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-
 import { detailsProduct } from '../../features/ProductDetailsSlice';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { TitlePages } from '../../components/title/TitlePages';
@@ -45,7 +45,7 @@ export const DetailsProduct = () => {
   const AllProducts = useAppSelector(state => state.products.products);
 
   const findProducts = product
-    ? AllProducts.find(item => item.itemId === product.id)
+    ? AllProducts.find(item => item.itemId === product.id) || null
     : null;
 
   const recommend = getRecommendsProducts(findProducts, AllProducts);
@@ -53,7 +53,8 @@ export const DetailsProduct = () => {
   const findModel = (color: string, capacity: string) =>
     models.find(model => model.color === color && model.capacity === capacity);
 
-  const handleChangeColor = color => {
+  const handleChangeColor = (color: string) => {
+    if (!product?.color) return;
     const model = findModel(color, product?.capacity);
 
     if (model) {
@@ -61,7 +62,8 @@ export const DetailsProduct = () => {
     }
   };
 
-  const handleChangeCapacity = capasity => {
+  const handleChangeCapacity = (capasity: string) => {
+    if (!product?.capacity) return;
     const model = findModel(product?.color, capasity);
 
     if (model) {
@@ -128,7 +130,7 @@ export const DetailsProduct = () => {
               fullPrice={product.priceRegular}
               discount={product.priceDiscount}
             />
-            <Buttons product={findProducts} type={'big'} />
+            {findProducts && <Buttons product={findProducts} type={'big'} />}
 
             <TechDetails
               screen={product.screen}

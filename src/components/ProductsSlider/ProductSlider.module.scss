@@ -3,12 +3,11 @@
 .slider {
 
 
-&__title{
-
+ &__title{
   display: flex;
   justify-content: space-between;
   align-items: center;
-font-family: Mont;
+font-family: Mont, sans-serif;;
 font-weight: 800;
 font-size: 22px;
 line-height: 140%;
@@ -18,7 +17,7 @@ letter-spacing: 0%;
 font-size: 32px;
 }}
 &__text{
-  font-family: Mont;
+  font-family: Mont, sans-serif;;
 font-weight: 800;
 font-size: 32px;
 line-height: 41px;
@@ -26,15 +25,14 @@ letter-spacing: -1%;
 color:#0F0F11;
 }
   &__navigate {
-
 display: flex;
   align-items: center;
   height: 32px;
-align-items: center;
+
 
   }
-   &__button {
 
+   &__button {
       height: 16px;
       width: 16px;
       padding: 16px;
@@ -51,7 +49,8 @@ cursor: pointer;
     pointer-events: none;
     cursor: default;
     }
-  @include mixin.onDesktop{
+
+    @include mixin.onDesktop{
     &:hover{
     border-color: #0F0F11;
   }
@@ -62,8 +61,8 @@ cursor: pointer;
 &__cardList {
   display: flex;
   gap: 16px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: auto hidden;
+
 @include mixin.onDesktop{
   overflow-x: hidden;
 }

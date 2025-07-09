@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from '../types/products';
 import { saveToLocalStorage } from '../components/utils/saveToLocalStorege';

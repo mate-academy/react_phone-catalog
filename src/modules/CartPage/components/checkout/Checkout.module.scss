@@ -11,7 +11,7 @@ cursor: pointer;
 }
 &__price{
   margin: 0;
-  font-family: Mont;
+  font-family: Mont, sans-serif;;
 font-weight: 800;
 font-size: 32px;
 line-height: 41px;
@@ -21,7 +21,7 @@ color:#0F0F11;
 }
 &__totalCount{
   margin: 0;
-  font-family: Mont;
+  font-family: Mont, sans-serif;;
 font-weight: 600;
 font-size: 14px;
 line-height: 21px;
@@ -41,13 +41,12 @@ color:#89939A
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: Mont;
+  font-family: Mont, sans-serif;;
 font-weight: 700;
 font-size: 14px;
-
 letter-spacing: 0%;
-text-align: center;
-color:#FFFFFF;
+color:#FFF;
+
 }
 
 

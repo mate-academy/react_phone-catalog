@@ -1,42 +1,33 @@
 @use '../utils/mixin.module.scss' as mixin;
+
 .footer{
 background-color:white;
-  position: sticky;
-
-  bottom: 0;
-  left: 0;
-
-
+position: sticky;
+bottom: 0;
+left: 0;
 border-top: 1px solid #E2E6E9;
 padding-top: 32px;
-
-  padding-left: 16px;
-  padding-right: 16px;
+padding-left: 16px;
+padding-right: 16px;
 
   @include mixin.onTablet{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 0px;
+  padding-top: 0;
   padding-left: 32px;
   padding-right: 32px;
 
-}
-@include mixin.onDesktop{
+ }
 
-
-}
-
-
-   &__button{
-
+&__button{
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
- @include mixin.onDesktop{
- &:hover{
 
+ @include mixin.onDesktop{
+  &:hover{
     transform: scale(1.1);
 
   }
@@ -45,16 +36,15 @@ padding-top: 32px;
   }
 
   &__logo{
-
-  @include mixin.onTablet {
-width: 80px;
-height: 28px;
+ @include mixin.onTablet {
+  width: 80px;
+  height: 28px;
 }
 
 }
 
   &__text{
-    font-family: Mont;
+     font-family: Mont, sans-serif;
 font-weight: 700;
 font-size: 12px;
 line-height: 100%;
@@ -73,6 +63,7 @@ border-radius: 100%;
       background-position: center;
       background-size: 16px 16px;
       margin-left: 16px;
+
 @include mixin.onDesktop{
  &:hover{
 border-color: #0F0F11;
@@ -106,6 +97,7 @@ justify-content: right;
   gap:13px;
 
 }
+
 @include mixin.onDesktop{
   gap:105px;
 }
@@ -123,7 +115,8 @@ justify-content: right;
 
 &:nth-child(-n+2) {
       margin-bottom: 16px;
-       @include mixin.onTablet{
+
+      @include mixin.onTablet{
       margin: 0;
     }
     }
@@ -131,16 +124,14 @@ justify-content: right;
   }
 
   &__link{
-
-    font-family: Mont;
+ font-family: Mont, sans-serif;
 font-weight: 800;
 font-size: 12px;
 line-height: 11px;
 letter-spacing: 4%;
 text-transform: uppercase;
-
-    text-decoration: none;
-    color:#89939A;
+text-decoration: none;
+color:#89939A;
 
   }
 

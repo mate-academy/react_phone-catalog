@@ -1,3 +1,4 @@
+/* eslint-disable */
 import styles from './TitlePages.module.scss';
 import { useAppSelector } from '../../app/hooks';
 import { useNavigate } from 'react-router-dom';

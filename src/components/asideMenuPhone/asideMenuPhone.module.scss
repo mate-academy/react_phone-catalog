@@ -1,6 +1,5 @@
 @use '/src/components/utils/mixin.module.scss' as mixin;
 
-
 .menu {
   padding-top: 24px;
 z-index: 1000;
@@ -17,12 +16,13 @@ z-index: 1000;
   height: 100vh;
 
   background-color:white;
-@include mixin.onTablet{
+
+  @include mixin.onTablet{
   display: none;
 }
 }
-.buttonWrapper {
 
+ .buttonWrapper {
   flex: 1;
   height: 100%;
   display: flex;
@@ -37,7 +37,6 @@ z-index: 1000;
 
 
 .menu__bottom{
-
 position: fixed;
 bottom: 0;
 left: 0;
@@ -50,23 +49,24 @@ right: 0;
   height: 64px;
 
   .visible--mobile {
-    
   display: block !important;
 height: 16px;
 width: 16px;
 color:#313237;
-  @include mixin.onTablet {
-    display: none !important;
 
+@include mixin.onTablet {
+  display: none !important;
   }
 }
 
 }
+
 .divider {
   width: 0.5px;
   height: 64px;
   background-color:  #E2E6E9;
 }
+
 .wrapper{
   position: relative;
 }

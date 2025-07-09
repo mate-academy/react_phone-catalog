@@ -10,11 +10,10 @@
   }
 }
 
-@mixin pageGrid {
-
+ @mixin pageGrid {
     --columns: 4;
   display: grid;
-  column-gap: 16px;
+column-gap: 16px;
   row-gap: 40px;
   grid-template-columns: repeat(var(--columns), 1fr);
 

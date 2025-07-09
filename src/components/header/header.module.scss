@@ -1,40 +1,33 @@
 @use '../utils/mixin.module.scss' as mixin;
-body{margin: 0;
-box-sizing: border-box;}
-.header{
 
+body{
+margin: 0;
+box-sizing: border-box;}
+
+.header{
   background-color:white;
   position: sticky;
   top:0;
   z-index: 1;
-
-padding-left: 16px;
+  padding-left: 16px;
   height: 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #E2E6E9;
 
-border-bottom: 1px solid #E2E6E9;
-
-@include mixin.onTablet{
-
-
-}
-
-@include mixin.onDesktop{
-
+ @include mixin.onDesktop{
 padding-left: 24px;
-  height: 64px;
+ height: 64px;
 
 
 }
-&__logo{
 
-  @include mixin.onTablet {
-width: 80px;
-height: 28px;
-}
-
+ &__logo{
+@include mixin.onTablet {
+ width: 80px;
+ height: 28px;
+ }
 }
 }
 
@@ -43,8 +36,7 @@ position: relative;
 height: 100%;
   display: flex;
   align-items: center;
-
-font-family: Mont;
+ font-family: Mont, sans-serif;
 font-weight: 800;
 font-size: 12px;
 color:#89939A;
@@ -71,7 +63,6 @@ text-decoration: none;
 
 
 .box {
-
   height: 100%;
   display: flex;
 align-items: center;
@@ -88,24 +79,27 @@ border-left: 1px solid #E2E6E9;
 
 
 
-&__icon{
-
+ &__icon{
   width: 16px;
   height: 16px;
   padding: 16px;
+
  &--burger{
-  @include mixin.onTablet{
-    display: none;
+@include mixin.onTablet{
+display: none;
+
   }
  }
+
  &--close{
-  @include mixin.onTablet{
+@include mixin.onTablet{
     display: none;
   }
  }
 
   &--visible{
     display: none;
+
     @include mixin.onTablet{
       display: block;
 

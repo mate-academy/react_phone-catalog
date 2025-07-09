@@ -2,31 +2,35 @@
 
 .title{
 margin-bottom: 24px;
+
 @include mixin.onTablet{
   margin-top: 32px;
-
   margin-bottom: 32px;
   font-size: 48px;
 }
+
 @include mixin.onDesktop{
   margin-top: 40px;
 
 
 }
+
 &__back{
   display: flex;
   align-items: center;
   margin-bottom: 16px;
 }
+
 &__icon{
   margin-right: 8px;
   color: #89939A;
   width: 16px;
   height: 16px;
 }
+
 &__button{
   cursor: pointer;
-font-family: Mont;
+font-family: Mont, sans-serif;;
 font-weight: 700;
 font-size: 12px;
 line-height: 100%;
@@ -34,12 +38,9 @@ letter-spacing: 0%;
 color:#89939A
 }
   &__text{
-
-    margin: 0;
-
-
+  margin: 0;
 margin-bottom: 8px;
-    font-family: Mont;
+    font-family: Mont ,sans-serif;;
 font-weight: 800;
 font-size: 32px;
 line-height: 41px;
@@ -47,10 +48,11 @@ letter-spacing: -1%;
 color: #0F0F11;
 
 }
+
 &__count{
   text-decoration: none;
   margin: 0;;
-  font-family: Mont;
+  font-family: Mont, sans-serif;;
 font-weight: 600;
 font-size: 14px;
 line-height: 21px;

@@ -1,12 +1,15 @@
 @use '/src/components/utils/mixin.module.scss' as mixin;
+
 .tech{
   margin-bottom: 52px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   @include mixin.onTablet{
     max-width: 320px;
   }
+
 @include mixin.onDesktop{
   max-width: 320px;
 }
@@ -18,7 +21,7 @@ justify-content: space-between;
 }
 &__name{
   color: #89939A;
-  font-family: Mont;
+  font-family: Mont,sans-serif;
 font-weight: 600;
 font-size: 12px;
 line-height: 100%;
@@ -26,7 +29,7 @@ letter-spacing: 0%;
 
 }
 &__description{
-  font-family: Mont;
+  font-family: Mont,sans-serif;
 font-weight: 700;
 font-size: 12px;
 line-height: 100%;

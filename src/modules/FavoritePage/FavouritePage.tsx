@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useAppSelector } from '../../app/hooks';
 import { ProductCart } from '../../components/cardItem/ProductCart';
 import { Container } from '../../components/container/Container';

@@ -1,34 +1,34 @@
 @use '/src/components/utils/mixin.module.scss' as mixin;
+
 .count{
 display: none;
  position: absolute;
-
-
   align-items: center;
   justify-content: center;
  height: 14px;
  width: 14px;
- color:#FFFFFF;
+ color:#FFF;
  background-color: #4219D0;
- border:1px solid #FFFFFF;
+ border:1px solid #FFF;
  border-radius: 100%;
+
  @include mixin.onTablet{
   display: flex;
 right: 12px;
  top: 8px;
 
- }
+
+}
+
  @include mixin.onDesktop{
  right: 12px;
  top: 16px;
  }
+
  &--visible{
   display: flex;
 bottom: 10px;
 right: -5px;
-
-
-
 
 
  }

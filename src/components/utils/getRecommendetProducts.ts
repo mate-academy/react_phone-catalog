@@ -2,7 +2,7 @@ import { Product } from '../../types/products';
 import { getBaseModelId } from './getBaseModels';
 
 export const getRecommendsProducts = (
-  product: Product,
+  product: Product | null,
   AllProducts: Product[],
 ) => {
   if (!product) {

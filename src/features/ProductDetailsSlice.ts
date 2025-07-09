@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { fetchOneProducts } from '../api/fetchOneTypeProducts';
 import { FullProduct } from '../types/product';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';

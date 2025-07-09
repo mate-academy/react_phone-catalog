@@ -1,66 +1,69 @@
 @use '/src/components/utils/mixin.module.scss' as mixin;
+
 .shop{
-  @include mixin.pageGrid;
   margin-top: 24px;
+
+@include mixin.pageGrid;
 
   &__title{
      display: flex;
   justify-content: space-between;
   align-items: center;
-font-family: Mont;
+font-family: Mont, sans-serif;
 font-weight: 800;
 font-size: 22px;
 line-height: 140%;
 letter-spacing: 0%;
+grid-column: 1/-1;
 
 @include mixin.onTablet{
 font-size: 32px;
 }}
-  
+
 &__category{
 margin-bottom: 32px;
 grid-column: span 4;
 
-@include mixin.onTablet{
-
+ @include mixin.onTablet{
   grid-column: span 4;
 }
+
 @include mixin.onDesktop{
   grid-column: span 8;
 }
 }
 
-&__title{
-  grid-column: 1/-1;
-}
+
 &__link{
   list-style: none;
   text-decoration: none;
  display: block;
+
   @include mixin.onDesktop{
     &:hover{
       transform: scale(1.09);
     }
   }
 }
+
  &__image {
   margin-bottom: 24px;
     height: 288px;
     width: 100%;
     display: block;
     overflow: hidden;
-
     position: relative;
     background-color: #6D6474;
+
 @include mixin.onTablet{
   height: 187px;
-  @include mixin.onDesktop{
+}
+
+@include mixin.onDesktop{
 height: 368px;
   }
-}
-    img {
 
-
+  img {
       height: 100%;
       width: 100%;
       object-fit: cover;
@@ -75,16 +78,17 @@ height: 368px;
 &__text{
   margin: 0;
   margin-bottom: 4px;
-font-family: Mont;
+font-family: Mont,sans-serif;;
 font-weight: 700;
 font-size: 20px;
 line-height: 100%;
 letter-spacing: 0%;
 color: #0F0F11;
 }
+
 &__count{
   margin: 0;
-font-family: Mont;
+font-family: Mont, sans-serif;
 font-weight: 600;
 font-size: 14px;
 line-height: 21px;

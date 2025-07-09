@@ -1,19 +1,11 @@
 @use '/src/components/utils/mixin.module.scss' as mixin;
 
 .card{
-
 box-sizing: border-box;
  border: 1px solid #E2E6E9;
 
   padding: 32px;
 padding-bottom: 0;
-
-
-
-
-@include mixin.onTablet{
-
-}
 
   @include mixin.onDesktop {
 
@@ -25,40 +17,40 @@ padding-bottom: 0;
   &--grid{
 margin: 0 auto;
     grid-column: 1/-1;
+
     @include mixin.onTablet{ grid-column: span 4;}
- @include mixin.onDesktop{grid-column: span 6;} }
+
+    @include mixin.onDesktop{grid-column: span 6;} }
 
 &__link{
   text-decoration: none;
   color: #0F0F11;
 }
+
   &__image{
-width: 148px;
-height: 129px;
-
-
-object-fit: contain;
-
-
+  width: 148px;
+  height: 129px;
+  object-fit: contain;
   display: block;
 
 @include mixin.onTablet{
   width: 173px;
-height: 181px;
+  height: 181px;
 
 }
+
 @include mixin.onDesktop{
   width: 208px;
-height: 196px;
+ height: 196px;
 
 }
 
   }
-  &__name{
 
-     min-height: 48px;
-    margin: 0;
-    font-family: Mont;
+  &__name{
+  min-height: 48px;
+  margin: 0;
+  font-family: Mont, sans-serif;
 font-weight: 600;
 font-size: 14px;
 line-height: 21px;
@@ -66,18 +58,20 @@ letter-spacing: 0%;
 text-align: left;
 margin-bottom: 8px;
   }
+
   &__fullprice{
-    font-family: Mont;
+    font-family: Mont, sans-serif;
 font-weight: 800;
 font-size: 22px;
 line-height: 140%;
 letter-spacing: 0%;
 margin-bottom: 8px;
   }
+
   &__price{
-    margin-left: 8px;
-    font-family: Mont;
-font-weight: 600;
+     margin-left: 8px;
+    font-family: Mont, sans-serif;
+  font-weight: 600;
 font-size: 22px;
 line-height: 100%;
 letter-spacing: 0%;
@@ -85,8 +79,8 @@ text-decoration: line-through;
 color:#89939A;
 
   }
-  &__border{
 
+&__border{
   border: 0.5px solid #E2E6E9;
   margin-bottom: 8px;
 }
@@ -99,26 +93,28 @@ color:#89939A;
   margin-bottom: 16px;
 
 }
-  &__screen{
-    display: flex;
-justify-content: space-between;
-margin-bottom: 8px;
-margin-top: 8px;
 
+  &__screen{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  margin-top: 8px;
 
   }
+
   &__characteristics{
     color: #89939A;
-  font-family: Mont;
+  font-family: Mont, sans-serif;;
 font-weight: 700;
 font-size: 12px;
 line-height: 100%;
 letter-spacing: 0%;
 
 }
+
 &__goods{
   color: #0F0F11;
-  font-family: Mont;
+  font-family: Mont, sans-serif;;
 font-weight: 700;
 font-size: 12px;
 line-height: 100%;

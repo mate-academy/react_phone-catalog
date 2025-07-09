@@ -1,42 +1,53 @@
 @use "../../components/utils/mixin.module.scss" as mixin;
 
-
 .wrapper{
   margin-bottom: 56px;
-@include mixin.pageGrid;
-&__carousel{
+
+
+  @include mixin.pageGrid;
+
+  &__carousel{
   grid-column: 1/-1;
-@include mixin.onTablet{
+
+  @include mixin.onTablet{
 grid-column: 1/7;
   }
+
   @include mixin.onDesktop{
     grid-column: 1/12;
   }
 }
+
 &__info{
   grid-column: 1/-1;
+
   @include mixin.onTablet{
     grid-column: 7/-1;
   }
-   @include mixin.onDesktop{
+
+  @include mixin.onDesktop{
     grid-column: 13/-1;
   }
 }
 
 
 }
+
 .aboutwrapper{
   @include mixin.pageGrid;
 
   &__about{
     grid-column: 1/-1;
+
     @include mixin.onDesktop{
       grid-column: 1/12;
 
     }
   }
+
   &__tech{
     grid-column: 1/-1;
+
     @include mixin.onDesktop{
       grid-column: 13/-1;
 

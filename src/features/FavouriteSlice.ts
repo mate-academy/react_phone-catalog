@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+// eslint-disable-next-line max-len
 import { loadItemsLocalStorage } from '../components/utils/loadItemsLocalStorage';
 import { saveToLocalStorage } from '../components/utils/saveToLocalStorege';
 import { Product } from '../types/products';

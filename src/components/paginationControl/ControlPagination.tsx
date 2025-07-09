@@ -65,7 +65,7 @@ export const ControlPagination = ({ allGoods, perPages }: Props) => {
                 if (+activePage === 2) {
                   params.delete('page');
                 } else {
-                  params.set('page', activePage - 1);
+                  params.set('page', (activePage - 1).toString());
                 }
 
                 setSearhParams(params);
@@ -82,9 +82,12 @@ export const ControlPagination = ({ allGoods, perPages }: Props) => {
                     dispatch(setCurrentPage(page));
                     const params = new URLSearchParams(searchParams);
 
-                    page === 1
-                      ? params.delete('page')
-                      : params.set('page', page);
+                    if (page === 1) {
+                      params.delete('page');
+                    } else {
+                      params.set('page', page.toString());
+                    }
+
                     setSearhParams(params);
                   }}
                   className={classNames(styles.pagination__link, {
@@ -110,7 +113,7 @@ export const ControlPagination = ({ allGoods, perPages }: Props) => {
                 dispatch(setCurrentPage(activePage + 1));
                 const params = new URLSearchParams(searchParams);
 
-                params.set('page', activePage + 1);
+                params.set('page', (activePage + 1).toString());
                 setSearhParams(params);
               }}
               disabled={activePage === sumPages}
