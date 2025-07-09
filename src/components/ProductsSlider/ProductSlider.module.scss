@@ -61,10 +61,11 @@ cursor: pointer;
 &__cardList {
   display: flex;
   gap: 16px;
-  overflow-x: auto hidden;
+  overflow-x: auto;
+  overflow-y:hidden;
 
 @include mixin.on-desktop{
-  overflow-x: auto hidden;
+  overflow-x: auto;
 }
 }
 }
