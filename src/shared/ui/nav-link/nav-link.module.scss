@@ -7,11 +7,13 @@
 
   &__link {
     position: relative;
+
     display: flex;
     align-items: center;
+
     box-sizing: border-box;
     height: 100%;
-    text-decoration: none;
+
     color: cl.$gray-secondary;
 
     @include uppercase;
@@ -21,11 +23,14 @@
 
       &::after {
         content: "";
+
         position: absolute;
-        left: 0;
         bottom: 0;
-        height: 3px;
+        left: 0;
+
         width: 100%;
+        height: 3px;
+
         background-color: cl.$gray-primary;
       }
     }

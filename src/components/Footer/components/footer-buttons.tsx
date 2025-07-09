@@ -1,24 +1,28 @@
 import { Link } from 'react-router-dom';
 import styles from './footer-buttons.module.scss';
-import { ButtonsProps } from '@shtypes/ButtonProps';
+import btn from '@shared/styles/regularButton.module.scss';
+import { AriaNames, IconPath } from '@shared/types/ButtonProps';
 import { Button } from '@shared/ui/button';
-
-type Props = {
-  className: string;
-  data: ButtonsProps;
-};
 
 const goToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-export const FooterButtons: React.FC<Props> = ({ className, data }) => {
+const buttonCN = {
+  main: btn.button,
+  icon: btn.button__icon,
+};
+
+export const FooterButtons: React.FC = () => {
   return (
-    <div className={className}>
-      <Link to={'#top'} className={styles.text}>
-        Back to top
-      </Link>
-      <Button data={data} className={styles.button} fn={goToTop} />
+    <div className={styles.container}>
+      <Link to={'#top'}>Back to top</Link>
+      <Button
+        ariaName={AriaNames.Top}
+        iconPath={IconPath.Up}
+        className={buttonCN}
+        fn={goToTop}
+      />
     </div>
   );
 };

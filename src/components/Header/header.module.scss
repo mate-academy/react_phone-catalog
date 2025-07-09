@@ -1,49 +1,34 @@
 @use '@constants/breakpoint' as *;
 @use '@constants/colors' as cl;
-@use '@constants/header-button-size.scss' as bs;
+@use '@constants/header-button-size' as bs;
 
 $logo-width-mob: 96px;
 $logo-width-wide: 128px;
-$gap-tab: 16px;
-$gap-wide: 24px;
-$header-hight-mob: 48px;
-$header-hight-wide: 64px;
 
 .header {
   display: grid;
   grid-template-columns: $logo-width-mob 1fr 0 bs.$button-width;
   column-gap: 16px;
+  box-sizing: border-box;
 
   width: 100%;
-  height: $header-hight-mob;
-  border-bottom: 1px solid cl.$elements;
+  height: 48px;
+  box-shadow: inset 0 -1px 0 cl.$elements;
 
   background-color: cl.$white;
 
-  &__logo {
+  > :first-child {
     left: 0;
-    
-    display: flex;
-    grid-column: 1;
 
+    display: flex;
 
     box-sizing: border-box;
-    width: 100%;
-    height: 100%;
     padding: 13px 16px;
   }
 
   &__nav {
-    display: none;
-    grid-column: 2;
-  }
-
-  .spacer {
-    grid-column: 3;
-  }
-
-  .menu-container {
-    grid-column: 4;
+      display: none;
+      box-sizing: border-box;
   }
 
   @media(min-width: $BREAKPOINT_TAB) {
@@ -51,7 +36,6 @@ $header-hight-wide: 64px;
 
     &__nav {
       display: flex;
-      grid-column: 2;
       gap: 32px;
       align-items: center;
       justify-content: flex-start;
@@ -63,9 +47,9 @@ $header-hight-wide: 64px;
   @media(min-width: $BREAKPOINT_WIDE) {
     grid-template-columns: $logo-width-wide 425px 1fr calc(bs.$button-width-wide * 2);
     column-gap: 24px;
-    height: $header-hight-wide;
+    height: 64px;
 
-    &__logo {
+    > :first-child {
       padding: 18px 24px;
     }
 

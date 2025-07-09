@@ -1,34 +1,27 @@
-@use '@mixins/typography/smallText' as *;
 @use '@mixins/typography/bodyText' as *;
 @use '@constants/fonts' as *;
 @use '@constants/colors' as cl;
+
+.container {
+  display: flex;
+  box-sizing: border-box;
+  min-width: 212px;
+  max-width: 272px;
+  min-height: 440px;
+  max-height: 506px;
+}
 
 .product-card {
   display: flex;
   flex-direction: column;
   gap: 8px;
   justify-content: space-between;
+  border: 1px solid black;
 
   box-sizing: border-box;
-  width: 212px;
-  height: 439px;
+  width: 100%;
+  height: 100%;
   padding: 32px;
-
-  color: cl.$gray-primary;
-
-  &__img-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 129px;
-  }
-
-  &__img {
-    display: block;
-    height: 100%;
-    margin: 0 auto;
-    object-fit: fill;
-  }
 }
 
 .name {
@@ -51,52 +44,23 @@
   font-weight: $s-u;
   line-height: 140%;
   letter-spacing: 0;
-}
 
-.descr {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, 15px);
-  row-gap: 8px;
-
-  box-sizing: border-box;
-  width: 100%;
-  height: 77px;
-  padding: 8px 0;
-
-  @include small-text;
-
-  &__type {
-    grid-column: 1;
+  &::after {
+    content: var(--full-price);
+    display: inline-block;
+    margin-left: 8px;
     color: cl.$gray-secondary;
-  }
-
-  &__val {
-    grid-column: 2;
-    justify-self: end;
+    text-decoration: line-through;
+    font-weight: 600;
   }
 }
 
 .btns {
-  display: flex;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  column-gap: 8px;
   width: 100%;
   height: 40px;
-
-  &__cart {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100px;
-    height: 100%;
-  }
-
-  &__fav {
-    display: block;
-    width: 40px;
-    height: 40px;
-  }
 }
 
 

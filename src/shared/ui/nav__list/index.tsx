@@ -1,16 +1,15 @@
-import { NavigationItem } from '@shtypes/NavLinkProps';
+import { NavigationItem } from '@shared/types/NavLinkProps';
 import { NavigationLink } from '../nav-link';
-import styles from './navList.module.scss';
 
 type Props = {
   list: NavigationItem[];
-  cN: string;
+  className: string;
 };
 
-export const NavList = ({ list, cN }: Props) => {
+export const NavList = ({ list, className }: Props) => {
   return (
-    <nav className={styles['nav-container']}>
-      <ul className={`${cN}`}>
+    <nav style={{ display: 'flex' }}>
+      <ul className={className}>
         {list.map(link => (
           <NavigationLink key={link.name} data={link} />
         ))}

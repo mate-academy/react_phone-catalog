@@ -1,0 +1,25 @@
+@use '@constants/colors.scss' as cl;
+@use '@mixins/typography/buttonText' as *;
+
+.btn-blc {
+  z-index: 10;
+  background-color: cl.$gray-primary;
+
+  &__span {
+    color: cl.$white;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+
+  &.active {
+    background-color: cl.$white;
+    box-shadow: inset 1px 1px 0 cl.$elements;
+
+    .btn-blc__span {
+      color: cl.$green;
+    }
+  }
+}
+

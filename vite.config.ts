@@ -8,7 +8,8 @@ const alias = {
   '@constants': path.resolve(__dirname, 'src/shared/constants'),
   '@ui': path.resolve(__dirname, 'src/shared/ui'),
   '@mixins': path.resolve(__dirname, 'src/shared/styles/mixins'),
-  '@shtypes': path.resolve(__dirname, 'src/shared/types'),
+  '@entities': path.resolve(__dirname, 'src/entities'),
+  '@widgets': path.resolve(__dirname, 'src/widgets'),
 };
 
 // https://vitejs.dev/config/

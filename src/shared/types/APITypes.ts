@@ -1,8 +1,9 @@
-export const enum Category {
+const enum Category {
   Accessories = 'acessories',
   Phones = 'phones',
   Products = 'products',
   Tablets = 'tablets',
+  Banners = 'banners',
 }
 
 const enum Processors {
@@ -146,7 +147,7 @@ type Description = {
   text: string;
 };
 
-export interface BaseProduct {
+interface BaseProduct {
   id: number;
   category: Category;
   itemId: string;
@@ -161,7 +162,7 @@ export interface BaseProduct {
   year: number;
 }
 
-export interface Product {
+interface Product {
   id: string;
   category: Category;
   namespaceId: string;
@@ -181,3 +182,16 @@ export interface Product {
   cell: Cells[];
   camera?: Cameras;
 }
+export {
+  Category,
+  Processors,
+  Resolutions,
+  Ram,
+  Colors,
+  Screens,
+  Cells,
+  Cameras,
+  Capacity,
+};
+
+export { type Description, type BaseProduct, type Product };

@@ -1,0 +1,20 @@
+@use '@shared/constants/breakpoint' as *;
+
+.container {
+  display: flex;
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+
+  @media(min-width: $BREAKPOINT_TAB) {
+    aspect-ratio: 3 / 1;
+  }
+}
+
+.banner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}

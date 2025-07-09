@@ -1,18 +1,13 @@
 import { NavLink } from 'react-router-dom';
-import styles from './logo.module.scss';
 
-type Props = {
-  className: string;
-};
-
-export const Logo = ({ className }: Props) => {
+export const Logo = () => {
   return (
-    <NavLink to="/" className={`${className}`}>
+    <NavLink to="/">
       <img
-        className={`${styles['logo-img']}`}
         src="/src/shared/icons/logo.svg"
         alt=""
         aria-hidden="true"
+        style={{ width: '100%', height: '100%' }}
       />
     </NavLink>
   );

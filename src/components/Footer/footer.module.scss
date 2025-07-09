@@ -14,9 +14,8 @@
 
   box-shadow: inset 0 0 0 1px cl.$elements;
 
-  &__logo {
+  > :first-child {
     display: flex;
-    grid-row: 1;
     justify-items: flex-start;
     justify-self: start;
 
@@ -26,7 +25,6 @@
 
   &__nav {
     display: flex;
-    grid-row: 2;
     flex-direction: column;
     justify-content: space-between;
     justify-self: start;
@@ -35,41 +33,21 @@
     height: 65px;
   }
 
-  &__btn-container {
-    display: flex;
-    grid-row: 3;
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-
-    box-sizing: border-box;
-  }
-
   @media(min-width: $BREAKPOINT_TAB) {
     grid-template-columns: 0.8fr 1fr 0.8fr;
     grid-template-rows: 1fr;
     justify-content: center;
-    
+
     height: 96px;
     padding: 32px;
 
-    &__logo {
-      grid-column: 1;
-      grid-row: 1;
-    }
-
     &__nav {
-      grid-column: 2;
-      grid-row: 1;
       flex-direction: row;
       gap: 13px;
     }
 
-    &__btn-container {
-      grid-column: 3;
-      grid-row: 1;
-      align-items: center;
-      justify-content: flex-end;
+    > :last-child {
+      place-self: center end;
     }
   }
 

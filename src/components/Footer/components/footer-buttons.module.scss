@@ -1,19 +1,27 @@
 @use '@mixins/typography/uppercase' as *;
 @use '@mixins/hoverDefault' as *;
+@use '@constants/breakpoint' as *;
+@use '@constants/colors' as cl;
 
-.text {
-  @include uppercase;
-  
-  display: inline-block;
+.container {
+  display: flex;
   height: 32px;
-  line-height: 32px;
-}
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
 
-.button {
-  width: 32px;
-  height: 32px;
+  box-sizing: border-box;
 
-  &:hover {
-    @include hover-default;
+  > :first-child {
+    @include uppercase;
+
+    display: inline-block;
+    line-height: 32px;
+
+    color: cl.$gray-secondary;
+  }
+
+  > :last-child {
+    width: 32px;
   }
 }

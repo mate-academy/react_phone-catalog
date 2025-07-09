@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { NavigationItem } from '@shtypes/NavLinkProps';
+import { NavigationItem } from '@shared/types/NavLinkProps';
 import styles from './nav-link.module.scss';
 import classNames from 'classnames';
 

@@ -1,33 +1,72 @@
+import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@ui/button';
+import { PCImage, Description } from './subcomponents';
+import { AriaNames, IconPath } from '@shared/types/ButtonProps';
+import { BaseProduct } from '@shared/types/APITypes';
+
 import styles from './productCard.module.scss';
+import blBtn from '@shared/styles/blackenedButton.module.scss';
+import regBtn from '@shared/styles/regularButton.module.scss';
 
-export const ProductCard = () => {
-  return (
-    <li>
-      <Link to="/" className={styles['product-card']}>
-        <figure className={styles['product-card__img-wrapper']}>
-          <img
-            className={styles['product-card__img']}
-            src="img/phones/apple-iphone-7/black/00.webp"
-          ></img>
-        </figure>
-        <h3 className={styles.name}>Apple iPhone 11 128GB Black</h3>
-        <span className={styles.price}>$1100</span>
-        <dl className={styles.descr}>
-          <dt className={styles.descr__type}>Screen</dt>
-          <dd className={styles.descr__val}>6.1 IPS</dd>
-
-          <dt className={styles.descr__type}>Capacity</dt>
-          <dd className={styles.descr__val}>128GB</dd>
-
-          <dt className={styles.descr__type}>RAM</dt>
-          <dd className={styles.descr__val}>4GB</dd>
-        </dl>
-        <div className={styles.btns}>
-          <button className={styles.btns__cart}>Add to cart</button>
-          <button className={styles.btns__fav}>Fav</button>
-        </div>
-      </Link>
-    </li>
-  );
+type Props = {
+  product: BaseProduct;
 };
+
+export const ProductCard = forwardRef<HTMLLIElement, Props>(
+  ({ product }, ref) => {
+    const cartCN = {
+      main: blBtn['btn-blc'],
+      span: blBtn['btn-blc__span'],
+    };
+    const favCN = {
+      main: regBtn.button,
+      icon: regBtn.button__icon,
+    };
+
+    const {
+      image,
+      name,
+      price,
+      fullPrice,
+      screen,
+      capacity,
+      ram,
+      itemId,
+      category,
+    } = product;
+
+    return (
+      <li ref={ref} className={styles.container}>
+        <Link to={`/${category}/${itemId}`} className={styles['product-card']}>
+          <PCImage image={image} />
+          <h3 className={styles.name}>{name}</h3>
+
+          <span
+            className={styles.price}
+            style={{ '--full-price': `"${fullPrice}$"` } as React.CSSProperties}
+          >
+            {`${price}$`}
+          </span>
+
+          <Description screen={screen} capacity={capacity} ram={ram} />
+
+          <div className={styles.btns}>
+            <Button
+              ariaName={AriaNames.AddCart}
+              text={AriaNames.AddCart}
+              className={cartCN}
+            />
+            <Button
+              ariaName={AriaNames.AddFav}
+              iconPath={IconPath.Fav}
+              className={favCN}
+            />
+          </div>
+        </Link>
+      </li>
+    );
+  },
+);
+
+ProductCard.displayName = 'ProductCard';

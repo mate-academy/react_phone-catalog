@@ -1,0 +1,24 @@
+@use '@mixins/typography/smallText' as *;
+@use '@constants/colors' as cl;
+
+.descr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 15px);
+  row-gap: 8px;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 77px;
+  padding: 8px 0;
+
+  @include small-text;
+
+  &__type {
+    color: cl.$gray-secondary;
+  }
+
+  &__val {
+    justify-self: end;
+  }
+}

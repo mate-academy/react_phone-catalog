@@ -1,0 +1,16 @@
+@use '@constants/colors.scss' as cl;
+
+.button {
+  color: cl.$gray-primary;
+
+  border: 1px solid cl.$elements;
+
+  &__icon {
+    background-color: cl.$gray-primary;
+  }
+
+  &:hover {
+    border: 1px solid cl.$gray-primary;
+  }
+}
+

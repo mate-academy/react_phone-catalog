@@ -1,0 +1,22 @@
+[
+  {
+    "src": "/api/banners/swiperbanner_1.webp",
+    "alt": "buy iPhone 15",
+    "href": "#"
+  },
+  {
+    "src": "/api/banners/swiperbanner_2.webp",
+    "alt": "buy iPhone 15",
+    "href": "#"
+  },
+  {
+    "src": "/api/banners/swiperbanner_3.webp",
+    "alt": "buy iPhone 15",
+    "href": "#"
+  },
+  {
+    "src": "/api/banners/swiperbanner_4.webp",
+    "alt": "buy iPhone 15",
+    "href": "#"
+  }
+]

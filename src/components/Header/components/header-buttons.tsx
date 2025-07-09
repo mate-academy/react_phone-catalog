@@ -1,17 +1,24 @@
-import { ButtonsProps } from '@shtypes/ButtonProps';
 import { Button } from '@ui/button';
 import styles from './header-buttons.module.scss';
+import btns from '@shared/styles/regularButton.module.scss';
+import { AriaNames, IconPath } from '@shared/types/ButtonProps';
 
 type Props = {
-  buttons: ButtonsProps[];
-  className: string;
+  buttons: { ariaName: AriaNames; iconPath: IconPath }[];
 };
 
-export const HeaderButtons = ({ buttons, className }: Props) => {
+const ButtonCN = { main: `${btns.button}`, icon: `${btns.button__icon}` };
+
+export const HeaderButtons: React.FC<Props> = ({ buttons }) => {
   return (
-    <div className={`${styles['buttons-container']} ${className} `}>
+    <div className={styles['buttons-container']}>
       {buttons.map(btn => (
-        <Button key={btn.name} data={btn} className={'header-button'} />
+        <Button
+          key={btn.ariaName}
+          ariaName={btn.ariaName}
+          iconPath={btn.iconPath}
+          className={ButtonCN}
+        />
       ))}
     </div>
   );

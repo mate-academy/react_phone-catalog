@@ -1,4 +1,4 @@
-export enum Path {
+export enum IconPath {
   Burger = '/burger-menu.svg',
   Fav = '/fav.svg',
   Cart = '/cart.svg',
@@ -7,16 +7,19 @@ export enum Path {
   Next = '/arrow-next.svg',
 }
 
-export enum ButtonNames {
+export enum AriaNames {
   Burger = 'Open burger-menu',
   Fav = 'Open favorites',
   Cart = 'Open cart',
   Top = 'Go to top',
   Prev = 'Previous',
   Next = 'Next',
+  AddCart = 'Add to cart',
+  AddFav = 'Add to favorites',
 }
 
-export type ButtonsProps = {
-  name: ButtonNames;
-  path?: Path;
+export type ButtonCN = {
+  main: string;
+  span?: string;
+  icon?: string;
 };

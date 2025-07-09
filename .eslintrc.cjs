@@ -123,7 +123,8 @@ module.exports = {
           ['@ui', './src/shared/ui'],
           ['@mixins', './src/shared/styles/mixins'],
           ['@shared', './src/shared'],
-          ['@shtypes', './src/shared/types'],
+          ['@entities', './src/entities'],
+          ['@widgets', './src/widgets']
         ],
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
       },
