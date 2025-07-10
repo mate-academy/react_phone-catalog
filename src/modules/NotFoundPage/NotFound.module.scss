@@ -1,0 +1,17 @@
+@import '../../assets/styles/main';
+
+.notFound {
+  width: 100%;
+  min-height: calc(100vh - 64px - 96px);
+
+  background-image: url('../../assets/images/notFoundPage/product-not-found.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+
+  &__title {
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+  }
+}

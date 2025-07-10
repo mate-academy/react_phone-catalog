@@ -1,0 +1,52 @@
+@import '../../../../assets/styles/main';
+
+.cartDialog {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+
+  &__dialog {
+    z-index: 1001;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &__btn {
+    cursor: pointer;
+
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+
+    color: white;
+
+    background-color: $color-primary;
+
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      color: $color-primary;
+      background-color: $color-white;
+    }
+  }
+}
