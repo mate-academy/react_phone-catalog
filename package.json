@@ -13,7 +13,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",
     "react-transition-group": "^4.4.5",
-    "swiper": "^11.2.10"
+    "swiper": "^11.2.10",
+    "use-react-router-breadcrumbs": "^4.0.1"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
