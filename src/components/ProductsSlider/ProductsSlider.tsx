@@ -2,10 +2,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
-import { ProductCard } from '../ProductCard';
 import React, { useMemo } from 'react';
+import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/Product';
-import styles from './Slider.module.scss';
+import styles from './ProductsSlider.module.scss';
 import classNames from 'classnames';
 
 interface Props {
@@ -66,14 +66,6 @@ const CustomSlider: React.FC<Props> = ({ products }) => {
   const filteredProducts = useMemo(() => {
     return products.filter((_, index) => index < 5);
   }, [products]);
-
-  // useEffect(() => {
-  //   const slickTrack = document.querySelector('.slick-track');
-
-  //   if (slickTrack) {
-  //     slickTrack.classList.add(styles.slickTrack);
-  //   }
-  // }, [filteredProducts]);
 
   return (
     <Slider {...settings} className={styles.slider}>
