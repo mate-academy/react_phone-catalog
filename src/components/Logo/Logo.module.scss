@@ -1,4 +1,4 @@
-@use '../../styles/utils' as *;
+@use '../../styles/utils' as utils;
 
 .logo {
   display: flex;
@@ -9,7 +9,7 @@
     align-items: center;
   }
 
-  @include on-desktop {
+  @include utils.on-desktop {
     padding-inline: 24px;
   }
 }

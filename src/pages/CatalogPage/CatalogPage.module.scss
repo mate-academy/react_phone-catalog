@@ -1,4 +1,4 @@
-@use '../../styles/utils' as *;
+@use '../../styles/utils' as utils;
 
 .catalog {
   &__breadcrumbs {
@@ -14,7 +14,7 @@
     grid-column: 1 / -1;
     margin-bottom: 24px;
 
-    @include page-grid;
+    @include utils.page-grid;
   }
 
   &__block-items {
@@ -30,10 +30,10 @@
   grid-column: 1 / -1;
   font-size: 14px;
   line-height: 21px;
-  color: $secondary;
+  color: utils.$secondary;
   margin-bottom: 32px;
 
-  @include on-tablet {
+  @include utils.on-tablet {
     margin-bottom: 40px;
   }
 }
@@ -41,12 +41,12 @@
 .block-items {
   row-gap: 40px;
 
-  @include page-grid;
+  @include utils.page-grid;
 
   &__item {
     grid-column: 1 / -1;
 
-    @include on-tablet {
+    @include utils.on-tablet {
       grid-column: span 6;
     }
   }

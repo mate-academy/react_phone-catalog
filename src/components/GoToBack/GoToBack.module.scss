@@ -1,17 +1,17 @@
-@use '../../styles/utils' as *;
+@use '../../styles/utils' as utils;
 
 .goToBack {
   width: 66px;
   display: flex;
   align-items: center;
   gap: 4px;
-  color: $secondary;
+  color: utils.$secondary;
   font-size: 12px;
   line-height: 15px;
   transition: all .3s;
 
   &:hover {
-    color: $primary;
+    color: utils.$primary;
     cursor: pointer;
   }
 }

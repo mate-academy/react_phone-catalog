@@ -1,4 +1,4 @@
-@use '../../styles/utils' as *;
+@use '../../styles/utils' as utils;
 
 .header {
   position: fixed;
@@ -13,14 +13,14 @@
 
   background-color: #fff;
 
-  @include on-desktop {
+  @include utils.on-desktop {
     gap: 24px;
   }
 
   &__nav {
     display: none;
 
-    @include on-tablet {
+    @include utils.on-tablet {
       display: flex;
       justify-content: space-between;
     }

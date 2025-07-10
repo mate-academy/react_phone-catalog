@@ -1,36 +1,36 @@
-@use '../../styles/utils' as *;
+@use '../../styles/utils' as utils;
 
 .dropdown {
   grid-column: span 2;
   position: relative;
 
-  @include on-tablet {
+  @include utils.on-tablet {
     grid-column: span 4;
   }
 
-  @include on-desktop {
+  @include utils.on-desktop {
     grid-column: span 5;
   }
 
   &:last-child {
-    @include on-tablet {
+    @include utils.on-tablet {
       grid-column: span 3;
     }
   }
 
   &__title {
     font-size: 12px;
-    color: $secondary;
+    color: utils.$secondary;
     line-height: 15px;
   }
 
   &__field {
-    border: 1px solid $icons;
+    border: 1px solid utils.$icons;
     background-color: #fff;
     width: 100%;
     box-sizing: border-box;
     padding: 12px;
-    color: $primary;
+    color: utils.$primary;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,18 +42,18 @@
     z-index: 5;
 
     &:hover {
-      border-color: $secondary;
+      border-color: utils.$secondary;
       cursor: pointer;
     }
 
     &--focus {
-      border: 1px solid $primary;
+      border: 1px solid utils.$primary;
     }
   }
 
   &__list {
     background-color: #fff;
-    border: 1px solid $icons;
+    border: 1px solid utils.$icons;
     box-sizing: border-box;
     overflow: hidden;
     position: absolute;
@@ -76,18 +76,18 @@
     padding: 6px 12px;
     font-size: 14px;
     line-height: 21px;
-    color: $secondary;
+    color: utils.$secondary;
     cursor: pointer;
     transition: all .3s;
 
     &:hover {
-      color: $primary;
-      background-color: $hover;
+      color: utils.$primary;
+      background-color: utils.$hover;
     }
 
     &--active {
-      color: $primary;
-      background-color: $hover;
+      color: utils.$primary;
+      background-color: utils.$hover;
     }
   }
 }

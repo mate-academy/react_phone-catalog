@@ -1,4 +1,4 @@
-@use '../../styles/utils' as *;
+@use '../../styles/utils' as utils;
 
 .breadcrumbs {
   display: flex;
@@ -20,7 +20,7 @@
     }
 
     &--last {
-      color: $secondary;
+      color: utils.$secondary;
     }
   }
 }

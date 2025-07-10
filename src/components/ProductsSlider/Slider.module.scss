@@ -1,4 +1,4 @@
-@use '../../styles/utils' as *;
+@use '../../styles/utils' as utils;
 
 .slider {
   grid-column: 1 / -1;
@@ -41,7 +41,7 @@
 
   &:hover {
     background-repeat: no-repeat;
-    background-color: $hover;
+    background-color: utils.$hover;
   }
 }
 
@@ -52,6 +52,6 @@
 
   &:hover {
     background-repeat: no-repeat;
-    background-color: $hover;
+    background-color: utils.$hover;
   }
 }
