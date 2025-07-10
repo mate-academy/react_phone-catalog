@@ -23,7 +23,10 @@ margin: 0 auto;
     @include mixin.on-desktop{grid-column: span 6;} }
 
 &__link{
-  margin:0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   color: #0F0F11;
 }

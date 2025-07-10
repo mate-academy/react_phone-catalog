@@ -33,7 +33,9 @@ export const AsideMenuPhone = ({
         >
           <div className={styles.wrapper}>
             <FaRegHeart className={styles['visible--mobile']} />
-            <Count count={favouriteItems} type={'aside'} />
+            {favouriteItems.length < 0 && (
+              <Count count={favouriteItems} type={'aside'} />
+            )}
           </div>
         </NavLink>
 
