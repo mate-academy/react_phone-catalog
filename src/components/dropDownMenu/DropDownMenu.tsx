@@ -4,6 +4,8 @@ import styles from './DropDownMenu.module.scss';
 import { IoIosArrowDown } from 'react-icons/io';
 import { IoIosArrowUp } from 'react-icons/io';
 import classNames from 'classnames';
+import { FilteredStatus } from '../../types/filters';
+import { PaginationStatus } from '../../types/pagination';
 
 const optionsPagination = [
   { value: 'all', label: 'All' },
@@ -19,8 +21,8 @@ const optionsFilter = [
 ] as const;
 
 type Props = {
-  value: string;
-  onChange: (value: string) => void;
+  value: FilteredStatus | PaginationStatus;
+  onChange: (args: FilteredStatus | PaginationStatus) => void;
   type: 'filter' | 'pagination';
 };
 
@@ -49,7 +51,12 @@ export const DropDownMenu: React.FC<Props> = ({ value, onChange, type }) => {
 
   const handleChange = (selected: { value: string; label: string }) => {
     if (selected) {
-      onChange(selected.value);
+      if (type === 'filter') {
+        onChange(selected.value as FilteredStatus);
+      } else {
+        onChange(selected.value as PaginationStatus);
+
+      }
     }
   };
 
@@ -66,7 +73,9 @@ export const DropDownMenu: React.FC<Props> = ({ value, onChange, type }) => {
             setIsActive(prev => !prev);
           }}
         >
-          {selectedOption?.label || 'none'}
+          <span className={styles.dropDown__select}>
+            {selectedOption?.label || 'none'}
+          </span>
           {!isActive ? (
             <IoIosArrowDown className={styles.dropDown__arrow} />
           ) : (

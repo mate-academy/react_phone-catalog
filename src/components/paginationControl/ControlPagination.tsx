@@ -10,14 +10,14 @@ import { useEffect } from 'react';
 import { Product } from '../../types/products';
 type Props = {
   allGoods: Product[];
-  perPages: number;
+  perPages: string;
 };
 
 export const ControlPagination = ({ allGoods, perPages }: Props) => {
   const [searchParams, setSearhParams] = useSearchParams();
   const dispatch = useAppDispatch();
 
-  const sumPages = Math.ceil(allGoods.length / perPages);
+  const sumPages = Math.ceil(allGoods.length / +perPages);
 
   const activePage = useAppSelector(state => state.pagination.currentPage);
 

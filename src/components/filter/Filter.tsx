@@ -7,6 +7,7 @@ import { setStatusPagin, setCurrentPage } from '../../features/PaginationSlice';
 import { DropDownMenu } from '../dropDownMenu/DropDownMenu';
 import { useSearchParams } from 'react-router-dom';
 import { PaginationStatus } from '../../types/pagination';
+import { FilteredStatus } from '../../types/filters';
 
 export const Filter = () => {
   const [filterParams, setFilterParams] = useSearchParams();
@@ -14,7 +15,7 @@ export const Filter = () => {
   const status = useAppSelector(state => state.filter.status);
   const paginationStatus = useAppSelector(state => state.pagination.status);
 
-  const handleStatusChange = value => {
+  const handleStatusChange = (value: FilteredStatus) => {
     dispatch(setStatus(value));
     dispatch(setCurrentPage(1));
     const params = new URLSearchParams(filterParams);
@@ -38,6 +39,7 @@ export const Filter = () => {
       params.delete('perPage');
     } else {
       params.set('perPage', value);
+      params.set('page', '1');
     }
 
     setFilterParams(params);
@@ -61,6 +63,7 @@ export const Filter = () => {
             value={paginationStatus}
             onChange={handleStatusPagination}
             type={'pagination'}
+
           />
         </div>
       </form>

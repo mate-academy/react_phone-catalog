@@ -1,9 +1,7 @@
 import './styles/fonts.scss';
-import './App.scss';
-
+import styles from './App.module.scss';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
 import { Outlet } from 'react-router-dom';
@@ -54,9 +52,14 @@ export const App = () => {
 
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <div className={styles.wrapper }>
+        <Header />
+        <main className={styles.wrapper__content}>
+          <Outlet />
+        </main>
+
+        <Footer />
+      </div>
     </>
   );
 };

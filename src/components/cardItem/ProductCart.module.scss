@@ -23,6 +23,7 @@ margin: 0 auto;
     @include mixin.on-desktop{grid-column: span 6;} }
 
 &__link{
+  margin:0 auto;
   text-decoration: none;
   color: #0F0F11;
 }
@@ -50,6 +51,7 @@ margin: 0 auto;
   &__name{
   min-height: 48px;
   margin: 0;
+  margin-top: 24px;
   font-family: Mont, sans-serif;
 font-weight: 600;
 font-size: 14px;

@@ -1,0 +1,15 @@
+body{
+  * {
+  transition: all 0.3s ease;
+}
+height: 100%;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  &__content{
+    flex-grow: 1;
+  }
+}

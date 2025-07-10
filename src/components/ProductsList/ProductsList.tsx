@@ -43,8 +43,8 @@ export const ProductList = () => {
     perPages === 'all'
       ? visibleGoods
       : visibleGoods.slice(
-          (currentPage - 1) * perPages,
-          currentPage * perPages,
+          (currentPage - 1) * +perPages,
+          currentPage * +perPages,
         );
 
   return (

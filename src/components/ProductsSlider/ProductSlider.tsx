@@ -17,7 +17,7 @@ export const ProductSlider = ({ sortedProducts, title }) => {
     const calculateVisibleCount = () => {
       const width = window.innerWidth;
 
-      if (width < 576) {
+      if (width < 768) {
         return 2;
       }
 
