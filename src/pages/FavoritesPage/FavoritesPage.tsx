@@ -4,7 +4,7 @@ import { PorductsList } from '../../components/ProductsList';
 import { useAppSelector } from '../../customHooks/customHooks';
 import { useEffect } from 'react';
 
-export const FavouritesPage: React.FC = () => {
+export const FavoritesPage: React.FC = () => {
   const { favorites } = useAppSelector(state => state.favorites);
 
   useEffect(() => {

@@ -1,6 +1,8 @@
 @import '../../styles/main';
 
 .header {
+z-index: 3;
+
   &__top-bar {
     position: fixed;
     top: 0;

@@ -123,12 +123,14 @@
       height: 32px;
       background-color: $surface2Color;
       border: 1px solid $surface1Color;
+      border-radius: 50%;
       cursor: pointer;
       transition-duration: transform 0.5s;
 
+
       &:hover {
         border-color: $surface1Color;
-        background-color: $surface1Color;
+        background-color: $accentColorHover;
       }
     }
   }

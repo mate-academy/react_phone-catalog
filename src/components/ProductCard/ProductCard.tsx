@@ -12,7 +12,7 @@ import React from 'react';
 
 type Props = {
   product: Product;
-  discount?: boolean;
+  discount?: number;
 };
 
 export const ProductCard: React.FC<Props> = React.memo(

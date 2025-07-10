@@ -3,6 +3,10 @@
 .favorites {
   width: 100%;
 
+  @include on-desktop {
+    width: 1136px;
+  }
+
   &__title {
     font-family: Mont, sans-serif;
     font-weight: 800;

@@ -13,7 +13,7 @@ export const PorductsList: React.FC<Props> = React.memo(({ products }) => {
       <ul className="productsList__list">
         {products.map(product => (
           <li className="productsList__list_item" key={product.id}>
-            <ProductCard product={product} />
+            <ProductCard product={product} discount={product.fullPrice} />
           </li>
         ))}
       </ul>

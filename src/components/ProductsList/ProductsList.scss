@@ -25,9 +25,12 @@
       justify-content: center;
       border: 1px solid $surface1Color;
       background-color: $surface1Color;
+      border-radius: 10px;
 
       &:hover {
         border-color: $surface2Color;
+        transform: translateY(-3px);
+        box-shadow: 0.5px 8px 70px -34px rgba(107, 49, 131, 1);
       }
 
       @include on-tablet {
