@@ -41,8 +41,8 @@
 }
 
 .categories {
-  grid-column: 1 / -1;
   display: grid;
+  grid-column: 1 / -1;
   row-gap: 32px;
 
   @include utils.page-grid;
