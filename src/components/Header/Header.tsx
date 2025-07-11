@@ -152,8 +152,9 @@ import { FavouritesContext } from '../../contexts/favoritesContext';
 import { CartContext } from '../../contexts/cartContext';
 import Hamburger from '../../Images/Icons/Hamburger.svg';
 
+
 export const Header = () => {
-  const isActiveTab = ({ isActive }: { isActive: boolean }) =>
+  const activeTab = ({ isActive }: { isActive: boolean }) =>
     classNames('nav__link', { nav__active: isActive });
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const { isTabletLaptopSize, width } = useViewport();
@@ -217,25 +218,25 @@ export const Header = () => {
             <nav className="nav">
               <ul className="nav__list">
                 <li className="nav__item">
-                  <NavLink to="/" className={isActiveTab}>
+                  <NavLink to="/" className={activeTab}>
                     Home
                   </NavLink>
                 </li>
 
                 <li className="nav__item">
-                  <NavLink to="/phones" className={isActiveTab}>
+                  <NavLink to="/phones" className={activeTab}>
                     Phones
                   </NavLink>
                 </li>
 
                 <li className="nav__item">
-                  <NavLink to="/tablets" className={isActiveTab}>
+                  <NavLink to="/tablets" className={activeTab}>
                     Tablets
                   </NavLink>
                 </li>
 
                 <li className="nav__item">
-                  <NavLink to="/accessories" className={isActiveTab}>
+                  <NavLink to="/accessories" className={activeTab}>
                     Accessories
                   </NavLink>
                 </li>
