@@ -1,0 +1,25 @@
+.category {
+  padding: 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.productsContainer {
+  transition: min-height 0.3s ease;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-secondary);
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-error);
+}
