@@ -1,0 +1,60 @@
+@import url(/src/Style/Blocks/navigation.scss);
+@import url(/src/Style/Blocks/reset.scss);
+@import url(/src/Style/Blocks/page.scss);
+@import url(/src/Style/Blocks/header.scss);
+@import url(/src/Style/Blocks/icon.scss);
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* #region reset*/
+
+/* endregion*/
+
+/* #region body*/
+
+
+/* #endregion */
+
+/* #region header*/
+
+
+
+
+
+/* #endregion */
+
+/* #region heder-logo*/
+// .heder-logo {
+// display: flex;
+// justify-content: space-between;
+// align-items: center;
+// padding: 0 16px ;
+// }
+
+/* #endregion */
+
+/* #region footer*/
+// .footer {
+
+// }
+
+/* #endregion */

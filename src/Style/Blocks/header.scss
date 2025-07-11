@@ -1,0 +1,32 @@
+.header {
+  background-color: white;
+  height: 48px;
+
+  &__container {
+    border-bottom: 1px solid rgba(226, 230, 233, 1);
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  &__link {
+    // display: flex;
+    line-height: 0;
+  }
+
+  &__menu {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid rgba(226, 230, 233, 1);
+  }
+}
