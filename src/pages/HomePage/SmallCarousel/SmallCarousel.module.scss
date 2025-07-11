@@ -1,0 +1,92 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.customContainer {
+  width: 1136px;
+  margin: 0 auto;
+
+  @include for-tablet {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  @include for-phone {
+    width: 100%;
+  }
+}
+
+.smCarousel {
+  overflow: hidden;
+
+  &__carousel {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  &__card {
+    flex: 0 0 80%;
+    max-width: 80%;
+    scroll-snap-align: start;
+  }
+
+  &__header {
+    @include h2;
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    @include for-tablet {
+      padding-right: 36px;
+    }
+    @include for-phone {
+      padding-right: 26px;
+    }
+  }
+
+  &__btnContainer {
+    display: flex;
+    gap: 16px;
+
+    button {
+      @include grey-button;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @include for-tablet {
+    &__cardContainer {
+      &:last-child {
+        width: 320px;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  @include for-phone {
+    &__cardContainer {
+      &:last-child {
+        width: 280px;
+        flex-shrink: 0;
+      }
+    }
+  }
+}

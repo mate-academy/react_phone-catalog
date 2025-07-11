@@ -1,0 +1,58 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.catalogue {
+  min-height: 70vh;
+
+  h1 {
+    @include h1;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    @include body-text;
+    color: $secondary;
+    margin-bottom: 40px;
+  }
+
+  &__formContainer {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+
+    @include for-phone {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+}
+
+.errorBlock,
+.emptyBlock {
+  text-align: center;
+  color: $secondary;
+  font-size: 18px;
+  margin-top: 40px;
+
+  button {
+    @include button;
+    margin-top: 16px;
+    padding: 8px 16px;
+    background-color: $accent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+}
+
+.pagination {
+  justify-self: center;
+}

@@ -1,0 +1,174 @@
+@use './variables.scss' as *;
+
+@mixin h1 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+
+  @media (max-width: 576px) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin h2 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.01em;
+
+  @media (max-width: 576px) {
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+}
+
+@mixin h3 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @media (max-width: 576px) {
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0;
+  }
+}
+
+@mixin h4 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+
+  @media (max-width: 576px) {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
+  }
+}
+
+@mixin uppercase {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin button-text {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin body-text {
+  font-family: 'Mont', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+// BUTTONS
+
+@mixin button {
+  @include body-text;
+  background-color: $accent;
+  text-align: center;
+  border: none;
+  color: $text;
+
+  &:hover {
+    background-color: #A378FF;
+    transition: .3s;
+    cursor: pointer;
+  }
+
+  &:focus {
+    background-color: $surface2;
+  }
+
+  &:disabled {
+    background-color: $surface2;
+    cursor: auto;
+  }
+}
+
+@mixin grey-button {
+  @include button;
+  background-color: $surface2;
+  box-sizing: border-box;
+  border: 1px solid $surface2;
+  color: $text;
+
+  &:hover {
+    background-color: $icons;
+    border-color: $icons;
+  }
+
+  &:focus {
+    background-color: $surface2;
+    border-color: $surface2;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border-color: $icons;
+    color: $icons;
+  }
+}
+
+
+// DISPLAYS
+
+@mixin for-phone {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+// OTHER
+@mixin link {
+  text-decoration: none;
+  color: inherit;
+
+  &:focus {
+    color: inherit;
+    outline: none;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+}
