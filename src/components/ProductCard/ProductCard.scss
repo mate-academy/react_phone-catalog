@@ -1,0 +1,142 @@
+@import '../../style-utils/variables';
+@import '../../style-utils/mixins';
+
+.product-card {
+  position: relative;
+  box-sizing: border-box;
+  width: 272px;
+  height: 507px;
+  padding: 32px 24px 24px;
+  border: 1px solid $grey-third-color;
+  transition: all 0.3s;
+
+  &:nth-child(4n) {
+    margin-right: 0;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  &__title {
+    height: 40px;
+    width: 224px;
+    color: $grey-primery-color;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__price {
+    display: flex;
+    margin-bottom: 16px;
+    padding-bottom: 6.5px;
+    padding-top: 6.5px;
+    font-size: 22px;
+    border-bottom: 1px solid $grey-secondary-color;
+  }
+
+  &__price-discount {
+    color: $grey-light-color;
+    text-decoration: line-through;
+  }
+
+  &__price-regular {
+    margin-right: 8px;
+    font-family: $basic-font;
+    font-size: 22px;
+    color: $grey-primery-color;
+  }
+
+  &__img {
+    margin: 0 auto;
+    margin-bottom: 24px;
+    height: 208px;
+
+    object-fit: contain;
+
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px $grey-box-shadow;
+
+    .product-card__img {
+      transform: scale(1.05);
+      transition: transform 0.3s;
+    }
+  }
+
+  &__properties {
+    margin-bottom: 16px;
+  }
+
+  &__property {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: $grey-secondary-color;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__property-title {
+    color: $grey-secondary-color;
+  }
+
+  &__property-value {
+    color: $grey-primery-color;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button-favorites {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-left: 8px;
+
+    border: 1px solid $border-color;
+
+    &:hover {
+      border-color: $grey-primery-color;
+    }
+
+    &--added {
+      border-color: $grey-third-color;
+    }
+  }
+
+  &__button-add-cart {
+    @include primaryButton;
+    @include buttonsText;
+
+    &--added {
+      @include primaryButtonSelected;
+    }
+  }
+
+  &--added {
+    color: $green;
+    background-color: $white-color;
+    border: 1px solid $grey-third-color;
+
+    &:hover {
+      box-shadow: none;
+      color: $red;
+    }
+  }
+}
