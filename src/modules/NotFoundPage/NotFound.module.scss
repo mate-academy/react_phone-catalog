@@ -6,12 +6,23 @@
 
   background-image: url('../../assets/images/notFoundPage/product-not-found.png');
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: center bottom;
   background-size: contain;
+
+  animation: moveBackground 2s ease-in-out infinite alternate;
 
   &__title {
     font-size: 48px;
     line-height: 56px;
     text-align: center;
+  }
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: center bottom;
+  }
+  100% {
+    background-position: center calc(100% - 20px); // зміщення вверх на 20px
   }
 }
