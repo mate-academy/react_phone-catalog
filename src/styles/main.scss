@@ -1,0 +1,12 @@
+@import './variables';
+@import './typography';
+@import './mixins';
+@import './reset';
+
+body {
+  font-family: $main-font;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $primary-color;
+  background-color: $bg-color;
+}
