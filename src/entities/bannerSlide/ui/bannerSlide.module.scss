@@ -7,7 +7,7 @@
   aspect-ratio: 1 / 1;
   width: 100%;
 
-  @media(min-width: $BREAKPOINT_TAB) {
+  @media (min-width: $BREAKPOINT_TAB) {
     aspect-ratio: 3 / 1;
   }
 }

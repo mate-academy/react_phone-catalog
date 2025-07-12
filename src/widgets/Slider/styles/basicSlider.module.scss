@@ -1,16 +1,20 @@
 @use '@constants/breakpoint' as *;
 @use '@constants/colors' as cl;
 
+.viewport {
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
 .carousel {
-  z-index: 10;
   width: 100%;
   height: 100%;
   overflow: visible;
   display: flex;
   gap: var(--gap);
   position: relative;
-
-  box-sizing: border-box;
 
   transition: none;
 
@@ -25,8 +29,6 @@
   &__banner-el {
     display: flex;
     flex: 0 0 100%;
-    width: 100%;
-    height: 100%;
     object-fit: fill;
   }
 }

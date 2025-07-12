@@ -1,36 +1,18 @@
-import styles from './HomePage.module.scss';
 import { BaseProduct, Category } from '@shared/types/APITypes';
 import { useEffect, useState } from 'react';
 import { fetchProducts } from '@shared/api/fetch';
 import { BannerData } from '@entities/bannerSlide/model/bannerSlide';
 import { Slider } from '@widgets/Slider/';
-import { Mode } from '@widgets/Slider/model/defaultConfig';
 import { SliderType } from '@widgets/Slider/lib/types';
+import {
+  heroSliderConfig,
+  heroStyles,
+  prodSliderConfig,
+  prodStyles,
+} from './model';
+import styles from './styles/HomePage.module.scss';
 
-const swiperStyles = {
-  viewport: styles['hero-swiper__viewport'],
-  pagination: styles['hero-swiper__pagination'],
-  buttonPrev: styles['hero-swiper__button-prev'],
-  buttonNext: styles['hero-swiper__button-next'],
-};
-
-const prodSwiperStyles = {
-  viewport: styles.prodSwiper__viewport,
-  buttonPrev: styles['prodSwiper__button-prev'],
-  buttonNext: styles['prodSwiper__button-next'],
-};
-
-const heroSliderConfig = {
-  mode: Mode.INFINITE,
-  snap: true,
-};
-
-const prodSliderConfig = {
-  mode: Mode.CLAMP,
-  snap: true,
-  gap: 30,
-};
-
+//todo: styles of header/footer btns
 export const HomePage = () => {
   const [products, setProducts] = useState<BaseProduct[] | null>(null);
   const [bannerList, setBannerList] = useState<BannerData[] | null>(null);
@@ -61,9 +43,11 @@ export const HomePage = () => {
         </span>
 
         {bannerList && (
-          <div className={styles['hero-swiper']}>
+          <div
+            className={`${styles['hero-slider']} ${styles['slider-container']}`}
+          >
             <Slider
-              classNames={swiperStyles}
+              classNames={heroStyles}
               dataset={bannerList}
               sliderConfig={heroSliderConfig}
               type={SliderType.BANNER}
@@ -72,18 +56,22 @@ export const HomePage = () => {
         )}
       </div>
       <main className={styles['home-catalogue']}>
-        <section className={styles.prodSwiper}>
+        <section
+          className={`${styles.prodSwiper} ${styles['slider-container']}`}
+        >
           <h2 className={styles.prodSwiper__title}>Brand new Models</h2>
           {products && (
             <Slider
-              classNames={prodSwiperStyles}
+              classNames={prodStyles}
               dataset={products as BaseProduct[]}
               sliderConfig={prodSliderConfig}
               type={SliderType.PROD}
             />
           )}
         </section>
-        <section className={styles['home-catalogue__categories']}></section>
+        <section className={styles['home-catalogue__categories']}>
+          <h2 className={styles.prodSwiper__title}>Shop by category</h2>
+        </section>
         <section className={styles['home-catalogue__hot-prices']}></section>
       </main>
     </div>

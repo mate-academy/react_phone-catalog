@@ -1,6 +1,7 @@
 @use '@constants/breakpoint' as *;
 @use '@mixins/typography/h1' as *;
 @use '@mixins/pageLayout' as *;
+@use '@mixins/sliderPagination/blockPagination' as *;
 
 $GAP_MOB: 56px;
 $GAP_TAB: 64px;
@@ -8,17 +9,16 @@ $GAP_WIDE: 80px;
 
 .container {
   @include page-layout;
-
   display: flex;
   flex-direction: column;
   gap: $GAP_MOB;
 
-  @media(min-width: $BREAKPOINT_TAB) {
+  @media (min-width: $BREAKPOINT_TAB) {
     gap: $GAP_TAB;
     margin-top: 32px;
   }
 
-  @media(min-width: $BREAKPOINT_WIDE){
+  @media (min-width: $BREAKPOINT_WIDE) {
     gap: $GAP_WIDE;
     margin-top: 56px;
   }
@@ -33,11 +33,11 @@ $GAP_WIDE: 80px;
     @include h1;
   }
 
-  @media(min-width: $BREAKPOINT_TAB) {
+  @media (min-width: $BREAKPOINT_TAB) {
     gap: 32px;
   }
 
-  @media(min-width: $BREAKPOINT_WIDE) {
+  @media (min-width: $BREAKPOINT_WIDE) {
     gap: 56px;
   }
 }
@@ -47,45 +47,36 @@ $GAP_WIDE: 80px;
   display: none;
 }
 
-.hero-swiper {
-  position: relative;
-  left: -16px;
-
-  overflow: hidden;
+.slider-container {
+  overflow: visible;
   display: grid;
+  position: relative;
+  height: auto;
+}
+
+.hero-slider {
+  left: -16px;
   grid-template-columns: 0 1fr 0;
   grid-template-rows: 1fr 24px;
   gap: 8px 0;
-
   width: 100vw;
-  height: calc(100vw + 32px);
-
-
 
   &__viewport {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    grid-column: 2;
-    grid-row: 1;
-
-    width: 100%;
-    min-width: 0;
-    height: auto;
+    grid-area: 1 / 2 / 1 / 3;
   }
 
   &__pagination {
     grid-area: 2 / 1 / 2 / 3;
+
+    @include block-pagination;
   }
 
   &__button-prev {
     grid-area: 1 / 1 / 2 / 2;
-    box-sizing: border-box;
   }
 
   &__button-next {
     grid-area: 1 / 3 / 2 / 3;
-    box-sizing: border-box;
   }
 
   @media (min-width: $BREAKPOINT_TAB) {
@@ -96,7 +87,6 @@ $GAP_WIDE: 80px;
 
     width: 100%;
     aspect-ratio: 3 / 1;
-    height: auto;
   }
 
   @media (min-width: $BREAKPOINT_WIDE) {
@@ -105,25 +95,19 @@ $GAP_WIDE: 80px;
 }
 
 .prodSwiper {
-  display: grid;
-  position: relative;
   grid-template-columns: 1fr 32px 32px;
   grid-template-rows: 62px 1fr;
   gap: 16px 24px;
 
   width: 100%;
-  height: auto;
 
   &__title {
     grid-area: 1 / 1 / 1 / 1;
+    align-self: center;
   }
 
   &__viewport {
-    overflow: visible;
     grid-area: 2 / 1 / 3 / 4;
-    display: flex;
-    width: auto;
-    height: 100%;
   }
 
   &__button-prev {
@@ -139,8 +123,14 @@ $GAP_WIDE: 80px;
     width: 32px;
     height: 32px;
   }
+}
 
-  @media (min-width: $BREAKPOINT_WIDE) {
-    overflow: hidden;
+.home-catalogue {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @media (min-width: $BREAKPOINT_TAB) {
+    gap: 80px;
   }
 }

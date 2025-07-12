@@ -1,5 +1,6 @@
 @use '@constants/breakpoint' as *;
 @use '@constants/colors' as cl;
+@use '@shared/styles/mixins/typography/uppercase' as *;
 
 .footer {
   display: grid;
@@ -33,7 +34,30 @@
     height: 65px;
   }
 
-  @media(min-width: $BREAKPOINT_TAB) {
+  &__btns {
+    display: flex;
+    height: 32px;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    > :first-child {
+      @include uppercase;
+
+      display: inline-block;
+      line-height: 32px;
+
+      color: cl.$gray-secondary;
+    }
+
+    > :last-child {
+      width: 32px;
+    }
+  }
+
+  @media (min-width: $BREAKPOINT_TAB) {
     grid-template-columns: 0.8fr 1fr 0.8fr;
     grid-template-rows: 1fr;
     justify-content: center;
@@ -51,7 +75,7 @@
     }
   }
 
-  @media(min-width: $BREAKPOINT_WIDE) {
+  @media (min-width: $BREAKPOINT_WIDE) {
     grid-template-columns: 360px 420px 360px;
 
     &__nav {

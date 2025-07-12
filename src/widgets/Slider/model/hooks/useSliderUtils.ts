@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { useSlContext } from '../context/sliderContext';
-import styles from '../../ui/carousel/carousel.module.scss';
+import styles from '../../styles/basicSlider.module.scss';
 
 type Params = {
   swipeCoeff: number;

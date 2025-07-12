@@ -2,12 +2,12 @@ import {
   FooterLabelProp,
   FooterNavName,
   FooterRoutePath,
-} from '../../components/Footer/types/footerLinks';
+} from '@widgets/Footer/types/footerLinks';
 import {
   HeaderLabelProp,
   HeaderNavName,
   HeaderRoutePath,
-} from '../../components/Header/types/headerLinks';
+} from '@widgets/header/types/headerLinks';
 
 export type NavigationItem = {
   name: HeaderNavName | FooterNavName;

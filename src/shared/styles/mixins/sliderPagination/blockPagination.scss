@@ -1,0 +1,24 @@
+@use '@constants/colors' as *;
+
+@mixin block-pagination {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  > * {
+    box-sizing: border-box;
+    display: flex;
+    padding: 10px 5px;
+    width: 24px;
+    height: 24px;
+
+    &:first-child {
+      width: 100%;
+      height: 100%;
+      background-color: $elements;
+    }
+  }
+}

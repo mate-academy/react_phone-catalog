@@ -2,15 +2,22 @@
 
 .button {
   color: cl.$gray-primary;
+  z-index: 11;
 
-  border: 1px solid cl.$elements;
+  outline: 1px solid cl.$elements;
 
   &__icon {
     background-color: cl.$gray-primary;
   }
 
-  &:hover {
-    border: 1px solid cl.$gray-primary;
+  &:disabled {
+    > :first-child {
+      background-color: cl.$icons;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    outline: 1px solid cl.$gray-primary;
+    z-index: 20;
   }
 }
-

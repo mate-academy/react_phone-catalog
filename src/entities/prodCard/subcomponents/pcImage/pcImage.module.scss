@@ -13,11 +13,11 @@
     object-fit: contain;
   }
 
-  @media(min-width: $BREAKPOINT_TAB) {
+  @media (min-width: $BREAKPOINT_TAB) {
     height: 181px;
   }
 
-  @media(min-width: $BREAKPOINT_WIDE) {
+  @media (min-width: $BREAKPOINT_WIDE) {
     height: 196px;
   }
 }

@@ -1,6 +1,12 @@
 @use '@constants/colors' as *;
 
-body, a, ul, button, h1, main, *{
+body,
+a,
+ul,
+button,
+h1,
+main,
+* {
   margin: 0;
   padding: 0;
 }
@@ -10,7 +16,8 @@ button {
   background-color: $white;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 

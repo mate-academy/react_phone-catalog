@@ -5,7 +5,7 @@ import { useSlContext } from '../../model/context/sliderContext';
 import { BannerData } from '@entities/bannerSlide/model/bannerSlide';
 import { ProductCard } from '@entities/prodCard';
 import { BaseProduct } from '@shared/types/APITypes';
-import styles from './carousel.module.scss';
+import styles from '../../styles/basicSlider.module.scss';
 
 type Props = {
   visualConfig: VisualConfig;
@@ -27,7 +27,7 @@ export const Carousel: React.FC<Props> = ({
   const { gap, animationSpeed } = visualConfig;
 
   return (
-    <div className={className} ref={VP} {...handlers}>
+    <div className={`${className} ${styles.viewport}`} ref={VP} {...handlers}>
       <ul
         ref={track}
         className={styles.carousel}

@@ -22,7 +22,7 @@
       color: cl.$gray-primary;
 
       &::after {
-        content: "";
+        content: '';
 
         position: absolute;
         bottom: 0;
@@ -36,5 +36,3 @@
     }
   }
 }
-
-
