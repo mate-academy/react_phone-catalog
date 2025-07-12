@@ -116,38 +116,38 @@
   gap: 10px;
   margin-top: 10px;
   cursor: pointer;
-  flex-wrap: wrap;          
+  flex-wrap: wrap;
   justify-content: start;
 }
 
 .color-picker__title {
   font-weight: 600;
   font-size: 12px;
-  color: #89939A;              // ✅ додано
+  color: #89939A;
 }
 
 .color-picker button {
-  display: flex;               // ✅ додано
+  display: flex;
   width: 35px;
   height: 35px;
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid #a8a5a5 !important;  // 🔁 змінено для уніфікації
+  border: 1px solid #a8a5a5 !important;
   outline: 1px solid #a8a5a5;
   outline-offset: 2px;
-  flex-shrink: 0;              // ✅ додано
+  flex-shrink: 0;
 }
 
 .color-picker button.selected {
-  border: 2px double black !important;  // 🔁 змінено стиль
-  transform: scale(1.2);                // ✅ додано
+  border: 2px double black !important;
+  transform: scale(1.2);
 }
 
 .info-tablet__selectCapacity__title {
   font-weight: 600;
   font-size: 12px;
-  color: #89939A;                       // ✅ додано
+  color: #89939A;
 }
 
 .info-tablet__selectCapacity {
@@ -169,7 +169,7 @@
   font-size: 14px;
   margin: 0;
   background-color: #fff;
-  flex-shrink: 0;                         // ✅ додано
+  flex-shrink: 0;
 }
 
 .info-tablet__selectCapacity button.selected {
@@ -195,7 +195,7 @@
   justify-content: start;
 
   @media (max-width: 640px) {
-    flex-direction: row;       // ✅ додано
+    flex-direction: row;
     align-items: start;
     width: 100%;
   }
@@ -221,7 +221,7 @@
   flex-shrink: 0;
 
   @media (max-width: 640px) {
-    margin-top: 0px;           // ✅ додано
+    margin-top: 0px;
   }
 }
 
@@ -236,13 +236,13 @@
   gap:10px;
 
   @media (max-width: 640px) {
-    width: 90%;                 // ✅ додано
+    width: 90%;
     align-items: stretch;
   }
 
   @media (max-width: 480px) {
     align-content: center;
-    width: 90%;                // ✅ додано
+    width: 90%;
   }
 }
 
@@ -307,8 +307,8 @@
   font-size: 24px;
   font-weight: bold;
   margin: 0;
-  text-align: start;         // ✅ додано
-  width: 100%;               // ✅ додано
+  text-align: start;
+  width: 100%;
 }
 
 .tablet_midle {
@@ -339,7 +339,7 @@
   gap: 50px;
   flex-wrap: wrap;
   justify-content: start;
-  // width: 100%;
+  width: 100%;
 
   @media (max-width: 640px) {
     flex-direction: column;
