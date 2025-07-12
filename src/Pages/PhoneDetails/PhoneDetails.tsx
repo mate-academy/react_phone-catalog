@@ -224,9 +224,12 @@ export const PhoneDetails: React.FC = () => {
             ))}
           </div>
           <hr />
-
-          <span className="info-phone__price--new">${currentPrice}</span>
-          <span className="info-phone__price--old">${phone.priceRegular}</span>
+          <div className="price">
+            <span className="info-phone__price--new">${currentPrice}</span>
+            <span className="info-phone__price--old">
+              ${phone.priceRegular}
+            </span>
+          </div>
 
           <div className="info-phone__actions">
             <button

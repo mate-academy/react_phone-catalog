@@ -178,7 +178,7 @@ export const TabletDetails: React.FC = () => {
         <h2>{tablet.name}</h2>
       </div>
 
-      <div className="tablet-start">
+      <div className="tablet_midle">
         <div className="tablet-gallery">
           <div className="tablet-gallery__thumbnails">
             {currentImages.map((image, index) => (
@@ -198,8 +198,9 @@ export const TabletDetails: React.FC = () => {
           />
         </div>
 
-        <div>
-          <h3>Choose a color:</h3>
+        <div className="mainControls">
+          <div className="color-picker__title">Choose a color:</div>{' '}
+          {/* ✅ Додано клас */}
           <div className="color-picker">
             {tablet.colorsAvailable.map((color) => (
               <button
@@ -210,9 +211,13 @@ export const TabletDetails: React.FC = () => {
               />
             ))}
           </div>
-
-          <h3>Choose capacity:</h3>
-          <div className="capacity-picker">
+          <div className="info-phone__selectCapacity__title">
+            Choose capacity:
+          </div>{' '}
+          {/* ✅ Додано клас */}
+          <div className="info-tablet__selectCapacity">
+            {' '}
+            {/* ✅ Змінено з capacity-picker */}
             {tablet.capacityAvailable.map((capacity) => (
               <button
                 key={capacity}
@@ -223,19 +228,12 @@ export const TabletDetails: React.FC = () => {
               </button>
             ))}
           </div>
-
-          <div className="info-tablet">
-            <p>Capacity: {tablet.capacity}</p>
-            <p>Price: ${currentPrice ?? tablet.priceRegular}</p>
-            <p>Screen: {tablet.screen}</p>
-            <p>Resolution: {tablet.resolution}</p>
-            <p>Processor: {tablet.processor}</p>
-            <p>RAM: {tablet.ram}</p>
+          <div className="info-tablet__detail__price">
+            <span></span> <span>${currentPrice ?? tablet.priceRegular}</span>
           </div>
-
-          <div className="info-tablet_actions">
+          <div className="info-tablet__actions">
             <button
-              className="info-tablet_actions__btn-primary"
+              className="info-tablet__actions__btn-primary"
               onClick={() => toggleToCart(tablet)}
             >
               {isInCart ? 'Remove from Cart' : 'Add to Cart'}
@@ -247,8 +245,29 @@ export const TabletDetails: React.FC = () => {
               alt="Favorite"
             />
           </div>
+          <div className="info-tablet-box-detail">
+            {' '}
+            {/* ✅ Уніфіковано як .info-phone-box-detail */}
+            <div className="info-tablet__detail">
+              <span>Capacity:</span> <span>{tablet.capacity}</span>
+            </div>
+            <div className="info-tablet__detail">
+              <span>Screen:</span> <span>{tablet.screen}</span>
+            </div>
+            <div className="info-tablet__detail">
+              <span>Resolution:</span> <span>{tablet.resolution}</span>
+            </div>
+            <div className="info-tablet__detail">
+              <span>Processor:</span> <span>{tablet.processor}</span>
+            </div>
+            <div className="info-tablet__detail">
+              <span>RAM:</span> <span>{tablet.ram}</span>
+            </div>
+          </div>
         </div>
+      </div>
 
+      <div className="tablet-start">
         <div className="Description_tablet">
           <div className="box_two">
             <h3>About</h3>

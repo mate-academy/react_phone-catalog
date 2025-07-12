@@ -202,7 +202,7 @@ export const Tablets: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="tablet_page">
       <SearchParameters />
       <h1 className="tablets-header">Tablets</h1>
       <h2 className="tablets-available__title">

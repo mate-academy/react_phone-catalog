@@ -2,23 +2,53 @@
   text-align: center;
   margin-top: 20px;
   padding-bottom: 64px;
+
+  &__title{
+    display: flex;
+    font-size: 32px;
+    justify-content: space-between;
+    padding: 80px 0 24px 32px;
+    margin: 0;
+
+    @media(min-width: 1200px) {
+      padding: 80px 0 24px 0;
+    }
+    @media(max-width: 1200px) {
+      padding: 80px 0 24px 0;
+    }
+    @media (max-width: 639px) {
+      text-align: start;
+    }
+}
 }
 
 .hotPrices__header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 639px){
+    width: 100%;
+    align-items: flex-start;
+  }
 }
 
 .hotPrices__title{
     display: flex;
     font-size: 32px;
-    justify-content: start;
+    justify-content: space-between;
     padding: 80px 0 24px 32px;
     margin: 0;
 
     @media(min-width: 1200px) {
       padding: 80px 0 24px 0;
+    }
+    @media(max-width: 1200px) {
+      padding: 80px 0 24px 0;
+    }
+    @media (max-width: 639px) {
+      justify-content: start;
+      text-align: start;
     }
 }
 

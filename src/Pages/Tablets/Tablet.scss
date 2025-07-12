@@ -1,9 +1,14 @@
+.tablet_page {
+  @media(min-width: 1200px) {
+    padding-left: 152px;
+    padding-right: 152px;
+  }
+}
 .tablet-list {
   display: flex;
   gap: 16px;
-  justify-content: center;
   flex-wrap: wrap;
-  padding-top: 24px;
+  padding: 24px 0 0 32px;
 
   &__boxSort {
     display: flex;
@@ -92,6 +97,13 @@
   &:hover {
     transform: scale(1.1);
   }
+}
+
+.tabletcardprice {
+  display: flex;
+  align-items: start;
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .tablet-card__detail {

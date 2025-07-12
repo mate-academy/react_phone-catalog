@@ -29,6 +29,11 @@
   justify-content: start;
   align-items: center;
   flex-wrap: wrap;
+
+  @media(max-width: 1200px) {
+    gap: 50px;
+  }
+
 }
 
 .phone-gallery__thumbnails {
@@ -40,15 +45,19 @@
 
 .phone-gallery__thumbnails img {
   width: 50px;
-  height: 80px;
   cursor: pointer;
   transition: border 0.3s ease;
   padding: 5px;
   max-width: 100%;
   height: auto;
+  object-fit: contain;
 }
 
 .mainControls{
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 10px;
   @media (max-width:640px) {
     display: flex;
     width: 100%;
@@ -68,12 +77,15 @@
     max-height: 464px;
     object-fit: contain;
   }
-  @media(max-width: 1200px){
-    width: 287px;
+  @media(max-width: 1199px){
+    width: 220px;
     height: 287px;
     max-width: 287px;
     max-height: 287px;
     object-fit: contain;
+  }
+  @media (min-width: 641px) and (max-width: 672px) {
+    width: 60%;
   }
 }
 
@@ -90,7 +102,7 @@
   margin-top: 10px;
   cursor: pointer;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
 }
 
 .color-picker button {
@@ -122,7 +134,6 @@
   gap: 8px;
   cursor: pointer;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .info-phone__selectCapacity button {
@@ -172,15 +183,7 @@
   gap: 8px;
   position: relative;
   flex-wrap: wrap;
-  justify-content: center;
-
-  // @media(max-width:768px) {
-  //   display: flex;
-  //   height: 100px;
-  //   width: 100px;
-  //   align-items: center;
-  //   justify-content: space-between;
-  // }
+  justify-content: start;
 }
 
 .info-phone__actions__btn-primary {
@@ -200,13 +203,10 @@
 
 .info-phone-box-detail {
   display: flex;
+  width: 100%;
   flex-direction: column;
   padding: 20px 0 0 0;
   gap: 8px;
-
-  // @media(max-width: 768px) {
-  //   flex-direction: row;
-  // }
 }
 
 .info-phone__detail {
@@ -250,12 +250,14 @@
 .phone_midle{
   display: flex;
   width: 100%;
-  justify-content: start;
-  gap: 90px;
+  justify-content: space-between;
+  gap: 1px;
 
-  @media(max-width: 1200px) {
-    flex-direction: row;
-    gap:50px;
+  @media(max-width: 1199px) {
+    display: flex;
+    // width: 100%;
+    justify-content: space-between;
+    gap: 1px;
   }
 
   @media(max-width: 640px) {
@@ -272,23 +274,24 @@
   align-items: flex-start;
   gap: 50px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
 }
 
 .Description {
   display: flex;
+  width: 100%;
   justify-items: center;
   justify-content: space-between;
   flex-direction: row;
   color: #363535;
   flex-wrap: wrap;
-  gap: 64px;
+  gap: 10px;
 
-  @media(min-width: 1200px) {
-    display: flex;
-    width: 100%;
-    justify-content: start;
-  }
+  // @media(min-width: 1200px) {
+  //   display: flex;
+  //   width: 65%;
+  //   justify-content: space-between;
+  // }
 }
 
 .box_one {
@@ -357,12 +360,12 @@
 
   .phone-start {
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     gap: 30px;
   }
 
   .info-phone__actions {
-    flex-direction: column;
+    flex-direction: row;
     align-items: start;
     width: 100%;
   }
@@ -378,19 +381,36 @@
 
   .Description {
     flex-direction: column;
-    align-items: center;
+    align-items: start;
   }
 
   .box_one,
   .box_two {
     width: 100%;
-    align-items: center;
-    text-align: center;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
   }
 
-  .info-phone__detail span {
-    flex-basis: 100%;
-    text-align: center;
+  .info-phone-box-detail span {
+    flex: 1;
+
+    &:first-child {
+      max-width: 10%;
+      text-align: left;
+    }
+
+    &:last-child {
+      max-width: 30%;
+      text-align: right;
+    }
+  }
+  .info-phone-box-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 90%;
+    align-items: stretch;
   }
 }
 
@@ -401,6 +421,7 @@
     padding-right: 10px;
   }
 
+
   .phone-gallery__main-image {
     width: 200px;
   }
@@ -408,5 +429,26 @@
   .info-phone__price--new,
   .info-phone__price--old {
     font-size: 18px;
+  }
+
+  .info-phone-box-detail span {
+    flex: 1;
+
+    &:first-child {
+      max-width: 10%;
+      text-align: left;
+    }
+
+    &:last-child {
+      max-width: 30%;
+      text-align: right;
+    }
+  }
+  .info-phone-box-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 90%;
+    align-items: stretch;
   }
 }

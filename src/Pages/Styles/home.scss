@@ -36,4 +36,10 @@
     align-items: center;
     padding: 32px;
   }
+  @media (max-width: 639px) {
+    padding: 0;
+  }
+  @media (max-width: 1199px) {
+    padding: 0;
+  }
 }

@@ -1,75 +1,94 @@
 .slider-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   padding: 0 32px;
-  @media (min-width:1200px) {
-    height: 400px;
-    width: 55%;
-    display: flex;
-    justify-content: space-between;
-  }
-  .img {
-      position: absolute;
-      width: 80%;
-      height: 100%;
-      object-fit:cover;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 0.9s ease-in-out;
+  overflow: hidden;
+  position: relative;
 
-      &.active {
-        opacity: 1;
-        pointer-events: auto;
-        position: relative;
-      }
-    }
+  @media (min-width: 1200px) {
+    height: 400px;
+    width: 41%;
+  }
+
+  @media (max-width: 438px) {
+    padding: 0;
+  }
 
   .slideshow {
     position: relative;
+    width: 95%;
     height: 400px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    padding: 0;
     overflow: hidden;
-
-
-    button {
-      background-color: #fff;
-      border: 1px solid #B4BDC3;
-      cursor: pointer;
-      z-index: 1;
-      width: 50px;
-    }
 
     @media (max-width: 438px) {
       height: 100vw;
       width: 100%;
       justify-content: center;
       padding: 0;
+    }
 
-      button {
-        background-color: #fff;
-        border: none;
-        font-size: 24px;
-        padding: 10px;
+    .slider-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .slider-track {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      transition: transform 0.7s ease-in-out;
+    }
+
+    .slide-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      flex-shrink: 0;
+
+      @media (max-width: 438px) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
   }
 
-  @media (max-width: 438px) {
-      height: 100vw;
-      padding: 0;
+  .arrow {
+    height: 28vh;
+    width: 32px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #FFFFFF;
+    color: #313237;
+    border: 1px solid #B4BDC3;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 10;
 
-      button {
-        display: none;
-      }
+    &.left {
+      left: 0;
     }
 
+    &.right {
+      right: 0;
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+  }
+
   .dots {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    margin-top: 16px;
     gap: 8px;
 
     .dot {

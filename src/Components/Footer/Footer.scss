@@ -37,6 +37,9 @@
     gap: 16px;
     width: 100%;
   }
+  @media (max-width: 480px) {
+    padding-left: 10px;
+  }
 }
 
 .footer-button {
@@ -126,6 +129,8 @@
     flex-direction: column;
     position: relative;
     padding: 0px 0px 16px 0px;
-
+  }
+  @media (max-width: 480px) {
+    padding-left: 10px;
   }
 }

@@ -1,9 +1,15 @@
+.accessories_page {
+  @media(min-width: 1200px) {
+    padding-left: 152px;
+    padding-right: 152px;
+  }
+}
 .accessories-list {
   display: flex;
   gap: 16px;
-  justify-content: center;
   flex-wrap: wrap;
-  padding-top: 24px;
+  padding: 24px 0 0 32px;
+
 
   &__boxSort {
     display: flex;
@@ -84,6 +90,20 @@
   &:hover {
     transform: scale(1.1);
   }
+}
+
+.accessories-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #363535;
+  min-height: 35px;
+}
+
+.accessories-price {
+  display: flex;
+  align-items: start;
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .accessories-card__detail {

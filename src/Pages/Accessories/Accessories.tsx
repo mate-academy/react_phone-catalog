@@ -208,7 +208,7 @@ export const Accessories: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="accessories_page">
       <SearchParameters />
       <h1 className="accessories-header__title">Accessories</h1>
       <h2 className="accessories-available__title">
