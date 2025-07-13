@@ -1,0 +1,18 @@
+@use '/src/component/style/utils/mexin.module' as u;
+
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroContainer {
+  margin-bottom: 56px;
+
+  @include u.on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include u.on-desktop {
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,25 @@
+body {
+  color: #000;
+  background-color: #fff;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.visually_hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  clip: rect(0, 0, 0, 0);
+}
