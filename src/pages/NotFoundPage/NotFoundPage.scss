@@ -1,0 +1,46 @@
+@import '../../style-utils/mixins.scss';
+@import '../../style-utils/variables.scss';
+
+.no-page {
+  box-sizing: border-box;
+  padding: 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+
+  &__title {
+    @include h1Text;
+  }
+
+  &__code {
+    @include h2Text;
+  }
+
+  &__description {
+    @include bodyText;
+    color: $grey-secondary-color;
+  }
+
+  &__button {
+    @include primaryButton;
+    @include buttonsText;
+    padding: 0 12px;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    margin: 60px auto;
+    text-align: center;
+  }
+}
