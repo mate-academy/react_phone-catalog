@@ -1,0 +1,137 @@
+.slider-block {
+  width: 100%;
+  position: relative;
+
+  &__text {
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: rgba(241, 242, 249, 1);
+    margin: 0;
+    padding: 24px 16px;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 32px;
+  height: 32px;
+  background-color: rgba(50, 53, 66, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 32px;
+  z-index: 10;
+  cursor: pointer;
+  border: 1px solid rgba(76, 80, 102, 1);
+
+  &::after {
+    display: none;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.swiper-button-prev {
+  right: 72px;
+}
+
+.swiper-button-next {
+  right: 24px;
+}
+
+.card-product {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  width: 212px;
+  height: 440px;
+  background-color: rgba(22, 24, 39, 1);
+  gap: 8px;
+
+  &__picture {
+    width: 148px;
+    height: 129px;
+    align-self: center;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    font-family: 'Mont', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(241, 242, 249, 1);
+    margin: 8px 0 4px 0;
+  }
+
+  &__price {
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: rgba(241, 242, 249, 1);
+    margin: 0 0 16px 0;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__block-title {
+    font-family: 'Mont', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: rgba(117, 118, 127, 1);
+    margin: 0;
+  }
+
+  &__block-text {
+    font-family: 'Mont', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: rgba(241, 242, 249, 1);
+    margin: 0;
+  }
+
+  &__buttons {
+    align-self: center;
+    display: flex;
+    gap: 17.5px;
+    margin-top: auto;
+  }
+
+  &__button-add {
+    width: 100px;
+    height: 40px;
+    color: rgba(241, 242, 249, 1);
+    background-color: rgba(144, 91, 255, 1);
+    border: 0;
+  }
+
+  &__button-like {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(50, 53, 66, 1);
+    border: 0;
+  }
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+
+  .swiper {
+    width: 100%;
+    height: auto;
+  }
+}

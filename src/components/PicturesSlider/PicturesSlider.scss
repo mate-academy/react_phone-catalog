@@ -1,0 +1,68 @@
+.slider-block {
+  &__text {
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    color: rgba(241, 242, 249, 1);
+    margin: 0;
+    padding: 24px 16px;
+  }
+}
+
+.slider {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+
+  .swiper {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+
+    // square ratio для мобілок
+    @media (max-width: 639px) {
+      aspect-ratio: 1 / 1;
+    }
+
+    // інше співвідношення для десктопів
+    @media (min-width: 640px) {
+      aspect-ratio: 2 / 1;
+    }
+
+    .slider__picture {
+      height: auto;
+      max-height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .swiper-pagination {
+    position: relative;
+    bottom: 0;
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+  }
+
+  .swiper-pagination-bullet {
+    width: 14px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(59, 62, 74, 1); // сірий
+    opacity: 1;
+    transition: background-color 0.3s;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: rgba(241, 242, 249, 1); // білий
+  }
+}
