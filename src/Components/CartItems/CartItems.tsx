@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { useContext, useState } from 'react';
 import { Navigation } from '../Navigation/Navigation';
 import cart from './CartItems.module.scss';
