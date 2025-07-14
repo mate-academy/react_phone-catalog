@@ -1,92 +1,132 @@
-.slider-block {
+.products-slider {
   width: 100%;
   position: relative;
 
-  &__text {
-    font-family: 'Mont', sans-serif;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
     color: rgba(241, 242, 249, 1);
     margin: 0;
-    padding: 24px 16px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
   }
 }
 
-.swiper-button-prev,
-.swiper-button-next {
+.slider-nav-prev,
+.slider-nav-next {
   width: 32px;
   height: 32px;
   background-color: rgba(50, 53, 66, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 32px;
-  z-index: 10;
   cursor: pointer;
-  border: 1px solid rgba(76, 80, 102, 1);
+  border: 0;
+
+  .slider-icon {
+    color: rgba(241, 242, 249, 1);
+  }
 
   &::after {
     display: none;
   }
+}
 
-  img {
-    width: 16px;
-    height: 16px;
+.is-disabled {
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 1px solid rgba(59, 62, 74, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  .slider-icon {
+    color: rgba(74, 77, 88, 1);
+  }
+
+  &::after {
+    display: none;
   }
 }
 
-.swiper-button-prev {
-  right: 72px;
-}
-
-.swiper-button-next {
-  right: 24px;
-}
-
-.card-product {
+.product-card {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+
   padding: 32px;
-  width: 212px;
+  width: 100%;
+  max-width: 212px;
+  width: 100%;
+  flex-shrink: 0;
   height: 440px;
   background-color: rgba(22, 24, 39, 1);
   gap: 8px;
 
-  &__picture {
-    width: 148px;
+  &__image {
+    width: auto;
     height: 129px;
     align-self: center;
     flex-shrink: 0;
   }
 
   &__name {
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     color: rgba(241, 242, 249, 1);
-    margin: 8px 0 4px 0;
+    margin: 8px 0 4px;
   }
 
   &__price {
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
     color: rgba(241, 242, 249, 1);
-    margin: 0 0 16px 0;
+    margin: 0 0 16px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(59, 62, 74, 1);
+    }
   }
 
-  &__block {
+  &__spec {
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
   }
 
-  &__block-title {
-    font-family: 'Mont', sans-serif;
+  &__label {
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;
@@ -94,8 +134,8 @@
     margin: 0;
   }
 
-  &__block-text {
-    font-family: 'Mont', sans-serif;
+  &__value {
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;
@@ -103,14 +143,14 @@
     margin: 0;
   }
 
-  &__buttons {
+  &__actions {
     align-self: center;
     display: flex;
     gap: 17.5px;
     margin-top: auto;
   }
 
-  &__button-add {
+  &__add {
     width: 100px;
     height: 40px;
     color: rgba(241, 242, 249, 1);
@@ -118,7 +158,10 @@
     border: 0;
   }
 
-  &__button-like {
+  &__like {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 40px;
     height: 40px;
     background-color: rgba(50, 53, 66, 1);
@@ -126,12 +169,13 @@
   }
 }
 
-.slider {
-  position: relative;
+.swiper {
   width: 100%;
+  height: auto;
+}
 
-  .swiper {
-    width: 100%;
-    height: auto;
-  }
+.swiper-slide {
+  height: auto;
+  margin: 0 !important;
+  padding: 0 !important;
 }

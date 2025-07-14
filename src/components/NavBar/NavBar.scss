@@ -4,6 +4,8 @@
   justify-content: space-between;
   align-items: center;
   height: 48px;
+  box-sizing: border-box;
+  border: 1px solid rgba(59, 62, 74, 1);
 
   &__logo {
     width: 64px;
@@ -11,7 +13,13 @@
     padding-left: 16px;
   }
 
-  &__burger {
-    padding-right: 17px;
+  &__burger-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid rgba(59, 62, 74, 1);
+    width: 48px;
+    height: 48px;
   }
 }
