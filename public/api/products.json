@@ -11,7 +11,8 @@
     "color": "black",
     "ram": "2GB",
     "year": 2016,
-    "image": "img/phones/apple-iphone-7/black/00.webp"
+    "image": "img/phones/apple-iphone-7/black/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 2,
@@ -25,7 +26,8 @@
     "color": "black",
     "ram": "3GB",
     "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/black/00.webp"
+    "image": "img/phones/apple-iphone-7-plus/black/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 3,
@@ -39,7 +41,8 @@
     "color": "gold",
     "ram": "2GB",
     "year": 2017,
-    "image": "img/phones/apple-iphone-8/gold/00.webp"
+    "image": "img/phones/apple-iphone-8/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 4,
@@ -53,7 +56,8 @@
     "color": "black",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/black/00.webp"
+    "image": "img/phones/apple-iphone-11/black/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 5,
@@ -67,7 +71,8 @@
     "color": "yellow",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/yellow/00.webp"
+    "image": "img/phones/apple-iphone-11/yellow/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 6,
@@ -81,7 +86,8 @@
     "color": "green",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/green/00.webp"
+    "image": "img/phones/apple-iphone-11/green/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 7,
@@ -95,7 +101,8 @@
     "color": "gold",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 8,
@@ -109,7 +116,8 @@
     "color": "midnightgreen",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/midnightgreen/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/midnightgreen/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 9,
@@ -123,7 +131,8 @@
     "color": "silver",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/silver/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 10,
@@ -137,7 +146,8 @@
     "color": "spacegray",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 11,
@@ -151,7 +161,8 @@
     "color": "gold",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/gold/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 12,
@@ -165,7 +176,8 @@
     "color": "spacegray",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 13,
@@ -179,7 +191,8 @@
     "color": "red",
     "ram": "3GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xr/red/00.webp"
+    "image": "img/phones/apple-iphone-xr/red/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 14,
@@ -193,7 +206,8 @@
     "color": "white",
     "ram": "3GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xr/white/00.webp"
+    "image": "img/phones/apple-iphone-xr/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 15,
@@ -207,7 +221,8 @@
     "color": "spacegray",
     "ram": "4GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xs/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-xs/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 16,
@@ -221,7 +236,8 @@
     "color": "gold",
     "ram": "4GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xs-max/gold/00.webp"
+    "image": "img/phones/apple-iphone-xs-max/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 17,
@@ -235,7 +251,8 @@
     "color": "silver",
     "ram": "4GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xs-max/silver/00.webp"
+    "image": "img/phones/apple-iphone-xs-max/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 18,
@@ -249,7 +266,8 @@
     "color": "gold",
     "ram": "2GB",
     "year": 2016,
-    "image": "img/phones/apple-iphone-7/gold/00.webp"
+    "image": "img/phones/apple-iphone-7/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 19,
@@ -263,7 +281,8 @@
     "color": "silver",
     "ram": "3GB",
     "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/silver/00.webp"
+    "image": "img/phones/apple-iphone-7-plus/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 20,
@@ -277,7 +296,8 @@
     "color": "spacegray",
     "ram": "2GB",
     "year": 2017,
-    "image": "img/phones/apple-iphone-8/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-8/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 21,
@@ -291,7 +311,8 @@
     "color": "green",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/green/00.webp"
+    "image": "img/phones/apple-iphone-11/green/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 22,
@@ -305,7 +326,8 @@
     "color": "purple",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/purple/00.webp"
+    "image": "img/phones/apple-iphone-11/purple/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 23,
@@ -319,7 +341,8 @@
     "color": "yellow",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/yellow/00.webp"
+    "image": "img/phones/apple-iphone-11/yellow/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 24,
@@ -333,7 +356,8 @@
     "color": "gold",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 25,
@@ -347,7 +371,8 @@
     "color": "spacegray",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 26,
@@ -361,7 +386,8 @@
     "color": "silver",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/silver/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 27,
@@ -375,7 +401,8 @@
     "color": "midnightgreen",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 28,
@@ -389,7 +416,8 @@
     "color": "silver",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/silver/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 29,
@@ -403,7 +431,8 @@
     "color": "white",
     "ram": "3GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xr/white/00.webp"
+    "image": "img/phones/apple-iphone-xr/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 30,
@@ -417,7 +446,8 @@
     "color": "coral",
     "ram": "3GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xr/coral/00.webp"
+    "image": "img/phones/apple-iphone-xr/coral/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 31,
@@ -431,7 +461,8 @@
     "color": "gold",
     "ram": "4GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xs/gold/00.webp"
+    "image": "img/phones/apple-iphone-xs/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 32,
@@ -445,7 +476,8 @@
     "color": "spacegray",
     "ram": "4GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xs/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-xs/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 33,
@@ -459,7 +491,8 @@
     "color": "silver",
     "ram": "4GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xs-max/silver/00.webp"
+    "image": "img/phones/apple-iphone-xs-max/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 34,
@@ -473,7 +506,8 @@
     "color": "gold",
     "ram": "4GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xs-max/gold/00.webp"
+    "image": "img/phones/apple-iphone-xs-max/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 35,
@@ -487,7 +521,8 @@
     "color": "rosegold",
     "ram": "2GB",
     "year": 2016,
-    "image": "img/phones/apple-iphone-7/rosegold/00.webp"
+    "image": "img/phones/apple-iphone-7/rosegold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 36,
@@ -501,7 +536,8 @@
     "color": "purple",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/purple/00.webp"
+    "image": "img/phones/apple-iphone-11/purple/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 37,
@@ -515,7 +551,8 @@
     "color": "red",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/red/00.webp"
+    "image": "img/phones/apple-iphone-11/red/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 38,
@@ -529,7 +566,8 @@
     "color": "black",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/black/00.webp"
+    "image": "img/phones/apple-iphone-11/black/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 39,
@@ -543,7 +581,8 @@
     "color": "red",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/red/00.webp"
+    "image": "img/phones/apple-iphone-11/red/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 40,
@@ -557,7 +596,8 @@
     "color": "midnightgreen",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/midnightgreen/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/midnightgreen/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 41,
@@ -571,7 +611,8 @@
     "color": "silver",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/silver/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 42,
@@ -585,7 +626,8 @@
     "color": "gold",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 43,
@@ -599,7 +641,8 @@
     "color": "midnightgreen",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 44,
@@ -613,7 +656,8 @@
     "color": "spacegray",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 45,
@@ -627,7 +671,8 @@
     "color": "coral",
     "ram": "3GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xr/coral/00.webp"
+    "image": "img/phones/apple-iphone-xr/coral/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 46,
@@ -641,7 +686,8 @@
     "color": "red",
     "ram": "3GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xr/red/00.webp"
+    "image": "img/phones/apple-iphone-xr/red/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 47,
@@ -655,7 +701,8 @@
     "color": "gold",
     "ram": "4GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xs/gold/00.webp"
+    "image": "img/phones/apple-iphone-xs/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 48,
@@ -669,7 +716,8 @@
     "color": "spacegray",
     "ram": "4GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xs-max/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-xs-max/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 49,
@@ -683,7 +731,8 @@
     "color": "rosegold",
     "ram": "3GB",
     "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/rosegold/00.webp"
+    "image": "img/phones/apple-iphone-7-plus/rosegold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 50,
@@ -697,7 +746,8 @@
     "color": "white",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/white/00.webp"
+    "image": "img/phones/apple-iphone-11/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 51,
@@ -711,7 +761,8 @@
     "color": "green",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/green/00.webp"
+    "image": "img/phones/apple-iphone-11/green/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 52,
@@ -725,7 +776,8 @@
     "color": "white",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/white/00.webp"
+    "image": "img/phones/apple-iphone-11/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 53,
@@ -739,7 +791,8 @@
     "color": "black",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/black/00.webp"
+    "image": "img/phones/apple-iphone-11/black/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 54,
@@ -753,7 +806,8 @@
     "color": "white",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/white/00.webp"
+    "image": "img/phones/apple-iphone-11/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 55,
@@ -767,7 +821,8 @@
     "color": "spacegray",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 56,
@@ -781,7 +836,8 @@
     "color": "midnightgreen",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/midnightgreen/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/midnightgreen/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 57,
@@ -795,7 +851,8 @@
     "color": "gold",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/gold/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 58,
@@ -809,7 +866,8 @@
     "color": "silver",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/silver/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 59,
@@ -823,7 +881,8 @@
     "color": "midnightgreen",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 60,
@@ -837,7 +896,8 @@
     "color": "yellow",
     "ram": "3GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xr/yellow/00.webp"
+    "image": "img/phones/apple-iphone-xr/yellow/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 61,
@@ -851,7 +911,8 @@
     "color": "silver",
     "ram": "2GB",
     "year": 2016,
-    "image": "img/phones/apple-iphone-7/silver/00.webp"
+    "image": "img/phones/apple-iphone-7/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 62,
@@ -865,7 +926,8 @@
     "color": "purple",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/purple/00.webp"
+    "image": "img/phones/apple-iphone-11/purple/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 63,
@@ -879,7 +941,8 @@
     "color": "gold",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/gold/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 64,
@@ -893,7 +956,8 @@
     "color": "yellow",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/yellow/00.webp"
+    "image": "img/phones/apple-iphone-11/yellow/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 65,
@@ -907,7 +971,8 @@
     "color": "spacegray",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 66,
@@ -921,7 +986,8 @@
     "color": "silver",
     "ram": "2GB",
     "year": 2017,
-    "image": "img/phones/apple-iphone-8/silver/00.webp"
+    "image": "img/phones/apple-iphone-8/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 67,
@@ -935,7 +1001,8 @@
     "color": "red",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/red/00.webp"
+    "image": "img/phones/apple-iphone-11/red/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 68,
@@ -949,7 +1016,8 @@
     "color": "spacegray",
     "ram": "4GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xs-max/spacegray/00.webp"
+    "image": "img/phones/apple-iphone-xs-max/spacegray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 69,
@@ -963,7 +1031,8 @@
     "color": "gold",
     "ram": "3GB",
     "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/gold/00.webp"
+    "image": "img/phones/apple-iphone-7-plus/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 70,
@@ -977,7 +1046,8 @@
     "color": "silver",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro/silver/00.webp"
+    "image": "img/phones/apple-iphone-11-pro/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 71,
@@ -991,7 +1061,8 @@
     "color": "yellow",
     "ram": "3GB",
     "year": 2018,
-    "image": "img/phones/apple-iphone-xr/yellow/00.webp"
+    "image": "img/phones/apple-iphone-xr/yellow/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 72,
@@ -1005,7 +1076,8 @@
     "color": "midnight",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14/midnight/00.webp"
+    "image": "img/phones/apple-iphone-14/midnight/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 73,
@@ -1019,7 +1091,8 @@
     "color": "midnight",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14/midnight/00.webp"
+    "image": "img/phones/apple-iphone-14/midnight/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 74,
@@ -1033,7 +1106,8 @@
     "color": "midnight",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14/midnight/00.webp"
+    "image": "img/phones/apple-iphone-14/midnight/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 75,
@@ -1047,7 +1121,8 @@
     "color": "yellow",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14/yellow/00.webp"
+    "image": "img/phones/apple-iphone-14/yellow/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 76,
@@ -1061,7 +1136,8 @@
     "color": "yellow",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14/yellow/00.webp"
+    "image": "img/phones/apple-iphone-14/yellow/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 77,
@@ -1075,7 +1151,8 @@
     "color": "yellow",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14/yellow/00.webp"
+    "image": "img/phones/apple-iphone-14/yellow/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 78,
@@ -1089,7 +1166,8 @@
     "color": "purple",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14/purple/00.webp"
+    "image": "img/phones/apple-iphone-14/purple/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 79,
@@ -1103,7 +1181,8 @@
     "color": "purple",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14/purple/00.webp"
+    "image": "img/phones/apple-iphone-14/purple/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 80,
@@ -1117,7 +1196,8 @@
     "color": "purple",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14/purple/00.webp"
+    "image": "img/phones/apple-iphone-14/purple/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 81,
@@ -1131,7 +1211,8 @@
     "color": "spaceblack",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/spaceblack/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/spaceblack/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 82,
@@ -1145,7 +1226,8 @@
     "color": "spaceblack",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/spaceblack/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/spaceblack/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 83,
@@ -1159,7 +1241,8 @@
     "color": "spaceblack",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/spaceblack/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/spaceblack/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 84,
@@ -1173,7 +1256,8 @@
     "color": "spaceblack",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/spaceblack/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/spaceblack/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 85,
@@ -1187,7 +1271,8 @@
     "color": "purple",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/purple/00.webp"
+    "image": "img/phones/apple-iphone-12/purple/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 86,
@@ -1201,7 +1286,8 @@
     "color": "purple",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/purple/00.webp"
+    "image": "img/phones/apple-iphone-12/purple/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 87,
@@ -1215,7 +1301,8 @@
     "color": "purple",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/purple/00.webp"
+    "image": "img/phones/apple-iphone-12/purple/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 88,
@@ -1229,7 +1316,8 @@
     "color": "white",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/white/00.webp"
+    "image": "img/phones/apple-iphone-12/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 89,
@@ -1243,7 +1331,8 @@
     "color": "white",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/white/00.webp"
+    "image": "img/phones/apple-iphone-12/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 90,
@@ -1257,7 +1346,8 @@
     "color": "white",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/white/00.webp"
+    "image": "img/phones/apple-iphone-12/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 91,
@@ -1271,7 +1361,8 @@
     "color": "red",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/red/00.webp"
+    "image": "img/phones/apple-iphone-12/red/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 92,
@@ -1285,7 +1376,8 @@
     "color": "red",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/red/00.webp"
+    "image": "img/phones/apple-iphone-12/red/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 93,
@@ -1299,7 +1391,8 @@
     "color": "red",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/red/00.webp"
+    "image": "img/phones/apple-iphone-12/red/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 94,
@@ -1313,7 +1406,8 @@
     "color": "black",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/black/00.webp"
+    "image": "img/phones/apple-iphone-12/black/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 95,
@@ -1327,7 +1421,8 @@
     "color": "black",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/black/00.webp"
+    "image": "img/phones/apple-iphone-12/black/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 96,
@@ -1341,7 +1436,8 @@
     "color": "black",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-12/black/00.webp"
+    "image": "img/phones/apple-iphone-12/black/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 97,
@@ -1355,7 +1451,8 @@
     "color": "blue",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/blue/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/blue/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 98,
@@ -1369,7 +1466,8 @@
     "color": "blue",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/blue/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/blue/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 99,
@@ -1383,7 +1481,8 @@
     "color": "blue",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/blue/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/blue/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 100,
@@ -1397,7 +1496,8 @@
     "color": "white",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/white/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 101,
@@ -1411,7 +1511,8 @@
     "color": "white",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/white/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 102,
@@ -1425,7 +1526,8 @@
     "color": "white",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/white/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/white/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 103,
@@ -1439,7 +1541,8 @@
     "color": "pink",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/pink/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/pink/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 104,
@@ -1453,7 +1556,8 @@
     "color": "pink",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/pink/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/pink/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 105,
@@ -1467,7 +1571,8 @@
     "color": "pink",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/pink/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/pink/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 106,
@@ -1481,7 +1586,8 @@
     "color": "midnight",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/midnight/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/midnight/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 107,
@@ -1495,7 +1601,8 @@
     "color": "midnight",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/midnight/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/midnight/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 108,
@@ -1509,7 +1616,8 @@
     "color": "midnight",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/apple-iphone-13-mini/midnight/00.webp"
+    "image": "img/phones/apple-iphone-13-mini/midnight/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 109,
@@ -1523,7 +1631,8 @@
     "color": "sierrablue",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 110,
@@ -1537,7 +1646,8 @@
     "color": "sierrablue",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 111,
@@ -1551,7 +1661,8 @@
     "color": "sierrablue",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 112,
@@ -1565,7 +1676,8 @@
     "color": "sierrablue",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 113,
@@ -1579,7 +1691,8 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 114,
@@ -1593,7 +1706,8 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 115,
@@ -1607,7 +1721,8 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 116,
@@ -1621,7 +1736,8 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 117,
@@ -1635,7 +1751,8 @@
     "color": "graphite",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 118,
@@ -1649,7 +1766,8 @@
     "color": "graphite",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 119,
@@ -1663,7 +1781,8 @@
     "color": "graphite",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 120,
@@ -1677,7 +1796,8 @@
     "color": "graphite",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp"
+    "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 121,
@@ -1691,7 +1811,8 @@
     "color": "space gray",
     "ram": "768MB",
     "year": 2017,
-    "image": "img/accessories/apple-watch-series-3/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-3/space-gray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 122,
@@ -1705,7 +1826,8 @@
     "color": "space gray",
     "ram": "768MB",
     "year": 2017,
-    "image": "img/accessories/apple-watch-series-3/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-3/space-gray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 123,
@@ -1719,7 +1841,8 @@
     "color": "gold",
     "ram": "768MB",
     "year": 2017,
-    "image": "img/accessories/apple-watch-series-3/gold/00.webp"
+    "image": "img/accessories/apple-watch-series-3/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 124,
@@ -1733,7 +1856,8 @@
     "color": "gold",
     "ram": "768MB",
     "year": 2017,
-    "image": "img/accessories/apple-watch-series-3/gold/00.webp"
+    "image": "img/accessories/apple-watch-series-3/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 125,
@@ -1747,7 +1871,8 @@
     "color": "silver",
     "ram": "768MB",
     "year": 2017,
-    "image": "img/accessories/apple-watch-series-3/silver/00.webp"
+    "image": "img/accessories/apple-watch-series-3/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 126,
@@ -1761,7 +1886,8 @@
     "color": "silver",
     "ram": "768MB",
     "year": 2017,
-    "image": "img/accessories/apple-watch-series-3/silver/00.webp"
+    "image": "img/accessories/apple-watch-series-3/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 127,
@@ -1775,7 +1901,8 @@
     "color": "space gray",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-6/space-gray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 128,
@@ -1789,7 +1916,8 @@
     "color": "space gray",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-6/space-gray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 129,
@@ -1803,7 +1931,8 @@
     "color": "silver",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/silver/00.webp"
+    "image": "img/accessories/apple-watch-series-6/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 130,
@@ -1817,7 +1946,8 @@
     "color": "silver",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/silver/00.webp"
+    "image": "img/accessories/apple-watch-series-6/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 131,
@@ -1831,7 +1961,8 @@
     "color": "gold",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/gold/00.webp"
+    "image": "img/accessories/apple-watch-series-6/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 132,
@@ -1845,7 +1976,8 @@
     "color": "gold",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/gold/00.webp"
+    "image": "img/accessories/apple-watch-series-6/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 133,
@@ -1859,7 +1991,8 @@
     "color": "blue",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/blue/00.webp"
+    "image": "img/accessories/apple-watch-series-6/blue/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 134,
@@ -1873,7 +2006,8 @@
     "color": "blue",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/blue/00.webp"
+    "image": "img/accessories/apple-watch-series-6/blue/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 135,
@@ -1887,7 +2021,8 @@
     "color": "red",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/red/00.webp"
+    "image": "img/accessories/apple-watch-series-6/red/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 136,
@@ -1901,7 +2036,8 @@
     "color": "red",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/red/00.webp"
+    "image": "img/accessories/apple-watch-series-6/red/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 137,
@@ -1915,7 +2051,8 @@
     "color": "silver",
     "ram": "1GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-5/silver/00.webp"
+    "image": "img/accessories/apple-watch-series-5/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 138,
@@ -1929,7 +2066,8 @@
     "color": "silver",
     "ram": "1GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-5/silver/00.webp"
+    "image": "img/accessories/apple-watch-series-5/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 139,
@@ -1943,7 +2081,8 @@
     "color": "gold",
     "ram": "1GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-5/gold/00.webp"
+    "image": "img/accessories/apple-watch-series-5/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 140,
@@ -1957,7 +2096,8 @@
     "color": "gold",
     "ram": "1GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-5/gold/00.webp"
+    "image": "img/accessories/apple-watch-series-5/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 141,
@@ -1971,7 +2111,8 @@
     "color": "space-gray",
     "ram": "1GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-5/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-5/space-gray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 142,
@@ -1985,7 +2126,8 @@
     "color": "space-gray",
     "ram": "1GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-5/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-5/space-gray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 143,
@@ -1999,7 +2141,8 @@
     "color": "silver",
     "ram": "0.75GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-4/silver/00.webp"
+    "image": "img/accessories/apple-watch-series-4/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 144,
@@ -2013,7 +2156,8 @@
     "color": "silver",
     "ram": "0.75GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-4/silver/00.webp"
+    "image": "img/accessories/apple-watch-series-4/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 145,
@@ -2027,7 +2171,8 @@
     "color": "gold",
     "ram": "0.75GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-4/gold/00.webp"
+    "image": "img/accessories/apple-watch-series-4/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 146,
@@ -2041,7 +2186,8 @@
     "color": "gold",
     "ram": "0.75GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-4/gold/00.webp"
+    "image": "img/accessories/apple-watch-series-4/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 147,
@@ -2055,7 +2201,8 @@
     "color": "space-gray",
     "ram": "0.75GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-4/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-4/space-gray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 148,
@@ -2069,7 +2216,8 @@
     "color": "space-gray",
     "ram": "0.75GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-4/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-4/space-gray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 149,
@@ -2083,7 +2231,8 @@
     "color": "silver",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-se/silver/00.webp"
+    "image": "img/accessories/apple-watch-se/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 150,
@@ -2097,7 +2246,8 @@
     "color": "silver",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-se/silver/00.webp"
+    "image": "img/accessories/apple-watch-se/silver/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 151,
@@ -2111,7 +2261,8 @@
     "color": "gold",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-se/gold/00.webp"
+    "image": "img/accessories/apple-watch-se/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 152,
@@ -2125,7 +2276,8 @@
     "color": "gold",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-se/gold/00.webp"
+    "image": "img/accessories/apple-watch-se/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 153,
@@ -2139,7 +2291,8 @@
     "color": "space gray",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-se/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-se/space-gray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 154,
@@ -2153,7 +2306,8 @@
     "color": "space gray",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-se/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-se/space-gray/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 155,
@@ -2165,6 +2319,7 @@
     "price": 749,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "11' Liquid Retina",
     "ram": "8GB",
     "year": 2021
@@ -2179,6 +2334,7 @@
     "price": 749,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+"amountOfModels": 1,
     "screen": "11' Liquid Retina",
     "ram": "8GB",
     "year": 2021
@@ -2193,6 +2349,7 @@
     "price": 799,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "11' Liquid Retina",
     "ram": "8GB",
     "year": 2021
@@ -2207,6 +2364,7 @@
     "price": 799,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+"amountOfModels": 1,
     "screen": "11' Liquid Retina",
     "ram": "8GB",
     "year": 2021
@@ -2221,6 +2379,7 @@
     "price": 819,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "11' Liquid Retina",
     "ram": "8GB",
     "year": 2021
@@ -2235,6 +2394,7 @@
     "price": 819,
     "color": "silver",
     "image": "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+"amountOfModels": 1,
     "screen": "11' Liquid Retina",
     "ram": "8GB",
     "year": 2021
@@ -2249,6 +2409,7 @@
     "price": 879,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "11' Liquid Retina",
     "ram": "8GB",
     "year": 2021
@@ -2263,6 +2424,7 @@
     "price": 879,
     "color": "silver",
     "image": "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+"amountOfModels": 1,
     "screen": "11' Liquid Retina",
     "ram": "8GB",
     "year": 2021
@@ -2277,6 +2439,7 @@
     "price": 939,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "11' Liquid Retina",
     "ram": "8GB",
     "year": 2021
@@ -2291,6 +2454,7 @@
     "price": 939,
     "color": "silver",
     "image": "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+"amountOfModels": 1,
     "screen": "11' Liquid Retina",
     "ram": "8GB",
     "year": 2021
@@ -2305,6 +2469,7 @@
     "price": 699,
     "color": "rose gold",
     "image": "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
+"amountOfModels": 1,
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2319,6 +2484,7 @@
     "price": 549,
     "color": "rose gold",
     "image": "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
+"amountOfModels": 1,
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2333,6 +2499,7 @@
     "price": 699,
     "color": "silver",
     "image": "img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
+"amountOfModels": 1,
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2347,6 +2514,7 @@
     "price": 549,
     "color": "silver",
     "image": "img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
+"amountOfModels": 1,
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2361,6 +2529,7 @@
     "price": 699,
     "color": "green",
     "image": "img/tablets/apple-ipad-air-4th-gen/green/00.webp",
+"amountOfModels": 1,
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2375,6 +2544,7 @@
     "price": 549,
     "color": "green",
     "image": "img/tablets/apple-ipad-air-4th-gen/green/00.webp",
+"amountOfModels": 1,
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2389,6 +2559,7 @@
     "price": 699,
     "color": "sky-blue",
     "image": "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
+"amountOfModels": 1,
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2403,6 +2574,7 @@
     "price": 549,
     "color": "sky-blue",
     "image": "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
+"amountOfModels": 1,
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2417,6 +2589,7 @@
     "price": 599,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "8.3' Liquid Retina",
     "ram": "4GB",
     "year": 2021
@@ -2431,6 +2604,7 @@
     "price": 469,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "8.3' Liquid Retina",
     "ram": "4GB",
     "year": 2021
@@ -2445,6 +2619,7 @@
     "price": 599,
     "color": "starlight",
     "image": "img/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
+"amountOfModels": 1,
     "screen": "8.3' Liquid Retina",
     "ram": "4GB",
     "year": 2021
@@ -2459,6 +2634,7 @@
     "price": 469,
     "color": "starlight",
     "image": "img/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
+"amountOfModels": 1,
     "screen": "8.3' Liquid Retina",
     "ram": "4GB",
     "year": 2021
@@ -2473,6 +2649,7 @@
     "price": 599,
     "color": "pink",
     "image": "img/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
+"amountOfModels": 1,
     "screen": "8.3' Liquid Retina",
     "ram": "4GB",
     "year": 2021
@@ -2487,6 +2664,7 @@
     "price": 469,
     "color": "pink",
     "image": "img/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
+"amountOfModels": 1,
     "screen": "8.3' Liquid Retina",
     "ram": "4GB",
     "year": 2021
@@ -2501,6 +2679,7 @@
     "price": 399,
     "color": "gold",
     "image": "img/tablets/apple-ipad-10-2-2020/gold/00.webp",
+"amountOfModels": 1,
     "screen": "10.2' Retina",
     "ram": "3GB",
     "year": 2020
@@ -2515,6 +2694,7 @@
     "price": 299,
     "color": "gold",
     "image": "img/tablets/apple-ipad-10-2-2020/gold/00.webp",
+"amountOfModels": 1,
     "screen": "10.2' Retina",
     "ram": "3GB",
     "year": 2020
@@ -2529,6 +2709,7 @@
     "price": 399,
     "color": "silver",
     "image": "img/tablets/apple-ipad-10-2-2020/silver/00.webp",
+"amountOfModels": 1,
     "screen": "10.2' Retina",
     "ram": "3GB",
     "year": 2020
@@ -2543,6 +2724,7 @@
     "price": 299,
     "color": "silver",
     "image": "img/tablets/apple-ipad-10-2-2020/silver/00.webp",
+"amountOfModels": 1,
     "screen": "10.2' Retina",
     "ram": "3GB",
     "year": 2020
@@ -2557,6 +2739,7 @@
     "price": 399,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "10.2' Retina",
     "ram": "3GB",
     "year": 2020
@@ -2571,6 +2754,7 @@
     "price": 299,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "10.2' Retina",
     "ram": "3GB",
     "year": 2020
@@ -2585,6 +2769,7 @@
     "price": 499,
     "color": "silver",
     "image": "img/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
+"amountOfModels": 1,
     "screen": "7.9' Retina",
     "ram": "3GB",
     "year": 2019
@@ -2599,6 +2784,7 @@
     "price": 499,
     "color": "silver",
     "image": "img/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
+"amountOfModels": 1,
     "screen": "7.9' Retina",
     "ram": "3GB",
     "year": 2019
@@ -2613,6 +2799,7 @@
     "price": 499,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "7.9' Retina",
     "ram": "3GB",
     "year": 2019
@@ -2627,6 +2814,7 @@
     "price": 499,
     "color": "spacegray",
     "image": "img/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
+"amountOfModels": 1,
     "screen": "7.9' Retina",
     "ram": "3GB",
     "year": 2019
@@ -2641,6 +2829,7 @@
     "price": 499,
     "color": "gold",
     "image": "img/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
+"amountOfModels": 1,
     "screen": "7.9' Retina",
     "ram": "3GB",
     "year": 2019
@@ -2655,6 +2844,7 @@
     "price": 499,
     "color": "gold",
     "image": "img/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
+"amountOfModels": 1,
     "screen": "7.9' Retina",
     "ram": "3GB",
     "year": 2019
@@ -2671,7 +2861,8 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 192,
@@ -2685,7 +2876,8 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 193,
@@ -2699,7 +2891,8 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/gold/00.webp",
+"amountOfModels": 1
   },
   {
     "id": 194,
@@ -2713,6 +2906,7 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/gold/00.webp",
+"amountOfModels": 1
   }
 ]

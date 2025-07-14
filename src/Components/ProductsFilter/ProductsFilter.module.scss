@@ -1,0 +1,160 @@
+@font-face {
+  font-family: Mont-bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Regular.otf');
+}
+
+@import '../styles/main';
+
+.productsfilter {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 298px;
+  margin: 0 auto;
+  padding-left: 8px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+    margin: 0 32%;
+  }
+
+}
+
+  .input {
+    color: var(--primary-font-color);
+    background-color: var(--background-color);
+    width: 287px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #89939A;
+    text-overflow: ellipsis;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    text-indent: 30px;
+    &::placeholder {
+      font-family: Mont, sans-serif;
+      margin-left: 10px;
+    }
+  }
+
+  .glass {
+    &ONDARK {
+      position: relative;
+      top: -126px;
+      right: 6px;
+      width: 50px;
+      height: 50px;
+      background-image: url('../../img/Glass-white.svg');
+      background-repeat: no-repeat;
+      background-size: 48px 48px;
+
+      @include on-tablet {
+        position: relative;
+        top: 15px;
+        right: 612px;
+      }
+
+      @include on-desktop {
+        top: 15px;
+        right: 612px;
+      }
+    }
+    
+    position: relative;
+    top: -126px;
+    right: 6px;
+    width: 50px;
+    height: 50px;
+    background-image: url('../../img/Glass.svg');
+    background-repeat: no-repeat;
+    background-size: 48px 48px;
+
+    @include on-tablet {
+      position: relative;
+      top: 15px;
+      right: 612px;
+    }
+
+    @include on-desktop {
+      top: 15px;
+      right: 612px;
+    }
+  }
+
+  .glassONPHONE {
+    &ONDARK {
+      position: relative;
+    top: -127px;
+    right: 6px;
+    width: 35px;
+    height: 35px;
+    background-image: url('../../img/Glass-white.svg');
+    background-repeat: no-repeat;
+    background-size: 48px 48px;
+    }
+
+    position: relative;
+    top: -127px;
+    right: 6px;
+    width: 35px;
+    height: 35px;
+    background-image: url('../../img/Glass.svg');
+    background-repeat: no-repeat;
+    background-size: 48px 48px;
+  }
+
+  .text {
+    color: var(--primary-font-color);
+    font-family: Mont, sans-serif;
+  }
+
+  .query {
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .filter {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    width: 136px;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .selection {
+    color: var(--secondary-font-color);
+    background-color: var(--background-color);
+    font-family: Mont, sans-serif;
+    border: 1px solid #89939A;
+    width: 136px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+
+  }
+
+  .option {
+  font-family: Mont, sans-serif;
+  color:  var(--secondary-font-color);
+    &--disabled {
+      color: black;
+      font-family: Mont-bold, sans-serif;
+      font-weight: 800;
+    }
+  }
+
