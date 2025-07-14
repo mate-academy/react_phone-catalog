@@ -13,7 +13,9 @@ export const Breadcrumbs = ({ firstPath, secondPath }: Props) => {
         <img src="public/icons/Home.svg" alt="home icon" />
       </Link>
       <img src="public/icons/ArrowRight.svg" alt="arrow right icon" />
-      <p className={styles.breadcrumbs__text}>{firstPath}</p>
+      <Link to={`/${firstPath}`} className={styles.breadcrumbs__text}>
+        {firstPath}
+      </Link>
       {secondPath ? (
         <>
           <img src="public/icons/ArrowRight.svg" alt="arrow right icon" />

@@ -1,3 +1,5 @@
+@use '../../../shared/utils/mixins';
+
 .home {
-  width: 1;
+  // @include mixins.low-resolution-grid;
 }

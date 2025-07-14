@@ -63,6 +63,8 @@ export const ProductSlider = ({ products, header }: Props) => {
         {products?.map(product => {
           return (
             <ProductCard
+              category={product.category}
+              id={product.name}
               key={product.id}
               name={product.name}
               images={product.image}

@@ -4,6 +4,7 @@ import { ProductSlider } from '../ProductSlider/ProductSlider';
 import { Slider } from '../Slider';
 import { Product } from '../../../shared/utils/types/apiTypes';
 import { ShopByCategory } from '../ShopByCategory';
+import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[] | undefined>();
@@ -22,7 +23,7 @@ export const HomePage = () => {
   const newestProducts = products?.sort((a, b) => b.year - a.year).slice(0, 6);
 
   return (
-    <div>
+    <div className={styles.home}>
       <h1>Welcome to Nice Gadgets store!</h1>
       <Slider />
       <ProductSlider products={biggestDiscount} header={'Hot prices'} />

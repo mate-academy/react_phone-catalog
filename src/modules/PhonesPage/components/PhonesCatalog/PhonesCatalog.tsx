@@ -159,6 +159,8 @@ export const PhonesCatalog = () => {
             {sortedPhones?.map(phone => {
               return (
                 <ProductCard
+                  category={phone.category}
+                  id={phone.name}
                   key={phone.id}
                   name={phone.name}
                   images={phone.image}

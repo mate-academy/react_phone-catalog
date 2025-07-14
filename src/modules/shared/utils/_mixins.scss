@@ -8,6 +8,7 @@
   display: grid;
   column-gap: 16px;
   grid-template-columns: repeat(4, 60px);
+  grid-template-rows: repeat(auto-fit, min-max(60px, 1fr) );
 }
 
 @mixin medium-resolution-grid {

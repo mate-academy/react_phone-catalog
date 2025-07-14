@@ -13,9 +13,11 @@ export const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<PhonesPage />}>
-          <Route path=":productId" element={<ProductDetailsPage />} />
-        </Route>
+        <Route path="/phones" element={<PhonesPage />} />
+        <Route
+          path="/phones/:productId"
+          element={<ProductDetailsPage category="phones" />}
+        />
         <Route path="*" />
       </Routes>
       <Footer />
