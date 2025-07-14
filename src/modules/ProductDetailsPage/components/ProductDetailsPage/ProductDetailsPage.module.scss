@@ -1,4 +1,29 @@
+@use '../../../shared/utils/variables';
+
 .details {
-  color: red;
   padding: 24px 16px;
+
+  &__title {
+    color: variables.$black-color
+  }
+
+  &__images {
+    display: flex;
+    height: 49px;
+    width: 288px;
+    gap: 8px;
+    justify-content: space-around;
+
+  }
+
+  &__picture {
+    display: block;
+    width: 40px;
+    border: 1px solid variables.$gray-light-color;
+  }
+
+  &__image {
+    display: block;
+    width: 288px;
+  }
 }

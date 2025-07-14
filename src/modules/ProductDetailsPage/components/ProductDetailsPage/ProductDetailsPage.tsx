@@ -19,6 +19,7 @@ export const ProductDetailsPage = ({ category }: Params) => {
   const [status, setStatus] = useState<Status>(STATUS.idle);
   const [, setLoadError] = useState<LoadError>(LOAD_ERROR.noError);
   const { productId } = useParams();
+  const [activeImgIndex, setActiveImgIndex] = useState<number>(0);
 
   const loadProducts = useCallback(() => {
     return getProduct(`/${category}.json`)
@@ -31,7 +32,7 @@ export const ProductDetailsPage = ({ category }: Params) => {
         setLoadError(LOAD_ERROR.couldntload);
         setStatus(STATUS.rejected);
       });
-  }, []);
+  }, [category]);
 
   useEffect(() => {
     setStatus(STATUS.pending);
@@ -44,8 +45,10 @@ export const ProductDetailsPage = ({ category }: Params) => {
 
   // eslint-disable-next-line no-console
   console.log(productId);
-
   const findProduct = products?.find(product => productId === product.name);
+  const changePicture = (i: number) => {
+    setActiveImgIndex(i);
+  };
 
   return (
     <div className={styles.details}>
@@ -58,9 +61,23 @@ export const ProductDetailsPage = ({ category }: Params) => {
             secondPath={findProduct?.name ?? ''}
           />
           <h1 className={styles.details__title}>{findProduct?.name}</h1>
+          <img
+            className={styles.details__image}
+            src={findProduct?.images[activeImgIndex]}
+            alt="main-image"
+          />
           <div className={styles.details__images}>
             {findProduct?.images?.map((image, i) => {
-              return <img key={i} src={image} alt="" />;
+              return (
+                <div key={i}>
+                  <img
+                    className={styles.details__picture}
+                    onClick={() => changePicture(i)}
+                    src={image}
+                    alt="images"
+                  />
+                </div>
+              );
             })}
           </div>
         </div>
