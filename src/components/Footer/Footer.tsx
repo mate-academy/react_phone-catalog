@@ -37,6 +37,8 @@ export const Footer = () => {
         <Link
           to="https://github.com/Vlad-2608?tab=repositories"
           className="footer__nav-link nav__link"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Github
         </Link>
