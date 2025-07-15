@@ -19,11 +19,47 @@
   &__picture {
     display: block;
     width: 40px;
+    aspect-ratio: 3 / 4;
     border: 1px solid variables.$gray-light-color;
+
+    &--active {
+      border: 1px solid red;
+    }
   }
 
   &__image {
     display: block;
     width: 288px;
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
+  }
+
+  &__colors {
+    // &-text {
+
+    // }
+
+    // &-available{
+
+    // }
+
+    // &-id{
+
+    // }
+
+    &-container{
+      display: flex;
+      gap: 8px;
+    }
+
+    &-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid variables.$black-color;
+      outline: 2px solid variables.$white-color;
+      outline-offset: -3px;
+
+    }
   }
 }

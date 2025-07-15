@@ -7,6 +7,9 @@ import { STATUS, Status } from '../../../shared/utils/types/Status';
 import { LoadError, LOAD_ERROR } from '../../../shared/utils/types/LoadError';
 import { Loader } from '../../../PhonesPage/components/Loader/Loader';
 import styles from './ProductDetailsPage.module.scss';
+import classNames from 'classnames';
+
+classNames.bind(styles);
 
 type Params = {
   category: string;
@@ -71,7 +74,9 @@ export const ProductDetailsPage = ({ category }: Params) => {
               return (
                 <div key={i}>
                   <img
-                    className={styles.details__picture}
+                    className={classNames(styles.details__picture, {
+                      'details__picture--active': activeImgIndex === i,
+                    })}
                     onClick={() => changePicture(i)}
                     src={image}
                     alt="images"
@@ -79,6 +84,25 @@ export const ProductDetailsPage = ({ category }: Params) => {
                 </div>
               );
             })}
+          </div>
+          <div className={styles.details__colors}>
+            <div className={styles['details__colors-text']}>
+              <p className={styles['details__colors-available']}>
+                Available colors
+              </p>
+              <p className={styles['details__colors-id']}>ID: 802390</p>
+            </div>
+            <div className={styles['details__colors-container']}>
+              {findProduct?.colorsAvailable.map(color => {
+                return (
+                  <div
+                    key={color}
+                    className={styles['details__colors-circle']}
+                    style={{ backgroundColor: `${color}` }}
+                  ></div>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
