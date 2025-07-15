@@ -12,7 +12,6 @@ export const BurgerNavigation: React.FC<Props> = ({ isBurgerMenu }) => {
     { title: 'ACCESSORIES', path: '/' },
   ];
 
-
   return (
     <nav className={`burger-navigation ${isBurgerMenu ? 'is-open' : ''}`}>
       <div className="burger-container">

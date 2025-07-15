@@ -8,7 +8,7 @@
   z-index: 9;
 
   opacity: 0;
-  transform: translateY(-250px);
+  transform: translateY(-100%);
   transition: opacity 0.3s linear, transform 0.5s ease;
 
   &.is-open {
