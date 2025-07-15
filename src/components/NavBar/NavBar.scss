@@ -5,12 +5,63 @@
   align-items: center;
   height: 48px;
   box-sizing: border-box;
-  border: 1px solid rgba(59, 62, 74, 1);
+  border-bottom: 1px solid rgba(59, 62, 74, 1);
+
+  @media (min-width: 1200px) {
+    height: 64px;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+
+    @media (min-width: 1200px) {
+      gap: 48px;
+    }
+  }
+
+  &__links {
+    display: none;
+
+    @media (min-width: 640px) {
+      display: flex;
+      gap: 32px;
+    }
+
+    @media (min-width: 1200px) {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    text-decoration: none;
+    color: rgba(117, 118, 127, 1);
+  }
+
+  &__icons {
+    display: none;
+
+    @media (min-width: 640px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 
   &__logo {
     width: 64px;
     height: 20.8px;
     padding-left: 16px;
+
+    @media (min-width: 1200px) {
+      width: 80px;
+      height: 26px;
+    }
   }
 
   &__burger-block {
@@ -18,8 +69,45 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    border: 1px solid rgba(59, 62, 74, 1);
+    border-left: 1px solid rgba(59, 62, 74, 1);
+    border-right: 1px solid rgba(59, 62, 74, 1);
     width: 48px;
     height: 48px;
+
+    @media (min-width: 640px) {
+      display: none;
+    }
+  }
+
+  &__like-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-left: 1px solid rgba(59, 62, 74, 1);
+    border-right: 1px solid rgba(59, 62, 74, 1);
+    width: 48px;
+    height: 48px;
+
+    @media (min-width: 1200px) {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__shop-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-left: 1px solid rgba(59, 62, 74, 1);
+    border-right: 1px solid rgba(59, 62, 74, 1);
+    width: 48px;
+    height: 48px;
+
+    @media (min-width: 1200px) {
+      width: 64px;
+      height: 64px;
+    }
   }
 }

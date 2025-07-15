@@ -1,12 +1,27 @@
 .products-slider {
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
   position: relative;
+
+  @media (min-width: 1200px) {
+    padding-left: 32px;
+  }
 
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 16px;
+    padding: 0 16px 24px;
+
+    @media (min-width: 640px) {
+      padding: 0 24px 24px;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 0 32px 24px;
+      padding-left: 0;
+    }
   }
 
   &__title {
@@ -16,11 +31,16 @@
     line-height: 140%;
     color: rgba(241, 242, 249, 1);
     margin: 0;
+
+    @media (min-width: 640px) {
+      font-size: 32px;
+      line-height: 41px;
+    }
   }
 
   &__controls {
     display: flex;
-    gap: 8px;
+    gap: 16px;
   }
 
   &__container {
@@ -73,21 +93,37 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-
   padding: 32px;
   width: 100%;
   max-width: 212px;
-  width: 100%;
   flex-shrink: 0;
   height: 440px;
   background-color: rgba(22, 24, 39, 1);
   gap: 8px;
+
+  @media (min-width: 640px) {
+    max-width: 237px;
+    height: 512px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 272px;
+    height: 506px;
+  }
 
   &__image {
     width: auto;
     height: 129px;
     align-self: center;
     flex-shrink: 0;
+
+    @media (min-width: 640px) {
+      height: 202px;
+    }
+
+    @media (min-width: 1200px) {
+      height: 196px;
+    }
   }
 
   &__name {
@@ -156,6 +192,14 @@
     color: rgba(241, 242, 249, 1);
     background-color: rgba(144, 91, 255, 1);
     border: 0;
+
+    @media (min-width: 640px) {
+      width: 125px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 160px;
+    }
   }
 
   &__like {

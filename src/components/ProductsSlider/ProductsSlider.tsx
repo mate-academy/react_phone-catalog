@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Products } from '../../types/Products';
 import './ProductsSlider.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,12 +12,23 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ product }) => {
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
-
   const newProducts = [...product]
     .sort((a: Products, b: Products) => b.year - a.year)
     .slice(0, 10);
+
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  // Reset button states when products change
+  useEffect(() => {
+    if (newProducts.length > 1) {
+      setIsBeginning(true);
+      setIsEnd(false);
+    } else {
+      setIsBeginning(true);
+      setIsEnd(true);
+    }
+  }, [newProducts.length]);
 
   return (
     <section className="products-slider">
@@ -97,16 +108,18 @@ export const ProductsSlider: React.FC<Props> = ({ product }) => {
       <div className="products-slider__container">
         <Swiper
           modules={[Navigation]}
+          observer={true}
+          observeParents={true}
           onSwiper={swiper => {
-            setIsBeginning(swiper.isBeginning);
-            setIsEnd(swiper.isEnd);
+            if (newProducts.length > 0) {
+              setIsBeginning(swiper.isBeginning);
+              setIsEnd(swiper.isEnd);
+            }
           }}
           onSlideChange={swiper => {
             setIsBeginning(swiper.isBeginning);
             setIsEnd(swiper.isEnd);
           }}
-          onReachBeginning={() => setIsBeginning(true)}
-          onReachEnd={() => setIsEnd(true)}
           navigation={{
             nextEl: '.slider-nav-next',
             prevEl: '.slider-nav-prev',
@@ -115,6 +128,17 @@ export const ProductsSlider: React.FC<Props> = ({ product }) => {
           spaceBetween={1}
           slidesOffsetBefore={16}
           loop={false}
+          breakpoints={{
+            640: {
+              slidesPerView: 2.5,
+              slidesOffsetBefore: 24,
+            },
+            1200: {
+              slidesPerView: 4,
+              slidesOffsetBefore: 0,
+              spaceBetween: 0,
+            },
+          }}
         >
           {newProducts.map(prod => {
             return (
