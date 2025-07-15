@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 
-type Props = {
-  isBurgerMenu: boolean;
-};
+// type Props = {
+//   isBurgerMenu: boolean;
+// };
 
-export const BurgerNavigation: React.FC<Props> = ({ isBurgerMenu }) => {
+// export const HeaderNavigation: React.FC<Props> = () => {
+export const HeaderNavigation: React.FC = () => {
   const pages = [
     { title: 'HOME', path: '/' },
     { title: 'PHONES', path: '/' },
@@ -12,23 +13,26 @@ export const BurgerNavigation: React.FC<Props> = ({ isBurgerMenu }) => {
     { title: 'ACCESSORIES', path: '/' },
   ];
 
+  // if (!isBurgerMenu) {
+  //   return null;
+  // }
 
   return (
-    <nav className={`burger-navigation ${isBurgerMenu ? 'is-open' : ''}`}>
-      <div className="burger-container">
-        <ul className="burger-list">
+    <nav className="header-navigation">
+      <div className="header-container">
+        <ul className="header-list">
           {pages.map(({ title, path }) => (
-            <li className="burger-list-item" key={title}>
-              <Link className="burger-link" to={path}>
+            <li className="header-list-item" key={title}>
+              <Link className="header-link" to={path}>
                 {title}
               </Link>
             </li>
           ))}
         </ul>
 
-        <div className="burger-footer">
-          <div className="burger-icon-container">
-            <Link to="/" className="burger-footer-link">
+        <div className="header-actions">
+          <div className="header-icon-container">
+            <Link to="/" className="header-actions-link">
               <img
                 src="/img/icons/FavouritesHeartLike.svg"
                 alt="Favourites icon"
@@ -37,8 +41,8 @@ export const BurgerNavigation: React.FC<Props> = ({ isBurgerMenu }) => {
             </Link>
           </div>
 
-          <div className="burger-icon-container">
-            <Link to="/" className="burger-footer-link">
+          <div className="header-icon-container">
+            <Link to="/" className="header-actions-link">
               <img
                 src="/img/icons/ShoppingBag.svg"
                 alt="Shopping Bag icon"

@@ -1,7 +1,9 @@
 .page {
   font-family: 'Mont', sans-serif;
-  color: rgba(15, 15, 17, 1);
+  color: $main-text-color;
   scroll-behavior: smooth;
+  // height: 100vh;
+  background-color: $page-body-bg-color;
 }
 
 .page__body {

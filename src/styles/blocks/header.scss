@@ -1,0 +1,62 @@
+.header {
+  background-color: $main-bg-color;
+  height: 48px;
+  border-bottom: 1px solid $border-color;
+  position: sticky;
+  z-index: 10;
+
+  @include onDesktop {
+    height: 64px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+
+    @include onTablet {
+      padding: 0px 32px 0px 16px;
+    }
+
+    @include onDesktop {
+      padding: 0px 24px 0px 24px;
+      margin-right: 24px;
+    }
+
+    .logo {
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      @include onDesktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+  }
+
+  &__link {
+    line-height: 0;
+  }
+
+  .burger__menu {
+    display: flex;
+    height: 48px;
+    width: 48px;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid $border-color;
+
+    @include onTablet {
+      display: none;
+    }
+  }
+}
