@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import './header.scss';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { BurgerNavigation } from '../BurgerNavigation';
+import { BurgerNavigation } from '../burgerNavigation';
 import { HeaderNavigation } from '../headerNavigation';
-
 
 export const Header = () => {
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);

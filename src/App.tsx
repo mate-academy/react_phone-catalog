@@ -4,8 +4,7 @@ import './App.scss';
 
 // import { Header } from './components/header';
 import MainSwiper from './components/mainSwiper/MainSwiper';
-import { Header } from './components/Header';
-
+import { Header } from './components/header';
 
 // import './components/Header/style.scss';
 import './styles/style.scss';
@@ -14,7 +13,7 @@ export const App = () => {
   return (
     <div className="App">
       <Header />
-      <main className='main'>
+      <main className="main">
         <h1 className="h1">Welcome to Nice Gadgets store!</h1>
         <MainSwiper />
       </main>
