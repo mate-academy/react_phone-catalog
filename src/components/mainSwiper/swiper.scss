@@ -3,12 +3,16 @@
   max-width: 1040px;
   // display: flex;
   // justify-content: center;
-  position: relative;
+  // margin-bottom: 350px;
+  height: 350px;
 }
 
 .card {
-  width: 100%;
+  position: relative;
+  width: 90%;
   height: 320px;
+  margin: auto;
+  // padding-bottom: 150px;
   // position: relative;
 
   background-size: auto 100%;
@@ -64,7 +68,7 @@
 
 .swiper-pagination {
   position: absolute;
-  transform: translateY(150%);
+  // transform: translateY(-90%);
   // bottom: 0;
   bottom: -220px;
   display: flex;
@@ -73,8 +77,8 @@
 
   // Стили для неактивных буллетов
   .swiper-pagination-bullet {
-    transform: translateY(150%);
-    bottom: -220px;
+    // transform: translateY(150%);
+    // bottom: -220px;
     width: 12px;
     height: 12px;
     background: #ccc;
@@ -84,7 +88,7 @@
 
     &:hover {
       background: #999;
-      transform: translateY(150%);
+      // transform: translateY(150%);
     }
   }
 

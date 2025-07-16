@@ -37,7 +37,7 @@ export default function MainSwiper() {
         disableOnInteraction: false, // НЕ останавливать автопрокрутку после ручного взаимодействия
       }}
       navigation={false} // Встроенные кнопки не используем
-      pagination={{ clickable: true }}
+      pagination={{clickable: true}}
       className="mainSwiper"
     >
       <SwiperButtons />
