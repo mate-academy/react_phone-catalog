@@ -1,7 +1,15 @@
 
+.mainSwiper {
+  max-width: 1040px;
+  // display: flex;
+  // justify-content: center;
+  position: relative;
+}
+
 .card {
   width: 100%;
   height: 320px;
+  // position: relative;
 
   background-size: auto 100%;
   background-position: center;
@@ -9,18 +17,82 @@
   background-color: black;
 }
 
-.mySwiper {
-  max-width: 1040px;
-  margin-inline: auto;
-}
 .custom-buttons {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+  }
+
+  .swiper-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 189px;
+    width: 32px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid $border-color;
+
+    cursor: pointer;
+    background-color: white;
+  }
+
+  .arrowLeft {
+    position: absolute;
+    // top: 60px;
+
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+  }
+
+  .arrowRight {
+    position: absolute;
+    // top: 60px;
+    right: 0;
+
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    // margin-bottom: 115px;
+
+  }
+}
+
+
+.swiper-pagination {
+  position: absolute;
+  transform: translateY(150%);
+  // bottom: 0;
+  bottom: -220px;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.custom-buttons button {
-  padding: 10px 20px;
-  cursor: pointer;
+  gap: 8px;
+
+  // Стили для неактивных буллетов
+  .swiper-pagination-bullet {
+    transform: translateY(150%);
+    bottom: -220px;
+    width: 12px;
+    height: 12px;
+    background: #ccc;
+    opacity: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #999;
+      transform: translateY(150%);
+    }
+  }
+
+  // Стили для активного буллета
+  .swiper-pagination-bullet-active {
+    // bottom: -220px;
+    background: #000;
+    transform: scale(1.2);
+  }
 }
 

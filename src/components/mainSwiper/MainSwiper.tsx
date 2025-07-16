@@ -5,13 +5,16 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+
 const SwiperButtons = () => {
   const swiper = useSwiper();
 
   return (
     <div className="custom-buttons">
-      <button onClick={() => swiper.slidePrev()}>Попередній</button>
-      <button onClick={() => swiper.slideNext()}>Наступний</button>
+      <button className="arrowLeft swiper-buttons" onClick={() => swiper.slidePrev()}>
+        <img className='icon' src='./img/icons/ArrowLeft.svg' alt="Arrow Left"/>
+      </button>
+      <button className="arrowRight swiper-buttons" onClick={() => swiper.slideNext()}><img className='icon' src='./img/icons/ArrowRight.svg' alt="Arrow Right"/></button>
     </div>
   );
 };
@@ -30,12 +33,12 @@ export default function MainSwiper() {
       slidesPerView={1} // Один слайд за раз
       loop={true} // Включили зацикливание
       autoplay={{
-        delay: 5000, // Автоматическая прокрутка каждые 3 секунды
+        delay: 5000, // Автоматическая прокрутка каждые 5 секунды
         disableOnInteraction: false, // НЕ останавливать автопрокрутку после ручного взаимодействия
       }}
       navigation={false} // Встроенные кнопки не используем
       pagination={{ clickable: true }}
-      className="mySwiper"
+      className="mainSwiper"
     >
       <SwiperButtons />
 
@@ -50,6 +53,7 @@ export default function MainSwiper() {
           </div>
         </SwiperSlide>
       ))}
+
     </Swiper>
   );
 }
