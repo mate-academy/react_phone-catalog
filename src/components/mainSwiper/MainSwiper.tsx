@@ -1,3 +1,4 @@
+
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css';
@@ -17,9 +18,9 @@ const SwiperButtons = () => {
 
 export default function MainSwiper() {
   const banner = [
-    '/img/banner/11.png',
-    '/img/banner/22.jpg',
-    '/img/banner/2.jpg',
+    '/img/banner/Pro.png',
+    '/img/banner/watch.jpg',
+    '/img/banner/headphones.png',
   ];
 
   return (
@@ -52,3 +53,10 @@ export default function MainSwiper() {
     </Swiper>
   );
 }
+
+
+
+
+
+
+
