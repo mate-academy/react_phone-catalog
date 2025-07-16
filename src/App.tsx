@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import './App.scss';
 
-import { Header } from './components/header';
+// import { Header } from './components/header';
 import MainSwiper from './components/mainSwiper/MainSwiper';
+import { Header } from './components/Header';
+
+
 // import './components/Header/style.scss';
 import './styles/style.scss';
 
