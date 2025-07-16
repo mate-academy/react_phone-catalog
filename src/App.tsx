@@ -8,7 +8,7 @@ export const App = () => (
     <h1 hidden>Product Catalog</h1>
     <Navbar />
 
-    <main className="section">
+    <main className="main">
       <Outlet />
     </main>
 

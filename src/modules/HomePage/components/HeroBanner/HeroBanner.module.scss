@@ -1,0 +1,124 @@
+@import '../../../../styles/main';
+
+.banner {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 48px;
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__slider {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    margin-inline: -24px;
+
+    @include on-tablet {
+      margin-inline: 0;
+    }
+  }
+
+  &__sliderImage {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    @include on-tablet {
+      max-width: calc(100% - 96px);
+    }
+  }
+
+  &__sliderButton {
+    position: absolute;
+    bottom: 10%;
+    left: 7%;
+    display: none;
+    border-radius: 27px;
+    text-transform: uppercase;
+    font-size: 12px;
+    border: 1px solid $secondary-color;
+    background-color: transparent;
+    color: $secondary-color;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $accent-color;
+    }
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      width: 150px;
+    }
+  }
+}
+
+.sliderWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  display: none;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 32px;
+  background: #fff;
+  border: 1px solid $icons-color;
+  border-radius: 16px;
+  cursor: pointer;
+  z-index: 10;
+
+  &:hover {
+    background-color: $icons-color;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.prev {
+    left: 0;
+
+    img {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.next {
+    right: 0;
+  }
+
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
