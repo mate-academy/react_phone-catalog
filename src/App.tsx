@@ -3,7 +3,7 @@ import { Routes, Route, Outlet } from 'react-router-dom';
 import './App.scss';
 
 import { Header } from './components/header';
-import Swiper from './components/mainSwiper/MainSwiper';
+import MainSwiper from './components/mainSwiper/MainSwiper';
 // import './components/Header/style.scss';
 import './styles/style.scss';
 
@@ -11,7 +11,10 @@ export const App = () => {
   return (
     <div className="App">
       <Header />
-      <Swiper />
+      <main className='main'>
+        <h1 className="h1">Welcome to Nice Gadgets store!</h1>
+        <MainSwiper />
+      </main>
 
       {/* <Routes> */}
       {/* <Route path="/" element={<BurgerNavigation />} /> */}

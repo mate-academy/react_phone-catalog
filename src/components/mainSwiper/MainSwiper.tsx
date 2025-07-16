@@ -1,31 +1,54 @@
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
+import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
-export default () => {
+const SwiperButtons = () => {
+  const swiper = useSwiper();
+
   return (
-    <Swiper
-      // install Swiper modules
-      modules={[Navigation, Pagination, A11y]}
-      spaceBetween={50}
-      slidesPerView={3}
-      navigation
-      pagination={{ clickable: true }}
-      // scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
-    >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      ...
-    </Swiper>
+    <div className="custom-buttons">
+      <button onClick={() => swiper.slidePrev()}>Попередній</button>
+      <button onClick={() => swiper.slideNext()}>Наступний</button>
+    </div>
   );
 };
+
+export default function MainSwiper() {
+  const banner = [
+    '/img/banner/11.png',
+    '/img/banner/22.jpg',
+    '/img/banner/2.jpg',
+  ];
+
+  return (
+    <Swiper
+      modules={[Navigation, Pagination, A11y, Autoplay]} // Добавили Autoplay
+      spaceBetween={50}
+      slidesPerView={1} // Один слайд за раз
+      loop={true} // Включили зацикливание
+      autoplay={{
+        delay: 5000, // Автоматическая прокрутка каждые 3 секунды
+        disableOnInteraction: false, // НЕ останавливать автопрокрутку после ручного взаимодействия
+      }}
+      navigation={false} // Встроенные кнопки не используем
+      pagination={{ clickable: true }}
+      className="mySwiper"
+    >
+      <SwiperButtons />
+
+      {banner.map((url, index) => (
+        <SwiperSlide key={index}>
+          <div
+            className="card"
+            style={{
+              backgroundImage: `url(${url})`,
+            }}
+          >
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+}

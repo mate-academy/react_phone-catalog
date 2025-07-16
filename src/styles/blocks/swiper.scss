@@ -1,0 +1,57 @@
+// .card {
+//   width: 100%;
+//   height: 320px;
+//   background-color: black;
+//   background-image: url(/img/banner/11.jpg);
+// }
+
+.card {
+  width: 100%;
+  height: 320px;
+
+  // object-fit: cover;
+  // display: block;
+  // background-size: cover;
+  // background-position: center;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  background-size: contain;
+}
+
+// .div {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding-top: 60px;
+//   width: 100%;
+//   height: 320px;
+//   background-color: black;
+
+// }
+
+
+// .card {
+//   // width: 100%;
+//   // height: 320px;
+
+//   background-size: auto 100%;   /* 100% по высоте, ширина — авто */
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   // background-color: black; /* задний фон — черный */
+// }
+
+
+.mySwiper {
+  max-width: 1040px;
+  margin-inline: auto;
+}
+.custom-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.custom-buttons button {
+  padding: 10px 20px;
+  cursor: pointer;
+}

@@ -1,9 +1,10 @@
 
 .burger-navigation {
   display: flex;
-  height: calc(100vh - 48px);
   background-color: $main-bg-color;
   width: 100%;
+  height: calc(100vh - 48px);
+  position: fixed;
 
   z-index: 9;
 
