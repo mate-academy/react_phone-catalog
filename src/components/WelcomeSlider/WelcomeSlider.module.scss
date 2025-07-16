@@ -16,14 +16,21 @@ body {
 }
 
 .header {
-  display: flex;
-  flex-direction: row;
+  @include onBigScren {
+    width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__wrapper {
+
+    display: flex;
+    flex-direction: row;
+  }
 
   &__title {
     font-family: 'Mont';
     font-weight: 800;
     font-size: 32px;
-    height: 82px;
     line-height: 41px;
     letter-spacing: -0.32px;
     padding-inline: 16px;
@@ -46,15 +53,16 @@ body {
 
   &__swiper {
     width: 100%;
+    margin: 0 auto;
 
     @include onTablet {
       border-radius: 8px;
     }
 
-    @include onBigScren {
-      width: 1040px;
-      height: 400px;
-    }
+    // @include onBigScren {
+    //   width: 1040px;
+    //   height: 400px;
+    // }
     // height: 100%;
     background-size: cover;
     background-position: center;

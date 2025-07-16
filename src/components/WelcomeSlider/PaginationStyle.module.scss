@@ -1,13 +1,13 @@
 @import '../../styles/mixins.module';
 
 .swiper {
-  @include onTablet {
-    width: 490px;
-  }
+  // @include onTablet {
+  //   width: 490px;
+  // }
 
-  @include onBigScren {
-    width: 1040px;
-  }
+  // @include onBigScren {
+  //   width: 1040px;
+  // }
 }
 
 .swiper-custom-pagination-bullet {

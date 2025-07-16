@@ -2,41 +2,39 @@ import { useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import styles from './style.module.scss';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
+import { useMenu } from '../../context/MenuContext';
 
-interface SidebarProps {
-  isOpen: boolean;
-  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+const Sidebar: React.FC = () => {
+  const { isMenuOpen, setIsMenuOpen } = useMenu();
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsMenuOpen }) => {
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
 
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isOpen]);
+  }, [isMenuOpen]);
 
-  const validIcon = isOpen ? 'icon--close' : 'icon--menu';
+  const validIcon = isMenuOpen ? 'icon--close' : 'icon--menu';
 
   console.log(validIcon);
-  console.log(isOpen);
+  console.log(isMenuOpen);
 
   return (
     <>
-      <aside className={styles.sideMenu}>
-        <HeaderLogoMenu
-          setIsMenuOpen={setIsMenuOpen}
-          iconClass={validIcon}
-          isOpen={isOpen}
-        />
+      <aside className={styles.sideMenu} id="burger-menu">
+        <HeaderLogoMenu setIsMenuOpen={setIsMenuOpen} isOpen={isMenuOpen} />
 
         <nav className={styles.sideMenu__nav}>
           <ul className={styles['sideMenu__nav-list']}>
             <li className={styles['sideMenu__nav-item']}>
-              <a className={styles['sideMenu__nav-link']} href="#home">
+              <Link
+                className={styles['sideMenu__nav-link']}
+                to="/"
+                onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
+              >
                 home
-              </a>
+              </Link>
             </li>
             <li className={styles['sideMenu__nav-item']}>
               <Link className={styles['sideMenu__nav-link']} to="/phones">
@@ -44,17 +42,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsMenuOpen }) => {
               </Link>
             </li>
             <li className={styles['sideMenu__nav-item']}>
-              <a
-                className={styles['sideMenu__nav-link']}
-                href="#service-agency"
-              >
+              <Link className={styles['sideMenu__nav-link']} to="/tablets">
                 tablets
-              </a>
+              </Link>
             </li>
             <li className={styles['sideMenu__nav-item']}>
-              <a className={styles['sideMenu__nav-link']} href="#experience">
+              <Link className={styles['sideMenu__nav-link']} to="/accessories">
                 accessories
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

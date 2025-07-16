@@ -9,23 +9,28 @@
 
 .categories {
   font-family: 'Mont';
-  &__title {
-    margin-inline: 16px;
+  margin-inline: 16px;
+  // @include onTablet {
+  //   margin-inline: 24px;
+  // }
 
-    @include onTablet {
-      margin-inline: 24px;
-    }
-
-    @include onBigScren {
-      margin-inline: 32px;
-    }
+  // @include onBigScren {
+  //   margin-inline: 32px;
+  // }
+  @include onTablet {
+    margin-inline: 24px;
   }
 
-  margin: 0 auto;
+  @include onBigScren {
+    width: 1136px;
+    margin: 0 auto;
+  }
 
   &__options-wrapper {
-    width: fit-content;
-    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    // width: fit-content;
 
     @include onTablet {
       // display: flex;
@@ -46,6 +51,12 @@
     // @include onTablet {
     //   flex-direction: row;
     // }
+  }
+
+  &__link {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
   }
 
   &__content {
@@ -84,97 +95,100 @@
 
 
   &__image-wrapper {
-    width: 288px;
-    height: 288px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
 
     &--1 {
-      background-color: #6d6474;
+      z-index: 1;
     }
 
     &--2 {
-      background-color: #8d8d92;
+      z-index: 5;
     }
 
     &--3 {
-      background-color: #973d5f;
-    }
-
-    @include onTablet {
-      width: 187px;
-      height: 187px
-    }
-
-    @include onBigScren {
-      width: 368px;
-      height: 368px
+      z-index: 7;
     }
 
     overflow: hidden;
-    position: relative;
-    // margin: auto;
     display: grid;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease-in-out;
+    }
   }
 
   &__image {
     background-size: cover;
-    position: absolute;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
 
-    &--1 {
-      top: 65px;
-      left: 65px;
-      width: 85%;
-      // height: auto;
+    // &--1 {
+    //   top: 65px;
+    //   left: 65px;
+    //   width: 85%;
+    //   // height: auto;
 
-      @include onTablet {
-        top: 35px;
-        left: 18px;
-        width: 110%;
-        height: 110%;
-      }
+    //   @include onTablet {
+    //     top: 35px;
+    //     left: 18px;
+    //     width: 110%;
+    //     height: 110%;
+    //   }
 
-      @include onBigScren {
-        width: 115%;
-        height: 115%;
-        top: 60px;
-      }
-    }
+    //   @include onBigScren {
+    //     width: 115%;
+    //     height: 115%;
+    //     top: 60px;
+    //   }
+    // }
 
-    &--2 {
-      top: 30px;
-      left: 30px;
-      width: 140%;
+    z-index: 3;
 
-      @include onTablet {
-        top: 14px;
-        left: 14px;
-        width: 143%;
-        height: 143%;
-      }
+    // &--2 {
+    //   top: 30px;
+    //   left: 30px;
+    //   width: 140%;
 
-      @include onBigScren {
-        width: 150%;
-        height: 150%;
-      }
-    }
+    //   @include onTablet {
+    //     top: 14px;
+    //     left: 14px;
+    //     width: 143%;
+    //     height: 143%;
+    //   }
 
-    &--3 {
-      top: 50px;
-      left: 23px;
-      width: 185%;
+    //   @include onBigScren {
+    //     width: 150%;
+    //     height: 150%;
+    //   }
+    // }
 
-      @include onTablet {
-        width: 189%;
-        height: 189%;
-        top: -63px;
-      }
+    z-index: 5;
 
-      @include onBigScren {
-        top: -140px;
-      }
-    }
+    // &--3 {
+    //   top: 50px;
+    //   left: 23px;
+    //   width: 185%;
+
+    //   @include onTablet {
+    //     width: 189%;
+    //     height: 189%;
+    //     top: -63px;
+    //   }
+
+    //   @include onBigScren {
+    //     top: -140px;
+    //   }
+    // }
 
     object-fit: contain;
     z-index: 1;

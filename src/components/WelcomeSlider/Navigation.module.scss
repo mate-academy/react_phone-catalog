@@ -17,11 +17,27 @@
   &--right {
     margin-left: 16px;
     margin-right: 32px;
+
+    @include onTablet {
+      margin-right: 24px;
+    }
+
+    @include onBigScren {
+      margin-right: 0;
+    }
   }
 
   &--left {
     margin-left: 32px;
     margin-right: 16px;
+
+    @include onTablet {
+      margin-left: 24px;
+    }
+
+    @include onBigScren {
+      margin-left: 0;
+    }
   }
 }
 

@@ -1,0 +1,10 @@
+.pagination {
+  &__button-simple {
+    margin-inline-start: 8px;
+    border: 1px solid #e2e6e9;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+  }
+}

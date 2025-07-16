@@ -13,9 +13,9 @@ const Categories = () => {
             <div
               className={`${categoriesStyle['categories__image-wrapper']} ${categoriesStyle['categories__image-wrapper--1']}`}
             >
-              <a href="#">
+              <a href="#" className={categoriesStyle.categories__link}>
                 <img
-                  src="public/img/category-phones.webp"
+                  src="public/img/phone-category.png"
                   alt=""
                   className={`${categoriesStyle.categories__image} ${categoriesStyle['categories__image--1']}`}
                 />
@@ -34,9 +34,9 @@ const Categories = () => {
             <div
               className={`${categoriesStyle['categories__image-wrapper']} ${categoriesStyle['categories__image-wrapper--2']}`}
             >
-              <a href="#">
+              <a href="#" className={categoriesStyle.categories__link}>
                 <img
-                  src="public/img/category-tablets.png"
+                  src="public/img/tablets-category.png"
                   alt=""
                   className={`${categoriesStyle.categories__image} ${categoriesStyle['categories__image--2']}`}
                 />
@@ -55,9 +55,9 @@ const Categories = () => {
             <div
               className={`${categoriesStyle['categories__image-wrapper']} ${categoriesStyle['categories__image-wrapper--3']}`}
             >
-              <a href="#">
+              <a href="#" className={categoriesStyle.categories__link}>
                 <img
-                  src="public/img/category-accessories.png"
+                  src="public/img/accessories-category.b914f4124f0dab3439fb.png"
                   alt=""
                   className={`${categoriesStyle.categories__image} ${categoriesStyle['categories__image--3']}`}
                 />

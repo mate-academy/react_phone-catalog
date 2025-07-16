@@ -4,6 +4,12 @@
   }
 }
 
+@mixin onMiddleScreen {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
 @mixin onBigScren {
   @media (min-width: 1200px) {
     @content;

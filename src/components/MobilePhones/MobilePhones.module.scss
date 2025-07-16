@@ -5,9 +5,17 @@
   font-family: 'Mont';
 }
 
+
+select,
+::picker(select) {
+  appearance: base-select;
+}
+
 .mobile-page {
   margin-inline: 16px;
   font-family: "Mont";
+  display: flex;
+  flex-direction: column;
 
   @include onTablet {
     margin-inline: 24px;
@@ -36,7 +44,8 @@
   &__path-of-user {
     display: flex;
     flex-direction: row;
-    margin-block: 24px;
+    margin-bottom: 24px;
+    margin-top: 78px;
   }
 
   &__quantity-mobils {
@@ -45,5 +54,47 @@
     color: #89939a;
     line-height: 21px;
     letter-spacing: 0;
+  }
+
+  &__select-wrapper {
+    margin-top: 32px;
+    // margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+
+    @include onTablet {
+      justify-content: left
+    }
+  }
+
+  &__items-sort {
+    color: #89939a;
+  }
+
+  &__items-options {
+    &::picker-icon{
+      color: transparent;
+      background-image: url("public/img/chevron-(arrow-down).svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 16px;
+      height: 16px;
+      font-size: 14px;
+    }
+    margin-top: 4px;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    width: 136px;
+    height: 40px;
+    border-radius: 8px;
+    border-color: #b4bdc3;
+    color: #0f0f11;
+
+    &--hot {
+      @include onTablet {
+        width: 187px;
+      }
+    }
   }
 }

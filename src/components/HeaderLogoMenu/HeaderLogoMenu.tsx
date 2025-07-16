@@ -2,20 +2,14 @@ import { useState } from 'react';
 import topBatStyles from './TopBar.module.scss';
 import iconStyles from './icon.module.scss';
 import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
-import MobilePhones from '../MobilePhones/MobilePhones';
 
 interface SidebarProps {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  iconClass: string;
   isOpen: boolean;
 }
 
-const HeaderLogoMenu: React.FC<SidebarProps> = ({
-  setIsMenuOpen,
-  iconClass,
-  isOpen,
-}) => {
-  const iconReference = isOpen ? '' : 'burger-menu';
+const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
+  const iconReference = isOpen ? 'burger-menu' : '';
 
   const location = useLocation();
   const currentPath = location.pathname;
@@ -28,7 +22,11 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({
     <div className={topBatStyles.header}>
       <div className={topBatStyles['top-bar']}>
         <div className={topBatStyles['top-bar__navigation__wrapper']}>
-          <Link to="/" className={topBatStyles['top-bar__logo']}>
+          <Link
+            to="/"
+            className={topBatStyles['top-bar__logo']}
+            // onClick={() => setIsMenuOpen(false)}
+          >
             <img
               src="public\img\gadgets-logo.png"
               alt="img-logo"
@@ -38,27 +36,9 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({
 
           <ul className={topBatStyles['top-bar__list']}>
             <li className={topBatStyles['top-bar__item']}>
-              {isOpen === true ? (
-                <Link
-                  className={topBatStyles['top-bar__link']}
-                  to={`/${iconReference}`}
-                  onClick={() =>
-                    setIsMenuOpen(currentBoolean => !currentBoolean)
-                  }
-                >
-                  home
-                </Link>
-              ) : (
-                <Link
-                  className={topBatStyles['top-bar__link']}
-                  to={`/${iconReference}`}
-                  onClick={() => {
-                    setIsMenuOpen(currentBoolean => !currentBoolean);
-                  }}
-                >
-                  home
-                </Link>
-              )}
+              <Link className={topBatStyles['top-bar__link']} to="/">
+                home
+              </Link>
             </li>
             <li className={topBatStyles['top-bar__item']}>
               <Link className={topBatStyles['top-bar__link']} to="/phones">
@@ -80,17 +60,17 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({
 
         <div className={topBatStyles['top-bar__icon-1']}>
           {isOpen === true ? (
-            <Link
-              to={`/${iconReference}`}
+            <button
+              // href={`/${iconReference}`}
               className={`${iconStyles.icon} ${iconStyles['icon--close']}`} // ${topBatStyles['top-bar__icon--menu']}
               onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
-            ></Link>
+            ></button>
           ) : (
-            <Link
-              to={`/${iconReference}`}
+            <button
+              // href={`/${iconReference}`}
               className={`${iconStyles.icon} ${iconStyles['icon--menu']}`} // ${topBatStyles['top-bar__icon--menu']}
               onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
-            ></Link>
+            ></button>
           )}
 
           <div className={iconStyles['icon--heart__wrapper']}>
@@ -110,11 +90,6 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({
           </div>
         </div>
       </div>
-
-      <Routes>
-        <Route path="/phones" element={<MobilePhones />} />
-        <Route path="/home" element={<Navigate to="/" replace />} />
-      </Routes>
     </div>
   );
 };

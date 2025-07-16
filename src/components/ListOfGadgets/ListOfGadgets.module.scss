@@ -14,56 +14,97 @@
   font-style: normal;
 }
 
+.swiper-slide {
+  height: auto;
+}
+
 .swiper-wrapper {
   width: 10%;
   margin-right: 16px;
   position: fixed;
+  display: flex;
+  flex-direction: column;
   // margin-inline: 16px;
 }
 
-.brand {
-  margin-inline: 16px;
+.list {
+  margin: 0 auto;
+  font-family: 'Mont';
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), 1fr);
 
   @include onTablet {
-    width: 592px;
-    margin-inline: auto;
+    grid-template-columns: repeat(var(--column-count), 1fr);
+  }
+
+  @include onMiddleScreen {
+    grid-template-columns: repeat(var(--column-count), 1fr);
   }
 
   @include onBigScren {
-    width: 1136px;
-    margin: auto;
+    grid-template-columns: repeat(var(--column-count), 1fr);
+
   }
 
-  // &__title {
-  //   margin: 80px 10px 24px 16px;
+  justify-content: center;
+  gap: 40px 16px;
+  // align-items: center;
 
-  //   @include onTablet {
-  //     margin: 80px 10px 24px 24px;
-  //   }
+  @include onTablet {
+    margin-inline: 24px;
+    --column-count: 2;
+  }
 
-  //   @include onBigScren {
-  //     margin: 80px 10px 24px 32px;
-  //   }
-  // }
+  @include onMiddleScreen {
+    --column-count: 3;
+    margin-inline: 24px;
+  }
+
+  @include onBigScren {
+    --column-count: 4;
+    margin-inline: 32px;
+  }
+
+  &__title {
+    margin: 80px 10px 24px 16px;
+
+    @include onTablet {
+      margin: 80px 10px 24px 24px;
+    }
+
+    @include onBigScren {
+      margin: 80px 10px 24px 32px;
+    }
+  }
 
   &__card{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 212px !important;
+    // width: 287px;
+    min-width: 229px;
+    max-width: 100%;
+    height: 506px;
     // margin-inline: 16px;
 
     @include onTablet {
       // margin-inline: 24px;
-      width: 237px !important;
+      // min-width: 229px;
+      // width: 288px;
+      // width: 229px !important;
+    }
+
+    @include onMiddleScreen {
+      // width: 229px;
     }
 
     @include onBigScren {
-      width: 272px;
+      // width: 272px;
       // margin-inline: 32px;
     }
 
-    height: 579px;
+    // height: 579px;
     border: 1px solid #e2e6e9;
     border-radius: 8px;
 
@@ -82,14 +123,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
-    margin-top: 20px;
+    margin-top: 32px;
     border: none;
     display: block;
     transition: transform 0.3s ease-in-out;
 
     &:hover {
-      transform: scale(1.1);
       transition: transform 0.3s ease-in-out;
+      transform: scale(1.1);
     }
   }
 
@@ -141,7 +182,8 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 32px;
-    width: 173px;
+    margin-top: 8px;
+    // width: 173px;
   }
 
   &__add {
@@ -154,10 +196,10 @@
     transition: background-color 0.3s, color 0.3s;
 
     &:hover {
-      background-color: #fff;
       color: #f86800;
-      border: 1px solid #e2e6e9;
+      background-color: #fff;
       transition: background-color 0.3s, color 0.3s;
+      border: 1px solid #e2e6e9;
     }
   }
 
@@ -173,12 +215,6 @@
     border: 1px solid transparent;
     padding-left: 8px;
     padding-right: 2px;
-    transition: transform 0.3s ease-in-out;
-
-    &:hover {
-      transform: scale(1.1);
-      transition: transform 0.3s ease-in-out;
-    }
 
     &:hover {
       background-image: url('/public/img/add-to-fovourites-hover.png');

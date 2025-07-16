@@ -9,21 +9,8 @@ body:has(.sideMenu :target) {
   left: 0;
   right: 0;
   background-color: #fff;
-  // overflow: hidden;
 
-  opacity: 0;
-  // pointer-events: none;
-  // -ms-overflow-style: none;
-  // scrollbar-width: none;
-
-  opacity: 1;
   z-index: 15;
-
-  &:target {
-    pointer-events: all;
-    overflow: hidden;
-    z-index: 15;
-  }
 
   &__nav {
     margin-top: 72px;

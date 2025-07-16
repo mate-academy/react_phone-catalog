@@ -1,7 +1,9 @@
 import './App.scss';
+import { Outlet, Route } from 'react-router-dom';
 import WelcomeSlider from './components/WelcomeSlider';
 import NewBrand from './components/NewBrand';
 import Categories from './components/Categories';
+import HotPrices from './components/HotPrices';
 // import { Routes, Route } from 'react-router-dom';
 
 export const App = () => {
@@ -10,6 +12,7 @@ export const App = () => {
       <WelcomeSlider />
       <NewBrand />
       <Categories />
+      <HotPrices />
     </div>
   );
 };

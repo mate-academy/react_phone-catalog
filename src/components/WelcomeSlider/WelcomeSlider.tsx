@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import welcomeStyles from './WelcomeSlider.module.scss';
 import paginationStyle from './PaginationStyle.module.scss';
 import navigationStyle from './Navigation.module.scss';
+import { useWindowResize } from './WindowResize';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Sidebar from '../Sidebar';
@@ -14,8 +15,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import { useMenu } from '../../context/MenuContext';
+
 const WelcomeSlider: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isMenuOpen, setIsMenuOpen } = useMenu();
   const [currentImagePath, setCurrentImagePath] = useState<string[]>([
     'public/img/Banner-mobile.5ab4e0f94787219dc791.png',
     '/img/banner-mobil-3.88470ad4d90a78897a60.png',
@@ -46,11 +49,6 @@ const WelcomeSlider: React.FC = () => {
         newPathThirdImage,
       ]);
     }
-
-    if (window.innerWidth <= 1200) {
-
-    }
-
   };
 
   useEffect(() => {
@@ -63,30 +61,53 @@ const WelcomeSlider: React.FC = () => {
     };
   }, []);
 
+  const { width } = useWindowResize();
+
   console.log(currentImagePath);
 
   console.log(isMenuOpen);
+  console.log(width);
+
+  let widthSwiper = '';
+
+  if (width < 1200 && width >= 640) {
+    widthSwiper = `${1040 - (1200 - width)}`;
+  }
+
+  if (width < 640) {
+    widthSwiper = 'auto';
+  }
+
+  if (width >= 1200) {
+    widthSwiper = '1040';
+  }
+
+  if (+widthSwiper < 592) {
+    widthSwiper = '592';
+  }
+
+  widthSwiper = widthSwiper === 'auto' ? 'auto' : `${widthSwiper}px`;
+
+  console.log(widthSwiper);
 
   return (
-    <div id="#">
-      <HeaderLogoMenu
-        setIsMenuOpen={setIsMenuOpen}
-        iconClass={'icon--menu'}
-        isOpen={isMenuOpen}
-      />
+    <div id="#" className={welcomeStyles.header}>
+      <HeaderLogoMenu setIsMenuOpen={setIsMenuOpen} isOpen={isMenuOpen} />
 
       <div className={welcomeStyles.header__title}>
         Welcome to Nice Gadgets store!
       </div>
 
-      <div className={welcomeStyles.header}>
+      <div className={welcomeStyles.header__wrapper}>
         {/* <div
           className={`${navigationStyle['swiper-button-prev']} ${navigationStyle['swiper-button']}`}
         >
           <img src="public\img\chevron-arrow_left.svg" alt="" />
         </div> */}
 
-        <div className="navigation-button-prev">
+        <div
+          className={`${welcomeStyles['navigation-button-next']} ${welcomeStyles['swiper-button']}`}
+        >
           <div
             className={`${navigationStyle['navigation-button']} ${navigationStyle['navigation-button--left']}`}
           >
@@ -97,7 +118,8 @@ const WelcomeSlider: React.FC = () => {
         <Swiper
           className={paginationStyle.swiper}
           modules={[Scrollbar, Pagination, Navigation, Autoplay]}
-          spaceBetween={0}
+          style={{ width: `${widthSwiper}` }}
+          spaceBetween={3}
           slidesPerView={1}
           enabled={true}
           pagination={{
@@ -151,7 +173,9 @@ const WelcomeSlider: React.FC = () => {
           </SwiperSlide>
         </Swiper>
 
-        <div className="navigation-button-next">
+        <div
+          className={`${welcomeStyles['navigation-button-next']} ${welcomeStyles['swiper-button']}`}
+        >
           <div
             className={`${navigationStyle['navigation-button']} ${navigationStyle['navigation-button--right']}`}
           >
@@ -162,17 +186,7 @@ const WelcomeSlider: React.FC = () => {
 
       <div className={paginationStyle.pagination}></div>
 
-      <Routes>
-        <Route
-          path="/burger-menu"
-          element={
-            <Sidebar isOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-          }
-        />
-        <Route path="/home" element={<Navigate to="/" replace />} />
-      </Routes>
-
-      {/* <Sidebar isOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} /> */}
+      {isMenuOpen && <Sidebar />}
     </div>
   );
 };
