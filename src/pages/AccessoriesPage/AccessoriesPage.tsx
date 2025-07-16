@@ -11,9 +11,9 @@ import { getProducts } from '../../utils/getProducts';
 import { setProducts } from '../../expansions/products';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { DropdownBlock } from '../../components/DropdownBlock';
-import { Loader } from '../../components/Loader';
 import { PorductsList } from '../../components/ProductsList';
 import { Pagination } from '../../components/Pagination';
+import { Skeleton } from '../../components/Skeleton';
 
 export const AccessoriesPage: React.FC = () => {
   const [isloading, setIsLoading] = useState(false);
@@ -79,7 +79,7 @@ export const AccessoriesPage: React.FC = () => {
       </div>
 
       {isloading ? (
-        <Loader />
+        <Skeleton products={visibleProducts} />
       ) : (
         <>
           <PorductsList products={visibleProducts} />
