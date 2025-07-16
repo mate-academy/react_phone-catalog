@@ -1,0 +1,66 @@
+@import '../../../styles/main';
+
+.hot {
+  padding-bottom: 64px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+    padding-inline: 0;
+  }
+
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &_title {
+    width: 136px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+
+    @include on-tablet {
+      width: 100%;
+      font-size: 32px;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &_buttonPrev {
+    display: block;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $borderColorDark;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../../../assets/img/icons/arrow-left-icon.svg');
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+
+  &_buttonNext {
+    display: block;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $borderColorDark;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../../../assets/img/icons/arrow-right-icon.svg');
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+}
