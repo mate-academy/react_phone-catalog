@@ -1,28 +1,29 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import './SearchParam.scss';
 import React from 'react';
 
 export const SearchParameters = () => {
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const pathParts = pathname.split('/').filter(Boolean);
-
-  // Перевірка: якщо ми на головній сторінці
   const isHomePage = pathname === '/' || pathname === '/react_phone-catalog/';
+
+  const sort = searchParams.get('sort') || 'default';
+  const perPage = searchParams.get('perPage') || '4';
+  const page = searchParams.get('page') || '1';
 
   return (
     <div className="section">
       <p className="title is-7">
-        {/* Показуємо іконку тільки якщо ми НЕ на головній сторінці */}
         {!isHomePage && (
           <FaHome
             style={{ marginRight: '4px', cursor: 'pointer' }}
             onClick={() => navigate('/')}
           />
         )}
-
         {pathParts.length > 0 && (
           <>
             {' > '}
@@ -36,7 +37,10 @@ export const SearchParameters = () => {
         )}
       </p>
 
-      {search && <p className="title is-8">{search.replace('/', '>')}</p>}
+      <p className="title is-8">
+        Sort: <strong>{sort}</strong> | Per page: <strong>{perPage}</strong> |
+        Page: <strong>{page}</strong>
+      </p>
     </div>
   );
 };

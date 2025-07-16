@@ -11,7 +11,6 @@ export const HotPrices: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  // const { addToCart, addToFavorites } = useCartContext();
   const [phonesPerPage, setPhonesPerPage] = useState(4);
 
   const {
@@ -183,9 +182,9 @@ export const HotPrices: React.FC = () => {
     <div className="hotPrices">
       <div className="hotPrices__header">
         <h2 className="hotPrices__title">Hot Prices</h2>
-        <div className="pagination">
+        <div className="hotPrices__pagination">
           <button
-            className="pagination__button"
+            className="hotPrices__pagination__button"
             onClick={handlePrev}
             disabled={startIndex === 0}
           >
@@ -195,7 +194,7 @@ export const HotPrices: React.FC = () => {
             />
           </button>
           <button
-            className="pagination__button"
+            className="hotPrices__pagination__button"
             onClick={handleNext}
             disabled={startIndex + phonesPerPage >= phones.length}
           >

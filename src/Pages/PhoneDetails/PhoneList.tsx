@@ -1,24 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import '../BrendNewModel/BrandNewModels.scss';
-import { Phone } from '../Types/BaseItem';
-import { useCartContext } from '../CartContext/useCartContext';
+import { Phone } from '../../Types/BaseItem';
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../CartContext/useCartContext';
+import './PhoneDetails.scss';
+
 const HeartEmpty = './img/AddFavor.png';
 const HeartFilled = './img/AddFavorAct.png';
 
-type BrandNewModelsProps = {
-  hideTitle?: boolean;
-};
-
-export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
-  hideTitle,
-}) => {
+export const PhoneList: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [startIndex, setStartIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  // const { addToCart, addToFavorites } = useCartContext();
-  const [phonesPerPage, setPhonesPerPage] = useState(4);
+  const [visibleCount] = useState(4);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState<'left' | 'right'>('right');
 
   const {
     cart,
@@ -107,90 +101,48 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
   useEffect(() => {
     const fetchPhones = async () => {
       try {
-        const response = await fetch('./api/phones.json');
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch phones');
-        }
-
-        const data = await response.json();
-
+        const res = await fetch('./api/phones.json');
+        if (!res.ok) throw new Error('Failed to fetch phones');
+        const data = await res.json();
         setPhones(data);
       } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError('An unknown error occurred');
-        }
-      } finally {
-        setLoading(false);
+        console.error(err);
       }
     };
 
     fetchPhones();
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setPhonesPerPage(1);
-      } else {
-        setPhonesPerPage(4);
-      }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const [direction, setDirection] = useState<'left' | 'right'>('right');
-  const [isAnimating, setIsAnimating] = useState(false);
-
   const handleNext = () => {
-    if (startIndex + phonesPerPage < phones.length && !isAnimating) {
+    if (startIndex + visibleCount < phones.length && !isAnimating) {
       setIsAnimating(true);
       setDirection('left');
-
       setTimeout(() => {
-        setStartIndex((prev) => prev + phonesPerPage);
+        setStartIndex((prev) => prev + visibleCount);
         setIsAnimating(false);
-      }, 500);
+      }, 400);
     }
   };
 
   const handlePrev = () => {
-    if (startIndex - phonesPerPage >= 0 && !isAnimating) {
+    if (startIndex > 0 && !isAnimating) {
       setIsAnimating(true);
       setDirection('right');
-
       setTimeout(() => {
-        setStartIndex((prev) => prev - phonesPerPage);
+        setStartIndex((prev) => prev - visibleCount);
         setIsAnimating(false);
-      }, 500);
+      }, 400);
     }
   };
 
-  const visiblePhones = phones.slice(startIndex, startIndex + phonesPerPage);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
+  const visiblePhones = phones.slice(startIndex, startIndex + visibleCount);
 
   return (
-    <div className="brand-new-models">
-      <div className="brand-new-models-header">
-        {!hideTitle && (
-          <h2 className="brand-new-models__title">Brand new models</h2>
-        )}
-        <div className="brand-new-models__pagination">
+    <div className="phone-slider">
+      <div className="phone-slider__header">
+        <h2>You may also like</h2>
+        <div className="phone-slider__controls">
           <button
-            className="brand-new-models__pagination__button"
             onClick={handlePrev}
             disabled={startIndex === 0}
           >
@@ -200,9 +152,8 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
             />
           </button>
           <button
-            className="brand-new-models__pagination__button"
             onClick={handleNext}
-            disabled={startIndex + phonesPerPage >= phones.length}
+            disabled={startIndex + visibleCount >= phones.length}
           >
             <img
               src="./img/ChevronR.png"
@@ -211,50 +162,53 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
           </button>
         </div>
       </div>
+
       <div
-        className={`brand-new-models_phonelist ${isAnimating ? `slide-${direction}` : ''}`}
+        className={`phone-slider__list ${isAnimating ? `slide-${direction}` : ''}`}
       >
-        {visiblePhones.map((phone: Phone) => (
+        {visiblePhones.map((phone) => (
           <div
             key={phone.id}
-            className="brand-new-models_phone-card a"
+            className="phone-card"
           >
             <Link to={`/phones/${phone.id}`}>
               <img
-                src={phone.images[0]}
+                src={phone.images[0] || '/img/product-not-found.png'}
                 alt={phone.name}
-                className="brand-new-models_phone-card__image"
+                className="phone-cardimage"
               />
-              <div className="brand-new-models_phone-info">
-                <h3 className="brand-new-models_phone-card__name">
-                  {phone.name}
-                </h3>
-                <p className="brand-new-models_phonecard__price">
-                  ${phone.priceDiscount}
-                </p>
-                <p className="brand-new-models_phone-card__detail">
+              <div className="phone-info">
+                <h3 className="phone-cardname">{phone.name}</h3>
+                <div className="phone__price">
+                  <span className="phone__price--new">
+                    ${phone.priceDiscount}
+                  </span>
+                  <span className="phone__price--old">
+                    ${phone.priceRegular}
+                  </span>
+                </div>
+                <p className="phone-card__detail">
                   <span>Screen</span> <span>{phone.screen}</span>
                 </p>
-                <p className="brand-new-models_phone-card__detail">
+                <p className="phone-card__detail">
                   <span>Capacity</span> <span>{phone.capacity}</span>
                 </p>
-                <p className="brand-new-models_phone-card__detail">
+                <p className="phone-card__detail">
                   <span>RAM</span> <span>{phone.ram}</span>
                 </p>
               </div>
             </Link>
-            <div className="brand-new-models_phone-card__actions">
+
+            <div className="phone-card__actions">
               <button
-                className={`brand-new-models_phone-card__actions__btn-primary ${
-                  addToCartIds.has(phone.id) ? 'added' : ''
-                }`}
+                className={`phone-card__actions__btn-primary ${addToCartIds.has(phone.id) ? 'added' : ''}`}
                 onClick={() => toggleToCart(phone)}
               >
                 {addToCartIds.has(phone.id) ? 'Added' : 'Add to cart'}
               </button>
               <img
                 onClick={() => toggleFavorite(phone)}
-                className="brand-new-models_phone-card__actions__btn-favorite"
+                className="phone-card__actions__btn-favorite"
                 src={favoriteIds.has(phone.id) ? HeartFilled : HeartEmpty}
                 alt="Favorite"
               />

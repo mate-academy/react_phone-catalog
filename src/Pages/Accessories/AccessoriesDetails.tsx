@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { Accessories } from '../../Types/BaseItem';
 import './AccessoriesDetails.scss';
 import { useCartContext } from '../../CartContext/useCartContext';
-import { BrandNewModels } from '../../BrendNewModel/BrandNewModels';
+import { AccessoriesList } from './AccessoriesList';
 
 const HeartEmpty = './img/AddFavor.png';
 const HeartFilled = './img/AddFavorAct.png';
@@ -300,8 +300,7 @@ export const AccessoryDetails: React.FC = () => {
         </div>
 
         <div className="box_three">
-          <h3>You may also like</h3>
-          <BrandNewModels hideTitle={true} />
+          <AccessoriesList hideTitle={true} />
         </div>
       </div>
     </div>

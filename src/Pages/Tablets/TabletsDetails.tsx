@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useCartContext } from '../../CartContext/useCartContext';
 import { Tablet } from '../../Types/BaseItem';
 import './TabletsDetails.scss';
+// import { Tablets } from './Tablets';
+import { TabletList } from './TabletsList';
 
 const HeartEmpty = './img/AddFavor.png';
 const HeartFilled = './img/AddFavorAct.png';
@@ -200,7 +202,6 @@ export const TabletDetails: React.FC = () => {
 
         <div className="mainControls">
           <div className="color-picker__title">Choose a color:</div>{' '}
-          {/* ✅ Додано клас */}
           <div className="color-picker">
             {tablet.colorsAvailable.map((color) => (
               <button
@@ -214,10 +215,8 @@ export const TabletDetails: React.FC = () => {
           <div className="info-phone__selectCapacity__title">
             Choose capacity:
           </div>{' '}
-          {/* ✅ Додано клас */}
           <div className="info-tablet__selectCapacity">
             {' '}
-            {/* ✅ Змінено з capacity-picker */}
             {tablet.capacityAvailable.map((capacity) => (
               <button
                 key={capacity}
@@ -247,7 +246,6 @@ export const TabletDetails: React.FC = () => {
           </div>
           <div className="info-tablet-box-detail">
             {' '}
-            {/* ✅ Уніфіковано як .info-phone-box-detail */}
             <div className="info-tablet__detail">
               <span>Capacity:</span> <span>{tablet.capacity}</span>
             </div>
@@ -312,6 +310,10 @@ export const TabletDetails: React.FC = () => {
               <span>Zoom:</span> <span>{tablet.zoom}</span>
             </div>
           </div>
+        </div>
+
+        <div className="box_three">
+          <TabletList hideTitle={true} />
         </div>
       </div>
     </div>

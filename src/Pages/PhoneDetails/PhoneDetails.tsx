@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { Phone } from './../../Types/BaseItem';
 import './PhoneDetails.scss';
 import { useCartContext } from '../../CartContext/useCartContext';
-import { BrandNewModels } from '../../BrendNewModel/BrandNewModels';
+import { PhoneList } from './PhoneList';
 
 const HeartEmpty = './img/AddFavor.png';
 const HeartFilled = './img/AddFavorAct.png';
@@ -310,8 +310,7 @@ export const PhoneDetails: React.FC = () => {
         </div>
 
         <div className="box_three">
-          <h3>You may also like</h3>
-          <BrandNewModels hideTitle={true} />
+          <PhoneList />
         </div>
       </div>
     </div>

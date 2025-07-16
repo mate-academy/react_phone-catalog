@@ -196,3 +196,77 @@
     }
   }
 }
+
+// You may also like
+.accessories-slider {
+  padding: 0 16px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+
+    button {
+      background: #fff;
+      border: 1px solid #e2e6e9;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      padding: 4px;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 64px;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+
+    &.slide-left {
+      animation: slideLeft 0.5s ease-in-out;
+    }
+
+    &.slide-right {
+      animation: slideRight 0.5s ease-in-out;
+    }
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

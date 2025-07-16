@@ -1,8 +1,3 @@
-.slideshow {
-  height: 10;
-  overflow: hidden;
-}
-
 .home h1 {
   display: flex;
   width: auto;
@@ -10,36 +5,20 @@
   padding: 16px 24px;
   margin: 0;
   font-size: 48px;
-  @media(min-width: 1200px) {
-    // display: flex;
-    // width: 100vh;
-    // justify-content: start;
-    // // padding: 56px 0 50px 130px;
-  }
 }
 
 .home {
+  width: 100%;
+  max-width: 1136px;
+  box-sizing: border-box;
+  margin: 0 auto;
   @media(min-width: 1200px) {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: auto;
   }
-  @media(max-width: 1200px) {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 32px;
+  @media(max-width: 1199px) {
+    height: auto;
   }
   @media (max-width: 639px) {
-    padding: 0;
-  }
-  @media (max-width: 1199px) {
     padding: 0;
   }
 }

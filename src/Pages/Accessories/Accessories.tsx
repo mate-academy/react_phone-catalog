@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Accessories as AccessoriesType } from '../../Types/BaseItem';
 
 import { useCartContext } from '../../CartContext/useCartContext';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import './Accessories.scss';
 import { SearchParameters } from '../../SearchParm/SearchParam';
 
@@ -18,8 +18,7 @@ export const Accessories: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query')?.toLowerCase() || '';
 
   const {
@@ -31,19 +30,9 @@ export const Accessories: React.FC = () => {
     removeFromFavorites,
   } = useCartContext();
 
-  const [sortOption, setSortOption] = useState(() => {
-    return localStorage.getItem('sortOption') || 'default';
-  });
-
-  const [itemsPerPage, setItemsPerPage] = useState(() => {
-    const stored = localStorage.getItem('itemsPerPage');
-    return stored ? +stored : 4;
-  });
-
-  const [currentPage, setCurrentPage] = useState(() => {
-    const stored = localStorage.getItem('currentPage');
-    return stored ? +stored : 1;
-  });
+  const sortOption = searchParams.get('sort') || 'default';
+  const itemsPerPage = +(searchParams.get('perPage') || 4);
+  const currentPage = +(searchParams.get('page') || 1);
 
   const [favoriteIds, setFavoriteIds] = useState<Set<string>>(() => {
     const stored = localStorage.getItem('favoriteIds');
@@ -121,18 +110,6 @@ export const Accessories: React.FC = () => {
     },
     [cart, addToCart, removeFromCart],
   );
-
-  useEffect(() => {
-    localStorage.setItem('sortOption', sortOption);
-  }, [sortOption]);
-
-  useEffect(() => {
-    localStorage.setItem('itemsPerPage', itemsPerPage.toString());
-  }, [itemsPerPage]);
-
-  useEffect(() => {
-    localStorage.setItem('currentPage', currentPage.toString());
-  }, [currentPage]);
 
   const sortedProducts = useMemo(() => {
     const sorted = [...filteredAccessories];
@@ -220,7 +197,12 @@ export const Accessories: React.FC = () => {
           <select
             className="accessories-list_sortBy__select"
             value={sortOption}
-            onChange={(e) => setSortOption(e.target.value)}
+            onChange={(e) => {
+              const newParams = new URLSearchParams(searchParams.toString());
+              newParams.set('sort', e.target.value);
+              newParams.set('page', '1');
+              setSearchParams(newParams);
+            }}
           >
             <option value="default">Default</option>
             <option value="price-asc">Price ↑</option>
@@ -238,8 +220,10 @@ export const Accessories: React.FC = () => {
             className="accessories-list_itemPerPage__select"
             value={itemsPerPage}
             onChange={(e) => {
-              setItemsPerPage(+e.target.value);
-              setCurrentPage(1);
+              const newParams = new URLSearchParams(searchParams.toString());
+              newParams.set('perPage', e.target.value);
+              newParams.set('page', '1');
+              setSearchParams(newParams);
             }}
           >
             <option value={4}>4</option>
@@ -297,7 +281,12 @@ export const Accessories: React.FC = () => {
 
       <div className="accessories_pagination">
         <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          onClick={() => {
+            const newPage = Math.max(currentPage - 1, 1);
+            const newParams = new URLSearchParams(searchParams.toString());
+            newParams.set('page', String(newPage));
+            setSearchParams(newParams);
+          }}
           disabled={currentPage === 1}
           className="accessories_pagination_button"
         >
@@ -314,7 +303,11 @@ export const Accessories: React.FC = () => {
           .map((page) => (
             <button
               key={page}
-              onClick={() => setCurrentPage(page)}
+              onClick={() => {
+                const newParams = new URLSearchParams(searchParams.toString());
+                newParams.set('page', String(page));
+                setSearchParams(newParams);
+              }}
               className={`accessories_pagination_button ${currentPage === page ? 'active' : ''}`}
             >
               {page}
@@ -322,9 +315,12 @@ export const Accessories: React.FC = () => {
           ))}
 
         <button
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
+          onClick={() => {
+            const newPage = Math.min(currentPage + 1, totalPages);
+            const newParams = new URLSearchParams(searchParams.toString());
+            newParams.set('page', String(newPage));
+            setSearchParams(newParams);
+          }}
           disabled={currentPage === totalPages}
           className="accessories_pagination_button"
         >

@@ -1,5 +1,4 @@
 .brand-new-models {
-  // text-align: center;
   margin-top: 20px;
   padding-bottom: 64px;
 
@@ -11,9 +10,6 @@
     @media(min-width: 1200px) {
       padding: 80px 0 24px 0;
     }
-    // @media(max-width: 1199px) {
-    //   padding: 80px 0 24px 0;
-    // }
     @media (max-width: 639px) {
       width: auto;
       justify-content: start;
@@ -79,7 +75,6 @@
 
 .brand-new-models_phone-card__image {
   width: 50%;
-  // height: 50%;
   border-radius: 8px 8px 0 0;
   transition: transform 0.3s ease-in-out;
   min-height: 134px;
@@ -164,26 +159,28 @@
   transform: translateY(-10px);
 }
 
-.pagination {
+.brand-new-models__pagination {
   padding-top: 80px;
-  padding-bottom: 28px;
+  padding-right: 50px;
   display: flex;
-  justify-content: center;
+  // align-items: center;
   gap: 16px;
+  width: 32px;
+  height: 32px;
 
-  &__button {
-    background-color: #313237;
-    border: none;
-    width: 50px;
-    height: 40px;
-
+  @media(max-width: 420px) {
+    padding-top: 120px;
+  }
+}
+.brand-new-models__pagination__button {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E6E9;
     transition: transform 0.3s ease-in-out;
 
     &:hover {
       transform: scale(1.1);
     }
   }
-}
 
 .brand-new-models_phonelist {
   display: flex;

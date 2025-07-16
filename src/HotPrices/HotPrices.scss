@@ -141,10 +141,6 @@
   white-space: nowrap;
 }
 
-button {
-  border: none;
-}
-
 .hotPricesPhoneCard__actions {
   align-items: center;
   display: flex;
@@ -229,27 +225,25 @@ button {
   }
 }
 
-.pagination__button {
-  cursor: pointer;
-}
-
-.pagination {
+.hotPrices__pagination {
   padding-top: 80px;
-  padding-bottom: 28px;
+  padding-right: 50px;
   display: flex;
-  justify-content: center;
   gap: 16px;
+  width: 32px;
+  height: 32px;
 
-  &__button {
-    background-color: #313237;
-    border: none;
-    width: 50px;
-    height: 40px;
-
+  @media(max-width: 420px) {
+    padding-top: 80px;
+  }
+}
+.hotPrices__pagination__button {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E6E9;
     transition: transform 0.3s ease-in-out;
 
     &:hover {
       transform: scale(1.1);
     }
-  }
 }
+

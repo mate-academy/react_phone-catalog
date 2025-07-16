@@ -452,3 +452,52 @@
     align-items: stretch;
   }
 }
+
+//You may also like
+.phone-slider__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.phone-slider__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0;
+  padding-bottom: 64px;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+
+  &.slide-left {
+    animation: slideLeft 0.5s ease-in-out;
+  }
+
+  &.slide-right {
+    animation: slideRight 0.5s ease-in-out;
+  }
+}
+.phone-card {
+  max-height: 470px;
+}
+
+.phone-slider__controls {
+  display: flex;
+  gap: 16px;
+  width: 32px;
+  height: 32px;
+  padding-right: 45px;
+
+  button {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E6E9;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
