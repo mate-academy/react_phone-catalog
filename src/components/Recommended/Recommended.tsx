@@ -194,7 +194,7 @@ export const Recommended: React.FC<Props> = ({ title }) => {
                   Capacity<div className="rec__specs-value">{item.capacity.replace('GB', ' GB')}</div>
                 </div>
                 <div className="rec__specs-spec">
-                  RAM<div className="rec__specs-value">{item.ram.replace('GB', ' GB')}</div>
+                  RAM<div className="rec__specs-value">{item?.id}{item.ram.replace('GB', ' GB')}</div>
                 </div>
               </div>
               <div className="rec__item-buttons">

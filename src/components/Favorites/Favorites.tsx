@@ -42,8 +42,10 @@ export const Favorites: React.FC = () => {
         </div>
       </div>
 
+      <div className="custom_h1">
+        Favorites
+      </div>
 
-      <h1>Favorites</h1>
       <div className="fav--items-counter">
         {favsQuantity} items
       </div>

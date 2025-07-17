@@ -9,6 +9,7 @@ import { addToFavorites, removeFromFavorites }
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../redux/store';
 import { SearchResults } from '../SearchResults/SearchResults';
+import { homeIcon } from '../../../public/img/icons/svg_icons';
 
 export type Accessory = {
   id: string;
@@ -35,7 +36,34 @@ export const Accessories: React.FC = () => {
 
   return (
     <div className={`tablets_page ${currentTheme}`}>
-      <Link
+      <div className="acc-toplwrpr">
+        <div className="acc--nav-legend">
+          <Link
+            to={'/'}
+            className='acc-homeIcon'
+          >
+            {homeIcon}
+          </Link>
+
+          <svg
+            className='arrow-right'
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+
+          <div className="acc--link-legend">
+            {'Accessories'}
+          </div>
+        </div>
+      </div>
+
+{/*       <Link
         to={'/'}
       >
         🏠
@@ -44,12 +72,11 @@ export const Accessories: React.FC = () => {
         to={'/accessories'}
       >{t('navigation.accessories')}
       </Link>
-      {/* <h1>Accessories PAGE</h1> */}
-      <h1>Dobry den, Radka 😊</h1>
+      <h1>Accessories PAGE</h1> */}
 
       <SearchResults itemsCategory="accessories" />
 
-{/*       {products.filter((access: Accessory) => access.category === 'accessories')
+      {/*       {products.filter((access: Accessory) => access.category === 'accessories')
         .sort((a:Accessory, b:Accessory) => b.price - a.price)
         .map((access:Accessory) => (
           <div className="card" key={access.itemId}>

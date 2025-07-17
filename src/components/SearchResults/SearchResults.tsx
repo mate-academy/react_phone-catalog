@@ -7,6 +7,7 @@ import { addToFavorites, removeFromFavorites }
 import phonesJSON from '../../../public/api/phones.json';
 import tabletsJSON from '../../../public/api/tablets.json';
 import accessoriesJSON from '../../../public/api/accessories.json';
+import productsJSON from '../../../public/api/products.json';
 import { useProductState } from '../Phones/Phones';
 import { Accessory } from '../Accessories/Accessories';
 import { Tablet } from '../Tablets/Tablets';
@@ -20,7 +21,7 @@ interface SearchResultsProps {
 }
 
 export const SearchResults: React.FC<SearchResultsProps> = ({
-  itemsCategory
+  itemsCategory,
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -77,6 +78,12 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   const phones = ((phonesJSON));
   const tablets = ((tabletsJSON));
   const accessories = ((accessoriesJSON));
+
+  function convertItemObject(itemObject) {
+    const result = productsJSON.find(item => item.itemId === itemObject.id);
+
+    return result;
+  }
 
   // Отримуємо дані відповідно до категорії
   const allProducts = (() => {
@@ -191,7 +198,6 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     if (page >= 4 && windowWidth >= 360) {
       buttonList.push(
         <button
-          onClick={page == 4 ? () => updateSearchParam('page', '2') : () => {}}
           key='sr__pgnntbtnprev3dot'
           className='sr__pbtn rec__item-to-fav'
         >{page == 4 ? '2' : '...'}</button>,
@@ -231,8 +237,6 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     if (lastPI - 3 != 1 && page < lastPI - 2 && windowWidth >= 360) {
       buttonList.push(
         <button
-          onClick={lastPI - page <= 3 ? () =>
-            updateSearchParam('page', `${lastPI - 1}`) : () => {}}
           key='sr__pgnntbtnlast3dot'
           className='sr__pbtn rec__item-to-fav'
         >{lastPI - page > 3 ? '...' : lastPI - 1}</button>,
@@ -332,7 +336,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
               className='rec__link fav__itemImage'
             >
               <img
-                src={`${item.images[0]}`}
+                src={`../../../public/${item.images[0]}`}
                 alt="here should be an image"
               />
               <div className="rec__item-name">
@@ -362,16 +366,16 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
               </div>
             </div>
             <div className="rec__item-buttons fav__buttons">
-              <button className={`rec__item-to-cart ${isInCart(item?.id) ? 'in-cart' : ''}`}
-                onClick={() => isInCart(item?.id)
-                  ? dispatch(removeFromCart(item?.id))
-                  : dispatch(addToCart(item))
-                }>{`${isInCart(item?.id) ? 'In cart' : 'Add to cart'}`}</button>
-              <button className={`rec__item-to-fav ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
-                onClick={() => isInFavorites(item?.id)
-                  ? dispatch(removeFromFavorites(item?.id))
-                  : dispatch(addToFavorites(item))
-                }>{isInFavorites(item?.id)
+              <button className={`rec__item-to-cart ${isInCart(convertItemObject(item).id) ? 'in-cart' : ''}`}
+                onClick={() => isInCart(convertItemObject(item).id)
+                  ? dispatch(removeFromCart(convertItemObject(item).id))
+                  : dispatch(addToCart(convertItemObject(item)))
+                }>{`${isInCart(convertItemObject(item).id) ? 'In cart' : 'Add to cart'}`}</button>
+              <button className={`rec__item-to-fav ${isInFavorites(convertItemObject(item).id) ? 'in-favorites' : ''}`}
+                onClick={() => isInFavorites(convertItemObject(item).id)
+                  ? dispatch(removeFromFavorites(convertItemObject(item).id))
+                  : dispatch(addToFavorites(convertItemObject(item)))
+                }>{isInFavorites(convertItemObject(item).id)
                   ? filledHeart
                   : emptyHeart
                 }

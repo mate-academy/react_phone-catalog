@@ -128,4 +128,14 @@ body {
 
 }
 
+.custom_h1 {
+  @include font-h1-mob;
+  text-transform: capitalize;
+  margin: 24px 0 32px;
+  color: $color-primary-black;
+
+  @media (min-width: 640px) {
+    @include font-h1;
+  }
+}
 

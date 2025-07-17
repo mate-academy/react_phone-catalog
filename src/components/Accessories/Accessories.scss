@@ -1,3 +1,22 @@
-.in-cart, .in-favorites {
-  background-color: green;
+@import '../../App.scss';
+
+.acc-toplwrpr {
+  max-width: 1136px;
+  margin: 24px auto 40px;
+}
+
+.acc--nav-legend, .acc-homeIcon {
+  display: flex;
+  align-items: center;
+}
+
+.acc-homeIcon svg {
+  color: $color-primary-black;
+}
+
+.acc--link-legend {
+  display: inline;
+  @include font-small;
+  color: $color-secondary-grey;
+  line-height: 16px;
 }

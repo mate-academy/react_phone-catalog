@@ -7,7 +7,8 @@ import { addToFavorites, removeFromFavorites }
 import phonesJSON from '../../../public/api/phones.json';
 import tabletsJSON from '../../../public/api/tablets.json';
 import accessoriesJSON from '../../../public/api/accessories.json';
-import { useProductState } from '../Phones/Phones';
+import productsJSON from '../../../public/api/products.json';
+import { Phone, useProductState } from '../Phones/Phones';
 import { Accessory } from '../Accessories/Accessories';
 import { Tablet } from '../Tablets/Tablets';
 import { useDispatch } from 'react-redux';
@@ -15,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { useWindowWidth } from '../Navbar/Navbar';
 import { emptyHeart, filledHeart, arrowLeft, arrowRight } from '../../../public/img/icons/svg_icons';
 
-export const SearchResults: React.FC = () => {
+export const SearchResults: React.FC = (itemsCategory: string) => {
   const navigate = useNavigate();
   const [serResQty, setSerResQty] = useState(0);
   const [searchParams] = useSearchParams();
@@ -58,6 +59,12 @@ export const SearchResults: React.FC = () => {
   const tablets = ((tabletsJSON));
   const accessories = ((accessoriesJSON));
   const allProducts = phones.concat(tablets, accessories);
+
+  function convertItemObject(itemObject) {
+    const result = productsJSON.find(item => item.itemId === itemObject.id);
+
+    return result;
+  }
 
   function containsSubstring(stringsArray, substring) {
     return stringsArray.some(str =>
@@ -390,16 +397,16 @@ export const SearchResults: React.FC = () => {
               </div>
             </div>
             <div className="rec__item-buttons fav__buttons">
-              <button className={`rec__item-to-cart ${isInCart(item?.id) ? 'in-cart' : ''}`}
-                onClick={() => isInCart(item?.id)
-                  ? dispatch(removeFromCart(item?.id))
-                  : dispatch(addToCart(item))
-                }>{`${isInCart(item?.id) ? 'In cart' : 'Add to cart'}`}</button>
-              <button className={`rec__item-to-fav ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
-                onClick={() => isInFavorites(item?.id)
-                  ? dispatch(removeFromFavorites(item?.id))
-                  : dispatch(addToFavorites(item))
-                }>{isInFavorites(item?.id)
+              <button className={`rec__item-to-cart ${isInCart(convertItemObject(item).id) ? 'in-cart' : ''}`}
+                onClick={() => isInCart(convertItemObject(item).id)
+                  ? dispatch(removeFromCart(convertItemObject(item).id))
+                  : dispatch(addToCart(convertItemObject(item)))
+                }>{`${isInCart(convertItemObject(item).id) ? 'In cart' : 'Add to cart'}`}</button>
+              <button className={`rec__item-to-fav ${isInFavorites(convertItemObject(item).id) ? 'in-favorites' : ''}`}
+                onClick={() => isInFavorites(convertItemObject(item).id)
+                  ? dispatch(removeFromFavorites(convertItemObject(item).id))
+                  : dispatch(addToFavorites(convertItemObject(item)))
+                }>{isInFavorites(convertItemObject(item).id)
                   ? filledHeart
                   : emptyHeart
                 }

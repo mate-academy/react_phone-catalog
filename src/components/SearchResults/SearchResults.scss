@@ -48,6 +48,10 @@
     color: $color-white;
     border-color: $color-primary-black;
   }
+
+  &--left {
+    margin: 0;
+  }
 }
 
 .sr__pg-btns {
