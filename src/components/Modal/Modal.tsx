@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ReactSVG } from 'react-svg';
 
 import { ModalContext } from '../../contexts/modalContext';

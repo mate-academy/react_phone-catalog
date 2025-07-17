@@ -86,7 +86,6 @@ export const ProductDetailsPage = () => {
   };
 
   const fetchData = async () => {
-    // setIsLoading(true);
     try {
       let productsDetails: ProductWithDetails[] = [];
 
@@ -159,6 +158,7 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId, category]);
 
   useEffect(() => {
