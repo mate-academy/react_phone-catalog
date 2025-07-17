@@ -3,7 +3,6 @@ import style from './ProductCard.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { AddToCartBtns, FavoriteBtn } from '../ActionBtns';
-import { useEffect } from 'react';
 
 type Props = {
   product: ShortProduct;
@@ -14,7 +13,7 @@ export const ProductCard = ({ product, discount = false }: Props) => {
   return (
     <div className={style.card}>
       <Link to={`/product/${product.itemId}`} className={style.card__top}>
-        <img src={`/${product.image}`} alt="" />
+        <img src={`${product.image}`} alt="" />
         <div className={style.card__title}>{product.name}</div>
         <div className={style.card__price}>
           <div>${product.price}</div>
