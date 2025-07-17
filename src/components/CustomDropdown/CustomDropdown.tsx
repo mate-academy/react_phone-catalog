@@ -1,13 +1,5 @@
 import Select from 'react-select';
 
-/* eslint-disable */
-
-const handleChange = selectedOption => {
-  console.log('Выбрано:', selectedOption);
-};
-
-/* eslint-enable */
-
 type Option = {
   value: string;
   label: string;
@@ -15,15 +7,21 @@ type Option = {
 
 type Props = {
   options: Option[];
+  selectedOption: Option;
+  onChange: (o: string) => void;
 };
 
-export const CustomDropdown = ({ options }: Props) => (
+export const CustomDropdown = ({
+  options,
+  selectedOption,
+  onChange,
+}: Props) => (
   <Select
     classNamePrefix="sortSelect"
     id="sortSelect"
     options={options}
-    onChange={handleChange}
-    defaultValue={options[0]}
+    onChange={option => onChange(option.value)}
+    defaultValue={selectedOption}
     styles={{
       control: (base, state) => ({
         ...base,

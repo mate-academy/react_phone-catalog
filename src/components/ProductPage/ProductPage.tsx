@@ -1,10 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import styles from './ProductPage.module.scss';
 import { CustomDropdown } from '../CustomDropdown/CustomDropdown';
 import { useEffect, useState } from 'react';
 import { Category } from '../../types/Category';
 import { getProducts } from '../../utils/fetchClient';
 import { Product } from '../../types/Product';
+import { ProductCard } from '../ProductCard';
 
 const sortOptions = [
   { value: 'age', label: 'Newest' },
@@ -30,13 +31,44 @@ type Props = {
 };
 
 export const ProductPage = ({ category }: Props) => {
+  const [searchParams] = useSearchParams();
+  const sortFromParams = searchParams.get('sort') || 'age';
+  const pageFromParams = searchParams.get('page') || '1';
+  const perPageFromParams = searchParams.get('perPage') || 'all';
   const [products, setProducts] = useState<Product[]>([]);
+  const [sortField, setSortField] = useState(sortFromParams);
+  const [page] = useState(pageFromParams);
+  const [perPage, setPerPage] = useState(perPageFromParams);
 
   useEffect(() => {
     getProducts().then(productsFromServer =>
       setProducts(productsFromServer.filter(p => p.category === category.name)),
     );
   }, [category]);
+
+  const prepareProducts = () => {
+    const sortedProducts = [...products];
+
+    if (sortField === 'title') {
+      sortedProducts.sort((p1, p2) => p1.name.localeCompare(p2.name));
+    }
+
+    if (sortField === 'price') {
+      sortedProducts.sort((p1, p2) => p1.price - p2.price);
+    }
+
+    if (sortField === 'age') {
+      sortedProducts.sort((p1, p2) => p1.year - p2.year);
+    }
+
+    const itemsPerPage = +perPage || sortedProducts.length;
+    const currentPage = +page;
+
+    return sortedProducts.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage,
+    );
+  };
 
   return (
     <main className={styles.page}>
@@ -60,16 +92,45 @@ export const ProductPage = ({ category }: Props) => {
               <label className={styles.dropdown_label} htmlFor="sortSelect">
                 Sort by
               </label>
-              <CustomDropdown options={sortOptions} />
+              <CustomDropdown
+                options={sortOptions}
+                selectedOption={
+                  sortOptions.find(o => o.value === sortField) || {
+                    value: 'age',
+                    label: 'Newest',
+                  }
+                }
+                onChange={setSortField}
+              />
             </div>
             <div className={styles.dropdown}>
               <label className={styles.dropdown_label} htmlFor="countSelect">
                 Items on page
               </label>
-              <CustomDropdown options={countOptions} />
+              <CustomDropdown
+                options={countOptions}
+                selectedOption={
+                  countOptions.find(o => o.value === perPage) || {
+                    value: 'all',
+                    label: 'All',
+                  }
+                }
+                onChange={setPerPage}
+              />
             </div>
           </div>
-          {/* <ModelsSlider arrowClassName="modelsSliderArrow" /> */}
+          <div className={styles.productList}>
+            {prepareProducts().map(p => (
+              <ProductCard key={p.itemId} product={p} />
+            ))}
+          </div>
+
+          {/* <Pagination
+  total={products.length}
+  perPage={perPage}
+  currentPage={page}
+  onPageChange={(page) => { ... }}
+/> */}
         </div>
       </div>
     </main>

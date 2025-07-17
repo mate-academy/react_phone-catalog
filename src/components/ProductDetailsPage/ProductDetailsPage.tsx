@@ -112,6 +112,14 @@ export const ProductDetailsPage = () => {
     navigate(`/product/${newId}`);
   };
 
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <main className={styles.page}>
       <div className={styles.pageContent}>
@@ -120,17 +128,17 @@ export const ProductDetailsPage = () => {
             <img src="/img/icons/home.svg" alt="home" />
           </NavLink>
           <span className={styles.pathHome_title}>&gt;</span>
-          <NavLink className={styles.pageInfo_link} to={product.category}>
-            {product.category}
+          <NavLink className={styles.pageInfo_link} to={`/${product.category}`}>
+            {product.category[0].toUpperCase() + product.category.slice(1, 20)}
           </NavLink>
           <span className={styles.pathHome_title}>&gt;</span>
           <span className={styles.pathHome_title}>{product.name}</span>
         </div>
         <div className={styles.pageInfo}>
-          <NavLink className={styles.pageInfo_link} to="/">
+          <div className={styles.pageInfo_link} onClick={() => handleBack()}>
             <span>&lt;</span>
             <span>Back</span>
-          </NavLink>
+          </div>
           <h1 className={styles.pageInfo_title}> {product.name}</h1>
         </div>
         <div className={styles.pageItems}>
