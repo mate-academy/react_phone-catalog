@@ -2,28 +2,65 @@ import { NavLink } from 'react-router-dom';
 import styles from './HomePage.module.scss';
 import { ProductSlider } from '../ProductsSlider';
 import { ModelsSlider } from '../ModelsSlider';
+import { useEffect, useState } from 'react';
+import { getProducts } from '../../utils/fetchClient';
+import { Product } from '../../types/Product';
+import { Category } from '../../types/Category';
 
-const categories = [
+const categories: {
+  title: string;
+  path: string;
+  img: string;
+  name: Category;
+}[] = [
   {
-    name: 'Mobile phones',
+    title: 'Mobile phones',
     path: '/phones',
     img: '/img/category-mobilephones.png',
+    name: 'phones',
   },
 
   {
-    name: 'Tablets',
+    title: 'Tablets',
     path: '/tablets',
     img: '/img/category-tablets.png',
+    name: 'tablets',
   },
 
   {
-    name: 'Accessories',
+    title: 'Accessories',
     path: '/accessories',
     img: '/img/category-accessories.png',
+    name: 'accessories',
   },
 ];
 
 export const HomePage = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    getProducts().then(setProducts);
+  }, []);
+
+  const numberOfModels: Record<Category, number> = {
+    phones: products.filter(p => p.category === 'phones').length,
+    tablets: products.filter(p => p.category === 'tablets').length,
+    accessories: products.filter(p => p.category === 'accessories').length,
+  };
+
+  const newModelsProducts = products
+    .sort((p1, p2) => p2.year - p1.year)
+    .slice(0, 15);
+
+  const hotPriceProducts = products
+    .sort((p1, p2) => {
+      const discount1 = p1.fullPrice - p1.price;
+      const discount2 = p2.fullPrice - p2.price;
+
+      return discount2 - discount1;
+    })
+    .slice(0, 15);
+
   return (
     <main className={styles.page}>
       <section className={styles.pageContent}>
@@ -32,7 +69,10 @@ export const HomePage = () => {
       </section>
       <section className={styles.pageContent}>
         <h2 className={styles.sectionTitle}>Brand new models</h2>
-        <ModelsSlider arrowClassName="modelsSliderArrow" />
+        <ModelsSlider
+          products={newModelsProducts}
+          arrowClassName="modelsSliderArrow"
+        />
       </section>
       <section className={styles.pageContent}>
         <h2 className={styles.sectionTitle}>Shop by category</h2>
@@ -49,8 +89,10 @@ export const HomePage = () => {
                 className={styles.categoryImg}
               />
               <div className={styles.categoryInfo}>
-                <h3 className={styles.categoryTitle}>{category.name}</h3>
-                <span className={styles.categoryCounter}>xxx models</span>
+                <h3 className={styles.categoryTitle}>{category.title}</h3>
+                <span
+                  className={styles.categoryCounter}
+                >{`${numberOfModels[category.name]} models`}</span>
               </div>
             </NavLink>
           ))}
@@ -58,7 +100,10 @@ export const HomePage = () => {
       </section>
       <section className={styles.pageContent}>
         <h2 className={styles.sectionTitle}>Hot prices</h2>
-        <ModelsSlider arrowClassName="modelsSliderArrow" />
+        <ModelsSlider
+          products={hotPriceProducts}
+          arrowClassName="modelsSliderArrow"
+        />
       </section>
     </main>
   );

@@ -1,61 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import { ModelsSlider } from '../ModelsSlider';
-
-const product = {
-  id: 'apple-ipad-pro-11-2021-128gb-spacegray',
-  category: 'tablets',
-  namespaceId: 'apple-ipad-pro-11-2021',
-  name: 'Apple iPad Pro 11 (2021) 128GB Space Gray',
-  capacityAvailable: ['128GB', '256GB', '512GB', '1TB', '2TB'],
-  capacity: '128GB',
-  priceRegular: 799,
-  priceDiscount: 749,
-  colorsAvailable: ['white', 'silver'],
-  // colorsAvailable: ['spacegray', 'silver'],
-  color: 'spacegray',
-  images: [
-    'img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp',
-    'img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp',
-    'img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp',
-  ],
-  description: [
-    {
-      title: 'Powerful Performance',
-      text: [
-        // eslint-disable-next-line max-len
-        'Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.',
-        // eslint-disable-next-line max-len
-        "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease.",
-      ],
-    },
-    {
-      title: 'Stunning Liquid Retina Display',
-      text: [
-        // eslint-disable-next-line max-len
-        "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-        // eslint-disable-next-line max-len
-        "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity.",
-      ],
-    },
-    {
-      title: 'Versatile Camera System',
-      text: [
-        // eslint-disable-next-line max-len
-        "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-        // eslint-disable-next-line max-len
-        "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance.",
-      ],
-    },
-  ],
-  screen: "11' Liquid Retina",
-  resolution: '2388x1668',
-  processor: 'Apple M1',
-  ram: '8GB',
-  camera: '12MP + 12MP',
-  zoom: 'Digital zoom up to 5x',
-  cell: ['Not applicable'],
-};
+import { useEffect, useState } from 'react';
+import { Product } from '../../types/Product';
+import { getData, getProducts } from '../../utils/fetchClient';
+import { CategoryProduct } from '../../types/CategoryProduct';
 
 const techSpecs = [
   'screen',
@@ -67,7 +16,102 @@ const techSpecs = [
   'cell',
 ];
 
+const colorMap = {
+  midnight: '#1e1e2f',
+  gold: '#d4af37',
+  graphite: '#4b4b4f',
+  'space gray': '#3c3c3c',
+  'space-gray': '#3c3c3c',
+  spacegray: '#3c3c3c',
+  silver: '#c0c0c0',
+  'rose gold': '#e3b6a0',
+  rosegold: '#e3b6a0',
+  'sky-blue': '#87ceeb',
+  starlight: '#f0eada',
+  sierrablue: '#4e85c5',
+  spaceblack: '#1a1a1a',
+  black: '#000000',
+  yellow: '#ffcc00',
+  green: '#34c759',
+  red: '#ff3b30',
+  white: '#ffffff',
+  purple: '#af52de',
+  coral: '#ff7f50',
+  midnightgreen: '#004953',
+  blue: '#007aff',
+  pink: '#ff69b4',
+};
+
 export const ProductDetailsPage = () => {
+  const { productId } = useParams();
+  const [randomProducts, setRandomProducts] = useState<Product[]>([]);
+  const [product, setProduct] = useState<CategoryProduct | undefined>(
+    undefined,
+  );
+  const [color, setColor] = useState<string | undefined>(undefined);
+  const [capacity, setCapacity] = useState<string | undefined>(undefined);
+  const [mainImgSrc, setMainImgSrc] = useState<string | undefined>(undefined);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getProducts().then(productsFromServer => {
+      const random = [...productsFromServer]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 8);
+
+      setRandomProducts(random);
+
+      const category = productsFromServer.find(
+        p => p.itemId === productId,
+      )?.category;
+
+      getData<CategoryProduct[]>(`/${category}`).then(
+        categoryProductsFromServer => {
+          const selectedProduct = categoryProductsFromServer.find(
+            p => p.id === productId,
+          );
+
+          setProduct(selectedProduct);
+          setMainImgSrc(selectedProduct?.images[0]);
+          setColor(selectedProduct?.color);
+          setCapacity(selectedProduct?.capacity);
+        },
+      );
+    });
+  }, [productId]);
+
+  if (!product) {
+    return (
+      <main className={styles.page} style={{ height: '100vh' }}>
+        <h1 className={styles.pageInfo_title}> Product was not found</h1>
+      </main>
+    );
+  }
+
+  const handleColorChange = (newColor: string) => {
+    setColor(newColor);
+    const newId =
+      product.namespaceId +
+      '-' +
+      product.capacity.toLowerCase() +
+      '-' +
+      newColor.replace(' ', '-');
+
+    navigate(`/product/${newId}`);
+  };
+
+  const handleCapacityChange = (newCapacity: string) => {
+    setCapacity(newCapacity);
+    const newId =
+      product.namespaceId +
+      '-' +
+      newCapacity.toLowerCase() +
+      '-' +
+      product.color.replace(' ', '-');
+
+    navigate(`/product/${newId}`);
+  };
+
   return (
     <main className={styles.page}>
       <div className={styles.pageContent}>
@@ -93,13 +137,23 @@ export const ProductDetailsPage = () => {
           <div className={styles.productMedia}>
             <div className={styles.productMedia_allImg}>
               {product.images.map(image => (
-                <div key={image} className={styles.productMedia_allImg_wrap}>
-                  <img src={image}></img>
+                <div
+                  key={image}
+                  className={styles.productMedia_allImg_wrap}
+                  onClick={() => setMainImgSrc(image)}
+                  style={{
+                    border:
+                      image === mainImgSrc
+                        ? '1px solid #F1F2F9'
+                        : '1px solid #3B3E4A',
+                  }}
+                >
+                  <img src={`..\\..\\..\\public\\${image}`}></img>
                 </div>
               ))}
             </div>
             <div className={styles.productMedia_mainImg}>
-              <img src={product.images[0]}></img>
+              <img src={`..\\..\\..\\public\\${mainImgSrc}`}></img>
             </div>
             <div className={styles.productMedia_card}>
               <div className={styles.productMedia_card_section}>
@@ -110,18 +164,23 @@ export const ProductDetailsPage = () => {
                   {product.colorsAvailable.map(col => (
                     <div
                       style={{
-                        border: `1px solid ${col}`,
+                        backgroundColor:
+                          col === color ? 'white' : colorMap[col],
                       }}
                       className={styles.productMedia_card_options_col}
                       key={col}
                     >
                       <div
                         style={{
-                          backgroundColor: col,
+                          backgroundColor: colorMap[col],
                           borderRadius: '50%',
-                          width: '26px',
-                          height: '26px',
+                          width: '31px',
+                          height: '31px',
+                          cursor: 'pointer',
+                          border: '2px solid #0F1121',
+                          boxSizing: 'border-box',
                         }}
+                        onClick={() => handleColorChange(col)}
                       ></div>
                     </div>
                   ))}
@@ -136,15 +195,24 @@ export const ProductDetailsPage = () => {
                     <div
                       className={styles.productMedia_card_options_cap}
                       key={cap}
+                      onClick={() => handleCapacityChange(cap)}
+                      style={{
+                        backgroundColor:
+                          cap === capacity ? '#F1F2F9' : '#0F1121',
+                        color: cap === capacity ? '#0F1121' : '#F1F2F9',
+                      }}
                     >
                       {cap}
                     </div>
                   ))}
                 </div>
               </div>
-              <div
-                className={styles.productMedia_card_price}
-              >{`$${product.priceRegular}`}</div>
+              <div className={styles.productMedia_card_price}>
+                <span>{`$${product.priceDiscount}`}</span>
+                <span
+                  className={styles.productMedia_card_price_full}
+                >{`$${product.priceRegular}`}</span>
+              </div>
               <div className={styles.cardButtons}>
                 <button className={styles.cardAddButton}>Add to a cart</button>
                 <button className={styles.cardFavButton}>
@@ -208,7 +276,9 @@ export const ProductDetailsPage = () => {
                       <span className={styles.productDescription_techSpec_name}>
                         {ts}
                       </span>
-                      <span>{product[ts]}</span>
+                      <span>
+                        {ts !== 'cell' ? product[ts] : product[ts]?.join(', ')}
+                      </span>
                     </div>
                   ))}
               </div>
@@ -217,7 +287,10 @@ export const ProductDetailsPage = () => {
         </div>
         <div className={styles.pageSlider}>
           <h2 className={styles.pageSlider_title}>You may also like</h2>
-          <ModelsSlider arrowClassName="modelsSliderArrow" />
+          <ModelsSlider
+            products={randomProducts}
+            arrowClassName="modelsSliderArrow"
+          />
         </div>
       </div>
     </main>

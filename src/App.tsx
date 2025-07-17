@@ -15,31 +15,46 @@ export const App = () => (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route
-        path="phones"
+        path="/phones"
         element={
           <ProductPage
-            category={{ name: 'Mobile phones', pathTitle: 'Phones' }}
+            category={{
+              name: 'phones',
+              title: 'Mobile phones',
+              pathTitle: 'Phones',
+            }}
           />
         }
       />
       <Route
-        path="tablets"
-        element={
-          <ProductPage category={{ name: 'Tablets', pathTitle: 'Tablets' }} />
-        }
-      />
-      <Route
-        path="accessories"
+        path="/tablets"
         element={
           <ProductPage
-            category={{ name: 'Accessories', pathTitle: 'Accessories' }}
+            category={{
+              name: 'tablets',
+              title: 'Tablets',
+              pathTitle: 'Tablets',
+            }}
           />
         }
       />
-      <Route path="favourites" element={<Favourites />} />
-      <Route path="cart" element={<Cart />} />
+      <Route
+        path="/accessories"
+        element={
+          <ProductPage
+            category={{
+              name: 'accessories',
+              title: 'Accessories',
+              pathTitle: 'Accessories',
+            }}
+          />
+        }
+      />
+      <Route path="/favourites" element={<Favourites />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/product/:productId" element={<ProductDetailsPage />} />
     </Routes>
-    <ProductDetailsPage />
+
     <Footer />
   </div>
 );

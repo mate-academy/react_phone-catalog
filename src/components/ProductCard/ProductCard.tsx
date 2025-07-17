@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 
@@ -6,11 +7,19 @@ type Props = {
 };
 
 export const ProductCard = ({ product }: Props) => {
+  const navigate = useNavigate();
+
   return (
-    <div className={styles.card}>
+    <div
+      onClick={() => navigate(`/product/${product.itemId}`)}
+      className={styles.card}
+    >
       <img src={product.image} className={styles.cardImage}></img>
       <p className={styles.cardTitle}>{`${product.name} (iMT9G2FS/A)`}</p>
-      <div className={styles.cardPrice}>{`$${product.price}`}</div>
+      <div className={styles.cardPrice}>
+        <span>{`$${product.price}`}</span>
+        <span className={styles.cardPrice_full}>{`$${product.fullPrice}`}</span>
+      </div>
       <div className={styles.cardProperties}>
         <div className={styles.cardProperty}>
           <span className={styles.cardPropertyName}>Screen</span>
@@ -27,8 +36,24 @@ export const ProductCard = ({ product }: Props) => {
       </div>
 
       <div className={styles.cardButtons}>
-        <button className={styles.cardAddButton}>Add to a cart</button>
-        <button className={styles.cardFavButton}>
+        <button
+          type="button"
+          className={styles.cardAddButton}
+          onClick={e => {
+            e.stopPropagation();
+            // логика добавления в корзину
+          }}
+        >
+          Add to a cart
+        </button>
+        <button
+          type="button"
+          className={styles.cardFavButton}
+          onClick={e => {
+            e.stopPropagation();
+            // логика добавления в корзину
+          }}
+        >
           <img src="/img/icons/favourite-default.svg" alt="favourites" />
         </button>
       </div>

@@ -4,6 +4,7 @@
   background-color: $color-surface1;
   color: $color-white;
   box-sizing: border-box;
+  cursor: pointer;
 
   display: flex;
   flex-direction: column;
@@ -39,6 +40,8 @@
 }
 
 .cardPrice {
+  display: flex;
+  gap: 8px;
   font-family: $font-bold;
   font-size: 22px;
   line-height: 140%;
@@ -46,6 +49,12 @@
   margin: 0;
   padding: 0;
   align-items: center;
+
+  &_full {
+    text-decoration: line-through;
+    color: $color-secondary;
+    font-family: $font-regular;
+  }
 
   &::after {
     content: '';

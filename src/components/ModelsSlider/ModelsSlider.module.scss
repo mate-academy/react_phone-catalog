@@ -2,12 +2,25 @@
 
 .sliderContainer {
   grid-column: 1/-1;
+  position: relative;
+}
+
+.slick-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 100%;
+}
+
+.slick-slide {
+  min-width: 272px;
 
   @media (max-width: $size-tablet) {
-    // margin-right: -24px;
+    min-width: 237px;
   }
 
   @media (max-width: $size-mobile) {
-    // margin-right: -16px;
+    min-width: 212px;
   }
 }

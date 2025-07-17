@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import styles from './ProductPage.module.scss';
 import { CustomDropdown } from '../CustomDropdown/CustomDropdown';
+import { useEffect, useState } from 'react';
+import { Category } from '../../types/Category';
+import { getProducts } from '../../utils/fetchClient';
+import { Product } from '../../types/Product';
 
 const sortOptions = [
   { value: 'age', label: 'Newest' },
@@ -16,7 +20,8 @@ const countOptions = [
 ];
 
 type CategoryType = {
-  name: 'Mobile phones' | 'Tablets' | 'Accessories';
+  name: Category;
+  title: 'Mobile phones' | 'Tablets' | 'Accessories';
   pathTitle: 'Phones' | 'Tablets' | 'Accessories';
 };
 
@@ -25,6 +30,14 @@ type Props = {
 };
 
 export const ProductPage = ({ category }: Props) => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    getProducts().then(productsFromServer =>
+      setProducts(productsFromServer.filter(p => p.category === category.name)),
+    );
+  }, [category]);
+
   return (
     <main className={styles.page}>
       <div className={styles.pageContent}>
@@ -36,8 +49,10 @@ export const ProductPage = ({ category }: Props) => {
           <span className={styles.pathHome_title}>{category.pathTitle}</span>
         </div>
         <div className={styles.pageInfo}>
-          <h1 className={styles.pageInfo_title}> {category.name}</h1>
-          <span className={styles.pageInfo_counter}>xxx models</span>
+          <h1 className={styles.pageInfo_title}> {category.title}</h1>
+          <span
+            className={styles.pageInfo_counter}
+          >{`${products.length} models`}</span>
         </div>
         <div className={styles.pageItems}>
           <div className={styles.dropdowns}>
