@@ -8,6 +8,10 @@
     height: 221px;
   }
 
+  @include onDesktop {
+    height: 432px;
+  }
+
   .swiper-pagination {
     height: 24px;
     display: flex;
@@ -62,11 +66,13 @@
       height: 189px;
       width: 90%;
     }
+
+    @include onDesktop {
+      height: 400px;
+    }
   }
 
 }
-
-
 
 .custom-buttons {
   display: none;
@@ -88,6 +94,11 @@
 
     cursor: pointer;
     background-color: white;
+
+    @include onDesktop {
+      height: 400px; }
+
+
   }
 
   .arrowLeft {

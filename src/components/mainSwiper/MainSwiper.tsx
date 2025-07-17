@@ -36,7 +36,7 @@ const SwiperButtons = () => {
 
 export default function MainSwiper() {
   const banner = [
-    '/img/banner/Pro.png',
+    '/img/banner/55.svg',
     '/img/banner/watch.jpg',
     '/img/banner/headphones.png',
   ];
@@ -65,12 +65,12 @@ export default function MainSwiper() {
 
         {banner.map((url, index) => (
           <SwiperSlide key={index}>
-              <div
-                className="card"
-                style={{
-                  backgroundImage: `url(${url})`,
-                }}
-              ></div>
+            <div
+              className="card"
+              style={{
+                backgroundImage: `url(${url})`,
+              }}
+            ></div>
           </SwiperSlide>
         ))}
 
