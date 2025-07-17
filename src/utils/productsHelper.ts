@@ -1,5 +1,5 @@
 import { Product } from '../Components/types/Product';
-// import products from '../../public/api/products.json';
+import products from '../../public/api/products.json';
 
 export function getNewPhones(prdcts: Product[], year = 2022) {
   return prdcts.reduce((acc, product) => {
@@ -53,4 +53,56 @@ export function sortProducts(
   }
 
   return copiedProducts;
+}
+
+export interface Data {
+  data: Product[] | undefined;
+  isLoading: boolean;
+}
+
+export function getProductsByCategory(category: string): Promise<Data[]> {
+  const promises = [];
+
+  //TODO add more cases
+  switch (category) {
+    case 'phones': {
+      const data = products.filter(product => {
+        return product.category === 'phones';
+      });
+
+      promises.push(
+        new Promise(resolve => resolve({ data, isLoading: false })),
+      );
+      break;
+    }
+
+    case 'tablets': {
+      const data = products.filter(product => {
+        return product.category === 'tablets';
+      });
+
+      promises.push(
+        new Promise(resolve => resolve({ data, isLoading: false })),
+      );
+      break;
+    }
+
+    case 'accessories': {
+      const data = products.filter(product => {
+        return product.category === 'accessories';
+      });
+
+      promises.push(
+        new Promise(resolve => resolve({ data, isLoading: false })),
+      );
+      break;
+    }
+
+    default:
+      break;
+  }
+
+  promises.push(new Promise(resolve => setTimeout(resolve, 1500)));
+
+  return Promise.all(promises) as Promise<Data[]>;
 }

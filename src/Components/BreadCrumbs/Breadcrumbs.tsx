@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
+import './Breadcrumbs.scss';
 
 const routes = [
   {
@@ -9,7 +10,7 @@ const routes = [
       <img
         src="/img/icons/Home.png"
         alt="Home"
-        style={{ width: 16, height: 16 }}
+        style={{ width: 14, height: 14 }}
       />
     ),
   },
@@ -38,7 +39,7 @@ export const Breadcrumbs = () => {
               </NavLink>
               <img
                 src="/img/icons/SliderRight.png"
-                style={{ width: 16, height: 16 }}
+                className="breadcrumb__slider"
               />
             </div>
           );

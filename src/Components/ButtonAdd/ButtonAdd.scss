@@ -1,7 +1,7 @@
 @import '../../utils/';
 
 .button-add {
-  width: 160px;
+  width: 100%;
   height: 40px;
 
   background-color: $color-primary;
@@ -25,10 +25,10 @@
   }
 
   @media (max-width: $tablet) {
-    width: 125px;
+    width: 180px;
   }
 
   @media (max-width: $mobile) {
-    width: 100px;
+    width: 231px;
   }
 }

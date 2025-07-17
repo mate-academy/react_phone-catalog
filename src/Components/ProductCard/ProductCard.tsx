@@ -54,7 +54,7 @@ export const ProductCard: React.FC<Props> = ({
         </div>
       </div>
 
-      <ItemTech itemTech={ItemTechList} />
+      <ItemTech itemTech={ItemTechList} variant="card" />
 
       <div className="product-card__buttons">
         <ButtonAddToCart addedProduct={product} />

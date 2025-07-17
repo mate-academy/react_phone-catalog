@@ -1,6 +1,6 @@
 @import '../../utils/';
 
-.item-tech{
+.item-tech {
   width: 100%;
   max-width: 571px;
   margin-bottom: 8px;
@@ -9,17 +9,22 @@
     max-width: none;
   }
 
-  &__headline{
+  &__headline {
     @include title-in-item-block;
   }
 
-  &__list{
-    margin-top: 8px;
+  &__list {
     list-style: none;
-    padding: 0 32px;
+    margin-top: 8px;
+    &--card {
+      padding: 0 32px;
+    }
+    &--page{
+      padding: 0;
+    }
   }
 
-  &__name{
+  &__name {
     @include small-text;
 
     font-weight: $font-weight-regular;
@@ -30,7 +35,7 @@
     margin-bottom: 8px;
   }
 
-  &__value{
+  &__value {
     @include small-text;
 
     font-weight: $font-weight-regular;

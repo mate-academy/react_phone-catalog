@@ -1,10 +1,18 @@
+import { useContext } from 'react';
+import { ProductsContext } from '../context/ProductsContext';
+import { Catalog } from '../Catalog/Catalog';
+
 export const FavouritesPage = () => {
+  const { favourites } = useContext(ProductsContext);
+
   return (
     <div className="favourites-page">
-      <h1>
-        Favourites Page
-        {/* Your favourite products will appear here! */}
-      </h1>
+      <Catalog
+        title={'Accessories'}
+        products={favourites}
+        showFilter={false}
+        showPagination={false}
+      />
     </div>
   );
 };

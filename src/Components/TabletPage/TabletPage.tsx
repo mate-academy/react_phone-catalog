@@ -1,10 +1,21 @@
+import { useProducts } from '../../Hooks/useProducts';
+import { Catalog } from '../Catalog/Catalog';
+import { Loader } from '../Loader/Loader';
+
 export const TabletPage = () => {
+  const { data, isLoading } = useProducts('tablets');
+
+  if (isLoading || !data) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <div className="tablet-page">
-      <h1>
-        Tablet Page
-        {/* Your favourite tablets will appear here! */}
-      </h1>
+      <Catalog title={'Tablets'} products={data} />
     </div>
   );
 };
