@@ -10,11 +10,6 @@ body {
   padding: 0;
 }
 
-.header__swiper-2 {
-  // margin: auto;
-  // height: 200px;
-}
-
 .header {
   @include onBigScren {
     width: 1136px;
@@ -30,26 +25,23 @@ body {
   &__title {
     font-family: 'Mont';
     font-weight: 800;
-    font-size: 32px;
-    line-height: 41px;
+    font-size: 48px;
+    font-style: bold;
+    line-height: 56px;
     letter-spacing: -0.32px;
-    padding-inline: 16px;
+    // padding-inline: 16px;
     padding-bottom: 24px;
     padding-top: 72px;
     margin: auto;
 
     @include onTablet {
-      margin: 24px 32px 24px 32px;
+      margin: 32px 24px 32px 24px;
     }
 
     @include onBigScren {
-      margin: 32px 56px 32px 56px;
+      margin: 0;
     }
   }
-
-  // &__swiper {
-  //   z-index: 0;
-  // }
 
   &__swiper {
     width: 100%;

@@ -37,17 +37,29 @@ const Sidebar: React.FC = () => {
               </Link>
             </li>
             <li className={styles['sideMenu__nav-item']}>
-              <Link className={styles['sideMenu__nav-link']} to="/phones">
+              <Link
+                className={styles['sideMenu__nav-link']}
+                to="/phones"
+                onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
+              >
                 phones
               </Link>
             </li>
             <li className={styles['sideMenu__nav-item']}>
-              <Link className={styles['sideMenu__nav-link']} to="/tablets">
+              <Link
+                className={styles['sideMenu__nav-link']}
+                to="/tablets"
+                onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
+              >
                 tablets
               </Link>
             </li>
             <li className={styles['sideMenu__nav-item']}>
-              <Link className={styles['sideMenu__nav-link']} to="/accessories">
+              <Link
+                className={styles['sideMenu__nav-link']}
+                to="/accessories"
+                onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
+              >
                 accessories
               </Link>
             </li>

@@ -37,6 +37,8 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
 
     newParams.set('sort', sortBy);
     setSearchParams(newParams.toString());
+
+    console.log(newParams.toString());
   }
 
   function handleItemsChange(perItems: string) {
@@ -44,11 +46,20 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
 
     newParams.set('quantity', perItems);
     setSearchParams(newParams.toString());
+
+    console.log(newParams.toString());
   }
 
-  console.log(search.pathname);
-  console.log(gadgets);
-  console.log(searchParams.toString);
+  const currentPage =
+    gadgets === 'phones'
+      ? 'phones'
+      : gadgets === 'accessories'
+        ? 'accessories'
+        : 'tablets';
+
+  // console.log(search.pathname);
+  // console.log(gadgets);
+  // console.log(searchParams.toString);
 
   return (
     <>
@@ -60,13 +71,21 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
             to="/"
             className={mobilePageStyles['mobile-page__go-home']}
           ></Link>
+          <span className={mobilePageStyles['mobile-page__direction']}></span>
           <Link
             to={`/${gadgets}`}
             className={mobilePageStyles['mobile-page__current-page']}
-          ></Link>
-          <span>Home</span>
+          >
+            {currentPage}
+          </Link>
         </div>
-        <h1>Mobile phones</h1>
+        {currentPage === 'phones' ? (
+          <h1>Mobile {currentPage}</h1>
+        ) : (
+          <h1 className={mobilePageStyles['mobile-page__title']}>
+            {currentPage}
+          </h1>
+        )}
 
         <span className={mobilePageStyles['mobile-page__quantity-mobils']}>
           95 models

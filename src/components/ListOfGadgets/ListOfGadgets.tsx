@@ -10,19 +10,17 @@ interface Props {
 }
 
 const ListOfGadgets: React.FC<Props> = ({ gadgets }) => {
-  // type Product = Iphones | Tablets;
-
-  const modelOrder = {
-    'iPhone 7': 2016,
-    'iPhone 8': 2017,
-    'iPhone X': 2017,
-    'iPhone XR': 2018,
-    'iPhone XS': 2018,
-    'iPhone 11': 2019,
-    'iPhone 12': 2020,
-    'iPhone 13': 2020,
-    'iPhone 14': 2022,
-  };
+  // const modelOrder = {
+  //   'iPhone 7': 2016,
+  //   'iPhone 8': 2017,
+  //   'iPhone X': 2017,
+  //   'iPhone XR': 2018,
+  //   'iPhone XS': 2018,
+  //   'iPhone 11': 2019,
+  //   'iPhone 12': 2020,
+  //   'iPhone 13': 2020,
+  //   'iPhone 14': 2022,
+  // };
 
   const [typeOfGadgets, setTypeOfGadgets] = useState<Products[] | []>([]);
   const [loading, setLoading] = useState(true);
@@ -50,7 +48,7 @@ const ListOfGadgets: React.FC<Props> = ({ gadgets }) => {
   }, [gadgets]);
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const pageQuantity = Math.ceil(typeOfGadgets.length / currentPage);
+  // const pageQuantity = Math.ceil(typeOfGadgets.length / currentPage);
   const passedItems = +perItems * currentPage - +perItems;
 
   console.log(passedItems);
@@ -83,7 +81,7 @@ const ListOfGadgets: React.FC<Props> = ({ gadgets }) => {
   );
 
   console.log(renderCards);
-  console.log(gadgets);
+  console.log(sort);
 
   return (
     <>

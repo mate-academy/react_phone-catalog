@@ -12,7 +12,7 @@ import { Pagination, Scrollbar, Navigation, Autoplay } from 'swiper/modules';
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
+import 'swiper/scss/navigation';
 import 'swiper/css/pagination';
 
 import { useMenu } from '../../context/MenuContext';
@@ -99,15 +99,7 @@ const WelcomeSlider: React.FC = () => {
       </div>
 
       <div className={welcomeStyles.header__wrapper}>
-        {/* <div
-          className={`${navigationStyle['swiper-button-prev']} ${navigationStyle['swiper-button']}`}
-        >
-          <img src="public\img\chevron-arrow_left.svg" alt="" />
-        </div> */}
-
-        <div
-          className={`${welcomeStyles['navigation-button-next']} ${welcomeStyles['swiper-button']}`}
-        >
+        <div className="navigation-button-prev">
           <div
             className={`${navigationStyle['navigation-button']} ${navigationStyle['navigation-button--left']}`}
           >
@@ -119,7 +111,7 @@ const WelcomeSlider: React.FC = () => {
           className={paginationStyle.swiper}
           modules={[Scrollbar, Pagination, Navigation, Autoplay]}
           style={{ width: `${widthSwiper}` }}
-          spaceBetween={3}
+          spaceBetween={1}
           slidesPerView={1}
           enabled={true}
           pagination={{
@@ -130,10 +122,10 @@ const WelcomeSlider: React.FC = () => {
             bulletActiveClass:
               paginationStyle['swiper-custom-pagination-bullet--active'],
           }}
-          // autoplay={{
-          //   delay: 5000,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
           navigation={{
             nextEl: '.navigation-button-next',
             prevEl: '.navigation-button-prev',
@@ -173,9 +165,7 @@ const WelcomeSlider: React.FC = () => {
           </SwiperSlide>
         </Swiper>
 
-        <div
-          className={`${welcomeStyles['navigation-button-next']} ${welcomeStyles['swiper-button']}`}
-        >
+        <div className="navigation-button-next">
           <div
             className={`${navigationStyle['navigation-button']} ${navigationStyle['navigation-button--right']}`}
           >

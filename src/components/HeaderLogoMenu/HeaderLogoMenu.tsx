@@ -82,7 +82,7 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
 
           <div className={iconStyles['icon--bag__wrapper']}>
             <Link
-              to="/"
+              to="/cart"
               className={`${iconStyles['icon--bag']} ${iconStyles.icon}`}
             ></Link>
 
