@@ -1,20 +1,35 @@
-import './swiper.scss'
+import 'swiper/css';
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
+import './swiper.scss';
 
 const SwiperButtons = () => {
   const swiper = useSwiper();
 
   return (
     <div className="custom-buttons">
-      <button className="arrowLeft swiper-buttons" onClick={() => swiper.slidePrev()}>
-        <img className='icon' src='./img/icons/ArrowLeft.svg' alt="Arrow Left"/>
+      <button
+        className="arrowLeft swiper-buttons"
+        onClick={() => swiper.slidePrev()}
+      >
+        <img
+          className="icon"
+          src="./img/icons/ArrowLeft.svg"
+          alt="Arrow Left"
+        />
       </button>
-      <button className="arrowRight swiper-buttons" onClick={() => swiper.slideNext()}><img className='icon' src='./img/icons/ArrowRight.svg' alt="Arrow Right"/></button>
+      <button
+        className="arrowRight swiper-buttons"
+        onClick={() => swiper.slideNext()}
+      >
+        <img
+          className="icon"
+          src="./img/icons/ArrowRight.svg"
+          alt="Arrow Right"
+        />
+      </button>
     </div>
   );
 };
@@ -27,40 +42,40 @@ export default function MainSwiper() {
   ];
 
   return (
-    <Swiper
-      modules={[Navigation, Pagination, A11y, Autoplay]} // Добавили Autoplay
-      spaceBetween={50}
-      slidesPerView={1} // Один слайд за раз
-      loop={true} // Включили зацикливание
-      autoplay={{
-        delay: 5000, // Автоматическая прокрутка каждые 5 секунды
-        disableOnInteraction: false, // НЕ останавливать автопрокрутку после ручного взаимодействия
-      }}
-      navigation={false} // Встроенные кнопки не используем
-      pagination={{clickable: true}}
-      className="mainSwiper"
-    >
-      <SwiperButtons />
+    <>
+      <Swiper
+        modules={[Navigation, Pagination, A11y, Autoplay]} // Добавили Autoplay
+        spaceBetween={30}
+        slidesPerView={1} // Один слайд за раз
+        loop={true} // Включили зацикливание
+        autoplay={{
+          delay: 5000, // Автоматическая прокрутка каждые 5 секунды
+          disableOnInteraction: false, // НЕ останавливать автопрокрутку после ручного взаимодействия
+        }}
+        navigation={false} // Встроенные кнопки не используем
+        pagination={{
+          clickable: true,
+          el: '.swiper-pagination',
+          bulletClass: 'custom-bullet',
+          bulletActiveClass: 'custom-bullet-active',
+        }}
+        className="mainSwiper"
+      >
+        <SwiperButtons />
 
-      {banner.map((url, index) => (
-        <SwiperSlide key={index}>
-          <div
-            className="card"
-            style={{
-              backgroundImage: `url(${url})`,
-            }}
-          >
-          </div>
-        </SwiperSlide>
-      ))}
+        {banner.map((url, index) => (
+          <SwiperSlide key={index}>
+              <div
+                className="card"
+                style={{
+                  backgroundImage: `url(${url})`,
+                }}
+              ></div>
+          </SwiperSlide>
+        ))}
 
-    </Swiper>
+        <div className="swiper-pagination"></div>
+      </Swiper>
+    </>
   );
 }
-
-
-
-
-
-
-

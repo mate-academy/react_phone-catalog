@@ -1,20 +1,22 @@
 
 .burger-navigation {
-  display: flex;
   background-color: $main-bg-color;
   width: 100%;
   height: calc(100vh - 48px);
   position: fixed;
 
-  z-index: 9;
+
 
   opacity: 0;
-  transform: translateY(-100%);
+  transform: translateY(-150%);
   transition: opacity 0.3s linear, transform 0.5s ease;
 
   &.is-open {
+    display: flex;
+    z-index: 9;
     opacity: 1;
     transform: translateY(0);
+    // pointer-events: auto;
   }
 
   @include onTablet {
@@ -30,6 +32,7 @@
   }
 
   .burger-list {
+
     display: flex;
     list-style: none;
     flex-direction: column;

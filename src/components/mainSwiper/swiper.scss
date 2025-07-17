@@ -1,28 +1,76 @@
 
 .mainSwiper {
   max-width: 1040px;
-  // display: flex;
-  // justify-content: center;
-  // margin-bottom: 350px;
   height: 350px;
-}
-
-.card {
   position: relative;
-  width: 90%;
-  height: 320px;
-  margin: auto;
-  // padding-bottom: 150px;
-  // position: relative;
 
-  background-size: auto 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: black;
+  @include onTablet {
+    height: 221px;
+  }
+
+  .swiper-pagination {
+    height: 24px;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+
+    gap: 4px;
+    bottom: 0;
+
+    background: transparent;
+
+    .custom-bullet {
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .custom-bullet::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 4px;
+      background-color: $border-color;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .custom-bullet:hover::before {
+      background-color: $not-active-color;
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+
+    .custom-bullet-active::before {
+      background-color: #000;
+    }
+  }
+
+  .card {
+    height: 320px;
+    margin: auto;
+
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+
+    @include onTablet {
+      height: 189px;
+      width: 90%;
+    }
+  }
+
 }
+
+
 
 .custom-buttons {
   display: none;
+
 
   @include onTablet {
     display: flex;
@@ -44,59 +92,15 @@
 
   .arrowLeft {
     position: absolute;
-    // top: 60px;
-
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
+    left: 0;
     z-index: 10;
-
   }
 
   .arrowRight {
     position: absolute;
-    // top: 60px;
+    top: 0;
     right: 0;
-
-    top: 50%;
-    transform: translateY(-50%);
     z-index: 10;
-    // margin-bottom: 115px;
-
   }
 }
-
-
-.swiper-pagination {
-  position: absolute;
-  // transform: translateY(-90%);
-  // bottom: 0;
-  bottom: -220px;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-
-  // Стили для неактивных буллетов
-  .swiper-pagination-bullet {
-    // transform: translateY(150%);
-    // bottom: -220px;
-    width: 12px;
-    height: 12px;
-    background: #ccc;
-    opacity: 1;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background: #999;
-      // transform: translateY(150%);
-    }
-  }
-
-  // Стили для активного буллета
-  .swiper-pagination-bullet-active {
-    // bottom: -220px;
-    background: #000;
-    transform: scale(1.2);
-  }
-}
-
