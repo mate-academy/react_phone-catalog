@@ -3,7 +3,7 @@ import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import './swiper.scss';
+import './bannerSwiper.scss';
 
 export const ArrowLeft = () => {
   const swiper = useSwiper();
@@ -33,7 +33,7 @@ export const ArrowRight = () => {
   );
 };
 
-export default function MainSwiper() {
+export const BannerSwiper = () => {
   const banner = [
     '/img/banner/55.svg',
     '/img/banner/watch.jpg',
@@ -63,7 +63,7 @@ export default function MainSwiper() {
                 bulletClass: 'custom-bullet',
                 bulletActiveClass: 'custom-bullet-active',
               }}
-              className="mainSwiper"
+              className="bannerSwiper"
             >
               {banner.map((url, index) => (
                 <SwiperSlide key={index}>

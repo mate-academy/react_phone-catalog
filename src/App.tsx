@@ -3,7 +3,7 @@ import { Routes, Route, Outlet } from 'react-router-dom';
 import './App.scss';
 
 // import { Header } from './components/header';
-import MainSwiper from './components/mainSwiper/MainSwiper';
+import { BannerSwiper } from './components/bannerSwiper';
 import { Header } from './components/header';
 
 // import './components/Header/style.scss';
@@ -14,15 +14,11 @@ export const App = () => {
     <div className="App">
       <Header />
       <main className="main">
-        <div className='title-section'>
-          <h1 className="title">
-            Welcome to Nice Gadgets store!
-          </h1>
+        <div className="title-section">
+          <h1 className="title">Welcome to Nice Gadgets store!</h1>
         </div>
 
-        <MainSwiper />
-
-        
+        <BannerSwiper />
       </main>
 
       {/* <Routes> */}
