@@ -42,7 +42,6 @@ export const BannerSwiper = () => {
 
   return (
     <>
-      <div className="banner-container">
         <div className="banner-slider">
           <div className="slider-container">
             <ArrowLeft />
@@ -82,7 +81,6 @@ export const BannerSwiper = () => {
         <div className="pagination-container">
           <div className="swiper-pagination"></div>
         </div>
-      </div>
     </>
   );
 }

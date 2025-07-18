@@ -1,11 +1,6 @@
 import './header-navigation.scss'
 import { Link } from 'react-router-dom';
 
-// type Props = {
-//   isBurgerMenu: boolean;
-// };
-
-// export const HeaderNavigation: React.FC<Props> = () => {
 export const HeaderNavigation: React.FC = () => {
   const pages = [
     { title: 'HOME', path: '/' },
@@ -13,10 +8,6 @@ export const HeaderNavigation: React.FC = () => {
     { title: 'TABLETS', path: '/' },
     { title: 'ACCESSORIES', path: '/' },
   ];
-
-  // if (!isBurgerMenu) {
-  //   return null;
-  // }
 
   return (
     <nav className="header-navigation">

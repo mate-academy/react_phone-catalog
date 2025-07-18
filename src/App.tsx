@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import './App.scss';
 
-// import { Header } from './components/header';
-import { BannerSwiper } from './components/bannerSwiper';
-import { Header } from './components/header';
+import { BannerSwiper } from './components/BannerSwiper';
+import { Header } from './components/Header';
 
-// import './components/Header/style.scss';
 import './styles/style.scss';
 
 export const App = () => {
@@ -26,8 +24,6 @@ export const App = () => {
       {/* </Routes> */}
       {/* <Outlet />
       <footer></footer> */}
-
-      {/* <h1>Google Hi how are you??? </h1> */}
     </div>
   );
 };

@@ -1,97 +1,93 @@
-.banner-container {
-  .banner-slider {
-    .slider-container {
-      display: flex;
-      margin-bottom: 8px;
-    }
+.slider-container {
+  display: flex;
+  margin-bottom: 8px;
+}
 
-    .swiper-buttons {
-      display: none;
+.swiper-buttons {
+  display: none;
 
-      @include onTablet {
-        display: flex;
-        align-items: center;
-        width: 32px;
-        border-radius: 25px;
-        border: 1px solid $border-hover-color;
-        cursor: pointer;
-        background-color: $page-body-bg-color;
-        transition: background-color 0.3s ease;
-      }
-
-      .icon {
-        transition: transform 0.3s ease;
-      }
-
-      &:hover {
-        background-color: $main-bg-color;
-
-        .icon {
-          transform: scale(1.20);
-        }
-      }
-    }
-
-    .bannerSwiper {
-      width: 100%;
-      height: 320px;
-
-      @include onTablet {
-        height: 189px;
-        margin: 0 19px;
-      }
-
-      @include onDesktop {
-        height: 400px;
-        margin: 0 16px;
-      }
-
-      .card {
-        height: 100%;
-        background-size: auto 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-color: black;
-      }
-    }
+  @include onTablet {
+    display: flex;
+    align-items: center;
+    width: 32px;
+    border-radius: 25px;
+    border: 1px solid $border-hover-color;
+    cursor: pointer;
+    background-color: $page-body-bg-color;
+    transition: background-color 0.3s ease;
   }
 
-  .pagination-container {
-    height: 24px;
+  .icon {
+    transition: transform 0.3s ease;
+  }
 
-    .swiper-pagination {
-      display: flex;
-      justify-content: center;
+  &:hover {
+    background-color: $main-bg-color;
+
+    .icon {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.bannerSwiper {
+  width: 100%;
+  height: 320px;
+
+  @include onTablet {
+    height: 189px;
+    margin: 0 19px;
+  }
+
+  @include onDesktop {
+    height: 400px;
+    margin: 0 16px;
+  }
+
+  .card {
+    height: 100%;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+  }
+}
+
+.pagination-container {
+  height: 24px;
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 4px;
+    bottom: 0;
+    z-index: 1;
+
+    .custom-bullet {
+      width: 24px;
+      height: 24px;
       position: relative;
-      gap: 4px;
-      bottom: 0;
-      z-index: 9;
+      cursor: pointer;
 
-      .custom-bullet {
-        width: 24px;
-        height: 24px;
-        position: relative;
-        cursor: pointer;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 14px;
+        height: 4px;
+        background-color: $border-color;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+      }
 
-        &::before {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 14px;
-          height: 4px;
-          background-color: $border-color;
-          transform: translate(-50%, -50%);
-          transition: all 0.3s ease;
-        }
+      &:hover::before {
+        background-color: $text-not-active-color;
+      }
 
-        &:hover::before {
-          background-color: $text-not-active-color;
-        }
-
-        &.custom-bullet-active::before {
-          background-color: $text-main-color;
-        }
+      &.custom-bullet-active::before {
+        background-color: $text-main-color;
       }
     }
   }

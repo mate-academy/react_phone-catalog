@@ -7,17 +7,13 @@
 }
 
 .page__body {
-  // display: flex;
   margin: 0;
-  // max-width: ;
   height: 100%;
 }
 
 .main {
   max-width: $main-max-width;
   margin: auto;
-
-  // border: 1px solid black;
 
   @include onTablet {
     padding: 0 24px;
