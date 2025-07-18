@@ -34,7 +34,7 @@
         height: 100%;
         box-sizing: border-box;
 
-        color: $not-active-color;
+        color: $text-not-active-color;
         text-decoration: none;
         transition: color 0.3s ease;
 
@@ -50,11 +50,11 @@
         }
 
         &:hover {
-          color: $main-text-color;
+          color: $text-main-color;
         }
 
         &:hover::after {
-          background-color: $main-text-color;
+          background-color: $text-main-color;
         }
       }
     }

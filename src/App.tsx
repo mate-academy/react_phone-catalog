@@ -14,8 +14,15 @@ export const App = () => {
     <div className="App">
       <Header />
       <main className="main">
-        <h1 className="h1">Welcome to Nice Gadgets store!</h1>
+        <div className='title-section'>
+          <h1 className="title">
+            Welcome to Nice Gadgets store!
+          </h1>
+        </div>
+
         <MainSwiper />
+
+        
       </main>
 
       {/* <Routes> */}

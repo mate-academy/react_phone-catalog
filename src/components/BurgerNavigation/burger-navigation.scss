@@ -13,10 +13,9 @@
 
   &.is-open {
     display: flex;
-    z-index: 9;
+    z-index: 10;
     opacity: 1;
     transform: translateY(0);
-    // pointer-events: auto;
   }
 
   @include onTablet {
@@ -47,7 +46,7 @@
       font-weight: 800;
       height: 27px;
       align-items: center;
-      color: rgba(137, 147, 154, 1);
+      color: $text-not-active-color;
       text-decoration: none;
 
       transition: color 0.5s ease;
@@ -64,7 +63,7 @@
       }
 
       &:hover {
-        color: $main-text-color;
+        color: $text-main-color;
       }
 
       &:hover::after {
@@ -82,17 +81,10 @@
       display: flex;
       width: 50%;
       position: relative;
-      border-top: 1px solid rgba(226, 230, 233, 1);
+      border-top: 1px solid $border-color;
 
       &:first-child {
-        border-right: 1px solid rgba(226, 230, 233, 1);
-
-        @include onTablet {
-          background-color:red;
-        }
-        @include onDesktop {
-          background-color:blue;
-        }
+        border-right: 1px solid $border-color;
       }
 
       &::after {

@@ -5,32 +5,31 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './swiper.scss';
 
-const SwiperButtons = () => {
+export const ArrowLeft = () => {
   const swiper = useSwiper();
-
   return (
-    <div className="custom-buttons">
-      <button
-        className="arrowLeft swiper-buttons"
-        onClick={() => swiper.slidePrev()}
-      >
-        <img
-          className="icon"
-          src="./img/icons/ArrowLeft.svg"
-          alt="Arrow Left"
-        />
-      </button>
-      <button
-        className="arrowRight swiper-buttons"
-        onClick={() => swiper.slideNext()}
-      >
-        <img
-          className="icon"
-          src="./img/icons/ArrowRight.svg"
-          alt="Arrow Right"
-        />
-      </button>
-    </div>
+    <button
+      className="arrowLeft swiper-buttons"
+      onClick={() => swiper.slidePrev()}
+    >
+      <img className="icon" src="./img/icons/ArrowLeft.svg" alt="Arrow Left" />
+    </button>
+  );
+};
+
+export const ArrowRight = () => {
+  const swiper = useSwiper();
+  return (
+    <button
+      className="arrowRight swiper-buttons"
+      onClick={() => swiper.slideNext()}
+    >
+      <img
+        className="icon"
+        src="./img/icons/ArrowRight.svg"
+        alt="Arrow Right"
+      />
+    </button>
   );
 };
 
@@ -43,39 +42,47 @@ export default function MainSwiper() {
 
   return (
     <>
-      <Swiper
-        modules={[Navigation, Pagination, A11y, Autoplay]} // Добавили Autoplay
-        spaceBetween={30}
-        slidesPerView={1} // Один слайд за раз
-        loop={true} // Включили зацикливание
-        autoplay={{
-          delay: 5000, // Автоматическая прокрутка каждые 5 секунды
-          disableOnInteraction: false, // НЕ останавливать автопрокрутку после ручного взаимодействия
-        }}
-        navigation={false} // Встроенные кнопки не используем
-        pagination={{
-          clickable: true,
-          el: '.swiper-pagination',
-          bulletClass: 'custom-bullet',
-          bulletActiveClass: 'custom-bullet-active',
-        }}
-        className="mainSwiper"
-      >
-        <SwiperButtons />
+      <div className="banner-container">
+        <div className="banner-slider">
+          <div className="slider-container">
+            <ArrowLeft />
 
-        {banner.map((url, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className="card"
-              style={{
-                backgroundImage: `url(${url})`,
+            <Swiper
+              modules={[Navigation, Pagination, A11y, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{ delay: 5000, disableOnInteraction: false }}
+              navigation={{
+                nextEl: '.arrowRight',
+                prevEl: '.arrowLeft',
               }}
-            ></div>
-          </SwiperSlide>
-        ))}
+              pagination={{
+                clickable: true,
+                el: '.swiper-pagination',
+                bulletClass: 'custom-bullet',
+                bulletActiveClass: 'custom-bullet-active',
+              }}
+              className="mainSwiper"
+            >
+              {banner.map((url, index) => (
+                <SwiperSlide key={index}>
+                  <div
+                    className="card"
+                    style={{ backgroundImage: `url(${url})` }}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
 
-        <div className="swiper-pagination"></div>
-      </Swiper>
+            <ArrowRight />
+          </div>
+        </div>
+
+        <div className="pagination-container">
+          <div className="swiper-pagination"></div>
+        </div>
+      </div>
     </>
   );
 }

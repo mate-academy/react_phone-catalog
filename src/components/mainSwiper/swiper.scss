@@ -1,117 +1,98 @@
+.banner-container {
+  .banner-slider {
+    .slider-container {
+      display: flex;
+      margin-bottom: 8px;
+    }
 
-.mainSwiper {
-  max-width: 1040px;
-  height: 350px;
-  position: relative;
+    .swiper-buttons {
+      display: none;
 
-  @include onTablet {
-    height: 221px;
+      @include onTablet {
+        display: flex;
+        align-items: center;
+        width: 32px;
+        border-radius: 25px;
+        border: 1px solid $border-hover-color;
+        cursor: pointer;
+        background-color: $page-body-bg-color;
+        transition: background-color 0.3s ease;
+      }
+
+      .icon {
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        background-color: $main-bg-color;
+
+        .icon {
+          transform: scale(1.20);
+        }
+      }
+    }
+
+    .mainSwiper {
+      width: 100%;
+      height: 320px;
+
+      @include onTablet {
+        height: 189px;
+        margin: 0 19px;
+      }
+
+      @include onDesktop {
+        height: 400px;
+        margin: 0 16px;
+      }
+
+      .card {
+        height: 100%;
+        background-size: auto 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: black;
+      }
+    }
   }
 
-  @include onDesktop {
-    height: 432px;
-  }
-
-  .swiper-pagination {
+  .pagination-container {
     height: 24px;
-    display: flex;
-    position: absolute;
-    justify-content: center;
 
-    gap: 4px;
-    bottom: 0;
-
-    background: transparent;
-
-    .custom-bullet {
-      width: 24px;
-      height: 24px;
-      background: transparent;
+    .swiper-pagination {
+      display: flex;
+      justify-content: center;
       position: relative;
-      cursor: pointer;
+      gap: 4px;
+      bottom: 0;
+      z-index: 9;
+
+      .custom-bullet {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        cursor: pointer;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 14px;
+          height: 4px;
+          background-color: $border-color;
+          transform: translate(-50%, -50%);
+          transition: all 0.3s ease;
+        }
+
+        &:hover::before {
+          background-color: $text-not-active-color;
+        }
+
+        &.custom-bullet-active::before {
+          background-color: $text-main-color;
+        }
+      }
     }
-
-    .custom-bullet::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 14px;
-      height: 4px;
-      background-color: $border-color;
-      transform: translate(-50%, -50%);
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    .custom-bullet:hover::before {
-      background-color: $not-active-color;
-      transform: translate(-50%, -50%) scale(1.15);
-    }
-
-    .custom-bullet-active::before {
-      background-color: #000;
-    }
-  }
-
-  .card {
-    height: 320px;
-    margin: auto;
-
-    background-size: auto 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: black;
-
-    @include onTablet {
-      height: 189px;
-      width: 90%;
-    }
-
-    @include onDesktop {
-      height: 400px;
-    }
-  }
-
-}
-
-.custom-buttons {
-  display: none;
-
-
-  @include onTablet {
-    display: flex;
-  }
-
-  .swiper-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 189px;
-    width: 32px;
-    box-sizing: border-box;
-    border-radius: 25px;
-    border: 1px solid $border-color;
-
-    cursor: pointer;
-    background-color: white;
-
-    @include onDesktop {
-      height: 400px; }
-
-
-  }
-
-  .arrowLeft {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-  }
-
-  .arrowRight {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 10;
   }
 }
