@@ -103,10 +103,6 @@
     cursor: pointer;
   }
 
-  &:focus {
-    background-color: $surface2;
-  }
-
   &:disabled {
     background-color: $surface2;
     cursor: auto;
@@ -123,11 +119,6 @@
   &:hover {
     background-color: $icons;
     border-color: $icons;
-  }
-
-  &:focus {
-    background-color: $surface2;
-    border-color: $surface2;
   }
 
   &:disabled {

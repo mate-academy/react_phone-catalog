@@ -16,9 +16,27 @@ export const Footer = () => {
           <img src={Logo} alt="nice gadgets" />
         </div>
         <div className={styles.footer__nav}>
-          <a href="https://github.com/KateLis84/react_phone-catalog">GITHUB</a>
-          <a href="mailto:emma12022002@gmail.com">CONTACTS</a>
-          <a href="https://i.imgflip.com/1iphel.jpg">RIGHTS</a>
+          <a 
+            href="https://github.com/KateLis84/react_phone-catalog" 
+            target="_blank"
+            rel="noreferrer"
+          >
+          GITHUB
+          </a>
+          <a
+            href="mailto:emma12022002@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            CONTACTS
+          </a>
+          <a
+            href="https://i.imgflip.com/1iphel.jpg"
+            target="_blank"
+            rel="noreferrer"
+          >
+            RIGHTS
+          </a>
         </div>
         <div className={styles.footer__toTopBtn} onClick={handleBackToTop}>
           <div>Back to top</div>

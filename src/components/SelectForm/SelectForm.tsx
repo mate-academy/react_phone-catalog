@@ -33,10 +33,15 @@ export const SelectForm: React.FC<CustomSelectProps> = ({
         setOpen(false);
       }
     };
-    setSelectedValue(value);
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    setSelectedValue(value);
+  }, [value]); 
+
 
   return (
     <div className={styles.selectWrapper} ref={wrapperRef}>

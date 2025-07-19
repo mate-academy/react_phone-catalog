@@ -38,29 +38,19 @@ export const CataloguePage = () => {
   ];
 
   useEffect(() => {
-    const currentSort = searchParams.get('sort');
-    const currentItems = searchParams.get('itemsPerPage');
-    const currentPage = searchParams.get('page');
+    const currentSort = searchParams.get('sort') || DEFAULT_SORT;
+    const currentItems = searchParams.get('itemsPerPage') || DEFAULT_ITEMS_PER_PAGE;
+    const currentPage = searchParams.get('page') || DEFAULT_PAGE;
+
+    setSort(currentSort);
+    setItemsPerPage(currentItems);
+    setPage(currentPage);
 
     const updatedParams: Record<string, string> = {};
 
-    if (currentSort) {
-      setSort(currentSort);
-    } else {
-      updatedParams.sort = DEFAULT_SORT;
-    }
-
-    if (currentItems) {
-      setItemsPerPage(currentItems);
-    } else {
-      updatedParams.itemsPerPage = DEFAULT_ITEMS_PER_PAGE;
-    }
-
-    if (currentPage) {
-      setPage(currentPage);
-    } else {
-      updatedParams.page = DEFAULT_PAGE;
-    }
+    if (!searchParams.get('sort')) updatedParams.sort = DEFAULT_SORT;
+    if (!searchParams.get('itemsPerPage')) updatedParams.itemsPerPage = DEFAULT_ITEMS_PER_PAGE;
+    if (!searchParams.get('page')) updatedParams.page = DEFAULT_PAGE;
 
     if (Object.keys(updatedParams).length > 0) {
       setSearchParams((prev: URLSearchParams) => {
@@ -178,6 +168,20 @@ export const CataloguePage = () => {
     }
   };
 
+  const handleItemsPerPageChange = (val: string) => {
+    setItemsPerPage(val);
+    setPage('1');
+
+    setSearchParams(prev => {
+      const updated = new URLSearchParams(prev);
+
+      updated.set('itemsPerPage', val);
+      updated.set('page', '1');
+
+      return updated;
+    });
+  };
+
   return (
     <div className={`container ${styles.catalogue}`}>
       <Breadcrumbs />
@@ -195,7 +199,7 @@ export const CataloguePage = () => {
         <SelectForm
           label="Items on page"
           value={itemsPerPage}
-          onChange={handleSelectChange('itemsPerPage', setItemsPerPage)}
+          onChange={handleItemsPerPageChange}
           options={pageOptions}
         />
       </div>

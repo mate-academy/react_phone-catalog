@@ -7,15 +7,17 @@ interface Props {
 
 export const Gallery = ({ photos }: Props) => {
   const [mainPhoto, setMainPhoto] = useState(photos[0]);
+  let formattedPhotos = photos;
 
   useEffect(() => {
+    formattedPhotos = photos.map(photo => photo.slice(1));
     setMainPhoto(photos[0]);
   }, [photos]);
 
   return (
     <div className={styles.gallery}>
       <div className={styles.gallery__mini}>
-        {photos.map((photo: string) => (
+        {formattedPhotos.map((photo: string) => (
           <div
             className={`
                 ${styles.gallery__miniPhoto} 
@@ -24,12 +26,12 @@ export const Gallery = ({ photos }: Props) => {
             key={photo}
             onClick={() => setMainPhoto(photo)}
           >
-            <img src={'/' + photo} alt="" />
+            <img src={photo} alt="" />
           </div>
         ))}
       </div>
       <div className={styles.gallery__mainPhoto}>
-        <img src={'/' + mainPhoto} alt="phone" />
+        <img src={mainPhoto} alt="phone" />
       </div>
     </div>
   );
