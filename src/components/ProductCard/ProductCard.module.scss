@@ -90,17 +90,18 @@
     justify-content: space-between;
 
     button {
-      @include button;
       padding: 0;
     }
   }
 
   &__addBtn {
+    @include button;
     width: 160px;
     height: 100%;
   }
 
   &__favorite {
+    @include grey-button;
     width: 40px;
   }
 
@@ -130,6 +131,7 @@
   .card {
     width: 212px;
     height: 439px;
+    justify-self: center;
 
     img {
       width: 148px;

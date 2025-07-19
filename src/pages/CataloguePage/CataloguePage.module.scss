@@ -22,8 +22,8 @@
   }
 
   &__grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: center;
     gap: 16px;
 
@@ -55,4 +55,20 @@
 
 .pagination {
   justify-self: center;
+}
+
+@include for-tablet {
+  .catalogue {
+    &__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@include for-phone {
+  .catalogue {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
 }

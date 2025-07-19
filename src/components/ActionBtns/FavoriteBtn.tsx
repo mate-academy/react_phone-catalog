@@ -42,7 +42,7 @@ export const FavoriteBtn = ({ product, assignClassName = '' }: Props) => {
   return (
     <button
       type="button"
-      className={`${styles.favorite} ${assignClassName}`}
+      className={`${styles.favorite} ${assignClassName} ${isFav ? styles.favorite_selected : ''}`}
       onClick={handleToggle}
     >
       {isFav ? <RedHeartIcon /> : <HeartIcon />}
