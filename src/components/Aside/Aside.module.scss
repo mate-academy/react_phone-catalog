@@ -1,0 +1,94 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.aside {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 320px;
+  height: 100vh;
+  background-color: $background-color;
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.open {
+    right: 0;
+    transform: translateX(0);
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $border-color;
+}
+
+.button {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-left: 1px solid $border-color;
+  cursor: pointer;
+  padding: 0;
+
+  @include flex-center;
+}
+
+.content {
+  padding: 24px 16px;
+  flex-grow: 1;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    a {
+      font-size: 16px;
+      font-weight: 500;
+      color: $nav-text-color;
+      text-decoration: none;
+
+      &.is-active {
+        font-weight: 700;
+        border-bottom: 2px solid $hover-border-color;
+        padding-bottom: 4px;
+        color: $hover-border-color;
+      }
+    }
+  }
+}
+
+.iconsGroup {
+  display: flex;
+  width: 100%;
+  max-width: 320px;
+  height: 64px;
+  border-top: 1px solid $border-color;
+}
+
+.icon {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-left: 1px solid $border-color;
+  cursor: pointer;
+  width: 16px;
+  transition: transform 0.3s ease;
+
+  &:first-child {
+    border-left: none;
+  }
+
+  &.is-active {
+    border-bottom: 2px solid $hover-border-color;
+  }
+}

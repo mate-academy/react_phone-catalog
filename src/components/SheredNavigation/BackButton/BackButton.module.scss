@@ -1,0 +1,29 @@
+@use '../../../styles/variables' as *;
+
+.backButton {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  gap: 8px;
+  padding: 0;
+
+  .icon {
+    font-size: 10px;
+    color: $icon-color;
+    transition: color 0.3s;
+  }
+
+  .text {
+    font-size: 12px;
+    font-weight: 700;
+    color: $specs-text-color;
+    transition: color 0.3s;
+  }
+
+  &:hover .icon,
+  &:hover .text {
+    color: $color-text-hover;
+  }
+}

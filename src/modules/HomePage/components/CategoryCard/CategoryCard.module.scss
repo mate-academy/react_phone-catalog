@@ -1,0 +1,70 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.imageWrapper {
+  overflow: hidden;
+  border-radius: 16px;
+  transition: box-shadow 0.3s;
+
+  @include desktop {
+    width: 368px;
+    height: 368px;
+  }
+
+  @include tablet {
+    width: 187px;
+    height: 187px;
+  }
+
+  @include mobile {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover .imageWrapper {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  @include desktop {
+    width: 368px;
+  }
+
+  @include tablet {
+    width: 187px;
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom right;
+  border-radius: 15px;
+}
+
+.title {
+  font-family: 'Mont', sans-serif;
+  margin-top: 24px;
+  margin-bottom: 4px;
+  font-size: 20px;
+  color: #0f0f11;
+  text-align: left;
+}
+
+.count {
+  font-size: 14px;
+  color: #89939a;
+  text-align: left;
+}

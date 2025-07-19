@@ -1,0 +1,82 @@
+@use 'sass:color';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: 'Mont', sans-serif;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.label {
+  color: $icon-border-color;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.selectBox {
+  height: 40px;
+  border: 1px solid #e2e6e9;
+  border-radius: 12px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  appearance: none;
+  background-image: url('/icons/dropdownImg.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+
+  &:hover {
+    background-color: #fafbfc;
+  }
+
+  &:focus {
+    border: 1px solid $hover-border-color;
+    outline: none;
+  }
+}
+
+.arrow {
+  margin-left: auto;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.dropdown {
+  padding-left: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border: 1px solid #e2e6e9;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 5;
+  margin-top: 4px;
+}
+
+.option {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background: #f5f5f5;
+  }
+
+  &.active {
+    font-weight: bold;
+  }
+}

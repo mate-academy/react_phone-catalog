@@ -1,0 +1,36 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.section {
+  width: 100%;
+  background-color: $background-color;
+}
+
+.content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  font-family: 'Mont', sans-serif;
+  font-size: 32px;
+  margin-bottom: 24px;
+  margin-left: 0;
+  color: $main-text-color;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+
+  @include desktop {
+    justify-content: space-between;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 52px;
+  }
+}

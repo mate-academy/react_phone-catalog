@@ -1,0 +1,64 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.footer {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $background-color;
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  border-top: 1px solid $border-color;
+  width: 100%;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.logo {
+  z-index: 1;
+  margin-left: 24px;
+  margin-right: 24px;
+
+  @include mobile {
+    position: static;
+    transform: none;
+    width: 100%;
+    justify-content: left;
+  }
+}
+
+.footerNav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mobile {
+    position: static;
+    transform: none;
+    width: 100%;
+    justify-content: left;
+  }
+
+  .backToTop {
+    display: none;
+
+    @include mobile {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}

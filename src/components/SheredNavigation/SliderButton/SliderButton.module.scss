@@ -1,0 +1,58 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.sliderButton {
+  width: 32px;
+  border-radius: 16px;
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex-shrink: 0;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: #f0f0f0;
+  }
+}
+
+.sliderButton--round {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $border-color;
+}
+
+.sliderButton--tall {
+  height: 400px;
+
+  @include tablet {
+    height: 189px;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.icon {
+  font-size: 16px;
+  pointer-events: none;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+  }
+}

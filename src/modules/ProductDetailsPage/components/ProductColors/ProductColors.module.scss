@@ -1,0 +1,59 @@
+@use '../../../../styles/variables' as *;
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &::after {
+    content: '';
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    color: $main-text-color;
+    margin-top: 24px;
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.colorList {
+  display: flex;
+  gap: 8px;
+}
+
+.colorWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.colorCircle {
+  width: 33px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-color: $border-color;
+  transition: border-color 0.3s;
+}
+
+.colorInner {
+  width: 31px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.active {
+  border-color: $hover-border-color;
+}

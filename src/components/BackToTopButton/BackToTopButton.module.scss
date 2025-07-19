@@ -1,0 +1,51 @@
+.button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.isVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.isMobile {
+  position: static;
+  margin-top: 16px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.text {
+  font-family: 'Mont', sans-serif;
+  font-size: 14px;
+  color: #89939a;
+}
+
+.iconWrapper {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #b4bdc3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.icon {
+  font-size: 16px;
+  color: #0f0f11;
+  pointer-events: none;
+}

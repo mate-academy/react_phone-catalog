@@ -1,0 +1,33 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.button {
+  @include flex-center;
+
+  width: 48px;
+  height: 48px;
+  background-color: $background-color;
+  border-left: 1px solid $background-color;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  padding: 0;
+  cursor: pointer;
+
+  @include mobile {
+    display: flex;
+  }
+
+  @include tablet {
+    display: none;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}

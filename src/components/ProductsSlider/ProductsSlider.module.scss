@@ -1,0 +1,52 @@
+.productsSlider {
+  margin-block: 40px;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .title {
+    font-family: 'Mont', sans-serif;
+    font-size: 32px;
+    color: #0f0f11;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  .track {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+
+    // @include mobile {
+    //   gap: 8px;
+    //   scroll-snap-type: x mandatory;
+    // }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .item {
+    flex: 0 0 auto;
+    width: 272px;
+
+    // @include tablet {
+    //   width: 240px;
+    // }
+
+    // @include mobile {
+    //   width: 100%;
+    //   scroll-snap-align: start;
+    // }
+  }
+}

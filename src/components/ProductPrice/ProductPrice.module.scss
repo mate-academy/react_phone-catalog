@@ -1,0 +1,24 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.price {
+  font-family: 'Mont', sans-serif;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.current {
+  font-size: 22px;
+  line-height: 31px;
+  color: $main-text-color;
+}
+
+.old {
+  font-size: 22px;
+  color: $specs-text-color;
+  text-decoration: line-through;
+  line-height: 28px;
+}

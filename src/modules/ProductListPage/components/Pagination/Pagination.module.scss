@@ -1,0 +1,43 @@
+@use '../../../../styles/variables' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 80px;
+  margin-top: 40px;
+}
+
+.page {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $border-color;
+  background-color: white;
+  color: $main-text-color;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+
+  &:hover {
+    border: 1px solid $hover-border-color;
+  }
+}
+
+.active {
+  background-color: $main-text-color;
+  color: white;
+}
+
+.buttonLeft {
+  margin-right: 0;
+  margin-right: 12px;
+}
+
+.buttonRight {
+  margin-left: 0;
+  margin-left: 12px;
+}

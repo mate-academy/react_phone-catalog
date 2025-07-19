@@ -1,0 +1,29 @@
+@use '../../../../../../styles/variables' as *;
+@use '../../../../../../styles/mixins' as *;
+
+.imageWrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+
+  width: 1040px;
+  height: 400px;
+
+  @include tablet {
+    width: 490px;
+    height: 189px;
+  }
+
+  @include mobile {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}

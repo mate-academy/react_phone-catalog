@@ -1,0 +1,26 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 1600px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 80px;
+
+  @include tablet {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @include desktop {
+    padding-left: 152px;
+    padding-right: 152px;
+  }
+}

@@ -1,0 +1,31 @@
+@use '../../../../../../styles/variables' as *;
+@use '../../../../../../styles/mixins' as *;
+
+.dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.dot {
+  width: 24px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #dcdcdc;
+  border: none;
+  cursor: pointer;
+
+  &.active {
+    background-color: #0f0f11;
+  }
+}

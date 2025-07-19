@@ -1,0 +1,20 @@
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.button {
+  width: 160px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.like {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}

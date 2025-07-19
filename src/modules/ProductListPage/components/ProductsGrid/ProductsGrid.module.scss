@@ -1,0 +1,26 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.gridWrapper {
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  gap: 40px 16px;
+
+  @include desktop {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, auto);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, auto);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(14, auto);
+  }
+}

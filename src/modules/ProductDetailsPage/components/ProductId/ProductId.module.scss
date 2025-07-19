@@ -1,0 +1,18 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.productId {
+  font-family: 'Mont', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: $specs-text-color;
+  text-align: right;
+
+  width: 176px;
+  height: 15px;
+
+  @include tablet {
+    width: 65px;
+    height: 15px;
+  }
+}

@@ -1,0 +1,16 @@
+@use '../../../styles/mixins' as *;
+
+.logo {
+  display: flex;
+  width: 128px;
+  height: 64px;
+
+  @include mobile {
+    height: 48px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

@@ -1,0 +1,16 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.title {
+  font-family: 'Mont', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: $main-text-color;
+  margin-bottom: 8px;
+
+  @include mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}

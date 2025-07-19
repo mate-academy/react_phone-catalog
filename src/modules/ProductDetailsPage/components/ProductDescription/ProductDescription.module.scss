@@ -1,0 +1,38 @@
+@use '../../../../styles/variables' as *;
+
+.description {
+  font-family: 'Mont', sans-serif;
+
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    content: 'About';
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    color: $main-text-color;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 16px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: $description-title;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: $description-text; // например: #89939a
+}

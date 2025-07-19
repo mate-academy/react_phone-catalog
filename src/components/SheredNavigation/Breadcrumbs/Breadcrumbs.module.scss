@@ -1,0 +1,26 @@
+@use '../../../styles/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 14px;
+  color: $nav-text-color;
+  margin-top: 25px;
+}
+
+.link {
+  color: $nav-text-color;
+  text-decoration: none;
+  gap: 8px;
+
+  &:hover {
+    color: $color-text-hover;
+    text-decoration: underline;
+  }
+}
+
+.separator {
+  margin: 0 8px;
+  color: $icon-border-color;
+}

@@ -1,0 +1,88 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include tablet {
+    gap: 8px;
+  }
+
+  @include mobile {
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 9px;
+  }
+}
+
+.thumb {
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  border: 1px solid $border-color;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  transition: border-color 0.3s;
+
+  @include tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include mobile {
+    width: 49px;
+    height: 47px;
+  }
+}
+
+.active {
+  border-color: $hover-border-color;
+}
+
+.mainImage {
+  width: 464px;
+  height: 464px;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @include tablet {
+    width: 287px;
+    height: 287px;
+  }
+
+  @include mobile {
+    order: -1;
+    width: 288px;
+    height: 288px;
+  }
+}

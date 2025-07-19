@@ -1,0 +1,12 @@
+.selectsBlock {
+  display: flex;
+  gap: 16px;
+
+  .sort {
+    width: 176px;
+  }
+
+  .itemsPerPage {
+    width: 128px;
+  }
+}
