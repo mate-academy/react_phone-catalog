@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Products } from '../../types/Products';
+import React, { useState, useEffect, useContext } from 'react';
+import { Products } from '../../../types/Products';
 import './ProductsSlider.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import classNames from 'classnames';
+import { ProductsContext } from '../../../context/ProductContext';
 
-type Props = {
-  product: Products[];
-};
+export const ProductsSlider: React.FC = () => {
+  const { products } = useContext(ProductsContext);
 
-export const ProductsSlider: React.FC<Props> = ({ product }) => {
-  const newProducts = [...product]
+  const newProducts = [...products]
     .sort((a: Products, b: Products) => b.year - a.year)
     .slice(0, 10);
 

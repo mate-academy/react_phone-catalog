@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import './App.scss';
 import { NavBar } from './components/NavBar';
-import { PicturesSlider } from './components/PicturesSlider';
 import { Products } from './types/Products';
-import { ProductsSlider } from './components/ProductsSlider';
-import { ShopCategory } from './components/ShopCategory';
 import { Phones } from './types/Phones';
 import { Tablets } from './types/Tablets';
 import { Accessories } from './types/Accessories';
-import { HotPriceSlider } from './components/HotPriceSlider';
 import { Footer } from './components/Footer';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { HomePage } from './components/HomePage/HomePage';
+import { ProductsContext } from './context/ProductContext';
+import { Catalog } from './components/Catalog';
 
 export const App = () => {
   const [products, setProducts] = useState<Products[]>([]);
@@ -50,21 +50,20 @@ export const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <NavBar />
+    <ProductsContext.Provider
+      value={{ products, phones, tablets, accessories }}
+    >
+      <div className="App">
+        <NavBar />
 
-      <main>
-        <PicturesSlider />
-        <ProductsSlider product={products} />
-        <ShopCategory
-          countPhones={phones.length}
-          countTablets={tablets.length}
-          countAccessories={accessories.length}
-        />
-        <HotPriceSlider product={products} />
-      </main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/phones" element={<Catalog />} />
+        </Routes>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </ProductsContext.Provider>
   );
 };

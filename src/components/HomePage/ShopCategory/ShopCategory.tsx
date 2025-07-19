@@ -1,17 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './ShopCategory.scss';
+import { ProductsContext } from '../../../context/ProductContext';
 
-type Props = {
-  countPhones: number;
-  countTablets: number;
-  countAccessories: number;
-};
+export const ShopCategory: React.FC = () => {
+  const { phones, tablets, accessories } = useContext(ProductsContext);
 
-export const ShopCategory: React.FC<Props> = ({
-  countPhones,
-  countTablets,
-  countAccessories,
-}) => {
   return (
     <section className="category-section">
       <h2 className="category-section__title">Shop by category</h2>
@@ -21,14 +14,16 @@ export const ShopCategory: React.FC<Props> = ({
             <img src="./images/mobile_category.png" alt="phones-banner" />
           </div>
           <h4 className="category-section__block-title">Mobile phones</h4>
-          <p className="category-section__block-text">{countPhones} models</p>
+          <p className="category-section__block-text">{phones.length} models</p>
         </div>
         <div>
           <div className="category-section__tablets-block">
             <img src="./images/tablets_category.png" alt="tablets-banner" />
           </div>
           <h4 className="category-section__block-title">Tablets</h4>
-          <p className="category-section__block-text">{countTablets} models</p>
+          <p className="category-section__block-text">
+            {tablets.length} models
+          </p>
         </div>
         <div>
           <div className="category-section__accessories-block">
@@ -39,7 +34,7 @@ export const ShopCategory: React.FC<Props> = ({
           </div>
           <h4 className="category-section__block-title">Accessories</h4>
           <p className="category-section__block-text">
-            {countAccessories} models
+            {accessories.length} models
           </p>
         </div>
       </div>

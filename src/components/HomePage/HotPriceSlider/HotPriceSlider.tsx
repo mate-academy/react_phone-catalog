@@ -1,19 +1,16 @@
 // HotPriceSlider.tsx
-import React, { useState, useEffect } from 'react';
-import { Products } from '../../types/Products';
+import React, { useState, useEffect, useContext } from 'react';
 import './HotPriceSlider.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import classNames from 'classnames';
+import { ProductsContext } from '../../../context/ProductContext';
 
-type Props = {
-  product: Products[];
-};
-
-export const HotPriceSlider: React.FC<Props> = ({ product }) => {
-  const newProducts = [...product]
+export const HotPriceSlider: React.FC = () => {
+  const { products } = useContext(ProductsContext);
+  const newProducts = [...products]
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
     .slice(0, 10);
 
