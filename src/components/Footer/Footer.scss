@@ -11,27 +11,28 @@
   box-shadow: 0 -1px 0 0 $grey-third-color;
 
   @include onTablet {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-    height: 96px;
+    width: 100%;
+    max-width: 1136px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 30px;
   }
 
   &__nav {
     display: flex;
-    align-items: center;
-    gap: 16px;
 
     @include onTablet {
-      flex-direction: row;
-      gap: 32px;
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 
   &__nav-link {
     @include onTablet {
-      padding: 40px 0;
+      padding: 10px 0;
+      margin: 0;
     }
   }
 
