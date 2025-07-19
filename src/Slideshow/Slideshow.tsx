@@ -43,7 +43,6 @@ export const Slideshow: React.FC = () => {
 
   return (
     <div className="slider-wrapper">
-      {/* Move buttons here, next to the slideshow div */}
       <button
         onClick={handlePrev}
         className="arrow left"

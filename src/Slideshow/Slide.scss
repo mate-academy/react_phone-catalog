@@ -9,7 +9,10 @@
   box-sizing: border-box;
 
   @media (min-width: 1200px) {
-    height: 400px;
+    height: 500px;
+  }
+  @media (max-width: 1200px) {
+    height: 500px;
   }
 
   @media (max-width: 438px) {
@@ -57,7 +60,7 @@
   }
 
   .arrow {
-    height: 28vh;
+    height: 33vh;
     width: 32px;
     position: absolute;
     top: 50%;
@@ -75,6 +78,9 @@
 
     &.right {
       right: 0;
+    }
+    @media (max-width:851px) {
+      height: 27vh;
     }
 
     @media (max-width: 639px) {
