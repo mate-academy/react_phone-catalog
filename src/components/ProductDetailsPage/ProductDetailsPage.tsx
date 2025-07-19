@@ -97,7 +97,7 @@ export const ProductDetailsPage = () => {
       '-' +
       newColor.replace(' ', '-');
 
-    navigate(`/product/${newId}`);
+    navigate(`/${product.category}/product/${newId}`);
   };
 
   const handleCapacityChange = (newCapacity: string) => {
@@ -109,7 +109,7 @@ export const ProductDetailsPage = () => {
       '-' +
       product.color.replace(' ', '-');
 
-    navigate(`/product/${newId}`);
+    navigate(`/${product.category}/product/${newId}`);
   };
 
   const handleBack = () => {

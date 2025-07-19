@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useState } from 'react';
 import { BurgerMenu } from '../BurgerMenu';
+import classNames from 'classnames';
 
 const navLinks = [
   { id: 1, title: 'Home', to: '/' },
@@ -24,7 +25,14 @@ export const Header = () => {
             <ul className={styles.navList}>
               {navLinks.map(link => (
                 <li key={link.id}>
-                  <NavLink to={link.to} className={styles.navList_link}>
+                  <NavLink
+                    to={link.to}
+                    className={({ isActive }) =>
+                      classNames(styles.navList_link, {
+                        [styles.navList_link_active]: isActive,
+                      })
+                    }
+                  >
                     {link.title}
                   </NavLink>
                 </li>
@@ -33,14 +41,28 @@ export const Header = () => {
           </nav>
         </div>
         <div className={styles.iconLinks}>
-          <NavLink className={styles.iconLinks_link} to="/favourites">
+          <NavLink
+            className={({ isActive }) =>
+              classNames(styles.iconLinks_link, {
+                [styles.iconLinks_link_active]: isActive,
+              })
+            }
+            to="/favourites"
+          >
             <img
               src="/img/icons/Favourite_default.png"
               alt="favourites"
               className={styles.icon}
             />
           </NavLink>
-          <NavLink className={styles.iconLinks_link} to="/cart">
+          <NavLink
+            className={({ isActive }) =>
+              classNames(styles.iconLinks_link, {
+                [styles.iconLinks_link_active]: isActive,
+              })
+            }
+            to="/cart"
+          >
             <img
               src="/img/icons/Cart_default.png"
               alt="cart"

@@ -52,7 +52,10 @@ export const App = () => (
       />
       <Route path="/favourites" element={<Favourites />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/product/:productId" element={<ProductDetailsPage />} />
+      <Route
+        path=":category/product/:productId"
+        element={<ProductDetailsPage />}
+      />
     </Routes>
 
     <Footer />

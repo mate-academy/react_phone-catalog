@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
+import classNames from 'classnames';
 
 const navLinks = [
   { id: 1, title: 'Home', to: '/' },
@@ -22,7 +23,11 @@ export const BurgerMenu = ({ menuOpen, setMenuOpen }: Props) => {
             <li key={link.id}>
               <NavLink
                 to={link.to}
-                className={styles.navList_link}
+                className={({ isActive }) =>
+                  classNames(styles.navList_link, {
+                    [styles.navList_link_active]: isActive,
+                  })
+                }
                 onClick={() => setMenuOpen(false)}
               >
                 {link.title}
@@ -33,7 +38,11 @@ export const BurgerMenu = ({ menuOpen, setMenuOpen }: Props) => {
       </nav>
       <div className={styles.iconLinks}>
         <NavLink
-          className={styles.iconLinks_link}
+          className={({ isActive }) =>
+            classNames(styles.iconLinks_link, {
+              [styles.iconLinks_link_active]: isActive,
+            })
+          }
           to="/favourites"
           onClick={() => setMenuOpen(false)}
         >
@@ -44,7 +53,11 @@ export const BurgerMenu = ({ menuOpen, setMenuOpen }: Props) => {
           />
         </NavLink>
         <NavLink
-          className={styles.iconLinks_link}
+          className={({ isActive }) =>
+            classNames(styles.iconLinks_link, {
+              [styles.iconLinks_link_active]: isActive,
+            })
+          }
           to="/cart"
           onClick={() => setMenuOpen(false)}
         >

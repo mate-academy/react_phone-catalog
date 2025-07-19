@@ -11,7 +11,7 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <div
-      onClick={() => navigate(`/product/${product.itemId}`)}
+      onClick={() => navigate(`/${product.category}/product/${product.itemId}`)}
       className={styles.card}
     >
       <img src={product.image} className={styles.cardImage}></img>
