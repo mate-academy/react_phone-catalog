@@ -2,13 +2,14 @@
 
 .productCard {
   flex: 1 1 auto;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 32px;
   height: 506px;
-  background-color: #161827;
+  row-gap: 8px;
+  border: 1px solid $elements-color;
+  border-radius: 8px;
 
   &__linkImage {
     display: flex;
@@ -24,49 +25,32 @@
       object-fit: contain;
       height: 196px;
 
-      @include hover(transform, scale(1.05));
+      &:hover {
+        transform: scale(1.1);
+        transition: all 0.3s;
+      }
     }
   }
 
   &__title {
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 600;
-  }
-
-  &__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 165px;
-  }
-
-  &__namePrice {
-    height: 75px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    margin-top: 16px;
   }
 
   &__prices {
     display: flex;
     align-items: center;
     column-gap: 8px;
-    border-bottom: 1px solid $textNotActiveColor;
+    font-size: 22px;
   }
 
   &__price {
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 140%;
+    font-weight: 700;
   }
 
   &__fullPrice {
     position: relative;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 140%;
-    color: $textNotActiveColor;
+    color: $secondary-color;
+    font-weight: 500;
 
     &::after {
       position: absolute;
@@ -76,46 +60,34 @@
       content: '';
       height: 2px;
       width: 50px;
-      background-color: $textNotActiveColor;
+      background-color: $secondary-color;
     }
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $elements-color;
   }
 
   &__features {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    height: 77px;
-    margin-bottom: 8px;
+    justify-content: space-between;
+    row-gap: 8px;
+    padding-block: 8px;
   }
 
-  &__screen {
+  &__item {
     display: flex;
     justify-content: space-between;
-  }
-
-  &__capacity {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__ram {
-    display: flex;
-    justify-content: space-between;
-    text-transform: uppercase;
+    line-height: 100%;
+    font-size: 12px;
+    font-weight: 600;
   }
 
   &__property {
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    line-height: 100%;
-    font-weight: 700;
-    color: $textNotActiveColor;
-  }
-
-  &__value {
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 100%;
+    color: $secondary-color;
   }
 
   &__buttons {
@@ -128,15 +100,15 @@
     flex: 1 1 auto;
     display: block;
     font-size: 14px;
-    font-weight: 700;
-    color: $textMainColor;
-    background-color: $mainPurpleButtonColor;
-    width: 160px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 48px;
+    background-color: $accent-color;
     transition: all 0.3s;
 
     &:hover {
-      background-color: $hoverPurpleButtonColor;
       transform: scale(1.05);
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.25);
     }
   }
 
@@ -144,20 +116,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    background: $mainIconButtonColor;
+    padding: 12px;
+    border-radius: 50%;
+    border: 1px solid $icons-color;
     transition: all 0.3s;
 
-    & img {
-      width: 55%;
-      height: auto;
-    }
-
     &:hover {
-      background-color: $hoverIconButtonColor;
       transform: scale(1.05);
+      border-color: $primary-color;
     }
   }
+}
+
+.heartIcon {
+  width: 16px;
+  height: 16px;
 }
 
 .emptyCart {

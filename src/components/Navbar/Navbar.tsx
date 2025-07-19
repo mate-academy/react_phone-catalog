@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -9,6 +9,7 @@ import cart from '../../assets/icons/cart.svg';
 
 import styles from './Navbar.module.scss';
 import { BurgerMenu } from '../BurgerMenu';
+import { DataContext } from '../../context/DataContext';
 
 const menuLinks = [
   { to: '/', label: 'Home' },
@@ -18,9 +19,9 @@ const menuLinks = [
 ];
 
 export const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isMenuOpen, setIsMenuOpen } = useContext(DataContext);
 
-  const toggleMenu = () => setIsMenuOpen(prev => !prev);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
   return (

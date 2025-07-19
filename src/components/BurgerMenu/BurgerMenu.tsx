@@ -20,7 +20,6 @@ export const BurgerMenu: React.FC<Props> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Контролюємо видимість після анімації закриття
   useEffect(() => {
     if (isMenuOpen) {
       setIsVisible(true);

@@ -16,6 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 24px 0 64px;
+  background-color: $bg-color;
 
   @include on-tablet {
     padding: 32px 0 64px;
@@ -27,7 +28,7 @@ body {
 }
 
 .section-title {
-  margin-bottom: s 24px;
+  margin-bottom: 24px;
 }
 
 .swiper {
