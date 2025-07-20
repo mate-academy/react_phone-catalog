@@ -8,6 +8,8 @@ import { LoadError, LOAD_ERROR } from '../../../shared/utils/types/LoadError';
 import { Loader } from '../../../PhonesPage/components/Loader/Loader';
 import styles from './ProductDetailsPage.module.scss';
 import classNames from 'classnames';
+import { Button } from '../../../shared/components/Button';
+import { AddToFavourites } from '../../../shared/components/AddToFavourites';
 
 classNames.bind(styles);
 
@@ -77,7 +79,8 @@ export const ProductDetailsPage = ({ category }: Params) => {
                 <div key={i}>
                   <img
                     className={classNames(styles.details__picture, {
-                      'details__picture--active': activeImgIndex === i,
+                      [styles['details__picture--active']]:
+                        activeImgIndex === i,
                     })}
                     onClick={() => changePicture(i)}
                     src={image}
@@ -92,8 +95,10 @@ export const ProductDetailsPage = ({ category }: Params) => {
               <p className={styles['details__colors-available']}>
                 Available colors
               </p>
+
               <p className={styles['details__colors-id']}>ID: 802390</p>
             </div>
+
             <div className={styles['details__colors-container']}>
               {findProduct?.colorsAvailable.map(color => {
                 return (
@@ -129,6 +134,47 @@ export const ProductDetailsPage = ({ category }: Params) => {
                   </div>
                 );
               })}
+            </div>
+          </div>
+          <div className={styles.details__price}>
+            <p className={styles['details__price-discount']}>
+              {`$${findProduct?.priceDiscount}`}
+            </p>
+
+            <p className={styles['details__price-regular']}>
+              {`$${findProduct?.priceRegular}`}
+            </p>
+          </div>
+          <div className={styles.details__buttons}>
+            <Button text="Add to cart" />
+            <AddToFavourites />
+          </div>
+          <div className={styles.details__specification}>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>Screen</p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.screen}
+              </p>
+            </div>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>
+                Resolution
+              </p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.resolution}
+              </p>
+            </div>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>Processor</p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.processor}
+              </p>
+            </div>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>RAM</p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.ram}
+              </p>
             </div>
           </div>
         </div>

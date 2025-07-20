@@ -23,7 +23,7 @@
     border: 1px solid variables.$gray-light-color;
 
     &--active {
-      border: 1px solid red;
+      border: 1px solid variables.$black-color;
     }
   }
 
@@ -37,6 +37,7 @@
   }
 
   &__colors {
+
     &-text {
       display: flex;
       justify-content: space-between;
@@ -71,33 +72,107 @@
         border: 2px solid variables.$black-color;
       }
     }
-  }
-
-  &__capacity {
-
-
-    &-header {
-      color: variables.$gray-color;
     }
 
-    &-container {
+    &__capacity {
+
+
+      &-header {
+      color: variables.$gray-color;
+      }
+
+      &-container {
+        display: flex;
+        gap: 16px;
+        border-bottom: 1px solid variables.$gray-light-color;
+        padding-bottom: 40px;
+      }
+
+      &-memory {
+        border: 1px solid variables.$black-color;
+        width: 56px;
+        height: 32px;
+        align-content: center;
+        text-align: center;
+
+        &--active{
+          background-color: variables.$black-color;
+          color: variables.$white-color;
+        }
+      }
+    }
+
+    &__price {
+      display: flex;
+      gap: 8px;
+      padding-top: 38px;
+
+
+      &-discount {
+        color: variables.$black-color;
+        font-family: Mont, Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+        margin: 0;
+      }
+
+      &-regular {
+        color:  variables.$gray-medium-color;
+        font-family: Mont,
+          Arial,
+          Helvetica,
+          sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-decoration: line-through;
+        margin: 0;
+        align-self: center;
+      }
+    }
+
+    &__buttons {
+      padding-top: 24px;
       display: flex;
       gap: 16px;
-      border-bottom: 1px solid variables.$gray-light-color;
-      padding-bottom: 40px;
     }
 
-    &-memory {
-      border: 1px solid variables.$black-color;
-      width: 56px;
-      height: 32px;
-      align-content: center;
-      text-align: center;
+    &__specification {
+      padding-top: 32px;
 
-      &--active{
-        background-color: variables.$black-color;
-        color: variables.$white-color;
+      &-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+      }
+
+      &-name {
+        margin: 0;
+        color: variables.$gray-medium-color;
+        font-family: Mont,
+          Arial,
+          Helvetica,
+          sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0%;
+      }
+
+      &-details {
+        margin: 0;
+        font-family: Mont,
+          Arial,
+          Helvetica,
+          sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: right;
       }
     }
   }
-}
